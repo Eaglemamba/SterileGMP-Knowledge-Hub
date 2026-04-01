@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapters 3–5.3: QMS, Risk Management & Qualification Planning | ISPE GAMP IT Infrastructure</title>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-green: #15803d;
+    --accent-green: #16a34a;
+    --light-green: #dcfce7;
+    --mid-green: #bbf7d0;
+    --dark-green: #14532d;
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header .guide-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+.header h1 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+}
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOC ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 {
+    color: var(--primary-green);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--accent-green);
+    padding-bottom: 0.4rem;
+}
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    color: var(--primary-green);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid #bbf7d0;
+    transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-green); color: white; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #bbf7d0;
+}
+.learning-objectives h3 {
+    color: var(--dark-green);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+.learning-objectives .obj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1.5rem;
+}
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+    list-style: none;
+    padding-left: 1.4rem;
+    position: relative;
+}
+.learning-objectives li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h3 {
+    color: var(--primary-green);
+    border-bottom: 2px solid var(--accent-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.left-column p { margin-bottom: 0.85rem; font-size: 0.95rem; text-align: justify; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: #f0fdf4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bbf7d0;
+}
+.right-column h3 {
+    color: var(--dark-green);
+    border-bottom: 2px solid #4ade80;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.4rem; }
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .concept-box ol { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li { margin-bottom: 0.35rem; }
+
+.term-box { background: #e8f5e9; border-left: 4px solid #4caf50; }
+.term-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: #fff3e0; border-left: 4px solid #ff9800; }
+.note-box h4 { color: #c65102; }
+.formula-box { background: #f3e5f5; border-left: 4px solid #9c27b0; }
+.formula-box h4 { color: #7b1fa2; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+
+/* ===== PRACTICE BOX ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+}
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #f0fdf4, #dcfce7); font-weight: 600; color: var(--dark-green); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== V-MODEL DIAGRAM ===== */
+.vmodel-wrap {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+.vmodel-wrap h4 { color: var(--dark-green); margin-bottom: 1rem; font-size: 0.95rem; font-weight: 600; }
+.vmodel-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+.vmodel-left {
+    width: 40%;
+    text-align: right;
+    padding-right: 0.75rem;
+    font-size: 0.82rem;
+}
+.vmodel-right {
+    width: 40%;
+    text-align: left;
+    padding-left: 0.75rem;
+    font-size: 0.82rem;
+}
+.vmodel-center {
+    width: 20%;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #718096;
+}
+.vnode {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.vnode-left { background: #dbeafe; border: 1px solid #93c5fd; color: #1e40af; }
+.vnode-right { background: #dcfce7; border: 1px solid #86efac; color: #15803d; }
+.vnode-bottom { background: #fef3c7; border: 1px solid #fcd34d; color: #92400e; }
+.varrow { color: #9ca3af; font-size: 0.9rem; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; margin: 0.5rem 0; }
+.checklist li {
+    padding: 0.3rem 0 0.3rem 1.6rem;
+    position: relative;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-size: 1rem;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.badge-green { background: #dcfce7; color: #15803d; }
+.badge-yellow { background: #fef9c3; color: #854d0e; }
+.badge-red { background: #fee2e2; color: #991b1b; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-gray { background: #f1f5f9; color: #475569; }
+
+/* ===== RISK MATRIX ===== */
+.risk-matrix td { text-align: center; font-weight: 600; font-size: 0.82rem; }
+.risk-low { background: #dcfce7 !important; color: #15803d; }
+.risk-med { background: #fef9c3 !important; color: #854d0e; }
+.risk-high { background: #fee2e2 !important; color: #991b1b; }
+.risk-header { background: #f0fdf4 !important; }
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+    border: none;
+    border-top: 2px dashed #bbf7d0;
+    margin: 1.5rem 0;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.main-footer .footer-meta { opacity: 0.65; font-size: 0.8rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-green); color: white;
+    border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #15803d; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .learning-objectives .obj-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+    <div class="guide-badge">ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance</div>
+    <h1>Chapters 3–5.3: QMS, Risk Management &amp; Qualification Planning</h1>
+    <p class="subtitle">品質管理系統、風險管理與確效規劃</p>
+    <p class="page-info">Source Pages 18–30 &nbsp;|&nbsp; Section 01 of ISPE-IT Series</p>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Table of Contents &nbsp;|&nbsp; 目錄</h3>
+        <div class="toc-grid">
+            <a href="#ch3-qms">Ch 3: QMS 品質管理系統</a>
+            <a href="#ch3-qm">3.1 Quality Manual 品質手冊</a>
+            <a href="#ch3-roles">3.2–3.4 Roles, Records &amp; Docs 角色、記錄與文件</a>
+            <a href="#ch3-testing">3.5 Testing 測試要求</a>
+            <a href="#ch3-sop">3.6–3.9 SOPs, Training &amp; Audit SOP與稽核</a>
+            <a href="#ch4-risk">Ch 4: Risk Management 風險管理</a>
+            <a href="#ch4-id">4.1 Identification &amp; Assessment 辨識與評估</a>
+            <a href="#ch4-controls">4.2–4.4 Controls &amp; Review 控制措施與審查</a>
+            <a href="#ch5-overview">5.1 Qualification Overview 確效概述</a>
+            <a href="#ch5-lifecycle">5.2 IT Lifecycle V-Model IT生命週期V型模型</a>
+            <a href="#ch5-planning">5.3 Planning 規劃</a>
+            <a href="#ch5-legacy">5.3.2 Legacy Platforms 舊有平台</a>
+        </div>
+    </div>
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+        <div class="obj-grid">
+            <ul>
+                <li>Describe the 9 elements of a QMS for IT infrastructure and explain their GMP relevance<br><span style="color:#15803d;font-size:0.85rem;">描述IT基礎架構QMS的9個要素及其GMP相關性</span></li>
+                <li>Define roles and documentation requirements for IT QA governance<br><span style="color:#15803d;font-size:0.85rem;">定義IT QA治理的角色分配與文件要求</span></li>
+                <li>Apply the 5-step risk management process to IT infrastructure components<br><span style="color:#15803d;font-size:0.85rem;">將5步驟風險管理流程應用於IT基礎架構元件</span></li>
+                <li>Distinguish GxP from non-GxP risk scope and explain how both influence controls<br><span style="color:#15803d;font-size:0.85rem;">區分GxP與非GxP風險範疇，解釋兩者如何影響控制措施</span></li>
+            </ul>
+            <ul>
+                <li>Explain the two qualification strategies (building-block vs case-by-case) and when each applies<br><span style="color:#15803d;font-size:0.85rem;">說明兩種確效策略及其適用情境</span></li>
+                <li>Map the IT infrastructure V-model phases to their deliverables<br><span style="color:#15803d;font-size:0.85rem;">將IT基礎架構V型模型各階段對應其交付成果</span></li>
+                <li>List the required contents of a Platform Qualification Plan<br><span style="color:#15803d;font-size:0.85rem;">列舉平台確效計畫的必要內容</span></li>
+                <li>Describe the legacy platform qualification approach including Experience Reports<br><span style="color:#15803d;font-size:0.85rem;">描述舊有平台的確效方法，包含經驗報告</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 3: QMS               -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch3-qms">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3</div>
+            <div class="chapter-info">
+                <h2>Quality Management System for IT Infrastructure</h2>
+                <p>IT基礎架構的品質管理系統 &nbsp;|&nbsp; Pages 18–20</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Chapter Introduction &nbsp;|&nbsp; 章節導言</h3>
+                    <p>This chapter describes how a <strong>Quality Management System (QMS)</strong> may assist in providing evidence that the IT Infrastructure is in a controlled state, and the key requirements for the QMS to attain this goal.</p>
+                    <p>本章描述<strong>品質管理系統（QMS）</strong>如何協助提供IT基礎架構處於受控狀態的證據，以及QMS達成此目標的關鍵要求。</p>
+                    <div class="concept-box term-box">
+                        <h4>Why IT Needs Its Own QMS | 為何IT需要自己的QMS</h4>
+                        <p>Traditional pharma QMS covers manufacturing processes. As IT infrastructure directly supports GxP computerised systems — which in turn manage critical product quality data — the IT function must operate within a structured quality framework of its own.</p>
+                        <p>傳統製藥QMS涵蓋生產流程。由於IT基礎架構直接支撐GxP電腦化系統（而這些系統管理關鍵產品品質數據），IT部門必須在自身結構化品質框架內運作。</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>CDMO IT-QA Governance Model &nbsp;|&nbsp; CDMO IT-QA治理模型</h3>
+                    <div class="concept-box application-box">
+                        <h4>Practical Structure for a CDMO IT-QA Function</h4>
+                        <p>In a fill-finish CDMO, IT-QA governance typically sits at the interface between QA, IT Operations, and Validation. Key accountability points:</p>
+                        <ul>
+                            <li><strong>QA</strong> — owns the IT Quality Manual, approves SOPs, conducts audits, signs off Qualification Plans</li>
+                            <li><strong>IT Operations</strong> — owns platform management, change control execution, backup/DR</li>
+                            <li><strong>Validation / CSV Team</strong> — owns IQ/OQ/PQ execution, test documentation, qualification reports</li>
+                            <li><strong>Application/Data Owners</strong> — define GxP criticality of systems they own; trigger risk assessments</li>
+                            <li><strong>Regulatory Affairs</strong> — interprets GxP obligations; informs infrastructure risk scope</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box analogy-box">
+                        <h4>The "Factory Floor" Analogy | 「工廠地板」比喻</h4>
+                        <p>Think of IT infrastructure as the factory floor that all GxP systems run on. Just as the physical manufacturing facility needs environmental monitoring, cleaning validation, and maintenance SOPs, the IT "floor" needs its own QMS to demonstrate control.</p>
+                        <p>將IT基礎架構想象為所有GxP系統運行的工廠地板。正如實體生產設施需要環境監測、清潔確效和維護SOP，IT「地板」也需要自己的QMS來展示受控狀態。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.1 Quality Manual -->
+            <div id="ch3-qm">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>3.1 Quality Manual &nbsp;|&nbsp; 品質手冊</h3>
+                        <p>A Quality Manual should set quality objectives in line with corporate Quality Policy. A top level document relating to IT Infrastructure should cover:</p>
+                        <ul>
+                            <li>Identification of key IT Infrastructure processes (especially those that pertain to IT Infrastructure qualification and operational management), and how they interact</li>
+                            <li>Procedures, detailed work instructions, templates, and other standards that apply</li>
+                            <li>Required records and documentation to be maintained</li>
+                        </ul>
+                        <p>Quality Manuals and top level documents should be approved by QA. For further information, see ISO 9000:2000 Quality Management Systems – Fundamentals and Vocabulary.</p>
+                        <p class="page-info" style="color:#718096;font-size:0.82rem;">品質手冊應根據企業品質政策設定品質目標。頂層文件應涵蓋關鍵IT流程識別、適用程序與標準、以及需維護的記錄與文件。品質手冊應由QA批准。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>QMS Elements for IT Departments &nbsp;|&nbsp; IT部門QMS要素</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>QMS Element 要素</th>
+                                    <th>IT Application 應用</th>
+                                    <th>Key Output 關鍵輸出</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3.1</strong> Quality Manual</td>
+                                    <td>IT-specific quality objectives aligned to corporate policy</td>
+                                    <td>Approved IT Quality Manual / IT品質手冊</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.2</strong> Roles &amp; Responsibilities</td>
+                                    <td>Job descriptions for IT, QA, Data Owners</td>
+                                    <td>Role matrix / 職責矩陣</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.3</strong> Record Management</td>
+                                    <td>Controls for retrievability, storage, protection</td>
+                                    <td>Records retention schedule / 記錄保留計畫</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.4</strong> Documentation</td>
+                                    <td>Platform docs, test results, consistent templates</td>
+                                    <td>EDMS or doc control system / 文件管理系統</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.5</strong> Testing</td>
+                                    <td>Traceable test specs, acceptance criteria, QA review</td>
+                                    <td>Executed test records / 已執行測試記錄</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.6</strong> SOPs</td>
+                                    <td>Critical IT processes and services documented</td>
+                                    <td>IT SOP library / IT SOP文件庫</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.7</strong> Training</td>
+                                    <td>Planned, documented, includes contractors</td>
+                                    <td>Training records / 培訓記錄</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.8</strong> Periodic Review</td>
+                                    <td>Risk-based frequency, maintains qualified status</td>
+                                    <td>Periodic Review reports / 定期審查報告</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.9</strong> QA Audit</td>
+                                    <td>Independent QA audits of IT function</td>
+                                    <td>Audit reports &amp; CAPAs / 稽核報告與矯正</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.2-3.4 Roles, Records, Documentation -->
+            <div id="ch3-roles">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>3.2–3.4 Roles, Records &amp; Documentation &nbsp;|&nbsp; 角色、記錄與文件</h3>
+                        <p><strong>3.2 Roles and Responsibilities:</strong> Roles and responsibilities should be defined for all important functions. Job descriptions or other documents should reflect the assignment of roles and responsibilities.</p>
+                        <p><strong>3.3 Record Management:</strong> Appropriate controls need to be in place to ensure the retrievability, storage, and protection of records. The controls should provide evidence of quality levels of the IT platform, and compliance with regulations.</p>
+                        <p><strong>3.4 Documentation:</strong> Documentation for platforms, processes, test results, etc., should be maintained in order to meet requirements for inspections by regulatory authorities.</p>
+                        <ul>
+                            <li>IT staff should ensure that documentation is readily available — this should be challenged during internal assessments and QA audits</li>
+                            <li>Tools and utility systems should be available during regulatory inspections to provide displays and printouts</li>
+                            <li>There should be a consistent approach to documentation across an organization</li>
+                            <li>Systems and processes for the creation, review, and approval of documents should be established (e.g., standard templates, EDMS)</li>
+                        </ul>
+                        <p style="color:#718096;font-size:0.85rem;">3.2 角色與職責應明確定義並反映於職務說明。3.3 記錄管理控制確保可檢索性、儲存與保護。3.4 文件管理須可供法規查核，並保持全組織一致性。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>CDMO Practical Notes &nbsp;|&nbsp; CDMO實務要點</h3>
+                        <div class="concept-box note-box">
+                            <h4>Common Inspection Finding: Undefined IT Roles</h4>
+                            <p>During FDA 483 observations in pharma, a frequent finding is that IT staff perform GxP-impacting tasks (e.g., user access management, backup verification) without documented role assignments or training records. ISPE Section 3.2 directly addresses this gap.</p>
+                            <p>FDA 483常見缺失：IT人員執行影響GxP的任務（如使用者存取管理、備份驗證）卻無文件化的職責指定或培訓記錄。</p>
+                        </div>
+                        <div class="concept-box term-box">
+                            <h4>Documentation Readiness for Inspections | 查核文件整備</h4>
+                            <ul>
+                                <li>All platform qualification records must be immediately retrievable (not archived off-site without recall procedure)</li>
+                                <li>Configuration reports and system inventory printouts must be available on demand</li>
+                                <li>EDMS should have a "inspector view" or read-only access mode</li>
+                                <li>IT staff must be trained to generate config reports in real time</li>
+                            </ul>
+                        </div>
+                        <div class="concept-box analogy-box">
+                            <h4>Analogy: The "Passport Control" Model | 「護照管制」比喻</h4>
+                            <p>Record management in IT is like passport control at an airport — every record must be findable (retrievable), authentic (protected from tampering), and current (stored correctly). If any of these three properties fails, the compliance "border" is breached.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.5 Testing -->
+            <div id="ch3-testing">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>3.5 Testing Requirements &nbsp;|&nbsp; 測試要求</h3>
+                        <p>Test documentation generated as a result of the execution of test specifications during qualification should meet the following general requirements:</p>
+                        <ul>
+                            <li>Traceable to the specification that required the documentation</li>
+                            <li>Reviewed and approved by required units or individuals, usually including QA</li>
+                            <li>Clear and objectively verifiable acceptance criteria</li>
+                            <li>Each test step or test case traceable to the pertinent section in the applicable requirement or design specifications</li>
+                            <li>Accurate records of observations made by identifiable and trained personnel</li>
+                            <li>Entries should reflect the actual observation and not just pass or fail, except when the criteria for pass and fail are made absolutely clear by the specification</li>
+                            <li>Hardcopies of screen dumps, or collation by computerized tool, should be added to support test results where appropriate</li>
+                            <li>Entries should be made in legible, permanent handwriting, or using a suitable computerized tool</li>
+                            <li>Corrections should be made without obscuring the original entry — the date, reason, and identity of the person making the correction should be clear</li>
+                        </ul>
+                        <p>The rigor with which the above requirements are met will depend upon the <strong>impact and risks</strong> associated with the component being tested.</p>
+                        <p style="color:#718096;font-size:0.85rem;">測試文件須可追溯至規格、經QA審查核准、具客觀可驗證的接受標準，並記錄實際觀察結果而非僅標示通過/失敗。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>Testing Rigor vs. Risk Level &nbsp;|&nbsp; 測試嚴格程度與風險等級</h3>
+                        <div class="concept-box term-box">
+                            <h4>Risk-Based Testing Principle | 基於風險的測試原則</h4>
+                            <p>Not all IT components require the same level of test documentation rigor. The ISPE guide explicitly states that rigor is proportional to <strong>impact and risk</strong>. This allows efficient use of validation resources.</p>
+                            <p>並非所有IT元件都需要相同程度的測試文件嚴格性。ISPE明確指出嚴格程度與衝擊和風險成正比。</p>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Component Type 元件類型</th>
+                                    <th>GxP Impact GxP衝擊</th>
+                                    <th>Required Rigor 要求嚴格度</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Network switch (non-GxP VLAN)</td>
+                                    <td class="badge-gray"><span class="badge badge-gray">Low</span></td>
+                                    <td>Checklist-based IQ sufficient</td>
+                                </tr>
+                                <tr>
+                                    <td>Server hosting MES / LIMS</td>
+                                    <td><span class="badge badge-red">High</span></td>
+                                    <td>Full IQ/OQ with screen dumps, QA sign-off</td>
+                                </tr>
+                                <tr>
+                                    <td>Backup system for GxP data</td>
+                                    <td><span class="badge badge-red">High</span></td>
+                                    <td>OQ with restore verification, periodic re-test</td>
+                                </tr>
+                                <tr>
+                                    <td>Printer (administrative only)</td>
+                                    <td><span class="badge badge-gray">Minimal</span></td>
+                                    <td>Installation checklist only</td>
+                                </tr>
+                                <tr>
+                                    <td>Active Directory (user access)</td>
+                                    <td><span class="badge badge-yellow">Medium</span></td>
+                                    <td>OQ for access controls, IQ for configuration</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="concept-box application-box">
+                            <h4>GAMP Comparison | 與GAMP對比</h4>
+                            <p>GAMP 5 uses a similar risk-based approach for application CSV. ISPE GAMP IT Infrastructure extends the same philosophy to infrastructure layers — a critical alignment point for CDMO validation programs that cover both application and infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3.6-3.9 SOPs, Training, Review, Audit -->
+            <div id="ch3-sop">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>3.6–3.9: SOPs, Training, Periodic Review &amp; QA Audit &nbsp;|&nbsp; SOP、培訓、定期審查與QA稽核</h3>
+                        <p><strong>3.6 Standard Operating Procedures:</strong> SOPs should describe critical processes and services, be reviewed for compliance with user requirements, company IT policies, and regulations. Procedures should specify the records needed for maintenance, troubleshooting, and auditable evidence.</p>
+                        <p><strong>3.7 Training:</strong> Training should be planned and documented. Formal structured training programs (in-house or external) should be considered. Technical and regulatory training requirements for external service providers and contractors should also be determined.</p>
+                        <p><strong>3.8 Periodic Review and Evaluation:</strong> Subject matter experts or IT Quality and Compliance members should review processes, systems, or platforms to ensure they meet specified requirements. The review also monitors QMS effectiveness and identifies improvements.</p>
+                        <ul>
+                            <li>Scope, depth, and frequency based on <strong>impact and risk</strong></li>
+                            <li>Operational history and known problems should be considered</li>
+                            <li>A sampling technique typically is used when planning assessments</li>
+                            <li>Periodic Reviews are an important element of <strong>maintaining the qualification status</strong> of IT Infrastructure throughout its operational life</li>
+                            <li>May be scheduled or event-driven (e.g., following a major upgrade)</li>
+                        </ul>
+                        <p><strong>3.9 Audit by QA:</strong> Audits should be conducted by QA staff independent of the group being audited. The scope, frequency, and objective of audits should be determined by QA. External consultants or independent internal experts may assist.</p>
+                        <p style="color:#718096;font-size:0.85rem;">3.6 SOP描述關鍵IT流程。3.7 培訓需規劃並記錄，含外包商。3.8 定期審查維持確效狀態，頻率基於風險。3.9 QA稽核須獨立進行。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>IT SOP Library Checklist &nbsp;|&nbsp; IT SOP文件庫清單</h3>
+                        <p style="font-size:0.85rem;color:#4a5568;margin-bottom:0.75rem;">Per ISPE Appendix 4 recommendations, a minimum IT QMS SOP library should include:</p>
+                        <ul class="checklist">
+                            <li>Change Control Procedure for IT Infrastructure 變更控制程序</li>
+                            <li>Configuration Management SOP 組態管理SOP</li>
+                            <li>User Access Management and Review 使用者存取管理與審查</li>
+                            <li>Backup and Restore Verification 備份與還原驗證</li>
+                            <li>Disaster Recovery Planning and Testing 災難復原規劃與測試</li>
+                            <li>Periodic Review of IT Infrastructure 定期審查程序</li>
+                            <li>Incident and Problem Management 事件與問題管理</li>
+                            <li>Supplier / Vendor Assessment 供應商評估程序</li>
+                            <li>IT Security Management 資訊安全管理</li>
+                            <li>Platform Qualification Procedure 平台確效程序</li>
+                            <li>Network Diagram Maintenance 網路圖維護</li>
+                            <li>Performance Monitoring of Critical Systems 關鍵系統效能監測</li>
+                        </ul>
+                        <div class="concept-box note-box" style="margin-top:1rem;">
+                            <h4>Periodic Review Triggers | 定期審查觸發條件</h4>
+                            <ul>
+                                <li>Scheduled calendar-based review (e.g., annual)</li>
+                                <li>After major hardware or platform software upgrade</li>
+                                <li>Following a significant incident or near-miss</li>
+                                <li>Prior to regulatory inspection</li>
+                                <li>After significant organizational or supplier change</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-box">
+                    <h4>Practice Questions — Chapter 3 &nbsp;|&nbsp; 練習題</h4>
+                    <ol>
+                        <li>A new CDMO site has an IT team that manages the network, servers, and backup systems for the MES and LIMS. What are the minimum QMS elements that the IT team must establish, and who should approve the IT Quality Manual?<br><span style="color:#2c5282;font-size:0.88rem;">一家新CDMO場址的IT團隊管理MES和LIMS的網路、伺服器和備份系統。IT團隊必須建立哪些最低QMS要素？誰應批准IT品質手冊？</span></li>
+                        <li>During a regulatory inspection, an investigator asks to see all test records for the server hosting the batch record system. The IT manager cannot locate the qualification records from 3 years ago. Which ISPE sections have been violated, and what controls should have been in place?<br><span style="color:#2c5282;font-size:0.88rem;">在法規查核期間，調查員要求查看批次記錄系統伺服器的所有測試記錄。IT管理員無法找到3年前的確效記錄。違反了哪些ISPE條款？應有哪些控制措施？</span></li>
+                        <li>Your IT contractor recently patched the operating system on a GxP server but there is no training record showing the contractor understood the GxP implications of the patch. Which section addresses this gap, and what should a compliant process look like?<br><span style="color:#2c5282;font-size:0.88rem;">IT承包商最近修補了GxP伺服器的作業系統，但沒有培訓記錄顯示承包商了解補丁的GxP影響。哪個條款解決這個差距？合規流程應如何設計？</span></li>
+                    </ol>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </section>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 4: RISK MANAGEMENT   -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch4-risk">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Applying Risk Management to IT Infrastructure</h2>
+                <p>將風險管理應用於IT基礎架構 &nbsp;|&nbsp; Pages 21–23</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Chapter Introduction &nbsp;|&nbsp; 章節導言</h3>
+                    <p>Risk Management is defined by ISO as the <strong>systematic application of management policies, procedures, and practices</strong> to the tasks of analyzing, evaluating, and controlling risk.</p>
+                    <p>風險管理由ISO定義為系統性地應用管理政策、程序和實踐，以分析、評估和控制風險。</p>
+                    <p>Risk Assessments should be performed for each major life cycle phase of an object or groups of objects (e.g., platforms, data) identified as important to a company's business.</p>
+                    <p style="color:#718096;font-size:0.85rem;">風險評估應在識別為對公司業務重要的物件（如平台、數據）的每個主要生命週期階段執行。</p>
+
+                    <div class="concept-box term-box">
+                        <h4>5 Key Risk Management Activities | 5個關鍵風險管理活動</h4>
+                        <ol style="margin-left:1.25rem;font-size:0.92rem;">
+                            <li><strong>Identify</strong> IT infrastructure components that may require qualification, based on analysis of applications and processes supported, and applicable regulations</li>
+                            <li><strong>Assess</strong> components based upon identified hazards, vulnerabilities, and assessed impact on critical aspects — recognizing that in many cases the risk will be relatively low</li>
+                            <li><strong>Implement controls</strong> commensurate with identified risks — document and justify controls with reference to identified risks</li>
+                            <li><strong>Assess proposed changes</strong> to qualified components</li>
+                            <li><strong>Monitor effectiveness</strong> of controls by Periodic Review</li>
+                        </ol>
+                    </div>
+                    <p>Companies also may decide to apply this Risk Management approach to IT Infrastructure components which do <strong>not</strong> support GxP applications, but which are business critical.</p>
+                    <p style="color:#718096;font-size:0.85rem;">公司也可將此風險管理方法應用於不支援GxP應用程式但具業務關鍵性的IT基礎架構元件。</p>
+                </div>
+                <div class="right-column">
+                    <h3>Risk-Based Qualification Scope Decision Matrix &nbsp;|&nbsp; 基於風險的確效範疇決策矩陣</h3>
+                    <table class="risk-matrix">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center;">Component 元件</th>
+                                <th style="text-align:center;">GxP Support?<br>支援GxP?</th>
+                                <th style="text-align:center;">Business Critical?<br>業務關鍵?</th>
+                                <th style="text-align:center;">Qualification Scope<br>確效範疇</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>GxP App Server</td>
+                                <td class="risk-high">Yes</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-red">Full IQ/OQ required</span></td>
+                            </tr>
+                            <tr>
+                                <td>GxP Database Server</td>
+                                <td class="risk-high">Yes</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-red">Full IQ/OQ required</span></td>
+                            </tr>
+                            <tr>
+                                <td>Network Backbone</td>
+                                <td class="risk-med">Indirect</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-yellow">Scoped IQ + risk controls</span></td>
+                            </tr>
+                            <tr>
+                                <td>ERP (Finance only)</td>
+                                <td>No</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-yellow">Business controls only</span></td>
+                            </tr>
+                            <tr>
+                                <td>AD / Identity Mgmt</td>
+                                <td class="risk-med">Indirect</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-yellow">Access controls OQ</span></td>
+                            </tr>
+                            <tr>
+                                <td>Backup System (GxP)</td>
+                                <td class="risk-high">Yes</td>
+                                <td class="risk-high">Yes</td>
+                                <td><span class="badge badge-red">OQ incl. restore test</span></td>
+                            </tr>
+                            <tr>
+                                <td>Office WiFi (admin)</td>
+                                <td>No</td>
+                                <td>No</td>
+                                <td><span class="badge badge-green">Minimal / checklist</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="concept-box note-box" style="margin-top:0.75rem;">
+                        <h4>Key Principle | 關鍵原則</h4>
+                        <p>Infrastructure staff should <strong>not</strong> be expected to assess GxP compliance independently. Application/data owners and QA define which platform components require qualification. This division of responsibility prevents both over- and under-qualification.</p>
+                        <p style="font-size:0.85rem;color:#718096;">基礎架構人員不應被期望獨立評估GxP合規性。應用/數據擁有者和QA定義哪些平台元件需要確效。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.1 Identification and Assessment -->
+            <div id="ch4-id">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>4.1 Identification and Assessment of Components &nbsp;|&nbsp; 元件識別與評估</h3>
+                        <p>Application/data owners and QA should define which platform components (or types of component) and tools require qualification. For IT Infrastructure components, the <strong>criticality of the GxP applications they support</strong>, along with <strong>impact on integrity and availability of data</strong> should be considered.</p>
+                        <p>Platform management groups may assign the same level of criticality to all components and data unless system/data owners specify different levels of criticality.</p>
+                        <p>Non-GxP applications operating on the IT Infrastructure may affect GxP applications — these should be identified within the Risk Assessment process, and suitable controls included.</p>
+                        <p>The risk analysis process should identify potential hazards and vulnerabilities. Hazards in the context of platform qualification may result in risks to:</p>
+                        <ul>
+                            <li><strong>Records</strong> related to product quality or patient safety:
+                                <ul>
+                                    <li>Integrity — short term or long term</li>
+                                    <li>Confidentiality — if required by the company</li>
+                                    <li>Availability — at the right place and time</li>
+                                </ul>
+                            </li>
+                            <li><strong>Availability of services</strong> — affects business and compliance if persistent</li>
+                            <li><strong>Validity of IT Infrastructure processes</strong>, e.g., User Access Accounting</li>
+                            <li><strong>Availability and training of key staff</strong></li>
+                        </ul>
+                        <p>Once identified, the impact and likelihood of these hazards should be assessed and documented. Risk Assessment is typically an iterative process, performed progressively during planning and specification as more information becomes available.</p>
+                        <p style="color:#718096;font-size:0.85rem;">風險分析過程應識別危害和漏洞，評估記錄完整性、可用性、服務可用性、流程有效性及人員可用性的風險。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>IT Component Risk Classification Table &nbsp;|&nbsp; IT元件風險分類表</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>IT Component 元件</th>
+                                    <th>Risk Categories 風險類別</th>
+                                    <th>Typical Classification 典型分類</th>
+                                    <th>Key Controls 關鍵控制</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GxP Data Server</td>
+                                    <td>Data integrity, availability, confidentiality</td>
+                                    <td><span class="badge badge-red">Critical</span></td>
+                                    <td>RAID, backup, access control, audit trail</td>
+                                </tr>
+                                <tr>
+                                    <td>Network Infrastructure</td>
+                                    <td>Service availability, data integrity in transit</td>
+                                    <td><span class="badge badge-yellow">Major</span></td>
+                                    <td>Redundancy, monitoring, segmentation</td>
+                                </tr>
+                                <tr>
+                                    <td>Active Directory</td>
+                                    <td>User access validity, compliance with 21 CFR Part 11</td>
+                                    <td><span class="badge badge-red">Critical</span></td>
+                                    <td>Access review, audit logging, password policy</td>
+                                </tr>
+                                <tr>
+                                    <td>Backup Systems</td>
+                                    <td>Data availability, long-term integrity</td>
+                                    <td><span class="badge badge-red">Critical</span></td>
+                                    <td>Restore testing, off-site storage, encryption</td>
+                                </tr>
+                                <tr>
+                                    <td>HVAC control IT (BAS)</td>
+                                    <td>Indirect product quality impact</td>
+                                    <td><span class="badge badge-yellow">Major</span></td>
+                                    <td>Environmental monitoring integration, alarms</td>
+                                </tr>
+                                <tr>
+                                    <td>Email / Collaboration</td>
+                                    <td>Business continuity only</td>
+                                    <td><span class="badge badge-green">Minor</span></td>
+                                    <td>Standard IT controls</td>
+                                </tr>
+                                <tr>
+                                    <td>Antivirus / Patch Mgmt</td>
+                                    <td>Platform integrity (indirect GxP)</td>
+                                    <td><span class="badge badge-yellow">Major</span></td>
+                                    <td>Validated patch process, qualification impact assessment</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="concept-box analogy-box" style="margin-top:0.75rem;">
+                            <h4>The "CIA Triad" in GxP Context | GxP脈絡中的「CIA三元組」</h4>
+                            <p>The ISPE risk hazard categories map directly to the classic information security CIA model: <strong>C</strong>onfidentiality (data not exposed), <strong>I</strong>ntegrity (data not corrupted), <strong>A</strong>vailability (data accessible when needed). All three are GxP requirements — not just IT security concerns.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.2-4.4 Controls and Review -->
+            <div id="ch4-controls">
+                <hr class="section-divider">
+                <div class="two-column">
+                    <div class="left-column">
+                        <h3>4.2–4.4: Controls, Change Assessment &amp; Periodic Review &nbsp;|&nbsp; 控制措施、變更評估與定期審查</h3>
+                        <p><strong>4.2 Implementation of Controls:</strong> A range of controls may be appropriate to mitigate the identified risks:</p>
+                        <ul>
+                            <li>Testing</li>
+                            <li>Redesign, including incorporation of redundancy</li>
+                            <li>Deployment of automatic performance, diagnostic, alarm, and security monitoring tools</li>
+                            <li>Updated or new policies, guidelines, and instructions</li>
+                            <li>Extra education or training</li>
+                            <li>Supplier assessments and management</li>
+                            <li>Identification of new or updated roles and responsibilities</li>
+                            <li>Provision of extra staff, facilities, tools, and office space</li>
+                        </ul>
+                        <p>Successful implementation of the required controls should be verified during qualification, and Periodic Review.</p>
+                        <p><strong>4.3 Assessment of Changes to Qualified Components:</strong> The impact and risk associated with proposed changes to IT Infrastructure components should be assessed as part of the change management process, and appropriate controls implemented.</p>
+                        <p><strong>4.4 Periodic Review and Evaluation:</strong> During Periodic Review of IT Infrastructure, the company should reconsider the risks and verify that controls established during IT Infrastructure development and qualification are still effective. The review also should consider:</p>
+                        <ul>
+                            <li>If previously unrecognized hazards are present</li>
+                            <li>If the estimated risks arising from a hazard are no longer acceptable</li>
+                            <li>If the original assessment is otherwise invalidated</li>
+                        </ul>
+                        <p style="color:#718096;font-size:0.85rem;">4.2 控制措施包括測試、重新設計、自動監測工具、政策更新等。4.3 變更需評估對確效元件的影響。4.4 定期審查驗證現有控制是否仍然有效。</p>
+                    </div>
+                    <div class="right-column">
+                        <h3>Risk Control Implementation &amp; GAMP 5 Comparison &nbsp;|&nbsp; 風險控制實施與GAMP 5對比</h3>
+                        <div class="concept-box term-box">
+                            <h4>How ISPE IT Infrastructure Compares to GAMP 5 CSV Approach</h4>
+                            <table style="margin-top:0.5rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>GAMP 5 (Applications)</th>
+                                        <th>ISPE GAMP IT Infrastructure</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Risk-based scope</td>
+                                        <td>Yes — 5 software categories</td>
+                                        <td>Yes — component criticality</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Documentation</td>
+                                        <td>URS→FS→DS→TP→TR</td>
+                                        <td>Platform specs→IQ→OQ→Report</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Life cycle model</td>
+                                        <td>V-model (application)</td>
+                                        <td>V-model (infrastructure)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Change control</td>
+                                        <td>Validation impact assessment</td>
+                                        <td>Qualification impact assessment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Supplier assessment</td>
+                                        <td>GAMP category-dependent</td>
+                                        <td>Risk-determined (Q or full audit)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Periodic review</td>
+                                        <td>Required (application level)</td>
+                                        <td>Required + can feed app review</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="concept-box note-box">
+                            <h4>Change Control — The Critical Link | 變更控制的關鍵連結</h4>
+                            <p>Section 4.3 establishes that <strong>every change to a qualified IT component must go through a risk assessment</strong>. This is the mechanism that prevents qualification from becoming a one-time event. For CDMOs with frequent infrastructure updates (OS patches, hypervisor upgrades), a mature IT change control process is non-negotiable.</p>
+                            <p style="font-size:0.85rem;color:#718096;">對確效IT元件的每次變更都必須進行風險評估，防止確效成為一次性事件。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-box">
+                    <h4>Practice Questions — Chapter 4 &nbsp;|&nbsp; 練習題</h4>
+                    <ol>
+                        <li>A non-GxP ERP system is installed on the same physical server cluster as the GxP LIMS. How should this situation be handled in the IT risk assessment, and what controls might be required?<br><span style="color:#2c5282;font-size:0.88rem;">一個非GxP的ERP系統安裝在與GxP LIMS相同的實體伺服器叢集上。應如何在IT風險評估中處理此情況？可能需要哪些控制措施？</span></li>
+                        <li>Your qualified network switches are being replaced with a new model from a different vendor. What is the ISPE-required process for this change, and what documentation must be produced?<br><span style="color:#2c5282;font-size:0.88rem;">您已確效的網路交換機正在被不同供應商的新型號替換。ISPE要求的流程是什麼？必須產生哪些文件？</span></li>
+                        <li>During a periodic review of the IT infrastructure, you discover that a monitoring alert for disk space was disabled 8 months ago and never re-enabled. Walk through the risk management steps you would take, referencing specific ISPE sections.<br><span style="color:#2c5282;font-size:0.88rem;">在IT基礎架構定期審查期間，您發現磁碟空間監測警報在8個月前被停用且從未重新啟用。請引用具體ISPE條款，說明您將採取的風險管理步驟。</span></li>
+                    </ol>
+                </div>
+
+            </div>
+        </div><!-- end chapter-body -->
+    </section>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 5.1: OVERVIEW        -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch5-overview">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Qualification of Platforms — Overview of Process</h2>
+                <p>平台確效 — 流程概述 &nbsp;|&nbsp; Pages 24–25</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Overview &nbsp;|&nbsp; 概述</h3>
+                    <p>This section describes how a platform, or a major addition to an existing platform, may be brought into compliance with the company's established standards using a planned qualification process. Minor additions are usually managed via change control.</p>
+                    <p>本節描述如何使用計畫性確效流程，將平台或對現有平台的重大新增項目帶入符合公司既定標準的狀態。輕微新增通常通過變更控制管理。</p>
+                    <p>A <strong>Platform Project and Qualification Plan</strong>, describing the life cycle activities to be undertaken to qualify each platform type, should be created. The plan should cover:</p>
+                    <ul>
+                        <li>The approved and effective SOPs required</li>
+                        <li>Deliverables that will be the output of the qualification process</li>
+                        <li>Responsibilities and approvals required</li>
+                    </ul>
+                    <p>The qualification strategy is typically based on one of <strong>two scenarios</strong>:</p>
+                    <div class="concept-box term-box">
+                        <h4>Strategy 1: Building-Block (Generic Platform) | 策略1：積木式</h4>
+                        <p>Platform specifications are <strong>independent of any specific applications</strong>. Developed from generic requirements, bound by company policies. Application specifications take existing, standardized platform capabilities into account. Qualification commences with little interaction with application owners — qualified platforms are considered commodities.</p>
+                        <p style="font-size:0.85rem;color:#4a5568;">適用於標準化IT環境，平台規格獨立於具體應用程式，確效平台視為商品。</p>
+                    </div>
+                    <div class="concept-box analogy-box">
+                        <h4>Strategy 2: Case-by-Case | 策略2：逐案式</h4>
+                        <p>Platform requirements are <strong>mainly derived from system (application) specifications on a case-by-case basis</strong>. Building-block concept not fully usable; significant interaction with application owners required; platform qualification is largely a one-off exercise.</p>
+                        <p style="font-size:0.85rem;color:#856404;">適用於高度客製化或特殊應用環境，需與應用程式擁有者密切協作。</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>Qualification Process Flow &amp; Building-Block Strategy &nbsp;|&nbsp; 確效流程與積木式策略</h3>
+                    <div class="concept-box application-box">
+                        <h4>Sequential Qualification Steps | 確效步驟順序</h4>
+                        <ol style="margin-left:1.25rem;font-size:0.92rem;">
+                            <li><strong>Risk Assessment</strong> → determines scope and intensity of qualification, which components and configurations are required, rigor of supplier assessment</li>
+                            <li><strong>Procurement</strong> → supplier evaluation based on risk outcome</li>
+                            <li><strong>IQ (Installation Qualification)</strong> → evidence that all components installed and configured as specified; certification evidence may support IQ</li>
+                            <li><strong>OQ (Operational Qualification)</strong> → evidence that critical features of the platform perform as specified</li>
+                            <li><strong>Qualification Report</strong> → summarizes results, formally concludes the qualification process</li>
+                        </ol>
+                    </div>
+                    <div class="concept-box term-box">
+                        <h4>The Building-Block Advantage | 積木式策略的優勢</h4>
+                        <p>The preferred qualification strategy is to qualify <strong>types</strong> of building blocks, then run <strong>abbreviated qualifications</strong> of individual instances. Benefits:</p>
+                        <ul>
+                            <li>Reduces qualification effort for each new server or workstation</li>
+                            <li>Standardizes the IT environment — reduces variability and risk</li>
+                            <li>Enables faster deployment of new GxP-supporting systems</li>
+                            <li>Qualification work is reusable — ROI improves over time</li>
+                        </ul>
+                        <p style="font-size:0.85rem;color:#4a5568;">對積木類型確效後，各實例可使用縮短確效，降低工作量並加快部署速度。</p>
+                    </div>
+                    <div class="concept-box note-box">
+                        <h4>GAMP 5 Parallel | GAMP 5對應</h4>
+                        <p>Strategy 1 (Building Block) parallels GAMP 5's approach to Category 1 infrastructure — leveraging vendor documentation and standardized configurations. Strategy 2 parallels custom application validation where system-specific requirements drive the scope. A mature CDMO should aim for Strategy 1 wherever possible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h4>Practice Questions — Section 5.1 &nbsp;|&nbsp; 練習題</h4>
+                <ol>
+                    <li>Your CDMO is deploying 15 new workstations to support the QC laboratory. How would you apply the building-block qualification strategy, and what is the qualification scope difference between qualifying the workstation "type" vs. each individual instance?<br><span style="color:#2c5282;font-size:0.88rem;">您的CDMO正在部署15台新工作站支援QC實驗室。如何應用積木式確效策略？確效工作站「類型」與每個個別實例的確效範疇有何差異？</span></li>
+                    <li>When is it appropriate to use change control rather than a full qualification process for additions to an existing platform? Give two examples from a fill-finish CDMO context.<br><span style="color:#2c5282;font-size:0.88rem;">何時適合使用變更控制而非對現有平台新增項目執行完整確效流程？請舉出無菌充填CDMO環境中的兩個例子。</span></li>
+                    <li>What must the Platform Project and Qualification Plan contain at minimum, and who should approve it?<br><span style="color:#2c5282;font-size:0.88rem;">平台專案和確效計畫至少必須包含什麼內容？誰應批准它？</span></li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 5.2: V-MODEL         -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch5-lifecycle">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>IT Infrastructure Life Cycle Model</h2>
+                <p>IT基礎架構生命週期模型 &nbsp;|&nbsp; Pages 25–26</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Life Cycle Model Overview &nbsp;|&nbsp; 生命週期模型概述</h3>
+                    <p>The following life cycle model outlines one way to manage complex IT Infrastructure projects. Smaller additions to existing IT Infrastructures may use a model that combines phases. While indicating a general flow of life cycle phases, the model is <strong>not intended to imply that all phases are strictly sequential</strong> — typically, overlap and iterations will occur during the project.</p>
+                    <p style="color:#718096;font-size:0.85rem;">此生命週期模型概述管理複雜IT基礎架構專案的一種方式。各階段並非嚴格循序，通常會有重疊和迭代。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Life Cycle Phase 生命週期階段</th>
+                                <th>Typical Deliverables 典型交付成果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Planning Phase</strong><br><span style="color:#718096;font-size:0.82rem;">規劃階段（貫穿全程）</span></td>
+                                <td>Project Plans and Project Qualification Plans; project scope, responsibilities, deliverables and approvals, project related risks, quality/regulatory considerations, SOPs, timelines, training, funding</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Specification &amp; Design Phase</strong><br><span style="color:#718096;font-size:0.82rem;">規格與設計階段</span></td>
+                                <td>Pertinent requirements sources; platform specifications; design specifications; degree of customization; drawings and diagrams; parameter settings; grouping of standard configurations into building blocks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Risk Assessment &amp; Qualification Test Planning</strong><br><span style="color:#718096;font-size:0.82rem;">風險評估與確效測試規劃</span></td>
+                                <td>Impact assessment; hazard identification; design considerations; likelihood of detection; assessment of IT Infrastructure process effectiveness; scoping of qualification; defined test/inspection specifications; acceptance criteria; reviews and approvals</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Procurement, Installation &amp; IQ Phase</strong><br><span style="color:#718096;font-size:0.82rem;">採購、安裝與IQ階段</span></td>
+                                <td>Supplier evaluation; requests for tender; completed IQ; supplier release and installation documentation; labeling and issuance; construction, integration, assembly; tests of network assemblies; verified configuration item list; verification of SLAs/contracts/licenses; introduction of Configuration Management and change control</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OQ and Acceptance Phase</strong><br><span style="color:#718096;font-size:0.82rem;">OQ與驗收階段</span></td>
+                                <td>Operational tests and verification of specifications and agreed deliverables (completed OQ)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reporting &amp; Handover Phase</strong><br><span style="color:#718096;font-size:0.82rem;">報告與移交階段</span></td>
+                                <td>Summary reports; approval of acceptance criteria; transition plans; transfer of source documents and access rights; service contract inauguration</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Operation &amp; Maintenance Phase</strong><br><span style="color:#718096;font-size:0.82rem;">運營與維護階段</span></td>
+                                <td>Change Management; Configuration Management; Security Management; management of servers, clients and networks; Problem Management; Help Desk; Backup/Restore/Archiving; Disaster Recovery; performance monitoring; Supplier Management; Periodic Reviews</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Retirement (Decommissioning) Phase</strong><br><span style="color:#718096;font-size:0.82rem;">退役（停用）階段</span></td>
+                                <td>Decommissioning plans; data/information archiving; transfer of processes and data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>IT Infrastructure V-Model Diagram &nbsp;|&nbsp; IT基礎架構V型模型圖</h3>
+
+                    <div class="vmodel-wrap">
+                        <h4>IT Infrastructure V-Model (Text-Based) | IT基礎架構V型模型</h4>
+                        <div style="font-size:0.8rem;color:#718096;margin-bottom:0.75rem;">Left = definition phases | Right = verification phases | Bottom = build/test</div>
+
+                        <div class="vmodel-row">
+                            <div class="vmodel-left"><span class="vnode vnode-left">User/Business Requirements<br><small>業務需求</small></span></div>
+                            <div class="vmodel-center"><span class="varrow">━━━━━━━━━━━━━</span></div>
+                            <div class="vmodel-right"><span class="vnode vnode-right">Periodic Review &amp; Retire<br><small>定期審查與退役</small></span></div>
+                        </div>
+                        <div class="vmodel-row">
+                            <div class="vmodel-left" style="padding-right:1.5rem;"><span class="vnode vnode-left">Platform Specification &amp; Design<br><small>平台規格與設計</small></span></div>
+                            <div class="vmodel-center"><span style="color:#9ca3af;font-size:0.75rem;">✦</span></div>
+                            <div class="vmodel-right" style="padding-left:1.5rem;"><span class="vnode vnode-right">OQ — Operational Tests<br><small>操作確效</small></span></div>
+                        </div>
+                        <div class="vmodel-row">
+                            <div class="vmodel-left" style="padding-right:2.5rem;"><span class="vnode vnode-left">Risk Assessment &amp; Test Planning<br><small>風險評估與測試規劃</small></span></div>
+                            <div class="vmodel-center"><span style="color:#9ca3af;">✦</span></div>
+                            <div class="vmodel-right" style="padding-left:2.5rem;"><span class="vnode vnode-right">IQ — Installation Verification<br><small>安裝確效</small></span></div>
+                        </div>
+                        <div style="text-align:center;margin:0.5rem 0;color:#9ca3af;font-size:0.85rem;">↙ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↘</div>
+                        <div class="vmodel-row" style="justify-content:center;">
+                            <div style="text-align:center;"><span class="vnode vnode-bottom">Procurement, Build, Install &amp; Configure<br><small>採購、建構、安裝與組態設定</small></span></div>
+                        </div>
+                        <div style="text-align:center;margin:0.5rem 0;color:#9ca3af;font-size:0.75rem;">← ACHIEVING QUALIFICATION → &nbsp;|&nbsp; ← MAINTAINING QUALIFICATION →</div>
+                        <p style="font-size:0.8rem;color:#718096;margin-top:0.5rem;">The left arm defines <strong>what</strong> the system should be. The right arm verifies <strong>that</strong> the system is as defined. The bottom is the implementation. Planning spans the entire V.</p>
+                    </div>
+
+                    <div class="concept-box term-box">
+                        <h4>Key Life Cycle Distinctions | 關鍵生命週期區別</h4>
+                        <table style="margin-top:0.5rem;font-size:0.82rem;">
+                            <thead>
+                                <tr>
+                                    <th>Phase Group</th>
+                                    <th>Purpose</th>
+                                    <th>QMS Hook</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Achieving Qualification<br><small>達成確效</small></td>
+                                    <td>Plan → Specify → Build → IQ → OQ → Report</td>
+                                    <td>QA approval of plan and report</td>
+                                </tr>
+                                <tr>
+                                    <td>Maintaining Qualification<br><small>維持確效</small></td>
+                                    <td>Change Control, Config Mgmt, Periodic Review</td>
+                                    <td>Ongoing SOP compliance</td>
+                                </tr>
+                                <tr>
+                                    <td>Retirement<br><small>退役</small></td>
+                                    <td>Decommission, archive, transfer</td>
+                                    <td>Data retention compliance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="concept-box note-box">
+                        <h4>Non-Sequential Nature | 非順序性特點</h4>
+                        <p>Unlike a waterfall model, the ISPE IT Infrastructure lifecycle explicitly acknowledges overlap and iteration. For example, risk assessment continues throughout planning and specification as more information becomes available — the initial risk assessment done during planning is refined as design details emerge.</p>
+                        <p style="font-size:0.85rem;color:#718096;">與瀑布模型不同，ISPE明確承認各階段的重疊和迭代，尤其是風險評估持續貫穿規劃和規格階段。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h4>Practice Questions — Section 5.2 &nbsp;|&nbsp; 練習題</h4>
+                <ol>
+                    <li>Match each V-model phase to its primary deliverable: (a) Specification &amp; Design, (b) Procurement/IQ, (c) OQ &amp; Acceptance, (d) Reporting &amp; Handover. Then explain why the Planning phase spans the entire left arm of the V.<br><span style="color:#2c5282;font-size:0.88rem;">將每個V型模型階段與其主要交付成果配對，並解釋為何規劃階段橫跨整個V型左臂。</span></li>
+                    <li>A colleague argues that once OQ is complete, the qualification work is done. How would you use the IT Infrastructure lifecycle model to explain why this is incorrect?<br><span style="color:#2c5282;font-size:0.88rem;">同事認為OQ完成後確效工作就結束了。您如何用IT基礎架構生命週期模型解釋為何此觀點不正確？</span></li>
+                    <li>During the Retirement phase of an old server, what are the three key deliverables that must be produced, and why are they important from a GxP compliance perspective?<br><span style="color:#2c5282;font-size:0.88rem;">在舊伺服器的退役階段，必須產生哪三個關鍵交付成果？從GxP合規角度，這些為何重要？</span></li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 5.3: PLANNING        -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch5-planning">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Planning — Platform Qualification Plan</h2>
+                <p>規劃 — 平台確效計畫 &nbsp;|&nbsp; Pages 27–28</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.3.1 Platform Qualification Plan &nbsp;|&nbsp; 平台確效計畫</h3>
+                    <p>Separating the qualification of platforms from the validation of GxP applications means that adding or changing an application will <strong>not affect the qualified status of the platform</strong> (unless the change involved modifications to the platform).</p>
+                    <ul>
+                        <li>GxP application validation → managed by <strong>Validation Plans</strong> (per GAMP 4)</li>
+                        <li>Platform qualification → managed by <strong>Platform Qualification Plans</strong></li>
+                    </ul>
+                    <p>The Platform Qualification Plan should reference:</p>
+                    <ul>
+                        <li>Applicable company policies and requirements</li>
+                        <li>Any specific requirements derived from the applications or services the platform is intended to support</li>
+                        <li>Any existing pre-qualified building blocks (e.g., standard server building block qualification packages)</li>
+                        <li>Required new or referenced processes</li>
+                        <li>Any new or modified SOPs</li>
+                    </ul>
+                    <p>GAMP categorization of the platform assists with developing an appropriate qualification strategy. During preparation of the plan, an <strong>initial high level Risk Assessment</strong> should be performed based on the platform's potential to cause harm to those records and functions that the system/data owner has identified as critical.</p>
+                    <p>The Platform Qualification Plan should include or refer to:</p>
+                    <ul>
+                        <li>Responsibilities for qualification</li>
+                        <li>Life cycle activities</li>
+                        <li>Deliverables — specifications, test plans, test data, and reports, preferably organized to generate building blocks</li>
+                        <li>Timelines and interdependencies</li>
+                        <li>Required reviews and approvals</li>
+                        <li>Constraints and prerequisites</li>
+                        <li>Overview of IT Infrastructure platforms, components, and boundaries</li>
+                        <li>Critical records managed by the platform</li>
+                        <li>Training requirements</li>
+                        <li>Initial Risk Assessments</li>
+                        <li>Need for verification of operational procedures</li>
+                    </ul>
+                    <p>QA should <strong>approve the Platform Qualification Plan and corresponding report</strong> to ensure it addresses all expected regulatory and security-related expectations.</p>
+                    <p style="color:#718096;font-size:0.85rem;">平台確效計畫應由QA批准，涵蓋職責、生命週期活動、交付成果、時程、審查批准、限制條件、平台元件概覽、關鍵記錄、培訓要求和初步風險評估。</p>
+                </div>
+                <div class="right-column">
+                    <h3>Qualification Planning Deliverables Table &nbsp;|&nbsp; 確效規劃交付成果表</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Deliverable 交付成果</th>
+                                <th>Owner 負責人</th>
+                                <th>QA Review?<br>QA審查?</th>
+                                <th>Timing 時機</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Platform Qualification Plan<br><small>平台確效計畫</small></td>
+                                <td>IT / Validation</td>
+                                <td><span class="badge badge-red">Yes — approve</span></td>
+                                <td>Before any qualification activity</td>
+                            </tr>
+                            <tr>
+                                <td>Initial Risk Assessment<br><small>初步風險評估</small></td>
+                                <td>IT / QA / App Owner</td>
+                                <td><span class="badge badge-yellow">Yes — review</span></td>
+                                <td>During plan preparation</td>
+                            </tr>
+                            <tr>
+                                <td>Platform Specifications<br><small>平台規格</small></td>
+                                <td>IT Engineering</td>
+                                <td><span class="badge badge-yellow">Yes — review</span></td>
+                                <td>Specification &amp; Design phase</td>
+                            </tr>
+                            <tr>
+                                <td>Design Specifications<br><small>設計規格</small></td>
+                                <td>IT Engineering</td>
+                                <td><span class="badge badge-yellow">Yes — review</span></td>
+                                <td>Specification &amp; Design phase</td>
+                            </tr>
+                            <tr>
+                                <td>IQ Test Plan &amp; Executed IQ<br><small>IQ測試計畫與執行</small></td>
+                                <td>Validation / IT</td>
+                                <td><span class="badge badge-red">Yes — approve</span></td>
+                                <td>Procurement &amp; Installation phase</td>
+                            </tr>
+                            <tr>
+                                <td>OQ Test Plan &amp; Executed OQ<br><small>OQ測試計畫與執行</small></td>
+                                <td>Validation / IT</td>
+                                <td><span class="badge badge-red">Yes — approve</span></td>
+                                <td>OQ &amp; Acceptance phase</td>
+                            </tr>
+                            <tr>
+                                <td>Qualification Summary Report<br><small>確效摘要報告</small></td>
+                                <td>Validation / IT</td>
+                                <td><span class="badge badge-red">Yes — approve</span></td>
+                                <td>Reporting &amp; Handover phase</td>
+                            </tr>
+                            <tr>
+                                <td>System Inventory / Config Item List<br><small>系統清單/組態項目清單</small></td>
+                                <td>IT Operations</td>
+                                <td><span class="badge badge-green">Referenced</span></td>
+                                <td>Maintained ongoing</td>
+                            </tr>
+                            <tr>
+                                <td>Training Records<br><small>培訓記錄</small></td>
+                                <td>IT / HR / QA</td>
+                                <td><span class="badge badge-green">Referenced</span></td>
+                                <td>Before and during execution</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="concept-box application-box" style="margin-top:1rem;">
+                        <h4>Platform vs. Application Qualification: Separation of Concerns | 平台與應用程式確效的分離</h4>
+                        <p>The explicit separation of Platform Qualification Plans from Application Validation Plans is a strategic design that enables "horizontal" (platform-based) qualification. When a platform is pre-qualified, multiple GxP applications can leverage that qualification without re-executing the same infrastructure tests — dramatically reducing total validation effort.</p>
+                        <p style="font-size:0.85rem;color:#718096;">平台確效計畫與應用確效計畫的明確分離使「水平」（基於平台）確效成為可能，多個GxP應用程式可利用預先確效的平台，大幅減少總體確效工作量。</p>
+                    </div>
+
+                    <div class="concept-box note-box">
+                        <h4>Timeline Interdependency Example | 時程相依性範例</h4>
+                        <p>For a new IT Infrastructure: <strong>network qualification must complete before hardware/server/client qualification commences</strong>. However, separate teams could perform work in parallel on a given network qualification, utilizing pre-qualified client building blocks. Planning must capture these dependencies explicitly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h4>Practice Questions — Section 5.3.1 &nbsp;|&nbsp; 練習題</h4>
+                <ol>
+                    <li>Your CDMO is upgrading the LIMS application software. The LIMS vendor specifies a new minimum server OS version. What is the correct sequence of qualification activities, and which qualification plan documents would need to be updated or newly created?<br><span style="color:#2c5282;font-size:0.88rem;">您的CDMO正在升級LIMS應用程式。LIMS供應商指定了新的最低伺服器OS版本。確效活動的正確順序是什麼？哪些確效計畫文件需要更新或新建？</span></li>
+                    <li>Explain how the building-block concept in Platform Qualification Planning creates a "horizontal qualification" benefit across multiple GxP applications, and give a concrete example.<br><span style="color:#2c5282;font-size:0.88rem;">解釋平台確效計畫中的積木式概念如何為多個GxP應用程式創造「水平確效」優勢，並舉一個具體例子。</span></li>
+                    <li>During the preparation of a Platform Qualification Plan, what level of Risk Assessment is required, and what is the key input from the application/data owner?<br><span style="color:#2c5282;font-size:0.88rem;">在準備平台確效計畫期間，需要什麼層次的風險評估？應用程式/數據擁有者的關鍵輸入是什麼？</span></li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CHAPTER 5.3.2: LEGACY        -->
+    <!-- ============================= -->
+    <section class="chapter-section" id="ch5-legacy">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.2</div>
+            <div class="chapter-info">
+                <h2>Considerations for Legacy Platforms</h2>
+                <p>舊有平台的考量事項 &nbsp;|&nbsp; Pages 28–30</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Legacy Platform Definition &amp; Approach &nbsp;|&nbsp; 舊有平台定義與方法</h3>
+                    <p>A <strong>legacy platform</strong>, in the context of this Guide, is a platform that has been in use for some time <strong>without any formal qualification</strong>.</p>
+                    <p>Key questions for such a platform include:</p>
+                    <ul>
+                        <li>What are the functional, performance, and security requirements for the platform?</li>
+                        <li>What is the status of existing processes?</li>
+                        <li>Is there an established QMS or a list of SOPs?</li>
+                        <li>Is there an updated inventory, high level network diagram, or configuration item list?</li>
+                    </ul>
+                    <div class="concept-box note-box">
+                        <h4>Experience Report | 經驗報告</h4>
+                        <p>For a legacy platform that is running in a substantiated satisfactory manner, any intensive testing of the system may affect the continued operation. Therefore, consideration should be given to the production of an <strong>'Experience Report'</strong> that summarizes the inventory and operational status and history of the platform, as a basis for further planning.</p>
+                        <p style="font-size:0.85rem;color:#718096;">對於運行令人滿意的舊有平台，密集測試可能影響持續運行，因此可考慮製作「經驗報告」作為進一步規劃的基礎。</p>
+                    </div>
+                    <p>Given the often extensive nature of IT Infrastructures, <strong>qualification of legacy platforms is likely to be a significant exercise</strong> that should be carefully planned, budgeted, and resourced. This is further complicated by the fact that the IT Infrastructure is subject to a high degree of change.</p>
+
+                    <h3 style="margin-top:1.25rem;">5.3.2.1 Determining Extent of Qualification &nbsp;|&nbsp; 確定確效範圍</h3>
+                    <p>The legacy IT Infrastructure should be <strong>audited against company procedures and current regulatory expectations</strong>. Gaps should be identified and documented; Risk Assessments should be used to justify which legacy platforms require qualification to remediate identified gaps.</p>
+                    <p>Key regulatory and business drivers for qualifying the IT Infrastructure include:</p>
+                    <table style="margin-top:0.5rem;">
+                        <thead>
+                            <tr>
+                                <th>Driver Category 驅動因素類別</th>
+                                <th>Specific Concerns 具體考量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Impact on GxP Applications</strong><br><small>對GxP應用程式的衝擊</small></td>
+                                <td>Impact of platform failure; impact of platform changes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maintaining Secure Environment</strong><br><small>維護安全環境</small></td>
+                                <td>External connections; access control to GxP applications; access control to platform; securing GxP records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Facilitating Disaster Recovery</strong><br><small>促進災難復原</small></td>
+                                <td>Network diagrams; inventory of components; configuration management and change control; document management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>Legacy Qualification Strategy &amp; Testing Priorities &nbsp;|&nbsp; 舊有平台確效策略與測試優先順序</h3>
+
+                    <div class="concept-box term-box">
+                        <h4>5.3.2.2 Existing Documentation | 現有文件最大化利用</h4>
+                        <p>Maximum use of existing documentation should be made to minimize timelines and rework effort. Focus should be on the <strong>required document content being present and accurate</strong>, rather than document formatting.</p>
+                        <p>It is probable that relevant information and documentation for the support of platform qualification will already exist within <strong>application validation documentation and records</strong>.</p>
+                        <p style="font-size:0.85rem;color:#4a5568;">應最大化利用現有文件以縮短時程和減少返工。重點應放在文件內容的存在性和準確性，而非格式。</p>
+                    </div>
+
+                    <div class="concept-box application-box">
+                        <h4>5.3.2.3 Legacy Testing Priority Order | 舊有平台測試優先順序</h4>
+                        <p>Priority should be given to critical platform components identified by the Risk Assessment:</p>
+                        <table style="margin-top:0.5rem;font-size:0.82rem;">
+                            <thead>
+                                <tr>
+                                    <th>Test Type 測試類型</th>
+                                    <th>Purpose 目的</th>
+                                    <th>Note 注意事項</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Basic IQ — Installation Verifications</strong></td>
+                                    <td>Verify hardware/software items match documented specifications</td>
+                                    <td>Re-installing working components solely for IQ documentation may NOT be appropriate — highlight in Risk Assessment</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Confirming Verifications</strong></td>
+                                    <td>Confirm key configuration settings match documented specifications</td>
+                                    <td>Config reports and screenshots sufficient</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Operational Tests (OQ)</strong></td>
+                                    <td>Identify potential gaps or issues relating to reliable operation</td>
+                                    <td>Also basis for performance/monitoring procedures</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top:0.5rem;font-size:0.85rem;">OQ areas for legacy systems to consider: Storage Capacity, Response Times, Concurrent Sessions/Users, Availability, Backup/Recovery Testing, Access Security Processes/Procedures</p>
+                        <p style="font-size:0.85rem;color:#1565c0;">For existing IT Infrastructures performing satisfactorily: <strong>stress and load testing is NOT a priority</strong> unless there are specific, reported performance issues.</p>
+                    </div>
+
+                    <div class="concept-box analogy-box">
+                        <h4>CDMO Real-World Context | CDMO真實情境</h4>
+                        <p>Most CDMOs inheriting IT infrastructure from a parent company or previous owner face this exact scenario. A common approach: generate an Experience Report documenting the current state, perform a gap analysis against GAMP/21 CFR Part 11 requirements, and use the risk assessment to prioritize remediation — focusing first on access control, backup, and data integrity controls for GxP systems, before addressing documentation formatting issues.</p>
+                        <p style="font-size:0.85rem;color:#856404;">大多數繼承IT基礎架構的CDMO面臨此情境。常見方法：生成經驗報告→差距分析→風險評估確定優先順序→先聚焦存取控制、備份和數據完整性。</p>
+                    </div>
+
+                    <div class="concept-box note-box">
+                        <h4>Critical Warning on Re-Installation | 重新安裝的關鍵警告</h4>
+                        <p>ISPE explicitly warns that <strong>re-installing working GxP components solely to generate IQ documentation is often not appropriate</strong> — the act of re-installation itself introduces risk to the live system. The risk assessment must justify whether documentation-only approaches (configuration reports, vendor documentation) are sufficient, or whether re-installation is truly necessary.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legacy Planning Deliverables -->
+            <hr class="section-divider">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Legacy Platform Qualification Planning Checklist &nbsp;|&nbsp; 舊有平台確效規劃清單</h3>
+                    <ul class="checklist">
+                        <li>Audit legacy IT infrastructure against company procedures and regulatory expectations 審查舊有IT基礎架構</li>
+                        <li>Identify and document all gaps 識別並記錄所有差距</li>
+                        <li>Perform Risk Assessment to justify qualification priorities 執行風險評估以確定確效優先順序</li>
+                        <li>Produce Experience Report for satisfactorily operating systems 為運行良好的系統製作經驗報告</li>
+                        <li>Identify existing documentation reusable for qualification 識別可重用的現有文件</li>
+                        <li>Review application validation packages for platform info 審查應用程式確效文件包中的平台資訊</li>
+                        <li>Develop remediation plan with budget and resource allocation 制定含預算和資源的補救計畫</li>
+                        <li>Prioritize IQ/OQ based on Risk Assessment outcomes 依風險評估結果排定IQ/OQ優先順序</li>
+                        <li>Confirm network diagrams and component inventory current 確認網路圖和元件清單為最新</li>
+                        <li>Assess access control and security posture 評估存取控制和安全態勢</li>
+                        <li>Verify backup and disaster recovery procedures 驗證備份和災難復原程序</li>
+                        <li>Establish configuration management and change control 建立組態管理和變更控制</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>Comparing New vs. Legacy Qualification Approach &nbsp;|&nbsp; 新建與舊有平台確效方法比較</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect 層面</th>
+                                <th>New Platform 新建平台</th>
+                                <th>Legacy Platform 舊有平台</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Starting point</td>
+                                <td>Clean-slate requirements</td>
+                                <td>Gap analysis vs. current state</td>
+                            </tr>
+                            <tr>
+                                <td>Documentation base</td>
+                                <td>Created from scratch</td>
+                                <td>Leverage existing records</td>
+                            </tr>
+                            <tr>
+                                <td>Testing approach</td>
+                                <td>Full IQ/OQ as designed</td>
+                                <td>Risk-based; may use Experience Report</td>
+                            </tr>
+                            <tr>
+                                <td>Re-installation risk</td>
+                                <td>Not applicable</td>
+                                <td>Avoid unless Risk Assessment justifies</td>
+                            </tr>
+                            <tr>
+                                <td>Stress/load testing</td>
+                                <td>Considered per risk</td>
+                                <td>NOT a priority if performing satisfactorily</td>
+                            </tr>
+                            <tr>
+                                <td>Planning complexity</td>
+                                <td>Moderate</td>
+                                <td>High — carefully planned, budgeted, resourced</td>
+                            </tr>
+                            <tr>
+                                <td>Key regulatory drivers</td>
+                                <td>GxP app requirements</td>
+                                <td>GxP impact, security, disaster recovery</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="practice-box">
+                <h4>Practice Questions — Section 5.3.2 &nbsp;|&nbsp; 練習題</h4>
+                <ol>
+                    <li>Your CDMO has acquired a manufacturing site that has been operating for 12 years with no formal IT qualification. The site runs a legacy LIMS and MES on servers with no IQ/OQ documentation. Describe your step-by-step approach to qualify this legacy environment, citing ISPE sections and the role of the Experience Report.<br><span style="color:#2c5282;font-size:0.88rem;">您的CDMO收購了一個運營12年但無正式IT確效的製造場址。該場址在沒有IQ/OQ文件的伺服器上運行舊有LIMS和MES。請描述確效此舊有環境的逐步方法，引用ISPE條款並說明經驗報告的作用。</span></li>
+                    <li>During legacy qualification planning, a team member proposes re-installing the operating system on all GxP servers to generate clean IQ documentation. What is the ISPE position on this, and what alternative approach would you recommend?<br><span style="color:#2c5282;font-size:0.88rem;">在舊有確效規劃期間，團隊成員建議重新安裝所有GxP伺服器的作業系統以生成清晰的IQ文件。ISPE對此的立場是什麼？您會推薦什麼替代方法？</span></li>
+                    <li>A legacy network has no current network diagram and the component inventory hasn't been updated in 3 years. Under which of the three legacy qualification driver categories does this fall, and what should be the immediate remediation steps?<br><span style="color:#2c5282;font-size:0.88rem;">舊有網路沒有最新的網路圖，元件清單3年未更新。這屬於哪個舊有確效驅動因素類別？應採取哪些立即補救步驟？</span></li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== SUMMARY SECTION ===== -->
+    <section class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge" style="font-size:1rem;">∑</div>
+            <div class="chapter-info">
+                <h2>Section Summary &amp; Key Takeaways</h2>
+                <p>章節摘要與關鍵要點 &nbsp;|&nbsp; Chapters 3–5.3</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Core Principles Summary &nbsp;|&nbsp; 核心原則摘要</h3>
+                    <div class="concept-box term-box">
+                        <h4>Chapter 3 — QMS for IT | IT的QMS</h4>
+                        <ul>
+                            <li>IT infrastructure needs its own QMS with 9 defined elements</li>
+                            <li>QA approves the IT Quality Manual, Qualification Plans, and audit findings</li>
+                            <li>Testing rigor is proportional to impact and risk of the component</li>
+                            <li>Periodic Reviews maintain qualified status throughout operational life</li>
+                            <li>IT staff must not independently assess GxP compliance</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box analogy-box">
+                        <h4>Chapter 4 — Risk Management | 風險管理</h4>
+                        <ul>
+                            <li>5-step process: Identify → Assess → Implement Controls → Assess Changes → Monitor</li>
+                            <li>CIA triad (Confidentiality, Integrity, Availability) maps to GxP hazard categories</li>
+                            <li>Non-GxP systems on GxP infrastructure must be included in risk assessment</li>
+                            <li>Risk assessment is iterative — not a one-time event</li>
+                            <li>Every change to a qualified component requires risk assessment</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box note-box">
+                        <h4>Chapters 5.1–5.3 — Qualification Planning | 確效規劃</h4>
+                        <ul>
+                            <li>Two qualification strategies: Building-Block (preferred) vs. Case-by-Case</li>
+                            <li>IT lifecycle V-model: Planning → Specification → Risk Assessment → IQ → OQ → Report → Operations → Retirement</li>
+                            <li>Platform Qualification Plan must be approved by QA before any qualification activity</li>
+                            <li>Platform qualification is separate from application validation — enabling horizontal reuse</li>
+                            <li>Legacy platforms: gap audit → risk assessment → Experience Report → targeted IQ/OQ</li>
+                            <li>Re-installation of working legacy systems for IQ docs is generally not appropriate</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>How This Section Connects to CDMO Operations &nbsp;|&nbsp; 與CDMO運營的連結</h3>
+                    <div class="concept-box application-box">
+                        <h4>Operational Relevance for Aseptic Fill-Finish CDMOs | 對無菌充填CDMO的運營相關性</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ISPE Requirement</th>
+                                    <th>CDMO Operational Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IT Quality Manual approved by QA</td>
+                                    <td>QA must be actively engaged in IT governance — not just auditing at year-end</td>
+                                </tr>
+                                <tr>
+                                    <td>Risk-based qualification scope</td>
+                                    <td>Saves resources: focus qualification on MES/LIMS/BAS servers, not the office WiFi</td>
+                                </tr>
+                                <tr>
+                                    <td>Building-block strategy</td>
+                                    <td>Pre-qualify a standard server type once; deploy 20 more with abbreviated qualification</td>
+                                </tr>
+                                <tr>
+                                    <td>Change = risk assessment</td>
+                                    <td>Every OS patch on a GxP server needs a qualification impact assessment first</td>
+                                </tr>
+                                <tr>
+                                    <td>Periodic Review maintains status</td>
+                                    <td>Annual IT infrastructure review is a GxP requirement, not optional</td>
+                                </tr>
+                                <tr>
+                                    <td>Platform ≠ Application qualification</td>
+                                    <td>Customer auditors may ask: "Is the server platform qualified separately from the application?"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="concept-box term-box">
+                        <h4>Self-Assessment Checklist for Your Site | 場址自評清單</h4>
+                        <ul class="checklist" style="margin-top:0.5rem;">
+                            <li>Does your site have an IT Quality Manual approved by QA?</li>
+                            <li>Are IT roles and responsibilities formally documented?</li>
+                            <li>Is there a risk assessment covering all IT components supporting GxP applications?</li>
+                            <li>Do all qualified IT components have an IQ/OQ on file?</li>
+                            <li>Does your change control process cover IT infrastructure changes?</li>
+                            <li>Is there a Platform Qualification Plan for each qualified platform type?</li>
+                            <li>Are periodic reviews of IT infrastructure scheduled and documented?</li>
+                            <li>For legacy systems — is there an Experience Report or equivalent?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance</p>
+    <p>Chapters 3–5.3: Quality Management System, Risk Management &amp; Qualification Planning</p>
+    <p class="footer-meta">Section 01 of ISPE-IT Series &nbsp;|&nbsp; SterileGMP Knowledge Hub &nbsp;|&nbsp; Generated 2026-04-01</p>
+    <p class="footer-meta">Educational content for training purposes. Always refer to the original ISPE publication for authoritative guidance.</p>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>

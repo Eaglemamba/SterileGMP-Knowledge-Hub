@@ -1378,6 +1378,39 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-IT-Complete.md
+**Report:** ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance (2005)
+**Pages:** p1–p126 | **Sections:** 8
+
+**Covers questions about:**
+- IT infrastructure qualification lifecycle: URS → Design Spec → IQ → OQ → reporting/handover for servers, networks, clients, hardware
+- V-model approach applied to IT Infrastructure: type qualification vs. instance qualification (building block strategy)
+- QMS requirements for IT departments: quality manual, records, SOPs, training, periodic review, QA audit
+- Risk management for IT infrastructure: GAMP 2-stage risk assessment (Stage 1: likelihood × impact; Stage 2: detection → priority), risk controls
+- Roles and responsibilities: Platform Owner, Application Owner, Data Owner, IT Quality & Compliance, Independent QA
+- Change management and configuration management during IT infrastructure operation
+- IT security management: CIA triad, ISO/IEC 17799, intrusion detection, vulnerability management, patch urgency categories
+- Patch/upgrade management: 4 levels of application testing (No Testing / Confirmation / Confidence / Full Regression)
+- Outsourcing IT infrastructure: compliance oversight, contracts, SLAs, audits, KPIs, non-delegable QA responsibility
+- Server management: backup/restore strategy, off-site storage, restoration testing, performance monitoring
+- Periodic Review checklists for IT infrastructure (App 5): QMS, qualification, security, backup/archive, DR
+- SOP requirements matrix (App 4): all 10 IT process domains with required procedures and deliverable documents
+
+**Key terms:** IT Infrastructure, GAMP, CSV (Computerized System Validation), IQ/OQ, building block, type qualification, instance qualification, Platform Owner, Application Owner, IT Quality and Compliance, QMS, configuration management, change control, 21 CFR Part 11, EU Annex 11, CIA triad (Confidentiality/Integrity/Availability), ISO/IEC 17799, PKI (Public Key Infrastructure), intrusion detection (IDS), SLA (Service Level Agreement), KPI, NOC (Network Operations Center), SNMP, Syslog, RMON, backup/restore, Disaster Recovery, Periodic Review, patch management, outsourcing
+
+**Sections:**
+0. Introduction & IT Infrastructure Elements (Ch 1–2, p1–p51) — scope, regulatory context, GAMP category table, platforms/processes/personnel overview, 21 CFR Part 11 vs EU Annex 11 comparison
+1. QMS, Risk Management & Qualification Overview (Ch 3–5.3, p1–p51) — 9 QMS elements, 4-step risk management, qualification strategies, V-model lifecycle, legacy platforms
+2. Specification, Design & IQ (Ch 5.4–5.6, p1–p51) — network/server/client specs, OS parameter categories, system time, SAN/NAS, building block IQ, supplier evaluation, IQ activities table
+3. OQ, Operation & Retirement (Ch 5.7–5.8 + Ch 6–7, p1–p51) — OQ test categories, reporting/handover, 13 operational processes, change/configuration/security/backup/DR/performance/supplier management, retirement checklist
+4. Appendices 1–3: Roles, Risk Assessment & Qualification Deliverables (App 1–3, p52–p67) — 9 roles with responsibilities, 2-stage GAMP risk assessment table, qualification deliverables matrix (PO/SME/QA by document type)
+5. Appendix 4: SOP Requirements (App 4, p68–p73) — 10-domain SOP matrix: processes, required procedures, typical documentation deliverables
+5b. Appendix 5: Periodic Review Checklist (App 5, p74–p83) — full IT infrastructure periodic review checklist across all process domains
+6. Appendices 6–9: Security, Patch Management, Outsourcing & Server Management (App 6–9, p84–p105) — ISO 17799, patch urgency categories, 4-level testing matrix, outsourcing contracts/SLAs/audits, server backup/restore/performance
+7. Appendices 10–13: Client Management, Network Management, Glossary & References (App 10–13, p106–p126) — PC client types (unrestricted/restricted/controlled), NOC, SNMP/Syslog/RMON, full glossary, references
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1419,6 +1452,20 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | CTC excursion power failure temperature deviation product assessment / CTC溫度偏差、斷電應對、溫度超限產品評估 | ISPE-CTC |
 | Stability chamber ICH conditions 25 40 degree mapping qualification / 穩定性試驗腔體ICH條件、25°C/40°C對應測試確效 | ISPE-CTC |
 | WHO TRS 961 EU GDP cold storage qualification temperature mapping regulation / WHO TRS 961、歐盟GDP、冷藏確效、溫度對應測試法規要求 | ISPE-CTC |
+| IT infrastructure qualification, server network client hardware IQ OQ / IT基礎設施確效、伺服器網路用戶端IQ/OQ | ISPE-IT |
+| GAMP IT building block type qualification instance qualification / GAMP IT基礎設施積木式確效、類型確效、實例確效 | ISPE-IT |
+| IT QMS quality management system roles responsibilities IT infrastructure GxP / IT品質管理系統、職責分工、GxP IT基礎設施 | ISPE-IT |
+| IT infrastructure risk assessment GAMP 2-stage likelihood impact detection priority / IT基礎設施風險評估、GAMP兩階段法、發生可能性、影響、可偵測性 | ISPE-IT |
+| Platform Owner Application Owner Data Owner IT Quality Compliance independent QA / 平台擁有者、應用系統擁有者、資料擁有者、IT品質合規、獨立QA | ISPE-IT |
+| IT security CIA triad confidentiality integrity availability ISO 17799 / IT資安CIA三元素、機密性、完整性、可用性 | ISPE-IT |
+| Patch management urgency emergency fix urgent update validated system GxP / 修補管理緊急程度、緊急修補、已驗證系統GxP | ISPE-IT |
+| 4 testing levels platform upgrade no testing confirmation confidence full regression / 平台升級四級測試、確認測試、信心測試、完整回歸測試 | ISPE-IT |
+| IT outsourcing SLA KPI compliance oversight non-delegable contract audit / IT委外管理、服務水準協議、合規監督不可委外 | ISPE-IT |
+| IT SOP requirements matrix platform management data backup security quality / IT SOP需求矩陣、平台管理、資料備份、安全管理 | ISPE-IT |
+| IT periodic review checklist infrastructure qualification change management / IT定期審查清單、基礎設施確效、變更管理 | ISPE-IT |
+| Server management backup restore off-site storage restoration testing performance / 伺服器管理、備份還原、異地存放、還原測試、效能監控 | ISPE-IT |
+| Client management PC types unrestricted restricted controlled GxP image deployment / 用戶端管理、PC類型、受控PC、映像部署 | ISPE-IT |
+| Network management NOC SNMP Syslog RMON network performance metrics / 網路管理、網路運作中心、網路效能指標 | ISPE-IT |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1807,8 +1854,11 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Data Integrity / ALCOA+ / Electronic Records (資料完整性/電子記錄)**
 → TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
 
+**IT Infrastructure Qualification / GxP IT 基礎設施確效 (IT Infrastructure for Regulated Systems)**
+→ ISPE-IT ★★★ (complete IT infrastructure qualification guide: V-model, building block strategy, type/instance qualification, QMS for IT, risk assessment, IQ/OQ, operation/maintenance processes, security, patch management, outsourcing, server/client/network management, periodic review, SOPs — the GAMP companion guide for IT platforms supporting GxP applications) | ISPE-GAMP5 ★★ (CSV lifecycle for applications, references IT infrastructure as foundation layer) | TR84 ★★ (DI controls for computerized systems: access controls, audit trail, system clock — IT infrastructure dependent)
+
 **Computer System Validation / CSV (電腦系統驗證)**
-→ ISPE-GAMP5 ★★★ (complete CSV lifecycle framework: categories, QRM, supplier assessment, planning, testing, operations, special topics) | TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
+→ ISPE-GAMP5 ★★★ (complete CSV lifecycle framework: categories, QRM, supplier assessment, planning, testing, operations, special topics) | TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-IT ★★ (IT infrastructure qualification as the platform layer beneath validated applications: IQ/OQ for servers/networks/clients) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
 
 **GxP Software / GAMP Categories / Computerized Systems (GxP軟體/GAMP類別/電腦化系統)**
 → ISPE-GAMP5 ★★★ (Cat 1/3/4/5 definitions, examples, validation depth per category, hardware categories, QRM-based categorization) — single primary source
