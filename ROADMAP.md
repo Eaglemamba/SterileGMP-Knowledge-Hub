@@ -12,22 +12,21 @@ Last updated: 2026-04-01
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 29 | All sections generated, merged, verified |
-| Skeleton (metadata only) | 4 | TR41, TR54, TR56, TR62 — scaffolded but no HTML sections |
+| Complete | 33 | All sections generated, merged, verified |
+| Skeleton (metadata only) | 0 | — |
 | **Total in reports.json** | **33** | |
-| Unprocessed PDFs | 2 | TR41 and TR56 PDFs in `Raw pdfs/` |
 
-**Completion: 88%**
+**Completion: 100%** (PDA phase complete)
 
 ### ISPE Guidelines
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 2 | Vol.3 (Sterile Facilities), Vol.5 (C&Q) |
-| Scaffolded (no content) | 13 | Vol.4, Vol.6, Vol.7, GAMP5, GEP, HVAC, SUT, Sampling, CTC, TechTransfer, ProcessGas, QualityCulture, IT |
-| **Total** | **15** | |
+| Complete | 7 | Vol.3, Vol.4, Vol.5, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.) |
+| Not yet started | ~8 | Vol.6, GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT |
+| **Total** | **~15** | |
 
-**Completion: 13%** (see `ISPE/ISPE-PROCESSING-ORDER.md` for prioritized queue)
+**Completion: 47%** (see `ISPE/ISPE-PROCESSING-ORDER.md` for prioritized queue)
 
 ### Other Sources
 
@@ -39,7 +38,7 @@ Last updated: 2026-04-01
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 31 of ~65-70 target documents complete (approx. 45%)**
+**Overall: 40 of ~65-70 target documents complete (approx. 62%)**
 
 ---
 
@@ -122,15 +121,17 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 | Task | Document | Effort |
 |------|----------|--------|
-| Complete PDA skeleton | TR41: Virus Retentive Filtration | Medium |
-| Complete PDA skeleton | TR54: Formalized Risk Assessment for Excipients | Medium |
-| Complete PDA skeleton | TR56: Phase-Appropriate Quality Systems for Biologics | Medium |
-| Complete PDA skeleton | TR62: Manual Aseptic Processes | Medium |
-| Process ISPE #3 | ISPE HVAC | Large |
-| Process ISPE #4 | ISPE Vol.4: Water & Steam Systems | Large |
-| Process ISPE #5 | ISPE Vol.7: Risk-Based Manufacture | Large |
-| Process ISPE #6 | ISPE SUT: Single-Use Technology | Medium |
-| Process ISPE #7 | ISPE GAMP 5 | Large |
+| ~~Complete PDA skeleton~~ | ~~TR41: Virus Retentive Filtration~~ | ✅ Done |
+| ~~Complete PDA skeleton~~ | ~~TR54: Formalized Risk Assessment for Excipients~~ | ✅ Done |
+| ~~Complete PDA skeleton~~ | ~~TR56: Phase-Appropriate Quality Systems for Biologics~~ | ✅ Done |
+| ~~Complete PDA skeleton~~ | ~~TR62: Manual Aseptic Processes~~ | ✅ Done |
+| ~~Process ISPE #3~~ | ~~ISPE HVAC~~ | ✅ Done |
+| ~~Process ISPE #4~~ | ~~ISPE Vol.4: Water & Steam Systems~~ | ✅ Done |
+| ~~Process ISPE #5~~ | ~~ISPE Vol.7: Risk-Based Manufacture~~ | ✅ Done |
+| ~~Process ISPE #6~~ | ~~ISPE SUT: Single-Use Technology~~ | ✅ Done |
+| ~~Process ISPE #7~~ | ~~ISPE GAMP 5~~ | ✅ Done |
+
+**Phase 1 complete.** Next: Phase 2 (PIC/S Annex 1 → FDA → ICH).
 
 ### Phase 2: Regulatory Anchors + ICH Foundation
 
