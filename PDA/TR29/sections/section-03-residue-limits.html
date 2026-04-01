@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR29 — Section 3: Residue and Limits | 殘留物與限度</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== EQUATION DISPLAY ===== */
+.equation-block {
+    background: rgba(156, 39, 176, 0.06);
+    border: 1px solid #ce93d8;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92rem;
+}
+
+.equation-block .eq-label {
+    font-family: -apple-system, sans-serif;
+    font-weight: 700;
+    color: #7b1fa2;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.equation-block .eq-formula {
+    font-size: 1rem;
+    color: #4a148c;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.equation-block .eq-vars {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    font-family: -apple-system, sans-serif;
+}
+
+.equation-block .eq-vars li {
+    padding: 0.1rem 0;
+}
+
+.equation-block .eq-vars li strong {
+    color: #7b1fa2;
+}
+
+.example-calc {
+    background: #f3f0ff;
+    border: 1px solid #9c27b0;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.92rem;
+}
+
+.example-calc h4 {
+    color: #7b1fa2;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+}
+
+.example-calc .calc-given {
+    margin-bottom: 0.5rem;
+}
+
+.example-calc .calc-result {
+    background: rgba(76, 175, 80, 0.12);
+    border-left: 3px solid #4caf50;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 6px 6px 0;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-top: 0.5rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3: Residue and Limits | 殘留物與限度</h1>
+    <div class="subtitle">PDA TR29 Sections 5.0–5.12 | 定量限度計算完整解析</div>
+    <div class="page-info">Source: pp. 30–43 | Key Topics: MAC/MACO Calculations, 10 ppm / Dose / Toxicity Criteria, Bioburden, Endotoxin, Visually Clean</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand the three basis for setting cleaning residue limits: dose-based, toxicity-based, and default (10 ppm / 4 µg/cm²). | 理解三種限度設定基礎：劑量法、毒理法、預設值</li>
+            <li>Perform MAC and MACO calculations step-by-step using Equations 5A–5N. | 逐步執行 MAC 計算（公式 5A–5N）</li>
+            <li>Derive surface area limits (SAL), swab limits, and rinse limits from MAC. | 從 MAC 推導表面積限度、棉棒及沖洗限度</li>
+            <li>Recognize special considerations: multiple products, dedicated equipment, genotoxic residues, degradants. | 辨識特殊情況：多產品、專用設備、基因毒性殘留、降解物</li>
+            <li>Apply bioburden and endotoxin limit principles for cleaning validation. | 應用生物負載與內毒素限度原則</li>
+            <li>Define visually clean criteria and know when it can substitute analytical sampling. | 定義目視清潔標準及其適用條件</li>
+        </ul>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec50">5.0 Overview | 總覽</a>
+            <a href="#sec52">5.2 Basis for Limits | 限度基礎</a>
+            <a href="#sec53">5.3 ARL Determination | ARL 計算</a>
+            <a href="#sec54">5.4 MAC / MACO | 最大允許攜帶量</a>
+            <a href="#sec55">5.5 Surface Area Limit | 表面積限度</a>
+            <a href="#sec56">5.6 Protocol Sample Limits | 樣本限度</a>
+            <a href="#sec57">5.7 Consolidated Expressions | 整合公式</a>
+            <a href="#sec58">5.8 Example Calculations | 計算範例</a>
+            <a href="#sec59">5.9 Other Considerations | 其他考量</a>
+            <a href="#sec510">5.10 Bioburden | 生物負載</a>
+            <a href="#sec511">5.11 Endotoxin | 內毒素</a>
+            <a href="#sec512">5.12 Visually Clean | 目視清潔</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 1: 5.0 Overview & 5.2 Basis for Quantitative Limits
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec50">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.0</div>
+            <div class="chapter-info">
+                <h2>Residue and Limits — Overview &amp; Basis for Quantitative Limits</h2>
+                <p>殘留物與限度 — 概覽與定量限度基礎</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>5.2 The Basis for Quantitative Limits</h3>
+                    <p>Limits are usually based on one of the following:</p>
+                    <ul>
+                        <li>The <span class="key-term">medical or pharmacological potency</span> of the drug active</li>
+                        <li>The <span class="key-term">toxicity</span> of the residue</li>
+                        <li>A <span class="key-term">default value</span></li>
+                    </ul>
+                    <p>Different manufacturing and cleaning situations may require different approaches. For example, for in vitro diagnostics, the effect of the residue on the stability or performance of the subsequently manufactured product may provide a better scientific rationale for establishing limits.</p>
+                    <p>Depending on the manufacturer, the expression of calculations may differ because it may combine various steps. It is critical that the units used in the equation be internally consistent; unit conversion factors (e.g., grams to micrograms) may be utilized. Companies may use different terms (or acronyms) for the same concept but still apply the same basic principles.</p>
+                    <div class="note-box">
+                        <h4>Key Calculation Sequence | 計算順序</h4>
+                        <ol style="margin-left:1.2rem;font-size:0.92rem;">
+                            <li>Determine <strong>ARL</strong> (Acceptable Residue Level) — concentration in next product</li>
+                            <li>Calculate <strong>MAC</strong> (Maximum Allowable Carryover) — total mass on equipment</li>
+                            <li>Derive <strong>SAL</strong> (Surface Area Limit) — mass per cm²</li>
+                            <li>Convert SAL to sample limits (swab or rinse)</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | 限度基礎三標準比較</h3>
+                    <p>清潔驗證的限度設定，本質上是在問：「殘留多少量，對下一個產品的病人是安全的？」PDA TR29 提供三條路徑回答這個問題：</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>標準</th>
+                                <th>英文</th>
+                                <th>適用情境</th>
+                                <th>嚴格度</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>萬分之一標準</strong></td>
+                                <td>10 ppm default</td>
+                                <td>藥品製造通用預設值</td>
+                                <td>中等（預設上限）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>千分之一劑量</strong></td>
+                                <td>1/1000 dose criterion</td>
+                                <td>藥品活性成分（非高毒性）</td>
+                                <td>依產品劑量而異</td>
+                            </tr>
+                            <tr>
+                                <td><strong>毒理學限度</strong></td>
+                                <td>Toxicity-based (ADE/LD50)</td>
+                                <td>高毒性、基因毒性、清潔劑</td>
+                                <td>最嚴格（科學依據最強）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="analogy-box">
+                        <h4>生活比喻 | 三個問題對應三條路</h4>
+                        <p>想像你要設定「廚房切板殘留調味料」的清潔標準：</p>
+                        <ul>
+                            <li><strong>劑量法</strong>：鹽的每日安全攝取量 ÷ 1000 — 以正常飲食劑量為基礎</li>
+                            <li><strong>毒理法</strong>：如果是辣椒素（高毒性），就改用毒理資料計算 ADE</li>
+                            <li><strong>預設值</strong>：如果不知道殘留是什麼，就用 10 ppm 當保守預設</li>
+                        </ul>
+                        <p>TR29 要求：取三者中<strong>最嚴格的那個</strong>作為最終限度。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>計算鏈：從 ARL 到樣本限度</h4>
+                        <p>本節的核心架構是一條線性計算鏈：</p>
+                        <p style="text-align:center; font-weight:600; font-size:0.95rem; color:#1e3a5f;">
+                            ARL（濃度）→ MAC（質量）→ SAL（每平方公分）→ 棉棒/沖洗限度
+                        </p>
+                        <p>每一步都是轉換單位，讓實驗室可操作的測量值與病人安全連結。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 2: 5.3 ARL Determination
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec53">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Acceptable Concentration of Residue in Next Product (ARL)</h2>
+                <p>下一產品中的可接受殘留濃度 (ARL)</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p>The first determination is the acceptable level (i.e., concentration) of the target residue in the subsequently manufactured product. For this document, that concentration will be called <span class="key-term">Acceptable Residue Level (ARL)</span>. This is an expression of the maximum concentration of residue allowed in the next product, as determined by medical, pharmacological, safety, stability and/or performance issues.</p>
+                    <p>For chemical residues (such as the drug active or cleaning agent), this concentration is typically given as <strong>µg/g or µg/mL</strong>. For bioburden, this is typically given as <strong>CFU/g or CFU/mL</strong>.</p>
+
+                    <h3>5.3.1 ARL Based on Drug Active Dose (Equation 5A)</h3>
+                    <p>For drug actives in drug product manufacture, this is typically determined as <strong>one-one thousandth (0.001)</strong> of minimum daily dose of the drug active in a maximum daily dose of the next drug product.</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5A] — ARL from Dose</span>
+                        <span class="eq-formula">ARL = (MDD × SF) / LDD</span>
+                        <ul class="eq-vars">
+                            <li><strong>ARL</strong> = Acceptable Residue Level in next drug product</li>
+                            <li><strong>MDD</strong> = Minimum Daily Dose of active in cleaned product</li>
+                            <li><strong>SF</strong> = Safety Factor (typically 0.001)</li>
+                            <li><strong>LDD</strong> = Largest Daily Dose of next drug product manufactured in same equipment</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Notes on Equation 5A</h4>
+                        <ul>
+                            <li><strong>Note 1:</strong> For API manufacture, LDD = largest daily dose of the <em>next drug active</em> (not drug product).</li>
+                            <li><strong>Note 2:</strong> MDD may be replaced by single therapeutic dose for daily-administered products. For weekly-administered products, normalize to the same time basis (daily or weekly) before calculating.</li>
+                            <li><strong>Note 3:</strong> Some companies express SF as 1000 in the denominator instead of 0.001 in the numerator — mathematically equivalent.</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.3.2 ARL Based on Toxicity</h3>
+                    <p>Two types of toxicity-based calculations:</p>
+                    <ul>
+                        <li><strong>ADE approach</strong> (Risk-MaPP): for drug actives, intermediates, degradants. Based on NOAEL. Required for highly hazardous drug actives.</li>
+                        <li><strong>LD50 approach</strong>: for residues like cleaning agents that do not have a dose.</li>
+                    </ul>
+
+                    <h3>5.3.2.1 ADE Determination (Equation 5B)</h3>
+                    <p>A qualified toxicologist estimates the <span class="key-term">Acceptable Daily Exposure (ADE)</span> based on body weight and adjustment factors:</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5B] — ADE Calculation</span>
+                        <span class="eq-formula">ADE = (NOAEL × BW) / (UFC × MF × PK)</span>
+                        <ul class="eq-vars">
+                            <li><strong>NOAEL</strong> = No Observable Adverse Effect Level</li>
+                            <li><strong>BW</strong> = Body weight of patient taking next product</li>
+                            <li><strong>UFC</strong> = Composite uncertainty factor (interspecies, intraspecies, subchronic-chronic, LOAEL-NOAEL, database completeness)</li>
+                            <li><strong>MF</strong> = Modifying factor (toxicologist judgment)</li>
+                            <li><strong>PK</strong> = Pharmacokinetic factor (route of exposure)</li>
+                        </ul>
+                    </div>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5C] — ARL from ADE</span>
+                        <span class="eq-formula">ARL = ADE / LDD</span>
+                        <ul class="eq-vars">
+                            <li><strong>ADE</strong> = Acceptable Daily Exposure of the residue</li>
+                            <li><strong>LDD</strong> = Largest Daily Dose of next drug product</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.3.2.2 Toxicity Calculations Based on LD50 (Equations 5D–5F)</h3>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5D] — NOEL from LD50</span>
+                        <span class="eq-formula">NOEL = (LD50 × BW) / MF1</span>
+                        <ul class="eq-vars">
+                            <li><strong>NOEL</strong> = No Observable Effect Level</li>
+                            <li><strong>LD50</strong> = 50% lethal dose (mg/kg body weight, by appropriate route)</li>
+                            <li><strong>BW</strong> = Body weight of patient taking next product</li>
+                            <li><strong>MF1</strong> = Modifying factor(s) — cumulative total generally ≤ 1000</li>
+                        </ul>
+                    </div>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5E] — SDI from NOEL</span>
+                        <span class="eq-formula">SDI = NOEL / MF2</span>
+                        <ul class="eq-vars">
+                            <li><strong>SDI</strong> = Safe Daily Intake of the residue</li>
+                            <li><strong>MF2</strong> = Modifying factor(s) — cumulative total generally ≤ 1000</li>
+                        </ul>
+                    </div>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5F] — ARL from SDI</span>
+                        <span class="eq-formula">ARL = SDI / LDD</span>
+                    </div>
+
+                    <h3>5.3.3 Other ARL Determinations</h3>
+                    <p>For <span class="key-term">genotoxic residues</span> where NOEL values are not available: use the <strong>Threshold of Toxicological Concern (TTC)</strong> principle — SDI established at <strong>1.5 µg/day</strong> (FDA determination for safe levels in foods). Note this may not be appropriate for injectables.</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5G] — ARL for TTC-based SDI</span>
+                        <span class="eq-formula">ARL = SDI / LDD</span>
+                        <ul class="eq-vars">
+                            <li><strong>SDI</strong> = Safe Daily Intake (1.5 µg/day for TTC approach)</li>
+                            <li><strong>LDD</strong> = Largest Daily Dose of next drug product</li>
+                        </ul>
+                    </div>
+
+                    <p>For residues with concern about <strong>deleterious effect on stability or performance</strong> (e.g., in vitro diagnostics), ARL must be determined directly based on spiking studies evaluating effects on stability and/or performance.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | ARL 計算詳解</h3>
+
+                    <div class="concept-box">
+                        <h4>ARL 是什麼？</h4>
+                        <p><strong>ARL（Acceptable Residue Level）= 可接受殘留濃度</strong></p>
+                        <p>代表下一個產品中，每克（或每毫升）最多允許含有多少殘留物。這是整個限度計算鏈的起點。</p>
+                        <p>單位：µg/g 或 µg/mL（化學殘留）；CFU/g 或 CFU/mL（生物負載）</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>公式 5A 逐步解析 — 千分之一劑量法</h4>
+                        <pre>ARL = (MDD × SF) / LDD
+
+直覺解讀：
+- MDD = 被清洗產品的最小每日劑量
+- 乘以 SF = 0.001（安全係數，取千分之一）
+- 除以 LDD = 下一產品的最大每日劑量
+
+意義：下一產品患者每天從殘留中攝入的量，
+最多只能是清洗產品治療劑量的千分之一。</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：藥量安全邊際</h4>
+                        <p>假設你每天服用 100 mg 的藥 A，接著同一設備製造藥 B（每天 800 mg）。</p>
+                        <p>千分之一安全係數的意義：即使藥 B 患者每天從殘留中攝入 0.1 mg 的藥 A，也只是藥 A 治療劑量的 <strong>0.1%</strong>，在藥理上幾乎不可能有不良效果。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>公式 5B 解析 — ADE 毒理學法</h4>
+                        <pre>ADE = (NOAEL × BW) / (UFC × MF × PK)
+
+- NOAEL：動物試驗中「無可見不良效應」的劑量
+- BW：病人體重（通常設 50–70 kg）
+- UFC：複合不確定因子（物種差異等，通常 10–1000）
+- MF：毒理學家主觀修正因子
+- PK：藥動學因子（考慮暴露途徑差異）
+
+ADE 代表：每天攝入此量對人體安全</pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>ADE vs 劑量法 — 何時選哪個？</h4>
+                        <ul>
+                            <li><strong>一般活性成分</strong>：兩種方法均可，取更嚴格者</li>
+                            <li><strong>高毒性（高活性）成分</strong>：必須用 ADE 法，劑量法不足</li>
+                            <li><strong>清潔劑、無劑量殘留</strong>：用 LD50 → NOEL → SDI 路徑（公式 5D-5F）</li>
+                            <li><strong>基因毒性殘留</strong>：考慮 TTC 1.5 µg/day，或毒理學評估</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>LD50 路徑三步驟</h4>
+                        <ol style="margin-left:1.2rem;">
+                            <li><strong>NOEL = LD50 × BW / MF1</strong>（從動物致死劑量推算無效應量）</li>
+                            <li><strong>SDI = NOEL / MF2</strong>（加入額外安全係數，得到每日安全攝入量）</li>
+                            <li><strong>ARL = SDI / LDD</strong>（轉換成下一產品中的濃度限度）</li>
+                        </ol>
+                        <p>注意：MF1 和 MF2 的累積值一般不超過 1000。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 1 | ARL 計算</h4>
+                        <p>某清洗產品的 MDD = 50 mg，安全係數 0.001，下一產品的 LDD = 500 mg。</p>
+                        <p><strong>問：</strong> ARL = ?</p>
+                        <p><em>提示：ARL = (50 mg × 0.001) / 500 mg = 0.0001 mg/mg = 100 µg/g = 100 ppm</em></p>
+                        <p><strong>問：</strong> 此值高於 10 ppm 預設值，最終 ARL 應取哪個值？</p>
+                        <p><em>答：取更嚴格的 10 ppm。</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 3: 5.4 MAC + 5.5 SAL
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec54">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4–5.5</div>
+            <div class="chapter-info">
+                <h2>Maximum Allowable Carryover (MAC) &amp; Surface Area Limit (SAL)</h2>
+                <p>最大允許攜帶量 (MAC/MACO) 與表面積限度 (SAL)</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>5.4 Acceptable Total Carryover — MAC / MACO (Equation 5H)</h3>
+                    <p>Once the ARL is determined, the <span class="key-term">maximum allowable carryover (MAC or MACO)</span> can be calculated. MAC is the <strong>total amount</strong> of a target residue allowed in a batch of the next manufactured product.</p>
+                    <p>It is calculated by multiplying the ARL by the minimum batch size of the next product. MAC is expressed in mass units (µg, mg, or g) for chemical residues.</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5H] — MAC Calculation</span>
+                        <span class="eq-formula">MAC = ARL × MBS</span>
+                        <ul class="eq-vars">
+                            <li><strong>MAC</strong> = Maximum Allowable Carryover</li>
+                            <li><strong>ARL</strong> = Acceptable Residue Level in next product (µg/g or µg/mL)</li>
+                            <li><strong>MBS</strong> = Minimum Batch Size of next product (g or mL)</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Important Notes on MAC</h4>
+                        <ul>
+                            <li>MBS is in <strong>mass units</strong> if ARL is in µg/g, or <strong>volume units</strong> if ARL is in µg/mL.</li>
+                            <li>For API manufacture: MBS = minimum batch size of the <em>next drug active</em> manufactured in the same equipment.</li>
+                            <li>The MAC is the <strong>total amount allowed on all shared equipment surfaces</strong> between the two products — not per piece of equipment.</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.5 Surface Area Limit — SAL (Equation 5I)</h3>
+                    <p>Once the MAC is determined, the <span class="key-term">surface area limit (SAL)</span> can be calculated by dividing the MAC by the total equipment shared surface area. SAL is expressed in mass per surface area (e.g., µg/cm²).</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5I] — SAL Calculation</span>
+                        <span class="eq-formula">SAL = MAC / SSA</span>
+                        <ul class="eq-vars">
+                            <li><strong>SAL</strong> = Surface Area Limit (on shared equipment surfaces)</li>
+                            <li><strong>MAC</strong> = Maximum Allowable Carryover</li>
+                            <li><strong>SSA</strong> = Shared Surface Area (cm²)</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Default SAL Value</h4>
+                        <p>The most typical default value for the SAL is <strong>4 µg/cm²</strong>. This level is commonly cited as the upper limit for what is considered visually clean.</p>
+                        <ul>
+                            <li>If Equation 5I results in a value <strong>above 4 µg/cm²</strong>: use 4 µg/cm² as the SAL.</li>
+                            <li>If Equation 5I results in a value <strong>below 4 µg/cm²</strong>: use that lower calculated value.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | MAC 與 SAL 逐步解析</h3>
+
+                    <div class="formula-box">
+                        <h4>MAC = 最大允許攜帶量（Total Mass Limit）</h4>
+                        <pre>MAC = ARL × MBS
+
+邏輯：
+ARL 是「濃度限度」（µg/g）
+MBS 是「批次質量」（g）
+兩者相乘 = 整批產品中允許存在的總殘留質量
+
+例：ARL = 10 µg/g，MBS = 10,000,000 g（10 kg）
+MAC = 10 × 10,000,000 = 100,000,000 µg = 100 g
+
+（注意：這是允許在所有共用設備表面的總量）</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：餐廳廚房的整體殘留總量</h4>
+                        <p>MAC 就像規定「整個廚房所有刀具、砧板、鍋具上的花生殘留總量，不能超過 X 克」。</p>
+                        <p>SAL 則是進一步說：「平均每平方公分表面，不能超過 Y 微克」。</p>
+                        <p>從 MAC 到 SAL，就是把總量分配到每平方公分——讓棉棒取樣有具體目標。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>SAL 計算逐步示範</h4>
+                        <pre>已知：
+  MAC = 1,250 mg（從計算範例）
+  SSA = 250,000 cm²（設備總共用表面積）
+
+計算：
+  SAL = MAC / SSA
+      = 1,250 mg / 250,000 cm²
+      = 0.005 mg/cm²
+      = 5 µg/cm²
+
+比較預設值 4 µg/cm²：
+  計算值 5 µg/cm² > 預設值 4 µg/cm²
+  → 取更嚴格的 4 µg/cm² 作為最終 SAL</pre>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>SAL 預設值 4 µg/cm² 的意義</h4>
+                        <p>4 µg/cm² 是目視清潔的臨界值——通常認為超過此值的殘留在適當光線下可被人眼察覺。</p>
+                        <p>因此，設定 SAL ≤ 4 µg/cm²，意味著即使是不做分析的目視清潔也能作為合理的安全確認手段。</p>
+                        <p>（ARL 預設值：藥品製造常用 <strong>10 ppm</strong>；API 製造用 <strong>50–100 ppm</strong>）</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 2 | MAC → SAL 計算</h4>
+                        <p>條件：ARL = 5 µg/g，MBS = 20 kg（20,000,000 mg），SSA = 500,000 cm²</p>
+                        <ol style="margin-left:1.2rem;font-size:0.92rem;">
+                            <li>計算 MAC = ARL × MBS = 5 µg/g × 20,000,000 g = 100,000,000 µg = 100 g</li>
+                            <li>計算 SAL = MAC / SSA = 100,000,000 µg / 500,000 cm² = 200 µg/cm²</li>
+                            <li>SAL = 200 µg/cm² >> 4 µg/cm²（預設上限）</li>
+                            <li><strong>最終 SAL = 4 µg/cm²（取預設值，更嚴格）</strong></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 4: 5.6 Protocol Sample Limits
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec56">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.6</div>
+            <div class="chapter-info">
+                <h2>Limit in Protocol Samples | 驗證方案樣本限度</h2>
+                <p>Swab Limits, Extracted Swab Concentration, Rinse Concentration</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p>Once the SAL is determined, the limit in swab or rinse samples can be calculated. Three typical cases are covered.</p>
+
+                    <h3>5.6.1 Limit per Swab (Equation 5J)</h3>
+                    <p>For swab sampling, one approach is to express the limit as a <strong>mass-per-swab sample</strong> (e.g., µg/swab). The mass-limit-per-swab is determined by multiplying the SAL by the area sampled. Typical swab sampling areas are <strong>25 cm² and 100 cm²</strong>.</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5J] — Limit per Swab</span>
+                        <span class="eq-formula">Limit per swab = SAL × swabbed area</span>
+                        <ul class="eq-vars">
+                            <li><strong>SAL</strong> = Surface Area Limit (µg/cm²)</li>
+                            <li><strong>Swabbed area</strong> = Area sampled by a single swab (cm²)</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.6.2 Concentration Limit in Extracted Swab Solvent (Equation 5K)</h3>
+                    <p>Another approach: express the limit as a <strong>concentration of residue</strong> in a fixed amount of extraction solvent (aqueous or organic). Units: µg/g, µg/mL, or ppm.</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5K] — Swab Extract Concentration Limit</span>
+                        <span class="eq-formula">Concentration Limit = (SAL × swabbed area) / SEA</span>
+                        <ul class="eq-vars">
+                            <li><strong>SAL</strong> = Surface Area Limit (µg/cm²)</li>
+                            <li><strong>Swabbed area</strong> = Area sampled (cm²)</li>
+                            <li><strong>SEA</strong> = Solvent Extraction Amount (g or mL)</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.6.3 Concentration Limit in Rinse Sampling Solution (Equations 5L &amp; 5M)</h3>
+                    <p>For rinse sampling, most companies express the limit as a <strong>concentration</strong> in the rinse sampling solution (µg/g, µg/mL, or ppm).</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5L] — Rinse Concentration Limit (general)</span>
+                        <span class="eq-formula">Concentration Limit = (SAL × Area Sampled by Rinse) / Rinse Sampling Volume</span>
+                    </div>
+
+                    <p>If the <strong>entire equipment train</strong> is rinsed with one rinse solution, then the SSA and the "Area Sampled by Rinse Sampling" are identical. A simplified expression is:</p>
+
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5M] — Rinse Concentration Limit (simplified, whole equipment)</span>
+                        <span class="eq-formula">Concentration Limit = MAC / Rinse Sampling Volume</span>
+                        <ul class="eq-vars">
+                            <li><strong>MAC</strong> = Maximum Allowable Carryover</li>
+                            <li><strong>Rinse Sampling Volume</strong> = Total volume of rinse solution (g or mL)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | 三種樣本限度轉換</h3>
+
+                    <div class="concept-box">
+                        <h4>為什麼需要樣本限度？</h4>
+                        <p>SAL 的單位是 µg/cm²，但實驗室分析的是棉棒萃取液或沖洗液的濃度（µg/mL）。</p>
+                        <p>樣本限度轉換的目的：<strong>將表面殘留限度翻譯成實驗室可直接測量的數值。</strong></p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>三種轉換路徑一覽</h4>
+                        <pre>【棉棒質量法 5J】
+  限度（µg/棉棒）= SAL × 棉棒取樣面積
+  優點：直觀，但需知道每支棉棒的回收率
+
+【棉棒萃取液濃度法 5K】
+  限度（µg/mL）= SAL × 取樣面積 / 溶劑用量
+  優點：實驗室直接讀值
+
+【沖洗液濃度法 5L/5M】
+  限度（µg/mL）= SAL × 沖洗面積 / 沖洗體積
+  若整條生產線用同一沖洗液：
+  限度 = MAC / 沖洗體積（公式 5M，最簡化）</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：棉棒採樣面積的選擇</h4>
+                        <p>棉棒取樣面積通常是 25 cm² 或 100 cm²。面積越大，同一支棉棒收集的殘留越多，分析靈敏度越高——但取樣的一致性要求也更高。</p>
+                        <p>當限度非常低（接近偵測極限），可選擇 100 cm² 的取樣面積以提高可測量性。</p>
+                    </div>
+
+                    <div class="application-box concept-box application">
+                        <h4>實務計算範例：棉棒萃取液限度</h4>
+                        <p>已知：SAL = 4 µg/cm²，取樣面積 = 100 cm²，溶劑用量 = 5 mL</p>
+                        <p><strong>限度 = (4 × 100) / 5 = 80 µg/mL</strong></p>
+                        <p>若 SAL = 0.5 µg/cm²：限度 = (0.5 × 100) / 5 = 10 µg/mL</p>
+                        <p>→ 實驗室的 HPLC 是否能在 10 µg/mL 以下準確定量？這是選擇分析方法的關鍵。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>公式 5M 的優勢</h4>
+                        <p>當整條設備用同一批沖洗液時，公式 5M 可以繞過 SSA 的測量：</p>
+                        <p style="text-align:center; font-weight:700; color:#c65102;">限度 = MAC / 沖洗體積</p>
+                        <p>不需要知道 SAL，直接從 MAC 和沖洗液體積計算。在大型設備難以精確量測表面積時特別實用。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 5: 5.7 Consolidated Expressions + 5.8 Example Calculations
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec57">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.7–5.8</div>
+            <div class="chapter-info">
+                <h2>Consolidated Expressions &amp; Example Calculations</h2>
+                <p>整合公式與計算範例</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>5.7 Consolidated Expressions</h3>
+                    <p>While the calculations in Sections 5.3 to 5.6 are presented to explicitly show the steps, it is common for companies to combine several equations to simplify calculations.</p>
+
+                    <p>For companies setting limits based on a fraction of therapeutic dose, the combined equation for MAC is:</p>
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5N] — MAC Direct (Dose-based)</span>
+                        <span class="eq-formula">MAC = (MDD × SF × MBS) / LDD</span>
+                        <ul class="eq-vars">
+                            <li><strong>MAC</strong> = Maximum Allowable Carryover</li>
+                            <li><strong>MDD</strong> = Minimum Daily Dose of cleaned product active</li>
+                            <li><strong>SF</strong> = Safety Factor (typically 0.001)</li>
+                            <li><strong>MBS</strong> = Minimum Batch Size of next product</li>
+                            <li><strong>LDD</strong> = Largest Daily Dose of next drug product</li>
+                        </ul>
+                    </div>
+
+                    <p>For companies combining Equations 5A, 5H, 5I, and 5K for a swab extract concentration limit directly:</p>
+                    <div class="equation-block">
+                        <span class="eq-label">[Equation 5O] — Swab Concentration Limit Direct (Dose-based)</span>
+                        <span class="eq-formula">Concentration Limit = (MDD × SF × MBS × swabbed area) / (LDD × SSA × SEA)</span>
+                        <ul class="eq-vars">
+                            <li><strong>MDD</strong> = Minimum Daily Dose of cleaned product active</li>
+                            <li><strong>SF</strong> = Safety Factor (typically 0.001)</li>
+                            <li><strong>MBS</strong> = Minimum Batch Size of next product</li>
+                            <li><strong>LDD</strong> = Largest Daily Dose of next drug product</li>
+                            <li><strong>SSA</strong> = Shared Surface Area (cm²)</li>
+                            <li><strong>SEA</strong> = Solvent Extraction Amount (mL)</li>
+                        </ul>
+                    </div>
+
+                    <h3>5.8 Example Calculations</h3>
+
+                    <div class="example-calc">
+                        <h4>Example 1: MAC Calculation (Equation 5N)</h4>
+                        <div class="calc-given">
+                            <strong>Given:</strong>
+                            <ul>
+                                <li>MDD (cleaned product) = 100 mg active</li>
+                                <li>SF = 0.001</li>
+                                <li>MBS (next product) = 10 kg = 10,000,000 mg</li>
+                                <li>LDD (next product) = 800 mg</li>
+                            </ul>
+                        </div>
+                        <p><strong>Calculation:</strong></p>
+                        <p style="font-family:'Courier New',monospace; font-size:0.9rem; margin:0.5rem 0;">
+                            MAC = (MDD × SF × MBS) / LDD<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= (100 mg × 0.001 × 10,000,000 mg) / 800 mg<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= 1,000,000 mg² / 800 mg<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= <strong>1,250 mg</strong>
+                        </p>
+                        <div class="calc-result">
+                            MAC = 1,250 mg — this is the total limit for all residues of the active on all shared equipment surfaces between the two products.
+                        </div>
+                    </div>
+
+                    <div class="example-calc">
+                        <h4>Example 2: Swab Extract Concentration Limit (Equation 5O)</h4>
+                        <div class="calc-given">
+                            <strong>Given (same products as Example 1, plus):</strong>
+                            <ul>
+                                <li>SSA (Shared Surface Area) = 250,000 cm²</li>
+                                <li>Swabbed area = 100 cm²</li>
+                                <li>SEA (Solvent Extraction Amount) = 5 mL</li>
+                            </ul>
+                        </div>
+                        <p><strong>Calculation:</strong></p>
+                        <p style="font-family:'Courier New',monospace; font-size:0.9rem; margin:0.5rem 0;">
+                            Conc. Limit = (MDD × SF × MBS × swabbed area) / (LDD × SSA × SEA)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= (100 mg × 0.001 × 10,000,000 mg × 100) / (800 mg × 250,000 × 5)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= 100,000,000 / 1,000,000,000<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;= <strong>0.1 mg/mL (or 100 µg/mL)</strong>
+                        </p>
+                        <div class="calc-result">
+                            Concentration Limit = 0.1 mg/mL = 100 µg/mL — this is the limit in the extracted swab solvent.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | 整合公式與範例解析</h3>
+
+                    <div class="concept-box">
+                        <h4>為什麼需要整合公式？</h4>
+                        <p>在日常操作中，重複進行 ARL → MAC → SAL → 樣本限度的四步計算，容易出錯。</p>
+                        <p>整合公式（5N, 5O）把所有變數合併成一個方程式，只要輸入原料數據（劑量、批量、面積、溶劑量），直接得到最終限度。</p>
+                        <p>在電子試算表或驗證軟體中，這樣的整合公式特別常見。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>公式 5N 解析 — MAC 直接計算</h4>
+                        <pre>MAC = (MDD × SF × MBS) / LDD
+
+= 5A 的 ARL × 5H 的 MBS
+= (MDD × SF / LDD) × MBS
+
+理解：
+1. MDD × SF = 允許攜帶到每克下一產品的量（× 批量 = 總量）
+2. 除以 LDD = 標準化每日劑量
+3. 乘以 MBS = 轉換為整批的總允許量</pre>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>範例 1 完整推導</h4>
+                        <pre>MDD = 100 mg，SF = 0.001，
+MBS = 10 kg = 10,000,000 mg，LDD = 800 mg
+
+MAC = (100 × 0.001 × 10,000,000) / 800
+    = 1,000,000 / 800
+    = 1,250 mg
+
+含義：整條設備所有共用表面的總殘留量不得超過 1,250 mg。</pre>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>範例 2 完整推導</h4>
+                        <pre>在範例 1 基礎上加入：
+SSA = 250,000 cm²，取樣面積 = 100 cm²，SEA = 5 mL
+
+棉棒萃取液限度 = MAC × (取樣面積 / SSA) / SEA
+              = 1,250 mg × (100/250,000) / 5
+              = 1,250 mg × 0.0004 / 5
+              = 0.5 mg / 5
+              = 0.1 mg/mL = 100 µg/mL
+
+（或直接用公式 5O 代入）</pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>單位一致性是關鍵</h4>
+                        <p>TR29 特別強調：方程式中的單位必須內部一致。常見錯誤：</p>
+                        <ul>
+                            <li>MDD 用 mg，MBS 用 kg，未轉換 → 結果差 1000 倍</li>
+                            <li>ARL 用 µg/g，MBS 用 mL → 需確認密度轉換</li>
+                            <li>swabbed area 用 cm²，SSA 用 m² → 需統一</li>
+                        </ul>
+                        <p>建議：在計算表中，每個變數標注單位，最後做量綱分析確認。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 3 | 完整計算鏈</h4>
+                        <p><strong>條件：</strong></p>
+                        <ul style="font-size:0.91rem;">
+                            <li>MDD = 200 mg，LDD = 1000 mg，SF = 0.001</li>
+                            <li>MBS = 5 kg = 5,000,000 mg</li>
+                            <li>SSA = 100,000 cm²，取樣面積 = 25 cm²，SEA = 10 mL</li>
+                        </ul>
+                        <p><strong>計算：</strong></p>
+                        <ol style="margin-left:1.2rem;font-size:0.91rem;">
+                            <li>ARL = (200 × 0.001) / 1000 = 0.0002 mg/mg = 200 µg/g = 200 ppm → 取 10 ppm</li>
+                            <li>MAC = 10 µg/g × 5,000,000 g = 50,000,000 µg = 50 g</li>
+                            <li>SAL = 50,000,000 µg / 100,000 cm² = 500 µg/cm² → 取 4 µg/cm²（預設值）</li>
+                            <li>棉棒限度 = 4 µg/cm² × 25 cm² / 10 mL = 10 µg/mL</li>
+                        </ol>
+                        <p><em>在每一步都需比較計算值與預設值，取更嚴格者。</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 6: 5.9 Other Considerations
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec59">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.9</div>
+            <div class="chapter-info">
+                <h2>Other Considerations | 其他特殊考量</h2>
+                <p>Multiple Products, Dedicated Equipment, Default Limits, Special Residues</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+
+                    <h3>5.9.1 Multiple Next Products</h3>
+                    <p>If multiple products could follow a given cleaned product, calculations should be considered for all "subsequently manufactured products," and the resulting <strong>lowest limit</strong> (typically the lowest limit per surface area) should be established. Three options exist:</p>
+                    <ul>
+                        <li><strong>Option 1:</strong> Calculate limits for all possible next products; use the worst-case lowest limit.</li>
+                        <li><strong>Option 2:</strong> Restrict order of manufacturing by procedure.</li>
+                        <li><strong>Option 3:</strong> Cleaning verification mode — evaluate acceptability for each specific cleaning event based on the immediately following product.</li>
+                    </ul>
+
+                    <h3>5.9.2 Next Product in Verification Approach</h3>
+                    <p>In a cleaning verification protocol (especially in development/clinical manufacturing), the next product may not be known at the time of cleaning. Approaches:</p>
+                    <ul>
+                        <li>Measure residues after cleaning; hold equipment release until next product is determined, then perform carryover evaluation.</li>
+                        <li>Establish worst-case values for next product parameters; clean to meet those values; verify actual next product falls within worst-case when determined.</li>
+                    </ul>
+
+                    <h3>5.9.3 Default Limits</h3>
+                    <p>Two types of default limits:</p>
+                    <ul>
+                        <li><strong>Type 1:</strong> Default used when it is more stringent than the medically safe calculation.
+                            <ul>
+                                <li>Default ARL for drug products: <strong>10 ppm</strong> (used if calculated ARL &gt; 10 ppm)</li>
+                                <li>Default SAL: <strong>4 µg/cm²</strong> (used if calculated SAL &gt; 4 µg/cm²)</li>
+                                <li>For API manufacture: common defaults are 50 ppm or 100 ppm for ARL</li>
+                            </ul>
+                        </li>
+                        <li><strong>Type 2:</strong> Default used when a medically safe limit cannot be established (e.g., intermediates in API manufacture). Established on risk assessment and process understanding.</li>
+                    </ul>
+
+                    <h3>5.9.4 Use of Different Safety Factors</h3>
+                    <p>The safety factor of <strong>0.001</strong> is typically applied regardless of route of administration. A risk assessment may justify more stringent or less stringent factors:</p>
+                    <ul>
+                        <li>More stringent: clinical trial materials where dose is not fully established</li>
+                        <li>Less stringent: short-duration drug products (e.g., cold tablets, ~10 days) — since SF = 0.001 was originally established for chronic administration</li>
+                    </ul>
+
+                    <h3>5.9.5 Different Routes of Administration</h3>
+                    <p>If cleaned product and next product have different administration routes (e.g., oral → injectable), perform a risk assessment including evaluation of hazards if oral drug is administered as injectable, or extent of systemic availability.</p>
+
+                    <h3>5.9.6 Different Doses for Adults and Children</h3>
+                    <p>Calculate ARL for both products using adult doses and using child doses separately. Use the <strong>lower ARL</strong> for subsequent limit calculations. Where one product is dosed only for adults and the next only for children, a risk assessment should be considered.</p>
+
+                    <h3>5.9.7 Human and Veterinary Products on Same Equipment</h3>
+                    <p>A risk assessment is required, considering species differences and body weight differences.</p>
+
+                    <h3>5.9.8 Genotoxic and Highly Hazardous Active Ingredients</h3>
+                    <p>Four approaches for genotoxic residues:</p>
+                    <ul>
+                        <li>Use TTC value of 1.5 µg/day as SDI (Section 5.3.3)</li>
+                        <li>Dedicate equipment to that one product</li>
+                        <li>Perform cleaning validation with toxicology-based limits (Section 5.3.2.2)</li>
+                        <li>Set limit below limit of detection (with medical risk assessment)</li>
+                    </ul>
+                    <p>These approaches also apply to: reproductive toxicity hazards, allergenicity, cytotoxicity, mutagenicity.</p>
+
+                    <h3>5.9.9 Limits Based on Analytical Detection Limits</h3>
+                    <p>Not normally recommended — as analytical methods improve, limits will be driven exceedingly low. The issue is not whether the residue can be measured, but whether it is <strong>medically safe</strong> and does not affect subsequent product quality.</p>
+
+                    <h3>5.9.10 Degradation of Active Ingredient</h3>
+                    <p>If active ingredient degrades during/after cleaning, the relevant residue to measure is the <strong>degradant</strong>. Two approaches:</p>
+                    <ul>
+                        <li>Set limits for the degradant and measure it with an appropriate specific method.</li>
+                        <li>Set limits for undegraded active based on its dose; measure with a nonspecific method (e.g., TOC); convert measured residue to equivalent undegraded active amount.</li>
+                    </ul>
+
+                    <h3>5.9.11 Limits Not Measurable</h3>
+                    <p>If calculated limits fall below analytical detection limits, options include:</p>
+                    <ul>
+                        <li>Dedicate equipment to one product</li>
+                        <li>Modify next product parameters (raise minimum batch size, restrict manufacturing order)</li>
+                        <li>Modify sampling parameters (larger swab area, smaller solvent volume)</li>
+                        <li>Lower rinse volume for rinse sampling</li>
+                        <li>Concentrate the rinse sample (e.g., vacuum evaporation)</li>
+                    </ul>
+
+                    <h3>5.9.12 Limits for Organic Solvents</h3>
+                    <p>Options: toxicity calculations; use ICH Q3C (R5) acceptable levels; not setting limits for volatile organic solvents if adequate evaporation conditions are established. Note Q3C technically applies to solvents used in API manufacture, not necessarily cleaning.</p>
+
+                    <h3>5.9.13 Dedicated Equipment</h3>
+                    <p>For equipment dedicated to one product, active ingredient carryover concern is minimized. <span class="key-term">Visually clean</span> may be appropriate (per U.S. FDA guidance). However, cleaning validation may still be required for <strong>degradants, cleaning agents, and bioburden</strong>.</p>
+                    <p>Dedicated parts of an equipment train are not considered part of the SSA for active ingredient limits, but may be relevant for cleaning agent limits.</p>
+
+                    <h3>5.9.14 Dividing Limits Among Equipment Pieces</h3>
+                    <p>MAC is the total amount across all shared surfaces. Options:</p>
+                    <ul>
+                        <li>Apply the same SAL to every surface (common approach)</li>
+                        <li>Apportion MAC differently among equipment pieces, provided total remains at MAC (e.g., SAL = 0.5 µg/cm² for Equipment A, 1.0 for B, 1.5 for C — sum = MAC)</li>
+                    </ul>
+
+                    <h3>5.9.15 Limits for Preferential Transfer</h3>
+                    <p>Equipment should be classified into: zones where residue distributes <strong>homogeneously</strong> in next product (blender, granulator), vs. zones with <strong>preferential transfer</strong> to individual dosage units (tablet press, vial filler). For preferential transfer zones, use more stringent limits, or discard an initial portion of the next batch, or dedicate those parts.</p>
+
+                    <h3>5.9.17 Products with More Than One Active Ingredient</h3>
+                    <p>Options: set limits for all actives and measure each, or determine the worst-case active (lowest limit based on difficulty of cleaning, solubility, concentration) and measure only that.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | 特殊情況決策指南</h3>
+
+                    <div class="note-box">
+                        <h4>5.9.1–5.9.3 核心原則：保守優先</h4>
+                        <p>多產品情況的邏輯：<strong>限度取最嚴格的那個</strong>，確保無論哪個產品排在後面，殘留都是安全的。</p>
+                        <p>驗證模式（Verification Mode）是開發階段常用的靈活方式：每次清潔後根據實際下一產品個別評估，不預設固定限度。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>預設值系統整理</h4>
+                        <table>
+                            <thead>
+                                <tr><th>限度類型</th><th>預設值</th><th>適用範圍</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>ARL（藥品）</td><td>10 ppm</td><td>藥品製造</td></tr>
+                                <tr><td>ARL（API）</td><td>50–100 ppm</td><td>API 製造</td></tr>
+                                <tr><td>SAL</td><td>4 µg/cm²</td><td>藥品及 API 製造</td></tr>
+                            </tbody>
+                        </table>
+                        <p>預設值的邏輯：計算值與預設值比較，取<strong>更嚴格</strong>（更低）的那個。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>5.9.4 安全係數的彈性</h4>
+                        <p>0.001 是針對「長期慢性給藥」設計的保守係數。</p>
+                        <p>對於只用 10 天的感冒藥，長期暴露的風險更低，基於風險評估可以使用較寬鬆的係數——但需要充分的科學論證與文件。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>5.9.8 基因毒性殘留的四條路</h4>
+                        <ol style="margin-left:1.2rem;font-size:0.92rem;">
+                            <li><strong>TTC 1.5 µg/day</strong>：最常用，但注射劑需謹慎（FDA 原始設定針對口服）</li>
+                            <li><strong>設備專用化</strong>：最簡單，但損失彈性</li>
+                            <li><strong>毒理學計算</strong>：最科學，需毒理學家參與</li>
+                            <li><strong>低於偵測極限</strong>：最嚴格，但需醫療風險評估確認可接受性</li>
+                        </ol>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>5.9.11 限度不可測的解方</h4>
+                        <p>計算出的限度若低於分析方法偵測極限，本質原因通常是：</p>
+                        <ul>
+                            <li>清洗產品毒性太強（劑量太小）</li>
+                            <li>下一產品批量太小</li>
+                            <li>設備共用表面積太小</li>
+                        </ul>
+                        <p>解方：改變分子（提高 MBS）、改變分母（增大取樣面積、減少溶劑量），或直接設備專用化。</p>
+                    </div>
+
+                    <div class="application-box concept-box application">
+                        <h4>5.9.14 限度分配實例</h4>
+                        <p>假設 MAC = 300 µg，設備 A/B/C 各有 100 cm²（共 300 cm²）：</p>
+                        <ul>
+                            <li><strong>均等分配：</strong>每台 SAL = 300/300 = 1 µg/cm²</li>
+                            <li><strong>差異分配：</strong>A = 0.5 µg/cm²（難清潔），B = 1.0，C = 1.5 µg/cm²（易清潔）</li>
+                            <li>驗證：(0.5 × 100) + (1.0 × 100) + (1.5 × 100) = 300 µg = MAC ✓</li>
+                        </ul>
+                        <p>差異分配需要對每台設備的清潔難度和風險有深刻理解。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>5.9.15 優先轉移（Preferential Transfer）</h4>
+                        <p>灌裝機（Vial filler）是典型的優先轉移設備：殘留可能集中在最初灌裝的幾個瓶子，而非均勻分佈在整批產品。</p>
+                        <p>解決方案：更嚴格的 SAL，或拋棄最初的幾瓶產品，或灌裝機專用化。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 7: 5.10 Bioburden + 5.11 Endotoxin
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec510">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.10–5.11</div>
+            <div class="chapter-info">
+                <h2>Bioburden Limits &amp; Endotoxin Limits | 生物負載限度與內毒素限度</h2>
+                <p>Microbial Carryover Considerations for Cleaning Validation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>5.10 Bioburden Limits</h3>
+                    <p>In considering bioburden limits following cleaning, it is <strong>not expected</strong> that the cleaning process itself results in sterile equipment. If limits are established for bioburden in a cleaning validation protocol, those limits can be established using carryover calculations (Sections 5.3–5.6).</p>
+
+                    <p>For <strong>non-sterile manufacture</strong>: starting point is an ARL in CFU/g or CFU/mL based on the bioburden specification of the next product. Since there are sources of bioburden other than the cleaned equipment (e.g., from raw materials), an <strong>adjustment factor</strong> is usually applied to lower the bioburden ARL.</p>
+
+                    <p>Carryover calculations typically result in SAL values significantly above <strong>10 CFU/cm²</strong> or rinse sampling solution limits significantly above <strong>100 CFU/mL</strong>. A risk assessment should evaluate the nature of the next product (low vs. high water activity, presence of preservatives, bioburden proliferation during clean hold time).</p>
+
+                    <p>Many companies establish very conservative bioburden limits:</p>
+                    <ul>
+                        <li>Surface sampling: <strong>1–2 CFU/cm²</strong></li>
+                        <li>Rinse samples (non-sterile): typical purified water limit of <strong>100 CFU/mL</strong></li>
+                    </ul>
+
+                    <p>Even if equipment is <strong>steamed in place or autoclaved</strong> prior to next product, or next product is <strong>sterile-filtered</strong>, it is typically practice to evaluate bioburden to ensure the process is not overly challenged.</p>
+
+                    <p>For rinse sampling with WFI after subsequent steaming:</p>
+                    <ul>
+                        <li>Approach 1: Use typical WFI values (10 CFU/100 mL)</li>
+                        <li>Approach 2: Use 100 CFU/100 mL or 1,000 CFU/100 mL (rationale: equipment will be subsequently steamed)</li>
+                    </ul>
+
+                    <p>Additional consideration: <span class="key-term">objectionable organisms</span> — not limited to USP specified organisms, but include organisms selected based on product and manufacturing understanding. The degree of identification may be to species level, or just methods to exclude objectionable organisms.</p>
+
+                    <h3>5.11 Endotoxin Limits</h3>
+                    <p>Endotoxin carryover to the final product is a concern for any product with endotoxin specifications. Common practice:</p>
+                    <ul>
+                        <li>Measure endotoxin in the <strong>final rinse water</strong></li>
+                        <li>Limits typically set at the <span class="key-term">WFI limit of 0.25 EU/mL</span></li>
+                    </ul>
+                    <p>If the equipment is <strong>depyrogenated by heat</strong>, endotoxin will be deactivated and measurement of endotoxin for cleaned equipment may not be required.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | 生物負載與內毒素限度</h3>
+
+                    <div class="concept-box">
+                        <h4>生物負載限度 — 與化學殘留限度的對比</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>化學殘留</th>
+                                    <th>生物負載</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ARL 單位</td>
+                                    <td>µg/g 或 µg/mL</td>
+                                    <td>CFU/g 或 CFU/mL</td>
+                                </tr>
+                                <tr>
+                                    <td>SAL 典型值</td>
+                                    <td>≤ 4 µg/cm²</td>
+                                    <td>1–2 CFU/cm²（保守值）</td>
+                                </tr>
+                                <tr>
+                                    <td>沖洗液限度</td>
+                                    <td>依計算而定</td>
+                                    <td>100 CFU/mL（PW 規格）</td>
+                                </tr>
+                                <tr>
+                                    <td>計算基礎</td>
+                                    <td>毒理學 / 劑量</td>
+                                    <td>產品生物負載規格</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為什麼清潔後設備不要求無菌？</h4>
+                        <p>清潔的目的是去除化學殘留和降低微生物負載，而不是達到滅菌水準。</p>
+                        <p>真正的微生物控制是在後續製程中完成的：SIP（原位滅菌）、高壓蒸氣滅菌、或無菌過濾。清潔驗證中的生物負載評估是確保「後續滅菌步驟不會被過度挑戰」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：廚房清潔 vs 手術器械消毒</h4>
+                        <p>清潔（Cleaning）= 洗碗機洗碗 — 去除殘留，降低微生物，但不要求完全無菌。</p>
+                        <p>滅菌（Sterilization）= 高壓蒸氣消毒 — 確保無存活微生物。</p>
+                        <p>清潔驗證中的生物負載限度，是確保洗完碗後，後續的消毒步驟有合理的起始條件（不是從「髒到嚴重污染」開始滅菌）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>「有害微生物」的判定</h4>
+                        <p><strong>Objectionable organisms（有害微生物）</strong>不只是 USP 表列的特定菌種，還包括：</p>
+                        <ul>
+                            <li>基於產品特性選擇的指標菌（如高水活性產品的酵母菌）</li>
+                            <li>數量達到一定閾值才被視為有害（不只是有沒有，也看多少）</li>
+                            <li>可鑑定到菌種層級，或僅用排除法（確認非有害菌種即可）</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>5.11 內毒素限度 — 關鍵數值</h4>
+                        <pre>WFI 內毒素限度：0.25 EU/mL
+
+適用場景：注射劑等有內毒素規格的產品
+
+測試方法：在最終沖洗水中測量內毒素
+
+例外：設備進行去熱原處理（Depyrogenation，
+通常 250°C 乾熱 30 分鐘以上）→
+內毒素已被去活化 → 清潔後不需再測定</pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>去熱原 vs 生物負載的邏輯差異</h4>
+                        <p><strong>生物負載：</strong>即使後續有 SIP，也建議評估清潔後的生物負載——確認起始條件合理。</p>
+                        <p><strong>內毒素：</strong>如果後續有去熱原步驟（乾熱），則清潔後的內毒素測試<em>可以省略</em>，因為去熱原足以將其去活化。</p>
+                        <p>關鍵差異：內毒素是化學物質（脂多醣），可以被高溫破壞；微生物是活的，需要更複雜的評估。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BLOCK 8: 5.12 Visually Clean
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="chapter-section" id="sec512">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.12</div>
+            <div class="chapter-info">
+                <h2>Visually Clean Criterion | 目視清潔標準</h2>
+                <p>When Can Visual Inspection Replace Analytical Sampling?</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>5.12 Visually Clean Criterion</h3>
+                    <p>Visual appearance of production surfaces is a direct measurement that verifies removal of residuals.</p>
+
+                    <p>The most common use of a visually clean criterion is to <strong>supplement</strong> swab and/or rinse testing — in such cases, it is common practice <em>not</em> to establish a quantitative visual limit.</p>
+
+                    <p>If visual examination is used <strong>without</strong> swab and rinse sampling, it is required to establish a <span class="key-term">quantitative visual limit</span> for a residue on a specified surface under specified viewing conditions. This methodology is discussed in Section 7.7.3.</p>
+
+                    <div class="note-box">
+                        <h4>Conditions for Using Visually Clean WITHOUT Analytical Sampling</h4>
+                        <ol>
+                            <li>The quantitative visual limit must be <strong>more stringent than the SAL carryover limit</strong> (Section 5.5).</li>
+                            <li>Equipment surfaces must be viewable in the cleaning validation protocol under conditions that are <strong>the same or more stringent</strong> than the viewing conditions established for the quantitative limit.</li>
+                            <li>A <strong>second-person verification</strong> in protocol execution should be utilized.</li>
+                        </ol>
+                    </div>
+
+                    <p>Typical visual limits reported in the literature: <strong>1–4 µg/cm²</strong>. However, this limit depends on conditions such as:</p>
+                    <ul>
+                        <li>Nature of the residue (color, contrast)</li>
+                        <li>Nature of the surface (rough vs. polished)</li>
+                        <li>Lighting conditions</li>
+                        <li>Distance of viewing</li>
+                        <li>Angle of viewing</li>
+                        <li>Visual acuity of the operator</li>
+                    </ul>
+
+                    <div class="quote-box">
+                        "The requirement for 'visual cleanness' usually applies to equipment surfaces. It is not necessarily a requirement that swabs be visually clean after a surface is swabbed, due to the fact that residue which is not visible on a larger surface may become 'visible' when concentrated on the smaller area of the swab head."
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>中文解說 | 目視清潔的適用邊界</h3>
+
+                    <div class="concept-box">
+                        <h4>目視清潔的兩種用途</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>用途</th>
+                                    <th>是否需要定量視覺限度</th>
+                                    <th>說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>補充</strong>棉棒/沖洗取樣</td>
+                                    <td>不需要</td>
+                                    <td>最常見，作為額外確認</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>取代</strong>棉棒/沖洗取樣</td>
+                                    <td>必須建立定量限度</td>
+                                    <td>需嚴格條件且限度必須比 SAL 更嚴</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>目視清潔取代分析取樣的三個條件</h4>
+                        <ol style="margin-left:1.2rem;font-size:0.92rem;">
+                            <li><strong>定量視覺限度 &lt; 計算 SAL</strong>：視覺標準必須比計算出的表面積限度更嚴格</li>
+                            <li><strong>觀察條件一致</strong>：驗證時的燈光、距離、角度必須與建立定量限度時相同或更嚴</li>
+                            <li><strong>雙人確認</strong>：必須有第二人核實，降低主觀性誤差</li>
+                        </ol>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：法醫勘查 vs 日常整理</h4>
+                        <p>日常目視清潔（補充模式）就像你看一眼廚房說「看起來乾淨了」。</p>
+                        <p>定量目視清潔（取代模式）就像法醫在特定燈光、特定角度、有參照標準的條件下，精確判斷表面是否存在微量殘留——主觀性極低，有客觀證據支持。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>視覺限度 1–4 µg/cm² 的意義</h4>
+                        <p>這是文獻報告的目視可偵測閾值。意思是：</p>
+                        <ul>
+                            <li>殘留量 &gt; 4 µg/cm²：在適當條件下人眼通常可見</li>
+                            <li>殘留量 1–4 µg/cm²：可能在最佳觀察條件下可見</li>
+                            <li>殘留量 &lt; 1 µg/cm²：人眼幾乎不可見，須依賴分析方法</li>
+                        </ul>
+                        <p>這也是為什麼 SAL 預設值設在 4 µg/cm²——它是目視清潔和分析方法之間的自然邊界。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>棉棒目視 vs 設備表面目視</h4>
+                        <p>TR29 特別說明：棉棒擦拭後，棉棒本身不需要目視清潔。</p>
+                        <p>原因：原本在 1000 cm² 表面上不可見的殘留，被集中到只有幾 cm² 的棉棒頭上後，會顯得「可見」——這是濃縮效應，不代表設備表面的殘留量超標。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>綜合複習問題</h4>
+                        <ol style="margin-left:1.2rem;font-size:0.92rem;">
+                            <li>當計算出的 SAL = 6 µg/cm²，應使用哪個值作為最終 SAL？為什麼？
+                                <br><em>答：4 µg/cm²（預設上限，更嚴格）</em></li>
+                            <li>某產品有 3 個可能的下一個產品，計算出的棉棒限度分別為 50、30、80 µg/mL，應採用哪個限度？
+                                <br><em>答：30 µg/mL（最嚴格，以確保所有下一產品均安全）</em></li>
+                            <li>清潔後設備即將進行 SIP（原位蒸氣滅菌），是否仍需評估生物負載？
+                                <br><em>答：TR29 建議仍評估，以確認滅菌前的起始生物負載不會過度挑戰滅菌效果</em></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation</p>
+    <p>Section 3: Residue and Limits | 殘留物與限度 — Sections 5.0–5.12</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">SterileGMP Knowledge Hub | Educational Reference Only</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Cleaning Process Design &amp; Development | 清潔製程設計與開發 — PDA TR29</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 1: Cleaning Process Design &amp; Development | 清潔製程設計與開發</h1>
+    <div class="subtitle">3.0–3.9 Cleaning Process Design, Overview, Considerations, Lab Experiments, Scale-Up, Design Space, SOPs, Operator Training, New Products</div>
+    <div class="page-info">PDA TR29 (Revised 2012) &nbsp;|&nbsp; Pages 8–23</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+        <ul>
+            <li>Understand the critical process parameters (CPPs) and quality attributes (CQAs) that govern cleaning process design — 掌握清潔製程設計的關鍵製程參數與品質屬性</li>
+            <li>Distinguish CIP vs. COP systems and their applicable scenarios — 區分就地清洗與移出清洗的適用場景</li>
+            <li>Apply the TACT framework (Time, Action, Concentration, Temperature) to cleaning process optimization — 運用 TACT 框架優化清潔製程</li>
+            <li>Understand how Design Space applies to cleaning process development — 理解設計空間概念在清潔開發中的應用</li>
+            <li>Explain SOP requirements and operator training criteria for robust cleaning processes — 說明 SOP 要求與操作員訓練標準</li>
+            <li>Evaluate new product introduction strategies within a validated cleaning system — 評估新產品導入已驗證清潔系統的策略</li>
+        </ul>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Section Contents &nbsp;|&nbsp; 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec30">3.0 Overview 概述</a>
+            <a href="#sec31">3.1 Process Design 製程設計</a>
+            <a href="#sec32">3.2 Process Overview 製程概覽</a>
+            <a href="#sec33">3.3 Design Considerations 設計考量</a>
+            <a href="#sec34">3.4 Lab Experiments 實驗室研究</a>
+            <a href="#sec35">3.5 Scale-Up 放大生產</a>
+            <a href="#sec36">3.6 Design Space 設計空間</a>
+            <a href="#sec37">3.7 SOPs 標準作業程序</a>
+            <a href="#sec38">3.8 Operator Training 操作員訓練</a>
+            <a href="#sec39">3.9 New Products 新產品導入</a>
+        </div>
+    </div>
+
+    <!-- ===== 3.0 OVERVIEW ===== -->
+    <div id="sec30" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.0 Cleaning Process Design and Development</h2>
+                <p>This section describes the application of operational parameters and measurements, design of laboratory scale experiments, selection of appropriate test soils, and scale-up for the cleaning of the manufacturing equipment. Additionally, the concept of <span class="key-term">Design Space</span> — a Quality by Design approach to the development of pharmaceutical processes — is discussed and applied to the development of cleaning processes.</p>
+                <p>The cleaning process requires design and development prior to implementation in a manufacturing plant to ensure the cleaning process and equipment are acceptable for use.</p>
+                <p>The operational parameters that describe the cleaning process include:</p>
+                <ul>
+                    <li><span class="key-term">Cleaning agent</span> — chemical selected for soil removal</li>
+                    <li><span class="key-term">Concentration</span> — effective and safe dilution range</li>
+                    <li><span class="key-term">Contact time</span> — duration of agent-surface interaction</li>
+                    <li><span class="key-term">Temperature</span> — process and rinse step temperatures</li>
+                </ul>
+                <p>Factors which affect the cleaning process include product characteristics and product condition. Relevant specifics about the cleaning equipment include automated cleaning pathways, the sequence of manual or automated cleaning steps, and flow rates during each step.</p>
+                <p>Generally, establishment of acceptable cleaning processes follows a standard progression beginning with identification of control variables, cleaning measurements, and performance criteria. Laboratory (scale-down) experimentation, analogous to process characterization experiments, along with specific equipment requirements, may provide data to establish cleaning parameter control ranges.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>清潔製程設計的核心目的</h3>
+                    <p><strong>清潔製程設計與開發（Cleaning Process Design and Development）</strong>是清潔驗證的第一步，目的是在正式驗證前確立科學基礎。</p>
+                    <p>製藥廠不能直接跳到驗證——必須先設計、開發、實驗，才能知道什麼條件有效。</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>生活比喻：廚師設計食譜</h3>
+                    <p>就像廚師不會隨機煮菜，清潔製程也需要「食譜」：哪種清潔劑、多少濃度、接觸幾分鐘、幾度清洗。TACT 就是清潔的「食譜四要素」。</p>
+                </div>
+                <div class="note-box">
+                    <h3>關鍵術語速覽</h3>
+                    <ul>
+                        <li><strong>設計空間（Design Space）</strong>：ICH Q8 概念，輸入變數的多維組合，任何在此範圍內操作均保證品質</li>
+                        <li><strong>污染物（Soil）</strong>：殘留在設備上需被清除的物質，包含產品殘留、輔料、微生物等</li>
+                        <li><strong>縮小規模實驗（Scale-down experiments）</strong>：實驗室模擬生產規模清潔條件，以建立操作範圍</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.1 PROCESS DESIGN ===== -->
+    <div id="sec31" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.1 Cleaning Process Design</h2>
+                <p>Design starts with a consideration of the <span class="key-term">Critical Process Parameters (CPPs)</span> and <span class="key-term">Critical Quality Attributes (CQAs)</span> of the cleaning system.</p>
+
+                <h3>Table 3.1-1: CPP and CQA Considerations (Risk Impact to Cleaning)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Critical Process Parameters (CPPs)</th>
+                            <th>Critical Quality Attributes (CQAs)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Process temperature</td>
+                            <td>Visual detection or limits</td>
+                        </tr>
+                        <tr>
+                            <td>Process pressure</td>
+                            <td>Cleaning agent residues</td>
+                        </tr>
+                        <tr>
+                            <td>Process flow</td>
+                            <td>Product residues</td>
+                        </tr>
+                        <tr>
+                            <td>Process time</td>
+                            <td>Microbiological residue limits</td>
+                        </tr>
+                        <tr>
+                            <td>Cleaning agent concentration</td>
+                            <td>Drainability / drying</td>
+                        </tr>
+                        <tr>
+                            <td>Dirty hold time (soil condition)</td>
+                            <td>Conductivity / resistivity</td>
+                        </tr>
+                        <tr>
+                            <td>Clean hold conditions</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>The Cleaning Spectrum (Table 3.1-2)</h3>
+                <p>The <span class="key-term">cleaning spectrum</span> helps manufacturers establish which factors are critical for individual processes, enabling them to set priorities, develop grouping philosophies and establish scientific rationales governing the cleaning program.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lower Complexity / Risk</th>
+                            <th>Higher Complexity / Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Automated Cleaning</td><td>Manual Cleaning</td></tr>
+                        <tr><td>In-place Cleaning</td><td>Out-of-Place Cleaning</td></tr>
+                        <tr><td>Dedicated Equipment</td><td>Non-Dedicated Equipment</td></tr>
+                        <tr><td>Indirect Product Contact Surfaces</td><td>Product Contact Surfaces</td></tr>
+                        <tr><td>Low Risk Site</td><td>High Risk Site</td></tr>
+                        <tr><td>Minor Equipment</td><td>Major Equipment</td></tr>
+                        <tr><td>Low Risk Drugs</td><td>High Risk Drugs</td></tr>
+                        <tr><td>Liquid Formulations</td><td>Solid Formulations</td></tr>
+                        <tr><td>Easy to Clean Product</td><td>Difficult to Clean Product</td></tr>
+                        <tr><td>Smooth, Non-porous Surfaces</td><td>Porous Materials</td></tr>
+                        <tr><td>Single Product Facility</td><td>Multiple Product Facility</td></tr>
+                        <tr><td>Non-Campaigned Production</td><td>Campaigned Production</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>CPP vs. CQA 的區別</h3>
+                    <p><strong>CPP（關鍵製程參數）</strong>是操作員可以控制的輸入變數，例如清洗溫度、時間、清潔劑濃度。</p>
+                    <p><strong>CQA（關鍵品質屬性）</strong>是清潔結果的輸出指標，例如殘留量、導電度、視覺檢查。</p>
+                    <p>兩者的關係：控制好 CPP → 確保 CQA 達標。</p>
+                </div>
+                <div class="note-box">
+                    <h3>清潔頻譜的實務意義</h3>
+                    <p>清潔頻譜（Cleaning Spectrum）是一個風險分類工具：</p>
+                    <ul>
+                        <li>非專用設備（Non-dedicated）比專用設備需要更嚴格的清潔驗證</li>
+                        <li>固體劑型比液體劑型更難清洗（粉末殘留更難移除）</li>
+                        <li>多產品廠（Multiple Product Facility）交叉污染風險最高</li>
+                    </ul>
+                    <p>實務上，稽查員會根據此頻譜評估工廠的清潔風險控制是否合理。</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：醫院手術室 vs. 一般病房</h3>
+                    <p>手術室（高風險）比一般病房（低風險）需要更嚴格的清潔程序。清潔頻譜的邏輯相同：越靠近「高風險端」，清潔要求越嚴格、驗證越完整。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.2 PROCESS OVERVIEW ===== -->
+    <div id="sec32" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.2 Cleaning Process Overview</h2>
+                <p>Cleaning processes generally contain multiple steps. Each step has a function and a set of parameters controlled within defined ranges to ensure effective <span class="key-term">soil</span> (and cleaning agent) removal.</p>
+
+                <h3>Table 3.2-1: Cleaning Process Steps (Examples)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Function</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vacuum / Pre-Rinse</strong></td>
+                            <td>Removal of readily soluble and/or non-adhering residues</td>
+                            <td>Reduction of soil load prior to washing step.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wash with Cleaning Solution</strong></td>
+                            <td>Removal of soluble and dried residues; solubilization by degradation, heat, and/or wetting with detergents</td>
+                            <td>Primary step for soil and bioburden removal. Often performed at elevated temperatures. May include alkaline, acid, or solvent detergents.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rinse</strong></td>
+                            <td>Removal of suspended or solubilized soils and cleaning solution</td>
+                            <td>May include a series of pulse rinses, with a final rinse in higher-grade solvent.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dry</strong></td>
+                            <td>Removal of water and other solvents</td>
+                            <td>May be done by air or nitrogen flow or by heat. Water removal may be assisted by an organic solvent final rinse.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3.2.1 Physical-chemical Aspects — The TACT Framework</h3>
+                <p>There are four principal cleaning input parameters, typically referred to as <span class="key-term">TACT</span>:</p>
+                <ul>
+                    <li><strong>T — Time (時間):</strong> Length of time for the cycle step. Measured directly (cycle timer) or indirectly (volume at a known flow rate).</li>
+                    <li><strong>A — Action (機械作用):</strong> Mechanism to deliver the cleaning agent — soak, scrubbing, impingement or turbulent flow. Agitation enhances chemical action and shortens contact time.</li>
+                    <li><strong>C — Concentration (濃度):</strong> Cleaning agent concentration directly affects performance. Too low = soil not removed; too high = difficulty removing cleaning agent residues.</li>
+                    <li><strong>T — Temperature (溫度):</strong> Optimal ranges vary by cleaning step. Initial rinses at ambient; wash solutions heated; final rinse at high temperature to increase solubility and drying rate.</li>
+                </ul>
+                <p>These four variables are interrelated and have a direct relationship on the success of each phase in the cleaning cycle. The effect of each variable on soil removal should be determined and acceptable ranges established as part of the cleaning development effort.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>TACT 框架詳解 — 時間/機械/濃度/溫度</h3>
+                    <p>TACT 是清潔製程的四大可調變數，四者相互影響：</p>
+                    <ul>
+                        <li><strong>時間（T）</strong>：延長接觸時間可補償低溫或低濃度的不足</li>
+                        <li><strong>機械作用（A）</strong>：噴球旋轉、湍流沖刷可替代部分化學作用</li>
+                        <li><strong>濃度（C）</strong>：必須在最低有效濃度與殘留難以去除的上限之間取得平衡</li>
+                        <li><strong>溫度（T）</strong>：升溫可提高清潔效率，但過高可能使蛋白質變性固化（更難移除）</li>
+                    </ul>
+                </div>
+                <div class="formula-box">
+                    <h3>TACT 互補示意</h3>
+                    <pre>清潔效果 ≈ f(T × A × C × T)
+
+若溫度不足 → 可增加時間或濃度補償
+若設備無法高速噴射 → 需延長接觸時間
+若清潔劑濃度受限 → 升溫或延時</pre>
+                </div>
+                <div class="note-box">
+                    <h3>清洗步驟設計要點</h3>
+                    <ul>
+                        <li><strong>預沖洗（Pre-Rinse）</strong>：降低後續清洗步驟的污染負荷，是提高清洗效率的關鍵</li>
+                        <li><strong>最終沖洗（Final Rinse）</strong>：水質等級應與產品用水一致——注射劑用 WFI，口服產品用純化水</li>
+                        <li><strong>乾燥步驟</strong>：防止殘留水分成為微生物生長的條件</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：TACT 就像洗碗機設定</h3>
+                    <p>洗碗機有水溫（T）、轉速/噴水壓（A）、洗碗精用量（C）、洗滌時間（T）。油膩餐具需要較高的任一或多個參數組合。製藥清潔製程的邏輯完全相同，只是對「乾淨」的要求遠比洗碗高出幾個數量級。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.3 DESIGN CONSIDERATIONS ===== -->
+    <div id="sec33" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.3 Design Considerations</h2>
+
+                <h3>3.3.1 Location of Cleaning — CIP vs. COP</h3>
+                <p>Equipment may be cleaned at its installed location, or disassembled and moved to a central location for cleaning.</p>
+
+                <h4 style="color: var(--primary-blue); margin: 0.75rem 0 0.5rem;">3.3.1.1.1 Clean-in-Place (CIP) Systems</h4>
+                <p><span class="key-term">Clean-in-Place (CIP)</span> usually refers to an automated system using various tanks and piping to deliver cleaning solution through the equipment to be cleaned. Sprayballs (stationary or rotating) provide coverage and impingement. Used for large equipment such as manufacturing tanks, blenders, fluid bed dryers, reactors, and fermentation tanks.</p>
+                <p>CIP systems may be recirculating or single-pass. Centralized CIP systems provide a single location for handling cleaning agents but complicate segregation. Piping must be sloped continuously to a low point to ensure acceptable draining. Deadlegs must be eliminated.</p>
+
+                <h4 style="color: var(--primary-blue); margin: 0.75rem 0 0.5rem;">3.3.1.1.2 Solvent Reflux Cleaning</h4>
+                <p>For small-molecule API manufacture, cleaning may involve boiling a volatile solvent in the reactor vessel. Solvent vapors rise, condense on cooler surfaces, dissolve residues, and carry dissolved residue back to the boiling solvent. Key issues: residues must be soluble in the solvent, and vapors must contact and condense on all intended surfaces.</p>
+
+                <h4 style="color: var(--primary-blue); margin: 0.75rem 0 0.5rem;">3.3.1.1.3 Placebo Batches as a Cleaning Method</h4>
+                <p>For highly viscous ointments, a placebo run may be used to clean equipment. The placebo must have no detrimental quality impact on the next product. Disadvantages: cost and difficulty of demonstrating effectiveness.</p>
+
+                <h4 style="color: var(--primary-blue); margin: 0.75rem 0 0.5rem;">3.3.1.2 Out-of-Place Cleaning &amp; COP Systems</h4>
+                <p><span class="key-term">Clean-Out-of-Place (COP)</span> equipment includes wash tanks for cleaning small parts removed from larger equipment — recirculating baths, dishwasher-type cabinets for drums, filter housings, or hoppers. Placement patterns and disassembly are critical to cleaning success. Manual manipulation makes these procedures more complex than automated in-place cleaning.</p>
+
+                <h3>3.3.2 Automated vs. Manual Systems</h3>
+                <p><strong>Manual:</strong> Direct cleaning by trained operator using hand tools. Operator controls parameters. Requires clearly written SOPs, training, and supervision.</p>
+                <p><strong>Semi-automated:</strong> Intermediate — operator may manually remove gaskets before automated CIP, or use high-pressure spray device.</p>
+                <p><strong>Automated:</strong> No personnel intervention during cycle (except cycle selection and start/stop). PLC-controlled. Provides consistent, robust monitoring of time, flow rate, pressure, concentration, and temperature. Validation of control systems is critical.</p>
+
+                <h3>3.3.3 Soil Evaluation and Categorization</h3>
+                <p>Cleaning processes should address the wide variety of potential process <span class="key-term">soils</span>: manufactured products, degradation products, process aids, solvents, and cleaning agents. Categories of soils should be created and representative soils selected for testing. The final selection should be based on physiochemical properties similarity.</p>
+                <p><strong>Physical removal mechanisms:</strong> High-pressure spray, high-velocity flow, manual scrubbing, vacuuming. Dependent on solubility, soil amount, and degree of adhesion.</p>
+                <p><strong>Chemical removal mechanisms:</strong> Solubility, emulsification, wetting, chelation, dispersion, hydrolysis, and oxidation. Multiple steps may be used — e.g., alkaline detergent for solubilization followed by sodium hypochlorite for protein oxidation. Note: aggressive solutions may cause corrosion.</p>
+                <p><strong>Dirty hold time:</strong> Fresh soils are generally easier to remove than dried soils. Time between soiling and cleaning must be considered in design studies.</p>
+
+                <h3>3.3.4 Equipment Considerations</h3>
+                <p>Equipment should be <span class="key-term">free-draining</span> with limited intricate or complex parts. Sanitary designs employ appropriately finished surfaces, lack of crevices, absence of dead legs, and suitable construction materials.</p>
+                <p>Dedicated equipment (single product): concerns limited to cleaning agent residues, degradants, bioburden, and endotoxin. Nondedicated equipment: prevention of active ingredient carryover between products is a major focus. Certain products (beta-lactams, mutagenic APIs) may require segregated or dedicated facilities.</p>
+                <p>Surface finish affects cleanability — rough surfaces provide more area for soil contact and contain crevices difficult for cleaning agents to penetrate. Porous materials (filter bags, membranes) are typically dedicated to a given product.</p>
+
+                <h3>3.3.5–3.3.7 Operational, Cleaning Agent, and Product Considerations</h3>
+                <p><strong>Campaigns:</strong> Series of batches of the same product. Minor/in-process cleaning between batches (vacuuming, solvent rinse) does not require separate validation. Full cleaning at end of campaign must account for accumulated soil, dirty hold time, and degradation effects.</p>
+                <p><strong>Cleaning agent selection:</strong> Should be based on scientific rationale — suitability to remove residues, compatibility with equipment, ease of removal, and low toxicity. Vendors should be qualified like raw material vendors. Water for final rinse should match product grade (WFI for injectables, purified water for orals).</p>
+                <p><strong>Product risk:</strong> Highly hazardous APIs (allergenic, cytotoxic, mutagenic) require more robust cleaning processes. Route of administration affects acceptable residue limits — injectables and inhalants pose greater risk of cross-contamination.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>CIP vs. COP 比較</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>CIP（就地清洗）</th>
+                                <th>COP（移出清洗）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>適用設備</td>
+                                <td>大型固定設備（槽體、管路）</td>
+                                <td>小型零件、可拆卸部件</td>
+                            </tr>
+                            <tr>
+                                <td>清洗方式</td>
+                                <td>原位自動噴球沖洗</td>
+                                <td>移至洗滌區，浸泡/噴洗</td>
+                            </tr>
+                            <tr>
+                                <td>自動化程度</td>
+                                <td>高（PLC 控制）</td>
+                                <td>中（仍需手動拆裝）</td>
+                            </tr>
+                            <tr>
+                                <td>驗證複雜度</td>
+                                <td>中（需確認噴球覆蓋）</td>
+                                <td>高（拆裝、運輸、重組均需確認）</td>
+                            </tr>
+                            <tr>
+                                <td>典型設備</td>
+                                <td>製造槽、流動床乾燥機、反應器</td>
+                                <td>泵浦零件、過濾殼體、墊片</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="note-box">
+                    <h3>死角（Dead Leg）問題</h3>
+                    <p>CIP 系統最常見的驗證失敗原因之一是死角——管路中流速不足的區域，清潔液無法有效沖刷。</p>
+                    <p><strong>解決方法：</strong>管路持續向低點傾斜設計、確認所有平行流路均有流量驗證（Proof of Flow）。</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：噴球就像蓮蓬頭</h3>
+                    <p>蓮蓬頭若有死角，水就到不了。製藥槽體的噴球覆蓋測試（riboflavin spray pattern test）就是確認「每個角落都有被清洗液碰到」。</p>
+                </div>
+                <div class="concept-box">
+                    <h3>污染物（Soil）分類與清除機制</h3>
+                    <ul>
+                        <li><strong>物理機制</strong>：高壓噴射、湍流、刷洗——適合表面附著力低的殘留</li>
+                        <li><strong>化學機制</strong>：
+                            <ul>
+                                <li>溶解（Solubility）</li>
+                                <li>乳化（Emulsification）</li>
+                                <li>螯合（Chelation）</li>
+                                <li>氧化（Oxidation）——蛋白質殘留常用次氯酸鈉</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>若鹼性洗劑與氧化劑配合使用，要注意腐蝕性——不鏽鋼材質選擇需納入設計考量。</p>
+                </div>
+                <div class="note-box">
+                    <h3>高危害 API 的清潔設計要求</h3>
+                    <p>具有以下特性的 API 需要更嚴格的清潔製程設計：</p>
+                    <ul>
+                        <li>高度致敏性（Allergenic）——如 beta-lactams</li>
+                        <li>細胞毒性（Cytotoxic）——如癌症用藥</li>
+                        <li>致突變性（Mutagenic）——需評估是否需要專用設備</li>
+                    </ul>
+                    <p>注射劑（IV/IM）的交叉污染後果遠比口服藥嚴重，殘留限度（Residue Limits）更嚴格。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.4 LAB EXPERIMENTS ===== -->
+    <div id="sec34" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.4 Cleaning Development Laboratory Experiments</h2>
+                <p>Laboratory testing often includes screening combinations of soils and relevant process surfaces. Screening experiments test soil removal capability using representative soils and coupons of relevant surface materials. Cleaning conditions can be selected based on the soil-surface combination encountered in the production equipment.</p>
+
+                <h3>3.4.1 Soil Selection</h3>
+                <p>The soils should be representative of soils on equipment in the manufacturing plant, including the chemical and physical (dried, baked) nature. Solutions or suspensions of selected soils are coated on coupons representing process contact surfaces and dried to simulate soil conditions prior to testing.</p>
+                <p>Preparation of coupons involves a pre-cleaning procedure to ensure uniform starting conditions. Coupons are dried before spotting with soils. Spotting must be consistent to minimize experimental variability. Fixed drying time simulates the dirty hold time. Non-electro-polished stainless steel coupons with representative or worse surface finish than equipment surfaces may be preferred for worst-case evaluation.</p>
+
+                <h3>3.4.2 Parameter Selection</h3>
+                <p>Parameters impacting cleaning performance include: nature of product-surface interactions; cleaning agent-soil interactions; time (dirty hold time, each cycle step); cleaning agent concentration; temperature; cleaning action (stagnant, laminar, turbulent flow; pressure); and properties of the cleaning solution (ionic strength, pH, components, viscosity, density).</p>
+                <p>Use of a risk analysis tool such as <span class="key-term">Failure Mode and Effects Analysis (FMEA)</span> may assist in prioritizing operational parameters. Single-parameter studies identify significant impacts. These are then followed by <span class="key-term">Design of Experiments (DOE)</span> to investigate interactions.</p>
+
+                <h3>3.4.2.1 Parameter Interactions</h3>
+                <p>DOE experiments determine the effect of varying individual parameters on cleanability and indicate interactions. Statistical tools — regression analysis, leverage plots, response surface analysis, interaction profiles — study main and interaction effects. DOE analyses can construct a multi-parameter <span class="key-term">design space</span> for the cleaning process and establish ranges of operational parameters providing acceptable performance.</p>
+
+                <h3>3.4.3 Measurements to Determine Cleaning Effectiveness</h3>
+                <p>Cleaning effectiveness may be determined by sampling and analytical methods including: visual inspection; analytical techniques for measuring residues of manufactured product, degradant, cleaning agent, bioburden, and/or endotoxin. These may be online or offline measurements of rinse or swab samples.</p>
+                <p>Using existing knowledge and a risk-based approach, cleaning experiments can be reduced or eliminated — e.g., for transfer of a manufacturing process from one facility to another.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>試驗片（Coupon）研究設計</h3>
+                    <p>實驗室階段使用金屬試驗片（Coupon）模擬真實設備表面：</p>
+                    <ul>
+                        <li>材質選用：通常選不鏽鋼（最常見），以「最差情況」表面粗糙度（非電解拋光）為佳</li>
+                        <li>污染處理：將目標污染物塗抹於試驗片，固定時間乾燥，模擬實際髒污狀態</li>
+                        <li>清洗測試：以實驗室規模複製生產清洗條件（TACT 四參數）</li>
+                        <li>分析結果：目視、殘留分析（TOC、HPLC 等）</li>
+                    </ul>
+                </div>
+                <div class="term-box">
+                    <h3>DOE（實驗設計）在清潔開發的應用</h3>
+                    <p><strong>Design of Experiments（實驗設計）</strong>是一種系統化統計方法，可同時評估多個參數及其交互作用：</p>
+                    <ul>
+                        <li>單因子研究（One-factor-at-a-time）：找出顯著影響因素</li>
+                        <li>DOE 研究：量化主效果（Main effects）與交互作用（Interactions）</li>
+                        <li>回應曲面分析（Response Surface Analysis）：建立設計空間</li>
+                    </ul>
+                    <p>例如：溫度與濃度之間的交互作用——在低溫下需要更高濃度才能達到相同清潔效果。</p>
+                </div>
+                <div class="note-box">
+                    <h3>FMEA 在參數選擇中的應用</h3>
+                    <p>FMEA（失效模式與影響分析）幫助決定哪些參數值得深入研究：</p>
+                    <ul>
+                        <li>嚴重性（Severity）：若此參數失控，殘留會有多危險？</li>
+                        <li>發生率（Occurrence）：此參數在生產中偏離的可能性？</li>
+                        <li>可偵測性（Detectability）：偏離能否被及時發現？</li>
+                    </ul>
+                    <p>RPN（風險優先數）= S × O × D，高 RPN 的參數優先納入 DOE 研究。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.5 SCALE-UP ===== -->
+    <div id="sec35" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.5 Cleaning Process Scale-Up</h2>
+                <p>Following selection of cleaning agents and parameter ranges from historical plant data (if available) and laboratory development work, the cleaning process can be implemented for use on larger-scale manufacturing equipment. Determination of soil and cleaning agent residue removal is generally performed prior to formal cleaning validation protocols. Adjustments to cleaning parameters may be made during <span class="key-term">scale-up</span> based on plant experience and laboratory development studies.</p>
+
+                <h3>3.5.1 Setting Process Controls</h3>
+                <p>It is both prudent and consistent with CGMP to establish control ranges for cleaning process operational and performance parameters. Operational parameters include:</p>
+                <ul>
+                    <li><span class="key-term">Dirty hold time</span> for equipment (time between completion of use and initiation of cleaning)</li>
+                    <li><span class="key-term">Clean hold time</span> for equipment (time between completion of cleaning and next use)</li>
+                    <li>Flow rate and/or delivery pressure of the cleaning stream (proof of flow for parallel flow paths)</li>
+                    <li>Cleaning agent concentration</li>
+                    <li>Duration of each step (by time or volume)</li>
+                    <li>Temperature of washing solutions and rinses</li>
+                    <li>Air flow verification during water removal or drying steps</li>
+                </ul>
+                <p>Alert and/or action levels can be set for each critical parameter. Alert levels are set based on expected variability; action levels are set to permit adjustment before jeopardizing acceptable operation. Both must be within acceptable ranges.</p>
+                <p>Performance parameters may include: final rinse solvent analysis for active ingredients/degradants; final rinse solvent analysis for cleaning agent; final rinse water bioburden; final rinse water endotoxin.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>放大生產（Scale-Up）的挑戰</h3>
+                    <p>實驗室的 TACT 條件不能直接複製到生產設備，主要原因：</p>
+                    <ul>
+                        <li><strong>幾何差異</strong>：大型槽體的死角分布、噴球覆蓋半徑完全不同</li>
+                        <li><strong>流體力學差異</strong>：大管徑需要更高的流速才能達到湍流（Re &gt; 10,000）</li>
+                        <li><strong>熱均勻性</strong>：大容積設備的溫度梯度比實驗室大</li>
+                    </ul>
+                    <p>因此放大階段必須重新確認清洗效果，而非假設實驗室結果可直接轉移。</p>
+                </div>
+                <div class="note-box">
+                    <h3>警示水準 vs. 行動水準</h3>
+                    <ul>
+                        <li><strong>警示水準（Alert Level）</strong>：超出時需要調查，但不代表清洗失敗。基於正常操作變異設定。</li>
+                        <li><strong>行動水準（Action Level）</strong>：超出時必須採取矯正措施，防止清洗品質惡化。</li>
+                    </ul>
+                    <p>兩者都必須在已驗證的可接受範圍內設定，且行動水準要比警示水準更嚴格。</p>
+                </div>
+                <div class="term-box">
+                    <h3>髒污保持時間 vs. 清潔保持時間</h3>
+                    <ul>
+                        <li><strong>髒污保持時間（Dirty Hold Time, DHT）</strong>：批次生產結束到開始清洗的最長允許時間。若超過，污染物乾燥固化，清洗難度大幅上升。</li>
+                        <li><strong>清潔保持時間（Clean Hold Time, CHT）</strong>：清洗完成到下次使用的最長允許時間。若超過，已清潔設備可能重新受到微生物污染。</li>
+                    </ul>
+                    <p>兩個時間均需在清潔驗證中被研究並有數據支持。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.6 DESIGN SPACE ===== -->
+    <div id="sec36" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.6 Applying the "Design Space" Concept to Cleaning Processes</h2>
+                <p><span class="key-term">Design Space</span> is the multidimensional combination and interaction of input variables and process parameters that have been demonstrated to provide assurance of quality. This concept, introduced by ICH Q8, can be applied to cleaning processes.</p>
+                <p>The cleaning design space for a manufacturing facility is defined through a risk- and science-based approach relying on cleaning process knowledge, product/equipment knowledge, regulations, and quality practices. The cleaning design space is represented by the range of each operational parameter that results in acceptable cleaning process performance.</p>
+
+                <div class="quote-box">
+                    "The assumption is that any cleaning process that is performed within the space defined by these conditions will be effective, reliable and consistent."
+                </div>
+
+                <p>Many manufacturers want to design one cleaning process for a specific equipment train used regardless of the manufactured product. This may be accomplished by identifying the <span class="key-term">worst-case soils</span> and defining the design space around cleaning process performance using these soils.</p>
+
+                <p>Cleaning effectiveness may be influenced by:</p>
+                <ul>
+                    <li>Soil type or family</li>
+                    <li>Nature of the soil on the surface</li>
+                    <li>Equipment and contact surface type and finish</li>
+                    <li>Cleaning technology and functional specifications</li>
+                </ul>
+
+                <p>Field conditions considered when developing an effective cleaning process: flow rate, cleaning agent concentration, contact time, process temperature, and dirty hold time. Parameters may be categorized based on their level of criticality, with the most critical parameters monitored closely.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>設計空間（Design Space）應用於清潔製程</h3>
+                    <p>原本在藥品製造製程中使用的設計空間概念（ICH Q8），同樣可應用於清潔製程：</p>
+                    <ul>
+                        <li><strong>製造製程設計空間</strong>：保證產品品質的多維參數組合</li>
+                        <li><strong>清潔製程設計空間</strong>：保證清洗效果的多維參數組合（溫度、時間、濃度、流速、DHT 等）</li>
+                    </ul>
+                    <p>只要操作在設計空間內，清潔效果就有科學保證——無需為每種輕微的參數變化重做驗證。</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：飛機飛行包線</h3>
+                    <p>飛機有安全飛行的「飛行包線（Flight Envelope）」——在速度、高度、仰角等參數範圍內，飛機可安全飛行。清潔設計空間就是「清洗包線」，在此範圍內任何操作組合都保證清洗有效。</p>
+                </div>
+                <div class="note-box">
+                    <h3>最差情況（Worst Case）污染物策略</h3>
+                    <p>若工廠生產多種產品，設計一個「通用清洗程序」的策略：</p>
+                    <ol>
+                        <li>識別最難清洗的污染物（Worst-Case Soil）</li>
+                        <li>以此污染物建立清洗設計空間</li>
+                        <li>若新產品的污染物比最差情況容易清洗 → 可納入現有清洗程序</li>
+                        <li>若新產品更難清洗 → 需重新開發清洗程序並重新驗證</li>
+                    </ol>
+                </div>
+                <div class="application-box concept-box application">
+                    <h3>設計空間的監控策略</h3>
+                    <p>設計空間建立後，日常生產需監控的關鍵參數：</p>
+                    <ul>
+                        <li>流量（Flow Rate）— 確保噴球壓力足夠</li>
+                        <li>清潔劑濃度（Concentration）— 電導度確認</li>
+                        <li>接觸時間（Contact Time）— PLC 計時記錄</li>
+                        <li>溫度（Temperature）— 感測器實時記錄</li>
+                        <li>髒污保持時間（DHT）— 批次記錄確認</li>
+                    </ul>
+                    <p>任何偏差都需要評估是否超出設計空間，若超出則啟動 CAPA。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.7 SOPs ===== -->
+    <div id="sec37" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.7 Standard Operating Procedures</h2>
+                <p>One of the outputs of the design and development of a cleaning process should be a draft <span class="key-term">Standard Operating Procedure (SOP)</span>. That draft SOP should reflect sufficient detail to ensure process consistency. Issues to be considered in the draft SOP:</p>
+                <ul>
+                    <li>The maximum allowable hold time for equipment — after use but before cleaning; after cleaning but before reuse, sanitization, or sterilization</li>
+                    <li>Steps for disassembly of equipment, broken down in a manner that allows all parts to be effectively cleaned</li>
+                    <li>Critical sites or difficult-to-clean areas requiring special cleaning emphasis or specific inspection</li>
+                    <li>Cleaning process parameters</li>
+                    <li>Assignment of responsibility for cleaning of equipment</li>
+                    <li>Cleaning schedules, and where appropriate, sanitizing schedules</li>
+                    <li>Removal or obliteration of previous batch identification</li>
+                    <li>A description in sufficient detail of the methods, equipment, and materials used in cleaning</li>
+                    <li>Sampling and testing that is part of the routine cleaning process</li>
+                    <li>Steps for reassembling equipment for storage and subsequent use</li>
+                    <li>Visual inspection for equipment wear, product residuals, and foreign materials</li>
+                    <li>Protection of clean equipment from contamination prior to use</li>
+                    <li>Batch records as appropriate (automated: PLC-stored; manual: documented per process complexity)</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>SOP（標準作業程序）在清潔驗證中的地位</h3>
+                    <p>SOP 是清潔製程設計的「輸出文件」，也是後續驗證的基礎：</p>
+                    <ul>
+                        <li>驗證協議必須按照已核准的 SOP 執行</li>
+                        <li>SOP 的任何變更都需要評估是否影響已驗證的清潔製程</li>
+                        <li>稽查員審查清潔驗證時，第一份看的文件通常就是 SOP</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h3>清潔 SOP 必備要素（GMP 要求）</h3>
+                    <ul>
+                        <li><strong>髒污/清潔保持時間上限</strong>：必須明確規定（如：使用後 24 小時內開始清洗）</li>
+                        <li><strong>設備拆解步驟</strong>：詳細到每個零件的拆除順序，確保重現性</li>
+                        <li><strong>高風險區域特別標注</strong>：如填充針、攪拌器下方——需要特別清潔步驟</li>
+                        <li><strong>取樣測試要求</strong>：哪些位置取樣、用什麼方法、判定標準是什麼</li>
+                        <li><strong>責任歸屬</strong>：誰負責執行、誰負責確認、誰負責簽核</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：SOP 就是清潔的「操作手冊」</h3>
+                    <p>就像飛機的起降清單（Checklist），每一步都要照順序執行並記錄。在製藥廠，清潔 SOP 的重要性不亞於生產 SOP——因為清潔失敗直接影響下一批產品的安全性。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.8 OPERATOR TRAINING ===== -->
+    <div id="sec38" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.8 Operator Training for the Cleaning Process</h2>
+                <p><span class="key-term">Operator training</span> is critical. During cycle development, operators should be trained in the requirements of the evolving or existing SOPs. Proper training consists of:</p>
+                <ol>
+                    <li>Understanding the SOP</li>
+                    <li>Demonstration of the correct procedure by a trained operator</li>
+                    <li>Demonstration of the correct procedure by the trainee</li>
+                </ol>
+                <p>Operator training for manual cleaning may also include qualification and/or requalification of the trainee by measuring residues on equipment cleaned by the operator. Operator training should be done on a more frequent basis for manual cleaning processes as compared to automated cleaning processes.</p>
+                <p>Training practices may be improved by:</p>
+                <ul>
+                    <li>Clearly written, understandable, and detailed SOPs</li>
+                    <li>Use of checklists to determine all operations are carried out in proper sequence and are documented</li>
+                    <li>Periodic monitoring of cleaning processes to ensure proper training and continued compliance</li>
+                    <li>Dedicated or assigned cleaning personnel</li>
+                    <li>Feedback from operators to modify procedures</li>
+                    <li>Use of video to demonstrate proper cleaning operations and techniques</li>
+                </ul>
+                <p>The operators should understand the process of cleaning and the operation of the equipment they are cleaning. In addition, operators should be aware of the cleaning process impact on the quality and safety of the next product manufactured in the same equipment.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>操作員訓練的三階段模型</h3>
+                    <p>TR29 描述的訓練三步驟與現代技能培訓框架一致：</p>
+                    <ol>
+                        <li><strong>知識（Know）</strong>：閱讀並理解 SOP 內容</li>
+                        <li><strong>示範（Show）</strong>：由已訓練的操作員示範正確程序</li>
+                        <li><strong>執行（Do）</strong>：受訓者自行操作並被評估</li>
+                    </ol>
+                    <p>手動清洗還需額外步驟：測量受訓者清洗後設備上的殘留量，以客觀數據確認訓練是否有效。</p>
+                </div>
+                <div class="note-box">
+                    <h3>手動清洗 vs. 自動清洗的訓練頻率</h3>
+                    <p>手動清洗高度依賴操作員技能，因此需要更頻繁的再訓練（Requalification）：</p>
+                    <ul>
+                        <li>自動化 CIP：PLC 保證一致性，操作員訓練頻率較低</li>
+                        <li>手動清洗：每次換人、長期未執行、SOP 修改後，都需要重新確認能力</li>
+                    </ul>
+                    <p>FDA 483 觀察中，「操作員訓練不足」是清潔驗證領域最常見的缺失之一。</p>
+                </div>
+                <div class="analogy-box">
+                    <h3>比喻：外科醫師訓練</h3>
+                    <p>外科手術技能不能只靠讀書學會——需要示範、模擬、實操、考核。手動清洗操作員的訓練邏輯相同：理論知識必須轉化為可重現的操作技能，並有客觀評估標準。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 3.9 NEW PRODUCTS ===== -->
+    <div id="sec39" style="scroll-margin-top: 4rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>3.9 Introduction of New Products to a Validated Cleaning System</h2>
+                <p>When <span class="key-term">new products</span> or significantly different raw materials are introduced to the plant, a system must be in place to ensure that the cleaning process will remain effective.</p>
+                <p>Generally, cleaning effectiveness for new products can be tested by performing laboratory experiments using coupons of relevant materials (see Section 3.4). These experiments test both the effectiveness of the proposed cleaning regimen and the relative difficulty of cleaning the new soils compared to soils already introduced to the plant.</p>
+
+                <div class="quote-box">
+                    "If the new soils are easier to clean than the most difficult soil already being cleaned, introduction of the new material using existing cleaning procedures can be made with confidence. If the material is more difficult to clean than each of the present soils, some modifications to the current cleaning process may be required, and cleaning validation for the new product is an expectation."
+                </div>
+
+                <p>Key decision framework:</p>
+                <ul>
+                    <li><strong>New soil easier to clean</strong> than current worst case → existing cleaning procedures can be used with confidence; based on risk assessment, determine if confirmatory runs are needed</li>
+                    <li><strong>New soil more difficult to clean</strong> → modifications to current cleaning process may be required; cleaning validation for the new product is an expectation</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2>中文解析 &nbsp;|&nbsp; Commentary</h2>
+                <div class="concept-box">
+                    <h3>新產品導入的決策流程</h3>
+                    <div class="hierarchy-diagram">
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-1">新產品引入</div>
+                        </div>
+                        <div class="arrow-down">↓</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-2">實驗室試驗片研究</div>
+                        </div>
+                        <div class="arrow-down">↓</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-3">比較與現有最差污染物的清洗難度</div>
+                        </div>
+                    </div>
+                    <table style="margin-top: 0.75rem;">
+                        <thead>
+                            <tr>
+                                <th>比較結果</th>
+                                <th>對應行動</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>新污染物 <strong>更容易清洗</strong></td>
+                                <td>可使用現有清洗程序；依風險評估決定是否需確認性批次</td>
+                            </tr>
+                            <tr>
+                                <td>新污染物 <strong>同等難度</strong></td>
+                                <td>可歸入現有群組；進行風險評估</td>
+                            </tr>
+                            <tr>
+                                <td>新污染物 <strong>更難清洗</strong></td>
+                                <td>需修改清洗程序並重新進行清潔驗證</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="note-box">
+                    <h3>變更控制（Change Control）的必要性</h3>
+                    <p>每次新產品引入都需要通過變更控制系統評估：</p>
+                    <ul>
+                        <li>新活性成分的理化特性（溶解度、毒性、致敏性）</li>
+                        <li>與現有最差情況的比較分析</li>
+                        <li>是否需要更新清潔驗證主計劃（CVMP）</li>
+                        <li>是否需要更新殘留限度計算</li>
+                    </ul>
+                    <p>這個系統是「已驗證清洗系統的生命週期管理」核心機制。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRACTICE QUESTIONS ===== -->
+    <div style="scroll-margin-top: 4rem; margin-bottom: 2rem;">
+        <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <h2 style="color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1.25rem; font-size: 1.15rem;">Practice Questions &nbsp;|&nbsp; 思考練習題</h2>
+            <div class="practice-box">
+                <h3>Q1. TACT 框架應用</h3>
+                <p>你的 CIP 清洗程序目前在 60°C 下清洗 15 分鐘，清潔劑濃度 2%。驗證結果顯示在最大 DHT 條件下，某批次的 API 殘留略高於限度。在不更改清潔劑種類的前提下，你應考慮調整哪些 TACT 參數？每種調整有哪些限制？</p>
+                <p><em>參考方向：溫度上限（設備耐受性、蛋白質變性風險）、時間延長（生產效率影響）、濃度提高（清潔劑殘留增加風險、成本）、機械作用（噴球流速、壓力提升可能性）。</em></p>
+            </div>
+            <div class="practice-box">
+                <h3>Q2. 設計空間應用</h3>
+                <p>你的工廠目前生產 5 種藥品，使用同一套 CIP 系統。已知最難清洗的是藥品 C（蛋白質類 API，高度黏附性）。現在要引入藥品 F，其 API 是一種水溶性小分子。請說明如何利用「設計空間」概念決定是否需要為藥品 F 重新驗證清洗程序？</p>
+                <p><em>參考方向：以藥品 C 的 Worst-Case 條件進行實驗室試驗片研究，比較兩者清洗難度；若藥品 F 更易清洗，現有設計空間即可涵蓋；若更難，需重新建立設計空間並重新驗證。</em></p>
+            </div>
+            <div class="practice-box">
+                <h3>Q3. 手動清洗操作員訓練</h3>
+                <p>你的廠區某條填充線使用手動清洗（COP）。稽查員指出你的訓練記錄只有「閱讀並確認 SOP」的簽名，沒有操作展示記錄，也沒有殘留測試結果支持訓練有效性。你如何改進訓練系統以符合 PDA TR29 的建議？</p>
+                <p><em>參考方向：增加操作展示（由訓練師示範）、受訓者展示記錄、清洗後以棉棒取樣或 TOC 測試確認清洗效果、建立再訓練觸發條件（SOP 修訂、長期未執行、績效考核不達標）。</em></p>
+            </div>
+            <div class="practice-box">
+                <h3>Q4. CIP vs. COP 的驗證挑戰</h3>
+                <p>你的工廠準備為一台新的多功能反應器設計清潔驗證計劃。該反應器主體為 CIP 設計，但攪拌器組件需拆除後進行 COP 清洗。請列出針對 COP 部分你需要額外考量的驗證要素（相較於 CIP 部分）。</p>
+                <p><em>參考方向：拆解 SOP 的重現性、拆解件的識別與追蹤、運輸過程的污染控制、清洗液對各零件的覆蓋驗證、重組後的密封性確認、COP 設備本身的清潔驗證（是否為交叉污染源）。</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== KEY TERMS SUMMARY ===== -->
+    <div style="margin-bottom: 2rem;">
+        <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+            <h2 style="color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1.25rem; font-size: 1.15rem;">Key Terms Glossary &nbsp;|&nbsp; 關鍵術語對照表</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>English Term</th>
+                        <th>中文術語</th>
+                        <th>Brief Definition / 簡要說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cleaning Process Design</td>
+                        <td>清潔製程設計</td>
+                        <td>Systematic development of cleaning parameters before validation / 驗證前的系統性清潔參數建立過程</td>
+                    </tr>
+                    <tr>
+                        <td>TACT</td>
+                        <td>時間/機械/濃度/溫度</td>
+                        <td>Four interrelated cleaning parameters: Time, Action, Concentration, Temperature / 清潔製程四大可調參數</td>
+                    </tr>
+                    <tr>
+                        <td>CIP (Clean-in-Place)</td>
+                        <td>就地清洗</td>
+                        <td>Automated cleaning of equipment in its installed location using spray devices / 不拆卸設備的自動化原位清洗系統</td>
+                    </tr>
+                    <tr>
+                        <td>COP (Clean-out-of-Place)</td>
+                        <td>移出清洗</td>
+                        <td>Cleaning of disassembled parts transported to a washing area / 將設備零件移至清洗區域進行清洗</td>
+                    </tr>
+                    <tr>
+                        <td>Design Space</td>
+                        <td>設計空間</td>
+                        <td>Multidimensional combination of input variables providing quality assurance (ICH Q8) / 輸入變數的多維組合，確保品質的操作範圍</td>
+                    </tr>
+                    <tr>
+                        <td>Scale-Up</td>
+                        <td>放大生產</td>
+                        <td>Transition of cleaning parameters from lab scale to production equipment / 清潔參數從實驗室規模轉移至生產設備的過程</td>
+                    </tr>
+                    <tr>
+                        <td>SOP (Standard Operating Procedure)</td>
+                        <td>標準作業程序</td>
+                        <td>Documented procedure ensuring process consistency / 確保製程一致性的書面作業程序</td>
+                    </tr>
+                    <tr>
+                        <td>Operator Training</td>
+                        <td>操作員訓練</td>
+                        <td>Qualification of personnel to perform cleaning procedures / 確認人員具備執行清潔程序能力的訓練體系</td>
+                    </tr>
+                    <tr>
+                        <td>Soil</td>
+                        <td>污染物</td>
+                        <td>Any residue that contacts equipment surfaces and must be removed / 需從設備表面移除的任何殘留物質</td>
+                    </tr>
+                    <tr>
+                        <td>Dirty Hold Time (DHT)</td>
+                        <td>髒污保持時間</td>
+                        <td>Maximum elapsed time between end of production and start of cleaning / 批次生產結束到開始清洗的最長允許時間</td>
+                    </tr>
+                    <tr>
+                        <td>Clean Hold Time (CHT)</td>
+                        <td>清潔保持時間</td>
+                        <td>Maximum elapsed time between cleaning completion and next use / 清洗完成到下次使用的最長允許時間</td>
+                    </tr>
+                    <tr>
+                        <td>CPP (Critical Process Parameter)</td>
+                        <td>關鍵製程參數</td>
+                        <td>Process parameter whose variability has an impact on critical quality attributes / 變異會影響關鍵品質屬性的製程參數</td>
+                    </tr>
+                    <tr>
+                        <td>CQA (Critical Quality Attribute)</td>
+                        <td>關鍵品質屬性</td>
+                        <td>Physical, chemical, biological, or microbiological property of cleaning output / 清潔輸出的物理、化學、生物或微生物特性指標</td>
+                    </tr>
+                    <tr>
+                        <td>DOE (Design of Experiments)</td>
+                        <td>實驗設計</td>
+                        <td>Statistical methodology to study effects and interactions of multiple parameters / 研究多個參數效果與交互作用的統計方法</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation</p>
+    <p>Section 1: Cleaning Process Design &amp; Development &nbsp;|&nbsp; 清潔製程設計與開發</p>
+    <p style="opacity: 0.65; font-size: 0.8rem; margin-top: 0.5rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Educational Reference Only</p>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to Top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

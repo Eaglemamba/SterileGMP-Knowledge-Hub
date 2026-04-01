@@ -1231,6 +1231,37 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## PDA/TR29-Complete.md
+**Report:** PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
+**Pages:** p1–p105 | **Sections:** 9
+
+**Covers questions about:**
+- How to design and develop effective cleaning processes for pharmaceutical manufacturing equipment
+- Establishing acceptance limits: 10 ppm rule, dose-based criteria, toxicological (HBEL/ADE) limits, MAC/MACO calculations
+- Cleaning qualification studies: worst-case equipment, cleaning agent selection, CIP/COP/manual cleaning
+- Sampling strategies: swab vs rinse, sampler training, recovery studies, surface material effects
+- Analytical methods for cleaning validation: HPLC, TOC, UV, ELISA, visual inspection — specificity requirements
+- Maintaining validated cleaning state: change control, revalidation triggers, continuous monitoring
+- Documentation requirements: protocols, reports, acceptance criteria justification
+- Special considerations: cleaning agents, PAT in cleaning, hold times (dirty hold / clean hold), MSA
+- Special product/equipment considerations: API manufacture, topical products, animal drugs, packaging components, tubing, dedicated equipment
+- Regulatory framework: FDA, PIC/S, EU GMP, WHO cleaning validation guidance alignment
+
+**Key terms:** cleaning validation, acceptance limits, 10 ppm limit, dose-based limit, MAC (maximum allowable carryover), MACO, HBEL, ADE, PDE, worst-case approach, CIP (clean-in-place), COP (clean-out-of-place), manual cleaning, swab sampling, rinse sampling, recovery study, HPLC, TOC (total organic carbon), visual inspection, cleaning agent, detergent, dirty hold time, clean hold time, dedicated equipment, grouping approach, bracketing, revalidation, PAT (process analytical technology), MSA (measurement system analysis), cleaning qualification, protocol, critical surface
+
+**Sections:**
+0. Introduction (p1–p7) — scope, regulatory background, cleaning validation lifecycle, definitions
+1. Cleaning Process Design (p7–p20) — equipment design, cleaning agent selection, CIP/COP/manual, scale-up, design space
+2. Cleaning Qualification (p20–p30) — study design, worst-case, bracketing, grouping, protocol, acceptance criteria
+3. Residue and Acceptance Limits (p30–p45) — 10 ppm, dose-based, HBEL/ADE/PDE, MAC, MACO, visual cleanliness, cleaning agent limits
+4. Sampling (p45–p54) — swab vs rinse, sampler qualification, recovery studies, surface considerations
+5. Analytical Methods (p54–p62) — specific vs nonspecific methods, TOC, HPLC, UV, visual, method validation
+6. Maintenance and Documentation (p62–p72) — change control, revalidation, continuous verification, record keeping
+7. Special Considerations (p72–p91) — cleaning agents, PAT, hold times, MSA, topical/animal/dedicated equipment, packaging, tubing
+8. Regulatory References (p91–p105) — FDA/PIC/S/EU alignment, regulatory citations, appendices
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1294,6 +1325,12 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | PPQ physical qualification biological qualification autoclave, bracketing sterilizer equivalence / 製程效能確效、物理確效、生物確效、括弧策略 | TR1 |
 | Parametric release sterilization, requalification autoclave, system suitability moist heat / 參數放行、滅菌再確效、系統適用性 | TR1 |
 | Cleaning validation, carryover, MAC, MSSR, acceptance limits, biotechnology cleaning / 清潔驗證、殘留攜帶、最大允許攜帶量、生物技術清潔 | TR49 |
+| Cleaning validation pharma, 10 ppm limit, dose-based limit, MAC MACO, cleaning acceptance limits / 製藥清潔驗證、10ppm限值、劑量基礎限值、最大允許攜帶量 | TR29 |
+| CIP COP manual cleaning qualification, cleaning process design, worst-case equipment / 就地清洗、離線清洗、手動清洗確效、清潔製程設計、最差情況設備 | TR29 |
+| Dirty hold time, clean hold time, equipment hold study / 清潔前保留時間、清潔後保留時間、設備保留研究 | TR29 + TR49 |
+| Dedicated equipment cleaning, campaign manufacture, β-lactam segregation / 專用設備清潔、活動式生產、β-內醯胺分隔 | TR29 |
+| Cleaning agent selection, detergent validation, cleaning agent residue limits / 清潔劑選擇、清潔劑確效、清潔劑殘留限值 | TR29 |
+| MSA measurement system analysis for swab sampling, visual cleanliness criteria / 量測系統分析、棉棒取樣、目視清潔標準 | TR29 |
 | Biotech cleaning: swab vs rinse sampling, recovery study, sampler qualification / 生物製藥取樣方法、棉棒vs沖洗取樣、回收率研究 | TR49 |
 | TOC, total organic carbon, cleaning analytical method, LOD LOQ method validation / 總有機碳、清潔分析方法、偵測極限 | TR49 |
 | Dirty hold, clean hold, product changeover, cleaning after biotech fermentation / 清潔前後保留時間、產品切換、生物發酵後清潔 | TR49 |
@@ -1480,7 +1517,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR1 ★★★ (primary reference: F0/D-value/z-value science, overkill vs bioburden approaches, cycle types, temperature mapping, PPQ, parametric release, bracketing) | PICS-Annex1 ★★★ (regulatory requirements: terminal sterilization F0≥8, overkill F0≥12, sterilisation principles, EU GMP context) | TR60 ★★ (lifecycle validation framework applied to sterilization) | TR22 ★ (sterilization as prerequisite for aseptic processing)
 
 **Cleaning Validation (清潔驗證)**
-→ TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
+→ TR29 ★★★ (pharma/sterile: 10 ppm limit, dose-based limits, HBEL/ADE/PDE limits, MAC/MACO, swab/rinse sampling, MSA, dirty/clean hold times, cleaning agent limits, grouping/bracketing, dedicated equipment, packaging/tubing, full regulatory alignment) | TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
