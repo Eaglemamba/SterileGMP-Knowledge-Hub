@@ -828,6 +828,43 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-SUT-Complete.md
+**Report:** ISPE Good Practice Guide: Single-Use Technology
+**Pages:** p7–p174 | **Sections:** 10
+
+**Covers questions about:**
+- Single-use component types: bags, tubing, connectors, filters, sensors, bioreactors, mixing systems
+- Extractables and leachables (E&L): study design, AET, simulation conditions, analytical methods (GC-MS, LC-MS, ICP-MS)
+- Process equipment design for SUT: P&ID, sensors, valves, pumps, bioreactors, chromatography, UF/DF
+- Quality requirements for SUT: incoming inspection, CoC/CoQ, bioburden, endotoxin, particulates, shelf life
+- Supplier qualification and audit methodology for SUT suppliers
+- User Requirement Specification (URS) development for single-use systems
+- Facility design for SUT: ballroom vs dance floor vs factory-in-a-box, upstream/downstream/fill-finish zones
+- Technology transfer and regulatory compliance for SUT implementation
+- Validation: IQ/OQ/PQ for SUT, leachables study, container integrity, filter validation
+- Supply chain management: quality agreements, lead times, safety stock, change notification
+- Training program design for SUT assembly and inspection
+- Risk management for SUT: FMEA, PCM qualification attributes (15 types), risk scoring (A×B×C×D)
+- Change management for SUT: maintenance vs disruptive change, notification mechanisms
+- Waste management: single-use waste disposal, autoclave decontamination, incineration
+- Case study: 2000L single-use bioreactor implementation in GMP facility
+
+**Key terms:** single-use technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, AET (analytical evaluation threshold), TTC (threshold of toxicological concern), SCT (safety concern threshold), PCM (process contact material), PPC (primary packaging component), CoC (certificate of compliance), CoQ (certificate of quality), P&ID, holdup volume, gamma irradiation, biocompatibility (ISO 10993), CCI (container closure integrity), URS, facility design, waste decontamination, FMEA, change notification, ballroom layout, technology transfer
+
+**Sections:**
+0. Ch1: Introduction & Key Concepts (p7-12)
+1a. Ch2.1–2.2: Components, Assemblies & Extractables (p13-28)
+1b. Ch2.3–2.4: Equipment Design & Quality Requirements (p29-50)
+1c. Ch2.5–2.8: Supplier, URS, Facility Design & Waste (p51-78)
+2. Ch3: Implementation & Use (p79-102)
+3. Ch4: Program Management (p103-120)
+4. App1–3: Regulations, Training & Defective Products (p121-132)
+5. App4: Risk Management Qualification Attributes (p133-146)
+6. App5: Case Study — 2000L Single-Use Bioreactor (p147-158)
+7. App6–7: References & Glossary (p159-174)
+
+---
+
 ## ISPE/ISPE-Vol7-Complete.md
 **Report:** ISPE Baseline® Guide Volume 7 (2nd Edition): Risk-Based Manufacture of Pharmaceutical Products
 **Pages:** p4–p182 | **Sections:** 9 (13 chapters + appendices, split into 11 subsections)
