@@ -1074,6 +1074,43 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## FDA/FDA-Aseptic-Complete.md
+**Report:** FDA Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing — CGMP (2004)
+**Pages:** p1–p63 | **Sections:** 7
+
+**Covers questions about:**
+- FDA regulatory framework for aseptic processing: 21 CFR parts 210 and 211 application, guidance vs legally binding requirements
+- Cleanroom classification: Class 100/1000/10000/100000 (= ISO 5/6/7/8); Table 1 particle limits and microbial action levels
+- Critical area design: unidirectional airflow at 0.45 m/s ±20%, HEPA leak testing (0.01% upstream threshold), DOP/PAO aerosols
+- Pressure differentials between cleanrooms: minimum 10–15 Pa; monitoring and alarm requirements; air change rates (≥20 ACH for ISO 8)
+- Personnel aseptic technique: 6 rules, gowning qualification program, glove monitoring per lot/daily, reassignment criteria
+- Components and container/closures: bioburden and endotoxin testing, dry heat depyrogenation (3-log endotoxin reduction), rubber stopper washing, EtO sterilization, siliconization
+- Endotoxin control: CIP procedures, dry heat inactivation, WFI rinse, endotoxin contribution from processing equipment
+- Time limitations: compounding to sterilization, filtration, product exposure, equipment hold time
+- Process simulation (media fill): study design, frequency (3 initial + semi-annual), size (5000–10000 units), media (SCDB), incubation (14 days, 20–35°C), acceptance criteria (<5000: 0 contaminated; 5000–10000: 1=investigate; >10000: 2=revalidate)
+- Filtration efficacy: Brevundimonas diminuta, 107 organisms/cm², 0.2 µm, forward flow and bubble point integrity testing
+- Sterilization validation: SAL 10⁻⁶, heat distribution/penetration studies, biological indicators, D-value, equipment controls
+- Environmental monitoring: written program, alert/action levels, trending, disinfection efficacy with sporicidal agents
+- Microbial identification: genotypic methods for investigations; total aerobic count vs yeast/mold incubation conditions
+- Sterility testing: USP <71>, sampling at start/middle/end + interventions, 7-point investigation framework for sterility positives
+- Batch record documentation: intervention recording, power disruptions, line stoppages, batch release decision criteria
+- Isolator Appendix: maintenance, glove integrity, open vs closed design, pressure differential (17.5–50 Pa), VHP 4–6 log reduction
+- BFS Appendix: parison formation steps, Class 100000 background, SIP validation, polymer qualification, in-process monitoring
+- Pre-filling Appendix: aseptic processing from early steps, cellular therapy products, closed systems, bulk sterility testing
+
+**Key terms:** Class 100 (ISO 5), HEPA filter, unidirectional airflow, pressure differential, media fill, Brevundimonas diminuta, SAL 10⁻⁶, endotoxin, depyrogenation, bioburden, D-value, environmental monitoring, alert level, action level, sterility testing, USP <71>, batch record, intervention, isolator, BFS (blow-fill-seal), 21 CFR 211.42, 21 CFR 211.113, gowning qualification, container closure integrity, prefiltration bioburden
+
+**Sections:**
+1. Sections I–III: Introduction, Background & Scope (p1–p7)
+2. Section IV: Buildings and Facilities (p4–p11)
+3. Sections V–VIII: Personnel, Components, Endotoxin & Time Limits (p12–p20)
+4. Section IX: Validation of Aseptic Processing & Sterilization (p20–p30)
+5. Section X: Laboratory Controls (p31–p36)
+6. Sections XI–XII: Sterility Testing & Batch Records (p37–p43)
+7. Appendices + References + Glossary (p44–p63)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1103,6 +1140,15 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | ICH Q5A Q5B Q5C Q5D Q5E, biologics quality guidelines / 生物製劑品質指引 | ISPE-Vol6 |
 | Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | PICS-Annex1 + TR90 |
 | PIC/S Annex 1 (2022), sterile manufacturing regulation, GMP regulation for sterile / PIC/S附件1、無菌藥品製造法規 | PICS-Annex1 |
+| FDA aseptic processing guidance 2004, FDA sterile drug guidance, 21 CFR 211 aseptic / FDA無菌製程指引2004、21 CFR 211 | FDA-Aseptic |
+| Class 100 ISO 5 critical area, Class 10000 ISO 7, Class 100000 ISO 8, FDA air classification table / FDA潔淨室分級、Table 1空氣分類 | FDA-Aseptic |
+| Media fill acceptance criteria FDA, contaminated unit threshold, 5000 10000 units / FDA培養基充填接受標準、汙染數量門檻 | FDA-Aseptic |
+| Brevundimonas diminuta filter challenge, 0.2 micron filter validation FDA / 布氏短波單胞菌過濾確效、FDA過濾器驗證 | FDA-Aseptic |
+| Gowning qualification FDA, aseptic technique rules, glove monitoring / FDA更衣資格認證、無菌技術規則、手套監測 | FDA-Aseptic |
+| Endotoxin control CIP FDA, dry heat inactivation, 3-log depyrogenation / FDA內毒素管控、就地清洗、乾熱滅活、3-log去熱原 | FDA-Aseptic |
+| Isolator FDA guidance, VHP 4-6 log, isolator pressure differential / FDA隔離器指引、VHP4-6對數去污、隔離器壓差 | FDA-Aseptic |
+| BFS blow-fill-seal FDA, parison formation, polymer qualification / FDA吹塑充填密封指引、管坯成型、聚合物確效 | FDA-Aseptic |
+| Sterility test investigation 7-point, sterility positive investigation framework / 無菌試驗7點調查、無菌試驗陽性調查框架 | FDA-Aseptic |
 | Grade A B C D classification, cleanroom limits, particle count table / A/B/C/D級潔淨室分級、粒子限值表 | PICS-Annex1 |
 | Terminal sterilisation vs aseptic, sterilisation methods, autoclave F0, depyrogenation Fh / 最終滅菌與無菌操作、滅菌方法、F0值、去熱原 | PICS-Annex1 |
 | PUPSIT, pre-use post-sterilization integrity test, filter integrity exemption / 使用前滅菌後完整性測試 | PICS-Annex1 + TR26 |
@@ -1273,7 +1319,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | FDA-Aseptic ★★★ (FDA 2004 CGMP guidance: full regulatory framework, Class 100/10000/100000, media fill criteria, filtration, sterilization, EM, sterility testing, isolator/BFS appendices) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
@@ -1303,7 +1349,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
 
 **Regulatory Background — FDA/EMA GMP (法規)**
-→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
+→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | FDA-Aseptic ★★★ (FDA 2004 CGMP aseptic processing guidance: complete 21 CFR 210/211 application, buildings/facilities, personnel, EM, media fill, sterility testing, isolators, BFS) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP / PIC/S Annex 1**
 → PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
