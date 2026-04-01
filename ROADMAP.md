@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01 (ICH Q8R2 complete)
+Last updated: 2026-04-01 (ICH Q8R2 + Q9R1 complete)
 
 ---
 
@@ -34,11 +34,11 @@ Last updated: 2026-04-01 (ICH Q8R2 complete)
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
 | FDA Guidances | Not started |
-| ICH Guidelines | Q8(R2) ✅ Complete; Q9(R1) placeholder; Q10 placeholder |
+| ICH Guidelines | Q8(R2) ✅ Complete; Q9(R1) ✅ Complete; Q10 placeholder |
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 45 of ~65-70 target documents complete (approx. 67%)**
+**Overall: 46 of ~65-70 target documents complete (approx. 69%)**
 
 ---
 
