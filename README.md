@@ -16,7 +16,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 ## Documents Covered
 
-### PDA Technical Reports & Points to Consider (23 complete)
+### PDA Technical Reports & Points to Consider (34 complete)
 
 | Document | Topic |
 |----------|-------|
@@ -26,43 +26,53 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | PDA TR22 | Process Simulation for Aseptically Filled Products |
 | PDA TR26 | Sterilizing Filtration of Liquids |
 | PDA TR39 | Temperature-Controlled Medicinal Products |
+| PDA TR41 | Virus Retentive Filtration (2022) |
+| PDA TR43 | Identification and Classification of Nonconformities in Glass Containers (2023) |
 | PDA TR46 | Last Mile GDP for Pharma Products to End Users (2024) |
 | PDA TR52 | Good Distribution Practices (GDPs) |
+| PDA TR54-6 | Formalized Risk Assessment for Excipients (2019) |
+| PDA TR56 | Phase-Appropriate Quality Systems for Biological Drug Substance (2026) |
 | PDA TR60 | Process Validation — A Lifecycle Approach |
+| PDA TR62 | Manual Aseptic Processes (2013) |
+| PDA TR65 | Technology Transfer (2014) |
 | PDA TR66 | Single-Use Systems in Pharmaceutical Manufacturing |
+| PDA TR68 | Risk-Based Approach for Prevention and Management of Drug Shortages (2024) |
 | PDA TR70 | Cleaning and Disinfection for Aseptic Facilities |
 | PDA TR73 | Prefilled Syringe (Sections 12–18) |
 | PDA TR73-2 | MDR Annex I for Staked Needle Systems |
+| PDA TR84 | Data Integrity in Manufacturing and Packaging (2020) |
 | PDA TR85 | Enhanced Test Methods for Visible Particle Detection |
 | PDA TR87 | Current Best Practices for Glass Vial Handling and Processing |
 | PDA TR88 | Microbial Data Deviation Investigations |
 | PDA TR90 | Contamination Control Strategy (CCS) |
 | PDA TR91 | Post-Approval Change Management |
+| PDA PtC-1 | Points to Consider for Aseptic Processing Part 1 |
 | PDA PtC-9 | Lessons Learned from COVID-19 Pandemic |
 | PDA PtC-12 | Restricted Access Barrier Systems (RABS) |
+| PDA PtC-13 | Material Qualification and Management |
 | PDA PtC-14 | Manufacturing of ATMPs — Facility Design |
 | PDA PtC-15 | Mobile Manufacturing |
 | PDA PtC-Isolators | Aseptic Processing in Isolators |
 
-### ISPE Guidelines (in progress)
+### ISPE Guidelines (6 complete, more in progress)
 
-| Document | Topic |
-|----------|-------|
-| ISPE Baseline Vol.5 C&Q (2nd Ed.) | Commissioning & Qualification |
-| ISPE Baseline Vol.7 | Risk-Based Manufacture of Pharmaceutical Products |
-| ISPE Baseline Vol.3 | Sterile Manufacturing Facilities |
-| ISPE Baseline Vol.4 | Water & Steam Systems |
-| ISPE Baseline Vol.6 | Biopharmaceutical Manufacturing Facilities |
-| ISPE GAMP 5 (2nd Ed.) | Computerized Systems Validation |
-| ISPE GPG HVAC | Heating, Ventilation and Air Conditioning |
-| ISPE GPG Single-Use Technology | Single-Use Systems |
-| ISPE GPG Sampling | Pharmaceutical Water, Steam & Process Gases |
-| ISPE GPG CTC | Mapping and Monitoring |
-| ISPE GPG Technology Transfer | 3rd Edition |
-| ISPE Good Engineering Practice | GEP Framework |
-| ISPE Process Gases | Process Gas Systems |
-| ISPE IT Infrastructure | Control and Compliance |
-| ISPE-PDA Quality Culture | Guide to Improving Quality Culture |
+| Document | Status | Topic |
+|----------|--------|-------|
+| ISPE Baseline Vol.3 | ✅ Complete | Sterile Manufacturing Facilities |
+| ISPE Baseline Vol.4 | ✅ Complete | Water & Steam Systems |
+| ISPE Baseline Vol.5 C&Q (2nd Ed.) | ✅ Complete | Commissioning & Qualification |
+| ISPE Baseline Vol.7 | ✅ Complete | Risk-Based Manufacture of Pharmaceutical Products |
+| ISPE GPG HVAC | ✅ Complete | Heating, Ventilation and Air Conditioning |
+| ISPE GPG Single-Use Technology | ✅ Complete | Single-Use Systems |
+| ISPE Baseline Vol.6 | 📋 PDF ready | Biopharmaceutical Manufacturing Facilities |
+| ISPE GAMP 5 (2nd Ed.) | 📋 PDF ready | Computerized Systems Validation |
+| ISPE GPG Sampling | 📋 PDF ready | Pharmaceutical Water, Steam & Process Gases |
+| ISPE GPG CTC | 📋 PDF ready | Mapping and Monitoring |
+| ISPE GPG Technology Transfer | 📋 PDF ready | 3rd Edition |
+| ISPE Good Engineering Practice | 📋 PDF ready | GEP Framework |
+| ISPE Process Gases | 📋 PDF ready | Process Gas Systems |
+| ISPE IT Infrastructure | 📋 PDF ready | Control and Compliance |
+| ISPE-PDA Quality Culture | 📋 PDF ready | Guide to Improving Quality Culture |
 
 ### Regulatory & Standards (planned)
 
