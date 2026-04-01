@@ -788,6 +788,46 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-Vol4-Complete.md
+**Report:** ISPE Baseline Guide Volume 4: Water and Steam Systems
+**Pages:** p1–p250 | **Sections:** 14 (10 chapters + 4 appendix groups, split into 18 subsections)
+
+**Covers questions about:**
+- Pharmaceutical water system design: PW, WFI, non-compendial water specifications and selection
+- USP water quality requirements: three-stage conductivity testing, TOC limits, microbial/endotoxin limits
+- Key design philosophies: Design Range vs Operating Range, Critical Process Parameters (CPP)
+- Water pretreatment options: filtration, softening, activated carbon, chlorination, UV, pH adjustment
+- Final treatment for Purified Water: ion exchange, CEDI, reverse osmosis (RO), UF, MF, UV
+- Final treatment for WFI: distillation (SE, ME, VC), RO for WFI, systems comparison
+- Pharmaceutical steam: utility steam vs clean steam, purity decision tree, sizing, distribution
+- Storage and distribution system design: tank types, loop configurations (hot/cold/ambient), deadlegs
+- Microbial control: continuous vs periodic sanitization, ozone, UV, heat, chemical methods
+- Instrumentation and control: conductivity, TOC, pH, ozone, flow, automation levels
+- Commissioning and qualification: three-phase sampling program, acceptance criteria, change control
+- Materials of construction: 316L SS, PVDF, surface finish, orbital welding, passivation, rouging
+- Fabrication: weld criteria, weld defects catalog, borescoping, PVDF welding, sanitary clamps
+- European perspective: EP vs USP differences for water and steam
+
+**Key terms:** WFI (Water for Injection), PW (Purified Water), USP, conductivity, TOC (Total Organic Carbon), endotoxin, RO (reverse osmosis), CEDI, ion exchange, distillation (SE/ME/VC), clean steam, utility steam, deadleg, biofilm, ozone, UV, passivation, rouging, 316L SS, PVDF, orbital welding, borescoping, three-stage testing, Alert/Action limits, loop velocity, vent filter, spray ball
+
+**Sections:**
+0. Introduction & Background (Ch1, p3-17)
+1. Key Design Philosophies (Ch2, p19-29)
+2. Water Options & Planning (Ch3, p31-41)
+3. Pretreatment Options (Ch4, p43-55)
+4. Final Treatment: Purified Water (Ch5, p57-73)
+5. Final Treatment: WFI (Ch6, p75-87)
+6a-6b. Pharmaceutical Steam (Ch7, p89-109) — 2 parts
+7a-7b. Storage & Distribution (Ch8, p111-145) — 2 parts
+8. Instrumentation & Control (Ch9, p147-156)
+9. Commissioning & Qualification (Ch10, p157-163)
+10. Appendix: USP & Passivation (App 11.1-11.3, p165-185)
+11a-11b. Appendix: Treatment Details (App 11.4-11.6, p186-210) — 2 parts
+12a-12b. Appendix: Steam & Fabrication (App 11.7-11.9, p211-236) — 2 parts
+13. Appendix: Design & Glossary (App 11.10-11.12, p229-250)
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -906,7 +946,19 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | HVAC for sterile manufacturing, air change rate, HEPA filter / 無菌製造HVAC、換氣次數、HEPA過濾器 | ISPE-Vol3 + ISPE-HVAC |
 | Pressure cascade, differential pressure, airlock design / 壓力梯度、壓差、氣閘設計 | ISPE-Vol3 + ISPE-HVAC |
 | oRABS vs cRABS vs isolator, barrier technology comparison / 開放式vs封閉式RABS vs隔離器 | ISPE-Vol3 + PtC-12 |
-| WFI system, clean steam, utility systems for sterile / 注射用水、潔淨蒸汽、無菌公用工程 | ISPE-Vol3 |
+| WFI system, clean steam, utility systems for sterile / 注射用水、潔淨蒸汽、無菌公用工程 | ISPE-Vol3 + ISPE-Vol4 |
+| Pharmaceutical water system design, PW, WFI, water quality / 製藥用水系統設計、純化水、注射用水 | ISPE-Vol4 |
+| USP conductivity, TOC, three-stage testing, water specifications / USP導電度、TOC、三階段檢測 | ISPE-Vol4 |
+| Water pretreatment, softening, activated carbon, chlorination / 水前處理、軟化、活性碳、加氯 | ISPE-Vol4 |
+| Ion exchange, CEDI, reverse osmosis, purified water treatment / 離子交換、CEDI、逆滲透、純化水處理 | ISPE-Vol4 |
+| Distillation for WFI, SE, ME, VC, still / 蒸餾製備WFI、單效、多效、蒸氣壓縮 | ISPE-Vol4 |
+| Clean steam, utility steam, steam purity, steam quality / 潔淨蒸汽、工程蒸汽、蒸汽純度、蒸汽品質 | ISPE-Vol4 |
+| Water storage tank, distribution loop, deadleg, loop velocity / 儲水槽、分配迴路、死角、流速 | ISPE-Vol4 |
+| Water system microbial control, ozone, UV, biofilm, sanitization / 水系統微生物控制、臭氧、UV、生物膜 | ISPE-Vol4 + TR88 |
+| Water system C&Q, three-phase sampling, qualification / 水系統確效、三階段取樣、確效認證 | ISPE-Vol4 + ISPE-Vol5 |
+| Passivation, rouging, derouging, stainless steel / 鈍化、紅銹、去紅銹、不銹鋼 | ISPE-Vol4 |
+| Orbital welding, borescoping, weld defects, SS fabrication / 軌道焊接、管內窺鏡、焊接缺陷 | ISPE-Vol4 |
+| PVDF piping, non-metallic distribution, plastic water system / PVDF管路、非金屬管路 | ISPE-Vol4 |
 | Sterile facility material flow, personnel flow, gowning rooms / 物料流、人員流、更衣室設計 | ISPE-Vol3 |
 | Lyophilizer, depyrogenation tunnel, sterile process equipment / 凍乾機、去熱原隧道、無菌製程設備 | ISPE-Vol3 |
 | Smoke study, airflow visualization, HVAC qualification / 煙霧測試、氣流可視化、HVAC確效 | ISPE-Vol3 |
@@ -1038,7 +1090,16 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PtC-1 ★★★ (K.1-K.3: design, resin handling, APS for BFS, Grade A air shroud) — single primary source
 
 **Water for Injection (WFI / 注射用水)**
-→ PtC-1 ★★★ (production methods: distillation vs cold membrane; quality limits; monitoring) — primary source for WFI questions
+→ ISPE-Vol4 ★★★ (complete WFI system design: distillation SE/ME/VC, RO, pretreatment, storage, distribution, C&Q) | PtC-1 ★★★ (production methods: distillation vs cold membrane; quality limits; monitoring) | ISPE-Vol3 ★ (WFI as utility)
+
+**Pharmaceutical Water Systems / Purified Water (製藥用水系統/純化水)**
+→ ISPE-Vol4 ★★★ (complete water system guide: PW/WFI design, pretreatment, final treatment, storage, distribution, I&C, C&Q, materials, fabrication) | TR88 ★★ (water system OOS investigation) | ISPE-Vol3 ★ (utility context)
+
+**Clean Steam / Pharmaceutical Steam (潔淨蒸汽/製藥蒸汽)**
+→ ISPE-Vol4 ★★★ (steam types, purity decision tree, CS generators, sizing, distribution, piping) | ISPE-Vol3 ★ (steam as utility)
+
+**Passivation / Rouging / SS Fabrication (鈍化/紅銹/不銹鋼施工)**
+→ ISPE-Vol4 ★★★ (passivation procedures, rouging types, orbital welding, weld defects, surface finish, PVDF) | ISPE-Vol3 ★ (construction materials)
 
 **Lyophilization / Freeze-drying (凍乾)**
 → TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)

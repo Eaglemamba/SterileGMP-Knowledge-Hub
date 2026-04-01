@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Chapter 8 (Part B): Microbial Control Design</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 8 (Part B): Microbial Control Design</h1>
+    <div class="subtitle">Storage and Distribution -- Microbial Control Design Considerations, Continuous Microbial Control, Periodic Sterilization/Sanitization</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p137-p145</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives</h3>
+    <ol>
+        <li>Understand the fundamental conditions that aggravate microbial problems and the basic measures to counteract them in water systems.</li>
+        <li>Master the regulatory clarifications on common industry practices: finishes, tank orientation, tank isolation, turnover, drainability, deadlegs, positive pressure, and loop velocity.</li>
+        <li>Differentiate between continuous microbial control methods: hot systems (&ge;65&deg;C), cold systems (4-10&deg;C), and ambient systems with periodic sanitization.</li>
+        <li>Evaluate the roles of ozone, UV light, microfiltration/ultrafiltration, and circulation as continuous control tools.</li>
+        <li>Compare periodic sterilization/sanitization methods: chemical, ozone, and heat-based approaches.</li>
+        <li>Apply system design principles for sanitization -- materials of construction and storage tank design considerations.</li>
+    </ol>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>Section Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec8-7">8.7 Microbial Control Design</a>
+        <a href="#sec8-7-1">8.7.1 Regulatory Clarification</a>
+        <a href="#sec8-8">8.8 Continuous Microbial Control</a>
+        <a href="#sec8-8-4">8.8.4 Ozone</a>
+        <a href="#sec8-8-5">8.8.5 UV Light</a>
+        <a href="#sec8-8-6">8.8.6 Filtration</a>
+        <a href="#sec8-8-7">8.8.7 Circulation</a>
+        <a href="#sec8-9">8.9 Periodic Sterilization</a>
+        <a href="#sec8-10">8.10 System Design</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.7 MICROBIAL CONTROL DESIGN CONSIDERATIONS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-7">8.7 Microbial Control Design Considerations</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>In any given water storage and distribution system, there are certain fundamental conditions that can always be expected to aggravate a <span class="key-term">microbial problem</span>. Likewise, several basic measures will always tend to counteract such problems. Fundamental conditions that typically could aggravate the problem include:</p>
+        <ul>
+            <li><span class="key-term">Stagnant conditions</span> and areas of low flow rates</li>
+            <li>Temperatures that promote microbial growth (<span class="key-term">15-55&deg;C</span>)</li>
+            <li>Poor quality supply water</li>
+        </ul>
+
+        <p>Some basic measures that have been shown to alleviate such problems are:</p>
+        <ul>
+            <li>Maintaining <span class="key-term">ozone levels</span> of 0.02 ppm to 0.2 ppm</li>
+            <li>Continuous, <span class="key-term">turbulent flow</span></li>
+            <li>Elevated temperatures</li>
+            <li>Proper slope</li>
+            <li>Smooth, clean surfaces that minimize nutrient accumulation</li>
+            <li>Frequent draining, flushing, or sanitizing</li>
+            <li>Air breaks in drain piping</li>
+            <li>Ensuring no leaks in the system</li>
+            <li>Maintaining <span class="key-term">positive system pressure</span></li>
+        </ul>
+
+        <p>All pharmaceutical water must meet the <span class="key-term">EPA standard</span> for microbiological quality of potable water; which means it must basically be free of specific indicator organisms. Beyond that, microbiological quality for non-compendial water should be based upon its intended use and the types of products that will be formulated with it.</p>
+
+        <p>It is important to note though that although the required microbial population acceptance level for <span class="key-term">USP compendial purified water is 100 CFU/ml</span>, reliance on such a single parameter can be misleading. The 100 CFU/ml limit may generally be applied to the manufacture of solid oral dosage forms. Many times, however, aqueous or topical formulations require tighter controls to maintain product quality. The USP points out that these types of products have been the subject of recalls when found to be contaminated with <span class="key-term">gram negative organisms</span>, and the typical microbiological flora of water are gram negative organisms.</p>
+
+        <p>A common appropriate approach to dealing with this key issue involves the use of <span class="key-term">trend analysis</span>. Using such an approach, alert and action levels are related to the system norm. In this context, strategies for responding to the alert and action levels can, and should, be developed. Even with the most conscientious design, there may be places in which <span class="key-term">biofilm</span> can form. Good Engineering Practices, such as eliminating deadlegs, ensuring adequate flow velocities throughout the system, and periodic sanitization help control microbial activity.</p>
+
+        <p>It is common practice, therefore, to store and distribute water in a circulating system under any of the following scenarios:</p>
+        <ul>
+            <li>At conditions which are <span class="key-term">self-sanitizing</span> such as above 65&deg;C or under ozone.</li>
+            <li>At conditions that <span class="key-term">limit microbial growth</span> such as below 10&deg;C with periodic sanitization.</li>
+            <li>At <span class="key-term">ambient temperatures</span> where sanitization is determined by the validated methods that control microbial growth.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>Core Concept -- Microbial Control Triad</h4>
+            <p><strong>Three enemies of water system microbial quality:</strong></p>
+            <ul>
+                <li><strong>Stagnation (停滯):</strong> still water = bacteria paradise. No flow = no shear force to prevent attachment, nutrients accumulate on surfaces.</li>
+                <li><strong>Temperature sweet spot (溫度甜蜜區 15-55&deg;C):</strong> this is the "danger zone" for microbial growth. Most waterborne bacteria thrive in this range.</li>
+                <li><strong>Poor feedwater (原水品質差):</strong> garbage in, garbage out. High bioburden in feedwater puts enormous pressure on downstream treatment.</li>
+            </ul>
+            <p>The nine countermeasures listed in the original text are the engineering "toolkit" for fighting these three enemies. Every design decision in sections 8.7-8.10 maps back to these fundamentals.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy</h4>
+            <p>Think of your water system as a swimming pool. If you stop the circulation pump, let the water sit at room temperature, and skip chlorination -- what happens in a week? Algae blooms, murky water, bacteria everywhere. A pharmaceutical water system faces the same biological reality, just with much stricter standards. The nine countermeasures are like the pool's circulation pump + chlorine + filtration + regular cleaning -- you need a combination of continuous and periodic controls.</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Key Notes</h4>
+            <p><strong>100 CFU/ml -- a misleading "safety net":</strong></p>
+            <ul>
+                <li>USP's 100 CFU/ml for Purified Water is an ACTION limit, not a design target. If your system routinely runs at 80-90 CFU/ml, you are already in trouble.</li>
+                <li>For liquid oral products, topicals, and aqueous formulations, FDA expects much tighter limits -- often 10 CFU/ml or lower as alert limits.</li>
+                <li>The key insight: <strong>use trend analysis (趨勢分析)</strong> to set YOUR system's alert and action limits based on actual capability, not just USP minimums.</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>Three Operating Strategies</h4>
+            <table>
+                <tr><th>Strategy</th><th>Condition</th><th>Typical Application</th><th>Sanitization Need</th></tr>
+                <tr><td>Hot (熱循環)</td><td>&ge;65&deg;C (optimal 80&deg;C)</td><td>WFI systems</td><td>Inherently self-sanitizing</td></tr>
+                <tr><td>Cold (冷循環)</td><td>4-10&deg;C</td><td>Biotech, some PW</td><td>Reduced frequency</td></tr>
+                <tr><td>Ambient (常溫)</td><td>15-30&deg;C</td><td>PW systems</td><td>Frequent (ozone or hot water)</td></tr>
+            </table>
+            <p>As a CDMO, your choice of operating strategy determines lifecycle cost, energy consumption, and operational complexity. Hot systems are most reliable but most expensive to run. Ambient systems are cheapest but require the most vigilant sanitization programs.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.7.1 REGULATORY CLARIFICATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-7-1">8.7.1 Regulatory Clarification to Common Industry Practices</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The following are industry practices that are all <span class="key-term">Good Engineering Practices (GEPs)</span>, and have been perceived in the past to reduce the chance of microbial growth.</p>
+
+        <p>If you collectively ignore all of these items, you increase the likelihood of having a bioburden problem. These items include <span class="key-term">finishes</span>, storage tank orientation, storage tank isolation, storage tank turnover, piping slope and drainability, <span class="key-term">deadlegs</span> and velocity.</p>
+
+        <h3>8.7.1.1 Finishes</h3>
+        <p>Common industry practices typically range from milled pipe to <span class="key-term">320 grit (0.38 microns Ra)</span> mechanical polish with electropolish. Electropolishing is a reverse plating process, which improves the surface finish of mechanically polished stainless steel piping and equipment. It reduces surface area and removes surface intrusions caused by mechanical polishing, which may cause subsequent rouging, and/or discoloration. After mechanically polishing or electropolishing the system, the polishing compounds should be confirmed to have been completely removed from the pipe, so as not to accelerate corrosion.</p>
+
+        <p>The benefits for electropolish or finishes smoother than <span class="key-term">0.76 microns Ra</span> (approx. 180 grit or 30 micro inch) are questionable.</p>
+
+        <p>Systems operating at ambient temperature or with infrequent sanitization may require a smoother surface finish. The interior surfaces of stainless piping systems, in compendial water service, are typically ground and/or electropolished, at considerable cost, to achieve a smooth surface of minimal porosity (<span class="key-term">0.4 to 1.0 microns Ra</span>), in order to reduce bacterial adhesion and enhance cleanability. A viable alternative is extruded <span class="key-term">PVDF piping</span>, which can produce a smoother surface than most metallic systems, without recourse to polishing, although PVDF has other disadvantages.</p>
+
+        <h3>8.7.1.2 Storage Tank Orientation</h3>
+        <p>Vertical orientation is the most common because of the following advantages:</p>
+        <ul>
+            <li>Lower fabrication cost</li>
+            <li>Less dead volume</li>
+            <li>Simpler spray ball design</li>
+            <li>Less floor space required</li>
+            <li>Horizontal vessels are used where height is a constraint</li>
+        </ul>
+
+        <h3>8.7.1.3 Storage Tank Isolation</h3>
+        <p>Common practice for compendial and non-compendial waters where microbial contamination is a concern is to use a <span class="key-term">0.2 micron hydrophobic vent filter</span>.</p>
+        <p>For hot storage vessels, the vent filter must be heated to minimize moisture condensation. An alternate practice is to blanket the tank with <span class="key-term">0.2 micron filtered air or nitrogen</span>. Nitrogen blanketing can be used if CO<sub>2</sub> absorption is a concern, or if final product oxidation is a problem.</p>
+
+        <h3>8.7.1.4 Storage Tank Turnover</h3>
+        <p>Common practice is <span class="key-term">1-5 tank turnovers per hour</span>.</p>
+        <p>The turnover rate may be important for systems using external sanitization or polishing equipment. The turnover rate is less important when storage is under sanitizing conditions, including hot storage or ozone. It may be less important under conditions that limit microbial growth, such as cold storage (4-10&deg;C), but this must be demonstrated by documentation.</p>
+        <p>Some storage tank turnover is required to avoid dead areas.</p>
+
+        <h3>8.7.1.5 System Drainability</h3>
+        <p>Systems that will be <span class="key-term">steam sterilized</span> must be fully drainable to assure complete condensate removal.</p>
+        <p>Systems that will never be steam sterilized do not need to be fully drainable, as long as water is not allowed to stagnate in the system.</p>
+        <p>It is good engineering practice to allow for the draining of equipment and associated piping.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>Important Context</h4>
+            <p><strong>Why "Regulatory Clarification"?</strong> This section is ISPE explicitly saying: "These are GEPs, not absolute regulatory requirements." Many companies have over-interpreted these practices as FDA mandates. ISPE clarifies what is truly critical vs. what is helpful but not mandatory. This nuance is extremely valuable for CDMO engineers who must balance compliance with cost.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Surface Finish Comparison</h4>
+            <table>
+                <tr><th>Finish</th><th>Ra (microns)</th><th>Cost</th><th>Benefit</th></tr>
+                <tr><td>Milled pipe (as-received)</td><td>~1.6-3.2</td><td>Lowest</td><td>Acceptable for non-critical</td></tr>
+                <tr><td>180 grit mechanical</td><td>~0.76</td><td>Moderate</td><td>Practical minimum per ISPE</td></tr>
+                <tr><td>320 grit + EP</td><td>~0.38</td><td>High</td><td>Gold standard for WFI</td></tr>
+                <tr><td>PVDF (extruded)</td><td>&lt;0.25</td><td>Moderate</td><td>Smoothest, but temp limited</td></tr>
+            </table>
+            <p><strong>ISPE's honest assessment:</strong> below 0.76 &mu;m Ra, the incremental benefit is "questionable." This is a significant statement -- many companies spend enormous money on 320 grit + EP when 180 grit might suffice. The exception: ambient systems with infrequent sanitization genuinely benefit from smoother finishes.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy -- Surface Finish</h4>
+            <p>Surface finish in water pipes is like the smoothness of kitchen countertops. A rough wooden cutting board harbors bacteria in its grooves no matter how hard you scrub. A polished granite countertop is much easier to clean. But beyond a certain smoothness (like glass), the improvement becomes negligible -- and the cost skyrockets. Same logic applies to pipe finishes: there is a point of diminishing returns.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Tank Design Quick Reference</h4>
+            <ul>
+                <li><strong>Orientation (方向):</strong> Vertical preferred. Less dead volume, easier spray ball coverage, lower cost. Horizontal only when ceiling height is a constraint.</li>
+                <li><strong>Isolation (隔離):</strong> 0.2 &mu;m hydrophobic vent filter is standard. For hot tanks, HEAT the filter to prevent condensation (wet filter = bacteria highway). Nitrogen blanket for CO<sub>2</sub>-sensitive or oxidation-sensitive products.</li>
+                <li><strong>Turnover (周轉率):</strong> 1-5x per hour is the norm. Higher turnover = less stagnation = less biofilm risk. But under hot or ozonated storage, turnover is less critical because the storage conditions themselves are microbicidal.</li>
+                <li><strong>Drainability (排水性):</strong> Steam-sterilized systems MUST be fully drainable (condensate traps). Non-steam systems: drainability is GEP, not absolute requirement, as long as no stagnation occurs.</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>CDMO Practical Tip</h4>
+            <p><strong>Turnover rate and client audits:</strong> Clients and auditors frequently ask "What is your tank turnover rate?" The correct answer is not just a number -- it depends on your operating mode. If your tank is continuously ozonated at 0.05 ppm, a turnover of 1x/hr is fine. If your tank is ambient without ozone, you need 3-5x/hr minimum. Always relate turnover to your microbial control strategy.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.7.1.6 DEADLEGS (Critical Topic) -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-7-1-6">8.7.1.6 Deadlegs -- Critical Design Topic</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Good engineering practice is to minimize or eliminate <span class="key-term">deadlegs</span> where possible. Common practice is to limit deadlegs to less than <span class="key-term">6 branch pipe diameters</span> or less. This stems from the "6D" rule contained in the proposed <span class="key-term">CFR 212 regulations of 1976</span>. Recently, industry experts have suggested using a guideline of <span class="key-term">3D or less</span>. However, this new guideline causes confusion since the proponents of this standard generally are discussing the length of dead leg from the <span class="key-term">outer wall of the pipe</span>, while the original 6D rule describes the distance from the <span class="key-term">center line of the pipe</span> to the end of the deadleg. Obviously, if a 1/2" branch is placed on a 3" main, the distance from the center line of the pipe to the outer wall of the pipe is already 3D. Thus, even a zero deadleg valve might not meet the 3D requirement.</p>
+
+        <p>To avoid confusion in the future this Guide suggests that the length of the deadleg be considered from the <span class="key-term">outer wall of the pipe</span>. We propose avoiding a hard rule of thumb for maximum allowable deadlegs.</p>
+
+        <p>Ultimately, the water must meet the required quality regardless of the length of the deadleg. Good Engineering Practice requires minimizing the length of deadlegs and there are many good instrument and valve designs available to do so.</p>
+
+        <p>It should be recognized that any <span class="key-term">one-way system</span> can constitute a deadleg if it is not frequently flushed or sanitized.</p>
+
+        <h3>8.7.1.7 Positive Pressure</h3>
+        <p>It is important to maintain the system under <span class="key-term">positive pressure</span> at all times. One common concern is systems designed with insufficient return flow, which could draw a vacuum at points of use under periods of high water usage. This causes an unexpected <span class="key-term">microbial challenge</span> to the system.</p>
+
+        <h3>8.7.1.8 Loop Velocity</h3>
+        <p>Common practice is to design circulating loops for a minimum return velocity of <span class="key-term">3 feet/second</span> or higher, and for <span class="key-term">Reynolds numbers</span> in the turbulent region of greater than 2,100.</p>
+        <p>Return velocities less than 3 feet/second are acceptable for short periods of time, or in systems that do not favor microbial growth, such as hot, chilled, or ozonated loops.</p>
+        <p>A minimum return flow is required to maintain the loop in a <span class="key-term">flooded condition</span> under positive pressure.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>CRITICAL: The Deadleg Debate -- 6D vs 3D</h4>
+            <p>This is one of the most debated topics in pharmaceutical water system design. Understanding the nuance here can save you millions in unnecessary engineering and help you defend your design during audits.</p>
+            <ul>
+                <li><strong>6D Rule (1976 proposed CFR 212):</strong> Measured from the CENTER LINE of the main pipe to the end of the branch. This was never finalized into law -- it was a proposed regulation that was withdrawn.</li>
+                <li><strong>3D Rule (modern industry):</strong> Measured from the OUTER WALL of the main pipe. Sounds stricter, but it is actually roughly equivalent to the 6D center-line measurement for typical pipe sizes.</li>
+                <li><strong>The confusion:</strong> A 1/2" branch on a 3" main has 3D just from center-line to outer wall. So a "zero-length deadleg valve" already fails the 3D center-line test!</li>
+            </ul>
+            <p><strong>ISPE's resolution:</strong> Measure from the outer wall. But more importantly, don't treat any "D" number as an absolute rule. Focus on whether the water meets quality specifications.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy -- Deadlegs</h4>
+            <p>A deadleg in a water system is like a dead-end alley in a city. Main streets have constant traffic (flow) that keeps them clean. But the dead-end alley has no through-traffic -- garbage accumulates, puddles form, and it becomes unsanitary. The shorter the alley, the better, because some turbulence from the main street still reaches in. But beyond a certain length, the alley becomes completely stagnant. Your design goal is to keep all "alleys" as short as possible -- or better yet, eliminate them entirely by using through-flow designs.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Deadleg Measurement -- Visual Guide</h4>
+            <p><strong>Example: 1/2" branch on 3" main pipe</strong></p>
+            <table>
+                <tr><th>Measurement Method</th><th>Starting Point</th><th>"Already used" distance</th><th>Practical impact</th></tr>
+                <tr><td>6D (old, center-line)</td><td>Center of main</td><td>1.5" (= 3D of branch)</td><td>3D of branch left for valve</td></tr>
+                <tr><td>3D (new, outer wall)</td><td>Outer wall of main</td><td>0"</td><td>Full 1.5" for valve</td></tr>
+            </table>
+            <p>ISPE's recommendation to use outer wall measurement resolves the mathematical absurdity of the center-line approach for large main / small branch combinations.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Positive Pressure & Velocity -- Key Parameters</h4>
+            <ul>
+                <li><strong>Positive pressure (正壓維持):</strong> If the system drops to negative pressure during peak usage, ambient air (with all its microorganisms) gets sucked in through any tiny leak. This is an "uncontrolled ingress" event -- essentially defeating all your upstream treatment.</li>
+                <li><strong>3 ft/sec minimum return velocity (最低回流速度):</strong> This provides turbulent flow (Re &gt; 2,100) that creates shear forces on pipe walls, discouraging biofilm attachment. Below 3 ft/sec, laminar flow allows bacteria to settle and attach.</li>
+                <li><strong>Exception:</strong> Hot (&ge;65&deg;C), cold (&le;10&deg;C), or ozonated systems can tolerate lower velocities for short periods because the microbial control comes from temperature or chemistry, not just flow.</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>Your system has a 2" branch on a 6" main. Calculate the deadleg distance under both the 6D (center-line) and 3D (outer-wall) rules. Which method gives more practical design space?</li>
+                <li>During peak production, your loop return velocity drops to 1.5 ft/sec for 30 minutes. Is this acceptable? What factors determine the answer?</li>
+                <li>An auditor asks: "Why don't you meet the 3D deadleg rule at point-of-use #7?" How do you respond? (Hint: ISPE's position on "hard rules of thumb.")</li>
+                <li>Your CDMO has a one-way branch feeding a filling machine. This branch is 15 feet long with no recirculation. How do you address the deadleg concern?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.8 CONTINUOUS MICROBIAL CONTROL -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-8">8.8 Continuous Microbial Control</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Process water systems generally employ both <span class="key-term">continuous methods</span> of microbial control, and periodic sanitizations. This section discusses continuous methods for controlling microbial growth.</p>
+
+        <h3>8.8.1 "Hot" Systems</h3>
+        <p>The most effective and reliable means of preventing the growth of bacteria is to operate the system at temperatures above which bacteria can survive. If the distribution system is maintained in <span class="key-term">hot conditions</span>, sanitization on a routine basis can be eliminated.</p>
+        <p>Systems operating at <span class="key-term">80&deg;C</span> have a long history of data showing the prevention of microbial growth. More recently, companies have been validating water systems at <span class="key-term">65&deg;C</span>. The advantages of operating at lower temperature include energy savings, lower risk of injury, and reducing the amount of <span class="key-term">rouging</span>. Systems operating at the higher end of this range have a greater safety margin with regard to microbial contamination. The effectiveness of temperatures below 80&deg;C must be verified with test data, on a case by case basis.</p>
+        <p>Note that these temperature ranges will not destroy <span class="key-term">endotoxin</span>. As noted in Chapter 6, where endotoxin is a concern, the treatment system must be designed to remove it.</p>
+
+        <h3>8.8.2 "Cold" Systems</h3>
+        <p>The use of the term "cold" in this case implies that a system is maintained at a low enough temperature to <span class="key-term">inhibit microbial growth</span>. While this has been shown to be effective, the energy costs associated with it generally make this type system costly to operate. Generally, "Cold" systems are operated from <span class="key-term">4&deg;C to 10&deg;C</span>.</p>
+        <p>Microbial growth rates drop off significantly below <span class="key-term">15&deg;C</span>, so the sanitization frequency of cold systems may be reduced compared to ambient systems. The effectiveness of a specific temperature, and the associated sanitization frequency in any particular system, must be determined by statistical analysis, on a case by case basis.</p>
+
+        <h3>8.8.3 "Ambient" Systems</h3>
+        <p>Circulation temperatures of any pharmaceutical water system are dictated by either the required microbial specification or the required temperature for usage. "Ambient" temperature purified water systems using either <span class="key-term">ozone</span> and/or <span class="key-term">hot water sanitizations</span> are common throughout the industry, and normally result in lower lifecycle costs, as well as reduced energy consumption compared with either the "hot" or "cold" systems.</p>
+        <p>However, without increased levels of system sanitizations, the lack of temperature control at the water storage vessel and distribution loop could result in the formation of a <span class="key-term">biofilm</span> within the system, which could sporadically and unpredictably produce water failing microbiological specifications and necessitate non-scheduled water system shutdowns.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>Hot vs Cold vs Ambient -- Decision Matrix</h4>
+            <table>
+                <tr><th>Factor</th><th>Hot (&ge;65&deg;C)</th><th>Cold (4-10&deg;C)</th><th>Ambient</th></tr>
+                <tr><td>Capital cost</td><td>High (insulation, HX)</td><td>High (chillers)</td><td>Lowest</td></tr>
+                <tr><td>Operating cost</td><td>High (energy)</td><td>High (energy)</td><td>Lowest (base)</td></tr>
+                <tr><td>Sanitization need</td><td>None (self-sanitizing)</td><td>Reduced frequency</td><td>Frequent required</td></tr>
+                <tr><td>Microbial safety margin</td><td>Highest</td><td>Good</td><td>Lowest (highest risk)</td></tr>
+                <tr><td>Operator safety</td><td>Burn risk</td><td>Low risk</td><td>Low risk</td></tr>
+                <tr><td>Rouging risk</td><td>Higher</td><td>Lower</td><td>Lowest</td></tr>
+                <tr><td>Endotoxin control</td><td>NO -- must remove upstream</td><td>NO</td><td>NO</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>Key Insight -- 80&deg;C vs 65&deg;C</h4>
+            <p><strong>The 65&deg;C trend:</strong> Many modern facilities are validating at 65&deg;C instead of the traditional 80&deg;C. The benefits are significant:</p>
+            <ul>
+                <li>~20% energy savings</li>
+                <li>Reduced rouging (iron oxide formation accelerates with temperature)</li>
+                <li>Lower burn injury risk for operators</li>
+                <li>Less thermal stress on gaskets and instruments</li>
+            </ul>
+            <p><strong>But:</strong> 65&deg;C has a smaller safety margin. You MUST validate with YOUR system's data. Some thermophilic organisms can survive at 60-65&deg;C. ISPE explicitly says "the effectiveness of temperatures below 80&deg;C must be verified with test data, on a case by case basis."</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy -- Three Temperature Strategies</h4>
+            <p>Think of food storage. A hot buffet keeps food above 65&deg;C to prevent bacterial growth -- it is inherently safe but energy-intensive (like hot water systems). A refrigerator at 4&deg;C slows bacteria dramatically but does not kill them -- you still need to clean it periodically (like cold water systems). Leaving food at room temperature is cheapest but most risky -- you must eat it quickly or it spoils (like ambient water systems needing frequent sanitization). The "right" answer depends on your risk tolerance, budget, and usage pattern.</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Biofilm Warning</h4>
+            <p><strong>The ambient system trap:</strong> Ambient systems look attractive on paper (lowest cost), but the biofilm risk is real and serious. Once biofilm establishes in a system:</p>
+            <ul>
+                <li>It becomes extremely difficult to remove (protected by extracellular polymeric substances / EPS)</li>
+                <li>It sporadically releases planktonic bacteria, causing unpredictable test failures</li>
+                <li>It can resist sanitization agents at standard concentrations</li>
+                <li>Unscheduled shutdowns for remediation are far more costly than the energy savings from not running hot</li>
+            </ul>
+            <p>For a CDMO producing injectable products, the risk calculus almost always favors hot systems for WFI loops.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.8.4-8.8.7 OZONE, UV, FILTRATION, CIRCULATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-8-4">8.8.4-8.8.7 Ozone, UV Light, Filtration, and Circulation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.8.4 Ozone</h3>
+        <p><span class="key-term">Ozone</span> has been shown effective for microbial control. It is a strong oxidant, which chemically reacts with organisms and destroys them. The destruction of these organisms results in organic compounds, which may be further degraded by ozone, ultimately to carbon dioxide. Ozone is twice as powerful an oxidant as chlorine and needs to be dosed continually to maintain concentration.</p>
+        <p>In any compendial water system and most other applications, water at the use points is expected to be totally free of ozone. Ozone removal is commonly effected through <span class="key-term">ultra violet radiation</span>. 254 nanometer UV light converts ozone to oxygen. A common design is to maintain an ozone concentration between <span class="key-term">0.02 ppm and 0.1 ppm</span> in the storage tank, and use a UV light at the beginning of the distribution loop for removal. To sanitize the loop itself, the UV light can be turned off during periods of no use, and the ozone will circulate through the loop. The UV dosage required for ozone destruction is generally <span class="key-term">2 to 3 times</span> that required for microbial control. Testing should be done to verify absence of ozone at the use points.</p>
+
+        <h3>8.8.5 UV Light</h3>
+        <p><span class="key-term">Ultraviolet lights</span> have been shown to reduce microbial populations in storage and distribution systems. UV energy is germicidal in the wavelengths of <span class="key-term">200 to 300 nanometers</span>, which falls below the visible spectrum. UV light de-activates DNA leading to bacteria reduction. A UV light is not a sterilization device, as it is often referred to. The effectiveness of the light will depend on the quality of the water in which it is acting, the intensity of the light, flow rate of water, contact time, and the type of bacteria present.</p>
+
+        <h3>8.8.6 Filtration</h3>
+        <p>Along with other particulate matter, bacteria and endotoxins may be removed via filtration. This filtration media can be either of the <span class="key-term">microfiltration (2-0.07 microns)</span> or <span class="key-term">ultrafiltration (0.1-0.005 micron)</span> scale. The integrity of these filters must be maintained.</p>
+
+        <h3>8.8.6.1 Microfiltration</h3>
+        <p>Microfiltration includes the use of depth cartridge filters, pleated filters, and cross flow filtration membrane elements. These filters can remove particles ranging in size from 100 microns down to 0.1 micron. Depth and pleated filters allow water to flow through a wall of fibers perpendicular to the water direction (<span class="key-term">dead ended filters</span>). The particles are then trapped on the outside wall of these filters, or within the filter walls (for depth filters), due to the pore size of the filter. The filter will fill up with these particles and then needs to be replaced with a new filter.</p>
+
+        <h3>8.8.6.2 Ultrafiltration</h3>
+        <p><span class="key-term">Ultrafiltration</span> can be used to remove organics and bacteria, as well as most viruses and pyrogens from a water source. Filtration is typically from 0.1 micron down to 0.01 micron. Cross flow ultrafiltration forces the water to flow parallel to the filter media, and the particles which are too large to pass through the membrane elements are then expelled from the system in a concentrate stream to drain (typically 5-10% of the feed flow). This allows the filters to be self-cleaning and eliminates the need to replace these membrane elements frequently. This type of filtration can be used as a "maintenance" step downstream of the storage tank in certain situations.</p>
+
+        <p>In general, for any purified water system, <span class="key-term">filtration downstream of the storage tank is not recommended</span>. This comes from concerns of "<span class="key-term">grow through</span>" where bacteria will colonize on the upstream side of the filter, and ultimately be found on the downstream side even though the pore size of the media may theoretically be smaller than the size of the bacteria. An additional concern is the potential for accumulation of nutrients on the filter media, which may in fact increase the opportunity for microbial growth. However, filters downstream of a circulation pump are sometimes used in water systems. System designs should be predicated on obtaining the desired water quality upstream of the storage tank, using the treatment train. Filters downstream of the storage tank should not be relied on to purify the water.</p>
+
+        <h3>8.8.7 Circulation</h3>
+        <p>Most new water systems use a <span class="key-term">circulating loop</span> for distribution. The primary purpose of circulation is to reduce the chance of microbial growth, or microbial attachment to the surfaces of the system. Although the mechanisms are not universally agreed upon, it is thought that the <span class="key-term">shear forces</span> associated with turbulent water flow inhibit nutrient concentration and attachment of bacteria to surfaces. The velocity required to obtain these benefits is generally agreed to be greater than <span class="key-term">3 feet per second</span>, or Reynolds numbers greater than 2,100.</p>
+        <p>Velocity may drop off for short periods of time during high use times without adversely affecting the system, so long as positive pressure is maintained in the system. Circulation also serves to maintain proper temperature throughout the system in hot and cold systems.</p>
+        <p>Studies have shown that the velocities required to remove biofilm are higher than practical for a water system (<span class="key-term">above 15 ft/sec</span>). However, a combination of high velocity (5 ft/sec or greater) with an antimicrobial agent, such as ozone or chlorine, may, over a long enough period of time, effectively remove biofilm.</p>
+        <p>A turbulent condition may be maintained in short dead ended pipe stubs if the length of the stubs is limited. This limiting length varies with the pipe stub diameter and to a lesser degree with the main pipe diameter. A rule of thumb for the maximum dead leg is <span class="key-term">6 branch pipe diameters</span>. This "rule of thumb" may be difficult to achieve in large mains with small branches, and may result in unacceptably long dead legs in large branches. Rather than universally applying "rules of thumb", it is important to recognize dead legs as an area of concern and take appropriate steps to prevent them in the original design or implement special provisions to address them if unavoidable.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>Ozone System Design -- The Elegant Dual-Purpose Architecture</h4>
+            <p>The ozone + UV design described here is one of the most elegant solutions in water system engineering:</p>
+            <ul>
+                <li><strong>Storage tank:</strong> Maintained at 0.02-0.1 ppm ozone -- continuously sanitized.</li>
+                <li><strong>UV at loop inlet:</strong> Destroys ozone before distribution -- use points get ozone-free water.</li>
+                <li><strong>Off-hours loop sanitization:</strong> Simply turn OFF the UV light, and ozone circulates through the entire loop.</li>
+            </ul>
+            <p><strong>Key design note:</strong> UV dosage for ozone destruction (2-3x) is much higher than for germicidal action. Size UV units for ozone destruction, not just microbial kill.</p>
+        </div>
+
+        <div class="note-box">
+            <h4>UV Light -- Common Misconception</h4>
+            <p><strong>"UV sterilizes water" -- WRONG.</strong> ISPE explicitly states UV is NOT a sterilization device. UV reduces microbial populations but cannot guarantee sterility. Its effectiveness depends on:</p>
+            <ul>
+                <li>Water quality (turbidity reduces penetration)</li>
+                <li>UV intensity (lamp aging reduces output)</li>
+                <li>Flow rate and contact time</li>
+                <li>Bacteria species (some are more UV-resistant)</li>
+            </ul>
+            <p>In audits, never claim UV "sterilizes" your water. Say it "reduces microbial populations" or "provides continuous microbial control."</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Filtration Summary</h4>
+            <table>
+                <tr><th>Type</th><th>Pore Size</th><th>Removes</th><th>Flow Mode</th><th>Key Concern</th></tr>
+                <tr><td>Microfiltration (MF)</td><td>0.07-2 &mu;m</td><td>Bacteria, particles</td><td>Dead-end (perpendicular)</td><td>Replacement frequency</td></tr>
+                <tr><td>Ultrafiltration (UF)</td><td>0.005-0.1 &mu;m</td><td>Bacteria, viruses, pyrogens</td><td>Cross-flow (parallel)</td><td>5-10% reject to drain</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>CRITICAL: "Grow Through" -- Why Post-Tank Filtration is Risky</h4>
+            <p>This is a counterintuitive but critical concept:</p>
+            <ul>
+                <li>A 0.2 &mu;m filter should theoretically block all bacteria (&ge;0.3 &mu;m). In practice, bacteria can colonize the upstream side of the filter, forming biofilm.</li>
+                <li>Over time, bacteria can migrate THROUGH the filter pores ("grow through") via morphological changes or by exploiting micro-defects.</li>
+                <li>The filter surface becomes a nutrient-rich environment, actually PROMOTING microbial growth instead of preventing it.</li>
+            </ul>
+            <p><strong>ISPE's clear message:</strong> Design your treatment train to produce compliant water BEFORE the storage tank. Never rely on post-tank filtration as a "safety net."</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Circulation -- Velocity Tiers</h4>
+            <ul>
+                <li><strong>&ge;3 ft/sec (Re &gt; 2,100):</strong> Standard minimum. Turbulent flow prevents bacterial attachment. This is the design target for return loops.</li>
+                <li><strong>&ge;5 ft/sec + antimicrobial agent:</strong> Can gradually remove established biofilm over time. Use during remediation campaigns.</li>
+                <li><strong>&ge;15 ft/sec:</strong> Mechanical biofilm removal by shear force alone. Impractical for routine operation (excessive pump energy, erosion).</li>
+            </ul>
+            <p><strong>Key takeaway:</strong> Once biofilm is established, flow alone cannot remove it at practical velocities. Prevention is far easier than remediation. This is why the combination of flow velocity + chemical/thermal control is essential.</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>Your ambient PW system uses ozone in the tank and UV at the loop inlet. A user reports ozone odor at a distant use point. What might have gone wrong? How do you investigate?</li>
+                <li>You discover biofilm in a section of your distribution loop. The loop velocity is 4 ft/sec. Why wasn't the velocity sufficient to prevent biofilm? What combination approach would you use to remediate?</li>
+                <li>Your QA team wants to add a 0.2 &mu;m final filter at each point of use "for extra safety." Using ISPE's guidance, how do you argue for or against this proposal?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.9 PERIODIC STERILIZATION/SANITIZATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-9">8.9 Periodic Sterilization/Sanitization</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Periodic sanitization of storage and distribution systems is generally required. Based on monitoring the <span class="key-term">microbial quality</span> of the system, a required frequency of sanitization should be formally established. Sanitization may also be done in response to reaching an "<span class="key-term">action limit</span>" during routine testing. Various methods of periodic sanitization are discussed below.</p>
+
+        <h3>8.9.1 Chemical</h3>
+        <p>Various chemicals or combinations of chemicals can be used to periodically sanitize storage and distribution systems. <span class="key-term">Chlorine solutions</span> on the order of magnitude of 100 ppm are very effective at killing organisms, but are not generally used in distribution systems because of corrosion problems associated with stainless steels. <span class="key-term">Hydrogen peroxide</span> in concentrations on the order of 5% is a more practical alternative. <span class="key-term">Peracetic acid</span> can also be used, generally in concentrations of 1% or less. Many different mixtures of these and other chemicals are commercially available for the purpose of sanitization.</p>
+        <p>Verification of the removal of the sanitizing agent is critical. Commercially available indicators (test strips or sticks) are commonly used to indicate when the amount of rinse water is sufficient. A rinse water analysis is then required to verify the absence of objectionable chemicals before the system is placed into service.</p>
+
+        <h3>8.9.2 Ozone</h3>
+        <p>Sanitation can be done either periodically or continuously with ozone. Storage tanks are typically continuously ozonated, and then the ozone is removed prior to the distribution loop or individual use points through the use of ultraviolet radiation. The distribution system can be periodically sanitized by turning off the UV light and, if necessary, increasing the <span class="key-term">ozone concentration</span> while allowing it to circulate through the distribution loop. Concentrations as high as <span class="key-term">1 ppm</span> may be needed for periodic sanitization, particularly if biofilms must be removed.</p>
+
+        <h3>8.9.3 Heat</h3>
+        <p>It has been found that periodic sanitization by heating of the process water system is highly reliable and effective. The frequency at which sanitization must occur will vary depending on many factors:</p>
+        <ul>
+            <li>System design</li>
+            <li>Size of distribution system</li>
+            <li>Components of system</li>
+            <li>Volume of process water in the system</li>
+            <li>Frequency of use of the process water (turnover volume)</li>
+            <li>Temperature of the circulating process water</li>
+        </ul>
+        <p>Each distribution system must develop its own microbial profile, and the sanitization cycle and frequency will have to be developed to fit that system.</p>
+
+        <p>The most straightforward method of sanitization is to heat the circulating process water in the distribution system to <span class="key-term">80&deg;C &plusmn; 3&deg;C</span> and hold it at that temperature for a validated period of time. The use of this heat sanitization has been proven to be very effective and if designed properly can also be economical. Controls needed to perform this cycle of sanitization can be either manual or automatic.</p>
+
+        <p>Because of the types of bacteria found in purified water systems, the use of <span class="key-term">steam is not required</span> for effective microbial kill. Steam sterilization of distribution piping may require additional valving for vents and drains, and may require a higher pressure rating than otherwise needed. Storage tanks are by their nature more easily steam sterilized and this practice is common, although not required.</p>
+
+        <p>Hot systems inherently are continuously sanitized. Thus, the need for sanitization should be based on microbial testing results, or when the system is off line for an extended period of time and the temperature of the loop drops to below the validated temperature range.</p>
+
+        <p>Depending on the process water specification, a conservative initial sanitization frequency should be assigned for "cold" systems. After the operating characteristics of the system are determined through microbial testing, the routine sanitization frequency can be determined.</p>
+
+        <h3>8.9.4 Initial Sanitization (Ambient System)</h3>
+        <p><span class="key-term">Steam sanitization</span> has a successful history, and is probably the most reliable method for sanitization. However, there is no requirement for steam sanitization in Purified Water or WFI systems. The following procedure is suggested as one option for hot water sanitization of an ambient system.</p>
+        <p>Immediately after <span class="key-term">passivation</span> (for a SS system), the system should be flushed with process water at a high temperature (<span class="key-term">80&deg;C &plusmn; 5&deg;C</span>) and all valves opened and points of use flushed. Normally two (2) times the volume of the system (after conductivity readings), or rinse water tests indicate that no passivation chemicals are detected, is required. This is the initial sanitization of the system.</p>
+        <p>Once it has been determined that the chemical characteristics for the quality of the process water have been achieved by USP chemical testing, then microbial samples should be taken after each component, the points of use, and the storage tank. This initial sampling should show that the distribution system at any sampling point has no viable bacterial contamination. Once this is achieved, the system should be brought down to its operating temperature and allowed to stabilize.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>Sanitization Methods Comparison</h4>
+            <table>
+                <tr><th>Method</th><th>Effectiveness</th><th>Key Advantage</th><th>Key Limitation</th></tr>
+                <tr><td>Chemical (H<sub>2</sub>O<sub>2</sub>, peracetic)</td><td>High</td><td>No heat required</td><td>Must verify complete removal</td></tr>
+                <tr><td>Chlorine (100 ppm)</td><td>Very high</td><td>Cheapest, most effective</td><td>Corrodes 316L SS -- rarely used</td></tr>
+                <tr><td>Ozone (up to 1 ppm)</td><td>High</td><td>Dual continuous/periodic use</td><td>Higher concentration for biofilm</td></tr>
+                <tr><td>Hot water (80&deg;C &plusmn; 3&deg;C)</td><td>Very high</td><td>No chemical residues</td><td>Thermal expansion, energy</td></tr>
+                <tr><td>Steam</td><td>Highest</td><td>Most reliable kill</td><td>Over-engineered for PW; extra valving</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>Key Insight -- "Steam is NOT Required"</h4>
+            <p>This is a statement many people miss. ISPE explicitly says:</p>
+            <ul>
+                <li>Steam sterilization is NOT required for PW or WFI distribution piping.</li>
+                <li>80&deg;C hot water sanitization is proven effective against waterborne bacteria in purified water systems.</li>
+                <li>Steam sterilization adds cost: higher pressure ratings, additional vent/drain valves, more complex piping design.</li>
+                <li>Steam IS common for storage tanks (easier to apply), but even that is "not required."</li>
+            </ul>
+            <p><strong>Practical implication:</strong> If your CDMO is building a new PW system, designing for hot water sanitization at 80&deg;C instead of steam can significantly reduce capital costs without compromising microbial control.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Heat Sanitization -- Key Parameters</h4>
+            <ul>
+                <li><strong>Target temperature:</strong> 80&deg;C &plusmn; 3&deg;C (validated hold time)</li>
+                <li><strong>Frequency:</strong> Established per system microbial profile -- no universal rule</li>
+                <li><strong>Trigger:</strong> Scheduled (preventive) OR reactive (action limit exceedance)</li>
+                <li><strong>Automation:</strong> Can be manual or automatic; automatic preferred for consistency</li>
+                <li><strong>Cold point validation:</strong> Must demonstrate 80&deg;C is achieved at the coldest point in the system (often the furthest use point)</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy -- Sanitization Frequency</h4>
+            <p>Sanitization frequency is like the cleaning schedule for a kitchen. A busy restaurant kitchen that handles raw meat (= ambient system under heavy use) needs cleaning after every shift. A kitchen that only reheats pre-cooked food (= hot system) needs far less frequent deep cleaning. And you cannot just copy your neighbor's cleaning schedule -- it depends on YOUR specific kitchen layout, menu, volume, and health inspection history. The same applies to water systems: each system develops its own microbial profile, and the sanitization program must be tailored to it.</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Initial Sanitization -- Step-by-Step</h4>
+            <p><strong>For a new ambient SS system, the startup sequence is:</strong></p>
+            <ol>
+                <li><strong>Passivation</strong> -- chemical treatment to form the protective chromium oxide layer on stainless steel.</li>
+                <li><strong>Hot water flush (80&deg;C &plusmn; 5&deg;C)</strong> -- flush entire system including all points of use. Minimum 2x system volume.</li>
+                <li><strong>Conductivity verification</strong> -- confirm no passivation chemicals remain.</li>
+                <li><strong>USP chemical testing</strong> -- confirm water meets chemical specifications.</li>
+                <li><strong>Microbial sampling</strong> -- sample after each component, every POU, and the tank. Target: ZERO viable contamination.</li>
+                <li><strong>Cool down</strong> -- bring to operating temperature and stabilize.</li>
+            </ol>
+            <p>Only after step 5 confirms zero contamination should the system enter routine operation. This initial sanitization establishes the "baseline" from which your trend analysis begins.</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>Your ambient PW system is sanitized with hot water weekly. After 6 months of data, microbial counts are consistently &lt;5 CFU/ml. Can you reduce sanitization to biweekly? What process do you follow?</li>
+                <li>After chemical sanitization with peracetic acid, your rinse water TOC is elevated. What is happening and how do you resolve it?</li>
+                <li>An auditor asks why you do not steam-sterilize your PW distribution piping. Prepare your response using ISPE's guidance.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 8.10 SYSTEM DESIGN FOR STERILIZATION/SANITIZATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec8-10">8.10 System Design for Sterilization/Sanitization</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>8.10.1 Materials of Construction</h3>
+        <p>The sanitization methods used must be compatible with the <span class="key-term">materials</span> in the system. By far the most widely used material for storage tanks and piping is <span class="key-term">300 series stainless steel (generally 316L)</span>. This choice provides the most flexibility with regard to sanitization options. Sanitization with heat, UV, or ozone can be used in stainless systems practically without restriction. Chemical sanitization must be carefully managed with regard to concentration, pH, and temperature to avoid corrosive effects on stainless distribution systems.</p>
+
+        <p>Other material used for distribution piping is <span class="key-term">PVDF</span>. PVDF is susceptible to degradation by UV light. It is common to use stainless piping immediately adjacent to the UV light in a PVDF system to compensate for this problem. The temperature limitation of PVDF is approximately <span class="key-term">140&deg;C</span>, which is high enough to allow heat sanitization or sterilization.</p>
+
+        <p>In stainless systems, the gaskets used must be reviewed for compatibility with the sanitization method. A widely used gasket material is <span class="key-term">PTFE or EPDM</span>, both of which have good thermal memory and excellent resistance to temperature, ozone, and chemical sanitizers. Other gasket materials must be carefully reviewed for compatibility with the sanitization methods, and to ensure that they will not leach substances into the water.</p>
+
+        <p>The key is to recognize that the materials of construction "shall not be reactive, additive or absorptive so as to alter the safety, identity, strength, quality, or purity of the drug product beyond the official or other established requirements" (<span class="key-term">21 CFR 211.65</span>). The sanitization procedures must be considered when selecting materials to comply with this requirement.</p>
+
+        <h3>8.10.2 Storage Tank Design</h3>
+        <p>Storage tanks are an area in the system that could be considered at <span class="key-term">high risk for microbial contamination</span> because of the large surface area, low velocities, the need for venting, and potential for "cold spots" in the head space.</p>
+
+        <p>Tank size is generally based on economic considerations in combination with the pretreatment train sizing. From a bacterial standpoint, <span class="key-term">smaller tanks</span> are preferred because they have higher turnover rates, which reduce the likelihood of bacterial growth. They also reduce surface areas and make it easier for ozone to permeate the water, if the tank is ozonated.</p>
+
+        <p><span class="key-term">Spray balls</span> may be used on the return loop to wet the head space of storage tanks. The use of a spray ball serves to keep the top of the tank at the same temperature as the water, in heated systems, and avoids alternately wet and dry surfaces, which could promote corrosive action with stainless steel and allow microbial growth. Connections on the top head (relief devices, instrument connections, etc.) should be kept as close to the head as possible to simplify the spray ball design and get the benefit of the spray action. An exception is the <span class="key-term">vent filter</span>, which should be removed far enough from the storage tank to avoid direct contact from the water spray, which could blind the filter. If dip tubes or instruments project down from the head, multiple spray balls may be needed to avoid a "shadow" being created in the spray pattern.</p>
+
+        <p>The tanks must be vented to allow filling, and a filter should be used at the vent to avoid airborne particulate and microbial contamination. To avoid the problem of condensation in the filter and the resultant potential for colonization and grow through, <span class="key-term">hydrophobic vent filters</span> are used and/or the filters are maintained at a temperature above the tank temperature with steam jacketing or electric tracing.</p>
+
+        <p>To help avoid microbial growth, and avoid the change in conductivity resulting from absorption of atmospheric gasses into the water, <span class="key-term">nitrogen blanketing</span> on the head space may be used. This eliminates outside air passing into the tank through the vent filter. Note that gasses added to storage tanks should be appropriately filtered to avoid objectionable contamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>Materials of Construction -- Decision Guide</h4>
+            <table>
+                <tr><th>Material</th><th>Heat</th><th>UV</th><th>Ozone</th><th>Chemical</th><th>Notes</th></tr>
+                <tr><td>316L SS</td><td>Excellent</td><td>Excellent</td><td>Excellent</td><td>Caution needed</td><td>Gold standard, most flexible</td></tr>
+                <tr><td>PVDF</td><td>Good (&le;140&deg;C)</td><td>POOR (degrades)</td><td>Excellent</td><td>Excellent</td><td>Need SS near UV units</td></tr>
+                <tr><td>PTFE gaskets</td><td>Excellent</td><td>Good</td><td>Excellent</td><td>Excellent</td><td>Best all-around gasket</td></tr>
+                <tr><td>EPDM gaskets</td><td>Good</td><td>Good</td><td>Good</td><td>Good</td><td>Good thermal memory</td></tr>
+            </table>
+            <p><strong>21 CFR 211.65 reminder:</strong> Materials must not be "reactive, additive, or absorptive." This means your sanitization method cannot cause the materials to leach substances into the water. Chemical sanitization is the riskiest in this regard -- you must control concentration, pH, temperature, and contact time.</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Storage Tank -- The "High Risk Zone"</h4>
+            <p>ISPE identifies storage tanks as high-risk for microbial contamination. Four reasons:</p>
+            <ol>
+                <li><strong>Large surface area:</strong> More surface = more potential biofilm attachment sites.</li>
+                <li><strong>Low velocities:</strong> Unlike the loop (3+ ft/sec), water in the tank moves slowly -- bacteria can settle.</li>
+                <li><strong>Venting requirement:</strong> The vent filter is the one point where the system communicates with the ambient environment.</li>
+                <li><strong>Head space cold spots:</strong> In hot systems, the tank head space above the water line may be cooler than the water, creating condensation that harbors bacteria.</li>
+            </ol>
+            <p><strong>Design principle:</strong> Smaller tanks are microbiologically superior. Size the tank for operational needs, not "just in case" capacity.</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Spray Ball Design -- Critical Details</h4>
+            <ul>
+                <li><strong>Purpose:</strong> Wet the entire head space to prevent alternating wet/dry surfaces (which promote both corrosion and microbial growth).</li>
+                <li><strong>Temperature benefit:</strong> In hot systems, spray keeps head space at operating temperature -- no cold spots for condensation.</li>
+                <li><strong>Top connections:</strong> Keep relief devices, instruments as close to the tank head as possible -- they benefit from spray coverage.</li>
+                <li><strong>Vent filter exception:</strong> Keep the vent filter AWAY from spray action. Water on the vent filter can blind (block) it, and a wet filter is a microbial colonization site.</li>
+                <li><strong>Shadow effect:</strong> If dip tubes or instruments protrude downward from the head, they can block spray coverage, creating unwetted "shadow" zones. Solution: multiple spray balls or 360-degree coverage designs.</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>Analogy -- Tank Head Space</h4>
+            <p>The head space of a storage tank is like the ceiling area of a shower room. Even though the shower (spray ball) keeps the walls wet, the ceiling often has cold spots where condensation forms. Over time, mold (= biofilm) grows on those damp, cool surfaces. In a pharmaceutical tank, the spray ball is your "shower head" keeping the ceiling wet and warm. But you must be strategic about placement -- you want spray coverage everywhere EXCEPT the vent filter (which must stay dry to function properly).</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Vent Filter & Nitrogen Blanketing</h4>
+            <p><strong>Two complementary strategies for tank isolation:</strong></p>
+            <ul>
+                <li><strong>Hydrophobic vent filter:</strong> Allows air exchange during fill/drain cycles while blocking particles and microorganisms. "Hydrophobic" means it repels water -- critical because a wet filter promotes "grow through."</li>
+                <li><strong>Heat the filter:</strong> Steam jacketing or electric tracing keeps filter above tank temperature -- prevents condensation inside the filter housing.</li>
+                <li><strong>Nitrogen blanketing:</strong> Eliminates air exchange entirely. Benefits: no airborne contamination risk, no CO<sub>2</sub> absorption (which lowers conductivity and pH). The nitrogen itself must be filtered (0.2 &mu;m) before entering the tank.</li>
+            </ul>
+            <p><strong>For CDMO operations:</strong> Nitrogen blanketing is particularly valuable for WFI tanks and for products sensitive to oxidation. The cost of filtered nitrogen is modest compared to the microbial risk reduction.</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>Practice Questions</h4>
+            <ol>
+                <li>Your facility is considering switching from 316L SS piping to PVDF for a new ambient PW loop. The loop has UV lights for ozone destruction. What design modification is needed near the UV units?</li>
+                <li>During a routine inspection, you find the vent filter on your WFI tank is wet (water droplets visible inside the housing). What are the immediate risks? What corrective actions do you take?</li>
+                <li>Your WFI tank is 10,000L but typical daily usage is only 2,000L. From a microbial perspective, what is the problem? What solutions would you consider?</li>
+                <li>An engineer proposes using silicone gaskets in the distribution system because they are cheaper than PTFE. What concerns should you raise, referencing 21 CFR 211.65?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>Section Summary</h3>
+    <ul>
+        <li><strong>Three enemies of microbial quality:</strong> stagnation, temperatures between 15-55&deg;C, and poor feedwater. All design decisions in this chapter aim to counteract these fundamental risks.</li>
+        <li><strong>GEP vs regulatory mandate:</strong> ISPE clarifies that finishes, tank orientation, turnover, drainability, and deadleg rules are Good Engineering Practices, NOT absolute regulatory requirements. Collective compliance reduces risk; individual deviations may be acceptable if justified.</li>
+        <li><strong>Deadleg measurement:</strong> ISPE resolves the 6D/3D confusion by recommending measurement from the outer wall of the main pipe. No hard rule of thumb -- focus on water quality outcomes.</li>
+        <li><strong>Three operating strategies:</strong> Hot (&ge;65&deg;C, self-sanitizing), Cold (4-10&deg;C, reduced sanitization), and Ambient (cheapest but highest risk, requiring frequent sanitization). Each must be validated system-specifically.</li>
+        <li><strong>Continuous microbial control tools:</strong> Ozone (0.02-0.1 ppm in tank, UV removal at loop), UV light (reduces, does NOT sterilize), filtration (MF/UF upstream of tank, not downstream due to "grow through"), and circulation (&ge;3 ft/sec turbulent flow).</li>
+        <li><strong>Periodic sanitization:</strong> Chemical (H<sub>2</sub>O<sub>2</sub>, peracetic acid), ozone (up to 1 ppm for biofilm), and heat (80&deg;C &plusmn; 3&deg;C, most reliable). Steam is NOT required for PW/WFI systems.</li>
+        <li><strong>Materials compatibility:</strong> 316L SS is the most versatile; PVDF degrades under UV. All materials must comply with 21 CFR 211.65 (non-reactive, non-additive, non-absorptive).</li>
+        <li><strong>Storage tank design:</strong> Smaller tanks are microbiologically preferred. Spray balls keep head space wet/warm. Vent filters must be hydrophobic and heated. Nitrogen blanketing eliminates airborne contamination risk.</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
