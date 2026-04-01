@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.6 - Chapter 5: Operations</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+
+/* ISPE Green overrides */
+.header { background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 100%); }
+.ispe-badge { display: inline-block; background: #2ecc71; color: white; padding: 2px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; margin-left: 0.5rem; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 5: Operations <span class="ispe-badge">ISPE</span></h1>
+    <div class="subtitle">第五章：操作運營</div>
+    <div class="page-info">ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p49 – p61</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="margin: 1.5rem; margin-bottom: 0;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解多產品 (Multi-product) 廠房的分時與分空間策略，說明分批次連續生產 (Campaign manufacturing) 與並行生產 (Concurrent production) 的差異及清潔驗證要求。</li>
+        <li>掌握一次性使用系統 (Single-Use Systems, SUS) 的設計優勢（免 CIP/SIP、較小廠房足跡）與風險（供應鏈依賴、可萃取物與可滲出物 E&L）。</li>
+        <li>分析密閉系統 (Closed systems) 與開放系統 (Open systems) 對環境分類、著裝要求、清潔計畫及人員編制的影響。</li>
+        <li>了解自動化 (Automation)、製造執行系統 (MES)、程序標準化與操作員訓練如何提升生物製藥廠的一致性與合規性。</li>
+        <li>評估產能 (Capacity)、排程 (Scheduling)、可維護性及供應鏈策略對生物製藥設施整體績效的影響。</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+<!-- ==================== 5.1 INTRODUCTION ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem; margin-top:1rem;">5.1 Introduction｜導言</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This chapter addresses the <span class="key-term">operational aspects</span> of a biopharmaceutical facility and the impact of <span class="key-term">facility and equipment design decisions</span> on manufacturing operations. Conversely, this chapter also describes how <span class="key-term">operability and maintainability</span> considerations should influence the design of the facility.</p>
+        <p>Newer or updated facilities may enable more <span class="key-term">closed processing</span> and less physical segregation. In conjunction with higher titers and smaller markets, allowing for increased use of <span class="key-term">single use systems</span> with less cleaning and SIP. This can result in lower production labor requirements.</p>
+        <p>For information on segregation and flows, see Chapters 5 and 6 of this Guide.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Operability（可操作性）</strong>：設備與廠房是否能讓操作員安全、有效率地執行日常製造工作。</p>
+            <p><strong>Maintainability（可維護性）</strong>：設備是否容易進行預防性保養、校正與零件更換，而不需要長時間停機。</p>
+            <p>本章的核心命題是「雙向影響」：設計影響操作，操作需求也應在設計階段反映。這是 ISPE 強調「早期介入 (Early Involvement)」的具體體現。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>廠房設計就像蓋廚房——如果設計時沒考慮廚師的動線和設備維修需求，廚師每天工作都會卡關。本章就是要確保「蓋廚房時，廚師有參與設計討論」。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>更高效價 (Higher titers) 意味著同樣的藥量可以用更小的生物反應器生產，這是一次性使用系統 (SUS) 擴大應用的關鍵驅動力。小批量製程更適合 SUS，大批量製程仍以傳統不鏽鋼設備為主。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.2 MULTIPLE PRODUCT OPERATIONS ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.2 Multiple Product Operations｜多產品操作</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Multiple product operations</span> require product separation either on a time (<span class="key-term">campaigned operations</span>) or space (<span class="key-term">concurrent operations</span>) basis through engineering design and procedures. Facilities may be required to run several campaigned or concurrent products.</p>
+
+        <p><strong>Campaigned Product Operation</strong></p>
+        <p>A <span class="key-term">campaigned product operation</span> separation is based on time (producing one product at a time in a single space). For campaigned products, prevention of cross-contamination through <span class="key-term">cleaning validation</span>, <span class="key-term">changeover procedures</span>, and clearance between product runs should be demonstrated.</p>
+        <p>Clearance should be demonstrated by removal of product, components, and waste residues from process equipment. Clearance procedures should be appropriately tested to ensure compliance with regulatory expectations. Cleaning endpoints should be established using scientific reasoning. Dedicated equipment may be used.</p>
+
+        <p><strong>Concurrent Product Operations</strong></p>
+        <p><span class="key-term">Concurrent product operations</span> can be performed using <span class="key-term">spatial segregation</span> to prevent product cross-contamination. A single product (dedicated facility) is an example of spatial segregation. These operations are usually used in non-product specific activities, such as media preparation or buffer preparation. They also can be used for product specific steps when <span class="key-term">closed systems</span> are demonstrated. Concurrent production focuses on physical segregation (i.e., using closed systems) and <span class="key-term">procedural control</span> to ensure the quality and safety of the products produced.</p>
+        <p>Campaigned production requires the ability to perform quick <span class="key-term">changeovers</span>. Concurrent production of different products requires the ability to demonstrate an acceptable risk of crossover of one product to another.</p>
+        <p>The use of <span class="key-term">closed systems</span> can minimize the risk of release of product fluids into the room environment during operation. Closed systems also reduce the risk of contamination via exposure of product to the external environment. This concept allows for side by side concurrent production of multiple products, e.g., for cell culture bioreactor spaces.</p>
+        <p>Where open operations are necessary, such as in <span class="key-term">seed preparation</span>, BSCs within seed preparation suites can be used. In general, these operations are limited to a single product in a single room at one time. A risk assessment may be performed to determine when multi-product operations within separate BSCs can occur in the same room at the same time.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Campaign Manufacturing（分批次連續生產）</strong>：在同一空間，不同時間生產不同產品。換產前須完成清潔驗證 (Cleaning Validation) 並確認殘留物符合可接受限度。</p>
+            <p><strong>Concurrent Production（並行生產）</strong>：在同一時間，不同空間（或密閉系統內）同時生產不同產品。依賴物理隔離 (Physical Segregation) 或程序管控 (Procedural Control)。</p>
+            <p><strong>BSC（Biological Safety Cabinet，生物安全櫃）</strong>：開放製程中保護產品與操作員的局部隔離設備，常用於種源培養 (Seed Preparation) 等開放步驟。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>Campaign 製造 = 餐廳預訂制（一次只做一批）</strong>：早上做法式料理，下午打掃廚房、換餐具，晚上做日式料理——每次切換都需要徹底清潔，否則前一批的殘留（交叉污染）會影響下一批。</p>
+            <p><strong>Concurrent 生產 = 用不同鍋子同時煮多道菜</strong>：不同產品在物理隔離的密閉容器裡同時運行，互不干擾——前提是密封性要足夠好。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>清潔驗證 (Cleaning Validation) 是 Campaign 製造的核心合規要求：</strong>需科學建立清潔終點 (Cleaning Endpoint)，並驗證殘留物（前產品、清潔劑、微生物）均低於可接受限度。彈性體（橡膠墊圈 Gaskets、軟管 Hoses、隔膜 Diaphragms）需特別關注，因為它們可能吸附並釋放殘留物。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的 CDMO 廠房同時承接三個客戶的生物製藥產品，您會建議採用 Campaign 模式還是 Concurrent 模式？請說明理由和所需的技術條件。</li>
+                <li>Campaign 製造中，「Clearance（殘留清除）」的法規要求具體包含哪些面向？只檢測不鏽鋼表面殘留是否足夠？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 5.2 Continued - Flexibility & SUS -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text (continued)</h2>
+        <p>Multiple product operations require a facility to be <span class="key-term">flexible</span> to allow for easy and quick changeover to new product processes or changes in product demand. Strategic approaches or levels of decisions to deliver flexibility include:</p>
+        <ol>
+            <li><strong>Expandability:</strong> allows for future growth to incorporate changes, e.g., saving space to allow for building expansion. In the short term, this may be the least expensive option, while allowing for plans to deliver changes in demand or process changes.</li>
+            <li><strong>Adaptability:</strong> provides some pre-investment for future needs, e.g., shell space, local building services in the general area possibly with a valved service tie-in point. This allows for future modifications while reducing the effect on current operations.</li>
+            <li><strong>Flexibility:</strong> can provide utility connections to the planned location of new or modified equipment. This is the most costly and requires clarification of future needs.</li>
+        </ol>
+        <p>Organizations may use <span class="key-term">platform processes</span> for similar types of products to minimize changes required for new product changeover. Downtime consumed during changeovers reduces the operational time available to generate product. When running many short campaigns the changeover downtime can significantly reduce total throughput of a facility.</p>
+        <p>Automation changes required to bring a new product into a facility can be time consuming. Changeover to new product processes can be aided by the use of <span class="key-term">batch programming standards</span> and <span class="key-term">recipe management strategies</span>. Hard coded changes should be documented and re-qualified. Simple recipe changes can be verified.</p>
+        <p>Product changeover requires documented confirmation that residual product inside process equipment is removed and does not contaminate the subsequent product beyond acceptable limits. <span class="key-term">Cleaning validation strategies</span> should include a rationale for the change-out of elastomers (gaskets, diaphragms, hoses) as part of product changeover.</p>
+        <p><span class="key-term">Single use systems</span> can eliminate the issue of lot to lot carryover. There is still a potential for crossover contamination; however, the components should be handled properly during system breakdown to avoid spillage post operation.</p>
+
+        <p><strong>5.2.1 Clinical Trial Manufacturing</strong></p>
+        <p>Clinical trial manufacture may require an early facility design and investment decision before having complete knowledge of a product or process. A step-wise incremental approach to <span class="key-term">GMP compliance</span>, based on the stage of product development, may be used.</p>
+        <p>The level of process validation at each processing stage should be considered, particularly for the steps that have the greatest impact on product quality and consistency.</p>
+        <p>Clinical trial manufacturing can be more flexible and manual with more extensive process instrumentation and data collection to allow for the increasing knowledge of the product process during product development. Extensive <span class="key-term">in-process testing</span> should be used to collect additional information and to help to ensure acceptable product quality.</p>
+        <p>During product development, <span class="key-term">change management systems</span> should be used to manage changes that affect the facility.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：三層彈性策略</h4>
+            <p>ISPE 將廠房彈性由低到高分為三層：</p>
+            <ul>
+                <li><strong>Expandability（擴充性）</strong>：現在省錢，預留未來擴建空間。最便宜。</li>
+                <li><strong>Adaptability（調適性）</strong>：預留 shell space（空殼空間）與公用設施接口，改建時影響較小。</li>
+                <li><strong>Flexibility（靈活性）</strong>：已佈設好公用管線到每個預計位置，可即插即用。最貴，但換產最快。</li>
+            </ul>
+            <p>CDMO 因需頻繁換產，通常傾向採用 Flexibility 設計；新創 Biotech 早期臨床廠則可先採 Expandability，節省資本支出。</p>
+        </div>
+        <div class="concept-box">
+            <h4>Platform Process（平台製程）的商業價值</h4>
+            <p>生物製藥企業（尤其 mAb 廠商）建立標準化 Platform Process，讓新產品能快速套用既有的上游培養條件、下游純化步驟和清潔驗證方法。這大幅縮短換產時間與驗證成本，是 CDMO 接案效率的關鍵競爭優勢。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>Recipe Management = 餐廳的菜單系統</strong>：自動化系統只需「換一份食譜」就能切換產品，不需要重新寫整套程式——大幅降低換產的軟體確效 (Qualification) 工作量。</p>
+        </div>
+        <div class="note-box">
+            <h4>臨床試驗製造的特殊考量</h4>
+            <p>臨床階段廠房設計面臨「先有雞還是先有蛋」的困境：製程知識尚不完整，但 FDA/EMA 要求必須在 GMP 條件下生產臨床用樣品。解法是採用「分階段 GMP 合規 (Step-wise GMP compliance)」——早期臨床允許較多人工操作和彈性，隨製程知識累積逐步強化管控。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正在評估是否接受一個新的 mAb 臨床一期案子。客戶的製程資料尚未完整確立，但希望 6 個月後就開始生產。ISPE 的建議是：在廠房設計上採用 Adaptability 策略，在 GMP 合規上採用 Step-wise 方法，同時建立嚴格的 Change Management 系統以追蹤製程變更對產品品質的影響。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.3 SINGLE USE SYSTEMS ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.3 Single Use Systems｜一次性使用系統</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>New products produced at higher titers can be run at smaller scale to satisfy market demands. This has allowed for increased use of <span class="key-term">single use systems</span>. This impacts on facility design by <span class="key-term">reducing or eliminating the need for CIP and SIP</span> operations. It also can substantially reduce the demand for water and the volume of liquid waste.</p>
+
+        <p>Considerations for single use systems include:</p>
+        <ul>
+            <li>Cost (purchase, transport, storage, setup, disposal)</li>
+            <li>Dependence on <span class="key-term">single sourced approved suppliers</span></li>
+            <li><span class="key-term">Leachables and extractables</span></li>
+        </ul>
+
+        <p>Facility design factors for single use systems include:</p>
+        <ul>
+            <li>Compliant <span class="key-term">inventory management</span></li>
+            <li>Receipt, inspection, and <span class="key-term">release storage space</span></li>
+            <li>Availability of <span class="key-term">pre-use release testing</span></li>
+        </ul>
+
+        <p>A bar coding system can be used to manage inventory.</p>
+        <p>When single use system components are contaminated with product solutions, they can be considered <span class="key-term">bio-hazardous waste</span>. Proper post-use disposal should be considered and these systems may be <span class="key-term">incinerated</span> to:</p>
+        <ul>
+            <li>Address the biohazard concerns</li>
+            <li>Minimize risk of liability</li>
+            <li>Benefit from the fuel value of the plastic</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Single-Use System, SUS（一次性使用系統）</strong>：由一次性塑膠材料（袋子、管路、接頭、生物反應器內膽等）組成的製程系統。每批次使用後即拋棄，不需要清洗 (CIP) 或滅菌 (SIP)。</p>
+            <p><strong>Extractables &amp; Leachables, E&L（可萃取物與可滲出物）</strong>：塑膠材料中的化學物質可能在特定條件下（高溫、有機溶劑）遷移（Extractables）或在正常製程條件下逐漸滲出（Leachables）到藥品中，影響安全性。需根據 USP &lt;661&gt;、ISO 10993 等標準進行測試。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>SUS = 免洗餐具 vs. 瓷器</strong>：傳統不鏽鋼設備像高檔瓷器——每次用完要徹底清洗消毒，耗時費力；一次性使用系統像免洗餐具——用完即丟，省去清洗步驟，但有塑膠材料安全性（E&L）和廢棄物處理的顧慮。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>SUS 的供應鏈風險是最被低估的風險之一：</strong>許多關鍵 SUS 組件（尤其是特定尺寸的生物反應器袋）僅有 1-2 家供應商，一旦供應中斷（如 COVID-19 期間發生的情況）可能導致整個生產線停頓。ISPE 和 FDA 均建議製造商建立供應鏈風險評估 (Supply Chain Risk Assessment) 和備用供應商認證計畫。</p>
+            <p><strong>廢棄物處理的法規面：</strong>接觸過生物製品（尤其是含活性病毒的疫苗製程）的 SUS 廢棄物屬生物危害廢棄物 (Biohazardous Waste)，必須經過高壓滅菌或焚化處理，不能直接進入一般廢棄物流。</p>
+        </div>
+        <div class="formula-box">
+            <h4>SUS vs. 傳統設備 TCO 比較框架</h4>
+            <pre>
+傳統不鏽鋼設備成本 =
+  資本支出 (CapEx)
+  + CIP/SIP 系統建置與驗證
+  + 純化水 / WFI 用量
+  + 清潔驗證（跨批次）
+  + 定期更換密封件
+
+一次性使用系統成本 =
+  每批 SUS 耗材採購價
+  + 儲存空間與庫存管理
+  + 生物危害廢棄物處理費
+  + E&L 測試費用
+  + 供應鏈風險備用金
+
+關鍵：批次規模越小，SUS TCO 優勢越明顯
+      批次規模越大（>2000L），傳統設備 TCO 反而較低
+            </pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>E&L（可萃取物與可滲出物）測試的重點是什麼？製造商應在哪個開發階段開始評估 SUS 的 E&L 風險？</li>
+                <li>如果您的 SUS 袋唯一供應商突然宣布停產，您的 CDMO 應如何應對？有哪些預防措施可以在設計階段就納入？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.4 CLOSED AND OPEN SYSTEMS ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.4 Impact of Closed and Open Systems on Operations｜密閉與開放系統對操作的影響</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>According to <span class="key-term">Good Engineering Practice (GEP)</span>, process systems should be kept closed, where possible, to avoid exposing products to the room environment. For some biopharmaceutical products (e.g., viral vaccines or live viruses), closed systems also protect operators from exposure to these products.</p>
+        <p>Where it is not possible to demonstrate that a process system is closed, environmental controls such as <span class="key-term">room classifications</span>, local ventilation, and higher gowning practices should be used.</p>
+        <p>It is usually easier to design a well-understood, robust process system into a closed system:</p>
+        <ul>
+            <li>Early stage development or clinical trial supply processes are usually less developed, less characterized and are more often open.</li>
+            <li>Early upstream processes (pre-bioreactor) are usually open and run under BSCs. Using single use systems and <span class="key-term">plastic weldable connections</span> may allow these processes to be closed.</li>
+            <li>Upstream processes run in bioreactors usually require containment to avoid contamination and are usually closed.</li>
+            <li>Downstream processes have made progress toward closed designs (e.g., by using <span class="key-term">on-line analytical devices</span> which allow for real time mainstream collection).</li>
+        </ul>
+        <p>When closed systems are used, the arrangement and access to processing systems and areas can be simplified. Closed upstream systems may be located in the same room as closed downstream systems. Airlocks may not be required and can reduce the footprint needed to accommodate operations. Using single use systems can reduce the <span class="key-term">clean space footprint</span> that requires stringent housekeeping procedures:</p>
+        <ul>
+            <li><span class="key-term">Closed processing systems</span> allow use of less stringent area environments (CNC) which can reduce capital costs and operating costs associated with cleaning, environmental monitoring, and gowning. There is also a reduction in time required to gown in and out.</li>
+            <li>Where upstream and downstream systems are located in the same room, operators can manage both systems. Staffing levels may be reduced significantly (as high as <span class="key-term">50%</span> with proper cross training) when closed systems are combined with suitable automation.</li>
+            <li>Closed processing systems can <span class="key-term">reduce downtime</span> required for product changeover, as room clearance is not required before the next product is introduced.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Closed System（密閉系統）</strong>：製程液體與外部環境完全隔絕，不需要依賴房間分類 (Room Classification) 提供保護。密閉系統是自身的一級圍堵 (Primary Containment)。</p>
+            <p><strong>CNC（Controlled but Not Classified，受控非分類區）</strong>：相較於 ISO 5/7/8 潔淨室，CNC 只需基本環境管控（如 HEPA 過濾、正壓），無嚴格微粒和微生物限度要求，建設和運行成本顯著較低。</p>
+            <p><strong>Plastic Weldable Connections（塑膠焊接接口）</strong>：透過熱焊接方式連接 SUS 管路，避免開放性連接操作，是將原本開放的製程步驟轉為密閉的關鍵技術。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>密閉系統帶來的「50% 人員節省」是驚人的商業影響：</strong>密閉系統 + 自動化允許上下游操作員在同一空間作業，搭配適當的交叉培訓 (Cross-training)，人員需求可降低高達 50%。這對 CDMO 而言直接影響報價競爭力和運營成本。</p>
+            <p><strong>下游 (Downstream) 密閉化是當前的技術趨勢：</strong>傳統層析 (Chromatography) 操作有許多開放連接點，但在線分析儀器 (On-line analytical devices) 和自動收集閥 (Automated fraction collection) 的進步正在使下游製程逐步走向密閉化。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>密閉系統 = 完全密封的食品加工線</strong>：牛奶從牧場到利樂包，全程密封管路輸送——不需要「潔淨廠房」，因為產品本身就被密封保護著。但如果某個環節需要打開（如取樣），就必須立刻在嚴格環境下操作。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 廠房設計評估：一個新的 mAb 製造設施，若採用全密閉系統設計，可以將潔淨室面積從 2000 m² 降至 800 m²（其餘使用 CNC），同時減少環境監測點位約 60%，人員配置降低 40%。這些節省在 20 年 TCO 中可達數千萬美元，是 ISPE 密閉化設計的核心商業論據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 5.4.1 Closure -->
+<div class="section-title">5.4.1 Closure｜密閉性</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Open processing requires physical segregation and appropriate control of the processing environment. For further information on classified spaces and physical segregation, see Chapter 6 of this Guide.</p>
+        <p>For closed systems, <span class="key-term">closure is provided by process equipment</span>. Each closed system acts as the <span class="key-term">primary containment</span> for its contents. Other closed systems then act as a second level of protection against contamination; two closed systems need to fail for the contamination to occur. Definition of what constitutes a <span class="key-term">breech</span>, consequences of the breech, and the required actions to re-establish closure should be considered. <span class="key-term">Procedures to address breech of closure</span> should be established.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：雙重失效保護</h4>
+            <p>密閉系統的安全邏輯：要發生污染，需要<strong>兩個</strong>密閉系統同時失效。這與 EU GMP Annex 1 的「污染控制策略 (CCS)」哲學一致——多重屏障 (Multiple Barriers) 提供冗餘保護。</p>
+            <p><strong>Breach of Closure（密閉失效）</strong>：任何導致密閉系統完整性被破壞的事件（如管路脫落、接頭漏液）。必須有書面 SOP 規範：如何識別、如何上報、如何評估影響、如何重新建立密閉性。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>「Breach of Closure SOP」是 FDA 和 EMA 查廠時的常見查核項目。若廠房宣稱使用密閉系統來降低房間分類要求（如採用 CNC），則必須能夠證明密閉失效的應對程序是充分的且已被演練過。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 5.4.2 Cleaning and Housekeeping -->
+<div class="section-title">5.4.2 Cleaning and Housekeeping｜清潔與環境整潔</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Housekeeping is considered an indicator of the quality of an operation. Processing spaces should be well organized. Specific housekeeping practices should match the risk to the product and the classification of the space. Classified spaces require frequent cleaning with potent cleaning agents to ensure compliance to classified space definitions. An <span class="key-term">environmental monitoring program</span> should be established to assess the effectiveness of the area cleaning practices.</p>
+        <p><span class="key-term">CNC</span> can use reduced cleaning regimens. For further information, see the ISPE Baseline Guide on Risk-MaPP.</p>
+        <p>Suitable cleaning and housekeeping amenities should be considered, e.g.:</p>
+        <ul>
+            <li>Refuse disposal points</li>
+            <li>Handling and storage space for cleaning supplies and equipment</li>
+            <li>Access to appropriate water for facility cleaning</li>
+        </ul>
+        <p>In multi-product facilities, cleaning practices should help to prevent <span class="key-term">cross-contamination</span>. Facility materials should be compatible with common cleaning agents.</p>
+        <p>Access to production areas should be suitably controlled.</p>
+        <p>Biopharmaceutical facilities generally do not need fumigation when processes can be demonstrated as contained. Decisions on fumigation should be based on an appropriate risk assessment.</p>
+        <p><span class="key-term">Pest control programs</span> are normally required by regulations. Raw materials used in biopharmaceutical processing, such as media components or sugars, can be subject to contamination by pests. Tight-sealing, self-closing doors, sticky mats, and UV lights at key facility entry points should be considered. SOPs should be established for the use of suitable rodenticides, insecticides, and fungicides.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Risk-MaPP（Risk-based Manufacture of Pharmaceutical Products）</strong>：ISPE 指南，提供基於風險評估的多產品設施設計和操作框架，特別針對高活性藥物 (Highly Potent APIs) 的清潔驗證和人員保護。</p>
+            <p>清潔計畫的強度應與<strong>產品風險</strong>和<strong>空間分類</strong>相稱。CNC 空間的清潔要求顯著低於 ISO 7/8 潔淨室，這是密閉系統設計節省成本的重要來源之一。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>生物製藥廠的病蟲害管制 (Pest Control) 常被忽視，但實際上是法規要求。</strong>培養基成分（糖類、胺基酸）本身就是害蟲吸引物。FDA 483 觀察報告中，廠房曾因在生產區發現昆蟲而被發出 483 不合格項。</p>
+            <p>材料兼容性 (Material Compatibility)：廠房表面材料（牆面、地板、設備外殼）必須與常用清潔劑（如次氯酸鈉、過氧化氫）相容，不得在清潔過程中腐蝕或產生顆粒。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>整潔度 = 廠房品質文化的鏡子</strong>：FDA 查廠員在正式檢查前，往往先觀察廠房的整體整潔程度。一個雜亂的走廊或標識不清的廢棄物桶，可能比任何文件問題更早引起查廠員的注意。「Housekeeping is considered an indicator of the quality of an operation」——這句話是法規查廠的潛台詞。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 5.4.3 Gowning -->
+<div class="section-title">5.4.3 Gowning｜著裝要求</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Gowning practices should match the <span class="key-term">room classification</span> and HVAC design capabilities. HVAC design criteria should match product and process requirements, and could be affected by the number of operators required in selected spaces.</p>
+        <p>For example, gowning practices generally have a greater impact on <span class="key-term">CNC spaces with monitoring or microbial limits</span> than CNC spaces with no monitoring. The higher the room classification, the greater the impact gowning has on meeting environmental acceptance criteria.</p>
+        <p>In classified spaces, <span class="key-term">jumpsuits</span> are typically used with hair nets, shoe covers or facility dedicated shoes, gloves, and face masks at the highest area classifications. Where engineering controls cannot be employed to reduce personal risk adequately, organizations should ensure that appropriate <span class="key-term">personal protective equipment (PPE)</span> is used, e.g.:</p>
+        <ul>
+            <li>Safety glasses</li>
+            <li>Safety shoes</li>
+            <li>Goggles and/or face shields</li>
+            <li>Protective gloves</li>
+            <li>Respirators</li>
+        </ul>
+        <p><span class="key-term">Closed systems allow for relaxed gowning practices</span>, e.g., use of laboratory coats or scrubs as a worker uniform to enhance operator comfort. Gloves, shoe covers, or dedicated facility shoes and hair nets may be worn.</p>
+        <p>Organizations may require disrobing before gowning. This may contribute to improved comfort while gowned (less layers of clothing) and adds another level of disconnection between open production environments and the environment outside.</p>
+        <p>Costs associated with high levels of gowning include:</p>
+        <ul>
+            <li>Investment in airlocks, changing spaces, and the gowning materials</li>
+            <li>Time spent performing the gown in and out procedures</li>
+            <li>Higher cooling demand for operator comfort</li>
+            <li>Performance issues working while gowned</li>
+        </ul>
+        <p>Working in traditional production environments (heavily gowned in a white box) can result in fatigue and stress. Facilities should be designed to allow operators to spend the minimum time in processing areas, e.g.:</p>
+        <ul>
+            <li>Processing terminals (HMIs) can be located in adjacent production administrative spaces, allowing operators to enter the processing areas only when needed for set up or sampling.</li>
+            <li>Full glass views can be provided into processing areas from adjacent production administrative spaces.</li>
+            <li>The proper use of controls can assist in minimizing the amount of time operators need to supervise production equipment.</li>
+            <li>Daylight and/or an outside view into the processing areas or adjacent non-classified support space can be provided.</li>
+        </ul>
+        <div class="quote-box">
+            "Figure 5.1: Non-Classified Production Support Space Adjacent to Production Operations — Used with permission from Novo Nordisk and NNE Pharmaplan."
+        </div>
+        <div class="quote-box">
+            "Figure 5.2: Maximum Use of Viewing Windows to Reduce Need to Enter Production Areas — Used with permission from Novo Nordisk and NNE Pharmaplan."
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：著裝等級與空間分類的關聯</h4>
+            <table>
+                <tr><th>空間類型</th><th>典型著裝要求</th><th>關鍵影響</th></tr>
+                <tr><td>ISO 5 (A/B 級)</td><td>無菌連身衣、雙層手套、護目鏡、口罩</td><td>最嚴格，人員舒適度最低</td></tr>
+                <tr><td>ISO 7/8 (C/D 級)</td><td>連身衣或分體式工作服、手套、髮網</td><td>標準生物製藥潔淨室</td></tr>
+                <tr><td>CNC（有監測）</td><td>實驗室外套或工作服、髮網</td><td>密閉製程常用，舒適度高</td></tr>
+                <tr><td>CNC（無監測）</td><td>基本工廠服裝</td><td>廠房支持區域（走廊等）</td></tr>
+            </table>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>著裝 = 手術衣 vs. 廚師服</strong>：在全密閉製程中，操作員穿著廚師服（實驗室外套）即可安全工作；但在開放製程中（如無菌充填），必須穿戴全套「手術衣」——舒適度差，疲勞感高，長期下來對工作品質和人員健康均有影響。</p>
+            <p><strong>HMI 移至隔壁行政區 = 有倒車雷達的車</strong>：司機不必下車就能了解後方狀況——操作員不必進入潔淨室就能監控製程狀態，大幅減少著裝/卸裝的時間成本。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>著裝要求的隱性成本常被低估：</strong>一個操作員每天著裝/卸裝可能消耗 30-60 分鐘，在多班制運作的生物製藥廠，每年累積的人時成本相當可觀。此外，高溫潔淨室環境下的疲勞效應也是 FDA 觀察到的人為錯誤 (Human Error) 重要來源之一。</p>
+            <p><strong>亞太地區的特殊著裝文化：</strong>中國和日本部分地區要求設置獨立的脫鞋室 (Shoe removal room) 和風淋室 (Air shower)，這些設施需要在廠房設計時提前規劃，否則事後改裝成本極高。</p>
+        </div>
+        <div class="note-box">
+            <h4>圖表解讀 Figure Analysis</h4>
+            <p><strong>Figure 5.1 &amp; 5.2（Novo Nordisk / NNE Pharmaplan 案例）</strong>：這兩張圖展示了現代生物製藥廠的最佳實踐設計——在生產區外側配置非分類的行政支持空間（配備 HMI 終端機），操作員可透過大型觀察窗監視製程，只在需要時才進入生產區。這種設計將潔淨室暴露時間降至最低，同時透過充足採光和視野改善操作員的工作環境品質。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果廠房設計選擇將 HMI 終端機移至非分類行政區，需要對哪些 GMP 系統進行額外的設計考量（如 21 CFR Part 11 電子記錄、網路安全等）？</li>
+                <li>著裝等級對環境監測 (Environmental Monitoring) 計畫有何影響？CNC 空間和 ISO 7 空間的採樣頻率和限度設定有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.5 AUTOMATION, PROCEDURES, AND TRAINING ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.5 Automation, Procedures, and Training｜自動化、程序與訓練</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Traditional facilities which needed to fully integrate and coordinate CIP and SIP operations used <span class="key-term">supervisory controls</span>. The plug and play nature of recent facility designs focuses control on unit operations. These systems allow for process engineers and automation engineers to work with users to develop and implement appropriate process automation controls.</p>
+
+        <p><strong>5.5.1 Impact of Automation</strong></p>
+        <p>An increased use of automation should be driven by <span class="key-term">quality and safety improvements</span>, e.g.:</p>
+        <ul>
+            <li>Automation drives <span class="key-term">consistency</span> of processing actions — things are done at the same pace and in the same order.</li>
+            <li>Automation allows for <span class="key-term">data input verification checks</span> to ensure the entry is within expected ranges. Actions can be prevented when interlocks are not satisfied.</li>
+            <li>Control systems can collect and organize data into records to improve the ability to <span class="key-term">monitor processes</span> and to evaluate performance with a goal to achieve incremental improvements.</li>
+        </ul>
+        <p>Cost saving opportunities are provided through: faster operations, more predictable actions, less failed lots due to non-conformance to required procedures, lower production staffing levels.</p>
+        <p>Increased data collection and analysis provides an opportunity for <span class="key-term">demonstrating product quality through process controls</span>. Statistical tools can help to monitor process performance and can aid in process decisions. Alert and action levels should be justified and established for key process indicators and critical process parameters.</p>
+        <p>Automation can be used to support the claim of closure and to maintain system closure. System specific <span class="key-term">interlocks</span> may be used to ensure the isolation of closed systems and that a closed environment is effective until (and unless) it is intended to breach closure.</p>
+        <p><span class="key-term">Integration controls</span> can be used to ensure that two closed systems are not inappropriately connected to each other or to the same service. For example, two systems connected simultaneously to a CIP system; therefore, facilitating a cross connection between the systems.</p>
+        <p>Automation usually increases the need for detailed knowledge of process operations at an <span class="key-term">earlier stage in the design</span> of a facility. Increased use of batch programming standards and <span class="key-term">recipe management tools</span> can expand the flexibility of automation controls, and decrease the costs and time to execute changes to automation software.</p>
+
+        <p><strong>Cleanability</strong></p>
+        <p>Cleanability should be considered when locating computer screens and stations in classified spaces. Units should be sealed to allow for appropriate space cleaning practices. Sealed units may prevent the proper removal of heat generated by the enclosed electronics.</p>
+
+        <p><strong>Wireless Connectivity</strong></p>
+        <p>Wireless connectivity may help in the collection of processing data and in facilitating the addition of <span class="key-term">plug and play portable equipment</span> into facilities. Tablet type hand-held devices may improve efficiencies and timeliness of operations, such as data entry or confirmation of actions, e.g., material additions or status of equipment using barcode labels.</p>
+
+        <p><strong>Manufacturing Execution Systems</strong></p>
+        <p>A <span class="key-term">Manufacturing Execution System (MES)</span> can be used to oversee the local manufacturing operation. <span class="key-term">Supervisory Control and Data Acquisition (SCADA)</span> / <span class="key-term">Process Analytical Technology (PAT)</span> can be used to control and monitor the process at the skid level. The documentation of the process sequence via <span class="key-term">time date stamps</span> can reduce the need for quality checks, allowing for faster release of completed batch records and lots of material by focusing on <span class="key-term">review by exception</span>. MES can serve as the verification function, allowing quicker operations and reducing staffing requirements.</p>
+        <p>Scanning a material label before completing an addition operation can ensure that material is through its release process and is not expired. Scanning an operator badge could confirm that an operator's training to perform a task is current. Scanning an equipment label can confirm the equipment is within its cleaning window and any required maintenance has been performed. These functions can reduce the probability of a rejected lot.</p>
+
+        <p><strong>Process Analytical Technology</strong></p>
+        <p><span class="key-term">Process analytical technology</span>, used to provide live operational data, is becoming more available and useful, e.g., improved understanding of bioreactor operations and tools to collect monitoring data. This information can be used to speed decisions and to increase the consistency of process streams. PAT provides <span class="key-term">continuous monitoring and control</span> of processes which demonstrates the quality of the product produced. When PAT is used during product development stages, it can aid in earlier and greater process knowledge, improved regulatory submissions, and simplify technology transfer to clinical and commercial operations.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>DCS/SCADA（分散式控制系統／監控與數據採集系統）</strong>：負責設備層級的即時製程控制（溫度、壓力、流量）。</p>
+            <p><strong>MES（Manufacturing Execution System，製造執行系統）</strong>：負責批次層級的操作管理，包含電子批次記錄 (EBR)、物料追蹤、人員培訓核查、設備狀態確認。</p>
+            <p><strong>PAT（Process Analytical Technology，製程分析技術）</strong>：即時監測關鍵製程屬性（如細胞濃度、溶氧、pH），使製程決策從「事後檢驗」轉為「即時調整」，符合 FDA PAT Guidance (2004) 和 ICH Q8 的 QbD 精神。</p>
+            <p><strong>21 CFR Part 11</strong>：美國 FDA 法規，規範電子記錄與電子簽名的合規要求。MES 和 EBR 系統必須符合 Part 11 要求，包括稽核軌跡 (Audit Trail)、版本控制和存取權限管理。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>MES = 餐廳的 POS 系統（訂單管理系統）</strong>：服務員掃描食材條碼確認庫存，廚房按標準流程出餐，系統自動記錄每道菜的製作時間和用料——電子批次記錄 (EBR) 就是生物製藥廠的「數位出菜單」，取代傳統的紙本記錄，讓品保 (QA) 審核從逐行核對變成「例外審查 (Review by Exception)」。</p>
+            <p><strong>Interlocks（連鎖機制）= 汽車的安全帶感知器</strong>：沒繫安全帶車就不能發動——製程中若某個前置條件未滿足（如清潔窗口過期），系統自動阻止下一步操作，防止人為疏失。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「Review by Exception（例外審查）」是 MES/EBR 帶來的最重要 QA 效率提升：</strong>傳統紙本批次記錄需要 QA 人員逐行核對每一筆數據；EBR 系統在製程中即時驗證，只有超出範圍的數據才需要人工審查。這可將批次記錄審核時間縮短 50-70%，對 CDMO 的批次放行週期 (Lot Release Cycle Time) 有顯著影響。</p>
+            <p><strong>密閉系統的 Interlock 設計是合規關鍵：</strong>宣稱密閉系統的廠房，必須通過自動化連鎖確保密閉性——例如，清潔系統同時連接兩個生產系統的情境必須被物理或邏輯性阻止，否則可能造成批次間交叉污染。</p>
+        </div>
+        <div class="formula-box">
+            <h4>自動化系統層次結構</h4>
+            <pre>
+Level 4: ERP（企業資源規劃）
+         ↕ 物料/訂單整合
+Level 3: MES（製造執行系統）
+         批次管理、EBR、人員/物料/設備確認
+         ↕ 配方下發/批次記錄上傳
+Level 2: SCADA/DCS（監控與控制）
+         製程數據採集、報警管理、趨勢記錄
+         ↕ 設定點/控制命令
+Level 1: PLC/現場設備（現場控制器）
+         閥門、泵浦、感測器的直接控制
+
+PAT 工具通常整合於 Level 1-2，
+數據流向 Level 2-3 進行決策支持
+            </pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>21 CFR Part 11 對電子批次記錄 (EBR) 有哪些具體要求？如果稽核軌跡 (Audit Trail) 功能未被啟用，會有什麼合規風險？</li>
+                <li>PAT 工具（如在線 pH 探針、近紅外光譜儀）的數據若顯示製程超出正常範圍，MES 系統應如何自動回應？操作員的職責又是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 5.5.2 Procedures -->
+<div class="section-title">5.5.2 Procedures｜程序標準化</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Standardized procedures</span> across multiple products and facilities should help to drive consistency and cross training of operators. Where feasible, the facility design should use <span class="key-term">error-proofing features</span>, using, e.g.:</p>
+        <ul>
+            <li>Color coding</li>
+            <li>Physically matched connections</li>
+            <li>RFID</li>
+            <li>MES and an automation system — to replace human verifications such as proper setup of transfer panel connections</li>
+        </ul>
+        <p>When claiming the benefits of closed systems, the definition and practices required to achieve closure should be documented, in addition to actions required to return an area to closed when a breech is encountered.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：防呆設計 (Error-Proofing / Poka-Yoke)</h4>
+            <p>來自日本製造業的品質工具 (Poka-Yoke)，目標是讓錯誤在發生之前就被阻止。在生物製藥廠中：</p>
+            <ul>
+                <li><strong>色碼 (Color Coding)</strong>：不同產品或流體路徑使用不同顏色管路，減少混淆</li>
+                <li><strong>物理配對接頭</strong>：只有正確的管路才能連接到正確的接口（防止管路接錯）</li>
+                <li><strong>RFID</strong>：設備、物料、人員均有唯一識別，系統自動確認組合是否合法</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>轉接板 (Transfer Panel) 是生物製藥廠最常見的人為錯誤來源之一：操作員在複雜的管路面板前連接錯誤的閥門是實際發生過的偏差事件。MES 結合 RFID 的系統可以在操作員連接前就驗證每個接頭的合法性，大幅降低此類風險。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 5.5.3 Training -->
+<div class="section-title">5.5.3 Training｜操作員訓練</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Operators should be appropriately skilled with a <span class="key-term">broad knowledge base</span>. Quality and technical support personnel can observe operations and be present in processing areas during operations. This allows for immediate consultation of these personnel when questions or deviations occur. Multi-tiered training can help to ensure safe operations.</p>
+        <p>Training methods used should include:</p>
+        <ul>
+            <li>Review of written procedures</li>
+            <li>Classroom</li>
+            <li>Simulations of facility operations</li>
+            <li>On-the-job mentored/supervised training</li>
+            <li>Skills demonstration</li>
+        </ul>
+        <p>The use of <span class="key-term">simulations</span> can provide personnel with the opportunity to react to alarm conditions without an impact on product quality or safety. Operators should be trained to look for trends in data and other indicators that suggest a problem is developing before an upset occurs. Operators should be comfortable <span class="key-term">reporting observations or errors</span> when encountered.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：多層次訓練體系</h4>
+            <p>生物製藥廠的操作員不像小分子製藥廠那樣只需操作固定設備——他們需要理解細胞培養生物學、密閉系統的密封完整性概念、自動化系統的警報邏輯，以及偏差報告的文化。訓練不是一次性事件，而是持續性的能力維持計畫。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「舒適地報告錯誤 (Comfortable reporting errors)」是 GMP 文化的核心：</strong>FDA 和 ICH Q10 均強調製造企業應建立「無懲罰性報告文化 (Just Culture)」，讓操作員敢於立即報告偏差和錯誤，而不是掩蓋。隱瞞偏差是 FDA 483 和警告信 (Warning Letter) 中反覆出現的嚴重問題。</p>
+            <p><strong>模擬訓練 (Simulation Training)</strong>：特別重要於密閉系統的 Breach of Closure 應對演練——讓操作員在不影響真實批次的情況下學習如何快速識別和回應密閉失效事件。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 剛建立了一個使用密閉系統的新廠房，大幅減少了潔淨室面積。然而，這也意味著操作員現在需要同時管理上游（細胞培養）和下游（純化）製程。建議的訓練計畫應包含：(1) 跨領域技術培訓；(2) 密閉系統完整性測試的實作演練；(3) 使用模擬製程進行偏差情境演練；(4) 定期技能評估 (Skills Qualification)，確保交叉訓練的持續有效。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.6 CAPACITY, SCHEDULING, AND MAINTENANCE ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.6 Capacity, Scheduling, and Maintenance｜產能、排程與維護</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>5.6.1 Capacity and Scheduling</strong></p>
+        <p>In the past, production capacity was determined by the <span class="key-term">cycle time of the production bioreactors</span>. Where existing facilities are not designed for the downstream challenge associated with processes with higher titers, <span class="key-term">bottlenecks</span> can occur in downstream operations. The throughput of a facility can be dependent on the mix of products produced in downstream processes, as these are usually specific to each product.</p>
+        <p>Where existing facilities are designed for the higher titer processes, account can be taken of the associated higher downstream product quantities generated. This can be through the use of <span class="key-term">smaller bioreactors with a higher utilization rate</span>. These require smaller chromatography columns and the associated smaller buffer volumes. This then allows for more flexible production planning, and managing of bulk drug substance inventories.</p>
+        <p>For multi-product facilities, the <span class="key-term">downtime for changeover</span> can consume operational time. This can affect the annual output of a facility and emphasizes the need for an efficient, quick product changeover.</p>
+        <p>Facility capacity impacts also affect scheduling of production operations. <span class="key-term">Operational models</span> should help to optimize a facility for specified needs and changes to the product mix or other constraints. Facility bottlenecks and capacity limitations should be identified and addressed. Support functions may be some of the first bottlenecks encountered and should be included in operational models. Support functions may include:</p>
+        <ul>
+            <li>Buffer and media preparation and supply</li>
+            <li>CIP</li>
+            <li>SIP</li>
+            <li>Critical utilities, e.g., WFI</li>
+        </ul>
+        <p>Modeling tools can help to determine the optimal routine pace of production. This can help in <span class="key-term">leveling of resources</span>. A predictable routine can provide consistency to operations and allow an efficient routine to be established. Incremental improvements can be obtained, as well as quality stability which can help to minimize risk.</p>
+
+        <p><strong>5.6.2 Operability and Maintainability</strong></p>
+        <p>Simulation and data analysis can accelerate technology transfer from development to full scale manufacturing. Modeling also can be used to guide development in making processing choices.</p>
+        <p>Manufacturing, quality, maintenance, and other operations functions should be involved early in the facility and process design, and in the definition of the user requirements.</p>
+        <p>Adequate space should be provided for <span class="key-term">equipment and instrument access, removal, and maintenance</span>. Any specific requirements for portable and non-dedicated equipment should be considered. Space should be provided for storage, and clean-out-of-place and steaming where required. <span class="key-term">Equipment status and usage history</span> should be collected and readily available; bar coded labeling technology and electronic usage and maintenance records may be beneficial.</p>
+        <p>Using <span class="key-term">standardized and modular facility designs</span> can help to reduce errors and improve cross training. Mirror imaged designs should be avoided, as the location of devices in this approach can lead to confusion and operator errors.</p>
+        <p><span class="key-term">Operational upsets (excursions)</span> should be anticipated and recovery procedures established. Recovery procedures should include:</p>
+        <ul>
+            <li>A structured investigation to determine possible impact of the upset on product quality</li>
+            <li>Assignment of root cause and associated corrective actions</li>
+            <li>Documentation of the investigation and decisions</li>
+            <li>Any necessary follow up to ensure completion of agreed actions and effectiveness checks</li>
+        </ul>
+        <p>Maintenance excellence programs have placed a focus on <span class="key-term">performance based maintenance</span> activities over previous time-based practices, e.g.:</p>
+        <ul>
+            <li>The use of vibration monitoring can predict equipment failures in advance, allowing for planned shutdowns and maintenance when parts are approaching failure.</li>
+            <li>Process elastomer (hoses, diaphragms, gaskets) replacement is an area for focus. Use off-line studies to determine life expectancy and sufficient history to replace these components when appropriate.</li>
+            <li>Production operator <span class="key-term">autonomous maintenance</span> looks to place specific maintenance functions with the operations team.</li>
+        </ul>
+        <p>Closed process design can allow maintenance to be performed side by side with production operations. Equipment should be decontaminated and cleaned prior to opening. Options to allow for <span class="key-term">phased operation shutdowns</span> to allow for periodic maintenance should be considered during design. In general, closed systems can allow for increased maintenance without facility shutdowns.</p>
+        <p>Where shutdowns may be necessary, <span class="key-term">partial shutdowns rolling through the facility</span> can be scheduled, as the last batch of product moves through the process. Months of lost production required to bring a facility back up from a cold start should be avoided.</p>
+        <p><span class="key-term">Redundant generation systems</span> for critical clean utilities, such as WFI and pure steam, may be provided; however, maintenance to facility distribution systems may require periodic shutdown.</p>
+        <p>Operational improvement techniques such as <span class="key-term">lean and six sigma</span> can help to reduce waste and variability within processes.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Downstream Bottleneck（下游瓶頸）</strong>：隨著上游製程效價 (Titer) 大幅提升，下游純化系統（層析柱、過濾膜）若未同步升級，將成為整廠產能的限制瓶頸。這是目前許多舊廠擴能的核心挑戰。</p>
+            <p><strong>Performance-based Maintenance（基於績效的維護）</strong>：相較於「按時間固定更換零件」的傳統方式，基於設備實際狀態（如振動頻率、壓差趨勢）決定維護時機，可避免不必要的停機和零件浪費。</p>
+            <p><strong>Autonomous Maintenance（自主維護）</strong>：源自 TPM（全面生產性維護）理念，讓操作員承擔基礎的日常維護工作（如清潔、潤滑、目視檢查），使工程維修人員能專注於更複雜的預防性和預測性維護任務。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>排程挑戰 = 用同一個廚房同時做多道菜</strong>：細胞培養批次就像正在爐上燉煮的湯——不能中途停火（細胞會死亡）。排程必須圍繞這些「不可中斷的批次」來安排其他所有活動，包括設備維護窗口、清潔驗證和換產。</p>
+            <p><strong>備用 WFI 系統 = 醫院的備用發電機</strong>：WFI 是生物製藥廠的「命脈」，任何時間中斷都可能導致數個批次報廢。冗餘設計 (Redundant design) 雖增加資本支出，但對連續生產的商業設施而言是必要投資。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「鏡像設計 (Mirror Image Design) 應被避免」</strong>——這是 ISPE 的明確警告。當兩個相鄰房間或廠房使用鏡像對稱的設備佈局時，操作員在不同空間工作時容易產生空間方向感混淆，可能導致閥門操作錯誤。模組化標準設計（所有空間方向一致）是更安全的選擇。</p>
+            <p><strong>「Cold Start（冷啟動）」的成本極高：</strong>生物製藥廠若完全關閉（如設施大整修），重新建立種源細胞庫、驗證潔淨室和重新認證設備可能需要數個月——期間零產出，損失數千萬美元。因此滾動式 (Rolling) 分段停機維護比全廠停機要好得多。</p>
+        </div>
+        <div class="formula-box">
+            <h4>產能計算關鍵概念</h4>
+            <pre>
+年產能 (Annual Output) =
+  批次數 × 每批產量
+
+批次數 =
+  (365天 × 有效工作天比例)
+  ÷ (批次週期時間 + 換產停機時間)
+
+換產停機時間 ↓ → 年批次數 ↑
+
+例：
+  批次週期 = 14天
+  換產停機 = 3天
+  年批次數 = 365 ÷ 17 ≈ 21批
+
+若將換產停機縮短至 1天：
+  年批次數 = 365 ÷ 15 ≈ 24批
+  增加約 14% 產能，無需增加任何設備
+            </pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個生物製藥廠計畫從生產 3 個產品擴展到 5 個產品（Campaign 模式）。若每次換產停機 4 天，每批次週期 12 天，年度可用工作天 340 天，請計算最大年批次數，並討論縮短換產時間至 2 天的產能影響。</li>
+                <li>振動監測 (Vibration Monitoring) 用於預測設備故障，屬於哪種維護策略（預防性/預測性/糾正性）？在 GMP 環境下，如何確保基於振動數據的設備更換決策是有書面依據的？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5.7 SUPPLY CHAIN ==================== -->
+<div class="section-title" style="font-size:1.3rem; font-weight:700; color:#1a3a2a; border-bottom:3px solid #2ecc71; padding-bottom:0.6rem;">5.7 Supply Chain｜供應鏈</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>5.7.1 Supply Chain</strong></p>
+        <p>Drug substance bulk production and the drug product fill finish operations may be situated at <span class="key-term">separate facilities and different locations</span>.</p>
+        <p>The <span class="key-term">limited stability</span> of biopharmaceutical products can complicate the product supply chain and drug product distribution. <span class="key-term">Bulk drug substance may be frozen</span> to extend its shelf life. <span class="key-term">Freeze thaw technologies</span> can be established for disposable bags or freeze-thaw vessels for higher volumes. Single use systems may be preferred, as vessel management (shipping, cleaning, and steaming) for freeze-thaw vessels can be more complex. Shipments should be closely monitored and controlled to ensure required temperatures are not exceeded. For further information, see the ISPE Good Practice Guide: Cold Chain Management.</p>
+        <p><span class="key-term">Single site production</span> can simplify the supply chain; there is only one site to manage and only one facility to operate and maintain. This may provide decreased overhead costs.</p>
+        <p>However, <span class="key-term">business continuity risks</span> are increased with a single site production facility, e.g.:</p>
+        <ul>
+            <li>Natural and man-made disasters can disrupt ability to supply the market.</li>
+            <li>Contamination issues such as <span class="key-term">viral contaminants</span> can result in significant downtime.</li>
+            <li>Regulatory issues can delay release of product to the market.</li>
+            <li>Labor issues have an increased potential to be disruptive.</li>
+        </ul>
+        <p>Organizations should determine a strategy to ensure <span class="key-term">continuity of product supply</span>. <span class="key-term">Modular design</span> can facilitate quick duplication, replacement, or relocation of manufacturing required to address facility performance issues or changes in demand.</p>
+        <p>Sharing capacity across different organizations can allow for some sharing of capital investment risk. Facilities may be planned and require investment <span class="key-term">four to six years</span> before commercial output is required. When a product is delayed, discontinued or exceeds planned demand, expensive idle capacity can occur or a market shortage may develop. <span class="key-term">Flexible design</span> can allow facilities to be repurposed for another product, e.g., under a contracted arrangement to produce product from another organization.</p>
+        <p>The distribution of final drug product may be complicated for large volume products with diverse destinations. <span class="key-term">Location of distribution near shipping hubs or patient centers</span> should be considered. Regional transportation can be used where reliable expertise around cold chain shipping has developed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Cold Chain（冷鏈）</strong>：生物製藥產品（原液 DS 和成品 DP）通常需要在 -20°C 或 -80°C 下運輸和儲存，任何溫度超出範圍的事件都可能導致批次報廢。冷鏈管理是生物製藥供應鏈的核心挑戰。</p>
+            <p><strong>Business Continuity Risk（業務連續性風險）</strong>：單一廠址生產雖然成本效益較高，但任何停產事件（如病毒污染 (Viral Contamination)、自然災害）都可能導致整個市場供應中斷，後果極為嚴重。知名案例如 Genzyme 2009 年的 Aldurazyme 病毒污染事件。</p>
+            <p><strong>DS（Drug Substance，原液）vs. DP（Drug Product，成品）</strong>：生物製藥廠通常分為原液廠（DSP）和成品充填廠（DP Fill-Finish）兩個設施，可能位於不同地點，需要完整的冷鏈物流連接。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>單一廠址 vs. 多廠址 = 把雞蛋放在同一個籃子裡 vs. 分散投資</strong>：單一廠址降低管理複雜度和成本，但任何意外都是全損；多廠址增加成本但提供業務連續性。對於救命藥品（如罕見疾病治療），市場供應中斷可能危及病人生命，FDA 會以最嚴肅態度看待業務連續性計畫的缺失。</p>
+            <p><strong>廠房投資提前 4-6 年 = 預訂明日餐廳的食材</strong>：生物製藥廠的建設週期長達數年，當廠房建好時，市場需求可能已改變——這是生物製藥行業資本配置最困難的挑戰之一。CDMO 模式透過承接多客戶的方式分散了這個風險。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>病毒污染 (Viral Contamination) 是生物製藥廠最嚴重的停產風險：</strong>生物製程使用活體細胞，一旦生產設施受到外源性病毒污染（如鼠細小病毒 MVM），整個廠區可能需要停產數個月進行徹底的去污染和驗證，損失往往超過數億美元。這使得病毒安全控制策略 (Viral Control Strategy) 成為生物製藥廠設計的最高優先考量之一。</p>
+            <p><strong>模組化設計 (Modular Design) 的供應鏈價值：</strong>模組化廠房可以快速複製到新地點，為藥品供應提供冗餘能力。當主廠出現問題時，可迅速激活備用廠址，這是監管機構（如 FDA、EMA）在審查生物製藥廠許可申請時越來越重視的考量因素。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 正在評估是否接受一個大型 mAb 商業製造合約，客戶要求確保 12 個月的連續供應保障。ISPE 的建議框架：(1) 建立冷鏈庫存緩衝（凍存的原液庫存）；(2) 確保備用廠址能力（或識別有資質的備用 CDMO）；(3) 建立病毒污染快速響應 SOP；(4) 在合約中明確業務連續性條款。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>生物製藥公司通常如何在「單一廠址的成本效益」和「多廠址的供應安全性」之間取得平衡？CDMO 模式如何改變了這個等式？</li>
+                <li>冷鏈偏差 (Cold Chain Excursion) 發生時（如運輸中溫度超標），製造商應如何評估批次的可接受性？哪些科學數據可以支持偏差評估？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin-top: 1.5rem;">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>多產品操作策略：</strong>Campaign 製造（分時隔離）需清潔驗證；Concurrent 生產（分空間隔離）需密閉系統或物理隔離。快速換產能力是多產品廠房的核心競爭力。</li>
+        <li><strong>一次性使用系統 (SUS) 的雙面影響：</strong>優點是消除 CIP/SIP 需求、縮小廠房面積、降低換產風險；挑戰是供應鏈依賴（單一供應商風險）和 E&L（可萃取物與可滲出物）安全性評估。</li>
+        <li><strong>密閉系統帶來的運營革命：</strong>密閉製程允許使用 CNC（非分類區），可降低潔淨室面積高達 60%、減少著裝要求、人員配置節省高達 50%，並加速換產（無需房間清空）。</li>
+        <li><strong>自動化與 MES 的品質價值：</strong>自動化確保製程一致性；MES + EBR 實現電子批次記錄和例外審查 (Review by Exception)，縮短批次放行週期；Interlock 系統確保密閉完整性。</li>
+        <li><strong>排程必須圍繞「不可中斷的生物批次」設計：</strong>細胞培養批次與小分子化學合成不同，不能隨意中斷，所有維護窗口和換產排程必須與生物製程週期協調。</li>
+        <li><strong>供應鏈彈性是生物製藥廠的戰略資產：</strong>冷鏈管理、病毒污染風險、單一廠址 vs. 多廠址的業務連續性決策，均需在設施規劃階段就納入考量。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.6 - Chapter 4: Process Closure (4.1–4.4)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== ISPE SOURCE BRANDING ===== */
+.ispe-source-bar {
+    display: inline-block;
+    background: #2ecc71;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.header.ispe-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+}
+
+.ispe-section-title {
+    color: #27ae60;
+    border-bottom-color: #2ecc71;
+}
+
+/* Onion layer diagram */
+.onion-diagram {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: #f9fbe7;
+    border: 1px solid #c5e1a5;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.onion-layer {
+    margin: 0.4rem auto;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.5rem 1rem;
+    max-width: 90%;
+}
+
+.layer-0 { background: #1a3a2a; color: white; }
+.layer-1 { background: #27ae60; color: white; max-width: 80%; }
+.layer-2 { background: #52be80; color: white; max-width: 70%; }
+.layer-3 { background: #82e0aa; color: #1a3a2a; max-width: 60%; }
+.layer-4 { background: #a9dfbf; color: #1a3a2a; max-width: 50%; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header ispe-header">
+    <h1><span class="ispe-source-bar">ISPE</span> Chapter 4 (Part A): Process Closure — Introduction &amp; Layers of Protection</h1>
+    <div class="subtitle">第四章（上篇）：製程密閉 — 導論、污染來源與保護層次</div>
+    <div class="page-info">ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p31 – p42 | Sections 4.1–4.4</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解製程密閉（Process Closure）為何是生物製藥設施設計中最核心的單一決策，以及其如何解耦製程與環境之間的風險關係。</li>
+        <li>識別生物製藥製程中的四大主要污染來源——環境、人員、設備、原料——並了解各類污染的傳播機制。</li>
+        <li>掌握「保護層次（Layers of Protection）」模型的洋蔥式邏輯：每增加一層有效保護，即可降低一個等級的潔淨室等級要求。</li>
+        <li>了解如何透過密閉分析（Closure Analysis）工作流程，包含 Phase 1–3 風險評估步驟，系統性地驗證製程單元是否真正達到密閉狀態。</li>
+        <li>區分開放式（Open）、功能性密閉（Functionally Closed）、完全密閉（Fully Closed）三種系統的操作方式及所需環境等級。</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節目錄 Table of Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec41">4.1 Introduction</a>
+        <a href="#sec42">4.2 Contamination Sources</a>
+        <a href="#sec421">4.2.1 Aseptic/Axenic Bioburden</a>
+        <a href="#sec422">4.2.2 Mitigation Strategies</a>
+        <a href="#sec43">4.3 Layers of Protection</a>
+        <a href="#sec431">4.3.1 BSC Environments</a>
+        <a href="#sec432">4.3.2 Strategies for Closing</a>
+        <a href="#sec44">4.4 Demonstrating Closure</a>
+    </div>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================ -->
+<!-- SECTION 4.1 -->
+<!-- ============================================================ -->
+<div id="sec41" class="section-title ispe-section-title">4.1 Introduction — 導論：製程密閉的根本邏輯</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The goal of this chapter is to provide a means to evaluate <span class="key-term">bioprocess unit operations</span> and to discuss opportunities for closing these operations; therefore, decoupling them from the environment.</p>
+
+        <p><span class="key-term">Isolating a process from its environment</span> mitigates a major risk of contamination by adventitious agents, thereby yielding a process that is safer, more robust, more consistent, and where the risk of product adulteration is reduced significantly. Isolating a process from its environment also can mitigate risk when the release of the process fluid or aerosols can pose a risk to the operator, the environment or other open operations.</p>
+
+        <p>Technology improvements have resulted in more robust systems that can isolate bioprocess unit operations from the immediate environment. This is important, as <span class="key-term">control of the physicochemical conditions within a process micro-environment</span> is more achievable than control of the macro-environment surrounding that process. As an example, it is easier to maintain an aseptic environment within a bioreactor than it is to maintain a low bioburden Grade 5 condition within a processing suite housing bioreactors and people.</p>
+
+        <p>Performing aseptic bioprocessing operations in an <span class="key-term">open system</span> represents high risk. Where feasible, aseptic operations should be performed in <span class="key-term">closed aseptic systems</span>. <span class="key-term">Closed processing</span> represents the lowest risk option in terms of mitigating the risk of contamination from the environment for both aseptic and low bioburden operations. Operations that cannot be practically closed should be processed in a monitored clean <span class="key-term">classified environment</span> that is consistent with the bioburden and particulate requirements of the process unit operation, whether aseptic or low bioburden.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>製程密閉 (Process Closure):</strong> 將製程的產品接觸面與外部環境完全隔離，使環境成為對製程品質無關緊要的參數（non-critical parameter）。這是 ISPE Vol.6 的核心主張，也是現代生物製藥設施設計的根本邏輯。</p>
+            <p><strong>解耦（Decoupling）:</strong> 密閉製程的最大意義在於將製程與環境的風險「解耦」——即使周遭環境並非潔淨室，密閉系統的產品依然受到保護。</p>
+            <p><strong>外來因子 (Adventitious Agent):</strong> 在製程中非預期引入的微生物污染物，包含細菌、病毒、黴菌等。生物製藥製程因其水性介質特性，極易成為這類污染物的繁殖溫床。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>密閉系統 = 密封保溫瓶：</strong> 想像你正在山上健行，隨身帶了一個密封保溫瓶裝了熱咖啡。無論外面氣溫多低、風多大、空氣多髒，保溫瓶裡的咖啡都不受影響。這就是「密閉製程」的核心概念——裝著寶貴生物藥液的系統，就像那個密封保溫瓶，與惡劣的外部環境完全隔絕。</p>
+            <p>相比之下，如果你用的是一個開口紙杯，那你就得在一個極度乾淨的空間（Grade 5 潔淨室）裡才能保護咖啡不受污染。開放式系統的代價，就是永遠需要昂貴的環境保護。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>微環境比宏環境更可控：</strong> Vol.6 的一個關鍵洞見是——控制一個生物反應器內部的無菌環境，遠比控制整個製程廠房的潔淨度容易且經濟。這個觀念顛覆了傳統無菌製造「全廠高等級潔淨室」的思維，導向「只需保護接觸面」的精準設計。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼一個密閉的生物反應器可以在 Grade 8（C 級）甚至非分類空間中運作，而傳統無菌充填線卻需要 Grade 5（A 級）環境？</li>
+                <li>「製程密閉」與「潔淨室等級提升」哪種方式對 CDMO 而言更具成本效益？請從設施建設與長期維運兩個面向分析。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.2 -->
+<!-- ============================================================ -->
+<div id="sec42" class="section-title ispe-section-title">4.2 Sources of Product and Process Contamination — 產品與製程的污染來源</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Particulates</span> in the environment can provide vehicles for <span class="key-term">adventitious agents</span>, representing a biological risk to a biopharmaceutical process and product. A <span class="key-term">risk management program</span> should be established to evaluate and address any potential impact of particulate contamination to process unit operations.</p>
+
+        <p>Bioprocessing is generally performed in an <span class="key-term">aqueous media</span> that can support the growth of bacteria, viruses, and other adventitious agents; therefore, bioprocesses are prone to contamination by propagation of these agents. Facility designs and designs of process closures should account for potential sources of biological contamination.</p>
+
+        <p><span class="key-term">Bioburden contamination</span> (such as bacteria, yeasts, or mold contamination) can disrupt the physicochemical properties of a bioprocess solution, yielding chemicals and conditions that can be potentially harmful to the patient.</p>
+
+        <p>Bioprocesses should be monitored for bioburden and particulates, which should be controlled. Most bioprocesses typically include multiple clarification steps that would effectively remove small levels of particulate contamination (in the form of suspended solids), mitigating the risk of physical damage to equipment, disruption of a bioprocess unit operation, or adulteration of the drug substance.</p>
+
+        <p>Figure 4.1 depicts the sources of product and process contamination.</p>
+        <p><em>[Figure 4.1: Sources of Product and Process Contamination — 圖示四大污染來源：原料/耗材、環境因素（設備/空氣/人員/公用系統）、交叉污染、殘留攜帶]</em></p>
+
+        <p><strong>A.</strong> The <span class="key-term">ingredients</span> used in media, buffers, and other bioprocess solutions can represent a significant potential source of microbial contamination. Consumables such as chromatography resins, filter media, and tubing also represent potential sources of contamination.</p>
+
+        <p><strong>B.</strong> Potential sources of contamination from the <span class="key-term">environment</span> include:</p>
+        <ul>
+            <li>Equipment</li>
+            <li>Airborne particulates and bioburden</li>
+            <li>Contamination on personnel</li>
+            <li>Contamination from utility supply services</li>
+            <li>Contaminating waste systems</li>
+        </ul>
+
+        <p><strong>C.</strong> Sources of <span class="key-term">crossover contamination</span> include contamination from concurrent multi-product, multi-batch, and multi-unit operations (including concurrent CIP and SIP process operations).</p>
+
+        <p><strong>D.</strong> <span class="key-term">Carryover</span> is typically a result of inadequate system preparation, including cleaning and sanitization operations between manufacturing batches.</p>
+
+        <p>Centralized CIP operations can be a source of contamination from the environment, carryover contamination, crossover contamination, and contamination from cleaning solvents and chemicals.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>四大污染來源分類：</strong></p>
+            <ul>
+                <li><strong>A — 原料與耗材 (Ingredients &amp; Consumables):</strong> 培養基成分、緩衝液原料、層析樹脂、過濾膜、管路等——這些「進入製程的東西」本身可能帶菌。</li>
+                <li><strong>B — 環境因素 (Environment):</strong> 空氣中的微粒、設備表面、操作人員脫落的皮屑與微生物、公用系統（純水、潔淨蒸氣）的污染。</li>
+                <li><strong>C — 交叉污染 (Cross-Contamination):</strong> 相鄰製程、多產品或多批次同時操作時，一個系統的污染物進入另一個系統。CIP/SIP 管路若設計不當，可能成為交叉污染的載體。</li>
+                <li><strong>D — 殘留攜帶 (Carryover):</strong> 前一批次或前一步驟的殘留物（包括清潔劑殘留）未被有效清除而帶入下一批。這是 CIP 驗證的核心課題。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>交叉污染 = 餐廳的砧板管理：</strong> 好的餐廳廚師用不同顏色的砧板分別處理生肉、蔬菜、魚類，就是在防止「交叉污染」。生物製藥廠的多產品環境中，若沒有嚴格的隔離設計（硬體隔離或製程密閉），就像所有食材都用同一張砧板——風險極高。</p>
+            <p><strong>殘留攜帶 = 杯子沒洗乾淨：</strong> 你用同一個杯子先裝橙汁，沒洗乾淨再裝牛奶——殘留的酸會讓牛奶結塊。生物製藥製程中，前批次殘留的蛋白質或清潔劑，可能對下一批產品的純化或效價造成嚴重干擾。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>水性介質的特殊脆弱性：</strong> 生物製藥製程幾乎全程在水溶液環境中進行（培養基、緩衝液、純化層析）。水性介質是細菌和酵母菌的天然繁殖溫床。一旦有少量污染引入，短時間內（37°C 培養條件下，大腸桿菌每 20 分鐘倍增一次）污染就會呈指數型擴散，整批廢棄損失極為慘重。</p>
+            <p><strong>CIP 的雙重風險：</strong> CIP 本是清潔工具，但集中式 CIP 系統（Centralized CIP）本身也可能成為污染的媒介——同一套 CIP 管路若清洗多個設備，管路殘留可能造成交叉污染。這也是近年來 CIP 設計傾向「單用途」（dedicated CIP）的原因之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO 承接多個客戶產品時，哪一類污染來源（A/B/C/D）的管控最困難？為什麼？</li>
+                <li>如果生物反應器內的培養基受到酵母菌污染，可能的污染入口有哪幾個？請根據 4.2.1 的清單推論。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.2.1 -->
+<!-- ============================================================ -->
+<div id="sec421" class="section-title ispe-section-title">4.2.1 Sources of Bioburden in Aseptic/Axenic Operations — 無菌/純粹培養操作中的生物負荷來源</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Cell culture and fermentation operations are by necessity <span class="key-term">aseptic/axenic operations</span>. Contamination of these processes can result in loss or rejection of batches. Prior to inoculation, the medium within a bioreactor should be free of measurable bioburden (effectively sterile). <span class="key-term">Single use bioreactors</span> and systems for cell culture operations should be discarded and replaced. <span class="key-term">Stainless steel systems</span> should be decontaminated, cleaned, and sterilized prior to subsequent use. The reason for contamination should be investigated and addressed to minimize risk of another contamination.</p>
+
+        <p>Potential sources of contamination in cell culture operations include:</p>
+        <ul>
+            <li>Breach of integrity of the Grade 5 environment in the BSC used in open operations</li>
+            <li>Failure in the bioreactor sterilization</li>
+            <li>Failure in media sterilization</li>
+            <li>Failure in bioreactor cleaning, resulting in soil carryover</li>
+            <li>Compromise/breach of <span class="key-term">sterile air filter integrity</span></li>
+            <li>Contamination of the cell bank or inoculums</li>
+            <li>Compromise/breach of the <span class="key-term">vent filter integrity</span> and system pressurization failure</li>
+            <li>Compromise of the <span class="key-term">sampling system integrity</span></li>
+            <li>Compromise of the <span class="key-term">addition port(s) integrity</span></li>
+            <li>Contamination of the clean steam system</li>
+            <li>Contamination of process water system</li>
+            <li>Presence of prions or adventitious agents in animal derived ingredients</li>
+            <li>Failure of mixer system or mixer mechanical seals</li>
+            <li>Failure of aseptic transfer system sterilization, breach of transfer system integrity</li>
+            <li>Failure/breach of vessel integrity</li>
+            <li>Contamination of feed solution</li>
+            <li>Compromise/breach of perfusion system integrity</li>
+            <li>Leachables/extractables from polymeric components, glass, etc.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>無菌操作 (Aseptic Operation) vs 純粹培養 (Axenic Operation):</strong></p>
+            <ul>
+                <li><strong>Aseptic（無菌）:</strong> 指整個操作環境與系統排除所有微生物——適用於細胞培養的接種前準備、培養基製備等。</li>
+                <li><strong>Axenic（純粹培養）:</strong> 特指培養物中只含有特定的目標生物（如 CHO 細胞），不含任何其他微生物。細胞培養批次必須在全程 axenic 條件下維持。</li>
+            </ul>
+            <p><strong>接種前滅菌（Pre-inoculation Sterility）:</strong> 生物反應器在接種前，其中的培養基必須達到實質上的無菌狀態（effectively sterile）。這通常透過 SIP（就地蒸氣滅菌）達成。一旦 SIP 失效，後續接種的細胞將立即暴露於污染風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>密閉系統 18 個潛在污染入口的警示：</strong> 這份清單看似嚇人，但其實是一份「系統密閉設計查核表」。每一個列出的入口都代表一個需要被保護的介面（interface）。優秀的系統設計師在評估生物反應器密閉性時，必須逐一審視每個入口是否具備足夠的保護措施。</p>
+            <p><strong>動物源成分的特殊風險：</strong> 動物源原料（血清、水解物）可能含有病毒或 prion（普里昂蛋白，如 BSE 相關）。雖然現今無血清培養基已大幅降低此風險，但歷史上動物源成分的使用至今仍是 FDA 與 EMA 審查的重點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>18 個污染入口 = 城堡的 18 道門：</strong> 想像一座中世紀城堡（生物反應器），它的價值在於城堡內部的安全。但如果城堡有 18 道門（取樣口、通氣口、加料口、攪拌器密封等），每一道門都可能成為敵人（污染）的入口。城堡的安全不取決於最強的那道門，而取決於最弱的那道門。這就是密閉性驗證必須全面覆蓋每個介面的原因。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為一個 CDMO 的製程工程師，當你接收到一台全新的 1,000L 不鏽鋼生物反應器並進行首次 SIP 驗證時，你需要：</p>
+            <ol>
+                <li>識別所有探針插入口（pH、DO、溫度）是否完整安裝並經過灼燒滅菌</li>
+                <li>確認通氣過濾器（vent filter）完整性測試通過</li>
+                <li>驗證取樣系統的蒸汽消毒步驟有效</li>
+                <li>確認所有加料口均在 SIP 程序覆蓋範圍內</li>
+            </ol>
+            <p>遺漏任何一項，都可能導致接種後數天内因污染而廢批，損失數十萬至百萬美元的原料物料成本。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.2.2 -->
+<!-- ============================================================ -->
+<div id="sec422" class="section-title ispe-section-title">4.2.2 Mitigation of Risks from Sources of Potential Product and Process Contamination — 污染風險緩解策略</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The risk of contamination from <span class="key-term">raw materials</span> can be mitigated and monitored with established quality control strategies. Ingredient specifications including bioburden, impurities, properties, and recommended storage conditions, should be understood. Dry solids should be stored in environments with controlled humidity and temperature. Solutes used in media and buffer formulation are usually not sterile; the solutions using these ingredients should be:</p>
+        <ul>
+            <li>Sterilized</li>
+            <li>Stored under <span class="key-term">bacteriostatic conditions</span></li>
+            <li>Used within specified <span class="key-term">hold periods</span> (with limited shelf life — before microbial contaminants proliferate)</li>
+        </ul>
+
+        <p><span class="key-term">Media</span> are typically at higher risk than buffer solutions because of their growth promoting properties. The composition of media may affect their susceptibility to contamination: defined chemical media may be considered lower risk. The use of sera can affect the susceptibility to contamination. Consumables also represent potential sources of contamination.</p>
+
+        <p>Contamination from the environment and crossover contamination from neighboring systems can occur for open processes when these systems are in close proximity. Protecting an open system from potential contamination by operators requires effective <span class="key-term">sanitary gowning</span> and/or other layers of system protection, including a clean environment. Enhanced gowning may help reduce bioburden levels in a suite.</p>
+
+        <p><span class="key-term">Closing a system</span> is considered an effective approach to mitigating the risk of crossover contamination or contamination from the environment. Closing a system also effectively mitigates the risk of contamination by personnel. Contamination from the environment of a closed system would require a breach of that system, typically as a result of <span class="key-term">multiple failures of mechanical systems</span> (e.g., valve and/or filter failures) representing the layers of protection to that system. Crossover contamination of two adjacent closed systems would require the breach of integrity of both systems.</p>
+
+        <p><span class="key-term">Carryover</span> is typically a result of inadequate system preparation including cleaning and sanitization operations between manufacturing batches. Validation of the cleaning and sanitization program should adequately mitigate the risk of carryover. An effective cleaning and sanitization program should include adequate monitoring to ensure critical parameters are maintained, including:</p>
+        <ul>
+            <li>Temperature</li>
+            <li>Time</li>
+            <li>Action (impingement and/or turbulent flow; pressure)</li>
+            <li>Chemical concentration and components</li>
+            <li>Sequence of cleaning steps</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Hold Period（保存期限）的科學基礎：</strong> 培養基配製後並非立即使用，必須設定「最長保存時限」（hold period）。這個時限不是任意訂定的，而是基於微生物生長動力學研究——在特定溫度和 pH 條件下，從「零污染」到「污染超出可接受範圍」需要多少時間。Hold period 到期後，培養基必須廢棄或重新滅菌。</p>
+            <p><strong>培養基 vs 緩衝液的風險差異：</strong> 培養基（Media）含有碳源、氮源、維生素等豐富營養成分，是微生物的「五星級餐廳」，污染風險顯著高於緩衝液（Buffer）。化學限定培養基（defined chemical media）因組成明確、不含不確定的動物源成分，比複雜培養基（complex media）風險更低。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>密閉系統的「多重失效」保護邏輯：</strong> Vol.6 明確指出，一個真正密閉的系統，要使環境污染進入，必須同時發生「多重機械失效」（multiple failures）——例如同時失效的閥門和過濾器。這種「多重失效才能污染」的設計，正是密閉系統比開放系統更安全的根本原因，也是為何密閉系統可以放置在較低等級環境中的監管依據。</p>
+            <p><strong>CIP 的 TACT 原則：</strong> 有效清洗需要同時滿足四個要素——<strong>T</strong>emperature（溫度）、<strong>A</strong>ction（機械衝擊力/湍流）、<strong>C</strong>hemical（清潔劑濃度）、<strong>T</strong>ime（接觸時間）。任何一個要素不足，整體清洗效果就會大打折扣。這也是 CIP 驗證的核心評估架構。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與框架 Framework</h4>
+            <pre>
+CIP 有效性 = f(溫度 × 作用力 × 化學濃度 × 時間 × 步驟順序)
+
+關鍵概念：
+- 提高溫度 → 可降低化學濃度需求
+- 增加機械衝擊力 → 可縮短清洗時間
+- 步驟順序錯誤（如鹼洗後未充分沖洗就進行酸洗）
+  → 中和反應產物可能堵塞管路或損傷設備
+
+CIP 驗證三要素：
+1. 視覺清潔（visually clean）
+2. 微生物指標（bioburden limits）
+3. 殘留限度（residue limits, e.g., TOC, conductivity）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個 2,000L 生物反應器的 SIP 失效，但設備仍維持密閉狀態（閥門未打開），環境中的微生物是否會進入？為什麼？</li>
+                <li>CDMO 承接兩個相鄰批次的不同客戶產品時，CIP 驗證需要涵蓋哪些額外的考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3 — THE INTELLECTUAL CORE -->
+<!-- ============================================================ -->
+<div id="sec43" class="section-title ispe-section-title">4.3 Providing Appropriate and Effective Layers of Protection to a Bioprocess Unit Operation — 保護層次：Vol.6 的知識核心</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Different levels of bioburden and contamination control are needed for different unit operations. Different approaches and layers of protection are required to mitigate the risk of contamination from the environment for these different operations. The impact (or severity) of bioburden or particulate contamination will differ in different situations. The mitigation of risk from contamination present in the environment requires the implementation of sufficient <span class="key-term">layers of appropriate protection</span> to a process system. The purpose of this section is to discuss possible options for closing an operation by providing appropriate layers of protection to that operation.</p>
+
+        <p>The use of highly <span class="key-term">classified cleanrooms</span> for open operations can reduce the level of potential environmental contaminants. For aseptic operations, classified cleanrooms provide an environment with lower bioburden. For other bioprocesses, classified cleanrooms can lower the particulate burden and bioburden within the environment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 洋蔥式保護層次模型</h4>
+            <p>這是整本 Vol.6 最重要的概念。ISPE 的核心主張是：</p>
+            <p><strong>每一層有效的保護 = 可降低一個等級的潔淨室要求</strong></p>
+            <p>就像洋蔥一樣，越多層皮（保護層），核心（產品）越安全，外層環境的重要性也就越低。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>洋蔥式防護（每一層洋蔥皮 = 一層保護）：</strong></p>
+            <p>想像產品是洋蔥的核心。每剝一層洋蔥皮（保護層），外界的「污染」都要先突破那一層才能到達核心。當洋蔥有足夠多的層（密閉設備 + 密閉傳輸管路 + 受控房間），即使最外層的環境（建築空間）並非嚴格潔淨室，產品依然安全。</p>
+        </div>
+    </div>
+</div>
+
+<!-- Onion diagram visual -->
+<div class="onion-diagram">
+    <p style="font-weight:700; color:#1a3a2a; margin-bottom:0.75rem; font-size:0.95rem;">洋蔥式保護層次模型（由內至外）</p>
+    <div class="onion-layer layer-0">核心：Product (藥液)</div>
+    <div class="onion-layer layer-1">Layer 1 — Primary Containment (初級圍堵)<br><small>密閉設備本體：焊接接頭、SIP 接口、密閉生物反應器</small></div>
+    <div class="onion-layer layer-2">Layer 2 — Secondary Containment (二級圍堵)<br><small>密閉房間 / RABS / 隔離器</small></div>
+    <div class="onion-layer layer-3">Layer 3 — Building Segregation (建築隔離)<br><small>不同製程區域的物理分隔，獨立 HVAC</small></div>
+    <div class="onion-layer layer-4">Layer 4+ — Environmental Controls (環境管控)<br><small>潔淨室等級、更衣程序、環境監控</small></div>
+    <p style="font-size:0.82rem; color:#556; margin-top:0.75rem;">保護層次越多 → 外部環境等級要求越低 → 設施建設成本越低</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3.1 -->
+<!-- ============================================================ -->
+<div id="sec431" class="section-title ispe-section-title">4.3.1 Providing Appropriate Environments within Biosafety Cabinets — 生物安全櫃（BSC）的環境提供</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Open aseptic operations require environments of <span class="key-term">extremely low bioburden</span>, where the probability of detecting bioburden within those environments during the open operation is essentially zero/probability less than 1. <span class="key-term">Grade 5 environments</span>, such as that found within properly managed <span class="key-term">Biosafety Cabinets (BSCs)</span>, are typically considered acceptable for open aseptic operations, as they meet this criterion. Even within BSCs, proper cleaning, operations, technique, preparation, gowning, staging, etc., and surrounding environment are required to maintain the Grade 5 condition.</p>
+
+        <p>Independent of the strategy used, the overall BSC management plan should include:</p>
+        <ul>
+            <li>A well designed cleanroom housing the BSC. This design will consider:
+                <ul>
+                    <li>The BSC</li>
+                    <li>The HVAC (location of HEPA and air return) that mitigates risk of "rogue" unfiltered air currents in environment immediately surrounding the open face of the BSC</li>
+                    <li>Adequate air change per hour rate</li>
+                    <li>Location and design of airlock accesses</li>
+                </ul>
+            </li>
+            <li>Restriction of the number of personnel occupying the room</li>
+            <li>Restriction of the amount of equipment located in room</li>
+            <li>Appropriate gowning of personnel</li>
+            <li>Proper aseptic technique in the BSC</li>
+            <li>Effective cleaning and sanitization of the BSC</li>
+        </ul>
+
+        <p>For further information, see the ISPE Good Practice Guide: HVAC [58].</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>生物安全櫃 (Biosafety Cabinet, BSC):</strong> BSC 是細胞培養實驗室和種子準備的核心設備。它利用垂直層流（vertical laminar airflow）和 HEPA 過濾，在操作台面創造一個 Grade 5（ISO 5，等同 EU GMP A 級）的微環境。</p>
+            <p><strong>「Rogue」空氣流的危險：</strong> 如果 HVAC 設計不當，房間內存在未受控的渦流或亂流，可能破壞 BSC 操作面附近的層流，將外部環境的微粒/微生物帶入 BSC 的開口面——這就是所謂「流氓空氣流（rogue air currents）」的危害。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>BSC ≠ 無限等級 5 保護：</strong> 即使在 BSC 內操作，Grade 5 環境也並非自動達成——需要搭配正確的操作技術（aseptic technique）、適當更衣、定期清潔消毒，以及良好的周邊環境設計（HVAC、氣密門道）。BSC 只是提供了潛力，人員操作行為決定了實際效果。</p>
+            <p><strong>人員數量的重要性：</strong> 每增加一個人在 BSC 所在房間內，就增加額外的微粒和微生物負荷。這就是為什麼 BSC 操作房間通常嚴格限制人員進入數量，並且在使用中盡量排除非必要人員。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個 BSC 所在房間的 HVAC 回風口位置設計不當（例如位於 BSC 開口正對面），可能造成什麼問題？</li>
+                <li>在 CDMO 中，種子培養（seed train）通常在 BSC 中進行。若要從 BSC 升級到封閉式搖瓶培養系統，需要考慮哪些設計改變？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.3.2 -->
+<!-- ============================================================ -->
+<div id="sec432" class="section-title ispe-section-title">4.3.2 Strategies for Closing Bioprocess Operations — 製程密閉策略</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The goal for closing systems is to <span class="key-term">isolate the system product contact surfaces</span> from the surrounding environment. Available technology allows systems to be closed or isolated from the environment and by default, from each other. Effective isolation can be achieved without the need for walls or segregation of the HVAC controlling the environment housing these operations. This strategy has previously been supported by regulatory agencies (e.g., process and utility piping have traditionally and typically been housed in uncontrolled interstitial spaces).</p>
+
+        <div class="quote-box">
+            "Transfers between unit operations are considered critical to a successful bioprocess. Figures 4.2 and 4.3 show mixed piping systems that are routinely routed through <span class="key-term">uncontrolled interstitial (or 'gray') space</span> because these critical systems can be shown to be isolated from the environment and from each other. The environment in these uncontrolled spaces represents a non-critical aspect to the transfer operation, because the critical transfer piping is closed."
+        </div>
+
+        <p>The process transfer piping systems, routed through the uncontrolled interstitial spaces, represent <span class="key-term">extensions of the process equipment</span> to which they are attached.</p>
+
+        <p><em>[Figure 4.2: Closed Piping through Non-classified Mechanical Spaces]</em><br>
+        <em>[Figure 4.3: Closed Piping through Non-classified Mechanical Spaces (3D Diagram)]</em></p>
+
+        <p>This strategy has been extended to <span class="key-term">closed buffer hold vessels</span> that may be housed in Controlled Not Classified (CNC) or uncontrolled spaces. Although housed in an uncontrolled environment, buffer hold vessels are rendered closed prior to use by effective cleaning and sanitization.</p>
+
+        <p>Organizations should demonstrate that their process equipment is appropriately closed (and validated as such) or the agencies will continue to expect it to be housed in classified cleanrooms.</p>
+
+        <p>Advances in bioprocessing include technologies that provide effective isolation of process from the environment. For <span class="key-term">closed operations</span>, the environment becomes a property or parameter with <span class="key-term">no critical aspect</span> according to Quality Risk Management (QRM). For a process or system to be considered closed, the product contact surfaces and process environment needs to be completely isolated from the external environment during all manipulations, including setup, transfers, sampling and other process operations.</p>
+
+        <p><span class="key-term">Open systems can be rendered closed</span> with appropriate preparation, including cleaning and sanitization operations. Risk assessments would show that isolation of the product and process from the environment represents lower risk to product quality by eliminating a significant source of hazards. The elimination of the environment as a parameter having a critical aspect can have significant impact on the process design, on the process equipment layout, and on the overall facility design.</p>
+
+        <p><em>[Figure 4.4: Open versus Closed (Ease of Contamination Figure)]</em></p>
+
+        <p>This is independent of the nature of the process or classification of the environment. As an example, <span class="key-term">bioreactors and fermenters</span> that have been properly steamed-in-place and are appropriately closed and controlled have been shown to be capable of maintaining an axenic culture for months.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Controlled Not Classified (CNC) 空間：</strong> 這是一種介於「完全潔淨室」和「未管控空間」之間的環境——有基本的環境監控和維護要求，但不需要符合特定的 ISO 潔淨室等級。密閉緩衝液儲存槽可以放置在 CNC 空間，就是因為其密閉性讓環境分類變得不關鍵。</p>
+            <p><strong>間隙空間（Interstitial Space）的監管接受：</strong> 生物製藥廠的管路系統穿越非分類的機械夾層（灰色空間）已是長期被監管機構接受的做法。理由是：這些管路是密閉的，環境對管路內的產品沒有影響。這個「灰色空間合理性」的原則，正是 Vol.6 的密閉策略之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>密閉管路穿越灰色空間 = 自來水管穿越牆壁：</strong> 家裡的自來水管穿過牆壁、天花板，你不會要求整面牆達到食品衛生標準，因為水是在密閉管道內流動的。生物製藥廠的製程管路穿越非潔淨的機械夾層，道理完全相同——關鍵的是管道本身的密閉性，而不是周遭牆壁的潔淨程度。</p>
+            <p><strong>設備的「延伸」概念：</strong> 每段連接在生物反應器上的密閉管路，法規上視為生物反應器本身的延伸部分——享有與生物反應器相同的密閉保護。只要管路本身密閉，外部環境分類就無關緊要。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>「環境成為非關鍵參數」的革命性意義：</strong> Vol.6 最重要的一句話是：對於密閉操作，「環境成為品質風險管理中無關鍵性的參數」。這句話的監管意涵是：</p>
+            <ul>
+                <li>密閉設備不需要放在潔淨室 → 建設成本大幅降低</li>
+                <li>環境監控需求降低 → 運營成本降低</li>
+                <li>設施設計靈活性提高 → 可在更小的潔淨室中容納更多設備</li>
+            </ul>
+            <p><strong>但前提是：</strong> 必須有充分的文件和驗證來「證明」密閉性——否則監管機構仍會要求潔淨室環境。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 設施設計的商業意義：</strong> 如果一個 CDMO 計劃建造一個 5,000L 不鏽鋼生物反應器廠房，選擇是：</p>
+            <ul>
+                <li><strong>方案 A（傳統思維）:</strong> 把整個生物反應器廠房設計為 Grade 8（C 級）潔淨室。建設成本極高，HVAC 系統複雜，維運成本高。</li>
+                <li><strong>方案 B（Vol.6 策略）:</strong> 生物反應器系統經過完整的密閉驗證（SIP、壓力保持測試、過濾器完整性測試），放置在 CNC 空間。只有真正需要開放操作的區域（如取樣站、種子準備室）建設 Grade 8 潔淨室。</li>
+            </ul>
+            <p>方案 B 可節省數百萬至千萬美元的設施建設成本，這正是 Vol.6 的核心商業價值所在。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一台已通過 SIP 驗證的 2,000L 生物反應器，若放置在 CNC 空間中，需要哪些持續性監控措施來維持其「密閉」狀態的監管合規性？</li>
+                <li>如果你是監管審查員，你會要求什麼樣的文件來確認一個「密閉系統」確實達到密閉標準？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4.4 -->
+<!-- ============================================================ -->
+<div id="sec44" class="section-title ispe-section-title">4.4 Demonstrating that Processes are Closed — 密閉性的驗證與證明</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>4.4.1 Performing a Closure Analysis</h3>
+
+        <p>This section provides an example of how <span class="key-term">risk assessments</span> can be used to demonstrate that a process has been successfully isolated from the surrounding environment and that the environment no longer represents a critical aspect of this process.</p>
+
+        <p>Changes to a process or processing strategy should be systematically evaluated, e.g., by using a risk management tool and pre-established criteria. The tool should mitigate bias influencing the risk ranking of a hazard. The primary goal of a <span class="key-term">closure analysis</span> is to confirm that a process unit operation can and/or should be removed from a cleanroom environment of higher classification to a <span class="key-term">controlled non classified suite</span>. Closure analysis is a type of risk assessment that should focus on the <span class="key-term">probability and severity</span> of exposing a process system to the surrounding environment before, during, and after the process operation. The scope of the risk assessment should be restricted to potential impact by the environment and should omit other process improvement initiatives.</p>
+
+        <p>Closure analysis can provide an opportunity to:</p>
+        <ul>
+            <li>Evaluate and improve manufacturing processes</li>
+            <li>Reduce risk</li>
+            <li>Evaluate new and improved technologies</li>
+            <li>Reduce failures</li>
+            <li>Increase productivity</li>
+        </ul>
+
+        <p>These improvements can lower the cost of manufacturing, improve consistency, increase reliability and provide a more predictable level of product quality.</p>
+
+        <p>For a process unit operation, all <span class="key-term">penetrations and operations</span> that can influence the integrity of the system should be considered. Figure 4.5 shows penetrations and operations that should be considered for a stainless steel bioreactor used in a cell culture operation.</p>
+
+        <p><em>[Figure 4.5: Stainless Steel Bioreactor Used in a Cell Culture Operation — 圖示所有可能影響密閉性的穿透點與操作點]</em></p>
+
+        <p>The steps listed in Figure 4.5 represent <span class="key-term">opportunities for breach of the closed integrity</span> of the bioreactor system. The closure analysis should consider these steps and determine whether the methodology used in the step or subsequent steps adequately protects the integrity of the closed system. Stainless steel bioreactor systems require significant manual intervention during setup. The insertion of instrumentation into lower probe belts and assembly of vent and sterile gas filters can result in particulate and bioburden contamination of the vessel and system. The risk may be adequately mitigated by performing <span class="key-term">SIP</span> on the system prior to use.</p>
+
+        <div class="quote-box">
+            "This risk cannot be mitigated by housing an aseptic system in a Grade 8 or Grade 7 environment. Only Grade 5 should be considered acceptable for an open aseptic system."
+        </div>
+
+        <p>A hot WFI rinsing and sanitizing rinse after manual insertions, but prior to SIP, may be needed to mitigate the risk of particulate contamination within the vessel chamber. Bioburden present in the system after human intervention is usually removed using <span class="key-term">thermal sanitization</span> and particulates should be rinsed away with condensate in a self-draining system. Following SIP, the system should be maintained under constant <span class="key-term">positive pressure</span> by supplying sterile filtered gas. <span class="key-term">Dissolved Oxygen (DO) and pH monitoring</span> prior to inoculation can be used to confirm success of the SIP process in rendering the bioreactor closed.</p>
+
+        <p>This evaluation should be repeated for all unit operations in a process.</p>
+
+        <p><em>[Figure 4.6: Phases of Risk Assessment Analysis]</em><br>
+        <em>[Figure 4.7: Closure Analysis Risk Assessment Workflow – Phase 1 (Process understanding, PFD/P&amp;ID assembly, system boundary definition)]</em><br>
+        <em>[Figure 4.8: Closure Analysis Risk Assessment Workflow – Phase 2 (Criteria listing, closure risk ranking vs. pre-established criteria)]</em><br>
+        <em>[Figure 4.9: Closure Analysis Risk Assessment Workflow – Phase 3 (Mitigation options for unacceptable risk)]</em></p>
+
+        <p>The workflow should be used only for process contact operations. In the program depicted:</p>
+        <ul>
+            <li><span class="key-term">Open aseptic operations</span> would represent the operations or steps of highest risk</li>
+            <li>Performing controlled bioburden operations using <span class="key-term">sterile gamma irradiated single use systems</span> would represent the lowest risk of contamination from the environment; however, other higher value options are available that also represent acceptable low risk</li>
+        </ul>
+
+        <p>Phase 3 of the closure analysis evaluates options for mitigation of unacceptable risk due to insufficient product protection or process closure.</p>
+
+        <p><em>[Figure 4.10: Fault Tree Flow Diagram — 用於最終評估密閉完整性的故障樹]</em></p>
+
+        <p>At the end of this workflow, only those elements, steps, or operations representing a <span class="key-term">moderate or high risk</span> of contamination from the environment should be further evaluated in the final assessment. Should contamination from the environment be a possibility, the <span class="key-term">fault tree approach</span> shown in Figure 4.6 could be used for final assessment of adequate closure.</p>
+
+        <p>The final assessment addresses the needs of the process in a qualitative manner. The purpose is to determine whether it is more appropriate to close a process by upgrading the process system or to maintain status quo by leaving the operation open and housing it in an appropriately classified environment. A closure analysis risk assessment should show that most aseptic processes used in the manufacture of drug substances are closed. Exceptions may include <span class="key-term">inoculum preparation processes</span> and seed cell expansion when shaker flasks are used. When closing the process is not possible, the operation should be housed in an appropriate environment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>密閉分析（Closure Analysis）的本質：</strong> 密閉分析是一種聚焦於「環境與製程系統互動」的專項風險評估。它的獨特性在於：</p>
+            <ul>
+                <li>範疇刻意限縮為「環境影響」——不涉及其他製程改善</li>
+                <li>目標是「移除環境的關鍵性」——降低潔淨室等級要求</li>
+                <li>結果是「是否可以從 Grade X 降至 CNC」的決策依據</li>
+            </ul>
+            <p><strong>密閉分析三階段工作流程（Phase 1–3）：</strong></p>
+            <ul>
+                <li><strong>Phase 1 — 製程理解:</strong> 收集 PFD（製程流程圖）和 P&amp;ID（管道儀錶圖），定義系統邊界，識別所有穿透點。</li>
+                <li><strong>Phase 2 — 風險排序:</strong> 建立密閉評估標準，對每個穿透點/操作進行風險排序，與預設可接受標準比較。</li>
+                <li><strong>Phase 3 — 風險緩解:</strong> 針對「不可接受」的風險項目，評估升級選項（如改用密閉傳輸系統、增加 SIP 步驟等）。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>SIP 驗證 = 用蒸汽消毒管路接頭——無須拆解，現場驗證密閉性：</strong></p>
+            <p>想像你家的天然氣管道接頭——你不會每次使用前都把接頭拆下來送去滅菌。你會在原位（in-place）用特殊方法（如壓力測試或洩漏偵測）確認接頭密封完好。SIP（就地蒸氣滅菌）的邏輯類似：生物反應器的整套管路系統，包含各個閥門、過濾器、取樣口，不需要拆解，直接在原位通入高壓蒸汽（121°C 以上，至少 15 分鐘），達到滅菌效果，同時也驗證了系統能承受蒸汽壓而不洩漏——這等於同時完成了密閉性確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p><strong>SIP 後正壓維持的邏輯：</strong> SIP 完成後，系統立即切換為「無菌過濾氣體正壓維持」。這一步驟的目的是：即使系統有微小洩漏，也是氣體從內向外洩漏（正壓外洩），而不是外部環境的微粒從外向內進入。這是密閉系統的最後一道防線，也是密閉性持續保持的機制。</p>
+            <p><strong>DO 和 pH 監測作為密閉確認的指標：</strong> 接種前的 DO（溶氧）和 pH 穩定性可以間接確認 SIP 的成功——如果培養基被微生物污染，DO 和 pH 的異常變化會在幾小時內出現。這是一個巧妙的「密閉性功能測試」，利用培養基的化學特性作為密閉成功的生物指示劑。</p>
+            <p><strong>例外情況：搖瓶和種子準備：</strong> Vol.6 坦承，有些操作天生無法完全密閉——搖瓶（shaker flask）用於種子培養擴增時，本質上是半開放系統，仍需要 Grade 5（BSC）環境的保護。這是密閉策略的例外，不是規則。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>密閉分析風險矩陣框架 Risk Matrix Framework</h4>
+            <pre>
+密閉分析風險評估邏輯：
+
+每個穿透點 / 操作步驟 → 評估兩個維度：
+
+1. 暴露機率 (Probability of Exposure)
+   - 操作頻率
+   - 操作持續時間
+   - 人員介入程度
+
+2. 暴露嚴重性 (Severity of Exposure)
+   - 污染對製程的影響
+   - 是否有後續去除步驟？
+   - 對患者安全的影響
+
+風險排序：
+   高機率 × 高嚴重性 → 必須升級（密閉化）
+   低機率 × 低嚴重性 → 可接受（維持現狀）
+   中等風險 → Phase 3 評估緩解選項
+
+最終決策：
+   密閉升級 OR 保留開放 + 潔淨室環境
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CDMO 密閉分析的實際步驟（以 2,000L SS 生物反應器為例）：</strong></p>
+            <ol>
+                <li><strong>Phase 1:</strong> 從工程部取得 P&amp;ID，標記所有穿透點（探針口 × 5、取樣口 × 3、加料口 × 4、通氣口 × 2、傳輸接口 × 6）共 20 個潛在暴露點。</li>
+                <li><strong>Phase 2:</strong> 對每個穿透點評估：是否有 SIP 覆蓋？是否有緊急切斷閥？是否有完整性測試記錄？</li>
+                <li><strong>Phase 3:</strong> 發現取樣口在取樣操作時（開放式取樣）為高風險 → 升級為密閉取樣系統（如 SureSampler® 或蒸汽阻障取樣閥）。</li>
+                <li><strong>文件輸出:</strong> 產出密閉分析報告，支持將生物反應器移至 CNC 空間的監管申請（如 CMC 模組更新）。</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Fault Tree Analysis（故障樹分析）用於密閉性評估的邏輯是什麼？它與傳統 FMEA 有何不同？</li>
+                <li>Vol.6 說「大多數無菌藥物原料製程應可證明是密閉的」——為什麼搖瓶種子培養是例外？有沒有技術解決方案可以消除這個例外？</li>
+                <li>一個生物反應器的「密閉分析」是否等同於 ICH Q9 的 QRM 工具應用？兩者有何異同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Summary Table -->
+<div class="two-column">
+    <div class="left-column">
+        <h3 style="color: #1a3a2a; margin-bottom:0.75rem;">4.3 操作系統開放程度與環境需求對照表</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>操作類型 Operation Type</th>
+                    <th>密閉程度 Closure Level</th>
+                    <th>所需環境 Required Environment</th>
+                    <th>典型範例 Example</th>
+                </tr>
+                <tr>
+                    <td>開放無菌操作<br>Open Aseptic</td>
+                    <td><span class="badge red">最低 Lowest</span></td>
+                    <td>Grade 5 (ISO 5 / A 級)</td>
+                    <td>BSC 內種子接種</td>
+                </tr>
+                <tr>
+                    <td>低生物負荷開放操作<br>Open Low Bioburden</td>
+                    <td><span class="badge yellow">低 Low</span></td>
+                    <td>Grade 7–8 (ISO 7–8 / C–D 級)</td>
+                    <td>開放式緩衝液配製</td>
+                </tr>
+                <tr>
+                    <td>功能性密閉<br>Functionally Closed</td>
+                    <td><span class="badge blue">中高 Medium-High</span></td>
+                    <td>CNC 或 Grade 8</td>
+                    <td>密閉傳輸連接 + 就地 SIP</td>
+                </tr>
+                <tr>
+                    <td>完全密閉<br>Fully Closed</td>
+                    <td><span class="badge green">最高 Highest</span></td>
+                    <td>CNC 或非分類空間</td>
+                    <td>已驗證密閉生物反應器（連續正壓）</td>
+                </tr>
+                <tr>
+                    <td>Gamma 照射一次性密閉系統<br>SU Gamma-irradiated Closed</td>
+                    <td><span class="badge green">極高 Highest</span></td>
+                    <td>非分類空間 Unclassified</td>
+                    <td>無菌一次性密閉袋系統</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h3 style="color: #2c5282; margin-bottom:0.75rem;">表格解讀 Table Analysis</h3>
+        <div class="concept-box">
+            <h4>關鍵規律 Key Pattern</h4>
+            <p>從表格中可以清楚看到 Vol.6 的核心邏輯：密閉程度越高 → 所需環境等級越低。</p>
+            <p>最高風險的開放式無菌操作需要 ISO 5（A 級）；而完全密閉的系統只需要 CNC 甚至非分類空間——這之間的「環境等級跨越」，就是密閉化的商業回報。</p>
+        </div>
+        <div class="note-box">
+            <h4>監管一致性提示</h4>
+            <p>此表格的邏輯與 EU GMP Annex 1（2022 年修訂版）的 CCS（污染控制策略）框架高度一致，也呼應 FDA 的 Process Validation Guidance 中強調「工程控制優先於環境控制」的原則。ISPE Vol.6 的「密閉優先」策略，已成為現代生物製藥設施設計的國際主流規範。</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — Chapter 4 Part A (4.1–4.4)</h3>
+    <ul>
+        <li><strong>製程密閉（Process Closure）</strong>是 ISPE Vol.6 的核心策略：將產品接觸面與環境完全解耦，使環境分類成為非關鍵參數，從而降低設施建設和維運成本。</li>
+        <li><strong>四大污染來源</strong>為：原料/耗材、環境因素（設備/空氣/人員/公用系統）、交叉污染（多產品/多批次/CIP 管路）、殘留攜帶（清洗不完全）——每一類均有對應的風險緩解策略。</li>
+        <li><strong>洋蔥式保護層次模型</strong>是本章的知識核心：每增加一層有效保護（初級圍堵 → 二級圍堵 → 建築隔離 → 環境管控），就可以降低一個等級的潔淨室要求，最終實現在 CNC 或非分類空間中安全操作密閉製程。</li>
+        <li><strong>密閉分析（Closure Analysis）</strong>是一種三階段（製程理解 → 風險排序 → 緩解選項評估）的專項風險評估工具，其最終產出是「是否可將設備移至低等級環境」的科學決策依據——必須有完整文件和驗證支撐，監管機構才會接受。</li>
+        <li><strong>SIP + 正壓維持 + DO/pH 監測</strong>是確認密閉生物反應器密閉狀態的標準方法組合；密閉性驗證不能僅靠環境等級提升替代。</li>
+        <li><strong>例外情況</strong>：搖瓶種子培養等天生難以密閉的操作，仍需在 Grade 5（BSC）環境中進行——「密閉優先」是策略，但不是可以忽視科學現實的口號。</li>
+    </ul>
+</div>
+
+<button class="back-to-top" id="backToTop" title="回到頂部">&#8679;</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6692 @@
+# ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities
+
+1 Introduction
+
+### 1.1 Background
+
+            This second edition of the ISPE Baseline� Guide: Biopharmaceutical Manufacturing Facilities intends to further
+            reinforce the concepts described in the first edition of the Guide, provide examples of how these concepts can be put
+            into practice, and detail the value and benefits of the approach described.
+
+            The biopharmaceutical industry has adapted to reflect available technologies, products with more focused patient
+            populations, regulatory conditions, and continued pressures on costs, while maintaining high quality standards. This
+            edition of the Guide develops concepts to reflect how these changes affect biopharmaceutical manufacturing facilities
+            without sacrificing product quality, by reducing risk and enhancing the manufacturing control strategy.
+
+            As the relevant technology has evolved, the implementation of closed systems has become more accepted and
+            routine; the Guide emphasizes the use of closed systems as an approach to mitigating risks associated with the
+            production of biopharmaceuticals.
+
+### 1.2 Scope
+
+            The ISPE Baseline� Guide: Biopharmaceutical Manufacturing Facilities (Second Edition) applies to new facilities
+            for the development and manufacture of biopharmaceutical drug substances (or Active Pharmaceutical Ingredients
+            (APIs)). This Guide applies to clinical and commercial cGMP production facilities.
+
+            Closed systems and closed processing is the central concept throughout this Guide. Closing a bioprocess impacts
+            area classifications, layouts, and how a facility is operated. This Guide is intended to support the development of
+            decisions which allow compliant and cost effective design of biopharmaceutical manufacturing facilities.
+
+            Types of drug substances considered in this Guide include:
+
+            � Protein therapeutics
+
+            � Synthetic proteins
+
+            � Polypeptides
+
+    � This Monoclonal antibodies Document is licensed to
+
+            � Vaccines1
+
+     Miss Mei-Chun Chou � Biopharmaceutical drug substances isolated from tissues or body fluids
+     Taiwan, � Transgenic biopharmaceutical drug substances
+
+     � Stem cells Downloaded on: 12/18/19 1:11 AM
+
+1 Note: additional design criteria could be required for specific classes of biopharmaceutical drug substances (e.g., live vaccines). Concepts in this
+  Guide can apply to various scales of operation from single digit liters to tens of thousands of liters.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 8                             ISPE Baseline� Guide:
+        Biopharmaceutical Manufacturing Facilities
+
+            The facility designs and processes described in this Guide are intended to acknowledge guidelines, such as ICH
+            Guidance for Industry Q7 GMP for APIs [1], PIC/S Guide to GMP for Medicinal Products Part II [2], and ICH Q11 [3],
+            and meet requirements, such as Eudralex Volume 4 GMP Part II Basic Requirements for Active Substances used as
+            Starting Materials [4], and to US GMPs, e.g., 21 CFR Part 211 [5].
+
+            The intended audience for this Guide includes:
+
+            � Professionals involved in the design, construction, qualification, and operation of biopharmaceutical
+                  manufacturing facilities
+
+            � Regulatory and quality personnel involved in evaluating technical decisions associated with biopharmaceutical
+                  manufacturing facility design
+
+            The concepts in this Guide can be applied to other facilities, such as those for blood fractionation, although additional
+            information may be required (e.g., information found in EMA Annex 14 for Blood Fractionation [6] and/or CFDA Annex
+            4: Blood Products) [7].
+
+            Guidance specific to bioprocessing is provided in the ISPE Guide: Biopharmaceutical Process Development and
+            Manufacturing [8]. Further information on related topics discussed in this Guide may be found in other guidance by
+            ISPE, see the ISPE Website for details [9].
+
+            This Guide is not intended to be used in the retrofit or evaluation of older facilities; however, the execution of these
+            concepts and strategies can be evaluated and implemented as it benefits production in a major modification to an
+            existing facility.
+
+            This Guide is not intended as a replacement for cGMP regulations. This Guide is intended to support options and
+            practices to achieve cGMP compliance.
+
+            The processes and facility designs described in this Guide do not apply to filling and/or packaging of sterile drug
+            product.
+
+            The appropriate regulatory agencies should be consulted before advancing into detailed design and before starting
+            major construction activities.
+
+### 1.3 Key Concepts and Terms
+
+            Several key concepts and terms are defined in this section of the Guide. Definitions for other terms used in this
+
+            definitions should be used.
+
+     Miss Mei-Chun Chou This Guide discusses the concepts of closed processing and the potential impact of closing a biopharmaceutical
+
+            drug substance manufacturing process on facility design. Critical Process Parameters (CPPs) and Critical Quality
+
+     Taiwan, Attributes (CQAs) should be understood before defining process closure and other strategies. Critical process
+
+            conditions should be understood and facility design should include critical design features.
+
+            The following terms used in this Guide are defined as they are used in the following chapters:
+
+     Aseptic OperationDs ownloaded on: 12/18/19 1:11 AM
+
+            Operations that are devoid of measurable (detectable) bioburden. Aseptic operations generally require sterilization of
+            the environment, equipment and process solutions to achieve the sterile state prior to use. Use of Biosafety Cabinets
+            (BSCs) and laminar flow hoods are useful when aseptic open operations are required.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 9
+Biopharmaceutical Manufacturing Facilities
+
+Axenic State
+
+A culture that includes the intended living organism, but is free of all other contaminating organisms.
+
+Bioburden-Free
+
+A condition where bioburden is not detectable. Bioreactors used in cell culture or fermentation operations should
+be sterile prior to use for consistent and reproducible performance. Biosafety Cabinets (BSCs), Restricted Access
+Barriers (RABs) and isolators should provide an environment free of bioburden for consistent and reproducible
+aseptic operations. Sterile product manufacturing testing and qualification guidelines are by necessity more stringent
+and prescriptive than those for active pharmaceutical ingredient manufacturing and therefore are not required.
+
+Bioprocessing
+
+Bioprocessing is the attainment of medicinal products from living organisms. Includes all operations used in the
+manufacture of biologics including upstream processes such as inoculum preparation, cell culture/fermentation
+processes, harvest and clarification processes such as sedimentation and filtration processes, downstream
+processing such as chromatography and filtration processes. Bioprocessing also may include other aqueous
+processes, such as plasma fractionation and chemically synthesized drug manufacturing performed in non-
+bacteriostatic solvents.
+
+Fill finish operations are not included in this group; however, many of the concepts presented would still apply.
+
+Briefly Exposed
+
+Open processes containing process and/or product components that are rendered closed by means of an appropriate
+closing process. Examples of briefly exposed processes include open buffer or media preparations where the
+solution is "briefly" exposed to the environment prior to closing by sterile filtration and/or thermal sanitization. For
+solution preparation, it is important that the interval between formulation and sanitization be defined and validated.
+Briefly exposed operations may be performed in Controlled Not Classified (CNC) (see Chapter [4]) or low bioburden
+environments if measures used to close the process are appropriate to mitigate risk of contamination from the
+environment. Pre-closure processing and hold periods and conditions must be carefully monitored and validated. The
+premise is that in-process (in-line) sterile filtration or thermal sterilization is more effective (and more appropriate)
+than a classified environment in mitigating the risk of contamination from the environment. The solutes, solvents and
+personnel used in preparing solutions typically represent more significant sources of contamination that cannot be
+adequately mitigated with room classification. The method of closing the process needs to be carefully evaluated and
+selected as some adventitious agents may not be removed by filtration or thermal sanitization alone.
+
+BSCs, Unidirectional Down Flow Hoods (UDFHs) or Unidirectional Horizontal Flow Hoods, isolators and RABs. When
+used, it is critical that the local environment be protected from unexpected breach of the protected environment.
+
+Miss Mei-Chun Chou Appropriate sanitization and filtration is required to achieve and maintain the stated cleanroom classification within
+
+the local protected environment. Appropriate surrounding environments, gowning and other controls may be required
+
+Taiwan, to ensure integrity of the local protected environment is maintained especially for BSCs, UDAFs, and RABs. Only a
+
+bioburden-free environment should be used for open aseptic operations. A formal risk assessment (see ICH Q9 [10])
+
+for the environment housing the local protected environments.
+
+Carryover Downloaded on: 12/18/19 1:11 AM
+
+Contaminants detected in process streams arising from insufficient removal of contaminating components from
+previous manufacturing steps or batches. Maximum allowable carryover residues should be estimated and meet
+defined criteria. Carryover is typically a result of insufficient cleaning, sanitization, rinsing and/or conditioning. For
+further information, see the ISPE Baseline� Guide on Risk-MaPP [11].
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 10                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         Closed System
+
+         A process system that is designed and operated such that the product is never exposed to the surrounding
+         environment. Additions to and draws from closed systems must be performed in a completely closed fashion. Sterile
+         filters may be used to provide effective barriers from contaminants in the environment. A system is closed (or isolated
+         from the environment) when the risk of contamination to the product or process cannot be mitigated by housing
+         the operation in a bioburden-free or particulate-free environment. In Quality Risk Management (QRM) verification,
+         the environment does not represent a critical aspect of a closed process (formerly known as a no impact system
+         according to the ISPE Baseline� Guide on Commissioning and Qualification [12]). In a closed system, the probability
+         of detecting a contaminant from the environment within the processing period is less than the process acceptance
+         criteria. A closed process is one that has been validated to show that there are sufficient layers of protection to
+         mitigate the risk of contamination from the environment. Transfers into or from these systems (including sampling)
+         also must be validated as closed. The detection of a contaminant from the environment in an otherwise closed
+         system indicates a breach of the closed system and therefore constitutes a system failure. Examples of closed
+         systems include sterile single use bags supplied with integrated aseptic connection devices.
+
+         Critical Quality Attribute (CQA)
+
+         Physical, chemical, biological or microbiological properties or characteristics that should be within an appropriate
+         limit, range, or distribution to ensure the desired product quality (ICH Q8(R2)) [13].
+
+         Critical Process Parameter (CPP)
+
+         A measurable input (input material attribute or operating parameter) or output (process state variable or output
+         material attribute) of a process step that must be controlled to achieve the desired product quality and process
+         consistency.
+
+         Crossover (a type of Cross Contamination)
+
+         Contamination of a system by components or contaminants found in a neighboring system. Crossover typically
+         occurs with open processes sharing environments. Crossover can also occur when there is a breach of integrity of
+         a closed system in an environment shared with an open process or when there is a breach of integrity of two closed
+         processes.
+
+         Functionally Closed
+
+         Process systems that may be opened but are "rendered closed" by a cleaning, sanitization and/or sterilization
+         process that is appropriate or consistent with the process requirements, whether sterile, aseptic or low bioburden.
+
+         environment does not represent a critical aspect of an appropriately functionally closed process (formerly known
+         as a no impact system according to the ISPE Baseline� Guide on Commissioning and Qualification [12]), but only
+
+         Miss Mei-Chun Chou if appropriate measures have been exercised to render the system closed. A functionally closed process must be
+
+         validated to show that sufficient layers of protection have been implemented to mitigate the risk of contamination
+
+         Taiwan, from the environment. Transfers into or from these systems must also be validated as closed. Examples include
+
+         process vessels that may be cleaned in place and steamed in place between uses. Non-sterile systems such as
+
+         measures are taken during the particular system setup.
+
+         Low Bioburden (ODperoatwionn) loaded on: 12/18/19 1:11 AM
+
+         Process where a limited and controlled level of measurable bioburden is acceptable under specific conditions. (e.g.,
+         WFI, chromatography operations).
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                               Page 11
+Biopharmaceutical Manufacturing Facilities
+
+Module
+
+The word "module" has many different implications for biopharmaceutical facilities. In the context referred within this
+Guide, it is important to differentiate during the design process the extent or type of modularization intended and to
+define the effect on the disciplines involved. Modules in the biopharmaceutical design context, e.g., may consist of:
+
+� Integrated process lines (individual continuous bioprocessing modules)
+
+� Total integrated facility sections, including building, process, services and utilities elements
+
+� Process or building services/HVAC/utilities skids or repetitive items
+
+� Building sectional modules
+
+� Modular process or building elements
+
+Open Process
+
+A process that is exposed to the environment and therefore requires environmental conditions to mitigate the risk
+of contamination from the environment. Under QRM verification, the environment within the RABs and/or BSCs
+represents a critical aspect of the open process (formerly known as direct and indirect impact systems according to
+the ISPE Baseline� Guide on Commissioning and Qualification [12]. Open sterile and aseptic operations must be
+performed in an environment where the probability of contamination is acceptably low. Open bioburden-controlled
+processing may be performed in a Grade 7 or 8 environment as appropriate for the unit operation.
+
+Process Contact Surface
+
+Surfaces of piping, components, equipment or systems that may or may not be exposed to product, but may contain
+solutions that are potentially exposed to product or product intermediates (e.g., clean utilities, process gases, all
+CIP solutions). Surfaces that are process contact, but not product contact typically are maintained to a defined
+specification and/or monograph (e.g., WFI, PW, HPW, clean steam).
+
+Product Contact Surface
+
+Surfaces of piping, components, equipment or systems that are exposed to product. When systems used in
+
+multiple products, batches or process steps are reused, their product contact surfaces require cleaning and
+
+sanitization to reduce bioburden and the potential for carryover and crossover (e.g., product vessels, filtration skids,
+
+chromatography skids and circulating CIP systems). Product contact surfaces are a subset of process contact
+
+Sterile
+
+Miss Mei-Chun Chou Devoid of life. Zero bioburden. Free of bioburden.
+
+Sterilization                                      Taiwan,
+Form of sanitization that results in a bioburden-free (sterile) condition. The different sterilization methods used in
+
+bioprocessing generally include thermal sterilization, sterile filtration (0.2 �m or better), chemical sterilization (e.g.,
+
+               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 12                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+### 1.4 Guide Structure
+
+#### 1.4.1 Synopsis of Guide Chapters
+
+            Chapter 2: Regulatory
+
+            Chapter 2 provides an overview of the regulatory requirements for facility design and summarizes the sources that
+            influence both regulators and industry best practices.
+
+            Chapter 3: Risk Management
+
+            Chapter 3 provides an overview of several approaches to risk management that may be applied to biopharmaceutical
+            facilities.
+
+            Chapter 4: Process Closure
+
+            Closing a bioprocess impacts area classifications, layouts, and how a facility is operated. This chapter helps to define
+            what a closed process is, and through the use of risk assessment tools, indicate how closure can be demonstrated.
+            Examples of typical closed processes are given, as well as how some open processes can be closed.
+
+            Chapter 5: Operations
+
+            This chapter describes trends in the operation of biopharmaceutical facilities. Facilities are operating under diverse
+            requirements � often they are multi-product facilities requiring short product campaigns and efficient and thorough
+            changeover between products. Higher titers and products focused on smaller markets allow for reduced scale and
+            increased use of single-use technology.
+
+            Chapter 6: Facility Layouts
+
+            Chapter 6 provides guidelines and discussions for the design of integrated cGMP facilities. This is in the context
+            of regulatory, process, production, and technological factors that significantly influence the layout and flow of a
+            production facility.
+
+            Chapter 7: Architectural Design
+
+            As the biopharmaceutical industry matures, there is an emerging pattern to many of the processes, equipment,
+            infrastructure, and facilities (particularly as they relate to mammalian culture derived products). With this pattern, the
+            use of modular process skid and facility concepts (design and construction techniques) allows for faster and less
+
+    This costly projects. Document is licensed to
+
+            Chapter 7 discusses master planning which continues to be important as organizations plan their future and allow for
+
+     Miss Mei-Chun Chou growth opportunities against changing product portfolios and market demands. Ability to react to these challenges is
+
+            critical and smaller more flexible facilities allow for increased responsiveness.
+
+                                  Taiwan,
+
+            Although serving process equipment and operations with utilities is a common requirement and not specific to
+
+            for biopharmaceutical and vaccine facilities. Examples of typical environmental requirements for particular unit
+            operations are provided. The chapter discusses how mechanical systems are focused on environmental control to
+            manage the conflicting risks of general product contamination, cross-contamination, biosafety, and biosecurity.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 13
+Biopharmaceutical Manufacturing Facilities
+
+The chapter also discusses how electrical systems can further support the mitigation of risk through support of
+mechanical systems in emergency situations; and how proper electrical means and methods can help support
+cleaning and containment.
+
+Chapter 9: Sustainability
+
+Carbon footprint, green, environmentally friendly, LEED, and BREEAM are now familiar terms, but this is still a
+changing area with new requirements and legislation across the globe. This chapter provides background and links to
+some of the latest trends in this area and how they affect biopharmaceutical thinking.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 15
+Biopharmaceutical Manufacturing Facilities
+
+2 Regulatory
+
+### 2.1 Introduction
+
+            This chapter references key regulatory and guidance documents published since 2004 and highlights key updates to
+            these guidances as they pertain to this ISPE Baseline� Guide. These documents indicate that regulatory agencies are
+            moving towards a harmonized cGMP definition. It is also clear that the regulatory agencies are addressing new trends
+            in biopharmaceutical manufacturing including closed processing, multiproduct manufacturing facilities, consolidated
+            multistep processing suites, and single use systems.
+
+### 2.2 Regulatory Requirements and Guidance
+
+            There are numerous examples of how the regulatory agencies are responding to advances in bioprocess capabilities
+            and manufacturing strategies. A preliminary survey of guidance documents could yield the following examples of key
+            regulatory directives:
+
+            � PIC/S Pharmaceutical Inspection Convention, Pharmaceutical Inspection Co-Operation Scheme Guide to Good
+                  Manufacturing Practice for Medicinal Products Part 1, update issued 1 January 2013 [14]
+
+                  a. Chapter 5 Production, Section: Prevention of Cross-Contamination
+
+                        i. Item 5.19. Cross-contamination should be avoided by appropriate technical or organizational measures,
+                              for example: f) using "closed system" of production.
+
+            � PIC/S Pharmaceutical Inspection Convention, Pharmaceutical Inspection Co-Operation Scheme Guide to Good
+                  Manufacturing Practice for Medicinal Products Annex 2 Manufacture of Biological Medicinal Products for Human
+                  Use, update issued 1 January 2013 [15]
+
+                  b. Premises and Equipment
+
+                        i. Item 11. Simultaneous production in the same area using closed systems of biofermenters may be
+                              acceptable for products such as monoclonal antibodies and products prepared by r-DNA techniques.
+
+                        ii. Item 12. Processing steps after harvesting may be carried out in the same production area provided that
+                              adequate precautions are taken to prevent cross contamination. For killed vaccines and toxoids, such
+
+            � FDA Guidance for Industry: cGMP for Phase 1 Investigational Drugs, issued July 2008 [16]
+
+        Miss Mei-Chun Chou c. This document clarifies the US cGMP compliance requirement as a step function between Clinical Phase 1
+                        and Phase 2 production. Clinical Phase 1 biologic drugs are exempt from complying with US 21 CFR Part
+           Taiwan, 211 [5] under 21 CFR Part 210.2(c) [17] (referred to as phase 1 investigational drugs).
+
+                        available that can facilitate conformance with cGMP and streamline product development. Examples include:
+
+                              contamination
+
+                        ii. Use of commercial, pre-packaged materials (e.g., WFI, pre-sterilized containers and closures) to
+                              eliminate the need for additional equipment or for demonstrating cGMP control of existing equipment
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 16                                                                                        ISPE Baseline� Guide:
+                                                                    Biopharmaceutical Manufacturing Facilities
+
+         iii. Use of closed process equipment (i.e., the phase 1 investigational drug is not exposed to the
+               environment during processing) to alleviate the need for stricter room classification for air quality
+
+         iv. Use of contract or shared cGMP manufacturing facilities and testing laboratories (including specialized
+               services). For example, some academic institutions have developed shared manufacturing and testing
+               facilities that can be used by institutional sponsors.
+
+         � CFDA Good Manufacturing Practice (GMP) for Drugs, update effective March 2011 [18]
+
+         e. Article 197: Measures should be taken to avoid, as far as possible, contamination and cross-contamination
+               during production, for example: 7. Using "closed systems" of production. Note: this Article 197 contains
+               eleven items, six of which are the same requirements and wording as the PIC/S Items in 5.19 above.
+
+         f. Annex 2: Active Substances Used as Starting Materials (API and Fermentation) [19]
+
+         i. Chapter 3 Equipment, Article 7: Closed or contained equipment should be used whenever appropriate.
+               Closed equipment can be placed outdoors. Where open equipment is used, or opened, appropriate
+               precautions should be taken to avoid the risk of contamination.
+
+         ii. Chapter 7 Production Management, Article 30: Viral removal/inactivation steps: 2. appropriate
+               precautions should be taken to prevent viral contamination from pre-viral to post-viral removal/
+               inactivation steps. Open processing should be performed in areas that are separate from other
+               processing activities and have separate air handling units. (Implying that closed processes do not need
+               separation).
+
+         iii. Chapter 10 Specific Requirement for APIs manufactured by Classical Fermentation, Article 47 Cell
+               Culture / Fermentation: 2. Where the quality of the API can be affected by microbial contamination,
+               manipulations using open vessels should be performed in the proper controlled environment. (Implying
+               that closed processes do not need a proper controlled environment).
+
+         g. Annex 3: Biological Medicinal [20]
+
+         i. Chapter 4 Premises and Equipment, Article 20: Simultaneous production in the same area using closed
+               systems of biofermenters may be acceptable for products such as monoclonal antibodies and products
+               prepared by DNA techniques. Note: this is the same wording as in the PIC/S, Annex 2 Item 11 above.
+
+         � Japan GMP Guideline for Drug Products, issued 2005 [21]
+
+2.2.1      This Document is licensed to h. 5. Process Equipment, Item 5.15. Closed or contained equipment should be used whenever appropriate.
+                     Where open equipment is used, or equipment is opened, appropriate precautions should be taken to
+                     minimize the risk of contamination.
+
+         Miss Mei-Chun Chou It should be noted that regional requirements can vary and both the global regulatory view and the specific agency
+         Taiwan, requirements that govern products and facilities should be understood.
+         Access to Inspection InformIaDtionnumber: 1002915
+
+         Public access to inspection information is provided by the US FDA under the provision of the US Freedom of
+
+         This type of information may or may not be available in other regions of the world.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                Page 17
+Biopharmaceutical Manufacturing Facilities
+
+#### 2.2.2 Global Regulatory Information
+
+       Global regulatory information is usually available online. It allows individuals and organizations to review and
+       compare the regulatory requirements of different national agencies and international agencies. For a facility design,
+       both the global regulatory view and the specific agency requirements that govern products and facilities should be
+       understood.
+
+       The addresses for the main global regulatory agencies listed below are provided in the References (see Appendix 2).
+       (These may be changed by the represented agencies at any time.)
+
+       � U.S. Food and Drug Administration (FDA) [23]
+
+       � European Medicines Agency (EMA) [24]
+
+       � European Commission (EC), Public Health [25]
+
+       � World Health Organization (WHO) [26]
+
+       � International Conference on Harmonization (ICH) [27]
+
+       � Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme (jointly referred to
+             as PIC/S) [28]
+
+       � International Federation of Biosafety Associations (IFBA) [29]
+
+       � U.S. Centers for Disease Control and Prevention (CDC) and the U.S. National Institutes of Health (NIH) (in
+             partnership to publish biosafety guidelines) [30]
+
+       � Japan Pharmaceuticals and Medical Devices Agency (PDMA) [31]
+
+       � China Food and Drug Administration (CFDA) [32]
+
+       � India Central Drugs Standard Control Organization (CDSCO) [33]
+
+       � Association of South-East Asian Nations (ASEAN) [34]
+
+       A listing of global agency links is provided by ISPE [9] at www.ispe.org/regulatory-affairs.
+
+#### 2.2.3 This Document is licensed to Interpretations and Applications
+
+       Some interpretations and applications of guidance and regulatory requirements continue to change. One example
+
+       Miss Mei-Chun Chou is the US Code of Federal Regulations (CFRs) [35]. The text of the 21 CFR Part 211 [5] has not changed since
+
+       issued in 1976, but the interpretations and applications have. This can be a result of technology improvements and
+
+       regulatory expectations, e.g.:          Taiwan,
+
+             that were not closed. The product was exposed and at risk from personnel and the room environment. The
+             Regulatory agencies responded to this usually by interpreting the CFRs to include classified room environments
+             and elaborate facility requirements, including nested cleanrooms with associated transition zones of gowning
+             areas, material airlocks, and many "facility flows." These were all designed to protect the processing cleanroom
+             environment from the surrounding less clean environments and assist in protecting the product.
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 18                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+            � Proven improvements in available technology can functionally close an open system, such that the product is
+                  no longer exposed or at risk from personnel and the room environment. The process room environment can be
+                  a "no impact system" or a "non critical aspect" to the product. The applications of the cGMP product protection
+                  requirements shift from a focus on the facility to a focus on the closure technology and the closed systems.
+                  The room environment is no longer protecting the product. As a result, the need for nested cleanrooms with
+                  associated gowning and "facility flows" designed to protect an open process are no longer required. Some global
+                  regulatory agencies are updating their cGMPs to include closed processing. The regulatory text can range from
+                  "...use closed processing if applicable..." to stating "...downstream processing in a single room is acceptable
+                  with proper control, which can include closed processing."
+
+            The US FDA is a promoter for improvements and application of better technology. A key technology application is
+            closed processing where the room environment and personnel are separated from the product; therefore, protecting
+            the product. These US FDA position statements are one of the US FDA's methods for releasing guidance to the
+            pharmaceutical industry. The written CFRs did not change, but the expectation and the application of the cGMP
+            concepts did.
+
+            The aim of cGMPs and the application of those cGMPs through industry good practice is to protect the product.
+            Facility features that are beyond this can be considered discretionary.
+
+            Where an organization assembles a multi-disciplinary task team to define the requirements for a new facility, a
+            common understanding of cGMPs and the application of those cGMPs to the specific project should be established.
+
+### 2.3 Containment versus Classification
+
+            The industry's view of biotechnology has matured and "containment" concepts have been clarified. In the early
+            years of biotechnology development and production, there was a concern that an accidental release of a Genetically
+            Modified Organism (GMO) into the environment could have a serious impact on the world environment. The response
+            to this included the view that a biopharmaceutical facility should be designed with a containment requirement.
+
+            The aspects of GMO containment and biopharmaceutical cGMPS were undefined, so some organizations added a
+            Biosafety Level (BSL) 1 or 2 to their facility design for GMO containment. Biosafety levels include facility requirements
+            for infectious diseases and are typically used for vaccine production facilities. This blurred the facility design
+            requirement distinction between non-infectious biopharmaceutical facilities and BSL facilities. The result was that
+            many biopharmaceutical facilities looked like vaccine facilities.
+
+            The levels of biosafety containment for infectious organisms are defined by, e.g., the U.S. Centers for Disease
+            Control and Prevention (CDC) with the U.S. National Institutes of Health (NIH) [30] and the International Federation of
+
+            The biopharmaceutical cGMPs are currently sufficiently defined and fully address the needs of biotechnology. There
+
+     Miss Mei-Chun Chou is no need to add the biosafety infectious disease containment aspects onto a GLSP facility designed for handling
+
+            non-infectious organisms and this is not current practice. The facility design requirements for these two different types
+
+     Taiwan, of facilities are different. The biopharmaceutical industry current practice does review and address the cell containing
+
+            waste stream from fermentation and cell culture which can include a cell "kill system." Only some regional authorities
+
+            even when not required. The key point is that treatment is not containment.
+
+            confusion. The term containment is typically reserved for:
+
+            � Infectious organisms
+
+            � Highly toxic or highly potent substances
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 19
+Biopharmaceutical Manufacturing Facilities
+
+            Classification refers to a room environment cleanliness level as related to product exposure. An assumption that
+            the higher the BSL containment requirement for BLS 1 to 3 relates to a higher requirement for a room environment
+            classification would be incorrect. BSL containment is related to the hazard of the organism. Classification is related to
+            degree of the organism's exposure to the room environment.
+
+#### 2.3.1 Biosafety Containment
+
+## Appendix K: of the NIH Guidelines for Research Involving Recombinant or Synthetic Nucleic Acid Molecules [36]
+
+            defines four ascending levels of biosafety containment for recombinant DNA molecules based on levels of infectious
+            risk to humans:
+
+            1. Good Large Scale Practices (GLSPs) is recommended for large-scale research or production involving viable,
+                  non-pathogenic, and non-toxigenic recombinant strains derived from host organisms that have an extended
+                  history of safe large-scale use. Host examples include: Chinese Hamster Ovary (CHO) cells, Saccharomyces
+                  cerevisiae, and Escherichia coli (E-coli) K-12
+
+            2. Biosafety Level 1 (BSL-1) is the basic level of protection and is appropriate for agents that are not known to
+                  cause disease in normal, healthy humans, but may infect the young, the aged, or immunosuppressed individuals.
+
+            3. Biosafety Level 2 (BSL-2) is appropriate for handling moderate-risk agents that cause human disease of varying
+                  severity by ingestion or through percutaneous or mucous membrane exposure.
+
+            4. Biosafety Level 3 (BSL-3) is appropriate for agents with a known potential for aerosol transmission, for agents
+                  that may cause serious and potentially lethal infections and that are indigenous or exotic in origin.
+
+            Most GMOs are classified under the GLSP definition:
+
+            � GLSP GMOs used as therapeutic drugs are governed by biopharmaceutical cGMPs.
+
+            � Non-vaccine drugs are regulated by biopharmaceutical cGMPs.
+
+            � Vaccine drugs are governed by biopharmaceutical cGMPs and have an additional Biosafety Level (BSL-1, 2 or 3)
+                  requirement.
+
+            For further information, see Chapter 5 of this Guide.
+
+            A BSL rating is different from a room environment (cleanroom) classification. Closed vaccine processing for a BSL-3
+            containment facility can be in a Controlled Not Classified (CNC) room environment. The room cleanliness class is
+
+            A BSL-3 closed processing CNC facility must comply with the CDC/NIH facility containment requirements, including
+
+     Miss Mei-Chun Chou HEPA exhaust and a negative relative room pressure of the room to the surrounding rooms. This is to contain any
+
+            accidental release of the organism to the immediate room environment; however, the air supply does not need to be
+
+     Taiwan, classified due to the normally closed system of the operation. Classifying an environment with closed processing with
+
+            the intent of possibly salvaging accidently exposed product is a topic for a risk assessment.
+
+### 2.4 Critical Quality Attributes and Critical Process Parameters
+
+            Where facilities are designed to produce multiple products, CPPs and CQAs of both current and projected future
+            products should be considered in the facility design. CQAs need to be controlled to ensure acceptable product quality.
+            Variability in CPPs can impact CQAs and should be monitored and controlled to ensure that a process produces the
+            desired product quality.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 20                                                                                                  ISPE Baseline� Guide:
+                                                                              Biopharmaceutical Manufacturing Facilities
+
+         CPPs are the processing variables (e.g., temperature, pressure, and pH) that can influence CQAs. CPPs are design
+         aspects of a system.
+
+         A facility can directly impact a CQA. If a process step is open and product is exposed to the room environment, some
+         room environment parameters will be CPPs (e.g., a potential source of contamination), which can affect product
+         CQAs.
+
+         If a process step is closed and the product is not exposed to the room environment, the room environment
+         parameters become non-critical aspects rather than CPPs.
+
+         This is a key concept and the basis for the product protection approach in facility design. The application of
+         segregation concepts stem from this concept.
+
+         The points where the facility needs to directly assist in protecting the product should be defined. Open process steps
+         that cause room environment parameters to be CPPs should be identified on Process Flow Diagrams (PFDs). Open
+         processing rooms should be addressed differently to rooms for closed processing. Differences in open and closed
+         processing rooms include:
+
+         � Open Processing:
+
+         - Room environment parameters can be CPPs.
+
+         - The area environment should be classified to assist in protecting an exposed product.
+
+         - A room is needed to contain and maintain the area classification.
+
+         - A processing cleanroom is needed. Cleanrooms are normally surrounded by cleanrooms of lower
+               classification to reduce the environmental challenge to the processing cleanroom. This is a "nesting"
+               concept, using environmental cleanroom cascades, pressure cascades, and HVAC segregation zoning and
+               controls.
+
+         - Transition zones consisting of Personnel Airlocks (PALs) for gowning and Material Air Locks (MALs) for
+               wiping down materials are required to transition through the nested zones to access the process cleanroom.
+
+         - Facility and production flows are needed to reduce the environmental challenge entering the PALs and
+               MALs.
+
+         - Personnel in the main locker/gown room may remove their street clothes for a facility uniform to wear under
+
+               personnel movement.
+
+         � Closed Processing:  Miss Mei-Chun Chou
+
+         Taiwan, - Room environment parameters are not CPPs.
+
+         Organizations may choose to add facility requirements that do not directly protect product or may add items from
+
+         requiring facility uniforms for closed processing. Gowning does not assist in protecting the product, but being gowned
+
+         may assist with the staff being in a production attitude.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 21
+Biopharmaceutical Manufacturing Facilities
+
+### 2.5 Biopharmaceutical Production
+
+            There is now a better understanding of biopharmaceutical production, particularly for biopharmaceutical bulk drug
+            substance processes. Production is repeatable and predictable and the biopharmaceutical industry has shifted to a
+            state of production optimization. The focus is on:
+
+            � Speed to market
+
+            � Lowering cost of goods
+
+            � Reducing risk
+
+            � Increasing yields by increasing titers
+
+            � Reducing losses and failures
+
+            � Improving recoveries
+
+            Many techniques and process steps (e.g., process hold steps) that were once considered essential have now been
+            redefined as non-value added exercises. Facility layouts and designs are responding to and focusing on efficiency,
+            Quality by Design (QbD), risk assessments, and lean manufacturing principals.
+
+            Technologies incorporated into production can provide greater control and predictability of a production process. A
+            major focus is on the broad based application of closed processing to the entire production line. Closed processing
+            decouples the process from the facility. It also effectively isolates the process from neighboring activities. The
+            resulting benefit is potential consolidation of multiple closed operations into a single process suite and overall
+            decrease in manufacturing area. Manufacturers have previously located multiple closed bioreactors and upstream
+            operations in a common suite. The closing of systems has enabled biopharmaceutical companies to maintain
+            concurrent multistep, multibatch, and multiproduct operations within a single manufacturing suite.
+
+            Closed system technologies are available for downstream processing which can allow similar downstream facility
+            adaptations.
+
+            Closed processing has expanded the application and definition of "physical separation" also called "spatial
+            separation:"
+
+            � The application of "physical separation" of two open processes should result in segregation into separate
+                  processing suites for each open step. For example, an open pre-viral reduction step and an open post viral
+
+                  requires a series of rooms to separate one open system from another.
+
+     Miss Mei-Chun Chou � When using closed systems, a series of smaller rooms previously housing open operations may now be replaced
+                  by fewer larger rooms, if appropriate layers of protection are implemented. These larger multi-use rooms may be
+        Taiwan, referred to as "ballrooms" or "dance floors" due to their large open nature.
+
+                  [15]
+
+            � Upstream multi-product and multi-host simultaneous production in separate closed bioreactors in the same room
+                  (see PIC/S Annex 2 Item 11) [15]
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 22                                                                    ISPE Baseline� Guide:
+                                                Biopharmaceutical Manufacturing Facilities
+
+         � Processing steps after harvest in separate closed equipment in the same processing room (see PIC/S Annex 2
+               Item 12) [15]
+
+         � A product line and a waste line (each with its separate piping systems) occupying the same pipe rack
+
+         � A closed used portable vessel (dirty on the inside) in the same elevator as a closed cleaned vessel
+
+### 2.6 Facility Design Discussions
+
+         As the process closes, the process room environment and the facility can adapt to become a non-critical aspect
+         system to the product as the environment has no impact on processes in closed systems. There is a technical
+         solution to the concepts below, but the current hesitance is an emotional item and it is based on two major factors.
+         The first is that the industry is so familiar with facilities designed for open processing that the dramatic shift to a
+         closed processing facility feels too different. And second, how will the industry react?
+         Concepts:
+
+         � Downstream (after harvest and including bulk fill) multi-product simultaneous production in separate closed
+               equipment in the same processing room.
+
+         � Closed upstream processing and closed downstream processing in the same (single) processing room.
+               Upstream and downstream operate simultaneously, but with one product at a time with multiple products
+               produced on a campaigned basis. Line clearance is on a "room" basis.
+
+         � Closed multi-product simultaneous upstream processing and closed multi-product simultaneous downstream
+               processing in the same (single) processing room. Upstream and downstream operate simultaneously with
+               multiple products produced on a simultaneous basis. Line clearance is on an "equipment" basis. An example
+               of this could be many fully closed processing lines in a large CNC production "ballroom." The traditional room
+               separations of cell containing, cell free and viral free that are critical for open processing are replaced by closed
+               processing. With fully closed processing, there is just "manufacturing,"
+
+         � Closed clinical phase 2, 3 and commercial processing multi-product, simultaneous upstream production in
+               the same room. The FDA defines clinical phase 1 as pre-cGMP and clinical phase 2 through commercial
+               manufacturing as cGMP. Combining clinical phase 2 with commercial in the same processing room is not a
+               clinical/commercial separation issue. Both are cGMP. It is a just a possible difference in cGMP production scale
+
+         � Closed clinical phase 2, 3 and commercial processing multi-product, simultaneous downstream production in the
+
+               same room.
+
+               production in the same room.
+
+                            Miss Mei-Chun Chou
+
+### 2.7 Sources of Information       Taiwan,
+
+         benchmarking of the applications of cGMP requirements. Other sources of industry good practice include:
+
+               Equipment (BPE) [37] creates industry standards for the design of biopharmaceutical production equipment.
+
+         � ISPE [9] publishes a technical magazine and associated guidance documents.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 23
+Biopharmaceutical Manufacturing Facilities
+
+� Industry forums or consortia in which organizations join together to solve common industry problems, such as
+      facility design and room environment classifications for processing steps, e.g., BioPhorum Operations Group
+      (BPOG) [38].
+
+� Direct cooperation between operating organizations to establish joint industry benchmarks, e.g., Bio-Process
+      Systems Alliance (BPSA) [39].
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                        Page 25
+Biopharmaceutical Manufacturing Facilities
+
+3 Risk Management
+
+### 3.1 Introduction
+
+            The goal of this chapter is to provide a method for evaluating the risks of cross contamination and contamination
+            from the environment during manufacturing of bulk drug substance, specifically during bioprocessing. For further
+            information see the ISPE Guide: Biopharmaceutical Process Development and Manufacturing [8].
+
+            Process definition, management, and design of appropriate controls should be commensurate with risk and based
+            on science and process understanding. According to Good Documentation Practice (GDP), versioning the level of
+            understanding is recommended as additional knowledge is attained and incorporated via process optimization over
+            time.
+
+### 3.2 Risk Management
+
+       High risk is associated with changes to drug manufacturing. Any changes in drug composition or quality could result
+       in changes in efficacy or safety. Good product and process understanding is required to fully evaluate the impact of
+       any manufacturing deviation. For further information see the ISPE Guide: Biopharmaceutical Process Development
+       and Manufacturing [8] and the ISPE PQLI� Guide: Part 1 � Product Realization using Quality by Design: Concepts
+       and Principles [40].
+
+       In 2004, the FDA expanded the use of risk management into the biopharmaceutical industry. In their report,
+       "Pharmaceutical cGMPs in the 21st Century � A Risk Based Approach" [41], the FDA describes how it will use risk
+       management for evaluating manufacturing quality. Process and facility audits and evaluations by the US FDA are
+       based on science. Risk assessments should be incorporated into Corrective Action and Preventative Action (CAPA)
+       programs. Procedures should be developed for assessing risk and to understand the actions that need to be taken for
+       different levels of risk. This includes an ability to correct or prevent the hazard from recurring. (For further information,
+       see Federal Register, Vol. 61, No. 195, 7 October 1996, pp. 52633-52634 [42].)
+
+#### 3.2.1 Purpose of Risk Management
+
+       Risk is a product of the probability (likelihood) and impact (severity) of a potential hazard. The ability to detect a
+       hazard, failure or risk is also an aspect of risk management. Sound process understanding, including understanding
+       of critical control and CQAs of products, processes, raw materials, equipment, facilities, personnel and services is
+       required. Defining these attributes includes identification of potential risks and an understanding of how to control and
+
+       mitigate the risk of product adulteration or ultimately risk to patient.
+
+#### 3.2.2 Complying with the FDA's Commitment to Process Improvement and Science-Based Compliance
+
+                           Miss Mei-Chun Chou
+
+       In the FDA report, "Pharmaceutical cGMPs for the 21st Century � A Risk Based Approach," dated September 2004
+
+       Taiwan, [41], the FDA states its commitment to process improvement and science based compliance:
+
+             and enforcement program, which is focused on protecting the public health. FDA has identified efficient risk
+
+             quality standards, and using efficient systems and practices that provide clear and consistent decisions and
+             communications. FDA has identified efficient risk management as the primary way to address these challenges.
+             This approach incorporates rigorous analysis to consistently identify the most important risks, and the use of a
+             quality systems approach to designing, conducting, and evaluating FDA core business processes.
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 26                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+                  CDER is implementing a new risk-based pharmaceutical quality assessment system. The system should
+                  encourage manufacturers to implement new technologies, such as process analytical technology (PAT), and
+                  facilitate continuous manufacturing improvements.
+
+                  As pharmaceutical manufacturing evolves from an art to a science and engineering based activity, application
+                  of this enhanced science and engineering knowledge in regulatory decision-making, establishment of
+                  specifications, and evaluation of manufacturing processes should improve the efficiency and effectiveness of
+                  both manufacturing and regulatory decision-making. Using a scientific framework to find ways of mitigating risk
+                  while facilitating continuous improvement and innovation in pharmaceutical manufacturing is a key public health
+                  objective. This new system will encourage the implementation of new technologies. Quality and productivity
+                  improvement share a common element: reduction in variability through process understanding. Reducing
+                  variability provides a win-win opportunity from both public health and industry perspectives."
+
+            Based on this statement by the FDA, the key to successful implementation of closed processing is the demonstration,
+            validation, and confirmation that risk of process contamination by environmental hazards has been adequately
+            mitigated. A formal and systematic risk assessment should provide the data to confirm when an environment is
+            appropriate for a process unit operation.
+
+#### 3.2.3 Methods and Approaches to Assessing Risk
+
+            Methods and approaches have been developed and used for assessing risks in a biopharmaceutical manufacturing
+            program include:
+
+            � Process/Preliminary Hazard Analysis (PHA)
+
+            � Failure Mode and Effects Analysis (FMEA)
+
+            � Fault Tree Analysis (FTA)
+
+            � Hazard and Operability Studies (HAZOPS)
+
+            � Hazard Analysis and Critical Control Points (HACCP)
+
+            Process/Preliminary Hazard Analysis
+
+            The Process/Preliminary Hazard Analysis (PHA) tool is typically used early during the planning stages of a project. It
+            is a relatively unstructured/improvisational program that can be adapted to other projects. It uses of a "what-if" list of
+            questions looking at potential hazards and their impact. Brainstorming sessions with subject SMEs familiar with the
+
+            � Listing of the hypothetical hazards
+
+     Miss Mei-Chun Chou � Identifying established safeguards
+     Taiwan, � Estimating the severity of the hazard and the likelihood that it will occur
+
+            � Prioritizing risks that need to be further mitigated
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                               Page 27
+Biopharmaceutical Manufacturing Facilities
+
+Failure Mode and Effects Analysis
+
+FMEA is a structured program that can be adapted to risk evaluation of complex systems or scaled down to evaluate
+a small component. FMEA considers failure modes one at a time and is less effective for evaluation of interactions
+between systems. In addition, it does not consider personnel operational issues. The execution of an FMEA begins
+with listing of the hypothetical hazards or failure modes. The severity of the hazard and the likelihood that it will occur
+and the ability to detect the failure mode are then estimated. The risks that need to be further mitigated are prioritized.
+
+Fault Tree Analysis
+
+Fault Tree Analysis (FTA) is a structured platform used to define a particular event and identify its causes. The output
+of the FTA is a fault tree that identifies the "gates" to a fault or potential hazard. Since FTA looks at only one failure at
+a time, FTA of a process or large system can be very large and complex. FTA can be most effective when it is used to
+identify the root cause(s) of a particular event (e.g., contamination of a bioreactor). An FTA begins with identifying and
+defining the problem. A fault tree is then constructed with the event listed at the top of the tree. The "basic events"
+or assignable root causes that can lead to the top event are graphically linked with "intermediate events and gates"
+to show the connection between the top event and the root causes. The fault tree is then analyzed or "solved" by
+identifying all of the combinations of events that can cause the top event to occur. Those combinations that are most
+likely to occur are further evaluated and mitigated.
+
+Hazard and Operability Studies
+
+Hazard and Operability Studies (HAZOPS) is a highly structured platform used to perform a detailed risk assessment.
+It considers hazards that are related to:
+
+� Materials
+
+� Equipment
+
+� Personnel
+
+� Operations
+
+� Facilities
+
+It is a systematic process relying on SMEs from various disciplines to provide a variety of points of view. HAZOPS
+
+begin with system or scope definition. Typically, a PFD or P&ID will serve as the basis of the study. Specific study
+
+"nodes" are identified (e.g., process parameters or unit operations). Using pre-determined guidewords, the study
+
+considered. Consequences of the deviation are listed. Safeguards that are already established are identified to see
+
+if these mitigate the risk adequately. Those risks that are unacceptable and need to be controlled are ranked and
+
+prioritized.                                Miss Mei-Chun Chou
+
+Taiwan, Hazard Analysis and Critical Control Points
+
+preventative system of risk control. In 2003, the World Health Organization (WHO) included Annex 7 "Application of
+HACCP methodology to pharmaceuticals" in its "Specifications for Pharmaceuticals" report [43]. HACCP is also a risk
+
+              For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 28                                                               ISPE Baseline� Guide:
+
+*[Figure 3.1: HACCP Process Map  Biopharmaceutical Manufacturing Facilities]*
+
+HACCP evaluates aspects of a process that are critical to quality, comply with regulatory requirements, or are
+important for product or patient safety. A substantial amount of information on the product, its intermediates, and the
+manufacturing process is required to perform a HACCP risk assessment. When used, the HACCP is intended to be
+an integral part of the GMP documentation package.
+
+1. Hazard Analysis: a cross-functional team of SMEs is needed. Stakeholders representing manufacturing,
+
+  Miss Mei-Chun Chou engineering, R&D, validation, quality and corporate (financial) groups who understand the risks and implications
+  Taiwan, of identified risks from all perspectives are usually required. The team first assembles all pertinent background
+
+      information including:
+
+  � ID number: Process Flow Diagrams (PFDs) 1002915
+
+  � Piping Downloaded on: and Instrument Diagrams (P&IDs) 12/18/19 1:11 AM
+
+      � Batch records
+
+      � Commissioning and qualification protocols
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 29
+Biopharmaceutical Manufacturing Facilities
+
+      � Process monitoring data
+
+      � Technology transfer packages
+
+      � Other applicable information
+
+      The team defines the product and its distribution. Intermediate and final product specifications are defined,
+      listing the known CQAs for manufacturing, storage, preparation, etc. Factors such as final dosage form, etc.,
+      also should be considered. A PFD describing the process is required or should be developed. Raw materials,
+      equipment used, services required, intermediate specifications should be detailed as much as possible. Inputs,
+      outputs, sampling points, control points, transition points, etc., should be identified. Using a documentation
+      package, the SMEs identify potential hazards. The team determines whether the hazard needs to be controlled
+      (based on consequence/severity and likelihood). The hazards can be safety hazards or hazards that can affect a
+      product's quality or state of regulatory compliance.
+
+2. Determine the Critical Control Points (CCPs). A CCP is where a control must be applied to prevent a hazard or to
+      control a hazard to an acceptable level.
+
+3. Establish the critical limits. Critical limits are the maximum/minimum values to which a parameter must be
+      controlled to mitigate the risk of a hazard to an acceptable level
+
+4. Establish monitoring procedures. Monitoring procedures define the entire monitoring program. The procedures
+      need to define what is to be monitored, how it is to be monitored, and how frequently. The procedures also define
+      who is responsible. Monitoring should help ensure that control is maintained.
+
+5. Establish corrective actions. Corrective action plans define the steps that will be taken when a deviation from
+      a critical control limit occurs. This includes documentation of the deviation, disposition of the non-compliant
+      product, and a preventative action strategy to mitigate re-occurrence of the deviation.
+
+6. Establish verification procedures. The verification procedures should confirm that the HACCP system is being
+      implemented according to plan and is effective in controlling the hazards that were identified. Verification is also
+      used to confirm that the HACCP was comprehensive and performed properly.
+
+7. Establish record keeping and documentation procedures. HACCP requires that a HACCP plan is established.
+      The plan includes documentation of the hazards analysis, identification of CCPs and control limits as well as
+      documentation of pertinent procedures and rationale. The Plan is a living document that requires updating as the
+      operation evolves.
+
+The development of a hybrid platform also may be used successfully. The expectation is that a systematic approach
+is used for risk assessment, including pre-established criteria for evaluating the likelihood and severity of the potential
+
+Miss Mei-Chun Chou hazards. Risk assessments should help to improve the understanding of the bioprocesses and potential hazards in
+
+the manufacture of biopharmaceuticals.
+
+                            Taiwan,
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 31
+Biopharmaceutical Manufacturing Facilities
+
+4 Process Closure
+
+### 4.1 Introduction
+
+            The goal of this chapter is to provide a means to evaluate bioprocess unit operations and to discuss opportunities for
+            closing these operations; therefore, decoupling them from the environment.
+
+            Isolating a process from its environment mitigates a major risk of contamination by adventitious agents, thereby
+            yielding a process that is safer, more robust, more consistent, and where the risk of product adulteration is reduced
+            significantly. Isolating a process from its environment also can mitigate risk when the release of the process fluid or
+            aerosols can pose a risk to other the operator, the environment or other open operations.
+
+            Technology improvements have resulted in more robust systems that can isolate bioprocess unit operations from
+            the immediate environment. This is important, as control of the physicochemical conditions within a process micro-
+            environment is more achievable than control of the macro-environment surrounding that process. As an example, it is
+            easier to maintain an aseptic environment within a bioreactor than it is to maintain a low bioburden Grade 5 condition
+            within a processing suite housing bioreactors and people.
+
+            Performing aseptic bioprocessing operations in an open system represents high risk. Where feasible, aseptic
+            operations should be performed in closed aseptic systems. Closed processing represents the lowest risk option in
+            terms of mitigating the risk of contamination from the environment for both aseptic and low bioburden operations.
+            Operations that cannot be practically closed should be processed in a monitored clean classified environment that
+            is consistent with the bioburden and particulate requirements of the process unit operation, whether aseptic or low
+            bioburden.
+
+### 4.2 Sources of Product and Process Contamination
+
+            Particulates in the environment can provide vehicles for adventitious agents, representing a biological risk to a
+            biopharmaceutical process and product. A risk management program should be established to evaluate and address
+            any potential impact of particulate contamination to process unit operations.
+
+            Bioprocessing is generally performed in an aqueous media that can support the growth of bacteria, viruses, and other
+            adventitious agents; therefore, bioprocesses are prone to contamination by propagation of these agents. Facility
+            designs and designs of process closures should account for potential sources of biological contamination.
+
+            properties of a bioprocess solution, yielding chemicals and conditions that can be potentially harmful to the patient.
+
+            Bioprocesses should be monitored for bioburden and particulates, which should be controlled. Most bioprocesses
+
+     Miss Mei-Chun Chou typically include multiple clarification steps that would effectively remove small levels of particulate contamination (in
+
+            the form of suspended solids), mitigating the risk of physical damage to equipment, disruption of a bioprocess unit
+
+     Taiwan, operation, or adulteration of the drug substance.
+
+            Manufacturing [8].
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 32                                                                                                   ISPE Baseline� Guide:
+                                                                               Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.1 depicts the sources of product and process contamination.]*
+
+*[Figure 4.1: Sources of Product and Process Contamination]*
+
+         A. The ingredients used in media, buffers, and other bioprocess solutions can represent a significant potential
+               source of microbial contamination. Consumables such chromatography resins, filter media, and tubing also
+               represent potential sources of contamination.
+
+         B. Potential sources of contamination from the environment include:
+               � Equipment
+               � Airborne particulates and bioburden
+               � Contamination on personnel
+
+               � Contaminating waste systems
+
+         Miss Mei-Chun Chou C. Sources of crossover contamination include contamination from concurrent multi-product, multi-batch, and multi-
+           Taiwan, unit operations (including concurrent CIP and SIP process operations).
+
+               between manufacturing batches.
+
+         crossover contamination, and contamination from cleaning solvents and chemicals.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                           Page 33
+Biopharmaceutical Manufacturing Facilities
+
+#### 4.2.1 Sources of Bioburden in Aseptic/Axenic Operations
+
+       Cell culture and fermentation operations are by necessity aseptic/axenic operations. Contamination of these
+       processes can result in loss or rejection of batches. Prior to inoculation, the medium within a bioreactor should be
+       free of measurable bioburden (effectively sterile). Single use bioreactors and systems for cell culture operations
+       should be discarded and replaced. Stainless steel systems should be decontaminated, cleaned, and sterilized prior
+       to subsequent use. The reason for contamination should be investigated and addressed to minimize risk of another
+       contamination.
+
+       Potential sources of contamination in cell culture operations include:
+
+       � Breach of integrity of the Grade 5 environment in the BSC used in open operations
+
+       � Failure in the bioreactor sterilization
+
+       � Failure in media sterilization
+
+       � Failure in bioreactor cleaning, resulting in soil carryover
+
+       � Compromise/breach of sterile air filter integrity
+
+       � Contamination of the cell bank or inoculums
+
+       � Compromise/breach of the vent filter integrity and system pressurization failure
+
+       � Compromise of the sampling system integrity
+
+       � Compromise of the addition port(s) integrity
+
+       � Contamination of the clean steam system
+
+       � Contamination of process water system
+
+       � Presence of prions or adventitious agents in animal derived ingredients
+
+       � Failure of mixer system or mixer mechanical seals
+
+       � Failure of aseptic transfer system sterilization, breach of transfer system integrity
+
+       Miss Mei-Chun Chou � Contamination of feed solution
+       Taiwan, � Compromise/breach of perfusion system integrity
+
+#### 4.2.2 Downloaded on: 12/18/19 1:11 AM Mitigation of Risks from Sources of Potential Product and Process Contamination
+
+       The risk of contamination from raw materials can be mitigated and monitored with established quality control
+       strategies. Ingredient specifications including bioburden, impurities, properties, and recommended storage conditions,
+       should be understood. Dry solids should be stored in environments with controlled humidity and temperature. Solutes
+       used in media and buffer formulation are usually not sterile; the solutions using these ingredients should be:
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 34                                                                                         ISPE Baseline� Guide:
+                                                                     Biopharmaceutical Manufacturing Facilities
+
+         � Sterilized
+
+         � Stored under bacteriostatic conditions
+
+         � Used within specified hold periods (with limited shelf life � before microbial contaminants proliferate)
+
+         Media are typically at higher risk than buffer solutions because of their growth promoting properties. The composition
+         of media may affect their susceptibility to contamination: defined chemical media may be considered lower risk.
+         The use of sera can affect the susceptibility to contamination. Consumables also represent potential sources of
+         contamination.
+
+         For further information on bioprocessing, see the ISPE Guide: Biopharmaceutical Process Development and
+         Manufacturing [8].
+
+         Contamination from the environment and crossover contamination from neighboring systems can occur for open
+         processes when these systems are in close proximity. Protecting an open system from potential contamination by
+         operators requires effective sanitary gowning and/or other layers of system protection, including a clean environment.
+         Enhanced gowning may help reduce bioburden levels in a suite.
+
+         Closing a system is considered an effective approach to mitigating the risk of crossover contamination or
+         contamination from the environment. Closing a system also effectively mitigates the risk of contamination by
+         personnel. Contamination from the environment of a closed system would require a breach of that system, typically
+         as a result of multiple failures of mechanical systems (e.g., valve and/or filter failures) representing the layers of
+         protection to that system. Crossover contamination of two adjacent closed systems would require the breach of
+         integrity of both systems (e.g., where one system spills or releases a contaminant and the second system's integrity
+         is breached concurrently allowing ingress of the contaminant).
+
+         Carryover is typically a result of inadequate system preparation including cleaning and sanitization operations
+         between manufacturing batches. Residues from a previous product campaign, from a previous batch, or from a
+         process step performed previously are carried into a subsequent product, batch, or step. Validation of the cleaning
+         and sanitization program should adequately mitigate the risk of carryover. An effective cleaning and sanitization
+         program should include adequate monitoring to ensure that systems are being maintained in a validated state and the
+         operations are performing according to the cleaning plan established during the validation of the program. This should
+         include aspects that are critical for effective cleaning including:
+
+         � Temperature
+
+         � Time
+
+         Miss Mei-Chun Chou � Chemical concentration and components
+
+         � Sequence of cleaning steps              Taiwan,
+
+### 4.3 Providing Appropriate and Effective Layers of Protection to a Bioprocess Unit Operation
+
+         and layers of protection are required to mitigate the risk of contamination from the environment for these different
+         operations. The impact (or severity) of bioburden or particulate contamination will differ in different situations. The
+         mitigation of risk from contamination present in the environment requires the implementation of sufficient layers of
+         appropriate protection to a process system. The purpose of this section is to discuss possible options for closing an
+         operation by providing appropriate layers of protection to that operation.
+
+                       For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 35
+Biopharmaceutical Manufacturing Facilities
+
+            The use of highly classified cleanrooms for open operations can reduce the level of potential environmental
+            contaminants. For aseptic operations, classified cleanrooms provide an environment with lower bioburden. For other
+            bioprocesses, classified cleanrooms can lower the particulate burden and bioburden within the environment.
+
+#### 4.3.1 Providing Appropriate Environments within Biosafety Cabinets
+
+            Open aseptic operations require environments of extremely low bioburden, where the probability of detecting bioburden
+            within those environments during the open operation is essentially zero/probability less than 1. Grade 5 environments,
+            such as that found within properly managed Biosafety Cabinets (BSCs), are typically considered acceptable for open
+            aseptic operations, as they meet this criterion. Even within BSCs, proper cleaning, operations, technique, preparation,
+            gowning, staging, etc., and surrounding environment are required to maintain the Grade 5 condition.
+
+            Independent of the strategy used, the overall BSC management plan should include:
+
+            � A well designed cleanroom housing the BSC. This design will consider:
+
+                  - The BSC
+
+                  - The HVAC (location of HEPA and air return) that mitigates risk of "rogue" unfiltered air currents in
+                        environment immediately surrounding the open face of the BSC
+
+                  - Adequate air change per hour rate
+
+                  - Location and design of airlock accesses
+
+            � Restriction of the number of personnel occupying the room
+
+            � Restriction of the amount of equipment located in room
+
+            � Appropriate gowning of personnel
+
+            � Proper aseptic technique in the BSC
+
+            � Effective cleaning and sanitization of the BSC
+
+            For further information, see the ISPE Good Practice Guide: HVAC [58].
+
+#### 4.3.2 Strategies for Closing Bioprocess Operations
+
+     Miss Mei-Chun Chou Available technology allows systems to be closed or isolated from the environment and by default, from each other.
+
+            Effective isolation can be achieved without the need for walls or segregation of the HVAC controlling the environment
+
+     Taiwan, housing these operations. This strategy has previously been supported by regulatory agencies (e.g., process and
+
+            utility piping have traditionally and typically been housed in uncontrolled interstitial spaces).
+
+            Example
+
+            piping systems that are routinely routed through uncontrolled interstitial (or "gray") space because these critical systems
+            can be shown to be isolated from the environment and from each other. The environment in these uncontrolled spaces
+            represents a non-critical aspect to the transfer operation, because the critical transfer piping is closed. The pipes
+            adjacent to the critical transfer piping (e.g., other transfer systems, utilities, HVAC ducts) also represent a non-critical
+            aspect to the transfer operation. For this reason, the strategy of using uncontrolled or unclassified spaces for closed
+            piping systems has always been accepted by the regulatory agencies as an acceptable risk.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 36                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         The process transfer piping systems, routed through the uncontrolled interstitial spaces, represent extensions of the
+         process equipment to which they are attached.
+
+*[Figure 4.2: Closed Piping through Non-classified Mechanical Spaces]*
+
+*[Figure 4.3: Closed Piping through Non-classified Mechanical Spaces (3D Diagram)]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                        Page 37
+Biopharmaceutical Manufacturing Facilities
+
+       This strategy has been extended to closed buffer hold vessels that may be housed in Controlled Not Classified (CNC)
+       or uncontrolled spaces. Although housed in an uncontrolled environment, buffer hold vessels are rendered closed
+       prior to use by effective cleaning and sanitization.
+
+       Organizations should demonstrate that their process equipment is appropriately closed (and validated as such) or the
+       agencies will continue to expect it to be housed in classified cleanrooms.
+
+       Advances in bioprocessing include technologies that provide effective isolation of process from the environment. For
+       closed operations, the environment becomes a property or parameter with no critical aspect according to Quality Risk
+       Management (QRM). For a process or system to be considered closed, the product contact surfaces and process
+       environment needs to be completely isolated from the external environment during all manipulations, including
+       setup, transfers, sampling and other process operations. Open systems can be rendered closed with appropriate
+       preparation, including cleaning and sanitization operations. Risk assessments would show that isolation of the
+       product and process from the environment represents lower risk to product quality by eliminating a significant source
+       of hazards. The elimination of the environment as a parameter having a critical aspect can have significant impact on
+       the process design, on the process equipment layout, and on the overall facility design.
+
+*[Figure 4.4: Open versus Closed (Ease of Contamination Figure)]*
+
+### 4.4 This is independent of the nature of the process or classification of the environment. As an example, bioreactors and
+
+4.4.1  fermenters that have been properly steamed-in-place and are appropriately closed and controlled have been shown
+       to be capable of maintaining an axenic culture for months.
+
+       Demonstrating that Processes are Closed
+
+       Miss Mei-Chun Chou This section provides an example of how risk assessments can be used to demonstrate that a process has been
+       Taiwan, successfully isolated from the surrounding environment and that the environment no longer represents a critical
+
+       aspect of this process.
+
+       Performing a Closure Analysis
+
+       tool and pre-established criteria. The tool should mitigate bias influencing the risk ranking of a hazard. The primary
+       goal of a closure analysis is to confirm that a process unit operation can and/or should be removed from a cleanroom
+       environment of higher classification to a controlled non classified suite. Closure analysis is type of a risk assessment
+       that should focus on the probability and severity of exposing a process system to the surrounding environment
+       before, during, and after the process operation. The scope of the risk assessment should be restricted to potential
+       impact by the environment and should omit other process improvement initiatives.
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 38                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         Closure analysis can provide an opportunity to:
+
+         � Evaluate and improve manufacturing processes
+
+         � Reduce risk
+
+         � Evaluate new and improved technologies
+
+         � Reduce failures
+
+         � Increase productivity
+
+         These improvements can lower the cost of manufacturing, improve consistency, increase reliability and provide a
+         more predictable level of product quality.
+
+         For a process unit operation, all penetrations and operations that can influence the integrity of the system should be
+         considered. Figure 4.5 shows penetrations and operations that should be considered for a stainless steel bioreactor
+         used in a cell culture operation.
+
+*[Figure 4.5: Stainless Steel Bioreactor Used in a Cell Culture Operation]*
+
+                             Miss Mei-Chun Chou
+         Taiwan, The steps listed in Figure 4.5 represent opportunities for breach of the closed integrity of the bioreactor system. The
+
+         closure analysis should consider these steps and determine whether the methodology used in the step or subsequent
+
+         manual intervention during setup. The insertion of instrumentation into lower probe belts and assembly of vent and
+         sterile gas filters can result in particulate and bioburden contamination of the vessel and system. The risk may be
+
+         manual insertions, but prior to SIP, may be needed to mitigate the risk of particulate contamination within the vessel
+         chamber. Bioburden present in the system after human intervention is usually removed using thermal sanitization
+
+         2 This risk cannot be mitigated by housing an aseptic system in a Grade 8 or Grade 7 environment. Only Grade 5 should be considered acceptable for
+           an open aseptic system. Grades 8 or 7 may be suitable for some low bioburden operations as they may result in lower levels of bioburden.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                         Page 39
+Biopharmaceutical Manufacturing Facilities
+
+and particulates should be rinsed away with condensate in a self-draining system. Following SIP, the system should
+be maintained under constant positive pressure by supplying sterile filtered gas. Dissolved Oxygen (DO) and pH
+monitoring prior to inoculation can be used to confirm success of the SIP process in rendering the bioreactor closed.
+In well-designed systems, a well closed bioreactor system can remain aseptic, maintaining an axenic culture,
+throughout the cell culture process.
+
+This evaluation should be repeated for all unit operations in a process. The workflow shown in Figure 4.6 is an
+example of a strategy that could be used to perform a closure analysis risk assessment.
+
+*[Figure 4.6: Phases of Risk Assessment Analysis]*
+
+Phase 1 of the closure analysis is definition of the process and good process understanding.
+
+*[Figure 4.7: Closure Analysis Risk Assessment Workflow � Phase 1]*
+
+Process information such as PFDs and P&IDs is assembled. The system boundaries are defined and all potential
+
+points of penetration into the process system are considered and evaluated for potential breach of system integrity
+
+and closure.                                Miss Mei-Chun Chou
+
+Taiwan, Phase 2 lists the criteria for the closure assessment. The process requirements and current closure scale attributes
+
+whether the closure is adequate or unacceptable.
+
+              For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 40                                                                                              ISPE Baseline� Guide:
+                                                                          Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.8: Closure Analysis Risk Assessment Workflow � Phase 2]*
+
+         The workflow should be used only for process contact operations. In the program depicted:
+         � Open aseptic operations would represent the operations or steps of highest risk
+         � Performing controlled bioburden operations using sterile gamma irradiated single use systems would represent
+
+               the lowest risk of contamination from the environment; however' other higher value options are available that
+               also represent acceptable low risk
+         Phase 3 of the closure analysis evaluates options for mitigation of unacceptable risk due to insufficient product
+         protection or process closure.
+
+*[Figure 4.9: Closure Analysis Risk Assessment Workflow � Phase 3]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 41
+Biopharmaceutical Manufacturing Facilities
+
+At the end of this workflow, only those elements, steps, or operations representing a moderate or high risk of
+contamination from the environment should be further evaluated in the final assessment. Should contamination from
+the environment be a possibility, the fault tree approach shown in Figure 4.6 could be used for final assessment of
+adequate closure.
+
+*[Figure 4.10: Fault Tree Flow Diagram]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+whether it is more appropriate to close a process by upgrading the process system or to maintain status quo by
+leaving the operation open and housing the in an appropriately classified environment. A closure analysis risk
+assessment should show that most aseptic processes used in the manufacture of drug substances are closed.
+Exceptions may include inoculum preparation processes and seed cell expansion when shaker flasks are used.
+When closing the process is not possible, the operation should be housed in an appropriate environment.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 42                                                                          ISPE Baseline� Guide:
+                                                      Biopharmaceutical Manufacturing Facilities
+
+### 4.5 Appropriate Environments Based on Risk
+
+         Where equipment technology limits the ability to close operations, those operations will need to remain open.
+         Personnel represent one of the highest risks as sources of bioburden and particulates. Open aseptic operations
+         involving human intervention or manipulation, represent high risk conditions.
+
+         Closed processing can help mitigate the risk of contamination from the environment and from the "human risk factor."
+
+         When open aseptic operations are used, an appropriately controlled and maintained environment with sufficient
+         layers of protection (e.g., Grade A/5) should be used to house the operation.
+
+#### 4.5.1 Example Open Aseptic Operations
+
+         Examples of aseptic operations in biopharmaceutical manufacturing that are typically open include:
+
+         � Cell bank preparation
+
+         � Inoculum preparation
+
+         Cell Bank Preparation
+
+         The preparation of Master Cell Banks (MCBs) and Working Cell Banks (WCBs) are usually open operations. The
+         process of selecting a clone and culturing it in preparation of the MCB, requires open manipulations that are normally
+         performed in a Grade A/5 environment.
+
+         Inoculum Preparation
+
+         The initial stages in culture propagation may be performed in spinner flasks, shake flasks, roller bottles, or wave
+         bags, etc. Depending on the cell bank configuration, the transfer of cryo-stored cells may be open or closed.
+         Following an incubation period, the contents of a seed culture container are transferred into a larger container for
+         subsequent incubation and expansion of the culture. The opening of containers and transfer of materials are open
+         operations and considered high risk.
+
+#### 4.5.2 Examples of Closed Aseptic Operations
+
+         Set up and preparation of closed systems should be managed, validated, and monitored to confirm that system
+         integrity is established and maintained throughout a bioprocess.
+
+         � Cell culture and fermentation operations
+
+         � Bulk fill              Miss Mei-Chun Chou
+         � Harvest operations             Taiwan,
+
+         � Filtration steps
+
+         � Sterile Downloaded on: hold operations for media and buffer 12/18/19 1:11 AM
+
+         Preferably bulk fill is closed, but may be open based on the final container closure needs (such as recapping).
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 43
+Biopharmaceutical Manufacturing Facilities
+
+Cell Culture and Fermentation Operations
+
+Single use systems used in aseptic operations are received sterile (typically polyethylene based systems sterilized by
+gamma irradiation) at the manufacturing site. A sterilization certificate should accompany each system certifying the
+conditions used for sterilization. Setup and preparation of the system for use in cell culture operations should ensure
+that system integrity and continued isolation from the environment is maintained.
+
+The closing of a traditional stainless steel bioreactor includes cleaning and thermal sterilization and maintenance of
+a positive pressure on the system post-SIP to mitigate the risk of contamination from the environment. CIP and SIP
+operations should be validated. Following pre-manufacturing validation, CIP and SIP operations should be monitored
+to ensure that the system is maintained in a validated state. The connections of all transfer systems also should be
+demonstrated to be aseptic or closed. The introduction of particulates into an open bioreactor in any environment
+whether Grade 7, 8, or CNC is a probability; however, the risk to the manufacturing process is considered to be
+small following a properly executed SIP of the system. The initial phase in an SIP sequence during heat up of the
+vessel includes the condensation of clean steam (equivalent to purified water) along the cool surfaces of the vessel,
+resulting in a rinsing of those walls. However, if this initial "rinse" of the vessel is insufficient, a WFI (or other purified
+water) burst prior to SIP could be performed to ensure removal of any particulates that could have settled on the
+product contact surfaces during the opening of the vessel. The SIP would subsequently sterilize the vessel rendering
+it functionally closed.
+
+Bulk Fill
+
+Fully integrated bulk fill � filtration systems are available. With the exception of materials that cannot be filter
+sterilized, it is recommended that all bulk fill operations are prepared using an integrated filter � container system.
+The product at this phase of the bulk drug substance manufacturing sequence normally has high value. Performing a
+bulk fill operation open in a Biosafety Cabinet (BSC) should be considered bad practice.
+
+If sterile filtration is not an option for the bulk fill operation, the use of an isolator to protect the required zero
+bioburden (Grade A; Grade 5) processing environment is recommended.
+
+Harvest Operations
+
+In some processes, such as continuously harvested perfusion systems, the harvest process should be aseptic.
+Filtration and sedimentation technology is typically used as the cell barrier in a perfusion system. Filtration systems,
+centrifuges and cell settlers should be steamed in place (or single use) to functionally close the fermentation/cell
+culture � harvest integrated system. The integrated system should maintain its aseptic state throughout the perfusion
+process until final harvest at end of batch.
+
+Filtration This Steps Document is licensed to
+
+The assembly and setup of a filtration skid is normally an open operation. The system may be rendered closed by
+
+Miss Mei-Chun Chou effective conditioning, such as flush and/or SIP as appropriate for the filtration step. The use of a 0.2 �m (absolute)
+
+or better filter may not in all insteances result in the effective closing of a process. The assembly, preparation,
+
+Taiwan, conditioning, and configuration of the filtration system can determine whether a filtration system is effectively isolated
+
+from the environment housing it. The aseptic integrity of a gamma irradiated single use filter can be compromised
+
+filtration side of a filter element for effective closure. This also applies to steamable filtration systems. Upstream
+configuration of an absolute 0.2 �m filter can have little effect on the integrity of a sterile barrier (or system closure).
+
+Example evaluation of a typical configuration of a solution sterile filtration system is shown in Figure 4.11.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 44                                                                                                         ISPE Baseline� Guide:
+                                                                                     Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.11: Typical Configuration of a Solution Sterile Filtration System]*
+
+         The components of this sterile filtration system that are to the left (prior to, depicted in yellow) of the 0.2 �m absolute
+         sterile filter are non-sterile. The activities within the yellow area are open or briefly exposed activities. Adding HEPA
+         filtration to the yellow space to reduce the environmental bioburden and particulate levels (to Grade 7 or 8) will have
+         little if any effect on the product quality or the ability to provide sterile media (depicted in blue).
+
+         The integrity of the closed system depicted in blue depends on the integrity of the 0.2 �m filter and all attached
+         components to the right (downstream) of the filter element. Breach of integrity of any of these components will result
+         in an open system that can be compromised by the environment. Validation of the integrity of the system is integral to
+         successful closure.
+
+         The value of redundant absolute 0.2 �m filters in series in a sterile solution filtration process as depicted below should
+         be evaluated from a risk mitigation standpoint. Manufacturers will use redundant filters in the event of failure or
+         breach of integrity of a system. Possible reasons for failure in sterile filtration systems include:
+
+         � Temperature or pressure excursions during SIP
+
+         � Fouling of the filter element during the product filtration process
+
+         Miss Mei-Chun Chou Post integrity testing should confirm that failure of the filter element has occurred. Re-filtration of the media or buffer
+
+         or product solution may be possible. The solution may need to be discarded. Where fouling occurred in the upstream
+
+         Taiwan, filter, removal or replacement of upstream filter may be allowable, dependent upon an organization's protocols.
+
+         therefore, redundancy provides little benefit in terms of mitigation of risk.
+
+         calls for replacement or removal of the lead filter. If these are positioned in series as depicted in Figure 4.12, the lead
+         filter no longer represents the sterile barrier and is no more than a very expensive pre-filter. In addition, the SIP of the
+         lead filter actually increases the risk of the overall operation. A more cost effective and lower risk option is to use a
+         non-absolute 0.2 �m filter that is not steamed in place during the setup of the system.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                  Page 45
+Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.12: Redundant Filter Configuration of a Solution Sterile Filtration System]*
+
+An alternative is to position the filter in parallel in a lead lag configuration for true redundancy of the system as
+depicted in Figure 4.13.
+
+*[Figure 4.13: Parallel Filters Configuration of a Solution Sterile Filtration System]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 46                                                                                 ISPE Baseline� Guide:
+                                                             Biopharmaceutical Manufacturing Facilities
+
+         The different options should be evaluated for each specific operation to determine the best configuration for the
+         application.
+
+         Sterile Buffer Hold Operations
+
+         Solutions that are not used within a short time period after formulation should be stored sterile, even if used in
+         low bioburden non sterile operations. Sterile solutions (media and/or buffers) should be stored in sterile single
+         use systems or in traditional stainless steel vessels that have been sterilized prior to use. Exposing solutions that
+         are stored long term to the environment should be considered moderate to high risk, unless these solutions are
+         bacteriostatic. Buffer hold systems should be closed and either single use or sterilizable to allow for long term storage
+         of buffers. These systems should be closed to prevent contamination from the environment.
+
+#### 4.5.3 Low Bioburden Operations/Systems
+
+         The risk of contamination from the environment of a bioprocess should be mitigated for systems qualified as low
+         bioburden. Low bioburden systems that are closed do not need to be sterilized prior to use and it may not be feasible
+         to sterilize some systems. For example, WFI distribution systems are not sterile, but are effectively closed. There
+         is little concern of contamination from the environment of the WFI systems except at the Points Of Use (POUs)
+         where WFI is collected or sampled. The risk of contamination from the environment at the POU can be mitigated by
+         maintaining a constant flow and pressure on the distribution loop.
+
+         Examples of bioprocess unit operations that are usually open and typically are not (or cannot be) sterilized include:
+
+         � Chromatography operations
+
+         � Ultrafiltration TFF Operations
+
+         � Virus nanofiltration operations
+
+         � Buffer preparation
+
+         � Media preparation
+
+         � Centrifugation operations
+
+         Open Briefly Exposed Operations
+
+         Some open operations represent very low risk as these are transitional operations that are subsequently closed, e.g.:
+
+         Miss Mei-Chun Chou � Buffer preparation operations
+
+         � Centrifugation operations        Taiwan,
+
+         of briefly exposed is depicted in Figure 4.14.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                             Page 47
+Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.14: Briefly Exposed Process]*
+
+Most buffer salts used in bioprocessing are not sterile when processed during buffer preparation. The sources
+of bioburden and contaminants in a buffer preparation include contamination from the environment, including
+contamination from operators and the contaminants present in the buffer salt package.
+
+Risk of contamination from personnel can be mitigated by protecting the buffer salts in protected containers, such as
+gamma irradiated sterile bag containers. An in-line 0.2 �m process filter for the removal bioburden and suspended
+contaminants from the process stream is likely to be more effective than addition of terminal HEPA filtration and over
+gowning of personnel in the buffer preparation suite. Upgrading the buffer preparation suite to a Grade 7 or 8 may
+reduce a small portion of the bioburden load in a briefly exposed buffer solution; however, the overall impact may be
+insignificant when compared to that of adding an in line 0.2 �m filter.
+
+Exposure time also should be considered in a buffer preparation risk mitigation strategy. If buffers are not processed
+and/or stored at temperatures below 10�C (50�F) or above 50�C (122�F), or processed under other bacteriostatic
+conditions, exposure time can be significant. Microbial contamination can double as quickly as every 20 minutes
+under ideal conditions; therefore, buffers that are not consumed soon after formulation should be 0.2 �m filtered.
+It may be necessary to 0.2 �m filter any buffer not fully consumed within 24 hours and store the buffer in sterile
+containers.
+
+Centrifugation for cell culture harvest clarification represents another example of an open operation that can be
+closed or briefly exposed operation. It is possible to configure a centrifuge, whether disk stack or tubular bowl for full
+CIP and SIP; however, centrifuges are not regularly steamed in place. A preferred approach is to combine the best of
+available technologies to make centrifugation a briefly exposed operation.
+
+is to remove 95% to 98% of the turbidity (i.e., cells, cell debris, and other suspended solids) in the harvested
+
+Miss Mei-Chun Chou culture. The remaining turbidity is removed by depth filtration followed by 0.2 �m filtration. If properly executed, the
+
+filtration steps render the process cell-free (thereby closed) thereby effectively isolating the process stream from
+
+Taiwan, the environment and from any potential bioburden that may have been present in the transition equipment. In this
+
+scenario, the product or process stream is very briefly exposed to the transition equipment. From a process risk
+
+contamination from the environment to the process; therefore, this equipment can be housed in a non-classified
+environment.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 48                                                                                        ISPE Baseline� Guide:
+                                                                    Biopharmaceutical Manufacturing Facilities
+
+         Weigh Dispense
+
+         When materials arrive from suppliers, the material outer packaging and transportation materials (e.g., pallets,
+         cardboard boxes) should be removed prior to introduction of the material into the manufacturing area to mitigate
+         risk of contamination of the process area environment. Materials received are usually not sterile, having been
+         manufactured in controlled or uncontrolled and unclassified environments. Powders and other non-liquid ingredients
+         should be kept out of the manufacturing areas. These materials should be introduced into the manufacturing process
+         via closed transfer systems. Where closed transfers are not possible, minimizing open operations is preferred.
+
+         Weigh dispensing operations should be performed in clean and controlled environments. The use of a well-designed
+         weigh booth will both protect the ingredient during open manipulations and can protect the environment from dust or
+         other particulates that can spread into the facility. The weigh booth should provide a Unidirectional Airflow (UDAF)
+         HEPA filtered air supply over the weighing area and can collect stray particulates in a dust collection system. These
+         particulates could include viable organisms and could serve as carriers for viral contaminants. The risk of these
+         manipulations increases with increased volume and number of manipulations.
+
+         The kitting of pre-weighed materials into closed transfer systems can further mitigate the risk of particulate
+         contamination by removing the open manipulations from the primary process areas and by providing a vehicle for the
+         closed transfer of materials into a process system.
+
+         Centralizing the weigh dispense area is typically more cost effective and can minimize the number of areas where
+         dust formation can occur. Locating this function in a cGMP area near the warehouse area may provide better control
+         of the raw material inventory as partially open containers can now be stored and controlled by the warehouse
+         specialists. The centralized weigh dispense area can serve as the warehouse � manufacturing transfer point
+         enhancing control of incoming materials.
+
+         Additional Considerations for Solids Handling Operations
+
+         Handling large volumes in a central location can be beneficial, as risks spills and dust generation are higher. Kitting of
+         material in closed containers for delivery to the manufacturing area is usually preferred.
+
+         A central weigh dispense next to a warehouse can provide a better method for controlling partial lots. When a raw
+         material container is opened, it typically requires special handling and storage to prevent adulteration of product.
+
+         If raw material additions are batch dependent, there is likely a minimum threshold volume that will be required for
+         each batch. A secondary staging area may be used to address the smaller remaining volumes that may be required
+         in the specific batch. Options include a two stage weigh dispense function or standardization of batch sizes (possibly
+         with discard of product) to streamline all additions.
+
+         the quality requirements of materials prepared. Buffer salts are typically manufactured in CNC or uncontrolled
+
+         Miss Mei-Chun Chou unclassified environments. Quality of the buffer can be dependent on the:
+
+         Taiwan, � Quality of the water (e.g., WFI  10 cfu/100 mL)
+
+         � Quality of the salt  ID number: 1002915
+
+         � Time of incubation, prior to sterile filtration or prior to use
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 49
+Biopharmaceutical Manufacturing Facilities
+
+4 Process Closure
+
+### 4.1 Introduction
+
+            The goal of this chapter is to provide a means to evaluate bioprocess unit operations and to discuss opportunities for
+            closing these operations; therefore, decoupling them from the environment.
+
+            Isolating a process from its environment mitigates a major risk of contamination by adventitious agents, thereby
+            yielding a process that is safer, more robust, more consistent, and where the risk of product adulteration is reduced
+            significantly. Isolating a process from its environment also can mitigate risk when the release of the process fluid or
+            aerosols can pose a risk to other the operator, the environment or other open operations.
+
+            Technology improvements have resulted in more robust systems that can isolate bioprocess unit operations from
+            the immediate environment. This is important, as control of the physicochemical conditions within a process micro-
+            environment is more achievable than control of the macro-environment surrounding that process. As an example, it is
+            easier to maintain an aseptic environment within a bioreactor than it is to maintain a low bioburden Grade 5 condition
+            within a processing suite housing bioreactors and people.
+
+            Performing aseptic bioprocessing operations in an open system represents high risk. Where feasible, aseptic
+            operations should be performed in closed aseptic systems. Closed processing represents the lowest risk option in
+            terms of mitigating the risk of contamination from the environment for both aseptic and low bioburden operations.
+            Operations that cannot be practically closed should be processed in a monitored clean classified environment that
+            is consistent with the bioburden and particulate requirements of the process unit operation, whether aseptic or low
+            bioburden.
+
+### 4.2 Sources of Product and Process Contamination
+
+            Particulates in the environment can provide vehicles for adventitious agents, representing a biological risk to a
+            biopharmaceutical process and product. A risk management program should be established to evaluate and address
+            any potential impact of particulate contamination to process unit operations.
+
+            Bioprocessing is generally performed in an aqueous media that can support the growth of bacteria, viruses, and other
+            adventitious agents; therefore, bioprocesses are prone to contamination by propagation of these agents. Facility
+            designs and designs of process closures should account for potential sources of biological contamination.
+
+            properties of a bioprocess solution, yielding chemicals and conditions that can be potentially harmful to the patient.
+
+            Bioprocesses should be monitored for bioburden and particulates, which should be controlled. Most bioprocesses
+
+     Miss Mei-Chun Chou typically include multiple clarification steps that would effectively remove small levels of particulate contamination (in
+
+            the form of suspended solids), mitigating the risk of physical damage to equipment, disruption of a bioprocess unit
+
+     Taiwan, operation, or adulteration of the drug substance.
+
+            Manufacturing [8].
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 32                                                                                                   ISPE Baseline� Guide:
+                                                                               Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.1 depicts the sources of product and process contamination.]*
+
+*[Figure 4.1: Sources of Product and Process Contamination]*
+
+         A. The ingredients used in media, buffers, and other bioprocess solutions can represent a significant potential
+               source of microbial contamination. Consumables such chromatography resins, filter media, and tubing also
+               represent potential sources of contamination.
+
+         B. Potential sources of contamination from the environment include:
+               � Equipment
+               � Airborne particulates and bioburden
+               � Contamination on personnel
+
+               � Contaminating waste systems
+
+         Miss Mei-Chun Chou C. Sources of crossover contamination include contamination from concurrent multi-product, multi-batch, and multi-
+           Taiwan, unit operations (including concurrent CIP and SIP process operations).
+
+               between manufacturing batches.
+
+         crossover contamination, and contamination from cleaning solvents and chemicals.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                           Page 33
+Biopharmaceutical Manufacturing Facilities
+
+#### 4.2.1 Sources of Bioburden in Aseptic/Axenic Operations
+
+       Cell culture and fermentation operations are by necessity aseptic/axenic operations. Contamination of these
+       processes can result in loss or rejection of batches. Prior to inoculation, the medium within a bioreactor should be
+       free of measurable bioburden (effectively sterile). Single use bioreactors and systems for cell culture operations
+       should be discarded and replaced. Stainless steel systems should be decontaminated, cleaned, and sterilized prior
+       to subsequent use. The reason for contamination should be investigated and addressed to minimize risk of another
+       contamination.
+
+       Potential sources of contamination in cell culture operations include:
+
+       � Breach of integrity of the Grade 5 environment in the BSC used in open operations
+
+       � Failure in the bioreactor sterilization
+
+       � Failure in media sterilization
+
+       � Failure in bioreactor cleaning, resulting in soil carryover
+
+       � Compromise/breach of sterile air filter integrity
+
+       � Contamination of the cell bank or inoculums
+
+       � Compromise/breach of the vent filter integrity and system pressurization failure
+
+       � Compromise of the sampling system integrity
+
+       � Compromise of the addition port(s) integrity
+
+       � Contamination of the clean steam system
+
+       � Contamination of process water system
+
+       � Presence of prions or adventitious agents in animal derived ingredients
+
+       � Failure of mixer system or mixer mechanical seals
+
+       � Failure of aseptic transfer system sterilization, breach of transfer system integrity
+
+       Miss Mei-Chun Chou � Contamination of feed solution
+       Taiwan, � Compromise/breach of perfusion system integrity
+
+#### 4.2.2 Downloaded on: 12/18/19 1:11 AM Mitigation of Risks from Sources of Potential Product and Process Contamination
+
+       The risk of contamination from raw materials can be mitigated and monitored with established quality control
+       strategies. Ingredient specifications including bioburden, impurities, properties, and recommended storage conditions,
+       should be understood. Dry solids should be stored in environments with controlled humidity and temperature. Solutes
+       used in media and buffer formulation are usually not sterile; the solutions using these ingredients should be:
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 34                                                                                         ISPE Baseline� Guide:
+                                                                     Biopharmaceutical Manufacturing Facilities
+
+         � Sterilized
+
+         � Stored under bacteriostatic conditions
+
+         � Used within specified hold periods (with limited shelf life � before microbial contaminants proliferate)
+
+         Media are typically at higher risk than buffer solutions because of their growth promoting properties. The composition
+         of media may affect their susceptibility to contamination: defined chemical media may be considered lower risk.
+         The use of sera can affect the susceptibility to contamination. Consumables also represent potential sources of
+         contamination.
+
+         For further information on bioprocessing, see the ISPE Guide: Biopharmaceutical Process Development and
+         Manufacturing [8].
+
+         Contamination from the environment and crossover contamination from neighboring systems can occur for open
+         processes when these systems are in close proximity. Protecting an open system from potential contamination by
+         operators requires effective sanitary gowning and/or other layers of system protection, including a clean environment.
+         Enhanced gowning may help reduce bioburden levels in a suite.
+
+         Closing a system is considered an effective approach to mitigating the risk of crossover contamination or
+         contamination from the environment. Closing a system also effectively mitigates the risk of contamination by
+         personnel. Contamination from the environment of a closed system would require a breach of that system, typically
+         as a result of multiple failures of mechanical systems (e.g., valve and/or filter failures) representing the layers of
+         protection to that system. Crossover contamination of two adjacent closed systems would require the breach of
+         integrity of both systems (e.g., where one system spills or releases a contaminant and the second system's integrity
+         is breached concurrently allowing ingress of the contaminant).
+
+         Carryover is typically a result of inadequate system preparation including cleaning and sanitization operations
+         between manufacturing batches. Residues from a previous product campaign, from a previous batch, or from a
+         process step performed previously are carried into a subsequent product, batch, or step. Validation of the cleaning
+         and sanitization program should adequately mitigate the risk of carryover. An effective cleaning and sanitization
+         program should include adequate monitoring to ensure that systems are being maintained in a validated state and the
+         operations are performing according to the cleaning plan established during the validation of the program. This should
+         include aspects that are critical for effective cleaning including:
+
+         � Temperature
+
+         � Time
+
+         Miss Mei-Chun Chou � Chemical concentration and components
+
+         � Sequence of cleaning steps              Taiwan,
+
+### 4.3 Providing Appropriate and Effective Layers of Protection to a Bioprocess Unit Operation
+
+         and layers of protection are required to mitigate the risk of contamination from the environment for these different
+         operations. The impact (or severity) of bioburden or particulate contamination will differ in different situations. The
+         mitigation of risk from contamination present in the environment requires the implementation of sufficient layers of
+         appropriate protection to a process system. The purpose of this section is to discuss possible options for closing an
+         operation by providing appropriate layers of protection to that operation.
+
+                       For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 35
+Biopharmaceutical Manufacturing Facilities
+
+            The use of highly classified cleanrooms for open operations can reduce the level of potential environmental
+            contaminants. For aseptic operations, classified cleanrooms provide an environment with lower bioburden. For other
+            bioprocesses, classified cleanrooms can lower the particulate burden and bioburden within the environment.
+
+#### 4.3.1 Providing Appropriate Environments within Biosafety Cabinets
+
+            Open aseptic operations require environments of extremely low bioburden, where the probability of detecting bioburden
+            within those environments during the open operation is essentially zero/probability less than 1. Grade 5 environments,
+            such as that found within properly managed Biosafety Cabinets (BSCs), are typically considered acceptable for open
+            aseptic operations, as they meet this criterion. Even within BSCs, proper cleaning, operations, technique, preparation,
+            gowning, staging, etc., and surrounding environment are required to maintain the Grade 5 condition.
+
+            Independent of the strategy used, the overall BSC management plan should include:
+
+            � A well designed cleanroom housing the BSC. This design will consider:
+
+                  - The BSC
+
+                  - The HVAC (location of HEPA and air return) that mitigates risk of "rogue" unfiltered air currents in
+                        environment immediately surrounding the open face of the BSC
+
+                  - Adequate air change per hour rate
+
+                  - Location and design of airlock accesses
+
+            � Restriction of the number of personnel occupying the room
+
+            � Restriction of the amount of equipment located in room
+
+            � Appropriate gowning of personnel
+
+            � Proper aseptic technique in the BSC
+
+            � Effective cleaning and sanitization of the BSC
+
+            For further information, see the ISPE Good Practice Guide: HVAC [58].
+
+#### 4.3.2 Strategies for Closing Bioprocess Operations
+
+     Miss Mei-Chun Chou Available technology allows systems to be closed or isolated from the environment and by default, from each other.
+
+            Effective isolation can be achieved without the need for walls or segregation of the HVAC controlling the environment
+
+     Taiwan, housing these operations. This strategy has previously been supported by regulatory agencies (e.g., process and
+
+            utility piping have traditionally and typically been housed in uncontrolled interstitial spaces).
+
+            Example
+
+            piping systems that are routinely routed through uncontrolled interstitial (or "gray") space because these critical systems
+            can be shown to be isolated from the environment and from each other. The environment in these uncontrolled spaces
+            represents a non-critical aspect to the transfer operation, because the critical transfer piping is closed. The pipes
+            adjacent to the critical transfer piping (e.g., other transfer systems, utilities, HVAC ducts) also represent a non-critical
+            aspect to the transfer operation. For this reason, the strategy of using uncontrolled or unclassified spaces for closed
+            piping systems has always been accepted by the regulatory agencies as an acceptable risk.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 36                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         The process transfer piping systems, routed through the uncontrolled interstitial spaces, represent extensions of the
+         process equipment to which they are attached.
+
+*[Figure 4.2: Closed Piping through Non-classified Mechanical Spaces]*
+
+*[Figure 4.3: Closed Piping through Non-classified Mechanical Spaces (3D Diagram)]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                        Page 37
+Biopharmaceutical Manufacturing Facilities
+
+       This strategy has been extended to closed buffer hold vessels that may be housed in Controlled Not Classified (CNC)
+       or uncontrolled spaces. Although housed in an uncontrolled environment, buffer hold vessels are rendered closed
+       prior to use by effective cleaning and sanitization.
+
+       Organizations should demonstrate that their process equipment is appropriately closed (and validated as such) or the
+       agencies will continue to expect it to be housed in classified cleanrooms.
+
+       Advances in bioprocessing include technologies that provide effective isolation of process from the environment. For
+       closed operations, the environment becomes a property or parameter with no critical aspect according to Quality Risk
+       Management (QRM). For a process or system to be considered closed, the product contact surfaces and process
+       environment needs to be completely isolated from the external environment during all manipulations, including
+       setup, transfers, sampling and other process operations. Open systems can be rendered closed with appropriate
+       preparation, including cleaning and sanitization operations. Risk assessments would show that isolation of the
+       product and process from the environment represents lower risk to product quality by eliminating a significant source
+       of hazards. The elimination of the environment as a parameter having a critical aspect can have significant impact on
+       the process design, on the process equipment layout, and on the overall facility design.
+
+*[Figure 4.4: Open versus Closed (Ease of Contamination Figure)]*
+
+### 4.4 This is independent of the nature of the process or classification of the environment. As an example, bioreactors and
+
+4.4.1  fermenters that have been properly steamed-in-place and are appropriately closed and controlled have been shown
+       to be capable of maintaining an axenic culture for months.
+
+       Demonstrating that Processes are Closed
+
+       Miss Mei-Chun Chou This section provides an example of how risk assessments can be used to demonstrate that a process has been
+       Taiwan, successfully isolated from the surrounding environment and that the environment no longer represents a critical
+
+       aspect of this process.
+
+       Performing a Closure Analysis
+
+       tool and pre-established criteria. The tool should mitigate bias influencing the risk ranking of a hazard. The primary
+       goal of a closure analysis is to confirm that a process unit operation can and/or should be removed from a cleanroom
+       environment of higher classification to a controlled non classified suite. Closure analysis is type of a risk assessment
+       that should focus on the probability and severity of exposing a process system to the surrounding environment
+       before, during, and after the process operation. The scope of the risk assessment should be restricted to potential
+       impact by the environment and should omit other process improvement initiatives.
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 38                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         Closure analysis can provide an opportunity to:
+
+         � Evaluate and improve manufacturing processes
+
+         � Reduce risk
+
+         � Evaluate new and improved technologies
+
+         � Reduce failures
+
+         � Increase productivity
+
+         These improvements can lower the cost of manufacturing, improve consistency, increase reliability and provide a
+         more predictable level of product quality.
+
+         For a process unit operation, all penetrations and operations that can influence the integrity of the system should be
+         considered. Figure 4.5 shows penetrations and operations that should be considered for a stainless steel bioreactor
+         used in a cell culture operation.
+
+*[Figure 4.5: Stainless Steel Bioreactor Used in a Cell Culture Operation]*
+
+                             Miss Mei-Chun Chou
+         Taiwan, The steps listed in Figure 4.5 represent opportunities for breach of the closed integrity of the bioreactor system. The
+
+         closure analysis should consider these steps and determine whether the methodology used in the step or subsequent
+
+         manual intervention during setup. The insertion of instrumentation into lower probe belts and assembly of vent and
+         sterile gas filters can result in particulate and bioburden contamination of the vessel and system. The risk may be
+
+         manual insertions, but prior to SIP, may be needed to mitigate the risk of particulate contamination within the vessel
+         chamber. Bioburden present in the system after human intervention is usually removed using thermal sanitization
+
+         2 This risk cannot be mitigated by housing an aseptic system in a Grade 8 or Grade 7 environment. Only Grade 5 should be considered acceptable for
+           an open aseptic system. Grades 8 or 7 may be suitable for some low bioburden operations as they may result in lower levels of bioburden.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                         Page 39
+Biopharmaceutical Manufacturing Facilities
+
+and particulates should be rinsed away with condensate in a self-draining system. Following SIP, the system should
+be maintained under constant positive pressure by supplying sterile filtered gas. Dissolved Oxygen (DO) and pH
+monitoring prior to inoculation can be used to confirm success of the SIP process in rendering the bioreactor closed.
+In well-designed systems, a well closed bioreactor system can remain aseptic, maintaining an axenic culture,
+throughout the cell culture process.
+
+This evaluation should be repeated for all unit operations in a process. The workflow shown in Figure 4.6 is an
+example of a strategy that could be used to perform a closure analysis risk assessment.
+
+*[Figure 4.6: Phases of Risk Assessment Analysis]*
+
+Phase 1 of the closure analysis is definition of the process and good process understanding.
+
+*[Figure 4.7: Closure Analysis Risk Assessment Workflow � Phase 1]*
+
+Process information such as PFDs and P&IDs is assembled. The system boundaries are defined and all potential
+
+points of penetration into the process system are considered and evaluated for potential breach of system integrity
+
+and closure.                                Miss Mei-Chun Chou
+
+Taiwan, Phase 2 lists the criteria for the closure assessment. The process requirements and current closure scale attributes
+
+whether the closure is adequate or unacceptable.
+
+              For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 40                                                                                              ISPE Baseline� Guide:
+                                                                          Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.8: Closure Analysis Risk Assessment Workflow � Phase 2]*
+
+         The workflow should be used only for process contact operations. In the program depicted:
+         � Open aseptic operations would represent the operations or steps of highest risk
+         � Performing controlled bioburden operations using sterile gamma irradiated single use systems would represent
+
+               the lowest risk of contamination from the environment; however' other higher value options are available that
+               also represent acceptable low risk
+         Phase 3 of the closure analysis evaluates options for mitigation of unacceptable risk due to insufficient product
+         protection or process closure.
+
+*[Figure 4.9: Closure Analysis Risk Assessment Workflow � Phase 3]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 41
+Biopharmaceutical Manufacturing Facilities
+
+At the end of this workflow, only those elements, steps, or operations representing a moderate or high risk of
+contamination from the environment should be further evaluated in the final assessment. Should contamination from
+the environment be a possibility, the fault tree approach shown in Figure 4.6 could be used for final assessment of
+adequate closure.
+
+*[Figure 4.10: Fault Tree Flow Diagram]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+whether it is more appropriate to close a process by upgrading the process system or to maintain status quo by
+leaving the operation open and housing the in an appropriately classified environment. A closure analysis risk
+assessment should show that most aseptic processes used in the manufacture of drug substances are closed.
+Exceptions may include inoculum preparation processes and seed cell expansion when shaker flasks are used.
+When closing the process is not possible, the operation should be housed in an appropriate environment.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 42                                                                          ISPE Baseline� Guide:
+                                                      Biopharmaceutical Manufacturing Facilities
+
+### 4.5 Appropriate Environments Based on Risk
+
+         Where equipment technology limits the ability to close operations, those operations will need to remain open.
+         Personnel represent one of the highest risks as sources of bioburden and particulates. Open aseptic operations
+         involving human intervention or manipulation, represent high risk conditions.
+
+         Closed processing can help mitigate the risk of contamination from the environment and from the "human risk factor."
+
+         When open aseptic operations are used, an appropriately controlled and maintained environment with sufficient
+         layers of protection (e.g., Grade A/5) should be used to house the operation.
+
+#### 4.5.1 Example Open Aseptic Operations
+
+         Examples of aseptic operations in biopharmaceutical manufacturing that are typically open include:
+
+         � Cell bank preparation
+
+         � Inoculum preparation
+
+         Cell Bank Preparation
+
+         The preparation of Master Cell Banks (MCBs) and Working Cell Banks (WCBs) are usually open operations. The
+         process of selecting a clone and culturing it in preparation of the MCB, requires open manipulations that are normally
+         performed in a Grade A/5 environment.
+
+         Inoculum Preparation
+
+         The initial stages in culture propagation may be performed in spinner flasks, shake flasks, roller bottles, or wave
+         bags, etc. Depending on the cell bank configuration, the transfer of cryo-stored cells may be open or closed.
+         Following an incubation period, the contents of a seed culture container are transferred into a larger container for
+         subsequent incubation and expansion of the culture. The opening of containers and transfer of materials are open
+         operations and considered high risk.
+
+#### 4.5.2 Examples of Closed Aseptic Operations
+
+         Set up and preparation of closed systems should be managed, validated, and monitored to confirm that system
+         integrity is established and maintained throughout a bioprocess.
+
+         � Cell culture and fermentation operations
+
+         � Bulk fill              Miss Mei-Chun Chou
+         � Harvest operations             Taiwan,
+
+         � Filtration steps
+
+         � Sterile Downloaded on: hold operations for media and buffer 12/18/19 1:11 AM
+
+         Preferably bulk fill is closed, but may be open based on the final container closure needs (such as recapping).
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 43
+Biopharmaceutical Manufacturing Facilities
+
+Cell Culture and Fermentation Operations
+
+Single use systems used in aseptic operations are received sterile (typically polyethylene based systems sterilized by
+gamma irradiation) at the manufacturing site. A sterilization certificate should accompany each system certifying the
+conditions used for sterilization. Setup and preparation of the system for use in cell culture operations should ensure
+that system integrity and continued isolation from the environment is maintained.
+
+The closing of a traditional stainless steel bioreactor includes cleaning and thermal sterilization and maintenance of
+a positive pressure on the system post-SIP to mitigate the risk of contamination from the environment. CIP and SIP
+operations should be validated. Following pre-manufacturing validation, CIP and SIP operations should be monitored
+to ensure that the system is maintained in a validated state. The connections of all transfer systems also should be
+demonstrated to be aseptic or closed. The introduction of particulates into an open bioreactor in any environment
+whether Grade 7, 8, or CNC is a probability; however, the risk to the manufacturing process is considered to be
+small following a properly executed SIP of the system. The initial phase in an SIP sequence during heat up of the
+vessel includes the condensation of clean steam (equivalent to purified water) along the cool surfaces of the vessel,
+resulting in a rinsing of those walls. However, if this initial "rinse" of the vessel is insufficient, a WFI (or other purified
+water) burst prior to SIP could be performed to ensure removal of any particulates that could have settled on the
+product contact surfaces during the opening of the vessel. The SIP would subsequently sterilize the vessel rendering
+it functionally closed.
+
+Bulk Fill
+
+Fully integrated bulk fill � filtration systems are available. With the exception of materials that cannot be filter
+sterilized, it is recommended that all bulk fill operations are prepared using an integrated filter � container system.
+The product at this phase of the bulk drug substance manufacturing sequence normally has high value. Performing a
+bulk fill operation open in a Biosafety Cabinet (BSC) should be considered bad practice.
+
+If sterile filtration is not an option for the bulk fill operation, the use of an isolator to protect the required zero
+bioburden (Grade A; Grade 5) processing environment is recommended.
+
+Harvest Operations
+
+In some processes, such as continuously harvested perfusion systems, the harvest process should be aseptic.
+Filtration and sedimentation technology is typically used as the cell barrier in a perfusion system. Filtration systems,
+centrifuges and cell settlers should be steamed in place (or single use) to functionally close the fermentation/cell
+culture � harvest integrated system. The integrated system should maintain its aseptic state throughout the perfusion
+process until final harvest at end of batch.
+
+Filtration This Steps Document is licensed to
+
+The assembly and setup of a filtration skid is normally an open operation. The system may be rendered closed by
+
+Miss Mei-Chun Chou effective conditioning, such as flush and/or SIP as appropriate for the filtration step. The use of a 0.2 �m (absolute)
+
+or better filter may not in all insteances result in the effective closing of a process. The assembly, preparation,
+
+Taiwan, conditioning, and configuration of the filtration system can determine whether a filtration system is effectively isolated
+
+from the environment housing it. The aseptic integrity of a gamma irradiated single use filter can be compromised
+
+filtration side of a filter element for effective closure. This also applies to steamable filtration systems. Upstream
+configuration of an absolute 0.2 �m filter can have little effect on the integrity of a sterile barrier (or system closure).
+
+Example evaluation of a typical configuration of a solution sterile filtration system is shown in Figure 4.11.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 44                                                                                                         ISPE Baseline� Guide:
+                                                                                     Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.11: Typical Configuration of a Solution Sterile Filtration System]*
+
+         The components of this sterile filtration system that are to the left (prior to, depicted in yellow) of the 0.2 �m absolute
+         sterile filter are non-sterile. The activities within the yellow area are open or briefly exposed activities. Adding HEPA
+         filtration to the yellow space to reduce the environmental bioburden and particulate levels (to Grade 7 or 8) will have
+         little if any effect on the product quality or the ability to provide sterile media (depicted in blue).
+
+         The integrity of the closed system depicted in blue depends on the integrity of the 0.2 �m filter and all attached
+         components to the right (downstream) of the filter element. Breach of integrity of any of these components will result
+         in an open system that can be compromised by the environment. Validation of the integrity of the system is integral to
+         successful closure.
+
+         The value of redundant absolute 0.2 �m filters in series in a sterile solution filtration process as depicted below should
+         be evaluated from a risk mitigation standpoint. Manufacturers will use redundant filters in the event of failure or
+         breach of integrity of a system. Possible reasons for failure in sterile filtration systems include:
+
+         � Temperature or pressure excursions during SIP
+
+         � Fouling of the filter element during the product filtration process
+
+         Miss Mei-Chun Chou Post integrity testing should confirm that failure of the filter element has occurred. Re-filtration of the media or buffer
+
+         or product solution may be possible. The solution may need to be discarded. Where fouling occurred in the upstream
+
+         Taiwan, filter, removal or replacement of upstream filter may be allowable, dependent upon an organization's protocols.
+
+         therefore, redundancy provides little benefit in terms of mitigation of risk.
+
+         calls for replacement or removal of the lead filter. If these are positioned in series as depicted in Figure 4.12, the lead
+         filter no longer represents the sterile barrier and is no more than a very expensive pre-filter. In addition, the SIP of the
+         lead filter actually increases the risk of the overall operation. A more cost effective and lower risk option is to use a
+         non-absolute 0.2 �m filter that is not steamed in place during the setup of the system.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                  Page 45
+Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.12: Redundant Filter Configuration of a Solution Sterile Filtration System]*
+
+An alternative is to position the filter in parallel in a lead lag configuration for true redundancy of the system as
+depicted in Figure 4.13.
+
+*[Figure 4.13: Parallel Filters Configuration of a Solution Sterile Filtration System]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 46                                                                                 ISPE Baseline� Guide:
+                                                             Biopharmaceutical Manufacturing Facilities
+
+         The different options should be evaluated for each specific operation to determine the best configuration for the
+         application.
+
+         Sterile Buffer Hold Operations
+
+         Solutions that are not used within a short time period after formulation should be stored sterile, even if used in
+         low bioburden non sterile operations. Sterile solutions (media and/or buffers) should be stored in sterile single
+         use systems or in traditional stainless steel vessels that have been sterilized prior to use. Exposing solutions that
+         are stored long term to the environment should be considered moderate to high risk, unless these solutions are
+         bacteriostatic. Buffer hold systems should be closed and either single use or sterilizable to allow for long term storage
+         of buffers. These systems should be closed to prevent contamination from the environment.
+
+#### 4.5.3 Low Bioburden Operations/Systems
+
+         The risk of contamination from the environment of a bioprocess should be mitigated for systems qualified as low
+         bioburden. Low bioburden systems that are closed do not need to be sterilized prior to use and it may not be feasible
+         to sterilize some systems. For example, WFI distribution systems are not sterile, but are effectively closed. There
+         is little concern of contamination from the environment of the WFI systems except at the Points Of Use (POUs)
+         where WFI is collected or sampled. The risk of contamination from the environment at the POU can be mitigated by
+         maintaining a constant flow and pressure on the distribution loop.
+
+         Examples of bioprocess unit operations that are usually open and typically are not (or cannot be) sterilized include:
+
+         � Chromatography operations
+
+         � Ultrafiltration TFF Operations
+
+         � Virus nanofiltration operations
+
+         � Buffer preparation
+
+         � Media preparation
+
+         � Centrifugation operations
+
+         Open Briefly Exposed Operations
+
+         Some open operations represent very low risk as these are transitional operations that are subsequently closed, e.g.:
+
+         Miss Mei-Chun Chou � Buffer preparation operations
+
+         � Centrifugation operations        Taiwan,
+
+         of briefly exposed is depicted in Figure 4.14.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                             Page 47
+Biopharmaceutical Manufacturing Facilities
+
+*[Figure 4.14: Briefly Exposed Process]*
+
+Most buffer salts used in bioprocessing are not sterile when processed during buffer preparation. The sources
+of bioburden and contaminants in a buffer preparation include contamination from the environment, including
+contamination from operators and the contaminants present in the buffer salt package.
+
+Risk of contamination from personnel can be mitigated by protecting the buffer salts in protected containers, such as
+gamma irradiated sterile bag containers. An in-line 0.2 �m process filter for the removal bioburden and suspended
+contaminants from the process stream is likely to be more effective than addition of terminal HEPA filtration and over
+gowning of personnel in the buffer preparation suite. Upgrading the buffer preparation suite to a Grade 7 or 8 may
+reduce a small portion of the bioburden load in a briefly exposed buffer solution; however, the overall impact may be
+insignificant when compared to that of adding an in line 0.2 �m filter.
+
+Exposure time also should be considered in a buffer preparation risk mitigation strategy. If buffers are not processed
+and/or stored at temperatures below 10�C (50�F) or above 50�C (122�F), or processed under other bacteriostatic
+conditions, exposure time can be significant. Microbial contamination can double as quickly as every 20 minutes
+under ideal conditions; therefore, buffers that are not consumed soon after formulation should be 0.2 �m filtered.
+It may be necessary to 0.2 �m filter any buffer not fully consumed within 24 hours and store the buffer in sterile
+containers.
+
+Centrifugation for cell culture harvest clarification represents another example of an open operation that can be
+closed or briefly exposed operation. It is possible to configure a centrifuge, whether disk stack or tubular bowl for full
+CIP and SIP; however, centrifuges are not regularly steamed in place. A preferred approach is to combine the best of
+available technologies to make centrifugation a briefly exposed operation.
+
+is to remove 95% to 98% of the turbidity (i.e., cells, cell debris, and other suspended solids) in the harvested
+
+Miss Mei-Chun Chou culture. The remaining turbidity is removed by depth filtration followed by 0.2 �m filtration. If properly executed, the
+
+filtration steps render the process cell-free (thereby closed) thereby effectively isolating the process stream from
+
+Taiwan, the environment and from any potential bioburden that may have been present in the transition equipment. In this
+
+scenario, the product or process stream is very briefly exposed to the transition equipment. From a process risk
+
+contamination from the environment to the process; therefore, this equipment can be housed in a non-classified
+environment.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 48                                                                                        ISPE Baseline� Guide:
+                                                                    Biopharmaceutical Manufacturing Facilities
+
+         Weigh Dispense
+
+         When materials arrive from suppliers, the material outer packaging and transportation materials (e.g., pallets,
+         cardboard boxes) should be removed prior to introduction of the material into the manufacturing area to mitigate
+         risk of contamination of the process area environment. Materials received are usually not sterile, having been
+         manufactured in controlled or uncontrolled and unclassified environments. Powders and other non-liquid ingredients
+         should be kept out of the manufacturing areas. These materials should be introduced into the manufacturing process
+         via closed transfer systems. Where closed transfers are not possible, minimizing open operations is preferred.
+
+         Weigh dispensing operations should be performed in clean and controlled environments. The use of a well-designed
+         weigh booth will both protect the ingredient during open manipulations and can protect the environment from dust or
+         other particulates that can spread into the facility. The weigh booth should provide a Unidirectional Airflow (UDAF)
+         HEPA filtered air supply over the weighing area and can collect stray particulates in a dust collection system. These
+         particulates could include viable organisms and could serve as carriers for viral contaminants. The risk of these
+         manipulations increases with increased volume and number of manipulations.
+
+         The kitting of pre-weighed materials into closed transfer systems can further mitigate the risk of particulate
+         contamination by removing the open manipulations from the primary process areas and by providing a vehicle for the
+         closed transfer of materials into a process system.
+
+         Centralizing the weigh dispense area is typically more cost effective and can minimize the number of areas where
+         dust formation can occur. Locating this function in a cGMP area near the warehouse area may provide better control
+         of the raw material inventory as partially open containers can now be stored and controlled by the warehouse
+         specialists. The centralized weigh dispense area can serve as the warehouse � manufacturing transfer point
+         enhancing control of incoming materials.
+
+         Additional Considerations for Solids Handling Operations
+
+         Handling large volumes in a central location can be beneficial, as risks spills and dust generation are higher. Kitting of
+         material in closed containers for delivery to the manufacturing area is usually preferred.
+
+         A central weigh dispense next to a warehouse can provide a better method for controlling partial lots. When a raw
+         material container is opened, it typically requires special handling and storage to prevent adulteration of product.
+
+         If raw material additions are batch dependent, there is likely a minimum threshold volume that will be required for
+         each batch. A secondary staging area may be used to address the smaller remaining volumes that may be required
+         in the specific batch. Options include a two stage weigh dispense function or standardization of batch sizes (possibly
+         with discard of product) to streamline all additions.
+
+         the quality requirements of materials prepared. Buffer salts are typically manufactured in CNC or uncontrolled
+
+         Miss Mei-Chun Chou unclassified environments. Quality of the buffer can be dependent on the:
+
+         Taiwan, � Quality of the water (e.g., WFI  10 cfu/100 mL)
+
+         � Quality of the salt  ID number: 1002915
+
+         � Time of incubation, prior to sterile filtration or prior to use
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 49
+Biopharmaceutical Manufacturing Facilities
+
+5 Operations
+
+### 5.1 Introduction
+
+            This chapter addresses the operational aspects of a biopharmaceutical facility and the impact of facility and
+            equipment design decisions on manufacturing operations. Conversely, this chapter also describes how operability
+            and maintainability considerations should influence the design of the facility.
+
+            Newer or updated facilities may enable more closed processing and less physical segregation. In conjunction with
+            higher titers and smaller markets, allowing for increased use of single use systems with less cleaning and SIP. This
+            can result in lower production labor requirements.
+
+            For information on segregation and flows, see Chapters 5 and 6 of this Guide.
+
+### 5.2 Multiple Product Operations
+
+            Multiple product operations require product separation either on a time (campaigned operations) or space (concurrent
+            operations) basis through engineering design and procedures. Facilities may be required to run several campaigned
+            or concurrent products.
+
+            � Campaigned Product Operation
+
+                  A campaigned product operation separation is based on time (producing one product at a time in a single
+                  space). For campaigned products, prevention of cross-contamination through cleaning validation, changeover
+                  procedures, and clearance between product runs should be demonstrated.
+
+                  Clearance should be demonstrated by removal of product, components, and waste residues from process
+                  equipment. Clearance procedures should be appropriately tested to ensure compliance with regulatory
+                  expectations. Cleaning endpoints should be established using scientific reasoning. Dedicated equipment may be
+                  used.
+
+            � Concurrent Product Operations
+
+                  Concurrent product operations can be performed using spatial segregation to prevent product cross
+                  contamination. A single product (dedicated facility) is an example of spatial segregation. These operations are
+
+                  be used for product specific steps when closed systems are demonstrated. Concurrent production focuses on
+                  physical segregation (i.e., using closed systems) and procedural control to ensure the quality and safety of the
+                  products produced.
+
+                          Miss Mei-Chun Chou
+
+                  Campaigned production requires the ability to perform quick changeovers. Concurrent production of different
+
+        Taiwan, products requires the ability to demonstrate an acceptable risk of crossover of one product to another.
+
+            operation. Closed systems also reduce the risk of contamination via exposure of product to the external environment.
+
+            spaces.
+
+            Where open operations are necessary, such as in seed preparation, BSCs within seed preparation suites can be
+            used. In general, these operations are limited to a single product in a single room at one time. A risk assessment may
+            be performed to determine when multi-product operations within separate BSCs can occur in the same room at the
+            same time.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 50                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         Multiple product operations require a facility to be flexible to allow for easy and quick changeover to new product
+         processes or changes in product demand. Strategic approaches or levels of decisions to deliver flexibility include:
+
+         1. Expandability: allows for future growth to incorporate changes, e.g., saving space to allow for building expansion.
+               In the short term, this may be the least expensive option, while allowing for plans to deliver changes in demand
+               or process changes.
+
+         2. Adaptability: provides some pre-investment for future needs, e.g., shell space, local building services in the
+               general area possibly with a valved service tie-in point. This allows for future modifications while reducing the
+               effect on current operations.
+
+         3. Flexibility: can provide utility connections to the planned location of new or modified equipment. This is the most
+               costly and requires clarification of future needs.
+
+         Organizations may use platform processes for similar types of products to minimize changes required for new product
+         changeover. Downtime consumed during changeovers reduces the operational time available to generate product.
+         When running many short campaigns the changeover downtime can significantly reduce total throughput of a facility.
+
+         Automation changes required to bring a new product into a facility can be time consuming. Changeover to new
+         product processes can be aided by the use of batch programming standards and recipe management strategies.
+         Hard coded changes should be documented and re-qualified. Simple recipe changes can be verified.
+
+         Product changeover requires documented confirmation that residual product inside process equipment is removed
+         and does not contaminate the subsequent product beyond acceptable limits. Organizations should develop cleaning
+         strategies to ensure proper design and practices to ensure prevention of carryover as part of product changeover.
+         Closed systems should be used to help minimize the exposure of the facility to a product solution. This may reduce
+         the need for separate supply and return corridors.
+
+         Cleaning validation strategies should include a rationale for the change-out of elastomers (gaskets, diaphragms,
+         hoses) as part of product changeover. Complete changeover of these components can be an acceptable approach,
+         but may be a significant effort and may be unnecessary if cleaning validation demonstrates acceptable removal of
+         contaminants between batches. For further information, see the ISPE Baseline� Guides on Risk-MaPP [11] and
+         Commissioning and Qualification [12].
+
+         Single use systems can eliminate the issue of lot to lot carryover. There is still a potential for crossover contamination;
+         however, the components should be handled properly during system breakdown to avoid spillage post operation. This
+         should reduce the risk of exposure of new components to contamination during set up.
+
+#### 5.2.1 This Document is licensed to The use of single use systems and a facility designed for "plug and play" insertion of portable equipment can
+
+         increase the flexibility of a facility for new processes. This approach can be useful for development facilities or clinical
+         production operations. The use of single-use technologies is limited by the scale of operation and some process
+
+         Miss Mei-Chun Chou requirements, such as the need for intense agitation or solvents.
+         Taiwan, Where a mixture of operations is planned for a single space, early discussion with regulatory agencies is
+
+         recommended in order to understand the requirements for demonstrating closure.
+
+         Clinical Trial Manufacturing
+
+         knowledge of a product or process. A step-wise incremental approach to GMP compliance, based on the stage of
+         product development, may be used.
+
+         The level of process validation at each processing stage should be considered, particularly for the steps that have the
+         greatest impact on product quality and consistency.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 51
+Biopharmaceutical Manufacturing Facilities
+
+            Clinical trial manufacturing can be more flexible and manual with more extensive process instrumentation and data
+            collection to allow for the increasing knowledge of the product process during product development. Extensive in-
+            process testing should be used to collect additional information and to help to ensure acceptable product quality.
+
+            During product development, change management systems should be used to manage changes that affect the
+            facility. The use of change management systems should assure that the impact of any changes on process and
+            product quality is adequately addressed. For further information, see the ISPE PQLI� Guide: Part 1 � Product
+            Realization using Quality by Design: Concepts and Principles [40].
+
+### 5.3 Single Use Systems
+
+            New products produced at higher titers can be run at smaller scale to satisfy market demands. This has allowed for
+            increased use of single use systems. This impacts on facility design by reducing or eliminating the need for CIP and
+            SIP operations. It also can substantially reduce the demand for water and the volume of liquid waste.
+
+            Considerations for single use systems include:
+
+            � Cost (purchase, transport, storage, setup, disposal)
+
+            � Dependence on single sourced approved suppliers
+
+            � Leachables and extractables
+
+            Facility design factors for single use systems include:
+
+            � Compliant inventory management
+
+            � Receipt, inspection, and release storage space
+
+            � Availability of pre-use release testing
+
+            A bar coding system can be used to manage inventory.
+
+            When single use system components are contaminated with product solutions, they can be considered bio-hazardous
+            waste. Proper post-use disposal should be considered and these systems may be incinerated to:
+
+            � Address the biohazard concerns
+
+    � This Minimize risk of liability Document is licensed to
+
+     Miss Mei-Chun Chou � Benefit from the fuel value of the plastic
+Taiwan, 5.4 Impact of Closed and Open Systems on Operations
+
+            According to Good Engineering Practice (GEP), process systems should be kept closed, where possible, to avoid
+            exposing products to the room environment. For some biopharmaceutical products (e.g., viral vaccines or live
+
+            Where it is not possible to demonstrate that a process system is closed, environmental controls such as room
+            classifications, local ventilation, and higher gowning practices should be used.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 52                                                                 ISPE Baseline� Guide:
+                                             Biopharmaceutical Manufacturing Facilities
+
+         It is usually easier to design a well-understood, robust process system into a closed system:
+
+         � Early stage development or clinical trial supply processes are usually less developed, less characterized and are
+               more often open.
+
+         � Early upstream processes (pre-bioreactor) are usually open and run under BSCs. Using single use systems and
+               plastic weldable connections may allow these processes to be closed.
+
+         � Upstream processes run in bioreactors usually require containment to avoid contamination and are usually
+               closed.
+
+         � Downstream processes have made progress toward closed designs (e.g., by using on-line analytical devices
+               which allow for real time mainstream collection).
+
+         When closed systems are used, the arrangement and access to processing systems and areas can be simplified.
+         Closed upstream systems may be located in the same room as closed downstream systems. Airlocks may not
+         be required and can reduce the footprint needed to accommodate operations (see Chapter 4 and Chapter 6 of
+         this Guide.) Using single use systems can reduce the clean space footprint that requires stringent housekeeping
+         procedures:
+
+         � Closed processing systems allow use of less stringent area environments (CNC) which can reduce capital costs
+               and operating costs associated with cleaning, environmental monitoring, and gowning. There is also a reduction
+               in time required to gown in and out.
+
+         � Where upstream and downstream systems are located in the same room, operators can manage both systems.
+               Staffing levels may be reduced significantly (as high as 50% with proper cross training) when closed systems
+               are combined with suitable automation; however, expanding the duties and roles of operators also may require
+               additional skills and training.
+
+         � Closed processing systems can reduce downtime required for product changeover, as room clearance is not
+               required before the next product is introduced.
+
+#### 5.4.1 Closure
+
+         Open processing requires physical segregation and appropriate control of the processing environment. For further
+         information on classified spaces and physical segregation, see Chapter 6 of this Guide.
+
+         For closed systems, closure is provided by process equipment. Each closed system acts as the primary containment
+
+         systems need to fail for the contamination to occur. Definition of what constitutes a breech, consequences of the
+
+         breech, and the required actions to re-establish closure should be considered. Procedures to address breech of
+
+         closure should be established. Miss Mei-Chun Chou
+
+#### 5.4.2 Cleaning and Housekeeping  Taiwan,
+
+         Specific housekeeping practices should match the risk to the product and the classification of the space. Classified
+         spaces require frequent cleaning with potent cleaning agents to ensure compliance to classified space definitions. An
+
+         CNC can use reduced cleaning regimens. For further information, see the ISPE Baseline� Guide on Risk-MaPP [11].
+
+               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                       Page 53
+Biopharmaceutical Manufacturing Facilities
+
+Suitable cleaning and housekeeping amenities should be considered, e.g.:
+
+� Refuse disposal points
+
+� Handling and storage space for cleaning supplies and equipment
+
+� Access to appropriate water for facility cleaning
+
+In multi-product facilities, cleaning practices should help to prevent cross-contamination. Facility materials should be
+compatible with common cleaning agents.
+
+Access to production areas should be suitably controlled.
+
+Biopharmaceutical facilities generally do not need fumigation when processes can be demonstrated as contained.
+Decisions on fumigation should be based on an appropriate risk assessment.
+
+Pest control programs are normally required by regulations and are considered a good practice which assists in the
+maintenance of facilities and complex equipment systems. Raw materials used in biopharmaceutical processing,
+such as media components or sugars, can be subject to contamination by pests. Tight-sealing, self-closing doors,
+sticky mats, and UV lights at key facility entry points should be considered. SOPs should be established for the use of
+suitable rodenticides, insecticides, and fungicides.
+
+#### 5.4.3 Gowning
+
+Gowning practices should match the room classification and HVAC design capabilities. HVAC design criteria should
+match product and process requirements, and could be affected by the number of operators required in selected
+spaces. For further information, see Chapter 7 of this Guide.
+
+For example, gowning practices generally have a greater impact on CNC spaces with monitoring or microbial limits
+than CNC spaces with no monitoring. The higher the room classification, the greater the impact gowning has on
+meeting environmental acceptance criteria.
+
+In classified spaces, jumpsuits are typically used with hair nets, shoe covers or facility dedicated shoes, gloves, and
+face masks at the highest area classifications. Where engineering controls cannot be employed to reduce personal
+risk adequately, organizations should ensure that appropriate personal protective equipment is used, e.g.:
+
+� Safety glasses
+
+� Safety This shoes Document is licensed to
+
+� Goggles and/or face shields
+
+� Protective gloves                         Miss Mei-Chun Chou
+
+� Respirators                                      Taiwan,
+Closed systems allow for relaxed gowning practices, e.g., use of laboratory coats or scrubs as a worker uniform
+
+to enhance operator comfort. Gloves, shoe covers, or dedicated facility shoes and hair nets may be worn. Gloves
+
+Organizations may require disrobing before gowning. This may contribute to improved comfort while gowned
+(less layers of clothing) and adds another level of disconnection between open production environments and
+the environment outside. The associated facility design may need to include more locker space and privacy
+requirements. For example:
+
+               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 54                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         � In China and Japan, there is an additional room for removing shoes which is separate from gowning areas.
+         � In Japan and some parts of China, an air shower is required to meet regional expectations.
+         Costs associated with high levels of gowning include:
+         � Investment in airlocks, changing spaces, and the gowning materials
+         � Time spent performing the gown in and out procedures
+         � Higher cooling demand for operator comfort
+         � Performance issues working while gowned
+         Working in traditional production environments (heavily gowned in a white box) can result in fatigue and stress.
+         Facilities should be designed to allow operators to spend the minimum time in processing areas, e.g.:
+         � Processing terminals (HMIs) can be located in adjacent production administrative spaces, allowing operators to
+
+               enter the processing areas only when needed for set up or sampling.
+         � Full glass views can be provided into processing areas from adjacent production administrative spaces.
+         � The proper use of controls can assist in minimizing the amount of time operators need to supervise production
+
+               equipment.
+         � Daylight and/or an outside view into the processing areas or adjacent non-classified support space can be
+
+               provided. (This also aligns with sustainability trends.)
+
+*[Figure 5.1: Non-Classified Production Support Space Adjacent to Production Operations]*
+
+         Used with permission from Novo Nordisk (www.novonordisk.com) and NNE Pharmaplan (www.nnepharmaplan.com).
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 55
+Biopharmaceutical Manufacturing Facilities
+
+*[Figure 5.2: Maximum Use of Viewing Windows to Reduce Need to Enter Production Areas]*
+
+Used with permission from Novo Nordisk (www.novonordisk.com) and NNE Pharmaplan (www.nnepharmaplan.com).
+
+### 5.5 Automation, Procedures, and Training
+
+            Traditional facilities which needed to fully integrate and coordinate CIP and SIP operations used supervisory controls.
+            The plug and play nature of recent facility designs focuses control on unit operations. These systems allow for
+            process engineers and automation engineers to work with users to develop and implement appropriate process
+            automation controls.
+
+#### 5.5.1 Impact of Automation
+
+            � Automation drives consistency of processing actions � things are done at the same pace and in the same order.
+
+                          Miss Mei-Chun Chou
+     Taiwan, � Automation allows for data input verification checks to ensure the entry is within expected ranges. Actions can be
+
+                  prevented when interlocks are not satisfied.
+
+                  evaluate performance with a goal to achieve incremental improvements.
+
+     Cost saving Downloaded on: opportunities are provided through: 12/18/19 1:11 AM
+
+            � Faster operations
+
+            � More predictable actions
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 56                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         � Less failed lots due to non-conformance to required procedures
+
+         � Lower production staffing levels
+
+         Increased data collection and analysis provides an opportunity for demonstrating product quality through process
+         controls. Statistical tools can help to monitor process performance and can aid in process decisions. Alert and action
+         levels should be justified and established for key process indicators and critical process parameters.
+
+         Automation can be used to support the claim of closure and to maintain system closure. System specific interlocks
+         may be used to ensure:
+
+         � The isolation of closed systems
+
+         � That a closed environment is effective until (and unless) it is intended to breach closure
+
+         Integration controls can be used to ensure that two closed systems are not inappropriately connected to each other
+         or to the same service. For example, two systems connected simultaneously to a CIP system; therefore, facilitating a
+         cross connection between the systems.
+
+         Automation usually increases the need for detailed knowledge of process operations at an earlier stage in the design
+         of a facility. Increased automation can increase the level of technical support and the operational staff skill levels
+         needed to run a facility. Increased use of batch programming standards and recipe management tools can expand
+         the flexibility of automation controls, and decrease the costs and time to execute changes to automation software.
+
+         Cleanability
+
+         Cleanability should be considered when locating computer screens and stations in classified spaces. Units should
+         be sealed to allow for appropriate space cleaning practices. Sealed units may prevent the proper removal of heat
+         generated by the enclosed electronics.
+
+         Wireless Connectivity
+
+         Wireless connectivity may help in the collection of processing data and in facilitating the addition of plug and
+         play portable equipment into facilities. Tablet type hand-held devices may improve efficiencies and timeliness of
+         operations, such as data entry or confirmation of actions, e.g., material additions or status of equipment using
+         barcode labels.
+
+         Manufacturing Execution Systems
+
+         Control and Data Acquisition (SCADA)/Process Analytical Technology (PAT) can be used to control and monitor the
+
+         Miss Mei-Chun Chou process at the skid level. The documentation of the process sequence via time date stamps can reduce the need for
+
+         quality checks, allowing for faster release of completed batch records and lots of material by focusing on review by
+
+         Taiwan, exception. MES can serve as the verification function, allowing quicker operations and reducing staffing requirements.
+
+         defined financial benefits although Electronic Batch Records (EBRs), which can add more control, can be difficult
+         to quantify financially. Scanning a material label before completing an addition operation can ensure that material is
+
+         to perform a task is current. Scanning an equipment label can confirm the equipment is within its cleaning window
+         and any required maintenance has been performed. These functions can reduce the probability of a rejected lot.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 57
+Biopharmaceutical Manufacturing Facilities
+
+            Process Analytical Technology
+
+            Process analytical technology, used to provide live operational data, is becoming more available and useful, e.g.,
+            improved understanding of bioreactor operations and tools to collect monitoring data. This information can be used to
+            speed decisions and to increase the consistency of process streams. PAT provides continuous monitoring and control
+            of processes which demonstrates the quality of the product produced. When PAT is used during product development
+            stages, it can aid in earlier and greater process knowledge, improved regulatory submissions, and simplify technology
+            transfer to clinical and commercial operations.
+
+            For further information, see the ISPE GAMP� Good Practice Guide: A Risk-Based Approach to GxP Process Control
+            Systems [44], the ISPE GAMP� Good Practice Guide: Manufacturing Execution Systems � A Strategic and Program
+            Management Approach [45] and the ISPE Baseline� Guide on Commissioning and Qualification [12].
+
+#### 5.5.2 Procedures
+
+            Standardized procedures across multiple products and facilities should help to drive consistency and cross training of
+            operators. Where feasible, the facility design should use error-proofing features, using, e.g.:
+
+            � Color coding
+
+            � Physically matched connections
+
+            � RFID
+
+            � MES and an automation system � to replace human verifications such as proper setup of transfer panel
+                  connections
+
+            When claiming the benefits of closed systems, the definition and practices required to achieve closure should be
+            documented, in addition to actions required to return an area to closed when a breech is encountered.
+
+#### 5.5.3 Training
+
+            Operators should be appropriately skilled with a broad knowledge base. Quality and technical support personnel can
+            observe operations and be present in processing areas during operations. This allows for immediate consultation of
+            these personnel when questions or deviations occur. Multi-tiered training can help to ensure safe operations.
+
+            Training methods used should include:
+
+            � Classroom
+
+     Miss Mei-Chun Chou � Simulations of facility operations
+     Taiwan, � On-the-job mentored/supervised training
+
+            � Skills demonstration
+
+            product quality or safety. Operators should be trained to look for trends in data and other indicators that suggest a
+            problem is developing before an upset occurs. Operators should be comfortable reporting observations or errors
+            when encountered.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 58                                                                        ISPE Baseline� Guide:
+                                                    Biopharmaceutical Manufacturing Facilities
+
+### 5.6 Capacity, Scheduling, and Maintenance
+
+#### 5.6.1 Capacity and Scheduling
+
+         In the past, production capacity was determined by the cycle time of the production bioreactors. Where existing
+         facilities are not designed for the downstream challenge associated with processes with higher titers, bottlenecks can
+         occur in downstream operations. The throughput of a facility can be dependent on the mix of products produced in
+         downstream processes, as these are usually specific to each product.
+
+         Where existing facilities are designed for the higher titer processes, account can be taken of the associated higher
+         downstream product quantities generated. This can be through the use of smaller bioreactors with a higher utilization
+         rate. These require smaller chromatography columns and the associated smaller buffer volumes. This then allows for
+         more flexible production planning, and managing of bulk drug substance inventories.
+
+         For multi-product facilities, the downtime for changeover can consume operational time. This can affect the annual
+         output of a facility and emphasizes the need for an efficient, quick product changeover.
+
+         Facility capacity impacts also affect scheduling of production operations. Operational models should help to optimize
+         a facility for specified needs and changes to the product mix or other constraints. Facility bottlenecks and capacity
+         limitations should be identified and addressed. Support functions may be some of the first bottlenecks encountered
+         and should be included in operational models. Support functions may include:
+
+         � Buffer and media preparation and supply
+
+         � CIP
+
+         � SIP
+
+         � Critical utilities, e.g., WFI
+
+         Modeling tools can help to determine the optimal routine pace of production. This can help in leveling of resources. A
+         predictable routine can provide consistency to operations (e.g., planning for capture chromatography to start always
+         on the same day and same shift) and allow an efficient routine to be established. Incremental improvements can be
+         obtained, as well as quality stability which can help to minimize risk.
+
+5.6.2    Simulation and data analysis can accelerate technology transfer from development to full scale manufacturing.
+         Modeling also can be used to guide development in making processing choices. For example, a reduction in a buffer
+         volume may have a slightly negative impact on yield, while allowing for an increase in the number of lots produced
+
+         Operability and Maintainability
+
+         Miss Mei-Chun Chou Manufacturing, quality, maintenance, and other operations functions should be involved early in the facility and
+         Taiwan, process design, and in the definition of the user requirements.
+
+         provided for storage, and clean-out-of-place and steaming where required. Equipment status and usage history
+         should be collected and readily available; bar coded labeling technology and electronic usage and maintenance
+         records may be beneficial.
+
+                For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 59
+Biopharmaceutical Manufacturing Facilities
+
+Using standardized and modular facility designs can help to reduce errors and improve cross training. This can be
+particularly useful where similar processes are run at several facilities. Standardization should be balanced against
+opportunities for improvements in technology or equipment design. Mirror imaged designs should be avoided, as the
+location of devices in this approach can lead to confusion and operator errors.
+
+Operational upsets (excursions) should be anticipated and recovery procedures established. Recovery procedures
+should include:
+
+� A structured investigation to determine possible impact of the upset on product quality
+
+� Assignment of root cause and associated corrective actions
+
+� Documentation of the investigation and decisions
+
+� Any necessary follow up to ensure completion of agreed actions and effectiveness checks
+
+Maintenance excellence programs have placed a focus on performance based maintenance activities over previous
+time-based practices, e.g.:
+
+� The use of vibration monitoring can predict equipment failures in advance, allowing for planned shutdowns and
+      maintenance when parts are approaching failure.
+
+� Process elastomer (hoses, diaphragms, gaskets) replacement is an area for focus. Use off-line studies to
+      determine life expectancy and sufficient history to replace these components when appropriate, avoiding the
+      unnecessary costs and downtime of time-based replacement.
+
+� Production operator autonomous maintenance looks to place specific maintenance functions with the operations
+      team.
+
+For further information, see Clarke, Mulryan, and Liggan (2010) [46].
+
+Closed process design can allow maintenance to be performed side by side with production operations. Equipment
+should be decontaminated and cleaned prior to opening. The risk of exposure of the room environment to product
+fluids by opening of production equipment should be addressed; any such exposure should be contained and cleaned
+immediately. Procedures to address breach of closure and practices to re-establish closure should be established.
+
+Options to allow for phased operation shutdowns to allow for periodic maintenance should be considered during
+design. This may include appropriate segregation of operations or duplication of equipment to minimize the need for a
+
+example, calibration of instruments can be performed when a system is available rather than waiting for a complete
+area or facility shutdown.
+
+Miss Mei-Chun Chou In ballroom settings with non-classified spaces, the restrictions for access by maintenance technicians can be
+Taiwan, reduced, minimizing the time required to enter the processing area. There also can be less need to wall-off parts of
+
+equipment, making more of the system available for troubleshooting or maintenance within the same space.
+
+Where shutdowns may be necessary, partial shutdowns rolling through the facility can be scheduled, as the last batch
+of product moves through the process. Months of lost production required to bring a facility back up from a cold start
+
+separately to allow for an active seed culture to be maintained at all times.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 60                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+            Redundant generation systems for critical clean utilities, such as WFI and pure steam, may be provided; however,
+            maintenance to facility distribution systems may require periodic shutdown. Redundant in-line critical instrumentation
+            or the ability to remove them for calibration while the system is live is recommended. Scientific rationale and
+            performance data used over strict time-based maintenance may help to scale efforts appropriately, e.g., passivation
+            treatment frequencies which can require a complete interruption of facility operations.
+
+            For further information, see the ISPE Good Practice Guide on Maintenance [47] and the ISPE Baseline� Guide on
+            Water and Steam Systems (Second Edition) [48].
+
+            Operational improvement techniques such as lean and six sigma can help to reduce waste and variability within
+            processes. For further information, see Benson and Kulkarni (2011) [49].
+
+### 5.7 Supply Chain
+
+#### 5.7.1 Supply Chain
+
+            Drug substance bulk production and the drug product fill finish operations may be situated at separate facilities and
+            different locations.
+
+            The limited stability of biopharmaceutical products can complicate the product supply chain and drug product
+            distribution. Bulk drug substance may be frozen to extend its shelf life. Freeze thaw technologies can be established
+            for disposable bags or freeze-thaw vessels for higher volumes. Single use systems may be preferred, as vessel
+            management (shipping, cleaning, and steaming) for freeze-thaw vessels can be more complex. Shipments should be
+            closely monitored and controlled to ensure required temperatures are not exceeded. For further information, see the
+            ISPE Good Practice Guide: Cold Chain Management [50].
+
+            Single site production can simplify the supply chain; there is only one site to manage and only one facility to operate
+            and maintain. This may provide decreased overhead costs.
+
+            However, business continuity risks are increased with a single site production facility, e.g.:
+
+            � Natural and man-made disasters can disrupt ability to supply the market.
+
+            � Contamination issues such as viral contaminants can result in significant downtime.
+
+            � Regulatory issues can delay release of product to the market.
+
+            Organizations should determine a strategy to ensure continuity of product supply. Modular design can facilitate quick
+
+     Miss Mei-Chun Chou duplication, replacement, or relocation of manufacturing required to address facility performance issues or changes in
+
+            demand.
+
+     Taiwan, Sharing capacity across different organizations can allow for some sharing of capital investment risk. Facilities may
+
+            discontinued or exceeds planned demand, expensive idle capacity can occur or a market shortage may develop.
+            Flexible design can allow facilities to be repurposed for another product, e.g., under a contracted arrangement to
+
+     produce product Downloaded from another organization. on: 12/18/19 1:11 AM
+
+            The distribution of final drug product may be complicated for large volume products with diverse destinations.
+            Location of distribution near shipping hubs or patient centers should be considered. Regional transportation can be
+            used where reliable expertise around cold chain shipping has developed.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 61
+Biopharmaceutical Manufacturing Facilities
+
+6 cGMP Layout Approaches
+
+### 6.1 Introduction
+
+            This chapter focuses on the facility aspects of product protection and specific requirements of CPPs and product
+            CQAs. Facility layouts can be diverse while still protecting the product; this chapter discusses reasons behind layout
+            options to help to facilitate the preferred project solution.
+
+            The result of the design phase should be a layout that focuses on protecting the product while also addressing key
+            project drivers, such as:
+
+            � CPPs and product CQAs
+
+            � Production processes, scale, and technologies
+
+            � Product protection and segregation approaches
+
+            � Facility and process flows
+
+            � Equipment and facility cleaning and finishes
+
+            � cGMP requirements for Clinical Phase 2 and Phase 3 through commercial production
+
+            � Vaccine facilities and biosafety requirements
+
+            � Product and process changes over time, including:
+
+                  - Flexibility
+
+                  - Adaptability
+
+                  - Expandability
+
+            � Regulatory requirements
+
+            � Operational requirements
+
+            � Business and economic factors
+
+                          Miss Mei-Chun Chou
+Taiwan, 6.2 Production Capacity, Process, Scale and Technologies
+
+            Capacities are converted into a production definition, beginning with:
+
+     � Process Downloaded Block Flow Diagrams (BFDs) on: 12/18/19 1:11 AM
+
+            � Process Flow Diagrams (PFDs)
+
+            � A process description
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 62                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         � An equipment list
+
+         � A preliminary material balance
+
+         Capacities also define the process scale, the process technology, and the degree of process exposure or closure.
+         This production definition forms the basis for a facility design. Process adjacency diagrams are created at this stage
+         to begin to graphically understand the interrelation of the process steps.
+
+         Production capacities can be produced at different scales with scale defined as a bioreactor or fermenter size.
+         An example of the same production capacity at different scales is a single 12,000 liter bioreactor or six 2,000 liter
+         bioreactors. Each approach has pros and cons from a scale up, regulatory and a business perspective and each
+         production scale has a very different impact on a facility layout. Recently, the industry has been trending toward
+         increasingly larger production scales for Monoclonal Antibody (MAb) production. Processing improvements have
+         increased the production yield from bioreactors, allowing for the same capacity to be produced from smaller
+         bioreactors.
+
+         Scales for Monoclonal Antibody (MAb) production may be described as:
+
+         � Large scale production typically ranges from 10,000 liters to 30,000 liters. Large scale processes can be stacked
+               in a vertical configuration to assist with gravity fed processing, drains, CIP return lines, and utility distribution.
+
+         � Medium scale production typically ranges from 4,000 liters to 8,000 liters. Medium scale processes are typically
+               either stacked in a vertical configuration or configured in a horizontal arrangement.
+
+         � Small scale production is typically up to 2,000 liters. Small scale processes are typically configured in a
+               horizontal arrangement.
+
+*[Figure 6.1 provides a scale comparison, showing impact of production scale on the facility.]*
+
+*[Figure 6.1: Bioreactor Comparison Diagram]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+         three main processing levels:
+         � The highest floor (L3 in Figure 6.2) can contain weigh/dispense and media and buffer preparation.
+         � The floor below (L2) can house the seed reactors and buffer hold.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 63
+Biopharmaceutical Manufacturing Facilities
+
+� The lowest production level (L1) can house the production bioreactors, harvest, purification, and bulk fill.
+
+These three levels will generally sit on a utility level below L1 and have a HVAC penthouse above level L3, resulting
+in a five level building. Large scale processing typically consists of fixed stainless steel vessels with stainless steel
+distribution piping that is cleaned with CIP/SIP systems.
+
+*[Figure 6.2: Large Scale Vertical Stack-up Adjacency Diagram]*
+
+Other large scale stack-up diagrams are shown in Chapter 4, Figures 4.2 and 4.3.
+
+Small scale bioreactors have smaller volume demands for liquids. Fixed stainless steel piping may be replaced by
+flexible hoses and tubing. The length of hoses and tubing between process equipment should be minimized. This
+can significantly change a layout, e.g., for buffer hold. A tube can be dropped from buffer hold to purification on a
+level below. However, where the hold volume is small, it may be preferable to place the hold vessel next to its use
+point either in the purification room or just outside the purification room. The tubing can be passed through the wall,
+allowing a considerably shorter tube to be used.
+
+At smaller scale, stainless steel bioreactors, mix, and hold vessels can be replaced with disposable technology,
+typically referred to as biocontainers or "bags." Figure 6.3 shows an example facility designed around disposable
+
+media and buffers through the wall and into the processing areas. The production scale comprises four 2,000 liter
+bioreactors that are configured in a horizontal and linear configuration:
+
+Miss Mei-Chun Chou � The equipment in the left set of rooms is production Line 1.
+Taiwan, � The equipment on the right side of the rendering forms production Line 2.
+
+In this example, the media and buffer preparation areas are located on the same production level and at the end
+of the media and buffer hold area (or hall). The entire process is on a single production level. This facility may be
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 64                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+*[Figure 6.3: Example Small Scale Horizontal Process Configuration Rendering]*
+
+         The use of disposables, in-line dilution process technologies, and other production scale and process technology
+         improvements can have a significant impact on a facility layout.
+         Disposables have scale or bag size limitations (at time of publication), but work well though for small scale
+         processing. Disposables also can provide a significant footprint reduction over stainless steel. Figure 6.4 shows an
+         area comparison between:
+         � Buffer hold vessels with a steel platform
+         � Stainless steel vessels accessed by a moveable stair
+         � Disposables bags in bins accessed by a moveable stair
+         In each example, there is a reduction in the building footprint.
+
+*[Figure 6.4: Stainless Steel and Disposables Room Area Comparison]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                       Page 65
+Biopharmaceutical Manufacturing Facilities
+
+Note: the disposable system shown in Figure 6.4 is a 12 pack bin holder capable of holding 2,500 liter disposable
+bags for a total capacity of 30,000 liters.
+
+In-line dilution for buffers is another technology which can reduce the building footprint. In-line dilution uses buffer
+concentrates that are diluted in-line (en route) to their point of use. This technology can significantly reduce the
+amount of storage required for buffers.
+
+Combining in-line dilution and disposable technology can further reduce a building's footprint.
+
+*[Figure 6.5: Traditional Buffer Hold and In-Line Dilution Room Area Comparison]*
+
+Facility designs should be adapted to incorporate processes and technologies used in a specified process.
+
+The number of processing rooms and the application of segregation should be determined before the facility
+adjacency diagrams are finalized.
+
+### 6.3 Product Protection and Segregation Applications
+
+Sources of product contamination include:
+
+� This Environmental Document is licensed to
+
+� Crossover                                 Miss Mei-Chun Chou
+� Carryover                                         Taiwan,
+� Raw material
+
+For further information, see Chapter 4 of this Guide. Preventing product contamination may be achieved by
+
+protection, such as a classified cleanroom environment. Preventing crossover contamination between two exposed
+products is typically achieved by physical barriers. Cleaning methods should be sufficient to prevent carryover
+contamination. (For further information, see the ISPE Guide on Cleaning Process Development and Validation
+(working title/under development at time of publication) [51].) Preventing contaminated raw materials from entering
+the process can be assisted by proper material testing.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 66                                                                                             ISPE Baseline� Guide:
+                                                                         Biopharmaceutical Manufacturing Facilities
+
+#### 6.3.1 Segregation Concepts
+
+         Preventing product contamination by environmental and crossover sources of product contamination can have
+         a significant impact on facility design. These sources of product contamination can be addressed using primary
+         and secondary segregation. Primary segregation focuses on the facility design aspects required to protect an
+         exposed product. Secondary segregation focuses on non-critical facility aspects which result from the use of closed
+         processing.
+
+         Both primary and secondary segregation consist of four basic segregation concepts:
+
+         1. Physical (or spatial)
+
+         2. Environmental (including local environmental protection)
+
+         3. Chronological (temporal or time based)
+
+         4. Procedural (or Standard Operating Procedure (SOP) based)
+
+         These segregation concepts apply to cGMP facility design, utility design, and process design.
+
+##### 6.3.1.1 Physical Segregation
+
+         Physical segregation involves a physical barrier which can prevent both environmental and crossover contamination.
+         The space inside a closed vessel is physically segregated from the space outside the vessel.
+
+         In a closed system, non-exposed product is physically segregated from the room environment. Process closure is an
+         application of physical segregation.
+
+         In open systems, exposed products require both a physical segregation and environmental protection from other
+         open processes to prevent crossover contamination. Physical segregation for open processing is typically achieved
+         by using separate rooms. This can result in dividing open process steps into a series of separate processing
+         cleanrooms. These cleanrooms are surrounded by airlocks, and use the concept of nesting and facility flows that are
+         designed and arranged to reduce the environmental challenge to the cleanroom.
+
+         Example facility applications of physical segregation include:
+
+         � Open Processing:
+
+               two separate rooms. For open processing, an application of physical segregation are typically physically
+               separate rooms
+
+         � Closed Processing: Miss Mei-Chun Chou
+
+                                                    Taiwan,
+         - Closed processing pre-viral reduction and closed processing post-viral reduction steps located in the same
+         room
+
+               same room
+
+         - Downstream multi-product concurrent production in separate closed equipment located in the same room
+
+               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 67
+Biopharmaceutical Manufacturing Facilities
+
+                  - Closed upstream processing and closed downstream processing located in the same room.
+
+                  - Closed processing in vessels, piping, bags, and tubes is an application of spatial segregation.
+
+                  - A product transfer pipe and a separate waste pipe both located in the same pipe rack
+
+                  - A closed product vessel and a closed waste container following the same facility flow path and located in the
+                        same elevator
+
+##### 6.3.1.2 Environmental Segregation
+
+            Environmental segregation is used for open systems. It uses clean air to protect exposed product and product contact
+            surfaces that cannot be functionally closed. A typical application is a cleanroom. The level of the room environment
+            relates to the degree and the criticality of the product or surface exposure. An example cleanroom level is Grade 8,
+            where the entire room is designed to meet the Grade 8 requirements. This is also referred to as the room background
+            classification.
+
+            A local protected process (also referred to as local environmental protection) is a sub-set of environmental
+            segregation. It is designed to provide a higher level of clean air protection for a specific purpose within the cleanroom
+            background.
+
+            Example facility applications of environmental segregation include:
+
+            � A cleanroom
+
+            � A biosafety cabinet used as local protection in inoculum preparation
+
+            � A local protection enclosure constructed around a fixed process step
+
+            � A portable local protection enclosure moved as needed to a POU
+
+##### 6.3.1.3 Temporal Segregation
+
+            Temporal or time based segregation can be applied to both open and closed processing, and also can be a factor
+            in maintaining control of materials. Time based segregation involves using the same physical area for more than
+            one function, but where activities are separated by time, e.g., campaigned manufacturing. Two open processing
+            production lines occupying the same room and operating concurrently will be at risk from crossover contamination.
+            Separate the processing activities by time (i.e., campaigning) can mitigate the risk.
+
+     Miss Mei-Chun Chou Example facility applications of temporal segregation include:
+     Taiwan, � Campaigned production for either open or closed processing
+
+                  path as personnel and product and using the same elevator, but the waste travel is non-concurrent with the other
+                  flows. This could be scheduled for the third shift or another convenient time.
+
+            � Bi-directional gowning scheduled for non-concurrent gowning and de-gowning. The two functions occupy the
+                  same space, but are separated by time.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 68                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+##### 6.3.1.4 Procedural Segregation
+
+            Procedural or SOP based segregation is typically applied to preventing mix-ups, but it also has open processing or
+            exposed surface aspects. An example is manual equipment cleaning in a washroom with many components from
+            different products being handled in the same area concurrently, but segregated by procedures. This would involve
+            using the same area for different open functions (possibly handled concurrently), but using procedures to prevent
+            equipment contamination.
+
+            Example facility applications of procedural segregation include:
+
+            � Preventing mix-ups
+
+            � Washing components and equipment, while exposed to the room environment
+
+            � A closed process that briefly exposes product to the room environment that needs special SOPs to protect the
+                  product. Operator action may be needed when the process closure technology does not address all aspects of a
+                  functionally closed system.
+
+#### 6.3.2 Application of Segregation Concepts
+
+*[Figure 6.6 provides an example of how the application of closure technology can impact segregation concepts and]*
+
+            result in different facility designs.
+
+*[Figure 6.6: Applications of Closure Technology and Segregation]*
+
+         � Diagram A shows an open process fermenter in a cleanroom (indicated in white) with the support equipment in
+               the adjacent Controlled Not Classified (CNC) area (indicated as grey).
+
+               can be in CNC space. The remaining non-closed function is sampling. The goal of this "alcove" approach is to
+               reduce the amount of clean area to just the area needed for non-closed operations.
+
+         Miss Mei-Chun Chou � Diagram C shows the incorporation of closed sampling and the entire unit operation is functionally closed. There
+           Taiwan, is no need for a cleanroom and the room environment is reduced to CNC.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                       Page 69
+Biopharmaceutical Manufacturing Facilities
+
+       Table 6.1: Segregation Concept Comparison
+
+       Segregation                          Diagram A and B                Diagram C
+       Physical                             Room                           Equipment
+       Environmental                        Classified                     Non-Classified
+       Time                                 Campaigned                     Concurrent
+       Procedural                           Cleanroom                      Non-Cleanroom
+       Flows                                Protect Cleanroom and Prevent  Prevent Mix-ups
+                                            Mix-ups
+
+       Review of the segregation concept:
+
+       � Physical segregation: in Diagrams A and B physical segregation is on a room by room basis. An open process
+             is segregated from another open process by using separate rooms. In Diagram C, physical segregation is on a
+             closed equipment basis.
+
+       � Environmental segregation: in Diagrams A and B, environmental segregation employs cleanrooms to protect
+             exposed product. In Diagram C, product is not exposed and a cleanroom is not required.
+
+       � Time based segregation: in Diagrams A and B, multi-product production is on a campaigned basis for open
+             processing. In Diagram C, multi-product and concurrent production can operate in the same processing room.
+
+       � Procedural segregation: in Diagrams A and B, procedural segregation needs several SOPs for open processing;
+             the most significant are for following cleanroom and gowning protocols. In Diagram C, procedural segregation
+             does not need these SOPs.
+
+       � In Diagrams A and B, maintaining the processing cleanroom requires a series of `nested' cleanroom transitions
+             and proper flows to reduce the environmental challenge. In Diagram C, the flows for protecting the cleanroom
+             are not needed. Flows usually focus on avoiding mix-ups.
+
+       The benefit of the segregation shown in Diagram B, rather than that shown in Diagram A, is the reduction in the size
+       of the cleanroom and the associated reduction in construction and operating costs. In Diagram B, the open sampling
+       point could be protected by the use of local protection, e.g., a HEPA hood. This could allow multi-product concurrent
+       production with non-concurrent sampling and could prevent cross-over contamination. The risk with open sampling is
+
+       C is realized only when all aspects of the process are closed.
+
+#### 6.3.3 Following technology improvements, most biopharmaceutical process equipment is able to provide a functionally
+
+       Miss Mei-Chun Chou closed system. These closed systems allow for CNC room environments. Closed equipment next to other closed
+       Taiwan, equipment are physically segregated from each other. Closed equipment can be grouped into a single large
+
+       processing room, which may be called a "ballroom" or a "dance floor." Where process steps are open, they will
+
+       Application of Physical Segregation Concepts
+
+       can be reassigned from a room basis to an equipment basis. This transformation can provide a significant benefit
+       for retrofitting an existing facility, as well as for planning a new facility. Figures 6.7 and 6.8 are comparative layout
+       examples of physical segregation on a room basis verses on an equipment basis. Figure 6.8 assumes a facility
+       retrofit where the supply and return corridors are still needed for other existing facility functions. If this is not the case,
+       the exit PAL and MAL and the return corridor areas could be incorporated into the flexible processing area.
+
+                      For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 70                                                                               ISPE Baseline� Guide:
+
+*[Figure 6.7: Physical Segregation Reassignment  Biopharmaceutical Manufacturing Facilities]*
+
+*[Figure 6.8: Physical Segregation by Equipment]*
+
+Miss Mei-Chun Chou Figure 6.7 is a traditional facility concept for open processing with separate processing rooms and dedicated entry
+
+Personnel Airlocks (PALs) and Material Airlocks (MALs) from a production supply corridor. A separate set of PALs and
+
+cost, but if process rooms (b) to (d) are cleanrooms and the supply and return corridors are also classified, accessing
+de-classified process room (a) would require de-gowning, then re-gowning to exit. This is unlikely to provide a
+
+tangible facility impDroveomwentn. loaded on: 12/18/19 1:11 AM
+
+Where process room (b) is a harvest room with closed equipment, the wall dividing process rooms (a) and (b)
+can be removed. In addition, the PALs (b) and MALS (b) for process room (b) can be demolished and converted
+into processing area. This new larger room increases both processing area and flexibility, but it is still connected
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 71
+Biopharmaceutical Manufacturing Facilities
+
+            to classified rooms via shared corridors. If process rooms (c) and (d) are also converted to incorporate closed
+            processing, the facility can fully adapt to a closed processing facility. Dividing walls can be demolished and the large
+            processing room, as well as the supporting corridors can be de-classified. The reduction in gowning also can reduce
+            the main locker/gowning room requirements. Figure 6.8 shows the resulting processing area that is larger than the
+            four previous processing areas combined.
+
+            When applied to an existing facility, de-classifying rooms could facilitate significant production or capacity expansions
+            within an existing production core. This could eliminate the need for a facility expansion or the construction of a new
+            facility to meet the capacity expansion needs. When existing rooms are considered for de-classifying:
+
+            � The existing production floor plan should be reviewed:
+
+                  - CNC should be added to the existing rooms
+
+                  - Existing dividing walls should be erased
+
+                  - The resultant combined area should be determined
+
+            Where existing equipment is not closed, CNC will not be feasible.
+
+            The greatest benefit in the application of closed processing to a facility may be in the transformation from open
+            processes segregated on a room basis to closed processes segregated on an equipment basis.
+
+#### 6.3.4 Facility Layout Overview
+
+            Facility layouts have adapted as a result of process closure. Figure 6.8 outlines the transition from many rooms for
+            open processing to a reduced number of rooms for closed processing. This transition is presented in six example
+            case studies with each facility option responding to the need to protect the product. The options presented are
+            considered viable and each has benefits and disadvantages. The intent is to align product exposure with the
+            appropriate facility design response.
+
+*[Figure 6.9: Room Division Case Studies]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+Note: only the processing rooms are shown. PALs and MALs are needed for classified rooms, but they are not shown
+in order to simplify the diagram.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 72                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+*[Figure 6.9 lists typical biopharmaceutical process steps in the left column. The remaining six columns are the six]*
+
+         case studies. The black boxed areas around functions are proposed rooms for physical segregations. The cases are
+         arranged from open processing on the left to almost all functionally closed processing on the right.
+
+         The six case studies highlight some of the significant reasons for facility adaptation. These cases are examples to
+         illustrate main points and it is not the intent to list all facility modifications that occurred over time.
+
+         Case Descriptions:
+
+         � Case 1: this is a facility concept with all process steps significantly exposed to the room environment.
+               Biotechnology facility designed as a series of Grade 7 rooms with Grade 5 local protection zones above the
+               critical areas of exposed product, e.g., inoculum or cell culture, seed, and production using open cell stacks in
+               lieu of closed bioreactors.
+
+         � Case 2: application of closure technology on vessels � technology applied to fermenters, bioreactors, and media
+               and buffer hold tanks. These closures add a level of physical segregation � may not be fully closed systems. The
+               room environments reduce one level to Grade 8, but not to CNC. Seed and production reactors, and media and
+               buffer hold tanks combined into a single room. Remaining areas are Grade 7.
+
+         � Case 3: closure methods added to most process steps. This closure provides an increased level of product
+               protection from the room environment, resulting in a shift to Grade 8 environments. Closure confidence may not
+               be high, so individual rooms retained for physical segregation to prevent cross-over contamination. The facility
+               benefits from reduced room environments � essentially a Grade 8 production facility. Inoculum preparation
+               remains at Grade 7. Cell manipulations follow aseptic processing guidelines in local protection Grade 5 Biosafety
+               Cabinets (BSCs) with Grade 5 requiring a Grade 7 room environment background. Bulk fill is similar, with pooling
+               under a Grade 5 BSC requiring a Grade 7 room environment.
+
+         � Case 4: inoculum preparation redefined from aseptic "processing" to aseptic "techniques." Manipulations are
+               under a Grade 5 "quality" BSC which does not require a Grade 7 room background environment. Inoculum
+               preparation and bulk fill reduced to Grade 8. Seed and production bioreactors functionally closed and room is
+               CNC. Harvest (centrifuges) becomes functionally closed and is CNC, but is kept in a separate room because
+               it is manually cleaned in an exposed manner and because of acoustic concerns. Pre and post viral processing
+               equipment are moved into the same room. Pre and post physical room segregation is mitigated by redefining
+               the viral free step as the final UFDF step located in bulk fill. Purification becomes a single room and reduces to
+               Grade 8. Media and buffer hold are closed and room class drops to CNC. Media and buffer preparations are
+               open and Grade 8, but are combined into the same room with dedicated equipment and possible separate local
+               protection zones.
+
+               acoustic (decibel) limits. Harvest joins the bioreactors in a production ballroom. Media and buffer preparation
+               incorporate 0.2 �m filtration en route to hold vessels. This filtration step functionally closes the open preparation
+           Miss Mei-Chun Chou process to a closed state at hold. The preparation room environment drops to CNC. Following a risk assessment
+               the downstream processes can follow the upstream example and combine into a single processing room at CNC.
+           Taiwan, Column packing is not closed in this diagram. In this case example, column packing is a separate room with a
+               classified environment accessed from the CNC ballroom.
+         � Case 6: the upstream ballroom and the downstream ballroom are combined into a single process room.
+
+               Media and buffer prep are combined with their hold vessels. Inoculum preparation is de-classed to CNC with
+
+               process. They are in a local protection device (BSC) and the room environment needs to be assessed for the
+               proper background level. A closed processing option for inoculum is a glove box which could be placed in the
+               CNC ballroom adjacent to the seed reactors, but a glove box may be considered not user friendly. An option for
+               column packing (or any other non-fully closed process) is in lieu of locating it in a separate cleanroom is to keep
+               it on the CNC production floor with local protection devices protecting the area of concern.
+
+                             For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 73
+Biopharmaceutical Manufacturing Facilities
+
+            These case studies illustrate the interconnectivity of product exposure, room classification and physical segregations.
+            Through an independent cost analysis, the case 1 facility was approximately 40% more expensive to construct and
+            operate than the case 6 facility. There is a potential for savings in construction and operation.
+
+            Segregating the product from the room environment increases control over the product while reducing the facility size,
+            complexity, and cost. The facility can be a non-critical aspect system of the product (for CNC areas) and the facility is
+            removed from the product protection equation.
+
+#### 6.3.5 Flexible Facility Ballrooms
+
+*[Figure 6.10 shows an example of a single large production ballroom. All processes in the ballroom are closed]*
+
+            systems and the room environment is CNC. The production scale is 10,000 liters, but at 5 � 2,000 liters using
+            disposable bioreactors.
+
+*[Figure 6.10: Production Ballroom Example]*
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+This example takes the case 6 example (see Section 6.3.4 of this Guide) further and combines the production
+room with the media and buffer preparation room. The supporting functions around this ballroom (not shown) are
+equipment cleaning and a Grade 8 cleanroom for column packing.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 74                                                                                                                 ISPE Baseline� Guide:
+                                                                                             Biopharmaceutical Manufacturing Facilities
+
+         This example is a flexible facility concept and the equipment is closed. The concept is intended to work equally well
+         with disposables and stainless steel equipment.
+
+### 6.4 Logistical Segregation Considerations
+
+         Logistical segregation is defined as the spatial or physical separation of systems or operations. The goal is to
+         prevent mix-ups. Although material and personnel airlocks are designed to protect the classified environments of
+         the bioprocessing suites during transitions from one space to an adjacent space, they also provide gates for the
+         transition of materials and products through the process and facility. Segregating batches and unit operations into
+         individual silos also can result in segregation of the equipment, components, raw materials, and personnel involved
+         in the execution of that unit operation. The protection provided by these barriers should be maintained or replaced for
+         adequate logistical segregation, i.e., to prevent mix-ups. Technology to mitigate the risk of mix-ups includes:
+
+         � RFID technology
+
+         � Bar coding
+
+         � Color coding
+
+         In addition, dedication of specific connecting devices could be used to prevent the possibility of mix-ups.
+
+         Where bioprocess unit operations are consolidated into a single multipurpose manufacturing suite (ballroom) (see
+         Section 6.3.5 of this Guide), the risks of inadequate logistical product, batch, and intermediate or unit operation
+         segregation should be evaluated. Methods for distinguishing between products, batches, or intermediates that have
+         undergone a process of virus removal or inactivation, from those which have not, should be established.
+
+         The staging of soiled equipment should mitigate the risk of contamination of purified material from upstream
+         processes. Examples where closed processing provides an opportunity for consolidation of operations and systems
+         that have been traditionally segregated, include:
+
+         � Batches
+
+         � Products
+
+         � Virus reduced operations
+
+         � Cell containing from cell free operations
+
+         Miss Mei-Chun Chou Logistical segregation should be considered for each operation.
+
+#### 6.4.1 Segregation of Batches      Taiwan,
+
+         environmental sources. The risk for crossover contamination to occur of two neighboring closed systems is
+         considered small, as it would require the breach of integrity of both systems, concurrently. There is a potential for
+
+         If multiple batches of a same product are housed within the same room, it is likely that they also share ingredients
+         and process equipment. Controls should be established to mitigate the risk of mix-ups of any shared components.
+
+                       For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                     Page 75
+Biopharmaceutical Manufacturing Facilities
+
+#### 6.4.2 Segregation of Products
+
+       Manufacturing processes using only closed systems can potentially share real estate with other manufacturing
+       process. When multiple products are housed in the same space, they may or may not share equipment or
+       ingredients. If equipment and materials are shared, the risks are similar to those of a suite housing multiple batches
+       of a single product. If multiple products are manufactured in a single suite, there is potential one product to impact on
+       the other process. Different products can have different cleaning, sanitization and/or testing requirements that could
+       promote errors, mix-ups, or crossover (e.g., from shared CIP systems) if not properly managed.
+
+#### 6.4.3 Segregation of Virus Reduced Operations
+
+       There is a regulatory agency expectation of segregation of process operations deemed "virus reduced."
+       Manufacturers typically house bulk substance fill operations in an isolated suite accessed via an airlock that is
+       independent of areas where upstream purification operations occur.
+
+       A risk assessment should be used to determine the appropriate (and logical) point of segregation if one is required.
+       The segregation and the reasons for the segregation should be defined. The risk assessment should evaluate
+       possible means of "contaminating" the segregated environment by:
+
+       � Personnel
+
+       � HVAC
+
+       � Process
+
+       � Cleaning
+
+       � Sanitization
+
+       For example, sharing the virus-reduced equipment, CIP, or glasswashers with processes or equipment upstream
+       without effective autoclaving or SIP could result in the breach of the isolated "virus-reduced" suite. For this reason,
+       single use systems are normally used for the lower volume "virus-reduced" applications. The transition of personnel
+       and product into the "virus-reduced" suite should be carefully evaluated to ensure that the risk of contamination is
+       adequately mitigated.
+
+#### 6.4.4 Segregation of Cell (+) from Cell (-) Operations
+
+6.4.5  Segregation of upstream "cell (+)" and downstream "cell (-)" operations should be based on definition and logic.
+
+       free. Flow and gowning of personnel, CIP strategy, HVAC zoning, and pressurization, etc., should be considered if
+       the segregation of solutions and processes containing live cells is required. The potential contamination of purified
+
+       Miss Mei-Chun Chou product with volumes of upstream process solutions is considered to be small.
+       Taiwan, Segregation of Open from Closed Operations
+
+       is maintained. Open operations such as inoculum preparation or chromatography packing (if open) can be affected
+
+       including classified environments, appropriate gowning of personnel, appropriate HVAC zoning and pressurization
+       strategy, appropriate transitioning of materials, personnel and operations should be established to mitigate the risk of
+       contamination from the environment or from neighboring activities.
+
+                       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 76                                                                                                           ISPE Baseline� Guide:
+                                                                                       Biopharmaceutical Manufacturing Facilities
+
+### 6.5 Facility and Process Flows
+
+         Facility and process flows are designated paths of travel for:
+
+         � Personnel
+
+         � Materials
+
+         � Product
+
+         � Equipment cleaning
+
+         � Solid waste
+
+         The purpose of these flows can be categorized into three levels:
+
+         1. Demonstrating a logical production process
+
+         2. Avoiding mix-ups
+
+         3. Protecting a room environment that is designed to protect an exposed product
+
+#### 6.5.1 Level 1: Demonstrating a Logical Production Process
+
+         Lean manufacturing principles may be applied to create an efficient facility design and a logical production process.
+         Lean concepts can include risk assessments to improve quality, prevent production interruptions, eliminate failures,
+         and increase production flexibility.
+
+#### 6.5.2 Level 2: Avoiding Mix-Ups
+
+         Avoiding mix-ups is a specific cGMPs regulatory requirement and the methodology for preventing mix-ups must be
+         demonstrable. This may be achieved by administrative methods such as labeling raw materials, bar coding, or color
+         coding hose connections, or by physical segregation such as placing the released materials for a production line in a
+         separate room or in a segregated area.
+
+#### 6.5.3 Level 3: Protecting a Room Environment
+
+         For open processing, the design of a facility should create flows to reduce the environmental challenge to a
+
+         product. For closed processing, these Level 3 flows are not relevant to product protection.
+
+Miss Mei-Chun Chou 6.5.4 Multiple Production Corridors and Single Production Corridor
+
+##### 6.5.4.1 Multiple Production Corridors  Taiwan,
+
+         1. A clean supplyDcororidwor nloaded on: 12/18/19 1:11 AM
+
+         2. A dirty return corridor
+
+                        For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                             Page 77
+Biopharmaceutical Manufacturing Facilities
+
+See Figure 6.7 for the basic configuration. The supply corridor should include all "clean" flows, including personnel,
+raw materials, product, and clean equipment. The return corridor should include personnel exiting the process room,
+dirty or used equipment, and waste. The flow for personnel and dirty or used equipment are circular. This facility
+solution provides a logical facility order to product protection.
+
+Personnel (potentially contaminated with residual product) exit the process room through the exit PAL, enter the
+return corridor, and proceed to a de-gown area to remove outer gowning layers. Personnel could continue to the
+main locker area to leave the facility or gown into clean over garments then enter the supply corridor and enter a
+processing room via the PAL.
+
+Dirty equipment from the process rooms enters the return corridor and proceeds to equipment wash. It should be
+processed through the multiple cleaning rooms. When released, the equipment travels along the supply corridor to its
+processing room.
+
+This facility layout also can provide a potential source for facility contamination, if misused, e.g., transporting non-
+contained dirty equipment or waste that contaminates the return corridor. This facility contamination could migrate to
+contaminate an open process.
+
+##### 6.5.4.2 Single Production Corridor
+
+There are two main drivers for facilities designed with a single production corridor:
+
+1. The incorporation of closed processing with CIP/SIP systems
+
+2. The increasing use of disposables, which reduces the amount of items requiring cleaning
+
+These systems reduce the quantity of equipment that needs to travel to an equipment wash room. A facility using
+stainless steel equipment and CIP/SIP throughout, along with disposables for inoculum, can reduce the portable
+equipment washing needs by more than 90% with very little solid waste. A facility using entirely disposables is similar,
+but with a higher quantity of solid waste.
+
+Factors that can reduce the need for a return corridor include:
+
+1. Removing portable equipment washing from a facility
+
+2. Closed processing:
+
+� Eliminates the need for level 3 flows
+
+      on garments.
+
+Miss Mei-Chun Chou � Reduced number of individual processing rooms allows direct access to equipment wash from fewer and
+
+larger processing rooms.                    Taiwan,
+
+*[Figure 6.11 shows a simplified concept of a single corridor facility centered on a one-way equipment wash flow.]*
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 78                                                                                                     ISPE Baseline� Guide:
+                                                                                 Biopharmaceutical Manufacturing Facilities
+
+*[Figure 6.11: Single Corridor Concept (Primarily for Closed Processing)]*
+
+            This is a one-way equipment wash flow using a single corridor. Dirty equipment from upstream processing and
+            downstream processing enter equipment wash via MALs. Equipment can be pre-washed on a campaigned basis. The
+            equipment enters a pass through parts washer and enters into the product free clean equipment room. Equipment
+            can be sterilized via a single sided autoclave, released for use, and moved back to the processing room via the
+            production corridor.
+
+            Solid waste can be collected in the processing room or from equipment wash, placed in containers and transported in
+            the production corridor concurrently with other activities (if contained) or segregated temporally (by time) if there is a
+            containment concern.
+
+            Personnel flow is two-way. A PAL for equipment wash is shown for consideration. Equipment wash can be an open
+            process and over-gowning may be appropriate to allow the over-gown to be removed when exiting to prevent residual
+            contaminates from entering the processing rooms.
+
+            Where flow paths are shared, especially product and waste, a closed product vessel should be used to protect
+            the product from environmental and cross-over contamination. Where a product vessel is not closed, the risk to
+            the product from environmental contamination from the corridor environment is greater than that from an adjacent
+            contained waste container. If there is physical contact with a contained waste container, the closed product vessel
+            can be wiped down as it leaves for storage.
+
+            the outside of the vessel can be exposed to several contaminants. When the vessel enters the fill finish facility for
+            compounding, it should be adequately cleaned.
+
+                          Miss Mei-Chun Chou
+Taiwan, 6.6 Equipment and Facility Cleaning and Finishes
+
+            (working title/under development at time of publication) [51].
+
+#### 6.6.1 Facility AspectsDofoEqwuinpmleonat Cdleeadninog n: 12/18/19 1:11 AM
+
+            As CIP/SIP is incorporated into more equipment and with the increased use of disposables, the quantity of portable
+            or mobile equipment accessing a common equipment wash room is decreasing. Some facilities may not need
+            equipment wash areas.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                        Page 79
+Biopharmaceutical Manufacturing Facilities
+
+Items that need cleaning should be identified and their cleaning protocols defined to determine the amount and
+type of cleaning equipment needed. The production schedule can be used to determine the quantity of each type of
+equipment. These factors can have a significant impact on cleaning room design.
+
+Cleaning rooms with a large through-put of portable equipment tend toward a three room configuration. Lower
+through-put facilities tend toward a two room configuration.
+
+For the three stage equipment wash layout, the functions per room can include:
+
+1. Decontamination and Washing: equipment disassembly, decontamination, manual pre-cleaning, feeding a pass
+      through parts washer, and placing vessels in CIP pass through stations
+
+2. Equipment Assembly: cleaned (product free) equipment is collected from the parts washer and the CIP station,
+      assembled and fed into an autoclave or an SIP pass through station
+
+3. Clean Equipment staging: receiving final cleaned equipment for staging and QC release.
+
+A lower through-put wash area using a two room approach combines stages 2 and 3 in one room, using a single
+sided autoclave. A two room layout diagram is shown in Figure 6.10.
+
+cGMP equipment washing areas typically rely on pass through cleaning equipment that separates a dirty (product
+containing) side from the clean (product free) side. Galley style equipment wash areas can be used and may be
+appropriate for low through-put washing or for servicing dedicated rooms. The final facility layout test is the QC
+release testing.
+
+There are two basic levels of facility cleaning:
+
+1. Good general housekeeping practices for non-critical aspect rooms (non-exposed product)
+
+2. cGMP level for critical aspect rooms where the room cleanliness can directly affect the product
+
+For further information on the levels of finish as related to Grades 7, 8, Controlled Not Classified with monitoring
+(CNC+) and Controlled Not Classified (CNC) environments, see the ISPE Baseline� Guide on Sterile Manufacturing
+Facilities [52]. The level of finishes and facility cleaning should correspond to the required level of product protection.
+Adequate room cleaning and sanitizing should protect open processes from residual contaminants brought into
+the room by personnel, material, and equipment. For open processing, the room cleanliness can be a CPP to the
+product.
+
+CNC room This surroundings: Document is licensed to
+
+� The room is a non-critical aspect to the product.
+
+Miss Mei-Chun Chou � The engineering systems are designed to Good Engineering Practices (GEPs) with commissioning, but are not
+
+qualified.                                  Taiwan,
+
+� Level of finish: can be industrial, floor finish to contain a spill
+
+� Image: can resemble chemical plants
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 80                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         Grade 8 room surroundings:
+
+         � The room is a non-critical aspect to the product.
+
+         � The engineering systems are designed to Good Engineering Practices (GEP) with commissioning and
+               qualification.
+
+         � Basic good housekeeping practices plus light cGMP sanitizers
+
+         � Level of finish: easily cleaned, non-flush detailing
+
+         � Image: Grade 8 cleanroom
+
+         Grade 7 room surroundings:
+
+         � The room is a critical aspect to the product.
+
+         � The engineering systems are designed to GEPs with commissioning and qualification.
+
+         � Basic good housekeeping practices plus strong cGMP sanitizers
+
+         � Level of finish: easily cleaned, flush detailing to minimize horizontal surfaces, cover corners
+
+         � Image: Grade 7 cleanroom
+
+         Organizations may choose to add facility requirements that do not directly protect product or may add items from
+         CPP environments to non-CPP environments. These facility requirements and items are discretionary. An example is
+         providing the same level of finish for the entire facility independent of its relation to product protection. A Grade 8 level
+         of finish could be used for Grade 8 and CNC spaces. This adds capital and operating cost, but simplifies the facility
+         cleaning regimen. The higher level of finish does not assist in protecting the product, but the look of the facility may
+         assist with the staff being in a production mind set.
+
+*[Figure 6.12 provides two photos showing non-critical aspect environments. The photo on the left meets the definition]*
+
+         of CNC environments. The photo on the right is a CNC environment with a discretionary upgrade to a cleanroom look.
+
+*[Figure 6.12: Non-Critical Aspect Environments]*
+
+                             Miss Mei-Chun Chou
+                                     Taiwan,
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 81
+Biopharmaceutical Manufacturing Facilities
+
+            Catastrophic equipment failures that release product into the room can be a housekeeping issue or a cGMP concern.
+            An example of a housekeeping spill is a large multi-product concurrent production closed processing ballroom
+            with a major product spill. The spilt product from line 1 cannot contaminate the adjacent closed equipment in line
+            2. The product in line 2 is not at risk and line 2 continues production without interruption. This is an example of a
+            housekeeping spill.
+
+            Open processes are typically segregated into individual processing rooms. A spill in an open processing room is a
+            significant event that interrupts the production and can become a facility contamination issue that could migrate to
+            contaminate another open system. This is usually a cGMP concern.
+
+### 6.7 Clinical Trial and Commercial Production
+
+            The FDA Guidance for Industry for Phase 1 Investigational Drugs was issued in July 2008 [16]. It defined cGMP
+            compliance as a step function with development and clinical phase 1 exempt from many cGMPs, while requiring
+            full cGMP compliance for phase 2 clinical through commercial production. Clinical phase 2 and 3 production and
+            commercial production have the same cGMP compliance requirements. Producing phase 2 drugs in a commercial
+            facility is a matter of scale alignment, rather than a regulatory segregation concern.
+
+### 6.8 Vaccines and Biological Hazard Containment
+
+            The US Centers for Disease Control and Prevention (CDC), the US National Institutes for Health (NIH) and individual
+            national jurisdictions have clear facility requirements for levels of biosafety containment. All cGMPs apply to vaccine
+            facilities. Biosafety requirements generally align with cGMP regulatory requirements. However, an example of a
+            conflict is the requirement for biosafety BSL-1, BSL-2, and BSL-3 processing rooms to be at negative pressure in
+            relation to the surrounding rooms, whereas non-BSL or GLSP facilities are typically at positive pressure. For further
+            information, see Chapter 2 of this Guide.
+
+            Operator safety is considered very important in vaccine facilities; closed systems protect both the product and
+            operators. The production ballroom concept applies equally to vaccine production with the exception that there is
+            an additional equipment grouping � the "hot" BSL zone (area with, e.g., live virus or bacteria). Figure 6.13 gives
+            a comparison between a traditional GLSP facilities, GLSP production referred to as "Future Facility," and the final
+            diagram is a "Future Facility" concept with the BSL containment overlay.
+
+            Whereas GLSP facilities tend to reduce to single rooms with the application of fully closed systems, vaccine facilities
+            have an added BSL room segregation requirement.
+
+                          Miss Mei-Chun Chou
+                                  Taiwan,
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 82                                                                            ISPE Baseline� Guide:
+
+*[Figure 6.13: Comparative Facility Diagrams  Biopharmaceutical Manufacturing Facilities]*
+
+Future/Flexible BSL Facility classification zones shown in Figure 6.13:
+� Host Inoculum Preparation: GLSP, Grade 8 with local BSC
+� Host Cell Expansion: GLSP, CNC
+� Virus Inoculum Preparation: BSL, Grade 8 with local BSC
+� Virus Active Cell Processing: BSL, CNC
+� Inactivated Virus Processing: GLSP, CNC
+
+processing room is very large and contains many process steps, the room could be further subdivided to contain
+
+Miss Mei-Chun Chou catastrophic spills into smaller clean-up zones. The benefit of smaller rooms is the reduced facility clean up time.
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 83
+Biopharmaceutical Manufacturing Facilities
+
+### 6.9 Production Support Areas
+
+            Production is supported by many functions, including:
+
+            � Warehousing
+
+            � Facility engineering
+
+            � In-Process QC
+
+            � Quality
+
+            � Administration
+
+            � Environmental Health and Safety
+
+            � Utilities
+
+            A production schedule can have direct links to theses supporting areas, e.g., production pulling released materials
+            from the warehouse, the production samples routed to QC on an hourly basis, or the scheduled equipment
+            maintenance routing through the facility engineering shop.
+
+            Lean manufacturing concepts can be used to address operation of a production facility to help the production area
+            and the facility operate as an integrated whole.
+
+#### 6.9.1 Emerging Countries
+
+            The use of modular design and construction should be considered for emerging countries. This allows for transfer of
+            proven designs and the use of experienced trades in the construction of complex clean facilities.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                   Page 85
+Biopharmaceutical Manufacturing Facilities
+
+7 Architectural
+
+### 7.1 Introduction
+
+            This chapter aims to provide a client, design manager, or project manager a set of guidance information to aid the
+            initial design implementation process.
+
+            The focus of the chapter is on features of concern to biopharmaceutical and vaccines facilities. Information applicable
+            to other pharmaceutical facilities is included for completeness of facility design.
+
+            Design Principles
+
+            Pharmaceutical facilities are usually designed from the inside out. The design should be based on user needs and
+            requirements.
+
+            The life cycle and potential for future change of use of the overall facility site and buildings also should be considered
+            in order to comply with sustainable construction expectations, particularly where an organization's product range
+            includes more than biopharmaceuticals. In this case, the potential for sharing or re-use of facilities for oral solid dose
+            or over-the-counter products should be considered, subject to compliance with GMP regulatory expectations and the
+            definition of a "facility" from a single use perspective.
+
+            The knowledge learnt from initial design discovery and technical transfer should be combined. Project front end
+            definition methodologies can help with rapid transfer of key project information.
+
+            Facility design has three phases:
+
+            1. Conceptual
+
+            2. Basic
+
+            3. Detailed
+
+            Risk and safety assessment processes should be applied during each phase of the design to support the construction
+            design and implementation process.
+
+### 7.2 Facility This Design Document is licensed to
+
+            Facility design deals with both the visual and functional aspects of biopharmaceutical facility operation.
+
+Miss Mei-Chun Chou In addition to process area, elements to be integrated within a facility design can include:
+
+Taiwan, � Administration and amenity facilities
+
+� Security facilities                       ID number: 1002915
+
+� Downloaded Quality Assurance (QA) on: 12/18/19 1:11 AM
+
+� Quality Control (QC) laboratories; including line In-Process Control (IPC) and microbiology laboratories for
+      product and environmental testing
+
+� Warehousing, including cold chain operations
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 86                                                                                                  ISPE Baseline� Guide:
+                                                                              Biopharmaceutical Manufacturing Facilities
+
+         � Downstream fill finish operations
+
+         � Process and building services, including utilities feed housings
+
+         The appropriate integration of these elements together with an appreciation of any future needs in regard of
+         adaptability, flexibility, and expandability should help to ensure the viability of a sustainable operation.
+
+#### 7.2.1 Key Drivers for a Fully Functional Production Facility and Campus
+
+         Operational and functional design drivers toward ensuring best flows and correct layout design include:
+
+         � Functionally focused risk assessment and response:
+
+         - Design risk assessment should be performed from the start of a project, starting with concept stage. The
+               assessments should be reviewed and updated throughout the design and construction process.
+
+         � Economy and efficiency of operation, e.g.:
+
+         - Simple work flow from site receipt to point of use:
+
+         > Avoiding crossing transport/workflows
+
+         > Where unavoidable, a provision of an SOP for ease of operation
+
+         - Ease of access to location for facility and equipment maintenance
+
+         � Flexibility, adaptability, and expandability:
+
+         - Review of potential future operations. Acceptance of new methods or processes that may impact future
+               operations:
+
+         > Clear zones for storage, process, support, process services, building services, utilities, administration,
+               amenity
+
+         > Administration and amenity functions integrated with workflow and location
+
+               -- Visual integration and involvement of the administration function with the work process can be
+
+                     beneficial.
+
+         > This Document Nice place to work is licensed to
+
+         Miss Mei-Chun Chou -- Bright, light, and visually sustaining
+
+         -- Safe                              Taiwan,
+
+          Maintenance of visual links through use of clear materials allows capacity for visual checks by
+
+         Dostawff nloaded on: 12/18/19 1:11 AM
+
+         -- Secure
+
+          Product risk awareness
+
+           Maintain staff and visitor parking outside the security perimeter
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                   Page 87
+Biopharmaceutical Manufacturing Facilities
+
+#### 7.2.2 Facility Concepts
+
+       The process design may demonstrate lean values that can be lost if they are not reflected in the design of the
+       remainder of the facility. In this respect, both design consistency and a strong overall design concept are considered
+       important.
+
+       Vertical, Stepped, Horizontal
+
+       Vertical or semi-vertical (stepped) flow is often necessary from a process concept viewpoint, rather than a
+       horizontal flow. This may have a significant effect on facility design and integration with other facility activities, e.g.,
+       warehousing, integration of amenities and administration. This also may affect future facility flexibility.
+
+       Off-Site Construction
+
+       This may be referred to as modular, flat-pack, container, or skid based construction. The introduction of off-site
+       construction techniques can provide an alternative to the traditional construction process (which may be referred to
+       as a "stick-build").
+
+       Using these techniques, construction takes place in a controlled environment and is not dependent on variability
+       weather at a construction site. Typical benefits of these techniques include:
+
+       � Improved quality
+
+       � Overall program (schedule) reduction, including reduced site time
+
+       � Ease of future expansion
+
+       � Less reliance on site/local resources with attendance weather conditions
+
+       � Potential for cost reduction through repetition
+
+       Modular systems linked with off-site builds can provide better cost effectiveness through increased cleanliness, better
+       fit, and a reduced program (schedule). The design team (particularly the architectural and structural disciplines)
+       should focus on a modular approach from the beginning of the design.
+
+       Larger facilities can gain from a mixture of construction processes with, e.g.:
+
+7.2.3  � Modular process sets linked to flat pack building construction, and skid mounted and container based building
+
+         services This Document is licensed to
+
+       � Utilities linked to stick built or flat pack administration and amenities building construction
+
+       Miss Mei-Chun Chou Geographical location should be considered when determining an appropriate construction technique.
+                                   Taiwan,
+
+       Flows and their Impact
+
+       In-facility flows are of cGMP and regulatory concern. When in-facility flows are integrated with site flows, they
+
+       characteristics of a site and the impact of material, personnel, waste, and sample flows should be considered to help
+       to ensure efficiency and economy of operation.
+
+       Space constrictions should be considered for smaller biopharmaceutical facilities and retrofits, particularly with closed
+       or continuous processing. Internal site workflows should ensure safe and secure operation within the needs of GMP
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 88                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+         compliance and cleanliness requirements. For example, the master seed/cell bank should be positioned close to its
+         use location, to avoid significant commercial, operational, or biosafety risks through unnecessary transport, security,
+         and safety issues.
+         For closed processing, individual flows should be analyzed to ensure that each element of an operation follows an
+         efficient and safe route without compromising the product. For example:
+         � Personnel flows:
+
+               - Street clothes
+               - Facility gowning
+               - Individual grade gowning paths
+               - Warehouse clothing
+               - Maintenance gowning
+               - Location of specialist Personal Protection Equipment (PPE)
+         � Material flows:
+               - Master cell
+               - Product flows:
+
+                     > Upstream
+                     > In-process staging areas
+                     > Downstream
+                     > Fill/finish to store
+               - Buffer and media flows including materials from store to location
+               - Equipment maintenance flows
+
+              Miss Mei-Chun Chou > Clean-out-of-place considerations
+         Taiwan, The impact of changes in flow formats should be understood in an architectural and structural site context and
+
+         responded to accordingly.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 89
+Biopharmaceutical Manufacturing Facilities
+
+### 7.3 Placing the Facility on the Site
+
+            A biopharmaceutical manufacturing facility may be constructed within an existing or new site. The facility should be
+            able to operate efficiently within the type and location of the site.
+
+#### 7.3.1 Masterplanning
+
+            Masterplanning is the overall consideration of a site's or facility's current and future needs. It should be flexible in its
+            response to varying product supply requirements. Masterplanning should reflect an operation's business planning
+            aspirations and should oversee site and operational planning.
+
+            Criteria Relating to Biopharmaceutical/Vaccines Facility Design
+
+            The need for defining a masterplan is dependent on the size of site operation (on-going or planned). A manufacturing
+            facility dealing with all stages of pharmaceutical production should link the elements of the facility to each other in
+            a logical sequence. For existing facilities, where a site has developed due to need and availability, the overall site
+            operation should be reviewed to help maintain or improve cost effective production and management.
+
+            Bio Security and Safety Considerations
+
+            Local issues should be considered in the placement of a biopharmaceutical facility. Facilities may need significant
+            security and safety protection due to local political situations. Risks around these concerns should be reviewed early
+            in the design process to ensure that the issues are fully understood and appropriate protection, access, or facility
+            placement and physical design/specification measures are implemented.
+
+            Facility Size and its Impact on Design and Concept
+
+            Existing sites and facilities may experience a size reduction through the use of continuous processes, particularly
+            with large volume throughput. Significantly increased titers can result in reduced equipment sizing for the same
+            throughput. Small high volume process modules may have a disproportionate effect on upstream and downstream
+            operations with a consequent effect on site planning.
+
+#### 7.3.2 Facility Concepts
+
+            Large Facility Concepts
+
+            The impact of climate on larger facility design means, e.g.:
+
+            � An integrated or spine format being more suited to equatorial and cold climates where protection from the
+
+        elements is necessary Miss Mei-Chun Chou
+     Taiwan, A key consideration is the protection and ease of passage of goods or equipment in transit from one part of a facility
+
+            to another.
+
+            The selection of which format suits the operation is dependent on several factors, e.g., geographical location. Each
+
+            flexibility in use, by providing expansion capacity, acceptance, and placement also will be a matter of compliance with
+            local permitting criteria.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 90                                                                           ISPE Baseline� Guide:
+                                                       Biopharmaceutical Manufacturing Facilities
+
+         Small Facility Concepts
+
+         Smaller integrated biopharmaceutical facilities with multi- product or single product capability use less site area and
+         are usually less affected by utilities issues that affect the large facilities.
+
+         Process Pods and Field Located Processes
+
+         The possibility of reduction in size of biopharmaceutical and vaccines facilities processes allows the capacity to
+         contain processes in process pods. These process pods may be used both as `plug and play' units within a facility
+         or they could be positioned close to the drug need, e.g., as support to medical emergencies the needs of developing
+         countries.
+
+         Greenfield
+
+         Layout opportunities depend on site size, access, and orientation. For further information, see Chapter 8 of this
+         Guide.
+
+         Brownfield
+
+         For brownfield sites, pre-existing utilities, administration, warehousing, and engineering functions should be
+         considered in association with the User Requirement Brief (URB) of a new project, e.g., to ensure the benefits of
+         brownfield site integration. A brownfield site may be considered as a "retrofit" facility and introducing new ways of
+         working may have a significant effect on other site operations. This can lead to further capital works with an overall
+         operational life cycle gain.
+
+         Pre-existing Site Issues
+
+         Pre-existing site issues can significantly affect operation. Examples pre-existing site issues include:
+
+         � Placing the primary HVAC intake of a biopharmaceutical facility close to the extract ventilation outlets of
+               neighboring facilities and introducing significant environmental contamination risk
+
+         � Locating a biopharmaceutical facility next to a conserved pond where clouds of small flying insects live and breed
+               each season providing a continuing filtration issue.
+
+         � Locating a biopharmaceutical facility near cottonwood trees whose seeds cause significant filtration issues
+
+         Flood risk may be issue in some countries. This is a particular issue for biopharmaceutical facilities with potential risks
+
+         and product.
+
+         Retrofits                 Miss Mei-Chun Chou
+
+         Taiwan, There may be unforeseen issues with a location. Pre-existing permitting, structural, or architectural issues should
+
+         be considered prior to proceeding with a project. Local permitting should be checked as carrying out retrofit or
+
+         other governmental requirements.
+
+         Pre-existing Downloaded on: facilities: upgrade considerations: 12/18/19 1:11 AM
+
+         � Structural design: close columns indicates a high floor loading above or a facility that may not provide the
+               required flexibility
+
+         � Insulation costs to meet current regulations may be prohibitive as this may involve recladding the structure
+
+                     For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                    Page 91
+Biopharmaceutical Manufacturing Facilities
+
+       � Floor loadings may not relate to the use required: point or superimposed loads, such as individual leg loads of a
+             large column or loadings of full bags of buffer, may prohibit use of a floor
+
+       � Utilities and building services should be evaluated, as they may be:
+             - Oversized and not able to be "de-tuned" to meet sustainable needs or provide significant restriction on use
+             - Undersized and unable to respond to the projected facility needs
+
+       These considerations also apply to the potential for re-use of buildings previously used for other purposes.
+
+7.4 Envelope/Building Shell Design and Visual Design Influences
+
+       The design of the building shell is significant in setting the tone of perception for a facility. The enclosure should
+       perform a primary task of providing environmental shelter.
+
+       Local conditions should guide the approach to envelope design. This in turn affects the visual response. There can be
+       an expectation of high visual quality for biopharmaceutical manufacturing facilities.
+
+       A facility is likely to be there for at least 30 years, and this should be considered when designing its shell. Issues to be
+       addressed include:
+
+       � Does the shell respond to the environmental conditions correctly? For example:
+
+       - Is it sensible to use flat roofs and parapets in high volume rain or snow areas?3
+
+       - Should items be integrated into the fa�ade that provide short term value?
+
+       - Will it wear well?
+
+       - What is the location of intakes, extracts and extraneous pipework?
+
+       - Is access for facility changeover correctly considered?
+
+       - How easy and safe is it to maintain?
+
+       - Is the opportunity for expansion considered through the provision or fallow or swing space or additional
+
+         This land? Document is licensed to
+
+       Facilities that look good and operate successfully over long time periods normally provide significant return on
+
+       investment.                          Miss Mei-Chun Chou
+
+#### 7.4.1 Modular Design                       Taiwan,
+
+       facilities. Examples of limitations and opportunities provided by available construction technology, include:
+
+             apply that provides less dimensional flexibility than stick build.
+
+       3 NB: Some insurance requirements may exceed local code expectations.
+
+                           For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 92                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+            � Different systems have different modular dimensions: where a modular system is to be used, the choice of
+                  system should be made early in the design process to ensure that the building is designed in accordance with
+                  the correct dimensions and any limitations are respected.
+
+            � How the module will be transported from the module fabrication shop to the final installation site (this should be
+                  checked). The method of transport should be considered, including, e.g.:
+
+                  - Road limitations with overhead clearances, width and weight limits
+
+                  - Shipping sizes, including specialist hoist requirements
+
+                  - Airfreight limitations on size and weight
+
+            � Allowance for module to module interconnection:
+
+                  - Space needed for process pipework connection
+
+                  - Lateral linking electrical and data trays, conduit, or ladders
+
+                  - Access space needed for maintenance of valves
+
+            � Checking that future flexibility and adaptability are not compromised
+
+            � Ensuring the risk of increased costs through initial factory tooling are balanced by site schedule/program and
+                  value gains
+
+            The decision to proceed with a modular design should be made at the front end of the design process, preferably
+            at concept stage. Decisions on which process equipment is to be purchased, its design, the utility requirements of
+            the equipment, and the process areas and method of installation, should be made early, as the facility design is
+            significantly affected. The choice of modular contractors also should be made early to ensure their involvement from
+            the commencement of the detail design process.
+
+### 7.5 Construction Issues
+
+            Construction based decisions can be significant in both the implementation of a facility design, safety, and its
+            subsequent use. Attributes that should be available to facilities include:
+
+            � Equipment access for replacement or maintenance
+
+     Miss Mei-Chun Chou A biomanufacturing process may be installed only for five years of the building use. A facility represents significant
+     Taiwan, investment and should be adaptable to another use without significant spend in order to meet its longer term
+
+            objectives.
+
+            Examples of basic decisions that can be made that make a facility a better investment from the outset include:
+
+                  for relocation of vessels without the need for consideration of specialist foundations for each location. This would
+                  provide only a small additional cost or even be cost equal to the specially provided condition if considered at
+                  commencement.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 93
+Biopharmaceutical Manufacturing Facilities
+
+            � A transfer deck or suspended through floor vessel should be considered, as these affect loadings and provide
+                  vibration issues on an upper floor slab. This can cause the need for local or a special built-in support structures.
+                  Alternative options such that initial decisions do not affect future flexibility should be considered.
+
+            � Provision of fallow space for utility expansion. Future utility needs for different products should be considered.
+
+            � Provision for entry and exit paths for different equipment types. Installation of removable walls and floor sections
+                  for equipment movement should be considered.
+
+#### 7.5.1 Impact of Structure on Design
+
+            Additional Footings/Foundations
+
+            Inclusion of additional footings, foundation, and/or piling to support potential future expansion should be considered.
+            This is a relatively small cost to allow flexibility.
+
+            Long Span/Short Span
+
+            Assuming a facility with more than one level, the risk to flexibility and adaptability of layout rests on structural loading
+            and column location. Structural spans for commercial buildings have slowly been creeping up from a given 6 m � 6
+            m (20 ft � 20 ft) span 30 years ago to a normal 7.5 m � 7.5 m (25 ft � 25 ft) or even 9 m to 10 m (30 to 35 ft) spans
+            in 2012. New secondary and biopharmaceutical facilities have been constructed with 30 m to 40 m (100 ft to 130 ft)
+            spans to allow for flexibility in equipment layout and maximum future use flexibility. Safety codes should be met.
+
+            Dancefloor or Ballroom Concepts
+
+            The availability of smaller modular horizontal format biopharmaceutical equipment and more flexible set-ups allows
+            the design of low building structures based on long spanning roofs. The structures are designed for reasonable
+            service loads and capable of support of walk-on ceilings and/or high level service modules. This allows the
+            opportunity for significant flexibility and adaptability with greater opportunity for expansion through extension or
+            provision of swing space.
+
+            Construction Materials
+
+            These are generally dependent on geographical location and local availability and capability. Normally steel or
+            concrete (either pre-cast or in situ) primary structures are used, although composite materials are becoming more
+            available. Potential for off-site or modular constructs allows remote manufacture of units needing higher tolerances.
+            Higher insulation requirements to meet energy targets have ensured the growth of modular insulated panel systems
+
+            glass wall both internally and externally.
+
+     Slab Thickening and Piling Miss Mei-Chun Chou
+     Taiwan, Early decisions that affect future options become limiting factors for facility re-use or onward design. Careful
+
+            consideration should be given to the laying of a piling mat and slab for very specific purposes, e.g., for a 20,000 L
+
+            slab for a general high loading initially and consider the area overall for a higher floor loading. For example:
+
+                  based facility. The new basement structure was designed for a general floor loading for mechanical plant, as
+                  there was a poor geotechnical condition and the kill tank was not highlighted to be an issue. Given a two week
+                  window, the design team was fortunate to design a special load spreading frame to fit the location, select a
+                  vessel that could fit the one sufficiently large access stairwell, pass between the column structure, and those
+                  items of plant that were in place. This provided a significant on-cost and will affect future flexibility.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 94                             ISPE Baseline� Guide:
+         Biopharmaceutical Manufacturing Facilities
+
+            Movement Issues
+
+            The inclusion of structural or constructional movement joints into clean buildings should be avoided.
+
+            Normal Site Conditions
+
+            Joint systems that provide a simple seal may be difficult to obtain; therefore, location of both primary structural joints,
+            and screed or slab day joints, becomes critical for ease of maintenance of a cleanliness regime. Floor slabs at ground
+            level should be designed to ensure either no joints or joints in discrete locations agreed with the design team and with
+            a clear understanding of risk. For upper levels the use of precast concrete planks should be carefully considered to
+            ensure that loading issues do not induce cracks that would not be acceptable for a bio-spill condition.
+
+#### 7.5.2 Seismic Considerations
+
+            The design of biopharmaceutical facilities for seismic risk locations (e.g., west coast USA, Romania, North East
+            India, south east China) should be carefully considered. For the US guidance, see the National Institute of Building
+            Sciences Whole Building Design Guide [53].
+
+            The European Eurocode 8 [54] is likely to be adopted by Russia, Ukraine, and Belarus, along with the other nine
+            structural Eurocodes. Kazakhstan is adopting the codes from 2015 in place of the previous reliance on Russian
+            codes. For biopharmaceutical facilities, seismic design needs special consideration in terms of slab sizes and
+            equipment connections. For example, design for earthquake code does not usually cover utilities considerations.
+            Inclusion of additional bracing for the utility systems, as well as for the primary structure and securing of equipment
+            may allow the opportunity for rapid restart for a biopharmaceutical facility after a seismic event
+
+#### 7.5.3 Modular Build
+
+            Process modules, whether as enclosed containers or skids, within a facility can be set on a deck or integrated into a
+            frame. They are not usually self-supporting. Structural loading considerations and access to process modules, e.g.,
+            for replacement, should be considered.
+
+#### 7.5.4 Structural Spans
+
+            Longer spans and less floor interruption can provide greater flexibility.
+
+            Items of equipment which need special consideration for support on an upper level should be identified in order to
+            maintain flexibility and adaptability. Items that require special consideration in terms of location and effect on current
+            or future facility include:
+
+     Miss Mei-Chun Chou � Active loads (e.g., 2 tonne IBCs)
+Taiwan, 7.6 Permitting, Code, and Insurance Issues
+
+            Permitting varies between geographical locations. Planning and building codes should be understood early on in the
+            construction process. Basic guidance includes:
+
+            � International Building Code (IBC) is a US originated code that does not apply to all countries. A number of
+                  countries have stricter compliance requirements. This could affect building compartmentalization and escape
+                  compliancy for larger biopharmaceutical facilities, including the break-out requirements with highly contained
+                  deep plan facilities.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                        Page 95
+Biopharmaceutical Manufacturing Facilities
+
+       � Insurers may have significantly higher and tighter expectations than many country codes. Depending on product
+             value or facility throughput, insurers may apply Maximum Foreseeable Loss (MFL) requirements that could
+             impact adversely on initial intended flexibility
+
+       � Fire and spillage risk issues: along with flood risk, the risk of fire, even in local facility areas, provides specific
+             issues for biopharmaceutical facilities. Both code and insurer requirements may expect bunding to a facility either
+             in specific areas, area by area, and/or at floor perimeters for sprinkler and/or fire water retention and analytical
+             testing prior to safe release or disposal to ensure that there is no biological risk to public health via sewage,
+             surface water, or ground water systems. This may introduce an undercroft or suitably sized basement to ensure
+             the necessary volume is retained.
+
+       It is advisable to speak with the insurers and the permitting authorities from the outset of a project to ensure that code
+       interpretations are in line with design expectations.
+
+### 7.7 Facility Design and Design Management Methodologies and Tools
+
+       Software developments provide design tools for the development and cross discipline integration of design from
+       an early stage with a consequent capacity to design, record, and integrate projects from commencement. Visual
+       development from instigation through 3D modeling of all aspects allows the consideration and review process to
+       happen at significant speed allowing rapid option development and value judgment.
+
+       Subsequent construction and operation interfacing and sequencing review using real-time scheduling to post
+       construction facility management using the fully integrated design model developed through construction for facilities
+       management is possible. This is known as Building Information Modeling (BIM) and its attributes, referred as onward
+       developments of 3D from 4D to 8D.
+
+       Biopharmaceutical and vaccines facilities can be extremely complex buildings, and may use up to 15 disciplines or
+       more for design. This team needs to be integrated. BIM integrated with facility design management systems has
+       evolved to make such programs significantly simpler to understand and implement.
+
+       Examples of integrated design tools include:
+
+       � Integrated Project Delivery (IPD) [55]
+
+       � ADePT design management tool [56]
+
+#### 7.7.1 IPD was developed in the US as an integrated project management method. ADePT was developed initially in the
+
+       management system. Engineering companies may use similar integration methodologies for early project definition
+       and front end design development.
+
+       Miss Mei-Chun Chou BIM supports these systems through the integration of attributed 3D design software parametrics.
+       Taiwan, Building Information Modeling (BIM) Contracting
+
+       Building information modeling may involve the introduction of new contracting methodologies as it allows for the
+       adoption of a "build before you build" opportunity with earlier review of design concepts and methodologies integrated
+
+       see the American Institute of Architects (AIA) [57].
+
+       For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 97
+Biopharmaceutical Manufacturing Facilities
+
+8 Mechanical
+
+### 8.1 Introduction
+
+            Mechanical, Electrical, Plumbing, and Fire Protection (MEP) systems should be designed to meet local codes and
+            regulations and to satisfy both good engineering practice and business needs.
+
+            The utilities needed for biopharmaceutical facilities are common to many manufacturing facilities, and include:
+
+            � Lighting
+
+            � Power
+
+            � Cooling water
+
+            � Process water
+
+            � Fire protection
+
+            � Compressed air
+
+            � Other gases
+
+            The design of HVAC and other supporting systems specific to biopharmaceutical facilities relies on the evaluation of
+            factors pertaining to the risk of product contamination or adulteration by the system or the ambient environment. In
+            addition, the design should consider the sometimes conflicting risks to worker or public health from the product or
+            process.
+
+            The factors to be evaluated may be divided into two groups:
+
+            1. Those risk factors that add to the risk of product contamination
+
+            2. Those protection factors that provide layers of protection against contamination
+
+            The combination of risk and protection factors determines the design of the facility. Example risk and protection
+            factors include:
+
+    � Product This Risk Factors: Document is licensed to
+
+                  - Kinetic energy of the process (ability to produce aerosols)
+
+                          Miss Mei-Chun Chou
+
+                  - Biocontainment (related to pathogenic or hazardous nature of organisms or genetic material)
+
+                                  Taiwan,
+
+                  - Hazardous and flammable material handling
+
+        - Product poDtenocywnloaded on: 12/18/19 1:11 AM
+
+                  - Material sensitivity to molecular contaminants
+
+                  - Material ability to support microbial growth
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 98                                                                       ISPE Baseline� Guide:
+                                                   Biopharmaceutical Manufacturing Facilities
+
+         � Business Risk Factors:
+               - Resource conservation and sustainability
+               - Product value
+               - Product medical criticality
+
+         � Protection Factors:
+               - Process closure
+               - Process containment (use of micro environments)
+               - Downstream processing (virus reduction and removal of other impurities and contaminants)
+               - Pre and post- viral separation
+               - Gowning
+               - Classification
+               - General arrangement and physical construction
+
+         A risk management approach is usually applied to these factors and may be formal, informal (or both). Risk mitigation
+         approaches should be concomitant with the level of identified risk and the acceptable level of operator exposure.
+         The risk to product quality should be assessed, appropriate mitigations designed, and the risks tracked. These tasks
+         may be performed by the MEP engineering team.
+
+### 8.2 Mechanical Systems and Environmental Controls
+
+         Each step in the manufacture of a biopharmaceutical drug substance should be evaluated for risk and protection
+         factors to determine the type of mechanical systems and environmental controls required to assure both a safe
+         product and a safe work environment.
+
+#### 8.2.1 Applying Risk Tools to Classification and HVAC Design
+
+         � Temperature       Miss Mei-Chun Chou
+         � Pressure                  Taiwan,
+         � Moisture content
+
+         � Particulate content
+
+         � Molecular (contaminant) content
+
+         The capabilities of an HVAC system can impact product contamination risk factors. Risk factors (see Section 8.1
+         of this Guide) also can impact the need for the HVAC system to enhance or provide environmental parameters to
+         support product quality.
+
+         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                                                     Page 99
+Biopharmaceutical Manufacturing Facilities
+
+An assessment of the impact of the environment on the process is required in order to understand the environmental
+control requirements of each space within a facility appropriately. During this risk assessment, product risk factors
+specific to each stage of a process should be considered and the effect on HVAC design should be identified.
+
+##### 8.2.1.1 Kinetic Energy
+
+Process steps which add significant energy to a culture or product present an increased risk of generating aerosols
+and cross-contaminating other products or increasing operator exposure. Examples of processes and equipment
+that, if breached, may allow product to become airborne include positive pressure and pumped transfers (for
+chromatography, filtration, or movement of material), centrifugation, and pressurized reactor vessels. Typical
+mitigations in areas of high aerosol risk include increasing air exchange rate to dilute aerosols in the space and
+enhanced filtration to remove aerosols from the airstream.
+
+8.2.1.2 Biocontainment (Related to Hazardous or Pathogenic Nature of Organisms or Genetic Material)
+
+Biocontainment requires the prevention of the escape of airborne organisms from a space to protect public health.
+When assessing the biocontainment risk, the probability of the material becoming airborne should be considered.
+Liquids or solids will need added energy (e.g., by pumping) to allow the material to become airborne.
+
+The need for biocontainment can drive risk mitigation approaches such as:
+
+� Primary process containment or closure
+
+� Secondary containment isolation or facilities
+
+� Treatment of the exhaust air from a space (e.g., scrubbing, chemical or thermal deactivation, or filtration)
+
+� Negative pressurization of spaces to prevent accidental emissions
+
+� Terminal filtration of supply air to prevent emission through the supply ductwork in the case of fan failure
+
+� Dedicated air handling equipment
+
+Filtration is a frequently used treatment for exhaust air with single and double HEPA filters used to help provide
+assurance of containment. A single properly installed HEPA filter can provide a greater than 4 log reduction in
+airborne pathogens. The need for biocontainment also may drive redundancy in HVAC systems to assure that
+pressure reversals and flow stoppages do not occur.
+
+8.2.1.3 Biosafety (Similar to Biocontainment � With Regard to Operator Exposure)
+
+Miss Mei-Chun Chou Biosafety requires the containment of airborne organisms within a space. The need for biosafety can drive risk
+
+mitigation approaches such as:              Taiwan,
+
+� Treatment of the recirculated air from a space (e.g., filtration)
+
+� Negative pressurization of spaces to prevent accidental emissions
+
+� Terminal filtration of supply air to prevent emission through supply ductwork in the case of fan failure
+
+� Dedicated air handling equipment
+
+                        For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 100                                                                                                  ISPE Baseline� Guide:
+                                                                               Biopharmaceutical Manufacturing Facilities
+
+          � Once-through ventilation
+
+          Filtration is a frequently used treatment for recirculated air with single and double HEPA filters used to help provide
+          assurance of reduction of airborne pathogens. A single properly installed HEPA filter can provide a greater than 4 log
+          reduction in airborne pathogens. Where isolators are used, the need for biocontainment also may drive redundancy in
+          HVAC system, to assure that primary containment is preserved.
+
+          When assessing this risk of potential airborne contaminants, the probability of the material becoming airborne should
+          be considered. Liquids or solids will need energy added (e.g., by pumping) to allow the material to become airborne.
+
+          The quantitative reduction in potential airborne contaminants provided by filtration should be evaluated as part of the
+          risk assessment. At high levels of biosafety (e.g., BSL-3 and 4) once-through ventilation is frequently used. Although
+          HEPA filters are effective against microorganisms, increasing levels of biosafety discourages the use of recirculation,
+          favoring once-through ventilation.
+
+##### 8.2.1.4 Hazardous and Flammable Material Handling
+
+          Hazardous or flammable material handling requires dilution of the hazard within a space and containment of airborne
+          hazards to prevent fugitive emissions from escaping a space. Hazardous or flammable material handling can drive
+          risk mitigation approaches such as:
+
+          � Primary process containment closure
+
+          � Treatment of the exhaust air from a space (e.g., scrubbing, adsorption, thermal oxidation, or filtration)
+
+          � Negative pressurization of spaces to prevent accidental emissions
+
+          � Redundancy to assure pressurization in all conditions
+
+          � Lower Explosive Limit (LEL) detection
+
+          � Deflagration containment and venting
+
+          Fume scrubbing or carbon adsorption may be used to treat exhaust air. Hazardous or flammable material handling
+          also may drive redundancy in HVAC systems to assure that dilution of contaminants and pressurization are not lost.
+
+          The use of hazardous or flammable materials usually discourages the use of recirculation, favoring once-through
+
+          ventilation. When assessing this risk, the actual probability of the material becoming airborne should be considered.
+
+          added energy; some liquids or solids will need to have energy added (e.g., by pumping) to allow the material to
+
+          become airborne. The risk assessment for these spaces should include a quantitative assessment of the capability of
+
+          Miss Mei-Chun Chou the risk mitigation approach to mitigate emissions to an acceptable level.
+
+##### 8.2.1.5 Product Potency                            Taiwan,
+
+          concentration of the potent product at the particular stage of the process should be considered. The potency of
+          biological products usually increases as they move downstream through purification. The potency of an API is usually
+
+                         For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                            Page 101
+Biopharmaceutical Manufacturing Facilities
+
+##### 8.2.1.6 Pre- and Post-Viral Separation
+
+Processes normally use several process steps to reduce the concentration of organisms or DNA/RNA and "virus-like
+particles" from a culture. In the case of vaccines, the pathogens may not be completely removed, but an acceptable
+level of inactivation may be achieved by a similar series of steps. The continuous nature of these processes may
+make "pre-viral" and "post-viral" steps difficult to determine precisely; however, a point in the process where virus
+reduction is adequate to justify separation should be identified.
+
+Air systems that serve upstream open processing areas (e.g., bioreactor and harvest) are usually separated from
+downstream processes (e.g., purification) at the point at which an acceptable reduction is achieved. Air systems are
+usually separated with the intent of reducing the chance of contamination of the final product; however, this may not
+be scientifically supportable.
+
+Using closed processing during pre- and post-viral separation can minimize the need to use HVAC systems for
+separation of these process stages.
+
+The ability of the product or organisms to become airborne and the ability of treatment steps to remove viruses or
+virus-like particles should be considered.
+
+##### 8.2.1.7 Product Sensitivity to Molecular Contaminants
+
+Open processes may be susceptible to ambient contamination by particulate or molecular contaminants, such as
+copper or zinc, which can denature products. This may impact HVAC material and filtration selections.
+
+##### 8.2.1.8 Product Ability to Support Microbial Growth
+
+The greater the ability of the product or culture to sustain microbial growth, the greater the risk and associated
+drive toward classified space or process closure. A frequently used mitigation, required to protect product, is supply
+filtration with single HEPA filtration providing a very high level of protection.
+
+##### 8.2.1.9 Process Closure
+
+The more layers of closure (separation from the room environment) a process has, the less impact the room
+environment normally has on product quality. This can drive a reduction in the:
+
+� Classification of spaces
+
+� Required contamination and cross contamination control
+
+� Once-thru air supply Miss Mei-Chun Chou
+
+Taiwan, Process closure also can provide primary containment to address issues of biocontainment and biosafety.
+
+##### 8.2.1.10 Downstream Processing              ID number: 1002915
+
+Bioprocesses typically move from a clean or sterile media to an aseptic culture to a harvested solution that is
+
+undesirable proteins and organisms from a culture. Downstream stages of processing, which are closer to the final
+
+API state are typically more sensitive to contamination than are early stages, see Figure 8.1.
+
+                         For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 102                                                                                             ISPE Baseline� Guide:
+
+*[Figure 8.1: Sensitivity of Contamination to Processing Stage  Biopharmaceutical Manufacturing Facilities]*
+
+##### 8.2.1.11 Gowning
+
+            The level of gowning can have a significant impact on room contamination and particulate/microbial performance.
+            Personnel can be significant contributors to space contamination, due to the shedding of both particulate and viable
+            organisms.
+
+            The higher the level of gowning, the lower the demand for diluting airflow to offset the particulate and bioburden from
+            operators. This becomes increasingly important as the space classification increases. For further information on
+            gowning and its relationship to space classification, see the ISPE Good Practice Guide: HVAC [58].
+
+##### 8.2.1.12 Classification
+
+            Manufacturing environments should be controlled in a manner appropriate to the process and product being handled.
+            Where the risk of product quality being impacted by the ambient environment is unacceptable; the environment is
+            typically identified as "high risk" or "critical" and an enhanced level of environmental control is usually required.
+
+            as outlined in ISO 14644-1 [59] and ISO 14644-2 [60], is intended to reduce this risk to product quality. While there
+            is no direct correlation between total particulate count and microbiological purity, it is generally accepted that that
+
+     Miss Mei-Chun Chou reductions in airborne particulate should result in reductions in airborne colony forming units.
+     Taiwan, Regulations further enhance these particulate requirements by setting limits for the expected and tested airborne
+
+            particle count and airborne microbial counts in sterile product faculties. Although there is no specific requirement for
+
+            Annex 2 [61] suggests that the principles of space classification outlined in Annex 1 [62] (for sterile product) should be
+            applied to biological product production as appropriate. This is also consistent with historical and risk-based practices
+
+            manufacture.
+
+            Process closure (see Chapter 3 of this Guide) also can be a significant driver of environmental classification.
+            Generally speaking, the fewer layers of closure a process has, the greater the need to perform it in a classified space.
+            The relationship between process risk of contamination and layers of protection (e.g., from process closure) requires
+            a flexible, multi-dimensional, approach to classification of spaces. For further information, see Appendix 1.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                 Page 103
+Biopharmaceutical Manufacturing Facilities
+
+Historical approaches to area classification were usually more prescriptive.
+
+Classification Standards and Regulations
+
+The ISO standard 14644-1 [59] and 14644-2 [60] is designed to support a number of industries classifying spaces
+according to the concentration of airborne particulate in a number of size categories. Only some of these size
+categories are of interest in the biopharmaceutical and vaccine facilities.
+
+The ISO standard only describes a system for categorizing or classifying cleanrooms by particle size and
+concentration (count per cubic meter). It addresses multiple particle size ranges and operational states, but it does
+not specify which particle sizes are of importance or in which state they should be measured.
+
+Table 8.1: ISO 14644-1 [59] Air Quality Classes (particles per cubic meter (cu ft) by size)
+
+ISO Class 0.1 micron 0.2 micron 0.3 micron 0.5 micron                                   1 micron      5 micron
+
+1  10                                       2        0                        0                   0                                             0
+
+2  100                                      24       10                       4 (0.1)             0
+
+3  1,000                                    237      102                      35 (1)              8
+
+4  10,000                                   2,370    1,020                    352 (10)            83
+
+5  100,000                                  23,700   10,200   3,520 (100)                    832                29
+
+6  1,000,000                                237,000  102,000  35,200 (1000)                  8,320    293
+
+7                                                             352,000 (10,000)               83,200   2,930
+
+8                                                             3,520,000 (100,000)       832,000       29,300
+
+9                                                             35,200,000 (1,000,000) 8,320,000        293,000
+
+Notes:
+1. Values in parenthesis are US Customary Class per USP and defunct FS 209
+2. Yellow highlighted values are recognized by all regulatory authorities.
+3. Green highlighted values are applied for products sold outside the US.
+
+Regulations and regulatory guidance documents normally outline the particle sizes of concern and the operational
+state in which they are to be measured. In addition, these regulations establish action limits for airborne viable
+organisms.
+
+including an ISPE system which is intended to bridge other regulatory systems and designations.
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+   For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 104                                                                                                ISPE Baseline� Guide:
+                                                                             Biopharmaceutical Manufacturing Facilities
+
+          Table 8.2: Environmental Control Requirements
+
+          ISPE   FDA � In Operation    PIC/S             EU and PIC/S                          Active
+          Grade                        Grade                                                   Air
+                                                         In Operation Limit  At Rest Limit     Action
+                 ISO     USP                             (particles/m3)      (particles/m3)    Limits
+                                                                                               cfu/m3
+                                                          0.5 �m  5.0 �m      0.5 �m  5.0 �m
+
+                         0.5 �m
+
+                         particle/ft3
+
+          Grade 5 ISO 5  100           A                 3,520   20          3,520     20      <1
+
+          Grade 6 ISO 6  1,000         N/A               35,200  290         3,520     29      7
+
+          Grade 7 ISO 7  10,000        B                 352,000 2900        3,520     29      10
+
+          Grade 8 ISO 8  100,000 C                       3,520,000 29,000    352,000 2,900     100
+
+          CNC+   N/A     N/A           D                 N/A     N/A         3,520,000 29,000  200
+
+          CNC    N/A     N/A           N/A               N/A     N/A         N/A       N/A     N/A
+
+          UC     N/A     N/A           N/A               N/A     N/A         N/A       N/A     N/A
+
+          Notes:
+          � Values may be averages.
+          � EU and PIC/S require measurement of particles up to and including 0.5 �m and 5 �m, the US requires 0.5 �m;
+
+              therefore, the table incorporates both to help to ensure compliance with the most stringent requirement.
+          � Samples from Grade 5 areas should normally show no viable organisms.
+          � Recovery from the "In Operation" to the "At Rest" state should be verified to occur within 15 to 20 minutes for
+
+              ISPE grades 6, 7, and 8. The recovery test, as defined in ISO 14644-3 [63], may be performed to verify a one
+              or two log reduction test. Recovery testing may also be performed for informational purposes.
+          � "At Rest" figures are given to support Recovery and "Static" Room Classification testing. Maintenance of these
+              levels during idle (not in use) periods is not intended. "At Rest" figures are given to support Recovery and
+              "Static" Room Classification testing. Maintenance of these levels during idle periods is not intended.
+
+          The level of space classification drives both airflows and filtration directly. All other factors being equal (e.g., similar
+          products, in the same process equipment undergoing identical process steps), cleaner spaces (lower number
+          classification) require greater airflow and higher grades of filtration.
+
+          The cleaner the classification, the greater the need for higher grades of filtration. Classifications of CNC, CNC+ (and/
+
+          be mounted in the Air Handling Unit (AHU) in lieu of a terminal location.
+
+          Miss Mei-Chun Chou Grade 8 (ISO 8 in operation) classification also can be achieved using high efficiency non-HEPA filters; however, both
+
+          regulation and industry practice suggest that HEPAs should be employed for all sterile operations, starting at ISO 8.
+
+          Taiwan, Similarly, the quantity of airflow required is also affected by the target classification.
+
+          The greater airflow in cleaner spaces may be expressed in terms of the ventilation rate (or Air Change (AC) rate).
+          While this measure has been dropped by IEST [64] and others, the USP [65] cites air change rates from 20 AC/hr
+
+          a suggestion that 20 AC/hr should be adequate for ISO-8 and suggests that cleaner spaces should have higher
+          ventilation rates.
+
+                 For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                 Page 105
+Biopharmaceutical Manufacturing Facilities
+
+However, considering only the ventilation rate neglects the correction for the mixing factor (K). The mixing factor is a
+measure of room design performance. In addition, considering only the air change rate in the design of cleanrooms
+fails to account for the following fundamental factors:
+
+� Contaminant Sources:
+
+- Occupants (people):
+
+a. Population
+
+b. Gowning
+
+c. Activity level
+
+- Process:
+
+a. Equipment
+
+b. Materials
+
+- Contamination Ingress:
+
+a. Through facility fabric (cracks in walls, ceilings, etc.)
+
+b. Through doorways
+
+� Configuration:
+
+- Architecture
+
+- HVAC system layout
+
+- Room distribution
+
+� Engineering Controls and Mitigations:
+
+- Local exhaust ventilation at generation points
+
+- Room performance (ventilation effectiveness)
+
+Miss Mei-Chun Chou - Pressurization/direction of airflow
+
+- Supply filtration                                Taiwan,
+- Airlocking
+
+increased as the classification becomes more stringent. However, the air volume required should be adjusted to
+
+accommodate the factors above. Sophisticated cleanroom airflow calculators and Computational Fluid Dynamic
+
+(CFD) modeling can help designers to achieve effective and efficient designs that relate directly to the process design
+
+and architectural configuration.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 106                                                                                             ISPE Baseline� Guide:
+                                                                          Biopharmaceutical Manufacturing Facilities
+
+          For a more detailed discussion on the design and construction of classified spaces, see the ISPE Good Practice
+          Guide for HVAC [58].
+
+##### 8.2.1.13 Resource Conservation and Sustainability Targets
+
+          As much as 60% of the energy consumed by an average pharmaceutical facility is dedicated to the HVAC systems.
+          Optimizing the selected critical parameters and acceptance criteria for HVAC can provide a significant reduction in
+          both cost and greenhouse gas emissions.
+
+          The design of highly efficient systems, employing a few core principles, can lead to further reductions and
+          achievement of sustainability goals. The core principles for energy reduction include:
+
+          � Classification of a space should be based on real risk. Over-classifying spaces should be avoided.
+
+          � Over-filtering should be avoided. A single HEPA filter can provide a greater than 4 log reduction in airborne
+                contaminants.
+
+          � Where operations are not continuous, an idle mode should be considered to reduce airflow (and possibly relax
+                temperature requirements) whenever an area is idle or when no open operations are present.
+
+          � Consideration of advanced control techniques such as discharge air dewpoint control and adaptive static
+                pressure reset.
+
+          � Consideration of use of recirculated air wherever practical.
+
+          � Consideration of heat recovery from exhaust streams.
+
+          � Consideration of use of once-through air systems for heat rejection during winter months.
+
+          � Consideration of utilizing local recirculation systems separate from primary pressurization air to allow
+                recirculation to be shut down during idle periods.
+
+          For a more detailed discussion of these and other energy saving strategies, see the ISPE Good Practice Guide:
+          HVAC [58].
+
+##### 8.2.1.14 Product Value
+
+          As product value increases, business drivers may push design toward a higher level of space classification to
+
+          potential contamination.
+
+Miss Mei-Chun Chou 8.2.1.15 Product Medical Criticality
+
+          Taiwan, An increased medical need for a product may push design toward a higher level of space classification to minimize
+
+          the risk of a lost batch due to environmental contamination or due to an inconclusive investigation into potential
+          contamination.
+
+##### 8.2.1.16 General Arrangement and Physical Construction
+
+            The physical arrangement of spaces and details of construction can have a significant impact on HVAC system
+
+            design. The adjacency of spaces with different classifications and biosafety needs can drive pressurization
+
+            schemes and outside air usage. Similarly, the use of tight space construction can minimize the use of outside air for
+
+            pressurization while maintaining good environmental control. Typical elements of concern include:
+
+                          For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                              Page 107
+Biopharmaceutical Manufacturing Facilities
+
+� Doors and door seals
+
+� Walls
+
+� Ceilings
+
+For a further discussion of the impact of architecture on HVAC design, refer to the ISPE Good Practice Guide: HVAC
+[58].
+
+#### 8.2.2 Other Typical HVAC Design Parameters
+
+Tables 8.3 and 8.4 offer typical practice for selected design parameters; they are not intended to be definitive nor to
+provide minimum acceptable practice:
+
+##### 8.2.2.1 Room Conditions
+
+Table 8.3: Typical Room Condition Ranges
+
+ISPE Grade Temp �F (�C)                     RH %     Final Filter                  Conceptual Air
+                                                     USA                           Change Rate
+Grade 5                  65 � 5 (18 � 3)    30 - 60  HEPA           EU
+Grade 6                  65 � 5 (18 � 3)    30 - 60  HEPA           H-13* or H-14  N/A
+Grade 7                  68 � 5 (20 � 3)    30 - 60  HEPA           H-13*          30 - 60
+Grade 8                  70 � 5 (21 � 3)    30 - 60  MERV 14/15 or  H-13*          15 - 60
+                                                     HEPA           F-9 or H-13*   10 - 20
+CNC+                     72 � 5 (22 � 3)    25 - 65  MERV 13 - 15
+CNC                      72 � 5 (22 � 3)    25 - 65  MERV 11 - 13   F-7 to F-9     6 - 15
+UC                       N/A                N/A      N/A            F-6            6 - 10
+                                                                    N/A            N/A
+
+Note: conceptual air change rates are for the purpose of estimating only and are derived from previously published
+documents. Actual airflows should be calculated during the design process.
+
+                                 Miss Mei-Chun Chou
+                                         Taiwan,
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 108                                                                                            ISPE Baseline� Guide:
+                                                                         Biopharmaceutical Manufacturing Facilities
+
+##### 8.2.2.2 Biosafety
+
+          Table 8.4: Recommended Design Conditions for Biosafety Levels
+
+          BSL      Press. Relative to  Discharge Filtration              Recirculation        Airlocking
+                   Uncontrolled Space
+          GLSP                         USA   EU
+          BSL 1    +
+          BSL 2    �                   N/A   N/A                         Recirculation        N/A
+          BSL 2+   -
+          BSL 3    -                   N/A   N/A                         Recirculation        Desirable
+                   --
+          BSL 4                        HEPA optional H-13 optional       Recirculation        Desirable
+
+                                       HEPA optional H-13 optional       Local recirculation  Suggested
+
+                                       HEPA  H-13 or 14                  100% OA,             Mandatory,
+                                                                         Local Room           Multi-Stage
+                   - - - (Hermetic)    Double HEPA Double H-13           Recirculation only   optional
+                                                              or 14
+                                                                         100% OA              Mandatory
+                                                                                              Multi-Stage
+
+          Gaseous decontamination can be applied to most biopharmaceutical and all vaccine processes. For gaseous
+          decontamination, exposed HVAC ductwork should be compatible with the decontamination means. The HVAC system
+          also should be arranged to allow isolation of gaseous decontamination spaces or recirculation of the decontaminating
+          gas in order to assure good distribution.
+
+          For further information on design principles for successful HVAC, see the ISPE Good Practice Guide for HVAC [58].
+
+### 8.3 Fire Protection
+
+            Attributes of fire protection systems specific to biopharmaceutical and vaccine facilities include:
+
+            � Use of cleanable sprinkler heads that are compatible with cleaning agents. Sealing of concealed heads should
+                  be considered for reducing risk of accidental release and increasing the capacity for cleaning. These heads can
+                  also minimize air leakage.
+
+            � Use of pre-action systems to minimize the risk of accidental release in cleanrooms and biosafety areas.
+
+                  may require abatement prior to discharge.
+
+     Miss Mei-Chun Chou � Dry chemical extinguishing systems are typically only needed where volatile organic solvents are used.
+     Taiwan, � Clean agent extinguishing systems (gaseous suppression) may also be used in high risk/high value areas, to
+
+                  - Clean agent extinguishing systems normally require HVAC isolation, room seal testing. Any means egress
+
+                        employing these systems.
+
+                   For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 109
+Biopharmaceutical Manufacturing Facilities
+
+### 8.4 Electrical
+
+            Attributes of electrical systems specific to biopharmaceutical and vaccine facilities include:
+
+            � Cleanroom lighting that is fully sealed from the room side may be required for manufacturing areas. Top access
+                  should be considered to minimize the risk of contamination of these rooms.
+
+            � Cleanroom phones and intercoms that are fully sealed from the room side are recommended for manufacturing
+                  areas.
+
+            � It may be beneficial to seal all conduits and penetrations from the room side in manufacturing areas.
+
+            � Within biosafety level 2+, 3, and 4 areas conduits and penetrations from the room side in manufacturing areas
+                  should be sealed.
+
+            � Biopharmaceutical processes are typically wet and the use of NEMA 3R, 4, and 4X closures may be beneficial
+                  within manufacturing areas.
+
+            � Within biosafety areas, NEMA 4X wiring devices and liquid tight conduit are recommended.
+
+            � Backup power should be considered for all biological product facilities. Loss of power to bioreactors and
+                  processing equipment for more than a brief period can be catastrophic and result in the loss of batches. This
+                  is generally a business issue, rather than a GMP issue, but in cases of medical necessity the loss can be more
+                  than financial.
+
+            � When evaluating the need for backup power, the need for HVAC during periods of power loss to assure
+                  environmental control should be considered. Qualification of the period that the facility is capable of maintaining
+                  conditions without active HVAC systems and a study of the sequencing of the restart of all systems upon the
+                  application of emergency power are recommended.
+
+            � The transition back from emergency power to normal power also should be evaluated. Standard transfer
+                  switches make an "open" transition from normal power to emergency power and back, requiring equipment
+                  to restart in both cases. It may be advisable to make the transition back to normal power a manual transition
+                  (rather than automatic) in order to minimize impact. Similarly, "closed" transition equipment, which is capable of
+                  transferring back to normal power without a loss of current for more than a few milliseconds, can be considered
+                  to minimize this impact. Paralleling equipment can be considered, which would allow a facility to transition
+                  to backup power and back to normal power without loss of current, in a planned outage, offers the greatest
+                  flexibility, but at the greatest cost.
+
+            � Uninterruptable power supplies should be provided for critical control systems and equipment. The loss of
+                  data from process equipment can result in lost batches. While it is advisable to put environmental monitoring
+
+        Miss Mei-Chun Chou systems on uninterruptable power; it is not usual to put environmental equipment on these systems as the inrush
+
+                  current needed to start motors presents a challenge to these systems. In addition, environmental control (HVAC)
+
+        Taiwan, systems can usually withstand a short shut-down period.
+
+                  areas should be liquid tight and capable of withstanding the cleaning products normally used in these
+
+        environments.Downloaded on: 12/18/19 1:11 AM
+
+            � Coated rigid conduit, stainless steel conduit and PVC conduit can be used, along with "liquid tight" flexible
+                  conduits. NEMA 4 and 4X enclosures are may be used in wet areas. NEMA 12 may be used for powder handling
+                  or other process areas. NEMA 3R is not generally recommended because of its incapability of withstanding water
+                  from all directions.
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                       Page 111
+Biopharmaceutical Manufacturing Facilities
+
+9 Sustainability
+
+### 9.1 Sustainability in the Context of Biopharmaceutical Facility Design
+
+            Although the processing chemicals used as buffers can be a challenge to the environment and the risk of non-
+            deactivated viruses should be given careful consideration in regard to disposal, biopharmaceutical drug substances
+            can be considered sustainable, as they are cultured in a growth medium which promotes their growth through the use
+            of enhanced natural means.
+
+            Sustainable facility design involves:
+
+            � Designing layouts that are spatially efficient.
+
+            � Designing layouts that consider passive solar design in the placing and orientation of individual blocks of the
+                  facility on the site to gain maximum advantage/ecological benefit of the climatic location.
+
+            � Insulating the facility to ensure that expenditure on energy is kept to a minimum.
+
+            � The minimization of heat loss and heat gain through an efficient building enveloped should be balanced against
+                  the need for cooling load reduction considerations in pharmaceutical facilities.
+
+            � Correct site orientation and sun screening to minimize heat gain for cooling and to maximize heat gain for
+                  heating.
+
+            � Commissioning and monitoring the facility for ongoing energy savings.
+
+            � Ensuring that the facility operation and maintenance is efficient by design.
+
+            � Providing renewable energy sources as a strategy including sources that recycle or return energy to the
+                  community.
+
+            � Using process heat sources rather than exhausting them.
+
+            � Minimizing water consumption and considering grey water recycling.
+
+            � Working in conjunction with the process to provide all of the above to the benefit of the stakeholders, company,
+
+            Each of the above activities may be considered as a sustainable design basis or criterion when placed in the context
+            of building designs that consider:
+
+                          Miss Mei-Chun Chou
+
+            � Adaptability and flexibility in use
+
+                                  Taiwan,
+
+            Closed processing can provide opportunities for a significant reduction in:
+
+     � Background Downloaded environmental controls on: 12/18/19 1:11 AM
+
+            � Energy use and consumption (by reductions in Grade)
+
+            � Once through air requirements
+
+                               For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 112                             ISPE Baseline� Guide:
+          Biopharmaceutical Manufacturing Facilities
+
+          � Facility response4
+
+          � Facility and utility size
+
+          The use of modular continuous processing lines and the potential both for closed processing and the greater use
+          of disposables could allow facility size reduction and adaptability and flexibility in the use of a facility. This is likely
+          to provide both an environmental benefit and an operational cost benefit through reduced local taxes and reduced
+          facility energy usage.
+
+          Simpler manufacturing formats for retrofitting available commercial industrial buildings may provide a cost benefit,
+          when compared to new bespoke facility designs expected of open, batch type processing.
+
+          An ISPE Good Practice Guide on Sustainability [67] is in development and is intended to provide overall guidance on
+          sustainability and related topic areas.
+
+          Sustainable facility design can provide significant contributions to sustainability in the following areas:
+
+          � Application of green chemistry
+
+          � Reduction in carbon and/or total greenhouse gas emissions (metric tons CO2 equivalent), downward trend in
+                annual figures
+
+          � Process intensification, reduced waste, improved yield
+
+          � Waste minimization (e.g., reduced water usage), reduced total waste, downward trend in annual figures
+
+          � Energy reduction (in GJ), downward trend in annual figures
+
+          � Reduction in solvent usage (tons), reduction VOC emissions (tons), downward trend in annual figures
+
+          � Reduction in waste water COD (mg\l)
+
+          � Areas where policies have been instituted
+
+          � Verification of a system, e.g., ISO 14001 [68]
+
+          � Certification using an agreed environmental assessment method/system to meet a specified target
+
+                              Miss Mei-Chun Chou
+                                      Taiwan,
+
+          4 Facility response relates to the capacity to reduce the facility overall through being able to adopt a different volumetric response to its environment.
+
+                              For individual use only. � Copyright ISPE 2013. All rights reserved.
+Appendix 1
+Supporting Information
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 114                               ISPE Baseline� Guide:
+
+## Appendix 1: Biopharmaceutical Manufacturing Facilities
+
+10 Appendix 1 � Supporting Information
+
+### 10.1 Mechanical Information
+
+#### 10.1.1 Aide M�moire 07121104 Classifications
+
+            Grade F: a classified space that satisfies the German Aide M�moire 07121104 [69] airborne viable microorganisms <
+            500 cfu/m3.
+
+            Grade E: a classified space that satisfies the German Aide M�moire 07121104 [69] airborne viable microorganisms <
+            250 cfu/m3.
+
+#### 10.1.2 PIC/S and EMA Application of ISO 14644
+
+            Grade D: a classified space that satisfies EMA and PIC/S requirements to meet ISO-8 measured via airborne 0.5 �m
+            and 5.0 �m particulate in the "at-rest" state only and airborne viable microorganisms < 200 cfu/m3.
+
+            Grade C: a classified space that satisfies EMA and PIC/S requirements to meet ISO-8 measured via airborne
+            0.5 �m and 5.0 �m particulate in the "in-operation" state and meet ISO-7 measured via airborne 0.5 �m and 5.0
+            �m particulate in the "at-rest" state (with a transition between states of 15 to 20 minutes) and airborne viable
+            microorganisms < 100 cfu/m3.
+
+            Grade B: a classified space that satisfies EMA and PIC/S requirements to meet ISO-7 measured via airborne
+            0.5 �m and 5.0 �m particulate in the "in-operation" state and meet ISO-5 measured via airborne 0.5 �m and 5.0
+            �m particulate in the "at-rest" state (with a transition between states of 15 to 20 minutes) and airborne viable
+            microorganisms < 10 cfu/m3.
+
+            Grade A: a classified space that satisfies EMA and PIC/S requirements to meet ISO-5 measured via airborne 0.5
+            �m particulate and ISO-4.8 measured via airborne 5.0 �m particulate in the "in-operation" and "at-rest" states and
+            airborne viable microorganisms < 1 cfu/m3. These spaces are normally unidirectional flow with an air velocity of 0.20
+            to 0.45 m/s.
+
+#### 10.1.3 Revised ISPE Grades
+
+            Grade 8: a classified space that satisfies US FDA requirements for ISO-8 measured via airborne 0.5 �m particulate
+            in the "in-operation" state, as well as EMA and PIC/S requirements to meet ISO-8 measured via airborne 0.5 �m and
+
+            in the "at-rest" state (with a transition between states of 15 to 20 minutes) and airborne viable microorganisms < 100
+            cfu/m3.
+
+     Miss Mei-Chun Chou Grade 7: a classified space that satisfies US FDA requirements for ISO-7 measured via airborne 0.5 �m particulate
+
+            in the "in-operation" state, as well as EMA and PIC/S requirements to meet ISO-7 measured via airborne 0.5 �m and
+
+     Taiwan, 5.0 �m particulate in the "in-operation" state and meet ISO-5 measured via airborne 0.5 �m and 5.0 �m particulate in
+
+            m3.
+
+            in the "in-operation" state, as well as EMA and PIC/S requirements to meet ISO-5 measured via airborne 0.5 �m
+            particulate and ISO-4.8 measured via airborne 5.0 �m particulate in the "in-operation" and "at-rest" states, and
+            airborne viable microorganisms < 1 cfu/m3.These spaces are normally unidirectional flow with an air velocity of 0.20
+            to 0.45 m/s.
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                         Page 115
+Biopharmaceutical Manufacturing Facilities                                                                  Appendix 1
+
+Controlled Not Classified (CNC): areas where HVAC systems are specifically designed to reduce airborne
+contaminants below the level of the ambient environment and both temperature and Relative Humidity (RH) are
+controlled more tightly than in the ambient environment. Claims for environmental control in these areas are related to
+the design of the system and installation qualification is common. No claim is made or qualified for the specific control
+of particulate. Typical systems will have heating, cooling and filtration meeting MERV 13 or better. These areas are
+sometimes referred to as "pharmaceutical" or "clean" areas within pharmaceutical facilities.
+
+Controlled Not Classified with Local Monitoring (CNC+): areas where HVAC systems are specifically designed to
+reduce airborne contaminants below the level and both temperature and Relative Humidity (RH) are controlled more
+tightly than in the ambient environment. Claims for environmental control in these areas are related to both the design
+of the system and system performance, installation qualification and operational qualification is common. These areas
+are typically qualified to meet ISO 8 requirements at rest only to control temperature and humidity within a specified
+band and are monitored for viable particulate during operation to provide background information for investigations
+and to assure the adequacy of layers of closure. These areas are generally aligned with PIC/S designation "Grade D"
+and airborne viable microorganisms < 200 cfu/m3.
+
+Temperature Controlled: areas where HVAC systems are specifically designed to control both temperature and
+(where applicable) Relative Humidity (RH) more tightly than in the ambient environment. Temperature and RH are
+typically qualified in these areas and temperature mapping is expected. This is designation is typically found in
+warehouse spaces, cold rooms, logistics.
+
+Gaseous Decontamination: one of a number of technologies that disseminate a biocidal gas to produce a minimum
+3 log (and as much as 6 log) reduction in viable organisms in the environment. These technologies diffuse at the
+molecular level and can pass through a HEPA filter.
+
+Fogging Decontamination: one of a number of technologies that disseminate a biocidal agent as very small particle
+size to produce a minimum 3 log (and as much as 6 log) reduction in viable organisms in the environment. These
+technologies cannot pass through a HEPA filter efficiently (greater than 20% loss).
+
+Containment: equipment, systems or construction intended to prevent the escape of products, materials or
+organisms.
+
+Biological Containment: an organized system of equipment, and construction intended to prevent the escape
+of organisms. Biological containment is usually identified according to the biological safety designation of the
+organism(s) being contained.
+
+Containment Boundary: the imaginary line in the construction of systems or facilities on which the various
+
+components of a containment barrier are aligned. Spaces within this boundary are normally considered as
+
+Containment Barrier: construction that is impervious or highly resistant to the passage of micro-organisms. Solid
+
+Miss Mei-Chun Chou materials make up the majority of containment barriers, but HEPA and ULPA filters are also considered containment
+
+barriers.
+
+Taiwan, Global Recirculation: re-use (recirculation) of conditioned air leaving a room to serve any room of similar type or
+function.
+
+Local Recirculation: re-use (recirculation) of conditioned air leaving a room only to serve that room or suite of rooms
+
+with similar Downloaded on: biological and contamination risks. 12/18/19 1:11 AM
+
+N+1 Redundancy: a system where the failure of any single major component will not result in a reduction in capacity
+below the design requirement.
+
+           For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 116                               ISPE Baseline� Guide:
+
+## Appendix 1: Biopharmaceutical Manufacturing Facilities
+
+      XX% N+1 Redundancy: a system where the failure of any single major component will result in XX% of the design
+      required capacity remaining.
+
+      Decontamination Capable HVAC: an HVAC system that is arranged to recirculate gaseous decontamination agent
+      for effective decontamination of a space and the air system(s) serving it.
+
+      Decontamination Compatible HVAC: an HVAC system where exposed components are resistant to gaseous
+      decontamination agents.
+
+      Decontamination Capable Exhaust: an exhaust system that is arranged to allow recirculation of gaseous
+      decontamination agent for effective decontamination of filter and fans as well as exhaust of decontamination agent
+      from a served space.
+
+      Pre and Post- Viral Separation (Viral + and Viral-): the separation of pre-viral and post-viral product or upstream
+      (bioreaction and harvest) from downstream (purification) is not precise. Most processes utilize multiple process steps
+      to reduce the concentration of organisms or DNA/RNA from the culture, creating the final product. In the case of
+      vaccines, the viral contaminants may never be removed. The convention is to separate air systems that serve these
+      two open processing areas to reduce the chance of contamination of the final product; however, this may not be
+      scientifically supportable. Similar to earlier evaluations, the ability of the product or organisms to become airborne
+      should be considered. This separation is affected by process closure, the achievement of closure obviates the need
+      for HVAC separation.
+
+      Multiple Efficiency Reporting Value (MERV): the ASHRAE Standard 52.2 [70] method of testing filter efficiency by
+      challenging filters with particles of multiple sizes and integrating the efficiency into a single number rating. The higher
+      the MERV number the more efficient the filter. MERV 14/15 is approximately equivalent to a 95% efficient filter.
+
+      Air Change Rate (Ventilation Rate): the volume of air supplied to a room (per hour) divided by the volume of the
+      room. This is a purely numerical evaluation used as a rule of thumb in cleanroom design.
+
+      Particle Generation Rate: the number of particles of a target size released into a room (per hour) by processes,
+      people, or in the supply air.
+
+      Dilution Ventilation: Reduction in airborne contamination via mixing of clean incoming air with contaminated air
+      within the room and removal of an equivalent amount to exhaust or recirculation via treatment (e.g. filtration).
+
+      Displacement Ventilation: reduction in airborne contamination via "plug flow" of clean incoming air forcing
+      contaminated air within the room to exhaust or recirculation via treatment (e.g., filtration).
+
+### 10.2 This Document is licensed to Ventilation Efficiency (Effectiveness): the ability of an HVAC system to dilute contaminants when compared to
+
+      ideal dilution. A ventilation effectiveness of 1.0 indicates that a room is able to dilute contaminants as effectively as is
+      indicated by an ideal dilution calculation. Displacement ventilation may have an effectiveness as high as 3.0 to 4.0.
+
+      Miss Mei-Chun Chou Recovery: a test defined in ISO 14644-3 [63] intended to show a cleanroom's ability to "cleanup" from an operational
+      Taiwan, particulate specification to a lower (cleaner) classification.
+
+      Methods of Environmental Classification through Risk Assessment
+
+      the presence of downstream mitigations) should be considered in light of established layers of protection, in order
+      to determine the appropriate space classification for an operation. There are numerous methods to do this analysis.
+      Tables 10.1 and 10.2 are an example of one possible approach to risk assessment.
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                                                        Page 117
+Biopharmaceutical Manufacturing Facilities                                                                 Appendix 1
+
+In stage 1, the risk of contamination is determined based on the stage of the process and the inherent risk to
+contamination of the process. The risk may derive from a lack of isolation from the ambient environment, high energy
+in adjacent processes (high risk of aerosol contaminants), the presence of growth media in the process, or the
+inherent fragility of the organism or protein. The product of these two factors yields an exposure risk ranking (given
+here on a 1 to 5 scale of Low, Med-Low, Medium, Med-High, and High).
+
+Table 10.1: Exposure Risk
+
+Stage of Processing                                                Risk of Contamination
+
+Bioreactor                                  High         Med-High     Medium       Med-Low           Low
+Harvest                                     Medium                                                   Low
+Initial Purification                        Medium       Med-Low      Low          Low               Low
+Final Purification                          Med-High                                                 Med-Low
+API                                         High         Med-Low      Med-Low      Low               Medium
+Innoculum                                   High                                                     Medium
+                                            High         Medium       Med-Low      Med-Low           Medium
+
+                                                         Med-High     Medium       Medium
+
+                                                         High         High         Med-High
+
+                                                         High         High         Med-High
+
+In the second step, this exposure risk is adjusted ranking by evaluating the layers of protection available to shield
+the process from contamination. The more layers of protection available to prevent contamination the less critical the
+ambient environment is to product quality. The risk of failure of the protection should be included in this evaluation;
+for example, a silicone tube has a higher risk of failure than a stainless steel tube; therefore, the layers of protection it
+provides would be less.
+
+This example equates the levels of protection, approximately, with log reduction of contaminants provided by that layer.
+This concept is leveraged from sterile processing where log reductions in contamination are the standard for rating
+process closure. This concept is also well aligned with the environmental classifications, where each succeeding lower
+classification number is one order of magnitude cleaner than its predecessor. This example equates the five levels of
+risk with five classifications (Grade5, Grade 7, Grade 8, CNC+, and CNC) as discussed in the following section.
+
+Table 10.2: Sample Risk and Levels of Protection Chart
+
+Exposure Risk                                                      Layers or Level of Protection
+
+               0                                      1            2            3                 4
+
+               Grade 5 (A)                            Grade 7 (B)  Grade 8 (C)  CNC+
+
+Med-High       Grade 7 (B)                            Grade 8 (C)  CNC+         CNC               CNC
+
+Medium         Grade 7 (BM) issCNMC+ ei-ChuCnNCChou CNC                                           CNC
+
+Med-Low        CNC+                                   CNCTaiwanC,NC             CNC               CNC
+
+Low            CNC ID nCuNCmber: 1C0N0C 2915 CNC                                                  CNC
+
+Notes:
+
+2. An open micro-environment can typically provide a > 1 to 2 log reduction in contaminants, or 1 to 2 layers of
+
+protection.
+
+3. A closed micro-environment can provide a > 3 log reduction in contaminants, or 3 layers of protection.
+
+4. The log reductions proposed herein are derived from sterile and containment equipment performance.
+
+5. The risk of failure should be included in the evaluation (e.g., stainless steel piping would rank as greater
+
+protection than a plastic tube).
+
+             For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 118                                                                            ISPE Baseline� Guide:
+
+## Appendix 1: Biopharmaceutical Manufacturing Facilities
+
+#### 10.2.1 Other Approaches to Risk Assessment
+
+            FMEA is one of the most popular methods of risk assessment and prioritization. Most companies have a standard
+            approach (evaluating the probability, impact and detectability of an environmental control failure) that is fully
+            applicable to this type of assessment. Given the consistency of the factors that must be considered, as discussed
+            in the preceding, an approach with a fixed taxonomy can be used to promote a consistent evaluation of risk and
+            resultant environmental controls. The following is an example of one such approach and method.
+
+*[Figure 10.1: Example Environmental Risk Assessment Figure]*
+
+The above tool is used in a multi-step process when performing an environmental risk assessment to determine area
+biosafety and cleanliness classifications:
+
+Step 1:
+
+Look at every room or function in the facility to consider the risk associated with the activities in that room.
+
+Step 2:
+
+Step 3:
+
+Miss Mei-Chun Chou Look at every activity and sub-activity and assign a risk associated with its sensitivity to the room environment.
+
+Taiwan, Consider the level of energy, the level of openness, the sensitivity of the process itself (presence of growth media,
+hand manipulation, etc.)
+
+Look for the presence of organisms requiring biosafety.
+
+Step 4:
+
+Look at the layers of protection against the above sensitivity to the room environment.
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                     Page 119
+Biopharmaceutical Manufacturing Facilities                              Appendix 1
+
+Step 5:
+
+Look at both the impact of contamination at the stage in the process and the presence of downstream processing that
+can further mitigate the environmental risk.
+
+Step 6:
+
+Take the product of the preceding factors and determine a level of environmental control required. Gowning may be a
+factor included in this determination.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+Appendix 2
+References
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 122                                                         ISPE Baseline� Guide:
+
+## Appendix 2: Biopharmaceutical Manufacturing Facilities
+
+11 Appendix 2 � References
+
+1. International Conference on Harmonization of Technical Requirements for Registration of Pharmaceuticals for
+      Human Use, ICH Harmonized Tripartite Guideline, Good Manufacturing Practice Guide for Active Pharmaceutical
+      Ingredients � Q7/Q7A, Step 4, 10 November 2000, www.ich.org.
+
+2. PIC/S GMP Guide � Part II: Basic Requirements for Active Pharmaceutical Ingredients, Pharmaceutical
+      Inspection Convention and Pharmaceutical Inspection Co-operation Scheme (jointly referred to as PIC/S), www.
+      picscheme.org.
+
+3. International Conference on Harmonization of Technical Requirements for Registration of Pharmaceuticals for
+      Human Use, ICH Harmonised Tripartite Guideline, Development and Manufacture of Drug Substances (chemical
+      entities and biotechnological/biological entities) � Q11, Step 4, 1 May 2012, www.ich.org.
+
+4. Part II: Basic Requirements for Active Substances used as Starting Materials, EudraLex Volume 4 � EU
+      Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use, February
+      2010, ec.europa.eu/health/documents/eudralex/vol-4.
+
+5. 21 CFR Part 211 � Current Good Manufacturing Practice for Finished Pharmaceuticals, US Code of Federal
+      Regulations, U.S. Food and Drug Administration (FDA), www.fda.gov.
+
+6. Annex 14: Manufacture of Medicinal Products Derived from Human Blood or Plasma, EudraLex Volume 4 � EU
+      Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary Use, November
+      2011, ec.europa.eu/health/documents/eudralex/vol-4.
+
+7. Annex 4: Blood Products, Good Manufacturing Practice (GMP) for Drugs, 2010 Revision (update effective March
+      2011), China Food and Drug Administration (CFDA), http://www.pharmproc.com/ChinaGMP/Appendix4_Bilingal.
+      htm
+
+8. ISPE Guide: Biopharmaceutical Process Development and Manufacturing, International Society for
+      Pharmaceutical Engineering (ISPE), First Edition, October 2013, www.ispe.org.
+
+9. ISPE Website, www.ispe.org.
+
+10. International Conference on Harmonisation of Technical Requirements for Registration of Pharmaceuticals for
+
+            Human Use, ICH Harmonised Tripartite Guideline, Quality Risk Management � Q9, Step 4, 9 November 2005,
+
+            This www.ich.org. Document is licensed to
+11. ISPE Baseline� Pharmaceutical Engineering Guide, Volume 7 � Risk-Based Manufacture of Pharmaceutical
+
+            Products, International Society for Pharmaceutical Engineering (ISPE), First Edition, September 2010, www.ispe.
+
+            org.  Miss Mei-Chun Chou
+
+Taiwan, 12. ISPE Baseline� Pharmaceutical Engineering Guide, Volume 5 � Commissioning and Qualification, International
+
+13. International Conference on Harmonisation of Technical Requirements for Registration of Pharmaceuticals for
+
+      ich.org.
+
+14. PIC/S GMP Guide � Part I: Basic Requirements for Medicinal Products, update issued 1 January 2013,
+      Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme (jointly referred to
+      as PIC/S), www.picscheme.org.
+
+                  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                         Page 123
+Biopharmaceutical Manufacturing Facilities  Appendix 2
+
+15. PIC/S GMP Guide � Annex 2: Manufacture of Biological Medicinal Products for Human Use, update issued 1
+      January 2013, Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme
+      (jointly referred to as PIC/S), www.picscheme.org.
+
+16. FDA Guidance for Industry: CGMP for Phase 1 Investigational Drugs, July 2008, U.S. Food and Drug
+      Administration (FDA), www.fda.gov.
+
+17. 21 CFR Part 210.2(c) � Current Good Manufacturing Practice in Manufacturing, Processing, Packing, or Holding
+      of Drugs; General, Applicability of Current Good Manufacturing Practice Regulations, US Code of Federal
+      Regulations, U.S. Food and Drug Administration (FDA), www.fda.gov.
+
+18. Good Manufacturing Practice (GMP) for Drugs, 2010 Revision (update effective March 2011), China Food and
+      Drug Administration (CFDA), http://eng.sfda.gov.cn/WS03/CL0768/65113.html.
+
+19. Annex 2: Active Substances Used as Starting Materials (API and Fermentation), Good Manufacturing Practice
+      (GMP) for Drugs, 2010 Revision (update effective March 2011), China Food and Drug Administration (CFDA),
+      http://www.pharmproc.com/ChinaGMP/Appendix2_Bilingal.htm
+
+20. Annex 3: Biological Medicinal, Good Manufacturing Practice (GMP) for Drugs, 2010 Revision (update effective
+      March 2011), China Food and Drug Administration (CFDA), http://www.pharmproc.com/ChinaGMP/Appendix3_
+      Bilingal.htm
+
+21. GMP Guideline for Drug Products, issued 2005, National Institute of Health Sciences (NIHS) Japan, www.nihs.
+      go.jp.
+
+22. U.S. Freedom of Information (FOI) Act, www.foia.gov.
+
+23. U.S. Food and Drug Administration (FDA), www.fda.gov.
+
+24. European Medicines Agency (EMA), www.ema.europa.eu.
+
+25. European Commission (EC), Public Health, ec.europa.eu/health/documents/.
+
+26. World Health Organization (WHO), www.who.int.
+
+27. International Conference on Harmonisation, www.ich.org.
+
+28. Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme (jointly referred to
+
+29. International Federation of Biosafety Associations (IFBA), www.internationalbiosafety.org.
+
+Miss Mei-Chun Chou 30. U.S. Centers for Disease Control and Prevention (CDC) and the U.S. National Institutes of Health (NIH) (in
+  Taiwan, partnership to publish biosafety guidelines), www.cdc.gov/biosafety/.
+
+32. China Food and Drug Administration (CFDA), China, http://eng.sfda.gov.cn/WS03/CL0755.
+
+33. Central Drugs Standard Control Organization (CDSCO), India, www.cdsco.nic.in.
+
+34. Association of South-East Asian Nations (ASEAN), www.asean.org.
+
+35. U.S. Code of Federal Regulations (CFRs), U.S. Food and Drug Administration (FDA), www.fda.gov.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 124                               ISPE Baseline� Guide:
+
+## Appendix 2: Biopharmaceutical Manufacturing Facilities
+
+36. Appendix K, NIH Guidelines for Research Involving Recombinant or Synthetic Nucleic Acid Molecules (NIH
+      Guidelines), U.S. National Institutes of Health (NIH), http://oba.od.nih.gov/oba/rac/Guidelines/NIH_Guidelines.
+      htm.
+
+37. ASME BPE-2009 Bioprocessing Equipment, American Society of Mechnical Engineers (ASME), www.asme.org.
+
+38. BioPhorum Operations Group (BPOG), www.biophorum.com.
+
+39. Bio-Process Systems Alliance (BPSA), http://bpsalliance.org.
+
+40. ISPE Guide Series: Product Quality Lifecycle Implementation (PQLI�) from Concept to Continual Improvement,
+      Part 1 � Product Realization using Quality by Design (QbD): Concepts and Principles, including Overview,
+      Criticality, Design Space, and Control Strategy, International Society for Pharmaceutical Engineering (ISPE), First
+      Edition, November 2011, www.ispe.org.
+
+41. Pharmaceutical cGMPs for the 21st Century � A Risk Based Approach, September 2004, U.S. Food and Drug
+      Administration (FDA), www.fda.gov.
+
+42. "21 CFR Parts 808, 812, and 820, Medical Devices; Current Good Manufacturing Practice (CGMP) Final Rule;
+      Quality System Regulation," Federal Register, Vol. 61, No. 195, 7 October 1996, pp. 52633-52634, U.S. Food
+      and Drug Administration (FDA), www.fda.gov.
+
+43. WHO Expert Committee on Specifications for Pharmaceutical Preparations � WHO Technical Report Series,
+      No. 908 � Thirty-seventh Report, Annex 7: Application of Hazard Analysis and Critical Control Point (HACCP)
+      Methodology to Pharmaceuticals, 2003, World Health Organization (WHO), www.who.int.
+
+44. ISPE GAMP� Good Practice Guide: A Risk-Based Approach to GxP Process Control Systems, International
+      Society for Pharmaceutical Engineering (ISPE), Second Edition, February 2011, www.ispe.org.
+
+45. ISPE GAMP� Good Practice Guide: Manufacturing Execution Systems � A Strategic and Program Management
+      Approach, International Society for Pharmaceutical Engineering (ISPE), First Edition, February 2010, www.ispe.
+      org.
+
+46. Clarke, Gerard, Gerry Mulryan, and Padraig Liggan, "Lean Maintenance � A Risk-Based Approach," Pharmaceutical
+      Engineering, September/October 2010, Vol. 30, No. 5, pp. 10-18, www.pharmaceuticalengineering.org.
+
+47. ISPE Good Practice Guide: Maintenance, International Society for Pharmaceutical Engineering (ISPE), First
+      Edition, May 2009, www.ispe.org.
+
+      for Pharmaceutical Engineering (ISPE), Second Edition, December 2011, www.ispe.org.
+
+Miss Mei-Chun Chou 49. Benson, Richard and Niranjan S. Kulkarni, "Understanding Operational Waste from a Lean Biopharmaceutical
+  Taiwan, Perspective," Pharmaceutical Engineering, November/ December 2011, Vol. 31, No. 6, pp. 74-82, www.
+
+      pharmaceuticalengineering.org.
+
+50. ISPE Good Practice Guide: Cold Chain Management, International Society for Pharmaceutical Engineering
+      (ISPE), First Edition, May 2011, www.ispe.org.
+
+51. ISPE Guide: Cleaning Process Development and Validation (working title), International Society for
+      Pharmaceutical Engineering (ISPE), First Edition, under development at time of publication, www.ispe.org.
+
+52. ISPE Baseline� Pharmaceutical Engineering Guide, Volume 3 � Sterile Product Manufacturing Facilities,
+      International Society for Pharmaceutical Engineering (ISPE), Second Edition, September 2011, www.ispe.org.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 125
+Biopharmaceutical Manufacturing Facilities                            Appendix 2
+
+53. Seismic Design Principles, Whole Building Design Guide, U.S. National Institute of Building Sciences, www.
+      wbdg.org/resources/seismic_design.php.
+
+54. European Eurocode 8 � Earthquakes, www.eurocodes.co.uk/EurocodeDetail.aspx?Eurocode=8.
+
+55. Integrated Project Delivery (IPD), American Institute of Architects (AIA), www.aia.org/contractdocs/AIAS077630
+
+56. ADePT design management tool, www.adeptmanagement.com/amltechnologies/process.html
+
+57. American Institute of Architects (AIA), www.aia.org.
+
+58. ISPE Good Practice Guide: Heating, Ventilation, and Air Conditioning, International Society for Pharmaceutical
+      Engineering (ISPE), First Edition, September 2009, www.ispe.org.
+
+59. ISO 14644-1, Cleanrooms and Associated Controlled Environments � Part 1: Classification of Air Cleanliness,
+      www.iso.org.
+
+60. ISO 14644-2, Cleanrooms and Associated Controlled Environments � Part 2: Specifications for Monitoring and
+      Periodic Testing to Prove Continued Compliance with ISO 14644-1, www.iso.org.
+
+61. Annex 2 (Draft): Manufacture of Biological Active Substances and Medicinal Products for Human Use, EudraLex
+      Volume 4 � EU Guidelines for Good Manufacturing Practice for Medicinal Products for Human and Veterinary
+      Use, ec.europa.eu/health/documents/eudralex/vol-4.
+
+62. Annex 1: Manufacture of Sterile Medicinal Products, EudraLex Volume 4 � EU Guidelines for Good
+      Manufacturing Practice for Medicinal Products for Human and Veterinary Use, November 2008, ec.europa.eu/
+      health/documents/eudralex/vol-4.
+
+63. ISO 14644-3, Cleanrooms and Associated Controlled Environments � Part 3: Test Methods, www.iso.org.
+
+64. Institute of Environmental Sciences and Technology (IEST), www.iest.org
+
+65. U.S. Pharmacopeial Convention (USP), www.usp.org.
+
+66. FDA Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing � Current Good
+      Manufacturing Practice, September 2004, U.S. Food and Drug Administration (FDA), www.fda.gov.
+
+67. ISPE Good Practice Guide: Sustainability, International Society for Pharmaceutical Engineering (ISPE), First
+
+68. ISO 14001 � Environmental Management, International Organization for Standardization (ISO), www.iso.org.
+
+Miss Mei-Chun Chou 69. German Aide M�moire 07121104 "Qualification and Validation," Zentralstelle der Laender fuer
+  Taiwan, Gesundheitsschutz bei Arzneimitteln und Medizinprodukten (ZLG), www.zlg.de/en/.
+
+      by Particle Size, American Society of Heating, Refrigeration and Air Conditioning Engineers (ASHRAE), www.
+      ashrae.org.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+
+           Miss Mei-Chun Chou
+                   Taiwan,
+
+  For individual use only. � Copyright ISPE 2013. All rights reserved.
+Appendix 3
+Glossary
+
+                    Miss Mei-Chun Chou
+                            Taiwan,
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 128                                                    ISPE Baseline� Guide:
+
+## Appendix 3: Biopharmaceutical Manufacturing Facilities
+
+12 Appendix 3 � Glossary
+
+### 12.1 Acronyms and Abbreviations
+
+ASME        American Society of Mechanical Engineers
+AHU         Air Handling Unit
+API         Active Pharmaceutical Ingredient
+ASHRAE      American Society of Heating, Refrigerating and Air-Conditioning Engineers
+BFD         Block Flow Diagram
+BIM         Building Information Modelling
+BPE         Bioprocessing Equipment
+BPOG        Biophorum Operations Group
+BREEAM      Building Research Establishment Environmental Assessment Method
+BSC         Biosafety Cabinet
+BSL         Biosafety Level
+CAPA        Corrective Action and Preventative Action
+CCP         Critical Control Point
+CDC         Centers for Disease Control and Prevention (US)
+CFD         Computational Fluid Dynamic
+CFDA        China Food and Drug Administration
+CFR         Code of Federal Regulation
+CGMP        Current Good Manufacturing Practice
+CHO         Chinese Hamster Ovary
+CIP         Clean-In-Place
+CNC         Controlled Not Classified
+CNC+        Controlled Not Classified with Local Monitoring
+CPP         Critical Process Parameter
+CQA         Critical Quality Attribute
+DO
+DPC         This Document Dissolved Oxygen is licensed to
+EBR
+EMA         Discrete Particle Counter
+FMEA
+FOI         Electronic Batch RMecordiss Mei-Chun Chou
+FTA         Taiwan, European Medicines Agency
+GDP
+GEP         Failure Mode and Effects Analysis
+GLSP
+GMO         ID Freedom of Information number: 1002915
+GMP
+            Fault Tree Analysis
+
+            Downloaded Good Documentation Practice on: 12/18/19 1:11 AM
+
+            Good Engineering Practice
+            Good Large Scale Practice
+            Genetically Modified Organism
+            Good Manufacturing Practice
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                           Page 129
+Biopharmaceutical Manufacturing Facilities                                    Appendix 3
+
+HACCP   Hazard Analysis and Critical Control Point
+HAZOPS  Hazard and Operability Studies
+HEPA    High-Efficiency Particulate Air
+HMI     Processing Terminals/Human Machine Interface
+HPW     High Purity Water
+HVAC    Heating, Ventilation, and Air conditioning
+IBC     International Building Code
+IEST    Institute of Environmental Sciences and Technology
+IPC     In-Process Control
+IPD     Integrated Project Design
+LEED    Leadership in Energy and Environmental Design
+MAb     Monoclonal Antibody
+MAL     Material Air Lock
+MCB     Master Cell Bank
+MEP     Mechanical, Electrical, Plumbing, and Fire Protection
+MERV    Multiple Efficiency Reporting Value
+MES     Manufacturing Execution System
+MFL     Maximum Foreseeable Loss
+NEMA    National Electrical Manufacturers Association (US)
+NIH     National Institutes for Health (US)
+P&ID    Piping and Instrument Diagram
+PAL     Personnel Airlock
+PAT     Process Analytical Technology
+PFD     Process Flow Diagram
+PHA     Process/Preliminary Hazard Analysis
+POU     Point Of Use
+PVC     Polyvinyl Chloride
+PW      Purified Water
+QA
+QbD     This Document Quality Assurance is licensed to
+QC
+QRM     Quality by Design
+R&D
+RAB     Quality Control Miss Mei-Chun Chou
+RFID    Taiwan, Quality Risk Management
+RH
+SCADA   Research and Development
+SIP
+SME     ID number: 1002915 Restricted Access Barrier System
+
+        Radio Frequency Identification
+
+        RelatDive oHuwmidnityloaded on: 12/18/19 1:11 AM
+
+        Supervisory Control and Data Acquisition
+        Steam-In-Place
+        Subject Matter Expert
+
+        For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 130                                                                                    ISPE Baseline� Guide:
+
+## Appendix 3: Biopharmaceutical Manufacturing Facilities
+
+SOP         Standard Operating Procedure
+UC          Uncontrolled
+UDAF        Unidirectional Airflow
+UDFH        Unidirectional Down Flow Hood
+URB         User Requirement Brief
+UV          Ultraviolet
+VHP         Vaporized Hydrogen Peroxide
+WCB         Working Cell Bank
+WFI         Water for Injection
+
+### 12.2 Definitions
+
+Adventitious Agents
+
+Adventitious agents are microorganisms that have been unintentionally introduced into the manufacturing process
+of a biological product. Adventitious agents include bacteria, fungi, mycoplasmas, rickettsia, protozoa, parasites,
+Transmissible Spongiform Encephalopathy (TSE) agents, and viruses.
+
+Airborne Total Particulate
+
+A measurement of airborne particles in a specified size range (typically determined by mass mean diameter)
+as recorded by a Discrete Particle Counter (DPC). Since the vast majority of particle counters are incapable of
+distinguishing between viable and non-viable particulate, this measurement is erroneously called "non-viable".
+
+Air Change Rate (Ventilation Rate)
+
+The volume of air supplied to a room (per hour) divided by the volume of the room. This is a purely numerical
+evaluation used as a rule of thumb in cleanroom design.
+
+Ambient Environment
+The environmental conditions where no HVAC systems are present.
+
+Aseptic Operations
+
+Processes that are devoid of measurable (detectable) bioburden. Aseptic operations generally require sterilization of
+
+Aseptic Transfer
+
+Miss Mei-Chun Chou Material transfer where the risk of contamination from the environment has been mitigated.
+
+Axenic State                               Taiwan,
+
+Bioburden-Free
+
+be sterile prior to use for consistent and reproducible performance. Biosafety Cabinets (BSCs), RABs and isolators
+should provide an environment free of bioburden for consistent and reproducible aseptic operations. Sterile product
+manufacturing testing and qualification guidelines are by necessity more stringent and prescriptive than that of active
+pharmaceutical ingredient manufacturing and therefore are not required.
+
+                  For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 131
+Biopharmaceutical Manufacturing Facilities                            Appendix 3
+
+Bioprocessing
+
+Biologics manufacturing. Includes all operations used in the manufacture of biologics including upstream processes
+such as inoculum preparation, cell culture/fermentation processes, harvest and clarification processes such as
+sedimentation and filtration processes, downstream processing such as chromatography and filtration processes.
+Bioprocessing may also include other aqueous processes such as plasma fractionation and chemically synthesized
+drug manufacturing performed in non-bacteriostatic solvents. Fill finish operations are not included in this group
+however many of the concepts presented would still apply.
+
+Bioreactors
+
+Reactors used for cell culture operations. Fermenters: used for microbial fermentation.
+
+Briefly Exposed
+
+Open processes containing process and/or product components that are rendered closed by means of an appropriate
+closing process. Examples of briefly exposed processes include open buffer or media preparations where the solution
+is "briefly" exposed to the environment prior to closing by sterile filtration and/or thermal sanitization. For solution
+preparation, it is important that the interval between formulation and sanitization be defined and validated. Briefly
+exposed operations may be performed in Controlled Not Classified (CNC) or low bioburden environments if measures
+used to close the process are appropriate to mitigate risk of contamination from the environment. Pre-closure
+processing and hold periods and conditions must be carefully monitored and validated. The premise is that in-process
+(in-line) sterile filtration or thermal sterilization is more effective (and more appropriate) than a classified environment
+in mitigating the risk of contamination from the environment. The solutes, solvents and personnel used in preparing
+solutions typically represent more significant sources of contamination that cannot be adequately mitigated with room
+classification. The method of closing the process needs to be carefully evaluated and selected as some adventitious
+agents may not be removed by filtration or thermal sanitization alone.
+
+Carryover
+
+Contaminants detected in process streams arising from insufficient removal of contaminating components from
+previous manufacturing steps or batches. Maximum allowable carryover residues should be estimated and meet
+defined criteria. Carryover is typically a result of insufficient cleaning, sanitization, rinsing and/or conditioning.
+
+For further information, see the ISPE Baseline� Guide on Risk-MaPP [11].
+
+Cell Culture
+
+Typically refers to Mammalian or Insect cell culture operations.
+
+Areas where HVAC systems are specifically designed to reduce airborne contaminants below a specified level as
+defined in ISO 14644-1 [59] (tested per ISO 14644-2 [60] and ISO 14644-3 [63]) and both temperature and Relative
+
+Miss Mei-Chun Chou Humidity (RH) are controlled more tightly than in the ambient environment. These areas must be performance
+
+verified / qualified. These areas may be tested to meet ISO requirements for airborne 0.5 �m particulate and viable
+
+Taiwan, organisms in the "in-operation" state to meet US FDA requirements or they may be tested to meet ISO requirements
+
+for both airborne 0.5 �m and 5.0 �m particulate as well as viable organisms in both the "in-operation" state as well as
+
+transition between these two states should take place in 15 to 20 minutes. This can be verified via the "recovery test"
+as specified in ISO 14644-3 [63].
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 132                               ISPE Baseline� Guide:
+
+## Appendix 3: Biopharmaceutical Manufacturing Facilities
+
+Closed System
+A process system that is designed and operated such that the product is never exposed to the surrounding
+environment. Additions to and draws from closed systems must be performed in a completely closed fashion. Sterile
+filters may be used to provide effective barriers from contaminants in the environment. A system is closed (or isolated
+from the environment) when the risk of contamination to the product or process cannot be mitigated by housing
+the operation in a bioburden-free or particulate-free environment. In Quality Risk Management (QRM) Verification,
+the environment does not represent a Critical Aspect of a closed process (formerly known as a no impact system
+according to ISPE Baseline� Guide on Commissioning and Qualification [12]). In a closed system, the probability
+of detecting a contaminant from the environment within the processing period is less than the process acceptance
+criteria. A closed process is one that has been validated to show that there are sufficient layers of protection to
+mitigate the risk of contamination from the environment. Transfers into or from these systems (including sampling)
+must also be validated as closed. The detection of a contaminant from the environment in an otherwise closed
+system indicates a breach of the closed system and therefore constitutes a system failure. Examples of closed
+systems include sterile single use bags supplied with integrated aseptic connection devices.
+
+Control Measure
+Action or activity used to prevent, eliminate or reduce a hazard.
+
+Control Point
+A step at which a process factor (whether biological, chemical or physical) can be controlled.
+
+Corrective Action
+Step taken to reduce or eliminate the occurrence of a deviation as part of the CAPA procedure to be followed when a
+deviation occurs.
+
+Critical Control Point (CCP)
+A step where control is required to prevent or eliminate a product safety or quality hazard or reduce it to an
+acceptable level.
+
+Critical Limit
+A maximum or minimum value to which a parameter (whether biological, chemical or physical) must be controlled.
+
+Critical Process Parameter (CPP)
+A measurable input (input material attribute or operating parameter) or output (process state variable or output
+
+consistency.
+
+Critical Quality Attribute (CQA)
+
+Miss Mei-Chun Chou Physical, chemical, biological or microbiological properties or characteristics that need to be controlled (directly or
+Taiwan, indirectly) to ensure product quality (see the ISPE PQLI� Guide: Part 1 � Product Realization using Quality by Design:
+
+Concepts and Principles [40]). Physical, chemical, biological or microbiological properties or characteristics that should
+
+Cross-Contamination
+
+or processing area. Cross contamination typically occurs between open processes. Cross contamination also can
+occur when there is a breach of integrity of a closed system in an environment shared with an open process or when
+there is a breach of integrity of two closed processes. The latter is highly unlikely to occur in well-designed systems.
+Recirculating HVAC can be a source of cross contamination if improperly designed.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                                                   Page 133
+Biopharmaceutical Manufacturing Facilities                            Appendix 3
+
+Crossover
+
+Cross contamination. Contamination of a system by components or contaminants found in a neighboring system.
+Crossover typically occurs with open processes sharing environments. Crossover also can occur when there is a
+breach of integrity of a closed system in an environment shared with an open process or when there is a breach
+of integrity of two closed processes. The latter is highly unlikely to occur in well-designed systems. Circulating CIP
+systems and glass-washers can be a source of crossover if improperly designed.
+
+Deviation
+
+Failure to control to within a critical limit or failure to follow an approved SOP.
+
+Dilution Ventilation
+
+Reduction in airborne contamination via mixing of clean incoming air with contaminated air within the room and
+removal of an equivalent amount to exhaust or recirculation via treatment (e.g., filtration).
+
+Displacement Ventilation
+
+Reduction in airborne contamination via "plug flow" of clean incoming air forcing contaminated air within the room to
+exhaust or recirculation via treatment (e.g. filtration).
+
+Fermentation
+
+Typically refers to aerobic and anaerobic microbial culture operations including yeasts, fungi, or bacteria.
+
+Functionally Closed
+
+Process systems that may be opened but are "rendered closed" by a cleaning, sanitization and/or sterilization
+process that is appropriate or consistent with the process requirements, whether sterile, aseptic or low bioburden.
+These systems shall remain closed during production within the system. According to QRM Verification, the
+environment does not represent a critical aspect of an appropriately functionally closed process (formerly known as a
+no impact system according to ISPE Baseline� Guide on Commissioning and Qualification [12]) but only if appropriate
+measures have been exercised to render the system closed. A functionally closed process must be validated to show
+that sufficient layers of protection have been implemented to mitigate the risk of contamination from the environment.
+Transfers into or from these systems must also be validated as closed. Examples include process vessels that may
+be cleaned in place and steamed in place between uses. Non-sterile systems such as chromatography or some
+filtration systems may also be rendered closed in low bioburden operations if appropriate measures are taken during
+the particular system setup.
+
+General Contamination
+
+environment. General contamination may be understood as "dirt" which has penetrated clean areas from the ambient
+environment. This does not include particles or organisms from other processes.
+
+                    Miss Mei-Chun Chou
+Taiwan, Hazard
+
+A real or potential condition, situation or agent that can cause harm to people, product, facility or process. A hazard
+
+ISO 14644
+
+of size ranges, specifically: 0.1, 0.2, 0.3, 0.5, 1.0, and 5.0. An ISO class designation indicates that particulate within
+the space are within limits as defined by the formula Cn = 10N � (0.1/D)2.08 where Cn is the particle count, N is the ISO
+class, and D is the particle mean diameter in mm.
+
+For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 134                                                                                      ISPE Baseline� Guide:
+
+## Appendix 3: Biopharmaceutical Manufacturing Facilities
+
+ISO 14644-1 [59] Air Quality Classes (particles per cubic meter (cu ft) by size)
+
+            ISO Class 0.1 micron 0.2 micron 0.3 micron 0.5 micron                      1 micron      5 micron
+
+            1  10                                   2    0                        0              0             0
+
+            2  100                                  24   10        4 (0.1)                       0
+
+            3  1,000                                237  102       35 (1)                        8
+
+            4  10,000     2,370                          1,020     352 (10)                      83
+
+            5  100,000    23,700                         10,200    3,520 (100)         832                     29
+
+            6  1,000,000  237,000                        102,000  35,200 (1,000)       8,320         293
+
+            7                                                     352,000 (10,000)     83,200        2,930
+
+            8                                                     3,520,000 (100,000)  832,000       29,300
+
+            9                                                     35,200,000 (1,000,000) 8,320,000   293,000
+
+            Note: 1 cubic meter is 35.3 cubic feet
+
+When referring to FDA guidance only the 0.5 �m particle size is measured (as highlighted above)
+
+FDA Application of ISO Classifications
+
+ISO 9: A space that has been classified to meet ISO 14644 requirements (35,200,000 particles/m3) for airborne 0.5
+�m particulate in the "in-operation" state. This classification does NOT actually appear in FDA guidance, but is found
+in some FDA regulated facilities.
+
+ISO 8: A space that has been classified to meet ISO 14644 requirements (3,520,000 particles/m3) for airborne 0.5 �m
+particulate in the "in-operation" state.
+
+ISO 7: A space that has been classified to meet ISO 14644 requirements (352,000 particles/m3) for airborne 0.5 �m
+particulate in the "in-operation" state.
+
+ISO 6: A space that has been classified to meet ISO 14644 requirements (35,200 particles/m3) for airborne 0.5 �m
+particulate in the "in-operation" state.
+
+ISO 5: A space that has been classified to meet ISO 14644 requirements (3,520 particles/m3) for airborne 0.5 �m
+particulate in the "in-operation" state. These spaces are normally constructed with unidirectional flow with an air
+velocity of .20 to .45 m/s
+
+Local protected environments may be used for open processes. Examples include Biosafety Cabinets (BSCs),
+
+Miss Mei-Chun Chou Unidirectional Down Flow Hoods (UDFHs) or unidirectional horizontal flow hoods, isolators and Restricted Access
+
+Barriers (RABs). When used, it is critical that the local environment be protected from unexpected breach of
+
+Taiwan, the protected environment. Appropriate sanitization and filtration is required to achieve and maintain the stated
+
+cleanroom classification within the local protected environment. Appropriate surrounding environments, gowning
+
+BSCs, RABs and UDFHs. Only a bioburden-free environment should be used for open aseptic operations. A formal
+risk assessment is required to fully evaluate the appropriateness and quality of the environment used for bioprocess
+
+Local Protection
+
+An area within a room where only airborne particulate control is enhanced from the surrounding environment. Local
+protection devices provide a flow of HEPA filtered air over an area of concern to displace particulate and maintain
+
+               For individual use only. � Copyright ISPE 2013. All rights reserved.
+ISPE Baseline� Guide:                         Page 135
+Biopharmaceutical Manufacturing Facilities  Appendix 3
+
+lower airborne particle and viable organism counts than the background. Common examples of local protection are:
+horizontal and vertical unidirectional flow hoods.
+
+Common environmental definitions for local protection areas are:
+
+      "Airborne particulate and viable counts meet the requirements of one class higher than the background"
+or
+
+      "Meets ISO 5 requirements for airborne particulate and viable organisms at rest only"
+
+Low Bioburden (operation)
+Process where a limited and controlled level of measurable bioburden is acceptable under specific conditions. (e.g.
+WFI, chromatography operations).
+
+MERV
+Multiple Efficiency Reporting Value (MERV), the ASHRAE Standard 52.2 [70] method of testing filter efficiency by
+challenging filters with particles of multiple sizes and integrating the efficiency into a single number rating. The higher
+the MERV number the more efficient the filter. MERV 14/15 is approximately equivalent to a 95% (ASHRAE) efficient
+filter.
+
+Microenvironment (Micro-Environment)
+An area within a room where environmental control is enhanced from the surrounding environment.
+Microenvironments typically control particulate, but also may provide added control of the temperature and humidity
+beyond that provided in the background. Common examples of microenvironments are: unidirectional flow or "local
+protection" hoods, isolators, RABS, and biological safety cabinets.
+
+Open Process
+A process that is not closed and therefore requires appropriate environmental controls to mitigate the risk of
+contamination from the environment. Under QRM verification, the environment within the RABs and/or BSCs
+represents a critical aspect of the open process (formerly known as Direct and Indirect Impact Systems according
+to the ISPE Baseline� Guide on Commissioning and Qualification [12]. Open sterile and aseptic operations must be
+performed in an environment where the probability of contamination is acceptably low. Open bioburden-controlled
+processing may be performed in a Grade 7 or 8 environment as appropriate for the unit operation.
+
+Particle Generation Rate
+
+Process Contact Surface
+
+Miss Mei-Chun Chou Surfaces of piping, components, equipment or systems that may or may not be exposed to product, but may contain
+
+solutions that are potentially exposed to product or product intermediates (e.g., clean utilities, process gases, all
+
+specification and/or monograph (e.g. WFI, PW, HPW, clean steam).
+
+Product Contact Surface
+
+multiple products, batches or process steps are reused, their product contact surfaces require cleaning and
+sanitization to reduce bioburden and the potential for carryover and crossover (e.g., product vessels, filtration skids,
+chromatography skids and circulating CIP systems). Systems used in aseptic operations (e.g. bioreactors) require
+sterilization prior to use. Product contact surfaces are a subset of process Contact surfaces. Product contact surfaces
+should be identified as such by the drug substance manufacturer.
+
+                    For individual use only. � Copyright ISPE 2013. All rights reserved.
+Page 136                                                                                                                  ISPE Baseline� Guide:
+Appendix 3                                                                                     Biopharmaceutical Manufacturing Facilities
+
+Purification
+
+Reduction in impurities from a product. It is to note that the technologies used in purification may also result in the
+decontamination of a product or intermediate.
+
+Recovery
+
+A test defined in ISO 14644-3 [63] that challenges room environmental performance by measuring the time required
+for contamination to reduce by two log after the particle generation in the space ceases.
+
+Residual Risk
+Risks remaining after protective measures or safeguards have been put into place.
+
+Risk
+
+The combination of the probability or likelihood of occurrence of a hazard and the severity of that occurrence. A third
+dimension in the ranking of risk is the ability to detect and/or monitor the occurrence and severity of the hazard.
+
+Risk Analysis
+Estimation of risk associated with identified hazards.
+
+Risk Assessment
+
+Systematic process of organizing information to support a risk decisions. This includes identification of risk(s) and
+evaluation of the nature, severity and likelihood of those risk(s).
+
+Risk Management
+
+Systematic application of quality management procedures for assessing, controlling, communicating and reviewing risk.
+Sanitization
+
+Operation that reduces the level of bioburden.
+Sterile
+
+Devoid of life. Zero bioburden. Free of bioburden.
+Sterilization
+
+Form of sanitization that results in a bioburden-free (sterile) condition. The different sterilization methods used in
+
+chemical sterilization (e.g., VHP, chlorine dioxide, ozone) or irradiation (e.g. gamma, UV) to achieve the sterile state.
+
+Uncontrolled (UC)  Miss Mei-Chun Chou
+
+Taiwan, Areas where the HVAC systems may be present, but no claim is made or qualified for the specific control of
+
+particulate, temperature or humidity. These areas are sometimes referred to as "general" or "comfort Controlled"
+
+Ventilation Efficiency (Effectiveness)
+
+1.0 indicates that a room is able to dilute contaminants as effectively as is indicated by an ideal dilution calculation.
+
+Displacement ventilation may have an effectiveness as high as 3.0 to 4.0.
+
+            For individual use only. � Copyright ISPE 2013. All rights reserved.
+  MAKING THE COMPLEX
+
+ ELEGANT
+
+ENGINEERING | COMPLIANCE | COMMISSIONING | LEADERSHIP
+
+      Central Utilities | Critical Environments | CFD Modeling | Energy Optimization | Sustainability
+
+                            Miss Mei-Chun Chou
+                                     Taiwan,
+
+                             ID nu2m0 SobutehrM:ap1le0S0tr2ee9t, 1Su5ite 200
+
+                                                                 www.precisengineering.com
+
+  PRECISION ENGINEERING FOR PERFORMANCE CRITICAL FACILITIES
+   CANADA. With an average of        Bio on demand
+205 deaths every day, cancer is the
+leading cause of premature death.    The dynamic development of the biotech sector has
+                                     resulted in an increased number of biotech projects
+                                     and customers worldwide during the last few years, in
+                                     particular in the emerging markets. Many small, more
+                                     flexible biotech facilities based on single-use technol-
+                                     ogy are seeing the light of day, especially in China.
+
+                                     To address these new requirements, NNE Pharmaplan
+                                     has established a standard biotech facility concept
+                                     called Bio on demandTM, which can be built on site
+                                     in the traditional way or off site as a modular facil-
+                                     ity. Standardised process and utility modules are
+                                     combined in various ways to accommodate all the
+                                     different functions in a modern biotech facility and the
+                                     need for flexibility and adaption to local building and
+                                     GMP regulations and practices.
+
+                                     The Bio on demandTM concept includes the engineer-
+                                     ing and supply of a facility as well as related quality
+                                     systems, standard operation procedures (SOPs) and
+                                     the organisation of necessary quality tests.
+
+                                     NNE Pharmaplan is currently applying the standard
+                                     Bio on demandTM concept in the design of a number
+                                     of new biotech facilities.
+
+                                     Read more on www.nnepharmaplan.com
+
+           Miss Mei-Chun Chou
+                   Taiwan, ChiNA. Shanghai henlius Biotech is building a new
+
+                                                            therapeutics for treatment of malignant tumours.
+
+ Step up your
+ knowledge
+ with ISPE.
+
+           3 Ways to Learn
+
+                                                to increase manufacturing efficiency,
+                                                maintain product quality, and improve
+                                                GMP compliance.
+
+                                                             Courses offered at national and
+                                                             international training events.
+
+                                                             Hone your skills at your desk,
+
+               This Document is liimcemnedsiaetdely,twoith online training
+
+                                                             courses and webinars.
+
+                               Miss Mei-Chun Chou
+                                        Taiwan,
+
+                                                             Bring ISPE's expert instructors
+
+                                                             training.
+
+Register Now! www.ISPE.org/Training � www.ISPE.org/eLearning
