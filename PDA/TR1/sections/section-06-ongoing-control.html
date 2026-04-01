@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR1 — Section 6: Ongoing Process Control &amp; References</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="header">
+    <h1>Section 6: Ongoing Process Control &amp; References | 持續製程控制與參考資料</h1>
+    <div class="subtitle">PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</div>
+    <div class="page-info">Covers: 6.0 Ongoing Process Control · 6.1 Routine Release · 6.2 System Suitability · 6.3 Change Control · 6.4 Requalification · 7.0 References</div>
+</header>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="main-content">
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec60">6.0 Ongoing Process Control</a>
+            <a href="#sec61">6.1 Routine Release</a>
+            <a href="#sec62">6.2 System Suitability</a>
+            <a href="#sec63">6.3 Change Control</a>
+            <a href="#sec64">6.4 Requalification</a>
+            <a href="#sec70">7.0 References</a>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand the four pillars of an ongoing sterilization control program after PQ completion.</li>
+            <li>Distinguish parametric release from BI-based sterility testing for routine load release.</li>
+            <li>Identify system suitability tests and when each applies to a prevacuum steam sterilizer.</li>
+            <li>Determine which types of changes require requalification versus minor change justification.</li>
+            <li>Apply the periodic requalification framework, including frequency and scope requirements.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.0 — ONGOING PROCESS CONTROL
+         ============================================================ -->
+    <div class="chapter-section" id="sec60">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.0</div>
+            <div class="chapter-info">
+                <h2>Ongoing Process Control | 持續製程控制</h2>
+                <p>Post-qualification monitoring framework to maintain state of control</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>6.0 Ongoing Process Control</h3>
+                    <p>After completion of sterilization cycle development and <span class="key-term">performance qualification</span>, monitoring of the sterilization process is conducted in order to assure <span class="key-term">state of control</span>. Important elements of the ongoing sterilization program include:</p>
+                    <ul>
+                        <li>Review of critical and key operating parameters during routine sterilization cycles</li>
+                        <li>Confirmation of <span class="key-term">sterilizer suitability</span></li>
+                        <li>Deployment of an effective <span class="key-term">change control</span> program</li>
+                        <li>Calibration, maintenance, and <span class="key-term">requalification</span> of the process</li>
+                    </ul>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>解讀與實務指引</h3>
+                    <div class="concept-box">
+                        <h4>持續製程控制的四大支柱</h4>
+                        <p>完成PQ（績效確效）後，滅菌製程並未結束——而是進入「持續維護」階段。PDA TR1將此階段歸納為四大核心工作：</p>
+                        <ol>
+                            <li><strong>週期參數審查</strong>：每次滅菌週期均需審查關鍵參數是否符合確效範圍</li>
+                            <li><strong>系統適用性確認</strong>：定期確認滅菌器硬體功能正常</li>
+                            <li><strong>變更管控</strong>：任何系統或產品變更均須書面化並評估影響</li>
+                            <li><strong>再確效</strong>：定期（通常每12個月）重新確認製程有效性</li>
+                        </ol>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：汽車維保制度</h4>
+                        <p>完成新車驗收（PQ）後，駕駛人仍需定期回廠保養（再確效）、每趟出門前確認車輛狀態（系統適用性），並在改裝後重新評估安全性（變更管控）。持續控制就是GMP版的「車輛保養計畫」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.1 — ROUTINE RELEASE
+         ============================================================ -->
+    <div class="chapter-section" id="sec61">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.1</div>
+            <div class="chapter-info">
+                <h2>Routine Release | 常規放行</h2>
+                <p>Parametric release vs. BI sterility testing — criteria for load disposition</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>6.1 Routine Release</h3>
+                    <p>Release of sterile loads is accomplished by demonstrating that qualified critical and key operating parameters were met during routine sterilization cycles. Additionally, compendial sterility tests may be required to support product release.</p>
+
+                    <p>Section 4.4 discusses critical and key operating parameters that are defined during cycle development and qualified during operational qualification and performance qualification in order to establish a baseline of sterilizer performance. The parameters for routine operational cycles should be evaluated to ensure they meet qualified ranges.</p>
+
+                    <ul>
+                        <li><strong>Critical parameters</strong> — All must be met for load release. No exceptions.</li>
+                        <li><strong>Key parameters</strong> — More indicative of state of control; should also be evaluated. A scientifically sound rationale must be developed to support release if a key parameter is not met.</li>
+                    </ul>
+
+                    <p>Operational parameter review is essential, regardless of whether the materials processed are being <span class="key-term">parametrically released</span> for distribution, subject to subsequent <span class="key-term">sterility testing</span>, or sterilized to support further processing.</p>
+
+                    <div class="quote-box">
+                        "All critical parameters must be met for load release. A scientifically sound rationale must be developed to support the release of a load if a key parameter is not met."
+                    </div>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>解讀與實務指引</h3>
+                    <div class="concept-box">
+                        <h4>關鍵參數 vs. 重要參數</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>參數類型</th>
+                                    <th>若未達標</th>
+                                    <th>處置方式</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Critical Parameter<br>關鍵參數</strong></td>
+                                    <td>直接影響無菌保證</td>
+                                    <td>批次拒絕放行，不得以理由替代</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Key Parameter<br>重要參數</strong></td>
+                                    <td>製程控制狀態指標</td>
+                                    <td>需提出科學合理性書面說明始可放行</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>參數放行 vs. BI放行 — 核心比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>面向</th>
+                                    <th>參數放行<br>Parametric Release</th>
+                                    <th>BI放行<br>BI Sterility Testing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>放行依據</td>
+                                    <td>週期參數記錄（溫度、時間、F0）</td>
+                                    <td>生物指示劑培養結果</td>
+                                </tr>
+                                <tr>
+                                    <td>監管要求</td>
+                                    <td>需監管機構核准（FDA/EMA）</td>
+                                    <td>一般情況下不需特別核准</td>
+                                </tr>
+                                <tr>
+                                    <td>適用情境</td>
+                                    <td>終端滅菌產品（如LVP）</td>
+                                    <td>設備、物料、部分產品</td>
+                                </tr>
+                                <tr>
+                                    <td>時效性</td>
+                                    <td>即時放行</td>
+                                    <td>需等待培養期（通常7–14天）</td>
+                                </tr>
+                                <tr>
+                                    <td>法規依據</td>
+                                    <td>FDA CFR 211.167(b)</td>
+                                    <td>USP &lt;71&gt; 無菌試驗</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>實務要點</h4>
+                        <p>無論採用哪種放行策略，週期記錄（Cycle Record）的參數審查都是必要的。參數放行並非「不做生物指示劑」，而是「以完整的製程數據作為主要放行依據」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.2 — STERILIZER SYSTEM SUITABILITY
+         ============================================================ -->
+    <div class="chapter-section" id="sec62">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2</div>
+            <div class="chapter-info">
+                <h2>Sterilizer System Suitability | 滅菌器系統適用性</h2>
+                <p>Routine tests confirming equipment readiness before or during production cycles</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>6.2 Sterilizer System Suitability</h3>
+                    <p><span class="key-term">System suitability</span> evaluations should be incorporated into a load-release program; however, the need and frequency of these tests is determined by the end-user, according to internal and possible regulatory requirements.</p>
+
+                    <p>Examples of system suitability evaluations include:</p>
+
+                    <ul>
+                        <li>
+                            <strong>Air Removal Test</strong> — Demonstration that air removal meets applicable requirements for porous loads sterilized with a saturated steam prevacuum process.
+                        </li>
+                        <li>
+                            <strong>Chamber Leak Test</strong> — Demonstration that the chamber leak rate is below a stated maximum rate. This test is recommended for sterilizers using a saturated steam prevacuum process for sterilization of porous loads.
+                        </li>
+                        <li>
+                            <strong>Air Detector Device</strong> — Acceptable air detector results (supported by testing performed during cycle development and/or qualification) can be used to support the release of porous/hard goods loads using a saturated steam prevacuum process. The use of a properly qualified air-detector device may reduce the need to perform chamber leak tests and air removal tests. This device is typically installed near the drain in the sterilizer chamber.
+                        </li>
+                        <li>
+                            <strong>Chemical Indicator/Integrator Results</strong> — Acceptable results demonstrate that the load was processed and in some cases can measure specific time and/or temperature conditions in the sterilizer.
+                        </li>
+                    </ul>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>解讀與實務指引</h3>
+                    <div class="concept-box">
+                        <h4>四種系統適用性測試一覽</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>測試項目</th>
+                                    <th>目的</th>
+                                    <th>適用製程</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>空氣去除測試</strong><br>Air Removal Test</td>
+                                    <td>確認腔室內空氣已充分去除，蒸氣可均勻穿透</td>
+                                    <td>預真空飽和蒸氣製程（多孔性負載）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>腔室洩漏測試</strong><br>Chamber Leak Test</td>
+                                    <td>確認腔室密封性，洩漏率低於規格上限</td>
+                                    <td>預真空飽和蒸氣製程（多孔性負載）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>空氣偵測器</strong><br>Air Detector Device</td>
+                                    <td>自動偵測殘留空氣，可替代手動洩漏與空氣去除測試</td>
+                                    <td>多孔性/硬質物品，預真空製程</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>化學指示劑/積分器</strong><br>CI / Integrator</td>
+                                    <td>提供負載已受熱處理之視覺證據；積分器可量化時間/溫度條件</td>
+                                    <td>所有滅菌製程</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>空氣偵測器的重要性</h4>
+                        <p>安裝在腔室排水處的空氣偵測器，若已通過適當確效，可<strong>同時取代</strong>腔室洩漏測試與空氣去除測試。這對於降低日常測試負擔具有實際意義，但前提是設備必須持續校驗且確效文件完整。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：飛機起飛前的例行檢查清單</h4>
+                        <p>系統適用性測試就像飛行員的起飛前檢查清單——不是每次都做全套引擎拆解，而是確認儀表、氣密、控制面板均在正常狀態。頻率和範圍由公司SOP和法規規定，但目的都是「確認設備準備好了」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.3 — CHANGE CONTROL
+         ============================================================ -->
+    <div class="chapter-section" id="sec63">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3</div>
+            <div class="chapter-info">
+                <h2>Change Control | 變更管控</h2>
+                <p>Documenting and assessing changes to sterilizer, product, or process — triggers for requalification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>6.3 Change Control</h3>
+                    <p>In order to maintain the <span class="key-term">state of control</span> of a sterilization system, a <span class="key-term">change control</span> program should be in place. This program should document sterilization system or product changes and include documentation of any testing required to ensure the qualified state of control.</p>
+
+                    <p>Changes involving modifications of the sterilizer chamber, product carrier/tray design, load arrangement, sterilization medium supply/distribution systems, or the sterilizer operation/control mode may necessitate:</p>
+                    <ul>
+                        <li>Temperature distribution studies</li>
+                        <li>Heat penetration studies</li>
+                        <li>Microbiological challenge studies</li>
+                    </ul>
+
+                    <p>Replacement of "like-for-like" sterilizer equipment system parts is generally <strong>not</strong> considered a major change, provided that it is demonstrated that sterilizer performance is not affected.</p>
+
+                    <p>Changes to product, including design, materials of construction, item or product tolerances, mass, venting, formulation or packaging, may require temperature distribution, heat penetration and/or microbiological requalification.</p>
+
+                    <p>Requalification of the sterilization process should be performed whenever there is a <strong>major modification</strong> to the sterilization system (including prior-to-sterilizer decommissioning) or product that has the potential to affect process efficacy.</p>
+
+                    <h3>Change Control Package — Required Elements</h3>
+                    <p>A change control package should identify qualification documents affected by the change and must include:</p>
+                    <ul>
+                        <li>A description of the proposed change</li>
+                        <li>A documented reason/rationale for the proposed change</li>
+                        <li>A description of the tests needed to qualify the sterilization process after the change, or a technical rationale supporting that the change has no impact on process efficacy (minor change)</li>
+                        <li>Supporting documentation for tests performed, interpretation of results and conclusions</li>
+                        <li>Confirmation that affected documents have been updated</li>
+                        <li>Approval of the change control package by the quality unit and other management representatives</li>
+                    </ul>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>解讀與實務指引</h3>
+                    <div class="concept-box">
+                        <h4>哪些變更需要再確效？</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>變更類型</th>
+                                    <th>觸發再確效？</th>
+                                    <th>說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>滅菌腔室結構改動</td>
+                                    <td><span class="badge red">通常是</span></td>
+                                    <td>可能影響溫度分布及熱穿透</td>
+                                </tr>
+                                <tr>
+                                    <td>產品載具/托盤設計更改</td>
+                                    <td><span class="badge red">通常是</span></td>
+                                    <td>影響負載排列及蒸氣穿透路徑</td>
+                                </tr>
+                                <tr>
+                                    <td>蒸氣供應/分配系統改動</td>
+                                    <td><span class="badge red">通常是</span></td>
+                                    <td>可能改變蒸氣品質或壓力</td>
+                                </tr>
+                                <tr>
+                                    <td>控制模式/操作程式變更</td>
+                                    <td><span class="badge red">通常是</span></td>
+                                    <td>直接影響製程參數</td>
+                                </tr>
+                                <tr>
+                                    <td>產品配方/包材/質量變更</td>
+                                    <td><span class="badge red">可能是</span></td>
+                                    <td>視影響程度評估</td>
+                                </tr>
+                                <tr>
+                                    <td>同規格零件替換（同等替換）</td>
+                                    <td><span class="badge green">通常不是</span></td>
+                                    <td>需確認性能無變化方可免再確效</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>變更管控套件六大要素</h4>
+                        <ul>
+                            <li>變更描述</li>
+                            <li>變更原因/理由</li>
+                            <li>所需確效測試說明（或小變更的技術理由）</li>
+                            <li>測試執行記錄、結果解釋與結論</li>
+                            <li>確認相關文件已同步更新</li>
+                            <li>品質單位及管理層核准簽署</li>
+                        </ul>
+                        <p style="margin-top:0.5rem;">這六項缺一不可，是稽查時的高頻查核點。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>實務場景：如何判斷「主要變更」？</h4>
+                        <p>問自己三個問題：(1) 這個變更會改變負載的熱分布嗎？(2) 蒸氣到達最冷點的路徑有沒有變？(3) 產品的生物負擔特性或質量有無改變？若任何一項為「是」，建議啟動再確效評估流程。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.4 — PERIODIC REQUALIFICATION
+         ============================================================ -->
+    <div class="chapter-section" id="sec64">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4</div>
+            <div class="chapter-info">
+                <h2>Periodic Requalification | 定期再確效</h2>
+                <p>Frequency, scope, and documentation requirements for scheduled requalification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>6.4 Periodic Requalification</h3>
+                    <p><span class="key-term">Requalification</span> should be performed on a regular basis (typically every <strong>12 months</strong>) to ensure there has not been an undetected change in product or process.</p>
+
+                    <p>Requalification should be performed using the same operational parameters and acceptance criteria as the original qualification runs. Supporting documentation for tests performed under the PQ program should include, as applicable, information outlined in the original qualification effort. Verification of acceptable steam quality for porous/hard goods load sterilization should also be performed at this time.</p>
+
+                    <p>Results of the requalification study should demonstrate that the sterilizer's performance has <strong>not changed</strong> since the original effort.</p>
+
+                    <p>The most difficult-to-sterilize load(s) should be included in requalification runs. Where equivalence has been established between sterilizers (Section 5.4), a reduction in requalification activity may be considered. For example, in a facility in which multiple product formulations are sterilized using equivalent sterilizers, it may not be necessary to requalify each product in each sterilizer.</p>
+
+                    <p>Requalification should also include review of performance data from various monitoring sources (e.g., engineering, maintenance and calibration data) of sterilizers and supporting equipment to verify that there have been no adverse trends or drifts away from the baseline performance established during validation.</p>
+
+                    <p>A review of <span class="key-term">change control</span> documentation should be conducted as part of the requalification. Refer to Section 6.3 for information regarding change control.</p>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>解讀與實務指引</h3>
+                    <div class="concept-box">
+                        <h4>再確效頻率與範圍摘要</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>面向</th>
+                                    <th>要求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>頻率</strong></td>
+                                    <td>通常每12個月執行一次</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>操作參數</strong></td>
+                                    <td>使用與原始確效相同的操作參數及驗收標準</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>最難滅菌負載</strong></td>
+                                    <td>必須納入再確效執行範圍</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>蒸氣品質</strong></td>
+                                    <td>多孔性/硬質負載須同時確認蒸氣品質合格</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>趨勢審查</strong></td>
+                                    <td>審查工程、維護、校驗數據，確認無不良趨勢</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>變更管控審查</strong></td>
+                                    <td>再確效應包含變更管控文件審查（參見6.3節）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>等效滅菌器的再確效簡化</h4>
+                        <p>若設施內多台滅菌器已建立等效性（Section 5.4），可減少再確效活動範圍——例如，不必對每台滅菌器重複確效每一種產品配方。但此簡化必須以書面等效性評估為前提，並在SOP中明確記載。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：年度健康檢查</h4>
+                        <p>再確效如同個人年度健康檢查——不是因為懷疑有病才去，而是系統性地確認一切仍在基準範圍內。若發現異常趨勢（如校驗值偏移），則需進一步調查，就像健檢報告出現異常值需追蹤複查。</p>
+                    </div>
+
+                    <!-- Practice Questions -->
+                    <div class="practice-box">
+                        <h3>練習思考題 | Practice Questions</h3>
+                        <ol>
+                            <li style="margin-bottom:0.75rem;">
+                                <strong>Q1:</strong> 工廠將一台滅菌器的腔室排氣管路延長了30公分以配合廠房改建。這是否屬於需要再確效的主要變更？請說明判斷依據。
+                                <br><em>A facility extended a sterilizer chamber drain line by 30 cm to accommodate a plant renovation. Is this a major change requiring requalification? Explain your reasoning.</em>
+                            </li>
+                            <li style="margin-bottom:0.75rem;">
+                                <strong>Q2:</strong> 一批終端滅菌的LVP產品，其週期記錄顯示F0達標，但腔室內一個溫度探頭的「重要參數」（key parameter）記錄值低於確效範圍0.1°C。依照TR1規定，品管單位應如何處理？
+                                <br><em>A batch of terminally sterilized LVP shows F0 met the target, but one thermocouple recorded a key parameter 0.1°C below the qualified range. How should QA disposition this batch per TR1?</em>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 7.0 — REFERENCES
+         ============================================================ -->
+    <div class="chapter-section" id="sec70">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.0</div>
+            <div class="chapter-info">
+                <h2>References | 參考文獻</h2>
+                <p>Standards, textbooks, and regulatory guidance cited in PDA TR1 (2007)</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>7.0 References</h3>
+                    <ol>
+                        <li>ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.3</li>
+                        <li>ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.6</li>
+                        <li>Derived from ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.6</li>
+                        <li>USP 30, NF-25, &lt;1231&gt; Water for Pharmaceutical Purposes (2007) pp 687–706</li>
+                        <li>ISO 18472:2006, Sterilization of Health Care Products — Biological and Chemical Indicators — Test Equipment. Definition 3.11</li>
+                        <li>ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.46</li>
+                        <li>ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.51</li>
+                        <li>ISO/TS 11139:2006, Sterilization of Health Care Products — Vocabulary. Definition 2.52</li>
+                        <li>Rahn, <em>Injury and Death of Bacteria by Chemical Agents</em>, Biodynamica, Normandy, Mo. (1945)</li>
+                        <li>Pflug, I.J. and Holcomb, R.G., Gomez, M., Chapter 6, Principles of the Thermal Destruction of Microorganisms, <em>Disinfection, Sterilization, and Preservation</em>, Fifth Edition, S.S. Block, Editor, Lippincott Williams &amp; Wilkins (2000) pp 79–129</li>
+                        <li>USP 30, NF-25 &lt;55&gt; Biological Indicators — Resistance Performance Tests (2007) pp 81–83</li>
+                        <li>ISO 11138-1:2006, Sterilization of Health Care Products — Biological Indicators</li>
+                        <li>Pflug, I.J., Chapter 7, Analysis of Microbial-Survivor Data, <em>Microbiology and Engineering of Sterilization Processes</em>, 12th Edition, Parenteral Drug Association (2007)</li>
+                        <li>Stumbo, C.R., Murphy, J.R., Cochran, J., Nature of Thermal Death Time Curves for P.A. 3679 and <em>Clostridium botulinum</em>. <em>Food Res.</em> (3) (1950) pp 323–346</li>
+                        <li>Halvorson, H.O., Ziegler, N.R., Applications of Statistics to Problems in Bacteriology, <em>Journal Bacteriology</em> 25 (1933) pp 101–121</li>
+                        <li>Pflug, I.J., <em>Microbiology and Engineering of Sterilization Processes</em>, 12th Edition, Parenteral Drug Association (2007)</li>
+                        <li>Pflug, I.J., Chapter 6, Gathering Experimental Microbial-Kill Data, <em>Microbiology and Engineering of Sterilization Processes</em>, 12th Edition, Parenteral Drug Association (2007)</li>
+                        <li>Fundamental Process Control Theory, Instrumentation Society of America (1981)</li>
+                        <li>Kemper, C. and Harper, G., Probe Induced Errors, <em>Pharmaceutical Technology</em> (1978)</li>
+                        <li>Reed, R.P., Thermoelectric in Homogeneity — Obscure Obstacle to Quality, National Conference of Standards Laboratories, Albuquerque, N. Mex. (1998)</li>
+                        <li>Pflug, I.J., Chapter 10, General Method of Heat-Process Evaluation, <em>Microbiology and Engineering of Sterilization Processes</em>, 12th Edition, Parenteral Drug Association (2007)</li>
+                        <li>USP 30, NF-25, &lt;1035&gt; Biological Indicators for Sterilization (2007)</li>
+                        <li>ISO 18472:2006, Sterilization of Health Care Products — Biological and Chemical Indicators — Test Equipment</li>
+                        <li>FDA, Guidance for Industry, <em>Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice</em> (2004)</li>
+                        <li>Berger, T.J., Nelson, P.A., The Effect of Formulation of Parenteral Solutions on Microbial Growth — Measurement of D- and z-values, <em>PDA Journal of Pharmaceutical Science and Technology</em> 49 (1) (1995) pp 32–41</li>
+                        <li>Russell, Allan D., Chapter 3, Principles of Antimicrobial Activity and Resistance, <em>Disinfection, Sterilization and Preservation</em>, Fifth Edition, S.S. Block, Editor, Lippincott Williams &amp; Wilkins (2000) pp 31–55</li>
+                    </ol>
+                </div>
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <h3>參考文獻解說</h3>
+                    <div class="concept-box">
+                        <h4>引用文獻分類導覽</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>類別</th>
+                                    <th>文獻編號</th>
+                                    <th>核心主題</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ISO標準（術語）</strong></td>
+                                    <td>1–3, 5–8, 12, 23</td>
+                                    <td>無菌保健產品術語、生物/化學指示劑</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>USP藥典</strong></td>
+                                    <td>4, 11, 22</td>
+                                    <td>注射用水、生物指示劑、無菌確認</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PDA/Pflug教科書</strong></td>
+                                    <td>13, 16, 17, 21</td>
+                                    <td>微生物滅活數學模型、熱處理評估</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FDA法規指引</strong></td>
+                                    <td>24</td>
+                                    <td>無菌製程cGMP 2004年版</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>儀器與量測</strong></td>
+                                    <td>18, 19, 20</td>
+                                    <td>製程控制理論、探頭誤差、熱電偶品質</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>微生物學研究</strong></td>
+                                    <td>9, 10, 14, 15, 25, 26</td>
+                                    <td>D值/z值、熱致死曲線、抗菌原理</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>最重要的三份文獻</h4>
+                        <ul>
+                            <li><strong>#24 FDA Aseptic Processing Guidance (2004)</strong> — 美國FDA無菌製程最核心的法規文件，TR1的許多要求與此呼應</li>
+                            <li><strong>#16 Pflug (2007)</strong> — PDA指定的滅菌微生物學標準教科書，D值/F0計算的權威來源</li>
+                            <li><strong>#12 ISO 11138-1:2006</strong> — 生物指示劑的ISO標準，定義BI的規格要求與性能測試方法</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>為什麼參考文獻很重要？</h4>
+                        <p>TR1的每一個技術要求都有其學術與法規依據。稽查員可能詢問「你們的F0計算依據是哪個標準？」——能指向Pflug教科書或ISO標準，就是科學合理性的展現。熟悉這份文獻清單，有助於在稽查中建立信心。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>SterileGMP Knowledge Hub — Educational Reference Material</p>
+    <p style="opacity:0.6; font-size:0.8rem;">Section 6: Ongoing Process Control &amp; References | For training purposes only</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

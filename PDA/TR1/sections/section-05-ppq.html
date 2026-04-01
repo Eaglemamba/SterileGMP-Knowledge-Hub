@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 5: Process Performance Qualification (PPQ) | PDA TR1</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section 5: Process Performance Qualification (PPQ) | 製程效能確效</h1>
+    <div class="subtitle">PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</div>
+    <div class="page-info">pp. 41–47 &nbsp;|&nbsp; Sections 5.0–5.5.4</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand the two-element structure of PPQ: physical qualification and biological qualification.</li>
+            <li>Describe the purpose and placement strategy for thermocouples and biological indicators.</li>
+            <li>Apply the semilogarithmic BI design equation to calculate minimum BI population (N<sub>0</sub>).</li>
+            <li>Define physical and biological acceptance criteria for cycle qualification.</li>
+            <li>Explain how sterilizer equivalence and bracketing reduce qualification scope without compromising data integrity.</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec50">5.0 PPQ Overview</a>
+            <a href="#sec51">5.1 Physical Qualification</a>
+            <a href="#sec511">5.1.1 Temperature Distribution</a>
+            <a href="#sec512">5.1.2 Heat Penetration</a>
+            <a href="#sec52">5.2 Biological Qualification</a>
+            <a href="#sec521">5.2.1 BI Challenge Systems</a>
+            <a href="#sec522">5.2.2 BI Placement</a>
+            <a href="#sec53">5.3 Acceptance Criteria</a>
+            <a href="#sec54">5.4 Sterilizer Equivalence</a>
+            <a href="#sec55">5.5 Bracketing</a>
+        </div>
+    </div>
+
+    <!-- ===== 5.0 PPQ OVERVIEW ===== -->
+    <div class="chapter-section" id="sec50">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.0</div>
+            <div class="chapter-info">
+                <h2>Process Performance Qualification — Overview | 製程效能確效概述</h2>
+                <p>Demonstrating consistent delivery of sterilization lethality across all load configurations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>5.0 Process Performance Qualification</h3>
+                    <p><span class="key-term">Process Performance Qualification (PPQ)</span> is conducted to demonstrate that the sterilization process consistently meets the design criteria determined for the cycle. Performance qualification follows parameter development as an integral part of the life cycle approach to sterilization process validation and consists of the following two elements:</p>
+                    <ul>
+                        <li><strong>Physical qualification</strong>, which includes temperature distribution and heat penetration runs, confirms that the desired F<sub>phys</sub> is consistently delivered throughout the load.</li>
+                        <li><strong>Biological qualification</strong> with appropriate microbiological challenges confirms that the required F<sub>bio</sub> is consistently achieved throughout the load by the developed cycle.</li>
+                    </ul>
+
+                    <p>Prior to performance qualification, the following qualification and development activities should be completed and documented:</p>
+                    <ul>
+                        <li>Qualification of utilities (e.g., steam quality, compressed air, or coolants)</li>
+                        <li>Qualification of the sterilizer (DQ, IQ, OQ or Commissioning) and calibration of critical instrumentation</li>
+                        <li>Development of parameters for each phase of the cycle</li>
+                        <li>Definition of loads, loading patterns, and determination of which loads will be used in qualification studies — minimum and maximum loads and difficult-to-sterilize items should be considered</li>
+                        <li>Temperature mapping of the chamber and load items to identify appropriate locations for physical and biological evaluation</li>
+                    </ul>
+
+                    <p>Consistency between physical and microbiological results is central to sterilization validation. Physical data from temperature and pressure measurements cannot alone confirm that lethality conditions have been achieved in items where steam or heat penetration may be difficult (e.g., syringe lumens, needle shields, filter membranes). Likewise, destruction of a <span class="key-term">Biological Indicator (BI)</span> without consideration of physical parameters is not sufficient evidence of cycle suitability. Biological challenge results should be in general agreement with physical data, and vice versa.</p>
+
+                    <p>The <span class="key-term">Minimum Acceptable Cycle (MAC)</span>, in terms of delivered lethality, should be both physically and biologically qualified. Routine operational cycles generally include a safety margin through the use of higher temperatures and/or longer exposure times.</p>
+
+                    <p>For initial qualification, replicate runs should be conducted to confirm repeatability. Typical qualifications include <strong>three consecutive acceptable runs</strong> for each load configuration evaluated. Subsequent to the initial successful qualification, ongoing event-based and time-based requalification should be conducted.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>PPQ 的核心目的</h4>
+                        <p>PPQ（製程效能確效）是驗證「滅菌製程在實際裝載條件下，能否持續、穩定地達到設計標準」的關鍵步驟。它回答的問題是：<strong>設計好的循環，放到真實產品上，還管用嗎？</strong></p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>兩大元素：物理 vs 生物</h4>
+                        <p><strong>物理確效（Physical Qualification）</strong>：用溫度探頭（thermocouple）量測每個位置的熱輸入量，計算 F<sub>phys</sub>，確認熱能均勻分佈。</p>
+                        <p><strong>生物確效（Biological Qualification）</strong>：用生物指示劑（BI）驗證實際殺菌效果，計算 F<sub>bio</sub>。兩者必須相互一致。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：烤箱確效</h4>
+                        <p>物理確效好比用溫度計確認烤箱內各點溫度均勻；生物確效則是真的把食物放進去，確認中心也熟透了。兩者缺一不可。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>PPQ 前置條件</h4>
+                        <p>PPQ 不是第一步！必須先完成：DQ → IQ → OQ（設備資格）、蒸汽品質確認、儀器校正、裝載定義，才能進行 PPQ。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>三次連續合格</h4>
+                        <p>初次確效需要<strong>至少三次連續可接受的運行</strong>，才能確認製程的再現性（repeatability）。這是監管標準，不可省略。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>關鍵術語</h4>
+                        <ul>
+                            <li><strong>PPQ</strong>：製程效能確效</li>
+                            <li><strong>MAC</strong>：最低可接受循環（Minimum Acceptable Cycle）</li>
+                            <li><strong>F<sub>phys</sub></strong>：物理量測所得的 F 值</li>
+                            <li><strong>F<sub>bio</sub></strong>：生物確效所得的 F 值</li>
+                            <li><strong>BI</strong>：生物指示劑（Biological Indicator）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.1 PHYSICAL QUALIFICATION ===== -->
+    <div class="chapter-section" id="sec51">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Physical Qualification | 物理確效</h2>
+                <p>Temperature distribution, heat penetration, and thermocouple mapping across the load</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1 Physical Qualification</h3>
+                    <p>The primary objective of the physical component of cycle qualification is to obtain physical data confirming that the developed cycle consistently achieves the <span class="key-term">heat penetration</span> requirements established during cycle design.</p>
+
+                    <h3 id="sec511">5.1.1 Temperature Distribution</h3>
+                    <p>The primary purpose of <span class="key-term">temperature distribution</span> qualification is to verify uniform distribution of the heating medium across the load zone. Probe sensors should be placed in the load zone but should not be in contact with the load items or sterilizer hardware (e.g., carts, shelves, trays). Diagrams detailing specific temperature sensor locations for each load should be provided.</p>
+
+                    <p>During temperature distribution qualification runs, critical and key operating parameters should be confirmed and documented. Acceptance criteria throughout the exposure phase may include a maximum:</p>
+                    <ul>
+                        <li>Variation in the temperature measured by each probe</li>
+                        <li>Variation in the temperature measured from probe to probe</li>
+                        <li>Difference in temperature between the probes and the set temperature</li>
+                    </ul>
+
+                    <h3 id="sec512">5.1.2 Heat Penetration</h3>
+                    <p><span class="key-term">Heat penetration</span> qualification demonstrates that the desired amount of energy has been transferred to the materials (e.g., liquids) or surfaces of items within the load. Heat penetration data is used to calculate F<sub>0</sub>.</p>
+
+                    <p>Heat penetration temperature probes should be positioned in the <strong>cold spot</strong> within containers of liquid or in the slowest-to-heat locations of porous/hard goods items determined to be most difficult to sterilize.</p>
+
+                    <p>For liquid loads, probes are typically placed in containers throughout the load in a randomly generated or geometric pattern, as well as in any cold or hot zones within the chamber that may have been identified.</p>
+
+                    <p>For porous/hard goods loads consisting of items with different heat penetration characteristics ("mixed loads"), probes should be placed in representative items of each item type. For loads with only one item type (e.g., stoppers), the same approach used for liquid loads should be adopted. Temperature sensor locations for each qualification load and the rationale for selecting each location should be documented.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>溫度分佈 vs 熱穿透：兩個不同問題</h4>
+                        <p><strong>溫度分佈（Temperature Distribution）</strong>：腔室各點的加熱媒介（蒸汽）分佈是否均勻？探頭不觸碰產品，量測空間中的蒸汽。</p>
+                        <p><strong>熱穿透（Heat Penetration）</strong>：熱能有沒有確實傳入產品或物品內部？探頭放在最難加熱的位置（冷點）。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：浴室暖氣</h4>
+                        <p>溫度分佈確效 = 確認浴室各角落溫度一致（空氣中量測）；熱穿透確效 = 確認毛巾中心也暖了（接觸物品量測）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>探頭放置原則</h4>
+                        <ul>
+                            <li><strong>溫度分佈探頭</strong>：不接觸產品，放在腔室空間中</li>
+                            <li><strong>熱穿透探頭</strong>：放在「最難加熱的位置」（冷點）——液體最大容器中心、多孔硬物品最深處</li>
+                            <li>所有探頭位置必須附圖並記錄選擇理由</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>均衡時間（Equilibration Time）</h4>
+                        <p>從達到設定溫度到整個裝載均勻達到該溫度所需的時間。均衡時間過長是常見的失敗原因，也是可接受標準的重要項目。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>F0 分佈（F0 Distribution）</h4>
+                        <p>物理確效的核心輸出之一：計算裝載中每個探頭位置的累積 F<sub>0</sub> 值，並確認最低 F<sub>0</sub>（最冷點）仍然滿足設計要求（MAC）。F<sub>0</sub> 分佈越窄，代表熱輸入越均勻。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 1</h4>
+                        <p>若一個液體裝載含有 20 瓶 100 mL 和 5 瓶 500 mL，您的熱穿透探頭應優先放在哪裡？為什麼？探頭數量如何決定？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.2 BIOLOGICAL QUALIFICATION ===== -->
+    <div class="chapter-section" id="sec52">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Biological Qualification | 生物確效</h2>
+                <p>BI challenge systems, semilogarithmic model, placement strategy, and log reduction verification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.2 Biological Qualification</h3>
+                    <p>The objective of the biological component of cycle qualification is to obtain biological data confirming that the developed cycle achieves the actual biological lethality requirements established during cycle design.</p>
+
+                    <p>Biological qualification using microbiological challenges follows a straightforward sequence:</p>
+                    <ol>
+                        <li>An appropriate microbial challenge system is devised based on the desired lethality (F-value) determined during process design.</li>
+                        <li>The load is exposed to minimal or subminimal sterilization conditions.</li>
+                        <li>After completion of the cycle, the microbiological challenges are retrieved.</li>
+                        <li>Each microbiological challenge is individually incubated in appropriate media and conditions for growth of survivors.</li>
+                        <li>The results are evaluated to ensure that the spore <span class="key-term">log reduction</span> achieved meets predetermined acceptance criteria.</li>
+                        <li>Growth of the microbiological challenge organism is required in positive controls.</li>
+                    </ol>
+
+                    <h3 id="sec521">5.2.1 Biological Indicator Challenge Systems</h3>
+                    <p>In order to assess whether the cycle delivers sufficient lethality to meet the design requirements, an appropriate microbiological challenge should be selected to give meaningful results. The challenge should be presented in an appropriate fashion (the <span class="key-term">biological indicator challenge system</span>) that may differ for the various types of load, and should have a resistance and challenge size appropriate for its purpose. This biological qualification data is used to calculate the F<sub>bio</sub> for the cycle.</p>
+
+                    <h3>5.2.1.1 Determination of Population and Resistance of BI Challenge Systems</h3>
+                    <p>The semilogarithmic model can be used to determine the attributes (population, resistance) of the BI challenge system used during biological qualification. Using Equation 1, a BI challenge system can be designed to demonstrate that the required lethality has actually been delivered:</p>
+
+                    <div class="formula-box">
+                        <h4>Equation 1 — BI Design Formula</h4>
+                        <pre>
+Log N_F = -(F / D) + Log N_0
+
+Where:
+  F   = desired lethality determined during process design
+  D   = resistance (D-value) of the biological challenge
+  N_0 = starting population of the biological challenge
+  N_F = population after exposure
+        (if total kill: N_F = 10^-1, i.e., less than 1 survivor)
+
+Rearranged to find minimum N_0:
+  Log N_0 = Log N_F + (F / D)
+                        </pre>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>Process Qualification Examples</h4>
+                        <p><strong>Example 1 — Product-Specific Approach (F = 6.0 min, D = 1.2 min, total kill):</strong></p>
+                        <pre style="background:#e3f2fd;padding:0.5rem;border-radius:4px;font-family:monospace;font-size:0.85rem;">
+Log N_0 = Log(10^-1) + 6.0/1.2 = -1 + 5 = 4 → N_0 = 10^4 (adjusted: 10^5)</pre>
+                        <p>The MAC must completely kill a BI with N<sub>0</sub> = 10<sup>5</sup> and D = 1.2 min to qualify F ≥ 6.0 min.</p>
+
+                        <p><strong>Example 2 — Overkill Approach (F ≥ 12 min, D = 2.1 min, total kill):</strong></p>
+                        <pre style="background:#e3f2fd;padding:0.5rem;border-radius:4px;font-family:monospace;font-size:0.85rem;">
+Log N_0 = -1 + 12/2.1 = -1 + 5.71 = 4.71 → N_0 = 5.2 × 10^4</pre>
+                        <p>A MAC inactivating a BI with N<sub>0</sub> = 5.2 × 10<sup>4</sup> and D = 2.1 min qualifies as an overkill cycle (F ≥ 12 min).</p>
+
+                        <p><strong>Example 3 — Fractional Endpoint (F = 8.0 min, N<sub>0</sub> = 2.0 × 10<sup>6</sup>, D = 2.1 min):</strong></p>
+                        <pre style="background:#e3f2fd;padding:0.5rem;border-radius:4px;font-family:monospace;font-size:0.85rem;">
+Log N_F = Log(2.0×10^6) - 8.0/2.1 = 6.3 - 3.8 = 2.5 → N_F = 3.2 × 10^2</pre>
+                        <p>The MAC must reduce the BI to below 3.2 × 10<sup>2</sup> survivors to demonstrate F ≥ 8.0 min.</p>
+
+                        <p><strong>Example 4 — Half-Cycle Method (overkill, F<sub>target</sub> ≥ 12 min, half-cycle F ≥ 6 min, D = 1.0 min):</strong></p>
+                        <pre style="background:#e3f2fd;padding:0.5rem;border-radius:4px;font-family:monospace;font-size:0.85rem;">
+Log N_0 = -1 + 0.5(12/1.0) = -1 + 6 = 5 → N_0 = 10^6</pre>
+                        <p>Using half the MAC exposure, a BI with N<sub>0</sub> = 10<sup>6</sup> and D = 1.0 min must be totally killed to demonstrate full F ≥ 12 min.</p>
+                    </div>
+
+                    <h3 id="sec522">5.2.2 Use and Placement of Biological Indicators</h3>
+                    <p>For cycles designed using the <span class="key-term">overkill design approach</span>, the challenge system is typically spores of <em>Geobacillus stearothermophilus</em> — either inoculated on the actual items to be sterilized, on paper or other appropriate substrate, or as a commercial biological indicator.</p>
+
+                    <p>For the <span class="key-term">product-specific design approach</span>, lower levels of thermal input may be delivered. The challenge organism used in qualification is often less resistant than spores of <em>G. stearothermophilus</em>.</p>
+
+                    <h3>5.2.2.1 Liquid Load Cycle Qualification</h3>
+                    <p>For biological qualification of liquid loads, sealed, liquid-filled containers and closures are inoculated with appropriate microorganisms. The liquid medium may be the product or an appropriate surrogate. It may be necessary to use a surrogate fluid as the suspending medium if the liquid product contains preservatives or other antimicrobial agents that demonstrate growth inhibition. The decision to use the product as the suspending medium should be supported by studies that verify microbial growth is not inhibited.</p>
+                    <p>The microbiological challenge should be placed in containers throughout the load in a random or geometric pattern, as well as in any cold zones identified in development. Heat penetration probes should be placed in the container adjacent to the inoculated containers to monitor the heat input of the cycle.</p>
+
+                    <h3>5.2.2.2 Porous/Hard Goods Cycle Qualification</h3>
+                    <p>Biological indicators used for biological qualification of porous/hard goods loads are typically obtained from commercial sources and may be mounted on paper, stainless steel, aluminum or other substrates. Alternatively, spores may be inoculated on designated test-piece items. The use of sealed ampoule BIs may not represent the actual conditions of a porous/hard goods load.</p>
+                    <p>BI challenge systems are placed in <strong>slowest-to-heat locations</strong> in items considered most difficult to sterilize — for instance, within the pleats of cartridge filters, at the center of a length of tubing where air may be trapped, or on rubber stoppers where steam penetration may be difficult.</p>
+                    <p>To evaluate the correlation between F<sub>phys</sub> and F<sub>bio</sub>, biological indicators should be placed near thermometric probes. Care should be taken to not artificially increase or decrease air removal or steam penetration to a particular area. It may be necessary to place duplicate items in the load — one containing a thermal probe and the other a biological indicator — to obtain representative results.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>生物確效的邏輯</h4>
+                        <p>生物確效用「故意放入已知數量的耐熱孢子（BI）」然後「用最低可接受循環（MAC）去殺它」，若達到預定的對數減少（log reduction），即代表製程可提供足夠致死量。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>BI 設計公式記憶法</h4>
+                        <pre>
+殺完後剩多少 = -（F ÷ D）+ 原始數量（對數）
+
+想要確效 F = 8 min：
+→ 用 D = 2 min 的 BI
+→ 需要 4 個 log 的 reduction (8/2=4)
+→ 若 N_0 = 10^6，則 N_F ≤ 10^2 才合格
+                        </pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：用擋風玻璃考驗安全氣囊</h4>
+                        <p>如果你知道安全氣囊在 40 G 以上才爆開，你就用 40 G 的衝擊測試它。BI 設計也是：已知要達到 F = 12 min，就設計一個需要 12 min 才能殺完的 BI。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>四種確效方法比較</h4>
+                        <table>
+                            <tr>
+                                <th>方法</th>
+                                <th>條件</th>
+                                <th>判定標準</th>
+                            </tr>
+                            <tr>
+                                <td>全殺（Total Kill）</td>
+                                <td>MAC 循環</td>
+                                <td>N<sub>F</sub> = 0（所有 BI 陰性）</td>
+                            </tr>
+                            <tr>
+                                <td>分數存活（Fractional）</td>
+                                <td>MAC 循環</td>
+                                <td>N<sub>F</sub> &lt; 計算上限值</td>
+                            </tr>
+                            <tr>
+                                <td>半循環法（Half-Cycle）</td>
+                                <td>50% MAC 曝露時間</td>
+                                <td>所有 BI 陰性</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>BI 放置策略</h4>
+                        <p><strong>液體裝載</strong>：BI 接種入密封容器，放在裝載各點（包含冷點），旁邊放熱穿透探頭。</p>
+                        <p><strong>多孔/硬物裝載</strong>：BI 放在最難滅菌的位置：</p>
+                        <ul>
+                            <li>過濾器摺疊處內部</li>
+                            <li>管路中心（可能有空氣殘留）</li>
+                            <li>橡膠塞中（蒸汽難穿透）</li>
+                        </ul>
+                        <p>BI 盡量與熱穿透探頭相鄰，以建立 F<sub>phys</sub> 與 F<sub>bio</sub> 的相關性。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>代用液（Surrogate）的使用時機</h4>
+                        <p>若產品本身含有防腐劑或抗菌劑（會抑制 BI 生長），必須改用代用液（surrogate fluid）作為懸浮介質，並通過抑制性研究（growth inhibition study）來支持該決定。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 2</h4>
+                        <p>您的 overkill 循環目標 F<sub>0</sub> ≥ 12 min。如果選用 D = 1.5 min 的 BI，要求全殺（N<sub>F</sub> &lt; 1），請計算最低需要多少 N<sub>0</sub>？</p>
+                        <p><em>（提示：Log N<sub>0</sub> = Log 10<sup>-1</sup> + F/D = -1 + 12/1.5）</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.3 ACCEPTANCE CRITERIA ===== -->
+    <div class="chapter-section" id="sec53">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Process Performance Acceptance Criteria | 製程效能可接受標準</h2>
+                <p>Defining physical and biological criteria that must be satisfied for cycle qualification to pass</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.3 Process Performance Acceptance Criteria</h3>
+                    <p>Acceptance criteria for physical and biological qualification should be clearly defined in test protocols. These criteria should be based on the type of items to be sterilized, the sterilization method being applied, applicable regulatory expectations, and the operating parameters determined in cycle development.</p>
+
+                    <p>Following are examples of typical <span class="key-term">physical qualification acceptance criteria</span>:</p>
+                    <ul>
+                        <li>Minimum and maximum time above a specified minimum temperature measured with heat penetration probes</li>
+                        <li>Minimum and maximum total accumulated F<sub>0</sub></li>
+                        <li>Minimum F<sub>0</sub> at end of the exposure phase</li>
+                        <li>Minimum and maximum pressure during exposure</li>
+                        <li>Correlation of temperature and pressure for saturated steam</li>
+                        <li>Minimum and maximum chamber temperature during exposure</li>
+                        <li>Maximum temperature or F<sub>0</sub> variation between heat penetration probes</li>
+                        <li>Maximum temperature variation in temperature distribution probes</li>
+                        <li>Maximum <span class="key-term">equilibration time</span></li>
+                        <li>Minimum number of properly functioning probes</li>
+                    </ul>
+
+                    <p>Following are examples of typical <span class="key-term">biological qualification acceptance criteria</span>:</p>
+                    <ul>
+                        <li>Microbial challenge spore log reduction achieved meets the predetermined acceptance criteria</li>
+                        <li>Positive and negative controls function as specified</li>
+                    </ul>
+
+                    <p>In addition to meeting the above acceptance criteria, the overall qualification should demonstrate general agreement between F<sub>phys</sub> and F<sub>bio</sub> if it is not demonstrated during development.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>可接受標準的設計原則</h4>
+                        <p>所有可接受標準必須在<strong>執行前</strong>寫入測試計畫（protocol）。事後回頭修改標準是 GMP 重大違規。標準需基於：產品類型、滅菌方法、法規要求、以及循環開發中確定的操作參數。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>物理 vs 生物可接受標準對照表</h4>
+                        <table>
+                            <tr>
+                                <th>類別</th>
+                                <th>主要標準</th>
+                                <th>目的</th>
+                            </tr>
+                            <tr>
+                                <td>物理</td>
+                                <td>最低 F<sub>0</sub>（每個位置）</td>
+                                <td>確認最冷點達設計要求</td>
+                            </tr>
+                            <tr>
+                                <td>物理</td>
+                                <td>最大 F<sub>0</sub> 變異</td>
+                                <td>確認均勻性</td>
+                            </tr>
+                            <tr>
+                                <td>物理</td>
+                                <td>最大均衡時間</td>
+                                <td>防止曝露時間不足</td>
+                            </tr>
+                            <tr>
+                                <td>物理</td>
+                                <td>溫壓相關性</td>
+                                <td>確認飽和蒸汽品質</td>
+                            </tr>
+                            <tr>
+                                <td>生物</td>
+                                <td>達到預定對數減少</td>
+                                <td>確認實際殺菌效果</td>
+                            </tr>
+                            <tr>
+                                <td>生物</td>
+                                <td>陽性/陰性對照合格</td>
+                                <td>確認實驗有效性</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>F<sub>phys</sub> 與 F<sub>bio</sub> 一致性</h4>
+                        <p>PPQ 的最終驗收要求物理與生物數據<strong>相互一致</strong>（general agreement）。若兩者不一致（例如物理 F<sub>0</sub> 高但 BI 未被殺死），代表可能有蒸汽穿透問題，需深入調查。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>SAL 目標與 F<sub>0</sub> 最低值</h4>
+                        <p>對於 overkill 設計，標準要求 F<sub>0</sub> ≥ 12 min（對應 SAL = 10<sup>-6</sup>）；對於產品特異性設計，最低 F<sub>0</sub> 由產品生物負荷數據及 D 值計算決定，無固定最低值，但通常需滿足 SAL ≤ 10<sup>-6</sup>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.4 STERILIZER EQUIVALENCE ===== -->
+    <div class="chapter-section" id="sec54">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4</div>
+            <div class="chapter-info">
+                <h2>Sterilizer Equivalence | 滅菌器等效性</h2>
+                <p>Reducing qualification scope when multiple sterilizers of similar design are available</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4 Sterilizer Equivalence</h3>
+                    <p>Where two or more sterilizers are of similar design (including utilities supplied to them), it may be possible to establish their operational equivalence and reduce the amount of process qualification testing. A <span class="key-term">robust risk management process</span> is recommended to justify making this determination.</p>
+
+                    <p>For example, sterilization processes that have more parameters that are difficult to control (e.g., prevacuum processes) may be more difficult to establish equivalency than those with parameters that are easier to control. Regulatory approval may be required to support a reduction in qualification testing.</p>
+
+                    <p>Initially, <strong>all sterilizers must be qualified</strong> and meet operating parameter acceptance criteria in order to demonstrate equivalency between sterilizers.</p>
+
+                    <p>Operational equivalence between sterilizers can be established by using the same sterilization parameters and load configuration (product, formulation, container size, fill volume, stoppers, equipment, or loading pattern) and by comparing their performance to one another. Comparable criteria to be demonstrated should include:</p>
+                    <ul>
+                        <li>Critical and key parameters</li>
+                        <li>Temperature distribution</li>
+                        <li>Heat penetration</li>
+                        <li>F<sub>0</sub> range</li>
+                        <li>Microbiological inactivation</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>什麼是滅菌器等效性？</h4>
+                        <p>若工廠有兩台或多台設計相似的滅菌器，可透過等效性研究證明它們的性能一致，從而<strong>減少重複確效的工作量</strong>。例如：三台相同型號的滅菌器，可能只需對其中一台做完整 PPQ，另外兩台做簡化確效，前提是能證明等效性。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>等效性的前提條件</h4>
+                        <ul>
+                            <li>所有滅菌器必須<strong>先各自完成 IQ/OQ</strong>，並符合操作參數標準</li>
+                            <li>設計必須「相似」（similar design），包括公用設施供應</li>
+                            <li>需要風險評估（risk assessment）支持</li>
+                            <li>某些情況下（如縮減確效運行次數）可能需要法規批准</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：連鎖餐廳廚房</h4>
+                        <p>如果三間分店廚房設備完全相同，廚師按同一份 SOP 操作，那麼在一間驗證成功後，其餘兩間的驗證工作可以簡化——但前提是能證明三間的設備性能確實一致。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>等效性比較的五大要素</h4>
+                        <ol>
+                            <li>關鍵與次關鍵參數（溫度、壓力、時間）</li>
+                            <li>溫度分佈</li>
+                            <li>熱穿透</li>
+                            <li>F<sub>0</sub> 範圍</li>
+                            <li>微生物滅活結果</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 5.5 BRACKETING ===== -->
+    <div class="chapter-section" id="sec55">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Bracketing | 括弧策略</h2>
+                <p>Reducing qualification scope by qualifying extreme cases to cover intermediate configurations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5 Bracketing</h3>
+                    <p><span class="key-term">Bracketing</span> of product formulation, container size, fill volume, items or loads may be performed to reduce the amount of qualification work. Bracketing requires identification of the <strong>worst-case challenge</strong> (single-ended bracket) or the use of configurations that represent the range of items (two-ended bracket) to be qualified. Selection of worst-case challenge(s) is conducted using scientific rationale and/or determined through heat penetration or microbiological inactivation studies.</p>
+
+                    <h3>5.5.1 Product Formulation Bracketing</h3>
+                    <p>For biological qualification, a <strong>master solution approach</strong> may be used to bracket product formulations. The product formulation with the greatest resistance to the challenge microorganism is used as the master solution to represent product formulations in which challenge microorganisms have lower resistances. Typically a resistometer is used to determine resistance.</p>
+                    <p>For physical qualification, the product formulation with the greatest viscosity can be used to represent product formulations with lower viscosities.</p>
+
+                    <h3>5.5.2 Container Size / Fill-Volume Bracketing</h3>
+                    <p>Bracketing of similarly designed liquid load containers of different sizes and different fill volumes can be established if using the same sterilization parameters. The <strong>largest container with the largest fill</strong> and the <strong>smallest container with the smallest fill</strong> would be qualified to bracket intermediate sizes and fills.</p>
+
+                    <h3>5.5.3 Item Bracketing</h3>
+                    <p>Bracketing of porous/hard goods items may be considered. The item that represents the <strong>greatest sterilization challenge</strong> is used to qualify similar items that represent lesser sterilization challenges. For example, if differing lengths of tubing with the same material, diameter, wall thickness, orientation and packaging are to be qualified, the <strong>longest length</strong> is used to qualify the shorter lengths.</p>
+
+                    <h3>5.5.4 Load Bracketing</h3>
+                    <p>An approach for bracketing porous/hard goods loads requires the use of items that represent the greatest heat-up (mass) and/or air-removal challenges in the minimum and maximum load qualification. For the minimum load, the greatest heat-up and/or air-removal item(s) may be the only item(s) present in the chamber during the qualification.</p>
+                    <p>In the event that load size is expected to vary for operational flexibility, <strong>minimum and maximum loads should be identified and qualified</strong>. At a minimum, three consecutive acceptable biological qualification runs should be achieved for maximum loads in each sterilizer. For sterilization cycles that do not have fixed heat-up and cool-down rates/times, the minimum load typically receives lower thermal heat input than maximum loads and should also be challenged. Where risk has been assessed and deemed to be acceptable, the number of replicate runs may be reduced.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>括弧策略的核心邏輯</h4>
+                        <p>如果你能確認「最極端的情況都通過了」，中間的情況自然也會通過。括弧策略的關鍵是：<strong>科學地識別最差情況（worst case），並加以確效</strong>。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：橋樑載重測試</h4>
+                        <p>若橋樑設計能承受最大載重（滿載卡車），小轎車自然也安全。括弧策略就是：驗證最重的卡車通過，就代表所有較輕的車也通過。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>四種括弧方式整理</h4>
+                        <table>
+                            <tr>
+                                <th>括弧類型</th>
+                                <th>最差情況選擇依據</th>
+                                <th>代表範圍</th>
+                            </tr>
+                            <tr>
+                                <td>配方括弧</td>
+                                <td>最大 BI 阻力（生物）/ 最大黏度（物理）</td>
+                                <td>其他配方</td>
+                            </tr>
+                            <tr>
+                                <td>容器/填充量括弧</td>
+                                <td>最大容器+最大填充 AND 最小容器+最小填充</td>
+                                <td>中間規格</td>
+                            </tr>
+                            <tr>
+                                <td>物品括弧</td>
+                                <td>最難滅菌的物品（如最長管路）</td>
+                                <td>較短/較易之物品</td>
+                            </tr>
+                            <tr>
+                                <td>裝載括弧</td>
+                                <td>最大裝載（最難加熱）AND 最小裝載（最低熱輸入）</td>
+                                <td>中間裝載量</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>單端 vs 雙端括弧</h4>
+                        <p><strong>單端括弧（Single-ended bracket）</strong>：只確效一個最差情況（例如只確效最大容器）。適用於較簡單的情況。</p>
+                        <p><strong>雙端括弧（Two-ended bracket）</strong>：確效兩個極端（例如最大容器 + 最小容器），中間的容器自動涵蓋。需要的科學依據更充分，但覆蓋面更廣。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>最小裝載也需確效</h4>
+                        <p>一個常見誤區：最小裝載因為「物品少」而被認為容易滅菌。但對於沒有固定升溫速率的滅菌器，最小裝載熱容量低，可能比最大裝載更快升溫，導致<strong>曝露時間可能不足</strong>（過衝風險）。因此也需要挑戰並確效。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 3</h4>
+                        <p>您的工廠生產三種規格的玻璃瓶（2 mL、10 mL、50 mL），填充量分別為 1.5 mL、8 mL、45 mL。使用雙端括弧策略，您需要確效哪幾個組合？為什麼 10 mL 瓶可以豁免？如果其中 50 mL 瓶確效失敗，10 mL 瓶是否仍可放行？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY COMPARISON TABLE ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9733;</div>
+            <div class="chapter-info">
+                <h2>Section 5 Summary | 本節重點總覽</h2>
+                <p>Physical vs Biological Qualification — Key Differences and Interdependencies</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Physical vs Biological Qualification — Comparison</h3>
+                    <table>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Physical Qualification</th>
+                            <th>Biological Qualification</th>
+                        </tr>
+                        <tr>
+                            <td>Primary Tool</td>
+                            <td>Temperature probes (thermocouples)</td>
+                            <td>Biological indicators (BIs)</td>
+                        </tr>
+                        <tr>
+                            <td>What It Measures</td>
+                            <td>Heat input (F<sub>0</sub> calculated)</td>
+                            <td>Actual microbial kill (log reduction)</td>
+                        </tr>
+                        <tr>
+                            <td>Probe Placement</td>
+                            <td>Cold spots; not touching sterilizer hardware</td>
+                            <td>Slowest-to-heat locations; near thermal probes</td>
+                        </tr>
+                        <tr>
+                            <td>Key Output</td>
+                            <td>F<sub>phys</sub> distribution across load</td>
+                            <td>F<sub>bio</sub> and spore log reduction</td>
+                        </tr>
+                        <tr>
+                            <td>Alone Sufficient?</td>
+                            <td>No — must be paired with biological data</td>
+                            <td>No — must be paired with physical data</td>
+                        </tr>
+                        <tr>
+                            <td>Acceptance Criteria</td>
+                            <td>Minimum F<sub>0</sub>, max variation, equilibration time</td>
+                            <td>Log reduction target, positive/negative controls</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top:1.5rem;">PPQ Workflow Summary</h3>
+                    <div class="hierarchy-diagram">
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-1">Prerequisites: DQ/IQ/OQ, Utilities, Cycle Development</div>
+                        </div>
+                        <div class="arrow-down">&#8595;</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-2">Physical Qualification (Temp Distribution + Heat Penetration)</div>
+                        </div>
+                        <div class="arrow-down">&#8595;</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-2">Biological Qualification (BI Challenge at MAC)</div>
+                        </div>
+                        <div class="arrow-down">&#8595;</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-3">Acceptance Criteria Met + F<sub>phys</sub>/F<sub>bio</sub> Agreement</div>
+                        </div>
+                        <div class="arrow-down">&#8595;</div>
+                        <div class="hierarchy-level">
+                            <div class="hierarchy-box level-3">3 Consecutive Acceptable Runs = Qualified Process</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <h3>關鍵考點整理 | Key Exam Points</h3>
+
+                    <div class="concept-box">
+                        <h4>PPQ 結構記憶</h4>
+                        <ul>
+                            <li>PPQ = 物理確效 + 生物確效，缺一不可</li>
+                            <li>物理確效：溫度分佈（空間）+ 熱穿透（產品）</li>
+                            <li>生物確效：BI 系統設計 + 放置 + 對數減少驗證</li>
+                            <li>三次連續合格 = 初次確效完成</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>BI 設計公式快速回顧</h4>
+                        <p>Log N<sub>0</sub> = Log N<sub>F</sub> + F/D</p>
+                        <p>全殺：N<sub>F</sub> = 10<sup>-1</sup>（= 0 存活者，理論上）</p>
+                        <p>D 值越高 → 需要更多 N<sub>0</sub> 才能合法確效目標 F</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>括弧策略與等效性比較</h4>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>括弧策略</th>
+                                <th>等效性</th>
+                            </tr>
+                            <tr>
+                                <td>對象</td>
+                                <td>不同產品/容器/裝載</td>
+                                <td>不同台滅菌器</td>
+                            </tr>
+                            <tr>
+                                <td>前提</td>
+                                <td>科學識別最差情況</td>
+                                <td>設計相似 + 各台先通過 IQ/OQ</td>
+                            </tr>
+                            <tr>
+                                <td>風險管理</td>
+                                <td>需科學依據</td>
+                                <td>需正式風險評估</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>整合思考練習</h4>
+                        <p>一家 CDMO 同時生產 A 產品（液體，20 mL 瓶）和 B 產品（粉末，玻璃瓶），兩種產品在同一台滅菌器中滅菌。</p>
+                        <ol>
+                            <li>A 和 B 產品各自需要獨立的 PPQ 嗎？為什麼？</li>
+                            <li>如果工廠有兩台相同型號的滅菌器（S1 和 S2），可以用 S1 的 PPQ 代替 S2 嗎？需要滿足什麼條件？</li>
+                            <li>A 產品新增了 50 mL 規格，您選擇用括弧策略涵蓋。需要驗證哪些組合？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>Section 5: Process Performance Qualification (PPQ) | 製程效能確效</p>
+    <p>SterileGMP Knowledge Hub &mdash; Educational Reference Only</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" title="Back to Top">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
