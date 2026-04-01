@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-02 (post-ISPE-IT push)
+Last updated: 2026-04-02 (post-ISPE-QC + ISPE-ProcessGas + ISPE-TechTransfer push)
 
 ---
 
@@ -110,11 +110,11 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 11 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.), Sampling, CTC Mapping, IT Infrastructure |
-| Not yet started | 4 | GEP (scanned), TechTransfer, ProcessGas, QualityCulture |
+| Complete | 14 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.), Sampling, CTC Mapping, IT Infrastructure, QualityCulture, ProcessGas, TechTransfer |
+| Not yet started | 1 | GEP (scanned PDF — OCR required) |
 | **Total** | **~15** | |
 
-**Completion: 73%** (11/15)
+**Completion: 93%** (14/15)
 
 ### Other Sources
 
@@ -126,7 +126,7 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 57 of ~65-70 target documents complete (approx. 86%)** — PDA 39 + ISPE 11 + FDA 3 + ICH 3 + PIC/S 1 = 57
+**Overall: 60 of ~65-70 target documents complete (approx. 90%)** — PDA 39 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 = 60
 
 ---
 
@@ -210,7 +210,7 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | **Deviation / CAPA management** | Triage frameworks, investigation resource allocation, CAPA timelines |
 | **Batch disposition decision-making** | When to release, reject, or reprocess — risk-based decision trees |
 | **Operational metrics** | OEE, batch success rate, right-first-time, cycle time benchmarks |
-| **Quality culture** | ISPE-PDA Quality Culture guide (scaffolded, not yet built) |
+| ~~**Quality culture**~~ | ~~ISPE-PDA Quality Culture guide~~ ✅ Done — ISPE-QC (RCA, human error taxonomy, CAPA design, maturity model) |
 
 ---
 
@@ -270,7 +270,8 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | Fill lyophilization gap | PDA TR36 (or equivalent) | Medium |
 | Fill CCI gap | PDA TR27 (Package Integrity) | Medium |
 | Fill steam sterilization gap | ISO 17665 | Medium |
-| Complete ISPE #9-15 | GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT | Large (cumulative) |
+| ~~Complete ISPE #9-15~~ | ~~CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT~~ | ✅ Done (6/7) |
+| Remaining ISPE | GEP (scanned — OCR required) | Pending |
 | Additional FDA | Container Closure Guidance, Terminal Sterilization Guidance | Medium |
 | Additional USP | \<787\>, \<790\>, \<1228\>, \<1229\>, \<382\>, \<661\> | Medium (cumulative) |
 
