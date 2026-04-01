@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE GAMP 5 2nd Ed. — Appendices D6–D9: System Descriptions, Data Migration, Agile & Software Tools</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 {
+    color: #1a3a2a; margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4 {
+    color: #1a5c35; margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.summary-section {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2e7d32 100%);
+    color: white; border-radius: 12px; padding: 1.5rem 2rem; margin-top: 2rem;
+}
+.summary-section h2 { color: #a5d6a7; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+.summary-section p { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 0.75rem; }
+.summary-section ul { margin-left: 1.5rem; color: rgba(255,255,255,0.9); font-size: 0.92rem; }
+.summary-section li { margin-bottom: 0.4rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>GAMP 5 (2nd Ed.) &#8212; Appendices D6&#8211;D9: System Descriptions, Data Migration, Agile Development &amp; Software Tools</h1>
+    <div class="subtitle">系統描述、資料遷移、敏捷開發與軟體工具</div>
+    <div class="page-info">ISPE GAMP 5 Second Edition | Appendix D6–D9 | p235–p256</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives &#8212; 學習目標</h3>
+    <ol>
+        <li>Explain the purpose and required content of a System Description under EU GMP Annex 11 and its role as a regulatory-facing document. ／解釋系統描述的目的、必要內容及其作為法規面向文件的角色。</li>
+        <li>Identify the key risk categories and quality management controls required for compliant data migration in a GxP environment. ／辨識GxP環境中合規資料遷移所需的主要風險類別與品質管理控制措施。</li>
+        <li>Describe the data migration plan structure, including data mapping, verification strategies, rollback planning, and reporting requirements. ／描述資料遷移計畫的架構，包括資料映射、驗證策略、回滾計畫與報告要求。</li>
+        <li>Explain how Agile/Scrum methodology can be implemented in a GxP regulated environment while maintaining compliance and quality. ／說明Agile/Scrum方法論如何在GxP法規環境中實施，同時維持合規與品質。</li>
+        <li>Apply the Agile quality concepts (Definition of Done, sprint testing, DevOps/CI/CD) within a CDMO computer validation context. ／在CDMO電腦驗證情境中應用Agile品質概念。</li>
+        <li>Determine the appropriate level of control for software tools (GAMP Category 1) versus GxP-regulated business applications, and apply risk-based management accordingly. ／判斷軟體工具（GAMP第1類）與GxP法規業務應用程式的適當控制等級，並據此應用風險基礎管理。</li>
+    </ol>
+</div>
+
+<!-- ===================== APPENDIX D6 ===================== -->
+<h2 class="section-title" id="d6">Appendix D6 &#8212; System Descriptions &#47; 系統描述</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>D6: System Descriptions</h2>
+
+        <h3>26.1 Introduction</h3>
+        <p>This appendix provides guidance on the contents of System Descriptions. EU GMP Annex 11 requires that there is an up-to-date description of critical GxP regulated computerized systems:</p>
+        <div class="quote-box">
+            "For critical systems an up to date system description detailing the physical and logical arrangements, data flows and interfaces with other systems or processes, any hardware and software pre-requisites, and security measures should be available."
+        </div>
+        <p>The need for a system description may be covered by one or more existing specifications or other documents, or a separate document may be produced. The principal use of such a document is to help new users and regulators understand what the system does, and as such is written in non-technical language as far as possible.</p>
+
+        <h3>26.2 Scope</h3>
+        <p>This appendix covers information that may be required for a wide range of GxP computerized systems. Not all the information will be required or relevant for all systems. The level and detail of information should be based on system risk, complexity, and novelty.</p>
+
+        <h3>26.3 Guidance</h3>
+        <h4>26.3.1 General Guidelines</h4>
+        <p>The system description should be maintained up-to-date throughout the life cycle of the system. For complex systems spanning multiple departments or sites (e.g., ERP systems), a separate document may be appropriate. For simpler systems it is common practice to include the system description in another specification or other document.</p>
+        <p>The development of the system description may begin early in the life cycle and evolve iteratively as the development process progresses. A complete system description meeting regulatory expectations should be established <strong>before the system is released for operational use</strong>.</p>
+        <p>The system description should be subject to <span class="key-term">change control</span> and <span class="key-term">periodic review</span>.</p>
+
+        <h4>26.3.2 Contents of the Document</h4>
+        <p>Listed below are topics that may be required in the system description depending on the nature and type of system. The guidance is neither prescriptive nor exhaustive. The system description should cover only the main features — detailed information on specific topics should be included in other specifications and not repeated.</p>
+
+        <h4>26.3.2.1 Introduction</h4>
+        <p>This should explain the context of the system within the business process and regulated company in general, considered from the following perspectives as appropriate:</p>
+        <ul>
+            <li>Departmental</li>
+            <li>Site-wide</li>
+            <li>Division-wide</li>
+            <li>Global</li>
+        </ul>
+
+        <h4>26.3.2.2 Main System Functionality</h4>
+        <p>A description of the key functions of the system, both GxP and non-GxP. The functions may be grouped to maintain the description at a high level. The use of diagrams is encouraged to explain relationships between key functions.</p>
+
+        <h4>26.3.2.3 Regulatory Impact</h4>
+        <p>This should include a description of the key GxP functions of the system. The impact that the system has upon patient safety, product quality, and data integrity should be considered. Other regulatory requirements should also be covered as appropriate.</p>
+
+        <h4>26.3.2.4 The Computing Environment</h4>
+        <p>This may be covered by a high-level diagram of the architecture supporting the system, covering as appropriate:</p>
+        <ul>
+            <li>The infrastructure that supports the system (e.g., server configurations, storage arrangements)</li>
+            <li>Interfaces to users</li>
+            <li>Interfaces to equipment</li>
+            <li>Interfaces to other systems</li>
+            <li>Interfaces outside the company</li>
+            <li>The flow of data through the interface</li>
+            <li>Security features such as firewalls</li>
+        </ul>
+
+        <h4>26.3.2.5 System Components</h4>
+        <p>An indication of the main hardware and software components should be provided. This may include servers and storage devices, operating systems, databases, and application layers, plus references to configuration documentation. A detailed inventory of all components is not required here.</p>
+
+        <h4>26.3.2.6 System Interfaces</h4>
+        <p>An overview of the key interfaces to other systems and equipment, and the data flowing to or from the system.</p>
+
+        <h4>26.3.2.7 Access Control</h4>
+        <p>An overview of the access control features of the system, both physical (if relevant) and logical.</p>
+
+        <h4>26.3.2.8 Security Controls</h4>
+        <p>An overview of the established system security controls both physical and logical, including software for the protection of data and records (e.g., virus protection software).</p>
+
+        <h4>26.3.2.9 Electronic Records and Signatures</h4>
+        <p>An indication of the types of electronic records created and managed by the system, and the type of electronic signatures used, should be provided if relevant.</p>
+
+        <h4>26.3.2.10 Glossary</h4>
+        <p>Definitions of any terms that may be unfamiliar to the readership should be provided.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>D6 中文解析：系統描述</h2>
+
+        <div class="analogy-box">
+            <h4>比喻：系統描述是GxP系統的「護照」</h4>
+            <p>就像護照一樣，系統描述必須在系統「出關」（上線投入GxP使用）之前就備齊。它用非技術語言說明這個系統是誰、做什麼、跟誰連線、誰能進入。</p>
+            <p>法規查核官員（稽核員）第一眼看的往往就是這份文件——他們想快速理解這個系統的「邊界在哪裡」、「管到哪些資料」。護照沒更新，就是問題所在。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>EU GMP Annex 11 的明確要求</h4>
+            <p>Annex 11 明文規定「關鍵系統」必須有up-to-date的系統描述，涵蓋：</p>
+            <ul>
+                <li>實體與邏輯架構（Physical &amp; Logical arrangements）</li>
+                <li>資料流與介面（Data flows &amp; interfaces）</li>
+                <li>硬體/軟體先決條件（Prerequisites）</li>
+                <li>安全措施（Security measures）</li>
+            </ul>
+            <p>這不只是「最好有」，而是法規硬性要求。很多公司在稽核時才發現系統描述已過期三年，這是常見的483觀察項來源。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>CDMO實務要點：什麼時候需要獨立的系統描述？</h4>
+            <p>GAMP 5說複雜系統（如ERP、MES）才需要獨立文件；簡單系統可以把描述放進URS或其他規格文件中。</p>
+            <p>在CDMO環境，以下系統通常需要獨立的系統描述：</p>
+            <ul>
+                <li>LIMS（Laboratory Information Management System）</li>
+                <li>MES（Manufacturing Execution System）</li>
+                <li>EBR/eBatch系統</li>
+                <li>跨廠區共用的ERP模組</li>
+            </ul>
+            <p>SCADA或獨立HMI通常可以將系統描述整合進IQ/OQ文件。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>系統描述 vs. 其他驗證文件</h4>
+            <table>
+                <thead>
+                    <tr><th>文件</th><th>目的</th><th>受眾</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>系統描述</td><td>說明系統全貌（非技術語言）</td><td>稽核員、新使用者、管理層</td></tr>
+                    <tr><td>URS</td><td>使用者需求規格</td><td>開發者、驗證工程師</td></tr>
+                    <tr><td>FS/DS</td><td>功能/設計規格</td><td>供應商、IT</td></tr>
+                    <tr><td>IQ/OQ/PQ</td><td>安裝/操作/效能確認</td><td>品保、法規</td></tr>
+                </tbody>
+            </table>
+            <p>系統描述是「門面文件」——它不重複其他規格的細節，但提供整合性的概覽。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>稽核現場重點：邊界定義</h4>
+            <p>稽核員在查電腦化系統時，最重要的問題之一是：「這個系統的邊界在哪裡？」系統描述必須清楚回答：</p>
+            <ul>
+                <li>哪些資料在系統內部管理</li>
+                <li>哪些介面連到外部系統</li>
+                <li>誰負責哪個部分（系統擁有者 vs 供應商）</li>
+            </ul>
+            <p>邊界不清楚 = 責任不清楚 = 稽核風險。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>Change Control + Periodic Review 的重要性</h4>
+            <p>系統描述必須受到變更管制並定期審查。常見的失效模式：系統已升版（例如從v8升到v9），但系統描述還停在舊版架構。這在稽核中會被認定為「documented system不符合實際運作狀態」。</p>
+            <p>建議：每次系統重大變更（infrastructure change、interface增減）必須觸發系統描述審查。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== APPENDIX D7 ===================== -->
+<h2 class="section-title" id="d7">Appendix D7 &#8212; Data Migration &#47; 資料遷移</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>D7: Data Migration</h2>
+
+        <h3>27.1 Introduction</h3>
+        <p>This appendix provides guidance for the migration of electronic data in the regulated environment, covering planning, execution, and reporting. Migration activities should be focused on aspects critical to patient safety, product quality, and data integrity, commensurate with risk, complexity, and novelty.</p>
+
+        <h3>27.3 Guidance</h3>
+        <h4>27.3.1 General Guidelines</h4>
+        <p>Data migration is the activity of transporting electronic data and associated metadata from one system to another, or the transition of data from one state to another. Data migration can occur often during and/or at the end of the life cycle of various computerized systems. Migration efforts can vary greatly in scope, complexity, and risk, including:</p>
+        <ul>
+            <li>An in-place version upgrade of a database or application</li>
+            <li>Data conversion (e.g., from one supplier's database to another)</li>
+            <li>Same system – different platform migration (e.g., on-premise to cloud)</li>
+            <li>Migration from one source system to a different target system</li>
+            <li>Migration from multiple source systems to a single target system</li>
+        </ul>
+        <p>The ultimate goal of any data migration is to have data that <strong>remains usable and retains its contextual meaning</strong>. Quality management controls should be in place to ensure data migration efforts are successful, compliant, and repeatable. Each data migration should be managed within the framework of a <span class="key-term">data migration plan</span> and report, or through following an established data migration procedure.</p>
+
+        <h4>27.3.2 Quality Management</h4>
+        <h4>27.3.2.1 System Life Cycle</h4>
+        <p>Data migration may take place multiple times during the life cycle of a single computerized system, such as during initial system development and deployment, application upgrades, and system retirement. A data migration SOP may be the best method for describing and documenting the process expectations, including quality and compliance requirements. It must utilize a risk-based approach to ensure the effort is appropriately rightsized.</p>
+
+        <h4>27.3.2.2 Risk Management</h4>
+        <p>The following should be evaluated when migrating regulated data:</p>
+        <ul>
+            <li>The inherent quality and compliance risk associated with the data being migrated, including impact upon patient safety, product quality, and data integrity; risk associated with the business processes; and risk associated with incomplete source data</li>
+            <li>Risk to the business due to systems being unavailable or data being unreliable</li>
+            <li>The level of complexity (e.g., multiple source or target systems; multiple phases; a high degree of data transformation)</li>
+            <li>Technology risk due to the use of complex or leading-edge systems or tools</li>
+            <li>Risks associated with the use of system vendors and third-party contractors</li>
+        </ul>
+
+        <h4>27.3.2.3 Configuration Management and Change Control</h4>
+        <p>Migration of electronic data in the regulated environment should be performed under <span class="key-term">change control</span>. All appropriate data migration project documents and tools should be controlled using configuration management and good documentation practices, including <span class="key-term">ALCOA+ principles</span>.</p>
+        <p>During a data migration project, system changes unrelated to the migration should be prohibited, as unrelated system changes can increase complexity and overall project risk.</p>
+        <p>Typical good practice is to use one or more <span class="key-term">intermediate staging areas</span> for data extracted from source systems prior to being loaded into the target system. At least three system platforms should remain under configuration management during the entire project: the source system(s), the staging area, and the target system. A <span class="key-term">rollback strategy</span> should be established, including a full source-system backup prior to any migration activities.</p>
+
+        <h4>27.3.3 Areas of Concern</h4>
+        <h4>27.3.3.1 Fitness of Software Tools for Intended Use</h4>
+        <p>Data migration efforts typically involve software tools to automate extraction, transformation, loading, and verification activities. These tend to be GAMP software Category 1 infrastructure tools or Category 5 custom applications. The infrastructure tools and custom applications should be <span class="key-term">fit for intended use</span>. For software tools that move or transform data, there are three principal areas of risk:</p>
+        <ul>
+            <li>Data will be moved or transformed incorrectly or incompletely (incorrect data format, accuracy and/or completeness of the information, loss of information, orphan records)</li>
+            <li>Data residing in the target system will be harmed (deletion and/or overwriting of data, breaking and/or modification of data links, loss of metadata)</li>
+            <li>In cases where not all data is being migrated, residual data in the source system is adversely affected by the removal of the migrated data</li>
+        </ul>
+        <p>Through the use of data verification, these risks can be significantly mitigated and therefore the rigor of software migration tool verification can be reduced. Development and approval of a <span class="key-term">data mapping table</span> is still necessary.</p>
+
+        <h4>27.3.3.2 Data Verification</h4>
+        <p>Data should be verified each time it is moved or its state is transformed. There are two general types of post-migration data verification:</p>
+        <ul>
+            <li><strong>Test environment verification:</strong> A target test system is initially populated with data, then a migration test run is performed, and finally data is verified to show that all required data migrated successfully. A typical approach is to work with a relatively small amount of data, which can then be completely verified.</li>
+            <li><strong>Operational environment verification:</strong> The same intent but the amount of data is typically very large. Automated software tools can be used to verify 100% of data in the target environment.</li>
+        </ul>
+        <p>An important part is confirming that <strong>all of the required data has been migrated</strong>. Verification techniques such as <span class="key-term">checksum</span> can be used to corroborate complete data transmission and locate failed records. Objective evidence of data verification should be generated.</p>
+
+        <h4>27.3.3.3 Reliability of Source Data</h4>
+        <p>The reliability of the source-system data must be considered as part of the migration process. If the reliability of the source system and data are unknown, the veracity of data migrated from the source system may not be verifiable; additionally, the migrated data will mix with reliable data already in the controlled target system. If inconsistencies are possible, they should be documented with justification of why the migrated data should be trusted.</p>
+
+        <h4>27.3.3.4 Usability of Migrated Data in Target System</h4>
+        <p>Four main issues to consider:</p>
+        <ul>
+            <li>Target-system functionality does not allow performance of tasks previously carried out in the source system</li>
+            <li>Lack of completeness of migrated data affects the usability of the data</li>
+            <li>Separate migration of metadata or configuration may also be required (e.g., user groups and access rights)</li>
+            <li>Need for multiple migrations through various versions of a system to ensure full compatibility in the final target system</li>
+        </ul>
+
+        <h4>27.3.3.5 Audit Trails</h4>
+        <p>Audit trails can be problematic for data migration efforts. If the target system has an audit trail but the source system does not, documentation should be created reflecting that auditing for migrated records began when they were loaded onto the target system. If both the source and target systems have audit trails and it is technically feasible, the audit trail should be migrated along with the audited data. If technically unfeasible, the original audit trail should be archived in a format that can be retrieved and used for support or investigational purposes.</p>
+        <p>When possible, a computer-generated audit trail should be created during the movement and transformation activities associated with the data migration effort. If the audit trail must be turned off during migration, the rationale should be documented.</p>
+
+        <h4>27.3.3.6 Use of System Vendors and Third-Party Contractors</h4>
+        <p>System vendors and third-party vendors should be assessed/audited to ensure they are capable of performing the work and that tools utilized are validated for their intended use. Master Service Agreements (MSAs), SLAs, Statements of Work (SOW), and/or quality agreements should be established.</p>
+
+        <h4>27.3.4 Data Migration Plan</h4>
+        <p>Every data migration project should have a data migration plan as a required deliverable. The data migration plan should describe the entire migration process, including as a minimum:</p>
+        <ul>
+            <li>Migration project purpose and scope</li>
+            <li>System description(s)</li>
+            <li>Roles and responsibilities</li>
+            <li>Required deliverables</li>
+            <li>Risk-management strategy</li>
+            <li>Configuration management strategy (source, staging, and target environments)</li>
+            <li>Software tool overview and strategy for ensuring compliance and fitness for intended use</li>
+            <li>Migration steps, technical activities, and impacted business area activities</li>
+            <li>Data mapping and modeling activities</li>
+            <li>Transformation rules</li>
+            <li>Data verification strategy and acceptance standards</li>
+            <li>Cutover plan (including communication activities)</li>
+            <li>Rollback strategy</li>
+        </ul>
+        <p>The data migration plan should be approved by the process owner, system owner, quality unit, and SMEs as appropriate.</p>
+
+        <h4>27.3.5 Data Migration Report</h4>
+        <p>The data migration report summarizes the activities conducted during the data migration effort. It describes any anomalies or deviations encountered and lists the results of verification activities. Because the report will be used to establish the reliability of the migrated data, it should clearly state the overall outcome of the migration activity (e.g., full success, partial success, failure). The data migration report should be approved by the same individuals who approved the migration plan.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>D7 中文解析：資料遷移</h2>
+
+        <div class="analogy-box">
+            <h4>比喻：資料遷移是「搬家」，不只是「搬箱子」</h4>
+            <p>很多人以為資料遷移就是把資料庫的資料複製過去。但GAMP 5提醒我們：搬家時不只要搬家具（資料），還要確保：</p>
+            <ul>
+                <li>家具到了新家還能用（可用性）</li>
+                <li>鑰匙、門禁也要跟著設定好（metadata、存取權限）</li>
+                <li>搬家過程有完整紀錄（稽核軌跡）</li>
+                <li>搬錯了能搬回來（rollback strategy）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>CDMO最常踩的坑：從紙本或舊LIMS遷移到新系統</h4>
+            <p>CDMO環境中最常見的資料遷移場景是：更換LIMS（舊系統 → 新系統），或將紙本批次記錄數位化後匯入EBR系統。</p>
+            <p>這種情況特別棘手，因為：</p>
+            <ul>
+                <li>舊系統的「資料可靠性」難以確認（有沒有audit trail？）</li>
+                <li>紙本資料沒有audit trail，遷移後要怎麼交代稽核軌跡的起始點</li>
+                <li>資料格式不統一（例如舊系統用文字儲存數值，新系統需要數字型別）</li>
+                <li>業主覺得「copy-paste就好」，低估了驗證工作量</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>資料映射表（Data Mapping Table）：必備交付物</h4>
+            <p>即使使用自動化遷移工具，也必須建立data mapping table，說明：</p>
+            <table>
+                <thead>
+                    <tr><th>來源欄位</th><th>目標欄位</th><th>轉換規則</th><th>驗證方式</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Batch_No (text)</td><td>batch_number (varchar)</td><td>直接對應</td><td>100%比對</td></tr>
+                    <tr><td>Test_Result (text)</td><td>result_value (decimal)</td><td>型別轉換</td><td>抽樣+checksum</td></tr>
+                    <tr><td>Analyst_Name</td><td>user_id (FK)</td><td>查表對應</td><td>人工確認清單</td></tr>
+                </tbody>
+            </table>
+            <p>這份表格要放進遷移計畫，並獲得QA批准。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>三環境架構：Source → Staging → Target</h4>
+            <p>GAMP 5明確建議使用staging area（暫存環境）作為中間緩衝：</p>
+            <ul>
+                <li><strong>Source system</strong>：原始資料，在整個遷移期間不得有無關的系統變更</li>
+                <li><strong>Staging area</strong>：資料清理、格式轉換、規則應用的工作區</li>
+                <li><strong>Target system</strong>：最終生產環境，只有驗證通過的資料才進入</li>
+            </ul>
+            <p>三個環境都要在configuration management控制下。Rollback計畫要在遷移開始前就準備好。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>驗證策略：測試環境 vs 正式環境</h4>
+            <p><strong>測試環境驗證</strong>：先用少量資料（例如100筆）在test環境跑一次完整遷移流程，並進行100%比對驗證。目的是確認工具和流程可行，取得evidence before go-live。</p>
+            <p><strong>正式環境驗證</strong>：資料量龐大，通常需要自動化工具進行100%比對（或統計抽樣加checksum）。自動化驗證工具本身的適用性也需要評估。</p>
+            <p>Checksum驗證的原理：計算來源資料的記錄數量與特定欄位的加總值，遷移後再次計算，兩個值相符才代表沒有漏筆或資料損失。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>稽核軌跡的棘手問題</h4>
+            <p>如果舊系統沒有audit trail，資料遷移到有audit trail的新系統後，稽核員會問：「這些記錄在遷移之前誰改過？」</p>
+            <p>GAMP 5的建議：在遷移計畫中明確記載「遷移前的稽核軌跡不存在」，並在每筆遷移記錄中標記migration date作為audit trail的起始點。若能在遷移過程中產生computer-generated log，更佳。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>CDMO資料遷移計畫的最低清單</h4>
+            <ul>
+                <li>遷移範疇與系統描述</li>
+                <li>風險評估（source data reliability + tool risk）</li>
+                <li>Data mapping table（含轉換規則）</li>
+                <li>三環境架構說明（source / staging / target）</li>
+                <li>驗證策略（test run + production run）</li>
+                <li>Cutover計畫（誰負責通知使用者、系統停機窗口）</li>
+                <li>Rollback計畫（何時觸發、如何恢復）</li>
+                <li>遷移報告範本（成功/失敗判準）</li>
+                <li>QA批准（流程擁有者、系統擁有者、QA、SME）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== APPENDIX D8 ===================== -->
+<h2 class="section-title" id="d8">Appendix D8 &#8212; Agile Software Development &#47; 敏捷軟體開發</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>D8: Agile Software Development</h2>
+
+        <h3>28.1 Introduction</h3>
+        <p>Agile software development practices are widely adopted by many industries, including medical devices. Agile approaches focus on delivering quality and value to the customer at speed, and in an incremental fashion, enabling technical innovation and flexibility.</p>
+        <p>FDA's Technology Modernization Action Plan (TMAP) identified Agile software development and DevOps as foundational requirements for a modern FDA technology infrastructure. Such approaches are very well suited to the development of GxP regulated systems if correctly applied by trained and qualified practitioners supported by appropriate tools.</p>
+        <p>This appendix provides a summary of the principles underpinning Agile and illustrates how it can be implemented in a way that is aligned with GAMP 5 and GxP principles. The focus is on how to use well-implemented standard Agile processes to deliver software for GxP applications — it does not advocate modifying Agile for GxP (e.g., by superimposing linear V-model activities).</p>
+        <p>The planning, specification, verification and reporting activities within this Guide are not inherently linear, and the approach described is designed to be compatible with a wide range of models, methods, and schemes including incremental, iterative, and exploratory models.</p>
+        <p>The key principles behind Agile software development are that of discovery and of iteration (ongoing changes) as opposed to waterfall software development, where there is a linear flow of defining all requirements before transforming them into a complete set of specifications that are then configured/coded before testing commences.</p>
+
+        <h4>Agile Manifesto Statements</h4>
+        <div class="quote-box">
+            "Individuals and interactions over processes and tools<br>
+            Working software over comprehensive documentation<br>
+            Customer collaboration over contract negotiation<br>
+            Responding to change over following a plan"
+        </div>
+        <p>These principles need to be taken in the context of emphasis rather than a binary choice.</p>
+
+        <h3>28.2 Scope</h3>
+        <p>Agile software practices can be applied across many types of computerized systems, including custom application development and configuration of configurable products in an incremental manner. Where the regulated company is looking at less clearly defined scope/requirements, Agile is likely to be the preferred approach to commence with a discovery phase to develop the initial backlog requirements and enable faster initial system deployment and subsequent incremental development.</p>
+
+        <h3>28.3 Guidance</h3>
+        <h4>28.3.1 Agile Basics (Scrum Framework)</h4>
+        <p>There are many different frameworks for Agile; the popular Scrum framework will be used as the reference. Agile is not a reason to accept a lower level of quality or GxP compliance. Evidence of fitness for intended use may be generated and maintained in tools and supporting systems, rather than in traditional documentation.</p>
+        <ul>
+            <li>A <span class="key-term">Product Owner</span> is responsible for collecting requirements into a product backlog, typically containing larger sets of requirements (epics) which are further split into sets of (user) Stories.</li>
+            <li>The <span class="key-term">Scrum cross-functional team</span> takes a subset of the backlog items and develops/delivers and tests these during a sprint.</li>
+            <li>A <span class="key-term">sprint retrospective</span> evaluates the business value of the completed sprint, and drives continuous improvement.</li>
+            <li>The cycle then repeats with another subset of the backlog.</li>
+        </ul>
+        <p>Sprints are governed by time and designed to be a short period, 2 to 4 weeks. Backlog items unable to be completed during the Sprint return to the backlog.</p>
+        <p>Regulated company quality roles typically provide oversight and subject matter expertise on regulations and potential areas of product quality, patient safety, and regulated data impact. Ultimate accountability for quality and compliance lies with the regulated company.</p>
+        <p>The concepts of a <span class="key-term">Definition of Ready (DoR)</span>, <span class="key-term">Definition of Done (DoD)</span>, and also a <span class="key-term">Minimum Viable Product (MVP)</span> are used to determine activities to be completed before a requirement can be considered complete and to define the minimum set of features needed for initial release.</p>
+        <p>Due to the iterative nature of Agile software development, <span class="key-term">regression testing</span>, often performed using automated test tools, is typically applied to ensure stability of the system within sprints.</p>
+
+        <h4>28.3.2 User Requirements</h4>
+        <p>With Agile, by planning and storing requirements differently and following Agile principles, teams can successfully deliver effective and useful software in a controlled way that is compliant with GxP regulations, with a clearly identifiable set of fulfilled requirements at the point the system is released into the live GxP operational environment. The delivered description of system functionality is provided by the list of completed Agile artifacts such as epics and user stories obtainable directly from the Agile software development tools.</p>
+
+        <h4>28.3.3 Mindset and Culture</h4>
+        <p>A shift in culture and behaviors is required, according to the following principles:</p>
+        <ul>
+            <li>An agile-first mindset and ways of working, using a Discovery Mindset, rather than a Certainty Mindset</li>
+            <li>A culture of innovation and continuous improvement</li>
+            <li>Empowered teams with the ability to deliver across geographies</li>
+            <li>A consistent and repeatable way of agile delivery</li>
+            <li>Much-improved alignment across all stakeholders</li>
+        </ul>
+        <p>The discovery mindset also applies to business process owners and quality groups. With the traditional approach they are involved at the beginning (requirements) and end (acceptance testing). Agile is a continuous cycle of involvement and the resourcing and planning impact of this needs to be taken into account.</p>
+
+        <h4>28.3.4 Tools Instead of Documents</h4>
+        <p>Agile is typically used with sets of tools providing control over the product backlog, configuration, testing, and release activities enabling shorter cycle times and higher quality. From a quality and GxP compliance perspective, tools perform an essential role in demonstrating that the system is fit for intended use, functionality can be traced back to requirements, and testing completed.</p>
+        <p>Tools manage a variety of Agile activities such as user-story risk assessments, testing, and traceability. A backlog with continuously changing user stories is extremely difficult to manage on paper; a tool can provide an efficient and effective means to manage user stories throughout updates and changes. Reports may be generated from tools, for instance during regulatory inspections to provide evidence of status.</p>
+        <table>
+            <thead>
+                <tr><th>Tool Type</th><th>Quality Benefit</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Backlog Management Software</td><td>Real-time status of requirements including traceability and approval status; audit trail for changes</td></tr>
+                <tr><td>Testing Management</td><td>Evidence of test status, automation and regression testing; negative and stress testing</td></tr>
+                <tr><td>Orchestration Software</td><td>Automated assurance of working and tested code; defined workflow for code moving between environments</td></tr>
+                <tr><td>Code Repository Software</td><td>Reduces configuration management issues; enables traceability from requirements to code level</td></tr>
+                <tr><td>Large Binary File Registry</td><td>Accurate configuration management across multiple repositories</td></tr>
+                <tr><td>Knowledge Management Software</td><td>Context repository assisting team members in locating information quickly and accurately</td></tr>
+            </tbody>
+        </table>
+        <p>The tools used as part of Agile are covered within the scope of Appendix D9 and do not require computerized system validation, but should be subject to risk assessment, assessed for adequacy by appropriate SMEs, used by trained and qualified individuals, and appropriate controls applied according to intended use.</p>
+
+        <h4>28.3.5 Approvals and Acceptance</h4>
+        <p>There is a misconception that approval means sign, and by extension that there is the need to comply with the life-sciences regulatory requirements on electronic signatures (e.g., 21 CFR Part 11). This is not the case for software life cycle deliverables (except for SaMD or software embedded in a regulated medical device). Approval can be achieved by many other means such as status change, email, audit trails, and in many cases evidence of acceptance rather than an approval is sufficient.</p>
+        <p>Modern tool sets frequently have immutable change logs built into them, recording exactly who did what and when against each product backlog item, and can be configured to enforce security rights.</p>
+
+        <h4>28.3.6 DevOps</h4>
+        <p>DevOps is an extension of Agile where the development and maintenance activities are combined within a single team. In a DevOps environment, systems will undergo many changes/releases. This concern can be mitigated with the level of control and oversight of the process. However, there is still a level of risk/impact assessment required for higher-risk GxP functions undergoing change.</p>
+        <p><span class="key-term">Continuous Integration (CI)</span> and <span class="key-term">Continuous Deployment (CD)</span> is an extension of DevOps where there is increased use/reliance on automated software analysis tools. DevOps provides additional controls such as:</p>
+        <ul>
+            <li>No development before an accepted user story</li>
+            <li>Source code review and automated testing as part of the CI process</li>
+            <li>Ensuring close alignment and constant engagement with the product owner</li>
+        </ul>
+
+        <h3>28.4 Agile Approach to Quality</h3>
+        <p>By following the agreed Agile process and associated ceremonies, a state of control can be demonstrated and quality built into the product. User stories can be assessed against <span class="key-term">INVEST</span> criteria:</p>
+        <ul>
+            <li><strong>I</strong> – Independent</li>
+            <li><strong>N</strong> – Negotiable</li>
+            <li><strong>V</strong> – Valuable</li>
+            <li><strong>E</strong> – Estimable</li>
+            <li><strong>S</strong> – Small</li>
+            <li><strong>T</strong> – Testable</li>
+        </ul>
+        <p>A typical GxP regulated system has functional requirements that have GxP impact along with nonfunctional requirements (e.g., security) that need to be in place to support GxP regulations including data integrity. There must be a "potentially shippable product at the end of each sprint" — an untested product is not shippable. Agile testing uses a combination of exploratory testing and test automation with regression testing to verify that sprint developments do not impact correct functioning of software developed in previous sprints.</p>
+        <p>Agile is by its essence about tightly controlled management of change. Adherence to the defined Agile process (Scrum ceremonies such as sprint planning, daily meetings, sprint reviews, and sprint retrospectives) drives quality, ensures timelines can be adjusted quickly, and provides a focus on learning by addressing issues as they appear.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>D8 中文解析：敏捷軟體開發</h2>
+
+        <div class="analogy-box">
+            <h4>核心張力：Agile的速度 vs GxP的文件要求</h4>
+            <p>Agile宣言說「Working software over comprehensive documentation」，但GxP說「沒有文件就等於沒發生」。這難道是根本矛盾嗎？</p>
+            <p>GAMP 5的回答是：<strong>No</strong>。關鍵在於「文件的形式可以改變」——工具裡的backlog記錄、test run的audit trail、sprint report，這些都是合法的GxP evidence。重點是可追溯性和完整性，而不是紙本或PDF的數量。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Scrum在GxP環境的角色對應</h4>
+            <table>
+                <thead>
+                    <tr><th>Scrum角色</th><th>GxP對應責任</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Product Owner</td><td>業務流程擁有者 + 用戶代表，負責定義GxP功能需求</td></tr>
+                    <tr><td>Scrum Master</td><td>確保流程合規、ceremonies執行、問題升報</td></tr>
+                    <tr><td>Development Team</td><td>實際開發與測試，對sprint內交付品質負責</td></tr>
+                    <tr><td>Quality/Compliance SME</td><td>識別GxP影響，提供法規建議，不是審批瓶頸</td></tr>
+                </tbody>
+            </table>
+            <p>注意：QA在Agile環境中的角色是「嵌入式夥伴」，不是最後的守門員。這需要QA思維轉型。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>CDMO如何落地：Sprint文件策略</h4>
+            <p>在CDMO的電腦驗證專案（例如新LIMS、MES）中採用Agile，建議的文件策略：</p>
+            <ul>
+                <li><strong>Sprint Planning</strong>：產出backlog item list（含GxP影響評估）→ 等同於傳統的功能規格片段</li>
+                <li><strong>Sprint Execution</strong>：在工具中記錄user story完成狀態、test results、defect resolution</li>
+                <li><strong>Sprint Review</strong>：產出sprint summary report（誰測了什麼、通過/失敗、未解決的問題）→ 等同於測試記錄</li>
+                <li><strong>Sprint Retrospective</strong>：流程改善記錄 → 持續品質改善的evidence</li>
+                <li><strong>Release</strong>：所有sprint的cumulative backlog + DoD verification = 驗證總結報告的基礎</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>Definition of Done (DoD) 與 GxP合規</h4>
+            <p>DoD是Agile中最重要的品質控制機制。在GxP系統中，DoD應包含：</p>
+            <ul>
+                <li>功能已開發完成（code complete）</li>
+                <li>單元測試通過（unit test pass rate &gt; X%）</li>
+                <li>Regression testing通過（不影響之前sprint的功能）</li>
+                <li>GxP影響評估已完成（如有資料完整性影響，已記錄）</li>
+                <li>Defect已close或risk-accepted（附justification）</li>
+                <li>User acceptance已確認（業主簽核或工具狀態記錄）</li>
+            </ul>
+            <p>一個未通過DoD的user story不能計為「完成」，也不能進入下一個sprint作為基礎。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>INVEST標準：寫好User Story的關鍵</h4>
+            <p>如果user story寫得不好（太大、太模糊、無法測試），整個Agile流程都會出問題。INVEST是一個自我檢查框架：</p>
+            <ul>
+                <li><strong>I (Independent)</strong>：這個story可以獨立開發，不依賴未完成的其他story</li>
+                <li><strong>N (Negotiable)</strong>：細節可以討論，不是不可更改的契約</li>
+                <li><strong>V (Valuable)</strong>：對使用者或業務有明確價值</li>
+                <li><strong>E (Estimable)</strong>：團隊能夠估算開發工作量</li>
+                <li><strong>S (Small)</strong>：一個sprint內可完成（通常1-3天開發量）</li>
+                <li><strong>T (Testable)</strong>：有清楚的acceptance criteria，知道怎麼測試</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>電子簽名的誤解：Agile中的approval不等於21 CFR Part 11</h4>
+            <p>很多GxP從業者看到Agile工具的「approve」按鈕就緊張：這需要符合21 CFR Part 11嗎？</p>
+            <p>GAMP 5明確回答：<strong>不需要</strong>（除非是SaMD或醫療器材嵌入軟體）。軟體生命週期文件（user story approval、sprint sign-off）的「批准」不等於法規上需要具法律效力的電子簽名。工具的audit trail（誰、何時、做了什麼）就足夠作為acceptance evidence。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>DevOps + CI/CD 在GxP環境的適用性</h4>
+            <p>DevOps將開發與維運整合到同一個團隊，CI/CD實現自動化測試和部署。這在GxP環境聽起來很可怕（「系統每天都在變？」），但實際上可行的前提是：</p>
+            <ul>
+                <li>每次change都有risk assessment（高風險GxP功能需要更嚴格的評估）</li>
+                <li>CI pipeline包含自動化regression testing</li>
+                <li>部署需要DoD + change control gate</li>
+                <li>Compliance accountability在DevOps團隊內部，不是外部的人在審批</li>
+            </ul>
+            <p>在CDMO中，這種模式適合SaaS-based系統（如cloud LIMS）的持續更新管理。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== APPENDIX D9 ===================== -->
+<h2 class="section-title" id="d9">Appendix D9 &#8212; Software Tools &#47; 軟體工具</h2>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>D9: Software Tools</h2>
+
+        <h3>29.1 Introduction</h3>
+        <p>This appendix describes the recommended risk-based approach and considerations when using tools supporting computerized systems life cycle processes, IT processes, and IT infrastructure processes. Such tools <strong>do not directly support GxP regulated business processes</strong> or GxP records and data directly supporting the regulated product life cycle.</p>
+        <p>The tools described in this appendix are <span class="key-term">GAMP software Category 1</span>. Classification as GAMP software Category 3–5 applies only to business applications (either GxP or non-GxP). Tools, like systems supporting IT processes and infrastructure, are all GAMP software Category 1 and should be managed through the application of good IT practices, within a defined IT management framework such as ITIL.</p>
+        <p>Such tools and systems supporting system life cycles, IT processes, and infrastructure should not be subject to specific validation, but rather managed by routine company assessment and assurance practices and good IT practices. Compliance and regulatory resources should not be focused on audit and review of activities related to systems with little or no direct impact to patient safety or product quality.</p>
+        <p>EU GMP Annex 11 requires that automated testing tools and test environments should have documented assessments for their adequacy, supported by appropriate controls following good IT practices.</p>
+
+        <h3>29.2 Scope</h3>
+        <p>This appendix applies to software tools used as part of software development, support, and maintenance activities. It does not apply to software components/applications that are part of a GxP regulated business process, or can directly impact GxP data/records directly supporting the product life cycle; in this case risk-based computerized system validation is required.</p>
+        <p>For example: software used to migrate or convert GxP records would require computerized system validation; however, a tool used to mask or obfuscate data to be used as system test data would not.</p>
+        <p>Test tools perform an important role by helping to assure thorough testing. Such tools also often store the associated test results, but even though these records may support the computerized system life cycle, the test tools themselves do not require validation. The records they maintain should be preserved and protected, and the tools need to work reliably — this can be achieved through a basic risk assessment and application of normal IT practices.</p>
+
+        <h3>29.3 Guidance</h3>
+        <h4>29.3.1 Selection of Tools</h4>
+        <p>Some basic assessments should be performed as part of tool selection. The key criteria are whether the tool is the appropriate tool to support the life cycle process we are trying to automate/support: does it meet the need of the SMEs who are going to use the tool, and is it fit for purpose? It is not envisaged that any tool would need to have anything other than a desktop assessment, unless the use was considered business critical.</p>
+
+        <h4>29.3.2 Risk Assessment</h4>
+        <p>Some of the factors to consider as part of risk assessment are:</p>
+        <ul>
+            <li>Is the tool an industry standard one in common use?</li>
+            <li>What data/records are generated/stored by the tool, and does the tool have adequate controls to maintain data integrity?</li>
+            <li>What is the required operational lifetime of the tool, and how will this be supported?</li>
+            <li>Is the tool open source; are the download locations verified to avoid cybersecurity issues?</li>
+            <li>Will the tool require any level of workflow/configuration, including any key activities that need to be manually performed?</li>
+            <li>For automated tools, how are any alerts monitored and acted upon?</li>
+            <li>If the tool fails, could it impact an operational computerized system or infrastructure operation?</li>
+            <li>Could the tool have any potential negative impact on system or network performance?</li>
+            <li>Could the tool introduce any cybersecurity risks, e.g., facilitate the introduction of malware?</li>
+        </ul>
+
+        <h4>29.3.3 Inventory/Deployment</h4>
+        <p>As part of good practice, it is sensible to have some form of inventory, for example within a <span class="key-term">Configuration Management Database (CMDB)</span>, of what tools are used by the organization, where they are deployed, and the nature of any data/records potentially supporting GxP and required retention period. Identifying a single point of contact/owner for the tools is also recommended.</p>
+
+        <h4>29.3.4 Installation and Configuration</h4>
+        <p>Tools, even when off-the-shelf, often will require some degree of configuration or parameterization in order to correctly install and establish any workflows and associated aspects such as naming conventions or access levels. These are basic good software engineering practices that need to be applied along with version and appropriate change control.</p>
+
+        <h4>29.3.5 Life Cycle Management</h4>
+        <p>Tools typically have a defined lifetime, upgrades, and eventually are retired and/or decommissioned. One person or role should be designated to be the owner of the tool to provide the required level of oversight. In general, tools that have the ability to impact system or network performance require more oversight than those used as part of software development activities. It is best practice to ensure tools in use are at versions supported by the supplier.</p>
+
+        <h4>29.3.6 Security Considerations</h4>
+        <p>Cybersecurity considerations should be included for tools. Tools that are deployed across the network (e.g., for performance monitoring) may require more detailed security analysis. Security considerations should be included as part of the initial risk assessment and also as part of the life cycle management (e.g., ensuring tools are maintained as patched and up-to-date). Access privileges for tools should be set as low as possible to allow the tool to perform the task.</p>
+
+        <h4>29.3.7 Data and Records</h4>
+        <p>Where tools are storing information/records that support the validated status of the system (e.g., system requirements, design, code, or test results), controls for maintaining integrity, security, and availability should be determined and applied. Note that increasingly tools and the records/data within them may be cloud-based, and therefore assuring data integrity and access throughout the retention period should take account of this.</p>
+        <p>The full set of data integrity controls that would be applied to primary GxP records are not required, as these tools do not maintain GxP regulated records. Most tools do support technical and transactional logging supporting integrity and investigations.</p>
+
+        <h4>29.3.8 Approvals</h4>
+        <p>For tools within the scope of this appendix, any approvals or acceptances associated with the tool are not subject to regulated electronic signature requirements. Where an approval or acceptance is required, there needs to be traceability to the person approving or accepting, and approval roles need to be defined.</p>
+
+        <h4>29.3.9 Tools over Documentation</h4>
+        <p>There may be a temptation, particularly where tools store test execution records, to export information into controlled GxP documentation when there is no quality benefit in doing so. This approach is not recommended — it is inefficient and there is the risk that documentation becomes out of step with the information/records within the tools. Tools should have sufficient controls to preserve the data/records.</p>
+        <p>There is the potential for regulatory inspections to request access to information in tools (e.g., system requirements, test results). Process owners need to be aware of what information relating to their computerized system life cycle activities is managed within tools. It may be possible to pre-configure reports to extract test results relating to areas of GxP functionality.</p>
+        <p>Tools and systems supporting life cycles, IT processes, and infrastructure (rather than directly supporting product life cycle processes) are not themselves GxP regulated systems and should not be subject to specific validation, but managed by routine company assessment and assurance practices and good IT practices.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>D9 中文解析：軟體工具</h2>
+
+        <div class="analogy-box">
+            <h4>關鍵問題：Excel macro需要驗證嗎？</h4>
+            <p>這是CDMO環境中最常遇到的問題之一。答案取決於Excel的用途：</p>
+            <ul>
+                <li><strong>用Excel執行GxP計算（例如OOS計算、環境監控趨勢分析）</strong>：Excel本身是工具（Category 1），但這個特定的macro/workbook是在執行GxP業務流程 → 需要CSV（Computerized System Validation）</li>
+                <li><strong>用Excel管理驗證測試的test scripts（不含GxP記錄）</strong>：這是開發工具用途 → 不需要validation，但需要基本risk assessment + change control</li>
+                <li><strong>用Excel自動生成validation protocol的模板</strong>：生命週期工具 → Category 1，不需要validation</li>
+            </ul>
+            <p>關鍵判斷標準：工具輸出的記錄是不是直接支援product life cycle的GxP記錄？</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>GAMP Category 1：工具 vs 業務應用的分野</h4>
+            <table>
+                <thead>
+                    <tr><th>軟體類型</th><th>GAMP分類</th><th>是否需要validation</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>LIMS（管理GxP測試記錄）</td><td>Category 4/5</td><td>是</td></tr>
+                    <tr><td>MES（製造執行系統）</td><td>Category 4/5</td><td>是</td></tr>
+                    <tr><td>測試管理工具（如Jira用於tracking defects）</td><td>Category 1</td><td>否，但需risk assessment</td></tr>
+                    <tr><td>程式碼儲存庫（GitHub/GitLab）</td><td>Category 1</td><td>否，但需risk assessment</td></tr>
+                    <tr><td>自動化測試工具（如Selenium）</td><td>Category 1</td><td>否，但需adequacy assessment</td></tr>
+                    <tr><td>效能監控工具（如Datadog）</td><td>Category 1</td><td>否，IT good practice即可</td></tr>
+                    <tr><td>GxP記錄用的Excel macro</td><td>Category 4/5</td><td>是</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="key-point-box">
+            <h4>EU GMP Annex 11的工具要求</h4>
+            <p>Annex 11明確要求：automated testing tools和test environments必須有documented adequacy assessment。這不等於要validation，但必須有書面評估說明這個工具夠不夠好、是否適合其用途。</p>
+            <p>實務上的最低要求：</p>
+            <ul>
+                <li>工具識別與用途描述</li>
+                <li>Adequacy assessment（SME判斷：工具是否適合intended use）</li>
+                <li>使用者訓練記錄</li>
+                <li>基本access control</li>
+                <li>納入CMDB（配置管理資料庫）</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>工具風險評估的關鍵考量</h4>
+            <p>GAMP 5提供了九個風險評估考量點。在CDMO環境，最重要的是：</p>
+            <ul>
+                <li><strong>工具儲存的記錄性質</strong>：如果工具存有test results或system requirements，這些記錄雖非GxP records，但支援validated status → 需要integrity controls</li>
+                <li><strong>雲端工具的資料保留</strong>：如果工具是SaaS（例如雲端Jira、GitHub Enterprise），須確保記錄在retention period內可取用</li>
+                <li><strong>工具失效的影響</strong>：若工具當機，是否影響已上線的GxP系統？（例如監控工具失效可能影響環境監控的警報）</li>
+                <li><strong>資安風險</strong>：開源工具的下載來源是否可信？工具是否可能引入惡意軟體？</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>「工具記錄不要複製進GxP文件」的重要原則</h4>
+            <p>很多驗證工程師習慣把Jira/TestRail的測試結果截圖後貼進Word文件再上傳到文件管理系統。GAMP 5說：<strong>這樣做沒有品質效益，而且有風險</strong>——工具裡的記錄和文件裡的截圖可能不同步（工具裡的defect已close，但文件還沒更新）。</p>
+            <p>更好的做法：在驗證報告中引用工具的report（例如：「詳細測試結果見TestRail Report #TR-2026-042」），並確保稽核前能展示工具的原始記錄。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>稽核應對：檢查官要求看工具記錄</h4>
+            <p>GAMP 5提醒：法規檢查官可能要求看工具裡的記錄（例如system requirements、test results）。CDMO需要事先準備：</p>
+            <ul>
+                <li>知道哪些工具存有哪些系統的life cycle記錄</li>
+                <li>能夠快速從工具中產生特定系統的GxP功能測試結果報告</li>
+                <li>如果工具是第三方SaaS，確認在audit期間能取得資料存取權</li>
+                <li>工具的access log能顯示誰在何時存取了哪些記錄</li>
+            </ul>
+            <p>不要等稽核當天才發現「那個tool的管理員已離職，帳號停用了」。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>工具生命週期管理：被忽視的維護義務</h4>
+            <p>工具需要有designated owner（不是IT全負責，也不是驗證團隊全負責，要有明確的single point of contact）。工具的退役計畫同樣重要：</p>
+            <ul>
+                <li>工具退役前，確認其中儲存的記錄已轉移或存檔</li>
+                <li>確保記錄在regulatory retention period內（通常10年以上）仍可讀取</li>
+                <li>版本升級需要change control + 確認不影響既有記錄</li>
+            </ul>
+            <p>Cloud-based工具特別要注意：vendor若停止服務，你的test records在哪裡？</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION SUMMARY ===================== -->
+<div class="summary-section">
+    <h2>Section Summary &#8212; 本節總結</h2>
+    <p>Appendices D6–D9 of GAMP 5 (2nd Edition) address four practical topics that bridge the gap between theoretical GxP compliance requirements and modern software engineering practice.</p>
+    <ul>
+        <li><strong>D6 System Descriptions</strong> — A regulatory-facing document required by EU GMP Annex 11 for critical systems. It serves as the "passport" of a computerized system, describing its purpose, architecture, interfaces, access controls, and electronic records in non-technical language. Must be subject to change control and periodic review; must be complete before system goes live.</li>
+        <li><strong>D7 Data Migration</strong> — One of the most underestimated validation activities. GAMP 5 requires a formal data migration plan (including data mapping, staging architecture, verification strategy, rollback plan) and report approved by QA, process owner, and SMEs. Three-environment staging (source → staging → target) under configuration management is standard good practice. Source data reliability, audit trail continuity, and tool fitness for use are key risk areas.</li>
+        <li><strong>D8 Agile Software Development</strong> — Agile (Scrum-based) development is fully compatible with GxP compliance when correctly applied. Evidence of compliance lives in tools (backlog, test management, code repository) rather than traditional document stacks. Key governance mechanisms: Definition of Done, sprint testing (including regression), sprint ceremonies, and INVEST-quality user stories. DevOps/CI/CD adds further automation and control. Quality is built in throughout the process, not bolted on at the end.</li>
+        <li><strong>D9 Software Tools</strong> — Development tools (backlog managers, test runners, code repositories, monitoring tools) are GAMP Category 1 and do not require computerized system validation. However, they need risk assessment, adequacy evaluation (EU GMP Annex 11 requirement), designated owners, CMDB inventory, and appropriate controls for any records they hold. The key decision point: does the tool's output constitute a primary GxP record directly supporting the product life cycle? If yes → validation required. If no → risk-based IT good practice suffices.</li>
+    </ul>
+
+    <p style="margin-top:1rem; font-style:italic; color:rgba(255,255,255,0.75);">
+        核心思維：GxP合規不在於文件數量，而在於可追溯性、完整性、以及整個生命週期中維持受控狀態（state of control）。Agile和現代工具鏈恰恰能夠以更有效率的方式實現這些目標——前提是要有正確的mindset和適當的治理機制。
+    </p>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

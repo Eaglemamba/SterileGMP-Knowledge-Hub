@@ -1,0 +1,1178 @@
+--- PAGE 215 ---
+Page 213
+Appendix D5
+Appendix D5
+25	Appendix D5 – Testing of Computerized
+Systems
+25.1
+Introduction
+This appendix covers the testing of GxP computerized systems. It is not intended to offer a prescriptive approach, that
+is, it does not require that testing must be done a certain way in a particular sequence. Instead, this appendix identifies
+the influences on testing (types of systems, different architectures, development models, corporate policies, regulatory
+requirements, etc.) and the key activities involved, and offers information on the types of testing and testing approaches
+that can be used selectively and in combination for optimal assurance that system is fit for its intended use.
+The application of critical thinking is vital to achieve effective testing that adds value and fulfills objectives such as:
+•
+Identifying defects so they can be corrected or removed before operational use
+•
+Reducing the risk of failures that might affect patient safety, product quality, or data integrity
+•
+Demonstrating that the system as installed and configured meets its requirements
+•
+Providing evidence that the system is fit for its intended use
+•
+Offering a basis for user acceptance
+•
+Meeting a key regulatory requirement
+•
+Ensuring that risk management controls are effective
+Testing should be carried out in accordance with an appropriate test strategy based on the risk to patient safety,
+product quality, and data integrity. Testing may occur both in the vendor’s development life cycle and in the regulated
+company’s implementation life cycle.
+25.1.1	 Changes from GAMP 5 First Edition
+This appendix has been revised to emphasize that:
+•
+Critical thinking should be applied when planning testing efforts such that the level of effort is commensurate
+to the risk acceptable within the organization as defined in its policies, procedures, and plans. The regulated
+company determines the assurance activities based on their own need to ensure systems are fit for intended
+use. The key is to determine the regulated company’s level of risk acceptance, based on the intended use of the
+system, factoring in the technical or procedural controls that are currently in place or that will be put in place.
+•
+Testing by any means and in any part of the life cycle and in any environment (development, validation,
+production, DevOps, etc.) all contributes to finding defects and confirming the system is fit for intended use.
+•
+Testing should not be limited to detailed and prescriptive step-by-step scripted protocols. The use of exploratory
+testing and other unscripted techniques is encouraged to extend test coverage and improve defect detection.
+Unscripted testing must be documented and can then be leveraged as part of the overall verification stage. Using
+automated testing brings benefits to test coverage, repeatability, and speed.
+
+--- PAGE 216 ---
+Page 214
+Appendix D5
+•
+Modern approaches may rely on records, information, and artifacts in automated tools in place of formal
+specification and test documentation. Either approach is acceptable, provided the information is complete,
+accurate, available, and adequately demonstrates that the system is fit for intended use and maintained in a
+validated state throughout its operational life. For this reason, many of the sections detailing test documentation
+(test plans/strategies, test specifications/protocols, test scripts, test summaries and reports) from the previous
+edition have been replaced with Section 25.5, discussing instead testing activities.
+25.2
+Scope
+This appendix applies to testing of all GxP regulated computerized systems. It covers the following key aspects:
+•
+Roles and responsibilities
+•
+Influences on test activities
+•
+Types of testing
+•
+Test environments
+•
+Leveraging previous testing including supplier testing
+•
+Testing applied to different software categories
+25.3
+Roles and Responsibilities
+The regulated company should define roles and responsibilities covering testing. Such definitions typically
+are included in an appropriate planning document, test strategy, or company procedure. Traditional roles and
+responsibilities may include:
+•
+Process Owner – responsible for the business process supported by the system and for the approval of the test
+strategy and overall test coverage
+•
+System Owner – responsible for the system in question and for ensuring system prerequisites are satisfied to
+allow testing to proceed
+•
+SMEs – essential for input to the test strategy and test case design
+•
+Test manager – plans testing approaches and types of testing
+•
+Test analyst – responsible for developing test cases – see explanation below
+•
+Tester – testers should be as independent as possible, as it is difficult to objectively test one’s own work. They
+should not be authors of the function or feature to be tested as that would typically only confirm the system does
+what the author expected it to do
+•
+Test reviewer – responsible for reviewing test cases and completed testing; they should not be the same person
+that executed the specific test case
+•
+Quality oversight, if applicable and necessary
+
+--- PAGE 217 ---
+Page 215
+Appendix D5
+•
+Supplier – should have already completed substantial testing in their development life cycle. Supplier or third-
+party representatives may act as test managers, testers, etc., depending on contractual agreements. Final
+responsibility for compliance remains with the regulated company irrespective of any outsourcing.
+Test cases may be created by the developers as part of the coding, by the software testers as part of exploratory
+testing, by the business users as part of “day in the life” testing, and by a test analyst (usually for manual scripted
+tests). The quality of the test cases and the functionality they cover directly impact the effectiveness of the testing and
+therefore, no matter who is creating the test case, they should be an SME in the associated field. Some examples
+include:
+•
+The software tester should be experienced in software testing techniques
+•
+The business user should be highly skilled and knowledgeable in the business process that the system will
+support
+•
+The test manager should have an expert understanding of GAMP principles, good software engineering
+practices, and critical thinking
+The focus should be on ensuring that the responsibilities for testing are met no matter what approach is used or who
+is creating and executing the test cases.
+25.4	 Influences on Test Activities
+Testing is one part of ensuring that a computerized system is fit for its intended use, aimed at verifying that the
+system selection, implementation, configuration, and use in the operating environment collectively constitute a system
+capable of supporting the business process. As such, test coverage and approaches are influenced by the:
+•
+Criticality of the business process being supported by the system, including the GxP impact of the system
+•
+Requirements for the system
+•
+Supplier’s development life cycle and quality system
+•
+Regulated company’s internal computerized systems validation policy
+•
+Risk culture within the company
+•
+Use and existence of additional controls elsewhere in the business process
+•
+Level of test automation available.
+Table 25.1 outlines the key activities specifically relating to testing and the influences on those activities. The table
+does not include scaling system controls and configuration based on risk, which are an essential part of system
+implementation. This table is not intended to replace the detailed descriptions of the life cycle activities found
+throughout the body and appendices of this Guide. The Key Objectives/Focus of the activities in this table are those
+related to testing, and not all life cycle activities.
+
+--- PAGE 218 ---
+Page 216
+Appendix D5
+Table 25.1: Activities and Influences around Testing
+Activity
+Key Objectives/Focus
+Influenced By
+Defining Requirements
+Identifies what the system must do to support the
+business process and the data integrity technical
+controls needed. Ultimately the requirements form
+the specifications against which test cases will be
+run and provide the basis for determining if the
+system meets its intended use. Requirements
+capture is discussed in detail in Appendix D1.
+•
+Applicable GxP Regulations
+•
+Business Process Map
+•
+Data Flow Diagram
+•
+Process Risk Assessment
+Supplier Assessment
+Evaluate if the supplier can provide a system of
+acceptable quality that will meet the requirements.
+Extensive well-executed supplier testing can
+reduce the amount of testing that the regulated
+company will need to complete. Where such
+testing is to be leveraged, the regulated company
+should be able to demonstrate an appropriate
+suppler assessment process and conclusions upon
+request during regulatory inspection. Supplier
+assessment is explained in Appendix M2.
+•
+Supplier Qualification Process
+•
+Requirements
+•
+SLA
+Validation Planning
+Defines the GxP impact of the system, the life
+cycle and test strategy, and the decisions made
+based on the outcome of the supplier assessment.
+See Appendix M1 for more detail on validation
+planning.
+•
+Applicable GxP Regulations
+•
+Computerized Systems
+Validation Policy
+•
+Requirements
+•
+Supplier Assessment
+•
+GxP Risk Inherent in the
+Business Process
+Functional Risk
+Assessment
+Assesses and prioritizes the risks from the system
+functionality with the potential to impact patient
+safety, product quality, and data integrity. For
+some complex system development projects,
+more formal and detailed assessments such
+as Failure Mode Effects Analysis (FMEA) may
+identify failure modes and drive improved controls.
+For implementation projects, assessing at the
+functional or requirement level is typically sufficient.
+The functional risk assessment is one component
+of the wider QRM approach covered in Chapter 5
+of the Main Body and in Appendix M3.
+•
+Requirements
+•
+Risk Assessment Procedure
+or Methodology
+Test Planning/
+Coverage
+Defines the depth and rigor of test coverage and
+documentation needed based on the assigned risk
+priority of the function, including references to any
+supplier testing to be leveraged. Agile approaches
+and the use of end-to-end automated tools may
+provide much of the test planning and coverage;
+however, additional manual cases may be needed
+to verify workflows and overall system fitness for
+intended use. This activity is discussed in more
+detail in Section 25.5.1.
+•
+Requirements
+•
+Validation Planning
+•
+Supplier Assessment
+•
+Functional Risk Assessment
+
+--- PAGE 219 ---
+Page 217
+Appendix D5
+Table 25.1: Activities and Influences around Testing (continued)
+Activity
+Key Objectives/Focus
+Influenced By
+Test Management
+Processes
+Often captured in a test specification or test plan
+in a manual testing approach, but alternatively
+recorded in an SOP for more automated and Agile
+approaches, a test management process needs
+to define the testing approach and execution
+instructions. Section 25.5.2 focuses on test
+management processes.
+•	 Computerized Systems
+Validation Policy
+•	 Validation Planning
+Creating Test Cases
+Test types include, but are not limited to, scripted
+or unscripted, manual or automated, exploratory,
+ad-hoc, regression, end-to-end regression, etc.
+Except for ad-hoc testing, most tests have as a
+minimum a defined objective, a pass/fail outcome
+or criteria, and a reference to the requirement or
+aspect under test. See Section 25.5.3 for more
+information on test cases.
+•	 Test Planning/ Traceability
+Matrix
+•	 Configuration Specification
+Executing Tests
+Test execution should meet the objectives of the
+test cases and generate test records/capture test
+evidence to demonstrate the system’s fitness for
+intended use or allow defects to be addressed.
+This is discussed further in Section 25.5.4.
+•	 Test Management Processes
+•	 Scripted and Unscripted Tests
+Reviewing and
+Reporting Completed
+Tests
+The focus of the review is to confirm if the
+functionality operated correctly rather than to
+scrutinize the testing to check for minor errors.
+Any test failures should be assessed to confirm
+that any defects have been fixed or have been
+dispositioned satisfactorily.
+Overall review should confirm the desired test
+coverage has been achieved; if any gaps are
+identified then new tests will need to be created,
+executed, and reviewed. Section 25.5.5 expands
+on reviewing and reporting.
+•	 Test Management Processes
+•	 Test Planning/ Traceability
+Matrix
+•	 Executed Tests
+Validation Reporting
+Confirms if the validation strategy was
+implemented as planned and if all the requirements
+have been met and verified based on risk.
+Document the impact of any non-conformances
+or outstanding deviations. Identify where the test
+records and evidence are maintained, for example:
+•	 Generated in the system under test
+•	 Maintained in the system audit trail
+•	 In automated tools
+•	 Any completed paper protocols
+•	 Supplier test evidence (and how it is assessed
+or accessed if needed)
+The full requirements for validation reporting are
+detailed in Appendix M7.
+•	 Applicable GxP Regulations
+•	 Validation Planning
+•	 Requirements
+•	 SLA
+
+--- PAGE 220 ---
+Page 218
+Appendix D5
+25.5
+Test Planning/Coverage
+Test planning is needed to ensure sufficient test coverage of the system functionality, including adequate verification
+of GxP functions based on the regulated company’s risk tolerance. Fundamental to the risk-based approach is
+an acceptance that not all functionalities will be challenged and consequently not all defects will be found. Risk
+management, when done well, should ensure that the unchallenged functionality and undiscovered defects are low in
+terms of impact on patient safety, product quality, and data integrity. Test coverage for the regulated company should
+be limited to the intended use of the system, however, the level of test documentation required will vary depending on
+the risk associated with the feature/function to patient safety, product quality, and data integrity. Traceability between
+test cases and requirements or specifications is essential to quantify the test coverage.
+For a linear-sequential system development and implementation, as shown in Figure 25.1, the overall test coverage
+of a system is typically a combination of:
+•
+Supplier testing (confirmed during supplier assessment as robust and suitable for leveraging)
+•
+Unscripted testing (including exploratory, ad-hoc testing, day in the life testing by a business process user, and
+error guessing) for maximum defect detection across the system functionality
+•
+Scripted testing (manual or automated) to verify the correct functionality of the system controls for risks at the
+higher end of the risk continuum
+•
+User acceptance testing to formally demonstrate fitness for intended use
+There may be some degree of overlap between the testing activities, but this should be minimized as there is no
+benefit to repeating testing already performed in a controlled environment. The testing in the bulleted list above may
+have occurred in multiple environments, however, it all contributes to the overall defect detection and assurance of
+fitness for intended use. This is discussed in more detail in Section 25.7.
+A subset of scripted and unscripted testing may be repeated after changes in the operational phase to provide
+assurance that the system remains fit for intended use.
+The Figures 25.1 and 25.2 are intended to be illustrative of general possible approaches, and not intended to be
+definitive or prescriptive.
+Figure 25.1: Test Coverage for Linear-Sequential System Developments
+
+--- PAGE 221 ---
+Page 219
+Appendix D5
+Agile development approaches are now widely used for both on-premise software delivery and for SaaS offerings.
+In Agile, automated test cases can be generated as the requirements are coded. The need for additional testing will
+be determined by the robustness and coverage of the automated test cases. For example, even when the test cases
+comprehensively cover the detailed functionality of the system, there may be a need to separately create unscripted
+and/or scripted test cases to challenge the end-to-end workflows and intended use within the system, as shown in
+Figure 25.2.
+Figure 25.2: Test Coverage for Agile Approaches and SaaS Offerings
+Scripted workflow testing may be manual or automated and completed by the provider. Scripted intended use testing
+focuses on the individual regulated company’s intended use of the software as defined by their configuration and
+internal workflows, and would be scaled based on risk.
+The DevOps or CI/Continuous Deployment (CD) output may go straight to regulated use without the need for
+scripted workflow or intended use testing if the verification needs already have been addressed in that framework, for
+example, when:
+•
+The regulated company’s in-house IT are the developers and therefore can factor in the intended use to their
+automated scripted testing
+•
+The software solution is entirely standard (i.e., not configurable), and is used as-is by the regulated company so
+the intended use exactly matches the provider’s testing
+For subsequent releases, depending on the scope of the sprint, exploratory testing or ad-hoc testing may be
+combined with regression testing by automated test cases to verify that sprint developments have not impacted
+functionality from previous sprints.
+See Appendix D8 for more information.
+
+--- PAGE 222 ---
+Page 220
+Appendix D5
+25.5.1	 Test Management Processes
+Early and efficient testing, during development as well as during the verification phase, improves defect detection
+and reduces the occurrence of defects surviving into the operational phase. A combination of direct evidence (e.g.,
+manual or automatic recording of results (Pass/Fail)) and indirect evidence (e.g., reports, notifications that can only
+exist if the proving step is completed) can be used to establish that requirements have been fulfilled in support of the
+intended use.
+“Errors that impact product quality should trigger more detailed investigations compared to a catch and correct in
+the moment approach for less significant typographical errors.” [20]
+This is consistent with how both ISPE GAMP Guidance [64] and the FDA CDRH Case for Quality program [9]
+promote taking a risk-based approach to testing [36].
+“Test strategies should ensure sufficient system testing to detect defects, and that test management processes
+are robust enough to maintain control of the system during the testing activities.” [20]
+The critical thinking rationale behind the test strategy must be documented.
+A test management process may include:
+•
+Any special prerequisites to testing
+•
+Identifying what combination of scripted or unscripted, manual or automated testing will be used
+•
+The personnel required for each test or group of tests
+•
+The expectations regarding test evidence (including the recording and reporting of test pass/fail results)
+•
+How the environment in which the testing is to occur will be identified and recorded
+•
+How the progress and outcome of testing will be monitored
+•
+How test cases and completed tests will be reviewed and approved
+25.5.2	 Test Cases
+The level of detail for test cases can vary depending on the test strategy and the risk posed by the function or feature
+being tested. The ISPE GAMP RDI Good Practice Guide: Data Integrity by Design [36] and the ISPE GAMP Good
+Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service Management [20] introduced the concept of
+scripted and unscripted testing, as summarized below in Table 25.2.
+
+--- PAGE 223 ---
+Page 221
+Appendix D5
+Table 25.2: Acceptable Assurance Approaches and Records
+Adapted from ISPE GAMP RDI Good Practice Guide: Data Integrity by Design [36].
+Assurance
+Approach
+Test Plan
+Test Results
+Record (Digital
+Acceptable)
+Unscripted Testing:
+Ad-hoc (with
+least-burdensome
+documentation)
+Testing of requirements or
+functions with no test plan
+Details regarding any
+failures/deviations found
+•
+Summary description of
+requirements or functions
+tested
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+Unscripted Testing:
+Error guessing
+Testing of requirement or
+function failure modes with
+optional listing of expected
+failure modes in advance
+Details regarding any
+failures/deviations found
+•
+Summary description of
+failure modes tested
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+Unscripted Testing:
+Exploratory Testing
+Establish high-level test plan
+objectives for requirements
+or functions (no step-by-step
+procedure is necessary)
+•
+Pass/fail for each test
+plan objective
+•
+Details regarding any
+failures/deviations found
+•
+Summary description of
+requirements or functions
+tested
+•
+Result for each test
+plan objective – only
+indication of pass/fail
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+Unscripted Testing:
+Day in the Life
+Testing
+Establish high-level test
+plan objectives for normal
+day to day activities to be
+challenged (no step-by-step
+procedure is necessary).
+Test using business process
+experience and knowledge,
+and against SOPs where
+available.
+•
+Pass/fail for each test
+plan objective
+•
+Details regarding any
+failures/deviations found
+•
+Summary description
+of activities or business
+operation challenged
+•
+Result for each test
+plan objective – only
+indication of pass/fail
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+
+--- PAGE 224 ---
+Page 222
+Appendix D5
+Table 25.2: Acceptable Assurance Approaches and Records (continued)
+Adapted from ISPE GAMP RDI Good Practice Guide: Data Integrity by Design [36].
+Assurance
+Approach
+Test Plan
+Test Results
+Record (Digital
+Acceptable)
+Scripted Testing:
+Limited
+•
+Limited test cases
+(step-by-step procedure)
+identified
+•
+Expected results and
+values
+•
+Independent review and
+approval of test plan
+•
+Pass/fail for test case
+identified
+•
+Details regarding any
+failures/deviations found
+and disposition regarding
+fails
+•
+Summary description of
+requirements or functions
+tested
+•
+Result for each test case
+– any critical values and
+indication of pass/fail
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+•
+Record of who reviewed
+testing and date
+Scripted Testing:
+Robust
+•
+Test objectives
+•
+Test cases (step-by-step
+procedure)
+•
+Expected results and
+values
+•
+Independent review and
+approval of test cases
+•
+Pass/fail for test case
+•
+Details regarding any
+failures/ deviations found
+and disposition regarding
+fails
+•
+Detailed report of
+assurance activity
+•
+Result for each test case
+– any critical values and
+indication of pass/fail
+•
+Issues found and
+disposition
+•
+Conclusion statement
+•
+Record of who performed
+testing and date
+•
+Record of who reviewed
+testing and date
+Scripted testing is dependent on detailed test cases that predefine the step-by-step instructions to be followed by
+the tester. Meanwhile, unscripted testing captures less detailed information. For example, with exploratory testing,
+the test case is limited to establishing high-level test plan objectives for features and functions (no step-by-step
+instructions) and supporting that with what was tested, by whom, when, and any issues found as a contemporaneous
+record. Even for ad-hoc testing, where there are no predefined objectives, there will still be a record of what was
+tested, by whom, when, and any issues found. Unscripted testing does not mean undocumented testing.
+Unscripted testing techniques allow the behavior of the system to determine the path forward and are included in
+Section 25.6.1. Exploratory testing leverages the Plan – Do – Check – Act cycle. Testers simultaneously learn about
+the product and its defects, plan the testing work to be done, design, and execute the tests, and report the results.
+Good exploratory tests are planned, interactive, and creative. As the tester learns the application, they are better able
+to explore and test the application without preconceived notions about its behavior that come from scripted test cases.
+Although unscripted testing test types have less detail in them as they do not contain step-by-step instructions, they
+can increase test coverage as the tester will create and evolve the test cases organically as they progress.
+Unscripted testers should be qualified as testers and knowledgeable about the system in question to ensure the
+testing is focused on challenging the application in the context of the business process.
+A comparison of unscripted and scripted testing approaches is provided in Table 25.3, which is an evolution of earlier
+Computer Software Assurance (CSA) work [20].
+
+--- PAGE 225 ---
+Page 223
+Appendix D5
+Table 25.3: Comparison of Unscripted and Scripted Testing Approaches
+Adapted from ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service
+Management [20].
+Each scripted manual test case should, where possible, include the following:
+•
+Unique test reference
+•
+Cross-reference to controlling specification
+•
+Title of test
+•
+Description of test, including the test objective
+•
+Test steps – a step-by-step description of the actions to be performed by the testers along with the expected
+results
+•
+Acceptance criteria – the defined set of expected results that should be met for the test to be deemed to have
+passed
+Unscripted Testing
+Scripted Testing
+Used to supplement scripted testing to improve defect
+detection on high-risk functions.
+Critical thinking could support using unscripted testing
+to challenge functions with low and/or medium risk, and
+using it as part of a spectrum of tests challenging high-
+risk functionalities.
+Used alone or in combination with unscripted testing
+approaches to challenge functions with high risk to
+patient safety, product quality, and data integrity.
+Used to uncover software defects or errors associated
+with poorly defined/implemented specifications.
+The dynamic test design during execution allows
+functionality to be explored against the system
+specifications and other artifacts.
+Repeatability is lower due to the absence of a detailed
+step-by-step test script.
+Tests against specifications to confirm fitness for
+intended use using test scripts that can be reviewed
+and approved in advance. It tests the known
+functionalities and may miss issues not identified at the
+time of test design. The detailed scripted nature of the
+testing discourages exploring areas of risks identified
+during test execution, e.g., the unknowns that may
+appear when the system is being tested.
+Scripted testing, manual or automated, can provide the
+basis for regression testing to capture the impact of
+changes or updates.
+Relies on the tester’s intuition, knowledge, and testing
+experience to explore and challenge the functionality
+of an application using the specifications, user manual
+design documents, etc.
+Test cases use the specification as the standard to be
+verified.
+By its very nature scripted testing may not uncover
+defects arising from poorly defined specifications as
+scripted testing follows the specification verbatim.
+Aims to test both expected and unexpected user/
+system behaviors.
+More sensitive to inexperienced testers and/or lack
+of system knowledge than scripted testing, as the
+scenarios and challenges are created dynamically
+during execution.
+Tests are designed to confirm expected user/system
+behaviors.
+
+--- PAGE 226 ---
+Page 224
+Appendix D5
+•
+Pretest steps – including any test prerequisites or setup
+•
+Data to be recorded – a description of the test-specific data to be collected and recorded. This can be input,
+output, or descriptive data and should include serial numbers of any test equipment used and supporting
+calibration certificates where necessary. Any requirement for screenshots and other electronic documentation
+should be specified.
+•
+Post-test actions – this optional section details those actions required to return the system to a known state.
+Examples include resetting process parameters, putting the system in a safe state, or rebooting the system.
+Each unscripted test case (except for ad-hoc testing) should, where possible, include the following:
+•
+Unique test reference
+•
+Cross-reference to controlling specification
+•
+Title of test
+•
+Description of test, including the test objective
+•
+High-level instructions on how test objective can be met
+25.5.3	 Executing Tests
+The quality of testing is significantly impacted by the knowledge and skill of the tester, therefore:
+•
+Day in the life testing needs to be executed by a skilled business process user.
+•
+All other manual testing needs to be executed by a skilled software tester; where unscripted testing is used,
+knowledge of the system under test is also essential.
+•
+All staff responsible for test execution, including end users, should be trained in test procedures and should be
+able to demonstrate sufficient confidence in operating the system under test.
+•
+Training should be documented.
+The identity of the tester should be recorded for all executed test cases. It is disproportionate and unnecessary to use
+test witnessing or to require the tester to initial every test step to affirm they followed the instructions.
+Automated test tools require a documented assessment of their adequacy prior to use. Detailed guidance on
+automated tools and their use in Agile approaches is available in ISPE GAMP Good Practice Guide: Enabling
+Innovation – Critical Thinking, Agile, IT Service Management [20]) and in Appendix D9.
+If calibration of necessary test equipment is required, it should be performed and documented. Calibration equipment
+should be certified, traceable to national standards and referenced in accordance with the customer’s procedures;
+see ISPE GAMP® Good Practice Guide: A Risk-Based Approach to Calibration Management (Second Edition) [65].
+Testing activities should be recorded following good documentation practice irrespective of whether manual or
+automated testing is used. Test records and evidence should be retained for subsequent review and inspection.
+Expectations regarding test evidence, including the recording and reporting of test pass/fail results, can be defined at
+a policy level within the QMS or within the test-management process. Excessive hard-copy test evidence continues to
+be an area for efficiency improvement. In many cases, prolific screen shots do not add value and are unnecessary.
+
+--- PAGE 227 ---
+Page 225
+Appendix D5
+It is recommended to apply critical thinking when defining the need for test records and evidence, to:
+•
+Ensure that even where testing is not scripted in detail, the objective of the test remains clear, and the results
+record adequately what testing was carried out. Evidence of a test case result can be as straightforward as the
+tester indicating if a test passed or failed.
+•
+Ensure that test evidence is only collected for proving steps that are not inherently covered by evidence from
+another test.
+•
+Adopt an exception-reporting approach to recording detailed results. That is, if the system response matches the
+expected results, a simple “Pass” can be recorded. However, if the system responds in an unexpected manner,
+the tester records both a “Fail” and a description of how the response differed from the expected results, as
+this additional detail is helpful in determining the root cause and corrective action. This eliminates time wasted
+capturing elaborate test evidence (e.g., excessive screenshots or recording detailed descriptions of the observed
+response) when a simple pass or fail (or recording the value or initialing a design specification statement) is
+adequate to confirm that the test has been completed.
+•
+Recognize that routine requirements for screenshots as objective evidence bring little value to verification
+activities. There are however certain situations where they offer a practical benefit over manual recording when
+detail is needed, for example, when there is a specific need for a before and after comparison of detailed or
+complex data, such as an audit trail or report.
+The use of automated testing tools is encouraged to minimize manual collection of evidence as the artifacts within the
+tools are themselves evidence.
+25.5.4	 Reviewing and Reporting Completed Tests
+Completed testing should be reviewed to verify that the computerized system is fit for its intended use. While test
+evidence should be reviewed to confirm completeness and accuracy of testing activities and conclusions, there is
+little value in:
+•
+Looking for minor errors in documentation that have no impact on patient safety, product quality, or data integrity
+•
+Scrutinizing test evidence in extreme detail to assess whether the tester has exactly followed the test instructions
+for non-critical functionality
+Unusual patterns of test failures associated with particular authors and/or individual testers should be investigated to
+determine whether there are any wider testing implications on the rigor of completed testing.
+Test reports should be produced that summarize activities and findings and state the final conclusions. Many
+automated test management tools can present a dashboard showing the test cases completed, any outstanding test
+cases, and any failed test cases, as an alternative to manually created test reports.
+
+--- PAGE 228 ---
+Page 226
+Appendix D5
+25.6	 Types of Testing
+This section discusses the types of testing that should be considered when developing the test strategy. The test
+cases for the different types of testing can be created as scripted or unscripted cases, as discussed in Section 25.5.3.
+25.6.1	 Test Types Unique to Unscripted Testing
+There are some types of testing which are unique to unscripted testing:
+•
+Ad-hoc testing is unscripted testing performed without planning or predefined documentation. It is aimed at
+finding defects as early as possible.
+•
+Error guessing is a testing technique designed to expose anticipated and potential defects based on the
+specialist tester’s knowledge and experience of failure modes.
+•
+Exploratory testing is experience-based testing where the tester spontaneously designs and executes tests
+based on existing specialist testers’ knowledge and experience, prior exploration of test items (including results
+from previous tests), and typical common software behaviors and types of failure and defects.
+•
+Day in the life testing allows users of the system to carry out their normal day to day activities in the system (as
+they would post go live) to uncover issues not identified by scripted testing. These testers need real-life business
+process experience and knowledge, and may be drawn from the intended routine users of the system.
+25.6.2 	Other Test Types
+All other test types can be created as scripted or unscripted test cases. Two general types of testing activities may be
+identified:
+•
+White box testing is also known as clear-box testing, code-based testing, or structural testing. Test cases are
+identified based on the internal structure of the component or system. Sources of the internal structure include
+source code knowledge, knowledge of detailed design specifications and other development documents.
+•
+Black box testing, also known as functional testing, is based on an analysis of the specification, either functional
+or nonfunctional, of a component or system without reference to its internal structure.
+Specific types of testing should be considered, depending on the complexity and novelty of the system and the risk
+and supplier assessments of the system to be tested, including:
+•
+Normal Case testing (Positive Case or Capability testing) challenges the system’s ability to do what it should do,
+including triggering significant alerts and error messages, according to specifications.
+•
+Negative Case testing (Invalid Case or Resistance testing) challenges the system’s ability to correctly prevent
+actions that the specifications state or infer should be prohibited or blocked.
+•
+Repeatability testing challenges the system’s ability to repeatedly do what it should, or, when dealing with real
+time control algorithms, confirming the algorithms continuously and correctly fulfill their function.
+•
+Performance testing challenges the system’s ability to do what it should as fast and effectively as it should,
+according to specifications.
+•
+Volume/Load testing challenges the system’s ability to manage high loads as it should. Volume/Load testing is
+required when system resources are critical, and is typically automated.
+•
+Structural/Path testing challenges a program’s internal structure by exercising detailed program code.
+
+--- PAGE 229 ---
+Page 227
+Appendix D5
+Automated testing has gained traction since the previous version of this Guide, and in Agile approaches it is now
+common for test cases to be coded earlier. This allows for prolific use of:
+•
+Automation First: automating testing (e.g., functional, acceptance) as part of the implementation and validation
+effort
+•
+Smoke testing, that is a superficial level of testing to check critical functionality as a measure of the stability of
+each system build
+•
+Regression testing to challenge the system’s ability to still do what it should after being modified according to
+specified requirements, and that portions of the software not involved in the change were not adversely affected.
+Regression testing using automated test cases is used in Agile approaches to verify the build prior to release.
+•
+Software tools, including automated testing tools, are discussed in detail in Appendix D9.
+•
+Testing approaches continue to evolve and improve, and more advanced approaches such as using artificial
+intelligence to drive testing may become more widespread in the future.
+25.6.3 	Contractual or Acceptance Testing
+There may be a need for specific tests to satisfy contractual requirements, which are typically called acceptance
+tests. Typically, acceptance tests are a predefined set of functional tests that demonstrate fitness for intended use
+and compliance with user requirements, and are related to meeting project milestones, the supply of key deliverables
+such as training materials or user manuals, and other commercial issues.
+This approach is often used for automated equipment and process control systems. For further details see the ISPE
+GAMP Good Practice Guide: A Risk-Based Approach to GxP Process Control Systems (Second Edition) [61]. In such
+circumstances the test strategy and planning should leverage these tests to satisfy GxP verification requirements and
+avoid duplication.
+Acceptance may be carried out in two stages, factory acceptance and site acceptance.
+•
+Factory Acceptance Tests (FAT) are performed at the supplier site before delivery to show that the system is
+working well enough to be installed and tested on-site.
+•
+Site Acceptance Tests (SAT; sometimes called System Acceptance Testing) show that the system is working in
+its operational environment and that it interfaces correctly with other systems and peripherals
+These acceptance tests may be leveraged in support of, but do not replace the need for, process qualification
+including Process Performance Qualification (PPQ) where relevant.
+The environment for acceptance testing (e.g., validation or production) should be defined.
+25.7
+Test Environments
+Testing may take place in different environments during a project, which may include:
+•
+Development environment where prototyping or programming takes place
+•
+Formal testing environment
+•
+Operational environment where the system is in its target environment
+
+--- PAGE 230 ---
+Page 228
+Appendix D5
+The use of multiple environments provides the opportunity to assess changes before they are rolled out to production
+and to provide a target for restore testing of backup data, thus reducing risk to the live operational environment and
+data.
+The DevOps environment used in Agile approaches may be replicated into multiple test environments on demand to
+accommodate the needs of different groups and even SaaS consumers. The test environments, whether on-premise
+or hosted by the SaaS provider, need to be functionally equivalent for the testing to be representative and effective.
+Differences should be assessed and mitigated to ensure the testing is representative for testing and verification
+purposes. For example, missing endpoints in a formal test environment can be mitigated using service virtualization
+to emulate the endpoint, manual review of the inbound and outbound transaction, etc.
+It is essential that a record is kept of the environment in which a test case was run, and the current build and
+configuration of that environment. Note, this record may reside in an automated tool (e.g., continuous integration
+orchestration). As stated in the ISPE GAMP RDI Good Practice Guide: Data Integrity by Design [36] and in
+Section 25.8.4, there is no benefit to repeating testing already performed in another, but still adequately controlled
+environment just because it was not the formal test environment.
+It is the scope, rigor, and coverage of the testing that ensures the quality of the system as implemented; the quality
+and business gains are achieved by leveraging the full range of completed testing. Any significant differences
+between the environments used for testing should be assessed to determine the equivalency of test results, that is,
+to justify that similar results would have been achieved in the operational environment. Critical thinking would note
+this is analogous to how change controls are handled in production. There is no 100% retesting of the system when a
+change is applied; instead the change is assessed for its impact on the validity of testing.
+25.8
+Leveraging Previous Testing Including Supplier Testing
+There are many different life cycle models for software development, including:
+•
+Waterfall
+•
+V
+•
+Spiral
+•
+Prototyping
+•
+Agile
+These are all equally acceptable. Whatever model is used, the supplier should define the implementation of the
+model, including necessary quality controls, and describe the way it is used to demonstrate that the computerized
+system meets their specifications.
+Testing strategies should be established, implemented, and reported accordingly. More information on software
+testing is given in ISO 90003 [66], various IEEE standards [67], and other publications. The International Software
+Testing Qualifications Board® (ISTQB) [68] offers formal training and accreditation in software testing.
+25.8.1	 Supplier Testing
+The more extensive and effective the testing done by the supplier during their life cycle, the less testing the regulated
+company may need to do. If the supplier testing is confirmed as sufficient to demonstrate that the system functions
+correctly against supplier specifications, then the regulated company verification activity may be limited to a subset of
+requirements testing, as shown in Figure 25.3.
+
+--- PAGE 231 ---
+Page 229
+Appendix D5
+Figure 25.3 Supplier and Regulated Company Interaction
+Adapted from ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service
+Management [20].
+Common test types executed during a supplier development life cycle are:
+•
+Acceptance Testing for Purchased Hardware and Software: Purchased hardware and software should be subject
+to acceptance testing before being used for the system’s development.
+•
+Unit/Module Tests: Stand-alone tests for software components, ensuring readiness for further integration into the
+complete system. Such tests are best developed at the same time that the software is developed.
+•
+Integration and Functional Tests: Testing of integrated software components, sub-systems, and the complete
+system.
+In order to leverage supplier testing, the regulated company should first consider:
+•
+The extent, coverage and quality of the supplier testing to determine how much reliance can be placed on the
+supplier testing and what additional testing will be needed. An SME review of supplier test cases and records
+may be required to justify this.
+•
+How supplier test records can be made available for appropriate assessment and review by the regulated
+company
+•
+How traceability between the regulated company’s requirements and the supplier’s test cases will be established
+and maintained, if required
+Access to supplier test records can be complicated when such records reside in requirements management tools,
+automated test tools, etc., rather than existing as discrete documentation. This should not, however, be used as a
+reason to insist the information is recreated in a document format, and an agreement should be reached on how
+those records can be viewed when needed.
+
+--- PAGE 232 ---
+Page 230
+Appendix D5
+25.8.2	 Ongoing Life Cycle Maintenance
+As Figures 25.1, 25.2 and 25.3 show, new releases of the software by the supplier will result in the need for the
+regulated company to actively take measures to maintain the validated state after upgrading. Critical thinking and risk
+management should be used to determine the extent of the effort required.
+When supplier testing of new functionality and supplier regression testing of existing functionality will be leveraged
+by the regulated company, provision may need to be made for access to this testing as part of accepting the new
+software release.
+As a minimum, the regulated company will need to verify the updated software remains fit for their intended use. Key
+to the regulated company determining the necessary testing required for a change and their acceptance of a change
+is their ability to understand and risk evaluate the changes in light of the criticality of the business process supported
+by the computerized system. To be able to efficiently evaluate the change, the supplier should provide a clear
+understanding of the changes being implemented. Regression testing of the configuration and workflows – whether
+manual or automated – may be implemented by the regulated company to confirm the latest software version
+implemented still provides a system fit for the regulated company’s intended use, as part of operational change
+management.
+25.8.3	 Testing in Multiple Environments
+Testing in environments other than the validation or production environment contributes to finding defects and
+confirming the system is fit for intended use.
+The differences between the supplier’s development environment, any initial exploratory testing in a sandbox, or
+regulated company’s development environment, and the production environment should be assessed to determine its
+impact on the validity of the testing. This will be specific to the type of testing; for example, load testing conducted in a
+test environment with limited data and users will not be representative of the true load experienced in the operational
+environment.
+However, where there is no impact to the particular test types and cases arising from the difference in the
+environments (for example, testing of audit trail functionality), the testing should be leveraged no matter what
+environment it occurred in, and there is no benefit to repeating that testing in the formal test or production
+environments. See Section 25.7 on functional equivalency of environments.
+25.9	 Testing Applied to Different Software Categories
+This section provides practical considerations when planning testing.
+25.9.1	 Aspects that Apply to all Systems
+25.9.1.1	 Installation Testing of Hardware/Software
+Although the term is not used in this Guide, which refers to installation verification activities in general, many
+companies still use the traditional process validation term Installation Qualification or IQ. The purpose is to verify
+and document that system components are combined and installed in accordance with specifications, supplier
+documentation, and local and global requirements. Installation testing provides a verified configuration baseline for
+subsequent verification and validation activities, and verifies any installation methods, tools, or scripts used. This
+forms the basis for configuration management of the installed system. This “static” approach to installation verification
+is typically applied to process control systems and automated equipment.
+
+--- PAGE 233 ---
+Page 231
+Appendix D5
+For cloud-native or virtualized software, the use of automated installers combined with configuration management
+tools and service management tools will be more effective than conventional installation approaches, and if they
+provide dashboard functionality then a review-by-exception approach can replace many of the static verification
+activities.
+Whatever the approach used toward installation verification, the availability of appropriate technical information should
+be verified. The necessary information will vary widely between different types of systems, but examples include:
+•
+User and technical guides
+•
+SOPs
+•
+Training schedules
+•
+SLAs
+•
+Security procedures
+•
+Log books
+•
+Hardware inventory
+•
+Instrument lists
+•
+Specification sheets
+•
+Certificates and calibration procedures
+•
+Loop sheets
+•
+Piping drawings/P&ID
+•
+Equipment list and specification sheets
+•
+Software inventory (including installation procedure, system software list, application software list, data list, initial
+data settings for start-up)
+•
+Preventive maintenance program
+•
+List of critical spare parts
+25.9.1.2	 Points to Consider for all Systems
+The following is an aide memoire only and does not replace the need to apply critical thinking and a risk-based
+approach to the scope and rigor of testing. It should be used simply as a reminder to help ensure appropriate test
+coverage of the installed system.
+Test coverage may include:
+•
+Power failure testing, especially
+-
+Prevention against loss of critical data or loss of control action
+-
+Ease of controlled restart
+
+--- PAGE 234 ---
+Page 232
+Appendix D5
+•
+System access and security features
+•
+Data audit trails for creation, modification, and deletion of GxP records, and mechanisms for logging of other
+critical actions including manual interactions
+•
+Manual data entry features, input validation
+•
+Electronic signature features
+•
+Alarms and error messages
+•
+Critical calculations
+•
+Critical transactions
+•
+Transfer of critical data into other packages or systems for further processing
+•
+Interfaces and data transfers
+•
+Backup and restore
+•
+Data archival and retrieval
+•
+Ability to deal with high-volume loads especially if the system is accessed by many users as part of a network
+application
+25.9.2	 Typical Testing Activities for a Standard Product
+These are software products that are used off-the-shelf (i.e., which are either not configurable for a specific
+business process or those that offer limited configurations using factory-provided values or ranges (also called
+parameterization)) and are typically classified as GAMP Category 3.
+Testing should focus on:
+•
+Installation testing as described above
+•
+Requirements testing that demonstrate fitness for intended use; this may include testing the system functionality
+against requirements depending on risk if not adequately addressed in the supplier testing. For very simple
+measurement systems regular calibration may substitute for testing.
+•
+Any further or more rigorous tests as a result of risk and supplier assessments
+•
+Acceptance of the final system information from the supplier, including specifications, manuals, and drawings, if
+not already covered
+•
+Any other relevant aspects listed in Section 25.9.1.2 not already covered
+25.9.3	 Typical Testing Activities for Configured Functionality
+A common type of computerized system involves the configuration of commercially available software products
+running on standard hardware components. Configurable software components enable configuration of user-specific
+business processes into one or more workflows, specific to methods, or products, or processes, etc. Software
+products that are configured for a specific business process typically are classified as GAMP Category 4, even
+though they will also contain components of Categories 1 and 3, and possibly Category 5 components if there are
+some customized elements. Appendix M4 provides more detailed discussion around multi-category systems.
+
+--- PAGE 235 ---
+Page 233
+Appendix D5
+As the configuration is typically specific to the individual company’s intended use, there will be less opportunity to
+leverage supplier verification and more need for regulated company verification activities.
+Testing should focus on:
+•
+Installation testing as described above
+•
+Configuration testing – verifying that the system has been configured in accordance with the agreed
+specification. The tests could take the form of inspections or check of configuration documentation.
+•
+Functional testing – challenging functionality that supports the specific business process based on risk and
+supplier assessments. The regulated company may not need to complete some or all of this testing if the supplier
+testing has been assessed and judged to sufficiently verify the functionality.
+•
+Requirements testing that demonstrate fitness for intended use – this may include challenging the configuration
+and user-defined workflows to ensure the needs of the business process have been met in the configured
+system
+•
+Acceptance of the final system information from the supplier, including specifications, manuals, and drawings, if
+not already covered
+•
+Any further or more rigorous tests as a result of risk and supplier assessments
+•
+Any other relevant aspects listed in Section 25.9.1.2 not already covered
+25.9.4	 Typical Testing Activities for a Custom Application
+Some computerized systems or software components are developed to meet individual user requirements, where no
+commercially available solution is suitable. Such software is classified as GAMP Category 5, although it is important
+to understand that even a fully customized development will leverage standard software modules and libraries to
+which the approach in Section 25.9.2 may be applied.
+Most modern developments, especially for large or complex applications, will use an Agile development approach as
+detailed in ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service Management
+[20] and in Appendix D8.
+Traditional linear-sequential developments may still be used for small or simple applications, such as interfaces
+and macros. Linear-sequential developments may also be used for other reasons. For example, where systems
+integrators are engaged by the regulated company with the need for both parties to work collaboratively on the
+activities, the limitations of requirements’ management/traceability tools. etc., may preclude such collaboration.
+In such cases, and based on satisfactory supplier and risk assessments, a testing approach based on the four levels
+of module (unit) design, integration, functionality, and requirements typically is applicable.
+Testing should include the approaches detailed in Section 25.9.3, with the addition of:
+•
+Code review for new code required as a result of risk assessments, see Appendix D4
+•
+Software module testing to test software modules defined in the design specification
+•
+Software integration testing to test that the modules work when operating together
+
