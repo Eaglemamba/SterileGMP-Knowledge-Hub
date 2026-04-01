@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2: Process Indicators & Thermal Science | PDA TR1</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- Section Header -->
+<div class="header">
+    <h1>Section 2: Process Indicators &amp; Thermal Science | 製程指標與熱力學</h1>
+    <div class="subtitle">PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</div>
+    <div class="page-info">Sections 3.2 – 3.3 | Pages 15–23</div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+        <ul>
+            <li>Distinguish between biological indicators, chemical indicators, and chemical integrators — and know when each is appropriate.</li>
+            <li>Explain the thermodynamic basis of saturated steam sterilization, including enthalpy, phase change, and the steam tables.</li>
+            <li>Identify the three steam types (plant, process, pure) and their appropriate applications.</li>
+            <li>Describe steam quality criteria: noncondensable gases, dryness fraction, and superheat — and why deviations reduce lethality.</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Section Contents &nbsp;|&nbsp; 本節內容</h3>
+        <div class="toc-grid">
+            <a href="#sec-321">3.2.1 Biological Indicators</a>
+            <a href="#sec-322">3.2.2 Chemical Monitors</a>
+            <a href="#sec-331">3.3.1 Temperature &amp; Heat</a>
+            <a href="#sec-332">3.3.2 Steam Types</a>
+            <a href="#sec-333">3.3.3 Steam Quality Testing</a>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 1: 3.2 Process Indicators Overview ===================== -->
+    <div class="chapter-section" id="sec-32">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2</div>
+            <div class="chapter-info">
+                <h2>Process Indicators | 製程指標</h2>
+                <p>Biological, chemical, and physical measurement tools for sterilization validation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>3.2 Process Indicators</h3>
+                    <p>There are a variety of <span class="key-term">process indicators</span> that, depending on their design, may be used during the development, qualification, and monitoring of sterilization cycles. Types of indicators and their appropriate use are described below.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>製程指標概覽 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>三類製程指標</h4>
+                        <ul>
+                            <li><strong>生物指示劑（BI）</strong>：直接量測微生物殺滅效果，是最嚴格的確效工具</li>
+                            <li><strong>化學指示劑／整合器</strong>：間接反映滅菌條件，用於常規監控與負荷識別</li>
+                            <li><strong>物理量測</strong>：熱電偶、壓力感測器，提供即時製程數據</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻說明</h4>
+                        <p>好比考試：BI是真正的考卷批改（實際殺滅），化學指示劑是考試通知貼紙（知道有考試），熱電偶是考場溫度計（環境條件）。三者缺一不可。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 2: 3.2.1 Biological Indicators ===================== -->
+    <div class="chapter-section" id="sec-321">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2.1</div>
+            <div class="chapter-info">
+                <h2>Biological Indicators (BIs) | 生物指示劑</h2>
+                <p>Microorganism-based validation tools for demonstrating sterilization efficacy</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.2.1 Biological Indicators (BIs)</h3>
+                    <p>Determination of documented, acceptable probability of survival is based upon the predictable logarithmic death kinetics of microorganisms. This determination is also dependent on the sterilization process used and the sterilization approach selected. Since the <span class="key-term">biological indicator</span> is a key component in the determination of process lethality, it is imperative that it performs both predictably and reproducibly.</p>
+
+                    <p>The most common microorganism used as a biological indicator for the qualification of cycles using the <span class="key-term">overkill design</span> approach is <em>Geobacillus stearothermophilus</em> (formerly <em>Bacillus stearothermophilus</em>); however, other moist heat resistant microorganisms may be acceptable. Typical microorganisms used for qualification of cycles using the <span class="key-term">product-specific design</span> approach include: <em>Clostridium sporogenes</em>, <em>Bacillus smithii</em> (formerly <em>Bacillus coagulans</em>) and <em>Bacillus subtilis</em> 5230.</p>
+
+                    <p>The chosen biological indicator typically contains a higher population and resistance than the bioburden on the product or item. Only spores should be used as microbiological challenges for steam sterilization processes. These spores must be:</p>
+                    <ul>
+                        <li>Clean — essentially free from vegetative microorganisms, microscopic debris and clumping</li>
+                        <li>Well-characterized — with respect to their thermal responsiveness</li>
+                        <li>Obtained from recognized culture collections ("parent" cultures)</li>
+                    </ul>
+
+                    <p>Ideally, the BI's heat resistance is determined in a calibrated physical system capable of square wave heating (e.g., <span class="key-term">resistometer</span>). Biological indicator challenge systems are available in a variety of configurations, including spore suspensions in solutions, on paper carriers (e.g., spore strips or discs), and on other types of carriers (e.g., metal disks, cotton threads, or ampoules).</p>
+
+                    <p>If the reliability of a vendor's Certificate of Analysis is established through a supplier qualification program, and the BI is not modified, then the supplied values for resistance of a biological indicator can be used in lieu of confirmatory testing of each lot. Due to potential shipping and handling concerns, confirmatory spore population testing should be conducted upon receipt of biological indicators. It is important to use the same enumeration methodology that the vendor used in order to minimize variables that could lead to differences in spore counts.</p>
+
+                    <p>A determination of the stability of the population and resistance (D-value) of the BI should be performed over its shelf-life. The actual population and resistance to be used should be based on the desired lethality and the qualification approach used.</p>
+
+                    <p>The <span class="key-term">D-value</span> of the BI challenge system is a function of not only the species or strain used and prior history, but all facets of the test environment, including, but not limited to:</p>
+                    <ul>
+                        <li>The test system (spores suspended in liquid or dried on a solid support; nature of environment surrounding spores during heating)</li>
+                        <li>The medium in which the spores are suspended</li>
+                        <li>The test temperature</li>
+                        <li>The primary packaging</li>
+                        <li>Exposure times that are not corrected for lags in heating and cooling</li>
+                        <li>Temperature, time and environmental conditions between heating and recovery</li>
+                        <li>The growth medium used to recover the heated spores</li>
+                        <li>Incubation conditions</li>
+                    </ul>
+
+                    <p>The operation of the test system, including equipment control and technician variability, can make the resulting D-value either larger or smaller.</p>
+
+                    <p>It is important to evaluate the thermal resistance of the biological indicator in the actual configuration to be tested for validation, since the resistance of microorganisms is affected by the solution or substrate onto which they are placed. For example:</p>
+                    <ul>
+                        <li>The heat resistance of <em>G. stearothermophilus</em> is increased in the presence of sodium chloride or potassium chloride</li>
+                        <li>The thermal resistance of <em>B. coagulans</em> is increased by the presence of divalent calcium and magnesium ions</li>
+                        <li>The thermal resistance of <em>C. sporogenes</em> is increased by the presence of potassium ions</li>
+                    </ul>
+
+                    <p>The presence of chelating agents (e.g., citric acid) may also affect the thermal resistance. Strong chelating agents can compete for available ions, yielding changes in spore-coat resistance. Similar resistance differences may be observed based on the substrate that is inoculated (e.g., paper or rubber).</p>
+
+                    <p>When performing direct inoculation onto substrates, it is important to ensure that the biological indicator remains in the area intended for inoculation and is not reduced during inoculation. The use of multiple smaller volume inoculations typically provides better inoculum placement and control than a single larger volume, which is prone to inadvertent movement.</p>
+
+                    <p>Compendia (e.g., USP, PhEur) contain monographs defining BIs that may be used in evaluating moist heat sterilization. In the U.S., it is not a requirement to use a compendial BI for industrial sterilization processes. In other regions and countries it is recommended that consideration is given to local regulatory expectations.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>生物指示劑深度解析 | Chinese Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>關鍵菌株選擇原則</h4>
+                        <table>
+                            <tr>
+                                <th>設計方法</th>
+                                <th>常用菌株</th>
+                                <th>原因</th>
+                            </tr>
+                            <tr>
+                                <td>過殺法（Overkill）</td>
+                                <td><em>G. stearothermophilus</em></td>
+                                <td>耐熱性最強，提供最保守挑戰</td>
+                            </tr>
+                            <tr>
+                                <td>產品特定法</td>
+                                <td><em>C. sporogenes</em>、<em>B. smithii</em>、<em>B. subtilis</em> 5230</td>
+                                <td>與產品生物負荷特性相近</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>D-value影響因素 — 操作人員常忽略的細節</h4>
+                        <p>D值不只是菌株特性，還高度依賴<strong>測試環境</strong>。同一批BI，在不同基質（紙片 vs. 金屬片）上，D值可能差異顯著。這意味著：</p>
+                        <ul>
+                            <li>廠商的CoA D值≠在您產品配置中的D值</li>
+                            <li>驗證必須使用<strong>實際使用配置</strong>的BI</li>
+                            <li>NaCl、Ca²⁺、螯合劑均可改變熱阻性</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>BI供應商管理要點</h4>
+                        <ul>
+                            <li><strong>收貨時</strong>：必須進行菌落數確認測試（confirmatory spore population testing）</li>
+                            <li><strong>計數方法</strong>：必須與廠商使用的枚舉方法一致，否則計數結果不可比較</li>
+                            <li><strong>CoA信賴前提</strong>：需先完成供應商資格確認（supplier qualification），且BI未經修改</li>
+                            <li><strong>穩定性</strong>：需在整個有效期內評估菌落數與D值穩定性</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>直接接種技巧比喻</h4>
+                        <p>多次小量接種 vs. 單次大量接種，就像補牆壁的油漆：一次刷太多容易流動偏移，多次薄塗才能均勻附著在正確位置。BI接種位置精確性直接影響挑戰有效性。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 Q1</h4>
+                        <p>某藥廠使用 <em>G. stearothermophilus</em> 進行注射液的產品特定法（product-specific approach）滅菌驗證，審計員提出質疑。請問問題出在哪裡？應如何辯護或修正？</p>
+                        <p><strong>提示</strong>：思考菌株選擇與設計方法的對應關係，以及生物負荷特性的相關性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 3: 3.2.2 Chemical Monitors ===================== -->
+    <div class="chapter-section" id="sec-322">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2.2</div>
+            <div class="chapter-info">
+                <h2>Chemical Monitors | 化學監控器</h2>
+                <p>Chemical indicators and integrators — capabilities and limitations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.2.2 Chemical Monitors</h3>
+                    <p>A <span class="key-term">chemical monitor</span> is a device that provides an indication or response to one or more critical sterilization parameters. They can be used as qualitative indicators to verify that a product has been exposed to a sterilization process. Where their reaction can be quantified, they can be used to answer more complex questions. Regardless of their design, chemical monitors <strong>cannot be used in lieu of biological indicators</strong> and instrumented measurement of temperature/pressure/time during the validation of a steam sterilization process.</p>
+
+                    <h3>3.2.2.1 Chemical Indicators</h3>
+                    <p>A <span class="key-term">chemical indicator</span> is a device that responds to sterilization process parameters in a nonquantitative fashion. Chemical indicators are used to provide immediate results that can serve as a permanent marker (e.g., color change) to indicate that a load or product has been subjected to a sterilization cycle.</p>
+
+                    <p>Chemical indicators do not indicate that the load is sterile. They only indicate that the threshold temperature was reached, not what the highest temperature achieved was or how long that temperature was maintained. It is important that sufficient indicators be placed throughout the load to prevent inadvertent interchange of sterilized and non-sterilized items. There are several different types (e.g., tape, paper strips or small ampoules) of chemical indicators available.</p>
+
+                    <h3>3.2.2.2 Chemical Integrators</h3>
+                    <p><span class="key-term">Chemical integrators</span> are designed to react quantitatively to a particular combination of parameters in moist heat sterilization — typically temperature and time and sometimes moisture. These devices react in a quantifiable way to their exposure to certain physical conditions that are critical to the sterilization process. They deliver a measurable record of conditions that may be correlated to microbial inactivation.</p>
+
+                    <p>When chemical integrators are used, their advantages and limitations should be clearly understood:</p>
+                    <ul>
+                        <li>Integrators with simultaneous moisture monitoring may give additional information on the sterilizing conditions achieved in the cycle that are not readily available from temperature and pressure monitoring in commonly used sterilizers.</li>
+                        <li>Integrators may give an indication of the sterilizing conditions achieved throughout the load that should be correlated to the temperature distribution data achieved during cycle validation.</li>
+                        <li><strong>Integrators cannot be used exclusively for cycle qualification.</strong></li>
+                    </ul>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>化學指示劑 vs 整合器比較 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>三類化學監控器比較表</h4>
+                        <table>
+                            <tr>
+                                <th>類型</th>
+                                <th>化學指示劑<br>Chemical Indicator</th>
+                                <th>化學整合器<br>Chemical Integrator</th>
+                            </tr>
+                            <tr>
+                                <td><strong>反應方式</strong></td>
+                                <td>定性（顏色變化）</td>
+                                <td>定量（可測量數值）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>監控參數</strong></td>
+                                <td>溫度閾值（是否達到）</td>
+                                <td>溫度 + 時間（+ 有時含水分）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>主要用途</strong></td>
+                                <td>負荷識別、防止混淆</td>
+                                <td>負荷內滅菌條件分布評估</td>
+                            </tr>
+                            <tr>
+                                <td><strong>資訊量</strong></td>
+                                <td>低（只知道有沒有）</td>
+                                <td>中等（可相關至微生物殺滅）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>可替代BI？</strong></td>
+                                <td style="color:#c0392b;font-weight:700;">不可</td>
+                                <td style="color:#c0392b;font-weight:700;">不可</td>
+                            </tr>
+                            <tr>
+                                <td><strong>可替代溫度監控？</strong></td>
+                                <td style="color:#c0392b;font-weight:700;">不可</td>
+                                <td style="color:#c0392b;font-weight:700;">不可</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要監管立場</h4>
+                        <p>FDA及PDA均明確：化學指示劑與整合器<strong>不能取代</strong>生物指示劑或儀器化的溫度/壓力/時間量測，用於蒸汽滅菌製程驗證。常見缺失：僅用化學整合器做週期確效，未使用BI。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活比喻</h4>
+                        <p>化學指示劑像燒烤時插的溫度計探針旗（達到顏色表示溫度到了），整合器像計時器加溫度計的組合（記錄烤了多久多少度），但兩者都不能告訴你食物裡面的細菌真的死了——只有直接微生物測試才能確認。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 Q2</h4>
+                        <p>某工廠在生產監控中，每批次負荷僅在外部貼化學指示膠帶，未放置BI或熱電偶。這樣的做法符合PDA TR1要求嗎？如果不符，應如何改善？</p>
+                        <p><strong>提示</strong>：區分日常監控（routine monitoring）與驗證（validation）的不同要求，並思考化學指示劑的適當角色。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 4: 3.3.1 Temperature and Heat ===================== -->
+    <div class="chapter-section" id="sec-331">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3.1</div>
+            <div class="chapter-info">
+                <h2>Thermal Science: Temperature, Heat &amp; Steam Tables | 熱力學基礎</h2>
+                <p>Thermodynamic principles underlying saturated steam sterilization</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.3 Thermal Science and Steam Quality</h3>
+                    <p>Understanding the basics of thermal science (thermodynamics) is essential to the design and control of moist heat sterilization. There are significant differences in energy content, at a given temperature, in the various heating media used. <span class="key-term">Superheated water</span>, <span class="key-term">saturated steam</span> and steam/air mixtures contain different amounts of thermal energy. The strict relationships between temperature and pressure in saturated steam cycles established during cycle design must be achieved in routine production cycles to ensure the efficacy of the sterilization process.</p>
+
+                    <h3>3.3.1 Temperature and Heat</h3>
+                    <p>Temperature is a measure of thermal energy. Heat is energy that is transferred as a result of a temperature difference between an object and its surroundings.</p>
+
+                    <p>It is important to understand that thermal energy contained by different heating media at the same temperature (e.g., saturated steam, air/steam mixtures or superheated water) is dramatically different.</p>
+
+                    <p>The <span class="key-term">heat of vaporization/condensation</span> is the primary mechanism that imparts energy to the item being sterilized in a saturated steam process. Saturated steam contains 2,675 J/g at 100°C. This is the sum of:</p>
+                    <ul>
+                        <li>Energy in the water: 419 J/g</li>
+                        <li>Energy required to create steam (latent heat of vaporization): 2,256 J/g</li>
+                    </ul>
+                    <p>The condensation of one gram of steam imparts 2,256 joules to the object at 100°C.</p>
+
+                    <p>At 2.0 atmospheres, when the temperature of the water reaches 121°C, it does not change to saturated steam until 2,199 J/g has been added. In the 2.0 atmosphere example, the transfer of 2,199 joules as a result of the phase change between water and steam occurs only when the system is in <span class="key-term">dynamic equilibrium</span> — when water and steam are in equilibrium at a specific pressure and temperature.</p>
+
+                    <div class="quote-box">
+                        Steam tables are developed by calculating and listing corresponding temperatures and pressures of a system in dynamic equilibrium. There is only one pressure that corresponds to a specific temperature on the saturation curve when the steam is saturated.
+                    </div>
+
+                    <h3>Saturated Steam Table (Key Excerpts)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Temp (°C)</th>
+                                <th>Pressure (bar)</th>
+                                <th>Water h<sub>f</sub> (J/g)</th>
+                                <th>Latent h<sub>fg</sub> (J/g)</th>
+                                <th>Steam h<sub>g</sub> (J/g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>100</td><td>1.013</td><td>419</td><td>2256</td><td>2675</td></tr>
+                            <tr><td>115</td><td>1.692</td><td>483</td><td>2216</td><td>2699</td></tr>
+                            <tr><td>120</td><td>1.987</td><td>504</td><td>2202</td><td>2706</td></tr>
+                            <tr><td>121</td><td>2.026</td><td>508</td><td>2199</td><td>2707</td></tr>
+                            <tr><td>125</td><td>2.322</td><td>525</td><td>2188</td><td>2713</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.8rem;color:#718096;">* 1.0 Atmosphere = 1.013 bar = 14.71 psia. Latent heat = h<sub>g</sub> – h<sub>f</sub></p>
+
+                    <h3>3.3.1.1 Conduction</h3>
+                    <p><span class="key-term">Conduction</span> is the transfer of energy through molecular agitation without any required motion of material as a whole. In sterilization science, this applies to:</p>
+                    <ul>
+                        <li>Transfer through the container wall to the liquid being sterilized</li>
+                        <li>Energy transfer to the surface of an item by direct contact with the sterilizing medium (e.g., steam or hot water)</li>
+                    </ul>
+
+                    <h3>3.3.1.2 Convection</h3>
+                    <p><span class="key-term">Convection</span> is the transfer of energy resulting from contact with a moving fluid. When this process occurs naturally (as in the movement of a fluid in a container being sterilized), it is referred to as natural convection. Forced convection occurs when the fluid is moved by a fan or pump.</p>
+
+                    <h3>3.3.1.3 Radiation</h3>
+                    <p><span class="key-term">Radiation</span> is the transfer of energy through electromagnetic waves. Radiant heat is the energy transfer mechanism that occurs primarily during a cycle drying phase under vacuum, but it can contribute to the heat added to the load during the sterilization phase, especially if the jacket temperature is appreciably higher than that of the chamber.</p>
+
+                    <h3>3.3.1.4 Heat Transfer Rate &amp; Comparison of Heating Mediums</h3>
+                    <p>The flow of heat from the heating media to a sealed container is dependent on a number of factors including the temperature difference, the geometry and characteristics of the container, and the overall heat transfer coefficient.</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sterilization Process</th>
+                                <th>Heat Transfer Rate</th>
+                                <th>Circulation Required</th>
+                                <th>Distribution Challenges</th>
+                                <th>Load Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Saturated Steam</strong></td>
+                                <td>High</td>
+                                <td>No</td>
+                                <td>Low</td>
+                                <td>P/HG &amp; liquid loads not requiring overpressure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steam-Air Mixtures</strong></td>
+                                <td>Function of steam-to-air ratio &amp; flow velocity</td>
+                                <td>Yes</td>
+                                <td>High</td>
+                                <td>Liquid and P/HG loads requiring total pressure &gt; saturated steam pressure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Superheated Water (spray)</strong></td>
+                                <td>Moderately high (function of flow velocity)</td>
+                                <td>Yes</td>
+                                <td>Moderate</td>
+                                <td>Liquid loads requiring overpressure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Superheated Water (submersion)</strong></td>
+                                <td>High (function of flow velocity)</td>
+                                <td>Yes</td>
+                                <td>Moderate</td>
+                                <td>Liquid loads requiring overpressure; large flexible packages</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Items typically heat most rapidly in saturated steam. In some cases, such as large flexible packages, a superheated water submersion/immersion sterilizer is highly efficient. Steam-air mixtures have a much lower heat capacity per unit volume than either pressurized water or steam, but can be effective with a properly developed cycle.</p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>熱力學核心概念 | Chinese Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>飽和蒸汽的核心優勢：相變潛熱</h4>
+                        <p>飽和蒸汽在121°C凝結時釋放2,199 J/g的潛熱——這是純液態水從100°C升至121°C所需能量的約100倍。這就是為什麼飽和蒸汽是最高效的滅菌介質。</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-1">飽和蒸汽 @ 121°C<br>總焓 2,707 J/g</div>
+                            </div>
+                            <div class="arrow-down">↓ 凝結（condensation）</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-2">釋放潛熱<br>2,199 J/g 傳至物品</div>
+                            </div>
+                            <div class="arrow-down">↓ 結果</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-3">高效殺菌<br>溫度均勻分布</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>蒸汽表關係式</h4>
+                        <pre>
+h_g = h_f + h_fg
+
+其中：
+  h_g = 飽和蒸汽焓（Steam enthalpy）
+  h_f = 飽和水焓（Water enthalpy）
+  h_fg = 汽化潛熱（Latent heat of vaporization）
+
+121°C 示例：
+  2,707 = 508 + 2,199 (J/g)
+
+關鍵原則：溫度 ↔ 壓力 = 一對一對應
+（飽和狀態下）
+        </pre>
+                        <p>若量測的溫度與壓力不符合蒸汽表，說明系統可能<strong>不在飽和狀態</strong>，需立即調查。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>飽和蒸汽 vs 過熱蒸汽 — 核心差異</h4>
+                        <table>
+                            <tr>
+                                <th>特性</th>
+                                <th>飽和蒸汽<br>Saturated Steam</th>
+                                <th>過熱蒸汽<br>Superheated Steam</th>
+                            </tr>
+                            <tr>
+                                <td>溫度-壓力關係</td>
+                                <td style="color:#155724;font-weight:600;">符合蒸汽表</td>
+                                <td style="color:#721c24;font-weight:600;">溫度高於蒸汽表值</td>
+                            </tr>
+                            <tr>
+                                <td>冷凝能力</td>
+                                <td>強（立即冷凝，釋放潛熱）</td>
+                                <td>弱（需先降溫至飽和點）</td>
+                            </tr>
+                            <tr>
+                                <td>傳熱機制</td>
+                                <td>相變潛熱（高效）</td>
+                                <td>僅顯熱（低效）</td>
+                            </tr>
+                            <tr>
+                                <td>殺菌效果</td>
+                                <td>符合半對數模型預測</td>
+                                <td>低於預測值</td>
+                            </tr>
+                            <tr>
+                                <td>滅菌用途</td>
+                                <td style="color:#155724;font-weight:600;">理想介質</td>
+                                <td style="color:#721c24;font-weight:600;">需避免</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>傳熱三機制比喻</h4>
+                        <ul>
+                            <li><strong>傳導（Conduction）</strong>：鐵鍋導熱——分子振動傳遞能量，不需要物質移動（容器壁→液體）</li>
+                            <li><strong>對流（Convection）</strong>：熱氣球原理——流動的流體帶走/帶來熱量（強制循環蒸汽）</li>
+                            <li><strong>輻射（Radiation）</strong>：太陽曬熱皮膚——電磁波傳熱，不需介質（乾燥階段的夾套輻射）</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>熱電偶（Thermocouple）放置原則</h4>
+                        <p>基於傳熱機制，熱電偶應優先放置於：</p>
+                        <ul>
+                            <li><strong>最冷點（cold spot）</strong>：負荷中最難被加熱的位置</li>
+                            <li><strong>密集堆疊處</strong>：對流受阻，傳導為主</li>
+                            <li><strong>液體負荷中心</strong>：液體熱傳滯後最明顯</li>
+                            <li><strong>容器底部</strong>：冷凝水積聚處</li>
+                        </ul>
+                        <p>每批驗證至少使用足夠數量熱電偶，覆蓋負荷空間的代表性位置，並需校準至±0.5°C或更嚴格。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 5: 3.3.2 Steam Types ===================== -->
+    <div class="chapter-section" id="sec-332">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3.2</div>
+            <div class="chapter-info">
+                <h2>Steam Types | 蒸汽種類</h2>
+                <p>Plant steam, process steam, and pure steam — selection criteria for sterilization</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.3.2 Steam</h3>
+                    <p>Several types of steam can be used for moist heat sterilization: these include, but are not limited to, <span class="key-term">plant steam</span>, <span class="key-term">process steam</span> and <span class="key-term">pure steam</span>. Since they are all application specific, it should be demonstrated which type of steam is appropriate.</p>
+
+                    <h3>3.3.2.1 Plant Steam</h3>
+                    <p>Plant steam is a general purpose, industrial steam generated, distributed and used for a variety of energy transfer purposes such as facility, water and process heating, or to drive engines or turbines.</p>
+                    <p>For moist heat sterilization, plant steam is generally considered adequate for supplying the sterilizer jacket (provided the chamber steam is not sourced from the jacket). It is also used to heat water for superheated water processes on the non-sanitary side of heat exchangers.</p>
+
+                    <h3>3.3.2.2 Process Steam</h3>
+                    <p>Process steam is similar to plant steam, except the steam is generated using a controlled feed water source to which no volatile additives (amines or hydrazines) have been introduced. Process steam may be appropriate for moist heat sterilization of liquid loads when the containers are filled and sealed prior to sterilization.</p>
+
+                    <h3>3.3.2.3 Pure Steam</h3>
+                    <p><span class="key-term">Pure steam</span> (sometimes called clean steam or high quality steam) is steam whose condensate complies with the compendial Water for Injection (WFI) monograph. Pure steam is typically produced by purpose-designed steam generators or from the first effect of a multiple-effect still using a feed water of known chemical quality.</p>
+                    <p>Softened, deionized, and purified water as defined in current compendia have all been successfully used as feedwater to pure steam generators. Also important to the proper operation of the system is the appropriate design, placement, and maintenance of steam traps and air vents in the steam distribution system. Condensate pooling should be avoided.</p>
+                    <p><strong>Pure steam should always be used for porous/hard goods load sterilization.</strong></p>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>蒸汽種類選擇指引 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>三種蒸汽應用對照表</h4>
+                        <table>
+                            <tr>
+                                <th>蒸汽種類</th>
+                                <th>定義特點</th>
+                                <th>適用場景</th>
+                                <th>限制</th>
+                            </tr>
+                            <tr>
+                                <td><strong>廠用蒸汽</strong><br>Plant Steam</td>
+                                <td>工業用途，可含揮發性添加劑（胺類、聯胺）</td>
+                                <td>滅菌器夾套加熱；超熱水製程的非接觸側</td>
+                                <td>不可直接接觸產品或多孔物品</td>
+                            </tr>
+                            <tr>
+                                <td><strong>製程蒸汽</strong><br>Process Steam</td>
+                                <td>受控進水，無揮發性添加劑</td>
+                                <td>已封裝液體負荷（容器在滅菌前已填充密封）</td>
+                                <td>冷凝液未必符合WFI規格</td>
+                            </tr>
+                            <tr>
+                                <td><strong>純蒸汽</strong><br>Pure Steam</td>
+                                <td>冷凝液符合WFI藥典規格</td>
+                                <td><strong>多孔/硬質物品必用</strong>；所有直接接觸蒸汽的產品滅菌</td>
+                                <td>成本較高，需專用發生器</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規關鍵點</h4>
+                        <p>多孔/硬質物品（P/HG loads，如瓶塞、濾膜、器具）滅菌<strong>必須使用純蒸汽</strong>，因為蒸汽會直接接觸物品表面。廠用蒸汽中的胺類（amines）或聯胺（hydrazines）會污染物品。</p>
+                        <p>常見GMP缺失：使用廠用蒸汽進行多孔物品滅菌，被FDA/EMA判定為重大偏差（major deviation）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>純蒸汽系統關鍵設計要素</h4>
+                        <ul>
+                            <li><strong>進水水質</strong>：軟化水、去離子水或純化水均可，需有品質紀錄</li>
+                            <li><strong>蒸汽疏水閥（steam traps）</strong>：適當設計與維護，防止冷凝水積聚</li>
+                            <li><strong>空氣排放口（air vents）</strong>：確保不可凝氣體能被排除</li>
+                            <li><strong>冷凝水測試</strong>：定期確認冷凝液符合WFI規格（電導率、TOC、細菌內毒素）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== BLOCK 6: 3.3.3 Steam Quality Testing ===================== -->
+    <div class="chapter-section" id="sec-333">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3.3</div>
+            <div class="chapter-info">
+                <h2>Steam Quality Testing | 蒸汽品質測試</h2>
+                <p>Noncondensable gases, dryness fraction, and superheat — the three steam quality criteria</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <h3>3.3.3 Steam Quality Testing for Pure Steam</h3>
+                    <p>The semilogarithmic model of inactivation of microorganisms for saturated steam processes assumes that saturated steam is free from <span class="key-term">noncondensable gases</span> and free from <span class="key-term">superheat</span>. Wet steam, superheated steam, and steam containing noncondensable gases have the potential to adversely affect the lethality achievable in porous/hard goods load cycles.</p>
+
+                    <p>The extent to which saturated steam sterilization processes may be affected by steam quality depends on the extent of the deviation from ideal steam conditions and the type(s) of items in the load being sterilized.</p>
+
+                    <p>For sterilization of porous/hard goods, steam quality characteristics should be evaluated as part of the qualification of the steam supplied to the sterilizer and should be repeated at regular intervals and documented in internal company policy or in accordance with applicable regulatory requirements.</p>
+
+                    <h3>3.3.3.1 Noncondensable Gases</h3>
+                    <p><span class="key-term">Noncondensable gas</span> is gas (e.g., air, nitrogen and CO<sub>2</sub>) that may be carried over in steam from the steam generator. These noncondensable gases change the steam from being pure, vapor-phase water to a mixture of steam and gas.</p>
+
+                    <h3>3.3.3.2 Dryness Fraction and Dryness Value</h3>
+                    <p>The <span class="key-term">dryness value</span> (an empirical determination of dryness fraction) of steam is a measure of the amount of liquid-phase water carried by the steam and applies to a saturated steam process. A value of 0 denotes 100% water and a value of 1.0 represents dry steam with no liquid-phase water.</p>
+
+                    <p>In addition to the problem of causing wet loads for certain items, the energy contained in steam with a dryness value less than approximately 1.0 can be significantly less than pure saturated steam. Dryness value is determined by testing, and values are generally considered approximate.</p>
+
+                    <p>The dryness fraction of steam is inextricably linked with the latent heat that it possesses. Steam having an energy level equal to 50% of the latent heat for its saturation pressure will have a dryness fraction of 0.5 indicating a 50:50 water/steam mixture. Therefore, only when steam has its full quotient of latent heat will it be dry saturated and have a dryness fraction of 1.0.</p>
+
+                    <p>When 100% water is present at 121°C, there is no latent heat, and the dryness fraction is 0. When a 50:50 steam/water mixture is present, the dryness fraction is 0.5, and the latent heat is 1,099 J/g. When 100% steam is present, the dryness fraction is 1.0 with 2,199 J/g of latent heat.</p>
+
+                    <h3>3.3.3.3 Superheat</h3>
+                    <p><span class="key-term">Superheated steam</span> is steam whose temperature, at any given pressure, is higher than that indicated by the equilibration curve for the vaporization of water. For inactivation of microorganisms to conform to the semilogarithmic model, the steam should be saturated, i.e., it should be at its equilibration temperature for the particular pressure achieved.</p>
+
+                    <p>The lethal effect of steam with superheat on microorganisms will be less than that predicted for the particular temperature registered.</p>
+
+                    <p>The principal causes of superheat are:</p>
+                    <ul>
+                        <li>Excessive pressure reduction near the point of use</li>
+                        <li>The sterilizer chamber jacket is at a higher temperature than the chamber</li>
+                    </ul>
+                </div>
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <h3>蒸汽品質三大指標 | Chinese Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>蒸汽品質測試項目彙整</h4>
+                        <table>
+                            <tr>
+                                <th>測試項目</th>
+                                <th>定義</th>
+                                <th>典型驗收標準</th>
+                                <th>對滅菌的影響</th>
+                            </tr>
+                            <tr>
+                                <td><strong>不可凝氣體</strong><br>Noncondensable Gases</td>
+                                <td>蒸汽中攜帶的空氣、N₂、CO₂等非水蒸汽成分</td>
+                                <td>&lt; 3.5% (EN 285)</td>
+                                <td>形成隔熱氣膜，阻礙熱傳；造成負荷冷點</td>
+                            </tr>
+                            <tr>
+                                <td><strong>乾燥度</strong><br>Dryness Fraction</td>
+                                <td>蒸汽中乾蒸汽的比例（0=全水，1=全乾蒸汽）</td>
+                                <td>&ge; 0.95 (EN 285)</td>
+                                <td>低於0.95時潛熱顯著降低；造成濕負荷</td>
+                            </tr>
+                            <tr>
+                                <td><strong>過熱度</strong><br>Superheat</td>
+                                <td>蒸汽溫度高於該壓力下飽和溫度的程度</td>
+                                <td>&le; 25°C過熱（EN 285）</td>
+                                <td>降低冷凝效率；殺菌效果低於溫度預測值</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何過熱蒸汽殺菌效果差？</h4>
+                        <p>過熱蒸汽就像「過乾」的氣體——它的溫度已高於飽和點，不願意凝結。當它接觸物品時：</p>
+                        <ol>
+                            <li>需要先冷卻到飽和溫度才能開始凝結</li>
+                            <li>在冷卻過程中僅釋放顯熱（sensible heat），量極少</li>
+                            <li>半對數殺滅模型是基於飽和蒸汽建立的，過熱蒸汽無法套用</li>
+                        </ol>
+                        <p>結果：即使溫度計顯示達標，實際殺滅效果可能嚴重不足。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>乾燥度比喻</h4>
+                        <p>想像蒸汽是載著能量的「快遞員」：</p>
+                        <ul>
+                            <li><strong>乾燥度 = 1.0</strong>：快遞員手上抱滿貨物（2,199 J/g），全部交給物品</li>
+                            <li><strong>乾燥度 = 0.5</strong>：快遞員只有一半的貨（1,099 J/g），送達能量減半</li>
+                            <li><strong>乾燥度 = 0</strong>：全是水，沒有潛熱可以釋放</li>
+                        </ul>
+                        <p>不可凝氣體則像是快遞員帶了「空盒子」——佔位置但不送能量，還阻擋其他快遞員接近物品表面。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>過熱的常見來源與預防</h4>
+                        <table>
+                            <tr>
+                                <th>過熱來源</th>
+                                <th>預防措施</th>
+                            </tr>
+                            <tr>
+                                <td>進入滅菌器前壓力大幅降低（節流閥過度縮減）</td>
+                                <td>合理設計蒸汽管路，使用適當的壓力調節閥</td>
+                            </tr>
+                            <tr>
+                                <td>夾套溫度遠高於腔室溫度</td>
+                                <td>縮小夾套與腔室的溫差，監控兩者的溫度差</td>
+                            </tr>
+                            <tr>
+                                <td>蒸汽長距離輸送中散熱</td>
+                                <td>蒸汽管路保溫，定期排除冷凝水</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 Q3</h4>
+                        <p>驗證工程師在確效過程中發現：腔室壓力為2.1 bar，但熱電偶顯示溫度為125°C（蒸汽表2.1 bar對應約121.5°C）。這代表什麼問題？應採取哪些調查步驟？</p>
+                        <p><strong>提示</strong>：對照蒸汽表，思考溫度高於壓力對應值的三種可能原因（過熱、熱電偶問題、壓力感測器誤差），並說明每種情況的後續行動。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 Q4</h4>
+                        <p>某無菌填充廠使用廠用蒸汽（plant steam）對橡皮瓶塞進行滅菌，審計員在483 Form上提出觀察。請問：(a) 這違反了哪條PDA TR1原則？(b) 正確做法為何？(c) 這樣做對產品品質有何潛在風險？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SUMMARY BLOCK ===================== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#x2211;</div>
+            <div class="chapter-info">
+                <h2>Section 2 Summary | 本節重點整理</h2>
+                <p>Key takeaways from process indicators and thermal science</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Principles Recap</h3>
+                    <ul class="structure-list">
+                        <li><strong>BIs are irreplaceable</strong> — Chemical monitors supplement but never replace BIs and physical measurements in validation.</li>
+                        <li><strong>D-value is context-dependent</strong> — The BI's resistance in the actual test configuration must be verified; vendor CoA values may not directly apply.</li>
+                        <li><strong>Saturated steam = optimal sterilant</strong> — Its high latent heat of condensation (~2,199 J/g at 121°C) makes it far superior to air/steam mixtures or superheated water for most applications.</li>
+                        <li><strong>Steam tables are the reference</strong> — Temperature and pressure must correspond per the steam table; deviations indicate the system may not be saturated.</li>
+                        <li><strong>Pure steam is mandatory for P/HG loads</strong> — Direct steam contact with porous/hard goods requires WFI-quality condensate.</li>
+                        <li><strong>Three steam quality threats</strong> — Noncondensable gases, low dryness fraction, and superheat all reduce actual lethality below predictions.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>考試關鍵記憶點 | Exam Memory Points</h3>
+                    <div class="note-box">
+                        <h4>必記數值</h4>
+                        <ul>
+                            <li>121°C 飽和蒸汽：壓力 2.026 bar，潛熱 2,199 J/g，總焓 2,707 J/g</li>
+                            <li>100°C 飽和蒸汽：壓力 1.013 bar，潛熱 2,256 J/g</li>
+                            <li>乾燥度驗收標準：≥ 0.95（EN 285）</li>
+                            <li>不可凝氣體：&lt; 3.5%（EN 285）</li>
+                            <li>過熱度上限：≤ 25°C（EN 285）</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>常見考題類型</h4>
+                        <ul>
+                            <li>區分化學指示劑 vs 整合器的功能差異</li>
+                            <li>解釋為何過熱蒸汽殺菌效果不足</li>
+                            <li>判斷不同負荷應使用哪種蒸汽類型</li>
+                            <li>根據溫度-壓力數據判斷蒸汽是否飽和</li>
+                            <li>說明BI選擇與確效設計方法的對應關係</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Footer -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Series</p>
+    <p style="opacity:0.6;font-size:0.8rem;">Section 2: Process Indicators &amp; Thermal Science | Sections 3.2–3.3 | Pages 15–23</p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

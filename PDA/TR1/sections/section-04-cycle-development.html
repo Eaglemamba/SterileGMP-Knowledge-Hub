@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR1 — Section 4: Cycle Development &amp; Stability Studies</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== SECTION HEADER ===== -->
+<div class="header">
+    <h1>Section 4: Cycle Development &amp; Stability Studies | 週期開發與穩定性研究</h1>
+    <div class="subtitle">PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</div>
+    <div class="page-info">Sections 4.4 – 4.5 &nbsp;|&nbsp; Pages 32–39</div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="main-content">
+    <div class="learning-objectives">
+        <h3>Learning Objectives — 學習目標</h3>
+        <ul>
+            <li>Understand cycle development for both porous/hard goods and liquid loads | 理解多孔/硬貨物與液體負載的週期開發方法</li>
+            <li>Explain temperature mapping strategy including thermocouple placement and cold-spot identification | 說明溫度分佈驗證策略，包含熱電偶放置與最冷點定位</li>
+            <li>Define equilibration time and describe how to minimize it | 定義均溫時間並描述縮短方式</li>
+            <li>Distinguish critical parameters from key parameters | 區分關鍵參數與重要參數</li>
+            <li>Explain how stability studies complement sterilization cycle validation | 說明穩定性研究如何補充滅菌週期驗證</li>
+        </ul>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>Section Contents — 本節內容</h3>
+        <div class="toc-grid">
+            <a href="#sec44">4.4 Cycle Development</a>
+            <a href="#sec441">4.4.1 Porous/Hard Goods</a>
+            <a href="#sec4411">4.4.1.1 Slowest-to-Heat Location</a>
+            <a href="#sec4412">4.4.1.2 Item Preparation</a>
+            <a href="#sec4413">4.4.1.3 Load Patterns</a>
+            <a href="#sec4414">4.4.1.4 Operating Parameters</a>
+            <a href="#sec4415">4.4.1.5 Equilibration Time</a>
+            <a href="#sec4416">4.4.1.6 F<sub>BIO</sub> &amp; F<sub>PHYS</sub> Agreement</a>
+            <a href="#sec442">4.4.2 Liquid Load</a>
+            <a href="#sec4421">4.4.2.1 Cold-Spot Mapping</a>
+            <a href="#sec4422">4.4.2.2 Load Patterns</a>
+            <a href="#sec4423">4.4.2.3 Operating Parameters</a>
+            <a href="#sec45">4.5 Stability Studies</a>
+        </div>
+    </div>
+
+    <!-- ===== 4.4 CYCLE DEVELOPMENT INTRO ===== -->
+    <div id="sec44" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>Cycle Development | 週期開發</h2>
+                <p>Determining physical parameters of the sterilization cycle for a defined load pattern</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4 Cycle Development</h3>
+                    <p><span class="key-term">Cycle development</span> is the process of determining the physical parameters of the sterilization cycle that will be used to sterilize the items in a defined load pattern. The goal of cycle development is to identify critical and key operating parameters that will result in a product or material that is both sterile and functional after being sterilized. This development process is often documented in a formalized development plan.</p>
+                </div>
+                <div class="right-column">
+                    <h3>核心概念：週期開發目標</h3>
+                    <div class="concept-box">
+                        <h4>週期開發的雙重目標</h4>
+                        <p><strong>滅菌性</strong>：確保產品或物料達到無菌狀態（符合 PNSU 要求）</p>
+                        <p><strong>功能性</strong>：確保滅菌後產品或物料的功能不受影響（如包材完整性、藥品穩定性）</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>GMP 實務提示</h4>
+                        <p>開發計畫應以書面化的 <strong>Formalized Development Plan</strong> 記錄，包含研究設計、接受標準、參數識別邏輯，是後續 PQ 執行的依據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.4.1 POROUS / HARD GOODS ===== -->
+    <div id="sec441" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4.1</div>
+            <div class="chapter-info">
+                <h2>Porous/Hard Goods Cycle Development | 多孔/硬貨物週期開發</h2>
+                <p>Air removal, item mapping, preparation, load patterns, operating parameters</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Intro paragraph -->
+            <div class="two-column">
+                <div class="left-column">
+                    <p>The greatest obstacle to achieving repeatable and predictable assurances of sterility for <span class="key-term">porous/hard goods</span> loads is the potential presence of air within the individual items. It is important to ensure that sufficient air is removed from the sterilizer chamber and items prior to the <span class="key-term">exposure phase</span> of the cycle. A supply of saturated, dry steam to the sterilizer is a specific requirement for porous/hard goods items and may not be essential for sterilization of liquid filled containers.</p>
+                    <p>Biological indicators and air removal test kits may be useful in cycle development. Development studies may vary according to prior knowledge of the sterilization process and of sterilization of similar loads.</p>
+                    <p>It may be beneficial to use already developed sterilization cycles to minimize the total number of different cycles used in a company in order to reduce the ongoing costs of qualification and requalification. In this type of strategy, a company analyzes whether using an existing cycle provides sufficient assurance that the newly identified load will achieve the desired PNSU without compromising quality.</p>
+                </div>
+                <div class="right-column">
+                    <h3>最大挑戰：空氣存留問題</h3>
+                    <div class="analogy-box">
+                        <h4>生活比喻：熱水瓶中的氣泡</h4>
+                        <p>想像將瓶子裝進洗碗機清洗——若瓶內有空氣殘留，熱水就無法進入瓶底清潔。同理，蒸汽滅菌中若物品內有空氣殘留，蒸汽就無法接觸到最深處，導致該區域無法達到滅菌溫度。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>解決策略</h4>
+                        <ul>
+                            <li>確保飽和乾蒸汽供應（Saturated Dry Steam）</li>
+                            <li>有效的真空預脈衝（Pre-vacuum pulses）</li>
+                            <li>空氣移除測試套件（Bowie-Dick Test / Air Removal Test Kits）</li>
+                            <li>生物指示劑（Biological Indicators）輔助驗證</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>成本效益考量</h4>
+                        <p>盡量複用已驗證的週期，減少不同週期數量，可降低持續資格維持（Requalification）成本——這是藥廠在週期管理上的常見策略。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.1 Slowest-to-Heat -->
+            <div id="sec4411" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3 id="sec4411-title">4.4.1.1 Slowest-to-Heat Location on an Item</h3>
+                    <p>Before loaded-chamber <span class="key-term">heat penetration</span> studies are performed, item-mapping studies may be necessary to identify appropriate monitoring location(s) within individual load items. This may be referred to as <span class="key-term">item-temperature mapping</span> because it is done to determine the location within the item or package that is the most difficult to heat.</p>
+                    <p>Item temperature mapping should be conducted on the more difficult to heat items (e.g., large mass, potential for trapped air, hoses with longest lengths or any combination of these issues). When conducting item temperature mapping, it is important to consider the types of challenges the item may represent (e.g., air removal versus significant mass) and to position the temperature probes in slowest-to-heat locations.</p>
+                    <p>Item mapping studies can be conducted in a sterilizer (including laboratory sterilizers) other than the one to be used in commercial production, provided that the sterilizing conditions and cycles are similar. Multiple temperature sensors may be needed to adequately measure the penetration of steam in large items. During mapping studies, the items should be prepared according to established procedures. Care should be taken when introducing temperature sensors into the item, as they may artificially facilitate or obstruct steam entry into the item.</p>
+                </div>
+                <div class="right-column">
+                    <h3>溫度分佈驗證：最難加熱位置</h3>
+                    <div class="concept-box">
+                        <h4>Item Mapping 執行要點</h4>
+                        <ul>
+                            <li><strong>對象選擇</strong>：大質量物件、可能有空氣截留的物品（如長軟管、複雜形狀容器）</li>
+                            <li><strong>探針定位</strong>：放置於最難加熱的位置（<span class="key-term">Slowest-to-Heat Location</span>）</li>
+                            <li><strong>執行場所</strong>：可在實驗室滅菌器進行，但條件必須相似</li>
+                            <li><strong>多點監測</strong>：大型物品需多個溫度感測器</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>探針安裝注意事項</h4>
+                        <p>將溫度探針插入物品時，可能<strong>人為地促進或阻礙</strong>蒸汽進入。這是 item mapping 中常被忽視的干擾因素，需記錄於研究報告中。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：找出冰箱的死角</h4>
+                        <p>就像在冰箱中測試哪個位置最難冷卻（角落、緊貼壁面），item mapping 的目的是找到蒸汽最難到達的位置，確保此處也能達到滅菌溫度。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.2 Item Preparation -->
+            <div id="sec4412" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.1.2 Item Preparation</h3>
+                    <p>Porous/hard goods items may be prepared for sterilization in a variety of ways. Examples include, but are not limited to:</p>
+                    <ul>
+                        <li>Items contained in steam and air permeable wrappings (e.g., paper or other polymeric wrapping materials, nonshedding fabric or combinations)</li>
+                        <li>Items in closed, but not sealed, boxes (stainless steel or anodized aluminum perforated to allow steam penetration, air removal and drainage of any condensate)</li>
+                        <li>Items placed on open trays (with or without steam and air-permeable wrapping)</li>
+                        <li>Items in static or rotating drum containers (e.g., stoppers)</li>
+                    </ul>
+                    <p>Items for use in aseptic processing must be packaged in order to maintain sterility prior to use. A careful balance needs to be achieved between the steam permeability of wrapping materials to ensure adequate air and condensate removal with the need to provide a non-shedding microbial-protective barrier.</p>
+                    <p>Preparation methods should be well defined in operating procedures. Strict adherence to these procedures is important to assure proper sterilization. Item preparation may include: cleaning, rinsing, drying, wrapping, and storage.</p>
+                    <p>Wrapping materials or containers used in sterilization should be constructed of nonshedding material. Aluminum foil, glassine paper and other non-permeable materials should <strong>not</strong> be used for wrapping items to be sterilized by saturated steam.</p>
+                    <p>Metal containers should be of stainless steel or anodized aluminum. Plain aluminum is a source of particulate matter and should not be used. When process equipment includes vents or filters, they should be designed to ensure rapid equilibration of pressure during the sterilization cycle.</p>
+                </div>
+                <div class="right-column">
+                    <h3>物品準備：包裝與材質要求</h3>
+                    <div class="concept-box">
+                        <h4>包裝材料的核心矛盾</h4>
+                        <p>包裝材料必須同時滿足兩個相互競爭的需求：</p>
+                        <ul>
+                            <li><strong>蒸汽穿透性</strong>：允許蒸汽進入並移除空氣與冷凝水</li>
+                            <li><strong>微生物阻隔性</strong>：防止滅菌後的污染（Non-shedding Barrier）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>禁止材料清單</h4>
+                        <ul>
+                            <li>鋁箔（Aluminum Foil）— 不透蒸汽</li>
+                            <li>玻璃紙（Glassine Paper）— 不透蒸汽</li>
+                            <li>普通鋁容器（Plain Aluminum）— 微粒污染來源</li>
+                        </ul>
+                        <p>允許材料：不鏽鋼、陽極氧化鋁（Anodized Aluminum）、透氣無脫落包裝材料。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：手術口罩設計原理</h4>
+                        <p>好的包裝就像醫用口罩——允許空氣（蒸汽）流通，但阻擋微生物。設計時必須找到最佳平衡點。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.3 Load Patterns -->
+            <div id="sec4413" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.1.3 Porous/Hard Goods Load Patterns</h3>
+                    <p>After the operational qualification and prior to beginning the performance qualification, load types and patterns need to be determined and documented. The following considerations should be given to sterilization effectiveness and production efficiency:</p>
+                    <ul>
+                        <li>Load items should not come into contact with the interior surfaces of the chamber.</li>
+                        <li>Contact between flat surfaces of metal boxes and trays may be minimized by use of racks with perforated, and if necessary, adjustable shelving.</li>
+                        <li>Item orientation should be well defined to facilitate air removal, condensate drainage and steam penetration (e.g., buckets should be sterilized upside down), and should be documented.</li>
+                        <li>Largest mass items should be placed on the lower shelves of the sterilizer to minimize wetting by condensate.</li>
+                        <li>An important consideration is control over the number of articles in the sterilizer. In the event the load size is expected to vary, minimum and maximum loads should be identified. A sound bracketing approach to qualifying intermediate loads should include the most-difficult-to-sterilize load item(s) in the minimum load.</li>
+                        <li>Variable loading patterns may be possible if qualification studies demonstrate item position does not affect sterilization efficacy.</li>
+                        <li>Loading instructions should be documented and readily available for operator reference.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>負載模式：擺放邏輯與括弧策略</h3>
+                    <div class="concept-box">
+                        <h4>負載擺放的黃金法則</h4>
+                        <table>
+                            <thead>
+                                <tr><th>原則</th><th>理由</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>物品不接觸腔室內壁</td><td>避免冷點或熱點</td></tr>
+                                <tr><td>最大質量物品放下層</td><td>減少冷凝水濕潤</td></tr>
+                                <tr><td>水桶倒置滅菌</td><td>利於空氣排出與冷凝水排放</td></tr>
+                                <tr><td>使用多孔架/可調式架</td><td>防止平面接觸阻礙蒸汽</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>括弧策略（Bracketing Approach）</h4>
+                        <p>當負載尺寸可變時，只需驗證<strong>最小負載</strong>和<strong>最大負載</strong>，並確保最小負載中包含最難滅菌的物品。中間尺寸的負載即被「括弧涵蓋」，無需逐一驗證。</p>
+                        <p>這是 ICH Q5C 和 PDA 都認可的資源節約驗證方法。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.4 Operating Parameters -->
+            <div id="sec4414" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.1.4 Porous/Hard Goods Operating Parameter Determination</h3>
+                    <p>One of the more crucial aspects of cycle development is to identify operating parameters in order to meet the process design objectives and to determine if they are <span class="key-term">critical</span> or <span class="key-term">key parameters</span>.</p>
+                    <p><strong>Critical parameters</strong> are linked to safety and efficacy of the product. Failure to meet a critical parameter should result in rejection of the load.</p>
+                    <p><strong>Key parameters</strong> assure the ongoing "state of control" of sterilization runs. The failure to meet a key process parameter should result in an investigation with a documented rationale for the disposition of the load.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Phase</th><th>Parameter</th><th>Classification</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>All</td><td>Jacket Temperature / Pressure</td><td>Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Number &amp; Range of Vacuum Pulses</td><td>Critical</td></tr>
+                            <tr><td>Heat-Up</td><td>Number &amp; Range of Positive Pulses</td><td>Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Chamber Heat-Up Time</td><td>Monitored</td></tr>
+                            <tr><td>Exposure</td><td>Exposure Time</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Exposure Phase Temperature Set Point</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Independent Drain/Chamber Temperature</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Chamber Pressure During Exposure</td><td>Potentially Critical</td></tr>
+                            <tr><td>Exposure</td><td>Minimum Load Probe F<sub>0</sub></td><td>Critical (if probes used)</td></tr>
+                            <tr><td>Cool-Down</td><td>Drying Time</td><td>Key</td></tr>
+                            <tr><td>Cool-Down</td><td>Vacuum Break Rate</td><td>Potentially Key</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>關鍵參數 vs 重要參數</h3>
+                    <div class="concept-box">
+                        <h4>兩類參數的本質差異</h4>
+                        <table>
+                            <thead>
+                                <tr><th></th><th>關鍵參數 (Critical)</th><th>重要參數 (Key)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>定義</td><td>與安全性/功效直接相關</td><td>確保持續的製程控制</td></tr>
+                                <tr><td>超標後果</td><td>直接拒批（Reject Load）</td><td>調查 + 書面說明後決定</td></tr>
+                                <tr><td>典型例子</td><td>暴露溫度、暴露時間、F₀</td><td>夾套溫度、乾燥時間</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>法規連結</h4>
+                        <p>此分類方式與 FDA 21 CFR Part 211 及 EMA 對工藝驗證的要求一致：關鍵參數需在驗證中確認，並在每批次中監測記錄。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：飛機儀表板</h4>
+                        <p>關鍵參數如飛機的引擎溫度（超標立即停飛），重要參數如燃油量（需調查是否影響航程，但一般不立即停飛）。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.5 Equilibration Time -->
+            <div id="sec4415" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.1.5 Equilibration Time</h3>
+                    <p><span class="key-term">Equilibration time</span> is an important function of conditioning porous/hard goods loads that includes the number and depth of prevacuum and positive pulses.</p>
+                    <p>The equilibration time is the period that elapses between attainment of the minimum specified sterilizing temperature in the chamber (chamber reference temperature — typically in the drain) and attainment of the minimum specified sterilization temperature in the load, as measured by the <span class="key-term">slowest-to-heat penetration probe</span>. This period is an indication of the ability to properly condition the load through air removal and load heating.</p>
+                    <p>Extended equilibration times can be indicative of inadequate air removal or heating, even if the desired temperature is eventually achieved. When developing a cycle, it is important to take practical precautions to minimize equilibration time. The following options can be used to reduce equilibration time:</p>
+                    <ul>
+                        <li>Assure loads are oriented for efficient air removal (e.g., hoses not pinched)</li>
+                        <li>Increase number of vacuum or positive steam pulses</li>
+                        <li>Add hold steps during vacuum and/or steam pulses</li>
+                        <li>Increase depth of vacuum pulses</li>
+                        <li>Optimize steam exposure to load items</li>
+                    </ul>
+                    <p>If none of the above actions are successful, then consideration may be given to modifying the configuration of items (e.g., shortening hose length). However, this should only be done after giving full consideration to all other risks that may compromise sterility.</p>
+                </div>
+                <div class="right-column">
+                    <h3>均溫時間：診斷空氣移除問題的指標</h3>
+                    <div class="concept-box">
+                        <h4>均溫時間定義（圖示概念）</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-1">腔室達到設定滅菌溫度</div>
+                            </div>
+                            <div class="arrow-down">↓ 均溫時間開始</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-2">最慢加熱探針也達到設定溫度</div>
+                            </div>
+                            <div class="arrow-down">↓ 均溫時間結束 → 保持時間開始</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-3">Hold Time（暴露時間）倒數計時</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <h4>均溫時間過長的含義</h4>
+                        <p>均溫時間延長是一個<strong>早期警訊</strong>，表示：</p>
+                        <ul>
+                            <li>空氣移除不完全（Air Removal Inadequate）</li>
+                            <li>負載加熱效率低（Poor Load Conditioning）</li>
+                            <li>即使最終達溫，也代表製程不受控</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：烤箱預熱</h4>
+                        <p>均溫時間就像食物放入已預熱的烤箱後，等待食物內部溫度追上烤箱溫度的時間。如果等待時間過長，代表食物太厚或擺放方式有問題，不是烤箱問題。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.1.6 FBIO & FPHYS Agreement -->
+            <div id="sec4416" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.1.6 Evaluating F<sub>BIO</sub> and F<sub>PHYS</sub> Agreement</h3>
+                    <p>For a sterilization cycle, when the F<sub>BIO</sub> of a BI is measurable, the F<sub>BIO</sub> and F<sub>PHYS</sub>, measured at the same location, should be equal. The BI inactivation requirements of the qualification sterilization cycle are for BIs to be negative; this requires a large F<sub>PHYS</sub>.</p>
+                    <p>The heat input necessary to achieve kill of BIs can be calculated. If the actual lethality (F<sub>PHYS</sub>-delivered) is substantially less than the required (F<sub>PHYS</sub>-required), the test cycle will result in BIs that are positive for growth.</p>
+                    <div class="quote-box">
+                        Example: If a biological indicator has D<sub>T</sub> = 2.5 minutes and N<sub>0</sub> = 3 × 10<sup>6</sup>, then F<sub>BIO</sub> = D<sub>T</sub> × log N<sub>0</sub> = 2.5 × 6.47 = 16.2 minutes. To kill to PNSU of 10<sup>-2</sup> (N<sub>F</sub> = 10<sup>-2</sup>): F<sub>T</sub> = (log N<sub>0</sub> − log N<sub>F</sub>) × D<sub>T</sub> = (log 3×10<sup>6</sup> − log 10<sup>-2</sup>) × 2.5 = 21.2 minutes.
+                    </div>
+                    <p>If the actual biological lethality delivered is less than this predicted lethality based on physical measurements, then BIs placed in the load should be positive for growth at a rate higher than 1.0 in 100. This would indicate potential problems with the delivery of steam.</p>
+                    <p>While there is no standard approach to designing studies to evaluate the agreement of F<sub>BIO</sub> and F<sub>PHYS</sub>, it is important to note that while this evaluation provides a higher degree of process understanding, many successful cycles have been developed and qualified without this evaluation.</p>
+                </div>
+                <div class="right-column">
+                    <h3>生物學殺滅力 vs 物理量測殺滅力</h3>
+                    <div class="formula-box">
+                        <h4>F<sub>BIO</sub> 與 F<sub>PHYS</sub> 關係公式</h4>
+                        <pre>
+F_BIO  = D_T × log(N₀)         → BI 本身的殺滅力需求
+F_PHYS = 物理溫度探針積分計算值  → 實際傳遞的殺滅力
+
+理想情況：F_PHYS ≥ F_BIO
+問題出現：F_PHYS &lt;&lt; F_BIO → BI 呈陽性 → 蒸汽傳遞有問題
+                        </pre>
+                    </div>
+                    <div class="concept-box">
+                        <h4>為什麼要比較兩者？</h4>
+                        <p>若物理量測到的殺滅力（F<sub>PHYS</sub>）遠高於生物殺滅力（F<sub>BIO</sub>），但 BI 仍出現陽性，就代表蒸汽傳遞存在問題（如空氣殘留、蒸汽分佈不均）。這是製程理解的重要驗證工具。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>監管立場</h4>
+                        <p>PDA TR1 鼓勵進行此評估以提升製程理解，但明確說明許多成功的週期在<strong>沒有</strong>此評估的情況下也通過了驗證——它是加分項，非強制要求。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body -->
+    </div><!-- end 4.4.1 section -->
+
+    <!-- ===== 4.4.2 LIQUID LOAD ===== -->
+    <div id="sec442" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4.2</div>
+            <div class="chapter-info">
+                <h2>Liquid Load Cycle Development | 液體負載週期開發</h2>
+                <p>Container cold-spot mapping, load patterns, operating parameters for liquid fills</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Intro -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.2 Liquid Load Cycle Development</h3>
+                    <p>The sterilization of sealed container contents is achieved through transfer of energy from the heating medium to the aqueous liquid within. The water content of the liquid product provides the moisture needed for sterilization within the container. For sterilization of aqueous suspensions and emulsions, the load may have to be kept in motion (i.e., tumbled) to facilitate internal heat circulation.</p>
+                    <p>The major concern in the terminal sterilization of product formulations is the development of a sterilization cycle that ensures that sufficient lethality has been provided to the <span class="key-term">cold spot</span> of the coldest container within the load, while at the same time making certain that the hottest container in the load retains its product quality attributes. Due to these factors, care must be taken to ensure that:</p>
+                    <ul>
+                        <li>The load is in the same position during validation and routine processing</li>
+                        <li>The heat input to the load is uniform to avoid inadvertent over- or under-processing</li>
+                        <li>The bioburden of the filled containers meets established limits</li>
+                        <li>The air overpressure (where utilized) is sufficient to minimize the breakage or distortion of containers</li>
+                    </ul>
+                    <p>The following factors should be considered when developing sterilization cycles for liquid-filled container loads:</p>
+                    <ul>
+                        <li>Efficient heating of the exterior surfaces of the fluid containers by steam, steam-air or superheated water, as needed, to attain uniform sterilizing conditions across the entire load</li>
+                        <li>Allowance for efficient cooling of the load post-exposure to protect product quality attributes</li>
+                        <li>Product stability</li>
+                        <li>Container/closure integrity and minimization of container breakage or container deformation through appropriate pressure balance</li>
+                        <li>Sterilization of fluid path (product contact) closure interface</li>
+                        <li>Temperature mapping within the container</li>
+                        <li>Biological indicator resistance in product formulation</li>
+                        <li>Sterilizer racks/stacks/trays should be well designed for the type of heating medium and the type of fluid containers</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>液體負載的核心挑戰</h3>
+                    <div class="concept-box">
+                        <h4>雙重矛盾的平衡</h4>
+                        <p>液體負載驗證必須同時滿足兩個相反的要求：</p>
+                        <ul>
+                            <li><strong>最冷容器的最冷點（Cold Spot）</strong>：必須接受足夠的殺滅力（F₀）以確保無菌</li>
+                            <li><strong>最熱容器</strong>：不能過度加熱，以保持產品品質屬性（穩定性、外觀、pH 值等）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>液體負載 vs 多孔負載的關鍵差異</h4>
+                        <table>
+                            <thead>
+                                <tr><th></th><th>液體負載</th><th>多孔/硬貨物</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>空氣移除</td><td>通常不需要</td><td>必要</td></tr>
+                                <tr><td>主要挑戰</td><td>最冷點殺滅力 + 品質</td><td>空氣移除</td></tr>
+                                <tr><td>冷卻方式</td><td>強制循環（效率關鍵）</td><td>乾燥（Drying）</td></tr>
+                                <tr><td>過壓需求</td><td>常需空氣過壓維持容器完整性</td><td>通常不需要</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.2.1 Cold Spot -->
+            <div id="sec4421" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.2.1 Container Cold-Spot Mapping</h3>
+                    <p>The <span class="key-term">container cold spot</span> is the location in the sealed liquid container that achieves the lowest process lethality (F<sub>0</sub>) during the process. Use of a cold spot is a conservative approach for cycle development, because it assumes all of the microorganisms in a container exist at the cold spot and are only exposed to the temperatures achieved at that location.</p>
+                    <p>For large-volume parenteral loads (LVPs) (&gt;100 mL), the cold spot is typically located between the geometric center of the product and the bottom of the product along the vertical axis and should be confirmed.</p>
+                    <p>Cold-spot mapping is typically not determined in small-volume parenteral (SVPs) (≤100 mL), since the solution heats at almost the same rate as the sterilizer.</p>
+                    <p>Container orientation can also affect the cold-spot location. When the container is rotated or tumbled during the process, there may be no discernible cold spot.</p>
+                </div>
+                <div class="right-column">
+                    <h3>最冷點定位策略</h3>
+                    <div class="concept-box">
+                        <h4>LVP 最冷點位置說明</h4>
+                        <p>對大容量注射劑（>100 mL），最冷點通常位於：</p>
+                        <ul>
+                            <li>幾何中心與容器底部之間的垂直軸線上</li>
+                            <li>原因：液體對流使上方液體溫度較高，底部相對較冷</li>
+                        </ul>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level"><div class="hierarchy-box level-1">液面上方（最熱）</div></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-2">幾何中心</div></div>
+                            <div class="arrow-down">↓ 最冷點在此範圍</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-3">容器底部（較冷）</div></div>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <h4>SVP 為何不做冷點定位？</h4>
+                        <p>小容量注射劑（≤100 mL）體積小，整個容器加熱速率幾乎與腔室一致，不存在明顯的溫度梯度，因此不需要個別的冷點定位研究。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：加熱一杯水 vs 一鍋水</h4>
+                        <p>一小杯水（SVP）放入微波爐，整杯幾乎同時加熱；一大鍋水（LVP）底部最後才熱透。最冷點定位就是為了確認那個「最後才熱透的位置」。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.2.2 Load Patterns -->
+            <div id="sec4422" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.2.2 Liquid Load Patterns</h3>
+                    <p>The following factors should be taken into account when assembling sealed, liquid-filled container loads for steam sterilization:</p>
+                    <ul>
+                        <li>Efficient penetration of the load by steam, steam-air or superheated water as needed to attain uniform sterilizing conditions across the entire load</li>
+                        <li>Allowance for efficient cooling of the load post-sterilization to protect product quality attributes and/or growth promotion properties</li>
+                        <li>Minimization of container breakage/deformation through appropriate pressure balance</li>
+                        <li>If the load size is expected to vary, minimum and maximum loads should be identified</li>
+                    </ul>
+                    <p>Cool and hot zones for the load should be established by <span class="key-term">heat penetration mapping</span> for each of the container and load sizes to be processed in the sterilizer. This is accomplished through multiple runs of various load and container sizes using sealed, liquid-filled containers. During these trials, load density, rack position, tray height and other parameters should be clearly defined for the loading patterns to be tested during the challenge studies.</p>
+                    <p>At the conclusion of these trials, load patterns and qualification monitoring locations should be established and documented.</p>
+                </div>
+                <div class="right-column">
+                    <h3>溫度分佈驗證的實施策略</h3>
+                    <div class="concept-box">
+                        <h4>熱穿透圖繪製（Heat Penetration Mapping）</h4>
+                        <p>目的：識別整個負載中的冷區和熱區，確定 <strong>Worst-case Load</strong> 位置。</p>
+                        <ul>
+                            <li>需多次執行（不同尺寸的容器和負載）</li>
+                            <li>在密封、液體充填容器上進行</li>
+                            <li>記錄負載密度、架位、托盤高度等</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>驗證監測位置的確定</h4>
+                        <p>熱穿透試驗結束後，需要書面確定：</p>
+                        <ul>
+                            <li><strong>最差情況位置</strong>（Worst-case Locations）：作為 PQ 的監測點</li>
+                            <li><strong>負載模式</strong>（Load Patterns）：列入 SOP 供操作員參考</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4.4.2.3 Operating Parameters Table -->
+            <div id="sec4423" class="section-divider"></div>
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4.2.3 Liquid Load Operating Parameter Determination</h3>
+                    <p>An important aspect of cycle development is to identify operating parameters in order to meet process design objectives and to determine if they are critical or key parameters. Table 4.4.2.3-1 lists various parameter considerations for liquid loads.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Phase</th><th>Parameter</th><th>Classification</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>All</td><td>Jacket Temp / Pressure</td><td>Monitored</td></tr>
+                            <tr><td>All</td><td>Fan RPM (SAM Process)</td><td>Key</td></tr>
+                            <tr><td>All</td><td>Agitation/Rotation Rate</td><td>Key</td></tr>
+                            <tr><td>All</td><td>Superheated Water Recirculation Flow Rate</td><td>Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Chamber Water Level (Superheated Water)</td><td>Potentially Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Chamber Heat-Up Time</td><td>Potentially Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Chamber Heat-Up Rate (°C/min)</td><td>Potentially Key</td></tr>
+                            <tr><td>Heat-Up</td><td>Pressure Increase Rate</td><td>Potentially Key</td></tr>
+                            <tr><td>Exposure</td><td>Temperature Set Point</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Exposure Time</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Chamber Pressure During Exposure</td><td>Potentially Critical</td></tr>
+                            <tr><td>Exposure</td><td>Independent Heating Media Temp</td><td>Critical</td></tr>
+                            <tr><td>Exposure</td><td>Minimum Load Probe F<sub>0</sub></td><td>Critical (if probes used)</td></tr>
+                            <tr><td>Cool-Down</td><td>Maximum Load Probe F<sub>0</sub></td><td>Potentially Key</td></tr>
+                            <tr><td>Cool-Down</td><td>Temperature Decrease Rate (°C/min)</td><td>Controller Function</td></tr>
+                            <tr><td>Cool-Down</td><td>Pressure Decrease Rate</td><td>Potentially Key</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>液體負載特有參數解析</h3>
+                    <div class="note-box">
+                        <h4>液體負載獨有的關鍵參數</h4>
+                        <ul>
+                            <li><strong>Fan RPM / 攪拌速率</strong>：確保均勻加熱，故障需立即警報</li>
+                            <li><strong>升壓速率 / 降壓速率</strong>：防止容器變形（如注射器活塞移位、玻璃瓶破裂）</li>
+                            <li><strong>最大 F₀ 上限</strong>：控制過度加熱，保護產品品質——這是液體負載獨有的考量</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>F₀ 雙邊控制概念</h4>
+                        <p>液體負載（尤其是熱敏感產品）需要同時控制：</p>
+                        <ul>
+                            <li><strong>最小 F₀</strong>（Minimum F₀）：保證無菌（Critical）</li>
+                            <li><strong>最大 F₀</strong>（Maximum F₀）：保護產品穩定性（Key）</li>
+                        </ul>
+                        <p>這與多孔負載只需關注最小 F₀ 有根本性差異。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end chapter-body 4.4.2 -->
+    </div><!-- end 4.4.2 section -->
+
+    <!-- ===== 4.5 STABILITY STUDIES ===== -->
+    <div id="sec45" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>Stability Studies | 穩定性研究</h2>
+                <p>Product and material compatibility with the sterilization cycle</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.5 Stability Studies</h3>
+                    <p><span class="key-term">Stability studies</span> for terminally sterilized products are required regardless of the design approach used. Product characteristics studied to determine the impact of the terminal sterilization cycle on product stability may include:</p>
+                    <ul>
+                        <li>Product degradation</li>
+                        <li>Assay values</li>
+                        <li>pH</li>
+                        <li>Color</li>
+                        <li>Buffering capacity</li>
+                        <li>Product-specific quality attributes</li>
+                    </ul>
+                    <p>Sterilization and degradation reactions are cumulative over both time and temperature. This means that <span class="key-term">heat-up and cool-down variations</span> will affect stability as well as lethality. Therefore, stability studies should expose product to <span class="key-term">worst-case heat input conditions</span>.</p>
+                    <p>When cycles are controlled to obtain the same total accumulated product F<sub>0</sub>, higher temperature cycles and shorter times are believed to have a less adverse effect on products, but the actual impact of the selected cycle should be evaluated.</p>
+                </div>
+                <div class="right-column">
+                    <h3>穩定性研究：確保功能性的最後防線</h3>
+                    <div class="concept-box">
+                        <h4>為什麼穩定性研究是強制要求？</h4>
+                        <p>終端滅菌會施加高溫——這在殺死微生物的同時，也可能降解藥物分子、改變 pH 值、影響包材完整性。穩定性研究確保滅菌後的產品仍符合規格要求。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>最差情況暴露原則</h4>
+                        <p>穩定性研究必須使用<strong>最差情況的熱輸入條件</strong>，原因：</p>
+                        <ul>
+                            <li>升溫和降溫過程中的熱暴露也有累積效應</li>
+                            <li>不同批次的升溫/降溫速率可能有差異</li>
+                            <li>需覆蓋最長暴露時間的場景</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：烹飪對食物的影響</h4>
+                        <p>高溫短時（例如：快炒）與低溫長時（例如：慢燉）可能達到相同的「殺菌效果」，但對食物風味、營養和質地的影響完全不同。同理，不同的滅菌參數組合（高溫短時 vs 低溫長時）需要分別評估對產品的影響。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>高溫短時的優勢</h4>
+                        <p>當總 F₀ 相同時，<strong>高溫短時週期</strong>（Higher Temperature, Shorter Time）通常對產品降解影響較小。這也是現代滅菌週期設計的趨勢——但無論如何，都需要實際的穩定性數據支持。</p>
+                    </div>
+
+                    <!-- Practice Questions -->
+                    <div class="practice-box">
+                        <h3>練習題 — Practice Questions</h3>
+                        <ol>
+                            <li style="margin-bottom: 0.75rem;"><strong>Q1：</strong>在多孔/硬貨物週期開發中，均溫時間（Equilibration Time）過長代表什麼問題？有哪些方式可以縮短它？<br><em>What does a prolonged equilibration time indicate in porous/hard goods cycle development? What measures can reduce it?</em></li>
+                            <li style="margin-bottom: 0.75rem;"><strong>Q2：</strong>液體負載的最冷點（Cold Spot）通常位於容器的哪個位置？為什麼大容量注射劑（LVP）需要做冷點定位，而小容量注射劑（SVP）通常不需要？<br><em>Where is the cold spot typically located in a liquid container for LVPs, and why is cold-spot mapping generally not required for SVPs?</em></li>
+                            <li style="margin-bottom: 0.75rem;"><strong>Q3：</strong>關鍵參數（Critical Parameter）和重要參數（Key Parameter）的主要區別是什麼？若一個關鍵參數超出規格，下一步應採取什麼行動？<br><em>What is the key difference between a critical parameter and a key parameter? What action must be taken if a critical parameter falls outside its specification?</em></li>
+                            <li style="margin-bottom: 0.75rem;"><strong>Q4：</strong>為什麼穩定性研究必須在「最差情況熱輸入條件」下進行？升溫和降溫階段的影響為何也需要納入考量？<br><em>Why must stability studies be conducted under worst-case heat input conditions? Why should heat-up and cool-down phases be included?</em></li>
+                            <li><strong>Q5：</strong>F<sub>BIO</sub> 與 F<sub>PHYS</sub> 不一致（F<sub>PHYS</sub> 遠高於 F<sub>BIO</sub> 但 BI 仍呈陽性）最可能代表什麼製程問題？<br><em>If F<sub>PHYS</sub> is much higher than F<sub>BIO</sub> but BIs still test positive for growth, what process issue does this most likely indicate?</em></li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- end chapter-body 4.5 -->
+    </div><!-- end 4.5 section -->
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>Section 4: Cycle Development &amp; Stability Studies | SterileGMP Knowledge Hub</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
