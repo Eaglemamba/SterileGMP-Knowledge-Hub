@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Chapter 4: Program Management</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 10px; padding: 1.5rem; margin-top: 2rem;
+    border: 1px solid #ffc107;
+}
+.section-summary h3 { color: #856404; margin-bottom: 1rem; font-size: 1.05rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 4: Program Management</h1>
+    <div class="subtitle">專案管理</div>
+    <div class="page-info">ISPE Good Practice Guide: Single-Use Technology | p103 - p120</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 SUT 導入計畫的完整生命週期——從供應商評估、供應安全確認，到系統正式投入生產運作</li>
+        <li>理解 SUT 風險管理的五步驟框架，並能運用風險評分公式（A × B × C × D）對製程接觸材料 (PCM) 進行量化風險評估</li>
+        <li>熟悉 15 項關鍵資格確認屬性，以及在低、中、高風險等級下各需執行的內部確效測試項目</li>
+        <li>了解 SUT 變更管理的典型類型（維護改善型 vs. 重大破壞型）及其應對方法，建立供應鏈變更溝通的標準機制</li>
+        <li>理解 SUT 實施專案排程的結構與邏輯，包括甘特圖運用、關鍵路徑識別，以及並行作業如何壓縮整體導入時程</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.1 Implementation of Single-Use Technology -->
+<!-- ============================================================ -->
+<div class="section-title">4.1 Implementation of Single-Use Technology（SUT 導入實施）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This chapter is aimed at providing guidance on the implementation of SUT in a manufacturing operation. The topics highlighted cover the project phases from when a decision is made to implement SUT to when the SUT is operational in a manufacturing process.</p>
+        <p>While implementation methods applied to SUT are similar to those of stainless steel systems, there are characteristics of SUT that require emphasis on certain aspects of the implementation process. These include:</p>
+        <ul>
+            <li>Strong collaboration with suppliers</li>
+            <li>Risk management and change management throughout the process</li>
+            <li>Flexible schedules to handle the development of single-use assemblies</li>
+            <li>Interface/connection of SUT with stainless steel technology</li>
+        </ul>
+        <p>This chapter is primarily focused on the <span class="key-term">risk management</span>, <span class="key-term">change management</span>, and the implementation schedules. As SUT is a relatively new technology, there is a fair amount of development that often arises during SUT projects. This development can result in changes, and attention to risk management and schedules are important to a smooth implementation.</p>
+
+        <h3>4.1.1 Assessing Supplier Capabilities</h3>
+        <p>End-users should assess suppliers for their capability to supply the required single-use products. The dependence on suppliers, particularly with regard to sourcing, should be properly handled and managed. Primary SUT suppliers should define a sourcing strategy to ensure business continuity, e.g., from film suppliers or other unique components, to ensure the needs of their end-users can be fulfilled.</p>
+        <p>The general checklist below represents a subset of topics critical when assessing supplier capabilities:</p>
+        <ul>
+            <li>Complete evaluation of SUT suppliers by the end-user (purchasing) – the choice of a supplier may be defined by criteria such as:
+                <ul>
+                    <li>Financial aspects</li>
+                    <li>Technical knowledge and support</li>
+                    <li>Flexibility/adaptability</li>
+                    <li>Quality</li>
+                    <li>End-user's process criticality</li>
+                    <li>Qualification and validation of their own supply chain (i.e., raw materials suppliers)</li>
+                </ul>
+            </li>
+            <li>Assessment of the risks to supply delays</li>
+            <li>Implementation of quality audit plans for all suppliers, including auditing of their change management system</li>
+            <li>Evaluation of automation integration (automation portion of the SUS into the end-user automation system)</li>
+            <li>Evaluation of flexibility of the supplier to work with the end-user to make their SUS easy to maintain/calibrate</li>
+        </ul>
+        <p>End-users should source at least two suppliers that meet the implementation team's needs. Having <span class="key-term">dual-sourced</span> single-use products in the process can provide buffer against vendor supply issues that may impact the manufacturing process.</p>
+
+        <h3>4.1.2 Confirming Supply Security</h3>
+        <p>Supply security is another key factor during implementation of SUT. End-users should request details from single-use product suppliers about their supply security process. Suppliers should confirm the strength of such systems by demonstrating it is reliable, robust and secured.</p>
+        <p>The supply security process should be managed by all stakeholders. Responsibilities are shared during the supply process, which should be a collaborative effort.</p>
+        <p>During the implementation and management of supply security, key factors include:</p>
+        <ul>
+            <li>For SUT suppliers:
+                <ul>
+                    <li>Anticipation of sales and the management of storage area to be compliant with requirements from the end-user</li>
+                    <li>Providing warranty on delivery times by targeting an elimination or reduction of delay</li>
+                    <li>Anticipation of procurement and raw material (especially resin) supplying</li>
+                    <li>Planning sufficient reserve manufacturing capacity</li>
+                    <li>Implementing quality procedures to improve single-use components and equipment quality, supply chain flexibility, and manufacturing productivity</li>
+                </ul>
+            </li>
+            <li>For SUT end-users:
+                <ul>
+                    <li>Implementing quality procedures for supplier facility audits</li>
+                    <li>Reducing the risk of failure in the supply security chain by using a dual sourcing strategy</li>
+                    <li>Managing sourcing, sales orders, and stakeholders commissioning plans</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 導入與不鏽鋼系統的關鍵差異</h4>
+            <p>SUT 導入與傳統不鏽鋼系統雖然框架相似，但有四個特殊關注點：</p>
+            <ul>
+                <li><strong>強化供應商協作</strong>：SUT 的客製化程度高，設計需要供應商深度配合</li>
+                <li><strong>全程風險與變更管理</strong>：材料、設計、製程任一環節的變動都可能影響合規性</li>
+                <li><strong>彈性排程</strong>：一次性組件的開發週期難以精準預測，計畫需保留緩衝</li>
+                <li><strong>介面整合挑戰</strong>：SUT 與不鏽鋼設備的連接點是洩漏風險和合規稽核的高關注區域</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>供應商評估要素解析</h4>
+            <p>評估供應商時，不能只看「現在能不能供貨」，還要評估：</p>
+            <ul>
+                <li><strong>財務穩健性</strong>：供應商若財務出問題，整條供應鏈會中斷</li>
+                <li><strong>技術支援能力</strong>：SUT 問題排查往往需要供應商工程師現場支援</li>
+                <li><strong>自身供應鏈確效</strong>：供應商的原料供應商（如薄膜製造商）也需被管控</li>
+                <li><strong>變更管理系統</strong>：供應商對材料或製程的任何變更，必須能及時通知終端使用者</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：雙重來源策略</h4>
+            <p>雙重來源 (Dual Sourcing) 就像飛機的雙引擎設計——平時可能只用一台，但另一台的存在確保了飛行安全。在無菌充填 CDMO 中，若關鍵一次性袋子只有單一供應商，一旦對方斷貨（颱風、原料短缺、品質問題），整條生產線就得停擺。雙重來源是供應安全的核心保險機制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：供應安全的責任共擔</h4>
+            <p>原文強調供應安全是「所有利害關係人共同管理」。這意味著：</p>
+            <ul>
+                <li>供應商需要<strong>預測需求、備存原料、保留產能</strong></li>
+                <li>終端使用者需要<strong>定期稽核供應商設施、管理訂單計畫</strong></li>
+                <li>雙方都需要<strong>預先定義溝通管道和通知機制</strong></li>
+            </ul>
+            <p>供應安全不是「出問題才處理」，而是要系統性地建立韌性。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在無菌充填 CDMO，一次性生物反應袋、充填管路、過濾組件通常由 2-3 家供應商競標。採購部門在選商時，除了價格，更需要確認：</p>
+            <ul>
+                <li>供應商是否有台灣/亞太區在地技術支援（縮短問題回應時間）</li>
+                <li>關鍵薄膜原料是否來自單一礦源（地緣政治風險）</li>
+                <li>供應商變更管理 SOP 是否符合客戶（製藥廠）的通知要求（通常需要提前 6-12 個月通知）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的工廠目前有哪些關鍵一次性組件仍是單一來源？若該供應商斷供，最長可撐幾週？</li>
+                <li>你的供應商稽核計畫是否包含對「供應商的變更管理系統」進行評估？上次發現問題是什麼時候？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.2 Risk Management -->
+<!-- ============================================================ -->
+<div class="section-title">4.2 Risk Management（風險管理）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>New technology can carry risks that arise from many sources. While SUT is becoming established in the pharmaceutical manufacturing environment, it is still evolving with improvements routinely incorporated into the equipment and operations. These improvements often trigger changes and associated risks that need to be minimized. The types of risk that can arise during the implementation of SUT include:</p>
+        <ul>
+            <li>Material compatibility</li>
+            <li>Availability of products</li>
+            <li>Changes in source materials</li>
+            <li>Leaks or performance issues</li>
+            <li>Inventory fluctuations</li>
+        </ul>
+        <p><span class="key-term">Risk management</span> should be applied throughout the implementation of SUT. <span class="key-term">Risk assessments</span> should be conducted at the beginning and at multiple points of the implementation program. At a minimum, an <span class="key-term">FMEA</span> should be done at the beginning of the implementation that addresses at least the potential risks listed above.</p>
+
+        <h3>4.2.1 Risk Assessment Approach</h3>
+        <p>The <span class="key-term">risk assessment</span> model presented in this Guide involves the calculation of a risk score representing the potential risk of the <span class="key-term">Process Contact Material (PCM)</span> that the SUS consists of. For a given risk category, additional required in-house qualification should be performed, or leveraged from existing data, and documented.</p>
+        <p>The steps for the risk assessment model are:</p>
+        <ol>
+            <li><strong>Step 1:</strong> Identify user requirements for the PCM</li>
+            <li><strong>Step 2:</strong> Obtain PCM validation data package from the supplier</li>
+            <li><strong>Step 3:</strong> Perform risk assessment</li>
+            <li><strong>Step 4:</strong> Execute in-house qualification studies required based on the risk score</li>
+            <li><strong>Step 5:</strong> Perform risk mitigation</li>
+        </ol>
+        <p>There are fifteen critical qualification attributes to consider (full description in Chapter 8, Appendix 4):</p>
+        <ul>
+            <li>Attribute 1: Biocompatibility Testing</li>
+            <li>Attribute 2: Mechanical Properties</li>
+            <li>Attribute 3: Gas Transmission Properties</li>
+            <li>Attribute 4: Compendial Physicochemical Testing</li>
+            <li>Attribute 5: Animal Origin Control</li>
+            <li>Attribute 6: Total Organic Carbon (TOC) Analysis</li>
+            <li>Attribute 7: pH and Conductivity</li>
+            <li>Attribute 8: Extractables and Leachables (E&amp;L)</li>
+            <li>Attribute 9: Chemical Compatibility</li>
+            <li>Attribute 10: Protein Adsorption Studies</li>
+            <li>Attribute 11: Endotoxin Testing</li>
+            <li>Attribute 12: Sterilization (Irradiation)</li>
+            <li>Attribute 13: Container Closure Integrity</li>
+            <li>Attribute 14: Particulate Testing</li>
+            <li>Attribute 15: Calibration of Embedded Instrumentation</li>
+        </ul>
+        <p>Additionally, other requirements should be taken into consideration, including: establishing expiration dates for PCM, determination of any pre-use testing, and determination of any post-use testing (e.g., vent filter integrity post-use where regulatory requirements exist).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 風險管理的五大來源</h4>
+            <p>SUT 的風險比傳統不鏽鋼設備更多元，主要來自：</p>
+            <ul>
+                <li><strong>材料相容性</strong>：聚合物材料可能與藥品、溶劑、清潔劑發生反應</li>
+                <li><strong>產品可用性</strong>：供應商停產或型號更換都會造成斷貨風險</li>
+                <li><strong>原料變更</strong>：薄膜配方變更可能改變萃取物（Extractables）特性</li>
+                <li><strong>洩漏/性能問題</strong>：焊接點、接頭是一次性組件最容易失效的位置</li>
+                <li><strong>庫存波動</strong>：一次性組件有有效期限，過多囤貨或過少備貨都是風險</li>
+            </ul>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵術語：PCM 製程接觸材料</h4>
+            <p><strong>Process Contact Material (PCM)</strong> 指所有與藥品直接接觸的一次性材料，包括袋體薄膜、管路、過濾膜、連接件等。PCM 的資格確認是 SUT 合規的核心工作——必須證明這些材料在預期使用條件下不會影響產品品質或病患安全。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>風險評估五步驟解析</h4>
+            <p>這五個步驟形成一個閉環：</p>
+            <ul>
+                <li><strong>Step 1（使用者需求）</strong>：確認藥品種類、接觸條件、滅菌方式</li>
+                <li><strong>Step 2（供應商資料）</strong>：收集供應商的萃取物、相容性、生物相容性測試報告</li>
+                <li><strong>Step 3（風險評估）</strong>：計算風險分數，決定是否需要內部額外確效</li>
+                <li><strong>Step 4（內部確效）</strong>：根據風險等級執行對應測試</li>
+                <li><strong>Step 5（風險緩解）</strong>：制定進料管控、使用限制等緩解措施</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：15 項資格確認屬性的優先順序</h4>
+            <p>15 項屬性不是全部都要做——風險評分會決定需要哪些項目。最核心的三項幾乎所有高風險應用都需要：</p>
+            <ul>
+                <li><strong>Attribute 8 (E&amp;L)</strong>：萃取物與可溶出物——最受法規關注</li>
+                <li><strong>Attribute 1 (Biocompatibility)</strong>：生物相容性——病患安全底線</li>
+                <li><strong>Attribute 13 (Container Closure Integrity)</strong>：容器密封完整性——無菌保證核心</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：PCM 確效如何規劃</h4>
+            <p>在 CDMO 中，由於同時服務多個客戶，PCM 確效策略需要特別設計：</p>
+            <ul>
+                <li>建立 PCM 元件庫（Component Library），已確效的元件可跨專案重用</li>
+                <li>優先對高風險、高使用頻率的元件（如 BioProcess 袋）完成完整確效</li>
+                <li>利用 QbD 括量法，以高風險條件下的資料涵蓋低風險應用，減少重複測試</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的工廠是否有 PCM 元件庫？目前庫中有多少已確效的一次性元件？哪些最常用的元件尚未完成確效？</li>
+                <li>針對 E&amp;L 測試，你的工廠是依賴供應商資料還是自行執行內部測試？依據什麼標準做這個決定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.2.2 Risk Assessment - Calculation of Risk Score -->
+<!-- ============================================================ -->
+<div class="section-title">4.2.2 Risk Assessment – Calculation of Risk Score（風險評分計算）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The purpose of the <span class="key-term">risk assessment</span> is to determine the extent of in-house qualification required according to a calculated risk score for each PCM. The risk assessment model takes into account the potential risk to product quality and patient safety.</p>
+        <p>A risk assessment model may be formulated to calculate the risk score as follows:</p>
+        <p style="margin: 1rem 0; padding: 0.75rem 1rem; background: #f8f0ff; border-left: 4px solid #9c27b0; border-radius: 0 8px 8px 0; font-family: 'Courier New', monospace; font-weight: 700; font-size: 1rem;">
+            Risk Score = A × B × C × D
+        </p>
+        <p>Where:</p>
+        <ul>
+            <li><strong>A</strong> = Route of administration</li>
+            <li><strong>B</strong> = Proximity to final product</li>
+            <li><strong>C</strong> = Contact time</li>
+            <li><strong>D</strong> = Surface area to volume ratio</li>
+        </ul>
+        <p>For each risk factor, the score can be classified as high (risk score = 10), medium (risk score = 5), or low (risk score = 1).</p>
+
+        <h3>Risk Factor A: Route of Administration</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Risk Classification</th>
+                    <th>Route of Administration</th>
+                    <th>Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>High (Score = 10)</strong></td>
+                    <td>Inhalation/Nasal; Injection (&gt;10 exposures/life); Ophthalmic (&gt;10 exposures/life)</td>
+                    <td>Inhalation aerosols, injectable solutions, sterile powders, ophthalmic solutions</td>
+                </tr>
+                <tr>
+                    <td><strong>Medium (Score = 5)</strong></td>
+                    <td>Injection (≤10 exposures/life); Ophthalmic (≤10 exposures/life); Internal application</td>
+                    <td>Vaccines, implants, rectal/vaginal creams</td>
+                </tr>
+                <tr>
+                    <td><strong>Low (Score = 1)</strong></td>
+                    <td>Transdermal; Internal irrigation; Topical; Oral</td>
+                    <td>Ointments, creams, oral tablets, oral solutions</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Risk Factor B: Proximity to Final Product</h3>
+        <table>
+            <thead>
+                <tr><th>Risk Classification</th><th>Proximity</th><th>Comment</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>High (Score = 10)</strong></td>
+                    <td>Manufacture of dosage form without dilution or purification step and filling into final container closure</td>
+                    <td>Any contaminants will be filled in the container and consumed by patients</td>
+                </tr>
+                <tr>
+                    <td><strong>Medium (Score = 5)</strong></td>
+                    <td>Compounding involving dilution or purification before filling; Active substances &gt;50% in final product</td>
+                    <td>Downstream processing steps provide synergistic contaminant reduction</td>
+                </tr>
+                <tr>
+                    <td><strong>Low (Score = 1)</strong></td>
+                    <td>Production of active substances including media and buffer preparation</td>
+                    <td>All upstream steps inherently have lower risk due to downstream dilution/purification</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Risk Factor C: Contact Time</h3>
+        <table>
+            <thead>
+                <tr><th>Risk Classification</th><th>Contact Time</th><th>Comment</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>High (Score = 10)</strong></td><td>&gt;7 days</td><td>SUSs treated as intermediate/shipping storage vehicle</td></tr>
+                <tr><td><strong>Medium (Score = 5)</strong></td><td>48 hours – 7 days</td><td>Intermediate or bulk stored in bags for further processing</td></tr>
+                <tr><td><strong>Low (Score = 1)</strong></td><td>&lt;48 hours</td><td>Production campaigns filled within 36–48 hours</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Risk Factor D: Surface Area to Volume Ratio</h3>
+        <table>
+            <thead>
+                <tr><th>Risk Classification</th><th>SA:V Ratio</th><th>Comment</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>High (Score = 10)</strong></td><td>&gt;0.01 cm²/ml</td><td>Safety factor &gt;15-fold vs. USP Class VI extraction condition</td></tr>
+                <tr><td><strong>Medium (Score = 5)</strong></td><td>0.001–0.01 cm²/ml</td><td>Safety factor 15–150-fold</td></tr>
+                <tr><td><strong>Low (Score = 1)</strong></td><td>&lt;0.001 cm²/ml</td><td>Safety factor &gt;150-fold</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Determination of Final Risk Level</h3>
+        <ul>
+            <li><strong>Low:</strong> calculated risk score ≤ 1,000</li>
+            <li><strong>Medium:</strong> calculated risk score between 1,001 and 4,999</li>
+            <li><strong>High:</strong> calculated risk score ≥ 5,000</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>公式解析：Risk Score = A × B × C × D</h4>
+            <p>這個乘積公式意味著四個因子是相乘關係（不是相加），任何一個因子為 1（低風險）都能顯著降低總分：</p>
+            <pre>最高分：10 × 10 × 10 × 10 = 10,000（遠高於高風險門檻 5,000）
+最低分：1 × 1 × 1 × 1 = 1（極低風險）
+典型無菌充填例：10 × 10 × 1 × 5 = 500（低風險）
+    A=注射劑(10)，B=最終充填(10)，
+    C=接觸時間&lt;48hr(1)，D=中等SA/V(5)</pre>
+            <p>注意：即使藥品是注射劑（A=10）且在最終充填步驟（B=10），若接觸時間短（C=1）且 SA/V 小（D=1），最終得分 = 100，屬於低風險。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>四個風險因子的直觀理解</h4>
+            <ul>
+                <li><strong>A（給藥途徑）</strong>：注射劑直接進入血液，任何雜質都無法被身體代謝消除，所以風險最高</li>
+                <li><strong>B（接近最終產品程度）</strong>：越靠近最後充填步驟，後段製程消除污染的機會越少</li>
+                <li><strong>C（接觸時間）</strong>：靜態長時間接觸（如長達數天的儲存袋）比短暫流過管路的風險高得多</li>
+                <li><strong>D（表面積/體積比）</strong>：小批量使用大型袋子，可溶出物濃度會被稀釋；批量越小，相對風險越高</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：風險計算的直覺</h4>
+            <p>想像你要評估一杯咖啡被塑膠杯影響的風險：</p>
+            <ul>
+                <li><strong>A</strong>（你是直接喝還是外敷？）→ 直接喝 = 高風險</li>
+                <li><strong>B</strong>（裝的是最終飲品還是原料？）→ 裝好喝的咖啡 = 高風險</li>
+                <li><strong>C</strong>（咖啡放在杯子多久？）→ 泡幾天 = 高風險；喝完馬上扔 = 低風險</li>
+                <li><strong>D</strong>（杯子大小 vs 咖啡量？）→ 用大杯裝一口咖啡 = 高風險</li>
+            </ul>
+            <p>SUT 的風險評估邏輯完全相同——四個維度相乘，得出綜合風險等級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風險評分門檻的意義</h4>
+            <p>三個門檻（低≤1,000；中1,001-4,999；高≥5,000）看起來任意，但背後有工程意義：</p>
+            <ul>
+                <li>低風險（≤1,000）：只需基礎確效（洩漏、撕裂、無菌、內毒素、完整性測試）</li>
+                <li>中風險（1,001-4,999）：額外需要吸附測試和碎屑測試</li>
+                <li>高風險（≥5,000）：額外需要 pH 變化、可溶出物測試、微粒評估</li>
+            </ul>
+            <p>門檻設計的目的是讓資源集中用在真正高風險的材料上，而非對所有材料做同等程度的測試。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用：無菌充填的典型風險評估</h4>
+            <p>在無菌充填 CDMO 中，常見場景的風險計算：</p>
+            <ul>
+                <li><strong>充填前暫存袋（24hr）</strong>：A=10，B=10，C=1，D=5 → 分數=500（低）</li>
+                <li><strong>Buffer 配製袋（72hr）</strong>：A=10，B=1，C=5，D=5 → 分數=250（低）</li>
+                <li><strong>生物製劑中間體長期儲存袋（10天）</strong>：A=10，B=5，C=10，D=10 → 分數=5,000（高！）</li>
+            </ul>
+            <p>長期儲存袋是高風險情境，必須執行完整的內部確效，包括 E&amp;L 測試。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>請針對你工廠中一個實際使用的一次性袋子，套用 A×B×C×D 公式計算風險分數，並決定需要哪些額外的內部確效測試。</li>
+                <li>若一個中風險（分數1,500）的材料，你會優先從哪個因子著手降低風險分數？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.2.3–4.2.4 Execute In-House Qualification & Risk Mitigation -->
+<!-- ============================================================ -->
+<div class="section-title">4.2.3–4.2.4 In-House Qualification & Risk Mitigation（內部確效與風險緩解）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>4.2.3 Execute In-House Qualification</h3>
+        <p>Based on the final risk level of the PCM, the required in-house qualification activities can be determined.</p>
+        <p><strong>Regardless of final risk level, in-house qualification requirements should always include:</strong></p>
+        <ul>
+            <li>Leak/pressure/crack verification</li>
+            <li>Tear evaluation (for bags)</li>
+            <li>Sterility evaluation (for sterile-supplied PCM)</li>
+            <li>Endotoxin evaluation (for sterile-supplied PCM)</li>
+            <li>Integrity testing (for 0.2 µm filters, whether sterilizing or for bioburden reduction)</li>
+        </ul>
+        <p><strong>Where final risk level is medium (1,001–4,999), additional requirements include:</strong></p>
+        <ul>
+            <li>Sorption testing</li>
+            <li>Spallation testing (for peristaltic pump tubing)</li>
+        </ul>
+        <p><strong>Where final risk level is high (≥5,000), additional requirements include:</strong></p>
+        <ul>
+            <li>pH change evaluation</li>
+            <li>Leachables testing</li>
+            <li>Particulate evaluation</li>
+        </ul>
+        <p>Approaches to reducing the amount of testing include:</p>
+        <ul>
+            <li><strong>Utilizing existing data from suppliers and in-house data</strong> – existing data can be utilized without the need to perform additional work; careful evaluation is necessary to ensure it supports the intended use. Only formal and official documents issued by the supplier should be admissible.</li>
+            <li><strong>QbD approach</strong> – using data for a higher risk PCM to qualify the same PCM in the same or lower risk categories, provided:
+                <ul>
+                    <li>Same grade of resin and material of construction</li>
+                    <li>Same supplier/manufacturer</li>
+                    <li>Used for the same/similar drug substance, drug product, or excipient</li>
+                </ul>
+            </li>
+            <li><strong>Paper exercise</strong> – for certain low risk applications, in-house qualification studies can potentially be satisfied with a paper exercise.</li>
+        </ul>
+
+        <h3>4.2.4 Risk Mitigation</h3>
+        <p>Following qualification activities, incoming requirements should minimally include:</p>
+        <ul>
+            <li>Confirmation of materials (correct PCM and site of manufacture)</li>
+            <li>Confirmation of sterility status, if applicable</li>
+            <li>Review of Certificate of Analysis (CoA) for any prescribed supplier testing and certification</li>
+            <li>Confirmation of packaging integrity or packaging configuration</li>
+        </ul>
+        <p>If the material does not meet the minimum requirements, remediation options include:</p>
+        <ul>
+            <li>Selecting another supplier</li>
+            <li>Requesting the supplier to generate the test data</li>
+            <li>Performing in-house qualification</li>
+            <li>Implementing a <span class="key-term">risk mitigation</span> step in the process, if possible</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>內部確效的三層結構</h4>
+            <p>ISPE SUT 建立了一個清晰的確效層次：</p>
+            <ul>
+                <li><strong>基礎層（所有風險等級必做）</strong>：洩漏、撕裂、無菌性、內毒素、過濾器完整性——這些是無菌製造的絕對底線</li>
+                <li><strong>中風險附加層</strong>：吸附測試（藥物成分被材料吸附）＋碎屑測試（蠕動泵管路磨損產生微粒）</li>
+                <li><strong>高風險附加層</strong>：pH 變化＋可溶出物＋微粒——這是與法規直接掛鉤的核心測試</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>三種減少測試量的策略</h4>
+            <p>並非每個 PCM 都需要「從頭做所有測試」，三種策略可大幅減少重複工作：</p>
+            <ul>
+                <li><strong>引用供應商既有資料</strong>：最省時，但需嚴格確認資料適用性（同製程、同條件、正式官方文件）</li>
+                <li><strong>QbD 括量法</strong>：用最嚴苛條件的資料涵蓋較寬鬆的應用場景——類似於「測過最難的考試，就不需要再考簡單的」</li>
+                <li><strong>文件審查（Paper Exercise）</strong>：低風險材料可能只需要文件層面的合理性論證，無需實際測試</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：進料管控是最後一道防線</h4>
+            <p>PCM 的進料管控（Incoming Control）就像機場安檢——不管飛機在出發地有多嚴格的行李檢查，到達目的地時還是要再過一次安檢。即使供應商確效資料完整，每批到貨時仍需確認：材料正確（CoA 核對）、包裝完整（無破損汙染）、無菌狀態維持（批號、效期）。這是風險緩解的最後關卡，不能省略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CoA 不等於確效</h4>
+            <p>供應商提供的 CoA（分析證書）只證明「這批產品符合供應商的出廠規格」，並不代表它適合你的特定製程應用。進料管控的 CoA 審查應確認：</p>
+            <ul>
+                <li>所有指定測試項目均有結果且符合標準</li>
+                <li>CoA 上的料號、批號、製造地點與採購訂單一致</li>
+                <li>若有已知的批次差異（如薄膜批次）需特別追蹤</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用：當材料不符合要求時</h4>
+            <p>在 CDMO 實務中，若 PCM 確效失敗或進料不合格，四個補救選項的實際優先順序：</p>
+            <ol>
+                <li><strong>要求供應商補測</strong>（最常見）：供應商提供缺失的測試資料</li>
+                <li><strong>內部執行確效</strong>：成本高但速度快，適合緊急批次需求</li>
+                <li><strong>製程中加入緩解步驟</strong>：如加入額外過濾步驟降低可溶出物風險</li>
+                <li><strong>更換供應商</strong>（最後手段）：時間最長，但若材料本身有根本缺陷，這是唯一解</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的工廠目前對一次性組件的進料管控標準是什麼？CoA 審查清單包含哪些項目？</li>
+                <li>如果供應商宣稱使用「QbD 括量法」以高風險資料涵蓋你的低風險應用，你會如何評估這個宣稱的合理性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.3 Change Management -->
+<!-- ============================================================ -->
+<div class="section-title">4.3 Change Management（變更管理）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Change management</span> is an important element of a pharmaceutical manufacturing quality system. With the rapid development of SUT, implementation of a structured <span class="key-term">change control</span> process within a change management system allows for smooth operations and predictable compliance with regulatory requirements.</p>
+        <p>Changes may come from product improvements, availability of new types of products, or phasing out of products as they become obsolete due to improved products.</p>
+
+        <h3>4.3.1 Typical Changes Associated with SUT Operations</h3>
+        <p>Typical changes associated with SUT operations can be categorized as <strong>maintenance/improvement changes</strong> and <strong>major disruptive changes</strong>:</p>
+        <ul>
+            <li><strong>Maintenance/improvement changes:</strong>
+                <ul>
+                    <li>Operational improvements</li>
+                    <li>Change in drawing format or documentation</li>
+                    <li>Storage location</li>
+                    <li>Transit route</li>
+                </ul>
+            </li>
+            <li><strong>Major disruptive changes:</strong>
+                <ul>
+                    <li>Material of construction or formulation</li>
+                    <li>Obsolete component</li>
+                    <li>Manufacturing methods (process parameter or equipment)</li>
+                    <li>Manufacturing location</li>
+                    <li>Dimensions of component</li>
+                    <li>Supplier of single-use product</li>
+                    <li>Sterilization supplier/location</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Change management with SUT operations can be a complex process due to the number of stakeholders (e.g., compounders, manufacturers, assemblers) and raw materials involved in the supply chain. Primary suppliers should ensure total ownership of delivered single-use assemblies and provide full transparency. The following aspects should be addressed:</p>
+        <ul>
+            <li>Supplier's definition of change</li>
+            <li>Supplier's qualification process for alternative raw materials sources (e.g., resins, additives, films)</li>
+            <li>Supplier's change management process, including:
+                <ul>
+                    <li>Customer <span class="key-term">change notification</span> and agreement on lead times for such notifications</li>
+                    <li>Mitigation activities, such as inventory of raw materials</li>
+                </ul>
+            </li>
+        </ul>
+        <p>A robust supply chain communications process is a major requirement for effective change management. Enhanced by:</p>
+        <ul>
+            <li>Quality agreement</li>
+            <li>Periodic audits</li>
+            <li>Predefined and direct communication channels</li>
+        </ul>
+
+        <h3>4.3.2 Typical Methods/Activities Applied in Change Management</h3>
+        <p>The level of evaluation depends on change criticality and is related to the intended use and processing conditions (risk-based approach) of the SUS. The following methods/activities are typically performed to support the change evaluation step:</p>
+        <ul>
+            <li>E&amp;L tests</li>
+            <li>Functional tests</li>
+            <li>Robustness tests</li>
+            <li>Mechanical strength evaluation</li>
+            <li>Interaction with other components</li>
+            <li>Shelf life</li>
+        </ul>
+        <p>Changes can also be managed by qualifying alternative sourcing for single-use products. PDA Technical Report 66 presents the concept of <span class="key-term">single-use component interchangeability</span>, dependent on intended function, processing conditions, and fit-for-purpose evaluation.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 變更管理的複雜性</h4>
+            <p>SUT 的變更管理比不鏽鋼設備更複雜，原因在於供應鏈層次多：</p>
+            <p>終端使用者 → 一次性組件供應商 → 薄膜製造商 → 樹脂供應商 → 原料礦場</p>
+            <p>每一層的變更都可能影響最終產品接觸材料的特性。供應商的「小改變」對終端使用者可能意味著需要重新確效，甚至重新提交法規申請。</p>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵術語：材料變更通知 (Change Notification)</h4>
+            <p><strong>Change Notification</strong> 是供應商告知終端使用者即將進行的材料或製程變更的正式機制。在品質協議中，通常規定：</p>
+            <ul>
+                <li><strong>重大變更</strong>（如薄膜材質、滅菌供應商）：至少提前 6-12 個月通知</li>
+                <li><strong>輕微變更</strong>（如文件格式、倉儲地點）：提前 30-90 天通知即可</li>
+            </ul>
+            <p>沒有足夠提前期的通知會讓終端使用者陷入緊迫的再確效壓力，甚至影響商業批生產。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：維護型 vs. 破壞型變更</h4>
+            <p>想像你是一家餐廳老闆（終端使用者）：</p>
+            <ul>
+                <li><strong>維護型變更</strong>：供貨商改了外包裝顏色、換了倉庫地址——你可能需要更新進貨文件，但不影響食材品質</li>
+                <li><strong>重大破壞型變更</strong>：供貨商把蔬菜的品種從有機換成慣行農法——這直接影響到你菜單上「有機蔬菜」的聲稱，你必須重新評估、可能需要更換供應商</li>
+            </ul>
+            <p>SUT 的「材料配方變更」等同於後者，必須觸發完整的變更控制流程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：品質協議是變更管理的基礎</h4>
+            <p>有效的 SUT 變更管理依賴三個機制共同運作：</p>
+            <ul>
+                <li><strong>品質協議 (Quality Agreement)</strong>：明確定義哪些變更需要通知、通知時間要求、雙方責任</li>
+                <li><strong>定期稽核</strong>：驗證供應商確實遵守通知義務，及早發現未申報的變更</li>
+                <li><strong>預定義溝通管道</strong>：當變更發生時，誰通知誰、用什麼格式——不能靠「打個電話」處理</li>
+            </ul>
+            <p>沒有品質協議的供應商關係，等同於在沒有安全帶的情況下開車——也許大部分時候沒事，但一旦出問題就是大事。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用：變更管理的特殊挑戰</h4>
+            <p>CDMO 面對的變更管理挑戰更複雜，因為同一個一次性組件可能同時用於多個客戶的不同藥品專案。供應商的一個「材料變更通知」可能需要：</p>
+            <ul>
+                <li>評估對每個客戶的影響（不同藥品、不同法規申請）</li>
+                <li>觸發多份變更控制紀錄</li>
+                <li>可能需要通知每個客戶（取決於客戶的法規申請狀態）</li>
+                <li>協調不同客戶的測試與放行時程</li>
+            </ul>
+            <p>這就是為什麼 CDMO 的 PCM 元件庫和標準化確效程序特別重要——一次確效，多個專案共用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的工廠與主要一次性組件供應商是否簽有品質協議？協議中對「變更通知」的要求是否足夠詳細？</li>
+                <li>過去三年中，你的工廠是否遭遇供應商未提前通知的重大變更？如果有，後果是什麼？如何預防？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4.4 Project Schedules -->
+<!-- ============================================================ -->
+<div class="section-title">4.4 Project Schedules（專案排程）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section provides example schedules that capture important tasks in the various phases of SUT implementation. The schedules are structured to allow for selected tasks to be accomplished in parallel while optimizing the use of time and resources. Running activities in parallel reduces the overall project time; however, this may cause spikes in the resources required and usually decreases the efficiency in the use of resources.</p>
+        <p>The reader should use these example schedules to develop customized schedules to fit the specific project requirements.</p>
+
+        <h3>4.4.1 SUT Implementation into Operations with Qualified Components</h3>
+        <p>The example schedule (Figure 4.1) targets the overall implementation tasks, based on the following conditions which allow for fast SUT implementation:</p>
+        <ul>
+            <li>All components used in the assemblies are qualified to be used in the process</li>
+            <li>E&amp;L information has been developed and is available for the specific process fluid</li>
+        </ul>
+        <p><em>Note: Even if all components are qualified, the complete assembly may be new in terms of component engagement or dimensions (e.g., tubing length or diameter). It should be tested through technical checks with samples and prototype testing.</em></p>
+
+        <h3>4.4.2 SUT Implementation into Operations with Components Needing Qualification</h3>
+        <p>These schedules target the overall implementation tasks when one or more components need to be qualified. These schedules also incorporate time for conducting <span class="key-term">extractables tests</span>. Two example schedules are provided:</p>
+        <ul>
+            <li>Figure 4.2a: Top level task groups</li>
+            <li>Figure 4.2b: Details of key tasks</li>
+        </ul>
+        <p>Time-consuming tasks are arranged early in the process and in parallel with other tasks to expedite implementation.</p>
+
+        <h3>4.4.3 Qualification of SUT Components</h3>
+        <p>Figure 4.3 shows the tasks to conduct a qualification of components, primarily focusing on <span class="key-term">extractables testing</span>. Based on the condition that fundamental information on gamma irradiation compatibility, functional compliance, and shelf life information is available from the component supplier.</p>
+
+        <h3>4.4.4 Introduction of SUT into Operations</h3>
+        <p>These schedules are based on a broad scope to introduce SUT in bioprocessing. Includes tasks on container/component qualification within a fast implementation schedule:</p>
+        <ul>
+            <li>Figure 4.4a: Top level task groups</li>
+            <li>Figure 4.4b: Details of key tasks</li>
+        </ul>
+
+        <h3>4.4.5 Technology Transfer</h3>
+        <p>These schedules are intended for <span class="key-term">technology transfer</span> of SUT via scale-up into another bioprocess operation:</p>
+        <ul>
+            <li>Figure 4.5a: Top level task groups (Technology Transfer)</li>
+            <li>Figure 4.5b: Detailed key tasks (Technology Transfer)</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 排程的五種場景</h4>
+            <p>ISPE SUT 的排程模板涵蓋五種不同起始條件，反映了現實中專案的多樣性：</p>
+            <ul>
+                <li><strong>4.4.1（元件已全部確效）</strong>：最快的路徑，適合成熟操作中換型或擴產</li>
+                <li><strong>4.4.2（部分元件需確效）</strong>：最常見的情況——有新元件需要測試</li>
+                <li><strong>4.4.3（元件資格確認專項）</strong>：聚焦在新供應商元件的系統性確效</li>
+                <li><strong>4.4.4（全新導入 SUT）</strong>：從頭建立 SUT 操作的完整時程</li>
+                <li><strong>4.4.5（技術轉移）</strong>：從一個場地轉移到另一個場地的特殊考量</li>
+            </ul>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵術語：甘特圖與關鍵路徑</h4>
+            <p><strong>甘特圖 (Gantt Chart)</strong>：以橫條圖顯示各任務的時間跨度與相互關係。ISPE 的排程模板就是甘特圖形式。</p>
+            <p><strong>關鍵路徑 (Critical Path)</strong>：從專案開始到結束，最長的一條依存關係鏈。關鍵路徑上的任何延誤都會直接推遲整個專案的完成日期。在 SUT 導入中，E&amp;L 萃取物測試通常位於關鍵路徑上（測試週期長，無法壓縮）。</p>
+            <p><strong>階段閘門法 (Phase-Gate Approach)</strong>：將專案劃分為多個階段，每個階段結束時設置評審關卡，確認達標後才進入下一階段。這在 SUT 實施中可以避免在確效失敗前投入過多後續資源。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：並行作業的代價</h4>
+            <p>並行作業（Parallel Tasks）就像同時煮幾道菜——可以縮短晚餐上桌的時間，但需要多個爐頭（資源）同時運作。如果你只有一個廚師（資源有限），並行太多反而造成顧此失彼。SUT 專案中，啟動過多並行任務（如同時執行確效、自動化整合、驗證）可能造成關鍵人員過載，反而拖慢總體進度。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>排程中的隱形時間殺手：E&amp;L 測試</h4>
+            <p>E&amp;L（萃取物與可溶出物）測試是 SUT 排程中最需要提前規劃的活動：</p>
+            <ul>
+                <li>測試週期通常需要 3-6 個月（包括萃取、分析、報告）</li>
+                <li>必須在其他確效活動結束前完成，才能做最終風險評估</li>
+                <li>若結果不合格，需要換材料並重測，時間代價極高</li>
+            </ul>
+            <p>ISPE 的建議：E&amp;L 測試必須盡早啟動，與其他任務並行，不能等到其他工作完成後才開始。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：技術轉移排程的特殊考量</h4>
+            <p>技術轉移（4.4.5）的 SUT 排程需要額外考慮：</p>
+            <ul>
+                <li><strong>規模變化</strong>：放大或縮小批量會改變 SA/V 比，可能需要重新進行風險評估</li>
+                <li><strong>法規提交</strong>：若轉移至不同國家/地區，可能需要向新的法規機關通報 SUT 的設計更改</li>
+                <li><strong>重新確效</strong>：即使元件相同，組件在新場地的安裝、操作條件可能不同，需重新執行部分確效</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用：從計畫排程到現實</h4>
+            <p>CDMO 承接新客戶藥品的 SUT 導入時，常見的排程陷阱：</p>
+            <ul>
+                <li><strong>供應商樣品遲交</strong>：供應商承諾的樣品交期往往比實際晚 2-4 週，需在排程中加入緩衝</li>
+                <li><strong>客戶審查延誤</strong>：確效報告需要客戶批准，跨時區溝通可能造成數週延誤</li>
+                <li><strong>原型測試失敗</strong>：即使所有元件已確效，組裝後的原型仍可能在連接尺寸或壓力測試中失敗，需要重新設計</li>
+            </ul>
+            <p>建議：在 SUT 導入 Master Timeline 中，對 E&amp;L 測試、原型評估、客戶審查各預留至少 20% 緩衝時間。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你最近一次 SUT 導入專案中，哪個任務是在關鍵路徑上？實際進度與計畫相比，最大的偏差來源是什麼？</li>
+                <li>如果客戶要求你在 6 個月內完成一個全新 SUT 系統的導入（包括元件確效），你會選擇 4.4.4 的排程策略中哪些任務安排為並行？哪些必須序列執行？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-summary">
+    <h3>本章總結 Chapter Summary</h3>
+    <ul>
+        <li><strong>SUT 導入的四大特殊考量</strong>：強化供應商協作、全程風險與變更管理、彈性排程、SUT 與不鏽鋼系統的介面整合。雙重來源策略是供應安全的核心保障，應納入採購政策。</li>
+        <li><strong>風險評分公式 A × B × C × D</strong>：四個因子（給藥途徑、接近終產品程度、接觸時間、表面積/體積比）相乘得出量化風險分數。分數 ≤1,000 為低風險，1,001-4,999 為中風險，≥5,000 為高風險，直接決定所需內部確效測試的範圍。</li>
+        <li><strong>15 項 PCM 資格確認屬性</strong>：E&amp;L（屬性 8）、生物相容性（屬性 1）與容器密封完整性（屬性 13）是最關鍵的三項。可透過引用供應商既有資料、QbD 括量法、文件審查等策略減少重複測試。</li>
+        <li><strong>變更管理的雙軌分類</strong>：維護/改善型變更（低衝擊）vs. 重大破壞型變更（材料、製程、供應商、尺寸的實質改變）。品質協議中必須明確規定「重大材料變更」的提前通知期限（通常 6-12 個月），並透過定期稽核驗證執行情況。</li>
+        <li><strong>SUT 排程的關鍵路徑意識</strong>：E&amp;L 萃取物測試週期長（3-6 個月），必須在專案早期啟動並並行推進。甘特圖模板（五種場景）是起點，應根據實際供應商能力、客戶要求和可用資源進行客製化調整，並為 E&amp;L 測試、原型評估、客戶審查各預留緩衝時間。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到頂部">↑</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) { btn.classList.add('visible'); }
+        else { btn.classList.remove('visible'); }
+    });
+</script>
+
+</body>
+</html>

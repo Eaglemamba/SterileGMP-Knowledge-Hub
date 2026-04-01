@@ -15,7 +15,7 @@ Last updated: 2026-03-31
 | **3** | `ISPE-HVAC` | ISPE GPG: Heating, Ventilation and Air Conditioning | 11 MB | ⬜ Planned | Critical for Grade A/B/C/D cleanroom design. Only dedicated HVAC guide in the Hub. |
 | **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ✅ Complete | WFI/PW/PS utility systems. 18 section files, 14-tab merged document. |
 | **5** | `ISPE-Vol7` | ISPE Baseline Vol.7: Risk-Based Manufacture | 12 MB | ✅ Complete | Risk-MaPP framework. 11 section files, 9-tab merged document. |
-| **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ⬜ Planned | Directly bridges existing PDA TR66. Users will cross-reference. |
+| **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ✅ Complete | 10 section files, 10-tab merged document. Directly bridges PDA TR66. |
 | **7** | `ISPE-GAMP5` | ISPE GAMP 5 (1st Ed.) | 5 MB | ⬜ Planned | ⚠️ Only 1st edition available — current standard is 2nd Ed. (2022). Upgrade when 2nd Ed. is obtained. |
 | **8** | `ISPE-Vol6` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | 11 MB | ⬜ Planned | Bridges PDA PtC-14 (ATMP). Important for biologics/cell therapy facilities. |
 | **9** | `ISPE-GEP` | ISPE Good Engineering Practice | 8 MB | ⬜ Planned | GEP framework. Foundational but lower query frequency. |

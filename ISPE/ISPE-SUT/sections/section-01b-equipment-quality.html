@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Chapter 2.3–2.4: Equipment Design & Quality Requirements</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 12px; padding: 1.5rem 2rem; margin-top: 2rem;
+    border: 1px solid #ffd970;
+}
+.section-summary h2 { color: #856404; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid #f6c90e; padding-bottom: 0.5rem; }
+.section-summary ul { margin-left: 1.5rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.93rem; color: #5a4000; }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapters 2.3–2.4: Process Equipment Design & Quality Requirements</h1>
+    <div class="subtitle">ISPE Good Practice Guide: Single-Use Technology</div>
+    <div class="page-info">Pages 29–50 | Sensors · Pumps · Bioreactors · Environmental Classification · Quality Requirements for SU Components, Assemblies & Systems</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>學習目標 Learning Objectives</h3>
+    <ul>
+        <li>掌握單次使用系統（SUS）中各類感測器（pH、DO、流量、壓力）的選型原則與準確度差異</li>
+        <li>了解蠕動泵、隔膜泵的特性，以及管路材料（spallation、E&L）的選擇考量</li>
+        <li>理解單次使用生物反應器的設計限制與 scale-up 參數（kLa、P/V、VVM）</li>
+        <li>區分開放式、封閉式、功能性封閉製程的環境分類要求</li>
+        <li>掌握 SU 元件、組件、系統的品質要求層次與供應商評估矩陣工具</li>
+        <li>了解端使用者與供應商在 SU 產品品質檢查中的各自責任</li>
+    </ul>
+</div>
+
+<!-- ============================================================
+     SECTION 2.3: PROCESS EQUIPMENT DESIGN
+     ============================================================ -->
+<h2 class="section-title">Section 2.3 — Process Equipment Design</h2>
+
+<!-- 2.3.1 Sensors -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3.1 Sensors</h2>
+        <p>The determination of the level of accuracy needed is important, as sensors may vary in accuracy and cost. For all single-use sensors, it is highly advised to test the accuracy and precision of the device in-house before implementation in the manufacturing facility.</p>
+        <p>Considerations for the selection of single-use sensors include:</p>
+        <ul>
+            <li>Fundamental technology behind the sensor (e.g., a rotary flow meter that measures rotations by the reflection of infrared light from the rotor blades will not be reliable when used with colored solutions such as cell culture media)</li>
+            <li>Materials of construction (sensors exposed to process solutions and solvents should be assessed for chemical compatibility)</li>
+            <li>Compatibility with the desired sterilization method (chemical, radiation, thermal) to ensure that the calibration of the sensor is not affected</li>
+            <li>Calibration strategy (availability of pre-calibrated probes, if required)</li>
+            <li>Robustness of the measurement and drift level under actual conditions of use</li>
+            <li>Standardized connections (selection of components with specialized connections may result in being locked in with one supplier)</li>
+            <li>Allowance for the end-user to perform pre-use steps without breaking sterility</li>
+        </ul>
+
+        <h3>2.3.1.1 Level</h3>
+        <p>Options for level measurements in SUSs include:</p>
+        <ul>
+            <li>For hanging bags with known density of process solutions: load cell strain gauge</li>
+            <li>For mixers and larger tanks: guided-wave radar, floor scale, and load cells</li>
+            <li>For bubble traps: gas/liquid detector</li>
+        </ul>
+
+        <h3>2.3.1.2 Flow</h3>
+        <p>Options for flow measurements in SUSs can vary greatly in fixed cost, variable cost, and accuracy:</p>
+        <ul>
+            <li>Rotary meters: typically less accurate (±5%) and more affordable</li>
+            <li>Coriolis meters: more accurate (±1%) and more expensive</li>
+            <li>Ultrasonic flow meters: easily moved but tend to be more expensive</li>
+            <li>Magnetic flow meters: good accuracy for mid-range expense but not usable with deionized liquids</li>
+        </ul>
+
+        <h3>2.3.1.3 pH</h3>
+        <p>Options for pH measurements in SUSs include:</p>
+        <ul>
+            <li><strong>Traditional pH sensors:</strong> Cleaned while connected to an aseptic connector half and then autoclaved. Advantages include familiar analytical hardware and accurate measurement (pH 2–12).</li>
+            <li><strong>Single-use pH sensors:</strong> For physiological range (pH 5.5–8.5); miniaturized with plastic sheath, inserted into flow path and gamma irradiated. Accuracy ±0.05.</li>
+            <li><strong>Sensor spots:</strong> Chemical optical sensor spots placed inside clear bioprocess container prior to sterilization; read by fiber optical cable. Limited pH range (pH 5.5–8.5); accuracy ±0.1. Certain cell culture media components can affect accuracy.</li>
+        </ul>
+
+        <table>
+            <tr><th>pH Measurement Option</th><th>Typical Accuracy and pH Limits</th></tr>
+            <tr><td>Traditional probe</td><td>±0.01 for pH 2–12; ±0.05 for pH 0–14</td></tr>
+            <tr><td>Single-use probe</td><td>±0.05, pH 5.5–8.5</td></tr>
+            <tr><td>Sensor spots</td><td>±0.1, pH 5.5–8.5</td></tr>
+        </table>
+
+        <h3>2.3.1.4 Dissolved Oxygen</h3>
+        <p>The most straightforward way to bridge DO sensing from stainless steel systems to SUSs is to use traditional DO sensors — cleaned, connected via aseptic connector, and autoclaved before use. Single-use sensors using optical sensing technology are available but have a narrower range and higher detectability limit.</p>
+
+        <h3>2.3.1.5 Pressure</h3>
+        <p>Several types of single-use pressure sensors are available. Main differences are accuracy, type of connection (in-line versus T), inner diameter, maximum pressure rating, and cost. Calibration concerns may drive the need for a pre-use calibration depending on the criticality of the measurement.</p>
+
+        <h3>2.3.1.6 Temperature/Conductivity</h3>
+        <p>Multiple options from various suppliers are available for temperature/conductivity meters in a single-use flow cell format. The majority of available sensors have an accuracy rate of approximately 3%. Key selection differences are the operating conductivity ranges and available hose barb connection sizes.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>感測器選型指引</h2>
+
+        <div class="concept-box">
+            <h3>感測器選型的核心原則</h3>
+            <p>SUS 感測器選型不能只看「能不能用」，更要看「在你的製程條件下準不準」。ISPE 的建議是：在設施實施前，先在廠內驗證準確度和精確度。</p>
+            <p>特別要注意：供應商鎖定（vendor lock-in）風險。如果選擇了非標準接頭的感測器，後續更換供應商的彈性會受限。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：pH 感測器三選一</h3>
+            <p>想像你要測量一個細胞培養槽的 pH：</p>
+            <ul>
+                <li><strong>傳統探針</strong>：就像你家用的標準體溫計 — 最準確（±0.01），但需要高壓滅菌流程</li>
+                <li><strong>一次性探針</strong>：像即棄式血糖試紙 — 夠準（±0.05），可伽瑪照射，方便即用</li>
+                <li><strong>感測貼片</strong>：像反光板 — 光纖從外面讀取，無需穿刺袋體，但只適用生理 pH 範圍</li>
+            </ul>
+            <p>CDMO 的實際選擇取決於：照射相容性、培養基干擾、成本以及校正策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>實務注意：流量計的選擇</h3>
+            <p>磁性流量計（Magnetic flow meter）雖然精度不錯，但<strong>不適用於去離子水（DI water）</strong> — 因為需要導電液體才能工作。在 SUS 水系統中要特別注意這一點。</p>
+            <p>Coriolis 流量計雖最準確（±1%），但成本最高；蠕動泵搭配轉子流量計往往是較常見的折衷方案。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>CDMO 實際應用</h3>
+            <p>在無菌充填-完成（fill-finish）工廠，pH 和 DO 感測器主要用於上游細胞培養階段。對 CDMO 而言，客戶的製程平台不同，選用感測器的相容性矩陣就需要隨之調整。建議在 URS 中明確列出：</p>
+            <ul>
+                <li>感測器類型及預期準確度</li>
+                <li>滅菌方式（照射或高壓滅菌）</li>
+                <li>校正策略（供應商預校或現場校正）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 2.3.2–2.3.3 Valves & Pumps -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3.2 Single-Use Valves (Flow Path Control)</h2>
+        <p>Opening and closing of flow paths on SUSs is typically performed using manual or automatic pinch valves. The two main types of automated pinch valves are:</p>
+        <ul>
+            <li><strong>Pneumatic pinch valves:</strong> Typically used for larger inner diameter (ID) tubing and can hold back greater pressures</li>
+            <li><strong>Solenoid valves:</strong> Smaller and do not require the system to be supplied with instrument air (usually 90–100 psi)</li>
+        </ul>
+        <p>Pressure control valves are pinch valves controlled by a stepper motor, giving them thousands of positions rather than just open and closed. Single-use diaphragm-style valves are also available.</p>
+
+        <h2>2.3.3 Pumps</h2>
+        <h3>2.3.3.1 Pump Types</h3>
+        <p>Positive displacement pumps are typically preferred for biotechnology fluids sensitive to shear. Main types used in single-use applications:</p>
+        <ul>
+            <li><strong>Peristaltic pumps:</strong> Operate with flexible tubing; easily replaceable; more flexible but slight flow drift over time due to tubing wear</li>
+            <li><strong>Diaphragm pumps:</strong> Higher operating pressures and flow rates; suitable for longer continuous periods</li>
+            <li><strong>Centrifugal pumps:</strong> Used in certain perfusion systems; will not build up pressure to the point of mechanical failure, but flow varies with pressure changes</li>
+        </ul>
+
+        <h3>2.3.3.2 Typical Materials of Construction</h3>
+        <p>A large variety of tubing materials is available for peristaltic pumps. Selection should be made with the fluid product as primary consideration. For diaphragm pumps, selection is similar to soft goods in traditional stainless steel systems (e.g., housing PP, O-rings EPDM, diaphragms TPE).</p>
+
+        <h3>2.3.3.3 Selection of Tubing/Diaphragms</h3>
+        <p>Positive displacement pumps create pressure pulsations that can stress shear-sensitive fluids. Key considerations:</p>
+        <ul>
+            <li><strong>Dimensional consistency:</strong> Pump tubing must maintain shape under repeated squeezing while correlating consistent flow rate with RPM</li>
+            <li><strong>E&L (Extractables &amp; Leachables):</strong> Leachables testing should be done under operating conditions, since tubing is squeezed, stretched, and stressed during use</li>
+            <li><strong>Spallation:</strong> Material fragmentation during use is a critical parameter that should be confirmed under process conditions, including the specific operating fluid</li>
+            <li><strong>Compatibility with sterilization conditions:</strong> Autoclaving or gamma irradiation can have a stiffening effect on materials, modifying the flow rate/pump speed correlation</li>
+        </ul>
+
+        <h3>2.3.3.4 Overall Selection Criteria for Pumps</h3>
+        <ul>
+            <li><strong>Material compatibility with fluid:</strong> Identify pumps with single-use materials compatible with the fluid</li>
+            <li><strong>Accuracy of flow rate:</strong> Balance between flexibility of single-use components and stability of flow</li>
+            <li><strong>Minimum pulsation and stable flow rate:</strong> Minimize pulsations to keep process stable and safe</li>
+            <li><strong>Ease of replacement of single-use components:</strong> Rapid return to operation without errors in reassembly</li>
+            <li><strong>Synergy in operation with other components:</strong> E.g., different tubing sizes allow similar pinch valve accuracy at higher flow rates</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>閥門與泵的選型要點</h2>
+
+        <div class="concept-box">
+            <h3>夾管閥（Pinch Valve）的工作原理</h3>
+            <p>SUS 的流路控制核心是夾管閥：它從外部夾住柔性管路來控制流量，無需管路內部機械元件，保持了流路的封閉性與可丟棄性。</p>
+            <ul>
+                <li><strong>氣動夾管閥</strong>：需要儀表空氣供給（90-100 psi），適合大管徑高壓差應用</li>
+                <li><strong>電磁閥（Solenoid）</strong>：靠電磁力驅動，無需儀表空氣，體積更小，適合低壓小流量</li>
+                <li><strong>步進馬達控制閥</strong>：有數千個位置，能精確控壓，是真正的「調節閥」</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：泵的三種「個性」</h3>
+            <p>把三種泵想成三種水管工人：</p>
+            <ul>
+                <li><strong>蠕動泵</strong>：像用手擠牙膏管 — 溫柔、可替換管子，但長時間用後會有流量漂移</li>
+                <li><strong>隔膜泵</strong>：像往復式活塞 — 力道大、壓力高、適合長時間連續運轉，但脈動更明顯</li>
+                <li><strong>離心泵</strong>：像電風扇 — 高流速但不建壓，適合 perfusion 灌注系統</li>
+            </ul>
+            <p>生物技術製程優先選正排量泵（蠕動 or 隔膜），因為細胞對剪切力（shear stress）敏感。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>Spallation — 容易被忽略的品質風險</h3>
+            <p><strong>Spallation（剝落）</strong>是指泵管或隔膜在重複擠壓操作中釋放出的微小碎片，這些碎片可能污染產品。</p>
+            <p>ISPE 建議：讓流體循環通過泵（recycling test），用少量液體就能濃縮並偵測剝落物質，是最有效的評估方式。</p>
+            <p>這對無菌充填製程尤其重要 — 可見粒子或不可見微粒都是放行的關鍵指標。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>CDMO 實際應用：蠕動泵管路的確效</h3>
+            <p>當 CDMO 為新客戶製程引進蠕動泵時，需確認：</p>
+            <ul>
+                <li>管路材質 E&L profile 是否與製程液體相容</li>
+                <li>滅菌（高壓或伽瑪）後流量-轉速關係是否發生明顯偏移</li>
+                <li>在最長的操作時間下，管路磨損造成的流量漂移是否在製程允許範圍內</li>
+                <li>管路的 spallation 測試是否已在代表性條件下完成</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 2.3.4 Bioreactors -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3.4 Bioreactors</h2>
+        <h3>2.3.4.1 Design</h3>
+        <p>The primary application of single-use bioreactors is mammalian cell culture. Single-use bioreactors have had limited applicability with microbial cell lines due to limitations in vessel pressure, mass transfer, and venting. Microbial cell lines also present challenges when the culture becomes heat-generating, requiring a jacketed vessel with cooling capabilities.</p>
+        <p>Bioreactors are equipped with vent filters and filter heaters to promote evaporation of condensate. Blocked vent filters may result in overpressure, process stops, and potential breach of the bioreactor bag.</p>
+        <p>For inoculation or harvesting of single-use bioreactors, all transfers should be performed by pumping since overpressure is not possible. This is critical when dealing with cells sensitive to shear stress.</p>
+        <p>Bioreactor designs range from mirroring traditional stainless steel bioreactors to novel agitation mechanisms. Options are still relatively limited with regard to impeller design, impeller size, and sparger type.</p>
+
+        <h3>2.3.4.2 Process Transfer/Scale-Up</h3>
+        <p>Single-use bioreactors should be characterized prior to use. A robust scaling factor should be selected for the scale-up strategy. The recommended practice is to use an equivalent characterized small-scale model to execute the fitted process to the desired manufacturing mode.</p>
+        <p>Considerations for applying conventional scale-up approaches include matching the following characteristics:</p>
+        <ul>
+            <li>Geometric ratio (volume/surface) to retain equivalence between scales</li>
+            <li>Oxygen Transfer Rate (OTR) coefficient (kLa) to be kept constant if possible</li>
+            <li>Power input per unit of volume (P/V), in kW/m³, to be kept equivalent between scales</li>
+            <li>Volumetric gas flow rate per unit volume (VVM)</li>
+            <li>Mixing time — important for pH adjustment</li>
+        </ul>
+        <p>Other scale-up approaches include: constant volumetric scale-up to maintain shear stress, constant tip speed, constant VVM correlated to theoretical kLa.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>單次使用生物反應器</h2>
+
+        <div class="concept-box">
+            <h3>SU 生物反應器的設計限制</h3>
+            <p>與不鏽鋼生物反應器相比，SU 生物反應器有幾個根本性限制：</p>
+            <ul>
+                <li><strong>壓力限制</strong>：袋體無法承受高壓，因此不能加壓轉移，只能用泵</li>
+                <li><strong>微生物適用性差</strong>：微生物培養需高傳質速率（高通氣量）和散熱能力，SU 袋體難以滿足</li>
+                <li><strong>攪拌設計選擇少</strong>：葉輪形狀、大小、鼓泡器類型的可定製性遠不如不鏽鋼</li>
+                <li><strong>通氣過濾器阻塞風險</strong>：排氣冷凝水可能堵塞過濾器，導致過壓破袋</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h3>Scale-Up 核心參數</h3>
+            <p>SU 生物反應器放大的關鍵：保持以下參數的等效性</p>
+            <pre>kLa  = 氧傳質係數（Oxygen Transfer Rate coefficient）
+P/V  = 單位體積功率輸入 (kW/m³)
+VVM  = 每分鐘通氣量 / 液體體積
+混合時間（Mixing Time）— 影響 pH 調節均勻性</pre>
+            <p><strong>幾何比（volume/surface）</strong>是最優先維持的參數，確保流體力學相似性。</p>
+            <p>由於 SU 生物反應器的設計選項有限，放大時通常需要調整操作參數而非更換硬體。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：SU 生物反應器 vs. 不鏽鋼反應器</h3>
+            <p>想像 SU 生物反應器就像「充氣泳池」vs 不鏽鋼的「混凝土游泳池」：</p>
+            <ul>
+                <li>充氣泳池（SU）：架設快、無需清洗、用完即棄，但你不能隨意改變形狀或承受高壓</li>
+                <li>混凝土泳池（SS）：永久結構、完全可客製，但建設成本高，清洗驗證複雜</li>
+            </ul>
+            <p>對於哺乳類細胞培養，現有 SU 反應器已能滿足大多數 2000L 以下的製程需求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2.3.5–2.3.10 -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3.5 Chromatography</h2>
+        <p>Chromatography applications in biopharmaceuticals in relation to SUT are categorized as follows:</p>
+        <table>
+            <tr><th>Type</th><th>Skid Flow Path</th><th>Column</th><th>Complexity</th></tr>
+            <tr><td>Pass-through</td><td>Can be single-use (dependent upon scale)</td><td>Pre-packed or reusable</td><td>Simple</td></tr>
+            <tr><td>Binding and elution</td><td>Mostly stainless steel (complex flow paths)</td><td>Pre-packed or reusable</td><td>Complex</td></tr>
+            <tr><td>Large-scale (column &gt;80 cm)</td><td>All stainless steel</td><td>Reusable</td><td>Complex</td></tr>
+        </table>
+        <p>Chromatography skids with single-use flow paths generally use peristaltic pumps and thus are not suitable for gradient elution. This area of SUT is rapidly changing with advancements in continuous processing, in-line dilution, and in-line conditioning.</p>
+
+        <h2>2.3.6 Ultrafiltration</h2>
+        <p>Single-use ultrafiltration membranes/systems are available; however, the vast majority of medium to large scale ultrafiltration systems remain multiple-use, mainly due to the cost of membranes, flow limitations through single-use tubing, and the need to spread this cost over multiple batches. Single-use ultrafiltration tends to be restricted to smaller scale and niche applications.</p>
+
+        <h2>2.3.7 Environmental Requirements</h2>
+        <p>ISPE defines three categories of processing:</p>
+        <ul>
+            <li><strong>Open process:</strong> Exposed to the environment; requires environmental conditions to mitigate contamination risk</li>
+            <li><strong>Closed process:</strong> Designed and operated such that the product is never exposed to the surrounding environment; additions and draws performed in a completely closed fashion</li>
+            <li><strong>Functionally closed process:</strong> Systems that may be opened but are rendered closed by cleaning, sanitization, and/or sterilization appropriate to process requirements (sterile, aseptic, or low bioburden)</li>
+        </ul>
+        <p>SUSs that use ready-to-use flow paths with aseptic connections are compatible with the reduced environmental requirements of closed or functionally closed operations. A process closure risk assessment should be performed to identify the required classification and segregation needed for different process steps.</p>
+        <p>For hybrid systems (stainless steel vessel connected to a single-use flow path), the multiple-use portion should be cleaned, closed, and returned to its sterile state. If the system can be returned to its closed sterile state, it could be reconnected to single-use components and operated in an area with lower area classification.</p>
+
+        <h2>2.3.8 Control Systems</h2>
+        <p>Control systems for SUT are currently unique to the SUT manufacturer. Skid manufacturers should:</p>
+        <ul>
+            <li>Follow GAMP® for selection, design, and qualification of the control system</li>
+            <li>Use modern Open Platform Communications (OPC) communication and the most current hardware</li>
+            <li>Allow open standards to end-users since closed systems prohibit inclusion in GMP areas</li>
+        </ul>
+        <p>Additional recommendations include: automation designed for multiple scales; feedback loops for every control parameter (e.g., agitation RPM feedback); inclusion of a batch manager; connectivity to the network for mobile SUS units.</p>
+
+        <h2>2.3.9 Utility and Process Support</h2>
+        <h3>2.3.9.1 Electrical</h3>
+        <p>The main electrical load in single-use operations is primarily due to motors (pumps, centrifuges, blowers, mixers) and temperature control units. Unlike stainless steel systems, electrical connections on SUSs are typically cord and plug — enabling reconfiguration within the suite.</p>
+
+        <h3>2.3.9.2 Process Gases</h3>
+        <p>The facility should have lines for required process gases, with drops located at specific unit operations. The lack of a true pressure rating on SUSs — bioprocess bags in particular — may require different gassing/venting control schemes from equivalent stainless steel systems.</p>
+
+        <h3>2.3.9.3 Water</h3>
+        <p>For smaller scale single-use operations, water can be provided by using bagged water or bagged solutions prepared off-site, potentially eliminating purified water lines. For larger scale or hybrid facilities, water systems typically have a lower number of use points than equivalent stainless steel facilities. Due to temperature sensitivity of SUSs, ambient versus hot distribution loops with multiple point-of-use coolers should be evaluated.</p>
+
+        <h3>2.3.9.4 Drains</h3>
+        <p>Leveraging the closed system abilities of SUSs could allow systems to be located in a classification that permits open drain. Collection of process waste in single-use bags for manual neutralization is also an option. The decrease in CIP activities may reduce pH neutralization demands for drains.</p>
+
+        <h2>2.3.10 Maintenance, Calibration, Safety &amp; Cleaning</h2>
+        <p>Maintenance requirements are generally reduced for SUSs. Key design considerations for skid manufacturers:</p>
+        <ul>
+            <li>Include number of pinches for automated pinch valves in the automation — enabling maintenance tracking</li>
+            <li>Allow easy access to single-use components (pumps, valves) for regular maintenance</li>
+            <li>Arrange tubing, connectors, and filters for accessibility with sufficient support</li>
+        </ul>
+        <p>Supplier calibration can be used for single-use components and may need to be coupled with on-site post-use calibration. Suppliers should be compliant with ISO/IEC 17025 or equivalent.</p>
+        <p><strong>Safety considerations unique to SUSs:</strong></p>
+        <ul>
+            <li>Secondary containment to capture leaks during system disassembly</li>
+            <li>Pressure sensors should provide feedback to pump motors to prevent leakage due to bag/plastic rupture</li>
+            <li>Guards surrounding tubing for processes with toxic buffers/drugs</li>
+        </ul>
+        <p><strong>Cleaning:</strong> While process line cleaning is eliminated for fully single-use systems, non-product surfaces should still be wiped or washed. Care should be taken when choosing sanitization methods since certain solvents may be absorbed into or otherwise adversely impact certain plastics (including chlorine dioxide and vaporized hydrogen peroxide).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>環境分類與輔助設施要點</h2>
+
+        <div class="concept-box">
+            <h3>三種製程環境分類的法規意義</h3>
+            <p>SUS 最大的優勢之一是它天然適合「封閉製程」，因而可能降低設施的環境分級要求：</p>
+            <ul>
+                <li><strong>開放製程</strong>：產品曝露於環境 → 需要 Grade B/C 等高潔淨度</li>
+                <li><strong>封閉製程</strong>：產品永不曝露 → 可能只需受控非分類（CNC）區域</li>
+                <li><strong>功能性封閉</strong>：操作中可以開啟但隨即被清潔/消毒/滅菌恢復封閉 → 折衷方案</li>
+            </ul>
+            <p>ISPE 建議：進行製程封閉性風險評估（process closure risk assessment），再決定各步驟所需的環境分類。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>重要：混合系統（Hybrid System）的管理</h3>
+            <p>不鏽鋼容器 + SU 流路的混合系統是常見配置。管理原則：</p>
+            <ul>
+                <li>不鏽鋼部分的 CIP/SIP 完成並確認封閉後，才能重新連接 SU 組件</li>
+                <li>若蒸汽滅菌後的不鏽鋼容器可維持封閉，整個混合系統可以被視為功能性封閉</li>
+                <li>這樣的混合系統就可在較低環境分類的區域操作，降低設施成本</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h3>控制系統要求：GAMP + OPC + 21 CFR Part 11</h3>
+            <p>SUT 的控制系統設計必須滿足：</p>
+            <ul>
+                <li><strong>GAMP 5</strong>：風險導向的電腦化系統確效</li>
+                <li><strong>OPC 通訊標準</strong>：開放協定，允許整合到工廠 DCS/SCADA 系統</li>
+                <li><strong>21 CFR Part 11</strong>：電子記錄與電子簽名合規性（軟體部分）</li>
+                <li><strong>批次管理器</strong>：每個批次的操作參數須被記錄並可追溯</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：SUS 的公用系統設計</h3>
+            <p>想像一個 SUS 工廠的水電系統：</p>
+            <ul>
+                <li><strong>電力</strong>：SUS 的馬達和溫控是主要耗電者，插座式連接讓設備可以在廠內移動（類似筆電 vs 桌機）</li>
+                <li><strong>製程氣體</strong>：SUS 袋體沒有真正的壓力額定值，通氣控制比不鏽鋼系統更複雜</li>
+                <li><strong>水</strong>：小規模 SUS 可用預包裝袋裝水，不需要 PW/WFI 管路，大幅簡化設施</li>
+                <li><strong>排水</strong>：廢液可裝進廢棄袋拿出去中和，不需要複雜的中和池設計</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h3>消毒劑相容性 — 常被忽視的風險</h3>
+            <p>SUS 設施清潔時，消毒劑選擇需要與 SU 供應商確認塑膠相容性：</p>
+            <ul>
+                <li><strong>ClO₂（二氧化氯）</strong>：強氧化劑，可能攻擊某些塑膠材質</li>
+                <li><strong>VHP（汽化過氧化氫）</strong>：常用於隔離器消毒，但若 SU 組件暴露在外，需確認相容性</li>
+            </ul>
+            <p>建議：在 SU 採購規格中明確列出設施使用的消毒劑種類，請供應商提供相容性資料。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SECTION 2.4: QUALITY REQUIREMENTS
+     ============================================================ -->
+<h2 class="section-title">Section 2.4 — Quality Requirements for Single-Use Products</h2>
+
+<!-- 2.4.1 Defining Quality Requirements -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.4.1 Defining Quality Requirements</h2>
+        <p>A risk assessment should be completed at each key decision point. The science and risk-based approach described in ASTM E2500, ASTM E3051-16, and ICH Q8, Q9, and Q10 should be followed.</p>
+
+        <h3>2.4.1.1 Quality Requirements for Single-Use Components</h3>
+        <p>Considerations for single-use component quality requirements include:</p>
+        <ul>
+            <li>Extractables profile of wetted components</li>
+            <li>Biological and chemical compatibility of wetted components with the product or process fluid</li>
+            <li>Integrity (structural and mechanical integrity, closure integrity for containers/bags and bottles)</li>
+            <li>Resistance and compatibility to temperature, pH, and pressure conditions during use and treatment</li>
+            <li>Qualification of components (including critical requirements for use in assemblies)</li>
+            <li>Limits for bioburden and endotoxin</li>
+            <li>Limits for particulate matter</li>
+            <li>Manufacturing environment for components</li>
+            <li>Inspection of components on receipt</li>
+            <li>Inventory control of components</li>
+        </ul>
+
+        <p>A primary approach to the component assessment is based on two categories: <strong>wetted components</strong> (more extensive requirements) and <strong>non-wetted components</strong>.</p>
+
+        <table>
+            <tr><th>Quality Requirements</th><th>Wetted</th><th>Non-wetted</th></tr>
+            <tr><td>Extractables profile</td><td>A</td><td></td></tr>
+            <tr><td>Biological and chemical compatibility</td><td>A</td><td>B</td></tr>
+            <tr><td>Integrity</td><td>A</td><td>B</td></tr>
+            <tr><td>Compatibility with temperature, pH, and pressure</td><td>A</td><td>A</td></tr>
+            <tr><td>Compliance with qualification criteria</td><td>A</td><td>A</td></tr>
+            <tr><td>Limits for bioburden and endotoxin</td><td>A</td><td></td></tr>
+            <tr><td>Limits for particulate matter</td><td>A</td><td>B</td></tr>
+            <tr><td>Manufacturing environment</td><td>A</td><td>A</td></tr>
+            <tr><td>Inspection</td><td>A</td><td>B</td></tr>
+            <tr><td>Inventory control</td><td>A</td><td>A</td></tr>
+        </table>
+        <p><em>A = required; B = useful; blank = not needed</em></p>
+
+        <h3>2.4.1.2 Quality Requirements for Single-Use Assemblies</h3>
+        <p>In addition to component requirements, quality requirements for single-use assemblies (supplied by system integrators) include:</p>
+        <ul>
+            <li>Qualification and control of clean room environment (particle control)</li>
+            <li>Handling of components from inventory storage to clean room environment</li>
+            <li>Inspection (in-process and post-manufacturing)</li>
+            <li>Manufacturing methods and controls</li>
+            <li>Integrity testing of manufactured assembly</li>
+            <li>Training of assemblers and other manufacturing personnel</li>
+            <li>Sterile barrier bagging and packaging</li>
+            <li>Sterilization</li>
+            <li>Manufacturing certificates</li>
+            <li>Compliance with shipping requirements (ASTM D4169-16 or ISTA standards)</li>
+        </ul>
+
+        <h3>2.4.1.3 Quality Requirements for Single-Use Systems</h3>
+        <p>Multiple-use parts within SUSs (bag carriers, frames, pumps, motors, load cells, electrical/controls, software) are further classified as mechanical and electrical/controls:</p>
+        <p><strong>Mechanical parts:</strong></p>
+        <ul>
+            <li>Material of construction and compatibility with operating environment (e.g., corrosion resistance)</li>
+            <li>Surface finish</li>
+            <li>Compliance with mechanical strength (stiffness, bending, pressure), including after sterilization</li>
+            <li>Particulate presence and generation potential</li>
+        </ul>
+        <p><strong>Electrical/controls parts:</strong></p>
+        <ul>
+            <li>Compliance of electrical system design with NEC® or local electrical codes</li>
+            <li>Ergonomics of control HMI</li>
+            <li>Compliance with area classification (class, division, and zone)</li>
+            <li>Software compliance with 21 CFR Part 11</li>
+            <li>Particulate generation potential of moving parts (motors, fans, pumps)</li>
+        </ul>
+
+        <h3>2.4.1.4 Supplier Assessment Matrix</h3>
+        <p>The component, assembly, and system supplier assessment matrices (Tables 2.6, 2.7, 2.8) are tools to:</p>
+        <ul>
+            <li>Assess the availability of components (multi-source components are more established and have reduced supply risks)</li>
+            <li>Identify specific component quality requirements readily available from suppliers</li>
+            <li>Plan work needed to meet requirements that cannot be met by current suppliers</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>品質要求的層次架構</h2>
+
+        <div class="concept-box">
+            <h3>SU 品質要求的三個層次</h3>
+            <p>ISPE 把 SUT 品質要求分為三個層次，像套娃一樣：</p>
+            <ul>
+                <li><strong>元件（Component）</strong>：最基礎的單一零件（管路、袋體、接頭、過濾器）— 重點是材料相容性、E&L、生物負荷</li>
+                <li><strong>組件（Assembly）</strong>：多個元件組裝而成的成品管路 — 額外關注製造環境、組裝完整性、無菌包裝、ISTA運輸測試</li>
+                <li><strong>系統（System）</strong>：組件 + 多次使用的機械/電氣框架 — 追加機械強度、NEC合規、21 CFR Part 11</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h3>濕潤 vs. 非濕潤元件的差異</h3>
+            <p>「濕潤元件（Wetted Component）」是直接接觸產品的，E&L 要求、生物負荷/內毒素限度、微粒限度都是必要（A級）。</p>
+            <p>「非濕潤元件（Non-Wetted Component）」如夾具、標籤、外包裝雖不接觸產品，但：</p>
+            <ul>
+                <li>它們接觸濕潤元件，可能影響其完整性（B級：有用但非必要）</li>
+                <li>伽瑪照射處理後的回應方式也可能影響濕潤元件</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：供應商評估矩陣 = 採購的 GPS</h3>
+            <p>供應商評估矩陣（Tables 2.6–2.8）就像一張採購路線圖：</p>
+            <ul>
+                <li>橫軸 = 各個潛在供應商（元件供應商1、2；組件供應商1、2）</li>
+                <li>縱軸 = 各項品質要求（可萃取物、環境控制、完整性測試、運輸認證...）</li>
+                <li>對應格子打勾 = 這家供應商能滿足這項要求</li>
+            </ul>
+            <p>矩陣中的空白格告訴你：哪些要求需要額外工作才能滿足，或者需要尋找其他供應商。</p>
+        </div>
+
+        <div class="practice-box">
+            <h3>CDMO 採購 SU 組件的實務考量</h3>
+            <p>對於 CDMO，SU 組件採購要考慮多個客戶的不同需求：</p>
+            <ul>
+                <li><strong>多來源策略</strong>：優先選擇多家供應商都有提供的標準元件，降低供應鏈風險</li>
+                <li><strong>ISTA 運輸認證</strong>：確認供應商提供的組件符合 ASTM D4169 或 ISTA 標準，尤其是長途運輸或進口</li>
+                <li><strong>製造環境認證</strong>：要求組件供應商提供潔淨室等級的製造環境記錄</li>
+                <li><strong>SU 組件變更控制</strong>：供應商的材料或製程變更必須及時通知 CDMO，以評估對客戶製程的影響</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 2.4.2–2.4.3 -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.4.2 Checking Single-Use Product Quality</h2>
+        <p>It is important that the complete histories of single-use components and assemblies are tracked and documented. All involved parties along the supply chain should be fully engaged in this activity.</p>
+
+        <h3>Quality Aspects to be Checked by Suppliers</h3>
+        <p><em>(At receipt of components through release to ship)</em></p>
+        <p><strong>At receipt (of components):</strong></p>
+        <ul>
+            <li>Package conditions</li>
+            <li>Visual check of components (performed by trained inspectors)</li>
+            <li>Compliance with specifications</li>
+            <li>Presence of certificates</li>
+            <li>Inspection of components (quantity and labeling)</li>
+        </ul>
+        <p><strong>During manufacture of assembly:</strong></p>
+        <ul>
+            <li>Structural and mechanical integrity of components</li>
+            <li>Compliance with manufacturing drawings</li>
+            <li>Integrity of assembly</li>
+            <li>Visual inspection for proper assembly of components</li>
+        </ul>
+        <p><strong>At release to ship:</strong></p>
+        <ul>
+            <li>Compliance with manufacturing requirements</li>
+            <li>Clearance with endotoxin/particulates criteria</li>
+            <li>Compliance with packaging requirements</li>
+            <li>Confirmed irradiation level</li>
+        </ul>
+
+        <h3>Quality Aspects to be Checked by End-Users</h3>
+        <p><strong>At receipt (of assembly):</strong></p>
+        <ul>
+            <li>Package conditions</li>
+            <li>Outer package and inner package label inspection</li>
+            <li>Visual check for the integrity of the sterile barrier (presence of vacuum)</li>
+            <li>Assembly layout within package</li>
+            <li>Presence of certificates</li>
+            <li>Visual check of assembly</li>
+            <li>Sterility/irradiation marker check</li>
+        </ul>
+        <p><strong>At use:</strong></p>
+        <ul>
+            <li>Compliance with assembly specifications</li>
+            <li>Compliance with assembly drawings (key aspects such as end connection types, filter size)</li>
+            <li>Confirming the inlet/outlet connection points</li>
+        </ul>
+
+        <h2>2.4.3 Methods Applied to Meet Single-Use Product Quality Requirements</h2>
+        <h3>2.4.3.1 Quality Management System</h3>
+        <p><strong>Quality by Design (QbD):</strong> A QbD approach, as described in ICH Q8, should be applied as part of SUT implementation.</p>
+        <p><strong>Communication Flow:</strong> Successful SUT implementation depends on streamlined communication flow between supplier and end-user. Assigning a key project contact from each side is recommended. Typical activities:</p>
+        <ul>
+            <li>End-user: writes URS; reviews and approves drawings</li>
+            <li>Supplier: confirms understanding of URS; provides material data, advice, component lists, and operation manuals; submits drawings; meets agreed manufacturing/delivery schedules</li>
+        </ul>
+        <p><strong>Quality Risk Management:</strong> QRM methods as described in ICH Q9 should be applied for defining quality requirements for single-use products.</p>
+        <p><strong>Acceptance/Rejection Inspections:</strong> Documented methods for acceptance/rejection of materials should be used throughout the supply chain. Any non-conforming material should be identified and placed in quarantine or returned to the supplier.</p>
+
+        <h3>2.4.3.2 Development of Design Specifications</h3>
+        <p>Functional and technical design specifications should be defined by end-users, with support from suppliers. Critical aspects (ensuring product quality and patient safety, per ASTM E2500-13) should be considered when developing specifications.</p>
+
+        <h3>2.4.3.3 Qualification of Single-Use Components and Assemblies</h3>
+        <p>Qualification practices should include defined and acceptable methods to qualify single-use components for their use in the manufacture of single-use assemblies and systems. Qualification criteria are often geared towards producing material for specific application requirements.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>品質查核的責任分工</h2>
+
+        <div class="concept-box">
+            <h3>供應鏈品質責任矩陣</h3>
+            <p>SU 產品的品質管理是「接力賽」，不同角色在不同節點負責：</p>
+            <ul>
+                <li><strong>元件供應商</strong>：製造元件時的材料與環境控制</li>
+                <li><strong>組件供應商（System Integrator）</strong>：組裝、完整性測試、無菌包裝、伽瑪照射</li>
+                <li><strong>端使用者（End-User = CDMO）</strong>：收貨查核、使用前查核、使用中查核</li>
+            </ul>
+            <p>三個環節缺一不可，任何一個環節失誤都可能到達患者。</p>
+        </div>
+
+        <div class="note-box">
+            <h3>端使用者的收貨查核 — 絕對不能省</h3>
+            <p>ISPE 明確要求端使用者在收到 SU 組件時要查核：</p>
+            <ul>
+                <li><strong>真空袋完整性</strong>：無菌屏障的第一道防線，真空不在說明包裝被破壞</li>
+                <li><strong>照射指示標記</strong>：確認伽瑪照射已完成且達到要求劑量</li>
+                <li><strong>批次證書（CoA）</strong>：確認供應商的最終放行查核已完成</li>
+            </ul>
+            <p>這些查核都需要訓練有素的人員執行，並有記錄可追溯。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>類比：SUT 的 QMS = 建築驗收</h3>
+            <p>SUT 的品質管理體系就像建築工程的驗收流程：</p>
+            <ul>
+                <li><strong>QbD（ICH Q8）</strong>：設計前先定好建築規格（結構、防震、消防）</li>
+                <li><strong>QRM（ICH Q9）</strong>：風險評估哪些是結構關鍵件（鋼筋），哪些是非關鍵（磁磚花色）</li>
+                <li><strong>URS → 設計規格</strong>：業主需求書 → 建築師設計圖 → 工程師施工圖</li>
+                <li><strong>FAT/SAT</strong>：工廠驗收 = 建築竣工前的試運行，現場驗收 = 交屋後的使用前查核</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h3>CDMO 的 SU 供應商管理實務</h3>
+            <p>作為端使用者，CDMO 在管理 SU 供應商時需建立：</p>
+            <ul>
+                <li><strong>合格供應商名單（AVL）</strong>：基於供應商評估矩陣和稽核結果維護</li>
+                <li><strong>品質協議（Quality Agreement）</strong>：明確 CoA 項目、變更通知義務、偏差回報要求</li>
+                <li><strong>收貨 SOP</strong>：規範三層查核（外包裝、內包裝/真空、照射標記）並有記錄</li>
+                <li><strong>使用前查核 SOP</strong>：確認組件圖紙對應、接頭類型正確、入口/出口方向確認</li>
+                <li><strong>非符合品隔離程序</strong>：發現問題立即隔離、通知供應商、啟動偏差調查</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="section-summary">
+    <h2>Section 2.3–2.4 Summary — Process Equipment Design & Quality Requirements</h2>
+    <ul>
+        <li><strong>感測器選型：</strong>須在廠內驗證準確度，考慮滅菌相容性、校正策略、防止供應商鎖定；pH、DO、流量感測器各有傳統式、一次性和光學式三種方案，在生理範圍內準確度大致相當</li>
+        <li><strong>泵的選擇：</strong>生物技術優先使用正排量泵（蠕動或隔膜），需評估管路材料的 E&L、spallation 和滅菌後流量漂移；peristaltic pump 較靈活，diaphragm pump 適合高壓長程連續操作</li>
+        <li><strong>單次使用生物反應器：</strong>主要用於哺乳類細胞培養；scale-up 需維持 kLa、P/V、VVM 和混合時間的等效性；設計選項（葉輪、鼓泡器）有限，需依賴特性化小規模模型</li>
+        <li><strong>環境分類：</strong>SUS 封閉流路允許在較低環境分類條件下操作，需進行製程封閉性風險評估；混合系統（SS + SU）的不鏽鋼部分 SIP 後方可重新連接 SU 組件</li>
+        <li><strong>品質要求三層次：</strong>元件（E&L/生物負荷/微粒/完整性）→ 組件（+製造環境/包裝/照射/運輸認證）→ 系統（+機械強度/NEC/21 CFR Part 11）</li>
+        <li><strong>端使用者責任：</strong>收貨查核（真空完整性、照射標記、CoA）與使用前查核（圖紙對應、接頭確認）是法規要求；需有訓練記錄與可追溯文件</li>
+        <li><strong>QMS 框架：</strong>應用 ICH Q8（QbD）、ICH Q9（QRM）、ASTM E2500 建立 URS → 設計規格 → 確效的完整品質鏈</li>
+    </ul>
+</div>
+
+</div><!-- /main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const btn = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+
+</body>
+</html>

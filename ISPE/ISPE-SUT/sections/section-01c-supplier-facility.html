@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Chapter 2.5–2.8: Supplier, URS, Facility Design & Waste</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 2.5–2.8: Supplier, URS, Facility Design &amp; Waste</h1>
+    <div class="subtitle">供應商、使用者需求規格、設施設計與廢棄物管理</div>
+    <div class="page-info">ISPE Good Practice Guide: Single-Use Technology | p51 - p78</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解<strong>供應商品質協議 (Quality Agreement)</strong> 的核心要素，以及如何透過稽核制度確保整個供應鏈的品質一致性</li>
+        <li>掌握<strong>供應商稽核 (Supplier Audit)</strong> 的規劃原則——稽核頻率如何基於風險與供應商關係決定，以及稽核清單的關鍵項目</li>
+        <li>了解<strong>使用者需求規格 (URS)</strong> 的架構與撰寫方法，包括品質要求、製程要求、與供應商溝通的策略</li>
+        <li>熟悉 SUT 設施設計的三大概念——<strong>舞池式 (Dance Floor)、箱中工廠 (Factory-in-a-Box)、箱中箱 (Box-within-a-Box)</strong>——以及各概念的適用時機與挑戰</li>
+        <li>理解 SUT 廢棄物管理的兩大路徑——<strong>高壓蒸汽滅菌去污 (Autoclave Decontamination)</strong> 與<strong>焚化 (Incineration)</strong>——以及何時需要哪種處理方式</li>
+        <li>建立從「供應商選擇 → URS 制定 → 設施設計 → 廢棄物處理」的完整 SUT 實施思維鏈</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5 Supplier Quality and Audits -->
+<!-- ============================================================ -->
+<div class="section-title">2.5 Supplier Quality and Audits（供應商品質與稽核）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section addresses <span class="key-term">supplier quality</span> and audit requirements. This section is intended to be used in conjunction with Section 2.4 for selecting single-use suppliers and to establish consistent quality in SUT implementation.</p>
+        <p>The roles of the supplier and end-user are strongly linked in the SUT space. While this section is primarily targeted for use by the single-use product end-user, intermediate suppliers may also find parts of this section useful in defining the quality of components and the auditing of their respective suppliers. The process of establishing consistent quality along the entire supply chain allows for more robust final quality to the end-user and, ultimately, to patients.</p>
+        <p>This section is intended to be compatible with PDA Technical Report 66 and ASTM E3051-16. These publications emphasize the concept of <span class="key-term">technical diligence</span> as a way of fostering transparency and open communication within the supplier and end-user relationship.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 供應商關係的特殊性</h4>
+            <p>SUT 的供應鏈不像傳統的化學原料採購——供應商不只是「賣材料的」，他們的製造環境品質直接影響你的藥品品質。</p>
+            <p>這裡有個重要的邏輯鏈：</p>
+            <ul>
+                <li>供應商的潔淨室環境 → 影響一次性組件的微粒污染</li>
+                <li>供應商的滅菌驗證 → 決定你的產品無菌保證水平</li>
+                <li>供應商的原材料管理 → 影響 E&amp;L 萃取物/滲出物結果</li>
+            </ul>
+            <p>因此，對 SUT 供應商的品質管理，需要比傳統包材供應商更深入的技術介入，這就是 <strong>technical diligence（技術盡職調查）</strong> 的意涵。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇 SUT 供應商就像選擇外科手術器械廠商——你不只是買一個產品，而是在建立一個影響患者安全的合作關係。一旦使用了某個品牌的一次性生物反應器袋，你就很難中途換廠商（因為需要重新做 E&amp;L、確效等）。所以在選擇之前，要像選擇長期合作夥伴一樣認真評估。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在 CDMO 無菌充填廠，你同時服務多個客戶，每個客戶可能指定不同的 SUT 供應商。你需要建立一個<strong>核准供應商清單 (Approved Supplier List, ASL)</strong>，並維護每個供應商的稽核記錄、品質協議和技術變更通知歷史。這項管理工作的複雜度遠超過傳統不銹鋼系統時代。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5.1 Establishing Supplier Quality Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.5.1 Establishing Supplier Quality Requirements（建立供應商品質要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A formal <span class="key-term">quality agreement</span> between the end-user and supplier is an important tool to outline critical roles for each party. End-users should use the quality agreements to define, establish, and document their responsibilities and the responsibilities of the suppliers. The quality agreement should define:</p>
+        <ul>
+            <li>Scope of agreement and products covered</li>
+            <li>Key quality roles and responsibilities</li>
+            <li>Change notification and change approval</li>
+            <li>Obligations and responsibilities for the quality units of the parties involved</li>
+            <li>Communication expectations and points of contact</li>
+            <li>Auditing rights (periodic and for cause audits)</li>
+            <li>Escalation mechanism and dispute resolution process</li>
+            <li>Access to manufacturing, testing, and other data</li>
+        </ul>
+        <p>Ideally, such quality agreements should be independent of supply agreements or technical agreements.</p>
+
+        <h3>2.5.1.1 Supplier Manufacturing Operations</h3>
+        <p>Manufacturers of single-use products should be aligned with operations that exist at the typical end-user facility. It is advantageous to have all suppliers in the entire supply chain aligned with these operations.</p>
+        <p>Single-use product suppliers should follow clearly defined methods for controlling and tracking any component, equipment, and procedures used in the manufacturing operations. Additional considerations for single-use manufacturing plant operations include:</p>
+        <ul>
+            <li>Procedures to receive and route products to the inventory location</li>
+            <li>Establishing and tracking usability of components once in inventory</li>
+            <li>Procedures to approve the components for compliance with specifications, certificate of conformity, sterility claim</li>
+            <li>Quarantine procedures to handle/discard components with rejected status</li>
+            <li>Defining conditions for appropriate storage and handling of components</li>
+            <li>Defining <span class="key-term">controlled environment</span> criteria for component preparation areas and assembly areas</li>
+            <li>Establishing conditions and methods for assembly, in-process control, final packaging, and release control</li>
+            <li>Tracking all components from their entry to their exit</li>
+            <li>Training of qualified operators, including on cleanroom procedures</li>
+        </ul>
+        <p>Quality and supply agreements should be set up with key sub-suppliers to ensure consistent conformity to defined specifications, long term supply, and robust change control.</p>
+
+        <h3>2.5.1.2 Supplier Quality Assurance</h3>
+        <p>Establishing raw material specifications and process design spaces can significantly reduce raw material variability, strengthen change management, and provide consistent quality attributes. Suppliers should follow a <span class="key-term">QbD (Quality by Design)</span> approach to define their design space and manufacturing operations attributes. Proper in-process and release controls should be in place.</p>
+        <p><strong>Single-Use Product Specification Document:</strong> Specifications, developed in collaboration by suppliers and end-users, should be formatted so that the information is presented clearly. Periodic review of specifications should be performed to ensure the success of delivery and integration into the end-user facility.</p>
+        <p><strong>Single-Use Product Codes Management:</strong> Suppliers should follow a standardized coding procedure for their components. An incremental system of coding is recommended based on: type of single-use components, volume of containers, diameter of tubing, size of connectors, size and nominal pore size of filters, type of material of construction.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：品質協議 vs. 供應協議</h4>
+            <p><strong>品質協議 (Quality Agreement)</strong> 聚焦「誰對什麼負責」——GMP 責任分配、稽核權利、變更通知義務。</p>
+            <p><strong>供應協議 (Supply Agreement)</strong> 聚焦「商業條件」——價格、交期、付款條件。</p>
+            <p><strong>技術協議 (Technical Agreement)</strong> 聚焦「產品規格」——設計參數、測試方法。</p>
+            <p>ISPE 建議三者分開——因為品質協議需要由 QA 部門主導，不應受到採購談判的商業壓力影響。在實務中，許多公司會在同一份文件中混入這三類條款，這會導致 QA 在關鍵時刻失去主導權。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「稽核權利」條款的重要性</h4>
+            <p>品質協議中最容易被忽略、但最有用的條款之一是：<strong>「端用戶有權對供應商進行定期及有因稽核」</strong>。</p>
+            <p>如果這個條款不在簽約前明確寫入，供應商日後可以拒絕你的稽核要求。在 SUT 供應商出現品質事件時（例如某批次一次性袋子的滅菌記錄有疑問），這個條款就是你進入供應商現場調查的法律依據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：供應商的「工廠語言」</h4>
+            <p>ISPE 要求供應商的製造操作要與端用戶的操作「對齊」，就像你聘請外包廠商要說同一種語言。一個好的 SUT 供應商不只是「把東西生產出來」，他們應該理解為什麼需要潔淨室環境分類、為什麼需要可追溯性、為什麼變更通知很重要——因為他們了解下游客戶面對的 GMP 合規壓力。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：QbD 在 SUT 供應商端的應用</h4>
+            <p><strong>品質源於設計 (Quality by Design, QbD)</strong>：這個藥品開發的概念同樣適用於 SUT 供應商。好的供應商不是「生產完再測試」，而是：</p>
+            <ul>
+                <li>定義<strong>原材料設計空間</strong>（哪些聚合物特性是關鍵的）</li>
+                <li>設定<strong>製程設計空間</strong>（成型、焊接的條件範圍）</li>
+                <li>實施<strong>製程內管制</strong>（in-process control），而不是依賴最終測試</li>
+            </ul>
+            <p>這樣才能真正降低批次間的品質變異——這對 E&amp;L 一致性尤其重要。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在 CDMO 的採購流程中，要求供應商提供<strong>標準化產品編碼體系</strong>非常實用——它讓你的 ERP 系統可以精確追蹤「哪個批次的產品用了哪個供應商的哪個型號組件」，這在調查投訴或召回時是不可或缺的可追溯性基礎。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5.1.3 Supplier Capability Matrix -->
+<!-- ============================================================ -->
+<div class="section-title">2.5.1.3 Supplier Capability Matrix（供應商能力矩陣）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">supplier capability matrix</span> is useful in identifying supplier candidates with the capabilities to meet specified requirements. The matrix can be used as a tool for the selection of the most appropriate suppliers. Two types of templates are presented:</p>
+        <ul>
+            <li><strong>Supplier Capability Matrix:</strong> Based on identification of "must have" criteria. Communication with suppliers during this assessment is recommended since suppliers may be able to offer alternatives. (Table 2.9)</li>
+            <li><strong>Weighted Supplier Capability Matrix:</strong> Used to identify the suppliers that meet the most important requirements. Capability criteria are scored with importance weighting (Low 1 – High 10). (Table 2.10)</li>
+        </ul>
+        <p>Key "must have" capability categories include: environmental classification, drawing revision control, change notification and control procedures, cleanroom monitoring, release criteria, lot control, training, and irradiation methods.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：兩種矩陣的用途差異</h4>
+            <p><strong>基本矩陣（Must-Have）</strong>：先過濾掉不符合資格的供應商——這是一個「通過/不通過」的門檻測試。例如：如果供應商沒有潔淨室監測程序，直接淘汰，不需要進一步評估。</p>
+            <p><strong>加權矩陣</strong>：在通過基本門檻的供應商中，比較誰「更好」。每項能力根據你的業務需求給予不同的重要性分數（1-10分），最後計算加權總分來排序。</p>
+            <p>這個雙層篩選方法確保你既不會接受資格不足的供應商，也能在合格供應商中做出最優選擇。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的工廠中，如果要選擇一次性生物反應器袋的供應商，哪三項能力是你的「絕對必備 (must-have)」？為什麼？</li>
+                <li>加權矩陣中，「照射方法 (Irradiation methods)」和「變更管控 (Change control)」哪個在你的業務中更重要？這個優先順序如何影響你的供應商選擇？</li>
+            </ol>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在 CDMO 環境下服務多個客戶，供應商能力矩陣可以成為<strong>客戶展示材料</strong>的一部分：「我們用什麼標準評估和選擇 SUT 供應商」。這不只是內部採購工具，更是向客戶展示供應鏈管理嚴謹性的證據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5.2 Practices Applied to Meet Supplier Quality Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.5.2 Practices Applied to Meet Supplier Quality Requirements（達到供應商品質要求的實務做法）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>2.5.2.1 Standard Operating Procedures</h3>
+        <p><span class="key-term">Standard Operating Procedures (SOPs)</span> are written procedures which specify how routine activities are to be performed by trained personnel. SOPs provide detailed instruction to facilitate consistent conformance to technical and quality system requirements.</p>
+        <p>Single-use supplier manufacturing operations that should have a clearly defined SOP include:</p>
+        <ul>
+            <li>Manufacturing environment classification and associated cleanroom design</li>
+            <li>Gowning and de-gowning in manufacturing areas</li>
+            <li>Operation and maintenance of manufacturing equipment</li>
+            <li>Validation and qualification procedures</li>
+            <li>Cleaning procedures and frequency</li>
+            <li>Shipping, post-shipping and transportation activities</li>
+            <li>Investigation and sharing of reports related to recalls, non-conforming products, or unexpected conditions</li>
+        </ul>
+
+        <h3>2.5.2.2 Particulates Monitoring and Control</h3>
+        <p>Since single-use components and assemblies may come into contact with drug product or process fluids, their environment during manufacture can have direct influence on the quality of the drug products. Aspects critical to the handling of parts and the SUT manufacturing process include:</p>
+        <ul>
+            <li>Manufacturing environment classification and associated cleanroom design</li>
+            <li>Operators gowning and handling</li>
+            <li>Closed system for fluid path surfaces</li>
+            <li>Process steps that emit particulates (e.g., spallation)</li>
+            <li>Process steps that remove particulates (e.g., filtration)</li>
+            <li>Frequency and methods for particulates monitoring</li>
+            <li>Existence of continuous improvement plan</li>
+        </ul>
+        <p>Environmental classification recommendations for the manufacturing of single-use products:</p>
+        <ul>
+            <li>For the manufacture of single-use components and assemblies: <span class="key-term">ISO 8 / Grade C</span> (in operation)</li>
+            <li>For final assembly operations: <span class="key-term">ISO 7 / Grade B</span> (in operation)</li>
+        </ul>
+
+        <h3>2.5.2.3 Customer Change Notification</h3>
+        <p><span class="key-term">Customer change notification</span> procedures should be established to inform customers of changes to single-use products. Suppliers should communicate all changes, however small, that directly impact the single-use product. A change notification document should be issued to the customer to provide guidance on the changes, including the date the change will occur and opportunities for the end-user to manage the change period.</p>
+        <p>The severity of the change should be assessed using a risk-based approach. For example, a change in polymer type would need to be assessed to determine the potential impact on polymer properties and E&amp;L profiles.</p>
+
+        <h3>2.5.2.4 Manufacturing Certificates</h3>
+        <p><span class="key-term">Manufacturing certificates</span> should be provided by all suppliers along the complete supply chain. At delivery of single-use products, the supplier should provide all appropriate certificates including:</p>
+        <ul>
+            <li>Product description, reference, batch number, and expiration date</li>
+            <li>Related irradiation batch number (if applicable)</li>
+            <li>Compliance statements</li>
+            <li>Batch release testing information (product conformity, visual inspection, bioburden, endotoxin, particulates, leak testing, integrity testing, gamma irradiation, etc.)</li>
+        </ul>
+
+        <h3>2.5.2.5 Shelf Life</h3>
+        <p>Suppliers should provide expiration dates for single-use products in the post-sterilization stage. For a complete single-use assembly, the expiration date should be determined by the worst-case component (the one with the shortest shelf life after sterilization). To determine shelf life, suppliers should consider sterility testing, gas barrier properties, structural and mechanical integrity, biocompatibility and physicochemical tests, material resistance to gamma irradiation dose, and packaging integrity.</p>
+
+        <h3>2.5.2.6 Database of Approved Materials</h3>
+        <p>Through a partnership between suppliers and end-users, a database may be generated to list product contact components that have been tested and qualified per the requested technical specifications and quality level. This <span class="key-term">database of approved materials</span> should be maintained by the quality department.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 供應商的潔淨室等級要求</h4>
+            <p>ISPE SUT 對供應商製造環境的要求是：</p>
+            <ul>
+                <li><strong>一般組件與組合件製造</strong>：ISO 8 / EU Grade C（操作中）</li>
+                <li><strong>最終組合作業</strong>：ISO 7 / EU Grade B（操作中）</li>
+            </ul>
+            <p>這個要求的背後邏輯是：SUT 組件要直接接觸藥品或製程液體，因此製造環境的潔淨度需要對應到藥品生產設施的潔淨度等級——否則你在供應商那裡就引入了微粒污染，之後再怎麼控制也難以根除。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：變更通知是 SUT 最重要的品質控制機制之一</h4>
+            <p>SUT 供應商的變更通知 (CCN, Customer Change Notification) 在實務中常被低估。一個典型的例子：</p>
+            <ul>
+                <li>供應商更換了一個組件的薄膜聚合物配方（對他們而言只是「原料優化」）</li>
+                <li>端用戶的 E&amp;L 萃取/滲出物研究是基於舊配方做的</li>
+                <li>新配方可能引入之前未評估過的滲出物</li>
+            </ul>
+            <p>如果沒有變更通知機制，你根本不會知道這個變更發生了。這就是為什麼品質協議中必須明確要求「所有影響產品的變更，無論大小，都必須事先通知」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：SOP 是供應商的「食譜」</h4>
+            <p>想像一家連鎖餐廳——不管哪個城市的分店，同一道菜的味道應該一樣。SUT 供應商的 SOP 就是這個「食譜」。如果同一款一次性薄膜袋在不同生產班別、不同操作員手中做出來的品質都不一樣，那就代表 SOP 不夠詳細或沒有被確實遵守。稽核時，要求查看操作員的實際操作是否符合 SOP，是最直接的品質驗證方式。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：有效期限的「最短板原則」</h4>
+            <p>一個完整的一次性組合件 (Assembly) 的有效期限，是由<strong>所有組件中有效期限最短的那個</strong>決定的（最短板原則）。</p>
+            <p>這意味著：即使組合件中有 99% 的組件可以放兩年，但如果其中一個接頭的有效期限只有一年，整個組合件就只能用一年。這對倉儲管理有重大影響——採購批量必須根據實際使用速度和最短有效期限的組件來計算，避免大量過期廢棄。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p><strong>核准材料資料庫</strong>的維護在 CDMO 中至關重要：</p>
+            <ul>
+                <li>不同客戶的產品可能有不同的相容性要求</li>
+                <li>需要記錄每個組件的核准狀態、核准依據（哪些測試）、有效期限</li>
+                <li>當供應商發出變更通知時，需要評估哪些客戶產品受影響</li>
+                <li>資料庫應由 QA 部門控管存取權限，避免未經核准的變更</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠目前有沒有建立 SUT 供應商的核准材料資料庫？如果沒有，建立這個資料庫最大的挑戰是什麼？</li>
+                <li>如果供應商通知你一個聚合物配方的微小變更，你的內部評估流程是什麼？誰有決定「需要重新測試」或「可以直接接受」的權限？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5.3 Defining Supplier Audit Requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.5.3 Defining Supplier Audit Requirements（定義供應商稽核要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Single-use suppliers, manufacturers, and assemblers should be <span class="key-term">audited</span> on design, manufacturing process, and supply chain management until delivery to the end-user. The frequency and duration of such audits should be included in the quality agreement.</p>
+        <p>The <span class="key-term">supplier audit</span> should cover both manufacturing and technical aspects, with special focus on:</p>
+        <ul>
+            <li>Compliance to ISO 9001 certification (and other applicable standards)</li>
+            <li>Management and control of raw materials and components</li>
+            <li>Manufacturing process overview</li>
+            <li>Sourcing and supply chain strategy</li>
+            <li>Manufacturing environment monitoring (microbiological and particulates trending)</li>
+            <li>Sterilization process (frequency, procedure, and records of dose audits for irradiation)</li>
+            <li>Quality management systems (including quality policy and change management processes)</li>
+            <li>SOPs, document controls</li>
+            <li>Complaint management (with tracking, recording, and CAPA processes)</li>
+            <li>Change management process (major versus minor status)</li>
+            <li>Operator training plan and records</li>
+            <li>Batch record tracking</li>
+        </ul>
+        <p>The frequency of audits should be determined based on risk of the supplier and type or criticality of the item/service:</p>
+        <ul>
+            <li>New suppliers or highly critical items: <strong>once a year</strong></li>
+            <li>Well-known suppliers with documented long-term reliability: <strong>every two to three years</strong></li>
+        </ul>
+        <p>Additional audit documentation to review includes: environmental monitoring SOPs and reports, training SOPs, inventory control SOPs, change control SOPs, inspection SOPs, packaging SOPs, quality control SOPs, health and safety SOPs and records, job tracking file review, quality agreement, and checklists for audits.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：稽核頻率的風險分層</h4>
+            <p>ISPE 提供了一個清晰的稽核頻率框架：</p>
+            <table>
+                <tr>
+                    <th>供應商類型</th>
+                    <th>建議頻率</th>
+                    <th>判斷依據</th>
+                </tr>
+                <tr>
+                    <td>新供應商</td>
+                    <td>每年一次</td>
+                    <td>缺乏歷史績效數據</td>
+                </tr>
+                <tr>
+                    <td>高關鍵性物料供應商</td>
+                    <td>每年一次</td>
+                    <td>對治療產品有直接影響</td>
+                </tr>
+                <tr>
+                    <td>有良好記錄的長期供應商</td>
+                    <td>每2-3年</td>
+                    <td>可信度已建立</td>
+                </tr>
+                <tr>
+                    <td>有重大品質事件</td>
+                    <td>立即（有因稽核）</td>
+                    <td>不受既定頻率限制</td>
+                </tr>
+            </table>
+            <p>注意：SUT 供應商通常被歸類為「高關鍵性」，因此每年稽核是業界通常的做法。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：稽核的兩個「殺手問題」</h4>
+            <p>在供應商稽核中，有兩個問題的答案最能揭示供應商的品質成熟度：</p>
+            <ol>
+                <li><strong>「請給我看最近三次 CAPA 的關閉記錄。」</strong>——好的供應商會有明確的不符合項、根本原因分析和有效的預防措施。品質差的供應商可能沒有 CAPA 記錄（意味著從未認真處理問題），或 CAPA 從未關閉。</li>
+                <li><strong>「你的次供應商 (sub-supplier) 清單在哪裡？他們都有稽核過嗎？」</strong>——SUT 的供應鏈很深，原材料供應商（如聚合物樹脂廠商）的品質同樣重要。</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：稽核如同駕照更新</h4>
+            <p>稽核就像機動車駕照的定期換照——不是因為你以前出過事故，而是確保「現在的狀態仍然符合標準」。新手司機（新供應商）每年換照，老司機（信譽良好的長期供應商）可以三年一次。但如果你最近有違規記錄（品質事件），就需要立即重新評估，不管距離上次換照多久。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在 CDMO 中，客戶常常會要求查看你的 SUT 供應商稽核記錄，作為盡職調查的一部分。建立一個結構化的<strong>供應商稽核程序 (Supplier Audit Program)</strong>，包含：</p>
+            <ul>
+                <li>年度稽核計畫（按風險排序）</li>
+                <li>標準稽核問卷（覆蓋 ISPE 要求的所有面向）</li>
+                <li>稽核報告模板（含 CAPA 追蹤表）</li>
+                <li>供應商績效評分卡（連結到後續採購決策）</li>
+            </ul>
+            <p>這個程序本身也可以成為你競標新客戶時的品質能力展示重點。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.6 User Requirement Specification Development -->
+<!-- ============================================================ -->
+<div class="section-title">2.6 User Requirement Specification Development（使用者需求規格的制定）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">URS (User Requirement Specification)</span> is used to specify aspects of an equipment (i.e., single-use product) to ensure it is appropriate for the intended application. The URS is a document that the end-user of the product develops and writes; the document is used to convey the requirements to the supplier.</p>
+        <p>It is beneficial to discuss requirements with suppliers during URS generation since ongoing technology advances may open up new options for commercially available systems. The URS document should define the needs and acceptance criteria based on the intended use, containing specific criteria that need to be met while providing general guidance for non-critical aspects.</p>
+
+        <h3>2.6.1 Developing the URS Document</h3>
+        <p>The foundation of the URS is based on knowledge of the drug product and process along with knowledge of the capabilities of the single-use product. Specific requirements should describe:</p>
+        <ul>
+            <li>Quality requirements for single-use products (as discussed in Section 2.4)</li>
+            <li>Supplier quality and audit requirements (as discussed in Section 2.5)</li>
+            <li>End-user product and process requirements</li>
+        </ul>
+        <p><strong>Quality Requirements for Single-Use Products (examples):</strong></p>
+        <ul>
+            <li>Assembly shall be designed based on the sketch provided with this URS</li>
+            <li>Wetted components in the assembly shall have a complete extractables profile</li>
+            <li>Wetted components shall be biocompatible and compatible with temperature, pH, and pressure conditions during use</li>
+            <li>All components shall comply with the particulates requirements</li>
+            <li>Product certificates shall be provided with the product confirming URS requirements are met</li>
+        </ul>
+        <p><strong>Supplier Audit and Quality Requirements (examples):</strong></p>
+        <ul>
+            <li>Manufacturing area shall be classified and controlled to specified classification area</li>
+            <li>Product inventory shall be tracked by the manufacturer and its suppliers</li>
+            <li>Periodic auditing of suppliers shall be performed with frequency based on risk</li>
+            <li>A documented change management process shall be followed</li>
+        </ul>
+        <p><strong>End-User Product and Process Requirements:</strong> Sharing process information and operational constraints are key requirements. Since process specific details may contain sensitive information, the information can be a partial disclosure; in other cases, full disclosure with a signed non-disclosure agreement may be needed.</p>
+        <p>Example requirements for common single-use assembly types include:</p>
+        <ul>
+            <li><strong>Bioprocess Container Assembly:</strong> Size, fill rate, drain rate, vent(s), dimensional constraints, connection type, mixing, sparging, sensors, storage time/conditions</li>
+            <li><strong>Filter Assembly:</strong> Separation/pore size, capacity, pressure profile, connection type, frame/support criteria, pump characteristics</li>
+            <li><strong>Transfer Assembly:</strong> Flow rate with fluid viscosity, pressure profile, connection type, pump characteristics</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：URS 的三層結構</h4>
+            <p>ISPE 建議 URS 包含三類要求：</p>
+            <ol>
+                <li><strong>產品品質要求</strong>：E&amp;L 萃取物/滲出物、生物相容性、微粒、完整性（來自 2.4 節）</li>
+                <li><strong>供應商品質要求</strong>：製造環境、稽核、變更管控（來自 2.5 節）</li>
+                <li><strong>製程技術要求</strong>：流量、壓力、溫度、尺寸、接頭類型（由端用戶自行定義）</li>
+            </ol>
+            <p>URS 是<strong>由端用戶撰寫，傳遞給供應商</strong>的文件——不是供應商的規格書，是你告訴供應商「我需要什麼」的文件。</p>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵術語：URS vs. FRS vs. DS</h4>
+            <p>在 C&amp;Q（委託與確效）體系中，文件層次通常是：</p>
+            <ul>
+                <li><strong>URS（使用者需求規格）</strong>：我需要什麼功能（業主/使用者視角）</li>
+                <li><strong>FRS（功能需求規格）</strong>：系統如何實現這些功能（工程師視角）</li>
+                <li><strong>DS（設計規格）</strong>：詳細的技術設計（製造商/供應商視角）</li>
+            </ul>
+            <p>SUT 的 URS 對應的是 C&amp;Q 體系的最頂層——它是所有後續確效活動的依據，因此必須完整、準確。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：保密與技術揭露的平衡</h4>
+            <p>ISPE 明確指出：在制定 URS 時，有時需要向供應商揭露敏感的製程信息，才能確保一次性組件的設計符合你的需求。例如，你需要告訴供應商你的緩衝液 pH 值範圍，供應商才能選擇合適的聚合物材料。</p>
+            <p>解決方案：在 URS 發出前，先簽署<strong>保密協議 (NDA, Non-Disclosure Agreement)</strong>。這既保護了你的智慧財產，又讓供應商能夠提出最合適的技術方案。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：URS 就是你的「裝修需求書」</h4>
+            <p>想像你請承包商幫你裝修廚房。好的「裝修需求書（URS）」應該說：「我需要一個能容納 6 人用餐的中島（功能要求）、所有接縫必須防水（品質要求）、所有材料必須通過食品安全認證（法規要求）」。而不應該說：「請幫我用某某品牌的石英石做中島」——那已經是設計規格了，過早限制了供應商提出創新解法的空間。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在 CDMO 中，制定 SUT 的 URS 時有一個特殊挑戰：這個 URS 是你（CDMO）制定的，但最終使用者是你的客戶。最佳做法是：</p>
+            <ul>
+                <li>建立一個<strong>標準 URS 模板</strong>，覆蓋所有 ISPE 要求的要素</li>
+                <li>與客戶的技術和 QA 團隊共同審核 URS，確保客戶的特殊要求（如特定的 E&amp;L 規格）被納入</li>
+                <li>在 URS 上獲取客戶的簽署核准，確立責任歸屬</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.6.2 Additional Considerations -->
+<!-- ============================================================ -->
+<div class="section-title">2.6.2 Additional Considerations for SU Components, Assemblies, and Systems（組件、組合件與系統的 URS 差異）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>Single-Use Components Versus Single-Use Assemblies:</strong> The URS document for single-use components usually contains a subset of the requirements listed for a single-use assembly. The differences are related to the methods of connection of components and for containment of fluids. The same steps would be followed for developing the URS for both.</p>
+        <p><strong>Single-Use Assemblies Versus SUSs:</strong> Since <span class="key-term">SUSs (Single-Use Systems)</span> integrate single-use assemblies with multiple-use equipment, the URS documents for SUSs are typically more complex than for single-use assemblies. The SUS URS builds on the URS requirements for assemblies and includes additional requirements for mechanical, electrical, and software/controls that add significantly to the complexity of the URS.</p>
+        <p>For additional information on the development of the URS for the multiple-use portion of SUSs, refer to:</p>
+        <ul>
+            <li>ISPE Good Practice Guide: Good Engineering Practice</li>
+            <li>ISPE Baseline® Guide: Commissioning and Qualification</li>
+            <li>ISPE GAMP® 5: A Risk-Based Approach to Compliant GxP Computerized Systems</li>
+            <li>ISPE Guide: Science and Risk-Based Approach for the Delivery of Facilities, Systems, and Equipment</li>
+        </ul>
+        <p>It is strongly recommended that the end-user includes a sketch of the expected assembly as part of the URS document.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：URS 複雜度的三個層次</h4>
+            <p>理解 SUT 的 URS 複雜度層次有助於合理分配文件制定的工作量：</p>
+            <table>
+                <tr>
+                    <th>層次</th>
+                    <th>URS 複雜度</th>
+                    <th>額外要求</th>
+                </tr>
+                <tr>
+                    <td>單一組件 (Component)</td>
+                    <td>基礎</td>
+                    <td>材料規格、尺寸</td>
+                </tr>
+                <tr>
+                    <td>組合件 (Assembly)</td>
+                    <td>中等</td>
+                    <td>接頭方式、液體容納設計</td>
+                </tr>
+                <tr>
+                    <td>一次性系統 (SUS)</td>
+                    <td>複雜</td>
+                    <td>機械、電氣、軟體/控制系統</td>
+                </tr>
+            </table>
+            <p>SUS 的 URS 需要整合 ISPE C&amp;Q、GAMP 5 等多個指引，因為它同時包含一次性耗材和需要確效的設備。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：為什麼要附上組合件草圖？</h4>
+            <p>ISPE 特別強調在 URS 中附上<strong>組合件草圖 (Assembly Sketch)</strong>。原因是：</p>
+            <ul>
+                <li>文字描述容易產生歧義（例如「三通接頭」——方向是哪個方向？）</li>
+                <li>草圖可以明確確認接頭位置、流向、感測器位置</li>
+                <li>供應商可以用草圖作為設計基礎，減少返工</li>
+                <li>草圖成為後續確效的「設計基準文件」</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠目前在採購一次性組件時，是否有書面的 URS？如果沒有，最常發生的問題是什麼（如：產品不符合使用條件、與現有設備不相容）？</li>
+                <li>如果你需要為一台一次性生物反應器（包含生物反應器袋 + 不銹鋼支撐架 + 控制系統）制定 URS，你會如何組織這份文件？需要哪些部門參與？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.7 Facility Design -->
+<!-- ============================================================ -->
+<div class="section-title">2.7 Facility Design（設施設計）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Single-use products have been incorporated into facility design since the 1980s; however, only recently have companies been altering the adjacency of rooms specifically to adapt to SUSs. This section intends to explain the affected parts of the facility and current trends so that the facility designer can successfully design an efficient and cost-effective next generation facility.</p>
+
+        <h3>2.7.1 Therapeutic Manufacturing Applications</h3>
+        <p>SUT has become more widely used in pharmaceutical and biopharmaceutical applications. Key therapeutic applications where single-use products are currently being used:</p>
+        <ul>
+            <li>Research and development (R&amp;D)</li>
+            <li>Cell therapy and gene therapy</li>
+            <li>Large-scale protein manufacture (including vaccines and antibody drug conjugates)</li>
+        </ul>
+        <p>General trends across these applications:</p>
+        <ul>
+            <li>Wash/autoclave areas and mechanical space for utilities have been scaled back in size</li>
+            <li>Warehousing space, corridors, lay down areas and waste processing areas have increased in size</li>
+        </ul>
+        <p>For cell therapy and gene therapy: these facilities consist of small, flexible, and modular units. Due to heavy reliance on manual operations, automated processing will likely impact facility designs and modular facilities may get smaller.</p>
+        <p>Large-scale protein manufacturing has been impacted the most. Adjacency of areas is important if excessive movement and long tubing lengths are to be avoided. There is often a need to make more space available for the movement and storage of bioprocess bag containers (totes).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 對設施設計的雙向影響</h4>
+            <p>SUT 導入後，設施空間需求出現了有趣的「此消彼長」現象：</p>
+            <table>
+                <tr>
+                    <th>空間類型</th>
+                    <th>SUT 導入後變化</th>
+                    <th>原因</th>
+                </tr>
+                <tr>
+                    <td>清洗/高壓滅菌區</td>
+                    <td>縮小或取消</td>
+                    <td>不需要清洗不銹鋼設備</td>
+                </tr>
+                <tr>
+                    <td>公用設施機械空間</td>
+                    <td>縮小</td>
+                    <td>CIP/SIP 系統需求降低</td>
+                </tr>
+                <tr>
+                    <td>倉儲空間</td>
+                    <td>顯著增大</td>
+                    <td>大量一次性耗材的儲存需求</td>
+                </tr>
+                <tr>
+                    <td>走廊/暫存區</td>
+                    <td>增大</td>
+                    <td>大型拖桶 (totes) 的移動通道</td>
+                </tr>
+                <tr>
+                    <td>廢棄物處理區</td>
+                    <td>顯著增大</td>
+                    <td>使用後廢棄物的暫存與處理</td>
+                </tr>
+            </table>
+            <p>這個「空間再分配」效應，在設計新廠或改建舊廠時必須提前規劃。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：細胞療法設施的特殊性</h4>
+            <p>細胞與基因療法設施幾乎完全依賴 SUT 的原因是：傳統不銹鋼設備的清洗驗證對於高度客製化、小批量的個人化醫療產品根本不切實際。每個批次可能對應不同的患者，不可能在批次之間做完整的清潔驗證。因此，<strong>一次性耗材在細胞療法中是一種法規必要性，不只是便利選項</strong>。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>對於無菌充填 CDMO，SUT 的主要應用在充填線的儲液桶和轉液管路。評估是否引入 SUT 時，需要重點考量：</p>
+            <ul>
+                <li>現有倉儲空間是否足夠存放大量一次性耗材？</li>
+                <li>廢棄物暫存和處理路線是否已規劃（考量 GMP 流向）？</li>
+                <li>充填線旁邊是否有足夠的暫存區放置待使用的組合件？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.7.1.1 Ballroom vs Dance Floor -->
+<!-- ============================================================ -->
+<div class="section-title">2.7.1.1–2.7.1.3 Facility Design Concepts（設施設計概念）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Ballroom Concept vs. Dance Floor Concept</h3>
+        <p>The <span class="key-term">ballroom concept</span> is "a large manufacturing area that has no fixed equipment and minimal segregation due to the use of functionally closed systems." These facilities consist of large open spaces where skids could be wheeled in and set up to perform a process. However, users of operational facilities have experienced drawbacks:</p>
+        <ul>
+            <li>Process equipment is not truly mobile since connections to utilities and drains are often required</li>
+            <li>Tubing management is not addressed, causing trip hazards and mix-ups</li>
+            <li>Volumes for production continue to increase, creating a need to make systems static in location</li>
+            <li>Large lay down spaces are needed for storage</li>
+            <li>There is minimal standardization in SUT, leading to minimal opportunities for interchangeability</li>
+        </ul>
+        <p>To address the above concerns, the <span class="key-term">dance floor concept</span> was created where the equipment is clustered together to create a more compact facility without trip hazards. Considerations include:</p>
+        <ul>
+            <li><strong>Concept Design:</strong> Orientation, clustering, and spacing of equipment to provide compact facility footprint</li>
+            <li><strong>Basic Design:</strong> Ergonomic aspects (height of platforms, high level tubing routes). Can be subcontracted to equipment integrators for planning utilities/electrical/data routing</li>
+            <li><strong>Detailed Design:</strong> Tubing and pipework routing can be 3-D modeled in detail, providing assurance that GMP and operational excellence aspects have been considered</li>
+        </ul>
+
+        <h3>Factory-in-a-Box Concept</h3>
+        <p>The <span class="key-term">factory-in-a-box concept</span> is where a facility is built with standardized modules and then assembled at the end-user site. The development starts from the actual production process and then a facility is created around it. It is a complete turnkey approach where the manufacturing process is optimized including the validation of the facility and the training of the manufacturing staff.</p>
+        <p>Complete manufacturing facilities have been placed into operation within <strong>eighteen months</strong> using this method. This timeline compares favorably when considering the three to five years needed to design and bring a facility to production in the traditional way.</p>
+        <p>The factory-in-a-box option allows modules and associated processing equipment to be built off-site while the foundation of the new facility is completed concurrently (parallel activities).</p>
+
+        <h3>Box-Within-a-Box Concept</h3>
+        <p>The <span class="key-term">box-within-a-box concept</span> is where an empty facility is constructed well in advance of its intended use or where a previously constructed building is used as a starting point. A factory-in-a-box or custom-built facility can then be constructed inside this outer envelope, thus significantly reducing the project timelines.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三種設施設計哲學的比較</h4>
+            <p>ISPE 介紹的三種設施設計概念，反映了 SUT 設施設計思維的演進：</p>
+            <table>
+                <tr>
+                    <th>概念</th>
+                    <th>核心思維</th>
+                    <th>優點</th>
+                    <th>挑戰</th>
+                </tr>
+                <tr>
+                    <td><strong>舞廳式</strong></td>
+                    <td>開放空間，設備可移動</td>
+                    <td>靈活性最高</td>
+                    <td>管路混亂、實際上不靈活</td>
+                </tr>
+                <tr>
+                    <td><strong>舞池式</strong></td>
+                    <td>設備成群聚集，緊湊佈局</td>
+                    <td>安全、高效、可 3D 模擬</td>
+                    <td>前期設計工作量大</td>
+                </tr>
+                <tr>
+                    <td><strong>箱中工廠</strong></td>
+                    <td>模組化廠房，工廠圍繞製程建</td>
+                    <td>18 個月可交付</td>
+                    <td>需要高度協調，較少客製空間</td>
+                </tr>
+                <tr>
+                    <td><strong>箱中箱</strong></td>
+                    <td>外殼先行，內部後建</td>
+                    <td>縮短工期，可利用既有建築</td>
+                    <td>外部結構必須預留足夠空間</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：舞廳 vs. 舞池</h4>
+            <p><strong>舞廳概念</strong>就像辦公室的「開放式辦公」——理論上很靈活，每個人可以隨意換位置。但實際上，大家電腦的網路線、電源線都插在固定位置，「隨時可移動」成了幻想。</p>
+            <p><strong>舞池概念</strong>就像精心設計的「工作站島嶼」——每個工作站的位置是固定的，但線路都走天花板，走廊保持暢通，人員不會被線絆倒。這需要更多前期設計，但使用起來更安全、更高效。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：18 個月 vs. 5 年的意義</h4>
+            <p>箱中工廠 (Factory-in-a-Box) 能將設施投入運營的時間從傳統的 3-5 年縮短到 18 個月，這對製藥行業的意義是：</p>
+            <ul>
+                <li><strong>更快回應市場</strong>：特別是緊急疫情應對（如 COVID-19 疫苗生產）</li>
+                <li><strong>降低資本風險</strong>：18 個月後才能看到資本回報，而不是等 5 年</li>
+                <li><strong>更容易擴展</strong>：標準模組可以在現有廠區的不同位置複製</li>
+            </ul>
+            <p>這也是為什麼 GE（現在的 Cytiva）等公司大力推廣模組化 SUT 設施解決方案。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠現有佈局最接近哪個概念（舞廳式、舞池式、或其他）？你遇過哪些因佈局設計不當導致的操作問題（如管路絆倒、物料流向混亂）？</li>
+                <li>如果你的公司要新建一座無菌充填 CDMO 廠，你會選擇哪種設施設計概念？原因是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.7.2 Bioprocess Area Applications -->
+<!-- ============================================================ -->
+<div class="section-title">2.7.2 Bioprocess Area Applications（生物製程區域應用）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>2.7.2.1 Upstream Operations</h3>
+        <p><strong>Inoculum Preparation:</strong></p>
+        <ul>
+            <li><em>Current State:</em> The inoculum preparation area was an early adopter of SUT. Vials, shake flasks, and roller bottles have been in use for many years.</li>
+            <li><em>Future State:</em> Trend to move single-use bioreactor operations to the main bioreactor area; this reduces the footprint of the higher classification area.</li>
+        </ul>
+        <p><strong>Bioreactors:</strong></p>
+        <ul>
+            <li><em>Current State:</em> Single-use bioreactors up to the 3,000 L scale are currently available. Even in stainless steel facilities, there are significant single-use applications (feed/media hold, sampling, antifoam addition, transfer lines).</li>
+            <li><em>Future State:</em> Continuous/semi-continuous equipment reduces vessel/bag size, enabling greater use of single-use equipment while significantly increasing facility throughput. Connected equipment should be positioned next to each other, resulting in more compact facilities.</li>
+        </ul>
+
+        <h3>2.7.2.2 Downstream Operations</h3>
+        <p><strong>Purification:</strong></p>
+        <ul>
+            <li><em>Current State:</em> As a rule of thumb, if column sizes are above 80 cm in diameter, stainless steel buffer tanks will likely be required.</li>
+            <li><em>Future State:</em> With the advent of <span class="key-term">continuous chromatography</span> and in-line dilution, buffer volumes may be reduced to a level where SUT becomes more applicable.</li>
+        </ul>
+        <p><strong>Bulk Formulation and Filling:</strong></p>
+        <ul>
+            <li><em>Current State:</em> The bulk formulation and fill areas have not changed greatly in room size or classification due to SUT. Elimination of CIP and SIP requirements for vessels has a clear benefit in removing CIP skids and reducing pure steam generation capacity requirements.</li>
+            <li><em>Future State:</em> With single-use freeze thaw/filling systems, future considerations may include filling bulk drug within the purification areas.</li>
+        </ul>
+        <p><strong>Final Fill and Finish:</strong></p>
+        <ul>
+            <li><em>Current State:</em> Single-use components (needles and associated tubing) have been in the product pathway for many years.</li>
+            <li><em>Future State:</em> Improvements in single-use components and peristaltic pump systems have accelerated SUT adoption. In newer facilities, it is common to interchange stainless steel intermediate tanks with single-use bags on filling machines through load cell hanger frames.</li>
+        </ul>
+
+        <h3>2.7.2.3 Process Support Operations</h3>
+        <p>The size of wash facilities and utilities are impacted in all therapeutic applications. Some facilities have been able to remove the wash area and autoclave from their process with the use of CIP and single-use assemblies; this may become a future trend.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 在生物製程各階段的滲透率</h4>
+            <p>SUT 在生物製程各個階段的採用程度是不均等的：</p>
+            <ul>
+                <li><strong>上游 (Upstream)</strong>：SUT 採用率最高，因為批量通常較小（&lt;3000L），SUT 技術已成熟</li>
+                <li><strong>下游 (Downstream)</strong>：採用率中等，柱層析仍多為不銹鋼，但緩衝液暫存容器和轉液管路廣泛使用 SUT</li>
+                <li><strong>充填灌裝 (Fill/Finish)</strong>：採用率正在快速增加，特別是中間儲槽已普遍改為一次性袋子</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「80 cm 柱徑」的判斷規則</h4>
+            <p>ISPE 提供了一個實用的決策規則：如果層析柱直徑超過 80 cm，通常需要不銹鋼緩衝液儲槽。這個規則的背後邏輯是：大直徑柱需要大量緩衝液，而大體積（&gt;2000L）的一次性容器目前在技術上和成本上都不具優勢。</p>
+            <p>但這個規則會隨著連續層析技術 (Continuous Chromatography) 的普及而改變——連續層析大幅降低了緩衝液的需求量，讓更大規模的 SUT 應用成為可能。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：充填線的 SUT 革命</h4>
+            <p>傳統充填線的中間儲槽就像餐廳廚房的大湯鍋——每次換菜色都要徹底清洗，需要大量人力和驗證工作。SUT 的一次性儲液袋就像使用免洗鍋——用完直接換掉，省掉清洗驗證的麻煩。「負重傳感器掛架 (Load Cell Hanger Frame)」就是讓你可以把一次性袋子掛在原本放不銹鋼儲槽位置的掛具，讓你在既有充填線上快速引入 SUT。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>對於無菌充填 CDMO 而言，最直接的 SUT 應用機會是：</p>
+            <ul>
+                <li>充填線的<strong>中間儲液容器</strong>改為一次性袋子（搭配負重傳感器掛架）</li>
+                <li>原液從生產端轉移至充填線的<strong>轉液管組</strong>改為一次性管路</li>
+                <li>這兩項改變可以顯著減少交叉污染風險（對 CDMO 尤其重要，因為同一設備服務多個客戶）</li>
+                <li>同時減少 CIP 驗證工作量，提高設備利用率</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.7.3 Key Considerations, Challenges, and Potential Advantages -->
+<!-- ============================================================ -->
+<div class="section-title">2.7.3 Key Considerations, Challenges, and Potential Advantages（關鍵考量、挑戰與潛在優勢）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>Volumetric Process Scale:</strong> In bioprocessing areas where required vessel size is greater than 2,000 L, physical assembly/handling of the bag and tubing size restrictions on fluid flow should be considered. There is a threshold where stainless steel systems become more cost-effective than SUSs, in terms of price per gram.</p>
+        <p><strong>Continuous Processing:</strong> Continuous chromatography allows for a compact layout of equipment to facilitate liquid transfer between columns, minimizing holdup volumes. Single-use mixers can be used for collecting, combining, and conditioning fluids, providing a smaller space advantage over pool vessels.</p>
+        <p><strong>Software Integration and Clustering:</strong> Continuous processes increase the need for integration/software integrators. Clustering equipment into small groups allows for:</p>
+        <ul>
+            <li>Controlling and monitoring of isolated pressure sensors, pumps, and balances</li>
+            <li>Enabling of defined tubing routing between systems</li>
+            <li>Reduction of the number of utility drops</li>
+        </ul>
+        <p><strong>Using Multiple Floors:</strong> In an SUT-based facility, using multiple floors should be approached with caution. The full liquid height should be taken into account with regard to pressure. For example, a length of 10 m would result in a head pressure of 0.981 bar; if tubing sets need to be uprated to handle higher pressures, the cost may increase.</p>
+        <p><strong>GMP Flows:</strong> Two concepts of GMP flow in hybrid BSL-1 facilities:</p>
+        <ul>
+            <li><span class="key-term">Two Corridor Concept:</span> Separate supply and return corridors. Operators enter through one set of doors (clean corridor) and leave through another (dirty corridor)</li>
+            <li><span class="key-term">One Corridor Concept:</span> Operators enter and leave through the same set of doors, or enter through one airlock and leave through a different airlock but to the same corridor</li>
+        </ul>
+        <p>Selection will depend on a thorough risk assessment considering product type (sterile, low bioburden), level of closure, product cross-contamination risks, and environmental contamination risks.</p>
+        <p><strong>Process Connectivity, Closure, and Containment:</strong></p>
+        <ul>
+            <li>The biopharmaceutical industry continues to challenge historical guidance on environmental particulate requirements by leveraging single-use containment and aseptic connection advantages</li>
+            <li>BSL-2 and BSL-3 overlaid on GMP creates complex conflicts in pressurization and airlock sequences when hazardous materials are stored in single-use tubing and bioprocess containers</li>
+            <li>Non-aseptic connections and potential for leaks should be considered; preparations made for comprehensive SOPs, personnel safety, secondary liquid containment, and hazardous waste decontamination</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 規模門檻——何時停止使用 SUT？</h4>
+            <p>SUT 並非在所有規模下都比不銹鋼經濟。有一個「成本交叉點」：</p>
+            <ul>
+                <li>當容器體積超過 <strong>2000 L</strong> 時，一次性袋子的物理裝卸和流體管路限制開始成為問題</li>
+                <li>按「每克藥品成本」計算，不銹鋼系統在大規模時更具優勢</li>
+                <li>這個交叉點會隨著連續製程技術成熟而逐漸上移（未來可能 5000L 以上才需要不銹鋼）</li>
+            </ul>
+            <p>對 CDMO 而言，了解這個門檻有助於為不同規模的客戶提供最合適的技術建議。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：多樓層設計的液壓陷阱</h4>
+            <p>這是一個容易被忽略但很重要的工程細節。當一次性袋子在一樓，液體需要通過管路輸送到地下室或二樓的設備時：</p>
+            <ul>
+                <li>10 米高度差 = 約 0.981 bar 的靜液壓 (Head Pressure)</li>
+                <li>這可能超過標準一次性管路的額定壓力</li>
+                <li>需要選用高壓等級管路，增加成本</li>
+                <li>或重新規劃佈局，讓物料流向「順重力」</li>
+            </ul>
+            <p>這個問題在不銹鋼系統中不存在（管路設計為高壓承受），但在 SUT 中必須作為設施設計的考量因素。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：雙走廊 vs. 單走廊 GMP 流向</h4>
+            <p><strong>雙走廊</strong>就像機場的入境和出境完全分開——進來的人（乾淨側）和離開的人（使用後側）走不同的通道，不會交叉。最嚴格，但空間需求大。</p>
+            <p><strong>單走廊</strong>就像大多數辦公室——進出用同一條走廊，依靠 SOP 管理時序來避免衝突。空間效率高，但需要嚴格的操作紀律。對於 BSL 設施，雙走廊通常是必要的。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在無菌充填 CDMO，GMP 流向設計尤為重要，因為廢棄的一次性耗材（使用後帶有產品污染）必須與乾淨的新耗材完全分開。常見的最佳做法：</p>
+            <ul>
+                <li>廢棄物使用<strong>專用廢棄物走廊或電梯</strong>離開生產區</li>
+                <li>使用後的一次性袋子立即放入密封廢棄物容器，不在潔淨區開封</li>
+                <li>廢棄物出口與原料入口保持最大分離距離</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.7.4-2.7.5 Storage, Supply and Safety -->
+<!-- ============================================================ -->
+<div class="section-title">2.7.4–2.7.5 Storage, Supply, and Safety Considerations（儲存、供給與安全考量）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>2.7.4 Storage and Supply</h3>
+        <p>Sufficient <span class="key-term">storage space</span> should be provided in the warehouse and in the staging areas of the production floor, to account for incoming single-use components, packaging/cardboard waste, and used single-use components. Considerations should be made for a layout that facilitates the flow of waste products. Special entry/exit points may be needed for a smooth transition out of the facility. Pickup frequency by the disposal company is an important factor that defines the storage space and layout.</p>
+        <p>Standardization can result in a reduction in the space requirements for the on-site warehouse. Currently, significant contingency stocks are required due to the long lead times of single-use assemblies. If these assemblies are readily available off the shelf, the inventory can be significantly reduced.</p>
+
+        <h3>2.7.5 Safety Considerations</h3>
+        <p>SUSs impose a special set of safety concerns due to inherent features of SUT:</p>
+        <ul>
+            <li>The need to install and dismantle systems brings the operator closer to the system, increasing the need for risk mitigations associated with spills and ruptures</li>
+            <li>The possibility to move systems may introduce transportation activity, increasing the need for risk mitigations</li>
+        </ul>
+        <p>Facility design for SUSs should include a <span class="key-term">health and safety risk assessment</span> as part of the design work. Safety considerations include:</p>
+        <ul>
+            <li>Pressure rating of connectors used between single-use components and stainless steel parts</li>
+            <li>Bioprocess bags and single-use tubing at eye level (splashing risk)</li>
+            <li>Flammables, caustic or other hazardous materials, spills</li>
+            <li>Potential risk of leakage or rupture</li>
+            <li>Tubing on floor creating tripping hazards</li>
+            <li>Cuts to frozen bioprocess bags, resultant spills</li>
+            <li>Equipment malfunctions, clamps, fingers</li>
+            <li>Stability of mobile stairs, loose items</li>
+            <li>Protection rails for glass surfaces (transportation protection)</li>
+        </ul>
+        <p>Health considerations include:</p>
+        <ul>
+            <li>Ergonomics for installation, handling and removing containers</li>
+            <li>Ergonomics for handling solid waste</li>
+            <li>Mobile bag containers at reasonable size and weight</li>
+            <li>Aerosol formation when disconnecting systems</li>
+            <li>Odor waste handling</li>
+            <li>Provisions for handling spills</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 的倉儲挑戰</h4>
+            <p>SUT 導入後，倉儲管理比想像中複雜：</p>
+            <ul>
+                <li><strong>前置時間長</strong>：一次性組合件的前置時間 (Lead Time) 通常是 8-16 週，需要較大的安全庫存</li>
+                <li><strong>體積龐大</strong>：即使折疊狀態，一次性袋子的外包裝也佔用大量空間</li>
+                <li><strong>廢棄物體積是新品的 3-5 倍</strong>：使用後膨脹的廢棄物比壓縮的新品佔用更多空間</li>
+                <li><strong>廢棄物拾取頻率決定暫存空間</strong>：若廢棄物公司每兩週來一次，你需要兩週的廢棄物暫存空間</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：SUT 的獨特安全風險</h4>
+            <p>與不銹鋼系統相比，SUT 帶來了一些新的安全風險，需要特別的設施設計和操作 SOP：</p>
+            <ul>
+                <li><strong>地面管路絆倒風險</strong>：一次性管路在地面拉伸，比不銹鋼管道更容易造成絆倒</li>
+                <li><strong>眼部噴濺風險</strong>：透明的生物反應器袋在眼睛高度，操作員需要護目鏡</li>
+                <li><strong>凍結袋子的割傷風險</strong>：冷凍儲存的一次性袋子硬而脆，解凍時操作不當可能造成洩漏</li>
+                <li><strong>連接脫離的氣溶膠風險</strong>：在斷開連接時可能有氣溶膠產生，特別是高生物安全級別設施要特別注意</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠有沒有評估過一次性耗材的廢棄物體積？一個充填批次大約產生多少體積的 SUT 廢棄物？你目前的廢棄物暫存空間夠用嗎？</li>
+                <li>在安裝一次性生物反應器袋時，操作員最常遇到的安全問題是什麼？現有的 SOP 和安全設施是否足夠應對這些風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.8 Waste Management -->
+<!-- ============================================================ -->
+<div class="section-title">2.8 Waste Management（廢棄物管理）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section addresses methods for the handling of single-use products after use. It includes general considerations for waste management methods, which are dependent upon the components used and the nature of the usage.</p>
+        <p>Generally, biopharmaceutical manufacturing facilities handle soiled components (i.e., contaminated with product solutions) as either <span class="key-term">biohazardous waste</span> or waste for landfill. In addition, components which contain highly potent compounds require additional control and handling procedures.</p>
+
+        <h3>2.8.1 Decontamination</h3>
+        <p><span class="key-term">Decontamination</span> of single-use products refers to the process of rendering it safe for disposal by removing agents that should not be present (e.g., bacterial, virological, chemical).</p>
+        <p>If required, decontamination can be achieved through high temperature or chemical treatment. These treatments typically include:</p>
+        <ul>
+            <li><strong><span class="key-term">Autoclave Sterilization</span>:</strong> Moist heat sterilization uses steam heated to 121°C and injected into a chamber. This method is used to decontaminate single-use items before disposal when biological risk is present.</li>
+            <li><strong><span class="key-term">Incineration</span>:</strong> Waste material is burned, and the resultant energy released is typically used to generate usable heat or power. High temperatures during incineration can destroy many pathogens and toxic materials; hence incinerators are often used in the disposal of medical waste.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：廢棄物類型決定處理方式</h4>
+            <p>SUT 廢棄物的處理方式取決於廢棄物的性質：</p>
+            <table>
+                <tr>
+                    <th>廢棄物類型</th>
+                    <th>例子</th>
+                    <th>建議處理方式</th>
+                </tr>
+                <tr>
+                    <td>一般廢棄物</td>
+                    <td>未使用過的包裝紙板</td>
+                    <td>一般回收/垃圾掩埋</td>
+                </tr>
+                <tr>
+                    <td>生物危害廢棄物</td>
+                    <td>接觸過生物材料（如細胞培養）的袋子</td>
+                    <td>高壓蒸汽滅菌後焚化</td>
+                </tr>
+                <tr>
+                    <td>病毒污染廢棄物</td>
+                    <td>病毒生產後的一次性系統</td>
+                    <td>必須高壓蒸汽滅菌，然後由授權廢棄物處理商焚化</td>
+                </tr>
+                <tr>
+                    <td>高效能化合物廢棄物</td>
+                    <td>含細胞毒性藥物的管路和容器</td>
+                    <td>特殊管制，需授權廢棄物處理商</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵術語：去污 vs. 滅菌</h4>
+            <p><strong>去污 (Decontamination)</strong>：使廢棄物「安全到可以丟棄」的過程——目的是降低生物危害風險，而不一定是達到滅菌等級。</p>
+            <p><strong>滅菌 (Sterilization)</strong>：消滅所有微生物（包括孢子）的過程——更嚴格的處理。</p>
+            <p>在廢棄物管理中，通常要求「去污」而非「滅菌」——但兩者在實務中常用相同的方法（高壓蒸汽），主要差異在於<strong>驗證要求和記錄要求</strong>的嚴格程度。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：高壓蒸汽滅菌 vs. 焚化</h4>
+            <p><strong>高壓蒸汽滅菌 (Autoclave)</strong>就像用高溫高壓的電鍋「殺菌」——把細菌和病毒消滅，讓廢棄物安全到可以丟進一般廢棄物處理流程（或焚化爐）。</p>
+            <p><strong>焚化 (Incineration)</strong>就像用火把廢棄物「完全消滅」——不只殺菌，連廢棄物的物理形態也消失了，只剩下灰燼。焚化可以回收能源（發電），對高效能化合物（如抗癌藥物殘留）尤其有效，因為高溫可以破壞分子結構。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：SUT 廢棄物是一次性技術最大的環境批評點</h4>
+            <p>SUT 面臨的最主要環境挑戰是：大量塑膠廢棄物。一個中等規模的生物藥廠每年可產生數十噸一次性塑膠廢棄物。目前業界的回應策略包括：</p>
+            <ul>
+                <li><strong>廢棄物最小化設計</strong>：選擇組件更少的組合件設計</li>
+                <li><strong>能源回收焚化</strong>：將焚化熱能轉化為廠區供電或供熱，減少淨碳排放</li>
+                <li><strong>去污後回收</strong>：部分沒有生物污染的廢棄物，在適當去污後可以進入塑膠回收流程</li>
+                <li><strong>生物可降解材料研發</strong>：業界正在研究生物可降解聚合物作為替代材料（仍在早期階段）</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用情境</h4>
+            <p>在無菌充填 CDMO 中，SUT 廢棄物管理需要考慮的特殊情境：</p>
+            <ul>
+                <li><strong>多產品交叉污染風險</strong>：不同客戶產品的 SUT 廢棄物必須分開標記和處理，避免交叉識別錯誤</li>
+                <li><strong>高效能化合物</strong>：如果客戶產品含有高效能化合物（oncology），所有接觸過產品的 SUT 廢棄物都需要特殊處理路徑，並產生相應的廢棄物處理記錄</li>
+                <li><strong>廢棄物成本計入服務合約</strong>：SUT 廢棄物的高壓蒸汽滅菌和焚化成本不低，在與客戶協商服務合約時應將這部分成本明確計入</li>
+                <li><strong>環境法規合規</strong>：台灣的廢棄物處理法規要求所有生物危害廢棄物必須委託合法的廢棄物處理業者，並保留廢棄物轉移聯單</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠目前如何處理 SUT 廢棄物？是先高壓蒸汽滅菌再焚化，還是直接委外焚化？選擇這個流程的依據是什麼（法規要求、成本、效率）？</li>
+                <li>如果你的客戶要求你提交 SUT 廢棄物的環境影響報告，你目前能提供哪些數據？缺少哪些追蹤記錄？</li>
+                <li>在計算 SUT 總體擁有成本 (Total Cost of Ownership) 時，廢棄物處理成本通常佔多少百分比？這個比例在你的工廠中如何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>供應商品質協議 (Quality Agreement)</strong> 是 SUT 供應鏈管理的基礎文件，必須與供應協議和技術協議<strong>獨立分開</strong>，確保 QA 部門的主導地位。協議中必須明確包含稽核權利、變更通知義務和責任分工。</li>
+        <li><strong>SUT 供應商製造環境等級</strong>：一般組件製造需 ISO 8/Grade C，最終組合作業需 ISO 7/Grade B——這是因為 SUT 直接接觸藥品，其製造潔淨度等級必須與藥品生產環境對齊。</li>
+        <li><strong>供應商稽核頻率的風險分層</strong>：新供應商或高關鍵物料每年稽核，有良好記錄的長期合作夥伴每 2-3 年稽核一次。SUT 供應商通常被歸為高關鍵性，因此每年稽核是慣例。</li>
+        <li><strong>URS 的三層結構</strong>：產品品質要求 + 供應商品質要求 + 製程技術要求。URS 由端用戶（你）撰寫，傳遞給供應商。建議附上組合件草圖。對 SUS（包含設備的整合系統），URS 複雜度顯著提升，需整合 C&amp;Q 和 GAMP 5 框架。</li>
+        <li><strong>設施設計的演進</strong>：舞廳式（靈活但混亂）→ 舞池式（緊湊安全，需前期設計投入）。箱中工廠（模組化，18 個月交付）和箱中箱（利用既有建築外殼）提供了加速新廠建設的選項。SUT 導入後，倉儲和廢棄物空間顯著增加，清洗/公用設施空間縮小。</li>
+        <li><strong>廢棄物管理雙軌制</strong>：一般廢棄物 → 垃圾掩埋；生物危害廢棄物 → 高壓蒸汽滅菌去污 + 焚化。高效能化合物廢棄物需要授權廢棄物處理商。廢棄物管理成本和空間需求必須在 SUT 設施設計初期就納入規劃。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
