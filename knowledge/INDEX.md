@@ -1411,6 +1411,40 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-TechTransfer-Complete.md
+**Report:** ISPE Technology Transfer (3rd Edition, 2014)
+**Pages:** p1–p240 | **Sections:** 10
+
+**Covers questions about:**
+- Technology transfer (TT) lifecycle: 6-stage framework (Initiation, Planning, Execution, Closure + Post-TT) with cross-functional team roles
+- Facility fit assessment: capacity, equipment compatibility, regulatory status, quality system readiness of receiving unit
+- Analytical method transfer: full method transfer protocol, method equivalence testing, method co-validation, partial and complete transfer strategies
+- Drug substance (API) technology transfer: synthetic and biologic API — process characterization, CPP/CQA identification, development-scale to manufacturing-scale
+- Drug product technology transfer: formulation parameters, scale-up, equipment bridging, PPQ design at receiving site
+- Quality system requirements during TT: change control, risk management, document transfer, qualification triggers
+- Biologics-specific TT challenges: cell banking, upstream fermentation/cell culture, downstream purification, viral clearance transfer
+- Small molecule case studies: oral solid dosage, API, sterile manufacturing TT examples
+- FMEA applied to technology transfer risk: failure mode identification, risk scoring, risk controls
+- Engineering TT considerations: utilities, cleaning validation bridging, equipment qualification at receiving site
+- Appendices: TT checklist, biologics guidance, small molecule cases, engineering considerations, FMEA template
+
+**Key terms:** technology transfer, sending unit (SU), receiving unit (RU), facility fit, process characterization, analytical method transfer, method equivalence, co-validation, critical process parameter (CPP), critical quality attribute (CQA), process performance qualification (PPQ), drug substance API, drug product, biologics TT, cell banking, scale-up, equipment bridging, cleaning validation bridging, FMEA, risk management, QRM, master TT plan, TT report, CDMO, out-licensing, in-licensing, concurrent manufacture
+
+**Sections:**
+0. Introduction & Key Terms (Ch1, p1–p25) — scope, definitions, regulatory context, TT team structure, roles, abbreviations
+1. Planning: TT Phases 1–3 (Ch2–Ch3a, p26–p65) — pre-TT assessment, facility fit checklist, analytical method transfer planning, process characterization scope
+2. Execution: TT Phases 4–6 (Ch3b, p66–p100) — execution phase deliverables, process runs at receiving site, PPQ design, TT report content, closure criteria
+3. Analytical Methods TT (Ch4, p101–p128) — method transfer protocol types (full/partial/co-validation), equivalence criteria, method qualification, special cases
+4. Drug Substance (API) TT (Ch5, p129–p165) — synthetic API: process understanding, CQA/CPP, scale-up; biologics API: cell banking, fermentation, DSP, viral clearance transfer
+5. Drug Product + Quality (Ch6–Ch7, p166–p200) — formulation TT, product family strategy, equipment bridging, quality system requirements during TT, CAPA, deviation management
+6a. Appendix 1 (TT Checklist) + Appendix 2 Part 1 (Biologics, p1–p15) — comprehensive TT checklist, biologics-specific URS, cell bank considerations, fermentation parameters
+6b. Appendix 2 Part 2 (Biologics cont'd, p16–p28) — downstream purification TT, analytical method transfer for biologics, viral clearance study considerations
+7. Appendix 3: Small Molecule Case Studies (App3, p201–p215) — oral solid dosage TT, API synthetic TT, sterile TT case example
+8. Appendix 4: Engineering Considerations (App4, p216–p225) — utilities assessment, cleaning validation bridging, equipment qualification at receiving site
+9. Appendices 5–8 + FMEA Template + References + Glossary (App5–8, p226–p240) — risk management template, FMEA for TT, regulatory references, full glossary
+
+---
+
 ## ISPE/ISPE-ProcessGas-Complete.md
 **Report:** ISPE Good Practice Guide: Process Gases (2011)
 **Pages:** p1–p180 | **Sections:** 8
@@ -1532,6 +1566,15 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Gas distribution piping, 316L SS copper aluminum, velocity pressure drop deadleg gas / 氣體分配管路、316L不銹鋼銅鋁管、流速壓降死角管路 | ISPE-ProcessGas |
 | Process gas qualification, gas system IQ OQ, gas sampling testing protocol / 製程氣體確效、氣體系統IQ/OQ、氣體取樣測試協議 | ISPE-ProcessGas |
 | PSA pressure swing adsorption, membrane separation on-site gas generation / 壓力變換吸附、薄膜分離、現場氣體製造 | ISPE-ProcessGas |
+| Technology transfer pharmaceutical, sending receiving unit, CDMO TT, site transfer / 製藥技術轉移、發送方接收方、CDMO技轉、廠址轉移 | ISPE-TechTransfer + TR65 |
+| Facility fit assessment, capacity equipment compatibility, receiving site readiness / 設施適配性評估、產能設備相容性、接收廠點準備就緒 | ISPE-TechTransfer + TR65 |
+| Analytical method transfer, method equivalence, co-validation, partial transfer strategy / 分析方法轉移、方法等效性、共同驗證、部分轉移策略 | ISPE-TechTransfer |
+| Drug substance API technology transfer, process characterization CPP CQA scale-up / 原料藥技術轉移、製程表徵、關鍵製程參數、關鍵品質屬性、放大 | ISPE-TechTransfer |
+| Drug product technology transfer, formulation scale-up, equipment bridging, PPQ design / 製劑技術轉移、劑型放大、設備橋接、製程效能確效設計 | ISPE-TechTransfer |
+| Biologics technology transfer, cell banking, upstream fermentation, downstream purification, viral clearance / 生物製劑技術轉移、細胞庫、上游發酵、下游純化、病毒清除 | ISPE-TechTransfer |
+| Technology transfer FMEA, TT risk management, TT failure mode risk scoring / 技術轉移FMEA、技轉風險管理、失效模式風險評分 | ISPE-TechTransfer |
+| TT master plan, TT protocol, TT report, TT closure criteria / 技術轉移主計畫、技轉協議書、技轉報告、結案標準 | ISPE-TechTransfer |
+| Cleaning validation bridging, equipment qualification receiving site, utilities TT / 清潔驗證橋接、接收廠點設備確效、公用工程技術轉移 | ISPE-TechTransfer |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1900,7 +1943,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-Vol7 ★★★ (HBEL derivation: NOAEL → adjustment factors → PDE/ADE calculation, HBEL vs OEL distinction, documentation requirements) — single primary source
 
 **Technology Transfer (技術轉移)**
-→ TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
+→ ISPE-TechTransfer ★★★ (complete ISPE TT guide: 6-stage lifecycle, facility fit, analytical method transfer, API TT, drug product TT, biologics TT, FMEA, engineering considerations, case studies) | TR65 ★★★ (PDA TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
 
 **Microbial Investigation / OOS (微生物調查/OOS)**
 → TR88 ★★★ (Phase I/II investigation framework: sterility, BET, EM, APS, water system) | TR13 ★★★ (EM investigation and trending) | TR70 ★★ (EM excursion linked to cleaning failure) | TR22 ★★ (APS failure investigation)
@@ -1955,6 +1998,12 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Process Gases / Compressed Air (製程氣體/壓縮空氣)**
 → ISPE-ProcessGas ★★★ (complete process gas guide: URS, supply systems, compressed air, distribution, I&C, risk assessment, OQ, ISO 8573 quality classes, gas qualification protocols) | ISPE-Sampling ★★ (process gas sampling procedures: compressed air dew point/oil/viable particle methods, Appendix content)
+
+**Analytical Method Transfer (分析方法轉移)**
+→ ISPE-TechTransfer ★★★ (Ch4: full method transfer protocol, transfer types — full transfer/partial transfer/co-validation/waiver, equivalence criteria, method qualification, biologics-specific considerations) — single primary source in this knowledge base
+
+**Biologics / Biopharmaceutical Technology Transfer (生物製劑技術轉移)**
+→ ISPE-TechTransfer ★★★ (App2 biologics: cell banking, upstream fermentation/cell culture CPP, downstream purification DSP, viral clearance transfer, analytical method transfer for biologics) | ISPE-Vol6 ★★ (biopharmaceutical facility design: process closure, containment, biological waste — receiving site context)
 
 ---
 

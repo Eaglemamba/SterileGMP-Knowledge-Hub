@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE TechTransfer – Appendix 4: Engineering Considerations</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (ISPE green) ===== */
+.source-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 4: Engineering Considerations for Technology Transfer</h1>
+    <div class="subtitle">附錄四：技術轉移的工程考量事項</div>
+    <div class="page-info">ISPE Good Practice Guide: Technology Transfer (3rd Edition) | p123–p134</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解工程知識在技術轉移中的角色：為何設備、公用系統與自動化控制的差異會直接影響轉移成敗</li>
+        <li>掌握三種設備轉移情境的差異，並能針對各情境制定對應的知識轉移策略</li>
+        <li>從六個實際案例中，辨識常見工程陷阱（磨耗、儀器漂移、設備優先級分歧、自動化配方錯誤等）</li>
+        <li>學習四種有效的工程知識擷取技術：採購規劃、資料庫審查、RACI矩陣、工程等效性評估</li>
+        <li>以CDMO接收產品的角度，建立工程就緒度（Engineering Readiness）查核思維</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 11.1: INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="section-title">11.1 Introduction — Engineering Knowledge in Technology Transfer</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE TechTransfer 3rd Ed.</span>
+
+        <p>Transfer of <span class="key-term">engineering knowledge</span> can be an important consideration for transfers, whether for single or multiple sites. Importantly, it should be an ongoing two-way exchange of information as the intricacies and experience gained may enhance process understanding and product quality.</p>
+
+        <p>In the context of modern biopharmaceutical manufacturing, engineering knowledge can cover a wide range of information, including activities and information related to facilities/equipment design and maintenance through to chemical and process engineering knowledge and decisions related to manufacturing activities.</p>
+
+        <p>This chapter focuses on those activities that do not fall within the scope of process development or product realization as such activities should be captured within the development activities and <span class="key-term">control strategy</span> for the process.</p>
+
+        <p>Overall, it is the success of the transferred process and delivery of product quality (drug substance or drug product meeting the requisite <span class="key-term">CQAs</span>) that determines whether a transfer is successful. Well developed products and processes will identify critical aspects of processes that support achievement of consistent and reliable manufacturing; where these are of significance, they will form part of the control strategy.</p>
+
+        <p><span class="key-term">Engineering controls</span> are critical to maintenance of CPPs and can be key to detection and/or management of potential process influence from material attributes. Additionally, engineering requirements and specifications are important risk mitigations in processes — for example, where <span class="key-term">materials compatibility</span> and cleanability is required to be assured by control of materials of construction, welding, surface finishes etc; or where instrument suitability is managed by instrument selection and calibration.</p>
+
+        <p>It is important that technology transfer planning clearly differentiates the <span class="key-term">critical engineering aspects</span> of processes and that these decisions are clear to engineering groups at the receiving unit as well as their suppliers. If engineering teams and suppliers are disconnected from this information, this situation can lead to lack of focus and inefficiency or, worse, may result in failure to achieve the required manufacturing outcomes or delays, which lead to potential shortages in critical products.</p>
+
+        <p>Engineering information may include:</p>
+        <ul>
+            <li>Details and information on the design, fabrication, or procurement of process equipment or supporting utilities:
+                <ul>
+                    <li>Equipment drawings and specifications, including materials of construction compatible with process solutions and geometry</li>
+                    <li>Details of critical measuring instruments, including range/capabilities</li>
+                    <li>Physical layout or arrangement and integration of equipment</li>
+                </ul>
+            </li>
+            <li>Details on the types of equipment to be used for running or supporting a process</li>
+            <li>Arrangement for equipment transfer, such as equipment transfer plans and commissioning/qualification methodology</li>
+            <li>Control programming/logic and configuration information</li>
+            <li>Maintenance and setup instructions</li>
+            <li>Equipment service history</li>
+            <li>Cleaning process development information</li>
+            <li>Details of engineering studies that are of importance to determining process benchmarks for equipment or processes</li>
+        </ul>
+
+        <p>Proper technical assessment needs to be carried out across GxP and <span class="key-term">GEP (Good Engineering Practice)</span> systems to ensure that key knowledge in these areas is captured to avoid delay or complications with technology transfers.</p>
+
+        <div class="quote-box">
+            "Engineering information may include tacit knowledge that exists within an organization in systems and locations outside of the mainstream production control systems — often assumed to exist within qualification and validation files; however, the outputs of the engineering knowledge are frequently the only portion that is visible, not necessarily the process to get to that point."
+        </div>
+
+        <p>There are three possible broad scenarios in terms of knowledge transfer:</p>
+        <ul>
+            <li><strong>Scenario 1:</strong> Sending unit transfers the process and <span class="key-term">like-for-like equipment</span> as part of the project. Knowledge around use and behavior of the equipment related to the product and process under transfer is the focus.</li>
+            <li><strong>Scenario 2:</strong> Sending and receiving units use the same or similar equipment (either new or existing) but that exists separately on both sites. Experience of operation, recommended configuration, and details of setup are required.</li>
+            <li><strong>Scenario 3:</strong> Sending and receiving units use similar but not identical equipment, where the receiving unit may need to procure or operate equipment to achieve the process. The product and process outcomes are important; the means of getting there operationally may differ.</li>
+        </ul>
+
+        <p>The scope of a technology transfer often includes the use of <span class="key-term">plant automation</span> and/or some level of enterprise level information technology (such as <span class="key-term">manufacturing execution systems</span>). Specialist engineering resources should be identified for replication or implementation of suitable automation and/or network infrastructure; particular attention should be given to risks to <span class="key-term">data integrity</span> and cybersecurity.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 工程知識的雙向性</h4>
+            <p><strong>工程知識 (Engineering Knowledge)</strong> 在技術轉移中不只是「送出方教，接收方學」的單向流動。本章強調「持續雙向交流」，因為接收端在執行過程中往往會發現送出端從未遇過的問題，這些新發現若能回饋，將使整個組織受益。</p>
+            <p><strong>GEP (Good Engineering Practice，良好工程規範)</strong> 是相對於 GxP 的工程端規範，涵蓋設備設計、建造、維護等最佳實踐，並非法規強制，但構成 GxP 驗證的基礎。</p>
+            <p><strong>隱性知識 (Tacit Knowledge)</strong> 是本章的核心警示：許多關鍵工程經驗存在於工程師的腦袋、非正式紀錄或舊版操作手冊中，無法從驗證報告中讀取。轉移時最容易漏失的，就是這類知識。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 搬家與裝修</h4>
+            <p>技術轉移的工程面，就像把一家米其林餐廳搬到新址：</p>
+            <ul>
+                <li><strong>菜單（製程）</strong>可以帶走</li>
+                <li><strong>設備（廚具）</strong>可以搬遷或重新採購</li>
+                <li>但主廚對那台老烤箱「知道要調低10度」的經驗，是寫不進食譜的——這就是隱性工程知識</li>
+            </ul>
+            <p>三種設備情境就像：(1) 把原本的烤箱搬過去、(2) 買一台同款烤箱、(3) 買一台不同品牌但功能相近的烤箱——越往後，需要重新摸索的東西越多。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Engineering Controls 與 CPP 的連結</h4>
+            <p>文件強調：<strong>工程控制是維持 CPP（關鍵製程參數）的關鍵手段</strong>。這意味著：</p>
+            <ul>
+                <li>混合槽的攪拌轉速控制 → 維持混合均勻性 CPP</li>
+                <li>溫控系統的精度 → 維持反應溫度 CPP</li>
+                <li>材質規格（不鏽鋼等級、表面粗糙度）→ 維持清潔可靠性</li>
+            </ul>
+            <p>因此，工程規格不是「硬體採購」問題，而是直接影響產品 CQA 的製程控制問題。轉移計畫必須讓工程團隊了解哪些 CPP 與工程設定直接掛鉤。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>三種設備情境的風險評分框架</h4>
+            <pre>
+情境 1：移轉相同設備
+  風險等級：低
+  重點：操作行為與產品接觸面歷史
+  轉移文件：操作 SOP、維護紀錄、服務歷史
+
+情境 2：各站各有同款設備
+  風險等級：中
+  重點：設定差異、校正頻率、使用慣例
+  轉移文件：組態清單、標準校正計畫
+
+情境 3：不同款設備（功能等效）
+  風險等級：高
+  重點：製程輸出等效性、重新驗證需求
+  轉移文件：等效性評估報告、額外 PPQ 批次
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 接收工程就緒度初步評估</h4>
+            <p>作為 CDMO 接收方，在技術轉移計畫啟動時，工程團隊應提出以下問題：</p>
+            <ol>
+                <li>送出方使用的關鍵設備型號為何？我們的設備屬於哪一種情境？</li>
+                <li>哪些製程參數（CPP）直接由工程控制維持？我方設備的控制範圍是否覆蓋？</li>
+                <li>送出方是否有該設備的維護異常紀錄？有無因設備原因造成的偏差？</li>
+                <li>自動化系統（SCADA/MES）的配方格式是否相容，還是需要重新程式化？</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISPE 說工程知識應該是「雙向」交流？接收端能貢獻什麼新知識給送出端？</li>
+                <li>隱性工程知識（Tacit Knowledge）有哪些常見形式？如何在轉移計畫中有效擷取它？</li>
+                <li>如果你的公司是 CDMO，接收一個新產品，你會如何判斷屬於情境 1、2 還是 3？各自的後續行動有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 11.2: EXAMPLES -->
+<!-- ============================================================ -->
+<div class="section-title">11.2 Examples — Real-World Engineering Failures in Technology Transfer</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE TechTransfer 3rd Ed.</span>
+
+        <p><strong>Table 11.1: Engineering Considerations Example #1 — Mechanical Wear Not Shared Across Sites</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer project required transfer of manufacturing for blending, filling, and packing dry powder inhalation products to three sites in different regions. Identical equipment was centrally procured from a single reputable international equipment vendor who commissioned the lines on each site. Equipment included a filling machine, which needed to be set up carefully to control fill weight of the dose.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>During qualification and initial operation, individual differences in setup and operation of the various machines masked the fact that there was a design feature in the filler where a mechanical part would <span class="key-term">wear over time</span> and gradually introduce increased variation in fill weight. One site discovered this and developed a modified procedure: monitoring fill weight performance and, at a trigger point, removing and maintaining the parts concerned. Additional lubrication steps resulted in more consistent filling. Other sites had observed the deterioration but attributed it to different causes.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>The true root cause was the mechanical issue. The site that discovered this started to supply unpacked products to the other two sites while their investigations continued, leading to reduced capacity and increased cost overall until the knowledge was shared.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Table 11.2: Engineering Considerations Example #2 — Instrument Drift Not Escalated Across Sites</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer project required procurement of equipment for three sites to perform an API addition and mixing step under controlled temperature. Due to site technical preferences, two sites (Site 1 and Site 2) specified one instrument type and a third site (Site 3) used an alternative instrument type.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>A technical audit concluded that Site 3's technical preference was due to prior experience with repeated <span class="key-term">drift and recalibration requirements</span> with the brand of the original instrument. Sites 1 and 2 had set standard calibration frequencies and limits; they had seen evidence of the drift but had not identified it as an issue yet.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>The API distribution within the product was known to migrate due to heat distribution and the error was significant enough to have potentially caused a manufacturing deviation. Sites 1 and 2 replaced the instruments. Validations were required to be repeated at Site 2 due to variation in product assay, which was in specification but significant from a market authorization filing perspective.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Table 11.3: Engineering Considerations Example #3 — Maintenance Criticality Disagreement</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer project required transfer of a product to a second site by a sending unit with experience in manufacture and packing of this product. Qualification protocols were prepared based on the original risk assessments; device criticality and maintenance priority and frequency were specified in the protocols. However, the receiving unit established their own device prioritization and frequency for this equipment at their site.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>The receiving unit had their own history based on historical use and the intricacies of their equipment. Some critical task frequencies were decreased at the receiving unit and other tasks that were not critical in the protocol were considered critical at the receiving unit. Corporate quality considered the sending unit to be the technical lead.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>Corporate quality required a <span class="key-term">validation deficiency</span> at the sending site to investigate the need for the critical tasks from the receiving unit, resulting in delayed completion of PPQ batches.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Table 11.4: Engineering Considerations Example #4 — Cleaning Validation Engineering Data Not Transferred</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer project required transfer of a process for a monoclonal antibody (mAb) API within a multinational company. The transfer required scale-up upon transfer; the receiving unit was undertaking a large expansion, with geometry not the same due to building layout and local requirements. Only the transfer of the cleaning process is discussed. The product was on an expedited approval timeline.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>Cleaning development studies were conducted at laboratory scale. The <span class="key-term">cleaning validation reports</span> were available but were based on many weeks of engineering trials at scale. Transfer of the engineering data was initially not planned since it was viewed as impractical given that the strategy had been to meet acceptance criteria. Issues were discovered by the receiving unit that questioned the performance variables and required investigation.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>The process of reviewing the cleaning validation reports took many weeks to complete because the sending engineering trials were not cohesively summarized and the validation contractors used were no longer available to assist. Validation studies for both sites were delayed due to having to ensure data and limits to be filed were consistent between the sites.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Table 11.5: Engineering Considerations Example #5 — CMO Capability Gap in Asia Pacific</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer required transfer from a sending unit in Europe to a CMO in Vietnam. The transfer required the CMO to purchase and commission new equipment for solution preparation and aseptic fill/finish using <span class="key-term">blow-fill-seal technology</span>. Equipment designed and built by well-known European suppliers with service presence in Singapore. This was one of only two installations of this type for the supplier in the Asia Pacific region.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>The risk to the success of the transfer was considerably increased given these factors. Even if the technology was well known and the engineering information was well collated, it was still possible that considerable effort would be required to ensure the engineering information was delivered in an understandable manner to a less experienced receiving team.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>The company considered providing engineering staff support to the receiving unit; however, the receiving unit would not fund the role and expenses. Following commissioning, numerous technical issues were encountered. Damage occurred to the equipment, requiring representatives of both the sending unit and European supplier to visit the site within short notice. The project was delayed by three months. Commercial tensions developed and the need to invoke supply penalty clauses were considered.</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>Table 11.6: Engineering Considerations Example #6 — Automation Recipe Not Verified at Scale</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th style="width:20%">Element</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Scenario</strong></td>
+                <td>A technology transfer required transfer of an mAb process from a sending site in the US to a receiving site in the EU. No new equipment needed to be purchased since the current equipment were to be configured to accommodate the new process. Since the transfer did not involve start-up of new equipment, no <span class="key-term">commissioning activities</span> were planned as part of the technology transfer.</td>
+            </tr>
+            <tr>
+                <td><strong>Issue</strong></td>
+                <td>During the first batch at scale, there were problems during execution of the concentration phase during <span class="key-term">ultrafiltration/diafiltration</span>. Further investigation revealed that the <span class="key-term">automation recipe</span> was not properly configured.</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>The project was unnecessarily delayed as the batch was implicated and it was determined as part of the CAPA that the batch needed to be repeated. Engineering felt the configuration items in error were not critical; however, quality and validation felt the issue warranted wider investigation of the adequacy of configuration in other systems.</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 六個案例的共同根源</h4>
+            <p>六個案例看似各不相同，但根本問題只有一個：<strong>「知道的人沒有說，需要知道的人沒有問」</strong>。</p>
+            <ul>
+                <li><strong>案例1</strong>：機械磨耗知識停留在一個廠站，未建立知識回饋機制</li>
+                <li><strong>案例2</strong>：儀器漂移的採購歷史知識沒有納入設備選型流程</li>
+                <li><strong>案例3</strong>：送出端與接收端各有一套設備維護優先級，沒有事先比較</li>
+                <li><strong>案例4</strong>：清潔驗證的工程試驗數據（不只是最終結論）沒有轉移</li>
+                <li><strong>案例5</strong>：接收端能力不足，但商業談判阻礙了技術支援</li>
+                <li><strong>案例6</strong>：「不換設備」等於「不需要委試」的假設，造成自動化配方疏漏</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 案例1：汽車保養知識的「孤島效應」</h4>
+            <p>你有三台同款汽車分別在三個城市。其中一台的車主發現「每行駛8萬公里後離合器片需特別潤滑」，他自己處理好了，但沒有告訴其他兩位車主——因為沒有人問他。另外兩台車最終離合器故障。這就是案例1的本質：<strong>知識存在，但沒有觸發分享的機制</strong>。</p>
+            <p>技術轉移計畫必須內建「知識回饋環路」（Feedback Loop），讓接收端的新發現能自動回流到組織知識庫。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 案例6：最危險的假設</h4>
+            <p><strong>「既有設備，不需要重新委試（Commissioning）」</strong>——這是技術轉移中最危險的假設之一。</p>
+            <p>當設備已存在，但需要被<strong>重新配置</strong>以承接新製程時，自動化配方（Recipe）、控制邏輯、參數設定都需要重新驗證。案例6中的接收端以為「設備沒換，所以配方套用就好」，結果在第一批生產批次就失敗。</p>
+            <p>CDMO 規則：只要製程新增、設備重新配置，就必須進行系統性的配方驗證，即使設備是既有的。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>案例4 — 清潔驗證工程數據轉移的最低要求</h4>
+            <pre>
+清潔驗證轉移包（最低要求）：
+  A. 最終驗證報告（含接受標準）
+  B. 工程試驗數據（含失敗的試驗！）
+  C. 清潔劑濃度、溫度、時間參數的開發歷程
+  D. 設備幾何差異評估（送出 vs. 接收端）
+  E. 承包商聯絡方式與試驗環境描述
+
+注意：僅轉移 A 項是不夠的。
+接收端在遇到問題時，需要 B+C 來理解
+「為什麼接受標準這樣設」。
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 案例5：CDMO 能力評估的商業現實</h4>
+            <p>案例5揭示了一個常見的商業困境：送出端判斷接收端需要工程支援，但接收端（CMO）拒絕承擔費用。結果是三個月延誤，商業罰款條款幾乎被啟動。</p>
+            <p><strong>教訓：</strong>在技術轉移合約中，必須明確規定工程支援的責任歸屬與費用分擔，不能依賴「口頭善意」。接收端能力評估（Capability Assessment）應在合約簽訂前完成，並將技術支援需求列入合約條款。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 工程就緒度查核清單（12項）</h4>
+            <ol>
+                <li>關鍵設備的資格狀態（IQ/OQ/PQ）是否有效？</li>
+                <li>公用系統容量（WFI、潔淨蒸汽、壓縮空氣、冰水）是否已確認足夠？</li>
+                <li>環境分類是否符合製程要求（ISO 5/7/8）？</li>
+                <li>自動化配方是否已從送出端映射並驗證？</li>
+                <li>儀器校正狀態與頻率是否符合 CPP 精度需求？</li>
+                <li>材質規格（材質相容性、表面粗糙度）是否與送出端一致？</li>
+                <li>清潔驗證數據包（含工程試驗數據）是否完整接收？</li>
+                <li>維護優先級分類是否與送出端比較並達成共識？</li>
+                <li>設備服務歷史是否已審查，有無重複性偏差？</li>
+                <li>知識回饋機制是否已建立（接收端發現問題，如何回報給送出端？）？</li>
+                <li>第三方供應商/廠商的支援能力在接收端地區是否已確認？</li>
+                <li>工程等效性評估（送出 vs. 接收端設備）是否已完成文件化？</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>案例2中，Site 3 基於先前儀器漂移的壞經驗選擇了不同品牌的儀器。這個「教訓」為什麼沒有被傳遞給 Site 1 和 2？組織應建立什麼機制來防止這種情況？</li>
+                <li>案例4中，「只轉移驗證結論、不轉移工程試驗過程」的風險是什麼？在你的組織中，有哪些類似的知識轉移缺口？</li>
+                <li>案例6告訴我們，「不換設備」不等於「不需要驗證」。請列舉三種「設備未變但配置改變」的情境，每種情境需要的驗證活動為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 11.3: LESSONS LEARNED -->
+<!-- ============================================================ -->
+<div class="section-title">11.3 Lessons Learned — Techniques for Capturing Engineering Information</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE TechTransfer 3rd Ed.</span>
+
+        <p>Transfer of process related information in the form of specifications, quality documents, qualification and validation documents, production data, work instructions, and the many written technical resources within the <span class="key-term">GxP frameworks</span> of a biopharmaceutical organization is expected under a robust technology transfer plan. However, GxP systems may be insufficient for capturing/transfer of <span class="key-term">tacit engineering knowledge</span>.</p>
+
+        <p>The examples in Section 11.2 highlight the types of issues that may be encountered during technology transfer projects. The lessons learned from these examples are summarized in Table 11.7.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Example</th>
+                <th>Lessons Learned</th>
+            </tr>
+            <tr>
+                <td>Example #1</td>
+                <td>Include <span class="key-term">feedback loops</span> in technology transfer plans, in anticipation of new knowledge obtained at the receiving unit that can collectively benefit the organization.</td>
+            </tr>
+            <tr>
+                <td>Example #2</td>
+                <td>Solicit <span class="key-term">prior engineering knowledge</span> for equipment selection from the receiving unit(s) during planning for technology transfer projects.</td>
+            </tr>
+            <tr>
+                <td>Example #3</td>
+                <td>Where similar capabilities exist, conduct <span class="key-term">gap assessments</span> of GxP engineering practices at sending and receiving units. Understand the potential impact these gaps may have to qualification programs.</td>
+            </tr>
+            <tr>
+                <td>Example #4</td>
+                <td>In addition to reviewing validation activities and outcomes, review the <span class="key-term">engineering work underpinning</span> these or implied in their completion.</td>
+            </tr>
+            <tr>
+                <td>Example #5</td>
+                <td>In addition to the quality of the information, consider the <span class="key-term">capability of the receiving unit</span> to receive, understand, and act upon technical information.</td>
+            </tr>
+            <tr>
+                <td>Example #6</td>
+                <td>Review <span class="key-term">configuration information</span> within control systems to ensure the most current information is captured. Where acceptable ranges are permitted, validation information may not reflect the current configuration.</td>
+            </tr>
+        </table>
+        </div>
+
+        <h3>11.3.1 Useful Techniques for Capturing Engineering Information</h3>
+
+        <p>Engineering SMEs should plan for knowledge and information to be transferred and shared as part of a technology transfer project. The following is a list of useful tools.</p>
+
+        <p><strong>1. Planning for Technology Transfer During Procurement</strong></p>
+        <p>It is often known or expected that a process will be transferred. As part of the project planning process, it is recommended to have a structured program. Deliverables for the project charter should include a process to capture useful engineering information/decisions that would assist any future execution of a similar project.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Area</th>
+                <th>Examples of Content</th>
+            </tr>
+            <tr>
+                <td>Validation</td>
+                <td>Planning and support for qualification and validation</td>
+            </tr>
+            <tr>
+                <td>Commissioning</td>
+                <td>Inspection and test plans, commissioning, handover</td>
+            </tr>
+            <tr>
+                <td>Integration with GxP Systems</td>
+                <td>Maintenance/calibration to CMMS, SOP development</td>
+            </tr>
+            <tr>
+                <td>Construction</td>
+                <td>Project reports, meeting minutes</td>
+            </tr>
+            <tr>
+                <td>Process Automation</td>
+                <td>Automation deliverables, specifications, drawings</td>
+            </tr>
+            <tr>
+                <td>Engineering/Design</td>
+                <td>Specifications, drawings</td>
+            </tr>
+            <tr>
+                <td>Document Control/Coordination</td>
+                <td>Project procedures, training plans, records</td>
+            </tr>
+            <tr>
+                <td>Cost and Time Control</td>
+                <td>Budgets, budget reports, cost and time change reports</td>
+            </tr>
+            <tr>
+                <td>Planning</td>
+                <td>Schedules, work breakdown</td>
+            </tr>
+            <tr>
+                <td>Project Management</td>
+                <td>Key project documents, charter, project execution plan</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><strong>2. Structured Reviews of Engineering Databases for Existing Processes</strong></p>
+        <p>Engineering databases may include <span class="key-term">computerized maintenance management systems (CMMS)</span>, calibration management systems, configuration management systems, equipment history files or logs, setup instructions or check-sheets, training/familiarization materials.</p>
+
+        <p>Typical data to be considered may include:</p>
+        <ul>
+            <li><strong>Maintenance management data:</strong>
+                <ul>
+                    <li>Maintenance and calibration procedures and schedules (current practice)</li>
+                    <li>Routine setup procedures and operational checks</li>
+                    <li>Maintenance and calibration history (or selected history)</li>
+                    <li>Information from engineering files/manuals relating to knowledge gained post-qualification</li>
+                    <li>Checklists or training resources associated with key engineering activities</li>
+                    <li>Log book reviews</li>
+                </ul>
+            </li>
+            <li><strong>Configuration data:</strong>
+                <ul>
+                    <li>Control/automation configurable settings lists</li>
+                    <li>Copies or images of automation or configuration records</li>
+                    <li>Program version number information and history of upgrades</li>
+                    <li>Equipment/process setting checklists</li>
+                    <li>Tools/aids or techniques developed to assist setup or checking configuration</li>
+                </ul>
+            </li>
+            <li><strong>Engineering data supporting qualification:</strong>
+                <ul>
+                    <li>FMEAs, Hazard and Operability, and other risk assessments conducted for operation</li>
+                    <li>FMEA analysis to anticipate the need of specific commissioning or wet testing during start-up</li>
+                    <li>Commissioning reports or data</li>
+                    <li>Details of engineering studies conducted</li>
+                    <li>Changes/lessons learned from start-up or initial operation</li>
+                </ul>
+            </li>
+            <li><strong>Operational excellence data:</strong>
+                <ul>
+                    <li>OEE information</li>
+                    <li>Value stream mapping exercises, Lean/Six Sigma projects (DMAIC improvements)</li>
+                    <li>Engineering KPIs</li>
+                    <li>Known troublesome areas for operations arising out of breakdowns, ineffective maintenance, difficulty in setup</li>
+                    <li>Reliability analysis, mean time between failures (MTBF), mean time to failure (MTTF), or similar data</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p><strong>3. Responsibilities (RACI) Matrix</strong></p>
+        <p>SMEs from the engineering functions of sending and receiving units should meet, ideally <span class="key-term">face-to-face</span>, to review the proposed transfer after receiving details of the project scope and proposed process. A result of this meeting should include a list of required deliverables and a <span class="key-term">RACI responsibilities matrix</span>. Matters to consider include:</p>
+        <ul>
+            <li>Role of the engineering SMEs in the sending and receiving units:
+                <ul>
+                    <li>Involvement in planning of items/knowledge to be shared</li>
+                    <li>Strength and weaknesses in the necessary technical areas at the receiving unit</li>
+                    <li>Identification of skill matrix for required support for the project</li>
+                    <li>Future site visits and training needs for both the sending and receiving units</li>
+                    <li>Specific areas where collaboration may be required between SMEs from different backgrounds (engineering, scientists, operations specialists)</li>
+                </ul>
+            </li>
+            <li>Role of engineering suppliers and vendors:
+                <ul>
+                    <li>Areas where potential exists to leverage existing vendor/supplier networks from either site</li>
+                    <li>Capability analysis of supplier/vendor networks at the receiving unit</li>
+                    <li>The need for ongoing supplier/vendor engagement and support</li>
+                    <li>The scope and responsibility for preparation of contracts and service agreements</li>
+                    <li>The criticality of third party support packages and the potential need for guarantees and incentivization</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p><strong>4. Engineering Equivalence Assessments (Gap Analysis)</strong></p>
+        <p>The level of existing capabilities for key processes or equipment may not be identical at the sending and receiving units. Even where processing and equipment are considered identical (same make, model of equipment, starting materials, specifications, etc.), these systems may be performing differently. <span class="key-term">Equivalence assessments</span> involve identification and comparison of aspects including:</p>
+        <ul>
+            <li>Design and specifications of equipment and utility services</li>
+            <li>Performance data under similar input and operating conditions</li>
+            <li>Engineering data</li>
+        </ul>
+
+        <p><strong>5. Ongoing Review and Benchmarking</strong></p>
+        <p>Such projects also present a valuable <span class="key-term">benchmarking</span> opportunity. The following activities are useful to undertake and may highlight opportunities to improve the process at both the sending and receiving units:</p>
+        <ul>
+            <li>Review of the original information on one or more occasions during the receiving unit's implementation, to identify areas where information was unnecessary and where gaps exist</li>
+            <li>Planning for data sharing and monitoring of performance and engineering metrics, including:
+                <ul>
+                    <li>Ongoing monitoring and reporting metrics, reporting strategies</li>
+                    <li>One-time performance/comparability reporting, Pareto analysis</li>
+                    <li>Targeted engineering reviews</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 五種工程知識擷取技術</h4>
+            <p>ISPE 提出的五種工具，各有其應用時機：</p>
+            <ul>
+                <li><strong>採購規劃</strong>：在設備採購時就開始規劃知識轉移——這是最省力的時機，因為工程師還在現場</li>
+                <li><strong>工程資料庫審查</strong>：系統性地挖掘 CMMS、校正紀錄、組態管理系統中的隱性知識</li>
+                <li><strong>RACI 矩陣</strong>：明確分工——誰負責（Responsible）、誰當責（Accountable）、誰諮詢（Consulted）、誰知情（Informed）</li>
+                <li><strong>工程等效性評估</strong>：即使型號相同，也要比較實際效能數據，不能假設「相同型號 = 相同效能」</li>
+                <li><strong>持續比較基準</strong>：轉移後的持續監測，讓雙方都能從比較中學習</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — RACI 矩陣：工程版的「婚禮協調人」</h4>
+            <p>大型婚禮需要一個協調人來確保：新郎新娘（Accountable）、婚禮規劃師（Responsible for logistics）、雙方家長（Consulted on preferences）、賓客（Informed of schedule）各司其職。</p>
+            <p>技術轉移的工程 RACI 矩陣扮演同樣角色：清楚定義「這個設備的校正計畫由誰主責？送出端要諮詢哪些事項？」否則在跨國、跨公司的轉移中，每個人都以為另一個人在處理，最後沒有人處理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 工程等效性評估的真正意涵</h4>
+            <p>「工程等效性 (Engineering Equivalence)」在法規層面與技術層面有不同含義：</p>
+            <ul>
+                <li><strong>技術等效</strong>：設備能執行相同功能，在關鍵參數範圍內達到相同輸出——可以透過工程比較數據証明</li>
+                <li><strong>法規等效</strong>：若設備類型不同（例如：從磁力攪拌換成機械攪拌），即使功能等效，法規上可能需要額外的 PPQ 批次數據，甚至變更通報</li>
+            </ul>
+            <p>CDMO 在接收新產品時，必須先完成等效性評估，再決定是否需要追加 PPQ 批次——這個決定要在 PPQ 執行前完成，不是在執行時發現問題再來討論。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>工程等效性評估框架（發送端 vs. 接收端）</h4>
+            <pre>
+比較維度               發送端        接收端        差異風險
+---------------------------------------------------------
+設備型號/廠牌         XXX           YYY           高/中/低
+製造日期/世代         2018          2023          低（較新）
+攪拌類型              錨式          槳式          高→需重新確認Re數
+溫控精度              ±0.5°C        ±1.0°C        中→需評估CPP容忍度
+材質 (接觸面)         316L SS       316L SS       低
+表面粗糙度 Ra         ≤0.8μm        ≤0.8μm        低
+自動化平台            Siemens S7    Rockwell AB   高→配方需重新映射
+校正頻率              每季           每半年        中→需評估儀器穩定性
+CMMS系統              SAP-PM        Oracle-EAM    低（數據可轉換）
+公用系統容量           足夠          待確認        -→必須在PPQ前確認
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 工程 SME 面對面會議議程（推薦實踐）</h4>
+            <p>根據 ISPE 建議，工程 SME 的首次面對面會議應涵蓋：</p>
+            <ol>
+                <li><strong>製程概覽</strong>：送出端介紹製程中的關鍵工程控制點（30分鐘）</li>
+                <li><strong>設備比較</strong>：逐一比較關鍵設備，完成初步等效性評分（60分鐘）</li>
+                <li><strong>已知問題盤點</strong>：送出端坦誠分享設備的已知缺陷、磨耗模式、重複偏差（30分鐘）</li>
+                <li><strong>自動化配方審查</strong>：映射關鍵配方參數到接收端控制系統（45分鐘）</li>
+                <li><strong>能力差距識別</strong>：接收端工程師說明自身的技術強項與弱項（30分鐘）</li>
+                <li><strong>RACI 草稿</strong>：共同起草分工矩陣，明確各類文件的交付責任（30分鐘）</li>
+            </ol>
+            <p>這個會議應在技術轉移計畫正式啟動後的第一個月內完成。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 公用系統容量要在 PPQ 前確認</h4>
+            <p>文章特別強調，接收端必須在技術轉移執行前（而非 PPQ 期間）確認公用系統容量：</p>
+            <ul>
+                <li><strong>WFI</strong>：用水量、生產高峰時段的流量需求</li>
+                <li><strong>潔淨蒸汽</strong>：SIP 需求與用量</li>
+                <li><strong>壓縮空氣</strong>：品質（露點）與流量</li>
+                <li><strong>冰水系統</strong>：製程冷卻需求</li>
+            </ul>
+            <p>這些往往在 PPQ 執行時才發現不足，但此時已太晚——修改工程需要數週，而 PPQ 批次的窗口可能已被佔用。<strong>公用系統容量確認是工程就緒度查核清單的必要項目。</strong></p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CMMS（電腦化維護管理系統）中有哪些類型的數據，對技術轉移最具價值？為什麼「歷史校正紀錄」比「當前校正計畫」更重要？</li>
+                <li>ISPE 建議在採購時就開始規劃技術轉移知識擷取。在你的組織中，設備採購與技術轉移規劃通常是否整合？如果沒有，整合的主要障礙是什麼？</li>
+                <li>「持續比較基準（Ongoing Benchmarking）」對 CDMO 的業務有什麼長期價值？除了解決眼前問題，它如何幫助 CDMO 提升競爭力？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>工程知識是技術轉移的隱形脊梁：</strong>製程文件可以被複製，但設備的磨耗模式、儀器的漂移行為、操作員的設定技巧，這些隱性知識才是轉移成敗的關鍵，必須主動規劃擷取。</li>
+        <li><strong>六個案例的核心警示：</strong>機械磨耗需要知識回饋機制（#1）、儀器選型需要採購歷史（#2）、維護優先級需要事先比較（#3）、清潔驗證需要轉移工程試驗數據而非只有結論（#4）、接收端能力需要合約保障（#5）、「設備沒換」不等於「配方不需驗證」（#6）。</li>
+        <li><strong>自動化配方映射是高風險盲點：</strong>在不同控制系統平台之間轉移製程時，配方參數的逐一映射與驗證是必要步驟，不能假設「參數名稱相同就等於設定相同」。</li>
+        <li><strong>五種工具的時機：</strong>採購期規劃（最早介入）→ 工程資料庫審查（轉移前）→ RACI 矩陣（計畫啟動後立即）→ 等效性評估（PPQ 前完成）→ 持續基準比較（轉移後長期）。</li>
+        <li><strong>CDMO 就緒度查核：</strong>公用系統容量、自動化配方、設備服務歷史、清潔驗證工程數據、維護優先級比較——這五項必須在 PPQ 執行前完成，晚了就是批次風險。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
