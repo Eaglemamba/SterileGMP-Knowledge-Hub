@@ -1144,6 +1144,38 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## PDA/TR49-Complete.md
+**Report:** PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation
+**Pages:** p1–p76 | **Sections:** 9
+
+**Covers questions about:**
+- Unique aspects of cleaning validation specific to biotechnology manufacturing (mammalian cell culture, microbial fermentation, downstream processing)
+- How to establish acceptance limits for actives, cleaning agents, bioburden, and endotoxins in biotech contexts
+- MAC (Maximum Allowable Carryover) and MSSR calculations with worked examples
+- Sampling method selection: swab vs rinse vs direct sampling, recovery studies, sampler qualification
+- Specific vs nonspecific analytical methods: HPLC, ELISA, TOC, total protein, conductivity — when to use each
+- Analytical method validation parameters (LOD, LOQ, accuracy, precision, linearity, matrix effects)
+- Cleaning validation protocol structure, cleaning verification, regulatory compliance (FDA/EMA/ICH)
+- Maintaining validated state: change control, critical parameter control, periodic monitoring, trending
+- Cleaning validation master planning and site harmonization across multi-site or CDMO environments
+- Risk assessment tools (FMEA, HACCP) applied to cleaning validation
+- Special considerations: single-use equipment, multi-host facilities, viruses/prions, PAT, clean/dirty hold times, product changeover
+
+**Key terms:** cleaning validation, biotechnology, carryover, MAC (maximum allowable carryover), MSSR (maximum safe surface residue), CIP (clean-in-place), COP (clean-out-of-place), soil, soil matrix, acceptance limits, TOC (total organic carbon), swab sampling, rinse sampling, recovery study, LOD, LOQ, method validation, D-value, dirty hold, clean hold, design space, DOE, bioburden, endotoxin, single-use equipment, multi-host facility, PAT, FMEA, immunogenicity, HAMA/HACA/HAHA, worst case, critical surface
+
+**Sections:**
+0. Introduction & Glossary (p3–p6)
+1. Cleaning Process Design & Development (p6–p16) — 3.1–3.8: process controls, soil evaluation, scale-up, design space
+2. Acceptance Limits (p17–p22) — 4.1–4.6: actives, cleaning agents, bioburden, endotoxin, visual, modifying
+3. Sampling Methods (p23–p30) — 5.1–5.5: swab/rinse/direct, placebo, recovery studies, training
+4. Analytical Methods (p31–p38) — 6.1–6.5: specific/nonspecific methods, TOC/protein/conductivity, method validation
+5. Validation Protocols & Maintenance of Validated State (p39–p46) — 7.0–8.7
+6. Master Planning & Risk Assessment (p44–p49) — 9.0–10.2
+7. Special Considerations (p49–p60) — 11.1–11.10: SUS, multi-host, viruses/prions, PAT, changeover, hold times
+8. Regulatory Issues, References & Appendix (p60–p76) — carryover calculation examples, regulatory citations
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1194,6 +1226,14 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
+| Cleaning validation, carryover, MAC, MSSR, acceptance limits, biotechnology cleaning / 清潔驗證、殘留攜帶、最大允許攜帶量、生物技術清潔 | TR49 |
+| Biotech cleaning: swab vs rinse sampling, recovery study, sampler qualification / 生物製藥取樣方法、棉棒vs沖洗取樣、回收率研究 | TR49 |
+| TOC, total organic carbon, cleaning analytical method, LOD LOQ method validation / 總有機碳、清潔分析方法、偵測極限 | TR49 |
+| Dirty hold, clean hold, product changeover, cleaning after biotech fermentation / 清潔前後保留時間、產品切換、生物發酵後清潔 | TR49 |
+| Single-use equipment cleaning validation, bypass SUS, disposable bioreactor / 一次性設備清潔驗證 | TR49 |
+| Multi-host facility, CDMO cleaning, shared equipment, cross-contamination limits / 多產品廠清潔、CDMO共用設備、交叉汙染限度 | TR49 |
+| Viral clearance vs cleaning boundary, prion cleaning, mycoplasma biotech / 病毒去除vs清潔邊界、普恩蛋白清潔 | TR49 |
+| Cleaning validation master plan, site harmonization, CVMP / 清潔驗證總體計畫、多廠點協調 | TR49 |
 | Cleaning disinfection, sanitizer, sporicide, disinfectant rotation / 清潔消毒、消毒劑輪替、殺孢子劑 | TR70 |
 | Disinfectant qualification, efficacy testing, AOAC, EN test / 消毒劑確效、效力測試 | TR70 |
 | Hold time, in-use expiration, cleaning frequency / 保存時限、使用效期、清潔頻率 | TR70 |
@@ -1369,6 +1409,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
+**Cleaning Validation (清潔驗證)**
+→ TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
+
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
@@ -1376,7 +1419,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
-→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
+→ TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR49 ★★ (cleaning validation risk assessment: FMEA/HACCP/HAZOP applied to cleaning, CPP/CQA table, QRM master plan) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
 
 **Personnel / Gowning (人員與更衣)**
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-Isolators ★★★ (isolator gowning, glove disinfection) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)

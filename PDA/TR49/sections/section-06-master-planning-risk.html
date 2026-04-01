@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 6: Master Planning &amp; Risk Assessment</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 6: Master Planning &amp; Risk Assessment | 總體規劃與風險評估</h1>
+    <div class="subtitle">PDA Technical Report No. 49 — Points to Consider for Biotechnology Cleaning Validation</div>
+    <div class="page-info">Sections 9.0–9.3 &amp; 10.0–10.2 &nbsp;|&nbsp; Pages 45–49</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand the purpose and key elements of a Cleaning Validation Master Plan (CVMP) | 了解清潔驗證總體計畫的目的與核心要素</li>
+            <li>Explain how to harmonize cleaning programs across multiple manufacturing sites | 說明多廠址清潔程序協調統一的方法</li>
+            <li>Describe how clinical stage affects cleaning validation requirements | 描述臨床階段如何影響清潔驗證要求</li>
+            <li>Apply quality risk management (QRM) principles to cleaning validation planning | 將品質風險管理原則應用於清潔驗證規劃</li>
+            <li>Identify risk assessment tools (FMEA, HACCP, FTA) used in cleaning validation | 識別清潔驗證中使用的風險評估工具</li>
+        </ul>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Contents | 本節內容</h3>
+        <div class="toc-grid">
+            <a href="#sec9">9.0 Master Planning</a>
+            <a href="#sec9-1">9.1 Elements of a Comprehensive Plan</a>
+            <a href="#sec9-2">9.2 Site Harmonization</a>
+            <a href="#sec9-3">9.3 Clinical Stage Activities</a>
+            <a href="#sec10">10.0 Risk Assessment &amp; Management</a>
+            <a href="#sec10-1">10.1 Introduction to QRM</a>
+            <a href="#sec10-2">10.2 Techniques &amp; Tools</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 9.0 ===== -->
+    <div class="chapter-section" id="sec9">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9</div>
+            <div class="chapter-info">
+                <h2>9.0 Master Planning for Cleaning Validation | 清潔驗證總體規劃</h2>
+                <p>Defining the overarching strategy, rationale, and documentation framework | 定義總體策略、原理依據與文件架構</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text (PDA TR49, pp. 45–46)</h3>
+
+                    <p>All validation activities should be planned. The requirements for a <span class="key-term">cleaning validation program</span> should be defined and documented in a <span class="key-term">master plan</span> or an equivalent document. While in principle the parts of a cleaning master plan may be the same for all drug manufacturing, certain specifics of the master plan for biopharmaceutical manufacturing will be different because of the significant differences between manufacturing and cleaning for large molecule biopharmaceuticals and for small molecules.</p>
+
+                    <p>The plan should provide a description of responsibilities and activities for the planning and execution of cleaning validation. This is best accomplished by a specific <span class="key-term">cleaning validation master plan</span>. This plan would be described in the overall <span class="key-term">site validation master plan</span>. The cleaning master plan may be all-encompassing. However, an alternate approach is to have a high-level cleaning master plan and then a <span class="key-term">cleaning execution or project plan</span>, which has more detailed explanations of the validation requirements. These documents are living documents that should be reviewed and updated on a regular basis. A report to the plan should be written periodically to summarize the major activities executed under the plan during that interval.</p>
+
+                    <p>The <span class="key-term">cleaning master plan</span> will describe the overall plan, rationale and methodology to be used in performing cleaning validation. The plan should provide a high level description of the cleaning validation philosophy and strategy that will support the validation activities performed at the site. Detailed procedures on the execution of cleaning validation will be in individual protocols. The plan will define the efforts required to ensure the cleaning program complies with <span class="key-term">CGMPs</span>. The validation activities are documented according to the requirements of the plan to provide sufficient scientific rationale to assess the suitability of the cleaning program in order to consistently clean equipment to the required specifications.</p>
+
+                    <p>During a <span class="key-term">regulatory inspection</span>, an inspector may ask to review the master plan and then look at the specific validation protocols and final reports to determine if the plan is appropriate and to assure that the elements of both the plan and individual protocols are being followed.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說與重點補充</h3>
+
+                    <div class="concept-box">
+                        <h4>清潔驗證總體計畫（CVMP）是什麼？</h4>
+                        <p><strong>Cleaning Validation Master Plan（CVMP）</strong> 是整個清潔驗證計畫的「憲法文件」，定義範圍、策略、責任分工與執行方法。它不是一份靜態文件，而是<strong>活的文件（living document）</strong>，需定期審查更新。</p>
+                        <p>CVMP 的層次架構：</p>
+                        <ul>
+                            <li><strong>廠址驗證總體計畫（Site VMP）</strong> — 最高層，涵蓋所有驗證活動</li>
+                            <li><strong>清潔驗證總體計畫（CVMP）</strong> — 專屬清潔驗證的策略文件</li>
+                            <li><strong>執行/專案計畫</strong> — 詳細技術要求與流程</li>
+                            <li><strong>個別方案（Protocols）</strong> — 具體設備或製程的驗證程序</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>法規稽查重點提示</h4>
+                        <p>法規稽查員（FDA、EMA 等）<strong>通常會要求查閱 CVMP</strong>，再深入查看個別驗證方案與最終報告，以確認：</p>
+                        <ul>
+                            <li>計畫內容是否合理且符合科學依據</li>
+                            <li>實際執行是否確實遵循計畫</li>
+                            <li>計畫的架構是否完整且可追溯</li>
+                        </ul>
+                        <p>因此，CVMP 的品質直接影響稽查結果。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：工程藍圖</h4>
+                        <p>CVMP 就像蓋大樓的「工程藍圖」：藍圖說明整體設計概念和原則，而各樓層的施工圖（個別方案）則包含具體尺寸和細節。稽查員先看藍圖，再抽查施工圖，確認兩者一致。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 9.1 ===== -->
+    <div class="chapter-section" id="sec9-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.1</div>
+            <div class="chapter-info">
+                <h2>9.1 Elements of a Comprehensive Plan | 總體計畫的核心要素</h2>
+                <p>The full list of topics a robust CVMP should address | 完整 CVMP 應涵蓋的所有主題</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text (PDA TR49, pp. 45–46)</h3>
+
+                    <p>The master plan should address each important aspect of the <span class="key-term">cleaning validation program</span>. Elements of a master plan and the appropriate detail provided for those elements will depend on the practices of the specific facility. Some companies may include more detail in the master plan, while other companies prefer to include that detail in procedures consistent with the master plan. Elements of a master plan may include, but are not limited to, the following topics:</p>
+
+                    <ul>
+                        <li>Purpose of the plan</li>
+                        <li>Scope of the cleaning program</li>
+                        <li>Designation of responsibilities</li>
+                        <li>List of equipment to be validated</li>
+                        <li>Definitions and glossary of terms</li>
+                        <li>Prerequisites to cleaning validation (e.g., equipment and utility qualifications)</li>
+                        <li><span class="key-term">Spray device coverage testing</span></li>
+                        <li>Use of various cleaning systems (e.g., <span class="key-term">CIP</span>, <span class="key-term">COP</span>, mechanical washers or manual cleaning)</li>
+                        <li>Cleaning reagents and mechanisms</li>
+                        <li>Cleaning cycle development requirements</li>
+                        <li>Definition of the production cleaning cycle</li>
+                        <li>Precleaning methods (e.g., presoaking or inactivation of biologics)</li>
+                        <li>Soiling solutions</li>
+                        <li>Definition and use of <span class="key-term">"worst-case conditions"</span> associated with a cleaning process (e.g., flow rates or step durations)</li>
+                        <li>Description of <span class="key-term">family approach</span> and grouping of products/equipment/systems based on similarities, including an approach to determine "worst-case product" based upon attributes that impact cleaning (e.g., solubility of all components in the "soil")</li>
+                        <li>Use of dedicated or shared equipment; <span class="key-term">single use (disposable) equipment</span></li>
+                        <li>Definition of circumstances in which <span class="key-term">cleaning verification</span> is preferred or acceptable (e.g., clinical stages)</li>
+                        <li>Specific approaches for cleaning upstream vs. downstream bulk process equipment</li>
+                        <li>Elucidation of approaches for cleaning bulk vs. formulation/fill manufacturing equipment</li>
+                        <li>Strategies for non-product surfaces, such as <span class="key-term">lyophilizers</span></li>
+                        <li>Use of <span class="key-term">quality risk management</span> to determine the scope and extent of validation activities</li>
+                        <li>Establishment of <span class="key-term">design space</span> based on cleaning parameters and use in ongoing monitoring</li>
+                        <li><span class="key-term">Chromatography</span> and <span class="key-term">ultrafiltration</span> system requirements</li>
+                        <li>Use of mock (blank) runs</li>
+                        <li>Equipment <span class="key-term">hold study</span> approaches (e.g., dirty hold, clean hold or storage hold)</li>
+                        <li>Microbial contamination (e.g., <span class="key-term">bioburden</span> and <span class="key-term">endotoxin</span>)</li>
+                        <li>Sampling techniques (e.g., visual inspection, <span class="key-term">rinse sampling</span> or <span class="key-term">surface sampling</span>)</li>
+                        <li>Training/qualification for sampling techniques</li>
+                        <li>Analytical methods (e.g., validation and recovery requirements)</li>
+                        <li>Rationale for the use of product-specific assays and <span class="key-term">nonspecific assays</span></li>
+                        <li>Calculations and/or rationales for limits for <span class="key-term">process residues</span>, microbial contaminants and cleaning agents</li>
+                        <li>Routine monitoring/validation maintenance</li>
+                        <li><span class="key-term">Change control</span> and revalidation requirements</li>
+                        <li>References</li>
+                        <li>Attachments/appendices (e.g., various tables or lists of items within the realm of the plan such as a responsibility matrix or a list of cleaning circuits)</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說與重點補充</h3>
+
+                    <div class="concept-box">
+                        <h4>CVMP 要素分類概覽</h4>
+                        <p>TR49 列舉的要素可歸納為六大類別：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>類別</th>
+                                    <th>主要要素</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>行政管理</strong></td>
+                                    <td>目的、範圍、責任分工、參考文件、附件</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>設備系統</strong></td>
+                                    <td>設備清單、清洗系統（CIP/COP/手動）、噴灑裝置覆蓋測試、設備分組策略</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>清潔製程</strong></td>
+                                    <td>清潔劑、清洗循環開發、最差條件定義、預清潔方法</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>生物製品特定</strong></td>
+                                    <td>生物製品滅活、色譜/超濾系統、上下游設備差異化策略</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>分析與取樣</strong></td>
+                                    <td>取樣技術、分析方法、限度計算、特異性/非特異性分析</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>生命週期管理</strong></td>
+                                    <td>設計空間、持有時間研究、微生物控制、變更控制、再驗證</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>生物製品 CVMP 的獨特要素</h4>
+                        <p>相較於小分子藥品，生物製品的 CVMP 必須特別涵蓋：</p>
+                        <ul>
+                            <li><strong>生物製品的預清潔與滅活</strong> — 確保蛋白質、核酸等生物物質在清洗前已適當處理</li>
+                            <li><strong>色譜與超濾系統</strong> — 這些複雜的下游純化設備有獨特的清洗挑戰</li>
+                            <li><strong>上游 vs. 下游設備</strong> — 兩者的污染性質和清洗方法差異顯著</li>
+                            <li><strong>凍乾機等非產品接觸表面</strong> — 需有明確的策略文件</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>關鍵術語速查</h4>
+                        <ul>
+                            <li><strong>CIP（Clean-in-Place）</strong> — 就地清洗，設備不拆卸，透過固定管線循環清洗液</li>
+                            <li><strong>COP（Clean-out-of-Place）</strong> — 離線清洗，設備拆卸後送至清洗站清洗</li>
+                            <li><strong>Worst-case Product（最差情況產品）</strong> — 最難清除的產品，作為代表性驗證對象</li>
+                            <li><strong>Family Approach（分組策略）</strong> — 將具有相似特性的產品/設備歸組，以最差情況代表整組驗證</li>
+                            <li><strong>Design Space（設計空間）</strong> — 已建立的清洗參數範圍，在此範圍內操作可確保清潔效果</li>
+                            <li><strong>Dirty/Clean Hold Time（持有時間）</strong> — 清洗前/後設備可存放的最長時間</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 1</h4>
+                        <p><strong>情境：</strong>你的生物製品工廠正在起草第一份 CVMP。主管問你：「我們只要把每個驗證方案的範圍列表放進去就夠了嗎？」</p>
+                        <p><strong>問題：</strong>根據 TR49 Section 9.1，這樣做有哪些不足？CVMP 還需要哪些額外內容？</p>
+                        <p><strong>參考答案方向：</strong>僅列設備清單遠遠不夠。CVMP 至少還需涵蓋：清洗哲學與策略、責任分工、最差條件的定義邏輯、分析方法選擇依據、限度計算原理、變更控制流程，以及生物製品特有的考量（如生物製品滅活、色譜系統）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 9.2 ===== -->
+    <div class="chapter-section" id="sec9-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.2</div>
+            <div class="chapter-info">
+                <h2>9.2 Harmonization of Site Cleaning Programs | 廠址清潔程序的協調統一</h2>
+                <p>Aligning cleaning validation across multiple manufacturing sites and contract manufacturers | 多廠址及委託製造商之間清潔驗證的協調對齊</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text (PDA TR49, p. 46)</h3>
+
+                    <p>For a product made at more than one <span class="key-term">site</span>, the cleaning requirements should preferably be the same, where appropriate. For example, if the process equipment scale is different, or the type of cleaning equipment available and/or cleaning process is different (e.g., CIP skid vs. manual), the programs can only be <span class="key-term">harmonized</span> to a limited degree.</p>
+
+                    <p>The <span class="key-term">analytical methods</span> used to determine the level of cleanliness should be the same, but the acceptance criteria may differ for any limit that is based on batch size and equipment surface area. The same would also apply to some degree if a <span class="key-term">contract manufacturer</span> were making the same product. However, there is an additional consideration, since the contractor is also obliged to follow his own master plan.</p>
+
+                    <p>A contract manufacturer may validate their cleaning process using techniques and procedures that differ, but the resulting validation must be compliant and must meet appropriate regulatory expectations. Any critical differences should be addressed up front in the <span class="key-term">quality agreement</span> with the contractor.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說與重點補充</h3>
+
+                    <div class="concept-box">
+                        <h4>多廠址協調統一的三個層次</h4>
+                        <p>TR49 的 Harmonization 原則可分為三個層次：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>層次</th>
+                                    <th>必須統一</th>
+                                    <th>可以不同</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>分析方法</strong></td>
+                                    <td>相同的分析方法（確保可比性）</td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>接受標準</strong></td>
+                                    <td>基於相同的科學原則計算</td>
+                                    <td>因批量與設備表面積不同，數值可有差異</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>清洗方法</strong></td>
+                                    <td>符合法規期望，結果合規</td>
+                                    <td>CIP vs. 手動清洗、設備規模等操作細節</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>委託製造商（CMO/CDMO）的特殊考量</h4>
+                        <p>當產品交由 CMO/CDMO 生產時，清潔驗證的協調更加複雜：</p>
+                        <ul>
+                            <li>CMO 有義務遵循<strong>自己的 CVMP</strong>，不能完全照搬原廠做法</li>
+                            <li>CMO 的清洗技術和程序可以不同，但<strong>驗證結果必須合規</strong></li>
+                            <li>任何關鍵差異必須<strong>在簽署品質協議（Quality Agreement）前</strong>事先明確討論並書面記錄</li>
+                            <li>原廠應對 CMO 的清潔驗證程序進行審查，確保符合雙方的法規期望</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：連鎖餐廳的標準化</h4>
+                        <p>多廠址協調就像連鎖餐廳的品質管理：各分店的廚房設備、規模可能不同，但使用同樣的食材規格和品質檢驗標準。每家分店有自己的作業程序，但最終都要達到相同的食品安全要求。委外廠商（代工廚房）則須先簽協議，確認能達到相同的品質標準。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 9.3 ===== -->
+    <div class="chapter-section" id="sec9-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">9.3</div>
+            <div class="chapter-info">
+                <h2>9.3 Cleaning Validation Activities as a Function of Clinical Stage | 清潔驗證活動與臨床階段的關係</h2>
+                <p>Scaling validation rigor to match the stage of product development | 依據產品開發階段調整驗證嚴格程度</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text (PDA TR49, pp. 46–47)</h3>
+
+                    <p>Validation requirements will vary according to the stage of the product. It may not be feasible to do cleaning validation for equipment processing <span class="key-term">clinical materials</span>, since typically a limited number of lots are being made, and the manufacturing process may not be locked in yet. Therefore, extensive cleaning process design and development required for cleaning validation is not warranted. In these situations, <span class="key-term">cleaning verification</span> should be done using testing that is equivalent to that used in the validation program.</p>
+
+                    <p>The analytical methods might not be validated to the same extent as for an analytical method used for a cleaning validation protocol. In these cases, their suitability has to be assessed. The test results are used to release the equipment before the next use.</p>
+
+                    <p>In processing clinical materials, cleaning validation may be possible for <span class="key-term">process support equipment</span> like buffer and media vessels. The support equipment can be qualified using a <span class="key-term">worst-case soiling solution</span> in a grouping strategy (see Section 11.1). However, in the future, if a new worst-case soiling solution is identified, validation would need to be performed on that new worst case.</p>
+
+                    <p>Cleaning validation may be considered for <span class="key-term">late-stage clinicals</span> and is required for <span class="key-term">commercial manufacturing</span>. It may be acceptable to do cleaning verification for late-stage clinicals, for example, if sufficient lots are not manufactured and cleaned at the same site using the same conditions.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說與重點補充</h3>
+
+                    <div class="concept-box">
+                        <h4>臨床階段與清潔驗證要求對照</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>開發階段</th>
+                                    <th>清潔要求</th>
+                                    <th>說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>早期臨床（Phase I/II）</strong></td>
+                                    <td>清潔驗證 (Verification)</td>
+                                    <td>批次數少、製程未鎖定，只需逐批確認清潔效果</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>支援設備（任何臨床階段）</strong></td>
+                                    <td>可進行驗證（Validation）</td>
+                                    <td>緩衝液槽、培養基容器等，用最差情況模擬液進行分組驗證</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>晚期臨床（Phase III）</strong></td>
+                                    <td>可考慮驗證，或接受確認</td>
+                                    <td>若批次足夠且條件一致，可進行驗證；否則確認亦可接受</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>商業生產</strong></td>
+                                    <td>清潔驗證（Validation）必須</td>
+                                    <td>法規強制要求，不可僅做確認</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Verification vs. Validation — 關鍵區別</h4>
+                        <p><strong>清潔確認（Cleaning Verification）</strong>：對每批次清洗後進行測試，確認該次清洗結果符合標準。屬於逐批控制。</p>
+                        <p><strong>清潔驗證（Cleaning Validation）</strong>：透過一系列有代表性的測試（通常 3 次），建立清洗程序在規定條件下「始終」能達到潔淨標準的科學證明。屬於程序控制。</p>
+                        <p>簡言之：Verification 是「每次證明」，Validation 是「一次性建立持久性信心」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：新員工 vs. 資深員工</h4>
+                        <p>臨床階段就像新員工試用期：試用期間每天打卡考核（確認），轉正後建立信任機制（驗證），之後定期考核維持（監控）。商業生產就是「正式員工」，必須有完整的驗證文件，不能只靠每批確認。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 10.0 ===== -->
+    <div class="chapter-section" id="sec10">
+        <div class="chapter-divider">
+            <div class="chapter-badge">10</div>
+            <div class="chapter-info">
+                <h2>10.0 Risk Assessment and Management | 風險評估與管理</h2>
+                <p>Applying Quality Risk Management (QRM) principles throughout the cleaning validation life cycle | 將品質風險管理原則應用於清潔驗證生命週期全程</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- Intro paragraph spanning full width conceptually, but in two-column -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>10.1 Introduction | 簡介 (PDA TR49, pp. 48–49)</h3>
+
+                    <p><span class="key-term">Quality Risk Management (QRM)</span> is a readily applied and logical process that is effectively used to support the planning and strategy for maintaining a system or a process under continuous quality oversight. The many benefits of a quality risk management process include, but are not limited to:</p>
+
+                    <ul>
+                        <li>Improved planning and preparation to prevent potential failures</li>
+                        <li>Increased understanding of the critical aspects of systems, processes and products</li>
+                        <li>Improved stakeholder relationships through better communication</li>
+                        <li>Increased levels of assurance through documentation of the decision-making process</li>
+                        <li>Reduced risk to patients by modifying processes to eliminate or reduce risk</li>
+                        <li>Improved detectability of fault conditions</li>
+                        <li>Optimization and prioritization of qualification efforts and resources</li>
+                        <li>Selection of test methods and acceptance criteria which are aligned with <span class="key-term">critical quality attributes (CQAs)</span> of products</li>
+                        <li>Compliance with regulatory requirements or expectations</li>
+                        <li>Assistance in maintaining processes in a state of control</li>
+                    </ul>
+
+                    <p>The role of <span class="key-term">risk management</span> is integral to the design and validation strategy for manufacturing systems. Risk management is a continuous process. Key inputs and data are analyzed and evaluated, and <span class="key-term">risk mitigation</span> measures are implemented to ensure the outputs of the design are appropriately considered and verified, and that the subject system is demonstrated as fit for purpose.</p>
+
+                    <p>Cleaning and cleaning validation requirements are determined from inputs related to the knowledge of process systems, soils and equipment cleaning aids (e.g., chemical and mechanical features). These requirements are subject to a design review and then verified in accordance with the acceptance criteria that are used to prove that the system requirements have been achieved.</p>
+
+                    <p>Product knowledge, process knowledge, regulations and quality attributes are used to develop the requirements for cleaning and to define the technologies that will best support the cleaning of manufacturing systems and components. Issues that may impact cleaning include: soil type, <span class="key-term">cleaning process</span>, equipment design and configuration and availability of utility services. Process knowledge is used to determine <span class="key-term">CPPs</span> and define <span class="key-term">CQAs</span>. Examples of each are presented in Table 10.1 below.</p>
+
+                    <h3 style="margin-top: 1rem;">Table 10.1 — CPP and CQA Considerations with Potential Risk Impact to a Cleaning Process</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Critical Process Parameters (CPPs)</th>
+                                <th>Critical Quality Attributes (CQAs)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Process temperature</td>
+                                <td>Visual detection or limits</td>
+                            </tr>
+                            <tr>
+                                <td>Process pressure</td>
+                                <td>Cleaning agent residues</td>
+                            </tr>
+                            <tr>
+                                <td>Process flow</td>
+                                <td>Product residues</td>
+                            </tr>
+                            <tr>
+                                <td>Process time</td>
+                                <td>Microbiological residue limits</td>
+                            </tr>
+                            <tr>
+                                <td>Cleaning agent concentration</td>
+                                <td>Drainability / drying</td>
+                            </tr>
+                            <tr>
+                                <td>Dirty hold time (soil condition)</td>
+                                <td>Conductivity / resistivity</td>
+                            </tr>
+                            <tr>
+                                <td>Clean hold conditions</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>QRM involves elements of <span class="key-term">risk assessment</span>, <span class="key-term">risk control</span> and periodic review to ensure continuous and effective control. The quality risk management process is best supported by a team of <span class="key-term">Subject Matter Experts (SMEs)</span> that have an appropriate level of experience from various areas such as operations, technical services, engineering, quality control, quality assurance and regulatory.</p>
+                </div>
+
+                <div class="right-column" id="sec10-1">
+                    <h3>中文解說 — 品質風險管理（QRM）</h3>
+
+                    <div class="concept-box">
+                        <h4>QRM 與 ICH Q9 的連結</h4>
+                        <p><strong>ICH Q9 品質風險管理</strong> 是 QRM 在製藥產業的核心法規框架。TR49 Section 10 與 ICH Q9 高度一致，其基本原則是：</p>
+                        <ul>
+                            <li>對產品品質的風險評估應以科學知識和患者保護為基礎</li>
+                            <li>風險管理流程的努力程度、形式和文件應與風險等級相稱</li>
+                            <li>風險管理是生命週期中的<strong>持續性活動</strong>，不是一次性事件</li>
+                        </ul>
+                        <p>ICH Q9 要求的三步驟：<strong>風險評估 → 風險控制 → 風險審查</strong>，TR49 在清潔驗證中完整應用了這個框架。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>QRM 的十大效益（速記）</h4>
+                        <p>TR49 列出的 QRM 效益可分為三類：</p>
+                        <ul>
+                            <li><strong>預防性效益</strong>：改善規劃、了解關鍵方面、改善故障偵測能力</li>
+                            <li><strong>患者保護效益</strong>：降低患者風險、選擇與 CQA 對齊的測試方法</li>
+                            <li><strong>業務效益</strong>：改善溝通、優化資源、建立法規信任、維持管制狀態</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>CPP vs. CQA 在清潔驗證中的意義</h4>
+                        <p><strong>CPP（關鍵製程參數）</strong> — 影響清潔效果的可控制製程變數，是清洗「輸入」。例如：溫度、壓力、流量、清洗時間、清洗劑濃度。若 CPP 超出範圍，清潔效果可能不達標。</p>
+                        <p><strong>CQA（關鍵品質屬性）</strong> — 可量測的清潔「輸出」結果，直接與殘留限度相關。例如：產品殘留量、微生物殘留量、清洗劑殘留量。這些是驗收標準的依據。</p>
+                        <p>風險評估的核心工作就是：識別哪些 CPP 的失控會危及哪些 CQA，並設計適當的控制措施。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：飛行安全檢查</h4>
+                        <p>QRM 在清潔驗證中就像航空業的安全管理系統（SMS）：起飛前（清洗前）檢查 CPP（燃油量、油壓等），落地後（清洗後）確認 CQA（是否達到安全標準），中間有持續的風險監控。跨部門 SME 團隊就像飛行員、工程師、塔台的協同合作，缺一不可。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 10.2 ===== -->
+    <div class="chapter-section" id="sec10-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">10.2</div>
+            <div class="chapter-info">
+                <h2>10.2 Techniques and Tools for Risk Management and Assessment | 風險管理與評估的技術工具</h2>
+                <p>Practical methods: FMEA, HACCP, FTA, HAZOP, Cause &amp; Effect Analysis | 實用方法：FMEA、HACCP、FTA、HAZOP、因果分析</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>Original Text (PDA TR49, p. 49)</h3>
+
+                    <p>Techniques and tools for risk management include <span class="key-term">process mapping</span>, <span class="key-term">brainstorming</span>, <span class="key-term">Hazard Analysis and HACCP</span>, <span class="key-term">FTA (Fault Tree Analysis)</span>, <span class="key-term">Cause and Effect Analysis</span>, <span class="key-term">HAZOP (Hazard and Operability Study)</span>, and <span class="key-term">FMEA (Failure Mode and Effects Analysis)</span>. Risk assessment is initiated early in the life cycle process starting in the planning, development and specification phases of the cleaning process. Risk evaluations are performed periodically. Feedback data is used to make decisions that impact the cleaning process.</p>
+
+                    <p>Risk analysis is integral to the <span class="key-term">change management</span> process. The impact of a proposed change is evaluated for quality and safety impacts, and the outcome of the assessment is used to drive the activities that are required to effectively implement the change. Low-risk change tasks (such as an increase in rinsing time) may require little to no additional testing. High-risk change tasks (such as a change in the nature of the cleaning solution) may require a significant level of testing. Risk analysis can also be used to determine the <span class="key-term">economic impact</span> of a change. It may become evident that a proposed change offers no economic benefit; consequently the change is not implemented.</p>
+
+                    <p>In summary, quality risk management is a systematic process that involves elements of assessments, development of controls and continuous review throughout the life cycle of the cleaning process. The <span class="key-term">risk assessment</span> process is effective at identifying CPPs and CQAs. Risk management tools are used to generate data and drive decisions. This information is used to affect <span class="key-term">risk mitigation</span>, and it reduces risk to an acceptable level. Risk assessments should be documented so that critical factors are identified, decision pathways are understood, and the information is effectively communicated to the stakeholders.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 — 風險評估工具詳解</h3>
+
+                    <div class="concept-box">
+                        <h4>FMEA 在清潔驗證的應用</h4>
+                        <p><strong>FMEA（失效模式與影響分析）</strong>是清潔驗證中最常用的風險評估工具，其核心邏輯是：</p>
+                        <ul>
+                            <li><strong>Failure Mode（失效模式）</strong>：可能出問題的地方是什麼？（如：清洗劑濃度太低）</li>
+                            <li><strong>Effects（影響）</strong>：如果發生會怎樣？（如：殘留量超標，下批產品交叉污染）</li>
+                            <li><strong>Severity（嚴重性 S）</strong>：對患者的潛在危害程度（1-10分）</li>
+                            <li><strong>Occurrence（發生率 O）</strong>：失效發生的可能性（1-10分）</li>
+                            <li><strong>Detectability（可偵測性 D）</strong>：現有管制能否偵測（1-10分，越低越容易偵測）</li>
+                            <li><strong>RPN（風險優先數）= S × O × D</strong>：RPN 越高，優先採取行動</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>FMEA 風險矩陣示例 — 清潔驗證應用</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>失效模式</th>
+                                    <th>S</th>
+                                    <th>O</th>
+                                    <th>D</th>
+                                    <th>RPN</th>
+                                    <th>行動</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>清洗劑濃度不足</td>
+                                    <td>8</td>
+                                    <td>3</td>
+                                    <td>2</td>
+                                    <td>48</td>
+                                    <td>監控 CPP</td>
+                                </tr>
+                                <tr>
+                                    <td>噴灑裝置堵塞（死角）</td>
+                                    <td>9</td>
+                                    <td>4</td>
+                                    <td>7</td>
+                                    <td>252</td>
+                                    <td>高優先改善偵測</td>
+                                </tr>
+                                <tr>
+                                    <td>清洗時間縮短</td>
+                                    <td>7</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>42</td>
+                                    <td>設定警報</td>
+                                </tr>
+                                <tr>
+                                    <td>超過髒污持有時間</td>
+                                    <td>8</td>
+                                    <td>5</td>
+                                    <td>4</td>
+                                    <td>160</td>
+                                    <td>需立即行動</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>其他風險工具速覽</h4>
+                        <ul>
+                            <li><strong>HACCP（危害分析關鍵控制點）</strong>：系統性識別關鍵控制點（CCPs），設定監控界限；源自食品安全，在生物製品清洗中適用於滅活步驟</li>
+                            <li><strong>FTA（故障樹分析）</strong>：從「最差結果」往回推導可能的失效路徑，圖形化呈現，適合分析複雜 CIP 系統的系統性風險</li>
+                            <li><strong>HAZOP（危害與可操作性研究）</strong>：以引導詞（更多/更少/沒有/相反）系統審查偏差情境，適合清洗程序的系統性審查</li>
+                            <li><strong>因果分析（魚骨圖）</strong>：識別影響清潔效果的所有潛在原因（人、機、料、法、環），適合根本原因調查</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>風險分析在變更控制中的角色</h4>
+                        <p>TR49 明確指出，<strong>變更控制必須進行風險分析</strong>：</p>
+                        <ul>
+                            <li><strong>低風險變更</strong>（如：增加沖洗時間）→ 幾乎不需要額外測試</li>
+                            <li><strong>高風險變更</strong>（如：更換清洗劑種類）→ 需要大量測試，甚至再驗證</li>
+                            <li><strong>經濟效益評估</strong>：若風險分析顯示預期變更無經濟效益，可能決定不實施該變更</li>
+                        </ul>
+                        <p>這體現了 QRM 的務實性：以科學為依據，以風險等級決定投入的資源程度。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習思考 2</h4>
+                        <p><strong>情境：</strong>你的工廠計畫將 CIP 清洗系統的清洗劑由鹼性清洗劑 A 更換為新型環保清洗劑 B（pH 值相近，但界面活性劑不同）。</p>
+                        <p><strong>問題 1：</strong>根據 TR49 Section 10.2，這屬於低風險還是高風險變更？需要哪些後續行動？</p>
+                        <p><strong>問題 2：</strong>如果要用 FMEA 評估這個變更，你會識別哪些關鍵失效模式？</p>
+                        <p><strong>參考答案方向：</strong></p>
+                        <p>問題 1：更換清洗劑種類屬於<strong>高風險變更</strong>（即使 pH 相近）。需進行完整風險評估、清洗效果測試（至少針對最差情況產品）、清洗劑殘留分析方法驗證，可能需要再驗證或部分驗證。</p>
+                        <p>問題 2：關鍵失效模式包括：新清洗劑對目標污漬（蛋白質、DNA 等）清潔效果不足、新清洗劑本身殘留難以偵測（影響 CQA）、新清洗劑對設備材質的相容性（腐蝕或萃出）。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QRM Life Cycle Summary Box (full-width conceptual) -->
+            <div class="two-column" style="margin-top: 0;">
+                <div class="left-column" style="grid-column: 1 / -1;">
+                    <h3 style="color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem;">Section 10 Summary — QRM in Cleaning Validation Life Cycle | QRM 於清潔驗證生命週期的應用總結</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div class="term-box" style="margin-bottom: 0 !important;">
+                            <h4>Phase 1: Assessment | 評估</h4>
+                            <ul>
+                                <li>Identify CPPs and CQAs | 識別 CPP 與 CQA</li>
+                                <li>Apply FMEA / HAZOP / HACCP | 應用風險評估工具</li>
+                                <li>Determine scope of validation | 決定驗證範圍</li>
+                                <li>Prioritize resources | 優化資源分配</li>
+                            </ul>
+                        </div>
+                        <div class="note-box" style="margin-bottom: 0 !important;">
+                            <h4>Phase 2: Control | 控制</h4>
+                            <ul>
+                                <li>Implement risk mitigation | 實施風險緩解措施</li>
+                                <li>Establish design space | 建立設計空間</li>
+                                <li>Execute validation protocols | 執行驗證方案</li>
+                                <li>Apply change control | 應用變更控制</li>
+                            </ul>
+                        </div>
+                        <div class="analogy-box" style="margin-bottom: 0 !important;">
+                            <h4>Phase 3: Review | 審查</h4>
+                            <ul>
+                                <li>Periodic risk re-evaluation | 定期再評估</li>
+                                <li>Monitor CPPs and CQAs | 持續監控</li>
+                                <li>Update risk assessments | 更新風險評估</li>
+                                <li>Communicate to stakeholders | 與利害關係人溝通</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem;">Section 6: Master Planning &amp; Risk Assessment | 總體規劃與風險評估 &nbsp;|&nbsp; Sections 9.0–9.3 &amp; 10.0–10.2</p>
+    <p style="font-size: 0.8rem; opacity: 0.7;">SterileGMP Knowledge Hub — Educational Use Only</p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
