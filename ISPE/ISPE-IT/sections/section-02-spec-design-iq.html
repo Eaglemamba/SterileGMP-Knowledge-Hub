@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5.4–5.6: Specification, Design & IQ | ISPE GAMP IT Infrastructure</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* ISPE Green overrides */
+    --ispe-green: #16a34a;
+    --ispe-green-light: #dcfce7;
+    --ispe-green-mid: #bbf7d0;
+    --ispe-green-dark: #14532d;
+    --ispe-green-border: #22c55e;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER — ISPE Green ===== */
+.header {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #d1fae5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--ispe-green-dark); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: var(--ispe-green-light);
+    border-radius: 6px;
+    color: var(--ispe-green-dark);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border: 1px solid var(--ispe-green-border);
+}
+.toc-grid a:hover { background: var(--ispe-green); color: white; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--ispe-green);
+}
+.learning-objectives h3 { color: var(--ispe-green-dark); margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== CHAPTER SECTION ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1.5rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.left-column h4 { color: var(--primary-blue); margin: 0.9rem 0 0.4rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.45rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column {
+    background: var(--ispe-green-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #a7f3d0;
+}
+.right-column h3 {
+    color: var(--ispe-green-dark);
+    border-bottom: 2px solid var(--ispe-green-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.right-column h4 { color: var(--ispe-green-dark); margin: 0.9rem 0 0.4rem; font-size: 0.95rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.45rem; }
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .term-box, .formula-box, .key-point-box, .highlight-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4, .analogy-box h4, .note-box h4, .term-box h4, .formula-box h4, .key-point-box h4, .highlight-box h4 {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+.concept-box ul, .analogy-box ul, .note-box ul, .term-box ul, .key-point-box ul, .highlight-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem;
+}
+.concept-box li, .analogy-box li, .note-box li, .term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem;
+}
+
+/* Green concept box */
+.term-box {
+    background: var(--green-bg);
+    border-left: 4px solid var(--green-border);
+}
+.term-box h4 { color: #2e7d32; }
+
+/* Orange note box */
+.note-box {
+    background: var(--orange-bg);
+    border-left: 4px solid var(--orange-border);
+}
+.note-box h4 { color: #c65102; }
+
+/* Yellow analogy box */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-left: 4px solid #f6ad55;
+}
+.analogy-box h4 { color: #856404; }
+
+/* Purple formula box */
+.formula-box {
+    background: var(--purple-bg);
+    border-left: 4px solid var(--purple-border);
+}
+.formula-box h4 { color: #7b1fa2; }
+
+/* Blue highlight box */
+.highlight-box {
+    background: #e3f2fd;
+    border-left: 4px solid #1976d2;
+}
+.highlight-box h4 { color: #1565c0; }
+
+/* Key point box — ISPE green */
+.key-point-box {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 4px solid var(--ispe-green);
+}
+.key-point-box h4 { color: var(--ispe-green-dark); }
+
+/* ===== PRACTICE BOX ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+}
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%); font-weight: 600; color: white; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fdf9; }
+tr:hover { background: #f0fdf4; }
+
+/* GAMP testing category table special colors */
+.cat-none { background: #f1f5f9 !important; }
+.cat-confirm { background: #fefce8 !important; }
+.cat-confidence { background: #fff7ed !important; }
+.cat-full { background: #fef2f2 !important; }
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.4rem 0; }
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.55rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; min-width: 280px; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; min-width: 260px; }
+.hierarchy-box.level-3 { background: #dcfce7; border: 2px solid var(--ispe-green); color: var(--ispe-green-dark); min-width: 240px; }
+.hierarchy-box.level-4 { background: #ede9fe; border: 2px solid #8b5cf6; color: #5b21b6; min-width: 220px; }
+.arrow-down { font-size: 1.3rem; color: var(--text-medium); margin: 0.2rem 0; display: block; }
+.hier-sub { font-size: 0.78rem; font-weight: 400; display: block; opacity: 0.85; margin-top: 0.15rem; }
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.78rem; font-weight: 600;
+}
+.badge.green { background: #dcfce7; color: var(--ispe-green-dark); }
+.badge.red { background: #fee2e2; color: #7f1d1d; }
+.badge.blue { background: #dbeafe; color: #1e3a8a; }
+.badge.yellow { background: #fef9c3; color: #713f12; }
+.badge.orange { background: #ffedd5; color: #7c2d12; }
+.badge.purple { background: #ede9fe; color: #4c1d95; }
+.badge.gray { background: #f1f5f9; color: #374151; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.6rem; position: relative; font-size: 0.92rem; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--ispe-green); font-size: 1rem; }
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    font-size: 1.05rem;
+    color: var(--ispe-green-dark);
+    margin: 1.5rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--ispe-green-border);
+    font-weight: 600;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box {
+    background: linear-gradient(to right, #f0fdf4, #dcfce7);
+    border-left: 4px solid var(--ispe-green);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== SUPPLIER CARD ===== */
+.supplier-card {
+    background: white;
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.65rem;
+    border-left: 4px solid var(--ispe-green);
+}
+.supplier-card.approved { border-left-color: #16a34a; }
+.supplier-card.conditional { border-left-color: #f59e0b; }
+.supplier-card.not-approved { border-left-color: #dc2626; }
+.supplier-card h5 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+.supplier-card.approved h5 { color: #14532d; }
+.supplier-card.conditional h5 { color: #78350f; }
+.supplier-card.not-approved h5 { color: #7f1d1d; }
+.supplier-card p { font-size: 0.88rem; color: var(--text-medium); margin: 0; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--ispe-green-dark);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--ispe-green); color: white;
+    border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999; opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #15803d; transform: scale(1.1); }
+
+/* ===== IQ ACTIVITY TABLE COLORS ===== */
+.iq-hw { background: #f0fdf4 !important; }
+.iq-sw { background: #eff6ff !important; }
+.iq-nw { background: #fffbeb !important; }
+.iq-env { background: #fdf4ff !important; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header" id="top">
+  <div class="page-info">ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance</div>
+  <h1>Chapter 5.4–5.6: Specification, Design &amp; Installation Qualification</h1>
+  <div class="subtitle">規格書、設計與安裝確效 | Section 02</div>
+  <div class="page-info">Source Pages 31–40 &nbsp;|&nbsp; Chapters 5.4 / 5.5 / 5.6</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Table of Contents &nbsp;/&nbsp; 本節目錄</h3>
+    <div class="toc-grid">
+      <a href="#obj">Learning Objectives 學習目標</a>
+      <a href="#spec-hier">Specification Hierarchy 規格書層級</a>
+      <a href="#sec54-net">5.4.1 Networks 網路</a>
+      <a href="#sec54-server">5.4.2 Servers &amp; OS 伺服器</a>
+      <a href="#sec54-client">5.4.3 Clients 客戶端</a>
+      <a href="#sec54-dc">5.4.5 Data Centers 資料中心</a>
+      <a href="#sec55-risk">5.5 Risk &amp; Test Planning 風險與測試規劃</a>
+      <a href="#gamp-cat-table">GAMP Category Table 測試類別表</a>
+      <a href="#sec56-supplier">5.6.1 Supplier Evaluation 供應商評估</a>
+      <a href="#sec56-iq">5.6.2 Installation &amp; IQ 安裝與IQ</a>
+      <a href="#iq-activities">IQ Activities Table IQ活動表</a>
+      <a href="#iq-checklist">IQ Checklist IQ查核表</a>
+    </div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="learning-objectives" id="obj">
+    <h3>Learning Objectives &nbsp;/&nbsp; 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+      <div>
+        <strong>After studying this section, you will be able to:</strong>
+        <ul>
+          <li>Explain the specification hierarchy for IT infrastructure (URS → FS → DS)</li>
+          <li>Describe design considerations for networks, servers, OS, storage, and clients</li>
+          <li>Apply GAMP categories to determine the required level of qualification testing</li>
+          <li>Plan a risk-based qualification test strategy for IT platform components</li>
+          <li>Conduct Installation Qualification (IQ) for pharma IT infrastructure</li>
+          <li>Evaluate suppliers using the Approved / Conditionally Approved / Not Approved framework</li>
+          <li>Prepare IQ documentation: CIL, topology diagrams, environmental records</li>
+        </ul>
+      </div>
+      <div>
+        <strong>完成本節後，您將能夠：</strong>
+        <ul>
+          <li>說明 IT 基礎設施的規格書層級（URS → FS → DS）</li>
+          <li>描述網路、伺服器、作業系統、儲存與客戶端的設計考量</li>
+          <li>運用 GAMP 類別決定所需的確效測試程度</li>
+          <li>根據風險規劃 IT 平台組件的確效測試策略</li>
+          <li>針對製藥 IT 基礎設施執行安裝確效（IQ）</li>
+          <li>使用「核准 / 有條件核准 / 未核准」框架評估供應商</li>
+          <li>準備 IQ 文件：組態項目清單、拓樸圖、環境記錄</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SPECIFICATION HIERARCHY DIAGRAM
+       ========================================================= -->
+  <div class="chapter-section" id="spec-hier">
+    <div class="chapter-divider">
+      <div class="chapter-badge">&#128196;</div>
+      <div class="chapter-info">
+        <h2>IT Infrastructure Specification Hierarchy</h2>
+        <p>IT 基礎設施規格書層級 — From User Needs to Design</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT: hierarchy diagram -->
+        <div class="left-column">
+          <h3>Specification Hierarchy Diagram &nbsp;/&nbsp; 規格書層級圖</h3>
+          <div class="hierarchy-diagram">
+            <div class="hierarchy-level">
+              <div class="hierarchy-box level-1">
+                User Requirement Specification (URS)
+                <span class="hier-sub">使用者需求規格書｜WHAT the system must do</span>
+              </div>
+            </div>
+            <span class="arrow-down">&#11015;</span>
+            <div class="hierarchy-level">
+              <div class="hierarchy-box level-2">
+                Functional Specification (FS)
+                <span class="hier-sub">功能規格書｜HOW the system behaves</span>
+              </div>
+            </div>
+            <span class="arrow-down">&#11015;</span>
+            <div class="hierarchy-level">
+              <div class="hierarchy-box level-3">
+                Design Specification (DS)
+                <span class="hier-sub">設計規格書｜HOW the system is built</span>
+              </div>
+            </div>
+            <span class="arrow-down">&#11015;</span>
+            <div class="hierarchy-level">
+              <div class="hierarchy-box level-4">
+                Configuration Items List (CIL)
+                <span class="hier-sub">組態項目清單｜Verified parameters &amp; versions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="note-box" style="margin-top:1rem;">
+            <h4>&#9888; Key Principle — 核心原則</h4>
+            <p>Design specifications must be produced based on <strong>approved requirements</strong> and must be <strong>verified during qualification</strong>. Traceability from URS through to IQ/OQ records is mandatory.</p>
+            <p>設計規格書必須依據已核准的需求產出，並在確效過程中加以驗證。從 URS 到 IQ/OQ 記錄的可追溯性是強制性的。</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: commentary -->
+        <div class="right-column">
+          <h3>Pharma IT — Why Specifications Matter &nbsp;/&nbsp; 規格書的製藥意義</h3>
+
+          <div class="term-box">
+            <h4>URS — User Requirement Specification &nbsp;/&nbsp; 使用者需求規格書</h4>
+            <ul>
+              <li>Captures business, regulatory, and GxP requirements in plain language</li>
+              <li>Inputs: company policies, application requirements (functionality, capacity, security)</li>
+              <li>Output: reusable, generic requirement specs per platform component type</li>
+              <li>以業務、法規和 GxP 需求為核心，可重複使用於同類平台元件</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>DS — Design Specification &nbsp;/&nbsp; 設計規格書</h4>
+            <ul>
+              <li>Produced from the approved FS/URS — describes actual technical implementation</li>
+              <li>Includes topology diagrams, hardware configs, OS parameters, network settings</li>
+              <li>Forms the basis for procurement and IQ verification</li>
+              <li>依核准 FS/URS 產出，描述實際技術實施方式，作為採購與 IQ 依據</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; Real-World Analogy &nbsp;/&nbsp; 生活比喻</h4>
+            <p>Think of URS as the architect's brief ("We need a clean room with ISO 5 conditions"), FS as the building plan ("HEPA filtration system, unidirectional airflow..."), and DS as the engineering drawings with exact pipe diameters and fan speeds.</p>
+            <p>把 URS 想成建築師的需求書（「我們需要 ISO 5 潔淨室」），FS 是建築平面圖，DS 則是工程詳圖，包含精確的管徑與風速參數。</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Template Recommendation &nbsp;/&nbsp; 建議使用模板</h4>
+            <p>GAMP recommends using a <strong>template</strong> for capturing platform requirements, including GxP-related operational settings originating from individual application specifications. This enables consistent documentation across similar infrastructure components.</p>
+            <p>GAMP 建議使用模板收集平台需求，包含來自應用規格的 GxP 相關操作設定，以確保類似基礎設施元件文件的一致性。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>Your company is deploying a new Oracle database server for a validated LIMS. Which document should come first — URS or DS? What content belongs in each?<br><span style="color:#4a5568;font-size:0.88rem;">您的公司正在為已驗證的 LIMS 部署新的 Oracle 資料庫伺服器。應先產出 URS 還是 DS？各文件應包含哪些內容？</span></li>
+              <li>An application team wants to add custom OS registry settings not found in the generic platform DS. What process must be followed?<br><span style="color:#4a5568;font-size:0.88rem;">應用程式團隊想新增通用平台 DS 中未記載的自訂 OS 登錄設定，必須遵循什麼程序？</span></li>
+              <li>Why is traceability from URS to IQ records important during a regulatory inspection?<br><span style="color:#4a5568;font-size:0.88rem;">為什麼在法規稽查中，從 URS 到 IQ 記錄的可追溯性很重要？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.4.1 NETWORKS
+       ========================================================= -->
+  <div class="chapter-section" id="sec54-net">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.4.1</div>
+      <div class="chapter-info">
+        <h2>Networks — Specification and Design</h2>
+        <p>網路規格書與設計 | Topology, Layers, and Segmentation</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>Network Design Specification Objectives &nbsp;/&nbsp; 網路設計規格書目的</h3>
+          <p>Network design specifications should be established to:</p>
+          <ul>
+            <li>Define the topology and diagrams of the network to address segmentation, network performance, and security considerations</li>
+            <li>Serve as basis for procurement of network parts</li>
+            <li>Act as an overview of topology for maintenance and inspections/audits</li>
+          </ul>
+
+          <h4>OSI Model — Four-Layer Qualification Framework &nbsp;/&nbsp; 四層確效框架</h4>
+          <p>The GAMP IT Guide uses an abbreviated OSI model to establish common terminology for qualification activities:</p>
+
+          <table>
+            <thead>
+              <tr><th>Layer</th><th>Description</th><th>Examples</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Layer 1 — Physical</strong></td><td>Physical hardware</td><td>Copper/optical cables, hubs, NICs, device drivers</td></tr>
+              <tr><td><strong>Layer 2 — Data Link</strong></td><td>Basic communication, addressing, routing</td><td>Switches</td></tr>
+              <tr><td><strong>Layer 3 — Network</strong></td><td>Program-to-program communication</td><td>Routers, firewalls</td></tr>
+              <tr><td><strong>Layer 4 — Application</strong></td><td>End-user applications via software ports</td><td>ERP, LIMS, MES clients</td></tr>
+            </tbody>
+          </table>
+
+          <p>Qualification activities on each layer verify connectivity, functionality, and conformance to design specifications <strong>individually per layer</strong>.</p>
+
+          <h4>Topology Design Considerations &nbsp;/&nbsp; 拓樸設計考量</h4>
+          <ul>
+            <li>Segregation of GxP regulated networks from administrative networks</li>
+            <li>Protection and control of different GxP regulated networks</li>
+            <li>Need for built-in redundant networks</li>
+            <li>Serviceability of the network (e.g., via SNMP)</li>
+            <li>Possible interfaces between segregated networks</li>
+            <li>Protocols supported in different networks</li>
+          </ul>
+          <p>Topology diagrams should provide a <strong>high-level representation</strong>. Detailed configuration is kept in dedicated databases, not diagrams, due to the dynamic nature of IT infrastructures.</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>Network IQ Focus Areas &nbsp;/&nbsp; 網路 IQ 重點領域</h3>
+
+          <div class="key-point-box">
+            <h4>GxP Network Segmentation &nbsp;/&nbsp; GxP 網路分段</h4>
+            <p>A critical GxP requirement: <strong>GxP regulated networks must be segregated from administrative networks</strong>. This prevents unauthorized access, contamination of regulated data, and ensures audit trail integrity.</p>
+            <p>GxP 法規要求：受 GxP 管制的網路必須與行政網路分隔，以防止未授權存取、保護受管制數據，並確保稽查軌跡完整性。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>Topology Diagram Contents &nbsp;/&nbsp; 拓樸圖應包含</h4>
+            <ul>
+              <li>Primary network components</li>
+              <li>Trunk cables (backbone links)</li>
+              <li>Dedicated network servers (e.g., DNS servers, DHCP servers)</li>
+              <li>Key network zones and their GxP classification</li>
+              <li>Wide area network (WAN) connections and carrier assessment if leased</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; Think of It Like a Pharma Cleanroom Map</h4>
+            <p>A network topology diagram is like a cleanroom classification map: it shows which zones are ISO Class 5 (GxP critical) vs. ISO Class 8 (less critical) and the physical boundaries between them. Just as you wouldn't let a visitor walk freely from a corridor into a filling room, you don't let admin traffic flow freely into a GxP network segment.</p>
+            <p>網路拓樸圖就像潔淨室分類圖：標示哪些區域是 ISO Class 5（GxP 關鍵）與 Class 8，以及它們之間的物理邊界。就像訪客不能自由進入灌裝室一樣，行政流量也不能自由進入 GxP 網路區段。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>SNMP &amp; Managed Networks &nbsp;/&nbsp; SNMP 與受管理網路</h4>
+            <p><strong>Simple Network Management Protocol (SNMP)</strong> enables a "managed network" in TCP/IP environments. Network management systems using SNMP should enable computer-aided tracking of network device characteristics, installation, and configuration — critical for maintaining IQ records over time.</p>
+            <p>SNMP 讓網路成為「受管理網路」，支援對網路設備特性、安裝狀態及設定的電腦輔助追蹤，是長期維護 IQ 記錄的關鍵。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>A manufacturing site connects its MES (Manufacturing Execution System) to both the plant floor network and the corporate IT network. What network design controls should be in place, and what must be documented in the topology diagram?<br><span style="color:#4a5568;font-size:0.88rem;">製造現場的 MES 連接廠區網路和企業 IT 網路，應有哪些網路設計控制措施，且拓樸圖中必須記錄哪些內容？</span></li>
+              <li>During a regulatory inspection, an investigator asks to see your network topology diagram. What should it show, and what level of detail is appropriate?<br><span style="color:#4a5568;font-size:0.88rem;">法規稽查員要求查看您的網路拓樸圖，應顯示什麼，哪種詳細程度是合適的？</span></li>
+              <li>Your company leases a WAN line from a carrier for inter-site LIMS data replication. What additional assessment is required beyond the internal topology design?<br><span style="color:#4a5568;font-size:0.88rem;">您的公司租用電信業者的廣域網路線路進行跨站點 LIMS 數據複製，除內部拓樸設計之外還需要哪些額外評估？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.4.2 SERVERS AND OS
+       ========================================================= -->
+  <div class="chapter-section" id="sec54-server">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.4.2</div>
+      <div class="chapter-info">
+        <h2>Servers, Operating Systems &amp; Storage</h2>
+        <p>伺服器、作業系統與儲存系統 | Hardware Specifications and OS Parameters</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>Server Hardware Specification &nbsp;/&nbsp; 伺服器硬體規格</h3>
+          <p>When server hardware is installed, it should be based on <strong>supplier recommendations</strong>, including environmental considerations. Configuration information should be included in the platform specifications and checked for compliance during IQ.</p>
+
+          <p>Redundancy in server building blocks, power supplies, and storage should be considered based on Risk Assessment results.</p>
+
+          <h4>Operating System Parameter Categories &nbsp;/&nbsp; OS 參數類別</h4>
+          <p>Most operating systems allow a large number of parameter settings that affect server behavior. These fall into three categories:</p>
+
+          <table>
+            <thead>
+              <tr><th>#</th><th>Category</th><th>Documentation Required?</th><th>IQ Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Manufacturer default values — <strong>remain unchanged</strong></td>
+                <td><span class="badge gray">Not required</span></td>
+                <td>No IQ action needed</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Manufacturer defaults — <strong>altered for specific behavior</strong> or performance optimization</td>
+                <td><span class="badge yellow">Required</span></td>
+                <td>Include in specifications; verify during IQ</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Parameters supplied <strong>blank by manufacturer</strong> — must be completed by customer</td>
+                <td><span class="badge red">Required</span></td>
+                <td>Include in specifications; must verify during IQ</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>System Time Management &nbsp;/&nbsp; 系統時間管理</h4>
+          <p>In global IT infrastructure, provision for effective <strong>time synchronization traceable to an international standard</strong> is essential. Key considerations:</p>
+          <ul>
+            <li>Traceability to international standard: UTC (Coordinated Universal Time) or TAI (International Atomic Time)</li>
+            <li>Availability of a reliable time source and preferred dissemination method</li>
+            <li>Management of summer/winter time offsets</li>
+            <li>Management of local time offsets</li>
+          </ul>
+          <p>Time management specifications must be verified during both <strong>IQ and OQ</strong>. Responsibilities for setting/resetting system time must be documented.</p>
+
+          <h4>Storage Systems — SAN vs. NAS &nbsp;/&nbsp; 儲存系統</h4>
+          <table>
+            <thead><tr><th>Type</th><th>Architecture</th><th>Characteristic</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>SAN</strong><br>Storage Area Network</td>
+                <td>Own high-speed dedicated network with routers, hubs, switches, gateways</td>
+                <td>High performance; suitable for high I/O workloads</td>
+              </tr>
+              <tr>
+                <td><strong>NAS</strong><br>Network Attached Storage</td>
+                <td>Dedicated server + disk array; attached to existing network</td>
+                <td>Simpler; suitable for file sharing</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Storage specifications must be verified during IQ and OQ. OQ of storage is practical only via a connected server.</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>Pharma IT Commentary &nbsp;/&nbsp; 製藥實務解析</h3>
+
+          <div class="key-point-box">
+            <h4>Why System Time Is a GxP Critical Parameter &nbsp;/&nbsp; 系統時間為何是 GxP 關鍵參數</h4>
+            <p>21 CFR Part 11 and EU Annex 11 require that electronic records include accurate, reliable date/time stamps. A server with incorrect time can invalidate batch records, audit trails, and electronic signatures. FDA inspectors regularly check NTP configuration and time synchronization logs.</p>
+            <p>21 CFR Part 11 與 EU Annex 11 要求電子記錄包含準確可靠的日期/時間戳記。時間錯誤的伺服器可能使批次記錄、稽查軌跡和電子簽名失效。FDA 稽查員會定期檢查 NTP 設定和時間同步記錄。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>Configuration Items List (CIL) &nbsp;/&nbsp; 組態項目清單</h4>
+            <p>For server IQ, a CIL must be prepared. <strong>Hardware CIL includes:</strong></p>
+            <ul>
+              <li>Make and model of server</li>
+              <li>Type and amount of memory (RAM)</li>
+              <li>Number of CPUs and disks</li>
+              <li>Disk controller type</li>
+              <li>Additional rebuild information</li>
+            </ul>
+            <p><strong>Software CIL includes:</strong></p>
+            <ul>
+              <li>Operating system (name + version)</li>
+              <li>Service programs / middleware</li>
+              <li>Service packs, hot fixes, security patches</li>
+              <li>Access control settings</li>
+              <li>Network settings (IP, hostname, DNS)</li>
+            </ul>
+            <p>All CIL items must be identified by version numbers. CIL enables efficient duplication of verified servers.</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; The "Drug Master File" of IT &nbsp;/&nbsp; IT 的藥物主檔案</h4>
+            <p>A server's CIL is like the Drug Master File (DMF) for a pharmaceutical ingredient — it precisely documents everything about the "composition" of your server so it can be reproduced identically. Just as a DMF enables a generic drug manufacturer to reference original data, a CIL enables your team to rebuild or duplicate a server to the exact same validated configuration.</p>
+            <p>伺服器的 CIL 就像製藥原料的藥物主檔案（DMF）——精確記錄伺服器的所有「組成」，使其可以完全相同地重建。CIL 讓您的團隊能夠將伺服器重建或複製到完全相同的驗證過組態。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>Peripheral Equipment &nbsp;/&nbsp; 周邊設備</h4>
+            <p>Peripherals (label printers, barcode scanners, electronic signature pads, cameras) are typically standardized COTS with embedded firmware. Application specifications should <strong>not deviate</strong> from default factory/corporate standard settings unless specifically required, justified, and documented.</p>
+            <p>周邊設備通常是具有嵌入式韌體的標準化商業現成品，應用規格不應偏離預設設定，除非有具體要求、理由與文件記錄。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>Your validated Windows Server 2022 hosts a GxP batch record application. The OS was installed with the manufacturer default time zone (UTC). The local site operates in UTC+8 (Taiwan). What specification and IQ actions are required?<br><span style="color:#4a5568;font-size:0.88rem;">您的已驗證 Windows Server 2022 主機執行 GxP 批次記錄應用程式，OS 安裝時預設時區為 UTC，但現場在 UTC+8（台灣）。需要哪些規格書和 IQ 行動？</span></li>
+              <li>A site wants to add a second identical Oracle DB server for high availability. What documentation approach can maximize efficiency while maintaining compliance?<br><span style="color:#4a5568;font-size:0.88rem;">現場想要新增第二台相同的 Oracle DB 伺服器以實現高可用性，哪種文件方式可以在維持合規的同時最大化效率？</span></li>
+              <li>During IQ, you discover the server's BIOS version differs from the design specification. What is the correct procedure?<br><span style="color:#4a5568;font-size:0.88rem;">IQ 期間您發現伺服器的 BIOS 版本與設計規格書不符，正確的處理程序是什麼？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.4.3 CLIENTS + 5.4.4 TOOLS + 5.4.5 DATA CENTERS
+       ========================================================= -->
+  <div class="chapter-section" id="sec54-client">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.4.3–5</div>
+      <div class="chapter-info">
+        <h2>Clients, Support Tools &amp; Data Centers</h2>
+        <p>客戶端、支援工具與資料中心 | Classification and Physical Infrastructure</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>Client Classification Framework &nbsp;/&nbsp; 客戶端分類框架</h3>
+          <p>Clients provide users access to shared services and local GxP applications. They should be grouped into categories with different capability and management profiles:</p>
+
+          <table>
+            <thead><tr><th>Classification</th><th>Description</th><th>Typical Use</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Un-restricted</strong><br>非限制型</td>
+                <td>Open to user modifications (per company security policy) + accepts centrally controlled updates</td>
+                <td>Email workstations, general office PCs</td>
+              </tr>
+              <tr>
+                <td><strong>Restricted</strong><br>限制型</td>
+                <td>Closed to user modifications; accepts centrally controlled updates only</td>
+                <td>Shared lab workstations, QA review terminals</td>
+              </tr>
+              <tr>
+                <td><strong>Controlled</strong><br>受控型</td>
+                <td>Closed for ALL modifications except via formal change management + qualification; high-priority security patches may be excepted</td>
+                <td>GxP application hosts, validated LIMS clients, MES terminals</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Special considerations when classifying clients:</p>
+          <ul>
+            <li>Security based on identified risks; use technical controls (auto-lock screensavers with password)</li>
+            <li>Control of local clocks when used to timestamp electronic records or control time-sensitive processes</li>
+            <li>Preserving data integrity where regulated electronic records are stored</li>
+          </ul>
+
+          <h4>5.4.4 Support and Diagnostic Tools &nbsp;/&nbsp; 支援與診斷工具</h4>
+          <p>Tools (vulnerability scanners, intrusion detectors, network diagnostics, centralized distribution software) must be carefully selected. Requirements:</p>
+          <ul>
+            <li>Tool satisfies company standards and policies (especially security requirements)</li>
+            <li>Tool delivers required functionality and does <strong>not modify critical records</strong> or affect platform performance</li>
+            <li>Maintain an inventory of tools used</li>
+          </ul>
+
+          <h4 id="sec54-dc">5.4.5 Data Centers / Server Rooms &nbsp;/&nbsp; 資料中心</h4>
+          <ul>
+            <li><strong>Location:</strong> ease of access, backbone connectivity, protection from natural disasters</li>
+            <li><strong>Space &amp; environment:</strong> adequate space, protection from contaminants, lightning, flooding, earthquakes, intrusion</li>
+            <li><strong>Security:</strong> camouflage, trap rooms, fences, guards, gates, access controls, audit logs, cameras, alarms</li>
+            <li><strong>Power:</strong> raised floors, UPS (Uninterruptible Power Supply) for required VA/duration during outages</li>
+            <li><strong>Grounding &amp; shielding:</strong> planned before construction; compliant with national/international standards</li>
+            <li><strong>Cooling:</strong> establish desired rate of air volume changes</li>
+            <li><strong>Fire protection:</strong> adequate technologies with reliable detection and trigger systems</li>
+          </ul>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>Practical Commentary &nbsp;/&nbsp; 實務解析</h3>
+
+          <div class="key-point-box">
+            <h4>Image-Based Deployment &nbsp;/&nbsp; 映像部署策略</h4>
+            <p>For maximum control and efficiency, GAMP recommends preparing and maintaining a <strong>verified client image or installation script</strong>. This image represents one verified installation and is used to duplicate new clients. System-specific installation scripts should be tested on a single standard client instance before mass rollout via centralized distribution.</p>
+            <p>為了最大化控制和效率，GAMP 建議準備並維護已驗證的客戶端映像或安裝腳本，在透過集中式分發進行大規模部署前，先在單一標準客戶端實例上測試。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>GxP Client — Special Controls &nbsp;/&nbsp; GxP 客戶端特殊控制</h4>
+            <ul>
+              <li><strong>Thick client GxP apps:</strong> the application must be validated per GAMP 4</li>
+              <li><strong>Local clock control:</strong> must be formally managed — unauthorized time changes invalidate electronic records</li>
+              <li><strong>Data integrity:</strong> where electronic records are stored locally, write/modify permissions must be controlled</li>
+              <li><strong>Change management:</strong> all changes to "controlled" clients require formal CM process</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; Data Center as a "GMP Suite" &nbsp;/&nbsp; 資料中心是「GMP 套間」</h4>
+            <p>Think of a data center like a sterile manufacturing suite: both require controlled access (gowning = badge + biometrics), environmental monitoring (temperature/humidity = cooling + UPS), segregation from outside contamination (airlocks = firewall + security zone), and a documented audit trail of who entered and what they did.</p>
+            <p>把資料中心想成無菌製造套間：兩者都需要受控存取（穿衣間 = 門禁 + 生物辨識）、環境監控（溫度/濕度 = 冷卻 + UPS）、與外部污染的隔離（氣閘 = 防火牆），以及記錄進出和操作的稽查軌跡。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>Dual/Triple Data Centers &nbsp;/&nbsp; 雙/三重資料中心</h4>
+            <p>Some companies choose to double or triple their main data centers to achieve required assurance of availability. This supports Business Continuity Planning (BCP) and Disaster Recovery (DR) requirements — particularly important for GxP systems where data loss can have product quality and patient safety implications.</p>
+            <p>部分公司選擇建立雙重或三重資料中心以確保可用性，支援業務持續計畫（BCP）和災難恢復（DR）需求，對於數據損失可能影響產品品質和患者安全的 GxP 系統尤為重要。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>A QC analyst's workstation runs both a validated chromatography data system (CDS) and an unrestricted web browser. What client classification should apply, and how should the workstation be managed?<br><span style="color:#4a5568;font-size:0.88rem;">QC 分析師的工作站同時執行已驗證的色譜數據系統（CDS）和不受限制的網頁瀏覽器，應適用哪種客戶端分類？應如何管理？</span></li>
+              <li>Your data center uses a network vulnerability scanning tool. What three things must be verified before using this tool on GxP infrastructure?<br><span style="color:#4a5568;font-size:0.88rem;">您的資料中心使用網路漏洞掃描工具，在 GxP 基礎設施上使用此工具之前必須驗證哪三件事？</span></li>
+              <li>What UPS capacity documentation would an FDA inspector expect to see for a data center hosting a validated batch record system?<br><span style="color:#4a5568;font-size:0.88rem;">對於託管已驗證批次記錄系統的資料中心，FDA 稽查員期望看到哪些 UPS 容量文件？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.5 RISK ASSESSMENT AND QUALIFICATION TEST PLANNING
+       ========================================================= -->
+  <div class="chapter-section" id="sec55-risk">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.5</div>
+      <div class="chapter-info">
+        <h2>Risk Assessment &amp; Qualification Test Planning</h2>
+        <p>風險評估與確效測試規劃 | GAMP-Based Approach to Qualification Scope</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>Risk Assessment Process &nbsp;/&nbsp; 風險評估流程</h3>
+          <p>Risk assessment is typically an <strong>iterative process</strong>, performed during planning and specification as more information becomes available. As the specification and design is completed, it becomes possible to perform more detailed assessments to establish the appropriate level of qualification testing.</p>
+
+          <p>GAMP software and hardware categories should be taken into account during these assessments. The design review should provide:</p>
+          <ul>
+            <li>Assurance that a chosen design will deliver required results with an acceptable level of risk</li>
+            <li>Knowledge of critical components or parameters needing special attention in maintenance procedures</li>
+            <li>Guidance on the appropriate level of supplier assessment required</li>
+            <li>Identification of critical aspects to be covered by the qualification process</li>
+            <li>Assessment of IT infrastructure processes and their effectiveness to reduce likelihood of undetected harm</li>
+            <li>Scope of required qualification testing: what to test, how much to test, test result documentation, acceptance criteria</li>
+            <li>Level of QA involvement required</li>
+            <li>Indication of training required</li>
+            <li>List of new or changed SOPs required to mitigate identified risks</li>
+          </ul>
+
+          <div class="quote-box">
+            "A benefit of using pre-qualified building blocks with standard qualification packages is that following the initial qualification only subsequent <strong>changes</strong> need be assessed for impact and risk."
+            <br><br>
+            「使用具有標準確效套件的預先確效建構模塊的好處是，初始確效完成後，只需評估後續<strong>變更</strong>的影響和風險。」
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>GAMP Category-Based Test Planning &nbsp;/&nbsp; GAMP 類別測試規劃</h3>
+
+          <div class="key-point-box">
+            <h4>Building Block Qualification Strategy &nbsp;/&nbsp; 建構模塊確效策略</h4>
+            <p>Once a building block (e.g., a standard Windows Server 2022 image) has been qualified, <strong>duplicates</strong> of this building block may be configured with the main focus being to verify that a duplicate has been produced correctly. This dramatically reduces the testing burden for identical subsequent deployments.</p>
+            <p>一旦建構模塊（如標準 Windows Server 2022 映像）完成確效，後續複製品的確效重點僅在於驗證複製是否正確產生，大幅降低相同後續部署的測試負擔。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>Risk Assessment Outputs &nbsp;/&nbsp; 風險評估產出</h4>
+            <ul>
+              <li><strong>Critical component list</strong> — components requiring special IQ/OQ attention</li>
+              <li><strong>Supplier assessment level</strong> — which suppliers need audit vs. questionnaire</li>
+              <li><strong>Qualification test scope</strong> — what to test, how much, acceptance criteria</li>
+              <li><strong>QA involvement level</strong> — full QA sign-off vs. peer review</li>
+              <li><strong>Training requirements</strong> — staff who must be trained before operation</li>
+              <li><strong>SOP changes required</strong> — new or updated procedures</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; Risk = Probability × Impact &nbsp;/&nbsp; 風險 = 機率 × 影響</h4>
+            <p>In pharma process validation, we don't test every parameter equally — we focus testing effort on critical process parameters (CPPs) that most directly affect critical quality attributes (CQAs). The same principle applies in IT: risk assessment identifies the "CPPs" of your IT infrastructure (e.g., NTP sync, access controls, audit trail settings) that need the most rigorous qualification testing.</p>
+            <p>在製程驗證中，我們不會平等測試所有參數，而是將測試工作集中在最直接影響關鍵品質屬性（CQA）的關鍵製程參數（CPP）上。IT 基礎設施同理：風險評估識別最需要嚴格確效測試的「IT CPP」（如 NTP 同步、存取控制、稽查軌跡設定）。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>You are installing 50 identical network switches across a production facility. All are the same model, firmware version, and configuration template. How does the building block concept change your qualification approach?<br><span style="color:#4a5568;font-size:0.88rem;">您在生產設施中安裝 50 台相同的網路交換器，型號、韌體版本和設定模板均相同。建構模塊概念如何改變您的確效方法？</span></li>
+              <li>What documentation must be produced as an output of the risk assessment phase before proceeding to test scripting?<br><span style="color:#4a5568;font-size:0.88rem;">在進入測試腳本編寫之前，風險評估階段必須產出哪些文件？</span></li>
+              <li>A monitoring tool automatically checks server performance every 5 minutes and logs to a database. Does this tool need to be qualified? What risk factors should guide your decision?<br><span style="color:#4a5568;font-size:0.88rem;">一個監控工具每 5 分鐘自動檢查伺服器效能並記錄到資料庫，此工具是否需要被確效？哪些風險因素應指導您的決定？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAMP CATEGORY TABLE — full width -->
+      <div id="gamp-cat-table">
+        <h3 class="section-title">GAMP Testing Category Decision Table &nbsp;/&nbsp; GAMP 測試類別決策表</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Testing Level<br>測試等級</th>
+              <th>GAMP Risk Profile<br>GAMP 風險特徵</th>
+              <th>Typical IT Infrastructure Component<br>典型 IT 基礎設施元件</th>
+              <th>Qualification Approach<br>確效方式</th>
+              <th>Documentation Required<br>所需文件</th>
+              <th>QA Sign-off<br>QA 簽核</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cat-none">
+              <td><strong>No Testing</strong><br>不需測試</td>
+              <td>Infrastructure layer — no direct impact on product quality or data integrity; standard commodity hardware with no GxP parameter customization</td>
+              <td>Standard office network switches (admin network); UPS battery units (power protection only); physical rack mounting hardware; generic patch cables</td>
+              <td>Good Engineering Practice (GEP) commissioning; vendor installation to specification; no formal IQ protocol required</td>
+              <td>Procurement record; installation record; vendor certificates</td>
+              <td><span class="badge gray">Not required</span></td>
+            </tr>
+            <tr class="cat-confirm">
+              <td><strong>Confirmation Testing</strong><br>確認測試</td>
+              <td>Low complexity; standard COTS; manufacturer-supplied evidence (certificates of conformance, factory test reports) can be leveraged; minor GxP relevance</td>
+              <td>Network cables (physical layer — ISO/IEC 11801 certified); standard network switches on GxP segments (Layer 2); standard rack servers (hardware layer only); label printers with firmware</td>
+              <td>Review and confirm vendor-supplied test reports and certificates; limited site verification; sampling-based checks</td>
+              <td>Vendor certificates; site installation checklist; brief IQ summary report</td>
+              <td><span class="badge yellow">Light review</span></td>
+            </tr>
+            <tr class="cat-confidence">
+              <td><strong>Confidence Testing</strong><br>信心測試</td>
+              <td>Moderate complexity; COTS with configuration; some GxP-relevant parameters (OS settings, network configuration, time sync); limited customization</td>
+              <td>Windows Server OS (with configured parameters); routers / firewalls on GxP network segments; database servers (Oracle, SQL Server) — infrastructure layer; VMware ESXi hypervisor; Active Directory domain controllers</td>
+              <td>Formal IQ protocol covering critical parameters; OS CIL verification; configuration parameter checks; connectivity testing; building block qualification for duplicates</td>
+              <td>Approved IQ protocol; completed IQ report with deviations; CIL; topology diagrams; approved change records</td>
+              <td><span class="badge blue">QA review</span></td>
+            </tr>
+            <tr class="cat-full">
+              <td><strong>Full Testing</strong><br>完整測試</td>
+              <td>High complexity; bespoke/custom configuration; direct GxP impact; manages or stores electronic records, audit trails, electronic signatures; high patient safety / product quality risk</td>
+              <td>GxP application servers (LIMS, MES, ERP with batch records); Electronic Batch Record (EBR) servers; Chromatography Data Systems (CDS) servers; validated document management systems; audit trail database servers</td>
+              <td>Complete IQ/OQ/PQ lifecycle; full test scripting with expected results and pass/fail criteria; 100% critical parameter verification; formal deviation management; traceability matrix from URS to test results</td>
+              <td>Validation plan; approved IQ/OQ/PQ protocols; completed test reports with all deviations resolved; traceability matrix; validation summary report</td>
+              <td><span class="badge red">Full QA approval</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note-box" style="margin-top:1rem;">
+          <h4>&#9888; How to Use This Table &nbsp;/&nbsp; 如何使用本表</h4>
+          <p>This decision table is a guide — actual categorization must be determined by your site's risk assessment. A single component may require different testing levels for different parameters (e.g., a router's physical installation = Confirmation; its GxP network segmentation configuration = Confidence or Full). Always document the rationale for your testing level selection.</p>
+          <p>本決策表僅為指導方針，實際分類必須由您現場的風險評估決定。單一元件的不同參數可能需要不同的測試等級（如路由器的實體安裝 = 確認測試；其 GxP 網路分段設定 = 信心測試或完整測試）。務必記錄選擇測試等級的理由。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.6.1 SUPPLIER EVALUATION
+       ========================================================= -->
+  <div class="chapter-section" id="sec56-supplier">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.6.1</div>
+      <div class="chapter-info">
+        <h2>Procurement &amp; Supplier Evaluation</h2>
+        <p>採購與供應商評估 | Approved / Conditionally Approved / Not Approved</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>Procurement Principles &nbsp;/&nbsp; 採購原則</h3>
+          <p>Components and services should only be procured from suppliers who can demonstrate:</p>
+          <ul>
+            <li>An <strong>acceptable quality level</strong></li>
+            <li><strong>Effective support</strong>, commensurate with the expected lifetime of the item</li>
+            <li>Support level appropriate to the <strong>risk associated with the failure</strong> of the item</li>
+          </ul>
+
+          <p>Upon receipt, goods should be:</p>
+          <ul>
+            <li>Checked for compliance with <strong>order specifications</strong></li>
+            <li>Labeled as needed</li>
+            <li>Stored in a safe place to facilitate subsequent safe installation</li>
+          </ul>
+
+          <p>Options before site installation:</p>
+          <ul>
+            <li><strong>Brief power-on tests</strong> — verify basic operation before transporting to target site</li>
+            <li><strong>Factory Acceptance Test (FAT)</strong> — stage entire assemblies at supplier's premises; run formal FAT before transport</li>
+          </ul>
+
+          <h4>Supplier Classification &nbsp;/&nbsp; 供應商分類</h4>
+
+          <div class="supplier-card approved">
+            <h5>&#9989; Approved &nbsp;/&nbsp; 核准</h5>
+            <p>Delivery history or gathered information is satisfactory. Note: this classification is not always given following the first audit since there are often issues to rectify. Depending on the issues, such a scenario should not necessarily be seen as a problem.</p>
+            <p style="margin-top:0.3rem;color:#4a5568;">交貨記錄或收集的資訊令人滿意。注意：初次稽查後不一定立即給予此分類，因為往往有需要糾正的問題，視問題情況而定，這種情況不一定是問題。</p>
+          </div>
+
+          <div class="supplier-card conditional">
+            <h5>&#9888; Conditionally Approved &nbsp;/&nbsp; 有條件核准</h5>
+            <p>Delivery history or gathered information is <em>not fully satisfactory</em>. Mitigation may include closer follow-up, more intensive tests, and witnessing than otherwise justified.</p>
+            <p style="margin-top:0.3rem;color:#4a5568;">交貨記錄或收集的資訊未完全令人滿意，緩解措施可能包括更密切的後續追蹤、更密集的測試和見證。</p>
+          </div>
+
+          <div class="supplier-card not-approved">
+            <h5>&#10060; Not Approved &nbsp;/&nbsp; 未核准</h5>
+            <p>Information or delivery history is <em>inadequate or unsatisfactory</em>. Procurement from this supplier is not permitted for GxP-relevant items until issues are resolved.</p>
+            <p style="margin-top:0.3rem;color:#4a5568;">資訊或交貨記錄不足或不令人滿意，在解決問題之前不允許從此供應商採購 GxP 相關物品。</p>
+          </div>
+
+          <p>On-site supplier assessments performed or overseen by QA should be considered when deliveries support <strong>GxP regulated activities</strong>.</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>Supplier Assessment in Pharma IT Practice &nbsp;/&nbsp; 製藥 IT 供應商評估實務</h3>
+
+          <div class="key-point-box">
+            <h4>COTS vs. Custom Procurement Strategy &nbsp;/&nbsp; COTS 與訂製採購策略</h4>
+            <p><strong>COTS (Commercial Off-The-Shelf):</strong> Preferred for standard infrastructure components. Lower supplier assessment burden because vendor certification, testing evidence, and market history are available. Examples: Windows Server, Oracle DB, Cisco switches, VMware.</p>
+            <p><strong>Custom/bespoke:</strong> Higher supplier assessment required. Vendor must demonstrate development process quality, testing capability, and regulatory knowledge. Factory Acceptance Tests (FAT) are strongly recommended.</p>
+            <p><strong>COTS（商業現成品）：</strong>標準基礎設施元件的首選。由於供應商認證、測試證據和市場歷史均可取得，供應商評估負擔較低。</p>
+            <p><strong>訂製品：</strong>需要更高的供應商評估要求，強烈建議進行出廠驗收測試（FAT）。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>Supplier Assessment Criteria &nbsp;/&nbsp; 供應商評估標準</h4>
+            <p>A thorough supplier evaluation for GxP IT infrastructure typically covers:</p>
+            <ul>
+              <li><strong>Quality Management System:</strong> ISO 9001, ITIL, or equivalent; documented processes for development, testing, and change management</li>
+              <li><strong>GxP/Regulatory knowledge:</strong> familiarity with 21 CFR Part 11, EU Annex 11, GAMP, FDA/EMA expectations</li>
+              <li><strong>Technical capability:</strong> competency in the specific technology area; qualified technical staff</li>
+              <li><strong>Delivery history:</strong> on-time delivery, defect rates, recall history</li>
+              <li><strong>Support capability:</strong> SLA commitments; 24/7 support if required; patch/update frequency; end-of-life policy</li>
+              <li><strong>Security posture:</strong> data security practices; vulnerability disclosure process; supply chain security</li>
+              <li><strong>Financial stability:</strong> assurance of continued support over the product lifetime</li>
+              <li><strong>References:</strong> other pharmaceutical or regulated industry customers</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; Like a Drug Substance API Supplier Audit</h4>
+            <p>Qualifying a GxP IT supplier is analogous to qualifying an API (Active Pharmaceutical Ingredient) manufacturer: you don't just buy and use — you audit their facility, review their quality system, check their batch records (equivalent to test reports), and approve them before first use. For IT suppliers, "facility" = their development and support processes; "batch records" = software development documentation and test evidence.</p>
+            <p>認定 GxP IT 供應商類似於認定 API 製造商：不只是購買使用，而是稽查其設施、審查品質系統、檢查批次記錄（等同於測試報告），並在首次使用前核准。對 IT 供應商而言，「設施」= 其開發和支援流程；「批次記錄」= 軟體開發文件和測試證據。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>Factory Acceptance Test (FAT) &nbsp;/&nbsp; 出廠驗收測試</h4>
+            <p>FAT is performed at the supplier's premises before equipment is shipped to the pharma site. Benefits:</p>
+            <ul>
+              <li>Identifies issues before transport — cheaper and faster to fix at factory</li>
+              <li>Supplier engineers are present — immediate technical support</li>
+              <li>Reduces IQ time on site — some tests can be credited from FAT</li>
+              <li>Documented FAT results become part of the IQ package</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>Your site is procuring a new Electronic Batch Record (EBR) system from a small software vendor. What supplier assessment steps should be completed before signing the purchase contract?<br><span style="color:#4a5568;font-size:0.88rem;">您的現場正在從一家小型軟體供應商採購新的電子批次記錄（EBR）系統，在簽署採購合約之前應完成哪些供應商評估步驟？</span></li>
+              <li>A hardware vendor is classified as "Conditionally Approved." What additional controls must be implemented during the procurement and installation process?<br><span style="color:#4a5568;font-size:0.88rem;">一家硬體供應商被分類為「有條件核准」，在採購和安裝過程中必須實施哪些額外控制措施？</span></li>
+              <li>Why might a first audit of a supplier result in something other than "Approved" status, and why is this not necessarily a problem?<br><span style="color:#4a5568;font-size:0.88rem;">為什麼供應商的首次稽查結果可能不是「核准」狀態，為什麼這不一定是問題？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5.6.2 INSTALLATION AND IQ
+       ========================================================= -->
+  <div class="chapter-section" id="sec56-iq">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.6.2</div>
+      <div class="chapter-info">
+        <h2>Installation &amp; Installation Qualification (IQ)</h2>
+        <p>安裝與安裝確效 | Documentation, Environmental, Servers, Networks</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT -->
+        <div class="left-column">
+          <h3>IQ Scope and Principles &nbsp;/&nbsp; IQ 範圍與原則</h3>
+          <p>Installation and integration methods must comply with company standards, and be based on:</p>
+          <ul>
+            <li>Supplier recommendations</li>
+            <li>Good Engineering Practice (GEP)</li>
+            <li>Good workmanship</li>
+          </ul>
+          <p>IQ verifies that the required physical hardware and software components have been <strong>installed and configured correctly</strong> in accordance with the platform and design specifications.</p>
+
+          <h4>5.6.2.1 Documentation Verification &nbsp;/&nbsp; 文件驗證</h4>
+          <p>During IQ, the adequacy of the following documentation should be verified:</p>
+          <ul>
+            <li>Design specification</li>
+            <li>Hardware and software descriptions</li>
+            <li>System operation manuals</li>
+            <li>Technical manuals</li>
+            <li>System use SOPs (may be in draft at IQ; verified at OQ)</li>
+            <li>Network topology diagram (physical layout)</li>
+            <li>Network logical diagram (switching capability and resilience)</li>
+            <li>Landscape overview (depiction of environments for operation and maintenance)</li>
+            <li>System labeling convention (wiring closets, cables, equipment)</li>
+            <li>Cable lists as appropriate</li>
+            <li>Logical address lists (IP addresses, hostnames)</li>
+            <li>Supplier documentation (system configuration details and installation guides)</li>
+          </ul>
+          <p>All critical items must be managed by the <strong>Configuration Management process</strong>, including change management.</p>
+
+          <h4>5.6.2.2 Environmental Conditions &nbsp;/&nbsp; 環境條件</h4>
+          <ul>
+            <li>Temperature and humidity (especially in server rooms)</li>
+            <li>Electrical power and circuit protection documentation verification</li>
+            <li>Wiring, cabling, termination/connection documentation verification</li>
+            <li>Normal power up/power down verifications</li>
+          </ul>
+
+          <h4>5.6.2.5 Network IQ — Physical Layer &nbsp;/&nbsp; 網路 IQ</h4>
+          <p>In new facilities, cables should be prepared, installed, inspected, and tested per recognized standards (e.g., ISO/IEC 11801 or ANSI/TIA/EIA 568B). Physical layer test considerations:</p>
+          <ul>
+            <li>Environmental factors: heat, dust, moisture, Electromagnetic Compatibility (EMC)</li>
+            <li>Physical strength of fiber cables</li>
+            <li>Connectors and terminations</li>
+            <li>Transmission performance: attenuation, refraction</li>
+          </ul>
+          <p>Test results must be annotated with <strong>actual values recorded</strong>, and signed and dated per company procedures.</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right-column">
+          <h3>IQ Execution Commentary &nbsp;/&nbsp; IQ 執行解析</h3>
+
+          <div class="key-point-box">
+            <h4>Building Block IQ Efficiency &nbsp;/&nbsp; 建構模塊 IQ 效率</h4>
+            <p>The building block concept maximizes qualification efficiency. Once a building block is qualified:</p>
+            <ul>
+              <li>Prepare installation scripts in advance for producing duplicates (based on images)</li>
+              <li>Verify that the installation script produces an identical duplicate during initial qualification</li>
+              <li>For subsequent deployments, the main IQ focus is verifying that the duplicate was produced correctly</li>
+              <li>This approach is recognized by GAMP and reduces test burden without sacrificing compliance</li>
+            </ul>
+            <p>建構模塊概念最大化確效效率。一旦建構模塊完成確效，後續部署的 IQ 重點僅是驗證複製品是否正確產生。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>IQ Documentation Package &nbsp;/&nbsp; IQ 文件套件</h4>
+            <ul>
+              <li><strong>IQ Protocol:</strong> approved before execution; specifies what to check and acceptance criteria</li>
+              <li><strong>CIL (Configuration Items List):</strong> hardware and software inventory with versions</li>
+              <li><strong>IQ Report:</strong> completed test records with actual values; deviations logged and resolved</li>
+              <li><strong>Network topology diagrams:</strong> physical and logical layouts — verified at IQ</li>
+              <li><strong>Environmental records:</strong> temperature, humidity, power verification logs</li>
+              <li><strong>Cable test reports:</strong> physical layer test results (actual vs. spec)</li>
+              <li><strong>Supplier certificates:</strong> CoC, FAT reports, installation certificates</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>Application Connectivity Testing — OUT OF SCOPE at IQ &nbsp;/&nbsp; 應用程式連線測試不在 IQ 範圍內</h4>
+            <p>Application connectivity testing is outside the scope of infrastructure IQ. It is verified as an integral part of the <strong>system validation effort (OQ/PQ)</strong>. Application testing must <em>not commence</em> until formal handover of the infrastructure has been completed — typically via a formal handover certificate or acceptance/sign-off of qualification activities by the application team.</p>
+            <p>應用程式連線測試不在基礎設施 IQ 的範圍內，在系統驗證工作（OQ/PQ）中驗證。在基礎設施正式移交完成之前，不得開始應用程式測試。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; IQ = "New Cleanroom Commissioning" &nbsp;/&nbsp; IQ = 「新潔淨室試運行」</h4>
+            <p>IQ for a server is like commissioning a new cleanroom: you verify that the physical structure was built to spec (dimensions, materials), that environmental systems are installed and functional (HVAC, drains), and that all required documentation is in place — before you ever introduce product or run any process in it. You're verifying the "as-built" state against the "as-designed" state.</p>
+            <p>伺服器的 IQ 就像潔淨室試運行：驗證物理結構是否按照規格建造（尺寸、材料）、環境系統是否安裝並正常運行（HVAC、排水），以及所有必要文件是否到位 — 在引入產品或執行任何製程之前。您正在根據「設計狀態」驗證「建造狀態」。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>During an IQ for a new VMware ESXi cluster, you find that the server room temperature sensor shows 28°C (design spec: max 24°C). The equipment is not yet powered on. What is your immediate action and what IQ documentation is required?<br><span style="color:#4a5568;font-size:0.88rem;">新 VMware ESXi 叢集的 IQ 期間，您發現伺服器機房溫度感測器顯示 28°C（設計規格：最高 24°C），設備尚未上電。您的即時行動是什麼，需要哪些 IQ 文件？</span></li>
+              <li>The application team wants to start user acceptance testing (UAT) immediately after hardware installation is complete, while IQ documentation is still being finalized. Is this acceptable? What is the correct sequence?<br><span style="color:#4a5568;font-size:0.88rem;">應用程式團隊想在硬體安裝完成後立即開始使用者驗收測試（UAT），而 IQ 文件仍在最終確認中。這可以接受嗎？正確順序是什麼？</span></li>
+              <li>Your IQ protocol requires verification of the logical address list. A network engineer says this information changes frequently and "documenting it is impractical." How do you respond from a GxP compliance perspective?<br><span style="color:#4a5568;font-size:0.88rem;">您的 IQ 協議要求驗證邏輯地址清單，網路工程師說此資訊頻繁變更且「記錄不切實際」，您從 GxP 合規角度如何回應？</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- IQ ACTIVITIES TABLE — full width -->
+      <div id="iq-activities">
+        <h3 class="section-title">IQ Activities by Component Type &nbsp;/&nbsp; 各元件類型的 IQ 活動表</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Component<br>元件</th>
+              <th>IQ Activity<br>IQ 活動</th>
+              <th>What to Verify<br>驗證內容</th>
+              <th>Evidence / Records<br>證據 / 記錄</th>
+              <th>Reference Standard<br>參考標準</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- HARDWARE -->
+            <tr class="iq-hw">
+              <td rowspan="4"><strong>Server Hardware</strong><br>伺服器硬體<br><span class="badge green">Hardware</span></td>
+              <td>Physical installation check</td>
+              <td>Make, model, serial number match order spec; rack mounting; cable connections; no physical damage</td>
+              <td>Hardware CIL; delivery receipt; photos</td>
+              <td>Supplier installation guide; DS</td>
+            </tr>
+            <tr class="iq-hw">
+              <td>Component verification</td>
+              <td>Memory type &amp; amount, CPU count, disk count, RAID controller, NIC type — all match DS</td>
+              <td>Server management software report; BIOS/UEFI screenshots</td>
+              <td>Design specification; vendor datasheet</td>
+            </tr>
+            <tr class="iq-hw">
+              <td>Power-on self-test</td>
+              <td>Server completes POST without errors; no hardware alerts in management console</td>
+              <td>POST log; IPMI/iDRAC event log</td>
+              <td>Supplier installation guide</td>
+            </tr>
+            <tr class="iq-hw">
+              <td>Redundancy verification</td>
+              <td>Redundant power supplies present and both active; RAID array healthy; failover components installed per risk assessment</td>
+              <td>Server management console screenshot; RAID status report</td>
+              <td>DS (risk-based redundancy requirements)</td>
+            </tr>
+            <!-- SOFTWARE — OS -->
+            <tr class="iq-sw">
+              <td rowspan="5"><strong>Operating System</strong><br>作業系統<br><span class="badge blue">Software</span></td>
+              <td>OS version verification</td>
+              <td>OS name, version number, edition — match design specification and software CIL</td>
+              <td>System Properties screenshot; <code>winver</code> / <code>uname -a</code> output</td>
+              <td>Software CIL; DS</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Service pack / patch verification</td>
+              <td>All required service packs, hot fixes, and security patches installed per CIL</td>
+              <td>Windows Update history; patch management report</td>
+              <td>Software CIL; site security patch policy</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Parameter settings verification</td>
+              <td>All non-default and blank-field parameters set per DS (Categories 2 &amp; 3 per Section 5.4.2.2)</td>
+              <td>Configuration screenshots; Group Policy report; registry exports</td>
+              <td>Design specification; OS hardening baseline</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Time synchronization verification</td>
+              <td>NTP server configured and reachable; time zone correctly set; NTP sync active with traceable source (UTC)</td>
+              <td>NTP status command output; system clock settings screenshot; time zone configuration</td>
+              <td>DS (time management spec); 21 CFR Part 11</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Access control settings</td>
+              <td>Local administrator accounts, password policies, and account lockout settings match DS and site security policy</td>
+              <td>Local Security Policy screenshot; user account list</td>
+              <td>DS; site security policy; 21 CFR Part 11</td>
+            </tr>
+            <!-- DATABASE -->
+            <tr class="iq-sw">
+              <td rowspan="3"><strong>Database (Oracle / SQL Server)</strong><br>資料庫<br><span class="badge blue">Software</span></td>
+              <td>Version and patch level verification</td>
+              <td>Database version and patch set match software CIL</td>
+              <td>Database version query output (e.g., <code>SELECT * FROM v$version</code>); screenshots</td>
+              <td>Software CIL; vendor release notes</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Instance and schema verification</td>
+              <td>Database instance name, character set, tablespace configuration match DS</td>
+              <td>Database parameter query output; DBA configuration report</td>
+              <td>Design specification</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>Audit trail configuration</td>
+              <td>Database-level auditing enabled per GxP requirements; audit log retention configured</td>
+              <td>Database audit settings query; audit log location and retention policy</td>
+              <td>21 CFR Part 11; EU Annex 11; DS</td>
+            </tr>
+            <!-- VIRTUALIZATION -->
+            <tr class="iq-sw">
+              <td rowspan="2"><strong>VMware ESXi / Hypervisor</strong><br>虛擬化平台<br><span class="badge blue">Software</span></td>
+              <td>Hypervisor version verification</td>
+              <td>ESXi version, build number match software CIL; vCenter version verified</td>
+              <td>vSphere client screenshot; ESXCLI output</td>
+              <td>Software CIL; VMware compatibility matrix</td>
+            </tr>
+            <tr class="iq-sw">
+              <td>VM configuration verification</td>
+              <td>Virtual machine hardware version, vCPU, vRAM, vDisk sizes match DS for each GxP VM</td>
+              <td>VM configuration screenshots from vSphere client</td>
+              <td>Design specification per VM</td>
+            </tr>
+            <!-- NETWORK -->
+            <tr class="iq-nw">
+              <td rowspan="4"><strong>Network Equipment</strong><br>網路設備<br><span class="badge yellow">Network</span></td>
+              <td>Physical cable testing (Layer 1)</td>
+              <td>Cable performance meets ISO/IEC 11801 or ANSI/TIA/EIA 568B standards; attenuation, refraction, connector integrity verified; EMC compliance</td>
+              <td>Cable certifier test reports (actual values); cable labels match cable list</td>
+              <td>ISO/IEC 11801; ANSI/TIA/EIA 568B; DS</td>
+            </tr>
+            <tr class="iq-nw">
+              <td>Switch / router configuration (Layer 2/3)</td>
+              <td>Switch firmware version, VLAN configuration, port assignments match network DS; firewall rules match topology design</td>
+              <td>Switch configuration file export; VLAN summary; firewall rule base export</td>
+              <td>Network design specification; topology diagram</td>
+            </tr>
+            <tr class="iq-nw">
+              <td>Network segmentation verification</td>
+              <td>GxP network segments are isolated from administrative network; routing between segments only via approved firewall rules</td>
+              <td>Connectivity test results (ping/traceroute); firewall policy screenshots; port scan results</td>
+              <td>Network topology diagram; DS; security policy</td>
+            </tr>
+            <tr class="iq-nw">
+              <td>Network management system (SNMP)</td>
+              <td>SNMP configured on all managed GxP network devices; NMS can discover and monitor all devices per topology</td>
+              <td>NMS device inventory; SNMP poll test results; alert configuration</td>
+              <td>Network DS; GEP</td>
+            </tr>
+            <!-- ENVIRONMENTAL -->
+            <tr class="iq-env">
+              <td rowspan="3"><strong>Data Center / Environment</strong><br>資料中心環境<br><span class="badge purple">Environment</span></td>
+              <td>Temperature &amp; humidity verification</td>
+              <td>Server room temperature and humidity within design specification limits; monitoring system operational and calibrated</td>
+              <td>Environmental monitoring system readings; calibration certificates for sensors</td>
+              <td>DS (environmental spec); ISO/IEC standards</td>
+            </tr>
+            <tr class="iq-env">
+              <td>Power supply verification</td>
+              <td>UPS capacity meets VA/duration requirements from DS; UPS self-test passed; circuit protection (breakers, surge protection) installed per spec</td>
+              <td>UPS test log; power measurement records; electrical circuit documentation</td>
+              <td>DS; UPS manufacturer specs; local electrical codes</td>
+            </tr>
+            <tr class="iq-env">
+              <td>Physical security verification</td>
+              <td>Access control system operational; entry log functioning; camera coverage as specified; badge/biometric access restricted to authorized personnel</td>
+              <td>Access control system test; entry log review; camera coverage map</td>
+              <td>DS; site security policy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       IQ CHECKLIST FOR COMMON PHARMA IT COMPONENTS
+       ========================================================= -->
+  <div class="chapter-section" id="iq-checklist">
+    <div class="chapter-divider">
+      <div class="chapter-badge">&#9989;</div>
+      <div class="chapter-info">
+        <h2>IQ Checklist — Common Pharma IT Components</h2>
+        <p>常見製藥 IT 元件 IQ 查核表 | Windows Server / Oracle DB / VMware / Network Switch</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <!-- LEFT: Windows + Oracle -->
+        <div class="left-column">
+          <h3>Windows Server IQ Checklist &nbsp;/&nbsp; Windows Server IQ 查核表</h3>
+          <ul class="checklist">
+            <li>Server make, model, and serial number verified against purchase order and DS</li>
+            <li>Hardware components (CPU, RAM, disk) match hardware CIL</li>
+            <li>RAID configuration matches DS; array status healthy (no degraded drives)</li>
+            <li>Redundant power supplies present and both active</li>
+            <li>Windows Server OS edition and version number match software CIL</li>
+            <li>Service pack and cumulative update level match CIL</li>
+            <li>Required hot fixes and security patches installed per site security patch policy</li>
+            <li>Non-default OS parameters set per DS (Category 2 parameters)</li>
+            <li>Blank-field parameters completed per DS (Category 3 parameters)</li>
+            <li>Computer name (hostname) matches logical address list in DS</li>
+            <li>IP address, subnet mask, default gateway, DNS servers match logical address list</li>
+            <li>Domain membership confirmed (if applicable)</li>
+            <li>NTP server configured; time synchronization active; time zone set to correct local zone</li>
+            <li>System time verified against traceable standard (UTC-traceable NTP source)</li>
+            <li>Local administrator accounts and password policy match security specification</li>
+            <li>Account lockout policy configured per site security baseline</li>
+            <li>Windows Firewall or host-based firewall configured per DS</li>
+            <li>Remote Desktop / administrative access restricted to authorized personnel</li>
+            <li>Anti-virus / endpoint protection installed and updated per CIL</li>
+            <li>Server management software (IPMI/iDRAC/iLO) accessible and configured</li>
+            <li>Physical server labeled per site labeling convention</li>
+            <li>All IQ documentation (protocol, CIL, manuals, SOPs) reviewed and verified adequate</li>
+          </ul>
+
+          <h3 style="margin-top:1.5rem;">Oracle Database IQ Checklist &nbsp;/&nbsp; Oracle 資料庫 IQ 查核表</h3>
+          <ul class="checklist">
+            <li>Oracle Database version and patch set match software CIL</li>
+            <li>Oracle home directory location matches DS</li>
+            <li>Database instance name (SID/PDB name) matches DS</li>
+            <li>Character set (e.g., AL32UTF8) matches application requirements in DS</li>
+            <li>Tablespace configuration (SYSTEM, SYSAUX, TEMP, UNDO, application tablespaces) matches DS</li>
+            <li>Database storage allocation (datafile sizes, autoextend settings) matches DS</li>
+            <li>Database parameter file (init.ora / spfile) settings match DS</li>
+            <li>Oracle listener configured and operational; listener port matches DS</li>
+            <li>Database-level auditing enabled per GxP requirements</li>
+            <li>Audit trail log location and retention period configured per DS</li>
+            <li>Oracle database user accounts created per DS; default accounts locked/expired</li>
+            <li>DBA access restricted to authorized personnel only</li>
+            <li>RMAN backup configuration matches backup strategy in DS</li>
+            <li>Database memory allocation (SGA, PGA) matches performance specification in DS</li>
+            <li>Oracle alert log accessible and showing no critical errors after installation</li>
+          </ul>
+        </div>
+
+        <!-- RIGHT: VMware + Network Switch -->
+        <div class="right-column">
+          <h3>VMware ESXi IQ Checklist &nbsp;/&nbsp; VMware ESXi IQ 查核表</h3>
+          <ul class="checklist">
+            <li>ESXi version and build number match software CIL</li>
+            <li>vCenter Server version match software CIL (if applicable)</li>
+            <li>Physical host hardware validated per server hardware checklist (above)</li>
+            <li>ESXi hostname and management IP address match logical address list</li>
+            <li>ESXi management network VLAN tag matches network DS</li>
+            <li>NTP configuration on ESXi host active; time synchronized with site NTP server</li>
+            <li>Storage datastores (NFS, iSCSI, local) configured per DS; accessible from host</li>
+            <li>Virtual distributed switch (vDS) or standard switch configuration matches network DS</li>
+            <li>VLAN configurations on virtual switches match network segmentation design</li>
+            <li>High Availability (HA) and Distributed Resource Scheduler (DRS) settings match DS</li>
+            <li>ESXi host firewall rules match security specification</li>
+            <li>ESXi administrative access restricted; root password changed from default</li>
+            <li>SSH and ESXi Shell disabled unless explicitly required by DS</li>
+            <li>Each GxP VM: vCPU count, vRAM, vDisk sizes, and network adapter connections verified against individual VM DS</li>
+            <li>VM snapshots policy and naming convention per DS</li>
+            <li>ESXi/vCenter event and alarm monitoring configured and functional</li>
+            <li>Syslog target configured for centralized log management per DS</li>
+          </ul>
+
+          <h3 style="margin-top:1.5rem;">Network Switch IQ Checklist &nbsp;/&nbsp; 網路交換器 IQ 查核表</h3>
+          <ul class="checklist">
+            <li>Switch make, model, serial number verified against order specifications and DS</li>
+            <li>Switch firmware / IOS version matches software CIL</li>
+            <li>Switch hostname matches logical naming convention in DS</li>
+            <li>Management IP address matches logical address list in DS</li>
+            <li>Switch placed in correct rack location per physical topology diagram</li>
+            <li>Physical cable connections verified against cable list; cables labeled per convention</li>
+            <li>VLAN database configured per network DS; GxP VLANs separated from admin VLANs</li>
+            <li>Trunk ports configured between core/distribution/access switches per topology</li>
+            <li>Spanning Tree Protocol (STP) configuration matches network design (mode, priority)</li>
+            <li>Port security (MAC address filtering) enabled on access ports per security specification</li>
+            <li>Unused ports disabled per security hardening baseline</li>
+            <li>SNMP community strings configured per DS; SNMPv3 used if required by security policy</li>
+            <li>SNMP trap destination points to network management system per DS</li>
+            <li>NTP synchronization configured and active on switch; synced to site NTP server</li>
+            <li>Switch management access restricted (SSH only; Telnet disabled); privileged access password changed</li>
+            <li>Physical cable test reports (Layer 1) showing actual values — on file and meeting ISO/IEC 11801 / ANSI/TIA/EIA 568B standards</li>
+            <li>Switch configuration file exported and stored in configuration management system</li>
+            <li>Connectivity test: key endpoints on each VLAN can communicate as designed; cross-VLAN routing blocked except via firewall</li>
+          </ul>
+
+          <div class="practice-box" style="margin-top:1rem;">
+            <h4>&#9997; Practice Questions &nbsp;/&nbsp; 練習思考</h4>
+            <ol>
+              <li>A GxP network switch fails during production and is replaced with an identical spare. The spare has the same firmware but was never formally IQ'd. What is the minimum required documentation before returning the network to GxP production use?<br><span style="color:#4a5568;font-size:0.88rem;">一台 GxP 網路交換器在生產期間故障，被替換為相同的備用品。備用品具有相同韌體但從未正式完成 IQ。在將網路恢復到 GxP 生產使用之前，最低限度需要哪些文件？</span></li>
+              <li>Your site's IQ protocol requires verification that Telnet is disabled on all GxP network switches. The network team says they need Telnet for some legacy equipment. How should this discrepancy be handled?<br><span style="color:#4a5568;font-size:0.88rem;">您現場的 IQ 協議要求驗證所有 GxP 網路交換器上 Telnet 已禁用，但網路團隊表示他們需要 Telnet 用於某些舊設備，應如何處理此差異？</span></li>
+              <li>Describe the correct procedure if, during VMware ESXi IQ, you discover that the vCenter version deployed is different from what is specified in the CIL.<br><span style="color:#4a5568;font-size:0.88rem;">如果在 VMware ESXi IQ 期間，您發現部署的 vCenter 版本與 CIL 中指定的不同，描述正確的處理程序。</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECTION SUMMARY
+       ========================================================= -->
+  <div class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge">&#127891;</div>
+      <div class="chapter-info">
+        <h2>Section Summary &amp; Key Takeaways</h2>
+        <p>本節摘要與關鍵要點 | Chapters 5.4–5.6</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Core Principles — English Summary</h3>
+
+          <div class="term-box">
+            <h4>5.4 Specification &amp; Design</h4>
+            <ul>
+              <li>Specification hierarchy: URS → FS → DS → CIL; all traceable through to IQ/OQ</li>
+              <li>Networks: topology diagrams essential; GxP network segregation mandatory; SNMP for managed networks</li>
+              <li>Servers: hardware CIL + software CIL required; OS parameter Categories 1/2/3 determine documentation scope</li>
+              <li>System time: traceable to UTC; verified at IQ and OQ; responsibilities documented</li>
+              <li>Storage: SAN vs. NAS design depends on load and topology; OQ via connected server</li>
+              <li>Clients: three-tier classification (un-restricted / restricted / controlled); image-based deployment for GxP clients</li>
+              <li>Data centers: UPS, cooling, physical security, fire protection — all must be specified and verified</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>5.5 Risk Assessment &amp; Test Planning</h4>
+            <ul>
+              <li>Iterative process: starts at planning, refines as design is completed</li>
+              <li>GAMP categories determine testing level: No Testing → Confirmation → Confidence → Full</li>
+              <li>Building blocks: qualify once, then verify duplication — maximizes efficiency</li>
+              <li>Risk assessment outputs: critical component list, supplier assessment level, test scope, QA involvement, training needs, SOP changes</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>5.6 Procurement, Installation &amp; IQ</h4>
+            <ul>
+              <li>Supplier classification: Approved / Conditionally Approved / Not Approved; GxP items from approved suppliers only</li>
+              <li>FAT option: verify at supplier's premises before transport — cheaper to fix issues at factory</li>
+              <li>IQ scope: documentation verification + environmental conditions + server/OS/network configuration verification</li>
+              <li>IQ documentation: CIL, topology diagrams, cable test reports, environmental records, supplier certificates</li>
+              <li>Application testing: NOT permitted before formal infrastructure handover; must wait for IQ sign-off</li>
+              <li>CIL enables efficient server/client duplication for subsequent validated deployments</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <h3>核心要點 — 中文摘要</h3>
+
+          <div class="key-point-box">
+            <h4>5.4 規格書與設計</h4>
+            <ul>
+              <li>規格書層級：URS → FS → DS → CIL，全程可追溯至 IQ/OQ 記錄</li>
+              <li>網路：拓樸圖為必要文件；GxP 網路分段是強制要求；SNMP 用於受管理網路</li>
+              <li>伺服器：硬體 CIL + 軟體 CIL 為必要；OS 參數類別 1/2/3 決定文件範圍</li>
+              <li>系統時間：可追溯至 UTC；於 IQ 和 OQ 驗證；責任人必須文件化</li>
+              <li>儲存：SAN vs. NAS 依負載和拓樸決定；OQ 必須透過連接的伺服器進行</li>
+              <li>客戶端：三層分類（非限制/限制/受控）；GxP 客戶端採用映像式部署</li>
+              <li>資料中心：UPS、冷卻、實體安全、消防保護均須規格書規定並驗證</li>
+            </ul>
+          </div>
+
+          <div class="key-point-box">
+            <h4>5.5 風險評估與測試規劃</h4>
+            <ul>
+              <li>迭代流程：從規劃開始，隨設計完成而細化</li>
+              <li>GAMP 類別決定測試等級：不需測試 → 確認測試 → 信心測試 → 完整測試</li>
+              <li>建構模塊：一次確效，後續驗證複製 — 最大化效率</li>
+              <li>風險評估產出：關鍵元件清單、供應商評估等級、測試範圍、QA 參與、培訓需求、SOP 變更</li>
+            </ul>
+          </div>
+
+          <div class="key-point-box">
+            <h4>5.6 採購、安裝與 IQ</h4>
+            <ul>
+              <li>供應商分類：核准 / 有條件核准 / 未核准；GxP 物品僅從核准供應商採購</li>
+              <li>FAT 選項：在供應商廠房驗證後再運送，在工廠修復問題更便宜</li>
+              <li>IQ 範圍：文件驗證 + 環境條件 + 伺服器/OS/網路設定驗證</li>
+              <li>IQ 文件：CIL、拓樸圖、纜線測試報告、環境記錄、供應商證書</li>
+              <li>應用程式測試：在正式基礎設施移交前不得進行；必須等待 IQ 簽署完成</li>
+              <li>CIL 支援後續已驗證部署的高效伺服器/客戶端複製</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>&#128161; The "Jigsaw Puzzle" of IT Qualification</h4>
+            <p>IT qualification is like a jigsaw puzzle: URS defines what the completed picture looks like (patient safety + product quality); FS and DS define how the pieces are shaped; risk assessment decides which pieces need to be individually verified vs. bulk-checked; IQ confirms that each piece is in the right position; OQ and PQ confirm that the completed picture actually works. Without a complete picture of the IQ layer, you cannot reliably build the OQ and PQ layers on top.</p>
+            <p>IT 確效就像拼圖：URS 定義完成後的圖像（患者安全 + 產品品質）；FS 和 DS 定義拼圖片的形狀；風險評估決定哪些片需要單獨驗證；IQ 確認每片都在正確位置；OQ 和 PQ 確認完成的圖像真的有效。沒有完整的 IQ 層，就無法可靠地在其上建立 OQ 和 PQ 層。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+  <p>ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance</p>
+  <p>Chapter 5.4–5.6 | Section 02 — Specification, Design &amp; Installation Qualification</p>
+  <p style="opacity:0.6;font-size:0.8rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Generated 2026</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+</body>
+</html>
