@@ -1,4 +1,4 @@
-# FDA Compliance Program Guidance Manual 7356.002A: Sterile Drug Process Inspections
+# FDA Compliance Program Guidance Manual 7356.002A: Sterile Drug Process Inspections (2015): Sterile Drug Process Inspections — FDA CPGM 7356.002A
 
 ===== PAGE 1 =====
  Page 1 of 38
