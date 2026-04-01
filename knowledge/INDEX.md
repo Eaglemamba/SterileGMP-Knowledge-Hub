@@ -1411,6 +1411,36 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-ProcessGas-Complete.md
+**Report:** ISPE Good Practice Guide: Process Gases (2011)
+**Pages:** p1–p180 | **Sections:** 8
+
+**Covers questions about:**
+- User Requirements Specification (URS) development for process gas systems in pharmaceutical manufacturing
+- Gas supply systems: bulk liquid storage, cylinder manifolds, on-site generation (PSA, membrane, cryogenic)
+- Compressed air systems: oil-free compressors, dryers, receivers, desiccant dryers, moisture control
+- Distribution systems: piping materials (316L SS, copper, aluminum), layout, pressure drop, velocity limits, cleanability
+- Instrumentation and control: pressure regulators, flow meters, dew point analyzers, oxygen analyzers, alarm systems
+- Gas quality testing: ISO 8573 compressed air purity classes, dew point, oil aerosol, viable particles, inert gas purity
+- Risk assessment for process gases: FMEA, hazard identification, GMP impact classification
+- Qualification and validation: design qualification (DQ), IQ, OQ for gas systems; sampling and testing protocols
+- Nitrogen, CO2, oxygen, argon: pharmaceutical applications and purity requirements
+- Appendices: sampling procedures, risk assessment templates, URS templates, calibration requirements, glossary
+
+**Key terms:** process gas, compressed air, nitrogen, CO2, oxygen, argon, ISO 8573, dew point, oil aerosol, viable particle, purity class, pressure swing adsorption (PSA), membrane separation, cryogenic liquid, bulk storage, cylinder manifold, distribution loop, deadleg, velocity, 316L SS, URS, DQ, IQ, OQ, gas quality testing, FMEA, risk assessment, GMP gas, pharmaceutical gas
+
+**Sections:**
+0. Introduction & URS (Ch1–Ch2, p1–p35) — scope, regulatory context, URS content, GMP impact classification
+1. Gas Supply Systems (Ch3, p36–p66) — bulk liquid, cylinders, PSA, membrane, on-site generation, supplier qualification
+2. Compressed Air Systems (Ch4, p67–p95) — compressor types, dryers, receivers, oil-free design, desiccant systems
+3. Distribution Systems (Ch5, p96–p115) — piping materials, layout, velocity, pressure drop, deadleg policy, fabrication
+4. Instrumentation & Control (Ch6, p116–p130) — regulators, meters, analyzers, alarms, BMS integration
+5. Risk Assessment, Final Design & OQ (Ch7–Ch9, p131–p155) — FMEA, design finalization, OQ test categories, documentation
+6. Appendices 1–3: Sampling Procedures, Risk Assessment & Calibration (App1–3, p156–p168) — sampling methods, RA templates, calibration requirements
+7. Appendices 4–9: URS Templates, References, Glossary (App4–9, p169–p180) — URS template, ISO 8573 tables, abbreviations, references, full glossary
+
+---
+
 ## ISPE/ISPE-QC-Complete.md
 **Report:** ISPE Guide: Improving Quality Culture (2017)
 **Pages:** p1–p40 | **Sections:** 1 (full guide)
@@ -1495,6 +1525,13 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | CAPA design from RCA, systemic corrective preventive action, deviation root cause CAPA / CAPA設計、系統性根本原因行動、糾正預防措施、偏差CAPA | ISPE-QC |
 | Deviation investigation quality, contributing factors, organizational root cause / 偏差調查品質、貢獻因素、組織性根本原因 | ISPE-QC |
 | Leadership GMP quality culture, management commitment, accountability for quality / 領導力與GMP品質文化、管理層承諾、品質問責制 | ISPE-QC |
+| Process gas URS, pharmaceutical gas requirements specification, gas system design / 製程氣體用戶需求規格書、製藥氣體需求規格、氣體系統設計 | ISPE-ProcessGas |
+| Compressed air system design, oil-free compressor, desiccant dryer, compressed air quality / 壓縮空氣系統設計、無油壓縮機、乾燥器、壓縮空氣品質 | ISPE-ProcessGas |
+| ISO 8573 compressed air purity class, dew point limit, oil aerosol viable particle / ISO 8573壓縮空氣純度等級、露點限值、油氣溶膠、活菌粒子 | ISPE-ProcessGas + ISPE-Sampling |
+| Nitrogen CO2 oxygen argon pharmaceutical grade, inert gas purity, bulk liquid storage / 氮氣二氧化碳氧氣氬氣製藥級、惰性氣體純度、低溫液體儲槽 | ISPE-ProcessGas |
+| Gas distribution piping, 316L SS copper aluminum, velocity pressure drop deadleg gas / 氣體分配管路、316L不銹鋼銅鋁管、流速壓降死角管路 | ISPE-ProcessGas |
+| Process gas qualification, gas system IQ OQ, gas sampling testing protocol / 製程氣體確效、氣體系統IQ/OQ、氣體取樣測試協議 | ISPE-ProcessGas |
+| PSA pressure swing adsorption, membrane separation on-site gas generation / 壓力變換吸附、薄膜分離、現場氣體製造 | ISPE-ProcessGas |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1915,6 +1952,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Human Error / CAPA Design (人為錯誤/CAPA設計)**
 → ISPE-QC ★★★ (human error theory: skill-based/rule-based/knowledge-based error taxonomy, latent and active failure distinction, organizational contributing factors; CAPA design principles to address systemic root causes) — single primary source for human factors in pharma manufacturing
+
+**Process Gases / Compressed Air (製程氣體/壓縮空氣)**
+→ ISPE-ProcessGas ★★★ (complete process gas guide: URS, supply systems, compressed air, distribution, I&C, risk assessment, OQ, ISO 8573 quality classes, gas qualification protocols) | ISPE-Sampling ★★ (process gas sampling procedures: compressed air dew point/oil/viable particle methods, Appendix content)
 
 ---
 

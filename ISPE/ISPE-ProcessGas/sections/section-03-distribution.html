@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Process Gases - Chapter 5: Design Options — Distribution Systems</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 5: Design Options — Distribution Systems</h1>
+    <div class="subtitle">第五章：配送系統設計選項</div>
+    <div class="page-info">ISPE Good Practice Guide: Process Gases | p53–p68</div>
+</div>
+
+<!-- SOURCE BADGE -->
+<div style="text-align:center; padding: 0.6rem; background:#dcfce7;">
+    <span style="background:#dcfce7; color:#15803d; font-weight:600; font-size:0.85rem; padding:3px 10px; border-radius:4px; border:1px solid #86efac;">ISPE Good Practice Guide: Process Gases</span>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解環形主管（ring main）與單向配送（one-way distribution）兩種架構的設計邏輯與GMP優劣比較</li>
+        <li>掌握非回流閥（non-return valve）防止逆流污染的原理及安裝規範，理解其在無菌產品系統中的法規必要性</li>
+        <li>了解製程氣體過濾系統的完整層次：從源頭預過濾到使用點（POU）0.2 µm滅菌級過濾，以及三種完整性測試方法</li>
+        <li>比較各種管路材質（不鏽鋼、銅、塑膠、碳鋼）的特性、適用情境與GxP限制，並能在CDMO現場做出有據可查的材質選擇決策</li>
+    </ul>
+</div>
+
+<!-- ===================== 5.1 CONCEPTS ===================== -->
+<div class="section-title">5.1 Concepts — 配送系統設計基本概念</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The initial design of <span class="key-term">distribution systems</span> for process gases should match the available gas quality and supply method to the end user specifications. This forms the basis for the design, and should provide detail on the:</p>
+        <ul>
+            <li>level of clean-up required for a gas prior to use</li>
+            <li>the pressure control and management of the supply and delivery systems</li>
+        </ul>
+        <p>Delivery of supplies of a gas at the required specification should be consistent. The capabilities of both internal (e.g., compressed air or nitrogen) and external (e.g., bottled or bulk gases) supplies should be considered.</p>
+        <p>A supplier audit may be required for external suppliers. A <span class="key-term">Certificate of Analysis (CoA)</span> should ensure that a gas is of the required specification. Equipment used to provide the information for the CoA should be appropriately maintained and calibrated.</p>
+        <p>Supplies of internally manufactured gases (e.g., compressed air or nitrogen) should be considered in the same way as external supplies, including:</p>
+        <ul>
+            <li>assessment of quality of supply</li>
+            <li>management and reporting of quality of supply</li>
+            <li>measurement and reporting of expected contaminants (e.g., oil carryover from a compressed air system)</li>
+        </ul>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.1 Risk Assessment</h3>
+        <p>The design process should include a <span class="key-term">risk assessment</span> to ensure that the proposed design is fit for purpose. The assessment should consider potential systems failures and ensure that the controls in place are adequate to mitigate risks to product quality or patient safety.</p>
+        <p>Gas suppliers may have technical support staff that can assist during the risk assessment and system design phase of a project.</p>
+        <p>Depending on the pharmaceutical application, the environment in which the gas lines are run, and the quality of gas supplied, some aspects of industrial gas supply may not be required. These requirements should be considered during a risk assessment, e.g.:</p>
+        <ul>
+            <li>Gases distributed for pharmaceutical applications are usually dry and of a high quality and may not require distribution systems to be drainable; pipe line fall, drop legs, and drain traps may not be needed.</li>
+            <li>Where a distribution system is clean, with a clean gas being distributed, having gas point take-offs at the top of a pipeline may not be required.</li>
+        </ul>
+        <p>A risk assessment should also consider:</p>
+        <ul>
+            <li>How operations are made aware that there is sufficient connected capacity to undertake a batch or process (e.g., use of monitoring systems and back-up supplies for critical processes)</li>
+            <li>Whether automatic changeover for finite supply applications (bulk or cylinders) is required, or if a suitable low pressure/low level warning system is sufficient</li>
+            <li>For flammable, toxic, or corrosive gases: control of discharge from regulators and lines during cylinder changeover, line disconnection, or in the event of line or regulator failure</li>
+            <li>Effects on staff from exposure to a gas in general operation and during potential failure modes (e.g., oxygen exclusion, flammability, static build-up, chemical reaction)</li>
+            <li>High concentration of all gases (including inert) should be considered to present a risk to personnel</li>
+        </ul>
+        <p>Document all steps as part of the design risk assessment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>配送系統設計 (Distribution System Design):</strong> 不是選一條管路接到設備就完成了。設計的起點是「使用端規格書（end user specification）」——你的製程需要多純的氣體、多大的流量、多少壓力，設計才從這裡往回推。</p>
+            <p><strong>CoA — Certificate of Analysis（分析證明書）:</strong> 每批次/每桶外購氣體的品質保證文件。ISPE強調：外購氣體供應商等同原料供應商，需要供應商稽核（supplier audit）、CoA審查，以及設備的校驗記錄。這在FDA查廠時必查。</p>
+            <p><strong>內部製造氣體的盲區:</strong> 許多CDMO習慣把壓縮空氣視為「公用設施」而非「原料」，但ISPE明確要求：自製氣體（compressed air、nitrogen）需要與外購氣體完全相同的品質管理機制，包括污染物報告（如油份攜帶）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把製程氣體配送系統想像成醫院的供氧管路。醫院不會隨便拉一條塑膠管就接到手術室的氧氣口——它需要材質驗證、壓力計算、備援系統、以及每個接頭的防回流設計。你的藥廠氣體配送系統也是如此：病人安全（= 產品品質）就建立在這套設計的嚴謹程度上。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>風險評估（risk assessment）是整個第5章的核心邏輯主軸。ISPE不規定你一定要做環形管路、一定要裝多少過濾器——它要求你透過風險評估來決定哪些工業標準做法在GMP環境中可以免除，哪些必須保留。這種「基於風險的彈性」正是現代法規的精神，也是你在工程設計時最重要的文件化工具。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的廠區自製壓縮空氣目前有沒有CoA制度？如果沒有，這在法規上代表什麼風險？</li>
+                <li>為什麼ISPE說藥廠氣體通常「不需要設計排水斜度（pipe line fall）」？這與工業壓縮空氣系統的差異何在？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.1.2 BASIC SYSTEM DESIGN CONCEPTS ===================== -->
+<div class="section-title">5.1.2 Basic System Design Concepts — 基本系統設計概念</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Process take-off requirements should be understood to allow sizing of a distribution system. The rate of gas usage and pressure required at critical points in the process should be quantified. These critical points should include periods of <span class="key-term">peak take-off</span> of gas. The distribution system should be sized to maintain an adequate supply at critical points.</p>
+        <p>Averages should not be used, even where there is variable take-off of gas. (Experienced designers may use a system utilization factor.)</p>
+        <p>Basic system design concepts include:</p>
+        <ul>
+            <li>one way distribution system</li>
+            <li>high demand use points</li>
+            <li>ring main</li>
+            <li>splitting systems</li>
+            <li>use of a non-return valve/receiver to split systems</li>
+            <li>line sizing</li>
+            <li>routing</li>
+        </ul>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.1 One Way Distribution System</h3>
+        <p>The simplest distribution system design comprises a single pipeline feeding each <span class="key-term">POU</span> (point of use). For a small number of widely spaced delivery points, a one way distribution system from a gas source may represent the lowest initial cost at installation. The pipeline should be sized to accommodate peak usage.</p>
+        <p>Where the highest gas consumption POUs are positioned nearest the gas supply, it may be possible to reduce the size of the pipeline to POUs further along the system. Intermediate receiving vessels may be used to reduce the effects of usage variability or supply line size. They may be placed in the main branch or on critical POUs and used where the:</p>
+        <ul>
+            <li>highest gas consumption POUs cannot be sited nearest the gas supply</li>
+            <li>size of pipeline to provide peak loads is excessive</li>
+            <li>demand varies significantly</li>
+        </ul>
+        <p>Intermediate receiving vessels can buffer the output to specific POUs (e.g., nitrogen inertion of large API reactor systems). Consideration should be given to providing <span class="key-term">non-return valves</span> at intermediate receiving vessels to ensure that the main pipeline is not back fed if the main pipeline pressure dips below the receiver pressure at high demand periods.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.2 Ring Main</h3>
+        <p>A <span class="key-term">ring main</span> comprises two feed sources. The ring main concept is considered a more robust distribution design when compared to a one way design, as:</p>
+        <ul>
+            <li>The system will self balance due to the two feed sources of the ring main allowing line size to be optimized. Points at the extreme of the ring may be susceptible to pressure drops but these will be reduced.</li>
+            <li>A considered design and placement of isolation valves will allow the line to be serviced, modified, or repaired without shutting down the complete ring and associated POUs.</li>
+            <li>The ring main itself provides a level of receiver capacity which may be sufficient to buffer high demand, reducing the need for intermediate receiving vessels.</li>
+            <li>The system allows addition of multiple gas sources (e.g., multiple air compressors) in different locations throughout the site, enhancing the redundancy of the system.</li>
+        </ul>
+        <p>A ring main system can provide a cost effective solution relative to a one way distribution line, particularly where cost analysis includes allowances for foreseeable future growth.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.3 High Demand Points of Use</h3>
+        <p>Where there are high demand POUs, it may be more economic to provide gas from a local receiving vessel using a smaller distribution system pipeline size at a higher supply pressure. Consideration should be given to over-sizing the distribution pipe locally to the POU to provide a "local receiver."</p>
+        <p>Consideration should be given to providing non-return valves at intermediate receiving vessels to ensure that the main pipeline is not back fed particularly where several buffering receivers are attached to one supply. Pressure and flow regulation should be considered in the distribution system design.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.4 Splitting Systems</h3>
+        <p>Requirements of relevant GMP codes (e.g., system design and documentation, validation processes, ongoing maintenance, calibration quality monitoring, and formal monitoring of the system output quality) add to the installation and operating costs of GMP gas distribution systems.</p>
+        <p>Where end-user specifications allow, it may be feasible to split a system into <span class="key-term">non-GMP and GMP sub-systems</span>. This may be particularly beneficial in locations where there is a large site gas distribution system, with only a limited part of the system used for GMP purposes. A non-GMP system can be used to feed a GMP system, providing that the GMP system is adequately monitored and controlled.</p>
+        <p>The risk assessment associated with a split system should consider how the integrity, purity, and quality of the GMP take-off points is maintained under all scenarios. Redundancy in filtration and back flow prevention may be required.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.5 Sizing of Pipes</h3>
+        <p>Pipe size can be based on either a calculated design maximum use or the total connected load multiplied by a <span class="key-term">diversity factor</span>. Typical figures used are 6–9 m/s (18–27 ft/sec) velocity, or 3–5 psi (0.3 to 0.4 bar) allowable pressure drop, depending on conditions. Filter pressure drops should be considered in calculations.</p>
+        <p>The greater the pressure drop, the greater the minimum system supply pressure needs to be. As pressure increases, the energy requirement for the compressor (or cost of bulk gas) increases following a square law — so small differences have a significant effect on energy consumption.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.1.2.6 Routing</h3>
+        <p>The siting of pipes should facilitate regular inspection and servicing of valves. Annual checks for leaks may be conducted as part of GEP using techniques such as <span class="key-term">ultrasonic leak detection</span>. Statutory periodic inspections may be required for high pressure equipment in some geographical regions.</p>
+        <p>Where a process gas has a dewpoint near the local environmental limits, pipes should be insulated or sited where they do not cause internal or external condensation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Ring Main vs. One-Way 的設計哲學</h4>
+            <p><strong>單向配送 (One-Way Distribution):</strong> 像一條單車道的馬路——起點到終點，氣體只有一條路走。好處是管路簡單、成本低；壞處是終端使用點的壓力會隨距離和需求波動而不穩定，且任何一段管路維修就影響所有下游用點。</p>
+            <p><strong>環形主管 (Ring Main):</strong> 像城市的環狀公路——氣體可以從左邊或右邊同時進入任何一個出口，壓力自動趨於平衡。這是藥廠大型生產線的首選，特別是當未來有擴產計畫時。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Ring main就像台北的捷運環狀線。任何一個站發生問題，乘客可以繞另一半圓繼續走。相對地，單向系統就像只有一條路的公路——一旦中斷，所有車都堵死了。對於24小時連續生產的CDMO廠，「任何單點故障不影響全線生產」這個特性值多少錢，就是ring main設計費用的正當化基礎。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Pipe Sizing Reference</h4>
+            <pre>
+管路尺寸設計兩種方法：
+
+方法一：最大流速法
+  典型流速上限：6–9 m/s（18–27 ft/sec）
+  超過此速度 → 壓降急增 + 噪音 + 管件磨損加速
+
+方法二：允許壓降法
+  允許壓降：3–5 psi（0.3–0.4 bar）全程
+  壓降增加 → 需提高供氣壓力
+  壓力增加遵循平方律（square law）：
+  能耗 ∝ P²
+  → 供氣壓力提高10%，能耗約增加21%
+
+注意事項：
+  過濾器壓降（clean + dirty）必須納入計算
+  峰值需求（peak load）而非平均值作為設計基準
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：非GMP系統餵入GMP系統的風險</h4>
+            <p>5.1.2.4的「系統分割」是很多大型藥廠實際採用的做法：讓工廠原有的大型工業壓縮空氣系統供氣給整廠，然後在進入GMP區前設一套「哨兵過濾組（policing filter set）」和非回流閥，把GMP段獨立出來。</p>
+            <p>這個設計的關鍵在於：GMP段的品質必須能在「工業段品質惡化」的情況下依然受控。這意味著GMP段需要自己的監測、自己的記錄，以及足夠的冗餘過濾。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 CDMO Scenario</h4>
+            <p>在CDMO的多客戶環境中，ring main設計特別重要。不同客戶的製程可能在同一天使用不同量的氮氣或壓縮空氣。Ring main的「自平衡」特性讓高用量製程不會影響其他區域的壓力穩定性。同時，ring main上設置足夠的隔離閥（isolation valves），使工程師可以在不停止全廠生產的情況下維護任何一段管路——這正是FDA查廠時關注的「可維護性（maintainability）」設計要素。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的廠區計畫5年後新增一條無菌充填線，現在設計氣體配送系統時應選擇ring main還是one-way？理由是什麼？</li>
+                <li>為什麼管路設計不能用平均流量，而必須用峰值流量？用一個實際生產情境說明。</li>
+                <li>「壓降與壓力成平方律關係」對日常運轉成本有什麼實際意義？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.2 NON-RETURN / CHECK VALVES ===================== -->
+<div class="section-title">5.2 Non-Return or Check Valves — 非回流閥／止回閥</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>There are several types of non-return valves. For process gases, the <span class="key-term">spring loaded wafer check valve</span>, using an elastomeric seal for the wafer, allows a gas tight shut off and rapid action whichever way up the valve is mounted.</p>
+        <p>Non-return valves should be suitable for both the gas supply side and for likely contaminants from the process side.</p>
+        <p>For GMP systems, <span class="key-term">cross contamination</span> can be considered a critical risk. Risk assessments performed during the design of a process gas system should investigate potential consequences of reverse flow under normal and system failure modes. Where a potential risk is identified, backflow prevention and non-return valves may be required.</p>
+        <p>Non-return valves should be fitted as closely as possible to POUs to reduce potential contamination in the supply line. Where there is a potential for cross contamination, cleaning and servicing of non-return valves should ensure that non-return valves remain functional. Redundancy may be required for high risk critical processes.</p>
+        <p>Where the function of a non-return valve is considered critical (as a process or a safety requirement), the systems design should facilitate testing of the non-return valve. This may be achieved either by making removal of the non-return valve easy, or by the installation of <span class="key-term">test ports</span> on either side of the non-return valve and isolating valves in the line either side of the non-return valve.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>非回流閥 / 止回閥 (Non-Return Valve / Check Valve):</strong> 氣體只能向一個方向流動的閥件。對無菌藥品來說，這是防止「產品污染物沿氣體管路逆流回供氣系統」的最後一道實體屏障。</p>
+            <p><strong>彈簧式晶片止回閥 (Spring-Loaded Wafer Check Valve):</strong> ISPE推薦的製程氣體類型。其特點是：彈性密封材質確保氣密性、彈簧確保快速關閉、設計不依賴重力故可任意角度安裝。這三個特性在複雜管路佈局中非常實用。</p>
+            <p><strong>測試口 (Test Ports):</strong> 安裝在非回流閥兩側，讓維護人員可以在不拆閥的情況下進行功能驗證。這是高風險製程的必要設計——如果你的非回流閥是「關鍵功能」，就必須能夠被測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：逆流污染的實際場景</h4>
+            <p>想像一個凍乾機（lyophilizer）在充填氮氣進行頭空間保護時，如果下游閥件失效，產品蒸汽（含有機物或微生物）可能順著氮氣管路逆流進入整個供氣系統，污染後續批次的所有頭空間保護用氣。這正是為什麼ISPE要求非回流閥「盡可能靠近POU安裝」——逆流行進的距離越短，潛在污染範圍越小。</p>
+            <p>FDA 21 CFR Part 211對製藥用公用設施的汙染防制有明確要求，非回流閥的設計和驗證記錄在查廠時是必查項目。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>非回流閥就像浴室排水管的P型彎管（存水彎）——它讓水只能向一個方向走，防止下水道的廢氣逆流進浴室。在藥廠氣體系統中，它防止的不是臭氣，而是可能危及藥品品質的微生物或有機污染物。而「需要測試口」的邏輯也很直觀：如果你家的P型彎管是安全關鍵設施，你應該能在不拆管的情況下測試它還有沒有在正常工作。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Inspection Perspective</h4>
+            <p>FDA查廠時，查察官對氣體系統非回流閥的關注點：</p>
+            <ul>
+                <li>安裝位置：是否緊鄰POU，而非安裝在遠端主管上？</li>
+                <li>材質兼容性：閥體密封材料是否與氣體及可能的製程側污染物兼容？</li>
+                <li>驗證記錄：非回流閥的功能是否有定期測試？測試方法、頻率、驗收標準是否記錄在SOP中？</li>
+                <li>冗餘設計：高風險製程（如直接產品接觸氣體）是否有雙重非回流閥或其他備援？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在什麼情況下單一非回流閥不夠，需要冗餘設計（redundancy）？</li>
+                <li>非回流閥安裝在主管而非POU附近，會帶來什麼風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.3 PRESSURE REDUCING VALVES ===================== -->
+<div class="section-title">5.3 Pressure Reducing Valves — 減壓閥</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Pressure reducing valves</span> should be selected so that the normal operating range is in the mid-point of the valve capabilities. Operating near the extremes of the valve capabilities may give less consistent results.</p>
+        <p>Materials of construction should be selected based on the properties of the gas being supplied and anticipated processes, e.g.:</p>
+        <ol>
+            <li>To extend the operating life of the valve where highly corrosive gases (e.g., hydrogen chloride gas) or processes occur, <span class="key-term">purging tees</span> may be used to allow the pressure reducing valve to be purged after use with a suitable purging gas. For example, for hydrogen chloride gas, the purging gas could be dry nitrogen.</li>
+            <li>For sterile operations where the gas may come into direct contact with the product (e.g., purging/headspace gas in a freeze drying process), the materials of construction and finish can be critical.</li>
+        </ol>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.3.1 Two-Stage Serial Reduction</h3>
+        <p><span class="key-term">Two-stage serial reduction</span> uses two valves in series to reduce or eliminate extreme variations between the inflow pressure and the final reduced outlet pressure. Two stage reduction is recommended when:</p>
+        <ul>
+            <li>Initial pressures are 200 psi (14 bar) or greater, or</li>
+            <li>The desired pressure reduction ratio is greater than 4:1 (e.g., from 200 psi to 50 psi / 14 to 3.5 bar), or</li>
+            <li>The inflow pressure fluctuates greatly</li>
+        </ul>
+        <p>The advantage is that neither valve is subjected to extreme pressure differentials, thus prolonging the life of the valves and delivering more precise pressure regulation.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.3.2 Parallel Connection</h3>
+        <p>Connecting two or more smaller size pressure reducing valves in parallel to serve a single supply main may be used where there is a wide variation in demand at the reduced pressure. Parallel installations offer:</p>
+        <ul>
+            <li>Increased capacity where needed</li>
+            <li>Improved valve performance for widely variable demands</li>
+            <li>The ability to service individual valves without requiring a system to be shut down</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>減壓閥 (Pressure Reducing Valve, PRV):</strong> 將高壓供氣降低至製程所需工作壓力的閥件。選型原則：正常操作壓力應落在閥的能力範圍中段（mid-point），而非接近最大或最小值——這就像汽車引擎在最大轉速60%–80%時效率最好、壽命最長。</p>
+            <p><strong>兩段串聯減壓 (Two-Stage Serial Reduction):</strong> 當入口壓力 ≥ 200 psi，或減壓比 > 4:1 時使用。邏輯是將大壓差分兩次承受，每個閥的壓差都在合理範圍內，精度更高、閥件壽命更長。</p>
+            <p><strong>並聯連接 (Parallel Connection):</strong> 多個小PRV並聯，用於需求量變化大的供氣點。好處是可在不停機的狀態下輪流維護各個閥，這是GMP環境持續生產的重要設計考量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：直接產品接觸氣體的材質要求</h4>
+            <p>當氣體直接接觸藥品（如凍乾機頭空間充填氮氣），PRV的材質和表面處理（finish）就成為品質關鍵屬性（CQA）的一部分。此時需要考慮：316L不鏽鋼、電拋光（electropolished）內表面、無油脂裝配、以及材質相容性文件。ISPE指出這些對sterile operations是「critical」的——在法規意義上，這意味著需要有文件記錄的驗證依據。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>減壓比判斷標準</h4>
+            <pre>
+判斷是否需要兩段串聯減壓：
+
+條件1：入口壓力 ≥ 200 psi（14 bar）
+條件2：減壓比 > 4:1
+        例：200 psi → 50 psi = 4:1（邊界）
+           200 psi → 40 psi = 5:1（需兩段）
+條件3：入口壓力波動大
+
+符合任一條件 → 建議採用兩段串聯減壓
+
+兩段設計原則：
+  第一段：從入口壓力降至中間壓力
+  第二段：從中間壓力降至最終工作壓力
+  每段壓差 ≤ 4:1 為佳
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的廠區鋼瓶供氣（通常2000 psi）降壓到製程使用壓力（例如100 psi），需要幾段減壓？為什麼？</li>
+                <li>並聯PRV設計為什麼特別適合CDMO環境？從連續生產的角度思考。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.4 MIXING VALVES ===================== -->
+<div class="section-title">5.4 Mixing Valves — 混氣閥</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A mixture of gases may be purchased pre-mixed and supplied through a dedicated system, or gases may be mixed at the <span class="key-term">POU</span> using a mixing valve arrangement.</p>
+        <p>Gases may be mixed using a <span class="key-term">mass flow controller</span> on each gas line. The mass flow controller is controlled by a flow sensor and feeds the gases into a static mixer.</p>
+        <p>Gas mixing systems can be accurate to ±1%.</p>
+        <p>Figure 5.2 shows an example configuration for a blending system. The blend ratio of the gases can be adjusted by varying the setpoint of the ratio setting of FY. The setpoints can be adjusted manually or automatically. If automatic blend composition control is needed, the blend composition should be measured and the composition controller should be arranged to act as the cascade master which is modulating the setpoint to FY.</p>
+
+        <div class="quote-box">
+            "Gas mixing systems can be accurate to ±1%."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>混氣閥系統 (Gas Mixing / Blending System):</strong> 在製程現場即時混合兩種或以上氣體，常見應用：CO₂/N₂混合（用於生物反應器pH控制）、O₂/N₂混合（用於細胞培養）、N₂/CO₂（用於incubator環境控制）。</p>
+            <p><strong>質量流量控制器 (Mass Flow Controller, MFC):</strong> 精確控制每種氣體質量流量的儀器，不受壓力和溫度變化影響（因為它測量的是質量，而非體積）。兩個MFC加上靜態混合器（static mixer）就構成基本的混氣系統。精度可達 ±1%。</p>
+            <p><strong>預混 vs. 現場混合:</strong> 預混氣體（pre-mixed）方便，但每次換氣瓶的比例可能有批次差異；現場MFC混合精度高、可即時調整，適合比例需要頻繁變動的製程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：混氣比例的驗證</h4>
+            <p>在GMP環境中，混氣比例本身可能是一個關鍵製程參數（CPP）。例如，細胞培養基的CO₂濃度控制pH值，直接影響細胞生長和產品品質。因此，MFC的校驗記錄、靜態混合器的效能確認、以及混合後氣體的定期分析，都需要納入製程驗證計畫。±1%的精度聽起來很好，但需要有數據支持這個聲稱在你的特定條件下成立。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>MFC混氣系統就像高精度的調酒機——每種「材料」（氣體）都有精確的流量控制，混合比例可以程式設定並記錄。預混氣體瓶則像買現成的調酒包——方便，但每包的比例你要相信供應商的CoA。在需要嚴格控制的GMP製程中，你會選哪個？答案取決於你的CPP設計和風險評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CO₂/N₂混氣用於生物反應器，混氣比例偏差±5%對產品品質有什麼影響？這個參數應該歸類為CPP嗎？</li>
+                <li>「級聯控制（cascade control）」在混氣系統中的意思是什麼？它解決了什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.5 FILTRATION ===================== -->
+<div class="section-title">5.5 Filtration — 過濾</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3 style="color:var(--primary-blue); font-size:1rem;">5.5.1 Gas Filtration for Sterile Applications</h3>
+        <p>Pharmaceutical gas distribution systems are usually protected with filters rated <span class="key-term">1 µm or smaller</span> at the generation source. Where sterile gas or sterile venting is required, this is usually provided by a <span class="key-term">0.2 µm rated hydrophobic sterilizing grade filter</span> at the points of delivery or use.</p>
+        <p>Sterile gas/vent filters can either be pre-sterilized by autoclaving and aseptically installed, or sterilized in situ by Steaming in Place (SIP). For single use bioreactors and other disposable systems, filters can be sterilized using gamma irradiation. Gas sterilizing filters usually incorporate 0.2 µm rated microporous membranes made of hydrophobic <span class="key-term">polytetrafluoroethylene (PTFE)</span> or hydrophobic <span class="key-term">polyvinylidenefluoride (PVDF)</span>. Filters with PTFE membranes are not compatible with gamma irradiation.</p>
+        <p>Some 0.2 µm rated membrane filters are also rated for removal of airborne viruses down to 20 nm (0.020 µm) and airborne particles as fine as 0.003 µm. This is possible because filters are typically rated for particle/microbial size removal from liquids, whereas additional removal mechanisms occur in gases that enhance removal of particles finer than the liquid pore size rating.</p>
+        <p>Pharmaceutical grade gas sterilizing grade filters are normally provided with a CoA from the manufacturer. The manufacturer may perform non-destructive (integrity) testing on filters prior to shipment. Retention of bacteria under liquid challenge conditions is considered the most stringent qualification for critical gas sterilizing and venting applications.</p>
+        <p>Depending on user risk assessments and intended use, filters may be integrity tested:</p>
+        <ul>
+            <li>prior to use</li>
+            <li>after use</li>
+            <li>at a predetermined interval</li>
+            <li>after events that are considered stress conditions for the filter (e.g., sterilization, high temperature air flow)</li>
+        </ul>
+        <p>Critical use filters can be installed with POU integrity test ports that allow integrity testing in situ.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.5.2 Filter Integrity Testing</h3>
+        <p>Three methods for integrity testing of sterilizing gas filters are the:</p>
+        <ol>
+            <li><span class="key-term">Bubble Point Pressure Test</span></li>
+            <li><span class="key-term">Forward Flow (Diffusion) Test</span></li>
+            <li><span class="key-term">Water Intrusion Test</span></li>
+        </ol>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.5.2.1 Bubble Point Pressure Test</h3>
+        <p>The Bubble Point Pressure test determines the installation integrity of a wetted filter by determining the gas pressure necessary to force the wetting liquid from the largest flow pathways or defects in the filter. For hydrophobic filters, the wetting liquid is usually a 70% IPA/30% water solution.</p>
+        <p>In a manual test, a length of tubing is connected to the downstream port of the filter assembly and the other end immersed in liquid. Bulk flow of gas is indicated by rapid bubbling. The pressure at which rapid bubbling is observed is recorded as the "Bubble Point Pressure." This procedure is not applicable to sterilized filters prior to their use, but may be utilized prior to sterilization or after use.</p>
+        <p>Automated instruments perform a Bubble Point Pressure test from the upstream side of the wetted filter — automated tests can be performed on sterilized filters before use. A pressure reading lower than the manufacturer's minimum recommended limit is an indication of integrity failure.</p>
+        <p>Bubble Point Pressure testing is less suited to high area cartridges and multi-cartridge assemblies due to the subjectivity of the endpoint detection.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.5.2.2 Forward Flow (Diffusion) Test</h3>
+        <p>The Forward Flow or "Diffusion" test determines the integrity of a wetted filter by quantitatively measuring gas flow at a gas test pressure set marginally below the minimum Bubble Point Pressure (typically at around 80%). The measured gas flow rate is empirically correlated to microbial retention.</p>
+        <p>Automated instruments perform a Forward Flow test from the upstream side of the filter — can be performed on sterilized filters before use without compromising downstream sterility. A Forward Flow rate higher than the manufacturer's maximum allowable specification is an indication of integrity test failure.</p>
+        <p>The Forward Flow or "Diffusion" test is a quantitative measurement suitable for high area cartridges and multi-cartridge assemblies. However, it is also limited by the requirement to wet the filter with a low surface tension liquid prior to testing and to dry it before returning it to service.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.5.2.3 Water Intrusion Test</h3>
+        <p>In the Water Intrusion Test, the integrity of a clean and dry hydrophobic membrane filter is determined by flooding the filter assembly with water, applying air overpressure to force water into the largest flow paths, or defects in the filter. Water flow through the filter is measured by pressure decay or by direct volumetric flow.</p>
+        <p>A flow rate higher than the manufacturer's maximum allowable limit is an indication of integrity test failure.</p>
+        <p>Water intrusion testing avoids the use of alcohol and does not contaminate the downstream of integral filters, making it particularly suitable for testing of sterile hydrophobic membrane filters in situ. However, it is limited by: the requirement to introduce and drain water from the upstream, higher false failure rates due to wet or contaminated filters, and sensitivity to temperature variation. It is not well suited for very small filter assemblies.</p>
+        <p>In operation, sterilizing gas filters are usually integrity tested before sterilization or after use by the Forward Flow (Diffusion) or Bubble Point Pressure tests. When testing filters in situ after sterilization, a variation of the Water Intrusion Test using an automated test instrument may be used.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：過濾的層次架構</h4>
+            <p><strong>製程氣體過濾系統是分層設計的——</strong>不是一個濾器解決所有問題，而是每個環節承擔不同的過濾任務：</p>
+            <ul>
+                <li><strong>源頭保護（≤1 µm）：</strong>在氣體產生源（如壓縮機出口）安裝，去除大顆粒，保護下游設備</li>
+                <li><strong>使用點最終過濾（0.2 µm，無菌級）：</strong>產品接觸氣體的最後一道防線。這是「最後防線（last line of defense）」的意義——它是確保氣體無菌的主要屏障</li>
+                <li><strong>PTFE vs. PVDF膜：</strong>兩者都是疏水性材質，但PTFE不相容伽馬滅菌，單次性系統（single-use）需選PVDF</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：0.2 µm過濾器的「意外能力」</h4>
+            <p>0.2 µm的液相額定孔徑，在氣相中可以去除小至0.003 µm的粒子，甚至病毒（20 nm = 0.020 µm）。原因在於：氣體中的顆粒去除機制（衝擊、攔截、擴散、靜電）比液體中更多元，過濾效率遠高於液相額定值的預期。這對製藥氣體設計是個重要的安全餘量知識。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>三種完整性測試方法比較</h4>
+            <pre>
+方法              適用時機        優點              限制
+─────────────────────────────────────────────────────
+泡點壓力測試      滅菌前/使用後   直觀、易理解      需潤濕；手動法不
+(Bubble Point)                                      適用大濾芯；限滅
+                                                    菌前使用（手動）
+
+前向流測試        滅菌前/後均可   定量、可校驗；    需潤濕+乾燥復原；
+(Forward Flow)   （自動化）      適合大濾芯        較費時
+
+水侵入測試        原位滅菌後      無酒精；不污染    假失敗率較高；不
+(Water Intrusion) 首選           下游；原位測試    適合小濾芯；溫度
+                                                    敏感
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>過濾器完整性測試就像出門前測試雨傘有沒有破洞。泡點測試是用嘴吹看有沒有漏氣（直觀但主觀）；前向流測試是用精密氣壓計量測洩漏量（客觀定量）；水侵入測試是把傘浸在水裡看有沒有水滲入（最適合現場原位測試，不用弄濕整支傘）。三種方法各有優缺點，GMP環境中根據時機和設備選擇最適合的。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Validation Perspective</h4>
+            <p>在無菌充填線，凍乾機和充填機的頭空間氮氣管路上的0.2 µm過濾器是「關鍵使用點過濾器」，需要：</p>
+            <ul>
+                <li>使用前完整性測試（或供應商CoA確認）</li>
+                <li>SIP後的Water Intrusion Test（原位，不破壞下游無菌性）</li>
+                <li>使用後（或每批次後）的Forward Flow Test確認</li>
+                <li>完整的更換記錄：日期、批號、測試結果、操作員簽名</li>
+                <li>過濾器使用壽命驗證：SIP次數、使用時間、通氣量的上限</li>
+            </ul>
+            <p>這些都是FDA查廠時必查的文件，缺少任一項都可能導致483 observation。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼PTFE膜濾器不能用伽馬射線滅菌？這對單次性生物反應器的設計意味著什麼？</li>
+                <li>水侵入測試（Water Intrusion Test）最大的優點是什麼？在什麼場景下你會優先選擇它？</li>
+                <li>過濾器完整性測試失敗，下一步的標準作業程序應該包括哪些步驟？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.6 FILTERS IN COMPRESSED AIR SYSTEMS ===================== -->
+<div class="section-title">5.6 Filters in Compressed Air Systems — 壓縮空氣系統的過濾配置</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The concepts described in this section can be applied to other process gas systems, depending on the risks associated with the gas supply source and the CQAs for a gas.</p>
+        <p>A suite of filters used in a commercial application may comprise the following filters:</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.1 Compressor or Source Gas Pre-Filter</h3>
+        <p>Reduction of particulate on the gas feed can use lower cost filter media and installation methods than in-line filtration systems. This is therefore a cost effective filter and helps to prolong equipment life.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.2 Compressor Discharge</h3>
+        <p>It is considered good practice to install a <span class="key-term">moisture separator</span> or <span class="key-term">coalescing filter</span> and a general purpose filter on the discharge from the compressor. This should help to reduce the moisture and particulate build up in the receiver. Coalescing filters remove moisture droplets condensed by the compressor after cooler.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.3 Pre-dryer Filtration</h3>
+        <p>A general purpose filter will normally be used to remove particulate down to 1 µm and to help keep the drying media clean. The general purpose filter is usually used in conjunction with a high efficiency <span class="key-term">oil/hydrocarbon removal filter</span>, to remove any atmospheric contamination and particulate down to 0.01 µm.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.4 Post Dryer Filtration</h3>
+        <p>After the dryer, a similar suite of filters will be used to prevent any particulate migration from the dryer into the system. For oil-lubricated compressors, the high efficiency oil/hydrocarbon coalescing filter is used here as a means of particulate control (oil-less compressors do not require coalescing filters).</p>
+        <p>After a gas storage system (receiver), filter sets are usually provided as <span class="key-term">parallel systems</span>. This allows for replacement of a filter while the system is kept operational.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.5 Post Receiver Filters</h3>
+        <p>A final filter is normally used before the distribution system to ensure that the gas entering the distribution system meets required specifications. For sterile applications this may be a <span class="key-term">0.2 µm rated membrane filter</span>, which will need to be sterilized. For oral solid dose applications, a 0.45 µm or 1 µm rated filter may be suitable.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:1rem;">5.6.6 Alternative Post Dryer Filter Arrangement</h3>
+        <p>For small systems, where there is a very low risk that system operation and maintenance could affect gas quality, POU filtration may be considered unnecessary. A robust post dryer filter arrangement may be considered as an alternative:</p>
+        <ul>
+            <li>The post dryer filter set may be arranged as a "double" set of gas filters, with a second set in series acting as a <span class="key-term">"policing" filter set</span>. The gas quality is checked in normal operation on the pre-filter set; if a gas fails a test, the second set of filters should ensure that the gas will be re-filtered prior to entering the system. During system maintenance the final set of filters are used to replace the pre-filter set and new filters are installed in the final location, minimizing operating cost.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：壓縮空氣過濾的五層架構</h4>
+            <p>ISPE描述的是一個完整的「過濾縱深防禦」系統，每一層都有特定的目的：</p>
+            <ul>
+                <li><strong>入口預過濾：</strong>低成本去除大顆粒，保護壓縮機本體</li>
+                <li><strong>壓縮機出口：</strong>去除壓縮冷凝後的水滴（聚結過濾器）+ 一般性顆粒</li>
+                <li><strong>乾燥前過濾：</strong>保護乾燥劑不被油污和顆粒污染（0.01 µm油氣去除）</li>
+                <li><strong>乾燥後過濾：</strong>防止乾燥劑顆粒遷移進入配送系統</li>
+                <li><strong>儲槽後/進入配送前：</strong>最終的粒徑把關（0.2 µm for sterile）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>壓縮空氣的多層過濾就像城市的自來水淨化：水庫（粗濾/沉澱）→ 快濾池（去除懸浮物）→ 活性碳（去除有機物/味道）→ 加氯消毒→ 家用濾水器（最終使用點）。每一步都有特定的污染物目標，沒有哪一步是多餘的。在藥廠，0.2 µm的POU過濾器就是那個「家用濾水器」——它保護的是直接接觸藥品的最後一段路。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：並聯過濾器組的GMP意義</h4>
+            <p>儲槽後的過濾器「並聯設計」是一個重要的GMP操作彈性：一組在線運作，另一組可以在不停機的情況下更換。這解決了一個常見的CDMO痛點——更換過濾器通常需要排程停機，影響批次生產計畫。並聯設計讓過濾器更換變成一個「不需要停批的例行維護」。在過濾器更換記錄中，這種「在線更換」的設計也需要有對應的SOP和更換確認程序。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：「哨兵過濾器」設計在CDMO的價值</h4>
+            <p>5.6.6的「雙重串聯（policing filter）」概念特別適合中小型CDMO或實驗室生產線：</p>
+            <ul>
+                <li>主過濾器失效時，哨兵過濾器自動接手，產品不受影響</li>
+                <li>維護時輪換：舊的哨兵成為主濾，裝新過濾器成為新哨兵——Zero downtime</li>
+                <li>節省POU安裝過濾器的成本（某些情況下可以取消POU個別過濾）</li>
+            </ul>
+            <p>前提是風險評估確認系統夠乾淨，且文件記錄完整。這個設計在查廠時需要能解釋清楚邏輯。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>無油壓縮機（oil-free compressor）相比油潤滑壓縮機，在過濾需求上有什麼差異？在GMP成本分析中如何評估？</li>
+                <li>「哨兵過濾器」設計適合取代POU濾器的條件是什麼？什麼情況下無論如何都不能省略POU過濾？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== 5.7 MATERIAL SELECTION ===================== -->
+<div class="section-title">5.7 Material Selection — 材質選擇</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Factors which should be considered when selecting materials of construction for a distribution system include:</p>
+        <ul>
+            <li>potential impact on the desired gas quality attributes</li>
+            <li>local regulations</li>
+            <li>robustness</li>
+            <li>installation time</li>
+            <li>local custom and practice</li>
+            <li>insurer's requirements</li>
+            <li>cost</li>
+        </ul>
+        <p>Materials used for a process gas distribution system and associated equipment should be resistant to adverse effects of the gas being transported. They should also comply with the necessary national and local regulations for a gas.</p>
+        <p>The effects of the environment on the external surfaces of the distribution system (e.g., cleaning and maintenance) should be considered. For example, copper may not be resistant to cleaning materials and may develop a surface coating (by oxidation) which may shed particles, so copper is usually not used within a production area; however, copper may be acceptable outside a production area.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.1 Moisture Ingress</h3>
+        <p>Materials used for distribution systems should provide a robust <span class="key-term">vapor barrier</span> to prevent an increase in the moisture levels of a gas. Vapor ingress can be a significant issue for flexible POU pipes. Careful selection of fittings is also necessary where moisture ingress may affect critical attributes, e.g., pneumatic push-in fittings can lead to moisture ingress.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.2 Particulate Generation</h3>
+        <p>Once any loose material in a process gas distribution system has been blown out, <span class="key-term">particulate generation</span> is not usually an issue in relation to a gas, even for carbon steel. Steel does not normally corrode if the Relative Humidity (RH) is below 35%. At the low Pressure Dewpoints (PDPs) typically used in pharmaceutical systems, carbon or galvanized steel would not normally be a source of particulate.</p>
+        <p>Where the installation is exposed in a classified area, the risk of particulate shedding from the external surface of the pipe work should be considered.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.3 Ease of Assembly and Modification</h3>
+        <p>Ease of assembly together with cost/installation time/robustness in use have a major impact and may give different results depending on the application. Copper pipe may be the material of choice for a distribution system, whereas stainless tube with compression fittings may be used locally for a specific piece of equipment.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.4 Availability of Fittings</h3>
+        <p>"Push fit" fittings are not usually specified as sanitary, so require careful consideration before use. Suppliers should have a readily accessible source of fittings to ensure that a system can be maintained over its entire lifetime. The use of "special" fittings during construction may become costly to maintain.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.5 Pipe Work Support Requirements</h3>
+        <p>Some materials used for pipe work can require a higher number of supports, which can increase installation costs. Additional supports also may be required where a system is subject to rapid changes in pressure or extremes of temperature. Where ball valves are used, these can induce movement in pipe work and additional supports may be required.</p>
+
+        <h3 style="margin-top:1rem; color:var(--primary-blue); font-size:1rem;">5.7.6 Optional Materials</h3>
+        <p>Material selection is dependent on the risks the interaction between the gas and materials of construction presents to the end user. Decision processes should be documented and checked.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.7.6.1 Stainless Steel</h3>
+        <p>Stainless steel is usually used in production areas:</p>
+        <ul>
+            <li>ASTM 304 grade stainless steel may be adequate for non-sterile manufacturing areas, but there may be a risk of corrosion depending on the cleaning and sanitizing materials used.</li>
+            <li>For sterile operations, <span class="key-term">ASTM 316 grade</span> or equivalent is normally used, as the cleaning and sanitizing materials used are generally more corrosive.</li>
+        </ul>
+        <p>Sanitary jointing methods are not usually required, as there is slight risk of microbial growth within a dry system. <span class="key-term">Orbital welding</span> may be specified to ensure consistent reliable welds, with a purge gas used to prevent oxide formation inside pipe work.</p>
+        <p>It may be cost effective to specify lower grade stainless steel (e.g., ASTM 304) for distribution systems, with a higher grade used in production areas where it will be subject to more corrosive cleaning agents.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.7.6.2 Medical Grade Copper</h3>
+        <p>Medical gas grade copper (e.g., ASTM B 280, ISO 7396-1, BS EN13348) may be used in major installations (100 ft / 30.5 m of pipe or more). Material should be specified as clean and degreased, purged during fabrication, and jointed without flux using "hard" or silver solder.</p>
+        <p>Copper pipe may be used for a distribution system, with a break at a service outlet panel or service void, with the final part of the pipe work in stainless steel within a production area. <strong>Copper pipe may not be recommended for use with nitrogen, as moisture in the gas may cause internal corrosion.</strong></p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.7.6.3 Plastics</h3>
+        <p>Modern thermoplastic (e.g., <span class="key-term">high density polyethylene, HDPE</span>) can be used for the clean distribution of gases. Thick walled HDPE pipe is available, suited to compressed gases up to 160 psi (11 bar). Disadvantages of plastic pipe work include:</p>
+        <ul>
+            <li>Systems may require additional supports</li>
+            <li>Additional expansion requirements over metal systems</li>
+            <li>Ultra violet stability for external applications should be checked</li>
+            <li>Plastic material cannot be used for a flammable or oxidizing gas</li>
+            <li>The plastic may not present such a high quality vapor barrier as metals</li>
+        </ul>
+        <p>In some regions, OSHA regulates against using brittle plastics for compressed air distribution systems.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.7.6.4 Aluminum</h3>
+        <p>Proprietary systems using aluminum pipe work may be limited in size and connected using plastic push-in connectors. These systems should not be used for a flammable or oxidizing gas.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">5.7.6.5 Carbon Steel</h3>
+        <p>Where a gas is kept at a low Relative Humidity (RH) (below 35%), risk of internal corrosion is minimal; therefore, steel is an option for use in a distribution system. If used, galvanized material is usually selected to provide a corrosion resistant external finish.</p>
+        <p>Jointing has to be specified carefully, to ensure minimal risk of generating loose material or contaminating inside a pipe with hydrocarbon, e.g., welding with a purge gas, or screwed joints made without lubricant/sealant, using non-shedding material such as PTFE tape. For these reasons as well as the general appearance, carbon steel is not generally used.</p>
+
+        <h3 style="margin-top:0.75rem; color:var(--primary-blue); font-size:0.95rem;">Testing and Cleaning</h3>
+        <p>Materials specified for use in a processed gas system should be specified to be free of particulates and any hydrocarbon. They should be shipped and stored on site wrapped and sealed. Before use on site, system fittings and components should be inspected to ensure that the internal finishes are as specified and not marked or damaged. A GMP protocol should be used to ensure the system is kept clean during construction, e.g.:</p>
+        <ul>
+            <li>no opening left open</li>
+            <li>only clean tools used</li>
+            <li>tools marked for their purpose</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：材質選擇的七個考量維度</h4>
+            <p>ISPE列出的七個因素（品質影響、法規、耐用性、安裝時間、在地習慣、保險要求、成本）不是等重的。在GMP環境中，決策優先順序必須遵循：</p>
+            <div class="hierarchy-diagram" style="margin:0.75rem 0;">
+                <div class="hierarchy-level"><span class="hierarchy-box level-1">品質影響（對氣體CQA的影響）</span></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-2">法規與安全合規</span></div>
+                <div class="arrow-down">&#9660;</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-3">耐用性、安裝便利性、成本</span></div>
+            </div>
+            <p>材質選擇的文件記錄（decision documentation）必須反映這個優先順序，否則在查廠時很難解釋為什麼選了某種材料。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：銅管在GxP環境的使用限制</h4>
+            <p>銅管是醫療氣體系統的傳統材料，但在藥廠GMP環境中有兩個重要限制：</p>
+            <ol>
+                <li><strong>產品區域不適用：</strong>銅在含氯或強鹼清潔劑環境中會氧化，氧化物可能脫落成顆粒污染——生產區域清潔頻率高、清潔劑更強，故銅管通常止步於服務廊道，不進入生產區。</li>
+                <li><strong>氮氣系統慎用：</strong>若氮氣品質不夠乾燥（含水份），銅管內表面會腐蝕。ISPE特別提出這個警告——尤其對於低露點要求的高純氮氣系統，銅管是不適合的材料。</li>
+            </ol>
+        </div>
+
+        <div class="formula-box">
+            <h4>不鏽鋼等級選擇指南</h4>
+            <pre>
+區域              建議等級      原因
+─────────────────────────────────────────────
+非無菌生產區       ASTM 304     一般腐蝕性低
+無菌生產區         ASTM 316L    耐氯化物、耐強鹼
+                              （含Mo，抗點蝕性更強）
+直接產品接觸氣體   316L + 電拋光  表面粗糙度Ra ≤ 0.5 µm
+                  (electropolished)  降低微粒附著、易於清潔
+
+電拋光（Electropolishing）：
+  用電化學法去除表面微凸起，
+  使表面光滑均勻（"passive layer"更完整）
+  → 微粒產生風險最低
+  → 產品接觸氣體的黃金標準
+
+軌道焊接（Orbital Welding）：
+  自動化焊接，確保焊縫品質一致
+  配合惰性保護氣（purge gas）防止內表面氧化
+  → 無菌系統管路焊接的標準做法
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>材質選擇就像裝修廚房選水槽——一般家用可以選不鏽鋼普通款；如果你開的是米其林餐廳，你可能要選衛生級（sanitary grade）拋光不鏽鋼，縫隙設計要能完全清潔到位。銅管就像漂亮的銅製水龍頭——外觀好看，但在強力洗碗機的環境中（高頻強力清洗）不是最佳選擇。材質選擇的最終測試是：這個材料在你廠的清潔和使用條件下，能在整個系統壽命周期內保持品質一致嗎？</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用：FDA查廠氣體系統材質檢查清單</h4>
+            <p>查察官在審查氣體配送系統材質時通常會查：</p>
+            <ul>
+                <li><strong>材質選擇依據文件：</strong>為什麼選這種材料？是否有書面的決策理由？</li>
+                <li><strong>材質證明書（Material Certificate）：</strong>符合ASTM 316L/304等規格的測試報告</li>
+                <li><strong>電拋光/表面處理記錄：</strong>直接產品接觸管路的表面粗糙度測試結果</li>
+                <li><strong>焊接記錄：</strong>軌道焊接的焊工資格、保護氣紀錄、焊縫檢驗記錄（視覺/內視鏡）</li>
+                <li><strong>系統驗收測試（SAT）：</strong>竣工後的吹掃記錄、微粒測試、露點確認</li>
+                <li><strong>P&ID：</strong>配送系統的管路儀表圖是否與現場一致（As-built document）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>同一棟廠房，走廊段用銅管、進入無菌生產區改用316L不鏽鋼——這種混合設計在哪個節點需要特別的品質控制措施？</li>
+                <li>HDPE管路用於惰性氣體配送（如氮氣），它的蒸汽屏障（vapor barrier）性能不如金屬管。在什麼條件下這個缺點會變成實際問題？</li>
+                <li>建設期間的「清潔施工協議（GMP protocol during construction）」的目的是什麼？如果施工期間發生污染，如何確保最終系統品質？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION SUMMARY ===================== -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>配送架構：</strong>Ring main（環形主管）是GMP藥廠的首選——雙向供氣自平衡、可分段維護、支援多壓縮機冗餘，特別適合有未來擴廠計畫的CDMO。</li>
+        <li><strong>非回流閥：</strong>是防止逆流污染的實體屏障，必須盡量靠近POU安裝，高風險製程需要冗餘設計和定期功能測試（測試口設計是關鍵）。</li>
+        <li><strong>減壓閥：</strong>入口壓力 ≥ 200 psi 或減壓比 > 4:1 時必須採用兩段串聯設計；並聯PRV可在不停機狀態下輪換維護。</li>
+        <li><strong>過濾系統：</strong>「最後防線」是POU的 0.2 µm 疏水性滅菌級濾器（PTFE或PVDF膜）；三種完整性測試（泡點、前向流、水侵入）各有適用時機，Water Intrusion Test最適合原位滅菌後測試。</li>
+        <li><strong>壓縮空氣過濾層次：</strong>從源頭預過濾 → 出口聚結過濾 → 乾燥前除油 → 乾燥後去粒子 → 進入配送前最終過濾，層層設防、並聯設計支援不停機更換。</li>
+        <li><strong>材質選擇：</strong>無菌生產區選316L不鏽鋼（需電拋光+軌道焊接），直接產品接觸管路更需文件化決策依據；銅管不進生產區、不用於氮氣系統；塑膠管不用於可燃/氧化性氣體。</li>
+        <li><strong>查廠準備：</strong>材質證明書、焊接記錄、完整性測試記錄、P&ID As-built文件、過濾器更換日誌——這六類文件在FDA查廠時必須隨時能取出。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTop">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
