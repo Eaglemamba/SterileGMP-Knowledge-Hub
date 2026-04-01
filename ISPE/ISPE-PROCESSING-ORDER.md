@@ -13,7 +13,7 @@ Last updated: 2026-03-31
 | **1** | `ISPE-Vol5` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 6 MB | ✅ Complete | English original + Chinese translation in source/. Start here — most queried C&Q reference in pharma. Bridges PDA TR60. |
 | **2** | `ISPE-Vol3` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | 10 MB | ⬜ Planned | Core facility design guide. Most directly aligned with Hub's sterile manufacturing focus. 2 PDFs in source (2011 version + main). |
 | **3** | `ISPE-HVAC` | ISPE GPG: Heating, Ventilation and Air Conditioning | 11 MB | ⬜ Planned | Critical for Grade A/B/C/D cleanroom design. Only dedicated HVAC guide in the Hub. |
-| **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ⬜ Planned | WFI/PW/PS utility systems. Lightweight, high practical relevance. |
+| **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ✅ Complete | WFI/PW/PS utility systems. 18 section files, 14-tab merged document. |
 | **5** | `ISPE-Vol7` | ISPE Baseline Vol.7: Risk-Based Manufacture | 12 MB | ⬜ Planned | Risk management foundation. Bridges PDA TR90 (CCS). |
 | **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ⬜ Planned | Directly bridges existing PDA TR66. Users will cross-reference. |
 | **7** | `ISPE-GAMP5` | ISPE GAMP 5 (1st Ed.) | 5 MB | ⬜ Planned | ⚠️ Only 1st edition available — current standard is 2nd Ed. (2022). Upgrade when 2nd Ed. is obtained. |

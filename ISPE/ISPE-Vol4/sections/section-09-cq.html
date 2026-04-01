@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Section 9: Commissioning and Qualification</title>
+    <style>
+    /* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== PHASE FLOW DIAGRAM ===== */
+.phase-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+}
+
+.phase-block {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 140px;
+    text-align: center;
+}
+
+.phase-block.phase-1 {
+    background: #dbeafe;
+    border: 2px solid #3b82f6;
+    color: #1e40af;
+}
+
+.phase-block.phase-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.phase-block.phase-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.phase-block .phase-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.phase-block .phase-duration {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.phase-arrow {
+    font-size: 1.4rem;
+    color: var(--text-medium);
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 10: Commissioning and Qualification</h1>
+    <div class="subtitle">試車與確效：水系統驗證取樣計畫、接受標準與變更管制</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p157-p163</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解水系統確效（Qualification）文件的特殊要求，以及為何水系統需要「超越一般設備」的額外關注</li>
+        <li>掌握三階段取樣計畫（Phase 1 / 2 / 3）的目的、持續時間與取樣策略差異</li>
+        <li>理解化學與微生物接受標準的建立邏輯，包括 Alert / Action Limit 的概念</li>
+        <li>認識確效報告的撰寫時機與審批流程（中期報告 vs. 總結報告）</li>
+        <li>掌握變更管制與再確效（Requalification）的觸發機制</li>
+        <li>建立與 ISPE Vol.5 C&amp;Q 框架的交叉參照概念</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本章目錄 Chapter Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec-10-2">10.2 文件要求</a>
+        <a href="#sec-10-3">10.3 取樣計畫</a>
+        <a href="#sec-10-3-1">10.3.1 Phase 1</a>
+        <a href="#sec-10-3-2">10.3.2 Phase 2</a>
+        <a href="#sec-10-3-3">10.3.3 Phase 3</a>
+        <a href="#sec-10-4">10.4 接受標準</a>
+        <a href="#sec-10-5">10.5 確效報告</a>
+        <a href="#sec-10-6">10.6 變更管制</a>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.2 SYSTEM QUALIFICATION DOCUMENTATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-2">10.2 System Qualification Documentation 系統確效文件</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">system qualification documentation</span> for water systems requires additional emphasis on certain areas. The documentation set should include:</p>
+        <ul>
+            <li>A schematic drawing of the system (<span class="key-term">P&amp;ID</span>)</li>
+            <li>Written <span class="key-term">system specifications</span></li>
+            <li>Detailed design drawings</li>
+            <li>Vendor manuals and drawings</li>
+            <li><span class="key-term">Field inspection and test reports</span></li>
+            <li>System qualification test results</li>
+        </ul>
+
+        <p>Because of their critical impact on pharmaceutical production, water systems require additional emphasis on certain sections of this documentation. Specific design requirements for water and steam systems are contained within the body of this Guide. When compiling documentation related to water systems, particular attention should be paid to the following:</p>
+
+        <p><strong>a)</strong> Schematic documentation may be enhanced by the inclusion of a <span class="key-term">system isometric diagram</span> (or diagrams) indicating location and numbering of welds, relative elevations, slope of lines, and points of drainage.</p>
+
+        <p><strong>b)</strong> The system specification should indicate <span class="key-term">performance criteria</span>, as well as design parameters.</p>
+
+        <p><strong>c)</strong> Field inspection and test reports should include <span class="key-term">cleaning and passivation</span> procedure and record, weld parameter documentation and inspection reports, slope verification, and verification of the absence of <span class="key-term">"dead-legs"</span>.</p>
+
+        <p><strong>d)</strong> System qualification tests may or may not be subject to a <span class="key-term">pre-approved protocol</span> addressing qualification test requirements. In either case, test results should be reported in direct comparison to <span class="key-term">acceptance criteria</span> derived from system design and operating specifications.</p>
+
+        <p><strong>e)</strong> System qualification tests should include verification of all <span class="key-term">automated functions</span>, specified temperature control, distribution system velocity, and initial water quality determination.</p>
+
+        <div class="quote-box">
+            "Additional details regarding water system qualification may be found in the associated ISPE Baseline&reg; Guide on Commissioning and Qualification."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：水系統文件為何需要「額外關注」</h4>
+            <p>一般設備的確效文件通常是標準 IQ/OQ/PQ 套路，但水系統之所以特殊，是因為：</p>
+            <ul>
+                <li><strong>直接接觸產品</strong>：水是最常用的製藥原料/清洗溶劑，對產品品質影響直接且廣泛</li>
+                <li><strong>持續運行系統</strong>：不像單一設備可以批次驗證，水系統 24/7 運作，品質必須時刻維持</li>
+                <li><strong>動態微生物風險</strong>：水系統的微生物負荷會隨時間、季節、使用率變化</li>
+            </ul>
+            <p>因此，文件必須涵蓋更多工程細節（等角圖、焊接紀錄、坡度驗證等），不能只有「通過/不通過」的簡單記錄。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：等角圖（Isometric Diagram）的實務價值</h4>
+            <p>原文特別提到 isometric diagram 要標示：</p>
+            <ul>
+                <li><strong>焊接位置與編號</strong> &mdash; 每一道焊接都可追溯</li>
+                <li><strong>相對高程</strong> &mdash; 確認管路排水性</li>
+                <li><strong>管路坡度</strong> &mdash; 防止積水造成微生物溫床</li>
+                <li><strong>排水點</strong> &mdash; 確認系統可完全排空</li>
+            </ul>
+            <p>在 CDMO 的稽查中，稽查員經常要求「帶我去看這道焊縫在哪裡」。如果等角圖與現場不一致，就是重大 observation。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>交叉參照：ISPE Vol.5 C&amp;Q 框架</h4>
+            <p>原文最後提到「詳細內容請參考 ISPE Commissioning and Qualification Baseline Guide」，即 <strong>ISPE Vol.5</strong>。Vol.5 提供的框架包括：</p>
+            <ul>
+                <li><strong>系統分類</strong>（Direct / Indirect / No Impact）&mdash; 決定確效深度</li>
+                <li><strong>風險評估驅動的測試</strong> &mdash; 不是所有項目都需要 GMP 確效</li>
+                <li><strong>Leveraging Commissioning</strong> &mdash; 利用試車數據作為確效證據</li>
+            </ul>
+            <p>水系統在 Vol.5 框架中屬於 <strong>Direct Impact System</strong>，因此所有確效測試都需要完整的 GMP 文件支持。但 Vol.5 的核心訊息是：良好的 commissioning 可以大幅減少確效階段的重複工作。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>水系統的確效文件就像一棟大樓的「竣工檔案」。普通住宅可能只需要基本的電氣和消防檢查報告，但醫院（相當於水系統的關鍵等級）需要的文件遠遠更多：每一段管路的X光焊檢報告、空調系統的平衡報告、緊急電源的切換測試紀錄&hellip;&hellip;因為一旦出問題，影響的是病患安全。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>原文列出六類文件。如果你只能優先完成三類，你會選哪三個？為什麼？</li>
+                <li>原文說確效測試「may or may not be subject to a pre-approved protocol」。在你的公司，確效測試是否使用預核准方案？不使用的風險是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.3 SYSTEM QUALIFICATION SAMPLING PROGRAM -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-3">10.3 System Qualification Sampling Program 系統確效取樣計畫</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The qualification of water systems is unique in that <span class="key-term">performance must be proven over an extended period of time</span>, and is subject to variations in use rate and initial feed water quality. Therefore, the sampling program associated with pharmaceutical water systems validation is unique and specialized.</p>
+
+        <p>Extensive sampling is required to establish and confirm that the entire system will operate within specified operating ranges, to develop and evaluate the system operation and maintenance procedures, and to verify that the water produced and delivered to the points of use consistently meets the required <span class="key-term">quality specifications and acceptance criteria</span>. This portion of the program is sometimes termed <span class="key-term">performance qualification</span>.</p>
+
+        <p>Because of the critical impact that water has upon pharmaceutical quality, the sampling program and evaluation of results is usually subject to a <span class="key-term">pre-approved plan or protocol</span>, with clearly defined acceptance criteria. Also included should be procedures to deal with <span class="key-term">deviations</span> from specified parameters and analytical results.</p>
+
+        <p>The sampling program consists of <span class="key-term">three successive phases</span>, each with a specific purpose and sampling scheme, as outlined below. The initial phase of the sampling program typically begins after the water system is shown to be fully operational, as demonstrated through integrated system testing in <span class="key-term">Operational Qualification</span>.</p>
+
+        <p>The water generated during the various phases may be used for manufacturing as long as analytical results are acceptable. The intended applications and impact of water quality should be considered in determining how much data is required before use.</p>
+
+        <!-- Table 10-1 -->
+        <h3>Table 10-1: Sampling Program</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Typical Duration</th>
+                    <th>Primary Objectives</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>2-4 weeks</td>
+                    <td>Develop appropriate operating ranges. Develop and finalize operating, cleaning, and maintenance procedures. Demonstrate production and delivery of water of the required quality.</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>2-4 weeks</td>
+                    <td>Demonstrate consistent operation within established ranges. Demonstrate consistent production and delivery of water of the required quality.</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>One year</td>
+                    <td>Demonstrate extended performance. Ensure that potential seasonal variations are evaluated and treated.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：為何水系統確效需要「時間」</h4>
+            <p>大多數設備確效可以在幾天到幾週內完成。但水系統的確效整個流程需要 <strong>超過一年</strong>，原因有三：</p>
+            <ul>
+                <li><strong>微生物行為的時間依賴性</strong>：Biofilm 的建立與成熟需要數週到數月</li>
+                <li><strong>進水水質的季節變化</strong>：夏季微生物負荷高、冬季水溫低影響系統效率</li>
+                <li><strong>使用模式的變異</strong>：生產旺季/淡季的用水量差異會影響管路內水的滯留時間</li>
+            </ul>
+            <p>所以，水系統確效不是「拍一張快照」，而是「錄一整年的影片」來證明系統在所有合理操作條件下都能穩定運作。</p>
+        </div>
+
+        <!-- Phase Flow Diagram -->
+        <div class="phase-flow">
+            <div class="phase-block phase-1">
+                <div class="phase-label">Phase 1</div>
+                <div class="phase-duration">2-4 weeks</div>
+                建立操作範圍
+            </div>
+            <div class="phase-arrow">&rarr;</div>
+            <div class="phase-block phase-2">
+                <div class="phase-label">Phase 2</div>
+                <div class="phase-duration">2-4 weeks</div>
+                證明一致性
+            </div>
+            <div class="phase-arrow">&rarr;</div>
+            <div class="phase-block phase-3">
+                <div class="phase-label">Phase 3</div>
+                <div class="phase-duration">1 year</div>
+                長期性能驗證
+            </div>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Phase 期間水可以用於生產嗎？</h4>
+            <p>原文明確指出：<strong>只要分析結果合格，各階段產生的水都可以用於生產。</strong>這對 CDMO 非常重要，因為新廠或新系統在確效期間不能生產 = 一整年沒有營收。</p>
+            <p>實務上的做法是：</p>
+            <ul>
+                <li>Phase 1 完成後，如果所有結果合格，通常會發一份 <strong>interim report</strong> 來支持「有條件使用」</li>
+                <li>Phase 2 完成後發正式核准，允許常規生產使用</li>
+                <li>Phase 3 是在正常生產狀態下持續監控</li>
+            </ul>
+            <p>關鍵是：你必須事先在 protocol 中定義「在什麼條件下允許使用」，而不是事後追認。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你開了一家新餐廳。Phase 1 是試營運（soft opening）：測試菜單、調整流程、訓練團隊。Phase 2 是邀請制營業（limited opening）：證明你可以穩定出餐、品質一致。Phase 3 是正式營業的第一年：經歷過暑假旺季、冬天淡季、春節高峰，才能真正說「我們的品質是穩定的」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.3.1 PHASE 1 -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-3-1">10.3.1 Phase 1 &mdash; Intensive Monitoring 第一階段：密集監控</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The purpose of this phase is to establish appropriate <span class="key-term">operating ranges</span> and provide data for the development of cleaning and sanitization procedures and frequencies. Sampling should be performed after each step in the treatment process and from each <span class="key-term">point of use</span>. In addition, the incoming feed water to the water system should be tested and verified to comply with the relevant <span class="key-term">"Drinking Water" regulations</span>. The FDA Guide to Inspections of High Purity Water Systems suggests <span class="key-term">daily sampling for two to four weeks</span>, but recognizes that other sampling programs may be acceptable.</p>
+
+        <p>In devising the sampling scheme, consideration should be given to the system configuration, <span class="key-term">maintenance cycles</span>, how the water is drawn for use, and the expected or potential variation in chemistry and <span class="key-term">microbiological attributes</span>, at each potential sample point. In treatment, chemistry testing is specific for each processing step and microbiological testing between each component is important to determine the microbial load and the component's ability to manage the load.</p>
+
+        <p>At the end of this phase, the <span class="key-term">SOPs for system operation and maintenance</span> should be developed and approved for continued interim use during the next phase. System logs, documentation for critical parameters (e.g., conductivity and TOC data, sanitization data, etc.), and responses to critical alarms or action levels should be reviewed, to verify the appropriate procedures are in place. In addition, the process that will be followed to <span class="key-term">investigate a confirmed test failure</span> should be developed at this time. The intent of this process is to assess whether a failure is <span class="key-term">localized</span> (i.e., isolated to a specific port) or <span class="key-term">systematic</span>, and to define how different types of failures will be handled.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Phase 1 的三大產出</h4>
+            <p>Phase 1 不只是「取樣」，它要產出三項關鍵成果：</p>
+            <ul>
+                <li><strong>操作範圍（Operating Ranges）</strong>：基於實際數據而非設計假設的系統運行參數</li>
+                <li><strong>SOP 初版</strong>：操作、清洗、消毒的標準作業程序，經過實際驗證</li>
+                <li><strong>偏差調查流程</strong>：如何區分「局部問題」和「系統性問題」的決策邏輯</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：每個使用點都要取樣</h4>
+            <p>原文強調 sampling from <strong>each point of use</strong>。這在大型水系統中意味著：</p>
+            <ul>
+                <li>一個典型的 CDMO WFI loop 可能有 20-40 個使用點</li>
+                <li>每天每個點取樣 = 每天 20-40 個樣本</li>
+                <li>持續 2-4 週 = 280-1,120 個樣本</li>
+            </ul>
+            <p>這是非常大的工作量和成本。因此，取樣計畫的設計必須在「統計有效性」和「實務可行性」之間取得平衡。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>CDMO 實務：Localized vs. Systematic Failure</h4>
+            <p>原文要求在 Phase 1 結束前建立偏差調查流程，區分：</p>
+            <ul>
+                <li><strong>局部問題（Localized）</strong>：例如某個特定使用點的閥門汙染 &mdash; 只需清洗該點並增加取樣頻率</li>
+                <li><strong>系統性問題（Systematic）</strong>：例如整個迴路的微生物計數都在上升 &mdash; 可能需要整個系統消毒，甚至暫停使用</li>
+            </ul>
+            <p>CDMO 的痛點：客戶產品正在生產線上，如果判斷為系統性問題需要停機消毒，營收損失和客戶關係的衝擊都很大。所以這個調查流程的邏輯必須在 Phase 1 就建立好，不能等到問題發生才臨時決定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>原文說 FDA 建議每天取樣 2-4 週，但也承認「other sampling programs may be acceptable」。如果你要設計一個「替代方案」，你的科學理據（scientific rationale）會是什麼？</li>
+                <li>Phase 1 結束時，如果某些取樣點的微生物結果偏高但仍在規格內，你會如何處理？直接進入 Phase 2 還是延長 Phase 1？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.3.2 PHASE 2 -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-3-2">10.3.2 Phase 2 &mdash; Consistent Operation 第二階段：一致性驗證</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The second phase is intended to demonstrate that the system <span class="key-term">consistently operates within pre-determined operating ranges</span> and delivers water of the required quality when operated in accordance with the SOPs. The FDA Guide suggests that the sampling scheme and duration should be the same as for phase one. During phases 1 and 2, <span class="key-term">multiple samples should be taken from each point of use</span>. Sampling methodology should be representative of the way water will be used. For example, sampling should not involve a lengthy preliminary purge if water usage will be direct and immediate. If water is used through an attached hose, then the sample should be taken from the hose.</p>
+
+        <p>It is recommended that each point be sampled <span class="key-term">at least once per week</span> as a minimum. In this manner, localized contamination may be discovered. (Note that <span class="key-term">too frequent sampling of little used points may mask incipient localized microbial growth</span> by artificial purging.) Phase 2 allows the gathering of sufficient data to establish <span class="key-term">microbial alert and action limits</span> (see Section 10.4).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Phase 2 的核心要求 &mdash; 「一致性」</h4>
+            <p>Phase 1 證明了「系統可以產出合格的水」，Phase 2 要證明的是「系統<strong>每次</strong>都能產出合格的水」。這兩者的差異就像：</p>
+            <ul>
+                <li>Phase 1：「這個投手可以投出 150km/h 的球」</li>
+                <li>Phase 2：「這個投手<strong>每場比賽</strong>都能穩定投出 150km/h 的球」</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：取樣方法必須「代表實際使用方式」</h4>
+            <p>這是一個常被忽略但極為重要的原則。原文舉了兩個例子：</p>
+            <ul>
+                <li><strong>不要長時間預沖</strong>：如果實際使用時是「打開閥門直接用」，取樣時也應該直接取，不應該先沖 5 分鐘。否則你取到的是「沖洗後的好水」，不是「使用者實際拿到的水」。</li>
+                <li><strong>從軟管末端取樣</strong>：如果使用點接了軟管，取樣就要從軟管末端取，因為軟管本身可能是汙染源。</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <h4>隱藏陷阱：過度取樣反而掩蓋問題</h4>
+            <p>原文有一句非常重要但容易被忽略的警告：</p>
+            <p><strong>"Too frequent sampling of little used points may mask incipient localized microbial growth by artificial purging."</strong></p>
+            <p>意思是：如果某個使用點平常很少用（例如備用管路），頻繁取樣等於頻繁沖洗，反而把正在形成的 biofilm 沖掉了。取樣結果看起來很好，但實際上問題被掩蓋了。</p>
+            <p>CDMO 建議：對低使用率的 point of use，取樣頻率應該模擬實際使用頻率，而不是為了「數據好看」而天天取樣。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Alert Limit vs. Action Limit</h4>
+            <p>Phase 2 的另一個關鍵產出是建立 <strong>Alert / Action Limit</strong>：</p>
+            <ul>
+                <li><strong>Alert Limit（警戒限）</strong>：趨勢偏離的早期警告，通常觸發增加取樣頻率和調查</li>
+                <li><strong>Action Limit（行動限）</strong>：接近規格邊界，觸發糾正行動（消毒、維修等）</li>
+            </ul>
+            <p>這些限值應基於 Phase 1 和 Phase 2 的<strong>實際數據統計</strong>建立，而非僅引用 USP 或行業慣例。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.3.3 PHASE 3 -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-3-3">10.3.3 Phase 3 &mdash; Extended Performance 第三階段：長期性能驗證</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The third phase is intended to demonstrate that, when operated for an <span class="key-term">extended time period (typically one year)</span>, the system produces and delivers water of the required quality, despite possible <span class="key-term">seasonal variations</span> of the feed water. Sample locations, frequencies, and test requirements are based on the established procedures.</p>
+
+        <p>For <span class="key-term">WFI systems</span>, the FDA Guide recommends sampling daily from a minimum of one point of use, with all points of use tested weekly. At the end of this phase (i.e., after a full year of testing), the <span class="key-term">validation is considered completed</span>. In most cases, ongoing monitoring will establish a continuing record of water quality.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：一年 = 四季全覆蓋</h4>
+            <p>Phase 3 的持續時間是一年，目的不是「多取一年的樣」，而是要確保系統經歷過所有可能的環境變化：</p>
+            <ul>
+                <li><strong>春季</strong>：融雪導致進水水質劣化（有機物、微生物增加）</li>
+                <li><strong>夏季</strong>：高溫促進微生物生長，進水水溫升高影響 RO 效率</li>
+                <li><strong>秋季</strong>：落葉季節影響地表水質</li>
+                <li><strong>冬季</strong>：低溫影響系統效率，但微生物風險較低</li>
+            </ul>
+            <p>台灣的情境也類似：梅雨季（進水濁度高）、颱風季（可能影響市水供應）、夏季高溫等都是必須涵蓋的變異情境。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：WFI 的取樣頻率要求</h4>
+            <p>對 WFI 系統，FDA 的建議取樣頻率是：</p>
+            <ul>
+                <li><strong>每日</strong>：至少從一個使用點取樣</li>
+                <li><strong>每週</strong>：所有使用點都要取到</li>
+            </ul>
+            <p>注意這是 Phase 3（長期監控）的頻率，比 Phase 1/2 已經降低。但對 Purified Water（PW）系統，指南沒有這麼嚴格的要求 &mdash; 這反映了 WFI 對注射劑品質的關鍵影響。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Phase 3 就像新車的「第一年保固期」。製造商讓你在各種路況、天氣、負載條件下開一年，如果一年下來車子都表現正常，才真正確認這台車的品質。同樣地，水系統要經過春夏秋冬的考驗，才能說「驗證完成」。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務：Phase 3 期間的商業運營</h4>
+            <p>好消息是：Phase 3 通常在正常生產狀態下進行，不需要額外的停機時間。但需注意：</p>
+            <ul>
+                <li>Phase 3 期間的偏差（OOS/OOT）仍需正式調查和處理</li>
+                <li>如果 Phase 3 期間出現重大系統變更，可能需要重新評估是否「重啟」Phase 3</li>
+                <li>Phase 3 的最終報告是水系統完整驗證的關鍵文件，稽查員必看</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.4 ACCEPTANCE CRITERIA -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-4">10.4 Acceptance Criteria 接受標準</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Acceptance criteria for water are dependent upon its use. For both <span class="key-term">Purified Water</span> and <span class="key-term">WFI</span>, the chemical acceptance criteria are clearly described in the <span class="key-term">US Pharmacopoeia (USP)</span>. It is expected that a well designed water system, operating within specified design parameters will consistently be able to meet these criteria. Therefore, failures in chemical analysis during phases 1 and 2 must be investigated, the reason for failure corrected, and (except where errors in sampling or laboratory error are clearly indicated) the <span class="key-term">sampling phase extended</span> to re-establish consistency of performance.</p>
+
+        <p><span class="key-term">Microbial quality</span> is not specified by the USP, but is established by the user based upon water use. The USP does recommend <span class="key-term">action limits</span> for the different waters in its General Information chapter. These are <span class="key-term">10 CFU/100ml for WFI</span> and <span class="key-term">100 CFU/ml for Purified Water</span>. These may be employed as initial acceptance criteria for system qualification, although some flexibility is allowable, depending upon system design and use.</p>
+
+        <p>It is permissible that a <span class="key-term">single excursion</span>, followed by acceptable re-sampling would not constitute a failure. In addition, because of the inherently bacteriostatic nature of WFI production and distribution systems, it should be expected that the large majority of samples should be <span class="key-term">well below the initial acceptance criterion</span>. Therefore, for WFI it is prudent to establish a <span class="key-term">sample average acceptance criterion</span>, which will be below the limit for a single sample. Failure investigation would be handled similarly to chemical analysis failure.</p>
+
+        <p>During phases 1 and 2, normal system <span class="key-term">microbial limits</span> may be established. Acceptance criteria may then be converted to <span class="key-term">alert and action limits</span> for use during phase 3 and beyond. These would take into account repeated excursions from the norm as well as step increases in micro count.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：化學 vs. 微生物接受標準的差異</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>面向</th>
+                        <th>化學（Chemical）</th>
+                        <th>微生物（Microbial）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>來源</strong></td>
+                        <td>USP 明確定義（Conductivity, TOC）</td>
+                        <td>USP 僅「建議」，由使用者自行設定</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WFI 限值</strong></td>
+                        <td>Conductivity &le;1.3 &mu;S/cm @25&deg;C; TOC &le;500 ppb</td>
+                        <td>10 CFU/100ml（USP 建議 Action Limit）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PW 限值</strong></td>
+                        <td>同上</td>
+                        <td>100 CFU/ml（USP 建議 Action Limit）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>失敗處理</strong></td>
+                        <td>必須調查、矯正、延長取樣期</td>
+                        <td>單次偏移 + 重新取樣合格 = 可接受</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「樣本平均值」接受標準</h4>
+            <p>原文提出一個非常實用的概念：對 WFI 系統，除了單一樣本的限值外，應建立 <strong>sample average acceptance criterion</strong>。</p>
+            <p>邏輯是：WFI 系統（通常 80&deg;C 以上循環或使用蒸餾法）本質上是抑菌的。如果系統設計和運行正常，大多數樣本結果應該遠低於 10 CFU/100ml。如果平均值接近限值，即使每個單一樣本都「合格」，系統仍然有問題。</p>
+            <p>建議的做法：</p>
+            <ul>
+                <li>Action Limit: 10 CFU/100ml（單一樣本）</li>
+                <li>Alert Limit: 1-3 CFU/100ml（基於實際數據的統計分析）</li>
+                <li>平均值目標: &lt;1 CFU/100ml（系統正常運行的預期表現）</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <h4>重要觀點：化學失敗的嚴肅性</h4>
+            <p>原文明確指出：化學分析失敗比微生物失敗更為嚴重。原因是：</p>
+            <ul>
+                <li>一個「設計良好」的水系統<strong>不應該</strong>出現化學不合格</li>
+                <li>化學不合格代表<strong>系統設計或運行</strong>有根本問題</li>
+                <li>必須找到根本原因、糾正、然後<strong>延長取樣期</strong>重新證明一致性</li>
+            </ul>
+            <p>相比之下，微生物偶爾偏高可能是取樣操作、環境因素等造成，單次偏移加重取樣合格是可接受的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>化學指標就像人的「血壓」&mdash; 一個設計良好的身體（系統），血壓應該一直正常。偶爾偏高一次可能是緊張，但如果持續偏高就是系統問題。微生物指標則像「感冒次數」&mdash; 即使很健康的人也可能偶爾感冒（偶發微生物偏移），但如果經常感冒就要查免疫系統（系統性問題）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 WFI 系統在 Phase 1 期間，某個使用點連續兩天微生物結果為 5 CFU/100ml（低於 10 CFU/100ml 的限值但明顯高於其他點的 &lt;1 CFU/100ml）。你會如何處理？</li>
+                <li>原文說化學失敗時需要「extended sampling phase」。如果 Phase 2 第三週出現一次 conductivity 失敗，後來確認是取樣瓶汙染，你是否仍需延長 Phase 2？為什麼？</li>
+                <li>你的客戶要求 PW 系統的微生物限值設為 10 CFU/ml（比 USP 建議的 100 CFU/ml 嚴格 10 倍）。你會如何評估這個要求的合理性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.5 QUALIFICATION REPORTS -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-5">10.5 Qualification Reports 確效報告</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Qualification data</span> should be compiled and conclusions written into a <span class="key-term">summary report</span>. This is to be reviewed and approved by those responsible for operation and <span class="key-term">quality assurance</span> of the water system.</p>
+
+        <p>An <span class="key-term">interim report</span> should be written and approved at such time during the qualification sampling program, as it is desired to use water in production activities.</p>
+
+        <p>A summary report should be prepared at the conclusion of phase 2, <span class="key-term">periodic updates</span> provided throughout phase 3 and a <span class="key-term">major update</span> issued at the conclusion of phase 3.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：確效報告的時間線</h4>
+            <p>水系統的確效報告不是「寫一份就好」，而是一系列的文件：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>時機</th>
+                        <th>報告類型</th>
+                        <th>目的</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Phase 1 結束</td>
+                        <td>Interim Report</td>
+                        <td>支持「有條件使用」的決定</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 2 結束</td>
+                        <td>Summary Report</td>
+                        <td>正式確認系統合格，允許常規生產使用</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 3 期間</td>
+                        <td>Periodic Updates</td>
+                        <td>持續追蹤，確認長期趨勢</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 3 結束</td>
+                        <td>Major Update / Final Report</td>
+                        <td>水系統完整驗證的最終文件</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Interim Report 的重要性</h4>
+            <p>Interim report 是 CDMO 營運的關鍵文件。沒有它，你不能在確效期間使用水進行生產。撰寫時應包含：</p>
+            <ul>
+                <li>Phase 1 所有數據的彙整與統計分析</li>
+                <li>所有測試項目的合格/不合格判定</li>
+                <li>任何偏差及其調查結論</li>
+                <li>有條件使用的限制（如適用）</li>
+                <li>後續 Phase 2/3 的取樣計畫確認</li>
+            </ul>
+            <p>這份報告必須經過 QA 審核和核准。稽查員看到這份文件，才會認可你在確效期間的生產批次是合法的。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>CDMO 實務建議</h4>
+            <p>建議在 Phase 3 的 periodic updates 中加入<strong>趨勢分析圖表</strong>：</p>
+            <ul>
+                <li>微生物計數的時間趨勢圖（每個使用點分開繪製）</li>
+                <li>conductivity 和 TOC 的趨勢圖</li>
+                <li>進水水質的季節變化對照</li>
+                <li>消毒/維護事件的時間標記</li>
+            </ul>
+            <p>這些圖表不僅是確效文件的組成部分，也是日後<strong>年度產品品質回顧（APR/PQR）</strong>中水系統部分的基礎數據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- 10.6 CHANGE CONTROL AND REQUALIFICATION -->
+<!-- ============================================================= -->
+<div class="section-title" id="sec-10-6">10.6 Change Control and Requalification 變更管制與再確效</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Changes to the system must be assessed with regard to <span class="key-term">potential impact of the change on the entire system</span>. Required action would be determined based on that assessment. It may involve <span class="key-term">extensive re-qualification</span>, <span class="key-term">localized increase in sampling frequency</span>, or <span class="key-term">inclusion in the routine monitoring program</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：變更影響的三個等級</h4>
+            <p>原文雖然只有短短一段，但包含了變更管制的核心框架。每個變更都應根據影響評估，對應到三種行動之一：</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>影響等級</th>
+                        <th>變更範例</th>
+                        <th>對應行動</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge red">高</span></td>
+                        <td>更換 RO 膜型號、改變消毒方式、修改管路配置</td>
+                        <td>Extensive re-qualification（可能需重跑 Phase 1+2）</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge yellow">中</span></td>
+                        <td>更換某使用點閥門、增加新使用點、維修管路焊接</td>
+                        <td>Localized increase in sampling frequency</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge green">低</span></td>
+                        <td>更換同型號耗材（濾芯、墊圈）、調整消毒時間參數</td>
+                        <td>Inclusion in routine monitoring program</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「整個系統」的影響評估</h4>
+            <p>原文特別強調要評估變更對<strong>整個系統</strong>的影響，而不只是變更點本身。原因是水系統是<strong>連續循環的封閉系統</strong>：</p>
+            <ul>
+                <li>在上游更換了一個組件，可能改變整個迴路的水質</li>
+                <li>增加一個使用點，可能改變整個系統的流速分布</li>
+                <li>調整消毒頻率，影響的是整個管路的微生物控制</li>
+            </ul>
+            <p>這與一般設備的變更管制不同 &mdash; 更換一台壓錠機的模具，只影響那台機器。但更換水系統的一段管路，可能影響所有使用該水的產品。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>交叉參照：ISPE Vol.5 變更管制</h4>
+            <p>ISPE Vol.5 C&amp;Q Guide 的 Chapter 8（Change Management）提供了更完整的變更管制框架：</p>
+            <ul>
+                <li><strong>變更分類</strong>：Like-for-Like / Minor / Major / Critical</li>
+                <li><strong>風險評估工具</strong>：影響評估矩陣（Impact Assessment Matrix）</li>
+                <li><strong>再確效深度</strong>：從「文件審查」到「完整再驗證」的光譜</li>
+            </ul>
+            <p>建議在水系統的變更管制 SOP 中，直接引用 Vol.5 的框架，並針對水系統的特殊性（連續循環、微生物風險）增加具體的評估準則。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>CDMO 特別注意：客戶溝通</h4>
+            <p>CDMO 水系統的變更管制有一個額外維度：<strong>客戶通知</strong>。水系統的重大變更可能影響所有使用該系統的客戶產品，因此：</p>
+            <ul>
+                <li>品質協議（QTA）中應明確定義水系統變更的通知範圍</li>
+                <li>高影響變更可能需要客戶核准才能執行</li>
+                <li>變更後的再確效數據可能需要提供給客戶作為其產品變更的支持文件</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 WFI 系統需要更換 RO 膜（從 A 品牌換成 B 品牌，規格相同但材質不同）。你會將此歸類為哪個影響等級？需要什麼程度的再確效？</li>
+                <li>生產團隊要求在 WFI loop 上增加一個新的使用點（用於新客戶的填充線）。除了管路的物理安裝，你需要考慮哪些確效和監控方面的事項？</li>
+                <li>你的進水（市水）供應商通知你，他們將在下個月更換消毒劑（從氯改為氯胺）。這對你的水系統有什麼潛在影響？你的變更管制流程應如何回應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================= -->
+<div class="section-title" id="summary">Chapter Summary 本章總結</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Key Takeaways 重點回顧</h2>
+
+        <ul class="structure-list">
+            <li><strong>Documentation:</strong> Water system qualification requires enhanced documentation including isometric diagrams, weld records, passivation records, and slope verification &mdash; beyond standard IQ/OQ/PQ packages.</li>
+            <li><strong>Three-Phase Sampling:</strong> Phase 1 (2-4 weeks) establishes operating ranges; Phase 2 (2-4 weeks) demonstrates consistency; Phase 3 (1 year) confirms long-term performance across seasonal variations.</li>
+            <li><strong>Acceptance Criteria:</strong> Chemical criteria from USP are absolute; microbial criteria (10 CFU/100ml WFI, 100 CFU/ml PW) are user-established based on USP recommendations, with alert/action limits derived from actual system data.</li>
+            <li><strong>Qualification Reports:</strong> A series of reports &mdash; interim, summary, periodic updates, and final &mdash; are required throughout the multi-phase qualification program.</li>
+            <li><strong>Change Control:</strong> Every change must be assessed for system-wide impact, with response ranging from full requalification to inclusion in routine monitoring.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師總結 Instructor Summary</h2>
+
+        <div class="concept-box">
+            <h4>本章核心訊息</h4>
+            <p>水系統確效的本質是「用時間和數據證明系統的可靠性」。它不是一次性的「通過/不通過」測試，而是一個持續超過一年的<strong>證據積累過程</strong>。</p>
+            <p>對 CDMO 而言，這意味著：</p>
+            <ul>
+                <li><strong>新廠規劃</strong>：水系統確效的時程（&gt;1年）必須納入新廠投產的整體時程規劃</li>
+                <li><strong>日常運營</strong>：Phase 3 完成後，持續監控就是你的「保險」&mdash; 用持續的數據證明系統一直在控制中</li>
+                <li><strong>客戶信任</strong>：一套完整的三階段確效文件 + 持續的趨勢監控數據，是向客戶和稽查員展現水系統控制能力的最有力證據</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>與其他 ISPE 指南的連結</h4>
+            <ul>
+                <li><strong>ISPE Vol.5（C&amp;Q Guide）</strong>：提供系統分類、風險評估、leveraging commissioning 的完整框架。水系統作為 Direct Impact System，適用最嚴格的確效要求。</li>
+                <li><strong>ISPE Vol.4 前面章節</strong>：系統設計（Chapter 3-7）的決策直接影響確效策略 &mdash; 例如 hot loop vs. ambient loop 決定了消毒頻率和微生物控制策略。</li>
+                <li><strong>FDA Guide to Inspections of High Purity Water Systems</strong>：本章多次引用的 FDA 指南，提供了更具體的稽查視角。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>綜合練習 Comprehensive Exercise</h4>
+            <p>假設你是一家 CDMO 的工程/品質主管，公司正在建置一套新的 WFI 系統，預計 6 個月後開始供水給新的無菌充填線。請完成以下任務：</p>
+            <ol>
+                <li>制定一份三階段取樣計畫的時間表，標註每個階段的開始條件、取樣頻率、和退出標準</li>
+                <li>定義初步的化學和微生物接受標準，說明你的理據</li>
+                <li>列出確效報告的交付時程表，標註每份報告需要哪些人審核/核准</li>
+                <li>設計一個變更管制的決策矩陣：列出 5 種常見的水系統變更場景，分別定義影響等級和對應的再確效要求</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems &mdash; Chapter 10: Commissioning and Qualification</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Reference</p>
+    <p>For training and educational purposes only. Not a substitute for the original ISPE publication.</p>
+</div>
+
+</body>
+</html>

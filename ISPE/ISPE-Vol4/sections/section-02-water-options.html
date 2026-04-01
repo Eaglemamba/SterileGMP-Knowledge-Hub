@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Chapter 3: Water Options and System Planning</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box,
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Formula Box (Purple) */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* Application Box (Blue solid) */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* Practice Box (Blue dashed) */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Practice Box - CDMO Application (solid green border) */
+.practice-box.cdmo-application {
+    border: 2px solid #4caf50 !important;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+}
+.practice-box.cdmo-application h3, .practice-box.cdmo-application h4 {
+    color: #2e7d32 !important;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+/* Learning Objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section summary */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem;
+    border-left: 4px solid #f6ad55;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* TOC */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* Hierarchy Diagram */
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.hierarchy-box.level-4 { background: #e0f2fe; border: 2px solid #0ea5e9; color: #0369a1; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header" id="top">
+    <h1>ISPE Baseline&reg; Guide Vol.4 &mdash; Water and Steam Systems</h1>
+    <div class="subtitle">Chapter 3: Water Options and System Planning</div>
+    <div class="subtitle">第三章：水質選項與系統規劃</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p31&ndash;p41</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解製藥用水的品質階層：Drinking Water（飲用水）、Non-Compendial Water（非藥典水）、Purified Water（純化水）、WFI（注射用水），以及各自的適用場景。</li>
+            <li>掌握 USP 藥典水與非藥典水的差異，說明何時可使用非藥典水以及需要什麼文件支持。</li>
+            <li>認識不同水質選項的成本影響因素，包含 NPV（淨現值）分析方法。</li>
+            <li>掌握 ISPE 四步驟系統規劃方法論：確定水質 → 特徵化使用點 → 建立系統標準 → 重新檢視水質。</li>
+            <li>能夠解讀 Use-Point Criteria（使用點標準）矩陣，包含 Diversity Factor（多樣性因子）的概念與應用。</li>
+            <li>理解系統設計中 Central System（集中式系統）與 Multiple Systems（分散式系統）的優缺點比較。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>章節導覽 Section Navigator</h3>
+        <div class="toc-grid">
+            <a href="#sec-3-1">3.1 Introduction</a>
+            <a href="#sec-3-2">3.2 Water Quality Options</a>
+            <a href="#sec-3-2-1">3.2.1 Cost Implications</a>
+            <a href="#sec-3-3">3.3 System Planning</a>
+            <a href="#sec-3-3-1">3.3.1 Establish Water Quality</a>
+            <a href="#sec-3-3-2">3.3.2 Characterize Use Point</a>
+            <a href="#sec-3-3-3">3.3.3 Establish System Criteria</a>
+            <a href="#sec-3-3-4">3.3.4 Revisit Water Quality</a>
+            <a href="#sec-3-4">3.4 System Design</a>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.1 INTRODUCTION                                       -->
+    <!-- ============================================================= -->
+    <div id="sec-3-1" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.1 Introduction</div>
+
+            <h3>3.1 Introduction</h3>
+            <p>This chapter outlines basic <span class="key-term">water system design criteria</span> and, along with subsequent chapters, aims to provide a better understanding of pharmaceutical water, how it is used, and how it can be provided. The primary goal of this chapter is to provide the user with a methodology for:</p>
+            <ol type="a">
+                <li>Evaluating <span class="key-term">water quality options</span> for product manufacturing</li>
+                <li>Evaluating basic <span class="key-term">system configurations</span> available to provide the water</li>
+            </ol>
+            <p>Detailed information on unit operation design, maintenance and cost factors is addressed in later chapters.</p>
+            <p>The chapter also outlines the <span class="key-term">system planning effort</span> for pharmaceutical water systems. This planning starts with the selection of water quality based upon product requirements, processing operations, and end use. A <span class="key-term">decision tree</span> concept is included to assist in selection of compendial and non-compendial waters for production, cleaning, and support. The program then provides steps to guide the user through a use-point and system analysis, to set-up the water system distribution strategy. Finally, evaluation points are provided for the selection of the primary system configurations.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：本章定位</h4>
+                <p>本章是整個 ISPE Vol.4 的「策略起點」。在進入具體的前處理（Chapter 4）、純化技術（Chapter 5-6）、儲存配送（Chapter 7-8）之前，你必須先回答兩個根本問題：</p>
+                <ul>
+                    <li><strong>需要什麼品質的水？</strong> &mdash; Water Quality Options（水質選項）</li>
+                    <li><strong>用什麼系統來供應？</strong> &mdash; System Configurations（系統配置）</li>
+                </ul>
+                <p>這兩個問題的答案決定了後續所有技術決策的基調。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻</h4>
+                <p>想像你要為一棟大樓規劃供水。你不會直接去買水管和水泵，而是先問：「住戶需要飲用水、熱水還是軟水？」以及「要一個中央供水站，還是每層樓各裝一套？」&mdash; 這就是本章在做的事：<strong>先定策略，再選技術</strong>。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：Decision Tree</h4>
+                <p>本章提供的 Decision Tree（決策樹，Figure 3-1）是選水的核心工具。它會根據你的產品類型（口服、注射、外用）、製程特性（有無滅菌步驟、濃縮步驟）來引導你選擇適當的水質等級。每個選擇都需要 QA 審核和文件支持。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.2 WATER QUALITY OPTIONS                              -->
+    <!-- ============================================================= -->
+    <div id="sec-3-2" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.2 Water Quality Options</div>
+
+            <h3>3.2 Water Quality Options</h3>
+            <p>Quality requirements for water used in pharmaceutical manufacturing and product development are driven by the <span class="key-term">product characteristics</span>, <span class="key-term">manufacturing processes</span>, and the <span class="key-term">intended use of the product</span>. To aid in the water selection process, the <span class="key-term">USP Monographs</span> define minimum requirements for general types of pharmaceutical water used in almost every pharmaceutical application. However, there is also the opportunity for a manufacturer to determine water quality requirements, different from those in the USP, based on specific product characteristics and processing operations. If this option is taken, the product manufacturer is responsible for assuring that water used to manufacture the product is appropriate, to reliably produce safe product.</p>
+
+            <p>Though water quality requirements are product specific, it is impractical to reliably produce special water that is specific to each situation. Manufacturing operations typically generate and distribute only a few, or perhaps just one, quality of water. Therefore, products and operations requiring similar water qualities are commonly grouped. The most common segmentation is that defined in the USP.</p>
+
+            <p>Manufacturers agree that in many if not most cases, the requirements defined in the USP are adequate for production of safe product. More stringent water quality specifications may be appropriate for some products and processes. Others may be appropriately less stringent. Typically, more stringent requirements may apply to some processing operations involving significant <span class="key-term">concentration steps</span> or products comprised of high water content, which may be applied in large volume doses. Likewise, processes involving reliable <span class="key-term">sterilization and purification steps</span> which remove impurities may, in some cases, not require water qualities as strict as those defined in the USP.</p>
+
+            <p>In manufacturing operations with only one quality of water, the water system must be designed to meet the most stringent requirements of the most demanding product or process. With more than one quality of water, products and processes are often categorized and fed by the most appropriate system. The number of types of water generated is most often a function of volume of water consumed and variation of quality. Large consumers may find it economical to generate and distribute <span class="key-term">multiple grades of water</span>, while small users often will generate only one quality of water.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：水質需求的三大驅動因素</h4>
+                <p>選擇製藥用水品質的起點是三個因素：</p>
+                <ol>
+                    <li><strong>Product Characteristics（產品特性）</strong> &mdash; 注射劑 vs. 口服劑 vs. 外用品，風險等級不同</li>
+                    <li><strong>Manufacturing Processes（製造流程）</strong> &mdash; 是否有後續的滅菌、純化步驟</li>
+                    <li><strong>Intended Use（預期用途）</strong> &mdash; 大容量靜脈注射 vs. 小劑量口服</li>
+                </ol>
+                <p>這三者共同決定了你需要的最低水質標準。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>關鍵洞察：USP 是「最低要求」不是「最佳做法」</h4>
+                <p>原文明確指出：USP Monographs（美國藥典專論）定義的是 <strong>minimum requirements（最低要求）</strong>。這意味著：</p>
+                <ul>
+                    <li>符合 USP 不等於一定安全 &mdash; 特定產品可能需要更嚴格的標準</li>
+                    <li>不符合 USP 不等於一定不行 &mdash; 如果有充分的科學依據和文件支持，製造商可以制定自己的水質標準</li>
+                    <li>關鍵是：<strong>你必須能證明你的選擇是合理的</strong></li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：一水多用 vs. 分級供水</h4>
+                <p>想像一間餐廳：如果只有一個水龍頭，那它必須供應最乾淨的水（因為要同時用來煮湯和洗碗）。但如果你有兩個水龍頭（一個給廚房、一個給洗碗），你可以針對不同用途優化水質和成本。</p>
+                <p>藥廠也一樣：<strong>小藥廠通常只做一個水質等級（最高標準全場通用），大藥廠則會分級供水以節省成本。</strong></p>
+            </div>
+
+            <div class="practice-box cdmo-application">
+                <h4>CDMO 實務應用</h4>
+                <p>對 CDMO（委託開發暨製造組織）來說，這個「分級 vs. 統一」的決策格外重要：</p>
+                <ul>
+                    <li><strong>多客戶產品組合</strong> &mdash; CDMO 同時生產多種客戶產品，水質需求可能差異很大</li>
+                    <li><strong>彈性考量</strong> &mdash; 如果只裝一套 WFI 系統，所有產品都用 WFI，成本高但驗證簡單</li>
+                    <li><strong>成本考量</strong> &mdash; 如果裝 PW + WFI 雙系統，運維複雜但長期省錢</li>
+                    <li><strong>實務建議</strong> &mdash; 以無菌充填為核心業務的 CDMO，通常傾向全場 WFI，因為客戶審計時最容易通過</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Three Categories of Water + Decision Tree                      -->
+    <!-- ============================================================= -->
+    <div id="sec-3-2-categories" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; Water Categories &amp; Decision Tree</div>
+
+            <h3>Three Categories of Pharmaceutical Water</h3>
+            <p>The three main categories of water used in pharmaceutical manufacturing are:</p>
+            <ul>
+                <li><span class="key-term">Drinking water</span>: meeting EPA national primary drinking water regulations. In Figure 3-1 drinking water is included in the category Suitable Non-Compendial.</li>
+                <li><span class="key-term">Compendial water</span>: meeting the compendial requirements for specific types of water in USP Monographs (i.e., Purified Water USP, Water for Injection USP).</li>
+                <li><span class="key-term">&ldquo;Suitable&rdquo; non-compendial process waters</span>: meeting the requirements of drinking water, but with additional treatment to meet process requirements. It may, or may not, contain added substances for microbial control and does not have to meet full compendial requirements for USP Water. In this Guide, we name the non-compendial process waters used in manufacturing by the final/major process step (i.e., Reverse Osmosis &mdash; RO water, Deionization &mdash; DI water, etc.).</li>
+            </ul>
+            <p><span class="key-term">Non-compendial water</span> is not necessarily less critical, or less costly to produce or to qualify, than compendial water. It can enable the manufacturer to set product specific quality and/or test criteria that are appropriate for the specific product and processes.</p>
+
+            <p>Generally, more highly purified water is more expensive than less purified water. However, the specifics of each operation are different. For example, a plant with existing excess capacity of WFI might elect to use WFI over other grades even when unnecessary. In the example case, documentation defining water quality should identify the quality required for the product and why the WFI was used instead.</p>
+
+            <h3>Decision Tree (Figure 3-1)</h3>
+            <p>Figure 3-1 provides the framework of a diagram that can be developed by a manufacturer to show the requirements for water used in the pharmaceutical manufacturing processes. This diagram should be accompanied by documentation supporting the options chosen, with review and approval of <span class="key-term">Quality Assurance</span>. The options chosen should be based on product and process specific requirements.</p>
+
+            <p><strong>Decision Tree Notes:</strong></p>
+            <ol>
+                <li>By test procedure definition, some analytical methods require USP Compendial waters. Quality should meet the needs of the analytical methods.</li>
+                <li>Labs performing both cGMP and Non-cGMP operations should follow the cGMP path.</li>
+                <li>Non-compendial water may be more highly purified than compendial water. Endotoxin and microbial quality is based on the process and quality standards of the product.</li>
+                <li>Quality of final rinse water is determined by the type of product and subsequent processing steps. Where product contact surface is subsequently sanitized, final rinse with Suitable Non-Compendial water may be acceptable.</li>
+                <li>Where product is purified downstream.</li>
+                <li>More stringent endotoxin requirements (e.g., WFI quality) should be employed for water used in the final purification step for NON-Sterile parenteral grade APIs.</li>
+            </ol>
+            <p><em>Note: Commitments made in drug applications override suggestions of this decision tree.</em></p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：製藥用水的三大分類</h4>
+                <p>ISPE 將製藥用水分為三個層次，由低到高：</p>
+                <div class="hierarchy-diagram">
+                    <div class="hierarchy-level">
+                        <div class="hierarchy-box level-1">WFI（注射用水）&mdash; 最嚴格</div>
+                    </div>
+                    <div class="arrow-down">&darr;</div>
+                    <div class="hierarchy-level">
+                        <div class="hierarchy-box level-2">PW / Compendial Water（純化水 / 藥典水）</div>
+                    </div>
+                    <div class="arrow-down">&darr;</div>
+                    <div class="hierarchy-level">
+                        <div class="hierarchy-box level-3">Non-Compendial Water（非藥典水：RO 水、DI 水等）</div>
+                    </div>
+                    <div class="arrow-down">&darr;</div>
+                    <div class="hierarchy-level">
+                        <div class="hierarchy-box level-4">Drinking Water（飲用水）&mdash; 基本門檻</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <h4>常見誤解：非藥典水 ≠ 低品質水</h4>
+                <p>原文特別強調：<strong>Non-compendial water is not necessarily less critical, or less costly.</strong></p>
+                <p>非藥典水只是說它不需要完全符合 USP 專論的所有測試項目，但它可能：</p>
+                <ul>
+                    <li>純度比 PW 更高（例如 RO/DI/UF 三段處理的水）</li>
+                    <li>驗證成本不一定更低（因為要自訂標準並提供科學依據）</li>
+                    <li>命名方式是依最終處理步驟命名：RO Water、DI Water、UF Water 等</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：Decision Tree = 點餐流程</h4>
+                <p>Decision Tree 就像餐廳的點餐引導：</p>
+                <ul>
+                    <li>「您要正餐還是飲料？」→ Production use vs. Lab use</li>
+                    <li>「正餐是要牛排還是沙拉？」→ Parenteral product vs. Oral product</li>
+                    <li>「牛排要幾分熟？」→ WFI vs. PW vs. Non-compendial</li>
+                </ul>
+                <p>每一步都是基於你的需求來縮小選項，最終得到最適合的水質。但注意：<strong>如果你在藥品申請文件（Drug Application）中已承諾使用特定水質，那個承諾優先於 Decision Tree 的建議。</strong></p>
+            </div>
+
+            <div class="note-box">
+                <h4>Decision Tree 六大備註的實務意義</h4>
+                <p>這六條備註揭示了幾個關鍵原則：</p>
+                <ul>
+                    <li><strong>Note 1-2（實驗室）</strong>：分析方法本身可能要求藥典水；cGMP 實驗室一律走 cGMP 路徑</li>
+                    <li><strong>Note 3（非藥典 ≠ 低質）</strong>：非藥典水可以比藥典水更純，重點是控制 Endotoxin（內毒素）和微生物</li>
+                    <li><strong>Note 4（最終清洗）</strong>：如果後續有 Sanitization（消毒）步驟，最終沖洗可用非藥典水</li>
+                    <li><strong>Note 6（API）</strong>：非無菌注射級 API 的最終純化步驟需要 WFI 級內毒素標準</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- Table 3-1: Pharmaceutical Water Types                          -->
+    <!-- ============================================================= -->
+    <div id="sec-3-2-table" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; Table 3-1: Typical Pharmaceutical Water Types</div>
+
+            <h3>Design Options for Pharmaceutical Water</h3>
+            <p>Once water needs are determined based on usage, Table 3-1 identifies common design options for various types of pharmaceutical water in the industry. The order of components and actual installed equipment varies widely throughout the industry. Primary criteria in evaluating the options are:</p>
+            <ul>
+                <li>To have suitable specification for water criteria (i.e., it must be adequate for the process and product)</li>
+                <li>To produce water consistent in composition and quality</li>
+                <li>To monitor key performance indicators for assurance that specifications are met</li>
+            </ul>
+
+            <h3>Table 3-1: Typical Pharmaceutical Process Water Types</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Water Type</th>
+                            <th>Description</th>
+                            <th>Key Unit Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Double Pass RO Water</strong></td>
+                            <td>Product staged RO system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Carbon Filtration &rarr; RO (1st Pass) &rarr; RO (2nd Pass)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DI Water</strong></td>
+                            <td>Either conventional regenerable or off-site regenerated ion exchange/mixed bed system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Carbon Filtration &rarr; Ion Exchange (Cation/Anion, 1st Stage) &rarr; Ion Exchange (Mixed Bed, 2nd Stage)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RO/DI Water</strong></td>
+                            <td>Variations of single and double pass RO followed by mixed bed DI system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Carbon Filtration &rarr; RO (1st Pass) &rarr; Ion Exchange (Mixed Bed)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RO/EDI Water</strong></td>
+                            <td>Single pass RO &amp; electrodeionization system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Carbon Filtration &rarr; RO (1st Pass) &rarr; EDI</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DI/UF Water</strong></td>
+                            <td>Regenerable mixed bed / ultrafiltration system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Ion Exchange &rarr; Ultrafiltration</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RO/DI/UF Water</strong></td>
+                            <td>Single pass RO / non-regenerable (or off-site regenerated) mixed bed / ultrafiltration system</td>
+                            <td>Primary Filtration &rarr; Softening &rarr; Carbon Filtration &rarr; RO &rarr; Ion Exchange &rarr; Ultrafiltration</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UF Water</strong></td>
+                            <td>Ultrafiltration often with some pretreatment</td>
+                            <td>Primary Filtration &rarr; Ultrafiltration</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Distilled Water</strong></td>
+                            <td>Various configurations of stills often with some pretreatment</td>
+                            <td>Various pretreatment &rarr; Still (primarily to prolong still life)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：選擇水處理系統的三大評估標準</h4>
+                <ul>
+                    <li><strong>Suitable Specification（合適的規格）</strong> &mdash; 水質必須滿足產品和製程需求</li>
+                    <li><strong>Consistent Quality（一致的品質）</strong> &mdash; 系統必須能穩定產出相同品質的水</li>
+                    <li><strong>Monitoring KPI（監控關鍵指標）</strong> &mdash; 必須有方法確認水質持續合格</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <h4>技術比較：常見水處理配置</h4>
+                <p>從上表可以歸納出幾個關鍵技術組合：</p>
+                <pre>
+前處理（共通）：Primary Filtration → Softening → Carbon Filtration
+  ├─ RO 路線：RO (Single/Double Pass)
+  │    ├─ + DI (Mixed Bed)  = RO/DI Water
+  │    ├─ + EDI             = RO/EDI Water ← 現代主流
+  │    └─ + DI + UF         = RO/DI/UF Water
+  ├─ DI 路線：Ion Exchange (Two Stage)
+  │    └─ + UF              = DI/UF Water
+  └─ 蒸餾路線：Still        = Distilled Water</pre>
+                <p><strong>RO/EDI（逆滲透＋電去離子）是目前業界最主流的 PW 製造方案</strong>，因為它不需要化學再生、維護簡單、運行成本低。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：Table 3-1 的正確解讀方式</h4>
+                <p>這張表不是「從左到右越好」的排序，而是「不同路徑的技術組合」。選擇哪種組合取決於：</p>
+                <ul>
+                    <li><strong>進水水質</strong>（TDS 總溶解固體、硬度、有機物）</li>
+                    <li><strong>出水規格</strong>（PW 或 WFI）</li>
+                    <li><strong>工廠條件</strong>（是否有化學品操作許可、人員能力、空間）</li>
+                    <li><strong>經濟考量</strong>（資本支出 vs. 運營成本）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>假設你的藥廠位於台灣中部，進水 TDS 約 200 ppm，需要同時供應 PW 和 WFI。從 Table 3-1 的選項中，你會優先考慮哪種前處理+純化組合？為什麼？</p>
+                <p><em>提示：考慮台灣的水質特性（硬度中等、有機物偏高）、化學品管理的複雜性、以及 WFI 的生產方式（蒸餾 vs. 膜法）。</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.2.1 COST IMPLICATIONS                                -->
+    <!-- ============================================================= -->
+    <div id="sec-3-2-1" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.2.1 Cost Implications</div>
+
+            <h3>3.2.1 Cost Implications</h3>
+            <p>Determining the economics of pharmaceutical/medical device water production is complex. Costs are quite predictable, but vary greatly depending on <span class="key-term">scale of operation</span>, <span class="key-term">system design</span>, <span class="key-term">actual usage</span>, etc. The total operating cost to produce pharmaceutical waters is obtained by adding the cost of <span class="key-term">feed water</span> to the costs of <span class="key-term">pretreatment</span> (e.g., media filtration, carbon filtration, softening, and chemical addition) and <span class="key-term">final treatment</span> (e.g., primary ion removal and polishing).</p>
+
+            <p>Other significant costs should be anticipated for <span class="key-term">validation</span>, ongoing <span class="key-term">QA/QC</span>, as well as <span class="key-term">waste treatment</span> and sewerage. In addition, regulated industries must consider the risks (cost) of noncompliance and water system failures. Municipal feed water ranges from $1&ndash;3 per thousand gallons with even wider variations outside of the U.S.</p>
+
+            <p>Feed (surface or ground) water quality, generation technology and its associated capital cost, and product water specifications are then utilized to determine the total pharmaceutical water system <span class="key-term">net present value (NPV)</span>. The type of pharmaceutical water system design option selected is typically based on feed water total dissolved solids and hardness levels, organic and colloidal content, as well as anticipated water system utility costs (acid, caustic, salt, power, and source water). Consideration should also be given to maintenance requirements and available resources.</p>
+
+            <p>Although water treatment systems for generating either compendial (USP purified) or non-compendial pharmaceutical process waters significantly vary in system operational costs, <span class="key-term">NPV for each of these various types of process waters are quite similar</span>. The only exception is DI process water generated through the use of a non-regenerable mixed bed bottle system, typically regenerated off site. However, <span class="key-term">membrane based systems</span> do marginally produce the lowest net present values for pharmaceutical water generation. The NPV analysis is usually based on the water system <span class="key-term">capital cost</span> and a <span class="key-term">five-year system operating cost</span>.</p>
+
+            <p>Cost savings opportunities can be found in other places than just the quality of water and method of generation. Wastewater from the pretreatment or treatment systems can often be used for miscellaneous loads such as lawn irrigation, humidification, boiler feed, etc.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>核心概念：製藥用水的總成本結構</h4>
+                <p>製藥用水的成本不只是「買設備」那麼簡單，完整成本包含：</p>
+                <ul>
+                    <li><strong>進水成本</strong>（Feed Water）：自來水費用</li>
+                    <li><strong>前處理成本</strong>（Pretreatment）：過濾、軟化、活性碳</li>
+                    <li><strong>最終處理成本</strong>（Final Treatment）：RO、DI、EDI、蒸餾</li>
+                    <li><strong>驗證成本</strong>（Validation）：IQ/OQ/PQ + 持續監控</li>
+                    <li><strong>QA/QC 成本</strong>：日常取樣、檢測、趨勢分析</li>
+                    <li><strong>廢水處理成本</strong>（Waste Treatment）：排放處理</li>
+                    <li><strong>不合規風險成本</strong>（Noncompliance Risk）：系統故障、產品報廢</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <h4>NPV 分析框架</h4>
+                <pre>
+Total NPV = Capital Cost + Σ (Annual Operating Cost / (1+r)^n)
+                n=1 to 5
+
+其中 Operating Cost 包含：
+  - 耗材（濾材、樹脂、膜元件更換）
+  - 化學品（酸、鹼、鹽、消毒劑）
+  - 能源（電力、蒸汽）
+  - 人工（操作、維護、取樣檢測）
+  - 水費（進水 + 排水）</pre>
+                <p><strong>關鍵結論</strong>：不同水處理系統的 NPV 其實相差不大，但 Membrane-Based Systems（膜系統，如 RO/EDI）的 NPV 略低，這也是它成為主流的原因之一。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：五年分析期的意義</h4>
+                <p>為什麼是五年？因為需要一個夠長的期間讓運營成本成為顯著因素（與資本支出比較），但又不能太長以至於預測失準。</p>
+                <p>例外情況：<strong>非再生型混合床（Off-site Regenerated DI）</strong>的 NPV 明顯偏高，因為瓶裝樹脂的更換和外送再生費用會隨時間快速累積。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：買車 vs. 租車</h4>
+                <p>NPV 分析就像比較「買車 vs. 租車」：</p>
+                <ul>
+                    <li><strong>蒸餾系統</strong> = 買一台高級車（資本成本高、維護費穩定）</li>
+                    <li><strong>RO/EDI 系統</strong> = 買一台省油車（資本成本中等、運營成本最低）</li>
+                    <li><strong>外送再生 DI</strong> = 長期租車（初期便宜但五年下來最貴）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box cdmo-application">
+                <h4>CDMO 實務：廢水回收的隱藏價值</h4>
+                <p>原文提到廢水可用於灌溉、加濕、鍋爐補水等。在台灣的 CDMO 環境中，更實際的回收途徑：</p>
+                <ul>
+                    <li><strong>RO 排水（Reject Water）</strong>回收率可達 75-85%，剩餘的 15-25% 可用於冷卻塔補水</li>
+                    <li><strong>初始沖洗水</strong>可用於前處理系統的反洗</li>
+                    <li>在水資源日益緊張的地區（如台灣中南部），廢水回收可以成為環評的加分項</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.3 SYSTEM PLANNING                                    -->
+    <!-- ============================================================= -->
+    <div id="sec-3-3" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.3 System Planning</div>
+
+            <h3>3.3 System Planning</h3>
+            <p>High purity water and steam are the most widely used, and often the <span class="key-term">most expensive raw material or utility</span> in a pharmaceutical facility. Improper sizing or selection of a steam or water system could limit or even shut down production if under sized; or compromise the reproducible quality and increase the capital cost if oversized. However, system sizing is not the starting point in design. <span class="key-term">Proper definition of water quality requirements and usage can save construction as well as operational costs.</span></p>
+
+            <p>Figure 3-2 shows a graphic representation of the system boundaries, limitations, and restrictions the designer faces when planning a pharmaceutical water system. Initial system planning reveals <span class="key-term">primary boundaries</span> that establish the cornerstone for design criteria. These primary system boundaries are <span class="key-term">Water Quality</span>, <span class="key-term">Use-Point Criteria</span>, and <span class="key-term">System Criteria</span>.</p>
+
+            <p>During initial planning, the limits of each boundary need to be established. The arrows encircling each boundary represent <span class="key-term">limitations</span> that establish more specific operating strategies and ranges. When documenting these limitations, the designer should always indicate <span class="key-term">ranges of acceptability</span>, rather than a specific value or position. This allows more flexibility in final planning and detailed design decisions.</p>
+
+            <p>The reality of certain <span class="key-term">restrictions</span> will sometimes force a specific strategy. As long as the decision leads to an answer that is within the limits of the system boundaries, this is perfectly acceptable. An example is a facility where the use-point criteria require non-compendial water with microbial control. However, there happens to be an oversized WFI system in an adjacent area, so the designer decides to provide WFI to the use-point. In the example case, documentation defining water quality should identify the quality required for the product and why the WFI was used instead.</p>
+
+            <p>The primary emphasis of this section is to outline a <span class="key-term">systematic approach</span> to planning a pharmaceutical water system. Figure 3-2 outlines a planning methodology that begins with the selection of water quality, given its own system constraints and limitations. Then the use point criteria are established, followed by an initial system planning exercise. Often, these sequential steps are repeated as information in the design process iterates, and further criteria about the overall system boundaries are identified.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="note-box">
+                <h4>關鍵警語：水系統是藥廠最貴的原料/公用設施</h4>
+                <p>原文直接說明：高純度水和蒸汽是藥廠中 <strong>使用最廣、成本最高的原料或公用設施</strong>。系統選型錯誤的後果：</p>
+                <ul>
+                    <li><strong>Under-sized（偏小）</strong> → 限制產能甚至停產</li>
+                    <li><strong>Over-sized（偏大）</strong> → 品質不穩定（水滯留）+ 資本浪費</li>
+                </ul>
+                <p>但重點是：<strong>系統大小不是設計的起點</strong> &mdash; 先定義水質需求和用量，再決定系統規模。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>核心概念：三大系統邊界（Figure 3-2）</h4>
+                <p>ISPE 的水系統規劃方法論圍繞三個 Primary Boundaries（主要邊界）：</p>
+                <ol>
+                    <li><strong>Water Quality（水質）</strong> &mdash; 需要什麼等級的水？</li>
+                    <li><strong>Use-Point Criteria（使用點標準）</strong> &mdash; 每個用水點的壓力、流量、溫度需求？</li>
+                    <li><strong>System Criteria（系統標準）</strong> &mdash; 儲存、生成、配送的整體設計？</li>
+                </ol>
+                <p>每個邊界都有三層概念：</p>
+                <ul>
+                    <li><strong>Boundaries（邊界）</strong>：不可逾越的底線（如法規要求）</li>
+                    <li><strong>Limitations（限制）</strong>：操作範圍和策略（如可接受的範圍）</li>
+                    <li><strong>Restrictions（約束）</strong>：現實條件的強制限制（如現有設備、空間）</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：蓋房子的三道關卡</h4>
+                <p>規劃水系統就像蓋房子：</p>
+                <ul>
+                    <li><strong>Water Quality = 建築法規</strong>（必須達到的標準，不可妥協）</li>
+                    <li><strong>Use-Point Criteria = 住戶需求</strong>（每間房要幾個水龍頭、什麼溫度的水）</li>
+                    <li><strong>System Criteria = 工程規劃</strong>（水塔大小、管線配置、水泵選型）</li>
+                </ul>
+                <p>這三者相互影響，需要反覆迭代才能達到最佳方案。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：範圍 vs. 固定值</h4>
+                <p>原文特別強調：文件記載限制條件時，應使用 <strong>ranges of acceptability（可接受範圍）</strong>而非固定值。這個原則在實務中非常重要：</p>
+                <ul>
+                    <li>寫「溫度 70-80&deg;C」比寫「溫度 75&deg;C」好 &mdash; 給後續設計更多彈性</li>
+                    <li>寫「電導率 &le; 1.3 &mu;S/cm」比寫「電導率 0.5 &mu;S/cm」好 &mdash; 避免過度設計</li>
+                </ul>
+                <p>這與 Chapter 2 的 Design Range / Operating Range 概念完全一致。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.3.1 ESTABLISH WATER QUALITY                          -->
+    <!-- ============================================================= -->
+    <div id="sec-3-3-1" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.3.1 Establish Water Quality</div>
+
+            <h3>3.3.1 Establish Water Quality</h3>
+            <p>The first step in the evaluation of water systems is the selection of <span class="key-term">water quality</span> required for the specific product and process operation. Selection is based primarily on the <span class="key-term">dosage and form</span>, and the <span class="key-term">microbiological and chemical purity criteria</span> set for the product for which the water is used. The selection must consider underlying factors that have impacts on <span class="key-term">quality control</span>; <span class="key-term">installed and operating cost</span>; <span class="key-term">maintenance and practicality</span>.</p>
+
+            <p>See Section 3.2 in establishing possible water quality via development of the decision tree. Making notes as the water quality is designated for each use-point, indicating the basis for each decision. Simple annotations from the supporting documentation will be useful in later stages of the planning process. System design constraints may provide the motivation to challenge water quality or other criteria, particularly when it can be demonstrated that the change does not affect product quality or manufacturing controls.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>Step 1：確定水質需求</h4>
+                <p>這是四步驟方法論的第一步。水質選擇的核心考量：</p>
+                <ul>
+                    <li><strong>Dosage Form（劑型）</strong>：注射劑 → WFI；口服液 → PW 或 Non-compendial</li>
+                    <li><strong>Microbial Criteria（微生物標準）</strong>：無菌製劑需要嚴格的生物負荷控制</li>
+                    <li><strong>Chemical Purity（化學純度）</strong>：高濃縮製程需要更低的 TOC 和電導率</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>實務技巧：做好筆記！</h4>
+                <p>原文建議在指定每個使用點的水質時，<strong>同步做筆記記錄決策依據</strong>。這不是隨便說說的 &mdash; 這些筆記在後續階段有三大用途：</p>
+                <ol>
+                    <li><strong>追溯性</strong>（Traceability）：審計時能解釋每個水質選擇的理由</li>
+                    <li><strong>挑戰性</strong>（Challengeability）：如果後續系統設計受限，可以回頭重新評估水質要求</li>
+                    <li><strong>知識管理</strong>：新專案可以參考過往的決策邏輯</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.3.2 CHARACTERIZE USE POINT                           -->
+    <!-- ============================================================= -->
+    <div id="sec-3-3-2" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.3.2 Characterize Use Point</div>
+
+            <h3>3.3.2 Characterize Use Point</h3>
+            <p>Once the initial selection of water quality has been established, the operational criteria should be characterized for each use point. A <span class="key-term">matrix</span> should be developed to outline the primary criteria required for system design.</p>
+
+            <p>Each use point should be annotated with the proper values for <span class="key-term">pressure</span>, <span class="key-term">flow</span>, and the <span class="key-term">temperature range</span> of water entering unit operation, or process point from the water supply system. Establishing a range, rather than a fixed value, increases opportunities for system optimization by allowing a more flexible approach to final design.</p>
+
+            <p>This data can be organized in many ways, but a well-planned spreadsheet can simplify the planning process and provide clear decision pathways for future detailed design activities.</p>
+
+            <h3>Table 3-2: Use Point Criteria (Example)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Equipment Name</th>
+                            <th>Demand Flowrate (LPM)</th>
+                            <th>Diversity Factor</th>
+                            <th>Design Flowrate (LPM)</th>
+                            <th>Daily Demand (LPD)</th>
+                            <th>Diversity Factor</th>
+                            <th>Daily Design (LPD)</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CIP Wash Cycle</td>
+                            <td>40.0</td>
+                            <td>1</td>
+                            <td>40.0</td>
+                            <td>1200</td>
+                            <td>1</td>
+                            <td>1200</td>
+                            <td>Assume a recirculating cycle in 4 steps for a total of 23 minutes.</td>
+                        </tr>
+                        <tr>
+                            <td>Stopper Washer</td>
+                            <td>20.0</td>
+                            <td>0</td>
+                            <td>0.0</td>
+                            <td>460</td>
+                            <td>1</td>
+                            <td>460</td>
+                            <td>Assume one cleaning cycle per day, 100 liters/rinse, 3 rinse/cycle, 1 overflow rinse @ 2 LPM for 80 mins.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Flowrate is primarily used to size lines, whereas <span class="key-term">Daily Use</span> leads to storage and generation decisions. The <span class="key-term">Diversity Factor</span> is one way to level-out anticipated usage, assuming that not all loads happen every day or at the same time. This table indicates a <span class="key-term">Clean in Place (CIP)</span> system and stopper-washer that are both likely to be used on the same day, but never at the same time. Therefore, only the higher flowrate is relevant to loop sizing as shown in the Design Flowrate column.</p>
+
+            <p>Once the location and qualities are finalized, the various properties can be charted on a <span class="key-term">requirements analysis histogram</span>. This can be done with the aid of a computer and either simulation or spreadsheet software for larger systems, or done manually for small systems. At this point, basic <span class="key-term">Process Flow Diagrams</span> also provide a good pictorial view of the water qualities, locations and the point-of-use properties.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>Step 2：特徵化使用點</h4>
+                <p>第二步是為每個用水點建立詳細的需求矩陣，包含三個核心參數：</p>
+                <ul>
+                    <li><strong>Pressure（壓力）</strong> &mdash; 用水點所需的最低供水壓力</li>
+                    <li><strong>Flow（流量）</strong> &mdash; 瞬時流量（LPM）和每日用量（LPD）</li>
+                    <li><strong>Temperature Range（溫度範圍）</strong> &mdash; 進水溫度的可接受範圍</li>
+                </ul>
+                <p>注意：同樣強調 <strong>range（範圍）</strong>而非 fixed value（固定值）。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>關鍵概念：Diversity Factor（多樣性因子）</h4>
+                <p>Diversity Factor 是水系統設計中非常實用的概念：</p>
+                <ul>
+                    <li><strong>值 = 1</strong>：該設備會在設計情境中使用</li>
+                    <li><strong>值 = 0</strong>：該設備在該時段不會同時使用</li>
+                </ul>
+                <p>以 Table 3-2 為例：CIP 和 Stopper Washer 不會同時用水，所以瞬時流量只取較大值（40 LPM），但每日用水量兩者都要算（1200 + 460 = 1660 LPD）。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：Diversity Factor = 電梯容量設計</h4>
+                <p>就像一棟 20 層樓的辦公大樓，不會所有員工同時搭電梯。Diversity Factor 就是估算「同時使用率」的工具：</p>
+                <ul>
+                    <li><strong>流量的 Diversity</strong>：就像「尖峰時段同時等電梯的人數」→ 決定管線大小</li>
+                    <li><strong>日用量的 Diversity</strong>：就像「一天的總搭乘人次」→ 決定水箱和產水設備的大小</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：兩個不同用途的數字</h4>
+                <ul>
+                    <li><strong>Flowrate（瞬時流量）</strong> → 用來決定 <strong>管線尺寸（Line Sizing）</strong></li>
+                    <li><strong>Daily Use（每日用量）</strong> → 用來決定 <strong>儲存容量（Storage）和產水能力（Generation）</strong></li>
+                </ul>
+                <p>混淆這兩者是新手常犯的錯誤。管線設計看的是「最大同時流量」，而儲存和產水看的是「一天的總消耗量」。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>思考練習</h4>
+                <p>一條無菌充填線有以下用水設備：</p>
+                <ul>
+                    <li>配液罐清洗（CIP）：50 LPM，每批使用 2000 L，每天 2 批</li>
+                    <li>膠塞清洗機：15 LPM，每批使用 600 L，每天 1 批</li>
+                    <li>充填機沖洗：5 LPM，每批使用 200 L，每天 3 批</li>
+                    <li>CIP 和膠塞清洗不會同時運行</li>
+                </ul>
+                <p>請計算：(1) Design Flowrate for loop sizing? (2) Total daily demand?</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.3.3 ESTABLISH SYSTEM CRITERIA                        -->
+    <!-- ============================================================= -->
+    <div id="sec-3-3-3" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.3.3 Establish System Criteria</div>
+
+            <h3>3.3.3 Establish System Criteria</h3>
+            <p><span class="key-term">Histogram analysis</span> is beneficial for determining overall system peak demand(s), average demand, and the relationships between peak demand time periods and their flow rates. Figure 3-4 shows a hypothetical storage tank profile using the 24-hour demand profile from Figure 3-3.</p>
+
+            <p>There is no &ldquo;Rule-of-Thumb&rdquo; for minimum water level, or the optimum water level to turn on a still. However, these charts provide the tools for creating various scenarios to simulate <span class="key-term">recovery times from a failure</span>, <span class="key-term">future expansion or reduction capabilities</span> and analyze other factors that allow design of a properly sized water generation, storage and distribution system.</p>
+
+            <p>System planning and analysis also reveals other <span class="key-term">restrictions</span> that influence design, and often lead the designer to re-evaluate the primary boundaries as discussed earlier. These restrictions might include items such as:</p>
+            <ul>
+                <li>Must the system be available at all times?</li>
+                <li>What are the constraints on a shutdown?</li>
+                <li>Is the plant/personnel able to handle chemicals properly? Are permits in place?</li>
+                <li>Is production batched or continuous?</li>
+                <li>Are the products dedicated or multiple product groups?</li>
+                <li>How is campaigning between products handled?</li>
+                <li>How much time is available for sanitization? Should redundancy be provided to allow adequate time for sterilization?</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>Step 3：建立系統標準</h4>
+                <p>第三步是利用前兩步收集的數據，透過分析工具來建立系統的整體設計標準：</p>
+                <ul>
+                    <li><strong>Histogram Analysis（直方圖分析）</strong> &mdash; 繪製 24 小時用水曲線，找出尖峰和低谷</li>
+                    <li><strong>Storage Tank Profile（儲水槽液位曲線）</strong> &mdash; 模擬不同情境下的水位變化</li>
+                    <li><strong>Failure Recovery Simulation（故障恢復模擬）</strong> &mdash; 系統故障時能撐多久</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：水塔設計 = 行動電源容量</h4>
+                <p>設計儲水系統就像選行動電源：</p>
+                <ul>
+                    <li><strong>尖峰需求</strong> = 你用手機最耗電的時段（看影片、打遊戲）</li>
+                    <li><strong>平均需求</strong> = 一天的正常使用量</li>
+                    <li><strong>Recovery Time</strong> = 行動電源充回滿電需要多久</li>
+                    <li><strong>儲水槽大小</strong> = 行動電源容量（太小會不夠用，太大則笨重浪費）</li>
+                </ul>
+                <p>沒有固定的「最佳水位」，要根據你的實際使用模式來決定。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>七個必問問題（System Restrictions Checklist）</h4>
+                <p>這七個問題是系統設計的「現實檢查」，每一個都可能改變你的設計方向：</p>
+                <ol>
+                    <li><strong>24/7 可用性？</strong> → 是否需要備援系統</li>
+                    <li><strong>停機限制？</strong> → 影響維護和消毒排程</li>
+                    <li><strong>化學品處理能力？</strong> → 決定是否能用再生型 DI（需要酸鹼）</li>
+                    <li><strong>批次 vs. 連續？</strong> → 影響尖峰流量和儲存需求</li>
+                    <li><strong>專用 vs. 多產品？</strong> → 多產品需考慮不同水質需求</li>
+                    <li><strong>產品切換（Campaigning）？</strong> → 切換間是否需要完整沖洗</li>
+                    <li><strong>消毒時間？</strong> → 是否需要冗餘設備以確保消毒不影響供水</li>
+                </ol>
+            </div>
+
+            <div class="practice-box cdmo-application">
+                <h4>CDMO 實務：多產品切換的水系統挑戰</h4>
+                <p>對 CDMO 來說，問題 5-7 特別關鍵：</p>
+                <ul>
+                    <li><strong>多客戶產品</strong> → 不同客戶可能對水質有不同的額外要求</li>
+                    <li><strong>Campaigning</strong> → 產品切換時的水系統清洗驗證（Cleaning Validation）是重要議題</li>
+                    <li><strong>消毒冗餘</strong> → 無菌充填 CDMO 的水系統通常需要 Hot Water Sanitization（熱水消毒），需要預留時間窗口，可能需要備援迴路</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.3.4 REVISIT WATER QUALITY                            -->
+    <!-- ============================================================= -->
+    <div id="sec-3-3-4" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.3.4 Revisit Water Quality</div>
+
+            <h3>3.3.4 Revisit Water Quality</h3>
+            <p>With all use points characterized for temperature range, and demand, the quality of water is <span class="key-term">revisited</span>. A thorough review of use point criteria typically reveals a wide range of acceptable delivery conditions for the water. Since it is typically not practical to operate <span class="key-term">multiple water systems</span> to provide the exact water conditions desired of the end product, <span class="key-term">compromises</span> must be made.</p>
+
+            <p>These compromises might include providing water of a <span class="key-term">higher quality</span> than required to simplify the water treatment or delivery systems, or provisions for controlling water consumption at a use point to limit peak demands. Whatever compromises are made, water must be delivered at conditions within the <span class="key-term">boundary limits</span>.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>Step 4：重新檢視水質</h4>
+                <p>這是四步驟方法論的最後一步，也是最容易被忽略的一步。經過前三步的分析後，你可能發現：</p>
+                <ul>
+                    <li>某些使用點的水質需求可以合併（減少系統複雜度）</li>
+                    <li>某些使用點可以接受更高品質的水（用 WFI 取代 PW，統一系統）</li>
+                    <li>某些使用點的用量可以調整（限制尖峰需求）</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>關鍵原則：Compromise（妥協）是必然的</h4>
+                <p>原文用了 &ldquo;compromises must be made&rdquo; 這個非常務實的說法。在實際規劃中，常見的妥協策略包括：</p>
+                <ul>
+                    <li><strong>升級策略（Upgrade）</strong>：全部用高品質水 → 簡化系統，但成本增加</li>
+                    <li><strong>限流策略（Demand Control）</strong>：限制某些使用點的用水量 → 降低尖峰需求</li>
+                    <li><strong>排程策略（Scheduling）</strong>：錯開高用水設備的運行時間 → 減小水箱和產水設備</li>
+                </ul>
+                <p><strong>無論怎麼妥協，底線是：水質必須在邊界限制之內。</strong></p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>生活比喻：四步驟 = PDCA 循環</h4>
+                <p>這四步驟其實就是一個迷你版的 Plan-Do-Check-Act 循環：</p>
+                <ol>
+                    <li><strong>Plan</strong>：確定水質需求（Step 1）</li>
+                    <li><strong>Do</strong>：特徵化使用點（Step 2）</li>
+                    <li><strong>Check</strong>：建立系統標準、發現限制（Step 3）</li>
+                    <li><strong>Act</strong>：重新檢視、做出妥協（Step 4）→ 然後回到 Step 1 再迭代</li>
+                </ol>
+                <p>好的水系統規劃通常會經歷 2-3 輪迭代才能定案。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION 3.4 SYSTEM DESIGN                                      -->
+    <!-- ============================================================= -->
+    <div id="sec-3-4" class="two-column">
+        <div class="left-column">
+            <div class="column-header">Original Text &mdash; 3.4 System Design</div>
+
+            <h3>3.4 System Design</h3>
+            <p>Once the support areas, back up requirements, future growth, or expansion capabilities are established, detailed design of the system can begin. The process requirements determine all the <span class="key-term">points-of-use (POU)</span> on the distribution system. User locations determine how to distribute the system (e.g., <span class="key-term">central storage</span>, <span class="key-term">multiple loops/branches</span>, etc.). One or several of the use points may need either different qualities or other properties that single it out from the rest. In this case alternatives to the water system criteria are considered, such as using an <span class="key-term">ambient or cold distribution</span> versus a <span class="key-term">hot system</span>. Plant shift operating hours must also be considered since there may be an inability to perform regular <span class="key-term">heat sanitizations</span> of cold systems, for example.</p>
+
+            <p>The boundaries, limitations, and restrictions that were identified in the initial planning stages should now be integrated into the design approach. Further considerations might include the physical area a system needs for support, one production area, one building, or <span class="key-term">multiple buildings on a site</span>. This could determine the size of the system and whether it is made up of multiple tanks, or multiple loop storage and distributed systems.</p>
+
+            <p>For example, <span class="key-term">central systems</span> are higher in initial capital, but lower in operation and maintenance and possibly lower overall cost on per unit basis. The capital is higher primarily due to the larger generation, storage, and distribution equipment or system. Alternatively, <span class="key-term">multiple generation systems</span> may require less initially for each smaller system but more cost in terms of capital and operating and maintenance for the same total capacity.</p>
+
+            <p>All systems have a fixed capacity and will eventually have a failure. Therefore, if a piece of equipment fails a plan should be in place to deal with the down time. Having <span class="key-term">backup generation equipment</span> for the critical components such as a still or deionization equipment, should be considered. The backup equipment can be used in a <span class="key-term">lead-lag type operation</span> and/or to meet a specific duration of a peak demand.</p>
+
+            <p>More detailed descriptions of the alternatives for the various unit operations required for production of pharmaceutical grade water are discussed in the following chapters. Rationale is provided for decisions that will surface regarding quality, cost, performance, maintenance, and reliability as the system is developed in detail.</p>
+        </div>
+        <div class="right-column">
+            <div class="column-header">教學解析 Commentary</div>
+
+            <div class="concept-box">
+                <h4>系統設計的核心決策</h4>
+                <p>進入系統設計階段後，主要需要做出以下決策：</p>
+                <ol>
+                    <li><strong>配送架構</strong>：Central Storage（集中儲存）vs. Multiple Loops（多迴路）</li>
+                    <li><strong>溫度策略</strong>：Hot Distribution（熱配送 &ge;70&deg;C）vs. Ambient/Cold（常溫/冷配送）</li>
+                    <li><strong>備援策略</strong>：Lead-Lag Operation（主備切換）vs. N+1 Redundancy（冗餘設備）</li>
+                    <li><strong>規模策略</strong>：One Large System vs. Multiple Small Systems</li>
+                </ol>
+            </div>
+
+            <div class="formula-box">
+                <h4>成本比較：集中式 vs. 分散式</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>比較項目</th>
+                            <th>Central System（集中式）</th>
+                            <th>Multiple Systems（分散式）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>初始資本</td>
+                            <td>較高</td>
+                            <td>單套較低，總計可能更高</td>
+                        </tr>
+                        <tr>
+                            <td>運營維護</td>
+                            <td>較低（規模效益）</td>
+                            <td>較高（多套設備維護）</td>
+                        </tr>
+                        <tr>
+                            <td>單位成本</td>
+                            <td>可能更低</td>
+                            <td>可能更高</td>
+                        </tr>
+                        <tr>
+                            <td>彈性</td>
+                            <td>較低（一旦建成難調整）</td>
+                            <td>較高（可逐步擴展）</td>
+                        </tr>
+                        <tr>
+                            <td>故障影響</td>
+                            <td>全廠受影響（除非有備援）</td>
+                            <td>僅部分區域受影響</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：Hot vs. Cold Distribution</h4>
+                <p>溫度策略的選擇直接影響微生物控制方案：</p>
+                <ul>
+                    <li><strong>Hot Distribution（&ge;70&deg;C）</strong>：持續抑菌，不需要定期消毒，但能耗高、管材要求高</li>
+                    <li><strong>Cold/Ambient Distribution</strong>：能耗低，但需要定期 Heat Sanitization（熱消毒）</li>
+                    <li><strong>關鍵限制</strong>：如果工廠是 24/7 運作，冷系統可能沒有時間窗口進行熱消毒 → 被迫選擇熱配送</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示：Lead-Lag 備援運行</h4>
+                <p>Lead-Lag Operation（主備切換）是常見的備援策略：</p>
+                <ul>
+                    <li><strong>Lead（主設備）</strong>：正常運行</li>
+                    <li><strong>Lag（備用設備）</strong>：待命狀態，主設備故障時自動接手</li>
+                    <li>也可以輪替使用，確保兩台設備都保持在良好狀態</li>
+                    <li>特別適用於蒸餾器、RO 膜組等關鍵設備</li>
+                </ul>
+            </div>
+
+            <div class="practice-box cdmo-application">
+                <h4>CDMO 實務：系統設計的特殊考量</h4>
+                <p>對無菌充填 CDMO 而言，系統設計還需額外考量：</p>
+                <ul>
+                    <li><strong>客戶審計期望</strong>：大型藥廠客戶通常偏好 Hot WFI Loop（熱 WFI 迴路），因為這是業界「黃金標準」</li>
+                    <li><strong>未來擴展</strong>：CDMO 業務增長快速，預留 30-50% 擴充能力是常見做法</li>
+                    <li><strong>多棟建築</strong>：如果有多條充填線分布在不同潔淨區，需要考慮是集中供水還是分區供水</li>
+                    <li><strong>備援要求</strong>：無菌充填一旦停產損失巨大，建議關鍵設備都有 Lead-Lag 備援</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>綜合練習</h4>
+                <p>你正在規劃一座新的 CDMO 無菌充填工廠，有以下條件：</p>
+                <ul>
+                    <li>兩條充填線，分布在同一棟建築的不同樓層</li>
+                    <li>需要 WFI 供應充填、配液、CIP、膠塞清洗</li>
+                    <li>工廠 24/7 運作，每週有 8 小時維護窗口</li>
+                    <li>預計三年內增加第三條充填線</li>
+                </ul>
+                <p>請根據本章所學，回答以下問題：</p>
+                <ol>
+                    <li>你會選擇 Central System 還是 Multiple Systems？為什麼？</li>
+                    <li>你會選擇 Hot Distribution 還是 Cold + Periodic Sanitization？為什麼？</li>
+                    <li>你的備援策略是什麼？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECTION SUMMARY                                                -->
+    <!-- ============================================================= -->
+    <div class="section-summary">
+        <h3>本節重點摘要 Section Summary</h3>
+        <ul>
+            <li><strong>水質階層</strong>：Drinking Water → Non-Compendial → PW (Compendial) → WFI，選擇依據是產品特性、製程需求和預期用途。非藥典水不等於低品質水。</li>
+            <li><strong>Decision Tree</strong>：Figure 3-1 提供水質選擇的系統化流程，但藥品申請文件中的承諾優先於 Decision Tree。</li>
+            <li><strong>成本分析</strong>：使用 NPV（五年期）比較不同方案。膜系統（RO/EDI）NPV 最低；不同水處理系統的 NPV 差異其實不大，除了外送再生 DI。</li>
+            <li><strong>四步驟規劃法</strong>：(1) 確定水質 → (2) 特徵化使用點 → (3) 建立系統標準 → (4) 重新檢視水質。這是一個迭代過程，通常需要 2-3 輪。</li>
+            <li><strong>Diversity Factor</strong>：用來估算同時使用率，瞬時流量決定管線尺寸，每日用量決定儲存和產水能力。</li>
+            <li><strong>系統設計</strong>：Central vs. Multiple Systems、Hot vs. Cold Distribution、Lead-Lag Backup 是三大核心決策。所有妥協都必須在邊界限制之內。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems</p>
+    <p>Chapter 3: Water Options and System Planning | Pages 31&ndash;41</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Edition</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
