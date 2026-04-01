@@ -828,6 +828,41 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-Vol7-Complete.md
+**Report:** ISPE Baseline® Guide Volume 7 (2nd Edition): Risk-Based Manufacture of Pharmaceutical Products
+**Pages:** p4–p182 | **Sections:** 9 (13 chapters + appendices, split into 11 subsections)
+
+**Covers questions about:**
+- Cross-contamination risk management in shared pharmaceutical manufacturing facilities
+- Health-Based Exposure Limits (HBEL/ADE/PDE): derivation methodology, NOAEL, adjustment factors
+- Occupational Exposure Limits (OEL) and Occupational Exposure Bands (OEB) for worker protection
+- Logic Diagram: sequential decision framework for determining if a product can be manufactured in a shared facility
+- Quality system requirements for cross-contamination prevention: technology transfer, change control, CAPA, PQR, training
+- Four routes of cross-contamination: mix-up, retention (cleaning validation), mechanical transfer, airborne transfer
+- Risk analysis: probability of occurrence, detection methods, non-product contact area assessment
+- Risk reduction hierarchy: elimination, substitution, engineering controls, administrative controls, PPE
+- Facility engineering for risk reduction: spatial configuration, material/people flow, dedicated vs shared vs campaign
+- HVAC for hazardous compounds: once-through vs recirculation, quantitating airborne CC risk, pressure regimens
+- Containment technologies: open vessels → LEV → closed systems → gloveboxes → isolators
+- Risk management tools: Risk Matrix, Fishbone/Ishikawa, FMEA (RPN = S×O×D), statistical analysis
+- Risk acceptance, review, and communication: QRMP summary document template
+- Four case scenarios (Appendix 1): obviously acceptable, apparently acceptable but NOT, apparently unacceptable but WAS, large product portfolio
+
+**Key terms:** Risk-MaPP, HBEL (Health-Based Exposure Limit), ADE (Acceptable Daily Exposure), PDE (Permitted Daily Exposure), MACO (Maximum Allowable Carryover), OEL (Occupational Exposure Limit), OEB (Occupational Exposure Band), NOAEL, adjustment factors, cross-contamination, shared facility, dedicated facility, campaign manufacture, mix-up, retention, mechanical transfer, airborne transfer, Cpk/Ppk, cleaning validation, logic diagram, FMEA, RPN, risk matrix, fishbone, ALARP, QRMP
+
+**Sections:**
+0. Introduction & Regulatory Philosophy (Ch1-2, p4-22)
+1. Quality System & Logic Diagram (Ch3, p23-36)
+2. Risk Assessment & Identification (Ch4-5, p37-52)
+3a-3b. Risk Analysis (Ch6, p53-78) — 2 parts
+4. Risk Evaluation & Control (Ch7-8, p79-84)
+5a-5b. Risk Reduction (Ch9, p85-108) — 2 parts
+6. Risk Tools, Review & Communication (Ch10-13, p109-124)
+7a-7b. Appendix 1: Case Scenarios (Ch14, p125-162) — 2 parts
+8. References & Glossary (Ch15-16, p163-182)
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -973,6 +1008,16 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | HVAC energy, sustainability, heat recovery / HVAC能源、永續發展、熱回收 | ISPE-HVAC |
 | Preventive maintenance PdM RCM, HVAC maintenance / 預防保養、預測保養、可靠度中心維護 | ISPE-HVAC |
 | Medical device HVAC, clean workstation / 醫療器材HVAC、潔淨工作站 | ISPE-HVAC |
+| Cross-contamination risk, shared facility, multi-product / 跨污染風險、共用設施、多產品廠 | ISPE-Vol7 |
+| HBEL, ADE, PDE, health-based exposure limit / 健康本位暴露限值、可接受日暴露量 | ISPE-Vol7 |
+| OEL, OEB, occupational exposure limit / 職業暴露限值、職業暴露帶 | ISPE-Vol7 |
+| MACO, maximum allowable carryover, cleaning limit / 最大允許殘留量、清潔限值 | ISPE-Vol7 |
+| Cleaning validation, retention, residue, NOAEL, Cpk / 清潔驗證、殘留、NOAEL、製程能力 | ISPE-Vol7 |
+| Hazardous compounds, cytotoxics, hormones, HPAPI / 高危害化合物、細胞毒素、荷爾蒙、高活性原料藥 | ISPE-Vol7 |
+| Dedicated facility, campaign manufacture, segregation / 專用設施、活動式製造、分隔 | ISPE-Vol7 |
+| Risk-MaPP logic diagram, product acceptance decision / Risk-MaPP邏輯決策圖、產品接受決策 | ISPE-Vol7 |
+| FMEA for manufacturing, RPN scoring, risk ranking / 製造FMEA、RPN評分、風險排序 | ISPE-Vol7 |
+| Containment selection, isolator vs glovebox vs LEV / 圍堵系統選擇、隔離器vs手套箱vs局部排風 | ISPE-Vol7 |
 
 ## Not Covered in This Knowledge Base
 
@@ -1121,6 +1166,15 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **C&Q / Commissioning and Qualification / 確效 (ISPE)**
 → ISPE/ISPE-Vol5 ★★★ (complete C&Q lifecycle framework: URS→SRA→DR/DQ→Testing→Release→Periodic Review) | PDA/TR60 ★★ (process validation lifecycle, overlaps with C&Q philosophy)
+
+**Cross-Contamination Risk / Shared Facility / HPAPI (跨污染/共用設施/高活性原料藥)**
+→ ISPE-Vol7 ★★★ (complete Risk-MaPP framework: HBEL/ADE derivation, logic diagram, 4 CC routes, risk reduction, FMEA, 4 case scenarios) | ISPE-HVAC ★★ (HVAC design for hazardous compounds: once-through, containment) | ISPE-Vol3 ★★ (facility design for segregation: spatial configuration, pressure cascades) | TR90 ★ (CCS context for contamination control)
+
+**Cleaning Validation / MACO / Residue Limits (清潔驗證/最大殘留量/殘留限值)**
+→ ISPE-Vol7 ★★★ (MACO = ADE × batch size / daily dose, Cpk/Ppk acceptance criteria, retention as CC route, FMEA for cleaning) — single primary source
+
+**Health-Based Exposure Limits / HBEL / ADE / PDE (健康本位暴露限值)**
+→ ISPE-Vol7 ★★★ (HBEL derivation: NOAEL → adjustment factors → PDE/ADE calculation, HBEL vs OEL distinction, documentation requirements) — single primary source
 
 **Technology Transfer (技術轉移)**
 → TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
