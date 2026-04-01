@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR29 — Section 5: Analytical Methods | 分析方法</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== SECTION HEADER ===== -->
+<div class="header">
+    <h1>Section 5: Analytical Methods | 分析方法</h1>
+    <div class="subtitle">PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation</div>
+    <div class="page-info">Sections 7.0 – 7.7 &nbsp;|&nbsp; pp. 55–64</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+        <ul>
+            <li>Understand the purpose and selection criteria for analytical methods in cleaning validation — 了解清潔驗證中分析方法的目的與選擇標準</li>
+            <li>Distinguish specific vs. nonspecific analytical methods and their appropriate use cases — 區分專一性與非專一性分析方法及其適用情境</li>
+            <li>Identify commonly used techniques: TOC, HPLC, UV, conductivity, and their limitations — 識別常用技術：TOC、HPLC、UV、電導度及其限制</li>
+            <li>Understand microbial test methods (bioburden, endotoxin) in cleaning validation — 了解微生物測試方法（生物負荷、內毒素）在清潔驗證中的角色</li>
+            <li>Apply ICH Q2(R1) validation parameters to cleaning validation methods — 將 ICH Q2(R1) 驗證參數應用於清潔驗證方法</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec70">7.0 Purpose</a>
+            <a href="#sec73">7.3 Specific vs. Nonspecific</a>
+            <a href="#sec74">7.4 Common Techniques</a>
+            <a href="#sec75">7.5 Other Techniques</a>
+            <a href="#sec76">7.6 Microbial Methods</a>
+            <a href="#sec77">7.7 Method Validation</a>
+        </div>
+    </div>
+
+    <!-- ===== 7.0 PURPOSE ===== -->
+    <div id="sec70" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.0 Analytical Methods — Purpose &amp; Context</h2>
+                <p>Analytical methods are a critical component of any cleaning validation program. Their purpose is to demonstrate that residues of active ingredients, excipients, cleaning agents, and degradation products have been reduced to acceptable levels after a cleaning process.</p>
+                <p>The selection of an appropriate analytical method depends on the nature of the residue, the stage of cleaning validation (design/development, qualification, or validation maintenance), the sensitivity required relative to acceptance limits, and practical considerations such as availability of instrumentation and speed of analysis.</p>
+                <p>Where existing in-house methods are adequate for the intended purpose, those methods should be used rather than developing new methodologies. This is consistent with sound scientific practice and minimizes unnecessary investment. For example, many companies used the readily oxidizable substances pharmacopeial method for cleaning validation until <span class="key-term">TOC (Total Organic Carbon)</span> replaced it — at which point companies became familiar and comfortable with the new technology.</p>
+                <p>On the other hand, if a new analytical method is required because existing in-house methods are not adequate, then that new method should be considered. These may be implemented by using contract analytical laboratories or by bringing the new analytical methodology in-house. A decision on bringing the method in-house versus using a contract laboratory may be based on business considerations.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 分析方法的目的與背景</h2>
+                <div class="concept-box">
+                    <h4>分析方法在清潔驗證中的核心角色</h4>
+                    <p>分析方法的目的是<strong>量化證明殘留物已降低至可接受水準</strong>。沒有適當的分析方法，清潔驗證就只是「肉眼觀察」，無法滿足監管要求。</p>
+                    <ul>
+                        <li>活性成分殘留（API residue）</li>
+                        <li>賦形劑殘留（excipient residue）</li>
+                        <li>清潔劑殘留（cleaning agent residue）</li>
+                        <li>降解產物（degradation products）</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>實務原則：優先使用現有方法</h4>
+                    <p>如果現有廠內方法（in-house methods）已足夠，不需要開發新方法。引入新方法需要額外驗證，增加資源投入。只有在現有方法確實不適用時，才考慮新方法或委外實驗室。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：選擇工具的哲學</h4>
+                    <p>就像醫院的血液檢查：能用常規血球計數機（CBC）解決的問題，不需要動用質譜儀。只有當 CBC 無法給出答案時，才升級到更複雜的工具。同樣，清潔驗證方法也應「夠用就好」，不需要過度工程化。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 7.3 SPECIFIC vs NONSPECIFIC ===== -->
+    <div id="sec73" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.3 Specific vs. Nonspecific Analytical Methods</h2>
+                <p><span class="key-term">Specific Analytical Method</span> methods are those which measure a certain residue in the presence of expected interferences. If the target analyte in a validation protocol is the active ingredient, such interferences may include degradation products, related substances, excipients, cleaning agents, and cleaning process by-products.</p>
+                <p>Examples of specific methods include liquid chromatography (including <span class="key-term">HPLC</span>, UPLC and TLC) and spectrophotometry (including <span class="key-term">UV Spectrophotometry</span>, visible and infrared). Each of these methods requires the use of an appropriate reference standard.</p>
+                <p>In contrast, <span class="key-term">Nonspecific</span> analytical methods measure a general property, such as <span class="key-term">Conductivity</span> or <span class="key-term">TOC (Total Organic Carbon)</span>, which could be due to a variety of analytes or sources.</p>
+                <p>Selection of an analytical method may depend on the nature of the residue as it exists <em>after</em> the cleaning process. Only if an active ingredient is not degraded during cleaning does it make sense to use a specific analytical method for that active ingredient. If a cleaning process degrades the active ingredient, a specific method would likely show the residue as nondetectable — yet degradants may still be present. In such a case, use of a specific method for the degradant, or use of a nonspecific method such as TOC, should be considered.</p>
+                <p>It should be recognized that the proper use of a nonspecific analytical method may provide a more robust demonstration of acceptable cleaning, because it may have responses from species other than the target residue — yet those responses must be assumed to be due to the target residue. However, exceeding the residue limit using a nonspecific method provides no information on the nature of the failure.</p>
+                <div class="quote-box">
+                    "Nothing in this Technical Report should be interpreted as saying that, as a general principle, specific analytical methods should be used in preference to nonspecific analytical methods."
+                </div>
+                <h3>7.3.1 Regulatory Status of Specific and Nonspecific Methods</h3>
+                <p>Both specific and nonspecific methods have been found acceptable by regulatory authorities. However, one must be careful not to misuse an analytical method. Specific methods can be misused by failing to recognize degradation of the active ingredient in the cleaning process. Nonspecific methods can be misused by failing to attribute the nonspecific response entirely to the residue of concern.</p>
+                <p>The U.S. FDA guidance states that one should "Determine the specificity and sensitivity of the analytical method used to detect residuals or contaminants." The European PIC/S recommendations state that analytical methods "should be specific for the substance to be assayed." Despite these wordings, nonspecific methods are widely used and accepted by both U.S. FDA and European regulatory authorities.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 專一性 vs. 非專一性分析方法</h2>
+
+                <h3>比較表：專一性 vs. 非專一性方法</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>特性</th>
+                            <th>專一性方法<br>Specific</th>
+                            <th>非專一性方法<br>Nonspecific</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>典型技術</td>
+                            <td>HPLC、UPLC、TLC、UV/Vis</td>
+                            <td>TOC（總有機碳）、電導度</td>
+                        </tr>
+                        <tr>
+                            <td>測量對象</td>
+                            <td>特定目標分析物</td>
+                            <td>通用性質（有機碳、離子）</td>
+                        </tr>
+                        <tr>
+                            <td>需要參考標準品</td>
+                            <td>是</td>
+                            <td>通常不需要</td>
+                        </tr>
+                        <tr>
+                            <td>當活性成分降解時</td>
+                            <td>可能顯示「偵測不到」，但降解物仍存在</td>
+                            <td>仍可偵測到有機碳或離子殘留</td>
+                        </tr>
+                        <tr>
+                            <td>失敗時的診斷能力</td>
+                            <td>可識別是哪種物質超標</td>
+                            <td>無法區分是 API、賦形劑或清潔劑造成</td>
+                        </tr>
+                        <tr>
+                            <td>保守程度</td>
+                            <td>較精準</td>
+                            <td>更保守（worst-case assumption）</td>
+                        </tr>
+                        <tr>
+                            <td>監管接受度</td>
+                            <td>FDA、EMA 均接受</td>
+                            <td>FDA、EMA 均接受</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box">
+                    <h4>關鍵判斷點：清潔過程中 API 是否降解？</h4>
+                    <p>這是選擇方法的核心問題：</p>
+                    <ul>
+                        <li><strong>API 未降解</strong> → 可用專一性方法（HPLC）直接測 API</li>
+                        <li><strong>API 已降解</strong> → HPLC 測不到 API，但 TOC 仍可偵測降解物的有機碳 → 用 TOC 或針對降解物的專一性方法</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：犯罪現場的 DNA vs. 血跡</h4>
+                    <p>專一性方法像 DNA 鑑定：精確識別是誰，但需要完整的 DNA 樣本。如果嫌疑人的 DNA 被破壞（API 降解），DNA 測試找不到。非專一性方法像血跡測試：只要有有機物就會反應，無法說是誰，但不會漏掉有機污染存在的事實。清潔驗證需要確保「沒有污染」，所以保守的非專一性方法有其優勢。</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>監管解讀的實務建議</h4>
+                    <p>PIC/S 說要用「specific」方法，但<strong>實務上兩種都被接受</strong>。重點不在於選哪種，而在於：</p>
+                    <ul>
+                        <li>方法必須適合其預定用途（fit for purpose）</li>
+                        <li>必須了解方法的限制並在方案中說明</li>
+                        <li>非專一性方法的結果必須被最壞情況地歸因於目標殘留物</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 7.4 COMMON TECHNIQUES ===== -->
+    <div id="sec74" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.4 Most Commonly Used Analytical Techniques</h2>
+                <p>The focus of this section is the most commonly used analytical procedures in pharmaceutical cleaning validation. Additional considerations in selecting methods:</p>
+                <ul>
+                    <li>Availability of instrumentation</li>
+                    <li>Speed of analysis</li>
+                    <li>Specificity of technique</li>
+                    <li>Sampling limitations (including sampling solvents)</li>
+                    <li>Detection/quantitation limit</li>
+                    <li>Linearity of response</li>
+                    <li>Online adaptability</li>
+                    <li>Cost</li>
+                </ul>
+                <p>Most applications involve quantitation over a validated range. However, pass-fail ("go-no go") tests may be used in some situations, such as qualification runs for clinical manufacture, or routine monitoring based on final rinse solvent testing. Pass-fail tests generally do not demonstrate the robustness of the cleaning process unless the pass-fail point is significantly below the desired acceptance limit.</p>
+
+                <h3>7.4.1 Liquid Chromatography (LC)</h3>
+                <p>LC includes <span class="key-term">HPLC</span> (High Performance Liquid Chromatography), UPLC (Ultra Performance Liquid Chromatography), and TLC (Thin Layer Chromatography). All these methods involve the separation of components by a chromatography procedure followed by measurement of one or more separated species. For HPLC and UPLC, measurement is typically by ultraviolet (UV) detectors.</p>
+                <p>HPLC and UPLC methods are typically specific methods, widely used for measurement of active ingredients in small-molecule manufacturing (both API and drug product). In many cases, HPLC/UPLC methods have been previously developed as potency assay methods and need only minor modification for residue determination. These modifications confirm that the useful range is suitable and that cleaning process interferences do not interfere with measurement of the active ingredient.</p>
+                <p>HPLC/UPLC may not be suitable for measuring residues of an active ingredient if the active ingredient is degraded in the cleaning process, unless the chromatography conditions allow separation and measurement of degradants of interest.</p>
+                <p>TLC methods may be used for design/development to confirm and characterize degradation of the active, and for investigation to characterize residues.</p>
+
+                <h3>7.4.2 UV/Visible Spectrophotometry (UV/Vis)</h3>
+                <p><span class="key-term">UV Spectrophotometry</span> involves measuring transmission/absorbance of a specified wavelength of light by a solvent solution of the residue. It typically requires a chromophore in the molecule, although it is also possible to modify the residue to produce a chromophore. Because of its simplicity, UV/Vis may be used in the design/development, qualification, and validation maintenance stages as well as for any investigations. UV/Vis has also the possibility of being used in PAT applications for completion of the cleaning steps for small-molecule API manufacturing.</p>
+
+                <h3>7.4.3 Total Organic Carbon (TOC)</h3>
+                <p><span class="key-term">TOC (Total Organic Carbon)</span> is applicable to any residue containing significant amounts of organic carbon. The TOC method is based on oxidizing the carbon present and measuring the carbon dioxide produced. Oxidizing methods include UV, persulfate, and combustion. Techniques for measuring the generated CO₂ include conductivity, membrane-based conductivity, and infrared. Both online and offline applications are possible.</p>
+                <p>For use of TOC, the target residue must have adequate aqueous solubility. The most common way of applying the TOC method is to assume that all residues detected are due to the target residue (worst-case assumption). In manufacturing situations, TOC is commonly used when the target residue (e.g., the active ingredient) is degraded during the cleaning process. However, it may also be used where the active is not degraded — the rationale being ease of analytical method development and the worst-case assumptions inherent in TOC analysis.</p>
+                <p>TOC may be used for all stages of cleaning validation: design/development, qualification, and validation maintenance, as well as for investigations.</p>
+
+                <h3>7.4.4 Conductivity</h3>
+                <p><span class="key-term">Conductivity</span> measurement is a method to detect dissociated ionic substances in water samples. For qualification protocols, conductivity readings are expressed in micro-Siemens/cm (µS/cm); for control and monitoring of the cleaning solution, readings are expressed as milliSiemens/cm (mS/cm). It is often used to measure cleaning agent residues (e.g., caustic or acidic agents) and to control cleaning agent concentration in automated cleaning processes (CIP). Conductivity readings are highly influenced by sample temperature; temperature adjustment, automated temperature compensation, or a conductivity/concentration curve at a specified temperature can standardize measurements.</p>
+                <p>Conductivity is a nonspecific method that correlates linearly (within a defined range) to ion concentration. Analytical instruments are robust and can be used on the manufacturing floor by trained personnel. The method cannot differentiate between different ions. Therefore, as with TOC, all conductivity results above the water baseline should be attributed to the contaminant in question.</p>
+                <p>Conductivity is a good measure of the completion of rinsing and therefore an indirect measure of good cleaning for routine monitoring. Conductivity can also be used for measuring residues of an ionic active ingredient.</p>
+
+                <h3>7.4.5 Organoleptic Evaluation</h3>
+                <p>"Organoleptic" evaluation includes visual inspection as well as other evaluations such as smell. Visual inspection is a minimum requirement under GMPs for use of equipment for manufacture. It is a nonspecific method — the nature of the residue generally cannot be identified except by further analysis.</p>
+                <p>Training and a detailed documented procedure are required to ensure consistency. Factors affecting what can be seen include: distance, angle, lighting, nature of surface, and inspector's visual acuity. Some equipment surfaces (e.g., piping) are not accessible for visual inspection; optical equipment such as mirrors, remote videoscopes, or borescopes can help.</p>
+                <p>Four types of visual observations may be found: residue, surface anomalies, foreign object, and water. Residue is the main concern constituting a visual failure. Surface anomalies and foreign objects are not visual inspection failures for cleaning validation purposes but must be investigated. Rouge is the most common surface anomaly — a preventive maintenance problem, not a cleaning process problem.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 常用分析技術</h2>
+
+                <h3>TOC vs. HPLC 選擇指南</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>情境</th>
+                            <th>建議方法</th>
+                            <th>理由</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>API 在清潔過程中未降解，且有已驗證的 HPLC 方法</td>
+                            <td>HPLC（首選）</td>
+                            <td>精確、可識別殘留物身份</td>
+                        </tr>
+                        <tr>
+                            <td>API 在清潔過程中已降解</td>
+                            <td>TOC（優先）</td>
+                            <td>HPLC 測不到降解的 API，TOC 仍可偵測有機碳</td>
+                        </tr>
+                        <tr>
+                            <td>需要快速、低成本的線上監控</td>
+                            <td>TOC 或電導度（依特性）</td>
+                            <td>可做線上（online）應用</td>
+                        </tr>
+                        <tr>
+                            <td>清潔劑殘留（鹼性/酸性）</td>
+                            <td>電導度（Conductivity）</td>
+                            <td>對離子性清潔劑靈敏，可用於 CIP 線上監控</td>
+                        </tr>
+                        <tr>
+                            <td>分子中含發色團（chromophore）</td>
+                            <td>UV/Vis 光譜法</td>
+                            <td>操作簡便，可用於 PAT 應用</td>
+                        </tr>
+                        <tr>
+                            <td>臨床試製品，快速通過/失敗判定</td>
+                            <td>Pass-fail 測試</td>
+                            <td>減少方法開發投入，但不能證明清潔穩健性</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="concept-box">
+                    <h4>TOC 的原理簡介</h4>
+                    <p><strong>總有機碳（TOC）</strong>的原理：將樣品中的有機碳氧化為 CO₂，再測量 CO₂ 的量，間接推算有機物含量。</p>
+                    <ul>
+                        <li><strong>氧化方式</strong>：UV 照射、過硫酸鹽（persulfate）、高溫燃燒</li>
+                        <li><strong>CO₂ 偵測</strong>：電導度法、膜電導度法、紅外線法</li>
+                        <li><strong>重要前提</strong>：殘留物必須能溶於水（adequate aqueous solubility）</li>
+                        <li><strong>最壞情況假設</strong>：所有偵測到的 TOC 都歸因於目標殘留物</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>電導度方法的實務注意事項</h4>
+                    <p>電導度受<strong>溫度影響極大</strong>，需標準化：</p>
+                    <ul>
+                        <li>自動溫度補償（Automated Temperature Compensation, ATC）</li>
+                        <li>或建立特定溫度下的 conductivity/concentration 稀釋曲線</li>
+                    </ul>
+                    <p>電導度雖不能區分不同離子，但對於 CIP 系統監控清潔劑沖洗完成度非常實用。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>視覺檢查：最基本但有侷限</h4>
+                    <p>視覺檢查是 GMP 法規的最低要求（minimum requirement），但有其先天限制：</p>
+                    <ul>
+                        <li>無法識別殘留物的化學性質</li>
+                        <li>管路內部通常無法直視（需使用 borescope）</li>
+                        <li>必須有<strong>書面程序和培訓記錄</strong>，確保檢查一致性</li>
+                        <li>Rouge（不鏽鋼表面鐵鏽氧化物）是預防性保養問題，不算清潔失敗</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：視覺檢查的局限</h4>
+                    <p>就像用肉眼看飲用水是否乾淨——看起來透明不代表沒有細菌或重金屬。視覺檢查是「必要條件」但不是「充分條件」。對於清潔驗證，視覺清潔是最低門檻，化學/微生物分析才能確保真正的清潔。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 7.5 OTHER TECHNIQUES ===== -->
+    <div id="sec75" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.5 Other Useful Analytical Techniques</h2>
+                <p>Below are other techniques which may be useful for various stages of cleaning validation.</p>
+
+                <h3>7.5.1 pH</h3>
+                <p>pH is a measure of hydrogen ion concentration. It can be used as a monitoring process check, particularly when equipment is stored wet in a preservative solution. pH can also verify qualitatively the presence of the correct cleaning solution and can complement conductivity measurements. However, pH is less useful than conductivity for measuring residues of alkaline or acidic cleaning solutions because pH has a logarithmic relation with hydrogen ion concentration, whereas conductivity has a direct, linear relationship.</p>
+
+                <h3>7.5.2 Infrared (IR)</h3>
+                <p>This includes both FTIR (Fourier Transform InfraRed) and NIR (Near InfraRed). Most useful in an investigation to identify organic residues. FTIR has also been combined with a fiber-optic probe for direct quantitative measurement of residues on surfaces for qualification protocols.</p>
+
+                <h3>7.5.3 Light Microscopy</h3>
+                <p>Including Scanning Electron Microscopy (SEM). In many cases, conventional light microscopy and SEM can be combined with x-ray diffraction, mass spectrometry, and nuclear magnetic resonance (NMR). Microscopic techniques alone may identify the physical nature of a residue but not the chemical nature. Especially valuable in evaluation of residues in an investigation, and for identifying unknown contaminants on new or used equipment.</p>
+
+                <h3>7.5.4 Titrations</h3>
+                <p>Titration is a simple method often overlooked even though it might provide valuable information. Titrations may be specific (orthophosphate ions) or nonspecific (e.g., for all anionic surfactants). More likely to be used for alkaline or acidic cleaning agent analysis in qualification runs.</p>
+
+                <h3>7.5.5 Gravimetric Analysis</h3>
+                <p>Useful for design/development studies and qualification runs. Most commonly used for determining residues in small-molecule API synthesis where a larger volume of solvent rinse or solvent reflux is evaporated to dryness.</p>
+
+                <h3>7.5.6 ELISA (Enzyme Linked Immunosorbant Assay)</h3>
+                <p>An antigen-antibody type reaction involving specific chemicals developed for the residue involved. Use is generally limited to biotechnology and biologics manufacture where it can be used in the design/development stage to confirm degradation of the active ingredient and in any investigations.</p>
+
+                <h3>7.5.7 Capillary Zone Electrophoresis (CZE)</h3>
+                <p>Also known as capillary electrophoresis (CE). Separates residues by charge and frictional forces in an electrical field. Detection is usually with a fluorescence detector. Applied mostly in the biotechnology industry for active ingredients and degraded active ingredients in design/development and qualification stages as well as in investigations.</p>
+
+                <h3>7.5.8 Atomic Absorption (AA) and Inductively Coupled Plasma (ICP)</h3>
+                <p>Both techniques can be used for measuring metals in solution, where the metal is part of a formulation or for unknown residues such as suspected rouge.</p>
+
+                <h3>7.5.9 Ion Mobility Spectrometry (IMS)</h3>
+                <p>A type of mass spectrometry which only provides information on the time of flight of the analyzed species. Promoted for its short analysis time (a few minutes). May have more application for routine monitoring and release.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 其他有用分析技術</h2>
+
+                <div class="concept-box">
+                    <h4>其他技術的應用場景匯總</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>技術</th>
+                                <th>主要用途</th>
+                                <th>適用階段</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>pH</td>
+                                <td>監控清潔劑沖洗完成度</td>
+                                <td>日常監控</td>
+                            </tr>
+                            <tr>
+                                <td>FTIR / NIR</td>
+                                <td>調查中識別有機殘留</td>
+                                <td>調查（Investigation）</td>
+                            </tr>
+                            <tr>
+                                <td>光學顯微鏡 / SEM</td>
+                                <td>識別未知污染物的物理特性</td>
+                                <td>調查、新設備鑑定</td>
+                            </tr>
+                            <tr>
+                                <td>滴定（Titration）</td>
+                                <td>鹼性/酸性清潔劑分析</td>
+                                <td>資格確認（Qualification）</td>
+                            </tr>
+                            <tr>
+                                <td>重量分析（Gravimetric）</td>
+                                <td>API 合成中大體積溶劑沖洗殘留</td>
+                                <td>設計/開發、資格確認</td>
+                            </tr>
+                            <tr>
+                                <td>ELISA</td>
+                                <td>生技/生物製品降解確認</td>
+                                <td>設計/開發、調查</td>
+                            </tr>
+                            <tr>
+                                <td>CZE / CE</td>
+                                <td>生技活性成分及降解物</td>
+                                <td>設計/開發、資格確認</td>
+                            </tr>
+                            <tr>
+                                <td>AA / ICP</td>
+                                <td>溶液中金屬測定</td>
+                                <td>調查（疑似 rouge）</td>
+                            </tr>
+                            <tr>
+                                <td>IMS</td>
+                                <td>快速篩查，日常放行</td>
+                                <td>日常監控、放行</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note-box">
+                    <h4>pH vs. 電導度：為何電導度更優？</h4>
+                    <p>pH 是氫離子濃度的<strong>對數關係</strong>（logarithmic），而電導度是離子濃度的<strong>線性關係</strong>（linear）。這意味著：</p>
+                    <ul>
+                        <li>pH = 7 → pH = 8：氫離子濃度差 10 倍</li>
+                        <li>但電導度 10 µS/cm → 20 µS/cm：離子濃度差 2 倍（線性）</li>
+                    </ul>
+                    <p>因此，電導度對殘留量的變化更靈敏，更適合作為量化監控工具。pH 更適合定性確認清潔劑是否存在。</p>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：工具箱的概念</h4>
+                    <p>這些「其他技術」就像工具箱中的專用工具：HPLC 和 TOC 是最常用的萬用扳手，而 FTIR、SEM、ELISA 是應對特殊問題時的精密工具。清潔驗證工程師要知道這些工具的存在，在調查異常時才能選對工具。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 7.6 MICROBIAL METHODS ===== -->
+    <div id="sec76" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.6 Microbial Test Methods</h2>
+                <p>The FDA guidance states that "Control of the bioburden through adequate cleaning and storage of equipment is important to ensure that subsequent sterilization or sanitization procedures achieve the necessary assurance of sterility." The PIC/S recommendations call for validation of cleaning procedures for removal of microbial contaminants. Control of microbial residues — including bioburden and endotoxin — is thus an important part of cleaning validation.</p>
+                <p>Typically, bioburden sampling and analysis is performed during cleaning validation protocols unless there is a documented science- and risk-rationale for omitting it. Rationales for excluding microbiological testing may include: all solvent processing for small-molecule API manufacture, use of a final alcohol rinse for oral dose drug products, use of subsequent sterilization cycles, and/or demonstration of adequate microbial control in sufficiently similar cleaning processes.</p>
+
+                <h3>7.6.1 Endotoxin</h3>
+                <p>Typically, endotoxin testing is performed for cleaning validation runs if the next product has endotoxin specifications. Endotoxin analytical methods are typically compendial methods. Science- and risk-based rationales for excluding endotoxin testing may include: all solvent processing, use of a validated endotoxin reduction step, and/or demonstration of adequate endotoxin control in sufficiently similar cleaning processes.</p>
+
+                <h3>7.6.2 Bioburden</h3>
+                <p>Testing of bioburden is done through rinse-water sampling, swab sampling, and contact plate sampling.</p>
+                <p><strong>Rinse-water sampling</strong> typically involves membrane filtration, placement of the membrane on an appropriate agar, incubation, and a count of CFUs. It provides an overall picture of equipment cleanliness. The biggest weakness is that the full range of the acceptance criteria cannot always be utilized — for example, if 100 mL of rinse water is used with an acceptance criterion of 100 CFU/mL, typical TNTC (Too Numerous To Count) occurs at 300 colonies, limiting the effective acceptance criterion to 3 CFU/mL.</p>
+                <p><strong>Swab and contact plate</strong> methods directly measure on surfaces. For swab samples, the swab can be desorbed and counted by pour-plate or spread-plate method. Contact plates are directly incubated and enumerated. A concern with both is potentially exposing product contact surfaces to unknown media or buffer from the swab; acceptable removal must be demonstrated. Contact plates also require flat surfaces.</p>
+                <p>Most companies use incubation-based techniques counting CFUs. Such procedures have the disadvantage of only providing a count, not individual cells. Enumeration below 20 CFU is not scientifically well established. Rapid instrumental microbiological procedures are an alternative (see PDA Technical Report 33).</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 微生物測試方法</h2>
+
+                <div class="concept-box">
+                    <h4>微生物殘留控制的重要性</h4>
+                    <p>清潔驗證通常聚焦於化學殘留，但<strong>微生物殘留同樣重要</strong>，尤其在無菌製造環境中：</p>
+                    <ul>
+                        <li><strong>生物負荷（Bioburden）</strong>：清潔後設備表面或沖洗水中的活菌數</li>
+                        <li><strong>內毒素（Endotoxin）</strong>：革蘭氏陰性菌的脂多糖（LPS），耐熱，一般清潔很難去除，需要特定的去熱原（depyrogenation）步驟</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>何時可排除微生物測試？</h4>
+                    <p>需要有<strong>書面的科學和風險依據</strong>（documented science- and risk-rationale）才能排除：</p>
+                    <ul>
+                        <li>全有機溶劑製程（無水，微生物無法生長）</li>
+                        <li>最終用醇類沖洗（殺菌作用）</li>
+                        <li>後續有滅菌步驟（autoclave、gamma 等）</li>
+                        <li>已有充分類似製程的控制記錄</li>
+                    </ul>
+                    <p>排除的理由必須在驗證方案中明確記錄，不能因為「麻煩」就省略。</p>
+                </div>
+
+                <h3>生物負荷取樣方法比較</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>方法</th>
+                            <th>優點</th>
+                            <th>限制</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>沖洗水取樣<br>(Rinse-water)</td>
+                            <td>整體設備清潔度的全面評估；方法通常已驗證</td>
+                            <td>高濃度時 TNTC 問題限制了有效接受標準範圍</td>
+                        </tr>
+                        <tr>
+                            <td>棉棒取樣<br>(Swab)</td>
+                            <td>可針對特定表面區域；可做定點取樣</td>
+                            <td>棉棒介質可能污染產品接觸面，需驗證回收率</td>
+                        </tr>
+                        <tr>
+                            <td>接觸板<br>(Contact plate)</td>
+                            <td>直接表面培養，操作簡便</td>
+                            <td>只適用於平坦表面；同樣有介質污染問題</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="analogy-box">
+                    <h4>TNTC 問題的直觀理解</h4>
+                    <p>假設接受標準是 100 CFU/mL，取樣體積 100 mL：理論上應該能計數到 100 × 100 = 10,000 CFU。但培養皿一旦超過約 300 菌落，就無法準確計數（TNTC）。因此，有效的接受標準實際上只有 300 ÷ 100 mL = 3 CFU/mL，遠低於設定的 100 CFU/mL。解決方法：縮小取樣體積或稀釋樣品，或改用鋪板法（spread-plate / pour-plate）。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 7.7 METHOD VALIDATION ===== -->
+    <div id="sec77" style="scroll-margin-top: 2rem;">
+        <div class="two-column">
+            <div class="left-column">
+                <h2>7.7 Analytical Method Validation</h2>
+                <p>This section focuses on analytical <span class="key-term">Method Validation</span> for "chemical" residues. Endotoxin methods are typically compendial and do not require formal validation, but require a confirmation of suitability for their application. Approved microbiology lab methods do not require additional method validation.</p>
+
+                <h3>7.7.1 General Principles</h3>
+                <p>Since one key part of cleaning validation is setting residue limits and then measuring actual residues left on surfaces after cleaning, it is critical that the analytical method be appropriately validated. Method validation is typically accomplished using the criteria in <span class="key-term">ICH Q2(R1)</span>. However, the types of assays listed in ICH Q2 do not explicitly cover cleaning validation methods.</p>
+                <p>One approach is to essentially validate analytical methods like an "Assay" in ICH Q2, establishing accuracy, precision, specificity, linearity and range, with added determination of <span class="key-term">LOD</span> (Limit of Detection) and <span class="key-term">LOQ</span> (Limit of Quantitation). <span class="key-term">LOD/LOQ</span> must be below the acceptance limit for the sample, and ideally significantly below so that the robustness of the cleaning process can be established. Having LOD/LOQ of 10% or less of the residue limit in the analytical sample is ideal (but not always possible).</p>
+                <p>In addition to the ICH Q2 parameters, sample stability as a function of storage conditions (time, temperature, storage vial, etc.) may be evaluated if there is a significant interval between sampling and analysis. Specific methods should address possible interferences from other species, such as cleaning agents.</p>
+                <p>In cases where a nonspecific method is utilized, it is not necessary to compensate for the lack of specificity by "other supporting analytical procedures" as suggested in ICH Q2 — because for cleaning validation purposes, the limit is not a target but a value not to be exceeded. As long as other species contribute to the response in a positive manner, the total measured value should be attributed to the target residue.</p>
+                <p>When performing carryover calculations, analytical methods must be sensitive enough to meet the acceptance criteria. Results should be at or above the LOQ to be reliable. Results between the LOD and LOQ show higher-than-acceptable variation and are typically reported as less than LOQ.</p>
+                <p>For pass/fail methods, analytical method validation is less extensive — accuracy and precision are performed only at the residue limit; linearity and range are not performed. Pass/fail methods do not allow collection of data to support a process capability determination for action or alert levels.</p>
+                <p>Acceptability of variability for accuracy and precision at typical residue levels is much broader than for a typical potency assay. Relative standard deviation (RSD) requirements of 15–20% are typical.</p>
+
+                <h3>7.7.2 Compendial Methods</h3>
+                <p>Compendial methods do not require separate analytical method validation provided those methods are used within the parameters in the compendia. For example, a compendial method for endotoxin is generally appropriate for measuring endotoxin in final rinse water samples. However, suitability of use should always be addressed.</p>
+                <p>When using TOC in rinse-water samples (a compendial method), additional work should be done to support its applicability if TOC values could be above 500 ppb or a linear range is to be established. The USP TOC method is set up essentially as a pass/fail test, not a quantitative assay — so for cleaning validation purposes, formal method validation as for any other method should be considered.</p>
+
+                <h3>7.7.3 Visual Inspection</h3>
+                <p>Method validation for visual inspection is the determination of a quantitative "visual limit" where visual examination is the sole sampling/analytical method. If visual examination is used to supplement swab or rinse sampling, such determination of a visual limit is not required.</p>
+                <p>A visual limit under specified viewing conditions can be determined by spiking coupons of equipment surface materials with solutions of the residue at different levels (in µg/cm²) and having a panel of trained observers determine the lowest level at which residues are clearly visible. Appropriate viewing conditions include distance, lighting, and angle.</p>
+
+                <h3>7.7.4 Bioburden Methods</h3>
+                <p>Approved and qualified microbiological lab procedures do not require additional method validation for use in cleaning validation programs. However, suitability for use of such methods in the presence of cleaning process chemicals should be addressed.</p>
+
+                <h3>7.7.5 Transfer to Another Laboratory and Use of Contract Laboratories</h3>
+                <p>Other laboratories can be utilized to perform an analytical method for cleaning validation purposes. In such cases, a method transfer protocol should be established and executed to determine that the other laboratory can suitably analyze samples. If a method is developed by a contract laboratory and qualification run samples are analyzed by that same contract laboratory, then no transfer protocol is required.</p>
+                <p>Care should be used in the transfer protocol to first determine whether the measurements between the two laboratories are practically significant before any determination of statistical significance is performed. If an analytical method has been developed and validated previously by the contract laboratory, the pharmaceutical company should review that protocol, the final report, and perform an audit of the contract laboratory.</p>
+            </div>
+            <div class="right-column">
+                <h2>中文解說 — 分析方法驗證</h2>
+
+                <h3>ICH Q2(R1) 驗證參數在清潔驗證中的應用</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>驗證參數</th>
+                            <th>說明</th>
+                            <th>清潔驗證特殊要求</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>準確度（Accuracy）</strong></td>
+                            <td>測量值與真實值的接近程度（回收率）</td>
+                            <td>在殘留限度濃度附近驗證；RSD 15-20% 可接受</td>
+                        </tr>
+                        <tr>
+                            <td><strong>精確度（Precision）</strong></td>
+                            <td>同一樣品重複測量的一致性</td>
+                            <td>包括重複性（repeatability）及中間精確度</td>
+                        </tr>
+                        <tr>
+                            <td><strong>專一性（Specificity）</strong></td>
+                            <td>在干擾物存在下識別目標分析物的能力</td>
+                            <td>需考慮清潔劑、降解物的干擾；非專一性方法不要求補充方法</td>
+                        </tr>
+                        <tr>
+                            <td><strong>線性（Linearity）</strong></td>
+                            <td>在設定範圍內結果與濃度的線性關係</td>
+                            <td>需涵蓋 LOQ 到限度值的範圍；Pass/fail 方法不需要</td>
+                        </tr>
+                        <tr>
+                            <td><strong>範圍（Range）</strong></td>
+                            <td>方法能準確可靠測量的濃度區間</td>
+                            <td>清潔驗證通常比效價測定的範圍窄</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOD（偵測極限）</strong></td>
+                            <td>能偵測到但不一定能定量的最低濃度</td>
+                            <td>必須低於樣品接受限度；理想值為限度的 10% 或更低</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOQ（定量極限）</strong></td>
+                            <td>能準確定量的最低濃度</td>
+                            <td>殘留計算必須 ≥ LOQ；LOD-LOQ 之間的結果報告為「&lt; LOQ」</td>
+                        </tr>
+                        <tr>
+                            <td><strong>樣品穩定性</strong></td>
+                            <td>（ICH Q2 未明確，但清潔驗證需考慮）</td>
+                            <td>如取樣與分析之間有較長間隔，需驗證樣品在儲存條件下的穩定性</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box">
+                    <h4>LOD 與 LOQ 的核心邏輯</h4>
+                    <p>在清潔驗證中，LOD/LOQ 的設定邏輯與常規分析不同：</p>
+                    <ul>
+                        <li><strong>目標</strong>：LOQ 必須低於接受限度（acceptance limit），否則根本無法聲稱殘留「低於限度」</li>
+                        <li><strong>理想狀態</strong>：LOQ ≤ 10% 的接受限度 → 能證明清潔製程有足夠的安全邊際</li>
+                        <li><strong>不需要盡可能低</strong>：LOQ 不必追求儀器的極限值，達到限度的 10% 已足夠</li>
+                        <li><strong>結果在 LOD-LOQ 之間</strong>：報告為「&lt; LOQ」，不能用於精確的殘留計算</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>非專一性方法的驗證特例</h4>
+                    <p>ICH Q2 建議非專一性方法應用「其他支持性分析程序」補充，但<strong>清潔驗證可以豁免</strong>：</p>
+                    <ul>
+                        <li>原因：清潔驗證的限度是「不得超過的上限」，而非「目標值」</li>
+                        <li>只要其他干擾物質的貢獻是<strong>正向的</strong>（使結果偏高），總測量值歸因於目標殘留物即可</li>
+                        <li>這是基於最壞情況假設（worst-case assumption）的保守策略</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>USP TOC 方法的特殊注意</h4>
+                    <p>USP TOC 是藥典方法（compendial method），通常不需要額外驗證。但有例外：</p>
+                    <ul>
+                        <li>樣品 TOC 值可能 &gt; 500 ppb 時</li>
+                        <li>需要建立線性範圍時（例如 1 ppm 或 5 ppm）</li>
+                    </ul>
+                    <p>原因：USP TOC 基本上是設計為 pass/fail 測試，而非定量測定。在清潔驗證的定量應用中，建議進行正式的方法驗證。</p>
+                </div>
+
+                <!-- Practice Questions -->
+                <div class="practice-box">
+                    <h3>練習思考題 Practice Questions</h3>
+                    <ol>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Q1：</strong>某工廠使用 NaOH 鹼液清潔不鏽鋼槽體後，希望驗證清潔劑已被完全沖洗。應優先選擇哪種分析方法？為什麼電導度比 pH 更適合？
+                            <br><em>（提示：考慮線性 vs. 對數關係，以及量化靈敏度）</em>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Q2：</strong>您正在驗證一個新 API 的清潔程序。已知此 API 在 90°C 鹼性沖洗中會完全降解。請說明為何不應使用針對原始 API 的 HPLC 方法，並描述您會選擇哪種替代方法及其選擇依據。
+                            <br><em>（提示：考慮 TOC vs. 針對降解物的專一性方法）</em>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Q3：</strong>您的 TOC 方法驗證結果顯示 LOQ = 0.5 ppm，而清潔驗證的殘留接受限度為 2 ppm。請評估此方法是否符合 ICH Q2(R1) 在清潔驗證中的應用要求，並說明是否達到「理想」標準。
+                            <br><em>（提示：LOQ 應為限度的多少比例以下？）</em>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Q4：</strong>您的無菌注射劑生產線完成清潔後，質量部門要求進行生物負荷取樣。檢驗員用 100 mL 沖洗水過膜過濾後，培養板上計數到 450 CFU，判定為 TNTC。此情況下應如何調整取樣或計數策略？
+                            <br><em>（提示：稀釋、縮小取樣體積、或改用鋪板法）</em>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation</p>
+    <p>Section 5: Analytical Methods | 分析方法 &nbsp;|&nbsp; Sections 7.0–7.7 &nbsp;|&nbsp; pp. 55–64</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Educational Use Only</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
