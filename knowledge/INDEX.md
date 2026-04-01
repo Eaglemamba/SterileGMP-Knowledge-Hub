@@ -937,6 +937,46 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-GAMP5-Complete.md
+**Report:** ISPE GAMP® 5 Guide: A Risk-Based Approach to Compliant GxP Computerized Systems (2nd Edition, 2022)
+**Pages:** p9–p404 | **Sections:** 16 sections across 9 tabs (Chapters 1–8 + Appendices M, D, O, S, G)
+
+**Covers questions about:**
+- What GAMP 5 is and how it differs from the 1st edition (new: critical thinking, AI/ML, blockchain, Agile, updated QRM)
+- The 5 key concepts: fit for intended use, life cycle approach, scalable effort, science-based QRM, leveraging supplier involvement
+- Computerized system life cycle: 4 phases (Concept, Project, Operation, Retirement) and all sub-activities
+- GAMP software categories: Category 1 (infrastructure), Category 3 (non-configured COTS), Category 4 (configured COTS), Category 5 (custom)
+- Quality Risk Management (QRM) for computerized systems: risk identification, assessment, control, communication, review
+- Regulated company activities: governance, system inventory, supplier assessment, validation planning and execution
+- Supplier activities: good practices, QMS, sub-supplier assessment, commercial release, support during operation
+- Validation planning: Validation Master Plan (VMP), System Validation Plan, traceability matrix, validation summary report
+- Testing: IQ/OQ/PQ for computerized systems, scripted vs unscripted testing, defect management, regression testing
+- Operational appendices: handover, change management, periodic review, backup/restore, business continuity, security, archiving
+- IT infrastructure: Category 1 qualification, cloud computing (SaaS/PaaS/IaaS), disaster recovery, system monitoring
+- Critical thinking: applying proportionate effort, avoiding over- and under-validation
+- Agile development in GxP: sprint-based validation, iterative testing, documentation strategies
+- AI/ML in pharma manufacturing: model validation, continuous learning, drift detection, regulatory perspective
+- Blockchain/distributed ledger: pharma applications, validation considerations, audit trail implications
+- Electronic batch records (eBR): 21 CFR Part 11, EU Annex 11, ALCOA+, audit trail requirements
+- Spreadsheet validation: GxP spreadsheet controls, validation approach, Excel macro risk
+- Patch and update management for validated systems: security vs. GxP tension, risk-based strategy
+- Compliance with 21 CFR Part 11, EU GMP Annex 11, ICH Q9, ICH Q10, ASTM E2500
+
+**Key terms:** CSV (Computer System Validation), GxP, GAMP, computerized system, life cycle, fit for intended use, scalable effort, critical thinking, Category 1/3/4/5 software, URS (User Requirement Specification), FRS (Functional Requirements Specification), CS (Configuration Specification), IQ/OQ/PQ, validation master plan, validation summary report, traceability matrix, system risk assessment, supplier assessment, RTM, QRM (Quality Risk Management), COTS (Commercial Off-The-Shelf), infrastructure, critical aspect, process owner, system owner, change control, configuration management, periodic review, business continuity, backup and restore, audit trail, access control, electronic records, e-signatures, 21 CFR Part 11, EU Annex 11, ALCOA+, data integrity, Agile, sprint, AI/ML, machine learning, model drift, blockchain, distributed ledger, eBR (electronic batch record), EPR (electronic production record), spreadsheet validation, patch management, data migration, data archiving, ASTM E2500
+
+**Sections:**
+0. Introduction & Key Concepts (Ch1–2, p9–22)
+1. Life Cycle Approach & Phases (Ch3–4, p23–48)
+2. QRM & Regulated/Supplier Activities + Efficiency (Ch5–8, p49–84)
+3. Appendices M1–M4: Validation Planning, Supplier Assessment, QRM, Software Categories (p85–134)
+4. Appendices M5–M12: Design Review, Change Mgmt, Documentation, IT Infrastructure, Critical Thinking (p135–182)
+5. Appendices D1–D5: Requirements, Configuration, Software Development & Testing (p183–234)
+6. Appendices D6–D11: System Descriptions, Data Migration, Agile, Tools, Blockchain, AI/ML (p235–280)
+7. Appendices O–O13: Operations — Handover, Monitoring, CAPA, Change Mgmt, Security, Archiving (p281–346)
+8. Appendices S1–S6 + G1–G2: Special Topics (eBR, Spreadsheets, Patches) + References & Glossary (p347–404)
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -1087,12 +1127,26 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | PCR mycoplasma detection, NAT replacement, adventitious agent / PCR黴漿菌檢測、核酸檢測替代 | TR91 (Appendix 1) |
 | Data integrity, ALCOA+, data lifecycle, data governance / 資料完整性、ALCOA+、資料生命週期 | TR84 |
 | Audit trail review, ATRA tool, audit trail risk assessment / 稽核軌跡審查、ATRA工具 | TR84 |
-| 21 CFR Part 11, EU Annex 11, electronic records, e-signatures / 電子記錄、電子簽章 | TR84 |
+| 21 CFR Part 11, EU Annex 11, electronic records, e-signatures / 電子記錄、電子簽章 | TR84 + ISPE-GAMP5 |
 | Data integrity warning letters, FDA DI trends / 資料完整性警告信、FDA DI趨勢 | TR84 |
 | 9-Box vulnerability grid, data criticality, DPFM / 9格脆弱性矩陣、資料關鍵性分類 | TR84 |
 | Access control, shared logins, system clock / 存取控制、共用帳號、系統時鐘管理 | TR84 |
 | Paper vs electronic vs hybrid system DI controls / 紙本vs電子vs混合系統DI管控 | TR84 |
-| CSV, data backup, true copy, raw data / 電腦系統驗證、資料備份、真實副本 | TR84 |
+| CSV, data backup, true copy, raw data / 電腦系統驗證、資料備份、真實副本 | TR84 + ISPE-GAMP5 |
+| GAMP 5, computerized system validation, software categories, life cycle / GAMP 5、電腦系統確效、軟體類別、生命週期 | ISPE-GAMP5 |
+| GxP software category 1 3 4 5, COTS, custom software, infrastructure / GxP軟體類別、商業現成軟體、客製軟體 | ISPE-GAMP5 |
+| Validation master plan VMP, system validation plan, traceability matrix / 確效主計畫、系統確效計畫、追溯矩陣 | ISPE-GAMP5 |
+| IQ OQ PQ computerized systems, scripted testing, defect management / 電腦系統IQ/OQ/PQ、測試腳本、缺陷管理 | ISPE-GAMP5 |
+| Supplier assessment audit, supplier leverage, reduce testing / 供應商評估稽核、供應商槓桿、降低測試量 | ISPE-GAMP5 |
+| IT infrastructure qualification, cloud SaaS PaaS IaaS GxP / IT基礎設施確效、雲端服務GxP | ISPE-GAMP5 |
+| Agile development GxP, sprint validation, iterative testing / 敏捷開發GxP、衝刺確效、迭代測試 | ISPE-GAMP5 |
+| AI ML pharma validation, model drift, machine learning GxP / AI機器學習製藥確效、模型漂移 | ISPE-GAMP5 |
+| Blockchain distributed ledger pharma, audit trail immutability / 區塊鏈製藥、稽核軌跡不可篡改性 | ISPE-GAMP5 |
+| Electronic batch record eBR, EPR, 21 CFR Part 11 compliance / 電子批次記錄、電子生產記錄 | ISPE-GAMP5 |
+| Spreadsheet validation GxP, Excel macro, end user application / GxP試算表確效、Excel巨集 | ISPE-GAMP5 |
+| Patch management validated systems, security vs GxP / 已驗證系統修補管理、安全性vs GxP | ISPE-GAMP5 |
+| Periodic review computerized systems, change control operation / 電腦系統週期性審查、營運期變更管制 | ISPE-GAMP5 |
+| Data migration validation, data archiving, electronic records retention / 資料遷移確效、資料歸檔、電子記錄保存 | ISPE-GAMP5 |
 | Big Data, IoT in pharma, continuous manufacturing data / 大數據、製藥物聯網 | TR84 |
 | DI worked examples: API, FDF, sterility, packaging / 資料完整性案例：原料藥、製劑、無菌、包裝 | TR84 |
 | Sterile facility design, cleanroom layout, facility architecture / 無菌設施設計、潔淨室佈局 | ISPE-Vol3 |
@@ -1328,7 +1382,16 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
 
 **Computer System Validation / CSV (電腦系統驗證)**
-→ TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
+→ ISPE-GAMP5 ★★★ (complete CSV lifecycle framework: categories, QRM, supplier assessment, planning, testing, operations, special topics) | TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
+
+**GxP Software / GAMP Categories / Computerized Systems (GxP軟體/GAMP類別/電腦化系統)**
+→ ISPE-GAMP5 ★★★ (Cat 1/3/4/5 definitions, examples, validation depth per category, hardware categories, QRM-based categorization) — single primary source
+
+**AI / Machine Learning in Pharma Manufacturing (AI/機器學習於製藥製造)**
+→ ISPE-GAMP5 ★★★ (Appendix D11: model types, validation lifecycle, continuous learning challenge, drift detection, regulatory perspective, human-in-the-loop) — single primary source
+
+**Electronic Batch Records / eBR / EPR (電子批次記錄)**
+→ ISPE-GAMP5 ★★★ (Appendix S2: ISA-88, audit trail, ALCOA+, 21 CFR Part 11, EU Annex 11, cloud/blockchain integration) | TR84 ★★ (electronic records DI controls)
 
 **Sterile Facility Design / Cleanroom Architecture (無菌設施設計/潔淨室建築)**
 → ISPE-Vol3 ★★★ (complete facility design guide: classification, HVAC, architecture, utilities, barriers) | PtC-12 ★★ (RABS facility integration) | PtC-14 ★★ (ATMP facility) | PtC-15 ★★ (mobile/modular facility) | TR90 ★★ (facility as CCS element)
@@ -1338,3 +1401,53 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Barrier Technology: RABS & Isolator (屏障技術: RABS與隔離器)**
 → ISPE-Vol3 ★★★ (oRABS/cRABS/isolator comparison, design, decontamination, EM, leak testing) | PtC-12 ★★★ (RABS operational detail) | PtC-Isolators ★★★ (isolator operational detail) | TR90 ★★ (CCS barrier context)
+
+---
+
+## ICH Quality Guidelines Knowledge Base
+
+### ICH Q9(R1) - Quality Risk Management
+- **Source**: ICH Q9(R1) Guideline  
+- **Topics**: Quality Risk Management, Risk Assessment, FMEA, HACCP, FTA, Risk-Based Decision Making
+- **Key Sections**:
+  - Executive Summary & Learning Objectives
+  - Principles & Process (4-stage framework)
+  - Formality Spectrum & Subjectivity Management
+  - Risk Management Tools
+  - CMC Applications
+  - Practice Questions & Key Takeaways
+
+### ICH Q8(R2) - Pharmaceutical Development  
+- **Source**: ICH Q8(R2) Guideline
+- **Topics**: Quality by Design (QbD), Design Space, Critical Quality Attributes (CQA), Process Design
+- **Key Sections**:
+  - Development Strategy & Phase-Appropriate Approaches
+  - QbD Fundamentals
+  - Design Space Definition
+  - Clinical & Pharmaceutical Development Integration
+  - CMC Structure & Manufacturing Alignment
+  - Case Studies & Practice Applications
+
+### ICH Q10 - Pharmaceutical Quality System
+- **Source**: ICH Q10 Guideline
+- **Topics**: Quality Systems, Product Lifecycle Management, Change Control, Process Validation, Continuous Improvement
+- **Key Sections**:
+  - Quality System Overview
+  - Knowledge Management
+  - Change Control & Post-Approval Changes
+  - Process Validation Framework
+  - Ongoing Review & Improvement
+  - Corrective/Preventive Actions (CAPA)
+  - Risk Management in Quality Systems
+
+---
+
+### Cross-Reference: ICH Guidelines in Manufacturing Context
+
+| Topic | Q8(R2) | Q9(R1) | Q10 |
+|-------|--------|--------|-----|
+| Design Space | ✓ Core | Applies | Maintains |
+| Risk Management | Strategy | Framework | Application |
+| Process Validation | Approach | Supports | Implementation |
+| Change Management | Design Phase | Assessment | Control & Approval |
+| Knowledge Management | Development | Documentation | Lifecycle |
