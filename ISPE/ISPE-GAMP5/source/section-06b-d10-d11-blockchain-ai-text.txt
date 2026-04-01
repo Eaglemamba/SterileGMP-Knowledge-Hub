@@ -1,0 +1,876 @@
+--- PAGE 261 ---
+Page 259
+Appendix D10
+Figure 30.1: The Blockchain Technology Stack Across Multiple Enterprises
+When a network is sufficiently decentralized there are enough independent network operators to make it improbable
+that a single entity or a small group of entities hold influence over the core protocol (the primary rules) that operate
+the network. When changes are needed, it requires coordination of the majority of network operators. This is
+a familiar concept for those that rely on OSS. Generally speaking, core protocol updates positively impact the
+operations of the network (e.g., more efficient processing, network operator incentives, better encryption).
+Governance also applies in how an entity and its business partners choose to interact with the blockchain. While
+some of this is controlled through the smart contracts the entity connects with, much of it has to do with the off-chain
+data standards and processes that trigger events on the blockchain, as well as the API through which they connect.
+There is no preventive mechanism to stop an entity from posting inaccurate data or triggering fake events. However,
+because blockchains are ecosystem-level systems, collusion with other parties would be needed to continually
+propagate false information, which is unlikely. In addition, there would always be a clear log of transactions. To
+this end it is important to know exactly who the business partners are (that is, the addresses they control on the
+blockchain) and to recognize that the system is more secure when looking at the sum of the parts. Because it is
+most likely that enterprises will interact with blockchains through APIs, GxP considerations must be applied to the
+blockchain network as well as the ancillary systems that push and pull information to it.
+
+--- PAGE 262 ---
+Page 260
+Appendix D10
+30.3	 Guidance
+This appendix outlines the current best practices that should be used during the system life cycle when deploying a
+blockchain-based system in a production GxP use case. Once the intended use of the system is established, system
+planning includes a holistic approach for development and deployment. Although there is not a “one size fits all”
+approach for documentation requirements to qualify and maintain a blockchain network, applying methodologies such
+as Agile and critical thinking can help identify appropriate controls needed and mitigate the associated risks within the
+regulated environment per Appendix D8 and ISPE GAMP RDI Good Practice Guide: Data Integrity by Design [36].
+30.3.1	 Concept Phase
+Blockchains are often considered to be an ecosystem-level network. From the perspective of an individual
+organization there are likely to be external stakeholders that should be involved in all phases of the project, including
+the concept phase. Understanding the incentives of each stakeholder as well as their role in the GxP use case is
+critical to developing a solution that can meet a broad set of objectives.
+During the concept phase of the project, it is important to apply critical thinking and a risk-based approach to
+determine exactly which use cases within the blockchain solution are GxP and what ancillary systems and data
+elements are required by the blockchain solution. Business-process mapping can help to define those interactions by
+documenting:
+•
+The intended use of the blockchain solution
+•
+The ancillary systems that the blockchain will pull data from and push data to
+•
+The high-level risks associated with patient safety, product quality, and data integrity
+•
+The business logic managed within smart contracts (if applicable)
+•
+The role blockchain plays in the overarching system
+•
+The data being managed across the network (on-chain, off-chain, metadata)
+•
+The type of blockchain protocol and any special considerations
+The sequence of process steps, high-level risks, and business activities can be addressed as part of mapping the
+business process. It illustrates the manual and computerized aspects of the system and associated risks, such as
+manual operations, access controls, and interfaces. Business-process steps enable the IT quality professional to
+understand data integrity risks per the regulated data life cycle and assess and evaluate where data is generated,
+processed, used, retained, and removed. Business process mapping can support data quality by facilitating the
+assessment of data criticality and vulnerability, and identification of system interfaces.
+Once high-level risks and business-process steps are understood, data flow can be generated that show the inputs,
+outputs, and flow of data through the system. Similar to understanding the integration points for an ERP system or
+Manufacturing Execution System (MES), it is helpful to create a swim-lane diagram for the systems that are part of
+the overall solution. The individual components and systems may have to be treated differently with different states of
+control. Depending on the implementation, the blockchain may be a single swim lane acting as a data repository, or
+multiple swim lanes capturing the functionality and interactions of smart contracts.
+When deploying and validating a blockchain solution, it is recommended to take a strong systems-engineering
+approach, looking at where the various technology systems interact and where those interactions are based on APIs,
+or smart contracts, or potentially other technologies.
+
+--- PAGE 263 ---
+Page 261
+Appendix D10
+Data flow can be used to map interactions for an overview of the system landscape and to identify areas of high risk.
+Utilizing this approach can provide an integrated-risk overview, whereas a fragmented system-by-system approach
+may miss key integrations and interface points of contact between the various systems. An example data flow map is
+displayed in Figure 30.2.
+Smart contracts are used within blockchain networks to automate actions based on defined quantitative variables that
+the contract monitors. The contract then executes actions when the defined criteria are met. An analogy is the familiar
+logic trees within PLC programming.
+Smart contracts should be assessed as part of the overall-system life cycle of the blockchain network or application.
+As they utilize custom coding, standard code-review processes should be used to review the integrity, security, and
+integration of the inputs and outputs of the smart-contract logic.
+Figure 30.2: Example Data Flow for a Blockchain-Integrated Solution
+30.3.2	 Project Phase
+30.3.2.1	 System Planning, Stakeholders, and Service Providers
+The blockchain network is likely to have many stakeholders, both internal and external. A typical stakeholder/steering
+committee approach may be difficult to implement across an entire ecosystem, therefore establishing a governance
+structure early in the project phase is recommended. (Refer to Section 30.3.2.6 for additional considerations.)
+There are often third parties involved in developing or hosting the blockchain solution. In some cases, a Blockchain
+as a Service (BaaS) provider will be selected to manage the integration to, or run nodes on behalf of, the
+organization. In these cases, supplier assessments and testing should be leveraged in accordance with Appendix M2.
+However, the blockchain-specific elements should also be considered, such as:
+•
+Is there a process for identifying, adding, and/or removing a node from the network?
+•
+Is the BaaS also providing off-chain storage and/or transaction caching? If so, what are the data controls around
+those services?
+
+--- PAGE 264 ---
+Page 262
+Appendix D10
+•
+What is the process for managing blockchain addresses? How is ownership and custody over the private and
+public keys managed?
+30.3.2.2	 Data and Process Driven Approach
+Ultimately blockchains are just systems that humans or other systems use to push and pull information in support of
+business processes; therefore, a data and process-driven approach is a suitable method for relying on a blockchain
+network in a GxP environment during the project phase. A suggested method for validating the environment is
+outlined in the following sections.
+30.3.2.3	 Understand Data from Source of Origin, Source of Truth, and Ownership Standpoint
+The blockchain will likely serve as a backbone connecting multiple sources of data, and in many cases becoming the
+source of truth for which data represents the current state of the overall system. (This trust and shared ownership
+of data is often a primary reason for using a blockchain.) However, blockchains are not generally the source of
+origin for new data other than identifiers (for example, token IDs), accounts, and timestamps. In these cases, data-
+quality controls should be in place to keep the data recorded in the blockchain in sync with data generated in the
+source of origin. Data mapping and checks of ALCOA+ requirements can help to identify deficiencies, for example,
+potential problems associated with the lack of long-term access to data. The blockchain may provide evidence of
+which account(s) signed a transaction on the network, but the organization may need to understand which other
+organization(s) control that account, implying the need for a registry or some form of verified credentials.
+Illustrative example:
+A serialized medicine has the following data attributes:
+{“GTIN (01)”:00855245005019
+“EXP (17)”:”112023”,
+“LOT(10)”:“XYZ123”,
+“S/N (21)”:“447018182632”}
+A token is generated on a blockchain that represents this single unit; for privacy purposes it is given a random
+token ID:
+0x778gha0ca303305a92d8d028704d65e4942b7ccc9a999164cf
+Included in the transaction that minted the token is a Uniform Resource Identifier (tokenURI) that contains a hash
+of the data attributes and a pointer to where the metadata is stored (in some storage systems these may be one
+and the same). For example:
+1220D5CC15B22D5606BF3DC255979552A4214E29054CD2E60A1446FE570F53F18C6B
+(this hash was generated from the data above by using a SHA-256 hash algorithm in a multihash format).
+In this example an investigator can access the un-hashed metadata attributes by following the tokenURI. They can
+pass the metadata through the same hash algorithm (this is why using a multihash format is important) and if the
+hashes match, they have confidence that the un-hashed data was the same as the data used to mint the token. If
+the investigator has access to the source system where the product data was generated, they can query the source
+system and verify the individual attributes.
+
+--- PAGE 265 ---
+Page 263
+Appendix D10
+30.3.2.4	Identifying the Resulting Controls
+After identifying the critical functionality by performing a risk assessment of the business-process logic and the data
+flows, define a set of controls that will help to ensure the system is operating as intended. Some items to consider
+when defining control sets are:
+•
+Functionality
+-
+Input Controls: Events used to trigger transactions and the data posted to the blockchain during a
+transaction are typically managed outside of the blockchain itself. However, once a transaction is posted it is
+practically immutable; therefore the integrity of the data initially posted should be considered.
+>
+How are events that trigger blockchain transactions identified in each of the systems that feed data to
+the blockchain?
+>
+For data that is captured either on-chain or off-chain, are sufficient data quality controls in place?
+>
+If off-chain data changes for legitimate reasons (for example error corrections, updates, etc.), how are
+on-chain references updated as hash reference may no longer be valid?
+>
+Is there any transformation happening through the API when data is pushed to the blockchain?
+-
+Output Controls: Extracting data from a blockchain can be done in several ways, but often the on-chain data
+is only a portion of the information needed to make business decisions. The emphasis on output controls
+is to demonstrate the accuracy of the information on-chain to the off-chain data through reconciling and
+displaying the completeness of the extracted data by making the query replicable.
+>
+Is there a mechanism for checking the integrity of off-chain data (for example, hash matching)?
+>
+Is there any transformation happening through the API when data is queried and extracted?
+>
+Are there controls in place to ensure that the representation of the data (for example, data visualization
+software) shows an accurate and complete picture of the data available on the blockchain?
+>
+Which specific data elements are relied upon from the blockchain layer (e.g., timestamps, account IDs,
+transaction IDs) versus data and events used to generate the transaction?
+>
+How is the returned data analyzed to determine if transactions were skipped or omitted?
+-
+Processing Controls: Ensuring that the blockchain solution is continuously used as intended, or if there are
+changes to the network that introduce new risks, a set of processing and monitoring controls is required.
+>
+How are the APIs that integrate systems with the blockchain monitored? Can events recorded on the
+blockchain be reconciled back to source systems?
+>
+How is change control managed for the underlying blockchain protocol? (see Section 30.3.2.5)
+>
+How are failed transactions monitored and addressed?
+>
+If applicable, how are transaction costs managed? Is there a risk that the posting accounts will have
+insufficient funds to cover the fees?
+>
+How is the stability of the blockchain monitored to determine if it is still viable?
+
+--- PAGE 266 ---
+Page 264
+Appendix D10
+-
+Access Controls: In a blockchain the participants are identified by their blockchain address. Addresses
+(sometimes called wallets) can be owned by individuals, entities, systems, or smart contracts; and it is the
+address owner who is responsible for posting transactions under that address. Access controls on a blockchain
+revolve around who has access to use which addresses, and what a given address is allowed to do.
+Operating under the assumption that the blockchain will be used for many different use cases, the
+addresses involved in the GxP application will likely be a subset of all active addresses. The IT quality
+organization should be involved in the design of access controls between users, ancillary systems, and the
+blockchain network. The function responsible for routine administration of access should notify and discuss
+any major changes to the level of access that might impact GxP applications with the ITQ organization.
+Additional points to consider include:
+>
+Under what authority are addresses generated and managed?
+>
+Are the addresses attributable to an entity within the organization, an individual, or a source system?
+>
+How are users (or underlying systems) authenticated before posting transactions?
+>
+Is there a process in place for managing custody to the private keys of the transacting addresses?
+>
+If off-chain data bases are separate from existing systems, have they been implemented following the
+organization’s security procedures?
+>
+If privacy solutions (e.g., zero knowledge proofs, roll-ups, mixer contracts, etc.) are used to obscure
+transactions on-chain, who has access to view the transactions and how is that managed?
+>
+If allow/deny listing (or other similar preregistration approach) is used to grant access to call functions in
+a smart contract, how is this being managed?
+>
+Are the ancillary systems and their APIs that access the blockchain secure in preventing unauthorized
+transactions to be posted?
+30.3.2.5	 Change Management
+The change management of the blockchain solution should be looked at for the entirety of the GxP use case. It is
+likely that many of the source systems, off-chain storage, and APIs used to interact with the blockchain network can
+be managed using traditional Agile change-management approaches. For public networks, it is likely that the core
+protocol used to propagate the blockchain network is open sourced and managed by a community. Refer to Appendix
+D8 for guidance on relying on OSS.
+30.3.2.6	 GxP Considerations around Governance of Public Blockchain Networks
+Specifically for blockchains, there are additional considerations above those of general OSS. Namely how the
+governance of the running network is managed by the node operators.
+Occasionally there will be significant changes to the core protocol in the network. For those changes to be adopted,
+the majority of the node operators must update their software17. Most often the updates are done seamlessly with
+no disruption to the network; however, there is a possibility of some nodes choosing not to update their software.
+In these cases the network splits (or forks) into two separate blockchains. While this is less likely with improved
+governance and becomes even more difficult with larger more decentralized networks, it is still a possibility that
+should be considered. As is typical with managing reliance on OSS, it is important for organizations to keep abreast
+with updates and changes and determine the GxP impact of updating (or choosing not to update) their applications.
+17	For an organization running a node, this would be an action the IT function would take.
+
+--- PAGE 267 ---
+Page 265
+Appendix D10
+30.3.2.7	 Composability of Smart Contracts
+Often several smart contracts are strung together to create a Decentralized Application (or DApp). When considering
+the governance of large-scale decentralized networks, it is governance of the DApps that carry a higher risk. These
+contracts are often deployed with the intent of being composable, which means that the functions within them can be
+called by other smart contracts. While this is key to enabling complex logic, it also creates a network of dependencies
+that must be understood.
+By changing references when certain functions become deprecated, a smart contract can be upgradable, which
+implies the need for change-management controls. Because the nature of blockchain within enterprises is such to
+encourage broad ecosystems, these contracts are often designed for a broad range of participants. They also have
+the capability to ingest data from external sources (referred to as oracles) to trigger certain events within the smart
+contracts code.
+For example, if a public blockchain was being used to track pharmaceutical supplies with the intention of facilitating
+product recalls or managing stockpile levels, there would likely be several smart contracts involved; for example, one
+that creates the product on-chain and one that auto-orders replenishment stock. There could be one that listens for
+an external signal from a manufacturer or regulator that might flag inventory that has been recalled. Assuming that
+the underling blockchain protocol remains stable throughout this process, the greater risk is in the way that the smart
+contracts interact or vulnerabilities that those interactions might introduce.
+It must also be possible to differentiate between smart contracts that are core to basic use case operations (likely
+leveraging standards with very little modification) and smart contracts that have been custom developed for a specific
+DApp. The former can be assessed as part of the overall reliance on the blockchain network; the latter would require
+specific considerations within the scope of the DApp.
+30.3.3	 Retirement or Migration
+Most blockchains are designed to be highly available in perpetuity; however, it is possible that networks may become
+stagnant and be abandoned by their participants. As the level of decentralization decreases, many of the strengths of
+relying on a blockchain solution may be eroded. Considerations should be made for how to retain data in the event
+that the blockchain network is retired, in particular where those records are subject to regulatory data-retention or
+legal-hold controls. This may be resolved by requesting the organization’s or service provider’s IT function to maintain
+a full node of the network and anchoring the last block as data in another secure location (for example, another
+blockchain) to demonstrate data integrity until the organization is ready to retire the solution.
+Further, real-life use cases of blockchain to support regulated processes have not been around long enough to fully
+assess the implications on long-lived data; it is suggested that organizations take a “cryptographic agility” approach
+allowing them to evolve as the technology matures. Considerations include:
+•
+The impact of replacing cryptographic methods (the underlying security guarantees are not automatically
+preserved)
+•
+The impact of storing sensitive data (either encrypted or unencrypted) on the network as future vulnerabilities
+may be found in the current state-of-the-art cryptography
+•
+The ability to maintain and extract data from a blockchain node even if that blockchain is no longer active
+It is also possible that the organization may choose to migrate to a different blockchain protocol, in which case many
+of the existing procedures and strategies for records migration would apply (refer to ISPE GAMP Guide: Records and
+Data Integrity [35]). However, there would be several blockchain-specific considerations:
+•
+The new network is likely already running; therefore, historical records may not be recreated in a new network
+with the original transaction information and ordering
+
+--- PAGE 268 ---
+Page 266
+Appendix D10
+•
+Blockchain addresses are inherent to the protocol that generated them; it is not likely that wallet addresses and
+contract addresses will be identical. This will require mapping access controls into the new environment.
+•
+Much of the blockchain security that is rooted in cryptography relies on the network running continuously;
+migrating to a new network will impair that security for historical transactions
+30.4	 Other Considerations
+Additional considerations may need to be taken when using blockchain networks. These fall outside the direct
+software-development life cycle but form a critical component of evaluating and demonstrating that a blockchain-
+based system is under control and suitable for use in a GxP regulated environment.
+30.4.1	 Use of Emerging Technologies
+When choosing to use an emerging technology that may not have reached a state of maturity, it is important that a
+practitioner takes steps to ensure that a strong evaluation of the technology is performed prior to selection and that
+the often rapid pace of architectural change is accounted for in the operation and use.
+Key considerations that should be accounted for may include:
+•
+Maturity of the blockchain:
+-
+Is the blockchain supported by a large developer community?
+-
+How long has the blockchain been in operation?
+-
+Has the blockchain been subject to multiple forks?
+•
+Vendor support
+:
+-
+Does the blockchain have a commercial support model?
+-
+Is there a landscape of technology vendors supporting the blockchain?
+-
+Does the vendor operate a QMS and/or have software-development and management-process controls in
+place?
+•
+Pace of change:
+-
+Does the blockchain have a mature change-governance process?
+-
+Are architectural changes well communicated and documented to users?
+30.4.1.1	 Use of Standards
+Standards are still emerging in this area and are largely driven by the development communities as opposed to
+regulators as of this publication. When looking at a blockchain from the perspective of an entire ecosystem, standards
+become important to enable interoperability. These will most likely be data standards relevant to all members of the
+ecosystem and should be built from existing standards sets.
+
+--- PAGE 269 ---
+Page 267
+Appendix D10
+Standards are also important from a security perspective. Smart contracts deployed on a network execute business
+logic when called upon. Similar to any technology, there are multiple attack vectors by which those smart contracts
+can be exploited to cause unintended outputs. Where possible, it is recommended to use standard deployments
+of smart contracts that have been in use on public networks for some period of time where they may have been
+hardened from previous attacks. It is also recommended to utilize third-party specialists to review smart-contract logic
+prior to deployment and/or to deploy contracts in a public testnet environment prior to launching in production.
+30.4.2	 Reliance on Cryptography and Proofs in Place of Trusted Systems
+Using the cryptographic principles of hashing and asymmetric encryption, blockchains generate practically immutable
+storage for time-stamped data, which can be attributed to and accessed only by authorized participants. The level of
+trust (or assurance) depends on:
+•
+Linking of blocks based on hash functions that are both easy to verify and computationally intensive to create
+•
+Asymmetric encryption where knowledge of the public key allows:
+-
+Storing information that only an authorized recipient can decode using the (secret) private key
+-
+Verification of signatures generated using the sender’s private key
+Much as the use of duplication and error correction in RAID storage eliminates the need for high-level reliability on
+hardware and environment conditions (e.g., vibration free), blockchain technologies replace the need for a qualified
+hardware (storage) from a mature supplier by mathematically sound algorithms.
+From this perspective the validation strategy for the source system may be focused more on data quality than data
+integrity. It should also be noted that while an in-depth understanding of the mathematics and cryptography may not
+be required, organizations should check that generally accepted or well-known algorithms are used for the process
+(similar to the way one might inquire about the security standards used for data encryption).
+30.4.3	 Role of Cryptocurrencies and Incentives on Public Networks as They Relate to GxP
+Applications
+In public blockchain networks the inclusion of new data in the blockchain is done collaboratively by all participating
+nodes in the network. Their incentive to process specific transactions on behalf of others is the transaction fee
+voluntarily donated to the participant(s) attaching the respective block to the blockchain. Consequently, to post a
+transaction on the blockchain, some value (in the form of the chain’s inherent currency) must be transferred at the
+time of record creation. Transaction fees (sometimes referred to as gas) are also required to deploy and interact with
+smart contracts on the network (both of these activities are transactions). The fees are typically paid by the address
+initiating the transaction, implying that the address may hold some value in addition to its access rights, which could
+create additional risks for those addresses to be compromised. The following should be considered when relying on
+public blockchain networks that have transaction fees:
+•
+Fees are typically in correlation to the amount of data in a transaction. In addition to incentivizing network node
+operators, they also incentivize efficient use of the network. Adding additional data to a transaction “just because”
+can quickly make blockchains cost prohibitive.
+•
+To increase throughput and reduce transaction fees Layer 2 solutions are often deployed; these can be
+considered as separate networks that inherit some of the security of the Layer 1 network, but they should be
+carefully assessed.
+•
+The value of the cryptocurrency held by the addresses (both individually and cumulatively across an
+organization) can fluctuate wildly, and there may be accounting and tax implications.
+
+--- PAGE 270 ---
+Page 268
+Appendix D10
+30.4.4	 Achieving Privacy and Confidentiality on Public Networks
+A fundamental design principle of blockchains is the distributed ledger, that is, the ability for all participants to quickly
+come to agreement on the current state of the entire dataset. Early blockchain networks achieved this by having a
+fully-open and transparent ledger that is visible to all participants. This approach is often diametrically opposed to a
+particular organization’s desire to have private transactions between known business partners. Even if sensitive data
+is not included within a transaction, the pattern of transactions between accounts may be considered confidential.
+This visibility also extends to the logic of smart contracts operating on the network.
+Privacy and confidentiality is a rapidly evolving facet of the technology, as it has been widely recognized as a barrier
+for enterprise adoption of public blockchains. There are multiple technology solutions that leverage cryptographic
+measures (zero knowledge proofs, optimistic roll-ups, etc.) and scaling solutions (Layer-2 scalability, Layer-1
+alternatives, sharding, etc.) that are required to provide the on-chain compute power to support these methods.
+Though the technology is evolving there are fundamental elements to consider:
+•
+Avoiding the storage of sensitive data on-chain
+•
+Encryption and obfuscation controls for on-chain data
+•
+The maturity of the cryptographic procedures being used
+•
+Processes for cryptographic key management
+•
+Mechanisms used to anonymize transactions or shield the logic in smart contracts
+These areas are actively discussed in the ISPE GAMP Community of Practice [77].
+
+--- PAGE 271 ---
+Page 269
+Appendix D11
+Appendix D11
+31	 Appendix D11 – Artificial Intelligence and
+Machine Learning (AI/ML)
+31.1
+Introduction
+Artificial Intelligence (AI) and Machine Learning (ML) are transforming the way in which the life sciences industry is
+doing business and processing data. The industry is increasingly relying on such innovative technologies to automate
+many functions previously performed by humans. As computer systems become more integrated and datasets
+become more extensive, computer science is advancing our ability to learn from that data and draw conclusions.
+Underlying algorithms are sophisticated enough to begin making robust decisions in the form of AI.
+The use of such AI, along with the subdiscipline of ML, presents the life sciences industry with a challenge in
+maintaining the overall quality and regulatory compliance of such IT systems, applications, and/or solutions. This
+appendix provides a basic understanding for these digital solutions and guidance on how to ensure compliant
+integration and fitness for use in a validated environment. Additional information is available in ISPE GAMP® RDI
+Good Practice Guide: Data Integrity by Design, Appendix S1 – Artificial Intelligence: Machine Learning [36].
+Additionally, this appendix:
+•
+Provides a basic understanding of AI and the use of static/dynamic ML sub-systems in industry
+•
+Presents an overview of a risk-based regulatory compliant AI/ML life cycle framework (e.g., model) in alignment
+with GAMP 5 principles and phases (concept, project, operation, retirement)
+•
+Describes the importance of data integrity to the overall quality of AI/ML in addition to presenting an
+understanding of inherent risks
+•
+Acknowledges the iterative nature inherent in developing AI/ML as a sub-system of the overarching IT application
+and/or business solution
+31.1.1
+Changes from GAMP 5 First Edition
+This is a new appendix.
+31.2
+Scope
+This appendix seeks to describe a life cycle framework for ML for use within the life sciences industry and a GxP
+regulated environment. It positions and contextualizes the life cycle and management of the ML sub-system or
+components within a wider GAMP system life cycle, at the level of general descriptions and guidance.
+This appendix applies specifically to the ML component or sub-system, which is typically embedded within a wider IT
+system, solution, or application.
+
+--- PAGE 272 ---
+Page 270
+Appendix D11
+31.3
+Guidance
+There are many similarities in best practice between ML and more traditional algorithmic programming. Successful
+implementation of ML requires thorough business analysis and process understanding (e.g., by data scientists),
+effective planning, and the application of good software development, engineering, and maintenance practices.
+(See Guiding Principles 1 and 2 in Joint US FDA/Health Canada/UK MHRA Good Machine Learning Practice for
+Medical Device Development: Guiding Principles, [78].) Where this starts to diverge from previous strategies is that
+data management must be implemented during the concept phase because the data is the key resource required to
+progress with ML.
+Performance metrics are important in the design of any ML sub-system. They act as the technical specifications
+for the acceptability of the ML model. These metrics also drive the inherent iterative training, evaluation, and
+improvement stages of a ML operation. As the process may have been previously performed by a human, the
+performance expectations and grading may shift, and it is important to understand this shift early on by asking
+questions such as:
+•
+Will existing Key Performance Indicators (KPIs) be used to grade against the change?
+-
+If so, how would they be impacted? What change would show success? For example, is quality expected to
+remain at the same level or actually increase?
+-
+If not, how are the new metrics determined and what insight do they provide to confirm the system is
+operating as intended?
+Another key aspect of ML development is the tight integration of data and metadata into the development process.
+The term data-centric development is sometimes used to reflect this. As a result, data should be managed with
+the same care as the code itself with the consequence of additional overheads and controls for data acquisition,
+selection, classification, cleansing, and augmentation.
+Like other software system development, ML development has business, technical, or project risks commensurate
+with the complexity and novelty of the system. Managing these risks requires good process/business analysis, risk
+analysis, and cost/benefit analysis at all stages of development to recognize issues and to decide whether to take
+mitigating or rectifying steps, or to terminate the project.
+Development also requires consideration of human factors (e.g., usability challenges such as alert fatigue),
+cybersecurity, and legal liability. This requires transparency, and an understanding of the ability to reproduce outcomes,
+adequately interpret the results, and understand the relevance for how the models will be applied without bias.
+An in-depth knowledge of the business process and the associated data flows and decisions are essential for
+successful implementation of AI/ML. Such an understanding of the business process will also enable critical thinking
+to be applied on where and how to scale quality and compliance activities, based on identifying and understanding
+the potential risks to patient safety, product quality, and data integrity. (See Guiding Principle 9 in Joint US FDA/Health
+Canada/UK MHRA Good Machine Learning Practice for Medical Device Development: Guiding Principles [78].)
+31.3.1	 Life Cycle Approach
+For most systems that use ML, many aspects of the traditional computerized-system life cycle and compliance/
+validation approach are fully applicable (e.g., those related to specification and verification of user interface, reporting,
+security, access control, data-integrity controls, and data life cycle management).
+Operational ML sub-systems provide different outputs as they evolve, but the verification and validation approach
+should be designed to cope with these changes; this must include change and configuration management, version
+control, and monitoring.
+
+--- PAGE 273 ---
+Page 271
+Appendix D11
+Figure 31.1 is a high-level model that may be used to position the primary actions and activities of an ML sub-system
+within an overarching GAMP life cycle.
+Figure 31.1: GAMP 5 Life Cycle with ML Sub-System
+In the Concept Phase the business need or opportunity is identified, clarified, and agreed. The specific problem
+to be solved is defined, and initial data is identified (e.g., from a data warehouse or data lake), selected, acquired,
+and prepared. Prototyping allows the assessment and selection of suitable algorithms and hyperparameters, and
+preliminary hyperparameter values. Data management also begins in this phase when the original dataset is collected.
+During the Project Phase, following a defined plan, the selected technologies and technical architecture are
+specified. Formal risk-management activities commence, as well as other supporting activities including project-based
+configuration and change management. Project phase activities for the ML sub-system are typically iterative and
+incremental rather than linear. These iterative activities include model design/selection, engineering, model training,
+testing, evaluation, and hyperparameter tuning.
+Data management should be active during the project phase, including the acquisition of new data, secure storage
+and handling, preparation (including labeling), and partitioning into test, training, and validation datasets. The training
+and validation datasets are used for model training and unbiased evaluation respectively. The test dataset is excluded
+from all training and hyperparameter tuning activities and used to provide an unbiased evaluation of the final model
+within the overarching core system. This may be different from approaches in the past where data could be reused
+multiple times. Here the understanding needs to be known as to which data can be used multiple times versus which
+can only be utilized once. Successful separation of this data needs to be laid out and explained in order to give
+confidence that the data is not creating an homogenous state that could only learn from specific values.
+In the Operation Phase the performance of the system is monitored and evaluated. As new (also known as live)
+data becomes available, further configuration/coding, tuning, training, testing, and evaluation are performed. There is
+likely to be a tight and iterative loop of alternating project and operation activities as the availability of new data and
+ongoing performance evaluation and quality checks lead to opportunities for improved performance, both proactive
+and reactive, or changing scope of use. This requires effective change management, configuration management, and
+model versioning. (See also Section 31.3.5.3 on change management).
+
+--- PAGE 274 ---
+Page 272
+Appendix D11
+31.3.2	 Concept Phase
+31.3.2.1	 Business Opportunity and Definition/Data Dependencies
+The concept phase to implement ML is where the large shift from management of project phases comes about. Until
+now, many projects did little or even skipped the concept phase as the business already had a tool in mind. The
+transition to embracing the concept phase can be cognitively difficult for people on project teams to adjust to at first,
+but it is vital to the success of an AI/ML-based process. Understanding what is within the capabilities of a company
+must be determined in the concept phase or the assumptions will create issues on an exponential scale later.
+This phase should include research and investigation of which ML algorithms should be considered for development
+based on cost and risk of development and expected performance. Likewise, algorithms can also be purchased and
+should be scrutinized to ensure the business needs are met. Information to consider from the source is what process
+and standards were the algorithms developed against and what evidence will be provided with the purchase.
+During the concept phase, the business need is developed and analyzed, the overall process and workflow is defined
+and agreed, and how the proposed AI/ML application will support the process is identified. This analysis will help
+determine constraints, such as availability of data, deployment hardware, legal liability, and regulatory and Intellectual
+Property (IP) factors. Detailed data-related factors such as source, structure, format, and segmentation should also
+be determined.
+This requires consideration of five primary principles:
+•
+Transparency – or how the model(s) will behave
+•
+Reproducibility – or how the outcomes may be trusted
+•
+Interpretability – or what may produce the outcome(s)
+•
+Applicability – or how the model(s) shall be applied
+•
+Liability – or who will be ultimately liable
+Once this is accomplished, the primary task is to build a dataset based upon what the organization is trying to
+achieve, not forgetting to identify assumptions. However, in order to build an appropriate dataset, an organization
+must understand what information is important to them (i.e., meaningful) and find where that data/information
+is available, along with how to exclude unwanted/irrelevant data. This is defined by the desired features and/or
+parameters that will be directly involved in the ML, which can be small and/or even limited in quantity.
+This process should begin with, and/or be supported by, a robust data-governance strategy and a realization that not
+all data is created equal. This includes awareness of data size, quality, and prevalence (see also Section 31.3.5.2 on
+data governance).
+31.3.2.2	 Data Acquisition and Selection
+There are many places an organization can begin to look at in order to acquire data. The first place is typically
+internal to their company and given operations. Often this is within an existing data warehouse or data lake. Ideally,
+the company’s data is organized and not siloed. It may not be possible to converge all siloed data streams, as such it
+is usually in an unorganized format and requires preparation and labeling to become useful to an ML model.
+It is also possible to obtain data external to the organization to serve as the basis for learning. This data may come
+from various sources, some of which may be structured, unstructured, and/or semi-structured. Regardless of the
+format, there should exist a data selection and governance strategy that aims for a diverse and non-biased dataset.
+The set should also aim for a large number of data points, keeping in mind a reduction of overall data complexity.
+
+--- PAGE 275 ---
+Page 273
+Appendix D11
+One must consider data classification, clustering (e.g., including data privacy needs), regression, and ranking, as well
+as what values and/or metadata are critical and which simply add more complexity. It is important to not just have the
+appropriate or relevant data but also have it in the correct form or format, which is one of the major challenges in the
+use of external data sources.
+If obtaining and/or using external data (i.e., open source or public information), an organization must ensure that
+they have the right to use such data and that Personal Information (PI)/Personally Identifiable Information (PII)
+considerations are taken to comply with regulations such as the EU GDPR [79]. If this is not the case, then certain
+data attributes may need to be anonymized.
+Data selection considerations include:
+•
+Source: internal, external open source, external purchase
+•
+Privacy and controls: data classifications, data use, risk, mitigation controls
+•
+Structure/format: unstructured, semi-structured, structured; unorganized or organized
+•
+Segmentation: clustering, priority, or tiering, necessary versus nice-to-have
+An initial set of data, free from bias, will be collected from the existing business activities, or needs to be gathered to
+provide a starting point for the prototyping. Once identified, this stage identifies the activities required to prepare the
+data for the training and evaluation of the models, including data transformation: formatting, cleaning, and feature
+extraction. It is also likely that the data needs to be labeled to provide the training inputs and evaluation against which
+the prototype sub-system will be evaluated. At this phase, it is not expected that the data be complete, as subsequent
+stages will identify the need for additional data and the plan for acquiring and labeling it. It is, however, important to
+partition the case data into training and validation sets to avoid compromising future evaluations.
+31.3.2.3	 Data Types, Preprocessing and Classification
+Data preparation includes, but is not limited to:
+•
+Profiling (e.g., formatting)
+•
+Cleansing, transforming (i.e., homogeneous)
+•
+Anonymizing (e.g., for EU GDPR [79]/privacy)
+•
+Augmenting to diversify
+Datasets are often not immediately usable, thus the need to prepare it prior to making it available for ML activities.
+The quality and integrity of the data is critical (the quality of output is determined by the quality of input) and must
+be suitably classified and labeled (i.e., assigning tags to make it more identifiable for predictive analysis). The data
+needs to be free of bias to certain regions, demographics, etc. This is one of the most time-consuming efforts in
+the process and ideally should be done by dedicated data scientists that possess distinct domain knowledge and
+expertise of the data. This aids in their ability to decide upon relevant data structuring, cleaning (i.e., removal or
+replacement of missing values), labeling, annotating, and preparation for further processing and use. The data
+preparation must also be documented and supported with evidence. This is imperative in order to achieve intended
+outcomes and regulatory compliance, as the understanding and preparation of data is directly attributable to proper
+selection, build, and testing of models.
+
+--- PAGE 276 ---
+Page 274
+Appendix D11
+31.3.2.4	 Data Transformation
+Putting together the data in an optimal format is known as feature transformation. This includes the format (e.g.,
+differing files), data cleaning (e.g., removing missing values), and feature extraction (e.g., identifying features or data
+elements most important for predicting speed and accuracy). Normalizing the dataset also helps to improve these
+circumstances by reducing dimensions.
+31.3.3	 Project Phase
+The output from this phase is an implementation of the AI/ML sub-system integrated into the overarching IT system
+together with extensive performance evaluation measures. Integral to this is the development of the training and
+performance evaluation infrastructure that supports training, tuning, and evaluating the models during the operation
+phase. Additional tools, supporting model construction or data preparation, may also be developed during this phase
+that are not be passed onto the operation phase and hence may not be subject to the same regulatory or operation
+requirements.
+This phase follows an iterative approach where successive versions of the AI/ML sub-system are specified, designed/
+selected, implemented, trained, tuned, and evaluated. This phase consists of a series of experiments that iteratively
+improves the design, implementation, and hyperparameter selection of the sub-system to optimize performance.
+31.3.3.1	 Model Requirements and Specifications
+At this stage, the initial set of requirements are defined that drives the development and defines the functionality
+required from the system and ML sub-system including performance.
+Nonfunctional requirements such as integration and deployment constraints should also be considered at this early
+stage to inform the choice of ML algorithms. Nonfunctional requirements also include a set of performance metrics.
+These are a detailed description of the output of the ML sub-system and how they compare to the gold standard to
+provide quantitative measures of how well the sub-system performs.
+31.3.3.2	 Model Design and Selection
+A ML model is selected based upon the question it is expected to answer (see Guiding Principle 6 in Joint US FDA/
+Health Canada/UK MHRA Good Machine Learning Practice for Medical Device Development: Guiding Principles
+[78]). Common types of models include:
+•
+Classification – categorize data into two or more classes
+•
+Clustering – recognize patterns by attribute to determine targeted action
+•
+Outlier – identify anomalous data
+•
+Forecasting – analyze patterns to predict the future
+For every type of model, there is a large selection of model subtypes or architectures. AI/ML projects can benefit
+significantly from deploying algorithms and techniques developed and applied to other applications and use cases.
+For a new system, it is unlikely that the choice of algorithm is so clear-cut that a decision can be made to fully specify
+the component and proceed to development at this stage. In order to determine which algorithm is most suitable and
+how it should be trained and evaluated, the candidates should be evaluated against the operational, performance,
+and if relevant, regulatory requirements.
+
+--- PAGE 277 ---
+Page 275
+Appendix D11
+31.3.3.3	 Model and Data Engineering
+This stage involves constructing the model architectures and the surrounding infrastructure for data input and
+evaluation that enables training and hyperparameter tuning of the models. The choice of model architecture
+determines the set of hyperparameters. Tasks include selecting and preparing the data for training iterations and
+recording results to allow comparison between trials of different hyperparameters and results from different versions
+of the architecture. Once setup, the infrastructure is then employed to execute a series of trials in which the model
+hyperparameters are altered to determine the set that result in the best model performance. Subsequent iterations of
+the development process refine the architecture driven by model test results.
+31.3.3.4	 Model Training
+Training a series of model instances by varying hyperparameter values and recording the results is performed
+during this stage. Hyperparameter optimization may involve manual selection and altering of the parameters after
+each iteration, or automated processes using exhaustive search or the more efficient Bayesian optimization of the
+hyperparameter space.
+Most ML algorithms possess many hyperparameters and hence, define a large hyperparameter space over which to
+optimize. However, the parameter space can be greatly reduced by applying knowledge of the algorithm and problem
+domain to identify the subset of hyperparameters whose values can be predetermined and fixed. Although libraries and
+infrastructures exist that allow for automated hyperparameter tuning, data scientists are advised not to take a completely
+hands-off approach to this activity. Dividing the hyperparameter search space experiments into smaller regions, by
+allowing only a subset of the hyperparameters to optimize for each experiment run, can provide useful insights on the
+effect of hyperparameters on the model training and performance, and lead to a more efficient tuning stage.
+During model training, the training dataset is supplied as input to the model and the resulting output is compared to
+the training data ground truth to measure the model’s performance and update the model parameters. The validation
+dataset is used to evaluate how well the model was trained and assists in fine tuning the model(s). For instance,
+does the defined input generate the correct output? This may require human verification and/or the use of tools.
+Validation is performed to provide evidence that the accuracy of the model and associated algorithms has detected/
+defined per output expectations. It is important to consider the need for multiple datasets as the data used may alter
+the original data and make it unavailable to revalidate. There must also be consideration for dealing with bias due to
+erroneous assumptions in data selection. This may happen, for instance, when the training dataset(s) is not large or
+representative enough.
+The output from this stage is a trained model using all the training data and an optimal or near-optimal set of
+hyperparameters. This is considered the best model given the existing fixed architecture and parameters that have
+been evaluated using the validation data. The iteration of model design – model engineering – hyperparameter
+tuning – model training – model evaluation reveals insights into the performance of the latest and previous models.
+This yields further evidence as to how the model architecture and training options may be altered to improve the
+performance; hence, a redesign or selection of an alternative model may be performed and evaluated.
+31.3.3.5	 Evaluation and Model Testing
+The evaluation and model testing stage is when the best performing models from the previous training and selection
+iteration are subjected to performance evaluation. The performance output from the models is compared to the
+gold standard labeled data to produce a set of aggregate and indicative performance metrics, or scorecards.
+These scorecards inform on the current performance and determine if additional iterations are required. (See
+Guiding Principle 8 in Joint US FDA/Health Canada/UK MHRA Good Machine Learning Practice for Medical Device
+Development: Guiding Principles [78].)
+
+--- PAGE 278 ---
+Page 276
+Appendix D11
+Many ML libraries incorporate the validation data evaluation into their training functions, thus automating much of
+this process. Data scientists, however, should be wary of relying on the quantitative measures for model evaluation.
+Visual qualitative evaluation of the validation results often leads to better insights on how the model is performing,
+allowing common error modes to be identified and addressed, and permit crucial refinement of the performance
+metrics to provide better alignment with the required outputs.
+When target model performance is achieved and/or no further changes to architecture are identified, then the best
+performing ML models are selected as the candidates for integration into the overarching IT system and deployed.
+31.3.3.6	 Model Integration and Deployment
+During this stage, the AL/ML algorithms and models are migrated from the development environment code, which
+supports fast prototyping and experimentation, to deployment target code that is cleaned and better fit for deployment
+and long-term maintenance. The process involves removing much of the code designed to support prototyping of
+candidate algorithms and experimentation. This includes identifying the parameters and algorithm choices to be
+adopted and removing candidate algorithms that did not yield the desired properties or performance.
+Key to this phase is modularization: to isolate the inference module of the code from the remaining code. Inference
+are the components of the code relating to the forward passing of the test or previously unseen data as input through
+to the output of the AI/ML sub-system. This excludes any function relating to validating the output against the ground
+truth, or code involved in altering the model parameters or hyperparameters.
+Integration also requires the specification and implementation of the interface between the AI/ML sub-system and
+overarching IT system.
+31.3.3.7	 Verification, Acceptance, and Release
+The final infrastructure for release, maintenance, and performance verification of the AI/ML sub-system is developed
+during this stage. Processes relating to the development, release, and maintenance of the AI/ML sub-system are
+defined to specify if, how, and when the functions of the developing AI/ML algorithms are verified. Choices must be
+made as to whether the training and possibly tuning of the ML models are included in these processes. For example,
+it may be decided to run the complete model training, hyperparameter tuning, and model performance cycle on the
+test data at regular intervals to verify functions of the code. Alternatively, it may be deemed that the model training
+and hyperparameter tuning are not part of the core code or infrastructure and is excluded from the verification
+process.
+The training data, excluded from all training and validation activities to date, is used as an independent dataset
+to provide confirmation of acceptable performance (i.e., verification) within the overarching application’s User
+Acceptance Testing (UAT) prior to deployment. This data provides the assurance that certain performance scoring
+and/or defined outcomes are achieved.
+At a minimum the process should specify and document how verification of the AL/ML sub-system shall be performed.
+The execution of such processes should result in the release of the first version of the AI/ML sub-system.
+31.3.4	 Operation Phase
+31.3.4.1	 Monitoring and Continuous Evaluation
+During the operational phase, the AI/ML sub-system should be continuously monitored and maintained. Such
+monitoring may result in the need to change or modify the AI/ML sub-system (see Guiding Principle 10 in Joint US
+FDA/Health Canada/UK MHRA Good Machine Learning Practice for Medical Device Development: Guiding Principles
+[78]).
+
+--- PAGE 279 ---
+Page 277
+Appendix D11
+For static systems, changes must be made in adherence with the organization’s change-management process
+(see Appendix M8), leveraging risk-based evaluation(s) with consideration on the impact to current and future
+production data to ensure it is robustly tested before deployment. For dynamic systems, appropriate metrics/KPIs and
+acceptable parameters/tolerance limits must be established to ensure that the algorithm is still operating as intended.
+A typical request might be that the system is poor at generalizing to a specific subclass of input data. A typical solution
+is to acquire and integrate data of this subclass into the training dataset. The integration of additional training data
+must be systematic in which every change in the performance is measured, validated, and understood.
+For example, upon acquiring the additional data, a portion of it could be assigned to the training set and another
+excluded from all model-training activities. Model training would proceed with the augmented training dataset with
+the realization that the additional subclass of data may result in an overall drop in performance due to the inclusion
+of more challenging data. Once trained, tested, and tuned, performance of the revised model should be staged by
+initially executing the evaluation processes with the original model on the augmented test dataset with an expectation
+that the performance may drop because of the increased challenge. Then, execution of the evaluation process
+with the revised model should take place, with an expectation that the performance measures achieve the desired
+acceptable level.
+31.3.4.2	 Performance/Trending
+In the operational phase it is possible to integrate, enrich, and prepare new data to further refine existing models,
+develop new predictive models, and establish performance monitoring measures to track ongoing effectiveness.
+There must exist quality control standards and/or measures to ensure acceptable performance throughout the
+model(s) usable life. [78]
+31.3.5	 Supporting Processes
+This section describes additional processes needed to support the life cycle of AI/ML systems. The processes
+presented should be used during all project phases.
+31.3.5.1	 Risk Management
+Risk management helps to drive much of the process and controls needed because it provides a direct indication
+of the possible harm that could happen in different scenarios. ML is about increasing efficiency while decreasing
+potential harm. It is imperative that possible scenarios and gaps from the traditional risk-management approach
+are determined; this means performing risk assessments and then assessing the additional risks of having ML
+intervention. This also needs to account for the volume and scope of the initial dataset in ensuring that all scenarios,
+features, etc., were properly trained, and that the training data was correctly labeled prior to use, as this could lead to
+additional requirements, etc., to be evaluated.
+Other risks for consideration include:
+•
+Use of external vendors/suppliers
+•
+Retainment of sufficient technical and scientific knowledge within the organization
+•
+Model maturity and extent of previous usage
+•
+Changes to production data and/or errant data
+•
+System performance, downtime, etc. (i.e., consider business continuity and potential data-loss scenarios)
+See Chapter 5 of the Main Body and Appendix M3 for additional details on risk management.
+
+--- PAGE 280 ---
+Page 278
+Appendix D11
+If the ML sub-system is static (i.e., offline where there are controlled and identifiable changes to the case data and
+algorithm) and all data acquisition and annotation are supervised (i.e., validated prior to being included in the case
+data), then standard data validation change-management processes should be sufficient.
+Dynamic ML sub-systems (i.e., online learning may be deployed to continually update the model parameters during
+operation as additional data is acquired) or the use of unsupervised data (where there is no ability to validate every
+single piece of data as it is included in the case data) will require additional controls such as continual and robust
+performance evaluation.
+In all cases, periodic review and monitoring of the model performance is needed to identify potential bias, overfitting,
+etc. The timing of reviews may be determined based on a defined interval and/or by activity such as the incorporation
+of new case data.
+31.3.5.2	 Data Governance
+Data governance is critical to the success of ML. Since all data is not created equal, the strategy should include
+awareness for data size, quality, and prevalence.
+Prior to the project phase kick-off, it should be determined if additional data will be needed and whether a separate
+project is required to obtain that data, determine its appropriateness for intended use, and prepare it for AI/ML sub-
+system development. Activities include format specification, selection, and application tools for data annotation and
+cleanup.
+The extent and format required for the data is driven by the performance metrics previously obtained; therefore, the
+training and ground-truth data must be in a form that will enable the desired measurement to be made. For example,
+for the task of image analysis object localization, the performance metric is specified as overlap agreement between
+the accepted standard and predicted outcome, which is measured by image segmentation. For a classification task,
+simple labeling of an image as containing a particular feature may be sufficient.
+See Chapter 3 of ISPE GAMP Guide: Records and Data Integrity [35] for additional details on data governance.
+31.3.5.3	 Change Management
+Change management is where data controls are integrated into system responses and the process used to maintain
+control of the system. Defined change management, data management, and quality risk management processes
+allow iterative change and retraining to protect patients and maintain compliance.
+User stories and system controls along with human intervention are a great place to start. Drafting a visual of the
+process with possible scenarios and mitigation can help identify weak points.
+Consider using inputs and outputs:
+•
+Input: Internal procedures may need to be adjusted or managed differently with the use of ML to meet regulatory
+needs
+•
+Output: Necessary regulatory deliverables required for change management such as if it is SaMD or a specific
+GxP software (i.e., a clinical system and a laboratory system can have very different approaches and documents
+needed for changes)
+•
+Input: Details about how a change is initiated and how it impacts the data
+See Section 4.2.5.2 of the Main Body and Appendix M8 for additional details on change management.
+
+--- PAGE 281 ---
+Page 279
+Appendix D11
+The motivation for changes to the AI/ML system may be driven by external factors, including:
+•
+Performance Requirements – changes made to improve performance may result in retraining or tuning of the
+models on existing datasets
+•
+Additional Inputs – changes to case data and/or algorithms to expand compatibility and increase generalization
+•
+Intended Use – changes made to significance of information, healthcare situation, condition
+

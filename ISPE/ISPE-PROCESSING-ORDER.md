@@ -16,7 +16,7 @@ Last updated: 2026-04-01
 | **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ✅ Complete | WFI/PW/PS utility systems. 18 section files, 14-tab merged document. |
 | **5** | `ISPE-Vol7` | ISPE Baseline Vol.7: Risk-Based Manufacture | 12 MB | ✅ Complete | Risk-MaPP framework. 11 section files, 9-tab merged document. |
 | **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ✅ Complete | 10 section files, 10-tab merged document. Directly bridges PDA TR66. |
-| **7** | `ISPE-GAMP5` | ISPE GAMP 5 (1st Ed.) | 5 MB | ⬜ Planned | ⚠️ Only 1st edition available — current standard is 2nd Ed. (2022). Upgrade when 2nd Ed. is obtained. |
+| **7** | `ISPE-GAMP5` | ISPE GAMP® 5 (2nd Ed., 2022) | 13 MB | 🔄 In Progress | 2nd edition obtained. 16 section files, 9-tab merged document. PDF extracted, all agents running. |
 | **8** | `ISPE-Vol6` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | 11 MB | ⬜ Planned | Bridges PDA PtC-14 (ATMP). Important for biologics/cell therapy facilities. |
 | **9** | `ISPE-GEP` | ISPE Good Engineering Practice | 8 MB | ⬜ Planned | GEP framework. Foundational but lower query frequency. Source text extracted (1 file in source/). |
 | **10** | `ISPE-CTC` | ISPE GPG CTC: Mapping and Monitoring | 4 MB | ⬜ Planned | Temperature monitoring. Bridges PDA TR39 / TR46. |
