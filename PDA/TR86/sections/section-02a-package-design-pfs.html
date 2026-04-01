@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2a: Challenges with Package Design — Prefilled Syringes | PDA TR86</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== PFS ANATOMY DIAGRAM ===== */
+.pfs-anatomy {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    background: #1e3a5f;
+    color: #a0d4f5;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    line-height: 1.6;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.pfs-anatomy .label-highlight {
+    color: #ffd966;
+    font-weight: bold;
+}
+
+.interface-badge {
+    display: inline-block;
+    background: #e53e3e;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin: 2px;
+}
+
+.interface-badge.secondary {
+    background: #d69e2e;
+}
+
+.interface-badge.tertiary {
+    background: #38a169;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 2a: Challenges with Package Design &mdash; Prefilled Syringes</h1>
+    <div class="subtitle">包裝設計挑戰：預充填注射器</div>
+    <div class="page-info">PDA Technical Report No. 86 (2021) &bull; Sections 4.0 &amp; 4.1 &bull; Pages p10&ndash;p17</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>Section Contents 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec-4-0">4.0 Overview 概述</a>
+            <a href="#sec-4-1">4.1 Prefilled Syringes 預充填注射器</a>
+            <a href="#sec-4-1-1">4.1.1 Design 設計</a>
+            <a href="#sec-4-1-2">4.1.2 Challenges 挑戰</a>
+            <a href="#sec-4-1-3">4.1.3 Test Method Considerations 測試方法考量</a>
+            <a href="#sec-4-1-4">4.1.4 Secondary Packaging 二次包裝</a>
+            <a href="#anatomy-table">PFS Anatomy Table 解剖表</a>
+        </div>
+    </div>
+
+    <!-- ===== BILINGUAL LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives 學習目標</h3>
+        <div class="two-column" style="margin-bottom:0;">
+            <div>
+                <strong>After studying this section, you will be able to:</strong>
+                <ul>
+                    <li>Explain why newer CCS designs (PFS, SUS, IV bags) present greater CCI challenges than legacy glass vials and ampoules</li>
+                    <li>Identify the three primary seal interfaces in a prefilled syringe and explain the CCI significance of each</li>
+                    <li>Describe the design differences among staked needle, luer lock, and luer cone/slip syringes</li>
+                    <li>Explain how silicone oil lubrication creates a dual role in PFS integrity — both enabling function and introducing risk</li>
+                    <li>Select appropriate deterministic CCIT methods for PFS and identify method adaptations required for assembled auto-injectors</li>
+                    <li>Assess secondary packaging operations (plunger rod insertion, finger flange, tray placement) for CCI impact</li>
+                    <li>Explain stopper movement dynamics during vacuum-based CCIT and describe mitigation strategies</li>
+                </ul>
+            </div>
+            <div>
+                <strong>完成本節學習後，你將能夠：</strong>
+                <ul>
+                    <li>解釋為何新型密封系統（預充填注射器、一次性使用系統、靜脈袋）比傳統玻璃瓶和安瓿帶來更大的 CCI 挑戰</li>
+                    <li>識別預充填注射器的三個主要密封界面，並解釋每個界面的 CCI 意義</li>
+                    <li>描述固定針、魯爾鎖和魯爾錐（滑動）注射器的設計差異</li>
+                    <li>解釋矽油潤滑在 PFS 完整性中的雙重角色——既能啟用功能，也會引入風險</li>
+                    <li>為 PFS 選擇適當的確定性 CCIT 方法，並識別組裝後自動注射器所需的方法調整</li>
+                    <li>評估二次包裝作業（插入活塞桿、手指翼緣、托盤放置）對 CCI 的影響</li>
+                    <li>解釋真空式 CCIT 期間活塞運動的動態，並描述緩解策略</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.0 — OVERVIEW
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Challenges with Package Design — Overview</h2>
+                <p>包裝設計挑戰 — 概述 &bull; Pages p10</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <!-- LEFT: Original Text -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Testing for CCI is intended to provide evidence of the use of appropriately matched components and an adequate closing process. Assurance of integrity is developed from consistency of the latter design parameters. This is simple with legacy CCS such as glass vials with stoppers or glass ampoules; however, the industry has progressed to using newer product delivery designs and different materials.</p>
+                    <p>These newer designs are more complex and introduce a new learning curve for developing leak detection methods. Section 4 will offer current knowledge and perspectives regarding the impact of current package designs on package integrity and the impact on the performance and selection of CCIT.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 實務觀點</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：CCI 的根本目的</h4>
+                        <p>CCI 測試的目的是<strong>提供證據</strong>，證明使用了相互匹配的元件，且密封過程充分。密封保證的基礎在於設計參數的一致性。</p>
+                        <p>簡單說：CCI 不只是「測漏」，更是驗證整個密封系統設計和製程是否合理。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明：傳統 vs. 新型包裝</h4>
+                        <p><strong>傳統 CCS（玻璃瓶 + 膠塞）</strong>就像標準門鎖——業界用了幾十年，密封原理清晰、驗證方法成熟。</p>
+                        <p><strong>新型包裝（PFS、SUS、IV 袋）</strong>就像智能鎖——功能更強，但結構更複雜，需要重新建立「怎麼測它是否真的密封好了」的方法論。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：新型包裝帶來的三大挑戰</h4>
+                        <ul>
+                            <li><strong>更多密封界面</strong>：每個界面都是潛在失效點</li>
+                            <li><strong>新材料風險</strong>：聚合物、彈性體對環境應力敏感</li>
+                            <li><strong>方法適用性問題</strong>：傳統 CCIT 方法未必適用於新型容器</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.0</h4>
+                        <ol>
+                            <li>為什麼傳統玻璃瓶（vial）的 CCI 測試開發比預充填注射器相對容易？請從密封界面數量和幾何形狀角度分析。</li>
+                            <li>「設計參數的一致性」（consistency of design parameters）在實務上如何轉化為製程控制要求？</li>
+                            <li>在 CDMO 環境下，當客戶從傳統玻璃瓶產品轉移到 PFS 平台時，CCI 策略需要做哪些主要調整？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.1 — PREFILLED SYRINGES (INTRO)
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1</div>
+            <div class="chapter-info">
+                <h2>Prefilled Syringes — Introduction</h2>
+                <p>預充填注射器 — 概述 &bull; Pages p10&ndash;p11</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Prefilled syringes and cartridges are now a common dosage form for injectables. Design has progressed from standard glass prefilled syringes to plastic alternatives as well as assembled auto-injection systems. All of these advances add complexity to better understanding integrity issues and add more specific challenges to developing an approach to CCI that fits into the lifecycle assessment.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 實務觀點</div>
+
+                    <div class="concept-box">
+                        <h4>PFS 發展歷程與複雜度遞增</h4>
+                        <p>預充填注射器（PFS）已成為注射劑的常見劑型，其發展脈絡：</p>
+                        <ul>
+                            <li><strong>第一代</strong>：標準玻璃 PFS（硼矽酸玻璃筒）</li>
+                            <li><strong>第二代</strong>：COP/COC 聚合物 PFS（更輕、更抗碎）</li>
+                            <li><strong>第三代</strong>：組裝式自動注射系統（auto-injectors、pen-injectors）</li>
+                        </ul>
+                        <p>每一代都增加了新的密封界面，使 CCI 驗證策略必須隨之演進。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>生命週期評估觀點</h4>
+                        <p>TR86 強調 CCI 必須納入<strong>生命週期評估</strong>（lifecycle assessment），這意味著：</p>
+                        <ul>
+                            <li>開發階段：建立 MALL（最大允許洩漏量），選擇方法</li>
+                            <li>驗證階段：確認方法性能，建立接受標準</li>
+                            <li>常規生產：持續監控，確認製程穩定</li>
+                            <li>穩定性研究：確認整個貨架期內 CCI 維持</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1</h4>
+                        <ol>
+                            <li>從 CDMO 的角度，客戶要求將產品從標準玻璃瓶改為 COP 聚合物 PFS，你需要重新評估哪些 CCI 要素？</li>
+                            <li>「生命週期評估」（lifecycle assessment）在 PFS 的 CCI 策略中具體指哪些階段？每個階段的 CCI 目標是什麼？</li>
+                            <li>PFS 的 auto-injector 組裝為何使 CCIT 更困難？請列舉至少兩個具體原因。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.1.1 — DESIGN
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-1-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.1</div>
+            <div class="chapter-info">
+                <h2>Prefilled Syringe Design</h2>
+                <p>預充填注射器設計 &bull; Pages p11&ndash;p13</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- PFS Anatomy Text Diagram -->
+            <div style="margin-bottom: 1.5rem;">
+                <h3 class="section-title">PFS Component Anatomy 元件解剖圖（文字版）</h3>
+                <div class="pfs-anatomy">
+  THUMB PAD (拇指墊)
+      |
+  PLUNGER ROD (活塞桿)
+      |
+  ====|====|====|====|====|====|====|====  &lt;-- FINGER FLANGE (手指翼緣)
+  |                                       |
+  |         BARREL (筒身)                  |  &lt;-- [Interface 3] Barrel geometry affects
+  |     [Drug Solution / 藥液]             |      stopper seal
+  |                                       |
+  |  [RIB 1 - Primary Seal 主要密封肋]    |
+  |====================================|  &lt;-- PLUNGER STOPPER (活塞塞)
+  |  [RIB 2 - Secondary Seal 次要密封肋]  |      [Interface 1] STOPPER-BARREL
+  |====================================|      *** PRIMARY BARRIER ***
+  |  [RIB 3 - Tertiary Seal 第三密封肋]  |
+  |====================================|
+  |                                       |
+  |         SHOULDER (肩部)               |
+  |                                       |
+  +-------+               +---------------+
+          |               |
+          +---[CONE]------+  &lt;-- TIP / SYRINGE CONE (注射器錐頭)
+                  |
+           [NEEDLE]  &lt;---- STAKED NEEDLE (固定針)
+                  |            [Interface 2] Needle-Needle Shield
+           [NEEDLE SHIELD]  &lt;-- [Interface 3] Barrel-Needle Shield
+           (針頭護蓋)
+                </div>
+                <p style="font-size:0.82rem; color: var(--text-medium); margin-top:0.5rem;"><em>Text-based anatomical diagram. Interfaces are numbered by CCI criticality. Interface 1 (stopper-barrel) = primary barrier. / 文字解剖圖。界面按 CCI 關鍵性編號。界面 1（活塞-筒身）= 主要屏障。</em></p>
+            </div>
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <h3>Three Seal Interfaces</h3>
+                    <p>Syringes are sealed at three key locations, called interfaces. The plunger stopper-barrel interface is the most common to all syringe (Fig. 4.1.1-1). Other interfaces are the needle-needle shield interface and the barrel-needle shield interface. For more detailed information on syringe design see PDA Technical Report No. 73: Prefilled Syringe User Requirements for Biotechnology Applications.</p>
+                    <p>The seal interface (or closures) for each configuration presents challenges for package integrity and CCI testing. In addition, the syringe design, materials of construction, components, manufacturing processes, secondary packaging, and auto-injectors may also impact the integrity and testing of a prefilled syringe.</p>
+                    <p>Since each type of syringe has its own type of closure system, unique considerations must be made for CCI of the barrel-closure interface. To maintain CCI, proper packaging and handling procedures should be in place to ensure that syringe closures remain properly positioned throughout the manufacture, fill-finish, and transportation of syringes.</p>
+                    <h3>Three Common PFS Designs</h3>
+                    <ul>
+                        <li><strong>Staked needle</strong> (barrel-closure and the needle shield-needle interfaces)</li>
+                        <li><strong>Luer lock</strong></li>
+                        <li><strong>Luer slip</strong> (or luer cone)</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 實務觀點</div>
+
+                    <div class="concept-box">
+                        <h4>三個密封界面的 CCI 重要性</h4>
+                        <p>PFS 的三個密封界面各有不同的 CCI 挑戰：</p>
+                        <ul>
+                            <li><span class="interface-badge">界面 1</span> <strong>活塞塞－筒身界面</strong>（Plunger Stopper-Barrel）：最關鍵的主要屏障，存在於所有注射器；活塞壓縮配合形成密封</li>
+                            <li><span class="interface-badge secondary">界面 2</span> <strong>針頭－針頭護蓋界面</strong>（Needle-Needle Shield）：固定針專有；針尖嵌入彈性體中形成密封；護蓋必須完全包覆針尖但不刺穿</li>
+                            <li><span class="interface-badge tertiary">界面 3</span> <strong>筒身－針頭護蓋界面</strong>（Barrel-Needle Shield）：確保整體針頭區域封閉性</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>三種 PFS 設計類型比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>設計類型</th>
+                                    <th>主要密封方式</th>
+                                    <th>主要 CCI 風險</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>固定針 Staked Needle</strong></td>
+                                    <td>針頭永久固定於筒身；彈性體護蓋</td>
+                                    <td>針頭未完全嵌入或刺穿護蓋；界面 2 &amp; 3 雙重風險</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>魯爾鎖 Luer Lock</strong></td>
+                                    <td>螺旋接頭 + 彈性體尖頭蓋 + 錐頭</td>
+                                    <td>矽油污染魯爾鎖適配器，影響密封性</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>魯爾錐/滑動 Luer Cone/Slip</strong></td>
+                                    <td>錐頭與尖頭蓋干涉配合</td>
+                                    <td>尖頭蓋鬆脫；矽油影響配合力</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CDMO 實務注意：矽油風險</h4>
+                        <p>TR86 明確指出，在魯爾鎖系統中，<strong>矽油污染魯爾鎖適配器</strong>可能影響密封完整性。這在實際生產中意味著：</p>
+                        <ul>
+                            <li>需要額外的產線清潔程序（line clearance）</li>
+                            <li>確保殘留矽油不在魯爾鎖適配器上聚集</li>
+                            <li>同樣適用於魯爾錐系統的尖頭蓋</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.1（界面與設計）</h4>
+                        <ol>
+                            <li>為什麼「活塞塞－筒身界面」被稱為「最關鍵的」密封界面？它在功能上與其他界面有何不同？</li>
+                            <li>對於固定針 PFS，針頭護蓋的定位驗證有什麼具體要求？「完全嵌入但不刺穿」這個標準如何在製程控制中落實？</li>
+                            <li>在你的 CDMO 環境中，如果需要在固定針與魯爾鎖設計之間選擇，你會考慮哪些 CCI 相關因素？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stopper & Plunger Design Deep Dive -->
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — Stopper &amp; Lubricity</div>
+                    <p>Elastomers and plunger stoppers provide excellent sealing properties when paired with glass and plastic containers. As with other pharmaceutical parenteral closures, halobutyl elastomers are most widely used for prefilled syringe plungers due to good drug compatibility. The elastomeric formulation must be carefully chosen and must be hard enough to provide sufficient rigidity for consistent functionality, while allowing the viscoelastic properties of the plunger material to provide closure properties.</p>
+                    <p>The design of the plunger provides CCI and functionality of the system. To take advantage of the compressibility of the elastomer material, the plunger is designed to be slightly larger in circumference than the inner diameter of the chosen barrel.</p>
+                    <p>ISO 11040-5:2012 recommends that plungers be designed to use all three ribs. In general, the rib closest to the drug is considered the primary sealing rib; the second and third ribs are meant to stabilize the seal and provide secondary CCI assurance.</p>
+                    <p>The use of lubricity coatings on the syringe barrel will influence the ability of the container system to create CCI. Silicone oil and vapor-deposited coatings are the most commonly used. When silicone oil is sprayed on the inside of the barrel, the coating may or may not be heat-treated. Excess lubricity coating may result in the plunger moving too freely during transit, causing a breach in CCI.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 活塞設計重點</div>
+
+                    <div class="concept-box">
+                        <h4>活塞塞設計：三肋原理</h4>
+                        <p>活塞塞（Plunger Stopper）的密封原理基於<strong>壓縮配合</strong>（compression fit）：</p>
+                        <ul>
+                            <li>活塞外徑 &gt; 筒身內徑 → 形成壓縮密封</li>
+                            <li><strong>第一肋（最靠近藥液）</strong>：主要密封肋 — 主要 CCI 屏障</li>
+                            <li><strong>第二肋</strong>：穩定密封，提供次要 CCI 保證</li>
+                            <li><strong>第三肋</strong>：第三 CCI 保證層，通常也連接活塞桿</li>
+                        </ul>
+                        <p>ISO 11040-5:2012 規定應利用所有三個肋來最大化密封效果。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明：矽油的雙面角色</h4>
+                        <p>矽油（Silicone oil）就像汽車引擎中的機油——它讓活動部件順暢運作，但用量必須精確控制：</p>
+                        <ul>
+                            <li><strong>矽油太少</strong>：活塞起始力（break-loose force）過大 → 難以注射，功能不佳</li>
+                            <li><strong>矽油適量</strong>：功能正常，活塞壓緊筒身壁維持 CCI</li>
+                            <li><strong>矽油太多</strong>：活塞在運輸中可能自由滑動 → 藥液外洩，CCI 失效</li>
+                        </ul>
+                        <p>此外，未經熱固定的矽油在活塞推出時，壓力會將矽油推離界面——這反而<strong>有利於 CCI</strong>（活塞被「鎖住」），但代價是起始推力增大。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>氟聚合物塗層的額外考量</h4>
+                        <p>部分活塞塞表面有<strong>氟聚合物積層薄膜</strong>（fluoropolymer laminate film），可改善藥物相容性。但需注意：</p>
+                        <ul>
+                            <li>機械安裝（推管法）時，壓縮和推送可能在薄膜上產生<strong>皺褶</strong></li>
+                            <li>皺褶可能影響 CCI 性能，需評估</li>
+                            <li>真空塞封法較不易產生皺褶，但真空設定不正確可能導致藥液沸騰</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.1（活塞與潤滑）</h4>
+                        <ol>
+                            <li>活塞塞的三個肋在 CCI 中各扮演什麼角色？如果第一肋發生輕微缺陷，第二、三肋能否提供足夠的補救？</li>
+                            <li>矽油用量過多和過少分別會導致什麼 CCI 問題？製程中如何控制矽油用量的一致性？</li>
+                            <li>真空塞封（vacuum stoppering）與機械推管法（mechanical rod insertion）在 CCI 風險上各有什麼優缺點？</li>
+                            <li>「熱固定矽油」（heat-treated silicone oil）對 CCI 和注射功能各有什麼影響？這種技術在實際生產中如何選擇？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cartridge Systems -->
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — Cartridge Systems</div>
+                    <p>For cartridge containers, CCI is maintained by a crimped combination seal (also known as a lined seal or rubber septum) on one end of the cartridge and an elastomeric plunger on the other end. The pen-injector may be a single-dose cartridge that uses a monolayer combination seal, or it may be a multidose cartridge that uses a bilayer combination seal. Cartridges may also consist of a single or dual chamber. Various options exist for dual-chambered cartridges including liquid-liquid, liquid-lyophilized powder, or liquid-powder chambers.</p>
+                    <p>The cartridge container must form a secure seal at the combination seal, cartridge, and cartridge plunger to ensure the system maintains CCI. For dual-chambered cartridges, specific consideration should be given to compatibility of the cartridge bypass feature (internal or external) and the cartridge plunger.</p>
+                    <p>Combination seals perform a vital sealing function in a cartridge system. The combination seal must be adequately crimped to the cartridge with the appropriate compression to maintain CCI. During multiple use, the combination seal will be punctured multiple times and must maintain integrity throughout use and product shelf life. For multidose applications, an appropriate combination seal should be selected, including a bilayer elastomer with robust resealing properties.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 卡匣系統</div>
+
+                    <div class="concept-box">
+                        <h4>卡匣（Cartridge）系統的 CCI 架構</h4>
+                        <p>卡匣系統常用於<strong>筆型注射器</strong>（pen-injectors），其密封設計與 PFS 不同：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>密封位置</th>
+                                    <th>密封元件</th>
+                                    <th>特殊考量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>前端（注射端）</td>
+                                    <td>捲邊組合封（crimped combination seal）</td>
+                                    <td>多次穿刺後需維持密封（多劑型）</td>
+                                </tr>
+                                <tr>
+                                    <td>後端（推注端）</td>
+                                    <td>彈性體活塞</td>
+                                    <td>雙腔卡匣需考慮隔膜旁通相容性</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>多劑型卡匣的特殊 CCI 挑戰</h4>
+                        <p>多劑型卡匣（multidose cartridge）面臨特殊的 CCI 挑戰：組合封需要在<strong>每次穿刺後重新自封</strong>（resealing）。因此：</p>
+                        <ul>
+                            <li>需選用<strong>雙層彈性體</strong>（bilayer elastomer），具有強韌的重封性能</li>
+                            <li>CCI 測試必須包括<strong>最大穿刺次數</strong>的情境</li>
+                            <li>ISO 13926-3 中的重封性測試與 CCI 測試是不同的概念，不可混淆</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.1（卡匣系統）</h4>
+                        <ol>
+                            <li>雙腔卡匣（dual-chamber cartridge）中「旁通功能」（bypass feature）的設計如何影響 CCI 測試策略？</li>
+                            <li>多劑型卡匣的「重封性」（resealing）測試與 CCI 測試有何本質差異？為什麼 ISO 13926-3 的重封測試不構成 CCI 測試？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         PFS COMPONENT ANATOMY TABLE
+         ================================================================ -->
+    <div class="chapter-section" id="anatomy-table">
+        <div class="chapter-divider">
+            <div class="chapter-badge">T</div>
+            <div class="chapter-info">
+                <h2>PFS Component Anatomy Table — CCI Reference</h2>
+                <p>PFS 元件解剖表 — CCI 參考 &bull; Cross-section summary</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <p style="margin-bottom:1rem; font-size:0.92rem;">The table below summarizes all major PFS components, their function, CCI relevance, and testing challenges. This is a synthesis of Section 4.1.1 content for rapid study and review.</p>
+            <p style="margin-bottom:1rem; font-size:0.92rem; color:#2c5282;">下表整合 4.1.1 節的所有主要 PFS 元件，包括功能、CCI 相關性及測試挑戰，供快速複習使用。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component 元件</th>
+                        <th>Function 功能</th>
+                        <th>CCI Relevance CCI 相關性</th>
+                        <th>Testing Challenge 測試挑戰</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Barrel 筒身</strong><br><em>(glass or polymer)</em></td>
+                        <td>Primary container for drug product; structural support for all interfaces</td>
+                        <td>Barrel geometry (inner diameter, roundness) directly determines compression fit of stopper and thus primary seal quality</td>
+                        <td>Polymer barrels subject to physicochemical change under heat, irradiation, mechanical stress; dimensional variation across batches</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Plunger Stopper 活塞塞</strong><br><em>(halobutyl elastomer, ±FPT laminate)</em></td>
+                        <td>PRIMARY BARRIER — seals drug product from the rear; enables drug delivery via axial compression</td>
+                        <td>Interface 1 (stopper-barrel): most critical CCI point in any syringe design. Three-rib structure provides layered sealing assurance</td>
+                        <td>Stopper movement under vacuum/pressure differential during CCIT can reduce method sensitivity; FPT laminate wrinkling during mechanical insertion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Plunger Rod 活塞桿</strong></td>
+                        <td>Transmits force from user/device to plunger stopper; enables drug expulsion</td>
+                        <td>Insertion can disturb stopper-barrel interface; secondary packaging step requiring CCI re-evaluation</td>
+                        <td>Rod insertion torque/force may displace stopper; CCIT should be re-evaluated after rod insertion for finished syringe</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staked Needle 固定針</strong></td>
+                        <td>Drug delivery conduit; permanently affixed to barrel at fill-finish</td>
+                        <td>Creates Interface 2 (needle-needle shield) — drug directly contacts needle lumen; any gap = direct sterility risk</td>
+                        <td>Needle positioning must be verified: fully embedded but not piercing through shield; shipping may cause displacement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Needle Shield 針頭護蓋</strong><br><em>(rigid or flexible elastomer)</em></td>
+                        <td>Protects needle; maintains Interface 2 (needle-elastomer) and Interface 3 (barrel-shield) closure</td>
+                        <td>Dual interface sealing: needle must be fully embedded in elastomeric portion; shield must be properly seated on barrel</td>
+                        <td>Shield adhesion force may be compromised by silicone contamination; auto-injector spring forces can stress shield positioning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tip Cap / Luer Cap 尖頭蓋 / 魯爾蓋</strong><br><em>(for luer lock and luer slip)</em></td>
+                        <td>Seals the front opening of luer-type syringes; replaced by staked needle in staked needle designs</td>
+                        <td>For luer lock: cap + adapter + cone form sealing surface. For luer slip: cap + cone interference fit forms seal</td>
+                        <td>Silicone oil at tip can compromise cap adhesion; cone glazing/coating must be uniformly distributed to prevent dislodgement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Barrel Lubricity Coating 筒身潤滑塗層</strong><br><em>(silicone oil or vapor-deposited)</em></td>
+                        <td>Reduces friction to allow plunger movement during filling, assembly, and injection</td>
+                        <td>Critical dual role: adequate coating enables functionality; excess coating allows stopper to move too freely during transport, breaching CCI</td>
+                        <td>Silicone oil may block defects (false negatives in probabilistic methods like dye ingress); out-gassing under vacuum; polymer barrels show surface staining with dyes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Finger Flange 手指翼緣</strong><br><em>(secondary packaging component)</em></td>
+                        <td>Ergonomic support for injection; enables correct two-finger injection technique</td>
+                        <td>Flange placement (clipping plastic flange onto glass barrel flange) carries fracture risk; broken syringe = total CCI failure</td>
+                        <td>100% visual inspection required; glass fracture may be invisible without adequate lighting/magnification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combination Seal 組合封</strong><br><em>(cartridge systems only)</em></td>
+                        <td>Provides front-end closure for cartridge; re-sealable for multidose applications</td>
+                        <td>Must maintain CCI through all expected punctures; compression from crimping must be adequate</td>
+                        <td>Resealability testing (ISO 13926-3) ≠ CCI testing; must test at maximum puncture count for multidose products</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.1.2 — CHALLENGES
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-1-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.2</div>
+            <div class="chapter-info">
+                <h2>Prefilled Syringe Challenges</h2>
+                <p>預充填注射器挑戰 &bull; Pages p14&ndash;p16</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Polymer PFS Challenges -->
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — Polymer PFS</div>
+                    <p>Alternate materials of construction provide additional challenges with design. Prefilled syringes made of glass have long been available. Polymeric (or plastic) syringes in single-use or combination formats are available as an alternate material and have some advantages over glass. Prefilled plastic or polymer syringes contain a barrel typically made from cyclic olefin polymers or copolymers (COP/COC). Polymer barrel materials are stronger, tougher, and more flexible, allowing for improved design and dimension control; consequently, they are used more often and, in some cases, seen as a potential replacement for glass syringes.</p>
+                    <p>Syringes composed of polymers or copolymers present additional CCI risks. Polymeric materials are prone to undergoing physicochemical changes upon exposure to heat, oxygen, irradiation, mechanical stresses, or various combinations of such stress conditions throughout manufacturing, sterilization, and storage. These risks are related not only to the syringe barrel design, but to its molding and sterilization processes, downstream handling, packaging, and distribution processes, all of which must be identified, assessed, evaluated, and mitigated.</p>
+                    <p>The supplier of plastic syringe components is responsible for establishing and validating design requirements as well as critical process parameters (CPPs) for ensuring CCI. Appropriate CCIT methods should be applied to verify that the inherent leak rate of the syringe design conforms, at a minimum, to the MALL specified in USP &lt;1207&gt; for preserving product sterility and drug formulation content.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 聚合物 PFS 挑戰</div>
+
+                    <div class="concept-box">
+                        <h4>聚合物 PFS vs. 玻璃 PFS：CCI 差異比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>特性</th>
+                                    <th>玻璃 PFS</th>
+                                    <th>聚合物（COP/COC）PFS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>尺寸穩定性</td>
+                                    <td>高（剛性）</td>
+                                    <td>較高但受溫度影響</td>
+                                </tr>
+                                <tr>
+                                    <td>機械強度</td>
+                                    <td>易碎</td>
+                                    <td>較耐衝擊</td>
+                                </tr>
+                                <tr>
+                                    <td>滅菌耐受性</td>
+                                    <td>耐高溫、輻照</td>
+                                    <td>輻照可能引起理化變化</td>
+                                </tr>
+                                <tr>
+                                    <td>氣體滲透</td>
+                                    <td>極低</td>
+                                    <td>有一定滲透率，需評估</td>
+                                </tr>
+                                <tr>
+                                    <td>染料染色</td>
+                                    <td>不易染色</td>
+                                    <td>可能被染料著色 → 干擾染液滲入法</td>
+                                </tr>
+                                <tr>
+                                    <td>真空出氣</td>
+                                    <td>極低</td>
+                                    <td>可能出氣 → 干擾真空衰減法</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>責任分工：供應商 vs. MAH</h4>
+                        <p>TR86 明確了聚合物 PFS 的責任分工：</p>
+                        <ul>
+                            <li><strong>塑膠注射器元件供應商</strong>：負責建立和驗證設計要求及 CPPs</li>
+                            <li><strong>上市許可持有人（MAH）</strong>：負責定義產品特定的 CCI 要求（如 MALL），並確保塑膠筒身和彈性體活塞形成一個符合要求的整合系統</li>
+                        </ul>
+                        <p>在 CDMO 環境中，這意味著需要明確合約規範，確定每方的 CCI 相關責任。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明：聚合物的「壓力疲勞」</h4>
+                        <p>聚合物 PFS 就像塑膠水瓶——新的時候很牢固，但長期暴露在高溫、UV、機械應力下，材料會逐漸劣化（老化、變脆）。對 PFS 來說，這意味著：</p>
+                        <ul>
+                            <li>滅菌條件（熱、輻照）→ 材料理化變化 → 密封性能下降</li>
+                            <li>長期儲存 → 尺寸蠕變（creep）→ 活塞壓縮力降低</li>
+                            <li>這些都必須在穩定性研究中追蹤和驗證</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.2（聚合物 PFS）</h4>
+                        <ol>
+                            <li>為什麼聚合物 PFS 的氣體滲透率（gas permeation rate）在 CCI 評估中需要單獨考慮？它與傳統意義上的「洩漏」有何不同？</li>
+                            <li>在聚合物 PFS 的 CCIT 方法選擇中，為什麼真空衰減法（vacuum decay）和染液滲入法（dye ingress）可能存在特殊的干擾問題？如何解決？</li>
+                            <li>聚合物 PFS 的穩定性研究設計應包含哪些 CCI 相關測試點？請結合 ICH 指南要求思考。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filling & Stoppering Impact -->
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) — Filling, Stoppering &amp; Fill Volume</div>
+                    <p>Filling and stoppering a prefilled syringe may impact CCI. When using mechanical means of placing the plunger stopper, the stopper may be compressed into a tube, the tube inserted into the syringe, and a metal rod used to push the stopper out of the tube where it expands to form a compression fit inside the syringe barrel. If the plunger is laminated with a fluoropolymer coating, the compression and pushing may create wrinkles on the plunger which should be evaluated for any impact to CCI.</p>
+                    <p>Vacuum stoppering is another means of stoppering the syringe; it involves creating a vacuum in the syringe, thus pulling the plunger into the syringe. Vacuum methods are less likely to create wrinkles on a fluoropolymer coating, but an incorrect vacuum setting may cause the filled liquid in the syringe to boil, creating other concerns.</p>
+                    <p>The fill volume of samples should be sufficient to conduct the testing method. For example, if dye ingress testing will include spectrophotometric testing, the volume of fill must be sufficient to fill the cuvette used by the instrument. In the case of HVLD, the fill volume must be sufficient for the conducting liquid to cover any defects.</p>
+                    <p>In laser-based headspace oxygen analysis, the sample fill level should allow a minimum headspace volume. The laser light should be able to pass through the headspace region of the sample without being scattered by the liquid product or by the syringe shoulder.</p>
+                    <p>A filled syringe without secondary items, such as plunger rod, backstop, label, or anti-needle stick device, is referred to as a semi-finished syringe. Once all the desired components are added, the syringe is referred to as a finished syringe. Since the addition of these secondary items may impact different seal interface points, the CCI of the finished syringe should be assessed.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 灌裝塞封影響</div>
+
+                    <div class="concept-box">
+                        <h4>半成品與成品注射器的 CCI 策略</h4>
+                        <p>TR86 明確區分兩個關鍵狀態：</p>
+                        <ul>
+                            <li><strong>半成品注射器（Semi-finished Syringe）</strong>：已灌裝密封，但尚未添加活塞桿、背封、標籤、防針刺裝置等</li>
+                            <li><strong>成品注射器（Finished Syringe）</strong>：所有元件均已安裝</li>
+                        </ul>
+                        <p>由於二次包裝步驟可能影響密封界面，<strong>成品注射器的 CCI 必須單獨評估</strong>，不能僅依賴半成品的測試結果。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>填充體積對 CCIT 方法的影響</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CCIT 方法</th>
+                                    <th>填充體積要求</th>
+                                    <th>原因</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>染液滲入 + 分光光度計</td>
+                                    <td>需足夠填滿比色皿</td>
+                                    <td>樣本體積不足無法有效檢測</td>
+                                </tr>
+                                <tr>
+                                    <td>HVLD（高電壓洩漏偵測）</td>
+                                    <td>需覆蓋所有可能缺陷位置</td>
+                                    <td>導電液體必須接觸缺陷才能形成電流通路</td>
+                                </tr>
+                                <tr>
+                                    <td>雷射頭空間氧分析</td>
+                                    <td>需保留最小頭空間體積</td>
+                                    <td>雷射光束必須能穿過頭空間，不被液體或肩部散射</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CDMO 實務：灌裝塞封工藝選擇對 CCI 的影響</h4>
+                        <p>在 CDMO 的 Fill-Finish 操作中，塞封工藝選擇影響 CCI：</p>
+                        <ul>
+                            <li><strong>機械推管法</strong>：活塞先壓縮進導管，再推入筒身膨脹密封。FPT 積層活塞容易產生皺褶，需在工藝開發中評估</li>
+                            <li><strong>真空塞封法</strong>：較溫和，不易產生皺褶，但真空設定必須精確。真空不足 → 活塞無法正確定位；真空過強 → 藥液沸騰</li>
+                            <li>工藝驗證（PV）應包括 CCI 測試，確認塞封工藝的 CPPs 範圍</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.2（灌裝與填充體積）</h4>
+                        <ol>
+                            <li>在你的設施中，如果需要為一個低填充體積的 PFS（如 0.5 mL）選擇 CCIT 方法，哪些方法可能因填充體積限制而不適用？如何解決？</li>
+                            <li>真空塞封的「真空設定不正確導致藥液沸騰」在實際操作中如何預防？需要建立哪些製程控制點？</li>
+                            <li>從 CCI 角度，為什麼「半成品 CCI 合格」不等於「成品 CCI 合格」？請舉一個具體的二次包裝步驟來說明。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.1.3 — TEST METHOD CONSIDERATIONS
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-1-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.3</div>
+            <div class="chapter-info">
+                <h2>Test Method Considerations for Prefilled Syringes</h2>
+                <p>預充填注射器的測試方法考量 &bull; Pages p16&ndash;p17</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>Decisions regarding which CCIT method to select for prefilled syringes should be based on packaged product physical properties such as density, viscosity, electrical conductivity, molecule size, and evaporation capability.</p>
+                    <p>Although many methods are available for CCIT of prefilled syringe or cartridge systems, CCIT after the assembly of prefilled syringes with auto-injectors or pen-injectors creates a new set of challenges. Disposable auto-injectors are designed to avoid tampering with the primary packaging container. Consequently, using the standard battery of CCIT methods like dye ingress, HVLD, and vacuum decay may not be suitable for this purpose; instead, they must be adapted. An adaptation may involve disassembly of the device before testing, which should verify that the disassembly method does not impact integrity or accept the decreased method sensitivity that testing the intact device would allow.</p>
+                    <p>Risk assessment of a fully assembled syringe and device and its impact on CCIT should be considered. The following factors could compromise the CCIT and may need to be evaluated as part of the design verification:</p>
+                    <ul>
+                        <li>Forces applied onto the primary container closure during final assembly, storage, and use of the device that may cause breakage or defects.</li>
+                        <li>Critical forces on the needle shield (rigid or flexible needle shield), cartridge septum, or cartridge cap.</li>
+                        <li>Critical forces on the plunger stopper (in cartridges or prefilled syringes).</li>
+                    </ul>
+                    <p>Testing the actual packaged product for CCI is preferred; however, some solution properties inhibit leak detection, preventing direct testing. When the physical properties of a packaged product inhibit the use of otherwise suitable technologies, surrogate solutions may be used. For example, protein-based drug products are known for their propensity to dry in created defects; this inhibits the ability to detect those created defects by otherwise sensitive, deterministic technologies.</p>
+                    <p>Stopper movement should be deliberately managed during CCIT. If the test methods exploit a pressure differential between the container interior and the test chamber (e.g., vacuum decay and mass extraction), stopper movement should be minimized. Stopper movement, and the resulting change in headspace volume, will reduce the pressure differential, possibly reducing the sensitivity of the method.</p>
+                    <p>The application of a pressure differential to the prefilled syringe during CCIT may cause the stopper to move outward and then move back to its ordinary position once the pressure differential is removed. Stopper movement might allow entry of unwanted foreign matter; in addition, microbial contamination can be caused that could compromise the product. The adoption of technical solutions to prevent stopper movement during testing is recommended. For instance, in a vacuum decay system, one way to overcome this risk is to balance the outward stopper movement with a force equal in magnitude and opposite in direction to that of the stopper itself; this can be achieved by using a contrast pin in the test chamber.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 測試方法選擇</div>
+
+                    <div class="concept-box">
+                        <h4>PFS 的 CCIT 方法選擇框架</h4>
+                        <p>TR86 強調 PFS 的 CCIT 方法選擇應基於<strong>產品物理性質</strong>：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>物理性質</th>
+                                    <th>相關 CCIT 方法</th>
+                                    <th>影響</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>電導率（conductivity）</td>
+                                    <td>HVLD</td>
+                                    <td>導電液體才能用 HVLD；非水溶液或低電導率製劑不適用</td>
+                                </tr>
+                                <tr>
+                                    <td>密度 / 蒸發性</td>
+                                    <td>真空衰減（vacuum decay）</td>
+                                    <td>揮發性溶劑可能影響腔室壓力訊號</td>
+                                </tr>
+                                <tr>
+                                    <td>分子大小</td>
+                                    <td>示蹤氣體（tracer gas）</td>
+                                    <td>需考慮氣體分子能否通過微小缺陷</td>
+                                </tr>
+                                <tr>
+                                    <td>蛋白質 / 高黏度</td>
+                                    <td>代用液（surrogate solution）</td>
+                                    <td>蛋白質易在缺陷處乾燥結痂 → 封堵缺陷 → 假陰性</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>活塞移動問題：CCI 測試的特有難題</h4>
+                        <p>這是 PFS 有別於其他容器（如瓶子）的最大 CCIT 挑戰。當真空衰減或質量萃取法施加壓差時：</p>
+                        <ul>
+                            <li>外部真空 → 筒內相對正壓 → 活塞向外（朝針頭端）移動</li>
+                            <li>活塞移動 → 頭空間體積增大 → 壓差降低 → 方法靈敏度下降</li>
+                            <li>更危險的是：活塞移動可能引入異物或微生物污染</li>
+                            <li>壓差移除後，活塞可能移回，<strong>掩蓋污染事件</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>對位針（Contrast Pin）：緩解活塞移動的工程解決方案</h4>
+                        <p>在真空衰減測試系統中，可以使用<strong>對位針</strong>（contrast pin）來抵抗活塞移動：</p>
+                        <ul>
+                            <li>對位針施加一個<strong>等大反向</strong>的力，抵消真空造成的活塞外移趨勢</li>
+                            <li>這樣既可施加足夠的測試壓差，又能保持活塞位置穩定</li>
+                            <li>這是 PFS 真空衰減 CCIT 的重要設備設計考量</li>
+                        </ul>
+                        <p>在 CDMO 評估 CCIT 設備時，應詢問供應商是否有針對 PFS 的對位針設計。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明：蛋白質「堵塞缺陷」問題</h4>
+                        <p>蛋白質藥物（如抗體）就像蛋液——缺陷越小，蛋白質越容易在缺陷開口處乾燥形成「膜」，把缺陷堵住。</p>
+                        <p>這就是為什麼即使靈敏的確定性方法（如真空衰減）也可能在蛋白質藥物中漏檢真實缺陷。解決方案：使用<strong>注射用水（WFI）作為代用液</strong>進行方法性能驗證，再結合真實產品的橋接研究。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Auto-injector 組裝後的 CCIT 選項</h4>
+                        <p>PFS 組裝進 auto-injector 或筆型注射器後，CCIT 面臨兩種策略：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>策略</th>
+                                    <th>方法</th>
+                                    <th>驗證要求</th>
+                                    <th>主要挑戰</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>拆解後測試</strong></td>
+                                    <td>先拆解裝置，再測試裸 PFS</td>
+                                    <td>必須驗證拆解方法不影響完整性</td>
+                                    <td>拆解本身可能損壞密封；不反映裝置組裝狀態</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>完整裝置測試</strong></td>
+                                    <td>直接測試已組裝裝置</td>
+                                    <td>接受方法靈敏度降低；充分評估裝置對信號的遮蔽效應</td>
+                                    <td>裝置外殼阻擋信號；靈敏度可能不足以檢測小缺陷</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>風險評估必須涵蓋裝置組裝、儲存和使用過程中對主要容器密封系統施加的所有力。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.3</h4>
+                        <ol>
+                            <li>對於一個高濃度單抗（mAb）PFS 產品，為什麼直接使用真實產品進行 CCIT 可能出現假陰性？如何設計一個既符合法規要求又能真實反映 CCI 狀態的方法驗證方案？</li>
+                            <li>解釋「活塞移動降低真空衰減靈敏度」的物理原理。對位針（contrast pin）是如何在物理上解決這個問題的？</li>
+                            <li>如果你的 CDMO 接到一個 auto-injector 產品的 CCI 測試委託，你會建議採用「拆解後測試」還是「完整裝置測試」策略？請說明你的決策依據和風險評估框架。</li>
+                            <li>HVLD 在 PFS 測試中有哪些優勢和限制？對於蛋白質製劑和低電導率製劑各有什麼考量？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 4.1.4 — SECONDARY PACKAGING CONSIDERATIONS
+         ================================================================ -->
+    <div class="chapter-section" id="sec-4-1-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.4</div>
+            <div class="chapter-info">
+                <h2>Additional Considerations for Secondary Packaging</h2>
+                <p>二次包裝的額外考量 &bull; Pages p17</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+                    <p>A risk-based analysis should be performed to determine if any of the secondary packaging operations could impact CCI, and if CCIT should be performed to confirm that the integrity of the primary container system is maintained. If such a unit operation is identified, a CCI study should be performed on worst-case samples to demonstrate that the unit operation does not impact container integrity.</p>
+                    <p>With the increasing use of self-administered prefilled syringes, secondary packaging of the filled syringe following completion of primary packaging takes place prior to distribution. Secondary packaging typically consists of (in order) plunger rod placement, finger flange placement, labeling, tray placement, and carton insertion.</p>
+                    <p>Secondary packaging of a prefilled syringe can be performed manually by a technician, by a fully automated packaging line, or by a combination of manual and automated packaging.</p>
+                    <p><strong>Plunger Rod Placement:</strong> The most commonly used method is screwing the plunger rod into the back of the threaded stopper. The stopper serves as the primary barrier that maintains container integrity. Consequently, the process of inserting the plunger rod should be evaluated to determine if CCIT should be performed on the syringe after the plunger rod has been inserted to confirm that integrity has been maintained.</p>
+                    <p><strong>Finger Flange Placement:</strong> The main risk this operation poses to CCI is fracture of the syringe. To ensure that no broken or cracked syringes enter the supply chain, a 100% visual inspection must be performed. Given that the glass syringe is the primary container, an evaluation should be performed to determine if CCIT is required.</p>
+                    <p><strong>Tray Placement and Carton Insertion:</strong> The tray may contain one syringe or multiple syringes. The tray is then placed inside a carton for distribution. The operation of placing the syringe in the tray should be evaluated to determine if CCIT is required on the packaged syringe.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">中文解說 &amp; 二次包裝 CCI 管理</div>
+
+                    <div class="concept-box">
+                        <h4>二次包裝的標準流程順序</h4>
+                        <p>TR86 明確了自我注射 PFS 的典型二次包裝作業順序：</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level"><span class="hierarchy-box level-1">主要包裝完成（灌裝 + 塞封）</span></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><span class="hierarchy-box level-2">1. 活塞桿安裝（Plunger Rod Placement）</span></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><span class="hierarchy-box level-2">2. 手指翼緣安裝（Finger Flange Placement）</span></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><span class="hierarchy-box level-2">3. 標籤貼附（Labeling）</span></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><span class="hierarchy-box level-2">4. 托盤放置（Tray Placement）</span></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><span class="hierarchy-box level-3">5. 裝盒（Carton Insertion）→ 完成品</span></div>
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>各二次包裝作業的 CCI 風險分析</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>作業</th>
+                                    <th>CCI 風險機制</th>
+                                    <th>必要的控制措施</th>
+                                    <th>CCIT 必要性</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>活塞桿安裝</strong></td>
+                                    <td>螺旋轉入時對活塞塞施加扭矩，可能擾動活塞-筒身界面</td>
+                                    <td>扭矩控制；工藝驗證</td>
+                                    <td><span class="badge yellow">需評估是否需要</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>手指翼緣安裝</strong></td>
+                                    <td>夾扣塑膠翼緣可能導致玻璃筒身破裂</td>
+                                    <td>100% 目檢（必要）</td>
+                                    <td><span class="badge yellow">評估是否額外需要 CCIT</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>標籤貼附</strong></td>
+                                    <td>通常風險較低，但需考慮標籤材料與聚合物筒身的相容性</td>
+                                    <td>材料相容性研究</td>
+                                    <td><span class="badge green">通常不需要</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>托盤放置</strong></td>
+                                    <td>機械放置力可能造成衝擊；托盤固定方式影響注射器穩定性</td>
+                                    <td>設備力量調整；最差情況研究</td>
+                                    <td><span class="badge yellow">需評估</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>裝盒</strong></td>
+                                    <td>壓縮力；物流振動傳遞</td>
+                                    <td>包裝設計緩衝；運輸模擬</td>
+                                    <td><span class="badge yellow">需評估</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>風險評估驅動的 CCIT 決策原則</h4>
+                        <p>TR86 的核心訊息是：並非每個二次包裝步驟都需要 CCIT，但<strong>每個步驟都必須經過風險評估</strong>。評估框架：</p>
+                        <ol>
+                            <li>該作業是否對主要密封界面施加力或應力？</li>
+                            <li>如果施加了力，力的大小和方向是否足以擾動密封？</li>
+                            <li>如果風險存在，是否有其他控制措施（如 100% 目檢）足以緩解，還是需要額外的 CCIT？</li>
+                            <li>如果確定需要 CCIT，應在最差情況樣本上執行，以確認作業不影響容器完整性。</li>
+                        </ol>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明：二次包裝的「最後一里路」風險</h4>
+                        <p>想像你精心包裝了一個易碎的玻璃藝術品（= 灌裝密封的 PFS）。主要包裝（填充物和外盒）已經做好，但最後的「二次包裝」——在上面貼標籤、裝進展示架、放入快遞箱——每個步驟都可能在不注意中讓它破裂或移位。</p>
+                        <p>PFS 的情況更複雜：它的「破裂」可能不可見（微裂縫）、或密封界面的移位不影響外觀，但已經損害了 CCI。這就是為什麼每個二次包裝步驟都需要系統性的 CCI 風險評估。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>自動化 vs. 人工二次包裝的 CCI 考量</h4>
+                        <p>二次包裝可以是全自動、全人工或混合模式，各有不同的 CCI 風險特徵：</p>
+                        <ul>
+                            <li><strong>全自動產線</strong>：力量和速度可精確控制 → 一致性高，但設備調試和驗證要求嚴格；需進行設備性能確認（OQ/PQ）</li>
+                            <li><strong>人工操作</strong>：力量變異性大 → 需要詳細的 SOP 和操作人員培訓；「最差情況」難以精確定義</li>
+                            <li><strong>混合模式</strong>：需識別人工操作步驟作為 CCI 風險的關鍵控制點</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4.1.4</h4>
+                        <ol>
+                            <li>在活塞桿安裝步驟中，「螺旋轉入對活塞塞的扭矩作用」為什麼可能擾動活塞-筒身界面的 CCI？如何在工藝驗證中評估這個風險？</li>
+                            <li>手指翼緣安裝後需要 100% 目檢，但 TR86 仍然建議評估是否需要額外的 CCIT。在什麼情況下目檢不足以確保 CCI？</li>
+                            <li>設計一個針對「活塞桿安裝」這一二次包裝步驟的 CCI 風險評估框架，包括：風險識別、嚴重性評估、控制措施選擇和 CCIT 決策標準。</li>
+                            <li>對於一個使用自動化包裝線的 CDMO，當產線參數（如夾持力）超出驗證範圍時，你應該如何處理 CCI 的放行決策？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================================
+         KEY MESSAGES SUMMARY
+         ================================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">KM</div>
+            <div class="chapter-info">
+                <h2>Key Messages Summary — Section 2a</h2>
+                <p>本節關鍵訊息總結 &bull; For rapid review</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Key Messages (English)</div>
+
+                    <div class="note-box">
+                        <h4>KM-1: Stopper as Primary Barrier</h4>
+                        <p>The plunger stopper-barrel interface is the primary and most critical CCI barrier in any prefilled syringe design. Its three-rib compression structure provides layered sealing assurance. Any process step that disturbs this interface — filling, stoppering, rod insertion, transport — must be evaluated for CCI impact.</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-2: Multiple Interfaces = Multiple Failure Modes</h4>
+                        <p>Unlike a simple glass vial (one primary closure), a PFS has up to three active seal interfaces (stopper-barrel, needle-shield, barrel-shield for staked needle designs). Each interface is a potential failure point. CCI strategy must address all interfaces throughout the product lifecycle.</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-3: Silicone Oil — Dual Role and Blocking Risk</h4>
+                        <p>Silicone oil is essential for PFS functionality but creates two CCI-related risks: (1) excess oil allows the stopper to move freely during transport, breaching CCI; (2) silicone oil can physically block small defects, causing false negatives in probabilistic methods like dye ingress testing. Deterministic methods (vacuum decay, HVLD) are preferred for PFS CCIT.</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-4: Stopper Movement in Vacuum-Based CCIT</h4>
+                        <p>Applying a pressure differential to a PFS during vacuum decay testing causes the stopper to move outward. This (a) reduces the sensitivity of the test by reducing the pressure differential, and (b) risks introducing foreign matter or microbial contamination. A contrast pin in the test chamber is a validated engineering solution to counteract stopper movement.</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-5: Risk-Based Approach to Secondary Packaging CCIT</h4>
+                        <p>Not every secondary packaging operation requires CCIT, but every operation must be assessed for CCI risk. When a risk is identified, a worst-case CCI study must be performed. Semi-finished syringe CCI data does not substitute for finished syringe CCI assessment.</p>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">關鍵訊息（中文）</div>
+
+                    <div class="note-box">
+                        <h4>KM-1：活塞塞是主要屏障</h4>
+                        <p>活塞塞－筒身界面是任何預充填注射器設計中最主要、最關鍵的 CCI 屏障。三肋壓縮結構提供分層密封保障。任何可能擾動此界面的工藝步驟——灌裝、塞封、活塞桿安裝、運輸——都必須評估對 CCI 的影響。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-2：多個界面 = 多種失效模式</h4>
+                        <p>與簡單的玻璃瓶（一個主要密封）不同，PFS 有多達三個活躍的密封界面（活塞-筒身、針頭-護蓋、筒身-護蓋）。每個界面都是潛在失效點。CCI 策略必須在整個產品生命週期中覆蓋所有界面。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-3：矽油的雙重角色與堵塞風險</h4>
+                        <p>矽油對 PFS 功能至關重要，但帶來兩個 CCI 風險：(1) 過量矽油使活塞在運輸中自由移動，破壞 CCI；(2) 矽油可能物理性堵塞微小缺陷，導致染液滲入法等概率性方法出現假陰性。確定性方法（真空衰減、HVLD）是 PFS 的首選 CCIT 方法。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-4：真空式 CCIT 中的活塞移動問題</h4>
+                        <p>真空衰減測試對 PFS 施加壓差時，活塞會向外移動，這會 (a) 降低測試靈敏度，(b) 可能引入異物或微生物污染。測試腔中的對位針是一種經驗證的工程解決方案，可抵消活塞移動。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>KM-5：二次包裝 CCIT 的風險評估方法</h4>
+                        <p>並非每個二次包裝作業都需要 CCIT，但每個作業都必須評估 CCI 風險。一旦識別到風險，必須對最差情況樣本進行 CCI 研究。半成品注射器的 CCI 數據不能替代成品注射器的 CCI 評估。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Review Questions -->
+            <div class="practice-box" style="margin-top:1.5rem;">
+                <h3>Comprehensive Review Questions 綜合複習題</h3>
+                <div class="two-column" style="margin-bottom:0;">
+                    <div>
+                        <strong>English Questions:</strong>
+                        <ol>
+                            <li>Compare the CCI complexity of a glass vial with a staked-needle PFS. List all seal interfaces and explain why each requires separate CCI consideration.</li>
+                            <li>A CDMO is developing a CCIT method for a 1 mL PFS containing a high-concentration mAb formulation. The product is packed in an auto-injector. Describe a step-by-step CCI strategy covering: (a) method selection, (b) stopper movement mitigation, (c) assembled device testing approach, (d) secondary packaging evaluation.</li>
+                            <li>Explain why silicone oil creates a false-negative risk for probabilistic CCIT methods but does not create the same risk for deterministic methods like vacuum decay.</li>
+                            <li>What is the regulatory significance of distinguishing between semi-finished and finished syringe CCI testing? How does this relate to the USP &lt;1207&gt; lifecycle assessment approach?</li>
+                            <li>Describe the physical mechanism by which stopper movement during vacuum decay testing reduces method sensitivity. How does a contrast pin restore test validity?</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <strong>中文問題：</strong>
+                        <ol>
+                            <li>比較玻璃小瓶和固定針 PFS 的 CCI 複雜度差異。列出所有密封界面並解釋為什麼每個界面都需要單獨的 CCI 考量。</li>
+                            <li>某 CDMO 正在為含高濃度單抗的 1 mL PFS 開發 CCIT 方法，產品裝入 auto-injector。請描述涵蓋以下方面的逐步 CCI 策略：(a) 方法選擇，(b) 活塞移動緩解，(c) 組裝裝置測試方法，(d) 二次包裝評估。</li>
+                            <li>解釋為什麼矽油對概率性 CCIT 方法（如染液滲入法）會造成假陰性風險，但對確定性方法（如真空衰減法）不會造成相同的風險。</li>
+                            <li>區分半成品和成品注射器 CCI 測試的法規意義是什麼？這與 USP &lt;1207&gt; 生命週期評估方法有何關聯？</li>
+                            <li>描述真空衰減測試期間活塞移動降低方法靈敏度的物理機制。對位針如何恢復測試有效性？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p><strong>PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</strong></p>
+    <p>Section 2a &mdash; Challenges with Package Design: Overview + Prefilled Syringes (Sections 4.0 &amp; 4.1, Pages p10&ndash;p17)</p>
+    <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">SterileGMP Knowledge Hub &bull; Bilingual Educational Edition &bull; For Internal Training Use Only</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

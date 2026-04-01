@@ -1262,6 +1262,33 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## PDA/TR86-Complete.md
+**Report:** PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing
+**Pages:** p1–p52 | **Sections:** 5
+
+**Covers questions about:**
+- Relationship between TR86 (2021), TR27 (1998), and USP <1207> in pharmaceutical CCI testing
+- Positive controls for CCIT: types (laser-drilled, capillaries, calibrated leaks), NIST traceability, MALL-based sizing
+- Why leak blockage (protein aggregates, silicone oil, high viscosity) can cause false-negative CCI results
+- Prefilled syringe (PFS) CCI challenges: multiple interfaces (staked needle, luer, stopper, barrel), secondary packaging in auto-injectors
+- Single-use system (SUS) bag integrity testing: 70+ joining points, Table 4.2.3-1 comparison of pressure hold, helium, microbial, visual, electrical methods
+- IV bag CCI: permeation vs. leakage distinction, seal quality, port-film interface
+- Cryogenic CCI challenges: stopper contraction at -80°C, headspace CO₂/O₂ pressure changes, 3/20 vials case study
+- Innovative CCI methods: helium testing, optical emission spectroscopy (OES), airborne ultrasound, X-ray detection
+- Building a QbD-based CCIT program: MALL establishment, LOD statistical framework (β-Content tolerance interval)
+- 100% online CCI testing vs. statistical sampling approaches
+
+**Key terms:** CCI (container closure integrity), CCIT, MALL (maximum allowable leak limit), CCS (container closure system), positive control, leak artifact, calibrated leak, deterministic method, probabilistic method, laser-drilled defect, blockage (false negative), prefilled syringe (PFS), staked needle, luer lock, stopper, silicone oil, single-use system (SUS), 2-D bag, 3-D bag, IV bag, cryogenic CCI, headspace analysis, TDLS, helium leak test, optical emission spectroscopy (OES), airborne ultrasound, X-ray detection, LOD (limit of detection), QbD, lifecycle approach, USP <1207>, TR27, β-Content
+
+**Sections:**
+0. Introduction & Glossary (p1–p3) — TR86 vs TR27 vs USP<1207>, risk-based framework, key definitions
+1. Challenges with Methodologies (p3–p9) — positive controls (3.1.1-3.1.5), calibrated leaks, leak blockage (3.2)
+2. Challenges with Package Design (p10–p25) — PFS (4.1), SUS bags (4.2), IV bags (4.3), cryogenic (4.4)
+3. Innovative Methods (p26–p37) — helium testing (5.1), OES (5.2), airborne ultrasound (5.3), X-ray (5.4)
+4. Additional Considerations & References (p38–p52) — distribution/transport (6.1), 100% online testing (6.2), QbD approach (6.3), lifecycle (6.4), LOD simulation (6.5), conclusion
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1312,7 +1339,16 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
-| Container closure integrity CCI, package integrity, leak testing pharmaceutical / 容器密封完整性、包裝完整性、洩漏試驗 | TR27 + TR73 + TR90 |
+| Container closure integrity CCI, package integrity, leak testing pharmaceutical / 容器密封完整性、包裝完整性、洩漏試驗 | TR27 + TR73 + TR90 + TR86 |
+| CCI positive controls, leak artifacts, calibrated leaks, NIST traceability, MALL / CCI正對照、洩漏人工品、校正洩漏、MALL | TR86 |
+| Leak blockage false negative, silicone oil CCI, protein aggregation block leak / 洩漏堵塞假陰性、矽油CCI、蛋白質聚集堵塞 | TR86 |
+| SUS bag integrity testing, single-use bag CCI, 70 joining points, flexible container leak / 單次使用袋完整性測試、70個接合點、軟性容器洩漏 | TR86 |
+| Prefilled syringe CCI challenges, PFS leak test, staked needle luer stopper interface / 預充填注射器CCI挑戰、注射器密封試驗 | TR86 |
+| Cryogenic CCI, -80C storage integrity, freeze thaw leak, headspace gas analysis cryo / 低溫CCI、-80°C儲存完整性、凍融洩漏、頂空氣體分析 | TR86 |
+| Helium leak testing pharma, OES optical emission spectroscopy CCI, airborne ultrasound seal / 氦氣洩漏試驗、光學發射光譜、超音波密封完整性 | TR86 |
+| X-ray CCI detection, glass crack detection, auto-injector inspection / X光CCI檢測、玻璃裂紋偵測、自動注射器檢測 | TR86 |
+| MALL maximum allowable leak limit, LOD CCI method, β-Content tolerance interval / 最大允許洩漏限度、CCI方法LOD、β-Content容差區間 | TR86 |
+| TR86 vs TR27 vs USP 1207, package integrity hierarchy, CCI reference framework / TR86 vs TR27 vs USP 1207、包裝完整性層級、CCI參考框架 | TR86 |
 | Helium mass spectrometry CCI, HVLD high voltage leak detection, vacuum decay / 氦質譜分析CCI、高電壓洩漏偵測、真空衰減 | TR27 |
 | Bubble test, headspace analysis, pressure decay, ultrasonic CCI testing / 氣泡試驗、頂空分析、壓力衰減、超聲波CCI試驗 | TR27 |
 | Microbial ingress test, microbial challenge CCI, liquid immersion airborne challenge / 微生物滲入試驗、微生物挑戰CCI | TR27 |
@@ -1505,7 +1541,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | FDA-Aseptic ★★★ (FDA 2004 CGMP guidance: full regulatory framework, Class 100/10000/100000, media fill criteria, filtration, sterilization, EM, sterility testing, isolator/BFS appendices) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | FDA-ProcessInspection ★★ (FDA inspector perspective: aseptic processing inspection objectives, media fill inspection, EM program review, sterility test failure response) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
-→ TR27 ★★★ (foundational CCI reference: all 18 leak test methods, microbial challenge, decision tree, leak rate specifications — the pre-USP <1207> framework) | TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+→ TR86 ★★★ (2021 advanced CCI: positive controls/calibrated leaks, false-negative blockage risk, PFS/SUS/IV bag/cryogenic-specific challenges, 4 innovative methods: He/OES/ultrasound/X-ray, QbD CCIT program, LOD statistical framework) | TR27 ★★★ (foundational CCI reference: all 18 leak test methods, microbial challenge, decision tree, leak rate specifications — the pre-USP <1207> framework) | TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
 → TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)

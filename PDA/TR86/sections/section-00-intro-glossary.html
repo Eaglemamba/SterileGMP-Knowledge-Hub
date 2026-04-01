@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Introduction &amp; Glossary | TR86 — PDA Technical Report No. 86</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not(.analogy):not(.application):not(.note):not(.formula) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application):not(.note):not(.formula) h3,
+.concept-box:not(.analogy):not(.application):not(.note):not(.formula) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box.formula {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4,
+.concept-box.formula h3, .concept-box.formula h4 {
+    color: #7b1fa2 !important;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+
+/* ===== GLOSSARY TABLE ENHANCEMENTS ===== */
+.glossary-table th:first-child { width: 18%; }
+.glossary-table th:nth-child(2) { width: 40%; }
+.glossary-table th:nth-child(3) { width: 42%; }
+.glossary-table td { vertical-align: top; }
+.glossary-table .term-cell {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.88rem;
+}
+.glossary-table .abbr-badge {
+    display: inline-block;
+    background: #cce5ff;
+    color: #004085;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+.practical-note {
+    font-size: 0.82rem;
+    color: #c65102;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+/* ===== DOCUMENT LINEAGE DIAGRAM ===== */
+.lineage-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+.lineage-node {
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+.lineage-node.tr27 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.lineage-node.usp { background: #e3f2fd; border: 2px solid #1976d2; color: #1565c0; }
+.lineage-node.tr86 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.lineage-node.ich { background: #f3e5f5; border: 2px solid #9c27b0; color: #6a1b9a; }
+.lineage-arrow { font-size: 1.4rem; color: #718096; }
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header" id="top">
+    <h1>Section 0: Introduction &amp; Glossary | 導論與術語</h1>
+    <div class="subtitle">PDA Technical Report No. 86 (2021) — Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</div>
+    <div class="page-info">Sections 1.0 &bull; 1.1 &bull; 2.0 &bull; 2.1 &nbsp;|&nbsp; Bilingual Educational Edition | 雙語教學版</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#learning-objectives">Learning Objectives 學習目標</a>
+            <a href="#document-lineage">Document Lineage 文件沿革</a>
+            <a href="#sec-1-intro">1.0 Introduction 導論</a>
+            <a href="#sec-1-1-background">Background &amp; TR27 對比</a>
+            <a href="#sec-1-2-lifecycle">Lifecycle Approach 生命週期</a>
+            <a href="#sec-1-3-risk">Risk-Based Framework 風險架構</a>
+            <a href="#sec-1-1-scope">1.1 Purpose &amp; Scope 目的與範疇</a>
+            <a href="#sec-2-0-glossary">2.0 Glossary 術語表</a>
+            <a href="#sec-2-1-abbreviations">2.1 Abbreviations 縮寫表</a>
+        </div>
+    </div>
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives" id="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <div class="two-column" style="margin-bottom: 0;">
+            <div>
+                <strong>After studying this section, you will be able to:</strong>
+                <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                    <li>Explain the relationship between TR86, TR27, and USP &lt;1207&gt; and understand why TR86 was written.</li>
+                    <li>Describe the three main content areas of TR86 and their relevance to modern pharmaceutical packaging.</li>
+                    <li>Apply the lifecycle approach to container closure integrity (CCI) from development through commercial production and stability.</li>
+                    <li>Articulate the risk-based framework for package integrity as recommended by ICH Q9.</li>
+                    <li>Define all key terms in the TR86 glossary (Section 2.0) and use them precisely in a GMP context.</li>
+                    <li>Distinguish between deterministic and probabilistic leak test methods.</li>
+                    <li>Identify the difference between destructive and nondestructive CCIT methods and explain their implications for sample release.</li>
+                    <li>Interpret the concept of Maximum Allowable Leak Limit (MALL) and Limit of Detection (LOD) in method selection.</li>
+                </ol>
+            </div>
+            <div>
+                <strong>學完本節後，你將能夠：</strong>
+                <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
+                    <li>說明 TR86、TR27 與 USP &lt;1207&gt; 之間的關係，理解 TR86 撰寫的背景。</li>
+                    <li>描述 TR86 的三大核心內容領域，及其對現代藥品包裝的意義。</li>
+                    <li>將容器封閉完整性（CCI）的生命週期方法，從開發期延伸到商業生產與穩定性測試。</li>
+                    <li>闡述 ICH Q9 推薦的包裝完整性風險架構。</li>
+                    <li>精確定義 TR86 術語表（2.0 節）中的所有關鍵術語，並在 GMP 情境中正確運用。</li>
+                    <li>區分確定性（deterministic）與機率性（probabilistic）洩漏測試方法。</li>
+                    <li>辨別破壞性與非破壞性 CCIT 方法的差異，並說明其對樣品放行的影響。</li>
+                    <li>解讀方法選擇中最大允許洩漏限值（MALL）與偵測極限（LOD）的概念。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== DOCUMENT LINEAGE ===== -->
+    <div class="chapter-section" id="document-lineage">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#128196;</div>
+            <div class="chapter-info">
+                <h2>Document Lineage &amp; Context | 文件沿革與背景脈絡</h2>
+                <p>How TR86 fits within the global package integrity framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Regulatory &amp; Guidance Hierarchy</h3>
+                    <p>Three key documents define the package integrity landscape:</p>
+                    <div class="lineage-diagram">
+                        <div style="text-align: center; width: 100%;">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">ICH Q9 — Quality Risk Management</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-2">USP &lt;1207&gt; — Package Integrity Basics (Revised 2016)</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                                <span class="hierarchy-box level-3">PDA TR27 (1998) — Original Best Practices</span>
+                                <span class="hierarchy-box level-3" style="background: #c8e6c9; border-color: #388e3c; color: #1b5e20;">PDA TR86 (2021) — Advanced Issues</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><strong>ICH Q9</strong> — The regulatory science foundation: quality risk management principles that underpin all CCI decisions.</li>
+                        <li><strong>USP &lt;1207&gt;</strong> — Primary reference since 2016 revision; covers basics, method selection, and sterile product evaluation.</li>
+                        <li><strong>PDA TR27</strong> (1998) — Historically influential; its content was instrumental in shaping the USP &lt;1207&gt; revision. Now superseded for complex systems.</li>
+                        <li><strong>PDA TR86</strong> (2021) — This report. Builds on USP &lt;1207&gt; basics; targets advanced issues: complex containers, innovative methods, cryogenic conditions.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：文件沿革架構</h3>
+                    <div class="concept-box">
+                        <h4>為什麼要讀 TR86？</h4>
+                        <p>TR86 是為了填補一個具體缺口而誕生的：業界在使用<strong>複雜包裝系統</strong>（如預填充針筒、大容量散裝包裝）時，現有文件（USP &lt;1207&gt; 及舊版 TR27）已無法充分指導。TR86 是業界共識文件，不具法規強制力，但在監管審查中具有高度參考地位。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：建築法規與施工指南的關係</h4>
+                        <p>可以這樣理解三層文件的關係：</p>
+                        <ul>
+                            <li><strong>ICH Q9</strong> 像建築法規——法律框架，人人必須遵守</li>
+                            <li><strong>USP &lt;1207&gt;</strong> 像標準施工規範——告訴你「怎麼蓋才合格」</li>
+                            <li><strong>TR86</strong> 像進階工程指南——專門處理「特殊結構怎麼蓋」的技術問題，例如超高層建築（大型散裝容器）或特殊地基（極低溫條件）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CDMO 實務重點</h4>
+                        <p>對於台灣 CDMO 而言，TR86 特別重要的原因：</p>
+                        <ul>
+                            <li>越來越多生物製劑客戶要求使用預填充針筒（PFS）系統</li>
+                            <li>FDA 483 觀察項目中，CCI 方法驗證問題持續出現</li>
+                            <li>TR86 提供了 TR27 沒有覆蓋的「創新方法」技術評估框架</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <ol>
+                            <li>USP &lt;1207&gt; 在 2016 年修訂的主要觸發因素是什麼文件？這說明了業界共識如何影響法規文件？</li>
+                            <li>TR86 明確說明其內容「不代表監管機構的觀點」。這對於公司在引用 TR86 建立 SOP 時有何意涵？</li>
+                            <li>你目前公司使用的哪些包裝系統可能屬於 TR86 的「複雜包裝」類別？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.0 INTRODUCTION — Block 1: Historical Context & TR27 vs TR86 ===== -->
+    <div class="chapter-section" id="sec-1-intro">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction — Historical Context | 導論：歷史沿革</h2>
+                <p>From TR27 to TR86: Why a new technical report was needed</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column" id="sec-1-1-background">
+                <div class="left-column">
+                    <h3>1.0 Introduction (Part 1) — The TR27 Era and Its Successor</h3>
+                    <p>For more than a decade, <strong>PDA Technical Report No. 27: Pharmaceutical Package Integrity</strong> served as an influential reference document, representing the best practices in sterile product package integrity testing. At the time it was published, the information it presented was instrumental in shaping the revision of <strong>USP General Chapter &lt;1207&gt; Package Integrity and Test Method Selection</strong>.</p>
+                    <p>As a result, the content of USP &lt;1207&gt; was <strong>expanded in 2016</strong> and currently serves as the primary reference chapter focusing on the basics of package integrity and best practices in sterile product package integrity evaluation and integrity testing.</p>
+                    <div class="quote-box">
+                        "The intent of USP &lt;1207&gt; is to guide package integrity development away from testing each sample at the smallest possible defect level, because quality cannot be tested into a product."
+                    </div>
+                    <p>Rather, using a <strong>risk-based approach</strong> and leveraging testing to better understand, analyze, and eliminate the risks during development phases is encouraged. Use of the appropriate testing during each manufacturing phase can help in evaluating and mitigating residual risks (i.e., in production/stability to proactively address risks/failure modes). Where feasible, regulations and quality risk management principles identified in <strong>ICH Quality Guideline Q9: Quality Risk Management</strong> should be used.</p>
+                    <p>Subsequently, the <strong>PDA Package Integrity Technical Report Team</strong> reexamined the role of TR-27 and determined that a new technical report should be written, building on the package integrity basics updated by USP &lt;1207&gt; and focusing more on <em>advanced issues</em> related to pharmaceutical package integrity. They researched the existing sources of information related to the challenges encountered with complex packaging systems, such as large-volume bulk packages and prefilled syringe systems. Currently, no single source is available that thoroughly addresses these issues.</p>
+                    <p>Likewise, the Technical Report Team recognized the increasing number of innovative methods using existing technologies for integrity testing that deserve consideration for their potential utility in the future of pharmaceutical package integrity.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：從 TR27 到 TR86 的演進</h3>
+                    <div class="concept-box">
+                        <h4>TR27（1998）vs TR86（2021）：核心差異</h4>
+                        <p>TR27 於 1998 年出版，服務製藥界超過 20 年。其主要貢獻是建立了「包裝完整性測試最佳實踐」的基礎框架，並直接推動了 2016 年 USP &lt;1207&gt; 的大幅擴充。</p>
+                        <p>然而，隨著複雜包裝系統的普及（PFS、雙倉藥筒、大容量散裝容器），TR27 的指導範圍已不足夠。TR86 的誕生，正是為了填補這個空缺。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：舊版地圖與新版衛星導航</h4>
+                        <p>TR27 就像 20 年前的紙本地圖——在平原城市非常好用，但面對山區新開發的路段就失效了。TR86 是整合了最新道路資訊的衛星導航——仍然以舊地圖的基礎知識為前提，但能處理複雜地形（複雜包裝系統）和新道路（創新測試方法）。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>核心教條：「品質不能靠測試測出來」</h4>
+                        <p>USP &lt;1207&gt; 明確指出：不應以「盡可能在最小缺陷尺寸下測試每個樣品」作為目標，因為 <em>quality cannot be tested into a product</em>。</p>
+                        <p>這個原則直接呼應 ICH Q10 的 QbD（品質源於設計）理念：</p>
+                        <ul>
+                            <li>在<strong>開發階段</strong>：用測試來理解、分析、消除風險</li>
+                            <li>在<strong>生產/穩定性階段</strong>：用測試來監測殘餘風險、主動應對失效模式</li>
+                        </ul>
+                        <p>這不是說測試不重要，而是說測試的目的在於<strong>理解風險</strong>，而不只是<strong>過濾不良品</strong>。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>為什麼沒有「單一綜合來源」？</h4>
+                        <p>TR86 的起草團隊明確指出：「目前沒有任何單一來源能夠全面處理複雜包裝系統的完整性問題」。這揭示了一個產業現況：複雜包裝的挑戰是分散在不同技術文獻中的，TR86 的貢獻在於將這些知識整合成一份共識文件。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <ol>
+                            <li>「品質不能靠測試測出來」這句話，對你們公司目前的 CCIT 方案（如微生物侵入測試）有什麼啟示？如果只靠最終放行測試，風險在哪裡？</li>
+                            <li>TR27 在 2000 年代仍被廣泛引用。為什麼一份業界共識文件在沒有強制法規支持下，仍能如此長期影響產業？</li>
+                            <li>ICH Q9 的「哪裡可行就使用風險管理原則」——你認為在 CCIT 流程中，什麼情況下無法完全應用風險管理？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.0 — Block 2: Lifecycle & Three Main Areas ===== -->
+    <div class="chapter-section" id="sec-1-2-lifecycle">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction — Lifecycle Approach &amp; Three Content Areas | 生命週期方法與三大主題</h2>
+                <p>What TR86 covers and how it structures the package integrity lifecycle</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.0 Introduction (Part 2) — TR86 Scope &amp; Lifecycle</h3>
+                    <p>This technical report is a <strong>consensus-based resource</strong> surrounding the challenges encountered in using complex package systems and introduces important elements to consider in decision-making. It also offers an examination of the technologies available for package integrity testing not yet established by peer-reviewed research.</p>
+                    <p>Although pharmaceutical container closure systems serve a variety of functions, the assurance of package integrity is primarily concerned with <strong>product containment</strong>. However, these systems also serve as an effective barrier against:</p>
+                    <ul>
+                        <li>Ingress of <strong>microorganisms</strong></li>
+                        <li>Ingress of potentially reactive gases such as <strong>oxygen or water vapor</strong></li>
+                        <li>Maintenance of a <strong>vacuum</strong> (where applicable)</li>
+                    </ul>
+                    <p><strong>Package integrity</strong> is the measure of the ability of the package to prevent product loss or maintain product sterility and the ability to maintain the internal environment (e.g., loss of vacuum seal). <strong>Package integrity testing</strong> is an ongoing process that starts in package development and continues throughout the life of the product.</p>
+                    <p>When designing a container closure system and selecting and implementing an appropriate method, the goal is to <strong>reduce the risk to product sterility and quality</strong>.</p>
+                    <p>The report addresses container closure integrity in <strong>three main areas</strong>:</p>
+                    <ol>
+                        <li>Challenges with complex systems and package integrity methods</li>
+                        <li>Innovative methods for integrity testing using existing technologies</li>
+                        <li>Additional considerations for pharmaceutical package integrity</li>
+                    </ol>
+                    <p>Additionally, how <strong>quality by design (QbD)</strong> relates to package integrity and establishing a <strong>limit of detection (LOD)</strong> are discussed in the final section.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：生命週期方法與三大主題</h3>
+                    <div class="concept-box">
+                        <h4>容器封閉系統（CCS）的三大功能</h4>
+                        <p>TR86 清楚區分了 CCS 的多重功能，但強調 CCIT 主要關注的是：</p>
+                        <ul>
+                            <li><strong>首要功能：產品包容（Product Containment）</strong>——防止產品溢出或損失</li>
+                            <li><strong>屏障功能 1：微生物屏障</strong>——防止微生物侵入，這是無菌製品最關鍵的要求</li>
+                            <li><strong>屏障功能 2：氣體屏障</strong>——防止氧氣或水蒸氣滲入，對氧化敏感或吸濕性產品至關重要</li>
+                            <li><strong>功能 3：維持真空</strong>——部分凍乾產品或特殊劑型需要維持內部真空</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>「持續進行的過程」：CCI 不是單點測試</h4>
+                        <p>TR86 強調 package integrity testing 是<strong>貫穿產品整個生命週期的持續過程</strong>，從包裝開發開始，直到產品下市。這意味著：</p>
+                        <ul>
+                            <li><strong>開發期</strong>：選擇設計、確立方法、建立 MALL</li>
+                            <li><strong>驗證期</strong>：工程批次、製程確效、分析方法驗證</li>
+                            <li><strong>商業生產</strong>：例行 CCIT 抽樣、製程監控</li>
+                            <li><strong>穩定性研究</strong>：確認完整性在貯存期間是否維持</li>
+                            <li><strong>上市後</strong>：客訴調查、退貨分析</li>
+                        </ul>
+                    </div>
+                    <div class="formula-box">
+                        <h4>TR86 三大主題架構</h4>
+                        <pre>TR86 內容架構
+├── 主題 1：複雜系統挑戰
+│   ├── 預填充針筒（PFS）系統
+│   ├── 大容量散裝包裝
+│   └── 其他複雜容器封閉系統
+├── 主題 2：創新測試方法
+│   ├── 現有技術的創新應用
+│   ├── 極低溫條件的影響
+│   └── 尚未建立 peer-reviewed 基礎的方法
+└── 主題 3：額外考量事項
+    ├── QbD 與包裝完整性的關係
+    └── 偵測極限（LOD）的建立</pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：CCI 就像汽車的安全車架設計</h4>
+                        <p>汽車安全車架（crumple zone）不是只在出廠前測試一次就好——它需要從設計期（CAD 模擬）到原型測試（實車碰撞）到量產監控（焊接製程 SPC），一路監控。包裝完整性也是如此：不能只靠上市前的一次驗證，而是需要貫穿整個生命週期的持續監控。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <ol>
+                            <li>TR86 列出三大主題中，哪一個對你目前的工作（或公司管線）最相關？為什麼？</li>
+                            <li>「共識文件」與「peer-reviewed 研究」的差異在哪裡？TR86 明確承認某些創新方法尚未有 peer-reviewed 基礎，這對法規申請有何影響？</li>
+                            <li>在穩定性研究中進行 CCIT，通常面臨哪些實際挑戰（破壞性 vs 非破壞性、樣品數量、時間點選擇等）？</li>
+                            <li>QbD 概念如何應用於容器封閉系統選擇？請舉一個你熟悉的劑型為例說明。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.0 — Block 3: Risk-Based Framework & Patient Safety ===== -->
+    <div class="chapter-section" id="sec-1-3-risk">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.0</div>
+            <div class="chapter-info">
+                <h2>Introduction — Risk-Based Framework &amp; Patient Safety | 風險架構與病人安全</h2>
+                <p>Why CCI failure is a critical risk, and what a well-characterized process looks like</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.0 Introduction (Part 3) — Risk, Process Control &amp; Patient Safety</h3>
+                    <p>Best practices in pharmaceutical packaging suggest that <strong>all activities be evaluated for risk to the product quality as a surrogate to patient safety</strong>. Failure of container closure integrity is a <strong>critical risk</strong>, as the lack of package integrity can lead to contamination of the product which can impact both product quality and potency. Contamination of a sterile product intended for <strong>parenteral administration</strong> could result in dire consequences for the patient.</p>
+                    <p>Demonstration of container closure integrity and ensuring the integrity of the container closure system is required <strong>throughout the lifecycle of a sterile pharmaceutical product</strong>. A well-characterized and controlled process should consist of:</p>
+                    <ul>
+                        <li>A <strong>qualified container closure design</strong> with effective, monitored process controls in place</li>
+                        <li>Process parameters required to produce integral container closure systems are maintained</li>
+                        <li>Appropriate <strong>specifications for incoming components</strong></li>
+                        <li><strong>Qualification of manufacturing equipment</strong>, including a visual inspection system for detection of irregularities in the process</li>
+                        <li>Appropriate <strong>sampling strategies</strong> for container closure integrity testing</li>
+                    </ul>
+                    <p>Package integrity should ensure product quality is maintained through both the <strong>shelf life and life of a product</strong>. Over the past two decades, analytical technology has progressed, improving the ability to evaluate closure integrity. The information provided in this technical report is intended to assist users in advancing their current integrity assessment and testing strategies during the phases of product lifecycle.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：風險框架與管制要素</h3>
+                    <div class="note-box">
+                        <h4>為何 CCI 失效是「關鍵風險」？</h4>
+                        <p>TR86 使用了非常強烈的措辭——CCI 失效被定性為 <em>critical risk</em>（關鍵風險），其後果鏈如下：</p>
+                        <ul>
+                            <li>包裝完整性失效 → 產品受到污染</li>
+                            <li>污染影響產品品質 + 效力（potency）</li>
+                            <li>無菌靜脈注射產品受污染 → <strong>可能導致患者嚴重傷害或死亡</strong></li>
+                        </ul>
+                        <p>這是為什麼 FDA 在注射劑廠的審查中對 CCI 如此關注的根本原因。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>「充分表徵且受控的製程」五要素</h4>
+                        <p>TR86 給出了一個完整製程管制的框架，包含五個核心要素：</p>
+                        <ol>
+                            <li><strong>合格的容器封閉設計</strong>：CCS 的設計本身必須經過確效，包含材料相容性、封合強度等</li>
+                            <li><strong>有效且受監控的製程管制</strong>：封蓋力、壓蓋速度、溫度等 CPP 必須在規格內</li>
+                            <li><strong>進料組件規格</strong>：橡皮塞、鋁蓋、瓶體的尺寸公差、材質規格</li>
+                            <li><strong>設備確效含目視檢查系統</strong>：壓蓋機、塞瓶機的確效，加上 AVI（自動視覺檢查）</li>
+                            <li><strong>適當的抽樣策略</strong>：統計上有效的 CCIT 抽樣計畫</li>
+                        </ol>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：飛機機艙密封就是容器封閉</h4>
+                        <p>飛機在 35,000 英尺高空必須維持機艙氣壓——這需要完整的密封系統。飛機公司不會只在起飛前測試一次密封：他們從機身設計開始（設計確效），到每次飛行前的例行檢查（製程管制），到定期大修（穩定性期間 CCIT）。藥品包裝的 CCI 管理邏輯完全相同。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>「產品品質是病人安全的代理指標」</h4>
+                        <p>TR86 的這句話點出了 GMP 的核心哲學：我們直接測量的是<strong>產品品質指標</strong>（如無菌性、效力、澄清度），這些指標是病人安全的間接（代理）指標。因此，任何影響產品品質的活動都必須進行風險評估。</p>
+                        <p>這也是為什麼 FMEA（失效模式與效應分析）在 CCS 設計和 CCIT 方法選擇中非常重要。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <ol>
+                            <li>請列舉你公司在壓蓋製程（capping）中，目前監控的三個 CPP（關鍵製程參數）。這些參數是如何與最終 CCI 結果關聯的？</li>
+                            <li>TR86 提到「目視檢查系統用於偵測製程異常」。目視檢查（VI）能替代 CCIT 嗎？請論述兩者的互補關係。</li>
+                            <li>如果客戶（品牌藥廠）要求你的 CDMO 在穩定性研究中每個時間點對所有包裝規格都執行 CCIT，而你的實驗室只有破壞性方法，你會如何設計抽樣策略？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1.1 PURPOSE AND SCOPE ===== -->
+    <div class="chapter-section" id="sec-1-1-scope">
+        <div class="chapter-divider">
+            <div class="chapter-badge">1.1</div>
+            <div class="chapter-info">
+                <h2>Purpose and Scope | 目的與範疇</h2>
+                <p>What TR86 covers, what it doesn't, and how it complements existing documents</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>1.1 Purpose and Scope</h3>
+                    <p>This technical report focuses on the challenges facing the pharmaceutical industry that use <strong>complex packaging systems for sterile drugs and biologics</strong> (e.g., syringes, syringe assemblies, bulk containers). It also presents information on some <strong>innovative methods for package integrity testing using existing technologies</strong>, including the potential impact of cryogenic conditions. The intent is to update information and incorporate experiential learning which is not addressed in PDA TR-27 and USP &lt;1207&gt;.</p>
+                    <p>It also serves as a technical resource, focusing particularly on sterile products and encouraging a <strong>risk-based approach</strong> and leveraging testing to better understand, analyze, and eliminate the risks during developmental phases. Use of the appropriate testing during each manufacturing phase can help in evaluating and mitigating residual risks.</p>
+                    <div class="quote-box">
+                        "The information in this technical report is the result of a consensus achieved by the PDA Container Closure Integrity Technical Report Team and are not necessarily the views of regulatory agencies."
+                    </div>
+                    <p><strong>TR86 covers:</strong></p>
+                    <ul>
+                        <li>Complex packaging systems: syringes, syringe assemblies, bulk containers</li>
+                        <li>Innovative CCIT methods using existing technologies</li>
+                        <li>Cryogenic conditions and their impact on package integrity</li>
+                        <li>Experiential learning not captured in TR27 or USP &lt;1207&gt;</li>
+                        <li>Risk-based approach at each manufacturing phase</li>
+                    </ul>
+                    <p><strong>TR86 does NOT replace:</strong></p>
+                    <ul>
+                        <li>USP &lt;1207&gt; — still the primary reference for basics and method selection</li>
+                        <li>PDA TR27 — still relevant for foundational principles (until officially retired)</li>
+                        <li>ICH Q9 — the overarching quality risk management framework</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：TR86 的適用範疇與限制</h3>
+                    <div class="concept-box">
+                        <h4>TR86 的三個「聚焦點」</h4>
+                        <ul>
+                            <li><strong>聚焦 1：複雜包裝系統</strong><br>
+                            明確列出了針筒（syringes）、針筒組件（syringe assemblies）、散裝容器（bulk containers）——這些都是 TR27 時代尚未普及、現在卻是生物製劑主流的包裝形式</li>
+                            <li><strong>聚焦 2：創新測試方法</strong><br>
+                            TR86 特別強調「使用現有技術的創新方法」——不是全新發明，而是現有技術（如 HVLD、頂空分析）在新應用場景中的延伸</li>
+                            <li><strong>聚焦 3：極低溫條件</strong><br>
+                            這是 TR86 的獨特貢獻之一——針對 mRNA 疫苗、細胞治療等需要 -80°C 或更低溫度貯存的產品，極低溫對包裝完整性的影響</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>重要聲明：非監管機構立場</h4>
+                        <p>TR86 明確指出：本報告代表的是 PDA 技術團隊的共識，<strong>不代表監管機構的觀點</strong>。</p>
+                        <p>這意味著什麼？</p>
+                        <ul>
+                            <li>TR86 的建議在 FDA 審查中具有參考地位，但不能直接作為法規要求引用</li>
+                            <li>如果你的方法基於 TR86 建議但尚未被 FDA 接受，你仍需要在 NDA/BLA 中提供科學論證</li>
+                            <li>TR86 的共識是<strong>行業實踐的集體智慧</strong>，但不是監管指引</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：TR86 是醫學界的「治療指引」</h4>
+                        <p>各專科學會發布的「臨床治療指引」不是法律，但醫師如果不遵循，需要有充分的醫學理由。同樣地，TR86 不是法規要求，但如果你的 CCIT 實踐明顯偏離 TR86 建議，FDA 審查員可能會要求你解釋原因。</p>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>CDMO 視角：TR86 的實際應用</h4>
+                        <p>對於台灣 CDMO 而言，TR86 最直接的應用場景：</p>
+                        <ul>
+                            <li><strong>新客戶 tech transfer</strong>：評估客戶帶來的 CCIT 方法是否符合 TR86 建議</li>
+                            <li><strong>PFS 產品開發</strong>：針筒系統的 CCI 測試（needle shield integrity、backstop integrity）</li>
+                            <li><strong>凍乾粉針</strong>：橡皮塞壓入深度、西林瓶頸瓶口幾何形狀的完整性挑戰</li>
+                            <li><strong>超低溫產品</strong>（mRNA）：需要評估冷凍/解凍循環對容器封閉系統的影響</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考問題</h4>
+                        <ol>
+                            <li>你的公司目前處理的最複雜的包裝系統是什麼？它符合 TR86 定義的「複雜包裝系統」嗎？</li>
+                            <li>「整合了現有技術的創新方法」——你能想到哪些 CCIT 技術在近 5 年被應用於原本不是其目標的包裝系統？</li>
+                            <li>如果 FDA 審查員問：「你的 PFS 系統 CCIT 方案是基於什麼標準？」——你如何引用 TR86（共識文件）、USP &lt;1207&gt;（compendial reference）和 ICH Q9（監管指引）來回答？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.0 GLOSSARY ===== -->
+    <div class="chapter-section" id="sec-2-0-glossary">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.0</div>
+            <div class="chapter-info">
+                <h2>Glossary | 術語定義表</h2>
+                <p>Key definitions used consistently throughout TR86 — with Chinese explanations and practical notes</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <!-- Glossary intro block -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>2.0 Glossary — Introduction</h3>
+                    <p>Definitions have been provided to help clarify the concepts discussed in this technical report. While some of these definitions vary among companies, the <strong>definitions described below are consistent for use within this document</strong>.</p>
+                    <div class="quote-box">
+                        "While some of these definitions vary among companies, the definitions described below are consistent for use within this document."
+                    </div>
+                    <p>This caveat is important: TR86 acknowledges that industry terminology is not yet fully standardized. However, for the purpose of this report and consistent GMP documentation, the definitions below should be used as given.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：術語定義的重要性</h3>
+                    <div class="note-box">
+                        <h4>為何術語定義如此重要？</h4>
+                        <p>TR86 提醒我們：不同公司對相同術語的理解可能不一致。在 CDMO 環境中，這尤為重要：</p>
+                        <ul>
+                            <li>客戶說的「CCI test」可能指微生物侵入測試，你理解的可能是 HVLD</li>
+                            <li>「Probabilistic method」在不同文件中的定義範圍不同</li>
+                            <li>在 SOP、驗證報告、法規申請文件中，必須使用統一且精確的術語</li>
+                        </ul>
+                        <p>建議：在 tech transfer 啟動會議中，主動確認客戶使用的 CCIT 術語與 TR86 定義是否一致。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glossary Table -->
+            <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th>Term / 術語</th>
+                            <th>Original Definition (TR86)</th>
+                            <th>中文解釋 &amp; 實務說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="term-cell">
+                                Container Closure System<br>(CCS)<br>
+                                <span class="abbr-badge">CCS</span>
+                            </td>
+                            <td>The sum of packaging components (primary and secondary) and materials that together contain and protect a product.</td>
+                            <td>
+                                <strong>容器封閉系統</strong>：包含所有一級包材（直接接觸產品）和二級包材（外層保護）及材料的總體系統。
+                                <div class="practical-note">實務注意：西林瓶 + 橡皮塞 + 鋁蓋 = CCS 的核心組成。PFS 的 CCS 則更複雜，包含針筒筒體、柱塞、針頭護套、backstop 等多個組件。每個組件的規格變化都可能影響 CCI。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Container Closure Integrity Test<br>(CCIT)<br>
+                                <span class="abbr-badge">CCIT</span>
+                            </td>
+                            <td>A package leak test (either physicochemical or microbiological) that detects the presence of a package breach or gap. Some tests may also be able to identify the magnitude and/or location of the leak. (Synonymous with "package leak test" or "package integrity test" for the purposes of this TR.)</td>
+                            <td>
+                                <strong>容器封閉完整性測試</strong>：偵測包裝破損或間隙的洩漏測試，可以是物理化學法或微生物法。部分測試能定量並定位洩漏。
+                                <div class="practical-note">實務注意：TR86 明確說明 CCIT、package leak test、package integrity test 在本報告中同義。在與客戶溝通時，確認他們要求的術語對應的具體方法。微生物侵入測試（MIL）是傳統的 probabilistic CCIT；HVLD、頂空分析是 deterministic CCIT。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Destructive<br>
+                                <span class="abbr-badge">破壞性</span>
+                            </td>
+                            <td>A method in which a sample cannot be subsequently utilized in any other analytical method or processed to a final product.</td>
+                            <td>
+                                <strong>破壞性方法</strong>：測試後樣品無法再用於其他分析或作為最終產品。
+                                <div class="practical-note">實務注意：微生物侵入測試（MIL）是典型的破壞性方法——浸入細菌懸浮液後，樣品不能放行。破壞性方法在穩定性研究中需要較多樣品量，且不能用於 100% 檢測。對 CDMO 而言，破壞性 CCIT 增加了耗材成本和樣品管理複雜度。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Deterministic Leak Test Method<br>
+                                <span class="abbr-badge">確定性</span>
+                            </td>
+                            <td>A method in which the leakage event being detected or measured is based on phenomena that follow a predictable chain of events. In addition, the measure of leak detection is based on physicochemical technologies that are readily controlled and monitored, yielding objective quantitative data.</td>
+                            <td>
+                                <strong>確定性洩漏測試方法</strong>：基於可預測物理化學現象的測試，能產生客觀定量數據，容易控制和監控。
+                                <div class="practical-note">實務注意：確定性方法是 USP &lt;1207&gt; 和 FDA 偏好的方向，因為它們提供<strong>客觀定量數據</strong>而非主觀判斷。例子：HVLD（高壓放電洩漏偵測）、真空衰減法（vacuum decay）、頂空氣體分析（headspace gas analysis）。這些方法通常也是非破壞性的，可用於 100% 線上檢測。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Labeling<br>
+                                <span class="abbr-badge">標籤作業</span>
+                            </td>
+                            <td>The process by which a label is affixed to a packaging component.</td>
+                            <td>
+                                <strong>貼標作業</strong>：將標籤黏貼於包裝組件的過程。
+                                <div class="practical-note">實務注意：在 CCI 情境中，貼標作業的重要性在於：不當的貼標可能影響視覺檢查對包裝完整性的判斷，或在某些包裝設計中直接影響密封（例如某些滴眼液容器的標籤同時作為防拆封功能）。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Maximum Allowable Leak Limit<br>(MALL)<br>
+                                <span class="abbr-badge">MALL</span>
+                            </td>
+                            <td>The greatest gap or leak rate that does not put product quality at risk.</td>
+                            <td>
+                                <strong>最大允許洩漏限值</strong>：不會使產品品質面臨風險的最大間隙或洩漏速率。
+                                <div class="practical-note">實務注意：MALL 是 CCIT 方法驗證的核心概念。你的 CCIT 方法的 LOD（偵測極限）必須低於 MALL，才能有效偵測所有具風險的洩漏。MALL 的建立需要科學論證，通常基於微生物侵入風險研究（什麼尺寸的間隙足以讓微生物通過？）。FDA 要求在法規申請中提供 MALL 的科學依據。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Nondestructive<br>
+                                <span class="abbr-badge">非破壞性</span>
+                            </td>
+                            <td>A method in which a passing sample can subsequently be utilized in additional analytical methods or processed to a final product.</td>
+                            <td>
+                                <strong>非破壞性方法</strong>：通過測試的樣品可以繼續用於其他分析或作為最終產品放行。
+                                <div class="practical-note">實務注意：非破壞性 CCIT 是業界趨勢，因為它允許<strong>100% 線上檢測</strong>而不損失產品。HVLD、真空衰減、頂空分析都是非破壞性方法。對 CDMO 而言，非破壞性方法更適合用於高價值生物製劑的品質管控。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Package integrity<br>
+                                <span class="abbr-badge">包裝完整性</span>
+                            </td>
+                            <td>Is the measure of the ability of the package to prevent product loss or maintain product sterility and the ability to maintain the internal environment.</td>
+                            <td>
+                                <strong>包裝完整性</strong>：包裝防止產品損失、維持產品無菌性，以及維持內部環境的能力的衡量指標。
+                                <div class="practical-note">實務注意：注意「maintain the internal environment」——這涵蓋了真空維持（凍乾產品）、惰性氣體充填（氮氣保護）、水蒸氣屏障等多個維度。不只是「不漏菌」，還包括對產品品質有影響的所有內部環境因素。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Probabilistic Leak Test Method<br>
+                                <span class="abbr-badge">機率性</span>
+                            </td>
+                            <td>A method that is the converse of a deterministic leak test method, being stochastic in nature. Probabilistic tests rely on a series of sequential and/or simultaneous events, each associated with random outcomes described by probability distributions.</td>
+                            <td>
+                                <strong>機率性洩漏測試方法</strong>：確定性方法的對立面，具有隨機性（stochastic）本質，依賴一系列具有隨機結果的事件序列。
+                                <div class="practical-note">實務注意：微生物侵入測試（MIL）是最典型的機率性方法——微生物是否侵入取決於許多隨機因素（微生物濃度、接觸時間、細菌運動性等）。機率性方法的主要缺點是：即使有洩漏，測試也可能出現假陰性，因為微生物侵入具有統計性。USP &lt;1207&gt; 和 FDA 指引均建議將 deterministic 方法作為首選。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="term-cell">
+                                Sterile/Microbial Barrier<br>
+                                <span class="abbr-badge">無菌屏障</span>
+                            </td>
+                            <td>The purported location on a container closure system beyond which no microorganism can pass under conditions qualified for the barrier.</td>
+                            <td>
+                                <strong>無菌/微生物屏障</strong>：CCS 上的特定位置，在已確效的條件下，微生物無法越過此屏障。
+                                <div class="practical-note">實務注意：注意 "purported"（宣稱的）這個詞的使用——這暗示屏障的有效性是需要被證明的，而不是理所當然的。在西林瓶中，橡皮塞與玻璃瓶頸的接觸面就是 sterile barrier 的位置。塞子的壓入深度（stopper seating）和鋁蓋的壓蓋力（capping force）直接影響此屏障的完整性。</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Glossary Discussion Block -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Glossary Relationships</h3>
+                    <div class="concept-box">
+                        <h4>Deterministic vs. Probabilistic: The Core Dichotomy</h4>
+                        <p>The most important conceptual distinction in TR86 and USP &lt;1207&gt; is the difference between deterministic and probabilistic test methods. This distinction drives method selection decisions:</p>
+                        <ul>
+                            <li><strong>Deterministic</strong>: Physics-based, quantitative, predictable, objective. Preferred by regulators. Example: HVLD, vacuum decay, headspace analysis.</li>
+                            <li><strong>Probabilistic</strong>: Biology-based (or statistically uncertain), qualitative, random outcomes. Historically used but less preferred for new applications. Example: Microbial Ingress Test (MIT/MIL), dye ingress.</li>
+                        </ul>
+                    </div>
+                    <div class="concept-box">
+                        <h4>MALL and LOD Relationship</h4>
+                        <p>The Maximum Allowable Leak Limit (MALL) and the Limit of Detection (LOD) of your test method must be scientifically related:</p>
+                        <ul>
+                            <li>MALL = the largest defect that still puts quality at risk → defines the threshold</li>
+                            <li>LOD = the smallest defect your method can reliably detect → must be &le; MALL</li>
+                            <li>If LOD &gt; MALL: your method is not sensitive enough to catch dangerous leaks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：關鍵術語間的邏輯關係</h3>
+                    <div class="formula-box">
+                        <h4>MALL 與 LOD 的數學關係</h4>
+                        <pre>方法選擇判斷原則：
+
+LOD (方法偵測極限)  ≤  MALL (最大允許洩漏限值)
+
+若 LOD &gt; MALL → 方法不夠靈敏，不合格
+若 LOD ≤ MALL → 方法可以可靠偵測所有危險洩漏
+
+實例：
+MALL = 10 μm 等效孔徑
+→ 你的 CCIT 方法必須能偵測 ≤10 μm 的洩漏
+→ LOD 必須 ≤10 μm</pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：確定性 vs 機率性 = 溫度計 vs 看臉色</h4>
+                        <p>確定性方法就像用溫度計量體溫——每次測量都給你一個客觀數字（38.5°C），可重複，可追蹤。機率性方法就像看一個人的臉色判斷是否發燒——有時看得出來，有時看不出來，取決於光線、觀察者、當時狀況。在 GMP 環境中，我們當然偏好溫度計（確定性方法）。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>術語應用練習題</h4>
+                        <ol>
+                            <li>一家公司對凍乾西林瓶使用藍色染料侵入測試（dye ingress）作為 CCIT。請判斷：這是（a）確定性還是機率性方法？（b）破壞性還是非破壞性？（c）它能否偵測氣體洩漏（如氮氣滲出）？</li>
+                            <li>某產品的 MALL 經科學論證為 6 μm。公司現有的 HVLD 方法 LOD 為 10 μm。請評估此方法是否符合 TR86 建議，並說明理由。</li>
+                            <li>「Sterile barrier 的位置」在以下包裝中分別在哪裡？（a）橡皮塞西林瓶 （b）預填充針筒（PFS）（c）安瓿瓶</li>
+                            <li>一個 CDMO 想將已驗證的 CCIT 方法（針對凍乾產品）應用於新的液態注射產品。從 CCS 定義和 MALL 的角度，你需要重新評估哪些要素？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.1 ABBREVIATIONS ===== -->
+    <div class="chapter-section" id="sec-2-1-abbreviations">
+        <div class="chapter-divider">
+            <div class="chapter-badge">2.1</div>
+            <div class="chapter-info">
+                <h2>Abbreviations | 縮寫表</h2>
+                <p>All abbreviations used in TR86 — with full names, Chinese translation, and contextual notes</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>2.1 Abbreviations — Full Reference</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Abbr.</th>
+                                <th style="width: 45%;">Full Name</th>
+                                <th style="width: 40%;">Usage Context</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CCI</strong></td>
+                                <td>Container Closure Integrity</td>
+                                <td>General term for the property of integrity; the state of being integral</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CCIT</strong></td>
+                                <td>Container Closure Integrity Test</td>
+                                <td>The testing process or method; an action/procedure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CCS</strong></td>
+                                <td>Container Closure Systems</td>
+                                <td>The physical packaging system as a whole; a noun</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CPP</strong></td>
+                                <td>Critical Process Parameter</td>
+                                <td>Manufacturing parameters that directly impact CCI outcome (e.g., capping force, stopper insertion depth)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CQA</strong></td>
+                                <td>Critical Quality Attributes</td>
+                                <td>Product or container quality attributes that must be within defined limits; CCI itself may be a CQA</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HVLD</strong></td>
+                                <td>High-Voltage Leak Detection</td>
+                                <td>Deterministic, nondestructive CCIT method using electrical current; effective for conductive liquids</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FISTA</strong></td>
+                                <td>International Safe Transit Association</td>
+                                <td>Standards body for shipping and transit packaging; relevant for distribution integrity challenges</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MALL</strong></td>
+                                <td>Maximum Allowable Leak Limit</td>
+                                <td>The quality threshold that defines the sensitivity requirement for CCIT methods</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LOD</strong></td>
+                                <td>Limit of Detection</td>
+                                <td>The smallest detectable defect for a given CCIT method; must be &le; MALL</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OES</strong></td>
+                                <td>Optical Emission Spectroscopy</td>
+                                <td>Analytical technique applicable to headspace gas analysis for CCI evaluation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>QbD</strong></td>
+                                <td>Quality by Design</td>
+                                <td>ICH Q8 framework; TR86 applies QbD principles to CCS design and CCIT strategy development</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：縮寫的精確使用與情境</h3>
+                    <div class="concept-box">
+                        <h4>三組容易混淆的縮寫</h4>
+                        <p>在日常工作和文件中，以下三組縮寫容易被混用，請注意區分：</p>
+                        <ul>
+                            <li><strong>CCI vs CCIT</strong>：CCI 是「容器封閉完整性」這個<em>屬性</em>；CCIT 是「測試這個屬性的方法/程序」。好比說：「我們需要確保 CCI（屬性）」vs「我們執行 CCIT（測試行為）」。</li>
+                            <li><strong>CPP vs CQA</strong>：CPP 是<em>製程</em>中的關鍵參數（壓蓋力）；CQA 是<em>產品/包裝</em>的關鍵品質屬性（容器封閉完整性本身）。一個 CPP 的偏差可能導致 CQA 不符合。</li>
+                            <li><strong>MALL vs LOD</strong>：MALL 是<em>品質標準</em>（你的規格）；LOD 是<em>方法能力</em>（你的方法能偵測多小）。方法選擇的關鍵是確保 LOD ≤ MALL。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>HVLD：目前最受關注的確定性 CCIT 技術</h4>
+                        <p>高壓放電洩漏偵測（HVLD）在近年來受到廣泛關注，原因：</p>
+                        <ul>
+                            <li>非破壞性，可用於 100% 線上檢測</li>
+                            <li>靈敏度高，LOD 可達 2–5 μm 等效孔徑</li>
+                            <li>適用於含有導電液體的包裝（西林瓶、PFS、安瓿瓶）</li>
+                            <li>FDA 已有多個 ANDA/NDA 案例接受 HVLD 作為 CCIT 方法</li>
+                        </ul>
+                        <p>限制：對凍乾產品（無導電液體）效果較差；對氣態洩漏（惰性氣體）的偵測需要特殊設定。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>QbD 在 CCIT 中的應用邏輯</h4>
+                        <p>QbD（品質源於設計）應用於 CCI 的邏輯鏈：</p>
+                        <ol>
+                            <li>定義<strong>目標產品品質</strong>：需要無菌、穩定、效力維持</li>
+                            <li>識別<strong>CQA</strong>：CCI 是關鍵品質屬性</li>
+                            <li>建立<strong>MALL</strong>：什麼程度的洩漏會危及 CQA？</li>
+                            <li>識別<strong>CPP</strong>：哪些製程參數影響 CCI？</li>
+                            <li>建立<strong>設計空間</strong>：CPP 的可接受範圍</li>
+                            <li>選擇<strong>CCIT 方法</strong>：LOD ≤ MALL 的確定性方法</li>
+                        </ol>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>FISTA 與運輸完整性</h4>
+                        <p>FISTA（國際安全運輸協會）在 CCIT 情境中的相關性：藥品包裝不只需要在生產和貯存時維持完整性，還需要在<strong>運輸過程中</strong>承受振動、衝擊、溫度變化。FISTA 標準提供了運輸模擬測試的框架，這對評估複雜包裝系統（如含有多個元件的 PFS 組件）的運輸完整性特別重要。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>縮寫應用思考題</h4>
+                        <ol>
+                            <li>請寫一段完整的 CCIT 方法驗證報告的執行摘要（3-4 句），正確使用 CCI、CCIT、CCS、MALL、LOD 等縮寫，並確保每個縮寫使用情境正確。</li>
+                            <li>OES（光學發射光譜）用於頂空氣體分析——你認為這種方法更適用於偵測哪種類型的洩漏？（提示：考慮凍乾產品中的殘餘氧氣或水蒸氣洩漏 vs 液體洩漏）</li>
+                            <li>如果一個產品的 CCI 被確定為 CQA，那麼在 APQR（年度產品品質回顧）中，你應該追蹤哪些相關的 CPP 趨勢？</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abbreviation Context Diagram -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>How TR86 Abbreviations Connect</h3>
+                    <div class="concept-box">
+                        <h4>The Decision Chain</h4>
+                        <p>The abbreviations in TR86 are not independent terms — they form a logical decision framework for CCIT strategy:</p>
+                        <ol>
+                            <li><strong>QbD</strong> principles guide the overall approach</li>
+                            <li>Identify <strong>CQA</strong>: Is package integrity a CQA for this product?</li>
+                            <li>Define <strong>CCS</strong>: What are the components of the container closure system?</li>
+                            <li>Establish <strong>MALL</strong>: What is the maximum acceptable defect size?</li>
+                            <li>Identify <strong>CPP</strong>: Which process parameters affect CCI?</li>
+                            <li>Select <strong>CCIT</strong> method with <strong>LOD</strong> &le; MALL</li>
+                            <li>Consider: <strong>HVLD</strong>, <strong>OES</strong>, or other deterministic methods</li>
+                            <li>Confirm: <strong>CCI</strong> is maintained throughout product lifecycle</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文：縮寫決策鏈總結</h3>
+                    <div class="formula-box">
+                        <h4>CCIT 策略決策流程</h4>
+                        <pre>QbD 原則
+    ↓
+確認 CCI 是否為 CQA
+    ↓
+定義 CCS 的所有組件
+    ↓
+建立 MALL（基於微生物風險研究）
+    ↓
+識別影響 CCI 的 CPP
+    ↓
+選擇 CCIT 方法
+(確認 LOD ≤ MALL)
+    ↓
+評估候選方法：HVLD / OES / 真空衰減 / ...
+    ↓
+驗證方法 → 實施 → 監控
+    ↓
+確保整個生命週期 CCI 維持</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY & KEY TAKEAWAYS ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Section Summary &amp; Key Takeaways | 本節摘要與重點總結</h2>
+                <p>Synthesis of Section 0 content for examination and practical application</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Takeaways — English</h3>
+                    <ul class="structure-list">
+                        <li><strong>Document Hierarchy</strong>: ICH Q9 &rarr; USP &lt;1207&gt; &rarr; TR86 (advanced) + TR27 (foundational). TR86 builds on basics established by USP &lt;1207&gt;; it does not replace it.</li>
+                        <li><strong>Why TR86 Exists</strong>: No single source addressed complex packaging systems (PFS, bulk containers) or innovative CCIT methods adequately. TR86 fills this gap as a consensus document.</li>
+                        <li><strong>Risk-Based Approach</strong>: "Quality cannot be tested into a product." Testing during development should understand and eliminate risks, not just screen for defects at release.</li>
+                        <li><strong>Lifecycle Requirement</strong>: CCI must be demonstrated throughout the entire product lifecycle — from package development through commercial production, stability, and beyond.</li>
+                        <li><strong>Deterministic &gt; Probabilistic</strong>: Regulators and TR86 prefer deterministic methods (quantitative, physics-based) over probabilistic methods (stochastic, biology-based).</li>
+                        <li><strong>LOD must be &le; MALL</strong>: Method sensitivity must always be justified against the Maximum Allowable Leak Limit established through scientific risk assessment.</li>
+                        <li><strong>CCS = all components</strong>: All primary and secondary packaging components and materials are part of the CCS — any change to any component requires CCI re-evaluation.</li>
+                        <li><strong>Consensus, Not Regulation</strong>: TR86 represents PDA expert consensus, not regulatory agency policy. Regulatory submissions still require independent scientific justification.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>重點總結 — 中文</h3>
+                    <ul class="structure-list">
+                        <li><strong>文件位階</strong>：ICH Q9 &rarr; USP &lt;1207&gt; &rarr; TR86（進階）+ TR27（基礎）。TR86 建立在 USP &lt;1207&gt; 的基礎上，不是替代。</li>
+                        <li><strong>TR86 存在的原因</strong>：沒有任何單一來源能充分指導複雜包裝系統（PFS、散裝容器）或創新 CCIT 方法。TR86 以共識文件的形式填補這個缺口。</li>
+                        <li><strong>風險導向方法</strong>：「品質不能靠測試測出來。」開發期的測試應聚焦於理解和消除風險，而非僅作為放行篩選工具。</li>
+                        <li><strong>生命週期要求</strong>：CCI 必須貫穿整個產品生命週期——從包裝開發、商業生產到穩定性研究，全程監控。</li>
+                        <li><strong>確定性優於機率性</strong>：監管機構和 TR86 偏好確定性方法（定量、基於物理化學原理）而非機率性方法（隨機性、生物學基礎）。</li>
+                        <li><strong>LOD 必須 &le; MALL</strong>：方法靈敏度必須始終對應經科學風險評估建立的最大允許洩漏限值。</li>
+                        <li><strong>CCS 涵蓋所有組件</strong>：所有一級和二級包裝組件都是 CCS 的一部分——任何組件的變更都需要重新評估 CCI。</li>
+                        <li><strong>共識非法規</strong>：TR86 代表 PDA 專家共識，不代表監管機構立場。法規申請中仍需獨立的科學論證。</li>
+                    </ul>
+
+                    <!-- Final Comprehensive Practice -->
+                    <div class="practice-box" style="margin-top: 1rem;">
+                        <h4>綜合思考題（考試等級）</h4>
+                        <ol>
+                            <li>請說明以下情境是否符合 TR86 的建議，並論述原因：「某 CDMO 的 QC 實驗室對所有無菌西林瓶產品使用微生物侵入測試（MIL）作為唯一的 CCIT 方法，在批次放行前執行，抽樣 AQL 2.5，每批 20 個樣品。」</li>
+                            <li>一個新的 PFS 產品（含蛋白質藥物，高黏度，需要 -20°C 冷凍貯存）要求你建立 CCIT 策略。請依據 TR86 Section 0 的框架，列出你需要考慮的五個關鍵問題，並說明每個問題如何影響方法選擇。</li>
+                            <li>TR86 說「analytical technology has progressed over the past two decades」。請列舉三種在過去 20 年中出現或顯著改進的 CCIT 技術，說明它們如何改變了包裝完整性評估的能力。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</p>
+    <p>Section 0: Introduction &amp; Glossary (1.0 + 1.1 + 2.0 + 2.1) &nbsp;|&nbsp; Bilingual Educational Edition | 雙語教學版</p>
+    <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 0.5rem;">SterileGMP Knowledge Hub &bull; For educational and training purposes only</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
