@@ -863,6 +863,43 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-SUT-Complete.md
+**Report:** ISPE Good Practice Guide: Single-Use Technology
+**Pages:** p7–p174 | **Sections:** 10 (introduction, components/E&L, equipment/quality [×2], supplier/URS/facility, implementation, program management, appendices 1–7)
+
+**Covers questions about:**
+- SUT implementation strategy: when to choose single-use over stainless steel, hybrid configurations
+- Single-use components, assemblies, and systems: classification, design, and selection criteria
+- Extractables and Leachables (E&L): PQRI framework, AET, SCT, leachables testing methodology
+- Process equipment design: sensors (pH, DO, flow, pressure, temperature/conductivity), pinch valves, pumps (peristaltic, diaphragm, centrifugal), bioreactors, chromatography, ultrafiltration
+- Bioreactor scale-up: kLa, P/V, VVM, mixing time, geometric ratio — equivalence between scales
+- Environmental classification: open vs closed vs functionally closed processes, process closure risk assessment
+- Control systems: GAMP 5 compliance, OPC communication, 21 CFR Part 11, batch management
+- Quality requirements at three levels: component (E&L/bioburden/particulate), assembly (manufacturing environment/packaging/sterilization/ISTA shipping), system (NEC/21 CFR Part 11/HMI)
+- Supplier qualification: supplier assessment matrices for components, assemblies, and systems; AVL management; quality agreements
+- Quality checks: supplier responsibilities vs end-user responsibilities for SU product receipt and use
+- User Requirement Specification (URS): development, communication flow, design specification
+- Implementation plan: project management, single-use program lifecycle
+- Regulatory landscape: FDA, EMA, ASTM E2500, ASTM E3051, BioPhorum, BPSA guidelines
+- Risk management: FMEA for SU systems, risk-based qualification approach, Appendix 4 risk qualification attributes
+- 2000L single-use bioreactor (SUB) case study: Appendix 5 end-to-end implementation example
+
+**Key terms:** Single-Use Technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, E&L, AET (Analytical Evaluation Threshold), SCT (Safety Concern Threshold), bioprocess bag, peristaltic pump, diaphragm pump, pinch valve, bioreactor scale-up, kLa, P/V, VVM, open process, closed process, functionally closed process, process closure risk assessment, URS (User Requirement Specification), supplier assessment matrix, GAMP 5, 21 CFR Part 11, OPC, FAT (Factory Acceptance Test), SAT (Site Acceptance Test), ISTA shipping test, ASTM D4169, spallation, vacuum integrity, irradiation marker, QbD, ICH Q8, ICH Q9, ASTM E2500, BioPhorum, BPSA
+
+**Sections:**
+0. Introduction & Key Concepts (Ch1, p7–12)
+1a. Components & Extractables/Leachables (Ch2.1–2.2, p13–28)
+1b. Equipment Design & Quality Requirements (Ch2.3–2.4, p29–50)
+1c. Supplier Qualification, URS & Facility Design (Ch2.5–2.8, p51–78)
+2. Implementation & Use (Ch3, p79–102)
+3. Program Management (Ch4, p103–120)
+4. Appendix 1–3: Regulations, Glossary & Training (p121–132)
+5. Appendix 4: Risk Qualification Attributes (p133–146)
+6. Appendix 5: Case Study — 2000L Single-Use Bioreactor (p147–158)
+7. Appendix 6–7: References & Glossary (p159–174)
+
+---
+
 ## PDA/TR84-Complete.md
 **Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
 **Pages:** p1–p57 | **Sections:** 8 (including split appendix)
@@ -1018,6 +1055,17 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Risk-MaPP logic diagram, product acceptance decision / Risk-MaPP邏輯決策圖、產品接受決策 | ISPE-Vol7 |
 | FMEA for manufacturing, RPN scoring, risk ranking / 製造FMEA、RPN評分、風險排序 | ISPE-Vol7 |
 | Containment selection, isolator vs glovebox vs LEV / 圍堵系統選擇、隔離器vs手套箱vs局部排風 | ISPE-Vol7 |
+| Single-use technology, SUT, disposable bioprocess, single-use system SUS / 一次性技術、一次性生物製程、拋棄式系統 | ISPE-SUT |
+| Extractables leachables E&L, AET, SCT, SU material safety / 可萃取物、可滲出物、分析評估門檻 | ISPE-SUT + TR26 + TR66 |
+| Single-use bioreactor SUB, bioreactor design, mammalian cell culture vessel / 一次性生物反應器、哺乳類細胞培養槽 | ISPE-SUT |
+| Bioreactor scale-up, kLa, P/V, VVM, mixing time equivalence / 生物反應器放大、氧傳質係數、單位體積功率 | ISPE-SUT |
+| Single-use pump, peristaltic pump, diaphragm pump, pump tubing spallation / 一次性泵、蠕動泵、隔膜泵、管路剝落 | ISPE-SUT |
+| Open process closed process functionally closed, process closure risk / 開放製程、封閉製程、功能性封閉、製程封閉性風險 | ISPE-SUT |
+| User requirement specification URS, design specification, SU implementation / 使用者需求規格書、設計規格、SU實施 | ISPE-SUT |
+| Supplier assessment matrix, SU supplier qualification, system integrator / 供應商評估矩陣、SU供應商資格認定、系統整合商 | ISPE-SUT |
+| Single-use quality requirements, sterile barrier, vacuum integrity, irradiation marker / 一次性品質要求、無菌屏障、真空完整性、照射標記 | ISPE-SUT |
+| BPSA, BioPhorum, single-use standardization, industry consortium / 單次使用標準化、行業聯盟指引 | ISPE-SUT |
+| 2000L SUB case study, single-use bioreactor case study / 2000升一次性生物反應器案例研究 | ISPE-SUT |
 
 ## Not Covered in This Knowledge Base
 
@@ -1042,7 +1090,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR22 ★★★ (automated/semi-automated APS) | TR62 ★★★ (manual process APS: zero contamination criterion, all 13 design elements) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
-→ TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
+→ ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
 → TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
@@ -1060,7 +1108,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
-→ TR66 ★★★ (full SUS guidance) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
+→ ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
 **Process Validation (製程驗證)**
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
