@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.6 - Chapter 7: Architectural</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: #2ecc71;
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: #2ecc71;
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39, 174, 96, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #219a52;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 7: Architectural</h1>
+    <div class="subtitle">第七章：建築設計</div>
+    <div class="page-info">ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p85 - p97</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding:1.25rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解生物製藥廠房「由內而外」的建築設計原則，以及三個設計階段（概念、基本、詳細）的意涵</li>
+        <li>掌握廠房功能概念：垂直/水平流程、模組化建設（Off-Site Construction）、廠區流動管理（人員、物料、廢棄物）</li>
+        <li>學習廠址選擇（Masterplanning）的關鍵考量：氣候、生物安全、現有設施改建限制（Brownfield vs Greenfield）</li>
+        <li>了解建築外殼（Building Envelope）設計、模組化設計（Modular Design）對廠房長期投資回報的影響</li>
+        <li>掌握結構設計要點：樓板荷重、跨距、抗震設計、以及對未來廠房彈性的影響</li>
+        <li>認識建築資訊模型 BIM（Building Information Modeling）在生物製藥廠房設計管理中的應用</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================ -->
+<!-- 7.1 Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">7.1 Introduction — 導論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This chapter aims to provide a client, design manager, or project manager a set of guidance information to aid the initial design implementation process.</p>
+        <p>The focus of the chapter is on features of concern to <span class="key-term">biopharmaceutical and vaccines facilities</span>. Information applicable to other pharmaceutical facilities is included for completeness of facility design.</p>
+
+        <h3>Design Principles</h3>
+        <p>Pharmaceutical facilities are usually designed <span class="key-term">from the inside out</span>. The design should be based on user needs and requirements.</p>
+        <p>The life cycle and potential for future change of use of the overall facility site and buildings also should be considered in order to comply with sustainable construction expectations, particularly where an organization's product range includes more than biopharmaceuticals. In this case, the potential for sharing or re-use of facilities for oral solid dose or over-the-counter products should be considered, subject to compliance with GMP regulatory expectations and the definition of a "facility" from a single use perspective.</p>
+        <p>The knowledge learnt from initial design discovery and <span class="key-term">technical transfer</span> should be combined. Project front end definition methodologies can help with rapid transfer of key project information.</p>
+
+        <p>Facility design has three phases:</p>
+        <ol>
+            <li><strong>Conceptual</strong></li>
+            <li><strong>Basic</strong></li>
+            <li><strong>Detailed</strong></li>
+        </ol>
+        <p>Risk and safety assessment processes should be applied during each phase of the design to support the construction design and implementation process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>由內而外設計（Inside-Out Design）：</strong>生物製藥廠房的設計順序是先確定製程需求（設備、流程、清潔分級），再由此向外推演建築結構。這與一般商業建築「先蓋好外殼再想怎麼用」完全相反。</p>
+            <p><strong>三個設計階段：</strong></p>
+            <ul>
+                <li><strong>概念設計（Conceptual）：</strong>確定廠房類型、規模、整體布局方向。此階段是最重要的，因為此後的決策成本代價最高。</li>
+                <li><strong>基本設計（Basic）：</strong>確定具體尺寸、結構系統、主要設備位置。</li>
+                <li><strong>詳細設計（Detailed）：</strong>完成所有施工圖紙和規格說明。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「由內而外設計」就像裁縫做衣服：先量身材（製程需求），再剪布料（建築設計）。反過來「先有建築再硬塞製程」就像買了一件現成西裝，卻發現袖子太短——改起來非常麻煩且昂貴。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>每個設計階段都應執行風險與安全評估。生物製藥廠房在概念設計階段就必須考慮生物安全（Biosafety）分級需求，因為這直接影響通風系統、廢水處理、以及建築外殼設計。越晚發現問題，修改代價越高。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何生物製藥廠房的設計必須「由內而外」？若反過來「由外而內」，會造成哪些具體問題？</li>
+                <li>技術轉移（Technical Transfer）時，哪些製程資訊對建築設計影響最大？請舉例說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2 Facility Design -->
+<!-- ============================================================ -->
+<div class="section-title">7.2 Facility Design — 廠房設計</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Facility design deals with both the visual and functional aspects of biopharmaceutical facility operation.</p>
+        <p>In addition to process area, elements to be integrated within a facility design can include:</p>
+        <ul>
+            <li>Administration and amenity facilities</li>
+            <li>Security facilities</li>
+            <li>Quality Assurance (QA)</li>
+            <li>Quality Control (QC) laboratories; including line <span class="key-term">In-Process Control (IPC)</span> and microbiology laboratories for product and environmental testing</li>
+            <li>Warehousing, including cold chain operations</li>
+            <li>Downstream fill finish operations</li>
+            <li>Process and building services, including utilities feed housings</li>
+        </ul>
+        <p>The appropriate integration of these elements together with an appreciation of any future needs in regard of <span class="key-term">adaptability, flexibility, and expandability</span> should help to ensure the viability of a sustainable operation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>廠房設計的全面整合：</strong>一座完整的生物製藥廠房不僅有生產區，還必須整合行政、品保、品管實驗室、倉儲（含冷鏈）、下游充填完成、以及公用設施。這些區域的相對位置和動線規劃，直接影響日常運作效率和GMP合規性。</p>
+            <p><strong>三個關鍵設計屬性：</strong></p>
+            <ul>
+                <li><strong>適應性（Adaptability）：</strong>廠房能否調整以應對製程變化</li>
+                <li><strong>彈性（Flexibility）：</strong>廠房能否支援多品項或多製程</li>
+                <li><strong>可擴展性（Expandability）：</strong>廠房能否在未來增加產能</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對於CDMO而言，「彈性」特別重要——因為CDMO需要同時服務多個客戶、多種產品。廠房設計必須在初期就規劃好如何實現多品項切換，而不是事後亡羊補牢。品管實驗室（QC）的位置應靠近生產區，以縮短IPC樣品傳遞時間，提升生產效率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在CDMO廠房設計中，「彈性」和「效率」有時會產生矛盾。您會如何在設計層面取得平衡？</li>
+                <li>冷鏈倉儲（Cold Chain）在建築設計上需要哪些特殊考量？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.1 Key Drivers -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.1 Key Drivers for a Fully Functional Production Facility and Campus — 功能性生產廠房的關鍵驅動因素</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Operational and functional design drivers toward ensuring best flows and correct layout design include:</p>
+        <ul>
+            <li><strong>Functionally focused risk assessment and response:</strong>
+                <ul>
+                    <li>Design risk assessment should be performed from the start of a project, starting with concept stage. The assessments should be reviewed and updated throughout the design and construction process.</li>
+                </ul>
+            </li>
+            <li><strong>Economy and efficiency of operation:</strong>
+                <ul>
+                    <li>Simple work flow from site receipt to point of use:
+                        <ul>
+                            <li>Avoiding crossing transport/workflows</li>
+                            <li>Where unavoidable, a provision of an SOP for ease of operation</li>
+                        </ul>
+                    </li>
+                    <li>Ease of access to location for facility and equipment maintenance</li>
+                </ul>
+            </li>
+            <li><strong>Flexibility, adaptability, and expandability:</strong>
+                <ul>
+                    <li>Review of potential future operations. Acceptance of new methods or processes that may impact future operations:
+                        <ul>
+                            <li>Clear zones for storage, process, support, process services, building services, utilities, administration, amenity</li>
+                            <li>Administration and amenity functions integrated with workflow and location</li>
+                            <li>Visual integration and involvement of the administration function with the work process can be beneficial</li>
+                        </ul>
+                    </li>
+                    <li>Nice place to work: Bright, light, and visually sustaining; Safe; Open operation without barriers, where possible; Maintenance of visual links through use of clear materials allows capacity for visual checks by staff; Secure; Product risk awareness; Maintain staff and visitor parking outside the security perimeter</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三大設計驅動因素：</strong></p>
+            <p>1. <strong>功能導向風險評估：</strong>從概念階段就開始做設計風險評估，並在整個設計和施工過程中持續更新。這是ISPE對「Quality by Design（QbD）」理念在建築設計層面的體現。</p>
+            <p>2. <strong>運作經濟性與效率：</strong>物料從收貨到使用點的流程應儘量簡單直接，避免交叉流動（Cross-Flow），這對GMP合規和日常操作效率都至關重要。</p>
+            <p>3. <strong>工作環境品質：</strong>明亮、安全、視野開闊的工作環境可以提高員工士氣和警覺性，也有助於管理層進行目視管理（Visual Management）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「避免交叉工作流程」就像超市的單向動線設計——購物車只走一個方向，收銀台在出口附近，不會讓顧客在走道中對撞。生物製藥廠房的物料流、人員流、廢棄物流也需要類似的「單向化」規劃，減少GMP風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>「保持行政和訪客停車在安全邊界外」這個看似簡單的要求，其實涉及廠房安全設計的核心：未授權人員不應接觸生產區。CDMO廠房還需要特別考慮客戶訪問（Client Visit）路線的設計，既要讓客戶能夠看到生產情況，又不能違反GMP動線規定。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在廠房設計中，「透明度（視覺連結）」與「清潔區域隔離」之間如何取得平衡？</li>
+                <li>CDMO接待客戶參觀時，訪客動線應如何規劃才能同時滿足GMP要求和客戶體驗？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.2 Facility Concepts -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.2 Facility Concepts — 廠房概念設計</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The process design may demonstrate lean values that can be lost if they are not reflected in the design of the remainder of the facility. In this respect, both design consistency and a strong overall design concept are considered important.</p>
+
+        <h3>Vertical, Stepped, Horizontal</h3>
+        <p><span class="key-term">Vertical or semi-vertical (stepped) flow</span> is often necessary from a process concept viewpoint, rather than a horizontal flow. This may have a significant effect on facility design and integration with other facility activities, e.g., warehousing, integration of amenities and administration. This also may affect future facility flexibility.</p>
+
+        <h3>Off-Site Construction</h3>
+        <p>This may be referred to as <span class="key-term">modular, flat-pack, container, or skid based construction</span>. The introduction of off-site construction techniques can provide an alternative to the traditional construction process (which may be referred to as a "stick-build").</p>
+        <p>Using these techniques, construction takes place in a controlled environment and is not dependent on variability weather at a construction site. Typical benefits of these techniques include:</p>
+        <ul>
+            <li>Improved quality</li>
+            <li>Overall program (schedule) reduction, including reduced site time</li>
+            <li>Ease of future expansion</li>
+            <li>Less reliance on site/local resources with attendance weather conditions</li>
+            <li>Potential for cost reduction through repetition</li>
+        </ul>
+        <p>Modular systems linked with off-site builds can provide better cost effectiveness through increased cleanliness, better fit, and a reduced program (schedule). The design team (particularly the architectural and structural disciplines) should focus on a modular approach from the beginning of the design.</p>
+        <p>Larger facilities can gain from a mixture of construction processes with, e.g.:</p>
+        <ul>
+            <li>Modular process sets linked to flat pack building construction, and skid mounted and container based building services</li>
+            <li>Utilities linked to stick built or flat pack administration and amenities building construction</li>
+        </ul>
+        <p>Geographical location should be considered when determining an appropriate construction technique.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>垂直 vs 水平流程（Vertical vs Horizontal Flow）：</strong></p>
+            <p>生物製藥製程有時需要利用重力進行物料傳遞（例如：培養基從高樓層配製後重力流入下層生物反應槽），這就形成「垂直流程」。設計師必須在廠房高度和樓層規劃上提前預留空間。水平流程則較常見於小分子藥廠，物料在同一樓層平移。</p>
+            <p><strong>模組化建設（Off-Site Construction / Modular Construction）：</strong>在工廠預製模組，再運到現場組裝。相對於傳統現場施工（Stick-Build），具有品質更穩定、工期更短、可重複利用等優點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>模組化廠房（Modular Facility）就像積木式玩具（LEGO）——每塊積木在工廠精確製造，到現場只需組合。傳統現場施工則像用水泥砌牆，需要等待硬化、受天氣影響，且建好後很難改變。CDMO擴廠時，模組化設計可以直接「加裝積木」，省去大量時間和成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>生物製藥廠房有一個獨特挑戰：大型生物反應槽（Bioreactor）可能高達數層樓，廠房需要為此設計高天花板（可能需要4-6公尺淨高）。這是與一般小分子藥廠截然不同的建築需求。設計團隊必須在早期就確認最大設備尺寸，否則後期改動代價極高。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>台灣某CDMO正計劃建設新的生物製藥廠房，預算有限且工期緊迫。採用模組化建設（Off-Site Construction）有以下優勢：在台灣天氣多變的環境下，工廠預製可確保品質穩定；模組可預先通過驗證；未來若獲得新客戶，可快速增加模組擴大產能。缺點是前期設計決策必須非常明確，因為模組尺寸一旦固定就難以更改。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>模組化建設相比傳統現場施工（Stick-Build），在GMP驗證方面有哪些優劣勢？</li>
+                <li>如果您是CDMO的工程負責人，您會在哪些情況下選擇垂直流程設計？哪些情況下選擇水平流程？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.2.3 Flows and Their Impact -->
+<!-- ============================================================ -->
+<div class="section-title">7.2.3 Flows and their Impact — 流動管理及其影響</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In-facility flows are of <span class="key-term">cGMP and regulatory concern</span>. When in-facility flows are integrated with site flows, they contribute to the interdisciplinary understanding of a design layout, particularly at the masterplanning stage. The flow characteristics of a site and the impact of material, personnel, waste, and sample flows should be considered to help to ensure efficiency and economy of operation.</p>
+        <p>Space constrictions should be considered for smaller biopharmaceutical facilities and retrofits, particularly with closed or continuous processing. Internal site workflows should ensure safe and secure operation within the needs of GMP compliance and cleanliness requirements. For example, the <span class="key-term">master seed/cell bank</span> should be positioned close to its use location, to avoid significant commercial, operational, or biosafety risks through unnecessary transport, security, and safety issues.</p>
+        <p>For closed processing, individual flows should be analyzed to ensure that each element of an operation follows an efficient and safe route without compromising the product. For example:</p>
+        <ul>
+            <li><strong>Personnel flows:</strong>
+                <ul>
+                    <li>Street clothes</li>
+                    <li>Facility gowning</li>
+                    <li>Individual grade gowning paths</li>
+                    <li>Warehouse clothing</li>
+                    <li>Maintenance gowning</li>
+                    <li>Location of specialist Personal Protection Equipment (PPE)</li>
+                </ul>
+            </li>
+            <li><strong>Material flows:</strong>
+                <ul>
+                    <li>Master cell</li>
+                    <li>Product flows: Upstream, In-process staging areas, Downstream, Fill/finish to store</li>
+                    <li>Buffer and media flows including materials from store to location</li>
+                    <li>Equipment maintenance flows</li>
+                    <li>Clean-In-Place (CIP) considerations</li>
+                    <li>Clean-out-of-place considerations</li>
+                </ul>
+            </li>
+        </ul>
+        <p>The impact of changes in flow formats should be understood in an architectural and structural site context and responded to accordingly.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>廠內流動管理（In-Facility Flow Management）：</strong>GMP法規要求對廠內的人員、物料、廢棄物、樣品流動進行嚴格管控，防止交叉污染（Cross-Contamination）。這不只是操作程序問題，更是建築設計問題——廠房的通道、門的位置、換衣室的配置都必須支持正確的流動模式。</p>
+            <p><strong>主要流動類型（六大流）：</strong></p>
+            <ul>
+                <li>人員流（Personnel Flow）：不同更衣級別需要不同的更衣通道</li>
+                <li>物料流（Material Flow）：從上游到下游的單向流動</li>
+                <li>緩衝液/培養基流（Buffer/Media Flow）</li>
+                <li>設備維護流（Equipment Maintenance Flow）</li>
+                <li>廢棄物流（Waste Flow）</li>
+                <li>樣品流（Sample Flow）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>「主菌種/細胞庫（Master Seed/Cell Bank）應放置在靠近使用位置」這個看似小事的要求，實際上涉及重大的商業和生物安全風險。細胞庫是整個生產的核心資產，不必要的搬運會增加污染和遺失風險。在設計階段就將細胞庫位置靠近接種工作站，是降低操作風險的重要設計決策。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>廠內流動管理就像醫院的「清潔區、污染區、半污染區」分區管理——手術室護士不會從污染走廊走進手術室，同樣地，生物製藥廠的操作人員在不同清潔等級區域之間也需要有明確的更衣換裝流程，而這些流程必須在建築設計階段就用空間布局來「強制執行」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在生物製藥廠房中，人員流動（Personnel Flow）需要考慮哪些不同的換裝路徑？為何不同等級的更衣不能共用同一條通道？</li>
+                <li>CIP（就地清洗）管路的走向如何影響廠房的整體物料流規劃？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3 Placing the Facility on the Site -->
+<!-- ============================================================ -->
+<div class="section-title">7.3 Placing the Facility on the Site — 廠址選擇與廠區規劃</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A biopharmaceutical manufacturing facility may be constructed within an existing or new site. The facility should be able to operate efficiently within the type and location of the site.</p>
+
+        <h3>7.3.1 Masterplanning</h3>
+        <p><span class="key-term">Masterplanning</span> is the overall consideration of a site's or facility's current and future needs. It should be flexible in its response to varying product supply requirements. Masterplanning should reflect an operation's business planning aspirations and should oversee site and operational planning.</p>
+        <p>The need for defining a masterplan is dependent on the size of site operation (on-going or planned). A manufacturing facility dealing with all stages of pharmaceutical production should link the elements of the facility to each other in a logical sequence. For existing facilities, where a site has developed due to need and availability, the overall site operation should be reviewed to help maintain or improve cost effective production and management.</p>
+
+        <h3>Bio Security and Safety Considerations</h3>
+        <p>Local issues should be considered in the placement of a biopharmaceutical facility. Facilities may need significant security and safety protection due to local political situations. Risks around these concerns should be reviewed early in the design process to ensure that the issues are fully understood and appropriate protection, access, or facility placement and physical design/specification measures are implemented.</p>
+
+        <h3>Facility Size and its Impact on Design and Concept</h3>
+        <p>Existing sites and facilities may experience a size reduction through the use of <span class="key-term">continuous processes</span>, particularly with large volume throughput. Significantly increased titers can result in reduced equipment sizing for the same throughput. Small high volume process modules may have a disproportionate effect on upstream and downstream operations with a consequent effect on site planning.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>總體規劃（Masterplanning）：</strong>Masterplanning是對整個廠區現在和未來需求的全面考量。它不只是今天的廠房配置，更是一份「廠區發展藍圖」——預留未來擴建空間、規劃公用設施管廊、考慮不同建築物之間的邏輯連結。</p>
+            <p><strong>連續製程對廠房規模的影響：</strong>現代生物製藥趨勢是從批次製程（Batch Process）轉向連續製程（Continuous Process）。連續製程可大幅縮小設備尺寸，意味著同樣產能的廠房可以更小。但這也可能造成上下游設備規模不匹配，需要在Masterplanning階段就考慮到。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>生物安全（Bio Security）的廠址考量：</strong>生物製藥廠房處理的是活的生物材料（微生物、病毒等），廠址選擇必須考慮：<br>
+            1. 周邊環境污染源（工業廢氣、農業粉塵）<br>
+            2. 生物材料意外洩漏對當地環境的影響<br>
+            3. 政治穩定性（涉及高價值生物材料的安全）<br>
+            這些考量在一般建築設計中幾乎不存在，是生物製藥廠房的特殊挑戰。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Masterplanning就像城市規劃——一個好的城市不只考慮今天的建設，還要預留未來道路、捷運、公園的空間。生物製藥廠區也一樣：初期建廠時就要規劃好未來10-20年可能的擴建位置，否則等到需要擴廠時才發現沒有空地，代價將非常高昂。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>連續製程（Continuous Process）的導入，如何影響生物製藥廠房的空間規劃？請從上游和下游兩個角度分析。</li>
+                <li>為什麼生物製藥廠房在廠址選擇時需要特別考慮「生物安全」因素？請舉出兩個具體的風險場景。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.3.2 Facility Concepts (Greenfield / Brownfield) -->
+<!-- ============================================================ -->
+<div class="section-title">7.3.2 Facility Concepts: Large / Small / Greenfield / Brownfield — 大型/小型廠房；全新/改建廠址</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Large Facility Concepts</h3>
+        <p>The impact of climate on larger facility design means, e.g.:</p>
+        <ul>
+            <li>An open campus format being more acceptable in mild temperate/mesothermal climate zones</li>
+            <li>An integrated or spine format being more suited to equatorial and cold climates where protection from the elements is necessary</li>
+        </ul>
+        <p>A key consideration is the protection and ease of passage of goods or equipment in transit from one part of a facility to another. The selection of which format suits the operation is dependent on several factors, e.g., geographical location. Each format has advantages and disadvantages. For some locations or operations, a mixture of format may provide most flexibility in use, by providing expansion capacity, acceptance, and placement also will be a matter of compliance with local permitting criteria.</p>
+
+        <h3>Small Facility Concepts</h3>
+        <p>Smaller integrated biopharmaceutical facilities with multi-product or single product capability use less site area and are usually less affected by utilities issues that affect the large facilities.</p>
+
+        <h3>Process Pods and Field Located Processes</h3>
+        <p>The possibility of reduction in size of biopharmaceutical and vaccines facilities processes allows the capacity to contain processes in <span class="key-term">process pods</span>. These process pods may be used both as 'plug and play' units within a facility or they could be positioned close to the drug need, e.g., as support to medical emergencies the needs of developing countries.</p>
+
+        <h3>Greenfield</h3>
+        <p>Layout opportunities depend on site size, access, and orientation. For further information, see Chapter 8 of this Guide.</p>
+
+        <h3>Brownfield</h3>
+        <p>For <span class="key-term">brownfield sites</span>, pre-existing utilities, administration, warehousing, and engineering functions should be considered in association with the User Requirement Brief (URB) of a new project, e.g., to ensure the benefits of brownfield site integration. A brownfield site may be considered as a "retrofit" facility and introducing new ways of working may have a significant effect on other site operations. This can lead to further capital works with an overall operational life cycle gain.</p>
+
+        <h3>Pre-existing Site Issues</h3>
+        <p>Pre-existing site issues can significantly affect operation. Examples include:</p>
+        <ul>
+            <li>Placing the primary HVAC intake of a biopharmaceutical facility close to the extract ventilation outlets of neighboring facilities and introducing significant environmental contamination risk</li>
+            <li>Locating a biopharmaceutical facility next to a conserved pond where clouds of small flying insects live and breed each season providing a continuing filtration issue</li>
+            <li>Locating a biopharmaceutical facility near cottonwood trees whose seeds cause significant filtration issues</li>
+        </ul>
+        <p>Flood risk may be issue in some countries. This is a particular issue for biopharmaceutical facilities with potential risks to the local environment and public drainage system, as well as the potential risk of contamination of both process and product.</p>
+
+        <h3>Retrofits</h3>
+        <p>There may be unforeseen issues with a location. Pre-existing permitting, structural, or architectural issues should be considered prior to proceeding with a project. Local permitting should be checked as carrying out retrofit or conversion work may lead to the need to upgrade the entire facility to meet current environmental, accessibility, or other governmental requirements.</p>
+        <p>Pre-existing facilities: upgrade considerations:</p>
+        <ul>
+            <li>Structural design: close columns indicates a high floor loading above or a facility that may not provide the required flexibility</li>
+            <li>Insulation costs to meet current regulations may be prohibitive as this may involve recladding the structure</li>
+            <li>Floor loadings may not relate to the use required: point or superimposed loads, such as individual leg loads of a large column or loadings of full bags of buffer, may prohibit use of a floor</li>
+            <li>Utilities and building services should be evaluated, as they may be oversized and not able to be "de-tuned" or undersized and unable to respond to the projected facility needs</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Greenfield vs Brownfield：</strong></p>
+            <ul>
+                <li><strong>Greenfield（全新廠址）：</strong>在空地上全新建設，設計自由度最高，但初始投資最大，且無現有基礎設施可用。</li>
+                <li><strong>Brownfield（改建廠址）：</strong>在已有建築或廠區基礎上改建，可利用現有設施降低成本，但受現有結構限制，可能有隱藏問題（如地基不足、配管老舊）。</li>
+            </ul>
+            <p><strong>Process Pods（製程艙）：</strong>可獨立運作的小型自包含製程模組，可在廠內作為「插拔式」單元使用，也可部署到偏遠地區（如發展中國家的醫療緊急需求）。這是生物製藥去中心化製造（Decentralized Manufacturing）的雛形。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Brownfield改建就像在老房子裡重新裝潢：你省去了打地基的費用，但可能發現牆壁裡有老舊水管、地板承重不足、或是不符合現行法規的電路。有時候「改建成本」反而比「全新建設」更高，這就是為什麼必須在改建前做詳細的盡職調查（Due Diligence）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>HVAC進氣口的位置是生物製藥廠址選擇的關鍵！</strong>若主進氣口（HVAC Intake）靠近鄰近廠房的廢氣排放口，或靠近昆蟲繁殖地（水塘）、樹木（楊樹飛絮），將造成持續性的過濾堵塞問題，嚴重影響潔淨室等級和維運成本。這些「現場問題（Pre-existing Site Issues）」在廠址評估階段必須逐一排查，絕不能等到施工後才發現。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>改建廠房評估清單 Brownfield Assessment Checklist</h4>
+            <pre>
+改建前必須評估的項目：
+1. 結構柱距（Column Spacing）
+   → 柱距過密 = 樓板設計荷重過高 = 可能不敷使用
+   → 或：缺乏設備重新配置的彈性
+
+2. 樓板荷重（Floor Loading）
+   → 大型色層管柱（Chromatography Column）的腳支撐點荷重
+   → 大型緩衝液袋（Buffer Bag）的面荷重
+
+3. 現有公用設施（Utilities）評估
+   → 過大（Oversized）→ 無法「降噸」以符合節能需求
+   → 過小（Undersized）→ 無法滿足新製程需求
+
+4. 隔熱材料（Insulation）
+   → 升級至現行法規可能需要整個外牆重新包覆
+   → 成本可能高於全新建設
+
+5. 現有許可（Pre-existing Permits）
+   → 改建可能觸發全面升級至最新建築法規的要求
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>您的公司考慮收購一座舊製藥廠進行生物製藥改建。您會優先評估哪五個方面的「隱藏風險」？</li>
+                <li>Process Pods（製程艙）在CDMO的商業模式中有何潛在應用？請從客戶服務和產能彈性兩個角度思考。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.4 Envelope/Building Shell Design -->
+<!-- ============================================================ -->
+<div class="section-title">7.4 Envelope/Building Shell Design and Visual Design Influences — 建築外殼設計與視覺設計影響</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The design of the <span class="key-term">building shell</span> is significant in setting the tone of perception for a facility. The enclosure should perform a primary task of providing environmental shelter.</p>
+        <p>Local conditions should guide the approach to envelope design. This in turn affects the visual response. There can be an expectation of high visual quality for biopharmaceutical manufacturing facilities.</p>
+        <p>A facility is likely to be there for at least 30 years, and this should be considered when designing its shell. Issues to be addressed include:</p>
+        <ul>
+            <li>Does the shell respond to the environmental conditions correctly?
+                <ul>
+                    <li>Is it sensible to use flat roofs and parapets in high volume rain or snow areas?</li>
+                    <li>Should items be integrated into the facade that provide short term value?</li>
+                    <li>Will it wear well?</li>
+                    <li>What is the location of intakes, extracts and extraneous pipework?</li>
+                    <li>Is access for facility changeover correctly considered?</li>
+                    <li>How easy and safe is it to maintain?</li>
+                    <li>Is the opportunity for expansion considered through the provision of fallow or swing space or additional land?</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Facilities that look good and operate successfully over long time periods normally provide significant return on investment.</p>
+
+        <h3>7.4.1 Modular Design</h3>
+        <p>Consideration should be given to the integration of modules into a building shell or to the construction of fully modular facilities. Examples of limitations and opportunities provided by available construction technology, include:</p>
+        <ul>
+            <li>Need to retain controlling dimensions: to obtain the advantages of repetition, a standard dimension set may apply that provides less dimensional flexibility than stick build</li>
+            <li>Different systems have different modular dimensions: where a modular system is to be used, the choice of system should be made early in the design process to ensure that the building is designed in accordance with the correct dimensions and any limitations are respected</li>
+            <li>How the module will be transported from the module fabrication shop to the final installation site. The method of transport should be considered, including:
+                <ul>
+                    <li>Road limitations with overhead clearances, width and weight limits</li>
+                    <li>Shipping sizes, including specialist hoist requirements</li>
+                    <li>Airfreight limitations on size and weight</li>
+                </ul>
+            </li>
+            <li>Allowance for module to module interconnection:
+                <ul>
+                    <li>Space needed for process pipework connection</li>
+                    <li>Lateral linking electrical and data trays, conduit, or ladders</li>
+                    <li>Access space needed for maintenance of valves</li>
+                </ul>
+            </li>
+            <li>Checking that future flexibility and adaptability are not compromised</li>
+            <li>Ensuring the risk of increased costs through initial factory tooling are balanced by site schedule/program and value gains</li>
+        </ul>
+        <p>The decision to proceed with a modular design should be made at the <span class="key-term">front end of the design process</span>, preferably at concept stage. Decisions on which process equipment is to be purchased, its design, the utility requirements of the equipment, and the process areas and method of installation, should be made early, as the facility design is significantly affected. The choice of modular contractors also should be made early to ensure their involvement from the commencement of the detail design process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>建築外殼（Building Envelope / Building Shell）：</strong>指廠房的外牆、屋頂、基礎——即將室內與室外環境分隔的整個外部結構。對於生物製藥廠房，建築外殼除了提供基本的遮風擋雨功能外，還需要：</p>
+            <ul>
+                <li>支持潔淨室的氣壓和溫濕度控制</li>
+                <li>最小化熱橋（Thermal Bridges）以減少結露</li>
+                <li>正確配置HVAC進排氣口位置</li>
+                <li>考慮30年以上的耐久性和維護性</li>
+            </ul>
+            <p><strong>Fallow/Swing Space（預留空間）：</strong>在廠房初建時刻意留出的未開發空間，供未來擴建使用。預留空間雖然短期看起來「浪費」，但長期來看是非常划算的投資。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>模組化設計決策必須在最前期做出！</strong>一旦開始詳細設計，模組尺寸就基本固定了。如果到了施工階段才決定改用模組化，不但無法享受成本優勢，反而可能因為設計改動付出更大代價。此外，模組從製造工廠到安裝現場的運輸方式（公路/海運/空運）也必須提前規劃——因為台灣的部分山路或港口可能對超大模組有限制。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>建築外殼設計就像選擇車的外殼：不只看好不好看，還要考慮當地氣候（台灣多雨→防水性能）、長期維護成本（容不容易修）、30年後是否仍功能完好。一個漂亮但難以維護的建築外殼，長期TCO（總擁有成本）反而更高。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在台灣建設生物製藥廠房時，建築外殼設計需特別注意：颱風和梅雨季帶來的大量降雨（考慮平屋頂vs坡屋頂的選擇）、高溫高濕對外牆隔熱的需求、以及地震（抗震設計）。這些因素都會影響建築外殼的設計規格，並在初期增加成本，但長期運作中可大幅降低維護費用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>模組化設計在運輸階段可能遇到哪些限制？這些限制如何影響模組的最大尺寸規格？</li>
+                <li>「模組對模組的連接（Module-to-Module Interconnection）」在生物製藥廠房中有哪些特殊要求？為什麼管道連接空間特別重要？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.5 Construction Issues -->
+<!-- ============================================================ -->
+<div class="section-title">7.5 Construction Issues — 施工相關議題</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Construction based decisions can be significant in both the implementation of a facility design, safety, and its subsequent use. Attributes that should be available to facilities include:</p>
+        <ul>
+            <li>Flexibility, adaptability, and extendibility</li>
+            <li>Equipment access for replacement or maintenance</li>
+        </ul>
+        <p>A biomanufacturing process may be installed only for five years of the building use. A facility represents significant investment and should be <span class="key-term">adaptable to another use without significant spend</span> in order to meet its longer term objectives.</p>
+        <p>Examples of basic decisions that can be made that make a facility a better investment from the outset include:</p>
+        <ul>
+            <li>The construction of the <span class="key-term">floor slab</span> to take a variety of loadings should be considered. This will allow the potential for relocation of vessels without the need for consideration of specialist foundations for each location. This would provide only a small additional cost or even be cost equal to the specially provided condition if considered at commencement.</li>
+            <li>A transfer deck or suspended through floor vessel should be considered, as these affect loadings and provide vibration issues on an upper floor slab. This can cause the need for local or a special built-in support structures. Alternative options such that initial decisions do not affect future flexibility should be considered.</li>
+            <li>Provision of <span class="key-term">fallow space</span> for utility expansion. Future utility needs for different products should be considered.</li>
+            <li>Provision for entry and exit paths for different equipment types. Installation of removable walls and floor sections for equipment movement should be considered.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>「生物製造製程的壽命往往短於廠房壽命」：</strong>一個生物製藥製程可能只使用廠房5年，但廠房本身設計壽命是30年以上。這意味著廠房必須在設計時就考慮未來的多種用途，不能只為當前製程量身訂做。</p>
+            <p><strong>樓板（Floor Slab）設計的前瞻性：</strong>在初期就將樓板設計為能承受多種荷載，雖然增加了少許初始成本，但可以省去日後每次重新配置設備時的專項基礎工程費用。</p>
+            <p><strong>可移動牆板和地板段（Removable Walls / Floor Sections）：</strong>大型設備（如生物反應器）在未來維護或更換時，可能需要從廠房外搬入。預先設計好「設備進出路徑」（包括可拆卸的牆段），可大幅降低未來翻修成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本節最重要的洞察：<strong>施工時多花一點點，未來省很多。</strong>例如：樓板加厚以支持更大荷重，初期多花5%，但可能在未來10年內省下數百萬元的專項基礎工程費用。這種前瞻性的設計思維，是優秀的生物製藥廠房工程師必備的素養。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「預留公用設施擴充空間（Fallow Space for Utility Expansion）」就像蓋房子時預先配置額外的電管和水管接頭——不用立即使用，但當未來要新增冷氣或洗碗機時，不需要重新破壁重拉管線。在生物製藥廠房中，「多預留一根管道槽（Pipe Chase）」的成本遠低於日後打通牆壁增加的費用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼「Transfer Deck（轉移層）」或「穿樓板懸掛槽（Suspended Through-Floor Vessel）」需要特別的結構設計？振動問題如何影響生產？</li>
+                <li>如果您是工程負責人，您會如何說服財務團隊批准「多花初期成本以換取未來彈性」的預算申請？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.5.1 Impact of Structure on Design -->
+<!-- ============================================================ -->
+<div class="section-title">7.5.1 Impact of Structure on Design — 結構設計對廠房設計的影響</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Additional Footings/Foundations</h3>
+        <p>Inclusion of additional footings, foundation, and/or piling to support potential future expansion should be considered. This is a relatively small cost to allow flexibility.</p>
+
+        <h3>Long Span/Short Span</h3>
+        <p>Assuming a facility with more than one level, the risk to flexibility and adaptability of layout rests on structural loading and column location. <span class="key-term">Structural spans</span> for commercial buildings have slowly been creeping up from a given 6 m × 6 m (20 ft × 20 ft) span 30 years ago to a normal 7.5 m × 7.5 m (25 ft × 25 ft) or even 9 m to 10 m (30 to 35 ft) spans in 2012. New secondary and biopharmaceutical facilities have been constructed with <span class="key-term">30 m to 40 m (100 ft to 130 ft) spans</span> to allow for flexibility in equipment layout and maximum future use flexibility. Safety codes should be met.</p>
+
+        <h3>Dancefloor or Ballroom Concepts</h3>
+        <p>The availability of smaller modular horizontal format biopharmaceutical equipment and more flexible set-ups allows the design of <span class="key-term">low building structures based on long spanning roofs</span>. The structures are designed for reasonable service loads and capable of support of walk-on ceilings and/or high level service modules. This allows the opportunity for significant flexibility and adaptability with greater opportunity for expansion through extension or provision of swing space.</p>
+
+        <h3>Construction Materials</h3>
+        <p>These are generally dependent on geographical location and local availability and capability. Normally steel or concrete (either pre-cast or in situ) primary structures are used, although composite materials are becoming more available. Higher insulation requirements to meet energy targets have ensured the growth of modular insulated panel systems for both wall cladding (siding) and roofing. Workplace expectations and regulations are necessitating greater areas of glass wall both internally and externally.</p>
+
+        <h3>Slab Thickening and Piling</h3>
+        <p>Early decisions that affect future options become limiting factors for facility re-use or onward design. Careful consideration should be given to the laying of a piling mat and slab for very specific purposes. It may be preferable to design the slab for a general high loading initially and consider the area overall for a higher floor loading.</p>
+        <p>Example: A late design decision on volumes meant a late inclusion into a basement of an 18,000 L kill tank for a vaccines based facility. The new basement structure was designed for a general floor loading for mechanical plant, as there was a poor geotechnical condition and the kill tank was not highlighted to be an issue. Given a two week window, the design team was fortunate to design a special load spreading frame to fit the location, select a vessel that could fit the one sufficiently large access stairwell, pass between the column structure, and those items of plant that were in place. This provided a significant on-cost and will affect future flexibility.</p>
+
+        <h3>Movement Issues</h3>
+        <p>The inclusion of <span class="key-term">structural or constructional movement joints</span> into clean buildings should be avoided.</p>
+        <p>Joint systems that provide a simple seal may be difficult to obtain; therefore, location of both primary structural joints, and screed or slab day joints, becomes critical for ease of maintenance of a cleanliness regime. Floor slabs at ground level should be designed to ensure either no joints or joints in discrete locations agreed with the design team and with a clear understanding of risk.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>結構跨距（Structural Span）對廠房彈性的影響：</strong>結構柱之間的距離越大，樓板中間越少有柱子阻礙，設備配置就越靈活。30年前商業建築的跨距是6m×6m，現在生物製藥廠房可達30-40m的超大跨距。雖然大跨距的鋼結構初始成本較高，但換來的是無限的設備重新配置彈性。</p>
+            <p><strong>舞廳概念（Dancefloor / Ballroom Concept）：</strong>大空間、長跨距的廠房設計，就像一個大舞廳——中間沒有柱子，可以隨時重新排列設備，且天花板夠高可走維修路徑。這特別適合單層或低層的生物製藥製造廠房。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>18,000 L Kill Tank 的案例教訓：</strong>這個真實案例說明了「晚期設計決策的代價」——一個18,000公升的殺菌槽（Kill Tank），因為在設計後期才決定加入，導致結構工程師必須在2週內設計特殊承重框架，同時還需要選一個恰好能通過樓梯口和柱位的槽體。這種情況完全可以通過早期確認製程需求來避免。生物製藥廠房的「隱藏大型設備」（如Kill Tank、大型緩衝液槽）必須在概念設計階段就列出清單。</p>
+            <p><strong>潔淨室中的結構伸縮縫（Movement Joints）：</strong>普通建築需要伸縮縫來應對熱脹冷縮，但潔淨室的伸縮縫會破壞密封性，造成微粒和微生物的潛在污染點。因此潔淨室應盡量避免結構伸縮縫，或將其設置在可以有效密封的位置。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>結構跨距的演進 Structural Span Evolution</h4>
+            <pre>
+一般建築結構跨距的演進：
+30年前（1990年代）：  6m × 6m  （20ft × 20ft）
+現在（2010年代）：    7.5m × 7.5m  （25ft × 25ft）
+                    9m-10m  （30-35ft）
+先進生物製藥廠：      30m-40m  （100-130ft）
+
+結構跨距越大 → 設備配置越靈活 → 初始鋼材成本越高
+但：未來重新配置的成本 → 大幅降低
+
+大型生物反應器高度需求：
+10,000L 生物反應器 → 約需 4-6m 淨高
+20,000L 生物反應器 → 可能需要 6-8m 淨高（含設備頂部操作空間）
+→ 樓高設計必須提前確認最大設備尺寸！
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「舞廳概念（Ballroom Concept）」廠房就像一個大型倉庫式量販店（如家樂福）：沒有中間柱子、挑高天花板、任何區域都可以重新配置。相比之下，傳統小跨距廠房就像老式住宅：到處是承重柱，要改格局非常困難。生物製藥製程的設備不斷更新換代，「舞廳概念」讓廠房能夠跟上製程演進的腳步。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼生物製藥廠房需要比一般商業建築更大的結構跨距？請從設備尺寸和未來彈性兩個角度分析。</li>
+                <li>潔淨室地板的接縫（Floor Joints）設計為何如此重要？如果接縫位置設計不當，可能造成哪些GMP問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.5.2 Seismic Considerations -->
+<!-- ============================================================ -->
+<div class="section-title">7.5.2 Seismic Considerations — 抗震設計</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The design of biopharmaceutical facilities for <span class="key-term">seismic risk locations</span> (e.g., west coast USA, Romania, North East India, south east China) should be carefully considered. For the US guidance, see the National Institute of Building Sciences Whole Building Design Guide [53].</p>
+        <p>The European Eurocode 8 [54] is likely to be adopted by Russia, Ukraine, and Belarus, along with the other nine structural Eurocodes. Kazakhstan is adopting the codes from 2015 in place of the previous reliance on Russian codes. For biopharmaceutical facilities, seismic design needs special consideration in terms of slab sizes and equipment connections. For example, design for earthquake code does not usually cover utilities considerations. Inclusion of additional bracing for the utility systems, as well as for the primary structure and securing of equipment may allow the opportunity for <span class="key-term">rapid restart for a biopharmaceutical facility after a seismic event</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>生物製藥廠房抗震設計的特殊性：</strong>一般建築的抗震設計只關注建築結構本身（不倒塌即可），但生物製藥廠房還需要考慮：</p>
+            <ul>
+                <li>大型液態槽（Buffer Tank、Bioreactor）在地震中的液態晃動荷重（Sloshing Loads）</li>
+                <li>精密設備（天秤、質量流量計）的抗震固定</li>
+                <li>公用設施管路（純水、WFI、蒸汽）的抗震支撐——標準建築法規通常不涵蓋此項目</li>
+                <li>地震後快速重啟的能力（Rapid Restart）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>台灣位於地震高風險區域，是亞太地區地震最頻繁的地區之一。台灣的生物製藥廠房在設計時必須特別重視：公用設施管路（WFI、蒸汽、氮氣管路）的抗震支撐設計；大型槽體的錨定設計；以及建立地震後的快速復工標準作業程序（SOP）。一旦地震造成停產，其商業損失遠超結構修復費用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼標準建築抗震法規「不足以」保護生物製藥廠房？需要額外考慮哪些因素？</li>
+                <li>地震後「快速重啟（Rapid Restart）」能力對CDMO的商業價值是什麼？如何在設計階段實現這一目標？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.5.3 & 7.5.4 Modular Build / Structural Spans -->
+<!-- ============================================================ -->
+<div class="section-title">7.5.3–7.5.4 Modular Build &amp; Structural Spans — 模組化建設與結構跨距</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7.5.3 Modular Build</h3>
+        <p><span class="key-term">Process modules</span>, whether as enclosed containers or skids, within a facility can be set on a deck or integrated into a frame. They are not usually self-supporting. Structural loading considerations and access to process modules, e.g., for replacement, should be considered.</p>
+
+        <h3>7.5.4 Structural Spans</h3>
+        <p>Longer spans and less floor interruption can provide greater flexibility.</p>
+        <p>Items of equipment which need special consideration for support on an upper level should be identified in order to maintain flexibility and adaptability. Items that require special consideration in terms of location and effect on current or future facility include:</p>
+        <ul>
+            <li>Static loads (through floor buffer and/or media vessels)</li>
+            <li>Active loads (e.g., 2 tonne IBCs)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>靜態荷重 vs 動態荷重（Static vs Active Loads）：</strong></p>
+            <ul>
+                <li><strong>靜態荷重（Static Loads）：</strong>固定不動的大型槽體（如穿樓板的緩衝液槽、培養基槽）的重量，需要在結構上設計專門的支撐點，且可能需要特殊地基處理。</li>
+                <li><strong>動態/活動荷重（Active Loads）：</strong>可移動的大型中間散裝容器（IBC, Intermediate Bulk Container），例如2噸重的IBC桶，在廠內以叉車或起重機移動時，會在不同位置產生動態荷重，樓板設計必須考慮這些荷重可能出現的所有區域。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>製程模組（Process Modules）通常不能自支撐（not self-supporting），必須設置在支撐甲板（Deck）或整合式框架中。這意味著在設計模組化廠房時，主體建築結構和模組結構必須協同設計，不能分開進行，否則可能出現結構不匹配的問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>2噸重的IBC容器在廠內移動時，為何對樓板設計的挑戰大於一個固定放置的2噸槽體？</li>
+                <li>製程模組（Process Module）「不能自支撐」的特性，對廠房主體建築設計有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.6 Permitting, Code, and Insurance Issues -->
+<!-- ============================================================ -->
+<div class="section-title">7.6 Permitting, Code, and Insurance Issues — 許可、法規與保險議題</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Permitting varies between geographical locations. Planning and building codes should be understood early on in the construction process. Basic guidance includes:</p>
+        <ul>
+            <li><span class="key-term">International Building Code (IBC)</span> is a US originated code that does not apply to all countries. A number of countries have stricter compliance requirements. This could affect building compartmentalization and escape compliancy for larger biopharmaceutical facilities, including the break-out requirements with highly contained deep plan facilities.</li>
+            <li>Insurers may have significantly higher and tighter expectations than many country codes. Depending on product value or facility throughput, insurers may apply <span class="key-term">Maximum Foreseeable Loss (MFL)</span> requirements that could impact adversely on initial intended flexibility.</li>
+            <li>Fire and spillage risk issues: along with flood risk, the risk of fire, even in local facility areas, provides specific issues for biopharmaceutical facilities. Both code and insurer requirements may expect <span class="key-term">bunding</span> to a facility either in specific areas, area by area, and/or at floor perimeters for sprinkler and/or fire water retention and analytical testing prior to safe release or disposal to ensure that there is no biological risk to public health via sewage, surface water, or ground water systems. This may introduce an undercroft or suitably sized basement to ensure the necessary volume is retained.</li>
+        </ul>
+        <p>It is advisable to speak with the insurers and the permitting authorities from the outset of a project to ensure that code interpretations are in line with design expectations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三個關鍵監管/保險概念：</strong></p>
+            <p>1. <strong>IBC（International Building Code）：</strong>美國建築法規，不適用所有國家，各地有自己的建築法規。重要的是：許多國家的法規比IBC更嚴格。</p>
+            <p>2. <strong>最大可預見損失（Maximum Foreseeable Loss, MFL）：</strong>保險公司評估的最壞情況損失金額。MFL要求可能迫使設計增加額外的防火/防爆隔間，這可能與設計師希望的「開放彈性空間」相衝突。</p>
+            <p>3. <strong>圍堰（Bunding）：</strong>在設備或區域周圍設置的低矮隔堰，用於收集消防水、洩漏液體，防止生物性或化學性污染物進入污水系統。對於生物製藥廠房，消防水必須在排放前經過生物安全評估。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>保險要求往往比法規更嚴格！</strong>這是ISPE文件的重要提醒。建築師通常只確保符合建築法規，但保險公司（特別是針對高價值生物製藥產品的專業保險）可能提出更嚴格的MFL要求，包括防火隔間、自動滅火系統規格、以及消防水收集系統。這些要求應在設計初期就與保險公司討論，否則後期改動代價極高。</p>
+            <p><strong>生物性廢水的特殊處理：</strong>與普通化學品不同，生物製藥廠房的消防水可能含有生物活性物質（如活病毒、重組蛋白），在排放前必須進行分析測試，確認無生物安全風險。這是建築設計中必須為此預留的物理空間（地下室/儲槽）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>保險公司的MFL要求就像嚴格的房東——即使你的設計符合建築法規，房東可能要求額外的消防設備才願意出租。在生物製藥廠房中，「保險公司的要求」這個「房東」的標準可能遠比政府建築法規更嚴，必須在規劃初期就納入考量，否則中途被要求大幅修改，損失極大。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO在建設新廠時，應在概念設計階段就邀請保險公司和政府審批單位參與設計審查。這樣可以提早發現「法規要求」與「保險要求」之間的差異，並在設計中取得平衡。例如：保險公司可能要求廠房每300平方公尺就要有防火隔間，但製程設計需要開放式大空間——這個矛盾必須在初期通過協商解決，而不是在施工完成後。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何生物製藥廠房的消防水排放需要特別的生物安全評估？這與一般化工廠有何不同？</li>
+                <li>圍堰（Bunding）設計在建築空間規劃上有何影響？為什麼需要提前考慮地下儲槽（Undercroft）空間？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7.7 Facility Design and Design Management Methodologies and Tools -->
+<!-- ============================================================ -->
+<div class="section-title">7.7 Facility Design and Design Management Methodologies and Tools — 設計管理方法與工具</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Software developments provide design tools for the development and cross discipline integration of design from an early stage with a consequent capacity to design, record, and integrate projects from commencement. Visual development from instigation through 3D modeling of all aspects allows the consideration and review process to happen at significant speed allowing rapid option development and value judgment.</p>
+        <p>Subsequent construction and operation interfacing and sequencing review using real-time scheduling to post construction facility management using the fully integrated design model developed through construction for facilities management is possible. This is known as <span class="key-term">Building Information Modeling (BIM)</span> and its attributes, referred as onward developments of 3D from 4D to 8D.</p>
+        <p>Biopharmaceutical and vaccines facilities can be extremely complex buildings, and may use up to 15 disciplines or more for design. This team needs to be integrated. BIM integrated with facility design management systems has evolved to make such programs significantly simpler to understand and implement.</p>
+        <p>Examples of integrated design tools include:</p>
+        <ul>
+            <li><span class="key-term">Integrated Project Delivery (IPD)</span> [55]</li>
+            <li><span class="key-term">ADePT design management tool</span> [56]</li>
+        </ul>
+
+        <h3>7.7.1 BIM and Design Management</h3>
+        <p>IPD was developed in the US as an integrated project management method. ADePT was developed initially in the UK by Loughborough University working with major contractors and design practices to provide an integrated design management system. Engineering companies may use similar integration methodologies for early project definition and front end design development.</p>
+        <p>BIM supports these systems through the integration of attributed 3D design software parametrics.</p>
+
+        <div class="quote-box">
+            "Building information modeling may involve the introduction of new contracting methodologies as it allows for the adoption of a 'build before you build' opportunity with earlier review of design concepts and methodologies integrated with multi-discipline detail design interfaces."
+        </div>
+        <p>For further information on the use and integration of the methodology, see the American Institute of Architects (AIA) [57].</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>建築資訊模型（BIM, Building Information Modeling）：</strong>BIM是一種以3D模型為核心、整合所有設計、施工、運維資訊的數位化工作方式。「從3D到8D」的維度擴展：</p>
+            <ul>
+                <li><strong>3D：</strong>三維空間模型（長×寬×高）</li>
+                <li><strong>4D：</strong>加入時間維度（施工進度模擬）</li>
+                <li><strong>5D：</strong>加入成本維度（造價管理）</li>
+                <li><strong>6D：</strong>加入永續設計（能源效率）</li>
+                <li><strong>7D：</strong>加入設施管理（建成後的運維資訊）</li>
+                <li><strong>8D：</strong>加入安全管理（施工安全模擬）</li>
+            </ul>
+            <p><strong>「先建後建（Build Before You Build）」：</strong>BIM允許在實際施工前，先在電腦中「虛擬建造」整棟廠房，提前發現管道碰撞（Clash Detection）、施工順序問題等，大幅減少施工現場的變更。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>BIM就像電動遊戲中的「城市建設模擬器」——在電腦中先建一座虛擬城市，觀察道路是否順暢、水電是否夠用、人流是否合理，確認沒問題後再真正動工。生物製藥廠房有15個以上的設計專業（建築、結構、電氣、暖通、管道、儀表……），沒有BIM整合，各專業之間的衝突幾乎不可避免，發現越晚代價越高。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>生物製藥廠房的設計複雜度遠超一般建築——可能涉及15個以上的設計專業。BIM的核心價值在於：所有專業在同一個模型中工作，當一個專業修改設計時，其他相關專業可以即時看到影響。例如：HVAC工程師修改風管路徑時，結構工程師可以立即看到是否與結構梁衝突，而不是等到施工時才發現需要改管。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>BIM維度說明 BIM Dimensions Reference</h4>
+            <pre>
+BIM維度層級（From 3D to 8D）：
+
+3D → 三維空間模型（幾何形狀與位置）
+4D → + 時間（施工進度規劃與模擬）
+5D → + 成本（預算管理與變更估算）
+6D → + 永續性（能耗分析、綠建築評估）
+7D → + 設施管理（設備資產管理、維護記錄）
+8D → + 安全管理（施工安全分析）
+
+生物製藥廠房最關鍵的BIM應用：
+- 管線碰撞檢測（Clash Detection）：3D
+- 施工序列驗證（Construction Sequence）：4D
+- 驗證計畫整合（Commissioning Schedule）：4D
+- 設備維護資訊（Equipment Maintenance Data）：7D
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO在建設或擴建廠房時採用BIM，可以帶來以下具體效益：施工前消除管線碰撞（Clash Detection）可節省大量施工返工費用；4D施工模擬可確保在不影響現有生產的情況下規劃擴建序列（特別重要：在已運作廠房旁邊擴建時，施工粉塵和噪音必須嚴格控制）；7D設施管理模型可在廠房交付後直接用於設備維護管理，提高設施管理效率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>BIM的「Clash Detection（碰撞檢測）」功能在生物製藥廠房設計中為何特別重要？請舉出兩個生物製藥廠房特有的管線衝突場景。</li>
+                <li>生物製藥廠房可能需要15個以上的設計專業，這些專業之間的協調挑戰是什麼？BIM如何幫助解決這些挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 2rem;">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>由內而外設計（Inside-Out Design）：</strong>生物製藥廠房設計從製程需求出發，先確定設備、流程、清潔分級，再推演建築結構——這是與一般建築設計最根本的差異。</li>
+        <li><strong>三大設計驅動因素：</strong>功能導向風險評估、運作經濟效率、彈性/適應性/可擴展性，三者需在整個設計週期中持續平衡。</li>
+        <li><strong>廠內流動管理（Flow Management）：</strong>人員、物料（上游→下游）、廢棄物、樣品六大流的設計，不只是操作程序問題，更必須通過建築空間布局來「強制執行」。</li>
+        <li><strong>Greenfield vs Brownfield：</strong>改建廠址（Brownfield）看似省錢，但隱藏的結構、公用設施、法規升級問題可能使總成本超過新建，必須在前期進行徹底的盡職調查。</li>
+        <li><strong>模組化設計的關鍵決策時機：</strong>模組化建設的決策必須在設計最前期（概念階段）做出，且需選定承包商參與詳細設計，才能真正享受其成本和工期優勢。</li>
+        <li><strong>生物製藥廠房獨特的結構挑戰：</strong>大型生物反應器的高空間需求（4-8m淨高）、大型槽體的集中荷重、超大結構跨距（30-40m）、以及潔淨室中不得有結構伸縮縫——這些是小分子藥廠不存在的特殊設計考量。</li>
+        <li><strong>施工期間的前瞻性設計：</strong>樓板加強、預留公用設施空間、設置可拆卸牆板——這些初期多花的小錢，是廠房30年壽命中最划算的投資。</li>
+        <li><strong>法規、保險雙重要求：</strong>保險公司的MFL要求往往比政府建築法規更嚴格；生物性廢水需要特殊的收集和評估設施——兩者都應在設計初期就與相關方確認。</li>
+        <li><strong>BIM是現代複雜廠房設計的必備工具：</strong>15個以上設計專業的協調、「先建後建」的虛擬建造驗證、以及從施工到運維的全生命週期資訊整合，BIM讓這一切變得可能。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

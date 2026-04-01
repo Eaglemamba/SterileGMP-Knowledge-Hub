@@ -999,6 +999,42 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## ISPE/ISPE-Vol6-Complete.md
+**Report:** ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities
+**Pages:** p7–p140 | **Sections:** 11 (Ch4 split 4A/4B)
+
+**Covers questions about:**
+- Why biopharmaceuticals need different facilities from small molecule drugs (living organisms, shear sensitivity, contamination types)
+- Process closure strategy: closed vs open vs functionally closed — the central design philosophy of Vol.6
+- Layers of protection model: how adding protection layers reduces required room grade
+- Risk-based environmental classification: mapping each unit operation to appropriate room grade based on closure level
+- Containment vs Classification: the critical biopharmaceutical distinction (protect workers/environment vs protect product)
+- Regulatory requirements: FDA 21 CFR Part 211, EU GMP Annex 2, ICH Q5 series for biologicals
+- CQAs and CPPs unique to biologics: glycosylation, aggregation, host cell proteins
+- Operations: multi-product campaigns, single-use systems, automation, supply chain
+- cGMP layout: segregation strategies, ballroom concept, 6 case studies, 40% cost difference example
+- Vaccines and biological hazard containment: BSL containment vs GMP classification conflict
+- Architectural design: white/grey/black space zoning, modular facilities, BIM
+- Mechanical systems: HVAC for containment, biological waste inactivation, CO2/N2/O2 utilities, UPS for cell culture
+- Risk-based classification methodology: FMEA approach, Tables 10.1 and 10.2
+
+**Key terms:** process closure, closed system, open system, functionally closed, containment, classification, layers of protection, CNC, axenic state, bioburden-free, bioreactor, upstream, downstream, chromatography, UF/DF, viral filtration, SUS (single-use system), CIP, SIP, BSL (biosafety level), negative pressure, campaign manufacturing, multi-product, BIM, modular facility, biological waste inactivation, CQA, CPP, ICH Q5
+
+**Sections:**
+1+3. Introduction & Risk Management (p7-p31)
+2. Regulatory — Containment vs Classification, CQAs/CPPs (p15-p25)
+4A. Process Closure — Sources & Layers of Protection (p31-p42)
+4B. Process Closure — Appropriate Environments Based on Risk (p42-p49)
+5. Operations — SUS, Multi-product, Automation (p49-p61)
+6A. cGMP Layout — Protection & Segregation, 6 Case Studies (p61-p74)
+6B. cGMP Layout — Flows, Cleaning, Vaccines/BSL (p74-p85)
+7. Architectural — Modular design, BIM, site planning (p85-p97)
+8. Mechanical — HVAC, biological waste, utilities, UPS (p97-p111)
+9+A1. Sustainability & Appendix 1 — Risk-based classification, Tables 10.1/10.2 (p111-p121)
+A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
+
+---
+
 ## PICS/PICS-Annex1-Complete.md
 **Report:** PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products
 **Pages:** p1–p58 | **Sections:** 11 (+ Section 8 split into 3 parts)
@@ -1060,6 +1096,11 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
+| Biopharmaceutical facility design, biologics facility, MAb plant, cell culture facility / 生物製藥廠房設計 | ISPE-Vol6 |
+| Process closure, closed system, open system, functionally closed / 製程密閉、密閉系統 | ISPE-Vol6 |
+| Containment vs classification, BSL vs cleanroom, biosafety level / 生物安全圍堵與環境分級區別 | ISPE-Vol6 |
+| Biological waste inactivation, effluent decontamination / 生物廢棄物滅活、廢液去污 | ISPE-Vol6 |
+| ICH Q5A Q5B Q5C Q5D Q5E, biologics quality guidelines / 生物製劑品質指引 | ISPE-Vol6 |
 | Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | PICS-Annex1 + TR90 |
 | PIC/S Annex 1 (2022), sterile manufacturing regulation, GMP regulation for sterile / PIC/S附件1、無菌藥品製造法規 | PICS-Annex1 |
 | Grade A B C D classification, cleanroom limits, particle count table / A/B/C/D級潔淨室分級、粒子限值表 | PICS-Annex1 |
@@ -1238,13 +1279,13 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
-→ ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
+→ ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
 **Process Validation (製程驗證)**
 → TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)

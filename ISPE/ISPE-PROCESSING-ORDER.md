@@ -17,7 +17,7 @@ Last updated: 2026-04-01
 | **5** | `ISPE-Vol7` | ISPE Baseline Vol.7: Risk-Based Manufacture | 12 MB | ✅ Complete | Risk-MaPP framework. 11 section files, 9-tab merged document. |
 | **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ✅ Complete | 10 section files, 10-tab merged document. Directly bridges PDA TR66. |
 | **7** | `ISPE-GAMP5` | ISPE GAMP® 5 (2nd Ed., 2022) | 13 MB | 🔄 In Progress | 2nd edition obtained. 16 section files, 9-tab merged document. PDF extracted, all agents running. |
-| **8** | `ISPE-Vol6` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | 11 MB | ⬜ Planned | Bridges PDA PtC-14 (ATMP). Important for biologics/cell therapy facilities. |
+| **8** | `ISPE-Vol6` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | 11 MB | ✅ Complete | Bridges PDA PtC-14 (ATMP). 11 section files (Ch4 split 2-way), 0.78 MB merged document. |
 | **9** | `ISPE-GEP` | ISPE Good Engineering Practice | 8 MB | ⬜ Planned | GEP framework. Foundational but lower query frequency. Source text extracted (1 file in source/). |
 | **10** | `ISPE-CTC` | ISPE GPG CTC: Mapping and Monitoring | 4 MB | ⬜ Planned | Temperature monitoring. Bridges PDA TR39 / TR46. |
 | **11** | `ISPE-TechTransfer` | ISPE GPG Technology Transfer (3rd Ed.) | 4 MB | ⬜ Planned | Bridges PDA TR91 (Post-Approval Change Management). |
@@ -73,4 +73,4 @@ git add ISPE/ISPE-XXX/ reports.json knowledge/ && git commit -m "Add ISPE-XXX: [
 
 - **ISPE-Vol5** has two PDFs: English original (`ISPE volume 5 Commissioning & Qualification 2nd Edition(正).pdf`) and a Chinese translation (`ISPE Baseline Guide vol5 2nd edition C and Q translated by 426.pdf`). Use Chinese translation as a reference aid for generating Chinese commentary — do not use it as primary source.
 - **ISPE-Vol3** has two PDFs: the main Baseline Vol.3 and a 2011 version (`ISPE Sterile product manufacturing facilities_2011.pdf`). Use the main version; 2011 version is for historical reference.
-- **ISPE-GAMP5**: Only 1st edition available. 2nd edition (2022) is the current industry standard — prioritise obtaining it before processing.
+- **ISPE-GAMP5**: 2nd edition (2022) obtained and in progress.
