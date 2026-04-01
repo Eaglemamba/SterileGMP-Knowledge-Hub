@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01 (post-TR29 push)
+Last updated: 2026-04-02 (post-TR86/ISPE-Sampling/FDA-ProcessVal push)
 
 ---
 
@@ -100,33 +100,33 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 34 | All sections generated, merged, verified (incl. TR1, TR27, TR29, TR49) |
+| Complete | 39 | All sections generated, merged, verified (incl. TR1, TR27, TR29, TR49, TR86) |
 | Skeleton (metadata only) | 0 | — |
-| **Total in reports.json** | **34** | |
+| **Total in reports.json** | **39** | |
 
-**Completion: 100%** (34/34 PDA docs complete)
+**Completion: 100%** (39/39 PDA docs complete)
 
 ### ISPE Guidelines
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 8 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.) |
-| Not yet started | 7 | GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT |
+| Complete | 9 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.), Sampling |
+| Not yet started | 6 | GEP (scanned), CTC, TechTransfer, ProcessGas, QualityCulture, IT |
 | **Total** | **~15** | |
 
-**Completion: 53%** (see `ISPE/ISPE-PROCESSING-ORDER.md` for prioritized queue)
+**Completion: 60%** (9/15)
 
 ### Other Sources
 
 | Source | Status |
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
-| FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ | Process Validation (General Principles) ✅ |
+| FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ | Process Validation (Jan 2011) ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 52 of ~65-70 target documents complete (approx. 77%)** *(TR1, TR27, TR29, TR49, FDA-ProcessVal, ISPE IT, GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture — pending TR44, TR86, and 7 ISPE)*
+**Overall: 55 of ~65-70 target documents complete (approx. 82%)** — PDA 39 + ISPE 9 + FDA 3 + ICH 3 + PIC/S 1 = 55
 
 ---
 
