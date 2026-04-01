@@ -1111,6 +1111,39 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## FDA/FDA-ProcessInspection-Complete.md
+**Report:** FDA Compliance Program Guidance Manual 7356.002A: Sterile Drug Process Inspections (2015)
+**Pages:** p1–p38 | **Sections:** 6
+
+**Covers questions about:**
+- FDA inspection program structure: Full Inspection (56002A) vs Abbreviated Inspection (56002I); OAI / VAI / NAI classification; EIR filing via TurboEIR
+- FDA six-system inspection framework: Quality System, Facilities & Equipment, Materials System, Production System, Packaging & Labeling, Laboratory Controls & Sampling
+- Sterilization type determination at inspection: aseptic processing vs terminal sterilization vs combination processes; inspector expectations for each
+- Inspection approach by sterilization type (Section 3.1–3.3): coverage criteria, what investigators are directed to examine for each category
+- Quality System inspectional objectives: change control, CAPA, complaint handling, annual product review, batch record completeness
+- Facilities & Equipment system focus: cleanroom classification, HVAC, calibration programs, computer/automated systems, facility design deficiencies leading to 483s
+- Materials System: raw material testing, water system (WFI/PW), component inspection and release, sterility/endotoxin testing of components
+- Production System: sterilization validation (terminal and aseptic), media fill programs, lyophilization inspection, time limits, environmental monitoring programs
+- Packaging & Labeling: labeling controls, reconciliation, label design deficiencies in sterile context
+- Laboratory Controls: OOS investigation expectations, sterility test failures, endotoxin testing, environmental monitoring data review
+- Sampling and analytical methods: sampling frequency, statistical basis, specification setting
+- Regulatory actions: how inspectors escalate from 483 observation to Warning Letter to Import Alert; OAI trigger criteria
+- CGMP citations used in sterile drug 483s: most frequently cited 21 CFR 211 sections
+- Bioburden testing, sterility method validation, method suitability requirements
+- Inspection planning strategy: risk-based prioritization, profile classes, resources allocation
+
+**Key terms:** CPGM 7356.002A, six-system inspection, OAI, VAI, NAI, 483 observation, EIR, establishment inspection report, Full Inspection 56002A, Abbreviated Inspection 56002I, terminal sterilization, aseptic processing, media fill inspection, environmental monitoring inspection, quality system, materials system, production system, facilities equipment system, laboratory controls, sterility test failure 483, endotoxin 483, warning letter, import alert, 21 CFR 211.113, 21 CFR 211.42, lyophilization inspection, CAPA inspection, change control inspection
+
+**Sections:**
+1. Parts I–II: Background & Implementation (p1–p6)
+2. III.1–3: Sterilization Types, Reporting & Inspection Approaches (p7–p12)
+3. III.4–6: Quality System & Facilities / Equipment (p13–p19)
+4. III.7–8: Materials System & Production System (p20–p26)
+5. III.9–11: Packaging, Lab Control, Sampling & Analytical (p27–p32)
+6. IV–V: Regulatory Strategy, References & Attachments (p33–p38)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1149,6 +1182,12 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Isolator FDA guidance, VHP 4-6 log, isolator pressure differential / FDA隔離器指引、VHP4-6對數去污、隔離器壓差 | FDA-Aseptic |
 | BFS blow-fill-seal FDA, parison formation, polymer qualification / FDA吹塑充填密封指引、管坯成型、聚合物確效 | FDA-Aseptic |
 | Sterility test investigation 7-point, sterility positive investigation framework / 無菌試驗7點調查、無菌試驗陽性調查框架 | FDA-Aseptic |
+| FDA inspection program, sterile drug CPGM 7356.002A, six-system inspection framework / FDA查廠計畫、無菌藥品六大系統查廠框架 | FDA-ProcessInspection |
+| OAI VAI NAI classification, 483 observation trigger, EIR, official action indicated / OAI/VAI/NAI分類、483觀察值、查廠行動指標 | FDA-ProcessInspection |
+| Six systems GMP inspection, Quality System Facilities Materials Production Lab Packaging / GMP六大系統查廠、品質系統、廠房設備、物料、生產、包裝、實驗室 | FDA-ProcessInspection |
+| FDA sterile facility inspection approach, aseptic vs terminal sterilization inspector focus / FDA無菌設施查廠方法、無菌製程vs最終滅菌查廠重點 | FDA-ProcessInspection |
+| Warning letter import alert escalation, OAI trigger criteria, regulatory action / 警告信、進口警示、法規行動升級標準 | FDA-ProcessInspection |
+| 21 CFR 211.113 aseptic processing citation, common 483 sterile drug / 21 CFR 211.113無菌製程條文、常見無菌藥品483 | FDA-ProcessInspection |
 | Grade A B C D classification, cleanroom limits, particle count table / A/B/C/D級潔淨室分級、粒子限值表 | PICS-Annex1 |
 | Terminal sterilisation vs aseptic, sterilisation methods, autoclave F0, depyrogenation Fh / 最終滅菌與無菌操作、滅菌方法、F0值、去熱原 | PICS-Annex1 |
 | PUPSIT, pre-use post-sterilization integrity test, filter integrity exemption / 使用前滅菌後完整性測試 | PICS-Annex1 + TR26 |
