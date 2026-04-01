@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01
+Last updated: 2026-04-01 (post-TR29 push)
 
 ---
 
@@ -100,11 +100,11 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 32 | All sections generated, merged, verified (incl. TR49) |
-| Skeleton (metadata only) | 2 | TR41, TR56 |
+| Complete | 34 | All sections generated, merged, verified (incl. TR1, TR27, TR29, TR49) |
+| Skeleton (metadata only) | 0 | — |
 | **Total in reports.json** | **34** | |
 
-**Completion: 94%** (32/34 PDA docs complete)
+**Completion: 100%** (34/34 PDA docs complete)
 
 ### ISPE Guidelines
 
@@ -121,12 +121,12 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | Source | Status |
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
-| FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ |
+| FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ | Process Validation (General Principles) ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 47 of ~65-70 target documents complete (approx. 70%)** *(TR49 now included)*
+**Overall: 52 of ~65-70 target documents complete (approx. 77%)** *(TR1, TR27, TR29, TR49, FDA-ProcessVal, ISPE IT, GEP, CTC, TechTransfer, Sampling, ProcessGas, QualityCulture — pending TR44, TR86, and 7 ISPE)*
 
 ---
 
