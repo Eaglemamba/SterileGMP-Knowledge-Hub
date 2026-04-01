@@ -32,13 +32,13 @@ Last updated: 2026-04-01
 
 | Source | Status |
 |--------|--------|
-| PIC/S Annex 1 | Planned, not started |
+| PIC/S Annex 1 | ✅ Complete |
 | FDA Guidances | Not started |
 | ICH Guidelines | Not started |
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 40 of ~65-70 target documents complete (approx. 62%)**
+**Overall: 41 of ~65-70 target documents complete (approx. 63%)**
 
 ---
 
@@ -139,7 +139,7 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 | Task | Document | Effort |
 |------|----------|--------|
-| **New source: PIC/S** | PIC/S Annex 1 (2022) | Large (but single document, ~60 pages) |
+| ~~**New source: PIC/S**~~ | ~~PIC/S Annex 1 (2022)~~ | ✅ Done |
 | **New source: FDA** | Aseptic Processing Guidance (2004) | Medium |
 | **New source: FDA** | Process Validation Guidance (2011, Rev 2) | Medium |
 | **New source: ICH** | Q9(R1) Quality Risk Management | Small (~30 pages) |
