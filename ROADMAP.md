@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 complete)
+Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 complete; FDA Aseptic 2004 complete)
 
 ---
 
@@ -33,12 +33,12 @@ Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 
 | Source | Status |
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
-| FDA Guidances | Not started |
+| FDA Guidances | Aseptic Processing 2004 ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 48 of ~65-70 target documents complete (approx. 72%)**
+**Overall: 46 of ~65-70 target documents complete (approx. 70%)**
 
 ---
 
