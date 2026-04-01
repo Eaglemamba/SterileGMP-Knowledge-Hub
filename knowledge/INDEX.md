@@ -1144,6 +1144,31 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## PDA/TR27-Complete.md
+**Report:** PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity
+**Pages:** p1–p53 | **Sections:** 5
+
+**Covers questions about:**
+- What is container/closure integrity (CCI) and why it matters for sterile products
+- Package integrity assurance through the product lifecycle: design, in-process control, product testing
+- How to establish leak rate specifications and what critical leak size means
+- Test method selection: sensitivity, quantitative vs qualitative, destructive vs non-destructive
+- Microbial challenge tests: liquid immersion and airborne methods
+- Direct vs indirect correlation between physical leak tests and microbial ingress
+- Decision tree for selecting appropriate integrity test method
+- All 18 commonly used leak test methods with descriptions, validation approach, sensitivity, critical parameters, equipment, and package types: Bubble Test, Helium Mass Spectrometry, HVLD, Lid Deflection, Liquid Tracer, Microbial Challenge (x2), Headspace Analysis, Particulate Transmission, Residual Gas Ionization, Tracer Gas, Ultrasonic (x2), Vacuum/Pressure Decay (x2), Visual Inspection, Volumetric, Weight Loss/Gain
+
+**Key terms:** container/closure integrity (CCI), package integrity, leak rate, critical leak size, microbial ingress, microbial challenge test, liquid immersion challenge, airborne challenge, direct correlation, indirect correlation, bubble test, helium mass spectrometry, HVLD (high voltage leak detection), headspace analysis, vacuum decay, pressure decay, tracer gas, ultrasonic imaging, non-destructive testing (NDT), deterministic vs probabilistic method, RSF (reliable, sensitive, feasible), USP <1207>
+
+**Sections:**
+0. Preface & Introduction (p1–p3)
+1. Integrity Assurance, Specifications & Test Method Selection (p3–p10) — Sections 3–5
+2. Microbial Methods & Decision Tree (p10–p15) — Section 6–7
+3. Leak Test Methods 8.1–8.18 (p15–p42) — all 18 methods (split 3A/3B)
+4. References (p43–p53)
+
+---
+
 ## PDA/TR1-Complete.md
 **Report:** PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes: Cycle Design, Development, Qualification and Ongoing Control
 **Pages:** p1–p57 | **Sections:** 7
@@ -1256,6 +1281,10 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
+| Container closure integrity CCI, package integrity, leak testing pharmaceutical / 容器密封完整性、包裝完整性、洩漏試驗 | TR27 + TR73 + TR90 |
+| Helium mass spectrometry CCI, HVLD high voltage leak detection, vacuum decay / 氦質譜分析CCI、高電壓洩漏偵測、真空衰減 | TR27 |
+| Bubble test, headspace analysis, pressure decay, ultrasonic CCI testing / 氣泡試驗、頂空分析、壓力衰減、超聲波CCI試驗 | TR27 |
+| Microbial ingress test, microbial challenge CCI, liquid immersion airborne challenge / 微生物滲入試驗、微生物挑戰CCI | TR27 |
 | Moist heat sterilization, autoclave, steam sterilization, F0 value, D-value, z-value / 濕熱滅菌、高壓滅菌釜、F0值、D值、z值 | TR1 |
 | Overkill approach, bioburden-based sterilization, SAL, 10^-6 sterility assurance / 過度殺滅法、生物負載法、無菌保證水準 | TR1 |
 | Biological indicator BI sterilization, Geobacillus stearothermophilus, BI D-value placement / 生物指示劑、嗜熱脂肪土芽孢桿菌 | TR1 |
@@ -1439,7 +1468,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | FDA-Aseptic ★★★ (FDA 2004 CGMP guidance: full regulatory framework, Class 100/10000/100000, media fill criteria, filtration, sterilization, EM, sterility testing, isolator/BFS appendices) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | FDA-ProcessInspection ★★ (FDA inspector perspective: aseptic processing inspection objectives, media fill inspection, EM program review, sterility test failure response) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
-→ TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+→ TR27 ★★★ (foundational CCI reference: all 18 leak test methods, microbial challenge, decision tree, leak rate specifications — the pre-USP <1207> framework) | TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
 
 **Contamination Control (污染控制)**
 → TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
