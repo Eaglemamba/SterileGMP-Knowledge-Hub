@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 complete; FDA Aseptic 2004 complete; FDA CPGM 7356.002A Process Inspections complete)
+Last updated: 2026-04-01
 
 ---
 
@@ -100,11 +100,11 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 33 | All sections generated, merged, verified |
-| Skeleton (metadata only) | 0 | — |
-| **Total in reports.json** | **33** | |
+| Complete | 32 | All sections generated, merged, verified (incl. TR49) |
+| Skeleton (metadata only) | 2 | TR41, TR56 |
+| **Total in reports.json** | **34** | |
 
-**Completion: 100%** (PDA phase complete)
+**Completion: 94%** (32/34 PDA docs complete)
 
 ### ISPE Guidelines
 
@@ -126,7 +126,7 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 47 of ~65-70 target documents complete (approx. 71%)**
+**Overall: 47 of ~65-70 target documents complete (approx. 70%)** *(TR49 now included)*
 
 ---
 
