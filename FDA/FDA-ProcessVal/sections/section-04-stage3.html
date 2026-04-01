@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section V: Stage 3 — Continued Process Verification | FDA Process Validation 2011</title>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header { color: #2c5282; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .term-box, .formula-box, .key-point-box, .highlight-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .term-box p, .formula-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .term-box ul, .formula-box ul, .note-box ul, .key-point-box ul, .highlight-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .term-box li, .formula-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h3, .analogy-box h4 { color: #856404; }
+.term-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.term-box h3, .term-box h4 { color: #2e7d32; }
+.note-box, .key-point-box, .highlight-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h3, .note-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h3, .formula-box h4 { color: #7b1fa2; }
+.formula-box pre { background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h3, .practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box p, .practice-box li { font-size: 0.92rem; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe0b2; color: #bf360c; }
+.badge.purple { background: #e1bee7; color: #6a1b9a; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+.block-header { background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; padding: 0.85rem 1.25rem; border-radius: 8px 8px 0 0; margin-bottom: 0; font-size: 1rem; font-weight: 600; }
+.content-block { background: white; border-radius: 0 0 8px 8px; border: 1px solid #e2e8f0; border-top: none; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.content-block-full { background: white; border-radius: 8px; border: 1px solid #e2e8f0; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.content-block-full h2 { color: var(--primary-blue); font-size: 1.15rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.spc-chart { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; margin: 0.75rem 0; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.4; overflow-x: auto; }
+.lifecycle-bar { display: flex; border-radius: 8px; overflow: hidden; margin: 1rem 0; }
+.lifecycle-stage { flex: 1; padding: 0.75rem 0.5rem; text-align: center; font-size: 0.8rem; font-weight: 600; }
+.stage1 { background: #bbdefb; color: #1565c0; }
+.stage2 { background: #c8e6c9; color: #2e7d32; }
+.stage3 { background: #ffe0b2; color: #e65100; }
+.stage3-active { background: #ff9800; color: white; }
+.key-message-box { background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; border-radius: 12px; padding: 1.5rem 2rem; margin: 1.5rem 0; text-align: center; }
+.key-message-box h3 { font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.9; }
+.key-message-box p { font-size: 1rem; font-weight: 600; line-height: 1.6; }
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .lifecycle-bar { flex-direction: column; }
+}
+@media print {
+    .back-to-top { display: none; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Section V: Stage 3 — Continued Process Verification | 第三階段：持續製程查驗</h1>
+  <div class="subtitle">+ Section V: Concurrent Release of PPQ Batches | 同期放行</div>
+  <div class="page-info">FDA Guidance: Process Validation — General Principles and Practices (January 2011) | Pages 14–16</div>
+</div>
+
+<div class="main-content">
+
+<!-- ===== KEY MESSAGE ===== -->
+<div class="key-message-box">
+  <h3>Core Principle | 核心原則</h3>
+  <p>Stage 3 closes the validation lifecycle loop — a product is only fully validated when you have ongoing evidence from commercial production demonstrating the process remains in a state of control.<br>
+  <span style="font-size:0.9rem; opacity:0.85;">第三階段閉合驗證生命週期迴路——唯有來自商業生產的持續證據，才能證明製程真正處於受控狀態。</span></p>
+</div>
+
+<!-- ===== TOC ===== -->
+<div class="toc">
+  <h3>Table of Contents | 目錄</h3>
+  <div class="toc-grid">
+    <a href="#learning-obj">Learning Objectives</a>
+    <a href="#lifecycle-overview">Lifecycle Overview</a>
+    <a href="#stage3-definition">Stage 3 Definition</a>
+    <a href="#data-collection">Data Collection Program</a>
+    <a href="#spc-tools">SPC Tools: Cpk &amp; Ppk</a>
+    <a href="#spc-charts">Control Charts</a>
+    <a href="#variation-sources">Sources of Variation</a>
+    <a href="#cpv-program">CPV Program Elements</a>
+    <a href="#oot-oos">OOT vs OOS</a>
+    <a href="#process-changes">Process Changes &amp; Revalidation</a>
+    <a href="#facility-equipment">Facility &amp; Equipment</a>
+    <a href="#concurrent-release">Concurrent Release</a>
+    <a href="#concurrent-conditions">Conditions &amp; Requirements</a>
+    <a href="#cdmo-application">CDMO Application</a>
+    <a href="#practice-q">Practice Questions</a>
+  </div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div id="learning-obj" class="learning-objectives">
+  <h3>Learning Objectives | 學習目標</h3>
+  <div class="two-column" style="margin-bottom:0;">
+    <div>
+      <strong>After studying this section, you will be able to:</strong>
+      <ol style="margin-left:1.25rem; margin-top:0.5rem;">
+        <li>Define Stage 3 Continued Process Verification and its role in the validation lifecycle</li>
+        <li>Design a statistically sound data collection and trending program for commercial manufacturing</li>
+        <li>Distinguish between Cpk and Ppk indices and apply them to process capability assessment</li>
+        <li>Interpret Xbar-R control charts and identify out-of-control signals</li>
+        <li>Differentiate OOT (out-of-trend) from OOS (out-of-specification) and apply the correct investigation pathway</li>
+        <li>Identify the conditions that justify concurrent release and describe the associated safeguards</li>
+        <li>Enumerate triggers that require revalidation or additional process qualification</li>
+        <li>Apply CPV principles to a CDMO aseptic fill-finish environment</li>
+      </ol>
+    </div>
+    <div>
+      <strong>完成本節學習後，您將能夠：</strong>
+      <ol style="margin-left:1.25rem; margin-top:0.5rem;">
+        <li>定義第三階段持續製程查驗及其在驗證生命週期中的角色</li>
+        <li>為商業生產設計統計上合理的資料收集與趨勢分析計畫</li>
+        <li>區分 Cpk 與 Ppk 指數，並應用於製程能力評估</li>
+        <li>解讀 Xbar-R 管制圖並識別失控訊號</li>
+        <li>區分 OOT（超趨勢）與 OOS（超規格），並套用正確調查路徑</li>
+        <li>辨識同期放行的合理條件並描述相應的防護措施</li>
+        <li>列舉需要再驗證或額外製程確認的觸發因子</li>
+        <li>將 CPV 原則應用於 CDMO 無菌灌裝環境</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ===== BLOCK 1: LIFECYCLE OVERVIEW ===== -->
+<div id="lifecycle-overview" class="block-header">Block 1 | 第一區塊 — Process Validation Lifecycle &amp; Stage 3 Position | 製程驗證生命週期與第三階段定位</div>
+<div class="content-block">
+  <div class="lifecycle-bar">
+    <div class="lifecycle-stage stage1">Stage 1<br>Process Design<br>製程設計</div>
+    <div class="lifecycle-stage stage2">Stage 2<br>Process Qualification<br>製程確認 (PPQ)</div>
+    <div class="lifecycle-stage stage3-active">Stage 3 ★<br>Continued Process Verification<br>持續製程查驗 (CPV)</div>
+  </div>
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Where We Are in the Lifecycle</h3>
+      <p>FDA's 2011 Process Validation Guidance establishes a three-stage lifecycle approach. Stages 1 and 2 build knowledge and demonstrate initial process capability. Stage 3 is where that capability is <strong>sustained and confirmed</strong> across the full commercial production horizon.</p>
+      <p>Unlike traditional "three-batch validation," the lifecycle model recognizes that validation is never truly finished — it is an ongoing commitment to process understanding.</p>
+      <div class="quote-box">
+        "The goal of the third validation stage is continual assurance that the process remains in a state of control (the validated state) during commercial manufacture."
+        <br><em>— FDA Process Validation Guidance, 2011, p.14</em>
+      </div>
+      <table>
+        <tr><th>Stage</th><th>Key Question</th><th>Evidence Type</th></tr>
+        <tr><td>1 — Design</td><td>What are the CPPs and CQAs?</td><td>Development data, risk assessments, DoE</td></tr>
+        <tr><td>2 — Qualification</td><td>Can we reproduce it at commercial scale?</td><td>PPQ batch data, protocols, reports</td></tr>
+        <tr><td><strong>3 — CPV</strong></td><td><strong>Is it still in control, batch after batch?</strong></td><td><strong>SPC, trending, PQR, CAPA</strong></td></tr>
+      </table>
+    </div>
+    <div class="right-column">
+      <h3>生命週期定位 — 中文解析</h3>
+      <div class="term-box">
+        <h4>三階段生命週期邏輯</h4>
+        <ul>
+          <li><strong>第一階段（製程設計）</strong>：了解製程，識別關鍵製程參數（CPP）與關鍵品質屬性（CQA）</li>
+          <li><strong>第二階段（製程確認 PPQ）</strong>：在商業規模下執行，確認製程能重複生產符合規格的產品</li>
+          <li><strong>第三階段（CPV）</strong>：商業生產過程中持續監控，確認製程維持受控狀態</li>
+        </ul>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：駕照考試 vs. 日常駕駛</h4>
+        <p>第二階段 PPQ 如同考取駕照（通過測驗，取得資格）。第三階段 CPV 則是每天上路行駛——真正的安全記錄來自於持續的行為，而非一次考試。</p>
+        <p>傳統「三批次驗證」的思維等同於：只要考一次試，就永遠不需要再證明自己還會開車。FDA 2011 指引明確拒絕了這種思維。</p>
+      </div>
+      <div class="note-box">
+        <h4>重點：為什麼 CPV 是閉合迴路的關鍵？</h4>
+        <p>Stage 1+2 的資料量有限（通常只有 3–10 批次）。真正代表商業製程變異性的資料，只有在 Stage 3 大量批次生產後才能獲得。CPV 讓驗證從「靜態證明」轉為「動態保證」。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>一家製藥公司完成了 3 批 PPQ 並通過放行，但之後從未建立 CPV 計畫。這符合 FDA 2011 的期望嗎？為什麼？</li>
+          <li>第一階段識別出填充量變異的主要因子是活塞磨損。在 CPV 計畫中，您會如何監控這個因子？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 2: STAGE 3 DEFINITION ===== -->
+<div id="stage3-definition" class="block-header">Block 2 | 第二區塊 — Stage 3 Definition &amp; Regulatory Framework | 第三階段定義與法規架構</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>D. Stage 3 — Continued Process Verification</h3>
+      <p>The goal of the third validation stage is <strong>continual assurance</strong> that the process remains in a state of control (the validated state) during commercial manufacture. A system or systems for detecting unplanned departures from the process as designed is essential to accomplish this goal.</p>
+      <p>Adherence to the CGMP requirements, specifically, the collection and evaluation of information and data about the performance of the process, will allow detection of undesired process variability. Evaluating the performance of the process identifies problems and determines whether action must be taken to correct, anticipate, and prevent problems so that the process remains in control (§ 211.180(e)).</p>
+      <p>An ongoing program to collect and analyze product and process data that relate to product quality must be established (§ 211.180(e)). The data collected should include relevant process trends and quality of incoming materials or components, in-process material, and finished products. The data should be statistically trended and reviewed by trained personnel. The information collected should verify that the quality attributes are being appropriately controlled throughout the process.</p>
+      <div class="quote-box">
+        "We recommend that a statistician or person with adequate training in statistical process control techniques develop the data collection plan and statistical methods and procedures used in measuring and evaluating process stability and process capability."
+      </div>
+    </div>
+    <div class="right-column">
+      <h3>第三階段定義 — 中文解析</h3>
+      <div class="term-box">
+        <h4>核心定義：CPV（Continued Process Verification）</h4>
+        <p><strong>持續製程查驗</strong>是指在商業生產期間，透過系統性的資料收集、統計分析與趨勢監控，持續確認製程保持在已驗證的受控狀態。</p>
+        <ul>
+          <li><strong>目標</strong>：偵測非預期的製程偏離</li>
+          <li><strong>手段</strong>：統計方法 + 訓練人員審核</li>
+          <li><strong>法規依據</strong>：21 CFR § 211.180(e)</li>
+          <li><strong>資料範圍</strong>：原料、中間品、成品、製程參數</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <h4>法規連結：§ 211.180(e)</h4>
+        <p>此條款要求製造商建立書面程序，定期評估製造記錄，以確認批次始終符合既定標準。CPV 計畫是滿足此要求的主要機制。</p>
+        <p>FDA 明確建議由<strong>統計學家或具備充分 SPC 訓練的人員</strong>來設計資料收集計畫——這意味著 CPV 不是 QA 任意決定抽幾個點的事，而是需要統計學設計。</p>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：血壓監測 vs. 健康體檢</h4>
+        <p>PPQ（第二階段）如同一次完整的健康體檢——深入但不頻繁。CPV 則像每天量血壓——不那麼深入，但持續追蹤趨勢，能在問題惡化前發出警告。</p>
+        <p>只做體檢不量血壓，你可能在兩次體檢之間悄悄發展出高血壓危機。製程也是如此。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>FDA 建議由「統計學家或受過充分 SPC 訓練的人員」設計資料收集計畫。在您的組織中，誰最可能負責這項工作？這個責任目前是否明確？</li>
+          <li>§ 211.180(e) 要求定期評估製造記錄。「定期」在您公司的 SOP 中如何定義？月度？季度？批次基礎？</li>
+          <li>如果一個 CDMO 同時生產 15 種產品，每種產品都需要獨立的 CPV 計畫，這在資源上有何挑戰？如何優先排序？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 3: DATA COLLECTION ===== -->
+<div id="data-collection" class="block-header">Block 3 | 第三區塊 — Data Collection &amp; Sampling Program | 資料收集與取樣計畫</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Data Collection Program Requirements</h3>
+      <p>We recommend continued monitoring and sampling of process parameters and quality attributes at the level established during the process qualification stage until sufficient data are available to generate significant variability estimates. These estimates can provide the basis for establishing levels and frequency of routine sampling and monitoring for the particular product and process.</p>
+      <p>Monitoring can then be adjusted to a statistically appropriate and representative level. Process variability should be periodically assessed and monitoring adjusted accordingly.</p>
+      <p>Procedures should describe how trending and calculations are to be performed and should guard against:</p>
+      <ul>
+        <li><strong>Overreaction</strong> to individual events (false positive signals leading to unnecessary investigation)</li>
+        <li><strong>Failure to detect</strong> unintended process variability (missing real signals)</li>
+      </ul>
+      <p>Production data should be collected to evaluate process stability and capability. The quality unit should review this information. If properly carried out, these efforts can identify variability in the process and/or signal potential process improvements.</p>
+      <p>Variation can also be detected by timely assessment of:</p>
+      <ul>
+        <li>Defect complaints</li>
+        <li>Out-of-specification findings</li>
+        <li>Process deviation reports</li>
+        <li>Process yield variations</li>
+        <li>Batch records</li>
+        <li>Incoming raw material records</li>
+        <li>Adverse event reports</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>資料收集計畫 — 中文解析</h3>
+      <div class="term-box">
+        <h4>取樣計畫設計原則</h4>
+        <p>FDA 建議的取樣策略分為兩個階段：</p>
+        <ul>
+          <li><strong>早期商業化階段</strong>：維持 PPQ 階段的取樣頻率與數量，持續收集直到有足夠資料估計製程變異性</li>
+          <li><strong>穩定後階段</strong>：根據統計分析結果，調整至「統計上合適且具代表性」的常規水準</li>
+        </ul>
+        <p>關鍵字：<em>statistically appropriate and representative</em> — 不是越多越好，也不是越少越省事，而是根據資料說話。</p>
+      </div>
+      <div class="note-box">
+        <h4>雙向錯誤：過度反應 vs. 遲鈍</h4>
+        <table>
+          <tr><th>錯誤類型</th><th>表現</th><th>後果</th></tr>
+          <tr><td><span class="badge red">過度反應</span></td><td>每個單一異常點都觸發偏差調查</td><td>浪費資源，假訊號氾濫，團隊疲憊</td></tr>
+          <tr><td><span class="badge orange">遲鈍</span></td><td>忽視漸進性趨勢，只看規格是否超標</td><td>錯失早期預警，問題惡化才被發現</td></tr>
+        </table>
+        <p>正確設計的 SPC 計畫（加上明確的管制界限規則）可以平衡這兩種錯誤。</p>
+      </div>
+      <div class="highlight-box">
+        <h4>資料來源全景圖</h4>
+        <p>CPV 不只是看檢驗數據，還涵蓋：</p>
+        <ul>
+          <li>製程參數（溫度、壓力、速度、填充量等）</li>
+          <li>中間品檢測結果</li>
+          <li>成品放行數據</li>
+          <li>原物料 CoA 與放行趨勢</li>
+          <li>客訴與不良反應報告</li>
+          <li>批次良率變異</li>
+          <li>偏差與 CAPA 記錄</li>
+        </ul>
+        <p><strong>在 CDMO 無菌灌裝環境中還需加入</strong>：環境監測數據（EM）、培養基模擬試驗（MFT）結果、容器封閉完整性測試（CCIT）趨勢。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的產品完成 PPQ 後已生產 12 批，填充重量 Cpk = 1.45。FDA 會認為這是「足夠資料」可以降低取樣頻率的信號嗎？需要額外考慮哪些因素？</li>
+          <li>原料 CoA 的趨勢監控是否屬於 CPV 的範疇？請說明理由並舉例。</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 4: SPC TOOLS — Cpk & Ppk ===== -->
+<div id="spc-tools" class="block-header">Block 4 | 第四區塊 — SPC Tools: Cpk vs. Ppk | 統計製程管制工具</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Statistical Process Control — Key Indices</h3>
+      <p>FDA references ASTM E2281-03 "Standard Practice for Process and Measurement Capability Indices" as a useful resource for measuring and evaluating process stability and process capability.</p>
+      <p>Two primary indices used in pharmaceutical CPV:</p>
+      <p><strong>Process Capability Index (Cpk)</strong> — measures how well a process performs relative to specifications, assuming the process is in statistical control (within-subgroup variation only).</p>
+      <p><strong>Process Performance Index (Ppk)</strong> — measures actual observed process performance including all sources of variation (total variation: within + between subgroups).</p>
+      <table>
+        <tr><th>Index</th><th>Variation Used</th><th>Assumes Control?</th><th>When to Use</th></tr>
+        <tr><td><strong>Cpk</strong></td><td>Within-subgroup (short-term σ)</td><td>Yes</td><td>Ongoing monitoring of stable process</td></tr>
+        <tr><td><strong>Ppk</strong></td><td>Total (long-term σ)</td><td>No</td><td>Initial validation, process characterization</td></tr>
+      </table>
+      <p>General industry benchmarks:</p>
+      <ul>
+        <li>Cpk / Ppk ≥ 1.33 → capable process (generally acceptable)</li>
+        <li>Cpk / Ppk ≥ 1.67 → highly capable (Six Sigma target)</li>
+        <li>Cpk / Ppk &lt; 1.00 → process not capable, action required</li>
+        <li>Cpk / Ppk 1.00–1.33 → marginal, enhanced monitoring needed</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>Cpk vs. Ppk 深度解析</h3>
+      <div class="formula-box">
+        <h4>Cpk 公式</h4>
+        <pre>
+Cpk = min[ (USL - X̄) / (3σ_within),
+           (X̄ - LSL) / (3σ_within) ]
+
+σ_within = R̄ / d2  (from control chart)
+
+Example:
+  USL = 505 mg, LSL = 495 mg, X̄ = 501 mg
+  σ_within = 1.2 mg
+
+  CPU = (505 - 501) / (3 × 1.2) = 4/3.6 = 1.11
+  CPL = (501 - 495) / (3 × 1.2) = 6/3.6 = 1.67
+  Cpk = min(1.11, 1.67) = 1.11
+        </pre>
+      </div>
+      <div class="formula-box">
+        <h4>Ppk 公式</h4>
+        <pre>
+Ppk = min[ (USL - X̄) / (3σ_total),
+           (X̄ - LSL) / (3σ_total) ]
+
+σ_total = S  (overall standard deviation)
+
+Key difference:
+  σ_within uses R̄/d2 (only random short-term noise)
+  σ_total uses all data variation (includes shifts,
+  drifts, lot-to-lot, operator effects, seasonal, etc.)
+
+If Ppk << Cpk → large between-batch variation exists
+  → investigate batch-to-batch sources
+        </pre>
+      </div>
+      <div class="note-box">
+        <h4>Cpk vs. Ppk 實務判讀</h4>
+        <table>
+          <tr><th>Cpk</th><th>Ppk</th><th>解讀</th><th>行動</th></tr>
+          <tr><td>高</td><td>高</td><td>製程穩定且具高能力</td><td>維持現況，常規監控</td></tr>
+          <tr><td>高</td><td>低</td><td>批次內穩定，但批次間變異大</td><td>調查批次間變異來源（原料、操作員、班別）</td></tr>
+          <tr><td>低</td><td>低</td><td>製程本身能力不足</td><td>製程改善、重新設計</td></tr>
+          <tr><td>低</td><td>高</td><td>不尋常（理論上不應發生）</td><td>檢查計算方法與資料完整性</td></tr>
+        </table>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：短跑 vs. 馬拉松</h4>
+        <p>Cpk 像是短跑成績——在最佳狀態、最短時間內的表現。Ppk 像是全年所有比賽的平均成績——包含了天氣、體力狀態、場地等所有實際條件的影響。</p>
+        <p>對於法規申請（NDA/BLA），FDA 更關注 Ppk，因為它反映的是真實商業生產的全貌。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的凍乾產品水分含量：USL = 3.0%，LSL = 0.5%，X̄ = 1.8%，σ_within = 0.25%，σ_total = 0.45%。計算 Cpk 和 Ppk，並解讀結果。</li>
+          <li>Cpk = 1.52 但 Ppk = 0.98。這說明了什麼問題？您會建議調查哪些方面？</li>
+          <li>無菌灌裝的可見異物（VPI）屬性是否適合用 Cpk/Ppk 分析？為什麼？應使用什麼替代方法？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 5: CONTROL CHARTS ===== -->
+<div id="spc-charts" class="block-header">Block 5 | 第五區塊 — Control Charts: Xbar-R &amp; Other Tools | 管制圖與 SPC 工具</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Statistical Tools for CPV</h3>
+      <p>Many tools and techniques, some statistical and others more qualitative, can be used to detect variation, characterize it, and determine the root cause. FDA recommends that the manufacturer use <strong>quantitative, statistical methods</strong> whenever appropriate and feasible.</p>
+      <p>Scrutiny of <strong>intra-batch</strong> as well as <strong>inter-batch</strong> variation is part of a comprehensive continued process verification program under § 211.180(e).</p>
+      <p>Key statistical tools used in pharmaceutical CPV:</p>
+      <ul>
+        <li><strong>Xbar-R charts</strong> — monitor process mean and range over time</li>
+        <li><strong>Individual-MR (I-MR) charts</strong> — for individual measurements (n=1)</li>
+        <li><strong>P-charts / U-charts</strong> — for attribute data (defect rates)</li>
+        <li><strong>CUSUM charts</strong> — cumulative sum, sensitive to small shifts</li>
+        <li><strong>EWMA charts</strong> — exponentially weighted moving average</li>
+        <li><strong>Histogram + Normality tests</strong> — assess distribution shape</li>
+        <li><strong>Box plots</strong> — compare variation across batches/lines/operators</li>
+        <li><strong>Scatter plots / Regression</strong> — explore CPP-CQA relationships</li>
+      </ul>
+      <p>Control charts detect signals via Western Electric rules (or similar):</p>
+      <ul>
+        <li>1 point beyond 3σ (UCL/LCL)</li>
+        <li>2 of 3 consecutive points beyond 2σ</li>
+        <li>4 of 5 consecutive points beyond 1σ</li>
+        <li>8 consecutive points on one side of centerline (run rule)</li>
+        <li>Trends: 6+ consecutive points moving in one direction</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>管制圖詳解 — 中文解析</h3>
+      <div class="formula-box">
+        <h4>Xbar-R Chart 結構示意</h4>
+        <pre>
+Xbar Chart (均值圖):
+  UCL_X = X̄̄ + A2 × R̄     ← 上管制界限
+  CL_X  = X̄̄               ← 中心線（總均值）
+  LCL_X = X̄̄ - A2 × R̄     ← 下管制界限
+
+R Chart (全距圖):
+  UCL_R = D4 × R̄           ← 上管制界限
+  CL_R  = R̄                ← 中心線（平均全距）
+  LCL_R = D3 × R̄           ← 下管制界限（n≤6時=0）
+
+常用係數 (n=5):
+  A2 = 0.577, D3 = 0, D4 = 2.114
+
+圖示 (填充重量, mg):
+  UCL_X ─────────────────── 502.8
+        ●   ●           ●
+  CL_X  ─── ─── ─── ─── ─── 501.0
+              ●   ●
+  LCL_X ─────────────────── 499.2
+
+  批次:    1   2   3   4   5
+        </pre>
+      </div>
+      <div class="note-box">
+        <h4>I-MR Chart — 無菌灌裝常用場景</h4>
+        <p>當每批只有一個量測值（如：每批取一個容器做蛋白質含量測試），使用 I-MR chart：</p>
+        <ul>
+          <li><strong>I chart</strong>（個別值圖）：監控每批測值</li>
+          <li><strong>MR chart</strong>（移動全距圖）：監控批次間變異</li>
+        </ul>
+        <p>適用場景：凍乾產品含水量趨勢、無菌測試通過率（批次）、ABI（生物指標滅菌挑戰）結果</p>
+      </div>
+      <div class="term-box">
+        <h4>Westgard / Western Electric 失控規則</h4>
+        <table>
+          <tr><th>規則</th><th>描述</th><th>敏感於</th></tr>
+          <tr><td>1-3s</td><td>1點超出 ±3σ</td><td>突發性偏移</td></tr>
+          <tr><td>2-2s</td><td>連續2點超出同側 ±2σ</td><td>中等偏移</td></tr>
+          <tr><td>4-1s</td><td>連續4點超出同側 ±1σ</td><td>小偏移</td></tr>
+          <tr><td>8x</td><td>連續8點在中心線同側</td><td>系統性偏移</td></tr>
+          <tr><td>趨勢</td><td>連續6點持續上升或下降</td><td>漸進性漂移</td></tr>
+        </table>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：交通號誌系統</h4>
+        <p>管制界限（UCL/LCL）是紅燈——超過必須停車調查。規格界限（USL/LSL）是懸崖邊緣——到達時已太晚。SPC 的目的是讓你在「看見黃燈」時就採取行動，而不是等到撞上懸崖才反應。</p>
+        <p>管制界限通常比規格界限窄得多。如果管制界限 = 規格界限，SPC 就失去了早期預警的功能。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>填充量 X̄̄ = 10.0 mL，R̄ = 0.12 mL，n = 5（A2 = 0.577）。計算 Xbar chart 的 UCL 和 LCL。如果第 15 批的 X̄ = 10.07 mL，是否有失控訊號？</li>
+          <li>您的 Xbar chart 顯示連續 9 批數值都在中心線上方，但沒有超出 UCL。這是否需要調查？依據哪條規則？</li>
+          <li>無菌測試結果（通過/失敗）適合使用哪種管制圖？Xbar-R chart 適用嗎？為什麼？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 6: VARIATION SOURCES & TREND ANALYSIS ===== -->
+<div id="variation-sources" class="block-header">Block 6 | 第六區塊 — Sources of Variation &amp; Trend Analysis | 變異來源與趨勢分析</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Detecting and Characterizing Variation</h3>
+      <p>Good process design and development should anticipate significant sources of variability and establish appropriate detection, control, and/or mitigation strategies, as well as appropriate alert and action limits.</p>
+      <p>However, a process is likely to encounter sources of variation that were not previously detected or to which the process was not previously exposed. Many tools and techniques, some statistical and others more qualitative, can be used to detect variation, characterize it, and determine the root cause.</p>
+      <p>Production line operators and quality unit staff should be encouraged to provide feedback on process performance. FDA recommends that the quality unit <strong>meet periodically with production staff</strong> to evaluate data, discuss possible trends or undesirable process variation, and coordinate any correction or follow-up actions by production.</p>
+      <h3>Sources of Variation to Monitor</h3>
+      <ul>
+        <li>Intra-batch variation (within a single lot)</li>
+        <li>Inter-batch variation (lot-to-lot)</li>
+        <li>Seasonal variation (temperature, humidity effects)</li>
+        <li>Shift-to-shift / operator-to-operator variation</li>
+        <li>Equipment drift (wear, calibration drift)</li>
+        <li>Incoming material variability (supplier lots)</li>
+        <li>Line clearance and setup variation</li>
+        <li>Environmental monitoring trends (viable, non-viable)</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>變異來源與趨勢分析 — 中文解析</h3>
+      <div class="term-box">
+        <h4>變異的分類框架</h4>
+        <table>
+          <tr><th>類型</th><th>範圍</th><th>偵測工具</th><th>CDMO 實例</th></tr>
+          <tr><td>批次內變異</td><td>同一批內各測量點</td><td>Xbar-R chart</td><td>填充量不均勻（頭尾差異）</td></tr>
+          <tr><td>批次間變異</td><td>不同批次之間</td><td>I-MR chart, Ppk vs Cpk</td><td>每月第一批凍乾含水量偏高</td></tr>
+          <tr><td>季節性變異</td><td>月份/季節</td><td>時間序列圖</td><td>夏季潔淨室濕度上升影響 EM</td></tr>
+          <tr><td>班別/操作員</td><td>不同班次/人員</td><td>Box plot, ANOVA</td><td>夜班填充量 Cpk 低於白班</td></tr>
+          <tr><td>設備老化</td><td>時間性</td><td>趨勢圖, 維護記錄關聯</td><td>蠕動泵管耗損導致填充量漂移</td></tr>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <h4>FDA 重點：QA 與生產的定期會議</h4>
+        <p>FDA 明確建議<strong>品質單位定期與生產人員開會</strong>評估資料，討論趨勢。這不是法規形式要求，而是 FDA 認為這種跨職能溝通是早期發現問題的必要條件。</p>
+        <p>實務建議：每月一次 CPV 趨勢檢討會議（Monthly CPV Review Meeting），議程包含：</p>
+        <ul>
+          <li>管制圖更新與異常點回顧</li>
+          <li>Cpk/Ppk 月度計算</li>
+          <li>OOT 案例討論</li>
+          <li>CAPA 執行狀態追蹤</li>
+          <li>下月重點監控項目</li>
+        </ul>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：天氣預報 vs. 天氣記錄</h4>
+        <p>趨勢分析的目的是「預報」，不只是「記錄」。看到夏季 EM 數據連續 3 個月緩慢上升——即使尚未超標——就應該在超標前啟動調查。這就是 Stage 3 CPV 的精髓：預防性而非反應性。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您發現夜班的填充量 Cpk 持續低於白班（1.15 vs 1.42）。這是否構成 OOT 事件？應如何調查根本原因？</li>
+          <li>季節性變異（如夏季潔淨室 EM 微生物數量增加）是否在 Stage 1 設計時就應考慮？如果未考慮，在 Stage 3 發現後如何處理？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 7: CPV PROGRAM ELEMENTS ===== -->
+<div id="cpv-program" class="block-header">Block 7 | 第七區塊 — CPV Program Elements Checklist | CPV 計畫要素核查清單</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Comprehensive CPV Program</h3>
+      <p>A robust Continued Process Verification program encompasses multiple interconnected elements that collectively ensure ongoing process control. Based on the FDA guidance and industry best practices, a complete CPV program must address:</p>
+      <ul>
+        <li><strong>Written procedures</strong> describing how trending and calculations are performed</li>
+        <li><strong>Sampling plans</strong> with defined frequency and number of units</li>
+        <li><strong>Data collection systems</strong> for process parameters and quality attributes</li>
+        <li><strong>Statistical methods</strong> for evaluating process stability and capability</li>
+        <li><strong>Alert and action limits</strong> distinct from specification limits</li>
+        <li><strong>In-process controls</strong> monitoring during manufacturing</li>
+        <li><strong>Finished product testing</strong> trend analysis</li>
+        <li><strong>Periodic Product Quality Reviews (PQR/APR)</strong></li>
+        <li><strong>Feedback mechanisms</strong> from operators and QA</li>
+        <li><strong>CAPA system integration</strong> for corrective actions</li>
+        <li><strong>Management review</strong> of CPV data</li>
+      </ul>
+      <p>Data gathered during Stage 3 might suggest ways to improve and/or optimize the process. A description of the planned change, a well-justified rationale for the change, an implementation plan, and quality unit approval before implementation must be documented (§ 211.100).</p>
+    </div>
+    <div class="right-column">
+      <h3>CPV 計畫要素 — 完整核查清單</h3>
+      <div class="term-box">
+        <h4>CPV 計畫 13 大要素核查清單</h4>
+        <ul class="checklist">
+          <li>CPV 計畫書（書面程序，含範圍、責任分工）</li>
+          <li>監控參數清單（CPP 與 CQA 全覆蓋）</li>
+          <li>取樣計畫（頻率、數量、取樣點、統計依據）</li>
+          <li>統計方法規格（控制圖類型、Cpk/Ppk 計算方法）</li>
+          <li>管制界限（UCL/LCL）與警戒界限設定依據</li>
+          <li>趨勢報告格式與審核頻率</li>
+          <li>OOT 定義與調查啟動標準</li>
+          <li>OOT → OOS 升級路徑</li>
+          <li>CAPA 整合機制（調查 → 根本原因 → 糾正預防）</li>
+          <li>定期 CPV 審查會議（議程、頻率、參與者）</li>
+          <li>年度產品品質回顧（APR/PQR）整合</li>
+          <li>變更管理整合（製程改善需通過變更管制）</li>
+          <li>培訓要求（統計人員、操作人員、QA）</li>
+        </ul>
+      </div>
+      <div class="note-box">
+        <h4>PQR/APR — 年度產品品質回顧</h4>
+        <p><strong>Product Quality Review (PQR)</strong>，在美國 CGMP 中稱為 Annual Product Review（APR），是 CPV 的年度總結機制，要求：</p>
+        <ul>
+          <li>回顧所有批次的生產與放行數據</li>
+          <li>分析 OOS、OOT、偏差趨勢</li>
+          <li>評估 CAPA 有效性</li>
+          <li>原料供應商評估</li>
+          <li>穩定性資料更新</li>
+          <li>製程能力趨勢（Cpk/Ppk 年度比較）</li>
+          <li>識別改善機會與需再驗證的觸發點</li>
+        </ul>
+        <p>法規依據：21 CFR § 211.180(e)（美國）、EU GMP Chapter 1 §1.10（歐盟）</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您被要求為新產品建立 CPV 計畫。您會從 13 項清單中的哪個項目開始，為什麼？</li>
+          <li>警戒界限（Alert Limit）與管制界限（Control Limit / UCL/LCL）有何不同？超出警戒界限時應採取什麼行動？</li>
+          <li>PQR 顯示過去一年 Cpk 從 1.52 降至 1.18，但始終高於 1.00。這是否需要正式調查？應在 PQR 中如何記錄？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 8: OOT vs OOS ===== -->
+<div id="oot-oos" class="block-header">Block 8 | 第八區塊 — OOT vs. OOS Investigation | 超趨勢 vs. 超規格調查</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Out-of-Trend vs. Out-of-Specification</h3>
+      <p>Variation can be detected by the timely assessment of defect complaints, out-of-specification findings, process deviation reports, process yield variations, batch records, incoming raw material records, and adverse event reports.</p>
+      <p>FDA distinguishes between two types of concerning findings in CPV data:</p>
+      <p><strong>Out-of-Trend (OOT)</strong>: A result or series of results that deviate from expected statistical behavior — exceeding control chart limits or trend analysis thresholds — even if still within specification limits. OOT signals a potential change in process behavior before it becomes a quality problem.</p>
+      <p><strong>Out-of-Specification (OOS)</strong>: A result that falls outside established specification limits. OOS requires a formal investigation per 21 CFR § 211.192 and FDA's OOS guidance (2006).</p>
+      <p>The key principle: OOT investigations should catch problems <em>before</em> they become OOS events. A robust CPV program uses OOT as a leading indicator system.</p>
+    </div>
+    <div class="right-column">
+      <h3>OOT vs. OOS 決策矩陣</h3>
+      <div class="term-box">
+        <h4>OOT vs. OOS 定義對比</h4>
+        <table>
+          <tr><th>特性</th><th>OOT 超趨勢</th><th>OOS 超規格</th></tr>
+          <tr><td>判定依據</td><td>統計管制界限或趨勢規則</td><td>規格界限（USL/LSL）</td></tr>
+          <tr><td>是否超規格？</td><td>否（仍在規格內）</td><td>是</td></tr>
+          <tr><td>調查類型</td><td>趨勢調查（較彈性）</td><td>OOS 正式調查（§211.192）</td></tr>
+          <tr><td>批次影響</td><td>通常不影響當前批次放行</td><td>影響當前批次放行</td></tr>
+          <tr><td>嚴重性</td><td>預警信號</td><td>品質事件</td></tr>
+          <tr><td>目的</td><td>預防問題惡化</td><td>調查並隔離問題批次</td></tr>
+        </table>
+      </div>
+      <div class="note-box">
+        <h4>OOT → OOS 決策流程</h4>
+        <p><strong>步驟 1</strong>：偵測 OOT 訊號（超出管制界限或觸發趨勢規則）</p>
+        <p><strong>步驟 2</strong>：啟動 OOT 調查——是否為計算錯誤或儀器問題？</p>
+        <p><strong>步驟 3</strong>：確認 OOT 屬實——執行根本原因分析</p>
+        <p><strong>步驟 4</strong>：判斷是否已達規格界限或有升級 OOS 風險</p>
+        <p><strong>步驟 5</strong>：若升級為 OOS，啟動 § 211.192 正式調查</p>
+        <p><strong>步驟 6</strong>：實施 CAPA，持續監控改善效果</p>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：體溫計 vs. 急診</h4>
+        <p>OOT 如同體溫達到 37.5°C（輕微偏高）——需要關注、多喝水、休息，但還不用去急診。OOS 如同體溫達到 40°C——必須立即就醫，這是緊急事件。</p>
+        <p>好的 CPV 系統在你「還只是 37.5°C」時就介入，防止惡化到 40°C。這就是為什麼 OOT 系統的設計至關重要。</p>
+      </div>
+      <div class="highlight-box">
+        <h4>OOT 定義的挑戰</h4>
+        <p>OOT 沒有像 OOS 那樣有明確的法規定義，各公司需要在 SOP 中自行定義觸發標準。常見定義方式：</p>
+        <ul>
+          <li>任何超出 UCL/LCL 的點</li>
+          <li>連續 N 個點在中心線同側（N 由 SPC 規則決定，常用 8）</li>
+          <li>連續 M 個點持續上升或下降（常用 6）</li>
+          <li>穩定性資料的線性回歸斜率超過設定閾值</li>
+          <li>Cpk 低於預設警戒值（如 &lt;1.33）</li>
+        </ul>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的產品蛋白質含量規格：LSL = 95%，USL = 110%（標示值百分比）。最近連續 7 批的結果：102.1, 103.4, 104.2, 105.1, 106.3, 107.0, 108.1（均在規格內但持續上升）。這構成 OOT 嗎？應採取什麼行動？</li>
+          <li>一批產品的填充量測試結果為 OOS（低於 LSL）。調查顯示是操作員讀數錯誤，重新測試結果符合規格。整個調查過程必須記錄哪些內容？</li>
+          <li>穩定性測試中，12 個月時間點的降解產物比預期趨勢略高，但仍在規格內。這屬於哪種情況？應如何處理？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 9: PROCESS CHANGES & REVALIDATION ===== -->
+<div id="process-changes" class="block-header">Block 9 | 第九區塊 — Process Changes &amp; Revalidation Triggers | 製程變更與再驗證觸發因子</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Managing Process Changes in Stage 3</h3>
+      <p>Data gathered during Stage 3 might suggest ways to improve and/or optimize the process by altering some aspect of the process or product, such as the operating conditions (ranges and set-points), process controls, component, or in-process material characteristics.</p>
+      <p>All proposed changes require:</p>
+      <ul>
+        <li>A description of the planned change</li>
+        <li>A well-justified rationale for the change</li>
+        <li>An implementation plan</li>
+        <li>Quality unit approval before implementation (§ 211.100)</li>
+      </ul>
+      <p>Depending on how the proposed change might affect product quality, <strong>additional process design and process qualification activities could be warranted</strong>.</p>
+      <p><strong>Note:</strong> Certain manufacturing changes may call for formal notification to the Agency before implementation, as directed by existing regulations (see 21 CFR 314.70 and 601.12 — Prior Approval Supplement, CBE-30, CBE-0 filing categories).</p>
+    </div>
+    <div class="right-column">
+      <h3>製程變更與再驗證 — 中文解析</h3>
+      <div class="note-box">
+        <h4>再驗證觸發因子一覽表</h4>
+        <table>
+          <tr><th>變更類型</th><th>具體例子</th><th>再驗證範疇</th></tr>
+          <tr><td><span class="badge red">製程參數</span></td><td>填充速度上調 20%、滅菌溫度調整</td><td>可能需要重新 PPQ</td></tr>
+          <tr><td><span class="badge orange">設備</span></td><td>更換填充針、灌裝設備型號更換</td><td>設備再確認（OQ/PQ）</td></tr>
+          <tr><td><span class="badge yellow">廠房/公用設施</span></td><td>HVAC 改造、純水系統更換</td><td>廠房/公用設施再確認</td></tr>
+          <tr><td><span class="badge blue">原物料</span></td><td>API 供應商變更、輔料規格調整</td><td>製程適應性研究 ± PPQ</td></tr>
+          <tr><td><span class="badge purple">配方</span></td><td>緩衝液濃度調整、pH 範圍擴展</td><td>製程設計重新評估</td></tr>
+          <tr><td><span class="badge green">規模</span></td><td>批量放大或縮小</td><td>完整 Stage 1+2 重新執行</td></tr>
+          <tr><td><span class="badge green">廠址</span></td><td>生產地點遷移</td><td>完整再驗證</td></tr>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <h4>法規申報要求（美國 FDA）</h4>
+        <p>製程變更除了內部變更管理，還需考慮法規申報：</p>
+        <ul>
+          <li><strong>Prior Approval Supplement (PAS)</strong>：重大變更，需 FDA 批准後才能實施（如廠址變更、重大製程變更）</li>
+          <li><strong>CBE-30</strong>：中度變更，在實施後 30 天內申報</li>
+          <li><strong>CBE-0 / Annual Report</strong>：輕微變更，年度報告中申報</li>
+        </ul>
+        <p>法規依據：21 CFR § 314.70（小分子 NDA）；21 CFR § 601.12（生物製品 BLA）</p>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：汽車改裝 vs. 出廠規格</h4>
+        <p>出廠車輛（= PPQ 通過的製程）已被驗證。如果你更換引擎（= 重大製程變更），就需要重新做安全測試（= 再驗證）。只換輪胎氣壓（= 微小調整）可能只需要記錄並確認安全即可。問題的關鍵是：這個改變對「行車安全」（= 產品品質）的影響有多大？</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的 CPV 數據顯示 Ppk 持續偏低（~1.05），根本原因為批次間原料黏度變異。您建議調整攪拌速度範圍。這需要哪些步驟才能合規地實施此變更？</li>
+          <li>設備供應商停止生產您正在使用的蠕動泵，您必須更換為不同型號。這屬於哪個再驗證類別？需要哪些確認活動？</li>
+          <li>一個在歐洲生產的產品要增加美國工廠作為備用生產地。需要提交哪種補充申請？需要哪些驗證資料支持？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 10: FACILITY & EQUIPMENT ===== -->
+<div id="facility-equipment" class="block-header">Block 10 | 第十區塊 — Facility, Utilities &amp; Equipment Maintenance | 廠房、公用設施與設備維護</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Maintaining Qualified State of Facility and Equipment</h3>
+      <p>Maintenance of the facility, utilities, and equipment is another important aspect of ensuring that a process remains in control. Once established, qualification status must be maintained through routine monitoring, maintenance, and calibration procedures and schedules (21 CFR part 211, subparts C and D).</p>
+      <p>The equipment and facility qualification data should be <strong>assessed periodically</strong> to determine whether re-qualification should be performed and the extent of that re-qualification.</p>
+      <p>Maintenance and calibration frequency should be adjusted based on feedback from these activities.</p>
+      <p>Key regulatory references:</p>
+      <ul>
+        <li>21 CFR Part 211 Subpart C — Buildings and Facilities</li>
+        <li>21 CFR Part 211 Subpart D — Equipment</li>
+        <li>21 CFR § 211.67 — Equipment cleaning and maintenance</li>
+        <li>21 CFR § 211.68 — Automatic, mechanical, and electronic equipment</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>設備維護與確認狀態維持 — 中文解析</h3>
+      <div class="term-box">
+        <h4>設備確認的持續性</h4>
+        <p>設備確認（IQ/OQ/PQ）不是一次性事件，而是需要透過以下機制持續維持：</p>
+        <ul>
+          <li><strong>預防性維護（PM）計畫</strong>：定期更換易耗件、潤滑、清潔</li>
+          <li><strong>校正計畫</strong>：量測設備定期校正，維持計量溯源性</li>
+          <li><strong>定期績效驗證（PV）</strong>：定期測試設備是否仍符合原確認標準</li>
+          <li><strong>確認週期評估</strong>：根據設備歷史表現決定再確認週期</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <h4>再確認頻率的決策依據</h4>
+        <p>FDA 建議根據「回饋資訊」調整維護與校正頻率，這意味著：</p>
+        <ul>
+          <li>校正歷史顯示設備穩定 → 可適當延長校正週期</li>
+          <li>校正歷史顯示頻繁漂移 → 應縮短校正週期</li>
+          <li>CPV 資料顯示製程參數漂移與某設備相關 → 觸發非計畫性再確認</li>
+          <li>重大維修或更換關鍵零件後 → 需執行再確認</li>
+        </ul>
+        <p>這體現了「<strong>以風險為基礎的設備管理</strong>」——資源投入與風險成正比。</p>
+      </div>
+      <div class="note-box">
+        <h4>CDMO 無菌灌裝特別關注事項</h4>
+        <ul>
+          <li>填充針、隔膜、蠕動泵管：使用壽命監控與填充量漂移的關聯性</li>
+          <li>HVAC 系統：風量平衡、壓差、溫濕度記錄的持續趨勢</li>
+          <li>高壓滅菌器（Autoclave）：F0 值趨勢，熱電偶校正</li>
+          <li>凍乾機（Lyophilizer）：真空計校正、貨架溫度均勻性定期測試</li>
+          <li>隧道滅菌機（Tunnel）：溫度輪廓定期驗證</li>
+          <li>RABS/isolator：手套完整性定期測試、H2O2 殘留趨勢</li>
+        </ul>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的填充機在過去 18 個月的 PM 記錄顯示活塞磨損速度比預期慢，同時 CPV 資料顯示填充量變異穩定。這兩項資訊如何影響您的 PM 週期決策？</li>
+          <li>凍乾機真空計的校正歷史顯示每次校正偏差均在規格內且穩定。您能否以此為依據延長校正週期？需要什麼文件支持？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 11: CONCURRENT RELEASE ===== -->
+<div id="concurrent-release" class="block-header">Block 11 | 第十一區塊 — Concurrent Release of PPQ Batches | PPQ 批次同期放行</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>V. Concurrent Release of PPQ Batches</h3>
+      <p>In most cases, the PPQ study needs to be completed successfully and a high degree of assurance in the process achieved before commercial distribution of a product. In special situations, the PPQ protocol can be designed to release a PPQ batch for distribution before complete execution of the protocol steps and activities, i.e., concurrent release. <strong>FDA expects that concurrent release will be used rarely.</strong></p>
+      <p>Concurrent release might be appropriate for:</p>
+      <ul>
+        <li>Processes used infrequently for various reasons</li>
+        <li>Drugs for which there is <strong>limited demand</strong> (e.g., orphan drugs, minor use and minor species veterinary drugs)</li>
+        <li>Drugs with <strong>short half lives</strong> (e.g., radiopharmaceuticals, including positron emission tomography drugs)</li>
+        <li>Drugs that are <strong>medically necessary</strong> and are being manufactured in coordination with the Agency to alleviate a short supply</li>
+      </ul>
+      <div class="quote-box">
+        "Conclusions about a commercial manufacturing process can only be made after the PPQ protocol is fully executed and the data are fully evaluated."
+      </div>
+      <p>If Stage 2 qualification is not successful, additional design studies and qualification may be necessary. The new product and process understanding obtained from the unsuccessful qualification study(ies) can have <strong>negative implications</strong> if any lot was already distributed.</p>
+    </div>
+    <div class="right-column">
+      <h3>同期放行 — 中文解析</h3>
+      <div class="term-box">
+        <h4>同期放行（Concurrent Release）的定義</h4>
+        <p><strong>同期放行</strong>是指在 PPQ 協議尚未完全執行完畢的情況下，允許 PPQ 批次進行商業配送。這是常規做法的例外，而非規範。</p>
+        <p>FDA 明確表示：<strong>「FDA 預期同期放行將被少用（rarely）。」</strong>這個 "rarely" 是一個強烈的法規信號。</p>
+      </div>
+      <div class="note-box">
+        <h4>適用同期放行的三大情境</h4>
+        <table>
+          <tr><th>情境</th><th>例子</th><th>理由</th></tr>
+          <tr><td><span class="badge blue">需求有限</span></td><td>孤兒藥（Orphan Drug）、罕見疾病</td><td>批次頻率低，等待完整 PPQ 會導致長期無藥可用</td></tr>
+          <tr><td><span class="badge yellow">短半衰期</span></td><td>PET 顯影劑（F-18, O-15）</td><td>產品在 PPQ 評估完成前已衰變，無法等待</td></tr>
+          <tr><td><span class="badge red">供應短缺</span></td><td>FDA 協調的緊急供應計畫</td><td>公共衛生需求，FDA 介入協調</td></tr>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <h4>同期放行的風險警示</h4>
+        <p>FDA 明確指出：如果 Stage 2 確認未成功（即 PPQ 失敗），而部分批次已在同期放行下配送到市場，後果嚴重——因為這意味著可能已放行了在不可重複製程下生產的產品。</p>
+        <p><strong>這是同期放行最大的法規風險</strong>：一旦 PPQ 最終結論是「製程未確認」，所有已同期放行的批次都面臨回收（Recall）的可能性。</p>
+      </div>
+      <div class="analogy-box">
+        <h4>比喻：試映會 vs. 正式上映</h4>
+        <p>同期放行就像電影還在剪輯中就讓觀眾進場——理論上可行，但如果剪輯完成後發現劇情根本不通順，觀眾的體驗就已經受損了，而且退票很困難。常規做法是先完成整部電影（完整 PPQ），確認品質後才開始售票（商業放行）。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 12: CONCURRENT RELEASE CONDITIONS ===== -->
+<div id="concurrent-conditions" class="block-header">Block 12 | 第十二區塊 — Concurrent Release: Conditions &amp; Safeguards | 同期放行的條件與防護措施</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Requirements for Concurrent Release</h3>
+      <p>Circumstances and rationale for concurrent release should be <strong>fully described in the PPQ protocol</strong>. Even when process performance assessment based on the PPQ protocol is still outstanding, any lot released concurrently must comply with:</p>
+      <ul>
+        <li>All CGMPs</li>
+        <li>Regulatory approval requirements</li>
+        <li>PPQ protocol lot release criteria</li>
+      </ul>
+      <p>Lot release under a PPQ protocol is based upon meeting <strong>confidence levels appropriate for each quality attribute</strong> of the drug.</p>
+      <p>When warranted and used, concurrent release should be accompanied by:</p>
+      <ul>
+        <li>A system for careful oversight of the distributed batch</li>
+        <li>Rapid customer feedback mechanisms</li>
+        <li>Customer complaints and defect reports rapidly assessed to determine root cause</li>
+      </ul>
+      <p>Concurrently released lots must also be assessed in light of <strong>any negative PPQ study finding</strong> or conclusions and appropriate corrective action must be taken (§§ 211.100(a), 211.180(e), and 211.192).</p>
+      <p>FDA recommends that each batch in a concurrent release program be evaluated for inclusion in the <strong>stability program</strong>. Stability test data should be promptly evaluated to ensure rapid detection and correction of any problems.</p>
+    </div>
+    <div class="right-column">
+      <h3>同期放行的完整要求 — 中文解析</h3>
+      <div class="term-box">
+        <h4>同期放行的 6 大必要條件</h4>
+        <ul>
+          <li><strong>1. 預先規劃</strong>：同期放行的理由和情境必須在 PPQ 協議中事先完整描述（不能事後補說明）</li>
+          <li><strong>2. 全面 CGMP 合規</strong>：即使在協議尚未完成的情況下，每批次必須完全符合 CGMP 要求</li>
+          <li><strong>3. 批次放行標準</strong>：需達到 PPQ 協議規定的放行標準（通常比常規放行更嚴格的統計置信度）</li>
+          <li><strong>4. 上市後監控系統</strong>：需要建立快速回饋機制，包含客訴、不良報告的快速評估</li>
+          <li><strong>5. 穩定性計畫納入</strong>：每個同期放行批次都應納入穩定性計畫，且需迅速評估穩定性資料</li>
+          <li><strong>6. PPQ 負面結論的回應</strong>：若最終 PPQ 結論為失敗，必須對已放行批次採取適當糾正措施</li>
+        </ul>
+      </div>
+      <div class="note-box">
+        <h4>「置信水準（Confidence Level）」在 PPQ 放行中的應用</h4>
+        <p>常規商業放行通常基於規格合規（Yes/No）。PPQ 同期放行要求更高的統計保證，例如：</p>
+        <ul>
+          <li>需達到 95% 置信水準，95% 的個體將在規格內（95/95 容忍區間）</li>
+          <li>或達到 Ppk ≥ 1.33 的特定標準</li>
+          <li>或多個關鍵屬性的加權統計評估</li>
+        </ul>
+        <p>具體標準需在 PPQ 協議中事先定義，不能在評估後才決定。</p>
+      </div>
+      <div class="highlight-box">
+        <h4>上市後快速監控系統</h4>
+        <p>同期放行必須伴隨強化的上市後監控：</p>
+        <ul>
+          <li>設立專門的客訴快速回應流程（縮短正常回應時間）</li>
+          <li>建立配銷追蹤系統（知道每批次在哪裡）</li>
+          <li>與 FDA 保持溝通（特別是供應短缺情境下的協調）</li>
+          <li>穩定性資料即時審查（不能等到年度審查）</li>
+          <li>任何 PPQ 負面發現立即評估對已放行批次的影響</li>
+        </ul>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的公司生產一種孤兒藥，全球僅有約 200 名患者。您正在執行 PPQ（3 批次計畫），第一批 PPQ 資料看起來很好。客戶要求立即供貨，因為目前斷貨。您如何評估是否適合同期放行？需要準備哪些文件？</li>
+          <li>F-18 PET 顯影劑的半衰期是 110 分鐘。請解釋為什麼傳統 PPQ 完成後再放行對這類產品完全不可行，以及同期放行在此情境的特殊性。</li>
+          <li>一個同期放行批次已配送出去，隨後第二批 PPQ 的無菌測試 OOS 調查顯示培養基模擬試驗存在系統性問題。您需要採取什麼行動？涉及哪些法規條款？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 13: CDMO APPLICATION ===== -->
+<div id="cdmo-application" class="block-header">Block 13 | 第十三區塊 — CDMO Aseptic Fill-Finish: CPV Implementation | CDMO 無菌灌裝 CPV 實施</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Stage 3 in a CDMO Context</h3>
+      <p>Contract Development and Manufacturing Organizations (CDMOs) face unique challenges in implementing Stage 3 Continued Process Verification. Unlike integrated pharmaceutical companies, CDMOs must manage CPV programs across multiple client products, often with different regulatory filing requirements, specification systems, and client oversight expectations.</p>
+      <p>Key considerations for CDMO CPV implementation:</p>
+      <ul>
+        <li>Client-specific CPV plan requirements (sponsor's statistical standards may differ)</li>
+        <li>Data ownership and access (client vs. CDMO data systems)</li>
+        <li>Multi-product facility shared equipment trend data</li>
+        <li>Regulatory filing coordination (who files PAS/CBE for process changes?)</li>
+        <li>PQR/APR compilation responsibility (CDMO provides data, client files)</li>
+        <li>Stage 3 monitoring during tech transfer from another manufacturer</li>
+        <li>Enhanced CPV requirements for aseptic processes (EM trends, MFT, CCIT)</li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <h3>CDMO 無菌灌裝的 CPV 實施策略</h3>
+      <div class="note-box">
+        <h4>CDMO 的 CPV 特殊挑戰</h4>
+        <table>
+          <tr><th>挑戰</th><th>說明</th><th>因應策略</th></tr>
+          <tr><td>多客戶多產品</td><td>同時管理 10-20 個產品的 CPV 計畫</td><td>標準化 CPV 模板，個別產品客製化參數</td></tr>
+          <tr><td>資料所有權</td><td>客戶需要 CPV 資料，但生產 know-how 在 CDMO</td><td>技術協議明確定義資料共享範圍與格式</td></tr>
+          <tr><td>共用設備趨勢</td><td>同一填充線服務不同客戶產品</td><td>設備層 CPV 與產品層 CPV 分開管理</td></tr>
+          <tr><td>法規申報責任</td><td>製程變更誰申報？</td><td>技術協議明確責任分工，建立變更通知流程</td></tr>
+          <tr><td>APR 編製</td><td>CDMO 提供資料，客戶負責 APR 內容</td><td>年度 CPV 報告（CDMO）→ 客戶 APR 整合</td></tr>
+        </table>
+      </div>
+      <div class="term-box">
+        <h4>無菌灌裝 CPV 特有監控項目</h4>
+        <ul>
+          <li><strong>環境監測（EM）趨勢</strong>：浮游菌、沉降菌、表面微生物、非活性微粒——月度趨勢圖，識別季節性或設施退化</li>
+          <li><strong>培養基模擬試驗（MFT/Media Fill）</strong>：每次執行結果趨勢，長期合格率監控</li>
+          <li><strong>容器封閉完整性（CCIT）</strong>：高壓滅菌後殘留氧氣趨勢、染料侵入測試結果</li>
+          <li><strong>可見異物（VPI）</strong>：每批次異物比率趨勢，依異物類型分類統計</li>
+          <li><strong>無菌測試（SAL）</strong>：雖為百分之百通過/失敗，仍需趨勢監控（即使零陽性，也需確認測試方法的持續有效性）</li>
+          <li><strong>殘留溶媒</strong>：適用於使用有機溶劑的配方（如脂質奈米粒子）</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <h4>CDMO CPV 計畫的優先順序建議</h4>
+        <p><strong>高優先順序</strong>（必須在首批商業化生產前建立）：</p>
+        <ul>
+          <li>填充量 CPV（Xbar-R chart，Cpk/Ppk 月度計算）</li>
+          <li>EM 趨勢計畫（月度趨勢報告，OOT 定義）</li>
+          <li>批次良率趨勢</li>
+        </ul>
+        <p><strong>中優先順序</strong>（首年內建立）：</p>
+        <ul>
+          <li>關鍵設備參數趨勢（填充速度、蒸汽壓力、凍乾曲線）</li>
+          <li>原料 CoA 關鍵參數趨勢</li>
+          <li>CCIT 趨勢</li>
+        </ul>
+        <p><strong>持續優化</strong>：基於早期 CPV 資料結果，識別最重要的變異來源並優先監控。</p>
+      </div>
+      <div class="practice-box">
+        <h4>思考練習</h4>
+        <ol>
+          <li>您的 CDMO 正在技術轉移一個已在原廠生產了 3 年的生物製品。原廠有完整的 CPV 歷史資料。技術轉移完成後，您需要從 Stage 1 重新開始，還是可以利用原廠的 CPV 資料？需要哪些額外確認活動？</li>
+          <li>您的 CDMO 同時服務 Client A（美國 FDA 申請）和 Client B（EMA 申請）。兩個客戶對 CPV 的統計方法要求不同。您如何在同一個設施、同一條生產線上管理這兩套要求？</li>
+          <li>EM 趨勢顯示過去 6 個月 Grade B 區域的浮游菌數量緩慢上升（從平均 0.1 CFU/m³ 升至 0.8 CFU/m³，規格 &lt;1 CFU/m³）。這屬於 OOT 嗎？應採取什麼行動？如何決定是否暫停生產？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 14: COMPREHENSIVE SUMMARY TABLE ===== -->
+<div class="content-block-full">
+  <h2>Stage 3 Comprehensive Summary | 第三階段完整摘要</h2>
+  <div class="two-column">
+    <div>
+      <table>
+        <tr><th colspan="2" style="background:#1e3a5f; color:white; text-align:center;">Stage 3 Key Components | 關鍵要素</th></tr>
+        <tr><th>Component</th><th>Description | 說明</th></tr>
+        <tr><td><strong>Purpose</strong></td><td>Continual assurance process remains in validated state during commercial manufacturing | 持續確認商業生產期間製程維持已驗證受控狀態</td></tr>
+        <tr><td><strong>Legal Basis</strong></td><td>21 CFR § 211.180(e) — Annual product review | 法規依據</td></tr>
+        <tr><td><strong>Core Tool</strong></td><td>Statistical Process Control (SPC) — control charts, Cpk, Ppk | 統計製程管制</td></tr>
+        <tr><td><strong>Sampling</strong></td><td>Start at PPQ level, adjust based on statistical evidence | 從 PPQ 水準開始，依統計證據調整</td></tr>
+        <tr><td><strong>Review Cycle</strong></td><td>Periodic (monthly CPV + annual PQR/APR) | 定期（月度 CPV + 年度 PQR/APR）</td></tr>
+        <tr><td><strong>Key Outputs</strong></td><td>OOT investigations, CAPA, process improvements, revalidation decisions | 調查、改善、再驗證決策</td></tr>
+        <tr><td><strong>Concurrent Release</strong></td><td>Rare exception — orphan drugs, radiopharmaceuticals, supply shortage | 罕見例外</td></tr>
+        <tr><td><strong>Revalidation Trigger</strong></td><td>Process, equipment, facility, material, or scale changes | 任何重大變更</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="key-message-box" style="margin-top:0;">
+        <h3>The Validation Lifecycle Loop | 驗證生命週期迴路</h3>
+        <p>Stage 1 → Stage 2 → Stage 3 → (Process Improvement) → Stage 1 again</p>
+        <p style="font-size:0.85rem; margin-top:0.75rem; opacity:0.85;">Stage 3 不是終點，而是一個持續改善的循環起點。CPV 資料發現的改善機會，回饋至 Stage 1（製程設計），觸發新的確認活動，形成真正的生命週期驗證迴路。</p>
+      </div>
+      <div class="term-box" style="margin-top:1rem;">
+        <h4>FDA 2011 核心訊息</h4>
+        <ul>
+          <li>驗證不是事件，而是持續的承諾</li>
+          <li>統計方法是 CPV 的核心語言</li>
+          <li>OOT 系統讓你在問題變成危機前介入</li>
+          <li>同期放行是罕見例外，需要充分科學依據</li>
+          <li>任何重大變更都可能重新啟動驗證週期</li>
+          <li>設備與廠房的持續確認狀態是製程控制的基礎</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BLOCK 15: COMPREHENSIVE PRACTICE QUESTIONS ===== -->
+<div id="practice-q" class="block-header">Block 14 | 第十四區塊 — Comprehensive Practice Questions | 綜合練習題</div>
+<div class="content-block">
+  <div class="two-column">
+    <div class="left-column">
+      <h3>Section-Level Practice Questions</h3>
+      <div class="practice-box">
+        <h4>Group A: Conceptual Understanding</h4>
+        <ol>
+          <li>Explain why FDA's 2011 guidance represents a fundamental shift from traditional "three-batch validation" thinking. What does the lifecycle approach add that the traditional approach lacked?</li>
+          <li>A process has been in commercial production for 2 years with no OOS events and consistent Cpk values above 1.5. Does this mean Stage 3 monitoring can be discontinued or significantly reduced? Justify your answer using FDA guidance language.</li>
+          <li>Distinguish between process stability and process capability. Can a process be stable but not capable? Can it be capable but not stable? Give pharmaceutical examples.</li>
+          <li>Why does FDA recommend that Stage 3 monitoring begin at the same level established during Stage 2 PPQ, rather than immediately applying a reduced routine monitoring level?</li>
+          <li>What is the fundamental difference between alert limits and action limits in a CPV program? What happens when each is exceeded?</li>
+        </ol>
+      </div>
+    </div>
+    <div class="right-column">
+      <h3>綜合練習題 — 中文版</h3>
+      <div class="practice-box">
+        <h4>B 組：應用情境題</h4>
+        <ol>
+          <li>一個無菌注射劑在商業生產 18 個月後，您的 CPV 月度報告顯示：填充量 Cpk 穩定（1.48），EM 趨勢正常，但批次良率（合格可見異物）從 99.7% 緩慢下降至 98.9%。這是否構成 OOT？您建議採取什麼行動？</li>
+          <li>您的 CDMO 客戶要求你將 CPV 取樣頻率從每批取 30 個單位減少為每批取 10 個單位，理由是節省成本且過去 2 年從未出現 OOS。您如何評估這個請求？需要哪些統計依據才能支持此決定？</li>
+          <li>FDA 查廠時，查核員要求查閱過去 3 年的 CPV 趨勢報告，並詢問為什麼沒有 Ppk 計算，只有 Cpk。您如何解釋兩者的差異，以及在什麼情況下兩者都需要計算？</li>
+          <li>您的公司正在開發一個 PET 顯影劑（F-18 FDG），計畫同期放行。FDA 查廠時詢問您的 PPQ 協議中如何描述同期放行的理由和防護措施。請草擬此協議相關段落的要點。</li>
+          <li>一個凍乾生物製品在第 36 個月穩定性測試中，蛋白質聚集體比例超出規格。產品仍在貨架上（已配送給醫院）。依據 § 211.192 和 CPV 原則，您需要採取哪些緊急步驟？</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional advanced questions -->
+  <div class="two-column" style="margin-top:1.5rem;">
+    <div class="left-column">
+      <div class="practice-box">
+        <h4>Group C: Advanced / Regulatory Strategy</h4>
+        <ol>
+          <li>Your CPV program has identified that a specific incoming API lot characteristic (particle size distribution) is strongly correlated with batch-to-batch Ppk variation. How would you use this finding to improve your Stage 1 control strategy, and what regulatory filing might be needed?</li>
+          <li>During a PAI (Pre-Approval Inspection), FDA asks whether your CPV plan was designed by a statistician. Your plan was designed by a senior QA manager with SPC training but no formal statistics degree. How do you defend the adequacy of your CPV statistical design?</li>
+          <li>Compare how Stage 3 CPV requirements apply differently to: (a) a small-molecule solid oral dosage form manufactured 200 batches/year, vs. (b) an aseptic biologics fill-finish with 8 batches/year. What elements remain the same? What must be adapted?</li>
+        </ol>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="practice-box">
+        <h4>C 組：進階法規策略題</h4>
+        <ol>
+          <li>您的年度 PQR 顯示 Cpk 從第一年（1.68）→ 第二年（1.52）→ 第三年（1.35）持續下降，但始終高於 1.00 且無 OOS 事件。您需要在 PQR 中如何記錄此趨勢？需要啟動何種調查或行動？如何判斷是否需要再驗證？</li>
+          <li>您的 CDMO 同時為一個 NDA 持有人（FDA）和一個 MAA 持有人（EMA）生產同一分子不同劑型。美國要求 CPV 包含 Cpk/Ppk，歐盟 GMP 更強調風險基礎方法和 APR。如何設計一個單一的 CPV 框架，同時滿足兩個法規要求？</li>
+          <li>FDA 2011 指引第 18 頁提到製程改善資料需包含「描述、理由、實施計畫、QA 批准」。請舉一個具體的 CDMO 無菌灌裝製程改善案例，說明這四個要素的實際內容應如何撰寫。</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+  <p><strong>FDA Guidance: Process Validation — General Principles and Practices (January 2011)</strong></p>
+  <p>Section V: Stage 3 — Continued Process Verification + Concurrent Release | Pages 14–16</p>
+  <p style="margin-top:0.5rem; opacity:0.7; font-size:0.8rem;">SterileGMP Knowledge Hub | Educational Reference — Contains Nonbinding Recommendations</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+
+</body>
+</html>

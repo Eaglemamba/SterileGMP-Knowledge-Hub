@@ -1289,6 +1289,63 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-Sampling-Complete.md
+**Report:** ISPE Baseline Guide: Sampling for Pharmaceutical Water, Steam, and Process Gases (2nd Ed.)
+**Pages:** p1–p119 | **Sections:** 9
+
+**Covers questions about:**
+- How to design and implement a pharmaceutical water (PW/WFI) sampling program: locations, frequency, alert/action limits
+- Three-phase PQ sampling framework (Initial → Intermediary → Extended) for water and steam systems
+- Tables 2.2–2.4: specific sampling frequencies for source water, pre-treatment, PW distribution, WFI distribution
+- How to select sample valves (diaphragm, ball, needle, T-tap), flush volume determination, and sampling technique
+- Sample handling: container selection, hold times, storage temperature, chain of custody, preservatives
+- Pure steam (PSG) sampling: NCG, dryness fraction, superheat, condensate chemistry, endotoxin/bioburden
+- Pure steam quality testing methods: Henriksen NCG method, Dewar flask dryness method, thermometric superheat
+- Process gas (N₂, CO₂, compressed air, O₂) quality testing: particle counting, viable bacteria, dew point, oil aerosol
+- Parametric release / real-time release for water: TOC/conductivity vs. microbial RTR limitations
+- Appendix content: ISO/ASTM/CLSI water grade comparison, POU configuration diagrams, PSG factor table, acronyms/glossary
+
+**Key terms:** PW (Purified Water), WFI (Water for Injection), PSG (pharmaceutical-grade steam), NCG (non-condensable gas), dryness fraction, superheat, Henriksen method, Dewar flask method, CUP (currently used point), NCUP (not currently used point), Alert Level, Action Level, 2σ/3σ control limits, three-phase PQ, initial phase, intermediary phase, extended phase, PQ report, annual PSE (periodic system evaluation), dead-leg, biofilm, diaphragm valve, T-tap, flush volume, sample hold time, chain of custody, parametric release, RTR (real-time release), compressed air quality, ISO 8573, dew point, oil aerosol, oil vapor, viable particle, process gas
+
+**Sections:**
+0. Introduction (Ch 1, p1–p12) — sampling program purpose, heterogeneous impurity challenge, alert/action levels, key definitions
+1. Water: Introduction & Sampling Locations (Ch 2.1–2.2, p13–p25) — water types, impurity types, purpose of sampling, POU location strategy, Table 2.1
+2. Water: Sampling Plans Framework (Ch 2.3, p26–p38) — three-phase PQ overview, frequency principles, risk matrix, Alert/Action limits, worst-case conditions
+3. Water: PQ Sampling Tables (Ch 2.3.5.5–2.3.5.7, p38–p51) — Tables 2.2/2.3/2.4 (source water, PW loop, WFI loop), phase-specific frequencies, annual PSE
+4. Water: Valve Design, Techniques & Sample Handling (Ch 2.4–2.7, p39–p51) — valve types comparison, flush volume, 10-step sampling procedure, hold time table, parametric release
+5. Steam: Introduction, Generation & Locations (Ch 3.1–3.4.4, p52–p74) — steam types, EN 285/BS standards, 316L construction, 6-parameter quality table, PQ phases, monitoring program
+6. Steam: Sampling Techniques & Other Factors (Ch 3.5–3.8, p74–p90) — NCG Henriksen formula, dryness Dewar method, superheat, condensate specs table, feed water impact, post-shutdown testing
+7. Process Gases (Ch 4, p91–p109) — N₂/CO₂/compressed air/O₂ uses, ISO 8573 purity classes, sampling locations, Table 4.1 frequency matrix, valve selection, test methods (particle/viable/dew point/oil)
+8. Appendices & Glossary (App 1–5, p110–p119) — ISO/ASTM/CLSI water grade table, POU configuration diagrams, PSG performance factors, 35 references, 57 acronyms, 35-term bilingual glossary
+
+---
+
+## FDA/FDA-ProcessVal-Complete.md
+**Report:** FDA Guidance for Industry: Process Validation — General Principles and Practices (January 2011)
+**Pages:** p1–p22 | **Sections:** 6
+
+**Covers questions about:**
+- FDA's lifecycle approach to process validation: three-stage model (Stage 1 Design, Stage 2 PPQ, Stage 3 CPV)
+- Stage 1 Process Design: DOE, QTPP→CQA→CPP hierarchy, NOR vs PAR, design space, CMAs, PDR structure
+- Stage 2 PPQ: protocol requirements, enhanced sampling strategy, acceptance criteria, statistical confidence levels, concurrent release conditions
+- Stage 3 Continued Process Verification (CPV): SPC tools (Xbar-R charts, Cpk/Ppk), data collection plans, OOT vs OOS investigation, periodic product reviews (APR/PQR)
+- Concurrent release: when FDA permits it, mandatory safeguards and oversight requirements
+- Legal and regulatory basis: 21 CFR 211.100(a), 211.110(a)(b), 211.180(e), FDCA 501(a)(2)(B)
+- Documentation requirements: validation master plan, PDR, PPQ protocol/report, CPV data systems, 21 CFR Part 11 ALCOA+
+- CDMO-specific considerations: tech transfer integration, multi-client CPV programs, quality agreement elements
+
+**Key terms:** process validation, lifecycle approach, Stage 1/2/3, QTPP (quality target product profile), CQA (critical quality attribute), CPP (critical process parameter), CMA (critical material attribute), NOR (normal operating range), PAR (proven acceptable range), design space, DOE (design of experiments), PPQ (process performance qualification), CPV (continued process verification), SPC (statistical process control), Cpk, Ppk, Xbar-R chart, OOT (out of trend), OOS (out of specification), APR/PQR (annual/periodic product review), PDR (process development report), concurrent release, validation master plan (VMP), 21 CFR 211, FDCA 501(a)(2)(B), ICH Q8/Q9/Q10 alignment
+
+**Sections:**
+0. Introduction & Background (Intro–Scope, p1–p5) — FDA definition of PV, lifecycle concept, why end-product testing is insufficient, three-stage framework overview
+1. Statutory Requirements & General Considerations (Sections I–II, p5–p9) — 21 CFR legal basis, integrated team approach, criticality as a continuum, QbD alignment, CPP vs CQA table
+2. Stage 1: Process Design (Section III, p9–p13) — building process knowledge, DOE, NOR/PAR/design space, material attributes, scale-up, control strategy, tech transfer, PDR
+3. Stage 2: Process Performance Qualification (Section IV-A–C, p13–p17) — equipment/facility qualification, PPQ protocol requirements, enhanced sampling strategy, concurrent release conditions, PPQ report structure
+4. Stage 3: Continued Process Verification (Section IV-D–V, p17–p20) — CPV program, SPC tools (Cpk/Ppk formulas, Xbar-R charts), OOT vs OOS table, revalidation triggers, maintenance/calibration requirements
+5. Documentation, Analytical Methodology & Glossary (Sections VI–VII, p20–p22) — document hierarchy, CGMP documentation requirements by stage, 21 CFR Part 11, analytical method lifecycle, FDA glossary (18 key terms)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1308,6 +1365,19 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Lane qualification, OQ, PQ, passive shipper, PCM, stability budget / 運輸路線確效、被動式保溫箱、穩定性預算 | TR39 |
 | Temperature excursion, nonconformance, OPV, cold chain KPI / 溫度偏差、持續製程驗證、冷鏈KPI | TR39 |
 | Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
+| FDA process validation guidance 2011, FDA PV lifecycle, three-stage model Stage 1 2 3 / FDA製程驗證指引2011、生命週期方法、三階段模型 | FDA-ProcessVal |
+| Stage 1 process design, QTPP CQA CPP, NOR PAR design space, DOE, PDR / 第一階段製程設計、品質目標產品概況、關鍵品質屬性、關鍵製程參數、正常操作範圍、設計空間、實驗設計 | FDA-ProcessVal |
+| Stage 2 PPQ process performance qualification, PPQ protocol, enhanced sampling, concurrent release / 第二階段製程效能確效、PPQ協議書、強化取樣、並行放行 | FDA-ProcessVal |
+| Stage 3 CPV continued process verification, SPC Cpk Ppk Xbar-R chart, OOT OOS, APR PQR / 第三階段持續製程查驗、統計製程管控、製程能力指數、管制圖、超趨勢、定期品質審查 | FDA-ProcessVal |
+| 21 CFR 211.100(a) 211.110(a) 211.180(e) process validation legal basis / 21 CFR製程驗證法規依據、FDCA 501 | FDA-ProcessVal |
+| Pharmaceutical water system sampling, PW sampling program, WFI sampling plan, water PQ / 製藥用水取樣計畫、純化水取樣、注射用水取樣計畫 | ISPE-Sampling + ISPE-Vol4 |
+| Three-phase water PQ sampling, initial intermediary extended phase, PQ sampling frequency / 三階段水系統PQ取樣、初始期、中間期、延伸期 | ISPE-Sampling |
+| Tables 2.2 2.3 2.4 ISPE water sampling, CUP NCUP sampling frequency, WFI daily / ISPE取樣表、現用點非現用點取樣頻率 | ISPE-Sampling |
+| Sample valve design, diaphragm valve T-tap, flush volume dead volume, sampling technique / 取樣閥設計、隔膜閥、沖洗體積、死體積、取樣技術 | ISPE-Sampling |
+| Sample hold time, water sample storage temperature, chain of custody / 樣品保留時間、水樣儲存溫度、保管鏈 | ISPE-Sampling |
+| Pure steam PSG sampling, NCG dryness superheat, Henriksen method, Dewar flask method / 純蒸汽取樣、不可凝氣體、乾燥度分數、過熱度、蒸汽品質試驗方法 | ISPE-Sampling |
+| Process gas sampling, compressed air quality, ISO 8573, dew point oil aerosol viable particle / 製程氣體取樣、壓縮空氣品質、露點、油氣溶膠、活菌粒子 | ISPE-Sampling |
+| Alert level action level water 2-sigma 3-sigma control limits / 警戒限行動限水系統2σ3σ管制限值 | ISPE-Sampling + TR13 |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1559,7 +1629,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
 **Process Validation (製程驗證)**
-→ TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
+→ FDA-ProcessVal ★★★ (FDA 2011 PV Guidance: authoritative three-stage lifecycle model, Stage 1 QTPP/CQA/CPP/NOR/PAR/design space, Stage 2 PPQ protocol/enhanced sampling/concurrent release, Stage 3 CPV/SPC/Cpk/Ppk/OOT/APR, documentation requirements, 21 CFR legal basis) | TR60 ★★★ (industry lifecycle PV framework aligned to FDA 2011: design space, validation lifecycle, revalidation triggers) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
 → TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR49 ★★ (cleaning validation risk assessment: FMEA/HACCP/HAZOP applied to cleaning, CPP/CQA table, QRM master plan) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
@@ -1598,7 +1668,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR68 ★★★ (risk triage model, Risk Register, DSPR Plan, VSM, aging facilities, PAC expediting) | PtC-9 ★★ (pandemic supply chain, SUS/API shortage lessons)
 
 **Statistical Methods / SPC (統計方法)**
-→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)
+→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | FDA-ProcessVal ★★★ (Stage 3 CPV: Cpk/Ppk formulas, Xbar-R charts, Western Electric rules, OOT vs OOS decision) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics) | ISPE-Sampling ★★ (2σ/3σ Alert/Action limits for water and steam)
+
+**Pharmaceutical Water / Steam Sampling Programs (製藥用水與蒸汽取樣計畫)**
+→ ISPE-Sampling ★★★ (primary sampling guide: three-phase PQ framework, Tables 2.2/2.3/2.4 frequency matrix, valve design, techniques, sample handling, pure steam NCG/dryness/superheat methods, process gas testing, appendices/glossary) | ISPE-Vol4 ★★★ (water and steam system design, commissioning, qualification: three-phase sampling program architecture, Alert/Action limits, system qualification context) | TR88 ★★ (EM program for low bioburden: water system monitoring applicability) | TR13 ★★ (Alert/Action level statistical methodology applicable to water systems)
 
 **Cleaning Validation (清潔確效)**
 → Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
