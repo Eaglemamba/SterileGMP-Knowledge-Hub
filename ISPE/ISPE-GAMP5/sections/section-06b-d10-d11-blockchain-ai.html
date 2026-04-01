@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE GAMP 5 2nd Ed. — Appendix D10 &amp; D11: Blockchain &amp; AI/ML</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 {
+    color: #1a3a2a; margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4 {
+    color: #1a5c35; margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.appendix-divider {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; text-align: center; padding: 1rem 1.5rem;
+    border-radius: 10px; margin: 2rem 0 1.5rem;
+    font-size: 1.05rem; font-weight: 700; letter-spacing: 0.05em;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.code-box {
+    background: #1e1e2e; color: #cdd6f4; border-radius: 8px;
+    padding: 1rem 1.25rem; margin: 0.75rem 0;
+    font-family: 'Courier New', monospace; font-size: 0.82rem;
+    overflow-x: auto; white-space: pre-wrap; line-height: 1.5;
+}
+
+.section-summary {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 100%);
+    color: white; border-radius: 12px; padding: 1.75rem;
+    margin-top: 2rem;
+}
+.section-summary h3 { color: #a8e6cf; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; }
+.section-summary .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.section-summary .summary-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem; }
+.section-summary .summary-card h4 { color: #74d7a0; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.section-summary .summary-card p, .section-summary .summary-card li { font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.65; }
+.section-summary .summary-card ul { margin-left: 1.1rem; }
+.section-summary .summary-card li { margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+    .section-summary .summary-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .section-summary .summary-grid { grid-template-columns: 1fr; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendices D10 &amp; D11: Distributed Ledger Systems (Blockchain) &amp; Artificial Intelligence / Machine Learning</h1>
+    <div class="subtitle">區塊鏈與人工智慧／機器學習</div>
+    <div class="page-info">ISPE GAMP 5 Second Edition | Appendix D10 (p257–p268) &amp; Appendix D11 (p269–p279)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+    <ol>
+        <li>Understand what blockchain (distributed ledger) technology is, its core properties, and why it is relevant to GxP pharmaceutical systems — including smart contracts, immutability, and access governance.</li>
+        <li>Identify key pharma applications for blockchain: supply chain serialization (DSCSA), batch record integrity, material traceability, and cross-enterprise data sharing — and apply a risk-based validation approach for blockchain deployments.</li>
+        <li>Distinguish between static and dynamic (continuously learning) AI/ML sub-systems, and articulate why each requires a different validation and change-management strategy in a regulated environment.</li>
+        <li>Describe the AI/ML life cycle (Concept → Project → Operation) as defined in GAMP 5 and explain the critical role of data governance, dataset partitioning, and bias management in model development.</li>
+        <li>Explain model drift and performance degradation, and describe the monitoring, trending, and periodic-review controls needed to maintain a validated AI/ML system in ongoing operation.</li>
+        <li>Recognize the current regulatory landscape for AI/ML (FDA Good Machine Learning Practice guiding principles) and articulate the "human in the loop" requirement for GxP-critical decisions in pharma manufacturing.</li>
+    </ol>
+</div>
+
+<!-- ===================================================== -->
+<!-- APPENDIX D10 DIVIDER -->
+<!-- ===================================================== -->
+<div class="appendix-divider" id="d10">Appendix D10 — Distributed Ledger Systems (Blockchain) &nbsp;|&nbsp; 分散式帳本系統（區塊鏈）</div>
+
+<!-- D10 SECTION 1: Overview & Fundamentals -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>30.1 What Is Blockchain? Core Technology Concepts</h2>
+
+        <p>A <span class="key-term">distributed ledger</span> (blockchain) is a shared, cryptographically secured record of transactions maintained simultaneously across many independent nodes. Each new block of records is cryptographically linked to the preceding block, creating a chain that is practically immutable: altering any historical record would require re-computing every subsequent block across the majority of the network.</p>
+
+        <p>The core properties that make blockchain relevant to GxP applications are:</p>
+        <ul>
+            <li><strong>Immutability:</strong> Once a transaction is written and confirmed, it cannot be changed without network-wide consensus — making fraudulent modification computationally improbable.</li>
+            <li><strong>Attributability:</strong> Every transaction is signed by a cryptographic key (blockchain address/wallet), providing a clear record of who performed which action.</li>
+            <li><strong>Transparency:</strong> All participants with access can audit the full transaction history.</li>
+            <li><strong>Decentralization:</strong> When a network is sufficiently decentralized there are enough independent node operators to make it improbable that any single entity holds undue influence over the core protocol.</li>
+        </ul>
+
+        <div class="concept-box">
+            <h4>The Blockchain Technology Stack</h4>
+            <p>A typical blockchain deployment in pharma involves multiple layers:</p>
+            <ul>
+                <li><strong>Layer 1 (Core Protocol):</strong> The underlying blockchain network (e.g., Ethereum, Hyperledger Fabric). Changes require majority node consensus.</li>
+                <li><strong>Layer 2 / Off-chain systems:</strong> Ancillary systems (ERP, MES, LIMS) that feed data to the blockchain via APIs. GxP controls must be applied to these as well as the blockchain itself.</li>
+                <li><strong>Smart Contracts:</strong> Self-executing code deployed on-chain that automates actions when defined conditions are met — analogous to PLC logic trees in manufacturing.</li>
+                <li><strong>Off-chain data storage:</strong> Most data is stored off-chain (for cost and privacy); the on-chain record typically holds a cryptographic hash that links to and validates the off-chain data.</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>Governance of Public Networks</h4>
+            <p>Core protocol updates require coordination of the majority of network operators. When a significant update is not universally adopted, the network may "fork" into two separate chains. Organizations must track these changes and assess the GxP impact of updating — or choosing not to update — their connected systems.</p>
+            <p>There is no preventive mechanism to stop an entity from posting inaccurate data. However, because blockchains are ecosystem-level systems, sustained falsification would require collusion across many independent parties — making it inherently more secure than a single centralized repository.</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：什麼是區塊鏈？為何製藥業要關注？</h2>
+
+        <div class="concept-box">
+            <h4>一個簡單的比喻</h4>
+            <p>把區塊鏈想像成一本由數百人同時持有的「共用分類帳」。每一筆交易都被寫入所有人的帳本，並且蓋上加密印章。要竄改其中一筆記錄，你必須同時修改全部持有者的帳本，這在計算上幾乎不可能。這就是「不可篡改性（Immutability）」的核心。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>製藥供應鏈的實際意義：DSCSA 合規</h4>
+            <p>美國 <strong>藥品供應鏈安全法（DSCSA, Drug Supply Chain Security Act）</strong> 要求製藥商對每一個銷售單元進行序列化追蹤。傳統做法是各自維護自己的資料庫，驗證時需要跨系統比對。</p>
+            <p>區塊鏈解決方案的優勢：整個供應鏈（製造商 → 批發商 → 藥局）共用同一個不可竄改的記錄，任何一方都可以即時驗證藥品真偽，無需信任單一中央機構。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Smart Contract（智能合約）在製藥中的應用</h4>
+            <p>智能合約是部署在區塊鏈上的自動化程式碼，當預設條件觸發時自動執行。例如：</p>
+            <ul>
+                <li>當 GS1 序列號成功驗證後，自動發出放行記錄</li>
+                <li>當監管機構發出召回訊號，自動標記相關批次庫存</li>
+                <li>當原料到達指定溫度記錄超標，自動阻止該批次進入下一步</li>
+            </ul>
+            <p>GAMP 5 要求：智能合約的程式邏輯必須納入整體系統的 SDLC，進行代碼審查（code review）與測試，就如同任何 GxP 關鍵軟體一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>GxP 重點提醒：區塊鏈不等於審計追蹤</h4>
+            <p>常見誤解：區塊鏈的「不可篡改性」是否意味著它可以自動取代傳統的 GxP 審計追蹤（Audit Trail）？</p>
+            <p><strong>答案：不完全是。</strong>區塊鏈確保「一旦寫入的記錄不被修改」，但它無法保證「一開始寫入的資料就是正確的」。如果一個操作員登入後輸入了錯誤數據，這個錯誤數據會被永久且不可撤銷地記錄下來。</p>
+            <p>因此，輸入控制（Input Controls）、人員認證、來源系統的資料品質仍然是驗證的核心。監管機構對於「區塊鏈紀錄是否符合 21 CFR Part 11 或 EU Annex 11」的立場目前仍在演進中。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D10 SECTION 2: Pharma Applications -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>30.2 Pharmaceutical Applications of Blockchain</h2>
+
+        <h3>Supply Chain Serialization and Traceability</h3>
+        <p>Blockchain's most mature pharma application is cross-enterprise product traceability. A serialized medicine can be represented as a token on-chain with an associated hash of its data attributes (GTIN, lot number, expiry, serial number). Any supply chain participant can verify the token's integrity by re-hashing the off-chain metadata and comparing the result.</p>
+
+        <div class="formula-box">
+            <h4>Illustrative Token Example (from GAMP 5)</h4>
+            <pre>Serialized product attributes:
+  GTIN (01): 00855245005019
+  EXP  (17): 112023
+  LOT  (10): XYZ123
+  S/N  (21): 447018182632
+
+On-chain token ID (random, privacy-preserving):
+  0x778gha0ca303305a92d8d028704d65e4942b7ccc9a999164cf
+
+tokenURI hash (SHA-256 multihash):
+  1220D5CC15B22D5606BF3DC255979552A4214E29054CD2E60A1446FE570F53F18C6B
+
+Verification: Re-hash source attributes → compare to on-chain hash → if equal, data integrity confirmed.</pre>
+        </div>
+
+        <h3>Batch Record Integrity and Data Management</h3>
+        <p>Blockchains are generally not the <em>source of origin</em> for manufacturing data (that remains in MES, LIMS, ERP). Rather, the blockchain serves as the <strong>source of truth</strong> — an immutable index that links records, timestamps, and transaction evidence across multiple enterprise systems.</p>
+
+        <p>Data-quality controls must be in place to keep blockchain records in sync with source systems. If off-chain data is corrected for a legitimate reason (error correction, lab OOS investigation), the on-chain hash reference may become invalid and must be updated accordingly.</p>
+
+        <h3>GxP Controls Required for Blockchain Systems</h3>
+        <p>Four control categories must be addressed in any blockchain GxP validation:</p>
+        <ul>
+            <li><strong>Input Controls:</strong> Integrity of data posted to the blockchain; events that trigger transactions; API transformation integrity</li>
+            <li><strong>Output Controls:</strong> Accuracy of data extracted from the blockchain; completeness of queries; detectability of skipped transactions</li>
+            <li><strong>Processing Controls:</strong> API monitoring; change control for protocol updates; failed transaction monitoring; network stability</li>
+            <li><strong>Access Controls:</strong> Who controls which blockchain addresses; authentication before posting; private key custody; smart contract permission management</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：製藥區塊鏈應用與 GxP 控制</h2>
+
+        <div class="analogy-box">
+            <h4>為什麼要用哈希（Hash）？</h4>
+            <p>哈希是一種「數位指紋」算法：相同的資料永遠產生相同的哈希值，但只要資料改變一個字母，哈希值就會完全不同。</p>
+            <p>在製藥應用中，當你把批次記錄的哈希值寫入區塊鏈，日後你可以重新計算文件的哈希值並與鏈上記錄比對——如果相符，就證明文件自寫入以來從未被修改。這是一種非常有力的<strong>數據完整性（Data Integrity）</strong>驗證機制。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>CDMO 實際場景：原料可追溯性</h4>
+            <p>作為 CDMO，我們同時接受多個客戶委託，每批原料都有自己的 CoA、供應商記錄、檢驗結果。傳統做法是紙本或各自的 ERP 記錄，客戶審計時要調閱大量文件。</p>
+            <p>區塊鏈解決方案：為每批關鍵原料建立鏈上記錄，含哈希化的 CoA、放行狀態、入庫時間戳。客戶可通過 API 即時查驗，不需要進廠審計——這對 EU GMP Annex 11 下的遠程審計尤其有價值。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>四大控制類別的現實意義</h4>
+            <p><strong>輸入控制</strong>：最薄弱的環節。區塊鏈只能保護「已寫入的資料」，無法保護「寫入行為本身」。系統設計必須確保觸發寫入的來源系統（MES、LIMS）本身就是受控的。</p>
+            <p><strong>輸出控制</strong>：查詢結果的完整性同樣重要。必須能夠偵測是否有交易記錄被跳過或遺漏——建立可重複執行的查詢機制是關鍵。</p>
+            <p><strong>存取控制</strong>：區塊鏈地址（錢包）就是身份識別。私鑰（Private Key）的保管等同於電子簽章憑證的保管，必須有正式的金鑰管理程序（Key Management Procedure）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>Blockchain-as-a-Service（BaaS）的供應商評估</h4>
+            <p>許多製藥公司不會自行維運區塊鏈節點，而是使用 Microsoft Azure、AWS、Oracle 等的 BaaS 服務。GAMP 5 要求依照 Appendix M2 進行供應商評估，並額外確認：</p>
+            <ul>
+                <li>節點的新增/移除流程是否受控？</li>
+                <li>BaaS 供應商是否同時提供鏈下存儲？其資料控制是否符合 ALCOA+？</li>
+                <li>私鑰的所有權與保管責任如何界定？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D10 SECTION 3: Validation Life Cycle -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>30.3 Validation Life Cycle for Blockchain Systems</h2>
+
+        <h3>30.3.1 Concept Phase</h3>
+        <p>Blockchains are ecosystem-level networks. From the start, external stakeholders must be involved. Business-process mapping during the concept phase should document:</p>
+        <ul>
+            <li>The intended use of the blockchain solution and which use cases are GxP</li>
+            <li>Ancillary systems (ERP, MES, LIMS) that push and pull data to/from the blockchain</li>
+            <li>High-level risks to patient safety, product quality, and data integrity</li>
+            <li>Business logic within smart contracts (if applicable)</li>
+            <li>Data being managed across the network: on-chain, off-chain, metadata</li>
+            <li>Type of blockchain protocol and associated special considerations</li>
+        </ul>
+
+        <p>Creating a swim-lane diagram across all integrated systems helps identify high-risk integration points and interface dependencies — particularly where APIs or smart contracts connect the blockchain to regulated systems.</p>
+
+        <h3>30.3.2 Project Phase — Data and Process-Driven Approach</h3>
+        <p>The blockchain is likely to serve as a backbone connecting multiple data sources and, in many cases, becoming the <strong>source of truth</strong>. However, the blockchain is generally not the <em>source of origin</em> for new data other than identifiers and timestamps.</p>
+
+        <p>Key project phase steps include:</p>
+        <ol>
+            <li>Map data from source of origin, source of truth, and ownership perspectives</li>
+            <li>Identify the resulting controls (Input / Output / Processing / Access)</li>
+            <li>Perform risk assessment of business-process logic and data flows</li>
+            <li>Plan change management for the full GxP use case</li>
+        </ol>
+
+        <h3>30.3.2.5 Change Management</h3>
+        <p>Change management must cover the entirety of the GxP use case. For public networks, core protocol changes are managed by the open-source community — the organization must track these and assess the GxP impact. Composable smart contracts (DApps) create a network of dependencies; each component must be assessed for its upgrade governance.</p>
+
+        <h3>30.3.3 Retirement and Migration</h3>
+        <p>Most blockchains are designed for high availability in perpetuity, but networks may become stagnant. Regulatory data-retention requirements must be met even if the network is abandoned. Strategies include:</p>
+        <ul>
+            <li>Maintaining a full node of the retired network until data-retention period expires</li>
+            <li>Anchoring the final block hash in another secure location</li>
+            <li>Adopting a "cryptographic agility" approach to evolve with changing security standards</li>
+        </ul>
+        <p>Migration to a new blockchain protocol presents unique challenges: historical transactions cannot be recreated with original ordering, and wallet addresses are protocol-specific and cannot be directly mapped across chains.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：區塊鏈系統的驗證生命週期</h2>
+
+        <div class="analogy-box">
+            <h4>游泳道圖（Swim-Lane Diagram）的價值</h4>
+            <p>想像一個製藥供應鏈區塊鏈專案：涉及 MES（批次記錄）、LIMS（檢驗結果）、WMS（倉庫管理）、ERP（採購訂單），以及客戶端的 SAP 系統。</p>
+            <p>如果只是逐一驗證每個系統，很容易遺漏「系統與系統之間的 API 介面」——而這些介面恰恰是資料錯誤最容易發生的地方。游泳道圖強制你把整個生態系統畫出來，確保沒有任何介面點被忽略。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>「Source of Origin」vs「Source of Truth」的區別</h4>
+            <p>這個區分在 GxP 驗證中非常重要：</p>
+            <ul>
+                <li><strong>Source of Origin（來源系統）</strong>：數據首次被創建的地方，例如天平打印秤重記錄、溫度計記錄的環境數據。GxP 要求在來源系統即進行控制（ALCOA+）。</li>
+                <li><strong>Source of Truth（真相來源）</strong>：被各方認可為「當前正確狀態」的系統。區塊鏈的優勢在於它可以成為跨企業的共同 Source of Truth，無需信任任何單一方。</li>
+            </ul>
+            <p>兩者必須保持同步——若 LIMS 中的 OOS 結果更新後，對應的鏈上哈希也需要更新。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>退役（Retirement）的監管挑戰</h4>
+            <p>製藥行業的記錄保存要求往往長達 10–30 年（取決於產品類型）。區塊鏈的記錄保存面臨特殊挑戰：</p>
+            <ul>
+                <li>加密算法可能在未來被破解（量子計算的威脅）——「加密敏捷性（Cryptographic Agility）」是指在設計時就保留切換算法的能力</li>
+                <li>如果網絡停止運作，必須有方案確保記錄仍然可訪問和可驗證</li>
+                <li>實際上，製藥區塊鏈的長期數據保存案例仍然不夠充足，GAMP 5 承認這是一個待解決的問題</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>公共區塊鏈的加密貨幣風險</h4>
+            <p>使用以太坊等公共網絡時，每筆交易都需要支付「Gas 費用」（以加密貨幣計價）。這對 GxP 系統帶來獨特風險：</p>
+            <ul>
+                <li>若交易費用賬戶餘額不足，GxP 記錄可能無法被寫入</li>
+                <li>加密貨幣的價值波動可能帶來財務和會計合規問題</li>
+                <li>Layer 2 解決方案可降低費用，但引入額外的技術複雜性，需獨立評估</li>
+            </ul>
+            <p>這也是許多製藥公司傾向使用私有鏈（Hyperledger Fabric、Corda）的原因——沒有交易費用，同時具備更強的隱私控制。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D10 SECTION 4: Current Considerations & Regulatory Gaps -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>30.4 Emerging Technology Considerations &amp; Regulatory Status</h2>
+
+        <h3>30.4.1 Maturity Evaluation Criteria</h3>
+        <p>When selecting a blockchain platform for GxP use, organizations should assess technology maturity across three dimensions:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Key Questions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Network Maturity</strong></td>
+                    <td>Size of developer community? Length of operation? Number of prior forks?</td>
+                </tr>
+                <tr>
+                    <td><strong>Vendor Support</strong></td>
+                    <td>Commercial support model available? Technology vendor landscape? Vendor QMS in place?</td>
+                </tr>
+                <tr>
+                    <td><strong>Pace of Change</strong></td>
+                    <td>Mature change-governance process? Architectural changes well documented to users?</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>30.4.2 Cryptography as a Foundation of Trust</h3>
+        <p>Blockchain security relies on two cryptographic principles:</p>
+        <ul>
+            <li><strong>Hash functions:</strong> Easy to compute forward, computationally intensive to reverse — linking blocks and providing data integrity verification</li>
+            <li><strong>Asymmetric encryption:</strong> Private key creates signatures; public key verifies them — enabling attribution without revealing the private key</li>
+        </ul>
+
+        <div class="quote-box">
+            "From this perspective the validation strategy for the source system may be focused more on data quality than data integrity. While an in-depth understanding of the mathematics and cryptography may not be required, organizations should check that generally accepted or well-known algorithms are used."
+            <br><em>— ISPE GAMP 5 Second Edition, Appendix D10, §30.4.2</em>
+        </div>
+
+        <h3>30.4.3–30.4.4 Cryptocurrencies and Privacy</h3>
+        <p>Public networks require transaction fees paid in cryptocurrency — creating financial and operational risks (account balance depletion, value volatility). Organizations should evaluate Layer-2 solutions carefully, as they inherit but do not fully replicate Layer-1 security.</p>
+        <p>Privacy on public blockchains remains a significant challenge: by design, all transactions are visible to network participants. Zero-knowledge proofs, optimistic roll-ups, and other privacy-preserving technologies are evolving rapidly but carry their own maturity and assessment requirements.</p>
+
+        <h3>Current Regulatory Guidance Gap</h3>
+        <p>Standards for GxP blockchain systems are still emerging, largely driven by industry practice rather than regulatory mandate at the time of publication. The regulatory position on whether blockchain records satisfy the requirements of 21 CFR Part 11 (FDA) or EU Annex 11 remains under active discussion. Organizations are advised to apply conservative, risk-based validation approaches while engaging with ISPE GAMP Communities of Practice for evolving guidance.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：技術成熟度評估與監管現狀</h2>
+
+        <div class="analogy-box">
+            <h4>為什麼「成熟度評估」對 GxP 系統特別重要？</h4>
+            <p>一般 IT 系統如果使用了不成熟的技術，最壞結果是系統崩潰、重新部署。但在 GxP 環境中，使用不成熟的區塊鏈平台的後果可能是：</p>
+            <ul>
+                <li>批次放行記錄無法被稽查機構接受</li>
+                <li>FDA 483 觀察事項或警告信</li>
+                <li>批次記錄完整性受質疑，導致產品召回</li>
+            </ul>
+            <p>因此，選平台的邏輯與選擇 MES 或 LIMS 供應商類似——要看 QMS、看用戶社群、看更新歷史。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>「驗證焦點轉向資料品質」的含義</h4>
+            <p>傳統 GxP 驗證的一大重點是「資料完整性（Data Integrity）」——確保記錄不被竄改。</p>
+            <p>區塊鏈的不可篡改性從底層技術上解決了這個問題，因此驗證重心可以轉移到「資料品質（Data Quality）」——確保一開始寫入的資料就是準確、完整、及時的。這是一個思維上的重要轉變。</p>
+            <p>實際應用：驗證測試可以減少對「修改偵測」的測試，增加對「來源系統準確性」和「介面傳輸完整性」的測試。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>監管空白現狀（截至 GAMP 5 第二版出版）</h4>
+            <p>目前沒有任何主要監管機構（FDA、EMA、PMDA）發布專門針對 GxP 區塊鏈系統的指南。</p>
+            <p>現行做法：</p>
+            <ul>
+                <li>FDA 21 CFR Part 11 / EU Annex 11 仍是基準——但這些法規均寫於區塊鏈技術出現之前</li>
+                <li>ISPE GAMP Community of Practice 是目前最活躍的行業共識建立平台</li>
+                <li>各公司採用保守的「超合規」驗證策略，同時等待監管明確</li>
+            </ul>
+            <p>對 CDMO 的建議：在客戶合約中明確界定區塊鏈記錄的責任歸屬，並在 Quality Agreement 中規定雙方的記錄保存義務。</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================================================== -->
+<!-- APPENDIX D11 DIVIDER -->
+<!-- ===================================================== -->
+<div class="appendix-divider" id="d11">Appendix D11 — Artificial Intelligence and Machine Learning (AI/ML) &nbsp;|&nbsp; 人工智慧與機器學習</div>
+
+<!-- D11 SECTION 1: Introduction & Types of AI/ML -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.1–31.2 Introduction and Scope</h2>
+
+        <p>Artificial Intelligence (AI) and Machine Learning (ML) are transforming how the life sciences industry processes data and automates functions previously performed by humans. As datasets grow and computing power expands, AI becomes capable of making robust decisions in domains previously requiring expert human judgment.</p>
+
+        <p>This appendix applies specifically to the <span class="key-term">ML sub-system</span> or component — typically embedded within a wider IT system or application — and provides a life cycle framework for its development, validation, and ongoing management within a GxP regulated environment. This is a <em>new appendix</em> in the GAMP 5 Second Edition (no equivalent in the First Edition).</p>
+
+        <p>The appendix addresses four themes:</p>
+        <ul>
+            <li>A basic understanding of AI and static/dynamic ML sub-systems</li>
+            <li>A risk-based regulatory compliant AI/ML life cycle framework aligned with GAMP 5 phases</li>
+            <li>The importance of data integrity to AI/ML quality</li>
+            <li>The iterative nature of AI/ML development and its implications for validation</li>
+        </ul>
+
+        <h3>Types of AI/ML Models</h3>
+        <p>Common model categories by function:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Model Type</th>
+                    <th>Function</th>
+                    <th>Example Pharma Application</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Classification</strong></td>
+                    <td>Categorize data into two or more classes</td>
+                    <td>Visual inspection: pass/fail for cosmetic defects</td>
+                </tr>
+                <tr>
+                    <td><strong>Clustering</strong></td>
+                    <td>Recognize patterns by attribute for targeted action</td>
+                    <td>Environmental monitoring: group anomalous locations</td>
+                </tr>
+                <tr>
+                    <td><strong>Outlier Detection</strong></td>
+                    <td>Identify anomalous data points</td>
+                    <td>Process monitoring: detect OOS precursors in real time</td>
+                </tr>
+                <tr>
+                    <td><strong>Forecasting</strong></td>
+                    <td>Analyze patterns to predict future outcomes</td>
+                    <td>Predictive maintenance: forecast equipment failure timing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Static vs. Dynamic ML Systems</h3>
+        <p>A critical GxP distinction is whether an AI/ML system is <strong>static</strong> or <strong>dynamic</strong>:</p>
+        <ul>
+            <li><span class="key-term">Static ML</span> (offline learning): The model is trained once, frozen, and deployed. Changes require formal change management — treated similarly to traditional software changes.</li>
+            <li><span class="key-term">Dynamic ML</span> (online/continuous learning): The model continuously updates its parameters as new data arrives during operation. This creates a unique validation challenge: the model you validated at time T is no longer the same model at time T+6 months.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：AI/ML 的類型與 GxP 挑戰概覽</h2>
+
+        <div class="analogy-box">
+            <h4>為什麼 AI/ML 的驗證比傳統軟體更難？</h4>
+            <p>傳統軟體的邏輯是固定的：你給它 X，它永遠輸出 Y。驗證就是確認這個對應關係在所有條件下都正確。</p>
+            <p>AI/ML 模型的邏輯是從數據中「學習」出來的，而且某些模型（動態模型）會持續學習——意思是你今天驗證過的模型，明天可能已經不一樣了。這就是 GxP 驗證面臨的根本性挑戰。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>四種模型類型的 CDMO 應用場景</h4>
+            <ul>
+                <li><strong>分類（Classification）</strong>：自動視覺檢查（AVI）系統——用於無菌充填的安瓿外觀檢查，AI 判斷是否有顆粒、破裂、填充量異常。這是目前製藥行業 AI 應用最成熟的領域之一。</li>
+                <li><strong>異常偵測（Outlier Detection）</strong>：環境監測異常偵測——在 ISO 5 潔淨室中，若 EM 數據的趨勢異常（雖未超標），AI 可以提前預警潛在污染風險。</li>
+                <li><strong>預測（Forecasting）</strong>：充填機預測性維護——分析灌裝機的震動、溫度、壓力歷史數據，預測關鍵零件（如蠕動泵、灌裝針）的更換時機，減少計畫外停機。</li>
+                <li><strong>聚類（Clustering）</strong>：製程參數分群——將歷史批次依據製程特徵分群，識別哪些批次組合對應最佳產品品質。</li>
+            </ul>
+        </div>
+
+        <div class="key-point-box">
+            <h4>靜態 vs 動態：選擇的 GxP 含義</h4>
+            <p>對於 GxP 關鍵決策（例如批次放行、異常判定），靜態模型通常是更可取的選擇：</p>
+            <ul>
+                <li>驗證狀態清楚：版本 1.0 經過正式驗證，變更後必須重新評估</li>
+                <li>符合 FDA/EU 現有對「已驗證軟體」的預期</li>
+            </ul>
+            <p>動態模型適用於非 GxP 關鍵的輔助分析，或有足夠強健的持續監控機制：</p>
+            <ul>
+                <li>必須定義可接受的性能參數範圍（容許限度）</li>
+                <li>超出限度時必須自動觸發人工審查</li>
+                <li>每次模型更新都應視為一次「受控變更」</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D11 SECTION 2: Life Cycle — Concept Phase -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.3.1–31.3.2 Life Cycle: Concept Phase</h2>
+
+        <p>The AI/ML life cycle follows the GAMP 5 framework of Concept → Project → Operation → Retirement, but with critical differences. Most importantly, <strong>data management must begin in the concept phase</strong> because data is the primary resource required for ML — unlike traditional software where data considerations can be deferred.</p>
+
+        <h3>31.3.2 Concept Phase Activities</h3>
+        <p>The concept phase must address five primary principles before any data collection begins:</p>
+        <ul>
+            <li><strong>Transparency:</strong> How will the model behave? Can its reasoning be explained?</li>
+            <li><strong>Reproducibility:</strong> Can outcomes be reliably replicated under the same conditions?</li>
+            <li><strong>Interpretability:</strong> What factors drive the model's outputs?</li>
+            <li><strong>Applicability:</strong> How and where will the model be applied? What are the boundaries of use?</li>
+            <li><strong>Liability:</strong> Who is ultimately accountable for model decisions?</li>
+        </ul>
+
+        <h3>31.3.2.2 Data Acquisition and Selection</h3>
+        <p>Data can be acquired from internal sources (data warehouses, MES historians, LIMS) or external sources (open-source datasets, purchased datasets). Key selection considerations:</p>
+        <ul>
+            <li><strong>Source:</strong> Internal, external open-source, external purchase</li>
+            <li><strong>Privacy and controls:</strong> Data classification, GDPR/PII compliance, use rights</li>
+            <li><strong>Structure/format:</strong> Unstructured, semi-structured, or structured</li>
+            <li><strong>Segmentation:</strong> Clustering, priority tiers, necessary vs. nice-to-have</li>
+        </ul>
+        <p>Data must be partitioned into <strong>training, validation, and test sets</strong> during the concept phase — and this partitioning must be maintained throughout development to prevent data contamination that would compromise unbiased model evaluation.</p>
+
+        <h3>31.3.2.3 Data Preprocessing and Classification</h3>
+        <p>Data preparation includes: profiling and formatting, cleansing and transformation, anonymization (for GDPR compliance), and augmentation for diversity. The quality and integrity of data is critical — the quality of output is determined by the quality of input. Preparation must be documented and performed by data scientists with domain expertise.</p>
+
+        <div class="quote-box">
+            "The quality and integrity of the data is critical (the quality of output is determined by the quality of input) and must be suitably classified and labeled. This is one of the most time-consuming efforts in the process."
+            <br><em>— ISPE GAMP 5 Second Edition, Appendix D11, §31.3.2.3</em>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：AI/ML 生命週期——概念階段</h2>
+
+        <div class="analogy-box">
+            <h4>GIGO：垃圾進，垃圾出</h4>
+            <p>這是 AI/ML 領域最重要的格言：<strong>Garbage In, Garbage Out（GIGO）</strong>。</p>
+            <p>你可以擁有世界上最先進的深度學習算法，但如果訓練數據本身有偏差或錯誤，模型輸出的結論同樣是錯誤的。更糟糕的是，模型會以高度「自信」的方式呈現這些錯誤結論。</p>
+            <p>在製藥 GxP 環境中，GIGO 的後果尤為嚴重：訓練數據如果系統性地遺漏了某種罕見的缺陷，視覺檢查 AI 就永遠不會識別這種缺陷——而整個生產團隊卻完全不知道這個盲點的存在。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>五大設計原則的 GxP 意義</h4>
+            <ul>
+                <li><strong>可解釋性（Interpretability）</strong>：FDA 21 CFR Part 211 和 EU GMP 均要求能夠理解和解釋品質決策的依據。如果一個 AI 做出了拒絕批次的決定但無法解釋原因，在 GxP 環境中這是不可接受的。</li>
+                <li><strong>可重現性（Reproducibility）</strong>：對相同輸入，模型必須始終產生相同（或統計一致的）輸出。這與 GMP 的「一致性」原則直接對應。</li>
+                <li><strong>責任（Liability）</strong>：AI 做出了錯誤決定，誰負責？在 GxP 環境中，答案必須是明確的人——AI 是輔助工具，最終責任歸屬於被授權的人員。</li>
+            </ul>
+        </div>
+
+        <div class="key-point-box">
+            <h4>數據集分割（Dataset Partitioning）的關鍵</h4>
+            <p>為什麼要把數據分成三份（訓練、驗證、測試）？</p>
+            <ul>
+                <li><strong>訓練集（Training Set）</strong>：模型從這部分數據中學習規律。可以多次使用。</li>
+                <li><strong>驗證集（Validation Set）</strong>：用於在訓練過程中調整超參數，評估模型是否過度擬合訓練數據。</li>
+                <li><strong>測試集（Test Set）</strong>：完全隔離，只在最後一次用於最終性能確認（相當於 UAT）。絕對不能用於任何訓練或調參活動。</li>
+            </ul>
+            <p>如果測試集數據「洩漏」到訓練過程，模型會表現出虛假的高準確率——而在真實生產環境中表現糟糕。這是 AI 驗證中最常見的陷阱之一。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>CDMO 數據挑戰：數據孤島問題</h4>
+            <p>大多數製藥 CDMO 的歷史數據存在孤島問題：MES 的批次記錄、LIMS 的檢驗數據、設備 PLC 的製程數據、QA 系統的偏差記錄——各自存在不同系統，格式不一，難以整合。</p>
+            <p>在啟動 AI/ML 項目之前，必須先評估數據整合的可行性和成本，否則概念階段的假設在項目階段將面臨嚴重挑戰。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D11 SECTION 3: Project Phase — Model Development -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.3.3 Life Cycle: Project Phase — Model Development</h2>
+
+        <p>The project phase follows an <strong>iterative and incremental</strong> approach — not the linear waterfall model familiar from traditional computerized system validation. Each iteration cycles through: model design/selection → engineering → training → evaluation → hyperparameter tuning.</p>
+
+        <h3>31.3.3.1 Model Requirements and Specifications</h3>
+        <p>Initial requirements define the functionality and performance expectations of the ML sub-system. <span class="key-term">Performance metrics</span> are a key component — they serve as the technical specifications for model acceptability and drive the iterative training-evaluation cycle. Nonfunctional requirements (deployment constraints, integration, security) must also be defined early to inform algorithm selection.</p>
+
+        <h3>31.3.3.2 Model Design and Selection</h3>
+        <p>A ML model is selected based on the question it is expected to answer. For a new system, it is unlikely that the algorithm choice is clear-cut from the start. Candidate algorithms should be evaluated against operational, performance, and regulatory requirements through a structured prototyping process.</p>
+
+        <h3>31.3.3.3–31.3.3.4 Model Engineering and Training</h3>
+        <p>Model engineering involves constructing architectures and surrounding infrastructure for training and hyperparameter tuning. During training:</p>
+        <ul>
+            <li>The training dataset is supplied to the model; output is compared to ground truth to measure performance and update model parameters</li>
+            <li>The validation dataset evaluates training quality and assists in fine-tuning — it does NOT act as the final acceptance test</li>
+            <li>Hyperparameter optimization can be manual or automated (e.g., Bayesian optimization), but data scientists should not take a completely hands-off approach</li>
+            <li>Bias due to non-representative training data is a significant risk and must be actively managed</li>
+        </ul>
+
+        <h3>31.3.3.5 Model Evaluation and Testing</h3>
+        <p>The best-performing models from training iterations are evaluated using performance scorecards. Visual qualitative evaluation of validation results — not just quantitative metrics — often yields better insights into failure modes. When target performance is achieved, models are selected as candidates for deployment.</p>
+
+        <h3>31.3.3.6 Integration and Deployment</h3>
+        <p>The ML sub-system is migrated from development code (optimized for fast prototyping) to deployment code (optimized for production maintenance). Key architectural principle: <strong>modularization</strong> — the inference module (forward pass from input to output) is isolated from training, evaluation, and parameter-update code.</p>
+
+        <h3>31.3.3.7 Verification, Acceptance, and Release</h3>
+        <p>The test dataset — excluded from all training and validation activities to date — is used as an independent dataset to confirm acceptable performance within the overarching application's UAT prior to deployment. At minimum, the verification process must be specified and documented, resulting in formal release of the first AI/ML sub-system version.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：模型開發的關鍵概念</h2>
+
+        <div class="concept-box">
+            <h4>超參數（Hyperparameters）是什麼？</h4>
+            <p>機器學習中有兩類「數字」：</p>
+            <ul>
+                <li><strong>模型參數（Parameters）</strong>：模型在訓練過程中自動學習的內部值（如神經網絡的權重）——你不直接設定，模型自己調整。</li>
+                <li><strong>超參數（Hyperparameters）</strong>：你在訓練前設定的「控制旋鈕」——如學習率、樹的深度、隱藏層數量。這些值決定了「模型如何學習」，而非「模型學到了什麼」。</li>
+            </ul>
+            <p>超參數優化是 AI/ML 開發中最耗時的工作之一，需要反覆試驗不同的組合，找到使模型在驗證集上表現最佳的設定。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>「模組化」設計與 GxP 的關係</h4>
+            <p>GAMP 5 要求「推理模組（Inference Module）」必須與訓練代碼分離。為什麼這對 GxP 很重要？</p>
+            <p>類比：就像製藥製造中，我們把「生產配方」和「工藝開發記錄」分開管理。生產版本是固定且受控的；開發版本可以迭代修改。</p>
+            <p>在 AI 中，推理模組是「固定且受控的生產版本」；訓練代碼是「可以繼續優化的開發工具」。驗證只需覆蓋推理模組的確定性行為，而非整個訓練基礎設施。</p>
+        </div>
+
+        <div class="key-point-box">
+            <h4>UAT 中的 Test Set：類似於製藥的「製程確認批次」</h4>
+            <p>Test Set 在 AI/ML 驗證中的角色，類似於製藥製程驗證中的 Process Performance Qualification（PPQ）批次：</p>
+            <ul>
+                <li>整個開發過程中完全封存，從不參與訓練或超參數調整</li>
+                <li>只在最終確認階段使用一次，作為「在全新數據上的獨立性能驗證」</li>
+                <li>如果 test set 性能不達標，不能只是「調整模型繼續試」——需要回到設計根本原因分析</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>視覺評估 vs 純數字指標</h4>
+            <p>GAMP 5 特別強調：不要只依賴準確率、召回率等數字指標，視覺定性評估往往更有洞察力。</p>
+            <p>製藥 AI 場景舉例：一個視覺檢查 AI 整體準確率達到 99%，但對某種特定缺陷類型（例如微小氣泡）的漏檢率達到 40%——單看整體指標完全看不出這個問題。只有對錯誤案例進行逐一的視覺審查，才能發現這個系統性盲點。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D11 SECTION 4: Operation Phase — Monitoring and Model Governance -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.3.4 Life Cycle: Operation Phase — Monitoring &amp; Continuous Evaluation</h2>
+
+        <p>The operation phase is where AI/ML systems diverge most significantly from traditional computerized systems. The performance of the AI/ML sub-system must be <strong>continuously monitored and maintained</strong>.</p>
+
+        <h3>31.3.4.1 Monitoring for Static Systems</h3>
+        <p>For static systems, changes must follow the organization's formal change-management process with risk-based evaluation of impact on current and future production data, and robust testing before deployment.</p>
+
+        <h3>31.3.4.1 Monitoring for Dynamic Systems</h3>
+        <p>For dynamic systems, appropriate KPIs and acceptable tolerance limits must be established to ensure the algorithm is still operating as intended. A systematic approach to integrating additional training data must be maintained:</p>
+        <ol>
+            <li>Acquire additional data of the needed sub-class</li>
+            <li>Assign a portion to training set; exclude the remainder for testing</li>
+            <li>Retrain model on augmented training dataset (expect possible performance drop due to increased challenge)</li>
+            <li>Evaluate revised model against original model on augmented test dataset</li>
+            <li>Confirm revised model achieves acceptable performance level before deployment</li>
+        </ol>
+
+        <h3>31.3.4.2 Performance Trending</h3>
+        <p>In the operational phase, it is possible to integrate and prepare new data to further refine existing models, develop new predictive models, and establish performance monitoring to track ongoing effectiveness. Quality control standards and measures must exist to ensure acceptable performance throughout the model's usable life.</p>
+
+        <div class="quote-box">
+            "In all cases, periodic review and monitoring of the model performance is needed to identify potential bias, overfitting, etc. The timing of reviews may be determined based on a defined interval and/or by activity such as the incorporation of new case data."
+            <br><em>— ISPE GAMP 5 Second Edition, Appendix D11, §31.3.5.1</em>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：運維階段——模型漂移與治理</h2>
+
+        <div class="key-point-box">
+            <h4>模型漂移（Model Drift）：AI 最隱性的風險</h4>
+            <p><strong>模型漂移</strong>是指 AI 模型的預測性能隨時間逐漸下降的現象，通常發生在以下情況：</p>
+            <ul>
+                <li><strong>數據漂移（Data Drift）</strong>：生產環境的輸入數據特性發生了變化（例如：換了一台新的充填機，其震動特徵與訓練數據不同）</li>
+                <li><strong>概念漂移（Concept Drift）</strong>：「正確答案」的定義發生了變化（例如：外觀可接受標準更新，但模型仍使用舊標準）</li>
+                <li><strong>過度擬合退化</strong>：模型過於適應歷史特定數據，在新數據上表現下降</li>
+            </ul>
+            <p>危險之處在於漂移是緩慢的、難以察覺的。如果沒有持續的性能監控，你可能幾個月後才發現模型已經失效——而在此期間的所有決策都已基於一個不可靠的模型。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>類比：製程驗證中的「持續製程確認（CPV）」</h4>
+            <p>製藥製程驗證有三個階段：設計（PPD）、確認（PPQ）、持續確認（CPV）。CPV 的核心就是持續監控製程數據，確認製程狀態保持在驗證的範圍內。</p>
+            <p>AI/ML 模型的「持續性能監控」正是同樣的邏輯：驗證不是一次性活動，而是貫穿整個產品生命週期。每次監控觸發的模型更新都需要遵循變更控制程序，就像製程參數變更一樣。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>定義「可接受性能參數（Tolerance Limits）」的挑戰</h4>
+            <p>對靜態軟體，驗證標準是明確的（結果必須等於預期值）。對 AI/ML 模型，需要定義：</p>
+            <ul>
+                <li>哪些 KPI 用於監控？（準確率、精確率、召回率、F1 分數……）</li>
+                <li>可接受的性能下限是多少？</li>
+                <li>超出限度時的反應程序是什麼？（警告、自動切換為人工審查、強制重新訓練）</li>
+                <li>多久進行一次定期審查？（基於時間間隔，還是基於數據量累積？）</li>
+            </ul>
+            <p>這些標準必須在驗證方案中預先定義，而非事後設定——這是 GxP 合規的基本要求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D11 SECTION 5: Supporting Processes — Data Governance, Risk, Change Management -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.3.5 Supporting Processes: Risk Management, Data Governance &amp; Change Management</h2>
+
+        <h3>31.3.5.1 Risk Management</h3>
+        <p>Risk management drives the process and controls needed for AI/ML systems. The risk framework must address both the traditional risks of the original process AND the additional risks introduced by ML intervention. Key risk considerations include:</p>
+        <ul>
+            <li>Use of external vendors and data suppliers</li>
+            <li>Retaining sufficient technical and scientific knowledge within the organization</li>
+            <li>Model maturity and extent of previous real-world use</li>
+            <li>Changes to production data and/or errant (corrupted) input data</li>
+            <li>System performance, downtime, and business continuity</li>
+        </ul>
+
+        <p>For <strong>static ML sub-systems</strong> where all data acquisition and annotation are supervised and validated prior to inclusion, standard data validation and change-management processes are generally sufficient.</p>
+
+        <p>For <strong>dynamic ML sub-systems</strong> — including online learning with continuous model parameter updates — additional controls are required: continual and robust performance evaluation, defined acceptance criteria for ongoing model changes, and heightened monitoring.</p>
+
+        <p>In all cases, <strong>periodic review</strong> is needed to identify bias, overfitting, and performance degradation. Review frequency may be determined by time interval or by activity triggers such as incorporation of new case data.</p>
+
+        <h3>31.3.5.2 Data Governance</h3>
+        <p>Data governance is critical to the success of ML. Not all data is created equal. The governance strategy must address:</p>
+        <ul>
+            <li>Data size, quality, and prevalence — what volume is sufficient for training?</li>
+            <li>Whether a separate data-acquisition project is needed before model development begins</li>
+            <li>Format specification, annotation tools, and cleanup processes</li>
+            <li>How ground-truth data is generated, validated, and maintained</li>
+        </ul>
+        <p>For image-based tasks (e.g., visual inspection), ground truth is produced by expert labeling — a time-intensive process that requires people with both technical and domain expertise.</p>
+
+        <h3>31.3.5.3 Change Management</h3>
+        <p>Change management integrates data controls into system responses and processes to maintain ongoing control. Drivers of change in AI/ML systems include:</p>
+        <ul>
+            <li><strong>Performance Requirements:</strong> Changes to improve performance — may trigger model retraining on existing datasets</li>
+            <li><strong>Additional Inputs:</strong> Changes to case data or algorithms to expand compatibility and increase generalization</li>
+            <li><strong>Intended Use:</strong> Changes to the significance of information or the clinical/manufacturing context</li>
+        </ul>
+        <p>User stories and system controls, along with human intervention as a check, are effective starting points for designing the change-management workflow. Visual process maps with scenarios and mitigations help identify weak points.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：支撐流程——數據治理、風險管理、變更控制</h2>
+
+        <div class="key-point-box">
+            <h4>AI/ML 風險評估：比傳統系統多了哪些維度？</h4>
+            <p>傳統 GAMP 5 風險評估問：「如果系統失效，對患者安全、產品品質、數據完整性的影響是什麼？」</p>
+            <p>AI/ML 必須額外問：</p>
+            <ul>
+                <li>訓練數據是否代表了所有重要的使用場景？（覆蓋率風險）</li>
+                <li>模型是否對特定子群體（特定產品類型、特定設備）有系統性偏差？（偏差風險）</li>
+                <li>模型的決策過程是否透明？稽查員能否理解某個決定的依據？（黑盒風險）</li>
+                <li>如果模型在生產中突然失效，後備程序是什麼？（業務連續性風險）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>數據治理：AI 的 GMP 原料管理</h4>
+            <p>製藥生產有嚴格的原料管理：CoA 確認、供應商資格、入庫檢驗、儲存條件。每批原料的品質直接影響最終產品。</p>
+            <p>AI 訓練數據就是模型的「原料」。數據治理就是 AI 的「原料管理」：</p>
+            <ul>
+                <li>數據來源驗證（相當於供應商資格）</li>
+                <li>數據品質確認（相當於入庫檢驗）</li>
+                <li>數據版本控制（相當於批次記錄）</li>
+                <li>標注品質管理（相當於製程控制）</li>
+            </ul>
+            <p>沒有 GMP 原料管理的製藥廠是不合規的；沒有數據治理的 AI/ML 開發同樣無法通過 GxP 驗證。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>「Human in the Loop（人在迴路中）」的 GxP 要求</h4>
+            <p>這是 GxP AI/ML 部署中最重要的原則之一。對於 GxP 關鍵決策（批次放行、OOS 判定、偏差分類），AI 可以提供輔助分析和建議，但最終決策必須由具有資質的人員做出並簽署。</p>
+            <p>這不僅是現行監管立場的要求，更是一個深層的品質原則：</p>
+            <ul>
+                <li>AI 模型可能有我們尚未發現的盲點</li>
+                <li>異常情況可能超出模型的訓練邊界</li>
+                <li>監管責任無法轉移給算法</li>
+            </ul>
+            <p>CDMO 實踐建議：在 SOP 中明確界定「AI 輔助」與「AI 決策」的邊界，確保所有 GxP 決策都有有資質人員的電子簽章背書。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>AI 變更管理的複雜性：什麼算「重大變更」？</h4>
+            <p>傳統軟體變更管理相對清晰：代碼修改就觸發變更流程。但 AI/ML 的「變更」定義更複雜：</p>
+            <ul>
+                <li>加入新訓練數據後模型自動更新——算變更嗎？</li>
+                <li>超參數微調後模型性能提升 0.5%——需要重新驗證嗎？</li>
+                <li>輸入數據的分布發生了漂移——模型本身沒改變，但有效性已改變</li>
+            </ul>
+            <p>GAMP 5 的建議：在驗證文件中預先定義「重大變更」的觸發條件（例如性能變化超過 X%），以及不同類型變更的審批路徑，避免事後爭議。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D11 SECTION 6: Regulatory Perspectives -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>31.4 Regulatory Perspectives on AI/ML in Pharma Manufacturing</h2>
+
+        <p>The regulatory framework for AI/ML in pharmaceutical manufacturing is actively evolving. GAMP 5 Appendix D11 references the <strong>Joint US FDA/Health Canada/UK MHRA Good Machine Learning Practice (GMLP) for Medical Device Development: Guiding Principles</strong> — currently the most comprehensive regulatory framework directly applicable to AI/ML in regulated environments.</p>
+
+        <h3>Key FDA / MHRA GMLP Guiding Principles Referenced</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Principle</th>
+                    <th>Focus Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>GP 1 &amp; 2</strong></td>
+                    <td>Multi-disciplinary expertise; good software engineering and security practices</td>
+                </tr>
+                <tr>
+                    <td><strong>GP 6</strong></td>
+                    <td>Model selection fit for the intended purpose</td>
+                </tr>
+                <tr>
+                    <td><strong>GP 8</strong></td>
+                    <td>Performance demonstrated during model testing through scorecards</td>
+                </tr>
+                <tr>
+                    <td><strong>GP 9</strong></td>
+                    <td>Users are provided with clear, essential information — transparency of AI outputs</td>
+                </tr>
+                <tr>
+                    <td><strong>GP 10</strong></td>
+                    <td>Deployed models are monitored for performance and users can report problems</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>The "Continuous Learning" Validation Challenge</h3>
+        <p>The FDA's action plan for AI/ML-based Software as a Medical Device (SaMD) acknowledges that traditional pre-market testing cannot fully address the unique nature of continuously learning AI systems. The regulatory challenge is that a model validated at time of approval may legitimately change over time through continued learning — raising questions about re-validation triggers.</p>
+
+        <p>Current industry consensus positions:</p>
+        <ul>
+            <li>Any significant model change (performance shift beyond defined tolerance, change in intended use, change in training data scope) should trigger a formal change assessment</li>
+            <li>Pre-defined performance monitoring plans with explicit alert thresholds should be part of the validation package</li>
+            <li>Transparency reporting to regulators for significant post-deployment model changes is emerging as expected practice</li>
+        </ul>
+
+        <h3>Human Oversight Requirement</h3>
+        <p>Current regulatory guidance universally maintains that for GxP-critical decisions, AI should <strong>assist</strong> human judgment, not replace it. Automated AI-driven decisions in GxP-critical processes (batch release, OOS investigation conclusions) remain a high regulatory risk without explicit guidance permitting them. Decisions must be attributable to qualified human reviewers who can evaluate and accept or override AI-generated recommendations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>解說：監管展望與 CDMO 戰略定位</h2>
+
+        <div class="concept-box">
+            <h4>FDA GMLP 指導原則：製藥製造的適用性</h4>
+            <p>GAMP 5 引用的 FDA/Health Canada/MHRA 聯合 GMLP 指導原則原本是針對醫療設備軟體（SaMD）制定的，但其原則直接適用於製藥製造 AI：</p>
+            <ul>
+                <li>多學科團隊（數據科學家 + 製程工程師 + QA）</li>
+                <li>良好的軟件工程實踐（版本控制、代碼審查、測試文件）</li>
+                <li>透明的性能評估方法</li>
+                <li>部署後持續監控和問題回報機制</li>
+            </ul>
+            <p>對 CDMO QA 的實際意義：AI 系統的驗證主協議（VP）和驗證總結報告（VSR）中應明確引用 GMLP 相關原則作為指導框架。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>「持續學習」的監管困境：一個思想實驗</h4>
+            <p>假設你在 2026 年 1 月對一個視覺檢查 AI 完成了完整的驗證。到 2026 年 6 月，該模型已經從 50,000 個新的生產數據點中學習了——它的準確率從 97% 提升到了 99%。</p>
+            <p>問題：你需要重新驗證嗎？性能提升了，但模型的「DNA」已完全不同。</p>
+            <p>目前的監管立場傾向於：是的，需要觸發變更評估和重新驗證——即使性能改善了。原因是：沒有人能完全確定性能改善不是以犧牲某些邊緣情況的性能為代價。</p>
+        </div>
+
+        <div class="highlight-box">
+            <h4>白鴉（White Raven）案例：CDMO AI 競爭情報啟示</h4>
+            <p>歐洲競爭對手 White Raven CDMO 已開始在其 SA25 充填機上部署 AI 解決方案。這代表行業前沿正在快速移動。</p>
+            <p>關鍵問題：他們如何解決 GxP 驗證問題？可能的路徑：</p>
+            <ul>
+                <li>使用靜態 AI 模型（定期訓練更新，每次作為受控變更）——監管風險最低</li>
+                <li>AI 作為「輔助建議系統」而非決策系統——人員仍然做最終決定</li>
+                <li>先在非 GxP 關鍵應用（預測性維護）上積累驗證經驗</li>
+            </ul>
+            <p>這也應該是我們 CDMO AI 路線圖的策略起點：從預測性維護和非 GxP 關鍵監測開始，逐步積累驗證能力，再擴展到 GxP 關鍵應用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>CDMO AI/ML 實施路線圖建議</h4>
+            <p><strong>Phase 1（現在可以開始）：非 GxP 關鍵應用</strong></p>
+            <ul>
+                <li>充填機預測性維護（Predictive Maintenance）</li>
+                <li>冷凍乾燥製程參數優化輔助工具</li>
+                <li>EM 趨勢分析異常偵測（警示，非決策）</li>
+            </ul>
+            <p><strong>Phase 2（12-18 個月後）：輔助性 GxP 應用</strong></p>
+            <ul>
+                <li>AI 輔助批次記錄審查（提高人工審查效率）</li>
+                <li>偏差初步分類輔助</li>
+            </ul>
+            <p><strong>Phase 3（長期）：GxP 關鍵應用</strong></p>
+            <ul>
+                <li>自動視覺檢查（需完整 GMLP 符合性驗證）</li>
+                <li>即時製程分析技術（PAT）AI 模型</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="section-summary">
+    <h3>Section Summary &nbsp;|&nbsp; 本章重點總結</h3>
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h4>Appendix D10 — Blockchain (區塊鏈) Key Takeaways</h4>
+            <ul>
+                <li>Blockchain provides cryptographic immutability for transaction records — but cannot guarantee the accuracy of data initially posted; input controls remain critical.</li>
+                <li>The blockchain is typically the <em>source of truth</em>, not the <em>source of origin</em>; all source systems (MES, LIMS) must maintain ALCOA+ compliance.</li>
+                <li>Four control categories are required: Input / Output / Processing / Access — with particular attention to API integrity and private key management.</li>
+                <li>Smart contracts must undergo code review and change management as GxP software components.</li>
+                <li>Regulatory guidance on whether blockchain records satisfy 21 CFR Part 11 / EU Annex 11 is still evolving — conservative validation approaches and industry engagement (ISPE GAMP CoP) are recommended.</li>
+                <li>Technology maturity evaluation (network age, developer community, change governance) is essential before selecting a blockchain platform for GxP use.</li>
+            </ul>
+        </div>
+        <div class="summary-card">
+            <h4>Appendix D11 — AI/ML Key Takeaways</h4>
+            <ul>
+                <li>AI/ML introduces a fundamentally different validation challenge: dynamic models change as they learn — validation must be ongoing, not a one-time activity.</li>
+                <li>Data is the primary asset in AI/ML: GIGO applies — data governance (classification, labeling, partitioning, provenance) is as important as algorithm selection.</li>
+                <li>Dataset partitioning into training / validation / test sets must be established and maintained from the concept phase — data contamination undermines all subsequent validation.</li>
+                <li>Model drift (gradual performance degradation) requires continuous KPI monitoring with pre-defined tolerance limits and periodic review triggers.</li>
+                <li>For GxP-critical decisions, AI must assist, not replace, qualified human judgment — "human in the loop" remains the regulatory baseline.</li>
+                <li>Start AI/ML programs with non-GxP-critical applications (predictive maintenance, EM trend analysis) to build validation competency before expanding to GxP-critical use cases.</li>
+            </ul>
+        </div>
+        <div class="summary-card">
+            <h4>Shared Theme: Risk-Based Validation in the Age of Emerging Technologies</h4>
+            <p>Both blockchain and AI/ML represent cases where traditional SDLC and validation frameworks must be applied with adaptation. GAMP 5 2nd Edition's core message: the principles remain the same (risk-based, life-cycle approach, patient-centered), but their application must evolve with the technology.</p>
+            <p>For both technologies, the concept phase is disproportionately important — decisions made about governance, data architecture, and system boundaries at the start determine whether GxP compliance is achievable at all.</p>
+        </div>
+        <div class="summary-card">
+            <h4>新興技術共同主題：概念階段的決定性作用</h4>
+            <p>區塊鏈和 AI/ML 的共同教訓：<strong>概念階段的決策品質決定了整個系統的可驗證性</strong>。倉促進入開發的結果往往是：到了驗證階段才發現根本性的架構問題，代價極高。</p>
+            <p>核心心法：不要問「這個 AI/區塊鏈技術能做什麼」，而是問「這個技術能否以符合 GxP 的方式被驗證和維護」。技術可行性和法規可行性必須同時評估。</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

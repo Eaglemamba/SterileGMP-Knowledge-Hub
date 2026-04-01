@@ -1,0 +1,832 @@
+--- PAGE 165 ---
+Page 163
+Appendix M11
+Appendix M11
+19	 Appendix M11 – IT Infrastructure
+19.1
+Introduction
+EU Annex 11 [32] states: “The application should be validated; IT infrastructure should be qualified.” However, due to
+the dynamic nature of infrastructure, it is best to think of achieving and maintaining a qualified state as an exercise of
+managing to compliance. This state of control is the cornerstone of qualification as expected in EU Annex 11.
+A controlled IT infrastructure is a prerequisite for ensuring that GxP applications are managed in a state of control.
+Infrastructure plays a significant role in ensuring applications are on a stable platform with reliable required
+communications. The IT infrastructure supports application performance and availability as well as the integrity,
+availability, security, and confidentiality of data. Many of the processes required to ensure this rely on some aspects
+of infrastructure management, such as cybersecurity, load balancing, backup and restore, disaster recovery, etc.
+19.1.1
+Changes from GAMP 5 First Edition
+This appendix was originally identified as Appendix S5. It dealt only with managing quality in an outsourced
+environment. While this is certainly still an important aspect, infrastructure management is a process that inevitably
+involves both internal and external processes. This significantly revised appendix applies current risk-based thinking
+on good practice for managing infrastructure that resides within a regulated company’s own facilities as well as
+ensuring those of external suppliers, for example, for cloud-based suppliers of Infrastructure as a Service (IaaS),
+Platform as a Service (PaaS), and Software as a Service (SaaS) [20].
+As a result, Appendix S5 has been withdrawn and the revised material renamed as Appendix M11.
+19.1.2	 Further Reading
+Managing IT infrastructure is discussed in more depth in the ISPE GAMP Good Practice Guide: IT Infrastructure
+Control and Compliance (Second Edition) [49], and additional background for managing outsourced services can be
+found in Appendix M6 in this Guide. Infrastructure management processes have become more automated, reducing
+the incidence of human error by substituting verified automated processes for manual ones. This topic is still evolving,
+as IT infrastructure management embraces increased automation and de-emphasizes reliance on paper records only.
+19.2
+Principles and Assumptions
+19.2.1	 Scope of Infrastructure Qualification
+Figure 19.1 illustrates the scope of infrastructure considerations and how some of the business processes within IT
+need to be considered as part of a qualified infrastructure.
+
+--- PAGE 166 ---
+Page 164
+Appendix M11
+Figure 19.1: Relationship of IT Infrastructure and Processes with Business Systems and Processes
+Adapted from ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service
+Management [20].
+19.2.2	 Infrastructure Qualification versus Application Validation
+A regulated company approaches implementing an application to meet their business needs by developing
+requirements, configuring the application as necessary, performing risk-based verification as needed, establishing
+appropriate operational controls, and managing it to a controlled state (these combined efforts comprise validation).
+This is far simpler for most, but not all infrastructure elements. The company has no input into the design and
+manufacture of components such as servers, network switches, etc., which are effectively off-the-shelf purchases.
+After the initial component build has been verified to perform acceptably, new components are simply configured
+to the standard, and testing of each build may be extremely limited (e.g., verifying that a network node can reach
+another node) or absent (e.g., by using a review-by-exception approach – see Section 19.2.4). Some components
+are initially verified but may also require additional configuration and subsequent verification of that configuration.
+Infrastructure, which is continually evolving to meet business needs, must be managed to a controlled state. Both
+confirmation of components’ fitness for purpose and management to a controlled state are likely to involve automated
+processes.
+The greater dynamism of the infrastructure, combined with the widespread use of standardized components that
+use the “one qualification, many implementations” model is the primary difference highlighted as noted above in EU
+Annex 11 [32].
+Note also that infrastructure software is GAMP Category 1, and as such is qualified, not validated.
+
+--- PAGE 167 ---
+Page 165
+Appendix M11
+19.2.3	 Component-Based Nature of Infrastructure
+Infrastructure is generally comprised of many instances of certain standard components. For example, companies
+have many network switches, servers, and storage devices. These components are generally deployed in standard
+basic configurations. If these standard configurations have been demonstrated to perform acceptably, it is a
+reasonable assumption that additional components deployed in those configurations also will. This indicates that IT
+infrastructure presents lower risk than applications.
+19.2.4	 Infrastructure Automation
+Infrastructure as Code (IaC) is a means of provisioning and deploying infrastructure using DevOps processes. IaC
+enables organizations to automate the provisioning of infrastructure, reducing the risk of human errors. Infrastructure
+code is subject to configuration management ensuring that all code changes are traceable. Infrastructure code
+development is subject to risk-based software development practices that ensure code is developed in accordance
+with a life cycle approach including verification prior to deployment. Configuration management and deployment tools
+allow for review and authorization prior to deployment of new/updated configurations, use of templates to ensure
+maintenance of consistent configurations across the infrastructure landscape, and monitoring of the configuration
+baseline to detect unauthorized changes. A further benefit to this being that a “one qualification, many deployments”
+approach can be taken, particularly with standard virtualized environments.
+The configuration of standard infrastructure components is part of the creation of basic building blocks that are the
+foundational platforms for applications. Such configuration processes are readily automated. For example, an out-
+of-the-box server can have the operating system, middleware, layered software, and security policies loaded via an
+automated process. There may be multiple similar automated build scripts, for example, to build servers with different
+database engines. These automated builds can produce various log files or even perform simple automated tests that
+demonstrate a successful build, and a review-by-exception process similar in principle to that used for pharmaceutical
+manufacturing obviates the need for further verification. Critical thinking must be applied when deploying such
+“standard” environments, however. In some cases, greater control may be warranted; for example, cybersecurity
+risks may differ from one example to the next, which might merit hardening of the security for an otherwise standard
+component.
+19.2.5	 Tools
+There are many automated tools that help IT to operate in an effective and controlled manner, for example, a
+Configuration Management Database (CMDB), or scheduling tools that initiate routine processes like backup, data
+transfers, or ETL11. There are also service management tools that ensure adherence to IT quality processes and
+standardization of information supporting these processes, such as IT service management tools that process and
+catalog customer service requests, incidents, changes, problems, and other services. Such tools do not require
+validation, although proper installation, use, and a state of control for them is required. (See Appendix D9.)
+19.3
+Risk Management and Infrastructure
+Given that IT departments service the entire enterprise and not just GxP areas, cases may occasionally arise where a
+risk to the enterprise as a whole requires a change that cannot go through a time-consuming change control process
+that includes sequential evaluation, approval, testing, and release. For example, if a zero-day security vulnerability12
+is recognized that threatens serious harm to the regulated company if it is exploited, remediation will be done as
+rapidly as possible. It is usually the case that risk from cybersecurity threats directly correlate to the data integrity
+considerations of GxP risk. See Section 19.4 for further discussion of QA roles.
+11	ETL is a tool that extracts, transforms, and loads data.
+12	A zero-day vulnerability means there are known exploits of the security flaw.
+
+--- PAGE 168 ---
+Page 166
+Appendix M11
+IT risk priorities therefore tend to focus on risks to system availability, performance, and information security. These
+priorities, however actually do address GxP concerns: applications are available when needed, they work well, and
+there is data integrity.
+As Reid and Wyn [52] observed:
+“Threats to the IT Infrastructure environment largely come from cyberattacks, unauthorized access, system and
+component failure, or inadequate re-source provisioning (storage capacity, processing capacity). These risks
+are continuous, and it is therefore imperative that the currency of IT infrastructure controls is maintained (e.g.,
+through security patching) and monitoring is in place to provide early detection of any threat. IT infrastructure
+design incorporates a high degree of resilience that mitigates both single-point and complete failure.”
+Another risk may come from authorized but uninformed decisions to alter system-wide parameters that may affect
+GxP systems or data. This highlights the need for training and SME oversight of the infrastructure staff.
+Because of the high degree of resilience noted above, the GxP risk for properly managed infrastructure is relatively
+low; however, with many organizations adopting cloud-first strategies, the evaluation of “as a Service” vendors
+can influence risk both at the system and enterprise levels. This can be a starting point for risk management
+considerations for applications, although it is possible that non-standard implementations where a hostile environment
+or a single point of failure could raise infrastructure risk.
+19.4
+The Role of Quality
+The quality unit can play an effective role in the development and manufacture of medicinal products and medical
+devices largely because staff are familiar with the operation of those areas. While they may not be SMEs, they
+typically understand the processes. This is not the case for IT. Add to this that infrastructure groups manage many
+non-impact changes and that the risk to patients for IT infrastructure decisions is typically extremely low, and heavy
+quality unit involvement in infrastructure is unwarranted and potentially extremely inefficient. There may be exceptions
+where greater involvement could be warranted: for example, SaMD may have greater potential direct-patient impact if
+there is a failure of underlying infrastructure.
+The preamble to the US FDA 21 CFR Parts 210/211 [53] states:
+“Functions that are properly those of the engineering department or other specialized units because of their
+unique training and experience should not be duplicated or usurped by the quality control unit. Where expertise
+is in other units, the responsibility of the quality control unit is to assure that such expertise has been utilized.”
+This is not to say that there should be no quality oversight. There should be an agreement between QA and IT
+system owners on an IT quality framework. This should define what fitness for purpose means for infrastructure.
+It is advisable that IT organizations establish an internal IT Quality (ITQ) function. This function should oversee IT
+processes to ensure that they support a state of control, and they should be familiar enough with GxP expectations to
+know when the quality unit should be involved in a decision. For example, it may make sense for them to be involved
+in a change of database engines used in multiple GxP applications, or when a major operating system upgrade is
+undertaken. The quality unit should not need to worry about less impactful changes like microcode updates or the
+installation of new virus definitions. If the quality unit is involved, their overall aim should be to ensure that quality
+processes are followed and that there is adequate evaluation of risk and controls. They should not be involved in the
+technical solution or decisions because they most likely lack the expertise.
+There should be cooperative interaction between ITQ and the quality unit.
+Figure 19.2 shows the relationship between the product life cycle quality processes and ITQ processes.
+
+--- PAGE 169 ---
+Page 167
+Appendix M11
+Figure 19.2: Interaction of ITQ and the Quality Unit [20]
+There will be many changes and other activities that only merit verification by an SME; allocating additional storage
+space is a good example where the risk is negligible and process efficiency should be the prime consideration. In
+general, far more routine IT changes fall into this category as opposed to those meriting formal quality unit review. IT
+procedures should clearly define circumstances where quality unit involvement is warranted. These should be limited
+to situations where significant risk to applications or data is possible, for example, for significant functional application
+upgrades or overhaul of the core database engine.
+Responsibility for any quality decision should be procedurally defined.
+19.5
+IT Processes in Scope for Infrastructure Qualification
+Several processes managed by IT are key to ensuring a controlled state of applications. There are excellent
+resources available for management of these IT business processes, such as ITIL13. Some of these processes will
+require input from the business users of applications. For example, business input is needed to define expected
+service levels: help desk hours, response times, etc. In some cases, costs may need to be negotiated.
+19.5.1	 Security Management
+Critical to data integrity within the GxP scope are several security-related processes:
+•
+Access control and password management – ensuring that only authorized people have access to applications
+and data, including a process such as periodic review to ensure that individuals no longer needing access have
+their privileges revoked
+•
+Management of administrative access – to minimize elevated privileges
+•
+Cybersecurity – including data segregation, firewalls, intrusion detection and prevention, antivirus, and expediting
+management of vulnerabilities
+•
+Management of encryption key(s)
+13	For an overview of ITIL see www.ibm.com/cloud/learn/it-infrastructure-library [54].
+
+--- PAGE 170 ---
+Page 168
+Appendix M11
+It should be noted that IT will approach data integrity with a generic enterprise-wide solution unless they are informed
+that additional protections are needed. It is the responsibility of the business process owner and/or the data owner,
+possibly with assistance from the quality unit, to assess the supporting infrastructure processes and request
+modification if necessary.
+19.5.2	 Backup and Recovery
+Processes need to include analysis of the required frequency of backup (both of applications and of the data) to meet
+business needs; the process for executing backup; and the process for recovering a backup copy, including who is
+authorized to request a recovery. It is vital for GxP applications that both Recovery Point Objectives (RPO, which
+dictates the frequency of backups) and Recovery Time Objectives (RTO, which dictates the interval between system
+failure and recovery), are defined and testable at a frequency commensurate to the system risk and agreed by the
+business owner. All backup processes should be periodically verified to demonstrate that they are recoverable and
+meet the current business need. Problems or failures should be reported back to the data owner. It is an obvious, yet
+often overlooked point, that the importance of periodic testing is to ensure that problems are found proactively, and
+not when the integrity of GxP data is compromised by a failure.
+19.5.3	 Archive and Restore
+Processes should include how and when data (including metadata) is moved to an archive, how archived data can be
+accessed and by whom, and how to destroy data no longer needed, including authorization to do so. Data needs to
+be readable throughout the retention period. This can require attention from both the business area and infrastructure
+support, including for issues like data migration or support for older versions of a database engine.
+19.5.4	 Change Management
+Change management within the IT infrastructure requires a controlled and defined process; however, it cannot be a
+direct parallel to change-control processes for GxP applications. Infrastructure changes should be managed at the IT
+process layer and not at the product life cycle management process layer. For most infrastructure changes, GxP risk
+is extremely low. There are also a relatively large number of changes within infrastructure, some of which will be done
+on a routine schedule, and are best managed through other processes (see below). The role of the quality unit versus
+ITQ as noted in Section 19.4 should be defined for change approval.
+There should be differentiation between actual changes and activities such as repair (including like-for-like
+replacement), maintenance, and system administration, which will be managed under their own processes. Further,
+the ITIL [5] concept of standard changes can be extended into GxP infrastructure management. A list of pre-agreed
+changes that IT can make without the need for additional oversight can maintain the infrastructure’s compliant state
+while ensuring operation efficiency. Provisions for emergency changes should also be made. For example, when a
+database administrator notices that an application needs more table space, allocation of that does not constitute a
+change.
+19.5.5	 Configuration Management
+Configuration management is both a regulatory expectation and necessary for running an effective IT operation.
+Configuration management encompasses both the configuration of applications running on infrastructure as well
+as the hardware and infrastructure software itself. In a modern IT environment, it is impractical to try to achieve this
+without a CMDB.
+19.5.6	 Disaster Recovery and Business Continuity Planning
+Clearly a shared responsibility with business process owners, the IT infrastructure team needs to ensure that their
+disaster response is adequately planned, resourced (both facilities and staff), and tested. This may include leveraging
+cloud resources.
+
+--- PAGE 171 ---
+Page 169
+Appendix M11
+The roles and responsibilities of business and IT groups should be defined, and the business process owners of the
+GxP application should understand the benefits, constraints, and limitations of the agreed IT service delivery. This is a
+regulatory expectation, e.g., in EU Annex 11 Section 3.1 [32].
+GxP process owners and system owners need to understand that this is another case where enterprise risk priorities
+may supersede GxP priorities. While it may seem counterintuitive to prioritize restoring manufacturing after finance
+systems, if the business may fail without the latter, they must be handled first. There should be an enterprise-level
+prioritization for this, and it should be shared with all involved parties. If there is a potential public health impact, for
+example, a drug shortage, that should be part of the consideration for prioritization.
+DR and BCP processes should be defined, documented, and practiced. See Appendix O10 for further discussion.
+19.5.7	 Other IT Processes
+There are other processes that are often managed by IT infrastructure groups that are not limited in scope to
+infrastructure but do bear some relevance. Examples include:
+•
+IT service desk
+•
+Incident and problem management (including CAPA where relevant)
+•
+Service level management
+•
+Asset management
+19.6
+Cloud Infrastructure
+Any use of cloud resources brings infrastructure qualification considerations into scope. Figure 19.3 shows the
+various levels of delegation of control to the supplier for IaaS, PaaS, and SaaS deployments. In all cases, however,
+the infrastructure management and control expectations are constant, and are represented by the blue background.
+In both PaaS and SaaS, all infrastructure activities are delegated to the supplier, while it is shared in IaaS, and of
+course resides solely with the regulated firm, for a traditional deployment in their own data center.
+Figure 19.3: Customer and Supplier Responsibilities for Cloud Implementations (infrastructure within blue
+background) [20]
+
+--- PAGE 172 ---
+Page 170
+Appendix M11
+The difficulty with cloud suppliers lies in the fact that, with very few exceptions, they are not GxP regulated. This
+does not mean that they are universally unsuited to host GxP applications. The core question is whether they have
+an adequate state of control over their infrastructure. This can be determined via an effective supplier evaluation
+process (see Appendix M2), a robust set of contractual agreements on service levels, quality, and monitoring. Such
+agreements should have agreed escalation procedures for incidents and problems.
+When outsourcing a GxP system to a third party it is vital to understand where the data is resident and to ensure
+that the service provider has taken adequate steps to ensure their delivery is robust. A SaaS or PaaS provider, as
+an example, can only offer as much uptime and performance as their own infrastructure provider can accommodate.
+The higher the risk of a cloud-delivered GxP application, it is expected that its associated infrastructure is more robust
+(regional mirroring versus tape backups as an example).
+Data integrity should be a factor in any decision to manage GxP data in the cloud. Considerations involving
+infrastructure include:
+•
+Access management: What are the implications (if any) if supplier staff sees data?
+•
+Encryption: If data (in motion and/or at rest) is encrypted, who manages the key?
+•
+DR: What happens if the cloud supplier has a major incident? RTO and RPO must be agreed.
+•
+Certifications: Which (if any) certifications does the “as a Service” provider hold? e.g., ISO 27001 [44], SOC 1,
+SOC 2 Type 1 or Type 2 [55], HITRUST® [56], etc.
+•
+Frequency of vulnerability scans and third-party penetration tests
+•
+Local, regional, and global redundancies and segregation
+•
+Deployment model and service model compatibility with the level of GxP risk
+Cloud service suppliers are not GxP regulated, and it is the accountability of the regulated organization using such
+services to ensure that quality processes provide an equivalent level of assurance that patient safety, product quality,
+and data integrity are protected.
+19.7
+Continual Improvement
+For all IT infrastructure, but especially for cloud implementations, there should always be the question: “What could
+we be doing better?”
+Key processes should be monitored by the service provider and adherence to SLAs agreed by the regulated
+customer, along with dialog between the parties as to the areas that need improvement, are performing adequately,
+or are working very well. Including specific Key Process Indicators (KPIs) in the monitoring is recommended.
+
+--- PAGE 173 ---
+Page 171
+Appendix M12
+Appendix M12
+20	Appendix M12 – Critical Thinking
+20.1
+Introduction
+This appendix discusses the concept of critical thinking to proactively optimize the approach taken to ensure quality
+and compliance of computerized systems (i.e., better development, testing, operation, and maintenance) within the
+context of the business processes they support. Further detailed discussion about critical thinking can be found in the
+ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service Management [20] and
+ISPE GAMP Guide: Records and Data Integrity [35].
+While GAMP 5 promotes a risk-based approach to ensuring fitness for intended use, some practitioners do not apply
+sufficient thought to ensure the approach they are taking is customized and proportionate to the needs of different
+systems. The use of rigid tables, overly prescriptive templates, and tick-in-the box methods impedes critical thinking
+and could inhibit innovation and the adoption of new technologies. Wasting time and effort on non-value-added
+activities can lead to insufficient or excessive work with potential budget overspend and delays, and may reduce
+focus on more valuable and essential quality activities.
+20.1.1	 Changes from GAMP 5 First Edition
+This is a new appendix.
+20.2	 Scope
+Critical thinking should be applied in a holistic manner to the entirety of the business process that the computerized
+system supports. The role of ancillary equipment and interfaces should be included in the scope of implementation,
+validation, and operational activities to avoid missing potential risks to patient safety, product quality, and data
+integrity.
+The interplay between system and data life cycles should also be subject to critical thinking and QRM. Multiple
+systems may be involved in supporting a single data life cycle. For example, data may be created and processed in
+one system, reported and used to make GxP decisions in an ERP system, and then archived for the retention period
+in another.
+Operational compliance and data integrity is highly dependent upon personal behaviors. Critical thinking will play a
+key role in addressing human factors through effective behavioral, procedural, and technical controls, recognizing
+that the strength of quality culture varies across different locations driven in large part by geographic values and local
+historical context.
+Interdependencies with suppliers and service providers, including in-house suppliers, are a further consideration
+within the scope of critical thinking. The supplier’s application of their own QMS to the development and release of
+their software/service can influence business process risks and whether or not the software/service functionality is fit
+for the regulated company’s intended use.
+
+--- PAGE 174 ---
+Page 172
+Appendix M12
+20.3	 Guidance
+20.3.1	 Facilitating Critical Thinking
+For critical thinking to be used successfully, the QMS and validation policy must permit and encourage its application.
+Examples of this are:
+•
+Where templates are provided, they are used as an aide memoire to ensure the relevant areas for the particular
+system are covered rather than as a form to be completed.
+•
+An addition or alternative to templates can be provided to cover essential elements that must be captured or
+defined as part of the activity, leaving the format and structure open to optimization for the particular system or
+tool used.
+Sections 20.3.2 – 20.3.12 provide examples of how critical thinking can be applied to improve efficiency for the
+activities within the system life cycle.
+20.3.2	 Planning
+A business process maybe supported by multiple computerized systems. Planning may involve adding a new system,
+updating an existing system, or consolidating multiple systems into a single enterprise system. When planning
+implementation, a full understanding of the regulated aspects of the process to be supported, including the intended
+use of data within the process, is fundamental.
+Critical thinking should be applied to understand the implementation risks as well as functional risks to patient safety,
+product quality, and data integrity. Business process flowcharts illustrate the business activities, decision points, and
+subprocesses, while the data flow diagrams identify the creation, processing, review, use, and archiving of data. The
+data flow diagram should identify the primary record for regulated data if the data resides in more than one system
+or location. Together these diagrams help in the understanding of the business process to identify risks to patient
+safety, product quality, and data integrity associated with the process. Data integrity cannot be achieved without a
+complete understanding of the data flow. Developing business process maps and data flow diagrams is described in
+ISPE GAMP Guide: Records and Data Integrity [35] and the ISPE GAMP RDI Good Practice Guide: Data Integrity by
+Design [36]. Planning for individual systems is discussed in Section 4.2.1 of this Guide.
+Examples of planning using critical thinking include [20]:
+•
+Utilizing business process mapping and data flow diagrams to understand where the computerized system will
+fit in the process, what regulated data will pass through it, and what part of the regulated data’s life cycle the
+system will support. The process maps and data flows do not need to be contained within a particular document
+but should be current and accessible and referenced by the system and life cycle information when needed. The
+use of process mapping and diagramming tools is encouraged.
+•
+Defining consistent nomenclature for use in the process to facilitate data transfer, trending, and analytics.
+•
+Selecting a solution that best fits the business requirements minimizing configuration and customization,
+recognizing that it may be more pragmatic to adjust the business process to fit a standard application.
+•
+Understanding the interfaces needed to other systems, and what standard interfaces are available versus
+developing new interfaces (with their additional test and management burden).
+•
+Planning for how the system should respond in an error or failure situation and how it can recover from such a
+situation, as well as how it should behave during normal operation.
+
+--- PAGE 175 ---
+Page 173
+Appendix M12
+20.3.3	 Quality Risk Management
+Critical thinking should be applied to ensure that [14]:
+•
+“The evaluation of the risk to quality should be based on scientific knowledge and ultimately link to the
+protection of the patient; and
+•
+The level of effort, formality and documentation of the quality risk management process should be
+commensurate with the level of risk.”
+In the context of computerized systems, scientific knowledge is based upon the system specifications and the
+business process being supported.
+Critical thinking should be applied to ensure risk assessments are as effective as possible and reflect the system
+requirements and the business process. When assigning a rating for severity of harm to a potential failure, it is
+important to consider the overall risk of the system to patient safety, product quality, and data integrity. A complete
+failure to meet a requirement may render part of the system non-functional, but if the overall system remains fit for its
+intended use with no impact on patient safety, product quality, and data integrity then this might be acceptable. There
+could, however, be good reason for classifying such scenarios as high risk if they adversely impact the organization’s
+other operating imperatives (e.g., productivity targets).
+Similar functions relating to a specific area of functionality may be grouped together in a recursive hierarchy
+consisting of major and subsidiary functions and controls. This hierarchical approach, which may have multiple levels
+depending on the complexity of the process or system, may help simplify risk assessment.
+Critical thinking should determine whether some or all of the more detailed subsidiary functions need to be
+individually assessed within the hierarchy of functionality and controls. A subsidiary function cannot have a higher risk
+than that of the overarching function, so there may be little or no benefit to assessing subsidiary functions of a low-
+risk overarching function.
+Assessing the risk at the major and/or subsidiary level as needed ensures the selection of optimal control measures,
+testing rigor, and documentation commensurate with the assessed risk. Risk mitigation may involve behavioral,
+procedural, or technical controls to reduce risk to an acceptable level. These controls may be part of a computerized
+system function, or in parallel manual procedures, and may be upstream or downstream of the system. Controls are
+typically aimed at:
+•
+Eliminating risk through process or system redesign
+•
+Reducing risk by reducing the probability of a failure occurring
+•
+Reducing risk by increasing the in-process detectability of a failure
+•
+Reducing risk by establishing downstream checks or error traps (e.g., fail-safe or controlled fail state)
+The rigor and extent of controls should be based on the level of risk. For example, application timeout and password
+complexity are both controls to reduce the risk of unauthorized access to a system. Neither the password complexity
+nor the system timeout functions will have greater impact than preventing unauthorized access, which is above them
+in the hierarchy. The duration of the timeout and the extent of password complexity may nevertheless be influenced
+by the assessed risk, with shorter timeouts and greater complexity where the risk his high.
+Testing should verify that controls are appropriate and sufficient. Identifying subsidiary functions with lower risk
+prevents the need to automatically test all subsidiary functions to the same level of detail. Combining this approach
+with a testing strategy based on increasing test rigor and documentation with increasing risk ultimately results in
+efficiency gains.
+
+--- PAGE 176 ---
+Page 174
+Appendix M12
+20.3.4	 Requirements
+The key to the implementation of a computerized system fit for intended use is to thoroughly understand the business
+process and data requirements to enable the definition of requirements. Not all requirements need to be finalized
+before proceeding (for further information on Agile approaches see Appendix D8).
+Critical thinking should ensure that requirements specifically relating to regulatory compliance are tailored to the
+system’s intended use rather than indiscriminately applying every potentially applicable regulatory reference when
+some are not appropriate or necessary. SMEs should be consulted on when and where particular regulations are
+applicable. For example, critical thinking should be applied to identify GxP regulated records that need an audit trail
+rather than defaulting to all data requiring audit trails regardless of context. Critical thinking can then be applied again
+to evaluate what is needed in terms of a data audit trail taking into account whether users are expected to create,
+modify, or delete regulated records during normal operation.
+If an audit trail is required, critical thinking should be used to develop requirements (including Agile user stories)
+for an audit trail that is contextual, searchable, filterable, and reportable. In this way, critical thinking enables the
+development of more efficient and effective controls. The same considered approach should be taken to assess
+individual subsidiary requirements of an overarching requirement to better scale the controls and the testing effort.
+Requirements Management and Traceability Tools
+Requirements management and traceability tools can make development, implementation, and maintenance of
+systems more efficient and less error prone. Such tools provide a collaborative workspace that enables the definition
+of requirements and the development of test cases in tandem with requirements coding, and tracks issues and
+defects. Relational databases within these tools can be leveraged to manage the traceability of the requirements to
+validation activities throughout the life cycle.
+Critical thinking should be applied to determine and document the adequacy of these tools. Where sufficient detail
+and approvals are contained and available within the tool, there is no benefit to patient safety, product quality, and
+data integrity for manually creating separate documentation as audit evidence. Some tools allow reports to be
+generated in common portable formats (e.g., requirements, test outcomes, and traceability matrices) on request.
+Good IT practice should ensure that the data/records held are controlled, secure, and available. Further advice on the
+application of tools can be found in Appendix D9.
+20.3.5	 Supplier Assessment and Selection
+Critical thinking should be applied to the assessment and selection of suppliers, whether it be for the provision of
+software, a system or service to affirm is it fit for the regulated company’s intended use. The assessment should
+cover both software functionality and its development. It is important to understand the origin of the supplier’s
+software modules and libraries, which is why it is becoming increasingly common to request a Software Bill of
+Materials to confirm the use of OSS. In the case of “as a Service” offerings, supplier assessments should include
+assurance of the long-term provision and stability of that offering. The potential need for an audit of the supplier (initial
+and ongoing) should be based on risk.
+Knowledge of the processes followed by the supplier can enable the regulated company to reduce their validation
+effort by leveraging supplier activities, as described in Section 8.3 in the body, and in ISPE GAMP® RDI Good
+Practice Guide: Data Integrity – Key Concepts [57]. Supplier activities should focus on ensuring their product meets
+their specifications, recognizing there will be a minimum level of detailed information and evidence of effective testing
+expected by a regulated company. For example, critical thinking would identify that ineffective testing approaches
+instead of robust and/or automated testing may reduce the opportunity for the regulated company to leverage the
+supplier’s activities. Where the supplier has used a risk-based approach, the regulated company should determine
+if their assessment of risk is different to that of the supplier and adjust accordingly. The supplier’s assessment may
+have been based on generic risks, for example, if function “x” fails it will negatively impact data integrity; the regulated
+
+--- PAGE 177 ---
+Page 175
+Appendix M12
+company may need to consider the specifics of their use of the system based on their own business processes,
+for example, considering the criticality of the data or function impacted by the failure on patient safety and product
+quality. Appendix D5 provides further discussion on how regulated organizations can leverage supplier testing.
+Critical thinking should also ensure that supplier selection criteria contain performance measures such as system
+reliability, service continuity, and reputation for customer responsiveness. For certain types of system architecture,
+such as SaaS, reliance on the supplier may not be limited to the system life cycle and can include the data life cycle,
+which should be assessed during service provider selection. Where there are frequent changes, there may be little
+to no opportunity for the regulated company to reject the change, which reinforces the need for adequate supplier
+change control. Further discussion of how critical thinking can be applied to reduce user validation of COTS products
+has been published elsewhere; see ISPE GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile,
+IT Service Management [20].
+By effectively leveraging supplier and IT/IS service provider effort, the regulated company maximizes value and
+avoids duplication of effort by ensuring activities are undertaken by organizations with the prerequisite skills and
+experience.
+Critical thinking should be applied to ensure that:
+•
+The supplier appreciates how their product is used in the life sciences industry and the implications this may
+have on their development and support practices.
+•
+Regulated companies are accountable for ensuring the system is fit for intended use and should evaluate the
+supplier’s approach against the regulated company’s intended use. Access to supporting information around
+supplier activities should be defined in the purchase contract or SLA.
+•
+Leveraging is enabled through a risk-based approach to IT/IS service provider assurance that ensures service
+providers adopt the necessary controls and records within their QMS. This demonstrates that services and
+solutions are fit for intended use and data integrity is maintained. This does not imply that service providers must
+provide the regulated company with documentation and records maintained as part of the regulated company’s
+QMS. The value of service provider documentation and records is within the service provider’s QMS where
+they support and demonstrate the effectiveness of a service provider’s processes and controls. This does not
+preclude service providers from providing copies of documentation and records where this facilitates an effective
+and efficient approach to assurance.
+•
+Supplier deliverables specifically produced for regulated companies should be assessed for suitability, accuracy,
+and completeness. There should be flexibility regarding acceptable format, structure, and documentation
+practices as there is no value in recreating documentation in a different template.
+•
+Information and test evidence in the form of artifacts within requirements management tools and automated test
+tools have the same status as formal documentation.
+•
+If the supplier’s system is to be interfaced to other systems within the regulated company, for example LDAP14
+authentication or single sign-on, the interfaces need to be defined, implemented, validated, managed, and
+maintained.
+•
+Where feasible, the supplier should aim to develop customer-requested new functionality into their mainstream
+product offering where this is beneficial to the wider user base rather than creating special versions for individual
+customers. This reduces the supplier’s product management effort and simplifies future updates for all parties.
+If the functionality is provided as a configurable option, there is no obligation on other customers to implement
+it. Critical thinking should ensure there are no unintended consequences such as reduced system performance
+when such changes are made to the mainstream product.
+14	Lightweight Directory Access Protocol
+
+--- PAGE 178 ---
+Page 176
+Appendix M12
+•
+Where a regulated company requests the development of a new or amended feature, keeping it within the
+supplier’s development life cycle ensures it is done once and tested once rather than developed and tested
+repeatedly by regulated companies.
+•
+Reuse of standard modules of code or custom-developed forms, by the supplier or regulated company, should
+be based on a master template to ensure changes are automatically replicated across all instances. This reduces
+the possibilities of errors (e.g., introduced by copying and pasting for reuse), condenses the need for testing to
+just the master template, and eliminates the possibility of one or more instances not being updated.
+•
+Ongoing management and implementation of change is done in a controlled way by:
+-
+Leveraging supplier activities and knowledge (i.e., in the same way as that for the original development).
+Care should be taken to recognize instances where the supplier support transitions between project teams
+and service teams as this may impact the standards being applied and the supplier assessments conducted
+by the regulated company.
+-
+Ensuring changes to the product can be communicated to the regulated company so they can assess
+the risks of taking or not taking the change. Note that in some offerings the change is not optional for the
+regulated company, e.g., multitenant SaaS.
+-
+Having a pre-verified method for installing the change. The regulated company should apply critical thinking
+around the risks of taking the change versus not taking the change, assessing likely risks to their intended
+use as a result of the change, and leveraging what has been done by the supplier in order to install the
+change with the minimum of repeated effort.
+•
+Where a supplier is involved within the regulated company’s life cycle (e.g., a systems integrator), the supplier
+and regulated company should jointly agree on the overall rigor of documentation and testing required and who
+will be responsible for which elements in order to avoid unnecessary duplication.
+•
+Completing arrangements needed to support ongoing regulated company compliance, including ongoing supplier
+assessments/audits where these are envisaged, and ensuring that information on supplier assessment and
+management processes and conclusions is available for review.
+20.3.6	 Testing
+Effective testing is crucial when determining that a computerized system is fit for its intended use (see Appendix D5
+for guidance on testing). Critical thinking should facilitate the testing of functions and features with appropriate risk
+priorities that reflect:
+•
+The potential impact on patient safety, product quality, and data integrity (higher-risk functions may require
+greater test rigor and level of documentation).
+•
+Prior testing of the function or feature either in the supplier’s development life cycle or as part of the regulated
+company’s life cycle. Automated tools within the supplier’s development life cycle may have enabled and
+included full regression testing of daily builds.
+•
+The degree of confidence in that prior testing based on supplier assessment.
+Using critical thinking, assessment of risk can then be used as input to determine the appropriate test approaches.
+The aim of testing is to identify and allow the removal of defects and confirm fitness for intended use rather than
+producing documentation for documentation’s sake. Critical thinking can optimize test approaches for the regulated
+company such as [20]:
+•
+Planning and organizing tests to run as efficiently as possible, for example, by combining tests to minimize
+repeated test setup activities, and/or by grouping related functionality testing.
+
+--- PAGE 179 ---
+Page 177
+Appendix M12
+•
+Ensuring sufficient test coverage during the system life cycle, with the rigor of testing commensurate with risk,
+and avoiding repeating tests that are similar or identical to those carried out by others.
+•
+Ensuring that the test cases demonstrate that functions operate correctly.
+•
+Differentiating between proving steps and non-proving steps to limit the amount of test-execution evidence
+created and retained. Proving steps demonstrate a requirement has been fulfilled, while non-proving steps are
+used to set up the proving step. This ensures test evidence is only captured for proving steps that demonstrate a
+higher-risk GxP or business requirement has been fulfilled.
+•
+Ensuring the testers and reviewers have the skills and expertise to execute the tests, operate the system, and
+evaluate the results in the context of the intended use and/or the business process. This then obviates the need
+for overly prescriptive and detailed test instructions and in turn reduces test incidents arising from poorly written
+test scripts.
+•
+Minimizing pressure on testers, e.g., to meet a deadline for moving to the operational phase, which can bias
+testing outcomes.
+•
+Enabling a proportionate review of completed tests based on the risk of the function under test.
+•
+Leveraging automated test tools and test-management tools in place of extensive manual effort and referring to
+the test artifacts within the tools in place of documentation.
+•
+Managing incidents and their corrective actions to ensure any changes are fully verified once completed,
+including an appropriate amount of regression testing to ensure that the change has not adversely affected other
+functionality.
+The level of detail for test cases and test evidence can vary depending on the test strategy and the risk posed by the
+function or feature being tested. Critical thinking should be employed to ensure excessive hard-copy test evidence is
+not requested. In most cases, screen shots and excessive commentary do not add value and are unnecessary.
+Test strategies should ensure sufficient system testing to detect defects, and that test-management processes are
+robust enough to maintain control of the system during the testing activities. The scheduling of testing should take
+account of new and revised risks, design changes, and other factors that could impact the timing of this activity.
+Unusual patterns of test failures associated with particular authors and/or individual testers should be investigated
+to determine whether there are any wider testing implications on the rigor of completed testing. The critical-thinking
+rationale behind the test strategy must be documented.
+20.3.7	 Managing Build and Configuration
+The traditional “static snapshot” approach of installation qualification and configuration management has proven
+difficult to apply, and is ineffective when using modern virtual environments and cloud computing. If the build is
+maintained in an automatically controlled environment with regular checks to verify the system remains within its
+specified setup condition, then the need to independently confirm the installation is reduced to a review by exception.
+Most automated build installers provide reporting tools for any configuration and setup anomalies and failures with a
+dashboard to help operational staff quickly respond and resolve any issues. Such configuration management of the
+build script ensures that the continuous verification is synchronized to compare the current system against the correct
+setup conditions. Critical thinking can be applied to identify effective modern processes such as this, since technology
+has superseded the need for traditional aspects of qualification. Section 4.3 discusses IT service management in
+more detail.
+
+--- PAGE 180 ---
+Page 178
+Appendix M12
+20.3.8	 Operation and Maintenance
+20.3.8.1	 System Evolution
+Computerized systems will be subject to ongoing changes and evolution during their operational life. Critical thinking
+allows change to be embraced in support of improved operation rather than avoided as long as possible because
+of the perceived validation and documentation burden associated with change. The regulatory expectation is that
+application updates that offer improvements to patient safety, product quality, or data integrity should be applied when
+available and, for instance, that GxP systems do not run on obsolete or unsupported operating systems. See ISPE
+GAMP Good Practice Guide: Enabling Innovation – Critical Thinking, Agile, IT Service Management [20].
+Influences such as the increased adoption of Agile software development methods, SaaS application offerings and
+the associated software-release cadence, and the need to update systems more frequently as part of cybersecurity
+efforts, mean there will increasingly be more changes during the operational phase of the life cycle. Indeed, the
+increasing number and frequency of cyberattacks have forced the industry to routinely adopt patches and hotfixes
+immediately after release to address potential security vulnerabilities.
+Automated tools can facilitate efficient change management and regression testing, verifying critical functionality
+and ensuring that regulated data is not adversely impacted after an application upgrade. Appropriate performance
+metrics can confirm solutions continue to be fit for intended use while safeguarding patient safety, product quality, and
+data integrity throughout the changes. Appendix M11 discusses the advantages of moving from a fixed point-in-time
+qualification approach for infrastructure to a continuous control and monitoring approach, which has the flexibility to
+accommodate and manage more frequent changes.
+When a defect is discovered during operational use and the incident management process triggered, it is important
+to apply critical thinking during the root-cause analysis to assess whether the original risk-based testing approach
+is still valid. An excessive response may be to initiate a “test all” approach to find other escaped defects. Instead,
+test metrics should be used to confirm that the actual escape rate of defects is in line with the assumptions made
+when determining the type of testing to be carried out for functions and features with different risk priorities. An
+unacceptable number of escaped defects in high-risk functions requires a re-evaluation of the functional risks and the
+corresponding test strategies.
+20.3.8.2	Ways of Working
+The operational compliance of a computerized system is also highly dependent on the working practices of its users
+with respect to safeguarding patient safety, product quality, and data integrity. These practices should be defined in
+a framework of easily understood and intuitive practical instructions (e.g., SOPs, video how-to guides, built-in online
+help) for routine use and data review, system support, incident management, system administration, etc. Changes
+to system configuration are typically captured in system logs that may be reviewed, but management of system
+configuration changes should be primarily ensured by effective ongoing security, access control, and change and
+configuration management processes rather than a retrospective review of logs.
+The holistic perspective prompted by critical thinking should ensure the work environment uses effective ways of
+working. Critical thinking should be applied to ensure supervisory measures are proportionate to risk, such as, where
+is it appropriate to have a contemporaneous second-person verification versus a later check of completed data
+activity. Special consideration is needed for hybrid situations where records are compiled from manual and automatic
+processes to ensure controls are complete and complementary without being overly bureaucratic.
+Cultural dynamics may challenge the acceptability of openly reporting problems. Codes of conduct should specifically
+state behavioral expectations to ensure the reliability and completeness of data, explaining the benefits this brings
+to patients and the personal consequences for employees who breach controls. It may be beneficial to institute
+confidential reporting lines for whistleblowers15 where these do not already exist.
+15	A whistleblower is “one who reveals something covert or who informs against another; especially: an employee who brings wrongdoing by an
+employer or by other employees to the attention of a government or law enforcement agency.” [58]
+
+--- PAGE 181 ---
+Page 179
+Appendix M12
+20.3.8.3	Training
+When introducing a new or updated computerized system, critical thinking can be used to help identify and target
+appropriate levels of training for different audiences. Examples of training that should be considered for relevant
+personnel include:
+•
+Human factors for design and use of computerized systems – for the implementation and validation SMEs
+•
+Reporting data integrity issues – for all system users
+•
+Transparent investigation of incidents and issues to understand true root causes beyond the initial reasons so
+that robust computerized systems are created and maintained – for the users, support personnel, and quality
+SMEs
+The content of training needs to be scaled to the detail and reinforcement of principles needed. Training is not
+necessarily effective if it just repeats earlier content already delivered to the same audience. Neither is training
+necessarily effective if it relies on attendees documenting they have read and understood the material as they may
+not be qualified to make such a judgment. Trainers should consider fresh and innovative approaches to make training
+interesting and informative so that its effectiveness is maintained and enhances organizational capability.
+Operational compliance is discussed further within Chapter 4 and ISPE GAMP Good Practice Guide: A Risk-Based
+Approach to Operation of GxP Computerized Systems [34].
+20.3.9	 Periodic Review
+During periodic review the system is assessed for the cumulative impact of changes, defects, or regulatory updates.
+The frequency of periodic review should be based on the GxP impact of the system, with high-risk systems reviewed
+more frequently. Critical thinking should be used to determine whether the review frequency should be increased
+or decreased based on the outcome of the previous review and/or performance trends. For example, if issues and
+failures were found during the last periodic review, the review period can be shortened to make sure the CAPAs were
+completed and have resolved those issues.
+Effective system and process performance monitoring and metrics allows decreased periodic review frequency,
+extent, and formality. Critical thinking should also be used in conjunction with system performance metrics and
+trending data to identify areas for improvement within the system’s use, maintenance, and ongoing operation. This
+includes considering whether incremental changes to the system’s functionality have extended the system beyond its
+intended use.
+Critical thinking can also be applied to ensure that the appropriate rigor is applied to change management to
+minimize the frequency of periodic reviews and ensure the validated state is maintained, thus eliminating the need
+for revalidation. Periodic review is discussed in more detail in the ISPE GAMP Good Practice Guide: A Risk-Based
+Approach to Operation of GxP Computerized Systems [34].
+20.3.10	Retirement
+Retirement is the last of the system life cycle phases and consists of withdrawal, decommissioning, and disposal.
+Data may be retained for a period in its original system for reading, migrated to a new replacement system, or
+migrated to another system for archive. Critical thinking and risk management are needed to effectively evaluate what
+data needs to be retained, for what period of time, and how, such as:
+•
+Identifying what data needs to be archived and how to transfer that data if the archival solution is not the original
+system. Data originally created in this system that has completed its retention period may be deleted from the
+system so long as there are no legal holds associated with it.
+
+--- PAGE 182 ---
+Page 180
+Appendix M12
+•
+Balancing the risk of data migration against the complexity of maintaining a legacy copy of the system.
+•
+Retaining legacy systems as a long-term solution to record readability because systems and software become
+obsolete over time.
+•
+Understanding the diminishing value of data as it moves through the retention period and how that impacts
+the controls required. Data recently created in the system may need to stay dynamic for a period. Data that is
+inactive at this stage (i.e., only likely to be needed in an investigation or audit) may be retained in a static, easily
+readable, and portable format rather than keep it available on the system in which it was created.
+Planning the means to meaningfully view archived data if the original system that created the data is decommissioned
+since data formats used between the original and archive system may differ.
+Data migration is discussed in Appendix D7 and ISPE GAMP Good Practice Guide: A Risk-Based Approach to
+Operation of GxP Computerized Systems [34]. Automated migration tools provided as standard items by system
+suppliers are often either assessed in detail or are used without considering the different types of problems that
+might occur within the end-user’s system. The regulated company needs to consider the maturity of the supplier, the
+robustness of the tool, and how well the tool meets their migration needs. Assurance of the tool should be focused on
+actual use cases to test potential problems and confirm that it migrates correctly.
+Automated test tools may be also leveraged to test the migrated data. Critical thinking is needed for planning how to
+cleanse and verify that the data is ready for migration, how to assess the quality of the migrated data, how much data
+needs to be checked, and how any errors created during the migration process may be detected.
+Detailed guidance on system retirement is available in the ISPE GAMP Good Practice Guide: A Risk-Based Approach
+to Operation of GxP Computerized Systems [34]. Further advice on handling mergers, acquisitions, and divestments
+that can change data ownership and disrupt the data life cycle can be found in Section 3.7 of the ISPE GAMP RDI
+Good Practice Guide: Data Integrity by Design [36].
+20.3.11	 Inspection Readiness
+Critical thinking should be applied to support ongoing regulated company compliance and inspection readiness.
+Policies and procedures within the QMS can position where critical thinking should be applied, and plans,
+specifications, and flexible templates can prompt specific considerations. The practical application of critical thinking
+should be apparent in the rigor of the system activities and ongoing maintenance of the validated state. For example,
+rationales should be available to explain how high-risk areas were assessed and identified. These rationales in turn
+justify the level of effort, formality and documentation. A regulator will view the computerized system with a fresh pair
+of eyes, and obvious viewpoints and decisions may not be self-evident to someone not involved in the initial activity.
+During an inspection, a regulated company may need to provide evidence of the assessment and qualification of
+their supplier (e.g., to satisfy EU GMP Chapter 7 [59] and EU GMP Annex 11 (3.1) [32]). Where supplier activities
+and information are leveraged as part of the regulated company’s validation for intended use, information on supplier
+assessment and management processes should be available for review.
+Holding duplicate copies of supplier information that rightly belong in the supplier QMS is unnecessary, and brings the
+risk of inconsistency and increased complexity for no quality benefit.
+The regulated company may consider contractual agreements allowing access to critical supplier information under
+specified extreme circumstances. It is prudent for regulated companies to consider checking such arrangements to
+make sure they are practical and work before they are needed. For clinical trial specific systems, the EMA Q&A: Good
+clinical practice (GCP) [60] states that the sponsor or Clinical Research Organization (CRO) must have “detailed
+knowledge about the qualification documentation and can navigate in it and explain the activities as if they had
+performed the activities themselves.” In such cases there should be a clear understanding of the relationship between
+the supplier’s validation environment and the sponsor’s production environment, and established and effective
+configuration management procedures.
+
+--- PAGE 183 ---
+Page 181
+Appendix M12
+20.3.12	Organizational Capability
+The successful application of the preceding guidance on critical thinking is highly dependent on the ability of the
+organization to build and maintain the necessary supportive mindset and culture within its workforce. Open and
+constructive discussion between stakeholders is vital to evaluate and challenge the situation, the information,
+assumptions, and organizational precedents in order to make better decisions based on agreed rationales.
+The capability of an organization needs to be developed to become more efficient and effective in its application
+of critical thinking. This capability build can be measured and consequently steered through a series of levels of
+increasing maturity, for example, applying the maturity levels discussed in and ISPE GAMP Guide: Records and Data
+Integrity [35] to the organizational critical-thinking capability [20] results in Table 20.1.
+Table 20.1: Critical-Thinking Capability Maturity
+Much of the benefit offered by critical thinking will come from the experience and knowledge of the SMEs planning,
+specifying, implementing, testing, managing, and maintaining computerized systems. The SMEs can identify how
+best to realize the opportunities offered by critical thinking within the regulated company. The key objective is that
+computerized systems are fit for their intended use and efficiently maintained in a state of control.
+Maturity Level
+Capability
+1
+No application of critical thinking evident in decision-making either by practitioners or by
+management
+2
+Some awareness of critical thinking within the organization but highly variable across
+individuals and departments
+3
+Critical thinking is described in policies and procedures but is inconsistently applied
+4
+Critical thinking principles are fully incorporated and routinely applied in working practices
+5
+Critical thinking is respected as a core competency with organizational capability continually
+improved
+
