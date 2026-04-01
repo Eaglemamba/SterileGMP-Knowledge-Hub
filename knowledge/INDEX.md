@@ -1346,6 +1346,38 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-CTC-Complete.md
+**Report:** ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)
+**Pages:** p1–p116 | **Sections:** 9
+
+**Covers questions about:**
+- How to design and execute a thermal mapping study for CTCs (refrigerators, freezers, stability chambers, walk-in cold rooms)
+- User Requirements Specification (URS): what to include, how to write testable requirements, URS-to-qualification traceability
+- Commissioning vs. qualification: difference between FAT/SAT and formal IQ/OQ/PQ, calibration traceability (NIST)
+- Testing strategy: sensor number and placement (volume-based), empty vs. loaded scenarios, door-opening challenge, seasonal variation
+- Qualification (IQ/OQ/PQ) for CTCs: activities, documents, acceptance criteria, difference from process equipment qualification
+- Continuous monitoring: sensor placement (worst-case locations), Alert vs. Alarm level setpoints, BMS/data logger requirements, 21 CFR Part 11
+- Measurement uncertainty: guard-banding, combined uncertainty calculation, impact on acceptance criteria
+- Periodic evaluation and re-mapping triggers: when to re-qualify, risk-based frequency, change control triggers
+- Operational issues: power failure response, temperature excursion assessment, loading practices, training
+- Packaged transport system qualification as a subset of CTC methodology
+
+**Key terms:** CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
+
+**Sections:**
+0. Introduction, Related Standards & URS (Ch 1–3, p1–p25) — regulatory context, WHO/EU GDP/ICH standards, URS elements, CTC type comparison
+1. CTC Types & Commissioning (Ch 4–5, p26–p44) — freezer/refrigerator/stability chamber types, FAT/SAT, calibration traceability, commissioning vs. qualification
+2. Testing Strategy (Ch 6, p45–p57) — risk assessment, sensor placement rationale, empty/loaded/seasonal scenarios, acceptance criteria development, test protocol
+3. Qualification, Monitoring & Periodic Evaluation (Ch 7–9, p58–p71) — IQ/OQ/PQ for CTCs, continuous monitoring, Alert/Alarm levels, re-mapping triggers
+4. Operational Issues, Packaged Transport & Maintenance (Ch 10–12, p72–p86) — power failure response, excursion assessment, transport qualification, PM program
+5. Appendix 1 Part 1: Example URS Facility & Performance Requirements (App 1a, p87–p93)
+5b. Appendix 1 Part 2: Example URS Monitoring, Qualification & Documentation (App 1b, p93–p100)
+6. Appendices 2, 3 & 5: Sensor Placement, Measurement Uncertainty & Risk-Based Testing (p101–p107)
+7. Appendices 6 & 7: Testing Strategies & Templates (p108–p115)
+8. Appendices 8 & 9: References & Glossary (p116)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1378,6 +1410,15 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Pure steam PSG sampling, NCG dryness superheat, Henriksen method, Dewar flask method / 純蒸汽取樣、不可凝氣體、乾燥度分數、過熱度、蒸汽品質試驗方法 | ISPE-Sampling |
 | Process gas sampling, compressed air quality, ISO 8573, dew point oil aerosol viable particle / 製程氣體取樣、壓縮空氣品質、露點、油氣溶膠、活菌粒子 | ISPE-Sampling |
 | Alert level action level water 2-sigma 3-sigma control limits / 警戒限行動限水系統2σ3σ管制限值 | ISPE-Sampling + TR13 |
+| CTC mapping thermal mapping temperature mapping refrigerator freezer stability chamber / 受控溫度腔體對應測試、冷藏庫、冷凍庫、穩定性試驗腔體溫度對應測試 | ISPE-CTC |
+| CTC URS user requirements specification testable requirements IQ OQ PQ cold storage / 受控溫度腔體用戶需求規格書、可測試需求、冷藏設備確效 | ISPE-CTC |
+| CTC commissioning vs qualification FAT SAT NIST calibration traceability / 受控溫度腔體試運行與確效差異、工廠驗收測試、現場驗收測試 | ISPE-CTC |
+| Sensor placement CTC number of mapping sensors volume-based worst case location / CTC感測器數量與位置、體積基礎計算、最差情況位置 | ISPE-CTC |
+| Measurement uncertainty guard-banding CTC acceptance criteria temperature / 量測不確定度、保護帶、受控溫度腔體驗收標準 | ISPE-CTC |
+| Alert alarm level CTC monitoring setpoint BMS data logger 21 CFR Part 11 / CTC監測警戒行動限值、建築管理系統、數據記錄器、電子記錄 | ISPE-CTC |
+| CTC excursion power failure temperature deviation product assessment / CTC溫度偏差、斷電應對、溫度超限產品評估 | ISPE-CTC |
+| Stability chamber ICH conditions 25 40 degree mapping qualification / 穩定性試驗腔體ICH條件、25°C/40°C對應測試確效 | ISPE-CTC |
+| WHO TRS 961 EU GDP cold storage qualification temperature mapping regulation / WHO TRS 961、歐盟GDP、冷藏確效、溫度對應測試法規要求 | ISPE-CTC |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1638,7 +1679,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-Isolators ★★★ (isolator gowning, glove disinfection) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
-→ TR60 ★★★ (lifecycle qualification framework) | ISPE-HVAC ★★★ (HVAC commissioning & qualification: V-diagram, particle counting, recovery test, DP alarm delay) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
+→ TR60 ★★★ (lifecycle qualification framework) | ISPE-CTC ★★★ (CTC-specific IQ/OQ/PQ: commissioning vs. qualification distinction, thermal mapping as core OQ activity, loaded PQ strategy, monitoring sensor qualification, periodic re-qualification triggers) | ISPE-HVAC ★★★ (HVAC commissioning & qualification: V-diagram, particle counting, recovery test, DP alarm delay) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
 
 **HVAC Engineering / Air Handling (暖通空調工程)**
 → ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
@@ -1680,7 +1721,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR43 ★★★ (5 defect lexicons: moulded glass, ampoules, cartridges, syringes, vials; classification framework, RTU standards) | TR87 ★★★ (glass vial handling, breakage prevention, depyrogenation, capping best practices) | TR85 ★★ (visible particle inspection methods for glass containers) | TR73 ★★ (syringe-specific glass container requirements) | Guide-No1 ★ (vial washing and depyrogenation tunnel)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
-→ TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
+→ ISPE-CTC ★★★ (CTC mapping and monitoring: thermal mapping methodology, sensor placement, IQ/OQ/PQ for refrigerators/freezers/stability chambers, monitoring Alert/Alarm levels, measurement uncertainty, guard-banding, excursion response, packaged transport qualification) | TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
 → PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
