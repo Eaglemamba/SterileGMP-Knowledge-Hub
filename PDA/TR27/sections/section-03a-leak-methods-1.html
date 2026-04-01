@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR27 — Section 3A: Leak Test Methods 8.1–8.9</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 3A: Leak Test Methods 8.1–8.9 | 洩漏試驗方法 8.1–8.9</h1>
+    <div class="subtitle">PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</div>
+    <div class="page-info">Methods listed alphabetically — Description, Validation, Sensitivity, Critical Parameters, Equipment, Package Types</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- INTRO / TOC -->
+    <div class="toc">
+        <h3>Methods Covered in This Section | 本節涵蓋方法</h3>
+        <div class="toc-grid">
+            <a href="#m81">8.1 Bubble Test</a>
+            <a href="#m82">8.2 Helium Mass Spectrometry</a>
+            <a href="#m83">8.3 HVLD</a>
+            <a href="#m84">8.4 Lid Deflection</a>
+            <a href="#m85">8.5 Liquid Tracer</a>
+            <a href="#m86">8.6 Microbial Challenge (Aerosol)</a>
+            <a href="#m87">8.7 Microbial Challenge (Liquid)</a>
+            <a href="#m88">8.8 Headspace Analysis</a>
+            <a href="#m89">8.9 Particulate Transmission</a>
+        </div>
+    </div>
+
+    <!-- OVERVIEW TWO-COLUMN -->
+    <div class="two-column">
+        <div class="left-column">
+            <h2>Overview — Leak Test Methods</h2>
+            <p>The final section is a series of summaries that describe several commonly used microbial and physical integrity test methods. These methods are listed <strong>alphabetically</strong>. In each summary, information is included on the <strong>validatability</strong> of the method, the limitations that influence the method's sensitivity, and whether it is useful for <strong>quantitative</strong> leakage measurement, <strong>qualitative</strong> leakage detection, or for leak location.</p>
+            <p>Critical test parameters are listed, followed by the time required to complete the leak test and the special equipment required. The package stress created by the leak test is stated, along with specific product/package types that are most commonly tested by the given method.</p>
+        </div>
+        <div class="right-column">
+            <h2>概覽 — 洩漏試驗方法總論</h2>
+            <p>TR27 最後一節以字母順序，彙整了九種常見的包裝完整性試驗方法，每種方法均從以下七個面向進行結構化描述：</p>
+            <ul>
+                <li><strong>驗證性（Validatability）</strong>：是否可被驗證</li>
+                <li><strong>靈敏度（Sensitivity）</strong>：偵測極限與影響因素</li>
+                <li><strong>定量 / 定性（Quantitative / Qualitative）</strong></li>
+                <li><strong>關鍵參數（Critical Parameters）</strong></li>
+                <li><strong>完成時間（Time to Complete）</strong></li>
+                <li><strong>所需設備（Equipment Required）</strong></li>
+                <li><strong>適用包裝類型（Package Types）</strong></li>
+            </ul>
+            <div class="note-box">
+                <h4>學習重點提示</h4>
+                <p>理解這九種方法的<strong>定性 vs 定量</strong>分類，以及每種方法的靈敏度排序，是 TR27 考試與實務應用的核心。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.1 ===== -->
+    <div class="chapter-section" id="m81">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.1</div>
+            <div class="chapter-info">
+                <h2>Bubble Test | 氣泡試驗</h2>
+                <p>Qualitative — Visual detection of gaseous leakage | 定性 — 目視偵測氣體洩漏</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.1 Bubble Test</h3>
+                    <p><strong>Description:</strong> The package is submerged in water or other suitable clear, colorless solvent. A <span class="key-term">vacuum</span> is exerted on the test system, and the package is examined visually for evidence of gaseous leakage. Alternatively, <span class="key-term">surfactant</span> may be added to the seal in question, a differential pressure is applied across the seal, and evidence of gaseous leakage is detected by visible inspection.</p>
+
+                    <h3>Validation</h3>
+                    <p>This method determines the presence and location of leaks that allow sufficient gaseous flow to permit the formation of <strong>visually detectable bubbles</strong> in the submersion fluid or in the applied surfactant. This method can be validated for the detection or location of larger leaks or package imperfections. Validation will depend on the test method parameters and the reliability and sensitivity of visual detection.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of the method is based on the ability of gas to move out of a leak to form visible bubbles in the submersion fluid or applied surfactant, and the ability to identify <strong>positive leak controls</strong>.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Differential pressure exposure</li>
+                        <li>Differential pressure rate of exposure</li>
+                        <li>Test time</li>
+                        <li>Submersion fluid or surfactant surface tension</li>
+                        <li>Cleanliness of package</li>
+                        <li>Visual inspection parameters: light intensity, magnification, background, time for inspection, visual inspector training and experience</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Up to several minutes.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Vacuum or pressure source</li>
+                        <li>Submersion fluid or surfactant</li>
+                        <li>Submersion vacuum vessel for submersion testing</li>
+                        <li>Pressure controls and monitors</li>
+                        <li>Visual inspection: appropriate lighting, light meters, magnification, and color background</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <ul>
+                        <li>Pressure differential</li>
+                        <li>Wetting of seal or entire package</li>
+                    </ul>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to all pharmaceutical packages that do <strong>not</strong> rely on a tortuous path or barrier seal, and that can tolerate wetting and pressure differentials.</p>
+
+                    <p><em>Literature References: ASNT 1982; ASTM D 3078; ASTM D 4991; ASTM E515; Elder 1995; Guazzo 1996; Morton 1987; Morton et al, May-June 1989</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.1 氣泡試驗 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念</h4>
+                        <p><span class="key-term">氣泡試驗（Bubble Test）</span>是最直觀的洩漏偵測方式：將包裝浸入清澈液體中，施加真空或差壓，觀察是否有氣泡冒出。氣泡即代表有氣體洩漏路徑。</p>
+                        <p>另一種方式是在密封處塗抹界面活性劑（如肥皂液），再施加差壓，觀察是否起泡。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>生活類比</h4>
+                        <p>就像我們用水盆找輪胎漏氣點——把輪胎沉入水中，充氣後，哪裡冒泡就是破洞在哪。原理完全相同。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點：為何是定性而非定量？</h4>
+                        <p>氣泡試驗只能告訴你「有沒有漏」，無法精確測量「漏了多少」。因此分類為<strong>定性（Qualitative）</strong>。影響可靠性的最大變數是<strong>目視檢驗員的訓練與經驗</strong>，以及光源條件。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>適用限制</h4>
+                        <ul>
+                            <li>包裝必須能承受浸濕與差壓</li>
+                            <li>不適用依賴<strong>曲折路徑（tortuous path）</strong>或阻隔密封的包裝</li>
+                            <li>較適合偵測<strong>較大的洩漏</strong>，微小缺陷靈敏度不足</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.2 ===== -->
+    <div class="chapter-section" id="m82">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.2</div>
+            <div class="chapter-info">
+                <h2>Helium Mass Spectrometry | 氦質譜分析</h2>
+                <p>Quantitative / Semi-Quantitative — Most sensitive physical leak test | 定量 / 半定量 — 最靈敏的物理洩漏試驗</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.2 Helium Mass Spectrometry</h3>
+                    <p><strong>Description:</strong> <span class="key-term">Helium</span> is used as a tracer gas for detection and measurement of leakage across a package seal. Helium is detected by <span class="key-term">mass spectrometry</span>. There are <strong>four testing modes</strong>:</p>
+
+                    <ul>
+                        <li><strong>Tracer Probe:</strong> The package is placed in-line with the mass spectrometry unit and helium is sprayed around the outside. The mass spectrometer vacuum pump applies vacuum to the package and helium leakage into the package is measured.</li>
+                        <li><strong>Hood Method:</strong> The package is enclosed in a "hood" or chamber into which helium is introduced. The mass spectrometer vacuum pump applies vacuum to the package and helium leakage into the package is measured.</li>
+                        <li><strong>Detector Probe:</strong> The package is flooded with helium and a detector probe connected to the mass spectrometer is used to sample the atmosphere around the package perimeter. The package is <em>not</em> under vacuum in this case.</li>
+                        <li><strong>Inside-Out:</strong> The package is flooded with helium (by penetrating the package, flooding prior to sealing, or "bombing" — exposing the sealed package to pressurized helium). The package is then placed in a test chamber directly connected to the mass spectrometer and subjected to vacuum.</li>
+                    </ul>
+
+                    <h3>Validation</h3>
+                    <p>Helium mass spectrometry methods can be validated for the detection, location, and measurement of gaseous leaks and helium permeation. Instrument sensitivity can be demonstrated using <strong>calibrated helium leaks</strong>. Positive control package leaks can be used in some cases. Validation studies should examine the ability of the leak test method to accurately measure gas leakage in the package system.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>Helium leak detection methods are potentially the <strong>most sensitive</strong> indicators of package leakage and permeation. Sensitivity is based on the ability to accurately detect and measure helium leakage/permeation rate. General mass spectrometry system parameters that impact sensitivity include:</p>
+                    <ul>
+                        <li>Volume of vacuum system</li>
+                        <li>Pressure in the vacuum system</li>
+                        <li>Pressure in the sensing element of the mass spectrometer</li>
+                        <li>Response time of the mass spectrometer</li>
+                        <li>Effective pump speed of vacuum pump system</li>
+                        <li>Ratio of the total gas flow of the vacuum pump system to the total gas flow of the mass spectrophotometer leak detector</li>
+                    </ul>
+
+                    <p><strong>Quantitative/Qualitative:</strong></p>
+                    <ul>
+                        <li><span class="key-term">Quantitative | 定量</span>: Hood method and Inside-Out method</li>
+                        <li><span class="key-term">Qualitative or Semi-Quantitative | 定性或半定量</span>: Tracer Probe method and the Detector Probe method</li>
+                    </ul>
+
+                    <h3>Critical Test Parameters</h3>
+                    <p><strong>All methods:</strong></p>
+                    <ul>
+                        <li>Package testing mode; test time duration; temperature of package</li>
+                        <li>Percentage of tracer gas surrounding the test boundary</li>
+                        <li>Location, length and size of connection between tester and vacuum system</li>
+                        <li>Helium background within the vacuum system</li>
+                        <li>Cleanliness, surface area, surface finish and material composition of test boundary</li>
+                        <li>Stability of electrical supply to the mass spectrometer</li>
+                    </ul>
+                    <p><strong>Hood and Inside-Out methods additionally:</strong></p>
+                    <ul>
+                        <li>Concentration of the tracer gas in the package or hood</li>
+                        <li>Bombing time; bombing pressure</li>
+                        <li>Degassing of the package surface (post bombing dwell time or air wash)</li>
+                    </ul>
+                    <p><strong>Tracer and Detector Probe methods additionally:</strong></p>
+                    <ul>
+                        <li>Specialized operator training, experience, technique</li>
+                        <li>Surface scanning speed</li>
+                        <li>Differential pressure across the package</li>
+                        <li>Helium gas concentration within the test boundary</li>
+                        <li>Distance the probe or sniffer is held from the surface</li>
+                        <li>Length and diameter of sniffer probe lines</li>
+                        <li>Build-up of helium in the background atmosphere</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Method dependent. Several hours may be required for bombing. Once helium challenge conditions are established, the actual test time is a few seconds.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Helium mass spectrometer with vacuum system</li>
+                        <li>Package test fixture or probe</li>
+                        <li>Helium source</li>
+                        <li>Vacuum (Tracer Probe, Hood and Inside-Out methods)</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Vacuum is applied to packages in Tracer Probe, Hood, and Inside-Out methods.</p>
+
+                    <h3>Product/Package Types</h3>
+                    <ul>
+                        <li>Applicable to pharmaceutical packages that do <strong>not</strong> rely on a tortuous path or barrier material and that are required to maintain a very low leak rate specification.</li>
+                        <li><strong>Inside-Out:</strong> Hermetically sealed containers with a defined internal volume that can withstand external vacuum.</li>
+                        <li><strong>Tracer Probe:</strong> Items that can withstand a vacuum of 0.1 Pascal (10⁻⁵ torr).</li>
+                        <li><strong>Detector Probe:</strong> Items where the effluent side of the leak is accessible with the probe.</li>
+                        <li><strong>Hood method:</strong> Packages that can be evacuated.</li>
+                    </ul>
+
+                    <p><em>Literature References: ASNT 1982; ASTM E 493, E 499, E 908, E 948, E 1603; Elder 1995; Gilchrist et al 1985, 1989; Guazzo 1994; Hoffmann 1996; Kirsch et al 1997; Rhea et al 1984; Varian Vacuum Products 1995</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.2 氦質譜分析 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>為何選用氦氣（He）？</h4>
+                        <ul>
+                            <li>氦是<strong>最小的惰性氣體分子之一</strong>，穿透能力極強</li>
+                            <li>大氣中氦含量極低（約 5 ppm），背景噪音最小化</li>
+                            <li>無毒、不可燃、不與包裝或產品反應</li>
+                            <li>質譜儀對氦有極高的偵測靈敏度</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>洩漏速率（Helium Leak Rate）說明</h4>
+                        <p>氦質譜法可量化「洩漏速率」，單位通常為：</p>
+                        <pre>atm·cc/sec（大氣·毫升/秒）
+或 Pa·m³/s（帕·立方公尺/秒）</pre>
+                        <p>例如：1×10⁻⁷ atm·cc/sec 即為非常微小的洩漏，代表每秒只有極少量氦氣穿過缺陷。此數值可作為密封規格限制的依據。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>四種測試模式比較</h4>
+                        <table>
+                            <tr><th>模式</th><th>包裝施壓</th><th>定量/定性</th></tr>
+                            <tr><td>Tracer Probe 示蹤探針</td><td>施真空</td><td>定性/半定量</td></tr>
+                            <tr><td>Hood 罩帽法</td><td>施真空</td><td>定量</td></tr>
+                            <tr><td>Detector Probe 偵測探針</td><td>無真空</td><td>定性/半定量</td></tr>
+                            <tr><td>Inside-Out 由內向外</td><td>施真空（外部）</td><td>定量</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Bombing（氦氣浸壓）解釋</h4>
+                        <p>Inside-Out 法中常用「bombing」技術：將已密封包裝暴露在<strong>高壓氦氣環境</strong>中數小時，讓氦氣透過任何缺陷滲入包裝內部。之後取出放入真空腔，量測從包裝逸出的氦氣量，即為洩漏率。Bombing 時間與壓力是關鍵參數。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>靈敏度位階</h4>
+                        <p>在所有物理洩漏試驗中，氦質譜法靈敏度<strong>最高</strong>，可偵測到肉眼完全看不到的微小缺陷，是製藥業中用於<strong>最嚴苛密封規格</strong>（如安瓿、預充填注射器、冷凍乾燥瓶）的黃金標準之一。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.3 ===== -->
+    <div class="chapter-section" id="m83">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.3</div>
+            <div class="chapter-info">
+                <h2>High Voltage Leak Detection (HVLD) | 高電壓洩漏偵測</h2>
+                <p>Qualitative — Near-instantaneous detection for conductive liquid-filled containers | 定性 — 近乎瞬間偵測，適用於含導電液體之包裝</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.3 High Voltage Leak Detection (HVLD)</h3>
+                    <p><strong>Description:</strong> Containers are exposed to a <span class="key-term">high frequency, high-voltage current</span> near the area of the package to be detected for leaks. The presence of a leak will result in a flow of current above base noise detected by the HVLD system as a reject. This test method is only feasible for containers constructed of <strong>relatively nonconductive materials</strong> and for product that is <strong>significantly more conductive</strong>. The product must be at or very near any potential leaks to allow conductance to occur.</p>
+
+                    <h3>Validation</h3>
+                    <p>HVLD methods can be validated for the detection of leaks in product/package systems meeting the conductivity requirements stated above. Validation studies should examine the ability of HVLD to detect control leaks as a function of:</p>
+                    <ul>
+                        <li>Voltage level and detection sensitivity settings</li>
+                        <li>HVLD probe positioning</li>
+                        <li>Package wall thickness and geometry</li>
+                        <li>Product formulation variations</li>
+                    </ul>
+
+                    <h3>Sensitivity</h3>
+                    <p>HVLD can detect leaks large enough to permit <strong>liquid penetration or wetting</strong>. HVLD sensitivity must be demonstrated during validation studies for each product/package system to ensure the detection of all control leaks with a minimum number of false positives.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>High voltage setting</li>
+                        <li>Product conductivity</li>
+                        <li>Sensitivity setting (Gain)</li>
+                        <li>Test area cleanliness</li>
+                        <li>HVLD probe positioning</li>
+                        <li>Cleanliness of the package</li>
+                        <li>Package geometry</li>
+                        <li>Access of product to the leak</li>
+                        <li>Package conductivity</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test time is <strong>almost instantaneous</strong>.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>High voltage leak detection instrumentation</li>
+                        <li>Package handling system to ensure package is positioned to wet the seal area and for feeding product into the HVLD equipment</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Rapid, short exposure to a voltage.</p>
+
+                    <h3>Other Considerations</h3>
+                    <p>It is recommended that the <strong>impact of voltage on product stability</strong> be determined.</p>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do <strong>not</strong> rely on a tortuous path or barrier seal, and that meet the conductivity requirements described above.</p>
+
+                    <p><em>Literature References: Anonymous 1996; Arndt et al 1996; Axelson et al 1990; Ball 1997; The Parenteral Society 1992; Villiger 1987</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.3 高電壓洩漏偵測（HVLD）— 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>HVLD 工作原理</h4>
+                        <p>HVLD 是利用<strong>高頻高壓電場</strong>偵測包裝洩漏的技術。運作前提：</p>
+                        <ul>
+                            <li>包裝材料（如玻璃、塑膠）導電性<strong>低</strong></li>
+                            <li>包裝內產品（如含鹽液體）導電性<strong>高</strong></li>
+                            <li>若有孔洞，導電液體接觸到電場會產生<strong>電流突波</strong>，被系統識別為缺陷</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>HVLD 特別說明 — 液體充填容器</h4>
+                        <p>HVLD 是<strong>唯一專為液體充填容器設計</strong>的近線或在線洩漏試驗方法。其最大優勢是：</p>
+                        <ul>
+                            <li>測試速度幾乎<strong>瞬間完成</strong>，可整合到高速填充線（100% 在線檢驗）</li>
+                            <li>無需破壞包裝或使用示蹤氣體</li>
+                            <li>對注射液（含鹽分）+ 玻璃或塑膠容器的組合最為適合</li>
+                        </ul>
+                        <p><strong>限制：</strong>若產品為油性或低導電性液體，HVLD 則不適用。驗證時需確認產品配方變化對靈敏度的影響。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明</h4>
+                        <p>想像包裝是一個絕緣外殼，裡面裝了導電的鹽水。HVLD 探頭像是在外圍施加一個電場「網」。正常情況下電流無法穿過外殼；但如果有裂縫，鹽水接觸裂縫——「短路」了，電流突增，警報就響了。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>電壓對產品穩定性的考量</h4>
+                        <p>TR27 特別提醒：驗證時應評估<strong>高壓對產品穩定性的影響</strong>（如蛋白質藥物或電荷敏感性分子），確保測試本身不破壞產品品質。這是 HVLD 驗證方案的必要項目。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.4 ===== -->
+    <div class="chapter-section" id="m84">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.4</div>
+            <div class="chapter-info">
+                <h2>Lid Deflection | 蓋板撓曲試驗</h2>
+                <p>Qualitative — Monitors flexible lidding movement under differential pressure | 定性 — 量測撓曲位移偵測洩漏</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.4 Lid Deflection</h3>
+                    <p><strong>Description:</strong> To perform lid deflection tests a <span class="key-term">pressure differential</span> is applied to a package and the resultant movement of the package's <span class="key-term">flexible lidding material</span> is monitored and used as an indication of the absence or presence of unacceptable levels of leakage. Lid deflection sensors can work by any of a variety of methods, including:</p>
+                    <ul>
+                        <li>Strain gauges for monitoring lidding movement</li>
+                        <li>Contact sensors</li>
+                        <li>Capacitance sensors</li>
+                        <li>Inductance sensors</li>
+                        <li>Electromagnetic wave motion sensors</li>
+                        <li>Photoelectric sensors</li>
+                        <li>Ultrasonic pulse echo sensors</li>
+                    </ul>
+
+                    <h3>Validation</h3>
+                    <p>Lid deflection methods can be validated for the detection of the absence of lidding material or for the detection of gaseous leaks large enough to result in <strong>minimal or no flexible lidding material displacement</strong> when a package is subjected to a reference differential pressure. Validation studies should examine the ability of the lid deflection instrument to detect control leaks as a function of instrument sensor capabilities, differential pressure testing conditions, package headspace, and package component geometry.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of lid deflection methods is based on the ability to accurately detect flexible lidding material movement when the package is subjected to a standard differential pressure. Sensitivity will largely depend on the <strong>method for monitoring lidding movement</strong> and the capabilities of the particular sensor device selected. Generally, lid deflection tests are used as an indicator of <strong>larger leaks</strong>. This method is sometimes coupled with pressure/vacuum decay leak tests in order to provide both a "gross" and a "fine" leak test detection range.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Lidding movement sensor accuracy and sensitivity</li>
+                        <li>Differential pressure applied to package</li>
+                        <li>Package headspace</li>
+                        <li>Package component geometry</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>A few seconds.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Lidding deflection instrumentation</li>
+                        <li>Differential pressure source, monitors and controls</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Differential pressure.</p>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do <strong>not</strong> rely on a tortuous path or barrier seal and that can tolerate a differential pressure applied to the seal area. This test is particularly useful for checking critical sizes of specialty packages or devices. The test can often be used instead of vacuum/pressure decay for packages that tend to deform under pressure.</p>
+
+                    <p><em>Literature References: Gnanasekharan et al 1992, 1994; Guazzo 1996; Hoffmann 1996; Rice 1986; Yam 1995</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.4 蓋板撓曲試驗 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念</h4>
+                        <p><span class="key-term">蓋板撓曲試驗（Lid Deflection Test）</span>：對具有<strong>彈性上蓋（flexible lid）</strong>的包裝（如培養皿、熱封托盤、軟包裝等）施加差壓，正常密封包裝的上蓋會因壓力而產生<strong>可量測的撓曲位移</strong>；若有洩漏，氣體從缺陷處洩出，蓋板無法建立正常壓差，撓曲量不足 → 判為缺陷。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>感測器技術多樣性</h4>
+                        <p>蓋板撓曲感測器有多種物理原理可選擇：</p>
+                        <ul>
+                            <li><strong>應變規</strong>：量測材料微小形變</li>
+                            <li><strong>電容式 / 電感式</strong>：非接觸量測距離變化</li>
+                            <li><strong>超音波脈衝回波</strong>：最精密，可偵測微小位移</li>
+                            <li><strong>光電式</strong>：利用光遮斷或反射量測位移</li>
+                        </ul>
+                        <p>感測器選擇直接影響靈敏度——驗證方案必須針對特定感測器進行。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明</h4>
+                        <p>想像一個密封的氣球：你用手指輕壓（施差壓），密封好的氣球會均勻鼓起；如果氣球有孔，壓力消散，你感覺不到應有的反壓力。蓋板撓曲的邏輯相同——量測「反應力」來判斷密封狀態。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>與壓力/真空衰減法的配合使用</h4>
+                        <p>蓋板撓曲試驗對<strong>大漏（gross leak）</strong>敏感，通常與<strong>壓力衰減（pressure decay）</strong>或<strong>真空衰減（vacuum decay）</strong>搭配使用，提供「粗漏 + 細漏」雙層篩選。特別適合易在壓力下變形的包裝（傳統壓力衰減試驗在這類包裝上會產生假陽性）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.5 ===== -->
+    <div class="chapter-section" id="m85">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>Liquid Tracer | 液體示蹤劑試驗</h2>
+                <p>Generally Qualitative — Dye, radionuclides, or metal ions detect liquid ingress/egress | 通常為定性 — 染料、放射核素或金屬離子偵測液體滲透</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.5 Liquid Tracer</h3>
+                    <p><strong>Description:</strong> A <span class="key-term">liquid tracer solution</span>, such as <strong>dye, radionuclides, or metal ions</strong>, is exposed to the package seal to be tested. This may require:</p>
+                    <ul>
+                        <li>Submersion of the package in the liquid tracer</li>
+                        <li>Application of a small amount of liquid tracer to the seal</li>
+                        <li>Filling the package itself with liquid tracer followed by submersion in water or other suitable solvent</li>
+                    </ul>
+                    <p>Migration of the tracer across the seal is determined either visually, spectrophotometrically, or by other analytical means appropriate to the liquid tracer. Often a <strong>pressure differential</strong> is applied to accelerate tracer migration and improve test method sensitivity.</p>
+
+                    <h3>Validation</h3>
+                    <p>Liquid tracer leak test methods can be validated for the detection or location of leaks large enough to permit <strong>liquid penetration and detection</strong>. For some methods, the extent of liquid leakage can be quantitatively measured. Validation will depend on the test method parameters and the reliability and sensitivity of the liquid tracer detection method.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of the method is based on the extent of liquid tracer penetration and the ability to detect or measure such leakage.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Generally Qualitative | 通常為定性</span>; may be quantitative if liquid tracer penetration can be quantitatively measured.</p>
+
+                    <p><strong>Detection limit:</strong> There must be sufficient liquid tracer leakage to permit detection by the selected detection method.</p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <p><strong>General:</strong></p>
+                    <ul>
+                        <li>Differential pressure exposure</li>
+                        <li>Time of liquid tracer exposure</li>
+                        <li>Tracer liquid surface tension, viscosity, hydrophilicity/lipophilicity, and temperature</li>
+                        <li>Compatibility and stability of the liquid tracer with the product</li>
+                        <li>Light stability of the tracer with product</li>
+                    </ul>
+                    <p><strong>Visual inspection parameters:</strong></p>
+                    <ul>
+                        <li>Type of lighting and light intensity; magnification; background; angle of inspection; time for inspection; training and experience of inspectors</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Several minutes to as long as a few hours.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Liquid tracer solution; vacuum or pressure source; submersion fluid; vacuum vessel</li>
+                        <li>Pressure controls and monitors</li>
+                        <li>Visual inspection: lighting, light meters, magnification, color background</li>
+                        <li>Fluorescent dye inspection: black light of appropriate wavelength and intensity</li>
+                        <li>Analytical detection: UV/Vis spectrophotometry, atomic absorption, HPLC, or other appropriate instrumentation</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <ul>
+                        <li>Pressure differential</li>
+                        <li>Wetting of seal or entire package</li>
+                    </ul>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to all pharmaceutical packages that do <strong>not</strong> rely on a tortuous path or barrier seal and that can tolerate wetting or submersion.</p>
+
+                    <p><em>Literature References: ASNT Handbook 1982; ASTM E 165; Elder 1995; Guazzo 1994, 1996; Morton 1987, May-June 1989; Akers 1985; Artz et al 1961; Chrai et al Sept. 1994; Gilchrist et al 1989; EP VI; Butler et al 1978; McVean et al 1972; PDA Techn. Inform. Bull. 4 1983; Korczynski 1987; Hansen et al 1995; ISO 8362-2; Jones et al 1995; Lin et al 1982; Marcy 1995; Spitzley 1993; Morton et al May-June 1989</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.5 液體示蹤劑試驗 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>三種常見示蹤劑類型</h4>
+                        <table>
+                            <tr><th>示蹤劑</th><th>偵測方式</th><th>特點</th></tr>
+                            <tr><td>染料（如亞甲藍）</td><td>目視 / 分光光度計</td><td>最常用，成本低</td></tr>
+                            <tr><td>放射核素</td><td>放射偵測儀</td><td>極靈敏，需輻射管理</td></tr>
+                            <tr><td>金屬離子（如銅離子）</td><td>原子吸收光譜 (AAS)</td><td>靈敏度高，可定量</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻說明</h4>
+                        <p>就像在水管接頭塗抹有色液體——如果接頭漏水，顏色就會滲出另一側。液體示蹤劑試驗就是把這個概念精確化：選擇能被微量偵測的示蹤物質，量化滲透量。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何通常是定性而非定量？</h4>
+                        <p>目視觀察染料滲透只能判斷「有無」，但若使用分光光度計定量滲入示蹤劑濃度，則可轉為<strong>半定量或定量</strong>。因此 TR27 用「通常為定性」表達其彈性：取決於偵測方法的精密度。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>示蹤劑選擇的關鍵考量</h4>
+                        <ul>
+                            <li><strong>相容性</strong>：示蹤劑不得與包裝材料或產品發生反應</li>
+                            <li><strong>表面張力 / 黏度</strong>：影響示蹤劑穿透缺陷的能力</li>
+                            <li><strong>光穩定性</strong>：螢光染料需考慮在強光下是否褪色</li>
+                            <li><strong>清洗效果</strong>：測試後需確保示蹤劑完全清除，不污染產品</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.6 ===== -->
+    <div class="chapter-section" id="m86">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.6</div>
+            <div class="chapter-info">
+                <h2>Microbial Challenge, Aerosolization | 微生物挑戰試驗（氣溶膠法）</h2>
+                <p>Qualitative — Airborne microbial challenge for tortuous path / barrier seals | 定性 — 適用曲折路徑或阻隔密封之包裝</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.6 Microbial Challenge, Aerosolization</h3>
+                    <p><strong>Description:</strong> Microbial challenge testing by <span class="key-term">aerosolized microorganisms</span> involves placing product-filled or media-filled package units into a specially designed <strong>aerosolization chamber</strong> and charging the atmosphere within the chamber with a nebulized cloud or aerosol of microorganisms for a specified period of time. During the challenge test, the packages may be subjected to <strong>differential pressure challenges</strong>. The atmosphere within the chamber must be kept within defined humidity and temperature ranges and well circulated.</p>
+                    <p>After the challenge, the units are removed from the chamber. If media-filled product is used (or product which supports microbial growth), the units are then <strong>incubated and examined for microbial growth</strong>. Otherwise, the package contents are removed and exposed to media which is subsequently incubated and examined for growth.</p>
+
+                    <h3>Validation</h3>
+                    <p>Microbial aerosolization challenge methods determine the presence of microorganisms that have penetrated a package exposed to aerosolized microorganisms. Critical validation parameters include:</p>
+                    <ul>
+                        <li>Concentration and uniformity of aerosolized microorganisms</li>
+                        <li>Chamber temperature, pressure, and humidity settings and controls</li>
+                        <li>Ability of the media or product to support microbial growth</li>
+                        <li>Positive controls should demonstrate growth</li>
+                    </ul>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of the method is based on the <strong>incidence of ingress of aerosolized microorganisms</strong> into positive control package defects and the ability to detect such ingress.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <p><strong>Detection limit:</strong> There must be sufficient bacterial growth for media to visibly or analytically demonstrate growth.</p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Media or product microbial growth promotion</li>
+                        <li>Stable microbial concentration in the aerosol (level and uniformity)</li>
+                        <li>Size of challenge organism</li>
+                        <li>Electrical charge on aerosolized particle</li>
+                        <li>Extent of microbial drying during test</li>
+                        <li>Time of exposure to the aerosol</li>
+                        <li>Chamber air flow patterns and speed</li>
+                        <li>Chamber temperature and humidity conditions</li>
+                        <li>Differential pressure exposure (optional)</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Exposure time: typically a few hours. Incubation time: several days, depending on the microbial challenge and incubation conditions.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Standard microbiological laboratory equipment</li>
+                        <li>Microbial growth support media or product</li>
+                        <li>Airtight test chamber</li>
+                        <li>Microbial spore nebulization unit with impinger, motor and fan</li>
+                        <li>Temperature, pressure, and humidity controls and monitors</li>
+                        <li>Chamber sterilization equipment</li>
+                        <li>Air samplers</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <ul>
+                        <li>Pressure differential (optional)</li>
+                        <li>Challenge Organism: Typically, <em>B. subtilis</em> spores</li>
+                    </ul>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to sterile pharmaceutical packages that <strong>cannot tolerate liquid immersion</strong> microbial challenge tests and that rely on <strong>tortuous path or barrier seals</strong> to ensure package integrity.</p>
+
+                    <p><em>Literature References: Akers 1985; ASTM F1585-95; ASTM F 1608-95; Blakistone 1995; Chen et al 1991; Chrai et al Sept. 1994; Gnasasekharan et al 1995; Hansen et al 1995; Henke et al 1992; Jones et al 1995; Korczynski 1987; Morton 1987; Placencia et al 1988, 1989; Reich 1985, 1986; Spitz 1994; Spitzley 1993; Tallentire et al 1985</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.6 微生物挑戰試驗（氣溶膠法）— 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念：氣溶膠挑戰的應用場景</h4>
+                        <p>氣溶膠微生物挑戰法專門用於<strong>不能浸水</strong>的無菌包裝，例如：</p>
+                        <ul>
+                            <li>含乾燥劑的鋁袋（foil pouch）</li>
+                            <li>具有透氣性多孔材料（Tyvek）的滅菌袋</li>
+                            <li>依賴曲折路徑密封而非液密密封的包裝</li>
+                        </ul>
+                        <p>這類包裝的完整性不能用液體浸泡試驗評估，必須用氣態（氣溶膠）微生物挑戰。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>挑戰菌株：枯草桿菌芽孢（B. subtilis spores）</h4>
+                        <p>使用芽孢（spores）而非營養型細菌的原因：</p>
+                        <ul>
+                            <li>芽孢在乾燥氣溶膠環境中存活率更高</li>
+                            <li>粒徑較小，更能模擬最壞情況</li>
+                            <li>對乾燥的抵抗力強，整個測試過程中濃度更穩定</li>
+                        </ul>
+                        <p>挑戰濃度與均一性是驗證的關鍵——腔室內微生物分佈必須均勻，陽性對照必須顯示生長。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何測試時間需要數天？</h4>
+                        <p>試驗流程分兩段：
+                        <br>(1) <strong>氣溶膠暴露</strong>：數小時
+                        <br>(2) <strong>培養基培養（incubation）</strong>：7–14天
+                        <br>培養期是為了讓潛在進入包裝的微生物有足夠時間生長至可偵測量。因此整個試驗周期較長，不適合作為快速放行測試。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>與液體浸泡法的對比</h4>
+                        <p>氣溶膠挑戰法 vs 液體浸泡法（8.7）：<br>
+                        氣溶膠法像是把包裝放入充滿細菌噴霧的房間；液體浸泡法則是把包裝丟入細菌湯中。兩者的應用場景完全不同，取決於包裝能否耐受液體浸濕。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.7 ===== -->
+    <div class="chapter-section" id="m87">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.7</div>
+            <div class="chapter-info">
+                <h2>Microbial Challenge, Liquid Immersion | 微生物挑戰試驗（液體浸泡法）</h2>
+                <p>Qualitative — Package immersed in liquid microbial suspension | 定性 — 包裝浸泡於微生物懸浮液</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.7 Microbial Challenge, Liquid Immersion</h3>
+                    <p><strong>Description:</strong> Microbial challenge testing by <span class="key-term">liquid immersion</span> involves immersing filled package units into a <strong>liquid concentration of microorganisms</strong> for a specified period of time, removing the units, rinsing them, incubating the units and examining them for microbial growth. These units typically contain <strong>nutritive growth media</strong>, but may alternatively contain product, if not inhibitory to the growth of the challenge organism. During immersion, the packages may be exposed to extremes of pressure to simulate anticipated product processing or distribution conditions.</p>
+
+                    <h3>Validation</h3>
+                    <p>Microbial challenge by liquid immersion tests determine the ingress of microorganisms into a package that has been challenged with a liquid microbial challenge suspension. A method can be validated, provided:</p>
+                    <ul>
+                        <li>The concentration of microorganisms in the challenge suspension is sufficient</li>
+                        <li>The media or product within the container adequately supports microbial growth</li>
+                        <li>Positive controls, if appropriate, should demonstrate growth</li>
+                    </ul>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of the method is based on the <strong>incidence of ingress of liquid-borne microorganisms</strong> through positive control package defects and the ability to detect such ingress. Packaged media or product must support microbial growth.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <p><strong>Detection limit:</strong> There must be sufficient bacterial growth for media to be visibly turbid or analytically detectable.</p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Challenge media formulation and surface tension</li>
+                        <li>Size of challenge organism</li>
+                        <li>High viable count in challenge media at end of test (≥10⁷/mL)</li>
+                        <li>Time of exposure to microorganism</li>
+                        <li>Differential pressure exposure</li>
+                        <li>Ability of sterile packaged media to support growth of challenge organism</li>
+                        <li>Sensitivity of analytical method if used to detect growth</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Exposure time: a few minutes to several hours. Usual incubation time: <strong>7–14 days</strong>.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Standard microbiological laboratory equipment</li>
+                        <li>Microbial growth support media or product</li>
+                        <li>Challenge microorganism</li>
+                        <li>Immersion chamber capable of vacuum/pressure cycles and temperature control</li>
+                        <li>Incubation chamber</li>
+                        <li>Visual inspection area with appropriate lighting and color background</li>
+                        <li>Analytical equipment for microbial growth determination (if applicable)</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <ul>
+                        <li>Pressure differential</li>
+                        <li>Wetting of seals from liquid media</li>
+                    </ul>
+
+                    <h3>Challenge Organisms</h3>
+                    <p>Organisms reportedly used include: <em>Escherichia coli, Serratia marcescans, Clostridium sporogenes, Pseudomonas aeruginosa, Staphylococcus epidermidis, Brevundimonas diminuta</em></p>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to sterile pharmaceutical packages that can tolerate <strong>liquid immersion</strong>.</p>
+
+                    <p><em>Literature References: Akers 1985; Lin et al 1992; Blakistone 1995; Marcy 1995; Chrai et al Sept. 1994; McEldowney et al 1990; Frieben et al 1982; Morton 1987; Harper 1995; Morton May/June 1989; Kirsch et al 1997; PDA 1983; Korczynski 1987; Rose 1995; Gnanasekharan et al 1995; The Parenteral Society 1992</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.7 微生物挑戰試驗（液體浸泡法）— 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念</h4>
+                        <p><span class="key-term">液體微生物挑戰試驗</span>是無菌包裝完整性試驗的「黃金標準」方法之一（尤其用於一次性使用無菌包裝、小瓶、安瓿等能耐液體浸泡的容器）。將充填培養基的包裝浸入高濃度菌液，若包裝有缺陷，細菌進入，培養後培養基混濁（turbid）即判為失敗。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>挑戰菌株選擇依據</h4>
+                        <table>
+                            <tr><th>菌株</th><th>選用原因</th></tr>
+                            <tr><td><em>B. diminuta</em></td><td>最小的革蘭氏陰性菌之一，0.3 μm，穿透能力強</td></tr>
+                            <tr><td><em>E. coli</em></td><td>常見腸道菌，代表液體環境污染風險</td></tr>
+                            <tr><td><em>P. aeruginosa</em></td><td>革蘭氏陰性，液體中高存活率</td></tr>
+                            <tr><td><em>S. epidermidis</em></td><td>革蘭氏陽性，皮膚表面常見污染源</td></tr>
+                        </table>
+                        <p>挑戰菌濃度在試驗結束時需維持 ≥10⁷ CFU/mL，確保挑戰強度足夠。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>液體浸泡法 vs 氣溶膠法（8.6）比較</h4>
+                        <table>
+                            <tr><th>項目</th><th>液體浸泡（8.7）</th><th>氣溶膠（8.6）</th></tr>
+                            <tr><td>適用包裝</td><td>可耐浸泡者</td><td>不耐浸泡者</td></tr>
+                            <tr><td>密封類型</td><td>一般密封</td><td>曲折路徑 / 阻隔密封</td></tr>
+                            <tr><td>挑戰形式</td><td>液態菌液</td><td>氣溶膠霧化芽孢</td></tr>
+                            <tr><td>暴露時間</td><td>數分鐘至數小時</td><td>數小時</td></tr>
+                            <tr><td>培養時間</td><td>7–14天</td><td>數天</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>偵測依據：培養基混濁</h4>
+                        <p>判定標準非常直觀：培養後，包裝內培養基若<strong>混濁（turbid）</strong>，代表細菌進入並增殖 → 包裝失敗。清澈 → 包裝完整。這是無菌性檢驗（Sterility Test）概念的延伸應用。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.8 ===== -->
+    <div class="chapter-section" id="m88">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.8</div>
+            <div class="chapter-info">
+                <h2>Package Headspace Analysis | 頂空分析</h2>
+                <p>Quantitative — Monitors gas headspace content change over time | 定量 — 監測頭部空間氣體含量隨時間的變化</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.8 Package Headspace Analysis</h3>
+                    <p><strong>Description:</strong> The <span class="key-term">headspace content</span> of a package is analyzed and monitored for change over time. Package headspace analyses are useful for the measurement of leakage and permeation from packages that require a <strong>rarefied gas headspace</strong> to ensure long term product stability. The packages may be stored in a challenge environment of vacuum or concentrated rarefied gas to accelerate leakage/permeation.</p>
+
+                    <h3>Validation</h3>
+                    <p>This method can be validated for the measurement of gaseous leaks and permeation large enough to result in an <strong>unacceptable shift in headspace content over time</strong>. Validation studies should examine the ability of the analytical method to accurately sample and measure rarefied gas content in the package system.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of headspace analyses is based on the ability to accurately sample and measure gas headspace content in the package system. Sensitivity can be verified using <strong>reference gas mixtures of known concentration</strong>. Gas headspace content tests can be very sensitive indicators of package leakage and permeation, especially after exposure of product to longer times or to a challenge environment designed to accelerate leakage and permeation.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Quantitative | 定量</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Rarefied gas analytical instrument sensitivity and accuracy</li>
+                        <li>Headspace sampling technique</li>
+                        <li>Package headspace volume</li>
+                        <li>Efficiency of the establishment of initial gas headspace content</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test times can be a few seconds to a few minutes.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Analytical gas content measurement instrumentation</li>
+                        <li>Headspace sampling device</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p><strong>Puncture</strong> during headspace sampling.</p>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that require a <strong>rarefied gas headspace</strong> to ensure product stability.</p>
+
+                    <p><em>Literature References: ASNT 1982; Wang et al 1997</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.8 頂空分析 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念：為何需要頂空分析？</h4>
+                        <p><span class="key-term">頂空分析（Headspace Analysis）</span>：許多製藥包裝在充填時會以<strong>惰性氣體（如氮氣 N₂ 或二氧化碳 CO₂）</strong>取代瓶內空氣，以防止氧化降解。若包裝有洩漏或滲透，氧氣（O₂）會逐漸滲入，惰性氣體逸出，頂空成分改變。</p>
+                        <p>頂空分析透過量測瓶內氣體組成（特別是 O₂ 和 CO₂ 濃度），來判斷是否發生洩漏或滲透。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>常見偵測技術</h4>
+                        <ul>
+                            <li><strong>激光頂空分析（Laser Headspace Analysis）</strong>：非破壞性，近紅外線透過玻璃瓶直接量測 O₂ 含量，現代最常用</li>
+                            <li><strong>針刺採樣（Puncture sampling）</strong>：取樣後以氣相色譜或氧分析儀分析，破壞性</li>
+                            <li><strong>壓力量測法</strong>：間接推測頂空狀態</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何分類為定量？</h4>
+                        <p>頂空分析可以精確量測 O₂（或其他氣體）的<strong>百分比濃度</strong>，並與規格限制（如 O₂ &lt; 1%）比較，可追蹤隨時間的變化趨勢，因此是九種方法中少數被歸類為<strong>定量（Quantitative）</strong>的方法之一。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>加速試驗的應用</h4>
+                        <p>TR27 提到，包裝可先置於「挑戰環境」（高濃度稀有氣體或真空）中，加速洩漏/滲透速率，縮短試驗時間。這與穩定性加速試驗的邏輯相同——用壓力換取時間。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.9 ===== -->
+    <div class="chapter-section" id="m89">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.9</div>
+            <div class="chapter-info">
+                <h2>Particulate Transmission | 粒子穿透試驗</h2>
+                <p>Qualitative — Aerosolized dust challenge for tortuous path / barrier packages | 定性 — 粉塵氣溶膠挑戰，適用曲折路徑或阻隔密封包裝</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>8.9 Particulate Transmission</h3>
+                    <p><strong>Description:</strong> Package challenge testing by <span class="key-term">aerosolized dust</span> involves placing the package units into a specially designed aerosolization chamber and charging the atmosphere within the chamber with <strong>aerosolized dust</strong> for a specified period of time. During the challenge test, the packages may be subjected to differential pressure challenges. The atmosphere within the chamber must be kept well circulated. After the challenge, the units are removed from the chamber and examined for <strong>evidence of dust ingress</strong>.</p>
+
+                    <h3>Validation</h3>
+                    <p>Particulate transmission tests determine the presence and location of leaks that can be penetrated by particulates. This method can be validated provided:</p>
+                    <ul>
+                        <li>The particulate size is uniformly small</li>
+                        <li>The dust concentration is sufficient and uniformly dispersed within the chamber</li>
+                        <li>The chamber circulation system settings and controls are adequate</li>
+                        <li>Positive controls, where appropriate, should demonstrate dust ingress</li>
+                    </ul>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of the method is based on the incidence of <strong>penetration of aerosolized dust into positive control package defects</strong> and the ability to detect such penetration.</p>
+
+                    <p><strong>Quantitative/Qualitative:</strong> <span class="key-term">Qualitative | 定性</span></p>
+
+                    <p><strong>Detection limit:</strong> There must be sufficient dust for visible detection.</p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Size and uniformity of challenge dust particle</li>
+                        <li>Concentration of dust in aerosol</li>
+                        <li>Electrical charge on dust</li>
+                        <li>Time of exposure to dust</li>
+                        <li>Chamber air flow patterns and speed</li>
+                        <li>Chamber temperature and humidity conditions</li>
+                        <li>Differential pressure exposure (optional)</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Exposure time is typically a few hours.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Particulate source (challenge tracer dust)</li>
+                        <li>Airtight test chamber</li>
+                        <li>Dust aerosolization unit with motor and fan</li>
+                        <li>Pressure controls and monitors</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Pressure differential (optional).</p>
+
+                    <h3>Challenge Tracer Dust</h3>
+                    <p>Carbon black, talcum powder, powdered chalk, smoke.</p>
+
+                    <h3>Product/Package Types</h3>
+                    <p>Applicable to sterile pharmaceutical packages that rely on a <strong>tortuous path or barrier system</strong>.</p>
+
+                    <p><em>Literature References: Jones et al 1995</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>8.9 粒子穿透試驗 — 中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>核心概念</h4>
+                        <p><span class="key-term">粒子穿透試驗（Particulate Transmission Test）</span>：將包裝置於充滿粉塵（如炭黑、滑石粉）氣溶膠的密封腔室中，數小時後取出，檢查包裝內是否有粉塵進入。是針對<strong>曲折路徑（tortuous path）</strong>或<strong>多孔阻隔材料（如 Tyvek）</strong>密封包裝的挑戰方法。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>常用挑戰粉塵</h4>
+                        <table>
+                            <tr><th>粉塵類型</th><th>特點</th></tr>
+                            <tr><td>炭黑（Carbon black）</td><td>顏色深，易目視偵測，粒徑小</td></tr>
+                            <tr><td>滑石粉（Talcum powder）</td><td>常見工業粉塵，粒徑均勻</td></tr>
+                            <tr><td>粉筆粉（Powdered chalk）</td><td>白色，適合深色包裝</td></tr>
+                            <tr><td>煙霧（Smoke）</td><td>超細顆粒，滲透力最強</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>電荷效應（Electrical Charge on Dust）</h4>
+                        <p>粉塵粒子攜帶靜電荷會影響其運動行為：帶電粒子可能被吸引至帶相反電荷的表面，或相互排斥。試驗設計需考慮粉塵電荷狀態，確保挑戰具代表性。這是本方法中一個常被忽略但重要的關鍵參數。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>與微生物挑戰（8.6）的類比</h4>
+                        <p>粒子穿透試驗可視為微生物氣溶膠挑戰的「非生物版」：同樣是把「小粒子」噴入密封腔室，同樣適用於曲折路徑包裝，同樣是定性結果（有沒有進去）。差異在於粉塵更便宜、無生物安全風險，但靈敏度可能不及真實微生物挑戰。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY + PRACTICE SECTION ===== -->
+    <div class="chapter-section" id="summary">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#x2211;</div>
+            <div class="chapter-info">
+                <h2>Summary Table &amp; Practice Questions | 方法總表與練習題</h2>
+                <p>Comparative analysis of all 9 methods | 九種方法綜合比較與自我測驗</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Methods at a Glance</h3>
+                    <p>The table below summarizes key attributes of all nine methods covered in TR27 Section 8.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Q/QL</th>
+                                <th>Speed</th>
+                                <th>Package Stress</th>
+                                <th>Key Limitation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8.1 Bubble Test</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Minutes</td>
+                                <td>Pressure + wetting</td>
+                                <td>Visual inspector dependency; large leaks only</td>
+                            </tr>
+                            <tr>
+                                <td>8.2 Helium MS (Hood/Inside-Out)</td>
+                                <td><span class="badge green">Quantitative</span></td>
+                                <td>Seconds (+ hours bombing)</td>
+                                <td>Vacuum</td>
+                                <td>Cost; bombing time; operator skill</td>
+                            </tr>
+                            <tr>
+                                <td>8.2 Helium MS (Tracer/Detector Probe)</td>
+                                <td><span class="badge yellow">Semi-Q</span></td>
+                                <td>Seconds</td>
+                                <td>Vacuum (Tracer Probe)</td>
+                                <td>Operator technique critical</td>
+                            </tr>
+                            <tr>
+                                <td>8.3 HVLD</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Instantaneous</td>
+                                <td>Brief voltage</td>
+                                <td>Requires conductive product in non-conductive container</td>
+                            </tr>
+                            <tr>
+                                <td>8.4 Lid Deflection</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Seconds</td>
+                                <td>Differential pressure</td>
+                                <td>Flexible lidding only; gross leaks</td>
+                            </tr>
+                            <tr>
+                                <td>8.5 Liquid Tracer</td>
+                                <td><span class="badge yellow">Generally QL</span></td>
+                                <td>Minutes–hours</td>
+                                <td>Pressure + wetting</td>
+                                <td>Tracer compatibility; visual limitations</td>
+                            </tr>
+                            <tr>
+                                <td>8.6 Microbial (Aerosol)</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Hours + days incubation</td>
+                                <td>Optional pressure</td>
+                                <td>Long turnaround; tortuous path packages only</td>
+                            </tr>
+                            <tr>
+                                <td>8.7 Microbial (Liquid)</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Hours + 7–14 days incubation</td>
+                                <td>Pressure + wetting</td>
+                                <td>Longest turnaround; requires liquid tolerance</td>
+                            </tr>
+                            <tr>
+                                <td>8.8 Headspace Analysis</td>
+                                <td><span class="badge green">Quantitative</span></td>
+                                <td>Seconds–minutes</td>
+                                <td>Puncture (some methods)</td>
+                                <td>Only for rarefied gas headspace packages</td>
+                            </tr>
+                            <tr>
+                                <td>8.9 Particulate Transmission</td>
+                                <td><span class="badge yellow">Qualitative</span></td>
+                                <td>Hours</td>
+                                <td>Optional pressure</td>
+                                <td>Tortuous path/barrier packages only; limited refs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>九種方法綜合比較表 | 方法摘要</h3>
+
+                    <div class="concept-box">
+                        <h4>定量 vs 定性 分類總結</h4>
+                        <table>
+                            <tr><th>分類</th><th>方法</th></tr>
+                            <tr>
+                                <td><strong>定量（Quantitative）</strong></td>
+                                <td>8.2 Helium MS（Hood / Inside-Out）<br>8.8 Headspace Analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>半定量（Semi-Quantitative）</strong></td>
+                                <td>8.2 Helium MS（Tracer Probe / Detector Probe）<br>8.5 Liquid Tracer（某些條件下）</td>
+                            </tr>
+                            <tr>
+                                <td><strong>定性（Qualitative）</strong></td>
+                                <td>8.1 氣泡、8.3 HVLD、8.4 蓋板撓曲、<br>8.5 液體示蹤劑（一般）、8.6 微生物氣溶膠、<br>8.7 微生物液浸、8.9 粒子穿透</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>靈敏度排名（從高到低參考）</h4>
+                        <ol>
+                            <li><strong>氦質譜分析（8.2）</strong> — 最高靈敏度，可偵測 10⁻⁹ atm·cc/sec 量級</li>
+                            <li><strong>頂空分析（8.8）</strong> — 高靈敏度定量方法</li>
+                            <li><strong>液體示蹤劑（8.5）</strong> — 中等靈敏度，取決於偵測方法</li>
+                            <li><strong>HVLD（8.3）</strong> — 限液體充填容器，但速度最快</li>
+                            <li><strong>微生物挑戰（8.6、8.7）</strong> — 靈敏度取決於微生物大小與暴露條件</li>
+                            <li><strong>氣泡試驗（8.1）</strong> — 僅適合較大漏點</li>
+                            <li><strong>蓋板撓曲（8.4）</strong> — 適合大漏，通常與其他方法搭配</li>
+                            <li><strong>粒子穿透（8.9）</strong> — 相對粗獷，粒子大於微生物</li>
+                        </ol>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習題 | Practice Questions</h4>
+                        <ol>
+                            <li style="margin-bottom:0.75rem;">
+                                <strong>Q1：</strong>某製藥公司生產冷凍乾燥粉針充填於玻璃瓶，以鋁蓋壓蓋密封，頂空充填氮氣以防氧化。你的驗證計劃應優先採用哪兩種試驗方法？請說明理由。<br>
+                                <em>（提示：考慮定量需求 + 頂空需求 + 包裝耐受性）</em>
+                            </li>
+                            <li style="margin-bottom:0.75rem;">
+                                <strong>Q2：</strong>HVLD 試驗不適用於油性注射液（如脂肪乳劑）的主要原因是什麼？根據 TR27 的描述分析導電性與試驗可行性的關係。
+                            </li>
+                            <li style="margin-bottom:0.75rem;">
+                                <strong>Q3：</strong>一位驗證工程師欲對 Tyvek 袋裝醫療器材（不可浸水）進行容器完整性試驗，應從方法 8.6、8.7、8.9 中選擇哪一種？說明你的選擇依據及需控制的三個關鍵參數。
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>考試速記口訣</h4>
+                        <p><strong>「氦頂定量，其餘定性」</strong><br>
+                        九種方法中，真正定量的只有兩個：<strong>氦質譜（Hood/Inside-Out）</strong>和<strong>頂空分析</strong>。其他七種均為定性（或通常定性）。這是 TR27 考題的高頻考點。</p>
+                        <p style="margin-top:0.5rem;"><strong>「HVLD 最快，微生物最慢」</strong><br>
+                        測試速度：HVLD 近乎瞬間 ↔ 微生物液浸需 7–14 天培養，差距最大。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</p>
+    <p>Section 3A: Leak Test Methods 8.1–8.9 | SterileGMP Knowledge Hub</p>
+    <p style="opacity:0.6; font-size:0.8rem;">Educational reference only. Consult original TR27 document for regulatory use.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
