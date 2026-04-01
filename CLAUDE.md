@@ -196,6 +196,35 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 ---
 
+## After Every git push — Update ROADMAP.md
+
+**Whenever a `git push` is executed (regardless of which documents were added), immediately update `ROADMAP.md` to reflect current status.** Do this AFTER the push completes, before ending the session.
+
+Update these fields in `ROADMAP.md` by reading the actual state from `reports.json`:
+
+1. **Last updated** date — set to today
+2. **PDA Current Status table** — recount: how many have `section_map` (complete) vs skeleton (metadata only, no section_map or empty section_map)
+3. **ISPE Current Status table** — same recount per report
+4. **Overall completion percentage** — complete count / total target (~65-70)
+5. **Phase 1 Roadmap table** — tick off any tasks that are now done (move from pending to complete)
+
+To get accurate counts:
+```bash
+python3 -c "
+import json
+d = json.load(open('reports.json'))
+reports = d['reports']
+for k, v in reports.items():
+    has_sections = bool(v.get('section_map'))
+    source = v.get('source', k)
+    print(f'{k}: {\"COMPLETE\" if has_sections else \"skeleton\"} | {source}')
+"
+```
+
+Do NOT rewrite the entire ROADMAP.md — only update the numbers and dates that have changed. Keep all strategy, gap analysis, and roadmap text intact.
+
+---
+
 ## Current Reports Inventory
 
 **Do NOT duplicate the full inventory here.** `reports.json` is the single source of truth.
