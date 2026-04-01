@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport json, sys, re\nfrom datetime import date\ndata = json.load(sys.stdin)\ncmd = data.get('tool_input', {}).get('command', '')\nif 'git push' not in cmd:\n    sys.exit(0)\nimport os\nos.chdir('/Users/kuoli-hung/SterileGMP-Knowledge-Hub')\ntry:\n    d = json.load(open('reports.json'))\nexcept Exception:\n    sys.exit(0)\nreports = d['reports']\npda_complete = ispe_complete = 0\nfor k, v in reports.items():\n    has_sections = bool(v.get('section_map'))\n    folder = v.get('folder', '')\n    if folder.startswith('PDA') and has_sections: pda_complete += 1\n    elif folder.startswith('ISPE') and has_sections: ispe_complete += 1\ntotal_complete = sum(1 for v in reports.values() if v.get('section_map'))\ntoday = date.today().isoformat()\nroadmap = open('ROADMAP.md').read()\nroadmap = re.sub(r'(Last updated: )\\S+.*', f'Last updated: {today}', roadmap, count=1)\nroadmap = re.sub(r'\\*\\*Overall: \\d+ of ~\\d+-\\d+ target documents complete \\(approx\\. \\d+%\\)\\*\\*', f'**Overall: {total_complete} of ~65-70 target documents complete (approx. {round(total_complete/67*100)}%)**', roadmap)\nispe_pct = round(ispe_complete / 15 * 100)\nroadmap = re.sub(r'\\*\\*Completion: \\d+%\\*\\* \\(see .ISPE/ISPE-PROCESSING-ORDER\\.md.', f'**Completion: {ispe_pct}%** (see \\`ISPE/ISPE-PROCESSING-ORDER.md\\`', roadmap)\nroadmap = re.sub(r'\\| \\*\\*Total\\*\\* \\| \\*\\*\\d+ \\(all complete\\)\\*\\* \\|', f'| **Total** | **{total_complete} (all complete)** |', roadmap)\nopen('ROADMAP.md', 'w').write(roadmap)\nprint(json.dumps({'systemMessage': f'ROADMAP.md synced: {total_complete} docs ({pda_complete} PDA, {ispe_complete} ISPE)'}))\n\"",
+            "timeout": 15,
+            "statusMessage": "Syncing ROADMAP.md..."
+          }
+        ]
+      }
+    ]
+  }
+}
