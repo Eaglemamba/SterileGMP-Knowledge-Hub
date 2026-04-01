@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.7 - Chapter 3: Quality System Requirements</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4, .original-content h4 {
+    color: #1a3a2a; margin: 1rem 0 0.5rem; font-size: 0.98rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e6f9ed, #d0f0dc);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy box (Yellow) */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* Term box (Green) */
+.term-box, .key-term-box {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note box (Orange) */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Formula box (Purple) */
+.formula-box {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* Application box (Blue) */
+.application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important;
+}
+.application-box h3, .application-box h4 { color: #1565c0 !important; margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.application-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.application-box ul, .application-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.application-box li { margin-bottom: 0.35rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #e8f5e9 0%, #d4edda 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #e8f5e9;
+    border-radius: 6px; color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a; margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== LOGIC DIAGRAM ===== */
+.logic-diagram {
+    background: white;
+    border: 1px solid #c3e6cb;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
+.logic-diagram-title {
+    text-align: center;
+    font-weight: 700;
+    color: #1a3a2a;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #27ae60;
+}
+.flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    min-width: 420px;
+}
+.flow-start {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    border-radius: 24px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 260px;
+}
+.flow-box {
+    background: #e8f5e9;
+    border: 2px solid #4caf50;
+    border-radius: 6px;
+    padding: 0.55rem 1rem;
+    text-align: center;
+    width: 300px;
+    font-size: 0.85rem;
+    color: #1a3a2a;
+    font-weight: 500;
+}
+.flow-diamond-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flow-diamond {
+    background: #fff9e6;
+    border: 2px solid #f6ad55;
+    transform: rotate(0deg);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    width: 300px;
+    font-size: 0.83rem;
+    color: #7b4f00;
+    font-weight: 600;
+    position: relative;
+}
+.flow-branch {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+    justify-content: center;
+}
+.branch-yes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 160px;
+}
+.branch-no {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 160px;
+}
+.branch-label-yes {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #27ae60;
+    margin-bottom: 2px;
+}
+.branch-label-no {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 2px;
+}
+.flow-end-dedicated {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    border-radius: 24px;
+    padding: 0.55rem 0.9rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #b91c1c;
+    width: 140px;
+}
+.flow-end-shared {
+    background: #dcfce7;
+    border: 2px solid #16a34a;
+    border-radius: 24px;
+    padding: 0.55rem 0.9rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #166534;
+    width: 140px;
+}
+.flow-end-partial {
+    background: #fef9c3;
+    border: 2px solid #ca8a04;
+    border-radius: 24px;
+    padding: 0.55rem 0.9rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #92400e;
+    width: 140px;
+}
+.flow-arrow {
+    font-size: 1.2rem;
+    color: #27ae60;
+    text-align: center;
+    line-height: 1;
+    margin: 2px 0;
+}
+.flow-arrow-sm {
+    font-size: 1rem;
+    color: #999;
+    text-align: center;
+    line-height: 1;
+    margin: 2px 0;
+}
+.flow-separator {
+    border: none;
+    border-top: 2px dashed #c3e6cb;
+    width: 80%;
+    margin: 0.75rem auto;
+}
+.flow-section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #1a5c35;
+    background: #d0f0dc;
+    border-radius: 4px;
+    padding: 2px 10px;
+    margin: 4px 0;
+    text-align: center;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 4px; font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe5cc; color: #7b3800; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .chapter-body { padding: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <h1>ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
+    <div class="subtitle">Chapter 3 — Quality System Requirements</div>
+    <div class="page-info">ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p23–p36</div>
+</header>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解品質系統如何應用於交叉污染風險管理，並與 ICH Q10 生命週期方法整合</li>
+        <li>掌握 Logic Diagram（邏輯圖）的結構與決策流程——GMP/法規邏輯 vs. 工業衛生邏輯</li>
+        <li>分析各 GMP 因素（清潔、混淆預防、機械性轉移、空氣傳播）對共用設施可行性的影響</li>
+        <li>評估健康/衛生因素（曝露評估、工程控制、PPE）對人員保護策略的重要性</li>
+        <li>了解控制策略結果（專用設施 vs. 活動式製造 vs. 同期製造）對 CDMO 業務決策的意義</li>
+    </ul>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+    <h3>本節內容目錄</h3>
+    <div class="toc-grid">
+        <a href="#sec31">3.1 應用於交叉污染</a>
+        <a href="#sec311">3.1.1 建議品質政策</a>
+        <a href="#sec32">3.2 Logic Diagram</a>
+        <a href="#sec321">3.2.1 GMP/法規因素</a>
+        <a href="#sec322">3.2.2 健康衛生因素</a>
+        <a href="#sec323">3.2.3 控制策略結果</a>
+        <a href="#sec-flowchart">邏輯圖全覽</a>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.1: APPLICATION TO CROSS-CONTAMINATION
+     ================================================================ -->
+<div class="chapter-section" id="sec31">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3</div>
+        <div class="chapter-info">
+            <h2>Quality System Requirements</h2>
+            <p>Chapter 3 — p21–p22 | 品質系統要求：整體框架</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3. Quality System Requirements</h3>
+                <p>A well-defined quality system should consist of <span class="key-term">governance documents</span> which are complemented by a concise set of tactical or procedural requirements. The overarching documentation matrix should provide the basis of consistency required for the creation of a sustainable quality system model which enables the <span class="key-term">ICH Q10</span> life cycle approach across the GxP regulated functions within an organization.</p>
+
+                <h3 id="sec31" style="margin-top:1.25rem;">3.1 Application to Cross-Contamination</h3>
+                <p>The key concepts discussed in this Guide should be used as a framework from which to develop standards, tools, and approaches to manage the risk of <span class="key-term">cross-contamination</span>.</p>
+                <p>A case by case assessment should be performed of the risk factors that the concurrent manufacture of several products may cause. Risk assessments should be performed to properly understand the implications for both <span class="key-term">IH</span> and <span class="key-term">GxP</span>. While each is normally considered separately, to prevent any significant imbalance, the implications of decisions taken during an assessment for IH should be checked against those for GxP, and vice versa.</p>
+
+                <div class="quote-box">
+                    Figure 3.1: Quality Management System — illustrates the governance hierarchy from quality policy through standards, SOPs, and forms, embedded in the ICH Q10 lifecycle framework.
+                </div>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — 品質系統整體框架</h3>
+                <div class="term-box">
+                    <h4>核心概念：品質系統三層架構</h4>
+                    <p>ICH Q10 要求品質系統涵蓋整個產品生命週期。在交叉污染管理情境下，文件層級由上而下：</p>
+                    <ul>
+                        <li><strong>政策層（Policy）</strong>：高層次宣示，由高階管理階層核准</li>
+                        <li><strong>標準層（Standard）</strong>：技術性要求，如 ADE 決定程序</li>
+                        <li><strong>SOP 層</strong>：具體操作步驟（清潔、換產、風險評估）</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>重點提示：IH 與 GxP 雙軌評估</h4>
+                    <p>同一危害物質須同時進行兩條評估軌道，且結果必須相互對照：</p>
+                    <ul>
+                        <li><strong>GxP 角度</strong>：保護病人，使用 ADE（可接受日曝露量）</li>
+                        <li><strong>IH 角度</strong>：保護操作人員，使用 OEL（職業曝露限值）</li>
+                    </ul>
+                    <p>若 IH 決策（如工程控制）影響 GxP 表現（如清潔可及性），必須重新評估。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻說明：品質系統如同城市法規</h4>
+                    <p>品質政策是憲法，標準是法律，SOP 是施工規範。三者缺一不可——憲法確立原則，法律設定邊界，施工規範確保每天的執行一致性。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.1.1: QUALITY POLICIES / STANDARDS
+     ================================================================ -->
+<div class="chapter-section" id="sec311">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.1.1</div>
+        <div class="chapter-info">
+            <h2>Suggested Quality Policies / Standards for Managing CC Risk</h2>
+            <p>p22–p23 | 建議的六大品質系統領域</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.1.1 Suggested Quality Policies / Standards for Managing the Risk of Cross-Contamination</h3>
+                <p>While many aspects for managing the risk of cross-contamination are covered in various quality documents such as cleaning and cleaning validation, line clearance, etc., it is suggested that overarching quality policies, standards and SOPs are put in place to manage the risk of cross-contamination that tie together these various aspects.</p>
+                <p>Other quality systems that are impacted or related to managing the risk of cross-contamination include:</p>
+
+                <h4>1. Technology Transfer (New Product Introduction)</h4>
+                <p>Firms should have a well-documented procedure for assessing potential products prior to introducing them into the facility. This should include:</p>
+                <ul>
+                    <li>A mechanism that triggers an assessment of the potential cross-contamination risks prior to bringing the product/compound into the facility.</li>
+                    <li>The hazards of the product(s) should be identified typically via an <span class="key-term">ADE monograph</span>.</li>
+                    <li>Cleaning process development prior to introducing the product into the facility.</li>
+                    <li>Analytical methods sensitive enough to meet the required acceptance criteria.</li>
+                </ul>
+
+                <h4>2. Risk Management</h4>
+                <p>The Risk Management quality system should provide a common understanding of risk and how to assess it. Senior management should provide guidance on how to determine acceptable and unacceptable risk. It is suggested that this be established at the <span class="key-term">corporate level</span> so that there is a common understanding across the organization.</p>
+
+                <h4>3. Change Control</h4>
+                <p>It is suggested that the change control process includes a trigger for risk review when the change may impact the risk of cross-contamination. Such changes may include: new product introduction, the ADE value of product, maximum daily dose for products, equipment changes, facility changes including changes to HVAC or water quality/pressure, process changes, or procedure changes.</p>
+
+                <h4>4. Corrective and Preventative Action (CAPA)</h4>
+                <p>An outcome of the risk assessment activities may be to implement some risk reduction controls. The CAPA system may be used to track the risk mitigation measures until implemented and confirmation of performance is complete.</p>
+
+                <h4>5. Product Quality Review</h4>
+                <p>Results from the risk management process may become part of the product quality review as appropriate. In addition, requalification or monitoring programs should also provide an indication that the risk of cross-contamination is in a controlled state.</p>
+
+                <h4>6. Training</h4>
+                <p>It is important that basic GMP training for all relevant staff includes practices that are designed to avoid cross-contamination as well as understand how cross-contamination occurs. Staff involved in managing the risk of cross-contamination should have further training in both how to avoid cross-contamination and quality risk management.</p>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — 六大品質系統領域</h3>
+                <div class="term-box">
+                    <h4>系統性管理框架：六個交叉點</h4>
+                    <p>ISPE Vol.7 識別出六個與交叉污染風險管理交織的品質系統，每一個都是潛在控制點或失效點：</p>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>系統</th><th>CC 管理關鍵動作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>技術轉移</td><td>引入前 ADE 評估 + 清潔方法開發</td></tr>
+                        <tr><td>風險管理</td><td>公司級標準，統一可接受風險定義</td></tr>
+                        <tr><td>變更控制</td><td>觸發 CC 風險重新評估的變更清單</td></tr>
+                        <tr><td>CAPA</td><td>追蹤風險減緩措施至完成確認</td></tr>
+                        <tr><td>產品品質回顧</td><td>CC 監控數據納入 PQR</td></tr>
+                        <tr><td>訓練</td><td>全員基礎 + 相關人員深度 QRM 訓練</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box">
+                    <h4>CDMO 業務重點：技術轉移觸發點</h4>
+                    <p>對 CDMO 而言，新產品引入（NPI）是最高風險時刻。ISPE 要求在<strong>化合物進入廠區之前</strong>就完成：</p>
+                    <ul>
+                        <li>ADE 單體分析（毒理評估）</li>
+                        <li>清潔開發或歷史數據風險評估</li>
+                        <li>分析方法靈敏度確認</li>
+                    </ul>
+                    <p>這個觸發機制應嵌入合約審查流程（Business Development → Quality → Engineering）。</p>
+                </div>
+
+                <div class="application-box">
+                    <h4>實務應用：Change Control CC 觸發清單</h4>
+                    <p>以下任一變更應自動觸發 CC 風險重新評估：</p>
+                    <ul>
+                        <li>新產品或化合物引入</li>
+                        <li>ADE 值更新或最大日劑量變更</li>
+                        <li>設備設計或材質變更</li>
+                        <li>HVAC 配置或水系統壓力/品質變更</li>
+                        <li>製程規模放大或配方變更</li>
+                        <li>清潔程序或清潔劑變更</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：變更控制是「CC 的早期預警系統」</h4>
+                    <p>如同航空器維修系統——任何結構修改都會自動觸發安全審查，不需要靠人員記憶或手動觸發。CC 風險評估觸發應內建於 Change Control 流程，而非事後補做。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.2: THE LOGIC DIAGRAM — OVERVIEW
+     ================================================================ -->
+<div class="chapter-section" id="sec32">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2</div>
+        <div class="chapter-info">
+            <h2>The Logic Diagram</h2>
+            <p>p23 | 邏輯圖：決策框架總覽</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.2 The Logic Diagram</h3>
+                <p>A <span class="key-term">logic diagram</span> is a simple tool that can be used to guide a team through a process to determine the adequacy of existing controls or the need for dedicated facilities. (Section 3.6.1 should be read in conjunction with the flow diagram in Chapter 14.) Determining the need for dedicated facilities should be performed by a <span class="key-term">multidisciplinary team</span>, so that all required areas are addressed appropriately.</p>
+                <p>The logic diagram is divided into <span class="key-term">two</span>, addressing both <span class="key-term">GMP/Regulatory logic</span> and <span class="key-term">IH logic</span>. Both are equally important as they deal with aspects of risk associated with the different populations that may be exposed to the hazard under review:</p>
+                <ul>
+                    <li><strong>Left side</strong> — product (patient risk)</li>
+                    <li><strong>Right side</strong> — worker (personnel risk)</li>
+                </ul>
+                <p>Where dedicated facilities are implemented for <span class="key-term">business reasons</span>, the risk assessment should clearly state that this is a business decision and not a cross-contamination issue.</p>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — Logic Diagram 的核心地位</h3>
+                <div class="term-box">
+                    <h4>Logic Diagram 是什麼？</h4>
+                    <p>Logic Diagram 是一個結構化決策工具，透過一系列是/否問題，引導跨職能團隊判斷：</p>
+                    <ul>
+                        <li>某產品是否可在共用設施製造？</li>
+                        <li>需要什麼程度的專用（dedication）？</li>
+                        <li>現有控制措施是否足夠？</li>
+                    </ul>
+                    <p>結果有三種：<span class="badge green">共用設施可行</span> <span class="badge orange">部分專用</span> <span class="badge red">完全專用設施</span></p>
+                </div>
+                <div class="note-box">
+                    <h4>重點：業務決策 vs. CC 風險決策的區分</h4>
+                    <p>ISPE 特別強調：若基於商業原因（客戶要求、市場隔離）選擇專用設施，<strong>必須在風險評估文件中明確標注這是業務決策，而非 CC 控制必要性</strong>。</p>
+                    <p>這樣做可防止：業務決策被誤解為監管要求，也避免未來類似產品引入時設定錯誤先例。</p>
+                </div>
+                <div class="application-box">
+                    <h4>CDMO 應用：Logic Diagram 作為 BD 篩選工具</h4>
+                    <p>對 CDMO 而言，Logic Diagram 應成為新客戶/新品種業務審查的標準流程：</p>
+                    <ul>
+                        <li><strong>BD 階段</strong>：初步 ADE 篩查，快速判斷是否可接受</li>
+                        <li><strong>技術評估階段</strong>：完整 Logic Diagram 評估，確定設施需求</li>
+                        <li><strong>報價階段</strong>：將專用設備或隔離成本反映於合約條款</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：機場安全通道決策樹</h4>
+                    <p>Logic Diagram 如同機場入境流程——每個問題節點過濾一層風險。大多數旅客（低風險化合物）順利通過；少數需要進一步檢查（部分專用）；極少數被攔截要求特殊處理（專用設施）。重要的是：流程對所有人一視同仁，依風險而非直覺決策。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.2.1: GMP/REGULATORY FACTORS
+     ================================================================ -->
+<div class="chapter-section" id="sec321">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.1</div>
+        <div class="chapter-info">
+            <h2>Considering the GMP / Regulatory Factors</h2>
+            <p>p23–p29 | GMP 邏輯鏈：從法規要求到技術控制</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.2.1 GMP / Regulatory Factor — Logic Chain</h3>
+
+                <h4>3.2.1.1 Gathering Hazard Information (e.g., Health Based Criteria)</h4>
+                <p>Both the IH and GMP criteria are drawn from common toxicological or clinical data sources. The <span class="key-term">ADE value</span> is normally the health-based criterion used in assessing GMP concerns related to cross-contamination. The <span class="key-term">OEL</span> is normally the health-based criterion used in assessing airborne product for worker protection.</p>
+
+                <h4>3.2.1.2 Specific Requirements for Handling Product in a Dedicated Facility</h4>
+                <p>"<em>Is there a written regulation that would preclude the co-manufacture of this product with other non-related materials?</em>"</p>
+                <p>The usual example is the <span class="key-term">beta-lactam class of antibiotics</span> where 21 CFR 211.42(c)(d) requires separate facilities. The updated EU EudraLex Vol. 4 Section 3.6 requires dedicated facilities if:</p>
+                <ol>
+                    <li>"the risk cannot be adequately controlled by operational and/or technical measures"</li>
+                    <li>"scientific data from the toxicological evaluation does not support a controllable risk (e.g. allergenic potential from highly sensitizing materials such as beta lactams)"</li>
+                    <li>"relevant residue limits, derived from the toxicological evaluation, cannot be satisfactorily determined by a validated analytical method."</li>
+                </ol>
+                <p>Additional reasons to dedicate include: agency inspection consequence, internal QA recommendation, unique manufacturing technology, or high sales demand utilizing all capacity.</p>
+
+                <h4>3.2.1.3 Determining an ADE</h4>
+                <p>"<em>Can an ADE be determined?</em>"</p>
+                <p>If the scientific data supports the determination, then an ADE value should be determined and passed on to other stakeholders. If the information does <strong>not</strong> support the determination of an ADE value, then a <span class="key-term">dedicated facility is required</span>. This is where the beta-lactam family of products would be addressed.</p>
+
+                <h4>3.2.1.4 Detection of Residue Limits</h4>
+                <p>"<em>Can relevant residue limits be detected?</em>"</p>
+                <p>Compounds that can be denatured/degraded/deactivated require studies to ensure the effectiveness of the process to render the residues safe. If analytical methods <strong>cannot</strong> be validated to the appropriate level, then a dedicated facility is necessary.</p>
+
+                <h4>3.2.1.5 Technical and Operational Controls</h4>
+                <p>"<em>Do technical and operational controls manage the risk?</em>"</p>
+                <p>Each of the modes of cross-contamination should be assessed to determine whether technical and operational controls can manage the risk. Care should be taken when assessing manual operations and the controls in place to detect manual errors.</p>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — GMP 因素決策鏈</h3>
+                <div class="term-box">
+                    <h4>ADE vs. OEL：相同來源，不同應用</h4>
+                    <table>
+                        <thead>
+                            <tr><th>指標</th><th>ADE</th><th>OEL</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>保護對象</td><td>病人（Product CC）</td><td>操作人員（工業衛生）</td></tr>
+                            <tr><td>單位</td><td>mg/day（每日劑量）</td><td>μg/m³（空氣濃度）</td></tr>
+                            <tr><td>來源</td><td>毒理 / 臨床數據</td><td>同一毒理數據</td></tr>
+                            <tr><td>應用</td><td>清潔殘留限值計算</td><td>空氣監控標準</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="note-box">
+                    <h4>重點：法規強制要求的第一道關卡</h4>
+                    <p>Logic Diagram 第一個問題直接問：<strong>是否有法規文字明確禁止共用製造？</strong></p>
+                    <p>答案是「是」的情況極少但清晰：</p>
+                    <ul>
+                        <li>Beta-lactam 抗生素（21 CFR 211.42 / EU GMP 附錄）</li>
+                        <li>某些生物製品（活病毒疫苗）</li>
+                    </ul>
+                    <p>若答案為「是」→ 直接終止評估，<span class="badge red">必須專用設施</span>。不需要進一步 ADE 計算。</p>
+                </div>
+                <div class="note-box">
+                    <h4>重點：無法確定 ADE = 無法共用製造</h4>
+                    <p>若化合物毒理數據不足以推導出 ADE（例如：早期臨床試驗化合物、毒理數據缺失），<strong>預設結論是需要專用設施</strong>。</p>
+                    <p>這是 ISPE Vol.7 的關鍵邏輯：不是「沒有數據所以安全」，而是「沒有數據所以必須保守假設」。</p>
+                </div>
+                <div class="application-box">
+                    <h4>實務應用：Analytical Method 靈敏度要求</h4>
+                    <p>分析方法必須在 ADE 計算所得清潔限值以下偵測到殘留。常見計算路徑：</p>
+                    <ul>
+                        <li>ADE（mg/day）→ 計算最大殘留限值（MRL, μg/cm²）</li>
+                        <li>LOQ 必須 ≤ MRL（通常要求 LOQ ≤ 50% MRL）</li>
+                        <li>若無法開發符合要求的方法 → 考慮部分或完全專用</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- GMP FACTORS CONTINUED: Cleaning, Mix-up, Transfer -->
+        <div class="two-column" style="margin-top: 0;">
+            <div class="left-column">
+                <h4>3.2.1.6 Cleaning (Retention) Aspects</h4>
+                <p>"<em>Can cleaning be carried out to meet the required criteria?</em>"</p>
+                <p>Factors to be considered include:</p>
+                <ul>
+                    <li><span class="key-term">Feasibility</span>: analytical detection capability; effects of aggressive cleaning agents on equipment materials</li>
+                    <li><span class="key-term">Practicability</span>: consistency of manual vs. automated cleaning; procedure clarity</li>
+                    <li><span class="key-term">Cost</span>: direct and indirect costs of extended clean-down, particularly for frequent changeovers</li>
+                    <li><span class="key-term">Patient</span>: patient risk is the primary focus and supersedes operational considerations</li>
+                </ul>
+                <p>If these factors can all be addressed satisfactorily, then the use of a multiproduct facility with shared equipment may be a viable option.</p>
+
+                <h4>3.2.1.7–3.2.1.8 Cleaning Resolution and Partial Resolution</h4>
+                <p>If the current method cannot be validated to appropriate sensitivity, consider improving the method. If partial resolution is possible, dedicating specific equipment in the train (rather than the entire facility) may be a cost-effective option.</p>
+
+                <h4>3.2.1.9 Mix-Up Aspects</h4>
+                <p>"<em>Are procedures, controls, and facilities designed such that mix-up is avoided?</em>"</p>
+                <p>Factors include:</p>
+                <ul>
+                    <li><strong>Procedures/SOPs</strong>: areas where procedures may fail or be too complex to follow consistently</li>
+                    <li><strong>Controls</strong>: adequacy of existing controls; need for additional controls</li>
+                    <li><strong>Facility Design</strong>: no shared process flows or areas of overlap; effective procedure + control combination</li>
+                </ul>
+
+                <h4>3.2.1.12 Mechanical Transfer</h4>
+                <p>"<em>Is the potential for mechanical transfer to be controlled to safe predetermined levels?</em>"</p>
+                <p>Factors include:</p>
+                <ul>
+                    <li><strong>Process</strong>: is the process closed? Can material escape and be transported via equipment, personnel, or supplies?</li>
+                    <li><strong>Procedures</strong>: gown changes, equipment wipe-down prior to leaving processing rooms, foot/wheel transfer prevention</li>
+                    <li><strong>Facility</strong>: differential pressures between zones; GxP issues with personnel/material flow</li>
+                    <li><strong>Operational Standards</strong>: adequate training; engineering vs. procedural controls; CMO-specific considerations</li>
+                </ul>
+
+                <h4>3.2.1.15 Airborne Transfer</h4>
+                <p>"<em>Is the potential for airborne transfer to be controlled to safe predetermined levels?</em>"</p>
+                <p>Factors include:</p>
+                <ul>
+                    <li><strong>Process</strong>: is the product exposed to the room environment during processing, transfer, or cleaning? Is the process closed?</li>
+                    <li><strong>Facility</strong>: adequacy of differential pressures; material and personnel airlocks; HVAC performance</li>
+                </ul>
+
+                <h4>3.2.1.18 Accommodating Product in a Multiproduct Facility</h4>
+                <p>"<em>Can the product be accommodated in a multiproduct facility, but with more specific dedication?</em>"</p>
+                <p>Options for limited dedication include:</p>
+                <ul>
+                    <li><strong>Dedicated Suite/Room</strong> in a multiproduct facility</li>
+                    <li><strong>Dedicated Equipment</strong>: individual vessels, contact parts (feed chutes, compression tooling, filling heads)</li>
+                    <li><strong>Disposable Equipment</strong>: filling tubing, filters, glassware — with proper decontamination and disposal assessment</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — 清潔 / 混淆 / 機械/空氣傳播控制</h3>
+                <div class="term-box">
+                    <h4>四種 CC 傳播模式</h4>
+                    <table>
+                        <thead>
+                            <tr><th>傳播模式</th><th>主要控制手段</th><th>若無法控制</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>殘留（Retention）</td><td>清潔驗證、分析方法</td><td>設備專用或拋棄式</td></tr>
+                            <tr><td>混淆（Mix-Up）</td><td>SOP、設施設計、視覺管理</td><td>物理隔離、專用區域</td></tr>
+                            <tr><td>機械性轉移</td><td>密閉製程、更衣程序、差壓</td><td>專用走廊/套房</td></tr>
+                            <tr><td>空氣傳播</td><td>HVAC 差壓、氣鎖、過濾</td><td>專用 HVAC 系統</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="note-box">
+                    <h4>重點：清潔評估的四個維度（病人優先）</h4>
+                    <p>ISPE 明確指出：成本和可行性考量<strong>不能凌駕於病人安全之上</strong>。評估順序：</p>
+                    <ol>
+                        <li><strong>可行性</strong>：分析方法能達到所需偵測限嗎？</li>
+                        <li><strong>可操作性</strong>：自動化 vs. 手動清潔的一致性</li>
+                        <li><strong>成本</strong>：週期性（年度 vs. 週次）清潔的經濟性</li>
+                        <li><strong>病人安全</strong>：最終判斷標準，不可妥協</li>
+                    </ol>
+                </div>
+                <div class="application-box">
+                    <h4>CDMO 應用：CMO 特殊考量</h4>
+                    <p>ISPE 3.2.1.12 特別點名 CMO 情境：</p>
+                    <ul>
+                        <li>操作標準必須足以處理委託產品</li>
+                        <li>若依賴工程控制，換產時的隔離切換程序需特別評估</li>
+                        <li>員工是否需要化合物特定專業培訓？</li>
+                        <li>維修人員的交叉污染風險是否被納入評估？</li>
+                    </ul>
+                    <p>這些問題在與新客戶簽訂技術協議時應逐一確認。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：部分專用如同共用廚房分區</h4>
+                    <p>高級餐廳的廚房可能設有獨立的過敏原料理區（專用砧板、刀具），但使用共用烤箱。這就是「部分專用」的精神——針對風險點精準隔離，而非整個廚房廢止共用。ISPE 3.2.1.18 的三個選項（專用套房、專用設備、拋棄式設備）正是這種梯度思維的體現。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     LOGIC DIAGRAM — HTML FLOWCHART
+     ================================================================ -->
+<div class="chapter-section" id="sec-flowchart">
+    <div class="chapter-divider">
+        <div class="chapter-badge">Fig</div>
+        <div class="chapter-info">
+            <h2>Logic Diagram — HTML Flowchart (Figure 3.2 / 3.3)</h2>
+            <p>GMP/Regulatory Logic (Left) + Health &amp; Hygiene Logic (Right) | 決策邏輯圖全覽</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <!-- GMP LOGIC FLOWCHART -->
+            <div class="left-column">
+                <h3>Figure 3.2 — GMP / Regulatory Logic</h3>
+                <p style="font-size:0.85rem; color:#555; margin-bottom:1rem;">Sequential decision framework for determining whether a product can be manufactured in a shared facility, based on patient risk and GMP compliance factors.</p>
+                <div class="logic-diagram">
+                    <div class="logic-diagram-title">GMP/Regulatory Logic — Shared Facility Decision</div>
+                    <div class="flow-container">
+
+                        <!-- START -->
+                        <div class="flow-start">START<br><small>New Product / Compound</small></div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- GATHER HAZARD INFO -->
+                        <div class="flow-box">Gather Hazard Information<br><small>Toxicological / Clinical Data Review</small></div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q1: WRITTEN REGULATION? -->
+                        <div class="flow-diamond">
+                            Q1: Is there a written regulation requiring<br>dedicated facilities for this product?<br><small>(e.g., beta-lactam antibiotics)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8594;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-end-dedicated">DEDICATED<br>FACILITY<br>Required</div>
+                            </div>
+                        </div>
+
+                        <!-- Q2: CAN ADE BE DETERMINED? -->
+                        <div class="flow-diamond">
+                            Q2: Can an ADE be determined?<br><small>(Sufficient toxicological data available?)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8592;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-end-dedicated" style="align-self:flex-start; margin-left:0; margin-bottom:0.5rem;">DEDICATED<br>FACILITY<br>Required</div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q3: CAN RESIDUE LIMITS BE DETECTED? -->
+                        <div class="flow-diamond">
+                            Q3: Can relevant residue limits be detected?<br><small>(Validated analytical method achievable?)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-end-dedicated">DEDICATED<br>FACILITY<br>Required</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q4: CLEANING CRITERIA MET? -->
+                        <div class="flow-section-label">CLEANING ASSESSMENT</div>
+                        <div class="flow-diamond">
+                            Q4: Can cleaning be carried out to meet<br>required criteria?<br><small>(Feasibility, practicability, cost, patient safety)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <!-- Can criteria be modified? -->
+                                <div class="flow-diamond" style="width:140px; font-size:0.78rem;">
+                                    Q4a: Can criteria<br>be modified?
+                                </div>
+                                <div class="flow-branch">
+                                    <div class="branch-yes" style="max-width:70px;">
+                                        <div class="branch-label-yes">YES</div>
+                                        <div class="flow-arrow-sm">&#8593;</div>
+                                    </div>
+                                    <div class="branch-no" style="max-width:70px;">
+                                        <div class="branch-label-no">NO</div>
+                                        <div class="flow-end-partial" style="width:110px;">PARTIAL<br>DEDICATION<br>Consider</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q5: MIX-UP AVOIDED? -->
+                        <div class="flow-section-label">MIX-UP ASSESSMENT</div>
+                        <div class="flow-diamond">
+                            Q5: Are procedures, controls, and facility<br>designed to avoid mix-up?
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-diamond" style="width:140px; font-size:0.78rem;">
+                                    Q5a: Can controls<br>be modified?
+                                </div>
+                                <div class="flow-branch">
+                                    <div class="branch-yes" style="max-width:70px;">
+                                        <div class="branch-label-yes">YES</div>
+                                        <div class="flow-arrow-sm">&#8593;</div>
+                                    </div>
+                                    <div class="branch-no" style="max-width:70px;">
+                                        <div class="branch-label-no">NO</div>
+                                        <div class="flow-end-partial" style="width:110px;">PARTIAL<br>DEDICATION<br>Consider</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q6: MECHANICAL TRANSFER -->
+                        <div class="flow-section-label">MECHANICAL TRANSFER ASSESSMENT</div>
+                        <div class="flow-diamond">
+                            Q6: Is mechanical transfer controlled<br>to safe predetermined levels?
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-end-partial" style="width:120px;">PARTIAL or<br>FULL DEDICATION<br>Consider</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q7: AIRBORNE TRANSFER -->
+                        <div class="flow-section-label">AIRBORNE TRANSFER ASSESSMENT</div>
+                        <div class="flow-diamond">
+                            Q7: Is airborne transfer controlled<br>to safe predetermined levels?<br><small>(HVAC, differential pressure, airlocks)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-end-partial" style="width:120px;">PARTIAL or<br>FULL DEDICATION<br>Consider</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- FINAL: SHARED FACILITY VIABLE -->
+                        <div class="flow-end-shared" style="width:220px; padding: 0.75rem 1rem;">
+                            MULTIPRODUCT FACILITY<br>Viable — with appropriate controls<br><small>(Document risk assessment conclusion)</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- IH LOGIC FLOWCHART -->
+            <div class="right-column">
+                <h3>Figure 3.3 — Health &amp; Hygiene (IH) Logic</h3>
+                <p style="font-size:0.85rem; color:#555; margin-bottom:1rem;">Sequential decision framework for determining worker protection measures based on exposure assessment and IH principles.</p>
+                <div class="logic-diagram">
+                    <div class="logic-diagram-title">Health &amp; Hygiene (IH) Logic — Worker Protection Decision</div>
+                    <div class="flow-container">
+
+                        <!-- START -->
+                        <div class="flow-start">START<br><small>New Product / Compound</small></div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- GATHER HAZARD INFO -->
+                        <div class="flow-box">Gather Hazard Information<br><small>OEL / Toxicological Data Review</small></div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- ASSESS EXPOSURE POTENTIAL -->
+                        <div class="flow-box" style="background:#fff9e6; border-color:#f6ad55;">
+                            Assess Exposure Potential<br>
+                            <small>Who is at risk? Route of exposure? Frequency? Process open/closed?</small>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q1: EXPOSURE ADEQUATELY CONTROLLED? -->
+                        <div class="flow-diamond">
+                            Q1: Are exposures adequately controlled<br>by current measures?<br><small>(Review experience, monitoring data, process type)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q2: PROCESS CHANGE POSSIBLE? -->
+                        <div class="flow-section-label">HIERARCHY OF CONTROLS</div>
+                        <div class="flow-diamond">
+                            Q2: Is elimination, substitution, or<br>process change possible?<br><small>(Wet granulation, closed system, film coating)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-box" style="width:130px; font-size:0.8rem; background:#dcfce7; border-color:#16a34a;">
+                                    Implement Process Change<br>Re-assess Exposure
+                                </div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q3: ENGINEERING CONTROLS -->
+                        <div class="flow-diamond">
+                            Q3: Can engineering controls<br>manage the exposure?<br><small>(Cost, feasibility, ergonomics, cleaning ease, failure mode)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-box" style="width:130px; font-size:0.8rem; background:#dcfce7; border-color:#16a34a;">
+                                    Implement Engineering Control
+                                </div>
+                            </div>
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q4: EXPOSURE RISK STILL TOO HIGH? -->
+                        <div class="flow-diamond">
+                            Q4: Is the residual exposure risk<br>still too high after controls?<br><small>(Measured vs. OEL; secondary extract system?)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO — Risk Acceptable</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES — Still High</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q5: EMERGENCY RECOVERY -->
+                        <div class="flow-diamond">
+                            Q5: Is emergency recovery required?<br><small>(Primary containment failure modes; recovery plan)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-box" style="width:130px; font-size:0.8rem; background:#fee2e2; border-color:#ef4444; color:#991b1b;">
+                                    Define Emergency Recovery Plan<br>(PPE, showers, separate air supply)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- Q6: SECONDARY PPE -->
+                        <div class="flow-diamond">
+                            Q6: Is secondary control or<br>PPE required?<br><small>(Supplement primary control; emergency use only?)</small>
+                        </div>
+                        <div class="flow-branch">
+                            <div class="branch-no">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-no">NO</div>
+                                <div class="flow-arrow-sm">&#8595;</div>
+                            </div>
+                            <div class="branch-yes">
+                                <div class="flow-arrow-sm">&#8595;</div>
+                                <div class="branch-label-yes">YES</div>
+                                <div class="flow-box" style="width:130px; font-size:0.8rem; background:#fef9c3; border-color:#ca8a04; color:#92400e;">
+                                    Define Secondary PPE<br>Document Rationale
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- CHECK AGAINST GMP LOGIC -->
+                        <div class="flow-section-label">CROSS-CHECK WITH GMP LOGIC</div>
+                        <div class="flow-box" style="background:#e3f2fd; border-color:#1976d2; color:#1565c0;">
+                            Consequences of IH Control Strategy<br><small>Re-check against GxP/Regulatory Logic<br>to ensure plant operability is not compromised</small>
+                        </div>
+                        <div class="flow-arrow">&#8595;</div>
+
+                        <!-- FINAL -->
+                        <div class="flow-end-shared" style="width:220px; padding: 0.75rem 1rem;">
+                            IH CONTROLS DEFINED<br>Worker Protection Confirmed<br><small>(Document in risk assessment)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.2.2: HEALTH & HYGIENE FACTORS
+     ================================================================ -->
+<div class="chapter-section" id="sec322">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.2</div>
+        <div class="chapter-info">
+            <h2>Considering the Health and Hygiene Factors (Personnel)</h2>
+            <p>p30–p33 | 工業衛生邏輯：人員曝露評估與控制</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.2.2 Health and Hygiene Factors (Applicable to Personnel)</h3>
+
+                <h4>3.2.2.1 Gather Hazard Information</h4>
+                <p>The <span class="key-term">OEL</span> is normally the health-based criterion used in assessing airborne levels of API from bulk or finished product for protection of workers.</p>
+
+                <h4>3.2.2.2 Assess Exposure Potential</h4>
+                <p>Risk is a function of both hazard and exposure. Several factors should be considered:</p>
+                <ul>
+                    <li><strong>Who is at risk?</strong> — Workers at the line, maintenance personnel, general personnel, QA personnel when sampling</li>
+                    <li><strong>What factors influence exposure?</strong> — Dusty powder? Liquid? Closed or open process? Training level? Routine or frequent task?</li>
+                    <li><strong>What is the exposure pathway?</strong> — Inhalation, ingestion, or skin absorption?</li>
+                    <li><strong>When is exposure most likely?</strong> — Sampling, process breakdown, clean down, or product changeover?</li>
+                </ul>
+
+                <h4>3.2.2.3 Control of Exposure</h4>
+                <p>"<em>Are the exposures adequately controlled?</em>"</p>
+                <p>Review available information: adverse health effects reported? Monitoring data available? Similar processes in other facilities? Controls should be commensurate with the risk and consistent with manufacturing process requirements (e.g., engineering controls must not make interventions or cleaning difficult).</p>
+
+                <h4>3.2.2.4 Process Changes</h4>
+                <p>"<em>Is elimination, substitution, or process change possible?</em>"</p>
+                <p>Examples where this has been effective:</p>
+                <ol>
+                    <li>Removal of a solid recovery step between stages in a chemical process</li>
+                    <li>Change to a wet granulation process from a direct blend process</li>
+                    <li>Addition of a film coat to a tablet to reduce exposure during packing</li>
+                    <li>Formulate as a liquid/semisolid in a capsule rather than a conventional tablet or powder filled capsule</li>
+                </ol>
+
+                <h4>3.2.2.5 Selection of Engineering Controls</h4>
+                <p>Once risk factors have been investigated, control measures can be considered. Factors include: cost, feasibility, ergonomics, ease of cleaning, and <span class="key-term">failure mode operation</span> (what happens if the control measure fails).</p>
+
+                <h4>3.2.2.6 Level of Exposure Risk</h4>
+                <p>"<em>Is the exposure risk still too high?</em>"</p>
+                <p>Is it reasonable to add in a secondary system, such as an extract system? Is routine use of PPE acceptable for short-duration activities? Discuss with operating personnel, plant management, and HSE specialists. Operators may prefer PPE if a rigid barrier makes a process step ergonomically difficult.</p>
+
+                <h4>3.2.2.7 Emergency Recovery</h4>
+                <p>"<em>Is emergency recovery required?</em>"</p>
+                <p>Considerations: what will need to be recovered? What supporting infrastructure is required — PPE, change areas, showers, storage for PPE, separate air supply to service PPE?</p>
+
+                <h4>3.2.2.8 Secondary PPE</h4>
+                <p>"<em>Is secondary control or PPE required?</em>"</p>
+                <p>The rationale for secondary PPE should be well understood and documented: is it provided to supplement a primary control measure, or for emergency use only?</p>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — IH 曝露評估與控制層級</h3>
+
+                <div class="term-box">
+                    <h4>工業衛生 (IH) 控制層級（Controls Hierarchy）</h4>
+                    <p>ISPE 遵循傳統工業衛生的控制優先順序：</p>
+                    <ol>
+                        <li><strong>消除 / 替代</strong>（最佳）：改變製程以消除曝露源</li>
+                        <li><strong>工程控制</strong>：密閉系統、通風、隔離屏障</li>
+                        <li><strong>行政控制</strong>：SOP、訓練、工作輪班</li>
+                        <li><strong>個人防護設備 PPE</strong>（最後手段）：口罩、手套、防護服</li>
+                    </ol>
+                    <p>PPE 應視為<strong>補充</strong>工程控制的手段，不應作為主要防護措施。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>重點：OEL vs. ADE 的關鍵差異</h4>
+                    <p>即使來自相同毒理數據，OEL 和 ADE 的應用情境不同：</p>
+                    <ul>
+                        <li><strong>OEL</strong>：保護健康成年工人，以 8 小時吸入量為基礎（μg/m³）</li>
+                        <li><strong>ADE</strong>：保護病人（包括老人、兒童、免疫低下者），以每日口服或注射劑量為基礎（mg/day）</li>
+                    </ul>
+                    <p>因此同一化合物的 OEL 和 ADE 數值可能差異很大，應分別評估，不可相互替換。</p>
+                </div>
+
+                <div class="application-box">
+                    <h4>實務應用：曝露評估的四個關鍵問題</h4>
+                    <table>
+                        <thead>
+                            <tr><th>問題</th><th>實務考量</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>誰有風險？</td><td>線上操作員、維修員、QA 取樣員均需評估</td></tr>
+                            <tr><td>什麼因素影響？</td><td>粉塵度、製程密閉性、訓練程度</td></tr>
+                            <tr><td>曝露路徑？</td><td>吸入為主；皮膚吸收次之；口腔攝入</td></tr>
+                            <tr><td>何時最容易曝露？</td><td>換產、取樣、清潔、設備故障處理</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：工程控制如安全氣囊，PPE 如安全帶</h4>
+                    <p>安全氣囊（工程控制）是主動防護，設計上盡量讓乘客不需要靠它；安全帶（PPE）是被動防護，在主動防護失效時提供最後防線。兩者不可互相取代——PPE 的存在不能減少對工程控制的投資。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>緊急恢復計畫的三要素</h4>
+                    <p>若主要圍堵系統失效，緊急應變計畫需包含：</p>
+                    <ul>
+                        <li><strong>What</strong>：需要回收什麼？由誰執行？</li>
+                        <li><strong>How</strong>：需要什麼基礎設施（PPE 儲存、更衣區、淋浴間）？</li>
+                        <li><strong>Air</strong>：是否需要獨立供氣系統服務防護 PPE？</li>
+                    </ul>
+                    <p>緊急應變計畫應在產品引入前完成，而非在事故發生後才制定。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================
+     SECTION 3.2.3: CONSEQUENCES OF CONTROL STRATEGY
+     ================================================================ -->
+<div class="chapter-section" id="sec323">
+    <div class="chapter-divider">
+        <div class="chapter-badge">3.2.3</div>
+        <div class="chapter-info">
+            <h2>Consequences of Control Strategy</h2>
+            <p>p33 | 控制策略的結果與回饋循環</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>3.2.3 Consequences of Control Strategy</h3>
+                <p>The consequences of adopting any particular exposure control strategy should be <span class="key-term">rechecked against the GxP/regulatory logic</span> to ensure plant operability is not compromised.</p>
+
+                <div class="quote-box">
+                    "The consequences of adopting any particular exposure control strategy should be rechecked against the GxP/regulatory logic to ensure plant operability is not comprised."
+                    <br><small>— ISPE Baseline Guide Vol. 7, Section 3.2.3</small>
+                </div>
+
+                <p>This bidirectional check is critical: decisions made purely on IH grounds (e.g., adding rigid physical barriers for worker protection) may inadvertently compromise GMP operability (e.g., making cleaning access impossible or creating contamination traps). Similarly, GMP-driven decisions must be re-evaluated for their impact on worker safety.</p>
+
+                <h4>Three Possible Outcomes of the Logic Diagram</h4>
+                <table>
+                    <thead>
+                        <tr><th>Outcome</th><th>Description</th><th>Conditions</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge red">Dedicated Facility</span></td>
+                            <td>Product must be manufactured in a separate, dedicated facility</td>
+                            <td>Regulatory requirement; ADE cannot be determined; analytical methods inadequate</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge orange">Campaign / Partial Dedication</span></td>
+                            <td>Dedicated suite, room, equipment, or campaign scheduling in shared facility</td>
+                            <td>Controls achievable for most but not all stages; partial dedication cost-effective</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge green">Concurrent Manufacture</span></td>
+                            <td>Product can be co-manufactured with other products in shared facility</td>
+                            <td>All Logic Diagram questions answered satisfactorily; risk assessment documented</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — 控制策略結果與 CDMO 業務意義</h3>
+
+                <div class="term-box">
+                    <h4>三種決策結果的業務意涵</h4>
+                    <p>Logic Diagram 最終產出三種設施策略，每一種對 CDMO 的商業模式影響截然不同：</p>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>結果</th><th>設施要求</th><th>CDMO 成本影響</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge red">專用設施</span></td>
+                            <td>完全獨立建築/廠區</td>
+                            <td>最高（需專用產線投資）</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge orange">活動式/部分專用</span></td>
+                            <td>專用套房、設備、或時段安排</td>
+                            <td>中等（設備投資 + 換產時間損失）</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge green">同期製造</span></td>
+                            <td>共用設施，適當控制</td>
+                            <td>最低（共攤基礎建設成本）</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box">
+                    <h4>重點：雙向回饋循環的重要性</h4>
+                    <p>Section 3.2.3 的核心訊息：<strong>IH 決策與 GMP 決策不能各自獨立最優化。</strong></p>
+                    <p>典型衝突案例：</p>
+                    <ul>
+                        <li>IH 要求密閉隔離箱 → GMP 清潔人員無法進入 → 殘留風險上升</li>
+                        <li>GMP 要求開放式清潔設計 → 操作員粉塵曝露增加 → OEL 超標</li>
+                        <li>IH 推薦一次性設備 → GMP 需要驗證拋棄性設備的殘留安全性</li>
+                    </ul>
+                    <p>解決方案：跨職能評估，工程 + QA + IH 同時參與設計審查。</p>
+                </div>
+
+                <div class="application-box">
+                    <h4>CDMO 業務決策流程建議</h4>
+                    <p>將 Logic Diagram 整合到新產品引入（NPI）的業務流程：</p>
+                    <ol>
+                        <li><strong>BD 接洽時</strong>：索取化合物 ADE 或毒理概要，初步判斷可接受性</li>
+                        <li><strong>技術可行性評估</strong>：完整執行 Logic Diagram，確定設施策略</li>
+                        <li><strong>報價與合約</strong>：將專用設備成本、驗證費用、換產損失納入定價</li>
+                        <li><strong>技術協議</strong>：明確記載是 CC 控制需求還是業務決策的專用設施</li>
+                        <li><strong>定期回顧</strong>：ADE 值更新或製程變更時重新執行評估</li>
+                    </ol>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：Logic Diagram 如建築許可審查</h4>
+                    <p>在城市建設前，必須通過結構安全（GMP/病人安全）和消防規範（IH/人員安全）雙重審查。建商不能因為消防設施成本高就跳過——同樣地，CDMO 也不能因為 IH 控制成本高就忽略對製程的影響。兩個審查必須同時通過，且相互不矛盾。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUMMARY TABLE -->
+        <div class="two-column" style="margin-top:0;">
+            <div class="left-column">
+                <h3>Chapter 3 — Key Decision Points Summary</h3>
+                <table>
+                    <thead>
+                        <tr><th>Decision Node</th><th>Key Question</th><th>YES</th><th>NO</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>3.2.1.2</td><td>Written regulation requiring dedicated facility?</td><td>Dedicated Facility</td><td>Continue</td></tr>
+                        <tr><td>3.2.1.3</td><td>Can ADE be determined?</td><td>Continue</td><td>Dedicated Facility</td></tr>
+                        <tr><td>3.2.1.4</td><td>Can residue limits be detected (validated method)?</td><td>Continue</td><td>Dedicated Facility</td></tr>
+                        <tr><td>3.2.1.6</td><td>Can cleaning meet required criteria?</td><td>Continue</td><td>Consider Partial/Full Dedication</td></tr>
+                        <tr><td>3.2.1.9</td><td>Procedures and facility designed to avoid mix-up?</td><td>Continue</td><td>Consider Partial/Full Dedication</td></tr>
+                        <tr><td>3.2.1.12</td><td>Mechanical transfer controlled to safe levels?</td><td>Continue</td><td>Consider Dedication</td></tr>
+                        <tr><td>3.2.1.15</td><td>Airborne transfer controlled (HVAC, airlocks)?</td><td>Multiproduct viable</td><td>Consider Dedication</td></tr>
+                        <tr><td>3.2.2.3</td><td>Worker exposures adequately controlled?</td><td>Continue</td><td>Select Engineering Controls</td></tr>
+                        <tr><td>3.2.2.6</td><td>Residual exposure risk still too high?</td><td>Add PPE/Secondary Control</td><td>IH Controls Confirmed</td></tr>
+                        <tr><td>3.2.3</td><td>IH strategy compromises GMP operability?</td><td>Redesign Solution</td><td>Strategy Confirmed</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <h3>中文解析 — 章節總結與核心洞察</h3>
+                <div class="term-box">
+                    <h4>Chapter 3 四大核心洞察</h4>
+                    <ol>
+                        <li><strong>品質系統是 CC 管理的骨架</strong>：技術轉移、變更控制、風險管理、CAPA 必須相互連結，形成完整的 CC 管控網絡。</li>
+                        <li><strong>Logic Diagram 是客觀決策工具</strong>：跨職能團隊使用，防止主觀判斷和情緒性決策（如「這個化合物聽起來很危險所以一定要專用設施」）。</li>
+                        <li><strong>ADE 是 GMP 邏輯的核心數值</strong>：無法確定 ADE = 無法科學評估風險 = 必須最保守假設（專用設施）。</li>
+                        <li><strong>IH 與 GMP 必須雙向協調</strong>：兩者互為約束，任何控制策略必須同時滿足病人保護和人員安全，且不互相妥協。</li>
+                    </ol>
+                </div>
+                <div class="key-point-box">
+                    <h4>CDMO 關鍵外帶訊息</h4>
+                    <p>對於 CDMO 的 Operations Director 而言，ISPE Vol.7 Chapter 3 提供了一個<strong>可防禦的、科學化的產品接受決策框架</strong>。</p>
+                    <p>當客戶或稽查員質疑「為什麼這個化合物能在共用廠房製造？」，完整記錄的 Logic Diagram 評估結果就是最有力的答案——不是直覺，不是歷史慣例，而是系統化的風險評估文件。</p>
+                    <p>這也是 ISPE Vol.7 相較於一般 GMP 指引最獨特的貢獻：它給了製造業者一個<strong>說「Yes，我們可以共用製造」的科學依據</strong>，而不僅僅是告訴你何時需要說「No」。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- end .main-content -->
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <p>ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</p>
+    <p>Chapter 3: Quality System Requirements | p23–p36</p>
+    <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">SterileGMP Knowledge Hub — Educational Reference | &#169; ISPE 2017. All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+// Back to Top button
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

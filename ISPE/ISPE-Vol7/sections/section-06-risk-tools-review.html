@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.7 - Section 6: Risk Acceptance, Tools, Review & Communication</title>
+    <style>
+    /* =============================================================
+       SterileGMP Knowledge Hub - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+       ============================================================= */
+
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+    .header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+    .header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white; padding: 1rem 2rem; text-align: center;
+    }
+    .top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+    .top-nav {
+        background: #2d3748; position: sticky; top: 0; z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+    }
+    .nav-container {
+        display: flex; justify-content: flex-start; align-items: center;
+        flex: 1; padding: 0 0.5rem; overflow-x: auto;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .nav-container::-webkit-scrollbar { display: none; }
+    .nav-scroll-btn {
+        background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+        padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+        flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+    }
+    .nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+    .nav-item {
+        display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+        border-bottom: 3px solid transparent; transition: all 0.2s ease;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+    .nav-num {
+        width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.75rem; font-weight: 600;
+    }
+    .nav-item.active .nav-num { background: var(--accent-blue); }
+    .nav-label { font-size: 0.85rem; font-weight: 500; }
+
+    .main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+    .main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+    .chapter-section {
+        background: white; border-radius: 12px; margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+    .chapter-divider {
+        display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+    }
+    .chapter-badge {
+        width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+    }
+    .chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+    .chapter-body { padding: 1.5rem; }
+
+    .two-column, .content-grid, .side-by-side {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+
+    .left-column, .original-content {
+        background: var(--light-gray); border-radius: 10px;
+        padding: 1.5rem; border: 1px solid #e2e8f0;
+    }
+    .left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+        color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+    }
+    .left-column p, .original-content p {
+        margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+    }
+    .left-column ul, .left-column ol, .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+    }
+    .left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+    .right-column, .commentary {
+        background: var(--light-blue); border-radius: 10px;
+        padding: 1.5rem; border: 1px solid #bee3f8;
+    }
+    .right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+        color: #2c5282; border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+    }
+    .right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+    .column-header {
+        font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+        padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+    }
+    .right-column .column-header, .commentary .column-header { color: #2c5282; }
+
+    .chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+    .key-term, .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px; border-radius: 4px; font-weight: 600;
+        color: #155724; font-size: 0.9em;
+    }
+
+    .quote-box, .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+        margin: 1rem 0; border-radius: 0 8px 8px 0;
+        font-style: italic; font-size: 0.95rem;
+    }
+
+    .concept-box, .analogy-box, .note-box, .key-note, .term-box,
+    .formula-box, .key-term-box, .key-point-box, .highlight-box {
+        border-radius: 8px !important; padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+    }
+    .concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4, .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+    }
+    .concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+    .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+        margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+    }
+    .concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol, .key-note ul, .key-note ol,
+    .term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+    .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+    .highlight-box ul, .highlight-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+    }
+    .concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+    .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+        margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+    }
+
+    .analogy-box, .concept-box.analogy {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+    .analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+    .term-box, .key-term-box,
+    .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+        background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+    }
+    .concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+    .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+    .note-box, .key-note, .key-point-box, .key-point, .highlight-box {
+        background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+    }
+    .note-box h3, .note-box h4, .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+    .formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+    .formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+    .formula-box pre {
+        background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+        font-family: 'Courier New', monospace; font-size: 0.85rem;
+        overflow-x: auto; white-space: pre-wrap;
+    }
+
+    .concept-box.application, .application-box {
+        background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+    }
+    .concept-box.application h3, .concept-box.application h4,
+    .application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important; border-radius: 10px !important;
+        padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+    }
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important; margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important; font-weight: 600 !important;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+    }
+    tr:nth-child(even) { background: #f7fafc; }
+
+    /* Risk matrix color cells */
+    .risk-low    { background-color: #d4edda; color: #155724; font-weight: 600; text-align: center; }
+    .risk-medium { background-color: #fff3cd; color: #856404; font-weight: 600; text-align: center; }
+    .risk-high   { background-color: #f8d7da; color: #721c24; font-weight: 600; text-align: center; }
+    .risk-critical { background-color: #c0392b; color: #fff; font-weight: 700; text-align: center; }
+    .risk-header { background: #2d3748; color: white; font-weight: 700; text-align: center; }
+    .matrix-axis { background: #edf2f7; font-weight: 600; color: var(--primary-blue); text-align: center; font-size: 0.82rem; }
+
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+    .learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+    .learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+    .toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; }
+    .toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+    .toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .toc-grid a {
+        display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+        border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+        font-size: 0.85rem; transition: all 0.2s;
+    }
+    .toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+    .section-title, .section-divider {
+        font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+    }
+    .section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+    .main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+    .main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+    .back-to-top {
+        position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+        background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+        cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+        z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+    .fishbone-container {
+        background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+        padding: 1.25rem; margin: 1rem 0;
+    }
+    .fishbone-spine {
+        display: flex; align-items: center; justify-content: space-between;
+        background: #2d3748; color: white; border-radius: 6px;
+        padding: 0.5rem 1rem; font-weight: 600; margin: 0.75rem 0;
+    }
+    .fishbone-grid {
+        display: grid; grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.5rem; margin: 0.5rem 0;
+    }
+    .fishbone-bone {
+        background: white; border: 1px solid #bee3f8; border-radius: 6px;
+        padding: 0.5rem 0.75rem; font-size: 0.85rem; text-align: center;
+    }
+    .fishbone-bone strong { color: #2c5282; display: block; font-size: 0.9rem; margin-bottom: 0.2rem; }
+
+    @media (max-width: 900px) {
+        .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+        .header h1, .top-header h1 { font-size: 1.1rem; }
+        .nav-label { display: none; }
+        .nav-item { padding: 0.75rem; }
+        .main-content, .main-container { padding: 1rem; }
+        .chapter-body { padding: 1rem; }
+        .fishbone-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media print {
+        .top-nav, .back-to-top, .header { display: none !important; }
+        .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+        .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
+    <div class="subtitle">Section 6 — Risk Acceptance, Risk Management Tools, Risk Review &amp; Risk Communication</div>
+    <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p109–p124</div>
+</div>
+
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節涵蓋章節</h3>
+        <div class="toc-grid">
+            <a href="#ch10">Ch.10 風險接受</a>
+            <a href="#ch11-intro">Ch.11 風險管理工具總覽</a>
+            <a href="#ch11-matrix">11.1 風險排序 / 風險矩陣</a>
+            <a href="#ch11-fishbone">11.2 魚骨圖</a>
+            <a href="#ch11-fmea">11.3 FMEA</a>
+            <a href="#ch11-stat">11.4 統計分析</a>
+            <a href="#ch12">Ch.12 風險審查</a>
+            <a href="#ch13">Ch.13 風險溝通</a>
+            <a href="#ch13-template">13.1 摘要文件範本</a>
+        </div>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標</h3>
+        <ul>
+            <li>理解殘餘風險接受的條件，以及與 HBEL（ADE/OEL）的連結關係</li>
+            <li>掌握風險矩陣（Risk Matrix）的構成邏輯與色碼熱圖的解讀方式</li>
+            <li>應用魚骨圖（Ishikawa / 6M 架構）識別交叉污染的根本原因</li>
+            <li>計算並解讀 FMEA 風險優先數（RPN = S × O × D），了解評分表使用方式</li>
+            <li>說明統計分析在風險評估中的角色（Cpk / Ppk）</li>
+            <li>掌握定期風險審查的觸發條件與文件要求</li>
+            <li>了解風險溝通的利害關係人架構及摘要文件範本的必要內容</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 10: RISK ACCEPTANCE
+         ============================================================ -->
+    <div id="ch10" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">10</div>
+            <div class="chapter-info">
+                <h2>Risk Acceptance — 風險接受</h2>
+                <p>p109–p110 | ICH Q9 residual risk decision framework, link to HBEL</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>10 Risk Acceptance</h3>
+                    <p>ICH Q9 states that <span class="key-term">risk acceptance</span> is a decision to accept a defined level of risk. This can be a formal documented decision process with residual risks specified or a more informal process where the residual risk is not specified. The documentation and the acceptable residual risk should be <span class="key-term">commensurate with the risk</span>.</p>
+
+                    <p>Acceptance of residual risk based on the <span class="key-term">health-based limits</span> described in this Guide should provide adequate protection of both patient and the worker.</p>
+
+                    <p>Where risk reduction strategies are implemented in order to get to a risk acceptance decision, the manufacturer should be able to demonstrate to all stakeholders that the risk reduction strategies are effective in maintaining cross-contamination and worker exposure at or below acceptable limits.</p>
+
+                    <p>This requires demonstration that:</p>
+                    <ul>
+                        <li>Procedures and detection devices are in place to minimize the potential for <span class="key-term">mix-up</span> even in the case of accident or error</li>
+                        <li>Any residues on product contact and nonproduct contact surfaces fall within the <span class="key-term">health-based limits</span> in support of cleaning processes</li>
+                        <li>Flow of personnel, product, material, and HVAC are designed to minimize the potential for <span class="key-term">mechanical transfer</span></li>
+                        <li>Any product that may escape the process is maintained below levels that could impact the potential for cross-contamination and worker safety</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>核心概念：什麼是風險接受？</h4>
+                        <p><strong>風險接受（Risk Acceptance）</strong>不是「忽視風險」，而是一個有意識的、基於充分證據的決策——確認殘餘風險在可接受範圍之內。</p>
+                        <p>ICH Q9 允許正式或非正式兩種型態，但文件程度必須與風險大小相稱（commensurate with the risk）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>HBEL 連結：ADE 與 OEL 是接受門檻的基礎</h4>
+                        <p>本指南強調，殘餘風險接受的依據應為<strong>健康基礎暴露限值（HBEL）</strong>，具體包括：</p>
+                        <ul>
+                            <li><strong>ADE（Acceptable Daily Exposure）</strong>——患者保護（產品交叉污染角度）</li>
+                            <li><strong>OEL（Occupational Exposure Limit）</strong>——員工保護（職業暴露角度）</li>
+                        </ul>
+                        <p>只有當實際殘留量 ≤ 基於 ADE/OEL 推導的清潔限值時，才可正式接受風險。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：風險接受像「結案核准」</h4>
+                        <p>就像工廠送審一份 CAPA — 必須提供證據證明改善措施有效，主管才能「核准結案」。風險接受也是：你必須拿出數據，證明四種交叉污染途徑（混料、殘留、機械轉移、空氣傳播）都已控制在 ADE/OEL 以下，才能正式簽署接受。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>四項必要舉證條件</h4>
+                        <ul>
+                            <li>防止<strong>混料（mix-up）</strong>的程序與偵測裝置已到位</li>
+                            <li>產品接觸表面與非接觸表面的殘留量符合健康基礎清潔限值</li>
+                            <li>人員、物料、HVAC 動線已設計為最小化機械轉移</li>
+                            <li>逸散至製程外的產品量低於影響安全的閾值</li>
+                        </ul>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>稽核重點</h4>
+                        <p>稽核員常問：「你的殘餘風險接受決定有沒有文件？是誰批准的？依據哪個 ADE 值？」——確保這條邏輯鏈清晰，從毒理報告 → ADE → 清潔限值 → 驗證結果 → 風險接受文件。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 11 INTRO: RISK MANAGEMENT TOOLS OVERVIEW
+         ============================================================ -->
+    <div id="ch11-intro" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11</div>
+            <div class="chapter-info">
+                <h2>Risk Management Tools — 風險管理工具總覽</h2>
+                <p>p111–p112 | ICH Q9 tool selection, risk ranking, organizational standards</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>11 Risk Management Tools</h3>
+                    <p>Risk can be assessed and managed using risk management tools. The level of effort or the tools used should be based on the <span class="key-term">level of potential risk</span> and knowledge of the process. It is important that each manufacturer set standards for risk assessment tools including, but not limited to, the types of tools to be used, when to use certain tools, defining the categories, setting acceptable risk levels, action levels, etc.</p>
+
+                    <p>It is essential that the numbers or designation are <span class="key-term">carefully chosen and defined</span> and are not modified because the outcome is unwelcome.</p>
+
+                    <p>ICH Q9 refers to a number of risk assessment tools that may be used. Organizations should determine which tools they wish to use or they can create custom tools:</p>
+                    <ul>
+                        <li>Basic risk management facilitation methods (flowcharts, check sheets, etc.)</li>
+                        <li><span class="key-term">Failure Mode and Effects Analysis (FMEA)</span></li>
+                        <li>Failure Mode, Effects, and Criticality Analysis (FMECA)</li>
+                        <li>Fault Tree Analysis (FTA)</li>
+                        <li>Hazard Analysis and Critical Control Points (HACCP)</li>
+                        <li>Hazard Operability Analysis (HAZOP)</li>
+                        <li>Preliminary Hazard Analysis (PHA)</li>
+                        <li><span class="key-term">Risk ranking and filtering</span></li>
+                        <li>Supporting <span class="key-term">statistical tools</span></li>
+                    </ul>
+                    <p>The tools shown in this Chapter are examples that should ideally be developed and used by a <span class="key-term">team of stakeholders</span> working together.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>工具選擇原則：複雜度應與風險等級相稱</h4>
+                        <p>本指南不強制規定使用哪種工具，但強調：</p>
+                        <ul>
+                            <li><strong>工具投入程度</strong>應與潛在風險水準成比例</li>
+                            <li>每家製造商應建立自己的<strong>標準化工具體系</strong>（包含使用時機、評分類別、可接受標準）</li>
+                            <li>一旦標準確立，<strong>不能因為結果不如預期而修改評分定義</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵原則：評分定義不可因結果不好而事後修改</h4>
+                        <p>這是業界常見的合規陷阱——有人在 FMEA 結果出現高 RPN 後，重新調整評分定義讓數字「好看」。ICH Q9 和本指南明確反對此做法。評分標準必須在評估前定義，且貫穿整個項目一致適用。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ICH Q9 工具清單（本節涵蓋工具加粗）</h4>
+                        <ul>
+                            <li>流程圖、查核表（基礎方法）</li>
+                            <li><strong>FMEA — 失效模式與影響分析</strong></li>
+                            <li>FMECA — 含嚴重度分析的 FMEA</li>
+                            <li>FTA — 故障樹分析</li>
+                            <li>HACCP — 危害分析關鍵控制點</li>
+                            <li>HAZOP — 危害與可操作性分析</li>
+                            <li>PHA — 初步危害分析</li>
+                            <li><strong>風險排序與篩選（Risk Matrix）</strong></li>
+                            <li><strong>統計分析工具</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：工具箱思維</h4>
+                        <p>就像水電工不會只用一種扳手——風險管理也需要視問題性質選用適當工具。FMEA 適合流程步驟層級的細節分析；Risk Matrix 適合快速排序整廠製程；統計分析適合有量化監測數據的場景。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 11.1: RISK RANKING / RISK MATRIX
+         ============================================================ -->
+    <div id="ch11-matrix" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.1</div>
+            <div class="chapter-info">
+                <h2>Risk Ranking / Risk Matrix — 風險排序與風險矩陣</h2>
+                <p>p112 | Probability vs Severity grid, color-coded heat map, unit operation classification</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>11.1 Risk Ranking or Risk Matrix</h3>
+                    <p>Qualitative risk assessments may be performed at manufacturing sites for the purpose of determining which unit operations pose the greatest risk or the greatest opportunity. A <span class="key-term">risk ranking</span> or <span class="key-term">risk matrix</span> provides a very simple high level objective process to consistently evaluate all the unit operations at a manufacturing site and rank the operations by risk.</p>
+
+                    <p>To apply the risk ranking, all the unit operations at a site are identified. To complete the ranking, the following parameters should be considered:</p>
+                    <ul>
+                        <li><span class="key-term">Health Effects:</span> ADE value, residue levels for cleaning, inactivation, etc.</li>
+                        <li><span class="key-term">Product Considerations:</span> percent active in batch, batch size, product form (impact on API becoming airborne), maximum daily dosage</li>
+                        <li><span class="key-term">Operational Considerations:</span> number of employees involved, frequency of the process, energy input, open or closed processing, surface area of product contact parts, batches per year, relative positions of source and at-risk materials, duration of process</li>
+                    </ul>
+
+                    <p>For each parameter a numerical value, or high, medium, and low indicator is assigned, and for each unit operation, the scores are totaled. After all unit operations have been assessed, the risk ranking scores can be compared and activities prioritized.</p>
+
+                    <h3>Unit Operation Risk Ranking — Airborne Concentration Examples</h3>
+                    <ul>
+                        <li><strong>High (H):</strong> sampling, weighing and dispensing, sample testing (analytical), charging, milling, granulation, extruding (cleaning), compounding</li>
+                        <li><strong>Medium (M):</strong> mixing, blending, extruding, compression, capsule filling</li>
+                        <li><strong>Low (L):</strong> coating, charging, drilling, printing, packaging</li>
+                        <li><strong>Negligible (N):</strong> membrane coating, discharging cores, drying, pouching, gel dispensing, curing, assembling, inspection</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>風險矩陣的核心邏輯</h4>
+                        <p>風險矩陣以<strong>發生機率（Probability/Likelihood）</strong>對<strong>嚴重度（Severity）</strong>繪製二維網格，每個交叉格以色碼標示風險等級：</p>
+                    </div>
+
+                    <!-- Color-coded risk matrix table -->
+                    <table style="margin: 1rem 0; font-size: 0.82rem;">
+                        <thead>
+                            <tr>
+                                <th class="risk-header" style="width:18%">嚴重度 ▶<br>發生機率 ▼</th>
+                                <th class="risk-header">輕微<br>Negligible</th>
+                                <th class="risk-header">低度<br>Low</th>
+                                <th class="risk-header">中度<br>Moderate</th>
+                                <th class="risk-header">嚴重<br>High</th>
+                                <th class="risk-header">極嚴重<br>Critical</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="matrix-axis">幾乎確定<br>Almost Certain</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-high">高</td>
+                                <td class="risk-high">高</td>
+                                <td class="risk-critical">極高</td>
+                                <td class="risk-critical">極高</td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-axis">可能<br>Likely</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-high">高</td>
+                                <td class="risk-high">高</td>
+                                <td class="risk-critical">極高</td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-axis">偶發<br>Possible</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-high">高</td>
+                                <td class="risk-high">高</td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-axis">罕見<br>Unlikely</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-high">高</td>
+                            </tr>
+                            <tr>
+                                <td class="matrix-axis">極罕見<br>Rare</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-low">低</td>
+                                <td class="risk-medium">中</td>
+                                <td class="risk-medium">中</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box">
+                        <h4>色碼對應行動要求</h4>
+                        <ul>
+                            <li><span style="background:#d4edda;padding:1px 6px;border-radius:3px;color:#155724;font-weight:600;">低</span> — 可接受，監控即可</li>
+                            <li><span style="background:#fff3cd;padding:1px 6px;border-radius:3px;color:#856404;font-weight:600;">中</span> — 需評估是否採取改善措施</li>
+                            <li><span style="background:#f8d7da;padding:1px 6px;border-radius:3px;color:#721c24;font-weight:600;">高</span> — 需要風險控制措施</li>
+                            <li><span style="background:#c0392b;padding:1px 6px;border-radius:3px;color:white;font-weight:600;">極高</span> — 必須立即採取行動或暫停</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>無菌填充廠應用示例</h4>
+                        <p>以無菌填充廠交叉污染風險排序為例：</p>
+                        <ul>
+                            <li><strong>高風險：</strong>稱量分裝、API 充填（高空浮濃度）</li>
+                            <li><strong>中風險：</strong>混合/調配操作</li>
+                            <li><strong>低風險：</strong>包裝、貼標（密閉系統）</li>
+                            <li><strong>可忽略：</strong>乾燥、外觀檢查</li>
+                        </ul>
+                        <p>三個評分維度（健康影響、產品因素、操作因素）加總後決定整體排序，優先處理高分製程步驟。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 11.2: FISHBONE DIAGRAM
+         ============================================================ -->
+    <div id="ch11-fishbone" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.2</div>
+            <div class="chapter-info">
+                <h2>Cause and Effect Diagram (Fishbone) — 魚骨圖（石川圖）</h2>
+                <p>p113 | Ishikawa diagram for cross-contamination root cause analysis, 6M framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>11.2 Cause and Effect Diagram (Fishbone Diagram)</h3>
+                    <p>Use the <span class="key-term">Ishikawa Fishbone diagram</span> to brainstorm how the four modes of cross-contamination can occur. In addition, a second diagram can be used to identify how each of the four modes of cross-contamination can be or are controlled.</p>
+
+                    <p>This can be a helpful precursor to more detailed analysis or data gathering exercises.</p>
+
+                    <div class="quote-box">
+                        "The Fishbone diagram is a structured brainstorming tool that maps potential causes to an observed effect, enabling a team to systematically explore root causes before committing to remediation actions."
+                    </div>
+
+                    <p>The four modes of cross-contamination addressed by the fishbone analysis are:</p>
+                    <ul>
+                        <li><span class="key-term">Mix-up</span> — incorrect product or label identification</li>
+                        <li><span class="key-term">Retention</span> — residues remaining from prior campaigns</li>
+                        <li><span class="key-term">Mechanical transfer</span> — physical movement via personnel, equipment, materials</li>
+                        <li><span class="key-term">Airborne transfer</span> — product aerosols migrating via air currents</li>
+                    </ul>
+
+                    <p>Two diagrams are recommended:</p>
+                    <ol>
+                        <li>First diagram: <em>How can each mode occur?</em> (cause identification)</li>
+                        <li>Second diagram: <em>How is each mode currently controlled?</em> (control mapping)</li>
+                    </ol>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>魚骨圖的 6M 架構</h4>
+                        <p>標準魚骨圖使用「6M」分類框架，從六個維度系統性地識別根本原因：</p>
+                    </div>
+
+                    <!-- Fishbone visual representation -->
+                    <div class="fishbone-container">
+                        <div class="fishbone-grid">
+                            <div class="fishbone-bone">
+                                <strong>Man（人員）</strong>
+                                訓練不足、操作失誤、人員流動、更衣程序不當
+                            </div>
+                            <div class="fishbone-bone">
+                                <strong>Machine（設備）</strong>
+                                清潔不徹底、磨損產生顆粒、設計難以清潔的死角
+                            </div>
+                            <div class="fishbone-bone">
+                                <strong>Method（方法）</strong>
+                                SOP 不完整、清潔驗證失效、製程順序安排不當
+                            </div>
+                            <div class="fishbone-bone">
+                                <strong>Material（物料）</strong>
+                                容器標籤錯誤、共用物料架、包材殘留
+                            </div>
+                            <div class="fishbone-bone">
+                                <strong>Measurement（量測）</strong>
+                                殘留量監測不足、取樣點不代表性、分析方法靈敏度不夠
+                            </div>
+                            <div class="fishbone-bone">
+                                <strong>Mother Nature（環境）</strong>
+                                HVAC 壓差不足、空氣循環帶入交叉污染、溫濕度影響揚塵
+                            </div>
+                        </div>
+                        <div class="fishbone-spine">
+                            <span>6M 根本原因</span>
+                            <span>&#9658; 交叉污染發生</span>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>雙圖使用策略</h4>
+                        <p><strong>第一張圖（找問題）：</strong>針對每種交叉污染模式，用 6M 列舉所有可能的成因。這是 brainstorming 階段，不預設答案。</p>
+                        <p><strong>第二張圖（找控制）：</strong>針對相同模式，列出現有控制措施（工程控制、行政控制、程序控制）。兩張圖對比，缺口（gap）就是需要改善的地方。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：魚骨圖是「反向工程」</h4>
+                        <p>你已知道問題（魚頭 = 效果），現在沿著魚骨往回追溯原因。就像交通事故調查員從「追撞」倒推「路面濕滑 + 車距不足 + 疲勞駕駛」——把每條骨頭想成一個可能的原因分支。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>無菌填充廠實際應用</h4>
+                        <p>針對「空氣傳播（Airborne）」模式的魚骨分析示例：</p>
+                        <ul>
+                            <li><strong>人員：</strong>更衣不完整導致外部污染物帶入</li>
+                            <li><strong>設備：</strong>RABS/隔離器的 HEPA 完整性破損</li>
+                            <li><strong>方法：</strong>開瓶操作在非 A 級環境進行</li>
+                            <li><strong>環境：</strong>B 級室對 C 級室壓差反向（失控狀態）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 11.3: FMEA
+         ============================================================ -->
+    <div id="ch11-fmea" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.3</div>
+            <div class="chapter-info">
+                <h2>Failure Mode and Effects Analysis (FMEA) — 失效模式與影響分析</h2>
+                <p>p114–p117 | RPN = S × O × D, scoring tables, FMEA form structure</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>11.3 Failure Mode and Effects Analysis</h3>
+                    <p>Many pharmaceutical companies use <span class="key-term">FMEA techniques</span> for risk ranking and have standard protocols for its use. It is used in Six Sigma evaluations and can be used for a wide range of risk assessments.</p>
+                    <p>FMEA was originally developed by the US Military in the 1940s and further developed by the automotive and aerospace industries. Where companies do not have a formally documented system, it is recommended that they use a recognized system such as in <span class="key-term">IEC 60812</span>.</p>
+
+                    <h3>FMEA Form Column Headings (Table 11.1)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Column Heading</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Facility</strong></td>
+                                <td>Room/suite, HVAC details, airlocks, corridor, access control</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Process Step</strong></td>
+                                <td>Each process from receipt/sampling to dispatch; identify controls to mitigate exposure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potential Failure</strong></td>
+                                <td>The primary categories of exposure for each mode (mix-up, retention, mechanical, airborne). For patients, route of delivery affects bioavailability.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potential Effect(s) of Failure</strong></td>
+                                <td>Four cross-contamination modes for each process step (one row per mode)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Severity (S)</strong></td>
+                                <td>Impact on patient or occupational population; scored 1, 3, 5, 7, 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potential Causes</strong></td>
+                                <td>Root causes of failure</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Occurrence (O)</strong></td>
+                                <td>Actual or assessed rate of occurrence; scored 1, 3, 5, 7, 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Current Controls</strong></td>
+                                <td>Existing control methods</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Detection (D)</strong></td>
+                                <td>Ability to detect failure: 10 = not detectable, 1 = obvious or alarmed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RPN</strong></td>
+                                <td><strong>S × O × D</strong>; range 1–1,000; used for risk assessment and prioritization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Actions</strong></td>
+                                <td>Engineering, administrative, procedural, formulation controls to reduce RPN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Who / By Date</strong></td>
+                                <td>Responsible person and target completion date</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Results / Post-RPN</strong></td>
+                                <td>Re-evaluated S, O, D and new RPN after remediation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>11.3.1 Scoring Severity, Occurrence, and Detection (Table 11.2)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Score</th>
+                                <th>Severity</th>
+                                <th>Occurrence</th>
+                                <th>Detection</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:700;color:#721c24;background:#f8d7da;">10</td>
+                                <td>Injury to patient/employee; ADE &lt; 1 µg/day</td>
+                                <td>More than once per batch</td>
+                                <td>Not detectable by current methods</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;color:#856404;background:#fff3cd;">7</td>
+                                <td>Extreme customer dissatisfaction; ADE = 1–10 µg/day</td>
+                                <td>Once per batch</td>
+                                <td>All manually inspected</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;color:#004085;background:#cce5ff;">5</td>
+                                <td>Likely to result in a complaint; ADE = 10–100 µg/day</td>
+                                <td>Once per six months</td>
+                                <td>Statistical sampling</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;color:#155724;background:#d4edda;">3</td>
+                                <td>Minor nuisance, no loss; ADE = 100–1,000 µg/day</td>
+                                <td>Once every 1–3 years</td>
+                                <td>100% inspection</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:700;color:#2e7d32;background:#e8f5e9;">1</td>
+                                <td>Unnoticed, no effect on performance; ADE ≥ 1,000 µg/day</td>
+                                <td>One occurrence in &gt;5 years</td>
+                                <td>Obvious, or controlled and monitored with alarm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The possible scores in this example range from <strong>1</strong> (1×1×1) to <strong>1,000</strong> (10×10×10). Each organization should determine the scoring systems to be used in FMEAs.</p>
+                    <p>Scoring or RPNs should be viewed as a general indicator/aid for risk ranking and <span class="key-term">not treated as an absolute indicator of risk</span>. Caution should be used when prioritizing risks on just the RPN number.</p>
+                    <p>One method to address possible inequalities of RPNs is to require review of any item (severity, occurrence, or detection) that has the <span class="key-term">highest value regardless of the resultant RPN</span>.</p>
+                    <p><span class="key-term">Detectability</span> is a vital issue: if reliable means exist to detect a failure, increased occurrence may be tolerable; if the event cannot be detected, then the occurrence and severity have to be low.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>FMEA 起源與藥廠應用</h4>
+                        <p>FMEA 最初由美國軍方在 1940 年代開發，後來被汽車（AIAG）和航太工業廣泛標準化。藥廠版本加入了製藥特有的因素：ADE 值、職業暴露限值、交叉污染四種模式。</p>
+                        <p>ICH Q9 將 FMEA 列為推薦工具；參考標準為 <strong>IEC 60812</strong>，企業可在此基礎上客製化。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>RPN 公式</h4>
+                        <pre>RPN = Severity (S) × Occurrence (O) × Detection (D)
+
+範圍：1（最低風險）→ 1,000（最高風險）
+
+S = 10：患者/員工受傷，ADE &lt; 1 µg/day
+O = 10：每批次發生一次以上
+D = 10：現有方法完全無法偵測
+
+說明：
+Detection 分數「反向」——偵測能力越差，分數越高
+10 = 完全無法偵測
+1 = 顯而易見或有自動監控警報</pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>RPN 的局限性：不能只看總分</h4>
+                        <p>以下兩個組合的 RPN 相同，但風險性質截然不同：</p>
+                        <ul>
+                            <li><strong>案例 A：</strong>S=10, O=10, D=1 → RPN=100（嚴重且頻繁，但能偵測）</li>
+                            <li><strong>案例 B：</strong>S=10, O=1, D=10 → RPN=100（嚴重但罕見，且完全無法偵測）</li>
+                        </ul>
+                        <p>案例 B 實際上更危險。因此指南建議：<strong>任何單項分數達到最高值（10），無論 RPN 為何，都應強制審查。</strong></p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>偵測力（Detectability）的特殊重要性</h4>
+                        <p>在製藥 FMEA 中，偵測力往往是最被低估的維度：</p>
+                        <ul>
+                            <li>如果事件<strong>可以及時偵測</strong>，較高的發生頻率尚可管理（因為可以中斷、糾正）</li>
+                            <li>如果事件<strong>無法偵測</strong>，即使發生機率低，嚴重度又高，就可能已造成患者傷害而無人察覺</li>
+                            <li>無菌填充廠常見的偵測力弱點：培養基灌裝僅能事後驗證、清潔殘留監測覆蓋率不足</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：RPN 如信用評分</h4>
+                        <p>兩個人可能信用評分相同，但一個是「從未借貸」，另一個是「借了很多但都準時還」——背後的風險輪廓截然不同。RPN 也一樣：同樣的數字可能代表完全不同的風險結構，需要看各分項才能真正理解風險。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習：計算 RPN</h4>
+                        <p>情境：無菌填充線的隔離器手套破損（Glove Integrity Failure）</p>
+                        <ul>
+                            <li>嚴重度（S）：手套破損可能導致操作員污染無菌製程 → 患者可能接受微生物污染產品 → <strong>S = 10</strong></li>
+                            <li>發生機率（O）：手套每月例行性完整性測試，歷史紀錄顯示每年約發生 1–2 次 → <strong>O = 3</strong></li>
+                            <li>偵測力（D）：有線上手套完整性監測系統，可即時警報 → <strong>D = 1</strong></li>
+                            <li><strong>RPN = 10 × 3 × 1 = 30</strong></li>
+                        </ul>
+                        <p>注意：即使 RPN = 30（相對低），但 S = 10，依照指南建議仍需強制審查此項目。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 11.4: STATISTICAL ANALYSIS
+         ============================================================ -->
+    <div id="ch11-stat" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.4</div>
+            <div class="chapter-info">
+                <h2>Statistical Analysis — 統計分析</h2>
+                <p>p117 | Process Capability (Cpk/Ppk), application to risk assessment</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>11.4 Statistical Analysis</h3>
+                    <p>Statistical analysis is used to analyze quantitative data to identify trends, variations and likelihood processes will provide the desired results.</p>
+                    <p>Typical outputs of statistical analysis are <span class="key-term">Process Capability (Cpk)</span> and <span class="key-term">Process Performance Indices (Ppk)</span>.</p>
+                    <p>Statistical analysis capabilities are available in Excel or software packages such as Minitab. It is very important that the statistical analysis of data including interpretation of output from the software packages noted is completed by a <span class="key-term">properly qualified statistician</span> or similar.</p>
+
+                    <div class="quote-box">
+                        Advanced Topic: Statistical analysis is designated as an advanced topic in this Guide, indicating its application requires additional expertise beyond standard risk management practitioners.
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>統計分析在風險評估中的角色</h4>
+                        <p>統計分析為 FMEA 和風險矩陣提供<strong>量化佐證</strong>——從「我們認為發生機率低」轉變為「歷史數據顯示 Cpk = 1.8，製程能力充分」。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>製程能力指數概念</h4>
+                        <pre>Cpk（短期製程能力）：
+  衡量製程在受控條件下相對於規格限的集中能力
+  Cpk ≥ 1.33 → 通常視為合格（4σ）
+  Cpk ≥ 1.67 → 較高標準（5σ）
+
+Ppk（長期製程績效）：
+  衡量製程在實際長期運行中的表現
+  通常 Ppk &lt; Cpk（因包含特殊原因變異）
+
+風險評估應用：
+  Cpk 低 → 製程不穩定 → FMEA 中 O（發生機率）分數應較高
+  Cpk 高 + 受控 → 可支持降低 O 分數的決策依據</pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「必須由合格統計師解讀」的重要性</h4>
+                        <p>本指南特別強調：統計輸出（如 Cpk/Ppk）的解讀必須由具備統計能力的人員執行。常見誤用包括：</p>
+                        <ul>
+                            <li>用非正態分配的數據直接計算 Cpk</li>
+                            <li>以過少的數據點（n &lt; 30）做能力分析</li>
+                            <li>誤解 Minitab 輸出圖形的統計意義</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>統計分析在清潔驗證的應用</h4>
+                        <p>在交叉污染風險管理中，統計分析最常用於：</p>
+                        <ul>
+                            <li><strong>清潔驗證趨勢分析：</strong>追蹤多批次清潔後殘留量趨勢，確認不超過 ADE 基礎限值</li>
+                            <li><strong>環境監測數據：</strong>分析微粒/微生物監測結果的統計分布，設定行動限與警戒限</li>
+                            <li><strong>製程參數監控：</strong>以 Cpk 評估填充量精準度等關鍵參數的製程能力</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 12: RISK REVIEW
+         ============================================================ -->
+    <div id="ch12" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">12</div>
+            <div class="chapter-info">
+                <h2>Risk Review — 風險審查</h2>
+                <p>p119 | Periodic reassessment, trigger events, ADE review, change control link</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>12 Risk Review</h3>
+                    <p>ICH Q9 states risk management should be an <span class="key-term">ongoing</span> part of the quality management process. A mechanism to review internal processes and external events should be implemented.</p>
+
+                    <p><span class="key-term">Periodic reviews</span> should be performed on all aspects of the risk management system to ensure that it is being applied effectively and that any potential improvements are identified and incorporated into the process.</p>
+
+                    <p>This should include a <span class="key-term">periodic review of the ADE</span>, especially if established early in the drug development timeline, as new information is being gathered from preclinical and clinical studies on a continuous basis.</p>
+
+                    <p>Any manufacturing <span class="key-term">deviations or system changes</span> that could impact the potential for exposure (product or personnel) or might compromise the conclusions drawn from previous risk assessments should be closely reviewed. The system may need to be modified so that it does not present an increased potential for exposure.</p>
+
+                    <p>Any review or, where necessary, reassessment should be <span class="key-term">documented accordingly</span>.</p>
+
+                    <p>An organization's quality management processes also should consider need for any reassessment to ensure that original assumptions and performance data remain valid. This may include or require:</p>
+                    <ul>
+                        <li>Auditing of processes and activities</li>
+                        <li>Qualitative or quantitative monitoring of performance</li>
+                    </ul>
+
+                    <p>Any change to the risk profile should be communicated as described in risk communication.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>風險審查的本質：持續性而非一次性</h4>
+                        <p>ICH Q9 強調風險管理是<strong>持續性的生命週期活動</strong>（ongoing lifecycle activity），不是「做了一次 FMEA 就結束」。</p>
+                        <p>風險審查體系要求兩種機制並行：</p>
+                        <ul>
+                            <li><strong>定期審查（Periodic）：</strong>排程、主動、有節奏</li>
+                            <li><strong>觸發式審查（Triggered）：</strong>由事件驅動、反應性</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>必須觸發重新評估的事件清單</h4>
+                        <ul>
+                            <li><strong>ADE 值更新：</strong>新的毒理學數據發布，原 ADE 值需要修訂</li>
+                            <li><strong>製程偏差（Deviation）：</strong>清潔驗證失敗、環境監測超標、無菌測試陽性</li>
+                            <li><strong>設備/廠房變更：</strong>引入新設備、HVAC 修改、房間重新規劃</li>
+                            <li><strong>產品組合變更：</strong>引入新化合物（尤其是高活性 API）、停產某產品</li>
+                            <li><strong>監管要求更新：</strong>新版 EMA/FDA 指引、新版 ICH Q9</li>
+                            <li><strong>審計/稽查發現：</strong>內外部稽查發現現有風險評估的假設不成立</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ADE 定期審查的特殊重要性</h4>
+                        <p>本指南特別強調 ADE 的定期複查，原因是：</p>
+                        <ul>
+                            <li>早期開發階段建立的 ADE 往往基於有限的毒理數據</li>
+                            <li>隨著臨床研究進展，新的安全性數據可能會<strong>降低</strong>（更嚴格）或<strong>提高</strong>（更寬鬆）ADE</li>
+                            <li>ADE 改變直接影響清潔限值，進而影響整個風險評估結論</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：風險審查像車輛定期保養</h4>
+                        <p>汽車需要定期保養（定期審查），但也需要在事故後立即送廠檢修（觸發式審查）。「上次保養才三個月，所以不用管這次追撞」——這個邏輯在風險管理中同樣是錯誤的。事件發生就必須重新評估，不論上次定期審查是何時。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>文件要求</h4>
+                        <p>所有風險審查（無論定期或觸發式）都必須文件化，包含：</p>
+                        <ul>
+                            <li>審查觸發原因（或排程日期）</li>
+                            <li>審查範圍與方法</li>
+                            <li>結論：原評估仍有效 / 需要修訂</li>
+                            <li>如需修訂：變更內容及批准記錄</li>
+                            <li>溝通記錄（如適用）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 13: RISK COMMUNICATION
+         ============================================================ -->
+    <div id="ch13" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">13</div>
+            <div class="chapter-info">
+                <h2>Risk Communication — 風險溝通</h2>
+                <p>p121 | Stakeholder layers, escalation, ADE/OEL change notifications, CAPA linkage</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>13 Risk Communication</h3>
+                    <p>ICH Q9 defines <span class="key-term">risk communication</span> as the sharing of information about risk and risk management between the decision makers and others. Organizations should document, within their quality management systems, <em>who needs to communicate what, to whom, and at what frequency</em>, in support of a risk management process.</p>
+
+                    <p>Different levels of information will be appropriate to <span class="key-term">different stakeholders</span> who may be internal or external to the organization. It is important to have an <span class="key-term">escalation process</span> that allows management to be informed of areas that have risk that is unacceptable or near unacceptable.</p>
+
+                    <p>The holistic approach described in this Guide is predicated on the fact that all of those involved have received appropriate <span class="key-term">education or training</span> and have ready access to supporting risk assessment and management documentation.</p>
+
+                    <p>Risk Communication can be enhanced by incorporating linkages within the <span class="key-term">change control</span>, <span class="key-term">product quality review</span> and <span class="key-term">CAPA quality systems</span>.</p>
+
+                    <p>It is important that companies have a means to widely and effectively communicate to all parties that might be affected including company manufacturing sites, contract manufacturers and QA departments any identified <span class="key-term">amendments to ADEs (and OELs)</span> or other items that may affect the risk assessment.</p>
+
+                    <p>In addition if a company chooses to have product-specific ADEs (where the following product is known) or ADEs for specific routes of exposure or dosage types (such as OSD or parenteral) rather than address these issues in the risk assessment, the company should have a robust process to manage these values and make clear to all that may depend on these values what the criteria used to determine the ADEs are and how they should be modified for other usage.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>風險溝通的三個維度</h4>
+                        <p>ICH Q9 對風險溝通的定義強調的是「雙向資訊共享」而非單向通知。有效的風險溝通需要回答三個問題：</p>
+                        <ul>
+                            <li><strong>Who（誰）：</strong>溝通主體（決策者）與接受方（利害關係人）</li>
+                            <li><strong>What（什麼）：</strong>根據利害關係人的角色，提供不同層次的資訊</li>
+                            <li><strong>When（何時）：</strong>頻率（定期）＋觸發時機（風險改變時）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>ADE/OEL 修訂的溝通義務</h4>
+                        <p>本指南明確要求：當 ADE 或 OEL 值發生更新時，必須即時廣泛溝通至所有受影響方，包括：</p>
+                        <ul>
+                            <li>公司內各製造廠區</li>
+                            <li>合約製造商（CMO/CDMO）</li>
+                            <li>QA 部門</li>
+                        </ul>
+                        <p>這對 CDMO 尤其重要——客戶更新了某化合物的 ADE，CDMO 必須同步更新自己的清潔限值和風險評估。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>利害關係人分層溝通框架</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>利害關係人</th>
+                                    <th>資訊層次</th>
+                                    <th>溝通頻率</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>高層管理（VP/COO）</td>
+                                    <td>不可接受風險、重大 RPN 超標</td>
+                                    <td>即時升級</td>
+                                </tr>
+                                <tr>
+                                    <td>QA / 法規事務</td>
+                                    <td>完整風險評估結論、ADE 更新</td>
+                                    <td>定期＋觸發式</td>
+                                </tr>
+                                <tr>
+                                    <td>生產操作員</td>
+                                    <td>相關 SOP、交叉污染風險意識</td>
+                                    <td>培訓＋年度複訓</td>
+                                </tr>
+                                <tr>
+                                    <td>CMO/CDMO</td>
+                                    <td>ADE/OEL 值、清潔限值</td>
+                                    <td>變更時即時通知</td>
+                                </tr>
+                                <tr>
+                                    <td>稽查員/監管機構</td>
+                                    <td>QRMP 全文、風險評估依據</td>
+                                    <td>稽查時提供</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：風險溝通像「廣播系統」與「升級電梯」</h4>
+                        <p>良好的風險溝通需要兩個系統並存：一個<strong>廣播系統</strong>（讓所有人都能接收到例行更新），以及一個<strong>緊急升級電梯</strong>（當風險超標時，訊息能立即到達決策層）。只有廣播沒有電梯，管理層永遠不知道有問題；只有電梯沒有廣播，執行層人員缺乏日常風險意識。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>與 QMS 整合：變更控制 + PQR + CAPA</h4>
+                        <p>本指南建議將風險溝通嵌入三個現有 QMS 系統：</p>
+                        <ul>
+                            <li><strong>變更控制（Change Control）：</strong>任何製程/設備/產品變更觸發風險重評，結論通過變更控制傳遞</li>
+                            <li><strong>產品品質審查（PQR）：</strong>年度 PQR 包含風險趨勢回顧，作為定期審查載體</li>
+                            <li><strong>CAPA：</strong>風險控制行動項目通過 CAPA 系統追蹤與關閉，確保可追溯</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 13.1: SUMMARY DOCUMENT TEMPLATE
+         ============================================================ -->
+    <div id="ch13-template" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">13.1</div>
+            <div class="chapter-info">
+                <h2>Summary Document Template — 摘要文件範本</h2>
+                <p>p122–p123 | QRMP document structure, required sections and content guidance</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>13.1 Summary Document Template</h3>
+
+                    <p><strong>Introduction</strong><br>
+                    [insert brief introduction to the purpose of the document/report]</p>
+
+                    <p><strong>Scope</strong><br>
+                    [insert scope of the document/quality risk management process]</p>
+
+                    <p><strong>Responsibilities</strong><br>
+                    [insert a listing of the disciplines/personnel participating in the quality risk management process]</p>
+
+                    <p><strong>Manufacturing Facility and Processes</strong></p>
+                    <ul>
+                        <li><em>Facility Description:</em> [brief summary of manufacturing, including segregation philosophy, design for prevention of cross-contamination, layout, independent HVAC systems, airflows, HEPA filtration on exhaust air, cleanable surfaces, material flows, etc.]</li>
+                        <li><em>Process and Manufacturing Equipment Description:</em> [brief summary of the process from start to finish, including all points where API or formulated product is handled, transferred, isolated, and which pieces of equipment are used; emphasis on shared equipment (e.g., lyophilizers) where there is a potential for cross-contamination]</li>
+                        <li><em>Standard Operating Procedures, Personnel, Validation Plans:</em> [listing of all applicable SOPs, validation of cleaning procedures, studies, and personnel issues (training, hygiene, access restrictions)]</li>
+                    </ul>
+
+                    <p><strong>Risk Assessment</strong></p>
+                    <ul>
+                        <li><em>Risk Identification</em></li>
+                        <li><em>Hazard Identification and Dose-Response Assessment:</em> [statement on how hazard identification and dose-response assessment was performed, where monographs are archived, who is responsible, and summary of rationale for each ADE value established]</li>
+                        <li><em>Risk Analysis:</em> [description of risk analysis process; tools used; data collected such as monitoring data from internal/external equipment surfaces and manufacturing areas; comparison to ADEs]</li>
+                        <li><em>Exposure Assessment:</em> [summaries, graphs, or other information on outcome of analyses and exposure assessments; available monitoring results for the facility and specific equipment]</li>
+                        <li><em>Risk Evaluation:</em> [company scoring for risk with actions — unacceptable/acceptable/reduce risk; list of issues requiring risk reduction if FMEA was used]</li>
+                    </ul>
+
+                    <p><strong>Risk Control</strong><br>
+                    [summary of control strategies; justification for accepting risk; balancing medical benefit to the patient and the level of risk accepted; use the CAPA system to manage risk reduction items]</p>
+
+                    <p><strong>Risk Communication</strong><br>
+                    [statement about how this QRMP and its application to specific processes and products was documented and communicated to all appropriate stakeholders; how all those involved have received appropriate training]</p>
+
+                    <p><strong>Risk Review</strong><br>
+                    [statement on how periodic reviews are performed on all aspects of the quality risk management system; how any deviations or system changes that could lead to exposures above accepted internal benchmarks are addressed; how the system is modified to prevent future occurrences]</p>
+
+                    <p><strong>Summary</strong><br>
+                    [overall summary concluding that the QRMP has addressed all hazards and exposure pathways and controls have been implemented to maintain risks below acceptable levels]</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <div class="column-header">解析與詮釋（繁體中文）</div>
+
+                    <div class="term-box">
+                        <h4>QRMP 摘要文件：品質風險管理計劃的「結案報告」</h4>
+                        <p><strong>QRMP（Quality Risk Management Plan）</strong>是整個風險管理流程的書面記錄，包含從危害識別到風險接受決定的完整邏輯鏈。它是稽查員最常要求查閱的核心文件之一。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>QRMP 九大必要章節結構</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>章節</th>
+                                    <th>核心內容</th>
+                                    <th>關鍵要素</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Introduction</strong></td>
+                                    <td>文件目的說明</td>
+                                    <td>背景、觸發原因</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Scope</strong></td>
+                                    <td>涵蓋範圍</td>
+                                    <td>廠區、製程、產品、評估期間</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Responsibilities</strong></td>
+                                    <td>參與人員清單</td>
+                                    <td>跨功能團隊（QA、生產、毒理、工程）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Facility &amp; Process</strong></td>
+                                    <td>廠房與製程描述</td>
+                                    <td>隔離設計、HVAC、共用設備清單</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risk Assessment</strong></td>
+                                    <td>危害識別→分析→暴露評估→評價</td>
+                                    <td>ADE 依據、FMEA 結果、監測數據</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risk Control</strong></td>
+                                    <td>控制策略</td>
+                                    <td>工程控制 &gt; 行政控制 &gt; 程序控制</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risk Communication</strong></td>
+                                    <td>溝通記錄</td>
+                                    <td>誰被告知、何時、何種資訊</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Risk Review</strong></td>
+                                    <td>定期審查機制</td>
+                                    <td>頻率、觸發條件、修訂程序</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Summary</strong></td>
+                                    <td>結論聲明</td>
+                                    <td>所有風險已降至可接受水準的確認</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>稽查重點：Facility Description 的「共用設備」條款</h4>
+                        <p>範本特別要求在製程描述中<strong>強調所有共用設備</strong>（如冷凍乾燥機 lyophilizers）。這是因為共用設備是交叉污染風險最高的環節，稽查員會重點審查：</p>
+                        <ul>
+                            <li>是否識別了所有共用設備？</li>
+                            <li>每個共用設備是否有驗證的清潔程序？</li>
+                            <li>清潔限值是否基於 ADE 計算？</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：QRMP 是「風險管理的病歷</h4>
+                        <p>就像病歷完整記錄了患者的診斷、治療、後續追蹤——QRMP 完整記錄了製程的危害識別（診斷）、風險控制（治療）、定期審查（後續追蹤）。一份好的 QRMP 應該讓任何新進的 QA 人員或稽查員，都能快速理解「這個廠的風險在哪裡，如何控制，誰負責」。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>Hazard Identification 章節的 ADE 連結</h4>
+                        <p>範本要求 Hazard Identification 章節必須說明：</p>
+                        <ul>
+                            <li>危害識別和劑量-反應評估<strong>如何執行</strong></li>
+                            <li>毒理學報告（Monograph）<strong>存放位置</strong></li>
+                            <li><strong>誰負責</strong>維護和更新這些信息</li>
+                            <li>每個化合物 ADE 值的<strong>設定依據摘要</strong></li>
+                        </ul>
+                        <p>這確保 ADE 值有完整的毒理學支撐文件，而非「拍腦袋」決定的數字。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>CDMO 應用：撰寫 QRMP 的實務建議</h4>
+                        <p>對於無菌填充 CDMO，QRMP 撰寫時需特別注意：</p>
+                        <ul>
+                            <li><strong>Scope 要明確邊界：</strong>每次客戶引入新產品，應評估是否需要新的 QRMP 或只是既有文件的修訂</li>
+                            <li><strong>Shared equipment list 要完整：</strong>填充機、CIP/SIP 系統、過濾器組件都應列入</li>
+                            <li><strong>ADE 由誰提供：</strong>客戶 API 的 ADE 通常由客戶毒理學家提供，CDMO 需確認來源的可靠性並留存文件</li>
+                            <li><strong>Risk Control 要具體：</strong>「執行清潔驗證」不夠——應說明「清潔限值 X µg/cm²，依據 ADE Y µg/day 計算，驗證報告編號 Z」</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products | p109–p124</p>
+    <p>SterileGMP Knowledge Hub &copy; 2026 | Section 6: Risk Acceptance, Risk Management Tools, Risk Review &amp; Risk Communication</p>
+</div>
+
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

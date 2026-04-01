@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.7 - Chapter 6: Risk Analysis & Cross-Contamination Routes (Part A)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - ISPE Green Theme
+   Section: Chapter 6 — Risk Analysis & Routes of Cross-Contamination (Part A)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4, .original-content h4 {
+    color: var(--primary-blue);
+    margin: 0.85rem 0 0.5rem; font-size: 1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4, .commentary h4 {
+    color: #1a5c3a;
+    margin: 0.85rem 0 0.5rem; font-size: 1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol, .commentary ul, .commentary ol {
+    margin: 0.5rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.right-column li, .commentary li { margin-bottom: 0.4rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.key-term-red {
+    background: linear-gradient(to right, #fde8e8, #fbd5d5);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #9b1c1c; font-size: 0.9em;
+}
+.key-term-blue {
+    background: linear-gradient(to right, #dbeafe, #bfdbfe);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #1e40af; font-size: 0.9em;
+}
+.key-term-orange {
+    background: linear-gradient(to right, #fef3c7, #fde68a);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #92400e; font-size: 0.9em;
+}
+.key-term-purple {
+    background: linear-gradient(to right, #ede9fe, #ddd6fe);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #5b21b6; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box, .application-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h4, .analogy-box h4, .note-box h4, .key-note h4,
+.term-box h4, .formula-box h4, .key-term-box h4, .key-point-box h4,
+.highlight-box h4, .application-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-point-box p, .highlight-box p, .application-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .note-box ul,
+.term-box ul, .formula-box ul, .key-point-box ul, .highlight-box ul, .application-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .term-box li,
+.formula-box li, .key-point-box li, .highlight-box li, .application-box li {
+    margin-bottom: 0.35rem !important;
+}
+
+/* Green — core concept */
+.term-box, .key-term-box, .concept-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h4, .key-term-box h4, .concept-box h4 { color: #2e7d32 !important; }
+
+/* Yellow — analogy */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h4 { color: #856404 !important; }
+
+/* Orange — note/highlight */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h4, .key-note h4, .key-point-box h4, .highlight-box h4 { color: #c65102 !important; }
+
+/* Purple — formula */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* Blue — application */
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.application-box h4 { color: #1565c0 !important; }
+
+/* Practice box */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.7rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    font-weight: 600; color: white; font-size: 0.83rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-caption {
+    font-size: 0.82rem; color: var(--text-medium);
+    font-style: italic; margin-top: 0.3rem; text-align: center;
+}
+
+/* ===== ROUTE BADGE ===== */
+.route-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.8rem; border-radius: 20px;
+    font-size: 0.82rem; font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.route-badge.mixup    { background: #fee2e2; color: #9b1c1c; border: 1px solid #fca5a5; }
+.route-badge.retention { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.route-badge.mechanical { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+.route-badge.airborne { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px;
+    color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+    font-size: 1.05rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 1.75rem 0; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== STANDALONE HEADER (hidden when merged) ===== -->
+<div class="header">
+    <h1>ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
+    <div class="subtitle">Chapter 6: Risk Analysis &amp; Routes of Cross-Contamination (Part A)</div>
+    <div class="page-info">ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p53–p68</div>
+</div>
+
+<!-- ===== TOP HEADER (used in merged TopNav) ===== -->
+<div class="top-header" style="display:none;">
+    <h1>ISPE Vol.7 — Chapter 6: Risk Analysis &amp; Cross-Contamination Routes (Part A)</h1>
+    <div class="subtitle">Risk-Based Manufacture of Pharmaceutical Products | p53–p68</div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="top-nav">
+    <button class="nav-scroll-btn hidden" id="navLeft">&#8249;</button>
+    <div class="nav-container" id="navContainer">
+        <a href="#sec-overview" class="nav-item active">
+            <span class="nav-num">6</span>
+            <span class="nav-label">風險分析概述</span>
+        </a>
+        <a href="#sec-holistic" class="nav-item">
+            <span class="nav-num">6.1</span>
+            <span class="nav-label">整體性方法</span>
+        </a>
+        <a href="#sec-tools" class="nav-item">
+            <span class="nav-num">6.2</span>
+            <span class="nav-label">風險工具</span>
+        </a>
+        <a href="#sec-routes-intro" class="nav-item">
+            <span class="nav-num">6.3</span>
+            <span class="nav-label">交叉污染途徑</span>
+        </a>
+        <a href="#sec-mixup" class="nav-item">
+            <span class="nav-num">6.3.1</span>
+            <span class="nav-label">混淆 Mix-up</span>
+        </a>
+        <a href="#sec-retention" class="nav-item">
+            <span class="nav-num">6.3.2</span>
+            <span class="nav-label">殘留 Retention</span>
+        </a>
+        <a href="#sec-mechanical" class="nav-item">
+            <span class="nav-num">6.3.3</span>
+            <span class="nav-label">機械轉移</span>
+        </a>
+        <a href="#sec-airborne" class="nav-item">
+            <span class="nav-num">6.3.4</span>
+            <span class="nav-label">空氣傳播</span>
+        </a>
+    </div>
+    <button class="nav-scroll-btn hidden" id="navRight">&#8250;</button>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節涵蓋內容 — Chapter 6 Risk Analysis (p53–p68)</h3>
+        <div class="toc-grid">
+            <a href="#sec-overview">6 風險分析框架</a>
+            <a href="#sec-holistic">6.1 整體性方法</a>
+            <a href="#sec-tools">6.2 定性 / 定量工具</a>
+            <a href="#sec-routes-intro">6.3 四大途徑導言</a>
+            <a href="#sec-mixup">6.3.1 混淆 Mix-up</a>
+            <a href="#sec-retention">6.3.2 殘留 Retention</a>
+            <a href="#sec-mechanical">6.3.3 機械轉移</a>
+            <a href="#sec-airborne">6.3.4 空氣傳播</a>
+        </div>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 ICH Q9 風險分析框架：可能性 × 嚴重性 × 可偵測性</li>
+            <li>掌握整體性（Holistic）風險方法的多學科人員組成與關鍵原則</li>
+            <li>區別定性與定量風險分析工具的適用時機</li>
+            <li>熟悉交叉污染四大途徑的機制、影響因子與控制策略</li>
+            <li>理解清潔驗證（Cleaning Validation）在 Retention 途徑中的核心角色</li>
+            <li>了解空氣傳播粉塵性（Dustiness）與 CPT 的概念</li>
+        </ul>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6: RISK ANALYSIS OVERVIEW
+         ================================================================ -->
+    <div class="chapter-section" id="sec-overview">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6</div>
+            <div class="chapter-info">
+                <h2>Chapter 6: Risk Analysis — 風險分析</h2>
+                <p>ICH Q9 Framework: Probability × Severity × Detectability | p53–p54</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6 Risk Analysis</h3>
+                    <p><span class="key-term">ICH Q9</span> defines <span class="key-term">risk analysis</span> as the estimation of the risk associated with the identified hazards. As the hazard is inherent to the API and other process chemicals, the <strong>exposure to the hazard</strong> is the variable that needs to be analyzed to determine the relative risks.</p>
+                    <p>This Chapter describes risk analysis, which is closely related to <span class="key-term">exposure assessment</span>, i.e., the process by which exposures are assessed, either qualitatively or quantitatively, to estimate the risk associated with the identified hazards.</p>
+                    <p>The risk analysis looks at the modes of exposure such as:</p>
+                    <ul>
+                        <li><strong>Mix-up</strong></li>
+                        <li><strong>Retention</strong></li>
+                        <li><strong>Mechanical transfer</strong></li>
+                        <li><strong>Airborne transfer</strong></li>
+                    </ul>
+                    <p>...for the product, as well as inhalation, dermal, ingestion, and mechanical transfer for workers, while considering the question <em>"What could go wrong?"</em></p>
+                    <p>The identified hazard also should be analyzed in order to answer the questions:</p>
+                    <ul>
+                        <li><em>"What is the likelihood (probability) it will go wrong?"</em></li>
+                        <li><em>"What are the consequences (severity)?"</em></li>
+                        <li><em>"Can the failure be detected?"</em></li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>ICH Q9 風險分析三要素</h4>
+                        <p>風險分析（Risk Analysis）是 ICH Q9 風險管理流程的核心步驟，三個核心問題構成評估框架：</p>
+                        <ul>
+                            <li><strong>可能性（Probability）：</strong>失效發生的機率有多高？</li>
+                            <li><strong>嚴重性（Severity）：</strong>失效對病人的影響有多嚴重？</li>
+                            <li><strong>可偵測性（Detectability）：</strong>失效能在危害發生前被偵測到嗎？</li>
+                        </ul>
+                        <p>三要素的組合決定最終風險優先數（RPN），指引控制策略的強度。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>危害 vs. 暴露 — 核心區別</h4>
+                        <p>本書的重要觀念：<strong>危害（Hazard）是固有的</strong>，由 API 的毒理特性決定，不可改變。但<strong>暴露（Exposure）是可控的變數</strong>。風險分析的重點在於理解並管理暴露途徑，而非只看危害大小。</p>
+                        <p>例：高毒性化合物（高危害）若使用密閉系統，暴露極低，整體風險反而可控。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：武器 vs. 到達目標的路徑</h4>
+                        <p>危害好比一把刀的鋒利度——它是固定的屬性。真正決定傷害風險的，是<strong>刀能否到達人體（暴露途徑）</strong>。風險分析就是在尋找並封堵所有「刀到達人體的路徑」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>四大交叉污染途徑（重點框架）</h4>
+                        <p>ISPE Vol.7 將交叉污染分為四類，重要性由高到低排列：</p>
+                        <ol>
+                            <li><strong>混淆（Mix-up）</strong> — 最常見的法規行動原因</li>
+                            <li><strong>殘留（Retention）</strong> — 清潔驗證直接對應的途徑</li>
+                            <li><strong>機械轉移（Mechanical Transfer）</strong> — 非接觸面的物理接觸</li>
+                            <li><strong>空氣傳播（Airborne Transfer）</strong> — 氣懸微粒遷移</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.1: HOLISTIC APPROACH
+         ================================================================ -->
+    <div class="chapter-section" id="sec-holistic">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.1</div>
+            <div class="chapter-info">
+                <h2>6.1 Holistic Approach to Risk Analysis — 整體性風險分析方法</h2>
+                <p>Multidisciplinary teams, competing requirements, GxP + IH balance | p54–p55</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.1 Holistic Approach to Risk Analysis</h3>
+                    <p>While the focus of ICH Q9 is understood, appropriate risk analysis should recognize that the production of medicines requires that a number of potentially <span class="key-term">conflicting requirements</span> need to be met, which may impact each other, e.g.:</p>
+                    <ul>
+                        <li><strong>Cross-contamination</strong> (focus on patient safety)</li>
+                        <li><strong>Industrial Hygiene (IH)</strong> (focus on worker safety)</li>
+                        <li>Process safety</li>
+                        <li>Production demands</li>
+                    </ul>
+                    <p>Therefore, effective risk analysis requires a <span class="key-term">shared understanding</span> to achieve the balance between these different requirements.</p>
+
+                    <h4>Multidisciplinary Team</h4>
+                    <p>A multidisciplinary approach is beneficial when drawing on expertise from several specialist areas and provides a <span class="key-term">holistic and balanced approach</span>. This should include:</p>
+                    <ul>
+                        <li>Toxicologists</li>
+                        <li>Industrial hygienists</li>
+                        <li>Engineers</li>
+                        <li>Quality managers</li>
+                        <li>Users or operating personnel</li>
+                        <li>Independent facilitators</li>
+                    </ul>
+
+                    <h4>GxP vs. Industrial Hygiene</h4>
+                    <p>Although <span class="key-term">GxP</span> and <span class="key-term">IH exposure assessments</span> are linked, the application and interpretation of the criteria in the assessment process are different.</p>
+
+                    <h4>High Hazard ≠ High Risk</h4>
+                    <p>It should be noted that more hazardous compounds will not necessarily lead to higher potential for exposure. Some reasons that more hazardous compounds are not necessarily high risk of cross-contamination:</p>
+                    <ul>
+                        <li>Higher hazard compounds tend to be a <strong>smaller percentage of the final product</strong></li>
+                        <li>Processed in <strong>more closed systems</strong> than lower hazard products</li>
+                        <li>Controls tend to be <strong>more robust</strong></li>
+                    </ul>
+                    <p>The exposure potential may not be the same for manufacture of the same compound and the same process in a <strong>different location</strong> as there are other variables such as worker behavior.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="concept-box">
+                        <h4>整體性方法（Holistic Approach）的核心精神</h4>
+                        <p>風險分析不能只看「交叉污染→病人安全」這一個維度，必須同時考量：</p>
+                        <ul>
+                            <li><strong>病人安全（GxP）</strong>：交叉污染風險控制</li>
+                            <li><strong>員工安全（IH）</strong>：職業暴露限值 OEL/TLV</li>
+                            <li><strong>製程安全</strong>：防爆、腐蝕、高壓等</li>
+                            <li><strong>生產效率</strong>：不能以犧牲效率為代價無限加嚴</li>
+                        </ul>
+                        <p>這四個面向有時互相衝突，需要平衡——這就是 Holistic 的意涵。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>跨部門風險團隊的必要性</h4>
+                        <p>ISPE 強調風險分析需要<strong>多學科團隊</strong>，原因在於：</p>
+                        <ul>
+                            <li><strong>毒理學家</strong>：設定 ADE/OEL，決定危害嚴重性</li>
+                            <li><strong>工業衛生師</strong>：評估職業暴露，空氣採樣</li>
+                            <li><strong>工程師</strong>：設備設計、密閉性、清潔可行性</li>
+                            <li><strong>品質經理</strong>：GMP 合規要求</li>
+                            <li><strong>操作人員</strong>：第一線現實情況最了解</li>
+                            <li><strong>獨立促進者</strong>：避免部門盲點，提出挑戰性問題</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重要觀念：高危害 ≠ 高風險</h4>
+                        <p>這是本書一個反直覺但關鍵的觀念：</p>
+                        <ul>
+                            <li>高毒性化合物（如抗腫瘤藥）通常劑量極低，在最終產品中佔比極小</li>
+                            <li>生產時往往使用高度密閉系統</li>
+                            <li>因高度重視，控制措施反而更嚴格</li>
+                        </ul>
+                        <p>相比之下，低毒性輔料若系統不密閉、清潔不驗證，交叉污染風險可能更高。</p>
+                        <p><strong>結論：風險 = 危害 × 暴露，不能只看危害。</strong></p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：GxP 與 IH — 同一把尺但刻度不同</h4>
+                        <p>GxP 評估關心的是「含有殘留的藥品進入病人體內的量」；IH 評估關心的是「員工在工作中吸入/皮膚接觸的量」。兩者使用相似的方法論（ADE 推導），但接受標準和評估場景完全不同——不可混用。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>在台灣藥廠的實務應用</h4>
+                        <p>多數中小型藥廠風險評估由 QA 單獨完成，缺少跨部門觀點。建議組成風險評估小組，固定成員包含：生產主管、工程、QA、安衛，並定期邀請外部顧問檢視。這正是 ISPE 倡導的 Holistic Approach。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.2: RISK TOOLS (Qualitative & Quantitative)
+         ================================================================ -->
+    <div class="chapter-section" id="sec-tools">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2</div>
+            <div class="chapter-info">
+                <h2>6.2 Tools for Risk Analysis — 風險分析工具</h2>
+                <p>Qualitative &amp; Quantitative Methods, Air Sampling | p55–p57</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.2 Tools</h3>
+                    <p>Fundamentally, risk analysis should incorporate both <span class="key-term">qualitative</span> and <span class="key-term">quantitative</span> processes to link the likelihood of occurrence with the severity of harm. The tools should be applied in a manner that is <strong>commensurate with the risks</strong>.</p>
+                    <p>In order to have a robust assessment, it is important to use <strong>actual data</strong> from the facility such as incident reports, cleaning and cleaning validation results, results from protocol studies, and regulatory action, to assist in categorizing the risk being assessed.</p>
+                    <p>The analysis will typically focus on a <strong>defined part of the process</strong>, e.g., charging a vessel or a particular unit operation such as compression. The entire process should be reviewed (including unexpected operation situations such as breach of containment, or a spill).</p>
+
+                    <h4>6.2.1 Qualitative Risk Analysis and Prioritization</h4>
+                    <p>Qualitative risk analysis is a process that can be used to assess the risk of exposure and <span class="key-term">prioritize</span> subsequent quantitative activities. Formats include, but are not limited to:</p>
+                    <ul>
+                        <li>Flowcharts</li>
+                        <li>Check sheets</li>
+                        <li>Process mapping</li>
+                        <li>Risk ranking and filtering</li>
+                        <li>Cause and effect diagrams</li>
+                    </ul>
+                    <p>A robust qualitative risk analysis process should incorporate:</p>
+                    <ul>
+                        <li>Hazard characterization using ADE/OEL/TLV® data</li>
+                        <li>Physical characteristics of the pharmaceutical compound</li>
+                        <li>Definition of unit operations to be assessed including cleaning</li>
+                        <li>Observation of operations and discussions with personnel</li>
+                        <li>Review of similar existing unit operations, vendor input, benchmarking</li>
+                        <li>Exposure profile including identification of plausible pathways</li>
+                        <li>Checks that existing control measures are functioning properly</li>
+                    </ul>
+
+                    <h4>6.2.2 Quantitative Risk Analysis</h4>
+                    <p>Based on the results of the qualitative risk analysis, it may be necessary to perform a quantitative risk analysis involving the collection and evaluation of data. The quantitative analysis process provides an <span class="key-term">objective and empirical basis</span> regarding risk potential.</p>
+                    <p>Statistical indices such as <span class="key-term">Process Capability Index (Cpk)</span> or <span class="key-term">Process Performance Index (Ppk)</span> can be used to evaluate cleaning residue data against upper limits. For cleaning data, which is typically <strong>non-normally distributed</strong>, the Process Performance Index (Ppk) is a preferred technique.</p>
+
+                    <h4>6.2.2.1 Air Sampling</h4>
+                    <p>Workplace air sampling is normally conducted by industrial hygienists as part of an ongoing <span class="key-term">worker health protection</span> monitoring program. Similar air sampling techniques may also be useful as part of an initial risk assessment for Quality Assurance purposes to help demonstrate that material is being adequately contained.</p>
+                    <p>There is <strong>no regulatory requirement</strong> to perform air sampling as part of GxP. Containment should routinely be proven through qualified and measurable physical parameters, such as <span class="key-term">pressure differentials</span> and airflow volumes and direction.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="concept-box">
+                        <h4>定性 vs. 定量風險分析 — 使用時機</h4>
+                        <table>
+                            <thead>
+                                <tr><th>維度</th><th>定性分析</th><th>定量分析</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>目的</td><td>初步篩選、優先順序</td><td>精確評估、數據支持</td></tr>
+                                <tr><td>工具</td><td>流程圖、魚骨圖、風險排序</td><td>Cpk/Ppk、空氣採樣數據</td></tr>
+                                <tr><td>輸出</td><td>高/中/低風險分級</td><td>具體數值與接受標準比較</td></tr>
+                                <tr><td>資源需求</td><td>低，快速</td><td>高，需要數據收集</td></tr>
+                                <tr><td>適用時機</td><td>新產品引入、初始評估</td><td>驗證、持續監測、稽核</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">兩種分析互補，通常先做定性再決定是否進行定量</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>Cpk vs. Ppk — 清潔驗證中的應用</h4>
+                        <p><strong>Cpk（Process Capability Index）</strong>：基於短期製程，假設常態分佈。</p>
+                        <p><strong>Ppk（Process Performance Index）</strong>：基於長期實際數據，更適合非常態分佈。</p>
+                        <p>清潔殘留數據通常呈<strong>偏態分佈（右偏）</strong>，因為大多數清潔結果很低（趨近 LOD），偶有高值。因此 ISPE 推薦使用 Ppk，或先做非常態分佈轉換（如 Weibull、對數轉換）再計算。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>空氣採樣的雙重角色與限制</h4>
+                        <p>空氣採樣在藥廠有兩個完全不同的目的：</p>
+                        <ul>
+                            <li><strong>IH 目的（工業衛生師主導）</strong>：確保員工個人暴露 &lt; OEL，採樣點在人員呼吸帶附近</li>
+                            <li><strong>GxP/QA 目的（品保主導）</strong>：確認物料密閉在製程/房間內，採樣點在房間或設施<em>外部</em></li>
+                        </ul>
+                        <p>ISPE 明確指出：IH 監測數據<strong>不應直接用於</strong>定量評估產品交叉污染風險，因為採樣位置和目的完全不同。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：以實際數據輔助定性分析</h4>
+                        <p>定性風險分析就像醫師問診——快速找出可能問題。但若只靠「感覺」或「理論」，沒有引用工廠真實的清潔驗證數據、偏差記錄、法規查驗結果，結論就會流於表面。ISPE 強調：<strong>好的定性分析必須植根於真實廠內數據</strong>。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>實務建議：風險分析的聚焦策略</h4>
+                        <p>ISPE 提醒不要試圖一次評估整個製程——這會讓分析過於複雜而失去焦點。正確做法：</p>
+                        <ul>
+                            <li>以<strong>單元操作（Unit Operation）</strong>為單位（如：填充、壓錠、清潔）</li>
+                            <li>逐一評估，每個 UO 產出明確結論和行動</li>
+                            <li>不要遺漏非正常狀況，例如：洩漏、溢出、設備故障</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.3: ROUTES INTRODUCTION + RISK MATRIX
+         ================================================================ -->
+    <div class="chapter-section" id="sec-routes-intro">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3</div>
+            <div class="chapter-info">
+                <h2>6.3 Routes for Cross-Contamination — 交叉污染途徑概述</h2>
+                <p>Four routes ordered by importance | p57</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.3 Routes for Cross-Contamination</h3>
+                    <p>The routes for cross-contamination within pharmaceutical processing activities are presented in <span class="key-term">order of importance</span>. Figure 6.2 contrasts the risk of cross-contamination and worker exposure risk.</p>
+                    <p>The four routes are:</p>
+                    <ol>
+                        <li><strong>Mix-up</strong> (§6.3.1)</li>
+                        <li><strong>Retention</strong> (§6.3.2)</li>
+                        <li><strong>Mechanical Transfer</strong> (§6.3.3)</li>
+                        <li><strong>Airborne Transfer</strong> (§6.3.4)</li>
+                    </ol>
+                    <p>Note that the ranking of risk to the product from cross-contamination is essentially the <strong>inverse of the ranking of risk to the worker</strong>: airborne transfer poses the highest risk to workers (inhalation), while mix-up and retention are the predominant concerns for product cross-contamination.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="concept-box">
+                        <h4>四大途徑風險排序矩陣</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>途徑</th>
+                                    <th>對產品的交叉污染風險</th>
+                                    <th>對工作人員的暴露風險</th>
+                                    <th>主要控制手段</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="key-term-red">混淆 Mix-up</span></td>
+                                    <td style="text-align:center;">&#9733;&#9733;&#9733;&#9733;&#9733; 最高</td>
+                                    <td style="text-align:center;">&#9733; 低</td>
+                                    <td>標示、系統、程序</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="key-term-orange">殘留 Retention</span></td>
+                                    <td style="text-align:center;">&#9733;&#9733;&#9733;&#9733; 高</td>
+                                    <td style="text-align:center;">&#9733;&#9733; 低-中</td>
+                                    <td>清潔驗證（ADE 限值）</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="key-term-blue">機械轉移</span></td>
+                                    <td style="text-align:center;">&#9733;&#9733;&#9733; 中</td>
+                                    <td style="text-align:center;">&#9733;&#9733;&#9733; 中</td>
+                                    <td>隔離、去污程序</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="key-term-purple">空氣傳播</span></td>
+                                    <td style="text-align:center;">&#9733;&#9733; 低-中</td>
+                                    <td style="text-align:center;">&#9733;&#9733;&#9733;&#9733;&#9733; 最高</td>
+                                    <td>密閉系統、壓差、CPT</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">產品交叉污染風險與工作人員暴露風險的排序幾乎相反</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵洞察：兩種風險排序相反的原因</h4>
+                        <p>這個反向關係來自物理原理：</p>
+                        <ul>
+                            <li><strong>混淆和殘留</strong>是大量、直接的物質轉移，影響產品大於空氣中稀釋的微粒</li>
+                            <li><strong>空氣傳播</strong>對工人危害最大，因為工人在粉塵源附近長時間吸入；但對遠處密閉容器中的產品影響有限</li>
+                            <li>這也說明為何法規行動中 Mix-up 最常見——是<strong>大量</strong>的直接汙染事件</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.3.1: MIX-UP
+         ================================================================ -->
+    <div class="chapter-section" id="sec-mixup">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.1</div>
+            <div class="chapter-info">
+                <h2>6.3.1 Mix-up — 混淆</h2>
+                <p>Most common cause of regulatory action / product recall | p55–p57</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="route-badge mixup">Route 1 — Mix-up 混淆</div>
+                    <h3>6.3.1 Mix-up</h3>
+                    <p><span class="key-term-red">Mix-up</span> is frequently cited by regulators as one of the most common causes for <strong>regulatory action/product recall</strong>. For the purpose of this Guide, mix-up refers to the contamination at unsafe levels of one product with another.</p>
+                    <p>The highest risks from mix-up normally stem from <strong>low-tech GxP failures</strong> due to:</p>
+                    <ul>
+                        <li>Basic <span class="key-term">human error</span> (e.g., failure to follow procedure)</li>
+                        <li>System weakness (e.g., poor material labeling)</li>
+                    </ul>
+                    <p>Obviously, there is an increased potential risk of cross-contamination if two or more products are being handled in the same area, even with appropriate batch to batch segregation.</p>
+
+                    <h4>GxP Review Areas for Mix-up Prevention</h4>
+                    <p>The risk analysis to identify potential cross-contamination routes should include a review of basic GxP to confirm that appropriate systems provide a high level of assurance that mix-up will not occur, such as:</p>
+                    <ul>
+                        <li><span class="key-term">Identification and status labeling/controls</span> of materials and products</li>
+                        <li>Status labeling/controls of equipment and facilities</li>
+                        <li>Receipt and controls of materials and products</li>
+                        <li><span class="key-term">Physical segregation, process flow, and security</span> during material and product handling, storage, and staging</li>
+                    </ul>
+
+                    <h4>Typical Examples of Mix-up</h4>
+                    <ul>
+                        <li>Inadequate <span class="key-term">line clearance</span> between products</li>
+                        <li>Accidental use of dirty equipment</li>
+                        <li>Introduction of another product during sampling</li>
+                        <li>Incorporation of the wrong starting material or excipient</li>
+                        <li>Mislabeling of equipment and/or materials</li>
+                        <li>Unintended transfer of materials from one vessel to another containing different product/materials</li>
+                    </ul>
+
+                    <h4>Human Error Related Factors</h4>
+                    <ul>
+                        <li>Operator training and understanding of process requirements</li>
+                        <li>Ergonomic requirements of activities against operator capabilities</li>
+                        <li>Local environment (lights, noise, and heat)</li>
+                        <li>Operator workload (too busy, bored)</li>
+                        <li>Level of routine involved in an activity</li>
+                        <li>Local culture, e.g., is procedural innovation discouraged?</li>
+                        <li>Overly complex procedures</li>
+                        <li>Ease of error, e.g., a function of design, can an error be made and how easily?</li>
+                    </ul>
+
+                    <h4>6.3.1.1 Factors Affecting Exposure by Mix-up</h4>
+                    <p>The presence of multiple processes within a common facility with shared or overlapping process flows may give rise to an increased risk of mix-up through increased potential for mistakes in <span class="key-term">materials management processes</span>.</p>
+                    <p>Factors to be considered when assessing the risk of mix-up within the process include:</p>
+                    <ul>
+                        <li>Overlapping process flows and transit routes</li>
+                        <li>Common dispensary areas</li>
+                        <li>Common storage areas for change parts</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="key-point-box">
+                        <h4>為什麼 Mix-up 是最常見的法規行動原因？</h4>
+                        <p>Mix-up 不需要複雜的科學機制——它是直接的、大量的物質摻入事件。一旦發生，污染量往往遠超 ADE 限值，且通常在製程後期（甚至出廠後）才被發現，後果嚴重。典型案例包括：</p>
+                        <ul>
+                            <li>顏色相似的原料被誤用</li>
+                            <li>標示脫落或字跡不清的容器</li>
+                            <li>換線清場（Line Clearance）未徹底</li>
+                            <li>倉儲區不同產品物料混放</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>Mix-up 的兩大根源：人為錯誤 vs. 系統弱點</h4>
+                        <p><strong>人為錯誤（Human Error）</strong>的8個影響因子值得深思：</p>
+                        <ul>
+                            <li><strong>訓練</strong>：操作員是否真正理解製程要求？</li>
+                            <li><strong>人因工程</strong>：動作是否符合人體工學？</li>
+                            <li><strong>環境</strong>：燈光不足、噪音大會增加錯誤率</li>
+                            <li><strong>工作量</strong>：太忙（壓力大）或太閒（注意力渙散）都是風險</li>
+                            <li><strong>例行化程度</strong>：越例行化的操作越容易自動化執行而忽略細節</li>
+                            <li><strong>文化</strong>：若員工害怕被罰而不敢回報錯誤，錯誤就會積累</li>
+                            <li><strong>程序複雜度</strong>：過於複雜的 SOP 反而增加錯誤機率</li>
+                            <li><strong>設計的容錯性</strong>：Good design prevents error（防錯設計）</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>換線清場（Line Clearance）</h4>
+                        <p>Line Clearance 是預防 Mix-up 最關鍵的 GxP 控制。標準作法包括：</p>
+                        <ul>
+                            <li>移除所有前批次物料、標示、文件</li>
+                            <li>雙人確認（Four-eyes principle）</li>
+                            <li>填寫 Line Clearance Checklist 並記錄</li>
+                            <li>設備狀態牌更新為「已清潔」+下批產品資訊</li>
+                        </ul>
+                        <p>法規查驗常見缺失：Line Clearance 流於形式，或簽名不具意義。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：共用空間與「撞車」機率</h4>
+                        <p>想像多個產品在廠房內流動就像城市中的車流。共用倉儲、共用稱量室、交叉的物流路線，相當於增加十字路口的數量——每個交叉點都是潛在的撞車（Mix-up）點。最有效的預防方式是<strong>設計專用動線</strong>，而不是依賴每個駕駛（操作員）時刻保持高度警覺。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習：你廠房的高風險混淆點在哪？</h4>
+                        <p>盤點以下場景，每一個「共用」就是一個潛在 Mix-up 點：</p>
+                        <ul>
+                            <li>共用稱量室（多產品在同一時段秤量）</li>
+                            <li>共用緩衝走廊（不同批次材料同時搬運）</li>
+                            <li>共用更衣室（更衣後進入不同製程區域）</li>
+                            <li>共用零件儲存區（換用零件未清潔乾淨）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.3.2: RETENTION
+         ================================================================ -->
+    <div class="chapter-section" id="sec-retention">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.2</div>
+            <div class="chapter-info">
+                <h2>6.3.2 Retention — 殘留</h2>
+                <p>Cleaning validation, ADE-based limits, cleaning process lifecycle | p57–p65</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="route-badge retention">Route 2 — Retention 殘留</div>
+                    <h3>6.3.2 Retention</h3>
+                    <p><span class="key-term-orange">Retention</span> is defined as residual material on <span class="key-term">product contact surfaces</span> after cleaning that can carryover from one product to another product in the same equipment, having been used in a sequential or campaign manner.</p>
+                    <p>Retention is the mode of cross-contamination directly addressed by the <span class="key-term">cleaning program</span> which includes <span class="key-term">cleaning validation</span>.</p>
+                    <p>Development and validation of cleaning procedures that consistently reduce residuals, both:</p>
+                    <ul>
+                        <li><strong>Intrinsic</strong> (product/process materials)</li>
+                        <li><strong>Non-intrinsic</strong> (such as cleaning agents)</li>
+                    </ul>
+                    <p>...on product contact equipment to acceptable levels is critical to the success of a cross-contamination control program.</p>
+
+                    <h4>6.3.2.1 Health-Based Acceptance Limits for Cleaning</h4>
+                    <p>Basing the acceptance criteria on a health-based limit such as the <span class="key-term">ADE (or PDE)</span> value has many advantages over traditional methods (e.g., 1/1000th of the low clinical dose).</p>
+                    <p>The most important is the fact that the ADE value is <strong>toxicologically derived</strong>.</p>
+                    <p><strong>Calculation of Health-Based Cleaning Limits:</strong></p>
+                    <p><em>Swab Residue Level (mg/swab) =</em></p>
+                    <p style="font-family:monospace; background:#f5f5f5; padding:0.5rem; border-radius:4px; font-size:0.88rem;">
+                        (ADE × SB × TA × RF) / (MDD × SSA)
+                    </p>
+                    <p><em>Rinse Residue Level (mg/L) =</em></p>
+                    <p style="font-family:monospace; background:#f5f5f5; padding:0.5rem; border-radius:4px; font-size:0.88rem;">
+                        (ADE × SB × RA × RF) / (V × MDD × SSA)
+                    </p>
+                    <p>Where: ADE = Acceptable Daily Exposure, MDD = Maximum Daily Dose, SB = Smallest batch size, SSA = Shared Surface Area, TA = Test Area, RA = Rinsed Area, RF = Recovery Factor, V = Volume of Rinse</p>
+
+                    <h4>6.3.2.3 Use of 1/1000th and 10 ppm</h4>
+                    <p>The use of traditional acceptance limits is <strong>not the preferred strategy</strong>. Ideally, compound specific, scientifically derived, health-based values should be established whenever possible.</p>
+                    <ul>
+                        <li>1/1000th method is often <strong>overprotective</strong> for most APIs → lowers apparent margin of safety</li>
+                        <li>For highly hazardous drugs (e.g., antineoplastic), 1/1000th method may <strong>not be sufficiently protective</strong></li>
+                        <li>10 ppm is arbitrary and not applicable to all compounds</li>
+                    </ul>
+                    <p>The health-based limit should <strong>not be seen as a limit</strong> in the true sense, but as a <span class="key-term">reference point</span> for determining the level of risk. Equipment must always be <strong>visually clean</strong>.</p>
+
+                    <h4>6.3.2.11 Factors Affecting Exposure by Retention</h4>
+                    <p>Equipment-related factors:</p>
+                    <ul>
+                        <li>Large surface areas for potential product contact</li>
+                        <li>Frequency of changeover and cleaning</li>
+                        <li>Use of disposable equipment/product contact parts</li>
+                        <li>Crevices or ledges where product can accumulate (occluded areas)</li>
+                        <li>Rough or unpolished product contact surfaces</li>
+                        <li>Drains</li>
+                        <li>Material compatibility with preferred cleaning agents</li>
+                    </ul>
+                    <p>Material-related factors increasing residue risk:</p>
+                    <ul>
+                        <li>Sticky or caked-on solids</li>
+                        <li>Poor solubility or wettability with available cleaning materials</li>
+                        <li>Materials that dry with hard surfaces</li>
+                        <li>Highly viscous or shear thickening materials</li>
+                        <li>Materials that react with common cleaning solutions to form solid or sticky gel-like materials</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>Retention 的精確定義</h4>
+                        <p>Retention 特指清潔後<strong>仍殘留在設備接觸面上</strong>的物質，並在後續批次中帶入下一個產品。關鍵特性：</p>
+                        <ul>
+                            <li>僅涉及<strong>產品接觸面（Product Contact Surfaces）</strong></li>
+                            <li>發生在<strong>序列生產（Sequential/Campaign）</strong>模式下</li>
+                            <li>清潔程序是<strong>直接控制手段</strong></li>
+                            <li>包含「固有」（原料藥、輔料）和「非固有」（清潔劑）殘留</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>ADE 清潔限值計算公式解讀</h4>
+                        <pre>
+棉棒殘留限值 (mg/棉棒) =
+  ADE × 最小批次量 × 採樣面積 × 回收率
+  ───────────────────────────────────────
+      最大日劑量 × 共用接觸面積
+
+淋洗液殘留限值 (mg/L) =
+  ADE × 最小批次量 × 淋洗面積 × 回收率
+  ───────────────────────────────────────
+    淋洗體積 × 最大日劑量 × 共用接觸面積
+                        </pre>
+                        <p><strong>關鍵邏輯：</strong>計算基於「下一批最大日劑量的藥品中，允許帶入的前藥 ADE 量」，確保病人即使服用最大劑量，攝入的前藥殘留也在安全範圍內。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ADE 限值 vs. 傳統 1/1000 法 vs. 10 ppm — 比較</h4>
+                        <table>
+                            <thead>
+                                <tr><th>方法</th><th>科學基礎</th><th>過度保護？</th><th>高毒性藥物夠用？</th><th>ISPE 立場</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ADE/PDE 法</td>
+                                    <td>毒理學推導，全數據集</td>
+                                    <td>不</td>
+                                    <td>是（有針對性保護）</td>
+                                    <td>優先推薦</td>
+                                </tr>
+                                <tr>
+                                    <td>1/1000 最低臨床劑量</td>
+                                    <td>單點估算，保守</td>
+                                    <td>多數情況是</td>
+                                    <td>抗腫瘤藥不夠用</td>
+                                    <td>不推薦作主要方法</td>
+                                </tr>
+                                <tr>
+                                    <td>10 ppm</td>
+                                    <td>無科學依據，任意值</td>
+                                    <td>不一定</td>
+                                    <td>高毒性藥物不夠用</td>
+                                    <td>不推薦</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「目視乾淨」是最低標準，不是唯一標準</h4>
+                        <p>重要澄清：ADE 計算出的殘留限值有時高於目視可見的量，這不代表設備「看起來不乾淨也沒關係」。</p>
+                        <p><strong>規則：目視乾淨（Visually Clean）是所有情況下的最低要求。</strong></p>
+                        <p>只有當 ADE 限值顯著高於目視偵測極限（有充足安全餘量）時，才能以目視檢驗作為<strong>例行放行</strong>的唯一標準。這需要先進行目視偵測極限（Visual Detection Limit）的確認研究（棉棒篩選法）。</p>
+                    </div>
+
+                    <div class="key-point-box">
+                        <h4>難清潔設備區域（Worst-Case Locations）</h4>
+                        <p>清潔驗證的核心是找到<strong>最難清潔的位置（Worst-Case）</strong>：</p>
+                        <ul>
+                            <li><strong>CIP 系統</strong>：流動陰影區（Shadowed Area）、受遮蔽的區域</li>
+                            <li><strong>手工清潔</strong>：難以到達的位置（如球閥內部）</li>
+                            <li><strong>設備設計缺陷</strong>：死角、裂縫、不拋光表面、排水溝</li>
+                        </ul>
+                        <p>如果能清潔最難的位置，其他位置也必然乾淨——這是小規模清潔模型（Small Scale Cleanability）的基本原理。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：清潔驗證 ≈ 製程驗證生命週期</h4>
+                        <p>ISPE 明確類比：清潔驗證與 FDA 製程驗證三階段生命週期完全平行：</p>
+                        <ul>
+                            <li><strong>Stage 1（製程設計）</strong> = 清潔製程開發、風險評估</li>
+                            <li><strong>Stage 2（製程確認）</strong> = CIP 設備確認 + 3 次清潔驗證執行</li>
+                            <li><strong>Stage 3（持續驗證）</strong> = 例行監測、趨勢分析（Ppk）、異常調查</li>
+                        </ul>
+                        <p>「通過 3 次 PQ 就完成驗證」的觀念已過時，必須建立持續監測程序。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.3.3: MECHANICAL TRANSFER
+         ================================================================ -->
+    <div class="chapter-section" id="sec-mechanical">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.3</div>
+            <div class="chapter-info">
+                <h2>6.3.3 Mechanical Transfer — 機械轉移</h2>
+                <p>Contaminated non-product contact surfaces, operator apparel, equipment routing | p65–p66</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="route-badge mechanical">Route 3 — Mechanical Transfer 機械轉移</div>
+                    <h3>6.3.3 Mechanical Transfer</h3>
+                    <p><span class="key-term-blue">Mechanical transfer</span> includes all routes by which material can be transferred from <span class="key-term">contaminated non-product contact surfaces</span> into or onto the product. This includes:</p>
+                    <ul>
+                        <li>Product contact surfaces contaminated by contact with contaminated surfaces (e.g., in cleaning areas)</li>
+                        <li>Inadvertent or transient contact with other contaminated non-designated product contact areas</li>
+                        <li><span class="key-term">Direct contact of the product with operator apparel and gloves</span></li>
+                    </ul>
+                    <p>The major issue with such routes is the <strong>lack of control of contaminated items</strong>.</p>
+                    <p>The factors which affect the risk of mechanical transfer are made up of those which influence the:</p>
+                    <ul>
+                        <li>Transfer of the material <em>to</em> the surface</li>
+                        <li>Association of the surface with the product at risk</li>
+                        <li>Release of the material <em>from</em> the contaminated surface to the product</li>
+                    </ul>
+
+                    <h4>6.3.3.1 Factors Affecting Exposure by Mechanical Transfer</h4>
+                    <p>The risk of mechanical transfer can occur with the <span class="key-term">colocation of a process with contaminated equipment or items</span>, e.g., operators wearing contaminated clothing or contact between process equipment contaminated with different materials.</p>
+                    <p><strong>Factors include:</strong></p>
+                    <ul>
+                        <li>The use of common areas where segregation of processes and equipment is poor, e.g., <strong>common manual cleaning areas</strong> where dirty and clean equipment from different processes may be present at the same time</li>
+                        <li>Use of common gowning regimes across areas where multiple products may be present simultaneously</li>
+                        <li>Surface to surface contact, e.g., scraping, smearing, or wiping of process equipment</li>
+                        <li>Use of common equipment, e.g., hand tools or change parts between different processes</li>
+                    </ul>
+                    <p>The use of certain equipment may cause operators or mobile equipment to become contaminated and potentially transit to other process areas without undergoing decontamination procedures. Issues to be considered:</p>
+                    <ul>
+                        <li>The presence of <strong>highly manual, uncontained/open processes</strong></li>
+                        <li>The specification and location of <span class="key-term">decontamination procedures</span> for users and equipment</li>
+                        <li>Routing of equipment and users around facilities, especially where there is common routing of products</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="term-box">
+                        <h4>機械轉移的三步驟機制</h4>
+                        <p>機械轉移污染路徑可以分解為三個必要條件（缺一不可）：</p>
+                        <ol>
+                            <li><strong>污染物轉移至媒介表面</strong>（如：員工手套、設備外壁接觸了污染物料）</li>
+                            <li><strong>媒介與暴露風險產品的接觸</strong>（如：被污染的手套碰觸到另一個產品的接觸面）</li>
+                            <li><strong>污染物從媒介釋放至產品</strong>（如：擦拭、壓力接觸使殘留轉移）</li>
+                        </ol>
+                        <p>控制策略就是在這三個步驟中設置障礙，打斷其中任一環節。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>機械轉移 vs. 殘留（Retention）的區別</h4>
+                        <table>
+                            <thead>
+                                <tr><th>特性</th><th>殘留（Retention）</th><th>機械轉移</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>污染來源</td><td>設備接觸面內部殘留</td><td>非接觸面的外部污染</td></tr>
+                                <tr><td>主要控制</td><td>清潔驗證</td><td>隔離制度、去污程序</td></tr>
+                                <tr><td>控制難度</td><td>可量化（ADE 限值）</td><td>較難量化，依賴系統設計</td></tr>
+                                <tr><td>典型場景</td><td>壓錠機葉片殘留前藥</td><td>員工進入不同製程區域帶入物料</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>高風險場景：共用清潔區</h4>
+                        <p>共用清潔間（Common Cleaning Area）是機械轉移的高風險點，因為：</p>
+                        <ul>
+                            <li>不同製程的「髒」設備和「乾淨」設備同時在場</li>
+                            <li>清洗過程中的飛濺、接觸可污染已清潔設備</li>
+                            <li>設備在清潔間和生產區之間的移動路線可能交叉</li>
+                        </ul>
+                        <p><strong>最佳實踐：</strong>為高風險產品設立專用清潔間，或嚴格制定「清潔後立即套防護袋轉移」的程序。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：員工是「移動的污染媒介」</h4>
+                        <p>在開放式製程中，員工的工作服、手套、鞋子可能沾附粉末，成為不同製程區域之間的「污染渡輪」。這就是為什麼：</p>
+                        <ul>
+                            <li>高風險產品區域需要<strong>專屬更衣程序</strong></li>
+                            <li>離開區域時需要<strong>去污（Decontamination）</strong>，而不只是換工作服</li>
+                            <li>工具（手持工具、零件）需要有明確的<strong>專屬區域歸屬</strong>或清潔後才能跨區使用</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>實務：機械轉移風險評估檢查表</h4>
+                        <ul>
+                            <li>是否有跨製程區域的人員或設備流動路線？</li>
+                            <li>共用更衣室是否會導致不同產品的操作員混合？</li>
+                            <li>手工具（扳手、刮刀）是否有產品專屬標示或清潔記錄？</li>
+                            <li>清潔區是否有「髒」「淨」分區和物流管制？</li>
+                            <li>開放式製程前後是否有去污站（Decontamination Station）？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         SECTION 6.3.4: AIRBORNE TRANSFER
+         ================================================================ -->
+    <div class="chapter-section" id="sec-airborne">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.4</div>
+            <div class="chapter-info">
+                <h2>6.3.4 Airborne Transfer — 空氣傳播轉移</h2>
+                <p>Aerosol generation, dustiness, CPT, physical barriers | p66–p68</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="route-badge airborne">Route 4 — Airborne Transfer 空氣傳播</div>
+                    <h3>6.3.4 Airborne Transfer</h3>
+                    <p>The direct <span class="key-term-purple">airborne transfer</span> route assumes the generation of a <span class="key-term">stable aerosol</span>, which moves to another area where it deposits in significant quantities on another exposed product.</p>
+                    <p>An aerosol is a suspension of fine solid or liquid particles in air. The operator has a greater risk of exposure than another product because of the inhalation of dust by the operator in relatively close proximity to the product compared to the <strong>passive deposition</strong> of dust into or onto another product distant from the emission source.</p>
+                    <p>Products typically are separated by <strong>physical barriers, airlocks, and corridors</strong>.</p>
+
+                    <div class="quote-box">
+                        <p>"Industrial hygiene monitoring data should not be used to quantitatively evaluate potential product cross-contamination due to these differences. However, high levels of airborne dust identified by monitoring may be qualitatively indicative of a poorly controlled process."</p>
+                    </div>
+
+                    <p>Chemical contaminants do not have the potential to proliferate as is the case with microbial contamination. In addition, there is generally <strong>less potential for airborne contaminants to present a serious risk of cross-contamination</strong> than from other routes, such as mix-up and retention.</p>
+                    <p>However, chemical contamination can increase due to <strong>continued deposition from an extended time emission source</strong> onto a continuously exposed at-risk product. Such deposition may also give rise to increased risk of subsequent mechanical transfer.</p>
+
+                    <h4>Three Key Questions for Airborne Pathway Assessment</h4>
+                    <ol>
+                        <li>Can the contaminating process form a stable aerosol?</li>
+                        <li>Can the stable aerosol be emitted and move to a position where it may deposit on the at-risk product in significant quantities?</li>
+                        <li>Is the at-risk product sufficiently exposed to the aerosol for significant cross-contamination (i.e., above the ADE value)?</li>
+                    </ol>
+
+                    <h4>6.3.4.1 Factors Affecting Exposure by Airborne Transfer</h4>
+                    <p>Risk analysis should consider the following for any significant risk of cross-contamination:</p>
+                    <ul>
+                        <li>Open processing activities at both source and receiving points</li>
+                        <li>Poorly sealed process equipment with <strong>pressure driving forces</strong> (positive pressure at source and/or negative pressure at receiving material positions)</li>
+                        <li>The repeated transfer of material through breakable or poorly contained couplings</li>
+                        <li>Relative locality of different process streams</li>
+                        <li>Provision of rooms and other building features between source and receiving positions</li>
+                    </ul>
+
+                    <h4>Physical Properties for Stable Aerosol Formation</h4>
+                    <p>Key issues include:</p>
+                    <ul>
+                        <li>Moisture content of solids</li>
+                        <li>Liquid viscosity and surface tension</li>
+                        <li>Particle size distribution</li>
+                        <li>Particle shape</li>
+                        <li>Particle density</li>
+                        <li>Particle charge (related to relative humidity)</li>
+                    </ul>
+                    <p>Such properties may be considered as a combined factor commonly known as <span class="key-term-purple">dustiness</span> — a measure of the propensity of the material to remain airborne for extended periods when in an aerosol.</p>
+
+                    <h4>6.3.4.2 Containment Performance Target (CPT)</h4>
+                    <p>The <span class="key-term">Containment Performance Target (CPT)</span> (expressed in µg/m³) is a target value that is used as the basis for plant design and selection of risk control strategies (i.e., containment systems) for protection of the workforce.</p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解析</h3>
+
+                    <div class="concept-box">
+                        <h4>氣懸微粒（Aerosol）的形成條件</h4>
+                        <p>並非所有粉塵都能成為有意義的交叉污染媒介，必須同時滿足：</p>
+                        <ol>
+                            <li><strong>生成穩定的氣懸微粒</strong>：製程必須產生足夠細小、能懸浮的顆粒</li>
+                            <li><strong>有傳輸路徑</strong>：氣懸微粒必須能移動到接受產品位置</li>
+                            <li><strong>沉積量足夠</strong>：沉積量必須超過 ADE 才構成顯著風險</li>
+                        </ol>
+                        <p>任何一個條件不成立，空氣傳播途徑就可以排除。這個「三問法」是快速篩選的工具。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>粉塵性（Dustiness）— 物料空氣傳播能力的指標</h4>
+                        <p>Dustiness 是描述物料在空氣中懸浮傾向的綜合指標，影響因子包括：</p>
+                        <table>
+                            <thead>
+                                <tr><th>物理特性</th><th>高 Dustiness 條件</th><th>低 Dustiness 條件</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>粒徑分佈</td><td>&lt; 10 µm 微細顆粒多</td><td>粗顆粒為主（&gt;100 µm）</td></tr>
+                                <tr><td>水份含量</td><td>乾燥粉末</td><td>高水份、濕潤物料</td></tr>
+                                <tr><td>密度</td><td>低密度輕質顆粒</td><td>高密度緻密顆粒</td></tr>
+                                <tr><td>表面電荷</td><td>高靜電，相互排斥</td><td>低靜電，易聚集沉降</td></tr>
+                                <tr><td>形狀</td><td>片狀、纖維狀（高表面積）</td><td>球形顆粒</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="table-caption">Dustiness 高的物料需要更嚴格的密閉措施</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>空氣傳播 vs. 其他途徑：為何排序最後？</h4>
+                        <p>空氣傳播對產品的風險排序最後，原因：</p>
+                        <ul>
+                            <li>化學污染物<strong>不像微生物會增殖</strong>——沉積量受物理定律限制</li>
+                            <li>產品通常在<strong>密閉容器或房間</strong>內，物理屏障有效隔離</li>
+                            <li>空氣傳播的粉末在到達接受產品前，已被大量稀釋</li>
+                            <li>與 Mix-up（直接的大量混入）相比，沉積量通常很小</li>
+                        </ul>
+                        <p><strong>例外情況：</strong>若暴露時間長、製程持續開放、通風差，累積沉積可能超過 ADE，且此時還會成為機械轉移的二次來源。</p>
+                    </div>
+
+                    <div class="key-point-box">
+                        <h4>IH 空氣採樣數據不能用於產品交叉污染定量評估</h4>
+                        <p>ISPE 的明確立場：工業衛生的空氣採樣（用於保護工人）<strong>不可直接用於</strong>評估產品交叉污染風險，原因：</p>
+                        <ul>
+                            <li><strong>採樣位置不同</strong>：IH 採樣在員工呼吸帶；GxP 採樣點應在製程室外圍</li>
+                            <li><strong>評估目標不同</strong>：IH 關心工人吸入量；GxP 關心產品沉積量</li>
+                            <li><strong>採樣體積不同</strong>：GxP 空氣採樣可能需要更大體積才能偵測到很低的外漏量</li>
+                        </ul>
+                        <p>兩個部門必須<strong>密切溝通</strong>，避免數據誤用。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>密閉性能目標（CPT）— 設計導向指標</h4>
+                        <p><strong>CPT（Containment Performance Target）</strong>以 µg/m³ 表示，是設備選型和廠房設計的依據：</p>
+                        <ul>
+                            <li>根據物料的 OEL 推算出 CPT</li>
+                            <li>CPT 決定密閉設備等級（如手套箱、隔離器、RABS 等）</li>
+                            <li>CPT 越低，要求密閉性越高，設備成本越高</li>
+                            <li>常見等級：&lt;1 µg/m³（極高毒性）、1-10 µg/m³（高毒性）、&gt;100 µg/m³（一般）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：壓差管理 = 氣流的單向閥</h4>
+                        <p>藥廠利用壓差（Pressure Differential）控制空氣流向：高毒性區域維持負壓，空氣只進不出。就像抽水機讓水只往一個方向流，阻止粉塵「逆流」進入清潔區。這是空氣傳播控制的核心工程手段，必須與 CPT 要求配合設計。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習：你的廠房哪些製程最可能產生高 Dustiness？</h4>
+                        <p>常見高風險製程：</p>
+                        <ul>
+                            <li><strong>研磨/粉碎（Milling）</strong>：產生大量微細顆粒</li>
+                            <li><strong>流化床乾燥（FBD）</strong>：大量粉末在熱空氣中懸浮</li>
+                            <li><strong>人工加料（Manual Charging）</strong>：開放傾倒粉末</li>
+                            <li><strong>壓錠（Compression）</strong>：粉末飛濺</li>
+                        </ul>
+                        <p>每個高 Dustiness 製程都應配有局部排氣通風（LEV）或密閉隔離，並評估其是否需要 CPT 設計。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary comparison table -->
+            <div class="section-divider"></div>
+            <h3 class="section-title">四大途徑綜合比較 — Chapter 6 Summary Matrix</h3>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>途徑</th>
+                        <th>定義</th>
+                        <th>主要機制</th>
+                        <th>產品風險排序</th>
+                        <th>工人暴露風險</th>
+                        <th>主要影響因子</th>
+                        <th>核心控制工具</th>
+                        <th>法規關注度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background:#fef2f2;">
+                        <td><strong>混淆<br>Mix-up</strong></td>
+                        <td>一個產品以不安全水準混入另一個產品</td>
+                        <td>人為錯誤、系統弱點</td>
+                        <td style="text-align:center;font-weight:700;color:#9b1c1c;">1（最高）</td>
+                        <td style="text-align:center;">低</td>
+                        <td>標示系統、物流動線、人員培訓</td>
+                        <td>換線清場、狀態標示、GxP 系統</td>
+                        <td>最常見召回/法規行動原因</td>
+                    </tr>
+                    <tr style="background:#fffbeb;">
+                        <td><strong>殘留<br>Retention</strong></td>
+                        <td>清潔後仍殘留在接觸面上的物質轉移至下批</td>
+                        <td>清潔不足、難清潔設計</td>
+                        <td style="text-align:center;font-weight:700;color:#92400e;">2（高）</td>
+                        <td style="text-align:center;">低-中</td>
+                        <td>物料溶解度、表面粗糙度、設備設計</td>
+                        <td>清潔驗證、ADE 限值、目視檢驗</td>
+                        <td>清潔驗證是核心 GxP 要求</td>
+                    </tr>
+                    <tr style="background:#eff6ff;">
+                        <td><strong>機械轉移<br>Mechanical</strong></td>
+                        <td>污染物經由非接觸面（人員、設備）物理接觸轉移</td>
+                        <td>共用區域、未去污轉移</td>
+                        <td style="text-align:center;font-weight:700;color:#1e40af;">3（中）</td>
+                        <td style="text-align:center;">中</td>
+                        <td>動線設計、隔離程度、去污程序</td>
+                        <td>隔離設計、去污站、動線管制</td>
+                        <td>設計審查關鍵點</td>
+                    </tr>
+                    <tr style="background:#f5f3ff;">
+                        <td><strong>空氣傳播<br>Airborne</strong></td>
+                        <td>穩定氣懸微粒從污染源遷移至接受產品</td>
+                        <td>粉塵懸浮、氣流傳輸、沉積</td>
+                        <td style="text-align:center;font-weight:700;color:#5b21b6;">4（低-中）</td>
+                        <td style="text-align:center;font-weight:700;color:#9b1c1c;">最高</td>
+                        <td>Dustiness、製程開放程度、壓差設計</td>
+                        <td>密閉系統、壓差、CPT、LEV</td>
+                        <td>IH 安全衛生首要關注</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Baseline&#174; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</p>
+    <p>Chapter 6: Risk Analysis &amp; Routes of Cross-Contamination (Part A) | p53–p68</p>
+    <p>SterileGMP Knowledge Hub — Educational Commentary in Traditional Chinese</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    // Back to top
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Nav scroll arrows
+    const nav = document.getElementById('navContainer');
+    const leftBtn = document.getElementById('navLeft');
+    const rightBtn = document.getElementById('navRight');
+
+    function updateNavArrows() {
+        if (!nav) return;
+        leftBtn.classList.toggle('hidden', nav.scrollLeft <= 10);
+        rightBtn.classList.toggle('hidden', nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 10);
+    }
+
+    if (leftBtn) leftBtn.addEventListener('click', () => { nav.scrollBy({ left: -200, behavior: 'smooth' }); setTimeout(updateNavArrows, 300); });
+    if (rightBtn) rightBtn.addEventListener('click', () => { nav.scrollBy({ left: 200, behavior: 'smooth' }); setTimeout(updateNavArrows, 300); });
+    if (nav) { nav.addEventListener('scroll', updateNavArrows); updateNavArrows(); }
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('.chapter-section');
+    const navItems = document.querySelectorAll('.nav-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navItems.forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
