@@ -94,13 +94,13 @@ Each skill is designed to:
 | Dept | Key Skills | Notes |
 |------|-----------|-------|
 | **QA** | Almost all (24/27) | Core user across all categories |
-| **TS** | deviation, em-excursion, change-control, sop-new/revision, cpv-review, tech-transfer, qualification-plan, risk-assess | Shop floor response and projects |
+| **TS** | deviation, em-excursion, change-control, sop-new/revision, cpv-review, tech-transfer, qualification-plan, risk-assess |  Technical deviation analysis, process         technical support and validation projects |
 | **EN** | change-control, cc-sop-impact, sop-new/revision, annex1-check, feasibility, hbel-screen, tech-transfer, csv-plan, qualification-plan, validation-xref, risk-assess | Facility, equipment, and project work |
 | **RA** | complaint, change-control, reg-gap, annex1-check, inspection-prep, pqr-framework, hbel-screen, supplier-qual | Regulatory submissions and compliance |
 | **BD** | feasibility, bd-qa, client-audit, tech-transfer | CDMO business development |
 | **QC** | oos-investigate, em-excursion, sop-new/revision, di-check | Testing and monitoring |
 | **BT** | csv-plan, di-check, validation-xref | System validation |
-| **MG** | complaint, inspection-prep, client-audit, pqr-framework, feasibility, bd-qa, batch-release, training-content, risk-assess | Decision support |
+| **MG** | complaint, inspection-prep, client-audit, pqr-framework, feasibility, bd-qa, batch-release, training-content, risk-assess | Production operations decisions, batch release and audit readiness support|
 | **WH** | supplier-qual | Supplier and material management |
 
 ---
