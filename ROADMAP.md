@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-02 (post-TR86/ISPE-Sampling/FDA-ProcessVal push; combination products expansion planned)
+Last updated: 2026-04-02 (post-ISPE-CTC push)
 
 ---
 
@@ -110,8 +110,8 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete | 9 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.), Sampling |
-| Not yet started | 6 | GEP (scanned), CTC, TechTransfer, ProcessGas, QualityCulture, IT |
+| Complete | 10 | Vol.3, Vol.4, Vol.5, Vol.6, HVAC, Vol.7, SUT, GAMP 5 (2nd Ed.), Sampling, CTC Mapping |
+| Not yet started | 5 | GEP (scanned), IT, TechTransfer, ProcessGas, QualityCulture |
 | **Total** | **~15** | |
 
 **Completion: 60%** (9/15)
@@ -126,7 +126,7 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 55 of ~65-70 target documents complete (approx. 82%)** — PDA 39 + ISPE 9 + FDA 3 + ICH 3 + PIC/S 1 = 55
+**Overall: 56 of ~65-70 target documents complete (approx. 84%)** — PDA 39 + ISPE 10 + FDA 3 + ICH 3 + PIC/S 1 = 56
 
 ---
 
