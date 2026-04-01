@@ -115,8 +115,20 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 **ISPE documents** — under `ISPE/`:
 - Folders: `ISPE/ISPE-Vol3/`, `ISPE/ISPE-Vol5/`, `ISPE/ISPE-GAMP5/`, `ISPE/ISPE-HVAC/`, `ISPE/ISPE-TechTransfer/`
 
-**FDA / Regulatory documents** — under their own top-level folder (future):
-- Folders: `FDA/FDA-Aseptic/`, `PICS/PICS-Annex1/`, etc.
+**FDA documents** — under `FDA/`:
+- Folders: `FDA/FDA-Aseptic/`, `FDA/FDA-Process-Val/`, etc.
+
+**PIC/S documents** — under `PICS/`:
+- Folders: `PICS/PICS-Annex1/`, `PICS/PICS-GMP-Part1/`, etc.
+
+**ICH guidelines** — under `ICH/`:
+- Folders: `ICH/ICH-Q9/`, `ICH/ICH-Q10/`, `ICH/ICH-Q8/`, etc.
+
+**USP chapters** — under `USP/`:
+- Folders: `USP/USP-1072/`, `USP/USP-1231/`, etc.
+
+**ISO standards** — under `ISO/`:
+- Folders: `ISO/ISO-14644-1/`, `ISO/ISO-14644-3/`, etc.
 
 **All sources:**
 - Section files: `section-XX-short-name.html`
@@ -125,7 +137,8 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 - Source text: `section-X.0-text.txt` or `[FOLDER_ID]-full-text.txt`
 - Knowledge MD: `knowledge/<SOURCE>/[FOLDER_ID]-Complete.md` (English only, auto-generated)
 
-**Source colors** — follow existing palette per source org in `reports.json` (PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, ECA=teal, USP=gold).
+**Source colors** — follow existing palette per source org in `reports.json`:
+- PDA=blue, ISPE=green, FDA=red, PIC/S=orange, ISO=purple, USP=gold, ICH=teal
 
 ## TopNav Scroll Arrow Rule
 
