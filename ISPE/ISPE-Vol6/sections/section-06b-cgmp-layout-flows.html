@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.6 - Chapter 6B: cGMP Layout Approaches (Flows, Cleaning & Special Areas)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* ISPE green overrides for header */
+    --ispe-dark: #1a3a2a;
+    --ispe-accent: #27ae60;
+    --ispe-bar: #2ecc71;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--ispe-dark) 0%, #2e6b45 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== SOURCE BADGE ===== */
+.source-badge {
+    display: inline-block;
+    background: var(--ispe-bar);
+    color: #1a3a2a;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== ISPE-SPECIFIC OVERRIDES ===== */
+.ispe-section-title {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2e6b45 100%);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.ispe-section-title span {
+    opacity: 0.75;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+}
+
+/* Conflict warning box */
+.conflict-box {
+    background: linear-gradient(135deg, #fff0f0 0%, #ffe0e0 100%) !important;
+    border-left: 4px solid #e53e3e !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.conflict-box h4 {
+    color: #c53030 !important;
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <div class="source-badge">ISPE</div>
+    <h1>Chapter 6B: cGMP Layout Approaches — Flows, Cleaning &amp; Special Areas</h1>
+    <div class="subtitle">第六章 B 部分：cGMP 廠房佈局策略 — 流向、清潔與特殊區域</div>
+    <div class="page-info">ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p74 – p85</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="margin: 1.5rem; border-left: 4px solid #27ae60;">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解物流隔離（Logistical Segregation）的定義與目的：批次隔離、產品隔離、病毒削減操作隔離，以及開放式與封閉式製程的區別。</li>
+        <li>掌握廠房與製程流向（Facility &amp; Process Flows）的三個層次：邏輯製程展示、避免混淆、保護房間環境；並比較雙走廊與單走廊廠房設計的適用情境。</li>
+        <li>了解設備與廠房清潔（Equipment &amp; Facility Cleaning）的設計原則：CIP/SIP 整合、設備清洗室佈局（二房 vs. 三房）、不同等級環境的表面完工要求。</li>
+        <li>區分疫苗及生物危害圍堵（Vaccines &amp; Biological Hazard Containment）與標準 GMP 設施的衝突：BSL 負壓要求 vs. GMP 正壓要求，以及如何在設計中解決此矛盾。</li>
+        <li>識別生產支援區域（Production Support Areas）的關鍵功能，以及新興國家廠房設計中模組化設計的優勢。</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.4: LOGISTICAL SEGREGATION CONSIDERATIONS            -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.4 Logistical Segregation Considerations <span>物流隔離考量</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p><span class="key-term">Logistical segregation</span> is defined as the spatial or physical separation of systems or operations. The goal is to prevent mix-ups. Although material and personnel airlocks are designed to protect the classified environments of the bioprocessing suites during transitions from one space to an adjacent space, they also provide gates for the transition of materials and products through the process and facility.</p>
+
+            <p>Segregating batches and unit operations into individual silos also can result in segregation of the equipment, components, raw materials, and personnel involved in the execution of that unit operation. The protection provided by these barriers should be maintained or replaced for adequate logistical segregation, i.e., to prevent mix-ups. Technology to mitigate the risk of mix-ups includes:</p>
+            <ul>
+                <li>RFID technology</li>
+                <li>Bar coding</li>
+                <li>Color coding</li>
+            </ul>
+            <p>In addition, dedication of specific connecting devices could be used to prevent the possibility of mix-ups.</p>
+
+            <p>Where bioprocess unit operations are consolidated into a single multipurpose manufacturing suite (<span class="key-term">ballroom</span>) (see Section 6.3.5 of this Guide), the risks of inadequate logistical product, batch, and intermediate or unit operation segregation should be evaluated. Methods for distinguishing between products, batches, or intermediates that have undergone a process of <span class="key-term">virus removal or inactivation</span>, from those which have not, should be established.</p>
+
+            <p>The staging of soiled equipment should mitigate the risk of contamination of purified material from upstream processes. Examples where <span class="key-term">closed processing</span> provides an opportunity for consolidation of operations and systems that have been traditionally segregated, include:</p>
+            <ul>
+                <li>Batches</li>
+                <li>Products</li>
+                <li>Virus reduced operations</li>
+                <li>Cell containing from cell free operations</li>
+                <li>Open from closed operations</li>
+            </ul>
+            <p>Logistical segregation should be considered for each operation.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>Logistical Segregation（物流隔離）：</strong>指透過空間或物理手段將系統或操作分離，核心目的只有一個——<strong>防止混淆（prevent mix-ups）</strong>。與GMP分類環境的保護不同，物流隔離關注的是「正確的東西在正確的地方」。</p>
+                <p><strong>Mix-up（混淆）</strong> 是一種特別危險的錯誤——你完全不知道它發生了。批次標籤搞錯、管線接錯、已病毒削減的中間產品與未削減的放在一起，都可能導致產品召回或病人傷害。</p>
+                <p><strong>防止混淆的工具層次：</strong></p>
+                <ul>
+                    <li>實體隔離（最強）：獨立房間、氣鎖</li>
+                    <li>RFID / 條碼掃描（中等）：電子追蹤</li>
+                    <li>顏色編碼（輔助）：管線、連接器</li>
+                    <li>行政管控（最弱）：SOP、培訓</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>想像機場的單向旅客動線設計。出境旅客、入境旅客、轉機旅客走不同的路線，不僅是為了安全審查，更是為了防止「人員混淆」——讓正確的人到達正確的地方。生物製藥廠房的物流隔離設計就像機場動線規劃師，確保每種物料、人員、廢棄物都在對應的「通道」中移動，不能走錯路。</p>
+                <p>Ballroom 就像是機場的開放式大候機廳：空間共用、但透過電子票務（RFID/條碼）確保每位旅客登上正確航班。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>病毒削減操作（Virus Reduced Operations）的隔離是監管機構的明確要求！</strong>一旦批次經過病毒去除/滅活步驟，就必須與未處理的上游物料實體隔離，因為任何交叉污染都會讓下游的無病毒保證失效。</p>
+                <p>封閉製程（Closed Processing）可以打破傳統的隔離需求——當系統完全密封，批次和產品可以共存於同一空間，這是 Ballroom 概念的基礎。但一旦涉及開放操作，所有隔離要求就重新生效。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>在一個 Ballroom 設計的生物製藥廠中，同時生產兩個不同產品的兩條批次。哪些情境下可以接受？哪些情境下絕對不行？</li>
+                    <li>使用 RFID 技術追蹤批次時，如果 RFID 讀取器故障，備用的物流隔離措施應該是什麼？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6.4.1 -->
+    <div class="ispe-section-title">6.4.1–6.4.5 Segregation Sub-types <span>各類隔離細節</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>6.4.1 Segregation of Batches</h3>
+            <p>Establishing closure or isolation from the environment also should eliminate the possibility of crossover from environmental sources. The risk for crossover contamination to occur of two neighboring closed systems is considered small, as it would require the breach of integrity of both systems, concurrently. There is a potential for crossover where two closed systems share elements of communication, such as <span class="key-term">CIP or common transfer headers</span>.</p>
+            <p>If multiple batches of a same product are housed within the same room, it is likely that they also share ingredients and process equipment. Controls should be established to mitigate the risk of mix-ups of any shared components.</p>
+
+            <h3>6.4.2 Segregation of Products</h3>
+            <p>Manufacturing processes using only closed systems can potentially share real estate with other manufacturing process. When multiple products are housed in the same space, they may or may not share equipment or ingredients. If equipment and materials are shared, the risks are similar to those of a suite housing multiple batches of a single product. If multiple products are manufactured in a single suite, there is potential one product to impact on the other process. Different products can have different cleaning, sanitization and/or testing requirements that could promote errors, mix-ups, or crossover (e.g., from shared CIP systems) if not properly managed.</p>
+
+            <h3>6.4.3 Segregation of Virus Reduced Operations</h3>
+            <p>There is a <span class="key-term">regulatory agency expectation</span> of segregation of process operations deemed "virus reduced." Manufacturers typically house bulk substance fill operations in an isolated suite accessed via an airlock that is independent of areas where upstream purification operations occur.</p>
+            <p>A risk assessment should be used to determine the appropriate (and logical) point of segregation if one is required. The risk assessment should evaluate possible means of "contaminating" the segregated environment by:</p>
+            <ul>
+                <li>Personnel</li>
+                <li>HVAC</li>
+                <li>Process</li>
+                <li>Cleaning</li>
+                <li>Sanitization</li>
+            </ul>
+            <p>For example, sharing the virus-reduced equipment, CIP, or glasswashers with processes or equipment upstream without effective autoclaving or SIP could result in the breach of the isolated "virus-reduced" suite. For this reason, <span class="key-term">single use systems</span> are normally used for the lower volume "virus-reduced" applications.</p>
+
+            <h3>6.4.4 Segregation of Cell (+) from Cell (-) Operations</h3>
+            <h3>6.4.5 Segregation of Open from Closed Operations</h3>
+            <p>Segregation of upstream "cell (+)" and downstream "cell (-)" operations should be based on definition and logic. Additional processing, testing, and validation may be required to effectively verify that a downstream process is cell free. Flow and gowning of personnel, CIP strategy, HVAC zoning, and pressurization, etc., should be considered if the segregation of solutions and processes containing live cells is required.</p>
+            <p>Open bioprocesses should be segregated from closed bioprocesses to ensure that the integrity of the overall program is maintained. Open operations such as inoculum preparation or chromatography packing (if open) can be affected by the environment and by other processes operating in proximity of the open operations. Appropriate programs including classified environments, appropriate gowning of personnel, appropriate HVAC zoning and pressurization strategy, appropriate transitioning of materials, personnel and operations should be established to mitigate the risk of contamination.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>四種隔離類型總結：</strong></p>
+                <ul>
+                    <li><strong>批次隔離（Batch Segregation）：</strong>防止同產品不同批次的混淆，重點在共用元件（CIP 管線、傳遞頭）的控制</li>
+                    <li><strong>產品隔離（Product Segregation）：</strong>不同產品共存於同一空間時，共用 CIP 系統是最大風險——一個產品的清洗殘留可能影響另一個</li>
+                    <li><strong>病毒削減隔離（Virus Reduced Segregation）：</strong>法規明確要求，必須獨立通道進入，與上游分離——一次性系統是最佳解決方案</li>
+                    <li><strong>含細胞 vs. 無細胞：</strong>下游純化後的無細胞區域必須防止上游含活細胞物料的污染；這影響 HVAC 分區、人員動線及服裝策略</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>共用 CIP 系統是高風險點！</strong>兩個「封閉」系統共用 CIP 管線時，如果一側系統的完整性受損（如洩漏），就可能透過共用管路將污染傳遞到另一側。這就是為什麼病毒削減區域通常採用一次性系統——完全消除共用清洗系統的風險。</p>
+                <p><strong>開放製程 vs. 封閉製程的隔離邏輯：</strong>封閉製程依靠系統完整性保護產品；開放製程則需要依靠環境（分類潔淨室）和人員管控來保護。這兩者混合時，開放操作必須有獨立的受控環境。</p>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實務應用 Practical Application</h4>
+                <p>CDMO 在承接生物製藥客戶時，最常遇到的問題是：「我的病毒滅活後的產品可以和滅活前的產品在同一個廠房運作嗎？」答案是：可以，但必須通過嚴格的風險評估，且兩者必須透過獨立氣鎖訪問的獨立套房分隔。如果客戶的上游製程使用不鏽鋼 CIP，而下游病毒削減製程使用一次性系統，通常可以在同一建築中共存，但需要明確的流向規範和人員/物料傳遞 SOP。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一家 CDMO 計劃在同一廠房中為兩個客戶同時生產單株抗體（mAb）。一個產品使用不鏽鋼 CIP 系統，另一個使用一次性（Single-Use）系統。這種配置的主要風險是什麼？如何控制？</li>
+                    <li>在風險評估「virus-reduced suite」的隔離方案時，你應該評估哪五個可能的污染途徑？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.5: FACILITY AND PROCESS FLOWS                       -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.5 Facility and Process Flows <span>廠房與製程流向</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p>Facility and process flows are designated paths of travel for:</p>
+            <ul>
+                <li>Personnel</li>
+                <li>Materials</li>
+                <li>Product</li>
+                <li>Equipment cleaning</li>
+                <li>Solid waste</li>
+            </ul>
+
+            <p>The purpose of these flows can be categorized into three levels:</p>
+            <ol>
+                <li>Demonstrating a logical production process</li>
+                <li>Avoiding mix-ups</li>
+                <li>Protecting a room environment that is designed to protect an exposed product</li>
+            </ol>
+
+            <h3>6.5.1 Level 1: Demonstrating a Logical Production Process</h3>
+            <p><span class="key-term">Lean manufacturing</span> principles may be applied to create an efficient facility design and a logical production process. Lean concepts can include risk assessments to improve quality, prevent production interruptions, eliminate failures, and increase production flexibility.</p>
+
+            <h3>6.5.2 Level 2: Avoiding Mix-Ups</h3>
+            <p>Avoiding mix-ups is a specific cGMPs regulatory requirement and the methodology for preventing mix-ups must be demonstrable. This may be achieved by administrative methods such as labeling raw materials, bar coding, or color coding hose connections, or by physical segregation such as placing the released materials for a production line in a separate room or in a segregated area.</p>
+
+            <h3>6.5.3 Level 3: Protecting a Room Environment</h3>
+            <p>For <span class="key-term">open processing</span>, the design of a facility should create flows to reduce the environmental challenge to a cleanroom from adjacent less clean areas with the intent of reducing the likelihood of contaminating an exposed product. For <span class="key-term">closed processing</span>, these Level 3 flows are not relevant to product protection.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>流向設計的三層目的（由低到高重要性）：</strong></p>
+                <ul>
+                    <li><strong>Level 1 — 邏輯製程展示：</strong>廠房佈局必須讓查核人員（FDA 查廠官、客戶稽核）一眼看出製程的邏輯順序（上游 → 下游）。這是精實製造（Lean Manufacturing）的基本要求。</li>
+                    <li><strong>Level 2 — 避免混淆：</strong>cGMP 法規的明確要求，方法必須可展示（demonstrable）。光有 SOP 不夠，必須有實體或電子機制支撐。</li>
+                    <li><strong>Level 3 — 環境保護：</strong>只有開放製程才需要。透過氣壓差（正壓梯度）、人員流向、設備流向設計，降低環境對暴露產品的污染風險。封閉製程因為系統密封，不需要環境保護流向。</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>Level 1 就像廚房的動線設計——食材進來、備料、烹飪、裝盤、出菜，必須有邏輯順序，不能讓「出菜」和「垃圾清運」走同一條路。Level 2 是避免點錯菜——每道菜必須有標籤跟著走。Level 3 是高級餐廳的廚房管理——暴露的食物附近必須保持衛生環境，不能有污染源靠近。如果食物裝在密封容器裡（封閉製程），Level 3 就不需要，因為容器本身保護了食物。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>封閉製程革命性影響：</strong>Level 3 流向的消除是採用封閉製程（一次性系統、CIP/SIP）的重大優勢之一。傳統上，雙走廊設計（clean supply + dirty return）是 Level 3 需求驅動的。封閉製程讓單走廊設計成為可能，大幅降低廠房複雜度和建設成本。</p>
+                <p>從 FDA 查廠角度，Level 2（避免混淆）是必查項目——你必須能展示具體的防混淆機制，不能只說「我們有良好的 SOP」。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一個完全封閉（fully closed）的生物製藥廠必須還要設計 Level 3 流向嗎？為什麼？</li>
+                    <li>對於一個使用開放色譜柱填充（open chromatography packing）操作的設施，應該增加哪些流向控制措施？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6.5.4 -->
+    <div class="ispe-section-title">6.5.4 Multiple vs. Single Production Corridor <span>雙走廊 vs. 單走廊設計</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <h3>6.5.4.1 Multiple Production Corridors</h3>
+            <p>This facility layout is used to protect exposed product. Level 3 flows are usually divided into a two corridor system:</p>
+            <ol>
+                <li>A <span class="key-term">clean supply corridor</span></li>
+                <li>A <span class="key-term">dirty return corridor</span></li>
+            </ol>
+            <p>See Figure 6.7 for the basic configuration. The supply corridor should include all "clean" flows, including personnel, raw materials, product, and clean equipment. The return corridor should include personnel exiting the process room, dirty or used equipment, and waste. The flow for personnel and dirty or used equipment are circular.</p>
+            <p>Personnel (potentially contaminated with residual product) exit the process room through the exit PAL, enter the return corridor, and proceed to a de-gown area to remove outer gowning layers. Personnel could continue to the main locker area to leave the facility or gown into clean over garments then enter the supply corridor and enter a processing room via the PAL.</p>
+            <p>Dirty equipment from the process rooms enters the return corridor and proceeds to equipment wash. It should be processed through the multiple cleaning rooms. When released, the equipment travels along the supply corridor to its processing room.</p>
+            <p>This facility layout also can provide a potential source for facility contamination, if misused, e.g., transporting non-contained dirty equipment or waste that contaminates the return corridor. This facility contamination could migrate to contaminate an open process.</p>
+
+            <h3>6.5.4.2 Single Production Corridor</h3>
+            <p>There are two main drivers for facilities designed with a single production corridor:</p>
+            <ol>
+                <li>The incorporation of <span class="key-term">closed processing with CIP/SIP systems</span></li>
+                <li>The increasing use of <span class="key-term">disposables</span>, which reduces the amount of items requiring cleaning</li>
+            </ol>
+            <p>These systems reduce the quantity of equipment that needs to travel to an equipment wash room. A facility using stainless steel equipment and CIP/SIP throughout, along with disposables for inoculum, can reduce the portable equipment washing needs by more than <span class="key-term">90%</span> with very little solid waste. A facility using entirely disposables is similar, but with a higher quantity of solid waste.</p>
+            <p>Factors that can reduce the need for a return corridor include:</p>
+            <ol>
+                <li>Removing portable equipment washing from a facility</li>
+                <li>Closed processing:
+                    <ul>
+                        <li>Eliminates the need for level 3 flows</li>
+                        <li>One-way personnel flow is not needed because the process is closed and there is no residual contamination on garments.</li>
+                        <li>Reduced number of individual processing rooms allows direct access to equipment wash from fewer and larger processing rooms.</li>
+                    </ul>
+                </li>
+                <li>Proper containment of waste for clean transport in the production corridor</li>
+            </ol>
+
+            <div class="quote-box">
+                "Figure 6.11 shows a simplified concept of a single corridor facility centered on a one-way equipment wash flow... Dirty equipment from upstream processing and downstream processing enter equipment wash via MALs. Equipment can be pre-washed on a campaigned basis. The equipment enters a pass through parts washer and enters into the product free clean equipment room. Equipment can be sterilized via a single sided autoclave, released for use, and moved back to the processing room via the production corridor."
+            </div>
+
+            <p>Where flow paths are shared, especially product and waste, a <span class="key-term">closed product vessel</span> should be used to protect the product from environmental and cross-over contamination. Where a product vessel is not closed, the risk to the product from environmental contamination from the corridor environment is greater than that from an adjacent contained waste container. If there is physical contact with a contained waste container, the closed product vessel can be wiped down as it leaves for storage.</p>
+            <p>A final bulk product container may be stored in non-classified environments or be transported to a fill facility and the outside of the vessel can be exposed to several contaminants. When the vessel enters the fill finish facility for compounding, it should be adequately cleaned.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>雙走廊設計（Multiple Production Corridors）核心邏輯：</strong></p>
+                <ul>
+                    <li>供應走廊（Clean Supply Corridor）：乾淨人員 + 原料 + 潔淨設備進入生產室</li>
+                    <li>返回走廊（Dirty Return Corridor）：使用後人員 + 髒設備 + 廢棄物離開生產室</li>
+                    <li>人員動線是環狀的：髒走廊 → 去服裝區 → 重新著裝 → 潔淨走廊</li>
+                </ul>
+                <p><strong>單走廊設計（Single Production Corridor）觸發條件：</strong></p>
+                <ul>
+                    <li>CIP/SIP 整合（不鏽鋼設備就地清洗，不需運到設備洗滌室）</li>
+                    <li>大量使用一次性系統（Single-Use）：使用後直接丟棄，不需清洗</li>
+                    <li>可攜設備清洗需求降低 90%+，Level 3 流向消除</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>雙走廊廠房就像五星級飯店的後勤動線——有專門供服務員進入客房的「服務通道」，也有清出髒盤子和垃圾的「後勤通道」，兩條路永遠不交叉，確保客人永遠看不到髒東西，也確保衛生標準。</p>
+                <p>單走廊廠房則像現代速食餐廳——因為大量使用拋棄式餐具（一次性系統），廚師不需要走去洗碗區，一切在工作站完成（CIP/SIP），一條走廊就夠了，而且還更有效率。</p>
+            </div>
+
+            <div class="formula-box">
+                <h4>設計決策矩陣 Design Decision Matrix</h4>
+                <pre>
+廠房走廊設計選擇指南：
+
+條件                            建議設計
+─────────────────────────────────────────
+開放製程（暴露產品）            雙走廊（必須）
+Level 3 流向需求高              雙走廊
+
+CIP/SIP + 一次性系統為主        單走廊（可接受）
+全封閉製程                      單走廊（推薦）
+可攜設備清洗需求 &lt;10%          單走廊（推薦）
+
+可攜設備清洗需求降低量 &gt; 90%
+= 使用 CIP/SIP + Disposables 的典型結果
+                </pre>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>單走廊的隱性風險：</strong>當產品桶（bulk product container）和廢棄物共用同一條走廊時，必須確保產品桶是密封的（closed vessel）。密封的廢棄物容器的污染風險，遠小於非密封的走廊環境對開放產品桶的風險。最終批量產品桶在轉移到充填設施前，外表面必須清洗——這一點常被忽略！</p>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實務應用 Practical Application</h4>
+                <p>CDMO 在評估新廠房設計時，最重要的決策之一是走廊策略。若客戶管線以小分子 API（開放製程）為主，雙走廊幾乎是必需的。若未來管線以抗體藥物（mAb，使用一次性生物反應器）為主，單走廊設計可節省大量建造成本（少一條走廊 = 少 20-30% 的廠房面積）並簡化驗證工作。在初期廠房規劃階段，就應確定走廊策略——這個決策一旦建好就很難改變。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一個全新的生物製藥 CDMO 廠房，計劃承接 mAb 和重組蛋白生產，大量使用一次性生物反應器。設計團隊建議採用單走廊。請列舉三個支持此決策的技術論據，以及一個需要謹慎評估的風險。</li>
+                    <li>在單走廊設計中，最終批量產品桶（final bulk product container）在進入充填設施之前，應該執行哪些控制措施？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.6: EQUIPMENT AND FACILITY CLEANING AND FINISHES     -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.6 Equipment and Facility Cleaning and Finishes <span>設備與廠房清潔及表面完工</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p>Aspects of equipment cleaning are discussed in the ISPE Guide on Cleaning Process Development and Validation [51].</p>
+
+            <h3>6.6.1 Facility Aspects of Equipment Cleaning</h3>
+            <p>As <span class="key-term">CIP/SIP</span> is incorporated into more equipment and with the increased use of disposables, the quantity of portable or mobile equipment accessing a common equipment wash room is decreasing. Some facilities may not need equipment wash areas.</p>
+            <p>Items that need cleaning should be identified and their cleaning protocols defined to determine the amount and type of cleaning equipment needed. The production schedule can be used to determine the quantity of each type of equipment. These factors can have a significant impact on cleaning room design.</p>
+            <p>Cleaning rooms with a large through-put of portable equipment tend toward a <span class="key-term">three room configuration</span>. Lower through-put facilities tend toward a <span class="key-term">two room configuration</span>.</p>
+
+            <p>For the three stage equipment wash layout, the functions per room can include:</p>
+            <ol>
+                <li><strong>Decontamination and Washing:</strong> equipment disassembly, decontamination, manual pre-cleaning, feeding a pass through parts washer, and placing vessels in CIP pass through stations</li>
+                <li><strong>Equipment Assembly:</strong> cleaned (product free) equipment is collected from the parts washer and the CIP station, assembled and fed into an autoclave or an SIP pass through station</li>
+                <li><strong>Clean Equipment Staging:</strong> receiving final cleaned equipment for staging and QC release.</li>
+            </ol>
+            <p>A lower through-put wash area using a two room approach combines stages 2 and 3 in one room, using a single sided autoclave.</p>
+
+            <p>cGMP equipment washing areas typically rely on <span class="key-term">pass through cleaning equipment</span> that separates a dirty (product containing) side from the clean (product free) side. Galley style equipment wash areas can be used and may be appropriate for low through-put washing or for servicing dedicated rooms. The final facility layout test is the QC release testing.</p>
+
+            <p>There are two basic levels of facility cleaning:</p>
+            <ol>
+                <li>Good general housekeeping practices for <span class="key-term">non-critical aspect rooms</span> (non-exposed product)</li>
+                <li>cGMP level for <span class="key-term">critical aspect rooms</span> where the room cleanliness can directly affect the product</li>
+            </ol>
+
+            <p>For further information on the levels of finish as related to Grades 7, 8, Controlled Not Classified with monitoring (CNC+) and Controlled Not Classified (CNC) environments, see the ISPE Baseline Guide on Sterile Manufacturing Facilities [52]. The level of finishes and facility cleaning should correspond to the required level of product protection.</p>
+
+            <p><strong>CNC room surroundings:</strong></p>
+            <ul>
+                <li>The room is a non-critical aspect to the product.</li>
+                <li>The engineering systems are designed to Good Engineering Practices (GEPs) with commissioning, but are not qualified.</li>
+                <li>Basic good housekeeping practices</li>
+                <li>Level of finish: can be industrial, floor finish to contain a spill</li>
+                <li>Image: can resemble chemical plants</li>
+            </ul>
+
+            <p><strong>Grade 8 room surroundings:</strong></p>
+            <ul>
+                <li>The room is a non-critical aspect to the product.</li>
+                <li>The engineering systems are designed to Good Engineering Practices (GEP) with commissioning and qualification.</li>
+                <li>Basic good housekeeping practices plus light cGMP sanitizers</li>
+                <li>Level of finish: easily cleaned, non-flush detailing</li>
+                <li>Image: Grade 8 cleanroom</li>
+            </ul>
+
+            <p><strong>Grade 7 room surroundings:</strong></p>
+            <ul>
+                <li>The room is a critical aspect to the product.</li>
+                <li>The engineering systems are designed to GEPs with commissioning and qualification.</li>
+                <li>Basic good housekeeping practices plus strong cGMP sanitizers</li>
+                <li>Level of finish: easily cleaned, flush detailing to minimize horizontal surfaces, cover corners</li>
+                <li>Image: Grade 7 cleanroom</li>
+            </ul>
+
+            <p>Organizations may choose to add facility requirements that do not directly protect product or may add items from CPP environments to non-CPP environments. These facility requirements and items are discretionary. An example is providing the same level of finish for the entire facility independent of its relation to product protection. A Grade 8 level of finish could be used for Grade 8 and CNC spaces. This adds capital and operating cost, but simplifies the facility cleaning regimen. The higher level of finish does not assist in protecting the product, but the look of the facility may assist with the staff being in a production mind set.</p>
+
+            <p>Catastrophic equipment failures that release product into the room can be a housekeeping issue or a cGMP concern. An example of a housekeeping spill is a large multi-product concurrent production closed processing ballroom with a major product spill. The spilt product from line 1 cannot contaminate the adjacent closed equipment in line 2. The product in line 2 is not at risk and line 2 continues production without interruption. This is an example of a <span class="key-term">housekeeping spill</span>.</p>
+            <p>Open processes are typically segregated into individual processing rooms. A spill in an open processing room is a significant event that interrupts the production and can become a facility contamination issue that could migrate to contaminate another open system. This is usually a <span class="key-term">cGMP concern</span>.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>設備清洗室設計（Equipment Wash Area Design）：</strong></p>
+                <p>設計原則是「髒進、乾淨出」的單向流——穿透式清洗設備（pass-through washer / autoclave）是物理屏障，確保清洗前的「髒側（dirty side）」與清洗後的「乾淨側（clean side）」永遠不交叉。</p>
+                <ul>
+                    <li><strong>三房設計（Three Room）：</strong>高通量設施。髒拆裝室 → 組裝室 → 潔淨暫存室，高度專業化分工</li>
+                    <li><strong>二房設計（Two Room）：</strong>低通量設施，合併組裝與暫存，使用單側滅菌鍋（single-sided autoclave）</li>
+                </ul>
+                <p><strong>廠房等級與表面完工對照：</strong></p>
+                <table>
+                    <tr><th>等級</th><th>產品關係</th><th>工程系統</th><th>表面完工</th></tr>
+                    <tr><td>CNC</td><td>非關鍵</td><td>GEP + 試運轉（無資格認證）</td><td>工業等級，能圍堵溢漏</td></tr>
+                    <tr><td>Grade 8</td><td>非關鍵</td><td>GEP + 試運轉 + 資格認證</td><td>易清潔，非齊平細節</td></tr>
+                    <tr><td>Grade 7</td><td>關鍵</td><td>GEP + 試運轉 + 資格認證</td><td>易清潔，齊平細節，最少水平面，包覆轉角</td></tr>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>想像醫院的消毒中心（CSSD）：器械從手術室來（髒側），進入清洗機（穿透式設備），從另一側出來進入滅菌區（乾淨側），最後進入無菌器材儲存室。整個流程就是單向的，完全不走回頭路。生物製藥廠的設備清洗室與此設計邏輯完全相同。</p>
+                <p>Grade 7 的表面完工要求（齊平細節、包覆轉角）就像醫院手術室的牆壁——沒有死角、縫隙讓細菌藏匿，所有表面都可以用強力消毒劑擦拭而不損傷。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>「家務性溢漏 vs. cGMP 問題」的關鍵判斷：</strong>這是一個非常重要的概念！在封閉製程 Ballroom 中，即使有設備破裂造成大量溢漏，只要鄰近設備也是密封的，溢漏物無法污染其他產品，這只是一個「清潔問題（housekeeping spill）」——可以繼續生產。但在開放製程中，任何溢漏都是嚴重的 cGMP 事件，可能污染整個房間，必須停產調查。</p>
+                <p><strong>「選擇性升級（Discretionary Upgrade）」的商業思考：</strong>將整廠統一使用 Grade 8 完工標準（包含 CNC 區域）增加了資本支出，但可以簡化清潔驗證工作，並有助於維持員工的「生產心態」。這是一個商業決策，不是法規要求。</p>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實務應用 Practical Application</h4>
+                <p>CDMO 廠房設計決策中，「設備清洗室要幾個房間」往往取決於未來客戶管線的規模。如果以小批量（Phase I/II）臨床試驗為主，兩房設計就夠了。如果以大規模商業生產為主，三房設計能大幅提高清洗吞吐量，減少設備等待清洗導致的生產瓶頸。設計時應考慮 10 年後的最大設計產能，而非當前產能。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一個 Grade 7 潔淨室和一個 CNC 房間在表面完工要求上有什麼關鍵差異？這些差異背後的科學原理是什麼？</li>
+                    <li>某廠房中，一個密封的 2000L 不鏽鋼生物反應器發生管路接頭斷裂，1000L 培養基溢出到 Ballroom 地板。這是「家務性溢漏」還是「cGMP 問題」？如何判斷？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.7: CLINICAL TRIAL AND COMMERCIAL PRODUCTION         -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.7 Clinical Trial and Commercial Production <span>臨床試驗與商業生產</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p>The <span class="key-term">FDA Guidance for Industry for Phase 1 Investigational Drugs</span> was issued in July 2008 [16]. It defined cGMP compliance as a step function with development and clinical phase 1 exempt from many cGMPs, while requiring full cGMP compliance for phase 2 clinical through commercial production. <span class="key-term">Clinical phase 2 and 3 production and commercial production have the same cGMP compliance requirements.</span></p>
+            <p>Producing phase 2 drugs in a commercial facility is a matter of <span class="key-term">scale alignment</span>, rather than a regulatory segregation concern.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>cGMP 合規要求的階段性（Phase-Appropriate GMP）：</strong></p>
+                <ul>
+                    <li><strong>Phase I（臨床一期）：</strong>豁免許多 cGMP 要求。主要目標是安全性，設施可以是研究型、彈性化設計。不需要完整的 cGMP 文件系統，但必須確保基本安全。</li>
+                    <li><strong>Phase II 及以上：</strong>必須完全符合 cGMP 要求。廠房必須通過 GMP 驗證，文件系統必須完整。</li>
+                    <li><strong>Phase II 與商業生產的關係：</strong>兩者 cGMP 合規要求完全相同！差異只在於規模（Scale），不在法規要求。</li>
+                </ul>
+                <p><strong>「規模對齊（Scale Alignment）」的實際含義：</strong>在商業生產廠房生產 Phase II 藥物，主要挑戰是製程規模可能過小（低批量 = 低利用率 = 高成本），而非法規合規問題。</p>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>Phase I 設施就像試驗廚房（Test Kitchen）——廚師可以自由探索食譜，不需要嚴格的標準化程序和品質管理系統。Phase II/III 以後就像工業廚房（Commercial Kitchen）——必須有 HACCP、SOP、定期稽核、嚴格清洗流程。兩者的標準食品安全要求相同，只是生產量不同。在工業廚房裡做一小份實驗菜，是規模問題，不是法規問題。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>對 CDMO 的重要意義：</strong>CDMO 廠房若以 Phase II/III 和商業生產為主要業務，廠房設計必須從一開始就符合完整 cGMP 要求。不能「先建一個 Phase I 廠，再升級到 Phase II 廠」——後期升級改建的成本和驗證工作通常遠高於直接建造符合要求的廠房。</p>
+                <p>Phase I 豁免某些 cGMP 要求，但這不代表沒有品質要求——只是靈活度更高，允許更多研究型判斷。FDA 查廠時對 Phase I 設施的標準確實較寬鬆，但一旦藥物進入 Phase II 就必須升級。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一家 CDMO 的客戶將一個 Phase I 臨床試驗用藥物轉為 Phase II。CDMO 必須在廠房和文件系統上做哪些改變？</li>
+                    <li>為什麼 ISPE 指南說「在商業生產廠房做 Phase II 生產是規模對齊問題，而非法規隔離問題」？這對廠房設計有什麼實際意義？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.8: VACCINES AND BIOLOGICAL HAZARD CONTAINMENT        -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.8 Vaccines and Biological Hazard Containment <span>疫苗與生物危害圍堵</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p>The US Centers for Disease Control and Prevention (CDC), the US National Institutes for Health (NIH) and individual national jurisdictions have clear facility requirements for levels of <span class="key-term">biosafety containment</span>. All cGMPs apply to vaccine facilities. Biosafety requirements generally align with cGMP regulatory requirements. However, an example of a conflict is the requirement for biosafety <span class="key-term">BSL-1, BSL-2, and BSL-3</span> processing rooms to be at <span class="key-term">negative pressure</span> in relation to the surrounding rooms, whereas non-BSL or <span class="key-term">GLSP</span> facilities are typically at positive pressure. For further information, see Chapter 2 of this Guide.</p>
+
+            <p>Operator safety is considered very important in vaccine facilities; <span class="key-term">closed systems</span> protect both the product and operators. The production ballroom concept applies equally to vaccine production with the exception that there is an additional equipment grouping — the <span class="key-term">"hot" BSL zone</span> (area with, e.g., live virus or bacteria). Figure 6.13 gives a comparison between a traditional GLSP facilities, GLSP production referred to as "Future Facility," and the final diagram is a "Future Facility" concept with the BSL containment overlay.</p>
+
+            <p>Whereas GLSP facilities tend to reduce to single rooms with the application of fully closed systems, vaccine facilities have an added BSL room segregation requirement.</p>
+
+            <p>Future/Flexible BSL Facility classification zones shown in Figure 6.13:</p>
+            <ul>
+                <li><strong>Host Inoculum Preparation:</strong> GLSP, Grade 8 with local BSC</li>
+                <li><strong>Host Cell Expansion:</strong> GLSP, CNC</li>
+                <li><strong>Virus Inoculum Preparation:</strong> BSL, Grade 8 with local BSC</li>
+                <li><strong>Virus Active Cell Processing:</strong> BSL, CNC</li>
+                <li><strong>Inactivated Virus Processing:</strong> GLSP, CNC</li>
+            </ul>
+
+            <p>There is an additional overlay that can be added to reduce production interruptions. Where the <span class="key-term">virus active cell processing room</span> is very large and contains many process steps, the room could be further subdivided to contain catastrophic spills into smaller clean-up zones. The benefit of smaller rooms is the reduced facility clean up time.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="conflict-box">
+                <h4>關鍵衝突警示 Critical Design Conflict</h4>
+                <p><strong>BSL 負壓 vs. GMP 正壓——廠房設計的根本矛盾！</strong></p>
+                <p>標準 GMP 無菌製程：<strong>正壓（Positive Pressure）</strong>——防止外部環境污染進入潔淨區</p>
+                <p>BSL-1/2/3 生物安全要求：<strong>負壓（Negative Pressure）</strong>——防止危險生物因子（活病毒、細菌）逸出到外部環境</p>
+                <p>疫苗生產廠房必須同時滿足兩者，這需要精心的分區設計（Zoning）：在同一廠房中，BSL 區域維持負壓圍堵，病毒滅活後的 GLSP 區域可以恢復正壓 GMP 要求。</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>生物安全等級（Biosafety Level, BSL）分類：</strong></p>
+                <ul>
+                    <li><strong>GLSP（Good Large-Scale Practice）：</strong>用於不致病的重組微生物，相當於「BSL-0」，可使用正壓。大多數標準生物製藥（mAb, 重組蛋白）屬於此類。</li>
+                    <li><strong>BSL-1：</strong>不致病微生物（如非致病性大腸桿菌），需要負壓。</li>
+                    <li><strong>BSL-2：</strong>可引起中度人類疾病的微生物，如流感病毒、腺病毒。需要負壓 + 生物安全柜（BSC）。</li>
+                    <li><strong>BSL-3：</strong>可引起嚴重人類疾病的微生物，如結核桿菌、某些狂犬病毒株。嚴格負壓 + 雙重氣鎖 + 特殊防護設備。</li>
+                </ul>
+                <p><strong>疫苗製程的區域分類邏輯（依 Figure 6.13）：</strong></p>
+                <table>
+                    <tr><th>製程步驟</th><th>生物安全</th><th>GMP 等級</th></tr>
+                    <tr><td>宿主接種物製備</td><td>GLSP</td><td>Grade 8 + 局部 BSC</td></tr>
+                    <tr><td>宿主細胞擴增</td><td>GLSP</td><td>CNC</td></tr>
+                    <tr><td>病毒接種物製備</td><td>BSL（負壓）</td><td>Grade 8 + 局部 BSC</td></tr>
+                    <tr><td>活病毒細胞加工</td><td>BSL（負壓）</td><td>CNC</td></tr>
+                    <tr><td>滅活病毒加工</td><td>GLSP（恢復正壓）</td><td>CNC</td></tr>
+                </table>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>疫苗廠房就像設有負壓隔離室的醫院——普通病房是正壓（防止外部細菌進入保護免疫系統弱的病人），而傳染病隔離室是負壓（防止高度傳染性病原體散播到走廊）。醫院同時擁有正壓區和負壓區，靠精確的壓力分區管理實現。疫苗廠房也一樣：活病毒區域是「隔離室（BSL 負壓）」，病毒滅活後的下游區域恢復「普通潔淨室（GLSP 正壓）」。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>「熱區（Hot BSL Zone）」分區的設計智慧：</strong>在病毒活性細胞加工室中，如果房間非常大且包含許多製程步驟，可以進一步細分成更小的「清潔區域（Clean-Up Zones）」。這不是為了 GMP 分類，而是為了萬一發生大規模溢漏（catastrophic spill），能夠快速隔離並清潔較小的區域，減少停工時間。</p>
+                <p><strong>病毒滅活（Inactivation）是關鍵轉折點：</strong>一旦病毒被化學或物理方法滅活，該物料就從 BSL（負壓）區域轉移到 GLSP（正壓可接受）區域。這個轉折點的設計——通道、驗證、測試方法——是疫苗廠房設計的核心挑戰之一。</p>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實務應用 Practical Application</h4>
+                <p>COVID-19 疫情期間，許多生物製藥廠臨時轉型生產疫苗。主要的廠房改造挑戰包括：將原本設計為正壓的 GMP 潔淨室改造為 BSL-2 負壓設計，需要完整的 HVAC 重新設計（包括排氣過濾系統、壓力控制邏輯）。同時，廠房人員也需要接受生物安全培訓，部分廠房還需要安裝生物安全廢棄物處理系統。這些改造往往是疫苗生產最主要的廠房投資之一。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>一個生產流感疫苗的 BSL-2 廠房，其 HVAC 設計與標準 mAb 生產廠房的主要差異是什麼？需要哪些特殊的排氣系統設計？</li>
+                    <li>在疫苗製程中，病毒滅活步驟前後的廠房壓力設計應如何配置？如何透過廠房佈局確保滅活前後的物料不會交叉？</li>
+                    <li>為什麼 ISPE 建議在大型活病毒加工室中進一步細分「清潔區域（Clean-Up Zones）」？這個設計決策的商業驅動力是什麼？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6.9: PRODUCTION SUPPORT AREAS                         -->
+    <!-- ============================================================ -->
+    <div class="ispe-section-title">6.9 Production Support Areas <span>生產支援區域</span></div>
+
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+
+            <p>Production is supported by many functions, including:</p>
+            <ul>
+                <li>Warehousing</li>
+                <li>Facility engineering</li>
+                <li>In-Process QC</li>
+                <li>Quality</li>
+                <li>Administration</li>
+                <li>Environmental Health and Safety</li>
+                <li>Utilities</li>
+            </ul>
+
+            <p>A production schedule can have direct links to these supporting areas, e.g., production pulling released materials from the warehouse, the production samples routed to QC on an hourly basis, or the scheduled equipment maintenance routing through the facility engineering shop.</p>
+
+            <p><span class="key-term">Lean manufacturing</span> concepts can be used to address operation of a production facility to help the production area and the facility operate as an integrated whole.</p>
+
+            <h3>6.9.1 Emerging Countries</h3>
+            <p>The use of <span class="key-term">modular design and construction</span> should be considered for emerging countries. This allows for transfer of proven designs and the use of experienced trades in the construction of complex clean facilities.</p>
+        </div>
+
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts</h4>
+                <p><strong>生產支援區域（Production Support Areas）的廠房設計考量：</strong></p>
+                <p>支援區域往往在廠房設計初期被低估，但它們直接影響生產效率。各支援功能的位置應根據其與生產的互動頻率來決定：</p>
+                <ul>
+                    <li><strong>倉庫（Warehousing）：</strong>應靠近生產區域的物料入口，並有清晰的「已放行 vs. 未放行」物料分區。生產從倉庫「拉取（pull）」已放行物料的精實製造概念，要求倉庫動線與生產走廊直接連通。</li>
+                    <li><strong>製程中 QC（In-Process QC）：</strong>生產樣品需要每小時送達 QC 室。QC 室應位於生產區附近（但不必在潔淨區內），以最小化樣品傳遞時間。</li>
+                    <li><strong>設施工程（Facility Engineering）：</strong>設備維護路線需要通過生產走廊。設施工程工作間（shop）的位置應方便維修工程師快速進入生產區，而不需要每次都穿越整個廠房。</li>
+                    <li><strong>公用設施（Utilities）：</strong>WFI、純蒸汽、壓縮空氣的分配點應儘量靠近使用點，以減少管線長度（降低死體積、清洗需求和污染風險）。</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy</h4>
+                <p>生產支援區域就像醫院的後勤系統——藥局（倉庫）、中央化驗室（QC）、醫療設備維修部門（設施工程）、氣體供應室（公用設施）必須都有高效的連接路徑到各個病房（生產室）。醫院如果把藥局建在大樓最遠的角落，護士每次取藥都要走 10 分鐘，整體效率就大幅下降。生物製藥廠也是同樣的道理。</p>
+                <p>精實製造（Lean Manufacturing）就是醫院的「即時備藥（Just-In-Time）」系統——藥品在需要的時候剛好到達，不需要大量庫存在護理站。</p>
+            </div>
+
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>模組化設計（Modular Design）對新興市場的價值：</strong>模組化廠房設計是近年來生物製藥廠建造的重要趨勢。主要優勢包括：</p>
+                <ul>
+                    <li>可在工廠（factory）預建、預測試，減少現場施工時間（縮短 30-50%）</li>
+                    <li>設計已被驗證（proven design），新廠不需要從頭設計——直接採用已通過 FDA 查廠的模板</li>
+                    <li>複雜潔淨設施的建造技術可以從已有經驗的國家（美、歐）輸出到新興市場（印度、東南亞、非洲）</li>
+                    <li>對 CDMO 而言，模組化設計可以快速複製到不同地點，實現全球產能擴張</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <h4>精實製造整合思考 Lean Manufacturing Integration</h4>
+                <pre>
+精實製造對廠房設計的指導原則：
+
+1. 價值流（Value Stream）分析：
+   原料入庫 → 放行 → 生產 → 製程 QC →
+   成品 → 放行 → 出貨
+
+   每個步驟的等待時間 = 廠房設計的優化機會
+
+2. 支援區域的距離最小化：
+   QC 樣品路線: 生產室 → QC 實驗室 &lt;5分鐘
+   物料補給路線: 倉庫 → 生產室 &lt;同一建築物
+
+3. 消除浪費（Muda）：
+   - 不必要的搬運 (Transport)
+   - 等待物料放行 (Waiting)
+   - 過度加工 (Over-processing)
+                </pre>
+            </div>
+
+            <div class="concept-box application">
+                <h4>實務應用 Practical Application</h4>
+                <p>現代生物製藥 CDMO 廠房的設計越來越採用精實製造原則。例如，將品質管制實驗室（QC lab）設計為「快速分析中心」，位於生產廠房旁邊，可在 2-4 小時內完成製程中測試並放行中間產品，而傳統設計中 QC 實驗室設置在獨立建築，樣品傳遞和等待結果可能需要 8-12 小時。這種精實設計直接縮短了批次整體週期時間（Cycle Time），提高生產效率。</p>
+            </div>
+
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>在廠房設計階段，如何決定 QC 實驗室的最佳位置？應考慮哪些因素？</li>
+                    <li>一個在印度建設中的新興生物製藥廠考慮採用模組化設計。請列舉模組化設計的三個主要優點和一個潛在挑戰（相較於傳統現場施工）。</li>
+                    <li>如果倉庫的「物料放行時間」是一個持續的生產瓶頸，精實製造原則建議用哪些廠房設計策略來改善？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin: 0 1.5rem 2rem; border-left: 4px solid #f6ad55;">
+    <h3>本節重點回顧 Section Summary — Chapter 6B (Sections 6.4–6.9)</h3>
+    <ul>
+        <li><strong>6.4 物流隔離（Logistical Segregation）：</strong>核心目的是防止混淆（mix-ups）。有四種主要隔離類型：批次、產品、病毒削減操作、含細胞 vs. 無細胞操作。封閉製程（CIP/SIP、一次性系統）可以安全整合傳統需要隔離的操作，但共用元件（CIP 管線）是最大風險點。</li>
+        <li><strong>6.5 廠房與製程流向：</strong>三層目的（邏輯展示、避免混淆、環境保護）。雙走廊（clean supply + dirty return）適合開放製程；封閉製程可採用單走廊——節省廠房面積並簡化驗證。封閉製程消除了 Level 3 流向需求。</li>
+        <li><strong>6.6 清潔與表面完工：</strong>設備清洗室採用穿透式設備實現髒-乾淨單向流（二房 vs. 三房設計取決於通量）。CNC/Grade 8/Grade 7 各有對應的表面完工標準和清潔要求，與產品保護關係直接相關。封閉製程中的溢漏通常只是家務問題；開放製程中的溢漏是嚴重的 cGMP 事件。</li>
+        <li><strong>6.7 臨床試驗 vs. 商業生產：</strong>Phase I 豁免許多 cGMP 要求；Phase II 及以上必須完全符合 cGMP。Phase II 與商業生產的 cGMP 要求相同，差異只在規模，不在法規。</li>
+        <li><strong>6.8 疫苗與 BSL 圍堵：</strong>最關鍵的設計衝突——BSL（負壓）vs. GMP（正壓）。疫苗廠必須透過精確的壓力分區解決此矛盾。活病毒區域維持負壓（BSL），病毒滅活後恢復正壓（GLSP）。這是疫苗廠設計與標準生物製藥廠最根本的差異。</li>
+        <li><strong>6.9 生產支援區域：</strong>支援功能（倉庫、QC、設施工程、公用設施）的位置應最小化與生產的互動距離。精實製造原則（拉取系統、消除浪費）指導廠房設計。模組化設計對新興市場尤其有價值——可快速轉移已驗證設計、縮短建廠時間。</li>
+    </ul>
+</div>
+
+<div class="main-footer">
+    <p>ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities</p>
+    <p>Chapter 6B: cGMP Layout Approaches — Flows, Cleaning &amp; Special Areas | Sections 6.4–6.9 | p74–p85</p>
+    <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 0.5rem;">SterileGMP Knowledge Hub — Bilingual Educational Material</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

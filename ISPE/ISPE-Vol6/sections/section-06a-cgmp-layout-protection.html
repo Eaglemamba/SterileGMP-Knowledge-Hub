@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.6 - Chapter 6A: cGMP Layout Approaches (Protection &amp; Segregation)</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #27ae60; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d6a3f 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c36; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c36; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #27ae60; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+.analogy-box, .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f0 0%, #d1f0e0 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #1a5c36; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img {
+    max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: #27ae60; color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 6 (Part A) — cGMP Layout Approaches: Protection &amp; Segregation</h1>
+    <div class="subtitle">第六章（上篇）— cGMP 廠房佈局策略：產品保護與隔離設計</div>
+    <div class="page-info">ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p61–p74</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="margin: 1.5rem; border-left: 4px solid #27ae60;">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解生物製藥廠房佈局設計的核心驅動因素，包括 CPPs、CQAs、製程規模與技術選擇。</li>
+        <li>掌握生物反應器規模（大/中/小）對廠房平面配置的實際影響，區分垂直堆疊與水平排列設計。</li>
+        <li>熟悉四種隔離概念（物理、環境、時間、程序），並能判斷各概念的適用情境。</li>
+        <li>理解製程密閉程度如何從根本改變廠房設計策略，從多間潔淨室轉向單一 Ballroom 概念。</li>
+        <li>能夠解讀六個案例（Case 1–6），分析從開放製程到密閉製程的廠房演進邏輯。</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc" style="margin: 0 1.5rem 1.5rem;">
+    <h3>本節內容 Contents</h3>
+    <div class="toc-grid">
+        <a href="#sec61">6.1 Introduction 導論</a>
+        <a href="#sec62">6.2 Production Capacity &amp; Technologies 產能與技術</a>
+        <a href="#sec63">6.3 Product Protection &amp; Segregation 保護與隔離</a>
+        <a href="#sec631">6.3.1 Segregation Concepts 隔離概念</a>
+        <a href="#sec632">6.3.2 Application 應用</a>
+        <a href="#sec633">6.3.3 Physical Segregation 物理隔離</a>
+        <a href="#sec634">6.3.4 Facility Layout Overview 佈局概覽</a>
+        <a href="#sec635">6.3.5 Flexible Ballrooms 彈性廠房</a>
+    </div>
+</div>
+
+<div class="main-content">
+
+<!-- ============================================================ -->
+<!-- SECTION 6.1 INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec61">6.1 Introduction — 導論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This chapter focuses on the facility aspects of <span class="key-term">product protection</span> and specific requirements of <span class="key-term">CPPs</span> and product <span class="key-term">CQAs</span>. Facility layouts can be diverse while still protecting the product; this chapter discusses reasons behind layout options to help to facilitate the preferred project solution.</p>
+
+        <p>The result of the design phase should be a layout that focuses on protecting the product while also addressing key project drivers, such as:</p>
+        <ul>
+            <li>CPPs and product CQAs</li>
+            <li>Production processes, scale, and technologies</li>
+            <li>Product protection and segregation approaches</li>
+            <li>Facility and process flows</li>
+            <li>Equipment and facility cleaning and finishes</li>
+            <li>cGMP requirements for Clinical Phase 2 and Phase 3 through commercial production</li>
+            <li>Vaccine facilities and biosafety requirements</li>
+            <li>Product and process changes over time, including:
+                <ul>
+                    <li>Flexibility</li>
+                    <li>Adaptability</li>
+                    <li>Expandability</li>
+                </ul>
+            </li>
+            <li>Regulatory requirements</li>
+            <li>Operational requirements</li>
+            <li>Code and life safety aspects</li>
+            <li>Business and economic factors</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 廠房設計的出發點</h4>
+            <p><strong>CPPs（關鍵製程參數）</strong>與<strong>CQAs（關鍵品質屬性）</strong>是廠房設計的最高指導原則。每一個廠房佈局決策——房間數量、氣流方向、走廊配置——都應追溯到「這樣設計如何保護產品的關鍵品質屬性？」這個問題。</p>
+            <p><strong>設計階段的成果</strong>不是一套圖紙，而是一個<em>保護策略的實體化</em>。廠房的牆壁、門、壓力梯度，都是保護 CQAs 的工具。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 廚房設計決定料理品質</h4>
+            <p>想像一家高級餐廳的廚房設計。主廚（CPP/CQA）決定了廚房需要：隔開生熟食區（隔離）、專用刀具架（防交叉汙染）、冷藏溫度監控（環境管控）。廚房設計必須服務於料理品質，而非反過來讓廚師遷就廚房格局。</p>
+            <p>生物製藥廠房設計亦同：產品特性決定廠房設計，而非廠房決定產品製程。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 彈性、適應性、擴充性</h4>
+            <p>ISPE 明確將 <strong>Flexibility（彈性）</strong>、<strong>Adaptability（適應性）</strong>、<strong>Expandability（擴充性）</strong> 列為關鍵設計驅動因素。這對 CDMO 尤為重要：</p>
+            <ul>
+                <li><strong>彈性</strong>：同一廠房可生產不同客戶的產品</li>
+                <li><strong>適應性</strong>：製程改變時廠房能以低成本調整</li>
+                <li><strong>擴充性</strong>：從臨床批次擴大到商業化生產無需另建廠房</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一個生物製藥產品的 CQA 要求低生物負荷（low bioburden），這對廠房佈局的氣流設計有什麼影響？</li>
+                <li>疫苗設施為何需要特別考慮「生物安全要求」？這與傳統小分子藥物有何不同？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.2 PRODUCTION CAPACITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec62">6.2 Production Capacity, Process, Scale and Technologies — 產能、製程、規模與技術</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Business and marketing factors can establish desired production capacities for each product produced in a facility. Capacities are converted into a production definition, beginning with:</p>
+        <ul>
+            <li><span class="key-term">Block Flow Diagrams (BFDs)</span></li>
+            <li><span class="key-term">Process Flow Diagrams (PFDs)</span></li>
+            <li>A process description</li>
+            <li>An equipment list</li>
+            <li>A preliminary material balance</li>
+        </ul>
+
+        <p>Capacities also define the <span class="key-term">process scale</span>, the <span class="key-term">process technology</span>, and the <span class="key-term">degree of process exposure or closure</span>. This production definition forms the basis for a facility design. Process adjacency diagrams are created at this stage to begin to graphically understand the interrelation of the process steps.</p>
+
+        <p>Production capacities can be produced at different scales with scale defined as a bioreactor or fermenter size. An example of the same production capacity at different scales is a single 12,000 liter bioreactor or six 2,000 liter bioreactors. Each approach has pros and cons from a scale up, regulatory and a business perspective and each production scale has a very different impact on a facility layout. Recently, the industry has been trending toward increasingly larger production scales for <span class="key-term">Monoclonal Antibody (MAb)</span> production. Processing improvements have increased the production yield from bioreactors, allowing for the same capacity to be produced from smaller bioreactors.</p>
+
+        <p>Scales for Monoclonal Antibody (MAb) production may be described as:</p>
+        <ul>
+            <li><strong>Large scale production</strong> typically ranges from 10,000 liters to 30,000 liters. Large scale processes can be stacked in a <span class="key-term">vertical configuration</span> to assist with gravity fed processing, drains, CIP return lines, and utility distribution.</li>
+            <li><strong>Medium scale production</strong> typically ranges from 4,000 liters to 8,000 liters. Medium scale processes are typically either stacked in a vertical configuration or configured in a horizontal arrangement.</li>
+            <li><strong>Small scale production</strong> is typically up to 2,000 liters. Small scale processes are typically configured in a <span class="key-term">horizontal arrangement</span>.</li>
+        </ul>
+
+        <p>Figure 6.1 provides a scale comparison, showing impact of production scale on the facility.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.1: Bioreactor Comparison Diagram</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：不同規模生物反應器的廠房佔地面積比較]</span>
+            </div>
+            <p class="figure-caption">Figure 6.1: Bioreactor Comparison Diagram — comparing facility footprint impact across production scales</p>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 從產能需求到廠房設計的推導鏈</h4>
+            <p>ISPE 提出了一個完整的設計推導邏輯：</p>
+            <p><strong>商業目標（年產量）→ BFD/PFD → 設備清單 → 物料衡算 → 廠房佈局</strong></p>
+            <p>關鍵洞見：<strong>製程密閉程度（degree of closure）</strong>在此階段就必須決定，因為它直接決定了後續所需的潔淨室等級和房間數量。密閉程度越高，所需的受管控空間越少，廠房可以設計得更簡單、更便宜。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>規模比較 Scale Comparison</h4>
+            <pre>
+相同總產能 = 12,000 L 的兩種方案：
+
+方案 A：1 × 12,000 L 生物反應器
+  → 高樓層廠房（垂直堆疊）
+  → 需要強結構支撐與重型起重設備
+  → 適合商業化大規模生產
+
+方案 B：6 × 2,000 L 生物反應器
+  → 水平排列廠房（單層或低樓層）
+  → 可搭配一次性耗材（SU）
+  → 更靈活，適合多產品 CDMO
+
+規模分類：
+  大規模：10,000 - 30,000 L（垂直堆疊）
+  中規模：4,000 - 8,000 L（垂直或水平）
+  小規模：≤2,000 L（水平排列）</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 一台大型釀酒槽 vs. 多台小型釀酒槽</h4>
+            <p>想像一個啤酒廠：一台 12,000 公升的大釀酒槽需要高天花板廠房、特殊起重設備和強化地板；六台 2,000 公升的小槽則可在普通廠房水平排列，更靈活但管理成本較高。</p>
+            <p>生物製藥廠房面臨相同的取捨：<strong>大規模單一設備 vs. 小規模多線並行</strong>，兩者的廠房設計方式截然不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — MAb 產業趨勢</h4>
+            <p>ISPE 指出業界趨勢是 MAb 生產規模持續增大，但同時<strong>細胞培養效價（titer）的提升</strong>讓同等產能可用更小的生物反應器達成。這代表：</p>
+            <ul>
+                <li>新廠設計需考慮未來工藝改進後的彈性</li>
+                <li>預留 CNC（Controlled Not Classified）空間比固定潔淨室更具未來彈性</li>
+                <li>一次性耗材（Single-Use）技術搭配小規模生物反應器是 CDMO 首選策略</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何大規模生物反應器（>10,000 L）傾向採用垂直堆疊設計？重力在哪些製程步驟中發揮作用？</li>
+                <li>作為一個 CDMO，你會傾向選擇大規模單槽還是多台小槽設計？請從商業靈活性角度說明。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Vertical Stack-up -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 — 垂直堆疊與小規模水平設計</h2>
+        <p>Production processes that are vertically stacked can result in a facility with many processing levels. Three main processing levels:</p>
+        <ul>
+            <li>The highest floor (L3) can contain <span class="key-term">weigh/dispense</span> and <span class="key-term">media and buffer preparation</span>.</li>
+            <li>The floor below (L2) can house the <span class="key-term">seed reactors</span> and buffer hold.</li>
+            <li>The lowest production level (L1) can house the <span class="key-term">production bioreactors</span>, harvest, purification, and bulk fill.</li>
+        </ul>
+        <p>These three levels will generally sit on a utility level below L1 and have a HVAC penthouse above level L3, resulting in a <strong>five level building</strong>. Large scale processing typically consists of fixed stainless steel vessels with stainless steel distribution piping that is cleaned with <span class="key-term">CIP/SIP</span> systems.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.2: Large Scale Vertical Stack-up Adjacency Diagram</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：大規模垂直堆疊廠房各層功能分佈示意圖]</span>
+            </div>
+            <p class="figure-caption">Figure 6.2: Large Scale Vertical Stack-up Adjacency Diagram</p>
+        </div>
+
+        <p>Other large scale stack-up diagrams are shown in Chapter 4, Figures 4.2 and 4.3.</p>
+
+        <p>Small scale bioreactors have smaller volume demands for liquids. Fixed stainless steel piping may be replaced by <span class="key-term">flexible hoses and tubing</span>. The length of hoses and tubing between process equipment should be minimized. This can significantly change a layout, e.g., for buffer hold. A tube can be dropped from buffer hold to purification on a level below. However, where the hold volume is small, it may be preferable to place the hold vessel next to its use point either in the purification room or just outside the purification room. The tubing can be passed through the wall, allowing a considerably shorter tube to be used.</p>
+
+        <p>At smaller scale, stainless steel bioreactors, mix, and hold vessels can be replaced with <span class="key-term">disposable technology</span>, typically referred to as <span class="key-term">biocontainers or "bags."</span></p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.3: Example Small Scale Horizontal Process Configuration Rendering</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：小規模水平製程配置渲染圖，中央走廊為緩衝液儲存區，兩側為兩條生產線]</span>
+            </div>
+            <p class="figure-caption">Figure 6.3: Example Small Scale Horizontal Process Configuration Rendering</p>
+        </div>
+
+        <p>In this example, the media and buffer preparation areas are located on the same production level and at the end of the media and buffer hold area (or hall). The entire process is on a <strong>single production level</strong>. This facility may be described as 16,000 liter capacity in two production lines at 4 × 2 kL scale.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 垂直堆疊廠房的五層結構</h4>
+            <p>大規模生物製藥廠房的垂直堆疊邏輯遵循<strong>重力輔助製程流動</strong>原則：</p>
+            <ul>
+                <li><strong>最高層（L3）</strong>：秤重/分裝、培養基與緩衝液配製 → 液體往下流</li>
+                <li><strong>中層（L2）</strong>：種菌培養鏈（seed train）、緩衝液暫存</li>
+                <li><strong>生產層（L1）</strong>：生物反應器、收穫、純化、原料藥充填</li>
+                <li><strong>公用設施層（地下）</strong>：CIP/SIP、純水、壓縮空氣</li>
+                <li><strong>頂層（HVAC penthouse）</strong>：空調機組</li>
+            </ul>
+            <p>這種五層設計雖然充分利用重力，但建設成本高且未來改造困難。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 種菌培養鏈如同工廠育苗室</h4>
+            <p><strong>種菌培養鏈（Seed Train）</strong>就像農場的育苗溫室：從少量種子（工作細胞庫 Working Cell Bank）開始，在溫控環境中逐步擴大培養量，最終移入生產溫室（生產生物反應器）。</p>
+            <p>在廠房設計上，種菌培養鏈通常位於生產反應器的上一樓層或相鄰房間，確保接種操作路徑最短、汙染風險最低。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 一次性耗材（SU）的空間優勢</h4>
+            <p>小規模廠房使用一次性耗材（Single-Use / SU 技術）的核心優勢在於<strong>大幅減少廠房佔地面積</strong>：</p>
+            <ul>
+                <li>無需固定不鏽鋼管路 → 減少管路間距要求</li>
+                <li>緩衝液儲袋（Biocontainer bag）可直接掛在儲存架上 → 大幅縮減緩衝液暫存室面積</li>
+                <li>整個製程可壓縮至單一生產樓層</li>
+            </ul>
+            <p>請見後續 Figure 6.4 的面積比較。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何小規模廠房建議盡量縮短軟管（hose/tubing）的長度？過長的軟管在 GMP 上有何風險？</li>
+                <li>一次性耗材（SU bags）在垂直堆疊廠房中是否也適用？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Disposables and In-line Dilution -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 — 一次性耗材與在線稀釋技術</h2>
+        <p>The use of disposables, in-line dilution process technologies, and other production scale and process technology improvements can have a significant impact on a facility layout.</p>
+
+        <p>Disposables have scale or bag size limitations (at time of publication), but work well for small scale processing. Disposables also can provide a significant <span class="key-term">footprint reduction</span> over stainless steel. Figure 6.4 shows an area comparison between:</p>
+        <ul>
+            <li>Buffer hold vessels with a steel platform</li>
+            <li>Stainless steel vessels accessed by a moveable stair</li>
+            <li>Disposable bags in bins accessed by a moveable stair</li>
+        </ul>
+        <p>In each example, there is a reduction in the building footprint.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.4: Stainless Steel and Disposables Room Area Comparison</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：不鏽鋼儲槽 vs. 一次性耗材儲袋的房間面積比較]</span>
+            </div>
+            <p class="figure-caption">Figure 6.4: Stainless Steel and Disposables Room Area Comparison</p>
+        </div>
+
+        <p><em>Note: the disposable system shown in Figure 6.4 is a 12 pack bin holder capable of holding 2,500 liter disposable bags for a total capacity of 30,000 liters.</em></p>
+
+        <p><span class="key-term">In-line dilution for buffers</span> is another technology which can reduce the building footprint. In-line dilution uses buffer concentrates that are diluted in-line (en route) to their point of use. This technology can significantly reduce the amount of storage required for buffers.</p>
+
+        <p>Combining in-line dilution and disposable technology can further reduce a building's footprint.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.5: Traditional Buffer Hold and In-Line Dilution Room Area Comparison</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：傳統緩衝液儲存 vs. 在線稀釋系統的面積比較]</span>
+            </div>
+            <p class="figure-caption">Figure 6.5: Traditional Buffer Hold and In-Line Dilution Room Area Comparison</p>
+        </div>
+
+        <p>Facility designs should be adapted to incorporate processes and technologies used in a specified process.</p>
+        <p>The number of processing rooms and the application of segregation should be determined before the facility adjacency diagrams are finalized.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — In-Line Dilution（在線稀釋）</h4>
+            <p><strong>在線稀釋（In-line dilution）</strong>是一種革命性的緩衝液管理策略。傳統上，層析純化需要大量不同濃度的緩衝液，每種都需要一個大型儲槽和獨立房間。在線稀釋改為：</p>
+            <ul>
+                <li>僅儲存<strong>高濃度緩衝液原液（concentrate）</strong></li>
+                <li>在管路中即時按比例混合純水稀釋</li>
+                <li>直接輸送到層析柱使用點</li>
+            </ul>
+            <p>結果：緩衝液儲存空間可縮減 <strong>60–80%</strong>，廠房面積大幅縮小。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>面積節省估算 Footprint Reduction Estimate</h4>
+            <pre>
+緩衝液儲存方案比較（以下游純化為例）：
+
+傳統不鏽鋼儲槽方案：
+  典型緩衝液種類：8-12種
+  每種需獨立儲槽 + 操作平台
+  → 緩衝液儲存區面積：~500-800 m²
+
+一次性耗材（SU bags）方案：
+  12-pack bin holder, 12 × 2,500 L = 30,000 L
+  → 面積縮減：約 40-60%
+
+在線稀釋 + SU 組合：
+  僅需高濃度原液儲存
+  → 面積縮減：可達 70-80%
+
+結論：技術選擇直接決定廠房投資金額</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 飲料濃縮液 vs. 整箱飲料</h4>
+            <p>傳統緩衝液儲存如同在倉庫放滿一箱箱已調好的飲料；在線稀釋如同只存放濃縮果汁，臨用前加水稀釋。前者需要巨大倉庫，後者只需一個小架子。</p>
+            <p>對 CDMO 來說，在線稀釋技術不只節省空間，還降低了緩衝液批次間的差異性，有助於減少純化步驟的變異。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 技術選擇建議</h4>
+            <p>對於臨床階段（Phase 1–2）的 CDMO 設施：</p>
+            <ul>
+                <li><strong>推薦選擇 SU bags + in-line dilution</strong>：初期投資低、廠房面積小、換產快速</li>
+                <li><strong>避免大規模固定不鏽鋼系統</strong>：初期客戶需求不確定，大型固定設備靈活性差</li>
+                <li>廠房設計應預留<strong>未來轉換為不鏽鋼</strong>的可能性（管路連接點、地板荷重）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在線稀釋系統的 GMP 驗證重點是什麼？如何確保每次稀釋比例的精確性？</li>
+                <li>一次性耗材的「規模限制」對大規模商業化生產有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3 PRODUCT PROTECTION AND SEGREGATION -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec63">6.3 Product Protection and Segregation Applications — 產品保護與隔離應用</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Sources of product contamination include:</p>
+        <ul>
+            <li><span class="key-term">Environmental</span> contamination</li>
+            <li><span class="key-term">Crossover</span> contamination</li>
+            <li><span class="key-term">Carryover</span> contamination</li>
+            <li><span class="key-term">Raw material</span> contamination</li>
+        </ul>
+        <p>For further information, see Chapter 4 of this Guide. Preventing product contamination may be achieved by segregating sources of product contamination from the product. An <span class="key-term">exposed product</span> should have environmental protection, such as a classified cleanroom environment. Preventing <span class="key-term">crossover contamination</span> between two exposed products is typically achieved by physical barriers. Cleaning methods should be sufficient to prevent <span class="key-term">carryover contamination</span>. Preventing contaminated raw materials from entering the process can be assisted by proper material testing.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 四種污染來源的對策矩陣</h4>
+            <table>
+                <tr><th>污染來源</th><th>中文</th><th>主要對策</th></tr>
+                <tr><td>Environmental</td><td>環境污染</td><td>潔淨室分級、空氣過濾</td></tr>
+                <tr><td>Crossover</td><td>交叉污染</td><td>物理隔離（獨立房間）</td></tr>
+                <tr><td>Carryover</td><td>殘留污染</td><td>清潔驗證（Cleaning Validation）</td></tr>
+                <tr><td>Raw material</td><td>原料污染</td><td>進料檢測、供應商審計</td></tr>
+            </table>
+            <p>理解這四種污染來源，才能為每種設計出正確的防護策略，而非對所有情境都採用最嚴格的潔淨室等級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 生物製藥中的雙重壓力</h4>
+            <p>生物製藥廠房設計面臨兩個<strong>相互競爭的保護需求</strong>：</p>
+            <ul>
+                <li><strong>保護產品（Product Protection）</strong>：防止環境微生物汙染產品 → 需要潔淨室（正壓、過濾空氣）</li>
+                <li><strong>保護人員/環境（Containment）</strong>：防止活性生物製劑外洩 → 需要圍堵設計（負壓、廢氣處理）</li>
+            </ul>
+            <p>決定哪個方向優先的關鍵槓桿：<strong>製程密閉程度（Process Closure Level）</strong>。密閉製程可以同時解決兩個問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>交叉污染（crossover）與殘留污染（carryover）的本質區別是什麼？各自對應的廠房設計解決方案有何不同？</li>
+                <li>若一個生物製藥製程是完全密閉的，是否仍需要潔淨室？請說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3.1 SEGREGATION CONCEPTS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec631">6.3.1 Segregation Concepts — 隔離概念</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Preventing product contamination by environmental and crossover sources of product contamination can have a significant impact on facility design. These sources of product contamination can be addressed using <span class="key-term">primary segregation</span> and <span class="key-term">secondary segregation</span>.</p>
+        <ul>
+            <li><strong>Primary segregation</strong> focuses on the facility design aspects required to protect an <em>exposed product</em>.</li>
+            <li><strong>Secondary segregation</strong> focuses on non-critical facility aspects which result from the use of <em>closed processing</em>.</li>
+        </ul>
+
+        <p>Both primary and secondary segregation consist of four basic segregation concepts:</p>
+        <ol>
+            <li><span class="key-term">Physical (or spatial)</span> segregation</li>
+            <li><span class="key-term">Environmental</span> (including local environmental protection) segregation</li>
+            <li><span class="key-term">Chronological (temporal or time based)</span> segregation</li>
+            <li><span class="key-term">Procedural (or SOP based)</span> segregation</li>
+        </ol>
+        <p>These segregation concepts apply to cGMP facility design, utility design, and process design.</p>
+
+        <h3>6.3.1.1 Physical Segregation</h3>
+        <p>Physical segregation involves a physical barrier which can prevent both environmental and crossover contamination. The space inside a closed vessel is physically segregated from the space outside the vessel.</p>
+        <p>In a <span class="key-term">closed system</span>, non-exposed product is physically segregated from the room environment. Process closure is an application of physical segregation.</p>
+        <p>In <span class="key-term">open systems</span>, exposed products require both a physical segregation and environmental protection from other open processes to prevent crossover contamination. Physical segregation for open processing is typically achieved by using separate rooms. This can result in dividing open process steps into a series of separate processing cleanrooms. These cleanrooms are surrounded by airlocks, and use the concept of nesting and facility flows that are designed and arranged to reduce the environmental challenge to the cleanroom.</p>
+
+        <p>Example facility applications of physical segregation include:</p>
+        <ul>
+            <li><strong>Open Processing:</strong> An open processing pre-viral reduction step and an open processing post viral reduction step requiring two separate rooms.</li>
+            <li><strong>Closed Processing:</strong>
+                <ul>
+                    <li>Closed processing pre-viral reduction and closed processing post-viral reduction steps located in the same room</li>
+                    <li>Upstream multi-product and multi-host concurrent production in separate closed bioreactors located in the same room</li>
+                    <li>Downstream multi-product concurrent production in separate closed equipment located in the same room</li>
+                    <li>Closed upstream processing and closed downstream processing located in the same room</li>
+                    <li>Closed processing in vessels, piping, bags, and tubes is an application of spatial segregation</li>
+                    <li>A product transfer pipe and a separate waste pipe both located in the same pipe rack</li>
+                    <li>A closed product vessel and a closed waste container following the same facility flow path and located in the same elevator</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 主要隔離 vs. 次要隔離</h4>
+            <p><strong>Primary Segregation（主要隔離）</strong>：針對<em>暴露產品</em>的保護。當產品與房間空氣直接接觸時，必須透過物理隔離（獨立房間）和環境隔離（潔淨室分級）來保護。</p>
+            <p><strong>Secondary Segregation（次要隔離）</strong>：針對<em>密閉製程</em>的管理。產品已在密閉設備中，隔離的重點轉為防混淆（mix-up）和廢棄物管理。</p>
+            <p>關鍵洞見：引入密閉技術後，主要隔離的需求大幅降低，次要隔離成為主角。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 隔離如同醫院隔離病房分級</h4>
+            <p>醫院對不同傳染性疾病採用不同隔離等級：</p>
+            <ul>
+                <li><strong>一般病房</strong>（CNC）：普通病人，無特殊隔離需求（如密閉製程）</li>
+                <li><strong>半隔離病房</strong>（Grade 8）：需防護但傳染性較低（如部分暴露製程）</li>
+                <li><strong>負壓隔離病房</strong>（Grade 7/5）：高度傳染性病人（如開放暴露的關鍵製程步驟）</li>
+            </ul>
+            <p>關鍵在於：不是每個病人都需要負壓隔離。同樣地，不是每個製程步驟都需要 Grade 5 潔淨室。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 物理隔離的關鍵應用</h4>
+            <p>物理隔離最重要的應用是<strong>病毒削減步驟（viral reduction）的前後隔離</strong>：</p>
+            <ul>
+                <li><strong>開放製程</strong>：病毒削減前後必須在<em>獨立房間</em>進行，防止已清除病毒的產品被再次污染</li>
+                <li><strong>密閉製程</strong>：病毒削減前後可在<em>同一房間</em>進行，因為物理隔離在設備層面已完成</li>
+            </ul>
+            <p>這個區別在病毒性生物安全評估（Viral Safety Assessment）中極為重要，直接影響法規審查結論。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「製程密閉是物理隔離的一種應用」——請用產品轉移管路的例子解釋這句話的含義。</li>
+                <li>為何密閉製程下，病毒削減前後的物料可以使用同一部電梯？監管機構是否會接受這個設計？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Environmental, Temporal, Procedural Segregation -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 — 環境、時間與程序隔離</h2>
+
+        <h3>6.3.1.2 Environmental Segregation</h3>
+        <p><span class="key-term">Environmental segregation</span> is used for open systems. It uses clean air to protect exposed product and product contact surfaces that cannot be functionally closed. A typical application is a <span class="key-term">cleanroom</span>. The level of the room environment relates to the degree and the criticality of the product or surface exposure. An example cleanroom level is <span class="key-term">Grade 8</span>, where the entire room is designed to meet the Grade 8 requirements. This is also referred to as the room background classification.</p>
+        <p>A <span class="key-term">local protected process</span> (also referred to as local environmental protection) is a sub-set of environmental segregation. It is designed to provide a higher level of clean air protection for a specific purpose within the cleanroom background.</p>
+        <p>Example facility applications of environmental segregation include:</p>
+        <ul>
+            <li>A cleanroom</li>
+            <li>A biosafety cabinet used as local protection in inoculum preparation</li>
+            <li>A local protection enclosure constructed around a fixed process step</li>
+            <li>A portable local protection enclosure moved as needed to a POU</li>
+        </ul>
+
+        <h3>6.3.1.3 Temporal Segregation</h3>
+        <p><span class="key-term">Temporal or time based segregation</span> can be applied to both open and closed processing, and also can be a factor in maintaining control of materials. Time based segregation involves using the same physical area for more than one function, but where activities are separated by time, e.g., <span class="key-term">campaigned manufacturing</span>. Two open processing production lines occupying the same room and operating concurrently will be at risk from crossover contamination. Separating the processing activities by time (i.e., campaigning) can mitigate the risk.</p>
+        <p>Closed processing can involve concurrent processing or campaigned processing of several products.</p>
+        <p>Example facility applications of temporal segregation include:</p>
+        <ul>
+            <li>Campaigned production for either open or closed processing</li>
+            <li>An enclosed, but not closed waste container (e.g., trash in a tied garbage bag) following the same "facility flow" path as personnel and product and using the same elevator, but the waste travel is non-concurrent with the other flows. This could be scheduled for the third shift or another convenient time.</li>
+            <li>Bi-directional gowning scheduled for non-concurrent gowning and de-gowning. The two functions occupy the same space, but are separated by time.</li>
+        </ul>
+
+        <h3>6.3.1.4 Procedural Segregation</h3>
+        <p><span class="key-term">Procedural or SOP based segregation</span> is typically applied to preventing mix-ups, but it also has open processing or exposed surface aspects. An example is manual equipment cleaning in a washroom with many components from different products being handled in the same area concurrently, but segregated by procedures. This would involve using the same area for different open functions (possibly handled concurrently), but using procedures to prevent equipment contamination.</p>
+        <p>Example facility applications of procedural segregation include:</p>
+        <ul>
+            <li>Preventing mix-ups</li>
+            <li>Washing components and equipment, while exposed to the room environment</li>
+            <li>A closed process that briefly exposes product to the room environment that needs special SOPs to protect the product. Operator action may be needed when the process closure technology does not address all aspects of a functionally closed system.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 四種隔離概念速查表</h4>
+            <table>
+                <tr>
+                    <th>隔離類型</th>
+                    <th>英文</th>
+                    <th>核心機制</th>
+                    <th>典型應用</th>
+                </tr>
+                <tr>
+                    <td>物理隔離</td>
+                    <td>Physical</td>
+                    <td>牆壁/設備外殼</td>
+                    <td>獨立房間、密閉設備</td>
+                </tr>
+                <tr>
+                    <td>環境隔離</td>
+                    <td>Environmental</td>
+                    <td>潔淨空氣</td>
+                    <td>潔淨室、BSC、局部保護</td>
+                </tr>
+                <tr>
+                    <td>時間隔離</td>
+                    <td>Temporal</td>
+                    <td>時序安排</td>
+                    <td>Campaign製造、換班廢棄物搬運</td>
+                </tr>
+                <tr>
+                    <td>程序隔離</td>
+                    <td>Procedural</td>
+                    <td>SOP管控</td>
+                    <td>防混淆、清洗管理</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 壓力梯度如同氣壓迷宮</h4>
+            <p>環境隔離中的<strong>壓力梯度（Pressure Cascade）</strong>設計就像一個氣壓迷宮：空氣永遠從高壓流向低壓。將潔淨區設計為高壓，走廊次之，外部最低，汙染物就無法逆流進入潔淨區。</p>
+            <p>但要注意：生物製藥廠房有時需要<strong>負壓圍堵</strong>（containment）以防止活性生物製劑外洩，此時壓力方向與普通潔淨室相反。這是設計時需特別注意的雙重需求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Campaign 製造的 GMP 含義</h4>
+            <p><strong>Campaign 製造（Campaigned Manufacturing）</strong>是時間隔離最重要的應用。多產品共用廠房時，同一房間在不同時間段分別生產不同產品，中間需要：</p>
+            <ul>
+                <li>徹底清潔與清潔驗證（Cleaning Validation）</li>
+                <li>環境監控（EM）確認交叉污染水平</li>
+                <li>文件確認前後批次的隔離</li>
+            </ul>
+            <p>密閉製程可以實現<strong>同一房間多產品同時並行生產</strong>，不需要 Campaign，這是密閉系統最大的商業優勢之一。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 多產品廠房的隔離策略選擇</h4>
+            <p>CDMO 通常同時承接多個客戶的訂單。選擇合適的隔離策略至關重要：</p>
+            <ul>
+                <li><strong>開放製程</strong>：必須採用時間隔離（Campaign）+ 清潔驗證，成本高、彈性低</li>
+                <li><strong>密閉製程</strong>：可採用物理隔離（設備層面）+ 同時並行生產，大幅提升廠房產能利用率</li>
+                <li><strong>程序隔離</strong>：在洗滌間、廢棄物管理等支援區域廣泛應用，成本最低但風險管理責任最重</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個更衣室（gowning room）同時用於更衣（gowning）和脫衣（de-gowning），屬於哪種隔離類型？需要什麼管控措施？</li>
+                <li>當密閉製程存在「短暫開放點」（brief exposure）時，程序隔離的 SOP 應包含哪些要素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3.2 APPLICATION OF SEGREGATION CONCEPTS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec632">6.3.2 Application of Segregation Concepts — 隔離概念的應用</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Figure 6.6 provides an example of how the application of closure technology can impact segregation concepts and result in different facility designs.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.6: Applications of Closure Technology and Segregation</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：Diagram A/B/C 展示密閉技術對隔離需求的影響]</span>
+            </div>
+            <p class="figure-caption">Figure 6.6: Applications of Closure Technology and Segregation — Diagrams A, B, C</p>
+        </div>
+
+        <ul>
+            <li><strong>Diagram A</strong>: shows an open process fermenter in a cleanroom (indicated in white) with the support equipment in the adjacent <span class="key-term">Controlled Not Classified (CNC)</span> area (indicated as grey).</li>
+            <li><strong>Diagram B</strong>: process closure technology has been incorporated into the fermenter design. Closed processes can be in CNC space. The remaining non-closed function is sampling. The goal of this "alcove" approach is to reduce the amount of clean area to just the area needed for non-closed operations.</li>
+            <li><strong>Diagram C</strong>: shows the incorporation of closed sampling and the entire unit operation is functionally closed. There is no need for a cleanroom and the room environment is reduced to CNC.</li>
+        </ul>
+
+        <p>Table 6.1 provides a comparison of the three segregation concepts presented in Figure 6.6.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; color:#1a3a2a; margin-bottom:0.5rem;">Table 6.1: Segregation Concept Comparison</caption>
+            <tr>
+                <th>Segregation</th>
+                <th>Diagram A and B</th>
+                <th>Diagram C</th>
+            </tr>
+            <tr>
+                <td>Physical</td>
+                <td>Room</td>
+                <td>Equipment</td>
+            </tr>
+            <tr>
+                <td>Environmental</td>
+                <td>Classified</td>
+                <td>Non-Classified</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>Campaigned</td>
+                <td>Concurrent</td>
+            </tr>
+            <tr>
+                <td>Procedural</td>
+                <td>Cleanroom</td>
+                <td>Non-Cleanroom</td>
+            </tr>
+            <tr>
+                <td>Flows</td>
+                <td>Protect Cleanroom and Prevent Mix-ups</td>
+                <td>Prevent Mix-ups</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>Review of the segregation concept:</p>
+        <ul>
+            <li><strong>Physical segregation:</strong> in Diagrams A and B physical segregation is on a room by room basis. In Diagram C, physical segregation is on a closed equipment basis.</li>
+            <li><strong>Environmental segregation:</strong> in Diagrams A and B, environmental segregation employs cleanrooms to protect exposed product. In Diagram C, product is not exposed and a cleanroom is not required.</li>
+            <li><strong>Time based segregation:</strong> in Diagrams A and B, multi-product production is on a campaigned basis for open processing. In Diagram C, multi-product and concurrent production can operate in the same processing room.</li>
+            <li><strong>Procedural segregation:</strong> in Diagrams A and B, procedural segregation needs several SOPs for open processing; the most significant are for following cleanroom and gowning protocols. In Diagram C, procedural segregation does not need these SOPs.</li>
+            <li>In Diagrams A and B, maintaining the processing cleanroom requires a series of 'nested' cleanroom transitions and proper flows to reduce the environmental challenge. In Diagram C, the flows for protecting the cleanroom are not needed. Flows usually focus on avoiding mix-ups.</li>
+        </ul>
+
+        <p>The benefit of the segregation shown in <strong>Diagram B</strong>, rather than that shown in Diagram A, is the reduction in the size of the cleanroom and the associated reduction in construction and operating costs. In Diagram B, the open sampling point could be protected by the use of local protection, e.g., a HEPA hood. This could allow multi-product concurrent production with non-concurrent sampling and could prevent cross-over contamination. The risk with open sampling is environmental contamination and false positives during testing.</p>
+
+        <p>The full benefit of the segregation shown in <strong>Diagram C</strong> is realized only when all aspects of the process are closed.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 三個 Diagram 的演進邏輯</h4>
+            <p>Figure 6.6 和 Table 6.1 是本章最核心的學習材料，展示了<strong>密閉技術如何逐步「解放」廠房設計</strong>：</p>
+            <ul>
+                <li><strong>Diagram A（全開放）</strong>：整個發酵槽都在潔淨室中。所有四種隔離概念都是最嚴格的：獨立房間、潔淨室分級、Campaign 生產、完整更衣 SOP。</li>
+                <li><strong>Diagram B（部分密閉）</strong>：只有取樣點開放，其餘密閉。潔淨室縮小到只包圍取樣區（Alcove）。這是現實中最常見的折衷方案。</li>
+                <li><strong>Diagram C（完全密閉）</strong>：連取樣都密閉。整個房間降為 CNC，可同時並行多產品生產。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>密閉程度 → 廠房成本的量化關係</h4>
+            <pre>
+Diagram A（全開放）廠房成本基準：100%
+
+密閉技術降低成本的路徑：
+  潔淨室面積縮減  → 建設成本 -20~40%
+  更衣間需求減少  → 面積 -10~15%
+  HVAC 系統簡化   → 設備成本 -15~25%
+  運營成本降低    → 更衣耗材、環境監測 -30~40%
+
+Diagram C（完全密閉）廠房成本：
+  約為 Diagram A 的 60~70%
+
+ISPE 案例研究印證：
+  Case 1（最開放）vs Case 6（最密閉）
+  → Case 1 建設與運營成本約高出 40%</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Alcove（凹室）設計如外科手術的局部無菌區</h4>
+            <p>Diagram B 的 Alcove 設計就像外科手術室：整個手術室不需要像無菌室一樣維護，但手術台上方的局部區域（無菌手術野）必須維持最高等級的無菌保護。</p>
+            <p>同樣地，Alcove 方法只為真正開放的操作點（取樣口）提供局部 HEPA 保護，而不是讓整個發酵間都成為潔淨室，大幅降低設施成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CNC（Controlled Not Classified）的含義</h4>
+            <p><strong>CNC（Controlled Not Classified，受管控但未分級）</strong>是生物製藥廠房獨特的空間等級概念：</p>
+            <ul>
+                <li>空間有基本環境管控（溫濕度、正/負壓、潔淨管理）</li>
+                <li>但<strong>不符合 ISO 14644 分級標準</strong>（不做粒子計數合規認證）</li>
+                <li>適用於所有密閉製程設備所在的空間</li>
+                <li>對比：傳統無菌製藥的 Grade A/B/C/D 是 ISO 分級空間</li>
+            </ul>
+            <p>在生物製藥中，CNC 是最常見的製程區域等級，這與傳統小分子無菌藥物（大量使用 Grade B/C）截然不同。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 6.1 中，從 Diagram A 到 Diagram C，「Flows（流動設計）」的目的發生了什麼變化？這對廠房走廊設計有何影響？</li>
+                <li>Diagram B 的開放取樣點如果改用線上 PAT（Process Analytical Technology）監測，可以升級到 Diagram C 嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3.3 APPLICATION OF PHYSICAL SEGREGATION CONCEPTS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec633">6.3.3 Application of Physical Segregation Concepts — 物理隔離概念的應用</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Following technology improvements, most biopharmaceutical process equipment is able to provide a <span class="key-term">functionally closed system</span>. These closed systems allow for CNC room environments. Closed equipment next to other closed equipment are physically segregated from each other. Closed equipment can be grouped into a single large processing room, which may be called a <span class="key-term">"ballroom"</span> or a <span class="key-term">"dance floor."</span> Where process steps are open, they will require a classified environment. These can be located off a ballroom with an airlock to the classified environments.</p>
+
+        <p>Through the process of adding closure technology to more production steps, the requirement of physical segregation can be reassigned from a <span class="key-term">room basis</span> to an <span class="key-term">equipment basis</span>. This transformation can provide a significant benefit for retrofitting an existing facility, as well as for planning a new facility.</p>
+
+        <p>Figures 6.7 and 6.8 are comparative layout examples of physical segregation on a room basis verses on an equipment basis. Figure 6.8 assumes a facility retrofit where the supply and return corridors are still needed for other existing facility functions. If this is not the case, the exit PAL and MAL and the return corridor areas could be incorporated into the flexible processing area.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.7: Physical Segregation Reassignment (Traditional — Room-based)</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：傳統廠房佈局，每個製程步驟有獨立房間、PAL/MAL]</span>
+            </div>
+            <p class="figure-caption">Figure 6.7: Physical Segregation Reassignment — Traditional open processing with separate processing rooms</p>
+        </div>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.8: Physical Segregation by Equipment (Ballroom concept)</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：密閉製程廠房佈局，拆除隔牆後形成大型彈性生產空間]</span>
+            </div>
+            <p class="figure-caption">Figure 6.8: Physical Segregation by Equipment — Ballroom concept after room consolidation</p>
+        </div>
+
+        <p>Figure 6.7 is a traditional facility concept for open processing with separate processing rooms and dedicated entry <span class="key-term">Personnel Airlocks (PALs)</span> and <span class="key-term">Material Airlocks (MALs)</span> from a production supply corridor. A separate set of PALs and MALs exit the process room into the return corridor.</p>
+
+        <p>In Figure 6.7, process room (a) is a fermentation room. De-classifying process room (a) will save some operating cost, but if process rooms (b) to (d) are cleanrooms and the supply and return corridors are also classified, accessing de-classified process room (a) would require de-gowning, then re-gowning to exit. This is unlikely to provide a tangible facility improvement.</p>
+
+        <p>Where process room (b) is a harvest room with closed equipment, the wall dividing process rooms (a) and (b) can be removed. In addition, the PALs (b) and MALs (b) for process room (b) can be demolished and converted into processing area. This new larger room increases both processing area and flexibility, but it is still connected to classified rooms via shared corridors.</p>
+
+        <p>If process rooms (c) and (d) are also converted to incorporate closed processing, the facility can fully adapt to a closed processing facility. Dividing walls can be demolished and the large processing room, as well as the supporting corridors can be de-classified. The reduction in gowning also can reduce the main locker/gowning room requirements. Figure 6.8 shows the resulting processing area that is larger than the four previous processing areas combined.</p>
+
+        <p>When applied to an existing facility, de-classifying rooms could facilitate significant production or capacity expansions within an existing production core. This could eliminate the need for a facility expansion or the construction of a new facility to meet the capacity expansion needs.</p>
+
+        <p>When existing rooms are considered for de-classifying:</p>
+        <ul>
+            <li>The existing production floor plan should be reviewed:
+                <ul>
+                    <li>CNC should be added to the existing rooms</li>
+                    <li>Existing dividing walls should be erased</li>
+                    <li>The resultant combined area should be determined</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Where existing equipment is not closed, CNC will not be feasible.</p>
+
+        <div class="quote-box">
+            "The greatest benefit in the application of closed processing to a facility may be in the transformation from open processes segregated on a room basis to closed processes segregated on an equipment basis."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Ballroom 概念（舞廳概念）</h4>
+            <p><strong>Ballroom（或 Dance Floor）</strong>是生物製藥廠房設計中的革命性概念：</p>
+            <ul>
+                <li>將所有密閉製程設備集中在一個<strong>大型開放空間</strong>中</li>
+                <li>整個空間降為 CNC 等級（無需潔淨室認證）</li>
+                <li>不同設備之間的物理隔離在<strong>設備層面</strong>完成，而非在房間層面</li>
+                <li>少數開放操作步驟（如柱填充）則在 Ballroom 旁邊的小型潔淨室中進行，並設置氣閘（Airlock）連接</li>
+            </ul>
+            <p>Ballroom 最大優點：廠房靈活性極高，可根據訂單需求重新配置設備。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 從格子間辦公室到開放式辦公空間</h4>
+            <p>傳統的多房間廠房（圖 6.7）就像 1990 年代的格子間辦公室：每個人被隔牆圍住，溝通效率低，空間利用率差。</p>
+            <p>Ballroom 概念（圖 6.8）就像現代的開放式辦公空間：移除隔牆後，同樣的面積容納更多工作站，協作更靈活。密閉設備的外殼就是每個「工作站」的隱形隔牆。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 既有廠房改造的策略路徑</h4>
+            <p>ISPE 明確指出密閉化改造可以釋放既有廠房的產能，避免新建廠房：</p>
+            <ol>
+                <li><strong>評估現有設備密閉性</strong>：無法密閉的設備阻礙 CNC 降級</li>
+                <li><strong>逐步引入密閉技術</strong>：優先從高頻率操作的設備開始（如收穫離心機引入 CIP/SIP）</li>
+                <li><strong>分階段拆除隔牆</strong>：從相鄰兩間開始合并，逐步擴大</li>
+                <li><strong>驗證新廠房配置</strong>：重新做 URS/DQ/OQ/PQ 認證</li>
+            </ol>
+            <p>PAL/MAL 拆除後轉為生產面積，是提升廠房利用率的「隱藏紅利」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>改造效益估算 Retrofit Benefit Calculation</h4>
+            <pre>
+假設既有廠房有 4 個獨立製程房間：
+  每間面積：50 m²
+  PAL/MAL 面積：每間 2×10 m² = 20 m²
+  總有效製程面積：4 × 50 = 200 m²
+
+密閉化改造後（圖 6.8 概念）：
+  拆除 3 道隔牆：釋放約 3 × 5 m² = 15 m²
+  拆除 3 組 PAL/MAL：釋放 3 × 20 = 60 m²
+  走廊降級可整合：+30 m²
+
+新的有效製程面積：200 + 15 + 60 + 30 = 305 m²
+面積增加幅度：約 +52%（不需新建廠房）</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>圖 6.7 中，若只有製程間 (a) 降級為 CNC，但走廊仍為潔淨環境，為何這「不太可能提供切實改善」？</li>
+                <li>Ballroom 概念對 CDMO 的多產品同時生產有什麼風險？需要什麼管控措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3.4 FACILITY LAYOUT OVERVIEW — 6 CASE STUDIES -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec634">6.3.4 Facility Layout Overview — Six Case Studies — 廠房佈局概覽：六個案例研究</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Facility layouts have adapted as a result of process closure. This transition is presented in six example case studies with each facility option responding to the need to protect the product. The options presented are considered viable and each has benefits and disadvantages. The intent is to align product exposure with the appropriate facility design response.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.9: Room Division Case Studies</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：六個案例的房間劃分矩陣圖，縱軸為製程步驟，橫軸為 Case 1-6]<br>注：圖中僅顯示製程房間，未顯示 PALs 和 MALs</span>
+            </div>
+            <p class="figure-caption">Figure 6.9: Room Division Case Studies — from fully open (Case 1) to nearly fully closed (Case 6)</p>
+        </div>
+
+        <p>Figure 6.9 lists typical biopharmaceutical process steps in the left column. The remaining six columns are the six case studies. The black boxed areas around functions are proposed rooms for physical segregations. The cases are arranged from open processing on the left to almost all functionally closed processing on the right.</p>
+
+        <p><strong>Case Descriptions:</strong></p>
+
+        <p><strong>Case 1:</strong> This is a facility concept with all process steps significantly exposed to the room environment. Biotechnology facility designed as a series of <span class="key-term">Grade 7 rooms</span> with <span class="key-term">Grade 5 local protection zones</span> above the critical areas of exposed product, e.g., inoculum or cell culture, seed, and production using open cell stacks in lieu of closed bioreactors.</p>
+
+        <p><strong>Case 2:</strong> Application of closure technology on vessels — technology applied to fermenters, bioreactors, and media and buffer hold tanks. These closures add a level of physical segregation — may not be fully closed systems. The room environments reduce one level to <span class="key-term">Grade 8</span>, but not to CNC. Seed and production reactors, and media and buffer hold tanks combined into a single room. Remaining areas are Grade 7.</p>
+
+        <p><strong>Case 3:</strong> Closure methods added to most process steps. This closure provides an increased level of product protection from the room environment, resulting in a shift to Grade 8 environments. Closure confidence may not be high, so individual rooms retained for physical segregation to prevent cross-over contamination. The facility benefits from reduced room environments — essentially a <span class="key-term">Grade 8 production facility</span>. Inoculum preparation remains at Grade 7. Cell manipulations follow aseptic processing guidelines in local protection <span class="key-term">Grade 5 Biosafety Cabinets (BSCs)</span> with Grade 5 requiring a Grade 7 room environment background. Bulk fill is similar, with pooling under a Grade 5 BSC requiring a Grade 7 room environment.</p>
+
+        <p><strong>Case 4:</strong> Inoculum preparation redefined from aseptic "processing" to aseptic "techniques." Manipulations are under a <span class="key-term">Grade 5 "quality" BSC</span> which does not require a Grade 7 room background environment. Inoculum preparation and bulk fill reduced to Grade 8. Seed and production bioreactors functionally closed and room is CNC. Harvest (centrifuges) becomes functionally closed and is CNC, but is kept in a separate room because it is manually cleaned in an exposed manner and because of acoustic concerns. Pre and post viral processing equipment are moved into the same room. Pre and post physical room segregation is mitigated by redefining the viral free step as the final UFDF step located in bulk fill. Purification becomes a single room and reduces to Grade 8. Media and buffer hold are closed and room class drops to CNC. Media and buffer preparations are open and Grade 8, but are combined into the same room with dedicated equipment and possible separate local protection zones.</p>
+
+        <p><strong>Case 5:</strong> New harvest (centrifuge) equipment incorporates <span class="key-term">CIP/SIP technology</span> and is now within acceptable acoustic (decibel) limits. Harvest joins the bioreactors in a production ballroom. Media and buffer preparation incorporate <span class="key-term">0.2 µm filtration</span> en route to hold vessels. This filtration step functionally closes the open preparation process to a closed state at hold. The preparation room environment drops to CNC. Following a risk assessment the downstream processes can follow the upstream example and combine into a single processing room at CNC. Column packing is not closed in this diagram. In this case example, column packing is a separate room with a classified environment accessed from the CNC ballroom.</p>
+
+        <p><strong>Case 6:</strong> The upstream ballroom and the downstream ballroom are combined into a single process room. Media and buffer prep are combined with their hold vessels. Inoculum preparation is de-classed to CNC with monitoring, which can be designed to the <span class="key-term">European Grade D</span>. Inoculum cell manipulations are not a closed process. They are in a local protection device (BSC) and the room environment needs to be assessed for the proper background level. A closed processing option for inoculum is a <span class="key-term">glove box</span> which could be placed in the CNC ballroom adjacent to the seed reactors, but a glove box may be considered not user friendly. An option for column packing (or any other non-fully closed process) is in lieu of locating it in a separate cleanroom is to keep it on the CNC production floor with local protection devices protecting the area of concern.</p>
+
+        <div class="quote-box">
+            "Through an independent cost analysis, the case 1 facility was approximately 40% more expensive to construct and operate than the case 6 facility."
+        </div>
+
+        <p>Segregating the product from the room environment increases control over the product while reducing the facility size, complexity, and cost. The facility can be a <span class="key-term">non-critical aspect system</span> of the product (for CNC areas) and the facility is removed from the product protection equation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 六個案例的演進全景</h4>
+            <table>
+                <tr>
+                    <th>案例</th>
+                    <th>密閉程度</th>
+                    <th>主要環境等級</th>
+                    <th>核心特徵</th>
+                </tr>
+                <tr>
+                    <td><strong>Case 1</strong></td>
+                    <td>幾乎全開放</td>
+                    <td>Grade 7 + Grade 5局部</td>
+                    <td>開放式細胞堆疊培養</td>
+                </tr>
+                <tr>
+                    <td><strong>Case 2</strong></td>
+                    <td>容器密閉</td>
+                    <td>Grade 8 + Grade 7</td>
+                    <td>發酵槽/儲槽加蓋密閉</td>
+                </tr>
+                <tr>
+                    <td><strong>Case 3</strong></td>
+                    <td>大多數密閉</td>
+                    <td>主要 Grade 8</td>
+                    <td>保留獨立房間（密閉信心不足）</td>
+                </tr>
+                <tr>
+                    <td><strong>Case 4</strong></td>
+                    <td>大部分功能密閉</td>
+                    <td>CNC + Grade 8（部分）</td>
+                    <td>接種重新定義為「技術」非「製程」</td>
+                </tr>
+                <tr>
+                    <td><strong>Case 5</strong></td>
+                    <td>幾乎完全密閉</td>
+                    <td>主要 CNC</td>
+                    <td>收穫加入 Ballroom，上下游分開</td>
+                </tr>
+                <tr>
+                    <td><strong>Case 6</strong></td>
+                    <td>最大密閉度</td>
+                    <td>全 CNC（少數例外）</td>
+                    <td>單一大型 Ballroom，成本最低</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Case 4 的兩個關鍵突破</h4>
+            <p><strong>突破一：接種準備的重新定義</strong></p>
+            <p>將接種準備（inoculum preparation）從「無菌製程（aseptic processing）」重新定義為「無菌技術（aseptic technique）」，這是概念上的重大轉變：</p>
+            <ul>
+                <li>「無菌製程」需要 Grade 7 背景環境的 BSC</li>
+                <li>「無菌技術」的「Quality BSC」不需要 Grade 7 背景，可在 Grade 8 房間操作</li>
+                <li>此重新定義需要充分的科學論證和法規溝通</li>
+            </ul>
+            <p><strong>突破二：病毒前後步驟合室</strong></p>
+            <p>將「病毒去除完成」的定義點移到最終 UF/DF 步驟，讓純化的所有步驟可以在同一房間進行。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Case 5 的離心機問題</h4>
+            <p>收穫步驟的離心機在之前案例中一直獨立成房，原因有二：</p>
+            <ol>
+                <li><strong>清潔方式</strong>：離心機需要手動暴露清洗（無 CIP），無法在 CNC 房間進行</li>
+                <li><strong>噪音（Acoustic）問題</strong>：高速離心機噪音超過可接受水平（dB 限制）</li>
+            </ol>
+            <p>Case 5 中，新型離心機配備了 CIP/SIP 技術，同時改善了噪音問題，才得以加入 Ballroom。這提示設備技術進步是推動廠房設計升級的重要驅動力。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>40% 成本差異的來源分析</h4>
+            <pre>
+Case 1 vs Case 6 成本差異約 40%，來源：
+
+建設成本差異：
+  潔淨室面積大幅減少     → -15~20%
+  HVAC 系統規模縮減      → -8~12%
+  PAL/MAL 數量減少       → -3~5%
+
+年度運營成本差異：
+  更衣消耗品（無塵服等）→ -30~40%
+  環境監測（EM）頻次     → -40~60%
+  設施維護（過濾器等）   → -20~30%
+  能源消耗（HVAC）       → -20~30%
+
+人員效率提升：
+  更衣時間減少           → 生產時間增加 10~15%
+  物料流動簡化           → 操作效率提升</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 六個案例如同餐廳廚房的演進</h4>
+            <p>想像一家餐廳廚房的演進：</p>
+            <ul>
+                <li><strong>Case 1</strong>：完全開放廚房，每道菜都需要廚師穿特製防護服，每個料理台之間都有玻璃隔牆</li>
+                <li><strong>Case 3-4</strong>：大多數食材都有真空包裝，開包裝和擺盤時需要局部保護</li>
+                <li><strong>Case 6</strong>：幾乎所有食材都密封包裝到最後才開，整個廚房只是一個通風良好的大空間，效率最高、衛生管理最容易</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 Case 4 中，若法規機構不接受「接種準備是無菌技術而非無菌製程」的論點，對廠房設計有何影響？</li>
+                <li>Case 6 中，接種準備仍可以設計到歐洲 Grade D 的 CNC 水平，這在亞太地區（台灣、日本、韓國）的法規環境下是否可行？</li>
+                <li>為何「廠房可以成為 CNC 區域產品的非關鍵面向（non-critical aspect system）」是一個重要的法規策略聲明？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.3.5 FLEXIBLE FACILITY BALLROOMS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec635">6.3.5 Flexible Facility Ballrooms — 彈性廠房 Ballroom 概念</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Figure 6.10 shows an example of a single large production ballroom. All processes in the ballroom are <span class="key-term">closed systems</span> and the room environment is <span class="key-term">CNC</span>. The production scale is 10,000 liters, but at 5 × 2,000 liters using <span class="key-term">disposable bioreactors</span>.</p>
+
+        <div class="figure-container">
+            <div style="background:#f0fdf4; border:2px dashed #27ae60; border-radius:8px; padding:2rem; text-align:center; color:#2e7d32;">
+                <strong>Figure 6.10: Production Ballroom Example</strong><br>
+                <span style="font-size:0.85rem; color:#4a5568;">[圖示：10,000 L 生產 Ballroom 範例，5 × 2,000 L 一次性生物反應器，CNC 環境]</span>
+            </div>
+            <p class="figure-caption">Figure 6.10: Production Ballroom Example — 10,000 L capacity using 5 × 2,000 L disposable bioreactors in a single CNC space</p>
+        </div>
+
+        <p>This example takes the case 6 example (see Section 6.3.4 of this Guide) further and combines the production room with the media and buffer preparation room. The supporting functions around this ballroom (not shown) are equipment cleaning and a <span class="key-term">Grade 8 cleanroom</span> for column packing.</p>
+
+        <p>This example is a <span class="key-term">flexible facility concept</span> and the equipment is closed. The concept is intended to work equally well with disposables and stainless steel equipment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Ballroom 的完整設計要素</h4>
+            <p>一個完整的 Ballroom 設施包含：</p>
+            <ul>
+                <li><strong>核心 Ballroom（CNC）</strong>：所有密閉製程設備（生物反應器、純化設備、緩衝液系統）</li>
+                <li><strong>衛星潔淨室（Grade 8）</strong>：無法密閉的步驟，如柱填充（column packing），通過氣閘連接到 Ballroom</li>
+                <li><strong>設備清洗室</strong>：獨立區域，可為 CNC 或 Grade 8（取決於清洗後的設備用途）</li>
+                <li><strong>更衣設施（最小化）</strong>：CNC 區域更衣要求大幅低於潔淨室，節省空間</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 一次性耗材與不鏽鋼均相容</h4>
+            <p>ISPE 特別強調 Ballroom 概念<strong>不依賴特定設備材質</strong>，一次性耗材（SU）和不鏽鋼設備都能在 Ballroom 概念下運作，前提是設備必須達到功能密閉（functionally closed）狀態。</p>
+            <p>這對於正在考慮從 SU 技術過渡到大規模不鏽鋼的 CDMO 是重要信息：廠房本身不需要重建，只需確保新設備的密閉性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Ballroom 如同現代化的無人工廠</h4>
+            <p>現代汽車工廠的生產線是開放式的大空間，不同工序的機械手臂在同一廠房中並行工作，靠機器人精準操作實現隔離，而不是靠牆壁。</p>
+            <p>Ballroom 概念正是如此：密閉設備的外殼就是「機器人手臂的精準邊界」，房間只是一個提供基礎環境管控（溫濕度、換氣）的外殼，不再是 GMP 隔離的主要工具。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 選擇 Ballroom 設計的商業考量</h4>
+            <p>對於規劃新建或改造廠房的 CDMO：</p>
+            <ul>
+                <li><strong>初始投資</strong>：Ballroom 廠房建設成本比多房間設計低 20-40%</li>
+                <li><strong>運營彈性</strong>：同一空間可快速重新配置設備，應對不同客戶需求</li>
+                <li><strong>擴充性</strong>：只需增加設備，不需新建隔牆和潔淨室認證</li>
+                <li><strong>監管風險</strong>：需要完整的 CCS（污染控制策略）和完善的 SU 管理程序</li>
+                <li><strong>法規文件</strong>：URS 必須清楚描述密閉性要求，MAA/BLA 中需論證 CNC 的合理性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Ballroom 設計中，若某個生物反應器的密封件失效導致短暫開放，應如何應對？SOP 中需要有哪些規定？</li>
+                <li>一個 10,000 L Ballroom（5 × 2,000 L SU 生物反應器）如果要擴大到 20,000 L 產能，有哪些設計選項？各自的廠房影響是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin-top: 1rem;">
+    <h3>本章重點回顧 Chapter Summary — Chapter 6A Key Takeaways</h3>
+    <ul>
+        <li><strong>廠房設計的推導邏輯</strong>：從商業產能目標 → BFD/PFD → 製程密閉程度決策 → 隔離策略 → 廠房佈局，每一步都有明確的邏輯聯繫。</li>
+        <li><strong>規模對廠房的影響</strong>：大規模（>10,000 L）傾向垂直堆疊五層設計；小規模（≤2,000 L）使用一次性耗材，水平排列於單一生產層，可大幅縮減廠房面積。</li>
+        <li><strong>四種隔離概念</strong>：物理、環境、時間、程序隔離各有其適用場景。密閉製程最大的設計紅利是將物理隔離從「房間層面」下移到「設備層面」，使廠房從多個潔淨室演進為單一 CNC Ballroom。</li>
+        <li><strong>六個案例的核心訊息</strong>：Case 1（全開放 Grade 7）到 Case 6（全密閉 CNC Ballroom）的建設與運營成本差距約 40%。密閉程度越高，廠房越簡單、越便宜、越靈活。</li>
+        <li><strong>CNC 概念的重要性</strong>：CNC 不是「沒有環境管控」，而是「有管控但不符合 ISO 粒子計數分級」。對於完全密閉製程，CNC 是合理且法規接受的空間等級。</li>
+        <li><strong>雙重保護壓力</strong>：生物製藥廠房面對「保護產品（潔淨室設計）」和「保護人員/環境（圍堵設計）」兩個競爭需求。製程密閉是同時滿足兩者的最佳策略。</li>
+        <li><strong>在線稀釋 + SU 技術</strong>：緩衝液在線稀釋可將緩衝液儲存空間縮減 60-80%，結合一次性耗材可進一步壓縮廠房面積，是現代 CDMO 的首選技術組合。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
