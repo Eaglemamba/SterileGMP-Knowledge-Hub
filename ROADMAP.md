@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-02 (post-TR86/ISPE-Sampling/FDA-ProcessVal push)
+Last updated: 2026-04-02 (post-TR86/ISPE-Sampling/FDA-ProcessVal push; combination products expansion planned)
 
 ---
 
@@ -140,9 +140,12 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red |
 | 5 | **ICH** | Q8(R2), Q9(R1), Q10 only (the "quality trinity") | Purple |
 | 6 | **USP** | Selected General Chapters (sterility, endotoxin, particulates, microbial) | Gold |
-| 7 | **ISO** | 14644 series (cleanrooms), 17665 (steam sterilization) | Purple |
+| 7 | **ISO** | 14644 series (cleanrooms), 17665 (steam sterilization), 11608 (injection systems), 14971 (risk mgmt), 13485 (device QMS) | Purple |
+| 8 | **IEC** | 62366-1 (usability engineering / human factors) — combination product device constituent | Grey |
 
 > **ICH scope note:** Only Q8/Q9/Q10 belong in this hub. The full ICH guideline set (Q1-Q14, S-series, E-series, M-series) covers all pharmaceutical manufacturing and is not sterile-specific. A separate "Pharmaceutical Regulatory Knowledge Hub" would be the appropriate home for the complete ICH library.
+
+> **IEC scope note:** IEC 62366-1 is included specifically for combination product human factors validation. Other IEC standards (electrical safety, EMC) are out of scope.
 
 ---
 
@@ -156,6 +159,7 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | Environmental Monitoring | TR13, TR13-2, TR88 | Excellent |
 | Contamination Control (CCS) | TR90, TR70 | Excellent |
 | Container/Closure & Packaging | TR73, TR73-2, TR85, TR87, TR43 | Excellent |
+| Container Closure Integrity (CCI) | TR27 ✅ | Good |
 | Sterilizing Filtration | TR26 | Good |
 | Process Validation | TR60 | Good |
 | Single-Use Systems | TR66 | Good |
@@ -166,26 +170,35 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | Data Integrity | TR84 | Covered |
 | Regulatory / Change Control | TR91, TR73-2 | Covered |
 | Technology Transfer | TR65 | Good |
+| Combination Products (partial) | TR73 (PFS), TR73-2 (MDR staked needle), TR27 (CCI), TR85 (visible particle), TR87 (glass) | Partial — device/regulatory layer missing |
 
 ### Critical Gaps
 
 | Gap | Why It Matters | Recommended Source |
 |-----|---------------|-------------------|
-| **Regulatory anchor (EU/PIC/S)** | Annex 1 is THE document inspectors cite globally; referenced by nearly every PDA TR in the hub | **PIC/S Annex 1 (2022)** |
-| **Regulatory anchor (US)** | FDA equivalent; basis for 483 observations in sterile manufacturing | **FDA Aseptic Processing Guidance (2004)** |
-| **Quality Risk Management framework** | Cited by TR90, TR22, TR60, ISPE Vol.5, ISPE Vol.7 — the methodology foundation | **ICH Q9(R1)** |
-| **Pharmaceutical Quality System** | The PQS framework that TR91, TR84, TR60 sit inside | **ICH Q10** |
-| **Pharmaceutical Development** | Design space / QbD foundation for TR60, TR26 | **ICH Q8(R2)** |
-| **Water & Steam Systems** | #1 cause of batch loss and plant shutdowns; zero coverage currently | **ISPE Vol.4** |
-| **HVAC** | Every cleanroom depends on this; capital investment decisions | **ISPE HVAC** |
-| **Sterility Testing** | The fundamental release test for sterile products | **USP \<71\>** |
-| **Endotoxin / Pyrogen Testing** | Endotoxin excursions halt production lines | **USP \<85\>** |
-| **Particulate Matter** | Injectable release requirement | **USP \<788\>** |
-| **Microbial Control of Aseptic Environments** | EM program design standard | **USP \<1116\>** |
-| **Sterilization & Sterility Assurance** | Foundation for all sterilization methods | **USP \<1211\>** |
-| **Lyophilization** | Major sterile dosage form, completely absent | **PDA TR36** |
-| **Container Closure Integrity (CCI)** | Dedicated CCI testing methodology missing | **PDA TR27** |
-| **Cleanroom Standards** | Referenced by every facility document | **ISO 14644-1/2/3** |
+| **Regulatory anchor (EU/PIC/S)** | Annex 1 is THE document inspectors cite globally; referenced by nearly every PDA TR in the hub | **PIC/S Annex 1 (2022)** ✅ Done |
+| **Regulatory anchor (US)** | FDA equivalent; basis for 483 observations in sterile manufacturing | **FDA Aseptic Processing Guidance (2004)** ✅ Done |
+| **Quality Risk Management framework** | Cited by TR90, TR22, TR60, ISPE Vol.5, ISPE Vol.7 — the methodology foundation | **ICH Q9(R1)** ✅ Done |
+| **Pharmaceutical Quality System** | The PQS framework that TR91, TR84, TR60 sit inside | **ICH Q10** ✅ Done |
+| **Pharmaceutical Development** | Design space / QbD foundation for TR60, TR26 | **ICH Q8(R2)** ✅ Done |
+| **Water & Steam Systems** | #1 cause of batch loss and plant shutdowns | **ISPE Vol.4** ✅ Done |
+| **HVAC** | Every cleanroom depends on this; capital investment decisions | **ISPE HVAC** ✅ Done |
+| **Container Closure Integrity (CCI)** | Dedicated CCI testing methodology | **PDA TR27** ✅ Done |
+| **Sterility Testing** | The fundamental release test for sterile products | **USP \<71\>** — pending |
+| **Endotoxin / Pyrogen Testing** | Endotoxin excursions halt production lines | **USP \<85\>** — pending |
+| **Particulate Matter** | Injectable release requirement | **USP \<788\>** — pending |
+| **Microbial Control of Aseptic Environments** | EM program design standard | **USP \<1116\>** — pending |
+| **Sterilization & Sterility Assurance** | Foundation for all sterilization methods | **USP \<1211\>** — pending |
+| **Lyophilization** | Major sterile dosage form, completely absent | **PDA TR36** — pending |
+| **Cleanroom Standards** | Referenced by every facility document | **ISO 14644-1/2/3** — pending |
+| **Combination Product Regulatory Framework** | Dual GMP requirements (drug + device) — mandatory for PFS/autoinjector CDMO clients | **FDA CGMP for Combination Products Guidance (2017)** — pending |
+| **Injection System Device Standards** | Autoinjectors, pen injectors, wearable injectors — ISO-mandated design verification | **ISO 11608-1** — pending |
+| **Medical Device Risk Management** | Device constituent part risk assessment; required for 510(k)/PMA submissions | **ISO 14971** — pending |
+| **Human Factors / Usability Engineering** | FDA expects HF validation for all combination products; high inspection risk | **IEC 62366-1** — pending |
+| **Medical Device QMS** | Design controls for device constituent; required alongside drug CGMPs | **ISO 13485** — pending |
+| **Package Integrity (USP)** | CCI test method selection and validation — USP equivalent to PDA TR27 | **USP \<1207\>** — pending |
+| **Container Materials — Plastic** | Extractables/leachables risk from plastic primary packaging | **USP \<661\>** — pending |
+| **Drug Product Leachables** | Leachable assessment methodology for plastic packaging systems | **USP \<1664\>** — pending |
 
 ### COO-Specific Knowledge Gaps
 
@@ -261,7 +274,49 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | Additional FDA | Container Closure Guidance, Terminal Sterilization Guidance | Medium |
 | Additional USP | \<787\>, \<790\>, \<1228\>, \<1229\>, \<382\>, \<661\> | Medium (cumulative) |
 
-### Phase 5: COO Decision Support Layer (Future)
+### Phase 5: Combination Products Expansion (New)
+
+**Goal:** Add the device-constituent and regulatory framework documents needed to support combination product (PFS, autoinjector, pen injector) manufacturing and client audits.
+
+**Rationale:** TR73/TR73-2 already cover PFS from a pharmaceutical perspective. This phase adds the device-side standards, human factors, and leachables/extractables layer that CDMO clients increasingly require.
+
+#### Priority 1 — Regulatory Framework
+
+| Task | Document | Source | Effort |
+|------|----------|--------|--------|
+| New source: FDA | CGMP for Combination Products Guidance (2017) — dual GMP requirements | FDA | Small |
+| New source: FDA | Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development (2016) | FDA | Small |
+| New source: FDA | Design Considerations for Combination Products (2019 Draft) | FDA | Small |
+
+#### Priority 2 — Device Standards (ISO/IEC)
+
+| Task | Document | Source | Effort |
+|------|----------|--------|--------|
+| New source: ISO | **ISO 14971** — Risk Management for Medical Devices | ISO | Medium |
+| New source: ISO | **ISO 11608-1** — Needle-Based Injection Systems: Requirements & Test Methods | ISO | Medium |
+| New source: ISO | ISO 11608-3 — Finished containers for injection systems | ISO | Small |
+| New source: ISO | **ISO 13485** — Medical Devices QMS | ISO | Medium |
+| New source: IEC | **IEC 62366-1** — Usability Engineering / Human Factors for Medical Devices | IEC | Medium |
+
+#### Priority 3 — Container & Leachables (USP)
+
+| Task | Document | Source | Effort |
+|------|----------|--------|--------|
+| New source: USP | **\<1207\>** — Package Integrity Evaluation (CCI methods) | USP | Small |
+| New source: USP | **\<661\>** — Plastic Packaging Systems and Materials of Construction | USP | Small |
+| New source: USP | **\<660\>** — Containers — Glass | USP | Small |
+| New source: USP | **\<1664\>** — Assessment of Drug Product Leachables | USP | Medium |
+
+#### Priority 4 — Additional PDA (if available)
+
+| Task | Document | Source | Effort |
+|------|----------|--------|--------|
+| New PDA TR | **TR76** — Container Closure Integrity Testing Technology (if not yet added) | PDA | Medium |
+| New PDA TR | **TR74** — Prefilled Syringe User Requirement Specifications | PDA | Medium |
+
+---
+
+### Phase 6: COO Decision Support Layer (Future)
 
 **Goal:** Synthesize cross-document knowledge into decision-oriented resources.
 
@@ -288,6 +343,10 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 | ASTM standards | ASTM E2500 (verification) is influential but too niche for this hub. |
 | ISO 11135 (EtO sterilization) | Rarely used for sterile injectables. |
 | ISO 11137 (Radiation sterilization) | Niche sterilization method for devices, not primary for pharma injectables. |
+| ISO 11608-4/5 (Electronic/automated injection systems) | Advanced device electronics — out of scope unless smart device programs are added. |
+| ISO 11040 series (Prefilled syringes — glass barrels) | Component-level spec; TR73 covers the finished product perspective adequately. |
+| IEC standards other than 62366-1 | Electrical safety, EMC, cybersecurity — outside pharma manufacturing GMP scope. |
+| ISO 13485 full QMS implementation | May be added in Phase 5 if combination product client audit demand increases. |
 | Full PDA TR catalog | Many TRs cover non-sterile topics (oral solids, APIs). Only sterile-relevant TRs are included. |
 
 ---
@@ -343,17 +402,18 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 
 ---
 
-## Estimated Target: ~65-70 Documents
+## Estimated Target: ~80-90 Documents (revised with combination products)
 
 | Source | Current | Target | Notes |
 |--------|---------|--------|-------|
-| PDA | 33 | ~35 | Add TR27, TR36; complete 4 skeletons |
-| ISPE | 15 | 15 | Complete all scaffolded guides |
+| PDA | 39 | ~42 | Add TR36 (lyophilization), TR74 (PFS URS), TR76 (CCI technology); TR27 ✅ |
+| ISPE | 9 | 15 | Complete GEP, CTC, TechTransfer, ProcessGas, QualityCulture, IT |
 | PIC/S | 1 | 1 | Annex 1 ✅ |
-| FDA | 2 | 3-4 | Aseptic Processing ✅, Process Inspections (CPGM 7356.002A) ✅, Process Validation, Container Closure |
+| FDA | 3 | 6-7 | Aseptic ✅, Process Val ✅, Process Inspection ✅ + CGMP Combination Products, HF Guidance, Design Considerations |
 | ICH | 3 | 3 | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ |
-| USP | 0 | 5-8 | \<71\>, \<85\>, \<788\>, \<1116\>, \<1211\>, optionally \<787\>, \<790\>, \<1228\> |
-| ISO | 0 | 2-3 | 14644-1/2/3, optionally 17665 |
-| **Total** | **47 (all complete)** | **~65-70** | |
+| USP | 0 | 8-10 | \<71\>, \<85\>, \<788\>, \<1116\>, \<1211\> (Phase 3) + \<1207\>, \<660\>, \<661\>, \<1664\> (Phase 5) |
+| ISO | 0 | 5-6 | 14644-1/2/3, 17665 (Phase 3) + 14971, 11608-1, 11608-3, 13485 (Phase 5) |
+| IEC | 0 | 1 | 62366-1 (usability engineering) — new source, Phase 5 |
+| **Total** | **55 (all complete)** | **~80-90** | Combination products expansion adds ~15 documents |
 
 The infrastructure (tooling, workflow, dashboard, chatbot) is already built. The remaining work is content processing — the hardest part of the project is done.
