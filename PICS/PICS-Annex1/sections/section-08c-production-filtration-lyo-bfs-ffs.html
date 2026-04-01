@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 1 - Section 8C: Filtration, FFS, BFS, Lyophilization & Closed Systems</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2c4a5a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #f97316;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+    color: #fb923c;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SECTION-SPECIFIC: Orange theme for PIC/S ===== */
+.pics-alert {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 2px solid #f97316;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.pics-alert h4 {
+    color: #c2410c;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.pics-alert p {
+    color: #7c2d12;
+    font-size: 0.92rem;
+}
+
+.postponed-notice {
+    background: linear-gradient(135deg, #fef9c3 0%, #fef08a 100%);
+    border: 2px solid #eab308;
+    border-left: 6px solid #ca8a04;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.postponed-notice h4 {
+    color: #713f12;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.postponed-notice p {
+    color: #78350f;
+    font-size: 0.92rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 8C: Sterilisation by Filtration, FFS, BFS, Lyophilization & Closed Systems</h1>
+    <div class="subtitle">第8章C部分：除菌過濾、成型充填密封、吹塑充填密封、冷凍乾燥與密閉系統</div>
+    <div class="page-info">PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products | Paragraphs 8.79–8.130 | p32–p40</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解除菌過濾器（Sterilising Grade Filter，0.22 µm）的系統設計原則，以及 PUPSIT（使用前滅菌後完整性測試）的法規強制要求與豁免條件</li>
+        <li>掌握成型充填密封 Form-Fill-Seal (FFS) 和吹塑充填密封 Blow-Fill-Seal (BFS) 的環境分級要求、關鍵製程參數（CPP）差異及無菌保證策略</li>
+        <li>了解冷凍乾燥機（Lyophilizer）滅菌頻率決策邏輯、裝載區設計要求，以及 8.123 條款延後實施的背景</li>
+        <li>理解密閉系統（Closed System）的定義、無菌連接設計原則，以及在無菌製程中降低污染風險的策略</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 1: STERILISATION BY FILTRATION (8.79-8.95) -->
+<!-- ============================================================ -->
+<div class="section-title" id="filtration">8.79–8.95 Sterilisation by Filtration — 除菌過濾滅菌</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>8.79</strong> If the product cannot be sterilised in its final container, solutions or liquids should be sterilised by filtration through a sterile <span class="key-term">sterilising grade filter</span> (with a nominal pore size of a maximum of 0.22 µm that has been appropriately validated to obtain a sterile filtrate) and subsequently aseptically filled into a previously sterilised container. The selection of the filter used should ensure that it is compatible with the product and as described in the marketing authorization.</p>
+
+        <p><strong>8.80</strong> Suitable <span class="key-term">bioburden reduction prefilters</span> and/or sterilising grade filters may be used at multiple points during the manufacturing process to ensure a low and controlled bioburden of the liquid prior to the final sterilising filter. Due to the potential additional risks of a sterile filtration process, as compared with other sterilisation processes, an additional filtration through a sterile sterilising grade filter, <span class="key-term">as close to the point of fill as possible</span>, should be considered as part of an overall CCS.</p>
+
+        <p><strong>8.81</strong> The selection of components for the filtration system and their interconnection and arrangement within the filtration system, including pre-filters, should be based on the critical quality attributes of the product, justified and documented. The filtration system should minimize the generation of fibres and particles, not cause or contribute to unacceptable levels of impurities, or possess characteristics that otherwise alter the quality and efficacy of the product. Similarly, the filter characteristics should be compatible with the fluid and not be adversely affected by the product to be filtered. <span class="key-term">Adsorption of product components and extraction/leaching of filter components</span> should be evaluated.</p>
+
+        <p><strong>8.82</strong> The filtration system should be designed to:</p>
+        <ul>
+            <li>i. allow operation within validated process parameters;</li>
+            <li>ii. maintain the sterility of the filtrate;</li>
+            <li>iii. minimize the number of <span class="key-term">aseptic connections</span> required between the final sterilising grade filter and the final filling of the product;</li>
+            <li>iv. allow cleaning procedures to be conducted as necessary;</li>
+            <li>v. allow sterilisation procedures, including <span class="key-term">sterilisation in place</span>, to be conducted as necessary;</li>
+            <li>vi. permit <span class="key-term">in-place integrity testing</span>, of the 0.22 µm final sterilising grade filter, preferably as a closed system, both prior to, and following filtration as necessary.</li>
+        </ul>
+
+        <p><strong>8.83</strong> Sterile filtration of liquids should be validated in accordance with relevant Pharmacopeia requirements. Validation can be grouped by different strengths or variations of a product but should be done under worst case conditions. The rationale for grouping should be justified and documented.</p>
+
+        <p><strong>8.84</strong> During filter validation, wherever possible, the product to be filtered should be used for <span class="key-term">bacterial retention testing</span> of the sterilising grade filter. Where the product to be filtered is not suitable for use in bacterial retention testing, a suitable surrogate product should be justified for use in the test. The challenge organism used in the bacterial retention test should be justified.</p>
+
+        <p><strong>8.85</strong> Filtration parameters that should be considered and established during validation should include, but are not limited to:</p>
+        <ul>
+            <li>i. The wetting fluid used for filter integrity testing (based on filter manufacturer's recommendation or the fluid to be filtered; the appropriate integrity test value specification should be established)</li>
+            <li>ii. Filtration process conditions including: fluid pre-filtration holding time and effect on bioburden; filter conditioning; maximum filtration time/total time filter is in contact with the fluid; maximum operating pressure; flow rate; maximum filtration volume; temperature; the time taken to filter a known volume of bulk solution and the pressure difference across the filter</li>
+        </ul>
+
+        <p><strong>8.86</strong> Routine process controls should be implemented to ensure adherence to validated filtration parameters. Results of critical process parameters should be included in the <span class="key-term">batch record</span>, including but not limited to the minimum time taken to filter a known volume of bulk solution and pressure difference across the filter. Any significant difference from critical parameters during manufacturing should be documented and investigated.</p>
+
+        <div class="quote-box">
+            "8.87 The integrity of the sterilised filter assembly should be verified by integrity testing before use (<span class="key-term">pre-use post sterilisation integrity test or PUPSIT</span>), to check for damage and loss of integrity caused by the filter preparation prior to use. A sterilising grade filter that is used to sterilise a fluid should be subject to a non-destructive integrity test post-use prior to removal of the filter from its housing..."
+        </div>
+
+        <p><strong>8.87 (continued)</strong> It is recognized that PUPSIT may not always be possible after sterilisation due to process constraints (e.g. the filtration of very small volumes of solution). In these cases, an alternative approach may be taken providing that a thorough <span class="key-term">risk assessment</span> has been performed. Points to consider in such a risk assessment include:</p>
+        <ul>
+            <li>i. in depth knowledge and control of the filter sterilisation process to minimize damage potential</li>
+            <li>ii. in depth knowledge of the supply chain (contract sterilisation facilities, transport, packaging)</li>
+            <li>iii. process knowledge: specific product type including particle burden; pre-filtration steps that remove particle burden</li>
+        </ul>
+
+        <p><strong>8.88</strong> The integrity of critical sterile gas and <span class="key-term">air vent filters</span> (directly linked to product sterility) should be verified by testing after use, with the filter remaining in the filter assembly or housing.</p>
+
+        <p><strong>8.89</strong> The integrity of non-critical air or gas vent filters should be confirmed and recorded at appropriate intervals. Where gas filters are in place for extended periods, integrity testing should be carried out at installation and prior to replacement. The maximum duration of use should be specified and monitored based on risk.</p>
+
+        <p><strong>8.90</strong> For gas filtration, unintended moistening or <span class="key-term">wetting of the filter</span> or filter equipment should be avoided.</p>
+
+        <p><strong>8.91</strong> If the sterilising filtration process has been validated as a system consisting of multiple filters to achieve the sterility for a given fluid, the filtration system is considered to be a <span class="key-term">single sterilising unit</span> and all filters within the system should satisfactorily pass integrity testing after use.</p>
+
+        <p><strong>8.92</strong> In a <span class="key-term">redundant filtration system</span> (where a second redundant sterilising grade filter is present as a backup but the sterilising process is validated as only requiring one filter), post-use integrity test of the primary sterilising grade filter should be performed and if demonstrated to be integral, then a post-use integrity test of the redundant (backup) filter is not necessary. However, in the event of a failure of the post-use integrity test on the primary filter, post-use integrity test on the secondary (redundant) filter should be performed, in conjunction with an investigation and risk assessment.</p>
+
+        <p><strong>8.93</strong> <span class="key-term">Bioburden samples</span> should be taken from the bulk product and immediately prior to the final sterile filtration. In case where a redundant filtration set-up is used, it should be taken prior to the first filter. Systems for taking samples should be designed so as not to introduce contamination.</p>
+
+        <p><strong>8.94</strong> <span class="key-term">Liquid sterilising grade filters should be discarded after the processing of a single batch</span> and the same filter should not be used continuously for more than one working day unless such use has been validated.</p>
+
+        <p><strong>8.95</strong> Where campaign manufacture of a product has been appropriately justified in the CCS and validated, the filter user should: (i) assess and document risks for filter duration; (ii) conduct validation studies; (iii) document maximum validated duration; (iv) implement controls to remove contaminated or defective filters.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 除菌過濾系統</h4>
+            <p><strong>除菌過濾器（Sterilising Grade Filter）</strong>：孔徑最大 0.22 µm，經驗證可截留微生物，是無法終端滅菌（Terminal Sterilisation）產品的最後一道無菌保障。</p>
+            <p><strong>微生物負荷前過濾器（Bioburden Reduction Prefilter）</strong>：置於除菌過濾器上游，用於降低液體中微生物負荷（Bioburden），減少最終除菌過濾器的負擔，延長濾器壽命並提高整體無菌保障。</p>
+            <p><strong>系統設計原則（8.82）</strong>：除菌過濾系統必須最小化除菌後到灌裝前的無菌連接（Aseptic Connection）數量——每一個連接點都是潛在的污染風險。</p>
+            <p><strong>吸附與浸出（Adsorption & Leaching）</strong>：濾器本身可能吸附藥物活性成分（影響濃度），或將濾器材料中的化學物質溶出至產品中——這兩者都必須評估。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 除菌過濾的「最後安全門」</h4>
+            <p>將除菌過濾系統想像成機場的安全通道：前段的行李 X 光機（bioburden reduction prefilter）先篩掉大件危險品；最後的人工安檢（0.22 µm 除菌濾器）才是正式的「放行確認」。Annex 1 要求這道最後安全門要盡可能靠近登機口（point of fill）——距離越短，安檢後被重新污染的風險越低。</p>
+        </div>
+
+        <div class="pics-alert">
+            <h4>★ 重大條款：PUPSIT（8.87）— 使用前滅菌後完整性測試</h4>
+            <p><strong>PUPSIT = Pre-Use Post-Sterilization Integrity Test（使用前滅菌後完整性測試）</strong></p>
+            <p>濾器滅菌（通常是高壓蒸氣或 gamma 照射）後、使用前，必須先做一次完整性測試（integrity test），確認濾器在安裝與滅菌過程中未受損。過去許多廠商只做使用後測試（post-use），2022 年版 Annex 1 明確要求使用前也需測試。</p>
+            <p><strong>測試方法</strong>：起泡點法（Bubble Point）、擴散流法（Diffusive Flow）、水浸入法（Water Intrusion）、壓力保持法（Pressure Hold Test）</p>
+            <p><strong>豁免條件</strong>：僅在有充分科學依據且完成徹底風險評估後方可豁免（例如極小體積過濾），且必須有補償性控制措施。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — PUPSIT：出門前檢查瓦斯</h4>
+            <p>PUPSIT 就像出門前檢查瓦斯爐是否關好：瓦斯爐（濾器）可能在安裝時就已損壞，如果不事先檢查，等到你回家（使用後才測試）發現問題，整批藥品可能已無菌保障全失。</p>
+            <p>以前的做法是：用完才測試（post-use only）——萬一那批藥品過濾時濾器就已破損，整批放行都是無效的無菌保障。PUPSIT 就是要在「使用前」就確認濾器完好。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 使用後完整性測試（Post-Use）同樣必要</h4>
+            <p>8.87 也要求除菌濾器在過濾完成後、拆除前，必須做使用後完整性測試（Post-Use Integrity Test）。這是確認「過濾過程中濾器是否完整」的最終確認。兩個測試缺一不可：</p>
+            <ul>
+                <li><strong>Pre-use（PUPSIT）</strong>：確認濾器在滅菌與安裝時未損壞</li>
+                <li><strong>Post-use</strong>：確認過濾過程中濾器始終完整</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 冗餘過濾系統（8.92）</h4>
+            <p><strong>冗餘過濾系統（Redundant Filtration System）</strong>：安裝兩個串聯的除菌濾器，但驗證僅需一個即可達到無菌保障。第二個（備用）濾器是安全保障。</p>
+            <p><strong>實務邏輯</strong>：若主過濾器（primary）通過使用後完整性測試，備用過濾器（redundant）不需測試。若主過濾器測試失敗，則對備用過濾器進行測試，同時啟動調查。這代表只要備用濾器完整，批次放行仍有可能。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 微生物負荷採樣時機（8.93）</h4>
+            <p>微生物負荷（Bioburden）採樣必須在最終除菌過濾「緊接之前（immediately prior to）」執行。若為冗餘系統，則在第一個濾器前採樣。</p>
+            <p>目的：確認進入除菌濾器的液體微生物負荷在可接受範圍內，作為無菌保障的輸入控制（input control）。高微生物負荷可能堵塞或損壞濾器，增加過濾失敗風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 濾器一次性使用原則（8.94）</h4>
+            <p>除菌液體濾器原則上僅供單批次使用，且同一濾器不得連續使用超過一個工作天，除非經過驗證。</p>
+            <p><strong>例外情況（8.95）</strong>：連續生產（Campaign Manufacture）場景下，可在充分評估、記錄風險並完成驗證後，使用更長時間。但必須明確規定最大驗證使用期限，並嚴格管控。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application — CDMO 的 PUPSIT 實施挑戰</h4>
+            <p>在 CDMO 環境中，PUPSIT 帶來實際挑戰：</p>
+            <ul>
+                <li><strong>設備設計</strong>：過濾系統必須設計成允許在滅菌後、充填前進行完整性測試的能力（通常需要增加壓力感測器和閥門）</li>
+                <li><strong>SOP 更新</strong>：2022 年版 Annex 1 發布後，現有 SOP 必須更新，並對操作人員重新培訓</li>
+                <li><strong>豁免申請</strong>：小批量客戶產品若無法進行 PUPSIT，需要正式的書面風險評估，並在 CCS 中記錄補償性控制措施</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>PUPSIT 與傳統的「使用後完整性測試（post-use integrity test）」有何本質差異？為何 Annex 1 (2022) 認為只做使用後測試是不夠的？</li>
+                <li>一家製造商表示他們的產品體積極小（5 mL），難以執行 PUPSIT。他們應如何處理此情況？需要哪些文件？</li>
+                <li>在冗餘過濾系統中，若主濾器失敗了使用後完整性測試，批次是否必然被拒絕？說明決策流程。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 2: FORM-FILL-SEAL (8.96-8.104) -->
+<!-- ============================================================ -->
+<div class="section-title" id="ffs">8.96–8.104 Form-Fill-Seal (FFS) — 成型充填密封</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>8.96</strong> The conditions for <span class="key-term">FFS machines used for terminally sterilised products</span> should comply with the environmental requirements of paragraphs 8.3 and 8.4 of this Annex. The conditions for FFS machines used in <span class="key-term">aseptic manufacture</span> should comply with the environmental requirements of paragraph 8.10 of this Annex.</p>
+
+        <p><strong>8.97</strong> Contamination of the <span class="key-term">packaging films</span> used in the FFS process should be minimized by appropriate controls during component fabrication, supply and handling. Due to the criticality of packaging films, procedures should be implemented to ensure that the films supplied meet defined specifications and are of the appropriate quality, including material thickness and strength, microbial and particulate contamination, integrity and artwork, as relevant. The sampling frequency, the <span class="key-term">bioburden and, where applicable, endotoxin/pyrogen levels</span> of packaging films and associated components should be defined and controlled within the PQS and considered in the CCS.</p>
+
+        <p><strong>8.98</strong> Particular attention should be given to understanding and assessing the operation of the equipment, including set-up, filling, sealing and cutting processes, so that <span class="key-term">critical process parameters</span> are understood, validated, controlled and monitored appropriately.</p>
+
+        <p><strong>8.99</strong> Any product contact gases, e.g. those used to inflate the container or used as a product overlay, should be appropriately filtered, as close to the point of use as possible. The quality of gases used and the effectiveness of gas filtration systems should be verified periodically in accordance with paragraphs 6.18 and 6.19.</p>
+
+        <p><strong>8.100</strong> The controls identified during qualification of FFS should be in alignment with the CCS. Aspects to be considered include but are not limited to:</p>
+        <ul>
+            <li>i. determination of the boundaries of the critical zone</li>
+            <li>ii. environmental control and monitoring, both of the machine and the background</li>
+            <li>iii. personnel gowning requirements</li>
+            <li>iv. integrity testing of the product filling lines and filtration systems (as relevant)</li>
+            <li>v. duration of the batch or filling campaign</li>
+            <li>vi. control of packaging films, including any requirements for film decontamination or sterilisation</li>
+            <li>vii. cleaning-in-place and sterilisation-in-place of equipment as necessary</li>
+            <li>viii. machine operation, settings and alarm management (as relevant)</li>
+        </ul>
+
+        <p><strong>8.101</strong> Critical process parameters for FFS should be determined during equipment qualification and should include, but are not limited to:</p>
+        <ul>
+            <li>i. settings for uniform package dimensions and cutting in accordance with validated parameters</li>
+            <li>ii. setting, maintenance and monitoring of validated <span class="key-term">forming temperatures</span> (including pre-heating and cooling), forming times and pressures</li>
+            <li>iii. setting, maintenance and monitoring of validated <span class="key-term">sealing temperatures</span>, sealing temperature uniformity across the seal, sealing times and pressures</li>
+            <li>iv. environmental and product temperature</li>
+            <li>v. batch-specific testing of <span class="key-term">package seal strength and uniformity</span></li>
+            <li>vi. settings for correct filling volumes, speeds and uniformity</li>
+            <li>vii. settings for any additional printing (batch coding), embossing or debossing to ensure unit integrity is not compromised</li>
+            <li>viii. methods and parameters for <span class="key-term">integrity testing of filled containers</span> (see paragraph 8.22)</li>
+        </ul>
+
+        <p><strong>8.102</strong> Appropriate procedures for the verification, monitoring and recording of FFS critical process parameters and equipment operation should be applied during production.</p>
+
+        <p><strong>8.103</strong> Operational procedures should describe how forming and sealing issues are detected and rectified. Rejected units or sealing issues should be recorded and investigated.</p>
+
+        <p><strong>8.104</strong> Appropriate maintenance procedures should be established based on risk, and include maintenance and inspection plans for <span class="key-term">tooling critical to the effectiveness of unit sealing</span>. Any issues identified that indicate a potential product quality concern should be documented and investigated.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — FFS 技術</h4>
+            <p><strong>成型充填密封（Form-Fill-Seal, FFS）</strong>：一種整合式包裝技術，使用卷膜（web film）在同一機台上完成容器成型（forming）、藥液充填（filling）、密封（sealing）和切割（cutting）。常見於輸液軟袋、眼藥水等。</p>
+            <p><strong>終端滅菌 vs 無菌充填的分級差異</strong>：</p>
+            <ul>
+                <li>終端滅菌（Terminally Sterilised）產品的 FFS：遵循 8.3/8.4 條款（背景區域要求）</li>
+                <li>無菌充填（Aseptic Manufacture）的 FFS：遵循 8.10 條款（Grade A 充填區）</li>
+            </ul>
+            <p>這是 FFS 在法規上最關鍵的區分點——同樣的設備，使用場景不同，環境要求截然不同。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — FFS 像生產線上的「自動包裝機」</h4>
+            <p>FFS 就像便利商店的三明治自動包裝機：原料（薄膜）從一端進入，在同一台機器上自動完成成型、填料、密封。藥廠的 FFS 機台的核心挑戰是：密封品質（sealing quality）取決於溫度、壓力、時間的精確控制——任何一個參數偏差都可能導致密封不完全，直接危害藥品無菌性和穩定性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 包裝薄膜的生物負荷控制（8.97）</h4>
+            <p>FFS 的包裝薄膜（packaging film）是無菌保障鏈中的關鍵輸入材料。Annex 1 要求：</p>
+            <ul>
+                <li>薄膜的 Bioburden（微生物負荷）和 endotoxin/pyrogen 水平必須被定義和管控</li>
+                <li>這些控制要納入 PQS（產品品質系統）和 CCS（污染控制策略）</li>
+                <li>薄膜的厚度、強度、完整性、artwork 都必須符合規格</li>
+            </ul>
+            <p>這意味著薄膜供應商管理是 FFS 無菌保障的重要環節，不能只管製程本身。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>FFS 關鍵製程參數（CPP）摘要</h4>
+            <pre>
+FFS CPP 矩陣（8.101）：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+成型參數：
+  - 成型溫度（預熱/冷卻）
+  - 成型時間與壓力
+  - 包裝尺寸均一性
+
+密封參數（最關鍵）：
+  - 密封溫度（上下均一性）
+  - 密封時間與壓力
+  - 密封強度測試（每批次）
+
+充填參數：
+  - 充填體積、速度、均一性
+  - 批號印刷/壓印設定
+
+品質確認：
+  - 100% 密封完整性測試（8.22）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 接受 FFS 新客戶的評估重點</h4>
+            <p>當 CDMO 評估一個新的 FFS 客戶專案時，需優先確認：</p>
+            <ul>
+                <li><strong>終端滅菌 or 無菌充填？</strong> 決定了環境監控等級和 CCS 複雜度</li>
+                <li><strong>包裝薄膜規格</strong>：客戶提供的薄膜是否有符合 Annex 1 要求的 Bioburden/endotoxin COA？</li>
+                <li><strong>密封驗證</strong>：目前 FFS 機台的密封溫度/壓力驗證報告（PQ）是否涵蓋客戶的薄膜規格？</li>
+                <li><strong>CCS 整合</strong>：客戶的包裝薄膜管控是否已整合進廠內的 CCS 文件？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FFS 用於終端滅菌產品與無菌充填產品，在環境分級上有何不同？為什麼？</li>
+                <li>一個 FFS 批次發現有部分容器密封強度低於規格。依 8.103/8.104，應如何處理？需要哪些文件？</li>
+                <li>為何 FFS 的包裝薄膜需要控制 endotoxin/pyrogen 水平（8.97）？這與產品品質有何關聯？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 3: BLOW-FILL-SEAL (8.105-8.120) -->
+<!-- ============================================================ -->
+<div class="section-title" id="bfs">8.105–8.120 Blow-Fill-Seal (BFS) — 吹塑充填密封</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>8.105</strong> <span class="key-term">Blow-Fill-Seal equipment used for terminally sterilised products</span> should be installed in at least a grade D environment. The conditions at the point of fill should comply with the environmental requirements of paragraphs 8.3 and 8.4.</p>
+
+        <p><strong>8.106</strong> BFS used for aseptic processing:</p>
+        <ul>
+            <li><strong>i.</strong> For <span class="key-term">shuttle type equipment</span> used for aseptic filling, the parison is open to the environment and therefore the areas where parison extrusion, blow-moulding and sealing take place should meet <span class="key-term">grade A conditions</span> at the critical zones. The filling environment should be designed and maintained to meet grade A conditions for viable and total particle limits both at rest and when in operation.</li>
+            <li><strong>ii.</strong> For <span class="key-term">rotary-type equipment</span> used for aseptic filling, the parison is generally closed to the environment once formed, the filling environment within the parison should be designed and maintained to meet grade A conditions for viable and total particle limits both at rest and when in operation.</li>
+            <li><strong>iii.</strong> The equipment should be installed in at least a <span class="key-term">grade C environment</span>, provided that grade A/B clothing is used. The microbiological monitoring of operators wearing grade A/B clothing in a grade C area should be performed in accordance with risk management principles.</li>
+        </ul>
+
+        <p><strong>8.107</strong> Due to the generation of particles from <span class="key-term">polymer extrusion and cutting</span> during operation, and the restrictive size of critical filling zones of BFS equipment, in operation monitoring of total particle for BFS equipment is <span class="key-term">not expected</span>. However, data should be available to demonstrate that the design of the equipment ensures that critical zones of the filling process environment would meet grade A conditions in operation.</p>
+
+        <p><strong>8.108</strong> <span class="key-term">Viable environmental monitoring</span> of BFS processes should be risk-based, and designed in accordance with section 9 of this Annex. In operation viable monitoring should be undertaken for the full duration of critical processing, including equipment assembly. For rotary-type BFS equipment, it is acknowledged that monitoring of the critical filling zone may not be possible.</p>
+
+        <p><strong>8.109</strong> The environmental control and monitoring programme should take into consideration the moving parts and complex airflow paths generated by the BFS process and the effect of the <span class="key-term">high heat outputs</span> of the process (e.g. through the use of airflow visualization studies and/or other equivalent studies). Environmental monitoring programmes should also consider factors such as air-filter configuration, air-filter integrity, cooling systems integrity, equipment design and qualification.</p>
+
+        <p><strong>8.110</strong> Air or other gases that make contact with critical surfaces of the container during <span class="key-term">extrusion, formation or sealing</span> of the moulded container should undergo appropriate filtration. The quality of gas used and the effectiveness of gas filtration systems should be verified periodically.</p>
+
+        <p><strong>8.111</strong> Particulate and microbial contamination of the <span class="key-term">polymer granulate</span> should be prevented by appropriate design, control, and maintenance of the polymer granulate storage, sampling and distribution systems.</p>
+
+        <p><strong>8.112</strong> The capability of the <span class="key-term">extrusion system to provide appropriate sterility assurance</span> for the moulded container should be understood and validated. The sampling frequency, the bioburden and, where applicable, endotoxin/pyrogen levels of the <span class="key-term">raw polymer</span> should be defined and controlled within the PQS and considered in the CCS.</p>
+
+        <p><strong>8.113</strong> Interventions requiring cessation of filling and/or extrusion, moulding and sealing and, where required, <span class="key-term">re-sterilisation of the filling machine</span> should be clearly defined and described in the filling procedure, and included in the APS.</p>
+
+        <p><strong>8.114</strong> The controls identified during qualification of BFS should be in alignment with the site's CCS. Aspects to be considered include but are not limited to:</p>
+        <ul>
+            <li>i. determination of the boundaries of the critical zone</li>
+            <li>ii. environmental control and monitoring, both of the machine and the background</li>
+            <li>iii. personnel gowning requirements</li>
+            <li>iv. integrity testing of the product filling lines and filtration systems (as relevant)</li>
+            <li>v. duration of the batch or filling campaign</li>
+            <li>vi. control of polymer granulate, including distribution systems and critical extrusion temperatures</li>
+            <li>vii. cleaning-in-place and sterilisation-in-place of equipment as necessary</li>
+            <li>viii. machine operation, settings and alarm management (as relevant)</li>
+        </ul>
+
+        <p><strong>8.115</strong> Critical process parameters for BFS should be determined during equipment qualification and should include, but are not limited to:</p>
+        <ul>
+            <li>i. CIP and SIP of product pipelines and filling needles (mandrels)</li>
+            <li>ii. extrusion parameters: temperature, speed, extruder throat settings for parison thickness</li>
+            <li>iii. mould temperatures, including rate of cooling for product stability</li>
+            <li>iv. preparation and sterilisation of ancillary components (e.g. bottle caps)</li>
+            <li>v. environmental control, cleaning, sterilisation and monitoring of critical extrusion, transfer and filling areas</li>
+            <li>vi. batch-specific testing of <span class="key-term">package wall-thickness</span> at critical points</li>
+            <li>vii. settings for correct filling volumes, speeds and uniformity</li>
+            <li>viii. settings for printing (batch coding), embossing or debossing</li>
+            <li>ix. methods and parameters for <span class="key-term">integrity testing of 100% of all filled containers</span> (see paragraph 8.22)</li>
+            <li>x. settings for cutters or punches used to remove waste plastic surrounding filled units (<span class="key-term">flash removal</span>)</li>
+        </ul>
+
+        <p><strong>8.116</strong> Appropriate procedures for the verification, monitoring and recording of BFS critical process parameters and equipment operation should be applied during production.</p>
+
+        <p><strong>8.117</strong> Operational procedures should describe how blowing, forming and sealing issues are detected and rectified. Rejected units or sealing issues should be recorded and investigated.</p>
+
+        <p><strong>8.118</strong> Where the BFS process includes the addition of components to moulded containers (e.g. addition of caps to LVP bottles), these components should be appropriately decontaminated:</p>
+        <ul>
+            <li>i. For aseptic processes: addition of components should be performed under grade A conditions, using pre-sterilised components</li>
+            <li>ii. For terminally sterilised products: validation of terminal sterilisation should ensure sterility of all critical product pathways, including areas not wetted during sterilisation</li>
+            <li>iii. Testing procedures should be established and validated to ensure effective sealing of components and moulded containers</li>
+        </ul>
+
+        <p><strong>8.119</strong> Appropriate maintenance procedures should be established based on risk, and include maintenance and inspection plans for items critical to unit sealing, integrity and sterility.</p>
+
+        <p><strong>8.120</strong> The <span class="key-term">moulds used to form containers are considered critical equipment</span> and any changes or modification to moulds should result in an assessment of finished product container integrity, and where the assessment indicates, should be supported by validation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — BFS 技術特性</h4>
+            <p><strong>吹塑充填密封（Blow-Fill-Seal, BFS）</strong>：從聚合物顆粒（polymer granulate）出發，在同一機台上完成：擠出（extrusion）→ 吹塑成型（blow-moulding）→ 充填（filling）→ 密封（sealing）。整個過程不依賴預製容器，是高度整合的無菌充填技術。</p>
+            <p><strong>兩種主要機型</strong>：</p>
+            <ul>
+                <li><strong>往復式（Shuttle Type）</strong>：型胚（parison）在成型時對外部環境開放，關鍵區域需達 Grade A</li>
+                <li><strong>旋轉式（Rotary Type）</strong>：型胚成型後通常在封閉環境中，但旋轉結構使關鍵充填區的環境監控較為困難</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — BFS 像「現場鑄瓶立刻裝藥」</h4>
+            <p>BFS 就像一家礦泉水工廠：塑膠顆粒進來，機器先把它熔化、吹成瓶子（blow-moulding），瓶口還沒完全冷卻就立刻注入水，然後立刻密封。整個過程在幾秒內完成，容器從未暴露在外部環境中。</p>
+            <p>這就是 BFS 無菌保障的核心優勢：容器「出生」的瞬間就被充填和密封，幾乎沒有機會被污染。但代價是：高溫擠出和切割過程產生大量微粒，使得「在線粒子監控」（in operation total particle monitoring）幾乎不可能——Annex 1 在 8.107 明確認可了這一點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — BFS 的粒子監控豁免（8.107）</h4>
+            <p>8.107 是 Annex 1 中少見的「承認監控限制」條款：由於 BFS 製程本身會產生大量聚合物擠出和切割微粒，加上充填關鍵區空間狹小，<strong>不要求進行充填過程中的總粒子數監控（in-operation total particle monitoring）</strong>。</p>
+            <p>但這不代表完全免除責任——廠商必須有設計驗證數據（design qualification data），証明設備設計確保關鍵充填區在運作時能達到 Grade A 條件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 聚合物顆粒的無菌保障（8.112）</h4>
+            <p>BFS 的無菌保障不只在製程端——原料端的聚合物顆粒（polymer granulate）同樣需要被管控。Annex 1 要求：</p>
+            <ul>
+                <li>擠出系統對成型容器提供無菌保障的能力必須被理解和驗證</li>
+                <li>原始聚合物的微生物負荷（bioburden）和內毒素（endotoxin/pyrogen）水平必須被定義和管控</li>
+                <li>這些控制要整合進 PQS 和 CCS</li>
+            </ul>
+            <p>高溫擠出過程本身提供了一定的熱殺菌效果，但這必須被明確驗證，而不能僅憑假設。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>BFS 環境要求對比表</h4>
+            <pre>
+終端滅菌產品的 BFS（8.105）：
+  背景環境：最低 Grade D
+  充填點：符合 8.3/8.4 要求
+
+無菌充填的 BFS（8.106）：
+  往復式設備（Shuttle Type）：
+    關鍵區（擠出/吹塑/密封）：Grade A
+    背景環境：最低 Grade C（著 A/B 潔淨服）
+  旋轉式設備（Rotary Type）：
+    型胚內充填環境：Grade A
+    背景環境：最低 Grade C（著 A/B 潔淨服）
+
+在線粒子監控（8.107）：
+  不要求 in-operation 總粒子監控
+  但需設計驗證數據支持 Grade A 達成</pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 模具是關鍵設備（8.120）</h4>
+            <p>BFS 的模具（moulds）被明確定義為關鍵設備（critical equipment）。任何對模具的變更或修改，都必須：</p>
+            <ul>
+                <li>對成品容器完整性進行重新評估</li>
+                <li>若評估結果顯示有影響，必須進行驗證</li>
+            </ul>
+            <p>這是因為模具直接決定容器壁厚、容量和密封品質，模具的任何磨損或修改都可能改變這些關鍵參數，進而影響容器的密封完整性（CCI）和無菌性。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — BFS 在 CDMO 的客戶論證</h4>
+            <p>CDMO 向新客戶展示 BFS 技術的無菌保障時，需要能夠解釋：</p>
+            <ul>
+                <li>設計驗證（DQ）如何証明充填關鍵區達到 Grade A（即使無法做在線監控）</li>
+                <li>聚合物顆粒供應商如何管控 bioburden，以及廠內如何驗證儲存和分配系統</li>
+                <li>模具變更管理流程（Change Control），包括何時觸發容器完整性重新驗證</li>
+                <li>在線 100% 容器完整性測試（CCI）方法及其與 8.22 的合規性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 BFS 設備的往復式（shuttle type）和旋轉式（rotary type）在無菌充填場景下的環境要求不同？解釋背後的技術原因。</li>
+                <li>8.107 說 BFS 在運作時「不要求（not expected）」總粒子監控。這是否意味著廠商對充填區環境品質完全沒有責任？</li>
+                <li>BFS 加蓋（caps）操作（8.118）在無菌充填和終端滅菌場景下有何不同要求？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 4: LYOPHILIZATION (8.121-8.126) -->
+<!-- ============================================================ -->
+<div class="section-title" id="lyophilization">8.121–8.126 Lyophilization — 冷凍乾燥</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>8.121</strong> <span class="key-term">Lyophilization is a critical process step</span> and all activities that can affect the sterility of the product or material need to be regarded as extensions of the aseptic processing of the sterilised product. The lyophilization equipment and its processes should be designed to ensure that product or material sterility is maintained during lyophilization by <span class="key-term">preventing microbial and particle contamination</span> between the filling of products for lyophilization, and completion of lyophilization process. All control measures in place should be determined by the site's CCS.</p>
+
+        <p><strong>8.122</strong> The <span class="key-term">sterilisation of the lyophilizer and associated equipment</span> (e.g. trays, vial support rings) should be validated and the holding time between the sterilisation cycle and use appropriately challenged during APS (see paragraph 9.33). The lyophilizer should be sterilised regularly, based on system design. <span class="key-term">Re-sterilisation should be performed following maintenance or cleaning</span>. Sterilised lyophilizers and associated equipment should be protected from contamination after sterilisation.</p>
+
+        <div class="quote-box">
+            "8.123 Lyophilizers and associated product transfer and loading/unloading areas should be designed to minimize operator intervention as far as possible. The frequency of lyophilizer sterilisation should be determined based on the design and risks related to system contamination during use. <strong>Lyophilizers that are manually loaded or unloaded with no barrier technology separation should be sterilised before each load.</strong> For lyophilizers loaded and unloaded by automated systems or protected by closed barrier systems, the frequency of sterilisation should be justified and documented as part of the CCS."
+        </div>
+
+        <p><strong>8.124</strong> The <span class="key-term">integrity of the lyophilizer</span> should be maintained following sterilisation and during lyophilization. The filter used to maintain lyophilizer integrity should be sterilised before each use of the system and its <span class="key-term">integrity testing results should be part of the batch certification/release</span>. The frequency of vacuum/leak integrity testing of the chamber should be documented and the <span class="key-term">maximum permitted leakage of air</span> into the lyophilizer should be specified and checked at the start of every cycle.</p>
+
+        <p><strong>8.125</strong> Lyophilization trays should be checked regularly to ensure that they are not <span class="key-term">misshapen or damaged</span>.</p>
+
+        <p><strong>8.126</strong> Points to consider for the design of loading (and unloading, where the lyophilized material is still unsealed and exposed), include but are not limited to:</p>
+        <ul>
+            <li>i. The loading pattern within the lyophilizer should be specified and documented</li>
+            <li>ii. The transfer of partially closed containers to a lyophilizer should be undertaken under <span class="key-term">grade A conditions</span> at all times and handled in a manner designed to minimize direct operator intervention. Technologies such as conveyor systems or portable transfer systems (e.g. clean air transfer carts, portable unidirectional airflow workstations) should be used. Alternatively, trays closed in grade A and not reopened whilst in the grade B area may be used to protect partially stoppered vials (e.g. appropriately closed boxes).</li>
+            <li>iii. Airflow patterns should not be adversely affected by transport devices and venting of the loading zone</li>
+            <li>iv. <span class="key-term">Unsealed containers</span> (such as partially stoppered vials) should be maintained under grade A conditions and should normally be separated from operators by physical barrier technology or any other appropriate measures</li>
+            <li>v. Where seating of the stoppers is not completed prior to opening the lyophilizer chamber, product removed from the lyophilizer should remain under <span class="key-term">grade A conditions during subsequent handling</span></li>
+            <li>vi. Utensils used during loading and unloading of the lyophilizer (e.g. trays, bags, placing devices, tweezers) should be <span class="key-term">sterile</span></li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 冷凍乾燥的無菌延伸性</h4>
+            <p><strong>冷凍乾燥（Lyophilization）</strong>：在低溫真空環境下，將藥品中的水分從固態冰直接昇華為水蒸氣，以去除水分並延長藥品穩定性。冷凍乾燥機（Lyophilizer）是整個無菌製程的延伸——充填完成的半加蓋瓶（partially stoppered vials）仍處於「未封口」狀態，直到冷凍乾燥完成後才真正完成密封。</p>
+            <p>8.121 明確定義：冷凍乾燥是無菌製程的延伸（extension of aseptic processing）。這代表所有裝載、轉移、卸載操作都必須維持與無菌充填相同等級的污染控制。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 冷凍乾燥機是「無菌製程的延伸手術室」</h4>
+            <p>冷凍乾燥機就像手術室的一個「後備室」：手術（充填）完成後，病人（半加蓋瓶）還需要在另一個無菌空間（冷凍乾燥機）繼續接受治療（乾燥），期間傷口（瓶口）仍然暴露，無菌環境的要求一刻都不能鬆懈。</p>
+            <p>這就是為什麼冷凍乾燥機本身需要定期滅菌，且從充填站到冷凍乾燥機的轉移路徑必須全程維持 Grade A 條件。</p>
+        </div>
+
+        <div class="postponed-notice">
+            <h4>延後實施通知 — 8.123 條款（重要！）</h4>
+            <p><strong>8.123 條款中關於「手動裝載無屏障冷凍乾燥機須在每次裝載前進行滅菌」的要求，已推遲至 2024 年 8 月 25 日實施。</strong></p>
+            <p>原始 Annex 1 (2022) 要求：手動裝載/卸載且無屏障技術分隔的冷凍乾燥機，須在每次裝載前滅菌。對於許多尚未自動化的廠房，這是一個重大的操作負擔，PIC/S 給予了緩衝期。</p>
+            <p><strong>實務含義</strong>：廠商應檢視目前的冷凍乾燥機裝載方式，評估是否符合此要求，並將滅菌頻率決策明確記錄於 CCS 中。如果仍是手動裝載無屏障，應在 2024 年 8 月 25 日前完成合規改善或文件更新。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 冷凍乾燥機完整性測試（8.124）</h4>
+            <p>冷凍乾燥機的完整性（integrity）管控包含兩個層面：</p>
+            <ul>
+                <li><strong>濾器完整性</strong>：用於維持冷凍乾燥機完整性的過濾器必須在每次使用前滅菌，且其完整性測試結果必須作為批次放行（batch certification/release）的一部分</li>
+                <li><strong>腔體真空/洩漏完整性</strong>：腔體的真空/洩漏完整性測試頻率必須文件化，且每個循環開始前必須確認最大允許洩漏量（maximum permitted leakage）</li>
+            </ul>
+            <p>這意味著冷凍乾燥機的完整性測試結果是批次放行的必要文件，不是選擇性監控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 裝載設計與半加蓋瓶保護（8.126）</h4>
+            <p>8.126 列出了冷凍乾燥機裝載設計的關鍵考量點，核心原則是：</p>
+            <ul>
+                <li>半加蓋瓶從充填站到冷凍乾燥機的轉移必須全程在 <strong>Grade A</strong> 下進行</li>
+                <li>未封口容器必須與操作人員進行物理屏障隔離</li>
+                <li>所有接觸冷凍乾燥機的器具（托盤、夾具、鑷子等）必須是無菌的</li>
+                <li>冷凍乾燥機腔體開門後，若塞子尚未完全壓入，產品必須繼續在 Grade A 下處理</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>冷凍乾燥機滅菌頻率決策樹</h4>
+            <pre>
+問題：冷凍乾燥機如何裝載/卸載？
+        │
+        ├── 手動裝載，無屏障技術隔離
+        │     → 每次裝載前滅菌（8.123）
+        │       [注意：此要求延後至 2024/08/25 實施]
+        │
+        └── 自動化系統 OR 封閉屏障系統保護
+              → 滅菌頻率可調整
+                但必須：
+                - 有科學依據
+                - 記錄於 CCS
+                - 定期審查
+
+另外，以下情況必須重新滅菌（8.122）：
+  - 維護（Maintenance）後
+  - 清潔（Cleaning）後</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 冷凍乾燥機升級投資評估</h4>
+            <p>8.123 的要求促使許多 CDMO 重新評估手動冷凍乾燥機的改造投資：</p>
+            <ul>
+                <li><strong>現狀評估</strong>：手動裝載無屏障系統 → 每批前滅菌 → 增加生產時間和蒸汽消耗</li>
+                <li><strong>升級選項</strong>：安裝自動裝載系統（automated loading system）或 RABS/Isolator 屏障 → 可降低滅菌頻率，提高生產效率</li>
+                <li><strong>ROI 計算</strong>：節省的滅菌時間 × 批次數量 × 設備利用率 vs 升級資本支出</li>
+                <li><strong>CCS 更新</strong>：無論升級與否，滅菌頻率的決策依據必須明確記錄於 CCS</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何冷凍乾燥過程被定義為「無菌製程的延伸（extension of aseptic processing）」而不是獨立製程步驟？這對環境要求有何影響？</li>
+                <li>一家工廠的冷凍乾燥機目前是手動裝載，沒有屏障技術。根據 8.123，他們目前的操作是否合規？他們有哪些選項？</li>
+                <li>冷凍乾燥機的完整性測試結果（8.124）必須作為批次放行文件的一部分。請說明這在批次記錄（Batch Record）中應如何被記錄。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART 5: CLOSED SYSTEMS (8.127-8.130) -->
+<!-- ============================================================ -->
+<div class="section-title" id="closed-systems">8.127–8.130 Closed Systems — 密閉系統</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>8.127</strong> The use of <span class="key-term">closed systems</span> can reduce the risk of microbial, particle and chemical contamination from the adjacent environment. Closed systems should always be designed to <span class="key-term">reduce the need for manual manipulations</span> and the associated risks.</p>
+
+        <p><strong>8.128</strong> It is critical to ensure the <span class="key-term">sterility of all product contact surfaces</span> of closed systems used for aseptic processing. The design and selection of any closed system used for aseptic processing should ensure maintenance of sterility. Connection of sterile equipment (e.g. tubing/pipework) to the sterilised product pathway after the final sterilising grade filter should be designed to be connected <span class="key-term">aseptically (e.g. by intrinsic sterile connection devices)</span>.</p>
+
+        <p><strong>8.129</strong> Appropriate measures should be in place to ensure the integrity of components used in <span class="key-term">aseptic connections</span>. The means by which this is achieved should be determined and captured in the CCS. Appropriate <span class="key-term">system integrity tests</span> should be considered when there is a risk of compromising product sterility. Supplier assessment should include the collation of data in relation to potential <span class="key-term">failure modes that may lead to a loss of system sterility</span>.</p>
+
+        <p><strong>8.130</strong> The background environment in which closed systems are located should be based on their design and the processes undertaken. For aseptic processing and where there are any risks that system integrity may be compromised, the system should be located in <span class="key-term">grade A</span>. If the system can be shown to remain integral at every usage (e.g. via pressure testing and/or monitoring) then a lower classified area may be used. Any transfer between classified areas should be thoroughly assessed (see paragraph 4.10).</p>
+
+        <p>If the <span class="key-term">closed system is opened</span> (e.g. for maintenance of a bulk manufacturing line) then this should be performed in a classified area appropriate to the materials (e.g. grade C for terminal sterilisation processes, or <span class="key-term">grade A for aseptic processing</span>) or be subject to further cleaning and disinfection (and sterilisation in case of aseptic processes).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 密閉系統定義</h4>
+            <p><strong>密閉系統（Closed System）</strong>：在無菌製程中，指一個與外部環境完全隔離的液體處理系統，產品不暴露於周圍環境。典型例子：無菌轉移管路、一次性使用袋（Single-Use Bag）系統、整合式過濾充填管路。</p>
+            <p><strong>密閉系統的三大保護優勢</strong>：</p>
+            <ul>
+                <li>降低微生物污染（microbial contamination）風險</li>
+                <li>降低微粒污染（particle contamination）風險</li>
+                <li>降低化學污染（chemical contamination）風險</li>
+            </ul>
+            <p><strong>設計核心原則</strong>：最小化手動操作（minimize manual manipulations）。每次人工介入都是污染風險的增加點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 密閉系統像「封閉式輸血管路」</h4>
+            <p>密閉系統就像醫院的靜脈輸液管路：從血袋到患者手臂的整條路徑都是封閉的，血液（藥液）在整個轉移過程中不暴露於空氣。如果需要在中途接上另一條管路（aseptic connection），必須使用特殊的無菌連接裝置（sterile connector），而不能打開系統暴露在空氣中。</p>
+            <p>8.128 的核心要求就是：除菌濾器後的管路連接，必須使用能保持系統無菌的連接方式（例如 sterile weld 或 aseptic connector），不能用普通的螺紋接頭或手動打開連接。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 無菌連接設備（8.128/8.129）</h4>
+            <p>在除菌濾器後的所有管路連接必須設計為「本質上無菌（intrinsically sterile）」的連接方式。常見的合規解決方案：</p>
+            <ul>
+                <li><strong>無菌焊接（Sterile Weld / Tube Welding）</strong>：使用熱融焊接技術在封閉環境中連接管路，連接點本身就是無菌的</li>
+                <li><strong>無菌快速連接器（Aseptic Connector）</strong>：設計為可在非無菌環境下連接但保持連接點無菌的專用接頭</li>
+                <li><strong>Rapid Transfer Port (RTP)</strong>：快速傳遞口，用於密閉系統之間的無菌轉移</li>
+            </ul>
+            <p>供應商評估（supplier assessment）必須包含潛在失效模式（failure modes）的數據收集，這是 CCS 的必要輸入。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>密閉系統背景環境決策矩陣（8.130）</h4>
+            <pre>
+問題：密閉系統應放置在何種環境分級？
+        │
+        ├── 無菌製程 AND 有任何系統完整性被破壞的風險
+        │     → Grade A
+        │
+        ├── 無菌製程 AND 可通過壓力測試/監控
+        │   證明系統在每次使用時均保持完整
+        │     → 可使用較低分級區域
+        │       （但需評估並文件化）
+        │
+        └── 密閉系統被開啟（如：維護）：
+              - 終端滅菌製程 → Grade C
+              - 無菌製程     → Grade A
+              OR
+              進行清潔、消毒（無菌製程需加上滅菌）</pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 密閉系統評估在 CDMO 的商業意義</h4>
+            <p>密閉系統設計的好壞直接影響 CDMO 的競爭力：</p>
+            <ul>
+                <li><strong>背景環境降級的可能性</strong>：如果能夠充分論證密閉系統的完整性（8.130），可能將操作從 Grade A 降至較低分級，顯著降低環境監控成本和複雜度</li>
+                <li><strong>供應商選擇</strong>：無菌連接器、焊接設備的選擇直接影響系統完整性——需要供應商提供失效模式數據（failure mode data）作為 CCS 的輸入</li>
+                <li><strong>一次性使用系統（SUS）整合</strong>：SUS 本質上是密閉系統的延伸，8.127-8.130 的要求對 SUS 的設計選型有直接指導意義（參見 8.131-8.139）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>密閉系統（8.127）如何改變傳統無菌製程的污染控制策略？它能否完全取代嚴格的環境分級要求？</li>
+                <li>根據 8.130，一個密閉系統的背景環境在什麼條件下可以從 Grade A 降級到較低分級？需要哪些文件支持？</li>
+                <li>若在無菌製程中需要開啟密閉系統進行維護，應在何種環境分級下進行？事後需要做什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border: 1px solid #fb923c;">
+    <h3 style="color: #c2410c;">本節重點回顧 Section 8C Summary</h3>
+    <ul>
+        <li><strong>除菌過濾（8.79-8.95）</strong>：PUPSIT（使用前滅菌後完整性測試）是 Annex 1 (2022) 的強制要求，豁免須有充分風險評估和補償控制；微生物負荷採樣必須在最終過濾前緊接執行；除菌濾器原則上單批次使用</li>
+        <li><strong>FFS（8.96-8.104）</strong>：終端滅菌與無菌充填適用不同環境分級；包裝薄膜的 Bioburden/endotoxin 控制必須納入 PQS 和 CCS；密封溫度均一性是最關鍵的 CPP</li>
+        <li><strong>BFS（8.105-8.120）</strong>：高溫擠出製程免除在線總粒子監控要求，但需設計驗證數據；原始聚合物的微生物負荷也需管控；模具是關鍵設備，任何修改需重新評估容器完整性</li>
+        <li><strong>冷凍乾燥（8.121-8.126）</strong>：冷凍乾燥是無菌製程的延伸，全程需維持無菌條件；8.123 手動裝載每批前滅菌要求已延後至 2024 年 8 月 25 日實施；冷凍乾燥機完整性測試結果是批次放行必要文件</li>
+        <li><strong>密閉系統（8.127-8.130）</strong>：除菌濾器後的管路連接必須使用本質上無菌的連接方式（如無菌焊接、無菌連接器）；密閉系統可在論證完整性後使用較低分級背景環境</li>
+    </ul>
+</div>
+
+<!-- DECISION HIERARCHY REMINDER -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border: 1px solid #ef4444;">
+    <h3 style="color: #b91c1c;">決策層次提醒 Decision Hierarchy</h3>
+    <div class="hierarchy-diagram">
+        <div class="hierarchy-level">
+            <div class="hierarchy-box level-1">1. 無菌保證 Sterility Assurance — 永遠第一</div>
+        </div>
+        <div class="arrow-down">▼</div>
+        <div class="hierarchy-level">
+            <div class="hierarchy-box level-2">2. 產品關鍵品質屬性 CQAs — 患者安全</div>
+        </div>
+        <div class="arrow-down">▼</div>
+        <div class="hierarchy-level">
+            <div class="hierarchy-box level-3">3. 商業與操作彈性 Business Flexibility — 最後考量</div>
+        </div>
+    </div>
+    <p style="font-size:0.9rem; color:#7f1d1d; text-align:center; margin-top:0.75rem;">本節所有技術選擇（PUPSIT、環境分級、滅菌頻率、密閉系統設計）都必須以無菌保證為最高優先。</p>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

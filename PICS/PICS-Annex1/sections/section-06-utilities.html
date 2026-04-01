@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 1 - Section 6: Utilities</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; color: #f97316; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; color: #fb923c; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 6: Utilities</h1>
+    <div class="subtitle">第六節：公用設施</div>
+    <div class="page-info">PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products | p16 - p18</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本節學習目標</h3>
+    <ul>
+        <li>理解公用設施風險分級原則，掌握高風險公用設施（直接接觸產品）vs 低風險公用設施的管控差異</li>
+        <li>熟悉注射用水 (WFI, Water for Injection) 系統的設計、生產方式、儲存溫度要求與監測規定</li>
+        <li>瞭解純蒸汽 (Pure Steam) 的品質要求，包括非凝結氣體、乾燥度與過熱度</li>
+        <li>掌握壓縮氣體與真空系統在無菌製程中的特殊過濾與完整性測試要求</li>
+    </ul>
+</div>
+
+<!-- 6.1-6.6: General Utilities -->
+<div class="section-title">6.1–6.6 公用設施通則 General Utilities Principles</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>6.1</strong> The nature and extent of controls applied to <span class="key-term">utility systems</span> should be commensurate with the <span class="key-term">risk to product quality</span> associated with the utility. The impact should be determined via a <span class="key-term">risk assessment</span> and documented as part of the CCS.</p>
+
+        <p><strong>6.2</strong> In general, <span class="key-term">higher risk utilities</span> are those that:</p>
+        <ul>
+            <li>i. directly contact product e.g. water for washing and rinsing, gases and steam for sterilisation,</li>
+            <li>ii. contact materials that will ultimately become part of the product,</li>
+            <li>iii. contact surfaces that come into contact with the product,</li>
+            <li>iv. otherwise directly impact the product.</li>
+        </ul>
+
+        <p><strong>6.3</strong> Utilities should be <span class="key-term">designed, installed, qualified, operated, maintained and monitored</span> in a manner to ensure that the utility system functions as expected.</p>
+
+        <p><strong>6.4</strong> Results for critical parameters and critical quality attributes of high risk utilities should be subject to <span class="key-term">regular trend analysis</span> to ensure that system capabilities remain appropriate.</p>
+
+        <p><strong>6.5</strong> Records of utility system installation should be maintained throughout the system's life-cycle. Such records should include current drawings and schematic diagrams, construction material lists and system specifications. Typically, important information includes attributes such as:</p>
+        <ul>
+            <li>i. pipeline flow direction, slopes, diameter and length,</li>
+            <li>ii. tank and vessel details,</li>
+            <li>iii. valves, filters, drains, sampling and user points,</li>
+        </ul>
+
+        <p><strong>6.6</strong> <span class="key-term">Pipes, ducts and other utilities should not be present in cleanrooms</span>. If unavoidable, then they should be installed so that they do not create recesses, unsealed openings and surfaces which are difficult to clean. Installation should allow cleaning and disinfection of outer surface of the pipes.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>公用設施 (Utilities) 風險分級：</strong>PIC/S 採用「風險相稱性原則 (risk-commensurate principle)」——管控強度與產品品質風險成正比。高風險公用設施（直接接觸產品或與產品接觸表面接觸者）需要完整的確效、監測與趨勢分析；低風險公用設施（如廠房照明用電）管控程度相對寬鬆。</p>
+            <p><strong>CCS（污染控制策略）的一部分：</strong>公用設施的風險評估結果必須整合進 CCS，這代表公用設施管理不是孤立的——它是整廠無菌保證體系的組成部分，需要跨部門（工程、品管、生產）協作維護。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>公用設施就像醫院的各種「維生系統」——供氧管線（直接進入病人肺部，高風險）vs 走廊照明電路（低風險）。醫院對供氧管線有嚴格的材質認證、壓力監測與備援系統，對照明電路則只要正常維修即可。PIC/S 的公用設施風險分級邏輯與此相同：管控強度由風險驅動。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>潔淨室管線安裝的合規要點（6.6）：</strong></p>
+            <ul>
+                <li>管線理想情況下不應進入潔淨室——因為管線接頭、法蘭、保溫材料都是潛在的積塵/積液點</li>
+                <li>若不可避免，管線外表面必須可清潔消毒（不能有死角、縫隙、凹槽）</li>
+                <li>常見缺陷：管線穿牆處密封不良，形成氣流短路路徑，破壞潔淨室氣壓階梯</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>請列出你的廠房中三種高風險公用設施和三種低風險公用設施，並說明你的風險判斷依據。</li>
+                <li>若公用設施的趨勢分析顯示 WFI 電導率在過去三個月呈現緩慢上升趨勢（但仍在規格內），應採取什麼行動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.7-6.15: Water Systems (WFI) -->
+<div class="section-title">6.7–6.15 水系統：注射用水 (WFI) 與監測 Water Systems: WFI &amp; Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>6.7</strong> <span class="key-term">Water treatment plant and distribution systems</span> should be designed, constructed, installed, commissioned, qualified, monitored and maintained to prevent microbiological contamination and to ensure a reliable source of water of an appropriate quality. Measures should be taken to minimize the risk of presence of particulates, microbial contamination/proliferation and <span class="key-term">endotoxin/pyrogen</span> (e.g. sloping of piping to provide complete drainage and the avoidance of <span class="key-term">dead legs</span>). Where filters are included in the system, special attention should be given to their monitoring and maintenance. Water produced should comply with the current monograph of the relevant Pharmacopeia.</p>
+
+        <p><strong>6.8</strong> Water systems should be <span class="key-term">qualified and validated</span> to maintain the appropriate levels of physical, chemical and microbial control, taking the effect of <span class="key-term">seasonal variation</span> into account.</p>
+
+        <p><strong>6.9</strong> <span class="key-term">Water flow should remain turbulent</span> through the pipes in water distribution systems to minimize the risk of microbial adhesion, and subsequent <span class="key-term">biofilm formation</span>. The flow rate should be established during qualification and be routinely monitored.</p>
+
+        <p><strong>6.10</strong> <span class="key-term">Water for injections (WFI)</span> should be produced from water meeting specifications that have been defined during the qualification process, stored and distributed in a manner which minimizes the risk of microbial growth (e.g. by <span class="key-term">constant circulation at a temperature above 70°C</span>). WFI should be produced by distillation or by a purification process that is equivalent to distillation. This may include <span class="key-term">reverse osmosis</span> coupled with other appropriate techniques such as electrodeionization (EDI), ultrafiltration or nanofiltration.</p>
+
+        <p><strong>6.11</strong> Where WFI storage tanks are equipped with <span class="key-term">hydrophobic bacteria retentive vent filters</span>, the filters should not be a source of contamination and the integrity of the filter tested before installation and after use. Controls should be in place to prevent <span class="key-term">condensation formation on the filter</span> (e.g. by heating).</p>
+
+        <p><strong>6.12</strong> To minimize the risk of <span class="key-term">biofilm formation</span>, sterilisation, disinfection or regeneration of water systems should be carried out according to a predetermined schedule and as a remedial action following out-of-limit or specification results. Disinfection of a water system with chemicals should be followed by a <span class="key-term">validated rinsing/flushing procedure</span>. Water should be tested after disinfection/regeneration. Chemical testing results should be approved before the water system is returned to use and microbiological/endotoxin results verified to be within specification and approved before batches manufactured using water from the system are considered for certification/release.</p>
+
+        <p><strong>6.13</strong> <span class="key-term">Regular ongoing chemical and microbial monitoring</span> of water systems should be performed to ensure that the water continues to meet compendial expectations. Alert levels should be based on the initial qualification data and thereafter periodically reassessed on data obtained during subsequent re-qualifications, routine monitoring, and investigations. Sampling programmes should reflect the requirements of the CCS and should include all outlets and points of use, at a specified interval, to ensure that representative water samples are obtained for analysis on a regular basis. Sample plans should be based on the qualification data, should consider the potential worst case sampling locations and should ensure that at least one representative sample is included <span class="key-term">every day of the water that is used for manufacturing processes</span>.</p>
+
+        <p><strong>6.14</strong> <span class="key-term">Alert level excursions</span> should be documented and reviewed, and include an investigation to determine whether the excursion is a single (isolated) event or if results are indicative of an adverse trend or system deterioration. Each <span class="key-term">action limit excursion</span> should be investigated to determine the probable root causes and any potential impact on the quality of products and manufacturing processes as a result of the use of the water.</p>
+
+        <p><strong>6.15</strong> WFI systems should include <span class="key-term">continuous monitoring systems</span> such as <span class="key-term">Total Organic Carbon (TOC)</span> and <span class="key-term">conductivity</span>, as these may give a better indication of overall system performance than discrete sampling. Sensor locations should be based on risk.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>注射用水 (Water for Injection, WFI)：</strong>用於注射劑製造的最高等級製藥用水，必須符合藥典標準（內毒素、微生物、化學純度）。WFI 是無菌注射劑製造的「命脈」，品質失控直接影響每一批產品的安全性。</p>
+            <p><strong>純化水 (Purified Water, PW)：</strong>用於非注射劑產品的製藥用水，標準低於 WFI。在無菌生產線中，WFI 是首選，PW 只能用於低風險步驟（如設備預清洗）。</p>
+            <p><strong>死角 (Dead Legs)：</strong>管線中流速接近零的末端區域，是生物膜 (biofilm) 生長的溫床。WHO 和各藥典建議死角長度不超過管徑的 6 倍 (6D rule)。</p>
+            <p><strong>總有機碳 (TOC, Total Organic Carbon)：</strong>衡量水中有機物含量的指標，間接反映微生物污染風險與系統清潔程度。電導率 (conductivity) 則反映無機離子含量。兩者的連續監測能提供比間歇取樣更早的系統惡化預警。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>WFI 系統就像「醫院的點滴水製造系統」——病人靜脈注射的生理食鹽水，必須從最純淨的水源製造，在全程密封的管路中循環，以高溫（70°C以上）抑制細菌生長。一旦水質惡化（生物膜、內毒素），就如同點滴水被汙染，每一個接受點滴的病人都面臨危險。這就是為什麼 WFI 系統的監測要求如此嚴格——它保護的是終端患者的生命安全。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>WFI 系統關鍵溫度與流速要求</h4>
+            <pre>
+WFI 儲存與循環溫度：
+  熱循環 (hot loop)：&gt; 70°C  ← 抑制微生物生長
+  冷循環 (cold loop)：&lt; 4°C  ← 替代方案（需驗證）
+
+湍流條件 (Turbulent Flow)：
+  Reynolds number Re &gt; 4000 (湍流)
+  Re = ρvD/μ
+  其中 ρ = 密度、v = 流速、D = 管徑、μ = 黏度
+
+死角限制：
+  死角長度 ≤ 6 × 管徑 (6D rule)
+  超過 6D 的死角需有特殊清潔/消毒驗證
+
+監測頻率（最低要求）：
+  每個製造日至少一個代表性取樣點
+  關鍵使用點 (critical points of use) 更高頻率
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>疏水性通氣過濾器 (Hydrophobic Vent Filter) 的管理（6.11）：</strong></p>
+            <ul>
+                <li>WFI 儲罐的通氣過濾器是潛在的污染入口——外界空氣中的微生物可能穿越失效的過濾器進入儲罐</li>
+                <li>過濾器必須在安裝前和使用後進行完整性測試（泡點或擴散流測試）</li>
+                <li>必須有防冷凝水機制（如電加熱套管）——冷凝水會堵塞疏水性濾膜，使過濾失效，同時創造微生物生長條件</li>
+                <li>這是 WFI 系統中一個常被忽略的合規風險點</li>
+            </ul>
+            <p><strong>警戒限與行動限的差異（6.14）：</strong>警戒限 (Alert Level) 超標僅需調查是否為趨勢的開始；行動限 (Action Limit) 超標則必須調查根本原因、評估已製造批次的影響，並採取糾正措施，直到系統恢復正常才能繼續使用。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 廠房設計時，WFI 系統的設計決策直接影響長期合規成本：選擇熱循環系統（&gt;70°C）vs 冷循環系統（&lt;4°C）各有優缺點。熱循環系統能有效抑制生物膜，但能耗較高；冷循環系統能耗低，但需要更嚴密的微生物監測。多數無菌注射劑設施選擇熱循環作為首選，以減少微生物控制的驗證負擔。此外，在 CDMO 業務中，WFI 系統容量必須考慮多產品同時生產的需求，避免因容量不足導致製造延誤。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>WFI 系統的生物膜一旦形成，為何難以通過一般消毒清除？應採取什麼根本性的系統設計措施來預防？</li>
+                <li>若 WFI 系統的化學消毒後，TOC 值仍偏高（超過行動限），請描述在恢復生產前需要完成的所有步驟。</li>
+                <li>季節性變化如何影響 WFI 系統品質？請舉一個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.16-6.17: Pure Steam -->
+<div class="section-title">6.16–6.17 純蒸汽（作為直接滅菌介質）Pure Steam as Direct Sterilising Agent</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>6.16</strong> Feed water to a <span class="key-term">pure steam (clean steam) generator</span> should be appropriately purified. Pure steam generators should be designed, qualified and operated in a manner to ensure that the quality of steam produced meets defined chemical and endotoxin levels.</p>
+
+        <p><strong>6.17</strong> Steam used as a direct sterilising agent should be of suitable quality and should not contain additives at a level which could cause contamination of product or equipment. For a generator supplying pure steam used for the <span class="key-term">direct sterilisation of materials or product-contact surfaces</span> (e.g. porous / hard-good autoclave loads), steam condensate should meet the <span class="key-term">current monograph for WFI</span> of the relevant Pharmacopeia (microbial testing is not mandatory for steam condensate). A suitable sampling schedule should be in place to ensure that representative pure steam is obtained for analysis on a regular basis. Other aspects of the quality of pure steam used for sterilisation should be assessed periodically against validated parameters. These parameters should include the following (unless otherwise justified): <span class="key-term">non-condensable gases</span>, <span class="key-term">dryness value (dryness fraction)</span> and <span class="key-term">superheat</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>純蒸汽 (Pure Steam / Clean Steam)：</strong>由高純度進水（通常為 PW 或 WFI 等級）產生、不含防腐劑添加物的蒸汽，用於直接接觸產品或設備內表面的滅菌。其冷凝液必須達到 WFI 標準（但微生物測試可不強制）。</p>
+            <p><strong>三個關鍵品質參數：</strong></p>
+            <ul>
+                <li><strong>非凝結氣體 (Non-condensable Gases)：</strong>如空氣、氮氣——會在滅菌室角落形成「氣穴」，阻礙蒸汽穿透，導致局部冷點和滅菌失效。</li>
+                <li><strong>乾燥度 (Dryness Value/Fraction)：</strong>純蒸汽中純蒸汽與液態水的比例——液態水過多（濕蒸汽）會稀釋殺菌效果，並可能帶入微粒或化學污染物。</li>
+                <li><strong>過熱度 (Superheat)：</strong>蒸汽溫度超過飽和溫度的程度——過高則蒸汽變乾、殺菌效果下降；適當的飽和蒸汽才能高效傳遞潛熱進行滅菌。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>純蒸汽滅菌就像「高壓鍋烹飪」——鍋內必須充滿飽和蒸汽才能達到均勻高溫。若鍋內有空氣（非凝結氣體），某些角落溫度達不到殺菌要求；若蒸汽太「濕」（液態水過多），熱傳導效率下降；若蒸汽過「乾」（過熱），則像熱空氣而非蒸汽，殺菌效果大幅降低。純蒸汽品質管控就是確保「鍋內條件理想」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>純蒸汽冷凝液符合 WFI 標準，但不強制進行微生物測試——這是一個常見的考試和審計問題點。理由是蒸汽的高溫本身即具有滅菌效果，冷凝液的微生物風險主要來自冷凝後的環境污染，而非蒸汽本身。但化學指標（TOC、電導率、內毒素）仍必須符合 WFI 藥典標準。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若滅菌釜的生物指示劑 (BI) 測試失敗，你懷疑是非凝結氣體過高導致的冷點。你會如何設計調查計畫來確認這個假設？</li>
+                <li>純蒸汽的進水必須「適當純化」——在你的廠房中，這個進水應該是 WFI、PW 還是城市供水？你的選擇依據是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 6.18-6.22: Gases, Vacuum & Heating/Cooling -->
+<div class="section-title">6.18–6.22 壓縮氣體、真空系統與加熱冷卻系統 Compressed Gases, Vacuum &amp; HVAC/Cooling Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>6.18</strong> Gases that come in direct contact with the product/primary container surfaces should be of <span class="key-term">appropriate chemical, particulate and microbial quality</span>. All relevant parameters, including oil and water content, should be specified, taking into account the use and type of the gas, the design of the gas generation system and, where applicable, comply with the current monograph of the relevant Pharmacopeia or the product quality requirement.</p>
+
+        <p><strong>6.19</strong> Gases used in aseptic processes should be filtered through a <span class="key-term">sterilising grade filter</span> (with a nominal pore size of a maximum of 0.22 µm) at the point of use. Where the filter is used on a batch basis (e.g. for filtration of gas used for overlay of aseptically filled products) or as product vessel vent filter, then the <span class="key-term">filter should be integrity tested</span> and the results reviewed as part of the batch certification/release process. Any transfer pipework or tubing that is located after the final sterilising grade filter should be sterilised. When gases are used in the process, <span class="key-term">microbial monitoring of the gas</span> should be performed periodically at the point of use.</p>
+
+        <p><strong>6.20</strong> Where <span class="key-term">backflow from vacuum or pressure systems</span> poses a potential risk to the product, there should be mechanism(s) to prevent backflow when the vacuum or pressure system is shut off.</p>
+
+        <p><strong>6.21</strong> Major items of equipment associated with <span class="key-term">hydraulic, heating and cooling systems</span> should, where possible, be located outside the filling room. There should be appropriate controls to contain any spillage and/or cross contamination associated with the system fluids.</p>
+
+        <p><strong>6.22</strong> Any leaks from these systems that would present a risk to the product should be <span class="key-term">detectable</span> (e.g. an indication system for leakage).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>滅菌級過濾器 (Sterilising Grade Filter, 0.22 µm)：</strong>用於過濾氣體以達到無菌品質。在無菌充填製程中，氮氣覆蓋 (nitrogen overlay)、產品容器通氣 (vessel venting) 等步驟使用的氣體必須通過 0.22 µm 過濾器，並在批次結束時進行完整性測試——與液體過濾器一樣，通過完整性測試的記錄是批次放行的必要文件。</p>
+            <p><strong>逆流防護 (Backflow Prevention)：</strong>真空管線或壓力系統關閉時，若沒有止回閥 (check valve) 或其他防逆流機制，可能發生管線中的物質逆流進入產品容器，造成污染。這在液體充填步驟尤其危險。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>無菌製程中的壓縮氣體就像「手術室的麻醉氣體管線」——必須是最純淨的醫療級氣體，每個使用點都有過濾保障，且管線材質與接頭都必須經過特殊認證。若氣體含油（壓縮機油污）、含水（冷凝水）或含微粒，直接進入開口容器會污染產品。這就是為什麼氣體品質規格必須包括含油量、含水量的限制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>氣體過濾完整性測試是批次放行文件的一部分（6.19）：</strong>這一點常被忽略。以下兩種情況的過濾器都必須完整性測試並作為批次記錄的一部分：</p>
+            <ul>
+                <li>批次方式使用的氣體過濾器（如充填過程中的氮氣覆蓋濾器）</li>
+                <li>產品容器的通氣過濾器</li>
+            </ul>
+            <p><strong>滅菌後管線的滅菌要求（6.19）：</strong>最終滅菌濾器之後的任何傳輸管路也必須滅菌——氣體雖然已過濾無菌，但若流過未滅菌的管路，仍可能帶走管路上的微生物污染物。這個「出口後管線也要滅菌」的概念同樣適用於液體過濾系統。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 廠房驗收時，公用設施的確效文件往往是最容易被忽略的文件之一。建議在廠房啟用前建立以下清單：WFI 系統確效報告（含季節性驗證）、純蒸汽品質測試報告（非凝結氣體、乾燥度、過熱度）、壓縮空氣/氮氣品質規格與監測記錄、各關鍵過濾器的初始完整性測試記錄。這些文件在 GMP 稽核時往往是查核的第一重點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>充填結束後，氮氣覆蓋用的 0.22 µm 過濾器完整性測試失敗。你需要採取哪些步驟？這批產品應如何處置？</li>
+                <li>冷卻系統的冷媒液 (coolant) 洩漏進入充填區地板。這屬於什麼等級的偏差？你的立即行動程序是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>公用設施管控強度必須與產品品質風險相稱，高風險公用設施（直接接觸產品或接觸產品接觸面）需完整確效、趨勢分析，並納入 CCS。</li>
+        <li>WFI（注射用水）系統需熱循環（&gt;70°C）或等效低溫措施儲存，避免死角、維持湍流、防止生物膜；WFI 儲罐疏水性通氣過濾器需完整性測試並防冷凝。WFI 系統需每製造日至少取樣一次，持續監測 TOC 與電導率。</li>
+        <li>純蒸汽冷凝液須符合 WFI 化學標準；三個關鍵品質參數（非凝結氣體、乾燥度、過熱度）需定期確認。</li>
+        <li>無菌製程中的氣體須通過 0.22 µm 滅菌過濾器，批次方式使用的過濾器需完整性測試且納入批次放行文件；真空/壓力系統需防逆流機制；冷卻/液壓系統應置於充填室外，洩漏須可偵測。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+</body>
+</html>
