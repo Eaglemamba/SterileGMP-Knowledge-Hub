@@ -6,6 +6,94 @@ Last updated: 2026-04-01 (ICH Q trilogy complete: Q8R2 + Q9R1 + Q10; ISPE Vol.6 
 
 ---
 
+## System Architecture — Three Layers
+
+The hub is designed as a three-layer knowledge system. Skills (slash commands) read from all three layers to produce site-grounded, regulation-backed outputs.
+
+```
+Layer 1: Regulatory / Technical Reference    knowledge/
+  PDA, ISPE, PIC/S, FDA, ICH, USP, ISO      ← This repo (public)
+
+Layer 2: Operational Frameworks              .claude/skills/_shared/
+  Templates, decision frameworks,            ← This repo (public)
+  checklists, reference tables
+
+Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
+  Desensitized SOPs, WIs,                   ← Separate private repo
+  IQ/OQ/PQ reports, validation reports
+```
+
+**Why separate repos for Layer 3:** This repo is public. Site SOPs contain proprietary process logic and may reflect client product information. Even after desensitization, the document structure itself carries IP risk. Layer 3 lives in a private repo, read locally by skills.
+
+### Layer 2 — Operational MD Files to Build (~27 files)
+
+| Type | Files | Used by |
+|------|-------|---------|
+| Output templates | deviation report, CAPA, OOS worksheet, CC form, SOP structure, PQR chapter, FMEA, IQ/OQ/PQ scope, tech transfer checklist, supplier audit | All major skills |
+| Decision frameworks | deviation classification, change classification, batch disposition, HBEL/MACO calc, GAMP category, supplier type matrix | deviation, change-control, batch-release, hbel-screen, csv-plan |
+| Checklists | EM excursion response, inspection filling area, inspection QC lab, inspection warehouse, client audit data room, tech transfer 6-stage | em-excursion, inspection-prep, client-audit, tech-transfer |
+| Reference tables | Annex 1 section map, FDA 483 common observations, validation trigger matrix, DI 9-Box framework, CPV statistical guide | annex1-check, inspection-prep, validation-xref, di-check, cpv-review |
+
+### Layer 3 — Site Documents Pipeline
+
+Layer 3 is fed by the Amaran AI SOP project (`~/Amaran-AI-SOP/`), which already has:
+- `sop_to_markdown.py` — SOP → Markdown conversion (v3.7)
+- `amaran_redact.py` — desensitization script
+- 9 pilot SOPs converted and verified
+
+**Human review is required for every desensitized document before it enters Layer 3.** This step cannot be automated.
+
+---
+
+## Skills System — 26 Slash Commands
+
+See `SKILLS.md` for the full skill list with usage scenarios, initiating departments, and QA roles.
+
+**Build priority:**
+
+| Priority | Skills | Rationale |
+|----------|--------|-----------|
+| P0 | `/deviation`, `/change-control` | Highest daily frequency |
+| P1 | `/em-excursion`, `/sop-new`, `/sop-revision`, `/annex1-check`, `/inspection-prep`, `/client-audit`, `/oos-investigate`, `/cc-sop-impact` | Core quality system activities |
+| P2 | `/complaint`, `/reg-gap`, `/di-check`, `/pqr-framework`, `/feasibility`, `/hbel-screen`, `/bd-qa`, `/batch-release`, `/training-content`, `/csv-plan` | Periodic or scenario-specific |
+| P3 | `/cpv-review`, `/tech-transfer`, `/qualification-plan`, `/validation-xref`, `/risk-assess`, `/supplier-qual` | Project-level or complex |
+
+**Skills with supporting files use a folder structure:**
+
+```
+.claude/skills/
+├── _shared/               ← cross-skill templates and frameworks
+├── deviation/
+│   ├── deviation.md       ← skill prompt (the slash command)
+│   ├── template-deviation-report.md
+│   └── template-capa.md
+├── change-control/
+│   ├── change-control.md
+│   ├── template-cc-form.md
+│   └── framework-change-classification.md
+└── gmp-ask.md             ← simple skills: single file, no folder
+```
+
+---
+
+## Delivery Timeline (4 hrs/day)
+
+| Month | Milestone |
+|-------|-----------|
+| **Week 2–3** | P0 skills live (`/deviation`, `/change-control`); Layer 2 core frameworks done |
+| **Month 1–1.5** | All P1 skills live; Layer 2 complete |
+| **Month 2** | Layer 1 regulatory docs complete (FDA, ICH, USP, ISO); P2 skills live |
+| **Month 3–4** | All P3 skills complete; Layer 3 pilot SOPs integrated (30+ docs) |
+| **Month 5–6** | Full three-layer integration; all 26 skills stable |
+
+**Bottlenecks (time cannot be compressed):**
+- Layer 3 desensitization review — human review required per document; ~20 min/SOP
+- Skills iteration — first version always needs 2–3 real-case test cycles before stable
+
+---
+
+---
+
 ## Current Status Summary
 
 ### PDA Technical Reports & Points to Consider
