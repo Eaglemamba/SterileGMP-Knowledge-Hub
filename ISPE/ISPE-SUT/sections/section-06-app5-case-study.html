@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Appendix 5: Case Study — 2000L Single-Use Bioreactor</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.figure-placeholder {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border: 2px dashed #4caf50; border-radius: 8px;
+    padding: 1.5rem; text-align: center; color: #2e7d32;
+    font-size: 0.88rem; font-style: italic; margin: 1rem 0;
+}
+
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 12px; padding: 1.5rem;
+    margin-top: 2rem; border: 1px solid #ffc107;
+}
+.section-summary h2 { color: #856404; margin-bottom: 1rem; font-size: 1.1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.93rem; color: #5a4204; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendix 5: Case Study — 2000L Single-Use Bioreactor</h1>
+    <div class="subtitle">附錄5：案例研究——2000L單次使用生物反應器</div>
+    <div class="page-info">ISPE Good Practice Guide: Single-Use Technology | p147 - p158</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 2000L 規模 <strong>SUB（單次使用生物反應器）</strong>的技術選型流程——包括定性評估、定量評估（混合時間、kLa、CO₂去除、細胞性能）以及加權評分決策方法</li>
+        <li>了解在既有 GMP 設施中安裝大型 SUB 的工程挑戰，包括空間限制、建設通道管理、不鏽鋼與一次性系統的混合設計策略</li>
+        <li>理解轉換至一次性技術所引入的新風險（洩漏、供應鏈依賴、庫存管理）及其緩解措施（FMEA、訓練批次、流程圖）</li>
+        <li>學習如何透過兩階段翻新專案系統性地累積與應用經驗教訓（AAR），將溝通、文件和安裝問題量化後落實改善</li>
+        <li>建立大型生物製程 CDMO 導入 SUB 平台的決策框架：從供應商評選、設施改造、確效到供應鏈管理的完整視角</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.1 Summary -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec91">9.1 Summary（摘要）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>GlaxoSmithKline's biopharmaceuticals clinical manufacturing facility in Upper Merion, PA was renovated to install <span class="key-term">single-use bioreactor (SUB)</span> systems and establish a new global manufacturing platform strategy for scale-out at <span class="key-term">2000 L</span>. The latest advances in <span class="key-term">2000 L SUB technologies</span> were assessed through a comprehensive selection process based on qualitative and quantitative attributes of three suppliers. Quantitative results were compared to performance of an existing 1200 L scale stainless steel bioreactor.</p>
+        <p>GlaxoSmithKline first installed the selected 2000 L SUB technology in one of two similar existing cell culture suites. This approach minimized plant downtime and provided the opportunity to apply <span class="key-term">lessons learned</span> in a subsequent phase for installation of two 2000 L SUBs in the second cell culture suite. The design included a hybrid approach using stainless steel and single-use systems for large-scale media prep and transfer operations.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：2000L SUB 導入的策略背景</h4>
+            <p>GSK Upper Merion 這個案例代表了業界由不鏽鋼（SS）向一次性技術（SUT）轉型的典型里程碑。<strong>2000L</strong> 規模在當時（2018年前後）是商業化 SUB 的技術邊界——比 1000L 的中試規模更大，但又尚未達到傳統 10,000–20,000L 不鏽鋼發酵槽的規模。</p>
+            <p><strong>Scale-out（橫向擴展）</strong>策略的核心邏輯：與其使用一台超大型反應器（scale-up），不如複製多台 2000L SUB，降低批次失敗風險、提高排程靈活性。</p>
+            <p><strong>分兩階段執行</strong>是重要的風險管理決策——先在 Suite 1 試點，學習後再改造 Suite 2，讓組織能「邊做邊學」而非一次全押。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要把公司的電話系統從傳統固網升級為雲端 VoIP——你不會在同一天把全公司的電話都換掉（風險太高），而是先在一個部門試行，確認穩定後再推廣全公司。GSK 的兩階段 SUB 導入就是這個道理：Suite 1 是試驗田，Suite 2 是收成田。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>對於 CDMO 而言，2000L SUB 平台的戰略意義在於：</p>
+            <ul>
+                <li><strong>客戶彈性</strong>：不同分子可使用相同平台，降低交叉污染風險，加速產品切換</li>
+                <li><strong>商業化橋梁</strong>：從臨床（500L）到商業化（多台 2000L）的平滑過渡，無需建新廠</li>
+                <li><strong>資本效率</strong>：SUB 的資本支出遠低於同規模不鏽鋼系統，適合 CDMO 的多客戶商業模式</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.2 SUB Technology Selection -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec92">9.2 SUB Technology Selection（技術選型）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Initial qualitative evaluation determined which SUB vendors would be selected for a more extensive quantitative evaluation. Results of comprehensive qualitative and quantitative evaluations were summarized in a <span class="key-term">weighted scoring system</span> for a decision on the selected supplier.</p>
+
+        <h3>9.2.1 Qualitative Evaluation</h3>
+        <p>The SUB selection team implemented the following qualitative evaluation criteria for the 2000 L SUBs:</p>
+        <ul>
+            <li>Ergonomics and ease of operation, including the bag installation.</li>
+            <li>Flexibility and options available in the bag design, including agitation and <span class="key-term">sparging</span> choices.</li>
+            <li>Industry and commercial experience of each vendor, including gathering third party experiences and references.</li>
+            <li>Scale down-representation of different SUB sizes available to allow process development and transfer to production scale.</li>
+            <li><span class="key-term">Vendor supply chain</span> robustness, including lead times for standard and custom bags.</li>
+            <li>Vendor support and experience at the local level and at other sites in GlaxoSmithKline's international network.</li>
+        </ul>
+
+        <h3>9.2.2 Quantitative Evaluation</h3>
+        <p>GlaxoSmithKline evaluated SUBs from three established vendors at capacities ranging from 200 L to 1000 L scale and compared the results to their existing 1200 L stainless steel bioreactor.</p>
+        <p>Quantitative evaluations involved hands-on testing in non-GMP areas at the Upper Merion site. Testing included measurement of blend time at full and partial volumes, as well as <span class="key-term">mass transfer</span> capabilities. Cell growth and product titers were compared to the existing 1200 L stainless steel bioreactor using a platform cell line.</p>
+        <p>A third-party consultant modeled the SUBs at the 2000 L scale using <span class="key-term">computational fluid dynamics</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：兩階段供應商評選架構</h4>
+            <p>GSK 採用「定性篩選 → 定量深評」的兩階段評選，這是工業界標準的供應商評估做法：</p>
+            <ul>
+                <li><strong>定性篩選</strong>：快速淘汰不符合基本要求的供應商（人機工程、供應鏈能力、規模縮小代表性）</li>
+                <li><strong>定量深評</strong>：對入圍供應商進行可量化的工程測試，減少主觀判斷</li>
+                <li><strong>加權評分</strong>：將定性與定量結果整合成可比較的總分，確保決策透明可審查</li>
+            </ul>
+            <p>注意：定量評估是在 <strong>non-GMP 區域</strong>進行的——這是關鍵決策。在採購前無需動用 GMP 資源，降低成本與干擾。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：供應鏈評估的特殊重要性</h4>
+            <p>定性標準中，<strong>Vendor supply chain robustness</strong> 被列為評估項目，這在 2018 年前後開始受到重視——COVID-19 疫情之後，供應鏈中斷的風險已成為 SUB 採用的頭號障礙。</p>
+            <p>評估供應鏈時應關注：bag film 供應商是否單一？備用製造廠是否存在？輻照滅菌場地有幾個？</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Scale-down 的重要性</h4>
+            <p><strong>Scale-down 代表性</strong>就像是跑步訓練中的「模擬賽道」。正式比賽是 2000L，但你需要在 200L 或 500L 的「縮小版賽道」上先練習、優化參數。如果供應商沒有可靠的 scale-down 模型，你就無法在生產規模上線前有效地開發和轉移製程。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：平台統一化</h4>
+            <p>CDMO 在評選 SUB 時，除 GSK 列出的標準外，還應特別考量：</p>
+            <ul>
+                <li><strong>多客戶兼容性</strong>：同一 SUB 平台能否支援不同 MAb、重組蛋白、基因治療等製程？</li>
+                <li><strong>法規支持文件</strong>：供應商能否提供充足的 E&amp;L（浸出物與可萃取物）數據包以支持多個 IND？</li>
+                <li><strong>全球供應一致性</strong>：如果 CDMO 在台灣或亞洲有廠，供應商的在地支援能力至關重要</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.2.2.1 - 9.2.2.3 Physical Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9221">9.2.2.1–9.2.2.3 Blend Time, kLa, and CO₂ Stripping（混合時間、kLa 與 CO₂ 去除）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>9.2.2.1 Bioreactor Blend Time</h3>
+        <p>Bioreactor <span class="key-term">blend times</span> were tested to collect empirical data. The testing was determined by measuring the time required for a bolus of acid to be dispersed throughout the vessel. Replicate tests were conducted over the range of operating speeds. Measurements were made both at the lower tangent line and just below the liquid surface.</p>
+        <p><em>[Figure 9.1: Example Blend Time Based on Whole Volume – Volume Uniformity of 1 Means 100% Mixing]</em></p>
+        <p><em>[Figure 9.2: Blend Time Results – Reactor A Shows the Best Performance and Reactor C the Lowest]</em></p>
+
+        <h3>9.2.2.2 Oxygen Mass Transfer Coefficient (kLa)</h3>
+        <p><span class="key-term">kLa</span> was determined by monitoring the increase in dissolved oxygen in the vessel contents while sparging in air. The tests were conducted over a range of operating conditions by varying the agitator power input and gas sparge rate. Dissolved oxygen was measured both at the lower tangent line and just below the liquid surface level to assess spatial variation.</p>
+
+        <h3>9.2.2.3 Carbon Dioxide (CO₂) Stripping</h3>
+        <p>CO₂ stripping experiments were conducted over the range of gas rates (superficial gas velocity) and agitator speed (energy dissipation rate). The <span class="key-term">pH</span> was monitored and its change versus time analyzed as a CO₂ saturated solution was stripped via air sparging. These measurements were also made both at the lower tangent line and just below the liquid surface level.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三大流體動力學測試</h4>
+            <p>這三個測試構成了生物反應器物理性能評估的核心三角：</p>
+            <ul>
+                <li><strong>混合時間 (Blend Time)</strong>：評估攪拌效率——培養基中的 pH 調節劑、消泡劑、葡萄糖進料能否快速均勻分布。量測方法是追蹤酸性示蹤劑的分散時間。</li>
+                <li><strong>kLa（氧質量傳遞係數）</strong>：描述氧氣從氣泡進入液相的效率。kLa 越高，細胞在高密度培養時越不容易缺氧。</li>
+                <li><strong>CO₂ 去除效率</strong>：細胞代謝產生的 CO₂ 若無法有效移除，會導致培養液 pH 失控、細胞毒性上升。這是 SUB（尤其大規模）的已知弱點之一。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：量測位置的雙點設計</h4>
+            <p>所有測試都在「槽底切線處」和「液面下方」兩個位置量測，這是為了評估<strong>空間均勻性</strong>——大型反應器（尤其 2000L）的 dead zone（死角）問題比小型更嚴重。若兩點讀數差異大，代表混合不均，對 pH probe 和 DO probe 的讀值準確性都有影響。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：kLa 的直覺理解</h4>
+            <p>kLa 就像一個城市的「物流效率指標」——氧氣是貨物，細胞是工廠，氣泡是運輸工具。kLa 高代表物流快、工廠不缺原料；kLa 低代表物流擁塞，工廠運轉受限。大型 SUB 的挑戰在於，體積增大後氣泡需要更長的上升路徑，kLa 可能下降，必須透過 sparger 設計補償。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 scale-up 從 200L 到 2000L 時，kLa 通常會如何變化？你會如何調整操作條件來補償？</li>
+                <li>CO₂ 去除不足會如何影響 pH probe 讀值？對細胞的代謝有什麼直接後果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.2.2.4 - 9.2.2.6 Results and Cell Performance -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec9224">9.2.2.4–9.2.2.6 Results, CFD, and Cell Performance（結果、CFD 與細胞性能）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>9.2.2.4 kLa and CO₂ Results</h3>
+        <p>The results were obtained and correlated for the tested volume. These correlations were used to extrapolate to the <span class="key-term">2000 L scale</span>. Significant differences were observed between the different systems tested. The greater differences were seen for the <span class="key-term">oxygen mass transfer</span>, lesser differences for the CO₂ stripping. The <span class="key-term">sparger</span> design was determined to be a contributing factor for the differences observed. One system tested outperformed the stainless-steel control system.</p>
+
+        <h3>9.2.2.5 Computational Fluid Dynamics (CFD)</h3>
+        <p><span class="key-term">CFD modeling</span> was performed to predict the performance of the three mixing vessel designs at the 2000 L scale. This involved breaking each SUB into 3–5 million units with a mesh size of 1–2 cm and then modeled. This solved for the time accurate mixing behavior of each vessel by introducing a virtual tracer into the mesh at a location comparable with the experimental data and then comparing tracer concentrations and mixing times with the experimental data.</p>
+
+        <h3>9.2.2.6 Cell Performance Testing</h3>
+        <p>Cell performance was tested in the three SUBs using an established <span class="key-term">CHO cell</span> process. All three SUBs used the same media lot and seed pool to eliminate these factors as potential variables. The testing evaluated cell growth and viability, titer, metabolic profile and product quality in each SUB. Results were compared to historic performance in the 1200 L stainless-steel bioreactor. Reactor A was comparable or better than the stainless-steel system. Reactor C consistently underperformed. Reactor B underperformed during one run due to a <span class="key-term">pH probe</span> failure.</p>
+        <p><em>[Figure 9.3: Viable Cell Count and Titer Performance versus the Stainless Steel Control]</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：外推至 2000L 的方法論</h4>
+            <p>由於直接在 2000L 做測試成本極高，GSK 採用「小規模測試 + CFD 外推」的組合策略：</p>
+            <ul>
+                <li><strong>實驗數據</strong>（200–1000L）建立 kLa 與 CO₂ 的相關性方程式</li>
+                <li><strong>CFD 模型</strong>（3–500 萬個網格單元）預測 2000L 行為，並以小規模實驗數據驗證模型準確性</li>
+                <li>兩者互為驗證，降低全規模測試的風險</li>
+            </ul>
+            <p><strong>Sparger 設計</strong>是 kLa 差異的主因——孔徑大小、孔數、分布位置決定氣泡大小和質量傳遞面積。這對 SUB 的採購決策有直接指導意義。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：pH Probe 失效的系統性含義</h4>
+            <p>Reactor B 因 <strong>pH probe 失效</strong>導致一次試驗數據不可用——這不只是個設備故障，而是揭示了 SUB 一次性探針可靠性的系統性風險。在不鏽鋼系統中，probe 可以多次校準和更換；在 SUB 中，探針通常是隨 bag 預裝的，失效就必須整體更換。</p>
+            <p>這也說明為什麼 pH probe 和 DO probe 的確效測試在 SUB 的 IQ/OQ 中至關重要。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：CFD 就像飛行模擬器</h4>
+            <p>飛行員在真正駕駛飛機前，先在模擬器中練習各種情境。CFD 對 2000L SUB 的作用相同——在真實設備採購安裝前，用電腦模擬出流體行為，預見可能的 dead zone 和混合問題。網格越細（1–2 cm），模擬越精確，但計算時間也越長。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：選型決策的法規可辯護性</h4>
+            <p>GSK 的加權評分系統設計值得 CDMO 借鑑：</p>
+            <ul>
+                <li>決策過程有書面記錄，客戶審計或法規查廠時可展示「如何選到這個供應商」</li>
+                <li>細胞性能數據直接與現有 SS 系統比較，為技術轉移提供橋接數據（bridging data）</li>
+                <li>CFD 外推方法可作為 scale-up 確效策略的科學依據，減少法規提問</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.2.3 Vendor Comparison -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec923">9.2.3 Vendor Comparison Overview（供應商比較概覽）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The score card below illustrates the <span class="key-term">weighted ranking system</span> that was used to objectively evaluate each SUB platform. Three factors receive the highest weight factor: <strong>cell performance</strong>, <strong>mixing/kLa</strong> and <strong>vendor supply chain</strong>. Vendor support had the lowest weight factor.</p>
+        <p><em>[Figure 9.4: Assessment of Vendors Using a Weighted Scoring System]</em></p>
+        <p>In some cases, a reactor received multiple scores for the same criteria. Reactor A vendor support, for example, received a 5 for US support but a 1 for UK support. Total weighted score for Reactor A was considerably higher than the scores for the other two SUB systems, and was chosen as the technology for installation in the Upper Merion clinical manufacturing facility.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：加權評分的三大最高權重</h4>
+            <p>三個最高權重項目的選擇背後有清晰的業務邏輯：</p>
+            <ul>
+                <li><strong>細胞性能</strong>：最終決定產品品質和產量，直接影響業務成敗</li>
+                <li><strong>Mixing/kLa</strong>：是細胞性能的工程基礎，kLa 不足 = 細胞缺氧 = 性能下降，是可預測的失敗路徑</li>
+                <li><strong>供應商供應鏈</strong>：SUB bag 是專有耗材，供應中斷 = 整個平台停擺，業務風險極高</li>
+            </ul>
+            <p>「供應商支援」權重最低——因為這是可以通過合約和培訓彌補的，而細胞性能和供應鏈是根本性的、難以事後彌補的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：地區支援的不對稱性</h4>
+            <p>Reactor A 在 US 得 5 分、UK 得 1 分——這提示了跨國公司或全球 CDMO 在選型時必須考量<strong>全球支援網絡</strong>的一致性，而非只看主要市場的服務水平。供應商在特定地區的代理商能力、倉儲位置、技術支援響應時間，都應納入評估。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你是一家台灣的 CDMO 要導入 2000L SUB，你會在 GSK 的評分標準上增加或調整哪些權重？為什麼？</li>
+                <li>如何確保加權評分系統的客觀性，避免「已有傾向」的評估者影響結果？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.3 Installation in Existing GMP Facility -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec93">9.3 Installation in an Existing GMP Facility（在既有 GMP 設施中安裝）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>9.3.1 Overview of the Existing Facility</h3>
+        <p>GlaxoSmithKline's first 2000 L SUB was installed in Building 38 (UM-38), a multi-product clinical manufacturing facility in Upper Merion PA.</p>
+        <p>UM38 has GMP clinical operations on three floors, with process utilities at the basement level. The first floor includes microbial fermentation, with purification, media and buffer prep, wash area, laboratories and offices. The second floor includes two independent but similar mammalian cell culture suites, including a dedicated seed scale-up lab for each suite. Cell culture operations share a media prep area and wash area. Clarified harvest from the cell culture operations is transferred to the third floor, which includes two independent purification suites, supported by a shared buffer prep and wash area.</p>
+        <p>The <span class="key-term">floor-to-floor height</span> of each production level is 16 ft., with 2 ft. of supporting steel, providing a clear height of 14 ft. below steel. Process operations on these floors typically have a 9 or 10 ft. ceiling, with distribution of process piping, utilities and ductwork in the remaining space above the ceiling. <span class="key-term">High hat areas</span> provide higher ceiling elevations in specific locations that need to accommodate larger equipment.</p>
+        <p>A 2000 L SUB was installed in one of the two cell culture suites. The media prep area was also renovated to install single-use mixing systems.</p>
+
+        <h3>9.3.2 Construction Access</h3>
+        <p>Renovation of Cell Culture I and Media Prep was completed while maintaining existing operations in Cell Culture II. The return corridor was used during this renovation for construction access. Entry airlocks from the clean corridor were sealed with plastic sheathing. These soft barriers deterred construction personnel from entry into the clean corridor, but still allowed emergency egress in this direction.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：既有設施翻新的空間制約</h4>
+            <p>UM-38 的建築結構帶來了典型的既有設施挑戰：</p>
+            <ul>
+                <li><strong>有效淨高</strong>：名目層高 16 ft，扣除建築結構鋼 2 ft = 可用 14 ft；再扣除製程天花板（9–10 ft），管道夾層只有 4–5 ft。2000L SUB 的高度通常超過 10 ft，需要特殊空間（high hat area）</li>
+                <li><strong>High hat area（突出天花區域）</strong>：專為大型設備預留的局部加高空間，是既有廠改造時的關鍵設計資產</li>
+                <li><strong>Unidirectional flow（單向流動線）</strong>：操作人員和物料從潔淨走廊進入，廢棄物和人員從回廊離開——翻新期間必須維持這個邏輯</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：翻新期間的 GMP 控制</h4>
+            <p>施工期間以<strong>塑料遮蔽板（plastic sheathing）</strong>封閉潔淨走廊入口——這是典型的「軟隔離」措施。其核心原則是：<strong>建設動線（施工人員、廢棄建材）與生產動線（操作人員、物料）必須嚴格分離</strong>，同時保留緊急出口通道。在現實 GMP 環境中，這種同步翻新需要詳細的 CCR（建設合規性審查）和持續的環境監測。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：現有廠房改造評估</h4>
+            <p>在評估既有廠房是否適合安裝大型 SUB 時，應優先確認：</p>
+            <ul>
+                <li>是否有 high hat area 可利用，或改造成本是否在預算內</li>
+                <li>回廊空間是否足以同時作為施工通道而不影響相鄰生產區</li>
+                <li>WFI 和清潔蒸汽的管路是否有容量裕量支持新增設備</li>
+                <li>BAS（Building Automation System）是否有空餘控制點整合新設備</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.3.3 - 9.3.4 Suite Renovation and Hybrid Approach -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec933">9.3.3–9.3.4 Suite 1 Renovation and Hybrid Approach（Suite 1 翻新與混合策略）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>9.3.3 Suite 1 Renovation</h3>
+        <p>The existing cell culture suite had 100 L, 750 L, and 1200 L stainless steel bioreactors, and a 1500 L stainless steel harvest tank. The 1200 L bioreactor remained for ongoing comparisons of performance in a stainless steel and single-use bioreactors. The harvest tank was replaced with a larger 2500 L system to accommodate the new 2000 L SUB.</p>
+        <p>The 2000 L SUB was installed in the previous location of the 750 L bioreactor. This location was chosen because the existing <span class="key-term">high hat area</span> was able to accommodate the larger SUB with minimal modifications to the ceiling and no impact to existing mechanical systems above the ceiling. The new 2500 L harvest tank aspect ratio was chosen to work within the existing high hat area elevation. The existing high hat width was expanded to accommodate a wider tank.</p>
+        <p>Renovations to the media prep area included removal of the 640 L and 1100 L stainless steel mix tanks and installation of <span class="key-term">single-use mixing systems</span> for 50 L, 200 L, 650 L, and 1500 L media prep.</p>
+
+        <h3>9.3.4 Stainless Steel and Single-Use Hybrid Approach</h3>
+        <p>A <span class="key-term">hybrid approach</span> was used for the 1500 L media prep operation. Powder additions to the top of the 1500 L mixing station would have required significant modifications to install a high hat in the ceiling, as well as additional footprint for platform access. A floor mounted stainless steel inline <span class="key-term">powder-liquid mixing system</span>, typically used for much larger scale operations, was integrated with the 1500 L single-use bag. This eliminated the need for ceiling modifications, minimized floor space requirements and provided a more ergonomic design for powder additions.</p>
+        <p>Transfers of media from the 1500 L media prep to the 2000 L SUB were designed to use the existing stainless steel media transfer line, with minimal modifications to the existing system. Existing systems for cleaning and sterilization of equipment and piping made this hybrid approach possible with minimal impact to the facility.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：翻新中的空間優化決策</h4>
+            <p>Suite 1 翻新的幾個關鍵設計決策值得深入分析：</p>
+            <ul>
+                <li><strong>選擇 750L 位置安裝 2000L SUB</strong>：利用現有 high hat，避免天花板大改。這是「最小干擾、最大利用」的設計思路</li>
+                <li><strong>保留 1200L SS 反應器</strong>：作為長期性能比較的基準（control），同時也提供了業務連續性的安全網</li>
+                <li><strong>收穫槽從 1500L → 2500L</strong>：下游設備必須跟上游的工作體積匹配，這是設備整合設計中容易被忽視的細節</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：不鏽鋼與一次性混合策略</h4>
+            <p><strong>Hybrid approach</strong> 的核心邏輯：當一次性系統在特定操作（粉末加料）帶來過大的設施改造成本時，保留不鏽鋼系統是理性的選擇。</p>
+            <p>混合策略的成功前提是：<strong>既有不鏽鋼系統具備 CIP/SIP 能力</strong>，可以清潔和滅菌與新一次性系統的接口。這使得兩個系統能安全整合。</p>
+            <p>這個案例說明：「一次性化」不是「全面替換」，而是「在對的地方用對的技術」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：混合策略就像廚房改裝</h4>
+            <p>想像你要改裝一個商業廚房——你不需要把所有設備都換新，而是把最需要靈活性的工作站（一次性技術）換掉，但保留大型固定設備（工業烤箱、中央排水）。關鍵是讓新舊設備能無縫接軌，食材能順暢從一個工作站流到下一個。媒體轉移管路就是廚房裡的「傳菜系統」。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：混合系統的 GMP 影響</h4>
+            <p>混合系統在 GMP 文件和確效上帶來額外挑戰：</p>
+            <ul>
+                <li>不鏽鋼-一次性接口需要明確定義「清潔邊界」和「無菌邊界」</li>
+                <li>一次性系統的完整性測試（integrity test）必須納入批次記錄</li>
+                <li>現有 SS 管路的 CIP 確效是否仍然有效？需要評估改造對清潔效果的影響</li>
+                <li>混合系統的 IQ/OQ 範圍界定：哪些部分屬於新設備確效，哪些屬於既有系統再確效？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.3.5 - 9.3.7 Schedule, Support, Phase II -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec935">9.3.5–9.3.7 Project Schedule, Support, and Phase II（專案進度、支援與第二階段）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>9.3.5 Project Schedule</h3>
+        <p>Design and installation of single-use systems in the two areas was completed <strong>twenty-four months</strong> after the single-use technology was selected. Equipment was specified and procured early to minimize risk of construction delays. Equipment for the hybrid system was set up and tested in an existing non-GMP space prior to installation in the media prep area to minimize risk of delays in system start-up. Media prep construction was completed first to allow this area to support the existing operations in Cell Culture II.</p>
+
+        <h3>9.3.6 Project Support</h3>
+        <p>GSK internal support for this project included personnel from engineering, technology, manufacturing operations, quality, validation and calibration departments. Staffing peaked at <strong>twenty-five people</strong> during construction and validation. Generation of new protocols for <span class="key-term">validation</span> of single-use systems created greater demands for personnel than normally expected with stainless steel systems, where existing protocols could be leveraged.</p>
+
+        <h3>9.3.7 Phase II Renovations</h3>
+        <p>A second phase of renovations was completed to install two 2000 L SUBs in Cell Culture II. This renovation also required a second renovation to the Media Prep area to install a second 1500 L media mixing station to accommodate the increased bioreactor capacity.</p>
+        <p>Unlike the first renovation, which focused on minimal renovations to the facility, this phase required significant modification to Cell Culture II to expand the area into the return corridor.</p>
+        <p>A platform was provided around the two 2000 L SUBs based on <span class="key-term">lessons learned</span> from Phase I. This provided greater access to the top of the bioreactors for installation of filters and media transfer connections. The platform provided a clear height of 6 ft. 8 in. below the platform, which enabled operator access around the back of the bioreactors and also provided the ability to install control systems under the platform. Overall height of the area above the 2000 L SUBs is 13 ft. 9 in., just below the 14 ft. elevation at the bottom of building steel.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：24 個月的時程管理</h4>
+            <p>技術選定到完成安裝共 24 個月，這個數字對規劃類似項目的人很有參考意義：</p>
+            <ul>
+                <li><strong>早期採購設備</strong>（Early procurement）是縮短工期的關鍵——SUB 設備的 lead time 可達 6–12 個月，若晚了就會成為關鍵路徑瓶頸</li>
+                <li><strong>非 GMP 區域預先測試混合系統</strong>：先「空跑」再安裝，避免在 GMP 區域發現問題後的昂貴返工</li>
+                <li><strong>媒體配製區優先完工</strong>：確保能支持 Suite II 的持續生產——這是業務連續性優先於施工方便性的決策</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：確效人力的隱性成本</h4>
+            <p>專案峰值需要 <strong>25 人</strong>的內部支援——注意原文特別指出，一次性系統的確效協議開發比不鏽鋼系統需要<strong>更多人力</strong>，因為沒有現成的 SOP 和協議可直接沿用。</p>
+            <p>這是許多機構在評估 SUB 導入成本時低估的隱性成本：確效文件的從零開發、新操作 SOP 的撰寫與審查、人員培訓計畫的設計——這些都需要品質、工程和生產部門的大量投入。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：Phase II 的設計改進——平台的誕生</h4>
+            <p>Phase I 沒有操作平台，Phase II 根據經驗教訓增加了圍繞 2000L SUB 的操作平台：</p>
+            <ul>
+                <li><strong>功能</strong>：提供進入反應器頂部的通道（安裝過濾器、培養基轉移連接）</li>
+                <li><strong>尺寸設計</strong>：平台下方淨高 6 ft 8 in（允許操作人員在反應器後方通行）；平台上方到建築鋼材 13 ft 9 in（剛好在 14 ft 限制內）</li>
+                <li><strong>額外效益</strong>：平台下方空間可安裝控制系統，充分利用垂直空間</li>
+            </ul>
+            <p>這個改進說明了「第一次建設不一定能預見所有操作需求」，預留改進空間和記錄問題的 AAR 機制才是關鍵。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：人力規劃與時程估算</h4>
+            <p>對 CDMO 管理層的建議：</p>
+            <ul>
+                <li>新技術導入的確效人力需求比設備更換多 30–50%，需提前進行人力規劃</li>
+                <li>考慮僱用具有 SUB 確效經驗的外部顧問（如 Hargrove Life Sciences 在此案例中的角色），加速文件開發</li>
+                <li>24 個月的基準時程應作為最樂觀估算——複雜 CDMO 環境（多客戶、多產品）的並行管理可能使時程延長至 30–36 個月</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.4 Project Risks and Mitigation -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec94">9.4 Project Risks and Mitigation — New Technology（專案風險與緩解——新技術）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Changing from stainless steel operation to disposable technology introduced new risks such as potential leaks due to manual connections and improper handling of bags. In addition, new disposable systems needed to be created to move product within the plant. Working with disposable technology is a long-term relationship with your suppliers and relies on the robustness of their <span class="key-term">supply chain</span> in addition to increased <span class="key-term">inventory management</span>.</p>
+        <p>To mitigate these risks, water and engineering batches were conducted to train equipment operators in unpacking and loading the bags and in making the aseptic connections between disposables. A <span class="key-term">Failure Mode and Effects Analysis (FMEA)</span> was conducted to assess equipment and operational SOPs, identify risks and generate a mitigation plan.</p>
+        <p>A detailed <span class="key-term">process flow map</span> was created to show both major pieces of process equipment and the disposable systems needed to connect the equipment. The map showed tubing types, sizes and connectors needed and helped organize and consolidate the inventory of unique items required. The goal was to not have a specific tubing set for each process step but instead common ones that could be used in multiple areas.</p>
+        <p><em>[Figure 9.14: Media Process Flow Map Indicating All Hose Requirements]</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：一次性技術的三大新風險類別</h4>
+            <p>從不鏽鋼轉向一次性技術，風險模式發生根本性轉變：</p>
+            <ul>
+                <li><strong>操作性風險</strong>：手動連接（aseptic connection）的技術門檻高，人員技能差異直接導致品質風險。不鏽鋼系統的 CIP/SIP 相對標準化，一次性系統更依賴人的判斷和技巧。</li>
+                <li><strong>供應鏈風險</strong>：SUB bag 是專有耗材，供應商停產、品質問題或天災可直接導致生產停擺。不鏽鋼的「設備」壽命可達 20 年，bag 的「庫存」週期只有數月。</li>
+                <li><strong>庫存管理風險</strong>：bag 有有效期，過期即廢；bag 體積大，倉儲成本高；需求預測不準確會導致批次延遲或浪費。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：FMEA 的執行時機</h4>
+            <p>在 SUT 導入中，FMEA 應<strong>在工程確效（EQ）之前</strong>完成，並作為確效測試設計的依據——哪些失敗模式最關鍵（RPN 最高），就對應哪些確效測試項目。原文提到的 FMEA 範疇覆蓋「設備」和「操作 SOP」，這是完整的視角：設備失效 + 人員失誤都要納入。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：標準化管路集的設計哲學</h4>
+            <p>Process flow map 的設計目標是<strong>「共用管路集」而非「每步驟專用」</strong>——這是降低 SKU 複雜度的關鍵策略：</p>
+            <ul>
+                <li>減少庫存管理條目數量，降低誤用錯誤風險</li>
+                <li>提高採購議價能力（更大的批量訂購）</li>
+                <li>簡化操作培訓（相同的管路配置，操作人員只需學習一套技能）</li>
+            </ul>
+            <p>這個「標準化」思路在 CDMO 環境中尤為重要，因為 CDMO 服務多個客戶，若每個客戶都有不同的管路規格，庫存管理會失控。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的現有製程中，如果要引入一次性轉移系統，你認為 FMEA 中 RPN 最高的失敗模式會是什麼？如何緩解？</li>
+                <li>「共用管路集」策略在多客戶 CDMO 中如何實施？你會如何在客戶定制需求和標準化之間取得平衡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.5 Vendor Supply Chain -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec95">9.5 Vendor Supply Chain（供應商供應鏈）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">vendor relationship</span> and <span class="key-term">supply chain</span> are critical to a successful conversion to single-use technology. Tubing sets can be generic and can be sourced from multiple vendors to ensure continuity of supply. Bags for SUBs are proprietary and the SUB vendor supply chain is critical to business success. Items to consider for vendor supply chain include: <strong>bag film source</strong>, any <strong>bag component and connectors</strong>, <strong>back-up bag manufacturing and irradiation sites</strong> and <strong>bag shipping protocols</strong>. Any single points of failure should be identified jointly with the vendor and a mitigation plan prepared.</p>
+        <p>In addition to the vendor supply chain, the internal supply chain needs to be able to forecast bag usage to plan appropriate <span class="key-term">inventory levels</span>, taking into consideration bag expiry and space required for storage.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：供應鏈的層次解析</h4>
+            <p>原文區分了兩個供應鏈層次，各有不同風險：</p>
+            <ul>
+                <li><strong>通用耗材（管路）</strong>：可多供應商採購，風險低——這是 commoditized 市場</li>
+                <li><strong>SUB bag（專有耗材）</strong>：供應商鎖定（lock-in），需深度管理：
+                    <ul>
+                        <li>Bag film 原料：供應商是否有獨家供應商？</li>
+                        <li>備用製造廠：主廠出問題時，備廠是否已驗證？</li>
+                        <li>輻照場地：bag 的 gamma 輻照通常需要外包，備用輻照場地是否存在？</li>
+                        <li>運輸協議：大型 bag 的包裝、溫度控制、運輸時間——尤其對台灣等需進口耗材的地區</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：供應鏈風險的「聯合識別」</h4>
+            <p>原文特別強調 Single point of failure 應<strong>與供應商「共同」識別</strong>（jointly），而非單方面評估。這個做法很重要：供應商對自己供應鏈的了解遠超過客戶，許多風險點只有在深度合作中才能揭露。這也是為什麼 SUT 供應商管理比傳統設備供應商管理更接近「合作夥伴關係」而非純粹的「採購關係」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Bag 庫存管理就像血庫管理</h4>
+            <p>醫院血庫需要維持足夠的血液存量，但血液有保存期限，存太多會浪費、存太少會在緊急手術時斷貨。SUB bag 的庫存管理邏輯相同：需要根據生產計畫預測用量、考慮 lead time 設定安全庫存、定期輪替以避免過期。差別在於，血型種類有限，而 CDMO 可能同時管理不同客戶、不同大小的 bag，複雜度更高。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：供應鏈韌性設計</h4>
+            <p>對 CDMO 而言，建立 SUB 供應鏈韌性的實際步驟：</p>
+            <ul>
+                <li><strong>供應商資格審計</strong>：要求 SUB 供應商提交 Business Continuity Plan（業務連續性計畫），並在供應協議中載明備用方案</li>
+                <li><strong>雙供應商策略</strong>：如果技術平台允許，考慮認證第二家供應商的 bag（可能需要重新做 E&amp;L 和細胞相容性測試）</li>
+                <li><strong>ERP 整合</strong>：將 bag 的批號、到期日、庫存量納入 ERP 系統自動追蹤，設定安全庫存警示</li>
+                <li><strong>客戶溝通</strong>：在 CMO 合約中明確規定 bag 供應中斷的通知義務和協議機制</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.6 Lessons Learned -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec96">9.6 Application of Lessons Learned（經驗教訓應用）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>As this project was conducted in two phases, the second phase provided an opportunity to apply learnings from the first phase to the second so as not to have the same issues. <span class="key-term">After Action Reviews (AARs)</span> were conducted with the various groups involved in the project (Operations, Validation, Engineering, Quality and the equipment vendor). The feedback included what went well and what did not along with ideas for improvement. We found the results could be divided into three high level buckets:</p>
+        <ul>
+            <li><strong>Communication (60%)</strong> — majority of issues</li>
+            <li><strong>Documentation (30%)</strong></li>
+            <li><strong>Installation (10%)</strong> — including site acceptance testing and validation</li>
+        </ul>
+        <p>These results were then turned into measurable actions and applied to the next phase.</p>
+
+        <p>Specific AAR themes:</p>
+        <ul>
+            <li><strong>Project schedule</strong> — get buy-in from all parties involved, communicate details early and often in the project and make sure the schedule is easy to follow. Keep everyone involved and engaged throughout the project.</li>
+            <li><strong>Documentation</strong> — projects of this nature require extensive amount of both internal documentation and exchange of documents between vendors. A common portal site was used to keep track of external documents. Internal documents need to be carefully staggered during the project to ensure both timely delivery and not overwhelm reviewers and approvers.</li>
+            <li><strong>Installation</strong> — initial estimates for disposable supplies needed for start-up and validation activities were low, substantially more supplies were needed than planned.</li>
+        </ul>
+        <p>In addition to the AAR, a retrospective safety review of the first phase was conducted and updates to the equipment and installation plans were prospectively made for the second phase.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：AAR 的結構化學習機制</h4>
+            <p><strong>After Action Review (AAR)</strong> 是源自軍事訓練的結構化反思工具，在製藥項目管理中的應用越來越普遍。GSK 的 AAR 成果揭示了一個重要的洞察：</p>
+            <ul>
+                <li><strong>60% 溝通問題</strong>：這在大型跨部門專案中非常典型——技術問題通常只占少數，人員協調才是最大挑戰</li>
+                <li><strong>30% 文件問題</strong>：SUT 專案的文件密度遠高於傳統設備替換，文件節奏管理（staggering）至關重要</li>
+                <li><strong>10% 安裝問題</strong>：包括耗材初始估算嚴重不足——這是一次性技術的新手陷阱</li>
+            </ul>
+            <p>這個 60/30/10 的比例對規劃類似專案有很強的指導意義：投入資源的優先級應該是溝通 > 文件 > 技術。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：確效耗材估算的「首次效應」</h4>
+            <p>「安裝期間的一次性耗材需求遠超預期」是 SUT 新手的普遍教訓。原因：</p>
+            <ul>
+                <li>每一次確效測試（IQ/OQ/PQ）都需要新的 bag 和管路集</li>
+                <li>失敗的測試批次需要重複，耗材加倍消耗</li>
+                <li>操作培訓需要練習用耗材，不能全部算入確效計劃</li>
+            </ul>
+            <p>建議：首次 SUB 導入時，耗材採購量應比計算值高出 50–100%，並保持採購彈性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：文件「節奏管理」就像出版截稿</h4>
+            <p>想像一份月刊雜誌的編輯工作——如果所有稿件同時送達，編輯會被淹沒；如果按欄目分批送達，工作就可以有序進行。GSK 的文件節奏管理（staggering）就是這個道理：讓審查和批准者在整個項目期間保持可控的工作量，而非在截止日前堆積成山。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你參與過的大型專案中，問題的主要類別是什麼？是否也符合「溝通 > 文件 > 技術」的分布模式？</li>
+                <li>如果你要為一個 SUB 導入專案設計 AAR 機制，你會選擇什麼時間點執行 AAR？每個階段結束後，還是整個專案完成後？兩種做法各有什麼優劣？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.7 Conclusions -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec97">9.7 Conclusions（結論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>GlaxoSmithKline has successfully installed 2000 L SUBs in their existing clinical manufacturing facility and has observed cell titer and product yields that are <strong>comparable to their 1200 L stainless steel bioreactors</strong>. Single-use technologies, though appearing inherently simpler than stainless steel systems, present new challenges with <span class="key-term">operator training</span> and a long-term dependence on the <span class="key-term">SUB vendor</span> and their extended supply chain.</p>
+        <p>Installation in an existing facility presented some challenges with limitations in height and room adjacencies, but use of <span class="key-term">stainless steel and single-use hybrid process design</span> enabled the design team to overcome these challenges. Existing infrastructure with ability for <span class="key-term">steam in place</span> and <span class="key-term">clean in place</span> made the hybrid approach possible.</p>
+
+        <h3>9.8 Acknowledgements</h3>
+        <ul>
+            <li>GSK Team: SUB Selection Team, Operations, Process Development, Validation, Engineering, Quality</li>
+            <li>Hargrove Team: Process and Facility Design, Project Management and Planning</li>
+            <li>ABEC Inc for mixing and CFD support</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：「看似更簡單」的陷阱</h4>
+            <p>結論中最值得注意的洞察：<em>"Single-use technologies, though appearing inherently simpler than stainless steel systems, present new challenges..."</em></p>
+            <p>這句話打破了「一次性 = 簡單」的常見誤解。<strong>不鏽鋼的複雜性</strong>集中在設備維護和 CIP/SIP 系統；<strong>一次性的複雜性</strong>分散在人員培訓、庫存管理和供應商關係管理上。前者是「工程問題」，後者是「組織問題」——很多工廠在轉型時低估了後者的難度。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：混合設計的關鍵使能因素</h4>
+            <p>原文明確指出混合策略能夠成功的<strong>前提條件</strong>：既有設施具備 <strong>SIP（蒸汽就地滅菌）</strong>和 <strong>CIP（就地清洗）</strong>能力。這意味著：</p>
+            <ul>
+                <li>全新建造的設施可能沒有這個條件，混合策略的適用性需要重新評估</li>
+                <li>現有廠房改造的優勢之一：可利用既有公用設施基礎設施，而非從零開始</li>
+                <li>CIP/SIP 系統的容量和佈局在設施評估初期就需要確認</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：案例的最終啟示</h4>
+            <p>GSK UM-38 案例對 CDMO 的整體啟示：</p>
+            <ul>
+                <li><strong>技術選型</strong>：用結構化的定性+定量+加權評分系統，確保決策可辯護</li>
+                <li><strong>設施改造</strong>：最小化對既有系統的干擾，分階段執行，充分利用 high hat 等既有資產</li>
+                <li><strong>確效</strong>：預留充足的人力和耗材預算，新技術的文件開發成本遠高於設備替換</li>
+                <li><strong>供應鏈</strong>：將 bag 視為「業務關鍵耗材」而非「辦公用品」，建立正式的供應商風險管理框架</li>
+                <li><strong>持續改進</strong>：AAR 機制確保每個專案的學習不流失，分階段執行讓學習能被應用</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：性能等效的意義</h4>
+            <p>2000L SUB 的細胞效價（titer）和產量與 1200L SS 系統<strong>相當（comparable）</strong>——注意不是「更好」，而是「相當」。這個結果在商業化決策中已足夠：能夠在更大規模、更低基礎設施成本、更高靈活性的條件下，實現與不鏽鋼相當的產品質量，正是 SUB 平台價值主張的核心。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-summary">
+    <h2>附錄5 章節總結 Section Summary</h2>
+    <ul>
+        <li><strong>GSK 的兩階段 2000L SUB 導入</strong>是業界最具代表性的大規模一次性生物反應器實施案例，從技術選型到設施改造到供應鏈管理，提供了完整的決策框架。</li>
+        <li><strong>技術選型</strong>採用定性篩選 → 定量評估（混合時間、kLa、CO₂ 去除、細胞性能）→ 加權評分的三步驟流程，三大最高權重為：細胞性能、Mixing/kLa、供應商供應鏈。</li>
+        <li><strong>設施改造</strong>的核心策略是：充分利用既有 high hat 空間、採用 SS + SUT 混合設計、分階段施工以維持業務連續性；Phase II 根據 Phase I 經驗增加操作平台，體現了「學習型組織」的改善機制。</li>
+        <li><strong>風險管理</strong>工具包括：水/工程批次操作培訓、FMEA、製程流程圖（用於標準化管路集設計）。供應鏈管理需關注 bag film 來源、備用製造廠、輻照場地及運輸協議等單點失效風險。</li>
+        <li><strong>AAR 結果</strong>顯示問題來源：溝通 60%、文件 30%、安裝 10%——提示大型 SUT 導入專案最大的挑戰是<strong>組織協調</strong>而非技術本身，耗材初始估算需預留 50–100% 的緩衝。</li>
+        <li><strong>最終結論</strong>：2000L SUB 實現了與 1200L SS 系統相當的細胞效價和產量；一次性技術「看似更簡單」但在操作培訓和供應商依賴上帶來新的組織挑戰；既有 CIP/SIP 基礎設施是混合設計策略可行的關鍵使能因素。</li>
+    </ul>
+</div>
+
+</div><!-- /main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Chapter 3: Implementation & Use</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 3: Implementation &amp; Use</h1>
+    <div class="subtitle">實施與使用</div>
+    <div class="page-info">ISPE Good Practice Guide: Single-Use Technology | p79 - p102</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握單次使用技術（SUT）的<strong>技術轉移</strong>流程，理解差距評估（Gap Assessment）、計畫排程、設施限制和法規合規的核心考量</li>
+        <li>理解<strong>法規合規</strong>在 SUT 實施中的角色，熟悉主要監管機構（EMA、FDA、WHO）及標準（USP、ISO）對單次使用材料的數據要求</li>
+        <li>深入認識<strong>可浸出物（Leachables）</strong>的定義、來源、評估方法與安全閾值，以及其對患者安全和產品品質的潛在影響</li>
+        <li>系統理解 SUT 的<strong>確效（Validation）</strong>架構，包含供應商資料審查、安裝確效（IQ）、操作確效（OQ）、性能確效（PQ）及各類現場測試要求</li>
+        <li>建立強健的<strong>供應鏈（Supply Chain）</strong>管理能力，涵蓋品質協議、交期管理、投訴管理與供應安全</li>
+        <li>規劃有效的<strong>單次使用技術培訓（SUT Training）</strong>計畫，理解手動操作步驟增加帶來的風險，以及如何透過系統性培訓降低失敗風險</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.1 Technology Transfer -->
+<!-- ============================================================ -->
+<div class="section-title">3.1 Technology Transfer（技術轉移）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Single-use products may be integrated into an existing facility, creating a hybrid system of stainless steel and single-use components, or implemented as an end-to-end solution. While it is possible to create a complete single-use manufacturing train, the majority of SUT implementations are hybrid systems which leverage existing infrastructure. Implementation may be as simple as integrating some fluid processing technology, such as bioprocess bags and encapsulated filters, or may extend to major unit operations including bioreactors and chromatography systems. The availability of single-use solutions, that can address a wide variety of process needs, continues to increase as more suppliers enter the market and technology matures. The <span class="key-term">technology transfer</span> process for SUSs has commonalities with traditional stainless steel systems as well as unique requirements. Implementation of a bioprocess bag, unit operation, or end-to-end solution requires the same considerations:</p>
+        <ul>
+            <li>Assessment, selection and design of single-use products</li>
+            <li>Supplier risk assessment and sourcing</li>
+            <li>Planning and implementation</li>
+            <li>Scale-up considerations</li>
+            <li>Facility constraints</li>
+        </ul>
+        <p>Assessments should be performed in several areas including organizational drivers and goals, the process, available single-use products, supplier capabilities/availabilities/sourcing, the facility, future scale-up requirements, and <span class="key-term">regulatory compliance</span>.</p>
+        <p>Assessment of the process and single-use product should be made with consideration for the overall goal to be achieved by implementation. Goals include, but are not limited to:</p>
+        <ul>
+            <li>Expanding capacity, scale-out or scale-up strategies</li>
+            <li>Eliminating bottlenecks or process fit</li>
+            <li>Replacement of a unit operation or obsolete equipment</li>
+            <li>Reduction or elimination of cleaning and sterilization</li>
+            <li>Reducing unit operation, lot-to-lot, or campaign turnaround time</li>
+            <li>Reducing cost</li>
+            <li>Improving process assurance, e.g., use of completely closed sampling and fluid handling solutions</li>
+        </ul>
+        <p>Organizational goals and process requirements should be used to develop robust user requirements to evaluate current single-use products to implement in a new or existing facility. Assessment should include consideration of the following factors:</p>
+        <ul>
+            <li>Material compatibility</li>
+            <li>Equipment design and configuration</li>
+            <li>Facility configuration and capabilities</li>
+            <li>Process requirements (particularly instrumentation and controls)</li>
+            <li>Regulatory requirements</li>
+            <li>Scale-up</li>
+            <li>Risk management</li>
+            <li>Supplier capabilities and regional support</li>
+        </ul>
+        <p><em>For further information, refer to ISPE Good Practice Guide: Technology Transfer (Second Edition).</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 導入的雙重性質</h4>
+            <p><strong>技術轉移（Technology Transfer）</strong>到 SUT 有兩種形式：</p>
+            <ul>
+                <li><strong>混合系統（Hybrid）</strong>：在既有不鏽鋼設施中局部引入 SUT，例如只換掉儲液袋或過濾器——這是最常見的情形，約佔 SUT 導入的大多數。</li>
+                <li><strong>端對端單次使用（End-to-End SUS）</strong>：整條製程從上游到下游全部使用一次性耗材，靈活性最高，但供應鏈管理複雜度也最高。</li>
+            </ul>
+            <p>選擇何種形式取決於製程需求、設施現況、法規策略與長期商業目標的綜合評估，沒有單一正確答案。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 SUT 技術轉移比喻為餐廳廚房改裝：<strong>混合系統</strong>就像只換掉爐具，保留其他設備——成本低、風險小，但效益有限。<strong>端對端方案</strong>則像重新設計整個廚房動線——一次性投資高，但長期效率最佳。大多數餐廳會先換一台烤箱試水，確認好用再逐步擴大。SUT 導入的邏輯完全相同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文列出了 SUT 導入的七大目標，其中有兩個特別值得關注：</p>
+            <ul>
+                <li><strong>消除清洗與滅菌</strong>：這是 SUT 最核心的優勢之一——不需要 CIP/SIP，大幅縮短批次週轉時間。</li>
+                <li><strong>提升製程保證</strong>：使用完全密閉的取樣和流體傳輸解決方案，可降低污染風險，符合無菌製造的 GMP 期望。</li>
+            </ul>
+            <p>評估時別只看「導入成本」——要算入長期的清洗驗證成本節省、人力節省和週轉效益。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在合約開發製造（CDMO）環境中，技術轉移評估格外複雜——因為每個客戶的製程都不同，且法規策略（申請人是客戶，不是 CDMO）需要雙方對齊。CDMO 導入 SUT 時，必須確認：</p>
+            <ul>
+                <li>客戶的原始 IND/BLA/NDA 申請中是否已包含 SUT 使用的聲明</li>
+                <li>若從不鏽鋼切換至 SUT，是否需要提交補充申請（Supplement）</li>
+                <li>供應商是否能支援台灣/亞太地區的法規文件要求（如 TW-FDA 查廠）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你目前的設施是純不鏽鋼系統還是混合系統？如果要引入 SUT，哪個製程步驟最適合作為試點？</li>
+                <li>原文提到 SUT 的「Regional Support（區域支援）」是評估因素之一——你的主要 SUT 供應商在台灣有本地技術支援嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.1.1 Gap Assessment -->
+<!-- ============================================================ -->
+<div class="section-title">3.1.1 Gap Assessment（差距評估）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>When considering <span class="key-term">technology transfer</span>, a gap assessment should be performed to address inherent changes to match the desired state and to account for potential impacts. Table 3.1 provides an example gap assessment to match process capabilities with available SUT capabilities.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Items</th>
+                    <th>Process Input / Actual State</th>
+                    <th>Receiving Unit Desired State</th>
+                    <th>Gap Analysis</th>
+                    <th>Potential Gap Effect</th>
+                    <th>Proposed Mitigation Strategy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Process equipment capabilities against Critical Process Parameters (CPPs)</td>
+                    <td>Instrument precision / Instrument capabilities / Normal operating range</td>
+                    <td>Extractable assessment / Bioreactor comparisons / Sampling</td>
+                    <td colspan="3"><em>(to be populated per specific transfer)</em></td>
+                </tr>
+                <tr>
+                    <td>Media/buffer manufacturing conditions</td>
+                    <td>Manufacturing recipe precision / Manufacturing conditions</td>
+                    <td>Adjustments</td>
+                    <td colspan="3"><em>(to be populated per specific transfer)</em></td>
+                </tr>
+                <tr>
+                    <td>Media/buffer storage conditions</td>
+                    <td>Buffer hold conditions</td>
+                    <td>Bulk drug substance storage conditions</td>
+                    <td colspan="3"><em>(to be populated per specific transfer)</em></td>
+                </tr>
+                <tr>
+                    <td>Storage conditions</td>
+                    <td>Freezing conditions / Container capacities</td>
+                    <td>Stability studies</td>
+                    <td colspan="3"><em>(to be populated per specific transfer)</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：差距評估的本質</h4>
+            <p><strong>差距評估（Gap Assessment）</strong>是一個結構化工具，用來回答「我現有的製程能力 vs. SUT 所能提供的能力之間，有哪些落差？」每個落差都需要：</p>
+            <ul>
+                <li>評估其對產品品質或製程安全的<strong>潛在影響</strong></li>
+                <li>提出具體的<strong>緩解策略</strong>（例如：更換感測器、增加測試點、重新驗證緩衝液配方）</li>
+            </ul>
+            <p>這個工具同時服務兩個目的：工程決策（選哪種 SUT）和法規策略（需要提交哪些補充數據）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>差距評估就像搬新家前的「裝潢需求對照表」——你有一份舊家的家具清單（現有製程能力），也有一份新家的房間規格（SUT 能力），兩者對照就能發現哪些家具尺寸不合（Gap），是要買新的（重新開發）還是修改（調整製程參數）。不做這份清單就搬家，等於盲目導入 SUT。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>表格中「可提取物評估（Extractable Assessment）」出現在差距評估項目中，這強調了一個重要概念：<strong>換材料就是換接觸面</strong>。即使製程參數完全相同，從不鏽鋼換到聚合物接觸面就會引入全新的 E&amp;L 風險，必須在技術轉移初期就開始評估，而非等到確效階段才意識到。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你要將一個生物反應器步驟從不鏽鋼換成單次使用生物反應器（SUBR），差距評估中哪些 CPP 可能受影響最大（提示：攪拌、DO 控制、取樣方式）？</li>
+                <li>緩衝液儲存從不鏽鋼槽換成生物處理袋（Bioprocess Bag），需要評估哪些新的穩定性風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.1.2 Planning and Scheduling -->
+<!-- ============================================================ -->
+<div class="section-title">3.1.2 Planning and Scheduling（計畫與排程）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Timelines for <span class="key-term">technology transfer</span> vary depending on the complexity of the process, facility capabilities, staff familiarity with SUT, previous use of SUT, and <span class="key-term">regulatory compliance</span> requirements. Many technical and quality related activities may be carried out in parallel. As with any new technology, operator training, and generation of SOPs should be incorporated into the transfer schedule.</p>
+        <p>Once a single-use product has been selected, the lead time for capital equipment is typically less than that of the stainless steel counterpart. If the single-use component is an off the shelf product, it may be readily available at the time of production. Typical delivery time (including plant integration and commissioning and qualification) can be up to six to eight months. However, most single-use components require customization to meet process needs. Sufficient time should be designated to develop user requirements and to generate and approve customized supplier drawings. Typical lead time for customized products is about <strong>twelve weeks</strong> for already ordered product and up to <strong>twenty weeks</strong> for a new design.</p>
+        <p>Supplier audits should take place after the selection of a single-use product to support accepting the supplier's manufacturing certificates and to leverage the E&amp;L reports.</p>
+        <p>Since SUT are intended to be modular and generally do not require utilities for cleaning or sterilization, installation of the equipment can be accomplished quickly. Additional time may be required for very large equipment, such as support structures for vessels that do not fit through doors in the production areas.</p>
+        <p>Validation packages are typically available from the suppliers for the SUS hardware and software. Installation and qualification should be scheduled well in advance of equipment delivery.</p>
+        <p>Scheduling of production batches is process dependent. Considerations for the impact of SUT on scheduling include:</p>
+        <ul>
+            <li>Single-use products generally do not require cleaning or sterilization; therefore, turnaround time for equipment is reduced significantly. For example, installation and removal of a single-use bioreactor is faster than cleaning and steaming a stainless steel bioreactor of comparable size.</li>
+            <li>The number of stainless steel tanks is often a limiting factor in media and buffer preparation. With SUT implementation, media and buffer may be prepared and held in totes provided there is sufficient storage space available.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 時程的關鍵數字</h4>
+            <p>原文給出了具體的交期參考：</p>
+            <ul>
+                <li><strong>現貨（Off-the-Shelf）</strong>：可立即取得，但多數 SUT 需要客製化，無法直接套用</li>
+                <li><strong>客製化已訂購產品</strong>：約 12 週（3 個月）</li>
+                <li><strong>全新設計</strong>：最長 20 週（近 5 個月）</li>
+                <li><strong>完整導入（含整合、確效）</strong>：6–8 個月</li>
+            </ul>
+            <p>這些數字意味著：SUT 採購必須在製程開發早期就啟動，不能等到驗證計畫開始後才下訂單。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 的導入排程就像蓋房子——你可以讓水電、泥作、木工平行施工（技術活動並行），但基礎打好之前，裝修無從開始（供應商審計要在設備選定後進行）。而且，如果你在蓋牆時才想起要裝客製化門框，交期一定來不及。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>原文提到「大型設備可能需要拆牆才能進入生產區」——這是 SUT 導入常被忽略的施工風險。在計畫早期就要確認：</p>
+            <ul>
+                <li>設備的外包裝尺寸 vs. 廠房門寬和走廊寬度</li>
+                <li>清潔室等級維護（拆牆施工期間的污染控制）</li>
+                <li>是否需要暫停其他生產批次</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>CDMO 為客戶導入 SUT 時，時程規劃面臨額外壓力：客戶通常有 IND enabling studies 的時間節點。建議的排程策略：</p>
+            <ul>
+                <li>在 Phase I 製程開發完成後即啟動 SUT 選型，而非等到 GMP 製造計畫確定</li>
+                <li>與供應商建立預訂（Forecast Order）機制，保留產能，縮短正式訂單後的交期</li>
+                <li>將供應商確效套件（Validation Package）審查列入 IQ/OQ 前置作業</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你上一次導入新的 SUT 耗材，從選定到首批生產實際花了多少時間？和本節的參考時程相比如何？</li>
+                <li>SUT 消除了 CIP/SIP，但省下的時間有多少被新增的「組裝確認」步驟所消耗？如何量化這個 trade-off？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.2 Regulatory Compliance -->
+<!-- ============================================================ -->
+<div class="section-title">3.2 Regulatory Compliance（法規合規）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section highlights key regulatory aspects for consideration in the implementation of SUT. Currently, there are no specific guidelines available to provide specific direction on the implementation and use of SUT. As such, early adopters of SUT have leveraged related regulations for supporting their product filings and for managing the quality of SUT being used and of the products manufactured using SUT. Such regulations generally define requirements for disposable medical devices, primary packaging of drug substances and drug products, and the control of materials used in drug manufacturing.</p>
+        <p>SUT can be incorporated in a wide range of applications within a manufacturing process. Due to this diversity of application, the risk to the product and process can range from low (e.g., use of single-use filter for filtration of buffer upstream of the process) to high (e.g., bags used in the filling of a parenteral drug). A large part of the responsibility falls on the drug manufacturer to ensure that single-use materials selected for the manufacturing process do not adversely impact the drug product. Regulators expect adequate data to ensure that the product contacting materials do not introduce contaminants into the product so as to alter the strength, identity, safety, quality, and purity.</p>
+        <h3>3.2.1 Sources of Information</h3>
+        <p>Table 3.2 provides sources of information for regulations, guidances, standards, and industry good practices, which can be used for setting quality expectations of single-use products and to support regulatory filings.</p>
+        <table>
+            <thead>
+                <tr><th>Issuing Body</th><th>Document</th><th>Overview</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>EMA</td><td>Guideline on Plastic Immediate Packaging Materials (CPMP/QWP/4359/03)</td><td>Data requirements on plastic materials for active substances and medicinal products</td></tr>
+                <tr><td>US FDA</td><td>Use of ISO 10993-1: Biological evaluation of medical devices</td><td>Guidance for devices in direct/indirect contact with the human body</td></tr>
+                <tr><td>WHO</td><td>Technical Report Series No. 902</td><td>Guidance on packaging material for drug products; some concepts apply to SUSs</td></tr>
+                <tr><td>ISO</td><td>ISO 10993-1 Biological evaluation of medical devices – Part 1</td><td>General principles governing biological evaluation within a risk management process</td></tr>
+                <tr><td>USP</td><td>&lt;1207&gt; Package Integrity Evaluation – Sterile Products</td><td>Guidance on container integrity testing for sterile products</td></tr>
+                <tr><td>USP</td><td>&lt;661&gt; Plastic Packaging Systems</td><td>Standards for plastic materials used to package medical articles</td></tr>
+                <tr><td>USP</td><td>&lt;665&gt; Polymeric Components and Systems Used in Pharmaceutical Manufacturing</td><td>Assessment of polymeric material/component/system for intended use</td></tr>
+                <tr><td>USP</td><td>&lt;87&gt;/&lt;88&gt; Biological Reactivity In Vitro/In Vivo</td><td>Biocompatibility assessment procedures for plastics and elastomers</td></tr>
+                <tr><td>ASTM</td><td>E3051-16 Standard Guide for Specification, Design, Verification and Application of SUSs</td><td>Defines approach to satisfy international regulatory expectations for SUS use</td></tr>
+                <tr><td>PDA</td><td>Technical Report 66: Application of Single-Use Systems in Pharmaceutical Manufacturing</td><td>Detailed guide on SUS types, business case, sourcing, and regulatory expectations</td></tr>
+            </tbody>
+        </table>
+        <h3>3.2.2 Data Requirements</h3>
+        <p>While evaluating various regulatory data requirements, performing a science and risk-based assessment is a key activity. Considerations for evaluating the scope and extent of regulatory data needed include:</p>
+        <ul>
+            <li>Characteristics of the product fluid in contact with the single-use product (physical state, organic solvents, surface active compounds, hydrophobic additives, etc.)
+                <ul><li>Solids in contact with single-use products have a lower risk potential compared to fluids</li></ul>
+            </li>
+            <li>Stage where the single-use product is being used
+                <ul><li>Single-use products used in early process steps followed by purification have lower risk potential than those at final stages</li></ul>
+            </li>
+            <li>Product contact time and condition
+                <ul><li>Tubing and connectors used for transfers have shorter contact time and lower risk potential compared to products used for holding or storing process fluids</li></ul>
+            </li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 法規的「借用」策略</h4>
+            <p>原文坦率地指出：截至本指引出版，<strong>沒有專門針對 SUT 的法規指引</strong>。產業界因此借用了三類現有法規框架：</p>
+            <ul>
+                <li><strong>醫療器材法規</strong>（ISO 10993-1）：評估與人體接觸材料的生物相容性</li>
+                <li><strong>藥品包裝法規</strong>（USP &lt;661&gt;、EMA 指引）：評估接觸藥品的塑膠材料</li>
+                <li><strong>製藥製造控制法規</strong>（GMP 通則）：確保製造過程材料控制的完整性</li>
+            </ul>
+            <p>這種「拼湊」做法要求藥品製造商具備高度的科學判斷力——必須自行評估哪些法規最適用於特定的 SUT 應用場景。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 的法規合規就像開一家融合了餐廳和醫療診所的「養生飲食店」——沒有專屬的餐飲法規，你必須同時遵守衛生局的食品安全規定（藥品製造 GMP）和醫療主管機關的要求（醫療器材標準），然後自己判斷哪些條文適用於你的特定服務項目。風險評估能力是核心關鍵。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：風險分層是關鍵</h4>
+            <p>原文建立了一個非常重要的風險分層邏輯：</p>
+            <ul>
+                <li><strong>低風險</strong>：緩衝液過濾（在純化步驟上游）</li>
+                <li><strong>中等風險</strong>：中間步驟的產品傳輸</li>
+                <li><strong>高風險</strong>：腸外藥品（Parenteral Drug）的最終充填</li>
+            </ul>
+            <p>風險等級直接決定所需的法規數據量。越接近最終產品、接觸時間越長、接觸面積越大，要求的數據就越多。這是<strong>科學和風險導向（Science and Risk-Based）</strong>法規策略的核心邏輯。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在無菌充填 CDMO 中，最高風險的應用場景是直接充填注射劑——此時 SUT（如充填管線、袋子）必須符合最嚴格的生物相容性、顆粒物、內毒素和可浸出物要求。實務建議：</p>
+            <ul>
+                <li>建立 SUT 材料的<strong>風險分級矩陣</strong>，依接觸類型、時間、劑型分類管理</li>
+                <li>要求供應商提供完整的 USP &lt;87&gt;/&lt;88&gt; 和 USP &lt;661&gt; 合規證明</li>
+                <li>對高風險應用，保留獨立的內部測試數據，不完全依賴供應商提供的資料</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的設施中，哪些 SUT 應用屬於高風險（直接接觸最終注射劑）？這些耗材目前有哪些法規文件支持？</li>
+                <li>USP &lt;665&gt; 和 USP &lt;661&gt; 都涉及塑膠材料的評估，兩者的主要區別是什麼？哪一個更適用於生物製程用的單次使用袋？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.3 Leachables -->
+<!-- ============================================================ -->
+<div class="section-title">3.3 Leachables（可浸出物）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>As discussed in Section 2.2, extractables and <span class="key-term">leachables</span> (E&amp;L) profiles are integral to qualifying and implementing single-use products. <strong>Leachables are the chemical species that migrate from or through a contact surface into a drug product or process stream during storage or normal use conditions.</strong> The supplier-provided extractables information can give preliminary indication of the potential chemical species that may impact the single-use product. The leachables evaluation should be done by the end-user, with a strong focus on the conditions of the therapeutic product or its precursor that is processed in the single-use product.</p>
+        <p>While the two terms E&amp;L are often discussed together, they are executed at different times and by different entities. Therefore, this Guide correspondingly separates the two topics to represent the actual activities.</p>
+        <p>Some interactions between the dosage form and packaging/polymeric contact materials may give rise to E&amp;L that can be readily identified, quantified, and evaluated for their impact on patient safety. However, <span class="key-term">leachables</span> are often present at extremely low levels and the analytical methods should be capable of detecting and quantifying trace levels of these compounds. Other leachables may show up in stability studies, and may pose a risk to safety and efficacy via interactions with the formulation.</p>
+        <p>For example, a well-known industry case study is the issue arising from the common use of <strong>Irgafos 168® compounds</strong> (antioxidant additive) in single-use bioreactor films. Irgafos 168® had shown no cytotoxic effects in numerous studies. However, an oxidative derivative, Bis(2,3-di-tert-butylphenyl)phosphate (bDtBPP), was shown to have a cytotoxic effect on Chinese Hamster Ovary (CHO) cells once the bioprocess container was gamma irradiated. This case study shows the importance of risk analysis. A new film composition was later introduced with reduced concentration of Irgafos® 168 in the polymer formulation.</p>
+        <p>As an additional example, low levels of leachable iron may catalyze oxidation of a preservative and other excipients, leading to formation of protein-preservative adducts. Therefore, even if extractables by themselves do not pose a safety risk, safety and product quality should be assessed with appropriate risk assessment and risk mitigation strategies for leachables.</p>
+        <p>For a detailed approach, refer to the BioPhorum Operations Group (BPOG) Best Practices Guide for Evaluating <span class="key-term">Leachables Risk</span> from Polymeric Single-Use Systems.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="key-term-box">
+            <h4>關鍵名詞辨析：E&amp;L 的本質區別</h4>
+            <p><strong>可萃取物（Extractables）</strong>：在極端或非代表性的溶劑條件下，從材料中人為「萃取」出的化學物質——由<strong>供應商</strong>執行，作為最壞情況（Worst Case）的參考數據。</p>
+            <p><strong>可浸出物（Leachables）</strong>：在<strong>正常使用條件</strong>下（包括儲存、生產），從材料中自然「遷移」到製程流體或藥品中的化學物質——由<strong>終端使用者</strong>評估，反映真實風險。</p>
+            <p>關鍵邏輯：Extractables 是「可能浸出的最大清單」，Leachables 是「實際會浸出的物質」。後者才決定患者安全風險。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：安全顧慮閾值（Safety Concern Threshold）</h4>
+            <p>可浸出物評估的核心是判斷：某種化學物質的濃度是否超過<strong>安全顧慮閾值（Safety Concern Threshold, SCT）</strong>。SCT 是毒理學評估的底線——低於此值通常無需進一步的安全測試。主要參考框架：</p>
+            <ul>
+                <li><strong>BPOG 指引</strong>：提供生物製程用 SUS 的 Leachables 風險評估最佳實務</li>
+                <li><strong>ICH Q3E（草案）</strong>：藥品中元素雜質的安全閾值（部分可類比應用）</li>
+                <li><strong>毒理學關注閾值（TTC）</strong>：基於每日攝入量估算安全性</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 E&amp;L 想成「水龍頭鉛污染問題」：<strong>Extractables</strong> 是水管材質分析報告（告訴你水管含有多少鉛）；<strong>Leachables</strong> 是從水龍頭接出來的水樣分析（告訴你實際喝到的水裡有多少鉛）。材料含鉛不代表水中鉛含量超標，但材料含鉛是風險因子，需要進一步評估實際滲出量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Irgafos 168® 案例的警示</h4>
+            <p>這個著名案例有三個核心教訓：</p>
+            <ul>
+                <li><strong>伽瑪照射會改變化學物質的特性</strong>：滅菌方式（gamma irradiation）可能將無毒物質轉化為有毒的衍生物（bDtBPP）。E&amp;L 測試必須在<strong>終態（final state）材料</strong>上進行，包含所有後處理步驟。</li>
+                <li><strong>細胞株的敏感性不同</strong>：同一物質對不同 CHO 細胞株的毒性可能不同——供應商資料不一定適用於你的特定細胞株。</li>
+                <li><strong>供應商必須主動改良配方</strong>：這個案例最終促使供應商降低 Irgafos® 168 的用量，說明端用戶的反饋能推動材料改進。</li>
+            </ul>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在承接客戶的生物製程時，CDMO 的 Leachables 評估責任分工通常是：</p>
+            <ul>
+                <li><strong>供應商</strong>：提供 Extractables 數據和初步毒理學評估</li>
+                <li><strong>CDMO</strong>：根據客戶製程條件（pH、溫度、接觸時間、藥品特性）評估實際 Leachables 風險</li>
+                <li><strong>客戶</strong>：負責最終的法規申請和患者安全承擔</li>
+            </ul>
+            <p>在合約中明確定義這三方的責任邊界，是避免法規爭議的關鍵。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施目前如何管理 SUT 供應商提供的 Extractables 資料？是否有內部程序評估其與實際製程條件的相關性？</li>
+                <li>如果一個新客戶的蛋白質製程對氧化特別敏感，你在選擇 SUT 材料時會額外關注哪些 Leachables 指標？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.4 Validation -->
+<!-- ============================================================ -->
+<div class="section-title">3.4 Validation（確效）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Once the design phase is complete, <span class="key-term">validation</span> of the single-use products can begin. An assessment should be performed to evaluate and quantify all potential risks associated with the single-use products and their introduction to the manufacturing process. A cross-functional team is recommended to conduct a thorough and robust assessment; the team members would be critical contributors to the Failure Mode and Effect Analysis (FMEA) protocols.</p>
+        <p>Knowledge of the process, single-use products, and contact solutions are essential for a thorough assessment. The following information should be gathered:</p>
+        <ul>
+            <li>Product application and URS</li>
+            <li>Supplier product documentation (specifications and drawings)</li>
+            <li>Contact solutions</li>
+            <li>Proximity of the single-use product to the final process step</li>
+            <li>How the single-use product will be used</li>
+            <li>Ancillary equipment impact (tubing welders, pumps, etc.)</li>
+            <li>Sanitization/sterilization requirements</li>
+        </ul>
+        <p>Supplier qualification, as well as analysis of leachables, would be nearly complete at this point in the SUT implementation project lifecycle.</p>
+        <h3>3.4.1 Supplier Data Review</h3>
+        <p>Suppliers typically provide a set of information including manufacturing, compendial, and additional data. End-users should evaluate the supplier provided information to ensure the data supports the intended use. An outline of supplier provided data:</p>
+        <ul>
+            <li>Materials of construction, shelf life, and sterilization validation statement (per ANSI/AAMI/ISO 11137)</li>
+            <li>Biocompatibility test results per USP &lt;87&gt; and USP &lt;88&gt;</li>
+            <li>Mechanical properties test results (ASTM F2097-16, BPSA 2015 Guide)</li>
+            <li>Gas transmission properties</li>
+            <li>Physicochemical test results for plastic components (USP &lt;661&gt; or EP 3.1.3)</li>
+            <li>Statement of animal origin (TSE/BSE compliance)</li>
+            <li>Chemical compatibility charts</li>
+            <li>Endotoxin test results per USP &lt;85&gt; and EP 2.6.14</li>
+            <li>Particulate test results per USP &lt;788&gt;, EP 2.9.19, EP 2.9.20</li>
+        </ul>
+        <h3>3.4.2 In-House Testing</h3>
+        <p>The extent of in-house testing depends on the application and availability of supplier and in-house data. It is acceptable to use supplier provided data and limit in-house testing based on risk assessment.</p>
+        <p><strong>Solution Stability Testing:</strong> A solution stability study should be performed to ensure quality and safety of a solution in a single-use container. Key recommendations:</p>
+        <ul>
+            <li>Compare all solutions to be held; identify representative solutions for testing. WFI should always be tested.</li>
+            <li>The ratio of surface area to volume is critical; bags should be filled to only half of full capacity for testing (worst case).</li>
+            <li>Bags should not be used at less than 50% of full capacity during production, as stability and E&amp;L studies are typically carried out at 50% fill volume.</li>
+            <li>Sample at time zero and at 25%, 50%, 75%, 100% of expiry period. Evaluate pH, conductivity, microbial limits, color, and visible particulates.</li>
+            <li>For cell culture media: additionally perform small-scale cellular growth studies.</li>
+        </ul>
+        <p><strong>Container Integrity Testing:</strong> Media fill studies using Tryptic Soy Broth (TSB); test the largest bag size at full capacity (largest external surface area = worst case).</p>
+        <p><strong>Filter Validation:</strong> If a filter is part of the single-use product, consider hydrophilicity, filtration area, pressure/flow limits, extractables, and water permeability. For sterilizing-grade filters: retention studies, integrity test determination, and compatibility studies must be conducted by the end-user.</p>
+        <p><strong>Shipping Validation:</strong> Validate integrity through the entire shipment — identify shipping container, secure a carrier, and evaluate solution at start and end of shipment.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 確效的三層架構</h4>
+            <p>SUT 的確效不同於傳統設備確效，它結合了材料科學、製程確效和包裝完整性測試。可以分三層理解：</p>
+            <ul>
+                <li><strong>第一層：供應商資料審查</strong>（IQ 前置作業）——確認供應商文件的充分性和適用性</li>
+                <li><strong>第二層：現場測試（In-House Testing）</strong>——針對特定製程條件的現場驗證（溶液穩定性、容器完整性、過濾確效）</li>
+                <li><strong>第三層：製程可比性（Process Comparability）</strong>——從不鏽鋼轉換到 SUT 時，證明製程結果無顯著差異</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>確效活動框架 Validation Framework</h4>
+            <pre>
+SUT 確效活動流程：
+
+1. 設計確認（Design Qualification）
+   → URS 撰寫 → 供應商選型 → 規格凍結
+
+2. 安裝確效（IQ, Installation Qualification）
+   → 設備正確安裝確認
+   → 供應商資料審查（文件 IQ）
+
+3. 操作確效（OQ, Operational Qualification）
+   → 功能測試（壓力、流量、感測器）
+   → 過濾完整性測試
+
+4. 性能確效（PQ, Performance Qualification）
+   → 溶液穩定性研究
+   → 容器完整性測試（媒體充填）
+   → 製程可比性研究
+
+5. 持續驗證
+   → 定期批次數據監測
+   → 定期供應商審計
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：50% 充填量的黃金法則</h4>
+            <p>原文強調了一個實務上常被忽略的細節：<strong>穩定性和 E&amp;L 研究通常在 50% 充填量下進行（最壞情況——表面積/體積比最高）</strong>。</p>
+            <p>這意味著：如果你的生產批次的充填量低於 50%，就超出了驗證研究的範圍，必須重新進行風險評估，甚至追加測試。在商業生產中，<strong>禁止以低於 50% 的充填量使用已驗證的袋子</strong>，除非有額外的數據支撐。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 的供應商資料審查就像購車前的「車輛歷史報告」——供應商提供各項測試數據相當於車輛製造商提供的安全測試報告。但你自己還是要試駕（In-House Testing），特別是如果你要開這輛車去非常特殊的地方（高風險應用，如直接充填注射劑）。供應商的數據是起點，不是終點。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在 CDMO 環境中，SUT 確效面臨一個特殊挑戰：<strong>同一套 SUT 可能服務多個不同客戶的製程</strong>。建議做法：</p>
+            <ul>
+                <li>建立「平台確效（Platform Validation）」——對同一型號 SUT 一次性完成基礎確效，覆蓋所有相似應用</li>
+                <li>針對每個客戶製程的特殊條件（特殊 pH、蛋白質濃度、有機溶劑），進行差異化的風險評估</li>
+                <li>過濾確效（特別是滅菌級過濾器）必須由終端使用者自行執行，不能完全委由客戶或供應商</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 SUT 確效方案中，IQ/OQ/PQ 的分工是否清楚定義？供應商資料審查是在 IQ 之前還是作為 IQ 的一部分？</li>
+                <li>如果一個生產批次的實際充填量只有袋子容量的 40%，依據本章的準則，你應該採取哪些風險管理措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.5 Supply Chain -->
+<!-- ============================================================ -->
+<div class="section-title">3.5 Supply Chain（供應鏈）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A robust <span class="key-term">supply chain</span> is composed of many aspects in the process of establishing a strong relationship with suppliers and sub-suppliers. This section aims to highlight recommendations for developing this relationship.</p>
+        <h3>3.5.1 Quality Requirements</h3>
+        <p><strong>Confirm or Finalize Quality Agreement with Suppliers:</strong> The quality agreement is a key document to maintaining a robust supply chain for a process using SUT. This document should be drafted once a supplier is selected and the order for prototypes is being placed. The agreement typically covers quality, service, and financial topics. Negotiation should start during the prototype evaluation stage.</p>
+        <p><strong>Confirm Audit Schedule:</strong> Auditing of suppliers is important for any organization dealing with SUT. Once the supplier is selected, a preliminary audit schedule should be defined. Periodic audits are recommended, with schedules being defined as soon as practical with all suppliers of single-use products.</p>
+        <h3>3.5.2 Lead Times and Order Processing</h3>
+        <p><strong>Confirm or Agree Upon Lead Times for Individual Assemblies:</strong> During the design and selection of single-use assemblies, considerations should be made for using one design of the assembly in multiple locations. This can provide advantages in lead times and inventory levels. Shorter lead times often result if an established order schedule is worked out.</p>
+        <p><strong>Confirm or Negotiate Pricing for Recurring Orders:</strong> At this point in SUT implementation, there should be defined prices for each assembly. Recurring order schedules can be defined along with associated pricing.</p>
+        <p><strong>Develop and Agree on a Predefined Order Schedule:</strong> Once the production process is in operation, it is helpful to develop a long term (months or years) order schedule.</p>
+        <h3>3.5.3 Complaint Management</h3>
+        <p><strong>Confirm Process for Handling Complaints and Investigations:</strong> Best practice is to define the process and expectations prior to a complaint occurrence. Confirm with the supplier the specific process and contact person for complaint entry.</p>
+        <p><strong>Confirm Return and Crediting Process for Defective Products:</strong> Smooth return of defective products is key to timely investigations. Understand: how to initiate return, decontamination requirements prior to return, and when to expect credit.</p>
+        <p><strong>Establish Expectations and Response Time:</strong> Investigations can take weeks or months. Understanding the expected communication during the investigation keeps all parties up to date.</p>
+        <p><strong>CAPA Plan:</strong> Clarify typical CAPA implementation plans including timeline, in case an investigation results in a CAPA.</p>
+        <h3>3.5.4 Security of Supply</h3>
+        <p><strong>Establish Inventory Requirements:</strong> The use rate and lead time combine to define the foundation for inventory levels. Having inventory at both the supplier and end-user warehouses helps retain commitment from both parties.</p>
+        <p><strong>Agree on Change Notification Timelines:</strong> Change notifications throughout the supply chain impact the end-user. Critical factors to convey to the supplier include: what constitutes a notifiable change, whom to contact, and time needed to assess and implement a change.</p>
+        <p><strong>Confirm Business Continuity Plans:</strong> A supplier business continuity plan should be reviewed, particularly for unique assemblies with long lead components, to ensure availability under supply chain disruption conditions.</p>
+        <h3>3.5.5 Service, Maintenance, and Ongoing Training</h3>
+        <p><strong>Preventative Maintenance:</strong> A preventative maintenance service agreement for mechanical and electrical components (pumps, controls, etc.) of the SUSs should be established.</p>
+        <p><strong>Training:</strong> Consider establishing periodic training programs for new staff or refreshers for existing staff. Suppliers can be an excellent resource to provide this training.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 供應鏈的特殊性</h4>
+            <p>SUT 的供應鏈管理比傳統設備更複雜，原因在於：</p>
+            <ul>
+                <li><strong>消耗品屬性</strong>：SUT 是持續消耗品，不是一次性資本投資——斷貨直接導致生產停線</li>
+                <li><strong>客製化特性</strong>：大多數 SUT 組件是為特定應用客製的，無法隨時從市場上緊急採購替代品</li>
+                <li><strong>子供應商複雜性</strong>：SUT 供應商本身也依賴多層原材料供應商（聚合物、連接器、感測器），任何層級的中斷都會向下傳遞</li>
+                <li><strong>設計變更通知（Change Notification）</strong>：供應商的材料配方或製程改變，可能要求終端使用者重新確效——這直接影響法規合規</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 供應鏈管理就像管理一家醫院手術室的一次性耗材採購——手術刀片、縫合線、手術衣都是一次性的，缺一不可，且客製規格很多。醫院不能等到最後一盒手術刀片用完才訂貨，必須：設立安全庫存、建立備用供應商、和供應商簽訂服務水準協議（SLA）、預先定義斷貨時的緊急程序。SUT 的供應鏈邏輯完全相同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：品質協議 vs. 採購合約</h4>
+            <p>原文強調品質協議（Quality Agreement）應在<strong>原型評估階段</strong>就開始談判——不是在正式採購後才開始。這是因為品質協議涉及多個部門（品保、法務、財務），談判週期長。常見的錯誤：等到生產計畫確定後才開始談，導致沒有品質協議就開始生產。</p>
+            <p>品質協議應涵蓋：<strong>批次放行標準、變更控制要求、偏差通知時限、CAPA 時程期望、稽核頻率</strong>。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>安全庫存計算邏輯 Safety Stock Calculation</h4>
+            <pre>
+基本安全庫存公式：
+
+安全庫存 = (最大用量/天 - 平均用量/天) × 最長交期(天)
+
+範例：
+  平均用量：10 袋/天
+  最大用量（高峰）：15 袋/天
+  供應商最長交期：60 天（客製品）
+
+  安全庫存 = (15 - 10) × 60 = 300 袋
+
+訂購點（Reorder Point）=
+  平均用量 × 交期 + 安全庫存
+  = 10 × 60 + 300 = 900 袋
+            </pre>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>對於承接多客戶製程的 CDMO，供應鏈管理有額外的考量：</p>
+            <ul>
+                <li><strong>庫存分配</strong>：不同客戶使用相同型號的 SUT，但批次記錄（Lot Number）必須嚴格區隔，避免跨客戶混批</li>
+                <li><strong>變更通知管理</strong>：一旦供應商發出材料變更通知，必須通知所有受影響的客戶並協調重新確效計畫</li>
+                <li><strong>業務連續性計畫</strong>：COVID-19 疫情揭示了 SUT 供應鏈斷鏈的真實風險——建議每年審視關鍵 SUT 的備用供應商清單</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施目前與關鍵 SUT 供應商是否簽有書面品質協議？協議中是否包含變更通知條款和 CAPA 時程要求？</li>
+                <li>你的關鍵 SUT 組件目前有多少天的庫存緩衝？這個數字是基於計算還是「感覺」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.6 Training -->
+<!-- ============================================================ -->
+<div class="section-title">3.6 Training（培訓）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>SUT has grown in both complexity of design and criticality of application in the past twenty years. The main advantages of SUT include improved flexibility and manufacturing throughput as well as reduced labor and risk for cross-contamination; these benefits can only be expressed if the end-users are properly trained. Therefore, operator <span class="key-term">single-use training</span> is a key factor for successful implementation of SUT.</p>
+        <h3>3.6.1 Impact of Single-Use Technology on Procedures</h3>
+        <h4>3.6.1.1 Comparison of Operations for Stainless Steel Systems and SUSs</h4>
+        <p>For decades, operations have primarily been based on stainless steel equipment and piping. In general, the operators are well trained, with years of experience based on full integration of the equipment in the training programs. Even with the increasing level of automation available for SUT, stainless steel systems still allow for a higher degree of process automation and process control; these factors generally reduce the risk of human error.</p>
+        <p>While most stainless steel based facilities operate using process automation, SUSs involve many operations that are carried out manually by operators.</p>
+        <table>
+            <thead>
+                <tr><th>Stainless Steel Systems</th><th>Single-Use Systems (SUSs)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Cleaning, sterilization</td><td>Check material and sterilization certificates; check packaging integrity; visual inspection</td></tr>
+                <tr><td>Calibration of probes (DO, pH, temperature, conductivity) in defined intervals</td><td>Check calibration certificates (for pre-calibrated probes) or calibrate prior to use</td></tr>
+                <tr><td>Installation of filters or other consumables</td><td>Check correct assembly of the SUS; check correct fitting and connectivity between different SUSs</td></tr>
+                <tr><td>Installation qualification and reevaluation of fixed pipes and valves</td><td>Connection of tubing lines; check correct assembly before each use; check connections against specifications; check clamps</td></tr>
+                <tr><td>Filter integrity testing</td><td>Also needed for SUT along with additional check for connection integrity</td></tr>
+            </tbody>
+        </table>
+        <h4>3.6.1.2 Increase in Manually Performed Steps</h4>
+        <p>With SUT implementation, there may be changes associated with the facility and personnel and material flows. In general, there is an increase in manually performed steps. Considerations for increased or different steps include:</p>
+        <ul>
+            <li>Receipt, inspection, storage, and transfer of SUSs to production areas</li>
+            <li>Inspection before use (checking irradiation label, damage during shipping, missing components, incorrect tubing engagement)</li>
+            <li>Connection and disconnection of single-use assemblies</li>
+            <li>Installation of single-use components in proper holders with accessories</li>
+            <li>Handling of flexible tubing and associated clamps/valves</li>
+            <li>Manual steps replacing CIP/SIP operations</li>
+            <li>Handling of connectors, disconnectors, welders, and sealing operations</li>
+            <li>Point-of-use leak testing</li>
+            <li>Handling of single-use sensors including calibration</li>
+            <li>Sampling steps from a variety of SUSs</li>
+            <li>Manipulation of aseptic transfer doors</li>
+            <li>Manual control of working pressure</li>
+            <li>Labeling of bioprocess bags after filling</li>
+            <li>Transfer of SUSs post-use for decontamination and disposal</li>
+        </ul>
+        <p>Health and safety aspects of increased manual operations should be considered, especially regarding ergonomics and safety hazards due to tubing on or near the floor.</p>
+        <h4>3.6.1.3 Failure Risk Related to SUT</h4>
+        <p>Based on an industry survey, a primary risk related to SUT is <strong>breakage/leakage</strong> of the SUS leading to loss of production material and potential contamination. The distribution of leak locations from studies:</p>
+        <ul>
+            <li>61% — bag chamber</li>
+            <li>18% — sampling manifold</li>
+            <li>12% — connector</li>
+            <li>9% — tubing</li>
+        </ul>
+        <p>Leakages can be related to improper operations such as use of improper tools to open cardboard boxes, use of sharp objects in close proximity, rough handling during setting or filling, and use of improper transfer carts or containers. The leakage risk can be significantly reduced by ensuring proper usage through <strong>end-user awareness</strong> and operational training.</p>
+        <h3>3.6.2 Training Considerations for SUT Implementation</h3>
+        <p>A rigorous <span class="key-term">training qualification</span> program should be established. Training is needed in three situations:</p>
+        <ul>
+            <li>Initial training for new implementation of SUT</li>
+            <li>Recurring training refreshers all along the process lifecycle</li>
+            <li>Corrective action in case of malfunction or failure</li>
+        </ul>
+        <p>SUT suppliers can provide specialized support. The main focus should be on hands-on sessions to allow operators to practice under conditions as close as possible to the actual process.</p>
+        <p>Once a core team has been fully trained, a <strong>mentorship program</strong> may be established. Mentors would also act as representatives for regular refreshers, design improvement requests, and process optimization proposals.</p>
+        <p>As with any equipment, insufficient operator training may result in:</p>
+        <ul>
+            <li>Damage to SUSs during use → loss of product and time</li>
+            <li>Increased quality complaints and decreased confidence in SUT</li>
+            <li>Increased production costs due to higher consumption of SUSs</li>
+            <li>Slowdown of production and underutilization</li>
+            <li>Dissatisfaction due to operators being inadequately prepared</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 的手動化悖論</h4>
+            <p>SUT 的一個常見誤解是：「一次性耗材比不鏽鋼系統更簡單」。事實恰恰相反——<strong>SUT 大幅增加了手動操作步驟</strong>：</p>
+            <ul>
+                <li>不鏽鋼系統：自動化 CIP/SIP，固定管線，高度自動化</li>
+                <li>SUT：每批次重新組裝、連接確認、拆解、廢棄——大量手動步驟</li>
+            </ul>
+            <p>這個矛盾的意涵是：導入 SUT 雖然消除了 CIP/SIP 驗證工作，但也<strong>引入了更高的操作員培訓需求和人為錯誤風險</strong>。這是 SUT 導入評估中常被低估的隱性成本。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：61% 洩漏發生在袋體本身</h4>
+            <p>這個統計數字（61% 洩漏在袋體腔室）的管理意涵非常具體：</p>
+            <ul>
+                <li>操作員<strong>徒手處理生物處理袋</strong>是最高風險行為，需要最嚴格的培訓</li>
+                <li>開箱工具（不能用美工刀！）、搬運推車規格、充填速度控制——都是可以通過 SOP 和培訓管理的可控風險</li>
+                <li>洩漏根本原因分析（RCA）應首先檢視袋體處理程序的合規性，而非立即指向供應商品質問題</li>
+            </ul>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵名詞：換裝（Gowning）在 SUT 組裝中的特殊考量</h4>
+            <p><strong>SUT 組裝的換裝（Gowning for SUT Assembly）</strong>有其特殊性：</p>
+            <ul>
+                <li>SUT 組裝通常在<strong>高等級潔淨室</strong>中進行（特別是無菌連接步驟），換裝程序必須符合對應潔淨室等級的要求</li>
+                <li>厚重的手套可能影響操作精確度（特別是連接器操作），培訓中必須模擬實際換裝狀態下的操作</li>
+                <li>換裝狀態下的<strong>疲勞效應</strong>：長時間穿著全套無菌衣操作複雜的 SUT 組裝程序，人為錯誤風險顯著上升——培訓必須考慮工作時長限制</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 培訓就像飛行員訓練——飛行模擬器（hands-on training with mock-up）的價值遠大於教室課程，因為真實操作中的「肌肉記憶」和「情境反應」無法僅靠閱讀 SOP 建立。而且，如果只在模擬器裡練習完美天氣，遇到真實緊急情況（袋子意外洩漏）就會手忙腳亂。訓練必須包含<strong>異常情況模擬</strong>。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在 CDMO 環境中，SUT 培訓面臨的特殊挑戰：</p>
+            <ul>
+                <li><strong>多客戶、多 SUT 型號</strong>：不同客戶使用不同供應商的 SUT，操作員需要掌握多種組裝和操作程序，培訓複雜度高</li>
+                <li><strong>人員流動率</strong>：CDMO 操作員流動率通常高於大型製藥廠——建立師徒制（Mentorship Program）是維持培訓知識傳承的有效機制</li>
+                <li><strong>培訓資格認定（Training Qualification）</strong>：GMP 要求培訓必須可以追溯和評估——對 SUT 操作的培訓效果評估應包含實際操作演示（Demonstration），而非只有筆試</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的設施中，SUT 的操作員培訓是否包含「錯誤示範」（演示錯誤的操作方式）？這種培訓方式是否有助於提升操作員的風險意識？</li>
+                <li>如果你的設施發生了一起 SUT 洩漏偏差，你的 RCA（根本原因分析）流程中，「培訓充分性評估」是否是標準調查項目之一？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3.6.3 Building an Effective Training Program -->
+<!-- ============================================================ -->
+<div class="section-title">3.6.3 Building an Effective Training Program for SUT（建立有效的 SUT 培訓計畫）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h4>3.6.3.1 General Considerations</h4>
+        <p>A generic training model can be applied to SUT implementation with a clear focus on explaining the failure risks related to improper use and providing opportunities for operators to practice all manually performed steps. Training should be supported by supplier documentation (operating manual, maintenance recommendation, and spare part lists) and compliance with GMP requirements. <span class="key-term">Single-use training</span> documents, including SOPs and work instructions, should follow Good Documentation Practices.</p>
+        <p>The trainer should consider:</p>
+        <ul>
+            <li>Adapting the training session to the specific skill set of the staff in attendance</li>
+            <li>Understanding and accounting for the process flow and working environment</li>
+            <li>Adapting the handling procedures to constraints in the working environment</li>
+        </ul>
+        <p>Useful tools for training include training videos and visual aids (pictures of correct vs. incorrect examples). <strong>Working instructions</strong>, as supplements to SOPs, contain step-by-step procedures with pictures and should be easily accessible at the point of use.</p>
+        <p>Key concepts applicable to all SUT training:</p>
+        <ul>
+            <li>Provide hands-on training and ensure sufficient skills and comfort level</li>
+            <li>Inform operators of possible things that could go wrong</li>
+            <li>Forecast regular training refreshers and process review</li>
+            <li>Apply root cause analysis in case of failure</li>
+            <li>Monitor impact of corrective actions</li>
+        </ul>
+        <p>A training program should start with a "watch it" step followed by a "do it" step, supported by an evaluation of training performance.</p>
+        <h4>3.6.3.2 Timing for Training</h4>
+        <p><span class="key-term">Training qualification</span> should be introduced as early as possible (during testing and validation phases) as an integral part of the SUT implementation project. Involving operators from the beginning helps enhance interest and reinforce confidence.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Before Technology Transfer</th>
+                    <th>During Technology Transfer / Validation</th>
+                    <th>After Validation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            <li>Familiarization with SUT</li>
+                            <li>Awareness of sensitive nature of bags</li>
+                            <li>Storage and handling of bags and assemblies</li>
+                            <li>Managing and layout of tubing</li>
+                            <li>Awareness of why kinking, pulling, and twisting of tubing are unacceptable</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>What and how to inspect</li>
+                            <li>Installation of specific bags and assemblies</li>
+                            <li>Consistent handling of tubing</li>
+                            <li>Connections to auxiliary equipment</li>
+                            <li>Installation and calibration of sensors</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Troubleshooting</li>
+                            <li>Complaint management</li>
+                            <li>Changes implementation</li>
+                            <li>Topics that need periodic updates</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>3.6.3.3 Specify Content According to Complexity and Audience</h4>
+        <p>Training content and time required depend on:</p>
+        <ul>
+            <li>Process scale and working environment (e.g., handling a 3,000 L storage bag is more complicated than handling a 50 L bag; working in higher classification areas requires additional time and precautions)</li>
+            <li>Complexity of the SUSs (bioreactors and automated systems require more in-depth training)</li>
+            <li>Stakeholder role:
+                <ul>
+                    <li>Supervisors and operators — performing daily work</li>
+                    <li>Supply chain personnel — procurement, warehouse, and disposal</li>
+                    <li>Quality control personnel — performing inspections</li>
+                    <li>Maintenance personnel</li>
+                </ul>
+            </li>
+            <li>Purpose: refresher/corrective (focus on specific key points) vs. new SUT training (system features and instructions for use)</li>
+        </ul>
+        <p>Formal training, in compliance with GMP requirements, should be implemented once the SUSs are delivered, installed, and qualified. Suggested timing for formal <span class="key-term">training qualification</span>:</p>
+        <ul>
+            <li>For hardware (sealers, welders, aseptic transfer doors): training can be planned just after the SAT; maintenance personnel should be included</li>
+            <li>For single-use assemblies (bags, connectors, tubing): formal training should follow qualification of the assembly</li>
+        </ul>
+        <p>As highlighted, it is beneficial to implement hands-on training in the early phase before final implementation to ease SUT adoption. However, formal GMP training should be implemented once the SUSs are delivered, installed, and qualified. A proposed three-step training sequence: <strong>Observation → Practice → Evaluation</strong> (for new implementation) or <strong>Observation of current practice → Correction → Re-evaluation</strong> (for corrective training).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUT 培訓的「三時三類」框架</h4>
+            <p><strong>三個時機</strong>（When）：</p>
+            <ul>
+                <li>技術轉移前：建立基礎認知和感知能力</li>
+                <li>技術轉移和確效期間：操作技能培訓</li>
+                <li>確效後持續生產：故障排除和持續改進</li>
+            </ul>
+            <p><strong>三類對象</strong>（Who）：操作員、品管人員、維護人員——每類人需要的培訓內容深度和重點不同。</p>
+            <p><strong>三種情境</strong>（Why）：新導入、定期更新、矯正性培訓——目的不同，培訓設計也應不同。</p>
+        </div>
+
+        <div class="key-term-box">
+            <h4>關鍵名詞：培訓資格認定（Training Qualification）</h4>
+            <p><strong>培訓資格認定（Training Qualification）</strong>是 GMP 的正式要求，用於證明操作員已具備執行特定操作的能力，通常包含：</p>
+            <ul>
+                <li><strong>理論評估</strong>：筆試或口試，確認知識層面的掌握</li>
+                <li><strong>操作演示</strong>：由合格評估員觀察操作員實際操作，確認技能層面的能力</li>
+                <li><strong>定期重新資格認定</strong>：針對高風險 SUT 操作，建議每 1-2 年重新評估</li>
+            </ul>
+            <p>在 FDA 查廠或歐盟 GMP 稽查中，「培訓記錄」是必查項目——不完整的培訓記錄可能引發 483 Observation 或警告函。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：「Watch It → Do It → Evaluate」三步驟模型</h4>
+            <p>原文推薦的培訓模型和心理學研究一致：</p>
+            <ul>
+                <li><strong>Watch It（示範觀察）</strong>：觀察正確操作示範，包括錯誤後果演示</li>
+                <li><strong>Do It（實作練習）</strong>：在接近真實條件下（包括換裝狀態）練習，讓供應商配合提供培訓用耗材</li>
+                <li><strong>Evaluate（技能評估）</strong>：由評估員觀察並記錄，確認操作員達到最低能力標準</li>
+            </ul>
+            <p>「矯正性培訓」的起點是<strong>先觀察</strong>操作員的現有行為——因為問題可能出在某個特定的不良習慣，而非全面的知識缺乏。針對性地矯正比從頭重訓更有效。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>SUT 培訓的分層邏輯（依受眾和複雜度）就像駕訓班的課程分類：路邊停車（簡單 SUT：轉移管組）和高速公路駕駛（複雜 SUT：3000L 生物反應器）需要完全不同的培訓深度。維護人員學「換輪胎」，操作員學「開車」，品管人員學「交通規則和驗車標準」——相同的車，不同的培訓內容。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在 CDMO 中建立高效的 SUT 培訓計畫，建議以下做法：</p>
+            <ul>
+                <li><strong>建立 SUT 培訓矩陣</strong>：每種 SUT 型號 × 每個操作員角色，清楚定義所需培訓模組和複訓週期</li>
+                <li><strong>與供應商建立培訓合作協議</strong>：在供應合約中加入「定期操作員培訓支援」條款，利用供應商的專業知識作為外部培訓資源</li>
+                <li><strong>視覺化操作輔助（Working Instructions）放置在操作現場</strong>：特別對於換裝後手勢靈活性受限的操作員，圖文並茂的現場操作卡比記憶 SOP 更有效</li>
+                <li><strong>異常情況模擬演練</strong>：定期演練「袋子洩漏應急程序」，確保操作員在真實事件發生時不會恐慌</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的設施目前的 SUT 培訓計畫是否區分了「新員工首次培訓」、「定期複訓」和「矯正性培訓」？三者的評估方式是否不同？</li>
+                <li>「在技術轉移前就讓操作員參與」——你的設施在上次 SUT 導入時，操作員是在哪個階段開始參與的？早期參與帶來了哪些具體的好處或挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>技術轉移（Technology Transfer）</strong>：SUT 導入多為混合系統；需完成差距評估、規劃排程（客製品交期 12–20 週、完整導入 6–8 個月）；供應商稽核應在選型後立即啟動。評估必須涵蓋材料相容性、製程需求、設施限制、法規要求和 Scale-up 能力。</li>
+        <li><strong>法規合規（Regulatory Compliance）</strong>：目前無 SUT 專屬法規，行業借用醫療器材法規（ISO 10993-1）、藥品包裝法規（USP &lt;661&gt;/&lt;665&gt;）和 GMP 通則。風險分層是核心邏輯：低風險（上游過濾）→ 高風險（最終注射劑充填），風險越高要求的法規數據越多。USP &lt;87&gt;/&lt;88&gt; 是生物相容性的基礎門檻。</li>
+        <li><strong>可浸出物（Leachables）</strong>：Leachables 是正常使用條件下從材料遷移到產品的化學物質，由終端使用者評估。必須在終態材料（包括伽瑪照射後）上測試。Irgafos 168® 案例警示：滅菌過程可能將無毒物質轉化為有毒衍生物，且不同細胞株的敏感性不同。安全顧慮閾值（SCT）是判斷是否需要進一步安全評估的關鍵標準。</li>
+        <li><strong>確效（Validation）</strong>：三層架構——供應商資料審查（IQ 前置）→ 現場測試（溶液穩定性、容器完整性、過濾確效）→ 製程可比性研究。黃金法則：穩定性和 E&amp;L 研究在 50% 充填量下進行（最壞情況），生產中不得低於此比例。過濾確效中的滅菌級過濾器測試必須由終端使用者執行。</li>
+        <li><strong>供應鏈（Supply Chain）</strong>：品質協議應在原型評估階段即開始談判；安全庫存計算必須考慮客製品的長交期（最長 60 天以上）；變更通知管理是 GMP 合規的關鍵——供應商材料配方改變可能觸發重新確效。業務連續性計畫對於無替代品的客製化組件尤為重要。</li>
+        <li><strong>培訓（Training）</strong>：SUT 增加了手動操作步驟，消除 CIP/SIP 的同時引入了更高的人為錯誤風險。61% 洩漏發生在袋體腔室，根源在操作員行為。有效的 SUT 培訓計畫：分三個時機（轉移前/中/後）、三類受眾（操作員/品管/維護）、三個目的（新導入/複訓/矯正），並採用「Watch It → Do It → Evaluate」模型。培訓資格認定（Training Qualification）必須包含實際操作演示，是 GMP 查廠的必查項目。</li>
+    </ul>
+</div>
+
+</div><!-- /main-content -->
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

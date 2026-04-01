@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE SUT - Chapter 2.1–2.2: Components, Assemblies & Extractables</title>
+    <style>
+/* =============================================================
+   PDA Educational Material - Shared CSS Template
+   Version: 2.0 (ISPE Green Override)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 12px; padding: 1.5rem 2rem; margin-top: 2rem;
+    border: 1px solid #ffd970;
+}
+.section-summary h2 { color: #856404; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 2px solid #f6c90e; padding-bottom: 0.5rem; }
+.section-summary ul { margin-left: 1.5rem; }
+.section-summary li { margin-bottom: 0.5rem; font-size: 0.93rem; color: #5a4000; }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 2.1–2.2: Components, Assemblies &amp; Extractables</h1>
+    <div class="subtitle">元件、組件系統與可萃取物</div>
+    <div class="page-info">ISPE Good Practice Guide: Single-Use Technology | p13 - p28</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>區分單次使用元件（Single-Use Components）、組件系統（SUS）三個層次的定義，掌握浸濕元件與非浸濕元件的分類邏輯</li>
+        <li>熟悉主要單次使用元件的功能與特性——包括生物工藝袋、管路、連接器、過濾器、感測器、閥件等——以及它們在無菌充填流程中的應用場景</li>
+        <li>理解可萃取物（Extractables）與可瀝出物（Leachables）的本質差異，掌握 E&amp;L 研究在藥品安全評估中的核心地位</li>
+        <li>掌握可萃取物研究的設計空間概念，包括 QbD 原則、臨界應用分層、PCM/PPC/CCS 的層級架構</li>
+        <li>了解可萃取物測試的方法論——模擬溶劑選擇、萃取參數設定、分析技術（GC-MS、LC-MS、ICP-MS）及 AET 接受標準判斷</li>
+        <li>建立 CDMO 視角的 E&amp;L 風險管理思維：從供應商數據審查、責任矩陣分工到毒理評估結論的完整工作流程</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1 Single-Use Components, Assemblies, and Systems (Overview) -->
+<!-- ============================================================ -->
+<div class="section-title">2.1 Single-Use Components, Assemblies, and Systems（單次使用元件、組件系統總覽）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This section lists the single-use products that are commonly used in pharmaceutical manufacturing facilities. Aligned with Figure 1.1, single-use products can be categorized as follows:</p>
+        <ul>
+            <li><span class="key-term">Single-use components</span> represent the single-use parts that may be used individually or as a subset of an SUS</li>
+            <li><span class="key-term">Single-use assemblies</span> consist of multiple single-use components connected in various configurations to make a unit operation in the manufacturing process</li>
+            <li><span class="key-term">SUSs</span> integrate single-use components/assemblies with multiple-use parts</li>
+        </ul>
+        <div class="quote-box">
+            Note: This section is intended to cover components, assemblies, and systems most commonly used in SUT and is not intended to be a comprehensive listing.
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三層架構——元件 → 組件 → 系統</h4>
+            <p>ISPE SUT 用清晰的三層分類架構來描述單次使用技術的範疇：</p>
+            <ul>
+                <li><strong>元件 (Component)</strong>：最小單位，例如一截管路、一個連接器</li>
+                <li><strong>組件 (Assembly)</strong>：多個元件組合成一個製程操作單元，例如「過濾組件」= 過濾器 + 管路 + 連接器</li>
+                <li><strong>系統 (SUS)</strong>：組件 + 多次使用設備（如不鏽鋼框架、泵浦驅動器）整合而成的完整設備</li>
+            </ul>
+            <p>這個三層架構對 E&amp;L 研究非常重要——萃取研究通常從<strong>元件層次</strong>開始，再擴展到系統層次的浸出研究。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把這三層想成蓋房子：<strong>元件</strong> = 磚頭、鋼筋（個別材料）；<strong>組件</strong> = 一堵牆、一個房間（功能單元）；<strong>系統</strong> = 整棟建築（含水電設備的完整設施）。做材料安全測試時，先測磚頭的化學析出，再測整棟建築的室內空氣品質。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景</h4>
+            <p>在 CDMO 的日常作業中，三個層次的管理責任不同：</p>
+            <ul>
+                <li><strong>元件</strong>：由供應商提供 CoA（成分証明）與 E&amp;L 資料包</li>
+                <li><strong>組件</strong>：通常由 CDMO 或供應商依 URS 客製化組裝，需進行完整性測試</li>
+                <li><strong>系統</strong>：CDMO 負責設備確效（IQ/OQ/PQ）及操作 SOP</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.1 Single-Use Components -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.1 Single-Use Components（單次使用元件）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Components can be classified into two categories, based on whether the surface(s) will be exposed to a fluid (liquid or gas) when in service:</p>
+        <ul>
+            <li><span class="key-term">Wetted components</span> contact the product or process fluid</li>
+            <li><span class="key-term">Non-wetted components</span> do not contact the product or process fluid but may be in contact with wetted components</li>
+        </ul>
+        <p>Wetted components may be further classified based on their potential contact time with product or process fluid, as shown in Figure 2.1.</p>
+
+        <h3>Bioprocess Bags（生物工藝袋）</h3>
+        <p><span class="key-term">Bioprocess bags</span> (also referred to as single-use bioprocess containers) are flexible containers that are made of polymeric material and intended to be used once and discarded. The main applications are storage, sampling, mixing, freezing, and transport of liquids. Other applications include cell culture, fermentation, and powder storage/transfer.</p>
+        <p>These containers have inlet/outlet ports with fittings and associated tubing. The smaller bioprocess bags (typically 30 mL to 50 L) are typically two-dimensional (2-D) and expand like a pillow or sack when filled. As the sizes get larger (typically 100 L to 3,000 L), the bioprocess bags are three-dimensional (3-D) and typically match the shape of the bag container they will be placed into during use (e.g., stainless steel support structures/frames or totes).</p>
+
+        <h3>Bottles（瓶）</h3>
+        <p>Bottles are rigid plastic vessels with volumes that typically range from 1 L to 20 L. Applications for bottles include sampling, storage, and freezing. They may be reusable (multiple-use) for non-critical applications.</p>
+
+        <h3>Impellers/Mixers（攪拌器）</h3>
+        <p>Impellers/mixers are used to agitate fluid in a container. Common types include:</p>
+        <ul>
+            <li>Impeller with magnetic or magnetic-like drive</li>
+            <li>Impeller with levitating drive</li>
+            <li>Mechanical mixing (e.g., paddle or agitator shaft)</li>
+        </ul>
+
+        <h3>Tubing（管路）</h3>
+        <p><span class="key-term">Tubing</span> is manufactured from flexible polymer material and used for fluid transfer with or without pumping. Tubing is available in various diameters, lengths, wall thickness, and shore hardness. Materials of construction vary and include fluoropolymers, thermoplastics, and silicones. Thermoplastic tubing can be heat sealed (for aseptic disconnection) and welded (for tube/tube aseptic connection). Certain types of tubing are specifically designed to be used with peristaltic pumps or to withstand high pressures.</p>
+
+        <h3>Port Fittings（接口配件）</h3>
+        <p>Port fittings are heat sealed to the chamber portion of a bioprocess bag and used to connect tubing, allowing for fluid to enter or exit the bags. Port fittings can also be found on bottles, and these would normally be accompanied by a seal.</p>
+
+        <h3>Connectors（連接器）</h3>
+        <p>Tubing connectors contain hose barb fittings, and may be used to connect tubing of different materials of construction and/or diameter sizes:</p>
+        <ul>
+            <li>Two pieces of tubing with straight connector</li>
+            <li>Three pieces of tubing with T or Y shape connector</li>
+            <li>Four pieces of tubing with + shape connector</li>
+        </ul>
+        <p><span class="key-term">Connectors</span> vary depending on the type of application:</p>
+        <ul>
+            <li>When ease of use is important but aseptic connections are not required: Luer-Lok® connectors, quick connects, and sanitary clamp fittings (Tri-Clamp®). These connectors may be handled within a laminar flow cabinet (ISO 5/Grade A conditions) if aseptic connections are required.</li>
+            <li>When aseptic connections are required, the connectors should prevent any interaction between the fluid and the outside environment:
+                <ul>
+                    <li>Equal complementary elements (genderless connectors): two elements that are exactly alike and interchangeable</li>
+                    <li>Matched complementary elements (gendered connectors): two elements that are matched and can only be connected together</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Steam-in-place connectors may be used between single-use components and stainless steel systems.</p>
+
+        <h3>Disconnectors（斷開器）</h3>
+        <p>Disconnectors are used to make aseptic disconnections:</p>
+        <ul>
+            <li>Fluid path aseptic disconnectors: need to be pre-assembled on the single-use assembly, usually through hose barb fittings</li>
+            <li>Non-fluid path disconnectors: can be pre-installed or standalone, based on an external part that is pressed and cut to allow aseptic disconnection</li>
+        </ul>
+
+        <h3>Filter Capsules（過濾器）</h3>
+        <p><span class="key-term">Filter capsules</span> of numerous types are used in single-use assemblies. Filters may be classified by:</p>
+        <ul>
+            <li>Filtration mode: dead-end filtration versus tangential flow filtration</li>
+            <li>Type of filtration: Sterilizing grade / Pre-filtration / Depth filtration</li>
+            <li>Materials of construction</li>
+            <li>Configuration: Parallel plate / Pleated membranes / Non-woven / Hollow fiber</li>
+            <li>Filter media features: Polymer type (e.g., cellulose acetate, polyamide, polyether sulfone, PVDF, PTFE, PP, PE, glass fiber), filter pore size, filter surface area, Hydrophobic/Hydrophilic</li>
+            <li>Connection style: Hose barb / Sanitary</li>
+        </ul>
+
+        <h3>Valves（閥）</h3>
+        <p>Valves are used to direct the flow of fluid either as wetted components or as controlled constrictions acting on tubing. There are also simple pinch valves that have a decreasing channel that squeezes the tubing to control the flow.</p>
+
+        <h3>Sensors（感測器）</h3>
+        <p>Sensors of several types have been specifically developed to be single-use and can be integrated into single-use assemblies. Currently available single-use sensor types include:</p>
+        <ul>
+            <li>Conductivity / Dissolved Oxygen (DO) / Flow / pH / Pressure / Temperature</li>
+        </ul>
+        <p>For applications where single-use sensors are not available, multiple-use sensors may be used via aseptic connections or sealed barrier. Common multiple-use sensor types include: Dissolved gases / Level / Mixing speed / Turbidity / UV absorbance / Weight (load cells).</p>
+
+        <h3>Other Components（其他元件）</h3>
+        <p>Pump liners are polymeric components within the pump that make up the fluid path and create pressure; replaced after each use. Centrifuge liners are polymeric liners designed for use in centrifuge systems. Gaskets and O-rings are used in connections between sanitary fittings, within valves, and between two solid components. Materials include EPDM, PTFE, Viton®, and silicone. Filling needles are used in final filling operations, primarily made of stainless steel. Chromatography components include pre-packed columns (usually not single-use) and membrane chromatography equipment (usually single-use). Clamps and fasteners are non-wetted components used to secure tubing connections.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：浸濕 vs 非浸濕元件</h4>
+            <p>這個分類對 E&amp;L 研究至關重要。<strong>浸濕元件（Wetted）</strong>直接接觸產品或製程液體，是潛在化學污染的來源，必須進行完整的可萃取物研究。<strong>非浸濕元件（Non-Wetted）</strong>如夾具、扣件，雖不直接接觸液體，但若透過浸濕元件間接傳遞，也需要評估。</p>
+            <p>進一步，浸濕元件依<strong>接觸時間</strong>分層——靜態長時間接觸（如儲存袋）與動態短時間接觸（如生物反應器袋）的 E&amp;L 風險截然不同，需採用不同的萃取條件。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵元件：生物工藝袋 (Bioprocess Bag)</h4>
+            <p>生物工藝袋是 SUT 中體積最大、E&amp;L 最受關注的元件。幾個關鍵參數：</p>
+            <ul>
+                <li><strong>材質</strong>：多層聚合膜（通常含 LDPE、EVA 等），各層功能不同（阻隔層、強度層、接觸層）</li>
+                <li><strong>2-D vs 3-D</strong>：30 mL–50 L 為 2-D 枕型；100 L–3,000 L 為 3-D 需不鏽鋼支撐框架</li>
+                <li><strong>伽馬輻照</strong>：預滅菌處理，但輻照會改變聚合物化學特性，可能增加可萃取物——這是 E&amp;L 研究的關鍵輸入</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵元件：管路 (Tubing)</h4>
+            <p>管路是 SUT 中面積最廣的液體接觸元件，也是蠕動泵磨損的直接對象：</p>
+            <ul>
+                <li><strong>矽膠管 (Silicone)</strong>：柔性好，生物相容性佳，蠕動泵首選，但有氧化矽浸出風險</li>
+                <li><strong>氟聚合物管 (Fluoropolymer)</strong>：化學惰性強，適合高溶劑耐受需求，但較硬</li>
+                <li><strong>熱塑性管 (Thermoplastic)</strong>：可熱封/熱焊接，實現無菌連接與斷開</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵元件：無菌連接器 (Aseptic Connectors)</h4>
+            <p>無菌連接器是 SUT 的一大競爭性創新領域，關鍵區別：</p>
+            <ul>
+                <li><strong>無性別連接器 (Genderless)</strong>：任一件可與另一件配對，庫存管理簡單</li>
+                <li><strong>有性別連接器 (Gendered)</strong>：公/母配對，設計上能防止錯誤連接</li>
+                <li><strong>蒸汽原位連接器 (SIP)</strong>：用於 SUT 與傳統不鏽鋼系統的橋接點</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：過濾器的關鍵分類</h4>
+            <p>在無菌製程中，最關鍵的是<strong>除菌過濾（Sterilizing Grade）</strong>，孔徑 ≤0.22 μm，需通過 ASTM F838 泡點測試與細菌截留測試驗證。</p>
+            <p>切向流過濾（TFF）用於超濾/濃縮製程，流路設計複雜，通常作為預設計組件提供，不適合臨時拼裝。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：感測器的單次 vs 多次選擇</h4>
+            <p>想像一次性快篩試劑（單次感測器）vs 實驗室分析儀（多次感測器）：快篩方便但精確度有限；分析儀精確但需要清潔校準。在 SUT 中，pH、溶氧等單次感測器的精度已大幅提升，但部分高精度應用（如濁度、UV 吸收）仍仰賴多次感測器透過無菌隔膜插入。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：元件選型決策樹</h4>
+            <p>在 CDMO 接新客戶 tech transfer 時，元件選型需考量：</p>
+            <ul>
+                <li>客戶原廠使用的品牌是否與我方供應商兼容？（連接器介面標準化）</li>
+                <li>產品接觸元件的 E&amp;L 數據包是否符合 ICH Q3D 元素雜質、AET 要求？</li>
+                <li>伽馬輻照劑量是否符合廠內驗收規格？（通常 25–45 kGy）</li>
+                <li>蠕動泵管路是否通過 pump tubing validation（磨損微粒測試）？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的充填工廠，哪些元件屬於「浸濕 + 長接觸時間」的高風險類別？供應商的 E&amp;L 數據包是否涵蓋伽馬輻照後的條件？</li>
+                <li>你工廠現有的管路材質組合是什麼？有無混用矽膠管與熱塑性管的場景？連接點如何保持無菌？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.2 Single-Use Assemblies -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.2 Single-Use Assemblies（單次使用組件）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Single-use assemblies can range from relatively simple units (such as buffer bag assemblies) to complex units (such as bioreactor assemblies). Examples of single-use assemblies include:</p>
+        <ul>
+            <li>Buffer storage assemblies</li>
+            <li>Mixer assemblies</li>
+            <li>Sample manifold assemblies</li>
+            <li>Transfer manifold assemblies</li>
+            <li><span class="key-term">Bioreactor assemblies</span></li>
+            <li>Filtration assemblies</li>
+            <li>Chromatography assemblies</li>
+            <li>Centrifuge assemblies</li>
+            <li>Fill/finish manifold assemblies</li>
+        </ul>
+        <p>Single-use assemblies are available as standardized products or may be customized for specific process needs. Considerations should be made to design single-use assemblies that can be used in multiple steps within a manufacturing facility, benefiting the overall operation in terms of flexibility and minimization of inventory.</p>
+
+        <h3>2.1.2.1 Bioprocess Bag Assemblies</h3>
+        <p>Bioprocess bags are often bulky and impact space requirements for storage areas. Selecting standardized (versus customized) bags and connections can help to reduce inventory levels, since one assembly design can potentially be used in multiple steps in the process.</p>
+        <ul>
+            <li><strong>2-D Bioprocess Bags:</strong> Standard specifications include tubing dimensions for the integral tubing and standardized connectors for sampling. Use of standard designs is recommended to minimize cost and provide flexibility between assemblies.</li>
+            <li><strong>3-D Bioprocess Bags:</strong> Most tubing entry points for the larger 3-D bioprocess bags are from the top. Care should be taken when adding auxiliary components to these entry points as they may require special handling to protect the bag surface.</li>
+        </ul>
+        <p>During selection of the bioprocess container, attention should be taken to ensure that the minimum mixing volume is met and that ample ports are available for additions and sampling.</p>
+
+        <h3>2.1.2.2 Manifolds</h3>
+        <p>Manifolds can range from being straightforward to complex in design. They are commonly the second bulkiest portion of the assembly, after the bioprocess bag. Aspects of manifold design and selection include:</p>
+        <ul>
+            <li>Sizing of tubing diameters and minimizing lengths and bends are important for proper fluid handling.</li>
+            <li>The pressure rating of the tubing should be matched for the application; reinforced tubing is available for applications above the pressure rating of standard tubing.</li>
+            <li>Welds and aseptic connections should be used as needed to maintain sterility and flexibility.</li>
+            <li>For processes that allow ports to be combined, manifolds can allow the use of standard bioprocess containers without modifications to the number of connections.</li>
+        </ul>
+
+        <h3>2.1.2.3 Filter Assemblies</h3>
+        <p>Typical assemblies consist of normal flow filters (dead-end filters) that are relatively small (less than 10 inch). Depending on whether the application is an open or closed operation, vent filters may be required on bioprocess containers. Vent filters on bioreactors are typically full size capsule filters provided in a redundant pair with heated jackets. <span class="key-term">Tangential flow filters</span> are commonly incorporated into pre-designed assemblies to allow for special flow paths required for their operation.</p>
+
+        <h3>2.1.2.4 Filling Assemblies</h3>
+        <p>Final filling assemblies are specially designed filter assemblies that account for factors such as:</p>
+        <ul>
+            <li>Venting the filters in a sterile manner</li>
+            <li>Filter flush collection</li>
+            <li>Low particulate requirements</li>
+            <li>Peristaltic pump tubing, if required</li>
+            <li>Surge bags, if required</li>
+            <li>Single-use needles, if required</li>
+        </ul>
+
+        <h3>2.1.2.5 Mixer Assemblies</h3>
+        <p>Mixer assemblies can also range from simple to complex in design, due to the need for different mixing requirements, probes, avoidance of dead legs, and sampling requirements. Mixer types include bottom mount agitator, top mount agitator, and pump around. There are also different options for how the single-use impeller is coupled to the motor; special attention should be made for high viscosity, high solids, or low particulate applications.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：組件設計的標準化 vs 客製化取捨</h4>
+            <p>選擇<strong>標準化組件</strong>的優勢：庫存品項少、可跨製程步驟共用、供應鏈穩定、E&amp;L 數據已驗證。選擇<strong>客製化組件</strong>的場景：製程有特殊接口需求、客戶指定供應商、清洗/滅菌方式特殊。</p>
+            <p>ISPE 指引的建議方向：能標準化就標準化——這也是 CDMO 降低 COGs（Cost of Goods）的關鍵策略之一。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵概念：管路岐管 (Manifold) 設計要點</h4>
+            <p>Manifold 是多條流路匯集或分流的核心組件，設計不良會導致：</p>
+            <ul>
+                <li><strong>死角 (Dead Leg)</strong>：流體停滯區域，微生物生長的溫床——管路長度不得超過管徑 6 倍原則</li>
+                <li><strong>壓力損失</strong>：彎頭過多或管徑驟縮導致壓降不符預期</li>
+                <li><strong>完整性風險</strong>：連接點過多，每個焊接點或連接器都是潛在洩漏點</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：充填組件的特殊性</h4>
+            <p>充填組件（Filling Assembly）是整個無菌製程中風險最高的組件，原因：</p>
+            <ul>
+                <li>距離最終產品最近，無任何後續稀釋或過濾步驟可降低風險</li>
+                <li>微粒要求最嚴格——任何橡膠磨耗、矽膠粒子都可能成為注射用藥品的異物</li>
+                <li>蠕動泵管路需通過 pump wear validation，確認微粒脫落在可接受範圍</li>
+            </ul>
+            <p>這呼應了 2.2.4.3 節的「臨界應用分層」原則：充填步驟屬最高風險等級。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：混合組件的攪拌器選擇</h4>
+            <p>想像三種廚房攪拌方式：<strong>頂部安裝攪拌器</strong>（如家用桌上攪拌機）適合中等黏度、需要開口加料；<strong>底部安裝攪拌器</strong>（如咖啡機研磨）適合密閉系統、較均勻的流體；<strong>泵循環（Pump Around）</strong>（如魚缸過濾泵）適合大體積、輕柔混合怕剪力的生物製劑（如 mAb 原液）。選錯攪拌方式，蛋白質聚集就發生了。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：Filling Assembly 的風險管理</h4>
+            <p>在一次性充填系統的驗證中，CDMO 的實務工作項目包括：</p>
+            <ul>
+                <li>管路蠕動泵磨耗測試（>10 小時模擬運轉後取樣分析微粒）</li>
+                <li>充填針材質相容性確認（不鏽鋼 316L vs 聚合物充填針）</li>
+                <li>Surge bag 對充填速率穩定性的影響評估</li>
+                <li>過濾器排氣程序無菌驗證（防止排氣期間外界汙染進入）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你工廠的充填線組件是標準化還是客製化？更換供應商時需要重新進行哪些驗證項目？</li>
+                <li>Manifold 設計中如何避免死角？你現有的 SOP 對死角管理有什麼規定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1.3 Single-Use Systems (SUS) -->
+<!-- ============================================================ -->
+<div class="section-title">2.1.3 Single-Use Systems（單次使用系統）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">SUSs</span>, as shown in Figure 1.1, are comprehensive units. SUSs are composed of single-use components/assemblies and multiple-use parts. In general, the multiple-use parts are used to:</p>
+        <ul>
+            <li>Support and provide mobility to the single-use assemblies</li>
+            <li>Control the motion of fluids within and between single-use assemblies</li>
+            <li>Monitor operating conditions</li>
+            <li>Provide process controls for the unit operation or to the entire manufacturing process</li>
+        </ul>
+        <p>The multiple-use parts in an SUS are often complex equipment and considerations should be made to how they interface with single-use components/assemblies. For example, wear or deformation of multiple-use parts can have disastrous impact on the integrity of the single-use components.</p>
+        <p>Multiple-use parts represent conventional equipment, which are not covered in this Guide. To help the end-user select the appropriate equipment for SUSs, this Guide highlights concepts and criteria in Section 2.3 (Process Equipment Design).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SUS 中的多次使用設備風險</h4>
+            <p>SUS 最容易被忽略的風險點：<strong>多次使用設備（Multi-Use Parts）對單次使用元件完整性的影響</strong>。</p>
+            <ul>
+                <li>蠕動泵的泵頭磨耗 → 管路受力變形 → 管壁變薄 → 爆破風險</li>
+                <li>不鏽鋼支撐框架的銳角或毛邊 → 袋體刮破 → 完整性失效</li>
+                <li>閥門驅動器的扭矩過大 → 管路受壓不均 → 洩漏</li>
+            </ul>
+            <p>這意味著 SUS 的確效不只是測試一次性組件，更要確認多次使用設備在正常磨耗範圍內不影響組件完整性。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：SUS 確效的範疇界定</h4>
+            <p>在制定 SUS 的 IQ/OQ/PQ 計畫時，需明確界定：</p>
+            <ul>
+                <li>哪些部件是「單次使用組件」（每批更換，供應商負責 E&amp;L 數據）</li>
+                <li>哪些部件是「多次使用設備」（需要設備確效，CDMO 自行維護）</li>
+                <li>兩者界面（Interface）的完整性測試頻率與方法</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你工廠使用的生物反應器系統（如 Sartorius Biostat® 或 Thermo Fisher HyPerforma™）中，哪些是多次使用設備？這些設備的磨耗如何影響一次性袋體的完整性？</li>
+                <li>當多次使用設備送去保養維修時，回廠後需要進行哪些確效再確認步驟？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2 Extractables (Overview) -->
+<!-- ============================================================ -->
+<div class="section-title">2.2 Extractables（可萃取物）——概論</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Single-use products are made from polymeric materials; one of the key elements to qualifying and implementing such a material is to understand and control the impacts of using it within a defined process. Extractable and leachable (E&amp;L) profiles are a main part of this required impact assessment.</p>
+        <div class="quote-box">
+            Note: Although "extractables and leachables" is commonly used as one term, these concepts reflect two distinctly different ways of determining the chemical species that may migrate from the component:
+            <ul style="margin-top:0.75rem; margin-left:1.25rem;">
+                <li><strong>Extractables</strong> are removed from the component by exaggerated force, involving high temperatures, high and low pH, and aggressive solvents; this information can be useful for assessing the risk of the component in any application.</li>
+                <li><strong>Leachables</strong>, on the other hand, are a result of the interaction of the production within the equipment; therefore, related studies use actual product and process conditions to determine which chemical components will migrate from the component. When actual product is not possible, a mimic of the product might be used.</li>
+            </ul>
+        </div>
+        <p>A science and risk-based approach to an extractables study is recommended due to its complexity and the need for trace level analysis. Risk factors include, but are not limited to: surface area to volume ratio, extracting potential of the process stream or formulation, and duration of exposure. For example, a storage bag may be static in process contact but long in duration, while a bioreactor bag may be dynamic in process contact but short in the duration of contact.</p>
+        <p>Because this Guide deals with SUT applied in the processing of products which are intermediates, the focus of this section is on extractables as it applies to process contact materials (PCM), and not to finished dosage forms or containers.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Extractables vs Leachables——根本差異</h4>
+            <p>這是 SUT 最重要的概念區分，考試和法規審查中極常被混淆：</p>
+            <ul>
+                <li><strong>可萃取物（Extractables, E）</strong>：在「誇張條件」下（高溫、極端 pH、有機溶劑）強制萃取出的化學物質。目的是建立材料的「化學指紋庫（Chemical Fingerprint）」，代表<em>最大可能的化學風險</em>。類似「刑事審訊」——逼出所有可能的化學物。</li>
+                <li><strong>可瀝出物（Leachables, L）</strong>：在<em>實際製程/產品條件</em>下自然遷移出的化學物質，代表<em>真實的患者暴露風險</em>。類似「日常接觸」——真實環境下的實際釋出量。</li>
+            </ul>
+            <p><strong>邏輯關係</strong>：Extractables ⊇ Leachables（可萃取物是可瀝出物的超集）。先做 E 研究，再用 E 的結果預測 L 的風險，決定是否需要進一步的 L 研究。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>風險評估的關鍵參數</h4>
+            <pre>E&amp;L 風險 ∝ 表面積/體積比 (SA/V) × 萃取潛力 × 接觸時間
+
+高風險場景：小體積 + 大面積接觸（如充填管路）
+低風險場景：大體積 + 短接觸時間（如轉移袋，接觸 ≤1 hr）
+
+AET（Analytical Evaluation Threshold）計算：
+AET = SCT × (重量/天用量) × (1/提取效率)
+SCT = Safety Concern Threshold（ICH Q3D 或毒理 TTC 值）</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：E vs L 就像食品包裝測試</h4>
+            <p>想像一個塑膠水瓶：<strong>可萃取物研究</strong>就像把水瓶泡在熱水 + 酒精 + 酸液中強制萃取——測試最壞情況下會析出什麼物質；<strong>可瀝出物研究</strong>就像把水瓶裝水在常溫放 6 個月，再測水的成分——測試實際使用條件下你喝到了什麼。前者是安全底線研究，後者是現實風險確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 作為中間製程的特殊性</h4>
+            <p>原文特別指出，本指引的 E&amp;L 重點是<strong>製程接觸材料（PCM）</strong>，而非最終劑型容器。這對 CDMO 很重要：</p>
+            <ul>
+                <li>CDMO 處理的是「藥物中間體（Drug Substance）」，不是直接接觸患者的最終產品</li>
+                <li>但某些製程步驟（如原液充填到 DS 儲存袋）的 E&amp;L 數據可能被 MAH（上市許可持有人）要求納入法規申請</li>
+                <li>需明確在客戶合約中界定 E&amp;L 數據的提供責任</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你工廠的哪個製程步驟具有最高的 SA/V 比？現有的 E&amp;L 評估是否涵蓋了這個步驟的最壞條件？</li>
+                <li>當客戶提問「你們的一次性儲存袋有 E&amp;L 數據嗎？」，你的標準回應流程是什麼？由誰提供哪些文件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.1 Roles and Responsibilities -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.1 Roles and Responsibilities（角色與責任分工）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Extractables studies represent one of the most challenging aspects of pharmaceutical development. There is a large degree of complexity given by the number of factors that influence an extractables evaluation. The involvement of teams with adequate skills and subject matter expertise from both end-users and suppliers help in tackling each factor efficiently.</p>
+        <p>Table 2.1 provides a template of the typical deliverables responsibilities matrix for an extractables study. Allocation of these responsibilities varies depending on company policy and procedures.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Activity</th>
+                    <th colspan="5">End-Users</th>
+                    <th colspan="5">Suppliers</th>
+                </tr>
+                <tr>
+                    <th>Project Manager</th>
+                    <th>Engineering</th>
+                    <th>SME</th>
+                    <th>Quality/Regulatory</th>
+                    <th>Process Owner</th>
+                    <th>Project Manager</th>
+                    <th>SME</th>
+                    <th>Quality Manager</th>
+                    <th>Product Manager</th>
+                    <th>R&amp;D</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pre-requirements assessment</td>
+                    <td>C</td><td>I</td><td>C</td><td>A</td><td>I</td>
+                    <td>A/R</td><td>C</td><td>A</td><td>R</td><td>C</td>
+                </tr>
+                <tr>
+                    <td>Pre-requirements regulatory compliance</td>
+                    <td>C</td><td>I</td><td>C</td><td>A</td><td>I</td>
+                    <td>R</td><td>C</td><td>A/R</td><td>A</td><td>C</td>
+                </tr>
+                <tr>
+                    <td>Understand product/process/company quality requirements</td>
+                    <td>R</td><td>C</td><td>C</td><td>A/R</td><td>C</td>
+                    <td>R</td><td>C</td><td>A/R</td><td>R</td><td>C</td>
+                </tr>
+                <tr>
+                    <td>Definition of User Requirement Specification (URS)</td>
+                    <td>A/R</td><td>R</td><td>C</td><td>C</td><td>A</td>
+                    <td>I</td><td>I</td><td>I</td><td>I</td><td>I</td>
+                </tr>
+                <tr>
+                    <td>Benchmarking of previous extractables study protocol</td>
+                    <td>I</td><td>C</td><td>A/R</td><td>I</td><td>C</td>
+                    <td>R</td><td>A/R</td><td>C</td><td>C</td><td>R</td>
+                </tr>
+                <tr>
+                    <td>Comparison of results for single-use components</td>
+                    <td>I</td><td>C</td><td>C</td><td>I</td><td>I</td>
+                    <td>R</td><td>C</td><td>C</td><td>C</td><td>A/R</td>
+                </tr>
+                <tr>
+                    <td>Determination of acceptance criteria based on URS</td>
+                    <td>C</td><td>C</td><td>A/R</td><td>I</td><td>I</td>
+                    <td>R</td><td>A/R</td><td>C</td><td>C</td><td>I</td>
+                </tr>
+                <tr>
+                    <td>Performance of extraction procedure</td>
+                    <td>I</td><td>I</td><td>I</td><td>I</td><td>I</td>
+                    <td>R</td><td>R</td><td>R</td><td>R</td><td>A/R</td>
+                </tr>
+                <tr>
+                    <td>Comparison of results to acceptance criteria</td>
+                    <td>R</td><td>I</td><td>C</td><td>C</td><td>I</td>
+                    <td>R</td><td>C</td><td>R</td><td>C</td><td>A/R</td>
+                </tr>
+                <tr>
+                    <td>Toxicological assessment</td>
+                    <td>C</td><td>I</td><td>A</td><td>R</td><td>I</td>
+                    <td>R</td><td>A</td><td>C</td><td>C</td><td>R</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:0.85rem; color:#4a5568; margin-top:0.5rem;">R=Responsible, A=Accountable, C=Consulted, I=Informed</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：RACI 矩陣在 E&amp;L 研究中的應用</h4>
+            <p>RACI 矩陣（Responsible / Accountable / Consulted / Informed）是跨組織協作的標準工具。在 E&amp;L 研究中，端用者（End-User = CDMO/製藥公司）與供應商之間的責任劃分是最容易造成糾紛的環節。</p>
+            <p>從表 2.1 可以看出幾個關鍵原則：</p>
+            <ul>
+                <li><strong>URS 定義</strong>：端用者主導（A/R），供應商只是 Informed——這意味著你必須先知道自己需要什麼，再要求供應商提供</li>
+                <li><strong>萃取程序執行</strong>：供應商主導（A/R），端用者全部是 Informed——供應商的實驗室能力是關鍵</li>
+                <li><strong>毒理評估</strong>：端用者 Quality/Regulatory 是 R，SME 是 A——毒理結論的責任在用戶端</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：SME（Subject Matter Expert）的角色</h4>
+            <p>E&amp;L 研究需要的跨領域專業：</p>
+            <ul>
+                <li><strong>分析化學</strong>：GC-MS、LC-MS、ICP-MS 方法開發與驗證</li>
+                <li><strong>毒理學</strong>：TTC（Threshold of Toxicological Concern）評估、ICH Q3D 元素雜質風險評分</li>
+                <li><strong>聚合物科學</strong>：了解特定聚合物的已知降解產物（例如矽膠的環狀矽氧烷 D4、D5）</li>
+                <li><strong>法規事務</strong>：ICH Q3D、USP &lt;661&gt;、EP 3.1、FDA/EMA E&amp;L 指引的要求對照</li>
+            </ul>
+            <p>對於不具備完整 SME 能力的 CDMO，通常需要委外給專業的毒理 CRO 進行評估。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：供應商審核中的 E&amp;L 問卷</h4>
+            <p>在供應商資格審核（Supplier Qualification）時，應要求提供：</p>
+            <ul>
+                <li>E&amp;L 研究報告摘要（是否涵蓋目標應用的萃取條件）</li>
+                <li>使用的分析方法與偵測極限（LOD/LOQ）</li>
+                <li>是否已通過 AET 評估，並提供毒理評估結論</li>
+                <li>批次間變異性數據（至少 3 批）</li>
+                <li>伽馬輻照後的 E&amp;L 數據是否包含在報告中</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你工廠現在的 SUT 供應商審核流程中，有無要求 E&amp;L 數據包？如果沒有，從哪個步驟開始補充最有效率？</li>
+                <li>毒理評估（Toxicological Assessment）在你的組織由誰負責？是內部 QA/RA 還是委外 CRO？各有什麼限制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2 Pre-requirements -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.2 Pre-requirements（前提要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Components which are planned for an extractables study should first meet the following regulatory and pharmacopeial expectations:</p>
+        <ul>
+            <li><strong>Requirements for polymeric materials:</strong>
+                <ul>
+                    <li>Plastic polymers used in manufacturing single-use components should not contain natural rubber, latex, or special case compounds (PAH, N-nitrosamines, and MBT)</li>
+                    <li>USP &lt;381&gt; Elastomeric Closure for Injection</li>
+                    <li>USP &lt;661&gt; Plastic Packaging Systems and Their Materials of Construction</li>
+                    <li>European Pharmacopoeia (EP) General Chapter 3.1 Materials Used for the Manufacture of Containers</li>
+                </ul>
+            </li>
+            <li><strong>Requirements for major compendia:</strong>
+                <ul>
+                    <li>USP &lt;87&gt; Biological Reactivity, In Vitro — in vitro testing is a minimum requirement</li>
+                    <li>USP &lt;88&gt; Biological Reactivity, In Vivo — in vivo testing is preferred</li>
+                    <li>EP 3.2.9, JP Section 7.03, and corresponding ISO 10993-1 tests for in vitro and in vivo testing</li>
+                </ul>
+            </li>
+            <li><strong>Animal derived Stearates:</strong> EU Commission Decision 97/534/EC</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：E&amp;L 研究的門檻前提</h4>
+            <p>進行正式 E&amp;L 研究之前，材料必須先通過這些「基礎資格審查」——就像應聘工作需先有基本學歷門檻才能進入面試環節。</p>
+            <p>最關鍵的禁用成分：</p>
+            <ul>
+                <li><strong>天然橡膠/乳膠</strong>：過敏原，注射用藥品絕對禁用</li>
+                <li><strong>多環芳烴 (PAH)</strong>：致癌物，來源通常是碳黑或礦物油潤滑劑</li>
+                <li><strong>N-亞硝胺 (N-Nitrosamines)</strong>：ICH M7 基因毒性雜質，極低 TTC（1.5 μg/天）</li>
+                <li><strong>MBT（苯並噻唑）</strong>：橡膠硫化促進劑，潛在致癌物</li>
+            </ul>
+        </div>
+
+        <div class="key-term-box">
+            <h4>法規標準對照表</h4>
+            <table>
+                <thead>
+                    <tr><th>標準</th><th>範疇</th><th>重要性</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>USP &lt;87&gt;</td><td>體外生物反應性</td><td>最低要求</td></tr>
+                    <tr><td>USP &lt;88&gt;</td><td>體內生物反應性（動物試驗）</td><td>較佳選擇</td></tr>
+                    <tr><td>USP &lt;661&gt;</td><td>塑膠包裝材料成分</td><td>必要</td></tr>
+                    <tr><td>EP 3.1</td><td>容器製造材料</td><td>歐洲市場必要</td></tr>
+                    <tr><td>ISO 10993-1</td><td>醫療器材生物相容性</td><td>體外/體內測試基礎</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：供應商 CoA 審查要點</h4>
+            <p>收到新批次一次性組件時，在 CoA 審查中確認：</p>
+            <ul>
+                <li>材料聲明（Material Declaration）：有無聲明不含乳膠/PAH/N-亞硝胺/MBT</li>
+                <li>USP &lt;87&gt;/&lt;88&gt; 測試結果（合格/Passes）</li>
+                <li>EP 3.1 或等效聲明</li>
+                <li>動物源性原料聲明（如含硬脂酸鹽，需符合 97/534/EC）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.3 Risk Assessment in Extractables Study -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.3 Risk Assessment in Extractables Study（可萃取物研究的風險評估）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In defining requirements for the design of extractables studies, the risk management tools described in <span class="key-term">ICH Q9</span> should be employed. For example, application of quality risk management would consider:</p>
+        <ul>
+            <li>If an automated component manufacturing process is used</li>
+            <li>If the process has been satisfactorily audited</li>
+            <li>If a smaller sample may be needed, as opposed to a manually intensive manufacturing and/or inspection process for the component which may dictate a larger sample because of higher probability of variability</li>
+        </ul>
+        <p>SUS extractables testing approach and methodology should be determined based on scientific knowledge and regulatory expectations. Decision trees and other risk assessment tools should be implemented at an early stage of the extractables study definition.</p>
+        <p>The purpose of these studies is to obtain extractables profiles of SUS components considered as PCM in direct contact with the process or product fluid. The risk assessment should consider both patient safety (with regard to the impact of extractables compounds on product quality and safety) and the overall process performance. Extractables studies should integrate regulatory expectations as inputs of the risk assessment. Patient safety should be considered by suppliers in the development of single-use components, and by end-users in the implementation of these components in the drug manufacturing process.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：ICH Q9 風險管理在 E&amp;L 研究的應用</h4>
+            <p>ICH Q9 的核心工具（FMEA、HACCP、風險矩陣）在 E&amp;L 研究中的具體應用：</p>
+            <ul>
+                <li><strong>自動化製造 vs 手工製造</strong>：自動化製程批次間變異小，可能允許減少批次數；手工製程變異大，需要更多批次樣本覆蓋</li>
+                <li><strong>化學指紋庫（Chemical Fingerprint）</strong>：E&amp;L 研究的最終目標——建立每個一次性元件的「身份 DNA」，包含所有潛在遷移物的定性定量數據</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：雙重責任視角</h4>
+            <p>原文強調供應商和端用者各有責任：</p>
+            <ul>
+                <li><strong>供應商責任</strong>：在元件開發階段就考慮患者安全，選擇低遷移性聚合物，提供完整的 E&amp;L 數據包</li>
+                <li><strong>端用者責任（CDMO）</strong>：在將元件導入製程時進行風險評估，確認供應商的 E&amp;L 數據適用於自身的製程條件（溫度、pH、接觸時間可能與供應商的標準測試條件不同）</li>
+            </ul>
+            <p>這是最常見的風險盲區——供應商的標準萃取條件未必涵蓋 CDMO 客戶的特定製程條件。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：E&amp;L 風險評估矩陣建立</h4>
+            <p>建議依以下維度建立 E&amp;L 風險矩陣：</p>
+            <ul>
+                <li><strong>接觸時間</strong>：&lt;1 hr（低）/ 1–24 hr（中）/ &gt;24 hr（高）</li>
+                <li><strong>接觸面積</strong>：SA/V 比 &lt;1 cm⁻¹（低）/ 1–10 cm⁻¹（中）/ &gt;10 cm⁻¹（高）</li>
+                <li><strong>製程位置</strong>：上游（低）/ 下游（中）/ 充填前（高）</li>
+                <li><strong>溫度</strong>：室溫（低）/ 37°C 培養（中）/ &gt;50°C（高）</li>
+            </ul>
+            <p>矩陣評分決定需要的 E&amp;L 研究深度（供應商數據即可 / 需要補充研究 / 需要完整自主研究）。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.4 Design Space -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.4 Design Space（設計空間）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>2.2.4.1 Basis for Comparative Evaluation</h3>
+        <p>The starting point for an extractables study should be a review of the supplier's data. Ideally, these studies should be performed on materials at the component level, under standardized conditions of temperature, time, surface area, etc. (so the data are comparable) which are representative of the intended use, including steam sterilization or gamma irradiation. Using this data, the end-user can then calculate the maximum amount of extractables based on the surface area and other conditions in the process.</p>
+
+        <h3>2.2.4.2 Extractables Study Design Space</h3>
+        <p>The extractables study should be developed based on <span class="key-term">Quality by Design (QbD)</span> principles described in ICH Q8 to gather all attributes and parameters that enter into the determination of a design space. Scientific variables should be identified to set up <span class="key-term">Design of Experiment (DOE)</span> for the extraction procedure.</p>
+
+        <h3>2.2.4.3 Critical Applications</h3>
+        <p>Different requirements of the extractables study could be applied depending on the criticality of application, context, and utilization of SUS components, as illustrated in Figure 2.2 (Criticality Scale of Industrial Application).</p>
+        <p>Figure 2.3 provides a high-level overview of the development stages in a typical biological manufacturing process, in relation to increased risk associated with materials safety requirements; that is, the closer the single-use component is to the fill/finish step, the less opportunity that risk mitigation (such as dilution or filtration) can take place.</p>
+
+        <h3>2.2.4.4 Primary Packaging Component, Process Contact Material, and Container Closure Systems</h3>
+        <p>Extractables studies are usually performed on individual <span class="key-term">PPCs</span> (Primary Packaging Components) and <span class="key-term">PCMs</span> (Process Contact Materials), as a precursor step to leachables studies which are performed on entire systems considered as <span class="key-term">CCSs</span> (Container Closure Systems). E&amp;L studies should demonstrate the safety and chemical compatibility of the CCS, PCM, and proximal materials used in the processing and intermediate storage of a drug substance.</p>
+        <p>The duration of exposure to these materials varies greatly depending upon the specific process. Compatible packaging and contact materials should not cause changes to the efficacy, potency, and safety of the drug product.</p>
+
+        <h3>2.2.4.5 Decision Tree for Approval of Materials Based on Extractables Study</h3>
+        <p>Figure 2.5 illustrates typical key aspects that should be considered in the approval of materials based on an extractables study. The decision tree guides whether extractables data is acceptable, or whether further toxicological assessment or targeted studies are required.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：QbD + DOE 在 E&amp;L 研究中的應用</h4>
+            <p>ICH Q8 的 QbD 精神應用到 E&amp;L 研究：</p>
+            <ul>
+                <li><strong>關鍵品質屬性（CQA）</strong>：哪些可萃取化合物對患者安全有影響？（毒理篩選確定）</li>
+                <li><strong>關鍵製程參數（CPP）</strong>：溫度、pH、接觸時間、SA/V 比這些參數如何影響萃取量？</li>
+                <li><strong>設計空間（Design Space）</strong>：在哪些參數範圍內，可萃取物濃度始終低於 AET？</li>
+                <li><strong>DOE 設計</strong>：系統性地改變萃取條件（例如 2×2 因子設計：低溫/高溫 × 低 pH/高 pH），找到最壞條件組合</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵概念：CCS / PPC / PCM 的層級關係</h4>
+            <p>這三個縮寫在法規文件中頻繁出現，必須清楚區分：</p>
+            <ul>
+                <li><strong>CCS（容器密封系統）</strong>：最廣義——整個容器+密封系統，是 ICH Q1B、ICH Q3B 研究的對象</li>
+                <li><strong>PPC（初級包裝元件）</strong>：直接接觸最終藥品的包裝材料（如西林瓶、膠塞、鋁蓋）</li>
+                <li><strong>PCM（製程接觸材料）</strong>：製程中接觸中間體的材料（SUT 的主要研究對象）</li>
+            </ul>
+            <p>在生物製劑 CDMO 中：<br>PCM = 一次性袋體、管路（DS 製造階段）<br>PPC = 西林瓶、膠塞（DP 充填後）<br>CCS = 西林瓶 + 膠塞 + 鋁蓋整體系統</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>臨界應用分層邏輯</h4>
+            <pre>製程位置對 E&amp;L 風險的影響：
+
+上游（細胞培養/發酵）
+  ↓ 多道純化步驟可去除遷移物
+  ↓ 離子交換層析、病毒過濾、超濾
+  ↓
+下游（純化後原液）
+  ↓ 僅剩一道除菌過濾
+  ↓
+充填/封裝（Fill/Finish）← 最高風險
+  ↓ 無後續去除機制
+  ↓ 直接進入最終產品
+
+原則：距充填越近 → E&amp;L 要求越嚴格</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：從供應商數據到端用者計算</h4>
+            <p>供應商的 E&amp;L 數據通常以「每單位面積萃取量（μg/cm²）」表示。端用者（CDMO）需要將其換算成實際製程暴露量：</p>
+            <p style="font-family:monospace; background:#fff3e0; padding:0.5rem; border-radius:4px;">
+                實際暴露量（μg/L）= 供應商數據（μg/cm²）× 實際 SA（cm²）÷ 批次體積（L）
+            </p>
+            <p>再與 AET 比較，決定是否需要額外的特定目標研究（Targeted Study）。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：決策樹的實務執行</h4>
+            <p>當 E&amp;L 評估結論出現以下情況時的標準處理路徑：</p>
+            <ul>
+                <li><strong>計算暴露量 &lt; AET</strong>：記錄評估結論，無需額外測試，定期審查</li>
+                <li><strong>計算暴露量 &gt; AET 但有毒理數據支持</strong>：進行完整毒理評估，記錄風險接受理由</li>
+                <li><strong>計算暴露量 &gt; AET 且無充分毒理數據</strong>：考慮更換供應商、更換元件材質、或補充特定目標 E&amp;L 研究</li>
+                <li><strong>存在已知基因毒性化合物</strong>：即使低於一般 AET，需符合 ICH M7 規定（TTC 1.5 μg/天）</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.5 Key Recommendations -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.5 Key Recommendations for Extractables Study（可萃取物研究的關鍵建議）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Extractables should be readily identified, quantified, and evaluated for their impact on drug quality (and consequently patient safety) arising from the interaction between process fluids (simulated by model solvents) and polymeric PCM. In the extractables study, the single-use component is considered as PCM. The objective is to obtain a chemical fingerprint of the tested single-use components. The information from the extractables study should be used to support the selection of raw materials in the single-use component manufacturing process.</p>
+
+        <p>The overall approach to conducting an extractables study is:</p>
+        <ul>
+            <li>Benchmarking of previous extractables testing protocols and results for comparable single-use components</li>
+            <li>Determination of acceptance criteria based on user requirements, the intended design and use of the single-use component, and scientific literature</li>
+            <li>Performing the extraction procedure on the single-use component to be tested</li>
+            <li>Comparison of actual results to acceptance criteria and performing toxicological assessment with conclusion</li>
+        </ul>
+
+        <h3>2.2.5.1 Requirements for Processing and Storage of PPC/PCM</h3>
+        <p>The PPC and PCM should be processed in the same manner in which they will be processed for use in manufacturing. This includes steps such as washing, lubrication/coating, packaging, and <span class="key-term">sterilization</span>. They should be held at their specified storage conditions, or as otherwise justified.</p>
+
+        <h3>2.2.5.2 Requirements for Including Proximal Packaging Components</h3>
+        <p>Packaging components and materials which do not directly contact the drug product should be evaluated on a case-by-case basis for their potential to leach chemicals into the dosage form. Polymeric containers with a glass transition temperature below room temperature have a high potential for migration of chemical entities through them. Packaging components (such as label stock, carton, adhesives, inks, varnishes, and lacquers) should be included in the overall extractables evaluation due to the potential for migration through the polymeric material.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：化學指紋庫（Chemical Fingerprint）</h4>
+            <p>E&amp;L 研究的最終交付物是一份「化學指紋庫」，包含：</p>
+            <ul>
+                <li>已鑑定化合物的清單（定性——GC-MS、LC-MS 鑑定）</li>
+                <li>各化合物的濃度（定量——與 AET 比較）</li>
+                <li>毒理評估結論（是否需要進一步關注）</li>
+            </ul>
+            <p>這份指紋庫具有<strong>材料特異性</strong>——換了供應商、換了批次樹脂、改了製造製程，都需要重新評估指紋庫是否仍然適用。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：滅菌條件對 E&amp;L 的影響</h4>
+            <p>2.2.5.1 特別強調元件在萃取測試前應已完成與實際使用相同的處理程序，其中<strong>滅菌</strong>最關鍵：</p>
+            <ul>
+                <li><strong>伽馬輻照（Gamma Irradiation）</strong>：輻射能量引發聚合物鏈斷裂和自由基反應，可能產生新的分解產物（如矽膠中的低分子量環狀矽氧烷 D4/D5）</li>
+                <li><strong>高壓蒸汽滅菌（Autoclave）</strong>：高溫高濕可能加速水解，從聚合物中析出添加劑</li>
+                <li><strong>環氧乙烷（EtO）</strong>：EtO 殘留及其反應產物（乙二醇、乙烯氯醇）需要納入 E&amp;L 評估</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：近端包裝材料（Proximal Packaging）的風險</h4>
+            <p>這個常被忽略的風險點：外包裝（紙箱、標籤、黏著劑、油墨）中的化學物質可能穿透<strong>玻璃轉化溫度低於室溫的聚合物容器</strong>，最終遷移至內容物。常見的高風險化合物：</p>
+            <ul>
+                <li><strong>印刷油墨中的光起始劑（Photoinitiators）</strong>：如 ITX（isopropylthioxanthone）——著名的 Isociate 污染事件</li>
+                <li><strong>黏著劑溶劑</strong>：甲苯、乙酸乙酯的殘留</li>
+                <li><strong>紙板中的礦物油</strong>：MOH（Mineral Oil Hydrocarbons）污染</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：滅菌改變 E&amp;L 就像烹飪改變食物</h4>
+            <p>未烹飪的生雞肉（未滅菌元件）和烤雞（伽馬輻照後元件）的化學成分截然不同。你不能用生雞肉的「食品安全分析」來代表烤雞的安全性。同樣地，供應商的 E&amp;L 數據必須明確標示是輻照前還是輻照後的數據，兩者不可互換。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你現有的 SUT 供應商提供的 E&amp;L 數據是在伽馬輻照前還是後測試的？輻照劑量是否與你廠接收規格一致？</li>
+                <li>你的一次性儲存袋外層包裝有無使用含有機溶劑的油墨？玻璃化轉變溫度是多少？有無進行過近端包裝的遷移評估？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.6 Extractables Testing -->
+<!-- ============================================================ -->
+<div class="section-title">2.2.6 Extractables Testing（可萃取物測試）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>2.2.6.1 Selection of PPC/PCM Lots</h3>
+        <p>Where practical, extractables studies of PPC, PCM, and proximal materials should be designed to capture <span class="key-term">lot-to-lot variability</span> (preferably different resin lots, if possible). Multiple lots of PPC/PCM are recommended, when possible, for extractables evaluation. Non-consecutive lots, if available, should be used in the studies.</p>
+        <p>Consideration should be made for the large supplier lots that may be received at the end-user facility on different dates or purchase orders. These may be identified as different lots, but in fact are not reflective of supplier process variability. To determine whether or not multiple lots are needed, an assessment of the point of variability in the supply chain (e.g., manufacturing, batch processing, washing, sterilizing, etc.) should be conducted.</p>
+        <p>The mass to volume ratio and sample size of the PPC/PCM are important inputs to extractables characterization. Sample preparation should be consistent in geometry for the different PPC/PCM lots. Consideration can also be made to use a small-scale model for execution of the extractables study to support qualification of the large-scale model. However, the mass to volume ratio should be maintained as close as possible to the ratio of the original intended size.</p>
+
+        <h3>2.2.6.2 Extraction Conditions and Procedures</h3>
+        <p>Extraction conditions are critical in determining the chemical profile and levels of individual extractables. Prior to the execution of the extraction procedure, critical factors should be determined. An extractables assessment should provide quantitative and qualitative assessment of the safety threshold for individual extractables. The assessment should be based on different key factors, including:</p>
+        <ul>
+            <li>Fluid path characterization</li>
+            <li>Nature of single-use components</li>
+            <li>Manufacturing process conditions</li>
+        </ul>
+        <p>These factors are illustrated in Figure 2.6 (Ishikawa principle/Fishbone Diagram), which enables study design and extraction strategies.</p>
+        <p>The manufacturing process should be evaluated with regard to process conditions, proximity to the final product, and pretreatment procedures (e.g., autoclaving or <span class="key-term">gamma irradiation</span>).</p>
+        <p>These critical factors help to determine extraction conditions, which are based on parameters including:</p>
+        <ul>
+            <li>Chemical nature of the extracting media (<span class="key-term">model solvent</span>)</li>
+            <li>Duration of the extraction process and the temperature</li>
+            <li>Stoichiometry of the extraction process: surface area to volume ratio; mass of individual extractable compounds extracted per surface ratio</li>
+            <li>Physical characteristics of the extraction method</li>
+        </ul>
+
+        <h3>2.2.6.3 Extraction Parameters</h3>
+        <p>The extraction conditions (including temperature, pH, and time) should be appropriately selected, well described, and justified. Extraction media may include a drug product vehicle and organic <span class="key-term">solvents</span> of varying polarities, extreme pH, and extreme ionic strength.</p>
+        <p>Considerations for extraction parameters include:</p>
+        <ul>
+            <li>Selection of appropriately aggressive solvents, rather than simulating the action of the fluid path</li>
+            <li>Performing extractable analysis with multiple substitute solutions — each solution should approximate the effect of one or more of the physical and chemical properties of the fluid path</li>
+            <li>Selection of <span class="key-term">model solvents</span> based on variability of polarities — the power of model solvent extraction and their variabilities ensure the largest range of extractable compounds are encompassed</li>
+            <li>Volatility of the solvent as a key concern regarding extraction factor and the compatibility of the solvent with the analytical method</li>
+            <li>Determining the volume of extraction media using the surface area of the component in contact with the process fluid path (only the inner surface area in contact with the extraction media is considered)</li>
+        </ul>
+
+        <h3>2.2.6.4 Testing Methodology</h3>
+        <p>The levels of the identified extractable compounds should be analyzed and compared to standard guidelines such as the <span class="key-term">ICH Q3D</span>, EP General Chapter 3.1, and USP &lt;661&gt;. Common analytical techniques used in extractables testing include:</p>
+        <ul>
+            <li><span class="key-term">GC-MS</span> (Gas Chromatography–Mass Spectrometry): for volatile and semi-volatile organic compounds</li>
+            <li><span class="key-term">LC-MS</span> (Liquid Chromatography–Mass Spectrometry): for non-volatile and polar compounds</li>
+            <li><span class="key-term">ICP-MS</span> (Inductively Coupled Plasma–Mass Spectrometry): for elemental impurities (metals)</li>
+        </ul>
+        <p>In addition, refer to a proposed standardized extractables protocol (Ding et al., 2014).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：批次選擇的科學依據</h4>
+            <p>「非連續批次（Non-Consecutive Lots）」的設計邏輯：想要捕捉的是供應商的製程變異（樹脂批次、製造時間、滅菌參數），而非同一大批次的分割。</p>
+            <p>常見陷阱：採購了 3 批一次性袋，但其實是同一批樹脂在同一週內生產的——這 3 批並不代表真正的批次間變異。正確做法：要求供應商提供不同樹脂批號的產品。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>關鍵概念：模擬溶劑（Model Solvents）的選擇邏輯</h4>
+            <p>模擬溶劑的選擇依據極性梯度，覆蓋不同類型的化學遷移物：</p>
+            <table>
+                <thead>
+                    <tr><th>溶劑</th><th>極性</th><th>目標化合物</th><th>常用範例</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>水（Water）</td><td>高極性</td><td>水溶性添加劑</td><td>注射用水、緩衝液</td></tr>
+                    <tr><td>水/有機混合</td><td>中極性</td><td>水/有機兩性化合物</td><td>50% 乙醇、IPA/水</td></tr>
+                    <tr><td>有機溶劑</td><td>低極性</td><td>非極性添加劑、塑化劑</td><td>己烷、乙酸乙酯</td></tr>
+                    <tr><td>酸/鹼液</td><td>極端條件</td><td>pH 敏感性遷移物</td><td>0.1N HCl / 0.1N NaOH</td></tr>
+                </tbody>
+            </table>
+            <p>ISPE 的建議：使用<strong>表面積</strong>（而非質量）來決定萃取溶劑體積，確保 SA/V 比的一致性。</p>
+        </div>
+
+        <div class="key-term-box">
+            <h4>分析技術對照：GC-MS / LC-MS / ICP-MS</h4>
+            <table>
+                <thead>
+                    <tr><th>技術</th><th>適用化合物</th><th>偵測極限</th><th>關鍵應用</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GC-MS</strong></td>
+                        <td>揮發性/半揮發性有機物</td>
+                        <td>ppb–ppt 級</td>
+                        <td>抗氧化劑（Irganox 1076）、增塑劑（DEHP）、環狀矽氧烷（D4/D5）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LC-MS</strong></td>
+                        <td>非揮發性、極性有機物</td>
+                        <td>ppb–ppt 級</td>
+                        <td>UV 安定劑、聚合物單體、染料、硫化促進劑</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ICP-MS</strong></td>
+                        <td>元素雜質（金屬）</td>
+                        <td>ppt 級</td>
+                        <td>ICH Q3D 21 種元素（As、Cd、Pb、Hg 等），觸媒殘留</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="formula-box">
+            <h4>AET（分析評估閾值）計算</h4>
+            <pre>AET 定義：低於此濃度的萃取物無需進一步毒理關注
+
+計算公式（簡化）：
+AET = SCT ÷ (日劑量體積 × 萃取效率)
+
+其中：
+SCT = Safety Concern Threshold
+  - 一般有機物 TTC = 1.5 μg/天（Kroes et al.）
+  - ICH Q3D 元素雜質：依元素毒性分類（PDE 值）
+  - 基因毒性化合物（ICH M7）= 1.5 μg/天
+
+示例：
+日劑量體積 = 100 mL
+SCT = 150 μg/天（一般有機物上調係數後）
+萃取效率 = 50%
+AET = 150 ÷ (0.1 L × 0.5) = 3,000 μg/L = 3 ppm</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：Ishikawa（魚骨圖）在 E&amp;L 研究設計</h4>
+            <p>用魚骨圖分析影響萃取結果的因素，就像調查事故根因：主幹是「萃取物濃度」，六根骨頭分別是「溫度」、「pH」、「接觸時間」、「SA/V 比」、「溶劑種類」、「元件特性」。系統性地評估每根骨頭，才能設計出覆蓋所有最壞條件的 DOE 實驗方案。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>CDMO 應用場景：接受供應商 E&amp;L 數據的確認清單</h4>
+            <p>當供應商提交 E&amp;L 報告時，CDMO QA 應確認：</p>
+            <ul>
+                <li>測試批次是否使用了非連續批號（≥3 批）</li>
+                <li>萃取條件是否涵蓋你的製程最壞條件（最高溫度、最長接觸時間、最大 SA/V）</li>
+                <li>報告中的 AET 計算是否基於你的產品每日劑量（Different products = different AETs！）</li>
+                <li>GC-MS、LC-MS、ICP-MS 三項分析是否都已執行？LOQ 是否低於 AET 的 1/5？</li>
+                <li>所有鑑定化合物是否都有毒理結論（通過/需關注/需進一步測試）？</li>
+                <li>如有超出 AET 的化合物，是否提供了完整的毒理評估（HHE）？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你工廠目前使用的一次性儲存袋供應商，是否提供了包含 GC-MS + LC-MS + ICP-MS 三種分析的完整 E&amp;L 報告？報告中的萃取條件是否覆蓋了你的最高儲存溫度？</li>
+                <li>如果要為新引進的 mAb 原液儲存袋計算 AET，你需要哪些輸入數據？你的毒理評估流程是什麼？由誰負責最終結論？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-summary">
+    <h2>本章重點總結 Chapter Summary</h2>
+    <ul>
+        <li><strong>三層架構</strong>：單次使用技術分為元件（Component）→ 組件（Assembly）→ 系統（SUS）三個層次。浸濕元件是 E&amp;L 研究的主要對象，非浸濕元件也需進行間接影響評估。</li>
+        <li><strong>元件多樣性</strong>：生物工藝袋（2-D/3-D）、管路（矽膠/氟聚合物/熱塑性）、無菌連接器（有性別/無性別）、過濾器（除菌/深層/切向流）、感測器（單次/多次）等元件各有其設計特點與限制，選型需考量製程相容性和 E&amp;L 數據完整性。</li>
+        <li><strong>E vs L 根本差異</strong>：可萃取物（Extractables）用「誇張條件」強制萃取，代表最大化學風險上限；可瀝出物（Leachables）用實際製程條件，代表真實患者暴露量。前者先行，後者依需要補充。</li>
+        <li><strong>風險分層原則</strong>：製程位置越靠近充填步驟，E&amp;L 要求越嚴格——因為稀釋和過濾等風險緩解機制越少。充填組件屬最高風險等級，需最完整的 E&amp;L 評估。</li>
+        <li><strong>分析三劍客</strong>：GC-MS（揮發性有機物）、LC-MS（非揮發性極性有機物）、ICP-MS（元素雜質）三項分析技術聯合使用，才能覆蓋完整的化學指紋庫。AET 是判斷是否需要進一步毒理關注的關鍵閾值。</li>
+        <li><strong>CDMO 的雙重責任</strong>：作為端用者，CDMO 必須建立明確的供應商 E&amp;L 數據審查流程（RACI），確認供應商的萃取條件與自身製程最壞條件的相關性，並對毒理評估結論承擔最終責任。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
