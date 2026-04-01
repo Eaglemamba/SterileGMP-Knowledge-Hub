@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 1 - Section 2: Principle</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; color: #f97316; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; color: #fb923c; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center; flex: 1;
+    padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem;
+    cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem;
+    margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem;
+    margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px;
+    border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer { background: #1a2c3a; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: #f97316; color: white; border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(249, 115, 22, 0.4); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #ea6c0a; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a2c3a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Principle</h1>
+    <div class="subtitle">第二節：原則（含污染控制策略 CCS 深度解析）</div>
+    <div class="page-info">PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products | p2–p5</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握無菌產品製造的七大關鍵原則（2.1–2.7），理解其系統性邏輯與優先順序</li>
+        <li>深入理解污染控制策略 (CCS, Contamination Control Strategy) 的定義、組成元素與建立方法</li>
+        <li>了解 QRM 在整體製造管理中的首要性：「設計先行，監控驗證」的思維模式</li>
+        <li>認識 CCS 的 16 個構成要素，以及如何在 CDMO 環境中實際建立與維護 CCS</li>
+        <li>理解為何「單靠監控或測試不能保證無菌性」——無菌保證來自整體系統設計</li>
+    </ul>
+</div>
+
+<!-- 2.1 KEY AREAS -->
+<div class="section-title">2.1 — Key Areas for Sterile Manufacturing / 無菌製造的關鍵考量領域</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>2.1 The manufacture of sterile products is subject to special requirements in order to minimize risks of <span class="key-term">microbial</span>, <span class="key-term">particulate</span> and <span class="key-term">endotoxin/pyrogen contamination</span>. The following key areas should be considered:</p>
+
+        <ul>
+            <li><strong>i.</strong> Facility, equipment and process should be appropriately designed, qualified and/or validated and where applicable, subjected to ongoing verification according to the relevant sections of the <span class="key-term">Good Manufacturing Practices (GMP)</span> guide. The use of appropriate technologies (e.g. <span class="key-term">Restricted Access Barriers Systems (RABS)</span>, <span class="key-term">isolators</span>, robotic systems, rapid/alternative methods and continuous monitoring systems) should be considered to increase the protection of the product from potential extraneous sources of endotoxin/pyrogen, particulate and microbial contamination such as personnel, materials and the surrounding environment, and assist in the rapid detection of potential contaminants in the environment and the product.</li>
+            <li><strong>ii.</strong> Personnel should have adequate qualifications and experience, training and behaviour with a specific focus on the principles involved in the protection of sterile product during the manufacturing, packaging and distribution processes.</li>
+            <li><strong>iii.</strong> Processes and monitoring systems for sterile product manufacture should be designed, commissioned, qualified, monitored and regularly reviewed by personnel with appropriate process, engineering and microbiological knowledge.</li>
+            <li><strong>iv.</strong> Raw materials and packaging materials should be adequately controlled and tested to ensure that level of <span class="key-term">bioburden</span> and endotoxin/pyrogen are suitable for use.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三種污染類型（Three Contamination Types）：</strong></p>
+            <ul>
+                <li><strong>微生物污染（Microbial Contamination）：</strong> 細菌、黴菌、酵母菌等活微生物直接造成感染風險</li>
+                <li><strong>微粒污染（Particulate Contamination）：</strong> 可見或不可見微粒可能造成靜脈栓塞、組織損傷</li>
+                <li><strong>內毒素/熱原污染（Endotoxin/Pyrogen Contamination）：</strong> 革蘭氏陰性菌的細胞壁碎片，即使菌體已死亡仍會引發發熱反應（fever response），是無菌製造中最難被完全排除的污染類型</li>
+            </ul>
+            <p><strong>屏障技術優先（Barrier Technology First）：</strong> RABS（限制進出屏障系統）和 Isolator（隔離器）代表了現代無菌製造的技術趨勢。Annex 1 (2022) 明確要求廠商「應考慮」使用這些技術，間接表明傳統開放式潔淨室設計（open cleanroom）在法規眼中已非最佳選項。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>無菌製造的四大考量就像一間頂級外科手術室的管理：</p>
+            <ul>
+                <li><strong>硬體設計</strong>（設施、設備）= 手術室的正壓空調、層流通風、光滑不藏菌的地板</li>
+                <li><strong>人員</strong>= 外科醫師的洗手程序、刷手衣穿著方式</li>
+                <li><strong>製程監控</strong>= 術中生命體徵監測儀器</li>
+                <li><strong>原物料管控</strong>= 手術器械的滅菌確認與生物指示劑</li>
+            </ul>
+            <p>少了任何一項，即使其他三項都做到位，病人仍可能感染。無菌製造也是如此——系統性的整體管控才能確保無菌保證 (Sterility Assurance，無菌保證)。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Isolator vs RABS 的法規含義：</strong> Annex 1 (2022) 比舊版更積極地推薦使用隔離器（Isolator）和 RABS（限制進出屏障系統）。對 CDMO 而言，若現有設施仍為傳統 Grade A 開放充填，應在 CCS 中說明為何維持現有設計仍能提供足夠的污染防護，並附上風險評估文件。</p>
+            <p><strong>人員行為（Personnel Behaviour）特別強調：</strong> 注意 "behaviour"（行為）一詞。這不只是訓練問題，還涉及人員在潔淨室中的文化與習慣。法規近年越來越重視「行為偏差」（behavioural deviation）導致的污染風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼內毒素/熱原污染比微生物污染更難控制？終端滅菌（terminal sterilization）能消除熱原問題嗎？</li>
+                <li>一條新的無菌充填線正在評估採用 RABS 還是 Isolator。從 Annex 1 的角度，兩者的主要差異是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 2.2 QRM -->
+<div class="section-title">2.2 — QRM and Design Priority / 品質風險管理與設計優先原則</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>2.2 Processes, equipment, facilities and manufacturing activities should be managed in accordance with <span class="key-term">QRM principles</span> to provide a proactive means of identifying, scientifically evaluating and controlling potential risks to quality. Where alternative approaches are used, these should be supported by appropriate rationale, risk assessment and mitigation, and should meet the intent of this Annex.</p>
+
+        <p>In the first instance, QRM priorities should include appropriate <span class="key-term">design</span> of the facility, equipment and processes, followed by the implementation of well-designed <span class="key-term">procedures</span>, and finally application of <span class="key-term">monitoring systems</span> as the element that demonstrates that the design and procedures have been correctly implemented and continue to perform in line with expectations.</p>
+
+        <div class="quote-box">
+            "Monitoring or testing alone does not give assurance of sterility."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>無菌保證的三層次優先順序：</strong></p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">1. 設計（Design） — 最重要</div></div>
+                <div class="arrow-down">&#8595;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-2">2. 程序（Procedures）</div></div>
+                <div class="arrow-down">&#8595;</div>
+                <div class="hierarchy-level"><div class="hierarchy-box level-3">3. 監控（Monitoring） — 驗證設計有效</div></div>
+            </div>
+            <p>這個優先順序顛覆了許多廠商的直覺思維。「監控」在這裡是最後一層——它只是用來確認前兩層有效運作，而非污染防護的主要手段。如果廠商依賴大量環境監測數據來「證明」環境是乾淨的，而非透過良好設計來「預防」污染，這在 Annex 1 的哲學下是不被認可的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這就像建造一棟防水的房子：</p>
+            <ul>
+                <li><strong>設計先行</strong>：選擇正確的屋頂坡度、防水材料、排水系統設計（這才是真正防水的方法）</li>
+                <li><strong>程序</strong>：定期維護、檢查接縫、更換老化材料的 SOP</li>
+                <li><strong>監控</strong>：在屋子裡放濕度計——如果它長期顯示乾燥，代表設計和程序都有效</li>
+            </ul>
+            <p>若一棟房子的防水策略是「放很多濕度計，一旦潮濕就緊急處理」，這就是本末倒置。無菌保證 (Sterility Assurance) 的邏輯完全一樣。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「監控不能保證無菌性」是 Annex 1 最重要的哲學宣示之一。</strong> 這句話的監管意義是：即使所有環境監測結果都合格，如果製程設計本身有缺陷（例如 Grade A 保護不足、人員動線不當），也不能宣稱產品是「安全無菌的」。</p>
+            <p>這也是 PDA TR22（環境監測）中強調「監測是驗證工具，而非控制工具」的原因。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 在例行稽查準備時，稽查員要求審查環境監測（EM）的歷史趨勢。廠方展示了連續 12 個月 EM 全數合格的紀錄，並聲稱這證明無菌環境良好。</p>
+            <p>根據 Annex 1 的邏輯，稽查員的合理追問會是：「這些合格數據是因為系統設計良好，還是因為你們只在合格條件下才做充填？」——換言之，良好的設計文件和驗證報告才是真正的無菌保證，EM 只是支持性證據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2.3 CCS DEFINITION -->
+<div class="section-title">2.3 — Contamination Control Strategy (CCS) / 污染控制策略（核心條款）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>2.3 A <span class="key-term">Contamination Control Strategy (CCS)</span> should be implemented across the facility in order to define all critical control points and assess the effectiveness of all the controls (design, procedural, technical and organisational) and monitoring measures employed to manage risks to medicinal product quality and safety. The combined strategy of the CCS should establish robust assurance of <span class="key-term">contamination prevention</span>. The CCS should be actively reviewed and, where appropriate, updated and should drive <span class="key-term">continual improvement</span> of the manufacturing and control methods. Its effectiveness should form part of the <span class="key-term">periodic management review</span>. Where existing control systems are in place and are appropriately managed, these may not require replacement but should be referenced in the CCS and the associated interactions between systems should be understood.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — CCS 深度解析</h4>
+            <p><strong>什麼是污染控制策略（CCS）？</strong></p>
+            <p>CCS 是一份「活的」整合性文件，系統性地描述一家製造廠如何識別所有潛在污染源，並說明每個控制措施（設計、程序、技術、組織）如何協同運作，以確保產品品質與患者安全。</p>
+            <p><strong>CCS 包含四類控制措施：</strong></p>
+            <ul>
+                <li><strong>設計控制（Design Controls）：</strong> 潔淨室分級、氣流設計、HVAC 系統、RABS/Isolator 選擇</li>
+                <li><strong>程序控制（Procedural Controls）：</strong> 更衣規程、清潔消毒 SOP、人員行為規範</li>
+                <li><strong>技術控制（Technical Controls）：</strong> 自動化系統、密閉系統（closed systems）、過濾器設計</li>
+                <li><strong>組織控制（Organisational Controls）：</strong> 培訓計劃、供應商資格審查、變更管理</li>
+            </ul>
+            <p><strong>「定期管理審查的一部分」：</strong> 這是新要求。CCS 不只是一份文件，必須定期在管理層面審查其有效性，類似 ICH Q10 要求的產品品質年度審查（APR）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — CCS = 醫院感染管控計畫</h4>
+            <p>CCS（污染控制策略）就像一家醫院的「感染管控計畫（hospital infection control plan）」。</p>
+            <p>一家好醫院不會只說「我們有洗手規定」——它有一套完整的計畫，涵蓋：病房設計（負壓隔離病房）、人員管理（洗手程序、口罩規定）、環境清潔消毒（頻率、化學品選擇）、供應鏈管控（無菌耗材採購規格）、監控系統（院內感染率追蹤）、以及當發生群聚感染時的調查與 CAPA 流程。</p>
+            <p>製藥廠的 CCS 也是如此——它是一份涵蓋廠內所有污染控制活動的「總計畫」，確保每個部分協調運作、相互支撐，並持續改善。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CCS 是 Annex 1 (2022) 最重要的新概念之一。</strong> 舊版 Annex 1 （2008 版）並未明確要求 CCS。2022 年新版將 CCS 從建議性概念升格為法規要求，這是此次修訂的最大變化之一。</p>
+            <p><strong>現有系統不需要全部替換：</strong> 文中明確指出，若現有控制系統已到位且管理得當，「不需要替換」，但必須在 CCS 中引用，並理解各系統間的交互作用（interactions）。這是對既有廠商友善的表述，但同時要求廠商能說清楚各控制措施如何相互補充。</p>
+            <p><strong>「持續改善（Continual Improvement）」的法規義務：</strong> CCS 必須推動持續改善，而非僅僅維持現狀。這意味著 CCS 的定期審查會議必須有改善行動的輸出。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>CCS 文件結構建議</h4>
+            <pre>
+CCS 文件架構（建議）：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 廠房與環境設計概述
+   - 潔淨室分級 (Grade A/B/C/D 級)
+   - 氣流與壓差設計
+   - RABS/Isolator 說明
+
+2. 製程風險評估地圖
+   - 識別所有關鍵控制點 (CCPs)
+   - 每個 CCP 的控制措施清單
+
+3. 四類控制措施彙總表
+   - 設計 / 程序 / 技術 / 組織
+
+4. 監控系統說明
+   - 環境監測 (EM) 計畫
+   - 製程中管控 (IPC) 項目
+
+5. 績效指標與審查機制
+   - 年度 CCS 有效性評估
+   - 管理審查輸入
+
+6. 持續改善記錄
+   - CAPA 追蹤
+   - 變更對 CCS 的影響評估
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 CDMO 正在建立 CCS 文件。如果客戶要求查看 CCS，作為 CMO 方，你會提供完整文件還是摘要版本？從保密性和法規合規的角度如何平衡？</li>
+                <li>CCS 要求「系統間交互作用應被理解」。請舉例說明：潔淨室 HVAC 系統設計與人員更衣程序之間的交互作用是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 2.4 and 2.5 CCS ELEMENTS -->
+<div class="section-title">2.4–2.5 — Contamination Sources & CCS Elements / 污染來源與 CCS 的 16 個構成要素</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>2.4 Contamination control and steps taken to minimize the risk of contamination from microbial, endotoxin/pyrogen and particle sources includes a series of <span class="key-term">interrelated events and measures</span>. These are typically assessed, controlled and monitored individually but their <span class="key-term">collective effectiveness</span> should be considered together.</p>
+
+        <p>2.5 The development of the CCS requires detailed <span class="key-term">technical and process knowledge</span>. Potential sources of contamination are attributable to microbial and cellular debris (e.g. pyrogen, endotoxin) as well as particulate (e.g. glass and other visible and sub-visible particles).</p>
+
+        <p>Elements to be considered within a CCS should include (but are not limited to):</p>
+        <ol type="i">
+            <li>design of both the plant and processes including the associated documentation;</li>
+            <li>premises and equipment;</li>
+            <li>personnel;</li>
+            <li>utilities;</li>
+            <li>raw material controls — including in-process controls;</li>
+            <li>product containers and closures;</li>
+            <li>vendor approval — such as key component suppliers, sterilisation of components and single use systems (SUS), and critical service providers;</li>
+            <li>management of outsourced activities and availability/transfer of critical information between parties, e.g. contract sterilisation services;</li>
+            <li>process risk management;</li>
+            <li>process validation;</li>
+            <li>validation of sterilisation processes;</li>
+            <li>preventative maintenance — maintaining equipment, utilities and premises (planned and unplanned maintenance) to a standard that will ensure there is no additional risk of contamination;</li>
+            <li>cleaning and disinfection;</li>
+            <li>monitoring systems - including an assessment of the feasibility of the introduction of scientifically sound, alternative methods that optimize the detection of environmental contamination;</li>
+            <li>prevention mechanisms — trend analysis, detailed investigation, root cause determination, corrective and preventive actions (CAPA) and the need for comprehensive investigational tools;</li>
+            <li>continuous improvement based on information derived from the above.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — CCS 的 16 個要素解讀</h4>
+            <p><strong>「集體有效性」（Collective Effectiveness）概念：</strong></p>
+            <p>每個控制措施可以個別評估，但真正的污染防護來自所有措施共同運作的系統效果。這就像一條鎖鏈——每個環節單獨都很強，但若某個環節薄弱，整條鏈的強度就只等於最弱的那一環。</p>
+            <p><strong>16 個要素的結構分析（按類別分組）：</strong></p>
+            <ul>
+                <li><strong>硬體與設計類（1-4）：</strong> 廠房設計、設施設備、人員、公用系統</li>
+                <li><strong>物料管控類（5-8）：</strong> 原料管控、容器密封系統、供應商資格、委外活動管理</li>
+                <li><strong>製程品質類（9-11）：</strong> 製程風險管理、製程驗證、滅菌驗證</li>
+                <li><strong>維護與清潔類（12-13）：</strong> 預防性維護、清潔消毒</li>
+                <li><strong>監控與改善類（14-16）：</strong> 監控系統、預防機制（CAPA）、持續改善</li>
+            </ul>
+            <p>值得注意的是，<strong>供應商資格審查（vii）</strong>和<strong>委外活動管理（viii）</strong>首次明確列入 CCS 的組成要素，這對 CDMO 尤其重要——你的單次性使用系統（SUS）供應商的品質控制，也是你的 CCS 的一部分。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 CCS 的 16 個要素想像成一家餐廳的食品安全管理系統（HACCP）：</p>
+            <ul>
+                <li>廚房設計（硬體）、食材採購規格（原料管控）、供應商稽核（供應商資格）、烹飪溫度管控（製程驗證）、清潔消毒計畫、員工衛生訓練——這些加在一起才構成完整的食品安全保證。</li>
+                <li>光有食材抽驗（等同於「監控」）並不足夠；光有 HACCP 文件而不落實也不夠。CCS 也是如此：它必須是系統性、活的、可執行的。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>替代性監控方法（Alternative Methods）：</strong> 要素 xiv 特別提到評估「科學上合理的替代監測方法」——這是對快速微生物方法（Rapid Microbiological Methods, RMM）的隱性鼓勵。傳統 7-14 天培養基方法越來越難以滿足即時偏差響應的需求，RMM 是未來趨勢。</p>
+            <p><strong>CAPA 作為 CCS 的核心組件：</strong> 要素 xv 將 CAPA（矯正及預防行動）列為 CCS 的預防機制之一。這意味著 CAPA 系統的有效性應在 CCS 審查時一併評估——僅完成 CAPA 記錄填寫並不夠，必須驗證根本原因確實被解決。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 從傳統玻璃瓶充填改用單次性使用系統（Single-Use Systems, SUS）。在更新 CCS 時，哪些要素需要重點更新？</p>
+            <ul>
+                <li><strong>要素 vii（供應商資格）：</strong> 需評估 SUS 供應商的滅菌程序確認與生物相容性文件</li>
+                <li><strong>要素 xi（滅菌驗證）：</strong> SUS 通常由供應商預先滅菌，需轉移並確認其滅菌驗證數據的適用性</li>
+                <li><strong>要素 viii（委外活動）：</strong> 供應商的品質協議（Quality Agreement）必須明確界定責任邊界</li>
+                <li><strong>要素 xii（預防性維護）：</strong> SUS 無需傳統 CIP/SIP，但需要更新批次設置確認程序</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CCS 要素中「集體有效性」的概念，對於稽查中發現某一單一控制措施不足時（例如環境監測超標），其後續調查的範圍應該如何界定？</li>
+                <li>如果一家工廠的預防性維護計畫（PM）在 CCS 審查中被發現執行率只有 70%，這如何影響 CCS 的整體有效性評估？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 2.6 and 2.7 -->
+<div class="section-title">2.6–2.7 — CCS Lifecycle & Sterility Assurance / CCS 生命週期管理與無菌保證最終原則</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>2.6 The CCS should consider all aspects of contamination control with <span class="key-term">ongoing and periodic review</span> resulting in updates within the pharmaceutical quality system as appropriate. Changes to the systems in place should be assessed for any impact on the CCS <span class="key-term">before and after implementation</span>.</p>
+
+        <p>2.7 The manufacturer should take all steps and precautions necessary to assure the <span class="key-term">sterility</span> of the products manufactured within its facilities. <span class="key-term">Sole reliance</span> for sterility or other quality aspects should not be placed on any <span class="key-term">terminal process</span> or <span class="key-term">finished product test</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCS 的生命週期管理（Lifecycle Management）：</strong></p>
+            <p>2.6 確立了 CCS 不是一份靜態文件，而是隨著工廠運作持續演進的「活文件」。關鍵要求包括：</p>
+            <ul>
+                <li><strong>變更前評估：</strong> 任何製程變更（如設備更換、SOP 修改）在實施前必須評估對 CCS 的影響</li>
+                <li><strong>變更後確認：</strong> 實施後也需確認 CCS 仍然有效</li>
+                <li><strong>定期審查：</strong> 定期（通常每年）評估 CCS 整體有效性，作為 PQS 管理審查的輸入</li>
+            </ul>
+            <p><strong>2.7 的哲學意義——無菌保證來自整體系統：</strong></p>
+            <p>「不得單靠終端製程或成品測試來保證無菌性」是整個 Annex 1 的核心宣示。無菌性測試（Sterility Test）的統計侷限性眾所周知——對整批成品進行全破壞性測試是不可能的，抽樣測試的代表性有限。因此，無菌保證 (Sterility Assurance) 必須建立在整個製造系統的可靠性上。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「不能單靠成品測試保證無菌性」就像——不能只靠最終的食品安全抽驗來確保食品安全。</p>
+            <p>一家便當工廠不可能對每一個便當做微生物檢測（破壞性且成本極高）。真正的食品安全保證來自原料管控、生產環境清潔、廚師健康管理、溫度控制等整套系統。每個便當的「安全性」是被「製造進去的」，而非「檢測出來的」。</p>
+            <p>注射劑的無菌性也是如此：無菌性是透過完整的製造系統「build in」進去的，不是靠批次末的無菌測試「test out」的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>變更管理（Change Control）與 CCS 的連結：</strong> 2.6 要求在變更前後都評估 CCS 影響，這意味著工廠的變更管理程序（Change Control SOP）必須包含「CCS 影響評估」這個步驟。這在舊版 Annex 1 中並無明確要求，是 2022 版的重要新增內容。</p>
+            <p><strong>無菌測試的統計侷限：</strong> 一般無菌測試抽樣量極小（通常 20 個單位），統計上無法保證整批產品都無菌。即使無菌測試通過，若製程中有已知的污染事件（如環境監測超標），仍不應放行批次。這正是 2.7 所要傳達的精神。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>一家 CDMO 計劃更換 Grade A 充填區的 HEPA 過濾器型號（不同製造商，但相同規格）。根據 2.6 的要求，哪些評估步驟是必要的？</p>
+            <ol>
+                <li><strong>變更前：</strong> 評估新型號 HEPA 過濾器對 CCS 中「設計控制」要素的影響；確認供應商資格；更新 CCS 相關章節</li>
+                <li><strong>實施時：</strong> 執行 HEPA 過濾器安裝後的完整性測試（DOP/PAO 測試）和潔淨室分級再確認</li>
+                <li><strong>實施後：</strong> 確認環境監測數據維持在可接受範圍；更新 CCS 文件反映最新狀態</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一個批次在充填過程中發生了環境監測超標（EM excursion），但隨後的無菌測試結果為陰性（pass），是否可以放行此批次？根據 2.7 的精神，你的決策論據是什麼？</li>
+                <li>如何設計 CCS 定期審查的機制，使其有效而不流於形式？什麼樣的輸入數據（input data）應該納入每年的 CCS 有效性評估？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>無菌製造的核心原則涵蓋設施/設備設計、人員管理、製程監控與原物料管控四大領域，缺一不可</li>
+        <li>QRM 的優先順序為：設計 > 程序 > 監控。監控只是驗證前兩者有效，而非污染防護的主要手段</li>
+        <li>污染控制策略（CCS，污染控制策略）是 Annex 1 (2022) 最重要的新核心概念，要求廠商建立涵蓋 16 個要素的整合性污染管控計畫，並持續維護更新</li>
+        <li>CCS 是「活文件」，必須在每次系統變更前後評估影響，並定期作為管理審查的輸入</li>
+        <li>無菌保證 (Sterility Assurance) 不能單靠終端滅菌或成品無菌測試——它是整個製造系統可靠性的綜合體現，必須透過完整的系統設計「build in」而非靠測試「test out」</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products</p>
+    <p>Section 2: Principle | SterileGMP Knowledge Hub</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

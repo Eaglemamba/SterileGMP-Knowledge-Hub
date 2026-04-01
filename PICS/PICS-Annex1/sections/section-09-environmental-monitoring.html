@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIC/S Annex 1 - Section 9: Environmental and Process Monitoring</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #f97316;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== PIC/S SOURCE COLOR OVERRIDES ===== */
+.header {
+    background: linear-gradient(135deg, #1a2c3a 0%, #2d4a5e 100%) !important;
+}
+
+.header h1 {
+    color: #f97316 !important;
+}
+
+.source-bar {
+    display: inline-block;
+    background: #fb923c;
+    color: white;
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: 0.4rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 9: Environmental and Process Monitoring</h1>
+    <div class="subtitle">第九節：環境與製程監測 (環境監測)</div>
+    <div class="page-info">PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products | p41 – p50</div>
+    <div><span class="source-bar">PIC/S</span></div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解環境監測計畫（Environmental Monitoring Programme）的設計原則，包括風險評估驅動的採樣位置、頻率與方法選擇。</li>
+        <li>區分警戒限（Alert Level）與行動限（Action Limit）的定義、設定依據及超限後的因應程序。</li>
+        <li>熟悉活性微生物監測（Viable Particle Monitoring）與非活性粒子監測（Non-viable Particle Monitoring）的方法及各等級要求，並能正確解讀 Table 5 與 Table 6 的法規限值。</li>
+        <li>深入了解無菌製程模擬（Aseptic Process Simulation, APS）又稱培養基灌充（Media Fill）的設計、執行頻率、合格標準、失敗調查與批次處置要求。</li>
+        <li>掌握 APS 在 RABS、隔離器（Isolator）及凍乾製程中的特殊考量，以及操作人員資格維護的要求。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: 9.4 - 9.13 EM Programme Design & Alert/Action Limits -->
+<!-- ============================================================ -->
+<div class="section-title">9.4–9.13 環境監測計畫設計、警戒限與行動限</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>9.4</strong> An <span class="key-term">environmental monitoring programme</span> should be established and documented. The purpose of the environmental monitoring programme, is to:</p>
+        <ol type="i">
+            <li>Provide assurance that cleanrooms and clean air equipment continue to provide an environment of appropriate air cleanliness, in accordance with design and regulatory requirements.</li>
+            <li>Effectively detect excursions from environmental limits triggering investigation and assessment of risk to product quality.</li>
+        </ol>
+
+        <p><span class="key-term">Risk assessments</span> should be performed in order to establish this comprehensive environmental monitoring programme, i.e. sampling locations, frequency of monitoring, monitoring methods and incubation conditions (e.g. time, temperature(s), aerobic and/or anaerobic conditions).</p>
+
+        <p>These risk assessments should be conducted based on detailed knowledge of; the process inputs and final product, the facility, equipment, the criticality of specific processes and steps, the operations involved, routine monitoring data, monitoring data obtained during qualification and knowledge of typical microbial flora isolated from the environment.</p>
+
+        <p>The risk assessment should include the determination of <span class="key-term">critical monitoring locations</span>, those locations where the presence of microorganisms during processing may have an impact upon product quality, (e.g. grade A, aseptic processing areas and the grade B areas that directly interface with the grade A area). Consideration of other information such as air visualisation studies should also be included. These risk assessments should be reviewed regularly in order to confirm the effectiveness of the site's environmental monitoring programme. The monitoring programme should be considered in the overall context of the trend analysis and the <span class="key-term">CCS</span> for the site.</p>
+
+        <p><strong>9.5</strong> Routine monitoring of cleanrooms, clean air equipment and personnel should be performed <strong>in operation</strong> throughout all critical stages of processing, including equipment set-up.</p>
+
+        <p><strong>9.6</strong> Other characteristics, such as <span class="key-term">temperature and relative humidity</span>, should be controlled within ranges that align with product/processing/personnel requirements and support maintenance of defined cleanliness standards (e.g. grade A or B).</p>
+
+        <p><strong>9.7</strong> The monitoring of grade A should demonstrate the maintenance of <span class="key-term">aseptic processing conditions</span> during critical operations. Monitoring should be performed at locations posing the highest risk of contamination to the sterile equipment surfaces, containers, closures and product. The selection of monitoring locations and the orientation and positioning of sampling devices should be justified and appropriate to obtain reliable data from the critical zones.</p>
+
+        <p><strong>9.8</strong> Sampling methods should not pose a risk of contamination to the manufacturing operations.</p>
+
+        <p><strong>9.9</strong> Appropriate <span class="key-term">alert levels</span> and <span class="key-term">action limits</span> should be set for the results of viable and total particle monitoring. The maximum total particle action limits are described in Table 5 and the maximum viable particle action limits are described in Table 6. However, more stringent action limits may be applied based on data trending, the nature of the process or as determined within the CCS. Both viable and total particle alert levels should be established based on results of <span class="key-term">cleanroom qualification tests</span> and periodically reviewed based on ongoing trend data.</p>
+
+        <p><strong>9.10</strong> Alert levels for grade A (total particle only) grade B, grade C and grade D should be set such that adverse trends (e.g. a numbers of events or individual events that indicate a deterioration of environmental control) are detected and addressed.</p>
+
+        <p><strong>9.11</strong> Monitoring procedures should define the approach to <span class="key-term">trending</span>. Trends should include, but are not limited to:</p>
+        <ol type="i">
+            <li>increasing numbers of excursions from action limits or alert levels;</li>
+            <li>consecutive excursions from alert levels;</li>
+            <li>regular but isolated excursion from action limits that may have a common cause, (e.g. single excursions that always follow planned preventative maintenance);</li>
+            <li>changes in microbial flora type and numbers and predominance of specific organisms. Particular attention should be given to organisms recovered that may indicate a loss of control, deterioration in cleanliness or organisms that may be difficult to control such as <span class="key-term">spore-forming microorganisms</span> and moulds.</li>
+        </ol>
+
+        <p><strong>9.12</strong> The monitoring of grade C and D cleanrooms in operation should be performed based on data collected during qualification and routine data to allow effective trend analysis. The requirements of alert levels and action limits will depend on the nature of the operations carried out. Action limits may be more stringent than those listed in Table 5 and Table 6.</p>
+
+        <p><strong>9.13</strong> If <span class="key-term">action limits are exceeded</span>, operating procedures should prescribe a root cause investigation, an assessment of the potential impact to product (including batches produced between the monitoring and reporting) and requirements for corrective and preventive actions. If <span class="key-term">alert levels are exceeded</span>, operating procedures should prescribe assessment and follow-up, which should include consideration of an investigation and/or corrective actions to avoid any further deterioration of the environment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 環境監測計畫的雙重目的</h4>
+            <p><strong>環境監測 (Environmental Monitoring, EM) 計畫</strong>有兩個核心使命：</p>
+            <ul>
+                <li><strong>持續性保證</strong>：確認潔淨室與潔淨空氣設備維持於設計與法規要求的潔淨度等級。</li>
+                <li><strong>偵測偏差</strong>：有效偵測環境超限事件，觸發調查與產品品質風險評估。</li>
+            </ul>
+            <p>注意：EM 是「持續確認」（ongoing assurance），而非一次性驗證（one-time validation）。這是一個動態的品質系統工具。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 警戒限 vs 行動限</h4>
+            <p><strong>警戒限 (Alert Level)</strong>：為早期預警信號。超越此限值代表環境有惡化趨勢，需要評估並採取預防措施，但不一定需要立即停產。Alert level 應根據潔淨室驗證數據（qualification data）設定，並定期依趨勢資料複審。</p>
+            <p><strong>行動限 (Action Limit)</strong>：為最高可接受上限，其最大值記載於 Table 5（非活性粒子）與 Table 6（活性微生物）。超越行動限必須啟動根本原因調查（root cause investigation）、評估產品衝擊，並實施矯正與預防措施（CAPA）。</p>
+            <p>關鍵差異：警戒限偏重趨勢管理；行動限偏重緊急回應。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 醫院感染管控</h4>
+            <p>想像一家醫院的感染管控計畫（Contamination Control Strategy, CCS）：警戒限就像「黃色警示」——病房出現幾例感冒患者，醫院要加強洗手與消毒頻率；行動限就像「紅色警示」——出現院內感染群聚事件，立即啟動隔離程序、停止非必要手術、調查感染源。</p>
+            <p>EM 計畫就是醫院的感染監控儀表板，讓管理者在問題惡化前早期介入。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 風險評估驅動的採樣設計</h4>
+            <p>PIC/S Annex 1 明確要求：EM 計畫的採樣位置、頻率、方法與培養條件，必須來自<strong>風險評估（Risk Assessment）</strong>，而非主觀決定。風險評估應涵蓋：</p>
+            <ul>
+                <li>製程與產品知識（process inputs, final product）</li>
+                <li>廠房、設備的佈局與設計</li>
+                <li>特定步驟的關鍵程度</li>
+                <li>例行監測與驗證歷史數據</li>
+                <li>環境中已知的典型微生物菌相（typical microbial flora）</li>
+            </ul>
+            <p>稽查員常見問題：「你如何決定這個採樣點？」答案必須有文件化的風險評估支撐。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 趨勢分析的四大指標</h4>
+            <p>9.11 條列四種需要關注的趨勢模式：</p>
+            <ul>
+                <li><strong>超限次數增加</strong>：絕對值仍合格，但頻率上升。</li>
+                <li><strong>連續超越警戒限</strong>：表示系統性問題，非偶發。</li>
+                <li><strong>有共同原因的週期性超限</strong>：例如預防性維護後固定出現，代表維護作業本身需要改善。</li>
+                <li><strong>菌種變化</strong>：出現孢子形成菌（spore-forming microorganisms）或黴菌，尤其危險，因為這類微生物對一般消毒劑抵抗力強。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>假設 Grade B 區域連續三週的活菌計數均超越警戒限但未超越行動限，你的 SOP 應規定哪些後續動作？</li>
+                <li>一個採樣點在每次預防性維護後次日都出現行動限超標，這屬於哪種趨勢類型（9.11 條第幾項）？應如何根本解決？</li>
+                <li>Grade A 區域出現黴菌（mould），應立即採取哪些步驟？是否影響已完成批次的放行決策？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: 9.14-9.21 Total Particle Monitoring + Table 5 -->
+<!-- ============================================================ -->
+<div class="section-title">9.14–9.21 非活性粒子監測 (Non-viable Particle Monitoring) 及 Table 5</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>9.14</strong> A <span class="key-term">total particle monitoring program</span> should be established to obtain data for assessing potential contamination risks and to ensure the maintenance of the environment for sterile operations in a qualified state.</p>
+
+        <p><strong>9.15</strong> The limits for environmental monitoring of airborne particle concentration for each graded area are given in Table 5.</p>
+
+        <p><strong>Table 5: Maximum permitted total particle concentration for monitoring.</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Grade</th>
+                    <th colspan="2">Maximum limits for total particle ≥ 0.5 µm/m³</th>
+                    <th colspan="2">Maximum limits for total particle ≥ 5 µm/m³</th>
+                </tr>
+                <tr>
+                    <th>At Rest</th>
+                    <th>In Operation</th>
+                    <th>At Rest</th>
+                    <th>In Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>A</strong></td>
+                    <td>3,520</td>
+                    <td>3,520</td>
+                    <td>29</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td><strong>B</strong></td>
+                    <td>3,520</td>
+                    <td>352,000</td>
+                    <td>29</td>
+                    <td>2,930</td>
+                </tr>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td>352,000</td>
+                    <td>3,520,000</td>
+                    <td>2,930</td>
+                    <td>29,300</td>
+                </tr>
+                <tr>
+                    <td><strong>D</strong></td>
+                    <td>3,520,000</td>
+                    <td>Not predetermined <sup>(a)</sup></td>
+                    <td>29,300</td>
+                    <td>Not predetermined <sup>(a)</sup></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p><sup>(a)</sup> For grade D, in operation limits are not predetermined. The manufacturer should establish in operation limits based on a risk assessment and on routine data, where applicable.</p>
+
+        <div class="quote-box">
+            "Note 1: The particle limits given in the table for the 'at rest' state should be achieved after a short 'clean up' period defined during qualification (guidance value of less than 20 minutes) in an unmanned state, after the completion of operations (see paragraph 4.29)."
+        </div>
+
+        <div class="quote-box">
+            "Note 2: The occasional indication of macro particle counts, especially ≥ 5 µm, within grade A may be considered to be false counts due to electronic noise, stray light, coincidence loss etc. However, consecutive or regular counting of low levels may be indicative of a possible contamination event and should be investigated."
+        </div>
+
+        <p><strong>9.16</strong> For grade A, particle monitoring should be undertaken for the <span class="key-term">full duration of critical processing</span>, including equipment assembly.</p>
+
+        <p><strong>9.17</strong> The grade A area should be monitored <span class="key-term">continuously</span> (for particles 0.5 and 5 µm) and with a suitable sample flow rate (at least <span class="key-term">28 litres (1ft³) per minute</span>) so that all interventions, transient events and any system deterioration is captured. The system should frequently correlate each individual sample result with alert levels and action limits at such a frequency that any potential excursion can be identified and responded to in a timely manner. Alarms should be triggered if alert levels are exceeded. Procedures should define the actions to be taken in response to alarms including the consideration of additional microbial monitoring.</p>
+
+        <p><strong>9.18</strong> It is recommended that a similar system be used for the grade B area although the sample frequency may be decreased. The grade B area should be monitored at such a frequency and with suitable sample size that the programme captures any increase in levels of contamination and system deterioration. If alert levels are exceeded, alarms should be triggered.</p>
+
+        <p><strong>9.19</strong> The selection of the monitoring system should take into account any risk presented by the materials used in the manufacturing operation (e.g. those involving live organisms, powdery products or radiopharmaceuticals) that may give rise to biological, chemical or radiation hazards.</p>
+
+        <p><strong>9.20</strong> In the case where contaminants are present due to the processes involved and would potentially damage the particle counter or present a hazard (e.g. live organisms, powdery products and radiation hazards), the frequency and strategy employed should be such as to assure the environmental classification both prior to and post exposure to the risk. An increase in viable particle monitoring should be considered to ensure comprehensive monitoring of the process. Additionally, monitoring should be performed during simulated operations. Such operations should be performed at appropriate intervals. The approach should be defined in the CCS.</p>
+
+        <p><strong>9.21</strong> The size of monitoring samples taken using automated systems will usually be a function of the sampling rate of the system used. It is not necessary for the sample volume to be the same as that used for formal classification of cleanrooms and clean air equipment. <span class="key-term">Monitoring sample volumes should be justified.</span></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Table 5 解讀重點</h4>
+            <p>Table 5 是無菌製造的「空氣品質護照」，每個等級在<strong>靜態（at rest）</strong>與<strong>動態（in operation）</strong>下的粒子限制都不同：</p>
+            <ul>
+                <li><strong>Grade A</strong>：靜態與動態完全相同（3,520 / 29），這是最嚴格的要求——即使有人員在場操作，粒子數也不能上升。這體現了 RABS 或隔離器的核心價值：將人員影響降至最低。</li>
+                <li><strong>Grade B</strong>：靜態與 Grade A 相同，但動態下 0.5µm 粒子限制放寬至 352,000（約為靜態的 100 倍），反映人員存在的現實影響。</li>
+                <li><strong>Grade C &amp; D</strong>：限值逐步寬鬆，但 D 級動態限值「未預定（not predetermined）」，需廠商自行依風險評估設定。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — ISO 等級對應</h4>
+            <pre>
+Grade A = ISO 5 (靜態 + 動態)
+Grade B = ISO 5 (靜態) / ISO 7 (動態)
+Grade C = ISO 7 (靜態) / ISO 8 (動態)
+Grade D = ISO 8 (靜態) / 未規定 (動態)
+
+ISO 5 對應 ≥0.5µm: 3,520 /m³
+ISO 7 對應 ≥0.5µm: 352,000 /m³
+ISO 8 對應 ≥0.5µm: 3,520,000 /m³
+
+Grade A 連續監測最低採樣流量：
+  ≥ 28 L/min (= 1 ft³/min)</pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 空氣品質監測站</h4>
+            <p>Grade A 的連續粒子監測就像城市中的即時 PM2.5 監測站：每分鐘都在量測、每次超標都觸發警報，而不是每天早晨才看報告。這種即時性讓操作人員能在問題惡化前立即反應——例如在偶發干預後立即確認粒子數是否已恢復正常。</p>
+            <p>相比之下，Grade C/D 更像是定期採樣的氣象站，不需要每秒都更新。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Grade A 連續監測的技術要求</h4>
+            <p>9.17 對 Grade A 的非活性粒子監測有三個硬性要求：</p>
+            <ul>
+                <li><strong>連續監測（continuous）</strong>：涵蓋全部關鍵操作時程，包括設備組裝。</li>
+                <li><strong>最低流量：28 L/min</strong>（1 ft³/min）：確保樣本代表性，可捕捉短暫事件（transient events）。</li>
+                <li><strong>即時比對</strong>：每個採樣結果應即時與警戒限及行動限比對，超過警戒限需觸發警報，且程序需明確定義警報後的回應動作（包括是否追加活菌監測）。</li>
+            </ul>
+            <p>注意：Grade B 亦建議類似系統，但可降低採樣頻率。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 特殊產品的監測策略（9.19-9.20）</h4>
+            <p>某些產品類型可能損壞粒子計數器（particle counter）或造成危害：</p>
+            <ul>
+                <li><strong>活菌製劑（live organisms）</strong>：如活菌疫苗、基因治療產品。</li>
+                <li><strong>粉末產品（powdery products）</strong>：乾粉吸入劑、凍乾粉末。</li>
+                <li><strong>放射性藥品（radiopharmaceuticals）</strong>。</li>
+            </ul>
+            <p>策略：在風險暴露前後確認環境等級，增加活菌監測頻率，並在模擬操作中進行監測。所有策略需納入 CCS（污染控制策略）中。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 Grade A 粒子計數儀的採樣流量是 20 L/min，符合 Annex 1 要求嗎？為什麼？</li>
+                <li>Table 5 中 Grade B 靜態下 0.5µm 粒子限值與 Grade A 靜態相同，這背後的邏輯是什麼？</li>
+                <li>Grade D 動態限值「未預定」——廠商應如何設定此限值？需要什麼類型的文件支撐？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: 9.22-9.31 Viable Particle Monitoring + Table 6 -->
+<!-- ============================================================ -->
+<div class="section-title">9.22–9.31 活性微生物監測 (Viable Particle Monitoring) 及 Table 6</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>9.22</strong> Where aseptic operations are performed, <span class="key-term">microbial monitoring</span> should be frequent using a combination of methods such as <span class="key-term">settle plates</span> (沉降碟), <span class="key-term">volumetric air sampling</span>, glove, gown and <span class="key-term">surface sampling</span> (e.g. swabs and <span class="key-term">contact plates</span>). The method of sampling used should be justified within the CCS and should be demonstrated not to have a detrimental impact on grade A and B airflow patterns. Cleanroom and equipment surfaces should be monitored at the end of an operation.</p>
+
+        <p><strong>9.23</strong> Viable particle monitoring should also be performed within the cleanrooms when normal manufacturing operations are not occurring (e.g. post disinfection, prior to start of manufacturing, on completion of the batch and after a shutdown period), and in associated rooms that have not been used, in order to detect potential incidents of contamination which may affect the controls within the cleanrooms. In case of an incident, additional sample locations may be used as a verification of the effectiveness of a corrective action (e.g. cleaning and disinfection).</p>
+
+        <p><strong>9.24</strong> <span class="key-term">Continuous viable air monitoring</span> in grade A (e.g. air sampling or settle plates) should be undertaken for the full duration of critical processing, including equipment (aseptic set-up) assembly and critical processing. A similar approach should be considered for grade B cleanrooms based on the risk of impact on the aseptic processing. The monitoring should be performed in such a way that all interventions, transient events and any system deterioration would be captured and any risk caused by interventions of the monitoring operations is avoided.</p>
+
+        <p><strong>9.25</strong> A risk assessment should evaluate the locations, type and frequency of <span class="key-term">personnel monitoring</span> based on the activities performed and the proximity to critical zones. Monitoring should include sampling of personnel at periodic intervals during the process. Sampling of personnel should be performed in such a way that it will not compromise the process. Particular consideration should be given to monitoring personnel following involvement in <span class="key-term">critical interventions</span> (at a minimum gloves, but may require monitoring of areas of gown as applicable to the process) and on each exit from the grade B cleanroom (gloves and gown). Where monitoring of gloves is performed after critical interventions, the outer gloves should be replaced prior to continuation of activity. Where monitoring of gowns is required after critical interventions, the gown should be replaced before further activity in the cleanroom.</p>
+
+        <p><strong>9.26</strong> Microbial monitoring of personnel in the grade A and grade B areas should be performed. Where operations are manual in nature (e.g. aseptic compounding or filling), the increased risk should lead to enhanced emphasis placed on microbial monitoring of gowns and justified within the CCS.</p>
+
+        <p><strong>9.27</strong> Where monitoring is routinely performed by manufacturing personnel, this should be subject to regular oversight by the quality unit (refer also to paragraph 8.19).</p>
+
+        <p><strong>9.28</strong> The adoption of suitable <span class="key-term">alternative monitoring systems</span> such as rapid methods should be considered by manufacturers in order to expedite the detection of microbiological contamination issues and to reduce the risk to product. These rapid and automated microbial monitoring methods may be adopted after <span class="key-term">validation</span> has demonstrated their equivalency or superiority to the established methods.</p>
+
+        <p><strong>9.29</strong> Sampling methods and equipment used should be fully understood and procedures should be in place for the correct operation and interpretation of results obtained. Supporting data for the <span class="key-term">recovery efficiency</span> of the sampling methods chosen should be available.</p>
+
+        <p><strong>9.30</strong> Action limits for viable particle contamination are shown in Table 6.</p>
+
+        <p><strong>Table 6: Maximum action limits for viable particle contamination</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Air sample<br>CFU/m³</th>
+                    <th>Settle plates (diam. 90 mm)<br>CFU/4 hours <sup>(a)</sup></th>
+                    <th>Contact plates (diam. 55mm)<br>CFU/plate <sup>(b)</sup></th>
+                    <th>Glove print, incl. 5 fingers on both hands<br>CFU/glove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>A</strong></td>
+                    <td>&lt;1</td>
+                    <td>No growth <sup>(c)</sup></td>
+                    <td>No growth <sup>(c)</sup></td>
+                    <td>&lt;1</td>
+                </tr>
+                <tr>
+                    <td><strong>B</strong></td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td><strong>C</strong></td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>25</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td><strong>D</strong></td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>50</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p><sup>(a)</sup> Settle plates should be exposed in grade A and B areas for the duration of operations (including equipment set-up) and changed as required after a maximum of 4 hours (exposure time should be based on validation including recovery studies and it should not have any negative effect on the suitability of the media used).</p>
+        <p>For grade C and D areas, exposure time (with a maximum of 4 hours) and frequency should be based on QRM. Individual settle plates may be exposed for less than 4 hours.</p>
+
+        <p><sup>(b)</sup> Contact plate limits apply to equipment, room and gown surfaces within the grade A and grade B areas. Routine gown monitoring is not normally required for grade C and D areas, depending on their function.</p>
+
+        <p><sup>(c)</sup> It should be noted that for grade A, <span class="key-term">any growth should result in an investigation</span>.</p>
+
+        <div class="quote-box">
+            "Note 1: ...other methods can be used provided they meet the intent of providing information across the whole of the critical process where product may be contaminated (e.g. aseptic line set-up, aseptic processing, filling and lyophilizer loading)."
+        </div>
+        <div class="quote-box">
+            "Note 2: Limits are applied using CFU throughout the document. If different or new technologies are used that present results in a manner different from CFU, the manufacturer should scientifically justify the limits applied and where possible correlate them to CFU."
+        </div>
+
+        <p><strong>9.31</strong> Microorganisms detected in the grade A and grade B areas should be <span class="key-term">identified to species level</span> and the potential impact of such microorganisms on product quality (for each batch implicated) and overall state of control should be evaluated. Consideration should also be given to the identification of microorganisms detected in grade C and D areas (for example where action limits or alert levels are exceeded) or following the isolation of organisms that may indicate a loss of control, deterioration in cleanliness or that may be difficult to control such as <span class="key-term">spore-forming microorganisms</span> and moulds and at a sufficient frequency to maintain a current understanding of the typical flora of these areas.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 活菌監測的四種方法</h4>
+            <p><strong>活性微生物監測（Viable Particle Monitoring）</strong>有四大主要採樣工具，各有適用場景：</p>
+            <ul>
+                <li><strong>主動空氣採樣（Active Air Sampling）</strong>：使用衝擊式採樣器（impaction sampler）主動抽取已知體積的空氣，結果以 CFU/m³ 表示。優點：定量準確；缺點：設備本身可能干擾氣流。</li>
+                <li><strong>沉降碟（Settle Plate）</strong>：被動暴露的培養皿，讓空氣中微生物自然沉降。Grade A/B 需全程暴露（最長 4 小時）；結果反映暴露期間的整體污染情況。</li>
+                <li><strong>接觸碟（Contact Plate）</strong>：用來採集表面微生物，適用於設備、牆面、人員手套/無菌服。</li>
+                <li><strong>棉花棒採樣（Swab）</strong>：適用於不規則表面，如閥門、密封件。</li>
+            </ul>
+            <p>實務上，Grade A/B 通常組合使用上述多種方法以確保全面覆蓋。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Table 6 解讀重點</h4>
+            <p>Table 6 最關鍵的規定是 <strong>Grade A 任何微生物生長皆需調查（any growth → investigation）</strong>。這代表 Grade A 的微生物行動限實際上是「零容忍」（zero tolerance），與一般理解的數值限值不同。</p>
+            <p>其他重點：</p>
+            <ul>
+                <li>Grade A/B 手套監測（glove print）分別為 &lt;1 和 5 CFU/glove（含雙手共 10 根手指）。</li>
+                <li>Grade C/D 無手套監測要求（表示「—」）。</li>
+                <li>CFU = Colony Forming Unit（菌落形成單位）。若使用快速微生物方法（RMM），需科學驗證其與 CFU 的相關性。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 沉降碟與主動採樣的互補性</h4>
+            <p>主動空氣採樣就像「用吸塵器測量房間灰塵量」——主動、定量、即時。沉降碟則像「在桌上放一張白紙，過幾小時看有多少灰塵落下」——被動、但能反映整個操作期間的累積污染風險。</p>
+            <p>兩者各有優劣：主動採樣靈敏度高，但設備存在可能影響 Grade A 層流；沉降碟不干擾氣流，但受環境溫度、濕度影響培養基效能。故 Annex 1 要求兩者<strong>組合使用</strong>。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 人員監測的強化要求（9.25-9.26）</h4>
+            <p>人員是無菌環境最大的污染源之一。Annex 1 要求：</p>
+            <ul>
+                <li><strong>關鍵干預（critical intervention）後</strong>：至少監測外層手套，必要時監測無菌服相關部位。</li>
+                <li><strong>每次離開 Grade B 潔淨室時</strong>：監測手套與無菌服。</li>
+                <li>手套監測後若超標：立即更換外層手套再繼續作業。</li>
+                <li>無菌服超標：進行無菌服更換後方可繼續作業。</li>
+            </ul>
+            <p>手動操作（manual aseptic compounding/filling）比自動化操作風險更高，CCS 中需特別強化人員無菌服監測的說明。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 快速微生物方法（Rapid Methods）</h4>
+            <p>9.28 鼓勵廠商評估<strong>快速微生物監測方法（Rapid Microbial Methods, RMM）</strong>，例如：</p>
+            <ul>
+                <li>ATP 生物冷光法（ATP bioluminescence）</li>
+                <li>流式細胞術（flow cytometry）</li>
+                <li>自動化培養系統（automated incubation + imaging）</li>
+            </ul>
+            <p>採用前提：必須經過<strong>驗證</strong>，證明其等效或優於傳統培養法。從監管角度，RMM 不能「偷工減料」——只有在科學上能證明不遜於傳統方法時，才可替代。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 菌種鑑定的要求（9.31）</h4>
+            <p>Grade A/B 中偵測到的所有微生物必須鑑定到<strong>菌種層級（species level）</strong>，並評估對已製造批次的潛在衝擊。這不只是技術要求，更是批次放行決策的重要依據。</p>
+            <p>實務影響：微生物實驗室需具備鑑定能力（如 MALDI-TOF 質譜儀或 16S rRNA 定序），或委外至合格實驗室。鑑定結果需納入 EM 調查報告中。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Grade A 空氣採樣結果為 2 CFU/m³，根據 Table 6，這是否超過行動限？需要採取什麼行動？</li>
+                <li>沉降碟的最長暴露時間為 4 小時，但你的操作時間是 6 小時，應如何處理？</li>
+                <li>操作人員在一次關鍵干預後，其手套接觸碟結果為 3 CFU，Grade A 中，這是否需要調查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: 9.32-9.36 APS Design & Planning -->
+<!-- ============================================================ -->
+<div class="section-title">9.32–9.36 無菌製程模擬 (APS) 設計與規劃</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>9.32</strong> Periodic verification of the effectiveness of the controls in place for aseptic processing should include an <span class="key-term">APS</span> using a sterile nutrient media and/or surrogate in place of the product. The APS should not be considered as the primary means to validate the aseptic process or aspects of the aseptic process. The effectiveness of the aseptic process should be determined through <span class="key-term">process design, adherence to the pharmaceutical quality system and process controls, training, and evaluation of monitoring data</span>.</p>
+
+        <p>Selection of an appropriate <span class="key-term">nutrient media and/or surrogate</span> should be made based on the ability of the media and/or surrogate to imitate physical product characteristics assessed to pose a risk to product sterility during the aseptic process. Where processing stages may indirectly impact the viability of any introduced microbial contamination, (e.g. aseptically produced semi-solids, powders, solid materials, microspheres, liposomes and other formulations where product is cooled or heated or lyophilized), <span class="key-term">alternative procedures</span> that represent the operations as closely as possible should be developed. Where surrogate materials, such as buffers, are used in parts of the APS, the surrogate material should not inhibit the growth of any potential contamination.</p>
+
+        <p><strong>9.33</strong> The APS should imitate as closely as possible the routine aseptic manufacturing process and include all the critical manufacturing steps, specifically:</p>
+        <ol type="i">
+            <li>The APS should assess all aseptic operations performed subsequent to the sterilisation and decontamination cycles of materials utilised in the process to the point where the container is sealed.</li>
+            <li>For non-filterable formulations, any additional aseptic steps should be assessed.</li>
+            <li>Where aseptic manufacturing is performed under an inert atmosphere, the inert gas should be substituted with air in the process simulation unless anaerobic simulation is intended.</li>
+            <li>Processes requiring the addition of sterile powders should use an acceptable surrogate material in the same containers as those used in the process under evaluation.</li>
+            <li>Separate simulations of individual unit operations (e.g. processes involving drying, blending, milling and subdivision of a sterile powder) should be avoided. Any use of individual simulations should be supported by a documented justification and ensure that the sum total of the individual simulations continues to fully cover the whole process.</li>
+            <li>The process simulation procedure for <span class="key-term">lyophilized products</span> should represent the entire aseptic processing chain including filling, transport, loading, a representative duration of the chamber dwell, unloading and sealing under specified, documented and justified conditions representing worst case operating parameters.</li>
+            <li>The lyophilization process simulation should mimic all aspects of the process, except those that may affect the viability or recovery of contaminants. For instance, boiling-over or actual freezing of the solution should be avoided. Factors to consider include: the use of air to break vacuum instead of nitrogen or other process gases; replicating the maximum interval between sterilisation of the lyophilizer and its use; replicating the maximum period of time between filtration and lyophilization; and quantitative aspects of worst-case situations, e.g. loading the largest number of trays, replicating the longest duration of loading where the chamber is open to the environment.</li>
+        </ol>
+
+        <p><strong>9.34</strong> The APS should take into account various aseptic manipulations and <span class="key-term">interventions</span> known to occur during normal production as well as worst-case situations, and take into account the following:</p>
+        <ol type="i">
+            <li>Inherent and corrective interventions representative of the routine process should be performed in a manner and frequency similar to that during the routine aseptic process.</li>
+            <li>The inclusion and frequency of interventions in the APS should be based on assessed risks posed to product sterility.</li>
+        </ol>
+
+        <p><strong>9.35</strong> APS should not be used to justify practices that pose unnecessary contamination risks.</p>
+
+        <p><strong>9.36</strong> In developing the APS plan, consideration should be given to the following:</p>
+        <ol type="i">
+            <li>Identification of worst case conditions covering the relevant variables, such as container size and line speed, and their impact on the process.</li>
+            <li>Determining the representative sizes of container/closure combinations to be used for validation. <span class="key-term">Bracketing or matrix approach</span> may be considered for validation of the same container/closure configuration for different products where process equivalence is scientifically justified.</li>
+            <li>Maximum permitted holding times for sterile product and equipment exposed during the aseptic process.</li>
+            <li>The volume filled per container, which should be sufficient to ensure that the media contacts all equipment and component surfaces that may directly contaminate the sterile product. The volume used should provide sufficient headspace to support potential microbial growth and ensure that turbidity can be detected during inspection.</li>
+            <li>The requirement for substitution of any inert gas used in the routine aseptic manufacturing process by air unless anaerobic simulation is intended.</li>
+            <li>The selected nutrient media should be capable of growing a designated group of reference microorganisms as described by the relevant pharmacopeia and suitably representative local isolates.</li>
+            <li>The method of detection of microbial contamination should be scientifically justified to ensure that contamination is reliably detected.</li>
+            <li>The process simulation should be of sufficient duration to challenge the process, the operators that perform interventions, <span class="key-term">shift changes</span> and the capability of the processing environment.</li>
+            <li>Where the manufacturer operates different or extended shifts, the APS should be designed to capture factors specific to those shifts that are assessed to pose a risk to product sterility, for example the maximum duration for which an operator may be present in the cleanroom.</li>
+            <li>Simulating normal aseptic manufacturing interruptions where the process is idle (e.g. shift changeovers, recharging dispensing vessels, introduction of additional equipment).</li>
+            <li>Ensuring that <span class="key-term">environmental monitoring</span> is conducted as required for routine production, and throughout the entire duration of the process simulation.</li>
+            <li>Where <span class="key-term">campaign manufacturing</span> occurs, such as in the use of Barrier Technologies or manufacture of sterile active substances, consideration should be given to designing and performing the process simulation so that it simulates the risks associated with both the beginning and the end of the campaign.</li>
+            <li>The performance of "end of production or campaign APS" may be used as additional assurance or investigative purposes; however, their use should be justified in the CCS and should not replace routine APS.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — APS 的定位與限制</h4>
+            <p><strong>無菌製程模擬（Aseptic Process Simulation, APS）</strong>又稱<strong>培養基灌充（Media Fill）</strong>，是用無菌培養基（通常是 TSB，大豆酪蛋白胨液體培養基）代替真實藥品進行模擬充填，以驗證無菌操作的有效性。</p>
+            <p>重要認知：<strong>APS 不是無菌製程的「主要驗證手段」</strong>，而是定期確認（periodic verification）工具。無菌保證（sterility assurance）的根基是：製程設計 + 品質系統 + 製程管控 + 培訓 + 監測數據。APS 只是其中一環，但卻是最具說服力的整合性評估工具。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — APS 是「全系統壓力測試」</h4>
+            <p>APS 就像銀行的災難恢復演練：平時一切看起來正常，但只有在模擬實際情境（包括各種突發狀況）下，才能真正確認應急流程是否有效。</p>
+            <p>培養基灌充中，「污染」等同於銀行演練中發現的漏洞——不是壞事，而是改進的機會。問題是：你的演練夠不夠真實、夠不夠嚴苛？</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 培養基選擇的關鍵要求</h4>
+            <p>培養基或替代物（surrogate）的選擇需考量：</p>
+            <ul>
+                <li><strong>模擬真實產品特性</strong>：例如黏度、pH值，這些都可能影響潛在污染微生物的存活。</li>
+                <li><strong>不能抑制微生物生長</strong>：培養基灌充的目的是「讓污染顯現」，若培養基本身有抑菌性（如某些緩衝液），會掩蓋真實污染。</li>
+                <li><strong>特殊劑型</strong>：凍乾製劑、半固體、微球等需要特別設計替代程序，因為凍乾過程（升華、真空破空）可能影響微生物活力。</li>
+                <li>凍乾模擬不能真正凍乾（避免培養基凍結或沸騰），但需模擬最長加載時間、腔室開放時間等最差情況。</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 干預（Intervention）的模擬</h4>
+            <p>APS 必須包含在常規生產中發生的所有類型干預：</p>
+            <ul>
+                <li><strong>固有干預（Inherent Interventions）</strong>：製程本身不可避免的操作，如更換針頭、補充培養基。</li>
+                <li><strong>矯正干預（Corrective Interventions）</strong>：因設備故障、拒絕容器等需手動處理的操作。</li>
+            </ul>
+            <p>重要原則：9.35 明確指出「APS 不應被用來合理化那些造成不必要污染風險的操作」——如果某種操作在 APS 中才特別謹慎，但日常生產卻不這麼做，那就違背了 APS 的精神。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — APS 設計的最差情況矩陣</h4>
+            <pre>
+APS 最差情況設計考量清單：
+
+容器尺寸：最大 + 最小（bracketing approach）
+充填速度：最慢線速（最長暴露時間）
+操作人員數量：最多
+班次更換：包含交班程序
+製程中斷：換桶、加料、設備故障模擬
+充填體積：足以覆蓋所有接觸面 + 留足培養空間
+培養基濃度：符合 USP/EP/JP 要求
+環境監測：與常規生產相同頻率
+
+凍乾 APS 特殊要求：
+  最長 lyophilizer 滅菌至使用間隔
+  最長過濾至充填間隔
+  最多托盤數 + 最長腔室開放時間</pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，同一條充填線可能承接多個客戶的不同產品（如水針、凍乾、粉末針劑）。如何設計一套有效的 APS 計畫？</p>
+            <p>策略建議：</p>
+            <ul>
+                <li>使用 <strong>bracketing/matrix 方法</strong>，選擇代表性的容器規格，避免對每個規格都進行獨立 APS。</li>
+                <li>針對凍乾產品，制定獨立的凍乾 APS 程序，涵蓋從充填到腔室開門的完整鏈條。</li>
+                <li>確保每一條線路、每一個操作班次、每一位操作人員都涵蓋於 APS 計畫中。</li>
+                <li>在每次改變線路配置（如更換容器規格）後，評估是否需要重新進行 APS。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的凍乾 APS 計畫中，是否需要真正執行凍乾程序？為什麼？應如何處理不能凍乾的限制？</li>
+                <li>在 APS 中，某位操作人員執行了一個在常規生產中不存在的干預動作，這樣的 APS 結果是否有效？</li>
+                <li>一條充填線有三個班次，APS 計畫應如何安排才能涵蓋所有班次的風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: 9.37-9.49 APS Execution, Acceptance Criteria & Failure -->
+<!-- ============================================================ -->
+<div class="section-title">9.37–9.49 APS 執行、合格標準與失敗調查</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>9.37</strong> For sterile active substances, batch size should be large enough to represent routine operation, simulate intervention operation at the worst case, and cover all surfaces that may come into contact with the sterile product. In addition, all the simulated materials (surrogates or growth medium) should be subjected to microbial evaluation. The simulation materials should be sufficient to satisfy the evaluation of the process being simulated and should not compromise the recovery of micro-organisms.</p>
+
+        <p><strong>9.38</strong> APS should be performed as part of the <span class="key-term">initial validation</span>, with at least <span class="key-term">three consecutive satisfactory simulation tests</span> that cover all working shifts that the aseptic process may occur in, and after any significant modification to operational practices, facilities, services or equipment which are assessed to have an impact on the sterility assurance of the product (e.g. modification to the HVAC system, equipment, changes to process, number of shifts and numbers of personnel, major facility shut down).</p>
+
+        <p>Normally, APS (<span class="key-term">periodic revalidation</span>) should be repeated <span class="key-term">twice a year (approximately every six months)</span> for each aseptic process, each filling line and each shift. Each operator should participate in at least one successful APS annually. Consideration should be given to performing an APS after the last batch prior to shut down, before long periods of inactivity or before decommissioning or relocation of a line.</p>
+
+        <p><strong>9.39</strong> Where <span class="key-term">manual operation</span> (e.g. aseptic compounding or filling) occurs, each type of container, container closure and equipment train should be initially validated with <span class="key-term">each operator participating in at least 3 consecutive successful APS</span> and revalidated with one APS approximately every 6 months for each operator. The APS batch size should mimic that used in the routine aseptic manufacturing process.</p>
+
+        <p><strong>9.40</strong> The number of units processed (filled) for APS should be sufficient to effectively simulate all activities that are representative of the aseptic manufacturing process. Justification for the number of units to be filled should be clearly captured in the CCS. Typically, a minimum of <span class="key-term">5,000 to 10,000 units</span> are filled. For small batches (e.g. those under 5,000 units), the number of containers for APS should at least equal the size of the production batch.</p>
+
+        <p><strong>9.41</strong> Filled APS units should be agitated, swirled or inverted before incubation to ensure contact of the media with all interior surfaces in the container. All integral units from the APS should be incubated and evaluated, including units with cosmetic defects or those which have gone through non-destructive in-process control checks. If units are discarded during the process simulation and not incubated, these should be comparable with units discarded during a routine fill, and only if production SOPs clearly specify that units must be removed under the same circumstances. In no case should more units be removed during a media fill intervention than would be cleared during a production run.</p>
+
+        <p><strong>9.42</strong> Where processes include materials that contact the product contact surfaces but are then discarded (e.g. product flushes), the discarded material should be simulated with nutrient media and be incubated as part of the APS, unless it can be clearly demonstrated that this waste process would not impact the sterility of the product.</p>
+
+        <p><strong>9.43</strong> Filled APS units should be incubated in a <span class="key-term">clear container</span> to ensure visual detection of microbial growth. Where the product container is not clear (e.g. amber glass, opaque plastic), clear containers of identical configuration may be substituted to aid in the detection of contamination. When a clear container of identical configuration cannot be substituted, a suitable method for the detection of microbial growth should be developed and validated. <span class="key-term">Microorganisms isolated from contaminated units should be identified to the species level</span> when practical, to assist in the determination of the likely source of the contaminant.</p>
+
+        <p><strong>9.44</strong> Filled APS units should be incubated without unnecessary delay to achieve the best possible recovery of potential contamination. The selection of the <span class="key-term">incubation conditions and duration</span> should be scientifically justified and validated to provide an appropriate level of sensitivity of detection of microbial contamination.</p>
+
+        <p><strong>9.45</strong> On completion of incubation:</p>
+        <ol type="i">
+            <li>Filled APS units should be inspected by personnel who have been <span class="key-term">appropriately trained and qualified</span> for the detection of microbiological contamination.</li>
+            <li>Samples of the filled units should undergo <span class="key-term">positive control</span> by inoculation with a suitable range of reference organisms and suitably representative local isolates.</li>
+        </ol>
+
+        <p><strong>9.46</strong> The target should be <span class="key-term">zero growth</span>. Any contaminated unit should result in a <span class="key-term">failed APS</span> and the following actions should be taken:</p>
+        <ol type="i">
+            <li>an investigation to determine the most probable root cause(s);</li>
+            <li>determination and implementation of appropriate corrective measures;</li>
+            <li>a <span class="key-term">sufficient number of successful, consecutive repeat APS (normally a minimum of 3)</span> should be conducted in order to demonstrate that the process has been returned to a state of control;</li>
+            <li>a prompt review of all appropriate records relating to aseptic production since the last successful APS;
+                <ul>
+                    <li>The outcome of the review should include a risk assessment of potential sterile breaches in batches manufactured since the last successful APS.</li>
+                    <li>All other batches not released to the market should be included in the scope of the investigation. Any decision regarding their release status should consider the investigation outcome.</li>
+                </ul>
+            </li>
+            <li>all products that have been manufactured on a line subsequent to a process simulation failure should be <span class="key-term">quarantined</span> until a successful resolution of the process simulation failure has occurred;</li>
+            <li>where the root cause investigation indicates that the failure was related to operator activity, actions to limit the operator's activities, until retrained and requalified, should be taken;</li>
+            <li>production should resume only after completion of successful revalidation.</li>
+        </ol>
+
+        <p><strong>9.47</strong> All APS runs should be fully documented and include a <span class="key-term">reconciliation of units processed</span> (e.g. units filled, incubated and not incubated). Justification for filled and non-incubated units should be included in the documentation. All interventions performed during the APS should be recorded, including the start and end time of each intervention and the involved person. All microbial monitoring data as well as other testing data should be recorded in the APS batch record.</p>
+
+        <p><strong>9.48</strong> An APS run should be <span class="key-term">aborted</span> only under circumstances in which written procedures require commercial lots to be equally handled. An investigation should be documented in such cases.</p>
+
+        <p><strong>9.49</strong> An aseptic process should be subject to a <span class="key-term">repeat of the initial validation</span> when:</p>
+        <ol type="i">
+            <li>the specific aseptic process has not been in operation for an extended period of time; or</li>
+            <li>there is a change to the process, equipment, procedures or environment that has the potential to affect the aseptic process or an addition of new product containers or container-closure combinations.</li>
+        </ol>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — APS 頻率與人員資格</h4>
+            <p>PIC/S Annex 1 對 APS 的頻率要求清晰且嚴格：</p>
+            <ul>
+                <li><strong>初始驗證</strong>：至少 3 次連續合格，涵蓋所有工作班次。</li>
+                <li><strong>定期再驗證</strong>：每個製程、每條充填線、每個班次，每半年（約 6 個月）一次。</li>
+                <li><strong>操作人員</strong>：每人每年至少參與一次成功 APS（機器化操作）；手動操作需每人每 6 個月一次。</li>
+                <li><strong>手動操作初始驗證</strong>：每位操作人員需完成至少 3 次連續成功 APS。</li>
+            </ul>
+            <p>APS 頻率與人員管理的連結，體現了「人員是最大污染風險」的核心認知。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — APS 充填數量規則</h4>
+            <pre>
+標準充填數量：
+  最低 5,000 至 10,000 單位
+
+小批次規則：
+  批次 &lt; 5,000 單位 → APS 數量 = 生產批次大小
+
+合格標準：
+  目標 = 零污染 (zero growth)
+  任何污染 = 失敗 APS
+
+失敗後再驗證要求：
+  最少 3 次連續成功 APS 才可恢復生產
+
+重要計算：
+  APS 充填體積需足以：
+  1. 接觸所有容器內表面
+  2. 保留足夠頂空支持微生物生長
+  3. 確保渾濁度於目視檢查中可見</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — APS 失敗的連鎖效應（9.46）</h4>
+            <p>APS 失敗是製藥企業最嚴重的品質事件之一，其連鎖效應包括：</p>
+            <ul>
+                <li><strong>立即停產</strong>：問題解決並完成再驗證前不得恢復生產。</li>
+                <li><strong>批次隔離</strong>：自上次成功 APS 以來，所有在該線生產的批次必須隔離（quarantine）。</li>
+                <li><strong>回溯調查</strong>：需回顧自上次成功 APS 以來的所有無菌生產記錄，進行無菌風險評估。</li>
+                <li><strong>未放行批次</strong>：需納入調查範圍，放行決策需基於調查結果。</li>
+                <li><strong>操作人員相關</strong>：若根本原因指向特定操作員，需限制該員活動，直到完成再培訓與再資格確認。</li>
+            </ul>
+            <p>商業影響：一次 APS 失敗可能導致數週的停產損失，以及大量已充填批次的潛在廢棄——這是 APS 計畫設計嚴謹的最強動機。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — APS 失敗的「蝴蝶效應」</h4>
+            <p>想像一間餐廳的健康稽查（衛生檢查）中被發現廚房有細菌污染。不只當天的食物要全部下架，所有自上次成功衛生稽查以來賣出的食物都需要溯源評估。餐廳必須關閉，直到通過連續三次衛生稽查。</p>
+            <p>APS 失敗的「蝴蝶效應」正是如此：問題不只影響這一批，而是所有「可能被污染的批次」都要接受審查。這正是為什麼 <strong>預防性的 APS 計畫設計遠比事後補救更重要</strong>。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 培育條件與陽性對照</h4>
+            <p>APS 培育（incubation）有幾個關鍵點：</p>
+            <ul>
+                <li><strong>不應有不必要的延遲</strong>：培育應在充填後盡快開始，以確保最佳微生物回收率。</li>
+                <li><strong>培育條件需驗證</strong>：溫度、時間需科學依據支持，確保對預期污染微生物的靈敏度。通常包括 20–25°C 和 30–35°C 兩段培育，以涵蓋不同類型微生物（黴菌/酵母菌 vs. 細菌）。</li>
+                <li><strong>陽性對照（Positive Control）</strong>：取部分充填單位接種已知參考菌株（包含本地環境分離菌株），確認培養基的促生長能力。若陽性對照無法生長，整批 APS 數據無效。</li>
+                <li><strong>透明容器</strong>：使用清晰的容器確保可目視偵測培育後的渾濁（turbidity）。琥珀瓶需使用相同結構的透明替代品，或發展其他偵測方法。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 不可培育單位的嚴格管控（9.41）</h4>
+            <p>在 APS 中「不培育」的充填單位數量，必須與常規生產中同類情況廢棄的數量一致。不可藉由移除「可疑」單位來人為提高合格率。這是 FDA 和 EMA 稽查中常見的問題：</p>
+            <ul>
+                <li>APS 中廢棄的單位不得多於常規生產中的廢棄數量。</li>
+                <li>廢棄需有 SOP 明確依據（如干預後的固定數量清除）。</li>
+                <li>與無菌組裝相關的廢棄單位通常單獨培育，不計入正式合格標準。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 業務場景</h4>
+            <p>一個 CDMO 接受新客戶的委託充填，產品為 2mL 預充式注射器（PFS），計劃批次大小為 4,000 支。</p>
+            <p>根據 Annex 1 規定，初始 APS 計畫應如何設計？</p>
+            <ul>
+                <li><strong>充填數量</strong>：小批次規則適用（&lt;5,000 支）→ APS 充填數量應不少於 4,000 支。</li>
+                <li><strong>次數</strong>：至少 3 次連續成功 APS，涵蓋所有工作班次。</li>
+                <li><strong>操作人員</strong>：所有可能參與此產品充填的操作員均需參與。</li>
+                <li><strong>替代容器</strong>：若 PFS 筒身為透明玻璃，可直接使用；若有遮光塗層，需使用透明替代品或驗證其他偵測方法。</li>
+                <li><strong>培養基</strong>：選擇可模擬 2mL 水性注射液黏度特性的 TSB，並確認充填體積確保培養基接觸所有接觸面。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>APS 執行過程中，第 3,200 支因機器故障而停線 30 分鐘，重新啟動後繼續充填至 8,000 支。這次停線是否應記錄為干預？是否影響 APS 的有效性？</li>
+                <li>一批 APS（8,000 支）中發現 1 支污染，根本原因調查無法確定污染來源。此時應採取哪些步驟？自上次成功 APS（6 個月前）以來生產的批次如何處理？</li>
+                <li>某操作人員在 APS 中被鑑定為污染來源（手套計數超標且菌種與污染單位相同）。此操作人員需要經過哪些步驟才能重新參與無菌操作？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>環境監測計畫（9.4-9.13）</strong>：必須基於風險評估建立，涵蓋採樣位置、頻率、方法與培養條件；警戒限為早期預警，行動限為最高可接受限值；趨勢分析是 EM 計畫的核心，需定義並文件化趨勢監控程序。</li>
+        <li><strong>非活性粒子監測與 Table 5（9.14-9.21）</strong>：Grade A 需連續監測（≥28 L/min），超警戒限觸發警報；Grade A 靜態與動態粒子限值相同（3,520/m³, 29/m³）；Grade D 動態限值需廠商自行依風險評估設定。</li>
+        <li><strong>活性微生物監測與 Table 6（9.22-9.31）</strong>：Grade A 任何微生物生長均需調查（零容忍）；Grade A/B 的微生物需鑑定至菌種層級；人員監測（手套、無菌服）是重要且易被忽視的監測項目；快速微生物方法需驗證後方可採用。</li>
+        <li><strong>APS 設計（9.32-9.36）</strong>：APS 是定期確認工具，非主要驗證手段；必須盡可能模擬常規製程的所有關鍵步驟與干預；凍乾製程需特別設計模擬程序；最差情況設計（worst case design）是 APS 的靈魂。</li>
+        <li><strong>APS 執行與失敗（9.37-9.49）</strong>：目標為零污染（zero growth）；任何污染即為失敗 APS，需啟動完整調查流程、隔離相關批次、完成至少 3 次連續成功 APS 後才可恢復生產；每條線每個班次每半年一次；操作人員每人每年至少一次成功 APS。</li>
+        <li><strong>決策優先順序</strong>：無菌保證（Sterility Assurance）永遠是最高優先級，EM 計畫設計與 APS 的所有決策都必須以此為準則。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

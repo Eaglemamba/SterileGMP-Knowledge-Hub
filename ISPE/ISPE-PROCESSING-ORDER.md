@@ -2,7 +2,7 @@
 
 This file records the recommended processing order for generating bilingual educational HTML from ISPE source PDFs. Order is based on relevance to sterile pharmaceutical manufacturing, query frequency, and cross-reference with existing PDA content.
 
-Last updated: 2026-03-31
+Last updated: 2026-04-01
 
 ---
 
@@ -11,14 +11,14 @@ Last updated: 2026-03-31
 | Priority | Folder | Document | PDF Size | Status | Notes |
 |----------|--------|----------|----------|--------|-------|
 | **1** | `ISPE-Vol5` | ISPE Baseline Vol.5: Commissioning & Qualification (2nd Ed.) | 6 MB | ✅ Complete | English original + Chinese translation in source/. Start here — most queried C&Q reference in pharma. Bridges PDA TR60. |
-| **2** | `ISPE-Vol3` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | 10 MB | ⬜ Planned | Core facility design guide. Most directly aligned with Hub's sterile manufacturing focus. 2 PDFs in source (2011 version + main). |
-| **3** | `ISPE-HVAC` | ISPE GPG: Heating, Ventilation and Air Conditioning | 11 MB | ⬜ Planned | Critical for Grade A/B/C/D cleanroom design. Only dedicated HVAC guide in the Hub. |
+| **2** | `ISPE-Vol3` | ISPE Baseline Vol.3: Sterile Manufacturing Facilities | 10 MB | ✅ Complete | Core facility design guide. Most directly aligned with Hub's sterile manufacturing focus. 23 section files, merged document generated. |
+| **3** | `ISPE-HVAC` | ISPE GPG: Heating, Ventilation and Air Conditioning | 11 MB | ✅ Complete | Critical for Grade A/B/C/D cleanroom design. Only dedicated HVAC guide in the Hub. 19 section files, merged document generated. |
 | **4** | `ISPE-Vol4` | ISPE Baseline Vol.4: Water & Steam Systems | 5 MB | ✅ Complete | WFI/PW/PS utility systems. 18 section files, 14-tab merged document. |
 | **5** | `ISPE-Vol7` | ISPE Baseline Vol.7: Risk-Based Manufacture | 12 MB | ✅ Complete | Risk-MaPP framework. 11 section files, 9-tab merged document. |
 | **6** | `ISPE-SUT` | ISPE GPG: Single-Use Technology | 10 MB | ✅ Complete | 10 section files, 10-tab merged document. Directly bridges PDA TR66. |
 | **7** | `ISPE-GAMP5` | ISPE GAMP 5 (1st Ed.) | 5 MB | ⬜ Planned | ⚠️ Only 1st edition available — current standard is 2nd Ed. (2022). Upgrade when 2nd Ed. is obtained. |
 | **8** | `ISPE-Vol6` | ISPE Baseline Vol.6: Biopharmaceutical Manufacturing Facilities | 11 MB | ⬜ Planned | Bridges PDA PtC-14 (ATMP). Important for biologics/cell therapy facilities. |
-| **9** | `ISPE-GEP` | ISPE Good Engineering Practice | 8 MB | ⬜ Planned | GEP framework. Foundational but lower query frequency. |
+| **9** | `ISPE-GEP` | ISPE Good Engineering Practice | 8 MB | ⬜ Planned | GEP framework. Foundational but lower query frequency. Source text extracted (1 file in source/). |
 | **10** | `ISPE-CTC` | ISPE GPG CTC: Mapping and Monitoring | 4 MB | ⬜ Planned | Temperature monitoring. Bridges PDA TR39 / TR46. |
 | **11** | `ISPE-TechTransfer` | ISPE GPG Technology Transfer (3rd Ed.) | 4 MB | ⬜ Planned | Bridges PDA TR91 (Post-Approval Change Management). |
 | **12** | `ISPE-Sampling` | ISPE GPG Sampling: Water, Steam & Process Gases | 4 MB | ⬜ Planned | Sampling procedures for utilities. |
