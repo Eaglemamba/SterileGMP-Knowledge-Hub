@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Chapter 4: Pretreatment Options</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - ISPE Green Theme
+   Section: Chapter 4 — Pretreatment Options
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box,
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Formula Box (Purple) */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* Application Box (Blue solid) */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* Practice Box (Blue dashed) */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+/* Learning Objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section summary (yellow gradient) */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem;
+    border-left: 4px solid #f6ad55;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Structure list */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* TOC */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header" id="top">
+    <h1>ISPE Baseline&reg; Guide Vol.4 — Water and Steam Systems</h1>
+    <div class="subtitle">Chapter 4: Pretreatment Options</div>
+    <div class="subtitle">第四章：前處理選項</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p43-p55</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習目標 Learning Objectives</h3>
+        <ol>
+            <li>說明 Pretreatment（前處理）在製藥水系統中的定位，理解其與 Final Treatment（最終處理）的關係。</li>
+            <li>掌握 Feedwater（進水）品質測試與文件記錄的要求，以及季節性變異的監控策略。</li>
+            <li>區分四大類雜質控制策略：Fouling（結垢）、Scaling（水垢）、Organics（有機物）、Microbial Growth（微生物生長）。</li>
+            <li>理解 Microbial Control Agent（微生物控制劑）的添加與移除時機，特別是 Chlorine（氯）與 Chloramine（氯胺）的差異。</li>
+            <li>說明 pH 在前處理中的重要性，以及 Carbon Dioxide / Ammonia 的移除策略。</li>
+            <li>掌握前處理系統的 Materials of Construction（建造材質）選擇原則與成本優化考量。</li>
+        </ol>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>章節導覽 Section Navigator</h3>
+        <div class="toc-grid">
+            <a href="#sec-4-1">4.1 Introduction</a>
+            <a href="#sec-4-2">4.2 Process Design</a>
+            <a href="#sec-4-3">4.3 Feedwater Testing</a>
+            <a href="#sec-4-4">4.4 Output Water Quality</a>
+            <a href="#sec-4-5">4.5 Control of Fouling</a>
+            <a href="#sec-4-6">4.6 Control of Scaling</a>
+            <a href="#sec-4-7">4.7 Removal of Organics</a>
+            <a href="#sec-4-8">4.8 Microbial Growth Control</a>
+            <a href="#sec-4-9">4.9 Removal of Microbial Control Agents</a>
+            <a href="#sec-4-10">4.10 Anion Changes</a>
+            <a href="#sec-4-11">4.11 Importance of pH</a>
+            <a href="#sec-4-12">4.12 Materials of Construction</a>
+            <a href="#sec-4-13">4.13 Pretreatment Summary</a>
+        </div>
+    </div>
+
+    <!-- ===== 4.1 Introduction ===== -->
+    <div class="chapter-section" id="sec-4-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1</div>
+            <div class="chapter-info">
+                <h2>4.1 Introduction</h2>
+                <p>前處理概論 &nbsp;|&nbsp; p45</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1 Introduction</h3>
+                    <p><span class="key-term">Pretreatment</span> is all process steps or unit operations prior to the last (final) water treatment step. Pretreatment is a series of unit operations to modify the feed water quality so that it will be of adequate quality to be fed to a final treatment step. This final step may be <span class="key-term">Reverse Osmosis</span>, <span class="key-term">Ultrafiltration</span>, Multi or Mixed Bed <span class="key-term">Deionization</span> or <span class="key-term">Distillation</span>. These final steps are discussed in Chapters 5 and 6.</p>
+                    <p>Reverse Osmosis is unique since it can be a pretreatment step, in addition to being a final treatment step. Reverse Osmosis applications in pretreatment are discussed in this chapter and Chapter 11, but Reverse Osmosis as a technology is discussed in Chapters 5 and 6.</p>
+                    <p>The initial sections of this chapter discuss the process design (programming issues) for pretreatment design including feed water quality and output water quality from pretreatment. The chapter then discusses the selection of treatment options (i.e. unit operations) for four groups of impurities:</p>
+                    <ul>
+                        <li>Control of fouling &mdash; removal of turbidity and particulates</li>
+                        <li>Control of scaling &mdash; removal of hardness and metals</li>
+                        <li>Removal of organics and microbiological impurities</li>
+                        <li>Removal of microbial control agents</li>
+                    </ul>
+                    <p>Pre-treatment options are summarized in Figure 4-1 at the end of the chapter.</p>
+                    <p>The final sections of the chapter discuss the importance of anion composition/concentration, pH, materials of construction, and pretreatment system control.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Pretreatment（前處理）的定位</h4>
+                        <p><strong>Pretreatment（前處理）</strong>是指在最終處理步驟「之前」的所有製程步驟。其目的是將進水（Feedwater）品質調整到足以餵入最終處理設備的水準。</p>
+                        <p>最終處理步驟可能是：</p>
+                        <ul>
+                            <li><strong>Reverse Osmosis, RO</strong>（逆滲透）</li>
+                            <li><strong>Ultrafiltration, UF</strong>（超濾）</li>
+                            <li><strong>Deionization, DI</strong>（去離子）— 多床或混床式</li>
+                            <li><strong>Distillation</strong>（蒸餾）</li>
+                        </ul>
+                        <p>前處理做得好，最終處理設備才能穩定運作；前處理做不好，最終處理就會頻繁故障、維護成本飆高。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：前處理就像料理前的食材備料</h4>
+                        <p>做菜前要洗菜、去皮、切塊——這就是「前處理」。如果食材沒洗乾淨（水中雜質未去除），不管後面的烹調技術多好（最終處理設備多先進），成品都會出問題。前處理是決定水系統長期穩定性的關鍵環節。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：RO 的雙重角色</h4>
+                        <p>Reverse Osmosis（逆滲透）很特殊——它既可以是<strong>前處理步驟</strong>（例如在蒸餾前先用 RO 去除大部分離子），也可以是<strong>最終處理步驟</strong>（直接產出 Purified Water）。這種雙重角色在系統設計時需要特別注意其定位。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2 Process Design of Pretreatment ===== -->
+    <div class="chapter-section" id="sec-4-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.2</div>
+            <div class="chapter-info">
+                <h2>4.2 Process Design of Pretreatment</h2>
+                <p>前處理製程設計 &nbsp;|&nbsp; pp. 45–47</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2 Process Design of Pretreatment</h3>
+                    <p><span class="key-term">Process design</span> of the pretreatment system is the specification of the unit operations or process steps to treat the feed water. Typical information includes flow rates, temperatures, pressure, and composition of all streams. Detailed mechanical design of the equipment for a given unit operation or process step is beyond the scope of this Guide.</p>
+                    <p>The process design (programming issues) for a pretreatment system may include:</p>
+                    <ol type="a">
+                        <li>Required quantity and quality of the water from the final treatment process.</li>
+                        <li>Temperature constraints on the water used in a pharmaceutical process and the approach to microbial control.</li>
+                        <li>The final treatment option that has been chosen, as this defines the required water quality leaving pretreatment.</li>
+                        <li>Quality of the feed water that is the input to the pretreatment system (water quality to be validated over a one year period).</li>
+                        <li>Difference between input water quality and desired output water quality. The difference determines impurities that must be removed by the pretreatment system. The difference is determined by performing a <span class="key-term">material balance</span>. Attention should be paid to impurities and minor components.</li>
+                        <li>Pretreatment options to provide the desired removal of impurities considering other factors such as capabilities of the labor force, economics, waste disposal, environmental considerations, validation, and the available space and utilities.</li>
+                    </ol>
+                    <p>In addition to defining the options for removal of impurities, the approach taken to <span class="key-term">microbial control</span> is an integral part of the process design of the pretreatment system. Considerations include:</p>
+                    <ol type="a">
+                        <li>If the drinking quality water to the pretreatment system comes from a municipality in the United States, it will typically contain <span class="key-term">chlorine</span>, or <span class="key-term">chloramines</span>, as a microbial control agent. In Europe, <span class="key-term">ozone</span> is the more common microbial control agent.</li>
+                        <li>If the quantity of microbial control agent is insufficient, additional agent may be added or provision made to periodically sanitize the initial equipment in the pretreatment system.</li>
+                        <li>At some point in the pretreatment process, the microbial control agent must be removed before going to the final treatment. At this point, a means of either continuous or periodic sanitization needs to be selected.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：前處理製程設計的六大考量</h4>
+                        <p>前處理的設計不是隨便挑幾個設備串起來，而是一個系統性的工程決策過程。六大考量依序為：</p>
+                        <ol>
+                            <li><strong>最終產水的量與質</strong> — 終點決定起點</li>
+                            <li><strong>溫度限制與微生物控制策略</strong> — 冷系統 vs 熱系統</li>
+                            <li><strong>最終處理方式</strong> — RO、蒸餾、DI 各有不同的進水要求</li>
+                            <li><strong>進水品質</strong> — 需要經過一年驗證週期，掌握季節性變化</li>
+                            <li><strong>Material Balance（物料平衡）</strong> — 進水品質與目標品質的差異，決定要移除哪些雜質</li>
+                            <li><strong>綜合考量</strong> — 人力能力、經濟性、廢水處理、空間、公用設施等</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：微生物控制劑的地區差異</h4>
+                        <ul>
+                            <li><strong>美國</strong>：市政水通常含 Chlorine（氯）或 Chloramine（氯胺）</li>
+                            <li><strong>歐洲</strong>：較常使用 Ozone（臭氧）</li>
+                        </ul>
+                        <p>這個差異直接影響前處理系統的設計——氯與氯胺的去除方法不同，對下游設備（特別是 RO 膜）的影響也不同。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：微生物控制劑的角色</h4>
+                        <p>微生物控制劑就像游泳池裡的消毒氯——它能抑制細菌生長，保護前段設備不被微生物污染。但游泳池的水不能直接喝，同樣地，含氯的水不能直接進入最終處理設備。所以在某個時間點，必須把「消毒劑」移除，之後靠定期消毒來維持潔淨。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-section: Added Substances -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Added Substances in Pretreatment</h3>
+                    <p>The USP requirement that compendial waters should contain "no added substances" eliminates addition of chemicals to "Purified Water" or Water For Injection. However, addition of chemical agents is not prohibited in pretreatment. Substances are frequently added in pretreatment and subsequently removed in the pretreatment or final treatment. Some examples are:</p>
+                    <ul>
+                        <li><span class="key-term">Chlorine</span> (to control microbial growth, removed in later stages of pretreatment)</li>
+                        <li><span class="key-term">Sodium ions</span> (in softener with exchange for multivalent ions, removed in ion removal process)</li>
+                        <li><span class="key-term">Acid</span> (for degasification to remove carbon dioxide, counter ions removed in a subsequent ion removal process)</li>
+                        <li><span class="key-term">Sulfite</span> (to reduce chlorine to chloride, or chloramines to ammonium and chloride while forming sulfate, removal by softening or ion removal process)</li>
+                        <li><span class="key-term">Sequestrants</span> (to prevent scaling in final treatment, removed by RO in final treatment)</li>
+                        <li>pH control agents (removed in ion removal process)</li>
+                    </ul>
+                    <p>Added substances are an issue if they result in an increase in microbial growth or endotoxins.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：「前處理可以加藥，最終產水不行」</h4>
+                        <p>USP 規定製藥用水（Purified Water 或 WFI）不得含有「外加物質」。但這不代表前處理過程中不能添加化學品——關鍵在於，所有添加的物質必須在前處理或最終處理中被<strong>完全移除</strong>。</p>
+                        <p>常見的前處理添加物質及其移除路徑：</p>
+                        <ul>
+                            <li>Chlorine（氯）→ 活性碳吸附或亞硫酸鈉還原</li>
+                            <li>Sodium（鈉）→ 離子交換移除</li>
+                            <li>Acid（酸）→ 脫氣後由離子交換移除殘餘離子</li>
+                            <li>Sequestrants（螯合劑）→ RO 膜攔截</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：添加物質的風險</h4>
+                        <p>前處理中的添加物質若導致微生物生長增加或 Endotoxin（內毒素）升高，就會成為問題。例如，亞硫酸鈉（Sodium Bisulfite）用來去除氯，但它同時移除了水中的微生物控制能力，可能導致管路內微生物快速繁殖。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-section: Investment vs Operating -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Investment and Operating Cost Relationship</h3>
+                    <p>A final consideration is the relationship between investment and operating dollars in pretreatment, and the performance and cost of the final treatment process. The following are generally true:</p>
+                    <ul>
+                        <li>A final treatment system will not operate reliably over the long term, without reliable operation of the pretreatment system.</li>
+                        <li>Inadequate operation in pretreatment (breakthrough of particulates, hardness, or chlorine) may not immediately affect water quality from final treatment, but it will be reflected in long term maintenance and operating reliability, and possibly in water quality.</li>
+                        <li>Investment in pretreatment capability and reliability can return many times the investment in final treatment maintenance costs.</li>
+                        <li>Pharmaceutical water systems are expected to generate water meeting final pharmaceutical product water standards. The system should be designed to control impurity spikes in the incoming water quality, or seasonal impurity profile changes.</li>
+                    </ul>
+                    <p>There is no single "right" answer to the process design of the pretreatment system. Pretreatment system process design is a series of choices and options, each with advantages and disadvantages.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="note-box">
+                        <h4>重點提示：前處理投資的「槓桿效應」</h4>
+                        <p>ISPE 在這裡傳達了一個非常重要的經營概念：<strong>在前處理多投資一元，可以在最終處理省下數倍的維護費用。</strong></p>
+                        <ul>
+                            <li>前處理失敗（如 Hardness Breakthrough 硬度穿透）不會立即影響產水品質，但會縮短 RO 膜壽命或加速蒸餾器結垢</li>
+                            <li>前處理設計必須能應對進水品質的<strong>尖峰波動</strong>（Impurity Spikes）和<strong>季節性變化</strong></li>
+                            <li>沒有唯一正確答案——每個前處理設計都是一系列選擇的組合，各有優缺點</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>實務應用：前處理設計的經濟思維</h4>
+                        <p>在 CDMO 環境中，多條產品線共用同一套水系統。前處理若設計不夠 Robust（穩健），任何一次 Breakthrough 都可能導致：</p>
+                        <ul>
+                            <li>RO 膜提前更換（每支膜成本數千美元）</li>
+                            <li>蒸餾器結垢停機（影響所有下游生產線）</li>
+                            <li>微生物超標導致批次放行延遲</li>
+                        </ul>
+                        <p>因此，前處理系統的投資回報率（ROI）往往遠高於最終處理設備的升級。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3 Feedwater Quality ===== -->
+    <div class="chapter-section" id="sec-4-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.3</div>
+            <div class="chapter-info">
+                <h2>4.3 Feedwater to Pretreatment Quality: Testing and Documentation</h2>
+                <p>進水品質：測試與文件 &nbsp;|&nbsp; pp. 47–48</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3 Feedwater Quality: Testing and Documentation</h3>
+                    <p>Compendial pharmaceutical water systems are required to use feed water complying with <span class="key-term">"Drinking Water" standards</span>.</p>
+                    <p>Most pharmaceutical manufacturers utilize municipal water supplies. This water generally meets "Drinking Water" quality standards and is treated with a microbial control agent. Historically in the US, the microbial control agent is chlorine, but <span class="key-term">chloramine</span> is now used with increasing frequency. Either feed water composition or microbial control agent concentration may be subject to occasional and seasonal variations. These variations may negatively impact water quality, and can be detected only by extensive sampling.</p>
+                    <p>Typical contaminants in feed water include:</p>
+                    <ul>
+                        <li><strong>Particulates</strong> &mdash; Silt, dust, pollen, pipe scale, iron and silica, undissolved minerals and organics</li>
+                        <li><strong>Inorganics</strong> &mdash; Calcium and magnesium salts, heavy metals (iron, aluminum, and silica) with their corresponding anions</li>
+                        <li><strong>Organics</strong> &mdash; Naturally occurring byproducts of vegetative decay (humic and fulvic acids), man-made organics (pesticides, automotive pollution)</li>
+                        <li><strong>Bacteria</strong> &mdash; Bacterial contamination and its byproducts, endotoxins, and pyrogens</li>
+                    </ul>
+                    <p>Testing recommendations include:</p>
+                    <ul>
+                        <li><strong>Documentation</strong> that feed water meets drinking water quality, based on municipality testing possibly supplemented by local or in-process testing.</li>
+                        <li><strong>Monitoring for microbial control agent levels</strong> at the start of the pretreatment system. A chlorine level of 0.2&ndash;1.0 ppm is generally considered adequate to control microbial growth.</li>
+                        <li><strong>Specific testing</strong> for contaminants known or suspected of being present in the feed water (e.g., pesticides in agricultural areas).</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：進水品質的四大污染物類型</h4>
+                        <table>
+                            <thead>
+                                <tr><th>類型</th><th>常見污染物</th><th>影響</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Particulates（顆粒物）</td><td>泥沙、花粉、鐵鏽、矽</td><td>Fouling（堵塞）膜與設備</td></tr>
+                                <tr><td>Inorganics（無機物）</td><td>鈣鎂鹽、重金屬</td><td>Scaling（結垢）</td></tr>
+                                <tr><td>Organics（有機物）</td><td>腐植酸、農藥</td><td>TOC 超標、微生物營養源</td></tr>
+                                <tr><td>Bacteria（微生物）</td><td>細菌、Endotoxin（內毒素）</td><td>微生物超標、Pyrogen（熱原）</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：Chloramine 的趨勢轉變</h4>
+                        <p>美國市政水處理正從 Chlorine（氯）逐漸轉向 <strong>Chloramine（氯胺）</strong>。這對製藥水系統有重大影響，因為氯胺：</p>
+                        <ul>
+                            <li>在活性碳上的吸附速率遠低於氯，需要更長接觸時間</li>
+                            <li>分解後產生 Ammonia（氨），氨會穿透 RO 和蒸餾系統</li>
+                            <li>需要不同的碳床設計和更嚴格的監控</li>
+                        </ul>
+                        <p>進水若含氯胺，系統設計的複雜度會顯著增加。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>為什麼 ISPE 建議進水品質需要「經過一年的驗證週期」？只測試一兩次不行嗎？</p>
+                        <p><strong>Q2：</strong>你的工廠位於農業區，夏季雨後自來水常出現渾濁。這屬於四大污染物中的哪一類？你會增加哪些測試項目？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.4 Output Water Quality ===== -->
+    <div class="chapter-section" id="sec-4-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>4.4 Output Water from Pretreatment: Quality of Feedwater to Final Treatment</h2>
+                <p>前處理產水品質 &nbsp;|&nbsp; pp. 48–49</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4 Output Water Quality to Final Treatment</h3>
+                    <p>The goals for pretreatment are to provide water quality that minimizes the operating and maintenance problems in the final treatment equipment and to permit the final treatment step to produce water meeting the desired specifications for final treatment.</p>
+                    <p>If pretreatment is inadequate, resulting problems can become very large in magnitude, as seen in Table 4-1:</p>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Final Treatment</th>
+                                    <th>Fouling<br>(Particulates)</th>
+                                    <th>Scaling<br>(Hardness)</th>
+                                    <th>Degradation<br>(Chlorine)</th>
+                                    <th>Corrosion<br>(Chlorides)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Reverse Osmosis</td>
+                                    <td>Large</td>
+                                    <td>Large</td>
+                                    <td>Large*</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>Other Membrane Processes</td>
+                                    <td>Large-moderate</td>
+                                    <td>Large-moderate</td>
+                                    <td>Large*</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>Single Effect Distillation</td>
+                                    <td>Moderate</td>
+                                    <td>Moderate</td>
+                                    <td>Large</td>
+                                    <td>Moderate-large</td>
+                                </tr>
+                                <tr>
+                                    <td>Multi-effect Distillation</td>
+                                    <td>Large-moderate</td>
+                                    <td>Large-moderate</td>
+                                    <td>Large</td>
+                                    <td>Moderate-large</td>
+                                </tr>
+                                <tr>
+                                    <td>Vapor Compression Distillation</td>
+                                    <td>Moderate</td>
+                                    <td>Moderate</td>
+                                    <td>Large</td>
+                                    <td>Small</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size: 0.85rem; color: var(--text-medium); margin-top: 0.5rem;">*Membrane dependent &nbsp;|&nbsp; Table 4-1 from ISPE Vol.4</p>
+                    </div>
+
+                    <p><strong>For Membranes:</strong> The concerns are fouling by suspended solids (particulates) and scaling (precipitating solids) as water is removed. A typical goal for control in pretreatment might be a <span class="key-term">silt density index (SDI)</span> of 3&ndash;5 and hardness of &lt;1 grain/gallon. Membranes tolerate chlorides but only some membranes tolerate chlorine.</p>
+                    <p><strong>For Distillation:</strong> The concerns are scale formation due to hardness and corrosion due to chlorides. Distillation has no tolerance for chlorine due to corrosion and carryover to the product. Distillation has some tolerance for particulates.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Table 4-1 的決策意涵</h4>
+                        <p>這張表是整個前處理設計的<strong>風險矩陣</strong>——它告訴你：如果前處理沒有妥善處理某類雜質，最終處理設備會受到多大影響。</p>
+                        <ul>
+                            <li><strong>RO 系統</strong>最怕：顆粒物（Fouling）、硬度（Scaling）、氯（膜降解），但不怕氯化物</li>
+                            <li><strong>蒸餾系統</strong>最怕：氯（腐蝕+帶入產品）、氯化物（腐蝕），對顆粒物耐受度較高</li>
+                        </ul>
+                        <p>設計前處理時，先確定你的最終處理方式，然後對照這張表，找出最需要優先控制的雜質。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>關鍵指標：SDI（Silt Density Index）</h4>
+                        <p><strong>SDI（淤泥密度指數）</strong>是衡量水中微粒堵塞 RO 膜能力的標準測試方法。</p>
+                        <ul>
+                            <li>測試方法：在固定壓力下（30 psi），量測 0.45 μm 濾膜在特定時間內的通量衰減</li>
+                            <li>前處理目標值：SDI 3~5（RO 膜供應商通常要求 SDI &lt; 5）</li>
+                            <li>Hardness（硬度）目標：&lt; 1 grain/gallon（約 17 ppm as CaCO<sub>3</sub>）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：不同廚具怕不同東西</h4>
+                        <p>RO 膜像精密的濾布——最怕被硬物刺穿（顆粒堵塞）和化學腐蝕（氯）。蒸餾器像不鏽鋼鍋——最怕水垢結在加熱面（硬度）和鹽分腐蝕金屬（氯化物）。了解你的「廚具」怕什麼，就知道「備料」（前處理）要注意什麼。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.5 Control of Fouling ===== -->
+    <div class="chapter-section" id="sec-4-5">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>4.5 Control of Fouling: Removal of Turbidity and Particulates</h2>
+                <p>結垢控制：去除濁度與顆粒物 &nbsp;|&nbsp; p49</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.5 Control of Fouling</h3>
+                    <p>The principal methods for removing particulates and reducing <span class="key-term">turbidity</span> are:</p>
+                    <ul>
+                        <li><span class="key-term">Clarification</span> and the accompanying operations of flocculation, coagulation, and sedimentation</li>
+                        <li><span class="key-term">Depth or Media filtration</span> including single and multimedia filtration (particles retained by the media)</li>
+                    </ul>
+                    <p>Clarification is not applicable, as feed water sources are potable quality or better.</p>
+                    <p><span class="key-term">Depth or media filtration</span> is used in pharmaceutical water systems and is often the first step in a pretreatment system. Multi-sized sand is the most common media, but other media may provide better performance with some feed waters. Removal of particulates down to 10 microns is possible and depends on selection of media.</p>
+                    <p><span class="key-term">Microbial growth</span> is a key concern in a media filter, unless the feed water contains a microbial control agent. Otherwise, microbial control in the depth filter is required (e.g., periodic sanitization using either heat or a chemical sanitizing agent).</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Fouling Control（防堵控制）</h4>
+                        <p>Fouling（堵塞/結垢）是指顆粒物沉積在膜面或設備表面，導致效能下降。控制方法：</p>
+                        <ul>
+                            <li><strong>Clarification（澄清）</strong>：包括 Flocculation（絮凝）、Coagulation（混凝）、Sedimentation（沉降）——但因為製藥用的進水已經是飲用水等級，通常不需要這一步</li>
+                            <li><strong>Depth/Media Filtration（深層/介質過濾）</strong>：最常用的第一步，多層砂過濾器可去除 10 微米以上的顆粒</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：介質過濾器的微生物風險</h4>
+                        <p>介質過濾器（Media Filter）是微生物滋生的溫床——濾料表面積大、水流緩慢、營養物質被截留。如果進水不含微生物控制劑（如氯），必須定期消毒（熱消毒或化學消毒），否則過濾器反而會成為微生物的「培養皿」。</p>
+                        <p>這是一個非常重要的設計考量：<strong>防止顆粒物堵塞的同時，不能忽略微生物控制。</strong></p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q：</strong>你的前處理系統中，介質過濾器位於活性碳床之後（氯已被去除）。這種配置可能帶來什麼風險？你會如何處理？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.6 Control of Scaling ===== -->
+    <div class="chapter-section" id="sec-4-6">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>4.6 Control of Scaling: Removal of Hardness and Metals</h2>
+                <p>水垢控制：去除硬度與金屬 &nbsp;|&nbsp; pp. 49–51</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6 Control of Scaling</h3>
+                    <p>When water is separated from its impurities in the final treatment process, those compounds with low solubility are concentrated to the point where they precipitate. This precipitation, or <span class="key-term">scaling</span>, is the result of exceeding the solubility of the divalent and trivalent cations, usually as a sparingly soluble salt such as carbonate or sulfate. The methods of control are:</p>
+                    <ul>
+                        <li><strong>Removal by <span class="key-term">ion exchange</span></strong> &mdash; principally calcium and magnesium, may include divalent and trivalent ions such as iron, aluminum and silica. Pretreatment is usually <span class="key-term">water softening</span> (exchanging the ions causing hardness for sodium ions).</li>
+                        <li><strong>Removal of carbonate by <span class="key-term">acidification</span></strong> &mdash; converts carbonate to carbon dioxide, which is removed by subsequent degasification.</li>
+                        <li><strong>Removal by <span class="key-term">nanofiltration</span></strong> &mdash; water passes through the membrane and compounds are retained by the membrane and removed as a purge stream.</li>
+                    </ul>
+                    <p><span class="key-term">Water softening</span> ion exchange is a very common process used in pretreatment. It is applicable for all flow rates and hardness levels, well understood and easy to operate. It involves the handling of salt only, and produces a non-hazardous waste stream. However, the high total dissolved solids (TDS) in the waste stream may limit disposal options.</p>
+                    <p>For large flow rates (&gt;50 gpm or 0.18 m<sup>3</sup>/min) and high hardness (&gt;50 ppm), <span class="key-term">degasification</span> (after acidification) may be the process of choice.</p>
+                    <p><span class="key-term">Nanofiltration</span> is a membrane process that may be applicable with certain feed waters. Removal of divalent ions can be greater than 98%.</p>
+                    <p><span class="key-term">Chemical injection</span> (sequestrants) is an alternate method to control scaling. These compounds "tie up and complex" the offending ions to form a more soluble compound that will not precipitate in the final treatment process.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：四種去除 Scaling 的方法</h4>
+                        <table>
+                            <thead>
+                                <tr><th>方法</th><th>原理</th><th>適用場景</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Water Softening（軟化）</td><td>離子交換：Ca/Mg → Na</td><td>所有流量與硬度，最常用</td></tr>
+                                <tr><td>Acidification + Degasification（酸化+脫氣）</td><td>碳酸鹽→CO<sub>2</sub>→排氣</td><td>大流量(&gt;50 gpm)、高硬度(&gt;50 ppm)</td></tr>
+                                <tr><td>Nanofiltration（奈米過濾）</td><td>膜分離，去除&gt;98%二價離子</td><td>特殊水質</td></tr>
+                                <tr><td>Chemical Injection（加藥）</td><td>Sequestrant 螯合劑複合離子</td><td>無法用上述方法時的替代方案</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：水垢就像水壺裡的白色沉澱</h4>
+                        <p>家裡燒開水常看到壺底白色結垢——那就是 Calcium Carbonate（碳酸鈣）。在工業水系統中，這些沉澱物會堵塞 RO 膜或覆蓋蒸餾器加熱面，嚴重影響效能。軟化器的作用就像「水質柔順劑」，把導致結垢的鈣鎂離子換成不會結垢的鈉離子。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Softener Location -->
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Softener Location: A Key Design Choice</h3>
+                    <p>A key choice in the process design of the pretreatment system is location of the softener. The two options are either before or after removal of the microbial control agent (often chlorine).</p>
+                    <p><strong>Softener located prior to removal of microbial control agent:</strong> The principal advantage is protection of the softener from microbial growth by the microbial control agent present in the feed water. If the microbial control agent is chlorine, it will have only a minor effect on resin life and efficiency at levels typically encountered (&lt;1 ppm).</p>
+                    <p><strong>Softener located after removal of microbial control agent:</strong> The advantage is better resin life and capacity (due to absence of chlorine). However, this must be balanced by the need to protect the softener from microbial growth and endotoxin load (i.e., by periodic sanitization with the associated cost of heat or chemicals, labor, down time, and waste stream disposal).</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：軟化器位置的兩難選擇</h4>
+                        <table>
+                            <thead>
+                                <tr><th>位置</th><th>優點</th><th>缺點</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>氯去除前</strong>（推薦）</td>
+                                    <td>氯保護樹脂免於微生物生長</td>
+                                    <td>氯對樹脂有輕微影響（通常可接受）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>氯去除後</strong></td>
+                                    <td>樹脂壽命更長、交換容量更高</td>
+                                    <td>必須定期消毒防止微生物生長（成本增加）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>大多數情況下，將軟化器放在「氯去除前」是較佳選擇——犧牲一點點樹脂壽命，換來持續的微生物保護，整體成本更低。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：設備位置決定微生物風險</h4>
+                        <p>前處理系統中，每個設備的<strong>相對位置</strong>都會影響微生物控制策略。在微生物控制劑（如氯）被移除之後的所有設備，都需要額外的微生物控制措施（定期消毒、UV 處理等）。這是前處理設計中最需要系統性思考的部分。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.7 Removal of Organics ===== -->
+    <div class="chapter-section" id="sec-4-7">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.7</div>
+            <div class="chapter-info">
+                <h2>4.7 Removal of Organics</h2>
+                <p>有機物去除 &nbsp;|&nbsp; pp. 50–51</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.7 Removal of Organics</h3>
+                    <p>The methods for removal of organics are:</p>
+                    <ul>
+                        <li><span class="key-term">Ozone</span></li>
+                        <li><span class="key-term">Strong Base Ion Exchange</span></li>
+                        <li><span class="key-term">Barrier filtration</span> (microfiltration, ultrafiltration or Reverse Osmosis)</li>
+                        <li>Polymer Flocculant</li>
+                        <li><span class="key-term">Carbon</span></li>
+                    </ul>
+                    <p><strong>Ozone</strong> is a powerful oxidant that controls microbial growth and reduces the concentration of organics due to oxidation, but requires compatible materials of construction.</p>
+                    <p><strong>Strong base ion exchange</strong> removes organics but results in a purge stream containing high concentrations of brine and organics.</p>
+                    <p><strong>Barrier filtration</strong>, when appropriately sized, captures organics and microbial growth on the barrier and can be aided by addition of a polymer flocculant. A potential problem is microbial growth "growing through the barrier" which results in contamination on the downstream side.</p>
+                    <p><strong>Carbon</strong> is probably the most common method of reducing organics. It provides multiple functions, including removal of organics as well as removal or reduction of chlorine and chloramines. The advantages are that it is a frequently practiced technology, it performs multiple functions, and effectively "cleans up the feed water". The disadvantage is that it is a source of microbial growth, as well as a source of nutrients.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：五種有機物去除方法比較</h4>
+                        <table>
+                            <thead>
+                                <tr><th>方法</th><th>機制</th><th>優點</th><th>缺點</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Ozone（臭氧）</td><td>氧化分解</td><td>同時控制微生物</td><td>需相容材質</td></tr>
+                                <tr><td>Strong Base IX</td><td>離子交換</td><td>有效去除</td><td>高鹽度廢水</td></tr>
+                                <tr><td>Barrier Filtration</td><td>物理攔截</td><td>同時去除微生物</td><td>微生物可能穿透</td></tr>
+                                <tr><td>Polymer Flocculant</td><td>絮凝沉降</td><td>輔助過濾</td><td>添加化學品</td></tr>
+                                <tr><td>Carbon（活性碳）</td><td>吸附</td><td>多功能、常用</td><td>微生物溫床</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：活性碳的雙面刃</h4>
+                        <p>Activated Carbon（活性碳）是前處理中最常用的「多功能選手」：去除有機物 + 去除氯/氯胺。但它最大的問題是<strong>自身就是微生物的理想培養基</strong>——巨大的表面積、被吸附的有機物成為營養源。</p>
+                        <p>因此，活性碳床必須配合：</p>
+                        <ul>
+                            <li>定期熱消毒或化學消毒</li>
+                            <li>嚴格的微生物監控</li>
+                            <li>合理的更換/再生週期</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：活性碳像冰箱的除臭劑</h4>
+                        <p>活性碳就像冰箱裡的竹炭除臭包——它能吸附異味（有機物），但用久了之後，除臭包本身也會發霉（微生物生長）。定期更換或消毒是必要的。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.8 System Design for Control of Microbial Growth ===== -->
+    <div class="chapter-section" id="sec-4-8">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.8</div>
+            <div class="chapter-info">
+                <h2>4.8 System Design for Control of Microbial Growth</h2>
+                <p>微生物生長控制 &nbsp;|&nbsp; pp. 51–52</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.8 Control of Microbial Growth</h3>
+                    <p>The methods used in pretreatment to control microbial growth are:</p>
+                    <ul>
+                        <li><span class="key-term">Microbial control agent</span> such as chlorine or chloramine</li>
+                        <li>Periodic sanitization (heat or chemical)</li>
+                        <li><span class="key-term">Ultraviolet light</span></li>
+                        <li>Avoiding dead legs and avoiding water stagnation</li>
+                    </ul>
+                    <p>A common strategy in the design of the pretreatment system is to leave the microbial control agent provided by the municipality in the water through as many pretreatment steps as possible, in order to protect these steps from microbial growth.</p>
+                    <p>However, at some point the microbial control agent (chlorine or chloramine) must be removed since it is not compatible with the final treatment processes. At this point, the only option is periodic sanitization, either with heat or a chemical disinfectant. This must be included in the design of the pretreatment system, along with the provisions for validation and monitoring its effectiveness via sampling and testing.</p>
+                    <p><span class="key-term">Ultraviolet light (UV)</span> is effective in inhibiting microbial growth but is only effective when the light is present. UV light is often used before a unit operation to minimize the microbial growth in the unit operation by controlling the microbial counts in the feed water. The most common places for use of UV light are before Reverse Osmosis units and some filters.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：微生物控制的四層防線</h4>
+                        <ol>
+                            <li><strong>Microbial Control Agent（微生物控制劑）</strong>：氯或氯胺，來自市政水處理，盡量保留到前處理後段</li>
+                            <li><strong>Periodic Sanitization（定期消毒）</strong>：控制劑移除後的主要手段，可用熱水（>80&deg;C）或化學消毒劑</li>
+                            <li><strong>UV Light（紫外線）</strong>：即時抑制微生物，常設在 RO 進水前</li>
+                            <li><strong>Design Practices（設計實務）</strong>：避免 Dead Legs（死水區）和水滯留</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：氯的「保護傘」策略</h4>
+                        <p>ISPE 的建議非常明確：<strong>盡量讓市政水中的氯保留到前處理的最後階段</strong>。這意味著：</p>
+                        <ul>
+                            <li>活性碳床（去除氯的位置）應盡量放在前處理的後段</li>
+                            <li>活性碳床之前的設備（如軟化器、介質過濾器）都受到氯的保護</li>
+                            <li>活性碳床之後的設備必須有獨立的微生物控制措施</li>
+                        </ul>
+                        <p>這個「保護傘」概念是前處理系統設計的核心哲學之一。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>實務應用：UV 的正確使用位置</h4>
+                        <p>UV 只在光照存在時有效——它不像氯有「殘餘保護力」。因此 UV 的最佳使用位置是：</p>
+                        <ul>
+                            <li><strong>RO 進水前</strong>：降低微生物計數，保護 RO 膜</li>
+                            <li><strong>儲存槽前</strong>：防止微生物進入儲存階段</li>
+                            <li><strong>關鍵過濾器前</strong>：保護過濾器不成為微生物培養基</li>
+                        </ul>
+                        <p>UV 是「點防禦」而非「區域防禦」——不能取代系統性的消毒策略。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.9 Removal of Microbial Control Agents ===== -->
+    <div class="chapter-section" id="sec-4-9">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.9</div>
+            <div class="chapter-info">
+                <h2>4.9 Removal of Microbial Control Agents</h2>
+                <p>微生物控制劑的去除 &nbsp;|&nbsp; pp. 52–53</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.9 Removal of Microbial Control Agents</h3>
+                    <p>At some point in pretreatment, microbial control agents must be removed because of their detrimental effect on final treatment equipment and performance. <span class="key-term">Chlorine</span> causes deterioration of most Reverse Osmosis membranes and is corrosive in distillation. <span class="key-term">Chloramines</span> can pass through pretreatment and decompose in the distillation process with an adverse effect on water quality.</p>
+                    <p>For <strong>chlorine removal</strong>, <span class="key-term">activated carbon</span> is a straightforward process for the absorption of chlorine. The carbon will reduce some of the chlorine to chloride ion, which is then removed in the final treatment ion removal process. <span class="key-term">Sulfite reduction</span> is also straightforward, with sulfite being oxidized to sulfate and chlorine being reduced to chloride ion.</p>
+                    <p>For <strong>chloramine removal</strong>, this is more complex. Chloramine adsorption on carbon occurs at a much slower rate than chlorine, necessitating longer contact times and lower hydraulic flow rates. The potential for dissociation of the absorbed chloramines into <span class="key-term">ammonium ion</span> and <span class="key-term">ammonia</span> is a problem.</p>
+                    <ul>
+                        <li>Ammonium is removed by Reverse Osmosis but decomposes to ammonia in a distillation process.</li>
+                        <li>Ammonia passes through both Reverse Osmosis and distillation processes in final treatment.</li>
+                    </ul>
+                    <p>Sulfite reduction for chloramines results in ammonium and chloride ions. These can be removed by Reverse Osmosis. The ammonium ion partially decomposes to ammonia in higher temperature distillation, resulting in carryover and affect on water quality.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：Chlorine vs Chloramine 去除的差異</h4>
+                        <table>
+                            <thead>
+                                <tr><th>特性</th><th>Chlorine（氯）</th><th>Chloramine（氯胺）</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>碳吸附速率</td><td>快速</td><td>緩慢（需更長接觸時間）</td></tr>
+                                <tr><td>碳床設計</td><td>標準 EBCT</td><td>需加大碳床、降低流速</td></tr>
+                                <tr><td>副產物</td><td>Chloride（氯離子）</td><td>Ammonium + Chloride</td></tr>
+                                <tr><td>Ammonia 問題</td><td>無</td><td>氨會穿透 RO 和蒸餾</td></tr>
+                                <tr><td>亞硫酸鈉還原</td><td>簡單有效</td><td>產生 Ammonium，需後續處理</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：Ammonia 是氯胺系統的最大挑戰</h4>
+                        <p><strong>Ammonia（氨）</strong>是氯胺分解後的產物，也是製藥水系統中最難處理的物質之一：</p>
+                        <ul>
+                            <li>氨在鹼性條件下為分子態（NH<sub>3</sub>），可穿透 RO 膜和蒸餾系統</li>
+                            <li>氨在酸性條件下為離子態（NH<sub>4</sub><sup>+</sup>），可被 RO 去除</li>
+                            <li>但在蒸餾的高溫環境中，Ammonium 會部分轉化為 Ammonia，導致 Carryover（帶出）</li>
+                        </ul>
+                        <p>如果你的進水含氯胺，系統設計必須額外考慮氨的控制策略。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習</h4>
+                        <p><strong>Q1：</strong>你的工廠所在城市剛從 Chlorine 消毒改為 Chloramine 消毒。你的前處理系統需要做哪些調整？</p>
+                        <p><strong>Q2：</strong>為什麼含氯胺的進水搭配蒸餾（Distillation）作為最終處理時，比搭配 RO 更具挑戰性？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.10 Changes in Anion Composition ===== -->
+    <div class="chapter-section" id="sec-4-10">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.10</div>
+            <div class="chapter-info">
+                <h2>4.10 Changes in Anion Composition / Concentration</h2>
+                <p>陰離子組成變化 &nbsp;|&nbsp; pp. 52–53</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.10 Changes in Anion Composition</h3>
+                    <p>Pretreatment systems typically remove non-ionic impurities and cations. Thus, any change in anionic composition or concentration is usually secondary. However, some distillation processes in final treatment are affected by chlorides, which can be removed by an RO prior to the final treatment step.</p>
+                    <p>The pretreatment processes that affect anionic composition are:</p>
+                    <ul>
+                        <li><span class="key-term">Deionization</span></li>
+                        <li><span class="key-term">Degasification</span></li>
+                        <li>Carbon bed filtration for removal of chlorine and chloramine</li>
+                        <li>Reduction to remove chlorine and chloramine</li>
+                        <li><span class="key-term">Barrier filtration</span> (nanofiltration, ultrafiltration and Reverse Osmosis)</li>
+                    </ul>
+                    <p>Degasification and the accompanying process of acidification changes anionic composition. The water is acidified with a non-volatile acid (usually sulfuric) to convert carbonate and bicarbonate to dissolved CO<sub>2</sub>, which is removed by degasification. The net effect is replacement of bicarbonate and carbonate with sulfate.</p>
+                    <p>Carbon bed filtration adsorbs chlorine and chloramines from feed water. However, some of the chlorine is reduced to chloride and is removed in a subsequent ion removal process.</p>
+                    <p>The removal of chlorine and chloramines by reduction, often with bisulfite, changes ionic composition as the bisulfite is oxidized to sulfate and the chlorine or chloramines are reduced to chloride and ammonium.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：前處理如何改變陰離子組成</h4>
+                        <p>前處理主要針對非離子性雜質和陽離子（如 Ca<sup>2+</sup>、Mg<sup>2+</sup>），但某些前處理步驟會<strong>間接改變陰離子組成</strong>：</p>
+                        <ul>
+                            <li><strong>酸化 + 脫氣</strong>：碳酸鹽/碳酸氫鹽 → 硫酸鹽（因為加的是硫酸）</li>
+                            <li><strong>碳床去氯</strong>：氯 → 氯離子（Cl<sup>-</sup>）</li>
+                            <li><strong>亞硫酸鈉還原</strong>：亞硫酸鈉 → 硫酸鹽（SO<sub>4</sub><sup>2-</sup>），氯 → 氯離子</li>
+                        </ul>
+                        <p>這些陰離子的變化通常在最終處理（RO 或離子交換）中被去除，但設計師需要了解這些變化以進行正確的物料平衡計算。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：氯離子對蒸餾系統的威脅</h4>
+                        <p>如果最終處理使用蒸餾，前處理中產生的<strong>氯離子（Chloride）</strong>是一個重要考量。氯離子在蒸餾的高溫環境下會造成不鏽鋼的<strong>點蝕（Pitting Corrosion）</strong>和<strong>應力腐蝕裂紋（Stress Corrosion Cracking）</strong>。這時候可能需要在蒸餾前加一道 RO 來降低氯離子濃度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.11 The Importance of pH ===== -->
+    <div class="chapter-section" id="sec-4-11">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.11</div>
+            <div class="chapter-info">
+                <h2>4.11 The Importance of pH in Pretreatment</h2>
+                <p>pH 在前處理中的重要性 &nbsp;|&nbsp; pp. 53–54</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.11 The Importance of pH</h3>
+                    <p>EPA drinking water standards require a <span class="key-term">pH</span> range of 6.5&ndash;8.5. In reality, the pH range of most drinking feed water is narrower, due to the corrosive nature of acidic water and the scaling potential of alkaline waters.</p>
+                    <p>The pH of the feed water and its seasonal variations need to be known because of its impact on pretreatment and final treatment process design. The pH determines the form of the carbon dioxide, its scaling potential and where carbon dioxide (carbonate) is removed.</p>
+                    <p>A complicating factor in pretreatment design is the potential presence of <span class="key-term">ammonia</span> as a result of chloramine presence in the feed water. Ammonia is a dissolved gas at the pH values where carbon dioxide is an ion (carbonate), and exists as an ion (ammonium) at pH values where carbon dioxide exists as a dissolved gas.</p>
+                    <p>Thus it is not possible to remove both carbon dioxide and ammonia at one pH. If both are present, two pH adjustment steps are required:</p>
+                    <ul>
+                        <li>pH adjustment followed by removal of either carbon dioxide or ammonia</li>
+                        <li>A change in pH to remove the other compound</li>
+                    </ul>
+                    <p>These operations may be part of pretreatment or final treatment.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：pH 如何影響 CO<sub>2</sub> 和 NH<sub>3</sub> 的存在形態</h4>
+                        <p>pH 決定了水中 Carbon Dioxide（二氧化碳）和 Ammonia（氨）的化學形態：</p>
+                        <table>
+                            <thead>
+                                <tr><th>pH 範圍</th><th>CO<sub>2</sub> 形態</th><th>NH<sub>3</sub> 形態</th><th>去除方式</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>酸性（&lt;6）</td><td>溶解氣體（CO<sub>2</sub>）→ 可脫氣</td><td>離子態（NH<sub>4</sub><sup>+</sup>）→ 可被 RO 去除</td><td>脫氣去 CO<sub>2</sub></td></tr>
+                                <tr><td>鹼性（&gt;9）</td><td>離子態（CO<sub>3</sub><sup>2-</sup>）→ 可被 RO 去除</td><td>溶解氣體（NH<sub>3</sub>）→ 穿透 RO</td><td>RO 去碳酸鹽</td></tr>
+                            </tbody>
+                        </table>
+                        <p>問題在於：<strong>沒有一個 pH 值能同時讓 CO<sub>2</sub> 和 NH<sub>3</sub> 都變成可被輕鬆去除的形態。</strong>如果兩者同時存在，必須分兩步進行 pH 調整和去除。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>化學平衡：CO<sub>2</sub> / NH<sub>3</sub> 的 pH 依賴性</h4>
+                        <pre>
+Carbon Dioxide System:
+CO2 (gas) ↔ H2CO3 ↔ HCO3⁻ ↔ CO3²⁻
+  pH < 4.3    pH 4.3-8.3    pH > 8.3
+
+Ammonia System:
+NH4⁺ (ion) ↔ NH3 (gas)
+  pH < 9.3      pH > 9.3
+
+Key conflict: CO2 removal needs LOW pH
+              NH3 removal needs LOW pH (as NH4⁺ for RO)
+              BUT CO2 is ionic at HIGH pH
+              → Cannot remove both at same pH!</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>日常比喻：pH 就像溫度調節</h4>
+                        <p>想像你需要同時保存巧克力（需冷藏）和麵包（需室溫）——不能用同一個溫度滿足兩者。CO<sub>2</sub> 和 NH<sub>3</sub> 就是這樣：它們在 pH「溫度」上的最佳去除條件互相矛盾，所以需要分兩步處理。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.12 Materials of Construction ===== -->
+    <div class="chapter-section" id="sec-4-12">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.12</div>
+            <div class="chapter-info">
+                <h2>4.12 Materials of Construction and Construction Practices</h2>
+                <p>建造材質與施工實務 &nbsp;|&nbsp; pp. 53–54</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.12 Materials of Construction</h3>
+                    <p>Piping to the pretreatment system may be copper, galvanized steel, or a suitable thermoplastic. Piping in the pretreatment system, where high temperatures are not encountered, is usually plastic (<span class="key-term">PVC</span>, <span class="key-term">CPVC</span>, polypropylene, or other material) based upon cost and corrosion resistance. Leaching from some plastics such as PVC and CPVC may make these materials undesirable to the user. Vessels may be fiberglass, lined carbon steel, or stainless steel.</p>
+                    <p>The piping and equipment in a portion of the pretreatment system may encounter high temperature (periodic heat sanitization) or high pressure (RO plus degasification). In these portions, piping is typically <span class="key-term">stainless steel</span> or a plastic that can be heat sanitized, such as <span class="key-term">PVDF</span>. Equipment designed for high pressure may be carbon steel, lined carbon steel, or stainless steel. Mill finish is satisfactory; <span class="key-term">electropolishing</span> is unnecessary.</p>
+                    <p>The cost of sanitary construction practices such as orbital welding and sanitary fittings may not be warranted in the pretreatment system. Use of plastic pipe that is solvent cemented or heat fused, stainless steel pipe that is welded or flanged with mill finish, or tubing with compression fittings is common.</p>
+                    <p>Ball or diaphragm valves predominate for flow diversion, with globe and needle valves for flow control. Selecting the minimum cost piping components that will not degrade water quality is an area for major cost savings.</p>
+                    <p>Sample points should be provided upstream and downstream of each piece of equipment for monitoring and troubleshooting. Points for field measurement of pressure and temperature are also useful.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：前處理材質選擇原則</h4>
+                        <table>
+                            <thead>
+                                <tr><th>區域</th><th>建議材質</th><th>考量因素</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>常溫區域</td><td>PVC、CPVC、PP</td><td>成本低、耐腐蝕</td></tr>
+                                <tr><td>需熱消毒區域</td><td>Stainless Steel、PVDF</td><td>耐高溫</td></tr>
+                                <tr><td>高壓區域（RO）</td><td>Carbon Steel、SS</td><td>耐壓</td></tr>
+                                <tr><td>容器</td><td>FRP、Lined CS、SS</td><td>化學相容性</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：前處理不需要「過度設計」</h4>
+                        <p>ISPE 在這裡明確指出：前處理系統<strong>不需要</strong>分配系統等級的施工規格：</p>
+                        <ul>
+                            <li><strong>不需要 Electropolishing（電拋光）</strong>——Mill Finish（研磨面）即可</li>
+                            <li><strong>不需要 Orbital Welding（自動軌道焊接）</strong>——一般焊接或法蘭連接即可</li>
+                            <li><strong>不需要 Sanitary Fittings（衛生級接頭）</strong>——壓縮接頭或溶劑接合即可</li>
+                        </ul>
+                        <p>這是重要的<strong>成本優化</strong>機會。許多工廠錯誤地在前處理系統使用與分配系統相同的高規格材質和施工方式，造成不必要的成本增加。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>實務應用：Good Engineering Practice 的具體體現</h4>
+                        <p>正確的做法是根據每個區段的實際需求選擇材質：</p>
+                        <ul>
+                            <li>進水管路到軟化器：PVC 管路 + 溶劑接合（成本最低）</li>
+                            <li>活性碳床到 RO 之間：如果需要熱消毒，改用 PVDF 或 SS</li>
+                            <li>每個設備上下游：設置取樣點和壓力/溫度量測點（用於監控與故障排除）</li>
+                        </ul>
+                        <p>原則：<strong>選擇不會劣化水質的最低成本材質。</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.13 Pretreatment Summary ===== -->
+    <div class="chapter-section" id="sec-4-13">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.13</div>
+            <div class="chapter-info">
+                <h2>4.13 Pretreatment Summary</h2>
+                <p>前處理總結 &nbsp;|&nbsp; pp. 54–55</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.13 Pretreatment Summary</h3>
+                    <p>The philosophy of control selected for pretreatment can have a major impact on both investment and continuing operating cost. Reliable operation and control of pretreatment can significantly reduce operating and maintenance costs in final treatment. The important process steps in pretreatment are:</p>
+                    <ul>
+                        <li>Removal of turbidity and particulates to minimize membrane and equipment fouling</li>
+                        <li>Removal of hardness and metals to prevent scale formation in final treatment</li>
+                        <li>Removal of organics and microbiological impurities</li>
+                        <li>Control of microbial growth and removal of microbial control agents to prevent degradation of final treatment</li>
+                    </ul>
+                    <p>These process steps are important because of their immediate effect on water quality from final treatment or their long-term effect on final treatment equipment performance and hence, their indirect effect on water quality from final treatment.</p>
+                    <p>Pretreatment, like other parts of the water treatment system, should be subject to <span class="key-term">Good Engineering Practices</span>. Validation of pretreatment, as a component of the water treatment system, is required as part of the entire water treatment system validation and should include microbiological monitoring.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>核心概念：前處理的四大任務總結</h4>
+                        <ol>
+                            <li><strong>去除 Turbidity / Particulates</strong>（濁度/顆粒物）→ 防止 Fouling（堵塞）</li>
+                            <li><strong>去除 Hardness / Metals</strong>（硬度/金屬）→ 防止 Scaling（結垢）</li>
+                            <li><strong>去除 Organics / Microbiological Impurities</strong>（有機物/微生物）→ 維護水質</li>
+                            <li><strong>控制 Microbial Growth + 去除 Microbial Control Agents</strong>（微生物控制）→ 保護最終處理設備</li>
+                        </ol>
+                        <p>前處理的效果分為兩類：</p>
+                        <ul>
+                            <li><strong>直接效果</strong>：即時影響最終產水品質</li>
+                            <li><strong>間接效果</strong>：長期影響最終處理設備的效能和壽命</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示：GEP 與驗證要求</h4>
+                        <p>前處理系統需遵循 <strong>Good Engineering Practices（良好工程實務）</strong>，而非 GMP 等級的嚴格要求。但前處理的<strong>驗證（Validation）</strong>是整個水系統驗證的一部分，必須包含微生物監控。</p>
+                        <p>這代表：前處理設計可以用較低成本的材質和施工方式，但其<strong>效能驗證和持續監控</strong>不能馬虎。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Section Summary ===== -->
+    <div class="section-summary">
+        <h3>本章摘要 Chapter 4 Summary</h3>
+        <ul>
+            <li><strong>前處理定位：</strong>Pretreatment 是最終處理前的所有製程步驟，目的是將進水品質調整到最終處理設備可接受的水準。前處理的穩定性直接決定最終處理的運作可靠度和維護成本。</li>
+            <li><strong>進水品質：</strong>製藥水系統必須使用符合 Drinking Water 標準的進水。進水品質需經過至少一年的監控，掌握季節性變異。四大污染物類型：Particulates、Inorganics、Organics、Bacteria。</li>
+            <li><strong>四大前處理任務：</strong>(1) Fouling 控制——介質過濾去除顆粒物；(2) Scaling 控制——軟化器去除硬度；(3) Organics 去除——活性碳吸附；(4) 微生物控制——保留氯的「保護傘」+ 定期消毒 + UV。</li>
+            <li><strong>Chlorine vs Chloramine：</strong>氯胺的去除比氯更複雜，副產物 Ammonia 會穿透 RO 和蒸餾系統。進水含氯胺時，系統設計複雜度顯著增加。</li>
+            <li><strong>pH 的關鍵角色：</strong>pH 決定 CO<sub>2</sub> 和 NH<sub>3</sub> 的化學形態，影響去除策略。兩者無法在同一 pH 下同時被最佳去除，需分步處理。</li>
+            <li><strong>材質與成本：</strong>前處理不需要分配系統等級的材質和施工規格。Electropolishing、Orbital Welding、Sanitary Fittings 在前處理中通常不必要。選擇「不劣化水質的最低成本材質」是重要的成本優化策略。</li>
+            <li><strong>驗證要求：</strong>前處理遵循 GEP（非 GMP），但作為水系統一部分，其驗證（含微生物監控）是必要的。</li>
+        </ul>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems</p>
+    <p>Chapter 4: Pretreatment Options | Pages 43&ndash;55</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Reference</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Chapter 2: Key Design Philosophies</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: #1a3a2a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c35; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+.practice-box.cdmo-application {
+    border: 2px solid #27ae60 !important;
+    border-style: solid !important;
+}
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: #1a3a2a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #1a3a2a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a3a2a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: #27ae60; }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: #1a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 2: Key Design Philosophies</h1>
+    <div class="subtitle">關鍵設計理念</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p19-p29</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解製藥用水（Pharmaceutical Water）在藥品製造中的核心地位，以及水質規格對系統全生命週期成本的深遠影響</li>
+        <li>區分 USP Purified Water（純化水）與 USP Water for Injection（WFI，注射用水）的法規要求差異</li>
+        <li>掌握 USP 三階段電導率測試（Three-Stage Conductivity Testing）的邏輯與實務操作</li>
+        <li>理解 Total Organic Carbon（TOC，總有機碳）測試的原理、儀器類型，及超標處理程序</li>
+        <li>掌握 Critical Process Parameters（CPP，關鍵製程參數）的定義與在水系統中的應用</li>
+        <li>理解 cGMP 合規的核心哲學：規格制定、驗證記錄與微生物控制的三位一體</li>
+        <li>區分 Design Range（設計範圍）、Allowable Operating Range（允許操作範圍）與 Normal Operating Range（正常操作範圍）三者的層級關係</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本章導覽</h3>
+    <div class="toc-grid">
+        <a href="#sec2-1">2.1 Introduction</a>
+        <a href="#sec2-2">2.2 USP Requirements</a>
+        <a href="#sec2-2-1">2.2.1 Purified Water</a>
+        <a href="#sec2-2-2">2.2.2 WFI</a>
+        <a href="#sec2-2-3">2.2.3 Non-Monographed</a>
+        <a href="#sec2-2-4">2.2.4 Conductivity Testing</a>
+        <a href="#sec2-2-5">2.2.5 TOC</a>
+        <a href="#sec2-2-6">2.2.6 Microbial &amp; Endotoxin</a>
+        <a href="#sec2-2-7">2.2.7 pH Testing</a>
+        <a href="#sec2-2-8">2.2.8 Backup Instrumentation</a>
+        <a href="#sec2-3">2.3 Water Quality Specification</a>
+        <a href="#sec2-4">2.4 Critical Process Parameters</a>
+        <a href="#sec2-5">2.5 cGMP Compliance</a>
+        <a href="#sec2-6">2.6 Design vs Operating Range</a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.1 INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-1">2.1 Introduction（導論）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p><span class="key-term">Pharmaceutical water</span> is the most widely used ingredient in drug manufacturing and the main component in equipment/system cleaning. Therefore, systems for the production of pharmaceutical water constitute a key component in every manufacturing facility. The nature of producing pharmaceutical waters is to minimize or eliminate potential sources of contamination. This Guide considers this and the means by which engineers can <span class="key-term">design out, or ensure control of the risk</span>.</p>
+
+        <p>The quality of Pharmaceutical Water and Steam is not only critical from a regulatory point of view, but also from a financial point of view. The Pharmaceutical Water and Steam specification has the <span class="key-term">largest impact on lifecycle costs</span> of the system.</p>
+
+        <p>It must be demonstrated that all pharmaceutical waters (non-compendial and United States Pharmacopoeia (USP) monograph compendial waters) can be produced consistently to specification. Establishing the level of microbial control needed in a pharmaceutical water and steam system used in the manufacture of a non-sterile product requires an understanding of both the use of the product and the manufacturing process.</p>
+
+        <p>Manufacturers need to define the appropriate water purity based upon sound process understanding and system equipment capability. They must determine the specific purification capability for each processing step, the limitations of the unit operation, and the <span class="key-term">critical parameters</span>, which affect the specified water/steam quality &mdash; chemically, physically, or biologically. Expert QA advice should be sought to provide further details about this important area.</p>
+
+        <p>USP covers two compendial water qualities (<span class="key-term">USP Purified Water</span> and <span class="key-term">USP Water for Injection</span>). This Guide supports both these water qualities plus additional non-compendial waters including "Drinking Water". It is common practice to name non-compendial waters (exclusive of "Drinking Water") used in pharmaceutical manufacturing by the final treatment step (i.e., Reverse Osmosis/RO water, deionized water/DI water, etc.).</p>
+
+        <p>Guidance on establishing specifications for monographed USP water is provided in the United States Pharmacopoeia (USP). Additionally, the FDA Guide to Inspections of High Purity Water Systems (which was developed for FDA personnel) also provides useful information to the user.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：製藥用水的戰略地位</h4>
+            <p>製藥用水不是「公用工程」那麼簡單。它是：</p>
+            <ul>
+                <li><strong>最大量使用的原料</strong> &mdash; 幾乎所有劑型製造都離不開水</li>
+                <li><strong>設備清洗的核心媒介</strong> &mdash; CIP（Clean-in-Place，就地清洗）全靠它</li>
+                <li><strong>成本驅動的關鍵決策</strong> &mdash; 水質規格直接決定全生命週期成本</li>
+            </ul>
+            <p>所以這一章開宗明義就告訴你：<strong>選錯水質規格，比選錯設備更貴</strong>。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>生活比喻：水質規格如同建築設計等級</h4>
+            <p>想像你要蓋房子。如果一開始就指定「抗震9級」，所有建材、結構設計、施工方法都會跟著升級，成本自然飆升。但如果實際需求只需要「抗震7級」，你就白花了一大筆錢。</p>
+            <p>製藥用水也是一樣：WFI 系統的建置與維護成本遠高於 Purified Water。如果你的產品只需要 Purified Water，卻因為「保守」而選了 WFI，後續的能源、維護、驗證成本會讓你吃不消。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵洞察：「Design Out」的哲學</h4>
+            <p>注意原文用了 <strong>"design out, or ensure control of the risk"</strong> 這個詞彙。這是 ISPE 一貫的風險管理哲學：</p>
+            <ul>
+                <li><strong>首選：設計消除風險</strong>（Design Out）&mdash; 例如使用熱水循環消除微生物滋生的機會</li>
+                <li><strong>次選：控制風險</strong>（Ensure Control）&mdash; 例如定期消毒、監控微生物</li>
+            </ul>
+            <p>這與 ICH Q9 的風險控制層級完全一致。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>兩種法定水質（Compendial Waters）</h4>
+            <table>
+                <tr><th>水質等級</th><th>英文名稱</th><th>典型用途</th></tr>
+                <tr><td><span class="badge green">PW</span></td><td>USP Purified Water</td><td>非無菌劑型、口服製劑、設備清洗</td></tr>
+                <tr><td><span class="badge red">WFI</span></td><td>USP Water for Injection</td><td>注射劑、部分眼用製劑、吸入劑</td></tr>
+            </table>
+            <p>非法定水（Non-Compendial Waters）如 RO water、DI water，通常以最後一道處理步驟命名。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2 USP REQUIREMENTS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2">2.2 United States Pharmacopoeia (USP)（美國藥典）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>USP is a Guide to producing medicinal products for consumption within the US. USP specify standards of quality, purity, packaging, and labeling for a number of waters including two bulk waters, "<span class="key-term">Water for Injection</span>" and "<span class="key-term">Purified Water</span>" used in the preparation of compendial (USP) dosage forms. This Guide is concerned with the production of these two compendial (USP) waters and does not address the other "packaged waters" monographed by the USP. USP 24 (and supplements) is the current version, at the time this Guide was prepared.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>USP 的角色定位</h4>
+            <p>USP（United States Pharmacopoeia，美國藥典）是美國法定的品質標準。它定義了兩種「大宗水」（Bulk Waters）的品質規格：</p>
+            <ul>
+                <li><strong>Purified Water</strong>（純化水）</li>
+                <li><strong>Water for Injection</strong>（注射用水）</li>
+            </ul>
+            <p>注意：USP 還有其他「包裝水」（Packaged Waters）的專論，例如 Sterile Water for Injection，但本指引只關注生產系統中的大宗水。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>版本提醒</h4>
+            <p>本指引撰寫時參照的是 USP 24。現行版本已更新至 USP-NF（持續修訂中）。三階段電導率測試的基本框架未變，但具體限值表應查閱最新版 USP &lt;645&gt; 與 &lt;643&gt;。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.1 USP Purified Water -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-1">2.2.1 USP Purified Water（USP 純化水）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Official monograph requirements for "Purified Water" require that "Purified Water":</p>
+        <ul>
+            <li>Is obtained from water complying with the "<span class="key-term">U.S. Environmental Protection Agency National Primary Drinking Water Regulations</span>, or comparable regulations of the European Union or Japan, and will be referred to subsequently as "Drinking Water".</li>
+            <li>Contains <span class="key-term">no added substance</span></li>
+            <li>Is obtained by a <span class="key-term">suitable process</span></li>
+            <li>Meets the requirements for <span class="key-term">Water Conductivity</span></li>
+            <li>Meets the requirements for <span class="key-term">Total Organic Carbon (TOC)</span></li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>Purified Water 的五大要件</h4>
+            <p>想通過 USP Purified Water 的門檻，你的水系統必須同時滿足五個條件：</p>
+            <ol>
+                <li><strong>原水合格</strong> &mdash; 起點必須是符合飲用水法規的「Drinking Water（飲用水）」</li>
+                <li><strong>不添加物質</strong> &mdash; 不得加入防腐劑或其他添加物</li>
+                <li><strong>製程適當</strong> &mdash; USP 對 PW 的製程不限制（unlike WFI），只要 "suitable"</li>
+                <li><strong>電導率合格</strong> &mdash; 依據 USP &lt;645&gt; 三階段測試</li>
+                <li><strong>TOC 合格</strong> &mdash; 依據 USP &lt;643&gt;，限值 500 ppb</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：Purified Water 如同「普通駕照」</h4>
+            <p>考普通駕照只要求你會開車、通過筆試和路考。至於你用哪台車來練習、在哪個駕訓班學的，不限制。</p>
+            <p>Purified Water 也是如此 &mdash; USP 不管你用 RO、EDI、蒸餾、或混合製程，只要最終出水能通過電導率和 TOC 檢測即可。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.2 USP WFI -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-2">2.2.2 USP Water for Injection (WFI)（注射用水）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Official monograph requirements for "Water for Injection" require that "Water for Injection":</p>
+        <ul>
+            <li>Meets all of the requirements for "Purified Water"</li>
+            <li>Is obtained by a suitable process and purified by <span class="key-term">distillation or Reverse Osmosis</span></li>
+            <li>Meets the requirements of the <span class="key-term">Bacterial Endotoxin test</span> and contains not more than <span class="key-term">0.25 USP Endotoxin Unit per ml</span></li>
+            <li>Is prepared using suitable means to <span class="key-term">minimize microbial growth</span></li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>WFI = Purified Water + 更嚴格要求</h4>
+            <p>WFI 的要求是 Purified Water 的「超集」（superset），額外增加：</p>
+            <ul>
+                <li><strong>製程限制</strong> &mdash; 最後一道純化步驟必須是 Distillation（蒸餾）或 Reverse Osmosis（逆滲透）</li>
+                <li><strong>內毒素限值</strong> &mdash; &le; 0.25 EU/mL（Endotoxin Unit，內毒素單位）</li>
+                <li><strong>微生物控制</strong> &mdash; 必須採取適當措施最小化微生物生長</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>WFI 關鍵規格速查</h4>
+            <pre>
+Conductivity:  &le; 1.3 &mu;S/cm @ 25&deg;C (Stage 1)
+TOC:           &le; 500 ppb (0.5 mg/L)
+Endotoxin:     &le; 0.25 EU/mL
+Microbial:     &le; 10 CFU/100 mL (action limit)
+Final step:    Distillation OR Reverse Osmosis only
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>法規演進提醒</h4>
+            <p>本指引撰寫時（2001），USP 只允許蒸餾和 RO 作為 WFI 的最終處理步驟。歐洲藥典（EP）在 2017 年修訂後也接受了非蒸餾方法（如膜法）。但 <strong>USP 的規定迄今未變</strong> &mdash; 仍然只限蒸餾或 RO。</p>
+            <p>對 CDMO 而言，如果客戶的目標市場包含美國，WFI 系統設計必須確保最終步驟是蒸餾或 RO。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.3 Non-Monographed Requirements -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-3">2.2.3 Non-Monographed but Accepted Requirements（非專論但已接受的要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>The USP "General Information" provides background information, which clarifies regulatory intent. The following information is included in Chapter 11:</p>
+        <ul>
+            <li>Purified water systems require <span class="key-term">frequent sanitization</span> and <span class="key-term">microbiological monitoring</span> to ensure water of appropriate microbiological quality at the points of use.</li>
+            <li>Water for Injection is "finally subjected to distillation or Reverse Osmosis", implying that the Still or RO unit is the last unit operation. "The system used to produce, store and distribute water for injection must be designed to <span class="key-term">prevent microbial contamination</span> and the formation of microbial endotoxins, and it must be validated."</li>
+            <li>An action limit of <span class="key-term">100 colony forming units per ml</span> (10,000 CFU/100 ml) for "Purified Water" is suggested.</li>
+            <li>An action limit of <span class="key-term">10 colony forming units per 100 ml</span> (10 CFU/100 ml) for "Water for Injection" is suggested.</li>
+            <li>Minimum sample sizes are 1 ml for USP Purified Water and 100 ml for WFI. (FDA recommends 100 ml for Purified Water and 250 ml for WFI).</li>
+        </ul>
+
+        <div class="quote-box">
+            <p>"It should be emphasized that the above action guidelines are not intended to be totally inclusive for every situation where ingredient waters are to be employed. It is therefore, incumbent upon the manufacturer to supplement the general action guidelines to fit each particular manufacturing situation" &mdash; USP24, page 2163.</p>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>微生物行動限值比較</h4>
+            <table>
+                <tr><th>水質等級</th><th>Action Limit</th><th>USP 最小取樣量</th><th>FDA 建議取樣量</th></tr>
+                <tr><td>Purified Water</td><td>100 CFU/mL</td><td>1 mL</td><td>100 mL</td></tr>
+                <tr><td>WFI</td><td>10 CFU/100 mL</td><td>100 mL</td><td>250 mL</td></tr>
+                <tr><td>Drinking Water</td><td>500 CFU/mL</td><td>&mdash;</td><td>&mdash;</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>隱藏的查核重點</h4>
+            <p>注意這段看似「參考資訊」的文字，其實暗含多個查核要點：</p>
+            <ul>
+                <li><strong>"Finally subjected to"</strong> &mdash; 意味著蒸餾或 RO 必須是最後一步。如果你在 RO 之後又加了一個 UV 殺菌器，那 RO 就不算「最後一步」了嗎？這是一個常見的法規灰色地帶，需要審慎論證。</li>
+                <li><strong>取樣量差異</strong> &mdash; USP 說 PW 最小 1 mL，但 FDA 建議 100 mL。實務上，你最好用 FDA 的建議量，因為查廠的是 FDA。</li>
+                <li><strong>"Supplement the general action guidelines"</strong> &mdash; 你有責任根據自己的產品制定更嚴格的標準。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：Action Limit 如同「超速罰單門檻」</h4>
+            <p>高速公路限速 110 km/h，但警察通常不會在 111 km/h 開罰。Action Limit 就像是「開始開罰的門檻」&mdash; 一旦微生物計數超過這個值，你必須啟動調查程序。</p>
+            <p>但好的製造商還會設定 Alert Limit（預警限值），就像車上的測速提醒在 100 km/h 就會響起，給你反應時間。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.4 Conductivity Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-4">2.2.4 USP Testing and Instrument Requirements（USP 測試與儀器要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <h3>Three Stage Conductivity Testing</h3>
+        <table>
+            <tr><th>Stage</th><th>Method of Measurement</th><th>Acceptance Criteria</th></tr>
+            <tr>
+                <td><strong>One</strong></td>
+                <td>Use In-Line or grab sample and measure the conductivity and operating water temperature</td>
+                <td>Use the stage 1 table from the latest revision to USP to determine the conductivity limit. When change does not exceed a net of 0.1 &mu;S/cm over 5 minutes, measure the conductivity. If less than 2.1 &mu;S/cm the water meets the requirements.</td>
+            </tr>
+            <tr>
+                <td><strong>Two</strong></td>
+                <td>Retest at least 100 ml of the stage 1 grab sample for conductivity after vigorous mixing and temperature normalization to 25&deg;C &plusmn;1&deg;C</td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td><strong>Three</strong></td>
+                <td>If the stage 2 test does not meet the requirements, retest the sample within 5 minutes while maintaining temperature. Add 0.3 ml per 100 ml of saturated potassium chloride solution and determine the pH to the nearest 0.1 pH unit.</td>
+                <td>Use the stage 3 table from the latest revision to USP to determine the conductivity limit. If either the measured conductivity is greater than the limit value or the pH value is outside the range of 5 to 7, the water does not meet the requirements.</td>
+            </tr>
+        </table>
+
+        <h3>Conductivity Instrument Requirements for Acceptable Regulatory Measurement</h3>
+        <table>
+            <tr><th>Parameter</th><th>Requirement</th></tr>
+            <tr><td>Temperature Measurement</td><td>&plusmn; 0.25&deg;C Accuracy</td></tr>
+            <tr><td>Resolution</td><td>&lt; &plusmn; 0.1 &mu;S/cm</td></tr>
+            <tr><td>Conductivity cell constant</td><td>&plusmn; 2% Accurate</td></tr>
+            <tr><td>Reading accuracy</td><td>&lt; &plusmn; 0.1 &mu;S/cm</td></tr>
+            <tr><td>Location of In-Line meters</td><td>Must reflect the quality of the water used. Typically, the optimum location in a distributed water loop is following the last "point of use" valve, and prior to the storage tank return connection.</td></tr>
+            <tr><td>Instrument type</td><td>The above procedure is based on the use of a "dip" or "flow through" conductivity cell. Conductivity readings used to control USP compendial waters must be non-temperature-compensated measurements.</td></tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>三階段電導率測試的邏輯</h4>
+            <p>為什麼不直接測一次就好？因為 USP 設計了一套「遞進式」的測試邏輯，目的是<strong>減少不必要的 Off-Line 測試</strong>，同時確保判定的嚴謹性：</p>
+            <ol>
+                <li><strong>Stage 1（線上初篩）</strong>：在操作溫度下即時測量。若 &le; 溫度對應限值（通常以 2.1 &mu;S/cm 作為安全簡化判定），直接 PASS。大多數情況在此就結束。</li>
+                <li><strong>Stage 2（離線確認）</strong>：如果 Stage 1 未通過，取樣後在 25&deg;C &plusmn;1&deg;C 下重測。這排除了溫度影響的變異。</li>
+                <li><strong>Stage 3（最終判定）</strong>：如果 Stage 2 仍未通過，加入 KCl 溶液測 pH（5-7 範圍）。如果 pH 超出範圍或電導率仍超標 &rarr; <strong>FAIL</strong>。</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：三階段測試像醫院分診</h4>
+            <p>去急診室：</p>
+            <ul>
+                <li><strong>Stage 1（護士站）</strong>：量體溫、血壓。正常？回家。</li>
+                <li><strong>Stage 2（診間）</strong>：體溫偏高，抽血確認。沒事？回家。</li>
+                <li><strong>Stage 3（專科檢查）</strong>：血液指標異常，做更深入的檢查。確認有問題 &rarr; 住院。</li>
+            </ul>
+            <p>同理，三階段測試的哲學是：<strong>能在簡單的步驟就判定合格，就不浪費資源做複雜測試</strong>。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>電導率儀器精度要求速查</h4>
+            <pre>
+Temperature accuracy:      &plusmn; 0.25&deg;C
+Conductivity resolution:   &lt; &plusmn; 0.1 &mu;S/cm
+Cell constant accuracy:    &plusmn; 2%
+Reading accuracy:          &lt; &plusmn; 0.1 &mu;S/cm
+
+Key rule: 非溫度補償測量（Non-temperature-compensated）
+         &rarr; 不可使用儀器的自動溫度補償功能！
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>實務陷阱：In-Line 電導率計的安裝位置</h4>
+            <p>原文明確指出最佳位置：<strong>最後一個使用點（point of use）閥門之後、儲槽回水口之前</strong>。</p>
+            <p>為什麼？因為這個位置代表「系統中水質最差的點」&mdash; 水跑完整個迴路、經過所有使用點之後的狀態。如果這裡合格，其他點一定合格。</p>
+            <p>常見錯誤：把電導率計裝在儲槽出水口 &mdash; 這只代表「剛出發」的水質，不代表「跑完全程」的水質。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.5 TOC -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-5">2.2.5 Total Organic Carbon (TOC) and Requirements for TOC Control（總有機碳及其控制要求）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p><span class="key-term">TOC</span> is an indirect measure, as carbon, of organic molecules present in high purity water. USP replaced the USP 22 "Oxidizable Substance" wet chemistry test with an In-Line capable, TOC test. A limit was determined by USP to be <span class="key-term">0.5 ppm or 500 ppb</span>, based on the results of studies and an industry wide survey of pharmaceutical water systems.</p>
+
+        <p>Instruments are available for measuring TOC In-Line from slipstreams and from grab samples manually removed from the water system. Automatic Off-Line sample introduction systems are available for processing large numbers of grab samples. USP have not prevented acceptable technologies from being used, but limit the methods to the following instruments that are capable of:</p>
+        <ul>
+            <li>Completely oxidizing the organic molecules to Carbon dioxide (CO<sub>2</sub>)</li>
+            <li>Measuring the CO<sub>2</sub> levels as carbon</li>
+            <li>Discriminating between Inorganic carbon (IC) and the CO<sub>2</sub> levels generated from the oxidization of the organic molecules</li>
+            <li>Maintaining an equipment limit of detection of <span class="key-term">0.05 mg per liter</span>, or lower</li>
+            <li>Periodically demonstrating an equipment "suitability"</li>
+        </ul>
+
+        <h3>Types of TOC Analyzers</h3>
+        <ul>
+            <li>Laboratory Instruments</li>
+            <li>In-Line Instruments</li>
+            <li>Laboratory Instruments capable of operating in-line</li>
+        </ul>
+
+        <h3>Out of Range Excursions</h3>
+        <p>Out of range readings may be experienced as the direct result of the above types of organic contaminations. Spikes may also occur as the result of extraneous electrical interference etc. All spikes must be identified and formally explained.</p>
+        <p>Procedures to handle out of range spikes should be available. These procedures should address short duration spikes, which occur following continuous acceptable readings and are followed by similar acceptable readings, specifically in In-Line applications.</p>
+        <p>Unexplainable spikes may be minimized when using In-Line batch sampling systems by extending the sample analysis period to 30 or 60 minutes rather than using shorter analysis periods.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>TOC 的本質：間接量測有機污染</h4>
+            <p>TOC（Total Organic Carbon，總有機碳）不是直接測有機物本身，而是：</p>
+            <ol>
+                <li>將有機分子<strong>完全氧化</strong>為 CO<sub>2</sub></li>
+                <li>測量產生的 CO<sub>2</sub> 量</li>
+                <li>扣除無機碳（IC，Inorganic Carbon &mdash; 來自溶解的 CO<sub>2</sub> 和碳酸氫鹽）</li>
+                <li>剩下的就是有機碳的量</li>
+            </ol>
+            <p>公式：<strong>TOC = TC - IC</strong>（Total Carbon - Inorganic Carbon）</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>TOC 規格速查</h4>
+            <pre>
+USP TOC limit:          &le; 500 ppb (0.5 mg/L)
+Detection limit:        &le; 0.05 mg/L (50 ppb)
+Signal-to-noise ratio:  limit / LOD = 10:1
+
+TOC = TC - IC
+TC  = Total Carbon（總碳）
+IC  = Inorganic Carbon（無機碳，源自溶解 CO2 / HCO3-）
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：TOC 測試像酒駕檢測</h4>
+            <p>警察路檢酒駕時，不是直接分析你血液中的每一種酒精分子，而是用呼氣測試測你吐出的酒精含量（間接指標）。</p>
+            <p>TOC 也是類似邏輯：不去鑑定水中到底有哪些有機物（那太複雜了），而是把所有有機物「燒成」CO<sub>2</sub>，用一個數字代表總污染量。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>超標尖峰（Spike）的處理哲學</h4>
+            <p>In-Line TOC 監控中偶爾會出現突然飆高又迅速回到正常的「尖峰」。ISPE 的建議是：</p>
+            <ul>
+                <li><strong>必須調查</strong> &mdash; 每一次超標都必須有正式的書面說明</li>
+                <li><strong>可以免查</strong> &mdash; 如果尖峰前後都是連續合格讀數，且已建立 SOP 允許此類情境</li>
+                <li><strong>延長取樣週期</strong> &mdash; 從短週期（如 5 分鐘）改為 30-60 分鐘，用統計平均來抹平雜訊</li>
+            </ul>
+            <p>這體現了「基於科學的風險管理」而非「零容忍」的監管哲學。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.6 Microbial and Endotoxin Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-6">2.2.6 USP 23 Microbial and Endotoxin Testing（微生物與內毒素測試）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Microbial contaminants and Endotoxins are traditionally sampled at the <span class="key-term">points of use</span> in a water system. USP 24 has made no changes in this area.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>微生物與內毒素取樣的關鍵原則</h4>
+            <p>這段話很短，但暗含一個重要原則：<strong>取樣必須在使用點（Point of Use，POU）</strong>。</p>
+            <p>為什麼不在儲槽或製水機出口取樣就好？因為：</p>
+            <ul>
+                <li>微生物可能在配送管路中繁殖（尤其是死水腿、低流速區域）</li>
+                <li>Endotoxin（內毒素）可能累積在管壁生物膜（Biofilm，生物膜）上</li>
+                <li>使用點才代表「產品實際接觸到的水質」</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>CDMO 常見問題</h4>
+            <p>很多 CDMO 的水系統使用點很多（20-50 個），不可能每天全測。實務作法是建立<strong>輪替取樣計畫</strong>（Rotating Sampling Plan），確保每個 POU 在一個週期（通常一週或一個月）內至少被取樣一次，加上每天固定測幾個「代表性」點位。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.7 pH Testing -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-7">2.2.7 USP 23 pH Testing（pH 測試）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Testing water for compliance with the USP 24 pH limits is required as part of the <span class="key-term">stage 3 Off-Line conductivity testing</span>. (pH must be confirmed as being in the range of <span class="key-term">5 to 7</span>.) Testing may use calibrated Off-Line meters. Calibration should be performed using solutions of a known pH, covering the range of 5 to 7. The frequency of calibration should ensure that the levels of accuracy are maintained.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>pH 測試只在 Stage 3 才需要</h4>
+            <p>pH 不是獨立的常規測試項目，它只在<strong>電導率三階段測試走到 Stage 3</strong> 時才會啟動。邏輯鏈：</p>
+            <ol>
+                <li>Stage 1 FAIL &rarr; 進入 Stage 2</li>
+                <li>Stage 2 FAIL &rarr; 進入 Stage 3</li>
+                <li>Stage 3：測電導率 <strong>AND</strong> 測 pH（5-7）</li>
+                <li>任一不合格 &rarr; 水不合格</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>為什麼 pH 範圍是 5-7？</h4>
+            <p>純水的理論 pH 是 7.0，但因為空氣中 CO<sub>2</sub> 溶入水中形成碳酸，實際 pH 會偏低（約 5.5-6.5）。範圍設在 5-7 就是允許這種「自然偏酸」的現象，同時排除嚴重污染（pH &lt; 5 可能代表酸性污染物，pH &gt; 7 可能代表鹼性殘留）。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.2.8 Validated Backup Instrumentation -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-2-8">2.2.8 Validated Backup Instrumentation（經驗證的備用儀器）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Failure of a monitoring instrument should not be precluded when making decisions concerning type, location and the extent of validation. Since each <span class="key-term">excursion from the acceptable limits</span> must be investigated, In-Line installations should be supplemented with a <span class="key-term">calibrated laboratory instrument as backup</span>. Validation should include the operation in Off-Line mode as a supplement or alternate to In-Line instrumentation. Off-Line laboratory testing should also include a backup instrument to be maintained calibrated in case of failure of the primary unit.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="note-box">
+            <h4>「備援」不是可選的，是必要的</h4>
+            <p>ISPE 的邏輯很清楚：</p>
+            <ul>
+                <li>In-Line 儀器一定會壞 &rarr; 必須有校準過的實驗室儀器作為備用</li>
+                <li>實驗室主要儀器也可能壞 &rarr; 必須有第二台校準好的備用儀器</li>
+                <li>驗證範圍必須包含「用備用儀器操作」的模式</li>
+            </ul>
+            <p>換句話說：<strong>你的驗證計畫必須回答「如果 In-Line 電導率計壞了，我怎麼證明水還是合格的？」</strong></p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：飛機的雙引擎設計</h4>
+            <p>商業客機為什麼要兩具引擎？不是因為常常壞，而是因為一旦壞了後果太嚴重。水系統的備用儀器邏輯完全一樣 &mdash; 你不能因為「很少壞」就不準備備援方案。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.3 SPECIFICATION OF PHARMACEUTICAL WATER QUALITY -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-3">2.3 Specification of Pharmaceutical Water Quality（製藥用水品質規格的制定）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <h3>2.3.1 Specifying Water Quality</h3>
+        <p>The quality of water supplied in any pharmaceutical process must be consistent with the quality required for the final product. It may not be sufficient to specify a water quality that meets the specification of the two compendial grades of water outlined in the USP. These grades, USP Purified water and WFI, are <span class="key-term">minimum standards</span>. A more stringent specification could be required depending on the intended use of the product and on the process used to manufacture that product. It is the responsibility of each drug manufacturer to establish the logic for their water quality specification based on the required quality of the end product.</p>
+
+        <p>Pharmaceutical water uses can be categorized as:</p>
+        <ul>
+            <li>An ingredient in a <span class="key-term">dosage form</span> manufacturing process</li>
+            <li>An ingredient in an <span class="key-term">Active Pharmaceutical Ingredient (API)</span> process</li>
+            <li>Equipment <span class="key-term">cleaning or rinsing</span></li>
+        </ul>
+
+        <p>Water intended for use as a dosage form ingredient must be USP monograph water and must be produced consistently to specification. Evidence of control is required for all critical process parameters that may affect the final drug characterization. USP WFI water would be expected to be used for parenteral manufacture, some ophthalmic and some inhalation products.</p>
+
+        <p>For some applications where there are no requirements for compendial waters, the manufacturer may establish quality specifications equivalent to USP-WFI or Purified Waters, depending on the specific application. Specifications for water used as an ingredient in the manufacture of API's or as the wash solvent must be determined by the manufacturer.</p>
+
+        <p>With the appropriate justification, non-compendial pharmaceutical waters (including "drinking waters") may be utilized throughout pharmaceutical operations including production equipment washing/cleaning as well as rinsing, laboratory usage and as an ingredient in the manufacture of bulk active pharmaceutical ingredients. Compendial water must, however, be used with preparation of (as an ingredient) compendial dosage forms.</p>
+
+        <p>In both compendial and non-compendial waters, the manufacturer must establish an appropriate microbial quality specification. The significance of microorganisms in non-sterile pharmaceutical products should be evaluated in terms of the use of the product and the nature of the product and the potential harm to the user.</p>
+
+        <p>The US Pharmacopoeia states action levels that are generally considered acceptable are <span class="key-term">500 CFU/ml</span> for drinking water, <span class="key-term">100 CFU/ml</span> for Purified Water, and <span class="key-term">10 CFU/100 ml</span> for WFI, and may be more stringent depending on its use.</p>
+
+        <p>The final quality of pharmaceutical water and steam is determined by the manufacturing process and end product, quality of feed water, pretreatment and final treatment sub-systems, storage and distribution system design and operator/maintenance procedures.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="note-box">
+            <h4>核心觀點：USP 是「最低標準」，不是「最佳標準」</h4>
+            <p>這是整章最重要的一句話。很多工程師犯的錯誤是：「我的水符合 USP，所以沒問題。」</p>
+            <p>錯！USP 只定義了<strong>最低門檻</strong>。根據你的產品特性，你可能需要：</p>
+            <ul>
+                <li>更低的電導率（例如某些生物製劑需要 &lt; 0.5 &mu;S/cm）</li>
+                <li>更低的 TOC（例如某些 API 合成需要 &lt; 100 ppb）</li>
+                <li>更低的微生物限值（例如 &lt; 1 CFU/100 mL）</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>水質選擇的決策邏輯</h4>
+            <table>
+                <tr><th>使用場景</th><th>最低水質要求</th><th>常見實務選擇</th></tr>
+                <tr><td>注射劑配方</td><td>USP WFI</td><td>WFI（法規強制）</td></tr>
+                <tr><td>口服劑型配方</td><td>USP Purified Water</td><td>Purified Water</td></tr>
+                <tr><td>API 合成原料</td><td>製造商自定</td><td>視製程決定，可能是 DI 水</td></tr>
+                <tr><td>最終設備清洗</td><td>至少同等於產品用水</td><td>WFI（注射劑設備）</td></tr>
+                <tr><td>中間清洗</td><td>製造商自定</td><td>Purified Water 或飲用水</td></tr>
+                <tr><td>實驗室用水</td><td>視用途而定</td><td>通常 Purified Water</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box cdmo-application">
+            <h4>CDMO 實務應用</h4>
+            <p>作為 CDMO（Contract Development and Manufacturing Organization），你面臨的挑戰比一般藥廠更複雜：</p>
+            <ul>
+                <li><strong>多客戶、多產品</strong> &mdash; 不同客戶可能有不同的水質要求</li>
+                <li><strong>最嚴格規格原則</strong> &mdash; 通常建議系統設計以「最嚴格的客戶規格」為基準</li>
+                <li><strong>文件彈性</strong> &mdash; 在 Quality Agreement 中明確約定水質規格，避免後續爭議</li>
+                <li><strong>成本分攤</strong> &mdash; 如果某客戶要求超規格水質（如 bioburden &lt; 1 CFU/100 mL），應在合約中反映額外成本</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：水質規格如同食材等級</h4>
+            <p>米其林餐廳用的牛肉和路邊攤用的牛肉，都要通過食品安全檢驗（= USP 最低標準），但米其林餐廳會額外要求產地、部位、熟成天數等更高規格。</p>
+            <p>製藥也一樣：USP 只保證「安全」，但「最佳品質」需要製造商自己根據產品需求制定更高標準。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.4 CRITICAL PROCESS PARAMETERS -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-4">2.4 Critical Process Parameters（關鍵製程參數）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p><span class="key-term">Critical parameters</span> are defined as those parameters, which directly affect the water quality at, or after, a treatment step. For example, water temperature during a heat sanitization cycle has a direct effect on water quality.</p>
+
+        <p>Regarding chemical purity, the quality attributes may be monitored at or after each <span class="key-term">critical process step</span>, and the proper performance of that operation confirmed directly. Since <span class="key-term">microbial quality cannot be directly monitored in real time</span>, the parameters relied upon to control microbial growth are usually (depending on the system) considered critical, such as temperature, UV intensity, ozone concentration, circulation rate, sanitization procedures, positive pressure, etc.</p>
+
+        <p>For a system producing compendial water, properties mandated in the official monograph (including <span class="key-term">bioburden and endotoxins</span>) constitute critical attributes. <span class="key-term">Critical instruments</span> are those instruments, which measure critical attributes or parameters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>CPP 在水系統中的定義</h4>
+            <p>Critical Process Parameter（CPP，關鍵製程參數）是<strong>直接影響水質的參數</strong>。注意「直接」這個詞 &mdash; 間接影響的參數不算 CPP。</p>
+            <p>水系統的典型 CPP 包括：</p>
+            <table>
+                <tr><th>CPP</th><th>影響的品質屬性</th><th>監控方式</th></tr>
+                <tr><td>溫度（Temperature）</td><td>微生物控制</td><td>In-Line</td></tr>
+                <tr><td>電導率（Conductivity）</td><td>化學純度</td><td>In-Line</td></tr>
+                <tr><td>TOC</td><td>有機污染</td><td>In-Line / Off-Line</td></tr>
+                <tr><td>UV 強度（UV Intensity）</td><td>微生物控制</td><td>In-Line</td></tr>
+                <tr><td>臭氧濃度（Ozone Concentration）</td><td>微生物控制</td><td>In-Line</td></tr>
+                <tr><td>循環流速（Circulation Rate）</td><td>微生物控制</td><td>In-Line</td></tr>
+                <tr><td>正壓維持（Positive Pressure）</td><td>外部污染防護</td><td>In-Line</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵洞察：微生物的「看不見」困境</h4>
+            <p>原文點出一個深刻的真相：<strong>微生物品質無法即時監控</strong>。傳統的平板計數法需要 48-72 小時才能出結果。這意味著：</p>
+            <ul>
+                <li>你不可能「即時拒絕」微生物超標的水</li>
+                <li>你只能靠<strong>替代指標</strong>（Surrogate Parameters）來間接控制 &mdash; 溫度、UV、臭氧等</li>
+                <li>這些替代指標就成了 CPP &mdash; 因為你靠它們來「預測」微生物品質</li>
+            </ul>
+            <p>這就是為什麼水系統的 CPP 清單中，大部分都是「微生物控制相關」的參數。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>假設你的 WFI 系統是 80&deg;C 熱水循環系統。請回答：</p>
+            <ol>
+                <li>「循環水溫度」是不是 CPP？為什麼？</li>
+                <li>如果溫度從 80&deg;C 降到 70&deg;C，需要啟動偏差調查嗎？</li>
+                <li>「儲槽液位」算不算 CPP？</li>
+            </ol>
+            <p><em>提示：回顧 CPP 的定義 &mdash; 「直接影響水質」。溫度直接影響微生物控制，所以是 CPP。液位不直接影響水質（但間接影響流速和停滯風險），因此通常不列為 CPP，而是 KPP（Key Process Parameter）。</em></p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.5 cGMP COMPLIANCE ISSUES -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-5">2.5 cGMP Compliance Issues（cGMP 合規議題）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>Satisfying regulatory concerns is primarily a matter of establishing <span class="key-term">proper specifications</span>, and using effective and appropriate methods to <span class="key-term">verify and record</span> that those specifications are satisfied. Issues such as quality of installation, sampling and testing procedures, operating and maintenance procedures, record keeping, etc. often have <span class="key-term">greater significance than the particular technologies</span> selected to purify and distribute the water.</p>
+
+        <p>Fundamental conditions expected to aggravate a microbial problem typically include system design conditions such as stagnant conditions, areas of low flow rate, poor quality feed water etc.</p>
+
+        <p>Measures to alleviate such problems include:</p>
+        <ul>
+            <li>Continuous, turbulent flow</li>
+            <li>Elevated or reduced temperatures</li>
+            <li>Smooth, clean surfaces that minimize nutrient accumulation</li>
+            <li>Frequent draining, flushing or sanitizing</li>
+            <li>Flooded distribution loop (maintenance of positive distribution loop pressures)</li>
+            <li>Properly designed, installed and maintained system</li>
+        </ul>
+
+        <p>While the control of chemical quality is important, the <span class="key-term">primary challenge</span> in a pharmaceutical water system is <span class="key-term">maintaining the microbial quality</span>. The industry and the regulatory community have recognized the effectiveness of maintaining a <span class="key-term">continuously recirculated system at high temperatures (65&deg;C-80&deg;C)</span> in preventing microbial growth.</p>
+
+        <p>Distillation has a long and well-documented history of success, but need not be the only technology considered for producing water with endotoxin limits. Reverse osmosis is the only other technology accepted by the USP for WFI. <span class="key-term">Ultrafiltration</span> has been successfully used to produce waters with strict endotoxin limits that meet WFI attributes, but it cannot, by regulation, be used to produce compendial grade WFI.</p>
+
+        <p>Each pharmaceutical steam and water treatment system must be viewed in its entirety, as design and operational factors affecting any unit operation within the system can affect the whole system. It is useful to identify both the quality parameters of water entering the system and the quality parameters of the water or steam to be produced. <span class="key-term">Water quality should be enhanced with each successive step.</span> It does not necessarily follow that measures enhancing one quality attribute (such as conductivity, particulate level or color) will always enhance another (such as microbial population).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="note-box">
+            <h4>顛覆性觀點：技術不是最重要的</h4>
+            <p>這段話可能讓很多工程師驚訝：ISPE 說「<strong>安裝品質、取樣程序、操作維護、記錄保存</strong>往往比你選擇的淨水技術更重要」。</p>
+            <p>換句話說：一套用 RO + EDI 的系統，如果操作維護做得差，可能比一套只用蒸餾的系統更容易出問題。<strong>cGMP 合規的核心不在技術，在管理</strong>。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>微生物控制六大措施</h4>
+            <p>ISPE 列出的六項措施，本質上都是在回答同一個問題：<strong>如何讓微生物無法定居和繁殖？</strong></p>
+            <ol>
+                <li><strong>連續湍流</strong>（Continuous Turbulent Flow）&mdash; 讓水永遠在動，微生物沒有「安家」的機會</li>
+                <li><strong>溫度控制</strong>（Elevated/Reduced Temperatures）&mdash; 65-80&deg;C 熱水或 &lt; 4&deg;C 冷水，超出微生物舒適區</li>
+                <li><strong>光滑表面</strong>（Smooth, Clean Surfaces）&mdash; Ra &le; 0.8 &mu;m 的電解拋光不銹鋼，減少生物膜附著</li>
+                <li><strong>頻繁消毒</strong>（Frequent Sanitizing）&mdash; 定期化學或熱消毒</li>
+                <li><strong>正壓維持</strong>（Positive Pressure）&mdash; 防止外部空氣（帶菌）進入系統</li>
+                <li><strong>系統完整性</strong>（Properly Designed System）&mdash; 消除死水腿、避免低點積水</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：微生物控制如同防蟲害</h4>
+            <p>想像你要保持一個食品倉庫無蟲害：</p>
+            <ul>
+                <li>保持空氣流通（= 連續湍流）</li>
+                <li>溫度控制在蟲子不喜歡的範圍（= 熱水循環）</li>
+                <li>牆壁光滑無縫隙（= 電解拋光表面）</li>
+                <li>定期噴灑殺蟲劑（= 消毒程序）</li>
+                <li>門窗緊閉、正壓送風（= 正壓維持）</li>
+                <li>不留食物殘渣（= 消除營養源累積）</li>
+            </ul>
+            <p>邏輯完全相同，只是尺度從巨觀變成了微觀。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重要警告：品質提升不一定是全面的</h4>
+            <p>原文最後一句很關鍵：「提升一個品質屬性（如電導率）不一定會同時提升另一個（如微生物）」。</p>
+            <p>舉例：加一台混床離子交換器（Mixed Bed，MB）可以把電導率降到極低，但如果管理不善，樹脂床反而會成為微生物的溫床。<strong>你必須從系統整體來看水質，不能只優化單一指標</strong>。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2.6 DESIGN RANGE VS OPERATING RANGE -->
+<!-- ============================================================ -->
+<div class="section-title" id="sec2-6">2.6 Design Range versus Operating Range（設計範圍 vs 操作範圍）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+        <p>This Guide recognizes the distinction between "<span class="key-term">Design Range</span>" and "<span class="key-term">Operating Range</span>" and the impact this distinction has upon validation and facility system operation. These criteria are defined as:</p>
+
+        <p><strong>Design Range:</strong> the specified range or accuracy of a controlled variable used by the designer as a basis to determine the <span class="key-term">performance requirements</span> for an engineered water system.</p>
+
+        <p><strong>Allowable Operating Range:</strong> the range of <span class="key-term">validated critical parameters</span> within which acceptable product water can be manufactured.</p>
+
+        <p><strong>Normal Operating Range:</strong> a range which may be selected by the manufacturer as the desired acceptable values for a parameter (i.e., conductivity) during normal operations. This range must be within the <span class="key-term">Allowable Operating Range</span>.</p>
+
+        <p>a) While a water or steam system should meet all stated Design Conditions, the acceptability of the system for operation from a cGMP standpoint depends on operating within the Allowable Operating Range.</p>
+
+        <p>b) Performance criteria for a Pharmaceutical Water Generation System may require a final product water quality conductivity of <span class="key-term">0.5 &mu;S/cm</span> (2 Mohm-cm) or better as a Design Condition. The Allowable Operating Range for this pharmaceutical water may, however, allow for generation of water quality with a conductivity of <span class="key-term">1.3 &mu;S/cm</span> (0.77 Mohm-cm) or better. The Normal Operating Range for generating water may, in the end, be set by the manufacturer at conductivity value approaching <span class="key-term">1.0 &mu;S/cm</span> (1.0 Mohm-cm) or better to provide a comfortable environment for the operation.</p>
+
+        <p>c) Normal Operating Range cannot exceed the Allowable Operating Range for the product water. The Design Condition selection should reflect Good Engineering Practice.</p>
+
+        <p>d) It is also good practice for manufacturers to apply the concept of <span class="key-term">Alert and Action limits</span> along with Normal Operating Range. Alert Limits are based on normal operating experience and are used to initiate corrective measures before reaching an Action Limit, which is defined as the process condition established by product acceptance criteria. The <span class="key-term">Action Limit deviations</span> must be kept as a part of the batch record as they represent deviations from validated parameters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>三層範圍的層級關係</h4>
+            <p>這是本章最重要的概念之一。三個範圍形成一個<strong>嵌套關係</strong>（Nested Relationship）：</p>
+        </div>
+
+        <div class="hierarchy-diagram">
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-1">Design Range（設計範圍）&mdash; 最寬</div>
+            </div>
+            <div class="arrow-down">&darr;</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-2">Allowable Operating Range（允許操作範圍）&mdash; 驗證範圍</div>
+            </div>
+            <div class="arrow-down">&darr;</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-3">Normal Operating Range（正常操作範圍）&mdash; 最窄</div>
+            </div>
+        </div>
+
+        <div class="formula-box">
+            <h4>電導率範圍實例（來自原文）</h4>
+            <pre>
+Design Condition:           &le; 0.5 &mu;S/cm  (2.0 M&Omega;&middot;cm)
+                            &uarr; 設備供應商的保證值
+
+Allowable Operating Range:  &le; 1.3 &mu;S/cm  (0.77 M&Omega;&middot;cm)
+                            &uarr; 驗證確認的合格範圍
+
+Normal Operating Range:     &le; 1.0 &mu;S/cm  (1.0 M&Omega;&middot;cm)
+                            &uarr; 日常操作的舒適區
+
+USP Stage 1 Limit @ 25&deg;C:  &le; 1.3 &mu;S/cm
+                            &uarr; 法規最低要求
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：高速公路行車速度</h4>
+            <p>把三個範圍想像成高速公路行車：</p>
+            <ul>
+                <li><strong>Design Range（設計範圍）</strong> = 車子的設計極速 200 km/h &mdash; 工程師設計車子時的性能目標</li>
+                <li><strong>Allowable Operating Range（允許操作範圍）</strong> = 法定速限 110 km/h &mdash; 超過就違規（偏差）</li>
+                <li><strong>Normal Operating Range（正常操作範圍）</strong> = 你的巡航速度 90-100 km/h &mdash; 保留安全餘裕</li>
+            </ul>
+            <p>為什麼不直接開在速限邊緣？因為路況變化（= 進水品質波動）可能讓你瞬間超速（= 超出 Allowable Range），所以你需要「緩衝區」。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>Alert Limit vs Action Limit</h4>
+            <table>
+                <tr><th>項目</th><th>Alert Limit（預警限值）</th><th>Action Limit（行動限值）</th></tr>
+                <tr><td>定義</td><td>基於正常操作經驗設定</td><td>基於產品接受標準設定</td></tr>
+                <tr><td>觸發動作</td><td>啟動預防性措施</td><td>啟動偏差調查</td></tr>
+                <tr><td>記錄要求</td><td>記錄在趨勢報告中</td><td><strong>必須</strong>記錄在批次記錄中</td></tr>
+                <tr><td>法規影響</td><td>不構成偏差</td><td>構成偏差（Deviation）</td></tr>
+                <tr><td>比喻</td><td>車上的測速提醒（嗶嗶聲）</td><td>被超速照相拍到（罰單）</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>你的 WFI 系統電導率在正常情況下穩定在 0.8 &mu;S/cm。某天突然升到 1.2 &mu;S/cm，但仍在 USP 限值（1.3 &mu;S/cm）以內。請回答：</p>
+            <ol>
+                <li>這算不算偏差（Deviation）？</li>
+                <li>你的 Alert Limit 和 Action Limit 應該設在哪裡？</li>
+                <li>需要通知 QA 嗎？</li>
+            </ol>
+            <p><em>提示：如果你的 Normal Operating Range 設定為 &le; 1.0 &mu;S/cm，Alert Limit 為 1.0 &mu;S/cm，Action Limit 為 1.2 &mu;S/cm，那麼 1.2 已經觸發 Action Limit &mdash; 即使 USP 限值是 1.3。是的，必須通知 QA 並記錄在批次記錄中。</em></p>
+        </div>
+
+        <div class="practice-box cdmo-application">
+            <h4>CDMO 實務應用：多客戶水質管理</h4>
+            <p>在 CDMO 環境中，Design Range vs Operating Range 的概念尤其重要：</p>
+            <ul>
+                <li><strong>系統設計</strong> &mdash; 以最嚴格客戶的規格作為 Design Condition</li>
+                <li><strong>Allowable Operating Range</strong> &mdash; 以 USP 限值或最嚴格客戶規格為基準</li>
+                <li><strong>Normal Operating Range</strong> &mdash; 設定在 Allowable Range 的 70-80% 處，確保所有客戶的需求都能被滿足</li>
+                <li><strong>Alert/Action Limits</strong> &mdash; 基於至少 12 個月的歷史數據進行趨勢分析後設定</li>
+            </ul>
+            <p>這樣即使進水品質有波動，你仍有足夠的緩衝空間，不至於讓任何一個客戶的產品面臨水質風險。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="section-divider"></div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #e8f0fe 0%, #d4e4fc 100%);">
+    <h3>本章摘要</h3>
+    <ul>
+        <li><strong>水質規格是最大的成本驅動因素</strong> &mdash; 在決定技術方案之前，先確定你真正需要的水質等級（2.1）</li>
+        <li><strong>USP 定義兩種法定水</strong>：Purified Water（電導率 + TOC）和 WFI（PW 要求 + 內毒素 + 蒸餾/RO）（2.2.1-2.2.2）</li>
+        <li><strong>三階段電導率測試</strong>是一套遞進式判定邏輯 &mdash; 大多數情況在 Stage 1 就可判定合格（2.2.4）</li>
+        <li><strong>TOC &le; 500 ppb</strong>，是有機污染的間接指標；超標尖峰需要正式調查但可基於 SOP 簡化處理（2.2.5）</li>
+        <li><strong>微生物取樣必須在使用點</strong>，Action Limit 是最低要求，廠商有責任制定更嚴格的標準（2.2.6, 2.3）</li>
+        <li><strong>CPP = 直接影響水質的參數</strong>，微生物相關參數因「無法即時監控」而格外關鍵（2.4）</li>
+        <li><strong>cGMP 的核心在管理，不在技術</strong> &mdash; 操作維護 &gt; 設備選型；微生物控制是最大挑戰（2.5）</li>
+        <li><strong>三層範圍</strong>：Design Range &supset; Allowable Operating Range &supset; Normal Operating Range，搭配 Alert/Action Limit 形成完整的水質監控體系（2.6）</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems</p>
+    <p>Chapter 2: Key Design Philosophies | p19-p29</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Edition</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

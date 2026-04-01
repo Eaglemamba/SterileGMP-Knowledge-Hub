@@ -1,0 +1,10485 @@
+# ISPE Baseline® Guide: Water and Steam Systems (Volume 4): Design, Installation, Operation, and Qualification of Pharmaceutical Water and Steam Systems
+
+=== PAGE 1 ===
+
+=== PAGE 2 ===
+
+=== PAGE 3 ===
+October 27, 2000
+Dear Colleagues:
+The Food and Drug Administration (FDA) has been pleased to cooperate with the
+International Society for Pharmaceutical Engineering in the development of the Baseline®
+Pharmaceutical Engineering Guide for Water and Steam Systems. We appreciate the
+coopertive efforts and the dedicated intensive work of the engineers who voluntarily
+initiated the development of this Guide. This is an excellent example of how through
+public and private cooperative efforts, both industry and consumers can benefit.
+This document covers engineering aspects of design, construction and operation of new
+water and steam systems. It expands on existing FDA guidance on water systems.
+This Guide is solely created and owned by ISPE. It is not an FDA regulation, standard or
+guidance document and water and steam systems built in conformance with this Guide
+may or may not meet FDA requirements. FDA has provided comments for ISPE's
+consideration in preparing this Guide. It should be helpful to the engineering profession
+and the industry for the design, construction and operation of new water and steam
+systems
+FDA is pleased with the development of this document and we look forward to a contin-
+ued working relationship as future Baseline® Pharmaceutical Engineering Guides are
+developed.
+Sincerely,
+Janet Woodcock, M.D.
+Director, Center for Drug Evaluation and Research
+Dennis Baker
+Associate Commissioner for Regulatory Affairs
+
+=== PAGE 4 ===
+
+=== PAGE 5 ===
+Limitation of Liability
+In no event shall ISPE or any of its affiliates, or the officers, directors, employees, members, or agents of each
+of them, be liable for any damages of any kind, including without limitation any special, incidental, indirect, or
+consequential damages, whether or not advised of the possibility of such damages, and on any theory of liability
+whatsoever, arising out of or in connection with the use of this information.
+All rights reserved. No part of this document may be reproduced or copied in any form or by any means – graphic,
+electronic, or mechanical, including photocopying, taping, or information storage and retrieval systems – without
+written permission of ISPE.
+All trademarks used are acknowledged.
+ISBN 1-931879-79-6
+WATER AND STEAM SYSTEMS
+ISPE PHARMACEUTICAL ENGINEERING GUIDE
+FOREWORD
+For many years, the pharmaceutical industry has experienced increases in the cost of new facilities. These
+increases in cost have been driven in part by uncertainty about the requirements for regulatory compliance.
+Some significant areas of concern are validation, particularly related to automation systems, and the trend to
+validate back to source utilities. The absence of a consistent and widely accepted interpretation of some
+regulatory requirements has led to one-upmanship. This practice of building increasingly technically ad-
+vanced facilities has led to increased cost, longer lead times and, in some cases, delays in bringing new
+products to market.
+In May 1994, engineering representatives from the pharmaceutical industry engaged in a discussion with the
+International Society for Pharmaceutical Engineering (ISPE) and the Food and Drug Administration (FDA).
+As a result of that discussion in November 1994, ISPE began work on nine facility engineering Guides, now
+known as the Baseline® Pharmaceutical Engineering Guides. The first, “Bulk Pharmaceutical Chemicals,”
+was published in June 1996. The second, “Oral Solid Dosage Forms,’” was published in February 1998. The
+third, “Sterile Manufacturing Facilities,” was published in February 1999. This is the fourth such Guide, cover-
+ing Pharmaceutical Water and Steam Systems. Each Engineering Guide was created by, and is owned solely
+by ISPE. FDA provided comments on this and previous Guides, and many of their suggestions have been
+incorporated.
+As with the BPC Guide, OSD, and Sterile Guide, the Water and Steam Systems Guide has been sponsored
+by ISPE’s Pharmaceutical Advisory Council, made up of senior pharmaceutical engineering executives from
+owner companies, and ISPE senior management. Overall planning, direction, and technical guidance in the
+preparation of the Water and Steam Systems Guide was provided by a Steering Committee most of whom
+were involved in the BPC Guide. The Water and Steam Systems Guide itself was produced by a Task Team of
+individuals who expended a great deal of their own time in its preparation and development.
+The Water and Steam Systems Appendix contains material considered “informational” which, although nec-
+essary, would have been detrimental to the clarity of the dedicated chapter. The Appendix has not been
+reviewed by and therefore is not endorsed by the FDA.
+Editors’ Disclaimer:
+This Guide is meant to assist pharmaceutical manufacturers in the design and construction of new
+and renovated facilities that are required to comply with the requirements of the Food and Drug
+Administration (FDA). The International Society for Pharmaceutical Engineering (ISPE) cannot en-
+sure, and does not warrant, that a facility built in accordance with this Guide will be acceptable to
+FDA.
+
+=== PAGE 6 ===
+WATER AND STEAM SYSTEMS
+ACKNOWLEDGEMENTS
+CHAPTER WRITERS AND REVIEWERS
+The following individuals took lead roles in the preparation of this document:
+Gerald L. Geisler, Bristol-Myers Squibb Co. was the Task Team Chairperson for the Water and Steam
+Systems Guide. Moe Elmorsi, Boehringer Ingelheim, acted as the Guide mentor.
+Technical Documents Steering Committee Chairperson
+Paul Lorenzo, (Retired)/ Paul D’Eramo, Johnson & Johnson
+The Core Team on the Water and Steam Systems Guide comprised:
+Gerald L. Geisler, Bristol-Myers Squibb Co.
+Jeff Biskup, Clark, Richardson & Biskup
+Robert Myers, Kvaerner
+Bob Bader, Kinetics
+The Chapter Credits are as follows:
+Gerald Geisler, Bristol-Myers Squibb Co.
+Chapter 1: Introduction
+Brian Owens, H2O Pure, Inc.
+Gerald Geisler, Bristol-Myers Squibb Co.
+Chapter 2: Key Design Philosophies
+Brian Owens, Water Pure, Inc.
+Jeffrey Biskup, Clark, Richardson & Biskup
+Chapter 3: Water Options and Programming
+Maria Capote, Source Tech
+James C. Cox, Merck & Co.
+Gerald L. Geisler, Bristol-Myers Squibb Co.
+Ryan Schroeder, Clark, Richardson & Biskup
+Sidney Brookes, DuPont Merck Pharmaceuticals
+Chapter 4: Source Feed Water Quality and
+Pretreatment
+Michael Partow, Pfizer Inc.
+Chapter 5: Final Treatment Non-Compendial
+Andrew Zaske, Osmonics
+and Compendial Purified Water
+Gary Zoccolante, U.S. Filter
+Sharif Disi, Meco
+Chapter 6: Final Treatment Compendial WFI
+Brian Owens, H2O Pure, Inc.
+Brian Owens, H2O Pure, Inc.
+Chapter 7: Pharmaceutical Steam
+Bob Bader, Kinetics
+Robert Myers, Kvaerner
+Chapter 8: Storage and Distribution Systems
+Gary Gray, East Group
+Bob Bader, Kinetics
+Randolph Brozek, Pfizer, Inc.
+James Cox, Merck & Co
+Paul Skinner, Clark, Richardson & Biskup
+Gerald Geisler, Bristol-Myers Squibb Co.
+
+=== PAGE 7 ===
+WATER AND STEAM SYSTEMS
+John Linder, CE & IC
+Chapter 9: Instrumentation and Control
+Debra Nahas, Eli Lilly & Co.
+John Fadool, Glaxo Wellcome
+Chapter 10: Commissioning & Validation
+Robert Myers, Kvaerner
+Manfred Septinus, Roche Carolina, Inc.
+Phil DeSantis, Fluor Daniel
+Dominick Smith, Regeneron
+Chapters 11 and 12: Appendices
+Phil Desantis, Fluor Daniel
+Sidney Brooks, DuPont Merk Pharmaceuticals
+James C. Cox, Merck & Co.
+Sharif Disi, Meco
+Brian Owens, Water Pure, Inc.
+Michael Partow, Pfizer
+Paul Skinner, Clark, Richardson & Biskup
+Gary P Zoccolante, U. S. Filter
+Pat H. Banes, Oakley Services Co.
+The above Guide Task Team worked on one or more chapters and volunteered countless hours to attend
+meetings, and review the many drafts, which were prepared over an 18-month period.
+The following members of the Water and Steam Systems Task Team also worked on one or more of the
+chapters and reviewed drafts:
+Georgia Keresty, Ph.D., Bristol-Myers Squibb
+Paula Soteropoulis, Genzyme Corp.
+Alex Konopka, Eli Lilly & Co.
+John Trentacosti, Johnson & Johnson
+Carl Roe, Abbott Labs
+FDA Reviewers
+We would like to thank the following FDA review team for their input to this Guide:
+Sharon Smith Holston
+(Deputy Commissioner for External Affairs)
+Joseph Phillips
+(Deputy Regional Food and Drug Director, Mid-Atlantic Region)
+Tracy Roberts
+(CDER, Office of Compliance)
+Robert Coleman
+(Atlanta National Expert)
+Richard Friedman
+(CDER, Office of Compliance)
+Nancy Rolli
+(Investigator, Drug Specialist, New Brunswick, NJ Inspection Post)
+
+=== PAGE 8 ===
+WATER AND STEAM SYSTEMS
+for this project:
+Alcon Laboratories
+Bayer Corp.
+Boehringer Ingelheim
+Bristol-Myers Squibb Co.
+Eli Lilly & Co.
+Glaxo Wellcome Inc.
+Hoffmann-La Roche Inc.
+Merck & Co., Inc.
+Pfizer Inc.
+Pharmacia & Upjohn Inc.
+Wyeth-Ayerst Laboratories
+Zeneca Pharmaceuticals
+Zenith Goldline Pharmaceuticals
+
+=== PAGE 9 ===
+TABLE OF CONTENTS
+ACKNOWLEDGEMENTS ........................................................................................................................... 4
+1.
+INTRODUCTION
+1.1
+BACKGROUND..................................................................................................................... 11
+1.2
+SCOPE OF THIS GUIDE ...................................................................................................... 11
+
+### 1.3 SOME APPLICABLE FDA CURRENT REGULATIONS AND GUIDES FOR
+
+PHARMACEUTICAL WATER SYSTEMS .............................................................................. 11
+1.4
+KEY CONCEPTS .................................................................................................................. 12
+1.5
+GUIDE STRUCTURE ............................................................................................................ 13
+2.
+KEY DESIGN PHILOSOPHIES
+2.1
+INTRODUCTION................................................................................................................... 15
+2.2
+UNITED STATES PHARMACOPOEIA (USP) ........................................................................ 15
+2.3 SPECIFICATION OF PHARMACEUTICAL WATER QUALITY .............................................. 20
+2.4
+CRITICAL PROCESS PARAMETERS .................................................................................. 21
+2.5
+CGMP COMPLIANCE ISSUES ............................................................................................. 21
+2.6
+DESIGN RANGE VERSUS OPERATING RANGE ................................................................ 22
+3.
+WATER OPTIONS AND SYSTEM PLANNING
+3.1
+INTRODUCTION................................................................................................................... 25
+3.2
+WATER QUALITY OPTIONS ................................................................................................. 25
+3.3
+SYSTEM PLANNING ............................................................................................................ 29
+3.4
+SYSTEM DESIGN................................................................................................................. 33
+4.
+PRETREATMENT OPTIONS
+4.1
+INTRODUCTION................................................................................................................... 35
+4.2
+PROCESS DESIGN OF PRETREATMENT .......................................................................... 35
+4.3 FEEDWATER TO PRETREATMENT QUALITY: TESTING AND DOCUMENTATION ............ 37
+
+### 4.4 OUTPUT WATER FROM PRETREATMENT: QUALITY OF FEEDWATER TO
+
+FINAL TREATMENT .............................................................................................................. 38
+4.5 CONTROL OF FOULING: REMOVAL OF TURBIDITY AND PARTICULATES ...................... 39
+4.6 CONTROL OF SCALING: REMOVAL OF HARDNESS AND METALS ................................. 39
+4.7
+REMOVAL OF ORGANICS ................................................................................................... 40
+4.8 SYSTEM DESIGN FOR CONTROL OF MICROBIAL GROWTH .......................................... 41
+4.9
+REMOVAL OF MICROBIAL CONTROL AGENTS ................................................................. 42
+4.10 CHANGES IN ANION COMPOSITION / CONCENTRATION................................................ 42
+4.11
+THE IMPORTANCE OF PH IN PRETREATMENT................................................................. 43
+4.12 MATERIALS OF CONSTRUCTION AND CONSTRUCTION PRACTICES............................ 43
+4.13
+PRETREATMENT SUMMARY .............................................................................................. 44
+5.
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+5.1
+INTRODUCTION................................................................................................................... 47
+5.2
+ION EXCHANGE................................................................................................................... 48
+5.3
+CONTINUOUS ELECTRODEIONIZATION (CEDI) ............................................................... 51
+5.4
+REVERSE OSMOSIS ........................................................................................................... 53
+5.5 POLISHING COMPONENTS - NON-IONIC CONTAMINANTS REDUCTION....................... 56
+
+=== PAGE 10 ===
+TABLE OF CONTENTS
+6.
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+6.1
+INTRODUCTION................................................................................................................... 63
+6.2
+US PHARMACOPOEIA ISSUES ........................................................................................... 63
+6.3
+DISTILLATION ...................................................................................................................... 64
+6.4
+DISTILLATION APPLICATIONS AND CAPACITIES .............................................................. 64
+6.5
+PROCESS AND SYSTEM DESCRIPTION ........................................................................... 65
+6.6
+REVERSE OSMOSIS (RO) ................................................................................................... 70
+6.7 USP - WATER FOR INJECTION SYSTEMS COMPARISON ................................................ 73
+7.
+PHARMACEUTICAL STEAM
+7.1
+INTRODUCTION................................................................................................................... 75
+7.2
+CGMP ISSUES ..................................................................................................................... 75
+7.3
+TYPES OF STEAM ............................................................................................................... 76
+7.4
+BACKGROUND AND INDUSTRY PRACTICES .................................................................... 77
+7.5
+SYSTEM PLANNING ............................................................................................................ 80
+7.6 PHARMACEUTICAL STEAM PURITY DECISION TREE...................................................... 82
+7.7
+PROCESS AND SYSTEM DESCRIPTION ........................................................................... 83
+7.8
+SIZING THE CLEAN STEAM SYSTEM................................................................................. 86
+7.9
+COST IMPLICATIONS .......................................................................................................... 90
+7.10
+STEAM “QUALITY” ............................................................................................................... 90
+7.11
+DISTRIBUTION ..................................................................................................................... 90
+7.12 FOUR EXAMPLES OF CORRECT PIPING PRACTICE ....................................................... 93
+8.
+STORAGE AND DISTRIBUTION SYSTEMS
+8.1
+INTRODUCTION................................................................................................................... 95
+8.2
+SYSTEM DESIGN................................................................................................................. 95
+8.3
+SYSTEM DISTRIBUTION DESIGN....................................................................................... 96
+8.4
+MATERIALS OF CONSTRUCTION ..................................................................................... 113
+8.5
+SYSTEM COMPONENTS ................................................................................................... 115
+
+### 8.6 COMPARISON OF WFI SYSTEMS WITH STORAGE TANK AND WITHOUT
+
+STORAGE TANK ................................................................................................................. 117
+8.7 MICROBIAL CONTROL DESIGN CONSIDERATIONS ....................................................... 119
+8.8
+CONTINUOUS MICROBIAL CONTROL ............................................................................. 122
+8.9
+PERIODIC STERILIZATION/SANITIZATION....................................................................... 124
+8.10 SYSTEM DESIGN FOR STERILIZATION/SANITIZATION .................................................. 126
+9.
+INSTRUMENTATION AND CONTROL
+9.1
+INTRODUCTION................................................................................................................. 129
+9.2
+PRINCIPLES ....................................................................................................................... 129
+9.3
+GENERAL INSTRUMENTATION REQUIREMENTS ........................................................... 130
+9.4 DESIGN CONDITIONS VERSUS OPERATING RANGE .................................................... 134
+9.5
+INSTRUMENTATION SPIKES ............................................................................................. 135
+9.6
+CONTROL SYSTEMS......................................................................................................... 135
+
+=== PAGE 11 ===
+10. COMMISSIONING AND QUALIFICATION
+10.1
+INTRODUCTION................................................................................................................. 137
+10.2
+SYSTEM QUALIFICATION DOCUMENTATION .................................................................. 137
+10.3
+SYSTEM QUALIFICATION SAMPLING PROGRAM ........................................................... 138
+10.4
+ACCEPTANCE CRITERIA................................................................................................... 140
+10.5
+QUALIFICATION REPORTS ............................................................................................... 141
+10.6
+CHANGE CONTROL AND REQUALIFICATION ................................................................. 141
+11. APPENDIX
+11.1
+USP REGULATED WATER QUALITY ................................................................................. 143
+11.2
+EUROPEAN PERSPECTIVE .............................................................................................. 151
+11.3
+PASSIVATION ..................................................................................................................... 153
+11.4
+PRETREATMENT PROCESSES ........................................................................................ 162
+
+### 11.5 FINAL TREATMENT FOR NON-COMPENDIAL AND COMPENDIAL PURIFIED
+
+WATER SYSTEMS .............................................................................................................. 175
+11.6
+DISTILLATION FOR HIGH PURITY WATER SYSTEMS ..................................................... 182
+11.7
+CLEAN STEAM - CLEAN STEAM GENERATORS ............................................................. 187
+
+### 11.8 MICROBIAL CONTROL BASICS, TESTING, AND STERILIZATION/SANITIZATION
+
+EQUIPMENT DESIGN AND INSTALLATION ISSUES ........................................................ 190
+11.9 FABRICATION/PROCEDURES FOR DISTRIBUTION SYSTEMS ...................................... 198
+11.10 DESIGN OF WFI/PURIFIED WATER DISTRIBUTION SYSTEM ......................................... 205
+11.11 FABRICATION OF A WFI/PURIFIED WATER DISTRIBUTION SYSTEM ............................ 206
+11.12
+ABBREVIATIONS AND DEFINITIONS ................................................................................ 213
+TABLE OF CONTENTS
+
+=== PAGE 12 ===
+
+=== PAGE 13 ===
+INTRODUCTION
+
+=== PAGE 14 ===
+
+=== PAGE 15 ===
+INTRODUCTION
+1.
+INTRODUCTION
+
+### 1.1 BACKGROUND
+
+The design, construction, and validation (commissioning and qualification) of water and steam systems for
+the pharmaceutical industry represent key opportunities for manufacturers, engineering professionals, and
+equipment suppliers. These systems are required to meet current Good Manufacturing Practice cGMP regu-
+lations while remaining in compliance with all other governing codes, laws, and regulations.
+The cost of bringing these systems on line is highly variable, owing to interpretation of regulatory require-
+ments and overly conservative design approaches. This Guide is intended to offer a practical, consistent
+interpretation, while still allowing flexibility and innovation.
+This Guide was prepared by ISPE, with feedback from industry representatives from all areas and disci-
+plines, and comments provided by FDA. It reflects ISPE’s current thinking related to engineering of new water
+and steam systems.
+It is recognized that industry standards evolve, and this document reflects the understanding of them as of
+the publication date.
+
+### 1.2 SCOPE OF THIS GUIDE
+
+This Guide is intended for the design, construction, and operation of new water and steam systems. It is
+neither a standard nor a detailed design guide. The validation of water and steam systems, which comprises
+commissioning and qualification activities, will not be discussed in-depth in this Guide, but is covered in the
+Commissioning and Qualification Baseline® Guide.
+The purpose of this Guide is to focus on engineering issues, and provide cost effective water and steam
+systems. Where non-engineering issues (e.g., microbiological topics) are covered, the information is included
+to stress the importance of such topics and the impact they have on water and steam system design. Such
+non-engineering topics, therefore, are not covered comprehensively, and specific advice from QA depart-
+ments and technical experts must be sought where technical input is required.
+This Guide is intended primarily for regulatory compliance for the domestic United States (US) market, and
+follows US standards and references. European and other non-US standards and references may be incor-
+porated in future revisions.
+
+### 1.3 SOME APPLICABLE FDA CURRENT REGULATIONS AND GUIDES FOR PHARMACEUTICAL
+
+WATER SYSTEMS
+•
+Food and Drug and Cosmetic Act
+•
+The United States Pharmacopoeia XXIV
+•
+Title 21 CFR, Part 211
+•
+FDA Guide To Inspections of High Purity Water Systems
+
+=== PAGE 16 ===
+INTRODUCTION
+
+### 1.4 KEY CONCEPTS
+
+The following key concepts covered in this Guide are:
+a)
+Methodology for defining the required water quality and configuring a water delivery system.
+b)
+Critical process parameters.
+c)
+Good Engineering Practices.
+d)
+Design Options
+a)
+Methodology for defining the required quality and configuring a water delivery system:
+Perhaps the most critical step in a new pharmaceutical water or steam system, from a regulatory as well
+as technical and financial standpoint, is the specification of water or steam quality required. The specifi-
+cation established is likely to have a larger impact on lifecycle costs of the system than any of the subse-
+quent design decisions. In addition, regulated industries must consider the costs of noncompliance and
+water system failures. Therefore, it is essential for the designer to seek advice from the Quality unit and
+technical experts early in the process.
+Once process water and/or steam requirements are determined, system design options need to be
+addressed. This Guide presents alternative baseline water and steam system building blocks and asso-
+ciated advantages and disadvantages of each. These baseline building blocks are qualified relative to
+such things as capital costs; feed water chemistry; product water quality; chemical handling; water con-
+sumption; energy consumption; outside service costs maintenance requirements; and chemical/micro-
+bial/endotoxin removal performance.
+Guide emphasis is on how the system design should be determined based on the quality of feed water;
+the design of the pretreatment and final treatment system; the storage and distribution system design;
+and operation/maintenance procedures.
+The Guide aims to improve consistency of pharmaceutical water and steam quality throughout the indus-
+try, as a result of system performance and reliability improvements. It also provides the user with alterna-
+tive basic system building blocks to permit reliable and consistent generation of the required water or
+steam quality.
+b)
+Critical process parameters
+Critical parameters are defined as those parameters that directly affect the product quality. For example,
+since microbial quality cannot be directly monitored in real time, the parameters relied upon to control
+microbial growth are normally considered critical. These may include temperature; UV intensity; ozone
+concentration; circulating systems under positive pressure; etc. In regard to chemical purity, the quality
+attributes themselves (properties of water produced), may be monitored at or after each process step,
+and the proper performance of that operation confirmed directly. For a system producing compendial
+water, properties mandated in the official monograph obviously constitute critical parameters.
+Critical instruments are those instruments that measure critical quality attributes. This concept is dis-
+cussed in Chapter 2 and used as a basis for subsequent chapter discussions where appropriate.
+
+=== PAGE 17 ===
+INTRODUCTION
+c)
+Good Engineering Practice (GEP)
+GEP recognizes that all systems in a facility, whether they are water systems, steam systems, elevators,
+process reactors, safety valves, or rest rooms, require some form of commissioning and/or qualification.
+Nearly all systems require documentation, inspection, and field testing. Good Engineering Practice capi-
+talizes upon this practice suggesting that manufacturers engage all stakeholders (engineers, operators,
+Quality Assurance, and others) very early in the planning, design, construction, commissioning/qualifica-
+tion phases to ensure that systems are documented only once.
+d)
+Design Options
+The Guide emphasizes that a water system can be designed in many different ways, yet meet the overall
+requirements of the system. It encourages a well-thought-out, planned approach to the design with input
+from many areas of the organization including Quality Assurance.
+
+### 1.5 GUIDE STRUCTURE
+
+The structure of the Guide is shown in Figure 1-1 below. The chapters have been organized to assist in a
+logical decision process to determine the type of water required and the system design needed to provide it.
+
+*[Figure 1-1 Pharmaceutical Water and Steam Baseline® Guide Structure]*
+
+=== PAGE 18 ===
+
+=== PAGE 19 ===
+KEY DESIGN PHILOSOPHIES
+
+=== PAGE 20 ===
+
+=== PAGE 21 ===
+KEY DESIGN PHILOSOPHIES
+2.
+KEY DESIGN PHILOSOPHIES
+
+### 2.1 INTRODUCTION
+
+Pharmaceutical water is the most widely used ingredient in drug manufacturing and the main component in
+equipment/system cleaning. Therefore, systems for the production of pharmaceutical water constitute a key
+component in every manufacturing facility. The nature of producing pharmaceutical waters is to minimize or
+eliminate potential sources of contamination. This Guide considers this and the means by which engineers
+can design out, or ensure control of the risk.
+The quality of Pharmaceutical Water and Steam is not only critical from a regulatory point of view, but also
+from a financial point of view. The Pharmaceutical Water and Steam specification has the largest impact on
+lifecycle costs of the system.
+It must be demonstrated that all pharmaceutical waters (non-compendial and United States Pharmacopoeia
+(USP) monograph compendial waters) can be produced consistently to specification. Establishing the level of
+microbial control needed in a pharmaceutical water and steam system used in the manufacture of a non-
+sterile product requires an understanding of both the use of the product and the manufacturing process.
+Manufacturers need to define the appropriate water purity based upon sound process understanding and
+system equipment capability. They must determine the specific purification capability for each processing
+step, the limitations of the unit operation, and the critical parameters, which affect the specified water/steam
+quality - chemically, physically, or biologically. Expert QA advice should be sought to provide further details
+about this important area.
+USP covers two compendial water qualities (USP Purified Water and USP Water for Injection). This Guide
+supports both these water qualities plus additional non-compendial waters including “Drinking Water”. It is
+common practice to name non-compendial waters (exclusive of “Drinking Water”) used in pharmaceutical
+manufacturing by the final treatment step (i.e., Reverse Osmosis/RO water, deionized water/DI water, etc.).
+Guidance on establishing specifications for monographed USP water is provided in the United States Phar-
+macopoeia (USP). Additionally, the FDA Guide to Inspections of High Purity Water Systems (which was
+developed for FDA personnel) also provides useful information to the user.
+2.2 UNITED STATES PHARMACOPOEIA (USP)
+USP is a Guide to producing medicinal products for consumption within the US. USP specify standards of
+quality, purity, packaging, and labeling for a number of waters including two bulk waters, “Water for Injection”
+and “Purified Water” used in the preparation of compendial (USP) dosage forms. This Guide is concerned
+with the production of these two compendial (USP) waters and does not address the other “packaged waters”
+monographed by the USP. USP 24 (and supplements) is the current version, at the time this Guide was
+prepared.
+
+#### 2.2.1 USP Purified Water
+
+Official monograph requirements for “Purified Water” require that “Purified Water”:
+•
+Is obtained from water complying with the “U.S. Environmental Protection Agency National Primary Drinking
+Water Regulations, or comparable regulations of the European Union or Japan, and will be referred to
+subsequently as “Drinking Water”.
+•
+Contains no added substance
+
+=== PAGE 22 ===
+KEY DESIGN PHILOSOPHIES
+•
+Is obtained by a suitable process
+•
+Meets the requirements for Water Conductivity
+•
+Meets the requirements for Total Organic Carbon (TOC)
+2.2.2 USP Water for Injection (WFI)
+Official monograph requirements for “Water for Injection” require that “Water for Injection”:
+•
+Meets all of the requirements for “Purified Water”
+•
+Is obtained by a suitable process and purified by distillation or Reverse Osmosis
+•
+Meets the requirements of the Bacterial Endotoxin test and contains not more than 0.25 USP Endotoxin
+Unit per ml
+•
+Is prepared using suitable means to minimize microbial growth
+
+#### 2.2.3 Non-Monographed but accepted requirements
+
+The USP “General Information” provides background information, which clarifies regulatory intent. The fol-
+lowing information is included in Chapter 11:
+•
+Purified water systems require frequent sanitization and microbiological monitoring to ensure water of
+appropriate microbiological quality at the points of use.
+•
+Water for Injection is “finally subjected to distillation or Reverse Osmosis”, implying that the Still or RO
+unit is the last unit operation. “The system used to produce, store and distribute water for injection must
+be designed to prevent microbial contamination and the formation of microbial endotoxins, and it must be
+validated.”
+•
+An action limit of 100 colony forming units per ml (10,000 CFU/100 ml) for “Purified Water” is suggested.
+•
+An action limit of 10 colony forming units per 100 ml (10 CFU/100 ml) for “Water for Injection” is sug-
+gested.
+•
+Minimum sample sizes are 1 ml for USP Purified Water and 100 ml for WFI. (FDA recommends 100 ml for
+Purified Water and 250 ml for WFI).
+Note: “It should be emphasized that the above action guidelines are not intended to be totally inclusive for
+every situation where ingredient waters are to be employed. It is therefore, incumbent upon the manufacturer
+to supplement the general action guidelines to fit each particular manufacturing situation” [USP24, page
+2163]. When designing a pharmaceutical or medical device water system, it is critical for the designer to
+consult with the manufacturers technical experts to ascertain what purity levels must be achieved.
+
+=== PAGE 23 ===
+KEY DESIGN PHILOSOPHIES
+
+#### 2.2.4 USP testing and instrument requirements
+
+THREE STAGE CONDUCTIVITY TESTING
+CONDUCTIVITY INSTRUMENT REQUIREMENTS FOR ACCEPTABLE REGULATORY
+MEASUREMENT
+Temperature Measurement
+± 0.25°C Accuracy
+Resolution
+< ± 0.1 µS/cm
+Conductivity cell constant
+± 2% Accurate
+Reading accuracy
+< ± 0.1 µS/cm
+Location of In-Line meters
+Must reflect the quality of the water used. Typically, the optimum location in a
+distributed water loop is following the last “point of use” valve, and prior to the
+storage tank return connection.
+Instrument type
+The above procedure is based on the use of a “dip” or “flow through” conduc-
+tivity cell. Conductivity readings used to control USP compendial waters must
+be non-temperature-compensated measurements.
+
+#### 2.2.5 Total Organic Carbon (TOC) and Requirements for TOC Control
+
+TOC is an indirect measure, as carbon, of organic molecules present in high purity water. USP replaced the
+USP 22 “Oxidizable Substance” wet chemistry test with an In-Line capable, TOC test. A limit was determined
+by USP to be 0.5ppm or 500ppb, based on the results of studies and an industry wide survey of pharmaceu-
+tical water systems.
+SYSTEMS AVAILABLE FOR MEASURING TOC
+Instruments are available for measuring TOC In-Line from slipstreams and from grab samples manually
+removed from the water system. Automatic Off-Line sample introduction systems are available for processing
+large numbers of grab samples. USP have not prevented acceptable technologies from being used, but limit
+the methods to the following instruments that are capable of completely oxidizing the organic molecules to
+Carbon dioxide (CO2), measuring the CO2 levels as carbon, discriminating between Inorganic carbon (IC)
+and the CO2 levels generated from the oxidization of the organic molecules, maintaining an equipment limit of
+detection of 0.05 mg per liter, or lower, and periodically demonstrating an equipment “suitability”.
+Acceptance Criteria
+Use the stage 1 table from the latest revision
+to USP to determine the conductivity limit.
+When change does not exceed a net of 0.1
+µS/cm over 5 minutes, measure the conduc-
+tivity. If less than 2.1 µS/cm the water meets
+the requirements.
+Use the stage 3 table from the latest revision
+to USP to determine the conductivity limit. If
+either the measured conductivity is greater than
+the limit value or the pH value is outside the
+range of 5 to 7, the water does not meet the
+requirements.
+Method of Measurement
+Use In-Line or grab sample and measure the
+conductivity and operating water temperature
+Retest at least 100 ml of the stage 1 grab
+sample for conductivity after vigorous mixing
+and temperature normalization to 25°C ±1°C
+If the stage 2 test does not meet the require-
+ments, retest the sample within 5 minutes while
+maintaining temperature. Add 0.3 ml per 100
+ml of saturated potassium chloride solution and
+determine the pH to the nearest 0.1 pH unit.
+Stage
+One
+Two
+Three
+
+=== PAGE 24 ===
+KEY DESIGN PHILOSOPHIES
+A number of acceptable methods exist for measuring TOC in high purity water. All share the same basic
+methodology, the complete oxidation of the organics to CO2 and the measurement of this CO2.
+Three general approaches, based on the above concept are used in a variety of commercially available
+instruments, which measure Organic Carbon in a water sample by completely oxidizing the organic mol-
+ecules to Carbon dioxide (CO2) and measuring the CO2 levels as carbon. Four common oxidation methods
+and four common CO2 measurement methods are used in different combinations in these TOC analyzers.
+The total carbon (TC) result may be expected to include Inorganic carbon resulting from dissolved CO2 and
+bicarbonate which must be subtracted from the TC to produce the Total Organic Carbon level in the sample.
+Some TOC analyzers remove the Inorganic Carbon (IC) by acidifying the samples and either gas stripping or
+vacuum degassing the CO2. In pharmaceutical waters the IC levels are generally very low and IC removal
+processes are not usually required.
+TYPES OF TOC ANALYZERS
+•
+Laboratory Instruments
+•
+In-Line Instruments
+•
+Laboratory Instruments capable of operating in-line
+When USP accepted the well-proven technology for measuring TOC, they applied laboratory quality control
+procedures to its application. While these techniques are common in a laboratory for setting a wide range
+equipment for measurement over a specific range, they place unusual limitations on In-Line TOC applica-
+tions. TOC instruments must be:
+•
+Maintained calibrated to ensure reliable and consistent readings
+•
+Periodically checked for “suitability”
+•
+Standardized
+•
+May be used In-Line or Off-Line
+•
+If installed In-Line, the instrument must reflect the quality of the water used
+OUT OF RANGE EXCURSIONS
+Out of range readings may be experienced as the direct result of the above types of organic contaminations.
+Spikes may also occur as the result of extraneous electrical interference etc. All spikes must be identified and
+formally explained.
+Procedures to handle out of range spikes should be available. These procedures should address short dura-
+tion spikes, which occur following continuous acceptable readings and are followed by similar acceptable
+readings, specifically in In-Line applications. Procedures should list the potential sources and allow the ac-
+ceptance of such a spike without further investigation if the spike is preceded and succeeded by a number of
+acceptable readings.
+Unexplainable spikes may be minimized when using In-Line batch sampling systems by extending the sample
+analysis period to 30 or 60 minutes rather than using shorter analysis periods. This technique measures
+more sample in a longer time period, allowing the recorded result to be based on statistical analysis over the
+extended time period.
+
+=== PAGE 25 ===
+KEY DESIGN PHILOSOPHIES
+
+#### 2.2.6 USP 23 Microbial and Endotoxin Testing
+
+Microbial contaminants and Endotoxins are traditionally sampled at the points of use in a water system.
+USP 24 has made no changes in this area.
+
+#### 2.2.7 USP 23 pH testing
+
+Testing water for compliance with the USP 24 pH limits is required as part of the stage 3 Off-Line conductivity
+testing. (pH must be confirmed as being in the range of 5 to 7.) Testing may use calibrated Off-Line meters.
+Calibration should be performed using solutions of a known pH, covering the range of 5 to 7. The frequency
+of calibration should ensure that the levels of accuracy are maintained. Refer to manufacturer for specific
+recommendations on both method and frequency.
+
+**Table 2-1**
+
+In-Line compared with Off-Line TOC Monitoring
+Features
+Installed cost
+Operating cost
+Recommended
+test frequency
+Frequency of
+Suitability and
+Limit Response
+testing
+In-Line
+Monitor should include built in alarms and
+be programmable in respect to the “out
+of spec.” excursions. Should have con-
+venient method of conducting Limit Re-
+sponse and Suitability Tests.
+Medium, based on above features and a
+single installed unit. High, if multiple units
+are installed.
+Low to high, depending on instrument
+capability for suitability and limit response
+testing and the number of instruments
+installed.
+4 to 48/day
+The recommended frequency is based
+on the specific system requirement for
+trending or concern for “out of spec.” ex-
+cursions and their subsequent investiga-
+tions. See paragraph on “Special Re-
+quirements”.
+Based on documented history
+Off-Line
+Laboratory instrument should be capable
+of achieving robust oxidation levels and
+should include automatic Off-Line sample
+introduction systems, for processing
+large numbers of grab samples. A gen-
+erous supply of scrupulously clean poly-
+mer based sample containers is required.
+Laboratory instruments will require re-
+agents and carrier gases.
+High, based on above features
+High
+1/shift
+1/shift
+
+=== PAGE 26 ===
+KEY DESIGN PHILOSOPHIES
+
+#### 2.2.8 Validated Backup Instrumentation
+
+Failure of a monitoring instrument should not be precluded when making decisions concerning type, location
+and the extent of validation. Since each excursion from the acceptable limits must be investigated, In-Line
+installations should be supplemented with a calibrated laboratory instrument as backup. Validation should
+include the operation in Off-Line mode as a supplement or alternate to In-Line instrumentation. Off-Line
+laboratory testing should also include a backup instrument to be maintained calibrated in case of failure of the
+primary unit.
+
+### 2.3 SPECIFICATION OF PHARMACEUTICAL WATER QUALITY
+
+#### 2.3.1 Specifying Water Quality
+
+The quality of water supplied in any pharmaceutical process must be consistent with the quality required for
+the final product. It may not be sufficient to specify a water quality that meets the specification of the two
+compendial grades of water outlined in the USP. These grades, USP Purified water and WFI, are minimum
+standards. A more stringent specification could be required depending on the intended use of the product
+and on the process used to manufacture that product. It is the responsibility of each drug manufacturer to
+establish the logic for their water quality specification based on the required quality of the end product.
+Pharmaceutical water uses can be categorized as:
+•
+An ingredient in a dosage form manufacturing process
+•
+An ingredient in an Active Pharmaceutical Ingredient (API) process (the term API is used interchange-
+ably with BPC, meaning Bulk Pharmaceutical Chemical)
+•
+Equipment cleaning or rinsing
+Water intended for use as a dosage form ingredient must be USP monograph water and must be produced
+consistently to specification. Evidence of control is required for all critical process parameters that may affect
+the final drug characterization. USP WFI water would be expected to be used for parenteral manufacture,
+some ophthalmic and some inhalation products.
+The monographs for USP Purified and WFI compendial pharmaceutical waters stipulate the baseline require-
+ments for water used in production, processing, or formulation of pharmaceutical activities.
+For some applications where there are no requirements for compendial waters, the manufacturer may estab-
+lish quality specifications equivalent to USP-WFI or Purified Waters, depending on the specific application.
+Specifications for water used as an ingredient (exclusive of sterile bulks) in the manufacture of API’s or as the
+wash solvent in the wash or rinse cycles must be determined by the manufacturer. In some cases “Drinking
+Water” may be acceptable, or certain chemical or microbial or endotoxin quality specifications may be estab-
+lished, or one of the compendial waters may be used. The specification should be based on the potential for
+contamination of the final drug product. Any decision about water usage must be made with the approval of
+Quality Assurance.
+With the appropriate justification, non-compendial pharmaceutical waters (including “drinking waters”) may
+be utilized throughout pharmaceutical operations including production equipment washing / cleaning as well
+as rinsing, laboratory usage and as an ingredient in the manufacture or formulation of bulk active pharmaceu-
+tical ingredients. Compendial water must, however, be used with preparation of (as an ingredient) compendial
+dosage forms. In both compendial and non-compendial waters, the manufacturer must establish an appropri-
+ate microbial quality specification per the FDA “Guide To Inspections of High Purity Water Systems”. The
+
+=== PAGE 27 ===
+KEY DESIGN PHILOSOPHIES
+significance of microorganisms in non-sterile pharmaceutical products should be evaluated in terms of the
+use of the product and the nature of the product and the potential harm to the user. Manufacturers are
+expected to establish appropriate microbial alert and action levels for microbial counts associated with the
+types of pharmaceutical waters utilized. These levels must be based on process requirements and the his-
+torical record of the system in question. The US Pharmacopoeia states action levels that are generally con-
+sidered acceptable are 500 CFU/ml for drinking water, 100 CFU/ml for Purified Water, and 10 CFU/100 ml for
+WFI, and may be more stringent depending on its use. Microbial system design considerations are discussed
+later (see Chapter 8).
+The user should consider whether microorganisms in pharmaceutical water could threaten product preser-
+vation or product stability, or whether water may contaminate product with pathogenic bacteria or endotoxins.
+Specific microbiological objectives and standards suitable to the needs of the products manufactured must
+be defined. A water system must meet these objectives and a monitoring program must be established /
+implemented to document that the standards are consistently being met.
+Engineers involved in water system design must understand the chemical and microbial quality attributes in
+the water delivered to use points.
+The final quality of pharmaceutical water and steam is determined by the manufacturing process and end
+product, quality of feed water, pretreatment and final treatment sub-systems, storage and distribution system
+design and operator/maintenance procedures. Expert QA advice should be sought out to give further details
+about this important area.
+
+### 2.4 CRITICAL PROCESS PARAMETERS
+
+Critical parameters are defined as those parameters, which directly affect the water quality at, or after, a
+treatment step. For example, water temperature during a heat sanitization cycle has a direct effect on water
+quality.
+Regarding chemical purity, the quality attributes may be monitored at or after each critical process step, and
+the proper performance of that operation confirmed directly. Since microbial quality cannot be directly moni-
+tored in real time, the parameters relied upon to control microbial growth are usually (depending on the
+system) considered critical, such as temperature, UV intensity, ozone concentration, circulation rate, saniti-
+zation procedures, positive pressure, etc.
+For a system producing compendial water, properties mandated in the official monograph (including bioburden
+and endotoxins) constitute critical attributes. Critical instruments are those instruments, which measure criti-
+cal attributes or parameters.
+2.5
+cGMP COMPLIANCE ISSUES
+Satisfying regulatory concerns is primarily a matter of establishing proper specifications, and using effective
+and appropriate methods to verify and record that those specifications are satisfied. Issues such as quality of
+installation, sampling and testing procedures, operating and maintenance procedures, record keeping, etc.
+often have greater significance than the particular technologies selected to purify and distribute the water.
+Fundamental conditions expected to aggravate a microbial problem typically include system design condi-
+tions such as stagnant conditions, areas of low flow rate, poor quality feed water etc.
+
+=== PAGE 28 ===
+KEY DESIGN PHILOSOPHIES
+Measures to alleviate such problems include:
+•
+Continuous, turbulent flow
+•
+Elevated or reduced temperatures
+•
+Smooth, clean surfaces that minimize nutrient accumulation
+•
+Frequent draining, flushing or sanitizing
+•
+Flooded distribution loop (maintenance of positive distribution loop pressures)
+•
+Properly designed, installed and maintained system
+While the control of chemical quality is important, the primary challenge in a pharmaceutical water system is
+maintaining the microbial quality. The industry and the regulatory community have recognized the effective-
+ness of maintaining a continuously recirculated system at high temperatures (65°C-8O°C) in preventing
+microbial growth. Distillation has a long and well-documented history of success, but need not be the only
+technology considered for producing water with endotoxin limits. Reverse osmosis is the only other technol-
+ogy accepted by the USP for WFI. Ultrafiltration has been successfully used to produce waters with strict
+endotoxin limits that meet WFI attributes, but it cannot, by regulation, be used to produce compendial grade
+WFI.
+Each pharmaceutical steam and water treatment system must be viewed in its entirety, as design and opera-
+tional factors affecting any unit operation within the system can affect the whole system. It is useful to identify
+both the quality parameters of water entering the system and the quality parameters of the water or steam to
+be produced. Water quality should be enhanced with each successive step. It does not necessarily follow that
+measures enhancing one quality attribute (such as conductivity, particulate level or color) will always en-
+hance another (such as microbial population).
+
+### 2.6 DESIGN RANGE VERSUS OPERATING RANGE
+
+This Guide recognizes the distinction between “Design Range” and “Operating Range” and the impact this
+distinction has upon validation and facility system operation. These criteria are defined as:
+See Figure 2-1.
+Design Range: the specified range or accuracy of a controlled variable used by the designer as a basis to
+determine the performance requirements for an engineered water system.
+Allowable Operating Range: the range of validated critical parameters within which acceptable product
+water can be manufactured.
+Normal Operating Range: a range which may be selected by the manufacturer as the desired acceptable
+values for a parameter (i.e., conductivity) during normal operations. This range must be within the Allow-
+able Operating Range.
+a)
+While a water or steam system should meet all stated Design Conditions, the acceptability of the system
+for operation from a cGMP standpoint depends on operating within the Allowable Operating Range.
+
+=== PAGE 29 ===
+KEY DESIGN PHILOSOPHIES
+b)
+Performance criteria for a Pharmaceutical Water Generation System may require a final product water
+quality conductivity of 0.5 µS/cm. (2 Mohm-cm) or better as a Design Condition. The Allowable Oper-
+ating Range for this pharmaceutical water may, however, allow for generation of water quality with a
+conductivity of 1.3 µS/cm. (0.77 Mohm-cm) or better. The Normal Operating Range for generating water
+may, in the end, be set by the manufacturer at conductivity value approaching 1.0 µS/cm. (1.0 Mohm-cm)
+or better to provide a comfortable environment for the operation.
+c)
+Normal Operating Range cannot exceed the Allowable Operating Range for the product water. The
+Design Condition selection should reflect Good Engineering Practice.
+d)
+It is also good practice for manufacturers to apply the concept of Alert and Action limits along with
+Normal Operating Range. Alert and Action limits should be based on the actual capability of the system.
+Alert Limits are based on normal operating experience and are used to initiate corrective measures
+before reaching an Action Limit, which is defined as the process condition established by product accep-
+tance criteria. The Action Limit deviations must be kept as a part of the batch record as they represent
+deviations from validated parameters.
+
+*[Figure 2-1 Values of Critical Parameters for Product Water]*
+
+Note: These are general guidelines.
+
+=== PAGE 30 ===
+
+=== PAGE 31 ===
+WATER OPTIONS
+and
+SYSTEM PLANNING
+
+=== PAGE 32 ===
+
+=== PAGE 33 ===
+WATER OPTIONS AND SYSTEM PLANNING
+3.
+WATER OPTIONS AND SYSTEM PLANNING
+
+### 3.1 INTRODUCTION
+
+This chapter outlines basic water system design criteria and, along with subsequent chapters, aims to pro-
+vide a better understanding of pharmaceutical water, how it is used, and how it can be provided. The primary
+goal of this chapter is to provide the user with a methodology for:
+a)
+Evaluating water quality options for product manufacturing
+b)
+Evaluating basic system configurations available to provide the water
+Detailed information on unit operation design, maintenance and cost factors is addressed in later chapters.
+The chapter also outlines the system planning effort for pharmaceutical water systems. This planning starts
+with the selection of water quality based upon product requirements, processing operations, and end use. A
+decision tree concept is included to assist in selection of compendial and non-compendial waters for produc-
+tion, cleaning, and support. The program then provides steps to guide the user through a use-point and
+system analysis, to set-up the water system distribution strategy. Finally, evaluation points are provided for
+the selection of the primary system configurations.
+
+### 3.2 WATER QUALITY OPTIONS
+
+Quality requirements for water used in pharmaceutical manufacturing and product development are driven by
+the product characteristics, manufacturing processes, and the intended use of the product. To aid in the water
+selection process, the USP Monographs define minimum requirements for general types of pharmaceutical
+water used in almost every pharmaceutical application. However, there is also the opportunity for a manufac-
+turer to determine water quality requirements, different from those in the USP, based on specific product
+characteristics and processing operations. If this option is taken, the product manufacturer is responsible for
+assuring that water used to manufacture the product is appropriate, to reliably produce safe product.
+Though water quality requirements are product specific, it is impractical to reliably produce special water that
+is specific to each situation. Manufacturing operations typically generate and distribute only a few, or perhaps
+just one, quality of water. Therefore, products and operations requiring similar water qualities are commonly
+grouped. The most common segmentation is that defined in the USP.
+Manufacturers agree that in many if not most cases, the requirements defined in the USP are adequate for
+production of safe product. More stringent water quality specifications may be appropriate for some products
+and processes. Others may be appropriately less stringent. Typically, more stringent requirements may apply
+to some processing operations involving significant concentration steps or products comprised of high water
+content, which may be applied in large volume doses. Likewise, processes involving reliable sterilization and
+purification steps which remove impurities may, in some cases, not require water qualities as strict as those
+defined in the USP. Other process characteristics can affect water quality requirements as well.
+In manufacturing operations with only one quality of water, the water system must be designed to meet the
+most stringent requirements of the most demanding product or process. With more than one quality of water,
+products and processes are often categorized and fed by the most appropriate system. The number of types
+of water generated is most often a function of volume of water consumed and variation of quality. Large
+consumers may find it economical to generate and distribute multiple grades of water, while small users often
+will generate only one quality of water.
+
+=== PAGE 34 ===
+WATER OPTIONS AND SYSTEM PLANNING
+The three main categories of water used in pharmaceutical manufacturing are:
+•
+Drinking water: meeting EPA national primary drinking water regulations. In Figure 3-1 drinking water is
+included in the category Suitable Non-Compendial.
+•
+Compendial water: meeting the compendial requirements for specific types of water in USP Monographs
+(i.e., Purified Water USP, Water for Injection USP).
+•
+“Suitable” non-compendial process waters: meeting the requirements of drinking water, but with addi-
+tional treatment to meet process requirements. It may, or may not, contain added substances for micro-
+bial control and does not have to meet full compendial requirements for USP Water. In this Guide, we
+name the non-compendial process waters used in manufacturing by the final/major process step (i.e.,
+Reverse Osmosis - RO water, Deionization - DI water, etc.).
+Non-compendial water is not necessarily less critical, or less costly to produce or to qualify, than compendial
+water. It can enable the manufacturer to set product specific quality and/or test criteria that are appropriate for
+the specific product and processes.
+Generally, more highly purified water is more expensive than less purified water. However, the specifics of
+each operation are different. For example, a plant with existing excess capacity of WFI might elect to use WFI
+over other grades even when unnecessary. In the example case, documentation defining water quality should
+identify the quality required for the product and why the WFI was used instead.
+
+*[Figure 3-1 provides the framework of a diagram that can be developed by a manufacturer to show the re-]*
+
+quirements for water used in the pharmaceutical manufacturing processes. This diagram should be accom-
+panied by documentation supporting the options chosen, with review and approval of Quality Assurance. The
+options chosen should be based on product and process specific requirements. Ultimately, water supplied to
+any process must meet or exceed the requirements, as defined by the manufacturer, for the safe and reliable
+manufacture of that product.
+
+*[Figure 3-1 provides an overall summary of water requirements for a manufacturer supported by the neces-]*
+
+sary justification for specific products, processes, and areas. It is almost impossible to provide one generic
+decision tree due to the diversity it would have to cover.
+
+=== PAGE 35 ===
+WATER OPTIONS AND SYSTEM PLANNING
+Notes:
+1)
+By test procedure definition, some analytical methods require USP Compendial waters. Quality should
+meet the needs of the analytical methods.
+2)
+Labs performing both cGMP and Non-cGMP operations should follow the cGMP path.
+3)
+Non-compendial water may be more highly purified than compendial water. Endotoxin and microbial
+quality is based on the process and quality standards of the product. Non-compendial water must at a
+minimum meet EPA (or comparable EU or Japanese standard) drinking water requirements for microbio-
+logical quality.
+4)
+Quality of final rinse water is determined by the type of product and subsequent processing steps. Where
+product contact surface is subsequently sanitized, final rinse with Suitable Non-Compendial water may
+be acceptable. Such practice may necessitate more stringent qualification criteria for the subsequent
+sanitization steps.
+5)
+Where product is purified downstream
+
+*[Figure 3-1 Pharmaceutical Water Quality Decision Tree]*
+
+Note: Commitments made in drug applications override suggestions of this decision tree.
+
+=== PAGE 36 ===
+WATER OPTIONS AND SYSTEM PLANNING
+6)
+More stringent endotoxin requirements (e.g., WFI quality) should be employed for water used in the final
+purification step for NON-Sterile parenteral grade APIs.
+
+*[Figure 1-1 provides “Baseline” requirements for most product contact water applications. Water quality cri-]*
+
+teria for pharmaceutical manufacturing and product development are driven by the product charac-
+teristics, manufacturing process, and the intended use of the product. Specific product and process
+characteristics may dictate that more or less stringent criteria than shown are appropriate. Figure above
+gives engineers some general guidance on selection of pharmaceutical water quality. Expert QA advice
+should be sought to give further advise on this critical of pharmaceutical water selection.
+Once water needs are determined based on usage, Table identifies common design options for various types
+of pharmaceutical water in the industry. The order of components and actual installed equipment varies
+widely throughout the industry. Primary criteria in evaluating the options are:
+•
+To have suitable specification for water criteria (i.e., it must be adequate for the process and product)
+•
+To produce water consistent in composition and quality
+•
+To monitor key performance indicators for assurance that specifications are met.
+DESCRIPTION
+Product Staged RO
+System
+Either Conventional
+Regenerable or Off
+Site Regenerated Ion
+Exchange/Mixed Bed
+System
+Variations of Single
+and Double Pass RO
+Followed by Mixed Bed
+DI System
+Single Pass RO &
+Electrodeionization
+System
+Regenerable Mixed
+Bed/Ultrafiltration
+System
+Single Pass RO/
+Non-Regenerable (or
+off site regenerated)
+Mixed Bed/
+Ultrafiltration System
+Ultrafiltration often with
+some pretreatment
+Various configurations
+of stills often with some
+pretreatment
+Ultra
+filtration
+X
+X
+X
+PHARMACEUTICAL WATER TYPE
+TYPICAL
+PROCESS
+WATER
+TYPES
+Double Pass
+RO Water
+DI Water
+RO/DI Water
+RO/EDI Water
+DI/UF Water
+RO/DI/UF
+Water
+UF Water
+Distilled Water
+Primary
+Filtration
+X
+X
+X
+X
+X
+X
+X
+Softening
+X
+X
+X
+X
+X
+X
+Activated
+Carbon
+Filtration
+X
+X
+X
+X
+X
+X
+X
+Ion
+Exchange
+(Cation/
+Anion -
+1st Stage)
+X
+X
+RO
+(1st
+Pass)
+X
+X
+X
+X
+RO
+(2nd
+Pass)
+X
+Ion Exchange
+(Mixed Bed -
+2nd Stage)
+X
+X
+X
+EDI
+X
+Still
+X
+Various configurations of pretreatment,
+primarily to prolong the still life.
+PROCESS UNIT OPERATION
+
+**Table 3-1**
+
+Typical Pharmaceutical Process Water Types
+
+=== PAGE 37 ===
+WATER OPTIONS AND SYSTEM PLANNING
+
+#### 3.2.1 Cost Implications
+
+Determining the economics of pharmaceutical/medical device water production is complex. Costs are quite
+predictable, but vary greatly depending on scale of operation, system design, actual usage, etc. The total
+operating cost to produce pharmaceutical waters is obtained by adding the cost of feed water to the costs of
+pretreatment (e.g., media filtration, carbon filtration, softening, and chemical addition) and final treatment
+(e.g., primary ion removal and polishing).
+Other significant costs should be anticipated for validation, ongoing QA/QC, as well as waste treatment and
+sewerage. In addition, regulated industries must consider the risks (cost) of noncompliance and water sys-
+tem failures. Municipal feed water ranges from $1-3 per thousand gallons with even wider variations outside
+of the U.S. Feed (surface or ground) water quality, generation technology and its associated capital cost, and
+product water specifications are then utilized to determine the total pharmaceutical water system net present
+value (NPV). The type of pharmaceutical water system design option selected is typically based on feed
+water total dissolved solids and hardness levels, organic and colloidal content, as well as anticipated water
+system utility costs (acid, caustic, salt, power, and source water). Consideration should also be given to
+maintenance requirements and available resources.
+Although water treatment systems for generating either compendial (USP purified) or non-compendial phar-
+maceutical process waters significantly vary in system operational costs, NPV for each of these various
+types of process waters are quite similar. The only exception is DI process water generated through the use
+of a non-regenerable mixed bed bottle system, typically regenerated off site. However, membrane based
+systems do marginally produce the lowest net present values for pharmaceutical water generation. The NPV
+analysis is usually based on the water system capital cost and a five-year system operating cost. The period
+chosen has to be long enough to allow operating cost to be a significant factor, but short enough for reason-
+able analysis of operating cost returns versus increased capital expenditures.
+Cost savings opportunities can be found in other places than just the quality of water and method of genera-
+tion. Wastewater from the pretreatment or treatment systems can often be used for miscellaneous loads such
+as lawn irrigation, humidification, boiler feed, etc. Each chapter of this Guide also addresses cost savings
+issues based upon design criteria and approach for independent unit operations and systems.
+
+### 3.3 SYSTEM PLANNING
+
+High purity water and steam are the most widely used, and often the most expensive raw material or utility in
+a pharmaceutical facility. Improper sizing or selection of a steam or water system could limit or even shut
+down production if under sized; or compromise the reproducible quality and increase the capital cost if over-
+sized. However, system sizing is not the starting point in design. Proper definition of water quality require-
+ments and usage can save construction as well as operational costs.
+
+*[Figure 3-2 shows a graphic representation of the system boundaries, limitations, and restrictions the de-]*
+
+signer faces when planning a pharmaceutical water system. Initial system planning reveals primary bound-
+aries that establish the cornerstone for design criteria. These primary system boundaries are Water Quality,
+Use-Point Criteria, and System Criteria.
+During initial planning, the limits of each boundary need to be established. The arrows encircling each bound-
+ary represent limitations that establish more specific operating strategies and ranges. When documenting
+these limitations, the designer should always indicate ranges of acceptability, rather than a specific value or
+position. This allows more flexibility in final planning and detailed design decisions.
+The reality of certain restrictions will sometimes force a specific strategy. As long as the decision leads to an
+answer that is within the limits of the system boundaries, this is perfectly acceptable. An example is a facility
+where the use-point criteria require non-compendial water with microbial control. However, there happens to
+
+=== PAGE 38 ===
+WATER OPTIONS AND SYSTEM PLANNING
+be an oversized WFI system in an adjacent area, so the designer decides to provide WFI to the use-point. In
+the example case, documentation defining water quality should identify the quality required for the product
+and why the WFI was used instead.
+The primary emphasis of this section is to outline a systematic approach to planning a pharmaceutical water
+system. Figure 3-2 outlines a planning methodology that begins with the selection of water quality, given its
+own system constraints and limitations. Then the use point criteria are established, followed by an initial
+system planning exercise. Often, these sequential steps are repeated as information in the design process
+iterates, and further criteria about the overall system boundaries are identified.
+
+*[Figure 3-2 Pharmaceutical Water System Planning]*
+
+=== PAGE 39 ===
+WATER OPTIONS AND SYSTEM PLANNING
+
+#### 3.3.1 Establish Water Quality
+
+The first step in the evaluation of water systems is the selection of water quality required for the specific
+product and process operation. Selection is based primarily on the dosage and form, and the microbiological
+and chemical purity criteria set for the product for which the water is used. The selection must consider
+underlying factors that have impacts on quality control; installed and operating cost; maintenance and practi-
+cality.
+See Section 3.2 in establishing possible water quality via development of the decision tree. Making notes as
+the water quality is designated for each use-point, indicating the basis for each decision. Simple annotations
+from the supporting documentation will be useful in later stages of the planning process. System design
+constraints may provide the motivation to challenge water quality or other criteria, particularly when it can be
+demonstrated that the change does not affect product quality or manufacturing controls.
+
+#### 3.3.2 Characterize Use Point
+
+Once the initial selection of water quality has been established, the operational criteria should be character-
+ized for each use point. A matrix should be developed to outline the primary criteria required for system
+design.
+Each use point should be annotated with the proper values for pressure, flow, and the temperature range of
+water entering unit operation, or process point from the water supply system. Establishing a range, rather
+than a fixed value, increases opportunities for system optimization by allowing a more flexible approach to
+final design.
+This data can be organized in many ways, but a well-planned spreadsheet can simplify the planning process
+and provide clear decision pathways for future detailed design activities. Table 3-1 shows an example of a
+spreadsheet used to characterize use-point flow and system demand. Flowrate is primarily used to size lines,
+whereas Daily Use leads to storage and generation decisions. The Diversity Factor is one way to level-out
+anticipated usage, assuming that not all loads happen every day or at the same time. This table indicates a
+Clean in Place (CIP) system and stopper-washer that are both likely to be used on the same day, but never at
+the same time. Therefore, only the higher flowrate is relevant to loop sizing as shown in the Design Flowrate
+column. Demand flowrates are eventually used for branch line sizing.
+FLOWRATE
+DAILY USE
+EQUIPMENT
+NAME
+CIP Wash cycle
+Stopper Washer
+DEMAND
+(LPM)
+40.0
+
+## 20.0 DIVERSITY
+
+FACTOR
+DESIGN
+(LPM)
+40.0
+0.0
+DEMAND
+(LPD)
+1200
+DIVERSITY
+FACTOR
+DESIGN
+(LPD)
+1200
+COMMENTS
+Assume a recirculating
+cycle in 4 steps for a
+total of 23 minutes.
+Assume one cleaning
+cycle per day, 100
+liters/rinse, 3 rinse/
+cycle, 1 overflow rinse/
+cycle @ 2 LPM for 80
+mins.
+
+**Table 3-2**
+
+Use Point Criteria
+
+=== PAGE 40 ===
+WATER OPTIONS AND SYSTEM PLANNING
+Once the location and qualities are finalized, the various properties can be charted on a requirements analy-
+sis histogram. This can be done with the aid of a computer and either simulation or spreadsheet software for
+larger systems, or done manually for small systems. At this point, basic Process Flow Diagrams also provide
+a good pictorial view of the water qualities, locations and the point-of-use properties.
+
+*[Figure 3-3 Water Usage Chart]*
+
+#### 3.3.3 Establish System Criteria
+
+Histogram analysis is beneficial for determining overall system peak demand(s), average demand, and the
+relationships between peak demand time periods and their flow rates. Figure 3-4 below shows a hypothetical
+storage tank profile using the 24-hour demand profile from Figure 3-3.
+There is no “Rule-of-Thumb” for minimum water level, or the optimum water level to turn on a still. However,
+these charts provide the tools for creating various scenarios to simulate recovery times from a failure, future
+expansion or reduction capabilities and analyze other factors that allow design of a properly sized water
+generation, storage and distribution system.
+System planning and analysis also reveals other restrictions that influence design, and often lead the de-
+signer to re-evaluate the primary boundaries as discussed earlier. These restrictions might include items
+such as:
+•
+Must the system be available at all times?
+•
+What are the constraints on a shutdown?
+•
+Is the plant/personnel able to handle chemicals properly? Are permits in place?
+•
+Is production batched or continuous?
+
+=== PAGE 41 ===
+WATER OPTIONS AND SYSTEM PLANNING
+•
+Are the products dedicated or multiple product groups?
+•
+How is campaigning between products handled?
+•
+How much time is available for sanitization? Should redundancy be provided to allow adequate time for
+sterilization?
+
+#### 3.3.4 Revisit Water Quality
+
+With all use points characterized for temperature range, and demand, the quality of water is revisited. A
+thorough review of use point criteria typically reveals a wide range of acceptable delivery conditions for the
+water. Since it is typically not practical to operate multiple water systems to provide the exact water conditions
+desired of the end product, compromises must be made. These compromises might include providing water
+of a higher quality than required to simplify the water treatment or delivery systems, or provisions for control-
+ling water consumption at a use point to limit peak demands. Whatever compromises are made, water must
+be delivered at conditions within the boundary limits.
+
+### 3.4 SYSTEM DESIGN
+
+Once the support areas, back up requirements, future growth, or expansion capabilities are established,
+detailed design of the system can begin. The process requirements determine all the points-of-use (POU) on
+the distribution system. User locations determine how to distribute the system (e.g., central storage, multiple
+loops/branches, etc.). One or several of the use points may need either different qualities or other properties
+that single it out from the rest. In this case alternatives to the water system criteria are considered, such as
+
+*[Figure 3-4 Storage Tank Level Chart]*
+
+=== PAGE 42 ===
+WATER OPTIONS AND SYSTEM PLANNING
+using an ambient or cold distribution versus a hot system. Plant shift operating hours must also be considered
+since there may be an inability to perform regular heat sanitizations of cold systems, for example.
+The boundaries, limitations, and restrictions that were identified in the initial planning stages should now be
+integrated into the design approach. Further considerations might include the physical area a system needs
+for support, one production area, one building, or multiple buildings on a site. This could determine the size of
+the system and whether it is made up of multiple tanks, or multiple loop storage and distributed systems. For
+example, central systems are higher in initial capital, but lower in operation and maintenance and possibly
+lower overall cost on per unit basis. The capital is higher primarily due to the larger generation, storage, and
+distribution equipment or system. Alternatively, multiple generation systems may require less initially for each
+smaller system but more cost in terms of capital and operating and maintenance for the same total capacity.
+All systems have a fixed capacity and will eventually have a failure. Therefore, if a piece of equipment fails a
+plan should be in place to deal with the down time. Having backup generation equipment for the critical
+components such as a still or deionization equipment, should be considered. The backup equipment can be
+used in a lead-lag type operation and/or to meet a specific duration of a peak demand.
+More detailed descriptions of the alternatives for the various unit operations required for production of phar-
+maceutical grade water are discussed in the following chapters. Rationale is provided for decisions that will
+surface regarding quality, cost, performance, maintenance, and reliability as the system is developed in
+detail.
+
+=== PAGE 43 ===
+PRETREATMENT OPTIONS
+
+=== PAGE 44 ===
+
+=== PAGE 45 ===
+PRETREATMENT OPTIONS
+4.
+PRETREATMENT OPTIONS
+
+### 4.1 INTRODUCTION
+
+Pretreatment is all process steps or unit operations prior to the last (final) water treatment step. Pretreatment
+is a series of unit operations to modify the feed water quality so that it will be of adequate quality to be fed to
+a final treatment step. This final step may be Reverse Osmosis, Ultrafiltration, Multi or Mixed Bed Deionization
+or Distillation. These final steps are discussed in Chapters 5 and 6.
+Reverse Osmosis is unique since it can be a pretreatment step, in addition to being a final treatment step.
+Reverse Osmosis applications in pretreatment are discussed in this chapter and Chapter 11, but Reverse
+Osmosis as a technology is discussed in Chapters 5 and 6.
+The initial sections of this chapter discuss the process design (programming issues) for pretreatment design
+including feed water quality and output water quality from pretreatment. The chapter then discusses the
+selection of treatment options (i.e. unit operations) for four groups of impurities:
+•
+Control of fouling--removal of turbidity and particulates
+•
+Control of scaling--removal of hardness and metals
+•
+Removal of organics and microbiological impurities
+•
+Removal of microbial control agents
+Pre-treatment options are summarized in Figure 4-1 at the end of the chapter.
+The final sections of the chapter discuss the importance of anion composition/concentration, pH, materials of
+construction, and pretreatment system control.
+This discussion is based on the description of these technologies presented in Chapter 11.
+
+### 4.2 PROCESS DESIGN OF PRETREATMENT
+
+Process design of the pretreatment system is the specification of the unit operations or process steps to treat
+the feed water. Typical information includes flow rates, temperatures, pressure, and composition of all streams.
+Detailed mechanical design of the equipment for a given unit operation or process step is beyond the scope
+of this Guide.
+The process design (programming issues) for a pretreatment system may include:
+a)
+Required quantity and quality of the water from the final treatment process.
+b)
+Temperature constraints on the water used in a pharmaceutical process and the approach to microbial
+control.
+c)
+The final treatment option that has been chosen, as this defines the required water quality leaving pre-
+treatment.
+d)
+Quality of the feed water that is the input to the pretreatment system (water quality to be validated over a
+one year period).
+
+=== PAGE 46 ===
+PRETREATMENT OPTIONS
+e)
+Difference between input water quality and desired output water quality. The difference determines impu-
+rities that must be removed by the pretreatment system. The difference is determined by performing a
+material balance. Attention should be paid to impurities and minor components.
+f)
+Pretreatment options to provide the desired removal of impurities considering other factors such as
+capabilities of the labor force, economics, waste disposal, environmental considerations, validation, and
+the available space and utilities.
+In addition to defining the options for removal of impurities, the approach taken to microbial control is an
+integral part of the process design of the pretreatment system. Considerations include:
+a)
+If the drinking quality water to the pretreatment system comes from a municipality in the United States, it
+will typically contain chlorine, or chloramines, as a microbial control agent. In Europe, ozone is the more
+common microbial control agent. The concentration of the agent should be sufficient to protect the initial
+steps of the pretreatment.
+b)
+If the quantity of microbial control agent is insufficient, additional microbial control agent may be added or
+provision made to periodically sanitize the initial equipment in the pretreatment system. This is likely if
+water comes from a source other than a municipality. Increased monitoring of feed water and the initial
+steps may be warranted.
+c)
+At some point in the pretreatment process, the microbial control agent must be removed before going to
+the final treatment. At this point, a means of either continuous or periodic sanitization needs to be se-
+lected for the treatment steps following this removal.
+The USP requirement that compendial waters should contain “no added substances” eliminates addition of
+chemicals to “Purified Water” or Water For Injection. However, addition of chemical agents is not prohibited in
+pretreatment. Substances are frequently added in pretreatment and subsequently removed in the pretreat-
+ment or final treatment. Some examples are:
+•
+Chlorine (to control microbial growth, removed in later stages of pretreatment)
+•
+Sodium ions (in softener with exchange for multivalent ions, removed in ion removal process)
+•
+Acid (for degasification to remove carbon dioxide, counter ions, removed in a subsequent ion removal
+process)
+•
+Sulfite (to reduce chlorine to chloride, or chloramines, to ammonium and chloride while forming sulfate,
+removal by softening or ion removal process)
+•
+Sequestrants (to prevent scaling in final treatment, removed by RO in final treatment)
+•
+pH control agents (removed in ion removal process)
+Added substances are an issue if they result in an increase in microbial growth or endotoxins.
+A final consideration is the relationship between investment and operating dollars in pretreatment, and the
+performance and cost of the final treatment process. The following are generally true:
+•
+A final treatment system will not operate reliably over the long term, without reliable operation of the
+pretreatment system.
+
+=== PAGE 47 ===
+PRETREATMENT OPTIONS
+•
+Inadequate operation in pretreatment (breakthrough of particulates, hardness, or chlorine) may not im-
+mediately affect water quality from final treatment, but it will be reflected in long term maintenance and
+operating reliability, and possibly in water quality.
+•
+Investment in pretreatment capability and reliability can return many times the investment in final treat-
+ment maintenance costs.
+•
+Pharmaceutical water systems are expected to generate water meeting final pharmaceutical product
+water standards. The system should be designed to control impurity spikes in the incoming water quality,
+or seasonal impurity profile changes. A robust pretreatment system design handles impurity spikes det-
+rimental to final treatment.
+There is no single “right” answer to the process design of the pretreatment system. Pretreatment system
+process design is a series of choices and options, each with advantages and disadvantages.
+
+### 4.3 FEEDWATER TO PRETREATMENT QUALITY: TESTING AND DOCUMENTATION
+
+Compendial pharmaceutical water systems are required to use feed water complying with “Drinking Water”
+standards.
+Most pharmaceutical manufacturers utilize municipal water supplies. This water generally meets “Drinking
+Water” quality standards and is treated with a microbial control agent. Historically in the US, the microbial
+control agent is chlorine, but chloramine is now used with increasing frequency. Either feed water composi-
+tion or microbial control agent concentration may be subject to occasional and seasonal variations. These
+variations may negatively impact water quality, and can be detected only by extensive sampling. In addition,
+water quality at the plant site may not be equivalent to that from a municipal treatment facility, due to potential
+for contamination or loss of microbial control agent in the distribution system. Documentation of feed water
+quality is recommended either by use of municipality testing (if applicable) supplemented by some testing at
+the plant side or by extensive testing of feed water quality.
+Typical contaminants in feed water include:
+•
+Particulates
+Silt, dust, pollen, pipe scale, iron and silica, undissolved minerals and organics
+•
+Inorganics
+Calcium and magnesium salts, heavy metals (iron, aluminum, and silica) with their corre-
+sponding anions
+•
+Organics
+NATURALLY OCCURRING BYPRODUCTS OF VEGETATIVE DECAY, I.E., HUMIC AND
+FULVIC ACIDS AND “MAN-MADE ORGANICS” SUCH AS PESTICIDES AND AUTO-
+MOTIVE POLLUTION (OILS)
+•
+Bacteria
+BACTERIAL CONTAMINATION AND ITS BYPRODUCTS, ENDOTOXINS, AND
+PYROGENS
+Testing recommendations include:
+•
+Documentation that feed water meets drinking water quality. This may be based on results of testing
+by the municipality, possibly supplemented by local or in-process testing. Frequency of in-process testing
+will be affected by reliability of the municipality, importance of monitored variables, and company philoso-
+phy.
+
+=== PAGE 48 ===
+PRETREATMENT OPTIONS
+•
+Monitoring for microbial control agent levels at the start of the pretreatment system. Chlorine level
+is affected by pH. A chlorine level of 0.2 - 1.0 ppm is generally considered adequate to control microbial
+growth and generally has negligible effects on pretreatment equipment or performance.
+•
+Specific testing for contaminants known or suspected of being present in the feed water. This is to
+determine if data from the municipality is adequate; e.g., feed water from a surface source for pesticides
+in an agricultural area where run off from farms may be seasonal.
+
+### 4.4 OUTPUT WATER FROM PRETREATMENT: QUALITY OF FEEDWATER TO FINAL TREATMENT
+
+The goals for pretreatment are to provide water quality that minimizes the operating and maintenance prob-
+lems in the final treatment equipment and to permit the final treatment step to produce water meeting the
+desired specifications for final treatment.
+The impurities that must be removed in the pretreatment process to permit reliable operation of the final
+treatment step depend on the final treatment step selected and the tolerance of a final treatment step for the
+impurities. If pretreatment is inadequate, resulting problems can become very large in magnitude, as seen in
+
+**Table 4-1 below:**
+
+Pretreatment requirements for feed water to the final treatment process usually include:
+FOR MEMBRANES
+The concerns are fouling by suspended solids (particulates) and scaling (precipitating solids) as water is
+removed. A typical goal for control in pretreatment might be a silt density index (SDI) of 3-5 and hardness of
+<1 grain/gallon for on-site analysis. Membranes tolerate chlorides but only some membranes tolerate chlo-
+rine.
+
+**Table 4-1**
+
+DEGRADATION:
+caused by
+chlorine
+Large*
+Large*
+Large
+Large
+Large
+MAGNITUDE OF
+PROBLEMS IN FINAL
+TREATMENT CAUSED
+BY TYPE OF IMPURITY
+Reverse Osmosis
+Other Membrane Processes
+Single Effect Distillation
+Multi-effect Distillation
+Vapor Compression
+Distillation
+IMPURITY
+FOULING:
+caused by
+particulates
+Large
+Large-moderate
+Moderate
+Large-moderate
+Moderate
+SCALING:
+caused by
+hardness and
+minerals
+Large
+Large - moderate
+Moderate
+Large - moderate
+Moderate
+CORROSION:
+caused by
+chlorides
+None
+None
+Moderate - large
+Moderate - large
+Small
+*Membrane dependent
+
+=== PAGE 49 ===
+PRETREATMENT OPTIONS
+FOR DISTILLATION
+The concerns are scale formation due to hardness and corrosion due to chlorides. Typical water quality might
+be as high as 1.0 Mohm/cm, which often requires additional treatment beyond pretreatment, i.e. RO or ultra-
+filtration. Distillation has no tolerance for chlorine due to corrosion and carryover to the product. Distillation
+has some tolerance for particulates.
+Pretreatment generally has little effect on the other parameters indicative of water quality such as anions,
+microbial levels, conductivity, total organic carbons (TOC), and volatiles.
+Selecting pretreatment to reliably provide the required feed water quality to final treatment, in spite of spikes
+in feed drinking water quality, will reduce operating and maintenance costs in final treatment.
+
+### 4.5 CONTROL OF FOULING: REMOVAL OF TURBIDITY AND PARTICULATES
+
+The principal methods for removing particulates and reducing turbidity are:
+•
+Clarification and the accompanying operations of flocculation, coagulation, and sedimentation
+•
+Depth or Media filtration including single and multimedia filtration (particles retained by the media)
+The definitions, filtration mechanisms and typical removal processes for these are outlined in Chapter 11.
+Clarification is not applicable, as feed water sources are potable quality or better.
+Depth or media filtration is used in pharmaceutical water systems and is often the first step in a pretreat-
+ment system. Multi-sized sand is the most common media, but other media may provide better performance
+with some feed waters. Removal of particulates down to 10 microns is possible and depends on selection of
+media. Microbial growth is a key concern in a media filter, unless the feed water contains a microbial control
+agent. Otherwise, microbial control in the depth filter is required (e.g., periodic sanitization using either heat
+or a chemical sanitizing agent).
+
+### 4.6 CONTROL OF SCALING: REMOVAL OF HARDNESS AND METALS
+
+When water is separated from its impurities in the final treatment process, those compounds with low solubil-
+ity are concentrated to the point where they precipitate. This precipitation, or scaling, is the result of exceed-
+ing the solubility of the divalent and trivalent cations, usually as a sparingly soluble salt such as carbonate or
+sulfate. The methods of control are:
+•
+Removal by ion exchange. These are principally calcium and magnesium and may include divalent and
+trivalent ions such as iron, aluminum and silica. Pretreatment is usually water softening, (exchanging the
+ions causing hardness and scaling for sodium ions).
+•
+Removal of carbonate by acidification. Acidification converts the carbonate to carbon dioxide, which is
+removed by subsequent degasification.
+•
+Removal of the offending compound by a barrier filtration process such as nanofiltration. Water
+passes through the membrane and compounds are retained by the membrane and removed as a purge
+stream.
+These removal processes are detailed in Chapter 11.
+
+=== PAGE 50 ===
+PRETREATMENT OPTIONS
+Water softening ion exchange, which removes divalent and trivalent ions and replaces them with sodium, is
+a very common process used in pretreatment of pharmaceutical water. It is applicable for all flow rates and all
+hardness levels, and is well understood and easy to operate. It involves the handling of salt only, and pro-
+duces a non-hazardous waste stream. However, the high total dissolved solids (TDS) in the waste stream
+may limit disposal options. Water softening is also easily controlled manually or with a PLC.
+For large flow rates (>50 gpm or 0.18 m3/min) and high hardness (>50 ppm) degasification (after acidification)
+may be the process of choice. This degasification process is often employed between the two stages of an
+RO and involves the handling of acid and base for two pH adjustments:
+•
+Lowering of pH before first stage of RO
+•
+Increasing of pH before second stage of RO
+The principal advantage is that the carbon dioxide is released to the atmosphere rather than being a liquid
+waste stream requiring disposal.
+Nanofiltration is a membrane process that may be applicable with certain feed waters and specialized situa-
+tions. The filtration is usually cross-flow and involves a significant purge stream. It is much like RO, the
+differences being pore size in the membrane and the corresponding effect on ion removal. Removal of diva-
+lent ions can be greater than 98%.
+Chemical injection is an alternate method to control the ions or compounds that contribute to scaling. This
+process injects a compound (usually a proprietary organic compound) to the final treatment feed water.
+These compounds are called sequestrants and act “to tie up and complex” the offending ions or compounds
+to form a complex, or compound, that is more soluble and will not precipitate in the final treatment process.
+The “complexed ion and sequestrant” have a large molecular weight and are removed as a purge stream in
+the final treatment process. Sequestrants are almost always proprietary compounds, which require testing to
+verify applicability and dosage level for the particular feed water, and analysis to verify removal in the final
+treatment process.
+A key choice in the process design of the pretreatment system is location of the softener. The two options are
+either before or after removal of the microbial control agent (often chlorine) that is in the feed water, or which
+may have been added for control of microbial growth.
+Softener located prior to removal of microbial control agent: The principal advantage is protection of the
+softener from microbial growth by the microbial control agent present in the feed water. If the microbial control
+agent is chlorine, it will have only a minor effect on resin life and efficiency at the chlorine levels typically
+encountered in chlorinated municipal feed waters (<1 ppm).
+Softener located after removal of microbial control agent: The advantage is better resin life and capacity
+(due to absence of chlorine, if it is the microbial control agent). However, this must be balanced by the need
+to protect the softener from microbial growth and endotoxin load (i.e., by periodic sanitization with the asso-
+ciated cost of heat or chemicals, labor, down time, and waste stream disposal).
+
+### 4.7 REMOVAL OF ORGANICS
+
+The types of organics and microbiological impurities typically present in water systems and the methods for
+removal of them are discussed in Chapter 11. The methods for removal of organics are:
+•
+Ozone
+
+=== PAGE 51 ===
+PRETREATMENT OPTIONS
+•
+Strong Base Ion Exchange
+•
+Barrier filtration (microfiltration, ultrafiltration or Reverse Osmosis)
+•
+Polymer Flocculant
+•
+Carbon
+Ozone is a powerful oxidant that controls microbial growth and reduces the concentration of organics due to
+oxidation, but requires compatible materials of construction.
+Strong base ion exchange removes organics but results in a purge stream containing high concentrations of
+brine and organics, due to regeneration of the resin.
+Barrier filtration, when appropriately sized, captures organics and microbial growth on the barrier and can be
+aided by addition of a polymer flocculant. A potential problem with barrier filtration is microbial growth “grow-
+ing through the barrier” which results in microbial contamination on the downstream side of the barrier.
+Carbon is probably the most common method of reducing organics. It is used because it provides multiple
+functions, including removal of organics as well as removal or reduction in the amount of chlorine and chloram-
+ines (if these are present and the carbon filter is appropriately designed). The advantages of using carbon are
+that it is a frequently practiced technology, it performs multiple functions, and effectively “cleans up the feed
+water”, and microbial growth can be controlled by periodic sanitization. The disadvantage is that it is a source
+of microbial growth, as well as a source of nutrients.
+
+### 4.8 SYSTEM DESIGN FOR CONTROL OF MICROBIAL GROWTH
+
+The methods for control of microbial growth are summarized in Chapter 11. The methods used in pretreat-
+ment to control microbial growth are:
+•
+Microbial control agent such as chlorine or chloramine
+•
+Periodic sanitization (heat or chemical)
+•
+Ultraviolet light
+•
+Avoiding dead legs and avoiding water stagnation
+A common strategy in the design of the pretreatment system is to leave the microbial control agent provided
+by the municipality in the water through as many pretreatment steps as possible, in order to protect these
+steps from microbial growth.
+However, at some point the microbial control agent (chlorine or chloramine) must be removed since it is not
+compatible with the final treatment processes. At this point, the only option is periodic sanitization, either with
+heat or a chemical disinfectant. This must be included in the design of the pretreatment system, along with
+the provisions for validation and monitoring its effectiveness via sampling and testing. If a chemical disinfec-
+tant is used, provisions to remove it and monitor its removal are also required.
+Ultraviolet light (UV) is effective in inhibiting microbial growth but is only effective when the light is present. UV
+light is often used before a unit operation to minimize the microbial growth in the unit operation by controlling
+the microbial counts in the feed water. The most common places for use of UV light are before Reverse
+Osmosis units and some filters.
+
+=== PAGE 52 ===
+PRETREATMENT OPTIONS
+
+### 4.9 REMOVAL OF MICROBIAL CONTROL AGENTS
+
+At some point in pretreatment, microbial control agents must be removed because of their detrimental effect
+on final treatment equipment and performance. Chlorine causes deterioration of most Reverse Osmosis
+membranes and is corrosive in distillation. Chloramines can pass through pretreatment and decompose in
+the distillation process with an adverse effect on water quality.
+The methods for removal of chlorine and chloramines are similar and are detailed in Chapter 11.
+For chlorine removal, activated carbon is a straightforward process for the absorption of chlorine. The carbon
+will reduce some of the chlorine to chloride ion, which is then removed in the final treatment ion removal
+process. Sulfite reduction is also straightforward, with sulfite being oxidized to sulfate and chlorine being
+reduced to chloride ion.
+Chloramine removal is more complex. Chloramine adsorption on carbon occurs at a much slower rate than
+chlorine, necessitating longer contact times and lower hydraulic flow rates. The potential for dissociation of
+the absorbed chloramines into ammonium ion and ammonia is a problem. Ammonium is removed by Reverse
+Osmosis but decomposes to ammonia in a distillation process. Ammonia passes through both Reverse
+Osmosis and distillation processes in final treatment.
+Sulfite reduction for chloramines results in ammonium and chloride ions. These can be removed by Reverse
+Osmosis. The ammonium ion partially decomposes to ammonia in the higher temperature distillation pro-
+cess, resulting in carryover and affect on the water quality.
+Removal of ammonia (from chloramine) and carbon dioxide requires proper pH control to maintain these
+species as ions for removal in an RO. The equilibrium of carbonate, bicarbonate, and carbon dioxide is pH
+dependent, with alkaline conditions required to maintain the ionic species. The equilibrium between ammo-
+nium and ammonia is pH and temperature dependent, with acidic conditions required to maintain the ionic
+species. At no single pH point are these species all carbonate and ammonium ions. Thus two pH adjustment
+steps followed by the appropriate removal technologies are required to remove both chloramines and carbon
+dioxide.
+
+### 4.10 CHANGES IN ANION COMPOSITION / CONCENTRATION
+
+Pretreatment systems typically remove non-ionic impurities and cations. Thus, any change in anionic compo-
+sition or concentration is usually secondary. However, some distillation processes in final treatment are af-
+fected by chlorides, which can be removed by an RO prior to the final treatment step.
+The pretreatment processes that affect anionic composition are:
+•
+Deionization
+•
+Degasification
+•
+Carbon bed filtration for removal of chlorine and chloramine
+•
+Reduction to remove chlorine and chloramine
+•
+Barrier filtration (nanofiltration, ultrafiltration and Reverse Osmosis)
+Ion exchange resins are designed to remove either cations or anions. An ion exchange resin that is designed
+to remove anions (anionic resin) will typically exchange the anions (chloride, sulfate, nitrate, and carbonate;
+
+=== PAGE 53 ===
+PRETREATMENT OPTIONS
+and bicarbonate if the pH is appropriate) for the hydroxyl ion. The ion exchange may be in a single bed, mixed
+beds, or twin beds and will affect anionic composition if an anionic resin is present. Ion exchange as a
+deionization process to specifically remove anions is discussed in Chapter 5.
+Degasification and the accompanying process of acidification, for removal of hardness, changes anionic
+composition. The water is acidified with a non-volatile acid (usually sulfuric, based on cost and ease of
+removal of the resulting anion i.e., sulfate) to convert carbonate and bicarbonate to dissolved CO2, which is
+removed by degasification. The net effect is replacement of bicarbonate and carbonate with sulfate, (see
+Chapter 11).
+As discussed above, carbon bed filtration adsorbs chlorine and chloramines from feed water. However, some
+of the chlorine is reduced to chloride and is removed in a subsequent ion removal process, usually in final
+treatment.
+The removal of chlorine and chloramines by reduction, often with bisulfite, changes ionic composition, and
+concentration, as the bisulfite is oxidized to sulfate and the chlorine, or chloramines, are reduced to chloride
+and ammonium.
+Some barrier filtrations (particularly nanofiltration) remove some of the larger anions. Reverse Osmosis may
+be used to remove chloride ion prior to some distillation processes.
+
+### 4.11 THE IMPORTANCE OF PH IN PRETREATMENT
+
+The effect of pH on the equilibrium between carbonate, bicarbonate, and carbon dioxide is discussed in
+Chapter 11.
+EPA drinking water standards require a pH range of 6.5-8.5. In reality, the pH range of most drinking feed
+water is narrower, due to the corrosive nature of acidic water and the scaling potential of alkaline waters.
+The pH of the feed water and its seasonal variations need to be known because of its impact on pretreatment
+and final treatment process design. The pH determines the form of the carbon dioxide, its scaling potential
+and where carbon dioxide (carbonate) is removed (see Chapter 11).
+A complicating factor in pretreatment design is the potential presence of ammonia as a result of chloramine
+presence in the feed water. Ammonia is a dissolved gas at the pH values where carbon dioxide is an ion
+(carbonate), and exists an ion (ammonium) at pH values where carbon dioxide exists as a dissolved gas.
+Thus it is not possible remove both carbon dioxide and ammonia at one pH. If both are present, two pH
+adjustment steps are required:
+•
+pH adjustment followed by removal of either carbon dioxide or ammonia
+•
+A change in pH to remove the other compound
+These operations may be part of pretreatment or final treatment.
+
+### 4.12 MATERIALS OF CONSTRUCTION AND CONSTRUCTION PRACTICES
+
+Piping to the pretreatment system may be copper, galvanized steel, or a suitable thermoplastic. Piping in the
+pretreatment system, where high temperatures are not encountered, is usually plastic (PVC, CPVC, polypro-
+pylene, or other material) based upon cost and corrosion resistance. Leaching from some plastics such as
+PVC and CPVC may make these materials undesirable to the user. Vessels may be fiberglass, lined carbon
+steel, or stainless steel.
+
+=== PAGE 54 ===
+PRETREATMENT OPTIONS
+The piping and equipment in a portion of the pretreatment system may encounter high temperature (periodic
+heat sanitization) or high pressure (RO plus degasification). In these portions, piping is typically stainless
+steel or a plastic that can be heat sanitized, such as PVDF. Equipment designed for high pressure may be
+carbon steel, lined carbon steel, or stainless steel. Mill finish is satisfactory for these materials; electropolishing
+is unnecessary.
+The cost of sanitary construction practices such as orbital welding and sanitary fittings may not be warranted
+in the pretreatment system. Use of plastic pipe that is solvent cemented or heat fused, stainless steel pipe
+that is welded or flanged with mill finish, or tubing with compression fittings is common. Ball or diaphragm
+valves predominate for flow diversion, with globe and needle valves for flow control. Selecting the minimum
+cost piping components that will not degrade water quality is an area for major cost savings.
+Sample points should be provided upstream and downstream of each piece of equipment for monitoring and
+for troubleshooting. Points for field measurement of pressure and temperature are also useful for trouble-
+shooting.
+
+### 4.13 PRETREATMENT SUMMARY
+
+The philosophy of control selected for pretreatment can have a major impact on both investment and continu-
+ing operating cost. Reliable operation and control of pretreatment can significantly reduce operating and
+maintenance costs in final treatment. The important process steps in pretreatment are:
+•
+Removal of turbidity and particulates to minimize membrane and equipment fouling
+•
+Removal of hardness and metals to prevent scale formation in final treatment
+•
+Removal of organics and microbiological impurities
+•
+Control of microbial growth and removal of microbial control agents to prevent degradation of final treat-
+ment
+These process steps are important because of their immediate effect on water quality from final treatment or
+their long-term effect on final treatment equipment performance and hence, their indirect effect on water
+quality from final treatment.
+Pretreatment, like other parts of the water treatment system, should be subject to Good Engineering Prac-
+tices. Validation of pretreatment, as a component of the water treatment system, is required as part of the
+entire water treatment system validation and should include microbiological monitoring.
+
+=== PAGE 55 ===
+PRETREATMENT OPTIONS
+Figure 4-1
+Note:
+The order of unit operations may be different than shown.
+
+=== PAGE 56 ===
+
+=== PAGE 57 ===
+FINAL TREATMENT OPTIONS:
+NON-COMPENDIAL and COMPENDIAL
+PURIFIED WATER
+
+=== PAGE 58 ===
+
+=== PAGE 59 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+5.
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+### 5.1 INTRODUCTION
+
+This chapter discusses the final treatment technologies and basic system configurations related to the manu-
+facturing process of USP Purified Water and non-compendial water.
+Various system configurations are presented, and reflect a significant shift from ion exchange based systems
+to membrane based systems. Equipment and system materials, surface finish and other design factors are
+discussed to promote the use of Good Engineering Practice for proper selection of components, piping,
+instrumentation, and controls.
+USP Purified Water and non-compendial water can be produced by an almost unlimited combination of unit
+processes in various configurations. The most common pretreatment and final treatment technologies used
+in purified water production are shown in Figure 5-1, Figure 5-2, and Table 5-4 at the end of the chapter. This
+chapter discusses the final treatment unit processes currently utilized, including ion exchange, reverse os-
+mosis, electrodeionization, ultrafiltration, microfiltration, and ultraviolet light. These technologies as well as
+distillation (see Chapter 6) are utilized in thousands of systems for the successful production of purified and
+non-compendial water.
+Ion exchange based systems were the dominant systems for decades in purified water production and are
+still successfully utilized in facilities today. The last decade has seen the growth of reverse osmosis mem-
+brane based systems increase to the point where over 90% of new systems employ primary reverse osmo-
+sis, with final polishing by continuous electrodeionization, ion exchange, or a second reverse osmosis stage.
+Membrane based systems usage has increased due to chemical consumption reduction, contaminant rejec-
+tion (ionized solids, organics, colloids, microbes, endotoxins, and suspended solids), reduced maintenance,
+consistent operation, and effective lifecycle cost.
+The various membrane based system configurations are compared with ion exchange and distillation in Table
+at the end of this chapter.
+Equipment construction is discussed for each unit process section to promote proper selection of materials,
+surface finishes, and other design factors. The total system capital cost is influenced more by equipment
+design details than by process selection. Many aspects of equipment can be “overdesigned” and hence,
+become unnecessarily costly. Proper thought must be given to the individual component’s function, location,
+required microbial performance, sanitization, and other factors, to optimize design. It is not necessary to
+construct every makeup system component with the same level of surface finish and detail as the distribution
+system for successful operation in most cases.
+Many material selections are made erroneously to conform to cGMP requirements that do not actually dictate
+the details of construction for most final treatment components. Good Engineering Practice should be em-
+ployed to optimize the system for consistent operation to specifications and lifecycle cost optimization. Part of
+the consideration is the need to replace system components (e.g., filters, RO membranes) at a frequency
+that meets GMP.
+This chapter does not differentiate between compendial and non-compendial water system equipment. Non-
+compendial water is often manufactured and validated in a manner consistent with compendial water.
+
+=== PAGE 60 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+### 5.2 ION EXCHANGE
+
+#### 5.2.1 Description
+
+Cation and anion exchange resins are regenerated with acid and caustic solutions, respectively. As water
+passes through the ion exchange bed, the exchange of ions in the water stream for the hydrogen and hydrox-
+ide ions, held by the resin, occurs readily and is driven by concentration. Thus, the regeneration process is
+driven by excess chemical concentrations. The important parameters of this system include resin quality,
+regeneration systems, vessel linings, and waste neutralization systems. The operation of the system can be
+monitored by conductivity (resistivity) of the product water.
+A two-bed ion exchange system includes both cation and anion resin tanks. Two-bed ion exchange systems
+often times function as the workhorse of a strictly deionization (DI) water system in terms of salt removal.
+Mixed-bed ion exchange systems are typically used as a secondary or “polishing” system. Mixed-bed DI units
+consist of a single tank with a mixture of anion and cation removal resin. A cation bed can also be used as a
+“polishing” DI step, rather than a mixed-bed DI.
+Ion exchange resins are available in on-site and off-site regenerable systems. On-site regeneration requires
+chemical handling and disposal, but allows for internal process control and microbial control. Off-site regen-
+eration can be accomplished through new resin to be used one time, or through repeated regeneration of the
+existing resin. New resin provides greater capacity and some possible quality control advantages, but at a
+higher cost. Regenerated resin produces a lower operating cost, but may raise quality control issues, such as
+resin segregation, regeneration quality, and consistency.
+Additional details on ion exchange can be found in Chapter 11.
+
+#### 5.2.2 Application
+
+The major purpose of ion exchange equipment in USP purified water systems is to satisfy the conductivity
+requirements of the USP. Deionization (DI) systems are often times used alone or in conjunction with reverse
+osmosis to produce USP Purified Water. Typical ion exchange systems do not effectively remove other con-
+taminants noted in the USP purified water specification. In the ion exchange process, salt ions, which are
+common to potable water, are removed from the water stream and replaced with hydrogen and hydroxide
+ions. Ion exchange systems are available in various configurations that include two-bed DI and mixed-bed DI.
+Both configurations are available in on-site and off-site regeneration systems.
+
+#### 5.2.3 Pretreatment Requirements
+
+Ion exchange systems require pretreatment to remove undissolved solids from the water stream and to avoid
+resin fouling or degradation. Although dechlorination is also recommended to avoid resin degradation by
+oxidation, the low levels of chlorine commonly found in most potable water supplies normally demonstrate
+only long-term effects on most ion exchange resins.
+
+#### 5.2.4 Cost Savings Factors
+
+Most of the cost savings opportunities for these systems revolve around the correct choices in materials of
+construction, pretreatment options, instrumentation, and sizing of the DI system. Acceptable piping materials
+of construction can vary from PVC to 316L SS. A correctly designed system will minimize the equipment size
+and maximize the amount of time between regenerations, considering microbial control and maintenance.
+Choosing to monitor only the critical parameters such as conductivity (resistivity), flow, pressure, etc., can
+minimize instrumentation.
+
+=== PAGE 61 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+There are also cost savings choices that will need to be made with respect to capital purchase and on-going
+operating costs. These choices will steer you towards DI off-site regenerable bottles, on-site regenerable DI
+vessels (with automatic or manual controls) or another water treatment unit operation.
+
+#### 5.2.5 Advantages and Disadvantages
+
+Advantages:
+•
+Simple design and maintenance
+•
+Flexible in water flow production
+•
+Good upset recovery
+•
+Low capital cost for single train DI systems
+•
+Removes ionizable substances (ammonia, carbon dioxide, and some organics)
+Disadvantages:
+•
+High cost of operations on high total dissolved solids (TDS) in-feed-water
+•
+Requires chemical handling for on-site regenerable DI (safety and environmental issues)
+•
+Full on-site DI system can take significantly more floor space due to primary vessels, chemical storage,
+and neutralization system
+•
+Off-site DI systems will require outside service and significant costs for regeneration services
+•
+Off-site regeneration involves consequent loss of control over the use, handling, and care of DI vessels
+•
+DI vessels are excellent places for microbial growth to occur between regenerations
+
+#### 5.2.6 Sanitization
+
+All ion exchange resins can be sanitized chemically with various agents. The degree of resin attrition is a
+function of resin type and the chemical agent. Chemical cleaners include peracetic acid, sodium hypochlorite,
+and others. Some resins are capable of hot water sanitizations at temperatures between 65°C to 85°C. Ion
+exchange resins suitable for limited thermal sanitizations include: strong acid cation resin, and standard
+polystyrene cross-linked with divinylbenzene Type 1 strong base resin.
+
+=== PAGE 62 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+**Table 5-1: Comparison for Ion Exchange Unit Operations**
+| Parameter | Off-Site Regenerated | On-Site Regenerated |
+| --- | --- | --- |
+| Chemical Use | N/A | Extensive |
+| Sanitization Method | Change Out or Hot Water | Regenerate |
+| Capital Cost | Minimal | Extensive |
+| Water Consumption | None | Medium |
+| Energy Consumption | Minimal | Minimal |
+| Maintenance Requirements | Minimal | Medium |
+| Outside Service Used | Extensive | Low |
+| Reliability | Good* | Good |
+| Upset Recovery | Good, Replace | Good |
+
+*Note: Having the DI bottles regenerated by an outside service does not relieve the manufacturer of the
+responsibility to have quality control of their ion exchange system.
+
+**Table 5-2: Limits of Operation and Expected Performance**
+| Parameter | Specification |
+| --- | --- |
+| Total Suspended Solids | Filtration of 10 micron is recommended |
+| Chlorine Tolerance | Varies with resin type, generally 0.5 ppm; some up to 1 ppm |
+| TDS | < 200 ppm (higher possible but costly) |
+| Temperature | Cation up to 121°C; Anion 40-70°C; some up to 100°C |
+| Conductivity | Below 1.0 μS/cm achievable |
+| Feed TOC | Fouling varies with resin type |
+| Product TOC | May increase or decrease depending on resin and feed water |
+
+5.3 CONTINUOUS ELECTRODEIONIZATION (CEDI)
+
+#### 5.3.1 Description
+
+Electrodeionization removes ionized or ionizable species from water using electrically active media and an
+electrical potential to effect ion transport. Electrodeionization is distinguished from electrodialysis or oxida-
+tion/reduction processes by the use of electrically active media, and is distinguished from other ion exchange
+processes by the use of an electrical potential.
+The electrically active media in electrodeionization devices functions to alternately collect and discharge
+ionizable species and to facilitate the transport of ions continuously by ionic or electronic substitution mecha-
+nisms. Electrodeionization devices may comprise media of permanent or temporary charge and may be
+operated batchwise, intermittently, or continuously. The devices can be operated so as to cause electro-
+chemical reactions specifically designed to achieve or enhance performance and may comprise electrically
+active membranes such as, semi-permeable ion exchange or bipolar membranes.
+The continuous electrodeionization (CEDI) processes are distinguished from the collection/discharge pro-
+cesses (such as electrochemical ion exchange or capacitive deionization) in that the process is continuous
+rather than batch or intermittent, and that the ionic transport properties of the active media are a primary
+sizing parameter, as opposed to ionic capacity. Continuous electrodeionization devices typically comprise
+semi-permeable ion exchange membranes, permanently charged media, and a power supply that can create
+a DC electrical field.
+A continuous electrodeionization cell is formed by two adjacent ion exchange membranes or by a membrane
+and an adjacent electrode. CEDI units typically have alternating ion depleting (purifying) and ion concentrat-
+ing cells that can be fed from the same water source, or different water sources. Water is purified in CEDI
+devices through ion transfer. Ionized or ionizable species are drawn from the water passing through the ion
+depleting (purifying) cells into the concentrate water stream passing through the ion concentration cells.
+The water that is purified in CEDI units passes only through the electrically charged ion exchange media, and
+not through the ion exchange membranes. The ion exchange membranes are permeable to ionized or ioniz-
+able species, but not permeable to water.
+The purifying cells typically have permanently charged ion exchange media between a pair of ion exchange
+membranes. Some units incorporate mixed (cationic and anionic) ion exchange media between a cationic
+membrane and an anionic membrane to form the purifying cell. Some units incorporate layers of cation and
+anion ion exchange media between ion exchange membranes to form the purifying cell. Other devices create
+single purifying cells (cationic or anionic) by incorporating a single ion exchange medium between ion ex-
+change membranes. CEDI units can be configured with the cells in a plate and frame, or spiral wound con-
+figuration.
+The power supply creates a DC electric field between the cathode and anode of the CEDI device. Cations in
+the feed water stream passing through the purifying cell are drawn to the cathode. Cations are transported
+through the cation exchange media and either pass through the cation permeable membrane or are rejected
+by the anion permeable membrane. Anions are drawn to the anode and are transferred through anion ex-
+change media and either pass through the anion permeable membrane or are rejected by the cation perme-
+able membrane. The ion exchange membranes are oriented in a manner which contains the cations and
+anions removed from the purifying cells in the concentrating cells so that the ionic contaminants are removed
+from the CEDI unit. Some CEDI units utilize ion exchange media in the concentrating cells, while others do
+not.
+As the ionic strength of the purified water stream decreases the high voltage gradient at the water-ion ex-
+change media interfaces can cause water decomposition to its ionic constituents (H+ and OH-). The H+ and
+OH- ions are created continuously and regenerate the cation and anion exchange media, respectively, at the
+
+=== PAGE 64 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+outlet end of the purifying cells. The constant high level of ion exchange media regeneration level allows the
+production of high purity water (1 to 18 Mohm-cm) in the CEDI process.
+
+#### 5.3.2 Application
+
+In some cases, where drug microbiological quality is of lesser concern, CEDI units may be utilized down
+stream of reverse osmosis (RO) units in production of USP Purified Water or non-compendial water to in-
+crease the life of the CEDI units. For USP WFI water, the CEDI units are utilized up stream of reverse osmosis
+(RO) units.
+
+#### 5.3.3 Limitations
+
+CEDI units cannot remove all contaminants from water. The principal removal mechanism is for ionized or
+ionizable species. CEDI units cannot purify 100% of the feed water stream, as a concentrate stream is always
+required to remove the contaminants from the system. CEDI has temperature limitations for practical opera-
+tion. Most CEDI units are operated between 10 - 40°C (50 - 104°F).
+
+#### 5.3.4 Pre-treatment Requirements
+
+CEDI units must be protected from scale formation, fouling and thermal or oxidative degradation. The RO/
+pretreatment equipment typically reduces hardness, organics, suspended solids, and oxidants to acceptable
+levels.
+
+#### 5.3.5 Performance
+
+CEDI unit performance is a function of feed water quality and unit design. Ionized solids reduction is generally
+greater than 99% allowing production of 1 - 18 Mohm-cm quality water from reverse osmosis feed water.
+Organic rejection typically varies from 50% to 95% depending upon the type of organic material present in
+the feed stream. Ultraviolet light (185 nm) upstream of CEDI units can substantially increase organic rejec-
+tion. Dissolved carbon dioxide is converted to bicarbonate ion and removed as dissolved ion. Dissolved silica
+removal is in the range of 80 - 95%, dependent upon operating conditions.
+
+#### 5.3.6 Cost Savings Factors
+
+Most of the cost savings opportunities revolve around the correct choices in materials of construction, instru-
+mentation, and post-treatment equipment selection. Acceptable materials of construction for piping can vary
+from PVC to 316L SS. Choosing to monitor only the critical parameters, such as resistivity, flow, and pressure
+can minimize instrumentation. Many applications for Purified Water require no post-treatment after
+electrodeionization. Some systems incorporate ultraviolet light and/or sub-micron filtration to either reduce
+sanitization requirements or to provide microbial levels well below those allowed for Purified Water production
+as outlined in the USP.
+
+#### 5.3.7 Advantages and Disadvantages
+
+Advantages:
+•
+Attainment of stage 1 conductivity
+•
+Elimination of chemical handling
+•
+Elimination of outside service (off-site regenerated resin)
+•
+Electric field in membrane/resin module provides some bacterial control
+
+=== PAGE 65 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+•
+Removal of ionizable substances (e.g., carbon dioxide, ammonia, and some organics)
+Disadvantages:
+•
+Does not remove non-ionic contaminants
+•
+Unique designs for each manufacturer (modules are not interchangeable)
+•
+May require UV, sub-micron filtration, or reverse osmosis (RO) for further bacterial reduction
+•
+May require reverse osmosis pretreatment
+•
+Rinse up after chemical sanitization may take hours to reach peak resistivity and TOC
+
+#### 5.3.8 Sanitization
+
+CEDI units are typically chemically sanitized with a number of agents including: peracetic acid, sodium
+percarbonate, sodium hydroxide, hydrogen peroxide, and others.
+
+### 5.4 REVERSE OSMOSIS
+
+#### 5.4.1 Description
+
+Reverse osmosis (RO) is a pressure driven process utilizing a semi-permeable membrane capable of remov-
+ing dissolved organic and inorganic contaminants from water. A semi-permeable membrane is permeable to
+some substance such as water, while being impermeable to other substances such as many salts, acids,
+bases, colloids, bacteria, and endotoxins.
+RO membranes are produced commercially in a spiral wound configuration for pharmaceutical water produc-
+tion. Membranes are available in two basic materials; cellulose acetate and thin film composite (polyamide).
+All of the membrane types have advantages and disadvantages. Membrane operating parameters are shown
+in Table 5-3, below.
+RO membranes without leading edge brine seals, allow controlled flow between the membranes and pres-
+sure vessels to minimize bacterial growth.
+
+**Table 5-3: RO Membrane Operating Parameters**
+| Parameter | Cellulose Acetate | Polyamide/TFC |
+| --- | --- | --- |
+| pH Range | 4-7 | 2-11 |
+| Chlorine Limit (mg/l) | 1.0 | 0.05* |
+| Resistance to Bacteria | Poor | Good |
+| Operating Temp. (°C) | 15-28 | 5-50 |
+| Rejection (%) | 90-98 | 97-99 |
+| Sanitization Temp. (°C) | 30 | 50-80 |
+| TDS Feed Range (mg/l) | 30-1000 | 30-1000 |
+| Silt Density Index, Max | 5 | 5 |
+
+*BEST OPERATION AT 0.0
+
+=== PAGE 66 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+#### 5.4.2 Application
+
+Reverse osmosis can be successfully implemented in pharmaceutical systems in several ways. RO units can
+be utilized upstream of regenerable deionizers, or off-site regenerated deionizers, to reduce regenerant acid
+and caustic consumption, or to minimize resin replacement costs. Two-pass RO units (product staged) with
+proper pH control are generally capable of producing water that meets the requirements of the USP for TOC
+and conductivity.
+
+#### 5.4.3 Limitations
+
+Reverse osmosis cannot remove 100% of contaminants from water and has very low to no removal capacity
+for some extremely low molecular weight dissolved organics. RO, however, quantitatively reduces bacteria,
+endotoxins, colloids and high molecular weight organics from water.
+RO cannot purify 100% of a feed water stream. A concentrate flow is always necessary to remove the
+contaminants that are rejected by the membrane. Many users of RO utilize the waste stream from the RO unit
+for cooling tower make-up water or compressor cooling water, etc.
+Carbon dioxide passes directly through the RO membrane and CO2 will be in RO product stream at the same
+level that present in the feed water stream. Excess carbon dioxide in the RO product stream may increase the
+product conductivity beyond the USP Stage 1 limit. Carbon dioxide contributes to the loading of anion resin,
+which may be downstream of the RO units.
+Reverse osmosis has temperature limitations for practical operation. Most RO systems operate on feed water
+between 5°C and 28°C.
+
+#### 5.4.4 Pretreatment Requirements
+
+Reverse osmosis membranes must be protected from scale formation, membrane fouling, and membrane
+degradation. Scaling is possible since the contaminants present in the feed water stream are being concen-
+trated into the waste stream, which is an average of 25% of the feed stream. Scale control is normally
+prevented by the use of water softening upstream of the membranes, the injection of acids to lower the pH of
+the feed water stream, or an anti-scalant compound to prevent precipitation.
+Reverse osmosis membrane fouling is reduced through the use of back-washable multi-media filters or car-
+tridge filters for suspended solids, greens and filtration or softening for colloidal iron removal, and various
+microbial control pretreatment methods to reduce biological fouling.
+The principal causes of membrane degradation are oxidation of certain membrane materials and heat degra-
+dation. Membranes, which cannot tolerate chlorine normally, incorporate activated carbon or injection of
+various sodium sulfite compounds for dechlorination. Protection against high temperature is normally incor-
+porated where the feed water is preheated and the membrane material cannot tolerate high temperature.
+The reverse osmosis pretreatment unit operations are reviewed in Chapter 4.
+
+#### 5.4.5 Performance
+
+A single stage of reverse osmosis elements typically reduces the level of raw water salts, colloids, organics,
+bacteria, and endotoxin by 90 to 99%. Single stage reverse osmosis product water does not normally meet
+the requirements of the USP without further purification steps. Some two-pass units (two sets of RO mem-
+branes in series) produce water that can pass the USP 24 Stage 1 conductivity requirements, allowing On-
+Line testing. Those units that do not meet the Stage 1 requirement normally meet Stage 2 or 3. Membrane
+selection should be based upon pretreatment requirements, operating performance characteristics, sanitiza-
+tion options, warranties, capital and operating costs, and the feed water source.
+
+=== PAGE 67 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+#### 5.4.6 Advantages and Disadvantages
+
+Advantages:
+•
+Reverse osmosis units eliminate or significantly reduce chemical handling and disposal, relative to re-
+generable ion exchange systems
+•
+•
+Integrity testing can be accomplished by salt challenge and measurement of differential conductivity
+•
+RO removes a wide variety of contaminants including ionized solids and non-ionic materials (e.g., col-
+loids, bacteria, endotoxin, and some dissolved organics)
+Disadvantages:
+•
+Water consumption can be significantly higher than ion exchange systems unless the wastewater is
+reused
+•
+Energy consumption is generally higher than ion exchange and less than distillation
+•
+No removal of dissolved gases (e.g., carbon dioxide and ammonia)
+
+#### 5.4.7 Cost Saving Factors
+
+Capital costs can be minimized by reducing membrane area to the minimum suitable for the feed water
+quality and membrane selected. Piping material and finish significantly impact capital cost. Some systems
+incorporate PVC low-pressure piping and welded mill finish stainless steel high-pressure piping. Instrument
+costs can be minimized by appropriate selection of critical and non-critical parameters of operation. These
+parameters include:
+•
+Flow
+•
+Pressure
+•
+Temperature
+•
+Conductivity
+
+#### 5.4.8 Waste Water Reuse
+
+RO wastewater is frequently used as cooling tower make-up, or for non-contact cooling for compressors, or
+other heat loads. Wastewater is sometimes re-purified in a wastewater reverse osmosis unit for reintroduction
+as system feed water. RO wastewater is sometimes used for filter backwash. The wastewater from the sec-
+ond pass of a two pass RO is normally returned to the feed water stream of the first pass RO.
+
+#### 5.4.9 Sanitization
+
+All RO membranes can be sanitized with some chemical agents that vary as a function of membrane selec-
+tion. Specially constructed membranes are available for hot water sanitization at 60° to 80°C.
+
+=== PAGE 68 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+### 5.5 POLISHING COMPONENTS - NON-IONIC CONTAMINANTS REDUCTION
+
+#### 5.5.1 Ultrafiltration
+
+##### 5.5.1.1 Description
+
+Ultrafiltration (UF) is a cross-flow process similar to reverse osmosis (RO). A pressurized feed stream flows
+parallel to a porous membrane filtration surface. A pressure differential forces water through the membrane.
+The membrane rejects particulates, organics, microbes, pyrogens, and other contaminants that are too large
+to pass through the membrane. UF does not reject low molecular weight ionic contaminants, as does reverse
+osmosis.
+Membranes are available in both polymeric and ceramic materials. Polymeric membrane elements are avail-
+able in spiral wound and hollow fiber configurations. Ceramic modules are available in single channel and
+multiple channel configurations.
+
+##### 5.5.1.2 Application
+
+Ultrafiltration is utilized in several ways in Purified Water systems. UF is frequently used down stream of ion
+exchange processes for organic, colloidal, microbial, and endotoxin reduction. Purified Water with low endot-
+oxin levels (<0.25 Eu/ml) is utilized by some manufacturers in ophthalmic solutions, topicals, and bulk phar-
+maceutical chemicals that will be utilized in parenteral manufacturing and other applications.
+Ultrafiltration is frequently used in still feed water systems, in combination with ion exchange, to limit the
+endotoxin and colloidal silica feed levels to the still.
+
+##### 5.5.1.3 Limitations
+
+Ultrafiltration cannot remove 100% of contaminants from water. No ionic rejection occurs and organic rejec-
+tion varies with the various membrane materials, configuration, and porosity. Many different nominal organic
+molecular weight rejection ratings are available. Dissolved gasses are not rejected by UF.
+Most ultrafilters require a waste stream to remove the contaminants on a continuous basis. The waste stream
+varies, but is usually two to ten percent. Some UF systems run dead-ended.
+
+##### 5.5.1.4 Pretreatment Requirements
+
+Pretreatment can include multimedia filters, activated carbon filters, ion exchange, membranes, or others.
+The UF flux rate and cleaning frequency vary widely as a function of feed water and pretreatment. Most UF
+membranes are chlorine tolerant and do not require dechlorination of the feed water.
+
+##### 5.5.1.5 Performance
+
+UF is utilized to remove a variety of contaminants. The proper UF membrane must be selected to meet the
+performance requirements. Organic molecules can be rejected well, but the rating of UF membranes varies
+in molecular weight cutoffs from 1,000 to 100,000. Reduction of typical raw water organics is not as effective
+as reverse osmosis. Pressure drops vary with membrane selection and operating temperature. Some UF
+membranes are capable of continuous operation at temperatures up to 90OC, to provide excellent microbial
+control.
+UF reduction of endotoxin (pyrogens) varies from 2 log10 to 4 log10 as a function of membrane selection. UF
+has been shown to be capable of consistent production of water meeting the USP WFI endotoxin limit of 0.25
+Eu/ml in typical system applications. UF produces excellent microbial reduction with typical ratings of 3 log10
+to 4 log10 reduction.
+
+=== PAGE 69 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+UF produces excellent particle reduction and is frequently used in other applications, such as semiconductor
+production when particle control is far more critical than pharmaceutical water.
+
+##### 5.5.1.6 Advantages and Disadvantages
+
+Advantages:
+•
+UF can remove some contaminants, such as endotoxin and organics, better than microfiltration
+•
+UF can have more effective operating costs than microfiltration, in high particle loading applications.
+•
+Some UF elements can tolerate more rigorous sanitization procedures using steam or ozone, than some
+other membrane filters (MF or RO).
+•
+The waste stream is generally much less than waste from reverse osmosis units
+•
+Ultrafiltration is generally less energy intensive than reverse osmosis
+Disadvantages:
+•
+UF cannot remove ionic contaminants, where reverse osmosis can
+•
+UF generally requires a waste stream, which can be a significant cost factor
+•
+UF membranes are sometimes more difficult to integrity test than microfiltration cartridges
+
+##### 5.5.1.7 Cost Savings Factors
+
+Capital costs can be influenced by the optimum sizing of membrane area and membrane selection. Piping
+material and finish significantly impact capital cost. Some systems incorporate various plastic piping materi-
+als while others utilize sanitary 316L SS. The sanitization method selected is a major factor in material selec-
+tion. Instrument costs can be minimized by appropriate selection of critical and non-critical parameters of
+operation.
+
+##### 5.5.1.8 Sanitization
+
+UF membranes are sanitized in many different ways. Most polymeric membranes are tolerant of a wide
+variety of chemical sanitizing agents such as sodium hypochlorite, hydrogen peroxide, peracetic acid, so-
+dium hydroxide, and many others. Some polymeric membranes can be hot water sanitized and some can
+even be steam sanitized.
+Ceramic UF elements can tolerate all common chemical sanitizing agents, hot water, steam, and ozone in
+sanitization or sterilization procedures.
+
+##### 5.5.1.9 Waste Water Recovery
+
+Most pharmaceutical UF units are fed deionized water for USP Purified Water production or special non-
+compendial water applications. The wastewater is therefore still low conductivity water that can be recycled
+upstream to reverse osmosis units or fed directly to boilers, cooling towers, or other uses.
+
+=== PAGE 70 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+#### 5.5.2 Microfiltration
+
+##### 5.5.2.1 Description
+
+Microfiltration is a membrane process utilized for the removal of fine particles and microorganisms. No waste
+stream is generally employed in microfiltration processes. Virtually all microfiltration cartridges are dispos-
+able and are available in a wide range of materials and pore sizes. In final filtration the filters general range
+from 0.45 microns down to 0.04 microns. Microfilters are used in a wide range of applications, including
+aseptic filling of pharmaceutical products, which are not tolerant of terminal sterilization.
+Microfilters are generally employed in purified water systems for microbial retention downstream of compo-
+nents where some microbial growth may exist. Microfilters can be extremely effective in this area, but operat-
+ing procedures must be in place to assure filter integrity during installation and membrane replacement to
+insure proper performance. Microfilters are most appropriately employed in central purified water production
+systems and their use is discouraged in distribution systems. The filters should not be the only microbial
+control unit operation in the system. They need to be a part of a comprehensive microbial control plan.
+Minimizing the number of locations of microfiltration makes proper maintenance easier. (See Chapter 8.)
+
+##### 5.5.2.2 Advantages and Disadvantages
+
+Advantages:
+•
+Simple design and maintenance
+•
+Flexible in water flow production
+•
+No waste stream
+•
+Cartridges are integrity testable
+•
+Heat and chemical sanitization of microfilters
+Disadvantages:
+•
+Can only be used as a safety net for microbial production
+•
+No ion or endotoxin removal
+•
+Shorter life due to dead head design, so replacement is required
+•
+Not recommended for use in distribution piping
+
+##### 5.5.2.3 Performance
+
+Microfiltration can be as effective as ultrafiltration in microbial reduction and can minimize water consump-
+tion, as no waste stream is necessary. Microfiltration, however, cannot reduce dissolved organic levels as
+ultrafiltration can, and microfiltration cannot remove particles as small as ultrafilters can, due to the difference
+in pore size. Heat and chemical sanitization of microfilters is possible with the proper selection of material.
+
+=== PAGE 71 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+#### 5.5.3 Ultraviolet Light Treatment
+
+##### 5.5.3.1 Description
+
+Ultraviolet light rays strike microorganisms (bacteria, virus, yeast, mold, or algae) and break through their
+outer membrane to modify the DNA. The modified DNA code brings about the destruction of the organism.
+The ultraviolet radiation is a point of use application with no residual radiation characteristics. Proper prefiltration
+should be implemented to keep particulate from shielding organisms from UV light. (See Chapter 8.)
+
+##### 5.5.3.2 Advantages and Disadvantages
+
+Advantages:
+•
+Simple design and maintenance
+•
+254 nm design for microbial reduction
+•
+185 nm design for TOC reduction
+•
+No waste stream
+•
+Heat, ozone, and chemical sanitization are possible
+Disadvantages:
+•
+Can be used only as a safety net for microbial production
+•
+No ion or endotoxin removal
+•
+No disinfection residual
+•
+Particulate can shield organisms from UV light
+
+##### 5.5.3.3 Performance
+
+The UV light is used as a final treatment step to address microbial control and TOC reduction (where neces-
+sary), after deionization processes.
+
+=== PAGE 72 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+*[Figure 5-1 Purified Water]*
+
+Figure 5-2
+
+=== PAGE 73 ===
+FINAL TREATMENT OPTIONS: NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+**Table 5-4**
+
+Purified Water Systems Comparison Chart
+Ratings:
+N = None
+L = Low
+M = Medium
+H = High
+Notes for Table 5-4:
+1)
+High-water consumption unless wastewater is reused - cooling tower makeup, etc.
+2)
+Total chemical requirement dependent upon pretreatment selection
+3)
+Total water consumption dependent upon pretreatment selection.
+4)
+USP TOC requirement is met in most cases but may not be if feed water is high TOC (>2 ppm)
+5)
+High microbial performance refers to low microbial count in relative terms
+CAPITAL COST
+CHEMICAL
+HANDLING
+ENERGY
+CONSUMPTION
+WATER
+CONSUMPTION
+OUTSIDE
+SERVICE COSTS
+OPERATIONAL
+MAINTENANCE
+PRODUCT
+CONDUCTIVITY
+MICROSIEMEN /
+CM @ 25°C
+PRODUCT TOC.PPB
+MICROBIAL
+PERFORMANCE
+Off-Site
+Regenerated
+Ion Exchange
+L
+N
+L
+L
+H
+L
+1.0 - 0.06
+(4)
+L
+Reverse Osmosis/
+Off-Site Regenerated
+Ion Exchange
+M
+L
+M
+H (1)
+M
+M
+1.0 - 0.06
+<500
+M
+On-Site
+Regenerated
+Ion Exchange
+M
+H
+L
+M
+L
+M
+1.0 - 0.06
+(4)
+L
+Reverse Osmosis/
+On-Site Regenerated
+Ion Exchange
+M
+M
+M
+H (1)
+L
+M
+1.0 - 0.06
+<500
+M
+Reverse Osmosis/
+Continuous
+Electrodeionization
+M
+L
+M
+H (1)
+L
+M
+1.0 - 0.07
+<500
+M
+Two-Pass
+Reverse
+Osmosis
+M
+L
+M
+H (1)
+L
+M
+2.5 - 0.5
+<500
+H
+Distillation
+H
+L (2)
+H
+M (3)
+L
+L
+1.0 - 0.1
+<500
+H
+
+=== PAGE 74 ===
+
+=== PAGE 75 ===
+FINAL TREATMENT OPTIONS:
+WATER FOR INJECTION (WFI)
+
+=== PAGE 76 ===
+
+=== PAGE 77 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+6.
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+
+### 6.1 INTRODUCTION
+
+This chapter addresses the USP approved final treatment methods for the production of compendial WFI.
+WFI is the purest grade of bulk water monographed by the USP and would be expected to be used for the
+manufacture of parenteral, some ophthalmic and inhalation products, and for finishing steps of parenteral
+grade active pharmaceutical ingredients (API’s).
+Recommended systems include either distillation or RO as the final processing step, but may also include
+ultrafiltration (UF), deionization (DI) and/or ion exchange (IX), to compliment the RO or distillation unit opera-
+tion.
+The technology, operation, maintenance, and relative cost issues for the approved process methods are
+discussed. This chapter includes USP monograph information, regulatory issues, and subsections that cover
+the unit operations:
+•
+Single effect (SE) distillation
+•
+Multi-effect (ME) distillation
+•
+Vapor compression (VC) distillation
+•
+Reverse osmosis (RO)
+Feed water pretreatment is covered along with economic factors such as construction materials, surface
+finishes, and instrumentation and controls. A comparison table on USP-WFI final treatment options and
+relative attributes is provided.
+
+### 6.2 US PHARMACOPOEIA ISSUES
+
+The United States Pharmacopoeia (USP) allows WFI to be “purified by distillation or by RO”. This statement
+does not imply that the regulated process step is the only process step, but the USP advisory section does
+imply that it is the final step in the process.
+•
+Only distillation may be used to produce WFI under current European regulations
+•
+There are few regulations, which govern the design and construction of pharmaceutical water purification
+systems. There are no existing regulations governing materials of construction, type, or level of instrumenta-
+tion, surface finish, or operating temperatures. Most practices commonly followed with respect to these and
+other issues, have been adopted based on many factors.
+Among U.S. government publications, including the Code of Federal Regulations (CFR) and the FDA Guide
+to Inspection of High Purity Water Systems, there are few stipulations related to design and construction of
+WFI processing equipment. Two notable stipulations are:
+•
+“Heat exchangers, other than the double concentric tube type or double tube sheet type, must employ a
+pressure differential and a means for monitoring the differential.”
+
+=== PAGE 78 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+•
+“All stills and tanks holding liquid requiring microbial control shall have air vents with non-fiber releasing
+sterilizable filters capable of preventing microbial contamination of the contents.”
+
+### 6.3 DISTILLATION
+
+The pharmaceutical still chemically and microbiologically purifies water by phase changes and entrainment
+separation. In this process water is evaporated, producing steam. The steam disengages from the water
+leaving behind dissolved solids, non-volatiles, and high molecular weight impurities. However, low molecular
+weight impurities are carried with the water mist/droplets, which are entrained in the steam. A separator
+removes fine mist and entrained impurities, including endotoxins. The purified steam is condensed into WFI.
+Distillation systems are available to provide a minimum of 3 log10 (99.99%) reduction in endotoxin concentra-
+tion. Specific endotoxin loading limits should be reviewed with the manufacturer.
+A variety of different designs are available including single effect (SE), multi-effect (ME), and vapor compres-
+sion (VC). The distilled water quality expected from an SE still is equivalent to an ME design, by virtue of the
+fact that water is distilled only once in both systems. The benefit to the user of ME versus SE distillation are
+the significantly lower operating costs associated with utilities.
+In an ME system, purified steam produced by each effect is utilized to heat water and generate more steam
+in the subsequent effect. Due to this staged evaporation and condensation process, only the first effect
+requires heat from an external source, and only the purified steam produced by the final effect is condensed,
+using an external cooling medium.
+VC stills can produce similar quality water using a different technique. Energy imparted to the generated
+steam, by a mechanical compressor, results in compressed steam with increased pressure and temperature.
+The higher energy steam is then discharged back into the evaporator/condenser vessel to generate more
+steam in a continuous cycle.
+Areas of concern are carry over of impurities, evaporator flooding, stagnant water, and pump and compres-
+sor seal design. These concerns may be addressed using mist eliminators, high water level indicators, use of
+sanitary pumps and compressors, proper drainage, adequate blow down control, and conductivity sensing to
+divert unacceptable water to drain.
+
+### 6.4 DISTILLATION APPLICATIONS AND CAPACITIES
+
+The majority of USP WFI currently produced in the United States is produced by distillation. WFI production
+is shared by both ME and VC stills. SE stills are found in areas where only small quantities of WFI are
+required. However, where large amounts of WFI are required, economics of operation dictate the use of either
+ME or VC.
+Table 6-1 shows typical capacities and temperatures of WFI produced by each process.
+
+**Table 6-1: Capacities and WFI Temperature Options**
+| Distillation Type | Capacity Range (GPH) | WFI Temperature Options (°C) |
+| --- | --- | --- |
+| Single-Effect (SE) | 1 - 100 | 80 - 100 |
+| Multi-Effect (ME) | 25 - 3,000 | 37 - 100 |
+| Vapor Compression (VC) | 100 - 6,000 | Ambient / 80-100 / Combination |
+
+### 6.5 PROCESS AND SYSTEM DESCRIPTION
+
+6.5.1 Single Effect Distillation (SE)
+SE systems incorporate a single evaporator heat exchanger, separator mechanism, and a condenser.
+SE systems are available in electrically or steam powered versions, although electrical units are limited to
+very small production rates (<30 gallons per hour).
+Steam powered units typically require 30-60 psig plant steam. Cooling fluid is required for both steam and
+electric powered versions. When water is the coolant, the rate is approximately 8-10 gallons per gallon of WFI
+produced, based on a supply temperature of 4 - 16°C, and temperature rise of 67°C.
+SE systems typically operate at atmospheric pressure and 100°C, and incorporate non-ASME code vessels.
+WFI is delivered at atmospheric pressure and 80 - 100°C; thus a distillate transfer pump is required, unless
+the WFI tank is at a lower elevation than the still.
+6.5.2 Multi-Effect Distillation (ME)
+ME systems incorporate two or more evaporator heat exchangers, separator mechanisms, and a condenser
+into a staged evaporation and condensation process. Typical systems have 3-8 effects. Each effect includes
+an evaporator and a separator (see Chapter 11).
+ME systems typically require plant steam at 80 - 120 psig, and cooling fluid at a supply temperature of 4°C -
+16°C, based on a temperature rise of 65°C - 70°C. The quantity of steam and cooling fluid required varies
+significantly based upon the WFI production rate and the number of effects. Capital costs increase while
+steam and cooling fluid consumption decrease, as the number of effects to produce a given quantity of WFI
+increases. ME systems operate under pressure, and typically deliver WFI at 80°C - 100°C.
+Normally, water used for cooling is not the same as the feed water, and does not require special pretreatment
+for the purpose of scale prevention. However, corrosion prevention measures, such as chlorine and chloram-
+ine removal, are necessary.
+Some designs deliver the water at atmospheric pressure and require a transfer pump unless the WFI storage
+tank is at lower elevation than the still. Other designs which may operate at 5-10 psig condenser pressure, do
+feature a distillate transfer pump for higher pressure deliveries.
+6.5.3 Vapor Compression Distillation (VC)
+VC is a distillation method where water is evaporated inside, or outside, a bank of tubes arranged in a
+horizontal or vertical configuration. The horizontal design is normally of the forced circulation type with re-
+circulation pump and spray nozzles, while the vertical design is of the natural circulation type.
+Major system components are the evaporator, compressor, heat exchangers, deaerator, pumps, motors,
+valves, instruments, and controls.
+The VC process operates on the same principle as the mechanical refrigeration cycle.
+In a VC still, feed water is evaporated on one side of the tubes. The generated steam passes through the
+disengagement space, through the separator, and into the compressor.
+
+=== PAGE 80 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+The energy imparted by the compressor results in compressed steam with increased pressure and tempera-
+ture. The higher energy steam is then discharged back into the evaporator/condenser vessel. There, the
+steam condenses and gives up its latent heat, which is transferred through the tube wall to the water. More
+water is boiled off, generating more vapor, and the process is repeated. The outgoing distillate and blow down
+streams preheat the incoming feed water, thus saving energy. Since the latent heat is recycled, there is no
+need for a stand-alone condenser as in the SE or ME systems.
+
+#### 6.5.4 Distillation pretreatment requirements - General
+
+All distillation units are susceptible to scaling and corrosion, if the appropriate feed water pretreatment is not
+provided. VC and some SE stills operate slightly above atmospheric pressure, and the removal of calcium
+and magnesium, by way of water softening, is normally required as a minimum. ME stills operate at a much
+higher pressure and temperature, and require higher quality feed water in order to prevent scaling and corro-
+sion. Normally, ion exchange beds are employed as feed water pretreatment to a multiple effect still. RO is
+also used as feed water pretreatment for either the VC or multiple effect stills. All distillation units will invariably
+experience some form of scale build-up and must therefore include routine visual inspections plus cleaning of
+the still during shutdown periods when appropriate. Both types of stills are susceptible to attack by chlorine.
+Chlorine removal is essential if damage is to be avoided. Activated carbon filters and sodium bisulfate injec-
+tion are effective and common methods for chlorine removal.
+From a microbiological perspective, the bacterial and endotoxin load should be consistently controlled to a
+level that does not overload the still.
+
+#### 6.5.5 Pretreatment requirements – Specific
+
+6.5.5.1 Pretreatment for Single Effect Still (SE)
+See the “Pretreatment for ME still” paragraph and above for general information on distillation pretreatment.
+6.5.5.2 Pretreatment for Multi-Effect Still (ME)
+The baseline pretreatment for ME must provide very low TDS feed water, preferably less than 10 mg/l, and
+less than 1 mg/l silica. Some manufacturers offer ME stills to operate on softened water. Others allow higher
+levels of silica, up to 5 mg/l. The pretreatment must also remove chlorine and objectionable volatiles, such as
+ammonia, if present.
+
+*[Figure 6-1 A baseline system to achieve very low TDS may be DI or RO.]*
+
+=== PAGE 81 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+See Chapters 4 and 5 for more information on pretreatment.
+6.5.5.3 Pretreatment for Vapor Compression Still (VC)
+See Section 6.5.4 for general information on distillation pretreatment requirements. The baseline pretreat-
+ment for VC stills is softening, the removal of chlorine, and other objectionable volatiles such as ammonia, if
+present.
+
+##### 6.5.5.4 Economics
+
+a)
+Economics of the Single Effect Still: Commercially available SE systems are inherently simple in
+design, configured similarly, and offered with significantly fewer options, compared to ME and VC sys-
+tems. As a result, fewer factors affecting costs are applicable by comparison. Operating costs of SE
+systems are associated mainly with plant steam and cooling fluid. Utilities consumption rates are fairly
+consistent among SE manufacturers.
+b)
+Economics of the Multi-Effect Still: Although all commercially available ME systems are configured
+similarly and supplied with the same basic components, opportunities for cost savings exist in the areas
+of construction materials, surface finishes, and instrumentation. Operating costs of ME systems are
+associated mainly with plant steam and cooling fluid. Utilities consumption rates vary among ME manu-
+facturers.
+c)
+Economics of the Vapor Compression Still: Significant opportunities exist to reduce capital cost asso-
+ciated with selection of construction materials, surface finishes, and instrumentation used in the con-
+struction of VC stills. Operating costs of VC systems are associated mainly with electrical power.
+
+#### 6.5.6 Recommended Construction Materials
+
+Materials shown Table 6-2 are based on available designs by leading manufacturers. However, other materi-
+als may be utilized based on the technical application.
+
+*[Figure 6-2 Baseline Treatment for VC Stills]*
+
+=== PAGE 82 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+
+##### 6.5.6.1 Surface Finish
+
+Mechanical polishing (MP), electropolishing (EP), and passivation processes are implemented in stainless
+steel distillation systems in order to improve corrosion resistance. These processes are neither necessary,
+nor applicable, to other alloys such as tin-coated copper, titanium, and Inconel, based on differences in metal
+chemistry.
+MP and EP/passivation processes affect the microscopic amplitude and chemical composition, respectively,
+of the stainless surface. These processes are not considered necessary to control microbial growth due to
+the relatively high operating temperatures. MP is advocated for final finishing of mechanical welds and EP/
+passivation for all stainless steel surfaces to optimize the formation of the corrosion resistant chromium oxide
+barrier.
+The impact of progressive mechanical polishing on the capital cost of stills and other equipment is consider-
+able, and often can account for 25% to 30% of a ME or VC still cost. MP processes, except when used to
+smooth out a mechanical weld or misalignment etc., may be removed from the applicable specification with-
+out fear of compromising the water quality.
+*Some manufacturers may use sanitary clamps on distillate piping only.
+Vapor Compression
+304/L SS
+304/L SS
+304 SS
+316 SS
+316/L SS
+304L SS
+316/L SS, Sanitary
+clamps*
+316 / 316L SS with
+Sanitary clamps*
+316 SS / Inconel
+316 SS
+Carbon Steel
+All 316 / 316L SS
+Evaporator
+Shell
+Tubesheets
+Tubes
+Separator
+Heat
+Exchangers
+Deaerator
+Piping
+Pumps
+Compressor
+Valves
+Skid/Frame
+Optional
+Single-Effect
+SS / Tin coated copper
+SS / Tin coated copper
+SS
+SS / Tin coated copper
+SS or Tin coated copper
+when used
+Not used
+SS / Tin coated copper
+SS when used
+Not used
+SS
+Carbon Steel
+Multi-Effect
+316L SS
+316L SS
+316/L SS; Titanium
+316 SS
+316/L SS
+Not Used
+316/L SS, Sanitary
+clamps*
+316 / 316L SS with
+Sanitary clamps*
+Not Used
+316 SS
+Carbon Steel
+Other tube material
+options are available
+
+**Table 6-2**
+
+Materials of Construction
+
+=== PAGE 83 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+
+##### 6.5.6.2 Instrumentation and Controls
+
+For WFI applications, the level of instrumentation should be sufficient to monitor parameters considered
+critical because they relate to ensuring proper hydraulic/thermodynamic functionality and the production of
+the appropriate quality of WFI. Instrumentation for critical operating parameters should be calibratable using
+National Institute of Standards and Technology (NIST) traceable equipment
+
+##### 6.5.6.3 Advantages and Disadvantages
+
+**Table 6-3: Process and System Comparison (Distillation)**
+| Parameter | SE | ME | VC |
+| --- | --- | --- | --- |
+| Evaporator | YES | YES | YES |
+| Condenser | YES | YES | NO |
+| Feed/Blowdown HX | NO / optional | YES | YES |
+| Compressor | NO | NO | YES |
+| ASME Coded | Normally NO | YES | NO |
+| Distillate pump | Normally NO | Optional | YES |
+| Blowdown pump | NO | NO | YES |
+| Makeup heat | Steam or electric | Steam | Steam or electric (ambient); Steam (hot) |
+| Cooling water required | YES | YES | NO |
+| Plant Steam Pressure (psig) | 30 - 60 | 100 - 120 | 30 - 40 |
+| Feed Water Pressure (psig) | 30 - 50 | 75 - 90 | 30 - 50 |
+| Cooling Water Pressure (psig) | 30 - 50 | 30 - 50 | Not required |
+| May generate Clean Steam | YES (not common) | YES | NO |
+
+6.6 REVERSE OSMOSIS (RO)
+RO employs a semi-permeable membrane and a relatively high pressure differential to force water through
+the membrane to achieve chemical, microbial, and endotoxin reduction, critical in USP WFI applications. The
+feed water is converted into two streams, permeate and reject. The permeate water flows through the mem-
+brane and is produced cold and as such does not have the temperature protection for microbial growth
+afforded by the alternate distillation processes. The reject stream discharges comparatively smaller volume
+than the permeate, and contains virtually all of the feed water contaminants.
+
+#### 6.6.1 Application
+
+RO systems are used as USP WFI pretreatment for distillation processes, or as final treatment for USP
+Purified water systems. RO is also an accepted means of producing WFI, and may provide a low capital and
+operational cost alternative to distillation.
+Membranes that are hot water sanitizable at 80°C are now available for pretreatment and final treatment, thus
+eliminating the need for chemical sanitization and simplifying the validation process. These membranes still
+require periodic chemical cleaning.
+Membranes, which may allow for continuous operation at 80°C, are under development. This may have a
+significant impact on the use of RO as a means of producing USP WFI, since operation of the system at 80°C
+may nearly eliminate biological concerns. Failure of a membrane or seal will result in permeate contamina-
+tion. These problems may be controlled by:
+•
+Pretreatment of the feed water
+•
+Appropriate membrane material selection
+•
+Latest technology membrane design
+•
+Integrity challenges
+•
+Periodic sanitization
+•
+Monitoring of microbial levels, conductivity, total organic carbon and differential pressures
+
+#### 6.6.2 Description
+
+Semi-permeable RO membranes are produced commercially for water purification in spiral wound and hol-
+low fiber configurations. RO membranes are permeable to some substances such as water and dissolved
+gases, while impermeable to other substances such as salts, high molecular weight organics, acids, bases,
+colloids, bacteria, and endotoxins. Membranes are available in four basic materials; cellulose acetate, polya-
+mide, thin film composite, and polysulfone. (Polyamide membranes are virtually identical in performance to
+thin film composite membranes.) All three membrane types have advantages and disadvantages. (See Chapter
+5 for more details.)
+Bacteria and endotoxin removal, required for WFI applications, can be performed at ambient temperatures.
+This significantly reduces utility costs compared to alternative elevated temperature processes (distillation).
+By operating at ambient temperatures, distribution piping may not require insulation and may not need to be
+constructed of stainless steel.
+For WFI applications, opportunities exist for enhanced control of the single pass unit, by utilizing multi-pass-
+product-staged or other combination designs. These configurations improve reliability and efficiency, while
+improving water quality and quality assurance over the single pass design.
+
+=== PAGE 85 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+
+#### 6.6.3 Pretreatment Requirements
+
+RO, as the final processing step, may require pretreatment using ion exchange, deionization, RO, and/or
+ultrafiltration to improve operability and quality attributes.
+Pretreatment requirements normally include gross particle filtration, scale prevention, and chlorine removal.
+Carbon dioxide and ammonia gas, are not removed by the RO process, and may be removed by degasification,
+caustic addition, ion exchange, or electrodeionization, prior to the final RO process step. (See Chapter 5 for
+more details.)
+Due to the stringent microbial and endotoxin control required for parenteral and other critical applications, the
+pretreatment prior to the RO should incorporate additional provisions for control and monitoring of microor-
+ganisms.
+Disinfectants, such as chlorine or chloramine, should be maintained, when tolerable, at appropriate levels
+throughout the pretreatment chain. Stagnant water resulting from surge tanks or dead legs should be avoided
+by design, or by the inclusion of recirculation systems, which should include In-Line microbial control devices,
+such as UV sterilizers.
+Regular and appropriate sanitization and cleaning of all unit operations subsequent to and associated with,
+the disinfectant (chlorine or chloramine etc.) removal should be scheduled, to maintain and complete the
+micro-organism control of the pretreatment system. (See Chapter 4 for further details.)
+
+#### 6.6.4 Economics
+
+Opportunities are available to reduce capital costs associated with the selection of construction materials,
+surface finishes, and instrumentation used in the construction of RO units without compromising the water
+quality. Operating costs of RO systems are associated mainly with replacement membranes, water concen-
+trate discharge, electrical power, cleaning and sanitizing chemicals, replacement filters, and pretreatment
+cost.
+
+#### 6.6.5 Construction Materials
+
+Construction material selection for RO systems are driven by:
+•
+Structural integrity, based on high operating pressure
+•
+Structural integrity, based on low pressure sections ahead and after the membranes
+•
+Chemical compatibility with the contact fluid and its constituents
+•
+Need to control micro-organism growth
+The low operating temperature of the RO system allows the use of non-metallic construction materials.
+Sanitary piping and valves are generally optional features for RO systems, based on the specific manufac-
+turer and location of the RO in the treatment chain.
+For the final purification step, it may be very cost effective to utilize mill finish 304 stainless steel for the feed
+and concentrate waste piping for the system, maintaining 316L stainless steel or PVDF and sanitary design
+for the product piping only.
+
+#### 6.6.6 Surface Finish
+
+MP and EP processes are not applicable to non-metallic systems.
+
+=== PAGE 86 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+
+#### 6.6.7 Instrumentation and Controls
+
+RO control systems usually use local control and indication, and do not typically require programmable logic
+controllers (PLC) as a standard feature. The type and level of instrumentation is similar among manufactur-
+ers. The level of instrumentation should be sufficient to monitor parameters considered critical because they
+relate to ensuring proper hydraulic functionality and the consistent production of quality WFI. Instrumentation
+for critical operating parameters should be calibratable using NIST traceable equipment. (See Chapter 9 for
+more details.)
+The typically monitored operating parameters for an RO system are feed pH, feed conductivity, and product
+quality (TOC and conductivity). These three parameters should be measured using calibratable, NIST trace-
+able instruments. Recording data may be accomplished manually or electronically using analog instruments
+and paper/paperless recording systems.
+
+#### 6.6.8 Advantages and Disadvantages
+
+Multi-pass can, in most cases, produce water quality consistent with the minimum requirements of USP WFI.
+In cases where the feed water quality is such that this is not possible, the use of some type of deionization
+(e.g., additional RO, UF, ion exchange, or electrodeionization) as a pretreatment may be required. This is to
+allow the final point of purification to remain RO and the system to generate consistent and reliable water
+within the USP WFI specifications.
+Advantages associated with the design and operation of RO units used as the final treatment step for the
+production of WFI are:
+1)
+Depending on cost and complexity of pretreatment, RO systems designed for production of USP WFI
+may provide for significantly reduced capital costs when compared with distillation processes, while
+maintaining the appropriate USP WFI quality.
+2)
+The utility requirements are significantly lower for RO systems (electricity for pump horsepower) than for
+distillation, resulting in lower operating costs, which may be a very significant factor over the lifetime of
+the system.
+Disadvantages associated with the design and operation of RO units used as the final treatment step for the
+production of WFI are:
+1)
+Membrane fouling and integrity
+•
+Bacteria grow-through
+•
+Seal leakage or by-passing
+•
+Seal failure or damage caused by chemical attack etc.
+•
+Membrane damage during installation etc.
+•
+Membrane damage due to chemical or high temperature attack
+2)
+Membrane material sensitivity to bacteria and sanitizing agents.
+
+=== PAGE 87 ===
+FINAL TREATMENT OPTIONS: WATER FOR INJECTION (WFI)
+3)
+Inherent sanitization limitations
+•
+Periodic chemical or hot water sanitization may be required
+•
+Periodic chemical cleaning may be required
+4)
+Pretreatment cost may be high
+RO systems provide a method for consistently producing ambient water in accordance with the USP WFI
+requirements. This not only reduces utility requirements, but also may reduce installation costs, since thermal
+insulation may not be required for storage and distribution.
+
+### 6.7 USP - WATER FOR INJECTION SYSTEMS COMPARISON
+
+**Table 6-4**
+
+WFI Systems Comparison
+Ratings:
+L = Low
+M = Medium
+H = High
+Notes:
+1)
+All Indicators are relative to each other within the specific category
+2)
+Optimum design and operating conditions are assumed
+3)
+Total water consumption is dependent on pretreatment selected
+4)
+RO may not meet USP TOC levels if feed water TOC is high (>3 ppm)
+RO
+DISTILLATION
+UNIT OPERATION (1,2)
+2 pass RO
+SE
+ME
+VC
+Capital Cost
+M
+M
+H
+H
+Chemical Consumption
+L
+N/A
+N/A
+N/A
+Energy Consumption
+M
+H
+H
+H
+Water Consumption
+M (3)
+H
+M
+M
+Outside Service Costs
+L
+L
+L
+L
+Operational Maintenance
+L
+L
+L
+L
+
+=== PAGE 88 ===
+
+=== PAGE 89 ===
+PHARMACEUTICAL STEAM
+
+=== PAGE 90 ===
+
+=== PAGE 91 ===
+PHARMACEUTICAL STEAM
+7.
+PHARMACEUTICAL STEAM
+
+### 7.1 INTRODUCTION
+
+This chapter aims to simplify and standardize the process of selection, programming, and design of pharma-
+ceutical steam systems. Guidelines, information, and options are provided, along with advantages and disad-
+vantages, based on the best and most cost effective of current and proven practices and technologies.
+The absence of regulations governing the use of steam in pharmaceutical processes has resulted in the
+proliferation of differing practices and interpretations. Most interpretations are made on the side of conserva-
+tism. Unfortunately, in addition to increasing cost without an associated increase in benefits, excessive con-
+servatism can result in system complexity, and possibly reduced reliability. One example is the use of clean
+steam (non-utility boiler produced steam) where a form of utility steam (utility boiler produced steam) would
+be adequate to maintain product quality. The installation of a clean steam generator when a simple steam
+reducing station would suffice results in added equipment and the associated impact on cost, complexity, and
+reliability.
+In some instances, interpretations are based on inaccurate assumptions of what is important or critical. An
+example is the over specifying of pretreatment or using WFI as feed to solve the perceived problem.
+The chapter establishes standard definitions for terms commonly associated with pharmaceutical steam and
+provides information that facilitates making correct and cost effective decisions.
+7.2
+cGMP ISSUES
+The user has the ultimate responsibility for system design and performance, and for ensuring that the proper
+type of steam is used for a given process.
+There is no FDA or USP minimum standard for clean steam. However, cGMPs for large volume parenterals
+(LVPs) issued in 1976 indicated that feed water for boilers supplying steam that contact components, drug
+products, and drug product contact surfaces shall not contain volatile additives such as amines or hydra-
+zines.
+Few regulations govern the design and construction of clean steam generators. There are also no regulations
+governing materials of construction, type or level of instrumentation, surface finishes, or operating tempera-
+tures.
+Among US Government publications, the FDA’s Code of Federal Regulations (CFR) provides culinary steam
+recommendations and stipulations related to heat exchanger and tank air vents design and construction. The
+Culinary steam recommendations apply to food applications only.
+US Public Health Service/Dairy Industry Committee, 3A Sanitary Standards, Number 609-02, adds addi-
+tional limitations to Culinary steam feed water additives for food applications. It should be noted that boiler
+feed water additives permitted in food for human consumption may not be acceptable in drinking water or
+orally ingested drug products.
+
+#### 7.2.1 Steam Attributes
+
+##### 7.2.1.1 Quality
+
+The term “Quality” when referring to steam indicates the level of steam saturation. There are no FDA or USP
+regulations relating to minimum “steam quality” or the level of non-condensable gasses present in pharma-
+ceutical steam. (See Section 7.4.)
+
+=== PAGE 92 ===
+PHARMACEUTICAL STEAM
+European regulators have defined specific criteria for pharmaceutical steam used for equipment sterilization.
+(European Standard EN 285 - Steam Sterilizers - reference section 13.3) These cover acceptable levels of
+saturation or dryness, the level of superheat, and the volume of non-condensable gases present.
+
+##### 7.2.1.2 Purity
+
+Purity requirements for steam used in pharmaceutical manufacturing and product development are driven by
+the product characteristics, manufacturing process, and the intended use of the product. The product manu-
+facturer is responsible for ensuring that steam used to process the product is appropriate.
+Though steam purity requirements are product specific, it may be impractical to reliably produce special
+steam for each situation. Manufacturing operations typically generate and distribute only one or two steam
+purity grades, commonly grouped.
+
+### 7.3 TYPES OF STEAM
+
+Pharmaceutical steam is classified into two (2) types based on their respective sources. These are:
+1)
+Utility-Boiler produced steam, hereafter called Utility Steam.
+2)
+Non-Utility Boiler produced steam, hereafter called Clean Steam.
+
+#### 7.3.1 Utility Steam
+
+Utility steam is characterized with usually having:
+•
+Chemical additives to control scale and corrosion
+•
+Relatively high pressure with the potential of generating superheat during expansion
+•
+Relatively high pH
+Chemical additives: Utility steam is produced, in most cases, using conventional fire-tube steam boilers,
+normally of steel construction. Such boilers are almost always provided with systems that inject additives in
+the feed water to protect the boiler and steam distribution piping from scale and corrosion. Some of these
+scale and corrosion inhibitors may, and often do, include amines and other substances that may not be
+acceptable in steam being used in pharmaceutical processes. The user must determine what additives are
+used, and verify if they are acceptable in the particular application, i.e., do not add any impurities or create a
+reaction in the drug product.
+Utility steam can be filtered to remove particulate matter, but filtration does not remove dissolved substances
+and volatiles such as amines.
+Superheat: Superheated steam is produced in water tube boilers by reheating the steam or by generating
+the steam at a higher pressure in a fire tube boiler and then reducing the pressure through a regulating valve.
+When the pressure is reduced, the energy in the higher temperature steam is dissipated to generate steam at
+the lower pressure and produce superheated steam above the corresponding saturation temperature. Super-
+heat is dissipated downstream of the regulating valve due to heat loss in the line.
+pH control: In order to protect carbon steel from corrosion by the steam, it is necessary to use additives to
+raise the pH to between 9.5 -10.5.
+
+=== PAGE 93 ===
+PHARMACEUTICAL STEAM
+7.3.2 Clean Steam (CS)
+Pharmaceutical clean steam is generated from treated water free of volatile additives, such as amines or
+hydrazines, and is used for thermal disinfection or sterilization processes. It is considered especially impor-
+tant to preclude such contamination from injectable drug products:
+Clean steam is characterized as having:
+•
+No additives
+•
+No generated superheat except when the generated pressure is significantly higher than the use pres-
+sure of the steam. (See Section 7.3.1 - Superheat.)
+•
+Relatively low pH
+There are many terms used in the pharmaceutical industry to describe Clean Steam. These include Clean
+Steam, Pure Steam, Pyrogen Free Steam, WFI Steam, and USP Purified Water steam. There is no standard
+or accepted definition for any of these terms. However, the most commonly used terms are “Pure Steam” and
+“Clean Steam”. In this Guide, the term “Clean Steam” is used in lieu of all others.
+The condensate of Clean Steam has no buffer, and may have a relatively low pH compared to that of utility
+steam.
+
+### 7.4 BACKGROUND AND INDUSTRY PRACTICES
+
+#### 7.4.1 Purity of sterilizing steam
+
+When steam or the resulting condensed water comes in direct or indirect contact with the drug product, the
+purity should be equivalent to the water purity acceptable for final rinsing of the drug contact surfaces.
+Note: A continuous supply of Dry Saturated Steam at the point of use is considered necessary for efficient
+steam sterilization. Water carried by the steam in suspension may cause damp loads and superheated steam
+is considerably less effective than saturated steam when used for sterilization. Non-condensable gases if
+contained in the steam may prevent the attainment of sterilization conditions in parts of the sterilizer load.
+
+#### 7.4.2 Steam used for humidification
+
+When steam is used for indirect humidification, such as injection into HVAC air streams prior to final air
+filtration, the steam does not need to be purer than the air that it is being mixed with. However, when humidi-
+fying process areas, the potential level of impurities, including amines and hydrazines should be evaluated in
+order to ascertain the impact on the final drug product. This is particularly important in areas where open
+processing takes place, such as aseptic filling suites and formulation areas. If the diluted water vapor is found
+to contribute significantly to the contamination of the drug, a purer grade of steam should be selected.
+
+#### 7.4.3 Common practices
+
+It is common practice to generate pharmaceutical steam from compendial waters and test the steam conden-
+sate for equivalency to the compendial standard. This practice ignores the ability of the pharmaceutical steam
+generator to remove impurities. This overprocessing is wasteful and unnecessary. An exception is when the
+steam quantity is small and the cost and maintenance of a dedicated feed water pretreatment system ex-
+ceeds the cost of using compendial water. Pharmaceutical Clean Steam is commonly used in applications
+were utility steam would suffice; such as non-critical room humidification and high purity water heat exchang-
+ers.
+
+=== PAGE 94 ===
+PHARMACEUTICAL STEAM
+Table  lists the commonly accepted industry standards and highlights the trend in the pharmaceutical indus-
+try to provide “purer than necessary” steam and over-specified feed water.
+
+#### 7.4.4 Industry and Baseline Practices in the Production of Steam
+
+**Table 7-1**
+
+Practices in the Production of Steam
+Method of generation of steam
+The use of a sanitary clean steam generator with
+entrainment for the control of endotoxins & liquid
+carry-over (SCSG) is both baseline and common
+industry practice.
+The use of an SCSG is both baseline and com-
+mon industry practice.
+SCSGs are commonly used; however, utility steam
+is the acceptable baseline application.
+WHILE THE USE OF A SCSG IS COMMON
+PRACTICE, AN ALTERNATIVE APPROACH IS
+TO USE UTILITY STEAM PLUS HOT USP
+WATER, FLUSHING & WASTE TESTING.
+SCSGs are commonly used and are the Baseline
+application.
+SCSGs are commonly used but utility steam may
+be totally acceptable.
+Where open processing takes place and where
+the potential level of amines, hydrazine’s etc. in the
+condensate has been determined to have a
+detrimental effect on the drug product the baseline
+and common practice is the use of a SCSG.
+However, if it has been determined that the
+impurities have an insignificant effect on the drug
+product, a utility steam source would qualify as the
+baseline approach.
+It is common practice to use a SCSG as the
+energy source. The baseline approach would be to
+use a utility steam source coupled with a cGMP
+heat exchanger design.
+It is common practice as well as the baseline
+approach to use utility steam.
+Intended Use of Steam
+Parenteral and Non-Parenteral Dosage form
+applications where steam is in direct contact with
+the drug.
+Critical step in the manufacture of API where
+steam is in direct contact with the Active Pharma-
+ceutical Ingredient (API).
+Non-Critical step in the manufacture of an API
+where added impurities may be removed in a
+subsequent step.
+Sterilization of USP water systems.
+Process humidification for dosage form application
+where steam is in direct contact with the drug,
+where open processing takes place and where the
+potential level of amines, hydrazine’s etc. in the
+condensate has been determined to have a
+detrimental effect on the drug product.
+Humidification of non-critical HVAC systems such
+as rooms and areas where the drug is not directly
+exposed to the room atmosphere.
+HUMIDIFICATION OF PROCESS & CRITICAL
+CLEANROOMS.
+Energy source for non-critical & cGMP heat
+exchangers.
+Sterilization of fermentation vessels.
+
+=== PAGE 95 ===
+PHARMACEUTICAL STEAM
+
+*[Figure 7-1 Pharmaceutical Steam System Planning]*
+
+=== PAGE 96 ===
+PHARMACEUTICAL STEAM
+
+### 7.5 SYSTEM PLANNING
+
+Pharmaceutical Steam System Planning, shown in the Figure 7-1 is a graphic representation of the system
+boundaries, limitations, and restrictions. Initial system planning reveals primary boundaries that establish the
+cornerstone for design criteria. These system boundaries are Steam Requirements, System Design, Use
+Point Criteria, and Distribution System requirements.
+The arrows encircling each boundary represent limitations that establish more specific operating strategies
+and ranges. To allow more flexibility in final planning and detailed design the designer should always indicate
+ranges of acceptability, rather than a specific value or position.
+
+#### 7.5.1 Steam Requirements
+
+The planning process starts with the listing of all steam requirements and applications that include:
+•
+Company standards including QA/QC requirements and published Sop’s
+•
+The categorization of use-point by:
+•
+Type of application (Humidification, critical or non-critical, API, and Dosage for applications)
+•
+Purity selection (this is based primarily on the application and the endotoxin and chemical purity
+criteria set for the product for which the steam, or its condensate, will be in contact with. The selection
+must consider underlying factors which have impacts on purity control, installed and operating cost,
+maintenance, and practicality)
+•
+Steam quality (dryness, non-condensable limits, and maximum superheat)
+
+#### 7.5.2 System Design
+
+Pharmaceutical steam is generated using different methods. The most appropriate method for each applica-
+tion must be selected. (See the Pharmaceutical Steam Purity Decision Tree, Section 7.6.)
+The process continues with an evaluation of the steam system requirements (generation) that includes: the
+selection of the type of generation system that would satisfy each category, which would include:
+•
+The types of generation systems available. (If both pyrogen free clean steam and clean steam without
+endotoxin limits is required, the practicality and economy of producing only the higher grade should be
+raised.)
+•
+The source of utility steam or electrical power (The plant steam requirement for clean steam as well as
+utility steam and the option of electric powered steam generators should be considered.)
+•
+The type and number of systems required based on feedback from the “Distribution System” evaluation
+•
+The condensate sampling needs
+•
+Safety considerations
+
+#### 7.5.3 Use Point Criteria
+
+The third step defines the specific delivery requirement ranges for clean steam at the point of use including:
+
+=== PAGE 97 ===
+PHARMACEUTICAL STEAM
+•
+Utilization, which is determined from each overall system peak demand(s), average demand, and the
+relationships between peak demand time periods and their flow rates.
+•
+Pressures and flow levels
+•
+Use periods and histogram analysis, if available
+•
+Quality
+•
+Purity
+
+#### 7.5.4 Distribution System
+
+The fourth step includes the distribution system evaluation, which includes:
+•
+Condensate, non-condensable and moisture removal
+•
+Pipe size and Insulation requirements including:
+•
+Materials of construction, sanitary design requirements and surface finish
+•
+Physical location of each use point
+•
+Heat and temperature losses
+•
+Natural drainage
+Note: Since the steam quality will decline, due to heat losses, with time, the efficiency of the insulation and
+the length of the distribution system, the quality at the use point will not be expected to reflect the generation
+quality level.
+
+#### 7.5.5 Re-evaluation of system boundaries and constraints
+
+These sequential steps are repeated and re-evaluated as information in the design process iterates, and
+further criteria about the overall system boundaries are identified. (See Figure 7-3.)
+In operations with a requirement for only one grade of steam, the steam system is designed to meet the most
+stringent requirements of the most demanding product or process. With more than one purity grade of steam,
+products and processes are often categorized and fed by the most appropriate system. The number of types
+of steam generated is most often a function of the volume of steam consumed and variation of purity re-
+quired.
+
+=== PAGE 98 ===
+PHARMACEUTICAL STEAM
+
+### 7.6 PHARMACEUTICAL STEAM PURITY DECISION TREE
+
+*[Figure 7-2 Pharmaceutical Steam Purity Decision Tree]*
+
+=== PAGE 99 ===
+PHARMACEUTICAL STEAM
+
+### 7.7 PROCESS AND SYSTEM DESCRIPTION
+
+#### 7.7.1 Utility Steam
+
+Utility Steam is produced in conventional plant utility boilers whose typical design and construction are well
+known and will not be covered in this chapter.
+7.7.2 Clean Steam (CS)
+Clean Steam is produced in specially designed non-fired generators or from the first effect of multi-effect WFI
+stills, which do not use scale or corrosion inhibitor additives. The generator is fed with water pretreated for the
+purpose of removing elements that contribute to scaling or corrosion, and the materials of construction are
+resistant to corrosion by steam that has no corrosion inhibitors.
+The dedicated CS generator is very similar in design and construction to the first effect of a multi-effect still.
+For information on multi-effect (ME) stills, see Chapter 6.
+
+##### 7.7.2.1 CS obtained from a ME still
+
+When Clean Steam is obtained from the ME still, the first effect is usually fitted with two valves; one to isolate
+the remaining effects and the other to isolate the Clean Steam use points. Depending on the manufacturer,
+the still may or may not produce steam when the still is producing WFI.
+Advantages:
+•
+Does not require a separate generator with the associated cost, space, installation, operation, and main-
+tenance
+Disadvantages:
+•
+Output is limited to the capability of the first effect of the ME still
+•
+May not produce steam when the still is producing WFI. In an ME, the steam generated in the first effect
+becomes the motive (power) steam for the second effect, which in turn produces motive steam for the
+third effect, etc. Therefore, the impact of the diverted steam is multiplied by the number of effects, and
+WFI production is significantly reduced.
+The still manufacturer should be consulted in advance, if simultaneous production of WFI and Clean Steam is
+desired.
+
+##### 7.7.2.2 CS Produced from a Sanitary Clean Steam Generator
+
+CONFIGURATION OF A TYPICAL SANITARY CS GENERATOR
+There are various designs of CS generators. All are evaporators.
+They can be of the vertical or the horizontal type, depending on the manufacturer and the overhead space
+available.
+The disengagement space and the separator may be housed in the same vessel as the evaporator or in a
+separate vessel.
+
+=== PAGE 100 ===
+PHARMACEUTICAL STEAM
+Sanitary construction includes orbital Tungsten Inert Gas (TIG) welding (see section on fabrication of distri-
+bution systems) wherever possible or mechanical welding with the inner surface ground smooth after weld-
+ing. All removable connections use In-Line “sanitary” fittings. Flanges and threaded connections are not
+considered “sanitary”.
+Heat Exchangers, using Utility Steam as the heat source, including the evaporator should be of the double-
+tubesheet, tubular design to prevent the contamination of the Clean Steam by the heating medium.
+Most CS generators, except those with very small output, are fitted with feed water heaters. In addition, a
+blow down cooler is used to avoid discharge of very hot and flashing water.
+A feed pump may be required if the feed water supply pressure is inadequate. Depending on system design
+and the manufacturer, a feed pressure of approximately 8-10 psig above the maximum expected Clean
+Steam pressure is required. This allows for pressure drop in piping and valves.
+A sample cooler fitted with conductivity meter and alarms is often used to monitor Clean Steam condensate
+purity. This is an optional feature whose use should be decided based on need. Conductivity of the conden-
+sate will provide information regarding the suitability and applicability of the distributed steam for its final use.
+PROCESS AND OPERATING PRINCIPLE OF A TYPICAL SANITARY CS GENERATOR:
+Clean Steam is normally generated in a shell-and-tube heat exchanger evaporator. Feed water is introduced
+on one side of the tubes, while the heating medium is introduced on the other side. Heating of the feed water
+to above the boiling temperature causes the water to evaporate, producing steam. The heating medium does
+not come in direct contact with the feed water or with the clean steam, and is normally utility steam. However,
+CS generators may be designed to utilize other heating mediums. The main differences in the designs are the
+evaporator and separator.
+a)
+Operation
+Clean Steam pressure is maintained by a feedback control loop, which modulates the supply steam control
+valve. The evaporator feed water is independently controlled using a level sensor and feed water pump.
+b)
+Steam Supply
+The utility steam supplied to the generator at typically 100 psig to 120 psig (7.0 to 8.5 Ks/cm2 gauge or 7.9 to
+9.25 bars) must be at a higher pressure than the required clean steam pressure. In general, for a given size
+generator, the greater the differential between the utility steam pressure and the clean steam pressure the
+higher the clean steam production rate. Utility steam pressure should be at least 30-40 psig (2.25 Ks/cm2 or
+2.0 bars) higher than the clean steam pressure, to optimize the production rate. Utility steam consumption will
+be approximately 10% to 20% greater than the quantity of clean steam produced.
+c)
+Clean Steam Pressure
+Clean Steam pressure is selected by the user. Typical units are designed for pharmaceutical applications at
+40 - 60 psig (3.75 - 5.1 bars).
+
+=== PAGE 101 ===
+PHARMACEUTICAL STEAM
+d)
+Separator
+Entrainment separators are normally designed to function over an optimum range of steam velocity. If the
+volume of steam increases substantially, carryover of endotoxins can occur. This condition can exist if the
+steam pressure differential significantly exceeds design conditions. Under these conditions, the velocity of
+the steam through the separator may be excessive. The manufacturer should be consulted regarding the
+output of the generator at the highest possible pressure difference. An alarm and equipment shutdown is
+recommended and can be incorporated into the controls to protect against such conditions.
+e)
+Feed Water Level
+The Feed water level is controlled to protect against flooding of the evaporator and carryover of endotoxins by
+a high level alarm and subsequent shutdown. Evaporator level condition does not affect clean steam purity,
+but is an indication of insufficient feed water or excessive blow down.
+
+=== PAGE 102 ===
+PHARMACEUTICAL STEAM
+
+### 7.8 SIZING THE CLEAN STEAM SYSTEM
+
+*[Figure 7-3 Sizing the Clean Steam System]*
+
+=== PAGE 103 ===
+PHARMACEUTICAL STEAM
+
+##### 7.8.1.1 CS Produced from a Simple Clean Steam Generator
+
+There are applications where pyrogen free steam and sanitary construction features are not required, and at
+the same time, Utility Steam cannot be used. In such cases, it may be most economical to utilize a simple
+Clean Steam generator of the most economical design. Savings may be worthwhile when the elimination of
+the steam separator is combined with non-sanitary features such as:
+•
+Non-Sanitary pipe and fittings
+•
+Non-sanitary instruments and valves
+•
+No polishing
+•
+Minimum controls
+The elimination of the separator alone does not provide significant cost savings. It is important to remember
+that the separator’s function is more than removal of endotoxins. It removes entrainment, which includes all
+types of contaminants present in the feed water, except volatiles. Without an entrainment separator, impuri-
+ties from the feed water may well be entrained in the steam and the moisture content of the steam as it leaves
+the generator, can be much higher than in the standard entrained generator. Thus the feed water purity
+becomes a critical factor in controlling the steam purity if entrainment is not incorporated in the design.
+Independent sanitary entrainment devices are available for installation at, or close to the point of use, and
+may be used with typical “Simple CS generators” as well as to control additional moisture build up due to heat
+losses in the distribution system of Sanitary CS Generators.
+
+#### 7.8.2 Steam Condensate Sampling
+
+##### 7.8.2.1 Purity Sampling
+
+When required by the process, the steam purity shall be monitored through acceptable sampling techniques.
+A slipstream of the steam may be passed through a sample condenser/cooler, fitted with a sampling valve.
+(See Section 7.2.1 for information on Steam Attributes.)
+To ensure that the steam does not contribute to drug product contamination, sampling should be included
+during commissioning, as a good engineering practice, and/or prior to each time the steam is used.
+If the sampling requirement is for endotoxin or pyrogen testing, the sample cooler, tubing and valve should be
+of sanitary construction.
+Sample coolers can be fitted to the CS generator, or located in the distribution line, or at the use point
+(recommended location), or a combination thereof. It is common practice to fit sample coolers with conductiv-
+ity monitors and alarms.
+Endotoxin removal: The condensate sample from a Clean Steam generator with separator is expected to
+show 3-4 log10 level reduction in pyrogens compared to the level in the feed water.
+
+##### 7.8.2.2 Steam “Quality” Sampling
+
+Steam “Quality” sampling may be employed to determine the level of saturation and non-condensable gas-
+ses. This can be determined by applying a steam calorimeter and measuring the dryness or saturation level.
+A steam calorimeter measures the percentage by weight of steam in a mixture of steam and entrained water.
+
+=== PAGE 104 ===
+PHARMACEUTICAL STEAM
+
+#### 7.8.3 Materials of Construction
+
+##### 7.8.3.1 Materials of Construction for Sanitary and Simple CS Generators
+
+Structural integrity and chemical compatibility with the contact fluid and its constituents are two of the more
+practical issues that drive construction material selection for CS systems.
+The inherent corrosion potential forces CS manufacturers to consider relatively inert metal including stainless
+steel or titanium etc. Sanitary piping and valves, considered unnecessary for utility and simple CS genera-
+tors, are often standard features for CS systems based on the specific manufacturer and model. The materi-
+als chosen should not contribute to contamination of the drug product
+Typical materials of construction for Sanitary and Simple CS Generators are:
+Evaporator and separator:
+Shell, tubesheets, and internals:
+300 series S.S
+Evaporator tubes:
+300 series or titanium, or other suitable alloy
+Heat exchangers
+300 SERIES
+(FEED HEATER, BLOW DOWN &
+SAMPLE COOLER):
+Piping:
+300 series for water and Clean Steam, and carbon steel for utility
+steam contact
+Valves:
+300 series and elastomers/diaphragms for water
+Skid and structural:
+Carbon steel
+
+##### 7.8.3.2 Materials of Construction for Utility Steam Generation
+
+Chemical compatibility with the Utility boiler generated steam and the carried over feed water chemicals are
+required for all materials used to condition the contaminated steam.
+Based on the particulate levels in the steam and the required steam purity, more than one filtration stage may
+be utilized.
+Distribution of Utility Steam following filtration follows similar practices as CS to control condensate build up,
+non-condensable gases and saturation levels as required for the application.
+Acceptable materials must be relatively inert and may include SS or tin-coated copper.
+
+#### 7.8.4 Surface Finish
+
+Mechanical polishing (MP), electropolishing (EP), and passivation processes are implemented in some stainless
+CS systems. Chlorine and/or chlorides will damage the generator regardless of the finish.
+The operating temperatures of these systems are more than sufficient for inhibiting microbiological growth.
+optimize the formation of the corrosion resistant chromium oxide barrier. Electropolishing will also optimize
+the chromium oxide barrier, and should be considered if passivation is not an option.
+
+=== PAGE 105 ===
+PHARMACEUTICAL STEAM
+
+#### 7.8.5 Pretreatment for CS (Sanitary and Simple) Generators
+
+The feed water pretreatment for a CS generator is born from three separate and distinct considerations:
+1)
+Scale formation.
+2)
+Corrosion.
+3)
+Volatiles which carryover with the steam and may affect steam purity.
+
+##### 7.8.5.1 Scale
+
+Scale formation is a function of generator feed water chemistry, concentration (depends on blow down rate),
+and temperature. It is independent of design and make, and is outside the control of the generator manufac-
+turer or the operator.
+Because scale inhibitors are not used, and because of the relatively high operating temperatures of the CS
+generator, the total dissolved solids (TDS) of the feed water should be very low. Silica is of particular concern.
+Most manufacturers stipulate a level of less than 1 ppm (parts per million); some go as high as 5 ppm. In
+addition to having low TDS (Total Dissolved Solids), the feed water should have no measurable hardness. It
+is therefore common to use DI or reverse osmosis as pretreatment to the CS generator. All CS generators will
+invariably experience some form of scale build-up and therefore must include routine visual inspections, plus
+cleaning of the generator during shutdown periods when appropriate.
+Using compendial water as feed is wasteful, unless the steam quantity is small and the cost and maintenance
+of a dedicated feed water pretreatment system exceeds the cost of using compendial water.
+Some manufacturers offer generators to operate on softened water. Usually, the rate of blow down is in-
+creased in order to maintain low concentration.
+Note: If the TDS of the soft water is relatively high, soft scale (such as sodium scale and sludge) can form.
+
+##### 7.8.5.2 Corrosion
+
+The most common cause of corrosion is free chlorine, not chlorides.
+Chlorine and chlorides, at any detectable level, are very detrimental to stainless steel. The higher the tem-
+perature and chlorine level, the more severe is the attack. Chlorine is known to migrate and concentrate in
+localized cells where the level can reach tens, or hundreds of ppm, while the concentration in the main stream
+is a fraction of a ppm.
+Chlorine can be removed from the feed water by chemical injection of a reducing agent such as sodium
+bisulfate, or by passing the chlorinated water through carbon filters.
+
+##### 7.8.5.3 Volatiles
+
+Dissolved gasses and substances that are volatile at the operating temperature of the CS generator will
+carryover with the steam. If such substances are objectionable or may potentially compromise product qual-
+ity, they must be removed at the pretreatment stage. Ammonia and CO2 (carbon dioxide) are examples of
+volatile gases that will have an effect on the conductivity, such that a condensate sample may not meet USP
+requirements for Purified or WFI Water.
+For more details on pretreatment and the advantages and disadvantages of the different processes, refer to
+Chapters 4 and 5 of this Guide.
+
+=== PAGE 106 ===
+PHARMACEUTICAL STEAM
+
+#### 7.8.6 Treatment of Utility steam
+
+When utility steam is considered, it may be necessary to filter/condition the steam. In certain applications, it
+may also be necessary to change the steam boiler treatment and substitute additives that do not contain
+amines or hydrazine.
+Since the type and degree of conditioning are dependent on the application, as well as on the quality of the
+utility steam and additives present, this Guide cannot address all possible scenarios.
+Prior to the elimination of amines and hydrazines, by the substitution for standard boiler pretreatment addi-
+tives, the Utility Steam boiler manufacturer should be consulted regarding the impact on equipment warranty,
+performance and expected life. Some of the substitute additives are not as effective as the standard.
+
+### 7.9 COST IMPLICATIONS
+
+Determining the economics of pharmaceutical steam production is complex. Costs are quite predictable, but
+vary greatly depending on scale of operation, system design, actual usage, etc. The total operating cost to
+produce pharmaceutical steams is obtained by adding the cost of feed water to the costs of pretreatment and
+final treatment (primary ion removal and polishing). The type of pharmaceutical steam system design option
+selected is typically based on feed water TDS, silica and hardness levels, organic and colloidal content, as
+well as anticipated steam system utility costs (acid, caustic, salt, power, and source water). Consideration
+should also be given to maintenance requirements and available resources.
+
+### 7.10 STEAM “QUALITY”
+
+Steam quality is defined as the saturation percentage of steam to water or more explicitly, the ratio of the
+vapor mass to the mass of the steam mixture.
+Dry Saturated Steam with minimum superheat is necessary for efficient steam sterilization.
+Water can be generated and carried by steam within distribution systems in two ways:
+1)
+In suspension as moisture when the steam is not 100% saturated
+2)
+As condensate separated from the steam
+Water vapor carried in suspension may be reduced by: adding more heat or raising the temperature, reducing
+the pressure, or adding a steam entrainment separator. Water moisture and condensate may be reduced by
+steam traps.
+
+### 7.11 DISTRIBUTION
+
+Distribution systems for clean steam follow the same good engineering practices commonly used for utility
+steam, with the exception that contact materials must be inert to the aggressive nature of clean steam.
+Corrosion-resistant 304, 316, or 316L grade stainless steel “tubing” or solid-drawn “pipe” are commonly used.
+Surface finish is not critical due to the self-sanitizing nature of the clean steam. Mill finish or 180-grit mechani-
+cally polished pipe or tubing is sufficient. TIG Orbital welding and post-installation passivation is considered
+appropriate for this application. Piping must be designed to allow for thermal expansion and to drain conden-
+sate.
+Note: Drains should have air breaks.
+
+=== PAGE 107 ===
+PHARMACEUTICAL STEAM
+Sanitary clamps or pipe flanges are most commonly used where the piping must be broken, but welded
+connections are used as much as possible to eliminate maintenance costs and potential for leaks. Threaded
+connections may be suitable for instrumentation if positioned to drain condensate and remain hot. Ball valves
+are commonly used for isolation because elastomeric diaphragms do not hold up well in this service. Where
+diaphragm valves are used, Teflon-encapsulated EPDM diaphragms give the best long-term performance.
+Steam quality sampling may be determined during “commissioning” and consistency ensured based on the
+proper location and subsequent maintenance of traps, entrainment separators, and vents. (The subject of
+maintenance cannot be over emphasized when these devises are involved due to the small orifices required
+in the separation of gas and liquid.)
+
+#### 7.11.1 Line Sizing
+
+The steam distribution header should be sized for a maximum velocity of 7,200 feet per minute (120 ft/sec or
+37 m/sec) to limit erosion and extend the life expectancy of the piping. Condensate line sizing should follow
+good engineering practices for utility condensate.
+
+#### 7.11.2 Water Moisture Removal
+
+Water vapor forms in steam systems due to heat loss, causing a change in the liquid/vapor ratio or steam
+“quality”.
+Steam may be dried of moisture by reducing the generated pressure just prior to the point of use to coincide
+with the steam temperature of saturation at the reduced pressure.
+Moisture entrained in the steam can also be removed by installing an In-Line separator at the point of use, just
+prior to, or just after, the regulator. If the separator is located upstream of the regulator, the regulator should
+be protected from water damage (wire drawing) and impingement damage on the regulator diaphragms.
+In-line separators are available in sizes from 1/2" to 6" (approx. 1 cm to 15 cm) and remove moisture with a
+series of baffles on which the suspended water droplets impinge and fall out by gravity to the drain, which
+must be piped to a trap. Separators have a separation efficiency of better than 99% in the removal of all liquid
+and solid entrainment exceeding 10 microns.
+
+#### 7.11.3 Condensate Removal
+
+Condensate is the water that has separated from the liquid vapor mixture and forms in steam systems due to
+heat losses and natural separation effects. Lines should be designed to prevent the buildup of condensate to
+avoid dangerous water hammer and to eliminate potential cold spots where bacteria can grow. Any untrapped
+vertical length of pipe will quickly fill with condensate. If this condensate is allowed to stand for sufficient time,
+it can cool and become a breeding ground for bacteria. This bacteria could possibly be entrained back into the
+main distribution header and contaminate use points downstream. Worst case condensate removal locations
+should be sampled monthly for presence of bacteria. The following practices are commonly employed to
+minimize these concerns:
+•
+Each line is adequately supported to avoid sagging and subsequent condensate accumulation.
+•
+Steam traps are installed at all points where condensate can collect (e.g., at least every 100 feet (30
+meters) of line, upstream of control valves, at the bottom of vertical risers, etc.). Steam traps used for
+clean steam service should be sanitary design and self-draining.
+•
+If the main distribution header is above the use points, the branches to the users should be routed from
+the top of the header to avoid excessive condensate loads at the branch. Each branch should be trapped
+to avoid condensate buildup.
+
+=== PAGE 108 ===
+PHARMACEUTICAL STEAM
+•
+An alternative is to run the main distribution header below the use points. Then the branches can drain
+back to the main distribution header, avoiding the need for additional traps.
+•
+The requirement to trap each branch can be waived for short drops from main headers to vessels or
+other equipment that are in frequent use where the sterilization and water hammer is not impacted by the
+collected condensate. An example is a drop from a main distribution header to a media storage tank,
+which is sterilized daily. The condensate built up in the vertical drop line has only a limited time to cool and
+is quickly eliminated by the trap at the bottom of the vessel when the block valve is opened. The vertical
+drop is sterilized daily with the vessel, so there is little chance for bacteria to grow.
+
+#### 7.11.4 Non-Condensable Gas Removal
+
+Air and other non-condensable gases should be minimized from pharmaceutical steam systems. Since air
+acts as an insulator, incomplete sterilization can occur in the process. Air in a system offers a very effective
+barrier to the heat transfer which will lead to a reduced temperature at the surface of a tube, system compo-
+nent or process equipment.
+Air can be discharged using steam traps, however excessive levels may slow down the discharge of conden-
+sate. The subcooled condensate can then lead to insufficient sterilization temperatures due to the excess
+water.
+The removal of air can be achieved by placing thermostatic pharmaceutical steam traps with the inlet in the
+upward position. These should be placed in positions where air is prone to collect such as the terminal points
+of the main and large branches of the steam header, high points in the tanks, reactors and sterilizers, etc. In
+the case of air and condensate discharge at the bottom of large vessels, the air and condensate should be
+separated by correct piping practices.
+
+#### 7.11.5 Superheat
+
+While higher-pressure steam can be used to compensate for superheat, the latent heat, or killing power of the
+potentially superheated steam is reduced at higher pressures; leading to increased sterilization cycles.
+
+=== PAGE 109 ===
+PHARMACEUTICAL STEAM
+
+*[Figure 7-4 Vessel Sterilization]*
+
+### 7.12 FOUR EXAMPLES OF CORRECT PIPING PRACTICE
+
+=== PAGE 110 ===
+
+=== PAGE 111 ===
+STORAGE and
+DISTRIBUTION SYSTEMS
+
+=== PAGE 112 ===
+
+=== PAGE 113 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+8.
+STORAGE AND DISTRIBUTION SYSTEMS
+
+### 8.1 INTRODUCTION
+
+This chapter provides an overview of eight common distribution configurations and a decision tree to help
+decide which system best suits the operating requirements. A comparison of tank versus tankless systems is
+addressed, as well as alternative materials of construction available, and ancillary equipment related to
+overall distribution systems. Common industry practices are listed as examples, to help clarify regulatory
+requirements.
+
+### 8.2 SYSTEM DESIGN
+
+#### 8.2.1 General Considerations
+
+A storage system is used to accommodate peak flow requirements against usage rates. The storage system
+must maintain the feed water quality to ensure the appropriate quality of the end use of product. Storage
+allows a smaller, less costly pretreatment system to meet peak demand. A smaller treatment system oper-
+ates closer to the ideal of continuous, dynamic flow. Large manufacturing sites, or systems serving different
+buildings, may use storage tanks to separate one section of the loop, and others to minimize cross contami-
+nation.
+The main disadvantage of a storage tank is its capital cost, and the cost of associated pumps, vent filters, and
+instrumentation. However, this is usually less than the increased cost of pretreatment equipment sized to
+handle the peak use rate in the facility.
+Another disadvantage of storage is that it introduces a region of slow moving water, which can promote
+bacterial growth.
+
+#### 8.2.2 Capacity
+
+Criteria affecting storage capacity include the user’s demand profile or the amount of use, duration, timing,
+and diversity, (in the case of more than one user), balance between the supply of pre- and final- treated
+waters, and whether the system is recirculating or non-recirculating. Careful consideration of these criteria
+will affect cost and water quality.
+The storage tank must provide reserve to minimize cycling of the treatment equipment and to reduce pump
+cavitation. It should provide sufficient reserve to enable routine maintenance and orderly system shutdown in
+the event of an emergency, which can vary from few to many hours, depending on the size and configuration
+of the system and maintenance procedures.
+
+#### 8.2.3 Storage Tank Location
+
+It may not be cost-effective to locate storage tanks as close as possible to the point of use, within high-cost,
+GMP-finished areas. It may be more advantageous to locate them close to the generation equipment, for
+ease of maintenance. Utility areas are acceptable for this purpose, if access is provided (and the area is kept
+clean).
+
+#### 8.2.4 Types of Storage Tanks
+
+Vertical storage tanks are common but horizontal tanks may be necessary if overhead space is limited. For
+recirculating systems, tank design should include an internal spray ball to ensure that all interior surfaces are
+wetted for microbial control. Jacketing is usually provided in hot systems, to maintain water temperature over
+
+=== PAGE 114 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+long periods without makeup, or to temper high influent temperatures, to preclude excessive rouging and
+pump cavitation. To avoid the absorption of carbon dioxide and its effect on conductivity, inert blanketing of
+the tank headspace should be considered. Storage tanks must be fitted with a sub-micron hydrophobic vent
+filter to reduce bio-burden and particles.
+The maximum size of a single storage vessel is often limited by the space available in the facility. It may be
+necessary to resort to multiple tanks to obtain the desired capacity. In this case, interconnecting piping must
+be carefully designed to assure adequate flow through all supply and return branches.
+
+### 8.3 SYSTEM DISTRIBUTION DESIGN
+
+#### 8.3.1 General Considerations
+
+Proper design of both the water storage and distribution systems is critical to the success of a pharmaceuti-
+cal water system.
+The optimal design of any water storage and distribution system must accomplish three things:
+1.
+Maintain the quality of the water within acceptable limits.
+2.
+Deliver the water to the use points at the required flow rate and temperature.
+3.
+Minimize capital and operating expenses.
+Although items 2 and 3 are well understood, item 1 is often misinterpreted. It is not necessary to protect the
+water from every form of degradation, only to maintain the quality within acceptable limits. For instance, water
+stored in the presence of air absorbs CO2, increasing the conductivity. This degradation can be avoided by
+blanketing the storage vessel with nitrogen. However, for many systems this would be a wasteful expenditure
+if the increased conductivity were still within the required specification.
+As technology has improved over the years, many design features such as storage at elevated temperature,
+constant circulation, use of sanitary connections, polished tubing, orbital welding, frequent sanitization, and
+the use of diaphragm valves have become common place. To incorporate all of these features into each new
+design typically leads to ever escalating costs with little if any reduction in risk of contamination. Although
+each of these items provides a level of security, it is a mistake to assume that all of them need to be in every
+system. Many systems operate successfully with one or more of these design features omitted. In such
+cases, the cumulative effect of the other design features is adequate to prevent degradation of the water.
+A more reasonable approach is to utilize design features that provide the greatest reduction in contamination
+risk at the most reasonable cost, and add the more expensive features in the design phase, only if they are
+required to maintain quality within acceptable limits. The systems should be designed to be robust, so fea-
+tures do not have to be added later, affecting cost and schedule. The idea of selecting design features based
+on “return” on investment where “return” is defined as reduction in contamination risk, can be very helpful in
+controlling system cost and in evaluating different alternatives. Ultimately, the effectiveness of each system
+design is determined by the quality of the water delivered to the users. The challenge for the design engineer
+is to know what features to include, to achieve the required degree of protection with the lowest lifecycle cost.
+EXAMPLE
+A USP compendial water system is designed with a 316L SS storage and distribution system and operates
+normally at 80°C. The tubing is all sanitary, orbital welded, with minimal clamps and zero dead leg diaphragm
+valves at the use points. Water is kept circulating through the tubing at a minimum return velocity of 3ft/sec. In
+this case, use of high mechanical polish tubing (<20 Ra) with electropolishing may not be required. The risk
+
+=== PAGE 115 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+of contamination for such a system is already low, and the impact of this upgraded surface finish is question-
+able. The benefits that will be achieved by further improving the quality of finish may not be justified.
+However, if the same system were open to the atmosphere, consideration would be given to installing a
+0.2micron vent filter on the storage vessel, as the reduction in contamination risk is quite large for a relatively
+small investment. Similarly, if the zero dead leg valves were replaced with less expensive valves with larger
+dead legs, you might consider increasing the minimal circulation velocity to help compensate.
+The purpose of the following chapter sections is to provide information to help the user evaluate the advan-
+tages, disadvantages and cost effectiveness of many of the design features commonly used to protect water
+from degradation. A method of selecting/optimizing system storage and distribution design is also presented.
+As a general rule, a water system is optimized as a result of the following:
+1)
+Minimizing the time the water is held at conditions which favor growth
+2)
+Minimizing changes to water temperature
+3)
+Contacting all areas during sanitization
+One system design can be said to be better than another, if it accomplishes these goals to the same degree,
+but at a reduced lifecycle cost. Examples of storage and distribution concepts commonly used today are
+presented in subsequent sections of this Guide, to help demonstrate the idea of optimal system design.
+
+#### 8.3.2 Distribution Design Concepts
+
+The two basic concepts developed for distribution of pharmaceutical waters are referred to as the “batch” and
+“dynamic/continuous” distribution concepts.
+The batch concept utilizes at least two storage tanks. While one is being filled, the other is in service providing
+pharmaceutical waters to the various process users. After one tank has been filled from the water final
+treatment system, it is isolated and the water inside is tested. Only after testing is that tank put into service.
+The water is often drained after 24 hours, but can be validated for longer periods of time. At the completion of
+the draining operation, the vessel and distribution system is usually sanitized before refilling.
+The dynamic/continuous concept off-sets the peak instantaneous water demand, put on the overall water
+system through utilization of a single water storage vessel which simultaneously receives final pretreatment
+system make-up, stores the water in the vessel, and ultimately supplies it to the various process users while
+maintaining water quality.
+The advantage of the “batch” distribution concept, over the “dynamic/continuous” distribution concept, is that
+the water is tested before use with tank QA/QC lot release (water used in each product batch lot is traced and
+is identifiable). The advantages of the “dynamic/continuous” distribution concept include lower lifecycle costs,
+as well as less complex piping around the storage vessel, and a much more efficient operation.
+Once a system distribution concept has been selected, the following additional storage and distribution de-
+sign considerations should be carefully evaluated:
+•
+System configuration including whether series or parallel loops are required, distribution loop points of
+use, cooling requirements (steam-able, sub-loop or multiple branched heat exchanger assemblies), re-
+heat requirements, if any, secondary loop tanks versus tankless system considerations, etc.
+•
+Hot (65-80°C), cold (4-10°C), or ambient temperature process use point requirements
+•
+Sanitization method (steam, hot water, ozone, or chemical)
+
+=== PAGE 116 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+#### 8.3.3 Distribution Decision Tree
+
+The decision tree in Figure 8-1 is presented to aid in the analysis of distribution design. Most of the systems
+in use today are represented by one of these eight configurations, but other designs may also be acceptable.
+In evaluating which configuration is optimal for a given situation, the designer needs to consider many factors,
+including the requirements for Quality Assurance release, the desired specification of water (DI, USP WFI,
+etc.), hydraulic limitations, the required temperature at each drop, the number of use points, and the cost of
+energy.
+Decision tree guide
+1)
+Batched System
+2)
+Branched/One Way
+3)
+Parallel Loops, Single Tank
+4)
+Hot Storage, Hot Distribution
+5)
+Ambient Storage, Ambient Distribution
+6)
+Hot Storage, Cool and Reheat
+7)
+Hot Tank, Self-contained Distribution
+8)
+Point of Use Heat Exchanger
+Each configuration varies in the degree of microbial control provided and in the amount of energy required.
+Better microbial control is usually achieved by minimizing the amount of time water is exposed to conditions
+favoring microbial growth. Configurations that store water at sanitizing conditions such as hot, under ozone,
+or circulation at turbulent velocities, are expected to provide better microbial control than those that do not.
+Naturally, hot circulating systems are more forgiving than cold systems from a microbiological perspective.
+However, adequate microbial control may be achieved in other configurations provided they are frequently
+flushed or sanitized. In any case, system design should prevent stagnation, which promotes formation of
+biofilm.
+Energy usage is minimized by limiting the amount of water changing temperature. Configurations storing
+water hot but supplying it to the use points at lower temperature must cool the water before use. Energy
+requirements are minimized by cooling only that water drawn from the system. Configurations that constantly
+cool and reheat water utilize more energy than systems that do not.
+The configurations delivering lower temperature water are shown with a single cooling exchanger for clarity.
+Usually the cooling medium is tower water since this is the least expensive to generate. In most parts of the
+world, tower water is not cold enough to allow use temperatures much below 25°C. A second cooling ex-
+changer using chilled water or glycol must be added if the required use temperature is below 25°C. It is
+usually cost prohibitive to cool water from 80°C to less than 25°C using chilled water or glycol alone as the
+chiller size becomes quite large.
+
+=== PAGE 117 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+#### 8.3.4 Example System Descriptions
+
+The following describes the systems, contained in the accompanying decision tree, that can be used suc-
+cessfully to store and distribute high purity water. Figure 8-2 through Figure 8-12 present simplified sche-
+matic diagrams (not meant to be P&IDs) of each configuration.
+
+*[Figure 8-1 Distribution Decision Tree]*
+
+=== PAGE 118 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-2 Batched Tank Recirculating System]*
+
+This system is used where QA release is required on the water before it goes into the process. One batch
+tank supplies water to the process, while the other is filled and tested for QA release (traditionally due to
+unreliable means of water production). This is a cumbersome system to operate and is usually limited to
+smaller systems. The disadvantages are the high capital and operating costs. In-line conductivity and TOC
+measurements can provide nearly the same degree of assurance for less money.
+
+*[Figure 8-2 Batched Tank Recirculating System]*
+
+=== PAGE 119 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-3 Branched/One Way with Limited Points of Use]*
+
+This configuration is sometimes used where capital is tight, the system is small, and microbiological quality is
+of lesser concern. It is also useful where frequent flushing or sanitization of the piping is possible. It is a good
+application where water use is continuous. It is less advantageous where water use is sporadic, as the line
+stays stagnant when not in use. Microbial control is more difficult to maintain. A program must be set up to
+flush (e.g., daily) and sanitize the loop to maintain microbial contamination within acceptable limits. More
+frequent sanitization may be required, increasing operating costs. It is also more difficult to use On-Line
+monitoring, as indicative of the quality of the water throughout the system, in a non-recirculating system.
+
+*[Figure 8-3 Branched/One Way with Limited Points of Use]*
+
+=== PAGE 120 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-4 Parallel Loops, Single Tank]*
+
+This configuration is a combination of any of the loop distribution schemes off one storage tank. Figure 8-4
+shows a hot storage tank with two separate loops; a hot distribution and a cool and reheat loop. Parallel loops
+are very common and are most advantageous where multiple temperatures are required, or where the area
+served is so large that a single loop becomes cost prohibitive or hydraulically impractical. The major concern
+is to balance the various loops to maintain proper pressure and flow. This is accomplished either by using
+pressure control valves, or by providing a separate pump for each loop. (Note: A different design is intention-
+ally presented for each loop).
+
+*[Figure 8-4 Parallel Loops, Single Tank]*
+
+=== PAGE 121 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-5 Hot Storage, Hot Distribution]*
+
+This is the configuration of choice when all use points require hot (greater than 65°C) water. Temperature is
+maintained in the storage tank by steam supplied to the tank jacket or alternatively by a heat exchanger on
+the circulating loop. Water is generally returned to the top of the tank through a spray ball to ensure that the
+entire top surface is wetted. This system provides excellent microbial control and is simple to operate. In
+addition, tank and loop sanitization is required less frequently, or not at all, if a temperature of 80°C is main-
+tained. This type of system is universally accepted by regulatory agencies.
+Areas of concern include protecting workers from scalding, cavitation in the circulation pump, moisture con-
+densation on the vent filter, and the formation of rouge. Scalding is minimized by operating at lower tempera-
+ture (65°C) or by proper training and personal protective gear. Cavitation is avoided by accounting for the high
+vapor pressure of hot water in the net positive suction head (NPSH) calculations. Condensation is prevented
+by positioning the hydrophobic vent filter for good drainage and by heating the filter with either a low pressure
+steam jacket or electric tracing. Avoid overheating as this can melt the filter cartridge. Rouge formation is
+controlled by passivation and by operating at a lower temperature. It can be eliminated by using non-metallic
+or lined components.
+
+*[Figure 8-5 Hot Storage, Hot Distribution]*
+
+=== PAGE 122 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-6 and Figure 8-7 Ambient Storage, Ambient Distribution]*
+
+This system is most advantageous when the water is generated at ambient temperature, will be used only at
+ambient temperature, and there is adequate time for sanitization.
+Since the water is stored at ambient temperature with no disinfectant, microbial control is not as good as in
+hot storage system configurations. However, good microbial control is possible provided sanitization is con-
+ducted on a frequent basis. Frequent sanitization is usually accomplished by allowing the water level in the
+storage tank to drop through use, then heating the remaining contents, and circulating through the loop for a
+set amount of time. Reducing the water level limits the energy and time required to sanitize. Heat is provided
+by steam supplied to the tank jacket, or alternatively, by a heat exchanger on the circulating loop. Cooling may
+be required to prevent temperature increases due to heat buildup from the pump, and for cool down after
+sanitization. Water consumption is low if the level in the storage tank is allowed to drop through use prior to
+sanitization and moderate if it is drained.
+The capital and operating costs of this system are minimal. Another advantage is that it can provide high flow
+rates of ambient pharmaceutical water, without need for complex points of use heat exchangers. Its major
+disadvantage is the time required to sanitize, which is longer than the previously described systems, due to
+the need to heat and cool the contents of the storage tank.
+
+*[Figure 8-6 Ambient Storage and Ambient Distribution]*
+
+=== PAGE 123 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Many pharmaceutical water users have found that storing and distributing water at ambient temperatures
+with periodic sanitization, (utilizing either clean steam or heating to 80°C for microbial control) to be safe and
+cost effective. The ambient system can also be effectively operated with an ozonated storage and a periodi-
+cally ozonated loop, in lieu of hot water sanitization (see Figure 8-7). Levels of 0.02ppm to 0.2ppm of ozone
+protect the water from microbial recontamination. Ozone needs to be completely removed from process
+water prior to usage, using UV radiation. Consideration therefore must be given to verifying/assuring that
+ozone has been eliminated, such as the use of In-Line monitors.
+One advantage of ozonation or chemical sanitization, is that these methods allow the use of plastics as a
+material of construction (popular in Europe for purified water systems).
+
+*[Figure 8-7 Ozonated Storage and Distribution]*
+
+=== PAGE 124 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-8 Hot Storage, Cool and Reheat]*
+
+This system is most advantageous when the water is generated hot, tight microbial control is required, and
+there is little time for sanitization. It provides excellent microbial control and is easily sanitized. It requires less
+capital than point of use exchangers, if there are multiple low temperature use points. Hot water from the
+storage tank is cooled through the first heat exchanger, circulated to the use points, and then reheated in a
+second exchanger before returning to the storage tank. Sanitation of the loop is accomplished by turning off
+the cooling medium on a periodic basis. Water consumption is minimized since no flushing is required. The
+major disadvantage of this configuration is it’s high energy consumption, since it cools and reheats the circu-
+lating water regardless of whether it is drawn out of the loop.
+
+*[Figure 8-8 Hot Storage, Cool and Reheat]*
+
+=== PAGE 125 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+*[Figure 8-9 Hot Storage, Self-Contained Distribution]*
+
+This configuration is most advantageous when water is generated hot, there are many low temperature water
+users, and energy consumption is critical. It provides the benefits of the cool and reheat loop without the large
+energy requirement. Hot water from the storage tank is cooled through the heat exchanger, circulated to the
+use points, and then returned to the pump suction bypassing the storage tank. The loop is sanitized on a
+periodic basis by turning off the cooling medium and opening up the return to the storage tank, allowing hot
+water to flow through the loop. An alternative is to flush the lower temperature water to drain until the loop
+becomes hot and then return the flow to the storage tank. The water in the storage tank is kept hot through a
+steam jacket or heat exchanger on an external pump around loop.
+When water is drawn out of a point of use valve, hot water from the storage tank flows into the loop and is
+cooled by the heat exchanger. The hot water flushes the short section of line between the storage tank and
+the circulation pump preventing a deadleg. In most pharmaceutical installations, this happens many times per
+day so the line stays relatively hot. If the usage rate is low, a small amount of water can be returned to the
+storage tank on a continuous or timed basis, keeping this line flushed. A third alternative is to return the
+circulating water to just downstream of the storage tank outlet valve, so the deadleg is negligible.
+
+*[Figure 8-9 Hot Storage, Self-Contained Distribution]*
+
+=== PAGE 126 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Figure 8-10, Figure 8-11, and Figure 8-12 Hot Storage, Hot Distribution, Point of Use Heat Exchanger
+This configuration is identical to Figure 8-5 except that use points requiring water at lower temperature are
+equipped with point of use heat exchangers. Figure 8-10, Figure 8-11, and Figure 8-12 show three different
+designs for these exchangers. All three allow flushing water to drain to lower microbial counts and adjusting
+temperature before opening up the point of use valve. All three also allow for sanitizing the exchanger and
+downstream piping when water is not called for at the drop. The schemes differ in capital cost, sanitation
+method, and in the amount of water used for flushing. Sanitization is accomplished using low pyrogen steam
+in Figure 8-10. In Figure 8-11 sanitization is accomplished by circulating hot water from the loop, through the
+point of use exchanger, back to the main loop. The operation in Figure 8-11 can be facilitated by installing a
+block valve at the return of the main loop. The valve would be closed immediately prior to starting the sub
+loop, to prevent back flow from the main loop. The initial draw of point of use water would be diverted to drain.
+
+*[Figure 8-12 is sanitized by flushing hot water from the main loop once through to drain. Tube-in-tube or]*
+
+serpentine type coolers could be used, as well as double tube sheet exchangers, which are depicted.
+Point of use exchangers are most advantageous when there are both hot and lower temperature water use
+points off the same loop, and the number of low temperature users is small. Since they maintain the water hot
+until it is drawn from the loop, they provide excellent microbial control, provided they are frequently flushed or
+sanitized when not in use. As the number of low temperature users increases, the capital costs and space
+requirements become prohibitive, and one of the other configurations should be considered. Water consump-
+tion is high due to flushing, although this is minimized by the scheme shown in Figure 8-11. Energy consump-
+tion is moderate because only water drawn out of the loop is cooled but additional energy must be spent to
+make up water flushed to drain. Maintenance requirements are high due to the added exchangers and valves.
+Complexity is high as each exchanger must be properly flushed and sanitized. Each drop is limited in capac-
+ity by the sizing of the exchanger. The scheme shown in Figure 8-11 results in added pressure drop in the
+main loop, which leads to a larger circulation pump.
+
+=== PAGE 127 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Figure 8-10
+Single Point of Use, Steamed
+
+=== PAGE 128 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Figure 8-11
+Point of Use Installed in Sub-loop
+
+=== PAGE 129 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+#### 8.3.5 Storage and Distribution Comparison Table
+
+**Table 8-1 compares several storage and distribution options currently used in the pharmaceutical industry.**
+
+Comparisons are made based upon capital, energy, operating costs, maintenance, validatability, and other
+factors. Each category is rated low (L), medium (M), or high (H) for each system relative to the other systems
+presented. The particular storage and distribution choice for a given scenario will depend upon the specific
+situation being addressed, and the priority the end user gives to each of the categories, with quality being the
+foremost priority.
+Figure 8-12
+Point of Use Heat Exchanger with Multiple Branch Users
+
+=== PAGE 130 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+**Table 8-1**
+
+Comparison of Storage and Distribution Options
+Legend:
+L = Low
+M = Medium
+H = High
+Amb = Cold or Ambient Conditions
+Notes:
+1)
+Lower with hot water sanitization once every 24 hours.
+2)
+Storage tank is always hot, loop is cold or ambient, and hot water sanitized once every 24 hours. Loop return is heated prior to reentering storage
+tank.
+3)
+Frequent hot water flushing or steaming can effectively control bioburden. High turnover of the water in each branch due to use (at least once daily)
+can significantly reduce bioburden.
+Category
+Capital Cost
+Water
+Consumption
+Energy
+Consumption
+Validatability
+Operability
+Maintenance
+Requirements
+Tank Turnover
+Line Flushing
+Requirements
+Ability to
+Respond to
+Large Peak
+Demands
+Loop Balancing
+and Control
+Requirements
+Microbial/
+Endotoxin
+Growth Potential
+Most
+Advantageous
+When:
+Least
+Advantageous
+When:
+1. Batched
+System
+H
+H
+L
+Simple
+Complex
+M
+Non-Critical
+Critical
+Limited by
+QA hold
+Average
+L-M
+Method of
+Generation is
+Not Reliable,
+QA release
+required
+before water
+use. Small
+system is
+required.
+Capital and
+operating
+cost is a
+concern
+2. Branched /
+One Way
+L
+H
+L
+Complex
+Complex
+L
+Limited
+Critical
+Excellent
+Simple
+H (3)
+Tight
+Capital,
+Continuous
+Use,
+Frequent
+Flushing or
+Sanitization.
+Sporadic
+Demand Use
+Profile, or
+operating cost
+a concern
+3. Parallel
+Loops,
+Single Tank
+M
+M
+Depends on
+loops
+Complex
+Depends on
+loops
+Depends on
+loops
+Average for
+ambient tank,
+non-critical
+for hot tank
+Depends on
+loops
+Average to
+Excellent
+Critical
+Hot = L
+Amb = M
+Multiple
+Temperatures
+Required or
+Hydraulic
+Limitation
+Hydraulic
+balancing is
+difficult
+4. Hot
+Storage, Hot
+Distribution
+L
+L
+L
+Simple
+Simple
+M
+Non-Critical
+Non-Critical
+Excellent
+Simple
+L
+Hot Water is
+Required,
+Water is
+Generated
+Hot, or
+Microbial
+Control is
+Critical
+Initial Capital
+or Energy
+Availability is
+Tight
+5. Ambient
+Storage,
+Ambient
+Distribution
+L - M
+L - M
+L
+Average
+Average
+L
+Average
+Average
+Excellent
+(Cold Surge
+Volume)
+Average
+M (1)
+High Peak
+Demands for
+Ambient or
+Cold Water,
+Water is
+Generated at
+Ambient
+Temp
+Sanitization
+will not fit into
+operating
+schedule
+6. Hot
+Storage,
+Cool and
+Reheat
+M
+L
+H
+Simple
+Average
+M
+Average
+Non-Critical
+Average
+Average
+L - M (2)
+Tight
+Microbial
+Control,
+Limited Time
+for
+Sanitization,
+Energy cost
+not a
+concern,
+many low
+temperature
+users
+Per Unit
+Energy Cost
+is High
+7. Hot Tank,
+Self-
+contained
+Distribution
+M
+M
+M
+Average
+Average
+M
+Limited
+Average
+Average-
+Excellent
+Average
+L - M (2)
+High Peak
+Demands for
+Ambient to
+Cold Water
+and Unit
+Energy
+Costs a
+concern,
+many low
+temperature
+users
+Per Unit
+Energy Cost
+is High, or
+tank turnover
+is a concern
+8. Point of
+Use Heat
+Exchanger
+H
+H
+M
+Average
+Average-
+Complex
+H
+Non-Critical
+Critical
+Limited by
+exchanger
+sizing
+Critical
+M
+Both hot
+and warm
+temperature
+water
+required and
+number
+of low
+temperature
+users is low
+Space, Initial
+Capital or
+Energy
+Availability is
+Tight
+9. Tankless,
+Ambient
+Loop
+L
+M
+L
+Average
+Average
+M
+Not
+Applicable
+Average
+Average
+Average
+Hot = L
+Amb = M
+Space
+Constraints
+or Tank
+Turnover a
+concern,
+Limited
+Capital
+High
+demands for
+Ambient or
+Cold Water
+
+=== PAGE 131 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+### 8.4 MATERIALS OF CONSTRUCTION
+
+Pharmaceutical equipment and piping systems rely extensively on stainless steels to provide the non-reac-
+tive, corrosion-resistant construction needed in manufacturing and heat sterilization. However, thermoplas-
+tics are available that may offer improved qualities, or lower cost. Less expensive plastics such as polypropy-
+lene (PP) and polyvinyl chloride (PVC) may be acceptable for non-compendial systems. Others, such as
+polyvinylidene fluoride (PVDF) offering greater heat resistance, may be suitable for compendial waters, al-
+though they require continuous support in hot applications. The cost of a PVDF system may be approximately
+10-15 percent lower than the cost of a stainless steel system once factors such as passivation, boroscope,
+radiographic inspection, etc., are included. New methods of joining PVDF tubing leave a weld much smoother
+than possible with stainless steel. At higher temperatures, however, thermal expansion of the plastic be-
+comes a major concern.
+While certain changes to higher grade materials (higher alloys such as AL6N and Hastelloy) and methods of
+fabrication to assure compliance can yield minor improvements, others may only provide minor gain despite
+considerable additional expense.
+Material selection should be consistent (all 316L or all 304L etc.) throughout the distribution, storage, and
+processing systems, if regular passivation is planned.
+For compendial water, the use of 316L stainless steel is preferred.
+Insulation for stainless piping should be free of chlorides, and hangers provided with isolators to preclude
+galvanic corrosion.
+304L and 316L stainless steel has been the industry preference in tanks for the storage of compendial
+waters. Jacket material in contact with the shell should be compatible, to avoid chromium depletion in the
+weld-affected zones. Non-compendial water storage may not require the same level of corrosion resistance
+or the use of low carbon nickel chromium alloys and special finishes, depending on the owner’s water speci-
+fications.
+High purity water distribution systems, using the material and finishes specified by the design, should be
+joined using acceptable welding or other sanitary techniques. The distribution and storage systems should be
+installed in accordance with cGMPs and fabricated, manufactured, procured, and installed in strict accor-
+dance with explicit operating procedures.
+Orbital welding has become the preferred method for joining high purity metallic water piping systems, due to
+the greater control over critical weld parameters and the smooth weld bead characteristics of the process.
+However, hand welding is still employed and may be required in certain situations.
+304 and 316 stainless steel have been preferred grades for use in metallic piping systems due to their high
+chromium and nickel content and ease of automatic welding. Low carbon and low sulfur grades of stainless
+steel are preferred for compendial systems, and control and inspection of the welding process is necessary
+to limit corrosion and crevices in the system. A maximum sulfur content of 0.04% would be ideal for welding
+but any mismatch in the sulfur content of the mating parts will easily cause the weld to weaken, outweighing
+the advantages lower sulfur levels.
+Where possible, all fittings, valves, tubing, and weldable pieces of the same nominal size (diameter) should
+be purchased and manufactured from steel with the same specification and Heat Number in order to stan-
+dardize the weld quality for each tubing size.
+
+=== PAGE 132 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+#### 8.4.1 Comparison of Materials of Construction for Tanks and Distribution Systems
+
+#### 8.4.2 Workmanship
+
+Fabrication should be performed by certified welders in a controlled environment to preclude contamination
+of equipment and material surfaces. Facilities dedicated to the fabrication of stainless steel (or higher grade
+alloys) are preferred, to avoid contamination by carbon steel. Fabrication must follow an approved quality
+assurance plan. There needs to be adequate documentation in the design and construction of the system,
+including up to date P&IDs, system isometrics, weld test reports, etc.
+Tubing and piping welds, whether orbital or manual, must have a smooth internal diameter contour without
+excessive concavity or convexity, bead wandering, misalignment, porosity, or discoloration. One hundred
+percent photographic or radiographic analysis, while utilized to an increasing extent, is neither cost effective
+nor infallible. Appropriate sampling is strongly recommended.
+
+**Table 8-2**
+
+Comparison of the relative values of key factors in the design and installation
+of water systems
+Legend:
+Y = Yes
+N = No
+H = High
+M = Medium
+L = Low
+Notes:
+1)
+Based on skilled labor requirements, ease of welding, ease of visual inspection, shop fabrication requirements, etc.
+2)
+The steam pressure and steam temperature control is critical to keep both below the manufacturer’s ratings.
+PVDF
+ABS
+POLYPRO
+PVC
+316LSS
+304LSS
+316LSS
+304LSS
+TUBING
+TUBING
+PIPING
+PIPING
+Installed Cost
+M
+M
+L
+L
+M
+M
+M
+M
+Ease of Installation (1)
+H
+M
+M
+H
+M
+M
+H
+H
+Steam Sanitizable
+Y
+N
+N
+N
+Y
+Y
+Y
+Y
+Hot Water Sanitizable
+Y
+N
+N
+N
+Y
+Y
+Y
+Y
+Ozone Sanitizable
+Y
+N
+N
+N
+Y
+Y
+Y
+Y
+Chemical Sanitizable
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Rouging Susceptibility
+N
+N
+N
+N
+Y
+Y
+Y
+Y
+Corrosion Resistance
+H
+H
+H
+H
+H
+M
+H
+M
+Availability
+M
+L
+M
+H
+H
+M
+H
+H
+Extractables
+L
+M
+L
+H
+L
+L
+L
+L
+Degree of Thermal
+H
+H
+H
+N/A
+L
+L
+L
+L
+EXPANSION
+Joining Method
+-TRICLAMP
+Y
+N
+Y
+N
+Y
+Y
+Y
+Y
+-Solvent
+N
+Y
+N
+Y
+N
+N
+N
+N
+-THERMAL FUSION
+Y
+N
+Y
+N
+N
+N
+N
+N
+-WELD
+N
+N
+N
+N
+Y
+Y
+Y
+Y
+External Support
+H
+H
+H
+M
+L
+L
+L
+L
+
+=== PAGE 133 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+### 8.5 SYSTEM COMPONENTS
+
+#### 8.5.1 Heat Exchangers
+
+Shell and tube, tube-in-tube, and plate and frame heat exchangers are employed. Although plate and frame
+units may offer a cost advantage, they are used less often in the distribution portion of the system in compendial
+service because of the perceived greater risk of contamination. However, they are common in the pretreat-
+ment side prior to final purification. In a shell and tube exchanger treated water flows through the tube bundle;
+the risk of contamination from cooling or heating media can be significantly reduced by means of a double
+tube sheet. Complete drainability of the u-tube bundle is achieved by weep holes located at the low point of
+each chamber in the exchanger channel. Ensuring a positive pressure differential on the “clean” side can
+further reduce contamination risk. Similarly, a plate and frame unit should be operated with the cleaner water
+side at higher pressure than the heating or cooling medium. Conductivity meters may be used for monitoring
+leakage. Unit design should permit full drainage and ready access for inspection and cleaning.
+
+#### 8.5.2 Vent Filters
+
+Used on storage tanks in compendial water service to reduce contamination during drawdown. Units are
+constructed of hydrophobic PTFE or PVDF to prevent wetting and generally rated at 0.1 to 0.2 microns.
+Filters should be capable of withstanding sterilization temperatures and sized for maximum fill or drawdown
+rates to effectively relieve the negative pressure created by high temperature sanitization cycles. Filters in hot
+systems are usually jacketed to minimize condensate formation that could result in blinding vessel exhaust
+hydrophobic filters. Storage tanks should be rated for full vacuum, (or have vacuum protection), if steam is
+used for sterilization. Installation should also allow for drainage of condensate caused by high operating or
+sanitizing temperatures, and ease of replacement. The filter cartridges need to be appropriate for the filter
+housing. Vent filters should be integrity tested for compendial water storage tanks, but may not need to be
+validated as sterile filters.
+
+#### 8.5.3 Pumps and Mechanical Seals
+
+Centrifugal pumps are commonly employed in distribution systems. Performance curves and suction head
+requirements should be reviewed to preclude cavitation, which might lead to particulate contamination. The
+generation of pump heat over extended periods of low or no draw off should also be considered, since
+significant temperature rise in cold systems, or cavitation due to vapor pressure in hot systems could occur.
+Casing drains allow for full system drainage, where the pumps are at the low point of the distribution. Although
+with double mechanical seals, with WFI or other compatible seal, water flushing may minimize the possibility
+of contamination; single mechanical seals flushed to the outside have also been used. In extremely critical
+applications, polished rotating elements may be warranted. The installation of dual pumps, for standby pur-
+poses, should ensure flow throughout the system.
+
+#### 8.5.4 Piping System Components
+
+a)
+Piping and Tubing: Extruded seamless and/or longitudinally welded tubing is commonly used in sys-
+tems two inches in diameter and smaller. Recently, welded steel tubing (ASTM A-270), similar to seam-
+less in appearance, has become available at significantly lower cost. PVDF has also been shown to be a
+viable alternative.
+b)
+Fittings: Single fittings may be manufactured from as few as one, to as many as five pieces. This can
+materially affect the suitability of the end product, in terms of weld content, documentation, and cost.
+c)
+Valves: The trend in the industry has been to use diaphragm valves in high purity systems, particularly in
+isolation applications. For steam service, sanitary ball valves may be acceptable and require less main-
+tenance.
+
+=== PAGE 134 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+The following is a summary of water system components, listing the common industry practice, and listing
+advantages and disadvantages:
+
+#### 8.5.5 System Components Comparison Table
+
+**Table 8-3**
+
+System Components Comparison
+Item
+Valves
+Gaskets
+Vent Filters
+Heat Exchangers
+Pumps
+Mechanical Seals
+Industry Practice
+Diaphragm
+Plug/Ball
+Butterfly
+Elastomers, including Viton
+Silicone
+EPDM
+Teflon
+Teflon encapsulated
+0.2 Micron Hydrophobic
+Membrane
+Steam jacketed or electric traced
+housing
+Double tube sheet
+(Shell and tube)
+Single tube sheet
+(Shell and tube)
+Concentric pipe
+Plate and Frame
+Centrifugal
+Positive Displacement
+Double
+Single
+Advantages
+Drainable*
+Sanitizable
+Cleanable
+No steam seal
+No body pockets
+Low cost
+Tight shutoff
+Low maintenance
+Low cost
+Tight shutoff
+Low maintenance
+Temperature resistant
+Less expensive
+Temperature resistant
+Less expensive
+Temperature resistant
+Less expensive
+Best temperature resistance
+Inert
+Good temperature resistance
+Good chemical resistance
+Bioburden and
+particulate reduction
+Sanitary design
+Protection against plant to clean
+side leaks
+Less expensive than double tube
+sheet
+Low leak potential
+Least Expensive
+Commonly available
+Commonly available
+More efficient when higher
+discharge pressure is required
+Constantly being flushed
+Higher on-stream reliability
+Less expensive
+Disadvantages
+Higher initial cost and
+maintenance
+Wears out quicker
+Not absolute shutoff for high
+pressure systems
+Need stem seal
+Have body pockets where
+bacteria may linger, making
+sanitization difficult
+Need stem seal
+Have body pockets
+Chemical resistant
+Chemical resistant
+Steaming not
+recommend
+Cold flow in service
+More expensive
+Expensive
+Sensitive to pinching
+Possible plugging due to wetting
+Cost
+More expensive
+Need to maintain a higher Delta P
+on clean side is operationally
+difficult
+Low heat transfer coefficient,
+requiring a large surface area
+Greatest leak potential
+Needs double gasketing
+Less expensive
+Lower maintenance
+More expensive
+Higher Maintenance
+More expensive, both installation
+and operation
+For non-shrouded impeller type,
+cleanability an issue
+
+=== PAGE 135 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+### 8.6 COMPARISON OF WFI SYSTEMS WITH STORAGE TANK AND WITHOUT STORAGE TANK
+
+Figure 8-13
+Tankless Ambient Distribution
+*If canted at the correct angle, and installed in pitched lines
+Item
+Connection Types
+Tanks
+Rupture Discs
+Industry Practice
+Sanitary clamped
+Flanged
+Jacketed (1/2 pipe)
+Jacketed (full jacket)
+Non-Jacketed
+Advantages
+Minimal crevicing
+Ease of inspection
+Ease of Disassembly
+Easier in piped systems
+Good in high pressure
+applications
+Recommended for >4” OD
+Good thermal efficiency
+Less welding leading to lower
+probability of weld failure
+Allows for complete external
+inspection of the tank
+Safety relief device prevents tank
+rupture should vent filter become
+blocked
+Tank to be designed as an
+atmospheric tank rather than a
+pressure vessel
+Disadvantages
+Pressure limitations
+Size limitations
+High cost
+Gasket protrusion
+Greater chance for crevicing
+Significant welding required
+Less thermal efficient
+Requires an external heat
+exchanger
+
+**Table 8-3**
+
+System Components Comparison
+
+=== PAGE 136 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+It is possible to feed sub-loops off a single main loop without the use of an intermediate storage tank (Figure
+8-13). This configuration is most advantageous when space or capital constraints are tight. The sub-loop is
+generally a circulating loop. Water drawn out of the main loop when a point of use valve is opened cannot
+return to the main since the sub-loop is at a lower pressure. This provides a degree of isolation between the
+sub-loop and the main, or other, sub-loops. The major disadvantage is that there is no storage capacity.
+Usually this capacity is provided by a storage tank on the main loop.
+
+**Table 8-4: Comparison of WFI Systems**
+| | Storage Tank System | Tankless System |
+| --- | --- | --- |
+
+### 8.7 MICROBIAL CONTROL DESIGN CONSIDERATIONS
+
+In any given water storage and distribution system, there are certain fundamental conditions that can always
+be expected to aggravate a microbial problem. Likewise, several basic measures will always tend to counter-
+act such problems. Fundamental conditions that typically could aggravate the problem include:
+•
+Stagnant conditions and areas of low flow rates
+•
+Temperatures that promote microbial growth (15-55°C)
+•
+Poor quality supply water
+Some basic measures that have been shown to alleviate such problems are:
+•
+Maintaining ozone levels of 0.02ppm to 0.2ppm
+•
+Continuous, turbulent flow
+•
+Elevated temperatures
+•
+Proper slope
+•
+Smooth, clean surfaces that minimize nutrient accumulation
+•
+Frequent draining, flushing, or sanitizing
+•
+Air breaks in drain piping
+•
+Ensuring no leaks in the system
+•
+Maintaining positive system pressure
+All pharmaceutical water must meet the EPA standard for microbiological quality of potable water; which
+means it must basically be free of specific indicator organisms. Beyond that, microbiological quality for non-
+compendial water should be based upon its intended use and the types of products that will be formulated
+with it.
+It is important to note though that although the required microbial population acceptance level for USP
+compendial purified water is 100 CFU/ml, reliance on such a single parameter can be misleading. The 100
+CFU/ml limit may generally be applied to the manufacture of solid oral dosage forms. Many times, however,
+aqueous or topical formulations require tighter controls to maintain product quality. The USP points out that
+these types of products have been the subject of recalls when found to be contaminated with gram negative
+organisms, and the typical microbiological flora of water are gram negative organisms.
+A common appropriate approach to dealing with this key issue involves the use of trend analysis. Using such
+an approach, alert and action levels are related to the system norm. In this context, strategies for responding
+to the alert and action levels can, and should, be developed. Even with the most conscientious design, there
+may be places in which biofilm can form. Good Engineering Practices, such as eliminating deadlegs, ensur-
+ing adequate flow velocities through out the system, and periodic sanitization help control microbial activity.
+
+=== PAGE 138 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+It is common practice, therefore, to store and distribute water in a circulating system under any of the follow-
+ing scenarios:
+•
+At conditions which are self-sanitizing such as above 65°C or under ozone.
+•
+At conditions that limit microbial growth such as below 10°C with periodic sanitization.
+•
+At ambient temperatures where sanitization is determined by the validated methods that control micro-
+bial growth
+
+#### 8.7.1 Regulatory Clarification to Common Industry Practices
+
+The following are industry practices that are all Good Engineering Practices (GEPs), and have been per-
+ceived in the past to reduce the chance of microbial growth.
+If you collectively ignore all of these items, you increase the likelihood of having a bioburden problem. These
+items include finishes, storage tank orientation, storage tank isolation, storage tank turnover, piping slope
+and drainability, deadlegs and velocity.
+
+##### 8.7.1.1 Finishes
+
+Common industry practices typically range from milled pipe to 320 grit (0.38 microns Ra) mechanical polish
+with electropolish. Electropolishing is a reverse plating process, which improves the surface finish of me-
+chanically polished stainless steel piping and equipment. It reduces surface area and removes surface intru-
+sions caused by mechanical polishing, which may cause subsequent rouging, and/or discoloration. After
+mechanically polishing or electropolishing the system, the polishing compounds should be confirmed to have
+been completely removed from the pipe, so as not to accelerate corrosion.
+The benefits for electropolish or finishes smoother than 0.76 microns Ra (approx. 180 grit or 30 micro inch)
+are questionable.
+Systems operating at ambient temperature or with infrequent sanitization may require a smoother surface
+finish. The interior surfaces of stainless piping systems, in compendial water service, are typically ground
+and/or electropolished, at considerable cost, to achieve a smooth surface of minimal porosity (0.4 to 1.0
+microns Ra), in order to reduce bacterial adhesion and enhance cleanability. A viable alternative is extruded
+PVDF piping, which can produce a smoother surface than most metallic systems, without recourse to polish-
+ing, although PVDF has other disadvantages. (See Section 8.4.)
+
+##### 8.7.1.2 Storage Tank Orientation
+
+Vertical orientation is the most common because of the following advantages:
+•
+Lower fabrication cost
+•
+Less dead volume
+•
+Simpler spray ball design
+•
+Less floor space required
+•
+Horizontal vessels are used where height is a constraint
+
+=== PAGE 139 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+##### 8.7.1.3 Storage Tank Isolation
+
+Common practice for compendial and non-compendial waters where microbial contamination is a concern is
+to use a 0.2 micron hydrophobic vent filter.
+For hot storage vessels, the vent filter must be heated to minimize moisture condensation. An alternate
+practice is to blanket the tank with 0.2 micron filtered air or nitrogen. Nitrogen blanketing can be used if CO2
+absorption is a concern, or if final product oxidation is a problem.
+
+##### 8.7.1.4 Storage Tank Turnover
+
+Common practice is 1-5 tank turnovers per hour.
+The turnover rate may be important for systems using external sanitization or polishing equipment.
+The turnover rate is less important when storage is under sanitizing conditions, including hot storage or
+ozone. It may be less important under conditions that limit microbial growth, such as cold storage (4-10°C),
+but this must be demonstrated by documentation.
+Some storage tank turnover is required to avoid dead areas.
+
+##### 8.7.1.5 System Drainability
+
+Systems that will be steam sterilized must be fully drainable to assure complete condensate removal.
+Systems that will never be steam sterilized do not need to be fully drainable, as long as water is not allowed
+to stagnate in the system.
+It is good engineering practice to allow for the draining of equipment and associated piping.
+
+##### 8.7.1.6 Deadlegs
+
+Good engineering practice is to minimize or eliminate deadlegs where possible. Common practice is to limit
+deadlegs to less than 6 branch pipe diameters or less. This stems from the “6D” rule contained in the pro-
+posed CFR 212 regulations of 1976. Recently, industry experts have suggested using a guideline of 3D or
+less. However, this new guideline causes confusion since the proponents of this standard generally are
+discussing the length of dead leg from the outer wall of the pipe, while the original 6D rule describes the
+distance from the center line of the pipe to the end of the deadleg. Obviously, if a 1/2” branch is placed on a
+3” main, the distance from the center line of the pipe to the outer wall of the pipe is already 3D. Thus, even a
+zero deadleg valve might not meet the 3D requirement.
+To avoid confusion in the future this Guide suggests that the length of the deadleg be considered from the
+outer wall of the pipe. We propose avoiding a hard rule of thumb for maximum allowable deadlegs.
+Ultimately, the water must meet the required quality regardless of the length of the deadleg. Good Engineer-
+ing Practice requires minimizing the length of deadlegs and there are many good instrument and valve
+designs available to do so.
+It should be recognize that any one-way system can constitute a deadleg if it is not frequently flushed or
+sanitized.
+
+=== PAGE 140 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+##### 8.7.1.7 Positive Pressure
+
+It is important to maintain the system under positive pressure at all times. One common concern is systems
+designed with insufficient return flow, which could draw a vacuum at points of use under periods of high water
+usage. This causes an unexpected microbial challenge to the system.
+
+##### 8.7.1.8 Loop Velocity
+
+Common practice is to design circulating loops for a minimum return velocity of 3 feet/second or higher, and
+for Reynolds numbers in the turbulent region of greater than 2,100.
+Return velocities less than 3 feet/second are acceptable for short periods of time, or in systems that do not
+favor microbial growth, such as hot, chilled, or ozonated loops.
+A minimum return flow is required to maintain the loop in a flooded condition under positive pressure.
+
+### 8.8 CONTINUOUS MICROBIAL CONTROL
+
+Process water systems generally employ both continuous methods of microbial control, and periodic saniti-
+zations. This section discusses continuous methods for controlling microbial growth.
+8.8.1
+“Hot” Systems
+The most effective and reliable means of preventing the growth of bacteria is to operate the system at tem-
+peratures above which bacteria can survive. If the distribution system is maintained in hot conditions, saniti-
+zation on a routine basis can be eliminated.
+Systems operating at 80°C have a long history of data showing the prevention of microbial growth. More
+recently, companies have been validating water systems at 65°C. The advantages of operating at lower
+temperature include energy savings, lower risk of injury, and reducing the amount of rouging. Systems oper-
+ating at the higher end of this range have a greater safety margin with regard to microbial contamination. The
+effectiveness of temperatures below 80°C must be verified with test data, on a case by case basis.
+Note that these temperature ranges will not destroy endotoxin. As noted in Chapter 6, where endotoxin is a
+concern, the treatment system must be designed to remove it.
+8.8.2
+“Cold” Systems
+The use of the term “cold” in this case implies that a system is maintained at a low enough temperature to
+inhibit microbial growth. While this has been shown to be effective, the energy costs associated with it gener-
+ally make this type system costly to operation. Generally, “Cold” systems are operated from 4°C to 10°C.
+Microbial growth rates drop off significantly below 15°C, so the sanitization frequency of cold systems may be
+reduced compared to ambient systems. The effectiveness of a specific temperature, and the associated
+sanitization frequency in any particular system, must be determined by statistical analysis, on a case by case
+basis.
+8.8.3
+“Ambient” Systems
+Circulation temperatures of any pharmaceutical water system are dictated by either the required microbial
+specification or the required temperature for usage. “Ambient” temperature purified water systems using
+either ozone and/or hot water sanitizations are common throughout the industry, and normally result in lower
+lifecycle costs, as well as reduced energy consumption compared with either the “hot” or “cold” systems.
+However, without increased levels of system sanitizations, the lack of temperature control at the water stor-
+
+=== PAGE 141 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+age vessel and distribution loop could result in the formation of a biofilm within the system, which could
+sporadically and unpredictably produce water failing microbiological specifications and necessitate non sched-
+uled water system shutdowns.
+
+#### 8.8.4 Ozone
+
+Ozone has been shown effective for microbial control. It is a strong oxidant, which chemically reacts with
+organisms and destroys them. The destruction of these organisms results in organic compounds, which may
+be further degraded by ozone, ultimately to carbon dioxide. Ozone is twice as powerful an oxidant as chlorine
+and needs to be dosed continually to maintain concentration.
+In any compendial water system and most other applications, water at the use points is expected to be totally
+free of ozone. Ozone removal is commonly effected through ultra violet radiation. 254 nanometer UV light
+converts ozone to oxygen. A common design is to maintain an ozone concentration between .02 ppm and
+0.1ppm in the storage tank, and use a UV light at the beginning of the distribution loop for removal. To sanitize
+the loop itself, the UV light can be turned off during periods of no use, and the ozone will circulate through the
+loop. The UV dosage required for ozone destruction is generally 2 to 3 times that required for microbial
+control. Testing should be done to verify absence of ozone at the use points.
+
+#### 8.8.5 UV Light
+
+Ultraviolet lights have been shown to reduce microbial populations in storage and distribution systems. UV
+energy is germicidal in the wavelengths of 200 to 300 nanometers, which falls below the visible spectrum. UV
+light de-activates DNA leading to bacteria reduction. A UV light is not a sterilization device, as it is often
+referred to. The effectiveness of the light will depend on the quality of the water in which it is acting, the
+intensity of the light, flow rate of water, contact time, and the type of bacteria present.
+
+#### 8.8.6 Filtration
+
+Along with other particulate matter, bacteria and endotoxins may be removed via filtration. This filtration
+media can be either of the microfiltration (2-0.07 microns) or ultrafiltration (0.1-0.005 micron) scale. The
+integrity of these filters must be maintained.
+
+##### 8.8.6.1 Microfiltration
+
+Microfiltration includes the use of depth cartridge filters, pleated filters, and cross flow filtration membrane
+elements. These filters can remove particles ranging in size from 100 microns down to 0.1 micron. Depth and
+pleated filters allow water to flow through a wall of fibers perpendicular to the water direction (dead ended
+filters). The particles are then trapped on the outside wall of these filters, or within the filter walls (for depth
+filters), due to the pore size of the filter. The filter will fill up with these particles and then needs to be replaced
+with a new filter.
+
+##### 8.8.6.2 Ultrafiltration
+
+Ultrafiltration can be used to remove organics and bacteria, as well as most viruses and pyrogens from a
+water source. Filtration is typically from 0.1 micron down to 0.01 micron. Cross flow ultrafiltration forces the
+water to flow parallel to the filter media, and the particles which are too large to pass through the membrane
+elements are then expelled from the system in a concentrate stream to drain (typically 5-10% of the feed
+flow). This allows the filters to be self-cleaning and eliminates the need to replace these membrane elements
+frequently. This type of filtration can be used as a “maintenance “ step downstream of the storage tank in
+certain situations.
+
+=== PAGE 142 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+In general, for any purified water system, filtration downstream of the storage tank is not recommended. This
+comes from concerns of “grow through” where bacteria will colonize on the upstream side of the filter, and
+ultimately be found on the downstream side even though the pore size of the media may theoretically be
+smaller than the size of the bacteria. An additional concern is the potential for accumulation of nutrients on
+the filter media, which may in fact increase the opportunity for microbial growth. However, filters downstream
+of a circulation pump are sometimes used in water systems. System designs should be predicated on obtain-
+ing the desired water quality upstream of the storage tank, using the treatment train. Filters downstream of
+the storage tank should not be relied on to purify the water.
+
+#### 8.8.7 Circulation
+
+Most new water systems use a circulating loop for distribution. The primary purpose of circulation is to reduce
+the chance of microbial growth, or microbial attachment to the surfaces of the system. Although the mecha-
+nisms are not universally agreed upon, it is thought that the shear forces associated with turbulent water flow
+inhibit nutrient concentration and attachment of bacteria to surfaces. The velocity required to obtain these
+benefits is generally agreed to be greater than 3 feet per second, or Reynolds numbers greater than 2,100.
+Velocity may drop off for short periods of time during high use times without adversely affecting the system,
+so long as positive pressure is maintained in the system. Circulation also serves to maintain proper tempera-
+ture throughout the system in hot and cold systems.
+Studies have shown that the velocities required to remove biofilm are higher than practical for a water system
+(above 15 ft/sec). However, a combination of high velocity (5 ft/sec or greater) with an antimicrobial agent,
+such as ozone or chlorine, may, over a long enough period of time, effectively remove biofilm.
+A turbulent condition may be maintained in short dead ended pipe stubs if the length of the stubs is limited.
+This limiting length varies with the pipe stub diameter and to a lesser degree with the main pipe diameter. A
+rule of thumb for the maximum dead leg is 6 branch pipe diameters. This “rule of thumb” may be difficult to
+achieve in large mains with small branches, and may result in unacceptably long dead legs in large branches.
+Rather than universally applying “rules of thumb”, it is important to recognize dead legs as an area of concern
+and take appropriate steps to prevent them in the original design or implement special provisions to address
+them if unavoidable. Some of the factors to consider include operating temperature, velocity in the main, and
+frequency of use (if the dead leg is a use point).
+
+### 8.9 PERIODIC STERILIZATION/SANITIZATION
+
+Periodic sanitization of storage and distribution systems is generally required. Based on monitoring the mi-
+crobial quality of the system, a required frequency of sanitization should be formally established. Sanitization
+may also be done in response to reaching an “action limit” during routine testing. Various methods of periodic
+sanitization are discussed below.
+
+#### 8.9.1 Chemical
+
+Various chemicals or combinations of chemicals can be used to periodically sanitize storage and distribution
+systems. Chlorine solutions on the order of magnitude of 100 ppm are very effective at killing organisms, but
+are not generally used in distribution systems because of corrosion problems associated with stainless steels.
+Hydrogen peroxide in concentrations on the order of 5% is a more practical alternative. Peracetic acid can
+also be used, generally in concentrations of 1% or less. Many different mixtures of these and other chemicals
+are commercially available for the purpose of sanitization.
+Verification of the removal of the sanitizing agent is critical. Commercially available indicators (test strips or
+sticks) are commonly used to indicate when the amount of rinse water is sufficient. A rinse water analysis is
+then required to verify the absence of objectionable chemicals before the system is placed into service.
+
+=== PAGE 143 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+
+#### 8.9.2 Ozone
+
+Sanitation can be done either periodically or continuously with ozone. Storage tanks are typically continu-
+ously ozonated, and then the ozone is removed prior to the distribution loop or individual use points through
+the use of ultraviolet radiation. The distribution system can be periodically sanitized by turning off the UV light
+and, if necessary, increasing the ozone concentration while allowing it to circulate through the distribution
+loop. Concentrations as high as 1 ppm may be needed for periodic sanitization, particularly if biofilms must be
+removed.
+
+#### 8.9.3 Heat
+
+It has been found that periodic sanitization by heating of the process water system is highly reliable and
+effective. The frequency at which sanitization must occur will vary depending on many factors.
+•
+System design
+•
+Size of distribution system
+•
+Components of system
+•
+Volume of process water in the system
+•
+Frequency of use of the process water (turnover volume)
+•
+Temperature of the circulating process water
+Each distribution system must develop its own microbial profile, and the sanitization cycle and frequency will
+have to be developed to fit that system.
+The most straightforward method of sanitization is to heat the circulating process water in the distribution
+system to 80°C ± 3°C and hold it at that temperature for a validated period of time. The use of this heat
+sanitization has been proven to be very effective and if designed properly can also be economical. Controls
+needed to perform this cycle of sanitization can be either manual or automatic.
+Because of the types of bacteria found in purified water systems, the use of steam is not required for effective
+microbial kill. Steam sterilization of distribution piping may require additional valving for vents and drains, and
+may require a higher pressure rating than otherwise needed. Storage tanks are by their nature more easily
+steam sterilized and this practice is common, although not required.
+Hot systems inherently are continuously sanitized. Thus, the need for sanitization should be based on micro-
+bial testing results, or when the system is off line for an extended period of time and the temperature of the
+loop drops to below the validated temperature range.
+Depending on the process water specification, a conservative initial sanitization frequency should be as-
+signed for “cold” systems. After the operating characteristics of the system are determined through microbial
+testing, the routine sanitization frequency can be determined.
+8.9.4 Initial Sanitization (Ambient System)
+Steam sanitization has a successful history, and is probably the most reliable method for sanitization. How-
+ever, there is no requirement for steam sanitization in Purified Water or WFI systems. The following procedure
+is suggested as one option for hot water sanitization of an ambient system.
+
+=== PAGE 144 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Immediately after passivation (for a SS system), the system should be flushed with process water at a high
+temperature (80°C ± 5°C) and all valves opened and points of use flushed. Normally two (2) times the volume
+of the system (after conductivity readings), or rinse water tests indicate that no passivation chemicals are
+detected, is required. This is the initial sanitization of the system.
+Once it has been determined that the chemical characteristics for the quality of the process water have been
+achieved by USP chemical testing, then microbial samples should be taken after each component, the points
+of use, and the storage tank. This initial sampling should show that the distribution system at any sampling
+point has no viable bacterial contamination. Once this is achieved, the system should be brought down to its
+operating temperature and allowed to stabilize.
+
+### 8.10 SYSTEM DESIGN FOR STERILIZATION/SANITIZATION
+
+The following sections highlight particular aspects of storage and distribution system design, which are rel-
+evant to sanitization.
+
+#### 8.10.1 Materials of Construction
+
+The sanitization methods used must be compatible with the materials in the system. By far the most widely
+used material for storage tanks and piping is 300 series stainless steel (generally 316L). This choice provides
+the most flexibility with regard to sanitization options. Sanitization with heat, UV, or ozone can be used in
+stainless systems practically without restriction. Chemical sanitization must be carefully managed with re-
+gard to concentration, pH, and temperature to avoid corrosive effects on stainless distribution systems.
+Other material used for distribution piping is PVDF. PVDF is susceptible to degradation by UV light. It is
+common to use stainless piping immediately adjacent to the UV light in a PVDF system to compensate for
+this problem. The temperature limitation of PVDF is approximately 140°C, which is high enough to allow heat
+sanitization or sterilization.
+In stainless systems, the gaskets used must be reviewed for compatibility with the sanitization method. A
+widely used gasket material is PTFE or EPDM, both of which have good thermal memory and excellent
+resistance to temperature, ozone, and chemical sanitizers. Other gasket materials must be carefully re-
+viewed for compatibility with the sanitization methods, and to ensure that they will not leach substances into
+the water.
+The key is to recognize that the materials of construction “shall not be reactive, additive or absorptive so as to
+alter the safety, identity, strength, quality, or purity of the drug product beyond the official or other established
+requirements” (21 CFR 211.65). The sanitization procedures must be considered when selecting materials to
+comply with this requirement.
+
+#### 8.10.2 Storage Tank Design
+
+Storage tanks are an area in the system that could be considered at high risk for microbial contamination
+because of the large surface area, low velocities, the need for venting, and potential for “cold spots” in the
+head space.
+Tank size is generally based on economic considerations in combination with the pretreatment train sizing.
+From a bacterial standpoint, smaller tanks are preferred because they have higher turnover rates, which
+reduce the likelihood of bacterial growth. They also reduce surface areas and make it easier for ozone to
+permeate the water, if the tank is ozonated.
+
+=== PAGE 145 ===
+STORAGE AND DISTRIBUTION SYSTEMS
+Spray balls may be used on the return loop to wet the head space of storage tanks. The use of a spray ball
+serves to keep the top of the tank at the same temperature as the water, in heated systems, and avoids
+alternately wet and dry surfaces, which could promote corrosive action with stainless steel and allow micro-
+bial growth. Connections on the top head (relief devices, instrument connections, etc.) should be kept as
+close to the head as possible to simplify the spray ball design and get the benefit of the spray action. An
+exception is the vent filter, which should be removed far enough from the storage tank to avoid direct contact
+from the water spray, which could blind the filter. If dip tubes or instruments project down from the head,
+multiple spray balls may be needed to avoid a “shadow” being created in the spray pattern.
+The tanks must be vented to allow filling, and a filter should be used at the vent to avoid airborne particulate
+and microbial contamination. To avoid the problem of condensation in the filter and the resultant potential for
+colonization and grow through, hydrophobic vent filters are used and/or the filters are maintained at a tem-
+perature above the tank temperature with steam jacketing or electric tracing.
+To help avoid microbial growth, and avoid the change in conductivity resulting from absorption of atmospheric
+gasses into the water, nitrogen blanketing on the head space may be used. This eliminates outside air pass-
+ing into the tank through the vent filter. Note that gasses added to storage tanks should be appropriately
+filtered to avoid objectionable contamination.
+
+**Table 8-5**
+
+Comparison of Alternate System Designs for Microbial Control in Storage
+and Distribution
+Note 1: All systems are circulating
+Note 2: Operating costs and effectiveness will increase with frequency of sanitization
+Microbial Control
+Methodology
+Ambient system, with ozonated
+tank, periodic ozone in
+distribution piping
+Ambient system with periodic
+hot water sanitization (note 2)
+Continuous “Cold” system
+(4-10°C) with periodic hot water
+sanitization
+Continuous “Hot” system
+(65-80°C) with multiple Point of
+Use Coolers
+Relative
+Effectiveness/Reliability
+Good
+Good
+Better
+Best
+Operating Cost
+Low
+Low
+High, unless
+cold water is
+required for
+process
+Medium
+Installed Cost
+Low
+Low
+Medium
+High
+
+=== PAGE 146 ===
+
+=== PAGE 147 ===
+INSTRUMENTATION and
+CONTROL
+
+=== PAGE 148 ===
+
+=== PAGE 149 ===
+INSTRUMENTATION AND CONTROL
+9.
+INSTRUMENTATION AND CONTROL
+
+### 9.1 INTRODUCTION
+
+Instrumentation and controls are often used within pharmaceutical water systems to:
+•
+control the operation of equipment and components
+•
+monitor and document the performance of critical equipment
+•
+monitor and document pharmaceutical water quality
+The concepts and regulatory philosophy of defining critical versus non-critical parameters is discussed as it
+relates to instrumentation and controls. This definition could be summarized as:
+“All instruments and control systems should be commissioned following Good Engineering Practices. Critical
+instruments and control systems should be commissioned and qualified.”
+There is no regulatory requirement that requires the use of On-Line instrumentation. A monitoring program
+may include a combination of On-Line instrumentation, manual documentation, and laboratory analysis.
+If On-Line instrumentation is used to measure or record a critical parameter, action and alert limits may be
+established. The methods of addressing “spikes” are also discussed.
+Automation can have a significant impact on the cost and performance of a pharmaceutical water system.
+There is no single optimum level of instrumentation and control for all systems. The optimum level for a given
+system balances the benefits of improved process control, improved documentation, and lower labor costs
+against the cost of procuring, installing, validating, and maintaining the instruments and control systems. In
+many cases, the level of automation for a pharmaceutical water system should be consistent with that utilized
+for the manufacturing process it supports.
+
+### 9.2 PRINCIPLES
+
+a)
+To achieve GMP compliance, the manufacturer must demonstrate, through documented evidence, that
+the pharmaceutical water system is in control and consistently produces and delivers water of accept-
+able quality.
+b)
+Although many quality attributes can be continuously monitored using On-Line instrumentation, there is
+no compendial or regulatory requirement for On-Line monitoring of pharmaceutical water quality. A moni-
+toring program typically includes a combination of On-Line instrumentation, manual documentation of
+operational parameters, and laboratory analysis of water samples.
+c)
+Instruments and control systems are critical and must be qualified when they are used to measure,
+monitor, control, or record a critical process parameter. A critical parameter is a processing parameter
+that affects the final water quality.
+For example, the temperature of the final water product may be considered critical for microbial control. In
+this case, the temperature controls (e.g., sensors and alarms) would be considered critical. However, it is
+not necessary to consider the temperature of the heating media (e.g., steam) as a critical parameter.
+Documentation should clearly indicate which instruments are critical and which are not. It is also advis-
+able to identify non-critical instruments as such on the field device.
+
+=== PAGE 150 ===
+INSTRUMENTATION AND CONTROL
+d)
+All instruments and control systems should be designed, installed, calibrated, and maintained appropri-
+ately, according to Good Engineering Practice. All critical instruments and controls require qualification.
+e)
+Items that should be recorded in the system documentation include maintenance procedures and main-
+tenance work performed, procedures for sampling and analysis, reporting the results, and trend analysis
+of the laboratory data. The monitoring program during start-up typically defines maintenance frequency
+and alert and action levels for the process variables.
+
+### 9.3 GENERAL INSTRUMENTATION REQUIREMENTS
+
+#### 9.3.1 Instrument Selection and Installation
+
+a)
+Instruments should be selected for accuracy and reliability over the entire process range.
+b)
+Instruments should be selected and installed in a way that reduces the potential for contamination.
+•
+Water contact surfaces should be constructed of materials that are compatible with the water they
+contact. Materials of construction and surface finishes (see Chapter 8) are commonly specified for
+instruments installed in distribution systems.
+•
+Sensors in direct contact with waters with strict microbial limits should be of sanitary design. Non-
+sanitary instrumentation is commonly used in feed water and pretreatment systems.
+•
+Instruments may be installed directly in the water system or in a side stream that may, or may not, be
+returned to the main system.
+•
+Deadlegs should be avoided.
+c)
+When possible, instruments should be installed such that exposure to harsh process conditions, such as
+pH and temperature extremes, is avoided. For example, In-Line sensors used to monitor effluent from a
+deionizer should be positioned such that exposure to regeneration chemicals is avoided.
+Instruments that are not compatible with passivation agents, sanitization agents, or sanitization tempera-
+tures should be installed so that they may be easily removed or bypassed. Such devices may need to be
+sanitized off line.
+d)
+Instruments should be installed in accordance with manufacturers’ requirements to ensure proper opera-
+tion. For example, flow meters should be installed in the proper orientation and with the correct upstream
+and downstream straight run of pipe. The impact of process and ambient conditions on an instrument’s
+accuracy and reliability should be addressed.
+e)
+Conductivity cells are especially sensitive to the presence of air or steam bubbles, which can be present
+where there is turbulence, cavitation, or flashing. Such locations should be avoided.
+f)
+Accessibility for maintenance should be considered, but improving control response is usually more
+critical. Poor response time may be a consequence of the poor placement of a device and, in most cases,
+can be improved by installing the device closer to the point of measurement.
+
+#### 9.3.2 Instrument Calibration
+
+a)
+The calibration of critical instruments should follow a regular program, which provides evidence of con-
+sistently acceptable performance. Non-critical instruments may be calibrated on a frequency deemed
+appropriate for the service.
+
+=== PAGE 151 ===
+INSTRUMENTATION AND CONTROL
+b)
+Calibration should follow approved procedures and the results should be documented. Each component
+in a control loop should be calibrated individually or the loop may be calibrated in its entirety. All calibra-
+tions should be traceable to certified standards (e.g., NIST).
+c)
+Vendor-supplied calibration certificates should reference the applicable instrument serial numbers. The
+impact of shipment and installation on the vendor’s calibration should be addressed.
+
+#### 9.3.3 Types of Instrumentation
+
+##### 9.3.3.1 Conductivity
+
+a)
+Although non-ion specific, conductivity is a valuable tool for measuring the total ionic quality of water and
+is a critical parameter for many high purity water systems. Conductivity limits for Purified Water and WFI
+are specified in the USP.
+b)
+On-Line conductivity instrumentation is frequently used to monitor and control the performance of many
+types of purification equipment and to continuously monitor the quality of pharmaceutical waters. On-line
+conductivity instrumentation may also be used for final quality assurance testing, thus eliminating the
+need for periodic laboratory analysis of water samples.
+c)
+Temperature has a profound impact upon conductivity measurement. To eliminate this temperature de-
+pendence, most instruments include a temperature sensor in the conductivity probe and one or more
+algorithms to correct the actual measurement to a standard temperature. However, due to he inaccuracy
+inherent in temperature compensation algorithms, compensated conductivity measurements are not
+suitable for critical quality assurance testing of USP purified water and WFI. When In-Line conductivity
+measurements are used for final quality assurance testing of USP purified water and WFI, a non-com-
+pensated conductivity value and the water temperature must be measured as required by the USP.
+Compensated conductivity values used strictly for process control and monitoring are not subject to USP
+requirements.
+d)
+To operate properly, conductivity sensors must be installed such that there is continuous water flow
+through the sensor and air bubbles or solids cannot become trapped inside the electrodes. Air bubbles
+will result in lower-than-expected conductivity readings while solids can impact the conductivity in either
+direction. Clean steam must be condensed prior to conductivity measurement.
+e)
+Conductivity meters may be used throughout a pharmaceutical water system to monitor and control
+purification processes or to monitor pharmaceutical water quality. Some examples are:
+•
+Feed water monitoring can detect seasonal or unanticipated quality changes that could impact pre-
+treatment equipment operation.
+•
+RO influent and effluent monitoring allows calculation and trending of percentage rejection. Changes
+in percentage rejection may be a sign of membrane failure, scaling or fouling, seal failure, improper
+pH, inadequate feed pressure, or too high a recovery rate.
+•
+Deionizer effluent or in-bed monitoring detects, or predicts, resin exhaustion and allows automatic
+initiation of regeneration cycles.
+•
+The conductivity of pharmaceutical water may be monitored after the final treatment step to verify
+acceptable quality prior to delivery to a storage tank. In addition, conductivity meters are often in-
+stalled in the return piping of distribution loops downstream of the final point of use. Many systems
+include provisions for automatic diversion to drain or recirculation back through purification equip-
+ment when water quality entering the tank is outside the acceptable range.
+
+=== PAGE 152 ===
+INSTRUMENTATION AND CONTROL
+9.3.3.2 Total Organic Carbon (TOC)
+a)
+Total Organic Carbon (TOC) is a measure of the carbon dissolved in water in the form of organic com-
+pounds. It is a valuable tool for measuring the aggregate level of organic impurities in pharmaceutical
+water systems. A TOC test with a nominal limit of 500 ppb for USP Purified Water and WFI is a required
+test in the USP.
+b)
+TOC meters are relatively sophisticated analytical instruments. The USP provides guidance on how to
+qualify an instrument and how to interpret the instrument results.
+c)
+In addition to “continuous” monitoring of equipment performance and pharmaceutical water quality, On-
+Line TOC meters may be used for final quality assurance testing, thus eliminating the need for periodic
+laboratory analysis. When used for critical assurance testing of USP purified water and WFI, instrument
+precision, system suitability, test methodology and calibration procedures must meet USP requirements.
+Instruments used strictly for process control and monitoring are not subject to USP requirements.
+d)
+TOC is often monitored at several locations in a pharmaceutical water system. Some examples are:
+•
+Feed water monitoring can detect seasonal or unanticipated quality changes that could impact pre-
+treatment equipment operation or the potential for resin or membrane fouling.
+•
+Monitoring TOC downstream of carbon filters, organic scavengers, RO units, and UV lights can verify
+proper equipment operation and provide advance warning of bed exhaustion, compromised mem-
+branes, or the need for lamp replacement.
+•
+TOC levels of pharmaceutical water may be monitored after the final treatment step to verify accept-
+able quality prior to delivery to a storage tank. In addition, TOC meters are often installed in the return
+piping of distribution loops downstream of the final point of use. Many systems include provisions for
+automatic diversion to drain or recirculation back through purification equipment when water quality
+is outside the acceptable range.
+e)
+There has been much interest in the possible use of TOC analyzers to indicate endotoxin contamination.
+While this type of contamination will lead to higher TOC levels, there is no quantitative correlation to TOC
+levels. TOC results cannot substitute for microbial or endotoxin testing.
+
+##### 9.3.3.3 PH
+
+a)
+pH measurement is relatively straightforward for high conductivity water. Reliable results can generally
+be obtained using pH indicators or laboratory, field, or On-Line pH meters.
+b)
+Accurate pH measurement is difficult in many pharmaceutical waters due to the low conductivity. Low
+conductivity water is susceptible to pH swings due to contaminants introduced from the air, sample
+containers, and test equipment, as well as instrument difficulties associated with measuring low ionic
+strength solutions.
+c)
+Common locations for On-Line pH measurement and control include:
+•
+Upstream of cellulose acetate RO membranes, where acid is injected to minimize membrane hy-
+drolysis
+•
+Upstream of a degasifier, where acid is injected to increase C02 removal
+
+=== PAGE 153 ===
+INSTRUMENTATION AND CONTROL
+d)
+While pH limits for purified water and WFI are no longer specified in the USP, On-Line pH meters are
+rarely used for process control or for final quality assurance testing of pharmaceutical waters for several
+reasons:
+•
+Conductivity is a more sensitive measurement of overall ionic quality since changes in pH reflect
+logarithmic changes in water quality
+•
+A pH sensor’s reference electrode contains a buffer solution that may leak through the reference
+electrode into the water being measured. To prevent contamination of the pharmaceutical water
+system, a pH sensor is installed in a side stream that flows to drain. The water flow rate through the
+meter must be controlled and held constant to achieve repeatable results.
+•
+pH meters require frequent (daily in some cases) calibration with standard buffer solutions
+
+##### 9.3.3.4 Ozone
+
+a)
+Dissolved ozone levels should be monitored in storage and distribution systems that utilize ozone for
+microbial control. Ozone levels can be determined periodically in the laboratory using several wet chem-
+istry methods, or continuously using an On-Line analyzer. On-line analyzers are relatively inexpensive
+and easy to maintain, but they should periodically be calibrated against laboratory methods.
+b)
+For effective and safe system operation, ozone levels should be monitored at the following locations:
+•
+At the storage tank discharge to control operation of the ozone generator
+•
+Downstream of the UV light to ensure ozone destruction prior to water use
+•
+In loop return piping to ensure proper ozone levels are maintained during sanitization
+c)
+Since Oxidation Reduction Potential (ORP) analyzers are nonspecific and unable to differentiate ozone
+from other oxidants, ORP analyzers should not be used for controlling ozone levels in pharmaceutical
+water systems.
+
+##### 9.3.3.5 Flow
+
+A wide variety of flow meters may be used in the feed water and pretreatment portion of a pharmaceutical
+water system including magnetic flow meters, mass flow meters, vortex shedding meters, and ultrasonic
+meters. All meters should be installed according to the manufacturer’s instructions, to ensure proper opera-
+tion.
+Water flow rate (or velocity) may help to reduce microbial growth and maintain temperature within hot or cold
+systems. It is commonly verified upon startup, but not continuously monitored. Flow rate may vary. It may be
+monitored for information only.
+
+##### 9.3.3.6 Temperature
+
+Temperature is often monitored and/or controlled at various locations to ensure optimum equipment opera-
+tion and/or for microbial control. Temperature interlocks may be used to prevent damage to membranes,
+resins, or equipment if water temperatures drift outside allowable ranges.
+In distribution systems where temperature is controlled or where heat sanitization is used, temperature is
+considered critical to ensure proper system operation or effective sanitization.
+
+=== PAGE 154 ===
+INSTRUMENTATION AND CONTROL
+
+##### 9.3.3.7 Pressure
+
+Pressure may be monitored and controlled throughout the purification process to ensure optimum equipment
+operation. Monitoring differential pressure across filters indicates when backwashing or element replace-
+ment is needed. Differential pressure measurement across resin beds is useful in detecting resin fouling and
+poor flow distribution. Monitoring RO feed, interstage, permeate, and concentrate pressures provides early
+warning of membrane fouling and scaling. Back pressure control in distribution systems may be critical, if
+minimum pressures are required at points of use.
+Pressure is not normally considered a critical parameter, however, the system should maintain positive pres-
+sure at all times. It may typically be monitored for information only.
+
+##### 9.3.3.8 Level
+
+Various types of level measurement are used in the feed water and pretreatment portion of a pharmaceutical
+water system, including simple float switches, ultrasonic sensors, capacitance sensors, and differential pres-
+sure transmitters. The stub from the tank must be kept as short as possible to minimize deadlegs. Calibration
+of this type of transmitter is time consuming, since it requires filling the tank to verify proper operation. Tank
+nozzles with integral valves minimize deadlegs and allow calibration while the tank is in service.
+Tank level may be monitored to control the supply of water into a tank and for control and protection of
+downstream pumps.
+In some instances, level may not normally be considered a critical parameter and may be monitored for
+information only. In these cases, it is usually not validated.
+
+### 9.4 DESIGN CONDITIONS VERSUS OPERATING RANGE
+
+The control system may recognize the distinction between design conditions and operating ranges, and the
+impact this distinction has upon validation and facility operation. These criteria are defined as:
+•
+Design Condition: the specified range, or accuracy, of a controlled variable used by the designer as a
+basis to determine the performance requirements for an engineered system.
+•
+Allowable Operating Range: the range of validated critical parameters within which acceptable water
+product can be produced.
+•
+Normal Operating Range: a range that may be selected as the desired acceptable values for a param-
+eter during normal operations. This range must be within the Allowable Operating Range.
+a)
+While it is desirable that a facility should meet all stated design conditions, the acceptability of the water
+system for operation from a cGMP standpoint depends on operating within the Allowable Operating
+Ranges.
+b)
+Normal Operating Ranges cannot exceed the Allowable Operating Range for the product water. Design
+condition selection should reflect Good Engineering Practice.
+c)
+It may be desirable to apply the concept of Alert and Action points along with Normal Operating Range.
+Alert levels are based on normal operating experience and are used to initiate investigations or corrective
+measures, before reaching an Action level. Action levels are defined as the level at which some corrective
+action must be taken to avoid jeopardizing water quality.
+
+=== PAGE 155 ===
+INSTRUMENTATION AND CONTROL
+
+### 9.5 INSTRUMENTATION SPIKES
+
+“Spikes” may be experienced in the measurement of some parameters. These excursions may be the result
+of the measurement technique or sensor and may not be representative of the actual parameter value. If a
+spike occurs in a system with a significant physical lag or mass, the rapid changes in a parameter as evi-
+denced by spikes may be physically impossible and consequently can be treated as instrumentation spikes.
+In other cases, it may be decided to treat these spikes as Alert Level deviations based upon their frequency
+and duration even though their magnitude may exceed the Action level.
+A procedure for defining and handling spikes should be developed in conjunction with Quality Assurance
+based on the specific water system.
+
+### 9.6 CONTROL SYSTEMS
+
+#### 9.6.1 Level of Automation
+
+Selection of a control strategy for a pharmaceutical water system should consider feed water quality and
+reliability, the complexity of the purification and/or distribution system, labor costs, personnel skill levels and
+capabilities, and documentation and reporting requirements. Options for control include:
+a)
+Local instrumentation with manual control: In this option, a combination of instrumentation, periodic
+samples, and visual examination is used to monitor critical process parameters. Data is collected and
+recorded manually, and analysis and trending capabilities are limited. Excursions of critical parameters
+outside acceptable ranges typically trigger local alarms to reduce the risk of unacceptable water quality.
+Satisfactory manual operation requires significant human intervention. This requires detailed operating
+procedures and conscientious documentation of critical quality parameters. This option has the lowest
+installed cost, but is very labor intensive and may be subject to human error.
+b)
+Semi-automatic control: These systems use local operator control panels, relay logic control, local
+chart recorders and printers, and some manual data collection to monitor and control the water system.
+These systems are less labor intensive over the manual systems, but are still labor intensive due to the
+manual data collection and monitoring required to control the process.
+c)
+Automatic control: Automated systems use a computer (PLC or DCS), or computers, to control the
+pharmaceutical water system. The computer system utilizes appropriate process monitoring instrumen-
+tation (conductivity probes, flow meters, etc.) to gather data and make appropriate adjustments to the
+system automatically. As water generation systems become more sophisticated, relying on human inter-
+vention to control and monitor the water system becomes more difficult and labor intensive. An auto-
+mated system requires less operator involvement, but requires a more highly trained maintenance and
+engineering support staff.
+d)
+Fully integrated systems: These systems include a fully automated system and a wide area network
+connected to other computer systems in the building or site. These systems allow for central site monitor-
+ing, automatic electronic data collection, centralized alarm monitoring with automatic recording, response,
+and report generation.
+Additional information on control system design is available in the Good Automated Manufacturing Practice
+(GAMP) Guide and in various guidelines by the Instrument Society of America (ISA).
+Whichever level of automation is selected, the validation effort should verify operation of the complete sys-
+tem, including vendor-supplied sub-systems.
+
+=== PAGE 156 ===
+INSTRUMENTATION AND CONTROL
+
+#### 9.6.2 Control System Software
+
+The software/control system may be used to measure, monitor, control, or record critical process param-
+eters. Programming and design standards, especially concerning operator interface, control techniques, alarm
+handling, and interlock processing should be applied during the development, validation and maintenance
+phases of the project. The control system software consists of:
+a)
+Firmware, Operating System and Application Software: This is software permanently loaded into
+memory that may or may not be accessible to the user. While the functions performed by the control
+system may be divided between critical and non-critical functions, it is impossible to divide or isolate the
+firmware, operating system, application software, and associated hardware functions. Therefore, if some
+of the functions of a control system are considered critical, all of the above software is considered critical,
+and should be validated.
+b)
+User Configurable Software: The functions of the user configurable software may be defined as critical
+or non-critical. The critical functions or modules require enhanced documentation, including validation. In
+some cases, it may be impossible to divide or isolate software adequately. In such cases, if some of the
+functions are critical, it may be necessary to validate all the software.
+The type of process control required is often the determining factor in the type of software needed, and
+software requirements often define the type of system selected. Major considerations are:
+•
+Number of I/0 points
+•
+Mathematical or statistical functions required
+•
+Reporting features required (particularly if the control system is to be further integrated into higher sys-
+tems)
+•
+Whether or not advanced control techniques are required (e.g., neural nets; fuzzy logic controllers; adap-
+tive gain; dead-time compensation)
+
+#### 9.6.3 Control Hardware and Operation Interface
+
+a)
+Critical software requires enhanced documentation and should be designed and tested in accordance
+with the Lifecycle Methodology.
+b)
+The water system, field instruments and control requirements all affect control hardware selection. Plant
+standards, or a large installed base of a particular system may drive the selection.
+
+=== PAGE 157 ===
+COMMISSIONING and
+QUALIFICATION
+
+=== PAGE 158 ===
+
+=== PAGE 159 ===
+COMMISSIONING AND QUALIFICATION
+10.
+COMMISSIONING AND QUALIFICATION
+
+### 10.1 INTRODUCTION
+
+Commissioning and qualification comprise the validation process by which a system is put into service and
+demonstrated to consistently produce water of a specified quality, under various conditions, while operated
+under set procedures. Although commissioning and qualification are typically separated within a project sched-
+ule, they are in essence, one continuous process.
+The specific activities and processes during commissioning and qualification will not be discussed in this
+Guide. These are considered by a separate ISPE Baseline® Guide on Commissioning and Qualification, and
+pharmaceutical water systems are used as examples throughout. A summary of key concepts are listed
+below:
+a)
+Due to the interdependence between activities and those involved, excellent communication, planning
+and coordination between operations, engineering, commissioning, and validation personnel will enable
+timely and cost-effective project completion.
+b)
+Each component of the system should be built in accordance with plans and specifications and should be
+inspected, tested, and documented by qualified individuals. These activities, and the production of sup-
+porting documentation, are defined as Good Engineering Practice (GEP).
+c)
+GEP recommends a minimum level of documentation for all systems and equipment. This encompasses
+design, fabrication, vendor testing, construction, field inspection, and commissioning. If these documents
+are appropriately planned, organized, and authorized, they may become an integral part of qualification
+support documentation, thus avoiding redundancy and saving time and money.
+d)
+Design criteria and documentation requirements should be clearly defined early in the design phase, to
+ensure clear expectations and appropriate planning, and facilitate timely commissioning and validation.
+Engineering firms, vendors, and contractors should be required, per the system specifications, to provide
+the necessary documentation, to avoid unnecessary costs and delays associated with obtaining or cre-
+ating these documents.
+e)
+During construction, timely review of documentation and periodic “walk-throughs” can ensure that Instal-
+lation Qualification requirements are met.
+f)
+Commissioning takes the system from a state of substantial completion to a state of operation. It is the
+phase of a project that includes mechanical completion, start-up, and turnover. Commissioning incorpo-
+rates a systematic method of testing and documenting the system at the conclusion of construction, and
+prior to the completion of validation activities.
+g)
+Commissioning documents should not be created and executed for the purpose of regulatory compli-
+ance. However, commissioning tests and documentation will typically satisfy many installation and op-
+erational qualification requirements.
+
+### 10.2 SYSTEM QUALIFICATION DOCUMENTATION
+
+Good Engineering Practice dictates that documentation be developed to provide evidence of the design, and
+that the water system operates in accordance with the design. This documentation encompasses engineer-
+ing, installation, inspection, and testing. Such documentation is common to all system commissioning activi-
+ties and is partially summarized below:
+
+=== PAGE 160 ===
+COMMISSIONING AND QUALIFICATION
+•
+A system description stating design intent
+•
+A schematic drawing of the system (P&ID)
+•
+Written system specifications
+•
+Detailed design drawings
+•
+Vendor manuals and drawings
+•
+Field inspection and test reports
+•
+System qualification test results
+Because of their critical impact on pharmaceutical production, water systems require additional emphasis on
+certain sections of this documentation. Specific design requirements for water and steam systems are con-
+tained within the body of this Guide. When compiling documentation related to water systems, particular
+attention should be paid to the following:
+a)
+Schematic documentation may be enhanced by the inclusion of a system isometric diagram (or dia-
+grams) indicating location and numbering of welds, relative elevations, slope of lines, and points of drain-
+age.
+b)
+The system specification should indicate performance criteria, as well as design parameters.
+c)
+Field inspection and test reports should include cleaning and passivation procedure and record, weld
+parameter documentation and inspection reports, slope verification, and verification of the absence of
+“dead-legs”.
+d)
+System qualification tests may or may not be subject to a pre-approved protocol addressing qualification
+test requirements. In either case, test results should be reported in direct comparison to acceptance
+criteria derived from system design and operating specifications.
+e)
+System qualification tests should include verification of all automated functions, specified temperature
+control, distribution system velocity, and initial water quality determination.
+Additional details regarding water system qualification may be found in the associated “ISPE Baseline® Guide
+on Commissioning and Qualification”.
+
+### 10.3 SYSTEM QUALIFICATION SAMPLING PROGRAM
+
+The qualification of water systems is unique in that performance must be proven over an extended period of
+time, and is subject to variations in use rate and initial feed water quality. Therefore, the sampling program
+associated with pharmaceutical water systems validation is unique and specialized.
+Extensive sampling is required to establish and confirm that the entire system will operate within specified
+operating ranges, to develop and evaluate the system operation and maintenance procedures, and to verify
+that the water produced and delivered to the points of use consistently meets the required quality specifica-
+tions and acceptance criteria. This portion of the program is sometimes termed performance qualification.
+Because of the critical impact that water has upon pharmaceutical quality, the sampling program and evalu-
+ation of results is usually subject to a pre-approved plan or protocol, with clearly defined acceptance criteria.
+Also included should be procedures to deal with deviations from specified parameters and analytical results.
+
+=== PAGE 161 ===
+COMMISSIONING AND QUALIFICATION
+The sampling program consists of three successive phases, each with a specific purpose and sampling
+scheme, as outlined below. The initial phase of the sampling program typically begins after the water system
+is shown to be fully operational, as demonstrated through integrated system testing in Operational Qualifica-
+tion.
+The water generated during the various phases may be used for manufacturing as long as analytical results
+are acceptable. The intended applications and impact of water quality should be considered in determining
+how much data is required before use.
+
+**Table 10-1 Sampling Program**
+
+Primary Objectives
+•
+Develop appropriate operating ranges.
+•
+Develop and finalize operating, cleaning, and maintenance proce-
+dures.
+•
+Demonstrate production and delivery of water of the required
+quality.
+•
+Demonstrate consistent operation within established ranges.
+•
+Demonstrate consistent production and delivery of water of the
+required quality.
+•
+Demonstrate extended performance.
+•
+Ensure that potential seasonal variations are evaluated and
+treated.
+Phase
+Typical
+Duration
+2-4 weeks
+2-4 weeks
+One year
+
+#### 10.3.1 Phase 1
+
+The purpose of this phase is to establish appropriate operating ranges and provide data for the development
+of cleaning and sanitization procedures and frequencies. Sampling should be performed after each step in
+the treatment process and from each point of use. In addition, the incoming feed water to the water system
+should be tested and verified to comply with the relevant “Drinking Water” regulations. The FDA Guide to
+Inspections of High Purity Water Systems suggests daily sampling for two to four weeks, but recognizes that
+other sampling programs may be acceptable.
+In devising the sampling scheme, consideration should be given to the system configuration, maintenance
+cycles, how the water is drawn for use, and the expected or potential variation in chemistry and microbiologi-
+cal attributes, at each potential sample point. In treatment, chemistry testing is specific for each processing
+step and microbiological testing between each component is important to determine the microbial load and
+the component’s ability to manage the load.
+At the end of this phase, the SOPs for system operation and maintenance should be developed and approved
+for continued interim use during the next phase. System logs, documentation for critical parameters (e.g.,
+conductivity and TOC data, sanitization data, etc.), and responses to critical alarms or action levels should be
+reviewed, to verify the appropriate procedures are in place. In addition, the process that will be followed to
+investigate a confirmed test failure should be developed at this time. The intent of this process is to assess
+
+=== PAGE 162 ===
+COMMISSIONING AND QUALIFICATION
+whether a failure is localized (i.e., isolated to a specific port) or systematic, and to define how different types
+of failures will be handled.
+
+#### 10.3.2 Phase 2
+
+The second phase is intended to demonstrate that the system consistently operates within pre-determined
+operating ranges and delivers water of the required quality when operated in accordance with the SOPs. The
+FDA Guide suggests that the sampling scheme and duration should be the same as for phase one. During
+phases 1 and 2, multiple samples should be taken from each point of use. Sampling methodology should be
+representative of the way water will be used. For example, sampling should not involve a lengthy preliminary
+purge if water usage will be direct and immediate. If water is used through an attached hose, then the sample
+should be taken from the hose.
+It is recommended that each point be sampled at least once per week as a minimum. In this manner, localized
+contamination may be discovered. (Note that too frequent sampling of little used points may mask incipient
+localized microbial growth by artificial purging.) Phase 2 allows the gathering of sufficient data to establish
+microbial alert and action limits (see Section 10.4).
+
+#### 10.3.3 Phase 3
+
+The third phase is intended to demonstrate that, when operated for an extended time period (typically one
+year), the system produces and delivers water of the required quality, despite possible seasonal variations of
+the feed water. Sample locations, frequencies, and test requirements are based on the established proce-
+dures. For WFI systems, the FDA Guide recommends sampling daily from a minimum of one point of use,
+with all points of use tested weekly. At the end of this phase (i.e., after a full year of testing), the validation is
+considered completed. In most cases, ongoing monitoring will establish a continuing record of water quality.
+
+### 10.4 ACCEPTANCE CRITERIA
+
+Acceptance criteria for water are dependent upon its use. For both Purified Water and WFI, the chemical
+acceptance criteria are clearly described in the US Pharmacopoeia (USP). It is expected that a well designed
+water system, operating within specified design parameters will consistently be able to meet these criteria.
+Therefore, failures in chemical analysis during phases 1 and 2 must be investigated, the reason for failure
+corrected, and (except where errors in sampling or laboratory error are clearly indicated) the sampling phase
+extended to re-establish consistency of performance.
+Microbial quality is not specified by the USP, but is established by the user based upon water use. The USP
+does recommend action limits for the different waters in its General Information chapter. These are 10 CFU/
+100ml for WFI and 100 CFU/ml for Purified Water. These may be employed as initial acceptance criteria for
+system qualification, although some flexibility is allowable, depending upon system design and use. It is
+permissible that a single excursion, followed by acceptable re-sampling would not constitute a failure. In
+addition, because of the inherently bacteriostatic nature of WFI production and distribution systems, it should
+be expected that the large majority of samples should be well below the initial acceptance criterion. There-
+fore, for WFI it is prudent to establish a sample average acceptance criterion, which will be below the limit for
+a single sample. Failure investigation would be handled similarly to chemical analysis failure.
+During phases 1 and 2, normal system microbial limits may be established. Acceptance criteria may then be
+converted to alert and action limits for use during phase 3 and beyond. These would take into account
+repeated excursions from the norm as well as step increases in micro count.
+
+=== PAGE 163 ===
+COMMISSIONING AND QUALIFICATION
+
+### 10.5 QUALIFICATION REPORTS
+
+Qualification data should be compiled and conclusions written into a summary report. This is to be reviewed
+and approved by those responsible for operation and quality assurance of the water system. An interim report
+should be written and approved at such time during the qualification sampling program, as it is desired to use
+water in production activities. A summary report should be prepared at the conclusion of phase 2, periodic
+updates provided throughout phase 3 and a major update issued at the conclusion of phase 3.
+
+### 10.6 CHANGE CONTROL AND REQUALIFICATION
+
+Changes to the system must be assessed with regard to potential impact of the change on the entire system.
+Required action would be determined based on that assessment. It may involve extensive re-qualification,
+localized increase in sampling frequency, or inclusion in the routine monitoring program.
+
+=== PAGE 164 ===
+
+=== PAGE 165 ===
+APPENDIX
+
+=== PAGE 166 ===
+
+=== PAGE 167 ===
+APPENDIX
+11.
+APPENDIX
+
+### 11.1 USP REGULATED WATER QUALITY
+
+See Chapter 2, Section 2.3 on USP Regulated Water Quality for more details.
+In order to set the maximum allowable conductivity, USP determined the limit concentration of the least
+conductive water attribute species used in USP 22 to be chloride at 0.47 ppm and 1.01 µS/cm at the standard
+temperature. When actual measurements of conductivity are evaluated at temperatures above the standard
+25°C, the least conductive water attributes between pH 5 and 7, changes to favor ammonia at the maximum
+acceptable concentration of 0.3 ppm, using chloride as the electro-neutrality-balancing counter ion. Thus by
+maintaining a water conductivity less than the value corresponding to the least conductive water attributes
+between pH 5 and 7 at the specific water temperature, failure of any single Ionic chemical test in USP 22 is
+precluded.
+
+#### 11.1.1 USP Three Stage Conductivity Levels
+
+Stage 1
+Primarily intended as an in-line test
+Measure water conductivity and temperature using a non-compensated conductivity sensor using a suitable
+container or an in-line measurement. See USP Stage 1 table.
+Stage 2
+An off-line test using a “grab” sample
+If the sample fails the Stage 1 test, adjust the temperature to 25°C and stir. If the sample stabilizes to the
+minimum conductivity value listed in the Stage 3 table, the water meets the requirements.
+Stage 3
+Additional test to account for the variation in conductivity with respect to alkalinity
+Measure pH within 5 minutes of the Stage 2 conductivity reading after increasing its ionic strength to allow a
+pH reading, using saturated potassium chloride solution at 3%. See “Stage 3 Conductivity Levels at 25°C”
+chart.
+
+#### 11.1.2 Derivation of USP Stage 1 Conductivity Levels
+
+The following chart shows conductivity levels for temperatures between 0°C and 100°C for the chloride-
+ammonia model at the least conductive water attributes between pH 5 and 7.
+Due to the difficulty experienced in accurately measuring pH of high purity water, USP have selected the
+minimum conductivity levels, occurring at pH 5 and 7, to limit the water quality at each temperature increment.
+These levels are listed in the table following the chart.
+DISCLAIMER:
+The Water and Steam Systems Appendix contains material considered “informational” which, al-
+though necessary, would have been detrimental to the clarity of the dedicated chapter. The Appendix
+has not been reviewed by and therefore is not endorsed by the FDA.
+
+=== PAGE 168 ===
+APPENDIX
+
+#### 11.1.3 In-Line (Stage 1) Conductivity Limits for Temperatures 0° to 100°C
+
+Temperature Range
+0 TO 4.9°C
+5 to 9.9°C
+10 to 14.9°C
+15 to 19.9°C
+20 to 24.9°C
+25 to 29.9°C
+Maximum In-Line (Stage 1)
+0.6
+0.8
+0.9
+1.0
+1.1
+1.3 Conductivity (µS/cm)
+Temperature Range
+30 to 34.9°C
+35 to 39.9°C
+40 to 44.9°C
+45 to 49.9°C
+50 to 54.9°C
+55 to 59.9°C
+Maximum In-Line (Stage 1)
+1.4
+1.5
+1.7
+1.8
+1.9
+2.1 Conductivity (µS/cm)
+Temperature Range
+60 to 64.9°C
+65 to 69.9°C
+70 to 74.9°C
+75 to 94.9°C
+95 to 99.9°C
+100°C
+Maximum In-Line (Stage 1)
+2.2
+2.4
+2.5
+2.7
+2.9
+3.1 Conductivity (µS/cm)
+Figure 11-1
+Conductivity Levels for Chloride-Ammonia Model
+
+=== PAGE 169 ===
+APPENDIX
+
+#### 11.1.4 Derivation of Stage 2 and 3 Conductivity Levels
+
+When the least conductive water attributes are plotted for water exposed to atmospheric CO2 at 25°C, the
+following chart is produced:
+Figure 11-2
+Derivation of Stage 2 and 3
+
+#### 11.1.5 Total Organic Carbon (TOC) and Requirements for TOC Control
+
+TOC is an indirect measure, as carbon, of organic molecules present in high purity water. A TOC limit was
+determined by USP to be 0.5 ppm or 500 ppb, based on the results of studies and an industry wide survey of
+pharmaceutical water systems.
+Special Requirements
+Organic contamination may be detected from different sources, and once a commitment is made to monitor
+using a sensitive TOC meter, care must be exercised in controlling TOC in numerous materials used to
+support and maintain the water purification systems. These materials may include:
+•
+Replaced Filter Cartridges
+•
+Particles from Valves, Seats, Gaskets, etc.
+•
+Soap and Detergent
+•
+Chemicals used for General Cleaning, etc.
+•
+Regeneration and Sanitization Materials
+•
+Alcohol and other solvents used to clean and sanitize seals and gaskets
+•
+Plastics used for sampling apparatus (beakers, bottles etc.) or other applications that may leach out
+organic chemicals into the water samples to be tested.
+
+=== PAGE 170 ===
+APPENDIX
+•
+DI resin, detected after regeneration or when beds are switched. Sources of TOC from ion exchange
+resin beds include: unconverted monomers or low molecular weight polymers; decomposition products
+and compounds resulting from oxidation or hydrolysis of the organic resins; organics in water used to
+regenerate and rinse ion exchange beds.
+New or replaced DI resin may be recycled five or six times to remove leachables, or resin may be specified as
+preconditioned. A TOC rinse down certification curve is available from most resin suppliers.
+Sample containers for off-line sampling must be scrupulously cleaned of organic residues and care must be
+exercised in handling the containers to avoid transferring natural skin oils onto the container surfaces.
+
+##### 11.1.5.1 Systems Available for Measuring TOC
+
+Instruments are available for measuring TOC in-line from slip streams and from grab samples manually
+removed from the water system. Automatic off-line sample introduction systems are available for processing
+large numbers of grab samples. USP have not prevented acceptable technologies from being used, but limit
+the methods to the following instruments that are capable of completely oxidizing the organic molecules to
+carbon dioxide (CO2), measuring the CO2 levels as carbon, discriminating between Inorganic Carbon (IC)
+and the CO2 levels generated from the oxidization of the organic molecules, maintaining an equipment limit of
+detection of 0.05 mg/l or lower, and periodically demonstrating an equipment “suitability.”
+A number of acceptable methods exist for measuring TOC in high purity water and all share the same basic
+methodology, the complete oxidation of the organics to CO2 and the measurement of this CO2
+Three general approaches, based on the above concept, are used in a variety of commercially available
+instruments which measure Organic Carbon in a water sample by completely oxidizing the organic mol-
+ecules to carbon dioxide (CO2) and measuring the CO2 levels as carbon. Four common oxidation methods
+and four common CO2 measurement methods are used in different combinations in these TOC analyzers.
+The Total Carbon (TC) result may be expected to include Inorganic carbon resulting from dissolved CO2 and
+bicarbonate which must be subtracted from the TC to produce the TOC level in the sample. Some TOC
+analyzers remove the IC by acidifying the samples and either gas stripping or vacuum degassing the CO2. In
+pharmaceutical waters, the IC levels are generally very low and IC removal processes are not usually re-
+quired.
+
+#### 11.1.6 TOC Measurements
+
+USP have applied laboratory quality control procedures, common in a laboratory for setting wide range
+equipment for measurement over a specific range. These include: Standardization (Limit Response Test) and
+Suitability (USP Suitability Test).
+These tests are in addition to calibration requirements and in no way replace or compensate for an accept-
+able calibration program.
+Types of TOC Analyzers
+Method of Oxidation
+Method of CO2 Detection
+Require the Addition of
+Chemicals or Gases
+High temperature combustion
+NDIR
+Yes
+Heat activated persulfate
+NDIR
+Yes
+UV activated persulfate
+NDIR or CO2 selective conductivity
+Yes
+Laboratory Instruments
+
+=== PAGE 171 ===
+APPENDIX
+These instruments require the injection of pure carrier gasses and/or persulfate to achieve more robust
+oxidation levels allowing the successful analysis of high levels of TOC in unknown water samples.
+Method of Oxidation
+Method of CO2 Detection
+Require the Addition of
+Chemicals or Gases
+UV light
+Direct conductivity or CO2
+No
+selective conductivity
+In-Line Instruments (Simplified TOC Analyzers)
+Laboratory Instruments Capable of Operating In-Line and Unattended
+Method of Oxidation
+Method of CO2 Detection
+Require the Addition of
+Chemicals or Gases
+Heat activated persulfate
+NDIR
+Yes
+UV activated persulfate
+NDIR or CO2 selective conductivity
+Yes
+These instruments are designed for TOC measurement of deionized water, with or without CO2. These con-
+ditions allow the accurate measurement of the IC in the sample. If they are used in water that has significant
+levels of other ions, the IC results and therefore the TOC results will be in error. Waters that do not meet these
+requirements should use the laboratory type TOCs (in-line or off-line).
+These instruments require the injection of pure carrier gasses and/or persulfate to achieve more robust
+oxidation levels allowing the successful analysis of high levels of TOC in unknown water samples.
+
+##### 11.1.6.1 Typical Organic Oxidation Methods used in Commercial TOC Analyzers
+
+The four most common oxidation methods for TOC are: high temperature combustion, thermally activated
+persulfate, UV activated persulfate, and UV light only.
+The “high temperature combustion” (>500°C) oxidation method is rapid and can easily oxidize large par-
+ticles, but requires a source of compressed oxygen or air as a carrier gas for the sample.
+The “thermally activated persulfate” method uses heat to activate the persulfate to form highly oxidative
+sulfate and hydroxide radicals which then react with the carbon in the organics to produce CO2.
+The “UV activated persulfate” method uses ultraviolet light (<280 nm) to activate the persulfate to form the
+highly reactive sulfate and hydroxide chemical oxidizing radicals. In both of these persulfate methods, the
+persulfate is a source of oxygen and can be added at higher levels to allow the complete oxidation of higher
+concentrations of organics. TOC levels (without sample dilution) of 50 to 100 ppm can be measured. Each
+persulfate method can easily oxidize macromolecules and biomolecules to CO2, but can have difficulty oxidiz-
+ing large particles (>30 µm) in reasonable periods of time.
+The “UV light only” method uses short wave ultraviolet light (<195 nm) to activate dissolved oxygen or water
+to produce powerful oxidizing agents such as the hydroxide chemical radical which react with the carbon in
+the organic molecules to form CO2. The “UV light only” method does not require the addition of a chemical
+reagent, but the upper levels of TOC are limited. With this method, the short wave UV light will activate
+
+=== PAGE 172 ===
+APPENDIX
+dissolved oxygen free water molecules to completely oxidize organics at TOC levels of up to 250 ppb, and in
+the presence of oxygen, saturated water (at 25°C) will completely oxidize organics at TOC levels of up to
+1500 to 2000 ppb (1.5 to 2.0 ppm).
+
+##### 11.1.6.2 Typical CO2 Detection Methods used in Commercial TOC Analyzers
+
+There are four CO2 detection methods currently used in commercial TOC analyzers: Non-Dispersive Infrared
+(NDIR), CO2 selective conductivity, direct conductivity, and differential conductivity.
+The “NDIR” method measures the infrared absorption of CO2 in the gas phase. This method requires the
+CO2 in the water sample to be removed and transferred to the IR absorption cell by a carrier gas stream. The
+“NDIR” absorption detectors also measure water vapor; therefore, it must be removed from the CO2 gas prior
+to measurement. This detector responds quickly, must be calibrated regularly, has a dynamic linear range of
+about 1.5 to 2 orders of magnitude, and a limit of detection of 2 to 10 ppb. It is the most common TOC detector
+used in laboratory type analyzers.
+The “CO2 Selective Conductivity” method uses a special membrane to selectively diffuse CO2 from the
+water sample into a deionized water collector. The CO2 ionizes in the collector water, the temperature and
+conductivity are measured and the concentration of CO2 calculated. This detector is slower responding than
+an NDIR, but has excellent long term calibration stability (typically six to 12 months), a linear dynamic range
+of five to six orders of magnitude and a limit of detection of 0.05 ppb.
+The “Direct Conductivity” CO2 detection method measures the conductivity of the sample water directly. To
+accurately measure CO2 with this method, the water sample must be composed of only CO2, deionized
+water, OH-, HCO3
+- and H+(deionized water in equilibrium with CO2). When this is true, the CO2 concentration
+can be calculated from the conductivity and the temperature measurements of the sample water. If other ions
+are present, the accuracy decreases with increasing concentration of these other ions. This method can be
+applied to the sample water before oxidation to measure the level of IC. The same method can be applied
+after the oxidation of the sample to measure TC. Although not as specific or selective to CO2 measurements
+as the prior detectors, it is fast, has excellent calibration stability (typically six to twelve months), and has a
+low limit of detection (about 0.05 ppb).
+The “Differential Conductivity” CO2 detection method produces a differential conductivity signal (pre and
+post oxidation). The analyzers using this method are designed to only partially oxidize the organics to the
+very conductive organic acids stage (not completely to CO2) and measure organic acids not CO2. The ana-
+lyzer measures the difference between the initial sample water conductivity and the post oxidation sample
+conductivity, and relates this to specific organic compound calibration tables.
+
+#### 11.1.7 Limit Response and System Suitability Testing
+
+Apparatus Requirements for Limit Response and System Suitability Tests
+a)
+Reagent Water (r W) complying with the USP definition in section 661 of USP 23, having a TOC level of not
+more than 0.25 mg/l.
+b)
+Standard Solution (r S ) containing 1.19 mg of sucrose (produced from r W and USP Sucrose RS dried at
+105° C for 4 hours)
+c)
+System Suitability Solution (r SS) produced from r W and USP 1,4-Benzoquinone RS (containing 0. 5 mg/l of
+carbon)
+Instrument Standardization (Limit Response Test)
+USP require that TOC instrument must be standardized by performing a test on each water sample or “test
+solution.”
+
+=== PAGE 173 ===
+APPENDIX
+The test solution meets the requirement if the response for the standard solution less the response for the
+reagent water used to produce the standard solution is greater than the test solution response, or:
+ r t < ( r S - r W ).
+For in-line testing, standardization (determination of the limit response) may not be practically performed with
+each TOC reading; therefore, standardization (determination of the limit response) once per operating day (or
+less frequent) may be appropriate. Support data generated from standardizations performed over a suitable
+period could be used to justify modifications to the testing frequency, based on system reliability, repeatability
+and stability, i.e., TOC levels may be maintained, nominally, far below the limit response over a suitable
+period, thus decreasing the risk in supporting less frequent standardization testing.
+Standardization (Limit Response) Testing for In-Line Instruments
+In-line instruments must be disconnected from the water system to conduct Standardization (Limit Response)
+tests. At once per day, these tests represent a considerable investment.
+TOC meters with built in provisions for automating these tests and minimizing materials have the potential for
+considerable savings in both time and expense.
+Instrument Suitability or Response Efficiency
+An instrument is “suitable” if its response efficiency is within ±15% of the theoretical response.
+Suitability tests may only be performed off-line, or with the in-line instrument disconnected.
+TOC measuring equipment must be tested for suitability “periodically” which may range from, each water
+sample test for off-line lab testing, to once per month for in-line testing, depending upon the experience with
+the system and the data produced from suitability tests.
+The Instrument Suitability Response Efficiency is equal to 100 times the ratio of the Suitability solution re-
+sponse and the Standard solution response, or:
+100[(r SS - r W)/(r S - r W)] = 100% ± 15%.
+Suitability Testing for In-Line Instruments
+In-Line instruments also must be disconnected from the water system to conduct Suitability tests. Suitability
+tests may be conducted together with the standardization tests.
+TOC meters with built in provisions for automating both the standardization and suitability tests have the
+potential for further savings.
+Prepackaged traceable and certified standards are available from some manufacturers for both standardiza-
+tion and suitability testing.
+Special Requirements
+Organic contamination may be detected from different sources. Once a commitment is made to monitor using
+a sensitive TOC meter, care must be exercised in controlling TOC in numerous materials used to support and
+maintain the water purification systems. These materials may include:
+•
+Replaced Filter Cartridges
+
+=== PAGE 174 ===
+APPENDIX
+•
+Particles from Valves, Seats, Gaskets, etc.
+•
+Soap and Detergent
+•
+Chemicals used for General Cleaning, etc.
+•
+Regeneration and Sanitization Materials
+•
+Alcohol and other solvents used to clean and sanitize seals and gaskets
+•
+Plastics used for sampling apparatus (beakers, bottles, etc.) or other applications that may leach out
+organic chemicals into the water samples to be tested
+•
+DI resin detected after regeneration or when beds are switched. Sources of TOC from ion exchange resin
+beds include: unconverted monomers or low molecular weight polymers; decomposition products and
+compounds resulting from oxidation or hydrolysis of the organic resins; organics in water used to regen-
+erate and rinse ion exchange beds.
+New or replaced DI resin may be recycled five or six times to remove leachables, or resin may be specified as
+preconditioned. A TOC rinse down certification curve is available from most resin suppliers.
+Sample containers for off-line sampling must be scrupulously cleaned of organic residues and care must be
+exercised in handling the containers to avoid transferring natural skin oils onto the container surfaces.
+Calibration of TOC Meters
+Calibration should be performed using solutions of a known carbon content, covering the normal range of the
+instrument. The frequency of calibration should ensure that the levels of accuracy are maintained. Refer to
+manufacturer for specific recommendations on both method and frequency.
+Calibration should be performed independent, and in addition to, Standardization and Suitability testing.
+Dual Purpose TOC/Conductivity Meters
+A number of TOC meters designed for in-line applications include conductivity measurements that are claimed
+to be in accordance with USP. These instruments use the conductivity method of CO2 detection and utilize the
+conductivity reading taken prior to water processing. To use this dual purpose instrument to measure compendial
+water conductivity, it is important to be able to calibrate the conductivity cell separately and ensure that it
+contains a cell constant adjustable and maintainable to the limits defined; an accurate temperature measure-
+ment being included since most modern conductivity instruments monitor temperature; a conductivity and
+resolution accuracy as defined and a conductivity calibration which must be accomplished by replacing the
+conductivity cell with a NIST-traceable precision resistor, accurate to ±0.1% or by an equivalently accurate
+adjustable resistance device.
+
+#### 11.1.8 USP Microbial and Endotoxin Testing
+
+Microbial and Endotoxins are traditionally sampled at the points of use in a water system. See Chapter 2,
+Section 2.3 USP Regulated Water Quality.
+
+#### 11.1.9 USP pH Testing
+
+See Chapter 2, Section 2.3 USP Regulated Water Quality (pH testing to support in-line conductivity testing
+was eliminated in May 1998.)
+
+=== PAGE 175 ===
+APPENDIX
+
+##### 11.1.9.1 Calibration of pH Instruments
+
+See Chapter 2, Section 2.3 USP Regulated Water Quality.
+
+### 11.2 EUROPEAN PERSPECTIVE
+
+#### 11.2.1 Regulatory Structure
+
+The pharmaceutical industry within the nations that make up the European Union (EU) is regulated by the
+European Agency for the Evaluation of Medicinal Products (EMEA), based in London. This Agency is funded
+by the EU under the authority of the European Commission (EC), the EU’s policy making body. EMEA is
+established as an autonomous body to promote public health and free circulation of pharmaceuticals. It is
+charged with coordinating the resources of the national drug regulatory authorities and has three major
+functions:
+•
+Centralized drug approval, granting marketing authorization across Europe. This procedure is mandatory
+for biotech products and optional for other drugs. The EMEA also coordinates the mutual recognition of
+marketing authorization among the Member States when a decentralized method (application to one or
+more selected Member States) is used.
+•
+Supervision of continued use of medicinal products, using the resources of the national agencies, includ-
+ing site inspections and monitoring of adverse effects (“pharmacovigilance”).
+•
+Coordination of European and internal harmonization of guidance and regulations, particularly within the
+framework of the International Conference of Harmonization.
+Within the Member States, each national has established a national agency. Examples are the Medicines
+Control Agency (MCA) in the United Kingdom and the Bundeinstitut fur Arzneimittel and Medizinprodukte
+(BfArM) in Germany. These are responsible for national registrations, inspections, and enforcement of regu-
+lations within their national boundaries.
+Another important body with membership from several nations both within and without the EU, is the Pharma-
+ceutical Inspection Convention (PIC), which has been superseded by the Pharmaceutical Inspection Coop-
+eration Scheme (PICS). These bodies provide entirely non-binding guidance to member nations, most of
+which are harmonized with the EU.
+
+#### 11.2.2 Regulations Governing Water and Steam
+
+The EC recognizes the European Pharmacopoeia (EP) as the source of compendial water standards for
+Purified Water and Water for Injection. The use of these waters parallels that in the United States. Nations
+outside the EU may maintain national compendia, which differ in some parts from the EP.
+The EP does not regulate Clean Steam. In Europe, the requirements for the chemical quality of steam to be
+used in the sterilization of medicinal products in autoclaves are governed by European Standard EN 285. The
+EU cGMP Annex for Sterile Products requires that steam be “of suitable quality and does not contain addi-
+tives which could cause contamination of product or equipment.” Although similar in concept to US require-
+ments, interpretation of this standard by European investigators may be quite different. Insight into interpre-
+tation by inspectors may be found in important guidance on the quality of steam found in Health Technical
+Memorandum HTM-2010, published by the United Kingdom National Health Service (NHS Estates). [Editor’s
+Note: criteria described in HTM-2010 are of major concern in the sterilization of porous autoclave loads and
+present less of an issue in the sterilization of product in vials, hard goods, or equipment.] In addition, UK
+HTM-2031 deals directly with the quality of steam to be used in sterilizers.
+
+=== PAGE 176 ===
+APPENDIX
+
+#### 11.2.3 Water Issues
+
+•
+While USP requires that the starting point for compendial waters must meet the national drinking water
+standard, the EP requires only that the history of the starting water be documented.
+•
+The EP does allow the production of Water for Injection by distillation only. There are some pharmacopoeias,
+notably among the former Soviet bloc, which allow WFI produced by reverse osmosis.
+•
+The EP requires sample sizes of 100 ml for purified water and 500 ml for WFI. The USP is not definitive
+on these sample sizes.
+•
+EP has not accepted the substitution of conductivity/resistivity for the traditional wet chemistry analyses
+of ionic contaminants. There is some early discussion about adopting a conductivity test, but it is likely
+that this may be quite different from the USP test.
+•
+The EP has not added the test for TOC.
+•
+EP continues to require the test for pH as an independent test. This is likely to remain, even in light of
+potential changes.
+•
+European inspectors seem to be sensitive to the drainability of systems through points of use. Additional
+low point drains are acceptable only if necessary. Guidance in this area remains unclear.
+
+#### 11.2.4 Steam Issues
+
+•
+HTM-2010 emphasizes the dryness requirements for steam. If steam is too wet, it may cause dampness
+in porous loads (e.g., hospital gowns). If it is “too dry,” it may become superheated upon expansion into
+the chamber, reducing the sterilizing effectiveness. [Editor’s Note: considering the use of modern, well-
+controlled steam generators which produce saturated steam, and the large mass made up by the steril-
+izer and the load, excess dryness is seldom a problem. Excess wetness is controlled by proper insulation
+of steam lines and judicious use of steam traps to remove condensate.]
+Standard EN-285 requires steam for use in sterilizers to have a dryness value of not less than 0.9 (0.95
+for metal loads). In practice, dryness between 0.9 and 1.0 will not present a problem if the final pressure
+reduction into the chamber is around 2:1. A method of testing dryness may be found in HTM-2010, part
+3.
+•
+Superheat is also an issue of concern. Superheated steam is not as effective a sterilizing medium as is
+saturated steam. It may result from adiabatic expansion (as across a control valve) an exothermic reac-
+tion resultant from the re-hydration of a hygroscopic load, or the application of jacket heat above the
+saturation temperature of the internal steam. A specification and test method for superheat may be found
+in HTM-2010. [Editor’s Note: again, considering the production of saturated steam by modern genera-
+tors, the control of jacket heat, and the condensate resulting from loss of heat to the sterilizer and load,
+superheat is an uncommon problem.]
+•
+The third area of concern which European inspectors have focused on is Non-Condensable Gas (NCGs).
+Major NCGs in steam are air and carbon dioxide. These may result from the failure to degas boiler/
+generator feed water. They present a problem in those areas where localized “pockets” of gas are allowed
+to accumulate, preventing the penetration of steam. This may be effected by preheating the feed water in
+a vented tank at above 80°C. A test of method may be found in HTM-2010. [Editor’s Note: the presence
+of air in a well-mixed sterilizer is common practice and does not reduce the effectiveness of sterilizing
+steam.]
+
+=== PAGE 177 ===
+APPENDIX
+
+### 11.3 PASSIVATION
+
+#### 11.3.1 Introduction
+
+Pharmaceutical equipment and high purity water systems are designed so that product contact surfaces are
+not reactive, additive, or absorptive so the drug product is not adversely altered. High purity water systems
+are primarily composed of austenitic stainless steel (SS) materials due to their corrosion resistant and con-
+taminant free properties. Passivation is performed to maximize the metal’s corrosion resistance. The stain-
+less steel is sulfuric/nitric/hydroflouric acid pickled at the mill to remove manganese sulfide inclusions, scale,
+and other impurities or imperfections from the surface of the steel. As the steel is removed from the pickling
+bath, a thin oxide layer forms immediately over the surface. This oxide layer is what renders the stainless steel
+passive and non-reactive to corrosion. Any 300 series chromium steels containing 17% or more chromium
+that has been handled, welded, or worked should be passivated prior to service and suitably cleaned prior to
+passivation.
+Passivation is the method used to fortify the steel surface by strong oxidizing chemicals such as nitric acid.
+The acid depletes the steel surface of acid soluble species, leaving the highly reactive chromium on the
+surface in a compounded oxide form.
+
+#### 11.3.2 Advantages of Passivation
+
+When SS systems are fabricated, the welding process destroys the existing passive film and compromises
+the metal’s ability to ward off the corrosive process. This is particularly applicable in those zones that are
+either heat affected or have had residues remain in contact with the metal surface for prolonged periods.
+Passivating then provides a method to restore the integrity of the metals corrosion resistant surfaces that
+were disturbed. Passivation must be proceeded by a cleaning process.
+
+#### 11.3.3 The Chemical Process
+
+Excessive electron depletion of the upper film and an inadequate supply of oxygen (molecular O2) will ensure
+the formation of surface corrosion products. When this occurs, the chromium (Crn+) separates from the sur-
+face and opens the way for oxidation of the iron (Fe) and nickel (Ni), lower in the metal lattice.
+Establishing a passive surface or film on austenitic SS is essential to maximize the corrosion resistance that
+the metals offer. Passive surfaces on these metals occur naturally when exposed to an oxidizing environ-
+ment. Sources of oxygen include air, aerated water, and other oxidizing atmospheres. Formation of a sub-
+stantial uniform oxidized corrosion resistant surface or film is the result of passivation.
+Besides natural occurring passivation, chemical and electro-chemical processes can be used to obtain an
+anodic oxide film. Nitric acid solution (HNO3), is an oxidizing acid (depletes electron from the metal surface)
+which erodes the metal. This initial reaction or oxidation resists further chemical reaction on the metal sur-
+face. Metals that have such a state are called “passive” and the phenomenon itself is called “passivity.”
+The chromium oxide film thickness typically ranges from 0.5-5.0 nm, averaging 2.0-3.0 nm. The chrome to
+iron ratio measured in atomic percent within the chromium oxide should be at least one with ratios of two or
+more being optimal.
+
+#### 11.3.4 Passivation Procedures
+
+Numerous procedures are available for passivating; they share the commonality of consisting of four main
+steps which are:
+1)
+Wash (Solvent Degreasing)
+
+=== PAGE 178 ===
+APPENDIX
+2)
+Water Rinse
+3)
+Acid Wash (Passivation Step)
+4)
+Final Water Rinse
+Proper preparation of the metal surface to obtain a uniform non-defective passive film mandates the metal
+surface be completely clean and void of any organic or inorganic soils, free iron, metallic contaminants, or
+corrosive products.
+The First Step (Degreasing) of the procedure is designed to remove dirt, dust, oil, and grease. A water-
+soluble detergent is used to accomplish this, or a solvent.
+The Second Step (Water Rinse) is required to remove dissolved and freed soils and the detergent itself from
+the metal being cleaned.
+The Third Step (Acid Wash) is to remove free iron, metallic residues, oxides, and other corrosion products
+from the surface of the metal. By removing these soils from the metal surface and providing an oxidizing
+atmosphere, the passive film is allowed to form and the passivation is accomplished. Inorganic acids are
+typically used in this step of the procedure.
+The Fourth Step (Final Water Rinse) - The acidic solution is flushed and the system is rinsed until the quality
+of the effluent is equal to that of the influent.
+The American Society for Testing and Materials, ASTM A 380-96, “Standard Recommended Practice for
+Cleaning and Descaling Stainless Steel Parts, Equipment and Systems,” is an excellent source of information
+about passivation. It includes cleaning and passivation procedures, chemical applications, methodology, and
+testing procedures. The standard is valuable in establishing specific passivation and other specialized clean-
+ing procedures.
+Establishing an effective passivation procedure can be obtained by using the following guidelines:
+•
+Start with an accepted or specified procedure. (See the chart on the next page.)
+•
+Obtain weld coupons from the system or have weld coupons made for testing purposes.
+•
+Perform specified procedure along with alternate procedures to offer a choice, meeting specific situa-
+tions, or requests.
+•
+Confirm the effectiveness of the procedures tested with specified field and/or laboratory testing.
+•
+This process for confirming the effectiveness of a specified procedure or qualifying alternative proce-
+dures should be included in the passivation documentation being submitted as part of the final validation
+package.
+
+#### 11.3.5 Passivation Chemical Alternatives
+
+Nitric acid, a strong oxidizing acid, is the most common acid specified for passivation. Besides its ability to
+produce a free iron surface, the acid supplies the oxidizing atmosphere needed for passivation to occur.
+Because nitric acid is a corrosive chemical, extreme care must be used with handling, storage, and use.
+Federal Specification QQ-P-35C (1988) is an excellent reference for obtaining guidelines when using nitric
+acid on a variety of stainless steel alloys.
+
+=== PAGE 179 ===
+APPENDIX
+Although nitric acid has traditionally been the preferred passivating acid, the trend in use of passivating
+solutions is to reduce chemical aggressiveness and to make safety, cost, and the environmental impact of the
+waste solution effluents a consideration.
+Citric acid and ammonium citrate (ammoniated citric acid) are gaining popularity as alternatives to using nitric
+acid. The safety these chemicals offer the personnel and the work environment are desirable qualities. The
+ASTM Standard A 380 (1996) refers to these acids as cleaning acids, not passivating acids. This distinction
+has probably been made because the acids are not oxidizers as is nitric acid. The standard states that the
+citric acid-sodium nitrate treatment is the least hazardous for removal of free iron and other metallic contami-
+nation and light surface contamination. To achieve a true oxidation chelating agents in conjunction with citric
+acid and ammonium citrate has recently been introduced to the pharmaceutical/biotech industry.
+Phosphoric acid is a weak oxidizing acid sometimes specified in passivation procedures; however, there is no
+formal documentation referencing the use of phosphoric acid as a passivating acid.
+Chelants, otherwise known as sequestering agents or co-ordination compounds, which include all the stan-
+dard water softening compounds such as Sodium tri-polyphosphate (STPP), Nitrilotriacetic acid (NTA), and
+Ethylene Diamine Tetra Acetic acid (EDTA) may be compounded into acid passivation solutions to enhance
+metal ion extraction.
+Orbital welding in conjunction with the increased use of electropolished tubing decreases the aggressiveness
+required of the passivating acids during the initial passivation. Decreasing acid contact time, temperature,
+and/or concentration accommodates the quality of the welds and already passive surface of the electropolished
+stainless steel.
+
+#### 11.3.6 Chemical Application Methods
+
+Passivation can be accomplished using a variety of applications. Among these are:
+When detergent washing, agitation or impingement provides the best results. During the acid wash step,
+chemical contact is usually sufficient. Recirculation is the preferred application method for performing passi-
+vation procedures. Recirculating allows flow rate criteria, usually specified at 5 feet per second (1.5 m/sec), to
+be achieved. Meeting flow rate requirements of a procedure should not be confused with particle removal.
+Many people assume when high flow rates are used that particle removal will be achieved. This is not true.
+Particle removal is achieved by including the total linear feet of the system into the appropriate mathematical
+equation. A recirculating water system of 1000 feet (300 meters) with a consistent tube diameter would
+require as much as 25 hours of filtered recirculation time for total particle removal.
+Circulation
+Recirculating through distribution
+systems
+One Way Intermittent Flow
+Large non-recirculating
+Long one way pipe runs systems
+distribution
+Spraying
+Tank interiors
+Tank Immersion
+Numerous small parts
+Prefabricated tubing
+Swabbing/Wiping
+Isolated Areas/Tank/Equipment
+Equipment that does not allow
+Exteriors
+spraying or other applications
+
+=== PAGE 180 ===
+APPENDIX
+
+#### 11.3.7 Tests for Cleanliness and Passivity
+
+There are several tests available to determine an acceptable level of cleanliness. Should confirmation of
+cleanliness be required prior to continuing with the passivation procedure, the water break free surface test,
+wipe test, or ultraviolet light testing are just a few of the tests that could be performed. These tests are for
+gross cleanliness inspections as stated in the ASTM Standard A 380 (1996).
+Once the passivation procedure is completed, a test method should be used to confirm or establish confi-
+dence that the passivation procedure has been successful. One inexpensive method is the Ferroxyl Test for
+free iron as set forth in the A380 (1996). The test is used to detect surface iron contamination, i.e., iron salt
+residue from pickling, iron tool scratches on the stainless steel surface, iron deposits at weld areas, and iron
+oxides. The testing solution is applied to the surface being tested. A blue stain appearing within 15 seconds of
+application indicates presence of free iron.
+Testing for a passive surface is usually accomplished by looking for traces of free iron on the metal surface.
+The assumption is made that if there is no detectable free iron, the metal surface is clean enough for a
+uniform oxide film to develop. Another excellent source for specific testing methods is the Military Standard
+753B (1985). Both Standards discuss specific tests for detecting free iron. They include Water Immersion/
+Water Wetting and Drying Test, High Humidity Test, Copper Sulfate Test, and Ferroxyl/Potassium Ferricya-
+nide-Nitric Acid Test.
+Direct testing for a passive surface can be accomplished by X-ray Photoelectron Spectroscopy (XPS) testing
+which is used to measure the oxidation states of elements found on the metal surface. Another direct, de-
+structive testing method is Auger Electron Spectroscopy (AES) which measures the elemental chrome/iron
+ratio on the metal surface and sub-surface with depth profiling. The direct testing methods for passivity supply
+detailed information about the oxide film itself rather than indirect observations. XPS or AES testing offers
+direct evidence as to whether the passivation procedure being used is effective or not. These methods of
+testing are more costly than the other above mentioned tests and are ideal for use with weld coupons to
+determine the effectiveness of the passivation procedure for the system.
+
+#### 11.3.8 Modified Passivation Procedures
+
+A passivation procedure can be modified to deal with a variety of soils, surface finishes and weld area
+conditions. Adjusting contact times and solution’s temperature and concentration would be the simplest way
+to modify a specific procedure. Sometimes detergent wash or acid wash chemicals are changed or modified
+with additives to remove certain soils. For example, when removing rouge, solutions containing sodium hy-
+drosulfite can be substituted for the detergent wash step of the procedure. Citric and Phosphoric Acid also
+could be used as they do have some ability to remove light rouging. Another example would be the use of
+Hydrofluoric Acid, or more specifically, Ammonium Bifluoride to remove silica scale. The descaling step and
+associated rinse would necessitate additional steps being added to the standard procedure.
+It is important when developing a passivation procedure, that laboratory testing is performed to determine the
+effectiveness of your procedure. Without preliminary laboratory testing, an educated guess would have to be
+made and the results may not prove satisfactory.
+Below is a guide that can be used for passivating and de-rouging stainless steel components, piping, and
+equipment. The chart has some possible options for determination of the contamination and a course of
+action.
+
+=== PAGE 181 ===
+APPENDIX
+
+#### 11.3.9 Contamination Analysis
+
+Method 1
+Filtration of 1 liter sample through a 0.2-0.5 µm filter and inspect.
+Method 2
+Quantitative analysis of the specified metals and organic compounds with wet chemistry tech-
+niques or as available.
+Method 3
+SEM or Auger Electron microprobe/spectroscopy for analysis of surface chemistry and contami-
+nation.
+
+#### 11.3.10 Cleaning and Passivation Method
+
+Method 1
+Clean surface with aqueous cleaning solution, apply passivation paste to surface, rinse surface
+with DI water until traces of chemicals are removed.
+Method 2
+Circulate cleaning solutions through piping or vessels by circulation method. Circulate cleaning
+solutions as required by procedure. Circulate passivation solution as per recommended condi-
+tions. Rinse surfaces once through with DI water until conductivity of inlet and outlet fluids are
+within tolerances.
+Method 3
+Spray cleaning and passivation solutions onto surfaces of vessels, containers, and equipment
+as per recommended conditions. Rinse surfaces for minimum of 30 minutes per each rinse
+stage, and perform triple rinse.
+Method 4
+Soak components or equipment items in treating solutions or tanks as per recommended condi-
+tions. The minimum soak time per each solution is two hours. Process requires cleaning, passi-
+vation, and rinsing as a minimum. The cleaning system should include circulation, filtration, and
+heating.
+Condition/Status
+Contamination
+Cleaning &
+System
+Procedure
+Analytical Method
+Passivation
+Chemistry
+Method
+New Component
+N/A
+2,4
+Electropolished
+Component Newly Welded
+N/A
+1,3,4
+1,2,3
+1,2
+New System - Tubing
+N/A
+2,3,4
+Component/System Discolored
+1,2,3,4
+1,2,3,4,6
+(Gold Color)
+Component/System Discolored
+1,2
+2,3
+4,5,6
+(Brown, Red/Brown Color)
+Component/System Discolored
+2,3
+2,3
+4,5,6
+(Black, Blue/Black Color)
+Cleaning and Passivation
+
+=== PAGE 182 ===
+APPENDIX
+
+#### 11.3.11 System Chemistry
+
+Chemistry 1
+Nitric acid passivation is performed at Ambient Temperature for 30 to 60 minutes and at 50-
+60°C for 20 to 40 minutes.
+Chemistry 2
+Alkaline degreasing is performed with detergents (phosphates, sodium hydroxide, and po-
+tassium hydroxide), pH buffers, and surfactant. The process will remove organic films and
+particulate debris from the surface of the stainless steel. Utilize approximately 1.0-2.0%
+detergent, 0.2-0.5% buffer and 0.01-0.2% surfactant.
+Chemistry 3
+Citric acid/chelant passivation is performed with chelants, reducing agents, surfactants, and
+pH buffers. These systems are proprietary processes and the exact chemistry and percent-
+ages are not available. The chelant systems are able to remove most metal contamination
+from the surface including iron, manganese, aluminum, and copper. The systems include
+3.0-5.0% Citric acid and a variety of chelants, reducing agents, pH buffers, and surfactants.
+Chemistry 4
+Mineral acid cleaning and passivation can be performed for iron oxide removal or passiva-
+tion. Typical mineral acids include phosphoric, sulfuric or sulfamic acid. These acids can be
+utilized at 3.0-10.0% concentrations and at a variety of temperatures. Sulfuric acid is not
+typically used due to its highly hazardous nature.
+Chemistry 5
+Intensified acid/chelant systems are utilized for removal of high temperature iron oxide films,
+silica scales, and organic/carbon films. These systems are a citric based solution with addi-
+tional organic acids, strong reducing agents, and acid chelants. These systems can use
+fluorides for silica removal. After strong acid cleaning in a reducing environment, it is recom-
+mended that an oxidizing flush be used to ensure oxidation at the surface, removal of or-
+ganic films, and sanitization of the system.
+Chemistry 6
+Sodium Hydrosulfite, a strong reducing agent, typically used at 5% by weight at 120 to 160°F
+for two to four hours.
+
+#### 11.3.12 Procedures
+
+##### 11.3.12.1 Procedure 1
+
+Clean surface of organic film and other debris.
+a)
+Rinse surface with DI water.
+b)
+Apply gelled acid onto surface at ambient temperature.
+c)
+Brush passivating agent on surface very 15 minutes, maintain a wet surface.
+d)
+After one hour minimum, brush surface with sodium bicarbonate solution until all reaction ceases.
+e)
+Rinse surface with DI water until all traces of chemicals are removed.
+
+##### 11.3.12.2 Procedure 2
+
+a)
+Fill system with DI water and perform leak test with circulation pump.
+b)
+Circulate for a minimum of one to two hours with alkaline degrease stages and heat to 60-80°C with
+filtration.
+c)
+Drain and rinse with DI water.
+
+=== PAGE 183 ===
+APPENDIX
+d)
+Circulate for a minimum of one to two hours with passivating acid solution and heat to 60 - 80°C.
+e)
+Drain and rinse with DI water.
+
+##### 11.3.12.3 Procedure 3
+
+a)
+Fill system with DI water and perform leak test with circulation pump.
+b)
+Circulate for a minimum of two hours with alkaline degrease stages and heat to 60 - 80°C with filtration.
+c)
+Drain and rinse with DI water.
+d)
+Circulate for a minimum of eight hours with intensified passivating acid solution and heat to 60 - 80°C.
+e)
+Drain and rinse with DI water.
+f)
+Flush with oxidizing/sanitization solution.
+g)
+Drain and rinse with DI water.
+
+#### 11.3.13 Rouging
+
+Rouging is seen in many water systems, usually high temperature (80°C) distilled water and clean steam
+systems. Rouge is not limited to storage and distribution systems; it also can be found in distillation and clean
+steam generating equipment. The main constituent of the rouge film is ferric oxide, but it can contain iron,
+chromium, and nickel of different forms. From Auger Electron Spectroscopy, it has been found that the outer
+layer of a rouge film is carbon rich, and the underlying region is iron and oxygen rich, probably iron oxide.
+Over time, the film uniformly distributes itself throughout the system. The exact mechanism of the rouge
+formation and proliferation is unknown. Because the phenomenon occurs in systems that offer the most
+corrosive environment, it is thought that low molecular weight ions of the stainless steel, such as iron, are
+drawn to the metal surface or are dissolved and uniformly re-deposited throughout the system. Others feel
+the rouge is an external contaminant probably colloidal in nature that once in the system, uniformly deposits
+itself.
+Rouging would seem to be very site (facility) specific because of the variety in appearance and texture.
+Rouge can be observed in a variety of colors including; orange, light-red, red, reddish-brown, purple, blue,
+gray, and black. It can be a very loose film, dust like in appearance and texture that can be readily wiped off
+to a tight pertinacious film that requires scraping with a sharp instrument to be removed. In addition to the
+diversification already discussed, rouge can be multi-layered exhibiting different colors and textures. Tradi-
+tionally the red rouges are most common in high purity high temperature water systems, while the blue/black
+rouges are typically found in clean steam systems.
+Evidence of the migration of rouging in distribution systems can be demonstrated by monitoring a system
+over a period of time. Key places to look for rouging are still and clean steam generator discharge lines, tank
+water/vapor interface, pump heads, Teflon® diaphragms on diaphragm valves, interior surface of tank spray
+ball, and heat effected area of welds. Rouge deposition seems to have an affinity for Teflon® and would be one
+of the first places to look for signs of system rouging.
+In some cases, the rouging appears as quickly as a month or two after system start up. In other cases, it is
+several years before rouging is observed. In either case rouging is an industry wide phenomena. In a specific
+case, a facility cold WFI system would re-rouge within a week of being derouged and passivated. The system
+was derouged and passivated a total of three times. Each time, within a week, the system was totally rouged
+again. The specific cause was never determined.
+
+=== PAGE 184 ===
+APPENDIX
+The presence of rouge in high purity water systems has not been proven to effect water quality. The FDA has
+no written position addressing rouging, its existence, or presence in high temperature high purity water and
+clean steam systems. Their criterion has and remains to be in meeting established USP standards for water
+quality. There is some fear that as the unwanted film develops, it might eventually slough off and be dispersed
+throughout the system. This, in fact, does occur and is manifested in systems with filtered use points. Filters
+become discolored with the typical reddish-brown rouge color.
+Phosphoric, citric, oxalic acids, and ammonium citrates are used depending on the severity of the problem.
+Oxalic acid solutions are used for the worst cases of rouge. Passivation with nitric acid is required after an
+oxalic acid rinse.
+
+#### 11.3.14 Preparing Systems for Passivation
+
+Hydrostatic pressure testing is the first test in preparing a system for passivation. All newly constructed or
+modified systems require pressure testing prior to implementing any chemical procedure. The second check
+prior to passivation is to confirm the compatibility of the system, its components, and the passivating solu-
+tions. This would include in-line instrumentation, flow meters, regulating valves ultraviolet lights, pumps, pump
+seals, filter membranes, gasket and seal materials, and other specialized in-line devices. The manufacturer
+or supplier should be consulted to determine whether their equipment is compatible with passivating solu-
+tions. Items that are not compatible should be removed from the system and replaced with a blank, valve,
+spool piece, or temporary jumper hose. In some cases with in-line instrumentation, chemical incompatibility
+may lie in the effect it has on instrument calibration. Incompatible components should be processed indepen-
+dent of the main system.
+Once the system/chemical compatibility has been established, the system to be passivated should be iso-
+lated from existing systems, process equipment, utility tie-ins, etc. In most cases, in-line heat exchangers
+(excluding plate and frame design) and small filter housings (filter elements removed) are left in place and
+flowed through. This is acceptable as long as the ability to vent and drain is available.
+Isolated equipment that requires passivation should be handled independently from the main system unless,
+by agreement, it is left in-line and flowed through. All isolation points must be valved to avoid forming dead
+legs in the system being passivated.
+Elimination of all dead legs is critical to ensure chemical contact and complete rinsing.
+High point vents and low point drains are desirable for complete filling and draining of systems. In distribution
+systems where high point vents are not installed, high velocity flow and flow restriction techniques can be
+used to ensure complete filling of the system.
+After the system has been pressure tested, compatibility has been confirmed, the system isolated and dead
+legs valved, consideration must be given to automated controls that govern the system.
+Are all the automatic valves operational?
+Will valve alignments atypical of normal system operation be permitted?
+Will in-line temperature sensors open diverter valves if unusual temperatures are detected?
+Can the desired flow path safely and effectively be achieved.
+Passivation contractors generally supply temporary equipment such as circulating vessels, pumps, heat
+exchangers, flow meters, filters, hoses, spray heads, fittings, specialized adapters or transition fittings, and
+neutralization vessels. All this equipment should be inspected to assure it meets the requirements for its
+intended use.
+
+=== PAGE 185 ===
+APPENDIX
+
+#### 11.3.15 Disposal of Passivation Chemicals
+
+Disposal of waste solutions is an important issue. The chemicals discussed for cleaning and passivating are
+all water-soluble and can easily be neutralized. Except for heavy metals dissolved in the acid wash solution,
+the only criterion that makes the waste solutions hazardous is having the pH outside the range of 2 to 12.5. It
+is the heavy metals contained in the waste effluent that can cause an environmental or disposal problem. Of
+the 13 priority pollutant metals tested for, two are found in elevated levels in passivation waste effluent waters.
+The two heavy metals are chromium and nickel.
+Fluids discharged must meet the site’s discharge temperature requirements.
+There are three options for dealing with waste solutions generated when passivating:
+•
+They can be put into chemical drains. This can only be done where compatible drain and treatment
+systems are available.
+•
+Neutralize waste solutions in contractor-supplied equipment and discharge through chemical drain to
+site treatment system.
+•
+Off-site disposal is the final option. It is the most costly form of disposal.
+Should a site waste treatment system not be available, permission could be obtained from the municipal or
+private sewer authority to put neutralized waste solutions to sanitary drains. Under no conditions should any
+waste solutions in any form be permitted to enter storm sewer systems
+You will, however, receive documentation confirming proper disposal of waste solutions. Documentation would
+include a bill of lading or hazardous waste manifest and receipts from the state certified treatment facility
+where the waste solutions are being transported and treated. When off-site disposal is being used, it is
+important to verify the credentials of the hauler and final destination site before utilizing their services.
+Ultimately, disposing of waste solutions in a proper and legal manner is the responsibility of all involved
+parties. The owner of the property where the waste solutions are generated, contractors, subcontractors
+involved with the use of the chemicals, haulers, and the final waste treatment facility would all have some
+liability for proper disposal of waste solutions.
+
+#### 11.3.16 Documentation
+
+Complete and detailed documentation should be kept as the procedure is being performed. Specifics on
+chemical concentrations, temperatures, contact time, quality of rinse water supply, and effluent sample read-
+ings should all be recorded.
+Some contractors use job log sheets to record chronological job data including specifics from the time the
+contractor arrives on-site until the time he leaves. In addition to job log sheets, passivation log sheets should
+be completed. Detailed information, as discussed above, can be plugged into a “fill in the blank” form supplied
+by passivation contractor, validation firm, or owner. No matter how the information is recorded, the important
+thing is that detailed and accurate documentation is kept. The following information can be submitted to the
+owner and become incorporated into the final validation documentation:
+•
+Passivation Procedure
+•
+Miscellaneous Pertinent Information
+•
+Procedure Development Data
+
+=== PAGE 186 ===
+APPENDIX
+•
+Testing Procedure and Equipment
+•
+Calibration Documentation
+•
+Passivation Log Sheets
+•
+Chemical Batch Record Information
+•
+Marked up system drawings, completed using point check list or line identification list.
+
+### 11.4 PRETREATMENT PROCESSES
+
+#### 11.4.1 Turbidity and Particulates
+
+##### 11.4.1.1 Definitions
+
+Particulates are insoluble suspended materials present in the water. Concentrations are measured in mg/l.
+Sources of particulates are dust, pollen, silica, insoluble minerals, and corrosion products.
+Turbidity is a cloudy appearance in water caused by the presence of suspended and colloidal materials.
+Rather than a physical property, it is an optical property based on the amount of light reflected by the sus-
+pended particles and is measured in Nephelometric Turbidity Unit (NTU). The EPA limit for turbidity in drinking
+water is 1 NTU. Turbidity cannot be related to particulates since it is affected more by particle size, shape, and
+color rather than concentration. Light colored particles reflect more light than dark colored particles and many
+small particles reflect more light than a few larger particles of equivalent concentration. Removal of particu-
+lates and turbidity is required to prevent fouling/plugging of final treatment processes using a membrane
+(RO).
+
+##### 11.4.1.2 Filtration Mechanisms
+
+The principal methods for removal of turbidity and particulates are:
+•
+clarification and the accompanying operations of flocculation, coagulation, and sedimentation
+•
+media filtration including single and multimedia filtration
+•
+barrier filtration included pre-coat filter, surface, and depth media such as cartridges and finer barriers
+such as nanofiltration or ultrafiltration
+Factors affecting the removal of turbidity and particulates are:
+•
+particle size and shape relative to the filtration media
+•
+tendency of the particles to adhere to each other or the media which may be enhanced by addition of a
+flocculating agent or alum (agglomeration)
+•
+surface effects including surface tension, hydrogen bonding, and electrostatics
+
+##### 11.4.1.3 Clarification
+
+Clarification is one method used by municipalities and large water treatment suppliers for removal of particu-
+lates and turbidity. Addition of alum, lime/FeCl3, or other flocculating agents, and pH adjustment aids the
+sedimentation and clarification to remove particles larger than 25µm. Flow rates are generally large and cost/
+
+=== PAGE 187 ===
+APPENDIX
+gallon is low. This process is typically not found in the production of purified water because it would be
+redundant to the treatment typically done by a municipality. The scale of these systems is much larger than
+most purified water systems and clarification is not 100% efficient so that some additional filtration method
+would be required to prevent particulates from being retained by filtration and cause blockage in subsequent
+pretreatment operations such as ion exchange, carbon beds, and fine barrier filtration.
+
+##### 11.4.1.4 Media Filtration
+
+Media filtration using a depth filter is the most common method of removing particulates from the water in
+pharmaceutical water systems. It also may have some minor effect on turbidity. Design can be with either a
+single size media or multi-sized media in a tank that has the means to support the media. With multi-sized
+media, the larger media is typically at the top with the main flow direction downward through progressively
+finer layers of media. The porosity of the media bed selected permits removal of particles down to a size of
+10-40 µm. Accumulated particulates are removed by a back flush operation based on increase in pressure
+drop or time. This back flush in the upward direction also decompresses the filter bed and is followed by a
+rinse to resettle the media and remove fines. This back flush is generally considered a sanitary rather than
+chemical waste and is typically 3-10x the design flow rate for a period of about 30 minutes. Following the back
+flush, a short flush to drain in the direction of the process flow is required to resettle the bed and remove fines.
+The filtration media in a depth filter may be sand, anthracite, carbon, or manganese. Sand is the most com-
+mon because of cost and availability in a wide range of sizes and purities. Anthracite might be used where
+leaching of the silica from a sand filter is a problem due to high temperatures or alkalinity. Depth filters using
+anthracite often have higher filtration rates over extended runs and require less back washing (and regenera-
+tion) because of the sharply angular particles rather than the rounded silica particles. A depth filter using
+carbon might be selected if the water has a high loading of organics, or if there is a particular reason to
+combine removal or particulates, organics, and chlorine. The carbon is usually a course retention layer under
+an extended layer of an activated granular carbon such as coconut, lignite, or anthracite. A depth filter using
+particles coated with potassium permanganate or manganese zeolite as the depth media might be selected
+for water having high concentrations of iron or manganese. It also may oxidize sulfur or hydrogen sulfide.
+Generally, an oxidant, potassium permanganate or chlorine and permanganate is added prior to this filter to
+convert the metals to the higher oxidation states that are insoluble. Removal down to levels of 0.03 mg/l of
+iron and 0.05 mg/l of manganese are possible.
+Microbial growth is a key consideration in any filter, but particularly a depth filter. This occurs because of the
+large surface areas and relatively low velocities. In the case of a carbon filter, the media also is a source of
+nutrient. Design of the system should include the presence of a disinfectant such as chlorine or chloramine in
+the feed water, an added disinfectant, or the ability to periodically sanitize with a disinfectant or heat. The filter
+bed also may be designed with constant recycle to ensure continuous flow through the bed to minimize
+stagnation and growth.
+Advantages: filtering material; works well in a chlorinated environment; large capacity at low cost
+Disadvantages: filter out only large particles; can be a source of microbiological growth
+
+##### 11.4.1.5 Barrier Filtration
+
+Barrier filtration includes cartridge filtration, pre-coat filtration, ultrafiltration, and nanofiltration. This type of
+filtration has a “barrier” through which the water must flow. The barrier retains particulates that are removed
+by changing the barrier (cartridge and pre-coat) or by a purge stream (ultra and nanofiltration).
+Barrier filtration is typically not used as the primary method for removal of particulates because of cost of the
+barrier, labor, and the frequent need for replacement of the barrier due to the relatively high particulate
+loading in the water entering pretreatment. It is frequently used as a “final clean-up” after the other pretreat-
+ment process such as ion exchange or carbon bed filtration, and before going to a final treatment step such
+as reverse osmosis.
+
+=== PAGE 188 ===
+APPENDIX
+As a “final clean-up,” the barrier is often cartridges that might typically have a nominal particle size retention
+of 1-10 µm for just the removal of particulate carry-over from the previous operations. If, however, the objec-
+tive is to remove insoluble forms of silica and iron and achieve a SDI (silt density index) of less than 5 for feed
+to an RO system, the absolute particle size retention might be <1 µm and as such are at the lower end of
+microfiltration or the upper end of ultrafiltration. An absolute rated cartridge filter or a pre-coat filter can
+achieve this. The later is usually not used unless the high particulate loading offsets the associated labor
+cost.
+Ultrafiltration (0.1-0.001 µm) and nanofiltration (0.005-0.0005 µm) are methods of barrier filtration. They are
+not used as for primary removal of particulates for the reasons noted above, particularly cost and rapid
+blinding of the membrane. Ultrafiltration is discussed in Section 11.4.4.3E.
+Advantages:
+low initial cost; can vary particle size retention by cartridge selection
+Disadvantages: Cartridge filtration is an expensive way to remove solids due to the cost of cartridges and
+labor if solids concentration is high; potential for microbial growth in a non-chlorinated envi-
+ronment.
+
+#### 11.4.2 Hardness and Metals-Ion Exchange
+
+An ion exchange system consists of a tank containing small beads of synthetic resin. The beads are treated
+to selectively absorb either cations or anions and exchange these ions based upon their relative activity
+compared to the resin. This process of ion exchange will continue until all of the available exchange sites are
+filled, at which point the resin is exhausted and must be regenerated by the appropriate chemicals. For
+removal of hardness and metals, a cation exchange system will remove positively charged ions (metals) and
+exchange them for sodium ions. Ion exchange resins that remove cations or anions and replace them with
+hydrogen and hydroxyl ions are discussed in Chapters 5 and 6.
+The presence of calcium (Ca) and magnesium (Mg) in a water supply is commonly known as “hardness.” It is
+usually expressed in grains per gallon (gpg). Ion exchange is the principal method of removing hardness from
+water in a pretreatment system. The process of removing hardness is often called “softening.” This is required
+to prevent scale formation in final treatment operations such as RO and distillation.
+
+##### 11.4.2.1 Water Softening
+
+Hardness in a water supply can result in “scale formation,” which is a deposit of minerals left over after the
+water has been removed or evaporated. This can be found in boilers, cooling towers, reverse osmosis ma-
+chines, clean steam generators, and distillation systems.
+The function of an ion exchange water softener is removal of scale forming calcium and magnesium ions
+from hard water. In many cases, other multivalent ions such as soluble iron (ferrous) and ionized silica also
+are removed with softeners.
+A standard water softener has four major components: a resin tank, resin, a brine tank, and a valve or
+controller. The softener resin tank contains the treated ion exchange resin - small beads of polystyrene.
+Capacity depends on volume of the resin bed. The resin beads initially absorb sodium ions during brine
+regeneration. The resin has a greater affinity for the multi-valence ions such as calcium and magnesium than
+it does for sodium. As a result, when hard water is passed through the resin, calcium, magnesium, and other
+multivalent ions such as iron and silica adhere to the resin, releasing the sodium ions until equilibrium is
+reached. The water softener has exchanged its sodium ions for the calcium, magnesium, and iron ions in the
+water.
+Regeneration is achieved by passing a sodium chloride (NaCl) solution through the resin, exchanging the
+hardness ions for sodium ions. The resin’s affinity for the hardness ions is overcome by using a highly con-
+centrated solution of NaCl (brine). The spent brine solution plus the associated water back-flushes and rinses
+
+=== PAGE 189 ===
+APPENDIX
+are waste streams and might typically approximate the nominal throughput for one hour for each regenera-
+tion cycle.
+Water softening is a simple, well-documented ion exchange process. It solves a very common form of water
+contamination: hardness. Regeneration with brine is simple and inexpensive and can be automatic with no
+strong chemicals required.
+Advantages:
+Industry standard, low cost and effective. Works well in a chlorinated environment for micro-
+bial control with chlorine having only minor effect on resin life and efficiency. Inherent in the
+regeneration is flushing of some microbial growth, but this should not be relied on as the sole
+means of microbial control.
+Disadvantages: salt handling for brine regeneration and disposal of spent brine solution
+
+##### 11.4.2.2 Demineralization/De-ionization
+
+Three multivalent ions (iron, silica, and aluminum) present unusual removal problems.
+a)
+Iron
+Iron is a common water contaminant. It is one of the more difficult contaminants to remove because it
+may change valence states--that is, change from the water-soluble ferrous state to the insoluble ferric
+state.
+In solution, ferrous iron behaves like calcium and magnesium; however, when oxygen or an oxidizing
+agent is introduced, ferrous iron becomes ferric and precipitates, leading to a rusty (red brown) appear-
+ance in water.
+Certain bacteria can further complicate iron problems. Organisms such as Crenothrix, Sphaerotilus, and
+Gallionella use iron as an energy source, eventually forming a rusty, gelatinous sludge that can plug up
+piping and equipment, particularly barrier processes such as nanofiltration and reverse osmosis. One
+removal method for iron in the oxidized state is a replaceable barrier filtration such as a cartridge filter
+with an absolute rating of <1 µm. It also can be removed by nanofiltration or reverse osmosis with some
+membrane fouling, or with sequestering agent dosing that is removed further downstream in RO.
+b)
+Silica
+Like iron, silica may be present in more than one form and is a major problem in some parts of the
+western United States. It may be a soluble ionized species or an insoluble material, sometimes as a
+colloidal mixture with organics and other metals. The concentration of ionized silica will be reduced by a
+water softener and insoluble silica forms can be removed by a replaceable barrier filtration with an abso-
+lute rating of <0.5 µm (ultrafilter). The insoluble silica also can be removed by nanofiltration or reverse
+osmosis with some membrane fouling or by strong base ion exchange.
+c)
+Aluminum
+Like iron and silica, aluminum can exist in multiple valences and its chemistry is complex. It also can be
+a component of colloid complexes. Its solubility, particularly as hydrated oxide compounds, is a function
+of pH. Aluminum may be present in the water either naturally or as a result of the alum treatment used by
+a municipality as part of coagulation. Aluminum that is present as a colloidal component can be removed
+by fine barrier filtration. Softening or de-ionization removes aluminum in an ionized form. Aluminum also
+can be removed by reverse osmosis if the pH is <6 or >8. However, between these pH values that are
+often common in an RO unit, the hydrated aluminum oxides are only partially (about 80%) rejected by RO
+and often lead to fouling in an RO. If aluminum is a major problem, softening or de-ionization followed by
+pH adjustment and then RO may be required for removal.
+
+=== PAGE 190 ===
+APPENDIX
+
+##### 11.4.2.3 Ion Removal
+
+Ion exchange (softening) is often part of the pretreatment process where it is used for removal of hardness.
+Ion exchange as a total ion removal process (cations are exchanged for hydrogen ions and anions are
+exchanged for hydroxyl ions) is discussed in Chapters 5 and 6.
+
+#### 11.4.3 Hardness and Metals-Other Processes
+
+This section covers two alternate means (acidification/degasification and nanofiltration) for removing scale
+forming components in water destined to be further purified in RO systems.
+
+##### 11.4.3.1 Acidification and Degasification
+
+a)
+Carbon Dioxide
+Use of a pH adjustment step is common in the process design to favor or inhibit the formation of CO2. As
+discussed in the section on pH (Section 4.11), injecting acid to a pH of approximately 5.5, will maximize
+the concentration of CO2 whereas, the addition of a base to a pH of 8.3 will minimize the formation of CO2,
+converting it to carbonate ion. See Sections 4.6 and 4.11.
+If high levels of CO2 are present in the water, it can be removed down to a concentration of about 5-10 ppm
+with an atmospheric degasifier. An atmospheric degasifier has the potential of increasing bacterial burden
+and should be located where bacterial control measures are available. One example is to locate the degasifier
+between the stages of a two pass RO system.
+b)
+The Acidification/Degasification Process
+The process is well known and accepted in water purification systems. It is usually used where there is a
+high flow rate (>50 gpm or 0.18 m3/min) or high hardness (>50 ppm). The incoming water is acidified
+before the RO unit and a degasifier is used to remove residual CO2 prior to moving on to a second pass
+RO or a mixed bed de-ionization (DI) unit.
+In this pretreatment process, the incoming water is adjusted to a pH in the range of 3.8-4.2 with sulfuric acid.
+The acidified water is sent to a packed column degasifier for removal of free CO2 by air. Removal efficiency of
+CO2 is better than 98% (typical commercial degasifiers are designed to reduce outlet CO2 to less than 5
+ppm). This residual CO2 should not pose a problem for downstream single and mixed bed de-ionization units
+or electro-deionization. The residual CO2 also can be removed by addition of a base to increase the pH to ³
+8.5 that converts it to CO3
+= which is removed in the second stage of the RO.
+Commercial degasifiers are typically from 18 in. in diameter for 50 gpm to 72 in. diameter for 680 gpm (0.46
+m for 0.18 m3/min to 1.83 m for 2.57 m3/min). Fan power requirements will range from 1/2 HP to 10 HP for the
+preceding sizes. Smaller and larger units are possible to meet exact needs. Standard packed tower design
+methods are used.
+The pH after removal of CO2 will be in the range of 6.5-7.0. Just prior to feeding the RO unit, the pH should be
+adjusted to approximately 8.0-8.5 in order to minimize the amount of free CO2 still remaining in the water and
+enhance removal of remaining carbonate in the second pass of the RO.
+The acidification/degasification process has some associated problems. Air borne bacteria, if a problem or
+concern, can be removed by a HEPA filter in the inlet-air line. The air also may oxidize any iron present to form
+solids.
+Water from the degasification column is usually collected in a holding tank. Further treatment in this tank is
+possible for TOC removal and microbial control. A multimedia filter usually follows the degasifier for removal
+
+=== PAGE 191 ===
+APPENDIX
+of initial incoming solids and any solids generated in the degasification step. When using gasification as a
+“softening” process, addition of an anti-scaling agent is recommended just before the RO (if used as the first
+stage in the final treatment step). The anti-scaling agent will be removed along with minerals, high molecular
+weight organics, and endotoxins in the RO. Monitoring for removal of the anti-scaling agent by the RO is
+required.
+Advantages:
+Replaces softener and the handling of large amounts of salt for softener regeneration; the
+CO2 is released to the atmosphere rather than being purged as an ion in a waste steam; the
+added sulfate ion from acidification is easier to remove in RO than added sodium ion from
+softening.
+Disadvantages: Handling acid for acidification; instrumentation and chemical handling for two pH adjust-
+ments.
+
+##### 11.4.3.2 Nanofiltration
+
+Nanofiltration is a pressure driven membrane process with performance characteristics between RO and
+ultrafiltration. The theoretical pore size of the membrane is one nanometer (10-9 meter). These membranes
+are sometimes referred to as “softening membranes” and will remove anions and cations. The removal of the
+larger anions (sulfate for example) is easier than the removal of a smaller anion (chloride) as discussed
+earlier.
+The nanofiltration membrane offers high rejection of salts of divalent anions as well as organics with molecu-
+lar weights above 200. This includes color bodies, trihalomethane precursors, and sulfates. The rejection is
+lower, but effective for salts with monovalent anions or non-ionized organics with a molecular weight above
+150. Typical rejections (based on pure salt solution--mixtures may differ) are shown in the following table:
+Solute Descriptive
+Solute formula
+MW
+Rejection-%
+Sodium chloride
+NaCl
+Calcium bicarbonate
+Ca(HCO3)2
+Magnesium Sulfate
+MgSO4
+Glucose
+C6H12O6
+Sucrose
+C12H22O11
+Final product conductivity will range from 40-200 µS/cm depending on the inlet water total solids and mineral
+species make-up. A single pass RO unit will produce conductivity of 5-20 µS/cm.
+The investment cost and size of a nanofiltration system is about the same as for a RO system. Energy use is
+lower because they operate at 70-150 psig (4.76-10.2 bar) as opposed to 200-350 psig (13.6-23.8 bar) for
+reverse osmosis membranes. Operating pressures are always a function of temperature, feed water salinity,
+and recovery.
+Nanofiltration membranes, like other membranes, are to a large extent application dependent. Key factors are
+the quality of the feed water and the quality of the product water required. The feed water should be pro-
+cessed through a multi-media filtration system prior to going to the membranes. Potential applications are:
+•
+Removal of color
+
+=== PAGE 192 ===
+APPENDIX
+•
+Removal of trihalomethane precursors and organic carbon compounds from surface waters
+•
+Removal of hardness, radium, and TDS from well water
+•
+Feed waters with high silica
+Industrial uses are where moderate water quality is required.
+
+#### 11.4.4 Organics and Microbiological Impurities
+
+##### 11.4.4.1 Introduction
+
+Organic and microbiological contaminants need to be addressed in water treatment systems. The concerns
+are twofold: contaminants entering the system and contaminants created/growing in the system. Organics
+usually enter with the feed water, but also may leach from some non-metallic materials of construction.
+Microbiological contaminants may enter with the feed water or grow in the system and are classified as viable
+and non-viable. Viables are those organisms that can proliferate, given specific conditions. Non-viables are
+derived from a breakdown of or a product of a viable organism.
+The first issue to consider is water source since it affects organic loading. If the water is drawn from a well,
+organic loading is usually not very great. Surface water (lake, river, or reservoir) will probably contain rela-
+tively high levels of organics and the composition and quantity may show seasonal variation.
+Water from a municipal system is usually chlorinated, sometimes with ammonia added to form chloramines.
+Microbiological content of the feed water will be low and will generally be inhibited until the chlorine/chloram-
+ine is removed.
+The second issue to address is biological growth occurring within the water pretreatment system. Most
+pretreatment systems are designed to keep an oxidant in the water for as long as possible to minimize the
+potential for growth. Special design and maintenance requirements need to be addressed in all equipment
+that operates without a microbial control agent, chlorine, or chloramine present. These include materials of
+construction and piping layout (set up and fittings for sampling and periodic sanitization and instrumentation
+for monitoring) compatible with the sanitization method selected.
+
+##### 11.4.4.2 Organic Contaminants
+
+The organic contaminants found in many water sources are:
+a)
+Bacterial Contamination
+Bacterial contamination is usually expressed as “total viable microbial counts per ml” or as “Colony
+Forming Units (CFU) per unit volume.” CFUs are determined by counting the growth resulting from incu-
+bating samples. Each colony is assumed to form from one bacterium.
+b)
+Pyrogenic Contamination
+Pyrogens are substances that can produce a fever in mammals. The pyrogens are often endotoxins,
+organic compounds (lipopolysaccharides) that are shed by bacterial cells during growth, or are the resi-
+due of dead cells. They are chemically and physically stable and are not necessarily destroyed by condi-
+tions that kill bacteria. Their molecular weight may vary, generally 12,000 to 320,000. Pyrogen levels are
+quantified in Endotoxin Units (EU) per milliliter. Pyrogens are of great concern to the pharmaceutical
+industry, since high concentrations may cause responses in humans ranging from fever to shock or
+death.
+
+=== PAGE 193 ===
+APPENDIX
+c)
+Total Organic Carbon (TOC)
+TOC is a measure of organic materials contaminating the water and is specified in mg/l or µg/l. TOC is a
+direct measure of the organic material that is oxidizable. TOC is a very fine measurement used in sophis-
+ticated water treatment systems where any organic contamination can adversely affect product quality.
+TOC is not a good measure of microbial contamination.
+d)
+Dissolved Organic Compounds
+Organics occur both as the product of the decomposition of natural materials and as synthetic com-
+pounds such as oils or pesticides. Naturally occurring organics include Tannin, Humic acid, and Fulvic
+acids. They detract from the aesthetics of water (i.e. color), but unless they come in contact with certain
+halogens, they have no known health consequences in normal concentrations. Under conditions of free
+halogen compounds (principally chlorine and bromine), they form chlorinated hydrocarbons and
+trihalomethanes (THMs), which are suspected carcinogens.
+
+##### 11.4.4.3 Removal of Organics
+
+A number of technologies are available to remove organic materials, and these have differing benefits and
+drawbacks. The use of chlorine and chloramines to remove bacterial contamination are the most common
+and are discussed in the next section. Treatment devices used to remove one or more of the other types of
+organic material are:
+a)
+Ozone
+Ozone is twice as powerful an oxidant as chlorine. It will prevent microbial growth as well as reduce the
+concentration of organics. Ozone is not used frequently in pretreatment systems due to the preference
+for chlorine and materials of construction that are readily degraded by ozone. Ozone is discussed more
+fully in Chapter 8, Storage and Distribution Systems.
+b)
+Strong Base Ion Exchange
+Organic scavengers or traps are ion exchange resins that contain strong-base anion resins and are
+regenerated with sodium chloride brine. Most naturally occurring organics have a slightly negative charge
+and are absorbed by the anion resin. After the resin is loaded, the organics can be displaced by high
+concentrations of chlorides during regeneration.
+Advantages:
+removes most natural organics; can be regenerated
+Disadvantages: disposal of brine and organic solution; requires chemicals for regeneration; brine carryover
+may result after regeneration
+c)
+Carbon
+A carbon bed containing activated carbon will remove organics by adsorption of the organics on the
+carbon. Periodically the carbon must be replaced when its capacity to adsorb diminishes.
+Carbon is also one of the methods used to remove chlorine. Use of carbon for this and its advantages
+and disadvantages are discussed in Sections 4.7 and 11.4.4.4.
+d)
+Microfiltration
+Microfiltration includes the use of depth cartridge filters, pleated filters, and cross-flow filtration mem-
+brane elements. These filters can remove particles ranging in size from 100 µm down to 0.1 µm, thus
+
+=== PAGE 194 ===
+APPENDIX
+capturing bacteria, giardia cyst, and large molecular weight organics. Depth and pleated filters allow
+water to flow through a wall of fibers perpendicular to the water direction. The particles are trapped on the
+outside wall of these filters, or within the filter walls (for depth filters), due to the pore size of the filter. The
+filter will fill up with these particles and then needs to be replaced with a new filter. Cross flow microfiltration
+forces the water to flow parallel to the filtering media, and the particles which are too large to pass
+through the filter are then expelled from the system in a concentrate stream to drain (typically 5-10% of
+the feed flow). This allows the filters to be self-cleaning and eliminates the need to replace these filters
+frequently.
+See Section 5.5 for additional discussion.
+e)
+Ultrafiltration
+Ultrafiltration can be used to remove organics and bacteria, as well as viruses and pyrogens from a water
+source. Filtration is typically from 0.1 down to 0.001 µm. Cross flow ultrafiltration forces the water to flow
+parallel to the filter media, and the particles which are too large to pass through the membrane elements
+are then expelled from the system in a concentrate stream to drain (typically 5-10% of the feed flow). This
+allows the filters to be self-cleaning and eliminates the need to replace these membrane elements fre-
+quently. The UF membrane elements will need to have any suspended solids removed from the feed
+stream prior to the UF system.
+Advantages:
+effective filtering barrier; no by-products; works with chlorine
+Disadvantages: medium to high capital cost; 10% constant concentrate stream; can be source of micro-
+bial growth
+f)
+Reverse Osmosis (RO)
+RO, if included in a pretreatment system to remove anions and/or cations, also will remove organics and
+microbiological impurities. Like ultrafiltration, a purge stream removes impurities that are too large to
+pass through the RO membrane. Advantages and disadvantages are similar to ultrafiltration but toler-
+ance to chlorine depends on membrane selection. RO as a unit operation is discussed in Chapter 5.
+
+##### 11.4.4.4 Control of Microbiological Growth
+
+The methods of controlling microbiological growth in pretreatment systems are periodic sanitization, ultravio-
+let (UV) light and chlorine/chloramine.
+a)
+Periodic Sanitization
+Periodic sanitization methods, employed on a scheduled or as needed basis, include heat, chemical
+sanitization, regeneration or replacement of media, flushing, or drainage. With heat, USP indicator organ-
+isms are killed above 60°C and the majority of pathogenic organisms will not proliferate. Temperatures
+above 80°C result in complete kill. Sanitization times might be one to two hours at temperature. Total
+cycle time including heat-up and cool down might be four to eight hours. Heat is commonly used in
+carbon beds, filters, and distribution systems.
+Chemical sanitization agents (when chlorine cannot be used) include hydrogen peroxide, iodine, ammo-
+nium compounds, and organic or inorganic per-oxygen compounds. Sanitization times might be 0.5-4
+hours with additional time for set up to feed the sanitization agent and to flush it from the system. Total
+cycle time might be eight hours.
+
+=== PAGE 195 ===
+APPENDIX
+Controlling temperature to minimize microbial growth permits increasing the period between sanitiza-
+tions. Temperatures below 15°C slow microbial growth. Avoiding stagnation and dead legs also mini-
+mizes microbial growth. Recycle loops around various unit operations can be utilized during shutdown
+periods, i.e. recycle around depth filter and softener while sanitizing carbon bed or while cleaning and
+sanitizing RO.
+Times for specialized periodic sanitization methods such as regeneration, replacement of media, and
+drainage will depend on the equipment piece and specific design.
+All sanitization methods (frequency and length of sanitization) will be system and sanitizing agent depen-
+dent, and must be validated.
+b)
+Pressurized Carbon Dioxide
+Periodic microbial growth inhibition coupled with shutdown is sometimes practiced where the high cost of
+electricity and water favors shutdown of pretreatment and RO systems during normal non-work periods
+such as third shift or weekends. During the shutdown, rather that maintaining water flow to drain to inhibit
+microbial growth, the cartridge filters and RO are deadheaded and pressurized with carbon dioxide to 2-
+4 bar. This lowers the pH to <5.5 which inhibits microbial growth in the stagnant water as well as dissolv-
+ing scaling chemicals such as carbonate from the RO. Before start-up, the acidic water and carbonate
+salts are flushed to drain. The advantages include savings on energy and water consumption coupled
+with microbial inhibition and de-scaling during a normal shutdown period. In addition, this technology has
+the potential advantage of eliminating the need for a softener before the RO if there is a match between
+shutdown frequency and fouling frequency of the RO without a softener present in pretreatment.
+c)
+Ultraviolet Light (UV)
+Treatment with UV light is a popular form of microbial control and disinfecting due to ease of use. Water
+is exposed, at a controlled rate, between ultraviolet light waves. The UV light de-activates DNA in the
+microbes preventing duplication and hence leading to bacteria reduction. See section on UV light sys-
+tems in Chapter 8, Storage and Distribution Systems for additional information. In pretreatment systems,
+UV is used when chlorine/chloramine and heat are not available or possible. The feed water to a UV
+needs to be free of suspended solids, which can “shadow” bacteria, preventing adequate UV contact. UV
+is typically used in controlling feed water to an RO unit that cannot accept chlorine or heat, and in
+controlling non-chlorinated water re-circulation during system idle time. The UV system does not leave a
+residual in the treated water, and therefore is only effective if there is direct UV light contact with mi-
+crobes.
+d)
+Chlorine
+Municipalities frequently use chlorine to disinfect the water before and during, distribution. Chlorine is fed
+into the system to kill bacteria at typical dosage levels of 0.2 to 2.0 ppm. In order to maintain the “kill
+potential,” an excess of chlorine is fed into the supply to maintain a chlorine residual. The chlorine level at
+outlying distribution points is targeted at about 0.2 to 0.5 ppm; however, if the water supply is heavily
+contaminated with organics, the chlorine may react and form certain chlorinated hydrocarbons
+(trihalomethanes or THM’s). In other cases, chlorine can dissipate and no residual level is maintained at
+outlying points in a municipal distribution system. Chlorine concentration should be monitored in the feed
+water and in parts of the pretreatment system prior to its removal.
+Molecular chlorine can have adverse effects on the components in a water purification system. It will
+cause oxidative deterioration of the membranes, particularly polyamides, used in ultrafiltration and RO. It
+also will cause degradation, embrittlement, and loss of capacity in de-ionization resins (oxidation rate
+varies with resin type) although the amount is low to moderate at chlorine concentrations usually found in
+drinking water. It also will cause corrosion of stainless steel, particularly at elevated temperatures and
+
+=== PAGE 196 ===
+APPENDIX
+may carryover into the product in a distillation system. Therefore, in most systems making purified water,
+the chlorine is removed at some point.
+Advantages:
+low capital cost; common treatment; compliments municipal water treatment; maintains
+a residual; easy to test and maintain levels
+Disadvantages: can create THMs; does not affect all organics; residual chlorine is not acceptable in
+many final treatment systems
+The two principal methods of chlorine removal are activated carbon and reduction, often with sulfite.
+Activated Carbon
+Activated carbon removes the chlorine by adsorbing it onto the carbon particles in a carbon bed. There is
+also some reduction of chlorine to chloride. Removal efficiency depends on bed depth, face velocity and
+adsorptive capacity of the carbon. Design is based on rate of adsorption with adsorption rates typically
+being more rapid for chlorine than organics if this is done in the same operation. Design based on chlo-
+rine removal will occur with bed depths of as little as 2-3 feet (0.61-0.91 m) and hydraulic rates of 2-4
+gpm/ft3 (270-540 l/min/m3) of empty bed volume. Carbon bed volume is a balance between total adsorp-
+tive capacity and the frequency of replacement of the carbon bed.
+Use of carbon to remove chlorine provides the perfect conditions for microbiological growth: slow flow
+rates in a warm media with lots of nutrient present. Hence a program to periodically sanitize the carbon
+bed is required. Heat (either steam [plant steam can be used, but often is not] or hot water at 190°F) is
+effective with sanitization frequency varying from daily to a couple of times a week or less. With a proper
+sanitization program, microbial growth in carbon beds can be controlled. Following the sanitization the
+carbon bed is usually rinsed to remove fines before being put back in service.
+Advantages:
+removes low molecular weight organics; removes color; removes chlorine effectively;
+technically not complex; relatively low cost
+Disadvantages: high potential for increase in bioburden; medium to high capital cost; shedding of fines
+requires downstream filtration; periodic replacement of the spent carbon
+Reduction
+The addition of a reducing agent will reduce the chlorine to chloride. Sulfite, usually as sodium bisulfite, is
+generally the reducing agent of choice. The chemistry is:
+SO3
+- + Cl2 + H2O ----> 2Cl- + 2H+ + SO4
+=
+The addition of sulfite, also may require an accompanying pH adjustment step. The chloride and sulfate
+that are formed may be removed by a subsequent de-ionization step or RO.
+Advantages:
+effectively removes chlorine; lower capital cost than carbon filters that can be heat sani-
+tized; no regeneration or replacement required; low operating cost
+Disadvantages: technically more complex, chemical handling including sodium bisulfite and acid/base
+for pH adjustment; potential for microbial growth in sulfite feed tank requires frequent (<5
+days) preparation of sulfite solution; higher capital cost for feed systems and monitors;
+higher cost than disposable carbon.
+
+=== PAGE 197 ===
+APPENDIX
+e)
+Chloramines
+Chloramines are formed by the reaction of chlorine and ammonia. Municipalities add ammonia (nearly
+25% in 1990, principally in the southeast and Midwest US) to form a longer acting disinfectant than
+chlorine and to reduce the formation of trihalomethanes during the chlorination of municipal water. Chloram-
+ines are three compounds: monochloramine (NH2Cl), dichloramine (NHCl2), and trichloramine (NCl3).
+Dichloramine is a particularly strong biocide.
+Chloramines present problems since the removal is typically not a single step. The methods for chloram-
+ine removal are:
+•
+activated carbon
+•
+reduction (sulfite injection)
+Activated Carbon
+Chloramines, like chlorine, can be removed by carbon; however, the absorption is much slower than for
+chlorine or organics. Chloramine adsorption will require hydraulic rates as much as 3-6X less than chlo-
+rine and empty bed contact times of 3-6X those required for chlorine.
+The removal of chloramines by activated carbon results in dissociation of some of the chloramines to
+ammonium ion and ammonia. The ratio is dependent on pH and temperature. The ammonium ion can be
+removed by cation exchange (water softening). Thus, if chloramines are present in the feed water, it may
+be desirable to locate the carbon bed for removal of microbial control agent prior to the water softening
+operation in the pretreatment system design.
+The advantages and disadvantages of carbon are similar to those for chlorine. The potential dissociation
+of chloramines to form ammonia is a disadvantage and can cause problems in final treatment. See
+Section 4.9.
+Reduction
+Reduction with sulfite will convert chloramines to ammonium ion and chloride ion. These are removed by
+an ion exchange operation or the ion removal process in final treatment. Again, if chloramine is present,
+it may be desirable to locate the microbial agent removal prior to the water softening operation in the
+pretreatment design. The advantages and disadvantages of sulfite reduction are similar to those for
+chlorine.
+11.4.5
+pH and Carbon Dioxide
+pH, the negative log of the hydrogen ion concentration, is a measure of the concentration of hydrogen ions
+(H+) in a water-based solution. The more hydrogen ions that are present, the lower the pH and the more acidic
+the solution.
+The concentration of H+ ions (pH) is very important because it affects the chemistry of the water. For in-
+stance, the pH of the water, along with other parameters, can tell us if the water will corrode piping or if certain
+contaminants (carbonates) are likely to precipitate and cause scaling.
+In water or aqueous solutions, a certain ratio of water molecules, H2O, separates (or “dissociates”) into ions,
+H+ and OH-.
+H2O <----> H+ + OH-
+
+=== PAGE 198 ===
+APPENDIX
+Because of the properties of water, when the concentrations of hydrogen (H+) and hydroxyl (OH-) present in
+any water-based solution are multiplied together, the value is always the same. This number is the “equilib-
+rium ion product”, Kw, which has been determined to have the value shown below:
+Kw =
+[H+] x [OH-] = 1.01 x 10-14 at 25°C
+Where [H+] = Concentration of H+ (moles/liter)
+[OH-] = Concentration of OH- (moles/liter)
+Free carbon dioxide in water is produced by the decay of organic matter, dissolution of carbon dioxide from
+underground sources, and solution from the atmosphere. Since the carbon dioxide content of the atmo-
+sphere is quite low (less than 0.04%), this is not a major source of carbon dioxide in the water and surface
+waters normally are relatively low in free carbon dioxide; however, well waters usually contain an appreciable
+quantity of free carbon dioxide.
+Free carbon dioxide is the term used to designate carbon dioxide gas dissolved in water. The designation
+“free” carbon dioxide differentiates a solution of carbon dioxide gas from combined carbon dioxide present in
+the form of bicarbonate and carbonate ions. In the case of high purity water, low levels of carbon dioxide from
+the atmosphere can cause the pH to drop from 7.0 to 5.5 and the conductivity to increase from 0.1 µS to 1 µS.
+Low levels of CO2 also can prevent a water purification system such as two-pass RO from producing water
+with a conductivity of <1 µS.
+The pH of the water causes the equilibrium between free carbon dioxide (gas) and bicarbonate alkalinity
+(dissolved ion) to shift to more or less carbon dioxide. The determination of the level of CO2 present in the
+water as it proceeds through the treatment process is important to understand because it can affect the final
+water quality or it can cause premature exhaustion of ion exchange systems.
+The approach to pH in the pretreatment system affects the equilibrium between carbonate, bicarbonate, and
+carbon dioxide. As the pH is lowered the equilibrium is shifted toward carbon dioxide which is a neutral
+species dissolved in the water with the ionic charge being maintained with anions from the added acid and
+the net formation of water. As the pH is increased, the equilibrium is shifted toward bicarbonate and then
+carbonate with the ionic charge being maintained by the addition with cations from the added base and the
+net formation of water.
+
+#### 11.4.6 Importance of Feed Water pH
+
+EPA drinking water standards require that the pH of the water be within a range of 6.5-8.5; however, the range
+of most water is much narrower due to the corrosive nature of water with an acidic pH and a scaling potential
+at a high pH. The feed water pH is very important when designing the pretreatment for a purified water
+system. Also, the pH is an important parameter is designing a RO system or an ion exchange system.
+If the pH of the feed water is less than 8.3, the feed water will have to be analyzed for the amount of CO2
+present in the water. The lower the pH from a pH of 8.3, the higher the potential capacity for dissolved CO2.
+The CO2 will directly pass through pretreatment and an RO membrane and depress the conductivity and pH,
+making it difficult to meet the USP conductivity requirements. If the system has an ion exchange system
+following the RO, high levels of CO2 will produce a high ionic loading on the system. High CO2 may require the
+use of a degasifier to remove the CO2. See Section 11.4.3.1.
+If the feed water pH is between 6-10, the RO system has the potential to incur hardness scaling. Adding acid
+to the feed water controls the deposition of scale, but this converts carbonates to CO2 that will pass through
+both the RO and distillation final treatment processes. On the other hand, the addition of base converts the
+bicarbonate to carbonate, and carbon dioxide (CO2) to bicarbonate. These ions will be removed by an RO
+unit, but also will cause scaling. Most pharmaceutical companies incorporate the use of ion exchange soften-
+ing in order to prevent scaling from occurring in the RO membrane.
+
+=== PAGE 199 ===
+APPENDIX
+Chloramine in the feed water can result in ammonia or ammonium. The pH as well as temperature affects the
+equilibrium between ammonia and ammonium. Acidic conditions are required to maintain the ionic species
+for removal in an RO unit. In final treatment ammonia will pass through an RO unit. In distillation, the higher
+temperatures shift the equilibrium from, ammonium towards ammonia. Ammonia will affect conductivity and
+pH, making it difficult to meet the USP conductivity requirements.
+Based on these situations, some water systems will include the capability to add either acid or a base to the
+water in order to optimize the performance of the system. The most common acid used for pH adjustment is
+sulfuric acid because it is readily available and less corrosive than hydrochloric acid. The most common base
+used for pH adjustment is sodium hydroxide (caustic soda) because it is readily available, and the final
+treatment process will remove sodium ions.
+
+### 11.5 FINAL TREATMENT FOR NON-COMPENDIAL AND COMPENDIAL PURIFIED WATER
+
+SYSTEMS
+
+#### 11.5.1 Ion Exchange for Purified Water Applications
+
+##### 11.5.1.1 Ion Exchange Use in USP Systems
+
+The primary purpose of ion exchange equipment in USP high purity water systems is to satisfy the ionic
+quality portion of the specification. Ion exchange systems can effectively reduce organics in many applica-
+tions with proper ion exchange resin selection and maintenance. Ion exchange systems may not meet USP
+TOC requirements without additional membrane processes in certain applications where high feed water
+TOC levels exist. For most water supplies, both two-bed and mixed-bed units in series can be utilized to meet
+the USP water specifications.
+Ion exchange systems require pretreatment to remove undissolved solids from the water stream and to avoid
+resin fouling or degradation. Although dechlorination also is recommended to avoid resin degradation by
+oxidation, the low levels of residual chlorine commonly found in potable water supplies, in worst cases,
+demonstrate only long-term effects on most ion exchange resins. Typical pretreatment for an ion exchange
+system includes a filter and/or carbon filter for removal of undissolved solids and chlorine.
+
+##### 11.5.1.2 Functionality
+
+With the exception of one-time use (virgin) resins (which are not regenerated), cation and anion exchange
+resins are regenerated with acid and caustic solutions, respectively. As water passes through the ion ex-
+change bed, the exchange of ions in the water stream for the hydrogen and hydroxide ions held by the resin
+occurs readily and is driven by concentration gradient. Similarly, the regeneration process is driven by excess
+chemical.
+Cation Exchange: Cation exchange is the exchange of cations (Ca, Mg, Na, etc.) in water for hydrogen ion
+(H+). Hydrogen cycle operation of cation exchangers is the term used when regeneration is accomplished
+with dilute acid (generally sulfuric (H2SO4) or hydrochloric (HCl). All salts are converted to corresponding
+acids following the cation exchange process.
+Anion Exchange: Anion Exchange is the exchange of anions (SO4
+=, HCO3
+-, Cl-, etc.) in water for hydroxide
+ions (OH-). This exchange following cation exchange completely demineralizes water when carried to comple-
+tion. The anion exchange resin is typically regenerated with sodium hydroxide (NaOH).
+Ion exchange resins are available in “strongly” and “weakly” ionized versions. Strongly ionized resins have a
+greater affinity for all ionized constituents in water and are capable of removing even weakly ionized constitu-
+ents such as acetates and silica with practical exchange capacities of 18 and 14 kgs as CaCO3 per ft3 of resin
+(0.5 and 0.4 kgs/m3) for cation and anion resins respectively. Weakly ionized resins are ineffective at remov-
+
+=== PAGE 200 ===
+APPENDIX
+ing weakly ionized constituents; however, their exchange capacities are two to three times that of strongly
+ionized resins and can be regenerated more efficiently.
+Ion exchange resins have a higher affinity for polyvalent ions. A result, common divalent ions such as cal-
+cium, magnesium, sulfate, etc., are removed first as water passes through the resin bed. Monovalent ions
+such as sodium, potassium, and chloride can be displaced by divalent ions in the exhaustion cycle and will
+leak into the product stream first. RO product streams are generally comprised of monovalent ions and
+present a more difficult challenge to ion exchange units than a typical raw water. Mixed bed ion exchange
+units were developed to provide superior removal of monovalent ions.
+Two bed (also called separate bed) deionizers use two separate columns for the cation and anion resin.
+Regeneration of a two-bed unit is relatively simple since chemicals are easily introduced and rinsed. No resin
+separation or mixing is required as with the alternative mixed bed deionizer.
+Mixed bed (also called mono-bed) deionizers utilize one column with both cation and anion resins intimately
+mixed for the service mode. Regeneration is more complex than two-bed regeneration as resin separation
+and mixing steps are required.
+Mixed bed ion exchangers function as an infinite series of two-bed ion exchangers since the resin bed is
+comprised of both cation and anion resins thoroughly mixed. Therefore, residual ions that may leak through a
+two-bed exchange system are eventually removed by the mixed bed exchanger to achieve optimum ionic
+purity.
+Among two bed systems, there are two types: co-current and counter-current regeneration units. In co-
+current regeneration systems, the regeneration fluid flows in the same direction of the process water stream.
+In a counter-current system, these fluids flow in opposite directions. The practical results of counter-current
+regeneration are higher quality product water and approximately 50% reduction in chemical usage.
+
+##### 11.5.1.3 Operating Parameters
+
+From a process standpoint, ion exchange systems require consideration of three basic parameters: flow rate,
+ionic loading, and product water quality.
+There are many parameters to consider on a practical level including cost of operation, capital cost, space
+requirements, chemical handling issues, etc. However, for the purpose of sizing equipment and defining the
+basic needs of an ion exchange system, these parameters are most important.
+Deionizer Type
+Two Bed
+Two Bed
+Mixed-Bed
+Co-Current
+Counter Current
+Regeneration
+Regeneration
+Product Water Quality (µS/cm)
+2.0-10.0
+0.2-2.0
+0.055-1.0
+Lbs of Acid/Caustic per ft3 resin (100% Basis)
+6-8
+6-8
+Kgs of Acid/Caustic per liter resin (100% Basis)
+0.1-0.133
+0.067
+0.1-0.133
+Process Flow Rate (gpm/ft2 of bed area)
+5-10
+5-15
+5-25
+Process Flow Rate (m3/hr/m2) of bed area)
+12.21-24.42
+12.21-36.63
+12.21-61.05
+Typical Operating Temperature Range in °F (°C)
+40-140 (4-60)
+40-140 (4-60)
+40-140 (4-60)
+
+=== PAGE 201 ===
+APPENDIX
+The table above lists basic operation information for ion exchange systems. Process flows should be main-
+tained within these ranges to avoid problems such as channeling and high pressure drops. Process flow rates
+that are too low may result in channeling through the ion exchange bed. Channeling is typically recognized by
+significantly shorter run times between regeneration. Excessive flow rates can significantly increase system
+pressure loss and potentially affect product water quality.
+
+##### 11.5.1.4 Component Description
+
+An ion exchange system is comprised of a tank(s), ion exchange resin, a piping and valve system, water/
+chemical distributors internal to the tank(s), a regeneration system, and a conductivity or resistivity meter and
+cell. Typically, other instrumentation may include a flow meter and pressure gauges. Ion exchange systems
+are available in both on-site regenerable and off-site regenerable (rechargeable) versions. In both versions,
+tanks may be constructed from fiberglass, stainless steel or carbon steel with an inert interior lining such as
+vulcanized rubber or PVC. Off-site regenerated or rechargeable systems are typically transported off site to
+a facility that is equipped to either regenerate or replace the resin. For this reason, these units are typically
+supplied with fiberglass or light gauge stainless steel tanks in sizes ranging from less than 1 ft3 (0.03 m3)-50
+ft3 (1.4 m3) per tank. Larger, off-site regenerated systems are recharged with new resins on-site, and the
+exhausted resin is returned to an off-site regeneration facility.
+On-site regenerated units are designed with a much more complicated valve and piping system to accommo-
+date on-site chemical regeneration and rinsing. These systems are selected when larger volumes of water
+are required on a continuous basis, thus justifying the higher capital investment.
+
+##### 11.5.1.5 Tanks
+
+For pharmaceutical applications, given the typical quantity of water utilized, ion exchange tanks rarely need
+to be more than 3-4 feet (.91 m-1.22 m) in diameter. Typically, tank straight shells are 6-8 feet (1.82 m-2.44 m).
+Steel tanks are welded and typically manufactured and designed in accordance with the ASME Code for
+operating pressures between 100 and 150 psig (7 and 10.5 kgs/cm2 gauge). ASME Code stamping is not
+necessarily required for this type of equipment; however, local regulations and end user safety concerns
+should govern this decision.
+
+##### 11.5.1.6 Distributors
+
+Each ion exchange tank includes distributors at all pipe to tank interfaces. Distributors are required to ensure
+that resin does not escape from the tank while water is flowing through the system and to provide adequate
+distribution of flow through the vessel. Distributors are typically supplied in stainless steel, PVC, CPVC,
+polypropylene or PVDF. Structural integrity of a distributor system is a key element in any design since a
+ruptured distributor can cause a significant loss of resin and may require significant time for repair.
+
+##### 11.5.1.7 Piping and Valves
+
+The selection of a piping and valve system depends upon several factors including budget, product water
+quality (in terms of chemical analysis), and preferred methods of sterilization. Most ion exchange systems
+are provided with schedule 80 PVC or CPVC piping and valves. The advantages of these materials include
+low cost, ease of assembly, and high corrosion resistance. Specialty plastics such as polypropylene and
+PVDF also have been utilized in DI systems to a great extent. These materials are more expensive than either
+PVC or CPVC; however, these materials are superior in terms of the lower level of organic leachables into the
+process water. Furthermore, these materials are available in a piping design that more closely resembles the
+orbital welding in sanitary stainless piping systems.
+Stainless steel piping systems offer greater structural integrity than plastic piping systems and the ability to
+sanitize using hot water or steam. On the other hand, stainless steel is much more vulnerable to corrosion
+and more expensive than PVC and CPVC.
+
+=== PAGE 202 ===
+APPENDIX
+
+##### 11.5.1.8 Regeneration System
+
+On-site regenerated ion exchange systems require a regeneration system that includes chemical pumps
+and/or eductors, chemical tanks, piping and valves, and related instrumentation. The cost critical component
+in any regeneration system is the chemical pump. Pumps better suited for this application require inert mate-
+rials of construction and the capability to closely meter or regulate the chemical dosage. Positive displace-
+ment pumps driven by either electric motors or compressed air are ideally suited for this application.
+Chemical eductors offer another option to deliver chemicals to an ion exchange system; however, chemical
+dosing may be inconsistent based on variable dilution water pressure and flow.
+
+##### 11.5.1.9 Microbiological Concerns, Cleaning, and Sanitization
+
+Although ion exchange resins beds, due to the hydrogen ion and hydroxide ion exchange sites, have pH
+values at the extreme ends of the range, microbiological activity remains a concern. The regeneration of both
+the cation and anion exchange resin beds effectively sanitizes the system; however, as the system processes
+water, the resin becomes exhausted and the pH approaches neutral. Organic matter, which may be depos-
+ited on or absorbed by the resins, particularly the anion resin, and the laminar flow of water through the bed
+foster bacteria growth in ion exchange beds. For this reason, regeneration frequency is more important to ion
+exchange systems that are not designed with auxiliary microbiological control components such as UV lights.
+Polishing ion exchange systems are typically positioned in a system with bacterial control elements such as
+sub-micron filters and ultraviolet sterilizers, and may operate for several weeks without requiring regenera-
+tion.
+
+##### 11.5.1.10 Advantages and Disadvantages
+
+Ion exchange based WFI and purified water systems have an extensive installed based and lengthy history.
+Major advantages are the considerable flexibility in flow rate of ion exchange systems, lack of sophisticated
+maintenance requirements, consistent production of Stage 1 conductivity, and the ability to use the chemical
+regeneration of ion exchange resins as a means of microbial control. The major disadvantages include the
+necessity to store and handle acid and caustic, the requirements to neutralize waste chemicals (for on-site
+regenerated systems only), and the reduced ability of ion exchange resins to reduce dissolved organics
+relative to membrane based systems.
+
+#### 11.5.2 Reverse Osmosis (RO) for High Purity Water Applications
+
+##### 11.5.2.1 Description
+
+RO is a pressure driven process utilizing a semi-permeable membrane capable of removing dissolved or-
+ganic and inorganic contaminants from water. A semi-permeable membrane is permeable to some sub-
+stances such as water, while being impermeable to other substances such as many salts, acids, bases,
+colloids, bacteria, and endotoxin.
+RO membranes are produced commercially for water purification in spiral wound and hollow fiber configura-
+tions. Spiral wound elements are much more forgiving in pretreatment protection against fouling. Membranes
+are available in two basic materials: cellulose acetate and thin film composite (polyamide). All of the mem-
+brane types have advantages and disadvantages. Cellulose acetate membranes are the oldest commercially.
+Cellulose acetate has the advantages of being the lowest initial cost membrane and is chlorine tolerant. The
+primary disadvantages of cellulose acetate membranes are: the fastest loss of rejection among membrane
+types; the necessity to operate in a pH range of 5 to 6 to minimize hydrolysis; and the necessity to keep free
+chlorine in the feed stream to control bacterial consumption of the base membrane material. Cellulose ac-
+etate membranes also are more resistant to some types of fouling than alternative membranes. Cellulose
+acetate membranes are relatively intensive in energy considerations since the membranes normally operate
+at a high pressure (300-500 psig or 21-35 kgs/cm2 gauge) and commonly operate at elevated feed water
+temperatures (60-80°F) (15-27°C).
+
+=== PAGE 203 ===
+APPENDIX
+Thin film composite RO membranes offer the highest rejection of contaminants of all membrane types in
+current production. Thin film composite membranes operate effectively at low water temperatures (40°F
+(4°C) and higher) and low pressure (150 psig (10.5 kgs/cm2 gauge) and higher). The initial capital cost of thin
+film composite membranes may be higher than the capital cost of cellulose acetate membranes, but offer the
+higher rejection and expected longer life. The primary negative aspect of thin film composite membranes is
+the intolerance for chlorine in the feed water.
+Thin film composite membranes are degraded rapidly in the presence of chlorine at municipal drinking water
+levels. The dechlorination of the feed water does allow the opportunity for some bacterial growth to occur and
+more sanitization efforts are required with thin film composite membranes than with chlorine tolerant types.
+Both thin film composite and cellulose membrane can be appropriate for use in pharmaceutical water sys-
+tems. The optimum membrane selection is based upon an analysis of capital cost, operating cost, membrane
+life, rejection, and bacterial control. The majority of pharmaceutical systems utilize thin film composite mem-
+branes.
+Most spiral wound RO membranes incorporate a brine seal at the leading end of the RO element. This seal is
+designed to expand between the membrane and the pressure vessel that contains the RO membrane. The
+purpose of the seal is to prevent passage of water between the membrane and the pressure vessel and to
+divert the flow of water across the RO membrane surface. The brine seal can cause bacterial problems since
+a stagnant water condition is inherently created by the presence of the seal. Some membranes are produced
+today without a brine seal on the leading end. These membranes are commonly referred to as loose wrap or
+full fit and are configured in several different ways with the same goal of allowing modest controlled flow
+between the RO membrane and the pressure vessel. This type of membrane is superior for use in pharma-
+ceutical RO units as bacterial contamination is minimized.
+RO membranes can vary in configuration. They are designed in arrays such that turbulence is reasonably
+maintained to minimize scale precipitation and fouling. Greater turbulence also decreases the boundary layer
+and reduces the salt level at the membrane surface improving permeate quality. As permeate (product) is
+formed, the feed water stream concentrates in contaminants. Typical arrays frequently reduce the number of
+membrane pressure vessels in parallel as the feed water flow is reduced. Recycle of the reject concentrate is
+sometimes employed to maintain the higher turbulence without using more feed water. This must be designed
+such that the resultant concentrated feed stream does not precipitate downstream.
+
+##### 11.5.2.2 Application
+
+RO can be successfully implemented in pharmaceutical systems several ways. RO units can be utilized
+upstream of deionizers to reduce regenerant acid and caustic consumption or to minimize resin costs. Prod-
+uct staged RO units (two sets of RO membranes in series) are generally capable of producing water that
+meets the requirements of the USP for TOC and conductivity. Some installations produce water that meets
+the Stage 1 conductivity level allowing on-line measurement while others produce water that passes Stage 2
+or 3 levels requiring laboratory testing. Each installation must be carefully analyzed to assess the probable
+product water quality relative to consistent conductivity levels.
+
+##### 11.5.2.3 Instrumentation and Control
+
+Even small changes in feed pH can have a very dramatic effect on final system conductivity and this param-
+eter should be monitored and controlled (if pH control is a part of the system) utilizing a very accurate pH
+meter with a feedback loop for any chemical feed pump. Using a simple on/off signal for chemical feed pump
+control is not recommended.
+The product quality from the RO system is directly related to the feed quality. As a result, monitoring the feed
+quality can provide a method for notifying an operator of an impending issue before the product quality from
+the RO system degrades. The feed and permeate conductivity can be directly compared to provide on-line
+
+=== PAGE 204 ===
+APPENDIX
+monitoring of RO ionic rejection. Permeate flow, waste flow, and feed temperature are typically monitored as
+well as pressure for feed, concentrate, and permeate. These parameters should be measured using cali-
+brated, NIST traceable instruments. Some RO units also monitor additional parameters such as membrane
+inter-stage pressure and conductivity. Scale will tend to form on downstream membranes and pressure drop
+can be an indicator. Chlorine or Oxidation Reduction Potential (ORP) monitoring is sometimes utilized to
+protect chlorine intolerant membranes against oxidation.
+Most RO units incorporate some level of automation. Protective devices are typically included to protect:
+pumps against low suction pressure and membranes against high pressure and high temperature. Most
+valves on RO units are manually adjusted. Automatic valves are utilized in many units to accomplish product
+side flushing and system sanitization. Membrane cleaning is performed manually in most systems, but can
+be automated.
+
+##### 11.5.2.4 Limitations
+
+RO cannot remove 100% of contaminants from water and has very low to no removal capability for some
+extremely low molecular weight dissolved organics. RO also quantitatively reduces bacteria, endotoxin, col-
+loids, and other macro molecules from water. RO cannot purify 100% of a feed water system. A concentrate
+flow is always necessary to remove the contaminants that are rejected by the membrane.
+Recovery is defined as the percentage of feed water that becomes purified product water. Most RO units
+operate in the range of 75% recovery. Some small units operate at lower recoveries, while large systems may
+have recoveries as high as 85% if water consumption is critical. Many users of RO utilize the waste stream
+from the RO unit for cooling tower make-up water, compressor cooling water, etc. The determination of
+recovery must be a balance of life cycle costs, water, waste, and maintenance factors. A high recovery unit
+may have less waste to achieve the desired output rate, but it tends to have high maintenance costs due to
+effects of the concentrate.
+Carbon dioxide passes directly through the RO membrane and, for design purposes, the CO2 will be in the
+RO product stream at the same level that is present in the feed water stream. Excess carbon dioxide in the
+RO product stream may cause product water quality problems directly or may increase the load on the anion
+resin in deionizers which follow the RO unit to raise the RO permeate to a higher quality level.
+Water quality produced by an RO system is dependent upon a number of factors, including, but not limited to:
+membrane type, operating pressure, and feed water quality. Since RO membranes remove a percentage of
+the contaminants in the feed water, as the feed water quality degrades so will the product quality. As a result,
+it is conceivable that the feed water quality could change enough so that the product quality from the RO
+system may no longer meet USP quality.
+Present RO technology requires ambient RO operation with occasional chemical or hot water sanitization.
+Operating at ambient temperatures can result in the possibility of biological growth. The ability for RO sys-
+tems to continuously operate at high temperature (80°C) should alleviate this; however, to date, this may be
+the most significant factor in why RO use in a WFI application is rather limited.
+Since RO membranes remove a percentage of the constituents in the feed water as the feed water quality
+deteriorates or the membranes degrade, it may become more challenging for the RO system to meet USP
+WFI product quality. As a result, the RO-based USP WFI system may require more regularly scheduled
+monitoring than a distillation system.
+The performance of an RO system also is dependent upon potentially numerous “o” rings between the mem-
+brane elements and between the membrane elements and the membrane element housings. O-ring slippage
+may result in poor water quality. This would normally result in high conductivity (low resistivity), providing a
+means of monitoring for unacceptable water quality.
+
+=== PAGE 205 ===
+APPENDIX
+
+##### 11.5.2.5 Scaling
+
+RO scale formation in waste streams is predicted by a calculation that utilizes the concentrate stream water
+levels of calcium, alkalinity, total dissolved solids, and temperature. The proper pH to operate a RO unit at
+(without the use of an antiscalant agent) is a minimum of 0.5 pH units below the pH calculated to produce
+scale.
+Scale control through acidification of feed stream to lower the pH is very effective. The principal negative
+aspect of this method of scale control is in the formation of free carbon dioxide from bicarbonate that is
+present in the feed water as the pH is lowered.
+Antiscalant chemicals also are available for injection into the RO feed water stream. The antiscalant agents
+are very effective in minimizing scale formation through a sequestering action that increases the time neces-
+sary for crystal formation of the precipitate.
+The various membrane types have different maximum operating temperatures. Many RO systems utilize feed
+water preheating to optimize the membrane area and to minimize the pumping energy required to operate the
+RO system. It is prudent to have high temperature protection for the membranes when utilizing feed water
+preheating.
+
+##### 11.5.2.6 Cleaning and Sanitization
+
+Virtually all RO units need periodic cleaning. Acid based cleaners are used to remove accumulated metals
+and salts from the membranes. Alkaline detergent cleaners are used to remove silt and organic foulants from
+the membranes. Sequential acid and alkaline cleanings are frequently done to assure a thorough cleaning.
+Cleaning frequency should not be more than four times per year if the pretreatment system is designed and
+working properly. Cleaning need is based upon a loss of rejection, an increase in the feed to waste membrane
+pressure drop, or a loss of product flow.
+Chlorine tolerant membranes can be sanitized with chlorine solutions. Non-chlorine tolerant membranes can
+be effectively sanitized with a peracetic acid/hydrogen peroxide solution. Some membranes are sufficiently
+heat resistant to allow thermal sanitization at 80°C.
+
+##### 11.5.2.7 Purification Capability and Efficiency
+
+A single stage of RO elements commonly reduces the level of raw water salts by 90 to 99%. Other raw water
+contaminants such as colloids, bacteria, and endotoxin also are reduced by 1-3 logs. Passage of water
+through a single pass of RO membrane may frequently not purify the water to a level that meets the current
+requirements for USP Purified Water.
+Repurification of the water through a second set of RO membranes will raise the quality of water to levels that
+can exceed the requirements of USP Purified Water or Water For Injection in most applications. RO systems
+that utilize two sets of RO membranes in series are commonly called two-pass or product staged RO units.
+Product staged RO units can produce water from the municipal drinking water supplies to produce product
+water which will normally have a resistivity of 0.5 Mohm/cm or greater.
+Almost all product staged RO units can produce product water that passes the USP tests for conductivity and
+TOC; however, product staged RO product water may not necessarily pass the conductivity test in rare
+applications.
+
+##### 11.5.2.8 Performance
+
+RO unit must incorporate sufficient membrane area for reliable operation. All membrane manufacturers offer
+recommendations for membrane area required as function of the feed water quality. One of the most impor-
+
+=== PAGE 206 ===
+APPENDIX
+tant factors for optimization of membrane area is the understanding of fouling and scaling potential. The Silt
+Density Index (SDI) reading offers an indication of the tendency of the feed water to foul membranes as a
+result of salt, colloids, or bio-burden. Most membrane manufacturers recommend an SDI reading of three or
+less with an upper limit for proper membrane operation. In general, the higher the membrane area for a fixed
+product water flow rate, the lower the rate of membrane fouling will be. This is not entirely true since the
+percent recovery may differ, and therefore might be a factor. A high recovery for the same flow and membrane
+area will tend to foul more. It is obvious that an increase in membrane area will cause an increase in the
+capital cost of the equipment due to the increased requirement for membranes and pressure vessels. An
+intelligent RO design will optimize the membrane area versus the maintenance and cleaning requirements of
+the RO system.
+Advantages:
+RO is utilized to reduce or eliminate chemical handling. This can be a significant advantage
+for RO when compared with regenerable deionization systems. RO generally has better
+TOC reduction that ion exchange alone.
+Disadvantages: Water consumption due to the relatively high waste flow if wastewater reuse is not employed.
+RO is utilized in many new purified water systems due to the low chemical handling require-
+ment and the membrane barrier to bacteria, endotoxin, organics, and salts. Additionally, if
+the RO pretreatment is not designed to properly handle raw water change, RO maintenance
+can become expensive.
+
+### 11.6 DISTILLATION FOR HIGH PURITY WATER SYSTEMS
+
+#### 11.6.1 Thermal Efficiency of Distillation Systems
+
+Heat losses from a distillation system are due to:
+•
+Radiation
+•
+Venting
+•
+Heat exiting with the blowdown and distillate streams which are at higher temperature than the feed
+•
+Heat exiting with cooling water
+Because of these heat losses, it takes more than one pound of plant steam to produce one pound of WFI in
+a single effect distiller. For this reason, Multi-Effect distillers are used in order to improve the performance of
+the system.
+The Performance Ratio (R) of a distiller is defined as the amount of distillate produced in relation to the
+amount of steam consumed, and is given by: R = Md/Ms, where
+R = Performance Ratio (dimensionless)
+Md = distillate produced (lbs)
+Another way to measure the performance of a distiller is often stated in terms of Thermal Economy (E). This
+is defined as the amount of distillate produced in relation to the amount of energy input, and can be given by:
+E = Md/1000 BTU heat input.
+
+=== PAGE 207 ===
+APPENDIX
+A typical single effect distiller, without feedwater pre-heating, has an R of about 0.82 and an E of about 0.89.
+Pre-heating of the feedwater in the condenser raises the R to 0.93 and the E to 0.96 respectively.
+Feedwater pre-heaters are sometimes used to elevate the temperature of the feedwater prior to entering
+each effect in a ME system, and thereby reduce the steam requirements of the distiller.
+Typical performance values for a 600-gph VC and 5-effect ME are shown in the table below.
+
+#### 11.6.2 Water Recovery
+
+A portion of the feedwater is continuously discharged to waste in order to limit the total dissolved solids
+content of the feedwater within the evaporator. That portion of feedwater not evaporated is termed blowdown,
+and is discharged continuously to waste. The total quantity of feedwater (Mf) required is given by the sum of
+the distillate produced (Md) and the blowdown (Mb) discharged. The Recovery Ratio (Rc) of a distilling unit is
+determined by dividing the product rate (Md) by the feedwater rate (Mf).
+Hence the Equations: Mf = Md + Mb and Rc = Md/Mf.
+In order to minimize energy consumption and pre-treatment cost, it is desirable to have a high Rc. The Rc is
+limited by the scaling potential of the water. At low flow rates, it may be limited by practical considerations.
+The higher the Total Dissolved Solids (TDS) of the feed, the lower is the recovery. With deionized feedwater,
+the recovery is 90%-95%. With softened feed, the recovery is typically 80%-85%.
+
+#### 11.6.3 Number of Effects or Columns in an ME Design
+
+Increasing the number of effects in an ME system does not result in increased output, but it reduces the
+amount of steam and cooling water required to produce the same amount of distillate, compared to a system
+with fewer effects.
+In order to maintain a temperature difference for heat transfer between the vapor from one effect and the
+boiling liquid of the next effect, the pressure within each succeeding effect must be lower than its predeces-
+sor. The temperature and pressure are highest in the first effect, and are lowest in the condenser and the last
+effect, which are nearly at the same pressure and temperature.
+In order to minimize the heat rejection requirements of the condenser, it is desirable to operate the system
+over the lowest temperature range possible. Additionally, a lower temperature operation reduces the potential
+for scaling and corrosion. If we call the temperature at which the first effect operates the top temperature and
+the temperature of the condenser downstream of the last effect the bottom temperature, that constitutes the
+temperature range for the multi-effect distiller. In a non-pharmaceutical application, the bottom temperature
+VC
+5 ME
+Cold
+Hot
+Cold
+Hot
+Economy in lbs/1000 BTUs
+19.52*
+6.8
+3.84
+
+### 3.84 Performance Ratio (lbs of distillate/lb of steam
+
+27.67
+7.11
+3.39
+3.39
+* Economy takes into consideration the electrical energy consumption for the VC.
+
+=== PAGE 208 ===
+APPENDIX
+can be below the boiling point at the prevailing atmosphere, i.e., operation is under vacuum. This is not an
+acceptable practice for the production of WFI quality water because of the potential for air leak into the
+system. In addition, a low temperature, below that considered sanitary, is unacceptable.
+The top temperature is dependent on the pressure of the heating steam, normally 100-125 psig, while the
+bottom temperature is dependent on the condenser pressure, which is normally 7-10 psig.
+The temperature range and equipment cost limit the number of effects that are justifiable. The fixed charges
+for additional effects ultimately dissipate the savings in energy. It is important to note that there is a certain
+amount of variety in the designs of multiple effect distillers, and that although their geometry may differ, they
+are thermodynamically all the same. The larger the output of the system and the higher the cost of steam, the
+more economically justifiable it is to increase the number of effects.
+Typical ME systems have 3-5 effects, and some have as many as 8 effects.
+
+#### 11.6.4 Non-Condensable, Venting, and Deaeration
+
+Non-condensable gases such as carbon dioxide and oxygen are dissolved within the feedwater and become
+liberated as the temperature of the water increases. These gases, if they are not removed, have two detri-
+mental effects on distillation units. Since the gases are non-condensable, they can blanket the heat transfer
+surface and inhibit heat transfer in the condenser and evaporator. This translates into reduced output. In
+addition, these gases are corrosive and will contribute to the pitting, embrittlement, and cracking of stainless
+steel. For these reasons, it is imperative for designers and operators to ensure proper and adequate venting
+of the distilling unit.
+The steam carries non-condensables that are liberated from the raw water during evaporation. The gases do
+not travel alone and will not be vented without the associated steam.
+There are two characteristics of non-condensable liberated by ordinary waters which allow designers to
+locate and vent these gases from an evaporator or condenser. Oxygen and carbon dioxide are significantly
+heavier than the associated steam, and therefore collect mostly at the bottom. Additionally, non-condensable
+gases tend to migrate to the coldest surface they can find.
+Considering the points above, the gases liberated in each effect are processed through the bottom of each
+effect with the distillate and make their way to the final condenser which is vented along its length. Operators
+should ensure that a steady stream of steam is exiting the distiller vent at all times. Improper venting and/or
+a malfunctioning distillate level control can result in CO2 being pulled into the distillate pump suction and
+processed across the conductivity cell, resulting in high conductivity reading.
+11.6.4.1 Deaerator (also called Decarbonator)
+All feed waters have dissolved gasses the amount of which depends on water temperature, composition, and
+pH. The latter is dependent on the type of pretreatment used. Other gasses occur due to the breakdown of
+some of the constituents during heating, as is the case of alkalinity.
+It is very desirable, whenever practical, to remove the gasses from the feed waters prior to entry into the
+evaporator in order to minimize corrosion and to improve heat transfer. This is often done in VC distillers,
+where a deaerator is installed between the feed heater and the evaporator. Because of the configuration and
+relatively high operating pressure of the ME, it is difficult to incorporate a deaerator within the system. A
+stand-alone deaerator will be costly, and therefore is not included.
+A typical VC deaerator consists of a cylindrical tower in which stripping steam and feedwater flow counter
+current to one another. Prior to entering the deaerator, the feedwater has been pre-heated in the blowdown
+cooler, distillate cooler, and feedwater pre-heater. As the temperature of the feedwater increases, the non-
+
+=== PAGE 209 ===
+APPENDIX
+condensable contained within the feed have a greater tendency to become liberated. Entering the deaerator
+at a temperature greater than 93°C, the feedwater is sprayed through a nozzle, which disperses the water in
+the shape of a cone to maximize the contact area with the counter current stripping steam. The majority of
+gases within the feedwater are liberated at this point, and are vented to atmosphere. The evaporator vent is
+the source of the stripping steam which provides additional heating to the feedwater, prior to entering the
+evaporator. Deaerators are usually constructed of stainless steel.
+
+#### 11.6.5 Typical Water Analysis
+
+The table below provides typical water analysis of a feed source for a high-purity water distillation system,
+and is used to compare pretreatment and operating cost for a 5-effect ME with a VC.
+Feedwater Analysis City of Ocala, FL. Plant Effluent
+Constituent
+mg/l
+Constituent
+mg/l
+Constituent
+mg/l
+Constituent
+mg/l
+Calcium
+Fluoride
+0.7
+Nitrate
+
+### 1.1 Zinc
+
+0.026
+Chlorine
+Iron
+0.026
+Sodium
+
+### 8.1 Carbon Dioxide
+
+0.2
+
+### 1.2 Magnesium
+
+## 14.0 Sulfate
+
+pH
+
+### 8.2 TDS
+
+High Purity Water Production Costs
+600 GPH of high purity water at 82°C
+600 GPH of high purity water at 30°C
+Consumables
+5MEF
+VC
+5MEF
+VC
+Steam in lbs/hr
+1,471
+1,471
+Electricity (kw)
+1.5
+26.5
+1.5
+
+### 26.5 Regenerant in lb/yr
+
+--
+17,520
+--
+17,520
+Acid in lb/yr
+32,143
+--
+32,143
+--
+Caustic in lb/yr
+30,917
+--
+30,917
+--
+Cooling Water in gpm
+--
+--
+
+=== PAGE 210 ===
+APPENDIX
+The above figures are based on 7000 hour per year operation and the following utility and consumables’ costs
+in US dollars:
+Associated Costs
+5MEF
+VC
+5MEF
+VC
+Steam ($/year)
+$79,802
+$37,975
+$79,802
+$9,765
+Electricity ($/year)
+$736
+$13,000
+$736
+$13,000
+Regenerant ($/year)
+$876
+$876
+Acid ($/year)
+$1,928
+$1,928
+Caustic ($/year)
+$4,019
+$4,019
+Cooling Water ($/year)
+$1,513
+$2,688
+Running Cost ($/year)
+$87,998
+$51,851
+$89,173
+$23,641
+Running Costs in US$/1000 gallons
+$20.95
+$12.34
+$21.23
+$5.63
+For costs of consumables, which are different from those used above, calculations can be made by substitut-
+ing other values.
+
+##### 11.6.5.1 Comparisons
+
+ME can be used as a standby clean steam generator; VC cannot be used because of the lower steam
+pressure.
+Pretreatment: VC does not require as much pretreatment as ME. See Baseline pretreatment in the main
+chapter.
+Size Selection: The cost of the VC does not scale down as well as the ME. VC is not offered in less than 100
+gph, and equipment cost is most competitive with ME in the 300 gph and above.
+For a hot (80°C) system, an 8-effect ME will approximately match the thermal economy of a VC. For an
+ambient system, it takes 24 effects to match the economy of VC. Obviously, such number of effects is not
+practical.
+Chlorine Attack: Although the VC still is much more forgiving because it operates at lower temperature, it
+also is subject to stress corrosion cracking caused by the chlorine. However, at very low chlorine levels, the
+problems may not appear until after years of operation.
+At the relatively high temperature of the ME, the attack is very rapid, and failure may occur in weeks or
+months.
+Steam
+$7.75 per 1000 lbs
+Electricity
+$0.07 per kWh
+Sodium Hydroxide
+$0.13 per lb
+Renerant-brine
+$0.05 per lb
+Hydrochloric Acid
+$0.06 per lb
+Cooling water
+$0.20 per 1000 gal
+
+=== PAGE 211 ===
+APPENDIX
+
+### 11.7 CLEAN STEAM - CLEAN STEAM GENERATORS
+
+Pharmaceutical steam systems including the generator are relatively simple in design, construction, and
+operation. Yet, many users can benefit from a better knowledge of factors which contribute to an optimum
+baseline system.
+
+#### 11.7.1 System Selection and Design Considerations
+
+##### 11.7.1.1 Sizing the System
+
+A generator designed to deliver the maximum output at a relatively high clean steam pressure will deliver
+significantly more steam at the lowest pressure and vise versa.
+This appears to be an advantage and often is; however, there can be problems if the performance is not well
+understood and is taken into consideration at the design stage and later during operation. The following
+example best illustrates the performance of the generator and the advantages and disadvantages.
+Example
+A generator is sized to deliver 2000 lbs/hr (909 kgs/hr) clean steam at 60 psig (4.2 kgs/cm2 gauge), utilizing
+plant steam at 120 psig (8.43 kgs/cm2 gauge). Operating at a reduced level of 30 psig (2.1 kgs/cm2 gauge)
+clean steam pressure and assuming 5 psi (0.35 kgs/cm2) pressure drop across the steam control valve.
+Net steam pressure to evaporator =120 - 5 =115 psig (8.08 kgs/cm2), (347.3°F (175.17°C) saturated tem-
+perature)
+CS temperature @ 60 psig = 307.63°F (153.13°C)
+CS temperature @ 30 psig = 274.46°F (134.7°C)
+Temperature difference available for clean steam generation,
+∆ T @ 60 psig = 347.3 - 307.63 = 39.67°F (22°C)
+∆ T@ 30 psig = 347.3 - 274.6 = 72.7°F (40.5°C)
+The amount of steam produced, lbs/hr, W = U x A x ∆ T
+Where: U = heat transfer coefficient in Btu/hr/ft2/°F and A = CS evaporator surface area in ft2
+Since the heat transfer surface is fixed, and the change in the heat transfer coefficient is negligible, the
+amount of clean steam produced is directly proportional to the temperature difference.
+The amount of clean steam produced @ 30 psig compared to that produced at 60 psig at the same plant
+steam pressure is: lb/hr of CS @30 psig = (72.7/ 39.67) x 2000 = 3,665 lbs/hr (1666 kgs/hr), or 183% of that
+at 60 psig (4.2 kgs/cm).
+Specific volume of steam @ 60 psig = 5.818 ft3/ lbs.
+Total volume of 60 psig steam = 5.818 x 2000 =1,636 ft3/hr and specific volume @ 30 psig = 9.403 ft3/lbs.
+Total volume of steam @ 30 psig = 9.403 * 3665 = 34,462 lbs/hr, or 296% of that @ 60 psig.
+Since the steam passage areas including the separator have not changed, the velocity of steam increases
+approximately 300%.
+If this increase is not anticipated and planned for at the design stage, there can be a potential for carryover of
+contaminants through the separator due to the higher steam velocity.
+
+=== PAGE 212 ===
+APPENDIX
+See the following table to determine the output change at different plant and CS steam pressures.
+To use the table follow the above example.
+•
+Find the temperature difference for the current and desired operating pressures.
+•
+Calculate ratio of New/Current and multiply the current output by the ratio. If the current output is not
+known, use 100% to obtain the percentage change.
+In addition to the high velocity and carryover considerations, operating at a temperature difference above
+70°F (21°C) is not recommended without consulting the CS manufacturer.
+At high temperature difference, a heat transfer phenomenon called “dry wall condition” can occur. Simply put,
+the steam, in this case, is that much hotter than the water on the other side of the heat transfer surface, that
+the surface cannot be maintained wet. It is not unlike throwing drops of salty water on a very hot stove. The
+water evaporates instantly leaving behind a residue (scale). The problem is more of a concern when the CS
+feed water has relatively high TDS, such as with softened water. The example above with 72.7°F (22.6°C)
+temperature difference would not be recommended.
+The opposite of operating with high pressure/temperature differential is operating with very low differential.
+For a CS generator producing 2000 lbs/hr (908 kgs/hr) @ 30 psig (2.1 kgs/cm2 gauge) clean steam and 120
+psig (8.4 kgs/cm2 gauge). Plant steam, the output drops to 54.6%, or 1091 lbs/hr (495.3 kgs/hr).
+Temperature and Pressure Difference between Plant Steam and CS Steam
+Clean Steam
+PLANT STEAM PRESSURES AND TEMPERATURES
+P
+Temp.
+Psig
+°F.
+307.6
+312.1
+316.3
+320.3
+324.2
+327.9
+331.4
+334.8
+338.1
+341.3
+344.4
+347.4
+350.3
+353.1
+355.8
+267.3
+30.74
+35.70
+40.37
+44.81
+49.03
+53.05
+56.90
+60.60
+64.15
+67.56
+
+### 70.86 NR
+
+NR
+NR
+NR
+NR
+NR
+274.5
+23.54
+28.50
+33.17
+37.61
+41.83
+45.85
+49.70
+53.40
+56.95
+60.36
+63.66
+66.84
+
+### 69.93 NR
+
+NR
+NR
+NR
+281.0
+16.97
+21.93
+26.60
+31.04
+35.26
+39.28
+43.13
+46.83
+50.38
+53.79
+57.09
+60.27
+63.36
+66.34
+
+### 69.24 NR
+
+NR
+287.1
+10.90
+15.86
+20.53
+24.97
+29.19
+33.21
+37.06
+40.76
+44.31
+47.72
+51.02
+54.20
+57.29
+60.27
+63.17
+65.98
+68.72
+292.7
+05.27
+10.23
+14.90
+19.34
+23.56
+27.58
+31.43
+35.13
+38.68
+42.09
+45.39
+48.57
+51.66
+54.64
+57.54
+60.35
+63.09
+298.0
+04.96
+09.63
+14.07
+18.29
+22.31
+26.16
+29.86
+33.41
+36.82
+40.12
+43.30
+46.39
+49.37
+52.27
+55.08
+57.82
+303.0
+04.67
+9.11
+13.33
+17.35
+21.20
+24.90
+28.45
+31.86
+35.16
+38.34
+41.43
+44.41
+47.31
+50.12
+52.86
+307.6
+4.44
+8.66
+12.68
+16.53
+20.23
+23.78
+27.19
+30.49
+33.67
+36.76
+39.74
+42.64
+45.45
+48.19
+312.1
+4.22
+8.24
+12.09
+15.79
+19.34
+22.75
+26.05
+29.23
+32.32
+35.30
+38.20
+41.01
+43.75
+316.3
+4.02
+7.87
+11.57
+15.12
+18.53
+21.83
+25.01
+28.10
+31.08
+33.98
+36.79
+39.53
+320.3
+3.85
+7.55
+11.10
+14.51
+17.81
+20.99
+24.08
+27.06
+29.96
+32.77
+35.51
+324.2
+NOTE: Plant Steam Pressure Is Downstream of Steam Control Valve.
+
+=== PAGE 213 ===
+APPENDIX
+
+##### 11.7.1.2 Feed Water Pressure and Pump
+
+The feed pressure is typically 8-10 psi (0.5-0.7 kgs/cm2) above the clean steam pressure, which is typically
+30-60 psig (2.1-4.2 kgs/cm2 gauge, a feed pressure range of approximately 40-70 psig (2.8-4.9 kgs/cm2
+gauge). Most CS generators have outputs of less than 4,000 lbs/hr (1,816 kgs/hr). Many have outputs of less
+than 1,000 lbs/hr (450 kgs/hr). That is a feed rate of slightly more than 2 gpm (7.5 l/min).
+The sanitary centrifugal feed pumps favored by the pharmaceutical industry will be operating near shutoff
+head at flow rates of less than 10 gpm (38 l/min), particularly with very small generators. Installing pump
+circulation loops complicates piping, and under certain scenarios may call for installing a heat exchanger to
+address temperature buildup. This adds undue complexity. Consider the possibility of feeding the generator
+from an existing source with sufficient pressure. The dedicated pump, even at very low flow rate, is most likely
+the next best option.
+
+##### 11.7.1.3 Feed Water Contact Surfaces
+
+It is common that users specify mechanical and electropolish and sanitary clamp connections for piping, heat
+exchangers, and vessels in contact with the feed water although such features are not necessary for achiev-
+ing the desired clean steam quality.
+Often, the reason given for such requirements is attributed to having the feed to the CS piped from the WFI or
+USP Purified Water loop. Such practices rule out the use of the less costly Simple CS Generator which
+otherwise may be acceptable.
+Consider the economics of the proposed feed source at the selection stage. If WFI or USP Purified is the
+most logical source, consider the possibility of using an atmospheric break or sanitary backflow preventers
+so that the CS does not become an extension of the source loop.
+
+#### 11.7.2 Utilities
+
+Plant Steam Flow Rate, lbs/hr: Make provisions for 110-120% of the maximum expected clean steam
+production. Generators with feed heaters and low TDS feed water will use closer to the 110% rate, and those
+without feed heaters and with high TDS (high blowdown rate) will use closer to the 120% rate.
+Plant Steam Pressure should be nominally 50-60 psig (3.5-4.2 kgs/cm2 gauge) above the clean steam
+pressure. See (1) above.
+Feed Water Rate: With very low TDS, DI, or equal water, the typical feed rate is 105%-110% of the CS
+production rate depending on the size of the generator.
+With higher TDS feed water, the blowdown rate is increased to lower the concentration of salts. The feed
+varies and often is 115%-120% of CS rate.
+Electric Power: Other than controls, the only power requirement is for the feed/booster pump when used.
+Since almost all CS generators require relatively small flow rates, the power requirement is mainly dependent
+on the boost pressure. Motors will vary from 2-5 horsepower. (1.5-3.75 kW).
+Instrument Air: 80-100 psig (5.6-7.0 kgs/cm2 gauge) instrument air is required for systems with air operated
+controls.
+
+=== PAGE 214 ===
+APPENDIX
+
+#### 11.7.3 Periodic Cleaning and Derouging
+
+It is common for CS generators and other stainless steel equipment used in high purity steam and water
+applications, to develop rouge or scale. Some of the cleaning chemicals can be very harsh and may etch the
+stainless surface. The extra cost on electropolishing becomes wasted after one harsh cleaning. When con-
+tracting an outside service to perform the cleaning and any subsequent passivation, ensure chemicals used
+do not cause etching. It is common to avoid passivation with nitric acid if the surface is electropolished, using
+citric acid and ammonium citrate.
+
+#### 11.7.4 Conductivity Monitoring
+
+The conductivity of the CS condensate sample on a system with relatively high feed conductivity is an indica-
+tion of carryover through the separator. Therefore, it serves as a good on-line warning that pyrogens may be
+present. When the CS generator is operating on high purity DI feed water, the monitoring of CS sample
+conductivity or resistivity is meaningless; especially if the conductivity is lower than the limits set in the USP.
+In order to verify that the separator system works as intended, it would have to be challenged. Sodium sulfite
+or other non-chloride-based salt can be injected in the feed to determine the corresponding product conduc-
+tivity. Recommended salt concentration in the feed is 150-200 mg/l. Based on approximately 10% blowdown,
+the concentration inside the CS will be 1,500-2,000 mg/l. The test is recommended after fieldwork or cleaning
+which may involve the disturbance of the separator system.
+
+### 11.8 MICROBIAL CONTROL BASICS, TESTING, AND STERILIZATION SANITIZATION
+
+EQUIPMENT DESIGN AND INSTALLATION ISSUES
+
+#### 11.8.1 Bacteria in Pharmaceutical Water Systems
+
+##### 11.8.1.1 Background
+
+Various types of bacteria can be found in the feedwater to purified water systems. Among the ways that these
+bacteria can be classified is Gram positive or Gram negative, which is based on their retention of a dye after
+a staining and washing procedure. The results of the Gram test are dependent on cell wall structure, and
+therefore indicative of many other characteristics.
+Most aquatic bacteria are Gram negative, and bacteria commonly found in purified water systems are gener-
+ally Gram negative because Gram positives cannot thrive on extremely low nutrient levels. Gram negative
+bacteria are more heat sensitive than Gram positives, and cannot proliferate at temperatures above 60°C.
+However, the possibility of Gram positive organisms in the system cannot be completely ruled out, and the
+sanitization and testing procedures should take this into account.
+Bacteria generally range from approximately 0.5 µm to 5 µm. The rod-shaped Pseudomonas diminuta, which
+is used for challenging sterilizing filters, has a minimum dimension of approximately 0.3 µm.
+When Gram negative organisms are killed they release endotoxins; lipopolysaccharide molecules which
+cause a fever when injected into the bloodstream. Because they cause fever, these substances are termed
+“pyrogens,” meaning generating heat. These substances also have been linked to much more serious reac-
+tions when introduced into the blood stream, including lethal septic ‘shock’. They are a major concern in
+products intended for injection and may be a concern in other non-oral dosage forms such as transdermals.
+Bacteria have a tendency to attach to surfaces and form biofilms. Biofilms form an external polysaccharide
+layer. This external film protects the bacteria from antimicrobial agents and makes them much more resistant
+to sanitization procedures. In addition, disinfection of the biofilm does not necessarily remove it from the
+
+=== PAGE 215 ===
+APPENDIX
+surfaces. Since the dead biofilm provides nutrients and attachment points for new biofilm, its removal must be
+considered when developing a sanitization strategy. Biofilms are difficult to detect since water samples are
+used to measure free floating (planktonic) bacteria, and these bacterial counts do not directly correlate to
+biofilm concentration. Prevention or removal of biofilms can be affected by the various continuous and peri-
+odic microbial control methods described in this chapter; however, once a biofilm has developed, the severity
+and frequency of the microbial control techniques may need to be significantly increased.
+
+##### 11.8.1.2 Microbial Levels in USP Purified Water and Non-Compendial Water
+
+Most techniques for measuring microbial populations in a water sample require a time delay of two to three
+days, and they do not yield an exact value. For this reason, the USP monograph for purified water does not
+contain a microbial limit. Instead, alert and action level guidelines must be established by the end user. The
+USP informational chapter discusses the need to match the microbial quality of the purified water to the end
+use. An action level of 100 CFU/ml is suggested in the USP, and the FDA Guide to Inspection of High Purity
+Water Systems states that any action level over 100 CFU/ml is unacceptable.
+Since actual microbial counts are dependent on the method and technique of counting, the specifications for
+alert and action levels should be based on an understanding of the method, including time, temperature, and
+media. What may be more important than the total count is a continuous monitoring program that indicates
+trends before they become a problem. It also is important to identify the specific contaminants in addition to
+the total count. The water system should not add objectionable organisms to the final drug product. Objec-
+tionable organisms are defined in the FDA Inspection Guide as “any organisms that can cause infections
+when the drug product is used as directed, or any organisms capable of growth in the drug product.”
+Alert levels are set according to a statistical review of data to reveal those results that are above the normal
+operating range of the system, and are generally used to initiate an investigation with the objective of detect-
+ing and resolving problems before the action limit is reached. It should be noted that action levels are not
+pass/fail tests. These are levels which indicate that a problem exists and the problem must be investigated
+and an appropriate corrective action taken.
+
+##### 11.8.1.3 Microbial Limits in WFI
+
+According to the USP, Water For Injection is “intended for use in the preparation of parenteral solutions.” The
+monograph makes no specific reference to a bacterial limit. WFI is generally expected to be free of microor-
+ganisms. Since some microbial contamination may be encountered during sampling, an action limit of 10
+CFU/100 ml is commonly specified. The presence of any amount of bacteria in a WFI system is cause for
+concern and should be investigated.
+The bacterial requirement which is explicitly stated on the monograph is for bacterial endotoxin. The USP
+endotoxin limit for WFI is 0.25 EU per ml.
+Even bacteria which are destroyed quickly within the storage and distribution system will release endotoxin.
+Therefore, it is imperative that the treatment system removes bacteria before they get to the distribution
+system, rather than relying on protection measures within the distribution system (such as heat) to remove
+bacteria.
+Although bacterial contamination in a WFI system will lead to the proliferation of endotoxin, it may be possible
+to pass an endotoxin limit, but not a bacterial limit so both tests should be performed. An endotoxin level
+cannot be directly correlated to a bacteria count.
+
+#### 11.8.2 Testing and Documentation
+
+Microbial control in high purity water systems relies heavily upon the use of instruments that directly monitor
+the control parameters (e.g., temperature indicators, ozone monitors, UV intensity meters). However, micro-
+biological monitoring is necessary to assure that the intended water quality is met at the system use points.
+
+=== PAGE 216 ===
+APPENDIX
+Microbiological monitoring is performed by removing a sample of the water at designated sample ports in the
+system and performing a heterotrophic plate count. For systems in which endotoxin must be controlled (i.e.,
+WFI), a Limulus Amebocyte Lysate (LAL) test also is performed. The heterotrophic plate count requires
+laboratory manipulation (e.g., filtration/ plating), incubation, and reading, which require several days before
+results are available. Identification of bacteria found will take considerably longer. Therefore, a documentation
+system needs to be in place so that a correlation can be made between results and the system operating
+information at the time of sampling (such as the sanitization logs, flush logs, data from system operation
+records, the identification of the sampling technician, etc.)
+
+##### 11.8.2.1 General Testing Considerations
+
+An initial, more intensive sampling program will be undertaken as part of the validation effort, and is dis-
+cussed in Chapter 10 and in the Commissioning and Qualification Guide. This section focuses on ongoing
+microbial sampling and monitoring after the system has been placed in production.
+All use points in the distribution loop should be represented in a monitoring regimen. Testing of the water
+being supplied to the loop, prior to dilution in the distribution tank, provides important information on the
+efficacy of the purification system. For WFI or other water with endotoxin limitations, LAL testing is typically
+performed concurrently with the heterotrophic plate count. The water system is typically tested daily with
+individual sample ports being rotated through to include each point over a specified period. The specified
+period between samples for any given use point must be based on historical data. Sampling each point every
+week has generally been found acceptable by the FDA. With smaller systems, this may result in only one
+sample from the system on any day. Although it would be more costly, sampling multiple points each day can
+provide useful information about the system. For example, if one sample is found to be unacceptable, and
+there were no other samples taken on that day, it is difficult to know if the problem is from the use point, or
+throughout the system. However, if many samples were taken and only one use point had a problem, the
+quality of water from the remaining use points can be defended. The sampling performed should simulate the
+production use of that water. For example, water used through a hose should be sampled through the same
+hose. The flush performed prior to sampling (if any) should reflect the flush used prior to production use.
+Procedures for sampling and testing must adhere to aseptic technique to ensure that contamination is not
+introduced.
+The quantity of water used for analysis is a minimum of 1 ml for purified and non-compendial, and 100 ml for
+WFI, according to the USP. Larger quantities such as 100 ml for purified and 250 ml for WFI are recom-
+mended.
+
+##### 11.8.2.2 Testing Documentation
+
+Sampling procedures should be delineated in an approved protocol (SOP). Testing methods also should be
+specified in an approved SOP. This would include the equipment and materials to be used, the procedures,
+growth promotion testing of the media, and negative controls. Procedures for performing the heterotrophic
+plate count are delineated in the latest edition of Standard Methods for the Examination of Water and Waste-
+water. Note that organisms in pharmaceutical water will have adapted to a low nutrient environment, and a
+standard growth media may shock the organisms and result in erroneously low counts. Therefore, a low
+nutrient media may be more appropriate for the testing. All testing should follow a validated procedure. All
+methods, compendial or otherwise, should be shown to be effective on the particular system being tested.
+For new or modified systems, sampling and testing should be completed as part of a Performance Qualifica-
+tion (PQ). The PQ should provide an overview of the system or the modifications and delineate the monitoring
+program (the sample ports, frequency of testing, type of testing performed, relevant SOPs, etc.). When com-
+pleted, the PQ should include testing results, investigations of Out Of Specification (OOS) results, special
+study results (such as a sanitization frequency study), a section for any deviations, and a summary report.
+The sampling regimen should include samples taken immediately prior to sanitization in order to exhibit worst
+case conditions.
+
+=== PAGE 217 ===
+APPENDIX
+Following qualification, testing must be performed routinely in order to ensure that microbiological control is
+maintained. The documentation system must provide ready access to test results.
+
+##### 11.8.2.3 Analysis of Results
+
+The primary purpose of reviewing test results is to reveal OOS findings to ensure product is not jeopardized
+and so that correction can be made. The identification of the organisms found is an important part of the
+investigation since this will provide strong evidence of the source of contamination. For example, Staphylo-
+coccus is typical of sample handling problems; Bacillus is typical of environmental contamination of the
+sample port, and Gram negative rods are typical of water borne contamination. Follow-up sampling per-
+formed in reaction to the OOS result would be included in the investigation.
+11.8.3 Sterilization/Sanitization Designs
+Various designs may be incorporated to facilitate heat sanitization of process water distribution systems.
+In this section, two designs for sanitization are considered:
+•
+Hot Pharmaceutical Water (80°C) System
+•
+Ambient Pharmaceutical Water System
+a)
+See Section 11.4.4.4 on Pretreatment Processes - Control of Microbiological Growth earlier in this chap-
+ter.
+The boundaries for this design will be defined for each of the two designs set forth.
+The systems described are based on designs that have been found acceptable in a number of installations.
+It is recognized that a wide variety of system designs may meet the same objectives and also prove accept-
+able from a regulatory and operations standpoint.
+
+#### 11.8.4 Hot System Distribution Loop
+
+In this system, the boundaries begin with the storage vessel and include pumps, distribution piping (all drops)
+and the return loop that terminates at the storage vessel.
+The storage vessel should be a fully jacketed vessel with the capability of heating and cooling. Heating of the
+storage vessel is usually achieved with steam. Cooling, when required, is achieved with chilled or cooling
+tower water.
+It has been found that a hot distillation system has a tendency to build heat when the effluent from the still is
+discharging into the tank. The effluent may be as high as 96°C. If the water is too hot, the distribution pump
+may cavitate or boiling will occur in the pump. In addition, the system may be more susceptible to “Rouge”
+when water is kept at temperatures exceeding 87°C.
+A hot system is generally considered to be self sanitizing as long as the temperature of the circulating water
+is maintained between 75°C and 85°C.
+When the system is down for maintenance or repairs or modification, it will be necessary to sanitize the
+system to bring down the microbiological load and to reduce the pyrogen burden.
+The method used with hot systems is to flush the system, all sampling points, and all points of use with hot
+(80°C) water. The quality of the flush water must be at least as good as the water to be used in the system.
+Flushing with two to three volumes of the water in the distribution system should achieve sanitization. If
+sanitization is not achieved, then flushing must be continued and the source of the contaminant removed.
+
+=== PAGE 218 ===
+APPENDIX
+The heating medium may be hot liquid or steam. It should be designed to heat the ambient process water
+from 15 to 80°C within a specified period (generally two to four hours).
+If the heating and cooling heat exchangers are not directly installed in the return loop, process water should
+pass through when not in use for heating, eliminating the possibility of a dead leg.
+Most systems can be fully sanitized with 80°C circulating process water within two to three hours once 80°C
+process water temperature is achieved.
+As a safety note, all exposed piping and storage tank surfaces should be insulated to prevent accidental
+burning of personnel in the heat sanitization cycle. In addition, the points of use must be monitored during the
+entire sanitization cycle.
+
+#### 11.8.5 Cold System
+
+The boundaries are the same as a hot system. A by-pass line may be provided to recirculate process water
+through the pretreatment train to avoid stagnant flow conditions.
+Sanitization of a cold system may be accomplished using hot water using two stainless steel double tube
+sheet heat exchangers, one for cooling and one for heating.
+The heat exchanger used for cooling is typically installed after the distribution pump(s). The heat exchanger
+used for heat sanitization is usually installed on the return loop just prior to the return to the storage tank.
+One heat exchanger to heat and cool the process water is a viable alternative, but should be designed for the
+more extreme temperature range.
+The heat exchanger for cooling may be cooled with cooling tower water, chilled, or domestic cold water. The
+cool down cycle should be designed to cool 80°C process water to approximately 15°C over a specified
+period (based on the operational needs). The initial cooling should be very gradual to prevent thermal shock.
+
+#### 11.8.6 Ozone System
+
+Ozone (O3) is a naturally occurring triatomic form of oxygen. O3 is unstable at atmospheric temperatures and
+pressures, and decomposes readily into molecular oxygen (O2).
+There are no objectionable by-products or residues when water is disinfected with ozone. The presence of
+oxidizable substances will generate trace carbon dioxide and in the absence of oxidizable substances, only
+oxygen will be formed.
+Very low concentrations of ozone of the order of 0.1 to 0.2 mg/l have been shown to control microbiological
+growth to below 1 CFU/100ml.
+Due to the limited half life, ozone must be produced on-site where it is required.
+
+##### 11.8.6.1 Materials of Construction
+
+Few organic materials are unaffected by ozone contact. Gaskets, piping, vessels, filters, and ion exchange
+resins may be subject to attack, and therefore all materials that come in contact should be specifically se-
+lected.
+PVC will be attacked by ozone, but PVDF and PTFE are not so vulnerable.
+Stainless steels that may be pitted by Chlorine resist ozone. Thus, ozone will not damage stainless steel stills
+and will be removed in the distillation process.
+
+=== PAGE 219 ===
+APPENDIX
+
+##### 11.8.6.2 Comparisons with Chlorine
+
+Chlorine is relatively stable in water and is not described by any half-life characteristic.
+Ozone has a relatively short half-life depending on temperature and pH. At neutral pH and 20°C, this can be
+two hours in high purity water. Multiple feed points can reinforce the concentration of ozone in a very large
+distribution system.
+Removal of chlorine and many of its bi-products are comparatively difficult to remove. Absorption by activated
+carbon or reaction with bisulfite are the common methods used, each having its own specific problems.
+Chlorine may convert many organic substances into derivatives that have been identified with carcinogenic-
+ity.
+Ozone reverts to oxygen and/or carbon dioxide.
+Chlorine requires diffusion through the cell walls of the organism in order to degrade enzymes. Tests indicate
+that chlorine required more than 400 hours at a concentration of 0.1 mg/l to destroy 99% of 60,000 CFU of E.
+Coli.
+Ozone, when added to water using an efficient mixer, kills bacteria in seconds. At an equivalent CFU level to
+the chlorine test, ozone will destroy more than 99% in less than one minute.
+
+##### 11.8.6.3 Ozone Generation
+
+There are two commercial methods to manufacture ozone: corona discharge and electrolytic generation.
+The corona discharge method uses an air/oxygen feed. It produces acceptable quality ozone for pharmaceu-
+tical purposes if the feed stream to the generator is sufficient low in nitrogen and moisture to avoid production
+of harmful level of nitric acid. Excessive levels of nitric acid in the ozone effluent can drop the pH and conduc-
+tivity of the water below acceptable levels and promote corrosion of stainless steel surfaces. Pharmaceutical
+design typically employs a dryer and a molecular sieve to reduce nitrogen and moisture from the instrument
+air.
+The other commercial method of ozone production is electrolytic generation. Low conductivity water is used
+as the feed stream to a catalytic generation cell. Electrolytic ozone generators can be operated directly
+immersed in a side stream of the water circulating system or can be used to produce a gas first and then be
+transferred to the water using a conventional contractor device.
+Electrolytic generators typically produce lower contamination levels than corona discharge units, but are
+generally more capital cost intensive. Both can be operated successfully when designed and maintained
+properly.
+
+##### 11.8.6.4 Ozone System Installation
+
+The optimum location for ozone injection is in the loop return, just before it re-enters the storage tank.
+To ensure ozone does not contaminate the pharmaceutical product, it may be removed shortly before the first
+“point of use.”
+Ozone destruction can be accomplished by various technologies including:
+•
+Catalytic
+•
+Thermal
+•
+UV
+
+=== PAGE 220 ===
+APPENDIX
+•
+Chemical
+•
+Time (half life in solution is 20 to 100 min.)
+UV will destroy ozone in solution and catalytic destruct units will destroy the “off gases.” Ozone monitoring is
+required as follows:
+•
+in solution prior to the ozone destruction
+•
+following the ozone destruction
+•
+return line to the storage tank
+•
+return ozone levels from loop piping during sanitation sequences
+•
+ambient air surrounding the system
+Standard germicidal UV units with a high UVC (UV within the wavelengths of 220 to 290 nm) output using
+low-pressure mercury lamps are ideal for reducing ozone in pure water.
+The combination of ozone and UV is claimed to produce an oxidizing process more powerful than ozone
+alone.
+
+#### 11.8.7 UV Light
+
+See Section 11.4.4.4C on Pretreatment Processes - Control of Microbiological Growth - UV Light earlier in
+this chapter.
+
+##### 11.8.7.1 Ultraviolet Lights
+
+Flowing water may be exposed, at a controlled rate, to ultraviolet light waves. With proper maintenance, UV
+systems are simple and reliable, generating a high reduction in bacteria (99% plus) when operating at 254
+nm wavelengths. However, the feedwater to a UV needs to be free of suspended solids which can “shadow”
+bacteria, preventing adequate UV contact. Therefore, it is only effective if there is direct light contact with
+microbes.
+Two different types of mercury vapor arc tubes generate UV light: low pressure and medium pressure. The
+pressure designation refers to the amount of gas pressure inside the particular arc tube. Low pressure is near
+a vacuum and generates a narrow wavelength band in the 254 nm range. Medium pressure arc tubes, near
+1 atmosphere or slightly positive displacement, generate wavelengths ranging from 180 to 365 nm. The peak
+germicidal efficiency for UV light is between 254 and 265 nm.
+
+##### 11.8.7.2 Design and Installation of UV Lights
+
+Water from a storage tank can be recirculated through UV light systems so that the entire system volume of
+the tank is treated. This results in multiple passes of the entire tank volume through the UV. This increases the
+overall cumulative dose and prevents reinfection in the storage tank. The minimum recycle rate to maintain
+disinfection is between 4-6 times per hour.
+When specifying or designing a UV unit, temperature conditions of the water must be taken into account.
+Conventional UV units have a maximum temperature limitation of 120°F (48.9°C) and require special cooling
+arrangements to withstand temperatures up to 150°F(65.6°C). Medium pressure units can withstand much
+higher temperatures up to 212°F (100°C) if necessary.
+
+=== PAGE 221 ===
+APPENDIX
+Pressure limitations also need to be recognized. Most UV units have a operating pressure limit of 100-120
+psi. High pressures require special arrangements, such heavier flanges or an ASME code stamp.
+Most UV units are installed in a horizontal position to eliminate air pockets; however, consulting the manufac-
+turer for their recommendations is appropriate.
+A log reduction target should be specified when purchasing a unit.
+All wetted parts should be similar to the storage and distribution system specifications.
+The use of UV units does not negate the need for periodic sanitization of the system.
+The specified dosage should be obtained even at the end of lamp life, as all UV lamps degrade and lose
+germicidal efficiency over time. The units should be sized so that a safety margin is built in so that even at the
+end of the lamp life (EOL), the minimum dose requirement is always exceeded.
+
+##### 11.8.7.3 UV Light Dosage and Sizing Requirements
+
+Proper UV dosage measured in milli-watt seconds per square centimeter at the chamber wall determines the
+performance of a UV unit in storage and distribution systems. Each microorganism has been assigned a kill
+dose, known as D10 that produces a 1 log, or 90% kill rate. E. Coli, for example, has a D10 of 3 milli-watt
+seconds per square centimeter. This gives a 1 log reduction. To achieve a 3 log reduction, a dose of 6 milli-
+watt seconds is required. Most pharmaceutical water systems require at least a minimum of 30 milli-watt
+seconds per square centimeter dosage to maintain germicidal effectiveness.
+The following factors are involved in the selection of a UV unit to obtain satisfactory performance in storage
+and distribution systems:
+•
+Flow-rate - The units must be sized to handle the maximum flow possible from the system.
+•
+Water quality is critical to the success of a UV unit’s performance. Whenever possible, a water sample
+should be obtained, and the water checked for UV transmission through a UV spectrophotometer. UV
+absorbing compounds such as iron, manganese, dissolved organics, turbidity, or suspended solids all
+affect germicidal efficiency. Although in the storage and distribution systems, only the dissolved organics
+should be seen.
+•
+Identification of microorganisms and concentrations also affect sizing. If there is a high concentration or
+multiple organisms, this could dictate a larger UV unit.
+•
+Temperature of the water also affects the choice of UV units. Low pressure units have specific tempera-
+ture limitations, while medium pressure units do not. In very cold (5-10°C) or hot water systems (above
+45°C) the arc tube efficiency is greatly reduced.
+•
+Whenever possible water in storage tanks or distribution loops should be recirculated through the UV
+unit. The ideal rate would be a minimum of four times per hour for the entire volume of the tank or the
+entire volume of the loop.
+
+##### 11.8.7.4 Characteristics
+
+Conventional low-pressure units usually have multiple lamps in a chamber to achieve the proper amount of
+UV energy for germicidal energy. Medium pressure units usually employ a single lamp approach due to the
+much higher output of the individual lamp. Each lamp type has advantages depending upon the application.
+The lamps are enclosed within quartz sleeves which contact the water. All other wetted parts should be
+manufactured from an acceptable inert material, generally 316L SS. UV intensity and frequency should be
+monitored continuously and recorded.
+
+=== PAGE 222 ===
+APPENDIX
+
+### 11.9 FABRICATION/PROCEDURES FOR DISTRIBUTION SYSTEMS
+
+#### 11.9.1 Introduction
+
+Fabrication of the distribution system must be made with extreme care and precision to ensure a smooth
+internal finish that will not allow any crevices that will support or promote bacterial growth, metal corrosion, or
+particulate generation.
+The chapter provides an understanding of the requirements of fabrication, materials of construction, and
+specialized equipment required to fabricate a piping distribution system.
+Decisions concerning the material of construction, the orbital welding, the special handling, and the special
+environment required must be made and understood by the pharmaceutical manager responsible for the high
+purity water distribution piping fabrication and installation.
+Unlike the equipment selection, the piping fabrication will require selections of material with specific compo-
+sitions, welding using inert gas envelopes, and a cleanroom environment.
+
+#### 11.9.2 Materials of Construction
+
+Material selection should be consistent throughout the distribution, storage, and processing systems. The
+material should be rigid, capable of withstanding steam sterilizing temperatures (as required), cleaning solu-
+tions, passivation solutions (as required), and capable of maintaining a durable and corrosion resistant sur-
+face finish.
+The material in common use in pharmaceutical water systems is a stainless metal. Based on cost and ease
+of fabrication, this material is nickel chromium steel.
+Inert non-metallic materials also are available that can withstand steam sterilization (as required). These
+materials are used extensively in the electronics industry for ultra-pure water systems where they have
+proved themselves capable of containing and preserving the high level of purity used in the semi-conductor
+industry.
+
+#### 11.9.3 Types of Stainless Steel
+
+Type 316L is the preferred steel for a high purity water generation and distribution system. The “L” designation
+indicates a low level of carbon compared to the non “L” grade.
+Alternates to 316L grades are 317L with its higher chromium and molybdenum contents and 304L with its
+higher chromium content but lower nickel and molybdenum levels.
+
+##### 11.9.3.1 Corrosive Resistance
+
+Chromium content is the most important alloying element in stainless steel followed by nickel and molybde-
+num.
+Steels with chromium in excess of 11.5% will form a protective film of chrome oxide on the metal surface. The
+presence of nickel in amounts more than 7% enhances the corrosion resistance over the straight chromium
+grade and improves its ductility.
+The performance of stainless steels is governed by the oxidizing characteristics of the environment, similarly
+to the oxidization of ordinary steels. Strong oxidizing conditions generate a superior protective coating for the
+stainless steel and a powdery rust on ordinary steels which eventually, if left unchecked, will consume all of
+the metal.
+
+=== PAGE 223 ===
+APPENDIX
+
+#### 11.9.4 Weldability and Polishability
+
+Austenitic stainless steels such as AISI type 316L contain impurities in addition to the major elements de-
+scribed. These include:
+•
+Sulfur (S)
+•
+Aluminum (Al)
+•
+Oxygen (O)
+•
+Silicon (Si)
+•
+Manganese (Mn)
+•
+Phosphorus (P)
+•
+Titanium (Ti)
+•
+Calcium (Ca)
+The effects of some of these elements are cumulative inasmuch as the oxygen can offset some of the
+welding characteristics of low sulfur steels and the weld penetrations experienced with sulfur may be offset
+by high levels of aluminum. In addition, the ratio of the trace elements of aluminum to silicon has been shown
+to effect slag formation during welding which in turn produces inclusions.
+Manganese has been shown to combine with the sulfur and form manganese sulfide (MnS) inclusions on or
+in the surface of the metal.
+Even the major element chromium, may contribute toward oxide inclusions in the metal surface.
+
+##### 11.9.4.1 The Impact of Sulfur on Welding and Internal Finishing
+
+Small amounts of sulfur improves machinability as well as weldability; however, with the advent of modern
+techniques in the steel refining process, the mills are able to produce steels at a cost with very specific
+chemical compositions.
+Low sulfur AISI 316L steels when based on the specification limit of 0.03% have some advantages to obtain-
+ing an unpitted polish, but other impurities such as manganese, silicon, oxygen, aluminum, calcium, titanium,
+and chromium can contribute to the oxide inclusions that we are trying to minimize by reducing sulfur content.
+A mid-range sulfur content would be ideal for welding but any mismatch in the sulfur content of the mating
+parts will easily outweigh the advantages of low or lower sulfur levels.
+An ideal compromise would be a level between 0.005% and 0.02% or a modified maximum limit of 0.02%
+since the lower limit will probably not be attained. However, if not all welded parts can be obtained at similar
+levels, the exercise produces very little overall advantage.
+
+##### 11.9.4.2 Heat Number and its Impact on Weldabilty
+
+Weld parameters will remain consistent and orbital welding processors will reproduce similar welds if the
+material remains the same. Since the melting point of steel varies over a range depending upon the concen-
+tration of each element present in the steel, the amount of heat required to melt and thus attain the liquefac-
+tion of the steel will vary from concentration to concentration.
+
+=== PAGE 224 ===
+APPENDIX
+Each “melt” of steel is assigned a “Heat Number” to identify the mix or exact composition of the steel.
+316L stainless steel has a wide tolerance of “active” elements such as chromium, molybdenum, nickel, and
+carbon which vary as much as 100% and as little as 12%. These variations will change the melting point and
+the electrical current input of the welding machine considerably.
+While the “Heat Number” can be specified for all tubing purchased for a specific distribution system, the heat
+number for connected fittings and valves are more difficult to control.
+Where possible, all fittings, valves, tubing, and weldable pieces of the same nominal size (diameter) should
+be purchased and manufactured from AISI 316L steel with the same Heat Number in order to standardize the
+weld quality for each tubing size.
+
+#### 11.9.5 Corrosion Hazards of Stainless Steels
+
+While being protected by the chrome oxide film, which will guard against most corrosive attacks, there re-
+mains five corrosive hazards associated with the successful use of stainless steels.
+a)
+Intergranular Corrosion
+Austenitic 300 series stainless steels which do not contain any of the stabilizing elements, titanium, or
+columbium are susceptible to intergranular corrosion which can cause early failure or reduced life.
+b)
+Galvanic Corrosion
+Occurs when an assembly of dissimilar metals is immersed an any solution which acts as an electrolyte.
+Therefore, any transition of drain or condensate piping to a dissimilar metal should use a dielectric union
+to prevent electrolysis. It is recommended to maintain drains and condensate from pharmaceutical water
+and steam in stainless steel due to corrosivity of fluid.
+c)
+Contact Corrosion
+Occurs when small pieces of carbon steel, scale, copper or other foreign material is lodged on the
+surface of stainless steel.
+d)
+Pitting or Pinhole Corrosion
+Solutions containing chlorides may attack stainless steel in a pitting action. This is usually due to high
+concentrations of the chloride ion due to evaporation.
+e)
+Stress Corrosion Cracking
+Chloride solutions are the worst offenders in promoting stress cracking. Cracking is most likely to occur
+in hot rather than cold solutions. High and low stresses in the same member produce a condition likely to
+result in stress corrosion if chlorides are present.
+Corrective action is to keep the internal strain in stainless steels as low as possible by fully annealing or
+utilizing stress relieved versions of stainless steels at 1200°F.
+Select tubing with good concentricity and close wall thickness tolerance to avoid high and uneven stresses
+when tubes are rolled into tube bundle headers etc.
+Avoid joining dissimilar metals and avoid cyclic bending.
+
+=== PAGE 225 ===
+APPENDIX
+
+#### 11.9.6 Corrosion Protection of Stainless Steel
+
+Surface protection of chromium nickel stainless steel is inherent when chromium levels are in excess of
+11.5%.
+A passive or inert surface is established naturally with these steels due to exposure to air, aerated water, and
+other oxidizing atmospheres.
+Airborne impurities, heating, and other direct contact materials can damage this protective film causing the
+metal to be compromised in its ability to ward off the corrosive process.
+
+##### 11.9.6.1 Passivation of Stainless Steels to Restore Protective Film
+
+Passivation is the process that establishes a surface or film on nickel-chrome steels and maximizes the
+corrosion resistance.
+The passivation process cleans the exposed surfaces of the contaminates, soils, and surface impurities that
+cause film damage. The process forms a new strong protective film in areas that have become “active” or
+sensitized due to welding.
+
+##### 11.9.6.2 Rouging or Ferric Oxide Discoloration of SS Systems
+
+Rouging is seen in many water systems, but is more prominent in hot, distilled, and clean steam systems.
+Rouge can be in the form of dust or a light film that can be wiped off. Rouge also can be in the form of a
+bonded multi-layer that requires scraping with a sharp tool to remove.
+Rouge is found in many forms:
+•
+Orange - found in high purity/high temperature systems
+•
+Light Red - found in high purity/high temperature systems
+•
+Red - found in high purity/high temperature systems
+•
+Reddish Brown - found in high purity/high temperature systems
+•
+Purple - found in clean steam and high temperature water systems
+•
+Blue - found in clean steam systems
+•
+Gray - found in clean steam systems
+•
+Black - found in clean steam systems
+See appendix section on passivation for more details.
+
+#### 11.9.7 Castings and Forgings for Vessel Components
+
+Most castings and forgings are used for components attached to vessels, such as agitator impeller hubs and
+instrument housings. Castings typically contain higher levels of ferrite that can cause potential problems with
+components in contact with high purity water (rouging). In addition, castings are usually more porous or
+grainier, and will not typically take a polish higher than a 4 at best. Forgings are less susceptible to rouging
+and can be polished up to a 8 mirror finish.
+
+=== PAGE 226 ===
+APPENDIX
+
+##### 11.9.7.1 General: Sanitary Tubing and Piping
+
+•
+The piping or tubing and valve ends to be joined by welding must be within the set tolerances as far as
+inside diameter and out of roundness is concerned.
+•
+All the welds should be done with automatic welding machines (orbital welding) with insert gas (Ar)
+blanket where possible.
+•
+If unavoidable, the last weld of an assembly may be done manually by a qualified, certified welder.
+•
+All welds should be documented and inspected.
+•
+If orbital welding is done, a video tape (borescope) can be prepared for random welds; however, this is
+optional. Also, an isometric or piping drawing should be marked identifying each weld by a unique num-
+ber, date, and welder ID number.
+•
+The piping (tubing) installation should be done according to approved piping drawings (orthographic and/
+or isometrics).
+•
+The piping support method and the support spacing should be in accordance with the piping specifica-
+tion and applicable drawings. It is very important that the installing contractor follows the design docu-
+ments and does not use shortcuts as the piping support spacing is based on calculations to assure the
+permitted deflection (sagging) of the pipe between the adjacent supports.
+•
+As the piping system larger sections are installed, the piping installation contractor shall make up the
+latest issue of the piping drawings verifying that the system is installed in accordance with the applicable
+drawings, ensuring all valves, fittings, etc., are installed. If there are deviations from the drawing, the
+drawing shall be marked up for the preparation of an “as-built” final revision. The “as-built” revision of the
+drawing should be approved by the user. The user should have access to the “as-built” drawings. The
+qualification protocol completion report should make reference to the “as-built” drawings.
+•
+The installed piping system should be pressure tested according to the requirements of the piping fabri-
+cation specification. During the performance of the pressure test, the pipe slope should be checked and
+documented. During the pressure testing, the piping is not insulated, but is full with water - a condition
+closest to the operating condition. If there are deviations from the required slopes due to faulty installation
+due to a larger than specified pipe support span, the installation needs to be corrected. The main purpose
+of the pipe slope is the assurance of self drainage. The results of the pressure test and slope measure-
+ments should be documented.
+After the piping (tubing) system installation, pressure testing, and pipe slope parameters are satisfied and
+accepted, the system is ready for passivation.
+
+#### 11.9.8 Surface Finish of Stainless Steels
+
+##### 11.9.8.1 Cold Rolled Stainless Steel Finishes
+
+300 series stainless steel “sheet” may be produced with a very fine grain, slightly milky appearance through
+to a bright highly reflective finish produced on mirror polished rolls.
+These terms are used by the steel mills without a good method of quantifying the surface quality, roughness,
+and texture.
+Mills also relate to the ASTM or AIAI finishes which range from 1 to 8, where 8 is a “mirror finish.” This method
+also is subjective and relates to the method used to obtain the finish.
+
+=== PAGE 227 ===
+APPENDIX
+
+##### 11.9.8.2 Stainless Steel Polishes and Improved Finishes
+
+A third identification method commonly used to define surface finishes is the “Grit Finish” which is the number
+of scratch lines per inch of surface produced by an abrasive wheel or belt.
+While this system qualifies the finish and allows acceptance based on measurable criteria, the criteria is not
+a true measure of the surface quality as it does not define the depth of the “scratch lines.”
+Grit finishes come in grades related to the standard abrasive tools or surfaces:
+20 grit = 100+ RMS and 90+ RA
+180 - same as a 2B finish - = 80 RMS and 70 RA approximately
+240 - between a 2B and a 3A finish - = 15 to 63 RMS and 14 to 57 RA
+320 - same as an 8 finish - is 10 to 32 RMS and 9 to 29 RA
+500 - same as a 9 finish - is 4 to 16 RMS and 4 to 14 RA
+
+##### 11.9.8.3 Electro-Polishing of Stainless Steel
+
+Mechanical finishing has certain inherent deficiencies, one of which is the tendency to enlarge the exposed
+surface area.
+Electro-polishing is able to improve the mechanical finish by rounding off the sharp peaks of the “scratch
+lines.”
+The advantages of electro-polishing are:
+•
+reduces the surface areas
+•
+provides a sanitary acceptable surface finish
+•
+cleans the surface
+•
+passivates the surface of stainless steel with a chromium layer
+•
+removes impurities trapped below folded layers of mechanically formed ridges
+•
+reveals defects that have been hidden by mechanical polishing through smearing effect
+Electro-polishing requires a mechanical polish preparation developed with a uniform progressive grit polish-
+ing application.
+
+#### 11.9.9 Stainless Steel Distribution Piping
+
+Stainless steel pipe is available in heavy gage “schedule” piping, thin wall solid drawn tubing, and thin wall
+seamed tubing.
+
+##### 11.9.9.1 Solid Drawn Thin Wall Tubing
+
+The selected materials are available in solid drawn tube suitable for the type of service expected from a high
+purity water distribution system.
+
+=== PAGE 228 ===
+APPENDIX
+This is an acceptable material for a high purity water loop and should conform to ASTM A632.
+Tubing should be 16 gauge (.065 in./0.165 cm) for tubing diameters of between 1 and 3 inches (2.54 and 7.62
+cm) inclusive and 14 gauge for 4 in. (10.16 cm) diameter.
+
+##### 11.9.9.2 Welded Seam Thin Wall Tubing
+
+Acceptable thin wall tubing is available at a reduced cost with a welded seam produced in an oxygen free
+environment. (TIG)
+The tubing is available with a uniform smooth surface in accordance with ASTM A269 and may be polished
+mechanically and electrically to a suitable surface finish.
+0.065 in. (0.165 cm) thick sheet metal is used for the manufacture of seamed tubing between 2 and 3 inches
+(5.08 and 7.62 cm) diameter with .083 in. thick for 4 in. (10.16 cm) diameter and progressively larger for 5 in.
+(12.7 cm) and above to suit the application and location. The metal is cut and cold rolled to form a round tube.
+The tube is clamped so that the two edges make contact. The inside and outside of the tube is blanketed with
+Argon gas to expel all oxygen and the seam is welded without filler, producing a consistent smooth and
+oxidation free surface inside and out.
+
+##### 11.9.9.3 Material and Installation Certifications
+
+•
+mill test certificate of piping/tubing material
+•
+weld test, spot x-ray of carbon steel piping welds, borescope of stainless steel piping/tubing welds
+•
+pressure test, slope measurement certificate
+•
+weld identification on piping drawings
+11.9.10 Elbows/Bends In Tubing
+While butt joints can be accomplished leaving a smooth surface free of pits, crevices and oxidation, welds are
+expensive and should be minimized.
+Current practice is to use tight welded elbows for each directional change in the distribution piping. Consider-
+ing the extent of high purity water distribution piping involving points of use drops from 25 in a small system
+to more than 100 in a large one, the total number of elbows is considerable. These can range from 130 to 500
+and from 60 to 1000 welds to install them.
+The purchase of longer lengths than the standard 20 ft (6 m) lengths (say 40 ft (12 m) lengths) and the
+utilization of long sweeping bends, instead of the traditional tight welded elbows can reduce the total number
+of welds by up to 60% and the total pipe used by 10%.
+High purity water systems, in order to maintain flow at all times without stagnation, water must be pumped
+continuously with the associated energy requirements.
+Any reduction in these requirements due to frictional improvements of large sweeping bends compared to
+tight traditional bends are added to the advantages of the change from elbows to bends.
+Sweeping bends may be accommodated in many areas and with careful design, the advantageous could be
+exploited.
+Large sweeping bends are preferred in order to reduce the potential of wrinkling and/or damage to the
+internal pipe finish.
+
+=== PAGE 229 ===
+APPENDIX
+
+#### 11.9.11 Types of Non-Metallic Materials
+
+Few compatible non-metallic piping materials are available that will withstand the rigors of a pharmaceutical
+high purity water system, such as:
+•
+80 to 90°C operation or periodic sanitization
+•
+121°C steam sterilizing temperatures
+•
+ozone and or chlorine contact
+One such material that will support the above requirements and limit extractable to a minimum level compat-
+ible with stainless steel is polyvinylidene fluoride (PVDF).
+This material is available in a compatible range of pipe diameters, surface finishes, and automated orbital
+welding capability.
+
+##### 11.9.11.1 Corrosive Resistance of PVDF
+
+PVDF is inert and will not exhibit any surface corrosion when in contact with 90°C high purity water or
+commonly used oxidizers.
+
+##### 11.9.11.2 Weldability and Polishability of PVDF
+
+The surface finish of PVDF is equivalent to electro-polished stainless steel and the fusion welding equipment
+and capabilities are similar to stainless steel orbital welders.
+
+##### 11.9.11.3 PVDF Distribution Piping and Fittings
+
+Weldable fittings, elbows, tees, reducers, adapters, diaphragm valves, zero static valves, flow meters, regu-
+lators, etc. are available for PVDF pipe.
+
+##### 11.9.11.4 Pressure Rating of PVDF Piping Systems
+
+Rated pressures for PVDF piping ranges from 230 psi at 68°C to 50 psi at 149°C.
+Due to softening at elevated temperatures, continuous support is recommended for systems that are oper-
+ated at 65°C or above.
+
+### 11.10 DESIGN OF A WFI/PURIFIED WATER DISTRIBUTION SYSTEM
+
+The layout and general design of a high purity water system (WFI or purified water) should be consistent and
+follow good manufacturing guidelines in respect to installation, support, natural drainage, flow rates, dead or
+stagnation areas (dead legs), and minimization of areas that may promote micro-organism growth.
+
+#### 11.10.1 Fittings and Equipment
+
+All equipment that, when installed, comes in direct contact with the high purity water should use a suitable
+stainless steel or non-metallic material for all contact areas, except for valve diaphragms and tri-clamp gas-
+kets.
+This includes all valves and monitoring sensors.
+
+=== PAGE 230 ===
+APPENDIX
+Valve design should be sanitary diaphragm type, installed at approximately 60°C to the vertical to optimize
+drainability. Hash marks or drain dots are provided on many designs to allow precise orientation of the valves
+in horizontal installations.
+PTFE Teflon faced diaphragms are preferred for hot water applications, covering a temperature range from -
+30 to 350°F (0 to 177°C).
+Connecting flanges for all valves and fittings should be tri-clamp design.
+
+#### 11.10.2 Natural Drainage
+
+Well designed distribution loops should be installed overhead and point of use valves should be located at a
+convenient location within the process or user area, below the distribution loop.
+Slopes should be verified externally after hanging and before insulation is installed.
+Hangers should use steel clamps/fittings with Viton or similar inserts designed for use with the particular
+tubing, installed for SS at least on 10 ft (3 m) centers. Support for PVDF piping should be appropriate for the
+operating temperatures. Continuous support of plastic pipe should be considered using angle iron or equiva-
+lent to prevent slope changes due to expansion and contraction and point stresses from hangers.
+Piping distribution from an unavoidable low point in the system, such as the storage tank discharge elbow,
+should be designed with a clear low point and a sanitary drain valve installed with a maximum of 6 diameter
+dead leg (no less than 6 diameters from the centerline of the main line to the valve center line based on the
+main line diameter).
+Slope of distribution system process pipe or tubing should be a minimum of 1/16 in./ft (0.52 cm/m).
+Location of all drain valves should be totally and easily accessible.
+
+### 11.11 FABRICATION OF A WFI/PURIFIED WATER DISTRIBUTION SYSTEM
+
+High purity water distribution systems using the material and finishes specified above must be joined using
+acceptable welding or other sanitary techniques.
+
+#### 11.11.1 Assurance of Quality Distribution Piping
+
+The distribution piping and storage systems should be installed in accordance with cGMPs and should be
+fabricated, manufactured, procured, and installed in strict accordance with explicit operating procedures.
+
+#### 11.11.2 Operating Procedures Should Include the Following:
+
+Purchase of components for the distribution and storage system from a list of selected/preferred vendors.
+Procurement of specific components based on preferred part numbers, listed for each vendor where appli-
+cable. Procurement of other components, such as valves, pumps, filters, instruments, and tanks etc. using
+approved specifications.
+Inspection of all components of the system on receipt for compliance and/or damage. Verification of the bill of
+lading using a detailed list of purchased parts.
+The qualification of welding procedures in accordance with a detailed list of set-up parameters for:
+
+=== PAGE 231 ===
+APPENDIX
+a)
+Receiving, fabrication, cutting, end facing, and welding to be performed in a clean area devoid of any
+equipment previously used on “carbon” steels.
+b)
+Tubing specification, heat lot, diameter to be used for the specific application
+•
+Check tubing for crushing and confirm the nominal diameter.
+•
+Examine interior and exterior of tubing for physical damage, scratches (interior) dirt or grease.
+•
+Clean tubing of grease and dirt using an approved cleaning solvent isopropyl alcohol (IPA) and lint
+free cloth. Repeat cleaning until lint free cloth is visually free of grease or dirt.
+c)
+Length of tubing and facing specifications.
+Cut tubing to length and finish with a square deburred butt end or as recommended by the fusion welding
+equipment supplier.
+
+##### 11.11.2.1 Cleaning
+
+•
+Place a lint free cloth in tubing prior to facing and/or deburring.
+•
+Use only Isopropyl alcohol as a cleaner solvent for SS and other appropriate solvent for PVDF. Use
+sparingly and ensure that all traces have evaporated prior to bagging.
+•
+Use only lint free cloths such as “Texwipe.”
+•
+Clean both inside and outside of tube ends and do not touch the end area with bare hands or soiled
+material.
+
+##### 11.11.2.2 Protection
+
+a)
+Bag the prepared tubing or the ends of the tubing with clear plastic bags and tape the bag to the tubing if
+the tubing is not to be welded within two hours or if the tube is to be welded outside the clean fabrication
+area.
+b)
+Weld fittings, elbows, tees, etc. should be examined similar to the tubing and cleaned of all dirt or grease
+prior to welding. All weld fittings should be received, sealed in a plastic or other lint free, non-metallic
+sealed bag.
+c)
+The fitting should remain in the bag until just prior to welding or for inspection following receipt.
+Valves and instruments, etc. should be procured with tri-clamp or suitable sanitary type fittings and mating
+fittings should be welded onto the tubing in accordance with the system design. Receipt should be in a totally
+enclosed sealed lint free bag, similar to the weld fittings.
+Welding of tubing, weld fittings, tri-clamp, or suitable sanitary type fittings should be performed inside the
+fabrication cleanroom, using TIG orbital welding for SS throughout and PVDF fusion machine for PVDF.
+Purging of each assembly with Argon Purge gas should be completed for all SS prior to welding. The gas
+should be 99.999% pure and contain less than 1ppm of moisture or 2ppm of oxygen.
+The complete removal of all air should be accomplished prior to commencing welding.
+
+=== PAGE 232 ===
+APPENDIX
+Welder qualifications should be performed for all welders and re-qualification at the commencement of each
+work-day and/or the change to a different diameter.
+
+#### 11.11.3 Clean Preparation Area
+
+A cleanroom/trailer should be used to ensure that welding, bending, and fabrication of high purity water piping
+are not contaminated with metal or non-metallic particulates.
+The area should be filtered to control particulates with limited controlled access. The following procedures
+should be followed:
+•
+All cutting and welding equipment should be cleaned of any impurities or particulates.
+•
+The room should be maintained clean at all times and access should be across sticky floor mats.
+•
+All piping and fittings should be cleaned prior to and following welding.
+•
+Assemblies should be bagged following welding and the bags removed just prior to making field welds.
+•
+Welding and fitting technicians should use overshoes and cleanroom gloves. The gloves are worn to
+prevent finger print oils from getting onto the pipe.
+The above procedures are currently typical for a high purity piping system for the semi-conductor industry
+and is considered advisable for pharmaceutical installations with similar requirements.
+Inspection of completed welds is sometimes not possible or practical. Remote borescope inspection is limit-
+ing and often not precise. Common practice and the practice recommended is to provide a validated process
+for all welds, a precise instrument to make the welds, an inert environment around the weld and a clean
+contact surface. These goals may not be accomplished if the environment for storage and the welding pro-
+cess is not controlled. Skin oils and metal particulates will contaminate the surfaces of the mating tubing. The
+mating surfaces must be cleaned and maintained clean through the welding process to ensure a contamina-
+tion free weld and therefore a validated weld.
+The use of a clean area and clean area procedures will protect the welds and reduce the defect incidents
+associated with contaminates in the welding areas. (This approach has been shown to be cost effective by
+the cost sensitive semi-conductor industry.)
+Spot checks of the outside and inside surfaces on a percentage or time basis will provide assurance of the
+system efficiency.
+
+#### 11.11.4 Joints Using Fusion Butt Welding
+
+Orbital welding is the recommended industry standard for high purity water systems in biotech, pharmaceu-
+tical and semi-conductor industries. This is due to the smooth inner weld bead that is characteristic of this
+joining process.
+
+##### 11.11.4.1 Orbital Welding
+
+Orbital welding is a welding method used for joining stainless steel piping and tubing with electric arc in a
+welding machine not using any filler (welding rod) under inert atmosphere argon (Ar). Electric power charac-
+teristics are displayed on the control panel instruments and, if required, a printout of the welding parameters
+can be obtained.
+
+=== PAGE 233 ===
+APPENDIX
+
+##### 11.11.4.2 Borescoping
+
+A borescope is a fiber optic instrument with a monitor (TV screen and optional video tape recorder) used for
+inspecting the weld inside the pipe or tubing. The fiber-glass cable is a maximum 20 ft. long with a light and
+lens at the end. Borescoping is done for verification of the weld quality.
+With the control of the welding process and the processing area, borescope inspection of the inside of the
+weld is only considered necessary as a means of control and is recommended as part of the qualifying
+process for the weld size and daily restart checks. (See details later in this Section.)
+Video recording each weld is considered un-necessary and difficult to justify.
+
+#### 11.11.5 High Tech. Orbital Tube and Pipe Welding for Stainless Steel
+
+Semi-automatic, programmable, orbital, inert gas purged welding equipment for both tube and pipe is avail-
+able from many manufacturers. The basic principals and techniques are the same for all commercial ma-
+chines.
+The system is an automatic “Heliarc” or “TIG”(Tungsten Inert Gas) process where Inert Argon gas from a
+cryogenic or low temperature source is used to protect the molten steel from oxidation during the metal
+fusion.
+Liquid argon in Dewers is preferred due to its high purity at 99.999%. A gas purifier such as the Nanochem
+should be used during purging to bring the contaminants down to the ppb levels which is preferred.
+The above equipment will weld stainless steels, nickel based alloys, titanium, and aluminum.
+
+##### 11.11.5.1 Accessories
+
+Welding accessories are available to assist in set-up, alignment of pipe butts, purging, fitting alignment, pre-
+tacking fixtures, and finishing of the pipe ends in preparation for welding.
+
+#### 11.11.6 Weld Criteria
+
+•
+Weld quality must meet the strictest standards.
+•
+All welds must be fully penetrated around the entire weld perimeter with no crevices or entrapment sites.
+These areas are particularly vulnerable to crevice corrosion.
+•
+All welds should be smooth, uniform, complete and flat, not concave, on the outside.
+•
+The weld should have a uniform and complete weld bead width on the inside with little or no convexity.
+•
+The inner weld bead should contain no concavity.
+•
+There should be no visible signs of oxidation/discoloration of the inner weld.
+•
+The joints should be square facing and properly aligned. Tubing surfaces should not be offset in any
+plane or direction by more than +/-0.003 in.
+•
+The weld width should be nominal 1/8 in. wide.
+
+=== PAGE 234 ===
+APPENDIX
+
+##### 11.11.6.1 Welder Qualification
+
+There are many types of metals and even more methods of good joining of metal parts by welding.
+Each welder performing welding on certain metals must be qualified for this type of metal and welding. The
+American Society of Mechanical Engineers (ASME) and the American Welding Society (AWS) have welding
+procedures for welder qualifications. Each qualified welder should be formally qualified with a certificate
+qualifying him or her for a certain type of weld.
+As a general rule, welders and welding procedures are qualified to ASME B 31.3 (chemical plant and petro-
+leum refinery piping), that incorporates ASME Section IX by reference.
+
+##### 11.11.6.2 Common Test Methods for Installed Piping
+
+Test methods on installed piping are: pressure testing, Verification of slope and the last step of passivation
+requiring the testing of the final rinse water.
+
+#### 11.11.7 Weld Defects Examples
+
+##### 11.11.7.1 Joint Misalignment
+
+Poor alignment of joint caused by equipment or procedure failure.
+Follow GMP welding procedures/use tube alignment gauge.
+
+##### 11.11.7.2 Lack of Penetration
+
+Weld bead does not completely penetrate the ID of tube caused by poor setting of weld program parameters,
+material thickness and/or composition did not allow for complete penetration or improper welding amperage
+caused by power fluctuations.
+Develop proper welding parameters/adjust program to compensate for thickness or material/adjust for am-
+perage fluctuation.
+
+##### 11.11.7.3 Excessive Penetration
+
+Weld bead over penetrates causing excessive concavity or spikes caused by incorrect weld program (too
+hot), excessive welding amperage caused by power fluctuations or material thickness and/or composition
+which, caused excessive penetration.
+Develop proper welding parameters/adjust program/use dedicated circuit.
+
+##### 11.11.7.4 Lack of I.D. Purge
+
+Discoloration/oxidization in the heat effected zone caused by a lack of ID purge or the use of an impure purge
+gas.
+Sugaring of the weld bead caused by a lack of ID purge.
+Monitor the purge-flow at the weld site and ensure the hose is not pinched.
+
+##### 11.11.7.5 Interrupted Purge
+
+A short segment of discoloration/oxidation and excessive penetration caused by a momentary purge gas
+pressure drop commonly caused by a pinched gas line.
+
+=== PAGE 235 ===
+APPENDIX
+Monitor purge-flow and ensure the gas hose is not pinched.
+
+##### 11.11.7.6 Purge Gas Purity Problems
+
+Coloration/oxidation along the weld area caused by impurities in the weld purge gas or in or on the metal
+surface.
+Eliminate purge and surface impurities and check for excessive concentrations of oxygen and moisture.
+
+##### 11.11.7.7 Heat Tint/Haze
+
+Light coloration/haze along weld area caused by minor impurities in weld purge gas or metal surface.
+Eliminate impurities in weld zone.
+11.11.7.8 Oxidation/Discoloration
+Discoloration ranging from blue/brown haze to dark blue with black edges caused by oxygen contaminated
+purge gas, incomplete sealing, or insufficient pre-purge.
+Ensure the complete sealing of the purged line and monitor the purge flow and purity.
+
+##### 11.11.7.9 Insufficient Tie-In
+
+Weld on OD is good, but the ID is incomplete and does not overlap weld start caused by incorrect speed or
+time in the weld program. (Uncalibrated weld head.)
+Use high quality welding equipment and check for appropriate procedures.
+
+##### 11.11.7.10 Electrical Current Fluctuations
+
+Significant narrowing of ID weld bead width and/or lack of penetration of tube ID in affected areas caused by
+electrical power fluctuations (not using a dedicated circuit).
+Ensure that a dedicated circuit is used.
+11.11.7.11 Inclusions/Dross(non-metallic substance)
+Non-metallic formation on ID weld caused by tungsten inclusion.
+Use high quality base material for welding rod.
+
+##### 11.11.7.12 Pinholing
+
+Small holes in the weld bead caused by the weld puddle being cooled to rapidly.
+Ramp (feather) the welding amperage properly and provide post purge.
+
+##### 11.11.7.13 Porosity
+
+Metallic or non-metallic impurities trapped in the weld bead (tungsten or slag) caused by the introduction of
+impurities from outside or from the weld material.
+Eliminate impurities from outside or from the metal.
+
+=== PAGE 236 ===
+APPENDIX
+
+##### 11.11.7.14 Cracking
+
+Cracks in either the surface of the weld caused by brittle metal or use of a very hot weld program with rapid
+cooling.
+Use only good quality materials and acceptable welding programs. Do not quench or cool the weld.
+
+#### 11.11.8 High Tech. Orbital Tube and Pipe Welding for PVDF Piping
+
+Semi automatic fusion welding machines are available for orbital welding of PVDF piping.
+An elastic pressure element backs up the inside of the fusion zone, totally avoiding an inner bead.
+A controlled pressure thermoplastic melt optimizes the homogeneous joint between the plastic parts, produc-
+ing a consistent joint quality.
+
+#### 11.11.9 Remedial Action for Defective Welds - SS or PVDF Piping
+
+Rewelding or weld repairs are not acceptable.
+Weld Replacements
+The following is a procedure for replacing defective welds:
+a)
+Cut out rejected weld using a band or cut-off saw.
+b)
+Where possible, retain section for further inspection.
+c)
+Prepare faces of tubing and check for signs of discoloration.
+d)
+Ensure that all traces of any heat effected areas are removed.
+e)
+Cut and shape pipe ends using proprietary facing equipment.
+f)
+Debur and reweld.
+g)
+Assign a “R” suffix to weld number.
+
+#### 11.11.10 Joints Using Sanitary Clamps
+
+The sanitary clamp system of quick disconnect fittings are designed to provide a smooth non-contacting or
+non-corrosive environment.
+The sanitary joints may be cleaned in place, provide leak tight connections and may be adapted to other
+forms of piping.
+These joints should be used for all distribution pipe connections to valves, sensor housings, and fittings not
+adaptable to orbital fusion welding.
+
+=== PAGE 237 ===
+APPENDIX
+
+### 11.12 ABBREVIATIONS AND DEFINITIONS
+
+#### 11.12.1 Definitions
+
+ABS - A plastic material used to make pipe; based on combinations of acrylonitrile, butadiene and styrene;
+ABS is a relative inert material and contributes little in the way of contamination to pharmaceutical water.
+Absorption - Assimilation of molecules or other substances into the physical structure of a liquid or solid
+without chemical reaction.
+Aerobic Bacteria - Bacteria capable of growing in the presence of oxygen.
+Anaerobic Bacteria - Bacteria capable of growing in the absence of oxygen.
+As-Built Drawings (Record Drawings) - Construction drawings and specifications that represent the physi-
+cal condition of the plant or system at turnover from the designer or installer at satisfactory operation. These
+documents supplement and compliment the system manuals and protocols.
+Backwash - The process of flowing water in the opposite direction from normal service flow through a filter
+bed or ion exchange bed. The purpose of backwashing a sand filter is to clean it by washing away all the
+material it has collected during its service cycle. The purpose of backwashing a carbon filter is also to clean
+it, but primarily to eliminate flow channels that might have formed and to expose new absorption sites.
+Bacteria - Single-celled microorganisms measured in high purity water by several means: culturing, high
+power microscope, or Scanning Electron Microscope (SEM). The value is reported as Colony Forming Units
+(CFU), or colonies per milliliter or per liter. The bacteria in the water act as particle contamination on the
+surface of the product, or as a source of detrimental by-products. See Pyrogen.
+Blowdown - The withdrawal of water from an evaporating water system to maintain a solids balance within
+specified limits of concentration of those solids.
+BOD - Biological oxygen demand of water. This is the oxygen required by bacteria for oxidation of the soluble
+organic matter under controlled test conditions.
+Breakthrough - Passage of a substance through a bed, filter, or process designed to eliminate it. For ion
+exchange processes, the first signs are leakage of ions (in mixed beds, usually silica) and the resultant
+increase in conductivity. For organic removal beds, usually small, volatile compounds (THMs are common in
+activated carbon).
+Calibration - A comparison of a measurement standard or instrument of unknown accuracy to detect, corre-
+late, report, or eliminate by adjustment of any variation in the accuracy of the unknown standard or instru-
+ment.
+Cation Exchange Resin - An ion exchange resin which removes positively charged ions.
+Certified Vendor Drawings - Drawings prepared by vendors for the fabrication of equipment, specialty
+components, and skid mounted systems. These are certified as fabricated by the vendor and become the
+official document for the equipment involved.
+Commissioning - A prescribed number of activities designed to take equipment and systems from a static,
+substantially complete state to an operable state.
+Conductivity - A measure of flow of electrical current through water. This conductance is high with high Total
+Dissolved Solids (TDS) water and very low with ultrapure deionized water. Conductivity is the reciprocal of
+resistivity (C=1/R) and is measured in micromho/cm (µmho/cm) or microsiemens/cm (µS/cm).
+
+=== PAGE 238 ===
+APPENDIX
+Contaminant - Any foreign component present in another substance. For example, anything in water that is
+not H2O is a contaminant.
+Critical Instrument - These are the instruments used to measure critical parameters.
+Critical Parameter - These are the measured values that would determine process compliance and cause a
+system to revert to a fail-safe mode.
+Drinking Water - EPA primary drinking water or comparable regulations of the European Union or Japan.
+Endotoxins - Pyrogens from certain Gram negative bacteria. Generally highly toxic Lipopolysaccharide-
+protein complexes (fat, linked sugars, and protein) from cell walls. A marker for these bacteria with a reputa-
+tion for persistent contamination because they tend to adhere to surfaces. See Pyrogen.
+Enhanced Documentation - Collection of Engineering, Quality Control and Regulatory Affairs documents
+which will be required for the operation, validation, maintenance, and regulatory compliance of a pharmaceu-
+tical plant.
+EPA - Environmental Protection Agency.
+Extractable - Trace material from piping and/or equipment which have been extracted by the processed fluid.
+FDA - US Food and Drug Administration.
+General Arrangement - A more specific version of a general layout which includes the system interface
+points, space requirements, ergonomics, construction issues, manufacturing flow of materials and operators,
+maintenance requirements, and future expansion or alterations.
+General Equipment Layout - A diagram that relates the unit operations of the system to one another. Its
+development should depend on production requirements, product matrix, and possibilities for future expan-
+sion.
+Good Engineering Practices (GEP) - Standards, specifications, codes, regulatory and industrial guidelines
+and accepted engineering and design methods to design, erect, operate, and maintain a pharmaceutical
+facilities taking into account not only regulatory compliance, but also safety, economics, environment protec-
+tion, and operability. Standards and specifications are provided by recognized sources such as established
+engineering contractors and pharmaceutical companies. Codes are provided by local, state or federal juris-
+dictions, or insurance companies. Guidelines are issued by professional societies, industrial organizations, or
+regulatory agencies. Engineering design methods have been established in the engineering educational
+system.
+Grains Per Gallon - A unit of concentration. 1 grain/gal = 17.1 mg/l.
+Gram Negative Bacteria - A basic classification of bacterial type, along with “Gram positive.” These organ-
+isms resist straining by the Gram technique. Sometimes considered “bad” bacteria when discussing pollution
+or contamination; however, this is an artificial and quite broad classification.
+Halogens - Atoms of the chlorine family which also include fluorine, bromine, and iodine.
+Hardness - The concentration of calcium and magnesium salts in water. Hardness is a term originally refer-
+ring to the soap-consuming power of water; as such it is sometimes also taken to include iron and manga-
+nese. “Permanent hardness” is the excess of hardness over alkalinity. “Temporary hardness” is hardness
+equal to or less than the alkalinity. These also are referred to as “non-carbonated” or “carbonate” hardness,
+respectively.
+
+=== PAGE 239 ===
+APPENDIX
+High Purity Water - Water conforming to USP Monographs or equivalent.
+Heavy Metals - High molecular weight metal ions, such as lead. Known for their interference with many
+processes, and “poisoning” of catalysts, membranes, and resins.
+Humic Acid - The classical method for fractionating the humic colloids that disperse in the sodium hydroxide
+extract is to acidify the suspension with sulphuric or hydrochloric acid, which causes a part of the dispersed
+organic matter to precipitate. The part that stays in solution is known as fulvic acid, that which precipitates out
+as humic acid, and that part of the organic matter which does not disperse in the alkali but remains in the soil
+as humin.
+Hydrocarbons - Organic compounds containing only carbon and hydrogen. Sometimes broadened to in-
+clude compounds or mixtures of compounds with small amounts of oxygen also.
+Hydrophilic - Having an affinity for water. Its opposite, non-water-wettable, is hydrophobic.
+Inorganics - Chemical compounds which are not organic in nature. Inorganics that are soluble in water
+generally split into negative and positive ions, allowing their removal by deionization.
+Instrument List - A list of instrumentation which includes the instrument tag number, instrument name,
+manufacturer name, model and serial number, P&ID reference, critical or non-critical, and local or panel
+mounted.
+Ion - An atom or radical in solution carrying an integral electric charge, either positive (cation) or negative
+(anion).
+Ion Exchange (IX) - One of the processes used to further reduce the concentration of ions in water supplies
+referred to as total dissolved solids removal. The process uses anion and cation exchange resin to chemically
+react with and remove the remaining ions or TDS in the water. This process results in water with virtually no
+TDS.
+Ion Exchange Regeneration - The process by which ion exchange resin that can no longer effectively
+remove ions from the water is recharged. This recharging or regeneration is performed by adding an excess
+of caustic (NaOH) to the anion resin and an excess of either hydrochloric acid (HCl) or sulfuric acid (H2SO4)
+to the anion resin. These regenerant solutions are allowed to flow through the resin beds at specific flow rates
+for specific periods of time depending on the type of resin, the ionic load, and the final purity desired. The
+regenerant solutions react with the ion exchange resin releasing the removed cations and anions which are
+then carried away to drain by the flow of the regenerant chemicals. The excess chemical is rinsed from the ion
+exchange resin with purified water when the bed is ready for another service cycle.
+Ion Exchange Resin - A styrene-divinylbenzene or acrylic copolymer formed into small, spherical, and
+highly porous beads about the size of a pinhead. These inert beads are chemically treated so that they
+perform as if they were chemical compounds.
+Langelier Index - A means of expressing the degree of saturation of a water as related to calcium carbonate
+solubility.
+Membrane - A barrier, usually thin, that permits the passage only of particles up to a certain size or of special
+nature.
+Micron - The same as a micrometer or 1000th of a millimeter. The typical particle size of importance in
+deionized water is less than 0.2 µm.
+
+=== PAGE 240 ===
+APPENDIX
+Microorganism - Organisms (microbes) observable only through a microscope. Larger, visible types are
+called organisms.
+Milligrams Per Liter (mg/l) - A term used to report chemical analyses. Milligrams per liter refers to the
+milligrams of the compound or element present in 1 liter (1000 milliliters) of water. Another term often used is
+parts per million (ppm) which is the same for substances in water. 1 mg/l = 1000 ug/l = 1 ppm.
+Mixed Bed Ion Exchange - The use of both cation and anion exchange resin mixed together in one tank.
+MSDS (Material Safety Data Sheet) - Document produced by the manufacturer that contains the chemical
+and physical properties of a substance that are pertinent to safe handling and storage.
+NPDES Permit - The National Pollution Discharge Elimination System permit required by and issued by EPA.
+Organics - Short for organic chemicals; those compounds that contain carbon to hydrogen bonds and are
+not carbonate related.
+Orifice - An opening through which a fluid can pass; a restriction placed in a pipe to provide a means of
+measuring flow.
+Osmosis - The passage of water through a permeable membrane separating two solutions of different con-
+centrations; the water passes into the more concentrated solution.
+Oxidizer - A chemical which readily oxidizes more reduced substances. Examples of strong oxidizers are
+ozone, hydrogen peroxide, chloride, persulfates, and oxygen itself.
+Ozone - Ozone is a very strong gaseous oxidizing agent. It is used in deionized water systems to kill bacteria
+and to reduce, by oxidation, the amount of TOC in the water. Ozone is O3 and due to reaction with other things
+rapidly becomes oxygen (O2). Therefore, it has a short but effective oxidizing potential. It can be destructive to
+ion exchange using membrane filters and other plastic materials in the system.
+Particles - A physically measurable contaminant in deionized water. Particles can be bacteria, colloidal ma-
+terial or any other insoluble material. Particle counts are reported as number of particles per liter of a particu-
+lar size measured in micrometers (microns).
+Passivation - The means of obtaining the loss of chemical reactivity exhibited by certain metals under spe-
+cial environmental conditions. More specifically, the state in which a stainless steel exhibits a very low corro-
+sion rate. Passivation generates an oxide film that covers and protects the surface of the metal.
+Pasteurization - A process for killing pathogenic organisms by heat applied for a critical period of time.
+Pathogens - Disease-producing microbes.
+Permeability - The ability of a body to pass a fluid under pressure.
+Piping A cylindrical device used for the conveyance of fluid that is sized by nominal outer diameter dimen-
+sion.
+pH - pH, the negative log of the hydrogen ion concentration, is a measure of the concentration of hydrogen
+ions (H+) in a water-based solution.  The more hydrogen ions that are present, the lower the pH and the more
+acidic the solution.
+Photo Oxidation - The mechanism by which ultraviolet light reduces Total Organic Carbon (TOC) to Carbon
+Dioxide. If halogenated organics are present, both CO2 and mineral acids can be formed.
+
+=== PAGE 241 ===
+APPENDIX
+Polypropylene (Polypro) - A plastic material used to make pipe; thermoplastic member of polyolefin family
+of plastics; lightest plastic known; polypro is a relatively inert material and contributes little in the way of
+contamination to pharmaceutical water.
+Polyvinyl Chloride (PVC) - A plastic material used to make pipe that is used extensively with water. Prone to
+produce extractables during start-up in high purity water.
+Polyvinylidene Fluoride (PVDF) - A plastic material which is used to make pipe for the distribution of phar-
+maceutical waters. PVDF is a relatively inert material and contributes little in the way of contamination to
+pharmaceutical water.
+Precipitate - An insoluble reaction product; in an aqueous chemical reaction, usually a crystalline compound
+that grows in size to become settleable.
+P&ID (Process and Instrument Diagram) - This diagram illustrates schematically, the detailed piping, elec-
+trical, and control requirements of the system.
+Process Flow Diagram (PFD) - A schematic of the system which utilizes graphic symbols and text to illus-
+trate the steps of an operation in proper sequence. A PFD should present a detailed, accurate, and ordered
+flow of raw material or ingredient through each manufacturing phase.
+Purified Water - USP Purified Water prepared from water complying with the quality attributes of “Drinking
+Water” with conductivity in accordance with stage 1, 2 and 3 tests and the following tables. Total Organic
+Carbon at 0.5 mg/l. Less than 100 CFU/ml (10,000 CFU/100 ml) for FDA microbiological acceptability.
+Pyrogen - Trace organics which are used as markers of bacterial growth or contamination. Produced by
+various bacteria and fungi. Critical pharmaceutical and biotechnological processes have restrictions on con-
+tamination by these substances, usually at levels near the limit of detection. Primarily polysaccharide (made
+of linked sugars) in nature. Fever producing substances when administered parenterally to man and certain
+animals.
+Resistivity - The measure of the resistance to the flow of electrical current through high purity water. This is
+measured in millions of ohms-cm or Megohm-cm (Mohm-cm). Resistivity is the reciprocal of Conductivity
+(R=1/C, 1 Mohm-cm = 1 µS/cm). This provides an easy means of continuously measuring the purity of very
+low TDS water or ionic concentration.
+Reverse Osmosis - A process that reverses (by the application of pressure) the flow of water in the natural
+process of osmosis so that it passes from the more concentrated to the more dilute solution. This is one of the
+processes used to reduce the ionic TDS, TOC, and suspended materials of feed water through a semiperme-
+able membrane leaving dissolved and suspended materials behind. These are swept away in a waste stream
+to drain.
+Rouge - Rouging is a form of surface corrosion that occurs in some stainless steel water systems.
+Salinity - The presence of soluble minerals in water.
+Salt - Neutral compound formed of two or more ions. The salt disassociates into cations and anions when
+dissolved in water.
+Sanitary Design - A system of design that meets standard, specification, codes, regulatory and industrial
+guidelines, and acceptable engineering design methods to reach a degree of sanitation required by food,
+pharmaceutical, and cosmetics processing.
+Saturation Index - The relating of calcium carbonate to the pH, alkalinity, and hardness of a water to deter-
+mine its scale-forming tendency.
+
+=== PAGE 242 ===
+APPENDIX
+Scale - The precipitate that forms on surfaces in contact with water as the result of a physical of chemical
+change.
+Sedimentation - Gravitational settling of solid particles in a liquid system.
+Silica - Silicon dioxide (SiO2) and it hydrated forms, classed as reactive and non-reactive. Generally, reactive
+silica is removed by the anion exchange resin. Reactive silica is only slightly ionized and is held lightly by the
+anion resin. It is for this reason that silica is the first thing to break through when the resin nears exhaustion.
+Non-reactive silica is generally considered to be particulate (colloidal) in nature.
+Soda Ash - A common water-treatment chemical, sodium carbonate.
+Softening - The removal of hardness (calcium and magnesium) from water. This is a PRETREATMENT
+process which used cation exchange resin to remove the hardness elements from the water. The hardness
+elements are calcium and magnesium. The cation resin is regenerated with sodium chloride and during the
+exchange process, the calcium and magnesium are removed from the water and replaces with sodium ions
+(Na+). The resulting sodium salts are much more soluble than the salts of calcium and magnesium and do not
+precipitate which provides better feed water to the RO system.
+Soluble Silica - The silica present in the water that has actually dissolved in the water.
+Stability Index - An empirical modification of the saturation index used to predict scaling or corrosive tenden-
+cies in water systems.
+Stainless Steel - Steel to which a significant amount of chromium and nickel has been added to inhibit
+corrosion.
+Start-Up - The initial operation of equipment to prove that it is installed properly and operates as intended.
+Start-up is considered complete when the selected equipment will adequately process water as specified.
+Sterilization - Refers to the killing of microorganisms in the distribution system. This is normally done peri-
+odically by flushing a sterilizing solution, such as hydrogen peroxide or ozone, through the distribution piping
+system. In some systems, ozone is continuously injected at low levels for continuous sterilization.
+Surface Water - Surface water is any water where the sources is above ground. This can be rivers, lakes, or
+reservoirs. Surface waters are usually higher in suspended matter and organic material and lower in dis-
+solved minerals than well water.
+Thermal Fusion - The joining of two materials (usually metal or plastic) by use of heat only, without any
+additional material. Usually done by the use of automatic TIG welding in alloy steel tubing welding or with
+specially designed melting equipment for plastics.
+Total Dissolved Solids (TDS) - The term used to describe inorganic ions in the water. Usually measured by
+measuring the electrical conductance of the water corrected to 25°C.
+Total Organic Carbon (TOC) - Measure of organics in water by their Carbon content. This is one of the
+parameters used to determine the purity of Semiconductor Grade water. Feed water will have TOC measured
+in parts per million. UPW will have TOC measured in parts per billion (ppb).
+Trihalomethanes (THM) - Compounds present in the feed water that are formed by the reaction of chlorine
+and the organic material in the water. The most common THM found in water is chloroform which is quite
+difficult to remove. Activated carbon and degasification can serve to reduce THMs.
+
+=== PAGE 243 ===
+APPENDIX
+Tubing - A cylindrical device used for the conveyance of fluid that is sized by its inside diameter dimension.
+Turbidity - A suspension of fine particles that obscures light rays, but requires many days for sedimentation
+because of the small particle size.
+Ultrafiltration - Filter technology similar to reverse osmosis that is capable of filtering colloids and large
+molecular weight organics out of the water. The filter capability of ultrafiltration filters to 0.005 µm particle size.
+Ultrafiltration also will remove organic material down to about 1,000 - 10, 000 molecular weight.
+Ultraviolet Sterilizer (UV) - Ultraviolet lamps used to kill microorganisms in water. These can be placed
+anywhere in the water system. The wavelength used for control is 254 nanometers (nm).
+Ultraviolet TOC Reduction - A UV source which partially oxidized organic compounds to ionic species
+which can be removed. Relies on 185 nm radiation from “ozone producing” mercury lamps (along with 254
+nm germicidal radiation). Generally has a longer contact time than for sterilization alone.
+USP Purified Water - See Purified Water.
+Vacuum Degasification - The process of removing dissolved and entrained gases from the reverse osmosis
+product water by creating a vacuum in a tower through which the RO product water flows. The degasifier may
+be located before the reverse osmosis system, but the majority of the time it will be located after. The most
+prevalent gas present is carbon dioxide which may be have been generated during pH adjustment of the
+reverse osmosis feed water. Carbon dioxide can be removed by the anion exchange resin, but that load can
+be reduced by using the vacuum degasifier. The other gas of concern is the water is oxygen which also is
+removed by a vacuum degasifier.
+WFI - USP Water for Injection. Prepared from water complying with the quality attributes of “Drinking Water.”
+Prepared using Distillation or Double pass reverse osmosis. Conductivity in accordance with Stage 1, 2, and
+3 tests and conductivity tables. Total Organic Carbon at 0.5 mg/l. Less than 0.1 CFU/ml (10 CFU/100ml) for
+FDA acceptability. Less than 0.25 USP EU/ml.
+
+#### 11.11.2 Acronyms and Abbreviations
+
+AC - Alternating Current
+ACS - American Chemical Society
+ANSI - American National Standards Institute
+API - Active Pharmaceutical Ingredient (also known as Bulk Pharmaceuticals)
+ASME - American Society of Mechanical Engineers
+ASTM - American Society for Testing and Materials
+Ar - Argon
+BOD - Biological Oxygen Demand
+BPC - Bulk Pharmaceutical Chemicals
+Btu - British Thermal Units
+CDI - Electrodeionization Deionization (US Filter)
+
+=== PAGE 244 ===
+APPENDIX
+CFU - Colony Forming Units, i.e., viable bacteria
+cGMPs - Current Good Manufacturing Practices
+CIP - Clean-In-Place (system)
+CO2 - Carbon dioxide
+CS - Clean Steam
+DCS - Distributed Control System
+DNA - Deoxyribose Nucleic Acid
+DI - Deionized, Deionizing, Deionization
+EDR - Electrodialysis Reversal (Osmonics)
+EDI - Electrodeionization (Osmonics and Generic)
+EPA - Environmental Protection Agency
+EPDM - Ethylene Propylene Diemer
+EU/ml - Endotoxin Units per milliliter
+FDA - US Food and Drug Administration
+gpd - Gallons per day
+gph - Gallons per hour
+H+ - Hydrogen
+HCl - Hydrochloric acid
+H2CO3 - Carbonic acid
+H2O2 - Hydrogen Peroxide
+H3O+ - Hydroxonium (Hydronium) Ion
+HCO3
+- - Bicarbonate Ion
+H2SO4 - Sulfuric acid
+KHz - Kilohertz
+kW - Kilowatt
+KWh - Kilowatt-hour
+l - Liter
+
+=== PAGE 245 ===
+APPENDIX
+l/min - Liters per minute
+LAL - Limulus Amebocyte Lysate
+lb - Pound
+LSI - Langelier Saturation Index (or Langelier Stability Index)
+LVPs - Large Volume Parenterals
+m - Meter
+m/sec (m/s) - Meters per second
+Mb - Megabyte or Distillate blowdown discharged
+Md - Mass of Distillate produced
+MF - Microfiltration or Micro-filter
+Mf - Distillate feedwater required
+ME - Multi-effect (still)
+µ - Micro (one millionth)
+µm - Micrometer (micron)
+MF - Microfiltration
+mg/l - Milligrams per liter
+ml - Milliliter
+mm - Millimeter
+MM - Multimedia Filter
+MSDS - Material Safety Data Sheet
+MTR - Mill Test Reports
+NIST - National Institute of Standards & Technology
+NDR - Nondispersive Infrared Analysis
+NF - National Formulary (or nanofiltration)
+nm - Nanometer
+NTU - Nephelometric Turbidity Units
+
+=== PAGE 246 ===
+APPENDIX
+O3 - Ozone
+OSHA - Occupational Safety & Health Administration
+p/ml - Particles per milliliter
+P&ID - Process and Instrument Diagram
+PFD - Process Flow Diagram
+PLC - Programmable Logic Controller
+PMA - Pharmaceutical Manufacturers Association
+PP - Polypropylene
+ppb - Parts per billion
+ppm - Parts per million
+psig - Pounds per square inch gauge
+PTFE - Polytetrafluoroethylene
+PVDF - Polyvinylidene
+R - Performance ratio of a Distiller
+Rc - Recovery ration for a still
+RA - Average RMS of surface (Roughness Averager)
+RO - Reverse Osmosis
+rpm - Revolutions per minute
+SOP - Standard Operating Procedure
+SPC - Statistical Process Control
+SS - Stainless Steel
+SVP - Small Volume Parenterals
+TC - Total Carbon
+TDS - Total Dissolved Solids
+THM - Trihalomethanes
+TOC - Total Organic Carbon
+TOX - Total Organic Halogens
+
+=== PAGE 247 ===
+APPENDIX
+US EPA - United States Environmental Protection Agency
+UF - Ultrafiltration or Ultra-filter
+µmho - Micromho
+µmho/cm - Micromho per centimeter
+µS - Microsiemens
+µS/cm - Microsiemens per centimeter
+USP - United States Pharmacopoeia
+UV - Ultraviolet Light
+VC - Vapor Compression (still)
+WFI - Water for Injection
+
+=== PAGE 248 ===
+
+=== PAGE 249 ===
+
+=== PAGE 250 ===

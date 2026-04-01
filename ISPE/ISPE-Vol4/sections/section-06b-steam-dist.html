@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.4 - Chapter 7 (Part B): Steam Distribution &amp; Piping Practice</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+
+   ISPE Green Color Override applied below.
+   ============================================================= */
+
+/* ===== CSS VARIABLES (ISPE Green Override) ===== */
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #2e7d52 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #27ae60; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c32; border-bottom: 2px solid #66bb6a; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c32; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #27ae60; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES — Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ANALOGY BOX - Yellow */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* CONCEPT/TERM BOX - Green */
+.concept-box:not(.analogy):not(.application):not(.note) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application):not(.note) h3,
+.concept-box:not(.analogy):not(.application):not(.note) h4 { color: #2e7d32 !important; }
+.term-box, .key-term-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* NOTE BOX - Orange */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* FORMULA BOX - Purple */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+
+/* APPLICATION BOX - Blue */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* PRACTICE BOX - Dashed Blue */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+    border: 1px solid #ffe082; margin-top: 2rem;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary p { font-size: 0.92rem; margin-bottom: 0.4rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { font-size: 0.92rem; margin-bottom: 0.35rem; }
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px; color: var(--primary-blue);
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60; color: white;
+    border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39, 174, 96, 0.4); z-index: 999;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219150; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1, .top-header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body id="top">
+
+<!-- ===== SECTION HEADER ===== -->
+<div class="header">
+    <h1>ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems</h1>
+    <div class="subtitle">Chapter 7 (Part B): Pharmaceutical Steam &mdash; Process Description, Sizing, Quality &amp; Distribution</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 4: Water and Steam Systems | p99&ndash;p109</div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="main-content">
+    <div class="learning-objectives">
+        <h3>Learning Objectives</h3>
+        <ol>
+            <li>Understand the operating principle of a Sanitary CS Generator (shell-and-tube evaporator, separator, feedback control) and distinguish it from a Simple CS Generator / &#29702;&#35299;&#34907;&#29983;&#22411;&#28136;&#33976;&#27773;&#30332;&#29983;&#22120;&#30340;&#36939;&#20316;&#21407;&#29702;&#65288;&#31649;&#27580;&#24335;&#33976;&#30332;&#22120;&#12289;&#20998;&#38626;&#22120;&#12289;&#22238;&#39243;&#25511;&#21046;&#65289;&#65292;&#20006;&#33287;&#31777;&#26131;&#22411;&#21312;&#20998;</li>
+            <li>Size a Clean Steam system by evaluating peak demand, diversity, and generator capacity / &#25484;&#25569;&#28136;&#33976;&#27773;&#31995;&#32113;&#30340; sizing &#35336;&#31639;&#65306;&#23574;&#23792;&#38656;&#27714;&#12289;&#22810;&#27171;&#24615;&#20418;&#25976;&#12289;&#30332;&#29983;&#22120;&#23481;&#37327;</li>
+            <li>Explain steam condensate sampling for purity (endotoxin, conductivity) and quality (dryness fraction, NCGs) / &#35498;&#26126;&#33976;&#27773;&#20957;&#32080;&#27700;&#21462;&#27171;&#65306;&#32020;&#24230;&#65288;&#20839;&#27602;&#32032;&#12289;&#38651;&#23566;&#24230;&#65289;&#33287;&#21697;&#36074;&#65288;&#20094;&#29157;&#24230;&#12289;&#19981;&#20957;&#32080;&#27683;&#39636;&#65289;</li>
+            <li>Specify materials of construction, surface finish, and pretreatment requirements for CS generators / &#25351;&#23450;&#28136;&#33976;&#27773;&#30332;&#29983;&#22120;&#30340;&#26448;&#36074;&#12289;&#34920;&#38754;&#34389;&#29702;&#33287;&#21069;&#34389;&#29702;&#35201;&#27714;</li>
+            <li>Design a CS distribution system addressing line sizing, moisture removal, condensate removal, NCG removal, and superheat / &#35373;&#35336;&#28136;&#33976;&#27773;&#37197;&#36865;&#31995;&#32113;&#65306;&#31649;&#24465;&#12289;&#38500;&#28629;&#12289;&#25490;&#20957;&#32080;&#27700;&#12289;&#25490;&#19981;&#20957;&#32080;&#27683;&#39636;&#12289;&#36942;&#29105;</li>
+            <li>Apply the four piping practice examples to real-world installation scenarios / &#25033;&#29992;&#22235;&#20491;&#37197;&#31649;&#23526;&#21209;&#31684;&#20363;&#26044;&#23526;&#38555;&#23433;&#35037;&#24773;&#22659;</li>
+        </ol>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>&#26412;&#31456;&#31680;&#20839;&#23481;&#23566;&#35261;</h3>
+        <div class="toc-grid">
+            <a href="#sec-process">7.7 Process &amp; Operating Principle</a>
+            <a href="#sec-sizing">7.8 Sizing the CS System</a>
+            <a href="#sec-simple">7.8.1.1 Simple CS Generator</a>
+            <a href="#sec-sampling">7.8.2 Condensate Sampling</a>
+            <a href="#sec-materials">7.8.3 Materials of Construction</a>
+            <a href="#sec-finish">7.8.4 Surface Finish</a>
+            <a href="#sec-pretreatment">7.8.5 Pretreatment</a>
+            <a href="#sec-cost">7.9 Cost Implications</a>
+            <a href="#sec-quality">7.10 Steam "Quality"</a>
+            <a href="#sec-distribution">7.11 Distribution</a>
+            <a href="#sec-linesizing">7.11.1 Line Sizing</a>
+            <a href="#sec-moisture">7.11.2 Moisture Removal</a>
+            <a href="#sec-condensate">7.11.3 Condensate Removal</a>
+            <a href="#sec-ncg">7.11.4 NCG Removal</a>
+            <a href="#sec-superheat">7.11.5 Superheat</a>
+            <a href="#sec-piping">7.12 Four Piping Practice Examples</a>
+            <a href="#summary">Section Summary</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ========== 7.7 PROCESS & OPERATING PRINCIPLE ========== -->
+    <div class="chapter-section" id="sec-process">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.7</div>
+            <div class="chapter-info">
+                <h2>Process &amp; Operating Principle of a Sanitary CS Generator &#8212; &#34907;&#29983;&#22411;&#28136;&#33976;&#27773;&#30332;&#29983;&#22120;&#30340;&#35069;&#31243;&#33287;&#36939;&#20316;&#21407;&#29702;</h2>
+                <p>Shell-and-tube evaporator, separator, and feedback control loop | pp. 100&ndash;101</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English Original -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 100&ndash;101</div>
+
+                    <p>Clean Steam is normally generated in a <span class="key-term">shell-and-tube heat exchanger evaporator</span>. Feed water is introduced on one side of the tubes, while the heating medium is introduced on the other side. Heating of the feed water to above the boiling temperature causes the water to evaporate, producing steam. The heating medium does not come in direct contact with the feed water or with the clean steam, and is normally <span class="key-term">utility steam</span>.</p>
+
+                    <h3>a) Operation</h3>
+                    <p>Clean Steam pressure is maintained by a <span class="key-term">feedback control loop</span>, which modulates the supply steam control valve. The evaporator feed water is independently controlled using a level sensor and feed water pump.</p>
+
+                    <h3>b) Steam Supply</h3>
+                    <p>The utility steam supplied to the generator at typically 100&ndash;120 psig (7.0&ndash;8.5 kg/cm&sup2; gauge or 7.9&ndash;9.25 bar) must be at a higher pressure than the required clean steam pressure. The greater the differential between the utility steam pressure and the clean steam pressure, the higher the clean steam production rate. Utility steam pressure should be at least <span class="key-term">30&ndash;40 psig</span> higher than the clean steam pressure. Utility steam consumption will be approximately <span class="key-term">10%&ndash;20% greater</span> than the quantity of clean steam produced.</p>
+
+                    <h3>c) Clean Steam Pressure</h3>
+                    <p>Clean Steam pressure is selected by the user. Typical units are designed for pharmaceutical applications at <span class="key-term">40&ndash;60 psig</span> (3.75&ndash;5.1 bar).</p>
+
+                    <h3>d) Separator</h3>
+                    <p><span class="key-term">Entrainment separators</span> are normally designed to function over an optimum range of steam velocity. If the volume of steam increases substantially, carryover of endotoxins can occur. This condition can exist if the steam pressure differential significantly exceeds design conditions. The manufacturer should be consulted regarding the output of the generator at the highest possible pressure difference. An alarm and equipment shutdown is recommended.</p>
+
+                    <h3>e) Feed Water Level</h3>
+                    <p>The feed water level is controlled to protect against flooding of the evaporator and carryover of endotoxins by a high level alarm and subsequent shutdown. Evaporator level condition does not affect clean steam purity, but is an indication of insufficient feed water or excessive blow down.</p>
+
+                    <p>A <span class="key-term">feed pump</span> may be required if feed water supply pressure is inadequate. Depending on system design, a feed pressure of approximately <span class="key-term">8&ndash;10 psig above</span> the maximum expected Clean Steam pressure is required.</p>
+
+                    <p>A <span class="key-term">sample cooler</span> fitted with conductivity meter and alarms is often used to monitor Clean Steam condensate purity.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#34907;&#29983;&#22411; CS &#30332;&#29983;&#22120;&#26550;&#27083;</h4>
+                        <p>&#26412;&#36074;&#19978;&#26159;&#19968;&#20491;&#12300;&#28136;&#29256;&#37707;&#29200;&#12301;&#65306;&#20197; utility steam &#28858;&#29105;&#28304;&#65292;&#22312;&#31649;&#27580;&#24335;&#29105;&#20132;&#25563;&#22120;&#20013;&#21152;&#29105;&#32020;&#21270;&#36914;&#26009;&#27700;&#65292;&#29986;&#29983;&#28136;&#33976;&#27773;&#12290;&#38364;&#37749;&#35373;&#35336;&#21407;&#21063;&#65306;</p>
+                        <ul>
+                            <li><strong>&#38548;&#38626;&#21407;&#21063;</strong>&#65306;&#21152;&#29105;&#20171;&#36074;&#33287;&#36914;&#26009;&#27700;/&#28136;&#33976;&#27773;&#12300;&#27704;&#19981;&#25509;&#35320;&#12301;&#65292;&#36991;&#20813;&#27745;&#26579;&#20132;&#21449;</li>
+                            <li><strong>&#22739;&#21147;&#24046;&#39493;&#21205;</strong>&#65306;utility steam &#38920;&#39640;&#26044; CS &#22739;&#21147; &ge;30&ndash;40 psig&#65292;&#22739;&#24046;&#36234;&#22823;&#12289;&#29986;&#37327;&#36234;&#39640;</li>
+                            <li><strong>&#22238;&#39243;&#25511;&#21046;</strong>&#65306;CS &#22739;&#21147;&#30001;&#25511;&#21046;&#38309;&#33258;&#21205;&#35519;&#31680; utility steam &#36914;&#27773;&#37327;</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#38617;&#23652;&#29038;&#27700;&#22778;&#12301;</h4>
+                        <p>&#24819;&#20687;&#19968;&#20491;&#38617;&#23652;&#37707;&#65306;&#22806;&#23652;&#35037;&#12300;&#39640;&#22739;&#33976;&#27773;&#12301;&#65288;utility steam&#65289;&#65292;&#20839;&#23652;&#35037;&#12300;&#32020;&#27700;&#12301;&#65288;feed water&#65289;&#12290;&#22806;&#23652;&#29105;&#37327;&#36879;&#36942;&#37329;&#23660;&#22721;&#20659;&#32102;&#20839;&#23652;&#65292;&#20839;&#23652;&#27700;&#27832;&#39472;&#29986;&#29983;&#12300;&#20094;&#28136;&#33976;&#27773;&#12301;&#12290;&#20839;&#22806;&#23652;&#28082;&#39636;&#27704;&#36960;&#19981;&#28151;&#21512;&#65292;&#30906;&#20445;&#28136;&#33976;&#27773;&#32020;&#24230;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#20998;&#38626;&#22120; (Separator) &#30340;&#38364;&#37749;&#35282;&#33394;</h4>
+                        <p>&#20998;&#38626;&#22120;&#19981;&#20677;&#31227;&#38500;&#20839;&#27602;&#32032;&#65292;&#36996;&#31227;&#38500;&#25152;&#26377;&#28404;&#29376;&#25884;&#24118; (entrainment)&#12290;&#20294;&#23427;&#26377;&#12300;&#36895;&#24230;&#31383;&#21475;&#12301;&#65306;&#33976;&#27773;&#27969;&#36895;&#36229;&#36942;&#35373;&#35336;&#31684;&#22285;&#26178;&#65292;&#20839;&#27602;&#32032; carryover &#39080;&#38570;&#39110;&#21319;&#12290;&#22240;&#27492;&#65306;</p>
+                        <ul>
+                            <li>&#24517;&#38920;&#35373;&#32622;&#39640;&#22739;&#24046;&#22577;&#35686;&#33287;&#33258;&#21205;&#38364;&#27231;</li>
+                            <li>&#36939;&#36681;&#26178;&#19981;&#24471;&#36229;&#36942;&#35069;&#36896;&#21830;&#35373;&#35336;&#22739;&#24046;&#19978;&#38480;</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>&#38364;&#37749;&#25976;&#25818;&#25972;&#29702;</h4>
+<pre>
+Utility Steam &#22739;&#21147;:      100&ndash;120 psig (7.9&ndash;9.25 bar)
+CS &#22739;&#21147; (&#20856;&#22411;):        40&ndash;60 psig (3.75&ndash;5.1 bar)
+&#26368;&#20302;&#22739;&#24046;:             &ge; 30&ndash;40 psig
+Utility &#28040;&#32791;&#37327;:        CS &#29986;&#37327; &times; 1.10&ndash;1.20
+Feed &#27700;&#22739;&#21147;:          CS &#22739;&#21147; + 8&ndash;10 psig
+</pre>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#24605;&#32771;&#32244;&#32722;</h4>
+                        <p>&#22914;&#26524;&#20320;&#30340;&#24037;&#24288; utility steam &#22739;&#21147;&#21482;&#26377; 80 psig&#65292;&#32780;&#28136;&#33976;&#27773;&#38656;&#27714;&#22739;&#21147;&#28858; 50 psig&#65292;&#22739;&#24046;&#20677; 30 psig&#12290;&#36889;&#26371;&#24118;&#20358;&#20160;&#40636;&#21839;&#38988;&#65311;&#35442;&#22914;&#20309;&#25913;&#21892;&#65311;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.8 SIZING THE CLEAN STEAM SYSTEM ========== -->
+    <div class="chapter-section" id="sec-sizing">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.8</div>
+            <div class="chapter-info">
+                <h2>Sizing the Clean Steam System &#8212; &#28136;&#33976;&#27773;&#31995;&#32113;&#23610;&#23544;&#35373;&#35336;</h2>
+                <p>Capacity calculation, diversity factor, generator selection | pp. 102&ndash;103</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 102&ndash;103</div>
+
+                    <p>Figure 7-3 provides a systematic approach to <span class="key-term">sizing the Clean Steam system</span>. The process involves identifying all use points, determining the peak demand for each, applying diversity factors, and selecting a generator with adequate capacity plus a safety margin.</p>
+
+                    <h3 id="sec-simple">7.8.1.1 CS Produced from a Simple Clean Steam Generator</h3>
+                    <p>There are applications where pyrogen free steam and sanitary construction features are not required, and at the same time, Utility Steam cannot be used. In such cases, it may be most economical to utilize a <span class="key-term">simple Clean Steam generator</span> of the most economical design. Savings may be worthwhile when the elimination of the steam separator is combined with non-sanitary features such as:</p>
+                    <ul>
+                        <li>Non-sanitary pipe and fittings</li>
+                        <li>Non-sanitary instruments and valves</li>
+                        <li>No polishing</li>
+                        <li>Minimum controls</li>
+                    </ul>
+                    <p>The elimination of the separator alone does not provide significant cost savings. It is important to remember that the separator&rsquo;s function is more than removal of endotoxins. It removes entrainment, which includes all types of contaminants present in the feed water, except <span class="key-term">volatiles</span>. Without an entrainment separator, impurities from the feed water may well be entrained in the steam and the moisture content can be much higher than in the standard entrained generator.</p>
+                    <p>Thus the <span class="key-term">feed water purity</span> becomes a critical factor in controlling the steam purity if entrainment is not incorporated in the design.</p>
+                    <p>Independent sanitary entrainment devices are available for installation at, or close to, the point of use, and may be used with typical &ldquo;Simple CS generators&rdquo; as well as to control additional moisture build up due to heat losses in the distribution system of Sanitary CS Generators.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>Sizing &#22522;&#26412;&#27493;&#39519;</h4>
+                        <ol>
+                            <li><strong>&#21015;&#20986;&#25152;&#26377;&#20351;&#29992;&#40670;</strong>&#65306;&#28357;&#33740;&#22120;&#12289;&#20957;&#27700;&#22120;&#12289;SIP &#33139;&#20301;&#31561;</li>
+                            <li><strong>&#35336;&#31639;&#23574;&#23792;&#38656;&#27714;</strong>&#65306;&#27599;&#20491;&#20351;&#29992;&#40670;&#30340;&#26368;&#22823;&#33976;&#27773;&#28040;&#32791;&#37327;</li>
+                            <li><strong>&#25033;&#29992;&#22810;&#27171;&#24615;&#20418;&#25976; (Diversity Factor)</strong>&#65306;&#19981;&#26159;&#25152;&#26377;&#20351;&#29992;&#40670;&#21516;&#26178;&#36939;&#20316;&#65292;&#20856;&#22411; 0.6&ndash;0.8</li>
+                            <li><strong>&#21152;&#23433;&#20840;&#35029;&#37327;</strong>&#65306;&#36890;&#24120; 10%&ndash;20%</li>
+                            <li><strong>&#36984;&#22411;&#30332;&#29983;&#22120;</strong>&#65306;&#30906;&#20445;&#23481;&#37327; &ge; &#35336;&#31639;&#38656;&#27714;</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Simple CS Generator &#33287; Sanitary CS Generator &#30340;&#38364;&#37749;&#21312;&#21029;</h4>
+                        <table>
+                            <tr><th>&#38917;&#30446;</th><th>Sanitary CS Gen.</th><th>Simple CS Gen.</th></tr>
+                            <tr><td>&#20998;&#38626;&#22120;</td><td>&#26377;&#65292;&#39640;&#25928;&#31227;&#38500; entrainment</td><td>&#28961;&#65292;&#38656;&#38752; feed water &#32020;&#24230;&#25511;&#21046;</td></tr>
+                            <tr><td>&#37197;&#31649;/&#38309;</td><td>&#34907;&#29983;&#32026;&#12289;316L SS</td><td>&#38750;&#34907;&#29983;&#32026;&#65292;&#21487;&#29992;&#30899;&#37628;</td></tr>
+                            <tr><td>&#34920;&#38754;&#34389;&#29702;</td><td>&#25291;&#20809;&#12289;&#37389;&#21270;</td><td>&#28961;&#25291;&#20809;&#35201;&#27714;</td></tr>
+                            <tr><td>&#25511;&#21046;&#31995;&#32113;</td><td>&#23436;&#25972;&#22238;&#39243;&#25511;&#21046;</td><td>&#26368;&#31777;&#21270;&#25511;&#21046;</td></tr>
+                            <tr><td>&#36969;&#29992;&#22580;&#26223;</td><td>&#34277;&#21697;&#25509;&#35320;&#12289;SIP</td><td>&#38750;&#29986;&#21697;&#25509;&#35320;&#12289;&#20294;&#19981;&#33021;&#29992; utility steam</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#28686;&#27700;&#22120;&#12301;&#33287;&#12300;&#28136;&#27700;&#22120;&#12301;</h4>
+                        <p>Simple CS Generator &#23601;&#20687;&#19968;&#33274;&#22522;&#26412;&#28686;&#27700;&#22120;&#65306;&#33021;&#29138;&#27832;&#27700;&#65292;&#20294;&#19981;&#33021;&#36942;&#28670;&#38620;&#36074;&#12290;&#22914;&#26524;&#27700;&#28304;&#26412;&#36523;&#22816;&#20094;&#28136;&#65292;&#29138;&#20986;&#20358;&#30340;&#33976;&#27773;&#23601;&#27794;&#21839;&#38988;&#12290;&#20294;&#22914;&#26524;&#27700;&#28304;&#21547;&#38620;&#36074;&#65292;&#23601;&#38656;&#35201;&#12300;&#28136;&#27700;&#22120;&#12301;&#65288;Sanitary CS Generator &#30340;&#20998;&#38626;&#22120;&#65289;&#20358;&#30906;&#20445;&#33976;&#27773;&#21697;&#36074;&#12290;</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#20351;&#29992;&#40670;&#29544;&#31435;&#20998;&#38626;&#22120; (Point-of-Use Separator)</h4>
+                        <p>&#37197;&#21512; Simple CS Generator &#30340;&#35036;&#25937;&#25514;&#26045;&#65306;&#22312;&#20351;&#29992;&#40670;&#21069;&#23433;&#35037;&#29544;&#31435;&#34907;&#29983;&#32026;&#20998;&#38626;&#22120;&#12290;&#21516;&#27171;&#21487;&#29992;&#26044; Sanitary CS &#31995;&#32113;&#20013;&#65292;&#35036;&#20767;&#37197;&#36865;&#31649;&#32218;&#29105;&#25613;&#36896;&#25104;&#30340;&#38989;&#22806;&#27700;&#20998;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.8.2 STEAM CONDENSATE SAMPLING ========== -->
+    <div class="chapter-section" id="sec-sampling">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.8.2</div>
+            <div class="chapter-info">
+                <h2>Steam Condensate Sampling &#8212; &#33976;&#27773;&#20957;&#32080;&#27700;&#21462;&#27171;</h2>
+                <p>Purity sampling (endotoxin, conductivity) and quality sampling (dryness, NCGs) | pp. 103&ndash;104</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 103&ndash;104</div>
+
+                    <h3>7.8.2.1 Purity Sampling</h3>
+                    <p>When required by the process, the steam purity shall be monitored through acceptable sampling techniques. A slipstream of the steam may be passed through a <span class="key-term">sample condenser/cooler</span>, fitted with a sampling valve.</p>
+                    <p>To ensure that the steam does not contribute to drug product contamination, sampling should be included during <span class="key-term">commissioning</span>, as a good engineering practice, and/or prior to each time the steam is used.</p>
+                    <p>If the sampling requirement is for <span class="key-term">endotoxin</span> or pyrogen testing, the sample cooler, tubing and valve should be of sanitary construction.</p>
+                    <p>Sample coolers can be fitted to the CS generator, or located in the distribution line, or at the <span class="key-term">use point</span> (recommended location), or a combination thereof. It is common practice to fit sample coolers with conductivity monitors and alarms.</p>
+                    <p>Endotoxin removal: The condensate sample from a Clean Steam generator with separator is expected to show <span class="key-term">3&ndash;4 log<sub>10</sub> level reduction</span> in pyrogens compared to the level in the feed water.</p>
+
+                    <h3>7.8.2.2 Steam &ldquo;Quality&rdquo; Sampling</h3>
+                    <p>Steam &ldquo;Quality&rdquo; sampling may be employed to determine the level of saturation and non-condensable gases. This can be determined by applying a <span class="key-term">steam calorimeter</span> and measuring the dryness or saturation level. A steam calorimeter measures the percentage by weight of steam in a mixture of steam and entrained water.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#20841;&#31278;&#21462;&#27171;&#30340;&#30446;&#30340;&#24046;&#30064;</h4>
+                        <table>
+                            <tr><th>&#38917;&#30446;</th><th>Purity Sampling &#32020;&#24230;&#21462;&#27171;</th><th>Quality Sampling &#21697;&#36074;&#21462;&#27171;</th></tr>
+                            <tr><td>&#30446;&#30340;</td><td>&#30906;&#35469;&#33976;&#27773;&#19981;&#27745;&#26579;&#34277;&#21697;</td><td>&#30906;&#35469;&#33976;&#27773;&#26159;&#21542;&#36275;&#22816;&#12300;&#20094;&#12301;</td></tr>
+                            <tr><td>&#27298;&#28204;&#38917;&#30446;</td><td>&#38651;&#23566;&#24230;&#12289;&#20839;&#27602;&#32032;&#12289;TOC</td><td>&#20094;&#29157;&#24230;&#12289;&#19981;&#20957;&#32080;&#27683;&#39636; (NCG)</td></tr>
+                            <tr><td>&#35373;&#20633;</td><td>Sample cooler + &#38651;&#23566;&#24230;&#35336;</td><td>&#33976;&#27773;&#29105;&#37327;&#35336; (calorimeter)</td></tr>
+                            <tr><td>&#26448;&#36074;&#35201;&#27714;</td><td>&#34907;&#29983;&#32026;&#65288;&#28204;&#20839;&#27602;&#32032;&#26178;&#65289;</td><td>&#19968;&#33324;&#32026;</td></tr>
+                            <tr><td>&#25512;&#34214;&#20301;&#32622;</td><td>&#20351;&#29992;&#40670; (use point)</td><td>&#31995;&#32113;&#20195;&#34920;&#24615;&#20301;&#32622;</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>3&ndash;4 log &#20839;&#27602;&#32032;&#21435;&#38500;&#65306;&#38750;&#24120;&#39640;&#30340;&#25351;&#27161;</h4>
+                        <p>3 log = 99.9% &#21435;&#38500;&#65307;4 log = 99.99% &#21435;&#38500;&#12290;&#36889;&#20195;&#34920;&#19968;&#20491;&#35373;&#35336;&#33391;&#22909;&#30340;&#24118;&#20998;&#38626;&#22120;&#30340; CS &#30332;&#29983;&#22120;&#21487;&#20197;&#23559;&#36914;&#26009;&#27700;&#20013;&#30340;&#20839;&#27602;&#32032;&#38477;&#20302;&#21040;&#38750;&#24120;&#23433;&#20840;&#30340;&#27700;&#24179;&#12290;</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#34880;&#22739;&#35336;&#12301;&#33287;&#12300;&#39636;&#33026;&#27231;&#12301;</h4>
+                        <p>Purity sampling &#23601;&#20687;&#37327;&#34880;&#22739;&#65306;&#30906;&#35469;&#12300;&#25104;&#20998;&#12301;&#26159;&#21542;&#21512;&#26684;&#12290;Quality sampling &#23601;&#20687;&#28204;&#39636;&#33026;&#65306;&#30906;&#35469;&#12300;&#29289;&#29702;&#29376;&#24907;&#12301;&#26159;&#21542;&#21512;&#26684;&#65288;&#33976;&#27773;&#22816;&#20094;&#12289;&#27794;&#26377;&#31354;&#27683;&#65289;&#12290;&#20841;&#32773;&#37117;&#38656;&#35201;&#65292;&#20294;&#30446;&#30340;&#19981;&#21516;&#12290;</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#23526;&#21209;&#24605;&#32771;</h4>
+                        <p>&#20320;&#30340;&#24037;&#24288;&#22312;&#21738;&#20123;&#20301;&#32622;&#23433;&#35037;&#20102; sample cooler&#65311;&#26159;&#22312;&#30332;&#29983;&#22120;&#20986;&#21475;&#12289;&#37197;&#36865;&#31649;&#32218;&#20013;&#12289;&#36996;&#26159;&#20351;&#29992;&#40670;&#65311;ISPE &#25512;&#34214;&#20351;&#29992;&#40670;&#65292;&#22240;&#28858;&#37027;&#25165;&#26159;&#33976;&#27773;&#23526;&#38555;&#36914;&#20837;&#35069;&#31243;&#30340;&#29376;&#24907;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.8.3 MATERIALS OF CONSTRUCTION ========== -->
+    <div class="chapter-section" id="sec-materials">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.8.3</div>
+            <div class="chapter-info">
+                <h2>Materials of Construction &#8212; &#26448;&#36074;&#35215;&#26684;</h2>
+                <p>Stainless steel, titanium, and carbon steel applications | pp. 104&ndash;105</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 104&ndash;105</div>
+
+                    <h3>7.8.3.1 Materials for Sanitary and Simple CS Generators</h3>
+                    <p>Structural integrity and chemical compatibility with the contact fluid and its constituents are two of the more practical issues that drive construction material selection for CS systems.</p>
+                    <p>The inherent corrosion potential forces CS manufacturers to consider relatively inert metals including <span class="key-term">stainless steel</span> or <span class="key-term">titanium</span>. Sanitary piping and valves, considered unnecessary for utility and simple CS generators, are often standard features for CS systems. The materials chosen should not contribute to contamination of the drug product.</p>
+                    <p>Typical materials of construction:</p>
+                    <ul>
+                        <li><strong>Evaporator &amp; separator</strong> &mdash; Shell, tubesheets, internals: <span class="key-term">300 series S.S.</span></li>
+                        <li><strong>Evaporator tubes</strong> &mdash; 300 series or <span class="key-term">titanium</span>, or other suitable alloy</li>
+                        <li><strong>Heat exchangers</strong> (feed heater, blow down, sample cooler) &mdash; 300 series</li>
+                        <li><strong>Piping</strong> &mdash; 300 series for water and CS; carbon steel for utility steam contact</li>
+                        <li><strong>Valves</strong> &mdash; 300 series and elastomers/diaphragms for water</li>
+                        <li><strong>Skid &amp; structural</strong> &mdash; Carbon steel</li>
+                    </ul>
+
+                    <h3>7.8.3.2 Materials for Utility Steam Generation</h3>
+                    <p>Chemical compatibility with the utility boiler generated steam and the carried over feed water chemicals are required. Based on particulate levels and required steam purity, more than one filtration stage may be utilized. Acceptable materials must be relatively inert and may include <span class="key-term">SS or tin-coated copper</span>.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#26448;&#36074;&#36984;&#25799;&#20841;&#22823;&#21407;&#21063;</h4>
+                        <ul>
+                            <li><strong>&#32080;&#27083;&#24375;&#24230;</strong>&#65306;&#32784;&#21463;&#33976;&#27773;&#22739;&#21147;&#33287;&#28331;&#24230;</li>
+                            <li><strong>&#21270;&#23416;&#30456;&#23481;&#24615;</strong>&#65306;&#19981;&#33287;&#28136;&#33976;&#27773;/&#20957;&#32080;&#27700;&#21453;&#25033;&#12289;&#19981;&#27745;&#26579;&#34277;&#21697;</li>
+                        </ul>
+                        <p>&#28136;&#33976;&#27773;&#26412;&#36523;&#26997;&#20855;&#33104;&#34645;&#24615;&#65288;&#39640;&#32020;&#27700;+&#39640;&#28331;&#65289;&#65292;&#22240;&#27492;&#24517;&#38920;&#20351;&#29992;&#32784;&#33104;&#34645;&#26448;&#26009;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#26448;&#36074;&#25972;&#29702;&#34920;</h4>
+                        <table>
+                            <tr><th>&#37096;&#20214;</th><th>&#34907;&#29983;&#22411; CS</th><th>Utility Steam &#25033;&#29992;</th></tr>
+                            <tr><td>&#33976;&#30332;&#22120;/&#20998;&#38626;&#22120;</td><td>300 &#31995; SS</td><td>N/A</td></tr>
+                            <tr><td>&#33976;&#30332;&#22120;&#31649;</td><td>300 &#31995; SS &#25110;&#37424;&#21512;&#37329;</td><td>N/A</td></tr>
+                            <tr><td>&#37197;&#31649;</td><td>300 &#31995; SS</td><td>SS &#25110;&#37675;&#37709;&#37509;</td></tr>
+                            <tr><td>Utility steam &#20596;</td><td>&#30899;&#37628;</td><td>&#30899;&#37628;</td></tr>
+                            <tr><td>&#27231;&#26550;/&#32080;&#27083;</td><td>&#30899;&#37628;</td><td>&#30899;&#37628;</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#28858;&#20160;&#40636;&#29992;&#37424;&#65311;</h4>
+                        <p>&#37424;&#21512;&#37329;&#22312;&#33976;&#30332;&#22120;&#31649;&#23376;&#20013;&#30340;&#20778;&#21218;&#65306;&#32784;&#33104;&#34645;&#24615;&#27604;&#19981;&#37885;&#37628;&#26356;&#20339;&#65292;&#23588;&#20854;&#23565;&#27695;&#21270;&#29289;&#30340;&#25239;&#24615;&#12290;&#20294;&#25104;&#26412;&#36611;&#39640;&#65292;&#36890;&#24120;&#22312;&#36914;&#26009;&#27700;&#20013;&#21487;&#33021;&#21547;&#26377;&#24494;&#37327;&#27695;&#21270;&#29289;&#30340;&#25033;&#29992;&#20013;&#25165;&#26371;&#36984;&#29992;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.8.4 SURFACE FINISH ========== -->
+    <div class="chapter-section" id="sec-finish">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.8.4</div>
+            <div class="chapter-info">
+                <h2>Surface Finish &#8212; &#34920;&#38754;&#34389;&#29702;</h2>
+                <p>Mechanical polishing, electropolishing, passivation | p. 104</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 104</div>
+                    <p><span class="key-term">Mechanical polishing (MP)</span>, <span class="key-term">electropolishing (EP)</span>, and <span class="key-term">passivation</span> processes are implemented in some stainless CS systems. Chlorine and/or chlorides will damage the generator regardless of the finish.</p>
+                    <p>The operating temperatures of these systems are more than sufficient for inhibiting microbiological growth. Therefore, MP is advocated for final finishing of mechanical welds, with <span class="key-term">mill finishes</span> and final passivation to optimize the formation of the corrosion resistant <span class="key-term">chromium oxide barrier</span>. Electropolishing will also optimize the chromium oxide barrier, and should be considered if passivation is not an option.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#34920;&#38754;&#34389;&#29702;&#30340;&#30446;&#30340;</h4>
+                        <p>&#28136;&#33976;&#27773;&#31995;&#32113;&#30340;&#34920;&#38754;&#34389;&#29702;&#20027;&#35201;&#30446;&#30340;&#19981;&#26159;&#25233;&#33740;&#65288;&#22240;&#28858;&#36939;&#20316;&#28331;&#24230;&#24050;&#36275;&#22816;&#27578;&#33740;&#65289;&#65292;&#32780;&#26159;&#65306;</p>
+                        <ul>
+                            <li><strong>&#38450;&#33104;&#34645;</strong>&#65306;&#36890;&#36942;&#24418;&#25104; Cr&#8322;O&#8323; &#27687;&#21270;&#37499;&#20445;&#35703;&#23652;</li>
+                            <li><strong>&#34389;&#29702;&#28938;&#25509;&#30165;&#36321;</strong>&#65306;MP &#25033;&#29992;&#26044;&#27231;&#26800;&#28938;&#25509;&#30340;&#26368;&#32066;&#34389;&#29702;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#34389;&#29702;&#26041;&#24335;&#36984;&#25799;</h4>
+                        <table>
+                            <tr><th>&#34389;&#29702;&#26041;&#24335;</th><th>&#20316;&#29992;</th><th>&#36969;&#29992;&#26178;&#27231;</th></tr>
+                            <tr><td>Mill Finish + Passivation</td><td>&#24037;&#24288;&#21407;&#22987;&#34920;&#38754; + &#37389;&#21270;&#22686;&#24375; Cr&#8322;O&#8323;</td><td>&#39318;&#36984;&#26041;&#26696;</td></tr>
+                            <tr><td>Mechanical Polish (MP)</td><td>&#30740;&#30952;&#24179;&#25972;&#28938;&#25509;&#34389;</td><td>&#28938;&#25509;&#24460;&#34389;&#29702;</td></tr>
+                            <tr><td>Electropolish (EP)</td><td>&#38651;&#21270;&#23416;&#25291;&#20809;&#65292;&#26368;&#20339;&#21270; Cr&#8322;O&#8323;</td><td>&#30070;&#37389;&#21270;&#28961;&#27861;&#22519;&#34892;&#26178;</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#27695;&#30340;&#33268;&#21629;&#23041;&#33029;</h4>
+                        <p>&#28961;&#35542;&#34920;&#38754;&#34389;&#29702;&#22810;&#22909;&#65292;&#27695;&#21644;&#27695;&#21270;&#29289;&#37117;&#26371;&#25703;&#27584;&#30332;&#29983;&#22120;&#12290;&#36889;&#26159;&#25972;&#20491; CS &#31995;&#32113;&#26368;&#22823;&#30340;&#21270;&#23416;&#23041;&#33029;&#65292;&#24517;&#38920;&#22312;&#36914;&#26009;&#27700;&#21069;&#34389;&#29702;&#38542;&#27573;&#24505;&#24213;&#31227;&#38500;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.8.5 PRETREATMENT ========== -->
+    <div class="chapter-section" id="sec-pretreatment">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.8.5</div>
+            <div class="chapter-info">
+                <h2>Pretreatment for CS Generators &#8212; &#28136;&#33976;&#27773;&#30332;&#29983;&#22120;&#21069;&#34389;&#29702;</h2>
+                <p>Scale, corrosion, and volatile carryover considerations | pp. 105&ndash;106</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 105&ndash;106</div>
+
+                    <p>The feed water pretreatment for a CS generator is born from three separate and distinct considerations:</p>
+                    <ol>
+                        <li><span class="key-term">Scale formation</span></li>
+                        <li><span class="key-term">Corrosion</span></li>
+                        <li><span class="key-term">Volatiles</span> which carryover with the steam and may affect steam purity</li>
+                    </ol>
+
+                    <h3>7.8.5.1 Scale</h3>
+                    <p>Scale formation is a function of generator feed water chemistry, concentration (depends on blow down rate), and temperature. It is independent of design and make. Because <span class="key-term">scale inhibitors are not used</span>, and because of the relatively high operating temperatures, the TDS of the feed water should be very low. <span class="key-term">Silica</span> is of particular concern &mdash; most manufacturers stipulate less than 1 ppm; some go as high as 5 ppm. The feed water should have <span class="key-term">no measurable hardness</span>. It is therefore common to use <span class="key-term">DI or reverse osmosis</span> as pretreatment.</p>
+                    <p>Using compendial water as feed is wasteful, unless the steam quantity is small and the cost of a dedicated feed water pretreatment system exceeds the cost of using compendial water.</p>
+                    <p>Some manufacturers offer generators to operate on softened water. Usually, the rate of blow down is increased to maintain low concentration.</p>
+                    <p><em>Note:</em> If the TDS of the soft water is relatively high, soft scale (such as sodium scale and sludge) can form.</p>
+
+                    <h3>7.8.5.2 Corrosion</h3>
+                    <p>The most common cause of corrosion is <span class="key-term">free chlorine</span>, not chlorides. Chlorine and chlorides, at any detectable level, are very detrimental to stainless steel. The higher the temperature and chlorine level, the more severe is the attack. Chlorine is known to migrate and concentrate in <span class="key-term">localized cells</span> where the level can reach tens or hundreds of ppm.</p>
+                    <p>Chlorine can be removed from the feed water by chemical injection of a reducing agent such as <span class="key-term">sodium bisulfate</span>, or by passing the chlorinated water through <span class="key-term">carbon filters</span>.</p>
+
+                    <h3>7.8.5.3 Volatiles</h3>
+                    <p>Dissolved gases and substances that are volatile at the operating temperature of the CS generator will carryover with the steam. If such substances are objectionable, they must be removed at the pretreatment stage. <span class="key-term">Ammonia</span> and <span class="key-term">CO&#8322;</span> are examples of volatile gases that will have an effect on the conductivity, such that a condensate sample may not meet USP requirements for Purified or WFI Water.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#21069;&#34389;&#29702;&#19977;&#22823;&#35506;&#38988;</h4>
+                        <p>CS &#30332;&#29983;&#22120;&#30340;&#36914;&#26009;&#27700;&#21069;&#34389;&#29702;&#24517;&#38920;&#21516;&#26178;&#35299;&#27770;&#19977;&#20491;&#21839;&#38988;&#65292;&#32570;&#19968;&#19981;&#21487;&#65306;</p>
+                        <ul>
+                            <li><strong>&#27700;&#22434; (Scale)</strong>&#65306;&#38477;&#20302; TDS &amp; &#30717;&#65292;&#38646;&#30828;&#24230;</li>
+                            <li><strong>&#33104;&#34645; (Corrosion)</strong>&#65306;&#31227;&#38500;&#28216;&#38626;&#27695;</li>
+                            <li><strong>&#25582;&#30332;&#24615;&#29289;&#36074; (Volatiles)</strong>&#65306;&#31227;&#38500; NH&#8323;&#12289;CO&#8322;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#27700;&#22434;&#21839;&#38988;&#35443;&#35299;</h4>
+                        <p>&#28136;&#33976;&#27773;&#30332;&#29983;&#22120;&#19981;&#33021;&#20351;&#29992;&#27700;&#22434;&#25233;&#21046;&#21137;&#65288;&#22240;&#28858;&#26371;&#27745;&#26579;&#33976;&#27773;&#65289;&#65292;&#22240;&#27492;&#36914;&#26009;&#27700;&#26412;&#36523;&#24517;&#38920;&#38750;&#24120;&#20094;&#28136;&#65306;</p>
+                        <ul>
+                            <li>TDS &#35201;&#38750;&#24120;&#20302;&#65288;&#36890;&#24120;&#20351;&#29992; DI &#25110; RO &#27700;&#65289;</li>
+                            <li>&#30717;&#21547;&#37327; &lt; 1 ppm&#65288;&#22196;&#26684;&#65289;&#33267; &lt; 5 ppm&#65288;&#23532;&#39686;&#65289;</li>
+                            <li>&#30828;&#24230; = 0&#65288;&#28961;&#21487;&#28204;&#37327;&#30828;&#24230;&#65289;</li>
+                        </ul>
+                        <p>&#21363;&#20351;&#29992;&#36575;&#21270;&#27700;&#65292;&#39640; TDS &#20173;&#21487;&#33021;&#24418;&#25104;&#37385;&#22434;&#21644;&#27745;&#27877;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#27695;&#30340;&#33104;&#34645;&#27231;&#21046; &mdash; &#28145;&#23652;&#35299;&#35498;</h4>
+                        <p>&#27695;&#30340;&#21361;&#23475;&#26368;&#22823;&#38627;&#40670;&#22312;&#26044;&#12300;&#23616;&#37096;&#28611;&#32302;&#12301;&#65306;&#21363;&#20351;&#36914;&#26009;&#27700;&#20013;&#27695;&#21547;&#37327;&#24456;&#20302;&#65288;&lt;1 ppm&#65289;&#65292;&#27695;&#26371;&#36983;&#31227;&#21040;&#32299;&#38553;&#12289;&#27515;&#35282;&#34389;&#28611;&#32302;&#21040;&#25976;&#21313;&#33267;&#25976;&#30334; ppm&#65292;&#36896;&#25104;&#21127;&#28872;&#23616;&#37096;&#33104;&#34645;&#12290;&#35299;&#27770;&#26041;&#27861;&#65306;</p>
+                        <ul>
+                            <li>&#21270;&#23416;&#27880;&#20837;&#36996;&#21407;&#21137;&#65288;&#22914;&#20126;&#30827;&#37240;&#27691;&#37385;&#65289;</li>
+                            <li>&#27963;&#24615;&#30899;&#36942;&#28670;</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#39135;&#29289;&#36942;&#25935;&#21407;&#12301;</h4>
+                        <p>&#23565; CS &#30332;&#29983;&#22120;&#32780;&#35328;&#65292;&#27695;&#23601;&#20687;&#20154;&#39636;&#30340;&#36942;&#25935;&#21407; &mdash; &#21363;&#20351;&#24494;&#37327;&#20063;&#33021;&#35320;&#30332;&#22196;&#37325;&#21453;&#25033;&#12290;&#32780;&#25582;&#30332;&#24615;&#29289;&#36074;&#65288;NH&#8323;&#12289;CO&#8322;&#65289;&#23601;&#20687;&#12300;&#39135;&#29289;&#27683;&#21619;&#12301;&#65292;&#26371;&#36319;&#33879;&#33976;&#27773;&#19968;&#36215;&#36208;&#65292;&#24433;&#38911;&#26368;&#32066;&#29986;&#21697;&#30340;&#12300;&#21619;&#36947;&#12301;&#65288;&#38651;&#23566;&#24230;&#65289;&#12290;</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#23526;&#21209;&#27298;&#26597;&#28165;&#21934;</h4>
+                        <ul>
+                            <li>&#20320;&#30340;&#24037;&#24288; CS &#30332;&#29983;&#22120;&#36914;&#26009;&#27700;&#26159;&#29992;&#20160;&#40636;&#65311;DI&#65311;RO&#65311;&#36996;&#26159;&#36575;&#21270;&#27700;&#65311;</li>
+                            <li>&#26159;&#21542;&#23450;&#26399;&#30435;&#28204;&#36914;&#26009;&#27700;&#30340;&#30717;&#21547;&#37327;&#21644;&#28216;&#38626;&#27695;&#65311;</li>
+                            <li>&#30332;&#29983;&#22120;&#26159;&#21542;&#26377;&#23450;&#26399;&#38500;&#22434;&#33287;&#30446;&#35222;&#27298;&#26597;&#30340; SOP&#65311;</li>
+                            <li>Blow down rate &#26159;&#22810;&#23569;&#65311;&#26159;&#21542;&#36275;&#20197;&#25511;&#21046;&#28611;&#32302;&#20493;&#25976;&#65311;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.9 COST IMPLICATIONS ========== -->
+    <div class="chapter-section" id="sec-cost">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.9</div>
+            <div class="chapter-info">
+                <h2>Cost Implications &#8212; &#25104;&#26412;&#32771;&#37327;</h2>
+                <p>Economics of pharmaceutical steam production | p. 106</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 106</div>
+                    <p>Determining the economics of pharmaceutical steam production is complex. Costs are quite predictable, but vary greatly depending on <span class="key-term">scale of operation</span>, system design, actual usage, etc.</p>
+                    <p>The total operating cost to produce pharmaceutical steams is obtained by adding the cost of feed water to the costs of <span class="key-term">pretreatment</span> and <span class="key-term">final treatment</span> (primary ion removal and polishing).</p>
+                    <p>The type of pharmaceutical steam system design option selected is typically based on feed water TDS, silica and hardness levels, organic and colloidal content, as well as anticipated steam system utility costs (acid, caustic, salt, power, and source water). Consideration should also be given to <span class="key-term">maintenance requirements</span> and available resources.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#25104;&#26412;&#32068;&#25104;</h4>
+                        <p>&#34277;&#29992;&#33976;&#27773;&#30340;&#32317;&#25104;&#26412; = &#36914;&#26009;&#27700;&#25104;&#26412; + &#21069;&#34389;&#29702;&#25104;&#26412; + &#26368;&#32066;&#34389;&#29702;&#25104;&#26412;</p>
+                        <ul>
+                            <li><strong>&#36914;&#26009;&#27700;</strong>&#65306;&#24066;&#25919;&#27700;/&#20117;&#27700;&#25104;&#26412;</li>
+                            <li><strong>&#21069;&#34389;&#29702;</strong>&#65306;&#36575;&#21270;&#12289;RO&#12289;DI &#31561;&#35373;&#20633;&#33287;&#32791;&#26448;</li>
+                            <li><strong>&#26368;&#32066;&#34389;&#29702;</strong>&#65306;&#38626;&#23376;&#20132;&#25563;&#12289;&#25291;&#20809;&#31561;</li>
+                            <li><strong>&#36939;&#34892;&#25104;&#26412;</strong>&#65306;&#37240;&#12289;&#40572;&#12289;&#40573;&#12289;&#38651;&#21147;&#12289;&#28304;&#27700;</li>
+                            <li><strong>&#32173;&#35703;&#25104;&#26412;</strong>&#65306;&#23450;&#26399;&#38500;&#22434;&#12289;&#37389;&#21270;&#12289;&#25913;&#31649;&#31561;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#25104;&#26412;&#27770;&#31574;&#30340;&#38364;&#37749;</h4>
+                        <p>&#36914;&#26009;&#27700;&#27700;&#36074;&#36234;&#24046;&#65292;&#21069;&#34389;&#29702;&#25104;&#26412;&#36234;&#39640;&#12290;&#20294;&#29992;&#34277;&#20856;&#32026;&#27700;&#65288;WFI&#65289;&#20316;&#28858;&#36914;&#26009;&#27700;&#36890;&#24120;&#28010;&#36027;&#65292;&#38500;&#38750;&#33976;&#27773;&#29992;&#37327;&#24456;&#23567;&#12290;&#26368;&#20339;&#23526;&#21209;&#26159;&#65306;&#23560;&#29992; RO/DI &#31995;&#32113;&#20379;&#27700;&#32102; CS &#30332;&#29983;&#22120;&#65292;&#33287; WFI &#31995;&#32113;&#20998;&#38283;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.10 STEAM "QUALITY" ========== -->
+    <div class="chapter-section" id="sec-quality">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.10</div>
+            <div class="chapter-info">
+                <h2>Steam &ldquo;Quality&rdquo; &#8212; &#33976;&#27773;&#12300;&#21697;&#36074;&#12301;&#65288;&#20094;&#29157;&#24230;&#65289;</h2>
+                <p>Dryness fraction, saturation, and moisture sources | p. 106</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 106</div>
+                    <p><span class="key-term">Steam quality</span> is defined as the saturation percentage of steam to water or more explicitly, the ratio of the vapor mass to the mass of the steam mixture.</p>
+                    <p><span class="key-term">Dry Saturated Steam</span> with minimum superheat is necessary for efficient steam sterilization.</p>
+                    <p>Water can be generated and carried by steam within distribution systems in two ways:</p>
+                    <ol>
+                        <li>In suspension as <span class="key-term">moisture</span> when the steam is not 100% saturated</li>
+                        <li>As <span class="key-term">condensate</span> separated from the steam</li>
+                    </ol>
+                    <p>Water vapor carried in suspension may be reduced by: adding more heat or raising the temperature, reducing the pressure, or adding a steam entrainment separator. Water moisture and condensate may be reduced by <span class="key-term">steam traps</span>.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>Steam Quality &#30340;&#23450;&#32681;</h4>
+                        <p>&#33976;&#27773;&#21697;&#36074;&#65288;&#20094;&#29157;&#24230;&#65289;= &#33976;&#27773;&#36074;&#37327; &divide; &#65288;&#33976;&#27773;&#36074;&#37327; + &#27700;&#36074;&#37327;&#65289;</p>
+                        <ul>
+                            <li><strong>100% = &#20094;&#39165;&#21644;&#33976;&#27773;</strong>&#65306;&#29702;&#24819;&#29376;&#24907;&#65292;&#28357;&#33740;&#25928;&#29575;&#26368;&#39640;</li>
+                            <li><strong>&lt;100% = &#28629;&#33976;&#27773;</strong>&#65306;&#25884;&#24118;&#27700;&#20998;&#65292;&#28357;&#33740;&#25928;&#29575;&#38477;&#20302;</li>
+                            <li><strong>&gt;100% = &#36942;&#29105;&#33976;&#27773;</strong>&#65306;&#29105;&#20132;&#25563;&#25928;&#29575;&#24046;&#65292;&#20063;&#19981;&#21033;&#28357;&#33740;</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>&#20844;&#24335;&#65306;&#33976;&#27773;&#20094;&#29157;&#24230;</h4>
+<pre>
+Steam Quality (x) = m_steam / (m_steam + m_water)
+
+&#20854;&#20013;&#65306;
+  m_steam = &#33976;&#27773;&#36074;&#37327;
+  m_water = &#25884;&#24118;&#30340;&#27700;&#20998;&#36074;&#37327;
+
+&#29702;&#24819;&#20540;&#65306;x &ge; 0.95 (&#21363; &ge; 95% &#20094;&#29157;&#24230;)
+</pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#28629;&#27611;&#24062;&#28888;&#34915;&#26381;&#12301;</h4>
+                        <p>&#24819;&#20687;&#29992;&#27611;&#24062;&#25830;&#20094;&#34915;&#26381;&#65306;&#22914;&#26524;&#27611;&#24062;&#26412;&#36523;&#26159;&#28629;&#30340;&#65288;&#28629;&#33976;&#27773;&#65289;&#65292;&#25830;&#20358;&#25830;&#21435;&#34915;&#26381;&#20063;&#20094;&#19981;&#20102;&#12290;&#21482;&#26377;&#20094;&#27611;&#24062;&#65288;&#20094;&#39165;&#21644;&#33976;&#27773;&#65289;&#25165;&#33021;&#26377;&#25928;&#22320;&#12300;&#25830;&#20094;&#12301;&#65288;&#28357;&#33740;&#65289;&#12290;&#20294;&#22914;&#26524;&#29992;&#28888;&#20094;&#27231;&#65288;&#36942;&#29105;&#33976;&#27773;&#65289;&#65292;&#28331;&#24230;&#22826;&#39640;&#21453;&#32780;&#21487;&#33021;&#20663;&#34915;&#26009;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#28187;&#23569;&#33976;&#27773;&#20013;&#27700;&#20998;&#30340;&#26041;&#27861;</h4>
+                        <ul>
+                            <li><strong>&#25552;&#39640;&#28331;&#24230;/&#29105;&#37327;</strong>&#65306;&#35731;&#25884;&#24118;&#27700;&#20998;&#33976;&#30332;</li>
+                            <li><strong>&#38477;&#22739;</strong>&#65306;&#33976;&#27773;&#33192;&#33081;&#65292;&#30456;&#23565;&#39165;&#21644;&#24230;&#19978;&#21319;</li>
+                            <li><strong>&#23433;&#35037;&#20998;&#38626;&#22120;</strong>&#65306;&#27231;&#26800;&#26041;&#24335;&#31227;&#38500;&#28082;&#28404;</li>
+                            <li><strong>&#23433;&#35037;&#33976;&#27773;&#38464; (Steam Trap)</strong>&#65306;&#25490;&#20986;&#24050;&#20998;&#38626;&#30340;&#20957;&#32080;&#27700;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11 DISTRIBUTION ========== -->
+    <div class="chapter-section" id="sec-distribution">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11</div>
+            <div class="chapter-info">
+                <h2>Distribution &#8212; &#28136;&#33976;&#27773;&#37197;&#36865;&#31995;&#32113;</h2>
+                <p>Materials, connections, traps, and general design practices | pp. 106&ndash;107</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 106&ndash;107</div>
+                    <p>Distribution systems for clean steam follow the same good engineering practices commonly used for utility steam, with the exception that contact materials must be inert to the aggressive nature of clean steam.</p>
+                    <p>Corrosion-resistant <span class="key-term">304, 316, or 316L grade stainless steel</span> &ldquo;tubing&rdquo; or solid-drawn &ldquo;pipe&rdquo; are commonly used. Surface finish is not critical due to the self-sanitizing nature of the clean steam. <span class="key-term">Mill finish or 180-grit</span> mechanically polished pipe or tubing is sufficient. <span class="key-term">TIG Orbital welding</span> and post-installation passivation is considered appropriate.</p>
+                    <p>Piping must be designed to allow for <span class="key-term">thermal expansion</span> and to <span class="key-term">drain condensate</span>.</p>
+                    <p><em>Note: Drains should have air breaks.</em></p>
+                    <p><span class="key-term">Sanitary clamps</span> or pipe flanges are most commonly used where the piping must be broken, but welded connections are used as much as possible to eliminate maintenance costs and potential for leaks. Threaded connections may be suitable for instrumentation if positioned to drain condensate and remain hot.</p>
+                    <p><span class="key-term">Ball valves</span> are commonly used for isolation because elastomeric diaphragms do not hold up well in this service. Where diaphragm valves are used, <span class="key-term">Teflon-encapsulated EPDM</span> diaphragms give the best long-term performance.</p>
+                    <p>Steam quality sampling may be determined during &ldquo;commissioning&rdquo; and consistency ensured based on the proper location and subsequent maintenance of traps, entrainment separators, and vents.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>CS &#37197;&#36865;&#33287; Utility Steam &#37197;&#36865;&#30340;&#30064;&#21516;</h4>
+                        <p><strong>&#30456;&#21516;&#40670;</strong>&#65306;&#37117;&#36981;&#24490;&#33391;&#22909;&#24037;&#31243;&#23526;&#21209; &mdash; &#25490;&#20957;&#32080;&#27700;&#12289;&#25490;&#31354;&#27683;&#12289;&#25903;&#25744;&#31649;&#32218;&#12289;&#29105;&#33192;&#33081;&#35036;&#20767;&#12290;</p>
+                        <p><strong>&#19981;&#21516;&#40670;</strong>&#65306;CS &#37197;&#36865;&#24517;&#38920;&#20840;&#31243;&#20351;&#29992;&#32784;&#33104;&#34645;&#26448;&#26009;&#65288;304/316/316L SS&#65289;&#65292;&#22240;&#28858;&#28136;&#33976;&#27773;&#26997;&#20855;&#33104;&#34645;&#24615;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CS &#37197;&#36865;&#35373;&#35336;&#37325;&#40670;</h4>
+                        <table>
+                            <tr><th>&#38917;&#30446;</th><th>&#35215;&#26684;</th></tr>
+                            <tr><td>&#31649;&#26448;</td><td>304/316/316L SS tubing &#25110; solid-drawn pipe</td></tr>
+                            <tr><td>&#34920;&#38754;&#34389;&#29702;</td><td>Mill finish &#25110; 180-grit MP &#21363;&#21487;</td></tr>
+                            <tr><td>&#28938;&#25509;</td><td>TIG Orbital welding + &#23433;&#35037;&#24460;&#37389;&#21270;</td></tr>
+                            <tr><td>&#36899;&#25509;</td><td>&#20778;&#20808;&#28938;&#25509;&#65307;&#38656;&#25286;&#21368;&#34389;&#29992; Sanitary clamp</td></tr>
+                            <tr><td>&#38309;&#39006;</td><td>Ball valve&#65288;&#39318;&#36984;&#65289;&#65307;Diaphragm &#29992; Teflon-EPDM</td></tr>
+                            <tr><td>&#27880;&#24847;</td><td>&#25490;&#27700;&#21475;&#38656;&#35373;&#31354;&#27683;&#38291;&#38548; (air break)</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#28858;&#20160;&#40636;&#29992; Ball Valve &#32780;&#19981;&#26159; Diaphragm Valve&#65311;</h4>
+                        <p>&#24819;&#20687;&#22312;&#28814;&#29105;&#29872;&#22659;&#20013;&#20351;&#29992;&#27233;&#33184;&#25163;&#22871;&#33287;&#37329;&#23660;&#24037;&#20855;&#65306;&#27233;&#33184;&#25163;&#22871;&#65288;&#27233;&#33184;&#38548;&#33180;&#65289;&#24456;&#24555;&#23601;&#26371;&#32769;&#21270;&#35722;&#33067;&#65292;&#32780;&#37329;&#23660;&#24037;&#20855;&#65288;&#37329;&#23660;&#29699;&#38309;&#65289;&#21063;&#33021;&#38263;&#26399;&#32784;&#21463;&#39640;&#28331;&#12290;CS &#37197;&#36865;&#28331;&#24230;&#39640;&#12289;&#33104;&#34645;&#24615;&#24375;&#65292;&#27233;&#33184;&#38548;&#33180;&#22781;&#21629;&#26126;&#39023;&#32302;&#30701;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11.1 LINE SIZING ========== -->
+    <div class="chapter-section" id="sec-linesizing">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11.1</div>
+            <div class="chapter-info">
+                <h2>Line Sizing &#8212; &#31649;&#24465;&#36984;&#25799;</h2>
+                <p>Maximum velocity and erosion control | p. 107</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 107</div>
+                    <p>The steam distribution header should be sized for a maximum velocity of <span class="key-term">7,200 feet per minute</span> (120 ft/sec or 37 m/sec) to limit erosion and extend the life expectancy of the piping. Condensate line sizing should follow good engineering practices for utility condensate.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="formula-box">
+                        <h4>&#38364;&#37749;&#35373;&#35336;&#25976;&#25818;</h4>
+<pre>
+&#33976;&#27773;&#24185;&#31649;&#26368;&#22823;&#27969;&#36895;:
+  7,200 ft/min = 120 ft/sec = 37 m/sec
+
+&#36229;&#36942;&#27492;&#36895;&#24230; &rarr; &#31649;&#22721;&#20405;&#34645;&#21152;&#36895; &rarr; &#31649;&#32218;&#22781;&#21629;&#32302;&#30701;
+</pre>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>&#23526;&#21209;&#24847;&#32681;</h4>
+                        <p>&#36889;&#20491;&#36895;&#24230;&#38480;&#21046;&#26159;&#36991;&#20813;&#12300;&#39640;&#36895;&#20405;&#34645;&#12301;&#30340;&#35373;&#35336;&#19978;&#38480;&#12290;&#22312;&#23526;&#38555;&#35373;&#35336;&#20013;&#65306;</p>
+                        <ul>
+                            <li>&#26681;&#25818;&#23574;&#23792;&#27969;&#37327;&#35336;&#31639;&#25152;&#38656;&#31649;&#24465;</li>
+                            <li>&#30906;&#20445;&#22312;&#26368;&#22823;&#36000;&#33655;&#26178;&#27969;&#36895; &le; 37 m/s</li>
+                            <li>&#20957;&#32080;&#27700;&#31649;&#25353;&#19968;&#33324; utility condensate &#27161;&#28310;&#35373;&#35336;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11.2 WATER MOISTURE REMOVAL ========== -->
+    <div class="chapter-section" id="sec-moisture">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11.2</div>
+            <div class="chapter-info">
+                <h2>Water Moisture Removal &#8212; &#38500;&#28629;/&#21435;&#27700;&#20998;</h2>
+                <p>Pressure reduction, in-line separators | p. 107</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 107</div>
+                    <p>Water vapor forms in steam systems due to <span class="key-term">heat loss</span>, causing a change in the liquid/vapor ratio or steam &ldquo;quality&rdquo;.</p>
+                    <p>Steam may be dried of moisture by <span class="key-term">reducing the generated pressure</span> just prior to the point of use to coincide with the steam temperature of saturation at the reduced pressure.</p>
+                    <p>Moisture entrained in the steam can also be removed by installing an <span class="key-term">In-Line separator</span> at the point of use, just prior to, or just after, the regulator. If the separator is located upstream of the regulator, the regulator should be protected from water damage (wire drawing) and impingement damage on the regulator diaphragms.</p>
+                    <p>In-line separators are available in sizes from 1/2" to 6" (approx. 1 cm to 15 cm) and remove moisture with a series of baffles on which the suspended water droplets impinge and fall out by gravity to the drain, which must be piped to a trap. Separators have a separation efficiency of better than <span class="key-term">99%</span> in the removal of all liquid and solid entrainment exceeding 10 microns.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#20841;&#31278;&#38500;&#28629;&#26041;&#27861;</h4>
+                        <ul>
+                            <li><strong>&#26041;&#27861; 1&#65306;&#38477;&#22739;</strong> &mdash; &#22312;&#20351;&#29992;&#40670;&#21069;&#38477;&#20302;&#33976;&#27773;&#22739;&#21147;&#65292;&#35731;&#33976;&#27773;&#22312;&#26032;&#30340;&#22739;&#21147;&#19979;&#36948;&#21040;&#39165;&#21644;&#29376;&#24907;&#65292;&#22810;&#39192;&#30340;&#29105;&#37327;&#35731;&#25884;&#24118;&#27700;&#20998;&#33976;&#30332;</li>
+                            <li><strong>&#26041;&#27861; 2&#65306;&#32218;&#20839;&#20998;&#38626;&#22120;</strong> &mdash; &#21033;&#29992;&#25803;&#26495; (baffles) &#20351;&#27700;&#28404;&#25758;&#25802;&#20006;&#38752;&#37325;&#21147;&#33853;&#19979;&#65292;&#25928;&#29575; &gt;99%&#65288;&gt;10 &#956;m&#65289;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#20998;&#38626;&#22120;&#23433;&#35037;&#20301;&#32622;&#30340;&#35387;&#24847;&#20107;&#38917;</h4>
+                        <p>&#22914;&#26524;&#20998;&#38626;&#22120;&#23433;&#35037;&#22312;&#35519;&#22739;&#38309; (regulator) &#19978;&#28216;&#65292;&#24517;&#38920;&#20445;&#35703;&#35519;&#22739;&#38309;&#20813;&#21463;&#65306;</p>
+                        <ul>
+                            <li><strong>Wire drawing</strong>&#65306;&#27700;&#27969;&#27798;&#21047;&#38309;&#24231;&#36896;&#25104;&#30340;&#25613;&#20663;</li>
+                            <li><strong>Impingement damage</strong>&#65306;&#27700;&#28404;&#25758;&#25802;&#38548;&#33180;&#36896;&#25104;&#30340;&#25613;&#22750;</li>
+                        </ul>
+                        <p>&#22240;&#27492;&#35377;&#22810;&#35373;&#35336;&#23559;&#20998;&#38626;&#22120;&#25918;&#22312;&#35519;&#22739;&#38309;&#19979;&#28216;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11.3 CONDENSATE REMOVAL ========== -->
+    <div class="chapter-section" id="sec-condensate">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11.3</div>
+            <div class="chapter-info">
+                <h2>Condensate Removal &#8212; &#20957;&#32080;&#27700;&#25490;&#38500;</h2>
+                <p>Steam traps, water hammer prevention, bacterial contamination | pp. 107&ndash;108</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 107&ndash;108</div>
+                    <p><span class="key-term">Condensate</span> is the water that has separated from the liquid vapor mixture and forms in steam systems due to heat losses and natural separation effects. Lines should be designed to prevent the buildup of condensate to avoid dangerous <span class="key-term">water hammer</span> and to eliminate potential cold spots where <span class="key-term">bacteria can grow</span>.</p>
+                    <p>Any untrapped vertical length of pipe will quickly fill with condensate. If this condensate is allowed to stand for sufficient time, it can cool and become a breeding ground for bacteria. This bacteria could possibly be entrained back into the main distribution header and contaminate use points downstream.</p>
+                    <p>Worst case condensate removal locations should be sampled monthly for presence of bacteria.</p>
+                    <p>The following practices are commonly employed:</p>
+                    <ul>
+                        <li>Each line is adequately <span class="key-term">supported to avoid sagging</span> and subsequent condensate accumulation.</li>
+                        <li><span class="key-term">Steam traps</span> are installed at all points where condensate can collect (e.g., at least every 100 feet (30 meters) of line, upstream of control valves, at the bottom of vertical risers, etc.). Steam traps for clean steam service should be <span class="key-term">sanitary design and self-draining</span>.</li>
+                        <li>If the main distribution header is above the use points, the branches should be routed from the <span class="key-term">top of the header</span> to avoid excessive condensate loads at the branch.</li>
+                        <li>An alternative is to run the main distribution header <span class="key-term">below the use points</span>. Then the branches can drain back to the main header, avoiding the need for additional traps.</li>
+                        <li>The requirement to trap each branch can be waived for <span class="key-term">short drops</span> from main headers to vessels that are in frequent use where sterilization and water hammer are not impacted.</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#20957;&#32080;&#27700;&#30340;&#19977;&#22823;&#39080;&#38570;</h4>
+                        <ul>
+                            <li><strong>&#27700;&#37656; (Water Hammer)</strong>&#65306;&#20957;&#32080;&#27700;&#34987;&#33976;&#27773;&#25512;&#21205;&#25758;&#25802;&#31649;&#22721;&#65292;&#21487;&#33021;&#36896;&#25104;&#31649;&#32218;&#30772;&#35010;</li>
+                            <li><strong>&#32048;&#33740;&#28363;&#29983;</strong>&#65306;&#20919;&#21371;&#30340;&#20957;&#32080;&#27700;&#26159;&#24494;&#29983;&#29289;&#28331;&#24202;&#65292;&#32048;&#33740;&#21487;&#33021;&#34987;&#24118;&#22238;&#20027;&#31649;</li>
+                            <li><strong>&#28357;&#33740;&#22833;&#25943;</strong>&#65306;&#20919;&#40670;&#28961;&#27861;&#36948;&#21040;&#28357;&#33740;&#28331;&#24230;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#20957;&#32080;&#27700;&#31649;&#29702;&#23526;&#21209;&#35215;&#21063;</h4>
+                        <table>
+                            <tr><th>&#35215;&#21063;</th><th>&#20839;&#23481;</th></tr>
+                            <tr><td>&#31649;&#32218;&#25903;&#25744;</td><td>&#36991;&#20813;&#22446;&#38519;&#65292;&#38450;&#27490;&#20957;&#32080;&#27700;&#31309;&#32047;</td></tr>
+                            <tr><td>Steam Trap &#20301;&#32622;</td><td>&#27599;30m&#12289;&#25511;&#21046;&#38309;&#21069;&#12289;&#22402;&#30452;&#21319;&#31649;&#24213;&#37096;</td></tr>
+                            <tr><td>Trap &#35215;&#26684;</td><td>&#34907;&#29983;&#32026;&#12289;&#33258;&#25490;&#24335;&#35373;&#35336;</td></tr>
+                            <tr><td>&#25903;&#31649;&#36208;&#21521;</td><td>&#24185;&#31649;&#22312;&#19978;&#26041; &rarr; &#25903;&#31649;&#24478;&#38914;&#37096;&#25509;&#20986;</td></tr>
+                            <tr><td>&#20633;&#36984;&#26041;&#26696;</td><td>&#24185;&#31649;&#22312;&#19979;&#26041; &rarr; &#25903;&#31649;&#33258;&#28982;&#22238;&#27969;&#65292;&#28187;&#23569; trap</td></tr>
+                            <tr><td>&#35905;&#20813;&#26781;&#20214;</td><td>&#30701;&#33853;&#31649; + &#38971;&#32321;&#20351;&#29992;&#30340;&#35373;&#20633;</td></tr>
+                            <tr><td>&#21462;&#27171;</td><td>&#26368;&#24046;&#20301;&#32622;&#27599;&#26376;&#25505;&#27171;&#27298;&#28204;&#32048;&#33740;</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#23627;&#38914;&#25490;&#27700;&#28317;&#12301;</h4>
+                        <p>&#33976;&#27773;&#31649;&#32218;&#30340;&#20957;&#32080;&#27700;&#31649;&#29702;&#23601;&#20687;&#23627;&#38914;&#25490;&#27700;&#65306;&#22914;&#26524;&#25490;&#27700;&#28317;&#22446;&#38519;&#25110;&#22581;&#22622;&#65292;&#27700;&#23601;&#26371;&#31309;&#22312;&#23627;&#38914;&#19978;&#65292;&#26368;&#32066;&#36896;&#25104;&#28431;&#27700;&#65288;&#27700;&#37656;&#65289;&#25110;&#30332;&#38665;&#65288;&#32048;&#33740;&#65289;&#12290;&#33391;&#22909;&#30340;&#26012;&#24230;&#35373;&#35336;&#21644;&#23450;&#26399;&#28165;&#29702;&#65288;steam trap&#65289;&#26159;&#38364;&#37749;&#12290;</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#23526;&#21209;&#27298;&#26597;</h4>
+                        <p>&#20320;&#30340;&#24037;&#24288;&#30340; CS &#31649;&#32218;&#26159;&#24185;&#31649;&#22312;&#19978;&#36996;&#26159;&#22312;&#19979;&#65311;&#25903;&#31649;&#26159;&#24478;&#24185;&#31649;&#38914;&#37096;&#36996;&#26159;&#20596;&#38754;&#25509;&#20986;&#65311;&#27599;&#20491; steam trap &#26159;&#21542;&#23450;&#26399;&#27298;&#26597;&#65288;&#21345;&#27515;&#30340; trap &#26371;&#25490;&#19981;&#20986;&#20957;&#32080;&#27700;&#65292;&#27945;&#28431;&#30340; trap &#26371;&#25490;&#25481;&#33976;&#27773;&#65289;&#65311;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11.4 NON-CONDENSABLE GAS REMOVAL ========== -->
+    <div class="chapter-section" id="sec-ncg">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11.4</div>
+            <div class="chapter-info">
+                <h2>Non-Condensable Gas Removal &#8212; &#19981;&#20957;&#32080;&#27683;&#39636;&#25490;&#38500;</h2>
+                <p>Air as insulator, thermostatic traps, correct piping | p. 108</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 108</div>
+                    <p>Air and other <span class="key-term">non-condensable gases</span> should be minimized from pharmaceutical steam systems. Since <span class="key-term">air acts as an insulator</span>, incomplete sterilization can occur in the process. Air in a system offers a very effective barrier to the heat transfer which will lead to a reduced temperature at the surface of a tube, system component or process equipment.</p>
+                    <p>Air can be discharged using steam traps, however excessive levels may slow down the discharge of condensate. The subcooled condensate can then lead to <span class="key-term">insufficient sterilization temperatures</span> due to the excess water.</p>
+                    <p>The removal of air can be achieved by placing <span class="key-term">thermostatic pharmaceutical steam traps</span> with the inlet in the upward position. These should be placed in positions where air is prone to collect such as:</p>
+                    <ul>
+                        <li>The terminal points of the main and large branches of the steam header</li>
+                        <li>High points in tanks, reactors and sterilizers</li>
+                    </ul>
+                    <p>In the case of air and condensate discharge at the bottom of large vessels, the air and condensate should be separated by <span class="key-term">correct piping practices</span>.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#31354;&#27683;&#28858;&#20160;&#40636;&#26159;&#28357;&#33740;&#30340;&#25973;&#20154;&#65311;</h4>
+                        <p>&#31354;&#27683;&#26159;&#20778;&#33391;&#30340;&#12300;&#38548;&#29105;&#23652;&#12301;&#65292;&#26371;&#22312;&#34987;&#28357;&#33740;&#34920;&#38754;&#24418;&#25104;&#27683;&#34955;&#65292;&#38459;&#25803;&#33976;&#27773;&#25509;&#35320;&#35442;&#34920;&#38754;&#12290;&#32080;&#26524;&#65306;</p>
+                        <ul>
+                            <li>&#35442;&#21312;&#22495;&#28331;&#24230;&#36948;&#19981;&#21040;&#28357;&#33740;&#35201;&#27714;</li>
+                            <li>&#36896;&#25104;&#12300;&#20919;&#40670;&#12301;&#65292;&#28357;&#33740;&#19981;&#23436;&#20840;</li>
+                            <li>&#22196;&#37325;&#26178;&#23566;&#33268;&#25972;&#20491; SIP &#22833;&#25943;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>NCG &#25490;&#38500;&#31574;&#30053;</h4>
+                        <ul>
+                            <li><strong>&#35373;&#20633;&#65306;</strong>&#29105;&#38748;&#21147;&#24335; (thermostatic) &#34277;&#29992;&#33976;&#27773;&#38464;&#65292;&#36914;&#21475;&#26397;&#19978;&#23433;&#35037;</li>
+                            <li><strong>&#20301;&#32622;&#65306;</strong>&#24185;&#31649;&#33287;&#22823;&#25903;&#31649;&#30340;&#26411;&#31471;&#12289;&#27133;&#39636;/&#21453;&#25033;&#22120;/&#28357;&#33740;&#22120;&#30340;&#39640;&#40670;</li>
+                            <li><strong>&#22823;&#23481;&#22120;&#24213;&#37096;&#65306;</strong>&#38656;&#23559;&#31354;&#27683;&#33287;&#20957;&#32080;&#27700;&#36890;&#36942;&#27491;&#30906;&#37197;&#31649;&#20998;&#38283;</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#27744;&#22616;&#30340;&#27700;&#38754;&#33180;&#12301;</h4>
+                        <p>&#31354;&#27683;&#22312;&#33976;&#27773;&#31995;&#32113;&#20013;&#23601;&#20687;&#27744;&#22616;&#34920;&#38754;&#30340;&#19968;&#23652;&#33180; &mdash; &#30475;&#19981;&#35211;&#20294;&#26371;&#38459;&#27490;&#29105;&#37327;&#31359;&#36879;&#12290;&#23601;&#20687;&#22312;&#28577;&#32568;&#35041;&#25918;&#20102;&#19968;&#23652;&#20445;&#40092;&#33180;&#65292;&#28814;&#27700;&#30340;&#29105;&#37327;&#23601;&#28961;&#27861;&#26377;&#25928;&#20659;&#36958;&#21040;&#34987;&#28357;&#33740;&#30340;&#29289;&#21697;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.11.5 SUPERHEAT ========== -->
+    <div class="chapter-section" id="sec-superheat">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.11.5</div>
+            <div class="chapter-info">
+                <h2>Superheat &#8212; &#36942;&#29105;</h2>
+                <p>Impact on sterilization efficiency | p. 108</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; p. 108</div>
+                    <p>While higher-pressure steam can be used to compensate for superheat, the <span class="key-term">latent heat</span>, or killing power of the potentially superheated steam is reduced at higher pressures; leading to <span class="key-term">increased sterilization cycles</span>.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#36942;&#29105;&#33976;&#27773;&#30340;&#21839;&#38988;</h4>
+                        <p>&#36942;&#29105;&#33976;&#27773;&#28331;&#24230;&#39640;&#26044;&#35442;&#22739;&#21147;&#19979;&#30340;&#39165;&#21644;&#28331;&#24230;&#65292;&#30475;&#20284;&#12300;&#26356;&#29105;&#12301;&#65292;&#20294;&#23526;&#38555;&#19978;&#65306;</p>
+                        <ul>
+                            <li><strong>&#28507;&#29105; (Latent Heat) &#28187;&#23569;</strong>&#65306;&#36942;&#29105;&#33976;&#27773;&#30340;&#29105;&#20132;&#25563;&#20027;&#35201;&#38752;&#39023;&#29105;&#65292;&#32780;&#38750;&#30456;&#35722;&#28507;&#29105;&#65292;&#25928;&#29575;&#36611;&#20302;</li>
+                            <li><strong>&#28357;&#33740;&#26178;&#38291;&#22686;&#21152;</strong>&#65306;&#38656;&#35201;&#26356;&#38263;&#30340;&#28357;&#33740;&#36913;&#26399;</li>
+                            <li><strong>&#28858;&#20160;&#40636;&#39640;&#22739;&#26356;&#31967;</strong>&#65306;&#22739;&#21147;&#36234;&#39640;&#65292;&#39165;&#21644;&#33976;&#27773;&#30340;&#28507;&#29105;&#36234;&#20302;&#65292;&#28357;&#33740;&#25928;&#29575;&#36234;&#24046;</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>&#27604;&#21947;&#65306;&#12300;&#29138;&#32005;&#30340;&#37941;&#22602;&#12301;vs&#12300;&#33976;&#31840;&#12301;</h4>
+                        <p>&#36942;&#29105;&#33976;&#27773;&#23601;&#20687;&#29992;&#29138;&#32005;&#30340;&#37941;&#22602;&#21435;&#33976;&#39135;&#29289; &mdash; &#38614;&#28982;&#28331;&#24230;&#24456;&#39640;&#65292;&#20294;&#29105;&#37327;&#20659;&#36958;&#25928;&#29575;&#36960;&#19981;&#22914;&#33976;&#31840;&#65288;&#39165;&#21644;&#33976;&#27773;&#65289;&#12290;&#33976;&#31840;&#38752;&#30340;&#26159;&#33976;&#27773;&#20957;&#32080;&#37323;&#25918;&#28507;&#29105;&#65292;&#36889;&#25165;&#26159;&#26368;&#39640;&#25928;&#30340;&#29105;&#20659;&#36958;&#26041;&#24335;&#12290;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 7.12 FOUR EXAMPLES OF CORRECT PIPING PRACTICE ========== -->
+    <div class="chapter-section" id="sec-piping">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.12</div>
+            <div class="chapter-info">
+                <h2>Four Examples of Correct Piping Practice &#8212; &#22235;&#20491;&#27491;&#30906;&#37197;&#31649;&#23526;&#21209;&#31684;&#20363;</h2>
+                <p>Practical installation guidance from Figure 7-4 | pp. 109&ndash;110</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text (English) &mdash; pp. 109&ndash;110</div>
+                    <p>Figure 7-4 (Vessel Sterilization) and the four piping practice examples illustrate the correct configuration for clean steam distribution. These examples integrate the principles discussed in Sections 7.11.1 through 7.11.5:</p>
+
+                    <h3>Example 1: Branch Take-Off from Header</h3>
+                    <p>When the main distribution header is <span class="key-term">above the use points</span>, branches should be taken from the <span class="key-term">top of the header</span>. This prevents condensate in the header from flowing directly into the branch line. Each branch must be trapped at its lowest point.</p>
+
+                    <h3>Example 2: Header Below Use Points</h3>
+                    <p>An alternative design runs the main distribution header <span class="key-term">below the use points</span>. Branches rise upward to the equipment, and condensate naturally drains back to the main header by gravity, reducing the need for individual branch traps.</p>
+
+                    <h3>Example 3: Vessel Bottom Drain</h3>
+                    <p>For large vessels, <span class="key-term">air and condensate</span> must be discharged at the bottom. A properly designed piping arrangement separates the air discharge (via thermostatic trap with inlet up) from the condensate discharge (via standard steam trap). This prevents air pockets from impeding condensate drainage.</p>
+
+                    <h3>Example 4: Short Drop to Frequently Used Equipment</h3>
+                    <p>For <span class="key-term">short vertical drops</span> from a main header to equipment that is <span class="key-term">used daily</span> (e.g., a media storage tank sterilized daily), individual traps on the branch can be waived. The condensate built up in the vertical drop has limited time to cool, and is quickly eliminated by the trap at the bottom of the vessel when the block valve is opened. The vertical drop is sterilized daily with the vessel.</p>
+                </div>
+
+                <div class="right-column">
+                    <div class="column-header">&#20013;&#25991;&#35299;&#35498;&#33287;&#23416;&#32722;&#37325;&#40670;</div>
+
+                    <div class="concept-box">
+                        <h4>&#22235;&#20491;&#31684;&#20363;&#32317;&#35261;</h4>
+                        <table>
+                            <tr><th>#</th><th>&#24773;&#22659;</th><th>&#26680;&#24515;&#21407;&#21063;</th></tr>
+                            <tr><td>1</td><td>&#24185;&#31649;&#22312;&#19978;&#12289;&#20351;&#29992;&#40670;&#22312;&#19979;</td><td>&#25903;&#31649;&#24478;&#38914;&#37096;&#25509;&#20986; + &#24213;&#37096;&#35037; trap</td></tr>
+                            <tr><td>2</td><td>&#24185;&#31649;&#22312;&#19979;&#12289;&#20351;&#29992;&#40670;&#22312;&#19978;</td><td>&#20957;&#32080;&#27700;&#33258;&#28982;&#22238;&#27969;&#65292;&#28187;&#23569; trap &#25976;&#37327;</td></tr>
+                            <tr><td>3</td><td>&#22823;&#23481;&#22120;&#24213;&#37096;&#25490;&#25918;</td><td>&#20998;&#38283;&#25490;&#31354;&#27683;&#33287;&#25490;&#20957;&#32080;&#27700;&#30340;&#31649;&#36335;</td></tr>
+                            <tr><td>4</td><td>&#30701;&#33853;&#31649;&#33267;&#38971;&#32321;&#20351;&#29992;&#30340;&#35373;&#20633;</td><td>&#21487;&#35905;&#20813;&#25903;&#31649; trap&#65292;&#27599;&#26085;&#28357;&#33740;&#21363;&#21487;</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#31684;&#20363; 1 &#35443;&#35299;&#65306;&#25903;&#31649;&#24478;&#38914;&#37096;&#25509;&#20986;</h4>
+                        <p>&#36889;&#26159;&#26368;&#24120;&#35211;&#30340;&#37197;&#32622;&#12290;&#22914;&#26524;&#25903;&#31649;&#24478;&#24185;&#31649;&#20596;&#38754;&#25110;&#24213;&#37096;&#25509;&#20986;&#65292;&#24185;&#31649;&#20013;&#30340;&#20957;&#32080;&#27700;&#26371;&#30452;&#25509;&#27969;&#20837;&#25903;&#31649;&#65292;&#22686;&#21152;&#27700;&#37656;&#33287;&#27745;&#26579;&#39080;&#38570;&#12290;&#24478;&#38914;&#37096;&#25509;&#20986;&#65292;&#21482;&#26377;&#20094;&#33976;&#27773;&#36914;&#20837;&#25903;&#31649;&#12290;</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#31684;&#20363; 3 &#35443;&#35299;&#65306;&#31354;&#27683;&#33287;&#20957;&#32080;&#27700;&#20998;&#38626;</h4>
+                        <p>&#22823;&#23481;&#22120;&#24213;&#37096;&#21516;&#26178;&#26377;&#31354;&#27683;&#21644;&#20957;&#32080;&#27700;&#38656;&#35201;&#25490;&#20986;&#12290;&#22914;&#26524;&#20849;&#29992;&#21516;&#19968;&#31649;&#36335;&#65292;&#31354;&#27683;&#26371;&#22581;&#22622; trap&#65292;&#23566;&#33268;&#20957;&#32080;&#27700;&#25490;&#19981;&#20986;&#21435;&#12290;&#22240;&#27492;&#24517;&#38920;&#65306;</p>
+                        <ul>
+                            <li>&#29105;&#38748;&#21147;&#24335; trap&#65288;&#36914;&#21475;&#26397;&#19978;&#65289;&#36000;&#36012;&#25490;&#31354;&#27683;</li>
+                            <li>&#27161;&#28310; steam trap &#36000;&#36012;&#25490;&#20957;&#32080;&#27700;</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>&#31684;&#20363; 4 &#35443;&#35299;&#65306;&#30701;&#33853;&#31649;&#35905;&#20813;&#26781;&#20214;</h4>
+                        <p>&#21482;&#26377;&#22312;&#20197;&#19979;&#26781;&#20214;&#37117;&#28415;&#36275;&#26178;&#25165;&#33021;&#35905;&#20813;&#65306;</p>
+                        <ul>
+                            <li>&#33853;&#31649;&#36317;&#38626;&#30701;</li>
+                            <li>&#35373;&#20633;&#27599;&#22825;&#37117;&#22312;&#20351;&#29992;&#65288;&#22914;&#27599;&#26085;&#28357;&#33740;&#65289;</li>
+                            <li>&#20957;&#32080;&#27700;&#37327;&#19981;&#36275;&#20197;&#24433;&#38911;&#27700;&#37656;&#21644;&#28357;&#33740;</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>&#32156;&#21512;&#24605;&#32771;&#32244;&#32722;</h4>
+                        <p>&#22312;&#20320;&#30340;&#24037;&#24288;&#20013;&#65292;CS &#37197;&#36865;&#31649;&#32218;&#26159;&#21738;&#31278;&#37197;&#32622;&#65311;&#35531;&#36880;&#19968;&#27298;&#26597;&#65306;</p>
+                        <ul>
+                            <li>&#25903;&#31649;&#26159;&#21542;&#24478;&#24185;&#31649;&#38914;&#37096;&#25509;&#20986;&#65311;</li>
+                            <li>&#27599;&#20491; steam trap &#26159;&#21542;&#27491;&#24120;&#36939;&#20316;&#65311;</li>
+                            <li>&#22823;&#23481;&#22120;&#24213;&#37096;&#26159;&#21542;&#26377;&#29544;&#31435;&#30340;&#25490;&#27683;&#33287;&#25490;&#27700;&#31649;&#36335;&#65311;</li>
+                            <li>&#26377;&#21738;&#20123;&#12300;&#30701;&#33853;&#31649;&#12301;&#34987;&#35905;&#20813;&#20102; trap&#65311;&#35905;&#20813;&#26781;&#20214;&#26159;&#21542;&#30495;&#30340;&#28415;&#36275;&#65311;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION SUMMARY ========== -->
+    <div class="section-summary" id="summary">
+        <h3>Section Summary &#26412;&#31680;&#25688;&#35201;</h3>
+        <p>&#26412;&#31680;&#28085;&#33995;&#20102;&#28136;&#33976;&#27773;&#31995;&#32113;&#24478;&#29983;&#25104;&#21040;&#37197;&#36865;&#30340;&#23436;&#25972;&#30693;&#35672;&#39636;&#31995;&#65306;</p>
+        <ul>
+            <li><strong>&#30332;&#29983;&#22120;&#36939;&#20316;</strong>&#65306;Sanitary CS Generator &#20197;&#31649;&#27580;&#24335;&#29105;&#20132;&#25563;&#22120;+&#20998;&#38626;&#22120;+&#22238;&#39243;&#25511;&#21046;&#29986;&#29983;&#39640;&#32020;&#24230;&#28136;&#33976;&#27773;&#65307;Simple CS Generator &#30465;&#30053;&#20998;&#38626;&#22120;&#21644;&#34907;&#29983;&#32026;&#29305;&#24501;&#65292;&#36969;&#29992;&#26044;&#38750;&#29986;&#21697;&#25509;&#35320;&#22580;&#26223;</li>
+            <li><strong>Sizing</strong>&#65306;&#35672;&#21029;&#20351;&#29992;&#40670;&rarr;&#23574;&#23792;&#38656;&#27714;&rarr;&#22810;&#27171;&#24615;&#20418;&#25976;&rarr;&#23433;&#20840;&#35029;&#37327;&rarr;&#36984;&#22411;</li>
+            <li><strong>&#21462;&#27171;</strong>&#65306;Purity sampling&#65288;&#38651;&#23566;&#24230;/&#20839;&#27602;&#32032;&#65289;&#33287; Quality sampling&#65288;&#20094;&#29157;&#24230;/NCG&#65289;&#24517;&#38920;&#20998;&#38283;&#32771;&#24942;</li>
+            <li><strong>&#26448;&#36074;&#33287;&#34920;&#38754;</strong>&#65306;300 &#31995; SS/&#37424;&#28858;&#20027;&#65292;&#37389;&#21270;&#25110; EP &#20778;&#21270; Cr&#8322;O&#8323; &#20445;&#35703;&#23652;&#65292;&#27695;&#26159;&#26368;&#22823;&#23041;&#33029;</li>
+            <li><strong>&#21069;&#34389;&#29702;</strong>&#65306;&#19977;&#22823;&#35506;&#38988;&#65306;&#27700;&#22434;&#65288;&#20302;TDS/&#30717;/&#38646;&#30828;&#24230;&#65289;&#12289;&#33104;&#34645;&#65288;&#38500;&#27695;&#65289;&#12289;&#25582;&#30332;&#24615;&#29289;&#36074;&#65288;&#38500;NH&#8323;/CO&#8322;&#65289;</li>
+            <li><strong>&#33976;&#27773;&#21697;&#36074;</strong>&#65306;&#20094;&#39165;&#21644;&#33976;&#27773;&#26368;&#20339;&#65292;&#36942;&#29105;&#33976;&#27773;&#21453;&#32780;&#38477;&#20302;&#28357;&#33740;&#25928;&#29575;</li>
+            <li><strong>&#37197;&#36865;</strong>&#65306;304/316L SS&#12289;&le;37 m/s &#27969;&#36895;&#12289;Ball valve &#39318;&#36984;&#12289;&#20998;&#38626;&#22120;+Steam trap &#32068;&#21512;&#38500;&#28629;&#25490;&#20957;</li>
+            <li><strong>NCG &#25490;&#38500;</strong>&#65306;&#31354;&#27683;&#26159;&#38548;&#29105;&#23652;&#65292;&#24517;&#38920;&#29992;&#29105;&#38748;&#21147;&#24335; trap &#22312;&#39640;&#40670;&#21644;&#26411;&#31471;&#25490;&#38500;</li>
+            <li><strong>&#22235;&#20491;&#37197;&#31649;&#31684;&#20363;</strong>&#65306;&#25903;&#31649;&#38914;&#37096;&#25509;&#20986;&#12289;&#24185;&#31649;&#22312;&#19979;&#33258;&#28982;&#22238;&#27969;&#12289;&#22823;&#23481;&#22120;&#25490;&#27683;&#25490;&#27700;&#20998;&#38626;&#12289;&#30701;&#33853;&#31649;&#35905;&#20813;</li>
+        </ul>
+    </div>
+
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#9650;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
