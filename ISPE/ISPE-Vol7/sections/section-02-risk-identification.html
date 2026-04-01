@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.7 - Chapter 4-5: Risk Assessment & Risk Identification</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ISPE Green Override
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Green: term/concept box */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="highlight"]):not(.analogy) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy) h3, .concept-box:not(.analogy) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* Yellow: analogy box */
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Orange: note/highlight box */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* Purple: formula box */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin-top: 0.5rem;
+}
+.formula-box .formula-line {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    background: rgba(156, 39, 176, 0.08);
+    border-radius: 6px;
+    padding: 0.6rem 0.9rem;
+    margin: 0.4rem 0;
+    display: block;
+}
+
+/* Application box: blue */
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.application-box h3, .application-box h4 { color: #1565c0 !important; margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.application-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.application-box ul, .application-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.application-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+/* Practice box: blue dashed */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Chapter section card */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+/* Learning objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section divider */
+.section-divider {
+    font-size: 1.05rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: 600;
+}
+
+/* Continuum diagram */
+.continuum-bar {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+}
+.continuum-bar .seg {
+    flex: 1;
+    padding: 0.6rem 0.3rem;
+    color: white;
+}
+.continuum-bar .seg-1 { background: #52c41a; }
+.continuum-bar .seg-2 { background: #faad14; }
+.continuum-bar .seg-3 { background: #f5222d; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: #27ae60; color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+.main-footer {
+    background: #1a3a2a; color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISPE Baseline&reg; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
+    <div class="subtitle">Chapter 4: Risk Assessment &nbsp;|&nbsp; Chapter 5: Risk Identification — Hazard, HBEL &amp; OEL Derivation</div>
+    <div class="page-info">ISPE Baseline&reg; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p37–p52</div>
+</div>
+
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節目錄 Table of Contents</h3>
+        <div class="toc-grid">
+            <a href="#ch4-overview">Ch.4 Risk Assessment Overview</a>
+            <a href="#ch5-intro">Ch.5 Risk Identification Intro</a>
+            <a href="#hazard-definition">5.1 Hazard Definition</a>
+            <a href="#hazard-continuum">5.2 Hazard Continuum</a>
+            <a href="#hbel">5.3 Establishing HBEL</a>
+            <a href="#data-collection">5.3.1 Data Collection</a>
+            <a href="#critical-effect">5.3.2 Critical Effect</a>
+            <a href="#dose-response">5.3.3 Dose-Response</a>
+            <a href="#noael">5.3.4 NOAEL / BMD</a>
+            <a href="#adj-factors">5.3.5 Adjustment Factors</a>
+            <a href="#oel">5.4 Setting OEL</a>
+            <a href="#documentation">5.5 Documentation</a>
+        </div>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 ICH Q9 風險評估三步驟：風險識別、風險分析、風險評估。</li>
+            <li>區分「危害 (Hazard)」與「風險 (Risk)」的定義與應用範疇。</li>
+            <li>掌握危害連續光譜 (Hazard Continuum) 的分類邏輯與優先排序工具。</li>
+            <li>理解 HBEL（健康基礎暴露限值）的完整推導流程：NOAEL → 調整因子 → ADE/PDE。</li>
+            <li>區分 OEL（職業暴露限值）與 HBEL 的目的與計算差異。</li>
+            <li>了解 HBEL 評估文件的必要內容與資格要求。</li>
+        </ol>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 4: RISK ASSESSMENT OVERVIEW
+         ============================================================ -->
+    <div class="chapter-section" id="ch4-overview">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Risk Assessment</h2>
+                <p>ICH Q9 three-step framework — identification, analysis, evaluation | p37–38</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Chapter 4</div>
+                    <p>Risk assessment as described in <span class="key-term">ICH Q9</span> encompasses three steps: <span class="key-term">risk identification</span>, <span class="key-term">risk analysis</span>, and <span class="key-term">risk evaluation</span>. Each of the three steps helps to answer the three fundamental questions:</p>
+                    <ul>
+                        <li>What might go wrong?</li>
+                        <li>What is the likelihood (probability) it will go wrong?</li>
+                        <li>What are the consequences (severity)?</li>
+                    </ul>
+                    <p>The risk assessment steps may be considered the most important aspects of an overall quality risk management process. If the risks are not identified, analyzed, and evaluated properly, the decisions on how to control the risk cannot be made adequately.</p>
+                    <p>The criteria for judging acceptability of risk for cross-contamination and operator exposures differ, although <span class="key-term">GxP</span> and <span class="key-term">IH (Industrial Hygiene)</span> considerations are linked because they share the same underlying toxicological data as the starting point from which they are both derived. In addition, the application and interpretation of the criteria in the risk assessment process will be different.</p>
+                    <p>Part of the risk assessment process is to consider if there are realistically any plausible pathways that might give rise to an increased risk of exposure. For example, when considering airborne transfer, the following risk questions should be asked:</p>
+                    <ul>
+                        <li>Can cross-contamination from an airborne pathway occur? Specifically, can product A be directly distributed via the air stream or resuspended back into the air (after being deposited) in a room/suite/facility, and then settle or get redeposited directly into product B or onto contact parts?</li>
+                        <li>Can this occur in sufficient amount that the <span class="key-term">ADE</span> for product A might be exceeded should a patient be administered the now contaminated product B?</li>
+                        <li>Is it plausible for product that has been deposited on equipment or adjacent work surfaces to be redispersed into the air stream and present an exposure risk for operators via inhalation?</li>
+                    </ul>
+                    <p>Similar questions should be asked to understand the risks associated with mix-up, retention, and mechanical transfer.</p>
+                    <p>At the conclusion of the risk assessment, risk should be expressed in <span class="key-term">quantitative or qualitative terms</span> depending on the data available from the three steps. This information should then be used in the decision making to accept or reduce the risks under the risk control steps.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>ICH Q9 風險評估三步驟</h4>
+                        <ul>
+                            <li><strong>風險識別 (Risk Identification)</strong>：確認「什麼可能出錯？」，辨識所有危害及其可能後果。</li>
+                            <li><strong>風險分析 (Risk Analysis)</strong>：估計已識別危害的風險大小，評估暴露可能性與嚴重度。</li>
+                            <li><strong>風險評估 (Risk Evaluation)</strong>：對照可接受標準，判斷風險是否需要控制。</li>
+                        </ul>
+                        <p>三步驟缺一不可：若危害識別不完整，後續分析與決策必然失準。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>GxP vs. IH — 同源異用</h4>
+                        <p><strong>共同基礎：</strong>兩者都源自相同的毒理學數據（NOAEL、LOAEL、劑量反應）。</p>
+                        <p><strong>差異在應用：</strong></p>
+                        <ul>
+                            <li><strong>GxP (交叉污染控制)</strong>：保護病患，問題是「殘留物是否超過 ADE？」</li>
+                            <li><strong>IH (工業衛生)</strong>：保護操作員，問題是「空氣中濃度是否超過 OEL？」</li>
+                        </ul>
+                        <p>風險可接受標準不同，但數據來源相通，計算邏輯相似。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>實例思考：空氣傳播路徑評估</h4>
+                        <p>製造 Product A 的粉塵懸浮在空氣中 → 沉降到 Product B 的開口容器 → 病患服用含殘留的 Product B。</p>
+                        <p>關鍵問題：「沉降量是否讓病患暴露超過 Product A 的 ADE？」這就是跨污染風險評估的核心邏輯。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>四種暴露路徑 (Transfer Mechanisms)</h4>
+                        <ul>
+                            <li><strong>Mix-up（混淆）</strong>：標籤、實物配置錯誤</li>
+                            <li><strong>Retention（殘留）</strong>：清潔不完全的殘餘物</li>
+                            <li><strong>Mechanical transfer（機械轉移）</strong>：設備接觸面帶走的殘留</li>
+                            <li><strong>Airborne transfer（空氣傳播）</strong>：粉塵、氣溶膠懸浮後沉降</li>
+                        </ul>
+                        <p>每條路徑須分別評估可行性，並以合理可信的情境為基礎（Plausible Pathway 原則）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CHAPTER 5: RISK IDENTIFICATION INTRODUCTION
+         ============================================================ -->
+    <div class="chapter-section" id="ch5-intro">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5</div>
+            <div class="chapter-info">
+                <h2>Risk Identification — Introduction</h2>
+                <p>Qualitative hazard identification as first step in risk assessment | p37</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Chapter 5 Intro</div>
+                    <p>This Chapter describes <span class="key-term">risk identification</span>, which starts with qualitative hazard identification, i.e., the process by which existing hazards are identified, initially without assigning magnitude. All available animal and human data should be reviewed to address the question: "What could go wrong?"</p>
+                    <p>This first step in the risk assessment process also includes identifying possible consequences. It serves as a prelude to later steps of risk analysis and risk evaluation that ultimately lead to appropriate exposure control and management of risk.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+                    <div class="concept-box">
+                        <h4>風險識別的本質</h4>
+                        <p><strong>定性、不定量</strong>：第一步只需識別危害是否存在，無需立刻計算數值大小。</p>
+                        <p><strong>資料基礎</strong>：需要系統性地回顧所有動物及人體研究數據。</p>
+                        <p><strong>前置功能</strong>：為後續的「風險分析（量化暴露）」與「風險評估（與標準比對）」打好基礎。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>就像急診分診：先確認病人有什麼問題（危害識別），才能排優先順序（風險評估）並決定治療方案（風險控制）。跳過分診直接開藥，後果不堪設想。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.1 HAZARD DEFINITION
+         ============================================================ -->
+    <div class="chapter-section" id="hazard-definition">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Definition of Hazard</h2>
+                <p>Active pharmacological, toxicological, microbiological properties | p37–38</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.1</div>
+                    <p>Hazard is defined in <span class="key-term">ICH Q9</span> as a potential source of harm. ICH Q9 also includes the severity of harm in the definition of risk. Within the context of this Guide, hazard describes the inherent property of a compound to produce adverse effects, e.g., in patients that may be exposed to the compound as a trace contaminant in another pharmaceutical product.</p>
+                    <p>The compounds typically considered include:</p>
+                    <ul>
+                        <li><span class="key-term">APIs</span> (Active Pharmaceutical Ingredients)</li>
+                        <li>Process intermediates</li>
+                        <li>Solvents</li>
+                        <li>Excipients</li>
+                    </ul>
+                    <p>Other compounds that may need to be considered include <span class="key-term">impurities</span>, <span class="key-term">byproducts</span>, and <span class="key-term">degradants</span>. Each compound has its own inherent ability to cause adverse effects (i.e., toxicity) — effects that may be well documented in the case of the API, but may be unknown for other compounds.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>危害 (Hazard) 的定義</h4>
+                        <p><strong>ICH Q9 定義：</strong>一種潛在的傷害來源（a potential source of harm）。</p>
+                        <p><strong>本指南的特定意義：</strong>化合物對人體造成不良影響的「固有屬性」，包括：</p>
+                        <ul>
+                            <li><strong>藥理活性 (Pharmacological)</strong>：治療劑量即有作用的化合物，低量暴露也可能影響病患。</li>
+                            <li><strong>毒理特性 (Toxicological)</strong>：在超過安全劑量時導致器官毒性、致癌或生殖毒性。</li>
+                            <li><strong>微生物危害 (Microbiological)</strong>：雖本章聚焦於化學性危害，微生物污染亦屬廣義危害範疇。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>哪些化合物需要評估？</h4>
+                        <ul>
+                            <li><strong>API</strong>：資料最完整，通常有完整的毒理數據包。</li>
+                            <li><strong>中間體 (Intermediates)</strong>：合成過程化合物，毒理資料往往有限。</li>
+                            <li><strong>溶劑 (Solvents)</strong>：依 ICH Q3C 分類，有殘留限量要求。</li>
+                            <li><strong>賦形劑 (Excipients)</strong>：通常認為低毒，但特殊族群（兒童、腎病患者）仍需關注。</li>
+                            <li><strong>雜質/降解物 (Impurities/Degradants)</strong>：最難評估，往往缺乏完整毒理數據，需以 TTC 方法估算。</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>危害 vs. 風險 — 核心區別</h4>
+                        <p><strong>危害 (Hazard)</strong> = 化合物固有的傷害能力（inherent property）。</p>
+                        <p><strong>風險 (Risk)</strong> = 危害 × 暴露可能性（Hazard × Probability of Exposure）。</p>
+                        <p>即使是高危害化合物（如強效細胞毒素），若暴露路徑被完全阻斷，實際風險可以接近零。這正是多產品廠房風險管理的核心邏輯。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.2 HAZARD CONTINUUM
+         ============================================================ -->
+    <div class="chapter-section" id="hazard-continuum">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Hazard Continuum and Prioritization</h2>
+                <p>From no hazard to poorly characterised hazard — OEB/OEL estimation | p38–39</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.2</div>
+                    <p>Depending on the hazardous properties of an individual compound, resulting from its <span class="key-term">mechanism-of-action</span> and <span class="key-term">potency</span>, health-based limits such as the ADE values can span several orders of magnitude. It is preferable to derive health-based values for all pharmaceutical compounds, regardless of potency, to ensure the protection of patients.</p>
+                    <p>Similarly, there is a need to focus attention on those compounds with the lowest health-based exposure limits because these may be the compounds that are the most difficult to control, and the consequences of overexposure may be the greatest.</p>
+                    <p>As part of an overall risk management approach, it is useful to have a qualitative tool to help determine the need for, and to prioritize, comprehensive quantitative risk assessments. This tool should ideally incorporate the <span class="key-term">severity</span> of the effect/impact on quality of life, <span class="key-term">reversibility</span> of the effect and likelihood of death.</p>
+                    <p>Criteria for identifying hazardous drugs and prioritizing risk assessments include:</p>
+                    <ol>
+                        <li>Genotoxic compounds that are known to be or highly likely to be carcinogenic to humans</li>
+                        <li>Compounds that can produce reproductive and/or developmental effects at low dosages*</li>
+                        <li>Compounds that can produce serious target organ toxicity or other significant adverse effects at low dosages*</li>
+                    </ol>
+                    <p style="font-size:0.88rem; color: #666;">*For example clinical doses &lt;1 to 10 mg/day or animal doses &lt;0.1 to 1 mg/kg/day</p>
+                    <p>The use of <span class="key-term">Occupational Exposure Limits (OELs)</span> and <span class="key-term">Occupational Exposure Bands (OEBs)</span> can be used to estimate ADE values for the purpose of prioritization in risk assessments. Extrapolating an OEL to an ADE value, in its simplest sense, is accomplished by:</p>
+                    <p style="padding:0.5rem 1rem; background:#f0fff4; border-radius:6px; font-family: monospace;">ADE (µg/day) = OEL (µg/m³) × 10 m³</p>
+                    <p>Many companies assign new compounds to an OEB, or equivalent designation corresponding to airborne concentration ranges, to provide guidance on safe handling before sufficient data are available to establish a numerical OEL.</p>
+                    <p>Table 5.1: Estimating ADE Values Using OEBs</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>OEB</th>
+                                <th>Concentration Range</th>
+                                <th>Low End of Band</th>
+                                <th>Estimated ADE*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>≥1 &lt;5 mg/m³</td><td>1 mg/m³</td><td>10 mg/day</td></tr>
+                            <tr><td>2</td><td>≥0.1 &lt;1 mg/m³</td><td>0.1 mg/m³</td><td>1 mg/day</td></tr>
+                            <tr><td>3</td><td>≥10 &lt;100 µg/m³</td><td>10 µg/m³</td><td>100 µg/day</td></tr>
+                            <tr><td>4</td><td>≥1 &lt;10 µg/m³</td><td>1 µg/m³</td><td>10 µg/day</td></tr>
+                            <tr><td>5</td><td>&lt;1 µg/m³</td><td>&lt;1 µg/m³</td><td>&lt;1 µg/day</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size:0.85rem; color:#666;">* Estimated ADE = Low End of Band × 10 m³</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>危害連續光譜 (Hazard Continuum)</h4>
+                        <p>危害程度並非二分法（危險/安全），而是一條連續帶，依化合物作用機制與效力跨越數個數量級：</p>
+                        <div class="continuum-bar">
+                            <div class="seg seg-1">無危害<br>No Hazard<br>ADE &gt; 10 mg/day</div>
+                            <div class="seg seg-2">特徵明確危害<br>Well-Characterised<br>ADE 0.01–10 mg/day</div>
+                            <div class="seg seg-3">特徵不明危害<br>Poorly Characterised<br>ADE &lt; 0.01 mg/day</div>
+                        </div>
+                        <p>對 ADE 極低的化合物（如細胞毒性藥物、高效激素），控制成本高，超標後果嚴重，優先進行詳細風險評估。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>三類高危藥物識別標準</h4>
+                        <ul>
+                            <li><strong>基因毒性致癌物</strong>：ICH M7 適用；需以 TTC 或線性外推計算 ADE。</li>
+                            <li><strong>生殖/發育毒性</strong>：低劑量即可能影響胎兒或生育能力，調整因子需包含 AFD。</li>
+                            <li><strong>器官毒性高效藥</strong>：臨床劑量 &lt;1–10 mg/day 即有顯著效應，ADE 估值極低。</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>OEB 快速估算 ADE（優先排序用）</h4>
+                        <p>在正式 ADE 文件尚未建立前，可用 OEB 作為臨時分類工具：</p>
+                        <span class="formula-line">ADE (µg/day) = OEL_low_end (µg/m³) × 10 m³</span>
+                        <p>例如：OEB 4 的低端濃度 = 1 µg/m³<br>
+                        估算 ADE = 1 × 10 = 10 µg/day</p>
+                        <p><strong>注意：</strong>OEB 估算值僅供優先排序，不可替代正式毒理評估建立的 ADE。一旦有足夠數據，應建立正式 ADE 文件。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>CDMO 實務應用</h4>
+                        <p>承接新分子時，若客戶尚未提供正式 ADE 文件：</p>
+                        <ul>
+                            <li>先以 OEB 分類估算 ADE，決定清潔驗證目標及廠房配置要求。</li>
+                            <li>要求客戶提供毒理數據包；CMO 有責任確保所有製造的化合物都有科學根據的 ADE。</li>
+                            <li>若無任何數據，適用 TTC 方法：潛在致癌物 1 µg/day，高毒性 10 µg/day，一般化合物 100 µg/day。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3 ESTABLISHING HBEL
+         ============================================================ -->
+    <div class="chapter-section" id="hbel">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Establishing Health-Based Exposure Limits (HBEL)</h2>
+                <p>Foundation of risk-based manufacturing — hazard identification + dose-response + limit derivation | p40</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3</div>
+                    <p>The foundation of a risk-based approach for manufacturing pharmaceutical products comprises:</p>
+                    <ul>
+                        <li>The identification of hazards</li>
+                        <li>Assessment of dose-response relationships</li>
+                        <li>Establishment of health-based limits</li>
+                    </ul>
+                    <p>The identification of hazards and assessment of dose-response relationships are collectively referred to as <span class="key-term">hazard characterization</span>.</p>
+                    <p>Having an understanding of how a compound can cause harm, and at what dose, is crucial to evaluating risks and deciding on appropriate exposure controls.</p>
+                    <p>The approach used to derive ADE values is consistent with a number of guidance documents on setting health-based exposure limits (e.g., <span class="key-term">WHO 2005</span>). The EMA guidance document on setting <span class="key-term">Permitted Daily Exposure limits (PDEs)</span> based on the ICH Q3C(R6) guidance for residual solvents utilizes a similar set of adjustment (assessment) factors. The PDE is essentially synonymous with the ADE.</p>
+                    <p>In practice, the methods used to derive health-based exposure limits may differ slightly, but it is the responsibility of the organization to ensure that all relevant sources of uncertainty and variability are addressed, regardless of which adjustment factor covers them, and that their recommended limits are scientifically defensible and adequately protective.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>HBEL 三個縮寫的關係</h4>
+                        <ul>
+                            <li><strong>HBEL (Health-Based Exposure Limit)</strong>：總稱，所有以健康數據為基礎推導的暴露限值。</li>
+                            <li><strong>ADE (Acceptable Daily Exposure)</strong>：ISPE Risk-MaPP 使用的術語，用於清潔驗證和跨污染評估。</li>
+                            <li><strong>PDE (Permitted Daily Exposure)</strong>：EMA 指南和 ICH Q3C 使用的術語。</li>
+                        </ul>
+                        <p>ADE ≈ PDE，數值應相近，差異來自調整因子的選取細節。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>HBEL 的法規驅動力</h4>
+                        <p>EU GMP Annex 15 (2015) 要求多產品設施必須以 HBEL/ADE 作為清潔驗證的設定依據，取代早期的 1/1000 治療劑量法則。</p>
+                        <p>HBEL 方法被認為更科學且更具針對性，因為它考慮了化合物特定的毒理特性，而非統一套用安全係數。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>危害特徵化 (Hazard Characterization) 的兩個組成</h4>
+                        <ul>
+                            <li><strong>危害識別</strong>：確認化合物有哪些毒理端點（致癌、生殖毒性、器官毒性等）。</li>
+                            <li><strong>劑量反應評估</strong>：量化在什麼劑量下、多嚴重的效應會出現。</li>
+                        </ul>
+                        <p>兩者合力，才能定義出「臨界效應 (Critical Effect)」及其對應的 NOAEL，進而計算 ADE。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3.1 DATA COLLECTION
+         ============================================================ -->
+    <div class="chapter-section" id="data-collection">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.1</div>
+            <div class="chapter-info">
+                <h2>Data Collection and Analysis</h2>
+                <p>Qualified toxicologist, regulatory data, literature sources | p40–41</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3.1</div>
+                    <p>For hazard identification, a formal review of all available relevant animal and human data should be performed for each compound. This review should be done by a <span class="key-term">qualified toxicologist</span>. This is an individual that has many years of experience setting health-based limits such as ADE values and OELs, preferably in the pharmaceutical industry. Specific training in toxicology is necessary, whether at MS or PhD level, but degrees in related fields such as pharmacology or medicine may be sufficient when coupled with appropriate specific training and experience.</p>
+                    <p>For the innovator companies that developed the API, the data used in the analysis should include the data submitted in the regulatory filing. <span class="key-term">Contract Manufacturing Organizations (CMOs)</span> should request this information, and the rationale for the ADE that may have already been derived, from the innovator company asking them to manufacture the drug.</p>
+                    <p>The reviewer should have access to the full range of preclinical and clinical data required for approval of the drug. For non-proprietary compounds, all relevant information on the potential hazards of the material should be obtained through reliable sources. Standard toxicology and pharmacology reference texts should be consulted and a literature search (e.g., on PubMed) should be performed.</p>
+                    <p>Caution should be used when utilizing <span class="key-term">Safety Data Sheets (SDSs)</span> as a reference source, since the credibility of the information may vary.</p>
+                    <p>The toxicologist performing the hazard assessment and calculating the health-based exposure limit is responsible for assessing the gathered data from the publicly available sources with regard to <span class="key-term">relevancy, adequacy, and reliability</span> of the collected information.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>合格毒理學家 (Qualified Toxicologist)</h4>
+                        <p>ADE/HBEL 必須由合格毒理學家建立，不得由一般 QA 或化學人員代替。資格要求：</p>
+                        <ul>
+                            <li>毒理學、藥理學或相關學科碩士或博士學位。</li>
+                            <li>具有設定 ADE/OEL 的實際工作經驗（偏好製藥業背景）。</li>
+                            <li>DABT（美國毒理學委員會認證）或同等認證為加分項，但非強制。</li>
+                        </ul>
+                        <p>CDMO 如無內部毒理學家，應委託有資格的第三方毒理諮詢機構。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>資料來源優先順序</h4>
+                        <ol>
+                            <li><strong>最優先</strong>：創新藥廠提交的法規申請文件（NDA/MAA 的毒理數據包）。</li>
+                            <li><strong>次選</strong>：PubMed 同行評審文獻，FDA/EMA 公開摘要。</li>
+                            <li><strong>輔助</strong>：毒理學教科書、藥理學參考書。</li>
+                            <li><strong>謹慎使用</strong>：SDS（安全資料表）— 品質參差不齊，不應作為主要毒理依據。</li>
+                        </ol>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>CMO/CDMO 的特殊責任</h4>
+                        <p>當受託製造時：</p>
+                        <ul>
+                            <li>應主動向委託方索取完整毒理數據包和已建立的 ADE 文件。</li>
+                            <li>若委託方無法提供，CMO 有責任自行委外建立 ADE。</li>
+                            <li>EU GMP Annex 15 明確要求：多產品設施每個化合物都需有 HBEL，無論是創新藥廠還是 CMO 操作。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3.2 CRITICAL EFFECT
+         ============================================================ -->
+    <div class="chapter-section" id="critical-effect">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.2</div>
+            <div class="chapter-info">
+                <h2>Identification of the Critical Effect</h2>
+                <p>First clinically significant adverse effect as dose increases | p41</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3.2</div>
+                    <p>The purpose of a hazard evaluation is to identify all possible hazards associated with a compound and to rank them according to their severity. When combined with a dose-response assessment, the <span class="key-term">critical effect</span> can be defined. This is typically the first clinically significant adverse effect that is observed as the dose increases.</p>
+                    <p>The critical effect should be used for the derivation of an ADE. Ideally, the critical effect should be derived from studies for the same route that the ADE value will be used to evaluate. Extrapolation from data for other routes may be necessary if relevant route specific data are not available.</p>
+                    <p>Exposures below the <span class="key-term">NOAEL</span> for the critical effect should not, by definition, lead to other effects, as these will only occur at higher doses.</p>
+                    <p>The reviewing toxicologist should determine which of the effects reported at low dosages is the critical effect. It may be necessary to evaluate several endpoints, which may involve different sets of adjustment factors. A justification should be made considering the final ADE value, which is based on the <span class="key-term">most sensitive effect relevant to humans</span>.</p>
+                    <p>Due to differences in the route of exposure, the toxicological profile of the compound in question and the potential for local effects at the site of contact, the critical effect may be different for patients and operators.</p>
+                    <p>Professional judgment is required to discern between biological effects that may be physiological or adaptive changes or subclinical pharmacological effects of the drug, which would have associated <span class="key-term">Lowest-Observed-Effect Levels (LOELs)</span>. These biological effects should be distinguished from clinically significant effects which are considered <span class="key-term">adverse effects</span>.</p>
+                    <p>Clinically significant effects should be considered adverse effects for anyone not under the supervision of a physician prescribing this drug for a specific medical condition. These would have associated <span class="key-term">Lowest-Observed-Adverse-Effect Level (LOAELs)</span>. Quite often, the LOAEL for these effects is used as the <span class="key-term">Point-of-Departure (PoD)</span> for derivation of the ADE value.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>臨界效應 (Critical Effect) 的定義</h4>
+                        <p><strong>定義：</strong>隨劑量增加，最早出現的臨床顯著不良效應。</p>
+                        <p><strong>選擇邏輯：</strong></p>
+                        <ul>
+                            <li>在所有已記錄的毒理效應中，找出最低劑量即出現且具臨床意義的效應。</li>
+                            <li>以此效應的 NOAEL 作為推導 ADE 的起始點（Point-of-Departure）。</li>
+                            <li>理論上，若暴露低於 critical effect 的 NOAEL，其他效應（在更高劑量才出現）也不會發生。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>效應分類：生理適應 vs. 不良效應</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>類型</th>
+                                    <th>說明</th>
+                                    <th>參考指標</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>生理/適應性改變<br><small>Physiological/Adaptive</small></td>
+                                    <td>身體對化合物的正常反應，可逆、無臨床意義</td>
+                                    <td>LOEL</td>
+                                </tr>
+                                <tr>
+                                    <td>亞臨床藥理效應<br><small>Subclinical Pharmacological</small></td>
+                                    <td>藥物目標作用，在病患中是治療效果，但對無病患接受暴露者屬不良</td>
+                                    <td>LOEL</td>
+                                </tr>
+                                <tr>
+                                    <td>不良效應<br><small>Adverse Effect</small></td>
+                                    <td>對非處方服藥者有臨床顯著傷害</td>
+                                    <td>LOAEL → PoD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>病患 vs. 操作員的臨界效應可能不同</h4>
+                        <p>口服藥物：病患暴露路徑為口服，臨界效應可能是全身性毒性。</p>
+                        <p>製造操作員：主要暴露路徑為吸入或皮膚接觸，臨界效應可能是局部刺激、呼吸道敏感化。</p>
+                        <p>因此，同一化合物的 OEL（保護操作員）和 ADE（保護病患）可能基於不同的臨界效應，使用不同的調整因子組合。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>選擇臨界效應如同橋樑設計的「最弱構件」原則：整座橋的承重能力由最脆弱的那根樑決定。ADE 由最敏感的毒理端點（臨界效應的 NOAEL）決定，而不是取所有效應的平均值。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3.3 DOSE-RESPONSE
+         ============================================================ -->
+    <div class="chapter-section" id="dose-response">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.3</div>
+            <div class="chapter-info">
+                <h2>Dose-Response Assessment</h2>
+                <p>Threshold for systemic toxicity vs. no-threshold for genotoxic carcinogens | p41–42</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3.3</div>
+                    <p>During the hazard characterization process, all effects potentially attributed to a compound should be documented. Each effect, whether considered adverse or not, has a <span class="key-term">dose-response relationship</span>. In general, as the dose increases, the incidence and severity of the effect increases.</p>
+                    <p>For systemic toxicity endpoints, there is a dose below which no effects are expected. This is often referred to as the <span class="key-term">threshold for toxicity</span>.</p>
+                    <p>For some endpoints such as cancer, due to direct damage to DNA, it is often assumed that a threshold does not exist and some effects (e.g., mutations) are possible at low doses. In this case, it is necessary to determine the <span class="key-term">acceptable level of response</span> for the effect (e.g., a 1/100,000 excess cancer risk). It should be noted that this may be viewed as a conservative approach given that there are DNA repair mechanisms that may reverse the mutations and immunosurveillance mechanisms that prevent cancers from developing.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>劑量反應關係的兩種模型</h4>
+                        <p><strong>閾值模型 (Threshold Model)</strong>：適用於大多數毒理端點（肝毒性、腎毒性、生殖毒性）。存在 NOAEL，低於此劑量無不良效應。使用調整因子法（Safety Factor Approach）計算 ADE。</p>
+                        <p><strong>無閾值線性模型 (Linear No-Threshold)</strong>：適用於基因毒性致癌物（Genotoxic Carcinogens）。理論上任何劑量都有風險（DNA 一次損傷可能導致突變）。需以「可接受風險水準」推算，如 1/100,000 額外致癌風險。ICH M7 採用此方法。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：閾值 vs. 無閾值</h4>
+                        <p><strong>閾值毒性</strong>：就像杯子容量，少量飲料不會溢出（低於 NOAEL = 無效應）。</p>
+                        <p><strong>無閾值致癌性</strong>：就像骰子，每擲一次都有機率出現 6（每次 DNA 損傷都有可能成為突變）。劑量越低，風險越小，但永遠不為零。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>實務意義</h4>
+                        <ul>
+                            <li>一般 API（有 NOAEL 數據）：用調整因子法計算 ADE，設計清潔限量。</li>
+                            <li>基因毒性化合物（如烷化劑、某些 API 雜質）：用線性外推，TDI = 1.5 µg/day 為終身暴露基準（ICH M7）。</li>
+                            <li>DNA 修復機制的存在使無閾值假設較保守，但因無法準確量化每個人的修復能力，監管機構仍以保守值為預設。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3.4 NOAEL / BMD
+         ============================================================ -->
+    <div class="chapter-section" id="noael">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.4</div>
+            <div class="chapter-info">
+                <h2>Establishment of the NOAEL or Benchmark Dose</h2>
+                <p>NOAEL definition, LOAEL limitation, BMD as mathematical alternative | p42</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3.4</div>
+                    <p>For most toxicity endpoints, there is a clear dose-response relationship for the critical effect. The aim is to define the <span class="key-term">NOAEL</span> for the critical effect, which may be used to derive the ADE. The application of adjustment factors (see Section 5.3.5) results in ADE values that are unlikely to produce any undesirable compound-related effects.</p>
+                    <p>It may not be possible to define the NOAEL for some toxicology data sets, and therefore, it may be necessary to derive the health-based limit using a <span class="key-term">LOAEL</span>. This occurs when statistically significant adverse effects are observed at the lowest dose used in a study. The <span class="key-term">Benchmark Dose (BMD)</span> can be used in this situation.</p>
+                    <p>The BMD is a value, equivalent to a NOAEL, that is derived mathematically by fitting a curve to the dose-response data for the critical effect. The <span class="key-term">BMD10</span> is defined as the dose that corresponds to a 10% response rate, the minimum level of response typically detected by standard toxicology studies. The statistical lower bound on the BMD10 (<span class="key-term">BMDL10</span>) is often used in risk assessments as a surrogate for a NOAEL. Caution should be taken when extrapolating well below the observable range.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>NOAEL、LOAEL、NOEL 的定義</h4>
+                        <table>
+                            <thead>
+                                <tr><th>縮寫</th><th>全名</th><th>說明</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>NOAEL</td>
+                                    <td>No-Observed-Adverse-Effect Level</td>
+                                    <td>未觀察到不良效應的最高劑量。ADE 推導的標準起點。</td>
+                                </tr>
+                                <tr>
+                                    <td>NOEL</td>
+                                    <td>No-Observed-Effect Level</td>
+                                    <td>未觀察到任何效應（包含非不良）的最高劑量。比 NOAEL 更保守。</td>
+                                </tr>
+                                <tr>
+                                    <td>LOAEL</td>
+                                    <td>Lowest-Observed-Adverse-Effect Level</td>
+                                    <td>觀察到不良效應的最低劑量。在沒有 NOAEL 時使用，需加上 AFL 因子。</td>
+                                </tr>
+                                <tr>
+                                    <td>BMD/BMDL10</td>
+                                    <td>Benchmark Dose (Lower Bound)</td>
+                                    <td>數學推算的等效 NOAEL。對應 10% 反應率的劑量下限。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>BMD 與 NOAEL 的關係</h4>
+                        <p>當最低劑量組已出現統計顯著的不良效應（即只有 LOAEL 無 NOAEL 時）：</p>
+                        <p><strong>方案 1：</strong>以 LOAEL 作為 PoD，並加上 AFL（LOAEL-to-NOAEL factor）= 3 來補償。</p>
+                        <p><strong>方案 2：</strong>使用 BMD 軟體（US EPA BMDS）對劑量反應數據擬合曲線，取 BMDL10 作為等效 NOAEL。</p>
+                        <span class="formula-line">BMDL10 ≈ NOAEL equivalent (no AFL needed)</span>
+                        <p>BMD 方法在數學上更嚴謹，但需要足夠的劑量組數據以擬合曲線。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何 NOAEL 有局限性？</h4>
+                        <p>NOAEL 受研究設計影響：若研究只有 3 個劑量組且間距大，NOAEL 可能高估無效應劑量。BMD 方法透過數學建模，能更精確反映劑量反應關係，不受劑量組設計限制。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.3.5 ADJUSTMENT FACTORS
+         ============================================================ -->
+    <div class="chapter-section" id="adj-factors">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3.5</div>
+            <div class="chapter-info">
+                <h2>Application of Adjustment Factors — ADE/PDE Calculation</h2>
+                <p>Interspecies, intraspecies, duration, severity, LOAEL conversion, PK adjustments | p42–47</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.3.5</div>
+                    <p>Health-based exposure limits, such as ADE values, are derived by dividing the NOAEL for the critical effect (after adjusting for body weight, e.g., 50 kg) by various adjustment factors (also termed <span class="key-term">assessment, safety, or uncertainty factors</span>) to extrapolate to the "true" no effect level in the subpopulation of interest (e.g., elderly patients).</p>
+                    <p>These are multiplied together to form a <span class="key-term">Composite Adjustment Factor (AFC)</span> that is used in the denominator of the general equation used to set health-based limits.</p>
+                    <div class="quote-box">
+                        <strong>ADE Calculation Formula (ISPE Risk-MaPP):</strong><br>
+                        ADE (mg/day) = (PoD × BW) / (AFC × MF × PK)
+                    </div>
+                    <div class="quote-box">
+                        <strong>PDE Calculation Formula (EMA):</strong><br>
+                        PDE = (NOAEL × BW) / (F1 × F2 × F3 × F4 × F5)
+                    </div>
+                    <p><strong>Key adjustment factors:</strong></p>
+                    <ul>
+                        <li><strong>AFA / F1 (Interspecies):</strong> Extrapolates from animal NOAEL to human. Allometric scaling, values 2–12 depending on species.</li>
+                        <li><strong>AFH / F2 (Intraspecies):</strong> Accounts for variability within the human population (kinetics + dynamics). Default = 10.</li>
+                        <li><strong>AFS / F3 (Study Duration):</strong> Adjusts when study duration is shorter than exposure scenario. Typically 3 (Risk-MaPP) or 10 (EMA, studies &lt;4 weeks).</li>
+                        <li><strong>AFL / F5 (LOAEL-to-NOAEL):</strong> Applied when only LOAEL is available. Default = 3.</li>
+                        <li><strong>AFD (Database Completeness):</strong> Missing DART studies. Default = 3.</li>
+                        <li><strong>MF / F4 (Modifying Factor / Severity):</strong> Residual uncertainties, severity of effect, slope of dose-response. Range: &lt;1 to 10.</li>
+                        <li><strong>PK (Pharmacokinetic):</strong> Bioavailability correction for route-to-route extrapolation.</li>
+                    </ul>
+                    <p>Table 5.2: Adjustment Factors Used in EMA Guidance and Risk-MaPP</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Adjustment Factor</th>
+                                <th>EMA</th>
+                                <th>Risk-MaPP</th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Interspecies</td><td>F1 = 2–12</td><td>AFA = 2–12</td><td>Allometric Scaling (BW²/³ or BW³/⁴)</td></tr>
+                            <tr><td>Intraspecies</td><td>F2 = 10</td><td>AFH = 10 or CSAF</td><td>Use PK/PD data when available</td></tr>
+                            <tr><td>Study Duration</td><td>F3 = 10</td><td>AFS = 3</td><td>&lt;4 weeks for F3 (EMA)</td></tr>
+                            <tr><td>Severity of Effect</td><td>F4 = 1–10</td><td>Addressed in MF</td><td>Overlaps with F5; MF</td></tr>
+                            <tr><td>LOAEL-to-NOAEL</td><td>F5 &lt; 10</td><td>AFL = 3</td><td>F5 = 10 if severe effects</td></tr>
+                            <tr><td>Database Completeness</td><td>AF = 10 or Read Across</td><td>AFD = 1–10</td><td>Missing DART studies</td></tr>
+                            <tr><td>Modifying Factor</td><td>MF</td><td>MF &lt;1–10</td><td>Residual uncertainties, severity</td></tr>
+                            <tr><td>PK Adjustments</td><td>Bioavailability Correction</td><td>Bioavailability (α), Steady State (S)</td><td>Route-to-route extrapolation</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="formula-box">
+                        <h4>ADE / PDE 計算公式解析</h4>
+                        <p><strong>ISPE Risk-MaPP (ADE)：</strong></p>
+                        <span class="formula-line">ADE = (PoD × BW) / (AFC × MF × PK)</span>
+                        <p><strong>EMA Guideline (PDE)：</strong></p>
+                        <span class="formula-line">PDE = (NOAEL × BW) / (F1 × F2 × F3 × F4 × F5)</span>
+                        <p><strong>各參數意義：</strong></p>
+                        <ul>
+                            <li><strong>PoD / NOAEL</strong>：臨界效應的無不良效應劑量（mg/kg/day）</li>
+                            <li><strong>BW</strong>：標準病患體重，通常 50 kg（考量最脆弱族群）</li>
+                            <li><strong>AFC</strong>：複合調整因子 = AFA × AFH × AFS × AFL × AFD</li>
+                            <li><strong>MF</strong>：修正因子，處理剩餘不確定性和效應嚴重度</li>
+                            <li><strong>PK</strong>：藥代動力學調整，如生物利用度校正</li>
+                        </ul>
+                        <p><strong>計算範例（簡化）：</strong></p>
+                        <pre>NOAEL = 5 mg/kg/day (大鼠 90-day oral study)
+BW = 50 kg
+AFA = 5 (大鼠 → 人, allometric)
+AFH = 10 (人體個體差異)
+AFS = 3 (90 天 → 終身)
+AFL = 1 (有 NOAEL)
+AFD = 1 (DART 研究完整)
+MF  = 1 (無額外不確定性)
+PK  = 1 (口服 → 口服, 無需校正)
+
+AFC = 5 × 10 × 3 × 1 × 1 = 150
+ADE = (5 × 50) / (150 × 1 × 1) = 250/150 ≈ 1.67 mg/day</pre>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>各調整因子的科學依據</h4>
+                        <table>
+                            <thead>
+                                <tr><th>因子</th><th>默認值</th><th>依據</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>AFA（種間）</td><td>大鼠 = 5</td><td>體表面積/體重比之異速生長，不同物種代謝速率不同</td></tr>
+                                <tr><td>AFH（種內）</td><td>10</td><td>人群藥代/藥效動力學差異（2.5 × 2.5 × 1.6 ≈ 10）</td></tr>
+                                <tr><td>AFS（研究時長）</td><td>3（Risk-MaPP）</td><td>Lewis et al. 大規模研究顯示 3 倍已足夠；EMA 保守使用 10</td></tr>
+                                <tr><td>AFL（LOAEL 轉換）</td><td>3</td><td>LOAEL:NOAEL 比值的實證分析，極少超過 3 倍</td></tr>
+                                <tr><td>AFD（數據缺失）</td><td>3</td><td>在 DART 數據缺失時，預留 3 倍安全空間</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Risk-MaPP vs. EMA — 主要差異</h4>
+                        <p><strong>研究時長因子（F3/AFS）：</strong>EMA 對 &lt;4 週研究使用 F3 = 10，Risk-MaPP 使用 AFS = 3。Risk-MaPP 基於更廣泛的實證文獻，認為 3 已足夠保護。</p>
+                        <p><strong>嚴重度因子（F4/MF）：</strong>EMA 在 F4 和 F5 各自處理，Risk-MaPP 以 MF 統一處理殘餘不確定性。需注意避免雙重計算（double counting）。</p>
+                        <p><strong>結果：</strong>相同化合物，兩種方法的 ADE/PDE 應相近，但具體值可能有差異。監管機構通常接受任一方法，只要有充分的科學說明。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>化合物特異性調整因子 (CSAF)</h4>
+                        <p>當有具體的 PK/PD 數據時，可用 CSAF 取代默認的 10 倍種內差異因子（AFH）。</p>
+                        <p>CSAF 由實測數據的統計分佈計算（均值 + 2 個標準差）/均值。</p>
+                        <p>對新藥開發階段（有大量 PK 數據）特別有用，可讓 ADE 更精確，避免過度設計製造控制。</p>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>生物利用度校正的實際情境</h4>
+                        <p>若 NOAEL 來自口服研究（oral bioavailability = 50%），但需評估靜脈注射產品的跨污染風險（100% bioavailability）：</p>
+                        <span style="display:block; font-family:monospace; background:#e3f2fd; padding:0.5rem; border-radius:6px; margin:0.5rem 0;">
+                            ADE_IV = ADE_oral × (oral BA / IV BA) = ADE_oral × (50% / 100%) = ADE_oral / 2
+                        </span>
+                        <p>即靜脈產品的 ADE 需減半，清潔限量更嚴格。這在口服和靜脈產品共線生產（如 CDMO 同廠生產多劑型）時尤為重要。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.4 OEL
+         ============================================================ -->
+    <div class="chapter-section" id="oel">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4</div>
+            <div class="chapter-info">
+                <h2>Setting Occupational Exposure Limits (OEL)</h2>
+                <p>Worker protection vs. patient protection — different targets, same toxicological data | p48–49</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.4</div>
+                    <p>The primary purpose of this Chapter is to describe methods to set ADE values for <span class="key-term">patient protection</span>; however, similar quantitative health-based assessments are performed to set <span class="key-term">OELs</span> to protect workers handling these substances.</p>
+                    <p>The safe level of exposure for patients may be different from that established for workers. This is because the critical effect used to derive the limits may be different due to differences in the anticipated route of exposure, and even where this is the same, the choice of adjustment factors may differ. Workers are generally healthy individuals, whereas patients may be children or elderly, and by definition, have at least one active medical condition.</p>
+                    <p>Adjustments may be necessary to address route-to-route extrapolation, even if the same critical effect is used. For example, an OEL derived from the ADE may need to be adjusted for differences in bioavailability between the route used to identify the critical effect (e.g., oral) and the anticipated route of exposure (e.g., inhalation).</p>
+                    <p>If the same assumptions apply regarding the critical effect, susceptible subpopulations, and bioavailability (e.g., 100%), an OEL can be calculated directly from the ADE by dividing the dose allowed by the <span class="key-term">volume of air breathed by a worker</span>, typically <span class="key-term">10 m³</span>, engaged in light work for 8 hours:</p>
+                    <div class="quote-box">OEL (µg/m³) = ADE (µg/day) / 10 m³</div>
+                    <p>Surface target values (e.g., wipe limits), which are used for worker protection, can also be derived by dividing the dose permitted in 8 hours at the OEL (i.e., OEL × 10 m³) by a standard surface area (e.g., 100 cm²).</p>
+                    <p>While it may be tempting to use wipe limits to assess the potential for cross-contamination, it is important to emphasize that they are developed for <span class="key-term">worker safety purposes</span>. Any other use must be done within the context of a risk assessment for patient safety (cross-contamination) when considering specific plausible pathways of exposure to product.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>OEL vs. HBEL/ADE — 核心對比</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>OEL（職業暴露限值）</th>
+                                    <th>HBEL/ADE（健康基礎暴露限值）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>保護對象</td><td>健康工作人員（操作員）</td><td>病患（含兒童、老人、病人）</td></tr>
+                                <tr><td>暴露路徑</td><td>主要為吸入（inhalation）</td><td>口服/注射/皮膚（依產品劑型）</td></tr>
+                                <tr><td>表示單位</td><td>µg/m³（空氣濃度）</td><td>µg/day 或 mg/day（每日劑量）</td></tr>
+                                <tr><td>應用場景</td><td>工業衛生監測、PPE 選型</td><td>清潔驗證限量、多產品設施評估</td></tr>
+                                <tr><td>調整因子</td><td>工作人員較健康，個別因子可能較寬鬆</td><td>須保護最脆弱族群，因子通常較保守</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>OEL 與 ADE 的換算</h4>
+                        <p><strong>假設條件：</strong>相同臨界效應、相同調整因子、吸入生物利用度 = 100%</p>
+                        <span class="formula-line">OEL (µg/m³) = ADE (µg/day) ÷ 10 m³</span>
+                        <p><strong>例如：</strong>ADE = 100 µg/day</p>
+                        <span class="formula-line">OEL = 100 ÷ 10 = 10 µg/m³</span>
+                        <p><strong>表面擦拭限量（Wipe Limit，用於工作場所保護）：</strong></p>
+                        <span class="formula-line">Wipe Limit = OEL × 10 m³ ÷ 100 cm² = ADE ÷ 100 cm²</span>
+                        <p>注意：此擦拭限量用途為工業衛生，不等同於清潔驗證的殘留限量。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵區別：擦拭限量 ≠ 清潔驗證限量</h4>
+                        <p><strong>擦拭限量（工業衛生 Wipe Limit）</strong>：評估設備外表面，確保不會污染操作員的接觸環境。目的：保護工人。</p>
+                        <p><strong>清潔驗證殘留限量（Cleaning Validation Limit）</strong>：評估產品接觸面的殘留，確保後續批次不會使病患暴露超過 ADE。目的：保護病患。</p>
+                        <p>兩者來源相似，但情境不同。用工業衛生擦拭限量來判定清潔驗證合格，是錯誤的方法。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>為什麼 OEL 和 ADE 數值可能不同？</h4>
+                        <ul>
+                            <li><strong>臨界效應不同</strong>：操作員主要吸入暴露，臨界效應可能是肺部刺激；病患口服，臨界效應可能是肝毒性。</li>
+                            <li><strong>目標族群不同</strong>：OEL 保護健康成人（較少調整），ADE 保護病患含敏感族群（調整因子更保守）。</li>
+                            <li><strong>生物利用度不同</strong>：口服吸收率與吸入吸收率可能差異很大，需各自校正。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         5.5 DOCUMENTATION
+         ============================================================ -->
+    <div class="chapter-section" id="documentation">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Documentation of the Health-Based Exposure Limit</h2>
+                <p>Formal written document requirements for ADE/HBEL assessment | p49</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Original Text — Section 5.5</div>
+                    <p>The scientific rationale for the recommended health-based limit (e.g., ADE) should be summarized in a <span class="key-term">formal written document</span>. The document should include a summary to facilitate review by stakeholders and the basis for the ADE should be clearly described.</p>
+                    <p>The reader should be able to readily determine:</p>
+                    <ul>
+                        <li>The health endpoint (<span class="key-term">critical effect</span>) on which the ADE was established</li>
+                        <li>The values chosen for <span class="key-term">adjustment factors</span></li>
+                        <li>Which sources of variability and uncertainty they address</li>
+                        <li>Any further adjustments (e.g., <span class="key-term">bioavailability correction</span>)</li>
+                    </ul>
+                    <p>The format of the documentation of the ADE does not need to be standardized; however, it should be used consistently within a given company. The documentation should include sections addressing the following:</p>
+                    <ol>
+                        <li>Identity information, physico-chemical properties and chemical structure</li>
+                        <li>Intended use and mechanism of action</li>
+                        <li>Pharmacokinetics and pharmacodynamics in animals and humans</li>
+                        <li>Animal data including acute toxicity, local effects, repeat dose toxicity, developmental and reproductive toxicity, genotoxicity, carcinogenicity</li>
+                        <li>Veterinary use if applicable</li>
+                        <li>Human data including clinical use, adverse reactions, susceptible subpopulations, pregnancy and nursing mothers</li>
+                        <li>Identification of the critical effect</li>
+                        <li>References</li>
+                        <li>Qualifications of the expert author (e.g., toxicologist)</li>
+                        <li>Appendices with detailed calculations of ADE value, chemical-specific adjustment factors, etc.</li>
+                    </ol>
+                    <p>The level of detail in the documentation should be <span class="key-term">commensurate with the level of hazard and risk</span> associated with the specific compound.</p>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">解說 Commentary</div>
+
+                    <div class="term-box">
+                        <h4>HBEL 文件的目的</h4>
+                        <p>ADE/HBEL 文件不只是計算報告，更是一份毒理科學論證，用於：</p>
+                        <ul>
+                            <li>支持清潔驗證殘留限量設定的科學依據。</li>
+                            <li>供監管機構審核（EU GMP Annex 15 要求）。</li>
+                            <li>作為廠房分類和工程控制決策的依據。</li>
+                            <li>在審計或客戶技術轉移時提供透明的數據鏈。</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ADE 文件的 10 個必要章節</h4>
+                        <ol>
+                            <li><strong>化合物識別</strong>：CAS 號、分子式、結構式、物化特性（溶解度、揮發性、粒徑分佈）</li>
+                            <li><strong>用途與作用機制</strong>：適應症、藥理機制、治療劑量範圍</li>
+                            <li><strong>PK/PD 數據</strong>：動物和人體的吸收、分佈、代謝、排泄、生物利用度</li>
+                            <li><strong>動物毒理數據</strong>：急性毒性、重複劑量毒性（28 天/90 天/慢性）、發育生殖毒性、基因毒性、致癌性</li>
+                            <li><strong>獸藥使用</strong>：若為獸醫用 API，需說明對人類食品安全的影響</li>
+                            <li><strong>人體數據</strong>：臨床試驗、上市後不良反應報告、敏感族群資料</li>
+                            <li><strong>臨界效應識別</strong>：選定依據、端點、NOAEL/LOAEL 值</li>
+                            <li><strong>參考文獻</strong>：所有引用的研究來源</li>
+                            <li><strong>作者資格</strong>：毒理學家的學歷、認證、相關經驗</li>
+                            <li><strong>附錄</strong>：完整計算過程、調整因子選取理由、化合物特異性數據</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>文件詳盡程度 = 風險等級</h4>
+                        <p>指南明確指出：文件詳盡程度應與化合物的危害和風險等級相稱。</p>
+                        <ul>
+                            <li><strong>低危化合物</strong>（ADE &gt; 1 mg/day）：精簡版文件，重點列出關鍵數據點和 ADE 計算即可。</li>
+                            <li><strong>高危化合物</strong>（ADE &lt; 10 µg/day）：完整版文件，須包含所有毒理端點的詳細分析和充分的科學論證。</li>
+                            <li><strong>基因毒性/致癌物</strong>：還需納入線性外推方法的說明和癌症風險計算。</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h3>實務思考：你的組織 ADE 管理現況如何？</h3>
+                        <ul>
+                            <li>公司內有合格毒理學家，還是都委外執行 ADE 評估？</li>
+                            <li>每個在廠生產的化合物是否都有書面 ADE 文件？</li>
+                            <li>ADE 文件是否定期更新（如新毒理研究發表、適應症擴展）？</li>
+                            <li>清潔驗證的殘留限量是否可以追溯到 ADE 文件？</li>
+                            <li>客戶要求製造新化合物時，ADE 文件是商業合約的交付項目嗎？</li>
+                        </ul>
+                    </div>
+
+                    <div class="application-box">
+                        <h4>EU GMP Annex 15 的文件要求實踐</h4>
+                        <p>2015 年版 Annex 15 明確要求：多產品設施的清潔驗證必須以毒理學評估（即 ADE/HBEL 文件）作為依據。</p>
+                        <p>查驗要點：查核員可能要求查閱：</p>
+                        <ul>
+                            <li>ADE 文件（含毒理學家簽署）</li>
+                            <li>ADE 到殘留限量的計算追溯</li>
+                            <li>毒理學家的資格證明</li>
+                            <li>文件的版本管理和定期審查記錄</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">∑</div>
+            <div class="chapter-info">
+                <h2>本節重點整理 Section Summary</h2>
+                <p>Chapters 4–5 key concepts consolidated | p37–52</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="column-header">Chapter 4–5 Key Concepts at a Glance</div>
+                    <table>
+                        <thead>
+                            <tr><th>Concept</th><th>Definition / Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Risk Assessment (ICH Q9)</td><td>3 steps: identification → analysis → evaluation</td></tr>
+                            <tr><td>Hazard</td><td>Inherent compound property to cause adverse effects</td></tr>
+                            <tr><td>Hazard Continuum</td><td>Spectrum from no hazard to poorly characterised; spans orders of magnitude in ADE</td></tr>
+                            <tr><td>OEB</td><td>Occupational Exposure Band — interim classification before formal OEL/ADE</td></tr>
+                            <tr><td>HBEL / ADE / PDE</td><td>Health-based exposure limit to protect patients from cross-contamination</td></tr>
+                            <tr><td>Critical Effect</td><td>First clinically significant adverse effect as dose increases; basis for NOAEL selection</td></tr>
+                            <tr><td>NOAEL</td><td>Highest dose with no observed adverse effect; Point-of-Departure for ADE</td></tr>
+                            <tr><td>Adjustment Factors</td><td>AFA, AFH, AFS, AFL, AFD, MF, PK — account for extrapolation uncertainties</td></tr>
+                            <tr><td>OEL</td><td>Worker protection limit; airborne concentration (µg/m³)</td></tr>
+                            <tr><td>HBEL Documentation</td><td>Formal written report by qualified toxicologist; 10 required sections</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <div class="column-header">核心要點總結</div>
+
+                    <div class="concept-box">
+                        <h4>從危害到限值：完整推導鏈</h4>
+                        <p>危害識別（哪些化合物有哪些毒理端點）</p>
+                        <p>↓ 劑量反應評估（找出 NOAEL / LOAEL）</p>
+                        <p>↓ 選定臨界效應（最低劑量出現的最敏感不良效應）</p>
+                        <p>↓ 應用調整因子（AFA × AFH × AFS × AFL × AFD × MF × PK）</p>
+                        <p>↓ 計算 ADE/PDE（PoD × BW / 複合調整因子）</p>
+                        <p>↓ 推導清潔驗證殘留限量（依設備面積、批量、劑量計算）</p>
+                        <p>↓ 書面文件（合格毒理學家簽署，定期更新）</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>HBEL 與 OEL 的平行關係</h4>
+                        <p><strong>相同基礎：</strong>兩者都源自毒理數據（NOAEL、劑量反應）。</p>
+                        <p><strong>不同目的：</strong>HBEL 保護病患（每日攝入量），OEL 保護工作人員（空氣濃度）。</p>
+                        <p><strong>換算關係：</strong>OEL ≈ ADE / 10 m³（工作者 8 小時換氣量），但須考慮路徑差異與族群差異。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>監管機構的期待（EU GMP Annex 15）</h4>
+                        <ul>
+                            <li>所有多產品設施的清潔驗證限量必須以 HBEL/ADE 為依據。</li>
+                            <li>ADE 文件由合格毒理學家建立並簽署。</li>
+                            <li>文件必須可供審核，並定期複查。</li>
+                            <li>廠房設計（containment strategy）應與 ADE/OEL 等級一致。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+    <p>ISPE Baseline&reg; Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</p>
+    <p>Chapters 4–5: Risk Assessment &amp; Risk Identification | p37–p52</p>
+    <p>SterileGMP Knowledge Hub — Educational Commentary in Traditional Chinese</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 300);
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

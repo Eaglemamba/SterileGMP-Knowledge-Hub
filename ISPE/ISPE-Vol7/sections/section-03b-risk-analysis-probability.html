@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Vol.7 - Section 3b: Risk Analysis — Probability of Occurrence, Non-Product Contact &amp; Detection</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub — ISPE Green Theme
+   Section: 3b — Risk Analysis: Probability, Non-Product Contact, Detection
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #1a3a2a;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #1a3a2a; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #2ecc71; background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: #27ae60; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4, .original-content h4 {
+    color: #2e7d32;
+    margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.left-column ul ul, .left-column ol ul { margin: 0.3rem 0 0.3rem 1.25rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue);
+    border-radius: 10px; padding: 1.5rem;
+    border: 1px solid #b2dfdb;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #1a5c3a;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4, .commentary h4 {
+    color: #2e7d32;
+    margin: 1rem 0 0.5rem; font-size: 1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol, .commentary ul, .commentary ol {
+    margin: 0.6rem 0 0.6rem 1.4rem; font-size: 0.95rem;
+}
+.right-column li, .commentary li { margin-bottom: 0.4rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #1a5c3a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box (Yellow) */
+.analogy-box,
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+/* Concept Box (Green) */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* Note Box (Orange) */
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Formula Box (Purple) */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* Application Box (Blue solid) */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* Practice Box (Blue dashed) */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: #1a3a2a; font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+
+/* Learning Objectives */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Section summary */
+.section-summary {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem;
+    border-left: 4px solid #f6ad55;
+}
+.section-summary h3 { color: #856404; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* Structure list */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #27ae60;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* TOC */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: #1a3a2a; text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #27ae60; color: white; }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== SECTION HEADER ===== -->
+<header class="header">
+    <h1>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</h1>
+    <div class="subtitle">Chapter 6 Risk Analysis (Part B) — Probability of Occurrence, Non-Product Contact Areas &amp; Detection</div>
+    <div class="page-info">ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture | p69–p78</div>
+</header>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="top-nav">
+    <button class="nav-scroll-btn" id="navLeft">&#8249;</button>
+    <div class="nav-container" id="navContainer">
+        <a class="nav-item active" href="#sec-6-4">
+            <span class="nav-num">6.4</span>
+            <span class="nav-label">Probability of Occurrence</span>
+        </a>
+        <a class="nav-item" href="#sec-6-4-1">
+            <span class="nav-num">6.4.1</span>
+            <span class="nav-label">Production Activities</span>
+        </a>
+        <a class="nav-item" href="#sec-6-4-2">
+            <span class="nav-num">6.4.2</span>
+            <span class="nav-label">Non-Processing Activities</span>
+        </a>
+        <a class="nav-item" href="#sec-6-4-3">
+            <span class="nav-num">6.4.3</span>
+            <span class="nav-label">Facility &amp; Equipment Design</span>
+        </a>
+        <a class="nav-item" href="#sec-6-5">
+            <span class="nav-num">6.5</span>
+            <span class="nav-label">Non-Product Contact Areas</span>
+        </a>
+        <a class="nav-item" href="#sec-6-6">
+            <span class="nav-num">6.6</span>
+            <span class="nav-label">Detection</span>
+        </a>
+    </div>
+    <button class="nav-scroll-btn" id="navRight">&#8250;</button>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>本節學習重點（p69–p78）</h3>
+        <ul>
+            <li>理解發生機率（Probability of Occurrence）分析的系統性架構與觸發條件</li>
+            <li>掌握生產操作活動（秤量、混合、壓錠、充填、造粒）對交叉污染風險的影響因素</li>
+            <li>辨識非生產活動（清潔、維護保養、更換批次）中潛在的交叉污染路徑</li>
+            <li>評估廠房與設備設計（HVAC、密閉/開放系統、排水）對風險的影響</li>
+            <li>了解非產品接觸區域（Non-Product Contact Areas）的定義與殘留物評估</li>
+            <li>理解偵測（Detection）方法在風險評分中的角色，包括分析方法充分性與藥典比對</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec-6-4">6.4 發生機率</a>
+            <a href="#sec-6-4-1">6.4.1 生產製程活動</a>
+            <a href="#sec-6-4-2">6.4.2 非製程活動</a>
+            <a href="#sec-6-4-3">6.4.3 廠房與設備設計</a>
+            <a href="#sec-6-5">6.5 非產品接觸區域暴露風險</a>
+            <a href="#sec-6-6">6.6 偵測</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6.4 — Probability of Occurrence (Overview)
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4</div>
+            <div class="chapter-info">
+                <h2>Probability of Occurrence — 發生機率</h2>
+                <p>p69–p70 | 系統性識別所有操作條件下的交叉污染潛在路徑</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.4 Probability of Occurrence</h3>
+                    <p>A risk analysis designed to identify the <span class="key-term">probability of cross-contamination</span> should consider all potential routes of cross-contamination under all operational conditions in a systematic and detailed manner. The analysis should be reviewed:</p>
+                    <ul>
+                        <li>At the design stage of any new or refurbished facility/equipment</li>
+                        <li>At the introduction of new products or changes to any process or equipment</li>
+                        <li>As part of any relevant <span class="key-term">change control</span></li>
+                        <li>As part of a regular <span class="key-term">risk management review</span></li>
+                    </ul>
+
+                    <p>The following are possible examples where the probability of failure or error may be enhanced, and these also should be considered as part of any review:</p>
+                    <ul>
+                        <li>Manual processes</li>
+                        <li>Historically non-robust processes or equipment</li>
+                        <li>Specific elements of a process (batch start up, batch changeovers, shift changeovers, post maintenance)</li>
+                        <li>New, untrained, or changed personnel</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>核心概念：發生機率（Probability of Occurrence）</h4>
+                        <p><strong>發生機率</strong>是交叉污染風險評估三個維度之一（另兩個為嚴重性與可偵測性）。本節要求對所有操作條件下的潛在污染路徑進行<strong>系統性、詳細的</strong>審查，而非僅限於正常生產狀態。</p>
+                        <p>評估不只在新廠房設計時執行，任何產品變更、設備改造、製程調整都須觸發重新評估。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>高風險情境識別——稽查重點</h4>
+                        <p>以下情境會顯著提高失敗機率，是監管稽查常見關注點：</p>
+                        <ul>
+                            <li><strong>手動操作</strong>：依賴人員技術，一致性低</li>
+                            <li><strong>歷史上不穩定的製程或設備</strong>：有既往失敗記錄</li>
+                            <li><strong>特定操作節點</strong>：批次啟動、批次切換、班次交接、保養後復工</li>
+                            <li><strong>新人員、未受訓人員、人員更換</strong>：增加操作偏差風險</li>
+                        </ul>
+                        <p>稽查員常要求廠商提供針對這些節點的專項風險評估或SOP控制措施。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>思考類比：飛機安全檢查</h4>
+                        <p>發生機率評估就像航空業的安全評估——不只審查正常飛行，也要審查起飛、降落、地勤、換機師等每個交接節點。製藥廠的「批次切換」與「班次交接」就是這些最容易出問題的節點。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6.4.1 — Production Process Activities
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-4-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4.1</div>
+            <div class="chapter-info">
+                <h2>Production Process Activities — 生產製程活動</h2>
+                <p>p70–p71 | 操作狀態、製程特性、暴露因素全面評估</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.4.1 Production Process Activities</h3>
+                    <p>It should be noted that the correct application of <span class="key-term">GxP</span> generally ensures that most processes are reasonably well contained and controlled with respect to cross-contamination. The production process needs to be fully reviewed to ensure that all potential exposures are identified and evaluated.</p>
+
+                    <h4>6.4.1.1 Operational Status: Set Up, Operation, Cleaning, Upset</h4>
+                    <p>A system that controls product and worker exposure should perform at all times. Many processes are evaluated for containment performance during optimal operation, such as at <span class="key-term">Factory Acceptance Testing (FAT)</span> and do not take account of the following conditions:</p>
+                    <ul>
+                        <li>Set up</li>
+                        <li>Operation</li>
+                        <li>Intervention for correction, heel recovery, end point determination, scrape down for yield/uniformity, sample recovery</li>
+                        <li>Upset, such as equipment failure</li>
+                        <li>Disassembly</li>
+                        <li>Cleaning</li>
+                    </ul>
+                    <p>Each process step should be evaluated to ensure that it does not provide a significant potential for exposure. The review of each of these items should ensure that the necessary actions can be performed and transfers of tools, materials, and components to perform the tasks can be done without significant or unacceptable exposure or carry over.</p>
+
+                    <h4>6.4.1.2 Process and Exposures: A Review of Potential Exposures Created within Processes</h4>
+                    <p>A specific process will have a number of features, all of which may have a greater or lesser impact on the risk of cross-contamination by one or more of the routes. The major factors to consider include:</p>
+                    <ul>
+                        <li>The degree of <span class="key-term">open handling</span> of the hazardous material (e.g., in bulk manual dispensing)</li>
+                        <li>Energy in the form of velocity, pressure, and temperature inherent to the process, which may create transmissible aerosols, e.g.:
+                            <ul>
+                                <li>Milling</li>
+                                <li>Micronizing</li>
+                                <li>Blending</li>
+                                <li>Atomization</li>
+                                <li>Fluidization</li>
+                                <li>Agitated mixing</li>
+                                <li>Compression</li>
+                            </ul>
+                        </li>
+                        <li><span class="key-term">Transfer</span>: the repeated charging and discharging of unit processes through breakable couplings provides a possible route of release — the more transfers required, the greater the potential of risk</li>
+                        <li><span class="key-term">Worker behavior</span> or compliance with SOPs: systems that are highly dependent on operator technique or allow wide scope for variations in operator performance are more susceptible to failure</li>
+                        <li><span class="key-term">Frequency</span>: the more often a process is performed the greater the risk of material release or serial releases</li>
+                        <li><span class="key-term">Scale</span>: the impact of scale may not be linear. The factors affected by scale include worker care (manually charging 100 kg requires a different approach to charging 100 g), and the volume of material available for release</li>
+                        <li>Knowledge of the equipment used, operability, and performance</li>
+                    </ul>
+
+                    <div class="quote-box">
+                        Figure 6.6: Summary of Process Characteristic Factors that Affect the Risk of Cross-Contamination
+                    </div>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="note-box">
+                        <h4>FAT的盲點——常見稽查缺失</h4>
+                        <p>許多廠房在設備驗收測試（FAT）時評估密閉性，但FAT通常在<strong>最佳操作條件</strong>下進行，並不涵蓋以下高風險節點：</p>
+                        <ul>
+                            <li>設備安裝與設定（Set up）</li>
+                            <li>人工干預（刮取、取樣、端點判定）</li>
+                            <li>設備故障（Upset）</li>
+                            <li>拆卸與清潔（Disassembly / Cleaning）</li>
+                        </ul>
+                        <p>稽查員會詢問：「您的風險評估是否涵蓋了故障情境下的交叉污染？」這是常見483觀察事項的來源。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>製程特性風險因素矩陣</h4>
+                        <p>以下製程特性均對交叉污染發生機率有直接影響：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>風險因素</th>
+                                    <th>典型高風險操作</th>
+                                    <th>控制方向</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>開放式操作程度</td>
+                                    <td>散裝手動分裝</td>
+                                    <td>封閉傳送系統</td>
+                                </tr>
+                                <tr>
+                                    <td>能量（速度/壓力/溫度）</td>
+                                    <td>研磨、微粉化、流化床、壓片</td>
+                                    <td>局部排氣、高效密封</td>
+                                </tr>
+                                <tr>
+                                    <td>物料轉移次數</td>
+                                    <td>多步驟換料、快拆接頭</td>
+                                    <td>減少開放式連接點</td>
+                                </tr>
+                                <tr>
+                                    <td>操作員依賴性</td>
+                                    <td>手動清潔、主觀判定操作</td>
+                                    <td>自動化CIP/自動控制</td>
+                                </tr>
+                                <tr>
+                                    <td>頻率</td>
+                                    <td>高頻換批多品種生產</td>
+                                    <td>Campaign生產、專用設備</td>
+                                </tr>
+                                <tr>
+                                    <td>規模效應</td>
+                                    <td>大批量手動投料（100kg vs 100g）</td>
+                                    <td>規模匹配的工程控制</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>類比：工廠規模與風險的非線性關係</h4>
+                        <p>指引特別指出「規模的影響可能是非線性的」。好比投100克時操作員可以很謹慎，但投100公斤時，物料洩漏的<strong>絕對量</strong>遠遠更大，且操作員疲勞度、粉塵飛散面積都不成比例地增加。在新產品引入大規模生產時，這點常被低估。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>ISPE重點提醒：GxP合規並非充分條件</h4>
+                        <p>指引明確指出，GxP的正確執行「通常可確保大多數製程具合理的密閉性」，但這僅是基線，並非足夠條件。<strong>針對每個製程的全面暴露評估仍是必要的</strong>，不能以「我們符合GMP」取代具體的風險識別與評估。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6.4.2 — Non-Processing Activities
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-4-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4.2</div>
+            <div class="chapter-info">
+                <h2>Non-Processing Activities — 非製程活動</h2>
+                <p>p71–p72 | 廢棄物處理、計畫/非計畫維護、換批次、清潔作業</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.4.2 Non-Processing Activities</h3>
+
+                    <h4>6.4.2.1 Waste Handling</h4>
+                    <p>The risk analysis should cover all aspects of <span class="key-term">waste handling</span> to ensure that items such as soiled clothing, disposable items (e.g., masks, gloves, and filters), and material/product waste streams are appropriately handled to avoid the potential for cross-contamination. Shared areas, e.g., common cleaning rooms, potentially containing simultaneously both dirty and clean equipment from different process streams should be carefully considered.</p>
+
+                    <h4>6.4.2.2 Planned and Unplanned Maintenance</h4>
+                    <p>All <span class="key-term">planned maintenance</span> activities should be reviewed in sufficient detail to identify potential routes for cross-contamination. Some planned maintenance may take place outside of normal operating hours and by personnel other than those involved with the batch manufacture.</p>
+                    <p>The planned maintenance review should consider the following aspects, as a minimum:</p>
+                    <ul>
+                        <li>Nature of the maintenance (e.g., air handling shutdown)</li>
+                        <li>Frequency of the maintenance (e.g., daily, weekly, monthly, annual)</li>
+                        <li>Status of production when the planned maintenance occurs (e.g., area clean or dirty)</li>
+                        <li>The availability of approved procedures for planned maintenance</li>
+                        <li>Necessary qualifications of personnel performing the maintenance activities</li>
+                        <li>Appropriate training for those performing planned maintenance</li>
+                        <li>The likelihood of powder spillage during maintenance (e.g., emptying local dust extraction and vacuum units)</li>
+                    </ul>
+                    <p>It is more difficult to predict how <span class="key-term">unplanned maintenance</span> may affect the probability of cross-contamination. A proactive review of potential unplanned events should be performed, to predict how to handle many of them in advance to help to avoid the risk of cross-contamination. This could lead to specific failure mode procedures for some major events (e.g., <span class="key-term">HVAC failure</span>).</p>
+
+                    <h4>6.4.2.3 Changeovers</h4>
+                    <p>The <span class="key-term">changeover</span> between one product and the next is an important aspect to be reviewed, especially regarding the order of such changeover activities. The changeover activities should be appropriately documented as part of a procedure and clearly indicate the sequence of the changeover work.</p>
+                    <p>Changeover between products may require that equipment change parts have to be removed from the line for one product and be replaced with change parts for the second product. The handling, cleaning, transport, and storage of such change parts (e.g., tablet punches) should be carefully considered.</p>
+
+                    <h4>6.4.2.4 Cleaning</h4>
+                    <p>Cleaning can in itself create a potential risk of cross-contamination if not performed properly. The cleaning procedures should be reviewed to ensure that they are sufficiently detailed for personnel to be able to follow them consistently and correctly.</p>
+                    <p>The cleaning processes which are developed should incorporate a <span class="key-term">risk-based approach</span> to assist in the determination of critical controls and/or critical parameters. For example, a <span class="key-term">Design of Experiment (DoE)</span> could be performed to determine what parameters have the greatest or least impact on the cleaning process.</p>
+                    <p><span class="key-term">Automatic cleaning procedures</span> such as CIP should, in theory, provide much more consistent cleaning than manual cleaning procedures. The <span class="key-term">CPPs</span> associated with any CIP system (e.g., times, temperatures, and pressures) and how these are monitored, controlled, and alarmed should be understood. There also should be a clear understanding of what happens if these CPPs go outside of limits (e.g., low pressure), as well as the degree of safeguards against manual intervention (e.g., password control).</p>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>廢棄物管理的交叉污染盲點</h4>
+                        <p>廢棄物處理（Waste Handling）常被忽視，但污染路徑真實存在：</p>
+                        <ul>
+                            <li>沾染產品的手套、口罩、過濾器——若未依規程廢棄，可能轉移污染</li>
+                            <li><strong>共用清潔室</strong>（Common Cleaning Room）是最高風險區域：不同產品的髒設備與乾淨設備同時存在，極易交叉污染</li>
+                            <li>廢棄物路線設計應與生產流向<strong>完全分隔</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>計畫性維護（PM）的七項最低審查要素</h4>
+                        <p>ISPE明確列出計畫性維護評估的最低要求，這是稽查員常查閱的風險評估項目：</p>
+                        <ol>
+                            <li>維護性質（如HVAC停機）</li>
+                            <li>維護頻率（日、週、月、年）</li>
+                            <li>維護發生時的生產狀態（區域乾淨或污染？）</li>
+                            <li>是否有核准的PM程序</li>
+                            <li>執行人員資格要求</li>
+                            <li>人員培訓是否到位</li>
+                            <li>粉末洩漏可能性（如清空集塵器、吸塵單元時）</li>
+                        </ol>
+                        <p>關鍵問題：<strong>維護人員是否來自外部廠商？他們是否了解交叉污染控制要求？</strong></p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>非計畫性維護的FMEA思路</h4>
+                        <p>指引要求對非計畫性維護進行<strong>主動性審查</strong>——即在事故發生前，預先思考「如果HVAC突然停機，我們的應變SOP是什麼？交叉污染風險如何管控？」這與製造業的FMEA（失效模式效應分析）思路完全相同：<strong>預測失效，建立失效模式程序</strong>，而不是等到出事後才應急。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>換批次（Changeover）管理要點</h4>
+                        <p>換批次是多產品廠房的最高風險節點，管控重點包括：</p>
+                        <ul>
+                            <li><strong>換批次活動的順序</strong>：必須有書面程序且明確規定操作序列</li>
+                            <li><strong>模具/零件管理</strong>：以壓片衝頭（tablet punches）為例，換批時的取出、清潔、運輸、儲存都是潛在交叉污染點</li>
+                            <li>換批程序應包含確認清單（Checklist），並由QA人員最終放行</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>清潔作業本身的風險——DoE應用</h4>
+                        <p>指引指出清潔本身也可能製造交叉污染，這是一個常被忽略的觀點。控制方向：</p>
+                        <ul>
+                            <li>清潔程序應足夠詳細，確保人員可一致、正確執行</li>
+                            <li>運用<strong>DoE（實驗設計）</strong>識別清潔過程的關鍵參數（CPPs）</li>
+                            <li>CIP系統的CPPs（時間、溫度、壓力）須被監控、控制並設有警報</li>
+                            <li>需明確定義CPP超標時的處置流程，並設定防止人員擅自干預的保護（如密碼鎖）</li>
+                        </ul>
+                        <p>CIP雖比手動清潔更一致，但前提是<strong>機械可靠性已被驗證</strong>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6.4.3 — Facility and Equipment Design
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-4-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4.3</div>
+            <div class="chapter-info">
+                <h2>Facility and Equipment Design — 廠房與設備設計</h2>
+                <p>p72–p73 | 密閉/開放系統定義、HVAC與設施設計因素</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.4.3 Facility and Equipment Design</h3>
+                    <p>The design of the facility and equipment should be reviewed when considering the potential risks of cross-contamination. The review should include consideration of risk elements such as:</p>
+                    <ul>
+                        <li>Surfaces and finishes (e.g., smoothness, accessibility to clean)</li>
+                        <li><span class="key-term">Air handling philosophy</span> (e.g., filtration levels, fresh air or recirculation, pressure differential regimes, airflows, monitoring, recording, alarms, back up). The analysis also should review the need for <span class="key-term">once through air</span>. If air can be recirculated without undue risk to workers and cross-contamination, this can have a large impact on the facility design as well as the operating costs. See Section 9.6 for more information.</li>
+                        <li>Airlocks</li>
+                        <li>Equipment layout (e.g., space, segregation)</li>
+                        <li>Material and process flows including common areas for processes and personnel</li>
+                        <li>Cleaning philosophy including provision of effective automated cleaning systems, such as <span class="key-term">CIP</span> and <span class="key-term">Wash In Place (WIP)</span></li>
+                        <li>Process equipment design (e.g., closed versus open systems, charging ports)</li>
+                    </ul>
+
+                    <p>Actual exposure varies between individual process cycles due to operator performance differences, and the degree of this variability is often reflected in the method of exposure control. <span class="key-term">Closed systems</span> have far lower variability than open systems, and open systems with engineering controls are better controlled than unprotected open processes.</p>
+
+                    <div class="quote-box">
+                        ADV TOPIC: The selection of the specific process equipment may have a major impact on the scope of exposure through careful design of the processing machine to minimize leaks. This may already be an inherent requirement of the equipment, e.g., with API reaction pressure vessels during reaction steps or fluid bed dryers during drying. As a result, process equipment or processes associated with them can be considered to be either "open" or "closed."
+                    </div>
+
+                    <h4>6.4.3.1 Closed Process Definition</h4>
+                    <p>A process step (or system) is considered <span class="key-term">closed</span> where the product is not exposed to the immediate room environment (and vice versa). It is the manufacturer's responsibility to define and demonstrate closure for a process step.</p>
+                    <p>An example might include a pressurized vessel operation or a process enclosed in an effective "high containment" process equipment item, e.g., a sealed process system filled and discharged through <span class="key-term">split butterfly valves</span>.</p>
+
+                    <h4>6.4.3.2 Open Process Definition</h4>
+                    <p>Any process step that does not meet the definition of "closed process" is considered <span class="key-term">open</span>. This might include open material handling during dispensing or where the process system is opened for a particular step, e.g., granulator bowl scraping or bowl removal from a fluid bed dryer for product recovery. It should be noted that the amount of time the process is open (whether it is brief or longer) should be considered during the risk assessment.</p>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>廠房設計風險審查的七個維度</h4>
+                        <p>設施與設備設計對交叉污染發生機率的影響是根本性的——設計決定了風險的「底線」，後期運行控制只是疊加在設計基礎上的管理層。審查範圍：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>設計維度</th>
+                                    <th>風險考量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>表面與表面處理</td>
+                                    <td>粗糙度影響殘留物附著，可及性影響清潔效果</td>
+                                </tr>
+                                <tr>
+                                    <td>空調（HVAC）哲學</td>
+                                    <td>過濾等級、新風/迴風比、壓差、氣流方向、警報、備援</td>
+                                </tr>
+                                <tr>
+                                    <td>氣閘（Airlock）</td>
+                                    <td>氣閘的有效性是隔離不同壓差區域的關鍵</td>
+                                </tr>
+                                <tr>
+                                    <td>設備佈局</td>
+                                    <td>設備間距、不同產品設備的物理隔離</td>
+                                </tr>
+                                <tr>
+                                    <td>物料與人員流</td>
+                                    <td>共用通道與共用區域是高風險交叉點</td>
+                                </tr>
+                                <tr>
+                                    <td>清潔設計（CIP/WIP）</td>
+                                    <td>自動化清潔系統的一致性遠優於手動清潔</td>
+                                </tr>
+                                <tr>
+                                    <td>設備設計（密閉vs開放）</td>
+                                    <td>密閉系統是降低暴露最有效的工程控制</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>密閉製程（Closed Process）的定義與舉證責任</h4>
+                        <p><strong>密閉製程</strong>定義為：產品不暴露於直接的室內環境（反之亦然）。重要原則：</p>
+                        <ul>
+                            <li><strong>舉證責任在製造商</strong>：廠商必須定義何謂密閉，並提供密閉性的驗證證明</li>
+                            <li>典型例子：加壓容器、使用分蝶閥（Split Butterfly Valve）進行進料與排料的密封系統</li>
+                            <li>密閉系統暴露變異性遠低於開放系統</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>開放製程（Open Process）——時間因素的考量</h4>
+                        <p>任何不符合密閉定義的製程均視為<strong>開放製程</strong>，包括：</p>
+                        <ul>
+                            <li>分裝時的開放式物料處理</li>
+                            <li>造粒機刮碗操作</li>
+                            <li>流化床乾燥機出料時的碗體移除</li>
+                        </ul>
+                        <p>指引特別強調：<strong>開放時間的長短（Brief or Longer）</strong>應在風險評估中被考慮。即使僅短暫開放，如果物料的ADE極低，仍可能是顯著風險點。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>一次通過空氣（Once-Through Air）的決策邏輯</h4>
+                        <p>HVAC是否採用迴風循環，是設計階段的重要決策：</p>
+                        <ul>
+                            <li><strong>一次通過空氣（OTA）</strong>：最嚴格的交叉污染控制，但能耗極高（冷熱能源不循環）</li>
+                            <li><strong>迴風循環</strong>：顯著降低設施設計與運行成本，但必須確認迴風中的氣溶膠已被有效過濾</li>
+                        </ul>
+                        <p>決策依據是<strong>風險評估</strong>而非預設立場——如果迴風不增加不可接受的工作人員或交叉污染風險，迴風是可以接受的選項。詳細內容見第9.6節。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6.5 — Product Exposure Risk in Non-Product Contact Areas
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-5">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.5</div>
+            <div class="chapter-info">
+                <h2>Product Exposure Risk in Non-Product Contact Areas — 非產品接觸區域的產品暴露風險</h2>
+                <p>p73–p75 | 區域分類、殘留物評估、可信度分析、暴露評估考量</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.5 Product Exposure Risk in Non-Product Contact Areas</h3>
+                    <p>In general, the risk of cross-contamination due to mechanical and/or airborne transfer is considered to be <span class="key-term">low relative to other possible pathways</span> (e.g., retention or mix-up) although in these areas it may be critical for worker safety. If the risk assessment indicates that airborne contamination is a potential concern, then further analysis may be necessary using quantitative assessment tools based on the acceptance limits established reflecting the <span class="key-term">ADE</span> of Product A and the batch size and maximum daily dose of Product B.</p>
+
+                    <h4>6.5.1 Non-Product Contact Area</h4>
+                    <p>Figure 6.7 illustrates the main classifications of non-product contact areas:</p>
+                    <ul>
+                        <li><span class="key-term">Barriers</span>: physically segregate the product contact surface from the surrounding product room area as well as from workers. Types of barriers can be closed processing equipment or enclosures such as a pressured vessel, isolator, or ventilated enclosures such as safety cabinets and fume cupboards.</li>
+                        <li><span class="key-term">Product room/suite</span>: where one product is processed on a dedicated, batch, or campaign basis where the non-product contact surfaces include exterior surfaces of enclosed process equipment or barriers and interior finishes such as walls, floor, ceiling, and doors.</li>
+                        <li><span class="key-term">Supporting areas</span>: adjacent to the product rooms/suites, where workers from other product rooms may be present.</li>
+                        <li><span class="key-term">GxP area</span>: the common area where the worker is not in direct contact with the product as in the secondary packaging, shipping/receiving, and warehousing areas.</li>
+                        <li><span class="key-term">HVAC system</span>: includes ducting, filters, Air Handling Units (AHUs), and control devices for a product room installed in the GxP area.</li>
+                    </ul>
+
+                    <h4>6.5.2 Residue on Non-Product Contact Surfaces</h4>
+                    <p>It is important that non-product contact surfaces are kept <span class="key-term">visually clean</span>. Visual monitoring enables a wide area to be observed quickly. Swab sampling data may be available to permit assessment of potential cross-contamination of products from these non-product contact surfaces.</p>
+                    <p>Particularly where the exposure potential is high, swab testing against <span class="key-term">preset limits</span> may be part of a more detailed review/action plan. These preset limits should take into consideration plausible, worst-case, assumptions of potential exposure pathways, the amount of Product A that could cross contaminate Product B, and the ADE value for Product A.</p>
+                    <p>Some companies may use wipe samples/limits to assess the potential <span class="key-term">dermal risk</span> from systematic exposure of employees and this should not be confused with potential cross-contamination risks from non-product contact surfaces.</p>
+
+                    <h4>6.5.3 Plausibility</h4>
+                    <p>Non-product contact parts represent elements within the process boundary which are not in product contact. Typical elements are the internal surfaces of an isolator or the surfaces of an engineering control device. These surfaces are far less critical than product contact surfaces and should be cleaned between products.</p>
+                    <p>Surfaces outside this zone are of even less significance, particularly where closed systems are used. Though the surface concentration taken over the whole surface area may seem a significant number, the risk of all or even a small fraction of this material being disengaged from the surface and entering the product is relatively insignificant.</p>
+
+                    <div class="quote-box">
+                        <strong>Example calculation (Plausibility):</strong> A room 5 m × 5 m × 3 m has a surface area of 110 m². Where the LOD is 5 µg/swab, where the swab is 25 cm² and the samples taken are below the level of detection; taking a very conservative approach, the total available on the surface is:<br>
+                        110 m² × 10,000 cm²/m² × 5 µg/25 cm² = 220,000 µg or 220 milligrams.<br>
+                        Supposing the potential contamination is to a batch with 100,000 maximum daily dose units and the ADE is 50 µg/day, the total that could be present and be within the limit is 50 µg × 100,000 = 5,000,000 µg or 5 grams. The margin of safety (5 g vs 220 mg) is significant.
+                    </div>
+
+                    <div class="quote-box">
+                        <strong>Second example (scoop transfer):</strong> A stainless steel scoop with surface area 2,900 cm² at visual detection limit of 4 µg/cm²:<br>
+                        2,900 cm² × 4 µg/cm² = 11,600 µg or 11.6 milligrams.<br>
+                        With a safe carryover limit of 5 grams, the margin of safety = 5,000 mg / 11.6 mg ≈ 431. This represents low cross-contamination risk.
+                    </div>
+
+                    <h4>6.5.4 Considerations for Exposure Assessment</h4>
+                    <p>The mode of exposure for non-product contact areas is by either <span class="key-term">mechanical</span> or <span class="key-term">airborne transfer</span>. The following should be considered when conducting an exposure assessment:</p>
+                    <ul>
+                        <li>Open processes during operation, cleaning, upset, and maintenance</li>
+                        <li>Retained or accumulated product inside the barrier or the product room/suite</li>
+                        <li>Recirculated HVAC systems for the product room — is the air stream effectively protected from recirculated aerosols?</li>
+                        <li>Retained and accumulated product in the ductwork, including airborne transfer due to pressure differentials</li>
+                        <li>Leakage of product to areas above the ceiling or interstitial space or into the cavities of the building</li>
+                        <li>Retained or accumulated product during maintenance or repair of the HVAC or utility systems</li>
+                        <li>Transfer of product compound from the worker's clothing, hands, or feet</li>
+                        <li>Transfer of product compound from dirty equipment transfer and their wheels</li>
+                        <li>Transfer of product compound on the handling media</li>
+                        <li>Manual cleaning of equipment and/or barrier</li>
+                        <li>Emergency or upset situations in the pharmaceutical area</li>
+                        <li>Shared HVAC systems serving several rooms or common areas where several different products are handled — should be evaluated in relation to each specific hazard</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>非產品接觸區域的五層分類架構</h4>
+                        <p>ISPE建立了一個清晰的空間分類層次，對應不同的風險程度與監控要求：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>區域類別</th>
+                                    <th>說明</th>
+                                    <th>風險程度</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Barriers（隔離屏障）</td>
+                                    <td>密閉設備、隔離器、安全箱，最接近產品</td>
+                                    <td>中（直接邊界）</td>
+                                </tr>
+                                <tr>
+                                    <td>Product Room/Suite（產品房）</td>
+                                    <td>牆、地板、天花板等室內表面</td>
+                                    <td>低至中</td>
+                                </tr>
+                                <tr>
+                                    <td>Supporting Areas（支援區域）</td>
+                                    <td>鄰近產品房，其他產品人員可進入</td>
+                                    <td>低</td>
+                                </tr>
+                                <tr>
+                                    <td>GxP Area（GxP共用區域）</td>
+                                    <td>二次包裝、收發貨、倉儲</td>
+                                    <td>極低</td>
+                                </tr>
+                                <tr>
+                                    <td>HVAC System（空調系統）</td>
+                                    <td>風管、過濾器、AHU——特殊監控對象</td>
+                                    <td>潛在中高（若迴風）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>皮膚暴露風險 vs 交叉污染風險——不要混淆</h4>
+                        <p>指引特別澄清：某些廠商用拭子採樣/限度來評估員工的<strong>皮膚暴露風險（Dermal Risk）</strong>，這<strong>不應與交叉污染風險評估混為一談</strong>。兩者目的不同：</p>
+                        <ul>
+                            <li><strong>皮膚暴露評估</strong>：保護工作人員（職業健康，IH）</li>
+                            <li><strong>交叉污染評估</strong>：保護下一批次產品品質（GxP）</li>
+                        </ul>
+                        <p>採樣限度設定依據不同，不能互相替代使用。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>可信度評估的數量化方法（Plausibility Calculation）</h4>
+                        <p>ISPE提供了一個重要的量化思維工具：即使室內表面殘留量看似龐大，實際進入產品的量與ADE限度相比，往往差異懸殊。</p>
+                        <pre>
+計算邏輯：
+最保守估計的房間表面總殘留量（mg）
+        vs.
+允許帶入Product B的最大量 = ADE_A × 最大日劑量單位數（mg）
+
+安全邊際（Margin of Safety）= 允許量 / 估計殘留量
+
+範例1（房間表面）：
+  估計最大殘留 = 110 m² × 10,000 cm²/m² × 5 µg/25 cm²
+               = 220,000 µg = 220 mg
+  ADE允許量 = 50 µg × 100,000 劑量單位 = 5,000 mg = 5 g
+  MoS = 5,000 mg / 220 mg ≈ 22.7  → 低風險
+
+範例2（金屬舀匙）：
+  最大殘留 = 2,900 cm² × 4 µg/cm² = 11,600 µg = 11.6 mg
+  ADE允許量 = 5 g = 5,000 mg
+  MoS = 5,000 mg / 11.6 mg ≈ 431  → 低風險
+                        </pre>
+                        <p>此計算方法的前提是<strong>最保守假設</strong>（所有殘留均為LOD值，且均能轉移至產品），實際風險更低。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>暴露評估的12個考量點——實務應用清單</h4>
+                        <p>6.5.4條列出的12項考量，在實際風險評估文件中應逐項記錄：</p>
+                        <ul>
+                            <li>操作、清潔、異常、維護期間的開放製程活動</li>
+                            <li>隔離屏障或產品房內的產品堆積與殘留</li>
+                            <li>HVAC迴風系統的氣溶膠保護是否充分</li>
+                            <li>風管內的粉塵堆積與壓差驅動的空氣傳播</li>
+                            <li>天花板上方、夾層空間、牆腔的洩漏</li>
+                            <li>HVAC/公用系統維護期間的殘留物</li>
+                            <li>人員服裝、手部、鞋底的攜帶轉移</li>
+                            <li>移動設備輪子攜帶的污染</li>
+                            <li>物料處理媒介（托盤、容器）的轉移</li>
+                            <li>設備/隔離屏障的手動清潔</li>
+                            <li>緊急或異常情況</li>
+                            <li>共用HVAC服務多個房間的情境</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6.6 — Detection
+         ============================================================ -->
+    <section class="chapter-section" id="sec-6-6">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.6</div>
+            <div class="chapter-info">
+                <h2>Detection — 偵測</h2>
+                <p>p75–p76 | 分析方法、PAT、藥典比對、控制充分性</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <div class="column-header">Original Text (English)</div>
+
+                    <h3>6.6 Detection</h3>
+                    <p>An essential element in accurately assigning a risk level to a hazard arising from a compound is the <span class="key-term">degree of difficulty by which the compound can be detected</span>. A hazard rating may be high, but if the method of detection is sufficient, linked to health-based limits and to appropriate control measures, then the subsequent risk arising from that hazard can be managed and low.</p>
+
+                    <p>The application of methodologies which possess the degree of <span class="key-term">selectivity and sensitivity</span> necessary to detect a compound of interest is key to any detection-based control of risk from a hazard. Such controls, when optimally embedded into those points of the process which present the highest level of potential concern can effectively control the risk.</p>
+
+                    <p>In situations where the method of detection is <span class="key-term">visual only</span>, it is important to understand the visual acuity of the staff and what level of residue is considered safe. If the safe level is below the visual acuity of the staff then the risk of failure not being detected may be considered high whereas if the safe level is well above (several orders of magnitude) the visual acuity of the staff the risk of failure not being detected may be considered low.</p>
+
+                    <p>The degree of variability in product contact equipment cleaning processes should be understood and considered as a primary factor in ongoing monitoring decisions. As an example, <span class="key-term">automated CIP processes</span> present less risk from a variability perspective than manual cleaning methods, and may therefore justify less ongoing monitoring (once mechanical reliability is proven) than a manual process.</p>
+
+                    <h4>6.6.1 Developmental Controls Providing Process Knowledge</h4>
+                    <p>During the course of pharmaceutical discovery and development activities, one focus is on the development of analytical methodology aimed at accurate identification and assessment of both drug substance and potential synthesis and degradation impurities. The drug substance itself and the potential preliminary toxicological profiles are established for each impurity as well as for the drug substance.</p>
+                    <p>Traditionally, once analytics have been established, efforts have turned to the optimization of test methods, an exercise which culminates in a "validation exercise."</p>
+                    <p><span class="key-term">Process Analytical Technology (PAT)</span> is increasingly being applied to processes for the purpose of acquiring information to facilitate process understanding and allowing risk control strategies to be established. Once established, these should be maintained and continually improved under the <span class="key-term">Pharmaceutical Quality System (ICH Q10)</span>.</p>
+                    <p>As such, the development, convergence, and subsequent integration of analytical technologies such as <span class="key-term">Near Infra-Red (NIR) Raman Spectroscopy</span> and endpoint monitoring/control tools should be considered essential developmental activities. Complementary controls, such as barrier systems, also may be seen as suitable mechanisms to control a risk arising from any particular hazard.</p>
+                    <p>Subsequent scale up activities should embed continued refinement of PAT enablers. Such continual improvement initiatives should become institutional requirements within organizations, much akin to historical efforts of yield optimization and process train mapping.</p>
+
+                    <div class="quote-box">
+                        ADVANCED TOPIC: A potential challenge to the holistic approach presented may be encountered where traditional demarcation exists between research and commercial functions within the industry. This should not prevent existing methodologies being either discounted or replaced by new techniques or a technology developed by units supporting the progression of the compound throughout its life cycle.
+                    </div>
+
+                    <h4>6.6.2 Compendia Comparison</h4>
+                    <p>Prior to starting the development of complementary analytics, units concerned should assess the basis of current referee methodology utilized by regulatory agencies. The methods, both microbiologically and analytically derived, typically assist the agencies in the evaluation of a variety of sample collection analyses: to include challenging materials for the presence of compounds, such as <span class="key-term">penicillins and beta-lactams</span>.</p>
+                    <p>The caveat for any internally developed analytical or microbial method is that it should formally demonstrate at least an <span class="key-term">equivalent level of sensitivity</span> as the compendial (e.g., <span class="key-term">USP, EP, JP</span>) or referee methodology. Reasons for developing an alternative methodology may include improved sensitivity, robustness, application to PAT technologies, or ease of use.</p>
+
+                    <h4>6.6.3 Adequacy of Controls</h4>
+                    <p>Throughout the product life cycle, the containment technologies, equipment, and analytical testing which are utilized should continue to be evaluated for <span class="key-term">applicability, currency, reproducibility, and robustness</span>. Without consistency of the controls which are employed, multiple variables will exist which will complicate root cause investigations should a detection technique identify a breach to the acceptable threshold of control which has been established.</p>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <div class="column-header">繁體中文解析與Commentary</div>
+
+                    <div class="concept-box">
+                        <h4>偵測（Detection）在風險評估中的角色</h4>
+                        <p>在FMEA風險評估框架中，<strong>偵測能力</strong>是風險優先數（RPN）的三個維度之一：</p>
+                        <ul>
+                            <li>嚴重性（Severity）× 發生機率（Probability）× <strong>偵測困難度（Detection）</strong> = RPN</li>
+                        </ul>
+                        <p>ISPE的重要洞見：即使危害等級（Hazard Rating）高，若偵測方法靈敏且與健康限度直接關聯，<strong>整體風險仍可被有效管控並保持在低水平</strong>。這是「風險可管控」而非「風險不存在」的正確認知。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>目視檢查的限制——分析方法的重要性</h4>
+                        <p>當偵測方法僅為<strong>目視檢查</strong>時，關鍵問題是：</p>
+                        <ul>
+                            <li>員工的視覺靈敏度（Visual Acuity）是多少？</li>
+                            <li>安全殘留限度（Safe Level）與目視偵測下限的關係如何？</li>
+                        </ul>
+                        <p>結論邏輯：</p>
+                        <ul>
+                            <li>若安全限度 &lt; 目視偵測下限 → 目視看不出不合格 → <strong>高偵測風險</strong></li>
+                            <li>若安全限度 &gt;&gt; 目視偵測下限（相差數個量級）→ <strong>低偵測風險</strong></li>
+                        </ul>
+                        <p>此邏輯與清潔驗證中的視覺偵測限度（VDL, Visual Detection Limit）設定直接關聯。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>製程分析技術（PAT）作為偵測工具</h4>
+                        <p><strong>PAT（Process Analytical Technology）</strong>正越來越廣泛地被整合進製程偵測：</p>
+                        <ul>
+                            <li><strong>NIR（近紅外光譜）</strong>、<strong>Raman光譜</strong>：非破壞性、即時的組成分析工具</li>
+                            <li><strong>端點監控</strong>：自動判定製程終點，減少對操作員主觀判斷的依賴</li>
+                        </ul>
+                        <p>ICH Q10要求：一旦建立PAT系統，應在藥品品質體系（PQS）框架下持續維護與改進，而非停留在驗證通過即可的靜態狀態。</p>
+                        <p>指引也點出組織壁壘問題：研發部門與商業生產部門之間的傳統分界，不應成為技術傳承的障礙。</p>
+                    </div>
+
+                    <div class="key-note">
+                        <h4>藥典比對（Compendia Comparison）——監管底線</h4>
+                        <p>開發內部分析方法或替代方法時，有一條不可妥協的底線：</p>
+                        <p><strong>內部方法必須正式證明其靈敏度至少等同於藥典方法（USP、EP、JP）或監管機構認可的參考方法。</strong></p>
+                        <p>允許開發替代方法的合理原因包括：</p>
+                        <ul>
+                            <li>更高的靈敏度</li>
+                            <li>更好的穩健性（Robustness）</li>
+                            <li>適合整合至PAT技術</li>
+                            <li>操作便利性</li>
+                        </ul>
+                        <p>青黴素、β-內醯胺類藥物（Beta-Lactams）是監管機構最關注的典型品項，其分析方法的靈敏度要求特別嚴格。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>控制措施充分性（Adequacy of Controls）的四項評估標準</h4>
+                        <p>指引要求在整個產品生命週期中，對所有採用的控制技術、設備與分析測試持續評估：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>評估標準</th>
+                                    <th>含義</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Applicability（適用性）</td>
+                                    <td>控制方法是否仍適用於當前製程條件？</td>
+                                </tr>
+                                <tr>
+                                    <td>Currency（時效性）</td>
+                                    <td>是否仍符合當前法規與技術水平？</td>
+                                </tr>
+                                <tr>
+                                    <td>Reproducibility（重現性）</td>
+                                    <td>結果是否能一致重現？</td>
+                                </tr>
+                                <tr>
+                                    <td>Robustness（穩健性）</td>
+                                    <td>在正常操作變異下是否仍有效？</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>若控制措施不一致，一旦偵測到超標，<strong>根本原因調查將極為困難</strong>——因為存在過多無法排除的變數。這正是指引強調控制措施一致性的核心理由。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>實務思考：您的HVAC維護程序是否觸發了交叉污染風險評估？</h4>
+                        <p>對照本節內容，思考以下問題：</p>
+                        <ul>
+                            <li>您廠的HVAC計畫性保養（PM）是否有書面程序列出所有7項最低要素？</li>
+                            <li>HVAC故障時，是否有預先定義的失效模式程序（Failure Mode Procedure）？</li>
+                            <li>您使用的清潔殘留分析方法，靈敏度是否優於或等同於USP/EP方法？有無正式比對記錄？</li>
+                            <li>換批次（Changeover）SOP是否明確定義操作順序，並設有QA放行確認步驟？</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Summary -->
+            <div class="section-summary">
+                <h3>本節核心摘要（Section 3b: 6.4–6.6 重點整理）</h3>
+                <ul>
+                    <li><strong>6.4 發生機率</strong>：風險評估必須涵蓋設計、產品引入、變更控制及定期審查四個觸發點；手動操作、不穩定製程、操作節點轉換及人員變動是高發生機率的指標性因素。</li>
+                    <li><strong>6.4.1 生產活動</strong>：FAT僅測試最佳狀態，風險評估須延伸至設備設定、人工干預、故障、拆卸與清潔全部操作狀態；能量輸入（研磨、流化、壓縮）、轉移頻率與規模效應是核心考量因素。</li>
+                    <li><strong>6.4.2 非製程活動</strong>：廢棄物共用區、PM/EM計畫中的交叉污染路徑審查、換批次程序的文件化順序、CIP的CPPs監控與警報設計均為合規關鍵點。</li>
+                    <li><strong>6.4.3 設施設計</strong>：密閉系統（Closed Process）有明確定義且舉證責任在製造商；HVAC是否採用一次通過空氣需風險評估決策，而非預設選擇。</li>
+                    <li><strong>6.5 非產品接觸區域</strong>：五層空間分類（Barriers → Product Room → Supporting → GxP → HVAC）；量化可信度計算顯示室內表面殘留對產品的實際風險往往遠低於ADE限度；暴露評估需涵蓋12個維度。</li>
+                    <li><strong>6.6 偵測</strong>：偵測能力是RPN三維度之一；目視檢查方法需與安全限度比對；PAT（NIR/Raman）是先進偵測工具；內部方法必須至少等同於藥典方法靈敏度；控制措施需持續評估其適用性、時效性、重現性與穩健性。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Baseline® Guide Volume 7 (2nd Ed.): Risk-Based Manufacture of Pharmaceutical Products</p>
+    <p>Section 3b — Chapter 6 Risk Analysis (Part B): Probability of Occurrence, Non-Product Contact Areas &amp; Detection | p69–p78</p>
+    <p>SterileGMP Knowledge Hub &copy; 2026 | Educational Reference Document</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+// Back to top
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Nav scroll arrows
+const navContainer = document.getElementById('navContainer');
+const navLeft = document.getElementById('navLeft');
+const navRight = document.getElementById('navRight');
+
+function updateNavArrows() {
+    navLeft.classList.toggle('hidden', navContainer.scrollLeft <= 10);
+    navRight.classList.toggle('hidden', navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 10);
+}
+navLeft.addEventListener('click', () => { navContainer.scrollBy({ left: -200, behavior: 'smooth' }); });
+navRight.addEventListener('click', () => { navContainer.scrollBy({ left: 200, behavior: 'smooth' }); });
+navContainer.addEventListener('scroll', updateNavArrows);
+window.addEventListener('resize', updateNavArrows);
+updateNavArrows();
+
+// Active nav highlighting on scroll
+const sections = document.querySelectorAll('.chapter-section');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+            });
+        }
+    });
+}, { rootMargin: '-20% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
