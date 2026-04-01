@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 7: Special Considerations | 特殊考量</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- Section Header -->
+<div class="header">
+    <h1>Section 7: Special Considerations | 特殊考量</h1>
+    <div class="subtitle">PDA Technical Report No. 49 — Points to Consider for Biotechnology Cleaning Validation</div>
+    <div class="page-info">Source Pages: 50–60 &nbsp;|&nbsp; Subsections 11.1–11.10</div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand product and equipment grouping strategies to streamline cleaning validation programs.</li>
+            <li>Distinguish between sodium hydroxide, acid wash, and formulated detergent cleaning approaches and their trade-offs.</li>
+            <li>Apply cleaning validation principles to special equipment: chromatography columns, TFF systems, and centrifuges.</li>
+            <li>Recognize the unique challenges of multi-host facilities and non-product contact surfaces.</li>
+            <li>Understand the boundary between cleaning validation and viral clearance studies for viruses, mycoplasma, and prions.</li>
+            <li>Compare single-use equipment vs. reusable equipment from a cleaning validation perspective.</li>
+            <li>Explain how PAT (Process Analytical Technology) applies to cleaning process control.</li>
+            <li>Describe product changeover procedures and clean hold time study approaches.</li>
+        </ul>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Section Contents | 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec11-1">11.1 Grouping/Family Approach</a>
+            <a href="#sec11-2">11.2 Cleaning Agent Issues</a>
+            <a href="#sec11-3">11.3 Special Equipment Issues</a>
+            <a href="#sec11-4">11.4 Multi-Host Facilities</a>
+            <a href="#sec11-5">11.5 Non-Product Contact Surfaces</a>
+            <a href="#sec11-6">11.6 Viruses, Mycoplasma &amp; Prions</a>
+            <a href="#sec11-7">11.7 Single-Use Equipment</a>
+            <a href="#sec11-8">11.8 Process Analytical Technology</a>
+            <a href="#sec11-9">11.9 Product Changeover</a>
+            <a href="#sec11-10">11.10 Clean Hold Considerations</a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.1 GROUPING / FAMILY APPROACH
+         ============================================================ -->
+    <div id="sec11-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.1</div>
+            <div class="chapter-info">
+                <h2>Grouping / Family Approach | 分組 / 家族方法</h2>
+                <p>Streamlining validation through worst-case representatives</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.1 Grouping/Family Approach</h3>
+                    <p><span class="key-term">Grouping</span> is a strategy whereby similar manufactured products and/or equipment are considered together, and a formal protocol is performed on a representative from the group. The representative from the group is usually the <span class="key-term">worst case</span> among products or equipment in a group. Grouping is also called <span class="key-term">matrixing</span>, <span class="key-term">family approach</span> and <span class="key-term">bracketing</span>. The rationale for grouping is to eliminate non-essential or non-value-added work based on a risk approach. One requirement for grouping is that product and equipment be cleaned by the same cleaning process.</p>
+
+                    <h3>11.1.1 Product Grouping</h3>
+                    <p>Products are assessed for their relative <span class="key-term">cleanability</span>, typically in laboratory studies. Laboratory evaluations discussed in Section 3.0 may be utilized. Cleanability is assessed using representative surfaces, with stainless steel being the most common because of its predominance in biotechnology equipment. From the results, the relative cleanability of each product is defined, typically by determining under proposed cleaning parameters which product requires the longest time to clean.</p>
+                    <p>A <span class="key-term">Performance Qualification (PQ)</span> protocol, usually involving a minimum of three validation runs because this protocol represents other products, is performed. The acceptance criterion for that worst-case product is generally the most stringent acceptance criterion of all products in the group. Since it is common in biotechnology to have the same acceptance criteria and same analytical methods for similar products (bulk actives, finished drug products, intermediates, etc.), selection of the acceptance criteria is usually straightforward. Successful cleaning validation of the representative (worst-case) product means the cleaning of the other products in the group is also validated.</p>
+
+                    <h3>11.1.2 Equipment Grouping</h3>
+                    <p>Grouping of equipment is an effective method for encompassing equipment from a limited population of systems undergoing cleaning validation without redundant testing. The grouping strategy is based on designating equipment as <span class="key-term">"identical"</span> or <span class="key-term">"similar,"</span> based on design and cleanability. Once equipment has been placed within a designation, the designation defines the cleaning validation requirements.</p>
+                    <p>If it involves identical equipment, a protocol with a minimum of three validation runs involving any combination of three equipment items in the group is performed. Provided an adequate rationale is given for determining the equipment items are identical, there is no need to perform validation runs on every item in the group. For similar equipment, the representative equipment is the worst case or may involve bracketing of equipment. For example, for storage tanks of the same size but of different complexity, such as the number of baffles, the more complex equipment is chosen as the worst case. For similar equipment of different sizes, the largest and smallest (representing the extremes) may be chosen for the formal validation runs. Confirmatory validation runs (perhaps only one run) are an option for other equipment (not a worst case) within the group.</p>
+
+                    <h3>11.1.3 Introduction of a New Product or New Equipment Into a Group</h3>
+                    <p>The introduction of a new product into an already validated group is assessed using the same evaluation process to initially determine the worst-case product. It is recommended that when each new product is tested, a suitable control, such as the previous worst-case product, is included. Relative product cleanability is then used to determine validation requirements for that product on equipment used for other products in that group.</p>
+                    <p>Based on a risk assessment, introduction of an easier-to-clean product may just require laboratory and/or scale-up studies to confirm ease of cleaning or may require a confirmatory validation protocol. Introduction of a more difficult-to-clean product will require validation of that new worst-case product.</p>
+                    <p>Based on risk considerations, introduction of new identical equipment may just involve determination that it is equivalent or may require an additional confirmatory validation protocol. Introduction of new similar equipment requires an evaluation if that new equipment represents a new worst case or a new extreme. If not a new worst case or new extreme, a confirmatory validation protocol using only a visually clean criterion can be used. If the new equipment is a new worst case or extreme, the validation requirements for the previous worst case or extreme should be repeated for the new worst case or extreme equipment.</p>
+
+                    <h3>11.1.4 Conclusion</h3>
+                    <p>The use of product and equipment grouping may be used to streamline cleaning validation programs while ensuring sufficient data to support the validation of procedures, processes and equipment associated with cleaning. The grouping program for a given facility or company should be in a well-defined <span class="key-term">validation program/validation master plan</span>.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>分組策略核心概念</h4>
+                        <p><strong>分組（Grouping）</strong>的本質是用「最差情況」代表一組，避免對每個產品/設備都做完整驗證，以節省資源。又稱：</p>
+                        <ul>
+                            <li><strong>Matrixing（矩陣法）</strong>：在矩陣架構內選代表性組合</li>
+                            <li><strong>Family Approach（家族法）</strong>：同類產品當一個家族</li>
+                            <li><strong>Bracketing（括弧法）</strong>：選最大與最小的極端值</li>
+                        </ul>
+                        <p>前提條件：所有組內產品/設備必須使用<strong>相同的清潔製程</strong>。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：公寓大樓的消防演習</h4>
+                        <p>想像一棟有 20 層樓的大樓，每層格局相同。消防局不需要在每層都演習，只要選「最難疏散」的樓層（例如人最多的樓層）做完整演練，其他樓層就可以類比驗證通過。這就是「最差情況代表」的邏輯。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>產品分組 vs 設備分組</h4>
+                        <table>
+                            <tr><th>分類</th><th>核心原則</th><th>最差情況選擇</th></tr>
+                            <tr><td>產品分組</td><td>相對清潔難易度（cleanability）</td><td>最難清潔的產品</td></tr>
+                            <tr><td>設備分組（identical）</td><td>設計完全相同</td><td>任意3台組合驗證</td></tr>
+                            <tr><td>設備分組（similar）</td><td>設計類似但有差異</td><td>最複雜或最大/最小（bracket）</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>新產品/設備加入群組的風險判斷</h4>
+                        <ul>
+                            <li><strong>比現有最差情況容易清潔</strong>：可僅做實驗室確認或確認性驗證（confirmatory protocol）</li>
+                            <li><strong>比現有最差情況更難清潔</strong>：必須以新產品作為新最差情況，重新做完整驗證</li>
+                            <li><strong>新identical設備</strong>：確認等效即可，或加一次確認性驗證</li>
+                            <li><strong>新similar設備（非新最差情況）</strong>：僅 visually clean 確認性驗證即可</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>實務重點</h4>
+                        <p>分組策略必須記載於<strong>驗證主計畫（Validation Master Plan, VMP）</strong>中，並有充分的科學依據。PQ 最少執行 3 次驗證運作（runs）是基本要求。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.2 CLEANING AGENT ISSUES
+         ============================================================ -->
+    <div id="sec11-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.2</div>
+            <div class="chapter-info">
+                <h2>Cleaning Agent Issues | 清潔劑議題</h2>
+                <p>Sodium hydroxide, acid wash, and formulated detergents</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.2 Cleaning Agent Issues</h3>
+                    <p>Equipment cleaning processes in the biopharmaceutical industry often involve a pre-rinse with water, an <span class="key-term">alkaline wash</span>, an <span class="key-term">acid wash</span> and a series of water rinses.</p>
+
+                    <h3>11.2.1 Sodium Hydroxide Wash</h3>
+                    <p>A commodity alkali such as <span class="key-term">sodium hydroxide</span> is often used for the alkaline wash step. The high pH and alkalinity of sodium hydroxide solutions enhance solubility of most organic process residues, and in some cases facilitate <span class="key-term">hydrolysis</span>. Sodium hydroxide is also widely available, relatively inexpensive and, being a single component, relatively easy to analyze and validate for cleaning agent removal.</p>
+                    <p>Commodity cleaners such as sodium hydroxide, however, may have limited effectiveness for tenaciously adhered or baked-on proteinaceous residues, cell debris and antifoams. They also have limited wetting characteristics and soil suspending ability. The higher pH of sodium hydroxide also facilitates the precipitation of salts or oxides of such ions as calcium, magnesium and iron, if those ions are present during the cleaning process.</p>
+
+                    <h3>11.2.2 Acid Wash</h3>
+                    <p>The addition of an <span class="key-term">acid wash step</span> after the caustic wash may overcome precipitation and buildup of inorganic compounds and help broaden the spectrum of soils cleaned although at the expense of adding another cycle. In addition, maintaining a clean surface and limiting the deposition and buildup of iron or other anodic contaminants may help minimize the potential for stainless steel corrosion and <span class="key-term">rouge formation</span>.</p>
+
+                    <h3>11.2.3 Formulated Detergents</h3>
+                    <p><span class="key-term">Formulated detergents</span> are multi-component cleaning agents that take advantage of several different cleaning mechanisms, thus providing broader spectrum effectiveness. In addition to the mechanisms of alkalinity and hydrolysis offered by a commodity caustic, a formulated alkaline detergent might provide improved wetting and soil penetration, <span class="key-term">emulsification</span>, chelation of calcium, iron or other inorganic ions, and might facilitate dispersion of particulates in one wash step. Despite the use of chelating agents and the broad spectrum effectiveness of formulated detergents, rouge buildup may still be observed over a period of time, and a periodic <span class="key-term">derouging process</span> may be necessary, particularly in applications that involve aggressive process conditions such as SIP.</p>
+
+                    <h3>11.2.4 Issues in Selection</h3>
+                    <p>A number of factors besides broad spectrum cleaning effectiveness need to be considered when selecting detergents. These include <span class="key-term">rinsability</span>, quality, consistency, substrate compatibility, stability, safety, toxicity, assay suitability, environmental compliance and assured long-term availability.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>生技廠典型清潔流程架構</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level"><div class="hierarchy-box level-1">Pre-rinse（水預沖）</div></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-2">Alkaline Wash（鹼洗）NaOH</div></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-2">Acid Wash（酸洗）可選</div></div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-3">Water Rinse × 多次（水沖×多次）</div></div>
+                        </div>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>三種清潔劑比較</h4>
+                        <table>
+                            <tr><th>清潔劑</th><th>優點</th><th>限制 / 風險</th></tr>
+                            <tr><td><strong>NaOH（氫氧化鈉）</strong></td><td>廉價、易分析驗證、促進水解</td><td>對烤乾蛋白效果差；Ca/Mg/Fe 沉澱風險；潤濕性不足</td></tr>
+                            <tr><td><strong>酸洗（Acid Wash）</strong></td><td>溶解無機沉澱；降低不鏽鋼腐蝕/Rouge</td><td>增加一個清潔循環；需額外驗證</td></tr>
+                            <tr><td><strong>配方清潔劑（Formulated Detergent）</strong></td><td>廣效；加入螯合劑、乳化劑、分散劑</td><td>多成分難分析；長期可能仍有 Rouge；需確認可沖洗性</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Rouge（紅色沉積物）是什麼？</h4>
+                        <p><strong>Rouge</strong> 是不鏽鋼設備表面因氧化鐵沉積形成的紅棕色薄膜，在 SIP（蒸氣滅菌）或高溫製程中尤其常見。雖然不一定直接危害產品，但代表表面鈍化層受損，需定期進行 <strong>derouging（除 Rouge）</strong>處理。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>清潔劑選擇 9 大考量要素</h4>
+                        <ul>
+                            <li>可沖洗性（Rinsability）— 殘留量是否容易洗淨</li>
+                            <li>品質與一致性</li>
+                            <li>基材相容性（不鏽鋼、橡膠墊圈等）</li>
+                            <li>穩定性（濃度不隨時間改變）</li>
+                            <li>安全性與毒性</li>
+                            <li>分析方法適用性（是否有 TOC/conductivity 方法）</li>
+                            <li>環境法規合規</li>
+                            <li>長期供貨保障</li>
+                            <li>廣效清潔能力</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.3 SPECIAL EQUIPMENT ISSUES
+         ============================================================ -->
+    <div id="sec11-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.3</div>
+            <div class="chapter-info">
+                <h2>Special Equipment Issues | 特殊設備議題</h2>
+                <p>Chromatography columns, TFF systems, and centrifuges</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.3.1 Chromatography Columns</h3>
+                    <p><span class="key-term">Chromatography columns</span> are typically used in protein purification processes. In contrast to equipment like fermenter vessels or tanks used in purification that are cleaned empty, for batch-to-batch cleaning within a campaign of the same product, the columns are clean packed with resin after the batch is processed. The cleaning processes for the chromatography resin packed into the column are process specific and depend on the type of resin used. Resin cleaning and reuse is out of scope of this document and is described in detail in PDA Technical Report No. 14.</p>
+                    <p>Since chromatography columns are cleaned with resin packed into a column, the resin cleaning process also cleans the column housing. Therefore, after unpacking a column, product- and process-related impurities on the column surfaces are already removed to a certain extent. However, it is common practice to clean an empty column after a column is unpacked. <span class="key-term">Column frits or sieves</span> are normally product dedicated due to their porosity and the difficulties to validate removal of product- and process-related impurities. In moving from a campaign of one product to a new campaign of a different product, they are removed prior to column cleaning and stored for further use. Typically, a manual cleaning process using the same or similar cleaning agents as for tank cleaning is used for the cleaning of the column housing. After cleaning, the same cleaning validation principles (such as limits) applied to tanks can be utilized.</p>
+
+                    <h3>11.3.2 Tangential Flow Filtration (TFF) Filter Systems</h3>
+                    <p>Similar to chromatography columns, <span class="key-term">tangential flow filtration (TFF)</span> filter housings are cleaned together with the membranes after a batch has been processed. The cleaning processes for the filter membranes packed into the filter housing are process specific and depend on the type of membrane used. TFF membrane cleaning is out of scope of this document and is described in detail in PDA Technical Report No. 15.</p>
+                    <p>Since TFF membranes are cleaned in a filter housing, the membrane cleaning process also cleans the filter housing. Therefore, after removing TFF membranes, product and process related impurities on the housing surface are already removed to a certain extent. However, it is common practice to clean an empty filter housing after the membrane cartridge or cassette is removed. Typically, a manual cleaning process using the same or similar cleaning agents as for tank cleaning is applied for the cleaning of the TFF housing. After cleaning, the same cleaning validation principles (such as limits) applied to tanks can be utilized.</p>
+
+                    <h3>11.3.3 Centrifuges</h3>
+                    <p>In many biotechnology processes, <span class="key-term">centrifuges</span> are used at the end of fermentation to remove cells from cell cultures or to separate bacteria from the fermentation broth prior to further processing. Many centrifuges can be cleaned in place; others have to be manually cleaned.</p>
+                    <p>Cleaning complex pieces of equipment like centrifuges can be challenging. For instance, not all surfaces which have been in contact with the fermentation broth can be easily reached. Special attention has to be given to <span class="key-term">hard-to-access areas</span> of the equipment, both in the cleaning process and in the evaluation of that cleaning. After cleaning, the same cleaning validation principles (such as limits) applied to tanks can be utilized.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>特殊設備清潔驗證共同原則</h4>
+                        <p>本節三類設備（層析管柱、TFF 膜系統、離心機）雖然清潔方式特殊，但有一個共同結論：</p>
+                        <p><strong>完成清潔後，可套用與儲罐相同的清潔驗證原則（同樣的限度標準）。</strong></p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>層析管柱（Chromatography Column）清潔特點</h4>
+                        <ul>
+                            <li>Campaign 批次間：樹脂裝填狀態下清潔，樹脂清潔同時清潔管柱內壁</li>
+                            <li>Campaign 結束換產品：必須先卸下樹脂，再做空柱清潔</li>
+                            <li><strong>Column frits / sieves（過濾篩）</strong>：因孔隙結構難以完全驗證殘留去除，通常為<strong>產品專用（dedicated）</strong>，換產品時移除保存，不做清潔驗證</li>
+                        </ul>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>TFF 系統清潔特點</h4>
+                        <ul>
+                            <li>膜片（membrane）清潔 = 同時清潔 housing 內壁</li>
+                            <li>膜片移除後，仍需對空的 housing 做正式清潔</li>
+                            <li>清潔方法通常與儲罐相同（鹼洗 + 水沖）</li>
+                            <li>詳細膜片清潔驗證參照 PDA TR15</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>離心機清潔挑戰：死角（Hard-to-Access Areas）</h4>
+                        <p>離心機的碗（bowl）、轉子（rotor）、碟片（disc stack）等部件結構複雜，難以確保所有接觸面都能被清潔液有效沖刷到。驗證重點：</p>
+                        <ul>
+                            <li>清潔製程設計時需確認清潔液覆蓋死角的方式</li>
+                            <li>取樣時必須包含難到達區域的棉棒取樣（swab sampling）</li>
+                            <li>部分離心機可 CIP，部分必須手動拆卸清潔</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.4 MULTI-HOST FACILITIES
+         ============================================================ -->
+    <div id="sec11-4" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.4</div>
+            <div class="chapter-info">
+                <h2>Multi-Host Facilities | 多產品廠房</h2>
+                <p>Shared equipment across cell culture and bacterial fermentation processes</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.4 Multi-Host Facilities</h3>
+                    <p>Cleaning validation is performed to demonstrate that residual material or cleaning agents remaining on shared equipment surfaces following the manufacture of one product are controlled to below acceptable levels so that the shared equipment may be utilized for the manufacture of a subsequent product without impacting the safety, identity, strength, quality or purity characteristics of the subsequent product. In order to maintain a successful cleaning validation program for a <span class="key-term">multi-host facility</span> involving both cell culture and bacterial fermentation processes, the validation strategy must consider not only cleaning agent and process residues, but also specific requirements for each process step necessary to maintain drug quality throughout the manufacturing process.</p>
+                    <p>Robust cleaning validation programs for multi-host facilities should ensure that cleaning procedures are appropriate for all processes/systems used in the facilities. The successful cleaning validation program for a multi-host facility will ensure the <span class="key-term">cleaning/sanitization/changeover procedures</span> control residual process residues to below acceptable levels for all products made in the facility.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>多產品廠房（Multi-Host Facility）的挑戰</h4>
+                        <p>當同一設備用於製造不同生物製劑產品時（例如：細胞培養 + 細菌發酵共用設備），清潔驗證必須涵蓋更廣泛的污染來源：</p>
+                        <ul>
+                            <li>產品殘留（previous product residues）</li>
+                            <li>清潔劑殘留（cleaning agent residues）</li>
+                            <li>製程特定殘留（培養基、緩衝液、抗泡劑）</li>
+                            <li>生物負荷控制（bioburden, endotoxin）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>核心風險：共用設備的交叉污染</h4>
+                        <p>多產品廠房的清潔驗證不只是「下一個產品的安全性」問題，還要確保清潔/消毒/切換程序（cleaning/sanitization/changeover procedures）對廠房內所有產品都有效。</p>
+                        <p>驗證策略需考慮：不同宿主細胞系的特性差異（例如：哺乳動物細胞 vs. 大腸桿菌），以及各步驟所需的特定控制措施。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Contract Manufacturer（CDMO）的特殊意義</h4>
+                        <p>對於 CDMO（委託製造商）而言，multi-host facility 是常態。每次接受新客戶產品時，都必須評估是否需要更新清潔驗證，以確保不同客戶產品間不發生交叉污染。這是 CDMO 清潔驗證計畫的核心挑戰之一。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.5 NON-PRODUCT CONTACT SURFACES
+         ============================================================ -->
+    <div id="sec11-5" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.5</div>
+            <div class="chapter-info">
+                <h2>Non-Product Contact Surfaces | 非產品接觸表面</h2>
+                <p>Buffers, media, lyophilizers, and packaging equipment</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.5 Non-product Contact Surfaces</h3>
+                    <p><span class="key-term">Non-product contact surfaces</span> may be defined in different ways by manufacturers. One way is to regard any equipment surface that does not directly contact the drug substance (the active) or drug product as non-product contact. Examples under this definition might be lyophilizers, equipment used solely to manufacture and transfer buffers and media, and equipment to process drug product after completion of primary packaging. Other companies may choose to define some of these surfaces as <span class="key-term">"indirect product contact,"</span> since in the case of buffers and media, any residues left on equipment surfaces after cleaning will contact the next buffer/media and will eventually contact the drug substance manufactured with that next buffer/media. Because of the limited impact of these indirect or non-product contact surfaces, requirements for cleaning validation can be reduced or cleaning validation can be eliminated in certain situations.</p>
+
+                    <h3>11.5.1 Equipment for Buffers</h3>
+                    <p>For <span class="key-term">buffers</span>, which generally have components that are readily water soluble, cleaning is generally relatively easy and may be done with either water alone or a dilute caustic solution. Concerns about cross-contamination of buffers are not necessarily based solely on the carryover of the buffer components, but on any effects residues might have on production efficiency or production quality.</p>
+                    <p>Based on a risk analysis, cleaning validation of buffers may only involve acceptance criteria of <span class="key-term">visually clean</span> and <span class="key-term">conductivity</span>. Although some companies may also choose to include a measurement of TOC, conductivity is the better method because of the fact that the buffers are readily water soluble and highly conductive. Measurement of bioburden may also be utilized, depending on a risk analysis based on the growth promotion properties of the buffer. Measurement of specific residues may be appropriately done by rinse sampling because of the water solubility of the buffer components. Grouping of buffers and selecting the worst case for cleaning validation is also a valid (and common) approach.</p>
+
+                    <h3>11.5.2 Equipment for Media</h3>
+                    <p>The situation with <span class="key-term">media</span> is similar to that of buffers, except that media are generally much more difficult to clean, such that cleaning solutions containing alkali are used. Concerns about media carryover are also not necessarily based on safety concerns related to carryover of the media components, but on any effects that media residues might have on production efficiency or production quality of drug substance made utilizing the next media batch. Cleaning validation may include the criteria of visually clean, with measurements of <span class="key-term">TOC</span>, conductivity and/or bioburden after cleaning. TOC is used because of the organic nature of the media components. Conductivity confirms removal of the alkaline cleaning solution. Bioburden is measured because the media typically enhances microbial growth. For concerns about endotoxin from gram-negative bacteria, endotoxin may also be evaluated. Grouping of media and selecting the worst case for cleaning validation is also a valid (and common) approach.</p>
+
+                    <h3>11.5.3 Lyophilizers</h3>
+                    <p>Acceptable drug product never touches lyophilizer surfaces; contact of drug product with <span class="key-term">lyophilizer</span> surfaces generally only occurs because of broken vials or vials that tip over and spill during loading. However, because of the close proximity of lyophilizer shelves to open product, and because of a perceived airborne transfer of residues on the shelves to open vials, cleaning validation is typically performed on lyophilizers used in formulation/fill operations. Typically, only <span class="key-term">WFI</span> is used for cleaning lyophilizers because of the concern of leaving cleaning solution residues inside the lyophilizer. Cleaning procedures for lyophilizers may also include a precleaning step to remove broken glass or spilled product before the validated cleaning procedure is performed.</p>
+                    <p>Carryover calculations for setting limits are typically not applicable to lyophilizers because the indirect contact with the next product precludes any scientifically based calculation as conventionally performed for direct product contact surfaces. The most common acceptance criteria for cleaning validation of lyophilizers are a <span class="key-term">visually clean requirement and/or a measure of TOC</span>. Since direct carryover calculations are not applicable, TOC limits are typically based on one of the following criteria: a 10 ppm TOC criterion in any desorbed swab sample, or a TOC limit the same as the TOC limit for any direct product contact equipment immediately before or after the lyophilizer. Bioburden may also be measured during cleaning validation of lyophilizers; however, lyophilizers generally undergo an SIP process after cleaning.</p>
+
+                    <h3>11.5.4 Packaging Equipment</h3>
+                    <p>Once the drug substance is in its <span class="key-term">primary packaging</span>, the risk of cross-contamination is relatively low. Cleaning processes should be used on the packaging lines after primary packaging but do not require cleaning validation. The main concern with cross-contamination is broken vials, which release product. Cleaning processes for such situations should be considered; however, because contamination of the next product may only involve contamination of the outside of the primary packaging, cleaning validation becomes a major concern only if that spilled product has some unusual toxicity concerns. In those cases, a dedicated line or a cleaning step known to deactivate or degrade that drug active should be considered. Such a degradation process may appropriately be confirmed in a laboratory study demonstrating degradation or deactivation of the active.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>非產品接觸表面的定義光譜</h4>
+                        <table>
+                            <tr><th>分類</th><th>說明</th><th>驗證要求</th></tr>
+                            <tr><td>直接接觸（Direct）</td><td>與藥物活性成分直接接觸</td><td>完整清潔驗證</td></tr>
+                            <tr><td>間接接觸（Indirect）</td><td>與緩衝液/培養基接觸 → 最終影響原料藥</td><td>簡化驗證（風險評估後）</td></tr>
+                            <tr><td>非接觸（Non-contact）</td><td>主包裝後的設備、凍乾機</td><td>可免驗證或最低標準</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>各類非直接接觸設備的驗收標準建議</h4>
+                        <table>
+                            <tr><th>設備類型</th><th>建議驗收標準</th></tr>
+                            <tr><td>緩衝液設備（Buffer）</td><td>外觀乾淨 + 電導度（conductivity）</td></tr>
+                            <tr><td>培養基設備（Media）</td><td>外觀乾淨 + TOC + 電導度 + 生物負荷 ± 內毒素</td></tr>
+                            <tr><td>凍乾機（Lyophilizer）</td><td>外觀乾淨 + TOC（10 ppm 或等同直接接觸設備限度）</td></tr>
+                            <tr><td>包裝設備（Packaging）</td><td>通常不需清潔驗證（除非特殊毒性）</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>凍乾機比喻：鄰居效應</h4>
+                        <p>凍乾機的層板（shelf）並不直接碰到藥品瓶，但就像在密閉空間裡「隔壁鄰居抽菸」的概念——殘留物可能以氣態/微粒形式飄移進開口的產品瓶中。這就是為什麼凍乾機需要清潔驗證，即使它不是「直接接觸表面」。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>凍乾機限度設定的特殊邏輯</h4>
+                        <p>因為無法用傳統「殘留攜帶計算」（carryover calculation）來設定限度，凍乾機的 TOC 限度選擇方式：</p>
+                        <ul>
+                            <li><strong>方法 A</strong>：任何棉棒解吸樣品中 TOC ≤ 10 ppm</li>
+                            <li><strong>方法 B</strong>：採用前後直接接觸設備的相同 TOC 限度</li>
+                        </ul>
+                        <p>邏輯：間接接觸的風險低於直接接觸，只要符合直接接觸的標準，產品就受到充分保護。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.6 VIRUSES, MYCOPLASMA AND PRIONS
+         ============================================================ -->
+    <div id="sec11-6" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.6</div>
+            <div class="chapter-info">
+                <h2>Viruses, Mycoplasma and Prions | 病毒、黴漿菌與普恩蛋白</h2>
+                <p>Biocontamination control beyond standard cleaning validation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.6 Viruses, Mycoplasma and Prions</h3>
+                    <p>The biological nature of materials and processes used in biotechnology production presents unique challenges for equipment cleaning and cleaning verification. Besides product and product-related residues and those residues that may remain from the cleaning process itself, <span class="key-term">viruses</span>, <span class="key-term">mycoplasma</span> and <span class="key-term">prions</span> are another concern for product contamination. However, viruses are not routinely addressed in cleaning validation protocols or programs, but in <span class="key-term">viral clearance studies</span> and/or as part of process validation.</p>
+
+                    <h3>11.6.1 Control Steps</h3>
+                    <p>While the primary control measures are viral clearance process steps, testing for viruses and mycoplasma in the unprocessed bulk, and exclusion of raw materials that might contain viruses, mycoplasma and prions, specially designed cleaning processes might also be needed in some cases. Control of raw materials is essential, especially for plasma and plasma-derived products and those derived from animal materials — through vendor certification, incoming QA inspection and QC testing. Recombinant and "non-animal origin" materials should be used wherever practicable throughout all processing steps; however, viruses have been found to contaminate non-animal raw materials due to exposure during raw material storage, either at the raw material vendor or at the manufacturing site due to <span class="key-term">adventitious viral contamination</span>.</p>
+                    <p>Also, <span class="key-term">mycoplasma</span> that can replicate in mammalian cell culture often have a plant source and may be a contaminant in plant peptones. Since mycoplasma contamination can also be due to humans, proper gowning and personal hygiene are critical to control contamination. Additionally, sterilization of equipment used in cell culture, fermentation and finished product manufacturing may provide additional assurance of product that is free of viruses and mycoplasma.</p>
+
+                    <h3>11.6.2 Control by Cleaning</h3>
+                    <p>Equipment cleaning using caustics and/or acids at appropriate ranges for the cleaning parameters of time, temperature, concentration and action is also essential to successful biocontamination control. The use of cleaning solutions containing <span class="key-term">sodium or potassium hydroxide</span> is widely practiced in the industry. NaOH has been shown to be effective for inactivating most viruses. A U.S. FDA/CBER guidance provides a regulatory perspective on prion inactivation methods:</p>
+                    <div class="quote-box">
+                        "TSE agents are quite resistant to most disinfecting regimens. There is no current consensus on specific details of decontamination requirements for blood products. However, methods of destruction of TSE-implicated material include steam autoclaving at 132°C for 1-4 hours, incineration, or treatment with <span class="key-term">1 N NaOH or concentrated sodium hypochlorite for at least 1 hour</span>. These treatments are known to diminish (but may not completely eliminate) infectivity."
+                    </div>
+
+                    <h3>11.6.3 Conclusion</h3>
+                    <p>Although cleaning processes are generally not designed to remove viral, mycoplasma or prion contaminants, a well-designed, robust cleaning procedure can be an effective <span class="key-term">process partner</span> in a facility's overall biocontamination control strategy.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="note-box">
+                        <h4>清潔驗證 vs. 病毒去活化研究：重要邊界</h4>
+                        <p>這是生技廠常被混淆的概念：</p>
+                        <ul>
+                            <li><strong>病毒（Viruses）</strong>：不在清潔驗證範圍內，歸屬於<strong>病毒去活化研究（Viral Clearance Study）</strong>及製程驗證</li>
+                            <li><strong>清潔製程</strong>：可作為整體生物污染控制策略的輔助手段，但不是主要控制措施</li>
+                        </ul>
+                        <p>清潔驗證的主要目標是：產品殘留 + 清潔劑殘留，而非生物污染</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>三大生物污染物特性比較</h4>
+                        <table>
+                            <tr><th>污染物</th><th>來源</th><th>控制主要手段</th></tr>
+                            <tr><td><strong>Virus（病毒）</strong></td><td>動物來源原料、偶發性污染</td><td>病毒去活化步驟、原料篩檢</td></tr>
+                            <tr><td><strong>Mycoplasma（黴漿菌）</strong></td><td>植物胜肽（peptone）、人員</td><td>原料控制、人員穿著衛生、設備滅菌</td></tr>
+                            <tr><td><strong>Prion（普恩蛋白）</strong></td><td>動物（牛腦/脊髓）來源</td><td>TSE 認證原料、132°C 蒸氣滅菌或 1N NaOH</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：普恩蛋白是「終極難敵」</h4>
+                        <p>普恩蛋白（Prion / TSE agent）是已知最難去活化的生物污染物——它能耐受一般的熱處理、福馬林、紫外線，甚至某些消毒劑。FDA 指出即使使用 1N NaOH 或高壓蒸氣（132°C，1-4 小時），也只能「減少但未必完全消滅」感染性。這就是為什麼動物來源原料的控制（vendor certification）如此關鍵。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>NaOH 在病毒控制的雙重角色</h4>
+                        <p>NaOH 在生技廠有兩個角色：</p>
+                        <ul>
+                            <li><strong>清潔（Cleaning）</strong>：去除有機殘留、溶解蛋白質</li>
+                            <li><strong>病毒去活化輔助（Viral Inactivation Support）</strong>：高 pH 環境可使大多數病毒失去活性</li>
+                        </ul>
+                        <p>但兩者的驗證框架不同，不能互相替代。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.7 SINGLE-USE EQUIPMENT
+         ============================================================ -->
+    <div id="sec11-7" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.7</div>
+            <div class="chapter-info">
+                <h2>Single-Use Equipment | 一次性使用設備</h2>
+                <p>Eliminating cleaning through disposable technology</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.7 Single-Use Equipment</h3>
+                    <p><span class="key-term">Single-use equipment</span> or components may be considered in place of reusable equipment that requires cleaning. Single-use technology has significantly evolved over the last decade and is being rapidly implemented in biopharmaceutical manufacturing since the introduction of the <span class="key-term">single-use bioreactor</span>. Single-use equipment may include anything from carboys, storage bags, bioprocess containers, filter systems, tubing and connection devices to bioreactors. Many of these components are available <span class="key-term">presterilized</span> (e.g., by gamma irradiation). Such single-use items offer possibilities to simplify the handling of critical process steps and significantly reduce contamination risks, especially for multiproduct facilities and for contract manufacturers. The economic and operational advantages of single-use equipment stem largely from eliminating cleaning and sterilization, reducing the utilities that support these operations, and enabling rapid equipment setup and turnaround.</p>
+                    <p>Along with the benefits of single-use equipment, there are risks and limitations to consider. Most single-use items are <span class="key-term">polymeric materials</span>. All polymeric product-contact materials and components used in cGMP manufacturing must be assessed to determine if the polymer is safe, and if it is compatible with the solution it is in contact with. Thorough evaluation of potential <span class="key-term">extractables and leachables</span> is necessary to ensure the safety and quality of the drug product and to maintain compliance with appropriate regulatory requirements for extractables/leachables. Most companies address this as part of process validation and/or qualification of the single-use item.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>一次性使用設備（SUS）vs 可重複使用設備</h4>
+                        <table>
+                            <tr><th>比較面向</th><th>一次性使用（SUS）</th><th>可重複使用（Reusable）</th></tr>
+                            <tr><td>清潔驗證需求</td><td>不需要（使用後丟棄）</td><td>需要完整清潔驗證</td></tr>
+                            <tr><td>滅菌方式</td><td>通常出廠前已 gamma 射線預滅菌</td><td>SIP / 高壓蒸氣（現場滅菌）</td></tr>
+                            <tr><td>交叉污染風險</td><td>極低（每次新件）</td><td>需透過清潔驗證控制</td></tr>
+                            <tr><td>主要風險</td><td>萃出物/滲出物（E&amp;L）</td><td>清潔殘留、生物負荷</td></tr>
+                            <tr><td>適用場景</td><td>多產品廠、CDMO、臨床試驗批</td><td>大規模商業生產</td></tr>
+                            <tr><td>廢棄物管理</td><td>廢棄物量大（環保考量）</td><td>廢棄物少</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Extractables &amp; Leachables（E&amp;L）：SUS 的核心風險</h4>
+                        <p><strong>Extractables（萃出物）</strong>：在極端條件（高溫、強溶劑）下從聚合物材料中被萃取出的化學物質——在實驗室條件下測定。</p>
+                        <p><strong>Leachables（滲出物）</strong>：在實際製程條件下從材料中遷移進入產品的物質——是真正的安全性關注點。</p>
+                        <p>E&amp;L 評估通常作為製程驗證的一部分，需確認符合 USP &lt;661&gt;、ICH Q3D（元素雜質）等標準。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：SUS 就像一次性手術手套</h4>
+                        <p>外科醫生每次手術使用全新的無菌手套，使用後丟棄，完全不需要「清潔驗證手套是否乾淨」。但必須確認手套材質不會讓對某些物質過敏（萃出物問題）。SUS 在生技製造中扮演同樣的角色。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>CDMO 視角：SUS 的戰略優勢</h4>
+                        <p>對於 CDMO 而言，SUS 的最大優勢在於：</p>
+                        <ul>
+                            <li>快速換產品（產品切換）：不需等待清潔驗證</li>
+                            <li>降低批次間交叉污染風險</li>
+                            <li>縮短設備準備時間（快速周轉）</li>
+                            <li>減少清潔用水和化學品消耗</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.8 PROCESS ANALYTICAL TECHNOLOGY (PAT)
+         ============================================================ -->
+    <div id="sec11-8" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.8</div>
+            <div class="chapter-info">
+                <h2>Process Analytical Technology (PAT) | 製程分析技術</h2>
+                <p>Real-time measurement to control cleaning process endpoints</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.8 Process Analytical Technology</h3>
+                    <p><span class="key-term">PAT</span> is defined by the U.S. FDA to be "a system for designing, analyzing, and controlling manufacturing through timely measurements (i.e., during processing) of critical quality and performance attributes of raw and in-process materials and processes, with the goal of ensuring final product quality." The U.S. FDA further notes that "the term 'analytical' in PAT is viewed broadly to include chemical, physical, microbiological, mathematical, and risk analysis conducted in an integrated manner."</p>
+                    <p>Much has been published about PAT in general and about PAT in many processes; however, there are limited publications about PAT in cleaning processes and cleaning validation as compared to PAT for other manufacturing operations. The emphasis for PAT here is for the use of a <span class="key-term">feedback loop</span> from the analytical measurement to control a cleaning process or cleaning process step. Consistent with PAT principles, the timely measurement could be <span class="key-term">in-line</span>, <span class="key-term">on-line</span> or <span class="key-term">at-line</span>.</p>
+                    <p>"Timely measurements" have long been used in cleaning processes to assist in the design of rinse cycle times in automated CIP systems. For example, a common practice in the design of the rinsing process has been to measure <span class="key-term">conductivity</span> of the final rinse as a function of rinse time. Conductivity is a useful parameter for this determination, since cleaning in biotechnology manufacturing usually involves highly alkaline and/or acidic cleaning agents, which possess significant conductivity. If evaluated over several cleaning process runs in the design phase, a minimum time to consistently complete the rinsing process can be effectively determined. A safety factor (additional time) may be included as part of this determination. While such a study in the design phase would be appropriate for a PAT application, unless it combines the timely measurement with a feedback mechanism to control the cleaning process during commercial cleaning processes, it would not be considered PAT.</p>
+
+                    <h3>11.8.1 PAT for Cleaning Process Control</h3>
+                    <p>The more relevant use of PAT for cleaning processes is the use of a timely measurement to define the <span class="key-term">completion of a cleaning process step</span>. In this case, the achievement of a certain analytical measurement is a controlling mechanism for completion of that step. In the situation referred to previously about measuring conductivity online, if it is possible to determine that the achievement of a certain conductivity correlates with the end of the rinsing process, conductivity could be employed in a PAT approach. That is, the rinse time is not fixed, but could be variable depending on the time needed to achieve that predetermined conductivity value.</p>
+                    <p>Consistent with PAT principles, it would be expected that the achievement of that conductivity value would be within a defined time window. The U.S. FDA PAT guidance states "Within the PAT framework, a process end point is not a fixed time; rather it is the achievement of the desired material attributes. This, however, does not mean that process time is not considered. A range of acceptable process times (process window) is likely to be achieved during the manufacturing phase and should be evaluated, and considerations for addressing significant deviations from acceptable process times should be developed." For example, achievement of a desired conductivity in a very short time could be due to insufficient cleaning solution in the cleaning process. Achievement of the desired conductivity in a very long time may be the result of a clogged spray device.</p>
+                    <p>In the traditional approach time is the step-controlling parameter, and conductivity is the monitoring parameter. In a <span class="key-term">PAT approach</span>, conductivity could be the step-controlling parameter, and time would be the monitoring parameter.</p>
+                    <p>Sometimes there is an inappropriate objection to the use of PAT in this way, because it seems to violate the cleaning validation principle of not cleaning until clean (or testing until it's clean). However, one of the features of PAT is that traditional rules of what is done for validation may not apply. As noted in the U.S. FDA's PAT guidance, "Systems that promote greater product and process understanding can provide a high assurance of quality on every batch and provide alternative, effective mechanisms to demonstrate validation."</p>
+                    <p>There are at least theoretically other opportunities for timely measurement to assist in the cleaning process design. For example, timely <span class="key-term">TOC measurements</span> during the washing step may be indicative of the minimum time needed to complete the washing step. As proteinaceous soils are removed from the equipment surfaces in the washing step, it would be expected that the TOC in the wash solution would increase and then level off at a time when no more soil is removed (that is, the wash step is complete).</p>
+
+                    <h3>11.8.2 PAT Measurement Tools for Biotechnology Cleaning Processes</h3>
+                    <p>Currently, the most common tools with potential PAT application in biotechnology cleaning processes are <span class="key-term">conductivity</span> and <span class="key-term">TOC</span>, because these can be measured online in the cleaning or rinse solution. Surfaces techniques, such as NIR for surfaces, may not be practical for timely control, because such techniques involve measuring for residues after the cleaning process is completed, not during the cleaning process.</p>
+                    <p>Conductivity sensors are readily available for in-line measurements and have been widely used for in-line monitoring (but not necessarily for control). Online TOC does not involve an in-line sensor, but rather a "sipper tube" which diverts a stream from the process piping to the online instrument (U.S. FDA calls this "on-line in a diverted stream"). One concern about the use of TOC in this way is the delay between taking the sample and the output of the actual measurement. Another concern is that if the instrument is continually taking and measuring samples during a cleaning process, earlier samples with high TOC values may carry over to the following sample and cause a false high reading.</p>
+
+                    <h3>11.8.3 Additional Considerations for PAT</h3>
+                    <p>It should be clarified that <span class="key-term">rapid and/or online methods by themselves do not necessarily constitute PAT</span>. Online conductivity can be a routine monitoring tool in a cleaning process step without controlling a process step. Online TOC is not the use of PAT, unless the achievement of a certain analytical measurement of TOC determines and/or controls the completion of a cleaning process step. The same is the case with rapid microbiological methods. Rapid methods may enable one to obtain lab data faster, but unless those measurements determine and/or control the end of a process step, they are just rapid monitoring tools, not PAT tools.</p>
+                    <p>In an ideal world, PAT would be used for real-time release of cleaned equipment and would be used instead of cleaning validation. However, at this time the tools to utilize PAT to confirm that equipment surfaces are appropriately clean (measuring removal of active, cleaning agent, bioburden and endotoxin in the case of biotechnology manufacturing) have not been adequately developed to enable real-time release for cleaning biotechnology equipment.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>PAT 的核心定義</h4>
+                        <p>FDA 定義：PAT 是「在製造過程中透過即時量測，對原料和製程中物料的關鍵品質與性能屬性進行設計、分析和控制的系統，目的是確保最終產品品質。」</p>
+                        <p><strong>關鍵字：即時量測（timely measurement）+ 反饋控制（feedback loop）</strong></p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>PAT 在清潔製程的核心區別</h4>
+                        <table>
+                            <tr><th>比較</th><th>傳統方法</th><th>PAT 方法</th></tr>
+                            <tr><td>控制參數</td><td>時間（固定沖洗時間）</td><td>分析數值（電導度達到目標值）</td></tr>
+                            <tr><td>監控參數</td><td>電導度（確認是否達標）</td><td>時間（監控是否在合理範圍）</td></tr>
+                            <tr><td>製程終點</td><td>固定時間到達即結束</td><td>達到目標分析值時結束</td></tr>
+                            <tr><td>彈性</td><td>低（固定時間）</td><td>高（在 process window 內可變）</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>PAT 測量工具的實用性評估</h4>
+                        <table>
+                            <tr><th>量測工具</th><th>測量位置</th><th>PAT 適用性</th><th>限制</th></tr>
+                            <tr><td>電導度（Conductivity）</td><td>In-line（管線內）</td><td>高（即時連續）</td><td>僅反映離子性殘留</td></tr>
+                            <tr><td>TOC（總有機碳）</td><td>On-line（引流測量）</td><td>中（有延遲）</td><td>採樣-分析延遲；早期高殘留carryover</td></tr>
+                            <tr><td>NIR（近紅外線）表面</td><td>At-line（製程完成後）</td><td>低（不即時）</td><td>測量時製程已結束</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：PAT 就像洗碗機的感測器洗碗</h4>
+                        <p>傳統清潔：設定30分鐘，不管乾不乾淨都洗30分鐘。<br>
+                        PAT 清潔：安裝水質感測器，偵測到排水電導度低於設定值（水夠乾淨了）才停止，可能20分鐘就夠，也可能需要35分鐘。這樣更有彈性，也更有科學依據。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>重要提醒：快速方法 ≠ PAT</h4>
+                        <p>「快速方法（rapid method）」和「線上監控（online monitoring）」本身不等於 PAT。只有當量測結果直接<strong>控制製程步驟的完成</strong>時，才算是 PAT 應用。例如：</p>
+                        <ul>
+                            <li>線上 TOC 作為沖洗步驟的完成控制參數 → PAT</li>
+                            <li>線上 TOC 只是記錄數據、事後確認 → 非 PAT，只是快速監控</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.9 PRODUCT CHANGEOVER
+         ============================================================ -->
+    <div id="sec11-9" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.9</div>
+            <div class="chapter-info">
+                <h2>Product Changeover | 產品切換</h2>
+                <p>Campaign transitions and soft parts management</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.9 Product Changeover</h3>
+                    <p>Much biotechnology manufacturing involves <span class="key-term">campaigning</span>. In a campaign, the same product is made again and again. However, typically between each batch in a campaign, <span class="key-term">validated cleaning</span> is performed. At the end of a campaign, some additional steps may be taken to prepare the equipment for the subsequent campaign of a different product. This extra precaution typically involves performing an additional cycle of the same validated cleaning process used for cleaning between batches in a campaign.</p>
+                    <p>Because of concern about possible migration of residues (particularly product active) into <span class="key-term">gasket materials</span>, or more accurately, into the interstices between gaskets and stainless steel surfaces, changeover of <span class="key-term">soft parts</span> such as gaskets may also be done after the initial cleaning. During changing of soft parts, a more comprehensive visual examination of the equipment surfaces is made. Following reassembly of the equipment, the validated cleaning process is repeated. Routine monitoring of both the initial cleaning and the final cleaning is performed as is normally done. Some companies also might perform a specific analytical test (such as an <span class="key-term">ELISA procedure</span>) as an extra check for the previous active protein in the final rinse water of the second cleaning. It should be recognized, however, that the likelihood of any native protein surviving one cleaning process, much less two cleaning processes, is very remote.</p>
+                    <p>An alternative is not to change out those soft parts based on data showing no migration of residues into interstices between gaskets and stainless steel surfaces or analysis based on potential carryover. Such data can be based on studies on commercial equipment, on scale-up equipment, and/or in a laboratory simulation. In such cases, one validated cleaning cycle is used both between batches of one campaign and for a campaign changeover.</p>
+                    <p>Certain equipment is generally dedicated to a given product. This includes <span class="key-term">chromatography resins</span> and <span class="key-term">ultrafilters</span>. Cleaning may be done on these items within a campaign; however, at the end of the campaign the resins and ultrafilters are cleaned, but typically are not used for campaigns involving different products.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>生技製造的 Campaign 邏輯</h4>
+                        <p><strong>Campaign（批次系列）</strong>：同一產品連續多批次生產，中間只做清潔，不換產品。Campaign 結束後切換到新產品，稱為 <strong>Product Changeover（產品切換）</strong>。</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level"><div class="hierarchy-box level-3">批次1 → 清潔 → 批次2 → 清潔 → 批次3（Campaign A）</div></div>
+                            <div class="arrow-down">↓ Changeover（切換）</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-2">批次1 → 清潔 → 批次2（Campaign B）</div></div>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>產品切換的標準程序</h4>
+                        <ol style="margin-left:1.25rem">
+                            <li>執行已驗證的清潔程序（第一次清潔）</li>
+                            <li>更換 soft parts（墊圈、O-ring 等橡膠軟性零件）</li>
+                            <li>進行更全面的目視檢查</li>
+                            <li>重新組裝設備</li>
+                            <li>再次執行已驗證的清潔程序（第二次清潔）</li>
+                            <li>按常規監控取樣（部分公司加做 ELISA 確認前一個活性蛋白殘留）</li>
+                        </ol>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>為什麼要更換 Soft Parts（軟性零件）？</h4>
+                        <p>墊圈（gasket）材質（矽膠、PTFE、EPDM）的微觀孔隙和與不鏽鋼的接縫間隙，可能吸附少量活性物質，清潔劑難以完全清除。這種「遷移風險」在換產品時需要特別處理。</p>
+                        <p><strong>替代方案</strong>：若有實驗數據（實驗室模擬、放大研究、商業設備研究）證明無遷移風險，可以選擇不更換 soft parts，用一次清潔驗證流程涵蓋批次間清潔和 campaign 切換兩種情境。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>產品專用設備</h4>
+                        <p>某些設備是「產品專用（dedicated）」的——最常見的是：</p>
+                        <ul>
+                            <li><strong>層析樹脂（chromatography resins）</strong>：Campaign 結束後清潔但不轉用於其他產品</li>
+                            <li><strong>超濾膜（ultrafilters）</strong>：同上處理方式</li>
+                        </ul>
+                        <p>這類設備的產品專用設計大幅簡化了清潔驗證的複雜度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         11.10 CLEAN HOLD CONSIDERATIONS
+         ============================================================ -->
+    <div id="sec11-10" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">11.10</div>
+            <div class="chapter-info">
+                <h2>Clean Hold Considerations | 清潔後保留考量</h2>
+                <p>Bioburden control during equipment storage after cleaning</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English -->
+                <div class="left-column">
+                    <h3>11.10 Clean Hold Considerations</h3>
+                    <p>Following cleaning, equipment that is to be reused should be stored in a manner to protect it from contamination during storage. Criteria used to determine acceptability of storage conditions may include lack of bioburden proliferation, <span class="key-term">endotoxin level</span> and visual examination. A major regulatory concern is the control of <span class="key-term">bioburden proliferation</span> during the storage of equipment. Even if equipment is sterilized prior to use, it is prudent to measure bioburden after the clean hold time to ensure that the subsequent sterilization is not excessively challenged. This is also important from the standpoint of the control of <span class="key-term">pyrogens</span> from gram-negative bacteria, which may not be removed or inactivated by sterilization processes. Storage instructions should be specified in a control document, such as the cleaning procedure or approved storage procedure.</p>
+                    <p>The best procedures are to store cleaned equipment in a <span class="key-term">dry state</span> or in a solution that inhibits the proliferation of bioburden. If equipment is to be stored in a dry state, manufacturing controls should be in place to ensure that equipment is sufficiently drained and dried upon completion of the cleaning process, as well as to minimize the amount of condensed water accumulation in the equipment after cleaning due to equipment cooling. In addition, it is preferred that equipment be stored in a manner to prevent external recontamination. If stored in a dry state (that can be unequivocally established as dry), and if protected from external contamination, formal studies to demonstrate lack of bioburden proliferation may not be necessary. Based on sound scientific principles, bioburden will not proliferate on clean, dry surfaces. If stored in an inhibiting solution, the solution should be known to inhibit bioburden growth (such as <span class="key-term">dilute caustic</span>) or data should be developed to demonstrate inhibition.</p>
+                    <p>If the equipment is stored with a possibility of water in all or parts of the equipment, there are two common strategies to control microbial proliferation during the storage of equipment. One strategy is to establish an acceptable time between the end of cleaning and the beginning of the next use (which may be sterilization, sanitization, or a manufacturing process step) by performing a <span class="key-term">clean hold validation</span>. After a predetermined storage time, sampling by a suitable method is performed and the post-hold data is compared to the data at the beginning of storage. If rinse sampling is used, it should be ambient temperature water so that what is measured is the bioburden remaining on surfaces. Bioburden (and possibly endotoxin) levels in the equipment are measured to ensure that levels would not challenge the sterilization or sanitization procedures or exceed in-process manufacturing specifications.</p>
+                    <p>If clean hold validation is not performed, or if the <span class="key-term">validated clean hold time is exceeded</span>, a validated water (usually <span class="key-term">hot water flush</span>) may be used before sterilization, sanitization, or use of the equipment to reduce any microbial proliferation that might have occurred during storage to an acceptable level before further manufacturing or processing on the equipment. After the water flush, sampling (by rinse, swab or plating) is performed. Bioburden (and optionally endotoxin) levels in the equipment are measured to ensure that levels would not challenge the sterilization or sanitization procedures or exceed in-process manufacturing specifications.</p>
+                    <p>For clean hold time studies using rinse water being fed from process lines, a few common approaches to establishing the acceptable amount of rinse water to use are based on the minimum working volume of the system or the minimum CIP rinse based on the design. Bioburden values in any rinse sample should be compared to the measured bioburden values based on the equivalent rinse sampling at the beginning of storage. It is preferable to collect the entire volume of rinse solution and agitate it for a specified period of time to ensure homogeneity before collecting the sub-sample for testing.</p>
+                    <p>For buffer and media vessels, when operational controls are in place to minimize bioburden, and when a risk assessment demonstrates that there is minimal risk to product quality as a result of the control procedures, a clean hold validation may not be necessary.</p>
+                    <p>Validation of clean hold studies on a given piece of equipment should be able to be applicable to all products using that equipment and to all cleaning processes for that equipment, provided the final state of the cleaned equipment and the storage conditions are consistent. If a <span class="key-term">validated clean hold time is exceeded</span>, an assessment should be made as to the need for corrective action. Appropriate corrective actions before use or further processing may include cleaning the equipment again using a validated cleaning process or using a validated hot water rinse to bring bioburden to an acceptable level. If any changes to the equipment, manufacturing processes and/or cleaning procedures are made, the impact of these changes on the clean hold studies should be evaluated.</p>
+                </div>
+
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>Clean Hold vs. Dirty Hold</h4>
+                        <table>
+                            <tr><th></th><th>Dirty Hold（清潔前保留）</th><th>Clean Hold（清潔後保留）</th></tr>
+                            <tr><td><strong>定義</strong></td><td>使用結束到開始清潔之間的等待時間</td><td>清潔結束到下次使用之間的保存時間</td></tr>
+                            <tr><td><strong>主要風險</strong></td><td>殘留物乾燥固化（harder to clean）、微生物生長</td><td>微生物增殖（bioburden proliferation）、熱原（pyrogen）</td></tr>
+                            <tr><td><strong>監控重點</strong></td><td>最大等待時間上限</td><td>最大保存時間上限；乾燥或抑菌溶液儲存</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>清潔後儲存的最佳策略</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level"><div class="hierarchy-box level-3">最佳：乾燥儲存（Dry State）</div></div>
+                            <div class="arrow-down">↓ 若無法完全乾燥</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-2">次佳：抑菌溶液儲存（如稀鹼液）</div></div>
+                            <div class="arrow-down">↓ 若含水儲存</div>
+                            <div class="hierarchy-level"><div class="hierarchy-box level-1">必做：Clean Hold Validation（確立最大保存時限）</div></div>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>Clean Hold 研究設計要點</h4>
+                        <ul>
+                            <li>取樣時機：儲存開始時（T0）+ 預設儲存時限後（T_max）</li>
+                            <li>取樣方式：沖洗取樣用<strong>常溫水</strong>（熱水會殺菌，導致低估）</li>
+                            <li>量測項目：生物負荷（bioburden） ± 內毒素（endotoxin）</li>
+                            <li>沖洗量：基於系統最小工作體積或 CIP 最小設計沖洗量</li>
+                            <li>均勻性：取樣前充分攪拌，確保樣品均勻</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>超過 Clean Hold 時限的應對措施</h4>
+                        <p>若超過已驗證的保存時限，可採取以下措施（選一）：</p>
+                        <ul>
+                            <li><strong>重新清潔（Re-clean）</strong>：使用已驗證的清潔程序重新清潔設備</li>
+                            <li><strong>熱水沖洗（Hot Water Flush）</strong>：使用已驗證的熱水沖洗程序，將微生物水準降回可接受範圍</li>
+                        </ul>
+                        <p>兩者之後都需再次取樣確認生物負荷和內毒素符合規格。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>Clean Hold 驗證的可移植性</h4>
+                        <p>只要以下條件一致，同一設備的 clean hold 驗證結果可適用於所有使用該設備的產品和清潔程序：</p>
+                        <ul>
+                            <li>清潔結束後設備的最終狀態（乾燥程度、表面殘留）</li>
+                            <li>儲存條件（溫度、濕度、密封方式）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         PRACTICE QUESTIONS
+         ============================================================ -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">Q</div>
+            <div class="chapter-info">
+                <h2>Practice Questions | 練習題</h2>
+                <p>Test your understanding of Section 7 Special Considerations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="practice-box">
+                <h4>Q1. Grouping Strategy | 分組策略</h4>
+                <p>Your facility manufactures five similar monoclonal antibodies (mAbs) using identical bioreactors. A new mAb (mAb-F) is to be introduced and its cleanability in laboratory studies is found to be more difficult than any existing product in the group.</p>
+                <p><strong>What are the cleaning validation requirements for introducing mAb-F into the group? What changes to the existing validation program would be needed?</strong></p>
+                <p><em>您的設施使用相同生物反應槽生產五種類似的單株抗體（mAb）。即將引入 mAb-F，實驗室研究顯示其清潔難度比現有所有產品更難。請問引入 mAb-F 的清潔驗證要求是什麼？對現有驗證計畫有哪些影響？</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q2. Single-Use vs Reusable | 一次性 vs 可重複使用</h4>
+                <p>A CDMO is considering switching their 200L bioreactors from stainless steel (reusable) to single-use bioreactors for a new clinical-phase client product.</p>
+                <p><strong>What cleaning validation obligations are eliminated? What new qualification/validation obligations are introduced? What are the key risk considerations?</strong></p>
+                <p><em>一家 CDMO 考慮將 200L 生物反應槽從不鏽鋼（可重複使用）改為一次性使用生物反應槽。哪些清潔驗證義務被消除？哪些新的確認/驗證義務被引入？有哪些關鍵風險需要考慮？</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q3. PAT Application | PAT 應用</h4>
+                <p>A manufacturing team proposes implementing an online conductivity sensor on their CIP rinse loop, with the rinse step ending when conductivity drops below 5 µS/cm (instead of a fixed 15-minute rinse).</p>
+                <p><strong>Does this qualify as a PAT application? What validation work is needed to implement this approach? What process deviations should it be designed to detect?</strong></p>
+                <p><em>一個生產團隊提議在 CIP 沖洗迴路安裝線上電導度感測器，當電導度降至 5 µS/cm 以下時沖洗步驟結束（取代固定的 15 分鐘沖洗）。這算是 PAT 應用嗎？需要哪些驗證工作才能實施這個方案？應該設計成能偵測哪些製程偏差？</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q4. Clean Hold Exceedance | 超過保存時限</h4>
+                <p>After a validated 72-hour clean hold study, a 500L buffer preparation vessel was left stored (in a wet state) for 96 hours due to a scheduling delay. The validated clean hold time is 72 hours.</p>
+                <p><strong>What corrective actions are available? What sampling and testing is required before the vessel can be used? Is re-cleaning validation required?</strong></p>
+                <p><em>一個 500L 緩衝液製備容器在驗證的 72 小時清潔後保留研究後，因排程延誤被濕態儲存了 96 小時。請問可以採取哪些糾正措施？在容器可以使用之前需要哪些取樣和測試？是否需要重新進行清潔驗證？</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q5. Viral Clearance Boundary | 病毒去活化邊界</h4>
+                <p>A QA auditor questions whether the cleaning validation program adequately addresses viral contamination risk, noting that a mammalian cell culture process uses animal-derived raw materials.</p>
+                <p><strong>How would you explain the boundary between cleaning validation and viral clearance studies? What role, if any, does cleaning play in the overall viral biocontamination control strategy?</strong></p>
+                <p><em>一位 QA 稽核員質疑清潔驗證計畫是否充分解決病毒污染風險，指出哺乳動物細胞培養製程使用了動物來源原料。您如何解釋清潔驗證與病毒去活化研究之間的邊界？清潔在整體病毒生物污染控制策略中扮演什麼角色？</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q6. Non-Product Contact Surfaces | 非產品接觸表面</h4>
+                <p>A formulation team asks whether lyophilizer cleaning validation requires the same carryover calculation and acceptance limits as the filling line equipment.</p>
+                <p><strong>Why are conventional carryover calculations not applicable to lyophilizers? What are the two acceptable approaches for setting TOC limits for lyophilizer cleaning validation?</strong></p>
+                <p><em>一個配製團隊詢問凍乾機清潔驗證是否需要與充填線設備相同的殘留攜帶計算和驗收標準。為什麼傳統的殘留攜帶計算不適用於凍乾機？設定凍乾機清潔驗證 TOC 限度的兩種可接受方法是什麼？</em></p>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- Footer -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p>Section 7: Special Considerations (Source: Section 11.0–11.10) | SterileGMP Knowledge Hub</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">Educational use only. Refer to original PDA TR49 document for regulatory compliance.</p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

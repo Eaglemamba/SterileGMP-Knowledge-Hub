@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 0: Introduction &amp; Glossary</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== GLOSSARY TABLE ===== */
+.glossary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.glossary-table th {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+}
+
+.glossary-table td {
+    padding: 0.55rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.glossary-table tr:nth-child(even) td {
+    background: #f7fafc;
+}
+
+.glossary-table .term-name {
+    font-weight: 700;
+    color: #1e3a5f;
+    white-space: nowrap;
+}
+
+.glossary-table .term-abbr {
+    color: #718096;
+    font-size: 0.82rem;
+}
+
+/* ===== SECTION SUMMARY ===== */
+.section-summary {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-top: 2rem;
+}
+
+.section-summary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.section-summary ul {
+    margin-left: 1.25rem;
+}
+
+.section-summary li {
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    opacity: 0.95;
+}
+
+.section-summary .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    .section-summary .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.summary-col h4 {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>PDA Technical Report No. 49 (2010)</h1>
+    <div class="subtitle">Points to Consider for Biotechnology Cleaning Validation</div>
+    <div class="page-info">Section 0 &mdash; Introduction &amp; Glossary of Terms | 導論與術語詞彙</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- ===== LEARNING OBJECTIVES ===== -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ol>
+            <li>理解 TR49 的目的與範圍：為什麼生物技術製造需要有別於 TR29 的專屬清潔驗證指引，以及兩份文件之間的補充關係。</li>
+            <li>辨識生物技術製造的三大製程類型：哺乳動物細胞培養（mammalian cell culture）、微生物發酵（microbial fermentation）及下游純化（downstream processing）。</li>
+            <li>掌握清潔驗證核心術語：包括 MAC（最大允許攜帶量）、MSSR（最大安全表面殘留量）、CIP（就地清洗）、COP（移出清洗）及 TOC（總有機碳）的定義與實務意義。</li>
+            <li>了解生物技術清潔驗證的三大核心問題：獨特性、關鍵科學原則，及監管期望。</li>
+            <li>建立術語框架：能夠正確使用本報告所定義的詞彙，為後續章節的深入學習奠定基礎。</li>
+        </ol>
+    </div>
+
+    <!-- ===== SECTION 1.0 INTRODUCTION ===== -->
+    <div class="two-column" id="sec-intro">
+        <div class="left-column">
+            <h2>1.0 Introduction</h2>
+
+            <h3>1.1 Purpose/Scope</h3>
+            <p>The scope of this document is to provide guidance specific to <span class="key-term">cleaning validation</span> in <span class="key-term">biotechnology</span> manufacturing. This guidance is supplemental to PDA Technical Report No. 29 (Revised 2012), Points to Consider for Cleaning Validation (TR29), which provides a broad foundation for cleaning validation. For this document, <span class="key-term">biotechnology</span> manufacturing refers to processes for production of biological products from recombinant organisms that may include <span class="key-term">mammalian cell culture</span>, <span class="key-term">microbial fermentation</span>, and <span class="key-term">downstream processing</span>.</p>
+
+            <p>The intended audience is quality and regulatory professionals as well as manufacturing scientists and engineers who are responsible for <span class="key-term">cleaning validation</span> in <span class="key-term">biotechnology</span> manufacturing. Regulatory agencies increasingly expect these professionals to scientifically justify their <span class="key-term">cleaning validation</span> approaches and to keep their <span class="key-term">cleaning validation</span> programs in a state of <span class="key-term">continuous improvement</span>. The content in this document is based on current industry practices and should be referenced in conjunction with applicable regulations. Although this report is focused on processes that manufacture biological/biotech products, many of the principles may be applied to other manufacturing modalities.</p>
+
+            <p>This document was written to address the following questions:</p>
+            <ul>
+                <li>What are the unique aspects of <span class="key-term">cleaning validation</span> in <span class="key-term">biotechnology</span> manufacturing?</li>
+                <li>What are the key scientific principles relevant to <span class="key-term">cleaning validation</span>?</li>
+                <li>What are the typical regulatory expectations for <span class="key-term">cleaning validation</span> in biotech manufacturing?</li>
+            </ul>
+        </div>
+        <div class="right-column">
+            <h2>解讀與應用</h2>
+
+            <div class="concept-box">
+                <h3>TR49 的定位：TR29 的生技專屬補充</h3>
+                <p>TR29 是清潔驗證的「通用教科書」，適用於所有製藥製造；TR49 則是針對<strong>生物技術藥品</strong>的專屬補充指引。兩者必須配合使用，不能互相取代。</p>
+                <p>在 CDMO 環境中，若廠內同時生產小分子（small molecule）與生技藥品（biotech），清潔驗證程序需分別參照 TR29 與 TR49 的不同要求。</p>
+            </div>
+
+            <div class="note-box">
+                <h3>監管機構的期望升高</h3>
+                <p>原文明確指出：監管機構「<strong>increasingly expect</strong>（日益期望）」業者能科學論證清潔驗證方法，並維持持續改善。這意味著：</p>
+                <ul>
+                    <li>不能只說「我們一直這樣做」——需提供科學依據</li>
+                    <li>靜態的清潔驗證程序已不夠——需建立持續監測與回顧機制</li>
+                    <li>稽核時，稽核員會問「你如何知道這個方法是有效的？」</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h3>比喻：廚房清潔 vs. 手術室清潔</h3>
+                <p>TR29 就像一般廚房清潔指南——適用於大多數情境。TR49 則像是專門針對手術室（生技藥品製造）設計的超高標準清潔規範，因為生技產品的殘留（蛋白質、核酸、活性生物體）比小分子化合物複雜得多，潛在風險也不同。</p>
+            </div>
+
+            <div class="concept-box">
+                <h3>三類生技製造製程</h3>
+                <ul>
+                    <li><strong>哺乳動物細胞培養</strong>：如 CHO 細胞生產單株抗體（mAb）——殘留含有複雜蛋白質、培養基成分、病毒風險</li>
+                    <li><strong>微生物發酵</strong>：如大腸桿菌生產重組蛋白——殘留含有內毒素（endotoxin）問題更突出</li>
+                    <li><strong>下游純化</strong>：層析管柱、超濾膜——清潔困難度高，殘留分析方法需特別設計</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2.0 GLOSSARY ===== -->
+    <div class="two-column" id="sec-glossary">
+        <div class="left-column">
+            <h2>2.0 Glossary of Terms</h2>
+            <p style="font-size:0.88rem; color:#718096; margin-bottom:1rem;">Key terms as defined in TR49. These definitions establish the precise language used throughout the report.</p>
+
+            <table class="glossary-table">
+                <thead>
+                    <tr>
+                        <th style="width:32%;">Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Acceptance Criteria</span></span><br><span class="term-abbr">(Limits)</span></td>
+                        <td>The standards (numerical limits, ranges, or other suitable measures) against which the results of a process or its controls are assessed.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Active</span></span></td>
+                        <td>The ingredient in the drug product that produces a pharmacological effect. In the context of this document, "active" refers to the residue of concern from a biological product or process.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Bioburden</span></span></td>
+                        <td>The number of viable microorganisms on or in a product, component, or the environment.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Biotechnology</span></span></td>
+                        <td>Technology used to manipulate living organisms or their components to develop useful products, particularly the molecular biological techniques of recombinant DNA technology.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Carryover</span></span></td>
+                        <td>Residues of a previously manufactured product or cleaning agent that remain on equipment surfaces after cleaning and are subsequently transferred to the next manufactured product.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">CIP</span></span><br><span class="term-abbr">(Clean-In-Place)</span></td>
+                        <td>A method of cleaning the interior surfaces of pipes, vessels, process equipment, and associated fittings, without disassembling the equipment.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">COP</span></span><br><span class="term-abbr">(Clean-Out-of-Place)</span></td>
+                        <td>A method of cleaning equipment by disassembling the equipment and cleaning it in a designated area.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Cleaning Agent</span></span></td>
+                        <td>A substance used to remove soils from equipment surfaces. Also referred to as detergent.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Cleaning Effectiveness</span></span></td>
+                        <td>The ability of a cleaning process to reduce residues to acceptable levels.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Cleaning Process</span></span></td>
+                        <td>The combination of actions, materials, and conditions that result in effective cleaning.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Cleaning Validation</span></span></td>
+                        <td>Documented evidence with a high degree of assurance that a cleaning process will consistently result in equipment that is suitable for the manufacture of pharmaceutical products.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Critical Surface</span></span></td>
+                        <td>A surface that can come into direct contact with the product and that represents the most difficult to clean location in the equipment.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Design of Experiments</span></span><br><span class="term-abbr">(DOE)</span></td>
+                        <td>A systematic method to determine the relationship between factors affecting a process and the output of that process. Also known as designed experiments.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Dirty Hold</span></span></td>
+                        <td>The time period between the end of manufacturing and the start of cleaning.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Equipment Train</span></span></td>
+                        <td>A series of equipment items that are cleaned together as part of the same cleaning cycle.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Excipient</span></span></td>
+                        <td>Any substance other than the active drug substance that may be included in a pharmaceutical product formulation.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Final Rinse</span></span></td>
+                        <td>The last rinse of the cleaning cycle, usually with purified water or water for injection (WFI).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">HAMA</span></span><br><span class="term-abbr">(Human Anti-Mouse Antibody)</span></td>
+                        <td>Antibodies generated by the patient's immune system in response to the administration of murine-derived antibody-based products.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">HACA</span></span><br><span class="term-abbr">(Human Anti-Chimeric Antibody)</span></td>
+                        <td>Antibodies generated by the patient's immune system against chimeric antibody-based products.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">HAHA</span></span><br><span class="term-abbr">(Human Anti-Human Antibody)</span></td>
+                        <td>Antibodies generated by the patient's immune system against humanized antibody-based products.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Immunogenicity</span></span></td>
+                        <td>The ability of a substance to provoke an immune response in an organism.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Limit of Detection</span></span><br><span class="term-abbr">(LOD)</span></td>
+                        <td>The lowest quantity of a substance that can be distinguished from the absence of that substance with a stated confidence level.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Limit of Quantitation</span></span><br><span class="term-abbr">(LOQ)</span></td>
+                        <td>The minimum amount of analyte that can be quantitatively determined with acceptable precision and accuracy.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Matrix Effect</span></span></td>
+                        <td>The combined effect of all components of the sample other than the analyte on the measurement of the analyte.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Maximum Allowable Carryover</span></span><br><span class="term-abbr">(MAC)</span></td>
+                        <td>The maximum amount of residue that is allowed to carry over from one batch to the next while still complying with established acceptance limits.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Maximum Safe Surface Residue</span></span><br><span class="term-abbr">(MSSR)</span></td>
+                        <td>The maximum amount of product or cleaning agent residue that may be present on equipment surfaces after cleaning without causing harm to patients.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Product Contact Surface</span></span></td>
+                        <td>Any surface that comes into contact with the drug substance or drug product at any point during manufacturing.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Recovery</span></span></td>
+                        <td>The proportion of a known amount of residue that is found by the analytical method after sampling.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Removal Factor</span></span></td>
+                        <td>The ratio of the initial amount of a residue to the amount remaining after cleaning.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Rinse</span></span></td>
+                        <td>The use of solvent (typically water) to flush the interior surfaces of equipment.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Soil</span></span></td>
+                        <td>The material to be removed from the equipment surface during cleaning. May include drug substance, excipients, cleaning agents, bioburden, endotoxins, and particulates.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Soil Matrix</span></span></td>
+                        <td>The combination of all soils present on equipment surfaces after manufacturing.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Swab</span></span></td>
+                        <td>An applicator consisting of an absorbent pad on a handle, used to collect samples from equipment surfaces.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Total Organic Carbon</span></span><br><span class="term-abbr">(TOC)</span></td>
+                        <td>A measure of the total amount of organic carbon in a sample, typically used as a non-specific analytical method for cleaning validation.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="term-name"><span class="key-term">Worst Case</span></span></td>
+                        <td>The set of conditions encompassing upper and lower processing limits and circumstances, including those within standard operating procedures, which pose the greatest chance of process or product failure when compared to ideal conditions.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="right-column">
+            <h2>術語深度解析</h2>
+
+            <div class="concept-box">
+                <h3>最重要的三組術語配對</h3>
+                <p>以下三組術語在清潔驗證中最常被混淆，務必釐清：</p>
+                <ul>
+                    <li><strong>LOD vs. LOQ</strong>：LOD（偵測下限）是「能不能偵測到」；LOQ（定量下限）是「能不能精確測量」。清潔驗證中，LOQ 更重要——因為我們需要準確知道殘留量是多少。</li>
+                    <li><strong>MAC vs. MSSR</strong>：MAC（最大允許攜帶量）是基於下一批產品的劑量計算；MSSR（最大安全表面殘留量）是基於病患安全計算的設備表面限值。兩者都要計算，取較嚴格者。</li>
+                    <li><strong>CIP vs. COP</strong>：CIP（就地清洗）設備不拆開直接清洗，效率高但驗證難；COP（移出清洗）拆卸後清洗，可徹底但人力需求大。</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <h3>生技製造中「Soil（污染物）」的特殊性</h3>
+                <p>在生技製造中，Soil 遠比小分子藥廠複雜：</p>
+                <ul>
+                    <li><strong>蛋白質殘留</strong>：可能引發免疫原性（immunogenicity）——這正是 HAMA/HACA/HAHA 術語的來源</li>
+                    <li><strong>核酸殘留</strong>：宿主細胞 DNA 殘留有其安全限值（如 WHO 建議 &lt;10 ng/劑）</li>
+                    <li><strong>內毒素（Endotoxin）</strong>：革蘭氏陰性菌發酵製程尤其需要關注</li>
+                    <li><strong>培養基成分</strong>：胺基酸、血清、促進劑等複雜混合物</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <h3>比喻：Recovery（回收率）就像擦桌子後的驗收</h3>
+                <p>想像你用棉棒擦一張桌子，桌上原本有 100 個單位的殘留物，但你的棉棒只收集到 70 個單位——Recovery = 70%。</p>
+                <p>在清潔驗證中，如果你的採樣方法 Recovery 只有 50%，而你設定的限值是 10 ppm，你必須確保實際偵測到的是 &le;5 ppm 才夠安全。回收率校正是計算真實殘留量的關鍵步驟。</p>
+            </div>
+
+            <div class="concept-box">
+                <h3>免疫原性相關術語：HAMA / HACA / HAHA</h3>
+                <p>這三個術語都描述「患者對藥物中非人源成分產生的抗體反應」，是生技清潔驗證中殘留攜帶（Carryover）風險評估的重要依據：</p>
+                <ul>
+                    <li><strong>HAMA</strong>：針對鼠源（murine）成分——早期 mAb 藥物的主要問題</li>
+                    <li><strong>HACA</strong>：針對嵌合體（chimeric）成分</li>
+                    <li><strong>HAHA</strong>：針對人源化（humanized）成分——即便是「人源化」抗體也可能引發免疫反應</li>
+                </ul>
+                <p>這些術語說明：即使是微量的蛋白質殘留攜帶，也可能因免疫原性而對患者造成嚴重影響。</p>
+            </div>
+
+            <div class="concept-box">
+                <h3>Dirty Hold（髒放置時間）的實務意義</h3>
+                <p>Dirty Hold 是設備用完後到開始清洗的等待時間。在生技製造中，這個時間段特別關鍵：</p>
+                <ul>
+                    <li>蛋白質殘留在設備表面乾燥後，變性形成難以去除的薄膜</li>
+                    <li>微生物在培養基殘留中大量增殖，增加 Bioburden 風險</li>
+                    <li>因此，生技廠的 SOP 通常設定嚴格的 Dirty Hold 時間上限（如 &le;24 小時）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h3>練習思考 1：術語應用</h3>
+                <p>情境：你的 CHO 細胞培養槽剛完成一批單株抗體生產。清洗後，你用棉棒採樣，TOC 分析顯示表面殘留為 3.2 &micro;g/cm&sup2;，而你的 MSSR 計算結果為 5.0 &micro;g/cm&sup2;。</p>
+                <p><strong>問題</strong>：這次清洗是否符合標準？如果採樣的 Recovery 只有 80%，你的判斷是否改變？</p>
+                <p><em>提示：校正後實際殘留 = 偵測值 &divide; Recovery = 3.2 &divide; 0.8 = 4.0 &micro;g/cm&sup2;，仍在 MSSR 5.0 以內，符合標準。</em></p>
+            </div>
+
+            <div class="practice-box">
+                <h3>練習思考 2：術語辨別</h3>
+                <p>以下哪種情境更需要優先考慮 Immunogenicity 風險？</p>
+                <ol type="A">
+                    <li>小分子化學藥廠，相鄰批次為不同劑量的同一 API</li>
+                    <li>生技廠，同一設備先後生產鼠源 mAb（Product A）和人源化 mAb（Product B）</li>
+                    <li>生技廠，同一設備連續生產相同的重組蛋白</li>
+                </ol>
+                <p><em>答案：B。鼠源蛋白的 HAMA 殘留攜帶至 Product B 批次中，可能引發患者的免疫反應，且因 Product A/B 之蛋白質結構不同，無法以相同 HAMA 抗體相互抵消。</em></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY ===== -->
+    <div class="section-summary">
+        <h3>Section 0 Summary | 本節重點總結</h3>
+        <div class="summary-grid">
+            <div class="summary-col">
+                <h4>Key Takeaways — 核心要點</h4>
+                <ul>
+                    <li>TR49 補充 TR29，專為生技製造清潔驗證設計</li>
+                    <li>生技製造涵蓋細胞培養、發酵、下游純化三大類型</li>
+                    <li>MAC 與 MSSR 是清潔驗證限值計算的核心工具</li>
+                    <li>Recovery 校正是確保採樣結果有效性的必要步驟</li>
+                    <li>Dirty Hold 時間需在 SOP 中明確管控</li>
+                </ul>
+            </div>
+            <div class="summary-col">
+                <h4>Key Terms to Remember — 必記術語</h4>
+                <ul>
+                    <li>清潔驗證 (Cleaning Validation) — 有文件佐證的高保證度清潔程序</li>
+                    <li>最大允許攜帶量 (MAC) — 批次間殘留攜帶的最高允許量</li>
+                    <li>就地清洗 (CIP) vs. 移出清洗 (COP)</li>
+                    <li>總有機碳 (TOC) — 非專屬性分析方法</li>
+                    <li>最差情況 (Worst Case) — 挑戰性最高的清潔驗證條件</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">SterileGMP Knowledge Hub &mdash; Bilingual Educational Series</p>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

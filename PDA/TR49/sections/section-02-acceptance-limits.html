@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 2: Acceptance Limits | 可接受限度</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 2: Acceptance Limits | 可接受限度</h1>
+    <div class="subtitle">PDA Technical Report No. 49 — Points to Consider for Biotechnology Cleaning Validation</div>
+    <div class="page-info">Section 4.0 (pp. 18–23) | 生技清潔驗證可接受限度完整指引</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解生技製造清潔驗證的五大限度類型及各自設定原則</li>
+            <li>掌握 MAC（最大允許攜帶量）的計算邏輯與適用場景</li>
+            <li>區分 Formulation/Fill 與 Bulk Manufacture 在限度設定上的差異</li>
+            <li>了解 TOC 作為替代分析方法的理由與限制</li>
+            <li>認識毒理學數據（LD50、ADI）如何轉化為清潔限度</li>
+            <li>掌握生物負載與內毒素限度的典型數值與設定邏輯</li>
+        </ul>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>本節內容 Contents</h3>
+        <div class="toc-grid">
+            <a href="#sec-overview">4.0 Overview 總覽</a>
+            <a href="#sec-4-1">4.1 Limits for Actives 活性成分限度</a>
+            <a href="#sec-4-1-1">4.1.1 Formulation/Fill</a>
+            <a href="#sec-4-1-2">4.1.2 Bulk Manufacture</a>
+            <a href="#sec-4-1-3">4.1.3 Toxicity-Based Limits</a>
+            <a href="#sec-4-2">4.2 Cleaning Agent Limits 清潔劑限度</a>
+            <a href="#sec-4-3">4.3 Bioburden Limits 生物負載限度</a>
+            <a href="#sec-4-4">4.4 Endotoxin Limits 內毒素限度</a>
+            <a href="#sec-4-5">4.5 Visual Clean 目視清潔</a>
+            <a href="#sec-4-6">4.6 Modifying Limits 限度修改</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.0 OVERVIEW ===== -->
+    <div id="sec-overview" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Acceptance Limits — Overview | 可接受限度 — 總覽</h2>
+                <p>Rationale, five limit categories, and manufacturing stage framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>4.0 Acceptance Limits</h3>
+                    <p>
+                        <span class="key-term">Cleaning validation</span> is performed to demonstrate the effectiveness and consistency of a cleaning procedure. The rationale for selecting limits for product residues, cleaning agents and microbial contamination, as well as any other process components, should be logically based on the materials that impact the manufacturing process and the safety and purity of the product. The acceptable limits for cleaning manufacturing systems and components should be <em>"practical, achievable and verifiable."</em>
+                    </p>
+                    <p>
+                        Limits for cleaning validation generally contain some measure related to the <span class="key-term">active protein</span> (or other major component of interest), some measure related to the <span class="key-term">cleaning agent</span>, some measure related to <span class="key-term">bioburden</span> levels, some measure related to <span class="key-term">endotoxin</span> levels, and a requirement that the equipment be <span class="key-term">visually clean</span>. In addition, if there are any specific toxicity concerns related to the active protein or other process components (for example, cytotoxicity, allergenicity, or reproductive hazards), the manufacturer's toxicology or pharmacology groups may determine if a modification of limits is required, or whether the use of dedicated equipment is needed.
+                    </p>
+                    <p>
+                        In the discussion that follows, issues for limits are considered based on the nature of the residue and on the <span class="key-term">stage of manufacturing</span> (e.g., bulk active vs. formulation/fill). Manufacturing stages include bulk active manufacturing (all steps resulting in the bulk active drug substance) and formulation/fill (formulation of the bulk active into a finished drug product and primary packaging of that drug product). Bulk manufacturing is further divided into <span class="key-term">upstream process steps</span> (all process steps through harvesting) and <span class="key-term">downstream process steps</span> (purification and following steps).
+                    </p>
+                </div>
+
+                <!-- RIGHT: Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+                    <div class="concept-box">
+                        <h4>清潔驗證的三個核心原則</h4>
+                        <p>TR49 第一句話就指出：限度設定必須有<strong>邏輯依據</strong>，不能隨意訂數字。所有限度都必須同時滿足：</p>
+                        <ul>
+                            <li><strong>Practical（實際可行）</strong>：工廠能執行的清潔程序</li>
+                            <li><strong>Achievable（可達成）</strong>：清潔後能穩定通過</li>
+                            <li><strong>Verifiable（可驗證）</strong>：有可用的分析方法可量測</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>五大限度類型 Five Limit Categories</h4>
+                        <ol>
+                            <li>活性成分限度（Active protein residue）</li>
+                            <li>清潔劑限度（Cleaning agent residue）</li>
+                            <li>生物負載限度（Bioburden）</li>
+                            <li>內毒素限度（Endotoxin）</li>
+                            <li>目視清潔（Visual cleanliness）</li>
+                        </ol>
+                        <p>若有特殊毒性疑慮（細胞毒性、過敏原、生殖毒性），還需評估是否使用<strong>專用設備</strong>。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>製程階段框架 Manufacturing Stage Framework</h4>
+                        <p>TR49 特別強調：不同製程階段，限度設定策略不同。</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">Bulk Active Manufacturing</span>
+                            </div>
+                            <div class="arrow-down">&#9660;</div>
+                            <div class="hierarchy-level" style="display:flex;justify-content:center;gap:1rem;">
+                                <span class="hierarchy-box level-2">Upstream（發酵→收穫）</span>
+                                <span class="hierarchy-box level-2">Downstream（純化→後續步驟）</span>
+                            </div>
+                            <div class="arrow-down">&#9660;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-3">Formulation / Fill（製劑→充填→初級包裝）</span>
+                            </div>
+                        </div>
+                        <p>越靠近最終產品的階段，限度設定越嚴格、越需要科學計算依據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.1 LIMITS FOR ACTIVES ===== -->
+    <div id="sec-4-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1</div>
+            <div class="chapter-info">
+                <h2>Key Issues in Limits for Actives | 活性成分限度的關鍵議題</h2>
+                <p>Protein degradation during cleaning and its impact on limit-setting strategy</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1 Key Issues in Limits for Actives</h3>
+                    <p>
+                        Biotechnology cleaning processes often involve a change of the active molecule itself, which is commonly a protein. Proteins typically are <span class="key-term">degraded</span> to some extent by the cleaning processes commonly used in biotechnology manufacturing.
+                    </p>
+                    <p>
+                        In alkaline solutions, such as hot, aqueous solutions containing sodium or potassium hydroxide, proteins may <span class="key-term">hydrolyze</span> to soluble oligomers or free amino acids. <span class="key-term">Sodium hypochlorite</span> is sometimes used in biotechnology cleaning. As a cleaning agent, it is particularly effective in removing denatured protein residues from surfaces. It is a reactive oxidizer which will degrade proteins in a more random manner to smaller fragments. A general concern with sodium hypochlorite use is its possible deleterious effect on stainless steel components.
+                    </p>
+                    <p>
+                        Proteins will hydrolyze at a high pH. The parameters of time and temperature have a significant influence on protein hydrolysis. The higher the temperature and pH, the more extensive protein hydrolysis will occur. Because the protein is typically degraded into smaller fragments and those fragments tend to be more polar, they are likely to be more water soluble and more readily removed from equipment surfaces.
+                    </p>
+                    <p>
+                        For these reasons, in most cases biotechnology manufacturers do not directly set limits for and directly measure the active in cleaning validation. Because of the degradation of the active, no active protein should remain after completion of the cleaning process. It is for that reason that analytical methods like <span class="key-term">TOC</span> (see Section 6.0) are used for the detection of protein residues (or their fragments). If a nonspecific method like TOC is used, it should be noted that the "real" value of protein residues after cleaning may be significantly lower, as TOC measures all sources of organic carbon (and not just residues from the active protein).
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+                    <div class="concept-box">
+                        <h4>為什麼蛋白質降解是關鍵？</h4>
+                        <p>生技藥品的活性成分（通常是蛋白質）在清潔過程中會被分解，這與小分子藥品有根本差異。降解機制：</p>
+                        <ul>
+                            <li><strong>鹼液水解</strong>：NaOH/KOH 熱水溶液 → 蛋白質水解為寡聚物或游離胺基酸</li>
+                            <li><strong>次氯酸鈉氧化</strong>：隨機氧化降解為小片段，但對不鏽鋼有潛在傷害，使用後必須以酸洗徹底去除殘留氯離子</li>
+                            <li><strong>高pH水解</strong>：溫度越高、pH越高，水解越完全</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何用 TOC 而非直接測活性蛋白？</h4>
+                        <p>關鍵邏輯：蛋白質降解後，原本的特異性分析方法（如 ELISA）無法測到降解片段，因此改用<strong>總有機碳（TOC）</strong>作為間接指標。</p>
+                        <p>注意事項：TOC 測到的是<em>所有</em>有機碳來源，不只是活性蛋白殘留，因此實際蛋白殘留量可能遠低於 TOC 推算值——這是偏保守的估算。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：把蛋白質想像成一條繩子</h4>
+                        <p>清潔劑就像剪刀，把一條長繩（蛋白質）剪成很多短片段。原本可以辨認這條繩子的方法（ELISA）對碎片就沒用了，所以改用「秤總重量」（TOC）來確認碎片是否都清除乾淨。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.1.1 ===== -->
+    <div id="sec-4-1-1" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.1</div>
+            <div class="chapter-info">
+                <h2>Limits for Actives in Formulation and Final Fill | 製劑充填的活性成分限度</h2>
+                <p>MAC calculation method — carryover calculation for formulation/fill operations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.1 Establishing Limits for Actives in Formulation and Final Fill</h3>
+                    <p>
+                        In biotechnology formulation/fill manufacturing, limits for protein actives are typically set using a <span class="key-term">carryover calculation</span> (often called <span class="key-term">MAC, or Maximum Allowable Carryover</span>) in the same way as for small molecule cleaning validation. Though the product is degraded (as discussed above), the calculations are based on active product. This is assumed to represent a worst-case approach if the cleaning method used in formulation/fill results in degradation of the protein active to fragments.
+                    </p>
+                    <p>
+                        This method only applies when the <span class="key-term">therapeutic daily dose</span> is known. For products dosed chronically, a typical calculation allows no more than <span class="key-term">1/1000 of the minimum daily therapeutic dose</span> of an active in the maximum daily dose of the subsequent manufactured product; the factor of 1/1000 may be modified depending on the specifics of the situation. In addition, if that calculation allows more than <span class="key-term">10 ppm</span> of the active protein in the subsequent drug product, a limit of 10 ppm active protein in the next drug product may be utilized.
+                    </p>
+                    <p>
+                        Limits per surface area can then be calculated based on the minimum batch size of the next drug product and the shared surface area. Limits in swab and/or rinse samples can then be calculated using the sampling parameters.
+                    </p>
+                    <p>
+                        When this method is used for setting limits, the limit for the active is calculated. It can then be converted to appropriate units for the analytical procedure. For example, if the analytical procedure is TOC, the limit calculated for the active is converted to TOC based on the <span class="key-term">TOC content (percentage)</span> of the active.
+                    </p>
+                    <p>
+                        It should be noted that limits based on carryover calculations are one example of a "science-based" method of setting limits. Some companies choose to set limits based on more stringent criteria, such as the <span class="key-term">WFI TOC specification of 500 ppb TOC</span>. Such an approach is acceptable, but should only be used if it can be demonstrated that the WFI TOC specification is more stringent than the TOC result, as determined by a carryover calculation.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="formula-box">
+                        <h4>MAC 計算範例 — 以活性蛋白為例</h4>
+                        <p><strong>已知條件（假設）：</strong></p>
+                        <ul>
+                            <li>產品 A 最小日治療劑量（TDD）：10 mg/天</li>
+                            <li>安全係數：1/1000</li>
+                            <li>後續產品 B 最大日劑量：500 mL/天（= 500 g）</li>
+                            <li>共用設備表面積：5 m² = 50,000 cm²</li>
+                            <li>最小批量（產品 B）：100 kg = 100,000 g</li>
+                        </ul>
+                        <pre>
+Step 1: 後續產品中最大允許殘留量
+= TDD × (1/1000) = 10 mg × 0.001 = 0.01 mg/天
+
+Step 2: 換算為 ppm（mg/kg）
+= 0.01 mg ÷ 500 g × 1000 = 0.02 ppm
+（0.02 ppm &lt; 10 ppm 上限 → 用 0.02 ppm）
+
+Step 3: 總殘留量（批量計）
+= 0.02 ppm × 100,000 g = 2 mg（整批允許殘留）
+
+Step 4: 換算為表面殘留限度
+= 2 mg ÷ 50,000 cm² = 0.00004 mg/cm²
+= 4 × 10⁻⁵ mg/cm²
+
+Step 5: 換算為 TOC（若蛋白質含 50% 碳）
+TOC limit = 4 × 10⁻⁵ mg/cm² × 50% = 2 × 10⁻⁵ mg C/cm²
+                        </pre>
+                        <p>完整範例可參考 TR49 Appendix Section 15.0 Example 1。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>1/1000 規則的意義</h4>
+                        <p>1/1000 的治療劑量作為安全係數，代表即使攜帶進下一批產品，患者接受到的殘留量只有正常治療劑量的千分之一，在藥理上被認為無顯著影響。此係數可依具體情況調整（如高毒性產品可能需要更嚴格）。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>10 ppm 上限的邏輯</h4>
+                        <p>即使 1/1000 計算結果允許更高殘留，也必須同時滿足 &le;10 ppm 的上限。這是行業慣例「保底條件」，來源於 FDA 及 PIC/S 指引，確保任何產品都不超過合理可接受水準。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>WFI 500 ppb TOC 的使用時機</h4>
+                        <p>部分公司直接採用注射用水（WFI）的 TOC 規格（500 ppb）作為清潔限度，這更嚴格也更容易操作，但必須先確認：500 ppb 確實比科學計算結果更嚴格，才能如此使用。不能「倒果為因」，以鬆的計算結果當藉口拉高實際限度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.1.2 ===== -->
+    <div id="sec-4-1-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.2</div>
+            <div class="chapter-info">
+                <h2>Limits for Actives in Bulk Manufacture | 原料藥製程的活性成分限度</h2>
+                <p>Process capability-based approach and TOC measurement limitations</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.2 Establishing Limits for Actives in Bulk Manufacture</h3>
+                    <p>
+                        <span class="key-term">Carryover calculations</span> used for formulation/fill are typically not applicable for bulk manufacture. The primary reason is that if the carryover calculation is based on the entire equipment manufacturing train surface area, limits are extremely low and are not measurable by available analytical techniques, unless the active is not degraded during the cleaning process.
+                    </p>
+                    <p>
+                        As noted above, the residues of the active are generally measured "indirectly" by measuring a property like <span class="key-term">TOC</span>. Typical quantitation limits for TOC for cleaning validation purposes are on the order of <span class="key-term">100–500 ppb carbon</span>, which is equivalent to about 200–1,000 ppb protein for proteins containing about 50% carbon. Therefore TOC cannot be used as an analytical method if limits are based on a carryover calculation using the surface area of the entire equipment train.
+                    </p>
+                    <p>
+                        Some companies choose to use a carryover calculation for a <span class="key-term">limited surface area</span>, such as for the last manufacturing vessel or for all of the manufacturing equipment after the last purification process. One rationale for such an approach can be found in <span class="key-term">ICH Q7</span>, Section 12.7: early processing steps do not require validation if subsequent processing steps remove those residues.
+                    </p>
+                    <p>
+                        Because of these measurement issues, and because of the degradation issues, a more common technique for setting limits for residues of the active is based on <span class="key-term">process capability</span>. These limits are typically based on the TOC values of any sample, whether rinse or swab. As a general rule, the limits may be more stringent following the purification process. Typical values established as acceptance criteria by manufacturers are:
+                    </p>
+                    <ul>
+                        <li><strong>Downstream processes:</strong> 1–2 ppm TOC</li>
+                        <li><strong>Upstream processes:</strong> 5–10 ppm TOC</li>
+                    </ul>
+                    <p>
+                        Exceptions to this practice are for <span class="key-term">product-dedicated materials</span> like ultrafilter membranes and chromatography resins. These are part of the downstream processing, but limits may be set higher. This higher level is acceptable when these items are dedicated to the manufacture of only one product.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="note-box">
+                        <h4>為何 MAC 法在 Bulk 製程行不通？</h4>
+                        <p>原因很直接：整條設備的共用表面積太大（可能達數百平方米），計算出的限度極低（遠低於 100 ppb），而 TOC 的定量極限約 100–500 ppb，根本測不到。</p>
+                        <p>換句話說：<strong>算出來的限度比儀器靈敏度還低</strong>，無法驗證。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>ICH Q7 的出口：只驗最後幾步</h4>
+                        <p>ICH Q7 第 12.7 條提供了合理依據：若後續製程步驟（如層析純化、超濾）能去除前期殘留，早期步驟不需驗證。因此，部分公司只對<strong>最後一個純化容器或最後幾個下游步驟</strong>執行 MAC 計算。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>製程能力法（Process Capability）典型限度</h4>
+                        <pre>
+上游製程（Upstream）：
+  發酵槽、收穫設備
+  典型 TOC 限度 = 5–10 ppm
+
+下游製程（Downstream）：
+  純化管柱、超濾、緩衝液換
+  典型 TOC 限度 = 1–2 ppm
+
+例外：專用耗材（超濾膜、層析樹脂）
+  → 單產品專用 → 可設定較高限度
+  → 不存在交叉污染風險
+                        </pre>
+                        <p>注意：實際達成值通常遠低於設定限度，限度主要作為「失效預警」。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>上游 vs. 下游 TOC 差異的原因</h4>
+                        <p>上游設備（發酵槽）清洗後殘留的有機碳來源更複雜：培養基成分、細胞碎片、代謝產物都會貢獻 TOC 訊號，所以限度設定較寬鬆（5–10 ppm）。下游純化設備已去除大部分雜質，殘留物主要是目標蛋白片段，TOC 來源相對單純，因此要求更嚴（1–2 ppm）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.1.3 ===== -->
+    <div id="sec-4-1-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.3</div>
+            <div class="chapter-info">
+                <h2>Limits Based on Toxicity Data | 基於毒理學數據的限度設定</h2>
+                <p>ADI-based calculations as an alternative to dose-based MAC</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.3 Limits Based on Toxicity Data</h3>
+                    <p>
+                        An alternative to establishing limits for the active for either formulation/fill or bulk manufacture is to establish limits based on <span class="key-term">toxicity calculations</span>. These toxicity calculations for the active are similar to toxicity calculations for cleaning agents covered in Section 4.2.1.
+                    </p>
+                    <p>
+                        Toxicity calculations typically involve the use of the short-term <span class="key-term">toxicity data</span> for the active, ultimately to arrive at an <span class="key-term">ADI (Acceptable Daily Intake)</span>. Calculations should preferably be based on toxicity data by the <span class="key-term">same route of administration</span> (such as intravenous studies if the drug product is given by injection). If the data are based on oral toxicity, additional safety factors may be required for the cleaning of injectables.
+                    </p>
+                    <p>
+                        As a general observation, such calculations for actives based on safety considerations generally result in <span class="key-term">higher limits</span> as compared to calculations based on dosing. Furthermore, if the active protein is degraded, the more relevant toxicity data is not the toxicity of the native protein, but the toxicity of the degraded fragments, which is often assumed to be less of a safety concern (although toxicity studies on degraded fragments are typically not performed).
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>毒理學限度計算邏輯（ADI 方法）</h4>
+                        <p>ADI 方法流程：</p>
+                        <ol>
+                            <li>取得活性成分的急性毒性數據（如 LD50）</li>
+                            <li>除以安全係數（通常 1000–10000）→ 得到 ADI（每日可接受攝入量）</li>
+                            <li>用 ADI 推算允許殘留量（類似 MAC 後半段計算）</li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>毒理學法 vs. 劑量法的差異</h4>
+                        <p>關鍵結論：毒理學計算得出的限度通常<strong>比劑量計算（1/1000 TDD）更寬鬆</strong>。原因：LD50/安全係數的結果，往往允許比「千分之一治療劑量」更高的殘留。</p>
+                        <p>因此毒理學法常用於：劑量未確定（如臨床試驗早期）或劑量法算出的限度難以達成時的替代依據。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>降解蛋白片段的毒理假設</h4>
+                        <p>邏輯：蛋白質降解後的片段（小胜肽、胺基酸），其藥理活性和毒性通常遠低於原始蛋白，因此殘留的安全顧慮更小。然而，TR49 也誠實指出：降解片段的毒性研究通常<em>並未實際執行</em>，這只是合理假設，需在風險評估中說明。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>施打路徑需一致</h4>
+                        <p>若最終產品為注射劑，毒理數據應以<strong>靜脈注射（IV）研究</strong>為準。若只有口服毒性（LD50，oral），需加入額外安全係數——因為注射的生物可利用率遠高於口服。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.2 CLEANING AGENTS ===== -->
+    <div id="sec-4-2" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.2</div>
+            <div class="chapter-info">
+                <h2>Limits for Cleaning Agents | 清潔劑限度</h2>
+                <p>Commodity chemicals (conductivity) and formulated detergents (LD50-based carryover)</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2 Limits for Cleaning Agents</h3>
+                    <p>
+                        Limits for <span class="key-term">cleaning agents</span> will also depend on the stage of manufacturing (formulation/fill vs. bulk active manufacture). Typical cleaning processes for biotechnology involve either a caustic wash followed by a phosphoric acid step, or an alkaline detergent followed by an acidic detergent.
+                    </p>
+
+                    <h3 style="margin-top:1.25rem;">4.2.1 Limits for Commodity Chemicals</h3>
+                    <p>
+                        If only commodity chemicals such as <span class="key-term">sodium hydroxide</span> and <span class="key-term">phosphoric acid</span> are used for cleaning, it is common practice to set limits for these indirectly as a <span class="key-term">conductivity value</span>. Preferably, an acceptable level of sodium hydroxide or phosphoric acid is established based on toxicity carryover calculations or based on the effects on process parameters. The conductivity limit is then set at a level equivalent to that concentration at a specified temperature.
+                    </p>
+                    <p>
+                        It is typically the case that the conductivity limit established in this way is well above the conductivity limit for <span class="key-term">WFI</span> at the same temperature. Therefore, limits are based on either WFI specifications or on a slightly higher value (such as <span class="key-term">5 μS/cm</span>). The rationale for allowing a conductivity limit slightly higher than the WFI limit is that the WFI limit applies to water in the recirculating WFI loop. As soon as the water is taken out of that loop and passed through clean equipment (particularly through spray devices where it can pick up carbon dioxide from the air), there is no expectation that it will necessarily meet the WFI conductivity limit.
+                    </p>
+
+                    <h3 style="margin-top:1.25rem;">4.2.2 Limits for Formulated Cleaning Agents</h3>
+                    <p>
+                        For formulation/fill manufacturing, limits for residues of formulated cleaning agents (which may contain a variety of organic components in addition to inorganic hydroxide) are typically set based on a carryover calculation using the short-term toxicity <span class="key-term">(LD50) data</span> for that formulated cleaner. Such toxicity information may be supplied by the cleaning agent manufacturer or may be calculated using worst-case assumptions based on an analysis of the formulation components.
+                    </p>
+                    <p>
+                        For the determination of the limit in the next drug product, a default value for the formulated cleaning agent may also be used if it is more stringent than the carryover calculation. That default value is typically <span class="key-term">10 ppm formulated cleaning agent</span>. Note that the only difference between a carryover calculation for the active and a carryover calculation for the formulated cleaning agent is how the limit in the subsequent product is calculated — one uses a fraction of a dose and one uses a fraction of the LD50.
+                    </p>
+                    <p>
+                        For manufacturing of bulk actives, carryover calculations considering the total shared surface area result in extremely low limits, typically not measurable. However, formulated detergents typically used may be removed by various purification processes (such as <span class="key-term">ultrafiltration</span> or <span class="key-term">size exclusion chromatography</span>) based on molecular weight.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>兩類清潔劑的不同策略</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>類型</th>
+                                    <th>典型例子</th>
+                                    <th>限度設定方法</th>
+                                    <th>測定指標</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Commodity Chemicals（商品化學品）</td>
+                                    <td>NaOH、H₃PO₄</td>
+                                    <td>毒理計算 → 換算導電度</td>
+                                    <td>電導率（μS/cm）</td>
+                                </tr>
+                                <tr>
+                                    <td>Formulated Detergents（配方清潔劑）</td>
+                                    <td>Minncare、CIP-100</td>
+                                    <td>LD50-based 攜帶計算</td>
+                                    <td>TOC 或清潔劑專屬分析</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>配方清潔劑 MAC 計算範例（LD50 法）</h4>
+                        <pre>
+假設條件：
+  清潔劑 LD50（大鼠，口服）= 5,000 mg/kg
+  體重標準值 = 70 kg（成人）
+  安全係數 = 1/1000（口服 → 注射可能更嚴）
+  後續產品最大日劑量 = 500 mL/天
+
+Step 1: ADI（每日可接受攝入量）
+= 5,000 mg/kg × 70 kg × (1/1000)
+= 350 mg/天
+
+Step 2: 在後續產品中的 ppm
+= 350 mg ÷ 500 g × 1000 = 700 ppm
+（但上限 = 10 ppm → 取 10 ppm）
+
+Step 3 以後同 MAC 計算（批量、表面積、取樣）
+→ 參考 TR49 Appendix Example 3
+                        </pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>導電度限度為何略高於 WFI？</h4>
+                        <p>WFI 導電度規格（≤1.3 μS/cm, 25°C）是針對<strong>循環水系統內</strong>的水。一旦水離開循環系統、流過設備、接觸空氣中的 CO₂，導電度就會自然上升。因此，設定略高於 WFI 規格的導電度限度（如 5 μS/cm）是科學合理的，不代表清潔不夠徹底。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>NaOH 毒理計算為何「過於嚴格」？</h4>
+                        <p>TR49 特別說明：NaOH 的毒理計算結果非常極端，因為 NaOH 不會以原始形式殘留在最終產品中——它會被後續沖洗中和。若真的大量殘留，pH 值就會明顯異常，早在其他品管步驟就被發現了。因此，導電度是更實用、更合理的測定方式。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.3 BIOBURDEN ===== -->
+    <div id="sec-4-3" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.3</div>
+            <div class="chapter-info">
+                <h2>Bioburden Limits | 生物負載限度</h2>
+                <p>Cleaning does not sterilize — establishing appropriate microbial acceptance criteria</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3 Bioburden Limits</h3>
+                    <p>
+                        In considering <span class="key-term">bioburden</span> limits following cleaning, it is not expected that the cleaning process itself results in <span class="key-term">sterile</span> equipment. However, even if the process equipment is steamed in place (SIP) or autoclaved prior to manufacture of the next product, it is typically the practice to evaluate bioburden to establish that the subsequent process is not overly challenged.
+                    </p>
+                    <p>
+                        Achievement of typical bioburden limits for non-sterile manufacturing (<span class="key-term">1–2 CFU/cm²</span> for surface sampling methods) is considered more than adequate. For rinse sampling, some companies will utilize typical WFI values (<span class="key-term">10 CFU/100 mL</span>), while others will utilize a value of either <span class="key-term">100 CFU/100 mL</span> or <span class="key-term">1,000 CFU/100 mL</span>. The rationale for the higher limit is that the equipment will be subsequently sterilized. Furthermore, the WFI value is the value for the WFI in the recirculating loop; once it is removed from that loop and placed in clean equipment, there is not necessarily an expectation that it will still meet the WFI value.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>清潔 ≠ 滅菌</h4>
+                        <p>這是生技廠最常被混淆的概念之一。清潔驗證的目的是<strong>去除化學殘留物</strong>，而非使設備達到無菌。設備在下一批次生產前通常會執行 SIP（就地蒸汽滅菌）或高壓滅菌，因此清潔後的生物負載要求相對寬鬆。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>生物負載典型限度一覽</h4>
+                        <pre>
+表面取樣（Swab）：
+  ≤ 1–2 CFU/cm²（非無菌製造標準）
+
+最終沖洗液（Rinse sample）：
+  嚴格法：≤ 10 CFU/100 mL（= WFI 規格）
+  常見法：≤ 100 CFU/100 mL
+  寬鬆法：≤ 1,000 CFU/100 mL
+  （設備後續需滅菌者，可用寬鬆法）
+                        </pre>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>為何允許高於 WFI 的生物負載？</h4>
+                        <p>理由一：設備後續會 SIP/滅菌，清潔後的生物負載只要不過高（不至於挑戰滅菌效果），都是可接受的。</p>
+                        <p>理由二：同前述導電度邏輯，WFI 規格是對應循環水系統的，沖洗水一旦離開系統就不再受保護，自然允許略高數值。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.4 ENDOTOXIN ===== -->
+    <div id="sec-4-4" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.4</div>
+            <div class="chapter-info">
+                <h2>Endotoxin Limits | 內毒素限度</h2>
+                <p>Stage-dependent endotoxin control — pre vs. post endotoxin removal steps</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.4 Endotoxin Limits</h3>
+                    <p>
+                        <span class="key-term">Endotoxin</span> carryover to the final product is more of a concern after the various <span class="key-term">endotoxin removal steps</span>. In those cases, endotoxin is typically measured only in the final rinse water, and limits are set at the typical <span class="key-term">WFI limit of 0.25 EU/mL</span>.
+                    </p>
+                    <p>
+                        Prior to the endotoxin removal steps for cell culture processes, it can be expected that rinse samples should meet the WFI limit. For <span class="key-term">bacterial fermentation with E. coli</span> (a gram-negative bacterium which will produce large amounts of endotoxin in the washing step), meeting the WFI limits following cleaning at the fermentation and harvesting steps may not be achievable.
+                    </p>
+                    <p>
+                        For that reason, some companies may not set endotoxin limits for cleaning for those steps, while others will set endotoxin limits but at a higher value, such as <span class="key-term">5–25 EU/mL</span>. Achieving such values indicates a measure of control in the cleaning process, and any possible carryover at those levels should be addressed by subsequent endotoxin removal process steps.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>內毒素管控：製程前段 vs. 後段</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>製程位置</th>
+                                    <th>典型限度</th>
+                                    <th>說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>內毒素去除步驟後</td>
+                                    <td>≤ 0.25 EU/mL</td>
+                                    <td>對齊 WFI 規格，最嚴格</td>
+                                </tr>
+                                <tr>
+                                    <td>細胞培養製程（內毒素去除前）</td>
+                                    <td>≤ 0.25 EU/mL（通常可達）</td>
+                                    <td>細胞培養內毒素較低</td>
+                                </tr>
+                                <tr>
+                                    <td>E. coli 發酵/收穫步驟</td>
+                                    <td>5–25 EU/mL 或不設限</td>
+                                    <td>革蘭氏陰性菌內毒素極高，難以達到 WFI 規格</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>E. coli 製程的特殊挑戰</h4>
+                        <p>革蘭氏陰性菌的細胞壁含大量脂多醣（LPS），即內毒素。E. coli 發酵清洗後，設備表面和沖洗水中的內毒素量非常高，要求達到 WFI 規格（0.25 EU/mL）幾乎不可能。因此，TR49 允許設定更高的中間限度（5–25 EU/mL），前提是後續純化步驟（如離子交換、親和層析）能有效去除內毒素。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>「逐步控制」的思維</h4>
+                        <p>不是每一步都要達到最高標準，而是整個製程要有<strong>整體控制邏輯</strong>：前段允許較高的內毒素，但必須有已驗證的去除步驟在後段把它降到安全水準。這是 PDA TR49 整體「risk-based」的核心思路。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.5 VISUAL CLEAN ===== -->
+    <div id="sec-4-5" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.5</div>
+            <div class="chapter-info">
+                <h2>Visual Clean Criterion | 目視清潔標準</h2>
+                <p>Direct visual verification as a complement to analytical testing</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.5 Visual Clean Criterion</h3>
+                    <p>
+                        The <span class="key-term">visual appearance</span> of production surfaces is a direct measurement that verifies removal of residuals. Visual appearance is not a quantitative method but is very useful to directly verify that production surfaces are clean. Visual appearance is easy to perform provided there is ready access to the critical surfaces. It verifies the cleanliness of a significant area of production equipment.
+                    </p>
+                    <p>
+                        Literature indicates that low levels of residues (if present) are visible and can be detected. As used in biotechnology manufacturing, a <span class="key-term">visual clean criterion</span> is typically used with swab and/or rinse testing for residues for cleaning validation protocols.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>目視清潔的角色</h4>
+                        <p>目視清潔不是獨立的驗證方法，而是配合 Swab/Rinse 測試的<strong>補充手段</strong>。其特點：</p>
+                        <ul>
+                            <li><strong>優點</strong>：可覆蓋大面積設備表面，直接感知，成本低</li>
+                            <li><strong>限制</strong>：非定量，無法偵測微量殘留（如 ppm 以下），且需要設備表面可及性</li>
+                            <li><strong>文獻依據</strong>：低濃度殘留在良好光線下<em>確實</em>可目視偵測到</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>目視清潔的實務要求</h4>
+                        <p>驗證規程中必須明確定義：</p>
+                        <ul>
+                            <li>檢查光源條件（光照強度、角度）</li>
+                            <li>檢查人員資格與訓練記錄</li>
+                            <li>可觸及表面 vs. 難以觸及表面的處理方式（如內視鏡）</li>
+                            <li>不合格的判定標準（如任何可見殘留 = 不通過）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4.6 MODIFYING LIMITS ===== -->
+    <div id="sec-4-6" class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.6</div>
+            <div class="chapter-info">
+                <h2>Modifying Limits | 限度修改</h2>
+                <p>Action/alert levels, process capability, and risk-based limit tightening</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.6 Modifying Limits</h3>
+                    <p>
+                        Manufacturers may establish <span class="key-term">action and/or alert levels</span> on validated processes as part of routine monitoring. Those values are typically more stringent than the pass/fail limits in the validation protocol. Based on process capability showing consistently low values and the ability to maintain those values, manufacturers may perform a <span class="key-term">risk assessment</span> and consider the use of more stringent limits for future validation protocols.
+                    </p>
+                </div>
+
+                <div class="right-column">
+                    <h3>中文解說 Commentary</h3>
+
+                    <div class="concept-box">
+                        <h4>三層限度架構</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">Pass/Fail Limit（驗證合格/不合格標準）</span>
+                            </div>
+                            <div class="arrow-down">&#9650;（更嚴格）</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-2">Action Level（行動水準）— 超過 → 立即調查</span>
+                            </div>
+                            <div class="arrow-down">&#9650;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-3">Alert Level（警戒水準）— 超過 → 加強監控</span>
+                            </div>
+                        </div>
+                        <p>日常監控中，Alert &lt; Action &lt; Pass/Fail。三層設計讓工廠在問題惡化前就採取行動。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>限度收緊的決策流程</h4>
+                        <p>當製程數據顯示實際達成值持續遠低於現行限度時，製造商可以：</p>
+                        <ol>
+                            <li>收集足夠歷史數據（建立製程能力）</li>
+                            <li>執行風險評估（Risk Assessment）</li>
+                            <li>在下一次驗證規程修訂時，採用更嚴格的限度</li>
+                        </ol>
+                        <p>這反映了 PDA 的持續改善精神：驗證通過後，不代表工作結束，而是建立更高標準的起點。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPARISON TABLE ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#8776;</div>
+            <div class="chapter-info">
+                <h2>Limit Approaches Comparison | 各限度設定方法比較</h2>
+                <p>Summary table for quick reference and exam preparation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>限度類型</th>
+                        <th>設定方法</th>
+                        <th>典型數值</th>
+                        <th>適用場景</th>
+                        <th>測定指標</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>活性成分（Formulation/Fill）</td>
+                        <td>MAC（1/1000 TDD）</td>
+                        <td>&le;10 ppm 或計算值</td>
+                        <td>有已知治療劑量的產品</td>
+                        <td>TOC（換算）</td>
+                    </tr>
+                    <tr>
+                        <td>活性成分（Bulk Upstream）</td>
+                        <td>製程能力法</td>
+                        <td>5–10 ppm TOC</td>
+                        <td>發酵/收穫步驟</td>
+                        <td>TOC</td>
+                    </tr>
+                    <tr>
+                        <td>活性成分（Bulk Downstream）</td>
+                        <td>製程能力法</td>
+                        <td>1–2 ppm TOC</td>
+                        <td>純化步驟後</td>
+                        <td>TOC</td>
+                    </tr>
+                    <tr>
+                        <td>活性成分（毒理學替代）</td>
+                        <td>ADI（LD50 / Safety Factor）</td>
+                        <td>通常高於 MAC 結果</td>
+                        <td>劑量未知 / MAC 不可達</td>
+                        <td>TOC（換算）</td>
+                    </tr>
+                    <tr>
+                        <td>商品化清潔劑（NaOH 等）</td>
+                        <td>毒理計算 → 換算導電度</td>
+                        <td>&le;5 μS/cm</td>
+                        <td>Bulk + Formulation/Fill</td>
+                        <td>電導率</td>
+                    </tr>
+                    <tr>
+                        <td>配方清潔劑</td>
+                        <td>LD50-based MAC</td>
+                        <td>&le;10 ppm（預設值）</td>
+                        <td>Formulation/Fill 為主</td>
+                        <td>TOC / 清潔劑專屬分析</td>
+                    </tr>
+                    <tr>
+                        <td>生物負載（Swab）</td>
+                        <td>非無菌製造基準</td>
+                        <td>&le;1–2 CFU/cm²</td>
+                        <td>所有清潔後步驟</td>
+                        <td>菌落計數</td>
+                    </tr>
+                    <tr>
+                        <td>生物負載（Rinse）</td>
+                        <td>WFI 標準或更高</td>
+                        <td>10–1,000 CFU/100 mL</td>
+                        <td>依後續是否滅菌而定</td>
+                        <td>菌落計數</td>
+                    </tr>
+                    <tr>
+                        <td>內毒素（內毒素去除後）</td>
+                        <td>WFI 標準</td>
+                        <td>&le;0.25 EU/mL</td>
+                        <td>純化後段、最終製劑</td>
+                        <td>LAL 試驗</td>
+                    </tr>
+                    <tr>
+                        <td>內毒素（E. coli 發酵/收穫）</td>
+                        <td>製程控制指標</td>
+                        <td>5–25 EU/mL 或不設限</td>
+                        <td>革蘭氏陰性菌 Upstream</td>
+                        <td>LAL 試驗</td>
+                    </tr>
+                    <tr>
+                        <td>目視清潔</td>
+                        <td>定性標準（無可見殘留）</td>
+                        <td>N/A</td>
+                        <td>所有驗證步驟</td>
+                        <td>目視檢查</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ===== PRACTICE QUESTIONS ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#10003;</div>
+            <div class="chapter-info">
+                <h2>Practice Questions | 練習思考題</h2>
+                <p>Test your understanding of Section 4.0 acceptance limits</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="practice-box">
+                <h4>Q1. MAC 法在 Bulk 製程為何通常不適用？</h4>
+                <p>某 mAb 公司的上游發酵系統共用設備總表面積為 500 m²。若以整條設備進行 MAC 計算，TOC 限度落在約 20 ppb。請問：</p>
+                <ul>
+                    <li>（a）這個限度為何在實務上有問題？（提示：TOC 儀器的定量極限是多少？）</li>
+                    <li>（b）TR49 提供了哪兩種替代策略？</li>
+                    <li>（c）ICH Q7 第 12.7 條在此提供了什麼法規依據？</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q2. 毒理學限度 vs. 劑量限度的比較</h4>
+                <p>產品 X 的最小治療日劑量為 1 mg，而其 LD50（oral, rat）= 2,000 mg/kg。後續產品每日最大劑量為 100 mL（≈100 g），安全係數均為 1/1000，體重標準 70 kg。請計算：</p>
+                <ul>
+                    <li>（a）劑量法（MAC）在後續產品中允許的最大殘留 ppm</li>
+                    <li>（b）毒理法（ADI）在後續產品中允許的最大殘留 ppm</li>
+                    <li>（c）哪種方法更嚴格？TR49 對兩種方法的關係有何說明？</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q3. 配方清潔劑 LD50 計算</h4>
+                <p>清潔劑 CIP-100 的 LD50（oral, rat）= 5,000 mg/kg。後續注射劑產品 B 的最大日劑量為 250 mL（≈250 g），批量 50 kg，設備共用表面積 20,000 cm²，安全係數 1/1000，體重 70 kg。請計算：</p>
+                <ul>
+                    <li>（a）允許的 ppm（在後續產品 B 中）</li>
+                    <li>（b）與 10 ppm 預設值比較，採用哪一個？</li>
+                    <li>（c）整批允許的清潔劑總殘留量（mg）</li>
+                    <li>（d）每平方公分的表面殘留限度（mg/cm²）</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q4. 生物負載與內毒素情境判斷</h4>
+                <p>你的工廠使用 E. coli 表現系統生產重組蛋白。請回答：</p>
+                <ul>
+                    <li>（a）發酵槽清潔後的沖洗水，內毒素限度應設定為 WFI 標準（0.25 EU/mL）還是較高值？理由為何？</li>
+                    <li>（b）若設備在下一批次生產前將進行 SIP（145°C, 30 min），清潔後沖洗水的生物負載限度應選 10 CFU/100 mL 還是 1,000 CFU/100 mL？理由為何？</li>
+                    <li>（c）層析純化步驟後的沖洗水，內毒素限度應如何調整？</li>
+                </ul>
+            </div>
+
+            <div class="practice-box">
+                <h4>Q5. 綜合情境：三層限度設計</h4>
+                <p>你的公司下游設備清潔後 TOC 驗證限度為 2 ppm，歷史數據顯示實際達成值平均為 0.3 ppm，最高為 0.8 ppm。</p>
+                <ul>
+                    <li>（a）根據 TR49 第 4.6 節的建議，你應如何設計 Alert Level 和 Action Level？</li>
+                    <li>（b）基於製程能力的充分證明，你可以考慮做什麼改變？需要哪些步驟？</li>
+                    <li>（c）如果某批次的 TOC 結果為 1.5 ppm（超過 Action Level 但低於 Pass/Fail Limit），應如何處理？</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- /main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p>Section 2: Acceptance Limits | 可接受限度 | Section 4.0–4.6 (pp. 18–23)</p>
+    <p style="margin-top:0.5rem; opacity:0.6; font-size:0.8rem;">SterileGMP Knowledge Hub &mdash; Educational Use Only</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    // Back to top button visibility
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>
