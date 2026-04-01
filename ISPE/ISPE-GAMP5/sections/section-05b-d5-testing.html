@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMP 5 2nd Ed — Appendices D4 & D5: Software Development &amp; Testing</title>
+    <style>
+/* =============================================================
+   ISPE GAMP 5 Educational Material — ISPE Green Theme
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a3a2a;
+    --accent-blue: #27ae60;
+    --light-gray: #fafafa;
+    --light-blue: #f0fff4;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a3a2a; border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 {
+    color: #1a5c35; margin: 0.9rem 0 0.5rem; font-size: 1rem;
+}
+.left-column p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #b7e4c7;
+}
+.right-column h2, .right-column h3 {
+    color: #1a5c35; border-bottom: 2px solid #2ecc71;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column h4 { color: #1a5c35; margin: 0.9rem 0 0.5rem; font-size: 1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.45rem; }
+
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+.quote-box {
+    background: linear-gradient(to right, #e7f9ef, #d4efdf);
+    border-left: 4px solid #27ae60;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: #1a3a2a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.section-title {
+    font-size: 1.15rem; color: #1a3a2a; font-weight: 700;
+    margin: 2rem 0 1rem; padding: 0.6rem 1rem;
+    background: linear-gradient(to right, #d4edda, #f0fff4);
+    border-left: 4px solid #27ae60; border-radius: 0 8px 8px 0;
+}
+
+.section-summary {
+    background: linear-gradient(135deg, #1a3a2a 0%, #27ae60 100%);
+    color: white; border-radius: 12px;
+    padding: 1.75rem; margin-top: 2rem;
+}
+.section-summary h2 { color: white; border-bottom: 2px solid rgba(255,255,255,0.4); padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.section-summary p { margin-bottom: 0.75rem; font-size: 0.95rem; opacity: 0.95; }
+.section-summary ul { margin-left: 1.5rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; opacity: 0.92; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: #27ae60;
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(39,174,96,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #219a52; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column { gap: 1rem; }
+    .left-column, .right-column { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Appendices D4 &amp; D5: Software Development &amp; Testing of Computerized Systems</h1>
+    <div class="subtitle">軟體開發管理與電腦化系統測試</div>
+    <div class="page-info">ISPE GAMP 5, 2nd Edition | Appendices D4–D5 | p207 – p234</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives — 學習目標</h3>
+    <ul>
+        <li>Understand the GAMP 5 approach to software development lifecycle, version control, code review, and release management for GxP systems (理解 GAMP 5 對 GxP 系統軟體開發生命週期、版本控制、代碼審查及發布管理的要求)</li>
+        <li>Distinguish IQ, OQ, and PQ in the context of computerized systems (computer CSV) versus traditional equipment qualification (區分電腦化系統驗證情境下 IQ/OQ/PQ 與傳統設備確認的差異)</li>
+        <li>Apply a risk-based test strategy to determine the appropriate level and type of testing required for different software categories (應用風險為基礎的測試策略，決定不同軟體類別所需測試層次與類型)</li>
+        <li>Differentiate scripted vs. unscripted testing approaches and know when each is appropriate (區分腳本式與非腳本式測試方法，並了解各自的適用情境)</li>
+        <li>Explain defect management during validation: how to classify critical, major, and minor defects, and apply a go/no-go decision framework (解釋驗證期間缺陷管理：如何分類嚴重、主要、次要缺陷，並應用放行決策框架)</li>
+        <li>Describe regression testing and test environment management best practices, including why a dedicated validated test environment separate from production is essential (說明迴歸測試與測試環境管理最佳實踐，包括為何需要獨立的已驗證測試環境)</li>
+    </ul>
+</div>
+
+<!-- ============================================================
+     APPENDIX D4 SECTION
+     ============================================================ -->
+
+<div class="section-title">Appendix D4 — Management, Development, and Review of Software (軟體管理、開發與審查)</div>
+
+<!-- D4 — Introduction and Scope -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D4.1 Introduction &amp; Scope</h2>
+        <p>This appendix provides guidance for the management, development, and review of software. It also includes general guidance on coding practices. Software tools to assist with these activities are available, and in general, automation of these processes will lead to better compliance, efficiency, and reproducibility when compared to manual approaches.</p>
+        <p>Software development should be performed within a defined life cycle. The criteria for releasing developed and tested software should be understood and defined. Software released into the GxP environment should be based on, and meet, defined requirements.</p>
+        <p>This appendix is not intended to constrain the choice of development methods and models. Suppliers should select and use the most appropriate methods and models for their use. Any examples used, or technologies assumed, are intended to illustrate general principles and are not intended to be restrictive.</p>
+        <p><strong>Scope:</strong> While the main focus is on software development using high-level and low-level languages, the principles of this appendix also may be applied to various techniques used for process control system software development/configuration.</p>
+        <h4>Changes from GAMP 5 First Edition</h4>
+        <p>This appendix has been updated in line with changes made to Appendix D1 (Specifying Requirements), and also to align with information in new appendices D8 (Agile) and D9 (Tools).</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：D4 引言與範圍</h2>
+        <div class="concept-box">
+            <h4>D4 的定位：給誰看的？</h4>
+            <p>D4 主要面向<strong>軟體供應商</strong>（如 LIMS、MES、ERP 廠商）和<strong>客製化開發團隊</strong>（自行開發 Category 5 軟體的製藥公司）。</p>
+            <p>核心訊息：GxP 環境中的軟體開發不是「寫完能跑就好」，而必須有定義的生命週期、版本控制、代碼審查，且須在發布前通過定義的驗收準則。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>類比理解：軟體開發就像批次製造</h4>
+            <p>製藥生產中，每批原料都有批號、配方、製造步驟記錄、QC 檢驗，且須符合規格才能放行。</p>
+            <p>軟體開發也一樣：每個版本 (build) 都應有版本號、需求對應、代碼審查記錄、測試報告，且須符合定義的驗收標準才能部署到 GxP 環境。</p>
+        </div>
+        <div class="note-box">
+            <h4>實務重點</h4>
+            <p>D4 明確指出本指引<strong>不限定開發方法</strong>（瀑布、Agile 都接受），但要求<strong>生命週期必須被定義</strong>。這是 GAMP 5 的核心哲學：規定「要做什麼」，不規定「怎麼做」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D4 — Software Development Lifecycle -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D4.3.1 Software Development</h2>
+        <p>The software development method should be defined and regardless of the model used, should also define:</p>
+        <ul>
+            <li>Coding standards</li>
+            <li>Code repository standards</li>
+            <li>Software development tools</li>
+            <li>Naming conventions</li>
+            <li>Configuration and use of build and deployment systems</li>
+        </ul>
+        <p>Source code should be subject to review with the approach and extent of such reviews based upon the coding language, tools, and risk to patient safety, product quality, and data integrity.</p>
+
+        <h4>D4.3.1.1 General Design and Documentation Principles</h4>
+        <p>Software design artifacts should be sufficient to initially develop and subsequently support working software. The degree and nature of the design will be based on the life cycle model used, software complexity, code/configuration language, and interfaces. Design artifacts may be in documentation form or as records within software development tools.</p>
+        <p>It is good practice to include a <strong>Software Bill of Materials (SBOM)</strong> that provides the list of components/modules that make up the overall software and can also be used to identify/track inter-dependencies.</p>
+        <p>Software should ultimately:</p>
+        <ul>
+            <li>Meet requirements</li>
+            <li>Be reliable and robust</li>
+            <li>Be maintainable</li>
+            <li>Be capable of handling error conditions</li>
+            <li>Be well designed and sufficiently commented</li>
+        </ul>
+
+        <h4>D4.3.1.2 Software Module Identification</h4>
+        <p>Each software module should include the following attributes:</p>
+        <ul>
+            <li>Module name</li>
+            <li>Reference/traceability to associated design artifacts</li>
+            <li>Constituent source file names</li>
+            <li>Module version number</li>
+            <li>Project name/reference (if applicable)</li>
+            <li>Brief description of the module</li>
+            <li>References/dependencies to other software modules</li>
+            <li>Any specific command files required to compile and build the module</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：軟體開發生命週期</h2>
+        <div class="concept-box">
+            <h4>SBOM（軟體物料清單）— 新增亮點</h4>
+            <p>GAMP 5 第二版新增了 <strong>Software Bill of Materials (SBOM)</strong> 的概念。這是仿照製造業 BOM（物料清單）的做法：</p>
+            <ul>
+                <li>列出系統由哪些元件、模組、第三方函式庫組成</li>
+                <li>識別各元件間的相依關係</li>
+                <li>在資安漏洞出現時，能快速判斷哪些系統受影響</li>
+            </ul>
+            <p>在驗證 LIMS 時，要求供應商提供 SBOM 已成為新的最佳實踐。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>軟體模組識別 = 藥品成分標示</h4>
+            <p>就像每種藥品必須標明活性成分、賦形劑、批號、有效期；每個軟體模組也必須有版本號、對應的需求文件、依賴的其他模組。沒有這些資訊，維護和故障排查將極為困難。</p>
+        </div>
+        <div class="key-point-box">
+            <h4>稽核重點</h4>
+            <p>FDA/EMA 查廠時，常見問題是：「你們的 LIMS 版本 3.2.1 與 3.1.0 有什麼差異？是否有變更記錄？」</p>
+            <p>若無法回答，代表版本控制不足，可能引發 483 observation。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D4 — Version Control and Change Traceability -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D4.3.1.3–1.7 Version Control, Maintainability &amp; Code Quality</h2>
+
+        <h4>Software Module Change Traceability</h4>
+        <p>All software module changes should be clearly identified according to the chosen software development life cycle and technology used. It should be possible to obtain a history of changes made, which should include the following information for each change:</p>
+        <ul>
+            <li>Change request number(s) (if applicable)</li>
+            <li>Applicable version number(s)</li>
+            <li>Dates change(s) made</li>
+            <li>Identity of person(s) changing the code</li>
+            <li>Summary of the changes</li>
+        </ul>
+
+        <h4>D4.3.1.4 Maintainability</h4>
+        <p>Software should be written and structured in a way that a competent person (other than the original author) would be able to understand and modify it safely. The software should be created using the coding standards relevant to the technology.</p>
+
+        <h4>D4.3.1.5 Open-Source Modules</h4>
+        <p>Where modules are imported from an open-source code repository, updates as and when the open-source code is updated need to be determined. In addition, occasionally open-source modules may be retired, in which case future vulnerabilities will not be addressed, which increases risk.</p>
+
+        <h4>D4.3.1.6 Removal of Dead Code</h4>
+        <p>Dead code is code that cannot be executed due to the logic of the program, and should be removed. It is usually a symptom of poor maintenance. Code that has been included for purposes of testing or for later diagnosis during support work, and which can be configured on or off, is not regarded as dead code.</p>
+
+        <h4>D4.3.1.7 Reliability and Error Recovery</h4>
+        <p>"Defensive" coding techniques should be employed. Input values should be checked, and subroutines should check that the values of the received parameters are within range. In the event of a failure, a safe, documented error recovery or a controlled shutdown should be performed, with an informative error message.</p>
+
+        <h4>Software Configuration Management</h4>
+        <p>Software should be subject to a defined software configuration management process that includes version control of software code, scripts, and any relevant artifacts required by the technologies in use. Such change and version control is especially important during software development, as mistakes in this regard can lead to problems such as reintroduction of previously removed defects.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：版本控制與代碼品質</h2>
+        <div class="concept-box">
+            <h4>版本控制 (Version Control) 的 GxP 意義</h4>
+            <p>版本控制不只是 IT 工具（如 Git），在 GxP 語境下，它必須確保：</p>
+            <ul>
+                <li><strong>可追溯性</strong>：每次代碼變更都能追溯到對應的變更請求 (Change Request)</li>
+                <li><strong>不可篡改</strong>：已審查、已測試的版本不能被未授權修改</li>
+                <li><strong>可重現</strong>：能重建任何歷史版本，以便調查問題</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>Dead Code = 過期庫存</h4>
+            <p>想像工廠倉庫中有一批過期原料，沒人知道能不能用。Dead code 也一樣——存在的代碼應該有明確目的。無法執行的代碼意味著維護不佳，可能有資安或數據完整性風險。</p>
+        </div>
+        <div class="key-point-box">
+            <h4>開源軟體 (OSS) 的特殊考量</h4>
+            <p>GAMP 5 第二版顯著擴展了開源軟體的指引。許多 LIMS、MES 都使用開源元件（如 PostgreSQL、Python 函式庫）。監管重點：</p>
+            <ul>
+                <li>開源社群是否仍活躍維護？</li>
+                <li>安全漏洞更新是否被追蹤？</li>
+                <li>版本是否被鎖定並文件化？</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>防禦性程式設計 (Defensive Coding)</h4>
+            <p>對 QC 系統特別重要。例如：儀器傳入異常值（如 -999 的 pH 值）時，系統應拒絕並記錄錯誤，而非接受並計算出荒謬結果。這直接關係到數據完整性。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D4 — Code Review -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D4.3.2 Source Code Review</h2>
+        <p>Source code reviews have three objectives:</p>
+        <ul>
+            <li>To ensure that programming standards, such as those described above, are consistently and correctly applied</li>
+            <li>To ensure that the code is written in accordance with the design</li>
+            <li>To identify and enable removal of defects</li>
+        </ul>
+        <p>The review aims to ensure that the code is fit to release, and that the code can be effectively and efficiently maintained during the period of use of the application.</p>
+        <p>The review should be performed by at least one independent person with sufficient knowledge and expertise, in conjunction with the author of the code.</p>
+        <p>Automated source code review comparison tools are particularly useful when making small changes to existing code.</p>
+
+        <h4>D4.3.2.1 Static Analysis of Software</h4>
+        <p>"Static analysis involves a set of methods, supported by tools, used to analyze software source code or object code to determine how the software functions and establish criteria to check its correctness."</p>
+        <p>These include:</p>
+        <ul>
+            <li><strong>Control Analysis</strong> – analysis of the controls used in calling structure, control flow, and state transitions</li>
+            <li><strong>Data Analysis</strong> – ensures proper operation is applied to data objects and data structures</li>
+            <li><strong>Fault/Failure Analysis</strong> – identifies incorrectly specified or built components and incorrect behavior of components</li>
+            <li><strong>Interface Analysis</strong> – checks the accuracy of interface structure, and the ability to prevent errors during user interaction</li>
+        </ul>
+        <p>Formal Verification methods may also be considered for high-risk areas of code using formal mathematical methods to provide "proof" of algorithms under multiple input conditions.</p>
+        <p>A decision based upon known risks should determine the extent of software review required for a given project. The criteria for making this assessment, and the outcome, should be documented.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：源代碼審查</h2>
+        <div class="concept-box">
+            <h4>代碼審查的三個 GxP 目標</h4>
+            <p>代碼審查 (Code Review) 在 GxP 環境中不只是品質工具，更是驗證活動的一部分：</p>
+            <ul>
+                <li><strong>合規性確認</strong>：編碼標準是否被遵守？</li>
+                <li><strong>設計一致性</strong>：代碼是否實現了設計規格 (DS) 中定義的邏輯？</li>
+                <li><strong>缺陷識別</strong>：在測試前發現問題，成本最低</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>靜態分析 = 製程前的原料檢驗</h4>
+            <p>靜態分析 (Static Analysis) 是在「不執行代碼」的情況下分析代碼結構。就像進廠原料先做 CoA 審查和鑑別測試，不需要先放入製程才發現問題。</p>
+            <p>工具範例：SonarQube（代碼品質）、Checkmarx（資安漏洞）</p>
+        </div>
+        <div class="key-point-box">
+            <h4>獨立審查 (Independent Review) 的重要性</h4>
+            <p>GAMP 5 要求由<strong>不是原始作者的人</strong>執行代碼審查。這與 GMP 中「操作者不能是審查者」的原則一致。</p>
+            <p>在 Category 5 自開發系統驗證中，代碼審查的記錄會被監管機構查核。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D4 — Third-Party & Open Source Software -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D4.3.3 Third-Party Software (including Open-Source)</h2>
+
+        <h4>D4.3.3.1 Purchased Software</h4>
+        <p>In most cases evidence of software control can be obtained through standard mechanisms for supplier assessment, such as supplier audit (see Appendix M2). Conclusions of the assessment should be documented. If inadequacies are noted, the regulated company may require remedial actions by the supplier, possibly enforced via a Service Level Agreement (SLA), or may decide that further testing is required.</p>
+
+        <h4>D4.3.3.2 Free and Open-Source Software (OSS)</h4>
+        <p>OSS often plays an important role in the infrastructure of regulated companies. Examples include the Linux operating system, R environment for statistical computing, and many web design, programming, and support tools.</p>
+        <p>Note that commercial software may contain open-source components incorporated into it. It is becoming more common to request a SBOM when evaluating new commercial software or validating in-house developed systems.</p>
+        <p>If a decision is taken to use OSS, then such software should be implemented in accordance with the appropriate life cycle activities as for commercial software, with consideration of the following:</p>
+        <ul>
+            <li>Knowing the size and sustainability of the open-source community</li>
+            <li>Checking for development standards and good documentation</li>
+            <li>Knowing what version is in use — verify download from a reputable source and ensure code was not altered (via checksum)</li>
+            <li>Understanding the governance model for updates and patches</li>
+            <li>Keeping up-to-date with patches and updates; vulnerabilities are often exposed in software using outdated versions of open-source libraries</li>
+            <li>Participating in the open-source community</li>
+        </ul>
+        <p>To determine whether there is an adequate level of software maturity and control, a risk assessment should be performed to determine the business and GxP risks of using OSS products, and to identify appropriate controls.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：第三方與開源軟體</h2>
+        <div class="concept-box">
+            <h4>商業軟體 vs 開源軟體的監管策略</h4>
+            <table>
+                <tr>
+                    <th>方面</th>
+                    <th>商業軟體</th>
+                    <th>開源軟體 (OSS)</th>
+                </tr>
+                <tr>
+                    <td>主要控制手段</td>
+                    <td>供應商評估、SLA、稽核</td>
+                    <td>風險評估 + 生命週期管理</td>
+                </tr>
+                <tr>
+                    <td>代碼可見性</td>
+                    <td>通常不可見</td>
+                    <td>完全公開，可審查</td>
+                </tr>
+                <tr>
+                    <td>更新控制</td>
+                    <td>供應商負責</td>
+                    <td>使用者自行追蹤</td>
+                </tr>
+                <tr>
+                    <td>漏洞回應</td>
+                    <td>依 SLA 時限</td>
+                    <td>可能更快，但需主動監控</td>
+                </tr>
+            </table>
+        </div>
+        <div class="note-box">
+            <h4>實際場景：R 語言在 QC 統計分析中的使用</h4>
+            <p>許多 QC 部門使用 R 進行統計分析（如製程能力分析 Cpk）。按 GAMP 5 D4.3.3.2：</p>
+            <ul>
+                <li>需鎖定使用的 R 版本（不能自動更新）</li>
+                <li>使用的 packages 版本需文件化（SBOM 概念）</li>
+                <li>更新前需評估對 GxP 功能的影響</li>
+                <li>統計計算邏輯需經驗證</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     APPENDIX D5 SECTION
+     ============================================================ -->
+
+<div class="section-title">Appendix D5 — Testing of Computerized Systems (電腦化系統測試)</div>
+
+<!-- D5 — Introduction -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.1 Introduction</h2>
+        <p>This appendix covers the testing of GxP computerized systems. It is not intended to offer a prescriptive approach — it does not require that testing must be done a certain way in a particular sequence. Instead, this appendix identifies the influences on testing and offers information on the types of testing and testing approaches that can be used selectively and in combination for optimal assurance that the system is fit for its intended use.</p>
+        <p>The application of critical thinking is vital to achieve effective testing that adds value and fulfills objectives such as:</p>
+        <ul>
+            <li>Identifying defects so they can be corrected or removed before operational use</li>
+            <li>Reducing the risk of failures that might affect patient safety, product quality, or data integrity</li>
+            <li>Demonstrating that the system as installed and configured meets its requirements</li>
+            <li>Providing evidence that the system is fit for its intended use</li>
+            <li>Offering a basis for user acceptance</li>
+            <li>Meeting a key regulatory requirement</li>
+            <li>Ensuring that risk management controls are effective</li>
+        </ul>
+        <p>Testing should be carried out in accordance with an appropriate test strategy based on the risk to patient safety, product quality, and data integrity. Testing may occur both in the vendor's development life cycle and in the regulated company's implementation life cycle.</p>
+
+        <h4>Key Changes from GAMP 5 First Edition</h4>
+        <ul>
+            <li>Critical thinking should be applied when planning testing efforts such that the level of effort is commensurate to the risk acceptable within the organization</li>
+            <li>Testing by any means and in any part of the life cycle all contributes to finding defects and confirming fitness for intended use</li>
+            <li>Testing should not be limited to detailed and prescriptive step-by-step scripted protocols. Exploratory testing and other unscripted techniques are encouraged</li>
+            <li>Modern approaches may rely on records and artifacts in automated tools in place of formal specification and test documentation — either approach is acceptable</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：D5 測試附錄引言</h2>
+        <div class="concept-box">
+            <h4>GAMP 5 第二版的測試哲學轉變</h4>
+            <p>與第一版相比，第二版最大的改變是：</p>
+            <ul>
+                <li><strong>去除處方化</strong>：不再要求一定要有 URS → FS → DS → IQ → OQ → PQ 的線性流程</li>
+                <li><strong>擁抱非腳本式測試</strong>：探索性測試 (Exploratory Testing) 獲得官方認可</li>
+                <li><strong>承認工具記錄的有效性</strong>：Jira tickets、CI/CD 日誌等工具記錄可作為測試證據</li>
+                <li><strong>批判性思維是核心</strong>：比規程遵從更重要</li>
+            </ul>
+        </div>
+        <div class="key-point-box">
+            <h4>測試的七大目的 — 記憶要點</h4>
+            <p>這七個目的覆蓋了測試的三個維度：</p>
+            <ul>
+                <li><strong>技術維度</strong>：找缺陷、確認需求滿足</li>
+                <li><strong>監管維度</strong>：符合法規要求、提供符合使用目的的證據</li>
+                <li><strong>風險維度</strong>：降低影響病患安全/產品品質/數據完整性的風險、確認風險控制有效</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Roles and Responsibilities -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.3 Roles and Responsibilities</h2>
+        <p>The regulated company should define roles and responsibilities covering testing. Such definitions typically are included in an appropriate planning document, test strategy, or company procedure. Traditional roles and responsibilities may include:</p>
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Responsibility</th>
+            </tr>
+            <tr>
+                <td><strong>Process Owner</strong></td>
+                <td>Responsible for the business process supported by the system and for the approval of the test strategy and overall test coverage</td>
+            </tr>
+            <tr>
+                <td><strong>System Owner</strong></td>
+                <td>Responsible for the system in question and for ensuring system prerequisites are satisfied to allow testing to proceed</td>
+            </tr>
+            <tr>
+                <td><strong>SMEs</strong></td>
+                <td>Essential for input to the test strategy and test case design</td>
+            </tr>
+            <tr>
+                <td><strong>Test Manager</strong></td>
+                <td>Plans testing approaches and types of testing</td>
+            </tr>
+            <tr>
+                <td><strong>Test Analyst</strong></td>
+                <td>Responsible for developing test cases</td>
+            </tr>
+            <tr>
+                <td><strong>Tester</strong></td>
+                <td>Should be as independent as possible; should not be the author of the function/feature being tested</td>
+            </tr>
+            <tr>
+                <td><strong>Test Reviewer</strong></td>
+                <td>Responsible for reviewing test cases and completed testing; should not be the same person who executed the specific test case</td>
+            </tr>
+            <tr>
+                <td><strong>Quality Oversight</strong></td>
+                <td>If applicable and necessary</td>
+            </tr>
+            <tr>
+                <td><strong>Supplier</strong></td>
+                <td>Should have already completed substantial testing in their development life cycle. Final responsibility for compliance remains with the regulated company irrespective of any outsourcing.</td>
+            </tr>
+        </table>
+        <p>The quality of the test cases and the functionality they cover directly impact the effectiveness of the testing. No matter who is creating the test case, they should be an SME in the associated field.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試角色責任</h2>
+        <div class="concept-box">
+            <h4>獨立性原則 (Independence Principle)</h4>
+            <p>GAMP 5 強調兩個關鍵的獨立性要求：</p>
+            <ul>
+                <li><strong>開發者 ≠ 測試者</strong>：寫代碼的人不能測自己的代碼（因為只會確認預期行為，發現不了設計盲點）</li>
+                <li><strong>執行者 ≠ 審查者</strong>：執行測試的人不能審查自己的測試結果</li>
+            </ul>
+            <p>這與 GMP 中「雙人復核」原則相同，確保客觀性。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>SME 在測試設計中的角色</h4>
+            <p>GAMP 5 特別強調：測試案例的設計者必須是該領域的 SME。</p>
+            <p>以 LIMS 的樣品接收功能為例：</p>
+            <ul>
+                <li>IT 測試師寫的測試：「填欄位、存檔、確認無錯誤」</li>
+                <li>QC SME 寫的測試：「測試樣品ID重複時系統是否警示」、「測試緊急樣品優先級標記」、「測試跨部門接收時通知邏輯」</li>
+            </ul>
+            <p>SME 測試覆蓋業務場景，IT 測試覆蓋系統功能——兩者缺一不可。</p>
+        </div>
+        <div class="note-box">
+            <h4>供應商責任 vs 受規管公司責任</h4>
+            <p>無論外包多少，<strong>法規合規的最終責任永遠在受規管公司</strong>。供應商的測試可以被利用（leveraged），但不能取代受規管公司的驗證決策。</p>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Influences and Test Planning -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.4 Influences on Test Activities &amp; Table 25.1</h2>
+        <p>Test coverage and approaches are influenced by the:</p>
+        <ul>
+            <li>Criticality of the business process supported by the system, including the GxP impact</li>
+            <li>Requirements for the system</li>
+            <li>Supplier's development life cycle and quality system</li>
+            <li>Regulated company's internal computerized systems validation policy</li>
+            <li>Risk culture within the company</li>
+            <li>Use and existence of additional controls elsewhere in the business process</li>
+            <li>Level of test automation available</li>
+        </ul>
+
+        <h3>Table 25.1: Key Testing Activities and Their Influences</h3>
+        <table>
+            <tr>
+                <th>Activity</th>
+                <th>Key Objectives/Focus</th>
+                <th>Influenced By</th>
+            </tr>
+            <tr>
+                <td><strong>Defining Requirements</strong></td>
+                <td>Identifies what the system must do to support the business process and the data integrity technical controls needed. Requirements form the specifications against which test cases will be run.</td>
+                <td>Applicable GxP Regulations; Business Process Map; Data Flow Diagram; Process Risk Assessment</td>
+            </tr>
+            <tr>
+                <td><strong>Supplier Assessment</strong></td>
+                <td>Evaluate if the supplier can provide a system of acceptable quality. Extensive well-executed supplier testing can reduce the amount of testing the regulated company needs to complete.</td>
+                <td>Supplier Qualification Process; Requirements; SLA</td>
+            </tr>
+            <tr>
+                <td><strong>Validation Planning</strong></td>
+                <td>Defines the GxP impact of the system, the life cycle and test strategy, and the decisions made based on the outcome of the supplier assessment.</td>
+                <td>Applicable GxP Regulations; CSV Policy; Requirements; Supplier Assessment; GxP Risk</td>
+            </tr>
+            <tr>
+                <td><strong>Functional Risk Assessment</strong></td>
+                <td>Assesses and prioritizes the risks from the system functionality with the potential to impact patient safety, product quality, and data integrity.</td>
+                <td>Requirements; Risk Assessment Procedure</td>
+            </tr>
+            <tr>
+                <td><strong>Test Planning/Coverage</strong></td>
+                <td>Defines the depth and rigor of test coverage and documentation needed based on the assigned risk priority of the function.</td>
+                <td>Requirements; Validation Planning; Supplier Assessment; Functional Risk Assessment</td>
+            </tr>
+            <tr>
+                <td><strong>Test Management Processes</strong></td>
+                <td>Defines the testing approach and execution instructions. Often captured in a test plan or SOP.</td>
+                <td>CSV Policy; Validation Planning</td>
+            </tr>
+            <tr>
+                <td><strong>Creating Test Cases</strong></td>
+                <td>Test types include scripted/unscripted, manual/automated, exploratory, regression, etc. Most tests have at minimum a defined objective, pass/fail criteria, and reference to the requirement.</td>
+                <td>Test Planning/Traceability Matrix; Configuration Specification</td>
+            </tr>
+            <tr>
+                <td><strong>Executing Tests</strong></td>
+                <td>Test execution should meet the objectives of the test cases and generate records/evidence to demonstrate fitness for intended use or allow defects to be addressed.</td>
+                <td>Test Management Processes; Scripted and Unscripted Tests</td>
+            </tr>
+            <tr>
+                <td><strong>Reviewing and Reporting</strong></td>
+                <td>Confirm if the functionality operated correctly. Any test failures should be assessed to confirm that defects have been fixed or dispositioned satisfactorily.</td>
+                <td>Test Management Processes; Test Planning/Traceability Matrix; Executed Tests</td>
+            </tr>
+            <tr>
+                <td><strong>Validation Reporting</strong></td>
+                <td>Confirms if the validation strategy was implemented as planned and if all requirements have been met and verified based on risk. Document the impact of any non-conformances or outstanding deviations.</td>
+                <td>Applicable GxP Regulations; Validation Planning; Requirements; SLA</td>
+            </tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試活動的影響因素</h2>
+        <div class="concept-box">
+            <h4>風險為基礎的測試策略 — 核心概念</h4>
+            <p>GAMP 5 最重要的訊息之一：<strong>不是所有功能都需要相同程度的測試。</strong></p>
+            <p>測試投入應與風險相稱 (commensurate with risk)：</p>
+            <ul>
+                <li><strong>高風險功能</strong>（如電子簽名、批次放行計算）→ 詳細腳本式測試 (Scripted Testing: Robust)</li>
+                <li><strong>中等風險功能</strong>（如報表生成）→ 腳本式有限測試 (Scripted Testing: Limited)</li>
+                <li><strong>低風險功能</strong>（如 UI 偏好設定）→ 非腳本式探索性測試即可</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>LIMS 驗證的測試規劃實例</h4>
+            <p>以驗證一套 LIMS 為例，根據 Table 25.1 的邏輯：</p>
+            <ul>
+                <li><strong>需求定義</strong>：先完成 URS/FRS，確認 GxP 影響範圍</li>
+                <li><strong>供應商評估</strong>：供應商有 GAMP Category 4 軟體的完整測試記錄？可降低受規管公司的測試負擔</li>
+                <li><strong>功能風險評估</strong>：樣品追蹤功能（高風險）vs 報表格式設定（低風險）</li>
+                <li><strong>測試規劃</strong>：高風險功能需 100% 腳本式測試；低風險功能可用探索性測試</li>
+            </ul>
+        </div>
+        <div class="key-point-box">
+            <h4>驗證報告 (Validation Report) 的關鍵內容</h4>
+            <p>驗證報告不只是「所有測試通過」的總結，還需要：</p>
+            <ul>
+                <li>記錄測試記錄的存放位置（工具中？紙本協議書？）</li>
+                <li>列出未解決的偏差及其影響評估</li>
+                <li>確認驗證策略是否按計畫執行</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — IQ/OQ/PQ for Computerized Systems -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.9.1.1 Installation Qualification (IQ) Context for Computerized Systems</h2>
+        <p>Although the term is not used in this Guide (which refers to "installation verification activities" in general), many companies still use the traditional process validation term <strong>Installation Qualification (IQ)</strong>.</p>
+        <p>The purpose is to verify and document that system components are combined and installed in accordance with specifications, supplier documentation, and local and global requirements. Installation testing provides a verified configuration baseline for subsequent verification and validation activities, and verifies any installation methods, tools, or scripts used.</p>
+        <p>For cloud-native or virtualized software, the use of automated installers combined with configuration management tools and service management tools will be more effective than conventional installation approaches. If they provide dashboard functionality, then a review-by-exception approach can replace many of the static verification activities.</p>
+        <p>Whatever the approach, the availability of appropriate technical information should be verified. Examples include:</p>
+        <ul>
+            <li>User and technical guides; SOPs; Training schedules</li>
+            <li>SLAs; Security procedures; Log books</li>
+            <li>Hardware inventory; Instrument lists; Specification sheets</li>
+            <li>Certificates and calibration procedures</li>
+            <li>Software inventory (including installation procedure, system software list, application software list, data list, initial data settings)</li>
+            <li>Preventive maintenance program; List of critical spare parts</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：IQ/OQ/PQ 在電腦化系統中的意義</h2>
+        <div class="key-point-box">
+            <h4>重要：電腦化系統的 IQ/OQ/PQ 與設備確認不同！</h4>
+            <p>許多工程師和 QA 用設備確認的思維套用到軟體驗證，這是常見錯誤。讓我們用 LIMS 為例比較：</p>
+        </div>
+        <div class="concept-box">
+            <h4>LIMS 系統 IQ：安裝確認</h4>
+            <p><strong>目的</strong>：確認系統已按規格正確安裝</p>
+            <p><strong>檢查項目</strong>：</p>
+            <ul>
+                <li>硬體規格確認（CPU、RAM、儲存空間是否符合最低需求）</li>
+                <li>作業系統版本、補丁級別確認</li>
+                <li>LIMS 軟體版本確認（與採購規格一致）</li>
+                <li>配置文件記錄（資料庫連線設定、網路配置）</li>
+                <li>安全設定確認（防火牆、使用者權限架構）</li>
+                <li>備份與還原功能已設置</li>
+            </ul>
+            <p><em>注意：IQ 確認的是「正確安裝了什麼」，不是功能是否正常運作。</em></p>
+        </div>
+        <div class="concept-box">
+            <h4>LIMS 系統 OQ：運作確認</h4>
+            <p><strong>目的</strong>：確認系統的所有配置功能在預期條件下正常運作</p>
+            <p><strong>測試內容</strong>（對應 FRS 中每一個功能需求）：</p>
+            <ul>
+                <li>樣品接收工作流程測試（正常案例 + 邊界案例）</li>
+                <li>測試方法配置驗證（計算邏輯、規格限制）</li>
+                <li>電子簽名功能（簽名、意義、不可否認性）</li>
+                <li>稽核追蹤（記錄創建、修改、刪除）</li>
+                <li>使用者權限隔離（QC 人員不能修改方法規格）</li>
+                <li>儀器接口數據傳輸測試</li>
+            </ul>
+            <p><em>OQ 是最耗時的階段，通常佔驗證工作量的 60-70%。</em></p>
+        </div>
+        <div class="concept-box">
+            <h4>LIMS 系統 PQ：性能確認</h4>
+            <p><strong>目的</strong>：用真實使用場景（end-to-end）確認系統在實際操作條件下符合使用目的</p>
+            <p><strong>測試方式</strong>：</p>
+            <ul>
+                <li>由實際使用者（QC 分析師、樣品接收人員）執行「Day in the Life」測試</li>
+                <li>使用真實樣品類型和典型批次數量</li>
+                <li>完整工作流程：樣品登錄 → 指派 → 分析 → 審查 → 報告 → 批次放行</li>
+                <li>跨部門整合測試（LIMS ↔ ERP 批次記錄系統）</li>
+            </ul>
+            <p><em>PQ 回答的問題是：「這套系統真的能支撐我們的業務嗎？」</em></p>
+        </div>
+        <div class="note-box">
+            <h4>風險為基礎：不是所有系統都需要 PQ</h4>
+            <p>GAMP 5 不強制要求每個系統都必須有 IQ/OQ/PQ 三階段。低風險 Category 3 系統（如辦公室文書工具）可能只需要安裝驗證 + 有限功能測試。<strong>測試的深度由風險決定，不由傳統慣例決定。</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Test Cases: Scripted vs Unscripted -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.5 Test Planning/Coverage &amp; Test Cases</h2>
+
+        <h4>D5.5.1 Test Management Processes</h4>
+        <p>Early and efficient testing, during development as well as during the verification phase, improves defect detection and reduces the occurrence of defects surviving into the operational phase.</p>
+        <p>A test management process may include:</p>
+        <ul>
+            <li>Any special prerequisites to testing</li>
+            <li>Identifying what combination of scripted or unscripted, manual or automated testing will be used</li>
+            <li>The personnel required for each test or group of tests</li>
+            <li>The expectations regarding test evidence (including the recording and reporting of test pass/fail results)</li>
+            <li>How the environment in which the testing is to occur will be identified and recorded</li>
+            <li>How the progress and outcome of testing will be monitored</li>
+            <li>How test cases and completed tests will be reviewed and approved</li>
+        </ul>
+
+        <h4>D5.5.2 Scripted vs. Unscripted Testing — Table 25.2 Summary</h4>
+
+        <h3>Table 25.2: Acceptable Assurance Approaches and Records</h3>
+        <table>
+            <tr>
+                <th>Assurance Approach</th>
+                <th>Test Plan Required</th>
+                <th>Test Results Record</th>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Ad-hoc</strong><br><em>(least-burdensome)</em></td>
+                <td>Testing of requirements or functions with no test plan; details regarding any failures/deviations found</td>
+                <td>Summary description of requirements or functions tested; issues found and disposition; conclusion statement; record of who performed testing and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Error Guessing</strong></td>
+                <td>Testing of requirement or function failure modes with optional listing of expected failure modes in advance</td>
+                <td>Summary description of failure modes tested; issues found and disposition; conclusion statement; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Exploratory Testing</strong></td>
+                <td>Establish high-level test plan objectives for requirements or functions (no step-by-step procedure necessary)</td>
+                <td>Pass/fail for each test plan objective; issues found and disposition; conclusion statement; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Unscripted: Day in the Life Testing</strong></td>
+                <td>Establish high-level test plan objectives for normal day-to-day activities (no step-by-step procedure necessary). Test using business process experience and against SOPs where available.</td>
+                <td>Pass/fail for each test plan objective; summary of activities or business operation challenged; issues found; conclusion; who performed and date</td>
+            </tr>
+            <tr>
+                <td><strong>Scripted: Limited</strong></td>
+                <td>Limited test cases (step-by-step procedure) identified; expected results and values; independent review and approval of test plan</td>
+                <td>Pass/fail for each test case; result for each test case (critical values + pass/fail indication); issues found and disposition; conclusion; who performed and reviewed with dates</td>
+            </tr>
+            <tr>
+                <td><strong>Scripted: Robust</strong></td>
+                <td>Test objectives; test cases (step-by-step procedure); expected results and values; independent review and approval of test cases</td>
+                <td>Pass/fail for test case; details regarding any failures/deviations found and disposition; detailed report of assurance activity; result for each test case; issues found; conclusion; who performed and reviewed with dates</td>
+            </tr>
+        </table>
+
+        <h4>Table 25.3: Comparison of Unscripted vs. Scripted Testing</h4>
+        <table>
+            <tr>
+                <th>Dimension</th>
+                <th>Unscripted Testing</th>
+                <th>Scripted Testing</th>
+            </tr>
+            <tr>
+                <td>Primary use</td>
+                <td>Supplement scripted testing; used for low/medium risk functions using critical thinking</td>
+                <td>Used alone or in combination for high-risk functions affecting patient safety, product quality, data integrity</td>
+            </tr>
+            <tr>
+                <td>Defect detection</td>
+                <td>Uncovers defects from poorly defined/implemented specs. Dynamic test design allows exploration against specs.</td>
+                <td>Tests against specs to confirm fitness. May miss issues not identified at time of test design.</td>
+            </tr>
+            <tr>
+                <td>Repeatability</td>
+                <td>Lower — no detailed step-by-step script</td>
+                <td>Higher — detailed scripted nature enables regression testing</td>
+            </tr>
+            <tr>
+                <td>Tester requirements</td>
+                <td>Relies on tester intuition, knowledge, and experience. More sensitive to inexperienced testers.</td>
+                <td>Tests expected user/system behaviors. Uses specification as the standard to verify.</td>
+            </tr>
+            <tr>
+                <td>Regression testing</td>
+                <td>Not directly suitable for regression testing</td>
+                <td>Manual or automated scripted testing can provide the basis for regression testing</td>
+            </tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試文件要求</h2>
+        <div class="key-point-box">
+            <h4>核心問題：哪些文件需要事前批准？哪些是事後記錄？</h4>
+            <p>這是 QA 審查員最常問的問題。Table 25.2 給出了清晰答案：</p>
+            <ul>
+                <li><strong>腳本式測試（Scripted: Limited/Robust）</strong>：測試腳本 (test script) 必須在執行前經過獨立審查和批准</li>
+                <li><strong>非腳本式測試</strong>：只需在執行前有高層次的測試目標，步驟不需要預先定義</li>
+                <li><strong>所有測試</strong>：結果記錄（包括誰做、何時做、發現了什麼）在執行後記錄即可</li>
+            </ul>
+        </div>
+        <div class="concept-box">
+            <h4>「非腳本式 ≠ 未文件化」</h4>
+            <p>GAMP 5 明確指出：<em>"Unscripted testing does not mean undocumented testing."</em></p>
+            <p>非腳本式測試的最低文件要求：</p>
+            <ul>
+                <li>測試了什麼（what was tested）</li>
+                <li>由誰測試（by whom）</li>
+                <li>何時測試（when）</li>
+                <li>發現了哪些問題（any issues found）</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>探索性測試 = 製程開發中的 DOE</h4>
+            <p>在製程開發中，實驗設計 (DOE) 讓你系統性地探索參數空間，發現意料之外的交互作用。探索性測試類似：測試者用自己的知識系統地探索軟體，發現腳本式測試可能遺漏的邊界案例。</p>
+            <p>PDCA 循環：計劃探索目標 → 執行 → 記錄發現 → 調整方向繼續探索</p>
+        </div>
+        <div class="note-box">
+            <h4>截圖過多不是好事</h4>
+            <p>GAMP 5 明確批評「prolific screenshots」的做法。原則：</p>
+            <ul>
+                <li>通過 (Pass)：記錄「Pass」即可，不需截圖</li>
+                <li>失敗 (Fail)：記錄「Fail」+ 描述實際結果 vs 預期結果的差異</li>
+                <li>截圖只在需要「前後對比」的複雜數據場景下才有價值</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Executing Tests and Test Evidence -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.5.3 Executing Tests</h2>
+        <p>The quality of testing is significantly impacted by the knowledge and skill of the tester, therefore:</p>
+        <ul>
+            <li>Day in the life testing needs to be executed by a skilled business process user</li>
+            <li>All other manual testing needs to be executed by a skilled software tester; where unscripted testing is used, knowledge of the system under test is also essential</li>
+            <li>All staff responsible for test execution, including end users, should be trained in test procedures and should be able to demonstrate sufficient confidence in operating the system under test</li>
+            <li>Training should be documented</li>
+        </ul>
+        <p>The identity of the tester should be recorded for all executed test cases. It is disproportionate and unnecessary to use test witnessing or to require the tester to initial every test step.</p>
+        <p>Automated test tools require a documented assessment of their adequacy prior to use.</p>
+
+        <h4>Test Evidence — Critical Thinking</h4>
+        <p>It is recommended to apply critical thinking when defining the need for test records and evidence:</p>
+        <ul>
+            <li>Ensure that even where testing is not scripted in detail, the objective of the test remains clear, and the results record adequately what testing was carried out</li>
+            <li>Ensure that test evidence is only collected for proving steps that are not inherently covered by evidence from another test</li>
+            <li>Adopt an <strong>exception-reporting approach</strong>: if the system response matches expected results, a simple "Pass" can be recorded. If the system responds unexpectedly, record both a "Fail" and a description of how the response differed</li>
+            <li>Recognize that routine requirements for screenshots as objective evidence bring little value to verification activities</li>
+        </ul>
+
+        <h2>D5.5.4 Reviewing and Reporting Completed Tests</h2>
+        <p>Completed testing should be reviewed to verify that the computerized system is fit for its intended use. While test evidence should be reviewed to confirm completeness and accuracy, there is little value in:</p>
+        <ul>
+            <li>Looking for minor errors in documentation that have no impact on patient safety, product quality, or data integrity</li>
+            <li>Scrutinizing test evidence in extreme detail to assess whether the tester has exactly followed the test instructions for non-critical functionality</li>
+        </ul>
+        <p>Unusual patterns of test failures associated with particular authors and/or individual testers should be investigated to determine whether there are any wider testing implications.</p>
+        <p>Test reports should be produced that summarize activities and findings and state the final conclusions.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試執行與缺陷管理</h2>
+        <div class="concept-box">
+            <h4>缺陷管理 (Defect Management) — 驗證期間的決策框架</h4>
+            <p>測試期間發現的缺陷需要按嚴重程度分類，然後決定是否可以繼續推進驗證：</p>
+        </div>
+        <table>
+            <tr>
+                <th>缺陷類型</th>
+                <th>定義</th>
+                <th>處置方式</th>
+                <th>Go/No-Go</th>
+            </tr>
+            <tr>
+                <td><strong>嚴重 (Critical)</strong></td>
+                <td>直接影響病患安全、數據完整性，或導致 GxP 不合規（如電子簽名功能失效）</td>
+                <td>必須修復，重新執行相關測試，更新測試報告</td>
+                <td>No-Go — 不得放行</td>
+            </tr>
+            <tr>
+                <td><strong>主要 (Major)</strong></td>
+                <td>影響核心業務功能，但不直接危及患者安全；有可行的暫時性工作繞道方案</td>
+                <td>記錄缺陷、記錄暫時性工作程序 (workaround)、排入補丁計畫</td>
+                <td>可有條件 Go — 需 QA 批准風險評估</td>
+            </tr>
+            <tr>
+                <td><strong>次要 (Minor)</strong></td>
+                <td>UI 問題、非 GxP 功能的小錯誤、格式問題</td>
+                <td>記錄缺陷、排入未來版本修復</td>
+                <td>Go — 可放行，但需在驗證報告中說明</td>
+            </tr>
+        </table>
+        <div class="key-point-box">
+            <h4>例外報告原則 (Exception-Reporting Approach)</h4>
+            <p>GAMP 5 的高效測試記錄原則：</p>
+            <ul>
+                <li><strong>正常情況</strong>：記錄「Pass」就足夠</li>
+                <li><strong>異常情況</strong>：記錄「Fail」+ 預期結果 + 實際結果 + 差異描述</li>
+            </ul>
+            <p>這消除了大量不必要的文件工作（如逐步截圖），讓測試者可以專注在真正有價值的缺陷記錄上。</p>
+        </div>
+        <div class="note-box">
+            <h4>測試審查的重點是功能，不是文件格式</h4>
+            <p>GAMP 5 明確指出，測試審查的焦點是：<em>「功能是否正確運作？」</em>，而非<em>「測試者是否精確遵循每個步驟？」</em></p>
+            <p>常見的過度稽核現象（GAMP 5 明確不鼓勵）：</p>
+            <ul>
+                <li>要求測試者在每一步旁邊簽名確認</li>
+                <li>因為日期格式寫成 01/04 而非 2026-04-01 就 reject 整份測試記錄</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Types of Testing -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.6 Types of Testing</h2>
+
+        <h4>D5.6.1 Test Types Unique to Unscripted Testing</h4>
+        <ul>
+            <li><strong>Ad-hoc testing</strong> — unscripted testing performed without planning or predefined documentation. Aimed at finding defects as early as possible.</li>
+            <li><strong>Error guessing</strong> — a testing technique designed to expose anticipated and potential defects based on the specialist tester's knowledge and experience of failure modes.</li>
+            <li><strong>Exploratory testing</strong> — experience-based testing where the tester spontaneously designs and executes tests based on existing specialist knowledge, prior exploration, and typical common software behaviors and types of failure and defects.</li>
+            <li><strong>Day in the life testing</strong> — allows users of the system to carry out their normal day-to-day activities to uncover issues not identified by scripted testing. These testers need real-life business process experience and knowledge.</li>
+        </ul>
+
+        <h4>D5.6.2 Other Test Types (Scripted or Unscripted)</h4>
+        <ul>
+            <li><strong>White box testing</strong> (structural testing) — test cases identified based on the internal structure (source code) of the component or system.</li>
+            <li><strong>Black box testing</strong> (functional testing) — based on an analysis of the specification, without reference to internal structure.</li>
+            <li><strong>Normal Case testing</strong> — challenges the system's ability to do what it should do, including triggering alerts and error messages per specifications.</li>
+            <li><strong>Negative Case testing</strong> — challenges the system's ability to correctly prevent actions that specifications state should be prohibited or blocked.</li>
+            <li><strong>Repeatability testing</strong> — challenges the system's ability to repeatedly do what it should.</li>
+            <li><strong>Performance testing</strong> — challenges the system's ability to perform as fast and effectively as required by specifications.</li>
+            <li><strong>Volume/Load testing</strong> — challenges the system's ability to manage high loads. Typically automated. Required when system resources are critical.</li>
+            <li><strong>Structural/Path testing</strong> — challenges a program's internal structure by exercising detailed program code.</li>
+            <li><strong>Smoke testing</strong> — superficial testing to check critical functionality as a measure of system build stability.</li>
+            <li><strong>Regression testing</strong> — challenges the system's ability to still do what it should after being modified; verifies that portions not involved in the change were not adversely affected.</li>
+        </ul>
+
+        <h4>D5.6.3 Contractual/Acceptance Testing: FAT and SAT</h4>
+        <p>Acceptance tests are a predefined set of functional tests that demonstrate fitness for intended use. Acceptance may be carried out in two stages:</p>
+        <ul>
+            <li><strong>Factory Acceptance Tests (FAT)</strong> — performed at the supplier site before delivery to show that the system is working well enough to be installed and tested on-site.</li>
+            <li><strong>Site Acceptance Tests (SAT)</strong> — show that the system is working in its operational environment and that it interfaces correctly with other systems and peripherals.</li>
+        </ul>
+        <p>These acceptance tests may be leveraged in support of, but do not replace the need for, process qualification including Process Performance Qualification (PPQ) where relevant.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試類型詳解</h2>
+        <div class="concept-box">
+            <h4>黑盒 vs 白盒測試 — 誰來做？</h4>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>黑盒測試 (Black Box)</th>
+                    <th>白盒測試 (White Box)</th>
+                </tr>
+                <tr>
+                    <td>執行者</td>
+                    <td>業務 SME、QA、使用者</td>
+                    <td>開發工程師、測試工程師</td>
+                </tr>
+                <tr>
+                    <td>關注點</td>
+                    <td>輸入/輸出是否符合規格</td>
+                    <td>代碼路徑、邏輯分支</td>
+                </tr>
+                <tr>
+                    <td>GAMP 角色</td>
+                    <td>受規管公司 OQ/PQ 主要方式</td>
+                    <td>供應商開發測試的主要方式</td>
+                </tr>
+            </table>
+        </div>
+        <div class="key-point-box">
+            <h4>迴歸測試 (Regression Testing) — 軟體更新後最關鍵的測試</h4>
+            <p>當 LIMS 供應商發布 v4.1 → v4.2 更新時，需要判斷哪些測試必須重跑：</p>
+            <ul>
+                <li><strong>受影響的功能模組</strong>：根據供應商提供的 Release Notes 和變更清單，識別哪些功能被修改</li>
+                <li><strong>相依功能</strong>：修改了樣品接收模組，可能影響樣品狀態追蹤、報告模組</li>
+                <li><strong>核心 GxP 功能</strong>：電子簽名、稽核追蹤、批次放行 — 無論更新內容是否涉及，都建議納入迴歸測試</li>
+                <li><strong>不需重跑的測試</strong>：完全未受影響的功能，有書面風險評估支持</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>FAT/SAT vs IQ/OQ/PQ — 關係釐清</h4>
+            <p>在自動化設備（如無菌灌裝線控制系統）的驗證中：</p>
+            <ul>
+                <li><strong>FAT</strong>：在供應商工廠確認系統基本功能（接近 IQ + 部分 OQ）</li>
+                <li><strong>SAT</strong>：在現場確認系統在實際環境中運作（接近 OQ + 部分 PQ）</li>
+                <li>FAT/SAT 可以被利用 (leveraged) 作為 IQ/OQ 的證據，減少重複測試</li>
+                <li>但 FAT/SAT <strong>不能取代</strong> PQ（製程性能確認需要在實際生產條件下進行）</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>負面案例測試 (Negative Case Testing) 常被忽略</h4>
+            <p>許多驗證方案只測試「系統會做什麼」，卻忘記測試「系統是否正確拒絕不該做的事」。</p>
+            <p>LIMS 負面測試例子：</p>
+            <ul>
+                <li>在檢驗未完成時，系統是否拒絕批次放行？</li>
+                <li>當輸入超出規格的數值時，系統是否正確觸發 OOS 警示？</li>
+                <li>無權限用戶嘗試修改已簽名記錄時，系統是否阻止？</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Test Environments -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.7 Test Environments</h2>
+        <p>Testing may take place in different environments during a project, which may include:</p>
+        <ul>
+            <li><strong>Development environment</strong> — where prototyping or programming takes place</li>
+            <li><strong>Formal testing environment</strong> — dedicated environment for structured validation testing</li>
+            <li><strong>Operational environment</strong> — the target production environment</li>
+        </ul>
+        <p>The use of multiple environments provides the opportunity to:</p>
+        <ul>
+            <li>Assess changes before they are rolled out to production</li>
+            <li>Provide a target for restore testing of backup data</li>
+            <li>Reduce risk to the live operational environment and data</li>
+        </ul>
+        <p>The DevOps environment used in Agile approaches may be replicated into multiple test environments on demand. The test environments, whether on-premise or hosted by the SaaS provider, need to be <strong>functionally equivalent</strong> for the testing to be representative and effective. Differences should be assessed and mitigated.</p>
+        <p>It is essential that a record is kept of the environment in which a test case was run, and the <strong>current build and configuration of that environment</strong>. This record may reside in an automated tool (e.g., continuous integration orchestration).</p>
+        <p>There is no benefit to repeating testing already performed in another, but still adequately controlled environment just because it was not the formal test environment.</p>
+        <p>It is the scope, rigor, and coverage of the testing that ensures the quality of the system as implemented. Any significant differences between the environments used for testing should be assessed to determine the equivalency of test results.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：測試環境管理</h2>
+        <div class="key-point-box">
+            <h4>為何需要獨立的測試環境？</h4>
+            <p>在生產環境 (Production) 中直接進行測試是 GxP 的重大風險：</p>
+            <ul>
+                <li>測試數據可能污染真實的 GxP 記錄</li>
+                <li>測試步驟可能意外修改已驗證的配置</li>
+                <li>測試失敗可能導致生產中斷</li>
+                <li>難以維持「已驗證狀態」的完整性</li>
+            </ul>
+        </div>
+        <div class="concept-box">
+            <h4>三層環境架構的最佳實踐</h4>
+            <table>
+                <tr>
+                    <th>環境</th>
+                    <th>用途</th>
+                    <th>GxP 控制程度</th>
+                </tr>
+                <tr>
+                    <td><strong>開發 (DEV)</strong></td>
+                    <td>代碼開發、單元測試</td>
+                    <td>低 — 允許快速實驗</td>
+                </tr>
+                <tr>
+                    <td><strong>測試/UAT (TEST)</strong></td>
+                    <td>功能測試、整合測試、用戶驗收測試</td>
+                    <td>中 — 需記錄環境版本，功能等同於生產</td>
+                </tr>
+                <tr>
+                    <td><strong>生產 (PROD)</strong></td>
+                    <td>日常 GxP 操作</td>
+                    <td>高 — 完全受變更管控保護</td>
+                </tr>
+            </table>
+        </div>
+        <div class="analogy-box">
+            <h4>環境等同性 (Functional Equivalency) = 分析方法轉移</h4>
+            <p>如果在實驗室 A 驗證了分析方法，要在實驗室 B 使用，需要做方法轉移確認，證明兩個實驗室的結果具有可比性。</p>
+            <p>測試環境也一樣：在 TEST 環境中完成的測試，若環境配置與 PROD 有差異，需要評估差異是否影響測試結果的有效性。若不影響（例如：審計追蹤功能的測試結果在兩個環境中相同），則無需在 PROD 中重複測試。</p>
+        </div>
+        <div class="note-box">
+            <h4>SaaS 環境的特殊考量</h4>
+            <p>對於雲端 SaaS 系統（如某些雲端 LIMS），測試環境由供應商管理。關鍵要求：</p>
+            <ul>
+                <li>確認供應商提供的 sandbox/staging 環境與生產環境在功能上是等同的</li>
+                <li>記錄每次測試時的環境版本（供應商可能隨時更新）</li>
+                <li>在合約 (SLA) 中明確測試環境的維護責任</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Leveraging Supplier Testing -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.8 Leveraging Previous Testing Including Supplier Testing</h2>
+
+        <h4>D5.8.1 Supplier Testing</h4>
+        <p>The more extensive and effective the testing done by the supplier during their life cycle, the less testing the regulated company may need to do. If the supplier testing is confirmed as sufficient to demonstrate that the system functions correctly against supplier specifications, then the regulated company verification activity may be limited to a subset of requirements testing.</p>
+        <p>Common test types executed during a supplier development life cycle are:</p>
+        <ul>
+            <li><strong>Acceptance Testing for Purchased Hardware and Software</strong> — subject to acceptance testing before being used for the system's development</li>
+            <li><strong>Unit/Module Tests</strong> — stand-alone tests for software components, ensuring readiness for further integration</li>
+            <li><strong>Integration and Functional Tests</strong> — testing of integrated software components, sub-systems, and the complete system</li>
+        </ul>
+        <p>In order to leverage supplier testing, the regulated company should first consider:</p>
+        <ul>
+            <li>The extent, coverage and quality of the supplier testing</li>
+            <li>How supplier test records can be made available for appropriate assessment and review</li>
+            <li>How traceability between the regulated company's requirements and the supplier's test cases will be established</li>
+        </ul>
+
+        <h4>D5.8.2 Ongoing Life Cycle Maintenance</h4>
+        <p>New releases of the software by the supplier will result in the need for the regulated company to actively maintain the validated state after upgrading. Critical thinking and risk management should be used to determine the extent of the effort required.</p>
+        <p>As a minimum, the regulated company will need to verify the updated software remains fit for their intended use. The supplier should provide a clear understanding of the changes being implemented. Regression testing of the configuration and workflows — whether manual or automated — may be implemented to confirm the latest software version still provides a system fit for the regulated company's intended use.</p>
+
+        <h4>D5.8.3 Testing in Multiple Environments</h4>
+        <p>Testing in environments other than the validation or production environment contributes to finding defects and confirming the system is fit for intended use. Where there is no impact to the particular test types arising from the difference in the environments, the testing should be leveraged no matter what environment it occurred in — there is no benefit to repeating that testing in the formal test or production environments.</p>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：利用供應商測試</h2>
+        <div class="concept-box">
+            <h4>供應商測試的「利用」策略</h4>
+            <p>GAMP 5 的核心效率原則：<strong>不重複已完成的良好測試。</strong></p>
+            <p>能夠利用供應商測試的前提：</p>
+            <ol>
+                <li><strong>供應商評估已完成</strong>（Appendix M2）：確認供應商的品質體系和開發流程符合要求</li>
+                <li><strong>供應商測試記錄可以被審查</strong>：測試計畫、測試案例、測試結果都可取得</li>
+                <li><strong>可追溯性已建立</strong>：供應商的測試案例可以對應到受規管公司的 URS/FRS 需求</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>類比：信任經認可的原料供應商</h4>
+            <p>經過認證的原料供應商提供的物料，不需要每批都做全項檢驗——可以依賴 CoA 並只做鑑別測試。</p>
+            <p>同樣地，已完成良好審計、測試記錄完整的軟體供應商，其測試結果可以被受規管公司部分採信，減少重複測試。</p>
+        </div>
+        <div class="key-point-box">
+            <h4>軟體更新後的迴歸測試決策</h4>
+            <p>當供應商發布 patch 或新版本時，受規管公司的決策流程：</p>
+            <ol>
+                <li><strong>獲取 Release Notes</strong>：理解變更內容</li>
+                <li><strong>影響評估</strong>：這些變更是否影響我們配置的 GxP 功能？</li>
+                <li><strong>決定測試範圍</strong>：
+                    <ul>
+                        <li>若只有安全補丁，無功能變更 → 最小測試（如 smoke test）</li>
+                        <li>若有功能變更 → 受影響功能的完整迴歸測試</li>
+                        <li>若有架構重大更改 → 重新執行全部測試</li>
+                    </ul>
+                </li>
+                <li><strong>文件化決策理由</strong>：風險評估記錄</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- D5 — Software Category Testing -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>D5.9 Testing Applied to Different Software Categories</h2>
+
+        <h4>D5.9.1.2 Points to Consider for All Systems</h4>
+        <p>This is an aide memoire only and does not replace the need to apply critical thinking and a risk-based approach. Test coverage may include:</p>
+        <ul>
+            <li>Power failure testing — prevention against loss of critical data; ease of controlled restart</li>
+            <li>System access and security features</li>
+            <li>Data audit trails for creation, modification, and deletion of GxP records</li>
+            <li>Manual data entry features, input validation</li>
+            <li>Electronic signature features</li>
+            <li>Alarms and error messages</li>
+            <li>Critical calculations</li>
+            <li>Critical transactions</li>
+            <li>Transfer of critical data into other packages or systems</li>
+            <li>Interfaces and data transfers</li>
+            <li>Backup and restore</li>
+            <li>Data archival and retrieval</li>
+            <li>Ability to deal with high-volume loads</li>
+        </ul>
+
+        <h4>D5.9.2 Category 3: Standard Product Testing</h4>
+        <p>Software products used off-the-shelf (not configurable, or limited parameterization). Testing should focus on:</p>
+        <ul>
+            <li>Installation testing as described above</li>
+            <li>Requirements testing that demonstrates fitness for intended use (may include testing against requirements depending on risk)</li>
+            <li>For very simple measurement systems, regular calibration may substitute for testing</li>
+            <li>Any further or more rigorous tests as a result of risk and supplier assessments</li>
+        </ul>
+
+        <h4>D5.9.3 Category 4: Configured Functionality Testing</h4>
+        <p>Commercially available software configured for a specific business process. Testing should focus on:</p>
+        <ul>
+            <li>Installation testing</li>
+            <li><strong>Configuration testing</strong> — verifying that the system has been configured in accordance with the agreed specification</li>
+            <li><strong>Functional testing</strong> — challenging functionality supporting the specific business process based on risk and supplier assessments</li>
+            <li><strong>Requirements testing</strong> — challenging the configuration and user-defined workflows to ensure business process needs have been met</li>
+        </ul>
+
+        <h4>D5.9.4 Category 5: Custom Application Testing</h4>
+        <p>Custom-developed software. Testing should include Category 4 approaches, plus:</p>
+        <ul>
+            <li><strong>Code review</strong> for new code required as a result of risk assessments (see Appendix D4)</li>
+            <li><strong>Software module testing</strong> — testing software modules defined in the design specification</li>
+            <li><strong>Software integration testing</strong> — testing that the modules work when operating together</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>中文解說：各軟體類別測試策略</h2>
+        <div class="concept-box">
+            <h4>四個 GAMP 類別的測試策略比較</h4>
+            <table>
+                <tr>
+                    <th>類別</th>
+                    <th>典型例子</th>
+                    <th>測試重點</th>
+                    <th>代碼審查？</th>
+                </tr>
+                <tr>
+                    <td><strong>Cat 1</strong><br>基礎設施</td>
+                    <td>OS、網路設備</td>
+                    <td>安裝確認 + 配置確認</td>
+                    <td>不適用</td>
+                </tr>
+                <tr>
+                    <td><strong>Cat 3</strong><br>標準產品</td>
+                    <td>簡單測量儀器軟體</td>
+                    <td>安裝測試 + 需求測試</td>
+                    <td>否</td>
+                </tr>
+                <tr>
+                    <td><strong>Cat 4</strong><br>配置化產品</td>
+                    <td>LIMS、MES、ERP</td>
+                    <td>安裝 + 配置 + 功能 + 需求測試</td>
+                    <td>否 (配置審查即可)</td>
+                </tr>
+                <tr>
+                    <td><strong>Cat 5</strong><br>客製開發</td>
+                    <td>自行開發的計算腳本、介面程式</td>
+                    <td>Cat 4 全部 + 代碼審查 + 模組測試 + 整合測試</td>
+                    <td>是 (必要)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="key-point-box">
+            <h4>重要的「全系統通用」測試清單</h4>
+            <p>不論 Category 為何，D5.9.1.2 的清單中有幾項幾乎每次都會被查核：</p>
+            <ul>
+                <li><strong>稽核追蹤 (Audit Trail)</strong>：21 CFR Part 11 / Annex 11 核心要求</li>
+                <li><strong>電子簽名</strong>：必須測試意義聲明、不可否認性</li>
+                <li><strong>備份與還原 (Backup & Restore)</strong>：還原測試常被忽略，但後果嚴重</li>
+                <li><strong>關鍵計算</strong>：所有數值計算必須用已知數據驗證結果</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>LIMS 是 Category 4 的代表</h4>
+            <p>大多數 LIMS（如 LabWare、Thermo LIMS、Veeva Vault QMS 的實驗室模組）屬於 Category 4：</p>
+            <ul>
+                <li><strong>IQ</strong>：確認安裝版本、資料庫設置、網路配置</li>
+                <li><strong>OQ</strong>：測試所有已配置功能是否符合 FRS（功能需求規格）</li>
+                <li><strong>PQ</strong>：業務使用者用真實場景執行端對端工作流程</li>
+                <li>供應商的測試可用於減少 OQ 中對標準功能的重複測試</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SECTION SUMMARY
+     ============================================================ -->
+
+<div class="section-summary">
+    <h2>Section Summary — 章節總結：Appendices D4 &amp; D5</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div>
+            <h3 style="color: #a8e6cf; margin-bottom: 0.75rem; font-size: 1rem;">Key Takeaways — English</h3>
+            <ul>
+                <li><strong>D4 Software Development</strong>: GxP software must follow a defined development lifecycle with version control, code review, and release criteria. SBOM is a new best practice for tracking software components and dependencies.</li>
+                <li><strong>Code Review</strong>: Source code review has three objectives — verify coding standards, verify design compliance, and identify defects. Review must be performed by an independent person. Static analysis tools can complement manual review.</li>
+                <li><strong>D5 Test Strategy</strong>: Risk-based approach is mandatory. Not all functions require the same depth of testing. Critical thinking must be documented.</li>
+                <li><strong>IQ/OQ/PQ in CSV</strong>: IQ verifies correct installation and configuration baseline. OQ tests all configured functions against FRS. PQ uses real-world end-to-end scenarios by business users to confirm fitness for intended use.</li>
+                <li><strong>Scripted vs Unscripted</strong>: Both are valid. Scripted testing is pre-approved and provides the basis for regression testing. Unscripted testing (exploratory, day-in-the-life) improves defect detection. Unscripted does NOT mean undocumented.</li>
+                <li><strong>Defect Management</strong>: Critical defects require fix before go-live. Major defects may allow conditional release with documented workarounds and QA-approved risk assessment. Minor defects can be deferred with documentation.</li>
+                <li><strong>Regression Testing</strong>: After software updates, determine test scope by: supplier release notes, impact assessment on GxP functions, and risk-based decision on which tests to re-run.</li>
+                <li><strong>Test Environment</strong>: A separate validated test environment is essential. It must be functionally equivalent to production. Record the environment version for every test execution. Testing in other environments (dev, supplier) can be leveraged if equivalency is assessed.</li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="color: #a8e6cf; margin-bottom: 0.75rem; font-size: 1rem;">重點總結 — 中文</h3>
+            <ul>
+                <li><strong>D4 軟體開發</strong>：GxP 軟體必須有定義的開發生命週期，涵蓋版本控制、代碼審查、發布標準。SBOM（軟體物料清單）是第二版新增的最佳實踐，用於追蹤軟體元件和相依關係。</li>
+                <li><strong>代碼審查</strong>：三個目標（驗證編碼標準、設計合規性、缺陷識別），必須由獨立人員執行。靜態分析工具可補充人工審查。</li>
+                <li><strong>D5 測試策略</strong>：風險為基礎是必要條件。批判性思維的理由必須文件化。並非所有功能都需要相同程度的測試。</li>
+                <li><strong>電腦化系統的 IQ/OQ/PQ</strong>：IQ 確認安裝和配置基線；OQ 對照 FRS 測試所有已配置功能；PQ 由業務使用者用真實場景執行端對端測試，確認符合使用目的。</li>
+                <li><strong>腳本式 vs 非腳本式測試</strong>：腳本式測試需事前批准，是迴歸測試的基礎；探索性/Day-in-the-Life 測試提升缺陷發現率。非腳本式不等於未文件化。</li>
+                <li><strong>缺陷管理</strong>：嚴重缺陷 → 修復再放行；主要缺陷 → 有條件放行（需 QA 批准風險評估 + 暫時工作程序）；次要缺陷 → 記錄後延後修復。</li>
+                <li><strong>迴歸測試</strong>：軟體更新後，依據 Release Notes、GxP 功能影響評估、風險決策，確定需要重新執行哪些測試。</li>
+                <li><strong>測試環境管理</strong>：獨立的已驗證測試環境是必要的，必須與生產環境功能等同。每次測試都需記錄環境版本。已在其他環境完成的測試，在評估等同性後可被利用，無需重複。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
