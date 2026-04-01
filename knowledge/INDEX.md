@@ -1411,6 +1411,29 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISPE/ISPE-QC-Complete.md
+**Report:** ISPE Guide: Improving Quality Culture (2017)
+**Pages:** p1–p40 | **Sections:** 1 (full guide)
+
+**Covers questions about:**
+- What is quality culture and why it matters for GMP compliance and contamination prevention
+- Root cause analysis (RCA) tools for pharmaceutical manufacturing: 5 Whys, fishbone/Ishikawa, fault tree analysis (FTA)
+- Human error taxonomy: skill-based, rule-based, knowledge-based errors; latent vs. active failures
+- CAPA design based on systemic root causes, not just observable symptoms
+- FMEA applied to quality culture risks and process failures
+- Management commitment and leadership behaviors that drive quality culture improvement
+- Organizational factors affecting quality: training, procedures, communications, workload, environment
+- Quality culture assessment tools and maturity models for pharma sites
+- Metrics for tracking quality culture health: right-first-time, rework, error rates, deviation trends
+- Practical steps for cultural change in regulated pharma environments
+
+**Key terms:** quality culture, root cause analysis (RCA), human error, skill-based error, rule-based error, knowledge-based error, latent failure, active failure, contributing factor, CAPA, FMEA, 5 Whys, fishbone diagram, Ishikawa diagram, fault tree analysis (FTA), deviation investigation, corrective action, preventive action, maturity model, quality metrics, leadership accountability, organizational factors, GMP culture
+
+**Sections:**
+0. Full Guide — Quality Culture Framework, RCA Methodologies, Human Error Theory, CAPA Design, Assessment Tools, Case Examples (p1–p40)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1466,6 +1489,12 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Server management backup restore off-site storage restoration testing performance / 伺服器管理、備份還原、異地存放、還原測試、效能監控 | ISPE-IT |
 | Client management PC types unrestricted restricted controlled GxP image deployment / 用戶端管理、PC類型、受控PC、映像部署 | ISPE-IT |
 | Network management NOC SNMP Syslog RMON network performance metrics / 網路管理、網路運作中心、網路效能指標 | ISPE-IT |
+| Quality culture assessment, site culture maturity model, culture change pharma / 品質文化評估、廠區文化成熟度模型、製藥文化改變 | ISPE-QC |
+| Root cause analysis RCA tools, 5 Whys, fishbone Ishikawa, fault tree analysis FTA / 根本原因分析工具、五個為什麼、魚骨圖、石川圖、故障樹分析 | ISPE-QC |
+| Human error taxonomy skill-based rule-based knowledge-based error, latent active failure / 人為錯誤分類、技能型規則型知識型錯誤、潛伏失誤、主動失誤 | ISPE-QC |
+| CAPA design from RCA, systemic corrective preventive action, deviation root cause CAPA / CAPA設計、系統性根本原因行動、糾正預防措施、偏差CAPA | ISPE-QC |
+| Deviation investigation quality, contributing factors, organizational root cause / 偏差調查品質、貢獻因素、組織性根本原因 | ISPE-QC |
+| Leadership GMP quality culture, management commitment, accountability for quality / 領導力與GMP品質文化、管理層承諾、品質問責制 | ISPE-QC |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
@@ -1877,6 +1906,15 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Barrier Technology: RABS & Isolator (屏障技術: RABS與隔離器)**
 → ISPE-Vol3 ★★★ (oRABS/cRABS/isolator comparison, design, decontamination, EM, leak testing) | PtC-12 ★★★ (RABS operational detail) | PtC-Isolators ★★★ (isolator operational detail) | TR90 ★★ (CCS barrier context)
+
+**Quality Culture / GMP Culture (品質文化/GMP文化)**
+→ ISPE-QC ★★★ (complete quality culture guide: maturity model, assessment tools, leadership accountability, organizational factors, metrics) — single primary source
+
+**Root Cause Analysis / RCA / Deviation Investigation (根本原因分析/偏差調查)**
+→ ISPE-QC ★★★ (RCA tool suite: 5 Whys, fishbone/Ishikawa, fault tree analysis; human error taxonomy: skill/rule/knowledge-based, latent vs. active failures; CAPA design from systemic RCA) | TR88 ★★★ (Phase I/II microbial investigation framework: sterility, BET, EM, APS, water) | TR84 ★★ (data integrity investigation: 9-Box, ATRA, worked examples) | TR13 ★★ (EM investigation and trending) | ISPE-GAMP5 ★★ (defect management in CSV lifecycle)
+
+**Human Error / CAPA Design (人為錯誤/CAPA設計)**
+→ ISPE-QC ★★★ (human error theory: skill-based/rule-based/knowledge-based error taxonomy, latent and active failure distinction, organizational contributing factors; CAPA design principles to address systemic root causes) — single primary source for human factors in pharma manufacturing
 
 ---
 
