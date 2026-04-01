@@ -959,6 +959,45 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PICS/PICS-Annex1-Complete.md
+**Report:** PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products
+**Pages:** p1–p58 | **Sections:** 11 (+ Section 8 split into 3 parts)
+
+**Covers questions about:**
+- Contamination Control Strategy (CCS): what it is, what it must cover, how to build one
+- Cleanroom grade classification: Grade A/B/C/D particle and microbial limits (Table 1, 2, 5, 6)
+- RABS vs Isolator: design requirements, background grade, VHP decontamination, glove testing
+- Premises design: airlock design, pressure cascades, material transfer via RTP/double-door autoclaves
+- Equipment and utility requirements for sterile manufacturing (WFI, pure steam, compressed gases)
+- Personnel: gowning qualification by grade, health monitoring, shedding organism exclusion
+- Terminally sterilised vs aseptic processing: grade requirements, Table 3 and Table 4
+- Sterilisation methods: moist heat (F0), dry heat (Fh, depyrogenation), radiation, EO gas, filtration
+- PUPSIT: when required, how to validate exemptions, pre-use vs post-sterilization integrity testing
+- BFS, FFS, Lyophilization: specific requirements and critical process parameters
+- Environmental monitoring programme: alert levels, action limits, trending, continuous monitoring
+- APS/media fill: frequency, batch size, intervention simulation, failed APS response
+- Quality Control: sterility testing role, parametric release, rapid microbial methods
+- Glossary of 40+ key sterile manufacturing terms with regulatory context
+
+**Key terms:** CCS, contamination control strategy, Grade A, Grade B, Grade C, Grade D, cleanroom, RABS, isolator, UDAF, unidirectional airflow, pressure cascade, WFI, pure steam, gowning qualification, aseptic processing, terminal sterilisation, F0 value, Fh value, depyrogenation, PUPSIT, BFS, FFS, lyophilization, APS, media fill, alert level, action limit, environmental monitoring, sterility testing, parametric release, SAL, bioburden
+
+**Sections:**
+1. Scope
+2. Principle (CCS framework — 2.1–2.7)
+3. Pharmaceutical Quality System
+4. Premises (Grade classification tables, RABS/Isolator, airlocks)
+5. Equipment
+6. Utilities (WFI, pure steam, gases)
+7. Personnel (gowning, health monitoring)
+8a. Production: Terminally Sterilised + Aseptic Processing (8.1–8.49)
+8b. Production: Sterilisation Methods — Heat, Radiation, EO (8.50–8.79)
+8c. Production: Filtration, FFS, BFS, Lyophilization, Closed Systems (8.80–8.128)
+9. Environmental and Process Monitoring (Tables 5 & 6, APS)
+10. Quality Control
+11. Glossary
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -981,7 +1020,13 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
-| Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | TR90 |
+| Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | PICS-Annex1 + TR90 |
+| PIC/S Annex 1 (2022), sterile manufacturing regulation, GMP regulation for sterile / PIC/S附件1、無菌藥品製造法規 | PICS-Annex1 |
+| Grade A B C D classification, cleanroom limits, particle count table / A/B/C/D級潔淨室分級、粒子限值表 | PICS-Annex1 |
+| Terminal sterilisation vs aseptic, sterilisation methods, autoclave F0, depyrogenation Fh / 最終滅菌與無菌操作、滅菌方法、F0值、去熱原 | PICS-Annex1 |
+| PUPSIT, pre-use post-sterilization integrity test, filter integrity exemption / 使用前滅菌後完整性測試 | PICS-Annex1 + TR26 |
+| BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
+| Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
 | Cleaning disinfection, sanitizer, sporicide, disinfectant rotation / 清潔消毒、消毒劑輪替、殺孢子劑 | TR70 |
 | Disinfectant qualification, efficacy testing, AOAC, EN test / 消毒劑確效、效力測試 | TR70 |
@@ -1130,10 +1175,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
+→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
 → TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
@@ -1165,11 +1210,11 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Regulatory Background — FDA/EMA GMP (法規)**
 → TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
-**Annex 1 (2022) EU GMP**
-→ PtC-1 ★★★ (comprehensive Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
+**Annex 1 (2022) EU GMP / PIC/S Annex 1**
+→ PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
 
 **Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
-→ TR26 ★★★ (primary filtration guidance) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
+→ TR26 ★★★ (primary filtration guidance) | PICS-Annex1 ★★★ (regulatory requirements: PUPSIT 8.87, redundant filters 8.92, bioburden sampling 8.93, single-batch discard 8.94) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
 → TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
