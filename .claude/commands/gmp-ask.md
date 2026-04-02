@@ -32,23 +32,13 @@ Before searching, analyse the user's question:
 
 ## Step 1 — Read the Master Index and plan
 
-Read `knowledge/INDEX.md` in full.
+Read `knowledge/INDEX.md` in full. Each report block has: title, pages, section count, and a Terms line with routing keywords. Use these to match the user's question.
 
-**A) Check if the topic is in scope:**
-- If the topic maps to one or more reports → proceed to search
-- If the topic is clearly outside this knowledge base (e.g., asked about a report not listed, or a topic like general chemistry, business strategy) → stop and tell the user:
-  - What this knowledge base covers (PDA, ISPE, and other GMP guideline sources)
-  - Which report(s) are closest to their question, if any
-  - Suggest rephrasing if applicable
+**A) Scope check:** If the topic doesn't match any report's Terms → tell user what's covered and suggest rephrasing.
 
-**B) Identify which reports to search:**
-- Check **Cross-Report Topics** first — if the topic is listed there, note PRIMARY (★★★) and SECONDARY (★★) reports
-- Otherwise use **Quick Topic Routing Guide** to identify 1–2 reports
+**B) Identify reports:** Check **Cross-Report Topics** (★★★=primary, ★★=secondary) first, then **Quick Topic Routing Guide**.
 
-**C) Build your search plan:**
-- Single-report topic → deep grep on 1 file
-- Cross-report topic → tiered grep (Step 2)
-- Overview question → read first 100 lines of the relevant MD file + grep section headings
+**C) Search plan:** Single-report → deep grep. Cross-report → tiered grep (Step 2). Overview → read first 80 lines + grep `^##`.
 
 ---
 
