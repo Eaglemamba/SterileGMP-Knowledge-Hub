@@ -865,6 +865,27 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Biologics / Biopharmaceutical Technology Transfer (生物製劑技術轉移)**
 → ISPE-TechTransfer ★★★ (App2 biologics: cell banking, upstream fermentation/cell culture CPP, downstream purification DSP, viral clearance transfer, analytical method transfer for biologics) | ISPE-Vol6 ★★ (biopharmaceutical facility design: process closure, containment, biological waste — receiving site context)
 
+**Knowledge Management / KM (知識管理)**
+→ TR60 ★★★ (PV lifecycle knowledge: design space, process understanding, revalidation triggers) | ISPE-TechTransfer ★★★ (KM as TT enabler: tacit/explicit knowledge transfer, knowledge gaps) | TR91 ★★★ (PAC lifecycle KM: established conditions, regulatory knowledge) | TR65 ★★ (knowledge transfer between sending/receiving units) | ISPE-GAMP5 ★★ (knowledge management in CSV lifecycle) | TR90 ★★ (CCS knowledge retention)
+
+**GMP Training & Personnel Qualification (GMP訓練/人員資格認定)**
+→ TR62 ★★★ (manual aseptic operator qualification, gowning, fingertip sampling) | TR22 ★★★ (APS personnel qualification) | TR13 ★★★ (EM analyst qualification, sampling technique training) | TR29 ★★ (cleaning operator training, swab sampling qualification) | TR70 ★★ (C&D operator training) | TR85 ★★ (visual inspector qualification) | TR90 ★★ (CCS personnel training program) | ISPE-GAMP5 ★★ (CSV training and competency)
+
+**Continued Process Verification / CPV / OPV (持續製程查驗)**
+→ FDA-ProcessVal ★★★ (Stage 3 CPV: SPC, Cpk/Ppk, Xbar-R charts, OOT/OOS, APR/PQR) | TR60 ★★★ (CPV framework, control charts, revalidation triggers) | TR39 ★★ (OPV for transport: ongoing lane verification) | TR1 ★★ (autoclave requalification, ongoing sterilization control) | TR90 ★★ (CCS ongoing verification)
+
+**Hold Times — Dirty/Clean/Process (保留時間：清潔前/清潔後/製程)**
+→ TR29 ★★★ (dirty hold time, clean hold time studies, equipment hold qualification) | TR49 ★★★ (biotech hold times: dirty/clean hold, product changeover, fermentation residues) | TR70 ★★ (disinfectant in-use expiry, prepared solution hold) | TR22 ★★ (aseptic process time limits) | Guide-No1 ★★ (batch hold, sterile fluid path hold)
+
+**Design Space / DoE / QbD (設計空間/實驗設計/品質源於設計)**
+→ ICH-Q8R2 ★★★ (QbD framework: QTPP, CQA, design space definition, regulatory flexibility) | TR60 ★★★ (design space in PV lifecycle, DoE application) | FDA-ProcessVal ★★★ (Stage 1 design space, NOR/PAR) | TR26 ★★ (QbD for filter validation) | TR49 ★★ (cleaning DoE, design space for cleaning) | ISPE-Vol5 ★★ (QbD in C&Q: risk-based qualification)
+
+**Drug Product Compatibility / Container Interaction (藥品相容性/容器交互作用)**
+→ TR73 ★★★ (syringe-drug compatibility: silicone oil, tungsten, adhesive, E&L) | ISPE-SUT ★★★ (SUT E&L: AET/SCT framework, stability interaction testing) | TR26 ★★★ (filter E&L impact on drug product) | TR66 ★★ (SUS material compatibility) | ICH-Q8R2 ★★ (drug product development, excipient compatibility) | TR54 ★★ (excipient risk)
+
+**Sampling Methods & Strategies (取樣方法與策略)**
+→ TR29 ★★★ (swab vs rinse sampling, recovery study, MSA, visual cleanliness) | TR49 ★★★ (biotech swab/rinse, TOC/protein methods, sampler qualification) | ISPE-Sampling ★★★ (water/steam/gas sampling: valve design, hold time, chain of custody) | TR13 ★★★ (EM sampling: active air, settle plate, contact plate, RMM) | TR85 ★★ (AQL sampling, visual inspection, statistical sampling) | TR43 ★★ (incoming glass container AQL sampling)
+
 ---
 
 ## ICH Quality Guidelines Knowledge Base
