@@ -660,7 +660,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
+→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM: sampling site selection, glove print, post-intervention recovery) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer through RTP, continuous particle monitoring, glove fingertip sampling) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
 → PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | FDA-Aseptic ★★★ (FDA 2004 CGMP guidance: full regulatory framework, Class 100/10000/100000, media fill criteria, filtration, sterilization, EM, sterility testing, isolator/BFS appendices) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | FDA-ProcessInspection ★★ (FDA inspector perspective: aseptic processing inspection objectives, media fill inspection, EM program review, sterility test failure response) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
@@ -847,6 +847,39 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Barrier Technology: RABS & Isolator (屏障技術: RABS與隔離器)**
 → ISPE-Vol3 ★★★ (oRABS/cRABS/isolator comparison, design, decontamination, EM, leak testing) | PtC-12 ★★★ (RABS operational detail) | PtC-Isolators ★★★ (isolator operational detail) | TR90 ★★ (CCS barrier context)
 
+**Material Transfer & RTP / RTU Components (物料轉移/RTP/即用型元件)**
+→ PtC-Isolators ★★★ (RTP alpha-beta port, mouse hole, stopper/vial transfer, RTU nest-tub introduction) | PtC-12 ★★★ (RABS material transfer: pass-through, RTP, open-door transfer) | Guide-No1 ★★★ (component introduction: vial infeed, stopper feed, depyrogenation tunnel interface) | ISPE-Vol3 ★★★ (material flow design: airlocks, pass-throughs, RTP integration) | TR43 ★★ (RTU container quality, incoming inspection) | TR87 ★★ (vial transfer: accumulator, star wheel, breakage prevention) | Annex1 ★★ (8.12–8.15: material/component transfer requirements)
+
+**Glove Integrity Testing (手套完整性測試/手套管理)**
+→ PtC-12 ★★★ (comprehensive glove program: test methods, frequency, pressure decay, visual inspection, breach response, glove change intervals) | PtC-Isolators ★★★ (isolator glove integrity: pressure hold test, pin-hole detection, glove/sleeve replacement, half-suit considerations) | ISPE-Vol3 ★★★ (glove port design, leak testing, material compatibility) | TR22 ★★★ (APS glove intervention simulation, worst-case glove manipulations) | PtC-1 ★★ (glove monitoring best practices, AAPP) | Annex1 ★★ (4.20: glove integrity testing frequency, routine monitoring) | FDA-Aseptic ★★ (glove port integrity, isolator breach procedures)
+
+**VHP / Bio-decontamination Cycle Development (VHP去污循環開發/驗證)**
+→ PtC-Isolators ★★★ (VHP cycle phases: conditioning/gassing/dwell/aeration, BI placement strategy, D-value, residual H₂O₂ limits, peracetic acid alternative) | ISPE-Vol3 ★★★ (decontamination cycle design, BI log reduction, cycle parameters, material compatibility) | PtC-12 ★★★ (RABS VHP decontamination, open vs closed RABS cycle differences) | TR70 ★★★ (VHP as gaseous sporicide, BI selection, surface conditioning, cleaning before decontamination) | Annex1 ★★ (4.21: validated decontamination, BI requirements) | FDA-Aseptic ★★ (isolator decontamination: 4–6 log reduction, BI placement) | TR22 ★★ (VHP residual impact on APS media, TSB growth inhibition)
+
+**Interventions in Isolator & Isolator APS (隔離器介入操作與無菌模擬)**
+→ TR22 ★★★ (intervention classification: corrective vs inherent, APS intervention simulation, frequency recording, worst-case design) | PtC-Isolators ★★★ (isolator-specific interventions: glove manipulations, stopper repositioning, vial removal, intervention through glove ports) | Guide-No1 ★★★ (filling line interventions: jam clearance, adjustment, component replenishment) | PtC-12 ★★★ (RABS intervention: open-door policy, gloved interventions, air recovery) | PtC-1 ★★ (intervention best practices, first-air protection) | Annex1 ★★ (8.30–8.33: intervention requirements, door opening restrictions)
+
+**Isolator Leak Testing & Pressure Regime (隔離器洩漏測試/壓力制度)**
+→ PtC-Isolators ★★★ (pressure decay leak test, positive vs negative pressure isolator, containment vs aseptic pressure strategy) | PtC-14 ★★★ (ATMP isolator: negative pressure containment, BSL considerations, dual-wall design) | ISPE-Vol3 ★★★ (isolator leak rate specifications, pressure cascade design, differential pressure monitoring) | ISPE-HVAC ★★ (isolator HVAC integration, pressure control, alarm delay) | Annex1 ★★ (4.18–4.22: isolator pressure requirements, surrounding environment classification) | FDA-Aseptic ★★ (isolator pressure differential, ISO 5 surrounding)
+
+**Isolator Cleaning & Batch Changeover (隔離器清潔/批次切換)**
+→ PtC-Isolators ★★★ (inter-batch cleaning: wipe-down procedures, glass/stopper debris removal, product changeover protocol) | ISPE-Vol3 ★★★ (isolator CIP/WIP design, cleaning access, drain design) | Guide-No1 ★★★ (filling line changeover: format parts, clean-to-dirty sequence, batch record) | TR70 ★★ (cleaning before VHP: surface preparation, residue removal, cleaning agent selection) | FDA-Aseptic ★★ (isolator cleaning validation, between-batch procedures) | TR22 ★★ (APS batch changeover simulation)
+
+**Isolator Background Room Classification (隔離器背景室分級)**
+→ PICS-Annex1 ★★★ (open isolator: min Grade C/ISO 8; closed isolator: min Grade D) | FDA-Aseptic ★★★ (surrounding environment not less than Class 100,000) | ISPE-Vol3 ★★★ (ISO 8/Grade C for globally compliant open isolator facility, layout examples) | PtC-Isolators ★★ (Q2-1: surrounding room ISO 8) | Guide-No1 ★★ (table: open isolator = Grade C, closed = Grade D)
+
+**Isolator Airflow: UDAF, Mousehole, Smoke Study (隔離器氣流：單向流/鼠洞/煙霧測試)**
+→ PtC-Isolators ★★★ (Q2-2: UDAF may not be required if justified; Q2-3–Q2-5: airflow visualization) | ISPE-Vol3 ★★★ (mousehole airflow design, open isolator exit, LP/GAAS protection, smoke study at mouseholes) | PtC-14 ★★★ (smoke study in isolators, first air from HEPA) | PtC-1 ★★ (airflow velocity, smoke study requirements) | FDA-Aseptic ★★ (sweeping action, unidirectional airflow) | ISPE-HVAC ★★ (room pressurization effects during isolator operation)
+
+**Isolator HVAC Integration & Facility Layout (隔離器HVAC整合/設施佈局)**
+→ ISPE-Vol3 ★★★ (isolator HVAC modes: outflow/decontamination/aeration/operation; pressure balance; filling room layout Figs 4.5/4.7) | ISPE-HVAC ★★★ (isolator AHU integration, multiple operating modes, mode transitions, room pressure impact) | PtC-Isolators ★★ (isolator air handling, temperature/humidity mapping during VHP qualification) | Guide-No1 ★★ (filling line layout with isolator, Grade C background)
+
+**Capping Inside vs Outside Isolator (隔離器內外封蓋決策)**
+→ ISPE-Vol3 ★★★ (capping inside Grade A isolator requires sterilized caps; capping outside via mousehole under LP/GAAS in Grade C allows non-sterile caps) | Guide-No1 ★★★ (sterilized crimp seals required in isolators; non-sterile caps acceptable for RABS; crimping station design) | PICS-Annex1 ★★ (capping as critical step, Grade A context) | PtC-12 ★★ (capping under RABS for comparison)
+
+**Robotics & Gloveless Isolator (機器人/無手套隔離器)**
+→ Guide-No1 ★★★ (gloveless isolators, robotics for critical zone protection, reduced human intervention) | ISPE-Vol3 ★★★ (robotics/manipulators in isolator design, eliminating glove-based interventions) | PICS-Annex1 ★★ (robotic systems recommended to minimize interventions) | PtC-Isolators ★★ (Q3-1: minimizing interventions by design)
+
 **Quality Culture / GMP Culture (品質文化/GMP文化)**
 → ISPE-QC ★★★ (complete quality culture guide: maturity model, assessment tools, leadership accountability, organizational factors, metrics) — single primary source
 
@@ -864,6 +897,27 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Biologics / Biopharmaceutical Technology Transfer (生物製劑技術轉移)**
 → ISPE-TechTransfer ★★★ (App2 biologics: cell banking, upstream fermentation/cell culture CPP, downstream purification DSP, viral clearance transfer, analytical method transfer for biologics) | ISPE-Vol6 ★★ (biopharmaceutical facility design: process closure, containment, biological waste — receiving site context)
+
+**Knowledge Management / KM (知識管理)**
+→ TR60 ★★★ (PV lifecycle knowledge: design space, process understanding, revalidation triggers) | ISPE-TechTransfer ★★★ (KM as TT enabler: tacit/explicit knowledge transfer, knowledge gaps) | TR91 ★★★ (PAC lifecycle KM: established conditions, regulatory knowledge) | TR65 ★★ (knowledge transfer between sending/receiving units) | ISPE-GAMP5 ★★ (knowledge management in CSV lifecycle) | TR90 ★★ (CCS knowledge retention)
+
+**GMP Training & Personnel Qualification (GMP訓練/人員資格認定)**
+→ TR62 ★★★ (manual aseptic operator qualification, gowning, fingertip sampling) | TR22 ★★★ (APS personnel qualification) | TR13 ★★★ (EM analyst qualification, sampling technique training) | TR29 ★★ (cleaning operator training, swab sampling qualification) | TR70 ★★ (C&D operator training) | TR85 ★★ (visual inspector qualification) | TR90 ★★ (CCS personnel training program) | ISPE-GAMP5 ★★ (CSV training and competency)
+
+**Continued Process Verification / CPV / OPV (持續製程查驗)**
+→ FDA-ProcessVal ★★★ (Stage 3 CPV: SPC, Cpk/Ppk, Xbar-R charts, OOT/OOS, APR/PQR) | TR60 ★★★ (CPV framework, control charts, revalidation triggers) | TR39 ★★ (OPV for transport: ongoing lane verification) | TR1 ★★ (autoclave requalification, ongoing sterilization control) | TR90 ★★ (CCS ongoing verification)
+
+**Hold Times — Dirty/Clean/Process (保留時間：清潔前/清潔後/製程)**
+→ TR29 ★★★ (dirty hold time, clean hold time studies, equipment hold qualification) | TR49 ★★★ (biotech hold times: dirty/clean hold, product changeover, fermentation residues) | TR70 ★★ (disinfectant in-use expiry, prepared solution hold) | TR22 ★★ (aseptic process time limits) | Guide-No1 ★★ (batch hold, sterile fluid path hold)
+
+**Design Space / DoE / QbD (設計空間/實驗設計/品質源於設計)**
+→ ICH-Q8R2 ★★★ (QbD framework: QTPP, CQA, design space definition, regulatory flexibility) | TR60 ★★★ (design space in PV lifecycle, DoE application) | FDA-ProcessVal ★★★ (Stage 1 design space, NOR/PAR) | TR26 ★★ (QbD for filter validation) | TR49 ★★ (cleaning DoE, design space for cleaning) | ISPE-Vol5 ★★ (QbD in C&Q: risk-based qualification)
+
+**Drug Product Compatibility / Container Interaction (藥品相容性/容器交互作用)**
+→ TR73 ★★★ (syringe-drug compatibility: silicone oil, tungsten, adhesive, E&L) | ISPE-SUT ★★★ (SUT E&L: AET/SCT framework, stability interaction testing) | TR26 ★★★ (filter E&L impact on drug product) | TR66 ★★ (SUS material compatibility) | ICH-Q8R2 ★★ (drug product development, excipient compatibility) | TR54 ★★ (excipient risk)
+
+**Sampling Methods & Strategies (取樣方法與策略)**
+→ TR29 ★★★ (swab vs rinse sampling, recovery study, MSA, visual cleanliness) | TR49 ★★★ (biotech swab/rinse, TOC/protein methods, sampler qualification) | ISPE-Sampling ★★★ (water/steam/gas sampling: valve design, hold time, chain of custody) | TR13 ★★★ (EM sampling: active air, settle plate, contact plate, RMM) | TR85 ★★ (AQL sampling, visual inspection, statistical sampling) | TR43 ★★ (incoming glass container AQL sampling)
 
 ---
 
