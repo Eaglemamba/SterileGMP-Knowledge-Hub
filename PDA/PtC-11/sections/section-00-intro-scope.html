@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-11 - Section 0: Introduction &amp; Scope</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Scope</h1>
+    <div class="subtitle">導論與適用範圍</div>
+    <div class="page-info">PDA Points to Consider No. 11 (2025) | p1 - p7</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解先進療法醫藥品 (ATMP) 的定義與臨床重要性，以及基因治療在現代醫療中所扮演的角色。</li>
+        <li>能夠區分病毒載體 (viral vectors) 與質體 DNA (plasmid DNA) 在 ATMP 製造鏈中的不同功能與地位。</li>
+        <li>掌握本文件的適用範圍：涵蓋體內 (in vivo) 與體外 (ex vivo) 兩種病毒載體應用情境。</li>
+        <li>了解 PDA PtC-11 以科學驅動、風險為本方法 (science-driven, risk-based approach) 為核心主軸，及其與 EU GMP Annex 1、PIC/S Annex 2A 等法規框架的關聯。</li>
+        <li>認識文件所涵蓋的七大主題領域，並理解為什麼這些主題對 CDMO CMC 專業人員具有實務價值。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: Introduction -->
+<!-- ============================================================ -->
+<div class="section-title">Introduction — 導論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Cell and gene therapies are classes of <span class="key-term">advanced therapy medicinal products (ATMP)</span> that include numerous different types of products including nucleic acids, viruses, genetically modified microorganisms, and others. Gene therapies are relatively novel technologies that tend to have extremely complex and not well-understood mechanisms of action but hold great potential for treating a variety of serious diseases, unmet medical needs, or simplification of administration and treatment (i.e., "one shot" gene therapy treatments versus a lifetime of chronic treatment for many diseases). The potential applications are diverse and numerous and may reach far beyond any current forms of therapies in terms of disease-state targets, as illustrated by the impact of the handful of currently approved successes. Notable, as well, are the abundant early- to late-stage products currently in clinical development and the anticipation of many more to come.</p>
+
+        <p>One technology that has shown immense promise within the ATMP space is the use of <span class="key-term">viral vectors</span> for delivery of a therapeutic gene. Viral vectors have been shown to be useful both in the direct administration of <span class="key-term">in vivo</span> treatment to patients and in the <span class="key-term">ex vivo genetic modification</span> of cells that are then administered to the patient. Different viral-vector types have proven effective as gene delivery systems including, but not limited to, <span class="key-term">adeno-associated viruses (AAV)</span> and <span class="key-term">lentiviruses</span>, both of which have successfully commercialized products. AAV-based drug products, in particular, have been commercialized successfully in the United States, Europe, and other regions of the world.</p>
+
+        <p><span class="key-term">Plasmid DNA (pDNA)</span> are used as critical materials (i.e., the "building blocks") in the production of viral vectors and may also be delivered as naked DNA or encapsulated (e.g., in a liposome) for delivery purposes at various steps of a gene-therapy manufacturing process. Thus, ensuring consistent control of the quality in the production and use of plasmids is of great importance in the manufacture of many gene therapies, including cell-based, gene-modified therapies.</p>
+
+        <p>The ex vivo modification of cells was not within the primary scope of PDA Technical Report No. 81: Cell-Based Therapy Control Strategy (TR 81), therefore, some points to consider on viral vectors used in gene therapy were deemed to be of value and are addressed herein. In developing this points to consider document, the intent was to not repeat information already available in TR 81, but rather to supplement it. Likewise, when topics such as process validation, sterile filtration, filtration for viral contaminants, analytical method validation, and phase-appropriate GMPs are addressed in this document, these topics should be deemed supplemental to guidance that can be found in existing PDA technical reports.</p>
+
+        <p>A team of industry representatives from multiple CMC disciplines comprising product and process development, analytical development, manufacturing, quality assurance, and regulatory affairs was assembled by the PDA ATMP Advisory Board to author this document. This team was tasked not only with identifying the current major problems in the development, qualification, and manufacture of viral vectors that are not adequately addressed in current regulatory guidance, but also with recommending solutions to these problems based on current industry perspectives and best practices with consideration to compliance within a dynamic, global regulatory framework.</p>
+
+        <p>This document presents the views of the Parenteral Drug Association on the development, classification, manufacture, control, and testing of plasmids and vectors used in ATMP production. It is designed to encourage further dialog with industry, health authorities, and suppliers of technology and materials while taking into consideration the changes and needs of the modern, global, sterile healthcare-product manufacturing industry. <strong>It does not represent a standard or a regulatory guidance.</strong></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 什麼是 ATMP？</h4>
+            <p><strong>先進療法醫藥品 (Advanced Therapy Medicinal Products, ATMP)</strong> 是歐盟法規框架（EC Regulation 1394/2007）所定義的三大類特殊治療品的總稱：</p>
+            <ul>
+                <li><strong>基因治療藥品 (Gene Therapy Medicinal Products, GTMP)</strong>：透過引入治療性基因序列，修正、替換、或抑制異常基因功能。</li>
+                <li><strong>體細胞治療藥品 (Somatic Cell Therapy Medicinal Products, SCTMP)</strong>：使用在體外經過操控的活細胞或組織作為治療劑。</li>
+                <li><strong>組織工程製品 (Tissue Engineered Products, TEP)</strong>：含有或由細胞/組織構成，具再生、修復或替換人體組織功能。</li>
+            </ul>
+            <p>PtC-11 聚焦於 GTMP 中使用病毒載體 (viral vectors) 和質體 DNA (plasmid DNA, pDNA) 的部分。</p>
+            <p><strong>病毒載體與質體 DNA 的關係：</strong>質體 DNA 是製造病毒載體的「原料」（building blocks），就像零件之於成品機器。pDNA 先在細菌細胞中大量擴增，再被引入哺乳動物細胞中，幫助組裝出完整的病毒載體顆粒。因此，pDNA 的品質直接影響最終病毒載體（即藥物活性成分）的品質。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 病毒載體：治療基因的「快遞員」</h4>
+            <p>想像你需要把一封重要的信（治療性基因）送進城堡（患者的細胞）裡。城堡的城牆（細胞膜）非常堅固，普通方法根本進不去。這時候你需要一位特殊的「信使」——他不僅能穿過城牆，還能確保信件被正確交到收件人手中。</p>
+            <p><strong>病毒載體</strong>就是這個「信使快遞員」。大自然演化出的病毒，天生就有感染細胞的能力。科學家將病毒改造後，移除其致病的危險基因，保留其「進入細胞」的能力，再裝入治療性基因，就形成了病毒載體。</p>
+            <p><strong>質體 DNA</strong> 則像是快遞公司的「生產指令手冊」——用來製造這些快遞員的藍圖。品質差的手冊，會導致製造出瑕疵品快遞員，無法準確送達信件。</p>
+            <p>AAV（腺相關病毒）擅長進入神經、肌肉等非分裂細胞；Lentivirus（慢病毒）則能整合入分裂中的免疫細胞（如 T 細胞），特別適合製造 CAR-T 細胞療法。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — PtC-11 不是法規標準！</h4>
+            <p>文件明確聲明：<strong>「It does not represent a standard or a regulatory guidance.」</strong></p>
+            <p>對 CDMO 專業人員而言，這是極為重要的理解前提：</p>
+            <ul>
+                <li>PtC-11 是 PDA 彙集多位 CMC 產業專家意見所形成的「最佳實務建議」，代表產業共識，而非法規要求。</li>
+                <li>法規查核員不會依本文件直接開具 Warning Letter；但文件中所引用的 EU GMP Annex 1、PIC/S Annex 2A、FDA CMC Guidance 才是具法律效力的規範。</li>
+                <li>CDMO 應將本文件視為「思考框架」與「對話起點」，與客戶（MAH）討論策略時可引用，但提交法規文件時應以官方指引為依據。</li>
+                <li>本文件補充、而非取代 PDA TR 81（細胞療法控制策略）及其他現有 PDA 技術報告。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style: solid; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #22c55e;">
+            <h4>實務應用 — CDMO 視角：為何 ATMP 製造能力攸關策略地位？</h4>
+            <p>ATMP 市場正在快速成長。截至 2025 年，全球已有超過 30 個 ATMP 產品獲批，臨床管線中有逾千個候選品。對於 CDMO 而言，搶先建立 ATMP 製造能力具有顯著的商業意義：</p>
+            <ul>
+                <li><strong>高門檻即護城河：</strong>病毒載體製造技術複雜（需 BSL-2 生物安全等級廠房、懸浮細胞培養、超速離心純化），並非所有 CDMO 都有能力承接，先進入者享有稀缺溢價。</li>
+                <li><strong>黏性高：</strong>ATMP 客戶一旦選定 CDMO，往往難以輕易轉換（技術轉移成本高、法規申請繁複），長期訂單比率高於小分子藥品。</li>
+                <li><strong>監管風險需主動管理：</strong>pDNA 和病毒載體的分類（raw material vs. drug substance）在不同法規轄區有差異（後續 Topic 1 深度討論），CDMO 若未能理解這些差異，可能為客戶帶來不必要的法規風險。</li>
+                <li><strong>TR 81 ＋ PtC-11 是雙軌必讀：</strong>熟悉兩份文件的 CMC 人員，能為客戶提供更完整的策略建議，是差異化競爭的優勢來源。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SUBSECTION: Scope -->
+<!-- ============================================================ -->
+<div class="section-title">Scope — 適用範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This Points to Consider document is focused on the use of <span class="key-term">viral vectors</span> for the purpose of the delivery of a therapeutic gene both <span class="key-term">in vivo</span> and for <span class="key-term">ex vivo</span> modification within the overall classification of ATMPs. The topics addressed are diverse and include plasmid and viral vector categorization and control, <span class="key-term">quality by design (QbD)</span>, control strategies, filtration, comparability, platform technologies, and potency assays. Separately and together, these topics address a broad range of development, manufacture, and control issues that may be encountered in industry. The topics are organized in a question-and-answer format, presenting a specific problem statement and an accompanying recommendation, inclusive of the recommended points to be considered with the goal to assist the reader in formulating a strategy to address the topic.</p>
+
+        <p>One concept that emerges throughout these discussions is the need for applying a <span class="key-term">science-driven and risk-based approach</span> to providing solutions for current problems associated with the development and manufacture of viral vectors. That approach is embraced by regulatory agencies for the development of gene therapies, including those using viral vectors, as presented in the <span class="key-term">EU GMP Annex 1</span>: Manufacture of Sterile Medicinal Products and the Guideline on the Risk-based Approach according to Annex I, Part IV of Directive 2001/83/EC (1). Annex I, Part IV specifically refers to a risk-based approach as the recommended methodology to design the organizational, technical, and structural measures to comply with GMP regulations. <span class="key-term">PIC/S Annex 2A</span>: Manufacture of Advanced Therapy Medicinal Products for Human Use echoes the EU guidelines, noting that quality risk management principles are particularly important for this class of materials (2).</p>
+
+        <div class="quote-box">
+            "In summary, the topics presented in this Points to Consider reflect the current thinking regarding some of the major challenges that have been identified by the PDA community regarding the development, control, and manufacture of gene therapy products using viral vectors. Nonetheless, this team acknowledges that there are many more topics that the industry faces for this diverse class of therapies."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 文件的七大主題領域</h4>
+            <p>PtC-11 以問答格式（Q&amp;A format）組織內容，涵蓋以下七個主題，每個主題都呼應了 ATMP CMC 開發中的真實挑戰：</p>
+            <ul>
+                <li><strong>Topic 1 — 分類 (Categorization)：</strong>病毒載體是原料、關鍵起始原料、還是活性藥物成分 (drug substance)？不同監管轄區答案不同。</li>
+                <li><strong>Topic 2 — QbD 品質源於設計：</strong>如何將 QTPP 和 CQA 的概念套用到病毒載體和 pDNA 的開發？</li>
+                <li><strong>Topic 3 — 控制策略 (Control Strategy)：</strong>微生物控制、製程中管控 (IPC)、及整體品質控制體系的建立。</li>
+                <li><strong>Topic 4 — 過濾 (Filtration)：</strong>無菌過濾對 AAV/LV 的衝擊，以及奈米過濾用於去除病毒污染物的考量。</li>
+                <li><strong>Topic 5 — 可比性 (Comparability)：</strong>製程變更後如何證明產品品質不受影響。</li>
+                <li><strong>Topic 6 — 平台技術 (Platform Technologies)：</strong>如何利用平台策略提高跨品種 ATMP 製造的效率與一致性。</li>
+                <li><strong>Topic 7 — 效力測定 (Potency Assays)：</strong>如何設計並階段性導入產品專屬的效力測試。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — In Vivo vs. Ex Vivo：兩種「投遞策略」</h4>
+            <p>基因治療的投遞方式，可類比為兩種截然不同的物流模型：</p>
+            <p><strong>In Vivo（體內基因治療）——「直接快遞到戶」：</strong>病毒載體直接注射進患者體內，如同包裹直送到收件人家門口。載體在患者體內自行尋找目標細胞並完成基因轉送。AAV 是最常見的體內基因治療載體（例如治療脊髓性肌肉萎縮症的 Zolgensma）。</p>
+            <p><strong>Ex Vivo（體外基因修飾）——「工廠加工後再出貨」：</strong>先從患者身上抽取細胞（如 T 細胞），在體外實驗室中用病毒載體修改細胞的基因，確認加工品質後，再回輸到患者體內。CAR-T 細胞療法（如 Kymriah、Yescarta）就是典型的 ex vivo 模型。慢病毒 (Lentivirus) 是最常用的 ex vivo 改造載體，因為它能將目標基因整合進分裂中的 T 細胞基因組。</p>
+            <p>PtC-11 的範疇同時涵蓋這兩種模型，因此內容對不同 ATMP 業務類型的 CDMO 皆具參考價值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 科學驅動、風險為本：貫穿全文的核心哲學</h4>
+            <p>「<strong>Science-driven and risk-based approach（科學驅動、風險為本的方法）</strong>」是 PtC-11 反覆強調的核心思路，也是當前所有先進療法法規指引的共同基調：</p>
+            <ul>
+                <li><strong>EU GMP Annex 1</strong>（無菌藥品製造）和其附屬的風險為本方法指引，要求廠商從科學依據設計組織性、技術性和結構性的 GMP 合規措施。</li>
+                <li><strong>PIC/S Annex 2A</strong>（ATMP 製造）特別指出，品質風險管理 (Quality Risk Management, QRM) 原則對這類材料尤為重要，直接呼應 ICH Q9。</li>
+                <li>對 CDMO 的實務意義：當監管指引無法提供明確答案時（ATMP 領域常有此情況），風險評估文件（risk assessment）本身就是合規的基礎。能夠清楚記錄「為什麼這樣做是科學合理的」，比單純遵循固定程序更為重要。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家客戶正在開發 AAV 載體用於體內 (in vivo) 脊髓性肌肉萎縮症基因治療，並且同時希望在美國和歐盟申請臨床試驗。請問這個 AAV 載體在兩個監管轄區中各屬於什麼分類（raw material、starting material、critical starting material、還是 drug substance）？這對 CDMO 的品管要求有何影響？</li>
+                <li>PtC-11 明確表示「不代表標準或法規指引」，那麼在實際工作中，你會如何向客戶解釋引用 PtC-11 建議的意義與限制？在哪些情境下引用它最能為客戶帶來價值？</li>
+                <li>質體 DNA (pDNA) 被稱為病毒載體製造的「building blocks」。試想如果 pDNA 的品質出現波動（例如超螺旋比例下降、殘留內毒素升高），對最終 AAV 藥品的哪些關鍵品質屬性 (CQA) 可能產生什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>ATMP 包含細胞治療、基因治療及組織工程製品；PtC-11 聚焦於使用病毒載體（AAV、Lentivirus）和質體 DNA (pDNA) 的基因治療。</li>
+        <li>病毒載體是治療性基因的「遞送工具」，可用於體內直接投藥 (in vivo) 或體外細胞改造後回輸 (ex vivo，如 CAR-T)；pDNA 是製造病毒載體的關鍵起始原料，其品質直接影響最終產品品質。</li>
+        <li>PtC-11 涵蓋七大主題：分類、QbD、控制策略、過濾、可比性、平台技術、效力測定，以問答格式呈現，是產業最佳實務建議，而非法規標準。</li>
+        <li>貫穿全文的核心哲學是「科學驅動、風險為本」，與 EU GMP Annex 1、PIC/S Annex 2A 及 ICH Q9 的精神一致，是 CDMO 在面對法規模糊地帶時最重要的決策依據。</li>
+        <li>PtC-11 補充而非取代 PDA TR 81（細胞療法控制策略）及其他現有 PDA 技術報告，CMC 專業人員應將二者搭配閱讀。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+(function(){
+    var btn = document.getElementById('backToTop');
+    if(btn){
+        window.addEventListener('scroll', function(){
+            if(window.scrollY > 300){
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    }
+})();
+</script>
+
+</body>
+</html>

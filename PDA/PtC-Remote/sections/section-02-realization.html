@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtC-Remote - Part II: Remote Inspection Realization</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Part II: Remote Inspection Realization</h1>
+    <div class="subtitle">Part II：查驗執行</div>
+    <div class="page-info">PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021) | p20 - p27</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握遠端查驗期間即時互動（real-time interactions）的最佳實務，包含視訊平台設定、會議紀律與問題記錄</li>
+        <li>了解多工作流（multiple workstreams）管理策略，確保不同查驗官同時作業時資訊不重複、不遺漏</li>
+        <li>釐清查驗官要求直接存取 GMP/GDP 系統時的正確回應方式，區分「拒絕存取」與「拒絕接受查驗」的差異</li>
+        <li>建立文件索取請求（responding to requests）、稽核報告分享（sharing audit reports）、樣品採集（sample collection）與每日收尾會議（daily wrap-up）的標準作業流程</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC A.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic A.1 — Use of Real-Time Interactions（即時互動的運用）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What is the most efficient and effective way to use <span class="key-term">real-time interactions</span> in a virtual inspection? Is it possible and recommended to include multiple people or subject matter experts (SME) in the live sessions?</p>
+
+        <h3>Recommendation</h3>
+        <p>As discussed in Topics I.D.2 Planning to Share Information and I.D.4 Pre-Inspection Agreements, for a virtual inspection, the inspector and inspected site should agree on a <span class="key-term">video communication platform</span>. Prior to the inspection, all involved personnel should become familiar with the IT tools to be used.</p>
+
+        <p>Good meeting management is essential. It is preferable to establish <strong>one meeting link or connection for the entire day</strong>, which all attendees may use, rather than creating a separate meeting link for each sub-topic to be addressed during the day. Inspectors and inspected site personnel can easily leave and rejoin the ongoing discussions, although attendees should always be introduced upon joining. If attendance is not carefully managed, however, the inspected site could be overloaded with questions and requests, including potential duplication from those who participate only intermittently.</p>
+
+        <p>For each <span class="key-term">workstream</span>, one or two members of the inspection team should ask all questions, and one person at the inspected site should coordinate the discussion as a moderator. Also refer to Topic II.B.1 Managing Multiple Workstreams.</p>
+
+        <p>Several people (such as SMEs) from the inspected company could join the live sessions to be ready to support the ongoing discussion. The inspected site should control the flow of people joining the live session by using a <span class="key-term">virtual waiting room</span>, if possible. A person who is not directly interacting with the inspectors should be assigned to monitor the virtual waiting room.</p>
+
+        <p>The <span class="key-term">video communication platform</span> can be used for written conversation and for sharing documents and data. A live chat channel with the inspectors (e.g., via Microsoft Teams&reg; or Slack&reg;) also may be used to facilitate communications if needed. It may be helpful, for instance, for the inspector to drop notes about requests, such as deviation numbers copied from provided spreadsheets, into this chat channel to ensure that the correct information is available to all. This channel should be agreed upon by the parties in advance.</p>
+
+        <p>The inspected site and inspectors should <strong>not communicate outside of the agreed-upon communication platform(s)</strong>. Additional informal communications via text or mobile phone application, for instance, should not occur, as these would be difficult to track and document and may cause confusion.</p>
+
+        <p>As in on-site inspections, an internal chat-link for site personnel may be useful to facilitate internal information-sharing as well as to verify the timing of topics to be presented. The internal chat-link could be set up through an online messaging platform, text, or email.</p>
+
+        <p>In planning for virtual inspections, training personnel on virtual meeting discipline may be helpful. This training could include:</p>
+        <ul>
+            <li><strong>On-camera discipline:</strong> Training should address personal attire, background screen selection, and prevention of accidental entry of family members and colleagues during video communications. Personnel should keep their cameras on while in the virtual meeting room, notify other attendees when turning off the camera, face the camera properly, and understand expectations around eating and drinking on camera. Discuss and decide whether cameras may be turned off during document review periods.</li>
+            <li><strong>Microphone discipline:</strong> Microphones should be muted when not in use and background noise avoided. Particular attention should be paid to feedback loops that result in unacceptable echoes. Often, this may result when a participant logs in from more than one device. If muting another person's microphone is necessary, inform the person before doing so.</li>
+        </ul>
+
+        <p>The inspected site should <span class="key-term">log all questions</span> asked by the inspectors, including questions asked through live conversation and in writing, as it would during an on-site inspection. The log allows for visibility, sharing, and tracking of the questions within the inspected site.</p>
+
+        <h3>Rationale</h3>
+        <p>To prevent disturbances and interruptions, virtual inspections require enhanced coordination as well as discipline in communication.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 單一會議連結 vs. 分段連結</h4>
+            <p><strong>一日一連結（One Full-Day Link）策略</strong>的邏輯：查驗過程中，查驗官隨時可能要求轉換主題、等待文件或提問後離席。若每個子題各建立一個會議連結，人員反覆收到新連結邀請、進出會議，不僅耗費時間，也增加混亂風險。</p>
+            <p>PDA PtC-Remote 建議：為整個查驗日建立<strong>一個持久性連結</strong>，所有人員「進出自如」（leave and rejoin freely），但每次加入時必須自我介紹（attendees should always be introduced upon joining）。</p>
+            <p>這對 CDMO 而言尤其重要——當天可能需要品保、生產、QC、法規等多部門 SME 輪流支援，單一連結讓調度更有彈性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 虛擬候診室如同醫院掛號台</h4>
+            <p>想像醫院急診候診區：護理師（指定等候室監控人員）管控誰進入診間（虛擬會議室），確保只有被叫號的人進入，避免診間同時湧入過多人員造成混亂。</p>
+            <p><strong>Virtual Waiting Room（虛擬候診室）</strong>就是這個概念——現場 SME 待命在候診室，由指定人員判斷時機再讓他們進入查驗主會場。這樣查驗官面對的永遠是組織有序、目的明確的人員，而非隨機進出的雜亂畫面。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 虛擬會議紀律是查驗態度的延伸</h4>
+            <p>許多公司誤以為「線上查驗比現場查驗輕鬆」，忽視虛擬會議紀律。PDA PtC-Remote 明確指出，這是查驗失敗的常見原因之一。以下是必須事先訓練的兩大紀律：</p>
+            <ul>
+                <li><strong>鏡頭前紀律（On-Camera Discipline）：</strong>著裝整齊（相當於現場查驗的工廠制服要求）、背景乾淨、攝影機保持開啟。家人闖入鏡頭、邊吃飯邊開會，在查驗官眼中等同於對查驗不尊重。</li>
+                <li><strong>麥克風紀律（Microphone Discipline）：</strong>不發言時靜音，避免迴音（feedback loop）——迴音通常由同一人在多裝置同時登入所致。若需靜音他人麥克風，務必事先告知，避免造成誤解。</li>
+            </ul>
+            <p>建議查驗前一週進行全員模擬演練（mock inspection），熟悉工具並演練紀律。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 問題記錄（Question Log）的建立與管理</h4>
+            <p>PDA PtC-Remote 要求記錄<strong>所有</strong>查驗官問題，包含口頭即時提問與書面訊息中的請求。以下是建議的問題記錄框架：</p>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>時間</th>
+                    <th>查驗官</th>
+                    <th>問題內容</th>
+                    <th>負責人</th>
+                    <th>預計回覆時間</th>
+                    <th>狀態</th>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>09:15</td>
+                    <td>Inspector A</td>
+                    <td>請提供批次 2024001 偏差報告</td>
+                    <td>QA 王小明</td>
+                    <td>11:00</td>
+                    <td>處理中</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>10:30</td>
+                    <td>Inspector B</td>
+                    <td>LIMS 中環境監測趨勢圖</td>
+                    <td>QC 李大華</td>
+                    <td>14:00</td>
+                    <td>已回覆</td>
+                </tr>
+            </table>
+            <p>此 log 應即時共享給所有 Remote Inspection Host，並在每日收尾會議中逐項確認未結事項。問題 log 同時是查驗結束後內部檢討的重要依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼每日使用單一會議連結比每個子題各建一個連結更有效率？請從管理複雜度與人員調度兩個角度回答。</li>
+                <li>查驗官透過 WhatsApp 私訊詢問某份文件的具體頁碼，現場同仁應該如何回應？為什麼不能直接在 WhatsApp 上答覆？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC B.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic B.1 — Managing Multiple Workstreams（多工作流管理）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What tools can an inspected site use to manage <span class="key-term">multiple workstreams</span> in a virtual inspection?</p>
+
+        <h3>Recommendation</h3>
+        <p>Multiple workstreams may be required, for example, when different inspectors are reviewing different material in a single inspection. In this case, the inspected site should create a separate meeting link or <span class="key-term">virtual breakout room</span> for each inspector or workstream and should assign a <span class="key-term">Remote Inspection Host</span> for each inspector that needs an independent workstream.</p>
+
+        <p>The inspected site may use one full-day meeting link for full-team conversations including opening and wrap-up discussions, one full-day meeting link for Inspector A, and one full-day meeting link for Inspector B, with each to be used only as necessary. Alternatively, some video communication platforms offer virtual breakout rooms, which can be used in the same way. As with all other technologies, inspected site personnel should become fully familiar with these tools in advance of the start of the inspection.</p>
+
+        <p>When multiple workstreams exist, the <span class="key-term">Remote Inspection Host</span> must coordinate to ensure that information is shared appropriately and to avoid duplication of requests. The inspected site should create a process that allows all requests for documents and other information to be visible to all members of the inspection team. The secured document-sharing platform might be used for this purpose. When dealing with multiple workstreams, all questions asked by inspectors must be logged, as discussed in Topic II.A.1 Use of Real-Time Interactions, and the <span class="key-term">question log</span> must be accessible to all remote inspection hosts.</p>
+
+        <h3>Rationale</h3>
+        <p>Due to the higher complexity of the virtual inspection process, careful attention to and oversight of the different workstreams is essential. With time and experience, inspected site personnel and inspectors alike will become more familiar with the application of the different tools and processes, which will lead to a smoother inspection process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 多工作流如同醫院各科同時查房</h4>
+            <p>想像一家醫院同時接受三組衛生稽查人員分別查房：一組查內科、一組查外科、一組查藥局。如果沒有一位院長級統籌協調者，三組人同時向護理站調取同一份病歷紀錄，就會造成混亂與資料重複。</p>
+            <p>遠端查驗的 <strong>Remote Inspection Host（遠端查驗主持人）</strong> 就是這位院長——統籌協調各工作流，確保文件請求不重複、資訊不遺漏，也確保不同查驗官之間的議程進度保持平衡。</p>
+            <p>關鍵差異：現場查驗時，查驗官親眼可見彼此的行動；遠端查驗中，各工作流各自運作，<strong>唯有集中問題記錄（centralized question log）才能確保全局可視性</strong>。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — Remote Inspection Host 的角色定義</h4>
+            <p><strong>Remote Inspection Host（遠端查驗主持人）</strong> 是 PDA PtC-Remote 引入的特定角色，與現場查驗的「接待人員」不完全相同。其核心職責包含：</p>
+            <ul>
+                <li>為負責的查驗官獨立管理一個工作流（含獨立的視訊連結或分組討論室）</li>
+                <li>即時更新並維護共用問題記錄（question log）</li>
+                <li>協調文件分享平台上的跨工作流文件可視性</li>
+                <li>向首席查驗主持人（Lead Remote Inspection Host）報告工作流進度</li>
+            </ul>
+            <p>建議公司為每位預計同時作業的查驗官配置<strong>一位專屬 Remote Inspection Host</strong>，並在查驗前進行角色演練。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 多工作流連結分配表（2–3 位查驗官情境）</h4>
+            <p>以下為 3 位查驗官同時查驗的連結與角色分配範例：</p>
+            <table>
+                <tr>
+                    <th>連結名稱</th>
+                    <th>用途</th>
+                    <th>查驗官</th>
+                    <th>Remote Inspection Host</th>
+                </tr>
+                <tr>
+                    <td>全體連結（Main Link）</td>
+                    <td>開幕、收尾、全體討論</td>
+                    <td>Inspector A, B, C</td>
+                    <td>Lead Host（首席）</td>
+                </tr>
+                <tr>
+                    <td>工作流 A（Workstream A）</td>
+                    <td>文件審查 — 品質系統</td>
+                    <td>Inspector A</td>
+                    <td>Host A（QA 部門）</td>
+                </tr>
+                <tr>
+                    <td>工作流 B（Workstream B）</td>
+                    <td>系統審查 — 生產製程</td>
+                    <td>Inspector B</td>
+                    <td>Host B（生產部門）</td>
+                </tr>
+                <tr>
+                    <td>工作流 C（Workstream C）</td>
+                    <td>設施虛擬導覽</td>
+                    <td>Inspector C</td>
+                    <td>Host C（工程部門）</td>
+                </tr>
+            </table>
+            <p>所有工作流共用同一個問題記錄（question log），Lead Host 在每小時整合一次各工作流進度，確保文件請求無重複且即時回應。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 Inspector A 和 Inspector B 同時各自要求同一份 SOPs 清單，沒有集中問題記錄的情況下會發生什麼問題？集中問題記錄如何解決這個問題？</li>
+                <li>你的公司正在接受虛擬查驗，共有 2 位查驗官同時作業。請描述你會如何設定會議結構（連結數量、角色分配、問題記錄工具）。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC C.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic C.1 — Inspector Access to Systems（查驗官存取系統）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Should an inspector be allowed to access <span class="key-term">GMP/GDP operational systems</span>?</p>
+
+        <h3>Recommendation</h3>
+        <p>If an inspector requests direct access to a GMP/GDP operational system, such as a <span class="key-term">laboratory information management system</span> (<span class="key-term">LIMS</span>) or <span class="key-term">building management system</span> (BMS), the response should be the same as it would be during an on-site inspection. Inspectors should access systems only through trained site personnel, due to the risk that direct access by an external user could create errors in the system.</p>
+
+        <p>Expert site personnel should access the system, then allow the inspector to view the requested information through <span class="key-term">screen-sharing</span>. The inspector can ask or direct the expert to obtain or display specific information and data from the system. The inspector also can direct the expert on what to do, what commands to execute, and what the inspector wants to see, provided that these activities do not create any errors in the system or create data that is not triggered by a process.</p>
+
+        <p>Not allowing the inspector direct access to a system will <strong>not represent an inspection refusal</strong>. Instead, it should reinforce to the inspector that proper training is needed before a person can be granted access to an electronic system.</p>
+
+        <h3>Rationale</h3>
+        <p>An inspection should not put a GMP/GDP system at risk at any time. Access to GMP/GDP operational systems requires dedicated training and supervision and should be justified. At the same time, it is essential to operate transparently and to permit the inspector to observe the system and the data it contains within the scope of the inspection. As in on-site inspections, inspectors can be provided full visibility by directing a company expert to display specific information and data from the system; therefore, such a practice cannot be considered as an inspection refusal.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 為什麼不允許查驗官直接存取 GMP 系統</h4>
+            <p>這是一個常見誤解：公司擔心拒絕查驗官直接登入系統會被視為隱瞞。PDA PtC-Remote 明確澄清：</p>
+            <p><strong>拒絕直接存取的理由是資料完整性（Data Integrity）保護，而非隱瞞。</strong>外部人員若未經訓練直接操作 LIMS、BMS 或 ERP 等 GMP 系統，可能：</p>
+            <ul>
+                <li>意外觸發未授權的系統事件（untriggered data creation）</li>
+                <li>修改或覆寫正在進行中的記錄</li>
+                <li>產生不符合審計軌跡（audit trail）要求的資料條目</li>
+                <li>違反 21 CFR Part 11 或 EU GMP Annex 11 的電子記錄規範</li>
+            </ul>
+            <p>正確做法：由<strong>受過訓練的站點專家（expert site personnel）</strong>登入系統，透過螢幕共享（screen-sharing）讓查驗官完整觀看，並可直接指示專家導航至任何畫面或資料。查驗官的可視性（visibility）不受任何限制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 準備好口頭說明：「拒絕直接存取 ≠ 拒絕查驗」</h4>
+            <p>查驗官在現場要求直接登入時，現場人員往往因緊張而語無倫次。建議事先準備標準說明（standard script），例如：</p>
+            <div class="quote-box">
+                "We are happy to provide you with full access to all data in our [LIMS/BMS/ERP]. To protect data integrity and comply with our system access control procedures, we will have our trained expert log in and share the screen with you. You are welcome to direct our expert to navigate to any record, report, or function you wish to review. This is the same process we follow during on-site inspections."
+            </div>
+            <p>此說明同步傳達三個訊息：(1) 我們願意完全透明；(2) 限制直接存取是 GMP 合規要求，非敵意；(3) 查驗官的可視性（visibility）不受限。</p>
+            <p>查驗前，Remote Inspection Host 應完成此說明的演練，避免臨場失措。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 螢幕共享代理操作（Screen-Share Proxy）標準流程</h4>
+            <p>以下為 LIMS 系統存取的正確操作流程：</p>
+            <ol>
+                <li><strong>準備階段（查驗前）：</strong>指定各系統的「代理操作員（proxy operator）」——通常為系統管理員或資深使用者，確保其熟悉系統導航且有權限存取查驗範圍內的所有模組</li>
+                <li><strong>查驗官提出請求：</strong>「請顯示批次 2024001 的環境監測趨勢圖」</li>
+                <li><strong>Host 轉達請求：</strong>透過內部 chat 通知 QC 系統操作員</li>
+                <li><strong>操作員登入並共享螢幕：</strong>開啟螢幕共享，導航至指定位置，並口頭確認「查驗官，這是您要求的環境監測趨勢圖，涵蓋 2023/01–2024/01 期間，地點為 Grade A 充填間」</li>
+                <li><strong>查驗官指示後續：</strong>可要求深入任何子頁面、匯出特定資料或顯示原始審計軌跡</li>
+                <li><strong>記錄：</strong>所有系統存取請求記入問題記錄（question log），含時間、查驗官、請求內容、操作員姓名</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>查驗官堅持要親自操作 LIMS 鍵盤，理由是「我在其他工廠都可以直接操作，你們不讓我操作代表有問題」。你應該如何回應？</li>
+                <li>若查驗官要求查看的 LIMS 資料超出螢幕共享時可顯示的範圍（例如需要匯出 PDF），操作員應如何處理，才能在確保資料完整性的同時滿足查驗需求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC D.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic D.1 — Responding to Requests（回應查驗官索取請求）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What are acceptable timelines for responding to requests from inspectors during the inspection? What requests should be brought to the attention of legal counsel?</p>
+
+        <h3>Recommendation</h3>
+        <p>A site's plan for responding to requests in a remote inspection should mirror the same way as working during an on-site inspection. Responses should be provided <strong>as soon as possible, consistent with the inspected site's operations</strong>. To facilitate efficient responses, SMEs and other experts in the company should be ready and available for the duration of the inspection. When it is necessary to retrieve archived documents, or when the team at the inspected site is working completely or partially remotely, the response time could be slightly longer. Communicate proactively and transparently with the inspector if some responses could take additional time to access, and agree on acceptable timing.</p>
+
+        <p>As discussed in Topic I.C.1 Remote Inspection Team Formation, the company must have sufficient personnel standing by to facilitate the handling of documents during the entire inspection, starting from the first request for documentation and records. Based on the types of requests received, personnel and resources may need to be shifted to ensure timely fulfillment of requests.</p>
+
+        <p>The inspected site may anticipate that legal counsel will need to review certain requests. The company should establish a strategy for these requests before the inspection begins, to help avoid delays during the inspection process. In a remote inspection, legal counsel might be consulted for:</p>
+        <ul>
+            <li>Requests for <strong>video or photos of personnel</strong> operating in the inspected areas, even when it might be difficult or impossible to identify the participants</li>
+            <li>Requests by the inspector to <strong>record proceedings</strong> using photos, audio, video, or screenshots</li>
+            <li>Any request that the inspected company believes it <strong>must decline</strong></li>
+        </ul>
+
+        <p>When sharing documents during an inspection, consideration should be given to the size of the electronic files. It may be necessary to split documentation into multiple electronic "shipments" to ensure its delivery, depending on the method used for sharing.</p>
+
+        <h3>Rationale</h3>
+        <p>Timely responses to inspectors' requests are crucial to an efficient and effective inspection. However, challenges may arise in retrieving documentation and making documents available electronically during a remote inspection. The inspected site must communicate in a timely manner with the inspectors if the requested documentation cannot be provided by the specified due date, with justification and a target date for a complete response. Communication is especially relevant when the workforce at the inspected site is smaller than usual (e.g., during a pandemic) and when the request involves paper documents or documents requiring translation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 需要法務介入的請求類別（重要檢查清單）</h4>
+            <p>PDA PtC-Remote 特別點名三類在遠端查驗中需提前備好法務策略的請求：</p>
+            <ol>
+                <li><strong>人員影像/錄影請求（Video/Photos of Personnel）：</strong>即使無法辨識個人身份，在許多國家（尤其歐盟 GDPR、台灣個資法），拍攝工作人員仍需取得授權。查驗前應與法務確認公司立場。</li>
+                <li><strong>查驗官錄影/截圖請求（Inspector Recording）：</strong>查驗官若要求錄製視訊通話或截圖，公司有權要求說明用途並限制條件。未經協議不可自動同意。</li>
+                <li><strong>公司認為必須拒絕的任何請求（Any Request Site Must Decline）：</strong>例如要求提供競爭對手客戶資訊、超出查驗範圍的商業機密文件等。應預先演練拒絕的措辭，避免現場慌張而做出非必要的讓步。</li>
+            </ol>
+            <p><strong>行動建議：</strong>查驗前舉行「法務情景模擬（legal scenario walkthrough）」，讓 Remote Inspection Host 熟悉各類請求的標準回應程序。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 回應時間框架的設定原則</h4>
+            <p>PDA PtC-Remote 指出回應速度應「盡快，且符合現場運作現實」。這不是一個絕對數字，而是需要主動溝通管理的動態承諾。</p>
+            <p><strong>影響回應時間的因素：</strong></p>
+            <ul>
+                <li>文件是否為電子格式或紙本（紙本需掃描或拍照）</li>
+                <li>文件是否需要翻譯（繁中→英文）</li>
+                <li>相關 SME 是否在場或處於遠端工作狀態</li>
+                <li>文件是否屬於封存資料（archived documents）</li>
+            </ul>
+            <p>關鍵原則：<strong>主動溝通預期延遲</strong>（communicate proactively）遠比沉默更重要。告知查驗官「此文件需要 2 小時取得，因為需要從紙本掃描」，遠比等到逾時才說明更能維持查驗信任度。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 請求分流（Request Triage）三級回應系統</h4>
+            <p>建議公司建立三級請求分流機制：</p>
+            <table>
+                <tr>
+                    <th>回應等級</th>
+                    <th>目標時間</th>
+                    <th>適用情境</th>
+                    <th>溝通方式</th>
+                </tr>
+                <tr>
+                    <td><span class="badge green">即時</span></td>
+                    <td>&lt; 15 分鐘</td>
+                    <td>已電子化且預先準備的常見文件（SOP、批次記錄摘要）</td>
+                    <td>直接於分享平台上傳連結</td>
+                </tr>
+                <tr>
+                    <td><span class="badge yellow">2 小時內</span></td>
+                    <td>1–2 小時</td>
+                    <td>需檢索或整理的電子文件、需 SME 確認的資料</td>
+                    <td>即時在 chat 中告知預計時間</td>
+                </tr>
+                <tr>
+                    <td><span class="badge blue">次日</span></td>
+                    <td>隔日上午</td>
+                    <td>封存文件、需翻譯的文件、需法務審核的請求</td>
+                    <td>口頭說明原因並確認次日議程安排</td>
+                </tr>
+            </table>
+            <p>每個回應等級的分類標準和溝通措辭應在查驗前訓練完成，Remote Inspection Host 可在不需升報的情況下自主判斷回應等級。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>查驗官要求錄製本次視訊查驗的全程，理由是為了「方便事後核對查驗記錄」。你的公司應如何回應？哪些步驟是必要的？</li>
+                <li>某份被索取的批次記錄存放於紙本封存室，取出、掃描並傳送需要 3 小時。你應該立即告知查驗官，還是先嘗試取得後再說明延遲原因？兩種做法的利弊各是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC D.2 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic D.2 — Sharing Audit Reports（分享稽核報告）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What should the inspected site do if asked by the inspector to share the <span class="key-term">audit reports</span> of contract manufacturing organizations (CMOs) or suppliers?</p>
+
+        <h3>Recommendation</h3>
+        <p>As in on-site inspections, an inspector in a remote inspection can ask for any document that will provide information necessary to assess compliance. Inspectors from some health authorities may not have legal authority to demand, or may not ordinarily review, the inspected site's audit reports of CMOs or suppliers, so it is important to understand the inspector's perspective.</p>
+
+        <p>In a virtual inspection, extracts of an audit report, including the overall audit outcome and the front page of the report showing execution date and scope, can be displayed to the inspector through <span class="key-term">screen-sharing</span> or use of a <span class="key-term">document camera</span>. Some health authorities may request that the full report be displayed. In extraordinary cases, it might be necessary to provide an electronic copy of the document.</p>
+
+        <p>The inspected site may need to consider whether the quality agreement with the CMO or supplier includes language about the sharing of audit reports. This aspect should be considered in advance of the inspection to avoid creating delays in communicating the information to the inspector. Moving forward, the quality agreement should stipulate that such reports may be shared and should define the timeline for notifying the CMO or supplier that the document has been shared. It is a best practice to notify the CMO or supplier before or in parallel with sharing the complete report with an inspector.</p>
+
+        <h3>Rationale</h3>
+        <p>The request for an audit report in a remote inspection is equivalent to the request that can be made during an on-site inspection. These requests may be more prevalent in the remote setting, however, as inspectorates seek additional supporting information.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CMO/供應商稽核報告分享標準流程</h4>
+            <p>當查驗官要求分享 CMO 稽核報告時，建議遵循以下分階段流程：</p>
+            <ol>
+                <li><strong>第一步：確認分享範圍</strong><br>先顯示報告封面頁（執行日期、稽核範圍）及稽核結論摘要（overall audit outcome），透過螢幕共享（screen-sharing）或文件攝影機（document camera）呈現</li>
+                <li><strong>第二步：評估完整報告請求</strong><br>若查驗官要求完整報告，先暫緩並確認：
+                    <ul>
+                        <li>品質協議（Quality Agreement）是否有分享條款？</li>
+                        <li>是否涉及保密協議（NDA）或不揭露條款？</li>
+                        <li>是否需要法務確認？</li>
+                    </ul>
+                </li>
+                <li><strong>第三步：通知 CMO/供應商</strong><br>在分享前或同時通知對方——這是 PDA PtC-Remote 指定的最佳實務（best practice）。可發送簡短電子郵件：「本公司正在接受 [衛生主管機關] 遠端查驗，查驗官已要求查閱貴公司稽核報告，我們將依品質協議第 X 條分享 [年份] 稽核報告。」</li>
+                <li><strong>第四步：記錄分享行為</strong><br>在問題記錄（question log）中記載「分享了哪份報告、哪些內容、何時分享、通知 CMO/供應商的時間戳記」</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 更新未來品質協議的分享條款</h4>
+            <p>PDA PtC-Remote 明確建議：<strong>未來所有與 CMO/供應商簽訂的品質協議（Quality Agreement）都應加入稽核報告分享條款。</strong></p>
+            <p>建議納入的條款要素：</p>
+            <ul>
+                <li>允許在法規查驗情境下分享報告的授權語言</li>
+                <li>分享前或分享時通知對方的時限（例如：「分享後 24 小時內通知」）</li>
+                <li>明定可分享的範圍（摘要 vs. 完整報告 vs. 僅封面與結論）</li>
+                <li>例外情況的處理程序（例如：涉及重大缺失的報告）</li>
+            </ul>
+            <p>如果現有協議缺乏此條款，查驗前應進行差距分析（gap assessment），識別哪些重要 CMO/供應商的協議需要優先更新。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 稽核報告分享如同醫師轉診病歷</h4>
+            <p>當主治醫師（查驗官）要求調閱其他醫院（CMO）的就診記錄（稽核報告）時，轉介醫院（被查驗公司）必須先確認：病患（CMO）是否知情並同意、是否有轉診授權書（品質協議分享條款），才能釋出記錄。</p>
+            <p>直接提交完整報告而未事先告知 CMO，就像未經病患同意轉發病歷——即使出發點是配合查驗，仍可能違反保密協議，引發與 CMO 的法律糾紛。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>查驗官要求完整查閱貴公司某重要 CMO 的最近一次稽核報告，但品質協議中沒有分享條款。你應如何處理這個請求？</li>
+                <li>在遠端查驗中，為什麼查驗官更可能要求分享 CMO 稽核報告（相比現場查驗）？這對 CDMO 的供應商管理策略有什麼意涵？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC D.3 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic D.3 — Sample Collection（樣品採集）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>During a remote inspection, can an inspector request samples from the inspected facility?</p>
+
+        <h3>Recommendation</h3>
+        <p>During a remote inspection, inspectors are unlikely to ask the inspected site to collect and send product samples from its facility or to collect and analyze an environmental sample (e.g., residue observed during a video tour) because <strong>inspectors normally expect to be involved in sample collection</strong>. In Europe, collection of samples is not standard.</p>
+
+        <p>If asked, the inspected site should clarify the conditions for collecting and sending the samples. The inspected site also should consider and mitigate any risks relating to the <span class="key-term">chain of custody</span>. The site's inspection management team also should contact legal counsel before agreeing or declining to provide any samples.</p>
+
+        <h3>Rationale</h3>
+        <p>Though unlikely in a remote inspection, a request for samples might be made under special circumstances. The inspected site should clarify and diligently follow the sampling and shipment procedures to ensure that the samples remain representative. Import/export rules apply to this shipment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 遠端查驗中的樣品請求：罕見但需備案</h4>
+            <p>PDA PtC-Remote 明確指出，遠端查驗中查驗官索取實體樣品的情況<strong>極為罕見</strong>（unlikely），因為：</p>
+            <ul>
+                <li>查驗官通常堅持<strong>親自參與採樣過程</strong>，以確保樣品代表性和鏈條監管（chain of custody）</li>
+                <li>歐洲慣例中，查驗官採樣本就不是標準程序（not standard in Europe）</li>
+                <li>遠端情境下，查驗官無法確認採樣的中立性（無法排除選擇性採樣的疑慮）</li>
+            </ul>
+            <p><strong>但「不太可能」不代表「不會發生」。</strong>建議公司預先制定樣品索取應對方案（sample request contingency plan），包含：</p>
+            <ul>
+                <li>法務諮詢啟動條件與聯絡流程</li>
+                <li>鏈條監管（chain of custody）文件格式</li>
+                <li>進出口規定的簡要確認（法規專員預先完成研究）</li>
+                <li>樣品包裝、運輸（冷鏈或常溫）及追蹤標準</li>
+            </ul>
+            <p>特別注意：即使是「不同意提供樣品」的決定，也必須先諮詢法務，避免直接拒絕引發衝突。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Chain of Custody 如同法庭物證保管鏈</h4>
+            <p>刑事訴訟中，物證從犯罪現場到法庭的每一個移交環節都必須有完整記錄，任何環節的中斷都可能使物證失效。藥品樣品的鏈條監管（chain of custody）道理相同。</p>
+            <p>若查驗官要求採樣但無法親自在場，任何採樣、包裝、運輸、接收環節都必須有文件記錄並由雙方確認——否則樣品的代表性和未受污染性將無法被第三方認證，導致樣品分析結果在法規層面失去效力。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 進出口規定對樣品運輸的影響</h4>
+            <p>PDA PtC-Remote 提醒：樣品運輸適用<strong>進出口規定（import/export rules）</strong>。這在跨國遠端查驗時尤為重要：</p>
+            <ul>
+                <li><strong>生物製品（biologics）：</strong>可能需要 CITES 許可或雙邊進出口授權</li>
+                <li><strong>含有管制成分的產品：</strong>需要麻醉藥品主管機關的特別許可</li>
+                <li><strong>冷鏈樣品：</strong>需確認目的地國家接收方具備適當儲存條件和接收能力</li>
+                <li><strong>部分台灣出口藥品樣品：</strong>可能需要食藥署出口許可</li>
+            </ul>
+            <p>建議在收到樣品索取請求後，立即啟動進出口規定確認程序，避免因行政障礙導致不必要的查驗延誤。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>歐洲 EMA 查驗官在虛擬視廠過程中，透過視訊看到生產線上有疑似異物的瓶子，要求公司採樣並寄送樣品供分析。你應如何回應？法務在何時介入？</li>
+                <li>為什麼遠端查驗中「chain of custody（鏈條監管）」的管理難度比現場查驗更高？公司可以採取哪些措施來降低風險？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC E.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic E.1 — Use of Daily or Intermediate Wrap-ups（每日或中間收尾會議的運用）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Can I have a daily or intermediate inspection <span class="key-term">wrap-up meeting</span> during a remote inspection?</p>
+
+        <h3>Recommendation</h3>
+        <p>As in on-site inspections, the inspected site should <strong>ask the inspectors for daily (or frequent) wrap-ups</strong> during virtual inspections to clarify any outstanding issues and to discuss the following day's content. Doing so gives the inspected site time to prepare necessary documents and employees. Alternatively, inspectors could provide these wrap-ups at the beginning of the following day.</p>
+
+        <p>Some inspectors do not normally provide wrap-ups, but a <strong>regular wrap-up should always be requested</strong> since it will facilitate the ongoing inspection and help avoid potential misunderstandings regarding requested information. Inspectors also should promptly communicate any shift in focus to a new topic.</p>
+
+        <p>In desktop inspections, regular exchange of information on the status of the documentation review and potential concerns is equally important for the efficiency of the inspection process.</p>
+
+        <h3>Rationale</h3>
+        <p>Risks related to miscommunication are higher during remote inspections than during on-site inspections due to the intrinsic limitations in communications. Regular wrap-ups held at a frequency congruent with the duration of the inspection can improve the efficiency and effectiveness of the overall process. These wrap-ups can allow the site to both identify and provide necessary clarifications and prepare documents and personnel for the next day's discussion. They also allow the inspector to ensure that the site clearly understands expectations and requests.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 每日收尾會議是降低遠端溝通誤差的最重要工具</h4>
+            <p>PDA PtC-Remote 明確指出：<strong>遠端查驗的溝通誤差風險高於現場查驗</strong>（risks related to miscommunication are higher during remote inspections）。這是因為：</p>
+            <ul>
+                <li>查驗官無法透過肢體語言、表情或環境氛圍判斷現場理解程度</li>
+                <li>文件索取透過多個數位管道傳遞，容易遺漏或誤解</li>
+                <li>跨時區查驗可能導致確認回路（confirmation loop）時間拉長</li>
+                <li>多工作流並行時，查驗官的關注重心可能在公司不知情的情況下已轉移</li>
+            </ul>
+            <p><strong>關鍵行動：</strong>即使查驗官沒有主動提議，公司應<strong>主動、每日</strong>提出 wrap-up 請求。不要等查驗官來問——主動提議體現了查驗紀律，也有助建立信任關係。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 每日收尾會議如同遠端施工的每日進度確認</h4>
+            <p>想像一個大型建設工地的業主（公司）委託承包商（查驗官）進行遠端驗收。如果業主沒有每日與驗收員確認「今天看了哪些、發現什麼問題、明天看哪些」，到最後驗收結束才發現業主以為已經通過的項目其實查驗官還有疑問——這時修正已為時已晚。</p>
+            <p>每日 wrap-up 就是每日進度確認電話：確保雙方對「今天完成了什麼、有哪些懸而未決、明天的計畫」有共同認知（共識對齊，alignment）。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 每日收尾會議標準議程（3–5 分鐘）</h4>
+            <p>建議公司準備標準化的 wrap-up 議程範本，每日由 Lead Remote Inspection Host 主持，時間控制在 3–5 分鐘：</p>
+            <table>
+                <tr>
+                    <th>議程項目</th>
+                    <th>說明</th>
+                    <th>建議時間</th>
+                </tr>
+                <tr>
+                    <td>1. 今日完成確認</td>
+                    <td>確認查驗官今日已審查的主題與文件，雙方對齊理解</td>
+                    <td>1 分鐘</td>
+                </tr>
+                <tr>
+                    <td>2. 未結事項（Open Items）</td>
+                    <td>逐一確認問題記錄中尚未回覆的請求，說明預計回覆時間</td>
+                    <td>1–2 分鐘</td>
+                </tr>
+                <tr>
+                    <td>3. 明日議程確認</td>
+                    <td>確認明日主題、順序、需要準備的文件或 SME</td>
+                    <td>1 分鐘</td>
+                </tr>
+                <tr>
+                    <td>4. 查驗官特別關注點</td>
+                    <td>請查驗官提出任何需要澄清的疑問或預期關注的領域</td>
+                    <td>30 秒</td>
+                </tr>
+            </table>
+            <p>此議程可直接在每日查驗結束前 15 分鐘發送給查驗官，作為提議 wrap-up 的邀請方式，同時也顯示公司的查驗管理成熟度。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 查驗焦點轉移（Focus Shift）的即時溝通義務</h4>
+            <p>PDA PtC-Remote 要求查驗官在<strong>轉換查驗關注點時應即時告知</strong>（promptly communicate any shift in focus）。這在遠端查驗中具有特別重要的意義：</p>
+            <p>現場查驗中，查驗官走進另一個房間就是焦點轉移的視覺信號；但在遠端查驗中，查驗官在多個文件窗口之間切換時，公司人員可能渾然不知，繼續準備舊主題的文件，浪費時間與資源。</p>
+            <p><strong>建議公司在 wrap-up 會議或即時 chat 中主動詢問：</strong>「查驗官，您目前對哪個主題最有興趣？我們希望確保資源安排符合您的需求。」這不是引導查驗方向，而是提高效率的專業做法。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>查驗官表示「我不需要每日 wrap-up，有問題我會直接提」。作為 Lead Remote Inspection Host，你會如何回應？為什麼 PDA PtC-Remote 建議即使查驗官不主動要求，也應堅持每日 wrap-up？</li>
+                <li>查驗第三天，你注意到查驗官的問題突然從品質系統轉向生產偏差紀錄，但沒有預先告知。你應該如何處理這個焦點轉移？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — Part II: Remote Inspection Realization</h3>
+    <ul>
+        <li><strong>Topic A.1：</strong>遠端查驗全日使用單一視訊連結；設立虛擬候診室管控人員進出；所有問題（口頭+書面）均需記錄於集中問題 log；溝通只限於雙方事先同意的平台，不得使用 SMS/WhatsApp 等非正式管道</li>
+        <li><strong>Topic B.1：</strong>多查驗官同時作業時，為每個工作流指派專屬 Remote Inspection Host 和獨立視訊連結；問題 log 必須對所有 Host 可見，確保無重複請求</li>
+        <li><strong>Topic C.1：</strong>查驗官不得直接存取 GMP/GDP 系統（LIMS、BMS 等）；正確方式為站點受訓專家代為登入並螢幕共享；拒絕直接存取不等於拒絕接受查驗，需事先準備標準說明措辭</li>
+        <li><strong>Topic D.1：</strong>回應速度應盡快且符合現場運作；預先建立法務諮詢策略，涵蓋人員影像請求、錄影請求、必須拒絕的請求三類情境；可分批傳送大型電子文件</li>
+        <li><strong>Topic D.2：</strong>CMO/供應商稽核報告可透過螢幕共享或文件攝影機呈現封面與結論；分享完整報告前應確認品質協議條款並通知 CMO/供應商；未來所有品質協議應加入報告分享授權條款</li>
+        <li><strong>Topic D.3：</strong>遠端查驗中樣品索取請求極為罕見；若發生應先諮詢法務再決定同意或拒絕；需注意鏈條監管（chain of custody）管理與進出口規定</li>
+        <li><strong>Topic E.1：</strong>每日收尾會議（wrap-up）應主動要求，即使查驗官未提出；3–5 分鐘標準議程確保雙方對齊未結事項與次日計畫；遠端查驗的溝通誤差風險高於現場，wrap-up 是最有效的緩解工具</li>
+    </ul>
+</div>
+
+</div><!-- end .main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
