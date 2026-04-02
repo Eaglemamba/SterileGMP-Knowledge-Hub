@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-11 - Topic 4: Filtration</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 4: Filtration</h1>
+    <div class="subtitle">Topic 4：過濾策略</div>
+    <div class="page-info">PDA Points to Consider No. 11 (2025) | p24 - p30</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解為何過濾（filtration）是生物製品污染控制策略的首選方法，以及哪些病毒載體可能因過濾而受損</li>
+        <li>掌握擬定過濾控制策略時必須評估的關鍵要素，包括無法過濾時的風險評估要求</li>
+        <li>了解無菌過濾（sterile filtration）對質體（plasmid）和病毒載體（viral vector）的潛在影響，以及奈米過濾（nanofiltration）在病毒清除中的角色</li>
+        <li>區分過濾步驟的最佳放置位置，以及在早期開發階段決定是否過濾的時機與法規期望</li>
+        <li>說明無法進行無菌過濾時，無菌操作（aseptic processing）的範圍和無菌邊界（aseptic boundary）的設計原則</li>
+    </ul>
+</div>
+
+<!-- ==================== Q4.1 ==================== -->
+<div class="section-title">Q4.1 — Should filtration be considered as a part of the initial strategy of development and control?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>For contamination control of proteins and biologically active materials, the use of <span class="key-term">filtration technologies</span> is commonly preferred over other technologies (e.g., steam sterilization, gamma sterilization, X-ray) because it tends to reduce the impact on the product's quality attributes.</p>
+
+        <p>Microbial and viral filtration should be included in the design of the manufacturing process from the earliest conceivable timepoint so that its introduction later in development does not introduce any unintended impact on product quality attributes. Establishing filtration for a process may be challenging, as <span class="key-term">lentiviral</span>, <span class="key-term">rHSV</span>, and <span class="key-term">gamma-retroviral vectors</span> may be damaged by filtration or result in such low potency that a lot may be unusable. While <span class="key-term">AAV vectors</span> can typically be filter-sterilized, potential product changes due to filtration, such as <span class="key-term">aggregation</span>, should be characterized.</p>
+
+        <p>PDA Technical Report No. 26 Sterilizing Filtration of Liquids (TR 26) and Technical Report No. 41 (Revised 2022) Virus Retentive Filtration (TR 41) provide in-depth discussions of the theoretical and technical elements associated with the filtration of fluids with the goal of removing microbial and viral contamination. EMA Annexes 1 and PIC/S Annex 2A state compliance expectations when the drug product cannot be filter-sterilized, as in the case in cell therapies. Where filtration is not possible, <span class="key-term">aseptic processing</span> is expected. In addition, the sterile filtration or aseptic processing of starting materials is also expected (e.g., media used for producer cells, transfection agents, other additives).</p>
+
+        <p>The decision to aseptically produce without filtration must be accompanied by a <span class="key-term">risk assessment</span>, including results of the filter development study from the specific product or from platform experience, that demonstrate the product was irreparably harmed by the process of filtration. For more detailed information, see FDA Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice and EU Annex 1.</p>
+
+        <div class="quote-box">
+            "Microbial and viral filtration should be included in the design of the manufacturing process from the earliest conceivable timepoint..."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為何過濾是生物製品的首選？</h4>
+            <p><strong>過濾 (Filtration)</strong> 是生物活性材料（如病毒載體、質體）的優先污染控制方式，原因在於它是一種<strong>物理分離</strong>過程，不需要加熱、輻射或化學反應，因此對產品分子結構的破壞最小。</p>
+            <p>相比之下：</p>
+            <ul>
+                <li><strong>蒸氣滅菌（steam sterilization）</strong>：高溫高壓，蛋白質和病毒載體幾乎全部失活</li>
+                <li><strong>伽瑪射線（gamma sterilization）</strong>：輻射會造成核酸鏈斷裂，破壞載體的遺傳物質</li>
+                <li><strong>X 光滅菌（X-ray sterilization）</strong>：與伽瑪類似，對生物活性材料損傷嚴重</li>
+            </ul>
+            <p><strong>過濾的核心優勢</strong>：在不破壞產品關鍵品質屬性（CQA）的前提下，物理性排除微生物與病毒污染。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 過濾就像「濾湯」，而非「煮沸」</h4>
+            <p>想像你熬了一鍋精心調配的高湯，裡面有細緻的香氣與營養成分（代表病毒載體的活性）。現在你發現湯裡可能有雜質（代表微生物污染）。</p>
+            <p>你有兩個選擇：</p>
+            <ul>
+                <li><strong>選項 A：煮沸再煮沸</strong>（蒸氣滅菌）— 雜質確實被殺死了，但湯的香氣和許多營養成分也一起消失了</li>
+                <li><strong>選項 B：用細目篩網過濾</strong>（無菌過濾）— 雜質被截留在篩網上，湯的風味和營養幾乎完整保留</li>
+            </ul>
+            <p>對生物活性材料而言，「過濾」就是那張保護風味的細目篩網。但對於像 LV（慢病毒）這種「顆粒太大容易卡在篩網上」的載體，即使是過濾本身也可能造成損失——這就是本題的挑戰所在。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — LV / rHSV 是最具挑戰性的載體</h4>
+            <p>慢病毒載體（lentiviral vector, LV）、重組單純疱疹病毒（rHSV）和伽瑪-逆轉錄病毒（gamma-retroviral vector）是 ATMP 開發中過濾難度最高的三類載體，原因如下：</p>
+            <ul>
+                <li><strong>顆粒尺寸大</strong>：LV 約 80–120 nm，接近 0.22 µm 過濾膜的截留範圍，極易被截留或受到剪切力損傷</li>
+                <li><strong>結構脆弱</strong>：包膜病毒（enveloped virus）的脂質雙層膜在高壓差下容易破裂</li>
+                <li><strong>效價損失嚴重</strong>：過濾後往往造成活性單位（transducing units, TU）大幅下降，甚至整批報廢</li>
+            </ul>
+            <p>相比之下，<strong>AAV（腺相關病毒）</strong> 為非包膜病毒，結構更為穩固，通常可以過濾，但仍需評估聚集（aggregation）風險。</p>
+            <p>合規提示：若決定不過濾，必須有<strong>風險評估報告</strong>及過濾研究數據（或平台經驗數據）支撐，並說明產品確實不可挽回地受到過濾損害。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>法規依據 Key References</h4>
+            <ul>
+                <li><strong>PDA TR26</strong>：Sterilizing Filtration of Liquids — 液體無菌過濾的理論與技術基礎</li>
+                <li><strong>PDA TR41 (Revised 2022)</strong>：Virus Retentive Filtration — 病毒保留性過濾（Virus-retentive filtration）的完整指引</li>
+                <li><strong>EMA Annex 1</strong> / <strong>PIC/S Annex 2A</strong>：當產品無法過濾時（如細胞治療）的合規期望</li>
+                <li><strong>FDA Guidance</strong>：Sterile Drug Products Produced by Aseptic Processing — cGMP</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.2 ==================== -->
+<div class="section-title">Q4.2 — What are the key considerations for the control strategy when filtration is considered and when filtration cannot be performed?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The following are key elements to deliberate when filtration is considered:</p>
+        <ul>
+            <li>Intended purpose of the filtration step (e.g., sterilization, bioburden reduction, viral removal)</li>
+            <li>Type of filter and its material of construction (e.g., depth filter, casted membrane, hollow fiber, cartridge)</li>
+            <li>Process conditions (e.g., temperature, pressure differential, flow rate, nature of the fluid, flush volume)</li>
+            <li>Nature and level of microbial and/or viral contamination</li>
+            <li>Quality impact on the product (e.g., yield, adsorption, viability/activity, inactivation, matrix reactivity, aggregates, <span class="key-term">extractables/leachables</span>)</li>
+        </ul>
+
+        <p>These elements must be evaluated as part of the control strategy when filtration is identified as the mechanism to remove <span class="key-term">adventitious agents</span> (e.g., microbial and viral contamination). These elements should also be considered as part of the demonstration that filtration was not possible if a risk assessment is planned for that purpose. (See PDA TR 26 for additional information.)</p>
+
+        <p>Whether the plasmid or vector will be filtered or aseptically manipulated without filtration, the control strategy is expected to minimize opportunities for adventitious agent contamination. To ensure that the control strategy is sufficiently robust, a thorough evaluation of the process from feed to final product is required to ensure the proper controls are in place to prevent adventitious agents from being introduced into the product stream. Each step should be evaluated to identify aseptic manipulations and specify the requirements for either reduced bioburden or sterile/virus-free components.</p>
+
+        <p>In early development laboratories, aseptic processing may seem to be impractical, even though GLP and/or GxP quality systems are in place. If vector is produced in an R&amp;D, academic, or process-development lab and later used in <span class="key-term">first-in-human trials</span>, however, careful consideration through a risk assessment and an appropriate quality assurance review is warranted to evaluate the potential for microbial and viral contamination and patient risks.</p>
+
+        <p>PIC/S Annex 2A provides guidance on the design and separation of ventilation systems that should be considered when multiple <span class="key-term">replication-competent vectors</span> are being developed in parallel with other processes.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 「不過濾」決策的風險評估要求</h4>
+            <p>當產品無法進行無菌過濾時，控制策略必須填補這個空缺。PDA PtC-11 明確列出在考慮過濾或評估「無法過濾」時，必須系統性評估的五大要素：</p>
+            <ul>
+                <li><strong>過濾目的（Purpose）</strong>：是無菌（sterilization）、降低生物負荷（bioburden reduction），還是病毒去除（viral removal）？目的不同，所選用的膜孔徑和驗證策略也不同</li>
+                <li><strong>過濾器類型與材質（Filter type/material）</strong>：深層濾器（depth filter）、鑄膜（cast membrane）、中空纖維（hollow fiber）、濾筒（cartridge）各有其截留機制與相容性差異</li>
+                <li><strong>製程條件（Process conditions）</strong>：溫度、壓差、流速、液體性質、沖洗體積都會影響過濾效率和產品回收率</li>
+                <li><strong>污染性質與程度（Contamination level）</strong>：已知的微生物和病毒背景污染程度決定了所需的安全邊際</li>
+                <li><strong>對產品的品質影響（Quality impact）</strong>：特別關注萃取物/浸出物（extractables and leachables, E&amp;L）、聚集體（aggregates）、活性/效價損失</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 早期 R&amp;D 級材料用於 FIH 試驗是高風險合規區域</h4>
+            <p>這是法規檢查中的已知高風險區域（known compliance risk area）。許多 CDMO 和學術機構的向量在早期開發時是在 R&amp;D 或 process development 實驗室生產的，這些場所往往：</p>
+            <ul>
+                <li>缺乏正式的無菌製造設施</li>
+                <li>使用 R&amp;D 等級（非 GMP 等級）的原物料</li>
+                <li>未進行完整的微生物控制驗證</li>
+            </ul>
+            <p>然而，一旦這批材料計劃用於<strong>首次人體試驗（first-in-human, FIH）</strong>，GMP 要求立即適用。此時需要：</p>
+            <ul>
+                <li>正式的<strong>風險評估（risk assessment）</strong>，評估微生物和病毒污染的患者風險</li>
+                <li><strong>品質保證（QA）審查</strong>，確認生產過程的適當性</li>
+            </ul>
+            <p><strong>法規警示</strong>：FDA 和 EMA 均有案例顯示，因早期載體生產過程不合規而導致 IND/CTA 審查延誤，甚至臨床試驗暫停。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 控制策略就像「食安管理體系」</h4>
+            <p>想像一家餐廳的食材管理：無論食材最後有沒有「高溫烹飪（=過濾/滅菌）」，每一個從進貨到上桌的環節都必須有對應的污染防控措施。</p>
+            <p>如果今天廚師說「這道菜不能加熱（=載體無法過濾）」，那麼食材供應鏈、廚房衛生、餐具消毒等每一個環節都需要更嚴格的管理——這正是控制策略從「進料到最終產品」全流程評估的精神。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.3 ==================== -->
+<div class="section-title">Q4.3 — What is the impact of sterile filtration on plasmids and vectors?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Removal of microbial contamination is commonly attained by means of <span class="key-term">0.1 µm to 0.22 µm membranes</span>. The structure of plasmids and vectors make them susceptible to aggregation during certain processing conditions. Close attention must be paid to steps prior to the filtration that could result in the formation of aggregates as the solutions approach the membrane. If aggregates are formed, they may be retained on the filter resulting in reduced yield and potency.</p>
+
+        <p>Working with membrane vendors during development may enable the reduction of harm to the product (e.g., preventing product loss, the formation of aggregates, loss of potency). Fine-tuning the product chemistry and the membrane characteristics may yield improved results. For example, with <span class="key-term">lentiviral vectors</span>, performing <span class="key-term">scaled-down studies</span> with <span class="key-term">43 mm disc membranes</span> from several different vendors may be beneficial to study the differences in impact that different membranes impart. The use of scaled-down studies economizes on the amount of vector used during development when it is in short supply.</p>
+
+        <p>Often dual-layer, asymmetric <span class="key-term">polyethersulfone (PES) membranes</span> are successful candidates for developing a lentiviral control strategy which includes final filtration.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 的 LV 過濾縮小規模研究策略</h4>
+            <p>對 CDMO 而言，慢病毒載體（LV）的過濾開發研究是一項重要的服務能力。PDA PtC-11 提供了一個具體且經濟的實驗設計框架：</p>
+            <p><strong>為什麼用 43 mm disc 膜？</strong></p>
+            <ul>
+                <li>43 mm 圓盤型膜片的有效過濾面積約 14.6 cm²，遠小於正式生產用的濾筒（cartridge）</li>
+                <li>相同比例的縮小實驗只需消耗少量珍貴的載體，大幅降低開發成本</li>
+                <li>可同時對多個廠商的膜材進行平行比較，快速篩選出最佳候選膜</li>
+            </ul>
+            <p><strong>為什麼 PES 雙層非對稱膜是首選？</strong></p>
+            <ul>
+                <li><strong>聚醚碸（Polyethersulfone, PES）</strong>：低蛋白吸附性，適合病毒載體這類高價值生物製品</li>
+                <li><strong>雙層（dual-layer）</strong>：前層截留大顆粒（aggregates），後層完成精細過濾，降低堵塞風險</li>
+                <li><strong>非對稱（asymmetric）</strong>：孔徑由進液面向出液面逐漸縮小，增加截留效率並延長膜片壽命</li>
+            </ul>
+            <p><strong>CDMO 商業意涵</strong>：若客戶載體無法過濾，整個批次可能無法使用，損失極大。事先投入縮小規模研究（scaled-down study），是降低最終規模生產失敗風險的最佳投資。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 過濾前步驟同樣關鍵</h4>
+            <p>PDA PtC-11 特別強調：導致聚集（aggregation）的原因往往<strong>不在過濾膜本身，而在過濾前的製程條件</strong>。需要特別監控：</p>
+            <ul>
+                <li>緩衝液置換（buffer exchange）條件</li>
+                <li>濃縮步驟（concentration step）的剪切力</li>
+                <li>儲存溫度和時間（凍融循環）</li>
+                <li>液體 pH 和離子強度的變化</li>
+            </ul>
+            <p>若聚集體（aggregates）已在過濾前形成，它們將被截留在膜上，直接導致<strong>產率下降和效價損失</strong>——而過濾膜本身無需為此「負責」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 膜篩選就像「為特定選手選跑道」</h4>
+            <p>不同的過濾膜就像不同材質的跑道——有的對長跑選手（大顆粒 LV）友善，有的則容易讓他們絆倒（被截留）。縮小規模研究就是在正式比賽前，讓選手試跑每一條跑道，找到最適合的那條。43 mm disc 的經濟性就是讓你用最少的「試跑成本」完成賽道評選。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.4 ==================== -->
+<div class="section-title">Q4.4 — Why is the use of nanofiltration to mitigate viral contamination relevant?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Virus-retentive filters</span> are designed to remove potential viruses by means of size exclusion; the nominal pore size in these filters is <span class="key-term">0.1 µm</span>. These filters are used in ATMPs to process culture media or buffers used to culture or expand cells where viral contamination will be detrimental to the product, and they should be considered as part of the overall <span class="key-term">adventitious virus control strategy</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 奈米過濾在 ATMP 的角色</h4>
+            <p><strong>奈米過濾（Nanofiltration）</strong>，更精確地稱為<strong>病毒保留性過濾（Virus-retentive filtration）</strong>，在 ATMP 製造中的應用場景與一般無菌過濾不同：</p>
+            <p><strong>應用對象</strong>：不是直接過濾含有病毒載體的產品，而是過濾<strong>培養基（culture media）</strong>和<strong>緩衝液（buffers）</strong>——這些材料一旦受到病毒污染，會嚴重危害細胞培養或病毒擴增過程。</p>
+            <p><strong>作用原理</strong>：標稱孔徑（nominal pore size）0.1 µm，透過<strong>尺寸排阻（size exclusion）</strong>截留病毒顆粒，去除培養基中可能存在的外源性病毒（adventitious viruses）。</p>
+            <p><strong>在控制策略中的定位</strong>：作為整體<strong>外源性病毒控制策略（adventitious virus control strategy）</strong>的一環，與來源材料測試、供應商資格確認等措施共同構成多層次防護（layered defense）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 奈米過濾 vs. 無菌過濾的區別</h4>
+            <p>容易混淆的兩個概念：</p>
+            <ul>
+                <li><strong>無菌過濾（Sterile filtration）</strong>：使用 0.22 µm（或 0.1 µm）膜，目的是去除微生物（細菌、真菌），確保產品無菌。<span class="key-term">0.22 µm membrane</span> 是最常見的無菌過濾標準。</li>
+                <li><strong>病毒保留性過濾（Virus-retentive filtration / Nanofiltration）</strong>：使用 0.1 µm 或更小孔徑的特殊膜，目的是去除病毒顆粒，通常用於培養基/緩衝液的病毒清除，而非終產品的無菌化。</li>
+            </ul>
+            <p>在 ATMP 製造中，兩者可能同時出現在製程中——但應用於不同的流體和不同的防護目的。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 奈米過濾是「食材供應鏈的病毒安全網」</h4>
+            <p>延續前面的餐廳比喻：奈米過濾就像在食材進入廚房<strong>之前</strong>，對水源和醬汁進行的病毒檢測和過濾。即使主廚（最終產品過濾）技術再好，如果供應鏈（培養基/緩衝液）本身帶有病毒，整個批次的細胞培養都可能受到污染，造成無法挽回的損失。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.5 ==================== -->
+<div class="section-title">Q4.5 — Does the sterile filter have to be the last step in the process before filling?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Ideally, the point of filtration should come after all significant additions and manipulations of the product, which naturally places the filtration step as the last activity prior to filling. If a different position within the process is warranted (e.g., based on harm to the product or excessive product loss during filtration), a risk assessment may be possible to support an earlier position for filtration in the process.</p>
+
+        <p>The final position for the filtration and its justification should be part of the <span class="key-term">formal control strategy</span>.</p>
+
+        <div class="quote-box">
+            "The final position for the filtration and its justification should be part of the formal control strategy."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 過濾位置的設計原則</h4>
+            <p>無菌過濾的理想位置（ideal position）是製程的<strong>最後一個步驟</strong>，緊接於充填（filling）之前。這樣設計的邏輯是：</p>
+            <ul>
+                <li>過濾後的所有操作步驟都是潛在的再污染風險點</li>
+                <li>若過濾後還有添加（additions）或操作（manipulations），代表產品已在沒有過濾保護的情況下暴露於潛在污染環境</li>
+                <li>「最後過濾」相當於在最靠近患者的那一道關卡確認無菌性</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 非最後步驟過濾必須在控制策略中明確記錄</h4>
+            <p>若基於產品損害（product harm）或過度產品損失（excessive product loss）的原因，過濾步驟必須提前（earlier position），則：</p>
+            <ul>
+                <li>必須進行<strong>風險評估（risk assessment）</strong>，量化提前過濾帶來的污染風險增量</li>
+                <li>風險評估結果和<strong>替代控制措施</strong>（補償性控制）必須明確記錄</li>
+                <li>過濾位置的選擇及其理由（justification）必須納入<strong>正式控制策略（formal control strategy）</strong>文件中</li>
+            </ul>
+            <p><strong>法規啟示</strong>：在 FDA 和 EMA 的 GMP 查廠中，過濾步驟的位置及其理由是必查項目之一。沒有充分文件化的提前過濾決策，是常見的 483 觀察項目（FDA 483 observation）來源。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 最後過濾是「出門前最後一道門鎖」</h4>
+            <p>在無菌製造中，過濾就像出門前的最後一把門鎖。理想情況下，你在踏出門（充填）的瞬間才鎖門（過濾），確保沒有任何闖入者留在屋內。</p>
+            <p>如果你因為某些原因（比如門鎖太重，門框會因此損壞——代表產品損害）必須在更早的時候鎖門，那麼你就需要在門關上後到真正出門之前的這段時間，有其他的安全措施（監控攝影機、警報器——代表補償性控制），並且要白紙黑字記錄下來為什麼要這樣做。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.6 ==================== -->
+<div class="section-title">Q4.6 — In early vector development, what is the timing for the decision on whether to aseptically process or sterile filter?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The decision to filter or to aseptically process should be made as early as practicable in the design of the product. The earlier the decision is made, the easier it will be to ensure that the appropriate control elements are included in the CCS and that the necessary unit operations are protected as required to fulfill the design requirements. However, the decision to not include a sterile filtration step requires justification, appropriate risk assessment, and data to support the risk assessment, therefore, the timing may depend on the collection of data and justification of the approach.</p>
+
+        <p>Ultimately, the final approach should be codified within the QTPP, the control strategy for the process, the microbiological and virological <span class="key-term">CCS</span>, and the facility controls.</p>
+
+        <p>Early vector development commonly occurs in shared facilities that may have more than one standard for processing: therefore, careful procedural controls should be in place for each material developed that reflect the appropriate use of those materials (e.g., animal studies, tox studies).</p>
+
+        <p>Different regulatory authorities have varying stances on sterilization process validation and the timing relative to the development of clinical materials. For instance, in Europe there is an expectation that <span class="key-term">sterilization validation</span> will be complete and available prior to Phase I (see Q 4.1). The regulatory requirements for the jurisdictions selected by the MAH may therefore influence the timing of the decision on aseptic processing or filtration.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 盡早決策的理由</h4>
+            <p>「越早決定，越容易實施」——這是本題的核心邏輯。過濾或無菌操作的選擇，直接決定了：</p>
+            <ul>
+                <li><strong>設施需求</strong>：是否需要 RABS / 隔離器等高等級無菌設施</li>
+                <li><strong>設備配置</strong>：是否需要安裝過濾系統及完整性測試設備（integrity tester）</li>
+                <li><strong>CCS 架構</strong>：污染控制策略的整體設計（從微生物學和病毒學角度）</li>
+                <li><strong>驗證計畫</strong>：過濾效能驗證（filter validation）或無菌模擬試驗（APS）的時間線</li>
+            </ul>
+            <p>若在開發後期才決定，可能需要大幅修改設施、設備和製程，代價極高。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU vs. US 的時機差異（Phase 1 驗證期望）</h4>
+            <p>這是一個重要的<strong>法規差異點</strong>，類似 Topic 3（Q3.1）的模式：</p>
+            <table>
+                <tr>
+                    <th>法規轄區</th>
+                    <th>Phase I 前的滅菌驗證期望</th>
+                </tr>
+                <tr>
+                    <td><strong>歐盟（EU）/ EMA</strong></td>
+                    <td>在 Phase I 臨床材料使用<strong>之前</strong>，滅菌驗證（sterilization validation）必須完成並可供審查</td>
+                </tr>
+                <tr>
+                    <td><strong>美國（US）/ FDA</strong></td>
+                    <td>Phase I 期間主要是展示無菌製程能力（capability），不嚴格要求在 Phase I 前完成正式模擬驗證（simulation run）</td>
+                </tr>
+            </table>
+            <p><strong>實務意涵</strong>：若 MAH（上市許可持有人）計劃在歐盟申請 CTA（臨床試驗授權），則過濾/無菌製程的決策和驗證必須在更早的時間點完成——這會直接影響早期開發的時程規劃。</p>
+            <p>對 CDMO 而言，了解客戶的目標申請市場（EU vs. US vs. 雙軌）對於正確規劃驗證時間線至關重要。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 早期決策就像「蓋房子先決定用木造還是鋼筋水泥」</h4>
+            <p>過濾 vs. 無菌操作的選擇，就像蓋房子時最先要決定的結構體系——是木造（輕盈但限制較多）還是鋼筋混凝土（重但靈活度高）。</p>
+            <p>這個決定一旦確定，所有後續的設計（配管、設備、驗證計畫）都必須圍繞它展開。如果在快蓋完了才改變主意，前面做的很多工作都得拆掉重來——時間和金錢的損失都是巨大的。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== Q4.7 ==================== -->
+<div class="section-title">Q4.7 — When sterile filtration is not an option, at what point in the process is aseptic processing needed?</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>In an aseptic process, the materials used in the process are sterilized separately (e.g., filtration, heat, irradiation) and then brought together in an aseptic manner. The point where aseptic manipulations must be conducted should be as far <span class="key-term">downstream</span> in the process as practicable. In this manner, there is a high degree of sterility assurance for the individual components and the aseptic processing steps (the <span class="key-term">aseptic boundary</span>) are kept to the absolute minimum.</p>
+
+        <div class="quote-box">
+            "The point where aseptic manipulations must be conducted should be as far downstream in the process as practicable... the aseptic processing steps (the aseptic boundary) are kept to the absolute minimum."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 無菌製程的結構原理</h4>
+            <p><strong>無菌製程（Aseptic processing）</strong> 的核心邏輯是<strong>「分別滅菌，無菌合併」</strong>：</p>
+            <ol>
+                <li>每一個個別組件（容器、緩衝液、活性成分）分別透過適當的方法滅菌（過濾、濕熱、輻射等）</li>
+                <li>已滅菌的組件在<strong>受控的無菌環境</strong>中組合在一起</li>
+                <li>從組合操作開始，到最終密封完成，這整個區段就是<strong>無菌邊界（aseptic boundary）</strong>的範圍</li>
+            </ol>
+            <p><strong>關鍵設計原則</strong>：無菌邊界越小越好。因為無菌邊界內的每一個操作步驟都是潛在的污染風險點——邊界越大，需要管控的風險點越多，無菌保證（sterility assurance）的難度也越高。</p>
+            <p>因此，無菌操作應盡可能<strong>推遲到製程最下游（as far downstream as practicable）</strong>，讓上游製程在非無菌條件下完成，只在最後幾個關鍵步驟才進入無菌環境。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 無菌邊界就像「手術室的開放區域」</h4>
+            <p>想像一場外科手術：手術室（無菌邊界）就是那個極度嚴格管控污染的空間。<strong>手術室的範圍越小、手術時間越短，污染的機會就越少。</strong></p>
+            <p>在設計無菌製程時，目標就是把「手術室（無菌邊界）」縮到最小：讓術前準備（upstream 製程）盡量在更外圍的空間完成，只有「開刀本身（最後幾個無菌操作步驟）」才進入最嚴格的無菌區。</p>
+            <p>換句話說：不要把整個醫院都變成手術室——只把手術台周圍那幾平方公尺維持在最高的無菌標準。這正是「盡量推遲無菌邊界啟動點」的精髓。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 無菌邊界最小化的實務意義</h4>
+            <p>對於無法進行無菌過濾的 ATMP（如 LV 載體），製程設計的優化目標是：</p>
+            <ul>
+                <li>在合理可行的範圍內，盡量讓<strong>最多的製程步驟（細胞培養、病毒生產、初步純化）</strong>在無菌邊界<strong>以外</strong>完成</li>
+                <li>讓進入無菌邊界的時機盡量<strong>靠近最終充填步驟</strong></li>
+                <li>對於進入無菌邊界的每一個個別組件，確保它們<strong>各自已達到滅菌要求</strong>（個別過濾、高壓滅菌、輻射滅菌等），再帶入無菌邊界合併</li>
+            </ul>
+            <p><strong>合規提示</strong>：無菌邊界的定義和範圍必須在<strong>污染控制策略（CCS）</strong>中明確記錄，並透過<strong>無菌製程模擬（Aseptic Process Simulation, APS）</strong>進行驗證。</p>
+        </div>
+
+        <!-- Practice questions at Q4.7 -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一家 CDMO 正在開發慢病毒載體（LV）的充填製程，且經過 43 mm disc 縮小規模研究後確認多個廠商的 PES 膜均會造成超過 50% 的效價損失，此時應如何設計控制策略？請說明至少三項必須包含在書面風險評估中的關鍵要素。</li>
+                <li>歐盟申請 CTA 的客戶計劃在 6 個月後啟動 Phase I 試驗。目前尚未決定是否對其 AAV 載體進行無菌過濾。請說明這個時間點的法規風險，以及 CDMO 應如何建議客戶優先採取哪些行動。</li>
+                <li>「無菌邊界（aseptic boundary）應盡量推遲到製程最下游」——請用具體製程步驟（例如：培養基製備 → 病毒生產 → 純化 → 配製 → 充填）舉例說明如何應用這個原則，以及哪個步驟是無菌邊界的合理起始點。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>過濾優先原則</strong>：對生物活性材料，過濾（尤其是 0.22 µm 無菌過濾）是首選污染控制方法，因其對產品 CQA 影響最小；若無法過濾，必須有風險評估數據支撐（Q4.1）</li>
+        <li><strong>LV/rHSV 最具挑戰性</strong>：慢病毒、rHSV 和伽瑪-逆轉錄病毒載體因包膜結構脆弱、顆粒尺寸大，過濾常導致嚴重效價損失，是已知的高難度過濾對象（Q4.1, Q4.3）</li>
+        <li><strong>控制策略五大要素</strong>：過濾目的、過濾器類型/材質、製程條件、污染程度、對產品的品質影響（包含 E&amp;L），無論是「有過濾」還是「無法過濾」的場景，均須系統性評估（Q4.2）</li>
+        <li><strong>縮小規模研究經濟性</strong>：43 mm disc 膜片 + 多廠商平行比較，是 LV 過濾開發的實務標準；PES 雙層非對稱膜是常見成功候選材質（Q4.3）</li>
+        <li><strong>奈米過濾的不同角色</strong>：病毒保留性過濾（0.1 µm）用於培養基/緩衝液的病毒清除，是外源性病毒控制策略的一環，而非終產品的無菌化手段（Q4.4）</li>
+        <li><strong>過濾位置原則</strong>：理想上是充填前的最後一步；若提前，必須有風險評估並記錄在正式控制策略中（Q4.5）</li>
+        <li><strong>EU vs. US 時機差異</strong>：歐盟要求 Phase I 前完成滅菌驗證；美國在 Phase I 期間主要展示製程能力。決策時機受目標市場法規要求影響（Q4.6）</li>
+        <li><strong>無菌邊界最小化</strong>：無菌製程設計的核心原則——無菌操作點盡量推遲到製程最下游，以最小化污染風險點的數量和範圍（Q4.7）</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

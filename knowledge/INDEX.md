@@ -343,6 +343,49 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 
 ---
 
+## PDA/PtC-11-Complete.md
+**Report:** PDA Points to Consider No. 11 (2025): Development, Classification, Manufacture, Control, and Testing of Plasmids and Vectors Used in ATMP Production
+**Pages:** p1–p48 | **Sections:** 8
+
+**Covers questions about:**
+- How to classify plasmids and viral vectors (AAV, LV) as starting material vs. drug substance across FDA, EMA, TGA, PIC/S jurisdictions
+- GMP requirements for viral vectors defined as active drug substances or critical starting materials
+- QbD deliverables (QTPP, CQA, CMA, CPP) and MAH vs. CRO/CMO responsibility boundaries
+- Microbiological and viral control strategy: sterile vs. low-bioburden classification, APS/APV requirements
+- Filtration strategies for vectors: when sterile filtration is possible (AAV) vs. when aseptic processing is required (LV, rHSV)
+- Bridging vs. comparability: reference standard bridging, method bridging, site-change comparability (ICH Q5E)
+- Platform technology applications: matrix PPQ for pDNA, AAV serotype platforms, CAR-T/LV backbone platforms
+- Potency assay development: MOA-reflective assays, matrix approach, supercoil/nucleic acid surrogates for pDNA/mRNA
+
+**Key terms:** ATMP, viral vector, plasmid DNA (pDNA), AAV, lentiviral vector (LV), critical starting material, drug substance, QTPP, CQA, CMA, CPP, phase-appropriate GMP, Quality Agreement, adventitious agents, replication-competent virus, aseptic process simulation (APS), low-bioburden, sterile filtration, nanofiltration, bridging study, comparability (ICH Q5E), platform technology, matrix PPQ, potency assay, mechanism of action (MOA), supercoil integrity, ex vivo genetic modification, CAR-T, gene of interest (GOI)
+
+**Sections:** Section 0 (Intro & Scope) → Topic 1 (Categorization) → Topic 2 (QbD) → Topic 3 (Control Strategies) → Topic 4 (Filtration) → Topic 5 (Comparability) → Topic 6 (Platform Technologies) → Topic 7 (Potency)
+
+---
+
+## PDA/PtC-Remote-Complete.md
+**Report:** PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021)
+**Pages:** p1–p66 | **Sections:** 5
+
+**Covers questions about:**
+- What types of inspections can be conducted remotely: desktop, virtual, hybrid — and which cannot (for-cause, some PAIs)
+- How to verify the identity and affiliation of a remote regulatory inspector
+- Remote Inspection Host role: who it is, what authority they need, how the team should be structured
+- Hardware requirements for virtual inspections: document camera, multiple monitors, 360° cameras, Wi-Fi coverage
+- Document-sharing platform selection, searchable PDF requirements, what NOT to share via email
+- Pre-inspection agreements: cybersecurity, recording prohibition, data protection, legal counsel involvement
+- Inspector access to GMP/GDP systems (LIMS, BMS): why direct access must be refused, correct screen-sharing protocol
+- Managing multiple simultaneous workstreams: breakout rooms, question log, cross-workstream coordination
+- Daily wrap-up best practices and what to do when an inspection has ended
+- GMP/GDP certificate issuance after remote inspection and reinspection frequency implications
+- 2021 PDA global survey: 59 respondents, industry experience with COVID-era remote inspections
+
+**Key terms:** desktop inspection, virtual inspection, hybrid inspection, Remote Inspection Host, document-sharing platform, video communication platform, document camera, virtual tour, pre-inspection agreement, question log, workstream, breakout room, inspector identity verification, GMP/GDP certificate, reinspection frequency, PIC/S reliance, mutual recognition agreement (MRA), FDA 21 USC 374, FDA impersonation warning, chain of custody
+
+**Sections:** Section 0 (Intro & Glossary) → Part I (Planning & Notification: Topics A.1–E.3) → Part II (Realization: Topics A.1–E.1) → Part III (Closing & Response: Topics A.1–B.1) → Appendices (Doc List + Survey)
+
+---
+
 ## PDA/TR70-Complete.md
 **Report:** PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
 **Pages:** p1–p75 | **Sections:** 9
@@ -1659,6 +1702,19 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | MAH accountability supply chain, CDMO contract manufacturer shortage / MAH供應鏈責任、CDMO合約製造商短缺責任 | TR68 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
+| ATMP plasmid classification, viral vector starting material vs drug substance / ATMP質體分類、病毒載體起始原料vs藥品原料 | PtC-11 |
+| AAV lentivirus filtration, aseptic processing when filtration not possible / AAV慢病毒過濾、無法過濾時無菌加工 | PtC-11 |
+| ATMP QbD QTPP CQA CMA CPP MAH CRO CMO responsibility / ATMP QbD品質目標產品概況、MAH與CMO職責 | PtC-11 |
+| Viral vector control strategy, microbiological control sterile vs low-bioburden / 病毒載體管控策略、微生物管控 | PtC-11 |
+| Comparability bridging ICH Q5E ATMP gene therapy / 可比較性Bridging ICH Q5E基因治療 | PtC-11 |
+| Platform technology matrix PPQ AAV pDNA CAR-T lentivirus / 平台技術矩陣PPQ | PtC-11 |
+| Potency assay MOA ATMP gene therapy supercoil nucleic acid surrogate / 效價測定MOA基因治療超螺旋核酸替代指標 | PtC-11 |
+| Remote inspection virtual inspection hybrid inspection GMP GDP / 遠端查驗虛擬查驗混合式查驗GMP GDP | PtC-Remote |
+| Remote Inspection Host inspector identity verification document sharing platform / 遠端查驗主持人稽查員身份驗證文件共享平台 | PtC-Remote |
+| Virtual inspection hardware document camera multiple monitors 360 camera / 虛擬查驗硬體文件攝影機多螢幕 | PtC-Remote |
+| Inspector access GMP systems LIMS screen sharing refusal / 稽查員存取GMP系統LIMS螢幕共享拒絕 | PtC-Remote |
+| GMP certificate reinspection frequency after remote inspection / GMP證書遠端查驗後再查驗頻率 | PtC-Remote |
+| Pre-inspection agreement cybersecurity recording prohibition / 查驗前協議網路安全錄音禁止 | PtC-Remote |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
 | Environmental monitoring, EM / 環境監控、微生物監測 | TR13 + TR90 + PtC-12 + TR22 |
 | EM program fundamentals, alert levels, action limits, EM qualification / 環境監測計畫基礎、警戒線、行動線、EM確效 | TR13 |
@@ -1858,6 +1914,8 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Change Control (變更管制)**
 → TR91 ★★★ (post-approval change management: ECs, PACMP, PLCM, ICH Q12, global harmonization) | TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
 
+**Remote/Hybrid GMP Inspections:** | **PtC-Remote ★★★** (complete remote inspection guide: desktop/virtual/hybrid types, planning, hardware, document sharing, system access, closing, reinspection frequency, 2021 global survey) | PtC-9 ★★ (pandemic inspection experiences, hybrid models, FDA/EMA/PMDA approaches)
+
 **Pandemic Preparedness / Business Continuity (疫情準備/業務持續計畫)**
 → PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) | TR68 ★★★ (drug shortage prevention framework, VSM, DSPR Plan) | TR91 ★★ (PAC expediting to prevent supply disruption)
 
@@ -1880,7 +1938,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-CTC ★★★ (CTC mapping and monitoring: thermal mapping methodology, sensor placement, IQ/OQ/PQ for refrigerators/freezers/stability chambers, monitoring Alert/Alarm levels, measurement uncertainty, guard-banding, excursion response, packaged transport qualification) | TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
-→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes) | **PtC-11 ★★★** (plasmid/vector development, classification, manufacture, control: QbD, control strategy, filtration, comparability, platform, potency)
 
 **ATMP Raw Materials / Material Qualification (ATMP原材料/材料資格認定)**
 → PtC-13 ★★★ (complete material strategy: categories, risk-based qualification, supplier, lifecycle) — single primary source

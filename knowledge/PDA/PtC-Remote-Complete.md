@@ -1,0 +1,1921 @@
+# PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021): Remote and Hybrid GMP/GDP Inspections
+
+--- Page 1 ---
+Points to Consider in Remote and
+Hybrid GMP/GDP Inspections
+--- Page 2 ---
+Points to Consider in Remote and Hybrid GMP/GDP Inspections Team
+Authors and Contributors
+Inspections Subteam Technology Subteam
+Alexandre Drapier, GlaxoSmithKline (Co-lead Author) Raghu Ram Pannala, PhD, Sciegen (Subteam Lead)
+Gabriele Gori, GlaxoSmithKline (Co-lead Author) William Cashin, CordenPharma
+Tor Gråberg, AstraZeneca (Co-lead Author) Siegfried Schmitt, PhD, Parexel
+David Chesney, DL Chesney Consulting Herbert Vail, Shionogi, Inc.
+Eser Earley, Astellas
+Legal/Survey Subteam
+Laura Singer, Heron Therapeutics
+David Chesney, DL Chesney Consulting
+Prashant Wange, Sun Pharmaceutical Industries Ltd.
+Felicia Ford-Rice, Parexel
+Ruth K. Miller, JD, Parenteral Drug Association
+Task Force
+Tiffany Baker, ValSource (Co-lead) Ghada Haddad, PhD, Merck
+Eva Urban, CSL Behring (Co-lead) Alexander Nezlin, UroGen Pharma
+Karin Baer, NeuroDerm Raghu Ram Pannala, PhD, Sciegen
+William Cashin, CordenPharma Siegfried Schmitt, PhD, Parexel
+David Chesney, DL Chesney Consulting Vishal Sharma, Vi’enni Training and Consulting
+Robert Dana, Elkhorn Associates Michele Simone, Bracco
+Alexandre Drapier, GlaxoSmithKline Laura Singer, Heron Therapeutics
+Eser Earley, Astellas Prashant Wange, Sun Pharmaceutical Industries Ltd.
+Felicia Ford-Rice, Parexel Herbert Vail, Shionogi, Inc.
+Gabriele Gori, GlaxoSmithKline Bryan Wilson, GlaxoSmithKline
+Tor Gråberg, AstraZeneca
+Acknowledgements
+The authors express their gratitude to Ewan Norton, Lead Senior GMDP Inspector, Medicines and Healthcare
+Products Regulatory Agency, United Kingdom, and Teo Seok Hui, Senior Regulatory Specialist (GMP Auditor),
+Health Sciences Authority, Singapore, for their valuable insights and feedback.
+--- Page 3 ---
+Points to Consider in Remote
+and Hybrid GMP/GDP
+Inspections
+ISBN: 978-1-945584-28-2
+All rights reserved.
+Bethesda Towers
+4350 East West Highway
+Suite 200
+Tel: 1(301) 656-5900
+Fax: 1(301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org
+--- Page 4 ---
+Table of Contents
+INTRODUCTION ������������������������������������������������������1 Topic D.1: Responding to Requests ............................24
+Scope ...........................................................................2 Topic D.2: Sharing Audit Reports ................................25
+Glossary ........................................................................2 Topic D.3: Sample Collection ......................................26
+Topic E.1: Use of Daily or Intermediate Wrap-ups ......27
+I� PLANNING AND NOTIFICATION OF A REMOTE
+INSPECTION ����������������������������������������������������4
+III� REMOTE INSPECTION CLOSING, CONCLUSION,
+Topic A.1: Types of Inspections Performed Remotely ...4 AND RESPONSE ����������������������������������������������28
+Topic B.1: Notification ..................................................5 Topic A.1: Knowing an Inspection Has Ended .............28
+Topic B.2: Verification of an Inspector’s Identity ...........6 Topic A.2: Inspection Report and Findings and
+Response ............................................................29
+Topic C.1: Remote Inspection Team Formation ............7
+Topic A.3: Issuance of GMP/GDP Certificate ................30
+Topic C.2: Planning the Agenda ..................................9
+Topic B.1: Frequency of Reinspection .........................31
+Topic D.1: Hardware Requirements ............................11
+Topic D.2: Planning to Share Information ...................13
+IV� REFERENCES ��������������������������������������������������32
+Topic D.3: Planning for Effective Use of Technology ...15
+Topic D.4: Pre-Inspection Agreements ......................16 V� RELEVANT GLOBAL GUIDANCES �����������������������33
+Topic E.1: Preparing Necessary Documents ................17
+VII� APPENDIX 1: LIST OF QUALITY DOCUMENTS
+Topic E.2: Sharing of Inspection Reports ....................18 TO BE REVIEWED DURING INSPECTION ������������34
+Topic E.3: Timelines for Sharing Documentation........19
+VIII� APPENDIX 2: 2021 PDA RESEARCH: GLOBAL
+INDUSTRY RESPONSES TO REMOTE
+II� REMOTE INSPECTION REALIZATION �����������������20
+REGULATORY INSPECTIONS ����������������������������36
+Topic A.1: Use of Real-Time Interactions ....................20
+Survey Methodology ..................................................36
+Topic B.1: Managing Multiple Workstreams ...............22
+Survey Results ............................................................37
+Topic C.1: Inspector Access to Systems ........................23
+Survey Conclusion ......................................................59
+FIGURES AND TABLES INDEX
+
+*[Figure 1 Flow of the Sections of this Points to Consider Table A1-1 Documents That May Be Requested by an]*
+
+Document ........................................................1 Inspector ........................................................34
+--- Page 5 ---
+Introduction
+The COVID-19 pandemic has driven the world to find new technological tools to do business safely
+without sacrificing quality, efficiency, and effectiveness. This is especially true for the biopharmaceuti-
+cal industry. While many consider on-site inspections to be the optimal way of assessing compliance,
+remote inspection tools increasingly are seen as useful ways of obtaining meaningful insights into a
+site’s operations. But what factors should companies and health authorities consider when adjusting to
+the inspection format selected? How do you determine, address, and plan for the technological hurdles
+and considerations?
+This document examines advantages and best practices for planning and implementing all types of
+remote inspections, including desktop, virtual, and hybrid inspections. It describes best practices that
+will help all participants engage efficiently and avoid unnecessary or unexpected delays, stressors, or
+complications in the remote inspection process. While good planning and preparation by both the
+inspectors1 and the inspected entity are important for any inspection, they are vital to an efficient and
+effective remote inspection. This document therefore presents the topics in order, from planning and
+notification through closing and response, as illustrated in Figure 1. The suggestions in this document
+may be useful to sites that are the target of inspections and to health authorities.
+If inspections conducted using remote tools can provide thorough and reliable information, health
+authorities may continue to use them in certain situations in the future. Remote tools present advan-
+tages, as they allow health authorities to make optimal use of resources based on risk, allow for the
+involvement of specialized experts in a way that has not traditionally been possible on-site, and are
+more environmentally friendly. Issues currently seen as constraints may become less problematic as
+sites and health authorities gain experience.
+In addition, Appendix 2 presents the complete results of a PDA global survey on biopharmaceutical
+manufacturing experiences related to remote inspections. These results may provide insights about
+industry’s needs and concerns.
+
+*[Figure 1 Flow of the Sections of this Points to Consider Document]*
+
+1 This document uses the term “Inspector” to refer to individuals representing a health authority during an
+inspection. Some health authorities may use different terms.
+--- Page 6 ---
+Because health authorities around the world may take different approaches or be governed by specific
+legal requirements, sites should always consider local laws and practices. As with all PDA technical
+documents addressing new and evolving processes, PDA may update or adjust these Points to Consid-
+er as more experience is gained. This document does not represent a standard or regulatory guidance.
+Scope
+This document applies only to regulatory inspections concerning good manufacturing practices (GMP)
+and good distribution practices (GDP) and provides information relevant to both health authorities
+and the industry. The recommendations described in this document may be applied to other types of
+GxP inspections, although those were not specifically considered in the development of this document.
+This document is not intended to address remote auditing programs, such as remote supplier audits,
+vendor audits, internal audits, or self-inspections, although similar challenges apply.
+Glossary
+This document uses the following definitions. Because of the diversity of terminology used by inspec-
+torates around the world, however, sites should be aware that inspectors may use a different term or
+definition than stated here.
+Desktop Inspection: A type of remote inspection in which documentation (e.g., filing commit-
+ments, site description, and key procedures) is requested by the inspecting body that is not physically
+present at the site(s). Requests and responses to questions are shared in written form (e.g., via email or
+on a document-sharing platform). There can be several iterations of the requests and review of docu-
+mentation, questions, and answers. Phone calls and videoconferences take place only rarely to provide
+clarification about the documents requested or provided.2
+Document-Sharing Platform: A secure software application that facilitates file transfer. Document-
+sharing platforms allow end users to upload files to a shared storage space and designate who may
+access the files.
+GMP/GDP Inspection: Assessment of the compliance of a site with the applicable GMP/GDP regula-
+tions and filing commitments performed by officials of a competent (local/international) health authority.
+Hybrid Inspection: An inspection that is conducted remotely in part and also includes an in-person
+presence and on-site visit by the inspecting body. The remote and on-site aspects may be concurrent
+or at different times (e.g., a portion of the inspection is performed virtually or desktop, followed by
+a second portion on-site). The combination of remote and on-site components may be captured in a
+single inspection report or in separate reports.
+Remote Inspection: An inspection in which the inspector is not physically present at the site(s)
+where the activities subject to the assessment take or have taken place. Remote inspections may take
+several forms, including desktop, virtual, and hybrid.
+Video Communication Platform: Web-conferencing software that allows participants to conduct
+or attend meetings via the internet. This is also known as online meeting software or videoconferenc-
+ing. The video communication platform enables remote meetings based on voice over internet proto-
+col (VoIP), online video, instant messaging, file-sharing, and screen-sharing.
+2 Some regulatory authorities may use documentation requests and review in advance of an inspection or to
+update a company’s risk profile.
+--- Page 7 ---
+Virtual Inspection: In addition to sharing documentation as in any other remote inspection, vir-
+tual inspections utilize technologies such as live or real-time streaming video, screen-sharing, or other
+means of real-time communication. Virtual inspections may include virtual tours of aspects of the
+inspected site. These inspections also may be referred to as distant assessments or remote interactive
+evaluations.
+--- Page 8 ---
+I� Planning and Notification of a Remote Inspection
+Topic A�1: Types of Inspections Performed Remotely
+Problem Statement
+What factors might health authorities consider in determining whether a remote inspection of a site
+is appropriate?
+Recommendation
+Health authorities can use risk assessments to determine the suitable use of remote inspections, includ-
+ing desktop and virtual inspections, on a case-by-case basis. Authorities will determine the level of risk
+based on several factors including results of previous inspections, availability of historical information
+and inspection reports by other trusted inspectorates, complexity of the manufacturing processes, and
+criticality of the products being manufactured. Desktop inspections often are more suitable for less
+critical assessments, while on-site inspections may be necessary for more critical inspections. External
+factors also may be considered, and an inspectorate may decide to use remote inspection tools for
+products or sites related to a public health need when an on-site inspection is not possible (e.g., during
+a pandemic or due to prioritization of regulatory resources).
+In determining the appropriate format and tools for an inspection, the inspectorate also should con-
+sider any technological limitations and the processes, activities, or sites that can be assessed remotely
+with the technological tools available. For instance, inspectors may not be able to see the “full scene”
+virtually due to technological, security, and/or safety constraints. Wi-Fi network coverage may be lim-
+ited in certain parts of the inspected facility, and some communication devices cannot be used in areas
+that present a risk of explosion. At the same time, sites may find alternative solutions to certain chal-
+lenges. While it may be impractical for sites to convert certain documents, such as logbooks or bench
+books, to a format suitable for electronic sharing, for example, sites can display such documents during
+videoconferences using a camera specifically designed for the purpose, as discussed in more detail in
+Topic I.D.1 Hardware Requirements.
+Health authorities may determine that some inspections cannot be conducted remotely. For instance,
+some health authorities may determine that for-cause inspections, some follow-up inspections (e.g.,
+following a warning letter or equivalent outcome), or some preapproval inspections (PAIs) might not
+be suitable candidates for remote inspection at this time. Future technological developments and in-
+creasing experience with remote inspections might change these assessments over time.
+If some inspection objectives can be achieved remotely, a hybrid inspection may be used. In this
+scenario, the remote portion of the inspection, whether desktop or virtual, can partially address the
+inspection scope and a later on-site inspection can be used to complete the assessment.
+The legal and regulatory framework in some countries may not allow remote inspections.
+Rationale
+While, theoretically, each type of inspection can be performed remotely, the level of scrutiny possible
+in a remote inspection may not always be equivalent to an on-site inspection. Remote inspections
+are heavily dependent on the technology available (e.g., use of live stream, high-resolution videos)
+and scope of the inspection (e.g., physical manufacturing facility versus quality management system
+(QMS) documentation review).
+--- Page 9 ---
+Topic B�1: Notification
+Problem Statement
+How can an inspectorate provide notification of a remote inspection? Should this be provided in ad-
+vance?
+Recommendation
+For a remote inspection, the health authority may provide notification through emails, phone calls, or
+periodic teleconferences and meetings.
+Because both parties must prepare and test the document-sharing platform and, in the case of virtual
+inspections, the video communication platform, the inspector is strongly recommended to provide ad-
+equate advance notification of each remote inspection. Advance notification also is necessary to allow
+the inspected site to prepare documentation as well as on-site and remote resources and logistics. This
+preparation time will allow for a smoother and more effective inspection and will help prevent frustra-
+tion and lost time over technical issues during the inspection. For virtual inspections, in particular, the
+inspector should notify the site of the anticipated starting date as early as possible.
+For a virtual inspection, additional pre-inspection requests may be sent to the inspected site, in ad-
+dition to or embedded in the usual documentation request, to be completed within a specified time-
+frame (e.g., within two calendar weeks of receipt of the request). This additional information will assist
+in determining if the site is ready for a virtual inspection.
+For desktop inspections, the request for documentation signals the beginning of the inspection, where-
+as the beginning of a virtual inspection is denoted by the opening meeting.
+Rationale
+A key difference between a remote inspection (whether virtual or desktop) and an on-site inspection is
+the sharing of data and documentation with inspectors using electronic methods. In an on-site inspec-
+tion, binders of paper documents can be easily provided to the inspectors for their review, and tours of
+the facility do not require the preparation and sharing of videos. To facilitate electronic sharing of in-
+formation in a remote inspection, however, appropriate communication channels must be established
+and tested. Data and documentation may need to be prepared in advance for electronic exchange. For
+example, paper documents may need to be scanned, documents may need to be translated into the
+language of the inspectorate if requested, and data may need to be extracted from computerized da-
+tabases. In addition, the facility may need to prepare for live tours of requested areas and prerecorded
+tours of areas where live tours are not possible, including areas without a Wi-Fi signal. Thus, advance
+notification to the inspected site is important in achieving a satisfactory remote inspection experience.
+--- Page 10 ---
+Topic B�2: Verification of an Inspector’s Identity
+Problem Statement
+In the remote setting, how can a site verify the identity and affiliation of a person presenting him/
+herself as a regulatory inspector?
+Recommendation
+Verifying the identity and affiliation of any inspector conducting a remote inspection is critical. The
+remote context makes this verification more difficult than it is during an on-site visit, where the in-
+spected site personnel can view the visitor’s official credentials in person.
+The inspected site should ensure that the regulatory inspector or other representative is legitimately
+employed by the health authority he/she represents. The site should prepare in advance so that it can
+conduct this verification expeditiously without unreasonably delaying the inspection. Companies can
+take the following steps:
+1. Become familiar with published policies and procedures followed by relevant health authorities.
+Check websites or inquire directly about the normal process and sequence of events that the health
+authority uses to initiate each type of remote inspection. Determine whether the health authority
+has defined a protocol for inspectors to validate their affiliation. Many health authorities provide
+official documents to verify their employees’ affiliation. Some require their inspectors to display
+official credentials to the site’s owner, operator, or agent-in-charge.
+2. If personnel at the inspected site have any reason to doubt the authenticity of the source of an
+inspection notification, contact the health authority by email or telephone to confirm it.
+3. Report any suspected impersonation of a health authority official directly to the health authority’s
+management, providing as much detail as possible so that the health authority can take action in
+the unlikely event of impersonation.
+Rationale
+While reported instances of impersonation of regulatory inspectors are rare, they have occurred. For
+example, in December 2009, the U.S. FDA issued a press release warning of an impersonation scam
+(1). By impersonating an inspector, a person could engage in industrial espionage and gain access to
+records, trade secrets, and confidential information.
+The company can protect itself by verifying the legitimacy of the inspector. While it may be more
+challenging to confirm the inspector’s legitimacy in the remote context, steps should be taken to verify
+identity and authenticate affiliation before releasing records, answering questions, or enabling views of
+premises, equipment, and processes.
+--- Page 11 ---
+Topic C�1: Remote Inspection Team Formation
+Problem Statement
+What team should the inspected site assemble to prepare for a remote inspection? What is the role of
+the Remote Inspection Host?
+Recommendation
+The first point of contact for the health authority usually will be the same person that would be noti-
+fied of an on-site inspection. The first point of contact should promptly involve the personnel respon-
+sible for establishing a suitable communication channel for the exchange of confidential information.
+The communication channels for information-sharing should be agreed by the inspected site and
+the inspectorate. Early communications may be made primarily through telephone and email, but
+document-sharing may require additional structure and protections, as discussed in more detail in
+Topic I.D.2 Planning to Share Information.
+To ease the communication process, the inspected site should identify one person to serve as the “Remote
+Inspection Host”/Single Point of Contact. The inspectors should use the Remote Inspection Host as the
+single point of contact for all inspection-related communication before, during, and after the inspection.
+This person must have or be supported by adequate authority to ensure that the remote inspection can
+proceed smoothly. For instance, the Remote Inspection Host must be able to quickly obtain support
+from the Information Technology (IT) or similar department to solve any problems that arise during the
+inspection. The Remote Inspection Host described in this paragraph is not necessarily, and often will not
+be, the Responsible Person in a GDP setting or the Qualified Person in a GMP setting.
+If several inspectors will be involved, it may be useful to have multiple Remote Inspection Hosts. The
+inspection team should indicate the number of inspectors that will be involved or the number of work-
+streams that will be necessary in order to allow the inspected site to prepare both personnel and tech-
+nology. See Topic II.B.1 Managing Multiple Workstreams below for further discussion of this point.
+The team that manages the remote inspection for the inspected site should be the same as for an on-
+site inspection. The team should include the inspection management personnel, the site leadership
+team (at least for opening and wrap up/closing meetings), subject matter experts (SMEs), local operat-
+ing company representatives as applicable, IT support, and representatives of global functions when
+required. Members of the inspection management team may be able to participate from off-site loca-
+tions if they are not also on the core operational team described below. The inspection management
+team also should consider designating back-up personnel in case named personnel are unavailable due
+to connectivity issues.
+During the remote inspection, a core operational team, including a designated leader, Remote Inspection
+Host, and IT support, should be present at the inspected site. The designated leader and the Remote In-
+spection Host may be two different people, with the designated leader playing a leadership and strategic
+role and the Remote Inspection Host facilitating the communication process. The two must work together.
+The on-site core operational team will be responsible for document and data management during the
+inspection. In a virtual inspection, this team also will manage video requests and virtual facility tours.
+This team should develop and optimize an efficient process to locate and scan, arrange for translation
+as necessary, put into electronic format, review for completeness and accuracy, and upload onto the
+document-sharing platform any document that may be requested during the inspection. This process
+is important to ensure a smooth workflow.
+The core operational team must fully respect required controls for health and safety, e.g., during a pan-
+demic virus outbreak. When health and safety rules limit the number of people that may be present at
+--- Page 12 ---
+a site or limit access to the manufacturing areas, the inspected site should mention such constraints up
+front and ensure that inspectors are aware that these constraints may lead to slower responses.
+Certain personnel may be able to participate from off-site locations. If the QMS documentation and
+batch manufacturing and control records are available electronically, for instance, personnel may not
+need to be physically present at the inspected site to present this data. Similarly, support on specific
+topics can be provided by company experts located in different geographic areas, regardless of the loca-
+tion of the records and documents.
+The inspected site should provide the inspector a list of anticipated participants in the different steps
+of the inspection. The list should include each participant’s job title as well as their role in the remote
+inspection process. Similarly, the inspector should communicate the presence or participation of all
+inspection team members involved in a virtual inspection. A complete list of all personnel that partici-
+pated should be provided by both parties at the conclusion of the inspection.
+Rationale
+The remote inspection format inherently allows more people to participate from diverse locations on
+behalf of both the health authority and the inspected site. With this increase in the number of partici-
+pants compared with an on-site inspection, personnel roles and responsibilities should be clarified at
+the beginning of the process. When health and safety conditions require (e.g., during a pandemic), the
+number of people present on site should be the minimum necessary to handle requests for data and
+information that is available only on site.
+--- Page 13 ---
+Topic C�2: Planning the Agenda
+Problem Statement
+How might an inspection agenda be different in the desktop or virtual setting?
+Recommendation
+The review process in desktop and virtual inspections in some cases may be less efficient and more
+challenging. Virtual inspections generally range in duration from a few days to 2 weeks, with intense
+support required during this period. The overall time span to complete a virtual inspection can be
+double or triple that of an on-site inspection if the amount of time spent in a virtual inspection on
+any day is less (e.g., 4 hours instead of 7), however. In contrast, the timeframe for desktop inspec-
+tions tends to be especially long, as they are iterative in nature, but the intensity of engagement with
+the inspector may vary during the process. In desktop inspections, inspectors generally will request
+further information, data, and documentation as they review initial materials, and the inspected site
+will subsequently respond to these additional requests. Desktop inspections can take more than a
+month to complete.
+As in an on-site inspection, the agenda is a critical aspect of an efficient virtual inspection. A clear
+agenda allows the site to prepare documentation and arrange interviews and virtual tours to minimize
+waiting time. Both parties should recognize that departures from the agenda may be necessary to
+complete coverage of areas, to follow leads or areas of interest, to observe operations in real time when
+they occur, and to accommodate availability of key personnel. If the inspector does not provide a com-
+prehensive agenda in advance, the two parties should discuss potential agenda complications such as
+operations schedules and times that key staff may be unavailable.
+The agenda for a virtual inspection may be different from an on-site inspection agenda. An agenda that
+alternates short live conversations with periods of off-line document preparation and review can help
+prevent fatigue and inattention. Periods of informal discussions with inspectors are valuable to ensure
+the inspector’s satisfaction with the information provided and with real-time responses to any issues
+raised. Hourly short breaks allowing participants to move around and/or turn away from the computer
+screen also are important to maintain well-being.
+Time zones also must be considered when inspectors and inspected facilities are in different areas of
+the world. Video communications and interviews should be conducted during the normal working
+hours of both the inspected facility and the inspectors, to the extent possible. If this cannot be done,
+the inspectors should consider shifting their working hours to those of the inspected site, as this helps
+ensure that the inspection progresses quickly, limits data integrity risks, and allows the inspectors to
+build rapport with site personnel. That said, both parties should respect that working at unusual hours
+can cause significant fatigue for participants.
+It is helpful for the inspector to share the date on which the virtual or hybrid inspection will start
+and end, if possible. If no specific dates can be shared, a general expected timeframe would be useful.
+Because health authorities take different approaches depending on the type of inspection, it can be
+difficult for inspected sites to make predictions about this timing. In addition to clarifying the expec-
+tations for both parties, this information allows the inspected site to ensure that necessary personnel
+will be present.
+A daily wrap-up may be built into the agenda to allow the parties to discuss any technical issues or
+necessary adjustments to the agenda, as well as to ensure clear understanding of the scope and topics
+to be presented and discussed the following day. These wrap-up meetings are discussed in more detail
+in Topic II.E.1 Use of Daily or Intermediate Wrap-ups.
+--- Page 14 ---
+Rationale
+The review process in a virtual inspection is inherently different than in an on-site inspection in several
+ways:
+• The review process might last longer than it would in an on-site inspection. For instance, fewer
+inspection hours per day, or delays while working with a new platform or tool, may require the
+virtual inspection to be scheduled for a longer time period.
+• Additional time may be required for the clarification of some topics due to the different format
+for the interactions between the inspector and site personnel.
+• The inspected site may need more time to provide supporting documentation or to fulfill
+additional requests.
+• Less time is available for informal “hallway” conversation, making it more difficult to build
+rapport and relationships.
+• Communication style and cultural differences are more difficult to understand remotely,
+and the lack of body language is a further complication to remote communication. Special
+attention should be given to cultural differences that may affect the communication between the
+personnel at the inspected site and the inspectors.
+• If translated documents are shared in advance of the virtual inspection, follow-up emails may be
+necessary to clarify the content for comprehension. Clarification of translated language can be
+more efficient in a live conversation than through email.
+• The need to closely respect the planned agenda, which may be less flexible in the remote context,
+can create stress.
+• Being seated and using the screen continuously can be challenging and tiresome. Differences in
+time zones may require work outside of regular working hours, which affects well-being.
+• Potential connection issues may impact the quality of audio and video communications while
+also possibly delaying the inspection.
+In a virtual inspection, it is important to develop a realistic agenda that considers these challenges and
+constraints. To avoid unnecessary delays, the sequence of the topics to be assessed must be clear, with
+a waiting list of subjects to be discussed.
+--- Page 15 ---
+Topic D�1: Hardware Requirements
+Problem Statement
+What hardware is required or recommended for a virtual inspection?
+Recommendation
+The basic requirements for a virtual inspection follow:
+• Computer: All participants must have a computer with a reliable internet connection of a speed
+that matches the requirements of the technological tools and communications platforms to be used.
+• Webcam or conference camera: A videoconferencing camera or a camera built-in to the com-
+puter can be used.
+• Audio: Computer audio must be suitable. The speakers and microphone for each participant
+should be of appropriate quality.
+• Intranet or virtual private network (VPN) connectivity at inspected site: The inspected
+site should test connectivity from all locations involved in the inspection, including those of key
+staff participating remotely, in advance of the start date to ensure that all software applications will
+be accessible.
+The following items are suggested:
+• Telephone line: A separate telephone line should be designated as a backup means of commu-
+nication in case of an internet or computer software outage. A cellular or landline phone may be
+appropriate as long as both parties clearly understand when it is to be used. The telephone line
+must be accessible at any time, have good reception in the areas in which it would be used, and
+include a speakerphone option.
+• Larger monitor: A 20-inch or larger monitor is highly recommended to reduce eye strain, assist
+in quicker review of the documents, and possibly allow for review of multiple pages or documents
+at a time. Participation in an inspection by tablet or handheld device is strongly discouraged due
+to the size of the screen.
+• Multiple monitors: Inspected site personnel and inspectors may find it helpful to use multiple
+computer monitors. This allows them to manage documents on one monitor while participating
+in video communication on the other, and to increase the font size of or zoom in to documents
+for easy readability.
+• Document camera: A document camera is a real-time image capture device that functions as a high-
+resolution web camera, mounted on an arm to facilitate the display of a document or object with mag-
+nification if necessary. Document cameras can be used to show real-time images of such documents
+as in-process records, logbooks, or test data. These cameras can enhance the inspection and reduce the
+burden of additional copying and transmission of records that may not be needed by the inspectorate.
+• High-speed scanner: A high-speed scanner can be helpful in all types of remote inspections as
+the inspected site prepares documents for sharing.
+If a virtual tour will be provided as part of the virtual inspection, the following points should be considered:
+• Several options are available for providing virtual tours.3 Virtual view tools such as 360° cameras
+or virtual reality goggles may be used. Other companies may use a laptop or mobile device. The
+device must be appropriate for the area being shown (e.g., manufacturing area or laboratory) and
+to provide the requested information.
+3 CCTV feeds might be used in specific circumstances, if requested by inspectors, appropriate to show GMP
+areas, and permitted under national law and company procedures relating to security and data privacy.
+--- Page 16 ---
+• Care should be taken to ensure that the camera produces a stable picture that is easy to view. For
+this purpose, the camera can be mounted on a movable trolley or gimbal. The site should be pre-
+pared to remove the camera from any mounting to allow show equipment and facilities from all
+angles requested by the inspector. Unstable, wobbly pictures that occur when a camera is hand- or
+body-mounted, or when a trolley rolls over uneven floors or stairs, are difficult for inspectors to
+view and can induce nausea and, in some viewers, vertigo.
+• Additional audio tools may be necessary for the person operating the camera during the virtual
+tour. The camera operator needs to be able to hear the inspector’s directions on where to move or
+point the camera, even in areas with significant background noise. The camera operator also must
+be able to hear and respond to questions from the inspector during the virtual tour.
+• In areas of the facility where the Wi-Fi signal may not be strong enough to broadcast a live virtual
+tour, consider whether it might be useful to install devices to amplify the signal.
+All devices used to support an inspection, including laptops and mobile devices, should be approved
+for use within the area of intended use, including classified cleanrooms and hazardous areas, from
+a quality and safety perspective. Controlled/explosive zones, such as manufacturing areas involving
+flammable solvents or explosive gases, may require special precautions.
+Rationale
+The hardware used in an inspection can significantly contribute to the efficiency and effectiveness of
+the inspection. Hardware that is well-suited to the purpose also can reduce strain on all participants
+in the inspection process. The utility of a virtual facility tour is dependent upon the camera operator’s
+responsiveness in providing a stable image of requested aspects of the manufacturing site.
+--- Page 17 ---
+Topic D�2: Planning to Share Information
+Problem Statement
+What is the most suitable process for sharing documentation in a remote inspection? In a virtual in-
+spection, what is the most suitable process for conducting interviews and providing virtual tours of
+the facility?
+Recommendation
+In preparing for a remote inspection, the parties should consider confidentiality, security, and data
+protection as well as the technological tools available. All communication channels must be agreed by
+both parties and provide the appropriate level of protection for the exchange of confidential and sensi-
+tive information. Both parties should involve their IT department (or equivalent) in these discussions.
+Regardless of the technological tools selected, it is essential that all participants test and become famil-
+iar with the tools in advance of the inspection.
+Documentation
+The inspected site should prepare documents in digital format. Documents shared electronically
+should be:
+• Formatted to be searchable, to the extent possible. Searchable documents are essential to an
+efficient inspection because inspectors often may be looking for certain words, phrases, or
+information within a document.
+• Provided in a clearly organized manner, consistent with the document request.
+• Identified in a way that enables the inspector to understand each document’s contents from its
+title or file name without having to open the document.
+• Provided in a digital form that can be opened with widely-used software applications. For
+instance, documents in.pdf or.csv format can be opened using many different types of software.
+The options for sharing documentation range from secured email to secured cloud storage solutions
+restricted to specific participants and made available only during the inspections. Existing gateways,
+such as those used for the submission of regulatory data, also can be used as applicable (e.g., for PAIs,
+when the inspection is part of the approval of a registration dossier).
+In general, the use of a document-sharing platform is recommended. Materials shared in this way may
+include scanned copies of documents, word processor documents, spreadsheets, machine/software
+generated documents, and videos. The document-sharing platform should provide the appropriate
+level of security while also allowing auditors to easily locate, review, and annotate documents. The
+inspector and the inspected site should discuss the inspector’s ability to download or print the docu-
+ments from the document-sharing platform.
+If mutually agreed, documents also can be shared in real time during the inspection through the video
+communication platform. For instance, a document camera, which is a video camera on a tripod spe-
+cifically designed to display documentation live, can be used to present paper documents involving
+many pages, such as validation documentation. A best practice is to use a document camera for sharing
+discrete, specific information from a hard copy document (e.g., one page from a logbook).
+Documents may be shared by email using an email address specified for inspection communications.
+This should be avoided generally, as it is difficult to manage the large number of emails that would be
+necessary to provide the required information. File size may be limited if sharing via email.
+Documents also might be shipped through traditional mail or courier services, either in paper form
+or on electronic storage media. Express, traceable shipping methods should be used. However, this
+--- Page 18 ---
+usually should be a last alternative, as it might require more time and paper documents are not easily
+searchable.
+The inspected site should ensure that any electronic files are accessible by the inspector. The inspected
+site should ask the inspectors to acknowledge that they have received the provided documentation and
+are able to access it, if the document-sharing platform does not automatically record this information.
+As in an on-site inspection, documents that are provided electronically should also be kept on site in a
+well-organized manner in case it is necessary to cross-check or provide the document to the inspector
+in a different format during the inspection.
+Remote Interviews and Virtual Tours
+Livestream videos and videoconferences are the most effective method of conducting remote inter-
+views and virtual tours of facilities. Video communication platforms can be used for many aspects of
+a virtual inspection, including video- and audio-conferencing and chat. Examples are GoToMeeting™,
+Microsoft Teams™, Cisco WebEx™, and Zoom™. As the party sharing information, the inspected site
+may recommend a platform. Health authorities, however, may limit the platforms that inspectors are
+permitted to access.
+The video communication platform should allow for appropriate number of separate workstreams,
+based on the number of inspectors that will participate. In general, the platform should allow for at
+least three simultaneous workstreams. The selected platform also should allow participants to join by
+telephone if necessary. Alternative technologies also should be defined in case of unexpected system
+failure.
+The inspected site should consider preparing a video giving a general overview of the facility, which
+could be made available during the opening meeting if requested by the inspector. If the inspector
+would like a tour, the inspected site can provide one in real time with an operator moving around in
+the facility with smart glasses or camera, as discussed above in Topic I.D.1 Hardware Requirements.
+Alternatively, still photos or pre-recorded video could be used, particularly for areas that cannot be
+toured live.
+Note that some materials developed by the inspected site for the inspection might be considered GMP
+records, which would be subject to additional protections. The purpose of the record defines whether
+or not it is a GMP record. A GMP record is a record that contains information related to an activity
+subject to GMP regulations and required by the GMP regulations to be retained as historical evidence
+of the activity and/or to support quality, compliance, safety, and efficacy of the product. Therefore,
+most videos, photos, presentations, and interview records (if recorded) that are created specifically
+to support a remote inspection would not, in most cases, be GMP records. However, inspected sites
+should review the status of the documents with legal counsel in advance, develop a business process for
+handling them, and determine minimum retention time.
+Rationale
+Modern technological solutions allow for real-time interactions that closely mimic those of an on-site
+inspection, and technology will continue to advance. However, health authorities and manufacturers
+may have different priorities and preferences in selecting communication tools.
+--- Page 19 ---
+Topic D�3: Planning for Effective Use of Technology
+Problem Statement
+What additional considerations might improve the use of technology in a virtual inspection?
+Recommendation
+In selecting technology for a virtual inspection, two points are important to keep in mind:
+• Technology Overkill: Technology is intended to help the successful execution of the inspec-
+tion, not to showcase different options. Companies being inspected may range from large, well-
+resourced global companies to smaller organizations in remote locations with less-developed in-
+frastructure. Balance should be maintained in technology options.
+• Technology Exploration: Exploring new technologies or options during the inspection is not
+recommended, as these options may require installation and training time or may unnecessarily
+delay the inspection.
+Because many factors can impact the actual performance of the technological tools during a virtual
+inspection, all technology must be tested in advance, including the document-sharing platform, video
+communication platform, and Wi-Fi network (for robustness). The connectivity of the devices to be
+used also should be tested in all areas of the site and remote locations. Each participant should have
+a reliable internet connection of a speed that matches the requirements of the video communication
+platform, to allow for consistent and stable audio and video. A half-hour real-time test several days
+before the inspection can be helpful to check for and resolve any issues, including any limitations on
+software use based on geographical region, elapsed time, and number of users.
+In discussing the software and applications to be used, the two parties should be sure to identify any
+known or potential compatibility issues, such as antivirus software, that is known to inhibit the use
+of certain applications. The inspected site may recommend an internet browser to be used during the
+inspection, as the site may have the most knowledge of any software compatibility issues relating to
+specific browsers.
+If site personnel will be demonstrating site-specific software during the inspection, they should verify
+in advance that the software is accessible from the computer system that the personnel will use dur-
+ing the inspection. Software specific to the manufacturing location or laboratory, including soft-
+ware used for issuance of batch records, temperature and pressure monitoring, and other integrated
+manufacturing software systems, may not be accessible from all company computers or may reside
+on networks that are decoupled from the internet. Advance preparation will ensure that personnel
+can participate in the inspection from the manufacturing location or laboratory, or that they can take
+other necessary steps.
+Whether inspectors will be given direct access to data systems also should be discussed early. As cov-
+ered more fully in Topic II.C.1 Inspector Access to Systems, allowing inspectors direct access to GxP
+systems is not recommended due to the need for training and the risk of creating errors within the
+systems. Instead, a site expert can log into the system, share his/her screen through the video commu-
+nication platform so the inspector has a clear view of the data and information, and allow the inspector
+to direct the expert’s movements through the system.
+Rationale
+While it is important to select effective technological tools for a virtual inspection, it is equally impor-
+tant that site personnel and inspectors are able to use the tools, and that the parties have consistent
+expectations about how the technologies will be used.
+--- Page 20 ---
+Topic D�4: Pre-Inspection Agreements
+Problem Statement
+What agreement should the parties reach before the inspection begins?
+Recommendation
+The parties should agree upon, and describe in writing, the equipment and technology to be used in
+the remote inspection, including the document-sharing platform and video communication platform
+described in Topic I.D.2 Planning to Share Information. An agreement should be reached as far in
+advance of the start of the inspection as possible.
+The parties also should define clear rules for the sharing, retention, and disposal of any electronic
+records as part of the inspection process to ensure appropriate handling of confidential and/or sensi-
+tive information and compliance with applicable laws. The inspector should ensure that the health
+authority will protect from unintended use the documents shared by the site, and confirm this with
+the inspected site. The inspected site also may request that the health authority identify all individuals
+who will access the information provided by the inspected site, including all participants in inspection-
+related review activities.
+The use of technology in a remote inspection is limited by the need to properly protect data and infor-
+mation. Cybersecurity issues should be considered carefully. Both parties should:
+• Confirm the applicability of confidentiality controls to prevent disclosure of confidential com-
+mercial, personal privacy, or trade secret information
+• Verify the security of the communication channels
+Legal counsel should be consulted during the planning, as local law may require additional agreements
+from both sides and, possibly, from the corporate office of the inspected entity before initiating video
+communication and video tours. For instance, local law may prevent the recording of sound and im-
+ages or may require authorization to capture or use images of individuals. In some situations, security
+requirements may not allow the use of video. Where applicable, the Data Protection Officer of both
+organizations should assess the proposed procedures and identify, in advance, any confidential or sensi-
+tive information and its proper handling.
+Legal counsel also may need to be involved in any discussions about whether the site will allow any
+recording of conversations, video communication, images, and screenshots and, if so, specify any
+limitations on recordings. The site should not record any portion of a remote inspection (whether by
+video, audio, or other recording) unless the inspected site has made a clear, formal request to do so, and
+the health authority has expressly granted permission. If the proposed video communication platform
+automatically records all sessions, all parties should be made aware of this fact during planning.
+Rationale
+Prior agreement to the technology to be used and the protections to be given will build confidence
+and help assure a successful inspection by allowing the process to be more efficient. Establishing the
+agreement in advance will allow both parties to install and test any necessary technology before the
+beginning of the inspection, which will prevent delays during the inspection itself. Legal counsel for
+both parties should review the agreed-upon framework.
+--- Page 21 ---
+Topic E�1: Preparing Necessary Documents
+Problem Statement
+What information and documents should the inspected site prepare in advance of a remote inspection?
+Recommendation
+Health authorities expect sites to be inspection-ready. As health authorities increasingly use remote
+tools for inspections, sites should maintain appropriate documentation to support a remote inspec-
+tion on short notice. The inspected site should prepare and organize all key documentation before the
+inspection begins.
+Many sites have developed a standard list of documents that are likely to be requested in an on-site
+inspection. This list is equally applicable in remote inspections. The documents can include site orga-
+nization, size, products manufactured, list of standard operating procedures (SOP), deviation reports,
+site master files, biological product deviation reports or field alert reports and out of specification
+results, corrective and preventive actions (CAPA), applicable Annual Product/Quality Reviews that
+include details on change controls, complaints, recalls, batches manufactured, aseptic process simula-
+tions with outcomes, environmental monitoring data, trends for utilities (e.g., water, steam, gas), and
+sterility test failures.
+In advance of a remote inspection, the inspected site should also prepare the documentation that an
+inspector would normally review on-site or may request at a later point. Typically, this additional
+documentation might include:
+• Data analysis (e.g., deviation recurrence analysis, equipment failure rate, CAPA effectiveness
+review) and/or lists that can be searched or filtered
+• Comprehensive inspection history, especially for the first remote inspection of the site and for-
+cause inspections
+• History of or changes to key SOPs since the last inspection, along with training records
+• Information related to relevant investigations.
+Appendix 1 provides a list of documentation covering most of the areas and subjects that typically
+may be assessed in an inspection. The list may vary depending on the purpose of the inspection, e.g.,
+PAI versus GMP surveillance.
+If a virtual inspection of the manufacturing operations, facilities, and equipment will include video
+or photos of the site, it can be helpful to orient the inspectors by supplying site schematics or layouts,
+drawings, and/or process flow diagrams. The location from which any videos or photos were taken
+should be marked on the site schematics. Using the drawings already submitted to the agency, which
+are included in the Site Master File, should be considered. These documents may be readily available
+to the inspector and their use might avoid data integrity concerns.
+By timely communicating, in detail, the documentation that the inspectorate wishes to assess as part
+of the inspection, the inspector can increase the efficiency and effectiveness of the remote inspection.
+This early communication can minimize the possibility of delays mid-inspection as the inspected site
+locates an additional document or data, translates it as needed, and prepares it for sharing. Providing a
+list in advance also reduces the risk of data integrity issues that may arise from mid-inspection prepara-
+tion of documents for sharing.
+Rationale
+Early preparation is especially important for remote inspections, in which rapid or real-time transla-
+tion and review of documentation may not be feasible or convenient. While the initial preparation
+may involve significant effort, the result should be a smoother and more efficient inspection.
+--- Page 22 ---
+Topic E�2: Sharing of Inspection Reports
+Problem Statement
+Will a health authority share its inspection reports with other health authorities? Can an inspected site
+share inspection reports with inspectors from other authorities to facilitate the inspection?
+Recommendation
+Inspectors may leverage information and data that other health authorities have collected through on-
+site inspections. This information can be very useful in supplementing the information obtained dur-
+ing a remote inspection. Inspected sites should anticipate that inspectors have reviewed other health
+authorities‘ inspection reports.
+Confidentiality arrangements in place within the Pharmaceutical Inspection Co-operation Scheme
+(PIC/S), or between mutual recognition partners and other collaborating health authorities, allow
+health authorities to share and access GxP information on international organizations and supply
+chains involved in the development, manufacture, and supply of medicines. The PIC/S inspection
+reliance procedure is particularly important, as it sets out a framework for participating authorities to
+rely on the inspection information provided by the network (2).
+Inspectors also may ask the inspected site to share inspection reports and GMP certificates from other
+health authorities. For these documents, the same rules apply as in on-site inspections. Some inspec-
+tors will expect the reports to be shared. Inspectors also may request evidence of appropriate post-
+inspection CAPA implementation. Highlighting the site’s implementation of any agreed-upon post-
+inspection actions can help demonstrate responsiveness and agility.
+Some health authorities, however, may require that they be consulted or informed before their inspec-
+tion reports are shared. The site also should verify whether the relevant authorities have mutual recog-
+nition agreements (MRA) or if the document is subject to freedom of information legislation. If no
+MRA is in place and the document is not subject to freedom of information, or if the report includes
+a nondisclosure clause, personnel at the inspected site should consult with legal counsel and ask the
+issuing authority for approval to share the information.
+Rationale
+Today, there is a significant convergence in worldwide regulations and standardization in the execu-
+tion of inspections by global inspectorates. Many inspectors already use information provided by other
+regulators and rely on the outcome of inspections(s) made by other health authorities, as mentioned
+in section 2.2 of the PIC/S guidance:
+Informed decisions on the GMP compliance of a manufacturing facility can be made, in cer-
+tain circumstances, based on the outcome of work by another regulatory authority or authori-
+ties. Consequently, it is possible (outside the established framework of Mutual Recognition
+Agreements, or equivalent and where legal requirements allow) for Inspectorates to identify
+specific instances where an onsite inspection of a manufacturing facility in an overseas terri-
+tory is not required because an acceptable level of GMP compliance has been confirmed and
+assured by another regulatory authority or authorities. (2)
+In this way, inspectors can supplement their own remote inspection with data collected in the field by
+other qualified inspectors.
+--- Page 23 ---
+Topic E�3: Timelines for Sharing Documentation
+Problem Statement
+What are the timelines to respond to the pre-inspection notification and documentation request? Is it
+possible to send the requested documentation in multiple shipments?
+Recommendation
+Most authorities require inspected sites to provide documents for pre-inspection (in the virtual or hy-
+brid context) or inspection (in the desktop context) within ten working days or two calendar weeks. In
+general, timelines for responding to the first notification and to additional requests should be negoti-
+ated with the inspector, considering the quantity of information and data requested, their format, and
+any translation requirements. The timeline negotiated with the inspector also will depend upon the
+size of the site, the complexity of the operations, the inspection scope, and the level of risk associated
+with the inspection.
+It may be necessary or helpful to share the information and documentation with the inspectorate
+in several different bundles to avoid delaying the review process. To prevent misunderstanding, the
+inspected site should clearly inform the inspector of its intention to send several different packages of
+information.
+If the inspector numbers its requests, the inspected site should provide documents in folders that
+use the same numbering system to facilitate review and confirmation that all documents have been
+provided. If the inspector does not use a numbering system or another clearly repeatable method of
+organization, the inspected site should bundle the documents by topic to facilitate review.
+The site also might consider including notes with documents as necessary to help the inspectorate
+understand the context.
+In the rare circumstance that documents or data are not available, the inspected site should communi-
+cate this fact to the inspectorate in a timely manner with explanation.
+Rationale
+The quality and clarity of the documentation provided is critical to an efficient and effective inspec-
+tion. Therefore, the inspector should allow the inspected site sufficient time to prepare. Usually, two
+calendar weeks may be sufficient for the inspected site to provide the first set of documentation re-
+quested.
+While as much of the documentation as possible should be provided in advance of a remote inspec-
+tion, some documentation will be requested and shared during the course of the inspection, and may
+be requested with a short turnaround time. These additional requests are discussed in Topic II.D.1
+Responding to Requests.
+--- Page 24 ---
+II� Remote Inspection Realization
+Topic A�1: Use of Real-Time Interactions
+Problem Statement
+What is the most efficient and effective way to use real-time interactions in a virtual inspection? Is
+it possible and recommended to include multiple people or subject matter experts (SME) in the live
+sessions?
+Recommendation
+As discussed in Topics I.D.2 Planning to Share Information and I.D.4 Pre-Inspection Agree-
+ments, for a virtual inspection, the inspector and inspected site should agree on a video communica-
+tion platform. Prior to the inspection, all involved personnel should become familiar with the IT tools
+to be used.
+Good meeting management is essential. It is preferable to establish one meeting link or connection for
+the entire day, which all attendees may use, rather than creating a separate meeting link for each sub-
+topic to be addressed during the day. Inspectors and inspected site personnel can easily leave and rejoin
+the ongoing discussions, although attendees should always be introduced upon joining. If attendance
+is not carefully managed, however, the inspected site could be overloaded with questions and requests,
+including potential duplication from those who participate only intermittently.
+For each workstream, one or two members of the inspection team should ask all questions, and one
+person at the inspected site should coordinate the discussion as a moderator. Also refer to Topic II.B.1
+Managing Multiple Workstreams.
+Several people (such as SMEs) from the inspected company could join the live sessions to be ready to
+support the ongoing discussion. The inspected site should control the flow of people joining the live
+session by using a virtual waiting room, if possible. A person who is not directly interacting with the
+inspectors should be assigned to monitor the virtual waiting room.
+The video communication platform can be used for written conversation and for sharing documents
+and data. A live chat channel with the inspectors (e.g., via Microsoft Teams® or Slack®) also may be used
+to facilitate communications if needed. It may be helpful, for instance, for the inspector to drop notes
+about requests, such as deviation numbers copied from provided spreadsheets, into this chat channel
+to ensure that the correct information is available to all. This channel should be agreed upon by the
+parties in advance.
+The inspected site and inspectors should not communicate outside of the agreed-upon communica-
+tion platform(s). Additional informal communications via text or mobile phone application, for in-
+stance, should not occur, as these would be difficult to track and document and may cause confusion.
+As in on-site inspections, an internal chat-link for site personnel may be useful to facilitate internal
+information-sharing as well as to verify the timing of topics to be presented. The internal chat-link
+could be set up through an online messaging platform, text, or email.
+In planning for virtual inspections, training personnel on virtual meeting discipline may be helpful.
+This training could include:
+• On-camera discipline: Training should address personal attire, background screen selection,
+and prevention of accidental entry of family members and colleagues during video communica-
+tions. Personnel should keep their cameras on while in the virtual meeting room, notify other
+attendees when turning off the camera, face the camera properly, and understand expectations
+around eating and drinking on camera. Discuss and decide whether cameras may be turned off
+during document review periods.
+--- Page 25 ---
+• Microphone discipline: Microphones should be muted when not in use and background noise
+avoided. Particular attention should be paid to feedback loops that result in unacceptable echoes.
+Often, this may result when a participant logs in from more than one device. If muting another
+person’s microphone is necessary, inform the person before doing so.
+The inspected site should log all questions asked by the inspectors, including questions asked through
+live conversation and in writing, as it would during an on-site inspection. The log allows for visibility,
+sharing, and tracking of the questions within the inspected site.
+Rationale
+To prevent disturbances and interruptions, virtual inspections require enhanced coordination as well
+as discipline in communication.
+--- Page 26 ---
+Topic B�1: Managing Multiple Workstreams
+Problem Statement
+What tools can an inspected site use to manage multiple workstreams in a virtual inspection?
+Recommendation
+Multiple workstreams may be required, for example, when different inspectors are reviewing different
+material in a single inspection. In this case, the inspected site should create a separate meeting link or
+virtual breakout room for each inspector or workstream and should assign a remote inspection host for
+each inspector that needs an independent workstream.
+The inspected site may use one full-day meeting link for full-team conversations including opening
+and wrap-up discussions, one full-day meeting link for Inspector A, and one full-day meeting link for
+Inspector B, with each to be used only as necessary. Alternatively, some video communication plat-
+forms offer virtual breakout rooms, which can be used in the same way. As with all other technologies,
+inspected site personnel should become fully familiar with these tools in advance of the start of the
+inspection.
+When multiple workstreams exist, the remote inspection host must coordinate to ensure that infor-
+mation is shared appropriately and to avoid duplication of requests. The inspected site should create
+a process that allows all requests for documents and other information to be visible to all members of
+the inspection team. The secured document-sharing platform might be used for this purpose. When
+dealing with multiple workstreams, all questions asked by inspectors must be logged, as discussed in
+Topic II.A.1 Use of Real-Time Interactions, and the question log must be accessible to all remote
+inspection hosts.
+Rationale
+Due to the higher complexity of the virtual inspection process, careful attention to and oversight of the
+different workstreams is essential. With time and experience, inspected site personnel and inspectors
+alike will become more familiar with the application of the different tools and processes, which will
+lead to a smoother inspection process.
+--- Page 27 ---
+Topic C�1: Inspector Access to Systems
+Problem Statement
+Should an inspector be allowed to access GMP/GDP operational systems?
+Recommendation
+If an inspector requests direct access to a GMP/GDP operational system, such as a laboratory informa-
+tion management system or building management system, the response should be the same as it would
+be during an on-site inspection. Inspectors should access systems only through trained site personnel,
+due to the risk that direct access by an external user could create errors in the system.
+Expert site personnel should access the system, then allow the inspector to view the requested infor-
+mation through screen-sharing. The inspector can ask or direct the expert to obtain or display specific
+information and data from the system. The inspector also can direct the expert on what to do, what
+commands to execute, and what the inspector wants to see, provided that these activities do not create
+any errors in the system or create data that is not triggered by a process.
+Not allowing the inspector direct access to a system will not represent an inspection refusal. Instead, it
+should reinforce to the inspector that proper training is needed before a person can be granted access
+to an electronic system.
+Rationale
+An inspection should not put a GMP/GDP system at risk at any time. Access to GMP/GDP opera-
+tional systems requires dedicated training and supervision and should be justified. At the same time,
+it is essential to operate transparently and to permit the inspector to observe the system and the data
+it contains within the scope of the inspection. As in on-site inspections, inspectors can be provided
+full visibility by directing a company expert to display specific information and data from the system;
+therefore, such a practice cannot be considered as an inspection refusal.
+--- Page 28 ---
+Topic D�1: Responding to Requests
+Problem Statement
+What are acceptable timelines for responding to requests from inspectors during the inspection? What
+requests should be brought to the attention of legal counsel?
+Recommendation
+A site’s plan for responding to requests in a remote inspection should mirror the same way as working
+during an on-site inspection. Responses should be provided as soon as possible, consistent with the
+inspected site’s operations. To facilitate efficient responses, SMEs and other experts in the company
+should be ready and available for the duration of the inspection. When it is necessary to retrieve ar-
+chived documents, or when the team at the inspected site is working completely or partially remotely,
+the response time could be slightly longer. Communicate proactively and transparently with the in-
+spector if some responses could take additional time to access, and agree on acceptable timing.
+As discussed in Topic I.C.1 Remote Inspection Team Formation, the company must have sufficient
+personnel standing by to facilitate the handling of documents during the entire inspection, starting
+from the first request for documentation and records. Based on the types of requests received, person-
+nel and resources may need to be shifted to ensure timely fulfillment of requests.
+The inspected site may anticipate that legal counsel will need to review certain requests. The company
+should establish a strategy for these requests before the inspection begins, to help avoid delays during
+the inspection process. In a remote inspection, legal counsel might be consulted for:
+• Requests for video or photos of personnel operating in the inspected areas, even when it might be
+difficult or impossible to identify the participants
+• Requests by the inspector to record proceedings using photos, audio, video, or screenshots
+• Any request that the inspected company believes it must decline
+When sharing documents during an inspection, consideration should be given to the size of the elec-
+tronic files. It may be necessary to split documentation into multiple electronic “shipments” to ensure
+its delivery, depending on the method used for sharing.
+Rationale
+Timely responses to inspectors’ requests are crucial to an efficient and effective inspection. However,
+challenges may arise in retrieving documentation and making documents available electronically dur-
+ing a remote inspection. The inspected site must communicate in a timely manner with the inspectors
+if the requested documentation cannot be provided by the specified due date, with justification and
+a target date for a complete response. Communication is especially relevant when the workforce at
+the inspected site is smaller than usual (e.g., during a pandemic) and when the request involves paper
+documents or documents requiring translation.
+--- Page 29 ---
+Topic D�2: Sharing Audit Reports
+Problem Statement
+What should the inspected site do if asked by the inspector to share the audit reports of contract
+manufacturing organizations (CMOs) or suppliers?
+Recommendation
+As in on-site inspections, an inspector in a remote inspection can ask for any document that will pro-
+vide information necessary to assess compliance. Inspectors from some health authorities may not have
+legal authority to demand, or may not ordinarily review, the inspected site’s audit reports of CMOs or
+suppliers, so it is important to understand the inspector’s perspective.
+In a virtual inspection, extracts of an audit report, including the overall audit outcome and the front
+page of the report showing execution date and scope, can be displayed to the inspector through screen-
+sharing or use of a document camera. Some health authorities may request that the full report be
+displayed. In extraordinary cases, it might be necessary to provide an electronic copy of the document.
+The inspected site may need to consider whether the quality agreement with the CMO or supplier
+includes language about the sharing of audit reports. This aspect should be considered in advance of
+the inspection to avoid creating delays in communicating the information to the inspector. Moving
+forward, the quality agreement should stipulate that such reports may be shared and should define the
+timeline for notifying the CMO or supplier that the document has been shared. It is a best practice to
+notify the CMO or supplier before or in parallel with sharing the complete report with an inspector.
+Rationale
+The request for an audit report in a remote inspection is equivalent to the request that can be made
+during an on-site inspection. These requests may be more prevalent in the remote setting, however, as
+inspectorates seek additional supporting information.
+--- Page 30 ---
+Topic D�3: Sample Collection
+Problem Statement
+During a remote inspection, can an inspector request samples from the inspected facility?
+Recommendation
+During a remote inspection, inspectors are unlikely to ask the inspected site to collect and send prod-
+uct samples from its facility or to collect and analyze an environmental sample (e.g., residue observed
+during a video tour) because inspectors normally expect to be involved in sample collection. In Eu-
+rope, collection of samples is not standard.
+If asked, the inspected site should clarify the conditions for collecting and sending the samples. The
+inspected site also should consider and mitigate any risks relating to the chain of custody. The site’s
+inspection management team also should contact legal counsel before agreeing or declining to provide
+any samples.
+Rationale
+Though unlikely in a remote inspection, a request for samples might be made under special circum-
+stances. The inspected site should clarify and diligently follow the sampling and shipment procedures
+to ensure that the samples remain representative. Import/export rules apply to this shipment.
+--- Page 31 ---
+Topic E�1: Use of Daily or Intermediate Wrap-ups
+Problem Statement
+Can I have a daily or intermediate inspection wrap-up during a remote inspection?
+Recommendation
+As in on-site inspections, the inspected site should ask the inspectors for daily (or frequent) wrap-ups
+during virtual inspections to clarify any outstanding issues and to discuss the following day’s content.
+Doing so gives the inspected site time to prepare necessary documents and employees. Alternatively,
+inspectors could provide these wrap-ups at the beginning of the following day.
+Some inspectors do not normally provide wrap-ups, but a regular wrap-up should always be requested
+since it will facilitate the ongoing inspection and help avoid potential misunderstandings regarding re-
+quested information. Inspectors also should promptly communicate any shift in focus to a new topic.
+In desktop inspections, regular exchange of information on the status of the documentation review
+and potential concerns is equally important for the efficiency of the inspection process.
+Rationale
+Risks related to miscommunication are higher during remote inspections than during on-site inspec-
+tions due to the intrinsic limitations in communications. Regular wrap-ups held at a frequency con-
+gruent with the duration of the inspection can improve the efficiency and effectiveness of the overall
+process. These wrap-ups can allow the site to both identify and provide necessary clarifications and
+prepare documents and personnel for the next day’s discussion. They also allow the inspector to ensure
+that the site clearly understands expectations and requests.
+--- Page 32 ---
+III� Remote Inspection Closing, Conclusion, and Response
+Topic A�1: Knowing an Inspection Has Ended
+Problem Statement
+How do we know the inspection has ended?
+Recommendation
+As mentioned in Topic I.C.2 Planning the Agenda, the inspector and inspected site should discuss
+the starting and ending dates for the inspection early in the process.
+Remote inspections should end with a closing meeting via video communication platform, teleconfer-
+ence, or other communication method. If the inspectors do not clearly state that the inspection has
+ended, the inspected site should ask the inspectors for confirmation.
+Rationale
+For remote inspections, which intrinsically consist of iterative requests for information between per-
+sonnel in different locations and for which the duration might not have been communicated in ad-
+vance, it may not be obvious that the inspection is complete. Therefore, it is best to explicitly ask the
+inspectors.
+--- Page 33 ---
+Topic A�2: Inspection Report and Findings and Response
+Problem Statement
+Will an inspection report be issued for a remote inspection? How will the inspection findings be com-
+municated? Is the response process for a remote inspection different from that of an on-site inspection?
+Recommendation
+The inspector’s task, regardless of the tools used, is to confirm compliance. Thus, the issuance of a
+report and communication of findings in a remote inspection should not differ from that of an on-
+site inspection. The common practice is for inspectors to finalize any observations identified during
+the remote inspection in a written inspection report, along with a request that the manufacturing site
+provide an answer and a plan for CAPAs, including a timeframe for response. This report is likely to
+describe, at a minimum:
+• The documentation that was reviewed and by whom
+• Whether physical aspects of the facility were assessed, and the methods used
+• Inspection outcome
+• Rationale for the decision
+The inspection report also should indicate the processes that could not be assessed remotely and
+whether they will be assessed on-site to allow for completion of the inspection in a hybrid format.
+The report also may explain the need for an on-site inspection. This may be a standard practice for
+some health authorities following remote inspections. For other health authorities, a follow-up on-site
+inspection may be necessary only when the remote assessment is inconclusive in evaluating the site’s
+compliance status.
+The process to respond to remote inspection findings should be the same as in on-site inspections un-
+less the health authority communicates a different procedure. During the closing meeting or equiva-
+lent, the inspectors should communicate the path forward for the inspection response process.
+Rationale
+While the remote inspection process is slightly different from an on-site inspection, the documenta-
+tion and communication of the inspection outcome in most cases will remain the same, with the pre-
+sentation of any inspectional findings, issuance of an inspection report, and expectations of responses
+as appropriate.
+--- Page 34 ---
+Topic A�3: Issuance of GMP/GDP Certificate
+Problem Statement
+If the outcome of the remote inspection is positive, will a GMP/GDP certificate be issued?
+Recommendation
+If the outcome of the remote inspection is positive, a GMP or GDP certificate should be issued as part
+of the normal activity of the health authority, as per the applicable local and regional laws.
+The certificate might specify that virtual tools were used to conduct the inspection, but this distinction
+may not be necessary as GMP/GDP certificates issued after an on-site inspection often do not include
+discussion of all tools used (e.g., site tour, document review prior to arrival on site).
+Rationale
+While the assessment process per se is slightly different in remote inspections than in on-site inspec-
+tions, the decision to release a GMP/GDP certificate, and the validity of the certificate, is based on the
+evidence of compliance demonstrated during the inspection.
+--- Page 35 ---
+Topic B�1: Frequency of Reinspection
+Problem Statement
+Is the frequency of reinspection impacted by the type of inspection (remote or on-site)?
+Recommendation
+The frequency of reinspection depends on multiple parameters, including criticality of the product,
+complexity of the process, compliance history of the facility, regulatory resources, geographic location
+of the facility, and format of the inspection (e.g., on-site, desktop, or virtual). This determination
+will be guided by the health authority’s risk-based approach. The next inspection following a remote
+inspection may occur at a reduced time interval due to the inherent limitations of a remote inspection
+as compared to on-site inspections.
+Rationale
+Technology can help in performing a remote inspection that is adequate to allow the inspector to
+make an informed decision about the site’s compliance status and/or compliance with the content in
+a regulatory submission. Even so, intrinsic limitations in a remote inspection may present challenges
+in accessing all the necessary information. Inspectorates are likely to take this into consideration when
+determining the frequency for the next inspection.
+--- Page 36 ---
+IV� References
+1. U.S. Food and Drug Administration. FDA Warns Public of Continued Extortion Scam by FDA
+Impersonators; U.S. Department of Health and Human Services: Rockville, Md., 2009. https://
+netdoc.com/fda-warns-public-of-continued-extortion-scam-by-fda-impersonators/ (accessed 26
+Mar 2021).
+2. Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). Guidance: GMP Inspection
+Reliance; PIC/S: Geneva, 2018.
+--- Page 37 ---
+V� Relevant Global Guidances
+Australian Therapeutic Goods Administration, TGA Expectations for Overseas Manufacturing Sites
+Hosting Remote Inspections during the COVID-19 Pandemic. TGA: Woden ACT, Australia, 2020. ht-
+tps://www.tga.gov.au/tga-expectations-overseas-manufacturing-sites-hosting-remote-inspections-du-
+ring-covid-19-pandemic.
+David Churchward, MHRA Good Practice (GxP) Inspections during the COVID19 Outbreak. MHRA:
+London, 2020. https://mhrainspectorate.blog.gov.uk/2020/03/23/mhra-good-practice-gxp-inspec-
+tions-during-the-covid19-outbreak/.
+European Medicines Agency, Guidance related to GMP/GDP and PMF Distant Assessments. EMA:
+Brussels, 2020. https://www.ema.europa.eu/en/documents/scientific-guideline/guidance-related-
+gmp/gdp-pmf-distant-assessments_en.pdf.
+International Federation of Pharmaceutical Manufacturers & Associations, Points to Conisder for Vir-
+tual GMP Enspections. IFPMA: Geneva, 2020.
+Medicines and Healthcare products Regulatory Agency, Guidance for Industry on MHRA’s Expectations
+for Return to UK On-site Inspections. MHRA: London, 2020. https://www.gov.uk/guidance/guidance-
+for-industry-on-mhras-expectations-for-return-to-uk-on-site-inspections.
+Vladislav Shestakov and Elizabeth Meyers, Regulator Develops Remote Inspection Process Due to
+Pandemic. PDA Letter, PDA, Inc.: Bethesda, Md., 2020. https://www.pda.org/pda-letter-portal/
+home/full-article/regulator-develops-remote-inspection-process-due-to-pandemic.
+U.S. Food and Drug Administration, Guidance for Industry: Remote Interactive Evaluations of Drug
+Manufacturing and Bioresearch Monitoring Facilities During the COVID-19 Public Health Emergency.
+U.S. Department of Health and Human Services: Silver Spring, Md., 2021; 13 pp. https://www.fda.
+gov/media/147582/download.
+U.S. Food and Drug Administration, Sec. 5.3.8.3.2, Electronic Databases and Queries. In FDA In-
+vestigations Operations Manual, U.S. Department of Health and Human Services: Silver Spring, Md.,
+2020; p 5-46. https://www.fda.gov/media/76769/download.
+--- Page 38 ---
+VII� Appendix 1: List of Quality Documents to be Reviewed During
+Inspection
+The following list describes documents that may be requested by an inspector, although requests will
+vary depending on the scope of the inspection and the preferences of the inspectorate. This list is not
+exhaustive and is not intended to be a recommendation that all of the listed documents will need to
+be provided for any particular inspection.
+Table A1-1 Documents That May Be Requested by an Inspector
+No. Requested Document
+1 Site general presentation (including size, organization, and responsibilities)
+2 Copy of site GMP certificate (issued by local authority)
+3 Corrective action/preventive action for observations from the previous inspection
+4 Description of the product(s) production flow – name, address, and manufacturing stages
+5 Quality management review standard operating procedure (SOP)
+6 Most recent Annual Product Review of the product(s)
+7 Procedure for product release.
+8 Procedure for change control management
+9 Procedure for deviation management
+10 Audit details (including audit plan and supplier audit plan)
+11 Self-inspection procedure
+12 Procedure for complaints management
+13 Procedure for recall management
+14 List of approved suppliers of materials for product(s) in scope of the inspection
+15 Job descriptions for key personnel: Head of Manufacturing, Head of Quality Control
+Detailed layout of manufacturing facility with indication of rooms grades, personnel &
+material flows,
+17 Detailed layout of quality control laboratories
+18 Copy of Master Batch Record for product(s) in scope of the inspection
+19 In-process controls of manufacturing process
+Report and protocol of manufacturing line qualification used for manufacturing of product(s)
+in scope of the inspection
+21 Specification for finished drug product manufacturing product(s) in scope of the inspection
+Specification for labeled drug product (before packaging) manufacturing product(s) in scope
+of the inspection
+Stability study report for product(s) in scope of the inspection including data along all
+product shelf life. Procedure for products stability study.
+Analytical methods validation (or methods transfer report) for product(s) in scope of the
+inspection (methods will be selected after specification receiving)
+25 Procedure for out-of-specification management.
+26 Reprocessed or reworked batches list
+Environmental Monitoring procedure, locations, results, and trends (including monitoring of
+the utilities)
+28 Site Master File
+29 Aseptic Process Simulations
+30 Cleaning & cleaning validation
+--- Page 39 ---
+31 Equipment validation/qualification, calibration, and maintenance
+32 Process validation
+33 Incoming material and supplier management
+34 Risk management
+35 Shipping details and SOP
+36 Design history files or drug master file
+37 Contamination control strategy
+--- Page 40 ---
+VIII� Appendix 2: 2021 PDA Research: Global Industry Responses to
+Remote Regulatory Inspections
+In 2020, global health authorities increased their use of remote inspections of pharmaceutical and bio-
+pharmaceutical manufacturers due to COVID-19 precautions. Manufacturers and health authorities
+alike worked rapidly to adapt on-site inspection practices to the virtual environment and to overcome
+related challenges.
+PDA conducted this survey to better understand industry’s response to these changes, as well as po-
+tential future needs. To gain these insights, PDA sought the input of global pharmaceutical and bio-
+pharmaceutical employees who help develop company policies and procedures relating to regulatory
+inspections, interact with regulatory inspectors, and/or provide support during regulatory inspec-
+tions. The survey was targeted at individuals who work for a company that manufactures finished
+products for human use, active pharmaceutical ingredients (APIs), or excipients.
+Survey Methodology
+The survey on Global Industry Approaches to Remote Regulatory Inspections was open for participation
+from November 9 through November 24, 2020.
+A total of 59 respondents completed the survey. Survey respondents are experts involved in regulatory
+inspections within their current companies, whether from the regulatory affairs, manufacturing, qual-
+ity, compliance, or other functional perspective. The survey results include a good balance between
+drug product manufacturers and API or excipient manufacturers, as well as responses from sites of
+varying sizes. Respondents included industry professionals located in North America, Europe, Asia/
+Pacific, Africa, and the Middle East. Latin America was not represented among respondents.
+The survey used skip logic to ask follow-up questions to selected subsets of respondents. For instance,
+Questions 8 through 13 were asked only of those who said in response to Question 7 that they had
+participated in or supported a remote regulatory inspection or assessment in 2020. As a result of this
+skip logic, the number of respondents varies depending on the question asked.
+For numerous questions, respondents could select as many options as were applicable. These questions
+are denoted by the instruction to “Select all that apply.” The percentages shown in the responses to
+these questions represent the percent of respondents rather than percent of total responses. The percent-
+ages for these questions will not total 100.
+--- Page 41 ---
+Survey Results
+1. Which of these best describes your primary role?
+Answer Count %
+Quality Assurance 23 43.4%
+Quality Control 1 1.9%
+Clinical Operations 1 1.9%
+Manufacturing Operations 4 7.5%
+Regulatory Affairs 5 9.4%
+Audit 7 13.2%
+Compliance 8 15.1%
+Other 4 7.5%
+Answered 53
+Other responses:
+• Medical Devices
+• I am consultant and work with all of the above
+• Vaccines
+• Medical Devices (×2)
+• Cell Therapy
+7.5%
+15.1%
+43.4%
+13.2%
+9.4%
+7.5%
+1.9%
+1.9%
+n Quality Assurance n Regulatory Affairs
+n Quality Control n Audit
+n Clinical Operations n Compliance
+n Manufacturing Operations n Other
+--- Page 42 ---
+2. In what region are you located?
+Answer Count %
+North America 25 47.2%
+Europe 15 28.3%
+Middle East 2 3.8%
+Asia/Pacific 10 18.9%
+Africa 1 1.9%
+Answered 53
+1.9%
+n North America
+n Europe
+n Middle East
+n Asia/Pacific 18.9%
+n Africa
+3.8%
+47.2%
+28.3%
+3. How many employees are at your location?
+Answer Count %
+Less than 50 12 23.1%
+50-100 4 7.7%
+101-250 9 17.3%
+More than 250 27 51.9%
+Answered 52
+n Less than 50
+n 50-100
+n 101-250 23.1%
+n More than 250
+51.9%
+7.7%
+17.3%
+--- Page 43 ---
+4. What types of products do you manufacture/develop at your site? Select all that apply.
+Answer Count %
+Drug product 38 71.7%
+Active pharmaceutical ingredient (API) or formulated bulk 23 43.4%
+Other 7 13.2%
+Excipient 3 5.7%
+Answered 53
+100%
+80%
+60%
+40%
+20%
+0%
+Drug Product API Other Excipient
+5. If you manufacture/develop drug products, do you manufacture/develop for:
+Answer Count %
+Clinical stage 3 8.1%
+Commercial products 12 32.4%
+Both 21 56.8%
+N/A 1 2.7%
+Answered 37
+2.7%
+n Clinical stage
+n Commercial products 8.1%
+n Both
+n N/A
+32.4%
+56.8%
+--- Page 44 ---
+6. If you manufacture/develop drug products, do you manufacture/develop:
+Answer Count %
+As a contract manufacturing organization (CMO) / contract development and
+8 22.9%
+manufacturing organization (CDMO)
+As a marketing authorization holder (MAH) 14 40.0%
+Both 13 37.1%
+Answered 38
+22.9%
+n CMO/CDMO 37.1%
+n MAH
+n Both
+40.0%
+7. In 2020, have you participated in or supported a regulatory inspection or assessment conducted remotely?
+Answer Count %
+Yes 35 66.0%
+No 18 34.0%
+Answered 53
+34.0%
+n Yes
+n No
+66.0%
+--- Page 45 ---
+8. If you answered Yes to Question 7, what was the format of the remote regulatory inspection(s)/
+assessment(s) that you participated in/supported? Select all that apply.
+Answer Count %
+Remote virtual, with discussions/interviews occurring via teleconference or
+23 74.2%
+videoconference
+Hybrid, with an inspector spending some time in person at your facility, and some of
+13 41.9%
+the inspection/assessment conducted remotely or virtually
+Desk-based: records review only, with no live discussions or interviews 11 35.5%
+Answered 31
+100%
+80%
+60%
+40%
+20%
+0%
+Remote virtual Hybrid Desk based
+--- Page 46 ---
+9. Which regulatory authority/authorities conducted the remote inspection(s)/assessment(s)? Select all that
+apply.
+Answer Count %
+U.S. FDA 16 51.6%
+Other 15 48.4%
+EMA (EU) 11 35.5%
+MHRA (UK) 5 16.1%
+TGA (Australia) 4 12.9%
+PMDA (Japan) 4 12.9%
+Health Canada 1 3.2%
+NMPA (China) 1 3.2%
+Anvisa (Brazil) 0 0.0%
+Answered 31
+Other responses:
+• ANSM France
+• notified body
+• Russia (×4)
+• Russia (MoIT) (×2)
+• Swiss Medic
+• Turkey; Russia (most)
+100%
+80%
+60%
+40%
+20%
+0%
+U.S. FDA Other EMA MHRA TGA PMDA Health NMPA ANVISA
+Canada
+--- Page 47 ---
+10. Did the remote inspection(s)/assessment(s) take:
+Answer Count %
+Less than half (0 – 49%) of the time that an in-person inspection would have taken.
+2 6.9%
+(It was much shorter than an in-person inspection.)
+50% – 99% of the time that an in-person inspection would have taken.
+5 17.2%
+(It was somewhat shorter than an in-person inspection.)
+About the same amount of time as an in-person inspection 9 31.0%
+101% – 200% of the time than an inspection would have taken.
+10 34.5%
+(It was somewhat longer than an in-person inspection.)
+More than twice the time that an in-person inspection would have taken.
+3 10.3%
+(It was significantly longer than an in-person inspection.)
+Answered 29
+6.9%
+10.3%
+n 0-49% 17.2%
+n 50%-99%
+n About the same amount of time
+34.5%
+n 101%-200%
+n More than twice the time
+31.0%
+11. In the remote inspections/assessments, were the requests/demands made by the regulators equivalent to
+those that would be made in an in-person inspection??
+Answer Count %
+Yes, the regulators made basically the same requests/demands that we would expect
+19 63.3%
+in an in-person inspection
+No, the regulators asked for less information than they would in an in-person inspection 3 10.0%
+No, the regulators asked for more information or more detailed information than in an
+8 26.7%
+in-person inspection. (Please describe briefly.)
+Answered 30
+Additional description of more/more detailed information requested:
+• More details on manufacturing operations, PV, etc.
+• More documents where requested upfront the remote
+inspection
+• More information and data had to be prepared and
+sent electronically to the authorities in advance of the
+inspection.
+n Yes
+n No, regulators asked for less information
+n No, regulators asked for more information
+--- Page 48 ---
+12. If you answered “No, the regulators asked for more information or more detailed information” in Ques-
+tion 11, at what stage of the remote inspection did the regulatory authority request/demand this ad-
+ditional or more detailed information? Select all that apply.
+Answer Count %
+Before the inspection began 5 62.5%
+During the inspection 5 62.5%
+After the inspection concluded 0 0.0%
+Answered 8
+100%
+80%
+60%
+40%
+20%
+0%
+Before During After
+--- Page 49 ---
+13. What was the outcome of the remote inspection? Select all that apply.
+Answer Count %
+Written observations / findings 16 57.1%
+No observations / findings 11 39.3%
+Request for additional information 8 28.6%
+Oral observations / findings 4 14.3%
+Other 3 10.7%
+Answered 28
+Other responses:
+• Approval
+• One day on site inspection
+100%
+80%
+60%
+40%
+20%
+0%
+Written No Request for Oral Other
+observations / observations / additional observations /
+findings findings information findings
+--- Page 50 ---
+14. If your company had concerns about the legitimacy of an inspector that asks to conduct a remote inspection
+of your site, which of these answers best describes how you would respond? Select all that apply.
+Answer Count %
+We would contact the regulatory authority with any concerns about the inspector’s
+25 54.3%
+legitimacy
+We would require a written request in advance and would authenticate the source of
+16 34.8%
+the written request
+It depends on the regulatory authority involved 10 21.7%
+We would always consent to the inspection, even if we had concerns about the
+6 13.0%
+legitimacy of the inspector
+We would categorically refuse the remote inspection if we were concerned about the
+3 6.5%
+inspector’s legitimacy
+We would agree only to a desk-based inspection, limited to records 3 6.5%
+Other (please specify) 2 4.3%
+Answered 46
+Other responses:
+• Never had this concern. Always received a copy of the formal inspectorate letter notification
+• The purpose of an inspection is to check compliance. No law requests how to do that. The
+inspector must be confident of compliance.
+100%
+80%
+60%
+40%
+20%
+0%
+Contact the Require It depends Always Categorically Agree only to Other
+regulatory a written on the consent to refuse the a desk-based
+authority with request in regulatory the inspection remote inspection
+any concerns advance authority inspection
+involved
+--- Page 51 ---
+15. During an inspection conducted remotely, how would you provide records/documents to the regulatory
+authority? Select all that apply.
+Answer Count %
+We would upload files to a secure portal/archive 30 71.4%
+We would provide the files in any manner requested by the regulator 10 23.8%
+It depends on the specific document. We would apply greater protections to some
+9 21.4%
+documents than to others
+We would email files 4 9.5%
+Not sure 3 7.1%
+We would not share any records electronically. We would send any necessary
+1 2.4%
+records by courier or mail (e.g., in hard copy or on USB drive)
+Other (please specify) 1 2.4%
+Answered 42
+100%
+80%
+60%
+40%
+20%
+0%
+We would We would It depends on We would Not sure Would not Other
+upload files provide the the specific email files share any
+to a secure files in any document records
+portal/archive manner electronically
+requested by
+the regulator
+--- Page 52 ---
+16. Would you agree to make employees available for remote (audio and/or video) interviews by the
+investigator?
+Answer Count %
+Yes, all requested employees 24 55.8%
+Yes, but only specific employees 12 27.9%
+It depends on the regulator’s legal authority 3 7.0%
+Not sure 2 4.7%
+Other (please specify) 2 4.7%
+Answered 43
+4.7%
+4.7%
+n Yes, all requested employees 7.0%
+n Yes, but only specific employees
+n It depends on the regulator’s legal authority
+n Not sure 55.8%
+n Other 27.9%
+17. If you would allow interviews, in what formats would you allow interviews?
+Answer Count %
+Audio only, no visual/video of the person being interviewed 2 5.7%
+Audio plus visual/video conference, provided that the agency officials are also on
+22 62.9%
+video
+Audio and video, without limitation 10 28.6%
+Not sure 1 2.9%
+Answered 35
+2.9%
+5.7%
+n Audio only
+28.6%
+n Audio plus visual/video conference
+n Audio and video
+n Not sure
+62.9%
+--- Page 53 ---
+18. During a remote inspection conducted by videoconference (e.g. Zoom, Microsoft Teams,
+GoToMeeting), would you allow the regulatory authority to record the proceedings?
+Answer Count %
+Yes, we would agree without limitation 5 12.2%
+Yes, but only if we (the inspected site) host the meeting on a platform we control that
+10 24.4%
+has been approved by our IT Security Team
+No 9 22.0%
+Not sure 13 31.7%
+Other (please specify) 4 9.8%
+Answered 41
+Other responses:
+• Audio only by agreement
+• Never been requested.
+• Similar to what counts of on-site inspections
+• The agreement to record all or part of the inspection has to be taken in advance of the virtual
+inspection
+9.8%
+12.2%
+n Yes, we would agree without limitation
+n Yes, but only if we host the meeting
+n No 31.7% 24.4%
+n Not sure
+n Other
+22.0%
+--- Page 54 ---
+19. If you answered No to Question 18, would you require written assurance that the regulator is not
+recording the sessions?
+Answer Count %
+Yes 5 55.6%
+No 3 33.3%
+Not sure 1 11.1%
+Answered 9
+11.1%
+n Yes
+n No
+33.3% 55.6%
+n Not sure
+20. If you answered Yes to Question 19, would you be willing to provide reciprocal assurance (that you are
+not recording the sessions) to the regulator?
+Answer Count %
+Yes 5 100.0%
+No 0 0.0%
+Answered 5
+n Yes
+100.0%
+n No
+--- Page 55 ---
+21. If asked during a remote inspection, would you allow a regulator to capture a still image (photo,
+screenshot, or other) of a condition or practice within your facility?
+Answer Count %
+Yes, without limitation 2 4.9%
+Yes, but only if we obtain an identical image at the same time 21 51.2%
+No 6 14.6%
+It would depend on what the desired image depicted 6 14.6%
+Not sure 3 7.3%
+Other (please specify) 3 7.3%
+Answered 41
+Other responses:
+• GVP inspections we would agree to provide the required image
+• Same conditions apply as for on-site inspections
+• Would depend on the desired image. If allowed, then image would be made by company and
+shared with inspector so both parties have identical image
+4.9%
+7.3%
+n Yes, without limitation 7.3%
+n Yes, but only if we obtain an
+identical image at the same time
+n No 14.6%
+n It would depend 51.2%
+n Not sure
+14.6%
+n Other
+--- Page 56 ---
+22. If asked during a remote inspection, would you allow an employee to transmit live video from your
+manufacturing area, via the camera on a laptop, tablet, smartphone, or advanced technology such as
+smart glasses, to a regulator/inspector so that the regulator can observe conditions or practices within
+your facility?
+Answer Count %
+Yes 5 12.2%
+Yes, provided that the regulatory authority does not record the video 17 41.5%
+It depends on the regulator and their authority. We might allow it for some regulators
+10 24.4%
+and not others
+No 4 9.8%
+Not sure 5 12.2%
+Answered 41
+n Yes 12.2% 12.2%
+n Yes, provided that the regulatory
+9.8%
+authority does not record the video
+n It depends on the regulator and their
+authority
+n No 41.5%
+24.4%
+n Not sure
+23. If you answered “Yes, provided that the regulatory authority does not record the video” to Question 22,
+would you attempt to verify that a recording was not made?
+Answer Count %
+Yes. Please describe how you might verify: 7 43.8%
+No 3 18.8%
+Not sure 6 37.5%
+Answered 16
+Descriptions of how respondents might verify:
+• I would simply ask
+• Through video technology indicators on recording or no
+recording
+• Agreement
+• We would agree to rules of engagement up front, but
+make no other attempt to verify
+--- Page 57 ---
+24. If asked during a remote inspection, would you allow an inspector to view your own live video feed of
+your facility, for instance by viewing your CCTV footage or other internal camera feed?
+Answer Count %
+Yes, we would give the inspector instructions to access it directly 3 7.3%
+Yes, a staff member would access the live video feed and would share the images/
+14 34.1%
+video with the inspector (for instance through screen-sharing in a videoconference)
+It depends on the regulator and their authority. We might allow it for some regulators
+13 31.7%
+and not others
+No 7 17.1%
+Not sure 4 9.8%
+Answered 41
+7.3%
+9.8%
+n Yes, we would give the inspector
+instructions to access it directly
+n Yes, a staff member would access
+17.1%
+the live video feed
+34.1%
+n It depends on the regulator and their
+authority
+n No
+n Not sure
+31.7%
+--- Page 58 ---
+25. If asked, would you provide a regulator with a physical sample of material (for example, foreign
+matter in process materials or finished product) as part of the remote inspection?
+Answer Count %
+Yes, in every circumstance 5 12.8%
+Yes, with limitations 5 12.8%
+Maybe. It depends on the regulatory authority. We might provide a sample to some
+5 12.8%
+regulatory authorities and not to others
+No 3 7.7%
+We would have to consult with legal counsel before responding to the regulator’s
+14 35.9%
+request
+Not sure 7 17.9%
+Answered 39
+n Yes, in every circumstance 17.9% 12.8%
+n Yes, with limitations
+n Maybe 12.8%
+n No
+n We would have to consult with legal
+counsel before responding to the 12.8%
+35.9%
+regulator’s request
+n Not sure 7.7%
+--- Page 59 ---
+26. If you answered “Yes, with limitations” to Question 25, what limitations would you impose? Select all
+that apply.
+Answer Count %
+We would require the request to be made in writing 4 50.0%
+We would provide only finished product that had been released for shipment per
+3 37.5%
+internal QA procedure
+We would not provide controlled substances 2 25.0%
+We would provide only finished product 1 12.5%
+Other (please specify) 1 12.5%
+Answered 5
+Other responses:
+• According to the requirements applying in the law in the country the inspector comes from
+100%
+80%
+60%
+40%
+20%
+0%
+We would require We would provide We would not We would provide Other
+the request to be only finished provide controlled only finished
+made in writing product substances product
+--- Page 60 ---
+27. At the conclusion of a remote inspection:
+Answer Count %
+We would participate in a remote exit conference without limitation 33 84.6%
+We would require that an exit conference and presentation of findings be conducted
+4 10.2%
+in person
+We would only reply in writing to any written list of inspection observations 1 2.6%
+It depends on the regulatory authority involved 1 2.6%
+Answered 39
+2.6%
+2.6%
+10.2%
+84.6%
+n We would participate in a remote exit conference n We would only reply in writing to any written list
+without limitation of inspection observations
+n We would require that an exit conference and n It depends on the regulatory authority involved
+presentation of findings be conducted in person
+28. Have you begun changing SOPs and/or policies to proactively address remote regulatory inspections?
+Answer Count %
+Yes 18 46.1%
+No 15 38.5%
+We don’t expect to change our SOPs 6 15.4%
+Answered 39
+15.4%
+n Yes
+n No 46.1%
+n We don’t expect to
+change our SOPs
+38.5%
+--- Page 61 ---
+29. Has your company identified questions or topics that are specific to remote inspections/assessments that
+that should be raised to legal counsel (in-house or outside counsel) before employees respond?
+Answer Count %
+No, the questions and topics are the same as in an in-person inspection 34 85.0%
+Yes 6 15.0%
+Answered 40
+15.0%
+n No
+n Yes
+85.0%
+30. If other aspects of remote regulatory inspections cause you concern, please describe them.
+Responses:
+• 1) There should be a differentiation between initial inspection and re-inspection and inspector
+needs to be aware of it. 2) Inspectors might review other info about the site prior to the inspec-
+tion and the site should be aware of it.
+• Additional document/information requests during virtual inspection follow up can extend over
+weeks; there should be a time limitation by when requests are accepted
+• Be clear on the terminology. It seems ‘remote inspections’ refers to ‘paper based + ‘virtual
+inspections’
+• Confidentiality
+• Increased frequency of inspections due to no travel time lost and flexibility of remote inspecting
+• It has put strain on our system, and we see lack of motivation in employees to sit in front of the
+system for long durations
+• Miscommunication or misinterpretation with limited information must be avoided or clarity
+must be established before conclusion
+• Possible request to use teleconferencing software (e.g. Zoom, GoToMeeting) that are not among
+those that are company-approved (Microsoft Teams, WebEx)
+• Presentation of trade secret documents
+• Remote inspections take more time to cover the same amount of ground as an in-person
+inspection, and require a well-prepared backroom to ensure that requests are met quickly and
+accurately. Greater potential for misunderstandings.
+• Technical limitations could provide a distorted “picture”/view on a number of topics throughout
+a remote inspection
+• Technology limitations – they can be falsified easily, which breeds mistrust.
+--- Page 62 ---
+31. Have you incorporated into your inspection management policy or procedures a means for dealing
+with a demand from the U.S. FDA for records “in advance of or in lieu of an inspection”, issued
+pursuant to 21 USC 374(a)(4)?
+Answer Count %
+Yes. We have amended our policy or procedure to provide for the receipt of a demand
+13 31.7%
+for records from the U.S. FDA
+No. We are aware of this statutory provision but have not amended our policy or
+19 46.3%
+procedure to address it
+No. We are unaware of this statutory provision and have not planned for such a
+4 9.8%
+demand
+We are not regulated by the U.S. FDA 5 12.2%
+Answered 41
+12.2%
+n Yes
+n No. We are aware of this statutory provision 9.8% 31.7%
+but have not amended our policy or procedure
+to address it
+n No. We are unaware of this statutory provision
+and have not planned for such a demand
+n We are not regulated by the U.S. FDA
+46.3%
+--- Page 63 ---
+32. If the U.S. FDA notified you that they want to conduct a “voluntary regulatory assessment” which
+would not technically be an inspection, but the results of which could determine approval or
+withholding of approval of a pending submission (NDA, ANDA, BLA, etc.), would you:
+Answer Count %
+Agree to participate 21 58.4%
+Refuse to participate in this voluntary assessment, but state that you would fully
+3 8.3%
+cooperate with an official inspection that met statutory requirements
+Not sure 8 22.2%
+Other (Please specify) 4 11.1%
+Answered 36
+Other responses:
+• Decision based on business risk
+• Might depend upon the site they want to inspect
+• This is double work. The US REGULATIONS are allowing remote inspections; guidelines may
+be a limiting factor
+• Would need to assess through legal
+11.1%
+n Agree to participate
+n Refuse to participate in this 22.2%
+voluntary assessment
+58.4%
+n Not sure
+n Other
+8.3%
+Survey Conclusion
+This survey will support PDA, manufacturers, and regulators in understanding the current state, the
+needs of manufacturers, and the challenges to be overcome in moving forward with remote regula-
+tory inspections. The survey provides benchmarking information regarding experiences to date. In
+particular, the survey results illustrate the steps that companies have taken to prepare for and respond
+to remote regulatory inspections by global health authorities during the COVID-19 pandemic. These
+insights will continue to be useful because the use of remote inspection tools is expected to continue
+in some cases even after the pandemic is under control.
+--- Page 64 ---
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication is the purchaser.
+Authorized Users are permitted to do the following:
+• Search and view the content of the PDA Electronic Publication
+• Download the PDA Electronic Publication for the individual use of an Authorized User
+• Print the PDA Electronic Publication for the individual use of an Authorized User
+• Make a reasonable number of photocopies of a printed PDA Electronic Publication for the individual use of an
+Authorized User
+Authorized Users are not permitted to do the following:
+• Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+• Display or otherwise make any information from the PDA Electronic Publication available to anyone other
+than an Authorized User
+• Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites, either available
+on the Internet or an Intranet, or in any form of online publications without a license from PDA, Inc.
+• Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA Electronic
+Publication
+• Create a searchable archive of any portion of the PDA Electronic Publication
+• Use robots or intelligent agents to access, search and/or systematically download any portion of the PDA
+Electronic Publication
+• Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA Electronic Publication
+or its content
+• Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk reproduction or
+distribution of materials in any form, or any substantially similar commercial purpose
+• Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+• Make any edits or derivative works with respect to any portion of the PDA Electronic Publication including any
+text or graphics
+• Delete or remove in any form or format, including on a printed article or photocopy, any copyright information
+or notice contained in the PDA Electronic Publication
+• Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+• Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a fee.
+To learn more about licensing options and rates, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900,
+ext. 133. Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+• Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
+Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
+--- Page 65 ---
+Points to Consider in Remote and Hybrid GMP/GDP Inspections
+About PDA Technical Reports
+PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside
+front cover) comprised of content experts, including scientists and engineers working in the pharmaceutical/bio-
+pharmaceutical industry, regulatory authorities and academia. While in development, PDA Technical Reports are
+subjected to a global review of PDA members and other topic-specific experts, often including regulatory officials.
+Comments from the global review are then considered by the authoring Task Force during the preparation of the
+final working draft. The level of expertise of the Task Force and those participating in the global review ensure a
+broad perspective reflecting best thinking and practices currently available.
+The final working draft is next reviewed by the PDA Advisory Board or Boards that sanctioned the project. PDA’s
+Advisory Boards are: Science Advisory Board, Biotechnology Advisory Board, and Regulatory Affairs and Quality
+Advisory Board. Following this stage of review, the PDA Board of Directors conducts the final review and deter-
+mines whether to publish or not publish the document as an official PDA Technical Report.
+While PDA goes to great lengths to ensure each Technical Report is of the highest quality, all readers are encouraged
+to contact PDA about any scientific, technical, or regulatory inaccuracies, discrepancies, or mistakes that might be
+found in any of the documents. Readers can email PDA at: TRfeedback@pda.org.
+Sanctioning Advisory Board: RAQAB PDA Officers and Directors
+Jacqueline Veivia-Panter, Minaris Regenerative Officers
+Medicine (Chair)
+Chair: Jette Christensen, Novo Nordisk
+Jeff Broadfoot, Emergent BioSolutions Inc. (Immediate
+Chair-Elect: Susan Schniepp, RCA
+Past Chair)
+Treasurer: Melissa Seymour, Biogen, Inc.
+Anette Yan Marcussen, NNE (Vice Chair)
+Secretary: Emma Ramnarine, Genentech/Roche
+Denyse Baker, AstraZeneca
+Immediate Past-Chair: Rebecca Devine, Consultant
+Cylia Chen-Ooi, Amgen
+President: Richard Johnson
+Marcello Colao, GlaxoSmithKline Biologicals
+Tor Gråberg, AstraZeneca Directors
+Jane Halpern, Ph.D., Consultant Barbara M. Allen, PhD, Eli Lilly and Company
+Frithjof Holtz, Merck KGaA, Darmstadt, Germany Michael Blackton, Adaptimmune, LLC
+Dinesh Khokal, Amgen Bettine Boltres, PhD, West Pharmaceutical Services
+Beth Kirschenheiter, ICU Medical Tia Bush, Amgen, Inc.
+Demetra Macheras, AbbVie, Inc. Javier Camposano, Celltrion
+Luciana Mansolelli, Novartis Ghada Haddad, Merck & Co./Merck Sharp & Dohme
+Shin-ichiro Mohri, Consultant Joyce Hansen, Johnson & Johnson
+Jeanne Moldenhauer, Excellent Pharma Consulting Stephan Krause, PhD, AstraZeneca Biologics
+Catriona Murphy, Eli Lilly and Company Mary Oates, Emergent Bioscience
+Lorianne Richter, Ultragenyx Pharmaceutical Inc. Mathias Romacker, Pfizer (ret.)
+Eva Urban, CSL Behring Anil Sawant, PhD, Merck & Co./Merck Sharp & Dohme
+Gopi Vudathala, Ph.D., Incyte Corporation Osamu Shirokizawa, LifeScientia
+Kelly Waldron, Ph.D., ValSource
+Martin Wisher, Ph.D., MHW Biologics Consulting PDA Publication Production and Editing
+Ruth K. Miller, JD, Director, Regulatory Affairs
+Glenn Wright, VP, Scientific & Regulatory Affairs
+Walter Morris, Senior Director of Publishing and Press
+Relations
+Katja Yount, Publication Designer
+Marilyn Foster, Technical Editor/Writer
+--- Page 66 ---
+Bethesda Towers
+4350 East West Highway
+Suite 600
+Tel: +1 (301) 656-5900
+Fax: +1 (301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org

@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA PtC-11 - Topic 3: Control Strategies</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Topic 3: Control Strategies</h1>
+    <div class="subtitle">Topic 3：管控策略</div>
+    <div class="page-info">PDA Points to Consider No. 11 (2025) | p19 - p23</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解管控策略 (control strategy) 對病毒載體與質體製造的必要性，以及其在各臨床階段應達到的成熟度要求。</li>
+        <li>掌握 CPP/CMA → CQA 之連結邏輯，以及微生物與病毒管控應優先於其他參數定義的原因。</li>
+        <li>區分「無菌 (sterile)」與「低生物負荷 (low bioburden)」兩種產品分類，及其對污染管控策略 (CCS) 設計的決定性影響。</li>
+        <li>了解無菌製程模擬 (APS/APV) 的相位適當性要求，以及 EU 與 US Phase 1 期望之差異，並能應用於 CDMO 雙市場策略。</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q3.1 Section -->
+<!-- ============================================================ -->
+<div class="section-title">Q 3.1 — Control Strategy Requirement and Timing</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Q 3.1. Are control strategies required for viral vectors and plasmid manufacture? If so, at what stage should the control strategy be available?</strong></p>
+
+        <p>Viral vector and plasmid manufacture, whether defined as a <span class="key-term">critical starting material</span> or as a <span class="key-term">drug substance</span>, requires a robust, holistic <span class="key-term">control strategy</span> to drive product quality. The control strategy should link the <span class="key-term">CPPs</span> and <span class="key-term">CMAs</span> directly to the <span class="key-term">CQAs</span>. By understanding which process parameters have a direct impact on the CQAs, appropriate process monitoring and controls can ensure reproducible and predictable delivery of the viral vector or plasmid. PDA Technical Report No. 81 Cell-Based Therapy Control Strategy (TR 81) describes the approach for cell-based therapy control strategies; the strategies and concepts described in PDA Technical Report No. 60 Process Validation: A Lifecycle Approach (TR 60) apply to all pharmaceutical products. The principles discussed in TR 81 and TR 60 can broadly be applied to viral vector and plasmid control strategies as well.</p>
+
+        <p>In addition to the principles mentioned above, <span class="key-term">phase-appropriate</span> implementation may be warranted. For example, the control strategy may consist of preliminary factors to be monitored and assessed in a phase-appropriate manner. As experience with the production of Phase 1 and Phase 2 material is gained, the control strategy may mature while regional differences may dictate how early the control strategy must be formalized. As additional product and process knowledge is gained through clinical results and through continued small-scale and lifetime studies, process ranges must be established and CPPs defined, so that by the time pivotal clinical batches are produced, product and process consistency are assured. When creating a holistic control strategy for plasmid and vector production, inclusion of microbiological and viral control aspects, in addition to the core manufacturing process elements, is important. The microbiological and viral control strategies can either be prepared as separate documents or they may be written within the overall process control strategy. Either approach is acceptable, provided that all stages of the process and all material handling steps are included in the approaches.</p>
+
+        <p>Viral and microbiological controls should be in place for the first human clinical trial as they have a direct impact on <span class="key-term">patient safety</span>. Therefore, these attributes of the control strategy may need to mature earlier than some of the other parameter definitions. In the EU, sterilization and sterility methods are required to be validated at the time of Phase 1 for an Investigational Medicinal Product Dossier. For example, if a vector is defined as a sterile critical starting material, safety-indicating methods (such as sterility and endotoxin) must be qualified. Requirements for a <span class="key-term">mycoplasma</span> safety-indicating method may vary based on regional requirements. A risk assessment may be needed which takes into consideration the intended market and existing controls. Additionally, the initial control strategy will need to be refined and revised as additional product knowledge and process understanding are gained.</p>
+
+        <p>Analytical methods and their associated reference standards should mature along with the control strategy. As CPPs are defined for each associated CQA, the analytical methods that confirm CQA achievement must be demonstrated to be reproducible, accurate, and precise. In this manner, should late-stage process changes or process parameter changes be introduced (within or between sites), comparability and bridging can be accomplished with a high degree of assurance. (See Topic 5.)</p>
+
+        <div class="quote-box">
+            "Viral and microbiological controls should be in place for the first human clinical trial as they have a direct impact on patient safety."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 管控策略的成熟度軌跡</h4>
+            <p><strong>Control Strategy（管控策略）</strong>是一份活的文件，描述製程如何確保每批產品的 CQA（Critical Quality Attributes，關鍵品質屬性）符合規格。它的核心邏輯是：</p>
+            <ul>
+                <li><strong>CMA（Critical Material Attributes，關鍵物料屬性）</strong> → 原料的哪些特性會影響最終品質？</li>
+                <li><strong>CPP（Critical Process Parameters，關鍵製程參數）</strong> → 製程中哪些參數一旦偏差就會衝擊 CQA？</li>
+                <li><strong>CQA（Critical Quality Attributes）</strong> → 最終必須達到的品質標準（如效價、純度、無菌性）</li>
+            </ul>
+            <p>三者形成一條因果鏈：物料特性與製程參數共同決定產品品質。管控策略就是把這條鏈子的每個節點明確化、並建立監控與控制措施。</p>
+            <p><strong>Phase-appropriate（相位適當）</strong>指的是：管控策略不必在 Phase 1 就達到商業化等級的嚴謹度。它應隨著臨床進展逐步成熟——從初步定性的監測，到明確量化的 CPP 範圍，再到完整的製程驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 醫院感染管控計畫的成長</h4>
+            <p>想像一家正在建設中的醫院。</p>
+            <ul>
+                <li><strong>Phase 1（門診部開幕）</strong>：基本手洗規範、員工健康監測就夠了——感染管控計畫是初稿，重點放在最高風險項目（如患者接觸傳染病原的直接安全）。</li>
+                <li><strong>Phase 2（住院病房啟用）</strong>：需要增加環境微生物監測、清潔程序驗證，計畫更加正式與完整。</li>
+                <li><strong>Phase 3（手術室與 ICU 開幕）</strong>：整套感染管控計畫必須完全到位，包含空氣管理、無菌技術驗證、環境認證。</li>
+            </ul>
+            <p>病毒載體的管控策略也是如此：隨著試驗進入更晚期（Phase 1 → Phase 2 → 樞紐試驗），策略的深度與嚴謹度必須逐步升級。關鍵在於：<strong>微生物與病毒管控，從 Phase 1 就必須到位</strong>——因為這直接關乎受試者安全，不允許「未來再補強」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — EU vs US Phase 1 期望差異（CDMO 雙市場必知）</h4>
+            <p>這是針對同時服務歐美市場的 CDMO 最關鍵的監管差異之一：</p>
+            <ul>
+                <li><strong>EU Phase 1（IMPD 要求）</strong>：滅菌方法與無菌性方法必須在 Phase 1 時完成驗證 (validated)。若產品定義為「無菌關鍵起始原料」，sterility 與 endotoxin 等安全指示方法必須完成資格確認。這是<em>強制性</em>要求。</li>
+                <li><strong>US Phase 1（FDA 期望）</strong>：展示能力 (demonstrate capability) 即可，不要求正式完成模擬挑戰試驗。完整驗證通常在 Phase 2 及以後完成。</li>
+            </ul>
+            <p><strong>實務影響</strong>：若客戶先申請 EU IND/IMPD，CDMO 必須在 Phase 1 前完成更嚴格的驗證工作（包括 APS/APV）。若僅針對 FDA IND，初期可以建立能力展示，降低啟動成本。雙市場策略的 CDMO 應在專案初期即釐清客戶目標市場，以避免後期補做驗證的高昂代價。</p>
+            <p>此外，<strong>mycoplasma（黴漿菌）</strong>檢測方法的資格確認要求因地區而異，需依客戶目標市場進行風險評估。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 分析方法與管控策略同步成熟</h4>
+            <p>文中強調「Analytical methods should mature along with the control strategy（分析方法應與管控策略同步成熟）」，這對 CDMO 有深遠的商業意義：</p>
+            <ul>
+                <li>若 CPP 已定義但對應的 CQA 分析方法仍不具備可重現性，那麼製程轉移（site transfer）或批次比較（comparability）時將缺乏數據支撐，可能引發監管機關的質疑。</li>
+                <li>早期建立具可重現性的參考標準品 (reference standard) 與分析平台，是後期 comparability bridging（可比性橋接研究）的基礎——對於多個客戶的同類產品（如 AAV），平台化分析方法更能大幅降低成本。</li>
+                <li>請參閱 PDA TR81（Cell-Based Therapy Control Strategy）與 TR60（Process Validation Lifecycle）以獲取更詳細的策略框架。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Q3.2 Section -->
+<!-- ============================================================ -->
+<div class="section-title">Q 3.2 — Microbiological Control Aspects + Table 3.2-1</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Q 3.2. What aspects of microbiological control apply to vector and plasmid manufacture?</strong></p>
+
+        <p><span class="key-term">Phase-appropriate</span> microbiological- and viral-control principles should be applied regardless of whether the product is considered a starting material, active substance, or final product. During the definition of the <span class="key-term">QTPP</span> (Quality Target Product Profile), it should be established whether the viral vector or plasmid is intended to be <span class="key-term">sterile</span> or <span class="key-term">low bioburden</span>. This definition will guide which aspects of microbial control to apply to the process.</p>
+
+        <p>After classification as sterile or low bioburden, the microbiological control strategy should then be established based on a systematic assessment of each process step. The assessment should consider the intrinsic and extrinsic sources of contamination with a focus on any open processing. The control strategy must identify appropriate active controls (e.g., incoming testing or in-process treatment, such as filtration) to limit microbiological and viral contamination. In addition, monitoring requirements (e.g., <span class="key-term">environmental monitoring</span>, bioburden sampling) should be defined and implemented as passive measures to ensure that the state of control is maintained. The intent is to establish both active and passive measures that provide confidence in the assurance of the claim of either sterility or low bioburden.</p>
+
+        <p>Aseptic controls are critical requirements for operation. For low-bioburden processes, control strategy development can focus on which aseptic controls are essential to support a compliant low-bioburden material. Open processing and manual manipulation steps should be a particular focus in the microbiological control strategy. Certain factors in <span class="key-term">functionally closed</span> processes, as described in EU Annex 1, should also be considered.</p>
+
+        <p>Whether the end product is considered sterile or low bioburden, all basic elements of a <span class="key-term">contamination control strategy (CCS)</span> should exist, including:</p>
+        <ul>
+            <li><span class="key-term">Environmental monitoring</span> program (see PDA Technical Report No. 13 (Revised 2022) Fundamentals of an Environmental Monitoring Program)</li>
+            <li>Cleaning and sanitization of the environment (see PDA Technical Report No. 70 Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities)</li>
+            <li>Specified personnel and material flow that prevent cross-contamination</li>
+            <li>Gowning</li>
+            <li>Access control</li>
+            <li>Environmental controls (e.g., temperature/humidity monitoring, pressure cascades, routine certification of HEPA filters)</li>
+            <li>Control of raw materials</li>
+            <li>In-process and final-product testing</li>
+            <li>Cross-contamination controls, including <span class="key-term">viral material</span></li>
+        </ul>
+
+        <p>Additional elements of the CCS should be risk-based and specific to the process and the end claim. Examples of differences in control strategy elements, based on a product sterility claim, are presented in Table 3.2-1.</p>
+
+        <!-- Table 3.2-1 -->
+        <div style="overflow-x:auto; margin: 1.25rem 0;">
+            <table>
+                <caption style="font-weight:600; color:var(--primary-blue); text-align:left; padding:0.5rem 0; font-size:0.9rem;">
+                    Table 3.2-1. Examples of Control Strategy Elements Based on Product Classification
+                </caption>
+                <thead>
+                    <tr>
+                        <th style="width:50%;">Low-Bioburden</th>
+                        <th style="width:50%;">Sterile / Aseptic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Extensive initial qualification of the microbial control of the facility with ongoing environmental monitoring of the process</td>
+                        <td><span class="key-term">Aseptic process simulation (APS)</span> / <span class="key-term">aseptic process validation (APV)</span> initially and semi-annually for each process</td>
+                    </tr>
+                    <tr>
+                        <td>Risk-based screening of incoming material for viral and microbiological contaminants and/or acceptance of vendor CoA</td>
+                        <td>Screening of incoming materials for virus and microbiological contaminants</td>
+                    </tr>
+                    <tr>
+                        <td>Less-stringent gowning requirements</td>
+                        <td>In-process bioburden sampling</td>
+                    </tr>
+                    <tr>
+                        <td>Routine environmental monitoring to demonstrate room classification</td>
+                        <td>Aseptic gowning and gowning qualifications</td>
+                    </tr>
+                    <tr>
+                        <td>Bioburden and endotoxin testing of the final product</td>
+                        <td>Continuous environmental monitoring during open processing for each batch</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Open processing steps to be performed in a Grade A/ISO 5 environment, along with the controls required to maintain this environment</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Sterility and endotoxin testing of final drug substance and/or drug product</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Within a given control strategy, there may be different approaches to achieve the same level of quality. For example, some firms include screening patient materials for bioburden and endotoxin in their control strategy while other firms set aside retention samples to be used in the case of a manufacturing investigation. The utility of the latter approach is that it speeds any possible investigation without consuming day-to-day resources for low-risk, single-use equipment with closed processing. The former approach demonstrates an active surveillance program to detect potential contamination which could be introduced to the facility.</p>
+
+        <p>In addition to supporting multiple approaches to the same issue, control strategies may mature or change as development progresses or as experience is gained. For example, during clinical-trial eligibility screening, patients are tested for multiple viruses, serving as a beneficial control. Once commercial production begins, some facilities consider adding <span class="key-term">adventitious</span>-virus testing, thereby enhancing the surveillance and control. In both cases, the regulatory requirements form the minimum basis of the control strategy.</p>
+
+        <p>Many viral vectors and plasmids cannot withstand <span class="key-term">terminal sterilization</span> or <span class="key-term">sterile filtration</span>, which puts them in a high-risk category due to the reliance on the aseptic processing to safeguard the sterility of the final product. For sterile processes, <span class="key-term">aseptic process simulation (APS)</span>/<span class="key-term">aseptic process validation (APV)</span> is expected to demonstrate appropriate control over aseptic operations. This is the case for both drug substance and drug product, although the power of the study may be less with drug substance. In some jurisdictions, such as the United States, the expectation at Phase I is that the control strategy demonstrates the <em>capability</em> of the aseptic process but does not strictly require a simulation run with a challenge fluid. As the product progresses to Phase II and beyond, the first full validation will be conducted. For other jurisdictions, such as the EU, it is expected in Phase I that the process is fully validated at this early time-point.</p>
+
+        <p>Whether water trial or media simulation, the expectation is that the process simulation is risk-based, with an emphasis on all open and manual manipulations as well as sterile holds. Where unit operations or manufacturing steps are considered <span class="key-term">"functionally closed"</span> (e.g., steps that are closed during processing but not fully closed during support activities such as sampling), simulating these steps is recommended so data can be generated that demonstrates the necessary level of control over the process. As with all aseptic simulation activities, it should be remembered that it is not possible to validate poor aseptic technique, and that the methodology is probabilistic. The APV/APS provides confidence that the process is capable, while the routine monitoring provides the assurance of the day-to-day controls.</p>
+
+        <div class="quote-box">
+            "Many viral vectors and plasmids cannot withstand terminal sterilization or sterile filtration, which puts them in a high-risk category due to the reliance on the aseptic processing to safeguard the sterility of the final product."
+        </div>
+
+        <p>See <strong>PDA Technical Report No. 62</strong> Recommended Practices for Manual Aseptic Processes for additional details on APS and APV as they apply to manual aseptic processing. See <strong>PDA Technical Report No. 90</strong> Contamination Control Strategy Development in Pharmaceutical Manufacturing for additional details on development of a CCS.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 無菌 vs 低生物負荷：一個決定，影響全局</h4>
+            <p>文中強調：在 QTPP 定義階段就必須確定產品是「sterile（無菌）」還是「low bioburden（低生物負荷）」。這不是文件上的一個欄位那麼簡單——它是整個管控策略的分叉點：</p>
+            <ul>
+                <li><strong>低生物負荷</strong>路徑：管控策略相對靈活，要求的嚴謹度與驗證工作量較低（如允許廠商 CoA 放行，穿著要求較寬鬆）。</li>
+                <li><strong>無菌/無菌操作</strong>路徑：要求 Grade A/ISO 5 環境、APS/APV、無菌穿著資格確認、每批次持續環境監測等全套措施，成本與複雜度大幅上升。</li>
+            </ul>
+            <p>一旦分類確定，後續所有 SOP、設施設計、EM 計畫、驗證計畫都必須與之匹配。若在開發中途改變分類（例如從低生物負荷改為無菌），將牽連大量補做驗證工作，延誤時程且增加成本。因此，<strong>此決策必須在 QTPP 定義時做出，並有充分的科學依據支撐。</strong></p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — CCS 的九大基礎要素</h4>
+            <p>無論無菌或低生物負荷，<strong>Contamination Control Strategy (CCS，污染管控策略)</strong> 都必須涵蓋以下九大要素，這是 PDA TR90 的基礎架構，也是 EU Annex 1 所要求的全廠系統性方法：</p>
+            <ol>
+                <li><strong>EM Program（環境監測計畫）</strong>：依 PDA TR13（Revised 2022），設定警戒限、行動限與調查程序。</li>
+                <li><strong>清潔與消毒（Cleaning &amp; Sanitization）</strong>：依 PDA TR70，確保環境微生物負荷受控。</li>
+                <li><strong>人員與物料動線（Personnel &amp; Material Flow）</strong>：防止交叉污染的物理與程序性措施。</li>
+                <li><strong>無菌穿著（Gowning）</strong>：人員是無菌操作中最大的污染風險來源之一。</li>
+                <li><strong>門禁管制（Access Control）</strong>：限制非授權人員進入潔淨區。</li>
+                <li><strong>環境管控（Environmental Controls）</strong>：溫溼度、壓差級聯、HEPA 定期認證。</li>
+                <li><strong>原料管控（Raw Material Control）</strong>：進料檢測或廠商 CoA 接受標準。</li>
+                <li><strong>製程中與最終產品檢測（In-Process &amp; Final Testing）</strong>：主動監測以驗證管控狀態。</li>
+                <li><strong>交叉污染管控（Cross-Contamination Controls）</strong>：特別包含病毒物料的隔離管控。</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Table 3.2-1 解讀：核心差異一覽</h4>
+            <p>對照表的關鍵差異濃縮如下，方便快速掌握兩種路徑的實質分野：</p>
+            <ul>
+                <li><strong>APS/APV</strong>：無菌路徑特有，低生物負荷路徑無此要求——這是兩者在驗證工作量上最大的差距。</li>
+                <li><strong>穿著要求</strong>：無菌路徑需要完整無菌穿著資格確認（Gowning Qualification），低生物負荷路徑要求較寬鬆。</li>
+                <li><strong>EM 強度</strong>：無菌路徑要求每批次開放操作期間持續監測；低生物負荷路徑僅需常規監測以確認房間分類。</li>
+                <li><strong>最終產品測試</strong>：無菌路徑要求 sterility test（無菌試驗）+ endotoxin；低生物負荷路徑要求 bioburden + endotoxin（無 sterility test）。</li>
+                <li><strong>開放操作環境</strong>：無菌路徑強制要求 Grade A/ISO 5；低生物負荷路徑無此規定。</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 如何在 QTPP 中記錄無菌分類決策</h4>
+            <p>監管機關在審查 IND/IMPD 時，會特別關注「為何此產品被定義為 sterile 而非 low bioburden」。CDMO 應協助客戶準備以下文件支撐：</p>
+            <ul>
+                <li><strong>產品特性依據</strong>：說明為何無法進行 terminal sterilization 或 sterile filtration（例如病毒顆粒會因高溫或過濾剪切力而失活）。</li>
+                <li><strong>投藥途徑分析</strong>：靜脈注射、眼內注射等高風險投藥途徑通常驅動無菌要求；肌肉注射或皮下注射的低生物負荷路徑需更強的科學論據。</li>
+                <li><strong>風險評估</strong>：引用 ICH Q9 方法論，評估若非無菌品質時對患者的危害程度。</li>
+                <li><strong>地區監管差異</strong>：同一產品在 EU 可能因 IMPD 要求而必須定義為無菌，在 US IND 則可接受低生物負荷分類，需在 QTPP 中加以說明。</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — APS 是外科手術前的全套彩排</h4>
+            <p>很多人誤解 Aseptic Process Simulation（APS，無菌製程模擬），以為只是走一遍流程、把培養液換成培養基就好。但其精神更像是：</p>
+            <p><strong>正式外科手術前，外科團隊在手術室做的全套彩排（Dress Rehearsal）</strong>——不只是背台詞，而是：</p>
+            <ul>
+                <li>所有人員必須真實穿著無菌手術衣進行操作</li>
+                <li>所有開放性步驟、手動操作都必須模擬（包括抽樣、換袋等）</li>
+                <li>「功能性密封」的步驟（如取樣口的開關），也應納入模擬——因為雖然平時是密封的，但每次打開取樣時都是潛在污染點</li>
+                <li>結果是概率性的（probabilistic）——即使通過一次 APS，也不代表每批都完全無菌，只是代表製程有足夠的能力控制污染風險</li>
+            </ul>
+            <p>記住：<strong>APS 無法驗證糟糕的無菌技術</strong>。若人員操作習慣本身有問題，再多次 APS 通過，也掩蓋不了根本的風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「無法終端滅菌」= 最高風險等級</h4>
+            <p>文中明確指出：<strong>many viral vectors and plasmids cannot withstand terminal sterilization or sterile filtration</strong>，這使它們在無菌保證領域屬於高風險類別。</p>
+            <p>這個高風險地位的含義：</p>
+            <ul>
+                <li><strong>無安全網</strong>：傳統藥品在充填後可用高壓蒸氣（121°C）滅菌，即使充填時有少量污染，最終滅菌能提供額外保障。病毒載體沒有這個「第二道防線」。</li>
+                <li><strong>無菌操作是唯一保障</strong>：每一個開放操作步驟、每一次手動操作，都是唯一決定產品無菌性的時機——一旦失誤，無法補救。</li>
+                <li><strong>監管期望更高</strong>：EU Annex 1、FDA 無菌指引均對「無法終端滅菌」的產品有更嚴格的無菌操作管控要求。</li>
+                <li><strong>AAV 是例外</strong>：AAV 通常可以進行過濾除菌（sterile filtration），相對處於較低風險類別。但 lentiviral vector、rHSV、retroviral vector 等則因顆粒較大或對剪切力敏感，通常無法過濾。</li>
+            </ul>
+            <p>對 CDMO 的實務意義：在評估新客戶產品時，<strong>首要確認其是否能進行 sterile filtration</strong>，以決定是否需要完整無菌製程設施與 APS/APV 的全套支援。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Practice Questions -->
+<!-- ============================================================ -->
+<div class="section-title">練習思考 Practice Questions</div>
+
+<div class="practice-box">
+    <h4>練習思考 Practice Questions</h4>
+    <ol>
+        <li>
+            <strong>Phase-appropriate 策略的邊界在哪裡？</strong><br>
+            某客戶計劃在 6 個月後向 FDA 提交 IND，用於 Phase 1 試驗。他們詢問是否需要在提交前完成 APS 模擬試驗。請根據本章內容，說明 FDA 對 US Phase 1 的期望，以及你會如何建議客戶準備「展示能力」的文件，而非正式 APS？若同一產品同時要申請 EU IMPD，策略會有何不同？
+        </li>
+        <li>
+            <strong>分類決策的後果</strong><br>
+            一個 AAV 產品在早期開發時被分類為「低生物負荷」，並以相對寬鬆的環境條件生產了 3 批臨床批次。後來公司決定在 Phase 2 前重新分類為「無菌」，以符合 EU 要求。請列舉至少 4 項必須補做的驗證或資格確認工作，並估計這個決策變更對時程的潛在影響。
+        </li>
+        <li>
+            <strong>CCS 的完整性評估</strong><br>
+            一家新設立的 CDMO 已建立了 EM 計畫、穿著 SOP、進料測試及最終產品無菌試驗。但在 PAI（Pre-Approval Inspection）前的自查中，你發現他們缺少一個正式的「交叉污染管控計畫（包含病毒物料）」。請說明為何這個缺口在病毒載體 CDMO 中特別重要，以及應如何補強？
+        </li>
+    </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- Section Summary -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>管控策略是必需的，且必須具備相位適當性：</strong>病毒載體與質體製造需要連結 CPP/CMA → CQA 的整體管控策略。微生物與病毒管控因直接影響患者安全，必須從 Phase 1 第一批人類試驗起就到位，且比其他 CPP 定義更早成熟。</li>
+        <li><strong>EU vs US Phase 1 期望有根本差異：</strong>EU Phase 1 要求滅菌/無菌方法完成驗證（含 APS/APV）；US Phase 1 僅需展示能力，完整驗證在 Phase 2 後完成。雙市場 CDMO 必須在專案初期釐清客戶目標市場，以制定對應的驗證時程。</li>
+        <li><strong>Sterile vs Low-Bioburden 分類是策略分叉點：</strong>此決定應在 QTPP 定義階段完成，並有科學依據支撐。一旦確定，後續設施設計、EM 計畫、穿著要求、驗證工作量均由此決策決定。中途改變分類代價極高。</li>
+        <li><strong>CCS 九大要素是無論何種分類都必須建立的基礎：</strong>包含 EM、清潔消毒、人員/物料動線、穿著、門禁、環境管控、原料管控、製程/最終產品測試、病毒物料交叉污染管控。</li>
+        <li><strong>無法終端滅菌的病毒載體屬最高風險類別：</strong>無菌操作是唯一保障，APS/APV 不只是形式，其目的是建立對整個無菌製程能力的信心。功能性密封步驟也應納入模擬範疇，以展示完整的過程控制。</li>
+    </ul>
+</div>
+
+</div><!-- end .main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>
