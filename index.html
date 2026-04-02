@@ -124,6 +124,14 @@ async function loadData() {
         });
 
         tagCls = data.tagClasses || {};
+
+        // Load tagClasses from separate file if not in reports.json
+        if (Object.keys(tagCls).length === 0) {
+            try {
+                const tcRes = await fetch('./tag-classes.json');
+                if (tcRes.ok) tagCls = await tcRes.json();
+            } catch(e2) { /* fallback: no tag styling */ }
+        }
         return true;
     } catch(e) {
         // Fallback: hardcoded data for file:// access
