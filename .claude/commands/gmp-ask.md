@@ -114,11 +114,11 @@ End with 1–2 concrete follow-up questions phrased in plain language, connectin
 
 After answering, check: was this question's topic found in `knowledge/INDEX.md` Cross-Report Topics or Quick Topic Routing Guide?
 
-**If NOT found** (i.e., you answered by searching Terms lines or by broad grep without a routing entry):
-1. Append a brief note at the end of your answer: `📌 INDEX gap: "[topic]" not in Cross-Report Topics — found in [report1], [report2].`
-2. This signals the maintainer to add a routing entry later.
+**If NOT found** (i.e., you answered by searching Terms lines or by broad grep without a routing entry) AND the answer drew from 2+ reports:
+1. Add a new Cross-Report Topic entry directly to `knowledge/INDEX.md` in the Cross-Report Topics section, following the existing format: `**Topic (中文)** → Report ★★★ (angle) | Report ★★ (angle)`
+2. Notify the user at the end of your answer: `📌 Added to INDEX: "[topic]" → [reports]. Cross-report routing now covers this topic.`
 
-Do NOT edit INDEX.md directly during a /gmp-ask query — only flag the gap.
+Keep entries concise (1-2 lines). Use the same ★★★/★★/★ rating convention as existing entries.
 
 ---
 
