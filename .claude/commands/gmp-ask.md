@@ -108,6 +108,20 @@ End with 1–2 concrete follow-up questions phrased in plain language, connectin
 
 ---
 
+---
+
+## Step 5 — Index gap detection (auto-update)
+
+After answering, check: was this question's topic found in `knowledge/INDEX.md` Cross-Report Topics or Quick Topic Routing Guide?
+
+**If NOT found** (i.e., you answered by searching Terms lines or by broad grep without a routing entry):
+1. Append a brief note at the end of your answer: `📌 INDEX gap: "[topic]" not in Cross-Report Topics — found in [report1], [report2].`
+2. This signals the maintainer to add a routing entry later.
+
+Do NOT edit INDEX.md directly during a /gmp-ask query — only flag the gap.
+
+---
+
 **Knowledge base:** `knowledge/PDA/`, `knowledge/ISPE/` — GMP documents as Markdown, routed via `knowledge/INDEX.md`
 
 **Sources:** PDA Technical Reports, ISPE Baseline Guides, and more. Check `knowledge/INDEX.md` for the full list of available documents.

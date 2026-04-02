@@ -865,6 +865,21 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Isolator Cleaning & Batch Changeover (隔離器清潔/批次切換)**
 → PtC-Isolators ★★★ (inter-batch cleaning: wipe-down procedures, glass/stopper debris removal, product changeover protocol) | ISPE-Vol3 ★★★ (isolator CIP/WIP design, cleaning access, drain design) | Guide-No1 ★★★ (filling line changeover: format parts, clean-to-dirty sequence, batch record) | TR70 ★★ (cleaning before VHP: surface preparation, residue removal, cleaning agent selection) | FDA-Aseptic ★★ (isolator cleaning validation, between-batch procedures) | TR22 ★★ (APS batch changeover simulation)
 
+**Isolator Background Room Classification (隔離器背景室分級)**
+→ PICS-Annex1 ★★★ (open isolator: min Grade C/ISO 8; closed isolator: min Grade D) | FDA-Aseptic ★★★ (surrounding environment not less than Class 100,000) | ISPE-Vol3 ★★★ (ISO 8/Grade C for globally compliant open isolator facility, layout examples) | PtC-Isolators ★★ (Q2-1: surrounding room ISO 8) | Guide-No1 ★★ (table: open isolator = Grade C, closed = Grade D)
+
+**Isolator Airflow: UDAF, Mousehole, Smoke Study (隔離器氣流：單向流/鼠洞/煙霧測試)**
+→ PtC-Isolators ★★★ (Q2-2: UDAF may not be required if justified; Q2-3–Q2-5: airflow visualization) | ISPE-Vol3 ★★★ (mousehole airflow design, open isolator exit, LP/GAAS protection, smoke study at mouseholes) | PtC-14 ★★★ (smoke study in isolators, first air from HEPA) | PtC-1 ★★ (airflow velocity, smoke study requirements) | FDA-Aseptic ★★ (sweeping action, unidirectional airflow) | ISPE-HVAC ★★ (room pressurization effects during isolator operation)
+
+**Isolator HVAC Integration & Facility Layout (隔離器HVAC整合/設施佈局)**
+→ ISPE-Vol3 ★★★ (isolator HVAC modes: outflow/decontamination/aeration/operation; pressure balance; filling room layout Figs 4.5/4.7) | ISPE-HVAC ★★★ (isolator AHU integration, multiple operating modes, mode transitions, room pressure impact) | PtC-Isolators ★★ (isolator air handling, temperature/humidity mapping during VHP qualification) | Guide-No1 ★★ (filling line layout with isolator, Grade C background)
+
+**Capping Inside vs Outside Isolator (隔離器內外封蓋決策)**
+→ ISPE-Vol3 ★★★ (capping inside Grade A isolator requires sterilized caps; capping outside via mousehole under LP/GAAS in Grade C allows non-sterile caps) | Guide-No1 ★★★ (sterilized crimp seals required in isolators; non-sterile caps acceptable for RABS; crimping station design) | PICS-Annex1 ★★ (capping as critical step, Grade A context) | PtC-12 ★★ (capping under RABS for comparison)
+
+**Robotics & Gloveless Isolator (機器人/無手套隔離器)**
+→ Guide-No1 ★★★ (gloveless isolators, robotics for critical zone protection, reduced human intervention) | ISPE-Vol3 ★★★ (robotics/manipulators in isolator design, eliminating glove-based interventions) | PICS-Annex1 ★★ (robotic systems recommended to minimize interventions) | PtC-Isolators ★★ (Q3-1: minimizing interventions by design)
+
 **Quality Culture / GMP Culture (品質文化/GMP文化)**
 → ISPE-QC ★★★ (complete quality culture guide: maturity model, assessment tools, leadership accountability, organizational factors, metrics) — single primary source
 
