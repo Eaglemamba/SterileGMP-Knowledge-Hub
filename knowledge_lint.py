@@ -1,166 +1,214 @@
 #!/usr/bin/env python3
-"""Knowledge Lint — Level 1 Structural Check for HTML doc files.
+"""Knowledge Lint — Structural & consistency validator for SterileGMP Knowledge Hub.
 
-Scans HTML files for required dashboard meta tags, validates formats,
-and outputs a lint-report.md.
+Reads reports.json (single source of truth) and validates:
+  Level 1 (automated): required fields, date format, tags, output files,
+                        section files, knowledge MDs, INDEX.md coverage.
 
 Usage:
-    python knowledge_lint.py ./docs
-    python knowledge_lint.py ./docs --output ./docs/lint-report.md
+    python knowledge_lint.py                       # default: repo root
+    python knowledge_lint.py /path/to/repo
+    python knowledge_lint.py . --output report.md
 """
 
+import json
 import os
 import re
 import sys
-import glob
 from datetime import date
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
 
-REQUIRED_META = [
-    "doc-date",
-    "doc-title",
-    "doc-source",
-    "doc-tags",
-    "doc-rating",
-    "doc-summary",
-    "doc-file",
+REQUIRED_FIELDS = [
+    "report_title_en",
+    "report_subtitle_en",
+    "report_subtitle_zh",
+    "output_filename",
+    "footer_text",
+    "chapter_label",
+    "date",
+    "title",
+    "titleZh",
+    "source",
+    "source_color",
+    "tags",
+    "summary",
+    "pages",
+    "section_map",
+    "folder",
 ]
 
-STANDARD_CATEGORIES = {
-    "Anthropic-Docs",
-    "Anthropic-Eng",
-    "Agent",
-    "Tool",
-    "LLM",
-    "Prompt",
-    "Framework",
-    "Analysis",
-    "Automation",
-    "Security",
-    "Content",
-    "API",
-    "Research",
-}
+SOURCE_COLOR_FIELDS = ["bg", "text", "bar", "short"]
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-FILENAME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}_[a-z0-9]+(?:-[a-z0-9]+)*\.html$")
-META_RE = re.compile(
-    r'<meta\s+name=["\']([^"\']+)["\']\s+content=["\']([^"\']*)["\']',
-    re.IGNORECASE,
-)
+PAGES_RE = re.compile(r"^p\d+[-–]p\d+$")
+
+# Source prefixes expected per org
+SOURCE_PREFIXES = {
+    "PDA": "PDA",
+    "ISPE": "ISPE",
+    "FDA": "FDA",
+    "PICS": "PIC/S",
+    "ICH": "ICH",
+    "ISO": "ISO",
+    "USP": "USP",
+}
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 
-def extract_meta(filepath):
-    """Return dict of meta name -> content from an HTML file."""
-    meta = {}
-    with open(filepath, "r", encoding="utf-8", errors="replace") as fh:
-        # Only scan the first 5 KB (meta tags live in <head>)
-        head = fh.read(5120)
-    for m in META_RE.finditer(head):
-        meta[m.group(1)] = m.group(2)
-    return meta
+def load_reports(repo_root):
+    path = os.path.join(repo_root, "reports.json")
+    with open(path, "r", encoding="utf-8") as fh:
+        data = json.load(fh)
+    return data
 
 
-def load_index_refs(index_path):
-    """Return set of .html filenames referenced in index.md."""
+def load_index_md(repo_root):
+    """Return set of knowledge MD filenames referenced in INDEX.md."""
+    path = os.path.join(repo_root, "knowledge", "INDEX.md")
     refs = set()
-    if not os.path.isfile(index_path):
-        return refs
-    html_ref_re = re.compile(r'[\(/]?([A-Za-z0-9_-]+\.html)')
-    with open(index_path, "r", encoding="utf-8", errors="replace") as fh:
-        for line in fh:
-            for m in html_ref_re.finditer(line):
-                refs.add(m.group(1))
-    return refs
+    if not os.path.isfile(path):
+        return refs, False
+    with open(path, "r", encoding="utf-8") as fh:
+        content = fh.read()
+    # Match ## PDA/TR26-Complete.md style headers and inline refs
+    for m in re.finditer(r"([A-Za-z0-9_/-]+\.md)", content):
+        refs.add(m.group(1))
+    return refs, True
 
 
 # ---------------------------------------------------------------------------
-# Checks
+# Level 1 Checks
 # ---------------------------------------------------------------------------
 
 
-def check_required_meta(filename, meta):
-    """Check 1 — all required meta tags present."""
+def check_required_fields(report_id, report):
+    """Check 1: Required fields present in reports.json entry."""
     issues = []
-    for tag in REQUIRED_META:
-        if tag not in meta:
-            issues.append(f"MISSING_META: {filename} missing {tag}")
+    for field in REQUIRED_FIELDS:
+        if field not in report:
+            issues.append(f"MISSING_FIELD: {report_id} missing \"{field}\" in reports.json")
     return issues
 
 
-def check_date_format(filename, meta):
-    """Check 2 — doc-date matches YYYY-MM-DD."""
-    val = meta.get("doc-date")
-    if val is not None and not DATE_RE.match(val):
-        return [f'BAD_DATE: {filename} has doc-date="{val}"']
+def check_date_format(report_id, report):
+    """Check 2: date field matches YYYY-MM-DD."""
+    val = report.get("date", "")
+    if val and not DATE_RE.match(val):
+        return [f'BAD_DATE: {report_id} has date="{val}"']
     return []
 
 
-def check_tags(filename, meta):
-    """Check 3 — every tag in doc-tags must be a standard category."""
-    val = meta.get("doc-tags")
-    if val is None:
-        return []
+def check_tags_in_tagclasses(report_id, report, tag_classes):
+    """Check 3: Every tag in report must exist in tagClasses."""
     issues = []
-    for tag in val.split(","):
-        tag = tag.strip()
-        if tag and tag not in STANDARD_CATEGORIES:
-            issues.append(f'INVALID_TAG: {filename} has unknown tag "{tag}"')
+    for tag in report.get("tags", []):
+        if tag not in tag_classes:
+            issues.append(f'TAG_NOT_IN_CLASSES: {report_id} uses tag "{tag}" not defined in tagClasses')
     return issues
 
 
-def check_rating(filename, meta):
-    """Check 4 — doc-rating between 1.0 and 5.0."""
-    val = meta.get("doc-rating")
-    if val is None:
+def check_source_color(report_id, report):
+    """Check 4: source_color has required sub-fields."""
+    sc = report.get("source_color")
+    if sc is None:
         return []
-    try:
-        r = float(val)
-        if r < 1.0 or r > 5.0:
-            raise ValueError
-    except ValueError:
-        return [f'BAD_RATING: {filename} has doc-rating="{val}"']
-    return []
-
-
-def check_file_match(filename, meta):
-    """Check 5 — doc-file must equal actual filename."""
-    val = meta.get("doc-file")
-    if val is None:
-        return []
-    if val != filename:
-        return [f'FILENAME_MISMATCH: {filename} has doc-file="{val}"']
-    return []
-
-
-def check_file_format(filename, meta):
-    """Check 6 — doc-file matches YYYY-MM-DD_slug.html pattern."""
-    val = meta.get("doc-file")
-    if val is None:
-        return []
-    if not FILENAME_RE.match(val):
-        return [f'BAD_FILENAME: {filename} has doc-file="{val}"']
-    return []
-
-
-def check_index_coverage(html_files, index_refs, docs_dir):
-    """Check 7 — cross-reference HTML files vs index.md."""
     issues = []
-    html_names = {os.path.basename(f) for f in html_files}
-    for name in sorted(html_names):
-        if name not in index_refs:
-            issues.append(f"NOT_IN_INDEX: {name} exists but not referenced in index.md")
-    for ref in sorted(index_refs):
-        if ref not in html_names and not os.path.isfile(os.path.join(docs_dir, ref)):
-            issues.append(f'DEAD_LINK: index.md references "{ref}" but file not found')
+    for f in SOURCE_COLOR_FIELDS:
+        if f not in sc:
+            issues.append(f'MISSING_SOURCE_COLOR: {report_id} source_color missing "{f}"')
     return issues
+
+
+def check_output_file_exists(report_id, report, repo_root):
+    """Check 5: The merged output HTML file exists on disk."""
+    folder = report.get("folder", "")
+    fname = report.get("output_filename", "")
+    if not folder or not fname:
+        return []
+    path = os.path.join(repo_root, folder, "output", fname)
+    if not os.path.isfile(path):
+        return [f'MISSING_OUTPUT: {report_id} output file not found: {folder}/output/{fname}']
+    return []
+
+
+def check_section_files_exist(report_id, report, repo_root):
+    """Check 6: Every file in section_map exists in sections/ folder."""
+    folder = report.get("folder", "")
+    issues = []
+    for sec in report.get("section_map", []):
+        for f in sec.get("files", []):
+            path = os.path.join(repo_root, folder, "sections", f)
+            if not os.path.isfile(path):
+                issues.append(f'MISSING_SECTION: {report_id} section file not found: {folder}/sections/{f}')
+    return issues
+
+
+def check_section_map_fields(report_id, report):
+    """Check 7: Each section_map entry has required sub-fields."""
+    issues = []
+    for i, sec in enumerate(report.get("section_map", [])):
+        for f in ["files", "id", "num", "label_en", "label_zh"]:
+            if f not in sec:
+                issues.append(f'SECTION_MAP_FIELD: {report_id} section_map[{i}] missing "{f}"')
+        if not sec.get("files"):
+            issues.append(f'EMPTY_SECTION_FILES: {report_id} section_map[{i}] has empty files list')
+    return issues
+
+
+def check_knowledge_md_exists(report_id, report, repo_root):
+    """Check 8: Corresponding knowledge MD file exists."""
+    folder = report.get("folder", "")
+    fname = report.get("output_filename", "")
+    if not folder or not fname:
+        return []
+    # knowledge/<ORG>/<ID>-Complete.md
+    org = folder.split("/")[0] if "/" in folder else folder
+    md_name = fname.replace(".html", ".md")
+    path = os.path.join(repo_root, "knowledge", org, md_name)
+    if not os.path.isfile(path):
+        return [f'MISSING_KNOWLEDGE_MD: {report_id} expected knowledge/{org}/{md_name}']
+    return []
+
+
+def check_index_md_coverage(report_id, report, index_refs):
+    """Check 9: Report's knowledge MD is referenced in INDEX.md."""
+    folder = report.get("folder", "")
+    fname = report.get("output_filename", "")
+    if not folder or not fname:
+        return []
+    org = folder.split("/")[0] if "/" in folder else folder
+    md_name = fname.replace(".html", ".md")
+    ref_path = f"{org}/{md_name}"
+    if ref_path not in index_refs:
+        return [f'NOT_IN_INDEX: {report_id} ({ref_path}) not referenced in knowledge/INDEX.md']
+    return []
+
+
+def check_folder_consistency(report_id, report):
+    """Check 10: folder value is consistent with source org."""
+    folder = report.get("folder", "")
+    source = report.get("source", "")
+    if not folder:
+        return []
+    org = folder.split("/")[0]
+    expected_prefix = SOURCE_PREFIXES.get(org)
+    if expected_prefix and source and not source.startswith(expected_prefix):
+        return [f'FOLDER_SOURCE_MISMATCH: {report_id} folder starts with "{org}" but source="{source}"']
+    return []
+
+
+def check_pages_format(report_id, report):
+    """Check 11: pages field matches pN-pN format."""
+    val = report.get("pages", "")
+    if val and not PAGES_RE.match(val):
+        return [f'BAD_PAGES: {report_id} has pages="{val}"']
+    return []
 
 
 # ---------------------------------------------------------------------------
@@ -168,106 +216,83 @@ def check_index_coverage(html_files, index_refs, docs_dir):
 # ---------------------------------------------------------------------------
 
 CHECK_NAMES = [
-    "Required Meta Tags",
-    "doc-date Format",
-    "doc-tags Validation",
-    "doc-rating Range",
-    "doc-file Match",
-    "doc-file Format",
-    "Index Coverage",
+    "Required Fields",
+    "Date Format",
+    "Tags in tagClasses",
+    "Source Color Fields",
+    "Output File Exists",
+    "Section Files Exist",
+    "Section Map Fields",
+    "Knowledge MD Exists",
+    "INDEX.md Coverage",
+    "Folder-Source Consistency",
+    "Pages Format",
 ]
 
 
-def generate_report(docs_dir, output_path=None):
+def run_lint(repo_root, output_path=None):
     """Run all Level 1 checks and write lint-report.md."""
     if output_path is None:
-        output_path = os.path.join(docs_dir, "lint-report.md")
+        output_path = os.path.join(repo_root, "lint-report.md")
 
-    # Collect HTML files
-    html_files = sorted(glob.glob(os.path.join(docs_dir, "**", "*.html"), recursive=True))
-    if not html_files:
-        print(f"No HTML files found in {docs_dir}")
-        # Write an empty report
+    data = load_reports(repo_root)
+    reports = data.get("reports", {})
+    tag_classes = data.get("tagClasses", {})
+    index_refs, has_index = load_index_md(repo_root)
+
+    if not reports:
+        print("No reports found in reports.json")
         with open(output_path, "w", encoding="utf-8") as fh:
             fh.write(f"# Knowledge Lint Report\n- Run date: {date.today()}\n"
-                      f"- Files scanned: 0\n- Issues found: 0\n\nNo HTML files found.\n")
+                      "- Reports scanned: 0\n- Issues found: 0\n\nNo reports found.\n")
         return output_path, 0, 0
 
-    # Check for index.md
-    index_path = os.path.join(docs_dir, "index.md")
-    index_refs = load_index_refs(index_path)
-    has_index = os.path.isfile(index_path)
-
-    # Run checks per file
-    file_issues = {}  # filename -> list of flags
+    # Run checks per report
+    report_issues = {}  # report_id -> list of flags
     counters = {name: {"pass": 0, "fail": 0} for name in CHECK_NAMES}
 
-    for fpath in html_files:
-        fname = os.path.basename(fpath)
-        meta = extract_meta(fpath)
+    checks = [
+        ("Required Fields", lambda rid, r: check_required_fields(rid, r)),
+        ("Date Format", lambda rid, r: check_date_format(rid, r)),
+        ("Tags in tagClasses", lambda rid, r: check_tags_in_tagclasses(rid, r, tag_classes)),
+        ("Source Color Fields", lambda rid, r: check_source_color(rid, r)),
+        ("Output File Exists", lambda rid, r: check_output_file_exists(rid, r, repo_root)),
+        ("Section Files Exist", lambda rid, r: check_section_files_exist(rid, r, repo_root)),
+        ("Section Map Fields", lambda rid, r: check_section_map_fields(rid, r)),
+        ("Knowledge MD Exists", lambda rid, r: check_knowledge_md_exists(rid, r, repo_root)),
+        ("INDEX.md Coverage", lambda rid, r: check_index_md_coverage(rid, r, index_refs) if has_index else []),
+        ("Folder-Source Consistency", lambda rid, r: check_folder_consistency(rid, r)),
+        ("Pages Format", lambda rid, r: check_pages_format(rid, r)),
+    ]
+
+    for rid in sorted(reports.keys()):
+        r = reports[rid]
         issues = []
-
-        # Check 1
-        c1 = check_required_meta(fname, meta)
-        issues.extend(c1)
-        counters["Required Meta Tags"]["fail" if c1 else "pass"] += 1
-
-        # Check 2
-        c2 = check_date_format(fname, meta)
-        issues.extend(c2)
-        counters["doc-date Format"]["fail" if c2 else "pass"] += 1
-
-        # Check 3
-        c3 = check_tags(fname, meta)
-        issues.extend(c3)
-        counters["doc-tags Validation"]["fail" if c3 else "pass"] += 1
-
-        # Check 4
-        c4 = check_rating(fname, meta)
-        issues.extend(c4)
-        counters["doc-rating Range"]["fail" if c4 else "pass"] += 1
-
-        # Check 5
-        c5 = check_file_match(fname, meta)
-        issues.extend(c5)
-        counters["doc-file Match"]["fail" if c5 else "pass"] += 1
-
-        # Check 6
-        c6 = check_file_format(fname, meta)
-        issues.extend(c6)
-        counters["doc-file Format"]["fail" if c6 else "pass"] += 1
-
+        for check_name, check_fn in checks:
+            result = check_fn(rid, r)
+            issues.extend(result)
+            counters[check_name]["fail" if result else "pass"] += 1
         if issues:
-            file_issues[fname] = issues
+            report_issues[rid] = issues
 
-    # Check 7 — index coverage
-    if has_index:
-        c7 = check_index_coverage(html_files, index_refs, docs_dir)
-        idx_html_names = {os.path.basename(f) for f in html_files}
-        in_index_count = sum(1 for n in idx_html_names if n in index_refs)
-        counters["Index Coverage"]["pass"] = in_index_count
-        counters["Index Coverage"]["fail"] = len(idx_html_names) - in_index_count + \
-            sum(1 for i in c7 if i.startswith("DEAD_LINK"))
-        for issue in c7:
-            # Group under a pseudo filename
-            key = issue.split(":")[0]
-            fname_match = re.search(r":\s*(\S+\.html)", issue) or re.search(r'"([^"]+)"', issue)
-            gkey = fname_match.group(1) if fname_match else "index.md"
-            file_issues.setdefault(gkey, []).append(issue)
-    else:
-        counters["Index Coverage"]["pass"] = "N/A"
-        counters["Index Coverage"]["fail"] = "N/A"
+    # Orphan tagClasses check (tags defined but never used)
+    all_used_tags = set()
+    for r in reports.values():
+        all_used_tags.update(r.get("tags", []))
+    orphan_tags = sorted(set(tag_classes.keys()) - all_used_tags)
 
-    total_issues = sum(len(v) for v in file_issues.values())
-    clean_files = sorted(set(os.path.basename(f) for f in html_files) - set(file_issues.keys()))
+    total_issues = sum(len(v) for v in report_issues.values())
+    clean_reports = sorted(set(reports.keys()) - set(report_issues.keys()))
 
     # Build report
     lines = []
     lines.append("# Knowledge Lint Report")
     lines.append(f"- Run date: {date.today()}")
-    lines.append(f"- Files scanned: {len(html_files)}")
+    lines.append(f"- Reports scanned: {len(reports)}")
+    lines.append(f"- Dashboard files (Complete.html): {sum(1 for r in reports.values() if os.path.isfile(os.path.join(repo_root, r.get('folder',''), 'output', r.get('output_filename',''))))}")
     lines.append(f"- Issues found: {total_issues}")
     lines.append("")
+
     lines.append("## Summary")
     lines.append("| Check | Pass | Fail |")
     lines.append("|-------|------|------|")
@@ -277,24 +302,41 @@ def generate_report(docs_dir, output_path=None):
         lines.append(f"| {name} | {p} | {f} |")
     lines.append("")
 
-    # Issues grouped by filename
+    # Orphan tags
+    if orphan_tags:
+        lines.append("## Orphan tagClasses (defined but never used by any report)")
+        for t in orphan_tags:
+            lines.append(f"- `{t}`")
+        lines.append("")
+
+    # Unused tags (used but not in tagClasses)
+    undefined_tags = sorted(all_used_tags - set(tag_classes.keys()))
+    if undefined_tags:
+        lines.append("## Undefined Tags (used by reports but missing from tagClasses)")
+        for t in undefined_tags:
+            # find which reports use it
+            users = [rid for rid, r in reports.items() if t in r.get("tags", [])]
+            lines.append(f"- `{t}` — used by: {', '.join(sorted(users))}")
+        lines.append("")
+
+    # Issues grouped by report
     lines.append("## Issues")
-    if file_issues:
-        for fname in sorted(file_issues.keys()):
-            lines.append(f"\n### {fname}")
-            for issue in file_issues[fname]:
+    if report_issues:
+        for rid in sorted(report_issues.keys()):
+            lines.append(f"\n### {rid}")
+            for issue in report_issues[rid]:
                 lines.append(f"- {issue}")
     else:
         lines.append("\nNo issues found.")
     lines.append("")
 
-    # Clean files
-    lines.append("## Clean Files")
-    if clean_files:
-        for f in clean_files:
-            lines.append(f"- {f}")
+    # Clean reports
+    lines.append("## Clean Reports")
+    if clean_reports:
+        for r in clean_reports:
+            lines.append(f"- {r}")
     else:
-        lines.append("No files passed all checks.")
+        lines.append("No reports passed all checks.")
     lines.append("")
 
     report_text = "\n".join(lines)
@@ -304,21 +346,25 @@ def generate_report(docs_dir, output_path=None):
 
     # Terminal summary
     print(f"\n{'='*60}")
-    print(f"Knowledge Lint Report — Level 1")
+    print("Knowledge Lint Report — Level 1")
     print(f"{'='*60}")
-    print(f"  Directory : {docs_dir}")
-    print(f"  Files     : {len(html_files)}")
+    print(f"  Repo root : {repo_root}")
+    print(f"  Reports   : {len(reports)}")
     print(f"  Issues    : {total_issues}")
-    print(f"  Clean     : {len(clean_files)}")
-    print(f"  Report    : {output_path}")
+    print(f"  Clean     : {len(clean_reports)}")
+    print(f"  Report at : {output_path}")
     print(f"{'='*60}")
     for name in CHECK_NAMES:
         p = counters[name]["pass"]
         f = counters[name]["fail"]
-        print(f"  {name:25s}  Pass={p}  Fail={f}")
+        print(f"  {name:30s}  Pass={p:<4}  Fail={f}")
+    if orphan_tags:
+        print(f"  {'Orphan tagClasses':30s}  {len(orphan_tags)} unused")
+    if undefined_tags:
+        print(f"  {'Undefined Tags':30s}  {len(undefined_tags)} missing from tagClasses")
     print(f"{'='*60}\n")
 
-    return output_path, len(html_files), total_issues
+    return output_path, len(reports), total_issues
 
 
 # ---------------------------------------------------------------------------
@@ -326,19 +372,18 @@ def generate_report(docs_dir, output_path=None):
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python knowledge_lint.py <docs_directory> [--output <path>]")
-        sys.exit(1)
-
-    docs = sys.argv[1]
+    repo = sys.argv[1] if len(sys.argv) > 1 else "."
     output = None
     if "--output" in sys.argv:
         idx = sys.argv.index("--output")
         if idx + 1 < len(sys.argv):
             output = sys.argv[idx + 1]
 
-    if not os.path.isdir(docs):
-        print(f"Error: {docs} is not a directory")
+    if not os.path.isdir(repo):
+        print(f"Error: {repo} is not a directory")
+        sys.exit(1)
+    if not os.path.isfile(os.path.join(repo, "reports.json")):
+        print(f"Error: {repo}/reports.json not found")
         sys.exit(1)
 
-    generate_report(docs, output)
+    run_lint(repo, output)
