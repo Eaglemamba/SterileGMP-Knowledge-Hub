@@ -13,6 +13,7 @@ Usage:
     python gmp_engine.py md --all                  # Regenerate all knowledge MDs
     python gmp_engine.py merge TRXX                # Merge HTML sections → Complete.html + MD
     python gmp_engine.py merge --all               # Merge all reports
+    python gmp_engine.py index                     # Audit INDEX-router.md coverage
 
 Workflow:
     1. gmp_engine.py scaffold ID [--source SOURCE]
@@ -950,6 +951,85 @@ def cmd_merge(args):
 
 
 # ============================================================
+# INDEX AUDIT — find reports missing from INDEX-router.md
+# ============================================================
+
+def cmd_index(args):
+    """Audit INDEX-router.md coverage and generate draft entries for missing reports."""
+    all_reports = _load_all_reports()
+    router_path = KNOWLEDGE_DIR / "INDEX-router.md"
+
+    # Read router content to check which report IDs are mentioned
+    if router_path.exists():
+        router_text = router_path.read_text(encoding="utf-8")
+    else:
+        router_text = ""
+        print(f"[WARN] {router_path} not found — will generate full audit.\n")
+
+    # Scan all knowledge MDs and extract headings
+    missing = []
+    for rid, config in sorted(all_reports.items()):
+        if not config.get("section_map"):
+            continue  # skeleton only
+
+        # Check if this report ID appears in the router (check both ID and common aliases)
+        aliases = {rid}
+        # pda-guide-no1 is often referenced as Guide-No1
+        if rid == "pda-guide-no1":
+            aliases.add("Guide-No1")
+        if any(alias in router_text for alias in aliases):
+            continue
+
+        # This report is missing from the router — gather info
+        kdir = _knowledge_subdir(config)
+        md_file = kdir / f"{rid}-Complete.md"
+        headings = []
+        if md_file.exists():
+            for line in md_file.read_text(encoding="utf-8").splitlines():
+                if line.startswith("## "):
+                    headings.append(line.lstrip("# ").strip())
+
+        # Get section_map labels
+        sec_labels = []
+        for s in config.get("section_map", []):
+            sec_labels.append(f"§{s['num']} {s['label_en']}")
+
+        tags = config.get("tags", [])
+        title = config.get("title", rid)
+
+        missing.append({
+            "id": rid,
+            "title": title,
+            "tags": tags,
+            "sections": sec_labels,
+            "headings": headings[:15],  # cap at 15
+        })
+
+    if not missing:
+        print("All reports with section_map are present in INDEX-router.md.")
+        return
+
+    print(f"Found {len(missing)} report(s) missing from INDEX-router.md:\n")
+    print("=" * 70)
+
+    for m in missing:
+        print(f"\n### {m['id']}: {m['title']}")
+        print(f"Tags: {', '.join(m['tags'])}")
+        print(f"Sections: {' | '.join(m['sections'][:10])}")
+        if m["headings"]:
+            print(f"Top headings: {' | '.join(m['headings'][:8])}")
+        print()
+        # Suggest a router row
+        secs = m["sections"][:3]
+        sec_hint = ", ".join(secs) if secs else "—"
+        print(f"  Suggested router row:")
+        print(f"  | [topic] | {m['id']} ({sec_hint}) | [secondary] |")
+
+    print("\n" + "=" * 70)
+    print(f"\nCopy the suggested rows into knowledge/INDEX-router.md under the appropriate category.")
+
+
+# ============================================================
 # MAIN
 # ============================================================
 
@@ -976,6 +1056,9 @@ def main():
     p_merge.add_argument("report_id", nargs="?", help="Report folder name")
     p_merge.add_argument("--all", action="store_true", help="Merge all reports")
 
+    # index
+    p_index = sub.add_parser("index", help="Audit INDEX-router.md coverage, show missing reports")
+
     args = parser.parse_args()
 
     if args.command == "scaffold":
@@ -984,6 +1067,8 @@ def main():
         cmd_md(args)
     elif args.command == "merge":
         cmd_merge(args)
+    elif args.command == "index":
+        cmd_index(args)
     else:
         parser.print_help()
 
