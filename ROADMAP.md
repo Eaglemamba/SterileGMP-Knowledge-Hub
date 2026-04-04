@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-02 (post-PtC-11 ATMP Plasmids/Vectors + PtC-Remote GMP Inspections push — 62 documents complete)
+Last updated: 2026-04-04 (post-INDEX routing optimization — 62 documents complete, two-layer routing system added)
 
 ---
 
@@ -126,7 +126,7 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | USP Chapters | Not started |
 | ISO Standards | Not started |
 
-**Overall: 60 of ~65-70 target documents complete (approx. 90%)** — PDA 39 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 = 60
+**Overall: 62 of ~80-90 target documents complete (approx. 72%)** — PDA 39 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 = 60 complete with full content; 2 additional (TR41, TR56) have intro-only sections
 
 ---
 
@@ -408,13 +408,13 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 | Source | Current | Target | Notes |
 |--------|---------|--------|-------|
 | PDA | 39 | ~42 | Add TR36 (lyophilization), TR74 (PFS URS), TR76 (CCI technology); TR27 ✅ |
-| ISPE | 9 | 15 | Complete GEP, CTC, TechTransfer, ProcessGas, QualityCulture, IT |
+| ISPE | 14 | 15 | All complete except GEP (scanned — OCR required) |
 | PIC/S | 1 | 1 | Annex 1 ✅ |
 | FDA | 3 | 6-7 | Aseptic ✅, Process Val ✅, Process Inspection ✅ + CGMP Combination Products, HF Guidance, Design Considerations |
 | ICH | 3 | 3 | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ |
 | USP | 0 | 8-10 | \<71\>, \<85\>, \<788\>, \<1116\>, \<1211\> (Phase 3) + \<1207\>, \<660\>, \<661\>, \<1664\> (Phase 5) |
 | ISO | 0 | 5-6 | 14644-1/2/3, 17665 (Phase 3) + 14971, 11608-1, 11608-3, 13485 (Phase 5) |
 | IEC | 0 | 1 | 62366-1 (usability engineering) — new source, Phase 5 |
-| **Total** | **55 (all complete)** | **~80-90** | Combination products expansion adds ~15 documents |
+| **Total** | **62 (all complete)** | **~80-90** | Combination products expansion adds ~15 documents |
 
 The infrastructure (tooling, workflow, dashboard, chatbot) is already built. The remaining work is content processing — the hardest part of the project is done.
