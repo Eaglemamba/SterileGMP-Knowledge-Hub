@@ -30,15 +30,19 @@ Before searching, analyse the user's question:
 
 ---
 
-## Step 1 — Read the Master Index and plan
+## Step 1 — Route via compact index (then detail if needed)
 
-Read `knowledge/INDEX.md` in full. Each report block has: title, pages, section count, and a Terms line with routing keywords. Use these to match the user's question.
+**First**, read `knowledge/INDEX-router.md` (compact, ~200 lines). It has:
+- **Synonym Table** — translate user terms to search terms
+- **Topic Router** — topic → ★★★ primary / ★★ secondary reports **with section hints** (e.g., TR26 §7)
 
-**A) Scope check:** If the topic doesn't match any report's Terms → tell user what's covered and suggest rephrasing.
+**A) Scope check:** If the topic doesn't match any router entry → check "Not Covered" at the bottom. Tell user what's covered and suggest rephrasing.
 
-**B) Identify reports:** Check **Cross-Report Topics** (★★★=primary, ★★=secondary) first, then **Quick Topic Routing Guide**.
+**B) Identify reports:** Match the question to a Topic Router row. Use the section hints to plan targeted grep.
 
-**C) Search plan:** Single-report → deep grep. Cross-report → tiered grep (Step 2). Overview → read first 80 lines + grep `^##`.
+**C) Fallback to full index:** Only if the compact router doesn't cover the topic, read `knowledge/INDEX.md` (detailed, ~970 lines) for Terms-based keyword matching and Cross-Report Topics.
+
+**D) Search plan:** Single-report → deep grep at hinted section. Cross-report → tiered grep (Step 2). Overview → read first 80 lines + grep `^##`.
 
 ---
 
@@ -46,8 +50,9 @@ Read `knowledge/INDEX.md` in full. Each report block has: title, pages, section 
 
 ### For specific technical questions:
 
-**Primary report (★★★) — deep grep:**
-- `path: knowledge/<SOURCE>/<primary>.md`, `output_mode: content`, `-C 25`
+**Primary report (★★★) — deep grep with section targeting:**
+- If the router provides a section hint (e.g., `TR26 §7`), first grep for the section heading to find its line range, then read that range with `offset`/`limit` for full context
+- Fallback: `path: knowledge/<SOURCE>/<primary>.md`, `output_mode: content`, `-C 25`
 - Pattern: the **technical terms** identified in Step 0 (not the user's original lay words)
 
 **Secondary reports (★★) — targeted grep:**
@@ -112,16 +117,19 @@ End with 1–2 concrete follow-up questions phrased in plain language, connectin
 
 ## Step 5 — Index gap detection (auto-update)
 
-After answering, check: was this question's topic found in `knowledge/INDEX.md` Cross-Report Topics or Quick Topic Routing Guide?
+After answering, check: was this question's topic found in `knowledge/INDEX-router.md` Topic Router?
 
-**If NOT found** (i.e., you answered by searching Terms lines or by broad grep without a routing entry) AND the answer drew from 2+ reports:
-1. Add a new Cross-Report Topic entry directly to `knowledge/INDEX.md` in the Cross-Report Topics section, following the existing format: `**Topic (中文)** → Report ★★★ (angle) | Report ★★ (angle)`
-2. Notify the user at the end of your answer: `📌 Added to INDEX: "[topic]" → [reports]. Cross-report routing now covers this topic.`
+**If NOT found** AND the answer drew from 2+ reports:
+1. Add a new row to the appropriate category table in `knowledge/INDEX-router.md`, with ★★★/★★ reports and section hints
+2. Also add a Cross-Report Topic entry to `knowledge/INDEX.md` following the existing format: `**Topic (中文)** → Report ★★★ (angle) | Report ★★ (angle)`
+3. Notify the user: `Added to router: "[topic]" → [reports with section hints].`
 
-Keep entries concise (1-2 lines). Use the same ★★★/★★/★ rating convention as existing entries.
+Keep entries concise. Use the same ★★★/★★/★ rating convention as existing entries.
 
 ---
 
-**Knowledge base:** `knowledge/PDA/`, `knowledge/ISPE/` — GMP documents as Markdown, routed via `knowledge/INDEX.md`
+**Knowledge base:** `knowledge/PDA/`, `knowledge/ISPE/` — GMP documents as Markdown
 
-**Sources:** PDA Technical Reports, ISPE Baseline Guides, and more. Check `knowledge/INDEX.md` for the full list of available documents.
+**Routing files (two-layer system):**
+- `knowledge/INDEX-router.md` — compact router (~200 lines), read FIRST every query
+- `knowledge/INDEX.md` — detailed reference (~970 lines), read only as fallback
