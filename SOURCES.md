@@ -1,10 +1,10 @@
 # Source Organizations — What Each One Covers
 
-This hub draws from **8 source organizations**. Each has a distinct scope, audience, and regulatory weight. Understanding the differences helps you pick the right document for the right question.
+This hub draws from **8 active source organizations**, with **3 planned additions**. Each has a distinct scope, audience, and regulatory weight. Understanding the differences helps you pick the right document for the right question.
 
 ---
 
-## Quick Reference
+## Quick Reference — Active Sources
 
 | Source | Color | Type | Audience | Regulatory Weight |
 |--------|-------|------|----------|-------------------|
@@ -16,6 +16,14 @@ This hub draws from **8 source organizations**. Each has a distinct scope, audie
 | **USP** | Gold | Compendial standards (test methods) | QC labs, release testing | Legally enforceable (US); widely adopted |
 | **ISO** | Purple | International standards | Engineers, QMS teams | Required for medical device compliance |
 | **ECA** | Grey | European best practice | EU-market practitioners | Voluntary but EU-inspector relevant |
+
+## Planned Sources
+
+| Source | Color | Type | Gap Filled |
+|--------|-------|------|-----------|
+| **EU GMP** | Indigo | EU binding regulation | Annex 15 (validation) + Annex 2 (biologics) — EU inspection standard |
+| **Ph. Eur.** | Rose | EU compendial standards | EU-market pharmacopeial test methods (equivalent to USP for EU) |
+| **WHO GMP** | Slate | Global health GMP baseline | WHO prequalification standard; required for global health supply chains |
 
 ---
 
@@ -139,17 +147,83 @@ This hub draws from **8 source organizations**. Each has a distinct scope, audie
 
 ---
 
+---
+
+## Planned Sources — Not Yet in Hub
+
+These three sources are identified as high-value additions. They fill geographic and pharmacopeial gaps not covered by the current eight sources.
+
+---
+
+### EU GMP Annexes — European Commission
+
+**What it is:** The binding GMP regulations for the EU market, published by the European Commission under Directive 2003/94/EC. Structured as a main guide (Part I/II) plus annexes covering specific topics.
+
+**Key annexes not yet in this hub:**
+- **Annex 15** — Qualification and Validation: the EU regulatory companion to ISPE Vol.5 C&Q. Defines lifecycle validation, process validation stages, and revalidation triggers. Referenced in every EU inspection covering IQ/OQ/PQ.
+- **Annex 2** — Biological/ATMPs: GMP requirements for biological drug substances and ATMPs. Complements ISPE Vol.6 (which covers facility engineering only).
+- **Annex 20** — Quality Risk Management: EU's formal adoption of ICH Q9 into GMP regulations.
+
+**Regulatory weight:** Legally binding for all EU-market pharmaceutical products. EMA inspectors use these as the primary inspection standard.
+
+**When to use it:** When your product has an EU Marketing Authorisation Application (MAA), when preparing for an EMA or EU national authority inspection, or when a client requires EU GMP compliance.
+
+**Why it's not here yet:** Annex 15 (2015) and Annex 2 (2012) are freely available PDFs from the European Commission website — no licensing barrier. Priority addition.
+
+---
+
+### Ph. Eur. — European Pharmacopoeia
+
+**What it is:** The European equivalent of USP. Published by EDQM (European Directorate for the Quality of Medicines), legally adopted by 39 European countries. For EU-marketed products, Ph. Eur. test methods take precedence over USP.
+
+**Key chapters relevant to sterile manufacturing:**
+
+| Ph. Eur. Chapter | Topic | USP Equivalent |
+|-----------------|-------|----------------|
+| 5.1.1 | Methods of Preparation of Sterile Products | USP 〈1211〉 |
+| 5.1.9 | Guidelines for Using the Test for Sterility | USP 〈71〉 informational |
+| 2.6.1 | Sterility (test method) | USP 〈71〉 |
+| 2.6.14 | Bacterial Endotoxins | USP 〈85〉 |
+| 2.9.19 | Particulate Contamination (subvisible) | USP 〈788〉 |
+| 2.9.20 | Particulate Contamination (visible) | USP 〈790〉 |
+
+**Regulatory weight:** Legally enforceable for EU-marketed products. Ph. Eur. and USP requirements are largely harmonized (via Pharmacopoeial Discussion Group) but differ on some limits and methods — notably endotoxin limits for certain product types.
+
+**When to use it:** When your label claims Ph. Eur. compliance, when your EU client's specification references Ph. Eur. monographs, or when there is a USP/Ph.Eur. harmonization gap affecting your release testing.
+
+---
+
+### WHO GMP — World Health Organization
+
+**What it is:** WHO's GMP guidelines for pharmaceutical manufacturers, primarily designed for countries that do not have their own mature regulatory framework. Used by national regulatory authorities in Asia, Africa, Latin America, and the Middle East.
+
+**Key documents for sterile manufacturing:**
+- **WHO TRS 961 Annex 6** — Good Manufacturing Practices for sterile pharmaceutical products
+- **WHO TRS 1010** — Good Manufacturing Practices for biological products
+- **WHO TRS 1019** — Good Manufacturing Practices: Water for pharmaceutical use
+
+**Regulatory weight:** Not legally binding internationally, but adopted by 100+ countries via the WHO Prequalification Programme. If a CDMO supplies WHO-tendered products (e.g., vaccines, ARVs, injectables for global health programs), WHO GMP compliance is a customer requirement. WHO inspectors audit manufacturing sites for prequalification.
+
+**When to use it:** When serving clients with WHO prequalification products, when a customer's supply agreement references WHO GMP, or when entering emerging markets (Africa, Southeast Asia) where national regulations adopt WHO standards.
+
+---
+
 ## How to Choose the Right Source
 
 | Question type | Start with |
 |---------------|-----------|
-| "What does the inspector expect?" | PIC/S Annex 1, FDA Guidance |
+| "What does the inspector expect (US)?" | FDA Guidance |
+| "What does the inspector expect (EU/global)?" | PIC/S Annex 1, EU GMP Annexes |
+| "What does the inspector expect (WHO prequalification)?" | WHO TRS 961 Annex 6 |
 | "How do I design this process/facility?" | ISPE Baseline Guides, PDA TR |
-| "How do I run this test / what are the limits?" | USP General Chapters |
+| "How do I run this test / what are the limits (US)?" | USP General Chapters |
+| "How do I run this test / what are the limits (EU)?" | Ph. Eur. Chapters |
 | "How do I structure my submission?" | ICH Q8/Q9/Q10 |
 | "What is industry best practice?" | PDA TR, ISPE GPG |
-| "How do I qualify this equipment/system?" | ISPE Vol.5 |
+| "How do I qualify this equipment/system (EU regulatory)?" | EU GMP Annex 15, ISPE Vol.5 |
+| "How do I qualify this equipment/system (industry practice)?" | ISPE Vol.5 |
 | "What counts as compliant for this device component?" | ISO 14971, ISO 11608 |
+| "What are the cleanroom classification requirements?" | ISO 14644-1/2, PIC/S Annex 1 §4 |
 
 ---
 
