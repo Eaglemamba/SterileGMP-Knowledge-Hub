@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-05 (USP batch 2 complete — 56 USP chapters in system, 38 fully processed; 96 documents complete overall)
+Last updated: 2026-04-06 — 118 documents complete (PDA 41, USP 56, ISPE 14, FDA 3, ICH 3, PIC/S 1); root cleanup + planned sources documented (EU GMP, Ph. Eur., WHO GMP)
 
 ---
 
