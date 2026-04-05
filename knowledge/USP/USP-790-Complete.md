@@ -1,0 +1,92 @@
+# USP General Chapter 〈790〉: Visible Particulates in Injections
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-May-2016
+Document Type:
+General Chapter
+DocId:
+GUID-40E8EDAA-AF74-42B6-9F11-3EC14004300B_1_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M7197_01_01
+DOI Ref:
+sa5xd
+© 2025 USPC
+Do not distribute
+〈790〉 VISIBLE P
+ARTICULATES IN INJECTIONS
+INTRODUCTION
+All products intended for parenteral administration must be visually inspected for the presence of par ticulate matter as speci«ed in
+Injections and Implanted Drug Products 〈1〉. Dry solids, from which constituted solutions are prepared for injection, meet the requirements for
+Completeness and clarity of solutions in Injections and Implanted Drug Products 〈1〉 when they are prepared just before use. Where used in this
+chapter, the term essentially free means that when injectable drug products are inspected as described herein, no more than the speci«ed
+number of units may be observed to contain visible par ticulates. Par ticulate matter is de«ned in Par ticulate Matter in Injections 〈788〉 as
+extraneous mobile undissolved par ticles, other than gas bubbles, unintentionally present in solutions. See Subvisible Par ticulate Matter in
+Therapeutic Protein Injections 〈787〉 for additional information on inherent, intrinsic, and extrinsic par ticulates. Examples of such par ticulate
+matter include, but are not limited to, «bers, glass, metal, elastomeric materials, and precipitates. However, some products may contain
+inherent par ticles or agglomerates; in such cases, requirements for these par ticular visible par ticulates are speci«ed in the individual
+monograph or in the approved regulatory application but the control and acceptance criteria for extraneous par ticles described in this
+chapter apply.
+Where the nature of the contents or the container–closure system permits only limited capability for inspection of the total contents, the
+100% inspection of a batch shall be supplemented with the inspection of constituted (e.g., dried) or withdrawn (e.g., dark amber container,
+suspensions, highly colored liquids) contents of a sample of containers from the batch. The destructive nature of these tests requires the
+use of a sample smaller
+ than those traditionally used for non-destructive acceptance sampling after 100% inspection. Although the tests
+described in this chapter may be useful during studies to examine product stability, this chapter is not intended to establish any new testing
+requirements for stability studies.
+INSPECTION PROCEDURE
+Used along with 100% inspection during the manufacturing process, this procedure is su­cient to demonstrate that the batch is
+essentially free of visible par ticulates. A complete program for the control and monitoring of par ticulate matter remains an essential
+prerequisite.
+Inspected units must be free of visible par ticulates when examined without magni«cation (except for optical correction as may be required
+to establish normal vision) against a black background and against a white background. Illumination at the inspection point is maintained at
+a minimum intensity between 2000 and 3750 lux. This can be achieved through the use of two 13-W or 15-W ¬uorescent lamps (e.g., F13/T5
+or F15/T8). The use of a high-frequency ballast to reduce ¬icker from the ¬uorescent lamps is recommended. Alternative light sources (e.g.,
+incandescent, LED) that provide illumination at the point of inspection within the speci«ed minimum intensity range are acceptable. Higher
+illumination intensity is recommended for examination of colored solutions or product in containers other than clear glass.
+Before performing the inspection, remove any adherent labels from the container, and wash and dry the outside. The unit under inspection
+should be gently swirled and/or inver ted, ensuring that no air bubbles are produced, and inspected for approximately 5 s against each of the
+backgrounds. The presence of any par ticles should be recorded.
+Sampling at Batch Release (After 100% Manufacturing Inspection)
+Sample and inspect the batch using ANSI/ASQ Z1.4 (or ISO 2859-1). General Inspection Level II, single sampling plans for normal
+inspection with an AQL of 0.65%. Alternative sampling plans with equivalent or better protection are acceptable. NMT the speci«ed number
+of units contains visible par ticulates.
+Product in Distribution
+If it becomes necessary to evaluate product that has been shipped to customers (e.g., because of a complaint or regulatory concern),
+sample and inspect 20 units. If no par ticles are observed in the sample, the batch is considered essentially free of visible par ticulates. If
+available, additional units may be inspected to gain fur ther information on the risk of par ticulates in the batch.
+The special level sampling plans described in ANSI/ASQ Z1.4–2008 or ISO 2859 are appropriate to guide the selection of sample size and
+acceptance criteria for this purpose.
+Testing outlined in Product in Distribution is permissible only if Sampling at Batch Release (after 100% Manufacturing Inspection) has been
+successfully completed.
+OFFICIAL
+2/12/25, 3:24 PM
+USP-NF 〈790〉 Visible Particulates in Injections
+
+=== PAGE 2 ===
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<790> VISIBLE PARTICULATES IN
+INJECTIONS
+Desmond G. Hunt
+Principal Scienti«c Liaison
+GCDF2020
+General Chapters - Dosage Forms
+2020
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 40(6)
+Current DocID: GUID-40E8EDAA-AF74-42B6-9F11-3EC14004300B_1_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M7197_01_01
+DOI ref: sa5xd
+OFFICIAL
+2/12/25, 3:24 PM
+USP-NF 〈790〉 Visible Particulates in Injections
