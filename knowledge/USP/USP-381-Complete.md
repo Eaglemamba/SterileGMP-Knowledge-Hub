@@ -1,0 +1,377 @@
+# USP General Chapter 〈381〉: Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Dec-2020
+Document Type:
+General Chapter
+DocId:
+GUID-F4A59725-7A27-4ED2-ADBD-6576F1FCA832_6_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99140_06_01
+DOI Ref:
+fjb0h
+© 2025 USPC
+Do not distribute
+Change to read:
+〈381〉 ELASTOMERIC
+▲
+COMPONENTS IN INJECTABLE
+PHARMACEUTICAL PRODUCT P
+ACKAGING/DELIVERY SYSTEMS
+1. INTRODUCTION
+2. SCOPE
+3. TEST SAMPLES
+4. PROCEDURES
+
+### 4.1 Biological Reactivity
+
+### 4.2 Physicochemical Tests
+
+### 4.3 Functionality Tests
+
+1. INTRODUCTION
+Packaging systems, also referred to as container–closure systems, are de«ned in Packaging and Storage Requirements 〈659〉; these
+systems are the sum of components that together contain and protect the drug product. Elastomeric components are formulated with
+elastomeric substances and can be either thermoset or thermoplastic in nature.
+Every elastomeric component used in a pharmaceutical packaging/delivery system should be proven suitable for its intended use. The
+purpose of this chapter is to provide baseline chemical and biological reactivity requirements for the selection of elastomeric injectable
+packaging/delivery system components.
+The establishment of the potential suitability of an elastomeric component does not rely on a single testing strategy. No single strategy
+can cover all elastomeric component attributes that have the potential to impact suitability. The chemical testing prescribed includes
+physicochemical tests. Extractable elements may also be relevant to the selection of a packaging system’s materials of construction and
+therefore a relevant aspect of material characterization. Materials of construction can vary widely in terms of their intentionally and
+unintentionally added elements and their potential use. Because of this, it is challenging to provide universally effective and e­cient test
+methodologies, lists of target elements, and repor ting requirements. It is the material user’s responsibility to evaluate the need for
+extractable elements testing and, if such testing is necessary, to establish and justify the means by which testing is accomplished, taking
+into account extraction conditions, target elements, and repor ting requirement. Elastomeric components can vary widely in terms of their
+intentionally and unintentionally added elements as well as the components' potential use. Because of this, it is challenging to provide
+universally effective and e­cient test methodologies, lists of target elements, and repor ting requirements. It is the elastomeric
+component user's responsibility to evaluate the need for extractable elements testing and, if such testing is necessary, to establish and
+justify the means by which testing is accomplished, taking into account extraction conditions, target elements, and repor ting
+requirements. The physicochemical tests are also augmented with biological reactivity tests.
+If elastomeric components comply with the requirements outlined in this chapter, studies should follow to determine their suitability as
+recommended in Assessment of Extractables Associated with Pharmaceutical Packaging/Delivery Systems 〈1663〉 and Assessment of Drug
+Product Leachables Associated with Pharmaceutical Packaging/Delivery Systems 〈1664〉.
+In summary, establishing chemical suitability of elastomeric components for injectable product packaging/delivery systems involves
+multiple tests and testing procedures including:
+Elastomeric component screening—baseline requirements for biological reactivity and physicochemical tests described in this
+chapter.
+Controlled extraction studies—studies as described in 〈1663〉 to create extractables pro«le(s) of par ticular pharmaceutical
+packaging/delivery systems and/or packaging components.
+Pharmaceutical product assessment—Actual-case measurement of con«rmed leachables in the pharmaceutical product in the
+packaging/delivery system intended for the commercial market. (For additional information, see 〈1664〉.)
+Additional information about elastomeric components, such as their composition, manufacturing processes, considerations for use,
+and testing procedures is found in 〈1381〉.
+2. SCOPE
+Elastomeric components within scope are those used in the packaging systems of products described in Injections and Implanted Drug
+Products 〈1〉.
+OFFICIAL
+2/12/25, 2:44 PM
+USP-NF 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems
+
+=== PAGE 2 ===
+Elastomeric components utilized for injectable products within chapter scope include, but are not limited to, those used for vials and
+bottles (stoppers and cap liners), pre«lled syringes (plungers, needle shields, and tip caps), car tridges (plungers and seal liners), ¬exible
+bags (injection por ts), and blow-«ll-seal containers (cap liners). The speci«ed procedures and requirements outlined in this chapter are
+not applicable to elastomeric components used in products regulated by the Center for Devices and Radiological Health. All elastomeric
+components in direct or indirect contact with the pharmaceutical product are within scope. An example of indirect contact is an
+elastomeric layer of a multilayer cap liner that does not directly contact the product but may leach into the product via migration through
+the product contact layer. Another example is an elastomeric cap liner that may contact the product after being punctured to attain
+product access.
+Also within scope are elastomeric components of systems or packages that are intended for transient product storage and/or product
+delivery intended for speci«c pharmaceutical products.
+Elastomeric components outside of scope include those components of containers and closures that do not have direct or indirect
+contact with the pharmaceutical product or hold intermediate compounds, active pharmaceutical ingredients (APIs), and excipients. Also
+outside chapter scope are elastomeric components of containment and/or transpor t systems used in product, intermediate compound,
+API, or excipient manufacturing. Although outside of the chapter scope, chapter tests and requirements may be applied.
+Chapter procedures and requirements are speci«ed for physicochemical and biological reactivity tests. Elastomeric component
+identi«cation tests fall beyond the chapter scope. Elastomeric components are made of a wide variety of elastomeric materials and
+optional polymeric coatings. For this reason, it is not possible to have identi«cation tests that encompass all possible elastomeric
+component presentations.
+Elastomeric component functional suitability tests described in this chapter are within scope until Elastomeric Component Functional
+Suitability in Parenteral Product Packaging/Delivery Systems 〈382〉 is fully implemented. As par t of a «nished product packaging system,
+elastomeric components must appropriately function to seal the container and, in some cases, aid in safe and effective product delivery.
+The essential principles and demonstrated best practices for such assessments for injectable product packaging/delivery systems can
+be found in 〈382〉 and Assessment of Elastomeric Component Functional Suitability in Parenteral Product Packaging/Delivery Systems
+〈1382〉.
+3. TEST SAMPLES
+Test samples should mimic «nished elastomeric components after the completion of all manufacturing and processing steps (e.g.,
+molding conditions, sterilization, etc.), and surface modi«cations (such as siliconization, chlorinated surface treatments, ¬uoropolymer
+coatings and «lms).
+4. PROCEDURES
+
+### 4.1 Biological Reactivity:
+
+Elastomeric components (Type I and Type II) meet the requirements of Biological Reactivity Tests, In Vitro 〈87〉.
+ If
+components do not meet the requirements of 〈87〉, they can be subjected to in vivo testing set for th in Biological Reactivity Tests, In Vivo
+〈88〉, Systemic Injection Test and 〈88〉, Intracutaneous Test. Components that meet the requirements of 〈87〉 are not required to undergo 〈88〉
+testing.
+Type I and Type II closures must both conform to the requirements of either the in vitro or the in vivo biological reactivity tests.
+Acceptance criteria:
+Test selection and results are consistent with 〈87〉 and/or 〈88〉.
+
+### 4.2 Physicochemical Tests
+
+Sample solution:
+Place whole, uncut elastomeric components corresponding to a surface area of 100 ± 10 cm
+ into a borosilicate glass,
+wide-necked ¬ask (see Containers—Glass 〈660〉). If it is not possible to achieve the prescribed closure surface area (100 ± 10 cm
+) using
+uncut elastomeric components, select the number of components that will most closely approximate 100 cm
+ and adjust the volume of
+water used to the equivalent of 2 mL/1 cm
+ of the actual elastomeric component's surface area. Add 200 mL of Puri«ed Water or Water for
+Injection to the elastomeric components, and weigh. Cover the mouth of the ¬ask with a borosilicate glass beaker, or similar non
+interacting container. Immerse the temperature probe for the autoclave program control in water in a container comparable to that used
+for the sample. Heat in an autoclave so that a temperature of 121 ± 2° is reached within 20–30 min, and maintain this temperature for 30
+min. Cool to room temperature over a period of about 30 min. Add Puri«ed Water or Water for Injection to bring it up to the original mass.
+Shake, and immediately decant and collect the solution. [Note—This solution must be shaken before being used in each of the tests.]
+Blank:
+Prepare a blank solution similarly, using 200 mL of Puri«ed Water or Water for Injection, omitting the elastomeric components.
+Elastomeric component categories, Type I and II:
+Elastomeric components may be classi«ed in two types: Type I elastomeric closures
+meet the strictest requirements and are preferred; Type II elastomeric closures have mechanical proper ties suitable for special uses (e.g.,
+multiple piercing) but cannot meet the Type I acceptance criteria for 4.2.1 Appearance, 4.2.4 Absorbance, and 4.2.5 Reducing Substances.
+For these tests, Type II elastomeric closures have alternative acceptance criteria that must be met. The intended «nal product application
+will determine whether a Type I or Type II elastomeric component is more appropriate.
+
+#### 4.2.1 Appearance (Turbidity/Opalescence):
+
+The determination of turbidity may be performed using either a visual or instrumental
+comparison. For a discussion of turbidimetry, see Nephelometry and Turbidimetry 〈855〉. Instrumental assessment of clarity provides a
+more discriminatory test that does not depend on the visual acuity of the analyst.
+Hydrazine sulfate solution:
+Dissolve 1.000 g of analytical grade hydrazine sulfate in par ticle-free water and dilute with par ticle-free water
+to 100.0 mL. Allow this solution to stand for 4–6 h.
+OFFICIAL
+2/12/25, 2:44 PM
+USP-NF 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems
+
+=== PAGE 3 ===
+Hexamethylenetetramine solution:
+Dissolve 2.5 g of analytical grade hexamethylenetetramine in 25.0 mL of par ticle-free water in a 100-
+mL glass-stoppered ¬ask.
+Formazin stock suspension:
+Add 25.0 mL of Hydrazine sulfate solution to the Hexamethylenetetramine solution in the 100-mL ¬ask. Mix,
+and allow to stand for 48 h at 25 ± 1° before using. This suspension is stable for 2 months, provided it is stored in a glass container free
+from surface defects. The suspension must not adhere to the glass and must be well mixed before use.
+Formazin standard suspension:
+Prepare a suspension by diluting 15.0 mL of the Formazin stock suspension with par ticle-free water to
+1000.0 mL. It is stable for about 24 h after preparation.
+Reference suspensions:
+Prepare according to Table 1. Mix and shake before use. [Note—Stabilized formazin suspensions that can be used
+to prepare stable, diluted turbidity standards are available commercially and may be used after comparison with the standards prepared
+as described.]
+T
+able 1. Reference Suspensions
+Reference Suspension A
+Reference Suspension B
+Reference Suspension C
+Reference Suspension D
+Standard of
+opalescence
+5.0 mL
+10.0 mL
+30.0 mL
+50.0 mL
+Par ticle-free water
+95.0 mL
+90.0 mL
+70.0 mL
+50.0 mL
+Nephelometric turbidity
+units (NTU)
+3 NTU
+6 NTU
+18 NTU
+30 NTU
+Procedure A (Visual Comp
+arison 〈630〉):
+Use identical test tubes made of colorless, transparent, neutral glass with a ¬at base and an
+internal diameter of 15–25 mm. Fill one tube to a depth of 40 mm with Sample solution, one tube to the same depth with water, and 4
+other tubes to the same depth with Reference suspension A, Reference suspension B, Reference suspension C, and Reference suspension
+D. Compare the solutions in diffuse daylight 5 min after preparation of the Reference suspensions, viewing ver tically against a black
+background. The light conditions must be such that Reference suspension A can be readily distinguished from water, and Reference
+suspension B can be readily distinguished from Reference suspension A.
+Acceptance criteria:
+Type I—Sample solution is not more opalescent than Reference suspension B. Type II—Sample solution is not more
+opalescent than Reference suspension C.
+Procedure B (instrumental comparison):
+Measure the turbidity of the Reference suspensions in a suitable calibrated turbidimeter (see
+Nephelometry and Turbidimetry 〈855〉). The Blank should be run and the results corrected for the Blank. Reference suspension A,
+Reference suspension B, Reference suspension C, and Reference suspension D represent 3, 6, 18, and 30 NTUs, respectively. Measure the
+turbidity of Sample solution using the calibrated turbidimeter.
+Acceptance criteria:
+Type I—The turbidity of Sample solution [in nephelometric turbidity units (NTUs) or formazin turbidity units (FTUs)
+corrected for the blank] is NMT that for Reference suspension B (6 NTU/FTU). Type II—The turbidity of Sample solution (in
+nephelometric turbidity units or formazin turbidity units, corrected for the blank) is NMT that for Reference suspension C (18 NTU/FTU).
+
+#### 4.2.2 Color
+
+Color standard:
+Prepare a solution by diluting 3.0 mL of Matching Fluid O (see Color and Achromicity 〈631〉) with 97.0 mL of diluted
+hydrochloric acid (10 ± 0.5%).
+Procedure:
+Use identical tubes made of colorless, transparent, neutral glass with a ¬at base and an internal diameter of 15–25 mm. Fill
+one tube to a depth of 40 mm with Sample solution, and «ll the second tube with the Color standard. Compare the liquids in diffuse
+daylight, viewing ver tically against a white background.
+Acceptance criteria:
+Sample solution is not more intensely colored than the Color standard.
+
+#### 4.2.3 Acidity or Alkalinity
+
+Bromothymol blue solution:
+Dissolve 50 mg of bromothymol blue in a mixture of 4 mL of 0.02 M sodium hydroxide and 20 mL of alcohol.
+Dilute with water to 100 mL.
+Test solution:
+To 20 mL of Sample solution add 0.1 mL of Bromothymol blue solution.
+Procedure:
+If the solution is yellow, titrate with 0.01 N sodium hydroxide until a blue endpoint is reached. If the solution is blue, titrate with
+0.01 N hydrochloric acid until a yellow endpoint is reached. If the solution is green, it is neutral and no titration is required.
+Blank correction:
+Test 20 mL of Blank similarly. Correct the results obtained for Sample solution by subtracting or adding the volume of
+titrant required for the Blank, as appropriate. (See Titrimetry 〈541〉.)
+Acceptance criteria:
+NMT 0.3 mL of 0.01 N sodium hydroxide produces a blue color or NMT 0.8 mL of 0.01 N hydrochloric acid produces a
+yellow color, or no titration is required.
+
+#### 4.2.4 Absorbance
+
+[Note—Perform this test within 5 h of preparing Sample solution.]
+Procedure:
+Pass Sample solution through an iner t «lter of 0.45-µm pore size, discarding the «rst few milliliters of «ltrate. Measure the
+absorbance of the «ltrate at wavelengths between 220 and 360 nm in a 1-cm cell using the Blank in a matched cell in the reference
+beam. If dilution of the «ltrate is required before measurement of the absorbance, correct the test results for the dilution.
+Acceptance criteria:
+Type I—NMT 0.2 Type II—NMT 4.0.
+OFFICIAL
+2/12/25, 2:44 PM
+USP-NF 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems
+
+=== PAGE 4 ===
+
+#### 4.2.5 Reducing Substances
+
+[Note—Perform this test within 4 h of preparing Sample solution.]
+Procedure:
+To 20.0 mL of Sample solution add 1 mL of diluted sulfuric acid and 20.0 mL of 0.002 M potassium permanganate. Boil for 3
+min. Cool, add 1 g of potassium iodide, and titrate immediately with 0.01 M sodium thiosulfate using 0.25 mL of starch solution TS as
+the indicator. Perform a titration using 20.0 mL of Blank and note the difference in volume of 0.01 M sodium thiosulfate required.
+Acceptance criteria:
+Type I—The difference between titration volumes is NMT 3.0 mL of 0.01 M sodium thiosulfate. Type II—The difference
+between titration volumes is NMT 7.0 mL of 0.01 M sodium thiosulfate.
+
+#### 4.2.6 Volatile Sul«des
+
+Procedure:
+Place elastomeric components, cut if necessary, with a total surface area of 20 ± 2 cm
+ in a 100-mL ¬ask, and add 50 mL of a
+20-g/L citric acid solution. In the same manner and at the same time, prepare a control solution in a separate ¬ask by dissolving 0.154
+mg of sodium sul«de in 50 mL of a 20-g/L citric acid solution. Place a piece of lead acetate paper over the mouth of each ¬ask, and hold
+the paper in position by placing an inver ted weighing bottle over it. Immerse the temperature probe for the autoclave program control in
+water in a container comparable to that used for the sample. Heat the ¬asks in an autoclave so that a temperature of 121 ± 2° is reached
+within 20–30 min, and then maintain this temperature for 30 min. Cool to room temperature over a period of about 30 min.
+Acceptance criteria:
+Any black stain on the paper produced by the test solution is not more intense than that produced by the control
+solution.
+
+#### 4.2.7 Ammonium
+
+Alkaline potassium tetraiodomercurate solution:
+Prepare a 100-mL solution containing 11 g of potassium iodide and 15 g of mercuric
+iodide in water. Immediately before use, mix one volume of this solution with an equal volume of a 250-g/L solution of sodium hydroxide.
+Test solution:
+Dilute 5 mL of Sample solution with water to 14 mL. Make alkaline, if necessary, by adding 1 N sodium hydroxide, and dilute
+with water to 15 mL. Add 0.3 mL of Alkaline potassium tetraiodomercurate solution and close the container.
+Ammonium standard solution:
+Prepare a solution of ammonium chloride in water [1 ppm of ammonium (NH4
++
+)]. Mix 10 mL of the 1 ppm
+ammonium chloride solution with 5 mL of water and 0.3 mL of Alkaline potassium tetraiodomercurate solution. Close the container.
+Acceptance criteria:
+After 5 min, any yellow color in the Test solution is no darker than the Ammonium standard solution [NMT 2 ppm of
+ammonium (NH4
++
+) in Sample solution].
+
+### 4.3 Functionality Tests
+
+[Note—Samples treated as described for preparation of Sample solution and air-dried should be used for the functionality tests of 4.3.1
+Penetrability, 4.3.2 Fragmentation, and 4.3.3 Self-Sealing Capacity. Functionality tests are performed on closures intended to be pierced by a
+hypodermic needle. The 4.3.3 Self-Sealing Capacity test is required only for closures intended for multiple-dose containers. The needle
+speci«ed for each test is a lubricated, long-bevel (bevel angle 12 ± 2°) hypodermic needle with an external diameter of 0.8 mm (21 gauge).
+]
+
+#### 4.3.1 Penetrability
+
+Procedure:
+Fill 10 suitable vials to the nominal volume with water, «t the closures to be examined, and secure with a cap. Using a new
+hypodermic needle as described above for each closure, pierce the closure with the needle perpendicular to the surface.
+Acceptance criteria:
+The force for piercing is no greater than 10 N (1 kilogram-force) for each closure, determined with an accuracy of
+±0.25 N (25 gram-force).
+
+#### 4.3.2 Fragmentation
+
+Closures for liquid preparations:
+Fill 12 clean vials with water to 4 mL less than the nominal capacity. Fit the closures to be examined,
+secure with a cap, and allow to stand for 16 h.
+Closures for dry preparations:
+Fit closures to be examined into 12 clean vials, and secure each with a cap.
+Procedure:
+Using a hypodermic needle as described above «tted to a clean syringe, inject into each vial 1 mL of water while removing 1
+mL of air. Repeat this procedure 4 times for each closure, piercing each time at a different site. Use a new needle for each closure,
+checking that it is not blunted during the test. Filter the total volume of liquid in all the vials through a single «lter with a nominal pore
+size NMT 0.5 µm. Count the rubber fragments on the surface of the «lter visible to the naked eye.
+Acceptance criteria:
+There are no more than 5 fragments visible. This limit is based on the assumption that fragments with a diameter >50
+µm are visible to the naked eye. In case of doubt or dispute, the par ticles are examined microscopically to verify their nature and size.
+
+#### 4.3.3 Self-Sealing Capacity
+
+Procedure:
+Fill 10 suitable vials with water to the nominal volume. Fit the closures that are to be examined, and cap. Using a new
+hypodermic needle as described above for each closure, pierce each closure 10 times, piercing each time at a different site. Immerse the
+10 vials in a solution of 0.1% (1 g/L) methylene blue, and reduce the external pressure by 27 kPa for 10 min. Restore to atmospheric
+pressure, and leave the vials immersed for 30 min. Rinse the outside of the vials.
+Acceptance criteria:
+None of the vials contain any trace of blue solution.▲ (USP 1-Dec-2020)
+Biological reactivity testing in suppor t of elastomeric components used for «nal pharmaceutical product packaging/delivery systems (drugs
+and drug/device combination products) provides baseline information and will often not be su­cient to assess the «nal suitability for use
+expectations of regulatory authorities. Thus, it is impor tant to work with the appropriate regulatory authority for guidance regarding a product-
+speci«c application.
+Refer to ISO 7864: Sterile Hypodermic Needles for Single Use.
+OFFICIAL
+2/12/25, 2:44 PM
+USP-NF 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems
+
+=== PAGE 5 ===
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<381> ELASTOMERIC COMPONENTS IN
+INJECTABLE PHARMACEUTICAL PRODUCT
+PACKAGING/DELIVERY SYSTEMS
+Desmond G. Hunt
+Principal Scienti«c Liaison
+GCPD2020
+General Chapters - Packaging and
+Distribution
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 50(4)
+Current DocID: GUID-F4A59725-7A27-4ED2-ADBD-6576F1FCA832_6_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99140_06_01
+DOI ref: fjb0h
+OFFICIAL
+2/12/25, 2:44 PM
+USP-NF 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems

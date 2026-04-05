@@ -1,0 +1,2898 @@
+# USP General Chapter 〈797〉: Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-May-2024
+Document Type:
+General Chapter
+DocId:
+GUID-A4CAAA8B-6F02-4AB8-8628-09E102CBD703_8_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99925_08_01
+DOI Ref:
+n7zrj
+© 2025 USPC
+Do not distribute
+〈797〉 PHARMACEUTICAL COMPOUNDING—STERILE PREP
+ARATIONS
+1. INTRODUCTION AND SCOPE
+This chapter describes the minimum standards to be followed for the preparation of compounded sterile preparations (CSPs) for
+human and animal drugs. Sterile compounding is de«ned as combining, admixing, diluting, pooling, reconstituting, repackaging, or
+otherwise altering a drug product or bulk drug substance to create a sterile preparation.
+The requirements in this chapter must be followed to minimize harm, including death, to human and animal patients that could result
+from 1) microbial contamination [nonsterility], 2) excessive bacterial endotoxins, 3) variability from the intended strength of correct
+ingredients, 4) physical and chemical incompatibilities, 5) chemical and physical contaminants, and/or 6) use of ingredients of
+inappropriate quality.
+Aseptic techniques, processes, and procedures must be followed for preparing any sterile medication. Processes and procedures must
+be in place to minimize the potential for contact with nonsterile surfaces, introduction of par ticulate matter or biological ¬uids, and mix-
+ups with other products or CSPs.
+The use of technologies, techniques, materials, and procedures other than those described in this chapter is not prohibited as long as
+they are noninferior to those described herein and validated for the intended purpose (e.g., Validation of Alternative Microbiological
+Methods 〈1223〉 and Validation of Compendial Procedures 〈1225〉).
+Unless otherwise speci«ed in each section, the requirements of this chapter apply to compounding all categories of CSPs.
+
+### 1.1 Scope
+
+#### 1.1.1 CSPs affected:
+
+ The requirements in this chapter must be met to ensure the sterility of any CSP
+. Although the list below is not
+exhaustive, the following must be sterile:
+Injections, including infusions
+Irrigations for internal body cavities (i.e., any space that does not normally communicate with the environment outside of the body,
+such as the bladder cavity or peritoneal cavity). [Note—Irrigations for the mouth, rectal cavity, and sinus cavity are not required to be
+sterile.]
+Ophthalmic dosage forms
+Aqueous preparations for pulmonary inhalation. [Note—Nasal dosage forms intended for local application are not required to be
+sterile.]
+Baths and soaks for live organs and tissues
+Implants
+
+#### 1.1.2 Speci«c practices
+
+Allergenic extracts:
+Licensed allergenic extracts are mixed and diluted to prepare prescription sets for administration to patients. A
+prescription set is a vial or set of vials of premixed licensed allergenic extracts for subcutaneous immunotherapy that have been diluted
+with an appropriate diluent for an individual patient. Because of cer tain characteristics of allergenic extracts and allergy practice,
+preparation of allergenic extract prescription sets is not subject to all of the requirements in this chapter that are applicable to other
+sterile CSPs. The standards for compounding allergenic extracts, which are described in 21. Compounding Allergenic Extracts, are
+applicable only when
+1. The compounding process involves transfer via sterile needles and syringes of conventionally manufactured sterile allergen
+products and appropriate conventionally manufactured sterile added substances; and
+2. Manipulations are limited to penetrating stoppers on vials with sterile needles and syringes and transferring sterile liquids in
+sterile syringes to sterile vials.
+Blood-derived and other biological materials:
+When compounding activities require the manipulation of a patient’s blood-derived or other
+biological material (e.g., autologous serum), the manipulations must be clearly separated from other compounding activities and
+equipment used in CSP preparation activities, and they must be controlled by speci«c standard operating procedures (SOPs) to avoid
+any cross-contamination. Handling of blood components and other biological materials must additionally comply with laws and
+regulations of the applicable regulatory jurisdiction.
+Hazardous drugs:
+Handling of sterile hazardous drugs (HDs) must additionally comply with Hazardous Drugs—Handling in Healthcare
+Settings 〈800〉.
+Repackaging:
+Repackaging of a sterile product or preparation from its original container into another container must be performed in
+accordance with the requirements in this chapter.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 2 ===
+Sterile radiopharmaceuticals:
+Compounding of radiopharmaceuticals is not required to meet the standards of this chapter as they are
+subject to the requirements in Radiopharmaceuticals—Preparation, Compounding, Dispensing, and Repackaging 〈825〉.
+
+#### 1.1.3 Personnel and settings affected:
+
+This chapter describes the minimum requirements that apply to all persons who prepare CSPs and
+all places where CSPs are prepared. This includes but is not limited to pharmacists, technicians, nurses, physicians, veterinarians, dentists,
+naturopaths, and chiropractors in all places including but not limited to hospitals and other healthcare institutions, medical and surgical
+patient treatment sites, infusion facilities, pharmacies, and physician or veterinarian practice sites. Any person entering a sterile
+compounding area, whether preparing a CSP or not, must meet the requirements in 3. Personal Hygiene and Garbing.
+The compounding facility must designate one or more individuals (i.e., the designated person(s)) to be responsible and accountable
+for the performance and operation of the facility and personnel in the preparation of CSPs and for performing other functions as
+described in this chapter.
+
+### 1.2 Administration
+
+For the purposes of this chapter, "administration" means the direct application of a sterile product or preparation to a single patient by
+injecting, infusing, or otherwise providing a sterile product or preparation in its «nal form.
+Administration of medication is out of the scope of this chapter. Standard precautions such as the Centers for Disease Control and
+Prevention (CDC) safe injection practices apply to administration. See 〈800〉 for additional recommendations for the administration of
+hazardous drugs.
+
+### 1.3 Immediate-Use CSPs
+
+When all of the following conditions are met, compounding of CSPs for direct and immediate administration is not subject to the
+requirements for Category 1, Category 2, or Category 3 CSPs:
+1. Aseptic techniques, processes, and procedures are followed, and written SOPs are in place to minimize the potential for contact
+with nonsterile surfaces, introduction of par ticulate matter or biological ¬uids, and mix-ups with other conventionally
+manufactured products or CSPs.
+2. Personnel are trained and demonstrate competency in aseptic processes as they relate to assigned tasks and the facility's SOPs.
+3. The preparation is performed in accordance with evidence-based information for physical and chemical compatibility of the drugs
+(e.g., approved labeling, stability and compatibility studies).
+4. The preparation involves not more than 3 different sterile products.
+5. Any unused star ting component from a single-dose container must be discarded after preparation is complete. Single-dose
+containers must not be used for more than one patient.
+Ã. Administration begins within 4 h following the star t of preparation. If administration has not begun within 4 h following the star t of
+preparation, it must be promptly, appropriately, and safely discarded.
+7. Unless directly administered by the person who prepared it or administration is witnessed by the preparer, the CSP must be labeled
+with the names and amounts of all active ingredients, the name or initials of the person who prepared the preparation, and the 4-h
+time period within which administration must begin.
+Handling of sterile hazardous drugs (HDs) must additionally comply with 〈800〉.
+
+### 1.4 Preparation Per Approved Labeling
+
+Compounding does not include mixing, reconstituting, or other such acts that are performed in accordance with directions contained in
+approved labeling or supplemental materials provided by the product’s manufacturer.
+Preparing a conventionally manufactured sterile product in accordance with the directions in the manufacturer’s approved labeling is
+out of scope of this chapter only if
+1. The product is prepared as a single dose for an individual patient; and
+2. The approved labeling includes information for the diluent, the resultant strength, the container closure system, and storage time.
+See 〈800〉 for additional recommendations for the preparation of hazardous drugs.
+Proprietary bag and vial systems:
+Docking and activation of proprietary bag and vial systems in accordance with the manufacturer’s
+labeling for immediate administration to an individual patient is not considered compounding and may be performed outside of an
+International Organization for Standardization (ISO) Class 5 environment.
+Docking of the proprietary bag and vial systems for future activation and administration is considered compounding and must be
+performed in an ISO Class 5 environment in accordance with this chapter, with the exception of 14. Establishing Beyond-Use Dates.
+Beyond-use dates (BUDs) for proprietary bag and vial systems must not be longer than those speci«ed in the manufacturer’s labeling.
+
+### 1.5 CSP Categories
+
+This chapter distinguishes three categories of CSPs: Category 1, Category 2, and Category 3, primarily based on the state of
+environmental control under which they are compounded, the probability for microbial growth during the time they will be stored, and the
+time period within which they must be used.
+Category 1 CSPs are compounded under the least controlled environmental conditions and therefore are assigned a BUD of 12 h or
+less at controlled room temperature or 24 h or less when refrigerated, if compounded in accordance with all of the applicable
+requirements for Category 1 CSPs in this chapter.
+Category 2 CSPs require more environmental controls and testing than Category 1 CSPs and may be assigned a BUD of greater than 12
+h at controlled room temperature or more than 24 h if refrigerated, but not exceed the limits established in Table 13 (see 14. Establishing
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 3 ===
+Beyond-Use Dates), if compounded in accordance with all of the applicable requirements for Category 2 CSPs in this chapter.
+Category 3 CSPs undergo sterility testing, supplemented by endotoxin testing when applicable, and have more requirements than
+Category 2 CSPs for personnel quali«cation, use of sterile garb, use of sporicidal disinfectants, frequency of environmental monitoring,
+and stability determination. Category 3 CSPs may be assigned longer BUDs than those set for Category 2 CSPs but not exceeding the
+limits in Table 14 (see 14. Establishing Beyond-Use Dates), if compounded in accordance with all applicable requirements for Category 3
+CSPs in this chapter (see 14.4 Additional Requirements for Category 3 CSPs).
+The requirements that are not speci«cally described as applicable to Category 1, Category 2, or Category 3, are applicable to the
+compounding of all CSPs unless the CSP is otherwise described in 1.1 Scope.
+Category 1, Category 2, and Category 3 CSPs can be compounded by using only sterile star ting ingredients, or by using some or all
+nonsterile star ting ingredients. If all components used to compound are sterile from the star t, the sterility of the components must be
+maintained during compounding to produce a CSP
+.
+If one or more of the star ting components being used to compound is not sterile, the sterility of the compounded preparation must be
+achieved through a sterilization process (e.g., terminal sterilization in the «nal sealed container) or sterilizing «ltration, and then sterility
+must be maintained if the CSP is subsequently manipulated. When compounding with nonsterile star ting components, supplies, or
+equipment, the quality of the components, the effectiveness of the sterilization step, and bacterial endotoxin mitigation strategies are
+critical to achieving a sterile preparation that is free from excessive bacterial endotoxins.
+2. PERSONNEL TRAINING AND EVALUATION
+All personnel who compound or have direct oversight of compounding personnel must be initially trained and quali«ed by
+demonstrating knowledge and competency in compounding CSPs according to the requirements in this section before being allowed to
+perform their job functions independently. Designated person(s) are responsible for creating and implementing a training program for
+personnel and for ensuring that compounders, personnel who have direct oversight of compounders, and personnel who perform
+restocking or cleaning and disinfection duties are initially trained and quali«ed by demonstrating knowledge and competency in
+maintaining the quality of the sterile compounding environment before being allowed to perform their job functions independently.
+Training and observation may be performed by the designated person(s) or an assigned trainer. Personnel who compound or have direct
+oversight of compounding personnel must complete training initially and at least every 12 months in appropriate sterile compounding
+principles and practices as described below (see 2.1 Demonstrating Knowledge and Competency of Core Skills). Personnel who only
+perform restocking or cleaning and disinfecting duties outside of the primary engineering control (PEC) must complete ongoing training
+as required by the facility's SOPs. Personnel compounding only immediate-use CSPs must complete training as required by the facility's
+SOPs (see 1.3 Immediate-Use CSPs).
+Each compounding facility must develop a written training program that describes the required training, the frequency of training, and
+the process for evaluating the performance of individuals who compound, have direct oversight of compounding personnel, perform in-
+process checks, «nal veri«cation, and dispensing of CSPs. This program must equip personnel with the appropriate knowledge and train
+them in the required skills necessary to perform their assigned tasks, and SOPs should specify the training required for such tasks.
+Training and evaluation of personnel must be documented (see 20. Documentation).
+
+### 2.1 Demonstrating Knowledge and Competency of Core Skills
+
+Before beginning to compound CSPs independently or have direct oversight of compounding personnel, personnel must complete
+training and be able to demonstrate knowledge of principles and competency of skills for performing sterile manipulations and achieving
+and maintaining appropriate environmental conditions as applicable to their assigned job functions. This must be completed initially and
+at least every 12 months in at least the following:
+Hand hygiene
+Garbing
+Cleaning and disinfection
+Calculations, measuring, and mixing
+Aseptic technique
+Achieving and/or maintaining sterility (and apyrogenicity if compounding with nonsterile components)
+Use of equipment
+Documentation of the compounding process (e.g., master formulation and compounding records)
+Principles of high-e­ciency par ticulate air (HEPA)-«ltered unidirectional air¬ow within the ISO Class 5 area
+Proper use of PECs
+Principles of movement of materials and personnel within the compounding area
+If the facility has only one person in the compounding operation, that person must document that they have obtained training and
+demonstrated competency, and they must comply with the other requirements of this chapter.
+
+### 2.2 Demonstrating Competency in Garbing and Hand Hygiene
+
+Before beginning to compound Category 1, Category 2, or Category 3 CSPs or have direct oversight of compounding personnel,
+personnel must successfully complete an initial garbing competency evaluation no fewer than 3 separate times. The 3 successful
+completions must be in succession—failure of any of the 3 initial garbing competency evaluations requires repeat testing until personnel
+successfully complete 3 evaluations in a row. The garbing competency evaluation consists of a visual observation and gloved «nger tip
+and thumb sampling (GFT) of both hands (see Box 1). Each of the 3 initial competency evaluations must occur after performing a
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 4 ===
+separate and complete hand hygiene and full garbing procedure. All garbing competencies must be completed with gloved «nger tip and
+thumb sampling after garbing (see Box 1) and a documented visual audit while performing hand hygiene and garbing procedures (see 3.
+Personal Hygiene and Garbing). Gloved «nger tip and thumb sampling after garbing, but before applying sterile 70% IPA to gloves, must be
+performed on donned sterile gloves on both hands in a classi«ed area or segregated compounding area (SCA).
+Failure is indicated by visual observation of improper hand hygiene and garbing procedures and/or gloved «nger tip and thumb
+sampling results that exceed the action levels in Table 1. Results of the evaluation and corrective actions, in the event of failure, must be
+documented and the documentation maintained to provide a record and long-term assessment of personnel competency. Documentation
+must at a minimum include the name of the person evaluated; evaluation date and time; media and components used including
+manufacturer, expiration date, and lot number; star ting temperature for each interval of incubation; dates of incubation; results and
+identi«cation of the observer and personnel reading and documenting the results. Microbial identi«cation of the colony-forming units
+(cfu) is not required for gloved «nger tip and thumb sampling.
+After the initial garbing competency evaluations, compounding personnel must successfully complete the garbing competency (see
+Table 1) at least one time every 6 months for personnel compounding Category 1 and Category 2 CSPs, and at least one time every 3
+months for personnel compounding Category 3 CSPs. Personnel who have direct oversight of compounding personnel, but do not
+compound, must complete a garbing competency evaluation every 12 months. The evaluation should correspond to the type of garbing
+activities of the personnel they oversee. Personnel who have direct oversight of compounding personnel must not compound unless they
+successfully complete the garbing competency evaluation at the same intervals required for compounding personnel.
+Box 1. Gloved Finger tip and Thumb Sampling Procedures
+Use one sampling media device (e.g., plates, paddles, or slides) per hand, containing general microbial growth agar (e.g.,
+trypticase soy agar [TSA]) supplemented with neutralizing additives (e.g., lecithin and polysorbate 80) as this agar suppor ts
+both bacterial and fungal growth.
+Label each media device with a personnel identi«er, right or left hand, and the date and time of sampling.
+Do not apply sterile 70% isopropyl alcohol (IPA) to gloves immediately before touching the media device because this could
+cause a false-negative result. Using a separate media device for each hand, collect samples from all gloved «nger tips and
+thumbs from both hands by rolling «nger tip pads and thumb pad over the agar surface.
+Incubate the media device at 30°–35° for no less than 48 h and then at 20°–25° for no less than 5 additional days. Samples
+must be incubated in an incubator. Handle and store media devices to avoid contamination and prevent condensate from
+dropping onto the agar during incubation and affecting the accuracy of the cfu reading (e.g., inver t plates).
+Record the number of cfu per hand (left hand, right hand).
+Determine whether the cfu action level is exceeded by counting the total number of cfu from both hands.
+
+### 2.3 Competency Testing in Aseptic Manipulation
+
+Before beginning to compound Category 1, Category 2, or Category 3 CSPs independently or have direct oversight of compounding
+personnel, personnel must successfully complete an aseptic manipulation competency evaluation. The aseptic manipulation competency
+evaluation consists of a visual observation, media-«ll testing, followed by a gloved «nger tip and thumb sampling on both hands, and
+surface sampling of the direct compounding area to assess aseptic technique and related practices (see Box 2).
+For personnel compounding Category 1 and Category 2 CSPs, the aseptic manipulation competency must occur initially and at least
+every 6 months thereafter. For personnel compounding Category 3 CSPs, the aseptic manipulation competency must occur initially and at
+least every 3 months thereafter. Personnel who have direct oversight of compounding personnel must complete an aseptic manipulation
+competency evaluation annually. The evaluation should correspond to the type of activities of the personnel they oversee but does not
+require the same quantities. Personnel who have direct oversight of compounding personnel must not compound unless they
+successfully complete the aseptic manipulation competency evaluation that simulates the most di­cult and challenging aseptic
+compounding procedures encountered by the person at the same intervals required for compounding personnel.
+When performing a media-«ll test, simulate the most di­cult and challenging aseptic compounding procedures encountered by the
+person replacing all the components used in the CSPs with soybean–casein digest media. The simulation must capture elements that
+could potentially affect the sterility of the CSP including but not limited to:
+Factors associated with the length of the process that can pose contamination risk (e.g., operator fatigue, quality of equipment)
+Number of aseptic additions or transfers
+Number, type, and complexity of manipulations
+Number of personnel in the buffer room or SCA
+If using commercial sterile microbial growth media, a cer ti«cate of analysis (COA) must be obtained from the supplier stating that the
+lot of the growth media will suppor t the growth of microorganisms. Store microbial growth media in accordance with manufacturer
+instructions and initiate the media-«ll test by the expiration date of the media. If preparing sterile microbial growth media in-house for
+sterile-to-sterile media-«ll testing, the growth promotion capability of the media must be demonstrated for each batch and documented
+as described in Sterility Tests 〈71〉, Culture Media and Incubation Temperatures, Growth Promotion Test of Aerobes, Anaerobes, and Fungi.
+Failure is indicated by visible turbidity or other visual manifestations of growth in the media in one or more container closure unit(s) on
+or before the end of the incubation period. Microbial identi«cation of the cfu is not required for media-«ll testing.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 5 ===
+Gloved Finger tip and Thumb Sampling
+Action Levels
+(cfu, total from both hands)
+After garbing
+>0
+After media-«ll testing
+>3
+Immediately following the media-«ll test, gloved «nger tip and thumb sampling must be performed on both hands and inside of an ISO
+Class 5 PEC. If conducting gloved «nger tip and thumb sampling in a compounding aseptic isolator (CAI), compounding aseptic
+containment isolator (CACI), or a pharmaceutical isolator, samples must be taken from the sterile gloves placed over the gloves attached
+to the restricted-access barrier system (RABS) or pharmaceutical isolator sleeves.
+Successful completion of the gloved «nger tip and thumb sampling after media-«ll testing is de«ned as ≤3 cfu as a total from both
+hands. See Table 1 for action levels for gloved «nger tip and thumb sampling results. Microbial identi«cation of the cfu is not required for
+gloved «nger tip and thumb sampling.
+Surface sampling of the direct compounding area must occur in accordance with the requirements in 6.3 Monitoring Surfaces for Viable
+Par ticles. A failure in the media «ll, gloved «nger tip and thumb sampling, or surface sample constitutes an overall failure of the aseptic
+manipulation competency.
+Results of the evaluation and corrective actions must be documented and the documentation maintained to provide a record and long-
+term assessment of personnel competency. Documentation must at a minimum include 1) the name of the person evaluated, 2)
+evaluation date and time, 3) media and components used including their manufacturer or supplier, 4) expiration dates and lot numbers, 5)
+star ting temperature for each interval of incubation, 6) dates of incubation, 7) the results, and 8) the names or other identi«cation of the
+observer and the person who reads and documents the results.
+Box 2. Media-Fill Testing Procedures
+If all of the star ting components are sterile to begin with, manipulate them in a manner that simulates sterile-to-sterile
+compounding activities, and transfer the sterile soybean–casein digest media into the same types of container closure systems
+commonly used at the facility. Do not fur ther dilute the media unless speci«ed by the manufacturer.
+If some of the star ting components are nonsterile to begin with, dissolve a commercially available nonsterile soybean–casein
+digest powder in nonbacteriostatic water to make a 3% nonsterile solution. Manipulate it in a manner that simulates nonsterile-
+to-sterile compounding activities. Prepare at least 1 container as the positive control to demonstrate growth promotion, which
+is indicated by visible turbidity upon incubation.
+Once the compounding simulation is completed and the «nal containers are «lled with the test media, perform a gloved
+«nger tip and thumb sample on each hand and surface sample of the direct compounding area inside the PEC. Take the
+samples prior to disinfecting gloves and PEC. Handle and store samples to avoid contamination and prevent condensate from
+dropping onto the agar during incubation and affecting the accuracy of the cfu reading (e.g., inver t containers).
+Incubate the «nal containers at 20°–25° and 30°–35° for a minimum of 7 days at each temperature band to detect a broad
+spectrum of microorganisms. The order of the incubation temperatures must be described in the facility’s SOPs. Final
+containers must be incubated in an incubator.
+Failure is indicated by visible turbidity or other visual manifestations of growth in the media in one or more container closure
+unit(s) on or before 14 days.
+T
+able 1. Action Levels for Gloved Finger tip and Thumb Sampling
+a
+a
+Action levels are based on the total cfu count from both hands.
+T
+able 2. Initial Training and Competency
+Personnel Function
+De«ned by Facility
+SOPs
+Required in 〈797〉 and Supplemented by Facility SOPs
+Training and
+Competency in
+Maintaining the
+Quality of the Sterile
+Compounding
+Environment
+Training and
+Competency in
+Sterile
+Compounding
+Principles and
+Practices
+Garbing
+Competency
+(Including GFT)
+Media Fill with
+Post-GFT and
+Surface Sampling
+Compounder
+X
+X
+X
+X
+Designated person
+and personnel with
+X
+X
+X
+X
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 6 ===
+Personnel Function
+De«ned by Facility
+SOPs
+Required in 〈797〉 and Supplemented by Facility SOPs
+Training and
+Competency in
+Maintaining the
+Quality of the Sterile
+Compounding
+Environment
+Training and
+Competency in
+Sterile
+Compounding
+Principles and
+Practices
+Garbing
+Competency
+(Including GFT)
+Media Fill with
+Post-GFT and
+Surface Sampling
+direct oversight of
+compounding
+personnel
+Personnel who
+restock or clean
+and disinfect the
+sterile
+compounding
+area
+a
+X
+Personnel who
+perform in-process
+checks or «nal
+veri«cation of
+CSPs
+a
+X
+Personnel who only
+compound
+immediate-use
+CSPs
+X
+Others (e.g.,
+maintenance
+personnel,
+cer ti«ers,
+contractors,
+inspectors,
+surveyors)
+a
+X
+a
+Personnel who do not compound nor have direct oversight of compounding personnel.
+T
+able 3. Ongoing Training and Competency
+Personnel Function
+De«ned by Facility SOPs
+Required 〈797〉 and Supplemented by Facility SOPs
+Training and Competency
+in Sterile Compounding
+Principles and Practices
+Garbing Competency
+(Including GFT)
+Media Fill with Post-GFT
+and Surface Sampling
+Compounder
+At least every 12
+months
+Category 1 and 2 at
+least every 6 months
+Category 3 at least
+every 3 months
+Category 1 and 2 at
+least every 6 months
+Category 3 at least
+every 3 months
+Designated person and
+personnel with direct
+oversight of
+compounding personnel
+At least every 12
+months unless
+compounding
+a
+At least every 12
+months unless
+compounding
+a
+At least every 12
+months unless
+compounding
+a
+Personnel who restock
+or clean and disinfect
+X
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 7 ===
+Personnel Function
+De«ned by Facility SOPs
+Required 〈797〉 and Supplemented by Facility SOPs
+Training and Competency
+in Sterile Compounding
+Principles and Practices
+Garbing Competency
+(Including GFT)
+Media Fill with Post-GFT
+and Surface Sampling
+the sterile compounding
+area
+b
+Personnel who perform
+in-process checks or
+«nal veri«cation of
+CSPs
+b
+X
+Personnel who only
+compound immediate-
+use CSPs
+X
+Others (e.g.,
+maintenance personnel,
+cer ti«ers, contractors,
+inspectors, surveyors)
+b
+X
+a
+If compounding, follow compounder requirements.
+b
+Personnel who do not compound or have direct oversight of compounding personnel.
+3. PERSONAL HYGIENE AND GARBING
+Personal hygiene and garbing are essential to maintain microbial control of the environment. Most microorganisms detected in
+cleanrooms are transferred from individuals. Squamous cells are normally shed from the human body at a rate of 10
+ or more per hour,
+and those skin par ticles are covered with microorganisms. Individuals entering a compounding area must be properly garbed and must
+maintain proper personal hygiene to minimize the risk of contamination to the environment and/or CSPs.
+Individuals that may have a higher risk of contaminating the CSP and the environment (e.g., personnel with rashes, recent tattoos,
+oozing sores, conjunctivitis, or active respiratory infections) must repor t these conditions to the designated person(s). The designated
+person(s) is responsible for evaluating whether these individuals should be excluded from working in compounding areas before their
+conditions have resolved because of the risk of contaminating the CSPs and the environment.
+
+### 3.1 Personnel Preparation
+
+All personnel entering a compounding area where Category 1, Category 2, or Category 3 CSPs are prepared must take appropriate
+steps to minimize microbial contamination of the environment and of the CSPs, including hand hygiene (see 3.2 Hand Hygiene), garbing
+(see 3.3 Garbing Requirements), and consideration of needed materials to be brought into the compounding area.
+Food (including mints, gum, etc.) and drinks must not enter anterooms, buffer rooms, or segregated compounding areas.
+Before entering a compounding area, individuals must remove any items that are not easily cleanable or are not necessary for
+compounding. At a minimum, individuals must:
+Remove personal outer garments (e.g., bandanas, coats, hats, jackets, sweaters, vests)
+Remove all cosmetics because they shed ¬akes and par ticles
+Remove all hand, wrist, and other exposed jewelry, including piercings that could interfere with the effectiveness of garbing (e.g.,
+the «t of gloves, cuffs of sleeves, and eye protection) or otherwise increase the risk of contamination of the CSP
+. Cover any jewelry
+that cannot be removed.
+Not wear earbuds or headphones
+Not bring electronic devices that are not necessary for compounding or other required tasks into the compounding area
+Keep nails clean and neatly trimmed to minimize par ticle shedding and avoid glove punctures. Nail products (e.g., polish, ar ti«cial
+nails, and extenders) must not be worn
+Wipe eyeglasses, if worn
+The designated person(s) may permit accommodations to personnel preparation as long as the quality of the CSP and environment will
+not be affected. Accommodations must be documented.
+
+### 3.2 Hand Hygiene
+
+Any person entering a compounding area where Category 1, Category 2, or Category 3 CSPs are prepared must wash hands and
+forearms up to the elbows with soap and water before initiating compounding activities. Brushes must not be used for hand hygiene.
+Hand dryers must not be used. To minimize the risk of extrinsic contamination, disposable soap containers must not be re«lled or topped
+off.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 8 ===
+Box 3. Hand Washing Procedures
+Clean underneath «ngernails under warm running water using a disposable nail cleaner.
+Wash hands and forearms up to the elbows with soap and water for at least 30 s.
+Dry hands and forearms up to the elbows completely with low-lint disposable towels or wipers.
+The order of hand washing and garbing depends on the placement of the sink (see 4.4 Water Sources). The order of garbing must be
+determined by the facility and documented in the facility’s SOPs. Hands must be sanitized with alcohol-based hand rub before donning
+sterile gloves (see Box 4). Sterile gloves must be donned in a classi«ed room or SCA.
+Box 4. Hand Sanitizing Procedures
+Apply an alcohol-based hand rub to dry skin.
+Apply product to one hand and rub hands together, covering all surfaces of hands and «ngers, until hands are dry.
+Allow hands to dry thoroughly before donning sterile gloves.
+
+### 3.3 Garbing Requirements
+
+Any person entering a compounding area where Category 1, Category 2, or Category 3 CSPs are prepared must be properly garbed.
+Garb must be donned and doffed in an order that reduces the risk of contamination. The required garb, manner of storage, and order of
+garbing must be determined by the facility and documented in the facility’s SOPs. When preparing Category 2 or Category 3 CSPs, all garb
+should be donned in a classi«ed area before entering the buffer room. If hand hygiene is completed outside of a classi«ed area, alcohol-
+based hand rub must be used prior to donning garb. Skin must not be exposed inside the ISO Class 5 PEC (e.g., gloves must not be
+donned or doffed inside the ISO Class 5 PEC exposing bare hands). Donning and do­ng garb should not occur in the same area at the
+same time. The minimum garbing requirements for preparing Category 1 and Category 2 CSPs include the following:
+Low-lint garment with sleeves that «t snugly around the wrists and an enclosed neck (e.g., gown or coverall)
+Low-lint covers for shoes
+Low-lint cover for head that covers the hair and ears, and if applicable, cover for facial hair
+Low-lint face mask
+Sterile powder-free gloves
+If using a RABS (i.e., a CAI or CACI), disposable gloves should be worn inside the gloves attached to the RABS sleeves. Sterile
+gloves must be worn over the gloves attached to the RABS sleeve
+Garb must be replaced immediately if it becomes visibly soiled or if its integrity is compromised. Gowns and other garb must be stored
+in a manner that minimizes contamination (e.g., away from sinks to avoid splashing). If compounding Category 1 and Category 2 CSPs,
+gowns may be reused within the same shift by the same person if the gown is maintained in a classi«ed area or adjacent to, or within, the
+SCA in a manner that prevents contamination. When personnel exit the compounding area, garb, except for gowns, cannot be reused and
+must be discarded or laundered before reuse. The facility's SOPs must describe disinfection procedures for reusing goggles, respirators,
+and other reusable equipment.
+If the facility compounds Category 3 CSPs, additional garbing requirements must be continuously met in the buffer room in which
+Category 3 CSPs are prepared. The following additional garbing requirements must be followed in the buffer room where Category 3
+CSPs are prepared for all personnel regardless of whether Category 3 CSPs are compounded on a given day:
+1. Do not allow any exposed skin in the buffer room (i.e., face and neck must be covered).
+2. All low-lint outer garb must be sterile, including the use of sterile sleeves over gauntlet sleeves when a RABS is used.
+3. Disposable garbing items must not be reused, and laundered garb must not be reused without being laundered and resterilized with a
+validated cycle.
+4. The facility’s SOPs must describe disinfection procedures for reusing goggles, respirators, and other reusable equipment.
+If compounding an HD, appropriate personal protective equipment (PPE) must be worn and disposed of in accordance with 〈800〉.
+Gloves:
+Gloves must be sterile and powder free. Application of sterile 70% IPA to gloves must occur immediately before compounding and
+regularly throughout the compounding process.
+All gloves must be inspected for holes, punctures, or tears and must be replaced immediately if such defects are detected.
+The RABS sleeves and gloves and the pharmaceutical isolator sleeves and gloves should be changed per the manufacturer’s
+recommendations and as de«ned in the facility’s SOPs.
+4. F
+ACILITIES AND ENGINEERING CONTROLS
+Sterile compounding facilities must be designed, out«tted, and maintained properly to minimize the risk of contamination of CSPs. The
+required air quality must be achieved and maintained through PECs and secondary engineering controls (SECs). The anteroom, buffer
+room, and SCA must be separated from areas not directly related to compounding. The anteroom and buffer room must be appropriately
+controlled to achieve and maintain the required air quality classi«cations. The design of the facility should take into account the number
+of personnel and their movements, and the impact the placement of equipment, supplies, and components could have on the
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 9 ===
+ISO Class
+Par ticle Count per Cubic Meter
+b
+35.2
+3520
+35,200
+352,000
+3,520,000
+maintenance of air quality. The number of operations being performed, the equipment (e.g., PECs, car ts, computers), the personnel in the
+compounding area (and in adjacent areas), and the complexity of the compounding procedures are critical considerations for maintaining
+control of environmental conditions in the facility.
+
+### 4.1 Protection from Airborne Contaminants
+
+Sterile compounding facilities must be designed to minimize the risk of airborne contamination of the area in which sterile
+compounding occurs. Proper design and controls are required to minimize the risk of exposure of CSPs to airborne contaminants.
+
+#### 4.1.1 Air quality standards:
+
+The ISO standards for air quality in controlled environments are provided in Table 4 and referenced throughout
+this chapter.
+T
+able 4. ISO Classi«cation of Par ticulate Matter in Room Air
+a
+a
+Adapted from ISO 14644-1, Cleanrooms and associated controlled environments—Par t 1: Classi«cation of air cleanliness by par ticle
+concentration.
+b
+Limits for number of par ticles ≥0.5 µm measured under dynamic operating conditions.
+
+#### 4.1.2 Design requirements to maintain air quality:
+
+Facilities used for compounding CSPs must be designed so that air quality improves
+with movement through separate operational areas to the PEC. Classi«ed areas in which the air quality is controlled (see Table 4) include
+anterooms, buffer rooms, and PECs.
+Anterooms providing access only to positive-pressure buffer rooms must meet at least ISO Class 8 classi«cation. Anterooms
+providing access to negative-pressure buffer rooms must meet at least ISO Class 7 classi«cation (see 〈800〉). Typically, personnel
+hand hygiene and garbing procedures, staging of components, and other activities that potentially generate higher levels of
+par ticulates are performed in the anteroom. Anterooms are also transition areas to ensure that proper air classi«cation and
+pressure relationships are maintained between classi«ed and unclassi«ed areas.
+A buffer room must meet at least ISO Class 7 air quality. Activities in the buffer room must be controlled to minimize any effects on
+air quality in the area where CSPs are prepared.
+Category 1, Category 2, and Category 3 CSPs must be compounded in an ISO Class 5 or better PEC. If compounding only Category 1
+CSPs, the PEC may be placed in an unclassi«ed SCA.
+
+### 4.2 Facility Design and Environmental Controls
+
+In addition to minimizing airborne contamination, sterile compounding facilities must be designed and controlled to provide a well-
+lighted and comfor table working environment (see Physical Environments That Promote Safe Medication Use 〈1066〉). The cleanroom suite
+should be maintained at a temperature of 20° or cooler and a relative humidity of 60% or below to minimize the risk of microbial
+proliferation and to provide comfor table conditions for compounding personnel attired in the required garb. The temperature and humidity
+must be monitored in each room of the cleanroom suite each day that compounding is performed, either manually or by a continuous
+recording device. The results of the temperature and humidity readings must be documented at least once daily or stored in the
+continuous recording device and must be retrievable. The temperature and humidity readings must be reviewed as described in the
+facility’s SOPs. Temperature and humidity in the cleanroom suite must be controlled through a heating, ventilation, and air conditioning
+(HVAC) system. Free-standing air conditioners, humidi«ers, and dehumidi«ers must not be used within the classi«ed area or the SCA.
+Temperature and humidity monitoring devices must be veri«ed for accuracy at least every 12 months or as required by the manufacturer.
+The designated person(s) is responsible for ensuring that each area related to CSP preparation meets the classi«ed air quality standard
+appropriate for the activities to be conducted in that area. The designated person(s) must also ensure that the ISO Class 5 areas are
+located, operated, maintained, monitored, and cer ti«ed to have appropriate air quality.
+
+#### 4.2.1 Types of SECs and design:
+
+ The PEC must be located in the buffer room of the cleanroom suite or the SCA in a manner that
+minimizes conditions that could increase the risk of microbial contamination. For example, strong air currents from opened doors,
+personnel tra­c, or air streams from the HVAC system(s) can disrupt the unidirectional air¬ow of an open-faced PEC such as a laminar
+air¬ow workbench (LAFW). Access to the SEC must be restricted to authorized personnel and required materials.
+Cleanroom suite:
+The ISO-classi«ed anteroom and buffer room must be separated from the surrounding unclassi«ed areas of the facility
+by «xed walls and doors, and controls must be in place to minimize the ¬ow of lower-quality air into the more controlled areas. The
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 10 ===
+classi«ed rooms must be equipped with a pressure-differential monitoring system. Air supplied to the cleanroom suite must be
+introduced through HEPA «lters that are located in the ceiling of the buffer room and anteroom.
+Air returns in the cleanroom suite must be low on the wall unless a visual smoke study demonstrates an absence of stagnant
+air¬ow. This smoke study along with environmental monitoring must be repeated whenever a change is made to the placement of
+equipment within the room or any other alteration is performed within the cleanroom suite that affects the quality of the air (e.g.,
+HVAC alterations, change of HEPA «lter units).
+The anteroom must have a line of demarcation to separate the clean side from the dir ty side. The anteroom is entered through the
+dir ty side, and the clean side is the area closest to the buffer room. Alternatively, facilities may be designed with two separate
+anterooms—a dir ty anteroom and a clean anteroom. The anteroom is entered through the dir ty anteroom, and the clean anteroom is
+the area closest to the buffer room.
+It is also critical to control materials (e.g., supplies and equipment) as they move from classi«ed areas of lower quality to those of
+higher quality (e.g., from an ISO Class 8 anteroom to an ISO Class 7 buffer room to an ISO Class 5 PEC) to minimize the in¬ux of
+contaminants. Airlocks and interlocking doors may be used to facilitate better control of air balance between areas of differing ISO
+classi«cation (e.g., between the buffer room and anteroom) or between a classi«ed area and an unclassi«ed area (e.g., between the
+anteroom and a hallway). If a pass-through chamber is used, both doors must never be opened at the same time, and doors should be
+interlocking.
+Due to the interdependence of the various rooms or areas that make up a sterile compounding facility, it is essential to carefully
+de«ne and control the dynamic interactions permitted between areas and rooms. Consider the placement of door closures, door
+surfaces, and the movement of the doors, all of which can affect air¬ow. Seals and sweeps should not be installed at doors between
+buffer rooms and anterooms. Access doors should be hands-free. Tacky mats must not be placed within ISO-classi«ed areas. If
+compounding both sterile and nonsterile preparations (e.g., presterilization procedures), the respective PECs must be placed in
+separate rooms unless those PECs are su­ciently effective that the room can continuously maintain ISO Class 7 classi«cation. If the
+PECs used for sterile and nonsterile compounding are placed in the same room, they must be placed at least 1 m apar t, and par ticle-
+generating activity must not be performed when sterile compounding is in process.
+Segregated compounding area (SCA):
+A PEC may be located within an unclassi«ed area without an anteroom or buffer room. This type of
+design is called an SCA. Only Category 1 CSPs may be compounded in an SCA. The SCA must be located away from unsealed windows,
+doors that connect to the outdoors, and tra­c ¬ow, all of which may adversely affect the air quality in the PEC. An SCA must not be
+located where environmental control challenges (e.g., restrooms, warehouses, or food preparation areas) could negatively affect the air
+quality of the PEC within the SCA. The impact of activities (e.g., patient care activities) that will be conducted around or adjacent to the
+SCA must be considered carefully when designing such an area. The area within 1 m of the PEC should be dedicated only for sterile
+compounding (e.g., not storage, hand hygiene, donning and do­ng garb, or other highly par ticle-generating activities such as patient
+care).
+
+#### 4.2.2 The CSP compounding environment:
+
+The PEC must be cer ti«ed to meet ISO Class 5 or better conditions (see Table 4) during dynamic
+operating conditions and must be designed to minimize the risk of contamination during compounding of CSPs.
+Unidirectional air¬ow must be maintained in the PEC. HEPA-«ltered air must be supplied by the PEC at a velocity su­cient to sweep
+par ticles away from critical sites and maintain unidirectional air¬ow during operations. Proper design, control, and use minimizes
+turbulence and creation of eddies or stagnant air in the PEC.
+
+#### 4.2.3 Types of PECs and placement:
+
+Proper placement of the PEC is critical to ensuring an ISO Class 5 environment for preparing CSPs.
+Placement of the PEC must allow for cleaning around the PEC. See Table 5 for a summary of minimum requirements for the placement of
+PECs for preparing non-HD CSPs.
+Types of PECs and their placement include the following:
+Laminar air¬ow system (LAFS):
+An LAFS provides an ISO Class 5 or better environment for sterile compounding. The LAFS provides
+unidirectional HEPA-«ltered air¬ow that is designed to minimize the risk of contamination of a sterile compounding environment. The
+unidirectional air¬ow within the LAFS helps protect the direct compounding area (DCA) from process-generated contamination (e.g.,
+opening wrappings of sterile containers, compounder movement) as well as from outside sources.
+Types of LAFS and their placement include the following:
+Laminar air¬ow workbench (LAFW):
+An LAFW is a device that provides an ISO Class 5 or better environment for sterile compounding.
+The LAFW provides either horizontal or ver tical unidirectional HEPA-«ltered air¬ow. [Note—An LAFW must not be used for preparation
+of antineoplastic and/or active pharmaceutical ingredient (API) HDs (see 〈800〉).]
+Integrated ver tical laminar ¬ow zone (IVLFZ):
+An IVLFZ is a designated ISO Class 5 area serving as the PEC within an ISO Class 7 or
+cleaner buffer room. In the IVLFZ, unidirectional air¬ow is created by placing HEPA «lters over the entire surface of the worktables and
+by effective placement of air returns. The unidirectional HEPA-«ltered zone must be separated from the ISO Class 7 area with a
+physical barrier to direct the air¬ow downward over the work area to separate the DCA from potential sources of contamination.
+Strategic location of air returns in addition to full coverage of HEPA «lters above the work surface is required. Both static and dynamic
+smoke studies verifying a continuous ¬ow of HEPA-«ltered air void of turbulence, dead air zones, and re¬uxing from the HEPA «lters to
+and across the entire work area and to the air returns must be documented (e.g., with video).
+[Note—Dynamic air¬ow smoke pattern
+tests have shown that it is di­cult to achieve this type of design and also achieve and maintain unidirectional air¬ow under dynamic
+operating conditions.]
+[Note—An IVLFZ must not be used for preparation of antineoplastic and/or API HDs (see 〈800〉).]
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 11 ===
+Class II biological safety cabinet (BSC):
+A Class II BSC is a ventilated cabinet with an open front and inward and downward
+unidirectional HEPA-«ltered air¬ow and HEPA-«ltered exhaust. The BSC is designed to provide worker protection from exposure to
+airborne drugs and to provide an ISO Class 5 or better environment for preparing CSPs. [Note—The exhaust air from the BSC must be
+externally vented for preparation of antineoplastic and/or API HDs (see 〈800〉).]
+Placement of LAFS:
+The LAFS must be located out of tra­c patterns and away from room air currents that could disrupt the intended
+air¬ow patterns inside the PEC. If used to prepare only Category 1 CSPs, the ISO Class 5 PEC may be located in an unclassi«ed SCA. If
+used to prepare Category 2 or Category 3 CSPs, the LAFS must be located within a cleanroom suite with an ISO Class 7 or better buffer
+room with an ISO Class 8 or better anteroom. A dynamic air¬ow smoke pattern test must be performed in the PEC initially and at least
+every 6 months to ensure that 1) the LAFS is properly placed into the facility and 2) compounders understand how to utilize the
+unidirectional air¬ow to maintain «rst air in the DCA.
+Restricted-access barrier system (RABS):
+A RABS is an enclosure that provides HEPA-«ltered ISO Class 5 unidirectional air. It allows for
+the ingress and/or egress of materials through de«ned openings that have been designed and validated to preclude the transfer of
+environmental air contamination and are generally not to be opened during compounding operations. RABS include compounding
+aseptic isolators (CAIs) and compounding aseptic containment isolators (CACIs). In a CAI or CACI, glove por ts are used to provide
+physical separation between the surrounding area and the aseptic manipulations.
+Compounding aseptic isolator:
+A CAI is designed for compounding non-HD CSPs. It is designed to maintain an ISO Class 5 environment
+throughout the compounding and material transfer processes. Air exchange into the CAI from the surrounding environment must not
+occur unless the air has «rst passed through a HEPA «lter. [Note—A CAI must not be used for preparation of antineoplastic and/or API
+HDs (see 〈800〉).]
+Compounding aseptic containment isolator:
+A CACI is designed to provide worker protection from exposure to undesirable levels of
+airborne drug throughout the compounding and material transfer processes and to maintain an ISO Class 5 environment for
+compounding sterile HD preparations (see 〈800〉).
+Placement of RABS:
+If used to prepare only Category 1 CSPs, the ISO Class 5 environment may be achieved by placing the RABS in an
+unclassi«ed SCA. If used to prepare Category 2 or Category 3 CSPs, the RABS must be located within a cleanroom suite with an ISO
+Class 7 or better buffer room with an ISO Class 8 or better anteroom. For placement of a CACI used for the preparation of
+antineoplastic and/or API HDs, see 〈800〉.
+When a RABS is used, the recovery time after opening the transfer chamber to achieve ISO Class 5 air quality must be documented
+(e.g., by the manufacturer), and internal procedures must be developed to ensure that adequate recovery time is allowed after
+opening and closing the RABS, both before and during compounding operations. A dynamic air¬ow smoke pattern test must be
+performed in the PEC under dynamic operating conditions initially and at least every 6 months to ensure that 1) the RABS is properly
+integrated into the facility and 2) compounders understand how to utilize the unidirectional air¬ow to maintain «rst air in the DCA.
+Pharmaceutical isolator:
+A pharmaceutical isolator provides isolation from the surrounding area and maintains ISO Class 5 air quality
+during dynamic operating conditions. [Note—A CAI or CACI is not a pharmaceutical isolator.] A pharmaceutical isolator comprises four
+elements:
+1. Controlled workspace
+2. Transfer device(s)
+3. Access device(s)
+4. Integral decontamination system
+Placement of pharmaceutical isolators:
+A pharmaceutical isolator used to prepare only Category 1 CSPs can be placed in an
+unclassi«ed SCA. If the pharmaceutical isolator is used to prepare Category 2 or Category 3 CSPs, the pharmaceutical isolator must be
+placed in an ISO Class 8 or better room. [Note—An anteroom is not required when using a pharmaceutical isolator.] A dynamic air¬ow
+smoke pattern test must be performed in the PEC initially and at least every 6 months to ensure that 1) the pharmaceutical isolator is
+properly placed in the facility and 2) compounders understand how to utilize the unidirectional air¬ow to maintain «rst air in the work
+zone.
+T
+able 5. Summary of Minimum Requirements for Placement of PECs for Compounding Non-HD CSPs
+a
+PEC Type
+Device Type
+Placement for
+Compounding Only
+Category 1 CSPs
+Placement for
+Compounding Category 2
+and 3 CSPs
+LAFS
+LAFW
+Unclassi«ed SCA
+ISO Class 7 positive-
+pressure buffer room with
+an ISO Class 8 positive-
+pressure anteroom
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 12 ===
+Compounding Area
+ACPH Requirement
+Unclassi«ed SCA
+No requirement
+ISO Class 7 room(s)
+≥30 ACPH
+IVLFZ
+N/A
+b
+ISO Class 7 positive-
+pressure buffer room with
+an ISO Class 8 positive-
+pressure anteroom
+BSC
+Unclassi«ed SCA
+ISO Class 7 positive-
+pressure buffer room with
+an ISO Class 8 positive-
+pressure anteroom
+RABS
+CAI or CACI
+Unclassi«ed SCA
+ISO Class 7 positive-
+pressure buffer room with
+an ISO Class 8 positive-
+pressure anteroom
+Pharmaceutical isolator
+Pharmaceutical isolator
+Unclassi«ed SCA
+ISO Class 8 positive-
+pressure room
+a
+For compounding HDs, see 〈800〉.
+b
+An IVLFZ must not be used in an unclassi«ed area.
+If a robotic enclosure is used as the PEC, or placed within the PEC, a dynamic air¬ow smoke pattern test must be performed
+initially and at least every 6 months thereafter to ensure that 1) it is properly integrated into the facility, 2) there is no turbulence or
+re¬uxing at any critical site(s), 3) room air does not enter the PEC where sterile products and/or preparations may be exposed, and
+4) all processes can be performed without introducing contamination to the DCA(s).
+
+#### 4.2.4 Air exchange requirements:
+
+For cleanroom suites, adequate HEPA-«ltered air¬ow to the buffer room(s) and anteroom(s) is required
+to maintain the appropriate ISO classi«cation during compounding activities. Air¬ow is measured in terms of the number of air changes
+per hour (ACPH). The ACPH may need to be higher to maintain the required ISO classi«cation and microbial state of control depending on
+the following factors:
+Number of personnel permitted to work in the area
+Number of par ticles that may be generated from activities and processes in the area
+Equipment located in the room
+Room pressure
+See Table 6 for a summary of ACPH requirements for non-HD sterile compounding areas. Additional ACPH requirements include:
+A minimum of 30 total HEPA-«ltered ACPH must be supplied to ISO Class 7 rooms:
+The total HEPA-«ltered air change rate must be adequate to maintain ISO Class 7 during dynamic operating conditions
+considering the factors listed above
+At least 15 ACPH of the total air change rate in a room must come from the HVAC through HEPA «lters located in the ceiling
+The HEPA-«ltered air from the PEC, when added to the HVAC-supplied HEPA-«ltered air, must increase the total HEPA-«ltered
+ACPH to at least 30 ACPH
+If the PEC is used to meet the minimum total ACPH requirements, the PEC must not be turned off except for maintenance
+Rooms where activity levels are high may require more HEPA-«ltered ACPH to maintain ISO Class 7 air quality under dynamic
+operating conditions
+The ACPH from HVAC, ACPH contributed from the PEC, and the total ACPH must be documented on the cer ti«cation repor t
+A minimum of 20 total HEPA-«ltered ACPH must be supplied to ISO Class 8 rooms:
+The total HEPA-«ltered air change rate must be adequate to maintain ISO Class 8 under dynamic operating conditions
+considering the factors listed above
+At least 15 ACPH of the total air change rate in a room must come from the HVAC through HEPA «lters located in the ceiling
+Rooms where activity levels are high may require more HEPA-«ltered ACPH to maintain ISO Class 8 air quality under dynamic
+operating conditions
+The total ACPH must be documented on the cer ti«cation repor t
+T
+able 6. Summary of ACPH Requirements for Non-HD Sterile Compounding Areas
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 13 ===
+Compounding Area
+ACPH Requirement
+ISO Class 8 room(s)
+≥20 ACPH
+
+#### 4.2.5 Establishing and maintaining pressure differentials:
+
+Continuous differential positive pressure is required to minimize air¬ow from an
+area with lower air-quality classi«cation to an area of higher air-quality classi«cation. In a cleanroom suite, a minimum differential positive
+pressure of 0.020-inch water column is required between adjacent ISO-classi«ed areas (e.g., between the buffer room and anteroom). The
+pressure differential between the anteroom and the unclassi«ed area must not be less than 0.020-inch water column. No pressure
+differential is required between the SCA and the surrounding area. See 〈800〉 for pressure requirements for compounding HD CSPs.
+Where pressure differentials are required, a pressure differential monitoring device must be used to continuously monitor the pressure
+differentials. The quantitative results from the pressure monitoring device must be reviewed and documented at least daily on the days
+when compounding is occurring.
+
+#### 4.2.6 Facilities preparing Category 2 or Category 3 CSPs from nonsterile star ting components:
+
+Weighing, measuring, or otherwise
+manipulating components could generate airborne chemical par ticles (e.g., API or added substances). If preparing Category 2 or Category
+3 CSP from nonsterile component(s), presterilization procedures, such as weighing and mixing, must be completed in an ISO Class 8 or
+better environment (e.g., anteroom or buffer room). Presterilization procedures must be performed in single-use containment glove bags,
+containment ventilated enclosures (CVEs), BSCs, or CACIs to minimize the risk of airborne contamination. CVEs, BSCs, or CACIs used for
+presterilization procedures must be cer ti«ed at least every 6 months.
+Presterilization procedures must not adversely affect the required air quality of the SEC as demonstrated during cer ti«cation under
+dynamic operating conditions. Personnel must follow the hygiene and garbing requirements as described in 3. Personal Hygiene and
+Garbing during presterilization procedures.
+
+### 4.3 Creating Areas to Achieve Easily Cleanable Conditions
+
+#### 4.3.1 Cleanroom suite:
+
+The surfaces of ceilings, walls, ¬oors, doors, door frames, «xtures, shelving, work surfaces, counters, and cabinets
+in the classi«ed area must be smooth, impervious, free from cracks and crevices, and nonshedding so they can be cleaned and disinfected
+and to minimize spaces in which microorganisms and other contaminants can accumulate. Surfaces should be resistant to damage (e.g.,
+rust) by cleaning agents, sporicidal and other types of disinfectants, and tools used to clean. Junctures between the ceiling and the walls
+and between the walls and the ¬oor must be sealed to eliminate cracks and crevices where dir t can accumulate. If ceilings consist of
+inlaid panels, the panels must be caulked around each panel to seal them to the suppor t frame.
+Walls must be constructed of, or may be covered with, durable material (e.g., epoxy painted walls or heavy-gauge polymer) and the
+integrity of the surface must be maintained. Panels must be joined together and sealed to each other and the suppor t structure. Floors
+must include coving to the sidewall, or the juncture between the ¬oor and the wall must be caulked. Classi«ed areas should minimize
+dust-collecting overhangs, such as utility pipes, and ledges, such as windowsills. If overhangs or ledges are present, they must be easily
+cleanable. The exterior lens surface of ceiling light «xtures must be smooth, mounted ¬ush, and sealed. Any other penetrations through
+the ceiling or walls must be sealed.
+
+#### 4.3.2 SCA:
+
+The SCA and all surfaces (e.g., walls, ¬oors, counters, and equipment) in the SCA must be clean, uncluttered, and dedicated to
+compounding. Surfaces in the SCA should be smooth, impervious, free from cracks and crevices, and non-shedding so they can be easily
+cleaned and disinfected and to minimize spaces in which microorganisms and other contaminants can accumulate. Surfaces should be
+resistant to damage (e.g., rust) by cleaning agents, sporicidal and other types of disinfectants, and tools used to clean. Dust-collecting
+overhangs, such as utility pipes, and ledges, such as windowsills, should be minimized. If overhangs or ledges are present, they must be
+easily cleanable.
+
+### 4.4 Water Sources
+
+The facility where CSPs are prepared must be designed so that activities such as hand hygiene and garbing will not adversely affect the
+ability of the PEC to function as designed. Sinks should enable hands-free use. Surfaces of the sink(s) must be cleaned and disinfected
+each day of use, and a sporicidal disinfectant must be applied at least monthly (see 7.1 Agents and Supplies for Cleaning, Disinfecting, and
+Applying Sporicidal Disinfectants).
+In facilities with a cleanroom suite, the sink used for hand hygiene may be placed either inside or outside of the anteroom. If the sink is
+located outside of the anteroom, it must be located in a clean space to minimize the risk of bringing contaminants into the anteroom. If
+the sink is located inside the anteroom, it may be placed on either the clean side or the dir ty side of the anteroom. [Note—The order of
+hand washing and garbing depends on the placement of the sink (see 3.2 Hand Hygiene and 3.3 Garbing Requirements)]. The buffer room
+must not contain plumbed water sources [e.g., sink(s), eyewash(es), shower(s), or ¬oor drain(s)]. The anteroom must not contain ¬oor
+drain(s). If installed, sprinkler systems should be recessed and covered, and the covers should be easily cleanable.
+In a facility with an SCA design, a hand-washing sink must be placed not closer than 1 m to the PEC and may be either inside the SCA
+or in close proximity to the SCA.
+
+### 4.5 Placement and Movement of Materials
+
+Only furniture, equipment, and other materials necessary for performing compounding activities are permitted in a classi«ed area or
+SCA, and they should be low-shedding and easily cleaned and disinfected. Their number, design, location, and manner of installation must
+not impact environmental air quality and must promote effective cleaning and disinfecting. No shipping car ton(s) or other corrugated or
+uncoated cardboard are allowed in a classi«ed area or SCA.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 14 ===
+Car ts used to transpor t components or equipment into classi«ed areas must be constructed from nonporous materials with cleanable
+casters and wheels to promote mobility and ensure ease of cleaning and disinfection. In a cleanroom suite, car ts must not be moved
+from the dir ty side to the clean side of the anteroom unless the entire car t, including casters, is cleaned and disinfected.
+Only equipment necessary for performing compounding activities is permitted in the PEC. Proper placement of equipment in a PEC
+must be initially veri«ed by a dynamic air¬ow smoke pattern test to demonstrate minimal disruption in air¬ow. The dynamic air¬ow
+smoke pattern test must be repeated if equipment is placed in a different location. Equipment and other items used in a classi«ed area or
+SCA should not be removed except for calibration, servicing, cleaning, or other activities associated with maintenance. If removed, these
+items must be cleaned and wiped with sterile 70% IPA or a suitable disinfectant before they are returned to the classi«ed area or the SCA.
+Materials necessary for performing compounding activities that have been exposed in patient care and treatment areas must not enter
+anterooms, buffer rooms, or segregated compounding areas unless thoroughly cleaned and disinfected. The designated person(s) is
+responsible for addressing other areas of risk in the facility’s SOPs. The designated person(s) may permit accommodations as long as
+the quality of the CSP and environment will not be affected. Accommodations must be documented.
+5. CERTIFICATION AND RECERTIFICATION
+Before a compounding area is used to compound either Category 1, Category 2, or Category 3 CSPs, it must be independently cer ti«ed
+using the requirements in this chapter and when applicable, manufacturer speci«cations. Cer ti«cation indicates that the compounding
+area is meeting its design and air quality speci«cations (see Table 4).
+Cer ti«cation of the classi«ed areas including the PEC must be performed initially, and recer ti«cation must be performed at least every 6
+months and must include:
+Air¬ow testing: Air¬ow testing is performed to determine acceptability of the air velocity, the room air exchange rate, and the room
+pressure differential in doorways between adjacent rooms to ensure consistent air¬ow and that the appropriate quality of air is
+maintained under dynamic operating conditions. The ACPH from HVAC, ACPH contributed from the PEC, and the total ACPH must
+be documented on the cer ti«cation repor t.
+HEPA «lter integrity testing: HEPA «lters must be leak tested at the factory and then leak tested again after installation and as par t
+of recer ti«cation.
+Total par ticle count testing: (See 5.1 Total Airborne Par ticle Sampling.) Total par ticle count testing must be performed under
+dynamic operating conditions using calibrated electronic equipment.
+Dynamic air¬ow smoke pattern test: Smoke pattern tests must be performed for each PEC during dynamic operating conditions to
+demonstrate unidirectional air¬ow and sweeping action over and away from the preparation(s).
+Classi«ed areas additionally must be recer ti«ed if there are changes to the area such as redesign, construction, replacement or
+relocation of any PEC, or alteration in the con«guration of the room that could affect air¬ow or air quality.
+All cer ti«cation and recer ti«cation records must be reviewed by the designated person(s) to ensure that the classi«ed environments
+meet the minimum requirements in this chapter. The number of personnel present in each PEC and SEC during total par ticle-count tests
+and dynamic air¬ow smoke-pattern tests must be documented. Records must be maintained in accordance with the requirements in 20.
+Documentation.
+A corrective action plan must be implemented and documented in response to any out-of-range results. Data collected in response to
+corrective actions must be reviewed to con«rm that the actions taken have been effective.
+
+### 5.1 T
+
+otal Airborne Par ticle Sampling
+The engineering control equipment function must function as designed to ensure that the levels of total airborne par ticles remain
+within acceptable limits during compounding (see Table 4). Total airborne par ticle count testing must be conducted in all classi«ed areas
+during dynamic operating conditions at least every 6 months to measure the performance of the engineering controls that are being used
+to provide the speci«ed levels of air cleanliness (e.g., in the ISO Class 5 PEC and ISO Class 7 and 8 rooms).
+Total airborne par ticle sampling sites must be selected in all classi«ed areas. Measurements of total airborne par ticles must be taken
+in each PEC at locations where there is greatest risk to the exposed CSPs, containers, and closures. When conducting sampling of the
+PEC, care should be taken to avoid disturbing the unidirectional air¬ow within the PEC. All sampling sites and procedures must be
+described in the facility’s SOPs. Measurements of total airborne par ticles in other classi«ed areas, including the buffer room(s) and
+anteroom(s), should be taken at representative locations that re¬ect the quality of air in the room(s).
+Data evaluation and action levels:
+If levels measured during the total air sampling program exceed the criteria in Table 4 for the ISO
+classi«cation of the area sampled, the cause must be investigated and corrective action taken and documented. Data collected in
+response to corrective actions must be reviewed to con«rm that the actions taken have been effective. Some examples of corrective
+action include process or facility improvements or HEPA «lter replacement or repair. The extent of the investigation should be consistent
+with the deviation and should include an evaluation of trends.
+6. MICROBIOLOGICAL AIR AND SURF
+ACE MONITORING
+An effective microbiological air and surface monitoring program provides information on the environmental quality of the compounding
+area. In addition, an effective microbiological air and surface monitoring program identi«es environmental quality trends over time,
+identi«es potential routes of contamination, and allows for implementation of corrective actions to minimize the risk of CSP
+contamination. Sterile compounding facilities must develop and implement written procedures for microbiological air and surface
+monitoring (see 17. SOPs). All microbiological air and surface monitoring procedures, the test results, and the corrective actions must be
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 15 ===
+documented, and the records must be maintained in accordance with the requirements in 20. Documentation. Data collected in response
+to corrective actions must be reviewed to con«rm that the actions taken have been effective.
+
+### 6.1 General Monitoring Requirements
+
+The microbiological air and surface monitoring program must include 1) viable impact volumetric airborne par ticulate sampling and 2)
+surface sampling. The goals of a microbiological air and surface monitoring program are to determine whether contamination is present
+at unacceptable levels and to assess whether proper personnel practices are being followed, cleaning and disinfecting agents are
+effective, and environmental quality is maintained.
+The microbiological air and surface monitoring program involves the collection and evaluation of samples from various air and surface
+locations to detect airborne and surface contaminants. The data from microbiological airborne and surface sampling are then used to
+assess risks for contamination, potential routes of contamination, and the adequacy of cleaning and disinfecting agents and procedures.
+Regular review of the sampling data must be performed to detect trends and the results of the review must be documented.
+In addition, results from microbiological air and surface sampling must be reviewed in conjunction with personnel data (i.e., training
+records, visual observations, competency assessments) to assess the state of control and to identify potential risks of contamination.
+Corrective action in response to any adverse «ndings is required to maintain the necessary environmental quality for preparation of CSPs.
+Data must also be reviewed following corrective actions to con«rm that the actions taken have been effective in achieving the required
+microbiological air and surface quality levels (see Table 4, Table 7, and Table 8).
+Microbiological air and surface monitoring must be performed initially for sterile compounding facilities to establish a baseline level of
+environmental quality. After initial sampling, the environment in which sterile compounding activities are performed must be monitored
+according to the minimum frequencies described in this section to ensure that the environment remains suitable for sterile compounding.
+Evaluating results collected over a period of time can be useful in identifying trends or determining that a signi«cant change has
+occurred, even when the results fall within the speci«ed levels.
+Microbiological air and/or surface monitoring must be conducted in all classi«ed areas during dynamic operating conditions to con«rm
+that the required environmental quality is maintained. In addition to the speci«c sampling frequencies described in this section, sampling
+must be performed in the following circumstances:
+In conjunction with the cer ti«cation of new facilities and equipment
+After any servicing of facilities or equipment (see 4. Facilities and Engineering Controls)
+In response to identi«ed problems (e.g., positive growth in sterility tests of CSPs)
+In response to identi«ed trends (e.g., repeated positive gloved «nger tip and thumb sampling results, failed media «ll testing, or
+repeated observations of air or surface contamination)
+In response to changes that could impact the sterile compounding environment (e.g., change in cleaning agents)
+The microbiological air and surface monitoring program must be clearly described in the facility’s SOPs, which must include a diagram
+of the sampling locations, procedures for collecting samples, frequency of sampling, size of samples (e.g., surface area, volume of air),
+time of day of sampling in relation to activities in the compounding area, and action levels that will trigger corrective action.
+The times and locations of sampling should be carefully selected based on their relationship to the activities performed in the area. It is
+impor tant to obtain samples from locations that pose the highest possible risk of contamination to the CSP and that are likely to be
+representative of the conditions throughout the area. To obtain air and surface samples that are representative of the typical
+compounding conditions at the facility, in all PECs and classi«ed rooms, air sampling must be conducted during dynamic operating
+conditions and surface sampling should be performed at the end of a compounding activity or shift but before the area has been cleaned
+and disinfected. The monitoring program must be designed and conducted in a manner that minimizes the chance that the sampling
+itself will contribute to contamination of the CSP or the environment.
+It is impor tant that personnel are trained and competent in air and surface sampling procedures to ensure accurate and reproducible
+sampling. All impaction air samplers must be serviced and calibrated as recommended by the manufacturer.
+
+### 6.2 Monitoring Air Quality for Viable Airborne Par ticles
+
+A monitoring program for viable airborne par ticles must be developed and implemented to assess microbiological air quality in all
+classi«ed areas.
+
+#### 6.2.1 Viable air sampling—timing and locations:
+
+Volumetric active air sampling of all classi«ed areas using an impaction air sampler must
+be conducted in each classi«ed area [e.g., ISO Class 5 PEC and ISO Class 7 and 8 room(s)] during dynamic operating conditions. For
+entities compounding Category 1 and Category 2 CSPs, this must be completed at least every 6 months. For entities compounding any
+Category 3 CSPs, this must be completed within 30 days prior to the commencement of any Category 3 compounding and at least monthly
+thereafter regardless of the frequency of compounding Category 3 CSPs. Air sampling sites must be selected in all classi«ed areas.
+
+#### 6.2.2 Viable air sampling procedures:
+
+When conducting sampling of the PEC, care should be taken to avoid disturbing unidirectional
+air¬ow. See Box 5 for active air sampling procedures. A general microbiological growth media that suppor ts the growth of bacteria and
+fungi must be used (e.g., TSA). COAs from the manufacturer must verify that the sampling media devices meet the expected growth
+promotion, pH, and sterilization requirements. Samples must be incubated in an incubator at the temperatures listed in Box 5. The
+incubator temperature must be monitored during incubation, either manually or by a continuous recording device, and the results must be
+reviewed and documented as described in the facility’s SOPs. The incubator must be placed in a location outside of the sterile
+compounding area.
+Box 5. Active Air Sampling Procedures for Viable Airborne Monitoring
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 16 ===
+1. Follow the manufacturer’s instructions for operation of the impaction air sampler, including placement of media device(s).
+2. Using the impaction air sampler, test at least 1 cubic meter or 1000 L of air from each location sampled.
+3. At the end of each sampling period, retrieve the media device and cover it. Handle and store media devices to avoid
+contamination and prevent condensate from dropping onto the agar during incubation and affecting the accuracy of the cfu
+reading (e.g., inver t plates).
+4. Incubate the media device at 30°–35° for no less than 48 h. Examine for growth. Record the total number of discrete colonies of
+microorganisms on each media device as cfu per cubic meter of air on an environmental sampling form based on sample type
+(i.e., viable air), sample location, and sample date.
+5. Then incubate the media device at 20°–25° for no less than 5 additional days. Examine for growth. Record the total number of
+discrete colonies of microorganisms on each media device as cfu per cubic meter of air on an environmental sampling form
+based on sample type (i.e., viable air), sample location, and sample date.
+Ã. Alternatively, to shor ten the overall incubation period, two sampling media devices may be collected for each sample location
+and incubated concurrently.
+A. Both media devices could be TSA or one media device could be TSA and the other fungal media (e.g., malt extract agar
+[MEA] or Sabouraud dextrose agar [SDA]).
+B. Incubate each media device in a separate incubator. Incubate one media device at 30°–35° for no less than 48 h, and
+incubate the other media device at 20°–25° for no less than 5 days. If fungal media are used as one of the samples,
+incubate the fungal media sample at 20°–25° for no less than 5 days.
+C. Count the total number of discrete colonies of microorganisms on each media device, and record these results as cfu per
+cubic meter of air.
+D. Record the results of the sampling on an environmental sampling form based on sample type (i.e., viable air), and include
+the sample location and sample date.
+ISO Class
+Air Sampling Action Levels
+[cfu/cubic meter (1000 liters) of air/media device]
+>1
+>10
+>100
+
+#### 6.2.3 Viable air sampling data evaluation and action levels:
+
+Evaluate cfu counts against the action levels in Table 7 and examine counts in
+relation to previous data to identify adverse results or trends. If two sampling media devices are collected at a single location, all recovered
+growth on each must be documented and action levels applied to each sampling media device separately. If levels measured during the
+viable air monitoring program exceed the levels in Table 7 for the ISO classi«cation levels of the area sampled, the cause must be
+investigated and corrective action must be taken. Data collected in response to corrective actions must be reviewed to con«rm that the
+actions taken have been effective. The corrective action plan must be dependent on the cfu count and the microorganism recovered.
+Some examples of corrective action include process or facility improvements, personnel training, cleaning and disinfecting, or HEPA «lter
+repair and/or replacement. The extent of the investigation should be consistent with the deviation and should include an evaluation of
+trends. The corrective action plan must be documented and should include resampling of failed areas to con«rm corrective action was
+successful. If levels measured during viable air sampling exceed the levels in Table 7, an attempt must be made to identify any
+microorganisms recovered to the genus level (see Microbial Characterization, Identi«cation, and Strain Typing 〈1113〉) with the assistance of
+a microbiologist.
+T
+able 7. Action Levels for Viable Airborne Par ticle Air Sampling
+
+### 6.3 Monitoring Surfaces for Viable Par ticles
+
+Surface sampling is an impor tant tool used to assist in maintenance of a suitably controlled environment for compounding CSPs.
+Surface sampling is useful for evaluating facility cleaning and material handling procedures, work surface cleaning and disinfecting
+procedures, and personnel competency in work practices such as cleaning and disinfecting. All sampling sites and procedures must be
+described in the facility’s SOPs.
+
+#### 6.3.1 Surface sampling—timing and locations:
+
+Each classi«ed area, including each room and the interior of each ISO Class 5 PEC and
+pass-through chambers connecting to classi«ed areas, must be sampled for microbial contamination using a risk-based approach.
+Samples should be taken from the following classi«ed areas:
+Equipment contained within the PEC
+Staging or work area(s) near the PEC
+Frequently touched surfaces
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 17 ===
+1. Remove the cover from the surface sampling media device. Using a rolling motion, «rmly press the media surface onto the
+surface to be sampled. The media device will leave a residue of growth media on the sample site. After sampling, clean and
+disinfect the sampled area to remove the residue from the surface.
+2. Cover each media device. Handle and store media devices to avoid contamination and prevent condensate from dropping
+onto the agar during incubation and affecting the accuracy of the cfu reading (e.g., inver t plates).
+3. Incubate media device(s) at 30°–35° for no less than 48 h. Examine for growth. Record the total number of discrete colonies
+of microorganisms on each media device as cfu per media device on an environmental sampling form based on sample type
+(i.e., surface), sample location, and sample date.
+4. Incubate the media device at 20°–25° for no less than 5 additional days. Examine for growth. Record the total number of
+discrete colonies of microorganisms on each media device (cfu per sample) on the environmental sampling record based on
+sample type (i.e., surface), sample location, and sample date.
+5. Alternatively, to shor ten the overall incubation period, two surface sampling media devices may be collected for each sample
+location and incubated concurrently.
+A. Both media devices could be TSA or one media device could be TSA and the other fungal media (e.g., malt extract agar
+[MEA] or Sabouraud dextrose agar [SDA]). Media must be supplemented with neutralizing additives (e.g., lecithin and
+polysorbate 80).
+B. Incubate each media device in a separate incubator. Incubate one media device at 30°–35° for no less than 48 h, and
+incubate the other media device at 20°–25° for no less than 5 days. If fungal media are used, incubate the fungal media
+device at 20°–25° for no less than 5 days.
+C. Count the total number of discrete colonies of microorganisms on each media device, and record these results as cfu
+per media device.
+D. Record the results of the sampling on an environmental sampling form based on sample type (i.e., surface), and include
+the sample location and sample date.
+Surface sampling in the DCA must also be conducted in conjunction with media-«ll testing to assess aseptic manipulation
+competency (see 2.3 Competency Testing in Aseptic Manipulation)
+When conducted, surface sampling should be performed at the end of a compounding activity or shift but before the area has been
+cleaned and disinfected.
+For entities compounding Category 1 and Category 2 CSPs, surface sampling of all classi«ed areas, and pass-through chambers
+connecting to classi«ed areas, must be conducted at least monthly (see Microbiological Control and Monitoring of Aseptic Processing
+Environments 〈1116〉).
+For entities compounding any Category 3 CSPs, surface sampling of all classi«ed areas, and pass-through chambers connecting to
+classi«ed areas, must be completed prior to assigning a BUD longer than the limits established in Table 13, and at least weekly (see
+〈1116〉) on a regularly scheduled basis regardless of the frequency of compounding Category 3 CSPs. Additionally, surface sampling
+must be conducted within the PEC used to prepare Category 3 CSPs, at the end of each batch before cleaning and disinfection occurs,
+unless a self-enclosed robotic device is used. When a self-enclosed robotic device is used as the PEC to prepare Category 3 CSPs,
+surface sampling must be conducted at least once daily at the end of compounding operations, before cleaning and disinfection occurs.
+
+#### 6.3.2 Surface sampling procedures:
+
+See Box 6 for the procedures for surface sampling on ¬at surfaces. Surface sampling media devices
+(e.g., plates, paddles, or slides) containing microbial growth media must be used for sampling ¬at surfaces. COAs from the manufacturer
+must verify that the sampling media devices meet the expected growth promotion, pH, and sterilization requirements. Surface sampling
+media devices must contain general microbial growth media (e.g., TSA) supplemented with neutralizing additives (e.g., lecithin and
+polysorbate 80) to neutralize the effects of any residual disinfecting agents. Surface sampling media devices must have a raised convex
+surface. Sterile swabs wetted with sterile water or a sterile neutralizing buffer may be used when sampling irregular surfaces and di­cult-
+to-reach locations such as crevices, corners, and spaces between surfaces. After sampling, the sampled area must be thoroughly cleaned
+and disinfected (see 7. Cleaning, Disinfecting, and Applying Sporicidal Disinfectants and Sterile 70% IPA).
+Samples must be incubated in an incubator at the temperatures listed in Box 6. The incubator temperature must be monitored during
+incubation, either manually or by a continuous recording device, and the results must be reviewed and documented. The incubator must
+be placed in a location outside of the sterile compounding area.
+Box 6. Surface Sampling Procedures
+
+#### 6.3.3 Surface sampling data evaluation and action levels:
+
+Evaluate cfu counts against the action levels in Table 8, and examine counts in
+relation to previous data to identify adverse results or trends. If two sampling media devices are collected at a single location, all recovered
+growth on each must be documented and action levels applied to each sampling media device separately. If levels measured during
+surface sampling exceed the levels in Table 8 for the ISO classi«cation levels of the area sampled, the cause must be investigated and
+corrective action must be taken. Data collected in response to corrective actions must be reviewed to con«rm that the actions taken have
+been effective. The corrective action plan must be dependent on the cfu count and the microorganism recovered. Some examples of
+corrective action include process or facility improvements, personnel training, cleaning and disinfecting, or HEPA «lter replacement and/or
+repair. The extent of the investigation should be consistent with the deviation and should include an evaluation of trends. The corrective
+action plan must be documented. If levels measured during surface sampling exceed the levels in Table 8, an attempt must be made to
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 18 ===
+ISO Class
+Surface Sampling Action Levels (cfu/media device)
+>3
+>5
+>50
+Type of Agent
+Purpose
+Cleaning
+An agent, usually containing a surfactant, used for the removal of
+substances (e.g., dir t, debris, microbes, and residual drugs or
+chemicals) from surfaces.
+Disinfectant
+A chemical or physical agent used on inanimate surfaces and
+objects to destroy fungi, viruses, and bacteria.
+Sporicidal
+A chemical or physical agent that destroys bacterial and fungal
+spores when used at a su­cient concentration for a speci«ed
+contact time. It is expected to kill all vegetative microorganisms.
+identify any microorganism recovered to the genus level (see 〈1113〉) with the assistance of a microbiologist.
+T
+able 8. Action Levels for Surface Sampling
+7. CLEANING, DISINFECTING, AND APPL
+YING SPORICIDAL DISINFECTANTS AND STERILE 70% IP
+A
+Surfaces in classi«ed areas used to prepare Category 1, Category 2, and Category 3 CSPs must be:
+Cleaned
+Disinfected
+Sporicidal disinfectants applied
+according to the frequencies described in Table 10 for each CSP category.
+Additionally, in a PEC, sterile 70% IPA must be applied after cleaning and disinfecting, or after the application of a one-step disinfectant
+cleaner or sporicidal disinfectant, to remove any residue. Sterile 70% IPA must also be applied immediately before initiating
+compounding. During the compounding process sterile 70% IPA must be applied to the horizontal work surface, including any removable
+work trays, of the PEC at least every 30 min if the compounding process takes 30 min or less. If the compounding process takes more
+than 30 min, compounding must not be disrupted, and the work surface of the PEC must be disinfected immediately after compounding.
+These activities are impor tant because surfaces in classi«ed areas and SCAs are a potential source of microbial contamination of
+CSPs.
+The process of cleaning involves removing organic and inorganic materials from surfaces, usually with a manual or mechanical
+process and a cleaning agent. The process of disinfecting involves destruction of microorganisms, usually with a chemical agent. The
+process of applying a sporicidal disinfectant involves the destruction of bacterial and fungal spores. See Table 9 for a summary of the
+purposes of the cleaning, disinfectant, and sporicidal disinfectants.
+T
+able 9. Purpose of Cleaning, Disinfecting, and Sporicidal Disinfectants
+Surfaces must be cleaned prior to being disinfected with an EPA-registered disinfectant (or equivalent for entities outside the US)
+unless an EPA-registered (or equivalent for entities outside the US) one-step disinfectant cleaner is used to accomplish both the cleaning
+and disinfection in one step. A sporicidal disinfectant must also be applied. Some EPA-registered (or equivalent) one-step disinfectant
+cleaners may have sporicidal proper ties. Cleaning and disinfecting surfaces and applying a sporicidal disinfectant must occur at the
+minimum frequencies speci«ed in Table 10.
+All cleaning and disinfecting activities must be performed by trained and appropriately garbed personnel using facility-approved agents
+and procedures, which must be described in written SOPs. Personnel must be trained if there are any changes in the cleaning and
+disinfecting procedures. Cleaning must be performed in the direction of clean to dir ty areas. The same ¬oor mop may be used in both the
+buffer and anteroom, but only in that order. Mops used in areas where HDs are compounded must be dedicated for use only in those
+areas.
+The frequency, method(s), and location(s) of cleaning, disinfecting, and applying sporicidal disinfectants must be established in written
+SOPs, in accordance with the manufacturer’s instructions and must be followed by all cleaning personnel. The manufacturer’s directions
+or published data for the minimum contact time must be followed for each of the cleaning, disinfecting, and sporicidal disinfectants used.
+When sterile 70% IPA is used, it must be allowed to dry. All cleaning, disinfecting, and application of sporicidal disinfectants must be
+documented according to the facility's SOPs.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 19 ===
+Site
+Cleaning
+Disinfecting
+b
+Applying
+Sporicidal Disinfectant
+PEC(s) and equipment inside
+the PEC(s)
+Equipment and all
+interior surfaces of the
+PEC daily on days when
+compounding occurs
+and when surface
+contamination is known
+or suspected
+Equipment and all
+interior surfaces of the
+PEC daily on days when
+compounding occurs
+and when surface
+contamination is known
+or suspected
+Monthly for entities
+compounding Category
+1 and/or Category 2
+CSPs
+Weekly for entities
+compounding Category
+3 CSPs
+Removable work tray of the
+PEC, when applicable
+Work surface of the tray
+daily on days when
+compounding occurs
+All surfaces and the
+area underneath the
+work tray monthly
+Work surface of the tray
+on days when
+compounding occurs
+All surfaces and the
+area underneath the
+work tray monthly
+Work surfaces of the
+tray monthly
+All surfaces and the
+area underneath the
+work tray monthly
+Pass-through chambers
+Daily on days when
+compounding occurs
+Daily on days when
+compounding occurs
+Monthly for entities
+compounding Category
+1 and/or Category 2
+CSPs
+Weekly for entities
+compounding Category
+3 CSPs
+Work surface(s) outside the
+PEC
+Daily on days when
+compounding occurs
+Daily on days when
+compounding occurs
+Floor(s)
+Daily on days when
+compounding occurs
+Daily on days when
+compounding occurs
+Wall(s), door(s), and door
+frame(s)
+Monthly
+Monthly
+Monthly
+Ceiling(s)
+c
+Storage shelving and bin(s)
+Equipment outside the PEC(s)
+T
+able 10. Minimum Frequency for Cleaning and Disinfecting Surfaces and Applying Sporicidal Disinfectants in Classi«ed Areas and
+in the SCA
+a
+a
+Cleaning of sinks is described in 4.4 Water Sources.
+b
+Many disinfectants registered by the EPA are one-step cleaning and disinfecting agents, which means that the disinfectant has been
+formulated to be effective in the presence of light-to-moderate soiling without a separate cleaning step.
+c
+Ceilings of the SCA are required to be cleaned, disinfected, and applied with sporicidal disinfectant only when visibly soiled and when
+surface contamination is known or suspected.
+
+### 7.1 Agents and Supplies for Cleaning, Disinfecting, and Applying Sporicidal Disinfectants
+
+#### 7.1.1 Agents:
+
+Cleaning and disinfecting agents must be selected and used with careful consideration of compatibilities, effectiveness, and
+user safety. Considerations when selecting and using disinfectants include their antimicrobial activity, inactivation by organic matter,
+residue, shelf life, preparation requirements of the agent, and suitability for surfaces being disinfected. After the disinfectant or sporicidal
+disinfectant is applied to the surface, the agent must be allowed to dwell for the minimum contact time speci«ed by the manufacturer.
+Cleaning, disinfecting and sporicidal agents used within the PEC must be sterile. When diluting concentrated cleaning and disinfecting
+agents for use in the PEC, sterile water must be used. In classi«ed areas outside of the PEC, sterile cleaning and disinfecting agents
+should be used. When diluting concentrated cleaning and disinfecting agents for use outside of the PEC, sterile water should be used.
+
+#### 7.1.2 Supplies:
+
+All cleaning and disinfecting supplies (e.g., wipers, sponges, pads, and mop heads) with the exception of tool handles and
+holders must be low lint. In addition, cleaning and disinfecting supplies used in the PEC must be sterile with the exception of tool handles
+and holders, which must be cleaned and disinfected prior to use in a PEC.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 20 ===
+If necessary, remove visible par ticles, debris, or residue with an appropriate solution (e.g., Sterile Water for Injection or Sterile
+Water for Irrigation) using sterile, low-lint wipers.
+Using a sterile low-lint wiper, apply a sterile cleaning agent followed by a sterile EPA-registered disinfectant or apply a sterile
+EPA-registered (or equivalent for entities outside the US) one-step disinfectant cleaner to equipment and all interior surfaces of
+the PEC.
+Ensure the contact time speci«ed by the manufacturer is achieved.
+Using a sterile low-lint wiper, apply sterile 70% IPA to equipment and all interior surfaces in the PEC.
+Allow the surface to dry completely before beginning compounding.
+If necessary, remove visible par ticles, debris, or residue with an appropriate solution (e.g., Sterile Water for Injection or Sterile
+Water for Irrigation) using sterile, low-lint wipers.
+After cleaning and disinfecting (see Box 7), apply the sterile sporicidal disinfectant using a sterile low-lint wiper to all surfaces
+and the area underneath the work tray; if the sporicidal disinfectant is a sterile EPA-registered (or equivalent for entities outside
+the US) one-step disinfectant sporicidal cleaner, separate cleaning and disinfecting steps are not required.
+Ensure the contact time speci«ed by the manufacturer is achieved.
+Using a sterile low-lint wiper, apply sterile 70% IPA to all interior surfaces, including underneath the work tray.
+Allow the surface to dry completely before beginning compounding.
+Wipers, sponges, pads, and mop heads should be disposable. If disposable cleaning supplies are used, they must be discarded after
+each cleaning activity. Reusable cleaning tools must be made of cleanable materials (e.g., handles should not be made of wood or any
+other porous material) and must be cleaned and disinfected before and after each use. Reusable cleaning tools must be dedicated for
+use in the classi«ed areas or SCA and must not be removed from these areas except for disposal. They must be discarded as
+determined based on the condition of the tools. Cleaning supplies used in the classi«ed areas and SCAs must be disposed of in a
+manner that minimizes the potential for dispersing contaminants into the air (e.g., with minimal agitation, away from work surfaces).
+Once opened, sterile cleaning and disinfecting agents and supplies (e.g., closed containers of sterile wipers) and sterile 70% IPA may
+be reused for a time period speci«ed as by the manufacturer and/or described in the facility written SOPs.
+
+### 7.2 Procedures for Cleaning, Disinfecting, and Applying Sporicidal Disinfectants and Sterile 70% IP
+
+A in the PEC
+Clean, disinfect, and apply a sporicidal disinfectant to equipment and all interior surfaces in the PEC at the minimum frequencies
+speci«ed in Table 10. See Box 7 and Box 8 for procedures for cleaning, disinfecting, and applying a sporicidal disinfectant in the PEC.
+Box 7. Procedures for Cleaning and Disinfecting the PEC
+Box 8. Procedures for Applying a Sporicidal Disinfectant in the PEC
+8. INTRODUCING ITEMS INTO THE SEC AND PEC
+
+### 8.1 Introducing Items into the SEC
+
+Before any item is introduced into the clean side of anteroom(s), placed into pass-through chamber(s), or brought into the SCA,
+providing that packaging integrity will not be compromised, it must be wiped with a sporicidal disinfectant, EPA-registered disinfectant, or
+sterile 70% IPA using low-lint wipers by personnel wearing gloves. If an EPA-registered disinfectant or sporicidal disinfectant is used, the
+agent must be allowed to dwell for the minimum contact time speci«ed by the manufacturer. If sterile 70% IPA is used, it must be allowed
+to dry. The wiping procedure should not compromise the packaging integrity or render the product label unreadable.
+
+### 8.2 Introducing Items into the PEC
+
+Just before any item is introduced into the PEC, it must be wiped with sterile 70% IPA using sterile low-lint wipers and allowed to dry
+before use. When sterile items are received in sealed containers designed to keep them sterile until opening, the sterile items may be
+removed from the covering as the supplies are introduced into the ISO Class 5 PEC without the need to wipe the individual sterile supply
+items with sterile 70% IPA. The wiping procedure must not render the product label unreadable.
+
+### 8.3 Use of Sterile 70% IP
+
+A on Critical Sites within the PEC
+Critical sites (e.g., vial stoppers, ampule necks, and intravenous bag septums) must be wiped with sterile 70% IPA in the PEC to provide
+both chemical and mechanical actions to remove contaminants. The sterile 70% IPA must be allowed to dry before personnel enter or
+puncture stoppers and septums or break the necks of ampules.
+9. EQUIPMENT
+, SUPPLIES, AND COMPONENTS
+
+### 9.1 Equipment
+
+PECs are described in 4.2.3 Types of PECs and placement. Other equipment used in compounding CSPs (e.g., automated compounding
+devices [ACDs] and balances) should be of suitable composition such that the surfaces that contact components are not reactive or
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 21 ===
+sorptive. Equipment that must be brought into classi«ed areas must be wiped with a sporicidal disinfectant, EPA-registered disinfectant,
+or sterile 70% IPA using low-lint wipers.
+Equipment must be placed in a manner that facilitates sterile compounding operations. The equipment must be capable of operating
+properly and within required performance parameters. Compounding personnel must follow established SOPs for the calibration,
+maintenance, cleaning, and use of the equipment based on the manufacturer’s recommendations. Personnel must maintain records from
+equipment calibration, veri«cation, and maintenance in accordance with the requirements in 20. Documentation.
+ACDs and other similar equipment are designed to assist in the compounding of preparations by delivering speci«c volumes of
+solution(s) automatically under computerized control.
+Before using ACDs or other similar equipment, compounding personnel must conduct an accuracy assessment before the «rst use and
+again each day the equipment is used to compound CSPs. The precision of the equipment can be monitored based on an assessment of
+day-to-day variations in its accuracy measures. Compounding personnel must maintain a daily record of the accuracy measurements on
+the days the equipment is in use. Corrective actions must be implemented if accuracy measurements are outside the manufacturer’s
+speci«cation.
+Weighing, measuring, or otherwise manipulating components that could generate airborne chemical par ticles (e.g., active
+pharmaceutical ingredients [APIs], added substances, conventionally manufactured products) must be evaluated to determine if these
+activities must be performed in a PEC or other closed system processing device (e.g., single use containment glove bag) to reduce the
+potential exposure to personnel or contamination of the facility or CSPs (See 4.2.6 Facilities preparing Category 2 or Category 3 CSPs from
+nonsterile star ting component(s)). The process evaluation must be carried out in accordance with the facility’s SOPs and the assessment
+must be documented.
+
+### 9.2 Supplies
+
+Supplies (e.g., beakers, utensils, needles, syringes, «lters, and tubing sets) should be of suitable composition such that the surfaces
+that contact components are not reactive or sorptive. Supplies in direct contact with the CSP must be sterile and depyrogenated.
+
+### 9.3 Components
+
+Compounding personnel must follow the facility’s SOPs, which must address the selection, receipt, evaluation, handling, storage, and
+documentation of all CSP components, including all ingredients and container closures.
+
+#### 9.3.1 Component selection:
+
+ Conventionally manufactured sterile products should be used when available and appropriate for the intended
+CSP
+.
+When APIs are used:
+Must comply with the criteria in the USP–NF monograph, if one exists
+Must have a COA that includes the speci«cations (e.g., compendial requirements for quality) and that test results for the
+component show that the API meets expected quality
+In the United States, must be manufactured by an FDA-registered facility
+Outside of the United States, must comply with the laws and regulations of the applicable regulatory jurisdiction
+For all components other than APIs:
+Must comply with the criteria in the USP–NF monograph, if one exists
+Must be accompanied by documentation (e.g., COA, labeling) that includes the speci«cations and test results and shows that the
+component meets the speci«cations
+In the US, should be manufactured by an FDA-registered facility
+If a component cannot be obtained from an FDA-registered facility, the designated person(s) must select an acceptable
+and reliable source (see Good Distribution Practices for Bulk Pharmaceutical Excipients 〈1197〉). The compounding facility
+must establish the identity, strength, purity, and quality of the ingredients obtained from that supplier by reasonable means.
+Reasonable means may include but are not limited to visual inspections, evaluation of a COA supplied by the manufacturer,
+and/or veri«cation by analytically testing a sample to determine conformance with the COA or other speci«cations.
+Outside of the US, must comply with the laws and regulations of the applicable regulatory jurisdiction
+When CSPs are used as components, see 16. Use of CSPs as Components. All APIs and other components used must be evaluated for
+suitability for use in sterile drug preparation. Components labeled with “not for pharmaceutical use”, “not for injectable use”, “not for
+human use” or an equivalent statement must not be used to compound for these purposes.
+Each lot of commercially available sterile, depyrogenated containers and container closure systems must be accompanied by a COA
+or other documentation showing conformance with established speci«cations (i.e., sterility and depyrogenation requirements). If
+sterilization and depyrogenation of supplies or container closure systems are performed on site, the e­cacy of each process must be
+established and documented (see Sterilization of Compendial Ar ticles 〈1229〉).
+
+#### 9.3.2 Component receipt:
+
+Upon receipt of each lot of a component, the external packaging must be examined for evidence of deterioration
+and other aspects of unacceptable quality. Facility personnel must verify the labeling and condition of the component [e.g., whether the
+outer packaging is damaged and whether temperature-sensing indicators show that the component has been exposed to excessive
+temperature(s)].
+Any component found to be of unacceptable quality must be promptly rejected, clearly labeled as rejected, and segregated from active
+stock to prevent use before appropriate disposal. Any other lots of that component from that vendor must be examined to determine
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 22 ===
+whether other lots have the same defect.
+The date of receipt by the compounding facility must be clearly marked on each API or added substance package that lacks a vendor
+expiration date. Packages of components (i.e., API and added substances) that lack a vendor’s expiration date must be assigned a
+conservative expiration date, not to exceed 1 year after receipt by the compounding facility.
+
+#### 9.3.3 Component evaluation before use:
+
+Compounding personnel must ascer tain before use that components for CSPs are of the correct
+identity, appropriate quality, within expiry date and have been stored under appropriate conditions. The following information should be
+used to make this determination: prescription or medication order, compounding record (CR), master formulation record (if used), vendor
+label(s), COA(s) of API(s) and other component(s), product labeling of any conventionally manufactured sterile products, labeling of
+CSP(s), and documentation of the compounding facility’s storage conditions and practices.
+All components must be reinspected before use. All packages must be reinspected to detect container breaks, looseness of the cap
+or closure, and deviation from the expected appearance, aroma, and/or texture of the contents that might have occurred during storage.
+Sterile container closures must be visually reinspected to ensure that they are free from defects that could compromise sterility and that
+they are otherwise suitable for their intended use.
+Any component found to be of unacceptable quality must be promptly rejected, clearly labeled as rejected, and segregated from active
+stock to prevent use before appropriate disposal. Any other lots of that component from that vendor must be examined to determine
+whether other lots have the same defect.
+
+#### 9.3.4 Component handling and storage:
+
+All components must be handled and stored in a manner that prevents contamination, mix-ups,
+and deterioration.
+Components must be stored in closed containers under temperature, humidity, and lighting conditions consistent with those indicated
+in o­cial monographs or speci«ed by the suppliers and/or manufacturers.
+Personnel must monitor temperature in the area(s) where components are stored either manually at least once daily on days that the
+facility is open or by a continuous temperature recording device to determine whether the temperature remains within the appropriate
+range. The results of the temperature readings must be documented on a temperature log or stored in the continuous recording device
+and must be retrievable. All monitoring equipment must be calibrated or veri«ed for accuracy as recommended by the manufacturer or
+every 12 months if not speci«ed by the manufacturer.
+10. STERILIZATION AND DEPYROGENATION
+When selecting the sterilization method for CSPs prepared from one or more nonsterile star ting components or using nonsterile
+supplies or devices, personnel must take into consideration the nature of the component(s), their physical and chemical proper ties, and
+the intended container closure system.
+The sterilization method used must sterilize the CSP without degrading its physical and chemical stability (e.g., affecting its strength,
+purity, or quality) or the packaging integrity. (See also the 〈1229〉 series of chapters.)
+The following must be considered when selecting an appropriate sterilization method:
+Terminal sterilization (e.g., steam, dry heat, or irradiation) is the preferred method unless the speci«c CSP or container closure system
+cannot tolerate terminal sterilization
+Steam sterilization is not an option if moisture, pressure, or the temperatures used would degrade the CSP or if there is insu­cient
+moisture to sterilize the CSP within the «nal, sealed, container closure system
+Filtration may not be an option for some compounded preparations, for example preparations with suspended drug par ticles or
+emulsions with a signi«cant droplet size.
+CSPs that are terminally sterilized (e.g., steam, dry heat, or irradiation) must use a process intended to achieve a probability of a
+nonsterile unit (PNSU) of 10
+−6
+. [Note—This is also called the sterility assurance level (SAL).] A PNSU of 10
+−6
+ is equivalent to a probability
+that 1 unit in a million is nonsterile. A PNSU value cannot be applied to CSPs that are aseptically «lled into a sterile container following
+sterilization by «ltration because sterilization by «ltration is not terminal sterilization.
+Injectable compounded preparations that contain nonsterile components or that come into contact with nonsterile devices (e.g.,
+containers, tubing) during any phase of the compounding procedure must be sterilized within 6 h after completing the preparation to
+minimize the generation of bacterial endotoxins in CSPs.
+A description of the terminal sterilization and depyrogenation process, including the temperature, pressure (if applicable), duration,
+permissible load conditions for each cycle, and the use of biological indicators and endotoxin challenge vials (ECVs) must be included in
+the facility’s SOPs.
+SOPs must include training and competency of personnel on all sterilization methods and equipment used by the facility. In addition,
+the SOPs must include a schedule and method for establishing and verifying the effectiveness of the terminal sterilization and
+depyrogenation methods selected, as well as the methods for maintaining and cleaning the sterilizing and depyrogenation equipment.
+
+### 10.1 Depyrogenation
+
+See Dry Heat Depyrogenation 〈1228.1〉. Dry heat depyrogenation must be used to render glassware, metal, and other thermostable
+containers and components pyrogen free. Depyrogenation processes typically operate at a range of temperatures, from approximately
+170°–400°, depending on the exposure time (e.g., a cycle might hold the items at 250° for 30 min to achieve sterility and depyrogenation).
+The duration of the exposure period must include su­cient time for the items to reach the depyrogenation temperature. The items must
+remain at the depyrogenation temperature for the duration of the depyrogenation period.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 23 ===
+The effectiveness of the dry heat depyrogenation cycle must be established initially and veri«ed annually using ECVs to demonstrate
+that the cycle is capable of achieving a ≥3-log reduction in endotoxins (see Bacterial Endotoxins Test 〈85〉). The effectiveness of the
+depyrogenation cycle must be re-established if there are changes to the depyrogenation cycle described in SOPs (e.g., changes in load
+conditions, duration, or temperature). This veri«cation must be documented.
+Items that are not thermostable must be depyrogenated by multiple rinses with sterile, nonpyrogenic water (e.g., Sterile Water for
+Injection or Sterile Water for Irrigation) and then thoroughly drained or dried immediately before use in compounding See Depyrogenation
+by Rinsing 〈1228.4〉.
+
+### 10.2 Sterilization by Filtration
+
+See Sterilizing Filtration of Liquids 〈1229.4〉. Sterilizing «lters must be sterile, depyrogenated, have a nominal pore size of 0.22 µm or
+smaller, and be appropriate for pharmaceutical use. Sterilizing «lters with labeling that states “for laboratory use only” or a similar
+statement must not be used for compounding CSPs. Sterilizing «lters must be cer ti«ed by the manufacturer to retain at least 10
+microorganisms of a strain of Brevundimonas diminuta per square centimeter of upstream «lter surface area under conditions similar to
+those in which the CSPs will be «ltered (i.e., pressure, ¬ow rate, and volume «ltered).
+The designated person(s) must ensure—from available published information, from supplier documentation, or through direct
+challenge (e.g., «ltering the CSP)—that the «lters 1) are chemically and physically compatible with all ingredients in the CSP (e.g., water-
+miscible alcohols may damage «lter integrity); 2) are chemically stable at the pressure and temperature conditions that will be used; and
+3) have enough capacity to «lter the required volumes. The «lter dimensions and the CSP to be sterilized by «ltration should permit the
+sterilization process to be completed without the need for replacement of the «lter during the process. Filter units used to sterilize CSPs
+must be subjected to the manufacturers’ recommended integrity testing, such as a post-use bubble point test. If multiple «lters are
+required for the compounding process, each of the «lters must pass a «lter-integrity test.
+When CSPs are known to contain excessive par ticulate matter, a pre«ltration step must be performed using a «lter of larger nominal
+pore size (e.g., 1.2 µm) or a separate «lter of larger nominal pore size should be placed upstream of (i.e., prior to) the sterilizing «lter to
+remove gross par ticulate contaminants before the CSP is passed through the sterilizing-grade «lter. Excessive par ticulate matter
+requiring a pre«ltration step could potentially be a signal of an inappropriate formulation, and therefore the formulation and the process
+should be assessed and modi«ed if necessary. CSPs that were prepared using a «lter that failed integrity tests must be discarded or, after
+investigating the cause of the failure and selection of an appropriate «lter, re«ltered for sterilization not more than one additional time.
+
+### 10.3 Sterilization by Steam Heat
+
+Temperatures used to achieve sterilization by steam heat are lower than those used to achieve depyrogenation. The process of thermal
+sterilization using saturated steam under pressure (i.e., autoclaving) is the preferred method for terminal sterilization of aqueous CSPs in
+their «nal, sealed container closure system (see Steam Sterilization by Direct Contact 〈1229.1〉). Steam sterilization is not an option if
+moisture, pressure, or the temperatures used would degrade the CSP
+.
+To achieve sterility when steam sterilization is used, all materials must be directly exposed to steam under adequate pressure for the
+length of time necessary, as determined by use of appropriate biological indicators, to render the items sterile (e.g., 20−60 min at 121°
+saturated steam under a pressure of 15 psi, depending on the volume or size of the CSP being sterilized). The duration of the exposure
+period must include su­cient time for the entire contents of the CSP and other items to reach the sterilizing temperature. The CSP and
+other items must remain at the sterilizing temperature for the duration of the sterilization period.
+CSPs must be placed in the autoclave to allow steam to reach the CSPs without entrapment of air. Flat, stainless-steel trays with low
+sides or ventilated bottoms will permit steam contact. When preparing items that must be wrapped for steam sterilization, wrap them in
+low-lint protective fabric or paper or seal in envelopes that will permit steam penetration and are designed to minimize the risk of post-
+sterilization microbial contamination. For CSPs, immediately before «lling containers that will be steam sterilized, solutions must be
+passed through a «lter with a nominal pore size of not larger than 1.2 µm for removal of par ticulate matter.
+Sealed containers must be able to generate steam internally. Stoppered and crimped empty vials must contain a small amount of
+sterile water to generate steam.
+The effectiveness of steam sterilization must be veri«ed and documented with each sterilization run or load by using appropriate
+biological indicators, such as spores of Geobacillus stearothermophilus (ATCC 12980, ATCC 7953, or equivalent; see Biological Indicators
+for Sterilization 〈1229.5〉), and other con«rmation methods such as physicochemical indicators (see Physicochemical Integrators and
+Indicators for Sterilization 〈1229.9〉).
+The steam supplied must be generated using water per the manufacturer’s recommendation. A calibrated data recorder or char t must
+be used to monitor each cycle and to examine for cycle irregularities (e.g., deviations in temperature or pressure). The date, run, and load
+numbers of the steam sterilizer used to sterilize a CSP must be documented in the CR.
+
+### 10.4 Sterilization by Dry Heat
+
+Dry heat may be used for those items that cannot be sterilized by steam or other means when the moisture would damage the material
+or the wrapping material is impermeable (see Dry Heat Sterilization 〈1229.8〉). Sterilization by dry heat requires higher temperatures and
+longer exposure times than sterilization by steam. The duration of the exposure period must include su­cient time for the entire contents
+of CSPs and other items to reach the sterilizing temperature. The CSP and other items must remain at the sterilizing temperature for the
+duration of the sterilization period. Immediately before «lling ampules and vials that will be sterilized by dry heat, CSP solutions must be
+passed through a «lter with a nominal pore size of not larger than 1.2 µm for removal of par ticulate matter.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 24 ===
+Dry heat sterilization is usually performed in an oven designed for sterilization at 160° or higher. If lower temperatures are used, they
+must be shown to achieve effective sterilization (see 〈1229.8〉, Validation of Dry Heat Sterilization, Biological Indicators).
+Heated air must be evenly distributed throughout the chamber, which is typically accomplished by an air blower. The calibrated oven
+must be equipped with temperature controls and a timer. During sterilization, su­cient space must be left between materials to allow for
+circulation of the hot air. A calibrated data recorder or char t must be used to monitor each cycle and the data must be reviewed to identify
+cycle irregularities (e.g., deviations in temperature or exposure time).
+The effectiveness of the dry heat sterilization method must be veri«ed and documented with each sterilization run or load using
+appropriate biological indicators such as spores of Bacillus atrophaeus (ATCC 9372; see 〈1229.5〉) and other con«rmation methods (e.g.,
+temperature-sensing devices). The date, run, and load numbers of the dry heat oven used to sterilize a CSP must be documented in the
+CR.
+11. MASTER FORMULATION AND COMPOUNDING RECORDS
+
+### 11.1 Creating Master Formulation Records
+
+A master formulation record (MFR) is a detailed record of procedures that describes how the CSP is to be prepared. An MFR must be
+created for all CSPs prepared from nonsterile ingredient(s) or CSPs prepared for more than one patient. Any changes or alterations to the
+MFR must be approved and documented according to the facility’s SOPs. Box 9 lists the information that must be included in an MFR.
+Box 9. Master Formulation Records
+An MFR must include at least the following information:
+Name, strength or activity, and dosage form of the CSP
+Identities and amounts of all ingredients; if applicable, relevant characteristics of components (e.g., par ticle size, salt form,
+purity grade, solubility)
+Type and size of container closure system(s)
+Complete instructions for preparing the CSP
+, including equipment, supplies, a description of the compounding steps, and any
+special precautions
+Physical description of the «nal CSP
+BUD and storage requirements
+Reference source to suppor t the stability of the CSP
+Quality control (QC) procedures (e.g., pH testing, «lter integrity testing)
+Other information as needed to describe the compounding process and ensure repeatability (e.g., adjusting pH and tonicity;
+sterilization method, such as steam, dry heat, irradiation, or «lter)
+
+### 11.2 Creating Compounding Records
+
+A CR documents the compounding of each CSP
+. A CR must be created for all Category 1, Category 2, and Category 3 CSPs. A CR must
+also be created for immediate-use CSPs prepared for more than one patient. The CR must be created to document the compounding
+process. A prescription or medication order or label may serve as the CR. If an ACD, work¬ow management system, or other similar
+equipment is used, the required information in the CR may be stored electronically as long as it is retrievable and contains the required
+information (see Box 10). An MFR can serve as the basis for preparing the CR. For example, a copy of the MFR can be made that contains
+spaces for recording the information needed to complete the CR. Box 10 lists the information that must be included in a CR.
+Box 10. Compounding Records
+CRs must include at least the following information:
+Name, strength or activity, and dosage form of the CSP
+Date and time of preparation of the CSP
+Assigned internal identi«cation number (e.g., prescription, order, or lot number)
+A method to identify the individuals involved in the compounding process and individuals verifying the «nal CSP
+Name of each component
+Vendor, lot number, and expiration date for each component for CSPs prepared for more than one patient and for CSPs
+prepared from nonsterile ingredient(s)
+Weight or volume of each component
+Strength or activity of each component
+Total quantity compounded
+Final yield (e.g., quantity, containers, number of units)
+Assigned BUD and storage requirements
+Results of QC procedures (e.g., visual inspection, «lter integrity testing, pH testing)
+If applicable, the CR must also include:
+MFR reference for the CSP
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 25 ===
+Calculations made to determine and verify quantities and/or concentrations of components
+12. RELEASE INSPECTIONS AND TESTING
+All release testing procedures (e.g., visual inspections and testing) must be included in the facility’s documentation (see 11. Master
+Formulation and Compounding Records and 17. SOPs). Any out-of-speci«cation results must be investigated, and a corrective action plan
+must be implemented and documented as par t of the quality assurance (QA) and QC program (see 18. Quality Assurance and Quality
+Control).
+
+### 12.1 Visual Inspection
+
+At the completion of compounding, before release and dispensing, the CSP must be visually inspected to determine whether the
+physical appearance of the CSP is as expected (e.g., free of inappropriate visible par ticulates or other foreign matter, discoloration, or
+other defects). The CSP label must be visually inspected to con«rm that the CSP and its labeling match the prescription or medication
+order. The inspection also must include a visual inspection of container closure integrity (e.g., checking for leakage, cracks in the
+container, or improper seals). Any CSP found to be of unacceptable quality (e.g., observed defects) must be promptly rejected, clearly
+labeled as rejected, and segregated from active stock to prevent use before appropriate disposal.
+When a CSP will not be released or dispensed on the day of preparation, a visual inspection must be conducted immediately before it is
+released or dispensed to make sure that the CSP does not exhibit any defects such as precipitation, cloudiness, or leakage, which could
+develop during storage. Any CSP found to be of unacceptable quality (e.g., observed defects) must be promptly rejected, clearly labeled
+as rejected, and segregated from active stock to prevent use before appropriate disposal. Defects that indicate sterility or stability
+problems must be investigated to determine the cause according to the facility’s SOPs (see 18. Quality Assurance and Quality Control).
+
+### 12.2 Sterility Testing
+
+Sterility testing is not required for Category 1 CSPs (see Table 12). For Category 2 CSPs assigned a BUD that requires sterility testing
+(see Table 13) and all Category 3 CSPs, the testing must be performed according to 〈71〉 or a validated alternative method (see 〈1223〉)
+that is noninferior to 〈71〉 testing.
+If sterility testing is performed, the minimum quantity of each container to be tested for each media is speci«ed in 〈71〉, Table 2, and the
+number of containers required to be tested in relation to the batch size is speci«ed in 〈71〉, Table 3, except as described below. The
+maximum batch size for all CSPs requiring sterility testing must be limited to 250 «nal yield units.
+If the number of CSPs to be compounded in a single batch is less than the number of CSPs needed for testing as speci«ed in 〈71〉,
+Table 3, additional units must be compounded to perform sterility testing as follows:
+If 1–39 CSPs are compounded in a single batch, the sterility testing must be performed on a number of units equal to 10% of the
+number of CSPs prepared, rounded up to the next whole number. For example:
+If 1 CSP is compounded, 10% of 1 rounded up to the next whole number would indicate that 1 additional CSP must be
+prepared for sterility testing
+If 39 CSPs are compounded, 10% of 39 rounded up to the next whole number would indicate that 4 additional CSPs must be
+prepared for sterility testing
+If more than 40 CSPs are prepared in a single batch, the sample sizes speci«ed in 〈71〉, Table 3 must be used.
+If sterility testing is performed according to 〈71〉, the Method Suitability Test from that chapter must be performed to ensure that
+contamination can be recovered. If performing sterility testing according to 〈71〉, the Membrane Filtration method from that chapter is the
+method of choice when the CSP formulation permits. The preferred alternative is the 〈71〉, Test for Sterility of the Product to Be Examined,
+Direct Inoculation of the Culture Medium method. If an alternative method is used for sterility testing, the method must be validated (see
+〈1223〉) and demonstrated to be suitable for that CSP formulation.
+Sterility tests resulting in failures must prompt an investigation into the possible causes and must include identi«cation of the
+microorganism, as well as an evaluation of the sterility testing procedure, compounding facility, process, and/or personnel that may have
+contributed to the failure. The source(s) of the contamination, if identi«ed, must be corrected, and the facility must determine whether the
+conditions causing the sterility failure affect other CSPs. The investigation and resulting corrective actions must be documented.
+
+### 12.3 Bacterial Endotoxins Testing
+
+Category 1 injectable CSPs do not require testing for bacterial endotoxins. Category 2 injectable CSPs compounded from one or more
+nonsterile component(s) and assigned a BUD that requires sterility testing (see Table 13) and Category 3 injectable CSPs compounded
+from one or more nonsterile component(s) must be tested to ensure that they do not contain excessive bacterial endotoxins (see 〈85〉).
+Category 2 injectable CSPs compounded from one or more nonsterile component(s) and assigned a BUD that does not require sterility
+testing should be tested for bacterial endotoxins. In the absence of a bacterial endotoxin limit in an o­cial USP–NF monograph or other
+CSP formula source, the CSP must not exceed the endotoxin limit calculated as described in 〈85〉 for the appropriate route of
+administration for humans. CSPs for nonhuman species must not exceed the endotoxin limit calculated as described in 〈85〉 based on the
+largest recommended dose and weight (or average weight for more than a single animal) of the target animal species unless a different
+limit is scienti«cally suppor ted. CSPs administered epidurally should have the same endotoxin limit as that of intrathecally administered
+CSPs. See also Guidelines on the Endotoxins Test 〈1085〉.
+13. LABELING
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 26 ===
+Term
+De«nition
+Applicability
+BUD
+Either the date, or hour and date, after
+which a CSP must not be used. The BUD is
+determined from the date and time that
+preparation of the CSP is initiated
+Applies to all CSPs
+Expiration date
+The time during which a product can be
+expected to meet the requirements of the
+USP–NF monograph, if one exists, or
+maintain expected quality provided it is
+kept under the speci«ed storage
+conditions.
+Applies to all conventionally manufactured
+products, APIs, and added substances
+Category 1, Category 2, and Category 3 CSPs must be labeled with appropriate, legible identifying information to prevent errors during
+storage, dispensing, and use. The term labeling designates all labels and other written, printed, or graphic matter on the immediate
+container or on or inside any package or wrapper in which it is enclosed, except any outer shipping container. The term label designates
+that par t of the labeling that is on the immediate container. See Labeling 〈7〉.
+All labeling must be in compliance with laws and regulations of the applicable regulatory jurisdiction.
+The label on each immediate container of the CSP must, at a minimum, display prominently and legibly the following information:
+Assigned internal identi«cation number (e.g., barcode, prescription, order, or lot number)
+Active ingredient(s) and their amount(s), activity(ies), or concentration(s)
+Storage conditions if other than controlled room temperature
+BUD
+Dosage form
+Total amount or volume if it is not obvious from the container
+If it is a single-dose container, a statement stating such when space permits
+If it is a multiple-dose container, a statement stating such
+The labeling on the CSP must display the following information, as applicable:
+Route(s) of administration
+Special handling instructions
+Warning statements
+Compounding facility name and contact information if the CSP is to be sent outside of the facility or healthcare system in which it
+was compounded
+The labeling on the CSP should indicate that the preparation is compounded.
+Labeling procedures must be followed as described in the facility’s SOPs to prevent labeling errors and CSP mix-ups. The label of the
+CSP must be veri«ed to ensure that it conforms with the
+1. Prescription or medication order;
+2. MFR, if required (see 11.1 Creating Master Formulation Records); and
+3. CR, if required (see 11.2 Creating Compounding Records)
+Change to read:
+14. ESTABLISHING BEYOND-USE DATES
+
+### 14.1 Terminology
+
+Each CSP label must state the date, or the hour and date, beyond which the preparation must not be used and must be discarded (i.e.,
+the BUD). The BUD is determined from the date and time that preparation of the CSP is initiated. The BUD is not intended to limit the time
+during which the CSP is administered (e.g., infused).
+BUDs and expiration dates are not the same. An expiration date identi«es the time during which a conventionally manufactured
+product, API, or added substance can be expected to meet the requirements of a USP–NF monograph, if one exists, or maintain expected
+quality provided it is kept under the speci«ed storage conditions. The expiration date limits the time during which a conventionally
+manufactured product, API, or added substance may be dispensed or used (see 〈7〉, Labels and Labeling for Products in Other Categories,
+Expiration Date and Beyond-Use Date). Expiration dates are assigned by manufacturers based on analytical and performance testing of the
+sterility, chemical and physical stability, and packaging integrity of the product. Expiration dates are speci«c to a par ticular formulation in
+its container and at stated exposure conditions of illumination and temperature. See Table 11 for a summary of terms.
+T
+able 11. Summary of Terms
+
+### 14.2 Parameters to Consider in Establishing a BUD
+
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 27 ===
+BUDs for CSPs should be established conservatively to ensure that the drug maintains its required characteristics (i.e., stability and
+sterility) until its BUD.
+When establishing a BUD for a CSP
+, compounders must consider parameters that may affect quality, including but not limited to:
+Chemical and physical stability proper ties of the drug and/or its formulation
+Materials of composition of the container closure system and compatibility of the container closure system with the «nal
+preparation (e.g., leachables, interactions, adsorption, and storage conditions)
+The BUDs for CSPs are based primarily on factors that affect the achievement and maintenance of sterility, which include but are not
+limited to the following:
+Conditions of the environment in which the CSP is prepared
+Aseptic processing and sterilization method
+Star ting components (e.g., sterile or nonsterile ingredients)
+Whether or not sterility testing is performed
+Storage conditions (e.g., packaging and temperature)
+
+#### 14.2.1 Terminal sterilization methods and aseptic processing:
+
+ A CSP may be prepared by the following methods (see 10. Sterilization and
+Depyrogenation):
+Terminal sterilization, which includes compounding with sterile and/or nonsterile star ting ingredient(s) and subsequent sterilization
+with a process intended to achieve a PNSU of 10
+−6
+ (e.g., steam, dry heat, irradiation).
+Aseptic processing, which includes 1) compounding with only sterile star ting ingredient(s) or 2) compounding with nonsterile
+ingredient(s) followed by sterilization by «ltration. [Note—Sterilization by «ltration is not a form of terminal sterilization.]
+Terminal sterilization is the preferred method of sterilization, unless the speci«c CSP or container closure system cannot tolerate
+terminal sterilization. Table 13 allows for longer BUDs for terminally sterilized CSPs than for aseptically processed CSPs because
+terminal sterilization using a veri«ed method provides reasonable assurance that a CSP will be sterile.
+
+#### 14.2.2 Star ting components:
+
+The use of one or more nonsterile star ting component(s) is a risk factor to be considered when preparing a
+CSP
+. A longer BUD is permitted for CSPs that are aseptically processed from conventionally manufactured sterile star ting component(s)
+than from one or more nonsterile star ting component(s).
+
+#### 14.2.3 Sterility testing:
+
+Sterility testing (see 12.2 Sterility Testing) of a CSP can provide additional assurance of the absence of
+contamination, although passing a sterility test does not guarantee that all units of a batch of CSPs are sterile because contamination may
+not be uniformly distributed throughout the batch. A longer BUD is permitted if sterility testing results are within acceptable limits. The
+maximum batch size for all CSPs requiring sterility testing must be limited to 250 «nal yield units.
+
+#### 14.2.4 Storage conditions:
+
+Storage in colder conditions (i.e., in a refrigerator or freezer [see Packaging and Storage Requirements 〈659〉])
+has been shown to slow the growth of most microorganisms. However, the chemical and physical stability of the CSP and its components
+must be considered when storing in colder conditions (e.g., some formulations may precipitate when stored in a refrigerator or freezer). A
+longer BUD is permitted in Table 12 and Table 13 for CSPs stored in colder conditions than for CSPs stored at controlled room temperature.
+If the CSP will be stored in a frozen state, the container closure system must be able to withstand the physical stress (i.e., without
+breaking or cracking) during storage in a freezer. The CSP must be thawed in appropriate conditions to avoid compromising the physical
+and chemical stability of the preparation and its components (e.g., do not heat in a microwave). Once the CSP is thawed, the CSP must
+not be refrozen.
+CSPs may be stored under different storage conditions before they are used (e.g., CSPs may «rst be frozen, then thawed in the
+refrigerator, and «nally kept at controlled room temperature before administration). The storage time of a CSP must not exceed the
+original BUD placed on the CSP for its labeled storage condition, and BUDs must not be additive. For example, an aseptically processed
+CSP prepared from one or more nonsterile star ting component(s) cannot be stored for 45 days in a freezer, then 4 days refrigerated, and
+then 24 h at controlled room temperature for a total of 50 days. Once a CSP has been stored under a condition that would require a
+shor ter BUD (e.g., controlled room temperature), the CSP must be used within the time frame for that storage condition (in the previous
+example, 24 h).
+
+### 14.3 Establishing a BUD for a CSP
+
+BUDs for CSPs must be established in accordance with Table 12 for Category 1 CSPs, Table 13 for Category 2 CSPs and Table 14 for
+Category 3 CSPs. One day is equivalent to 24 h.
+The BUD limits in these tables are based on the risk of microbial contamination or not achieving and maintaining sterility despite
+implementation of the requirements in this chapter. The CSP formulation must remain chemically and physically stable, and its packaging
+must maintain its integrity for the duration of the BUD.
+A shor ter BUD must be assigned when the stability of the CSP or its components is less than the hours or days stated in the applicable
+table below. Additionally:
+The BUD must not exceed the shor test remaining expiration date of any of the commercially available star ting components.
+For CSPs prepared from one or more compounded components, the BUD should generally not exceed the shor test BUD of any of
+the individual compounded components. However, there may be acceptable instances when the BUD of the «nal CSP exceeds the
+BUD assigned to compounded components (e.g., pH-altering solutions). If the assigned BUD of the «nal CSP exceeds the BUD of
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 28 ===
+Storage Conditions
+Controlled Room Temperature
+(20°–25°)
+Refrigerator
+(2°–8°)
+≤12 h
+≤24 h
+Preparation Characteristics
+Storage Conditions
+Compounding Method
+Sterility Testing
+Performed and Passed
+Controlled Room
+Temperature
+(20°–25°)
+Refrigerator
+(2°–8°)
+Freezer
+(−25° to −10°)
+Aseptically
+processed CSPs
+No
+Prepared from one or
+more nonsterile star ting
+component(s): 1 day
+Prepared from one or
+more nonsterile star ting
+component(s): 4 days
+Prepared from one or
+more nonsterile star ting
+component(s): 45 days
+Prepared from only
+sterile star ting
+components:
+4 days
+Prepared from only
+sterile star ting
+components:
+10 days
+Prepared from only
+sterile star ting
+components:
+45 days
+Yes
+30 days
+45 days
+60 days
+Terminally sterilized
+CSPs
+No
+14 days
+28 days
+45 days
+Yes
+45 days
+60 days
+90 days
+the compounded components, the physical, chemical, and microbiological quality of the «nal CSP must not be negatively
+impacted.
+Table 12 establishes the longest permitted BUDs for Category 1 CSPs. Category 1 CSPs may be prepared in an SCA or cleanroom suite
+(see 4.2 Facility Design and Environmental Controls).
+T
+able 12. BUD Limits for Category 1 CSPs
+a
+a
+A shor ter BUD must be assigned when the physical and chemical stability of the CSP is less than the BUD limit stated in the table.
+Table 13 establishes the longest permitted BUDs for Category 2 CSPs. Category 2 CSPs must be prepared in a cleanroom suite (see 4.2
+Facility Design and Environmental Controls).
+T
+able 13. BUD Limits for Category 2 CSPs
+a
+a
+A shor ter BUD must be assigned when the physical and chemical stability of the CSP is less than the BUD limit stated in the table.
+
+### 14.4 Additional Requirements for Category 3 CSPs
+
+#### 14.4.1 Assigning Category 3 BUDs:
+
+Increasing the storage time of a CSP introduces additional risk for chemical degradation, physical
+incompatibilities, the compromising of the container closure system, and microbial proliferation. To address these risks and maintain a
+higher state of environmental control, additional requirements must be met when assigning BUDs for Category 3 CSPs in accordance with
+Table 14. Category 3 CSPs must not be assigned a BUD longer than the limits in Table 14.
+
+#### 14.4.2 Facility and Personnel Requirements for Category 3 CSPs:
+
+In addition to the requirements in this section, other facility and
+personnel requirements related to compounding Category 3 CSPs are addressed throughout the chapter.
+Category 3 personnel competency requirements apply to personnel who par ticipate in or oversee the compounding of Category 3
+CSPs (see 2.2 Demonstrating Competency in Garbing and Hand Hygiene and 2.3 Competency Testing in Aseptic Manipulation).
+Category 3 garbing requirements apply to all personnel entering the buffer room where Category 3 CSPs are compounded and apply
+at all times regardless of whether Category 3 CSPs are being compounded on a given day (see 3.3 Garbing Requirements).
+Increased environmental monitoring requirements apply to all classi«ed areas where Category 3 CSPs are compounded and apply
+at all times regardless of whether Category 3 CSPs are being compounded on a given day (see 6.2 Monitoring Air Quality for Viable
+Airborne Par ticles and 6.3 Monitoring Surfaces for Viable Par ticles).
+The frequency of application of sporicidal disinfectants applies to all classi«ed areas where Category 3 CSPs are compounded and
+applies at all times regardless of whether Category 3 CSPs are being compounded on a given day (see Table 10).
+
+#### 14.4.3 Stability Requirements for Category 3 CSPs:
+
+The BUD assigned to a Category 3 CSP must be suppor ted by stability data obtained
+using a stability-indicating analytical method that is able to distinguish the active ingredient from its degradants and impurities (e.g., by
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 29 ===
+Preparation Characteristics
+Storage Conditions
+Compounding Method
+Controlled Room Temperature
+(20°–25°)
+Refrigerator
+(2°–8°)
+Freezer
+(−25° to −10°)
+Aseptically processed, sterility
+tested, and passing all
+applicable tests for Category 3
+CSPs
+60 days
+90 days
+120 days
+Terminally sterilized, sterility
+tested, and passing all
+applicable tests for Category 3
+CSPs
+90 days
+120 days
+180 days
+forced degradation studies) and quantify the amount of the active ingredient.
+The Category 3 CSP must be prepared according to the exact formulation (API and other ingredients of identical grade and
+procedures) from which the stability data are derived.
+The Category 3 CSP must be packaged and stored in a container closure of the same materials of composition as that used in the
+study.
+The analytical method must be validated based on characteristics such as those described in 〈1225〉.
+The compounding facility must have documentation of the stability study, including a description of the methodology (e.g., number
+of samples taken, storage conditions), validation of the method, the stability-indicating analytical method, and all of the results of
+the study.
+If the Category 3 CSP is an injection (Par ticulate Matter in Injections 〈788〉) or if it is an ophthalmic solution (▲
+Subvisible Par ticulate
+Matter in Intraocular Solutions 〈789〉▲ (CN 1-May-2024)
+), par ticulate-matter testing is conducted once per formulation with acceptable
+results.
+Once for each formulation and for each container closure system in which it will be packaged, the container closure system used is
+evaluated for and conforms to container closure integrity to the end of the BUD (see Package Integrity Evaluation—Sterile Products
+〈1207〉).
+
+#### 14.4.4 Release testing for Category 3 CSPs
+
+Each time the Category 3 CSP is prepared, it is sterility tested and meets the requirements of 〈71〉 or a validated alternative method
+(see Table 14) that is noninferior to 〈71〉 testing.
+Each time the Category 3 CSP is prepared, it is tested for endotoxins for acceptable results, if endotoxin testing is required under 12.3
+Bacterial Endotoxins Testing.
+Table 14 establishes the longest permitted BUDs for Category 3 CSPs. If all of the conditions described for Category 3 CSPs in this
+chapter are not met, the applicable BUD in Table 13 must not be exceeded.
+T
+able 14: BUD Limits for Category 3 CSPs
+a
+a
+A shor ter BUD must be assigned when the physical and chemical stability of the CSP is less than the BUD limit stated in the table.
+
+### 14.5 Multiple-Dose CSPs
+
+A compounded multiple-dose container is designed to contain more than one dose, intended to be entered or penetrated multiple
+times, and usually contains a preservative. A preservative is intended to inhibit the growth of microorganisms and minimize the risk of
+contamination. The use of preservatives must be appropriate for the CSP formulation and the route of administration. For example, the
+preservative must not be inactivated by any ingredients in the CSP
+, and some preservatives are not always appropriate for the patient
+(e.g., neonates) or route of administration (e.g., intrathecal or ophthalmic injection). The use of preservatives, however, must not be
+considered a substitute for aseptic technique.
+A multiple-dose CSP must be prepared as a Category 2 or Category 3 CSP
+. An aqueous multiple-dose CSP must additionally pass
+antimicrobial effectiveness testing in accordance with Antimicrobial Effectiveness Testing 〈51〉. The compounder may rely on
+antimicrobial effectiveness testing 1) conducted (or contracted for) once for each formulation in the par ticular container closure system
+in which it will be packaged or 2) results from an FDA-registered facility or published in peer-reviewed literature sources, provided that the
+CSP formulation (including any preservative) and container closure system are exactly the same as those tested, unless a bracketing
+study is performed. Antimicrobial effectiveness testing may be performed on a low concentration and a high concentration of the active
+ingredient in the formulation to establish preservative effectiveness across various strengths of the same formulation (e.g., bracketing).
+The concentration of all other ingredients (including preservatives) must be the same throughout the bracketing study.
+After a multiple-dose CSP container is initially entered or punctured, the multiple-dose container must not be used for longer than the
+assigned BUD or 28 days if suppor ted by antimicrobial effectiveness testing results (see 〈51〉) on the CSP
+, whichever is shor ter.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 30 ===
+The container closure system used to package the multiple-dose CSP must be evaluated for and conform to container closure integrity
+(see 〈1207〉). The container closure integrity test needs to be conducted only once on each formulation and on «ll volume in the par ticular
+container closure system in which the multiple-dose CSP will be packaged.
+Multiple-dose, nonpreserved, aqueous topical, and topical ophthalmic, CSPs:
+The beyond-use date of a multiple-dose, aqueous,
+nonpreserved CSP intended for topical, including topical ophthalmic, administration may be assigned in accordance with 14.5 Multiple-
+Dose CSPs. However, unpreserved aqueous, topical, including topical ophthalmic, formulations, are at high risk of microbial proliferation if
+contaminated during preparation or use.
+To minimize the risk of patient harm, the requirement for passing antimicrobial effectiveness testing in accordance with 〈51〉 is not
+required only if the preparation is:
+Prepared as a Category 2 or Category 3 CSP
+For use by a single patient
+Labeled (in the label or labeling) to indicate that once opened, it must be discarded after 24 h when stored at controlled room
+temperature and/or that once opened, it must be discarded after 72 h when stored under refrigeration
+15. USE OF CONVENTIONALL
+Y MANUF
+ACTURED PRODUCTS AS COMPONENTS
+This section addresses the time within which an entered or punctured conventionally manufactured product must be used.
+
+### 15.1 Use of Conventionally Manufactured Single-Dose Containers
+
+A conventionally manufactured single-dose container is a container closure system that holds a sterile product for parenteral
+administration (injection or infusion) that is not required to meet the antimicrobial effectiveness testing requirements. If a single-dose vial
+is entered or punctured only in an ISO Class 5 or cleaner air, it may be used up to 12 h after initial entry or puncture as long as the labeled
+storage requirements during that 12-h period are maintained. Opened single-dose ampules must not be stored for any time period.
+
+### 15.2 Use of Conventionally Manufactured Multiple-Dose Containers
+
+A conventionally manufactured product in a multiple-dose container is intended to contain more than one dose of a drug product (see
+〈659〉, General De«nitions, Injection Packaging Systems). Once initially entering or puncturing the multiple-dose container, the multiple-
+dose container must not be used for more than 28 days (see 〈51〉) unless otherwise speci«ed by the manufacturer on the labeling.
+
+### 15.3 Use of Conventionally Manufactured Pharmacy Bulk Packages
+
+A conventionally manufactured pharmacy bulk package is a container of a sterile product for parenteral use that contains many single
+doses. The contents are intended for use in a pharmacy admixture program and are restricted to the sterile preparation of admixtures for
+infusion or, through a sterile transfer device, for the «lling of empty sterile containers. The pharmacy bulk package must be used
+according to the manufacturer’s labeling (see 〈659〉, General De«nitions, Injection Packaging Systems). The pharmacy bulk package must
+be entered or punctured only in an ISO Class 5 PEC.
+16. USE OF CSPs AS COMPONENTS
+This section addresses the use of CSPs (e.g., multiple-dose CSPs, single-dose CSPs, and compounded stock solutions) as components
+to prepare «nal CSPs.
+When a CSP is used as a component, care must be taken to minimize the risk of contamination of both the star ting component CSP
+and the «nal CSP(s).
+Component CSP: The component CSP must be assigned a BUD consistent with 14. Establishing Beyond-Use Dates and must be
+stored under conditions for its assigned BUD when not in use.
+Final CSP: The «nal CSP must be assigned a BUD consistent with 14. Establishing Beyond-Use Dates.
+
+### 16.1 Use of Compounded Multiple-Dose CSPs
+
+A multiple-dose CSP is designed to contain more than one dose of sterile preparation, intended to be entered or punctured multiple
+times, and usually contains a preservative. Multiple-dose CSPs are required to meet the criteria for antimicrobial effectiveness testing
+(see 〈51〉) and the requirements in 14.5 Multiple-Dose CSPs. Multiple-dose CSPs must be stored under the conditions upon which its BUD
+is based (e.g., refrigerator or controlled room temperature). After a multiple-dose CSP is initially entered or punctured, the multiple-dose
+CSP must not be used for longer than the assigned BUD or 28 days, whichever is shor ter. This time limit for entering or puncturing is not
+intended to restrict the BUD of the «nal CSP
+. See 14. Establishing Beyond-Use Dates
+
+### 16.2 Use of Compounded Single-Dose CSPs and CSP Stock Solutions
+
+When a compounded single-dose CSP or CSP stock solution is used as a component to compound additional CSPs, the original
+compounded single-dose CSP or CSP stock solution must be entered or punctured in ISO Class 5 or cleaner air and must be stored under
+the conditions upon which its BUD is based (e.g., refrigerator or controlled room temperature). The component CSP may be used for
+sterile compounding for up to 12 h or its assigned BUD, whichever is shor ter, and any remainder must be discarded. This time limit for
+entering or puncturing is not intended to restrict the BUD of the «nal CSP
+. See 14. Establishing Beyond-Use Dates.
+17. SOPs
+Facilities that prepare CSPs must develop SOPs for the compounding process and other suppor t activities. SOPs must include the
+types of CSPs that are prepared (i.e., Category 1, Category 2, Category 3). A designated person(s) must ensure that SOPs are appropriate
+and are implemented, which includes ensuring that personnel demonstrate competency in performing every procedure that relates to
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 31 ===
+their job function. A designated person(s) must follow up to ensure that corrective actions are taken if problems, deviations, failures, or
+errors are identi«ed. The corrective action must be documented.
+All personnel who perform or oversee compounding or suppor t activities must be trained in the SOPs. All compounding personnel must
+be trained to:
+Recognize potential problems, deviations, failures, or errors associated with preparing a CSP (e.g., those related to equipment,
+facilities, materials, personnel, the compounding process, or testing) that could potentially result in contamination or other adverse
+impact on CSP quality
+Repor t any problems, deviations, failures, or errors to the designated person(s)
+SOPs must be reviewed initially and at least every 12 months by the designated person(s) to ensure that they re¬ect current practices,
+and the review must be documented. Any changes or alterations to an SOP must be made only by a designated person(s) and must be
+documented. Revisions to SOPs must be communicated to all personnel involved in these processes and procedures, and personnel
+should document acknowledgment of the communication.
+18. QUALITY ASSURANCE AND QUALITY CONTROL
+QA is a system of procedures, activities, and oversight that ensures that the compounding process consistently meets quality
+standards. QC is the sampling, testing, and documentation of results that, taken together, ensure that speci«cations have been met
+before release of the CSP
+. See Quality Assurance in Pharmaceutical Compounding 〈1163〉.
+A facility’s QA and QC programs must be formally established and documented in the facility’s SOPs that ensure that all aspects of the
+preparation of CSPs are conducted in accordance with the requirements in this chapter (〈797〉) and the laws and regulations of the
+applicable regulatory jurisdiction. Designated person(s) must ensure that the facility has formal, written QA and QC programs that
+establish a system of:
+1. Adherence to procedures
+2. Prevention and detection of errors and other quality problems
+3. Evaluation of complaints and adverse events
+4. Appropriate investigations and corrective actions
+The facility’s SOPs must describe the roles, duties, and training of the personnel responsible for each aspect of the QA program.
+Designated person(s) responsible for the QA program must have the training, experience, responsibility, and authority to perform these
+duties. The overall QA and QC program must be reviewed at least once every 12 months by the designated person(s). The results of the
+review must be documented, and appropriate action must be taken if needed.
+
+### 18.1 Noti«cation About and Recall of Out-of-Speci«cation Dispensed CSPs
+
+If a CSP is dispensed or administered before the results of release testing are known, the facility must have procedures in place to:
+Immediately notify the prescriber of a failure of speci«cations with the potential to cause patient harm (e.g., sterility, strength,
+purity, bacterial endotoxin, or other quality attributes)
+Recall any unused dispensed CSPs and quarantine any stock remaining in the pharmacy
+Investigate if other lots are affected and recall if necessary
+An SOP for recall of out-of-speci«cation dispensed CSPs must contain:
+Procedures to determine the severity of the problem and the urgency for implementation and completion of the recall
+Procedures to determine the distribution of any affected CSP
+, including the date and quantity of distribution
+Procedures to identify patients who have received the CSP
+Procedures for disposal and documentation of the recalled CSP
+Procedures to investigate and document the reason for failure
+The sterile compounding facility must document the implementation of the recall procedures. The recall must be repor ted to
+appropriate regulatory bodies as required by laws and regulations of the applicable regulatory jurisdiction.
+
+### 18.2 Complaint Handling
+
+Compounding facilities must develop and implement SOPs for handling complaints. Complaints may include but are not limited to
+concerns or repor ts on the quality, labeling, or possible adverse reactions related to a speci«c CSP
+.
+A designated person(s) must review all complaints to determine whether the complaint indicates a potential quality problem with the
+CSP
+. If it does, a thorough investigation into the cause of the problem must be initiated and completed. The investigation must consider
+whether the quality problem extends to other CSPs. Corrective action, if necessary, must be implemented for all potentially affected
+CSPs.
+Consider whether to initiate a recall of potentially affected CSPs and whether to cease sterile compounding processes until all
+underlying problems have been identi«ed and corrected.
+A readily retrievable written or electronic record of each complaint must be kept by the facility, regardless of the source of the
+complaint (e.g., email, telephone, or mail). The record must contain the name of the complainant or other unique identi«er, the date the
+complaint was received, the nature of the complaint, and the response to the complaint. In addition, to the extent that the information is
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 32 ===
+known, the following should be recorded: the name and strength of the CSP and the assigned internal identi«cation number (e.g.,
+prescription, order, or lot number).
+The record must also include the «ndings of any investigation and any follow-up. Records of complaints must be easily retrievable for
+review and evaluation for possible trends and must be retained in accordance with the record-keeping requirements in 20. Documentation.
+A CSP that is returned in connection with a complaint must be quarantined until it is destroyed after completion of the investigation and
+in accordance with laws and regulations of the applicable regulatory jurisdiction.
+
+### 18.3 Adverse Event Repor ting
+
+Adverse events potentially associated with the quality of CSPs must be repor ted in accordance with the facility's SOPs and all laws and
+regulations of the applicable regulatory jurisdiction. If the investigation into an adverse event reveals a quality problem with a CSP that is
+likely to affect other patients, those patients and prescribers potentially affected must be informed.
+19. CSP HANDLING, STORAGE, P
+ACKAGING, SHIPPING, AND TRANSPORT
+Processes and techniques for handling, storing, packaging, and transpor ting CSPs must be outlined in the facility's SOPs. Personnel
+who will be handling, storing, packaging, and transpor ting CSPs within the facility must be trained in accordance with the relevant SOPs,
+and the training must be documented.
+
+### 19.1 Handling and Storing CSPs
+
+CSPs must be handled in a manner that maintains CSP quality and packaging integrity. To help ensure that CSP quality is maintained
+during storage at the compounding facility, personnel must monitor conditions in the storage areas. A controlled temperature area (see
+〈659〉) must be established and monitored to ensure that the temperature remains within the appropriate range for the CSP
+. The
+temperature must be monitored each day, either manually or by a continuous recording device. The results of the temperature readings
+must be documented in a temperature log per facility SOPs or stored in the continuous temperature recording device and must be
+retrievable. Temperature monitoring devices must be veri«ed for accuracy at least every 12 months or as required by the manufacturer.
+The compounding facility must detect and minimize temperature excursions that are outside the temperature limits within the
+controlled temperature areas. When it is known that a CSP has been exposed to temperatures either below or above the storage
+temperature limits for the CSP
+, a designated person(s) must determine (e.g., by consulting literature or analytical testing) whether the CSP
+is expected to retain its integrity or quality. If this cannot be determined, it must be discarded.
+
+### 19.2 Packaging of CSPs
+
+Packaging materials should protect CSPs from damage, leakage, contamination, degradation, and adsorption while preventing
+inadver tent exposure to transpor t personnel. The facility must select appropriate shipping containers and packaging materials based on
+the product speci«cations, information from vendors, and the mode of transpor t.
+Alternative modes of transpor t and/or special packaging (e.g., tamper-evident closures) may be needed to protect the quality of CSPs.
+If the CSP is sensitive to light, light-resistant packaging materials must be used. In some cases, the CSP must be packaged in a special
+container (e.g., a cooler) to protect it from temperature ¬uctuations.
+
+### 19.3 Shipping and Transpor ting CSPs
+
+Compounding personnel must select modes of transpor t that are expected to deliver properly packed CSPs in an undamaged, sterile,
+and stable condition. Inappropriate transpor t can adversely affect the quality of CSPs. For example, preparation-speci«c considerations
+should be given to physical shaking that might occur during pneumatic tube transpor t or undue exposure to heat, cold, or light. When
+shipping or transpor ting CSPs that require special handling (e.g., CSPs with stability concerns), personnel must include speci«c handling
+instructions on the exterior of the container.
+20. DOCUMENTATION
+All facilities where CSPs are prepared must have and maintain written or electronic documentation to demonstrate compliance with the
+requirements in this chapter. This documentation must include, but is not limited to, the following:
+Personnel training, competency assessments, and quali«cation records including corrective actions for any failures
+Cer ti«cation repor ts, including corrective actions for any failures
+Environmental air and surface monitoring procedures and results
+Equipment records (e.g., calibration, veri«cation, and maintenance repor ts)
+Receipt of components
+SOPs, MFRs (if required), and CRs (if required)
+Release inspection and testing records
+Information related to complaints and adverse events including corrective actions taken
+Results of investigations and corrective actions
+Documentation must comply with all laws and regulations of the applicable regulatory jurisdiction. Records must be legible and stored
+in a manner that prevents their deterioration and/or loss. All required documentation for a par ticular CSP (e.g., MFR, CR, and release
+inspection and testing results) must be readily retrievable for at least 2 years after preparation or as required by laws and regulations of
+the applicable regulatory jurisdiction or accrediting organization(s), whichever is longer.
+21. COMPOUNDING ALLERGENIC EXTRACTS
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 33 ===
+Licensed allergenic extracts are mixed and diluted into prescription sets for an individual patient, even though these allergenic extract
+combinations are not speci«ed in the approved licenses for the licensed biological products (e.g., Biological License Applications [BLA]).
+Allergenic extract prescription sets must follow standards at least as stringent as those in this section as follows:
+
+### 21.1 Personnel Quali«cations for Compounding Allergenic Extract Prescription Sets
+
+A designated person(s) with training and exper tise in allergen immunotherapy is responsible for ensuring that personnel who will be
+preparing allergenic extract prescription sets are trained, evaluated, and supervised.
+Before beginning to independently prepare allergenic extracts, all compounding personnel must complete training and be able to
+demonstrate knowledge of principles and skills for sterile compounding.
+Annual personnel training and competency must be documented. Personnel must demonstrate knowledge and competency in these
+procedures by passing written or electronic testing before they can be allowed to compound allergenic extract prescription sets.
+Before being allowed to independently compound, all compounders must successfully complete gloved «nger tip and thumb sampling
+on both hands (see Box 1 and Table 1) no fewer than 3 separate times. Each «nger tip and thumb evaluation must occur after
+performing separate and complete hand hygiene and garbing procedures. After the initial competency evaluation, compounding
+personnel must successfully complete gloved «nger tip and thumb sampling on both hands at least every 12 months thereafter.
+Compounding personnel must have their sterile technique and related practices evaluated at least every 12 months as demonstrated
+by successful completion of a media-«ll test (see Box 2). If compounding outside of a PEC, the post-media-«ll surface sample is not
+required.
+Personnel who fail competency evaluations must successfully pass reevaluations in the de«cient area(s) before they can resume
+compounding of allergenic extract prescription sets. The designated person(s) must identify the cause of failure and determine
+appropriate retraining requirements.
+Personnel who have not compounded an allergenic extract prescription set in more than 6 months must be evaluated in all core
+competencies before resuming compounding duties.
+
+### 21.2 Personnel Hygiene and Garbing for Compounding Allergenic Extract Prescription Sets
+
+Before beginning compounding of allergenic extract prescription sets, personnel must perform hand hygiene (see Box 3) and garbing
+procedures according to the facility's SOPs.
+The minimum garb requirements include:
+A low-lint garment with sleeves that «t snugly around the wrists and an enclosed neck (e.g., gowns)
+A low-lint, disposable head cover that covers the hair and ears and, if applicable, a disposable cover for facial hair
+Face mask
+Sterile powder-free gloves
+Throughout the compounding process, personnel must apply sterile 70% IPA onto all surfaces of the gloves and allow them to dry
+thoroughly.
+
+### 21.3 Facilities for Compounding Allergenic Extract Prescription Sets
+
+The compounding process must occur in an ISO Class 5 PEC or in a dedicated allergenic extract compounding area (AECA). The PEC
+or AECA used to compound allergenic extract prescription sets must be located away from unsealed windows, doors that connect to
+the outdoors, and tra­c ¬ow, all of which may adversely affect the air quality. Neither a PEC nor an AECA may be located where
+environmental control challenges (e.g., restrooms, warehouses, or food preparation areas) could negatively affect the air quality. The
+PEC or the work surfaces in the AECA must be located at least 1 m away from a sink. The impact of activities that will be conducted
+around or adjacent to the PEC or AECA must be considered carefully when designing such an area.
+If used, the PEC must be cer ti«ed at least every 6 months (see 5. Cer ti«cation and Recer ti«cation).
+If used, a visible perimeter must de«ne the AECA.
+Access to the AECA during compounding must be restricted to authorized personnel.
+During compounding activities, no other activity is permitted in the AECA.
+The surfaces of walls, ¬oors, «xtures, shelving, counters, and cabinets in the AECA must be cleanable.
+Carpet is not allowed in the AECA.
+Surfaces should be resistant to damage by cleaning and disinfecting agents.
+The surfaces in the AECA upon which the allergenic extract prescription sets are prepared must be smooth, impervious, free
+from cracks and crevices, and non-shedding to allow for easy cleaning and disinfecting.
+Dust-collecting overhangs such as utility pipes, ledges, and windowsills should be minimized. If overhangs or ledges are
+present, they must be easily cleanable.
+The AECA must be designed and controlled to provide a well-lighted working environment, with temperature and humidity
+controls for the comfor t of compounding personnel wearing the required garb.
+
+### 21.4 Cleaning and Disinfecting for Compounding Allergenic Extract Prescription Sets
+
+In a PEC, all interior surfaces of the PEC must be cleaned and disinfected each day of use before compounding begins and when
+surface contamination is known or suspected. Apply sterile 70% IPA to the horizontal work surface between each prescription set.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 34 ===
+In an AECA, all work surfaces in the AECA where direct compounding is occurring must be cleaned and disinfected each day of use
+before compounding begins and when surface contamination is known or suspected. Apply sterile 70% IPA to the horizontal work
+surface between each prescription set.
+If present, walls, doors, and door frames within the perimeter of the AECA must be cleaned and disinfected monthly and when
+surface contamination is known or suspected.
+Ceilings within the perimeter of the AECA must be cleaned and disinfected when visibly soiled and when surface contamination
+is known or suspected.
+Vial stoppers on packages of conventionally manufactured sterile ingredients must be wiped with sterile 70% IPA to ensure that the
+critical sites are wet and allowed to dry before they are used to compound allergenic extract prescription sets.
+
+### 21.5 Establishing BUDs for Allergenic Extract Prescription Sets
+
+The BUD for the prescription set must be no later than the earliest expiration date of any allergenic extract or any diluent that is par t of
+the prescription set, and the BUD must not exceed 1 year from the date the prescription set is mixed or diluted.
+
+### 21.6 Labeling for Allergenic Extract Prescription Sets
+
+The label of each vial of an allergenic extract prescription set must display the following prominently and understandably:
+Patient name
+Type and fractional dilution of each vial, with a corresponding vial number
+BUD
+Storage conditions
+
+### 21.7 Shipping and Transpor ting Allergenic Extract Prescription Sets
+
+If shipping or transpor ting allergenic extract prescription sets, compounding personnel must select modes of transpor t that are
+expected to deliver properly packed prescription sets in an undamaged, sterile, and stable condition. Inappropriate transpor t can
+adversely affect the quality of allergenic extract prescription sets.
+When shipping or transpor ting allergenic extract prescription sets that require special handling, personnel must include speci«c
+handling instructions on the exterior of the container.
+
+### 21.8 Documentation for Compounding Allergenic Extract Prescription Sets
+
+All facilities where allergenic extract prescription sets are prepared must have and maintain written or electronic documentation to
+include, but not limited to, the following:
+SOPs describing all aspects of the compounding process
+Personnel training records, competency assessments, and quali«cation records including corrective actions for any failures
+Cer ti«cation repor ts of the PEC, if used, including corrective actions for any failures
+Temperature logs for refrigerator(s)
+CRs for individual allergenic extract prescription sets (see Box 10)
+Information related to complaints and adverse events including corrective actions taken
+Investigations and corrective actions
+GLOSSARY
+ACD:
+Automated compounding device.
+ACPH:
+Air changes per hour.
+Active pharmaceutical ingredient (API):
+Any substance or mixture of substances intended to be used in the compounding of a preparation,
+thereby becoming the active ingredient in that preparation and furnishing pharmacological activity or other direct effect in the diagnosis,
+cure, mitigation, treatment, or prevention of disease in humans and animals or affecting the structure and function of the body. Also referred
+to as Bulk drug substance. A conventionally manufactured drug product is not an API but is typically manufactured from an API(s).
+Added substance:
+An ingredient that is necessary to compound a preparation but is not intended or expected to cause a pharmacologic
+response if administered alone in the amount or concentration contained in a single dose of the compounded preparation. The term is used
+synonymously with the terms inactive ingredient, excipient, and pharmaceutical ingredient.
+Administration:
+The direct application of a sterile product or preparation to a single patient by injecting, infusing, or otherwise providing a
+sterile product or preparation in its «nal form.
+Airlock:
+A space with interlocked doors, constructed to maintain air pressure control when items move between two adjoining areas
+(generally with different air cleanliness standards). The intent of an airlock is to prevent ingress of par ticulate matter and microbial
+contamination from a lesser-controlled area.
+Alcohol-based hand rub:
+An alcohol-containing preparation (liquid, gel, or foam) designed for application to the hands of healthcare
+personnel to inactivate microorganisms and/or temporarily suppress their growth. Such preparations may contain one or more types of
+alcohol, other active ingredients, excipients, and humectants.
+Allergenic extract:
+A biological substance used for the diagnosis and/or treatment of allergic diseases such as allergic rhinitis, allergic
+sinusitis, allergic conjunctivitis, bee venom allergy, and food allergy.
+Allergenic extract compounding area (AECA):
+A designated space, area, or room that is not required to be classi«ed, with a visible
+perimeter that is suitable for preparation of allergenic extract prescription sets.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 35 ===
+Allergenic extract prescription set:
+Combinations of licensed allergenic extracts that would be mixed and diluted to provide subcutaneous
+immunotherapy to an individual patient, even though these allergenic extract combinations are not speci«ed in the approved BLAs for the
+licensed biological products.
+Anteroom:
+An ISO Class 8 or cleaner room with «xed walls and doors where personnel hand hygiene, garbing procedures, and other
+activities that generate high par ticulate levels may be performed. The anteroom is the transition room between the unclassi«ed area of the
+facility and the buffer room.
+Aseptic processing:
+A method by which separate, sterile components (e.g., drugs, containers, or closures) are brought together under
+conditions that maintain their sterility. The components can either be purchased as sterile or, when star ting with nonsterile components,
+can be separately sterilized prior to combining (e.g., by membrane «ltration or by autoclave).
+Aseptic technique:
+A set of methods used to keep objects and areas free of microorganisms and thereby minimize infection risk to the
+patient. It is accomplished through practices that maintain the microbe count at an irreducible minimum.
+Assigned trainer:
+One or more individuals assigned by the designated person(s) to be responsible and accountable for directly providing the
+training, observation, and/or evaluation of personnel for the preparation of CSPs.
+Batch:
+More than one CSP prepared as described in the MFR in a single, discrete process, and expected to have uniform character and
+quality, within speci«ed limits.
+Beyond-use date (BUD):
+The date, or hour and the date, after which a CSP must not be used, stored, or transpor ted. The date is determined
+from the date and time the preparation is compounded.
+Biological safety cabinet (BSC):
+A ventilated cabinet that may be used for compounding. These cabinets are divided into three general
+classes (Class I, Class II, and Class III). Class II BSCs are fur ther divided into types (Type A1, Type A2, Type B1, Type B2, and Type C1).
+Biological safety cabinet (BSC), Class II:
+A ventilated cabinet with an open front and inward and downward unidirectional HEPA-«ltered
+air¬ow and HEPA-«ltered exhaust. A BSC used to prepare a CSP must be capable of providing an ISO Class 5 or better environment for
+preparation of the CSPs.
+BLA:
+Biological license application.
+Blood components:
+Any therapeutic constituent of blood separated by physical or mechanical means (e.g., white cells, red cells, platelets,
+plasma, serum). It is not intended to include plasma-derived products (e.g., albumin, coagulation factors, immunoglobulins) manufactured
+under an approved BLA or equivalent.
+BMBL:
+Biosafety in Microbiological and Biomedical Laboratories.
+Buffer room:
+An ISO Class 7 or cleaner room with «xed walls and doors where PEC(s) that generate and maintain an ISO Class 5
+environment are physically located. The buffer room may only be accessed through the anteroom or another buffer room.
+Bulk drug substance:
+See the entry for Active pharmaceutical ingredient.
+Category 1 CSP:
+A CSP that is assigned a BUD of 12 h or less at controlled room temperature or 24 h or less refrigerated that is
+compounded in accordance with all applicable requirements for Category 1 CSPs in this chapter.
+Category 2 CSP:
+A CSP that may be assigned a BUD of greater than 12 h at controlled room temperature or greater than 24 h refrigerated
+that is compounded in accordance with all applicable requirements for Category 2 CSPs in this chapter.
+Category 3 CSP:
+A CSP that may be assigned a BUD exceeding the limits in Table 13 for Category 2 CSPs and is compounded in
+accordance with all applicable requirements for Category 3 CSPs in this chapter.
+CDC:
+Centers for Disease Control and Prevention.
+Cer ti«cate of analysis (COA):
+A repor t from the supplier of a component, container, or closure that accompanies the supplier’s material and
+contains the speci«cations and results of all analyses and a description of the material.
+CFU:
+Colony-forming units.
+Classi«ed area:
+An area that maintains an air quality classi«cation based on the ISO standards required in this chapter (see also the
+de«nition for ISO class).
+Cleaning:
+The process of removing substances (e.g., organic and inorganic material) from objects and surfaces, normally accomplished by
+manually or mechanically using water with detergents or enzymatic products.
+Cleaning agent:
+An agent, usually containing a surfactant, used for the removal of substances (e.g., dir t, debris, microbes, and residual
+drugs or chemicals) from surfaces.
+Cleanroom suite:
+A classi«ed area that consists of both an anteroom and buffer room.
+Component:
+Any ingredient used in the compounding of a preparation, including any active ingredient, added substance, or conventionally
+manufactured product.
+Compounded sterile preparation (CSP):
+A preparation intended to be sterile that is created by combining, admixing, diluting, pooling,
+reconstituting, repackaging, or otherwise altering a drug product or bulk drug substance.
+Compounded stock solution:
+A sterile mixture of components that is used to compound additional CSPs.
+Compounding:
+The process of combining, admixing, diluting, pooling, reconstituting, repackaging, or otherwise altering a drug product or
+bulk drug substance to create a sterile preparation.
+Compounding area:
+The area where compounding is occurring (i.e., a cleanroom suite, inside the perimeter of the SCA, or AECA).
+Compounding aseptic containment isolator (CACI):
+A type of RABS that uses HEPA «ltration to provide an ISO Class 5 unidirectional air
+environment designed for the compounding of sterile HDs.
+Compounding aseptic isolator (CAI):
+A type of RABS that uses HEPA «ltration to provide an ISO Class 5 unidirectional air environment
+designed for compounding of sterile non-HDs.
+Compounding record (CR):
+Documents the compounding of each CSP
+.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 36 ===
+Container closure system:
+Packaging components that together contain and protect the dosage form. This includes primary packaging
+components and secondary packaging components, if the latter are intended to provide additional protection.
+Containment glove bag:
+A single-use disposable glove bag that is capable of containing airborne chemical par ticles.
+Containment ventilated enclosure (CVE):
+A non-ISO classi«ed full or par tial enclosure that uses ventilation principles to capture, contain,
+and remove airborne contaminants through HEPA «ltration and prevent their release into the work environment.
+Conventionally manufactured product:
+A pharmaceutical dosage form, usually the subject of an application approved by the applicable
+national regulatory agency, that is manufactured under current good manufacturing practice conditions.
+Critical site:
+A location that includes any component or ¬uid pathway surfaces (e.g., vial septa, injection por ts, and beakers) or openings
+(e.g., opened ampules and needle hubs) that are exposed and at risk of direct contact with air (e.g., ambient room or HEPA «ltered),
+moisture (e.g., oral and mucosal secretions), or touch contamination.
+Designated person(s):
+One or more individuals assigned to be responsible and accountable for the performance and operation of the
+facility and personnel as related to the preparation of CSPs.
+Direct compounding area (DCA):
+A critical area within the ISO Class 5 PEC where critical sites are exposed to unidirectional HEPA-«ltered
+air, also known as «rst air.
+Disinfectant:
+A chemical or physical agent used on inanimate surfaces and objects to destroy fungi, viruses, and bacteria. Sporicidal
+disinfectants are considered a special class of disinfectants that also are effective against bacterial and fungal spores.
+Dynamic air¬ow smoke pattern test:
+A PEC test in which a visible source of smoke, which is neutrally buoyant, is used to observe air
+patterns within the unidirectional space (i.e., the DCA) under dynamic operating conditions (see the entry for Dynamic operating conditions).
+This test is not appropriate for ISO Class 7 or ISO Class 8 cleanrooms that do not have unidirectional air¬ow (see the entry for Visual smoke
+study).
+Dynamic operating conditions:
+Conditions in the compounding area in which operating personnel are present and simulating or performing
+compounding. The conditions should re¬ect the largest number of personnel and highest complexity of compounding expected during
+routine operations as determined by the designated person(s).
+ECV:
+Endotoxin challenge vial.
+EP
+A:
+US Environmental Protection Agency.
+Excipient:
+See the entry for Added substance.
+FDA:
+US Food and Drug Administration.
+Filter integrity test:
+A test (e.g., bubble point test) of the integrity of a sterilizing grade «lter performed after the «ltration process to detect
+whether the integrity of the «lter has been compromised.
+Final yield:
+The total number of containers actually prepared at the end of the compounding process prior to release testing.
+First air:
+The air exiting the HEPA «lter in a unidirectional air stream.
+Formulation:
+The speci«c qualitative and quantitative composition of the «nal CSP
+.
+Garb:
+Items such as gloves, garments (e.g., gowns), shoe covers, head and facial hair covers, masks, and other items designed to reduce
+par ticle-shedding from personnel and minimize the risk of contamination of CSP(s).
+GFT:
+Gloved «nger tip and thumb sampling.
+Hazardous drug (HD):
+Any drug identi«ed by at least one of the following six criteria: carcinogenicity, teratogenicity or developmental
+toxicity, reproductive toxicity in humans, organ toxicity at low dose in humans or animals, genotoxicity, or new drugs that mimic existing
+HDs in structure or toxicity.
+High-e­ciency par ticulate air (HEP
+A) «ltration:
+Being, using, or containing a «lter designed to remove 99.97% of airborne par ticles
+measuring 0.3-micron or greater in diameter passing through it.
+HVAC:
+Heating, ventilation, and air conditioning.
+Integrated ver tical laminar ¬ow zone (IVLFZ):
+A designated ISO Class 5 area serving as the PEC within an ISO Class 7 or cleaner buffer
+room. In the IVLFZ, unidirectional air¬ow is created by placing HEPA «lters over the entire surface of the worktables and by effective
+placement of air returns.
+IP
+A:
+Isopropyl alcohol.
+ISO:
+International Organization for Standardization.
+ISO class:
+An air-quality classi«cation from the International Organization for Standardization.
+Label:
+The par t of the labeling on the immediate container.
+Labeling:
+All labels and other written, printed, or graphic matter on the immediate container or on or inside any packaging system or
+wrapper in which the ar ticle is enclosed, except any outer shipping container.
+Laminar air¬ow system (LAFS):
+A device or zone within a buffer room that provides an ISO Class 5 or better air quality environment for
+sterile compounding. The system provides a unidirectional HEPA-«ltered air¬ow.
+Laminar air¬ow workbench (LAFW):
+A device that is a type of LAFS that provides an ISO Class 5 or better air quality environment for sterile
+compounding. The device provides a unidirectional HEPA-«ltered air¬ow.
+Line of demarcation:
+A visible line on the ¬oor that separates the clean and dir ty sides of the anteroom.
+Low-lint wiper:
+A wiper exhibiting few, if any, «bers or other contamination, visible without magni«cation, which is separate from, or easily
+removed from, the wiper material in a dry condition.
+Master formulation record (MFR):
+A detailed record of procedures that describes how the CSP is to be prepared.
+MEA:
+Malt extract agar.
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 37 ===
+Media-«ll test:
+A simulation used to qualify processes and personnel engaged in sterile compounding to ensure that the processes and
+personnel are able to prepare CSPs without contamination.
+Monograph:
+A quality documentary standard within USP–NF that ar ticulates the quality expectations for a medicine including for its identity,
+strength, purity, and performance. It also describes the tests to validate that a medicine and its ingredients meet these criteria.
+Multiple-dose container:
+A container of sterile product for parenteral administration (e.g., injection or infusion) that is designed to contain
+more than one dose of the sterile product. A multiple-dose container is usually required to meet the antimicrobial effectiveness testing
+criteria. See 〈659〉, Injection Packaging Systems, Multiple-dose container.
+One-step disinfectant cleaner:
+A product with an EPA-registered (or equivalent) claim that it can clean and disinfect a nonporous surface in
+the presence of light to moderate organic soiling without a separate cleaning step.
+Oversight:
+The review, monitoring, and supervision of actions taken by personnel, bearing responsibility for those actions, and being
+available for consultation if and when needed even if not physically present.
+Pass-through chamber:
+An enclosure with sealed doors on both sides that should be interlocked. The pass-through chamber is positioned
+between two spaces for the purpose of minimizing par ticulate transfer while moving materials from one space to another.
+Perimeter:
+A visible demarcation (such as a door, walls, or visible marking on the ¬oor) that de«nes the SCA or AECA.
+Pharmaceutical isolator:
+An enclosure that provides HEPA-«ltered ISO Class 5 unidirectional air operated at a continuously higher pressure
+than its surrounding environment and is decontaminated using an automated system. It uses only decontaminated interfaces or rapid
+transfer por ts for materials transfer. [Note—A CAI or CACI is not a pharmaceutical isolator.]
+Pharmacy bulk package:
+A conventionally manufactured sterile product for parenteral use that contains many single doses intended for
+use in a pharmacy admixture program. A pharmacy bulk package may either be used to prepare admixtures for infusion or, through a sterile
+transfer device, for «lling sterile containers. See 〈659〉, Injection Packaging Systems, Pharmacy bulk package.
+Positive-pressure room:
+A room that is maintained at higher pressure than the adjacent spaces, and therefore the net air¬ow is out of the
+room.
+PPE:
+Personal protective equipment.
+Preservative:
+A substance added to inhibit microbial growth.
+Primary engineering control (PEC):
+A device or zone that provides an ISO Class 5 air quality environment for sterile compounding.
+Probability of a nonsterile unit (PNSU):
+The probability of an item being nonsterile after it has been exposed to a veri«ed sterilization
+process. A PNSU value can only be applied to terminal sterilization. [Note—This is also called the sterility assurance level (SAL).]
+Pyrogen:
+A substance that induces a febrile reaction in a patient.
+Quality assurance (QA):
+A system of procedures, activities, and oversight that ensures that the compounding process consistently meets
+quality standards.
+Quality control (QC):
+The sampling, testing, and documentation of results that, taken together, ensure that speci«cations have been met
+before release of the CSP
+.
+Reconstitution:
+The process of adding a diluent to a conventionally manufactured product to prepare a sterile solution or suspension.
+Release inspection and testing:
+Visual inspection and testing performed to ensure that a preparation meets appropriate quality
+characteristics.
+Repackaging:
+The act of removing a sterile product or preparation from its original primary container and placing it into another primary
+container, usually of smaller size without fur ther manipulation.
+Restricted-access barrier system (RABS):
+An enclosure that provides HEPA-«ltered ISO Class 5 unidirectional air that allows for the ingress
+and/or egress of materials through de«ned openings that have been designed and validated to preclude the transfer of contamination, and
+that generally are not to be opened during operations. Examples of RABS include CAIs and CACIs.
+SDA:
+Sabouraud dextrose agar.
+Secondary engineering control (SEC):
+The area where the PEC is placed (e.g., a cleanroom suite or an SCA). It incorporates speci«c design
+and operational parameters required to minimize the risk of contamination within the compounding area.
+Segregated compounding area (SCA):
+A designated space, area, or room that is not required to be classi«ed and is de«ned with a visible
+perimeter. The SCA must contain a PEC and is suitable for preparation of Category 1 CSPs only.
+Single-dose containers:
+A container of sterile product for parenteral administration (e.g., injection or infusion) that is designed for use with
+a single patient as a single injection/infusion. A single-dose container usually does not contain a preservative. See 〈659〉, Injection
+Packaging Systems, Single-dose container.
+SOP:
+Standard operating procedure.
+Speci«cation:
+The tests, analytical methods, and acceptance criteria to which any component, CSP
+, container closure system, equipment, or
+other material used in compounding CSPs must conform to be considered acceptable for its intended use.
+Sporicidal disinfectant:
+A chemical or physical agent that destroys bacterial and fungal spores when used in su­cient concentration for a
+speci«ed contact time. It is expected to kill all vegetative microorganisms.
+Stability:
+The extent to which a product or preparation retains physical and chemical proper ties and characteristics within speci«ed limits
+throughout its expiration or BUD.
+Sterility:
+The absence of viable microorganisms.
+Sterility assurance level (SAL):
+See the entry for Probability of a nonsterile unit (PNSU).
+Sterilization by «ltration:
+Passage of a gas or liquid through a sterilizing-grade membrane to yield «ltrates that are sterile.
+Sterilizing-grade «lter:
+Filter membranes that are documented to retain 100% of a culture of 10
+ microorganisms of a strain of
+Brevundimonas diminuta per square centimeters of membrane surface under a pressure of not less than 30 psi. Such «lter membranes are
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations
+
+=== PAGE 38 ===
+nominally 0.22- or 0.2-µm pore size.
+Terminal sterilization:
+The application of a lethal process (e.g., steam, dry heat, irradiation) to sealed containers for the purpose of
+achieving a predetermined PNSU of greater than 10
+−6
+ or a probability of less than one in one million of a nonsterile unit.
+TSA:
+Trypticase soy agar.
+Unclassi«ed space:
+A space not required to meet any air cleanliness classi«cation based on the ISO.
+Unidirectional air¬ow:
+Air within a PEC moving in a single direction in a uniform manner and at su­cient velocity to sweep par ticles away
+from the DCA.
+Verify:
+To con«rm that a method, process, system, or equipment will perform as expected under the conditions of actual use.
+Visual smoke study:
+A test, used in ISO Class 7 and ISO Class 8 rooms that do not have unidirectional air¬ow, in which a visible source of
+smoke, which is neutrally buoyant, is used to verify an absence of stagnant air¬ow. This test does not need to be performed under dynamic
+operating conditions and is not appropriate for PECs (see the entry for Dynamic air¬ow smoke pattern test).
+Work¬ow management system:
+Technology comprised of hardware and/or software that allows for automation to assist in the veri«cation
+of components of, and preparation of, CSPs and to document components and processes.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<797> PHARMACEUTICAL COMPOUNDING--
+STERILE PREPARATIONS
+Selma Mitiche
+Associate Scienti«c Liaison
+CMP2020
+Compounding 2020
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 47(6)
+Current DocID: GUID-A4CAAA8B-6F02-4AB8-8628-09E102CBD703_8_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99925_08_01
+DOI ref: n7zrj
+OFFICIAL
+2/12/25, 3:26 PM
+USP-NF 〈797〉 Pharmaceutical Compounding—Sterile Preparations

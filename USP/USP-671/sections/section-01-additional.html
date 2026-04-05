@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈671〉 - Section 2: Additional Tests &amp; Special Containers</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Additional Tests &amp; Special Containers | 其他試驗與特殊容器</h1>
+    <div class="subtitle">USP 〈671〉 Containers—Performance Testing</div>
+    <div class="page-info">USP General Chapter 〈671〉 | Pages 7–10 (Lines 620–929)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding-left:1.5rem; padding-right:1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握分類系統 Methods 5–8 的完整程序，包括乾燥劑計算公式、控制組設計和分類判定標準</li>
+        <li>理解 tight（緊密容器）和 well-closed（良好密閉容器）的 MVTR 分類門檻差異</li>
+        <li>掌握 Method 7（泡殼卡）的四級分類系統（Class A–D）及其判定 MVTR 標準</li>
+        <li>理解光譜透過性（Spectral Transmission）測試的設備要求、程序和 Table 3 限度值</li>
+        <li>熟悉 〈671〉 詞彙表中的關鍵術語定義，並能區分 test specimen 和 test unit 的差異</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+<!-- ==================== SUBSECTION: CLASSIFICATION SYSTEM INTRODUCTION ==================== -->
+<div class="section-title">Classification System — Introduction 分類系統介紹</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>CLASSIFICATION SYSTEM FOR PLASTIC PACKAGING SYSTEMS</h3>
+        <h3>Introduction</h3>
+
+        <p>A classification system is included to provide methods that allow pharmacists and institutional repackagers to select appropriate containers for <span class="key-term">repackaging</span>. Repackaging is the act of taking a finished drug product from the container in which it was distributed by the original manufacturer and placing it into a different container without further manipulation of the drug. The classification system provided can also be used by the drug product manufacturer for testing packaging systems that have had the <span class="key-term">primary seal broached</span>.</p>
+
+        <h3>Classification Based on Desiccant Method for Solid Oral Dosage Forms</h3>
+        <p>This section describes the methods for assigning the classification for <span class="key-term">multiple-unit containers (Method 5)</span>, multiple-unit containers with induction seals (Method 6), and single-unit and unit-dose containers (Method 7) used by pharmacists and institutional repackagers.</p>
+
+        <h3>Desiccant — Methods 5 and 6</h3>
+        <p>Place a quantity of 4- to 8-mesh, anhydrous calcium chloride in a shallow container, taking care to exclude any fine powder, dry at 215 ± 5° for 7¼ ± ¼ h, and cool in a desiccator for at least 2 h before use.</p>
+
+        <h3>Desiccant — Method 7</h3>
+        <p>Use USP Desiccant, Small RS; USP Desiccant, Medium RS; or USP Desiccant, Large RS. The USP Reference Standards for desiccants are molecular sieves molded in a form to fit the size and shape of the blister cavity used. Prior to use, if the average weight of 10 tablets exceeds the weight specified on the USP certificate by more than 3%, drying shall be performed. Dry at 250 ± 5° for 1–2 h, and cool in a desiccator for at least 2 h before use. Store desiccant in a tightly closed container in the driest conditions possible after being removed from original container.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 分類 vs 定量測量</h4>
+            <p><strong>分類系統（Methods 5–8）</strong>的目的不同於定量 MVTR 測量（Methods 1–4）：</p>
+            <ul>
+                <li><strong>定量測量（Methods 1–4）：</strong>給出一個精確的 MVTR 數值（如 0.025 mg/day/cavity），用於申報和批間比較</li>
+                <li><strong>分類系統（Methods 5–8）：</strong>只需確認容器是否達到某個等級門檻（如「tight」或「well-closed」），用於重新包裝時選擇容器</li>
+            </ul>
+            <p><strong>重新包裝（Repackaging）：</strong>藥局或機構把原廠 100 粒裝分裝成 30 粒小包裝，就是重新包裝。分類系統就是為了確保分裝容器的屏障性能不低於原廠要求。</p>
+            <p><strong>Primary seal broached（初始密封破壞）：</strong>指容器的原始密封（如鋁箔封膜）被打開過。原廠也可用分類方法測試這種情況下的容器性能。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像買咖啡豆：原廠用氮氣真空袋包裝（定量測量確認屏障性能），你把袋子打開後用自己的密封罐分裝儲存（重新包裝）。</p>
+            <p>分類系統就是幫你確認：「你的密封罐夠不夠好？」它不需要告訴你具體能保存幾年，只需要確認「是不是達到緊密容器的等級」——達標了就可以用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>兩種乾燥劑的選用邏輯再確認：</strong></p>
+            <ul>
+                <li>Methods 5 &amp; 6 用氯化鈣（多單元瓶裝）→ 與 Method 1 一致</li>
+                <li>Method 7 用 USP 分子篩 RS（泡殼）→ 與 Method 2 一致</li>
+            </ul>
+            <p>這種對應關係不是偶然：分類方法和定量方法使用相同類型的乾燥劑，確保分類結果與 MVTR 數值之間有可靠的對應關係。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>藥局要分裝原廠標示「密封容器（tight container）」的口服固體藥品，應使用哪個方法來驗證分裝容器的適用性？</li>
+                <li>Method 6 與 Method 5 的差異是什麼？為什麼 Method 6 的「tight」判定標準（10 mg/day/L）比 Method 5（100 mg/day/L）嚴格 10 倍？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: METHODS 5, 6, 7 PROCEDURES ==================== -->
+<div class="section-title">Methods 5, 6, 7 — Procedures &amp; Classification 分類方法程序與判定標準</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Procedure — Method 5 (Multiple-Unit Containers)</h3>
+        <p>Select 12 containers of a uniform size and type. Clean the sealing surfaces with a lint-free cloth, and close and open each container 30 times within the range of tightness specified in Table 2. Add desiccant to 10 of the containers, designated <span class="key-term">"test containers"</span>, filling each to within 13 mm of the closure if the container volume is 20 mL or more, or filling each to two-thirds of its nominal volume if the container volume is less than 20 mL. Close each container immediately after adding desiccant, and apply the torque designated in Table 2 when closing screw-capped containers. To each of the remaining two containers, designated <span class="key-term">"controls"</span>, add a sufficient number of glass beads to attain a weight approximately equal to that of each of the test containers.</p>
+        <p>Record the weight of the individual containers and store at <span class="key-term">75 ± 3% RH and a temperature of 23 ± 2°</span>.</p>
+        <div class="quote-box">
+            [Note—A saturated system of 35 g of sodium chloride with each 100 mL of water placed in the bottom of a desiccator maintains the specified humidity. Other methods may be employed to maintain these conditions.]
+        </div>
+        <p>After <span class="key-term">336 ± 1 h (14 days)</span>, record the weight of the individual containers. Completely fill 5 empty containers of the same size and type with water or a noncompressible, free-flowing solid to the level indicated by the closure surface when in place. Transfer the contents of each to a graduated cylinder, and determine the <span class="key-term">average container volume</span>, in milliliters.</p>
+
+        <h3>Procedure — Method 6 (Containers with Induction Seals)</h3>
+        <p>Proceed as directed under Method 5, except fit containers with <span class="key-term">impervious seals</span> obtained by heat-sealing the bottles with an aluminum foil–polyethylene laminate or other suitable seal. If there is a need to increase the precision of the method, the user can test the system without the closure as long as an impervious seal remains on the container. Keeping the cap on causes variation and the absorption of water by the cap liner is not part of the moisture permeation.</p>
+
+        <h3>Procedure — Method 7 (Unit-Dose Containers — Blister Packs)</h3>
+        <p>Use this procedure for packs (e.g., punch-out cards) and blister cards that incorporate one or more separately sealed unit-dose containers or blisters. Seal a sufficient number of packs, such that NLT 4 packs and a total of NLT 10 unit-dose containers or blisters filled with <span class="key-term">1 pellet in each unit</span> are tested. Seal a corresponding number of empty packs as controls. Store all of the containers at <span class="key-term">75 ± 3% RH and 23 ± 2°</span>.</p>
+        <p>After 24 h, and at each multiple thereof (see Classification), remove the packs from the chamber, and allow them to equilibrate for about 45 min. Record the weights of the individual packs, and return them to the chamber. The test and control containers are weighed after every 24 h and after suitable test intervals for the final weighings. W and C are as follows: <span class="key-term">24 h for Class D, 48 h for Class C, 7 days for Class B, and NLT 28 days for Class A</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 10+2 容器設計（控制組邏輯）</h4>
+            <p>Methods 5 &amp; 6 使用 10 個測試容器 + 2 個對照容器，這是嚴謹的實驗設計：</p>
+            <ul>
+                <li><strong>測試容器（10個）：</strong>填充乾燥劑，測量在 75% RH 環境下吸入的水分</li>
+                <li><strong>控制容器（2個）：</strong>填充等重的玻璃珠，模擬相同重量但不吸濕。用於修正環境中可能發生的重量漂移（如秤台靜電、空氣浮力等系統性誤差）</li>
+            </ul>
+            <p>MVTR 計算公式為：<br>
+            (1000/14V) × [(T_F − T_I) − (C_F − C_I)]<br>
+            括號中的 (C_F − C_I) 就是控制組的重量漂移，用於修正系統性誤差。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「30 次開關容器」的操作模擬了真實使用情境。想像一個藥局的藥瓶，顧客或護士每天都要打開取藥——30 次開關讓蓋子的密封性「退化到正常使用狀態」，而不是全新未使用狀態。</p>
+            <p>如果只測試「全新」狀態的密封，測出的屏障性能會過於理想，不代表實際使用中的性能。這就是 30 次開關設計的目的：測真實世界的性能，不是實驗室理想值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>75% RH 的維持方法：</strong>飽和食鹽水（35 g NaCl / 100 mL 水）在密封系統中可維持約 75% RH。這是一個經典的實驗室技巧，不需要精密濕度控制箱，實驗室可以用乾燥器加飽和鹽水來完成。</p>
+            <p><strong>Method 7 的「指示球（pellet）」：</strong>每個空腔放 1 個指示球（pellet，可能是指示型色變乾燥劑），若球變粉紅色或平均重量增加超過 10%，測試終止，只有之前的數據有效。這是一個內建的「過飽和警報機制」。</p>
+            <p><strong>Class A–D 的稱量間隔設計：</strong>Class D（最差）只需 24 小時就能達到判定終點；Class A（最佳）需要 NLT 28 天。這反映了屏障性能越好，累積到可測量重量變化所需時間越長。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Method 5 的 MVTR 計算公式中，為什麼分子要乘以 1000？（提示：容積單位為 mL，MVTR 單位為 mg/day/L）</li>
+                <li>若 Method 7 測試中有一包的指示球在第 3 天變粉紅，此測試包的數據應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: CLASSIFICATION CRITERIA ==================== -->
+<div class="section-title">Classification Criteria — Methods 5, 6, 7, 8 分類判定標準</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Calculations — Methods 5 and 6</h3>
+        <p>Calculate the rate of moisture vapor transmission, in mg/day/L:</p>
+        <p><strong>(1000/14V) × [(T_F − T_I) − (C_F − C_I)]</strong></p>
+        <ul>
+            <li>V = volume of the container (mL)</li>
+            <li>T_F = final weight of each test container (mg)</li>
+            <li>T_I = initial weight of each test container (mg)</li>
+            <li>C_F = average final weight of the two controls (mg)</li>
+            <li>C_I = average initial weight of the two controls (mg)</li>
+        </ul>
+
+        <h3>Calculations — Method 7</h3>
+        <p>Calculate, to two significant figures, the average rate of moisture vapor transmission, in mg/day, for each unit-dose container or blister in each pack:</p>
+        <p><strong>[1/(N × X)] × [(W_F − W_I) − (C_F − C_I)]</strong></p>
+        <ul>
+            <li>N = number of days expired in the test period (beginning after the initial 24-h equilibration period)</li>
+            <li>X = number of separately sealed units per pack</li>
+            <li>W_F = final weight of each test pack (mg)</li>
+            <li>W_I = initial weight of each test pack (mg)</li>
+            <li>C_F = final weight of the control packs (mg)</li>
+            <li>C_I = initial weight of the control packs (mg)</li>
+        </ul>
+
+        <h3>Classification — Methods 5 and 6</h3>
+        <p><strong>Method 5:</strong> Packaging systems are classified as <span class="key-term">"tight"</span> if NMT 1 of the 10 test containers exceeds 100 mg/day/L in moisture vapor transmission, and none exceeds 200 mg/day/L. Packaging systems are classified as <span class="key-term">"well-closed"</span> if NMT 1 of the 10 test containers exceeds 2000 mg/day/L in moisture vapor transmission, and none exceeds 3000 mg/day/L.</p>
+        <p><strong>Method 6:</strong> Packaging systems are classified as <span class="key-term">"tight"</span> if the moisture vapor transmission exceeds 10 mg/day/L in NMT 1 of the 10 test containers, and none exceeds 25 mg/day/L.</p>
+
+        <h3>Classification — Method 7</h3>
+        <p><strong>Class A:</strong> No pack tested exceeds 0.5 mg/day/unit in average blister MVTR<br>
+        <strong>Class B:</strong> No pack tested exceeds 5 mg/day/unit in average blister MVTR<br>
+        <strong>Class C:</strong> No pack tested exceeds 20 mg/day/unit in average blister MVTR<br>
+        <strong>Class D:</strong> None of the packs tested meet any of the above average blister MVTR requirements</p>
+
+        <h3>Classification Based on Water Method for Liquid Oral Dosage Forms</h3>
+        <p>The following procedure and classification scheme (Method 8) is provided to classify multiple-unit containers as "tight" for liquid oral dosage forms.</p>
+        <p>Select 12 bottles of a uniform size and type. Fill 10 bottles with water to the fill capacity. Fill two containers with glass beads, to the same weight as the filled test containers. Store sealed containers at a temperature of <span class="key-term">25 ± 2° and 40 ± 2% RH</span>. After 336 ± 1 h (14 days), record the weight of the individual containers, and calculate the water weight loss rate, in %/year.</p>
+
+        <h3>Classification — Method 8</h3>
+        <p>The packaging systems are classified as <span class="key-term">"tight"</span> if NMT 1 of the 10 test containers exceeds 2.5%/year percentage of water weight loss and does not exceed 5.0%/year in any of them.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>公式與計算 — 分類標準速查</h4>
+            <pre>
+Method 5（多單元瓶，無感應封）：
+  Tight：NMT 1 個 >100 mg/day/L，且無 >200
+  Well-closed：NMT 1 個 >2000 mg/day/L，且無 >3000
+
+Method 6（多單元瓶，有感應封）：
+  Tight：NMT 1 個 >10 mg/day/L，且無 >25
+  （比 Method 5 嚴格 10 倍——因為有膜封）
+
+Method 7（泡殼卡，單位劑量）：
+  Class A：所有包裝 ≤ 0.5 mg/day/unit（最佳屏障）
+  Class B：所有包裝 ≤ 5 mg/day/unit
+  Class C：所有包裝 ≤ 20 mg/day/unit
+  Class D：不符合 A、B、C 任一（最差）
+
+Method 8（多單元瓶，液體劑型）：
+  Tight：NMT 1 個 >2.5%/year 損失，且無 >5.0%/year
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Well-closed vs Tight 的差異</h4>
+            <p>這兩個容器類型定義來自 〈659〉，但 〈671〉 提供了具體的 MVTR 數值門檻：</p>
+            <ul>
+                <li><strong>Well-closed container（良好密閉容器）：</strong>MVTR 門檻為 2000/3000 mg/day/L——屏障要求低，主要防止固體異物進入和液體揮發，不強調水蒸氣屏障。適用於對濕度不敏感的產品。</li>
+                <li><strong>Tight container（緊密容器）：</strong>MVTR 門檻為 100/200 mg/day/L——屏障要求高 20 倍，用於對濕度敏感的藥品（如泡騰錠、吸濕性較強的固體製劑）。</li>
+            </ul>
+            <p>兩個等級相差 20 倍——選錯容器等級，可能導致產品在保存期限內降解！</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Method 7 的 Class A–D 分類就像台灣氣密等級的窗戶分類（WT1 到 WT4）。藥廠在規格書上會標明「需要 Class A 泡殼」，就像建築師指定「需要 WT3 等級的氣密窗」——各方都用同一套等級語言溝通，不需要每次都交換原始 MVTR 數值。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Method 8 與 Methods 5/6 的本質差異：</strong>Methods 5/6 測試乾燥劑吸入水蒸氣（針對固體藥品），以 mg/day/L 表示；Method 8 直接測液態水的揮發損失（針對液體藥品），以 %/year（佔初始重量的百分比）表示。</p>
+            <p>Method 8 的測試條件也不同：25°C/40% RH（而非 23°C/75% RH），接近室溫儲存條件，更貼近液體製劑的實際儲存環境。</p>
+            <p><strong>「2 的判定原則」：</strong>Methods 5、6、8 的分類標準都允許「NMT 1 個」超標——不是零容忍。這反映了統計現實：10 個容器中允許 1 個略超邊界值，但有一個絕對上限（無一超過）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一批 Method 5 測試結果：10 個容器中，8 個在 50–90 mg/day/L，1 個是 150 mg/day/L，1 個是 180 mg/day/L。這批容器的分類是什麼？（Tight? Well-closed? 不合格?）</li>
+                <li>一個藥品的說明書標示「密封保存（store in tight container）」，分裝容器通過 Method 5 分類為 well-closed 而非 tight。這樣的分裝是否合規？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: SPECTRAL TRANSMISSION ==================== -->
+<div class="section-title">Spectral Transmission for Light-Resistant Packaging 光阻包裝的光譜透過性測試</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>SPECTRAL TRANSMISSION FOR LIGHT-RESISTANT PACKAGING COMPONENTS OR SYSTEMS</h3>
+
+        <p>A packaging component or system intended to provide protection from light or offered as a <span class="key-term">light-resistant container</span> meets the requirements for Spectral Transmission for Light-Resistant Packaging Components or Systems, where such protection or resistance is by virtue of the specific properties of the material of which the plastic component or system is composed, including any coating. A clear and colorless or a translucent packaging system that has light protection by means of an opaque enclosure by application of a suitable coating or wrapping (see General Notices) is exempt from the requirements for Spectral Transmission for Light-Resistant Packaging Components or Systems.</p>
+
+        <h3>Apparatus</h3>
+        <p>If the suitability of the packaging system is demonstrated through <span class="key-term">stability testing</span>, spectral transmission testing is not required; otherwise, use a <span class="key-term">UV-visible spectrophotometer</span> of suitable sensitivity and accuracy (see 〈857〉), adapted for measuring the amount of light transmitted by plastic materials used for pharmaceutical containers.</p>
+
+        <h3>Procedure</h3>
+        <p>Select a section representing the average thickness. Cut a circular section from the packaging component or system, and trim as necessary to get a segment convenient for mounting in the spectrophotometer. After cutting, wash and dry the specimen, taking care to avoid scratching the surfaces. If the specimen is too small to cover the opening in the specimen holder, mask the uncovered portion of the opening with opaque paper or masking tape, provided that the length of the specimen is greater than that of the slit in the spectrophotometer.</p>
+        <p>Immediately before mounting in the specimen holder, wipe the specimen with lens tissue. Mount the specimen with the aid of a tacky wax, or by other convenient means, taking care to avoid leaving fingerprints or other marks on the surfaces through which light must pass. Place the section in the spectrophotometer with its <span class="key-term">cylindrical axis parallel to the plane of the slit</span> and approximately centered with respect to the slit. When properly placed, the light beam is normal to the surface of the section and reflection losses are at a minimum.</p>
+        <p>Continuously measure the transmittance of the section with reference to air in the <span class="key-term">spectral region of interest</span> with a recording instrument or at intervals of about 20 nm with a manual instrument, in the region of <span class="key-term">290–450 nm</span>.</p>
+
+        <h3>Acceptance Criteria</h3>
+        <p>The observed spectral transmission does not exceed the limits given in Table 3 for plastic components and systems for parenteral use. The observed spectral transmission for plastic containers for products intended for <span class="key-term">oral or topical administration</span> does not exceed <span class="key-term">10%</span> at any wavelength in the range of 290–450 nm.</p>
+
+        <h3>Table 3. Spectral Transmission Limits for Plastic Packaging Components or Systems (Parenteral Use)</h3>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Nominal Size (mL)</th>
+                <th>Maximum % Spectral Transmission at Any Wavelength Between 290 and 450 nm</th>
+            </tr>
+            <tr><td>1</td><td>25%</td></tr>
+            <tr><td>2</td><td>20%</td></tr>
+            <tr><td>5</td><td>15%</td></tr>
+            <tr><td>10</td><td>13%</td></tr>
+            <tr><td>20</td><td>12%</td></tr>
+            <tr><td>50</td><td>10%</td></tr>
+            <tr><td>&gt;50</td><td>10%</td></tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 光阻包裝的測試邏輯</h4>
+            <p><strong>為什麼需要光譜透過性測試？</strong>許多藥品對光敏感（photolabile），特別是 UV 和可見光範圍的紫外線（290–450 nm）可以分解活性成分、破壞效價或產生毒性降解物。</p>
+            <p><strong>「豁免」條件很重要：</strong>如果包裝系統通過了穩定性測試（stability testing）並且在穩定性研究中證明藥品不降解，則不需要做光譜透過性測試。換言之，直接的「功能性證明」優先於「物理測試」。這是 ICH Q1B 光穩定性測試的精神——最終目標是確認產品穩定，而非測試包裝材料本身。</p>
+            <p><strong>兩類產品的不同限度：</strong></p>
+            <ul>
+                <li><strong>口服/外用（Oral/Topical）：</strong>所有波長下透過率 ≤ 10%（固定標準）</li>
+                <li><strong>注射劑（Parenteral）：</strong>依容器容量定不同標準（Table 3，1 mL→25%，&gt;50 mL→10%）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>光譜透過性測試就像測試「墨鏡（太陽眼鏡）」的遮光效果。你把鏡片放在光譜分析儀前，測量不同波長的光能透過多少百分比。</p>
+            <p>「注射劑小容量→允許較高透過率」的邏輯在於：1 mL 注射劑瓶的壁很薄（玻璃或塑膠壁厚只有 0.5–1 mm），物理上無法像大瓶那樣阻擋更多光線。所以 USP 對小容量注射劑設定了相對寬鬆但仍受管控的限度（25%）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>樣品製備的關鍵細節：</strong></p>
+            <ul>
+                <li><strong>代表性截面：</strong>取「平均厚度」的截面，因為容器壁的厚薄不均會影響透光率</li>
+                <li><strong>避免指紋：</strong>指紋的油脂會改變表面反射，影響測量準確性——操作時必須戴手套或使用鏡頭紙</li>
+                <li><strong>光束垂直入射：</strong>圓柱軸平行於分光縫（slit），確保光束垂直照射截面，最小化反射損失（Fresnel reflection），讓測量值真實代表材料本身的透光性</li>
+            </ul>
+            <p><strong>290–450 nm 範圍的意義：</strong>290 nm 是玻璃/塑膠開始透光的短波邊界（低於此波長幾乎被材料完全吸收）；450 nm 是可見光藍紫色邊界。這個範圍涵蓋了對大多數光敏藥品最危險的波段。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 環境中，客戶可能要求評估新供應商的琥珀色（amber）注射劑玻璃瓶或棕色 PET 塑膠瓶是否符合光阻要求。光譜透過性測試流程：</p>
+            <ol>
+                <li>從瓶身側壁切取具有代表性厚度的截面（避開瓶底和瓶頸）</li>
+                <li>UV-Vis 分光光度計掃描 290–450 nm，以空氣為參比</li>
+                <li>對照 Table 3 的容量限度（或口服/外用的 10% 統一限度）</li>
+                <li>若超標，可考慮加外包裝（opaque secondary packaging，豁免主容器測試）</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 5 mL 注射劑瓶在 320 nm 處測得透過率為 18%，是否符合 Table 3 的要求？</li>
+                <li>如果一個清澈透明的塑膠眼藥水瓶（外用，5 mL）外面套了一個不透光的紙盒，這個眼藥水瓶需要做光譜透過性測試嗎？請說明理由。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: GLOSSARY ==================== -->
+<div class="section-title">Glossary 詞彙表</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>GLOSSARY</h3>
+
+        <p><strong><span class="key-term">Blister:</span></strong> Formed, lidded, and sealed plastic or foil dome that contains the capsule or tablet (usually a single unit or unit dose).</p>
+
+        <p><strong><span class="key-term">Low-barrier blister:</span></strong> Blisters made from low-barrier materials, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is greater than 1.0 mg/cavity/day.</p>
+
+        <p><strong><span class="key-term">High-barrier blister:</span></strong> Blisters made from high-barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is less than 1.0 mg/cavity/day.</p>
+
+        <p><strong><span class="key-term">Ultra-high barrier blister:</span></strong> Blisters made from ultra-high barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is less than 0.01 mg/cavity/day.</p>
+
+        <p><strong><span class="key-term">Blister card:</span></strong> A contiguous group of blisters formed and sealed with lid in place. The number of blisters per card commonly ranges from 1 to 10 but may be more. The blister card may sometimes be referred to as a packaging system.</p>
+
+        <p><strong><span class="key-term">Cavity:</span></strong> Formed, lidded, and sealed plastic or foil dome (see Blister).</p>
+
+        <p><strong><span class="key-term">Moisture vapor transmission rate:</span></strong> The steady-state moisture vapor transmission (in unit time) through a packaging system, under specific conditions of temperature and humidity. These test methods use gravimetric measurement to determine the rate of weight gain as a result of moisture vapor transmission into the packaging system and subsequent uptake by a desiccant enclosed within the packaging system.</p>
+
+        <p><strong><span class="key-term">Test specimen (or specimen):</span></strong> For multiple-unit containers, the bottle is the test specimen, and for single-unit or unit-dose containers, the blister card containing multiple blister cavities is the test specimen. For blisters, more than 1 card (or specimen) may be grouped into a test unit for conducting the test.</p>
+
+        <p><strong><span class="key-term">Test unit:</span></strong> For multiple-unit containers, the bottle is the test unit as well as being the test specimen, and for single-unit or unit-dose containers, the test unit is a group of test specimens (blister cards) processed together for temperature and humidity exposure and for weighing at each time point. The purpose of the test unit for single-unit or unit-dose containers is to gain the advantage of additive weight gain resulting from more blister cavities than are present on a single card.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 屏障等級三分法</h4>
+            <p>〈671〉 詞彙表明確定義了三個屏障等級，以 40°C/75% RH 條件下的 MVTR 為界：</p>
+            <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>等級</th>
+                    <th>MVTR (mg/cavity/day)</th>
+                    <th>典型材料</th>
+                    <th>適用測試方法</th>
+                </tr>
+                <tr>
+                    <td>Low-barrier (低屏障)</td>
+                    <td>&gt; 1.0</td>
+                    <td>PVC, PVDC/PVC</td>
+                    <td>Method 3（2天）</td>
+                </tr>
+                <tr>
+                    <td>High-barrier (高屏障)</td>
+                    <td>&lt; 1.0</td>
+                    <td>PVDC, PCTFE, COC</td>
+                    <td>Method 2（35天）</td>
+                </tr>
+                <tr>
+                    <td>Ultra-high barrier (超高屏障)</td>
+                    <td>&lt; 0.01</td>
+                    <td>鋁箔/鋁箔, 冷成型鋁</td>
+                    <td>Method 2（需&gt;10空腔）</td>
+                </tr>
+            </table>
+            </div>
+            <p>這三個等級正好對應三個數量級的差異（1.0 vs 0.01），選錯材料的後果差距 100 倍！</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Test Specimen vs Test Unit 的差別</h4>
+            <p>這兩個術語在文件中頻繁出現，必須清楚區分：</p>
+            <ul>
+                <li><strong>Test specimen（測試樣品）：</strong>最基本的包裝單元。瓶裝→一個瓶子就是一個 specimen。泡殼→一張含多個空腔的泡殼卡是一個 specimen。</li>
+                <li><strong>Test unit（測試單元）：</strong>進行稱重操作的最小分組。瓶裝→test unit = test specimen（一樣）。泡殼→test unit = 多張卡捆在一起（為了獲得足夠的重量增加）。</li>
+            </ul>
+            <p>簡言之：specimen 是材料定義；unit 是操作定義。對於泡殼，unit ≥ specimen。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>Test specimen 就像一個「受測者」，test unit 就像一個「測試小組」。體重秤的精度有限時，你可以把 5 個受測者組成一組一起稱，再除以 5 取平均。這樣的「小組稱重」就是 test unit 的概念——把多個 specimens 捆在一起，讓微小的重量變化累積到可偵測的程度。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 章節交叉參考總結</h4>
+            <p>〈671〉 與其他 USP 章節的關係圖：</p>
+            <ul>
+                <li><strong>〈659〉 Packaging and Storage Requirements：</strong>定義容器類型術語（well-closed, tight, hermetic, light-resistant 等）→ 〈671〉 提供測試方法驗證這些類型</li>
+                <li><strong>〈857〉 UV-Vis Spectrophotometry：</strong>光譜透過性測試（〈671〉）使用的分光光度計需符合 〈857〉 要求</li>
+                <li><strong>〈1671〉 MVTR Application：</strong>如何用 〈671〉 的 MVTR 數據支持重新包裝等值性論證 → 進階應用指導</li>
+                <li><strong>ICH Q1B 光穩定性測試：</strong>若已通過光穩定性測試，可豁免光譜透過性測試（〈671〉 明確允許）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一種新型的聚氯乙烯（PVC）改性泡殼材料，測試 MVTR 為 0.08 mg/cavity/day（40°C/75% RH）。它屬於哪個屏障等級？應使用哪個方法進行後續分類測試？</li>
+                <li>藥廠申報書件中要描述「本產品使用 tight container 包裝」，如何用 〈671〉 的測試數據支持這個聲明？需要用哪個方法，達到什麼標準？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>分類系統（Methods 5–8）用於藥局和機構重新包裝者選擇容器，目標是確認等級（tight/well-closed/Class A–D），而非獲取精確 MVTR 數值</li>
+        <li>Tight 和 well-closed 的 MVTR 門檻差 20 倍（100 vs 2000 mg/day/L）；Method 6（有感應封）的限度比 Method 5 嚴格 10 倍</li>
+        <li>光譜透過性測試範圍為 290–450 nm；口服/外用容器均勻限度為 10%；注射劑依容積有 10–25% 的分級限度（Table 3）；若已通過光穩定性測試可豁免</li>
+        <li>三個屏障等級：Low-barrier（&gt;1.0 mg/day/cavity）→ Method 3；High-barrier（&lt;1.0）和 Ultra-high barrier（&lt;0.01）→ Method 2</li>
+        <li>Test specimen（基本包裝單元）≠ Test unit（操作稱量分組）；泡殼測試中多張卡捆成一個 test unit 以累積足夠重量變化</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub — USP 〈671〉 Containers—Performance Testing | Section 2: Additional Tests &amp; Special Containers</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
