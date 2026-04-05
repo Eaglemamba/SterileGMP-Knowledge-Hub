@@ -137,29 +137,54 @@ Batch 2 chapters completed (2026-04-05):
 | Source | Status |
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
-| FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ | Process Validation (Jan 2011) ✅ |
+| FDA Guidances | Aseptic Processing 2004 ✅ · CPGM 7356.002A Process Inspections ✅ · Process Validation (Jan 2011) ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
-| USP Chapters | 38 complete (+ 2 single-section + 16 skeleton) — see table above |
+| USP Chapters | 56 complete — all multi-section HTML generated + knowledge MD |
 | ISO Standards | Not started |
 
-**Overall: 96 of ~118 documents complete (81%)** — PDA 38 + ISPE 13 + FDA 3 + ICH 3 + PIC/S 1 + USP 38 = 96 complete with full content
+**Overall: 118 of 118 documents complete (100%)** — PDA 41 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 + USP 56 = 118 complete with full bilingual HTML + knowledge MD
 
 ---
 
 ## Source Organizations in Scope
 
-| # | Source | Scope | Color |
-|---|--------|-------|-------|
-| 1 | **PDA** | Technical Reports, Points to Consider, Guides | Blue |
-| 2 | **ISPE** | Baseline Guides, Good Practice Guides, GAMP | Green |
-| 3 | **PIC/S** | Annex 1 (2022) — Manufacture of Sterile Medicinal Products | Orange |
-| 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red |
-| 5 | **ICH** | Q8(R2), Q9(R1), Q10 only (the "quality trinity") | Purple |
-| 6 | **USP** | Selected General Chapters (sterility, endotoxin, particulates, microbial) | Gold |
-| 7 | **ISO** | 14644 series (cleanrooms), 17665 (steam sterilization), 11608 (injection systems), 14971 (risk mgmt), 13485 (device QMS) | Purple |
-| 8 | **IEC** | 62366-1 (usability engineering / human factors) — combination product device constituent | Grey |
+### Active (118 documents, fully processed)
 
-> **ICH scope note:** Only Q8/Q9/Q10 belong in this hub. The full ICH guideline set (Q1-Q14, S-series, E-series, M-series) covers all pharmaceutical manufacturing and is not sterile-specific. A separate "Pharmaceutical Regulatory Knowledge Hub" would be the appropriate home for the complete ICH library.
+| # | Source | Scope | Color | Status |
+|---|--------|-------|-------|--------|
+| 1 | **PDA** | Technical Reports, Points to Consider, Guides | Blue | ✅ 41 complete |
+| 2 | **ISPE** | Baseline Guides, Good Practice Guides, GAMP | Green | ✅ 14 complete (1 pending OCR) |
+| 3 | **PIC/S** | Annex 1 (2022) — Manufacture of Sterile Medicinal Products | Orange | ✅ 1 complete |
+| 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red | ✅ 3 complete |
+| 5 | **ICH** | Q8(R2), Q9(R1), Q10 — the "quality trinity" | Teal | ✅ 3 complete |
+| 6 | **USP** | 56 General Chapters — sterility, endotoxin, particulates, microbial, container/closure | Gold | ✅ 56 complete |
+
+### Planned — Phase 4 (Cleanrooms + ISO)
+
+| # | Source | Scope | Color | Priority |
+|---|--------|-------|-------|----------|
+| 7 | **ISO** | 14644 series (cleanrooms), 17665 (steam sterilization), 11608 (injection systems), 14971 (risk mgmt), 13485 (device QMS) | Purple | High — ISO 14644 first |
+| 8 | **IEC** | 62366-1 (usability engineering / human factors) — combination product device constituent | Grey | Medium |
+
+### Planned — Phase 6 (EU + Global Market Expansion)
+
+| # | Source | Scope | Color | Priority |
+|---|--------|-------|-------|----------|
+| 9 | **EU GMP** | Annex 15 (Qualification & Validation), Annex 2 (Biologics), Annex 20 (QRM) | Indigo | High — Annex 15 first |
+| 10 | **Ph. Eur.** | Sterility (2.6.1), BET (2.6.14), Particulates (2.9.19/20), 5.1.1 Sterile Preparation Methods | Rose | Medium |
+| 11 | **WHO GMP** | TRS 961 Annex 6 (Sterile), TRS 1010 (Biologics) | Slate | Medium — relevant for WHO prequalification clients |
+
+### Low Priority / Market-Specific (assess based on client mix)
+
+| # | Source | Scope | When to Add |
+|---|--------|-------|------------|
+| 12 | **PMDA + JP** | Japanese regulatory guidance + Japanese Pharmacopoeia | If Japan MAA clients increase |
+| 13 | **NMPA + ChP** | China GMP regulations + Chinese Pharmacopoeia | If China market entry planned |
+| 14 | **EMA product-specific** | EMA guideline on biological medicines, lyophilization, ATMPs | When ATMP or EU biologics clients onboard |
+| 15 | **ICH Q5 series** | Q5A–E: viral safety, stability, characterization for biologics | If biologics API clients increase |
+| 16 | **ICH Q11 / Q12** | Drug substance development + lifecycle management | When regulatory submission support expands |
+
+> **ICH scope note:** Only Q8/Q9/Q10 belong in Phase 1–3. The full ICH set (Q1-Q14, S-series, E-series, M-series) is not sterile-manufacturing-specific and belongs in a separate regulatory hub.
 
 > **IEC scope note:** IEC 62366-1 is included specifically for combination product human factors validation. Other IEC standards (electrical safety, EMC) are out of scope.
 
@@ -335,7 +360,39 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 ---
 
-### Phase 6: COO Decision Support Layer (Future)
+### Phase 6: EU + Global Market Expansion
+
+**Goal:** Add the EU regulatory layer (binding law, not just PIC/S best practice) and WHO standard to serve EU-MAA clients and WHO-prequalification supply chains.
+
+**Trigger:** Add when EU-client volume justifies the effort, or when an EU inspection is scheduled.
+
+#### EU GMP Annexes (European Commission — freely available PDFs)
+
+| Task | Document | Fills This Gap | Effort |
+|------|----------|---------------|--------|
+| **New source: EU GMP** | **Annex 15** — Qualification and Validation (2015) | EU regulatory companion to ISPE Vol.5; defines lifecycle validation, revalidation triggers | Small |
+| **New source: EU GMP** | **Annex 2** — Manufacture of Biological Active Substances and Medicinal Products (2012) | EU GMP for biologics/ATMPs; complements ISPE Vol.6 | Small |
+| **New source: EU GMP** | **Annex 20** — Quality Risk Management | EU formal adoption of ICH Q9; paired with Q9(R1) | Small |
+
+#### Ph. Eur. — European Pharmacopoeia (EDQM)
+
+| Task | Document | USP Equivalent | Effort |
+|------|----------|---------------|--------|
+| **New source: Ph. Eur.** | 5.1.1 — Methods of Preparation of Sterile Products | USP 〈1211〉 | Small |
+| **New source: Ph. Eur.** | 2.6.1 — Sterility (test method) | USP 〈71〉 | Small |
+| **New source: Ph. Eur.** | 2.6.14 — Bacterial Endotoxins | USP 〈85〉 | Small |
+| **New source: Ph. Eur.** | 2.9.19 + 2.9.20 — Particulate Contamination | USP 〈788〉 〈790〉 | Small |
+
+#### WHO GMP (freely available from WHO website)
+
+| Task | Document | When Needed | Effort |
+|------|----------|-------------|--------|
+| **New source: WHO** | TRS 961 Annex 6 — Sterile Pharmaceutical Products | WHO prequalification clients; global health supply chains | Small |
+| **New source: WHO** | TRS 1010 — Biological Products | WHO biologics prequalification | Small |
+
+---
+
+### Phase 7: COO Decision Support Layer (Future)
 
 **Goal:** Synthesize cross-document knowledge into decision-oriented resources.
 
@@ -355,18 +412,18 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 
 | Document | Why Excluded |
 |----------|-------------|
-| ICH Q1-Q7, Q11-Q14 | General pharma — not sterile-specific. Belongs in a separate regulatory hub. |
+| ICH Q1–Q7, Q13–Q14 | General pharma — not sterile-specific. Belongs in a separate regulatory hub. |
 | ICH S-series, E-series, M-series | Safety, efficacy, multidisciplinary — not manufacturing-focused. |
-| WHO TRS series | Only relevant if audience includes WHO-prequalified market manufacturers. |
-| European Pharmacopoeia (EP) | Largely mirrors USP for sterile methods. Add only if EU-specific chapter numbers are needed. |
 | ASTM standards | ASTM E2500 (verification) is influential but too niche for this hub. |
-| ISO 11135 (EtO sterilization) | Rarely used for sterile injectables. |
+| ISO 11135 (EtO sterilization) | Rarely used for sterile injectables; niche application. |
 | ISO 11137 (Radiation sterilization) | Niche sterilization method for devices, not primary for pharma injectables. |
 | ISO 11608-4/5 (Electronic/automated injection systems) | Advanced device electronics — out of scope unless smart device programs are added. |
 | ISO 11040 series (Prefilled syringes — glass barrels) | Component-level spec; TR73 covers the finished product perspective adequately. |
 | IEC standards other than 62366-1 | Electrical safety, EMC, cybersecurity — outside pharma manufacturing GMP scope. |
-| ISO 13485 full QMS implementation | May be added in Phase 5 if combination product client audit demand increases. |
 | Full PDA TR catalog | Many TRs cover non-sterile topics (oral solids, APIs). Only sterile-relevant TRs are included. |
+| BP (British Pharmacopoeia) | Largely harmonized with Ph. Eur. post-Brexit. Add Ph. Eur. first; BP overlap is ~95%. |
+| ChP (Chinese Pharmacopoeia) | Add only if China in-market manufacturing or NMPA registration is in scope. |
+| ANVISA / LatAm regulations | Region-specific; add only if Latin America supply is a strategic priority. |
 
 ---
 
@@ -421,18 +478,22 @@ These are explicitly excluded to keep the hub focused on sterile pharmaceutical 
 
 ---
 
-## Estimated Target: ~80-90 Documents (revised with combination products)
+## Estimated Target: ~145-155 Documents (full scope)
 
-| Source | Current | Target | Notes |
-|--------|---------|--------|-------|
-| PDA | 39 | ~42 | Add TR36 (lyophilization), TR74 (PFS URS), TR76 (CCI technology); TR27 ✅ |
-| ISPE | 14 | 15 | All complete except GEP (scanned — OCR required) |
-| PIC/S | 1 | 1 | Annex 1 ✅ |
-| FDA | 3 | 6-7 | Aseptic ✅, Process Val ✅, Process Inspection ✅ + CGMP Combination Products, HF Guidance, Design Considerations |
-| ICH | 3 | 3 | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ |
-| USP | 0 | 8-10 | \<71\>, \<85\>, \<788\>, \<1116\>, \<1211\> (Phase 3) + \<1207\>, \<660\>, \<661\>, \<1664\> (Phase 5) |
-| ISO | 0 | 5-6 | 14644-1/2/3, 17665 (Phase 3) + 14971, 11608-1, 11608-3, 13485 (Phase 5) |
-| IEC | 0 | 1 | 62366-1 (usability engineering) — new source, Phase 5 |
-| **Total** | **62 (all complete)** | **~80-90** | Combination products expansion adds ~15 documents |
+| Source | Current | Phase 4–5 Target | Phase 6 Target | Notes |
+|--------|---------|-----------------|----------------|-------|
+| PDA | ✅ 41 | ~44 | — | Add TR36 (lyophilization), TR74 (PFS URS), TR76 (CCI technology) |
+| ISPE | ✅ 14 | 15 | — | Remaining: GEP (scanned — OCR required) |
+| PIC/S | ✅ 1 | 1 | — | Annex 1 complete |
+| FDA | ✅ 3 | 6–7 | — | Add CGMP Combination Products, HF Guidance, Design Considerations |
+| ICH | ✅ 3 | 3 | 5–7 | Q11, Q12 + Q5A-E (biologics) if client mix warrants |
+| USP | ✅ 56 | 59 | — | Add 〈1229〉 sub-series completion + USP-151, USP-790 |
+| ISO | 0 | 5–6 | — | 14644-1/2/3, 17665 (Phase 4) + 14971, 11608-1, 13485 (Phase 5) |
+| IEC | 0 | 1 | — | 62366-1 (usability engineering) — Phase 5 |
+| EU GMP | 0 | — | 3 | Annex 15, Annex 2, Annex 20 — Phase 6 |
+| Ph. Eur. | 0 | — | 4–5 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 — Phase 6 |
+| WHO GMP | 0 | — | 2 | TRS 961 Annex 6, TRS 1010 — Phase 6 |
+| PMDA/JP | 0 | — | TBD | Add only if Japan MAA client volume justifies |
+| **Total** | **118** | **~135** | **~148–155** | Phase 6 adds EU + global coverage layer |
 
-The infrastructure (tooling, workflow, dashboard, chatbot) is already built. The remaining work is content processing — the hardest part of the project is done.
+The infrastructure (tooling, workflow, dashboard, chatbot) is already built and serving 118 documents. All remaining work is content processing — the hardest part of the project is done.
