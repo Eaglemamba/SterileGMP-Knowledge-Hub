@@ -222,3 +222,57 @@ Use these mappings to translate user questions before routing:
 - Full FDA CFR Part 211 / EU GMP Part I/II
 - API synthesis manufacturing
 - Laboratory analytical methods
+
+### USP Pharmacopeial Standards
+
+| Topic | ★★★ Primary (section hint) | ★★ Secondary |
+|---|---|---|
+| Sterility test / 無菌試驗 | USP-71 (§0 Intro, §1 Methods) | PICS-Annex1 §8, FDA-Aseptic §04 |
+| Bacterial endotoxin / BET / LAL | USP-85 (§0 Methods, §1 Validation, §2 Limits) | USP-151 (rabbit pyrogen, MAT) |
+| Depyrogenation overview | USP-1228 (§0-§2 Control strategies) | USP-1228-1, USP-1228-5 |
+| Dry heat depyrogenation | USP-1228-1 (§1 Fundamentals, §2 Validation) | USP-1228 |
+| Depyrogenation by filtration/rinsing | USP-1228-3 · USP-1228-4 | USP-1228 |
+| Endotoxin indicators | USP-1228-5 (§0 Preparation, §1 LRV analysis) | USP-1228 |
+| Sterilization methods / 滅菌方法 | USP-1211 (§0-§2 SAL, methods) · USP-1229 (§0-§1 decision tree) | TR1 (moist heat), PICS-Annex1 §8 |
+| Biological indicators / BI | USP-55 (§0 Requirements, §1 D-value methods) | USP-1228-5 (endotoxin EI) |
+| Particulate matter / 微粒 (injectables) | USP-788 (§0-§2 LO + microscopic, limits) | USP-787 (proteins), USP-1788 (methods ref) |
+| Particulate matter / 微粒 (proteins) | USP-787 (§0-§1 protein-specific) | USP-788, USP-1788 |
+| Particulate matter / 微粒 (ophthalmic) | USP-789 (§0 all methods + limits) | USP-771 |
+| Subvisible particulate methods reference | USP-1788 (§0 intro, §1a-§1b LO, §2 microscopic) | USP-788, USP-787 |
+| Visible particulate inspection | USP-1790 (§0-§3 MVI, AVI, Knapp, PoD) | USP-790, TR85 |
+| Globule size / lipid emulsion / PFAT5 | USP-729 (§0-§1 DLS + LO, ≤0.05%) | — |
+| Container closure integrity / package integrity | USP-1207 (§1 deterministic, §2 probabilistic) | TR86, TR27 |
+| Glass containers / 玻璃容器 | USP-660 (§0 classification, §1 chemical tests) | USP-1660 (delamination) |
+| Glass delamination / inner surface | USP-1660 (§0 mechanism, §1 ICP-MS, mitigation) | USP-660 |
+| Plastic packaging / 塑膠包材 | USP-661 (§0-§2 materials, tests, biological) | USP-381 (elastomers) |
+| Elastomeric components / rubber stoppers | USP-381 (§0-§2 classification, phys-chem, biological) | USP-661 |
+| Container performance / 容器效能 | USP-671 (§0-§2 light, moisture, special containers) | USP-670 (auxiliary components) |
+| Auxiliary packaging / desiccants | USP-670 (§0-§1 coils, desiccants, §2 acceptance) | USP-671 |
+| Sterile compounding / 無菌調配 | USP-797 (§0 scope/categories, §1-§2 garbing/facilities, §3-§5 QA/BUD) | — |
+| EM / microbial control / 微生物監控 | USP-1116 (§0-§1 ISO classes, action levels) | TR13, PICS-Annex1 §9 |
+| Bioburden / non-sterile 微生物負荷 | USP-1115 (§0 TAMC/TYMC, limits, risk-based) | TR90 |
+| Disinfectants / sporicidal agents | USP-1072 (§0 types, §1 efficacy testing) | TR70 |
+| Rapid microbial methods / RMM | USP-1071 (§0 validation, equivalency) | TR13 |
+| Osmolality / tonicity / 滲透壓 | USP-785 (§0 theory, §1 instruments, §2 procedures) | — |
+| pH testing | USP-791 (§0-§2 electrodes, calibration, procedures) | — |
+| Minimum fill / 最低裝量 | USP-755 (§0 two-stage criteria) | — |
+| Ophthalmic quality tests | USP-771 (§0-§2 full test panel) | USP-789 |
+| Biologics general / 生物製劑通則 | USP-1085 (§0 cell banking, impurities, viral safety) | ISPE-Vol6 |
+
+---
+
+## USP Synonym Table (add to main synonym table above)
+
+| User says (EN/ZH) | Search terms |
+|---|---|
+| 無菌試驗 / sterility test failure | sterility test, FTM, SCDM, membrane filtration, 14-day |
+| 內毒素試驗 / endotoxin / BET / LAL | bacterial endotoxin, BET, LAL, gel-clot, chromogenic, MVD |
+| 除熱原 / 去熱原 | depyrogenation, LRV, endotoxin indicator, Fh value |
+| 微粒 / 不可見微粒 / particulates | subvisible particulate, light obscuration, PFAT5, 10 µm |
+| 可見異物 / visible particles | visible inspection, PoD, Knapp, AVI, MVI |
+| 包裝完整性 / CCI test / leak test | container closure integrity, HVLD, vacuum decay, MALL |
+| 玻璃脫層 / 玻璃片 | delamination, glass flakes, lamellae, ICP-MS |
+| 無菌調配 / CSP / BUD | compounded sterile preparation, Category 1/2/3, beyond-use date |
+| 滲透壓 / osmolality | osmolality, osmolarity, mOsmol, freezing point depression |
+| 膠塞 / 橡膠封蓋 | elastomeric stopper, rubber closure, penetrability, fragmentation |
+
