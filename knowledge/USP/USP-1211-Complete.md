@@ -1,0 +1,548 @@
+# USP General Chapter 〈1211〉: Sterilization Assurance
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Mar-2019
+Document Type:
+General Chapter
+DocId:
+GUID-D0610491-0F4D-429D-B613-B027FB979018_5_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99930_05_01
+DOI Ref:
+xf3ku
+© 2025 USPC
+Do not distribute
+Change to read:
+〈1211〉
+▲
+STERILITY ASSURANCE▲USP41
+Change to read:
+▲
+INTRODUCTION
+This informational chapter provides general information on the concepts and principles involved in the preparation of materials that must
+be sterile. Within the strictest de«nition of sterility, an item is deemed sterile only when it contains no viable microorganisms. However, this
+textual de«nition cannot be applied to actual items labeled as sterile because of irresolvable limitations in testing. Sterility cannot be
+demonstrated without the destructive testing of every sterile unit. In a real sense, microbiological safety is achieved through the
+implementation of interrelated controls that in combination provide con«dence that the items are suitable for use as labeled. It is the
+controls that provide the desired assurance from microbiological risk rather than the results of any in-process or «nished goods testing. The
+veri«cation of safety of products labeled sterile is generally known as “sterility assurance” and that nomenclature will be used throughout this
+chapter.
+The establishment of an effective sterility assurance program requires information about the material to be sterilized. An initial
+determination should be made regarding the potential for terminal sterilization of the material in its primary container applying the principles
+de«ned in Sterilization of Compendial Ar ticles 〈1229〉. As described, the appropriate process provides a balance between conditions that are
+lethal to potential bioburden present in/on the item and those that preserve its essential quality attributes. Depending upon the results of that
+determination, sterility of the item may be achieved by either aseptic processing or terminal sterilization. The potential for a process that
+relies on both the protective measures inherent to aseptic processing and the lethal nature of terminal sterilization may offer advantages.
+Regardless of the process selection decision, the establishment of design, operation, process controls, and monitoring systems is essential
+to provide the necessary con«dence in the outcome.
+The production of sterile products is subject to numerous factors that in¬uence the outcome (see Figure 1). The identi«ed factors in the
+image should be considered for their impact on sterility of the «nal product, although not all of the in¬uencing elements are depicted.
+
+*[Figure 1. In¬uences on sterile products.]*
+
+The decisions made relative to the in¬uences shown in Figure 1 will determine the success of the sterility assurance program. Poor
+choices, regardless of any successful process controls associated with them, must be acknowledged as fundamentally unsound. The
+process design objective is related to contamination controls intended to obviate risk of microbial ingress. This focus is appropriate
+regardless of whether the process used is aseptic processing or terminal sterilization.
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 2 ===
+Recognition that operating personnel are the most signi«cant contributors of microbiological risk leads to design preferences and
+operating principles that should be adhered to with respect to sterile operations. This knowledge underscores the impor tance of separating
+personnel from the aseptic environment and limiting their interaction with sterilized components and product(s). The means for
+accomplishing these goals are embodied in two complementary practices (1):
+The use of automation technology—to reduce or eliminate personnel interventions and thus personnel-borne contamination
+The use of separative technologies—to eliminate, to the extent technically possible, human sourced contamination
+Thus the implementation of appropriate contamination control procedures is paramount in design and operation of sterile product
+manufacturing systems.
+Consideration of these principles adapts the Quality by Design (QbD) approach widely adopted in regulatory standards (2–3). Using QbD
+concepts in sterile operations is markedly different from the applications in the typical formulation, pharmaceutical, chemical, or biological
+synthesis process. The establishment of direct linkage between a monitored condition and process outcome with respect to sterile
+manufacturing is statistically di­cult and analytically uncer tain. The situation with respect to the de«nition of physical design elements is
+similar. Given the great variation in sterile product manufacturing with respect to scale, con«guration, and complexity, it follows that the
+design alternatives and operating practices must also be ¬exible. Thus, the recommendations provided in this chapter are entirely non-
+numeric, because there are no ready means with which to demonstrate the suitability of speci«c values. Instead, QbD for sterile processing
+should be driven toward a singular goal of optimizing contamination control with a par ticular focus on the microbial risk impact of personnel.
+The speci«c means vary but should be of prime consideration in process design. Figure 2 outlines the elements that contribute to sterility
+assurance, as described in the remaining sections of this chapter.
+
+*[Figure 2. Elements contributing to sterility assurance.]*
+
+Aseptic Processing
+There are a substantial number of sterile products that cannot be terminally sterilized because of adverse impact on the
+product/package’s essential proper ties and must be prepared by aseptic processing. Aseptic processes are designed to prevent the
+introduction of viable microorganisms into/onto separately sterilized materials during their assembly into a sealed sterile package. Aseptic
+processes can vary in complexity from comparatively simple «lling/sealing to challenging and lengthy manufacturing sequences required for
+complex items. Regardless of process scale, all of the individually sterilized materials must be protected from contamination from the point
+of sterilization through closure of the primary package. This is accomplished through adherence to the principles described below in which
+an International Organization for Standardization (ISO) 5 condition is maintained when materials are exposed to the environment (see
+Microbiological Control and Monitoring of Aseptic Processing Environments 〈1116〉). Exclusive to aseptic processing is the execution of
+process simulations that suppor t batch or campaign duration (4–6).
+Terminal Sterilization
+Terminally sterilized products are the lowest risk category of sterile pharmaceutical products. Unlike products aseptically manufactured
+under conditions designed to prevent microbial ingress, terminally sterilized products are subjected to a sterilization process that impar ts a
+quanti«able safety level. Terminal sterilization processes achieve this by delivering measurable physical conditions that correspond to
+microbial lethality. For terminally sterilized products, sterility assurance is de«ned in terms of the probability of nonsterility (PNS), or the
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 3 ===
+probability of the terminal sterilization process generating a nonsterile unit (PNSU). Terminal sterilization processes must achieve a
+consistent validated performance of a PNSU of ≤10
+−6
+ (a probability of NMT 1 nonsterile unit in 1 million units produced) (see 〈1229〉). The
+convention by which terminal sterilization cycles are developed and validated ensures that the actual PNSU is typically much lower (better)
+than the minimum standard of <10
+−6
+.
+Chapter 〈1229〉 summarizes the common requirements for sterilization process design, development, validation, and process control.
+Terminal sterilization processes share common requirements of well-de«ned process parameters strictly controlled within de«ned operating
+limits. Terminal sterilization must be suppor ted by a system of product disposition, which includes the assessment of critical physical
+process parameters, presterilization product parameters (e.g., bioburden, container–closure integrity), and environmental parameters.
+Terminal sterilization can rely on parametric release practices to obviate the need for sterility testing (see Terminally Sterilized
+Pharmaceutical Products—Parametric Release 〈1222〉).
+Post-Aseptic Processing Terminal Sterilization
+An aseptic process followed by a terminal sterilization process provides superior control over the presterilization bioburden, such that the
+subsequent sterilization process can be designed with less overall lethality, thereby making it possible to substantially extend the use of
+terminal sterilization to products with greater sensitivity to the applied energy of the process. From a patient safety perspective, this
+approach has the following distinct advantages:
+An adventitious contaminant introduced during aseptic processing is easily killed by the terminal sterilization step, reducing the extent
+of in-process environmental monitoring performed
+Bioburden controls for the terminal process are simpli«ed because all units have been aseptically «lled
+Where a product is made using either process alone, the limitations of each (no terminal lethal component in aseptic, more
+degradation in terminal sterilization) would persist
+Where bioburden is controlled through aseptic processing, terminal sterilization can be applicable at lower lethality levels
+Classical F
+, time-temperature, and radiation dose (kGy) targets for sterilization processes are arbitrarily selected and intended to simplify
+process validation, but in reality serve to reduce the use of terminal treatments. Physical lethality data based on «xed numerical values are
+inherently conservative and disregard the degradative impact of the sterilization process on the product. The focus must be on the ability of
+the process to kill bioburden organisms rather than biological indicators (see 〈1229〉 and Moist Heat Sterilization of Aqueous Liquids
+〈1229.2〉).
+While product quality attributes can be impaired by “standard” sterilizing conditions, the combined process can utilize less aggressive
+sterilizing conditions to minimize adverse effects upon the product and primary packaging materials. If the terminal treatment follows
+aseptic processing, then the sterilizing conditions need not be excessive as there is essentially no risk from presterilization bioburden in the
+«lled containers. Sterilization process conditions would be dictated by the speci«cs of the product in parallel with the establishment of
+appropriate controls on presterilization bioburden derived from environmental and pre«ltration isolates.
+Containers and Closures
+The container and closure for a sterile formulation are integral par ts of the sterile product. The container materials provide essential
+protection to the product throughout its shelf life and are chosen to minimize interaction with, preserve the quality attributes of, and facilitate
+dispensing of the sterile product. The container materials should be readily sterilizable, either separately prior to «lling and/or together with
+the formulation in a terminal process. Containers and closures should be selected for:
+Reliability of container–closure integrity over the shelf life
+Absence of interaction with formulation materials
+Ease of handling in the processing environment and during administration
+Tolerance of variation in equipment and other components
+Cleanliness including freedom from par ticulates and absence of leachable or extractable chemicals
+Compatibility with the product
+Control over endotoxin content (where appropriate)
+Protection of components prior to use (where appropriate)
+Compatibility with preparation, sterilization, and depyrogenation processes (where appropriate)
+The essential aspects of container–closure materials for sterile products are subject to numerous requirements elsewhere within USP–NF.
+The reader must consider the content provided in Injections and Implanted Drug Products 〈1〉, Bacterial Endotoxins Test 〈85〉, Visible
+Par ticulates in Injections 〈790〉, Package Integrity Evaluation—Sterile Products 〈1207〉, Depyrogenation 〈1228〉, and 〈1229〉.
+Decontamination
+Decontamination is a broadly de«ned term used to describe a variety of processes that reduce microbial populations without an
+expectation for total kill.
+ It is not a substitute for sterilization; a sterilization process should be used wherever possible. A variety of
+chemical agents and methods are used that vary depending upon the application. Decontamination is used for bioburden reduction of
+materials, equipment, and environments in suppor t of sterile product manufacture:
+For materials and surfaces that cannot be sterilized
+For materials and surfaces that do not require sterilization
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 4 ===
+Decontamination processes are ordinarily separated into two major categories based upon their effectiveness against spore-forming
+microorganisms (see Disinfectants and Antiseptics 〈1072〉). Sporicidal treatments are used in critical applications such as isolator
+decontamination, air-lock/pass-throughs, etc. Their toxicity to personnel and sometimes corrosive chemistry may preclude their exclusive
+use for microbial control. Non-sporicidal agents have fewer safety and material impact concerns, and the occasional use of a sporicidal
+agent is required to control spore populations. Applications for decontamination are diverse; among the more common uses are:
+Decontamination of controlled environments and non-product contact surfaces
+In conventional cleanrooms, including restricted access barrier systems (RABS), this is predominantly a manual process performed after
+cleaning of the room/production line
+Decontamination of items upon transition into an environment of higher classi«cation
+Isolators commonly use an automated process
+Periodic decontamination of operator gloves during processing
+Decontamination of product contact surfaces
+Large equipment (e.g., stopper bowls) can be manually sanitized on a frequent basis in addition to sterilization to avoid the extensive
+manipulation required for their installation post-sterilization
+Re-decontamination of sterilized equipment after aseptic assembly or intervention
+Periodic decontamination of previously sterilized utensils prior to interventions
+Depyrogenation
+The minimization of pyrogen content is a requirement for injectable products. During the production of sterile products, depyrogenation
+processes are used in a variety of ways to minimize pyrogenic contamination of surfaces, materials, and products. Details on depyrogenation
+processes are provided in 〈1228〉.
+Equipment
+Equipment used for sterile product manufacturing varies in its impact on the manufacturing process and on product quality and should
+have several impor tant characteristics. For example, the equipment should:
+Operate reliably and produce products of consistent quality
+Not adversely impact essential product quality attributes
+Be easily cleanable and sterilizable, as necessary
+Minimize human intervention during set-up and operation through such features as physical separation, automation, and robotics
+Be tolerant of variations in container–closure materials
+Designed to minimize product exposure to the background environment
+The extent to which the equipment interacts with process materials and the product affects the level of impact. Process equipment can
+in¬uence the quality of the «nished product in a variety of ways, and this can occur prior to and after sterilization and depyrogenation.
+equipment in direct contact with components, containers, closures, and sterile products
+This equipment category includes those items in direct contact with the drug substance, drug product, raw materials, and primary
+packaging components, including, for example, mixing and storage vessels, piping systems and tubing, «lters, «lling pumps, lyophilizer
+shelves, and feed hoppers. Product contact surfaces of this equipment are designed and may require additional treatment to minimize
+adverse impact (microbial, par ticulate, and chemical) on the contacted materials. The procedures used for the cleaning and sterilization of
+direct contact surfaces, including dir ty, clean, and sterile hold times, must be validated to ensure they do not adversely impact essential
+product quality attributes as well as to verify the effectiveness of the cleaning procedure and that no microbial
+recontamination/proliferation occurs during equipment storage. Direct contact utensils are subject to the same considerations. With
+appropriate consideration of materials' compatibility, single-use disposable equipment (supplied sterile when necessary) may be utilized.
+equipment having indirect contact with components, containers, closures, and sterile products
+Equipment having a signi«cant impact on product quality, that does not contact components, primary packaging materials, and sterile
+products, includes the electro-mechanical elements (non-product contact) of «lling machines, stoppering machines, and sterilizers. The
+performance of this equipment can change «ll weight, par ticle size, moisture level, content uniformity, container–closure integrity, and other
+essential quality attributes. This equipment is ordinarily located near exposed product contact equipment surfaces. For example, a pre-
+assembled «lling set (product contact equipment) may be installed on a «lling machine (signi«cant impact without product contact), which
+provides control over the «ll volume or weight. The surfaces of this equipment must be compatible with the cleaning and microbial
+decontamination and/or sterilization agents employed.
+other equipment
+Some equipment has only an indirect impact on product quality, for example, conveyors, turntables, balances, air samplers, and car ts. The
+in¬uence of this equipment is largely on the environments in which the product is made. The exposed surfaces of this equipment must be
+compatible with the cleaning and decontamination agents used.
+Facilities
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 5 ===
+Sterile manufacturing operations are suppor ted by administrative, laboratory, maintenance, and warehouse functions and other activities.
+The impact of these operations on the location and overall design of the sterile manufacturing area must be considered. Emphasis should be
+given in facility design to the ¬ows of materials, components, personnel, equipment, and waste streams throughout the facility and to the
+orderly transition of items between environments of different classi«cations to prevent mix-up and avoid product contamination. Facility
+environmental and utility systems must be designed to minimize microbial, chemical, and par ticulate contamination. The facility design must
+be suppor ted by practices and procedures such as cleaning and decontamination, gowning, and material transfer. The architectural details of
+the facility infrastructure must consider the means for cleaning and disinfection. Detailed design recommendations can be found in the
+International Society for Pharmaceutical Engineering's Baseline Guide: Sterile Product Manufacturing Facilities (7).
+The core activities for sterile product manufacture are carried out in classi«ed environments operating in conformance with the ISO 14644
+series of standards (8). A pressure cascade descending from the more critical areas to less critical is commonplace. In general, the more
+protection that materials have from potential sources of contamination during holding or processing, the less impact the facility has on the
+process outcome. Human operators within ISO 14644 classi«ed cleanrooms used in aseptic processing are the greatest risk to product
+safety; therefore, no single risk mitigation factor in aseptic processing is more impor tant than minimizing risk emanating from gowned
+operators.
+Early-stage container–closure and equipment washing and preparation are carried out in lower classi«cation areas (ISO 7–8). Nonsterile
+formulation is typically carried out in ISO 6–7 environments. The production materials are introduced into the processing area where
+subsequent steps are performed. The bioburden level of the materials in¬uences the detailed design of the facility and its controls.
+Nonsterile materials (e.g., formulation, containers, closures, equipment, and utensils) require subsequent sterilization and, where necessary,
+depyrogenation. Sterile materials are introduced through airlocks and pass-throughs. The facility design controls for the background, and
+processing environments should be chosen to preserve the intended microbial attributes of the in-process and «nished materials.
+Table 1 provides some examples of formulation and «lling environments.
+T
+able 1. Examples of Environments for Processing
+Processing Technology
+Background Environment
+Processing Environment
+Reference
+Conventional cleanroom
+ISO 5–7
+ISO 5
+FDA AP 2004 (9), EMA Annex
+(10)
+Closed RABS
+ISO 7
+ISO 5
+ISPE (11), PHSS (12)
+Open RABS
+ISO 5
+ISO 5
+ISPE (11), PHSS (12)
+Closed isolators
+CNC
+a
+ISO 5
+FDA AP 2004 (9), PDA TR No.
+34 (13), ISPE (7)
+Open isolators
+CNC-ISO 8
+ISO 5
+FDA AP 2004 (9), PIC/S (14),
+PDA TR No. 34 (13), ISPE (7)
+Blow-«ll-seal/form-«ll-seal
+ISO 5–7
+ISO 5
+FDA AP 2004 (9), Baseman (15)
+Closed systems
+CNC
+Not applicable
+b
+PDA TR No. 28 (5); Agalloco,
+Hussong, et al. (16)
+Terminal sterilization
+ISO 8
+ISO 5–7
+EMA Annex (10)
+a
+Controlled non-classi«ed—a non-classi«ed controlled environment with «ltered air supply.
+b
+As the process occurs with a closed system, there is no separate processing environment.
+[Note—Table values represent the operational condition and are adapted from the reference documents.]
+conventional cleanroom
+The critical activities are performed in ISO 5 environments suppor ted by surrounding ISO 5–7 environments where gowned personnel are
+normally located. There may be only limited separation between gowned personnel and sterile materials and product contact surfaces. The
+critical activities are performed within a unidirectional air¬ow environment. Decontamination of the cleanroom is commonly performed by
+personnel.
+restricted access barrier systems
+The typical RABS provides ISO 5 unidirectional air within the barrier and is situated in a conventional ISO 5–7 cleanroom. RABS may be
+designed to allow for opening of barriers to enable human intervention, or they may be designed to operate closed with the same
+operational restrictions regarding operator access that applies to isolators (see below). Air overspill from within the barrier is designed to
+prevent the ingress of contamination. Operator manipulation of sterile items is achieved using glove por ts, and material transfers are
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 6 ===
+accomplished without opening the system. A RABS that is opened mid-process should be treated as a conventional cleanroom (see above).
+RABSs require decontamination prior to use. This may be accomplished either manually or using automated systems.
+isolators
+Isolators provide complete separation between personnel and the enclosed ISO 5 processing environment. A de«ned pressure differential
+is maintained between the ISO 5 environment and the surrounding area. Air overspill provides an aerodynamic seal at points where the
+product exits the isolator into an external environment of lesser classi«cation or no classi«cation. The use of unidirectional air is not
+required in isolators. Isolators are commonly decontaminated using automated systems.
+blow-fill-seal and form-fill-seal
+These technologies form, «ll, and seal ¬exible walled containers in an ISO 5 environment. Blow-«ll-seal (BFS) and form-«ll-seal (FFS)
+equipment con«gurations allow for installation in a variety of background environments. The critical activities are performed within a
+unidirectional air¬ow environment. Decontamination is performed as is common for the background environment.
+closed systems
+These systems provide for complete separation of production materials from personnel and surrounding environment. Closed systems
+can be single- or multiple-use vessels/chambers with means for materials ingress/egress. The designs avoid any human interaction or
+environmental contact with sterile materials. These systems vary in complexity and are sterilized either in situ or prior to use.
+terminal sterilization
+Filling systems and environments for containers to be terminally sterilized can be accomplished in ISO 7 or better environments. The
+critical activities are performed within a unidirectional air¬ow environment. Decontamination of the cleanroom is commonly performed by
+personnel.
+Materials (Active Pharmaceutical Ingredients, Excipients, and Process Aids)
+The preparation of sterile products encompass a wide range of materials including active pharmaceutical ingredients (small and large
+molecules), excipients, solvents (usually water), process gases and processing aids, all of which contribute to the microbiological quality
+attributes of the product. Depending upon the product being manufactured, this can require consideration of bacterial, endotoxin, and
+par ticulate contamination. Speci«c microbiological quality testing requirements for inactive and active ingredients testing is often speci«ed
+in a relevant USP–NF monograph. Requirements for microbiological testing for total aerobic bacteria, yeast and mold counts, and speci«ed
+organisms are given in Microbial Enumeration Tests 〈61〉 and Tests For Speci«ed Microorganisms 〈62〉, and the recommended but non-
+mandatory enumeration targets for microbiological testing are given in Microbiological Examination of Nonsterile Products: Acceptance
+Criteria for Pharmaceutical Preparations and Substances for Pharmaceutical Use 〈1111〉. Some speci«c products may require other testing for
+speci«ed organisms, including viruses, as a requirement of their regulatory approval. Requirements for bacterial endotoxin testing in
+injectable products are covered in 〈85〉, which describes quali«cation of Limulus amebocyte lysate testing for acceptable levels of bacterial
+endotoxin. Raw material speci«cations must be appropriate to ensure that the manufacturing process consistently results, as demonstrated
+through process validation, in products conforming to the microbiological critical quality attributes.
+Microbial contamination may be present on/in active pharmaceutical ingredients, excipients, and primary packaging materials. Controlling
+bioburden in materials and formulated product is a critical aspect of sterility assurance. The nature of the active pharmaceutical ingredient,
+the excipients, and the compounded product intended to be sterile are critical elements of the product knowledge. Recognizing the potential
+impact on critical quality attributes, the microbiological attributes of materials should be controlled through adequate supplier controls,
+shipping, receipt, sampling, handling, and storage. These controls should be commensurate with the microbiological risks to process
+controls and sterile product safety. Laboratory results should not be utilized to rationalize inadequate process controls on the par t of the
+supplier.
+The potential impact of the materials on the microbiological critical quality attributes of presterilized and «nished product must be
+assessed by evaluating them with appropriate compendial assays or validated alternatives. Risk assessment should consider the origin of
+the material (e.g., fermentation, chemical synthesis, biologically derived, enzymatic, semi-synthetic synthesis, natural origin). Materials of
+biological origin may have higher inherent microbiological risk than materials derived solely from chemical synthesis. Materials may have
+inherent physicochemical proper ties that mitigate microbiological risks (e.g., low water activity, extreme pH, inherent antimicrobial
+proper ties) or increase microbiological risks (e.g., aqueous solution, growth suppor tive nutrients); this risk of suppor ting microbial
+proliferation must be assessed.
+Monitoring
+Environmental monitoring is employed to qualitatively assess the effectiveness of the design and operational controls to provide suitable
+facility hygiene. It is neither a substitute for good facility, equipment, and process design, nor compensation for de«cient practices and
+behavior. There are inherent limitations with all forms of viable and non-viable monitoring in terms of sample size, sample location, and
+recovery capability that preclude their use as anything more than an indication that a facility is operating within an acceptable state of
+control. Monitoring provides only a snapshot in time of the actual environmental conditions and excessive sampling due to its potentially
+intrusive nature can actually impair product safety or generate counts unrelated to process performance by increasing activity proximate to
+the critical zone.
+Independent of air, surface, and personnel monitoring, media «lls and sterility testing provide additional (albeit analytically and statistically
+limited) means to evaluate the robustness of the cleanroom design, performance, and effectiveness of cleaning/decontamination
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 7 ===
+procedures, personnel gowning integrity, and aseptic practices.
+Environmental control can be measured only by the monitoring performed. Satisfactory monitoring performance is the result of proper
+design and operation as described in this chapter and not a means to establish that condition. Performance criteria are established
+according to the classi«cation of the room and its usage (see 〈1116〉).
+viable monitoring
+Viable monitoring consists of detecting and estimating the level of culturable microorganisms in the air, on surfaces, and on personnel.
+Sampling locations are de«ned following a risk assessment and sampling is executed by trained operators using a variety of methods
+including:
+Active air sampling
+Passive air sampling
+Viable par ticle counting using ¬uorescence technology
+Contact-plate sampling of surfaces, gloves, and gowns
+Swabbing of surfaces
+Personnel monitoring
+non-viable monitoring
+Non-viable monitoring measures the number and size of par ticulates present in the air. It can be used to initially classify the cleanroom in
+accordance with ISO 14644-1 and to assess routine manufacturing conditions (8). When used for the purposes of monitoring, it can be
+performed under static conditions (no activity) and/or dynamic conditions (routine operation). Non-viable par ticle monitoring is performed
+using calibrated par ticle counters.
+media fills/aseptic process simulations
+Process simulations are exercises in which the performance of an aseptic activity is evaluated using a sterile growth medium. The
+medium can be directly substituted for the product or added to it. Aseptic process simulations are typically performed before the
+introduction of new or revised process components (e.g., products, facilities, equipment, personnel, containers and closures, and
+processes) and periodically thereafter (17). Process simulations should be fully representative of processing conditions and activities
+utilized during routine production.
+sterility testing
+The sterility test is a harmonized compendial test. It must be understood that while execution of the test is required for the release of
+sterile products where parametric release has not been approved, it cannot prove the sterility of the materials tested. It should be
+recognized that parametric release is the default mode of sterile product release.
+Personnel
+Personnel play an essential role in the preparation of sterile products. The essential activities they perform include cleaning, assembly,
+equipment operation, material transfer, environmental monitoring, and decontamination. While personnel are often necessary for the
+performance of these activities, the contamination derived from them must be prevented from entering the production materials before and
+after sterilization. The impor tance of the controls necessary to minimize exposure to and the release of human microbial contaminants in a
+sterile product manufacturing environment cannot be overstated.
+The personnel involved in the preparation of sterile products must:
+Understand the principles of microbiology, sterilization/depyrogenation, aseptic processing, and contamination control
+Be pro«cient and diligent in gowning practices. Personnel required to wear aseptic gowning should periodically demonstrate their
+ability to properly gown
+Adhere to proper aseptic technique during all aseptic activities even when these are performed in a RABS or isolator. Periodic
+demonstration of these skills can be bene«cial
+Be familiar with and adhere to standard operating procedures
+Practice good personal hygiene to minimize contamination potential
+Be trained in the proper and safe operation of necessary equipment
+Be monitored microbiologically after performing aseptic operations
+Procedures
+Written procedures de«ne the operations that have been determined through validation studies and experience to be effective in
+controlling and facilitating the manufacture and quality of pharmaceuticals and biopharmaceuticals. Procedures are especially impor tant for
+the critical processes designed to assure the sterility of terminally sterilized and aseptically produced drug products. Procedures should be
+periodically reviewed and evaluated to ensure they are effective and current.
+interventions and intervention procedures
+There are two types of interventions associated with the aseptic production of sterile drug products. Inherent interventions are those
+activities that are an integral par t of the aseptic process and are performed during the production of every batch. They include set-up,
+replenishment of components, weight and volume checks and adjustments, and environmental monitoring. Corrective interventions are
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 8 ===
+those activities that correct problems and might not be performed during the production of every batch. They can be minimized and should
+be avoided through careful process design. Examples include stopper jams, broken and fallen glass, defective container seals, liquid leaks,
+and mechanical failures requiring manual correction.
+Each intervention, whether inherent or corrective, should be covered by written procedures su­ciently detailed to enable personnel to
+perform the intervention correctly, and to perform the intervention the same way each time regardless of whomever performs it. For
+example, procedures should specify the number of units, their locations, and how the units are to be removed, and personnel must be
+trained so they can correctly execute the procedures. No intervention should be permitted for which there is not a de«ned procedure. The
+following concepts should be considered during development, review, and implementation of intervention procedures.
+1. Interventions performed during all forms of processing must be recognized as increasing the risk of contamination dissemination
+and are to be avoided or designed out of the process to the extent possible
+2. Procedures for interventions should be critically reviewed to eliminate and/or simplify aseptic processes by reducing the frequency
+of inherent interventions and making all interventions easier to perform
+3. Interventions should be designed for minimal risk of contaminating sterile and nonsterile materials
+4. All interventions should be performed using sterilized tools whenever possible
+5. Intervention procedures should be established in detail for all inherent interventions, and more broadly for corrective interventions
+(where some ¬exibility is necessary due to greater diversity)
+Ã. Interventions should be incorporated in periodic media «lls to evaluate the aseptic practices of the operators
+Operators should initially, and periodically thereafter, be trained in all of the procedures they are expected to perform. Considerations for
+operator activity during the non-aseptic «lling of containers should parallel those described above to minimize the potential for
+contamination ingress with somewhat less rigor than those needed for aseptic operations.
+Sterilization
+The most effective means for the control of microbial population is sterilization, a process that either kills or removes viable
+microorganisms. In the production of sterile products, sterilization processes are used to prevent microbial contamination. Terminal
+sterilization processes that reproducibly destroy microorganisms in the «nal product container are the preferred means for the production of
+sterile products. Sterile products that cannot be terminally sterilized rely on individual sterilization processes (e.g., steam, radiation gas,
+«ltration) for the various materials that comprise an aseptically processed sterile product. In addition, sterilization processes are used for
+product contact and other non-product contact items used in a variety of applications during the preparation of sterile products to provide
+absolute control of bioburden. Details on sterilization processes are provided in 〈1229〉.
+Utilities
+The manufacture of sterile products requires utilities that can have a substantial impact on the «nal product. Some of the utilities in the
+facility can become an integral par t of the formulated product (e.g., Water for Injection, Nitrogen) and appropriate design of the production
+and distribution system for these is essential. The systems for these are tightly controlled and frequent monitoring of the utilities produced is
+customary. These utilities may be also used in the process, and not become a par t of the sterile product. Other utilities (e.g., clean steam,
+compressed air, Puri«ed Water) that are used in the cleaning/decontamination of facilities, and/or preparation of equipment, containers, and
+closures can also be subjected to microbial control.
+Utilities included in the product, in direct product contact, and in the preparation of equipment, containers, closures, and other items must
+meet the requirements de«ned in the appropriate USP–NF monograph. The systems for their preparation should be subject to formalized
+controls that maintain a controlled state over time. This is accomplished through a number of related practices essential for continued use
+of the system over an extended time. The essential practices to maintain controlled status of the utility systems include: calibration, change
+control, corrective and preventive maintenance, and ongoing process control.
+There are other less impactful utilities (e.g., vacuum, cooling water) necessary for the operation of the facility and equipment. Although
+these non-product contact utilities may lack monograph requirements, their reliable operation is necessary for consistent production of
+sterile products.
+SUMMARY
+The safety of products labeled sterile requires that their critical quality attributes consistently meet speci«cations. Sterility is the most
+essential quality attribute. Sterility is an unquali«ed concept in which an item is devoid of living microorganisms capable of reproduction.
+Monitoring of all types, environmental (viable and non-viable; air, surface, and personnel), media «lls, and sterility tests are forms of
+microbiological analysis that have been historically employed as proof of “sterility”. These assessment tools cannot provide de«nitive
+evidence of either “sterility” or “nonsterility”, because the means to con«rm either of those conditions non-destructively is not scienti«cally
+possible. Con«dence in sterile product manufacturing is realizable only by a holistic approach in which all of the suppor tive elements of the
+operations are given due consideration and emphasis (17).
+The absolute nature of sterility presents the practitioner with an inherent paradox—there is no ready means to demonstrate sterility of an
+item in the absolute sense regardless of the means used to provide it. Test methods including those de«ned in this compendium (Sterility
+Tests 〈71〉) utilize a number of samples taken from a large population to infer the “sterility” of the whole. Sterilization procedures including
+those validated for parametric release can deliver a low probability of a nonsterile unit, but not absolute assurance that “sterility” actually
+exists.
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance
+
+=== PAGE 9 ===
+The uncer tainty associated with proof of “sterility” notwithstanding, the means by which sterility assurance is provided are reasonably well
+de«ned. The “sterility” of any item is de«nitively established by the process controls summarized in this chapter rather than any form of
+monitoring or sampling. For terminally sterilized products, greater weight can be placed on the sterilization process utilized than on any form
+of testing. Con«dence in aseptic processing is a result of sound design, reliable equipment, quality materials, effective procedures (including
+suppor tive sterilization processes), and personnel pro«ciency rather than through sampling dependent sterility testing, microbiological
+monitoring, and process simulation.
+REFERENCES
+1. Agalloco J, Akers J. The future of aseptic processing. Pharm Tech. 2005;S16–23.
+2. Nasr M. Quality by Design (QbD)—Modern system approach to pharmaceutical development and manufacturing—FDA perspective.
+FDA Quality Initiative Workshop at International Society for Pharmaceutical Engineering Meeting. 2007 Feb 28.
+3. International Council for Harmonisation of Technical Requirements for Registration of Pharmaceuticals for Human Use (ICH).
+Pharmaceutical development, Q8 (R2). Geneva: ICH; August 2009.
+4. Parenteral Drug Association. Process simulation for aseptically «lled products. PDA Technical Repor t No. 22, revision. Philadelphia:
+PDA; 2011.
+5. Parenteral Drug Association. Process simulation testing for sterile bulk pharmaceutical chemicals. PDA Technical Repor t No. 28,
+revised. PDA J Pharm Sci Technol. Vol. 60, Supplement S-2, 2006.
+Ã. Parenteral Drug Association. Recommended practices for manual aseptic «lling. PDA Technical Repor t No. 62. Philadelphia: PDA;
+2013.
+7. International Society for Pharmaceutical Engineering. ISPE Baseline Guide, Volume 3: Sterile Product Manufacturing Facilities (latest
+revision). Bethesda, MD: ISPE; 2011.
+Ä. International Organization for Standardization. ISO 14644: Cleanrooms and associated controlled environments.
+9. Food and Drug Administration. Guidance for industry. Sterile drug products produced by aseptic processing. Rockville, MD: FDA; 2004.
+10. European Medicines Agency. Annex 1, Sterile Medicinal Products; 2008.
+11. International Society for Pharmaceutical Engineering. Restricted access barrier systems (RABS) for aseptic processing, ISPE
+de«nition; 2005.
+12. Pharmaceutical and Healthcare Sciences Society. Restricted access barrier systems (RABS), Technical Monograph No. 15; 2011.
+13. Parenteral Drug Association. Design and validation of isolator systems for the manufacturing and testing of health care products. PDA
+Technical Repor t No. 34. Bethesda, MD: PDA; 2001.
+14. Pharmaceutical Inspection Convention and Pharmaceutical Inspection Co-operation Scheme. PIC/S Isolators used for aseptic
+processing and sterility testing (PI 014-2); 2004.
+15. Baseman H. Sterile product manufacture using form «ll seal technologies. In: Agalloco J, Akers J, eds. Advanced Aseptic Processing
+Technology. New York: InformaHealth; 2010.
+1Ã. Agalloco J, Hussong D, Quick J, Mestrandrea L. Closed system «lling technology: introducing a new paradigm for sterile
+manufacturing. PDA Letter. 2015; 51(11):26–28.
+17. Agalloco J, Akers J. The myth called sterility. Pharm Tech. 2010 Supplement;34(3):S44–45.
+▲2S (USP41)
+Sterilization is preferred over decontamination and should be utilized wherever possible, consistent with minimization of handling post-
+sterilization.
+Sterilization out-of-place would be used on a less frequent basis.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<1211> STERILITY ASSURANCE
+Leslie Furr
+Associate Scienti«c Liaison
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 43(5)
+Current DocID: GUID-D0610491-0F4D-429D-B613-B027FB979018_5_en-US
+Previous DocID: GUID-D0610491-0F4D-429D-B613-B027FB979018_2_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99930_05_01
+DOI ref: xf3ku
+OFFICIAL
+2/12/25, 4:32 PM
+USP-NF 〈1211〉 Sterilization Assurance

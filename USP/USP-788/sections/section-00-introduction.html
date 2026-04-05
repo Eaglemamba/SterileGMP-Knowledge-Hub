@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈788〉 - Section 0: Introduction & Methods</title>
+    <style>
+    /* =============================================================
+       SterileGMP Knowledge Hub - Shared CSS Template
+       Version: 2.0 (for Claude Code automation)
+       Last Updated: 2025
+
+       Usage: Embed this entire file inside <style> tags in each
+       section HTML. This ensures each file works standalone
+       AND merges correctly into the final TopNav document.
+       ============================================================= */
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+        --primary-blue: #1e3a5f;
+        --accent-blue: #3498db;
+        --light-gray: #fafafa;
+        --light-blue: #f0f7ff;
+        --yellow-start: #fff9e6;
+        --yellow-end: #fff3cd;
+        --green-bg: #e8f5e9;
+        --green-border: #4caf50;
+        --orange-bg: #fff3e0;
+        --orange-border: #ff9800;
+        --purple-bg: #f3e5f5;
+        --purple-border: #9c27b0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --header-height: 60px;
+        --nav-height: 50px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.75;
+        color: var(--text-dark);
+        background: #f0f2f5;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 0.3rem;
+    }
+
+    .header .page-info {
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+
+    /* ===== TOP HEADER (for merged TopNav) ===== */
+    .top-header {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .top-header h1 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .top-header .subtitle {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    /* ===== TOP NAVIGATION (for merged TopNav) ===== */
+    .top-nav {
+        background: #2d3748;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: stretch;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 1;
+        padding: 0 0.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-scroll-btn {
+        background: #2d3748;
+        border: none;
+        color: rgba(255,255,255,0.7);
+        padding: 0 0.9rem;
+        cursor: pointer;
+        font-size: 1.3rem;
+        line-height: 1;
+        flex-shrink: 0;
+        transition: background 0.2s, color 0.2s, opacity 0.2s;
+    }
+
+    .nav-scroll-btn:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-scroll-btn.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-item.active {
+        color: white;
+        border-bottom-color: var(--accent-blue);
+        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-num {
+        width: 24px;
+        height: 24px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .nav-item.active .nav-num {
+        background: var(--accent-blue);
+    }
+
+    .nav-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    /* ===== MAIN CONTENT WRAPPER ===== */
+    .main-content {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .main-container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    /* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+    .chapter-section {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        overflow: hidden;
+        scroll-margin-top: calc(var(--nav-height) + 1rem);
+    }
+
+    .chapter-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+        color: white;
+    }
+
+    .chapter-badge {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .chapter-info h2 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+
+    .chapter-info p {
+        font-size: 0.85rem;
+        opacity: 0.85;
+    }
+
+    .chapter-body {
+        padding: 1.5rem;
+    }
+
+    /* ===== TWO COLUMN LAYOUT ===== */
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== LEFT COLUMN - Original Content ===== */
+    .left-column,
+    .original-content {
+        background: var(--light-gray);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #e2e8f0;
+    }
+
+    .left-column h2,
+    .left-column h3,
+    .original-content h2,
+    .original-content h3 {
+        color: var(--primary-blue);
+        border-bottom: 2px solid #3182ce;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .left-column p,
+    .original-content p {
+        margin-bottom: 0.85rem;
+        text-align: justify;
+        font-size: 0.95rem;
+    }
+
+    .left-column ul, .left-column ol,
+    .original-content ul, .original-content ol {
+        margin: 0.75rem 0 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .left-column li,
+    .original-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* ===== RIGHT COLUMN - Commentary ===== */
+    .right-column,
+    .commentary {
+        background: var(--light-blue);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border: 1px solid #bee3f8;
+    }
+
+    .right-column h2,
+    .right-column h3,
+    .commentary h2,
+    .commentary h3 {
+        color: #2c5282;
+        border-bottom: 2px solid #63b3ed;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .right-column p,
+    .commentary p {
+        margin-bottom: 0.85rem;
+        font-size: 0.95rem;
+    }
+
+    /* ===== COLUMN HEADERS ===== */
+    .column-header {
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid currentColor;
+        font-size: 1rem;
+    }
+
+    .right-column .column-header,
+    .commentary .column-header {
+        color: #2c5282;
+    }
+
+    /* Hide original container padding in merged mode */
+    .chapter-body .container,
+    .chapter-body .main-container {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* ===== KEY TERMS (inline highlight) ===== */
+    .key-term,
+    .highlight-term {
+        background: linear-gradient(to right, #d4edda, #c3e6cb);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #155724;
+        font-size: 0.9em;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote-box,
+    .important-quote {
+        background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+        border-left: 4px solid #3182ce;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* ===== CONCEPT BOXES - Unified Base ===== */
+    .concept-box,
+    .analogy-box,
+    .note-box,
+    .key-note,
+    .term-box,
+    .formula-box,
+    .key-term-box,
+    .key-point-box,
+    .highlight-box {
+        border-radius: 8px !important;
+        padding: 1rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .concept-box h3, .concept-box h4,
+    .analogy-box h3, .analogy-box h4,
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .term-box h3, .term-box h4,
+    .formula-box h3, .formula-box h4,
+    .key-term-box h3, .key-term-box h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        margin-bottom: 0.6rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .concept-box p,
+    .analogy-box p,
+    .note-box p,
+    .key-note p,
+    .term-box p,
+    .formula-box p,
+    .key-term-box p,
+    .highlight-box p {
+        margin-bottom: 0.5rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box ul, .concept-box ol,
+    .analogy-box ul, .analogy-box ol,
+    .note-box ul, .note-box ol,
+    .key-note ul, .key-note ol,
+    .term-box ul, .term-box ol,
+    .formula-box ul, .formula-box ol,
+    .key-term-box ul, .key-term-box ol,
+    .key-point-box ul, .key-point-box ol,
+    .highlight-box ul, .highlight-box ol {
+        margin: 0.5rem 0 0.5rem 1.25rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    .concept-box li,
+    .analogy-box li,
+    .note-box li,
+    .key-note li,
+    .term-box li,
+    .formula-box li,
+    .key-term-box li,
+    .key-point-box li,
+    .highlight-box li {
+        margin-bottom: 0.35rem !important;
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+    .analogy-box,
+    .concept-box[class*="analogy"],
+    .concept-box.analogy,
+    div[class*="analogy"]:not(.content-grid):not(.two-column) {
+        background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+        border-left: 4px solid #f6ad55 !important;
+    }
+
+    .analogy-box h3, .analogy-box h4,
+    .concept-box.analogy h3, .concept-box.analogy h4 {
+        color: #856404 !important;
+    }
+
+    /* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+    .term-box,
+    .key-term-box,
+    .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+        background: var(--green-bg) !important;
+        border-left: 4px solid var(--green-border) !important;
+    }
+
+    .concept-box:not(.analogy):not(.application) h3,
+    .concept-box:not(.analogy):not(.application) h4,
+    .term-box h3, .term-box h4,
+    .key-term-box h3, .key-term-box h4 {
+        color: #2e7d32 !important;
+    }
+
+    /* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+    .note-box,
+    .key-note,
+    .key-point-box,
+    .concept-box[class*="note"],
+    .concept-box[class*="highlight"],
+    .key-point,
+    .highlight-box {
+        background: var(--orange-bg) !important;
+        border-left: 4px solid var(--orange-border) !important;
+    }
+
+    .note-box h3, .note-box h4,
+    .key-note h3, .key-note h4,
+    .key-point-box h3, .key-point-box h4,
+    .highlight-box h3, .highlight-box h4 {
+        color: #c65102 !important;
+    }
+
+    /* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+    .formula-box,
+    .concept-box[class*="formula"] {
+        background: var(--purple-bg) !important;
+        border-left: 4px solid var(--purple-border) !important;
+    }
+
+    .formula-box h3, .formula-box h4 {
+        color: #7b1fa2 !important;
+    }
+
+    .formula-box pre {
+        background: rgba(156, 39, 176, 0.08);
+        padding: 0.75rem;
+        border-radius: 6px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        overflow-x: auto;
+        white-space: pre-wrap;
+    }
+
+    /* ===== APPLICATION BOX ===== */
+    .concept-box.application,
+    .application-box {
+        background: #e3f2fd !important;
+        border-left: 4px solid #1976d2 !important;
+    }
+
+    .concept-box.application h3,
+    .concept-box.application h4,
+    .application-box h3,
+    .application-box h4 {
+        color: #1565c0 !important;
+    }
+
+    /* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+    .practice-box {
+        background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+        border: 2px dashed #3182ce !important;
+        border-radius: 10px !important;
+        padding: 1.25rem !important;
+        margin: 1.25rem 0 !important;
+        font-size: 0.92rem !important;
+    }
+
+    .practice-box h3, .practice-box h4 {
+        color: #2c5282 !important;
+        margin-bottom: 0.75rem !important;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+    }
+
+    .practice-box p,
+    .practice-box li {
+        font-size: 0.92rem !important;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.6rem 0.75rem;
+        border: 1px solid #e2e8f0;
+        text-align: left;
+    }
+
+    th {
+        background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        font-weight: 600;
+        color: var(--primary-blue);
+        font-size: 0.85rem;
+    }
+
+    tr:nth-child(even) {
+        background: #f7fafc;
+    }
+
+    /* ===== LEARNING OBJECTIVES ===== */
+    .learning-objectives {
+        background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .learning-objectives h3 {
+        color: #117a65;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .learning-objectives ul,
+    .learning-objectives ol {
+        margin-left: 1.25rem;
+    }
+
+    .learning-objectives li {
+        margin-bottom: 0.4rem;
+        font-size: 0.92rem;
+    }
+
+    /* ===== STRUCTURE LIST ===== */
+    .structure-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .structure-list li {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #3182ce;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        font-size: 0.9rem;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title,
+    .section-divider {
+        font-size: 1.1rem;
+        color: var(--primary-blue);
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+
+    .section-divider {
+        border-bottom: 1px solid #e2e8f0;
+        margin: 2rem 0;
+    }
+
+    /* ===== TABLE OF CONTENTS (per section) ===== */
+    .toc {
+        background: white;
+        border-radius: 10px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .toc h3 {
+        color: var(--primary-blue);
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .toc-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .toc-grid a {
+        display: inline-block;
+        padding: 0.4rem 0.8rem;
+        background: #edf2f7;
+        border-radius: 6px;
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+
+    .toc-grid a:hover {
+        background: var(--accent-blue);
+        color: white;
+    }
+
+    /* ===== FIGURE CONTAINERS ===== */
+    .figure-container {
+        margin: 1.25rem 0;
+        text-align: center;
+    }
+
+    .figure-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .figure-caption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+
+    /* ===== HIERARCHY DIAGRAM ===== */
+    .hierarchy-diagram {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .hierarchy-level {
+        margin: 0.5rem 0;
+    }
+
+    .hierarchy-box {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .hierarchy-box.level-1 {
+        background: #fee2e2;
+        border: 2px solid #ef4444;
+        color: #b91c1c;
+    }
+
+    .hierarchy-box.level-2 {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        color: #92400e;
+    }
+
+    .hierarchy-box.level-3 {
+        background: #d1fae5;
+        border: 2px solid #10b981;
+        color: #065f46;
+    }
+
+    .arrow-down {
+        font-size: 1.2rem;
+        color: var(--text-medium);
+        margin: 0.25rem 0;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .badge.green {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge.red {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .badge.blue {
+        background: #cce5ff;
+        color: #004085;
+    }
+
+    .badge.yellow {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+        list-style: none;
+        padding: 0;
+    }
+
+    .checklist li {
+        padding: 0.3rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .checklist li::before {
+        content: "\2610";
+        position: absolute;
+        left: 0;
+        color: var(--accent-blue);
+    }
+
+    /* ===== CARDS ===== */
+    .pump-card,
+    .tech-card,
+    .info-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 0.75rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+        background: var(--primary-blue);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .main-footer p {
+        opacity: 0.9;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+        background: var(--accent-blue);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.3rem;
+        box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: #2980b9;
+        transform: scale(1.1);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1200px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            gap: 1rem;
+        }
+
+        .left-column, .right-column,
+        .original-content, .commentary {
+            padding: 1.25rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr;
+        }
+
+        .top-header h1,
+        .header h1 {
+            font-size: 1.1rem;
+        }
+
+        .nav-label {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 0.75rem;
+        }
+
+        .nav-num {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+
+        .chapter-divider {
+            padding: 0.85rem 1rem;
+        }
+
+        .chapter-badge {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info h2 {
+            font-size: 1rem;
+        }
+
+        .main-content,
+        .main-container {
+            padding: 1rem;
+        }
+
+        .chapter-body {
+            padding: 1rem;
+        }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+        .top-nav, .back-to-top, .header {
+            display: none !important;
+        }
+
+        .top-header {
+            background: var(--primary-blue) !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .chapter-section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .two-column,
+        .content-grid,
+        .side-by-side {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .main-content,
+        .main-container {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 0: Introduction &amp; Methods</h1>
+    <div class="subtitle">導論與方法</div>
+    <div class="page-info">USP 〈788〉 Particulate Matter in Injections | p1&ndash;p2</div>
+</div>
+
+<div class="main-content">
+
+<!-- COPYRIGHT NOTICE -->
+<div class="note-box" style="margin-bottom:1.5rem;">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP (United States Pharmacopeia) 所有，&copy; 2025 USPC。完整原文請參閱 USP-NF 官方資料庫。</p>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 USP 〈788〉 的法定地位：強制性章節（編號 &lt;1000），是所有注射劑次可見微粒（subvisible particulate matter）的放行試驗</li>
+        <li>掌握「微粒物質」的定義：外來的、不溶解的、非氣泡的異物顆粒</li>
+        <li>了解兩種測試方法的原理：Method 1 光阻法（Light Obscuration）和 Method 2 顯微法（Microscopic）的互補關係</li>
+        <li>認識 USP 〈788〉 與 EP 2.9.19、JP 的國際調和背景</li>
+        <li>掌握系統適用性和環境適用性測試的基本要求</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- INTRODUCTION & SCOPE                         -->
+<!-- ============================================ -->
+<div class="section-title">0.1 Introduction &amp; Scope &mdash; 導論與適用範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This general chapter is harmonized with the corresponding texts of the <span class="key-term">European Pharmacopoeia</span> and/or the <span class="key-term">Japanese Pharmacopoeia</span>. These pharmacopeias have undertaken not to make any unilateral change to this harmonized chapter.</p>
+
+        <p><span class="key-term">Particulate matter</span> in injections and parenteral infusions consists of <span class="key-term">extraneous mobile undissolved particles</span>, other than gas bubbles, unintentionally present in the solutions.</p>
+
+        <p>As stated in Injections and Implanted Drug Products 〈1〉, solutions for injection administered by the <span class="key-term">intramuscular</span> or <span class="key-term">subcutaneous</span> route must meet the requirements of Particulate Matter in Injections 〈788〉. This requirement has been indefinitely postponed for products for veterinary use.</p>
+
+        <p>Parenterals packaged and labeled exclusively for use as <span class="key-term">irrigating solutions</span> are exempt from the requirements of 〈788〉. <span class="key-term">Radiopharmaceutical</span> preparations are exempt. Parenteral products for which the labeling specifies use of a <span class="key-term">final filter</span> prior to administration are exempt, provided that scientific data are available to justify this exemption.</p>
+
+        <div class="quote-box">
+            "Particulate matter in injections and parenteral infusions consists of extraneous mobile undissolved particles, other than gas bubbles, unintentionally present in the solutions."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>USP 〈788〉 的法定地位：</strong>這是一個<strong>強制性章節</strong>（General Chapter 編號 &lt;1000）。當注射劑專論引用此章節時，必須嚴格遵守其測試方法和限值。這不是「建議性指引」，而是有法律約束力的<strong>放行測試（release test）</strong>。</p>
+            <p><strong>Particulate Matter（微粒物質）定義的四個要素：</strong></p>
+            <ul>
+                <li><strong>Extraneous（外來的）</strong> &mdash; 不是產品本身的組成部分</li>
+                <li><strong>Mobile（可移動的）</strong> &mdash; 不是黏附在容器壁上的固定物</li>
+                <li><strong>Undissolved（不溶解的）</strong> &mdash; 是固態顆粒，不是溶液中的溶質</li>
+                <li><strong>Unintentionally present（非刻意存在的）</strong> &mdash; 排除了懸浮製劑中的活性成分微粒</li>
+            </ul>
+            <p><strong>國際調和（Harmonization）：</strong>USP 〈788〉 與 EP 2.9.19 和 JP 已完成國際調和，三大藥典不會單方面修改此章節。這意味著全球製藥公司只需建立一套微粒測試方法，即可滿足美國、歐洲和日本市場的要求。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>飲用水中的雜質檢測：</strong></p>
+            <p>想像你要確保瓶裝水的品質。USP 〈788〉 就像是「自來水中懸浮固體物（TSS）」的檢測標準 &mdash; 但更嚴格千萬倍，因為這些液體是要直接注射進人體血管或組織的。</p>
+            <p>定義中排除「氣泡」很重要 &mdash; 就像你不會把水中的小氣泡算作「雜質」一樣。但固態異物顆粒（玻璃碎片、橡膠屑、纖維）就完全不同了，它們可能堵塞微血管或引發免疫反應。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>豁免產品：</strong>三類產品獲得豁免：(1) 沖洗液（irrigating solutions）、(2) 放射性藥物（radiopharmaceuticals）、(3) 標示使用前需加終端過濾器的產品（但需有科學數據支持）。在 CDMO 場景中，這意味著你需要清楚辨別客戶產品是否適用 〈788〉。大多數注射劑（IV、IM、SC）都必須符合。</p>
+            <p><strong>IM 和 SC 也納入：</strong>不只是靜脈注射（IV），肌肉注射（IM）和皮下注射（SC）產品也必須符合 〈788〉。這擴大了適用範圍，涵蓋了幾乎所有注射劑型。</p>
+        </div>
+
+        <!-- APPLICATION BOX -->
+        <div class="application-box">
+            <h4>CDMO 實務應用 Industry Application</h4>
+            <p><strong>CDMO 場景：</strong>作為無菌充填代工廠，USP 〈788〉 是你最常執行的 QC 放行測試之一。每一批注射劑產品出貨前都必須通過微粒測試。</p>
+            <ul>
+                <li><strong>客戶產品登記</strong> &mdash; 註冊文件（CTD Module 3）中必須包含 〈788〉 測試方法和接受標準</li>
+                <li><strong>批次放行</strong> &mdash; 每批產品的 Certificate of Analysis (CoA) 都必須列出微粒計數結果</li>
+                <li><strong>製程驗證</strong> &mdash; PPQ 批次必須證明微粒計數穩定且符合限值</li>
+            </ul>
+        </div>
+
+        <!-- PRACTICE BOX -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 USP 〈788〉 需要國際調和？如果三大藥典各有不同的微粒限值，對全球 CDMO 會造成什麼問題？</li>
+                <li>一個標示「使用前需加 0.22 &micro;m 終端過濾器」的產品可以豁免 〈788〉。但作為 CDMO，你會建議客戶依賴這個豁免嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- METHOD SELECTION                              -->
+<!-- ============================================ -->
+<div class="section-title">0.2 Method Selection &mdash; 方法選擇</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>For the determination of particulate matter, two procedures, <span class="key-term">Method 1 (Light Obscuration Particle Count Test)</span> and <span class="key-term">Method 2 (Microscopic Particle Count Test)</span>, are specified hereinafter. When examining injections and parenteral infusions for subvisible particles, Method 1 is preferably applied.</p>
+
+        <p>However, it may be necessary to test some preparations by the Light Obscuration Particle Count Test followed by the Microscopic Particle Count Test to reach a conclusion on conformance to the requirements.</p>
+
+        <p>Not all parenteral preparations can be examined for subvisible particles by one or both of these methods. When Method 1 is not applicable, e.g., in the case of preparations having <span class="key-term">reduced clarity</span> or <span class="key-term">increased viscosity</span>, the test should be carried out according to Method 2. <span class="key-term">Emulsions</span>, <span class="key-term">colloids</span>, and <span class="key-term">liposomal preparations</span> are examples. Similarly, products that produce <span class="key-term">air or gas bubbles</span> when drawn into the sensor may also require microscopic particle count testing.</p>
+
+        <p>If the viscosity of the preparation to be tested is sufficiently high so as to preclude its examination by either test method, a <span class="key-term">quantitative dilution</span> with an appropriate diluent may be made to decrease viscosity, as necessary, to allow the analysis to be performed.</p>
+
+        <p>The results obtained in examining a discrete unit or group of units for particulate matter cannot be extrapolated with certainty to other units that remain untested. Thus, <span class="key-term">statistically sound sampling plans</span> must be developed if valid inferences are to be drawn from observed data to characterize the level of particulate matter in a large group of units.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 方法選擇決策樹</h4>
+            <p><strong>兩種方法的互補關係：</strong></p>
+            <table>
+                <tr>
+                    <th>特性</th>
+                    <th>Method 1 光阻法</th>
+                    <th>Method 2 顯微法</th>
+                </tr>
+                <tr>
+                    <td><strong>原理</strong></td>
+                    <td>粒子阻擋光束，偵測光強度變化</td>
+                    <td>在濾膜上直接觀察和測量粒子</td>
+                </tr>
+                <tr>
+                    <td><strong>自動化</strong></td>
+                    <td>全自動計數</td>
+                    <td>手動（操作員目視計數）</td>
+                </tr>
+                <tr>
+                    <td><strong>速度</strong></td>
+                    <td>快（每樣品數分鐘）</td>
+                    <td>慢（每樣品 30&ndash;60 分鐘）</td>
+                </tr>
+                <tr>
+                    <td><strong>適用性</strong></td>
+                    <td>透明或微乳光溶液</td>
+                    <td>所有溶液（包括渾濁、高黏度）</td>
+                </tr>
+                <tr>
+                    <td><strong>地位</strong></td>
+                    <td>首選方法（preferred）</td>
+                    <td>仲裁方法（referee）/ 補充方法</td>
+                </tr>
+            </table>
+            <p><strong>決策邏輯：</strong>先用 Method 1 測試 &rarr; 如果通過，則合格；如果超標，再用 Method 2 複測。如果 Method 1 不適用（渾濁、高黏度、乳劑），直接用 Method 2。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>兩種驗鈔方式：</strong></p>
+            <p>Method 1（光阻法）就像驗鈔機 &mdash; 把鈔票塞進去，機器自動快速判別真偽和數量。但如果鈔票是濕的、皺的、或黏在一起的，機器可能無法正確讀取。</p>
+            <p>Method 2（顯微法）就像銀行行員用放大鏡手動檢查每張鈔票 &mdash; 速度慢但什麼情況都能處理，是最終的「仲裁方法」。</p>
+            <p>大部分情況用驗鈔機就夠了（快速、準確），只有特殊情況才需要人工檢查。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>不能外推（Cannot Extrapolate）：</strong>USP 特別強調，檢測幾個單位的結果不能代表整批產品。這是因為微粒污染的分佈是隨機的 &mdash; 一個小瓶可能完全乾淨，旁邊的小瓶可能有玻璃碎片。因此必須制定<strong>統計學上合理的抽樣計畫</strong>。</p>
+            <p><strong>CDMO 常見挑戰：</strong>在無菌充填代工中，常見的導致 Method 1 不適用的產品類型包括：</p>
+            <ul>
+                <li>脂質體製劑（liposomal） &mdash; 脂質體本身會被光阻法偵測為「粒子」</li>
+                <li>蛋白質製劑 &mdash; 某些高濃度蛋白質溶液呈乳光</li>
+                <li>懸浮製劑 &mdash; API 本身是不溶解的微粒</li>
+                <li>含界面活性劑產品 &mdash; 搖晃後產生大量氣泡，干擾光阻法</li>
+            </ul>
+        </div>
+
+        <!-- PRACTICE BOX -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 mRNA-LNP 疫苗（脂質奈米粒子載體）需要做 〈788〉 微粒測試。你會選擇哪種方法？為什麼？</li>
+                <li>為什麼 USP 要求「statistically sound sampling plans」而不是簡單規定「每批測試 N 個單位」？這與微粒污染的本質有什麼關係？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- METHOD 1: LIGHT OBSCURATION                   -->
+<!-- ============================================ -->
+<div class="section-title">0.3 Method 1: Light Obscuration Particle Count Test &mdash; 光阻微粒計數法</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Apparatus</h3>
+        <p>Use a suitable apparatus based on the principle of <span class="key-term">light blockage</span> that allows for an automatic determination of the size of particles and the number of particles according to size.</p>
+
+        <p>The apparatus is calibrated using dispersions of <span class="key-term">spherical particles of known sizes</span> between 10 &micro;m and 25 &micro;m. These standard particles are dispersed in particle-free water. Care must be taken to avoid aggregation of particles during dispersion. System suitability can be verified by using the <span class="key-term">USP Particle Count RS</span>.</p>
+
+        <h3>General Precautions</h3>
+        <p>The test is carried out under conditions limiting particulate matter, preferably in a <span class="key-term">laminar flow cabinet</span>.</p>
+
+        <p>Very carefully wash the glassware and filtration equipment used, except for the membrane filters, with a warm detergent solution, and rinse with abundant amounts of water to remove all traces of detergent. Immediately before use, rinse the equipment from top to bottom, outside and then inside, with <span class="key-term">particle-free water</span>.</p>
+
+        <p>Take care not to introduce <span class="key-term">air bubbles</span> into the preparation to be examined, especially when fractions of the preparation are being transferred to the container in which the determination is to be carried out.</p>
+
+        <h3>Environmental Suitability Test</h3>
+        <p>Determine the particulate matter in five samples of particle-free water, each of 5 mL, according to the method described below. If the number of particles of 10 &micro;m or greater size exceeds <span class="key-term">25 for the combined 25 mL</span>, the precautions taken for the test are not sufficient. The preparatory steps must be repeated until the environment, glassware, and water are suitable for the test.</p>
+
+        <h3>Sample Preparation</h3>
+        <p>Mix the contents of the sample by slowly <span class="key-term">inverting the container 20 times</span> successively. If necessary, cautiously remove the sealing closure. Clean the outer surfaces of the container opening using a jet of particle-free water, and remove the closure, avoiding any contamination of the contents. Eliminate gas bubbles by appropriate measures such as allowing to stand for 2 min or sonicating.</p>
+
+        <p>For <span class="key-term">large-volume parenterals</span>, single units are tested. For <span class="key-term">small-volume parenterals</span> less than 25 mL in volume, the contents of 10 or more units are combined in a cleaned container to obtain a volume of not less than 25 mL; the test solution may be prepared by mixing the contents of a suitable number of vials and diluting to 25 mL with particle-free water or with an appropriate particle-free solvent when particle-free water is not suitable. Small-volume parenterals having a volume of 25 mL or more may be tested individually.</p>
+
+        <p>Powders for parenteral use are reconstituted with particle-free water or with an appropriate particle-free solvent when particle-free water is not suitable.</p>
+
+        <p>Remove four portions, not less than 5 mL each, and count the number of particles equal to or greater than 10 &micro;m and 25 &micro;m. <span class="key-term">Disregard the result obtained for the first portion</span>, and calculate the mean number of particles for the preparation to be examined.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 光阻法原理與操作</h4>
+            <p><strong>光阻法（Light Obscuration）原理：</strong>液體通過一個光束感測器（sensor），當粒子經過光束時，會產生一個「陰影」，遮擋部分光線。感測器偵測到光強度的降低，根據陰影的大小推算粒子的等效球形直徑，同時計算粒子數量。</p>
+            <p><strong>校正標準品：</strong>使用已知尺寸的球形標準粒子（通常是聚苯乙烯乳膠微球，polystyrene latex beads）來校正儀器。校正範圍覆蓋 10 &micro;m 和 25 &micro;m 兩個關鍵閾值。</p>
+            <p><strong>USP Particle Count RS：</strong>USP 參考標準品，用於驗證系統適用性（system suitability），確認儀器在測試當天能正確計數和分級粒子。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 環境適用性測試</h4>
+            <p><strong>環境空白測試限值：</strong>5 &times; 5 mL = 25 mL 的無粒子水中，&ge;10 &micro;m 的粒子不得超過 <strong>25 個</strong>（即平均每 mL 不超過 1 個）。這是確保你的測試環境、玻璃器皿和水質不會對結果造成干擾的基本門檻。</p>
+            <p><strong>丟棄第一份樣品：</strong>從容器中取出的前 5 mL（第一份）必須<strong>丟棄不計</strong>。這是因為第一份液體會沖洗管路和感測器，攜帶系統中殘留的粒子。只有後三份的平均值才代表真實的樣品微粒水平。</p>
+        </div>
+
+        <!-- FORMULA BOX (Purple) -->
+        <div class="formula-box">
+            <h4>公式計算 Sample Preparation Logic</h4>
+            <p><strong>SVP（小量注射劑）樣品準備：</strong></p>
+            <pre>
+如果單瓶容量 &lt; 25 mL：
+  合併 &ge;10 瓶 &rarr; 總體積 &ge; 25 mL
+  或合併數瓶 + 無粒子水稀釋至 25 mL
+
+如果單瓶容量 &ge; 25 mL：
+  可以單瓶測試
+
+測試流程：
+  取 4 &times; (&ge;5 mL) = &ge;20 mL
+  丟棄第 1 份結果
+  取第 2、3、4 份的平均值</pre>
+            <p><strong>LVP（大量注射劑）：</strong>直接單瓶測試，無需合併。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>水龍頭第一杯水的道理：</strong></p>
+            <p>為什麼要丟棄第一份樣品？這就像早上打開水龍頭，第一杯水通常帶有管道中隔夜積存的雜質和鏽斑，你不會用這杯水來判斷自來水的品質。先讓水流幾秒「沖洗」管路，之後流出的水才代表真正的水質。</p>
+            <p>同理，光阻法儀器的感測器和管路在第一次吸取樣品時，會把之前殘留的粒子帶出來，所以第一份數據不可靠。</p>
+        </div>
+
+        <!-- APPLICATION BOX -->
+        <div class="application-box">
+            <h4>CDMO 實務應用 Particle Contamination Sources</h4>
+            <p><strong>CDMO 常見微粒污染來源：</strong></p>
+            <ul>
+                <li><strong>玻璃（Glass）</strong> &mdash; 西林瓶脫片（delamination）、瓶口破損產生的玻璃碎屑</li>
+                <li><strong>橡膠塞（Stopper）</strong> &mdash; 膠塞被穿刺針頭切割產生的橡膠微粒（coring）</li>
+                <li><strong>不銹鋼（Stainless Steel）</strong> &mdash; 配液設備磨損、焊縫缺陷脫落的金屬微粒</li>
+                <li><strong>纖維（Fiber）</strong> &mdash; 人員操作時衣物、手套釋放的纖維</li>
+                <li><strong>濾膜碎片</strong> &mdash; 除菌過濾時濾膜完整性受損脫落的碎片</li>
+                <li><strong>結晶/沉澱</strong> &mdash; 產品配方不穩定導致的 API 或賦形劑結晶</li>
+            </ul>
+        </div>
+
+        <!-- PRACTICE BOX -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 剛完成一批 2 mL 小瓶充填（共 10,000 瓶）。準備做 〈788〉 Method 1 測試時，你需要合併多少瓶來製備一份測試溶液？如果要測試 3 份獨立的測試溶液，總共需要多少瓶？</li>
+                <li>環境適用性測試失敗（25 mL 無粒子水中 &ge;10 &micro;m 粒子 = 35 個，超過 25 個限值）。你會從哪些方面排查原因？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- METHOD 2: MICROSCOPIC                         -->
+<!-- ============================================ -->
+<div class="section-title">0.4 Method 2: Microscopic Particle Count Test &mdash; 顯微微粒計數法</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Apparatus</h3>
+        <p>Use a suitable <span class="key-term">binocular microscope</span>, a filter assembly for retaining particulate matter, and a membrane filter for examination.</p>
+
+        <p>The microscope is adjusted to <span class="key-term">100 &plusmn; 10 magnifications</span> and is equipped with an <span class="key-term">ocular micrometer</span> calibrated with an objective micrometer, a <span class="key-term">mechanical stage</span> capable of holding and traversing the entire filtration area of the membrane filter, and two suitable illuminators to provide <span class="key-term">episcopic illumination</span> in addition to <span class="key-term">oblique illumination</span>.</p>
+
+        <p>The ocular micrometer is a <span class="key-term">circular diameter graticule</span> (see Figure 1) and consists of a large circle divided by crosshairs into quadrants, transparent and black reference circles 10 &micro;m and 25 &micro;m in diameter at 100 magnifications, and a linear scale graduated in 10 &micro;m increments.</p>
+
+        <p>Two illuminators are required. One is an <span class="key-term">episcopic brightfield illuminator</span> internal to the microscope, the other is an external, focusable auxiliary illuminator that can be adjusted to give reflected oblique illumination at an angle of <span class="key-term">10&deg;&ndash;20&deg;</span>.</p>
+
+        <p>The membrane filter is of suitable size, <span class="key-term">black or dark gray</span> in color, nongridded or gridded, and <span class="key-term">1.0 &micro;m or finer</span> in nominal pore size.</p>
+
+        <h3>General Precautions</h3>
+        <p>Determine the particulate matter of a 50-mL volume of particle-free water according to the method described below. If more than <span class="key-term">20 particles 10 &micro;m or larger</span> or if more than <span class="key-term">5 particles 25 &micro;m or larger</span> are present within the filtration area, the precautions taken for the test are not sufficient.</p>
+
+        <h3>Particle Sizing</h3>
+        <p>The particle sizing process with the use of the circular diameter graticule is carried out by estimating the equivalent diameter of the particle in comparison with the 10 &micro;m and 25 &micro;m reference circles on the graticule. The particles are not moved from their initial locations within the graticule field of view and are not superimposed on the reference circles for comparison. The inner diameter of the transparent graticule reference circles is used to size <span class="key-term">white and transparent particles</span>, while dark particles are sized by using the <span class="key-term">outer diameter of the black opaque graticule reference circles</span>.</p>
+
+        <p>In performing the Microscopic Particle Count Test, do not attempt to size or enumerate <span class="key-term">amorphous, semiliquid, or otherwise morphologically indistinct materials</span> that have the appearance of a stain or discoloration on the membrane filter.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <!-- CONCEPT BOX (Green) -->
+        <div class="concept-box">
+            <h4>核心概念解析 顯微法關鍵要素</h4>
+            <p><strong>顯微法的獨特價值：</strong>光阻法告訴你「有多少個粒子」和「多大」，但顯微法還能告訴你「粒子長什麼樣」&mdash; 是玻璃碎片？橡膠屑？纖維？金屬微粒？這對<strong>根因分析（Root Cause Analysis）</strong>極為重要。</p>
+            <p><strong>雙重照明系統：</strong></p>
+            <ul>
+                <li><strong>Episcopic illumination（表面照明）</strong> &mdash; 從上方照射，讓不透明粒子（金屬、橡膠）在暗色濾膜上清晰可見</li>
+                <li><strong>Oblique illumination（斜射照明，10&deg;&ndash;20&deg;）</strong> &mdash; 從側面斜射，讓透明粒子（玻璃、結晶）產生邊緣反光而被偵測到</li>
+            </ul>
+            <p><strong>黑色濾膜的用途：</strong>使用黑色或深灰色濾膜（不是常見的白色濾膜），目的是讓淺色和透明的粒子在深色背景上更容易被觀察到。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) -->
+        <div class="note-box">
+            <h4>重點提示 粒子分級規則</h4>
+            <p><strong>透明 vs 不透明粒子的測量差異：</strong></p>
+            <ul>
+                <li><strong>白色/透明粒子</strong> &rarr; 使用透明參考圓的<strong>內徑</strong>進行比較</li>
+                <li><strong>深色/不透明粒子</strong> &rarr; 使用黑色參考圓的<strong>外徑</strong>進行比較</li>
+            </ul>
+            <p>這個規則確保了不同顏色/透明度的粒子都能被一致地分級。不遵守此規則會導致系統性的測量偏差。</p>
+            <p><strong>不計入的物質：</strong>在濾膜上呈現染色或薄膜狀的非晶形（amorphous）、半液體（semiliquid）物質不應被計為微粒。這些可能是蛋白質聚集體或製劑成分沉積，需要另外用光阻法來確認。</p>
+        </div>
+
+        <!-- NOTE BOX (Orange) - Environmental Suitability -->
+        <div class="note-box">
+            <h4>重點提示 顯微法環境適用性標準</h4>
+            <table>
+                <tr>
+                    <th>粒徑</th>
+                    <th>Method 1 光阻法限值</th>
+                    <th>Method 2 顯微法限值</th>
+                </tr>
+                <tr>
+                    <td>&ge;10 &micro;m</td>
+                    <td>&le;25 個 / 25 mL 水</td>
+                    <td>&le;20 個 / 50 mL 水</td>
+                </tr>
+                <tr>
+                    <td>&ge;25 &micro;m</td>
+                    <td>未規定</td>
+                    <td>&le;5 個 / 50 mL 水</td>
+                </tr>
+            </table>
+            <p>注意顯微法的環境空白測試比光阻法更嚴格 &mdash; 不僅測 &ge;10 &micro;m，還同時測 &ge;25 &micro;m。這是因為顯微法是仲裁方法，需要更高的環境清潔度保證。</p>
+        </div>
+
+        <!-- ANALOGY BOX (Yellow) -->
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>CSI 犯罪現場鑑識：</strong></p>
+            <p>如果光阻法（Method 1）是一台「自動指紋掃描儀」&mdash; 快速告訴你現場有多少枚指紋，那顯微法（Method 2）就是鑑識專家趴在地上用放大鏡一個一個看 &mdash; 不僅數數量，還能判斷「這是腳印還是手印？是皮鞋還是運動鞋？」</p>
+            <p>在微粒分析中，顯微法能區分玻璃（透明、不規則碎片狀）、橡膠（不透明、圓形或不規則）、纖維（細長形）、金屬（不透明、有光澤），這對找出污染來源至關重要。</p>
+        </div>
+
+        <!-- PRACTICE BOX -->
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 QC 實驗室在做 Method 2 時，在濾膜上觀察到大量透明、不規則的碎片狀粒子。這最可能是什麼來源？你會建議生產部門檢查哪些環節？</li>
+                <li>為什麼 USP 規定在顯微法中不要對「染色狀或薄膜狀」物質進行計數？如果這些物質確實存在，應該怎麼處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>USP 〈788〉 是強制性放行試驗</strong>，適用於幾乎所有注射劑（IV、IM、SC），與 EP 和 JP 國際調和</li>
+        <li><strong>微粒定義的四要素：</strong>外來的（extraneous）、可移動的（mobile）、不溶解的（undissolved）、非刻意存在的（unintentional）</li>
+        <li><strong>Method 1 光阻法</strong>為首選方法（自動化、快速），Method 2 顯微法為仲裁/補充方法（可鑑別粒子形態）</li>
+        <li><strong>環境適用性測試</strong>是前提條件 &mdash; Method 1: &le;25 粒子/25 mL 水; Method 2: &le;20 粒子(&ge;10 &micro;m)/50 mL 且 &le;5 粒子(&ge;25 &micro;m)/50 mL</li>
+        <li><strong>SVP 樣品合併規則</strong>：&lt;25 mL 的瓶裝合併 &ge;10 瓶至 &ge;25 mL；LVP 單瓶測試</li>
+        <li><strong>光阻法丟棄第一份數據</strong>（flush effect），取後三份平均值</li>
+        <li><strong>CDMO 微粒來源</strong>：玻璃、橡膠塞、不銹鋼、纖維、濾膜碎片、結晶/沉澱</li>
+    </ul>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP General Chapter 〈1229.14〉 - Sterilization Cycle Development</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>USP General Chapter 〈1229.14〉</h1>
+            <p class="subtitle">Sterilization Cycle Development | 滅菌週期開發 完整教學版</p>
+        </div>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec0" class="nav-item" data-section="sec0">
+                <span class="nav-num">0</span>
+                <span class="nav-label">Cycle Development — Complete</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 0: Cycle Development — Complete ========== -->
+    <section class="chapter-section" id="sec0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">0</div>
+            <div class="chapter-info">
+                <h2>Section 0: Cycle Development — Complete</h2>
+                <p>滅菌週期開發 — 完整 | p1-p3</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- HEADER -->
+<div class="page-info">General Chapter | Pages 1&ndash;3 | Informational</div>
+</div>
+
+<div class="main-content">
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>Chapter Contents 章節目錄</h3>
+    <div class="toc-grid">
+        <a href="#intro">Introduction 導論</a>
+        <a href="#screening">Process Screening 製程篩選</a>
+        <a href="#bioburden">Bioburden Evaluation 生物負載評估</a>
+        <a href="#duration">Estimation of Process Duration 製程時間估算</a>
+        <a href="#material">Formal Material Evaluation 正式材料評估</a>
+        <a href="#bi">Biological Indicator Selection BI 選擇</a>
+        <a href="#container-map">Container &amp; Item Mapping 容器與品項熱分佈</a>
+        <a href="#load-map">Load Mapping 裝載熱分佈</a>
+    </div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解滅菌週期開發的完整流程：從製程篩選到裝載驗證的系統化步驟</li>
+        <li>掌握 PNSU（Probability of a Nonsterile Unit）的概念及其在週期設計中的角色</li>
+        <li>學會使用 D 值、F 值公式計算最低滅菌時間</li>
+        <li>理解 Overkill Approach 與 Bioburden/BI Approach 的選擇邏輯</li>
+        <li>認識容器熱分佈（Container Mapping）與裝載熱分佈（Load Mapping）的差異與目的</li>
+        <li>掌握 CDMO 場景下開發新客戶產品滅菌週期的實務考量</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- INTRODUCTION                                  -->
+<!-- ============================================ -->
+<div class="section-title" id="intro">Introduction &mdash; 導論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>The proper development and implementation of a <span class="key-term">sterilization process</span> requires a number of important sequential steps to ensure that an appropriate sterilization process results in materials and products that are both <span class="key-term">microbiologically safe</span> and suitable for their intended use.</p>
+
+        <p>Sterilization technologies that rely on heat, ionizing radiation, and chemicals often have the potential to alter the <span class="key-term">physicochemical properties</span> of materials to which they are applied. In some cases, sterilization could either leave <span class="key-term">toxic residues</span> on materials that were sterilized or result in impurities (i.e., <span class="key-term">leachables</span>) being more readily released into products that contact them. Thus, it is necessary to consider sterilization not only as a means of eliminating microorganisms but also as a process that has the potential to change materials in a manner that impacts usefulness, safety, or both.</p>
+
+        <p>A balance between the <span class="key-term">microbial lethality</span> of a sterilization process and other aspects of patient safety must be established. A robust sterilization process that satisfies both is the desired objective of the cycle development activities.</p>
+
+        <div class="quote-box">
+            "A balance between the microbial lethality of a sterilization process and other aspects of patient safety must be established."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 Key Concept</h4>
+            <p><strong>滅菌週期開發的雙重目標：</strong>USP &langle;1229.14&rangle; 開宗明義提出滅菌開發必須同時滿足兩個目標：</p>
+            <ul>
+                <li><strong>微生物安全（Microbiological Safety）</strong> &mdash; 確保滅菌後產品達到所需的無菌保證水準（SAL）</li>
+                <li><strong>產品適用性（Suitability for Intended Use）</strong> &mdash; 確保滅菌過程不會損壞產品品質或留下有害殘留物</li>
+            </ul>
+            <p>這兩個目標有時是衝突的：更強的滅菌條件能提高微生物安全，但可能損害產品。週期開發的藝術就在於找到最佳平衡點。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CDMO 實務觀點：</strong>在 CDMO 環境中，每接到一個新客戶產品都可能需要開發或調整滅菌週期。你無法用「一個週期打天下」的方式處理所有產品。蛋白質藥物、小分子藥物、醫療器材各有不同的熱敏感性。開發前必須充分了解產品的關鍵品質屬性（CQA）和材料特性。</p>
+            <p><strong>Leachables（可溶出物）：</strong>滅菌可能促使容器/包裝材料釋放化學物質進入產品。這在預充填注射器、塑膠包材中特別重要，也是 E&amp;L（Extractables &amp; Leachables）研究的核心議題。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PROCESS SCREENING                             -->
+<!-- ============================================ -->
+<div class="section-title" id="screening">Process Screening &mdash; 製程篩選</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p><strong>Radiation:</strong> The methods for establishment of <span class="key-term">radiation sterilization</span> are described in detail in ISO 11137, and adherence to the most recent version of that standard is recommended.</p>
+
+        <p><strong>Sterilizing Filtration:</strong> Filtration sterilization processes rely on <span class="key-term">exclusion of microorganisms</span> and differ substantially from those that rely on lethality (see Sterilizing Filtration of Liquids &langle;1229.4&rangle;). Process development for filtration must consider many factors, such as adverse effects of the fluid on the filter (e.g., <span class="key-term">chemical compatibility</span>) and of the filter on the fluid (e.g., <span class="key-term">extractables and leachables</span>), as well as adsorption of fluid components. Physical interactions such as <span class="key-term">pressure differential</span>, hydraulic shock, flow rate, temperature, and filtration capacity must also be considered.</p>
+
+        <p><strong>Other Sterilization Methods:</strong> The first step in the development of a sterilization cycle is exposing the materials to the sterilization process and evaluating the impact that the process has on them. Initially, this determination can be a general screening process in which gross changes in appearance may be sufficient to confirm incompatibility.</p>
+
+        <p>Where appearance is unchanged, the material should be evaluated for changes to its physical and chemical attributes. If the results are marginal, reductions in those parameters that most impact lethality and/or material effects may be beneficial. Tests conducted over a range of process lethality that would result in microbiological destruction should be performed.</p>
+
+        <p>The following conditions are merely examples for consideration when evaluating materials for compatibility with the sterilization processes indicated:</p>
+        <ol>
+            <li><strong>Moist heat</strong> &mdash; at conditions sufficient to reliably kill the expected bioburden (see &langle;1229.1&rangle; and &langle;1229.2&rangle;)</li>
+            <li><strong>Dry heat</strong> &mdash; check for the lowest melting point of materials and process at 25&deg; below the lowest melting temperature (see &langle;1229.8&rangle;)</li>
+            <li><strong>Liquids, gases, and vapors</strong> &mdash; at conditions sufficient to reliably kill the expected bioburden (see &langle;1229.6&rangle;, &langle;1229.7&rangle;, and &langle;1229.11&rangle;)</li>
+        </ol>
+
+        <p>The selected sterilization method should be the process that has the <span class="key-term">least impact on the essential quality attributes</span> of the material and delivers lethality sufficient to exceed the desired minimum <span class="key-term">probability of a nonsterile unit (PNSU)</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 製程篩選決策</h4>
+            <p><strong>製程篩選的邏輯：</strong>USP 將滅菌方法分為三大類，每類的週期開發路徑不同：</p>
+            <table>
+                <tr><th>滅菌方法</th><th>機制</th><th>開發依據</th></tr>
+                <tr><td>輻射滅菌</td><td>DNA 損傷</td><td>ISO 11137（獨立標準）</td></tr>
+                <tr><td>除菌過濾</td><td>物理排除</td><td>USP &langle;1229.4&rangle;</td></tr>
+                <tr><td>其他（濕熱/乾熱/氣體）</td><td>致死性</td><td>本章流程 + 各子章節</td></tr>
+            </table>
+            <p>本章主要針對「致死性滅菌」（Lethal Sterilization）的週期開發提供框架。過濾和輻射各有專門標準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 篩選原則</h4>
+            <p><strong>乾熱的 25&deg;C 安全裕度：</strong>原文特別提到乾熱製程應在材料最低熔點以下 25&deg;C 操作。這是一個實務性的安全裕度（Safety Margin）。例如：某塑膠組件熔點為 200&deg;C，則乾熱除熱原（Depyrogenation）製程溫度應 &le; 175&deg;C。</p>
+            <p><strong>PNSU 的首次出現：</strong>這裡首次提到 PNSU（Probability of a Nonsterile Unit），這是整個滅菌驗證的核心指標。藥典要求終端滅菌產品的 PNSU &le; 10<sup>&minus;6</sup>，即每一百萬單位中不超過一個非無菌單位。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>選鞋的過程：</strong>製程篩選就像幫產品「選鞋」&mdash; 你不會直接買最貴的鞋（最強的滅菌條件），而是先看腳的尺寸（產品特性）、穿著場合（預期用途）、材質耐受度（材料相容性），然後選一雙既合腳又耐穿的鞋（平衡致死性與產品保護）。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- BIOBURDEN EVALUATION                          -->
+<!-- ============================================ -->
+<div class="section-title" id="bioburden">Bioburden Evaluation &mdash; 生物負載評估</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>In parallel with the process described above, an assessment of the <span class="key-term">bioburden</span> present in or on the items to be sterilized should be conducted (see Monitoring of Bioburden &langle;1229.3&rangle;). The initial evaluation should include an estimation of <span class="key-term">bioburden population</span> and <span class="key-term">resistance</span>. A control strategy for periodic bioburden monitoring for resistance and population should be instituted regardless of the results of the initial study.</p>
+
+        <p><strong>Bioburden Resistance:</strong> For the remaining sterilization processes, the execution of a <span class="key-term">boil test</span> (100&deg; for 10 min) can serve as a basic screen for <span class="key-term">spore-forming microorganisms</span>. The absence of survivors in a boil test greatly simplifies the sterilization cycle development as the sterilizing conditions for non-spore-formers are less stressful on the production materials. If microorganisms are determined to survive the boil test, their resistance to the chosen sterilization process should be established. The boil test allows for estimation of a <span class="key-term">D value</span> for a moist heat process.</p>
+
+        <p><strong>Bioburden Population:</strong> If no microorganisms are recovered or only non-spore-formers are recovered, an estimation of bioburden population can be utilized to expedite selection of the appropriate process duration. As <span class="key-term">spore-forming bacteria</span> are ubiquitous, the potential presence of spores in the bioburden should be given consideration.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 生物負載兩大維度</h4>
+            <p>生物負載評估有兩個關鍵維度，缺一不可：</p>
+            <ul>
+                <li><strong>族群數量（Population）</strong> &mdash; 滅菌前有多少微生物？用 N<sub>0</sub> 表示。數量越多，所需滅菌時間越長</li>
+                <li><strong>抗性（Resistance）</strong> &mdash; 這些微生物有多耐熱/耐化學品？用 D 值表示。抗性越高，所需條件越嚴苛</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式解析 D Value (Decimal Reduction Time)</h4>
+            <pre>D value = 在特定溫度下，使微生物數量減少 90%（1 個 log）所需的時間（分鐘）
+
+例：D₁₂₁ = 1.5 min
+→ 在 121°C 下，每 1.5 分鐘微生物數量減少到原來的 1/10
+
+起始 10⁶ CFU：
+  1.5 min → 10⁵
+  3.0 min → 10⁴
+  4.5 min → 10³
+  6.0 min → 10²
+  7.5 min → 10¹
+  9.0 min → 10⁰ (1 CFU)
+  → 繼續加熱才能達到 PNSU 10⁻⁶</pre>
+            <p><strong>D 值越大</strong>，微生物越耐熱，需要越長的滅菌時間。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Boil Test 的角色</h4>
+            <p><strong>Boil Test（沸騰試驗）：</strong>100&deg;C 加熱 10 分鐘 &mdash; 這是一個快速篩檢。營養型細菌（Non-spore-formers）會被殺死，芽孢菌（Spore-formers）則存活。</p>
+            <p><strong>結果判讀：</strong></p>
+            <ul>
+                <li><strong>無存活菌</strong> → 生物負載主要是營養型細菌 → 滅菌條件可以較溫和 → 對產品衝擊較小</li>
+                <li><strong>有存活菌</strong> → 含芽孢菌 → 需建立其 D 值 → 滅菌條件需更嚴格</li>
+            </ul>
+            <p><strong>CDMO 實務：</strong>原料藥來源不同，生物負載差異極大。API 原料、賦形劑、包材各有不同的微生物風險。每個新產品轉入時都應重新評估。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- ESTIMATION OF PROCESS DURATION                -->
+<!-- ============================================ -->
+<div class="section-title" id="duration">Estimation of Process Duration &mdash; 製程時間估算</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>The minimum duration of the sterilization dwell period can be determined once the sterilizing method has been selected and the bioburden (as determined or assumed) information has been obtained. This is accomplished by rearranging Equation 1, used to estimate the PNSU (see Sterilization of Compendial Articles &langle;1229&rangle;).</p>
+
+        <p><strong>Equation 1 &mdash; PNSU Estimation:</strong></p>
+        <div class="quote-box">
+            log N<sub>U</sub> = &minus;F/D + log N<sub>0</sub>
+        </div>
+
+        <p>Rearrangement of the equation and solving for F results in <strong>Equation 2:</strong></p>
+        <div class="quote-box">
+            F = D (log N<sub>0</sub> &minus; log N<sub>U</sub>)
+        </div>
+
+        <p>Where:</p>
+        <ul>
+            <li><strong>N<sub>U</sub></strong> = assumed PNSU (NMT 1 positive unit in 10<sup>6</sup> units)</li>
+            <li><strong>F</strong> = dwell time of the sterilization process at a defined condition expressed in minutes</li>
+            <li><strong>D</strong> = estimated D value of the bioburden in minutes</li>
+            <li><strong>N<sub>0</sub></strong> = estimated maximum population of the bioburden</li>
+        </ul>
+
+        <p>The calculated F value represents the minimum duration of the process dwell period to reduce the assumed initial microbial population to less than the desired PNSU. <span class="key-term">Safety factors</span> can be added to the assumed D value of the bioburden, the minimum desired PNSU, and the bioburden population estimate.</p>
+
+        <p>The F value is equivalent to <span class="key-term">F<sub>0</sub></span> for moist heat, <span class="key-term">F<sub>H</sub></span> for dry heat, or process dwell time L for other sterilization processes and is typically expressed in minutes.</p>
+
+        <p>Depending on the F value (or process dwell time) selected, the validation approach for sterilization can be determined. The preferred, but not required, method is the use of an <span class="key-term">overkill approach</span> (see &langle;1229&rangle;) where the F value allows for complete inactivation of a resistant biological indicator. Where material limitations restrict the use of lengthy sterilizing conditions, the <span class="key-term">bioburden/biological indicator</span> or <span class="key-term">bioburden methods</span> may be more appropriate.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>公式解析 PNSU &amp; F Value Calculation</h4>
+            <pre>Equation 1 — PNSU 估算公式：
+  log N_U = −F / D + log N₀
+
+Equation 2 — 解出 F（最低滅菌時間）：
+  F = D × (log N₀ − log N_U)
+
+各變數意義：
+  N₀  = 初始生物負載（CFU）
+  N_U = 目標 PNSU（通常 = 10⁻⁶）
+  D   = 生物負載的 D 值（min）
+  F   = 所需滅菌時間（min）</pre>
+        </div>
+
+        <div class="formula-box">
+            <h4>計算範例 Worked Example</h4>
+            <pre>假設條件：
+  N₀ = 100 CFU (10²)
+  D  = 1.5 min (生物負載 D₁₂₁ 值)
+  目標 PNSU = 10⁻⁶
+
+F = D × (log N₀ − log N_U)
+F = 1.5 × (log 10² − log 10⁻⁶)
+F = 1.5 × (2 − (−6))
+F = 1.5 × 8
+F = 12 min
+
+→ 在 121°C 下至少需要 12 分鐘的保溫時間
+→ 這是 F₀ = 12 的意義</pre>
+            <p><strong>安全裕度（Safety Factor）：</strong>實務上會在 D 值、N<sub>0</sub>、或 PNSU 上加入安全裕度。例如將 D 值假設為實測值的 2 倍，或將 N<sub>0</sub> 假設為實測值的 10 倍。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 F₀ vs F<sub>H</sub></h4>
+            <p>F 值會因滅菌方法不同而有不同的表示方式：</p>
+            <table>
+                <tr><th>符號</th><th>適用方法</th><th>參考溫度</th><th>參考 z 值</th></tr>
+                <tr><td>F<sub>0</sub></td><td>濕熱滅菌</td><td>121.1&deg;C</td><td>10&deg;C</td></tr>
+                <tr><td>F<sub>H</sub></td><td>乾熱滅菌</td><td>170&deg;C</td><td>20&deg;C</td></tr>
+                <tr><td>L</td><td>其他方法</td><td>依方法定義</td><td>依方法定義</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 驗證方法選擇</h4>
+            <p><strong>三種驗證方法（Validation Approach）：</strong></p>
+            <ul>
+                <li><strong>Overkill Approach（過殺法）</strong> &mdash; 首選。F<sub>0</sub> &ge; 12 min，可完全滅活高抗性 BI（如 <em>G. stearothermophilus</em>，D<sub>121</sub> &ge; 1.5 min，10<sup>6</sup> 孢子）。對材料要求最高</li>
+                <li><strong>Bioburden/BI Approach</strong> &mdash; 當產品無法承受 Overkill 條件時使用。需同時考慮實際生物負載和 BI 的滅活數據</li>
+                <li><strong>Bioburden Approach（純生物負載法）</strong> &mdash; 最溫和。僅基於實際生物負載數據設計週期。需要更嚴格的生物負載監控</li>
+            </ul>
+            <p><strong>CDMO 策略：</strong>對於耐熱產品（如不銹鋼器具、玻璃瓶），優先採用 Overkill &mdash; 驗證最簡單、文件最少、監管機構最認可。對於熱敏感產品（如蛋白質藥物），則需採用 Bioburden/BI 方法，並加強日常生物負載監控。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FORMAL MATERIAL EVALUATION                    -->
+<!-- ============================================ -->
+<div class="section-title" id="material">Formal Material Evaluation &mdash; 正式材料評估</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>Once the appropriate sterilization process has been chosen, the effects of that process on the materials should be reconfirmed. The requirements for this can vary from simple physical examinations for materials expected to be largely unaffected by the sterilization process, such as <span class="key-term">stainless steel or glass</span> with steam, to comprehensive <span class="key-term">stability examinations</span> for formulated products in their final <span class="key-term">container-closure configuration</span>.</p>
+
+        <p>The criteria for these studies should be objective wherever possible. It is useful to do a <span class="key-term">literature search</span> for materials about which there is minimal experience, and to search and discuss potential material effects with suppliers.</p>
+
+        <p>The preparation and sterilization of the test units for these formal studies can be conducted in a <span class="key-term">laboratory setting</span> and must be fully documented.</p>
+
+        <p>When sterilizing using <span class="key-term">chemical agents</span>, the sterilized materials should be tested for the presence of <span class="key-term">residual sterilant</span> and its known degradation by-products. Post-sterilization cycle <span class="key-term">aeration</span> or other treatments may be necessary to reduce these to acceptable levels.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 材料評估分級</h4>
+            <p>USP 暗示了一個風險分級的概念 &mdash; 材料評估的深度取決於材料對滅菌的敏感性：</p>
+            <table>
+                <tr><th>材料類型</th><th>評估深度</th><th>範例</th></tr>
+                <tr><td>惰性材料</td><td>簡單物理檢查</td><td>不銹鋼、玻璃（蒸汽滅菌）</td></tr>
+                <tr><td>聚合物/塑膠</td><td>物理 + 化學屬性測試</td><td>矽膠管、PTFE 密封件</td></tr>
+                <tr><td>藥品配方</td><td>完整穩定性研究</td><td>注射液在最終容器封閉系統中</td></tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 化學滅菌殘留</h4>
+            <p><strong>EO（環氧乙烷）殘留：</strong>使用氣體或化學滅菌時，殘留滅菌劑是重大安全議題。例如 EO 滅菌後，產品上的 EO 殘留量和 ECH（Ethylene Chlorohydrin）副產物必須符合 ISO 10993-7 限量標準。Post-sterilization aeration（滅菌後通氣）是標準程序。</p>
+            <p><strong>CDMO 實務：</strong>接到新產品時，材料相容性研究是技術轉移（Tech Transfer）階段的關鍵活動。客戶通常會提供初步數據，但 CDMO 應在自己的設備和條件下重新驗證。這些研究可以在實驗室規模進行，但必須完整記錄（fully documented）&mdash; 這是 GMP 的基本要求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- BIOLOGICAL INDICATOR SELECTION                -->
+<!-- ============================================ -->
+<div class="section-title" id="bi">Biological Indicator Selection &mdash; 生物指示劑選擇</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>A <span class="key-term">biological indicator</span> should be selected that is appropriate for the chosen sterilization process and its duration, as well as the intended <span class="key-term">validation approach</span> (see Biological Indicators for Sterilization &langle;1229.5&rangle;).</p>
+
+        <p>The chosen biological indicator provides a means to measure the lethality of the process through the selection of biological indicator <span class="key-term">population</span> and <span class="key-term">resistance</span>.</p>
+
+        <p>The <span class="key-term">sterilization process duration</span> should not be adapted to accommodate the specifics of any biological indicator.</p>
+
+        <div class="quote-box">
+            "The sterilization process duration should not be adapted to accommodate the specifics of any biological indicator."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 BI 選擇原則</h4>
+            <p><strong>BI 的角色：</strong>生物指示劑是滅菌驗證的「量尺」&mdash; 它用來量測製程是否達到所需的致死性，而不是用來決定製程條件。</p>
+            <p><strong>關鍵原則：</strong>「製程不應遷就 BI」&mdash; 這是 USP 非常明確的立場。意思是：</p>
+            <ul>
+                <li>先根據產品和生物負載決定滅菌條件</li>
+                <li>再選擇適合的 BI 來驗證該條件的致死性</li>
+                <li>如果 BI 在該條件下無法被完全滅活，應選擇抗性較低的 BI，而非延長製程時間</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 常用 BI</h4>
+            <table>
+                <tr><th>滅菌方法</th><th>標準 BI 菌種</th><th>典型 D 值</th></tr>
+                <tr><td>濕熱（Steam）</td><td><em>Geobacillus stearothermophilus</em></td><td>D<sub>121</sub> = 1.5&ndash;3.0 min</td></tr>
+                <tr><td>乾熱（Dry Heat）</td><td><em>Bacillus atrophaeus</em></td><td>D<sub>160</sub> = 1.0&ndash;5.0 min</td></tr>
+                <tr><td>EO 氣體</td><td><em>Bacillus atrophaeus</em></td><td>依 EO 條件而異</td></tr>
+                <tr><td>VHP 過氧化氫</td><td><em>Geobacillus stearothermophilus</em></td><td>依濃度/溫度而異</td></tr>
+            </table>
+            <p><strong>CDMO 注意事項：</strong>BI 的 D 值和孢子數量必須有供應商提供的 Certificate of Analysis（CoA）。不同批號的 BI 可能有不同的 D 值 &mdash; 驗證報告中應記錄所用 BI 的具體批號和特性。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CONTAINER AND ITEM MAPPING                    -->
+<!-- ============================================ -->
+<div class="section-title" id="container-map">Container and Item Mapping &mdash; 容器與品項熱分佈</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>Studies should be performed to determine the location within the materials to be sterilized that is <span class="key-term">least likely to achieve sterilizing conditions</span>. The mapping can be conducted using <span class="key-term">thermocouples</span>, <span class="key-term">dosimeters</span>, <span class="key-term">biological indicators</span>, and/or <span class="key-term">chemical indicators</span> placed within the materials.</p>
+
+        <p>The materials to be sterilized should be wrapped or packaged and oriented as intended for routine use of the sterilization process. The wrapping and packaging materials and methods should be controlled to ensure <span class="key-term">reproducibility</span>.</p>
+
+        <p>It is essential when conducting these studies that the introduction of the measuring devices be accomplished in a manner that does not alter (positively or negatively) the <span class="key-term">penetration of the sterilant</span> through any wrapping and packaging or through the material itself.</p>
+
+        <p>If the materials to be sterilized have <span class="key-term">simple geometry</span>, with minimal internal volume, and are sterilized with other more complex items, mapping of the simpler materials can be omitted. <span class="key-term">Interpolation</span> of volume, density, dimension, and mass may be possible to reduce the extent of studies required. Mapping studies should be documented for future reference.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 Cold Spot 識別</h4>
+            <p><strong>Container/Item Mapping 的目的：</strong>找到容器或品項內部的「最冷點」（Cold Spot）或「最難到達點」&mdash; 即滅菌條件最不容易達到的位置。如果最冷點都能達標，其他位置自然合格。</p>
+            <p><strong>測量工具選擇：</strong></p>
+            <ul>
+                <li><strong>熱電偶（Thermocouples）</strong> &mdash; 濕熱/乾熱滅菌的溫度分佈</li>
+                <li><strong>劑量計（Dosimeters）</strong> &mdash; 輻射滅菌的劑量分佈</li>
+                <li><strong>BI / CI</strong> &mdash; 輔助驗證致死性達到各位置</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 測量不能改變結果</h4>
+            <p><strong>非侵入性原則：</strong>USP 特別強調：放置測量裝置時不能改變滅菌劑的穿透路徑。例如：</p>
+            <ul>
+                <li>在密封包裝上穿孔放入熱電偶時，穿孔本身可能成為蒸汽進入的捷徑 &mdash; 這會讓測量結果偏樂觀</li>
+                <li>在瓶中放入大型溫度探頭可能排擠液體，改變熱傳導特性</li>
+            </ul>
+            <p><strong>Interpolation（內插法）：</strong>USP 允許對簡單幾何形狀的物品使用內插法減少研究範圍。例如：已驗證 100 mL 和 500 mL 瓶的 Cold Spot，可以合理推估 250 mL 瓶的行為。但此推估必須有科學依據並記錄在案。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- LOAD MAPPING                                  -->
+<!-- ============================================ -->
+<div class="section-title" id="load-map">Load Mapping &mdash; 裝載熱分佈</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text 原文內容</h2>
+
+        <p>The initial use of a sterilization process should include confirmation that the <span class="key-term">sterilization conditions</span> can be delivered throughout the <span class="key-term">entire load</span>. Additional guidance on this, and the subsequent aspect of sterilization validation and process control, can be found in other chapters within the &langle;1229&rangle; family of chapters.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 Container Mapping vs Load Mapping</h4>
+            <p>USP 將熱分佈研究分為兩個層次：</p>
+            <table>
+                <tr><th>研究類型</th><th>目的</th><th>層級</th></tr>
+                <tr><td>Container/Item Mapping</td><td>找到單一品項/容器內的最冷點</td><td>微觀（品項內部）</td></tr>
+                <tr><td>Load Mapping</td><td>確認滅菌條件能覆蓋整個裝載的所有位置</td><td>宏觀（滅菌器腔體）</td></tr>
+            </table>
+            <p>兩者都必須執行。Load Mapping 確保滅菌器腔體內沒有「死角」&mdash; 無論品項放在最上層、最下層、最角落，都能達到所需的滅菌條件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 CDMO Re-validation Triggers</h4>
+            <p><strong>何時需要重新驗證（Re-validation）？</strong></p>
+            <ul>
+                <li>新產品或新容器尺寸引入（新的 Container Mapping 需求）</li>
+                <li>裝載模式（Loading Pattern）變更</li>
+                <li>滅菌器設備維修或重大修改</li>
+                <li>生物負載趨勢出現異常（更高的族群或抗性）</li>
+                <li>容器封閉系統變更（可能影響蒸汽穿透）</li>
+                <li>定期再驗證（通常每年一次）</li>
+            </ul>
+            <p>對 CDMO 而言，新客戶產品轉入幾乎必然觸發 Container Mapping 和可能的 Load Mapping 更新。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION SUMMARY                               -->
+<!-- ============================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>滅菌週期開發流程：</strong>製程篩選 &rarr; 生物負載評估 &rarr; 製程時間估算 &rarr; 材料評估 &rarr; BI 選擇 &rarr; Container Mapping &rarr; Load Mapping</li>
+        <li><strong>雙重平衡：</strong>微生物致死性 vs 產品/材料保護 &mdash; 過度滅菌可能損害產品品質</li>
+        <li><strong>PNSU 公式：</strong>F = D &times; (log N<sub>0</sub> &minus; log N<sub>U</sub>)，其中 F<sub>0</sub> 用於濕熱、F<sub>H</sub> 用於乾熱</li>
+        <li><strong>驗證方法選擇：</strong>Overkill（首選，最簡單）&rarr; Bioburden/BI &rarr; Bioburden（最溫和，監控最嚴格）</li>
+        <li><strong>BI 原則：</strong>製程不應遷就 BI；BI 是量尺，不是設計依據</li>
+        <li><strong>熱分佈兩層次：</strong>Container Mapping（品項內最冷點）+ Load Mapping（腔體內均勻性）</li>
+        <li><strong>CDMO 關鍵：</strong>每個新產品轉入都是潛在的週期開發/再驗證觸發點</li>
+    </ul>
+</div>
+
+<!-- PRACTICE BOX -->
+<div class="practice-box">
+    <h4>綜合練習思考 Comprehensive Practice Questions</h4>
+    <ol>
+        <li>一個新客戶帶來一支蛋白質藥物（對熱極敏感），裝在預充填注射器中，需要終端滅菌。你會建議什麼驗證方法？如果 Overkill 不可行，你需要加強哪些日常監控？</li>
+        <li>你的生物負載監控數據顯示某產品的 Boil Test 突然出現存活菌（之前一直無存活菌）。按照本章框架，你應該啟動哪些行動？</li>
+        <li>計算練習：某產品生物負載 N<sub>0</sub> = 50 CFU，D<sub>121</sub> = 2.0 min，目標 PNSU = 10<sup>&minus;6</sup>。最低 F<sub>0</sub> 是多少？如果加上 2 倍安全裕度（D 值取 4.0 min），F<sub>0</sub> 會是多少？</li>
+        <li>為什麼 USP 要求在放置熱電偶時不能改變滅菌劑的穿透路徑？請舉一個實際例子說明這可能如何導致錯誤的驗證結論。</li>
+    </ol>
+</div>
+
+</div> <!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p>USP &langle;1229.14&rangle;: Sterilization Cycle Development</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Reference</p>
+    <p>For educational and training purposes only. Refer to the official USP&ndash;NF for regulatory compliance.</p>
+</div>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>USP 〈1229.14〉: Sterilization Cycle Development</p>
+        <p>Educational Material — 教學用途 | 本文件僅供學習參考</p>
+        <p>Generated by Claude Code Automation Pipeline</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress tracking
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        let _saveTimer = null;
+        let _current = '';
+
+        function _saveProgress() {
+            if (!_current) return;
+            const nav = document.querySelector('.nav-item.active');
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id: _current,
+                    label: nav ? (nav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num: nav ? (nav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    ts: Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then saved progress
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            // Debounced save
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+
+</body>
+</html>
