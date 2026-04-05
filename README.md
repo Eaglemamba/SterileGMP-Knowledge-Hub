@@ -90,12 +90,53 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | Q8(R2) Pharmaceutical Development | ICH | ✅ Complete | Design space and quality by design |
 | Q9(R1) Quality Risk Management | ICH | ✅ Complete | Risk management methodology framework |
 | Q10 Pharmaceutical Quality System | ICH | ✅ Complete | Pharmaceutical quality system framework |
-| \<71\> Sterility Tests | USP | ⏳ Phase 3 | Sterility testing requirements |
-| \<85\> Bacterial Endotoxins Test | USP | ⏳ Phase 3 | Endotoxin testing by LAL method |
-| \<788\> Particulate Matter in Injections | USP | ⏳ Phase 3 | Particulate matter testing for injectables |
-| \<1116\> Microbial Control of Aseptic Environments | USP | ⏳ Phase 3 | EM program design standard |
-| \<1211\> Sterilization and Sterility Assurance | USP | ⏳ Phase 3 | Sterilization methods and validation |
-| 14644-1/2/3 Cleanroom Classification | ISO | ⏳ Phase 3 | Cleanroom standards and monitoring |
+| 14644-1/2/3 Cleanroom Classification | ISO | ⏳ Planned | Cleanroom standards and monitoring |
+
+### USP General Chapters (38 complete, 18 skeleton)
+
+| Chapter | Topic | Status |
+|---------|-------|--------|
+| 〈1〉 | Injections and Implanted Drug Products | ✅ Complete |
+| 〈55〉 | Biological Indicators—Resistance Performance Tests | ✅ Complete |
+| 〈71〉 | Sterility Tests | ✅ Complete |
+| 〈85〉 | Bacterial Endotoxins Test | ✅ Complete |
+| 〈151〉 | Pyrogen Test | ✅ Complete |
+| 〈161〉 | Transfusion and Infusion Assemblies | ✅ Complete |
+| 〈381〉 | Elastomeric Components in Injectable Packaging | ✅ Complete |
+| 〈660〉 | Containers—Glass | ✅ Complete |
+| 〈661〉 | Plastic Packaging Systems | ✅ Complete |
+| 〈670〉 | Auxiliary Packaging Components | ✅ Complete |
+| 〈671〉 | Containers—Performance Testing | ✅ Complete |
+| 〈729〉 | Globule Size Distribution in Lipid Injectable Emulsions | ✅ Complete |
+| 〈755〉 | Minimum Fill | ✅ Complete |
+| 〈771〉 | Ophthalmic Products—Quality Tests | ✅ Complete |
+| 〈785〉 | Osmolality and Osmolarity | ✅ Complete |
+| 〈787〉 | Subvisible Particulate Matter in Therapeutic Protein Injections | ✅ Complete |
+| 〈788〉 | Particulate Matter in Injections | ✅ Complete |
+| 〈789〉 | Particulate Matter in Ophthalmic Solutions | ✅ Complete |
+| 〈790〉 | Visible Particulates in Injections | ✅ Complete |
+| 〈791〉 | pH | ✅ Complete |
+| 〈797〉 | Pharmaceutical Compounding—Sterile Preparations | ✅ Complete |
+| 〈1071〉 | Rapid Microbiological Methods | ✅ Complete |
+| 〈1072〉 | Disinfectants and Antiseptics | ✅ Complete |
+| 〈1085〉 | Guidelines on Biologics—General Considerations | ✅ Complete |
+| 〈1115〉 | Bioburden Control of Non-Sterile Drug Substances | ✅ Complete |
+| 〈1116〉 | Microbial Control of Aseptic Environments | ✅ Complete |
+| 〈1117〉 | Microbiological Best Laboratory Practices | ✅ Complete |
+| 〈1207〉 | Package Integrity Evaluation—Sterile Products | ✅ Complete |
+| 〈1211〉 | Sterilization and Sterility Assurance | ✅ Complete |
+| 〈1228〉 | Depyrogenation | ✅ Complete |
+| 〈1228.1〉 | Dry Heat Depyrogenation | ✅ Complete |
+| 〈1228.3〉 | Depyrogenation by Filtration | ✅ Complete |
+| 〈1228.4〉 | Depyrogenation by Rinsing | ✅ Complete |
+| 〈1228.5〉 | Endotoxin Indicators for Depyrogenation | ✅ Complete |
+| 〈1229〉 | Sterilization of Compendial Articles | ✅ Complete |
+| 〈1229.1〉–〈1229.15〉 | Sterilization sub-series (15 chapters) | ⏳ Skeleton |
+| 〈1660〉 | Evaluation of Inner Surface Durability of Glass Containers | ✅ Complete |
+| 〈1788〉 | Methods for the Determination of Subvisible Particulate Matter | ✅ Complete |
+| 〈1790〉 | Visual Inspection of Injections | ✅ Complete |
+
+> **Note:** USP chapters < 1000 are legally enforceable in the US; chapters ≥ 1000 are informational. See [SOURCES.md](SOURCES.md) for details on each source organization.
 
 ## Using the Chatbot Skill
 

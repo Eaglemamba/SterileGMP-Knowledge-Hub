@@ -1,4 +1,4 @@
-# PDA Knowledge Base — Master Index
+# SterileGMP Knowledge Base — Master Index
 
 This index helps route questions to the correct report(s) before searching.
 Read this file first, identify the 1–2 most relevant reports, then grep only those.
@@ -968,3 +968,306 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 | Process Validation | Approach | Supports | Implementation |
 | Change Management | Design Phase | Assessment | Control & Approval |
 | Knowledge Management | Development | Documentation | Lifecycle |
+
+---
+
+## USP General Chapters Knowledge Base
+
+---
+
+## USP/USP-1-Complete.md
+USP 〈1〉 Injections and Implanted Drug Products — Requirements | 4 sections
+Terms: injection, implant, large-volume parenteral (LVP), small-volume parenteral (SVP), sterility, particulate matter, pyrogens, endotoxin, pH, tonicity, container closure, label, beyond-use date, osmolality, isotonic
+
+---
+
+## USP/USP-71-Complete.md
+USP 〈71〉 Sterility Tests | 3 sections
+Terms: sterility test, membrane filtration, direct inoculation, fluid thioglycollate medium (FTM), soybean-casein digest medium (SCDM), incubation, 14-day incubation, bacteriostasis, fungistasis, LAL, validation, positive control, negative control, aseptic technique, invalid test, retest, product inhibition
+
+---
+
+## USP/USP-55-Complete.md
+USP 〈55〉 Biological Indicators—Resistance Performance Tests | 2 sections
+Terms: biological indicator (BI), D-value, z-value, survivor curve, Geobacillus stearothermophilus, Bacillus atrophaeus, spore suspension, paper carrier, fiber carrier, BIER vessel, ISO 18472, resistance performance, kill time, survival time, Stumbo-Murphy-Cochran, LSK method, sterilization validation
+
+---
+
+## USP/USP-85-Complete.md
+USP 〈85〉 Bacterial Endotoxins Test | 3 sections
+Terms: bacterial endotoxin, BET, LAL (Limulus amoebocyte lysate), gel-clot method, turbidimetric method, chromogenic method, endotoxin unit (EU), reference standard endotoxin (RSE), control standard endotoxin (CSE), maximum valid dilution (MVD), product inhibition/enhancement, spike recovery, BET limit, endotoxin limit calculation, rFC (recombinant Factor C), rCRA
+
+---
+
+## USP/USP-151-Complete.md
+USP 〈151〉 Pyrogen Test | 1 section
+Terms: pyrogen test, rabbit pyrogen test, temperature rise, fever, interleukin, monocyte activation test (MAT), non-endotoxin pyrogens, in vitro pyrogen test, limulus test comparison
+
+---
+
+## USP/USP-161-Complete.md
+USP 〈161〉 Transfusion and Infusion Assemblies and Similar Medical Devices | 1 section
+Terms: transfusion set, infusion set, medical device, biocompatibility, extractables, sterility, pyrogenicity, ISO 10993, needle, tubing
+
+---
+
+## USP/USP-381-Complete.md
+USP 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems | 3 sections
+Terms: elastomeric stopper, rubber closure, vial stopper, cartridge closure, syringe plunger, elastomeric component, extractables, physicochemical test, reducing substances, volatile sulfides, ammonium, absorbance, acidity/alkalinity, penetrability, fragmentation, self-sealing, Type I/II classification, biological reactivity, cytotoxicity, USP 〈87〉, USP 〈88〉, BPCS (biological performance classification system)
+
+---
+
+## USP/USP-660-Complete.md
+USP 〈660〉 Containers—Glass | 3 sections
+Terms: glass container, Type I glass, Type II glass, Type III glass, NP (non-parenteral) glass, borosilicate glass, soda-lime glass, glass classification, powdered glass test, water attack test, surface glass test, arsenic release, spectral transmission, chemical resistance, hydrolytic resistance, dealkalization, glass grains test, USP limit
+
+---
+
+## USP/USP-661-Complete.md
+USP 〈661〉 Plastic Packaging Systems and Their Materials of Construction | 3 sections
+Terms: plastic container, plastic packaging, polyethylene (HDPE/LDPE/PE), polypropylene (PP), polyethylene terephthalate (PET/PETG), single-unit container, multiple-unit container, plastic classification, IR/MIR spectroscopy, DSC (differential scanning calorimetry), nonvolatile residue, heavy metals, buffering capacity, biological reactivity, cytotoxicity, extractables, leachables, functional suitability
+
+---
+
+## USP/USP-670-Complete.md
+USP 〈670〉 Auxiliary Packaging Components | 3 sections
+Terms: pharmaceutical coil, cotton coil, rayon coil, polyester coil, desiccant, silica gel, molecular sieve, calcium chloride, calcium oxide, activated carbon, odor adsorbent, oxygen scavenger, bentonite, water absorption capacity, butane activity, desiccant qualification, moisture protection
+
+---
+
+## USP/USP-671-Complete.md
+USP 〈671〉 Containers—Performance Testing | 3 sections
+Terms: container performance testing, light transmission, UV-Vis spectrophotometry, moisture vapor transmission rate (MVTR), moisture permeation, desiccant method, water vapor permeation, tight container, well-closed container, single-unit container, multiple-unit container, unit-dose container, blister pack, strip pack, Class A/B/C/D container, light-resistant container
+
+---
+
+## USP/USP-729-Complete.md
+USP 〈729〉 Globule Size Distribution in Lipid Injectable Emulsions | 2 sections
+Terms: lipid injectable emulsion, globule size, PFAT5 (percentage of fat in globules >5 µm), dynamic light scattering (DLS), light obscuration/SPOS, pulmonary embolism risk, mean droplet diameter (MDD), volume-weighted distribution, acceptance criterion PFAT5 ≤ 0.05%, Brownian motion, Stokes-Einstein equation, system suitability, NIST calibration
+
+---
+
+## USP/USP-755-Complete.md
+USP 〈755〉 Minimum Fill | 1 section
+Terms: minimum fill, labeled amount, net weight, density determination, two-stage acceptance criteria, aerosol minimum fill, spray container, foam container, stage 1 (n=10), stage 2 (n=30), weight by difference method
+
+---
+
+## USP/USP-771-Complete.md
+USP 〈771〉 Ophthalmic Products—Quality Tests | 3 sections
+Terms: ophthalmic product, eye drops, ophthalmic ointment, ophthalmic gel, ophthalmic suspension, sterility, clarity, particulate matter, metal particles in ophthalmic ointments, leakage test, minimum fill, uniformity of dosage units, preservative effectiveness, antimicrobial effectiveness, viscosity, resuspendability, particle size, drop size, pH, osmolality, intraocular, subconjunctival
+
+---
+
+## USP/USP-785-Complete.md
+USP 〈785〉 Osmolality and Osmolarity | 3 sections
+Terms: osmolality, osmolarity, tonicity, colligative properties, osmotic pressure, freezing point depression, vapor pressure, osmometer, freezing point osmometer, vapor pressure osmometer, membrane osmometer, Peltier cooling, dew point, NaCl standards, calibration, Pitzer-Debye-Hückel, mOsmol/kg, mOsmol/L, isotonic (308 mOsmol/kg), IQ/OQ/PQ under 〈1058〉, osmolality vs osmolarity distinction
+
+---
+
+## USP/USP-787-Complete.md
+USP 〈787〉 Subvisible Particulate Matter in Therapeutic Protein Injections | 2 sections
+Terms: subvisible particulate, therapeutic protein, biologic, protein aggregation, protein particles, silicone oil, extrinsic particles, intrinsic particles, inherent particles, light obscuration (LO), microscopic particle count, SVP (small-volume parenteral), LVP (large-volume parenteral), acceptance criteria (≥10 µm, ≥25 µm), in-line filter exemption, dual-limit logic, gas bubbles, degassing
+
+---
+
+## USP/USP-788-Complete.md
+USP 〈788〉 Particulate Matter in Injections | 3 sections
+Terms: particulate matter, injectables, light obscuration method, microscopic particle count, HIAC, particle counter, 10 µm, 25 µm limits, LVP (NMT 25/mL ≥10µm; NMT 3/mL ≥25µm), SVP (NMT 6000/container ≥10µm; NMT 600/container ≥25µm), blank test, system suitability, membrane, counting chamber, rubber stopper particles
+
+---
+
+## USP/USP-789-Complete.md
+USP 〈789〉 Particulate Matter in Ophthalmic Solutions | 1 section
+Terms: particulate matter, ophthalmic solution, eye drops, light obscuration, microscopic particle count, 10 µm limit, 25 µm limit, 50 µm limit, intraocular product, acceptance criteria, Table 1, Table 2
+
+---
+
+## USP/USP-790-Complete.md
+USP 〈790〉 Visible Particulates in Injections | 1 section
+Terms: visible particles, visual inspection, injectable, 100% inspection, AQL sampling, particle enumeration, extrinsic contamination, white background, black background, inspection conditions
+
+---
+
+## USP/USP-791-Complete.md
+USP 〈791〉 pH | 3 sections
+Terms: pH, potential of hydrogen, hydrogen ion activity, Nernst equation, glass electrode, reference electrode, combination electrode, liquid junction, salt bridge, calomel electrode, silver-silver chloride electrode, pH meter, two-point calibration, slope, offset, primary buffer standards, secondary buffer standards, temperature compensation, nonaqueous pH, mixed solvent pH, pH standardization procedure
+
+---
+
+## USP/USP-797-Complete.md
+USP 〈797〉 Pharmaceutical Compounding—Sterile Preparations | 6 sections
+Terms: compounded sterile preparation (CSP), Category 1 CSP, Category 2 CSP, Category 3 CSP, beyond-use date (BUD), immediate-use CSP, designated person, garbing, gowning, gloved fingertip sampling (GFT), media fill, ISO Class 5, ISO Class 7, ISO Class 8, primary engineering control (PEC), secondary engineering control (SEC), LAFW (laminar airflow workbench), BSC (biological safety cabinet), CAI (compounding aseptic isolator), CACI, ACPH (air changes per hour), environmental monitoring, sterility testing, endotoxin testing, sporicidal disinfectant, master formulation record (MFR), compounding record (CR), compounding pharmacist, 503A, 503B
+
+---
+
+## USP/USP-1071-Complete.md
+USP 〈1071〉 Rapid Microbiological Methods | 2 sections
+Terms: rapid microbiological method (RMM), alternative method, growth-based, viability-based, nucleic acid-based, ATP bioluminescence, flow cytometry, PCR, equivalency study, method validation, USP 〈1223〉, FCA (false compliance assessment)
+
+---
+
+## USP/USP-1072-Complete.md
+USP 〈1072〉 Disinfectants and Antiseptics | 2 sections
+Terms: disinfectant, antiseptic, sporicidal agent, bactericidal, fungicidal, virucidal, isopropyl alcohol (IPA), hydrogen peroxide, peracetic acid, chlorine dioxide, quaternary ammonium compounds, phenolics, efficacy testing, AOAC use-dilution test, AOAC carrier test, EN 13697, in-use testing, rotation, contact time, concentration, cleanroom disinfection
+
+---
+
+## USP/USP-1085-Complete.md
+USP 〈1085〉 Guidelines on Biologics — General Considerations | 2 sections
+Terms: biological product, biologic, biotechnology-derived product, cell banking, master cell bank (MCB), working cell bank (WCB), host cell protein (HCP), host cell DNA, process-related impurities, product-related impurities, aggregation, viral safety, viral clearance, in-process controls, bioassay, potency, comparability, ICH Q5 series
+
+---
+
+## USP/USP-1115-Complete.md
+USP 〈1115〉 Bioburden Control of Non-Sterile Drug Substances and Drug Products | 2 sections
+Terms: bioburden, non-sterile, action limit, alert limit, microbial enumeration, TAMC (total aerobic microbial count), TYMC (total yeast and mold count), objectionable microorganism, water activity, TAMC limit, 10 CFU/g, 100 CFU/g, 1000 CFU/g, Salmonella, E. coli, indicator organisms, risk-based approach
+
+---
+
+## USP/USP-1116-Complete.md
+USP 〈1116〉 Microbial Control of Aseptic Environments | 2 sections
+Terms: microbial control, aseptic environment, environmental monitoring (EM), ISO Class 5, ISO Class 7, ISO Class 8, Grade A/B/C/D, action level, alert level, CFU (colony forming unit), settle plates, active air sampling, contact plates, personnel monitoring, cleanroom qualification, EM program design, RMM, trending, excursion investigation
+
+---
+
+## USP/USP-1117-Complete.md
+USP 〈1117〉 Microbiological Best Laboratory Practices | 2 sections
+Terms: laboratory best practice, incubation temperature, incubation time, culture media, QC testing, positive controls, negative controls, analyst qualification, media growth promotion, method suitability, sampling, chain of custody, environmental conditions, data integrity in microbiology
+
+---
+
+## USP/USP-1207-Complete.md
+USP 〈1207〉 Package Integrity Evaluation—Sterile Products | 3 sections
+Terms: container closure integrity (CCI), package integrity, CCIT, deterministic method, probabilistic method, vacuum decay, pressure decay, helium mass spectrometry, HVLD (high voltage leak detection), headspace analysis (TDLAS), mass extraction, tracer gas, dye ingress, microbial ingress, bubble emission, leak detection limit (LDL), maximum allowable leakage limit (MALL), method validation, method transfer, USP 〈1207〉 vs PDA TR27
+
+---
+
+## USP/USP-1211-Complete.md
+USP 〈1211〉 Sterilization and Sterility Assurance of Compendial Articles | 3 sections
+Terms: sterility assurance level (SAL), SAL 10⁻⁶, terminal sterilization, aseptic processing, moist heat sterilization, dry heat sterilization, gas sterilization (EO), radiation sterilization, filtration sterilization, F0 value, Fh value, D-value, z-value, biological indicator (BI), chemical indicator (CI), parametric release, overkill, bioburden-based approach, cycle development, qualification
+
+---
+
+## USP/USP-1228-Complete.md
+USP 〈1228〉 Depyrogenation | 3 sections
+Terms: depyrogenation, endotoxin, pyrogen, LPS (lipopolysaccharide), lipid A, O-antigen, native endotoxin, puri fied LPS, challenge material, 3-log reduction, log reduction value (LRV), BET (bacterial endotoxin test), indirect control, process control, direct control, validation of depyrogenation, routine process control, endotoxin destruction, endotoxin removal
+
+---
+
+## USP/USP-1228-1-Complete.md
+USP 〈1228.1〉 Dry Heat Depyrogenation | 3 sections
+Terms: dry heat depyrogenation, tunnel depyrogenation, batch oven depyrogenation, continuous conveyor tunnel, F_H value, Fh, z-value (170°C basis), dosimetric approach, endotoxin indicator (EI), thermocouple, load mapping, depyrogenation tunnel qualification, heat distribution, heat penetration study, 3-log LRV, routine monitoring, temperature uniformity
+
+---
+
+## USP/USP-1228-3-Complete.md
+USP 〈1228.3〉 Depyrogenation by Filtration | 2 sections
+Terms: depyrogenation by filtration, endotoxin removal, microporous membrane filtration, reverse osmosis (RO), ultrafiltration (UF), charge-modified depth filter, activated carbon filtration, membrane adsorber, LRV (log reduction value), endotoxin adsorption, pH effect, salt concentration, process parameter, WFI generation, filtration validation
+
+---
+
+## USP/USP-1228-4-Complete.md
+USP 〈1228.4〉 Depyrogenation by Rinsing | 2 sections
+Terms: depyrogenation by rinsing, WFI rinse, temperature danger zone (8–55°C), rinsing procedure, endotoxin indicator, rinsing volume, endotoxin dilution, LRV calculation, water quality, rinsing process control, critical process parameters, equipment rinsing, container rinsing, validation of rinsing depyrogenation
+
+---
+
+## USP/USP-1228-5-Complete.md
+USP 〈1228.5〉 Endotoxin Indicators for Depyrogenation | 2 sections
+Terms: endotoxin indicator (EI), endotoxin spike preparation, challenge material, inoculation method, drying procedure, extraction method, recovery efficiency, log reduction value (LRV), 3-log reduction standard, validation protocol, pre-approved protocol, conservative approach, multi-step reduction, additive LRV
+
+---
+
+## USP/USP-1229-Complete.md
+USP 〈1229〉 Sterilization of Compendial Articles | 2 sections
+Terms: sterilization, SAL 10⁻⁶, method selection, decision tree, terminal sterilization preference, aseptic processing, parametric release, bioburden testing, sterilization methods overview, regulatory framework, USP 〈1229〉 series
+
+---
+
+## USP/USP-1660-Complete.md
+USP 〈1660〉 Evaluation of the Inner Surface Durability of Glass Containers | 2 sections
+Terms: glass delamination, glass flakes, glass lamellae, inner surface durability, borosilicate glass, Type I glass, soda-lime glass, ammonium sulfate treatment, alkali borate evaporation, phase separation, glass container sourcing, surface glass test limitations, ICP-MS, SEM-EDX, SIMS, DIC microscopy, aggressive screening, delamination risk, mitigation strategy, risk factors, drug product lifecycle
+
+---
+
+## USP/USP-1788-Complete.md
+USP 〈1788〉 Methods for the Determination of Subvisible Particulate Matter | 4 sections
+Terms: subvisible particulate, light obscuration (LO), HIAC, microscopic particle count, flow imaging (MFI), resonant mass measurement (RMM), particle detection ranges, system suitability test (SST), instrument suitability test (IST), calibration spheres, NIST traceable, coincidence limit, degassing, blank count, LVP acceptance criteria, SVP acceptance criteria, USP limits (Table 2), method validation, linearity, recovery, precision, specificity, detection limit, Appendix 1 (historical development), Appendix 2 (cleaning procedures)
+
+---
+
+## USP/USP-1790-Complete.md
+USP 〈1790〉 Visual Inspection of Injections | 4 sections
+Terms: visual inspection, injectable, defect classification, critical defect, major defect, minor defect, manual visual inspection (MVI), automated visual inspection (AVI), probability of detection (PoD), inspector qualification, visual acuity, Jaeger test, inspection station, illumination (2000–3750 lux), background (black/white), AQL (acceptable quality level), Knapp study, reference set, worst acceptable unit (WAU), threshold study, false reject rate (FRR), inspection life cycle, semi-automated inspection, particle visibility, container shape effects
+
+---
+
+
+---
+
+## USP Quick Topic Routing Guide
+
+**Sterility Testing (無菌試驗)**
+→ USP/USP-71 ★★★ (primary: membrane filtration, direct inoculation, 14-day incubation, bacteriostasis/fungistasis validation) | PICS-Annex1 ★★ (regulatory sterility testing requirements, parametric release) | FDA-Aseptic ★★ (sterility test context, aseptic fill requirements)
+
+**Bacterial Endotoxins / Pyrogen Testing (細菌內毒素/熱原試驗)**
+→ USP/USP-85 ★★★ (primary: gel-clot, turbidimetric, chromogenic methods; MVD calculation; inhibition/enhancement testing; rFC) | USP/USP-151 ★★ (rabbit pyrogen test, MAT for non-endotoxin pyrogens) | USP/USP-1228 ★★★ (depyrogenation strategies and 3-log reduction standard) | FDA-Aseptic ★★ (endotoxin limits context) | PICS-Annex1 ★★ (depyrogenation requirements)
+
+**Depyrogenation Methods (除熱原方法)**
+→ USP/USP-1228 ★★★ (overview: endotoxin biology, control strategies, method selection) | USP/USP-1228-1 ★★★ (dry heat: Fh value, tunnel/oven, load mapping) | USP/USP-1228-3 ★★★ (filtration: RO/UF/activated carbon, LRV) | USP/USP-1228-4 ★★★ (rinsing: WFI volume, temperature, validation) | USP/USP-1228-5 ★★★ (endotoxin indicators: preparation, validation, LRV calculation)
+
+**Sterilization Methods (滅菌方法)**
+→ USP/USP-1211 ★★★ (sterility assurance framework, SAL 10⁻⁶, method comparison) | USP/USP-1229 ★★★ (sterilization of compendial articles: method selection decision tree) | PDA/TR1 ★★★ (moist heat sterilization: F0, cycle development, BI) | PICS-Annex1 ★★★ (sterilization regulatory requirements) | FDA-Aseptic ★★ (aseptic processing as sterilization alternative)
+
+**Biological Indicators (生物指示劑)**
+→ USP/USP-55 ★★★ (BI resistance performance tests: D-value, survivor curve, BIER vessel, calculation methods) | USP/USP-1228-5 ★★★ (endotoxin indicators for depyrogenation validation) | PDA/TR1 ★★ (BI in moist heat sterilization)
+
+**Particulate Matter in Injectables (注射劑微粒)**
+→ USP/USP-788 ★★★ (primary test: LO and microscopic methods, LVP/SVP limits) | USP/USP-787 ★★★ (therapeutic proteins: protein aggregation, silicone oil, special considerations) | USP/USP-789 ★★★ (ophthalmic solutions: ≥50 µm limit) | USP/USP-790 ★★ (visible particulates, 100% inspection) | USP/USP-1788 ★★★ (comprehensive methods reference: LO, microscopic, flow imaging, RMM) | USP/USP-729 ★★★ (lipid emulsions: PFAT5 ≤ 0.05%)
+
+**Visual Inspection of Injections (注射劑目視檢查)**
+→ USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
+
+**Container Closure Systems — Testing & Materials (容器密封系統試驗/材料)**
+→ USP/USP-660 ★★★ (glass containers: Type I/II/III, chemical resistance tests) | USP/USP-661 ★★★ (plastic packaging: materials, physicochemical tests, biological reactivity) | USP/USP-381 ★★★ (elastomeric components: stoppers, plungers, physicochemical & biological tests) | USP/USP-670 ★★★ (auxiliary components: desiccants, coils, odor adsorbents) | USP/USP-671 ★★★ (container performance: light transmission, moisture permeation, classification) | PDA/TR27 ★★★ (CCI integrity testing methodology) | USP/USP-1207 ★★★ (package integrity evaluation: deterministic vs probabilistic methods)
+
+**Glass Container Inner Surface Durability / Delamination (玻璃容器內表面耐久性/脫層)**
+→ USP/USP-1660 ★★★ (primary: delamination mechanism, risk factors, ICP-MS/SEM-EDX, mitigation) | USP/USP-660 ★★ (glass chemical resistance testing) | PDA/TR87 ★★ (glass vial handling and processing best practices)
+
+**Package Integrity / Container Closure Integrity (包裝完整性)**
+→ USP/USP-1207 ★★★ (sterile products: deterministic methods, probabilistic methods, validation) | PDA/TR27 ★★★ (historical CCI reference) | PDA/TR86 ★★★ (current technologies: CCIT, MALL, PFS/SUS/IV bag considerations)
+
+**Pharmaceutical Compounding — Sterile (無菌藥品調配)**
+→ USP/USP-797 ★★★ (complete sterile compounding standard: CSP categories, garbing, facilities, EM, BUD tables, sterilization, QA) — single primary source
+
+**Osmolality / Tonicity Testing (滲透壓度試驗)**
+→ USP/USP-785 ★★★ (osmolality vs osmolarity, freezing point/vapor pressure osmometers, calibration, reporting) — primary source
+
+**pH Testing (pH值測定)**
+→ USP/USP-791 ★★★ (pH theory, electrodes, two-point calibration, buffer standards, special samples) — primary source
+
+**Minimum Fill (最低裝量)**
+→ USP/USP-755 ★★★ (two-stage acceptance criteria, aerosol special procedure) — primary source
+
+**Ophthalmic Products Quality (眼科產品品質)**
+→ USP/USP-771 ★★★ (ophthalmic quality tests: sterility, particulates, preservatives, metal particles, leakage, uniformity) | USP/USP-789 ★★ (particulate matter in ophthalmic solutions)
+
+**Microbial Environmental Monitoring (微生物環境監測)**
+→ USP/USP-1116 ★★★ (microbial control program design: ISO classes, action/alert levels, EM strategies) | PDA/TR13 ★★★ (EM fundamentals: sampling locations, statistical methods, trending) | PICS-Annex1 ★★★ (regulatory EM requirements)
+
+**Bioburden Control (微生物負荷控制)**
+→ USP/USP-1115 ★★★ (non-sterile bioburden: TAMC/TYMC limits, objectionable organisms, water activity) | PDA/TR90 ★★ (bioburden as CCS element)
+
+**Rapid Microbiological Methods (快速微生物方法)**
+→ USP/USP-1071 ★★★ (RMM validation, equivalency approach, regulatory pathway) | PDA/TR13 ★★ (RMM in EM programs)
+
+**Disinfectants & Sporicidal Agents (消毒劑/殺孢子劑)**
+→ USP/USP-1072 ★★★ (disinfectant/antiseptic selection, efficacy testing, rotation, cleanroom use) | PDA/TR70 ★★★ (C&D program for aseptic facilities, VHP)
+
+**Globule Size (Lipid Emulsions) (脂質乳劑球粒)**
+→ USP/USP-729 ★★★ (PFAT5, DLS method, LO/SPOS method, acceptance criteria) — primary source
+
+**Biologics — General (生物製劑通則)**
+→ USP/USP-1085 ★★★ (biologics general considerations: cell banking, impurities, viral safety, comparability) | PDA/TR49 ★★ (biotech cleaning validation) | ISPE/ISPE-Vol6 ★★ (biopharmaceutical facility)
+
