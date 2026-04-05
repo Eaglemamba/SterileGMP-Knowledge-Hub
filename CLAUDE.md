@@ -79,9 +79,13 @@ mv "Raw pdfs/PDA_TRXX_....pdf" "Raw pdfs/processed/"
 ├── gmp_engine.py           # Unified CLI: scaffold, md, merge
 ├── merge_engine.py         # Shared HTML merge library (imported by gmp_engine.py)
 ├── index.html              # Dashboard — reads from reports.json (no hardcoded data)
-├── PROMPT.md               # Master generation instructions
 ├── template.css            # Shared CSS (do not modify per-report)
 ├── README.md               # Repo readme
+├── SOURCES.md              # Source organization comparison (PDA, ISPE, FDA, ICH, USP, ISO, Ph.Eur., WHO)
+├── docs/                   # Internal planning & tooling docs
+│   ├── PROMPT.md           # Master generation instructions
+│   ├── ROADMAP.md          # Coverage status and expansion roadmap
+│   └── SKILLS.md           # Planned Claude Code skills list
 ├── Raw pdfs/               # Source PDFs (all sources)
 ├── knowledge/              # Chatbot knowledge base — English-only original content
 │   ├── INDEX.md            # Master routing index — update manually per new document
@@ -180,7 +184,7 @@ python gmp_engine.py md TRXX
 #    Review knowledge/PDA/TRXX-Complete.md — confirm sections/headings match PDF
 
 # 5. Generate bilingual HTML sections (Claude agents, parallel dispatch)
-#    Use PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
+#    Use docs/PROMPT.md template. For sections likely >1000 lines, plan A/B split upfront.
 
 # 6. Merge HTML → PDA/TRXX/output/TRXX-Complete.html
 python gmp_engine.py merge TRXX
@@ -198,9 +202,9 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 ## After Every git push — Update ROADMAP.md
 
-**Whenever a `git push` is executed (regardless of which documents were added), immediately update `ROADMAP.md` to reflect current status.** Do this AFTER the push completes, before ending the session.
+**Whenever a `git push` is executed (regardless of which documents were added), immediately update `docs/ROADMAP.md` to reflect current status.** Do this AFTER the push completes, before ending the session.
 
-Update these fields in `ROADMAP.md` by reading the actual state from `reports.json`:
+Update these fields in `docs/ROADMAP.md` by reading the actual state from `reports.json`:
 
 1. **Last updated** date — set to today
 2. **PDA Current Status table** — recount: how many have `section_map` (complete) vs skeleton (metadata only, no section_map or empty section_map)
@@ -221,7 +225,7 @@ for k, v in reports.items():
 "
 ```
 
-Do NOT rewrite the entire ROADMAP.md — only update the numbers and dates that have changed. Keep all strategy, gap analysis, and roadmap text intact.
+Do NOT rewrite the entire `docs/ROADMAP.md` — only update the numbers and dates that have changed. Keep all strategy, gap analysis, and roadmap text intact.
 
 ---
 

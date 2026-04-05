@@ -138,6 +138,17 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 
 > **Note:** USP chapters < 1000 are legally enforceable in the US; chapters ≥ 1000 are informational. See [SOURCES.md](SOURCES.md) for details on each source organization.
 
+### Planned Additions
+
+| Document | Body | Priority | Fills This Gap |
+|----------|------|----------|----------------|
+| Annex 15 — Qualification & Validation | EU GMP | High | EU inspection standard for IQ/OQ/PQ; pairs with ISPE Vol.5 |
+| Annex 2 — Biological Products | EU GMP | Medium | EU regulatory GMP for biologics/ATMPs |
+| 5.1.1 / 2.6.1 / 2.6.14 key chapters | Ph. Eur. | Medium | EU pharmacopeial equivalents to USP sterility/endotoxin chapters |
+| TRS 961 Annex 6 — Sterile Products | WHO GMP | Medium | WHO prequalification standard; required for global health supply chains |
+| 14644-1/2/3 Cleanroom Classification | ISO | High | Cleanroom class definitions cited by Annex 1 §4 and FDA aseptic guidance |
+| Q11 Drug Substance Development | ICH | Low | Biological/chemical API development; extends Q8 framework |
+
 ## Using the Chatbot Skill
 
 In Claude Code, from the repo directory:
@@ -168,7 +179,7 @@ python gmp_engine.py scaffold ISPE-Vol5 --source ISPE  # ISPE
 # 4. Generate knowledge MD
 python gmp_engine.py md FOLDER_ID
 
-# 5. Generate bilingual HTML sections using PROMPT.md template
+# 5. Generate bilingual HTML sections using docs/PROMPT.md template
 
 # 6. Merge sections
 python gmp_engine.py merge FOLDER_ID
@@ -187,12 +198,15 @@ See `CLAUDE.md` for detailed rules, naming conventions, and known pitfalls.
 
 Each guideline body has a distinct color in the dashboard:
 
-| Source | Color |
-|--------|-------|
-| PDA | Blue |
-| ISPE | Green |
-| FDA | Red |
-| PIC/S | Orange |
-| ICH | Teal |
-| ISO | Purple |
-| USP | Gold |
+| Source | Color | Status |
+|--------|-------|--------|
+| PDA | Blue | Active |
+| ISPE | Green | Active |
+| FDA | Red | Active |
+| PIC/S | Orange | Active |
+| ICH | Teal | Active |
+| USP | Gold | Active |
+| ISO | Purple | Planned |
+| EU GMP | Indigo | Planned |
+| Ph. Eur. | Rose | Planned |
+| WHO | Slate | Planned |
