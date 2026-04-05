@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-04 (post-INDEX routing optimization — 62 documents complete, two-layer routing system added)
+Last updated: 2026-04-05 (USP batch 2 complete — 56 USP chapters in system, 38 fully processed; 96 documents complete overall)
 
 ---
 
@@ -116,6 +116,22 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 **Completion: 93%** (14/15)
 
+### USP General Chapters
+
+| Status | Count | Details |
+|--------|-------|---------|
+| Complete (multi-section HTML) | 38 | Full bilingual educational HTML + knowledge MD |
+| Single-section (short chapters) | 2 | USP-755, USP-789 |
+| Skeleton (metadata only) | 16 | USP-1229 sub-series, USP-151, USP-790 |
+| **Total in reports.json** | **56** | |
+
+**Completion: 68%** (38/56 fully processed)
+
+Batch 2 chapters completed (2026-04-05):
+- 〈1228〉 series: 1228, 1228.1, 1228.3, 1228.4, 1228.5
+- Container/Closure: 〈381〉 〈660〉 〈661〉 〈670〉 〈671〉 〈729〉 〈755〉
+- Quality Tests: 〈55〉 〈771〉 〈785〉 〈787〉 〈789〉 〈791〉 〈797〉 〈1207〉 〈1660〉 〈1788〉 〈1790〉
+
 ### Other Sources
 
 | Source | Status |
@@ -123,10 +139,10 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 | PIC/S Annex 1 | ✅ Complete |
 | FDA Guidances | Aseptic Processing 2004 ✅ | CPGM 7356.002A Process Inspections ✅ | Process Validation (Jan 2011) ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
-| USP Chapters | Not started |
+| USP Chapters | 38 complete (+ 2 single-section + 16 skeleton) — see table above |
 | ISO Standards | Not started |
 
-**Overall: 62 of ~80-90 target documents complete (approx. 72%)** — PDA 39 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 = 60 complete with full content; 2 additional (TR41, TR56) have intro-only sections
+**Overall: 96 of ~118 documents complete (81%)** — PDA 38 + ISPE 13 + FDA 3 + ICH 3 + PIC/S 1 + USP 38 = 96 complete with full content
 
 ---
 
@@ -254,11 +270,12 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 | Task | Document | Effort |
 |------|----------|--------|
-| **New source: USP** | \<71\> Sterility Tests | Small |
-| **New source: USP** | \<85\> Bacterial Endotoxins Test | Small |
-| **New source: USP** | \<788\> Particulate Matter in Injections | Small |
-| **New source: USP** | \<1116\> Microbial Control of Aseptic Environments | Small |
-| **New source: USP** | \<1211\> Sterilization and Sterility Assurance | Medium |
+| ~~**New source: USP**~~ | ~~\<71\> Sterility Tests~~ | ✅ Done |
+| ~~**New source: USP**~~ | ~~\<85\> Bacterial Endotoxins Test~~ | ✅ Done |
+| ~~**New source: USP**~~ | ~~\<788\> Particulate Matter in Injections~~ | ✅ Done |
+| ~~**New source: USP**~~ | ~~\<1116\> Microbial Control of Aseptic Environments~~ | ✅ Done |
+| ~~**New source: USP**~~ | ~~\<1211\> Sterilization and Sterility Assurance~~ | ✅ Done |
+| ~~**Additional USP (Batch 2)**~~ | ~~〈1228〉 series, 〈55〉 〈381〉 〈660〉 〈661〉 〈670〉 〈671〉 〈729〉 〈755〉 〈771〉 〈785〉 〈787〉 〈789〉 〈791〉 〈797〉 〈1207〉 〈1660〉 〈1788〉 〈1790〉~~ | ✅ Done (23 chapters) |
 | **New source: ISO** | ISO 14644-1/2/3 (Cleanroom classification) | Medium |
 
 ### Phase 4: Topic Gap-Fillers + Remaining ISPE
@@ -273,7 +290,8 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | ~~Complete ISPE #9-15~~ | ~~CTC, TechTransfer, Sampling, ProcessGas, QualityCulture, IT~~ | ✅ Done (6/7) |
 | Remaining ISPE | GEP (scanned — OCR required) | Pending |
 | Additional FDA | Container Closure Guidance, Terminal Sterilization Guidance | Medium |
-| Additional USP | \<787\>, \<790\>, \<1228\>, \<1229\>, \<382\>, \<661\> | Medium (cumulative) |
+| ~~Additional USP~~ | ~~\<787\>, \<1228\>, \<661\>~~ | ✅ Done |
+| **Remaining USP** | \<1229\> sub-series (16 skeleton entries), \<151\>, \<790\> | Pending |
 
 ### Phase 5: Combination Products Expansion (New)
 
