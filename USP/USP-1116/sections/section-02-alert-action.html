@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 1116 - Section 2: Alert/Action Levels & Data Analysis</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2 &mdash; Contamination Recovery Rates, Alert/Action Levels &amp; Data Interpretation</h1>
+    <div class="subtitle">第二章：汙染回收率、警戒/行動限值與數據解讀</div>
+    <div class="page-info">USP &lang;1116&rang; Microbiological Control and Monitoring of Aseptic Processing Environments | p6 &ndash; p9</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 USP &lang;1116&rang; 為何採用「汙染回收率」（Contamination Recovery Rate）而非傳統 alert/action levels</li>
+        <li>掌握 Table 3 建議的各級環境初始汙染回收率標準（ISO 5 &lt;1%, ISO 7 &lt;5%, ISO 8 &lt;10%）</li>
+        <li>理解 alert 與 action level 之間差異「在分析上不具顯著意義」的科學原因</li>
+        <li>認識顯著偏差（Significant Excursion &gt;15 cfu）的調查要求</li>
+        <li>理解環境監測數據解讀的局限性 &mdash; 無法證明或否定無菌</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: CONTAMINATION RECOVERY RATES        -->
+<!-- ============================================ -->
+<div class="section-title" id="recovery-rates">Microbiological Control Parameters &mdash; 微生物控制參數</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Since the early 1980s, manufacturers have established <span class="key-term">alert and action levels</span> for environmental monitoring. In recent years the numerical difference between alert and action levels has become quite small, especially in ISO 5 environments.</p>
+
+        <p>Growth and recovery in microbiological assays have <span class="key-term">normal variability in the range of &plusmn;0.5 log<sub>10</sub></span>. Studies on active microbiological air samplers indicate that variability of as high as tenfold is possible among commonly used sampling devices.</p>
+
+        <div class="quote-box">
+            "As a result of this inherent variability and indeterminate sampling error, the supposed differences between, for example, an alert level of 1 cfu and an action level of 3 cfu are not analytically significant. Treating differences that are within expected, and therefore, normal ranges as numerically different is not scientifically valid and can result in unwarranted activities."
+        </div>
+
+        <p>In a practical sense, <span class="key-term">numerical values that vary by as much as five- to tenfold may not be significantly different</span>. Because of the limited accuracy and precision of microbial growth and recovery assays, analysts can consider the <span class="key-term">frequency with which contamination is detected</span> rather than absolute numbers of cfu detected in any single sample.</p>
+
+        <p>Mean <span class="key-term">contamination recovery rates</span> should be determined for each clean room environment, and changes in contamination recovery rate at a given site or within a given room may indicate the need for corrective action. Within the ISO 5 critical zone, airborne and surface contamination recovery rates of <span class="key-term">1% or less</span> should be attainable with current methods.</p>
+
+        <p>Contamination recovery rates for closed RABS and isolator systems should be significantly lower still and can be expected to be <span class="key-term">&lt;0.1%</span>, on the basis of published monitoring results.</p>
+
+        <p>Contamination observed at <span class="key-term">multiple sites in an environment within a single sampling period</span> may indicate increased risk to product and should be carefully evaluated. The appearance of contamination nearly simultaneously at multiple sites could also arise from <span class="key-term">poor sampling technique</span>, so careful review is in order before drawing conclusions about potential loss of control.</p>
+
+        <p>Resampling an environment <span class="key-term">several days after contamination is of little value</span>, because the conditions during one sampling occasion may not be accurately duplicated during another.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：為何「頻率」比「數量」重要</h4>
+            <p>這是 USP &lang;1116&rang; 最具革命性的觀點之一。傳統做法是設定 alert level（如 1 cfu）和 action level（如 3 cfu），然後根據單次取樣的 cfu 數來判斷。但 USP 指出：</p>
+            <ul>
+                <li>微生物檢測的固有變異性為 &plusmn;0.5 log（即 3&ndash;5 倍）</li>
+                <li>不同取樣器之間的變異性可達 10 倍</li>
+                <li>因此 1 cfu 和 3 cfu 之間的差異<strong>在分析上不具統計意義</strong></li>
+            </ul>
+            <p>USP 建議改用<strong>汙染回收率</strong>（Contamination Recovery Rate）&mdash; 也就是「有多少百分比的樣品檢出任何汙染」。這是一個基於頻率的指標，比單次 cfu 計數更有科學意義。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：量體溫 vs 發燒頻率</h4>
+            <p>傳統的 alert/action level 就像每次量體溫：37.0&deg;C 是正常，37.5&deg;C 是 alert，38.0&deg;C 是 action。但如果溫度計本身的精確度只有 &plusmn;0.5&deg;C，那 37.5&deg;C 和 38.0&deg;C 的讀數根本<strong>沒有統計上的區別</strong>。</p>
+            <p>USP 的做法更像是追蹤「這個月有幾天量到超過 37.5&deg;C」&mdash; 如果以前每月只有 1 天超標，現在變成每月 5 天，那才是真正有意義的警訊。這就是 contamination recovery rate 的核心思維。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：USP vs Annex 1 的哲學差異</h4>
+            <p>這裡存在一個 CDMO 必須理解的重要差異：</p>
+            <ul>
+                <li><strong>EU GMP Annex 1 (2022)</strong> &mdash; 仍然使用傳統的 alert/action levels（Table 7/8），以 cfu 數為基礎（Grade A: action = 1 cfu for air, settle plate, contact plate）</li>
+                <li><strong>USP &lang;1116&rang;</strong> &mdash; 主張這些數值在科學上不夠嚴謹，應改用頻率導向的 contamination recovery rate</li>
+            </ul>
+            <p><strong>CDMO 的務實做法：</strong>兩套標準都必須遵循。保留 Annex 1 的 cfu-based limits 以滿足法規要求，同時疊加 USP 的 recovery rate trending 以提供更深層的科學洞察。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 ISO 5 充填區域在一個月內取了 200 個 active air samples，其中 3 個有菌落生長（分別為 1 cfu, 2 cfu, 1 cfu）。計算 contamination recovery rate。這個數據是否符合 USP Table 3 的建議？</li>
+                <li>一位客戶的 QA 堅持要求在 ISO 5 設定 alert = 1 cfu / action = 1 cfu（零容忍）。引用 USP &lang;1116&rang;，你會如何解釋這個做法在科學上的問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: TABLE 3 - RECOVERY RATES            -->
+<!-- ============================================ -->
+<div class="section-title" id="table3">Table 3: Suggested Initial Contamination Recovery Rates &mdash; 建議初始汙染回收率</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Table 3. Suggested Initial Contamination Recovery Rates in Aseptic Environments</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Room Classification</th>
+                    <th>Active Air Sample (%)</th>
+                    <th>Settle Plate (9 cm) 4 h Exposure (%)</th>
+                    <th>Contact Plate or Swab (%)</th>
+                    <th>Glove or Garment (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Isolator/Closed RABS (ISO 5 or better)</strong></td>
+                    <td>&lt;0.1</td>
+                    <td>&lt;0.1</td>
+                    <td>&lt;0.1</td>
+                    <td>&lt;0.1</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 5</strong></td>
+                    <td>&lt;1</td>
+                    <td>&lt;1</td>
+                    <td>&lt;1</td>
+                    <td>&lt;1</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 6</strong></td>
+                    <td>&lt;3</td>
+                    <td>&lt;3</td>
+                    <td>&lt;3</td>
+                    <td>&lt;3</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 7</strong></td>
+                    <td>&lt;5</td>
+                    <td>&lt;5</td>
+                    <td>&lt;5</td>
+                    <td>&lt;5</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 8</strong></td>
+                    <td>&lt;10</td>
+                    <td>&lt;10</td>
+                    <td>&lt;10</td>
+                    <td>&lt;10</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><em>All operators are aseptically gowned in these environments (with the exception of background environments for isolators). These recommendations do not apply to production areas for nonsterile products or other classified environments in which fully aseptic gowns are not donned.</em></p>
+
+        <p>Detection frequency should be based on <span class="key-term">actual monitoring data</span> and should be retabulated <span class="key-term">monthly</span>. Action levels should be based on <span class="key-term">empirical process capability</span>.</p>
+
+        <p>If detection frequencies exceed the recommendations in Table 3 or are greater than established process capability, then <span class="key-term">corrective actions</span> should be taken. Corrective actions may include but are not limited to the following:</p>
+        <ul>
+            <li>Revision of the sanitization program, including selection of antimicrobial agents, application methods, and frequencies</li>
+            <li>Increased surveillance of personnel practices, possibly including written critiques of aseptic methods and techniques</li>
+            <li>Review of microbiological sampling methods and techniques</li>
+        </ul>
+
+        <p>When higher-than-typical recovery levels for <span class="key-term">glove and garment contamination</span> are observed, additional training for gowning practices may be indicated.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Table 3 的正確解讀方式</h4>
+            <p>Table 3 是 USP &lang;1116&rang; 最重要的表格之一。注意它的數值表達方式是<strong>百分比</strong>，不是 cfu：</p>
+            <ul>
+                <li>ISO 5 的 &lt;1% 意味著：每 100 個樣品中，不超過 1 個有任何微生物生長</li>
+                <li>這是一個<strong>頻率指標</strong>，與 Annex 1 Table 7/8 的 cfu 限值是完全不同的概念</li>
+                <li>Isolator/Closed RABS 的 &lt;0.1% 意味著每 1000 個樣品中不超過 1 個有生長</li>
+            </ul>
+            <p>另一個關鍵要素：這些是「初始」建議值。USP 期望每個設施根據自身數據建立 facility-specific 的基線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：學校的出席率標準</h4>
+            <p>Table 3 就像不同級別學校的出席率標準。重點軍校（Isolator）要求 99.9% 出席率，一般大學（ISO 5）要求 99%，社區大學（ISO 8）要求 90%。</p>
+            <p>重點不在於某一天有沒有人缺席（單次 cfu 計數），而在於整個學期的出席率是否維持在標準之上。偶爾有人缺席是正常的 &mdash; 但如果出席率持續下滑，就需要調查原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：月度統計的實務要求</h4>
+            <p>USP 要求汙染回收率「每月重新統計」（retabulated monthly）。這對 CDMO 的 EM 數據管理系統有具體要求：</p>
+            <ul>
+                <li>需要能夠按月、按區域、按取樣類型自動計算 recovery rate</li>
+                <li>趨勢圖應顯示逐月變化，方便識別漸進式惡化</li>
+                <li>應建立 facility-specific baseline 作為比較基準</li>
+                <li>當 recovery rate 超過 Table 3 建議值或偏離歷史基線時，應觸發矯正行動</li>
+            </ul>
+            <p><strong>FDA 查廠關注點：</strong>你的 EM 年度審查報告（Annual Product Review / PQR）是否包含 contamination recovery rate trending？很多 483 觀察項就源於缺乏有效的趨勢分析。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 ISO 7 更衣室在過去三個月的 active air recovery rate 分別為 3.2%、4.8%、6.1%。這個趨勢代表什麼？你會採取哪些矯正措施？</li>
+                <li>如何在實務中同時滿足 Annex 1 的 cfu-based limits（Grade A: action = 1 cfu）和 USP 的 recovery rate approach？設計一個整合兩者的 EM 判定流程。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SIGNIFICANT EXCURSIONS              -->
+<!-- ============================================ -->
+<div class="section-title" id="excursions">Significant Excursions &amp; Data Interpretation &mdash; 顯著偏差與數據解讀</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Significant Excursions</h3>
+        <p>Excursions beyond approximately <span class="key-term">15 cfu recovered from a single ISO 5 sample</span>, whether from airborne, surface, or personnel sources, should happen very infrequently. When such ISO 5 excursions do occur, they may be indicative of a significant loss of control when they occur within the ISO 5 critical zone in close proximity to product and components. Thus, any ISO 5 excursion &gt;15 cfu should prompt a <span class="key-term">careful and thorough investigation</span>.</p>
+
+        <p>A key consideration for an abnormally high number of recovered colonies is whether this incident is <span class="key-term">isolated or can be correlated with other recoveries</span>. Microbiologists should review recovery rates for at least <span class="key-term">two weeks before the incident</span> of abnormally high recovery so that they can be aware of other recoveries that might indicate an unusual pattern.</p>
+
+        <p>Microbiologists should carefully consider all recoveries, including those that are in the more typical range of <span class="key-term">1&ndash;5 cfu</span>. The identity of the organisms recovered is an important factor in the conduct of this investigation.</p>
+
+        <div class="quote-box">
+            "It is never wise to suggest a root cause for which there is no solid scientific evidence. Also, there should be an awareness of the variability of microbial analysis. Realistically, there is no scientific reason to treat a recovery of 25 cfu as statistically different from a recovery of 15 cfu."
+        </div>
+
+        <h3>Further Considerations About Data Interpretation</h3>
+        <p>In the high-quality environments required for aseptic processing, detection frequency typically is low. In the most critical areas within an aseptic processing operation, it is expected that <span class="key-term">less than 1% of the samples will yield any recoverable contamination</span>.</p>
+
+        <p>The microbiologist responsible for environmental control or sterility assurance should not take this to mean that the environmental quality approaches sterility. The sensitivity of any microbial sampling system in absolute terms is <span class="key-term">not known</span>. In environmental monitoring, a result of zero means only that the result is <span class="key-term">below the limit of detection</span> of the analytical system.</p>
+
+        <p><span class="key-term">Sterility assurance is best accomplished by a focus on human-borne contamination</span> and the facility design features that best mitigate risk from this contamination. Greatest risk mitigation can be attained by reducing or eliminating human interventions through proper equipment design and by providing sufficient air exchanges per hour for the intended personnel population of the facility.</p>
+
+        <p><span class="key-term">Environmental monitoring cannot prove or disprove in absolute terms the sterility of a lot of product.</span> Environmental monitoring can only assure those responsible for a process that a production system is in a consistent, validated state of control.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：15 cfu 門檻 &mdash; 唯一的數字標準</h4>
+            <p>USP &lang;1116&rang; 雖然全文都在說「不要過度依賴 cfu 數值」，但在這裡提出了一個例外 &mdash; <strong>15 cfu</strong> 作為 ISO 5 環境的顯著偏差門檻。這是因為：</p>
+            <ul>
+                <li>在 ISO 5 環境中，正常回收通常是 0&ndash;5 cfu</li>
+                <li>15 cfu 代表至少 3 倍以上的偏離（超出 &plusmn;0.5 log 的正常變異範圍）</li>
+                <li>但 USP 同時提醒：15 cfu 和 25 cfu 在統計上可能沒有顯著差異</li>
+            </ul>
+            <p>所以 15 cfu 不是一個精確的界線，而是一個「應該開始認真調查」的觸發點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：地震的「有感地震」門檻</h4>
+            <p>15 cfu 門檻就像地震學中的「有感地震」定義。規模 3.0 以下的地震幾乎感覺不到（正常的 0&ndash;5 cfu），規模 4.0 的地震可以感覺到但通常無害（15 cfu &mdash; 需要注意但不一定有損害）。</p>
+            <p>你不會因為一次規模 4.0 的地震就關閉整座城市（拒收產品），但你應該檢查建築結構是否有損壞（調查 EM 系統是否失控）。同樣地，USP 提醒我們：規模 4.0 和 4.5 的地震在實際影響上可能沒有太大區別（15 cfu vs 25 cfu）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：調查的科學誠實原則</h4>
+            <p>USP 提出一個非常重要的科學倫理原則：<strong>不要在沒有證據的情況下臆測根本原因</strong>。這在 CDMO 的調查實務中極為重要：</p>
+            <ul>
+                <li>單一的、不相關的偏差事件 &rarr; 通常無法找到確切原因 &mdash; 這是<strong>可以接受的結論</strong></li>
+                <li>應回顧事件前至少兩週的數據，尋找模式或關聯</li>
+                <li>微生物鑑定是調查的重要工具 &mdash; 菌種身分可以暗示汙染來源</li>
+                <li>避免「為了關閉調查而編造原因」的做法 &mdash; FDA 對此非常敏感</li>
+            </ul>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 Section 9.33&ndash;9.36 對 OOS/OOT 環境監測結果的調查也有類似要求，但更強調 batch-related impact assessment。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：EM 的真正角色定位</h4>
+            <p>USP 在這裡做了一個極為清晰的總結：</p>
+            <ul>
+                <li>EM <strong>不能</strong>證明或否定任何一批產品的無菌性</li>
+                <li>EM <strong>能做的</strong>是確認生產系統處於一致的、經驗證的受控狀態</li>
+                <li>真正的無菌保證來自<strong>設施設計</strong>（減少人員介入）和<strong>製程控制</strong>（validated processes）</li>
+                <li>EM 結果為零只代表「低於偵測極限」，不代表環境無菌</li>
+            </ul>
+            <p>這個定位對 CDMO 尤其重要：當客戶要求用 EM 數據來「證明」產品無菌性時，你需要能夠清晰地解釋 EM 的科學定位和限制。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 ISO 5 充填區在一次取樣中發現 18 cfu（active air）。調查流程的前三步應該是什麼？你會回溯多長時間的歷史數據？</li>
+                <li>FDA 查廠員問你：「你們的 EM 計畫如何確保產品的無菌性？」根據 USP &lang;1116&rang;，你應該如何回答這個帶有陷阱的問題？</li>
+                <li>你的調查團隊在一次 ISO 5 偏差後無法確定根本原因，但管理層要求必須關閉調查。你會如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+    <p>USP &lang;1116&rang; Microbiological Control and Monitoring of Aseptic Processing Environments</p>
+    <p>Section 2: Contamination Recovery Rates, Alert/Action Levels &amp; Data Interpretation | SterileGMP Knowledge Hub</p>
+</footer>
+
+</body>
+</html>

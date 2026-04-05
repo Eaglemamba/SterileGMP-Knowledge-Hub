@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 1116 - Section 0: Introduction</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0 &mdash; Introduction, Scope &amp; Cleanroom Classification</h1>
+    <div class="subtitle">第零章：導論、適用範圍與潔淨室分級</div>
+    <div class="page-info">USP &lang;1116&rang; Microbiological Control and Monitoring of Aseptic Processing Environments | p1 &ndash; p3</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 USP &lang;1116&rang; 的定位：資訊性章節（Informational），非強制性標準 &mdash; 但實務上為 EM 計畫設計的核心依據</li>
+        <li>區分 Aseptic（無菌操作）與 Sterile（無菌）的概念差異，理解為何「零汙染期望」在技術上不可行</li>
+        <li>掌握 ISO 14644-1 潔淨室分級（ISO 5&ndash;8）與傳統 Federal Standard 209E 的對應關係</li>
+        <li>認識先進無菌技術（Isolator, Closed RABS, BFS）與傳統潔淨室在汙染控制上的根本差異</li>
+        <li>理解環境監測的本質限制：半定量、無法證明或否定無菌、取樣本身帶來汙染風險</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: INTRODUCTION & SCOPE                -->
+<!-- ============================================ -->
+<div class="section-title" id="intro-scope">Introduction &amp; Scope &mdash; 導論與適用範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Microbiologically controlled environments</span> are used for a variety of purposes within the healthcare industry. This general information chapter provides information and recommendations for environments where the risk of microbial contamination is controlled through <span class="key-term">aseptic processing</span>. Products manufactured in such environments include pharmaceutical sterile products, bulk sterile drug substances, sterile intermediates, excipients, and, in certain cases, medical devices.</p>
+
+        <p><span class="key-term">Aseptic processing environments</span> are far more critical in terms of patient risk than controlled environments used for other manufacturing operations &mdash; for example, equipment and component preparation, limited bioburden control of nonsterile products, and processing of terminally sterilized products.</p>
+
+        <p>In this chapter, the type of aseptic processing is differentiated by the presence or absence of human operators. An <span class="key-term">advanced aseptic process</span> is one in which direct intervention with open product containers or exposed product contact surfaces by operators wearing conventional cleanroom garments is not required and never permitted.</p>
+
+        <p>The guidance provided in this chapter and the monitoring parameters given for microbiological evaluation should be applied only to <span class="key-term">clean rooms</span>, <span class="key-term">restricted-access barrier systems (RABS)</span>, and <span class="key-term">isolators</span> used for aseptic processing. ISO-classified environments used for other purposes are not required to meet the levels of contamination control required for aseptically produced sterile products.</p>
+
+        <div class="quote-box">
+            "The terms aseptic and sterile are not synonymous. Sterile means having a complete absence of viable microorganisms. In contemporary aseptic healthcare-product manufacturing, aseptic describes the process for handling sterilized materials in a controlled environment designed to maintain microbial contamination at levels known to present minimal risk."
+        </div>
+
+        <p>In any environment where human operators are present, <span class="key-term">microbial contamination at some level is inevitable</span>. Even the most cautious clean-room environment design and operation will not eliminate the shedding of microorganisms if human operators are present. Thus, an expectation of zero contamination at all locations during every aseptic processing operation is technically not possible and thus is unrealistic.</p>
+
+        <p>There are no means to demonstrate that an aseptic processing environment and the product-contact surfaces within that environment are sterile. Although manufacturers should review environmental monitoring results frequently to ensure that the facility operates in a validated state of control, <span class="key-term">monitoring results can neither prove nor disprove sterility</span>.</p>
+
+        <p><span class="key-term">Environmental monitoring</span> is usually performed by personnel and thus requires operator intervention. As a result, environmental monitoring can both increase the risk of contamination and also give false-positive results. Thus, intensive monitoring is unwarranted, particularly in the ISO 5 environments that are used in the most critical zones of aseptic processing.</p>
+
+        <p>The <span class="key-term">numerical values</span> for air, surface, and personnel monitoring included in this chapter are not intended to represent limits or specifications but are strictly <span class="key-term">informational</span>. Because of the variety of microbiological sampling equipment and methods, it is not scientifically reasonable to suggest that the attainment of these values guarantees microbial control or that excursions beyond values in this chapter indicate a loss of control.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Aseptic vs Sterile</h4>
+            <p>這是 USP &lang;1116&rang; 開宗明義最重要的區分：</p>
+            <ul>
+                <li><strong>Sterile（無菌）</strong> &mdash; 完全沒有活的微生物，是一個「狀態」的描述</li>
+                <li><strong>Aseptic（無菌操作）</strong> &mdash; 是一個「過程」的描述，透過排除微生物來防止汙染</li>
+            </ul>
+            <p>在實際製藥環境中，aseptic processing 不可能達到真正的 sterile 狀態 &mdash; 因為有人在場就一定會釋放微生物。這就是為什麼 USP 強調「零汙染期望在技術上不可行」。</p>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 (2022) Section 4.3 也明確表達相同觀點，並要求在 CCS（Contamination Control Strategy）中納入此風險認知。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：手術室 vs 實驗室</h4>
+            <p>想像一間手術室：即使使用最先進的空氣過濾系統和最嚴格的消毒程序，只要有外科醫師和護理人員在場，環境就不可能是「完全無菌」的。手術室的目標不是達到零微生物，而是將汙染風險控制在不會對病人造成感染的水準。</p>
+            <p>無菌充填室也一樣 &mdash; 目標是「風險可接受」而非「絕對無菌」。這個認知對設計 EM 計畫至關重要：我們監測的目的是確認「控制狀態」，不是「證明無菌」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：EM 數值的法律定位</h4>
+            <p><strong>USP &lang;1116&rang; 是 Informational Chapter</strong>（資訊性章節），不同於 USP &lang;71&rang;（Sterility Tests）這類有法律約束力的 Official Chapter。然而：</p>
+            <ul>
+                <li>FDA 在 Aseptic Processing Guidance (2004) 中直接引用 &lang;1116&rang; 的概念</li>
+                <li>EU GMP Annex 1 Table 7/8 的 alert/action limits 與 &lang;1116&rang; 的理念一致</li>
+                <li>PDA TR13（Fundamentals of an EM Program）以 &lang;1116&rang; 為科學基礎</li>
+                <li>每次 FDA/EMA 查廠，EM program 都是必查項目</li>
+            </ul>
+            <p>所以實務上，雖然 &lang;1116&rang; 的數值不是「法定限值」，但你的 EM 計畫如果與其建議嚴重偏離，稽查員會要求你提出科學理據。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：監測本身的矛盾</h4>
+            <p>USP 提出一個深刻的悖論：<strong>環境監測會增加汙染風險</strong>。因為：</p>
+            <ul>
+                <li>取樣需要人員進入潔淨區域（增加微生物釋放）</li>
+                <li>取樣器材的放置和操作可能干擾氣流</li>
+                <li>接觸取樣可能造成假陽性</li>
+            </ul>
+            <p>所以 &lang;1116&rang; 明確表示「在 ISO 5 區域，密集監測是不必要的」&mdash; 這與很多人的直覺相反。在 CDMO 中，這是設計 EM 計畫時需要與客戶和 QA 團隊溝通的重要議題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的 CDMO 客戶要求在 ISO 5 充填區域每 30 分鐘進行一次 active air sampling，你會如何回應？引用 &lang;1116&rang; 的哪些觀點？</li>
+                <li>為什麼 USP 特別強調 &lang;1116&rang; 的數值不是「限值或規格」？這對你設計 EM alert/action levels 有什麼影響？</li>
+                <li>比較 &lang;1116&rang;（Informational）與 &lang;71&rang;（Official）的法律地位差異。在 FDA 查廠時，兩者的角色分別是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: ADVANCED ASEPTIC TECHNOLOGIES       -->
+<!-- ============================================ -->
+<div class="section-title" id="advanced-tech">Advanced Aseptic Technologies &mdash; 先進無菌技術</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Advanced aseptic technologies</span> can be defined as those that do not rely on the direct intervention of human operators during processing. At present, technologies such as <span class="key-term">isolators</span>, <span class="key-term">blow/fill/seal</span>, and <span class="key-term">closed RABS</span> (designs that are never opened during setup or operation) may be considered advanced aseptic technologies, provided that direct intervention by gowned personnel is disallowed during processing.</p>
+
+        <p>Isolators and closed RABS effectively separate the operator from the critical aseptic processing environment. Because these systems substantially reduce contamination risk, their <span class="key-term">microbiological control levels are higher</span> than those of conventional clean rooms that have comparable particulate air classification level, for example, ISO 5.</p>
+
+        <p>Some users have chosen to operate RABS in a manner that allows <span class="key-term">open, direct human intervention</span>. In an open operational state, these systems are more similar in operation to conventional clean rooms and therefore cannot be considered advanced aseptic processing systems.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：技術階層與汙染風險</h4>
+            <p>USP 建立了一個清楚的無菌技術階層（從最低到最高汙染風險）：</p>
+            <ol>
+                <li><strong>Isolator</strong> &mdash; 最佳分離，自動去汙染，人員完全隔離</li>
+                <li><strong>Closed RABS</strong> &mdash; 操作中不開啟，僅使用手套/半身衣操作</li>
+                <li><strong>Open RABS</strong> &mdash; 允許開放式人員介入，等同傳統潔淨室</li>
+                <li><strong>Conventional Cleanroom</strong> &mdash; 人員在 ISO 5 區域直接操作</li>
+            </ol>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 (2022) Section 4.18&ndash;4.22 對 RABS 和 Isolator 有更詳細的定義，並明確要求新設施優先考慮 separative technologies。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：廚房防蟲的不同策略</h4>
+            <p>傳統潔淨室就像一個開放式廚房 &mdash; 再怎麼打掃、再怎麼穿乾淨制服，廚師身上還是會帶進灰塵和微生物。</p>
+            <p>Isolator 則像把食物放在密封的玻璃櫃裡 &mdash; 透過手套從外面操作。即使廚房不是 100% 乾淨，食物被汙染的風險大幅降低。</p>
+            <p>Open RABS 就像有門的櫃子 &mdash; 如果你偶爾把門打開伸手進去，它的保護效果就和沒有櫃子差不多了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 技術選型</h4>
+            <p><strong>對 CDMO 的直接影響：</strong></p>
+            <ul>
+                <li>使用 Isolator/Closed RABS 的產線，EM 要求更嚴格（contamination recovery rate &lt;0.1%），但因為人員隔離更好，實際汙染率極低</li>
+                <li>傳統潔淨室的 EM 要求相對「寬鬆」（ISO 5 &lt;1%），但實際操作更依賴人員紀律</li>
+                <li>FDA Aseptic Processing Guidance 鼓勵使用 isolator 技術</li>
+                <li>White Raven（歐洲 CDMO）的 SA25 filling machine 就是 Isolator-based 設計</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 同時有 Isolator 產線和傳統潔淨室產線。在設計 EM 計畫時，兩條產線的取樣頻率和判定標準應該如何不同？</li>
+                <li>一家客戶堅持在 Open RABS 操作中使用與 Closed RABS 相同的 EM 標準。這合理嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: CLEANROOM CLASSIFICATION            -->
+<!-- ============================================ -->
+<div class="section-title" id="classification">Clean Room Classification for Aseptic Processing Environments &mdash; 無菌操作環境的潔淨室分級</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The design and construction of clean rooms and controlled environments are covered in <span class="key-term">ISO 14644 series</span>. This standard defines the performance of a clean environment with respect to the concentration of total particulates per unit volume.</p>
+
+        <p>Pharmaceutical manufacturers are concerned with <span class="key-term">nonviable particulate contamination</span> in injectable products. Unlike microbial contamination in which experimental data suggest that humans are the only significant source, nonviable particulates can arise both from humans and from processing equipment.</p>
+
+        <p>The argument that if fewer total particulates are present in a clean room, it is less likely that airborne microorganisms will be present is true only if human operators are the source of particulate matter.</p>
+
+        <!-- TABLE 1 -->
+        <h3>Table 1. Airborne Total Particulate Cleanliness Classes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ISO Class</th>
+                    <th>Particles &ge;0.5 &micro;m/m&sup3;</th>
+                    <th>Former FS 209E Class</th>
+                    <th>EU GMP Grade (at rest)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ISO 5</strong></td>
+                    <td>3,520</td>
+                    <td>Class 100</td>
+                    <td>Grade A / Grade B</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 6</strong></td>
+                    <td>35,200</td>
+                    <td>Class 1,000</td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 7</strong></td>
+                    <td>352,000</td>
+                    <td>Class 10,000</td>
+                    <td>Grade B (in operation) / Grade C (at rest)</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO 8</strong></td>
+                    <td>3,520,000</td>
+                    <td>Class 100,000</td>
+                    <td>Grade D</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><em>Source: ISO 14644-1. EU GMP Grade correlation added for cross-reference.</em></p>
+
+        <p>Specifications for <span class="key-term">air changes per hour</span> and air velocities are not included in ISO 14644. Typically:</p>
+        <ul>
+            <li>ISO 8 / Class 100,000: minimum 20 air changes per hour</li>
+            <li>ISO 7 / Class 10,000: more than 50 air changes per hour</li>
+            <li>ISO 5 / Class 100: more than 100 air changes per hour</li>
+        </ul>
+
+        <p>Manufacturers should maintain a predominantly <span class="key-term">unidirectional flow of air</span> (either vertical or horizontal) in a staffed Class 5 clean room environment, particularly when products, containers, and closures are exposed.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：粒子數 vs 微生物數</h4>
+            <p>USP 提出一個經常被誤解的觀點：<strong>非活性粒子數與微生物汙染之間的關係不是直接的</strong>。</p>
+            <ul>
+                <li>人員是微生物汙染的唯一顯著來源</li>
+                <li>設備是非活性粒子的另一個重要來源</li>
+                <li>因此「粒子數低就表示微生物少」只在人員是粒子主要來源時才成立</li>
+            </ul>
+            <p>這就是為什麼 EM 計畫必須同時包含<strong>非活性粒子監測</strong>和<strong>微生物監測</strong>兩個部分 &mdash; 它們提供不同的資訊。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：ISO vs EU GMP Grade 對照</h4>
+            <p>USP 使用 ISO 14644-1 分級。FDA 也使用 ISO 分級。但 EU GMP Annex 1 使用 Grade A/B/C/D 系統。CDMO 必須同時理解兩套系統：</p>
+            <table>
+                <tr><th>ISO Class</th><th>EU Grade (at rest)</th><th>EU Grade (in operation)</th><th>用途</th></tr>
+                <tr><td>ISO 5</td><td>Grade A</td><td>Grade A</td><td>Critical zone（充填、接藥區）</td></tr>
+                <tr><td>ISO 5</td><td>Grade B</td><td>&mdash;</td><td>Grade A 的直接背景區域</td></tr>
+                <tr><td>ISO 7</td><td>Grade C</td><td>Grade B</td><td>準備區域</td></tr>
+                <tr><td>ISO 8</td><td>Grade D</td><td>Grade C</td><td>一般製造支援區域</td></tr>
+            </table>
+            <p><strong>注意：</strong>EU GMP Grade B in operation 對應 ISO 7，但 Grade B at rest 對應 ISO 5。這是 CDMO 最常搞混的地方。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：換氣次數與排風扇</h4>
+            <p>換氣次數（ACH）就像房間裡的排風扇功率：</p>
+            <ul>
+                <li>ISO 8（20 ACH）&mdash; 普通浴室排風扇，慢慢帶走濕氣</li>
+                <li>ISO 7（50 ACH）&mdash; 油煙機，快速排除廚房油煙</li>
+                <li>ISO 5（100+ ACH）&mdash; 工業級排氣系統，幾乎是持續吹拂的清潔氣流</li>
+            </ul>
+            <p>重點不只是換氣頻率，而是氣流方向 &mdash; ISO 5 區域需要 unidirectional flow（單向氣流），就像風從天花板往地板吹，把汙染物帶離產品表面。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FDA 查廠時使用 ISO 分級，EMA 查廠時使用 EU Grade。作為 CDMO，你的 EM SOP 應該使用哪套分級系統？如何在一份 SOP 中同時滿足兩個市場？</li>
+                <li>你的 ISO 5 充填區域的非活性粒子計數持續合格，但微生物回收率突然上升。根據 &lang;1116&rang; 的觀點，這暗示什麼原因？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: IMPORTANCE OF EM PROGRAM            -->
+<!-- ============================================ -->
+<div class="section-title" id="em-importance">Importance of a Microbiological Evaluation Program &mdash; 微生物評估計畫的重要性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Monitoring of total particulate count in controlled environments, even with the use of electronic instrumentation on a continuous basis, does not provide information on the <span class="key-term">microbiological content</span> of the environment. The basic limitation of particulate counters is that they measure particles of 0.5 &micro;m or larger. While airborne microorganisms are not free-floating or single cells, they frequently associate with particles of <span class="key-term">10&ndash;20 &micro;m</span>.</p>
+
+        <p><span class="key-term">Microbial monitoring</span> cannot and need not identify and quantify all microbial contaminants in these controlled environments. Microbiological monitoring of a clean room is technically a <span class="key-term">semiquantitative exercise</span>, because a truly quantitative evaluation of the environment is not possible, given the limitations in sampling equipment.</p>
+
+        <p>No microbiological sampling plan can prove the absence of microbial contamination, even when no viable contamination is recovered. <span class="key-term">The absence of growth on a microbiological sample means only that growth was not discovered</span>; it does not mean that the environment is free of contamination.</p>
+
+        <p>Routine microbial monitoring should provide sufficient information to demonstrate that the aseptic processing environment is operating in an <span class="key-term">adequate state of control</span>. The real value of a microbiological monitoring program lies in its ability to confirm consistent, high-quality environmental conditions at all times.</p>
+
+        <p>Environmental microbial monitoring and analysis of data by qualified personnel can assist in ensuring that a suitable state of control is maintained. The environment should be sampled during <span class="key-term">normal operations</span> to allow the collection of meaningful, process-related data.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：EM 的真正價值</h4>
+            <p>USP 用了大量篇幅解釋 EM 的限制和真正用途，這些觀點是理解整個 &lang;1116&rang; 的基石：</p>
+            <ul>
+                <li><strong>EM 是半定量的</strong> &mdash; 我們無法精確量化環境中的微生物數量</li>
+                <li><strong>零回收不等於無汙染</strong> &mdash; 只是低於偵測極限</li>
+                <li><strong>EM 不能證明無菌</strong> &mdash; 它只能確認「控制狀態」的一致性</li>
+                <li><strong>趨勢比單一結果更重要</strong> &mdash; 監測的價值在於偵測變化</li>
+            </ul>
+            <p><strong>Cross-reference：</strong>PDA TR13 Section 3.0 和 PDA TR88 都強調相同的哲學 &mdash; EM 是 CCS 的一個「確認工具」，不是品質保證的替代品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：體溫計的隱喻</h4>
+            <p>EM 就像量體溫 &mdash; 體溫正常不代表你沒有任何疾病（可能有病但還沒發燒），體溫升高也不一定代表你感染了（可能剛運動完）。</p>
+            <p>但如果你每天量體溫，連續三天都比平常高 0.5&deg;C，這個「趨勢」就值得注意了。EM 的價值也在這裡 &mdash; 不是單一數據點，而是持續的模式和趨勢。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：取樣時機</h4>
+            <p>USP 明確要求在<strong>正常生產操作期間</strong>取樣 &mdash; 材料在現場、製程進行中、所有人員在位。這與某些工廠在「最佳條件」下取樣（如人員最少、設備靜止時）的做法相矛盾。</p>
+            <p><strong>對 CDMO 的啟示：</strong>如果你的 EM 數據都是在非生產狀態下取得的，FDA 查廠員可能會質疑這些數據是否反映真實的生產風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 ISO 5 區域連續 6 個月的空氣取樣都是零回收。你可以因此降低取樣頻率嗎？引用 &lang;1116&rang; 支持你的論點。</li>
+                <li>為什麼 USP 說「EM 是半定量的」？列舉三個導致 EM 無法精確量化的技術限制。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>USP &lang;1116&rang; 定位：</strong>Informational Chapter &mdash; 不具法律強制力，但實務上是 FDA/EMA 稽查 EM 計畫的核心參考依據</li>
+        <li><strong>Aseptic &ne; Sterile：</strong>無菌操作是風險控制的過程，不是達到絕對無菌的結果。零汙染期望在技術上不可行</li>
+        <li><strong>先進技術優先：</strong>Isolator &gt; Closed RABS &gt; Open RABS &gt; Conventional Cleanroom（EU GMP Annex 1 要求新設施優先採用 separative technologies）</li>
+        <li><strong>分級對照：</strong>ISO 5 = Class 100 = Grade A；ISO 7 = Class 10,000 = Grade C (at rest)；ISO 8 = Class 100,000 = Grade D</li>
+        <li><strong>EM 本質限制：</strong>半定量、無法證明無菌、取樣本身增加汙染風險 &mdash; EM 的真正價值在於趨勢監測和控制狀態確認</li>
+        <li><strong>取樣原則：</strong>必須在正常生產操作條件下取樣，才能獲得有意義的數據</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+</body>
+</html>

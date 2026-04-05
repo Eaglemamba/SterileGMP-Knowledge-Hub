@@ -1,0 +1,523 @@
+# USP General Chapter 〈1071〉: Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Dec-2019
+Document Type:
+General Chapter
+DocId:
+GUID-EEDBFF
+A0-A579-4F26-ACFF-53248C30BFF6_2_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M12457_02_01
+DOI Ref:
+vh1a1
+© 2025 USPC
+Do not distribute
+Add the following:
+▲〈1071〉 RAPID MICROBIAL TESTS FOR RELEASE OF STERILE SHORT
+-
+LIFE PRODUCTS: A RISK
+-BASED APPROACH
+INTRODUCTION
+USER REQUIREMENT SPECIFICATIONS FOR A RAPID MICROBIAL TEST FOR THE RELEASE OF STERILE SHORT-LIFE
+PRODUCTS
+THE CONCEPT OF RISK-BASED MICROBIOLOGICAL MONITORING AND RELEASE TESTING
+CRITICAL OPERATING PARAMETERS TO BE USED IN DETERMINING A RISK-BASED RAPID MICROBIAL TEST FOR THE
+RELEASE OF STERILE SHORT-LIFE PRODUCTS
+SITUATIONS WHEN 〈71〉 IS UNSUITABLE FOR PRODUCT RELEASE TESTING
+Sample Size Consideration
+Limit of Detection
+Ability to Detect a Wide Range of Microorganisms
+RAPID MICROBIAL TEST METHODS FOR THE RELEASE OF STERILE SHORT-LIFE PRODUCTS
+Brief Descriptions of the Technologies
+METHOD SUITABILITY TESTING
+GLOSSARY
+REFERENCES
+INTRODUCTION
+It is widely recognized that the current growth-based sterility tests with an incubation period of at least 14 days (see Sterility Tests 〈71〉) are
+not suitable for products with a shor t shelf-life or for products prepared for immediate use, which are usually infused into patients before the
+completion of the test (1). These shor t-life products include compounded sterile preparations (CSPs), positron emission tomographic (PET)
+products, and cell and gene therapies, which require a new generation of risk-based approaches that include rapid microbial tests. For a
+general discussion of the factors other than sterility testing that contribute to sterility assurance, see Sterility Assurance 〈1211〉. It should be
+noted that as with alternate test methods, the referee test in the event of a dispute is 〈71〉.
+If a microbial test is conducted, patient safety is best served through the completion of a test that detects microbial contamination prior to
+product use.
+The rapid microbial tests (RMTs) should be risk-based so the stakeholder can select the preferred technology for their intended use and
+balance user requirement speci«cations (URS) including time to result, speci«city, limit of detection (LOD), sample size, and product
+attributes. For example, many radiopharmaceuticals, due to the shor t half-life of radiotracers, would bene«t most from a real-time microbial
+test, while CSPs and cell therapy products, due to their shor t beyond-use dating, would bene«t from an overnight test or at least one that is
+completed within 48 h.
+This general informational chapter discusses the needs of those who manufacture/prepare and test products with a shor t shelf life and
+their URS, and includes a brief discussion of some suitable methods for risk-based rapid microbial testing for the release of shor t shelf-life
+sterile products (hereafter referred to in this chapter as "shor t-life products").
+USER REQUIREMENT SPECIFICATIONS FOR A RAPID MICROBIAL TEST FOR THE RELEASE OF STERILE SHORT
+-LIFE
+PRODUCTS
+Selection of an appropriate technology for the rapid microbial testing for the release of a shor t-life product should be a risk-based
+decision. The URS (2) of different technologies include:
+As shor t as possible time to result, ideally in real time or less than 24 hours, preferably prior to the administration of the product
+Ability to detect, preferably less than 100 colony-forming units (cfu) in the test sample
+Ability to detect a wide range of viable microorganisms in a product
+Sample quantity, i.e., minimum number of ar ticles tested and quantity per container tested that does not consume a large propor tion
+of the available product; whenever feasible, manufacturers should consider assay requirements during process design
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 2 ===
+Aseptic test material handling, i.e., closed systems to reduce inadver tent contamination during testing
+Availability of instruments and reagents from multiple vendors
+Availability of reference standards, negative and positive controls, appropriate for technologies that use signals other than the colony-
+forming unit
+Ease of use/simplicity of test and data interpretation
+Low rates of false positive and false negative results
+A method suitability testing strategy for each speci«c product
+Improved patient safety arising from:
+Completion of the test prior to administration
+Tests that provide progressive monitoring and repor ts of a detection of sterility test failure
+Ability to identify the detected microorganisms, which may be useful to the clinician administering the products and investigating to
+determine its source
+Robustness and reliability of equipment and reagents used in the testing
+Sample preparation suitable for both manual and automated methods
+THE CONCEPT OF RISK
+-BASED MICROBIOLOGICAL MONITORING AND RELEASE TESTING
+A review of the URS for an RMT shows that some risk-based decisions would need to be made especially in terms of time to results, LOD,
+sample size, and range of microbes detected to allow the use of such tests prior to administration. The stakeholders should carry out a risk
+assessment for choosing an RMT in cases where the current compendial sterility test is unsuitable.
+Bene«ts may include, for instance:
+Use of RMT in cases where a substantial risk to patient survival exists when the product is administered too late. One striking example
+from the clinical literature is that of bloodstream infections that are rapidly progressive infections with mor tality rates of up to 40%
+and in which each day of delay in administrating antibiotics leads to a 10% increase in mor tality (3). In these cases, patient safety is
+clearly promoted by the completion of a microbial test prior to the administration.
+Use of growth-based RMTs with continuous reading applied for “negative to date” on risk release because fast growing
+microorganisms can be detected earlier, and if a failure is detected this would enable the clinician to intervene sooner with the patient.
+When a contaminated product is detected, the laboratory supervisor could inform the clinician treating the patient and intravascular
+¬uid resuscitation and antibiotic treatment may be initiated to avoid septic shock. A sterility test that progressively monitors and
+automatically repor ts any failure will therefore have additional advantages as compared to a single reading at the end of the
+incubation period.
+Use of non-growth based RMTs with LOD above 1 cfu that is ampli«ed by growth in microbiological media but very fast time to results.
+The ability to detect contamination, in real time, prior to the administration of the shor t-life product may be considered more impor tant
+than detection of a single colony-forming unit in the product. When considering risk to the patient, choice of the RMT should factor in
+the sensitivity of the assay versus the time to detection. Assays should be reasonably sensitive to detect the presence of a low-level
+contaminant and should do so in a time frame that allows results to be available before product administration.
+Other advantages of nongrowth-based RMT methods also may include the inability to be affected by antibiotics in the test sample and
+the detection of culture-negative infectious agents. Some DNA–targeted antibiotics (e.g., polymyxin B and bacitracin) have been
+shown to inhibit PCR ampli«cation while antibiotics such as penicillin G, chloramphenicol, amphotericin and nalidixic acid do not
+affect the resolving potential of the reaction. This would be most impor tant to sterile compounding pharmacies producing injectable
+antibiotic solutions. Method suitability should determine whether any antibiotics in the test sample could affect the assay.
+In addition, RMTs or other rapid microbiological methods (RMMs) may be used as in-process controls prior to the «nal product release
+sterility test to provide faster information on the effectiveness of microbial controls and the early detection of gross contamination (enabling
+to investigate and restar t production sooner) or probability that a product may fail sterility.
+For the risk assessment, one consideration that may be overlooked is the relative risk to the patient based on the volume of the product
+injected or infused and the site of administration. The greater the volume and the more invasive, the greater the risk of blood stream infection
+for the patient. The risk ranges from a small volume of an intradermal injection to a large volume of an intravenous infusion (see Table 1).
+T
+able 1. Typical Volumes by Route of Administration and the Relative Risk Level
+Route of Administration
+Typical Volume Administered
+(mL)
+Risk Level
+Intradermal
+≤0.1
+Very Low
+Subcutaneous
+≤1
+Low
+Intramuscular
+≤3
+Moderate
+Intrathecal
+1–10
+High
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 3 ===
+Route of Administration
+Typical Volume Administered
+(mL)
+Risk Level
+Intravenous push
+1–60
+Moderate–High
+Intravenous piggyback
+25–250
+High
+Intravenous
+>250
+High
+CRITICAL OPERATING P
+ARAMETERS TO BE USED IN DETERMINING A RISK
+-BASED RAPID MICROBIAL TEST FOR THE
+RELEASE OF STERILE SHORT
+-LIFE PRODUCTS
+The estimated operating parameters, i.e., LOD, time to results, and sample size, for the candidate technologies suitable for an RMT are
+found in Table 2.
+T
+able 2. Operational Parameters of the Candidate Rapid Microbial Technologies
+Candidate Technology
+LOD
+(cfu)
+Time to Result
+Sample Size Range
+(mL)
+Gram stain (for comparative
+purposes only)
+–10
+30 min
+0.1
+〈71〉
+Theoretical LOD of 1–3 cfu
+based on a Poisson distribution
+14 days
+40–500
+Adenosine triphosphate (ATP)
+bioluminescence
+1–10
+2–7 days (including pre-
+enrichment)
+1–1000
+ATP bioluminescence
+30 min
+1–1000
+Flow cytometry
+10–100
+6–8 h (pre-enrichment)
+0.1–2
+Isothermal micro-calorimetry
+2–7 days
+Nucleic acid-methods
+a
+10–100
+2–4 h
+0.2–2
+Respiration
+1–10
+Overnight to 7 days
+Up to 10
+Solid phase cytometry
+1–10
+2–3 h
+1–1000
+a
+For these methods, the signal would be in genomic units.
+SITUATIONS WHEN 〈71〉 IS UNSUITABLE FOR PRODUCT RELEASE TESTING
+Sample Size Consideration
+The sample size tested may need to be reduced based on either the sample processing capability of the technology or the need to
+conserve the much-needed product.
+The minimum quantity of product used for each medium and the minimum of units to be tested relative to batch size is found in 〈71〉, Table
+2 and Table 3. It is widely understood that for large pharmaceutical product batch sizes, the amount of units tested are not statistically based
+and has a reduced capability of detecting low contamination levels in individual product lots. However, with the smaller batch sizes of many
+shor t-lived products, this limitation will be reduced because the propor tion of products tested relative to the batch size will increase.
+This traditional sampling plan is not appropriate for a cell therapy product. For example, if 10 individual 60-mL IV bags of cells were
+prepared, then 4 bags would be sampled with 20 mL taken from each bag. With this sampling scheme 40% of the batch would be consumed
+for sterility testing representing not only a large economic loss, but also more impor tantly, a huge loss of therapeutic product that may
+prevent administration of a dose adequate to treat the patient. In contrast, if 40 individual 1-mL vials were consumed for the sterility testing
+of a 40,000-vial batch of an injectable drug product, this would represent only 0.1% of the batch.
+Reducing the sample size and the number of units tested will reduce the sensitivity of the sterility test. Table 3 and Table 4 illustrate the
+relative insensitivity of the test for a pharmaceutical product and a CSP
+.
+T
+able 3. The Probability That a 20-Unit Sterility Test Passes Given an Increasing Contamination Rate for a Drug Product
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 4 ===
+Contaminated Items in the Batch
+(%)
+0.1
+p
+0.001
+0.01
+0.05
+0.1
+0.2
+0.5
+q
+0.999
+0.99
+0.95
+0.9
+0.8
+0.5
+Probability (p) of
+drawing 20
+consecutive
+sterile items
+0.98
+0.82
+0.36
+0.12
+0.012
+<0.00001
+Calculated from the following (4):
+p = (1 − p)
+ = q
+p
+= propor tion of contaminated containers in the batch
+q
+= propor tion of non-contaminated containers in the batch
+T
+able 4. The Probability That a 6-Unit Sterility Test Passes Given an Increasing Contamination Rate for a CSP
+Contaminated Items in the Batch
+(%)
+p
+0.001
+0.01
+0.05
+0.1
+q
+0.999
+0.99
+0.95
+0.9
+Probability (p) of
+drawing 6 consecutive
+sterile items
+0.995
+0.94
+0.73
+0.53
+Alternative sampling plans have been proposed in other compendia. One recommended approach to sterility testing of cell therapy
+products for a batch size of less than 40 units is found in European Pharmacopoeia 9.0 chapter 2.6.27 Microbiological Examination of Cell-
+Based Preparations.
+The contamination test sample size for a cell preparation with a volume between 10 and 1000 mL would be 1% of the total volume; for a
+cell preparation with a volume between 1 and 10 mL, it would be a sample size of 0.1 mL; for a cell preparation less than 1 mL, the
+preparation would not be tested. As suggested in 21 CFR 610.12 (Sterility), in-process testing using rapid methods may be used in lieu of
+«nal product testing when fully justi«ed.
+In a similar fashion as cell-therapy preparations, the sample quantity and sampling plan for PET radiopharmaceuticals must also
+accommodate the limited number of vials (usually one) and the volume of product produced in a batch (usually less than 15 mL). If the batch
+is comprised of a single container, the sterility test sample size is at least 1% of the total batch volume. For example, if a batch is comprised
+of 1 vial containing 15 mL, use at least 0.15 mL for purposes of the sterility test. If the batch is comprised of more than one container, use a
+volume from a single container that represents at least 1% of the total batch volume. If a batch is comprised of 3 vials each containing 25
+mL, use at least 0.75 mL from 1 vial for purposes of the sterility test.
+Limit of Detection
+Within the limitations of preparing inocula from a cell suspension with one or more colony-forming units, growth-based sterility tests can
+be shown to have at least a theoretical LOD of 1–3 cfu based on a Poisson distribution. Setting an LOD of a single viable cell with all
+technologies is an unrealistic barrier of entry for any sterility test, especially when the signal is not the colony-forming unit that is ampli«ed
+by cultural enrichment.
+Ability to Detect a Wide Range of Microorganisms
+Although all the analytical platforms should have the ability to detect a wide range of bacteria, yeasts, and molds, it is of practical
+impor tance to demonstrate that technology chosen for an RMT is capable of detecting microorganisms implicated in sterility test failures,
+infection outbreaks, and product recalls associated with either CSPs, radiopharmaceuticals, cell therapies, or manufactured
+pharmaceuticals. This is especially true if the technology, after risk analysis, is shown to improve patient safety with the administration of the
+products unique to that stakeholder group.
+RAPID MICROBIAL TEST METHODS FOR THE RELEASE OF STERILE SHORT
+-LIFE PRODUCTS
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 5 ===
+Technologies recommended based on their match to the URS discussed above (2) suitable for an RMT are listed alphabetically as follows:
+Adenosine triphosphate (ATP) bioluminescence
+Flow cytometry
+Isothermal microcalorimetry
+Nucleic acid ampli«cation
+Respiration
+Solid phase cytometry
+Brief Descriptions of the Technologies
+Each of these candidate advanced analytical platforms is brie¬y discussed separately and key references are provided. For an overview,
+see Moldenhauer (5).
+adenosine triphosphate bioluminescence
+This is a well-established technology with luminometers and reagents available from multiple instrument manufacturers. The energy from
+living cells is stored as ATP and can be measured as light when exposed to luciferase from the American «re¬y. Each ATP molecule
+consumed by luciferase produces 1 photon of light. The result detected by a luminometer is typically expressed in relative light units (RLU)
+and is instrument, reagent, and organism dependent. The ATP content of different microorganisms ranges from 2 to 4 × 10
+−18
+ mole/cfu for
+gram-negative bacteria, 5 to 8 × 10
+−18
+ mole/cfu for gram-positive bacteria, and 300 to 800 × 10
+−18
+ mole/cfu for fungi (6). Given the high
+signal-to-noise ratio of the measurement and the background ATP in microbiological culture media, the microbiologically relevant
+instrument detection limit in broth is in the order of 5000 RLU equivalent to approximately 10
+ cfu.
+This LOD will detect the presence of microorganisms at levels which are 3–4 logs less within an aliquot of the media than that is required
+for visual detection of growth in the media. For a rapid microbial test for the release of sterile shor t-life products, an enrichment culture
+either in liquid media to reach a threshold ATP level or on a membrane «lter on solid media for the formation of microbial colonies could be
+used with an incubation time of 2–7 days.
+flow cytometry
+Flow cytometry may be used to detect ¬uorescently labeled viable microbial cells after an enrichment culture step of 24–48 h (7). A
+labeling reagent consisting of either a ¬uorogenic substrate or vital stain is used to differentiate viable cells from dead cells and cellular
+debris. While bacteria are very small and may be hard to distinguish from cell debris, they can be differentiated by size, shape, and
+¬uorescent intensity. Cell viability is indicated by the ability of the intact cell membrane to retain a ¬uorochrome generated by nonspeci«c
+cellular esterase, or by labeling the cell with nucleic acid-speci«c vital stains. A laser illuminates each cell in the ¬ow stream and the emitted
+light is detected by a dual photomultiplier array. The signal is digitized and interpreted by discrimination software. The LOD for this
+technology may be >1 cfu and an enrichment step may be necessary.
+isothermal microcalorimetry
+Isothermal microcalorimeters monitor enthalpy changes in closed vials (systems) related to microbial metabolic activity and growth. With
+current instruments, 10
+ active microbial cells can release enough heat to be detected and enrichment is needed for detection (2–7 days to
+result). Recently its application in pharmaceutical microbiology has been evaluated, although its speci«c application to release testing of
+sterile products has not been established yet (8).
+nucleic acid amplification
+Real-time quantitative polymerase chain reaction (PCR) has the potential to monitor the exponential phase of PCR through 36–48 cycles
+of ampli«cation using universal primers and probes (termed "pan-bacterial" and "pan-fungal" methods) to estimate the initial quantity of the
+target DNA, which is in turn propor tional to the number of microbial cells in the test sample. Unlike DNA, cellular RNA is turned-over rapidly
+metabolically and would be a better indicator of viable microorganisms. For example, Escherichia coli contains 2 molecules of DNA and 2 ×
+ molecules of 16S rRNA per cell (9). This process is achieved by the conversion of RNA into a complementary copy of DNA (cDNA) by
+the enzyme reverse transcriptase and the cDNA can be analyzed in real time in either a quantitative (enumeration test) or qualitative assay
+(sterility test). Alternatively, for DNA-based PCRs, a sample pretreatment with ethidium monoazide or propidium monoazide may also
+provide the capability to differentiate live from dead microbial cells (10,11), or free microbial DNA may be removed from a test sample by a
+centrifugation/washing step and the bacterial pellet used for analysis.
+Realistically, an LOD of a single viable cell is probably an insurmountable challenge, especially for a test relying on a DNA/RNA target and
+universal primers. Another challenge is the differing amounts of genomic material in different microorganisms.
+Generally, the LOD ranges from 10 to 1000 viable cells/mL in a sample and, in some repor ted cases, from 10 to 100 viable cells/mL.
+Recently it was shown that PCR may actually achieve detection of microorganisms with a limit of 10
+ to 10
+ cfu/mL in a sample containing
+a high concentration of up to 10
+ mammalian cells/ mL without the need for pre-incubation in microbial growth media (12). Adding a
+growth-based enrichment step for at least 24–48 h and comparing the PCR results before and after cultural enrichment may provide a
+practical solution for sterility testing. Alternatively, concentration methods could be applied to enrich the sample and reduce the sample
+volume. As noted by the authors of a recent study of the use of 16S rRNA PCR sterility test for stem cells, with the demonstrated bacterial
+sensitivity of 10–100 cfu/mL, a test method with a sensitivity of 100 cfu/mL would be suitable to detect clinically signi«cant bacterial
+contamination of blood and cell products (13).
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 6 ===
+Direct comparison of growth-based and nucleic acid ampli«cation-based assays is complicated by the fact that nucleic acid
+ampli«cation-based assays also detect non-viable organisms and are a measure of microbial genome copy number, not colony-forming
+units. For that reason, the LOD for a nucleic acid ampli«cation-based assay should be de«ned in terms of genome equivalents per milliliter.
+Non-growth based RMTs for the release of sterile shor t-life products like nucleic acid ampli«cation may have additional advantages due
+to the following:
+With close to real-time testing, the test will be completed before the shor t-life products are infused into a patient
+Detection of culture-negative infectious agents
+The test is minimally affected by antibiotics in the test sample, as indicated earlier in the chapter
+The test is less sensitive to background resulting from animal cell lysis (e.g., par ticles, ATP) as compared to other technologies since
+speci«c microbial genes are targeted
+respiration
+This broad category ranges from classical respirometers, to gaseous headspace analyzers to automated blood culture systems. Aerobic
+and anaerobic broth formulations allow for the recovery of most microorganisms responsible for blood stream infections within a 5-day
+incubation. With some instruments, this includes incubation at both 20°–25° and 30°–35° as in 〈71〉. This technology has been successfully
+extended to sterility testing of cell therapy products cells using a 7-day incubation as an alternative to the compendial sterility test for lot
+release (14).
+Other instruments are available to detect and enumerate respiring microorganisms. For example, tunable diode laser absorption
+spectroscopy (TDLAS) can measure oxygen (O
+) depletion or carbon dioxide (CO
+) increase in closed units containing growing
+microorganisms in culture medium. The technology was originally developed to monitor gas headspace composition in closed units and
+also could be used for automatic media «ll inspection (8,15). The system has gaseous calibration standards and minor adaptations are
+needed if the system is to be used for sterility testing (e.g., calibrating for higher-volume containers). [Note—All the systems of the
+respiration platform require microbial growth and metabolic activity for detection, i.e., the usual time of 2–7 days to obtain results is
+required. However, when the results may be progressively monitored to detect a sterility test failure earlier in the incubation period, that is a
+huge advantage with shor t-life products as explained in the risk assessment section above.]
+solid phase cytometry
+There are instrument systems based on solid phase cytometry combining ¬uorescent labeling and solid phase laser scanning to rapidly
+enumerate viable microorganisms in «lterable liquids (16). Microorganisms are collected by «ltration on 0.45-micron polyester membranes
+and treated with background and viability stains. The «lters are scanned in a cytometer by a high-speed, 488 nM argon laser. Multiple
+photomultiplier tubes, processed to differentiate between labeled microorganisms and background noise, based on size, shape, and
+¬uorescence intensity, detect ¬uorescence. The scan is displayed as a map that identi«es the position of the ¬uorescent events that are
+veri«ed using an epi¬uorescence microscope with an automated motorized stage to locate the individual events. The system is claimed to
+detect individual viable microorganisms in 2–3 h. It should be noted that most cell therapy products are non-«lterable, so this technology
+may not be compatible with these types of products.
+METHOD SUITABILITY TESTING
+The method suitability requirements for a growth-based sterility test are given in 〈71〉. The suitability of the test must be demonstrated for
+each product to be tested. The recovery of the USP challenge organisms at a level less than 100 cfu, in the presence of residual product, is
+demonstrated as clearly visible growth in the microbiological growth media for either the direct inoculation or membrane «ltration method.
+With signals other than the colony-forming unit derived from laboratory culture (e.g., nucleic acid, ATP
+, and ¬uorescent labeling of viable
+microbial cells), the results from testing actual samples may give results that are not equivalent to that using other technologies. However,
+method suitability testing will con«rm that product residues in the analyte will not inhibit the enzymatic steps associated with the signal
+generation by the rapid method.
+GLOSSARY
+Colony-forming unit (cfu):
+Viable microorganisms capable of growth on solid microbiological culture media forming discrete, visible colonies.
+Limit of detection (LOD):
+The lowest signal representing a viable microorganism that can be routinely detected.
+Patient safety:
+Reduction of morbidity and mor tality of the recipients of a contaminated product that is promoted by the completion of a rapid
+microbial test prior to the administration.
+Positron emission tomography (PET):
+A nuclear medicine functional imaging technique that is used to observe metabolic processes in the
+body as an aid to the diagnosis of disease. The system detects pairs of gamma rays emitted indirectly by a positron-emitting radionuclide
+(tracer), which is introduced into the body.
+Risk-based rapid microbial test:
+A rapid microbial test selected by the stakeholder after a consideration of the LOD, sample size, speci«city, and time to result that promotes
+patient safety by completing the test prior to the administration of a shor t-lived product to detect contamination, if any.
+Speci«city:
+Ability to detect a wide range of different bacteria, yeasts, and molds.
+Time to result:
+Time to complete the microbial test and reach a conclusion about the lack of contamination of the sample test.
+REFERENCES
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
+
+=== PAGE 7 ===
+1. Cundell AM. The history of the development, applications and limitations of the USP sterility test. In: Moldenhauer J, ed. Rapid Sterility
+Testing. Bethesda, MD: PDA/DHI Publishing; 2011:127–170.
+2. USP Modern Microbiological Methods Exper t Panel. The development of compendial rapid sterility tests. Pharm Forum. 2017;43(5).
+3. Mar tinez RM, Wolk DM. Bloodstream infections. Microbiol Spectr. 2016;4(4).
+4. Sutton S. The sterility tests. In: Moldenhauer J, ed. Rapid Sterility Testing. Bethesda, MD: PDA/DHI Publishing; 2011:7–28.
+5. Moldenhauer J, ed. Rapid Sterility Testing. Bethesda, MD: PDA/DHI Publishing; 2011.
+Ã. La Duc MT
+, Dekas A, Osman S, Moissl C, Newcombe D, Venkateswaran K. Isolation and characterization of bacteria capable of
+tolerating the extreme conditions of clean room environments. Appl Environ Microbiol. 2007;73(8):2600–2611.
+7. Baumstummler A, Chollet R, Meder H, Rofel C, Venchiarutti A, Ribault S. Detection of microbial contamination in mammalian cell
+cultures using a new ¬uorescence-based staining method. Lett Appl Microbiol. 2010;51(6):671–677.
+Ä. Brueckner D, Roesti D, Zuber UG, Schmidt R, Kraehenbuehl S, Bonkat G, et al. Comparison of tunable diode laser absorption
+spectroscopy and isothermal micro-calorimetry for non-invasive detection of microbial growth in media «lls. Sci Rep. 2016;6:27894.
+DOI: 10.1038/srep27894.
+9. Overall macromolecular composition of E. coli cell. Adapted from Neidhardt FC, et al. Physiology of the bacterial cell. Sinauer, 1990 by
+Tummler K and Milo R. 13 Jan 2017.
+10. Patel P
+, Garson JA, Tettmar KI, Ancliff S, McDonald C, Pitt T
+, et al. Development of an ethidium monoazide-enhanced internally
+controlled universal 16S rDNA real-time polymerase chain reaction assay for detection of bacterial contamination in platelet
+concentrates. Transfusion. 2012;52(7):1423–1432.
+11. Nocker A, Cheung C-Y
+, Camper AK. Comparison of propidium monoazide with ethidium monoazide for differentiation of live vs. dead
+bacteria by selective removal of DNA from dead cells. J Microbiol Methods. 2006;67(2):310–320.
+12. Kleinschmidt K, Wilkens E, Glaeser SP
+, Kaempfer P
+, Staerk A, Roesti D. Development of a qualitative real-time PCR for microbiological
+quality control testing in mammalian cell culture production. J Appl Microbiol. 2016;122(4):997–1008.
+13. Tokuno O, Hayakawa A, Yanai T
+, Mori T
+, Ohnuma K, Tani A, et al. Sterility testing of stem cell products by broad-range bacterial 16S
+ribosomal DNA polymerase chain reaction. Lab Med. 2015;46(1):34–41.
+14. Kielpinski G, Prinzi S, Duguid J, du Moulin G. Roadmap to approval: use of an automated sterility test method as a lot release test for
+Car ticel, autologous cultured chondrocytes. Cytotherapy. 2005;7(6):531–541.
+15. Duncan D, Cundell T
+, Levac L, Veale J, Kuiper S, Rao R. The application of noninvasive headspace analysis to media «ll inspection. PDA
+J Pharm Sci Technol. May/June 2016;70:230–247.
+1Ã. Smith R, Von Tress M, Ubb C, Vanhaecke E. Evaluation of the ScanRDI(R) as a rapid alternative to the pharmacopoeial sterility test
+method: comparison of the limits of detection. PDA J Pharm Sci Technol. 2010;64(4):358–363.▲ (USP 1-Dec-2019)
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<1071> RAPID MICROBIOLOGICAL METHODS
+FOR THE DETECTION OF CONTAMINATION
+IN SHORT
+-LIFE PRODUCTS—A RISK-BASED
+APPROACH
+Huiping Tu
+Director, Biologics
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 50(1)
+Current DocID: GUID-EEDBFF
+A0-A579-4F26-ACFF-53248C30BFF6_2_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M12457_02_01
+DOI ref: vh1a1
+OFFICIAL
+2/12/25, 4:01 PM
+USP-NF 〈1071〉 Rapid Microbial Tests for Release of Sterile Short-Life Products: A Risk-Based Approach
