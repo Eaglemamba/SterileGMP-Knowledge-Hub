@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈670〉 - Section 0: Introduction & Component Classification</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p,
+.key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li,
+.key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue); color: white; padding: 2rem;
+    text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Component Classification | 簡介與組件分類</h1>
+    <div class="subtitle">USP 〈670〉 Auxiliary Packaging Components</div>
+    <div class="page-info">USP General Chapter 〈670〉 | Pages 1–3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解輔助包裝組件（Auxiliary Packaging Components）的定義與功能，以及其在固體口服劑型保護中的角色</li>
+        <li>辨識三大類主要輔助包裝組件：藥用棉卷（Pharmaceutical Coil）、乾燥劑（Desiccants）、以及除臭吸附劑（Odor Adsorbents）</li>
+        <li>掌握棉製、嫘縈（Rayon）及聚酯（Polyester）藥用棉卷的鑑別試驗方法與驗收標準</li>
+        <li>了解各類乾燥劑的化學特性、外觀特徵及適用範圍</li>
+        <li>認識 USP 〈670〉 的監管地位及其與其他 USP 章節的交叉引用關係</li>
+    </ul>
+</div>
+
+<!-- ==================== SECTION: OVERVIEW ==================== -->
+<div class="section-title">Overview — 章節概覽</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><em>Status: Currently Official on 12-Feb-2025 | Official Date: Official as of 01-Mar-2024</em></p>
+        <p><em>© 2025 USPC — General Chapter, DocId: GUID-23441426-4E3D-43A3-A807-FC24D0191C03_5_en-US</em></p>
+
+        <h3>〈670〉 AUXILIARY PACKAGING COMPONENTS</h3>
+
+        <p><span class="key-term">Auxiliary packaging components</span> are articles that are used to support or enhance <span class="key-term">container–closure systems</span>. These articles include, but are not limited to, pharmaceutical coil, desiccants, and odor adsorbents for containers. The components covered in this chapter must meet the applicable requirements provided and the additional applicable requirements provided in other specified chapters.</p>
+
+        <div class="quote-box">
+            "The components covered in this chapter must meet the applicable requirements provided and the additional applicable requirements provided in other specified chapters."
+        </div>
+
+        <p><strong>Components covered in USP 〈670〉:</strong></p>
+        <ul>
+            <li>Pharmaceutical Coil (Cotton, Rayon, Polyester)</li>
+            <li>Desiccants (Bentonite, Calcium Chloride, Calcium Oxide, Carbon Activated, Molecular Sieves, Silica Gel)</li>
+            <li>Odor Adsorbents (Carbon, Activated — with VOC testing)</li>
+            <li>Oxygen Scavengers (referenced by other USP chapters)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Auxiliary Packaging Components（輔助包裝組件）：</strong>不直接接觸藥品活性成分，而是透過改善包裝環境來保護產品的輔助材料。例如乾燥劑防止水分侵入，棉卷防止錠劑在運輸中破損。</p>
+            <p><strong>Container–Closure System（容器密封系統）：</strong>USP 對藥品包裝完整性的核心框架。輔助包裝組件是在這個系統中「加值」的額外元素，而非主體結構。</p>
+            <p><strong>交叉引用原則：</strong>USP 〈670〉 不是孤立文件。它明確要求組件也要符合其他指定章節的要求，如 〈731〉 Loss on Drying、〈281〉 Residue on Ignition、〈791〉 pH 等。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一個高檔珠寶禮盒：主角是珠寶（藥品），盒子是容器密封系統，而填充在盒內的天鵝絨襯墊與防潮包——那就是輔助包裝組件。它們不是主角，但少了它們，主角可能在運送途中受損。</p>
+            <p>在製藥包裝中，乾燥劑就像那個防潮包，棉卷就像那個天鵝絨——都是為了讓藥品安全抵達患者手中。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>監管現況（2026年視角）：</strong>本章於 2024 年 3 月正式生效，2025 年 2 月確認為現行官方版本。任何 FDA 審查都可能引用此版本。CDMO 在選擇輔助包裝組件時，必須確保供應商符合最新 USP 版本要求。</p>
+            <p><strong>「其他指定章節」意涵：</strong>這個交叉引用讓 USP 〈670〉 的要求變得更廣泛——光滿足本章不夠，還必須符合諸如 〈661〉、〈671〉 等相關容器章節的附加要求。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個 CDMO 客戶要求你為其口服固體劑型產品選擇包裝，你如何判斷是否需要加入輔助包裝組件？</li>
+                <li>USP 〈670〉 說「不限於」這些組件，這對法規合規性有什麼潛在影響？</li>
+                <li>為什麼 USP 要求這些組件「同時」符合本章及其他指定章節的要求，而不是只選一個標準？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: PHARMACEUTICAL COIL ==================== -->
+<div class="section-title">Pharmaceutical Coil — 藥用棉卷</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>PHARMACEUTICAL COIL</h3>
+
+        <p><span class="key-term">Pharmaceutical coil</span> is used as a filling material in multiple-unit containers for solid oral dosage forms to prevent breakage of tablets or capsules during shipment. The filling material should be discarded once the bottle is opened.</p>
+
+        <h3>Solutions (Reagents for Testing)</h3>
+        <ul>
+            <li><strong>Iodinated zinc chloride solution:</strong> Dissolve 20 g of zinc chloride and 6.5 g of potassium iodide in 10.5 mL of Purified Water. Add 0.5 g of iodine, and shake for 15 min. Filter if necessary. Protect from light.</li>
+            <li><strong>Zinc chloride–formic acid solution:</strong> Dissolve 20 g of zinc chloride in 80 g of an 850-g/L solution of anhydrous formic acid.</li>
+            <li><strong>1% DuPont Fiber Identification Stain No. 4 solution:</strong> Dissolve 3.8 g of powdered stain in 378.5 mL of deionized water.</li>
+        </ul>
+
+        <h3>Cotton Pharmaceutical Coil</h3>
+
+        <p>Purified cotton is the hair of the seed of cultivated varieties of <em>Gossypium hirsutum</em> Linné, or of other species of <em>Gossypium</em> (Fam. Malvaceae). It is deprived of fatty matter and bleached and does not contain more than traces of leaf residue, pericarp, seed coat, or other impurities. <span class="key-term">Cotton pharmaceutical coil</span> is used in bottles of solid oral dosage forms to prevent breakage.</p>
+
+        <p><strong>Identification</strong></p>
+        <ul>
+            <li><strong>A.</strong> When examined under a microscope, each fiber is seen to consist of a single cell, up to about 4 cm long and 40 µm wide, in the form of a flattened tube with thick and rounded walls that are often twisted.</li>
+            <li><strong>B.</strong> When treated with Iodinated zinc chloride solution, the fibers become violet.</li>
+            <li><strong>C.</strong> To 0.1 g of fibers add 10 mL of Zinc chloride–formic acid solution, heat to 40°, and allow to stand for 2 h, shaking occasionally: the fibers do not dissolve.</li>
+            <li><strong>D.</strong> Fibers become green when treated with 1% DuPont Fiber Identification Stain No. 4 solution.</li>
+        </ul>
+
+        <p><strong>Additional Tests (Cotton Coil):</strong></p>
+        <ul>
+            <li><span class="key-term">Acidity or alkalinity:</span> Neither phenolphthalein nor methyl orange portion appears pink against a white background after 2-h maceration in 100 mL Purified Water.</li>
+            <li><span class="key-term">Fluorescence:</span> Only slight brownish-violet fluorescence under UV at 365 nm; no intense blue fluorescence.</li>
+            <li><span class="key-term">Residual hydrogen peroxide concentration:</span> NMT 50 ppm by reflectometry strip method or permanganate titration.</li>
+            <li><span class="key-term">Loss on Drying 〈731〉:</span> NMT 8.0% (5 g at 105° to constant weight)</li>
+            <li><span class="key-term">Residue on Ignition 〈281〉:</span> NMT 0.20%</li>
+            <li><span class="key-term">Water-soluble substances:</span> Residue NMT 0.35%</li>
+            <li><span class="key-term">Fatty matter:</span> Residue NMT 0.7% (Soxhlet extraction with ethyl ether)</li>
+            <li><span class="key-term">Dyes:</span> Percolate may show yellowish color but not blue or green tint</li>
+            <li><span class="key-term">Other foreign matter:</span> No oil stains or metallic particles by visual inspection</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Pharmaceutical Coil（藥用棉卷）：</strong>用於多劑量容器（如藥瓶）中防止固體口服劑型在運輸過程中因振動而破損的填充材料。三種主要材質：棉（Cotton）、嫘縈（Rayon）、聚酯（Polyester）。</p>
+            <p><strong>重要警告：</strong>棉卷在開瓶後必須丟棄。這是安全使用指示，若患者誤以為棉卷有藥效而保留，可能成為污染源。</p>
+            <p><strong>試劑系統：</strong>碘化氯化鋅溶液（碘試劑）、氯化鋅甲酸溶液（溶解性試劑）、DuPont No. 4 染色液（纖維鑑別）——三種試劑分工明確，分別測試纖維的物理化學特性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>藥用棉卷就像雞蛋盒裡的泡棉格：它的任務是吸收衝擊、防止主角（藥片）破損，而不是讓消費者吃下去的東西。USP 特別強調「開瓶後應丟棄」，正是因為患者可能誤以為棉卷是藥品的一部分。</p>
+            <p>棉花的三種鑑別試驗（顏色反應、溶解性、染色）就像三道關卡的身份驗證——通過三道才能確認是真正的藥用等級棉花，而非工業用棉。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>殘留過氧化氫（Residual Hydrogen Peroxide）的重要性：</strong>棉花製造時可能使用漂白程序（H₂O₂），若殘留量過高（&gt;50 ppm），可能導致藥品氧化降解。這是 USP 特別設置此測試的原因，也是 CDMO 採購棉卷時必須要求供應商提供的 CoA 數據。</p>
+            <p><strong>螢光測試的意義：</strong>過度的藍色螢光暗示棉花可能含有螢光增白劑（optical brighteners），這類化學物質在藥品包裝中屬於潛在污染物。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+殘留過氧化氫計算（Cotton Coil）：
+
+% H₂O₂ = [(mL of Titrant × 0.0017) / 20] × 100
+
+換算為 ppm：
+ppm H₂O₂ = % H₂O₂ (w/w) × 10,000
+
+驗收標準：NMT 50 ppm（兩種方法均適用）
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO 品保人員，當你審查一個新的棉卷供應商時，你應該要求供應商提供哪些 CoA（Certificate of Analysis）項目？</p>
+            <p>至少應包含：Loss on Drying（≤8.0%）、Residue on Ignition（≤0.20%）、殘留 H₂O₂（≤50 ppm）、水溶性物質（≤0.35%）、油脂含量（≤0.7%）、以及纖維鑑別（A、B、C、D 四項測試）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 USP 要為棉花設計四項不同的鑑別試驗（A、B、C、D），而不是只用一項就夠？</li>
+                <li>棉卷的殘留過氧化氫上限是 50 ppm，這個數字是根據什麼安全考量設定的？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: RAYON & POLYESTER COIL ==================== -->
+<div class="section-title">Rayon &amp; Polyester Pharmaceutical Coil — 嫘縈與聚酯藥用棉卷</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Rayon Pharmaceutical Coil</h3>
+
+        <p><span class="key-term">Rayon pharmaceutical coil</span> is a fibrous form of bleached, regenerated cellulose, to be used as a filler in bottles of solid oral dosage forms to prevent breakage. It consists exclusively of rayon fibers except for a few isolated foreign fibers that may be present.</p>
+
+        <div class="quote-box">
+            "[Note—Rayon pharmaceutical coil has been found to be a potential source of dissolution problems for gelatin capsules or gelatin-coated tablets resulting from gelatin cross-linking.]"
+        </div>
+
+        <p><strong>Identification</strong></p>
+        <ul>
+            <li><strong>A.</strong> When treated with Iodinated zinc chloride solution, the fibers become violet.</li>
+            <li><strong>B.</strong> Add 10 mL of Zinc chloride–formic acid solution to 0.1 g of fibers, heat to 40°, and allow to stand for 2 h: the fibers <em>dissolve completely</em> (except for mat rayon fibers where titanium particles remain). [Key difference from cotton: cotton does NOT dissolve.]</li>
+            <li><strong>C.</strong> Fibers become blue–green with DuPont Stain No. 4 solution. [Cotton becomes green; rayon becomes blue-green.]</li>
+        </ul>
+
+        <p><strong>Acceptance Criteria (Rayon):</strong></p>
+        <ul>
+            <li>Loss on Drying 〈731〉: NMT 11.0%</li>
+            <li>Residue on Ignition 〈281〉: NMT 1.50% (5-g specimen)</li>
+            <li>Acid-insoluble ash: NMT 1.25%</li>
+            <li>Water-soluble substances: NMT 1.0%</li>
+            <li>Fatty matter: Residue NMT 0.5% (sample weight 5 g)</li>
+        </ul>
+
+        <h3>Polyester Pharmaceutical Coil</h3>
+
+        <p><span class="key-term">Polyester pharmaceutical coil</span> is a white odorless material, to be used as a filler in bottles of solid oral dosage forms to prevent breakage.</p>
+
+        <p><strong>Identification</strong></p>
+        <ul>
+            <li><strong>A.</strong> IR spectrum matches USP Polyethylene Terephthalate RS (4000 to 650 cm⁻¹). FTIR or ATR per 〈197〉; Method 1 (KBr disc) or Method 2 (melt film).</li>
+            <li><strong>B.</strong> Fibers become pale orange with DuPont Stain No. 4.</li>
+        </ul>
+
+        <p><strong>Acceptance Criteria (Polyester):</strong></p>
+        <ul>
+            <li>Acidity or alkalinity: Proceed as directed under Cotton Pharmaceutical Coil</li>
+            <li>Loss on Drying 〈731〉: NMT 1.0%</li>
+            <li>Residue on Ignition 〈281〉: NMT 0.5% (5-g specimen)</li>
+            <li>Finish on fibers: Shall comply with FDA food contact regulations</li>
+        </ul>
+
+        <h3>Test Methods — Infrared Spectroscopy (for Polyester)</h3>
+        <p><strong>Apparatus:</strong> FTIR or a double-beam spectrophotometer capable of scanning from 4000 to 650 cm⁻¹ (2.5–15 µm).</p>
+        <p><strong>Specimen preparation:</strong> ATR per 〈197〉 may be used as alternative. Method 1 (KBr disc): cut fibers into short lengths (&lt;1 mm), mix with 200 mg KBr, grind 1–2 min, form disc. Method 2 (melt film): press fibers between PTFE sheets between heated plates.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 三種棉卷的比較</h4>
+            <div style="overflow-x:auto;">
+            <table>
+                <tr><th>屬性</th><th>Cotton 棉</th><th>Rayon 嫘縈</th><th>Polyester 聚酯</th></tr>
+                <tr><td>材質</td><td>天然棉纖維</td><td>再生纖維素</td><td>聚對苯二甲酸乙二酯</td></tr>
+                <tr><td>DuPont Stain 顏色</td><td>綠色</td><td>藍綠色</td><td>淡橙色</td></tr>
+                <tr><td>溶於甲酸鋅</td><td>不溶</td><td>完全溶解</td><td>N/A（用 IR）</td></tr>
+                <tr><td>Loss on Drying 限度</td><td>≤8.0%</td><td>≤11.0%</td><td>≤1.0%</td></tr>
+                <tr><td>Residue on Ignition</td><td>≤0.20%</td><td>≤1.50%</td><td>≤0.5%</td></tr>
+                <tr><td>特殊鑑別</td><td>4 項化學/染色試驗</td><td>溶解性（可與棉區分）</td><td>FTIR 比對 RS</td></tr>
+            </table>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 嫘縈的重大風險</h4>
+            <p><strong>膠囊交叉鏈結問題（Gelatin Cross-linking）：</strong>USP 罕見地在正文中直接加入 Note 警告嫘縈棉卷可能導致明膠膠囊的溶出度問題。這個交叉鏈結現象會讓膠囊殼變硬，導致藥品釋放速率下降，影響生體可用率（bioavailability）。</p>
+            <p><strong>實務意涵：</strong>對 CDMO 而言，若客戶產品是明膠硬膠囊或明膠軟膠囊，選擇嫘縈棉卷必須格外謹慎，應進行相容性研究，最好改用棉或聚酯棉卷。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>聚酯棉卷的鑑別方式從「化學反應」升級到「IR 指紋比對」，就像從「肉眼辨認長相」升級到「DNA 比對」。FTIR 提供的分子指紋是最精確的身份識別方式，無法偽造，這正是為什麼 USP 對合成聚合物選擇 IR 而非染色試驗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 聚酯的 FDA 食品接觸法規</h4>
+            <p><strong>"Finish on fibers" 要求：</strong>聚酯棉卷在製造過程中會使用潤滑劑（finish）以利加工，這些潤滑劑必須符合 FDA 的食品接觸法規（21 CFR）。這意味著供應商必須提供此類添加物的合規聲明，且 CDMO 在審核供應商時需確認其 FDA 合規文件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個產品是明膠硬膠囊，你會建議使用哪種棉卷材質？為什麼？</li>
+                <li>嫘縈與棉花在「溶於氯化鋅甲酸溶液」中的反應截然不同（嫘縈溶解，棉花不溶），這個差異的化學原理是什麼？</li>
+                <li>聚酯棉卷的 Loss on Drying 限度（≤1.0%）遠低於棉花（≤8.0%）和嫘縈（≤11.0%），這說明了什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SECTION: DESICCANTS OVERVIEW ==================== -->
+<div class="section-title">Desiccants — 乾燥劑：概覽與膨潤土</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>DESICCANT</h3>
+
+        <p><span class="key-term">Desiccants</span> are used to remove moisture from air in containers in order to protect drug products, particularly solid oral dosage forms. They are supplied in a number of different packaging materials including cotton, Kraft paper, rayon and polyester cloth bags, perforated plastic, polymer films, or polymer housings.</p>
+
+        <p>The most common types of commercial desiccants are: <span class="key-term">bentonite</span>; <span class="key-term">calcium chloride</span>; <span class="key-term">calcium oxide</span>; <span class="key-term">carbon, activated</span>; <span class="key-term">molecular sieves</span>; and <span class="key-term">silica gel</span>. Other desiccants are subject to appropriate testing to ensure suitability for the intended application.</p>
+
+        <div class="quote-box">
+            "Where desiccants are incorporated directly into the wall or cap of packaging containers or bound by a carrier material, use unincorporated desiccant in the test methods. For desiccants that are loaded with a predetermined moisture content, perform the testing before the moisture has been loaded or after the desiccant has been regenerated."
+        </div>
+
+        <h3>Bentonite</h3>
+
+        <p><span class="key-term">Bentonite</span> clay (also referred to as montmorillonite clay) is a native, colloidal, hydrated aluminum silicate.</p>
+
+        <p><strong>Appearance:</strong> Grayish-white powder or pellets with a yellowish or pinkish tint</p>
+
+        <p><strong>Identification — X-Ray Powder Diffraction 〈941〉:</strong></p>
+        <ul>
+            <li>Sample preparation A: Largest peak corresponds to d value between 15.0 and 17.2 Å</li>
+            <li>Sample preparation B: Major peak between 1.492 and 1.504 Å</li>
+        </ul>
+
+        <p><strong>Identification — Precipitation:</strong> Formation of a gelatinous white precipitate</p>
+
+        <p><strong>Inorganic Impurities:</strong></p>
+        <ul>
+            <li>Arsenic: NMT 10 mg/kg</li>
+            <li>Lead: NMT 15 mg/kg</li>
+        </ul>
+
+        <p><strong>Specific Tests:</strong></p>
+        <ul>
+            <li>pH 〈791〉: 4.5–10.5 (disperse 4.0 g in 200 mL water)</li>
+            <li>Loss on Drying 〈731〉: NMT 3.0% (5–10 g at 110° to constant weight) [Note: conduct assay immediately after opening original container]</li>
+        </ul>
+
+        <p><strong>Moisture adsorption capacity:</strong></p>
+        <ul>
+            <li>NLT 13% at 40% ± 5% RH and 25 ± 2°</li>
+            <li>NLT 23% at 80% ± 5% RH and 25 ± 2°</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 乾燥劑的分類與原理</h4>
+            <p><strong>Desiccant（乾燥劑）：</strong>透過物理吸附或化學反應去除容器內水分的材料，是保護對濕度敏感的固體口服劑型最常用的輔助組件。</p>
+            <p><strong>六大 USP 認可乾燥劑：</strong></p>
+            <ul>
+                <li><strong>Bentonite（膨潤土）：</strong>天然鋁矽酸鹽，物理吸附，pH 4.5–10.5</li>
+                <li><strong>Calcium Chloride（氯化鈣）：</strong>化學吸濕，吸附力強，≥28% at 80% RH</li>
+                <li><strong>Calcium Oxide（氧化鈣）：</strong>高吸附力，與水反應生成 Ca(OH)₂</li>
+                <li><strong>Carbon, Activated（活性碳）：</strong>同時作為除臭劑，≥21% at 80% RH</li>
+                <li><strong>Molecular Sieves（分子篩）：</strong>精確孔徑控制，3A/4A/5A/13X 型</li>
+                <li><strong>Silica Gel（矽膠）：</strong>最普遍，pH 4–8，≥19% at 40% RH</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 測試前的關鍵預處理</h4>
+            <p><strong>兩個重要預處理原則：</strong></p>
+            <p>1. <strong>整合型乾燥劑（incorporated desiccants）：</strong>如直接嵌入瓶壁或瓶蓋的乾燥劑，測試時必須使用「未整合」（unincorporated）的同款乾燥劑進行測試，而非破壞原包裝提取。</p>
+            <p>2. <strong>預先加載水分的乾燥劑：</strong>必須在加載水分「之前」或「再生後」進行測試，確保測試的是乾燥劑原始能力，而非已飽和狀態。</p>
+            <p>這兩項規定避免了測試結果低估乾燥劑實際能力的系統性偏差。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 膨潤土的特殊性</h4>
+            <p>膨潤土（Bentonite）是一種「智慧型海綿」——它吸水後體積膨脹，就像海綿吸水後膨脹一樣。X 光粉末繞射（XRD）測試中，d 值在 15–17 Å 代表晶格間距，水分子插入層間導致間距增大。科學家用 XRD 來「量測」這個海綿吸了多少水、確認是真正的膨潤土而非其他黏土礦物。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 重金屬限度的重要性</h4>
+            <p><strong>砷（As）≤10 mg/kg，鉛（Pb）≤15 mg/kg：</strong>膨潤土是天然礦物，天然礦物必然含有重金屬雜質。USP 設定這兩個限度是因為：(1) 砷和鉛是最常見且毒性最高的無機污染物；(2) 藥品包裝中的重金屬可能在特定條件下遷移到藥品中。</p>
+            <p>對 CDMO 採購團隊而言，這意味著每個批次的膨潤土供應都需要重金屬合規的 CoA。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>膨潤土的 Loss on Drying 試驗必須「開瓶後立即進行」，這個要求的科學依據是什麼？</li>
+                <li>為什麼同一種乾燥劑要在兩個不同的濕度條件（40% RH 和 80% RH）分別測試吸附容量？</li>
+                <li>膨潤土的 pH 範圍相當寬（4.5–10.5），這對其適用的藥品類型有什麼限制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>USP 〈670〉 定義輔助包裝組件為「支持或增強容器密封系統」的物品，包括藥用棉卷、乾燥劑、除臭吸附劑等，必須同時滿足本章及其他指定 USP 章節的要求</li>
+        <li>三種藥用棉卷（棉、嫘縈、聚酯）各有其獨特的鑑別試驗：棉用染色（綠）＋不溶於甲酸鋅；嫘縈用染色（藍綠）＋溶於甲酸鋅；聚酯用 FTIR 比對 RS，嫘縈特別警示可能導致明膠膠囊溶出問題</li>
+        <li>六種 USP 認可乾燥劑（膨潤土、氯化鈣、氧化鈣、活性碳、分子篩、矽膠）各有其化學特性、吸附容量規格及重金屬限度要求，測試前需注意整合型乾燥劑的預處理規定</li>
+        <li>所有乾燥劑的吸附容量測試需在兩個標準濕度條件（40% RH 和 80% RH，25±2°C）下進行，且需在開瓶後立即執行以避免預先吸濕導致結果偏低</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈670〉 Auxiliary Packaging Components | Section 0: Introduction &amp; Component Classification</p>
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
+</script>
+
+</body>
+</html>

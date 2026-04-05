@@ -1,0 +1,380 @@
+# USP General Chapter 〈771〉: Ophthalmic Products—Quality Tests
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-May-2024
+Document Type:
+General Chapter
+DocId:
+GUID-5C58E1A2-6BE7-4011-9776-64687B306810_6_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99560_06_01
+DOI Ref:
+8s4jq
+© 2025 USPC
+Do not distribute
+〈771〉 OPHTHALMIC PRODUCTS—QUALITY TESTS
+Change to read:
+INTRODUCTION
+Ophthalmic products are sterile products that are intended for application to any ocular structure, including any space adjacent to an
+ocular structure and its immediate surrounding spaces.
+The routes of administration of ophthalmic products fall into three general categories: topical, intraocular injections, and extraocular
+injections. Topical drug products are intended to be administered to an ocular surface component, such as the eyelid, conjunctiva, or cornea,
+and can produce local or systemic effects. Intraocular and extraocular injections are administered through external boundary tissue. Due to
+the potential sensitivity of some ocular tissues, injections have additional requirements for subvisible par ticulate matter content (see
+Par ticulate and Foreign Matter, ▲
+Subvisible Par ticulate Matter in Intraocular Solutions 〈789〉▲ (CN 1-May-2024)
+, and Visible Par ticulates in
+Injections 〈790〉). The ophthalmic routes of administration include, but are not limited to: topical, subconjunctival, sub-Tenons, subretinal,
+subchoroidal, intracorneal, intrascleral, suprachoroidal, intravitreal, intracameral, juxtascleral, and retrobulbar routes (see Figure 1).
+Ophthalmic products are administered to the eye in a wide variety of dosage forms, including but not restricted to: solutions, suspensions,
+ointments, gels, emulsions, strips, injections, inser ts, and implants.
+
+*[Figure 1. Examples of ocular routes of administration.]*
+
+This chapter provides lists of consolidated common product quality test requirements in a concise and coherent fashion. This chapter
+applies, in par t or in its entirety, when referenced in a drug product monograph (see General Notices, 3.10 Applicability of Standards). This
+chapter includes the quality tests for the speci«c route of administration. The quality tests listed can be used, as appropriate, by
+manufacturers toward the development of new drug product monographs for submission to the USP–NF.
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 2 ===
+OPHTHALMIC DOSAGE FORMS
+This chapter discusses the speci«c characteristics of dosage forms that are administered to any structure in the eye. See Pharmaceutical
+Dosage Forms 〈1151〉 for additional information per taining to the description and manufacturing of pharmaceutical dosage forms.
+Ophthalmic products have the same or similar requirements as injectables and implants. For more information on the requirements for
+these dosage forms, see Injections and Implanted Drug Products 〈1〉.
+Degradation and/or morphological changes of the drug product can occur during the sterilization step of the manufacturing process
+depending on the formulation, container-closure system, and sterilization process. These changes should be minimized. Temperatures
+required for autoclaving can cause irreversible damage to cer tain dosage forms such as suspensions, semisolids, emulsions, and others,
+whereas «ltration is applicable only to formulations containing par ticulates with par ticle sizes <0.2 µm. An alternative approach is to
+manufacture the drug product from sterile ingredients maintained within an aseptic environment.
+Multi-dose products shall contain a suitable antimicrobial preservative, and the effectiveness of the preservative over the shelf life of the
+product must be veri«ed. Alternatively, preservative-free multi-dose products require a packaging system that has been demonstrated to
+maintain sterility over the shelf-life of the product.
+Solutions
+[Note—Included in this section are solutions and those solid products that, when reconstituted according to the instructions in the labeling,
+result in a solution.]
+The corneal contact time of topical ophthalmic solutions increases with the viscosity of the formulations. Several synthetic polymers,
+including but not limited to polyvinyl alcohol, polyvinylpyrrolidone, polyethylene glycol, poly(acrylic acid), and cellulose derivatives such as
+hypromellose and hydroxyethyl cellulose, are commonly used as viscosity enhancers because of their physiologic compatibility and desirable
+physicochemical proper ties.
+Another approach to increase the corneal contact time involves the use of polymers that provide the liquid formulation with semisolid
+consistency only when the liquid formulation is placed in the conjunctival or corneal area. In this way, instillation of the solution is followed
+by prolonged permanence as a result of the viscoelastic proper ties of the formed hydrogel. “Hydrogel”, or “water-based gels”, are three-
+dimensional networks of polymer chains containing water within the network. The structure of the polymer network can be physically
+crosslinked (e.g., via ionic or hydrogen bonds) or chemically crosslinked (via a covalent bond). The water content of hydrogels can be
+adjusted by modulating the composition and conformation of polymers, such as the hydrophilic/hydrophobic balance of polymer chains and
+pendant groups, and the degree of cross-linking. The in-situ gelling phenomenon is caused upon delivery to the eye by a change in the
+conformation of the polymer(s) that can be triggered by external stimuli such as temperature, pH, ionic content, and lacrimal ¬uid.
+Additionally, some polymers can interact, via noncovalent bonds, with conjunctival mucin and maintain the formulation in contact with
+corneal tissues.
+Solutions can be injected not only by the intravitreal route but also by other routes, such as subconjunctival, sub-Tenons, retrobulbar,
+suprachoroidal, and subretinal routes.
+Suspensions
+[Note—Included in this section are suspensions and those solid products that, when reconstituted according to the instructions in the
+labeling, result in a suspension.]
+Use of aqueous or oily suspensions may be considered for a number of reasons such as the following: 1) a drug is poorly soluble in water,
+2) a drug has poor stability in water, and 3) in cases where there is a need to increase contact time with the eye and to increase wetting of
+the eye. A drug par ticle size of <10 µm is desirable to reduce irritation.
+After topical instillation, par ticles are expected to be retained in the cul-de-sac, and the drug slowly dissolves or is released from the
+polymeric structures by diffusion, dissolution, polymer degradation, or ion-exchange.
+Suspensions can be injected not only by the intravitreal route but also through other routes, such as subconjunctival, sub-Tenons,
+retrobulbar, suprachoroidal, and subretinal.
+Ointments
+Eye ointments are semisolid products usually intended for application to the conjunctiva, cornea, or eyelid. They have longer contact time
+when compared to many solutions. A suitable ophthalmic ointment base is nonirritating to the eye and permits diffusion of the drug
+substance throughout the secretions bathing the eye.
+The majority of water-free, oleaginous eye ointment bases are composed of white petrolatum and liquid petrolatum (mineral oil), or the eye
+ointment base is a modi«cation of the petrolatum-based formula. They are designed to melt at body temperature. Other types of lipophilic
+ointment bases can also be used. An anhydrous vehicle can be advantageous for moisture-sensitive drugs.
+Gels
+Semisolid gel products are an alternative to traditional ointments and are based on the effect of increasing the viscosity to prolong the
+retention of the drug in the eye. Several types of gelling agents can be used, such as poly(acrylic acid) derivatives (e.g., carbomer) or
+hypromellose.
+Emulsions
+Topical ophthalmic emulsions are generally prepared by dissolving or dispersing the drug substance into an oil phase, adding suitable
+emulsifying and suspending agents, and vigorously mixing these components with water to form a uniform oil-in-water emulsion. Each
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 3 ===
+phase is typically sterilized before or during charging into the mixing vessel. High-shear homogenization may be used to reduce oil droplet
+size to submicron size, which may improve the physical stability of the oil micelles so that they do not coalesce. The resulting dosage form
+should contain small oil droplets, uniformly suspended.
+Limited aqueous solubility of the drug substance(s) is the most common rationale for developing an ophthalmic emulsion. The drug
+substance(s) can be added to the phase in which it is soluble at the beginning of the manufacturing process, or the drug substance can be
+added after the emulsion is prepared by a suitable dispersion process.
+The physical stability of the emulsion can be measured by light-scattering techniques that characterize oil-phase, globule-size distribution.
+Suitable surfactants may be added to improve emulsion stability.
+Strips
+Ophthalmic strips can have different ophthalmic uses including, but not limited to, use as a diagnostic tool to visualize defects or
+aberrations in the corneal epithelium or to measure the amount of tear production. They are made of «lter paper, and they can contain
+compounds such as ¬uorescein sodium. They are individually packed to preserve sterility until the moment of use.
+Injections
+Although injections are considered a dosage form for nomenclature purposes, they are referred to in this chapter by other dosage forms
+such as solution, suspension, emulsion, and other appropriate terminology based on physical form.
+Inser ts
+Ophthalmic inser ts and ocular systems are solid dosage forms of appropriate size and shape that are placed in the conjunctival fornix, in
+the lacrimal punctum (Figure 2), or on the cornea. Inser ts can usually be removed, if adverse effects develop, and can provide extended
+release of the drug over a cer tain period of time. Inser ts can be classi«ed as bioabsorbable (soluble) or non-bioabsorbable (insoluble). Drug
+release from soluble inser ts involves two steps: 1) fast release of a por tion of the drug as the tear ¬uid penetrates into the system and 2)
+slow release as a gel layer is formed on the surface of the inser t. Collagen shields made from porcine sclera collagen or bovine corium
+tissue—and devices obtained by molding, extrusion, or compression (minitablets) of gelling polymers—belong to this category of soluble
+inser ts. Bioabsorbable polymers (e.g., cross-linked gelatin derivatives and polyesters) can be used to prepare bioabsorbable inser ts; these
+matrices act as reservoirs or interact with the drug molecules through labile bonds.
+
+*[Figure 2. Lacrimal punctum.]*
+
+Soluble inser ts can have the drug incorporated into a bioabsorbable matrix, such as hydroxypropyl cellulose, hyaluronic acid, or poly(acrylic
+acid) matrices. Soluble inser ts may be placed in the lower cul-de-sac and generally dissolve within 12–24 h. Bioabsorbable polymeric
+products undergo gradual dissolution while releasing the drug, and the patient does not have to remove the bioabsorbable polymeric inser t
+after use.
+Insoluble inser ts can have a reservoir or matrix structure. Their mechanism of action is based on diffusion of a ¬uid from the eye into the
+device, dissolution of the drug, and the creation of a saturated solution released to the medium by diffusion out of the inser t. Insoluble
+inser ts need to be removed after a cer tain period of time.
+Implants
+Implants are injected or implanted into the anterior segment (intracameral, subconjunctival, sub-Tenon, or other par ts of the anterior
+segment) or intravitreal cavities, and the implants can be in different shapes, such as a disk or a thin rod. Implants can be made of non-
+bioabsorbable or bioabsorbable polymers.
+Among the types of non-bioabsorbable solid (polymer) implants are reservoir-type implants anchored to the sclera, in which the drug is
+released across a non-bioabsorbable, semipermeable polymer. The reservoir-type implants can be made of a variety of materials, including
+poly(vinyl alcohol–ethylene vinyl acetate). Bioabsorbable polymers can be used to form injectable solid implants.
+Drug–Device Combination Products
+An ophthalmic drug–device combination product is constituted, in most cases, of two components. One is a pharmaceutical dosage form
+containing the drug substance(s), and the other is a device that will activate or facilitate the penetration of the drug substance(s) from the
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 4 ===
+dosage form into a par ticular region of the eye. Some examples of the devices are those that generate waveforms (heat or light). Light
+sources can activate photoresponsive drugs.
+This chapter is applicable only to the pharmaceutical dosage form component of the ophthalmic drug–device combination product. The
+appropriate FDA regulations regarding medical devices should be used for the device component.
+Change to read:
+DRUG PRODUCT QUALITY
+Procedures and acceptance criteria for testing ophthalmic products are divided into two categories: 1) those that assess general quality
+attributes, e.g., identi«cation, potency, purity (and impurities), sterility, and par ticulate matter; and 2) those that assess in vitro product
+performance, i.e., dissolution or drug release of the drug substance from the drug product. Quality tests assess the integrity of the dosage
+form, whereas the performance tests assess drug release and other attributes that relate to in vivo drug performance. Taken together, quality
+and performance tests ensure the identity, strength, quality, purity, and e­cacy of the drug product. This chapter addresses the quality tests
+for ophthalmic products. The performance tests (dissolution/drug release) are addressed by Ophthalmic Products—Performance Tests
+〈1771〉.
+Universal Tests
+In this chapter, the division of the product quality tests into universal and speci«c tests does not strictly follow the ICH guidance Q6A
+Speci«cations: Test Procedures and Acceptance Criteria for New Drug Substances and New Drug Products: Chemical Substances (available at
+www.ich.org). Universal tests in this chapter mean the tests that are applicable to all ophthalmic products, regardless of the dosage form
+type.
+description
+A qualitative description of the drug product should be provided. The acceptance criteria should contain the «nal acceptable appearance,
+including clarity and color, of the dosage form and packaging. If the color changes during storage, a quantitative procedure may be
+appropriate. This is not a compendial test but is par t of the manufacturer's speci«cation of the drug product.
+identification
+Identi«cation tests are discussed in General Notices, 5.40 Identi«cation. Identi«cation tests should establish the identity of the drug or
+drugs present in the ar ticle and should discriminate between compounds of closely related structures that are likely to be present. Identity
+tests should be speci«c for the drug substance(s). If the test is nonspeci«c, at least two or thogonal nonspeci«c tests should be used.
+Identi«cation by use of a single chromatographic retention time does not constitute a speci«c test.
+assay
+A speci«c and stability-indicating test should be used to determine the strength (content) of the drug product. In cases where the use of a
+nonspeci«c assay test is justi«ed, other suppor ting analytical procedures should be used to achieve overall speci«city. A speci«c procedure
+should be used when there is evidence of excipient interference with the nonspeci«c assay test. Additional information on speci«c assays
+may be found in Antibiotics—Microbial Assays 〈81〉, Chromatography 〈621〉, and Ion Chromatography 〈1065〉.
+impurities
+Process impurities, synthetic byproducts, and other inorganic and organic impurities may be present in the drug substance and excipients
+used in the manufacture of the drug product. These impurities are controlled by the drug substance and excipient monographs. Organic
+impurities arising from the degradation of the drug substance in the drug product and those impurities arising during the manufacturing
+process of the drug product should be monitored. All ar ticles meet the requirements in Elemental Impurities—Limits 〈232〉 and Residual
+Solvents 〈467〉.
+pH
+See pH 〈791〉. Normal tears have a pH of about 7.4. The eye can tolerate products over a range of pH values from about 3.0 to about 8.6,
+depending on the buffering capacity of the formulation. The pH value of the formulation should be the one where the drug product is the
+most stable. Formulations that target the extremes of the acceptable pH range will have better patient acceptability if the formulations have
+a low buffering capacity.
+osmolarity
+See Osmolality and Osmolarity 〈785〉. Ophthalmic products may be tolerated over a wide range of tonicity (0.5%–5% sodium chloride,
+equivalent to about 171–1711 mOsm/kg). Hypotonic solutions are better tolerated than hyper tonic solutions. Precautions should be taken
+to ensure that the product maintains its osmolarity during shelf life. Any possible contributions or interferences from the packaging system
+should be considered.
+particulate and foreign matter
+As described in Visual Inspection of Injections 〈1790〉, 4.1 Extrinsic, Intrinsic, or Inherent Par ticles, unwanted par ticulate matter is
+categorized as extrinsic (foreign matter) and intrinsic (formulation-, process-, or container-related matter or par ticulate matter due to
+product instability or product package interactions). A third category, inherent, describes a physical state that is an expected attribute of the
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 5 ===
+product, such as a suspension or emulsion. It is expected that the manufacturer has established an acceptable control level for any inherent
+attribute, such as solution color, haze, or drug/excipient-related par ticle content.
+The term 100% unit inspection is de«ned in 〈1790〉, 3.1 100% Inspection as the complete nondestructive inspection of the container–
+closure system and its contents. Therefore, evaluation of package and «ll acceptability is shown by using the methodology in Visible
+Par ticulates in Injections 〈790〉, and this methodology is applied to all ophthalmic products: topical, intraocular injections or ophthalmic
+products used in association with a surgical procedure, and extraocular injections.
+Intraocular administration includes all ophthalmic products that cross (penetrate) boundary tissue such as the cornea and sclera.
+Extraocular administration of ophthalmic products includes all the other ocular components and spaces.
+For all intraocular solutions, conformance to 〈790〉 and ▲
+Subvisible Par ticulate Matter in Intraocular Solutions 〈789〉▲ (CN 1-May-2024)
+is
+required. Additionally, for extraocular (nontopical) solution products, conformance to 〈790〉 and evaluation by Par ticulate Matter in Injections
+〈788〉 is required. For topical products, conformance to 〈790〉 is required. See the summary of this information in Table 1.
+T
+able 1. Par ticulate and Foreign Matter Requirements for Ophthalmic Solutions
+Route of Administration
+(See Figure 1)
+Must comply with
+a
+Topical
+〈790〉
+Peribulbar
+〈790〉, 〈788〉
+Superior rectus
+〈790〉, 〈788〉
+Sub-Tenon
+〈790〉, 〈788〉
+Subconjunctival
+〈790〉, 〈788〉
+Inferior rectus
+〈790〉, 〈788〉
+Retrobulbar
+〈790〉, 〈788〉
+Suprachoroidal
+〈790〉, 〈789〉
+Juxtascleral
+〈790〉, 〈788〉
+Intrascleral
+〈790〉, 〈789〉
+Intracorneal
+〈790〉, 〈789〉
+Subchoroidal
+〈790〉, 〈789〉
+Subretinal
+〈790〉, 〈789〉
+Intracameral
+〈790〉, 〈789〉
+Intravitreal
+〈790〉, 〈789〉
+a
+Chapter 〈787〉 may be used instead of 〈788〉 for protein biotherapeutic formulas. For fur ther information on di­cult-to-inspect
+products, see 〈1790〉.
+For nonsolution dosage forms (e.g., ointments, gels, suspensions, and emulsions) and dosage forms packaged in opaque containers
+(e.g., opaque bottles, metal tubes), the approach must be modi«ed because these products are not directly amenable to the tests listed in
+Table 1. It is recommended to use 100% unit inspection per 〈790〉 for package acceptability (including but not limited to integrity, form,
+dimensions, cleanliness, label); whereas, an alternate testing strategy may be used for foreign par ticles where the dosage form hinders or
+precludes the use of these tests. For these products, a statistically relevant sample, examined by a destructive or other alternative method,
+will determine batch acceptability for visible par ticles as required by 〈790〉 and fur ther described in 〈1790〉.
+All ophthalmic products will bene«t from evaluation of unwanted par ticulate matter content through the control strategy discussed in
+〈1790〉 and in the FDA's current good manufacturing practices guidance. The «nal product, therefore, bene«ts from a control strategy
+including comprehensive evaluation of excipient and active ingredient quality, processing effects, package quality, and «ll control. These
+concepts are discussed in 〈1790〉.
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 6 ===
+sterility
+Ophthalmic dosage forms must meet the requirements of Sterility Tests 〈71〉. If the speci«c ingredients used in the formulation do not
+lend themselves to routine sterilization techniques, ingredients that meet the sterility requirements described in 〈71〉, along with aseptic
+manufacture, may be used. The immediate container for ophthalmic products shall be sterile at the time of «lling and closing. See also
+Universal Tests, Container–Closure Integrity.
+antimicrobial preservatives
+Antimicrobial agents must be added to products that are packaged in containers that allow for the withdrawal or administration of
+multiple doses, unless one of the following conditions prevails: 1) there are different directions in the individual monograph; 2) the
+radiopharmaceutical drug product contains a radionuclide with a physical half-life of <24 h; 3) the drug product, without additional agents, is
+su­ciently microbicidal to meet the requirements of Antimicrobial Effectiveness Testing 〈51〉, or 4) the container–closure system is capable
+of maintaining sterility of the product throughout its shelf life until opened or accessed. Once opened or accessed, it must maintain
+antimicrobial effectiveness during the intended use period. Antimicrobial agents must meet the requirements of 〈51〉 and Antimicrobial
+Agents—Content 〈341〉. Acceptance criteria for antimicrobial preservative content in multi-dose products should be established.
+bacterial endotoxins
+All injected ophthalmic drug products shall be prepared in a manner designed to minimize bacterial endotoxins as de«ned in Bacterial
+Endotoxins Test 〈85〉. The limits are not more than 0.5 EU/mL for ophthalmic irrigation products and not more than 2.0 EU/dose/eye for
+injected or implanted drug products. Typically, this test is not required for topically applied ophthalmic products. This chapter does not
+address the endotoxin limits for devices that are injected or implanted.
+uniformity of dosage units
+This test is applicable to dosage forms packaged in single-unit containers. It includes both the mass of the dosage form and the content
+of the drug substance(s) in the dosage form. The test can be performed by either content uniformity or weight variation (see Uniformity of
+Dosage Units 〈905〉).
+container contents
+Container contents of ophthalmic products should be determined (see Minimum Fill 〈755〉).
+leachables and extractables
+The packaging system should not interact physically or chemically with the product in any manner to alter the strength, quality, or purity
+of the drug product. The packaging system should meet the requirements in Elastomeric Components in Injectable Pharmaceutical Product
+Packaging/Delivery Systems 〈381〉, Containers—Glass 〈660〉, and, depending on which standards the manufacturer has implemented, Plastic
+Packaging Systems and Their Materials of Construction 〈661〉 or Plastic Materials of Construction 〈661.1〉 and Plastic Packaging Systems for
+Pharmaceutical Use 〈661.2〉. Fur ther information regarding packaging systems testing can be found in Assessment of Extractables
+Associated with Pharmaceutical Packaging/Delivery Systems 〈1663〉 and Assessment of Drug Product Leachables Associated with
+Pharmaceutical Packaging/Delivery Systems 〈1664〉. The assessment of possible leachables and/or extractables and the establishment of
+any acceptance criteria for these compounds should consider the risk assessment of the product, its indication, and its packaging system.
+This assessment is done in a case-by-case approach during product development and re-evaluated when any changes are made to the
+product including, but not restricted to, changes in manufacturing process, formulation, and packaging material.
+Fur thermore, it should be noted that a risk assessment of extractable/leachable impact on the topical or intraocular route of
+administration is a challenging under taking. Toxicological or safety assessments of primary or secondary packaging component
+extractables and leachables are not typically available for ophthalmic routes of administration. A risk assessment may include evaluation of
+toxicology and safety from other routes of administration and an assessment of the total daily intake of the extractable/leachable being
+evaluated. The preponderance of such assessments leads to an estimate of extractable/leachable risk via ocular delivery to the patient.
+container–closure integrity
+The packaging system should be closed or sealed in such a manner as to prevent contamination or loss of contents and should
+incorporate a tamper-evident design. Validation of container integrity must demonstrate no penetration of microbial contamination or of
+chemical or physical impurities (see Package Integrity Evaluation—Sterile Products 〈1207〉).
+Speci«c Tests
+viscosity
+An increase in viscosity increases the residence time of ocular formulations. However, drug diffusion out of these formulations into the
+ocular tissue may be modi«ed due to high product viscosity. Ophthalmic ointments are designed to be of very high viscosity to prolong the
+residence time of the formulation in the eye. The inclusion of viscosity evaluation in the speci«cation of the product should be based on the
+type of dosage form and whether changes in product viscosity will affect its performance. This is not a compendial test but is par t of the
+manufacturer’s speci«cation of the drug product. See Viscosity—Capillary Methods 〈911〉, Viscosity—Rotational Methods 〈912〉, and Viscosity
+—Rolling Ball Method 〈913〉.
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests
+
+=== PAGE 7 ===
+antioxidant content
+If antioxidants are present in the drug product, tests of their content should be established, unless oxidative degradation can be detected
+by another test method such as impurity testing. Acceptance criteria for antioxidant content should be established. They should be based
+on the levels of antioxidant necessary to maintain the product’s stability at all stages throughout its proposed usage and shelf life.
+resuspendability/redispersibility
+Consideration must be given to establishing good physical stability of a suspension. If the par ticles settle and eventually produce a cake
+at the bottom of the container, they must redisperse readily at the time of use to achieve dosage uniformity. Quantitative demonstration of
+the active ingredient's resuspendability/redispersibility during product development is also recommended.
+particle size and particle size distribution
+The potential for any changes in the par ticle size of ophthalmic suspensions and emulsions needs to be evaluated through stability
+testing (see Light Diffraction Measurement of Par ticle Size 〈429〉).
+drop size
+For ophthalmic drug products dispensed as drops, drop sizes may typically range from 20–70 µL. Drop size can be controlled by weight
+or by volume, and it is typically evaluated during product development. Drop size can be determined by any appropriate validated procedure.
+added substances
+Suitable substances may be added to ophthalmic products to increase stability, unless proscribed in the individual monograph, provided
+they are harmless in the amounts administered and do not interfere with therapeutic e­cacy or with responses to the speci«ed assays and
+tests. Typically, these substances should be evaluated during product development. The use of ingredients solely to impar t an odor or ¬avor
+is prohibited. The use of ingredients solely to impar t a color is prohibited unless coloring is needed to visualize the administration location
+of the product.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<771> OPHTHALMIC PRODUCTS - QUALITY
+TESTS
+Margareth R.C. Marques
+Principal Scienti«c Liaison
+GCDF2020
+General Chapters - Dosage Forms
+2020
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 47(3)
+Current DocID: GUID-5C58E1A2-6BE7-4011-9776-64687B306810_6_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99560_06_01
+DOI ref: 8s4jq
+OFFICIAL
+2/12/25, 3:20 PM
+USP-NF 〈771〉 Ophthalmic Products—Quality Tests

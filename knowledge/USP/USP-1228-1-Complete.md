@@ -1,0 +1,270 @@
+# USP General Chapter 〈1228.1〉: Dry Heat Depyrogenation
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Mar-2024
+Document Type:
+General Chapter
+DocId:
+GUID-B1C4ACBB-A2C5-4298-AD66-23570AACBD27_2_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M8098_02_01
+DOI Ref:
+kwcjs
+© 2025 USPC
+Do not distribute
+〈1228.1〉 DRY HEAT DEPYROGENATION
+Change to read:
+INTRODUCTION
+Dry heat is the method most frequently used for the depyrogenation of heat stable materials. Dry heat depyrogenation is dependent upon
+two parameters: time and temperature, which equates to a thermal input. As a result, dry heat depyrogenation processes can be easily
+monitored/controlled and are highly reproducible. Depyrogenation processes typically operate at a range of temperatures from
+approximately 170° up to about 400°.
+The most prevalent pyrogenic agents in ▲
+parenteral▲ (ERR 1-Mar-2024)
+manufacturing that are of concern relative to patient safety are
+bacterial endotoxins, found in the outer cell walls of Gram-negative bacteria. The destruction of bacterial endotoxins (depyrogenation) by dry
+heat has been studied extensively and has been shown to follow «rst order kinetics. The well-de«ned kinetics of inactivation makes it
+possible to predict the e­cacy of dry heat processes operating at different times and temperatures by understanding the total thermal input
+(F
+).
+The range of temperatures used for dry heat depyrogenation overlaps the upper range of temperatures used for dry heat sterilization (see
+Dry Heat Sterilization 〈1229.8〉). This is because bacterial endotoxins are more resistant to the effects of dry heat than the most heat-
+resistant bacterial spores. This chapter provides an overview of the process of dry heat depyrogenation, its control, and validation.
+TECHNOLOGIES USED FOR DEPYROGENATION BY DRY HEAT
+Although all dry heat depyrogenation processes rely strictly on time of exposure and temperature to assure effectiveness, the equipment
+used typically falls into two categories: the dry heat “batch” oven and continuous tunnel systems. Batch ovens are routinely used for the
+depyrogenation of product containers, most often glass, but also other heat stable product contact par ts or laboratory equipment.
+Continuous tunnels, on the other hand, are used primarily to depyrogenate glass product containers.
+Batch Ovens
+Circulating heated air is used to heat the load items, which may be individually covered or wrapped in a material that is unaffected by the
+temperature used, or placed in a lidded container for protection during pre- and post-process handling. When depyrogenation and
+sterilization are to be achieved in the same process, air supplied to the oven is passed through one or more high e­ciency par ticulate air
+(HEPA) «lter(s) to maintain sterility within the oven after completion of the dwell period. These forced air ovens typically operate at a positive
+air pressure differential relative to the surrounding room. This design results in par ticulate air quality that can meet ISO 5 requirements to
+reduce par ticulate matter and microbial contamination risk throughout processing.
+In order to ensure su­cient lethality and process control, oven control probe(s) must maintain a prede«ned temperature for a prede«ned
+time period prior to cooling. The limited heat transfer capacity of air requires that items in the oven be placed in «xed locations con«rmed
+acceptable during the cycle development/validation effor t. Caution should be exercised in de«ning variable load patterns as minimum load
+sizes may result in inadver tent slower heating of the load and greater temperature variability. Smaller facilities may use a single door oven,
+but the principles of operation and validation are the same as with larger double door production units. The impor tant batch oven process
+variables are set-point temperature, duration of dwell period, load type and con«guration, air¬ow characteristics, and container size.
+Continuous Tunnels
+The use of tunnels for dry heat depyrogenation of glass containers on a moving conveyor allows for substantially higher throughput and
+packing densities than the batch process, reduces handling, and is ordinarily integrated with a washing and «lling system. Tunnels typically
+use forced heated air systems or radiant IR systems that recirculate air through a battery of HEPA «lters. Load items in tunnels are typically
+fed directly from an integrated container washing system.
+Depyrogenation tunnels have separate zones for heating and cooling, allowing for continuous in-feed and discharge at temperatures
+appropriate for production purposes. The tunnel is maintained at constant air¬ow and temperature conditions during use, and as glass
+passes through the tunnel it is heated to depyrogenating temperatures and cooled before exiting. Although the conditions within the tunnel
+are essentially constant and well controlled, the temperature of the glass as it passes through the tunnel on the conveyor will change with its
+location. Dwell time is controlled by adjusting the conveyor speed,
+ which in the depyrogenation tunnel is the process parameter that
+governs exposure time.
+The air in the tunnel is most commonly heated using electrical coils but other heat sources, such as infrared or high-pressure steam, have
+been used. For energy conservation, heated air in depyrogenation tunnels is often recirculated. The impor tant continuous tunnel process
+D
+OFFICIAL
+2/12/25, 4:38 PM
+USP-NF 〈1228.1〉 Dry Heat Depyrogenation
+
+=== PAGE 2 ===
+variables are heating zone temperature, cooling zone temperature, belt speed, and container mass per unit.
+DRY HEAT DEPYROGENATION FUNDAMENTALS
+Dry heat depyrogenation uses air «rst to heat and then to cool the items. The limited heat capacity of dry air results in relatively slow
+heating and cooling of the load items. Variability in temperature distribution in dry heat ovens and tunnels is typically much higher than that
+observed in moist heat systems. The limited heat capacity of air requires that items in ovens be placed in the same locations as con«rmed
+acceptable in the cycle development/validation effor t. Packing and thermal mass will also play critical roles in temperature management.
+Caution must also be exercised with varying load mass and distribution as in some instances (resulting from oven design, air ¬ow
+characteristics, and control probe position) minimum load sizes may result in process variability.
+DEPYROGENATION PROCESS CONTROL
+Process temperatures in dry heat depyrogenation are controlled by calibrated temperature sensors placed at speci«c locations within the
+equipment. The exposure por tion of the process is designed to attain a minimum dwell time at a prede«ned minimum temperature ensuring
+that depyrogenation conditions are adequately uniform. The de«ned dwell time is determined by using measurement devices (e.g.,
+thermocouples) directly in contact with the items to be depyrogenated during development. The inactivation of bacterial endotoxins by dry
+heat involves the control of only two parameters: time and temperature.
+The simplicity of process control for these parameters provides a predictable depyrogenation effect. Once validated, a clear understanding
+of the inputs to the system, meaning resident endotoxin load on incoming materials, and outputs of the system, meaning reduction of
+resident levels of endotoxin to safe levels, is more meaningful than spiking with unnaturally high levels of challenge material and looking for
+a prescriptive requirement for log reduction. The dosimetric measurement for dry heat depyrogenation processes is the F
+ unit. An F
+ = 1 is
+de«ned as the depyrogenation effect achieved by 1 min of heating at 250°. The F
+-value enables the integration of temperature over the
+process duration (time). By convention, the rate at which depyrogenation destruction rate (D-value) varies as a function of temperature
+change is de«ned as the z-value. The z-value for dry heat depyrogenation has been shown to be in the range of 45°–55°. For the purposes of
+this chapter, 50° is used as a standard z-value. Other values may be used. (1,2)
+The F
+ approach is used as a means to compare dry heat depyrogenation effects produced by processes that operate at varying
+temperatures. Basic mathematics can be used to calculate the depyrogenation effect produced at temperatures other than 250° to
+determine equivalence to that provided at 250°.
+Using a reference temperature of 250° and an assumed z-value of 50°, the F
+ calculation can be determined:
+F
+ = accumulated destruction
+t
+ = process star t time
+t
+ = process end time
+T = temperature at each time increment
+Δ t = time interval between temperature measurements
+Summing the instantaneous temperature contributions over the entire depyrogenation process allows for the calculation of the overall
+process e­cacy or F
+ delivered over the course of the process. Many commercial data loggers are equipped with software that enables
+them to make this calculation and integrate the total F
+ accumulated during a process. The F
+ calculation is used during initial validation,
+validation maintenance, and change control. The mathematical principles of the F
+ calculation are essentially the same as those used to
+calculate lethality (F
+) values in moist heat sterilization. F
+ values are used to con«rm process consistency over time as correlation to
+endotoxin destruction is rarely possible.
+VALIDATION
+Because dry heat depyrogenation is appropriate only for heat stable materials, a high margin for safety is always attainable. Times and
+temperatures used for the purpose of destroying challenge materials can result in extreme challenges to material integrity and stability.
+Attention to depyrogenation processes, including an understanding of the resident endotoxin load on incoming materials and reduction to
+levels needed to assure patient safety, should take place during drug product development, prior to validation.
+Equipment Quali«cation
+Equipment Quali«cation (EQ) is a prede«ned program that focuses on the processing equipment to con«rm that it has been properly
+installed and operates as intended prior to evaluation of the process. In some companies, EQ may be separated into installation quali«cation
+(IQ) and operational quali«cation (OQ), or combined together under a joint terminology of installation/operational quali«cation (I/OQ).
+Equipment quali«cation provides a baseline for preventive maintenance and change control assuring reproducibility of equipment operation
+over time.
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+OFFICIAL
+2/12/25, 4:38 PM
+USP-NF 〈1228.1〉 Dry Heat Depyrogenation
+
+=== PAGE 3 ===
+Empty Chamber Temperature Distribution for Ovens
+The oven should be evaluated for empty chamber temperature distribution. This is assessed by measurement of temperature at each
+corner of oven, near the controlling probe(s) and other locations as justi«ed. Differences in the cycle dwell period can be discounted in this
+evaluation, as only the shor test dwell period need be evaluated. The evaluation is best performed over the last few minutes of the dwell
+period once the system has fully stabilized. The acceptance criteria for this test vary with the oven's design and operating conditions;
+however, temperature distribution is typically substantially less uniform than observed in autoclaves and may be ±15° or more.
+Depyrogenation ovens that are located at ¬oor level may have even greater ranges in temperature. The temperature distribution
+measurement may be of value in the evaluation of changes to the oven.
+Empty Temperature Distribution in Tunnels
+While these studies are often done, they are actually of limited value. Unloaded depyrogenation tunnels will always produce far more
+variability in temperature distribution than will a fully loaded tunnel. Therefore, for depyrogenation tunnels, temperature studies under fully
+loaded conditions only are indicated. Impor tant to the proper operation of the dry heat tunnel is the establishment of the required air ¬ow
+balance between the tunnel and the adjoining areas. Improper air ¬ow can cause uneven heating across the load being processed. The
+temperature distribution measurement may be of value in the evaluation of changes to the tunnel.
+Component Mapping
+The ability of dry heat to penetrate load items and to bring them to the required temperature should be determined.
+Load items that are complex, of signi«cant mass, with enclosed volumes and product contact surfaces that must be depyrogenated,
+should be subjected to component mapping to determine internal cold spots. All load items should be prepared, wrapped (if that is the
+practice), and oriented in a manner consistent with how they will be processed. Glass typically enters the depyrogenation process (whether
+tunnel or oven) wet and must be evaluated wet to properly determine the effect on overall thermal input. Mapping of glass components to be
+processed in tunnels is not necessary; all monitoring of temperature in tunnels is accomplished with probes in contact with the bottom of the
+container.
+Load Mapping in Ovens
+Fixed loading patterns are necessary in oven depyrogenation because of the limited heat capacity of the air; fully packed conditions
+because of their greater mass ordinarily result in the best process temperature uniformity. Load mapping assures that items placed
+throughout the load attain the desired depyrogenation conditions. Identi«cation of cold zones within the oven should be established during
+depyrogenation cycle development. Information from the load mapping is used to adjust cycle timing to assure appropriate e­cacy across
+the entire load. It may be possible to validate maximum and minimum loads (as determined by either the number of items or their mass).
+F
+ is calculated from the temperature data at all monitored locations within the load pattern.
+Load Mapping in Tunnels
+Load mapping can be assessed using sets of calibrated sensors (i.e., trailing or wireless temperature sensors) positioned within the glass
+pack as it moves through the tunnel. Temperature sensors should be placed into direct contact with the glass item at the bottom of the
+container. Temperature measurements should be made on the leading edge, the middle (highest density), and the trailing edge of the glass
+pack across the width of the conveyor belt. There should be NL
+T 5 temperature sensors positioned across the belt in each section of the
+load. F
+ is calculated from the temperature data at all monitored locations. Studies should be performed using all container sizes to
+determine the lowest F
+ locations. The F
+ results can be used to suppor t the selection of containers/conditions to be evaluated in the
+con«rmation studies (see below). There is no requirement to perform temperature heat distribution measurements during these studies.
+Con«rmation of Depyrogenation
+The materials/glass components to be depyrogenated should be assessed for their incoming endotoxin content prior to the validation
+study. This would include glass as received and immediately after washing. All tested materials should be handled and prepared using
+de«ned procedures. Materials and glass prepared in the same manner are used in the depyrogenation validation studies. The addition of
+challenge material to the load items, including a requirement to demonstrate a 3-log reduction, may not be required if time and temperature
+studies consistently indicate that depyrogenation conditions are met. Temperature monitoring as described above must be done
+simultaneously with the depyrogenation con«rmation studies. The con«rmation studies should be performed at reduced time-temperature
+conditions from those utilized in routine processing and deliver lower F
+ results when compared to those determined in the mapping studies
+and are considered “worst case” con«rmation of depyrogenation process e­cacy. There is no requirement to perform temperature heat
+distribution measurements during these studies.
+ovens
+A minimum of «ve (5) samples should be taken in proximity at NL
+T 10 temperature-monitored locations (including those determined to be
+the coldest from the oven load mapping study) in the oven and tested for endotoxin content post-processing. The process is considered
+acceptable if the amount of endotoxin per sample is NMT 0.1 EU.
+tunnels
+A minimum of «ve (5) samples should be taken in proximity to each monitored position within the tunnel load (including those
+determined to be the coldest from the tunnel load mapping study) and tested for endotoxin content post-processing. The process is
+D
+D
+D
+D
+D
+OFFICIAL
+2/12/25, 4:38 PM
+USP-NF 〈1228.1〉 Dry Heat Depyrogenation
+
+=== PAGE 4 ===
+considered acceptable if the amount of endotoxin per sample is NMT 0.1 EU.
+ROUTINE PROCESS CONTROL
+As with all processes, after the dry heat depyrogenation process has been validated, it must be subject to ongoing controls that maintain it
+within the validated state at all times. Temperature and exposure time, which are the impor tant dry heat depyrogenation parameters, can be
+used to con«rm performance on a routine basis. Where direct assessment of F
+ is not possible, assuring that the temperature and exposure
+time conditions were met results in an equivalent con«dence that the depyrogenation system operated in a validated state of control.
+Depyrogenation 〈1228〉 details the general practices that are appropriate for all depyrogenation systems. This is accomplished by a number
+of related practices that are essential for the continued use of the process over an extended period of time. The essential practices to
+maintain validated status include calibration, physical measurements, periodic endotoxin assessment on incoming materials, ongoing
+process control, change control, preventive maintenance, and periodic reassessment and training.
+APPENDIX
+Additional Sources of Information
+Tsuji K, Harrison S. Dry heat destruction of lipopolysaccharide: dry heat destruction kinetics. Appl Environ Microbio. 1978; 36(5):710–
+714.
+Ludwig J., Avis KE. Dry heat inactivation of endotoxin on the surface of glass. J Parenteral Sci Technol. 1990; 44(1):4–12.
+Parenteral Drug Association (PDA), technical repor t 3, Validation of dry heat processes used for depyrogenation and sterilization.
+2013.
+REFERENCES
+1. Tsuji K, Lewis A. Dry heat destruction of lipopolysaccharide: a mathematical approach to process evaluation. Appl Environ Microbio.
+1978; 36(5):715–719.
+2. Akers MJ, Ketron KM, Thompson, BR. F value requirements for the destruction of endotoxin in the validation of dry-heat
+sterilization/depyrogenation cycles. J Parenteral Sci Technol. 1982; (36):12–6.
+Not all tunnels have a variable speed capacity.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<1228.1> DRY HEAT DEPYROGENATION
+Leslie Furr
+Associate Scienti«c Liaison
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 40(3)
+Current DocID: GUID-B1C4ACBB-A2C5-4298-AD66-23570AACBD27_2_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M8098_02_01
+DOI ref: kwcjs
+D
+OFFICIAL
+2/12/25, 4:38 PM
+USP-NF 〈1228.1〉 Dry Heat Depyrogenation

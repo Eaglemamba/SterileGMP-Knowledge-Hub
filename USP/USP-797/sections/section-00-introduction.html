@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 797 - Section 0: Introduction, Scope & CSP Categories</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 0: Introduction, Scope & CSP Categories</h1>
+    <div class="subtitle">簡介、範圍與CSP分類</div>
+    <div class="page-info">USP General Chapter &langle;797&rangle; Pharmaceutical Compounding—Sterile Preparations | Pages 1–4</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>能夠說明 USP &langle;797&rangle; 的立法目的，以及它在藥品安全中的核心角色</li>
+        <li>識別哪些製劑類型必須符合無菌要求，並了解豁免條件</li>
+        <li>區分 Category 1、Category 2 及 Category 3 CSP 的核心差異與 BUD 限制</li>
+        <li>理解即時使用 (Immediate-Use) CSP 的六項豁免條件</li>
+        <li>應用 CSP 分類框架於 CDMO 作業情境中的合規決策</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: Introduction -->
+<div class="section-title">1. Introduction and Scope | 簡介與範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This chapter describes the <span class="key-term">minimum standards</span> to be followed for the preparation of <span class="key-term">compounded sterile preparations (CSPs)</span> for human and animal drugs. Sterile compounding is defined as combining, admixing, diluting, pooling, reconstituting, repackaging, or otherwise altering a drug product or bulk drug substance to create a sterile preparation.</p>
+
+        <p>The requirements in this chapter must be followed to minimize harm, including death, to human and animal patients that could result from 1) microbial contamination [nonsterility], 2) excessive bacterial endotoxins, 3) variability from the intended strength of correct ingredients, 4) physical and chemical incompatibilities, 5) chemical and physical contaminants, and/or 6) use of ingredients of inappropriate quality.</p>
+
+        <p>Aseptic techniques, processes, and procedures must be followed for preparing any sterile medication. Processes and procedures must be in place to minimize the potential for contact with nonsterile surfaces, introduction of particulate matter or biological fluids, and mix-ups with other products or CSPs.</p>
+
+        <p>The use of technologies, techniques, materials, and procedures other than those described in this chapter is not prohibited as long as they are noninferior to those described herein and validated for the intended purpose (e.g., Validation of Alternative Microbiological Methods &langle;1223&rangle; and Validation of Compendial Procedures &langle;1225&rangle;).</p>
+
+        <h3>1.1 Scope</h3>
+
+        <p><strong>1.1.1 CSPs affected:</strong> The requirements in this chapter must be met to ensure the sterility of any CSP. Although the list below is not exhaustive, the following must be sterile:</p>
+        <ul>
+            <li>Injections, including infusions</li>
+            <li>Irrigations for internal body cavities (i.e., any space that does not normally communicate with the environment outside of the body, such as the bladder cavity or peritoneal cavity). [Note—Irrigations for the mouth, rectal cavity, and sinus cavity are not required to be sterile.]</li>
+            <li>Ophthalmic dosage forms</li>
+            <li>Aqueous preparations for pulmonary inhalation. [Note—Nasal dosage forms intended for local application are not required to be sterile.]</li>
+            <li>Baths and soaks for live organs and tissues</li>
+            <li>Implants</li>
+        </ul>
+
+        <p><strong>1.1.2 Specific practices — Allergenic extracts:</strong> Licensed allergenic extracts are mixed and diluted to prepare prescription sets for administration to patients. A prescription set is a vial or set of vials of premixed licensed allergenic extracts for subcutaneous immunotherapy that have been diluted with an appropriate diluent for an individual patient. Because of certain characteristics of allergenic extracts and allergy practice, preparation of allergenic extract prescription sets is not subject to all of the requirements in this chapter.</p>
+
+        <p><strong>Blood-derived and other biological materials:</strong> When compounding activities require the manipulation of a patient's blood-derived or other biological material (e.g., autologous serum), the manipulations must be clearly separated from other compounding activities and equipment used in CSP preparation activities, and they must be controlled by specific <span class="key-term">standard operating procedures (SOPs)</span> to avoid any cross-contamination.</p>
+
+        <p><strong>Hazardous drugs:</strong> Handling of sterile <span class="key-term">hazardous drugs (HDs)</span> must additionally comply with Hazardous Drugs—Handling in Healthcare Settings &langle;800&rangle;.</p>
+
+        <p><strong>Repackaging:</strong> Repackaging of a sterile product or preparation from its original container into another container must be performed in accordance with the requirements in this chapter.</p>
+
+        <p><strong>Sterile radiopharmaceuticals:</strong> Compounding of radiopharmaceuticals is not required to meet the standards of this chapter as they are subject to the requirements in Radiopharmaceuticals—Preparation, Compounding, Dispensing, and Repackaging &langle;825&rangle;.</p>
+
+        <p><strong>1.1.3 Personnel and settings affected:</strong> This chapter describes the minimum requirements that apply to all persons who prepare CSPs and all places where CSPs are prepared. This includes but is not limited to pharmacists, technicians, nurses, physicians, veterinarians, dentists, naturopaths, and chiropractors in all places including but not limited to hospitals and other healthcare institutions, medical and surgical patient treatment sites, infusion facilities, pharmacies, and physician or veterinarian practice sites.</p>
+
+        <p>The compounding facility must designate one or more individuals (i.e., the <span class="key-term">designated person(s)</span>) to be responsible and accountable for the performance and operation of the facility and personnel in the preparation of CSPs and for performing other functions as described in this chapter.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：為什麼需要 USP &langle;797&rangle;？</h4>
+            <p><strong>Compounded Sterile Preparation, CSP (調配無菌製劑)：</strong>與工廠大量生產的藥品不同，CSP 是藥房或醫療機構根據病患個別需求現場調配的無菌藥劑。因為沒有經過完整的商業製造驗證流程，其污染風險本質上更高。</p>
+            <p>本章列出六大患者危害來源：(1) 微生物污染、(2) 過量細菌內毒素、(3) 含量偏差、(4) 物化不相容、(5) 化學/物理污染物、(6) 劣質原料。這六點直接對應到 FDA 歷年召回事件中的主要原因。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：調配藥局 vs 製藥工廠</h4>
+            <p>想像一下：工廠製造的瓶裝礦泉水（conventionally manufactured product）有完整的滅菌驗證和品管體系；而 CSP 比較像是廚師在廚房現場製作的特調飲料——同樣需要衛生規範，但環境和驗證深度不同。</p>
+            <p>USP &langle;797&rangle; 就是設定這個「廚房」的最低衛生標準，讓調配出的製劑足夠安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Designated Person 的法律責任</h4>
+            <p>Designated Person（指定人員）不只是一個頭銜，而是具有法律問責性的職位。在 FDA 的 483 觀察和警告信中，designated person 的缺失或失職是常見缺失項目。</p>
+            <p>對 CDMO 而言：必須在 SOP 中明確定義 designated person 的職責範圍，並有書面指派記錄。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：哪些製劑必須無菌？</h4>
+            <p>快速判斷規則——凡是進入「正常情況下不與外界溝通的體腔」或「直接進入血液循環」的，都必須無菌：</p>
+            <ul>
+                <li>注射劑、輸液 → 無菌</li>
+                <li>眼科製劑 → 無菌</li>
+                <li>肺部吸入水溶液 → 無菌</li>
+                <li>膀胱沖洗液 → 無菌（但口腔沖洗液不需要）</li>
+                <li>植入物 → 無菌</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一位藥師想要調配眼科滴眼液，但認為局部製劑不需要無菌。這個判斷正確嗎？請引用 1.1.1 條文說明。</li>
+                <li>醫院藥局將靜脈輸液重新分裝到較小的注射瓶。這是否需要符合 &langle;797&rangle;？</li>
+                <li>放射性藥物 (Radiopharmaceuticals) 是否需要符合 &langle;797&rangle;？依據為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 1.2: Administration -->
+<div class="section-title">1.2 Administration | 給藥 & 1.3 Immediate-Use CSPs | 即時使用CSP</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>1.2 Administration</h3>
+        <p>For the purposes of this chapter, <span class="key-term">"administration"</span> means the direct application of a sterile product or preparation to a single patient by injecting, infusing, or otherwise providing a sterile product or preparation in its final form.</p>
+        <p>Administration of medication is out of the scope of this chapter. Standard precautions such as the Centers for Disease Control and Prevention (CDC) safe injection practices apply to administration. See &langle;800&rangle; for additional recommendations for the administration of hazardous drugs.</p>
+
+        <h3>1.3 Immediate-Use CSPs</h3>
+        <p>When all of the following conditions are met, compounding of CSPs for direct and immediate administration is not subject to the requirements for Category 1, Category 2, or Category 3 CSPs:</p>
+        <ol>
+            <li>Aseptic techniques, processes, and procedures are followed, and written SOPs are in place to minimize the potential for contact with nonsterile surfaces, introduction of particulate matter or biological fluids, and mix-ups with other conventionally manufactured products or CSPs.</li>
+            <li>Personnel are trained and demonstrate competency in aseptic processes as they relate to assigned tasks and the facility's SOPs.</li>
+            <li>The preparation is performed in accordance with evidence-based information for physical and chemical compatibility of the drugs (e.g., approved labeling, stability and compatibility studies).</li>
+            <li>The preparation involves not more than 3 different sterile products.</li>
+            <li>Any unused starting component from a single-dose container must be discarded after preparation is complete. Single-dose containers must not be used for more than one patient.</li>
+            <li>Administration begins within 4 h following the start of preparation. If administration has not begun within 4 h following the start of preparation, it must be promptly, appropriately, and safely discarded.</li>
+            <li>Unless directly administered by the person who prepared it or administration is witnessed by the preparer, the CSP must be labeled with the names and amounts of all active ingredients, the name or initials of the person who prepared the preparation, and the 4-h time period within which administration must begin.</li>
+        </ol>
+        <p>Handling of sterile hazardous drugs (HDs) must additionally comply with &langle;800&rangle;.</p>
+
+        <h3>1.4 Preparation Per Approved Labeling</h3>
+        <p>Compounding does not include mixing, reconstituting, or other such acts that are performed in accordance with directions contained in approved labeling or supplemental materials provided by the product's manufacturer.</p>
+        <p>Preparing a conventionally manufactured sterile product in accordance with the directions in the manufacturer's approved labeling is out of scope of this chapter only if:</p>
+        <ol>
+            <li>The product is prepared as a single dose for an individual patient; and</li>
+            <li>The approved labeling includes information for the diluent, the resultant strength, the container closure system, and storage time.</li>
+        </ol>
+        <p><strong>Proprietary bag and vial systems:</strong> Docking and activation of proprietary bag and vial systems in accordance with the manufacturer's labeling for immediate administration to an individual patient is not considered compounding and may be performed outside of an ISO Class 5 environment.</p>
+        <p>Docking of the proprietary bag and vial systems for future activation and administration is considered compounding and must be performed in an ISO Class 5 environment in accordance with this chapter, with the exception of 14. Establishing Beyond-Use Dates. Beyond-use dates (BUDs) for proprietary bag and vial systems must not be longer than those specified in the manufacturer's labeling.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Immediate-Use CSP 的豁免邏輯</h4>
+            <p><strong>Immediate-Use CSP (即時使用CSP)：</strong>當臨床急需而無法符合正規 Category 1/2/3 要求時，可在滿足7個嚴格條件下調配的製劑。</p>
+            <p>豁免的核心原因是時間窗口極短（4小時內給藥），污染後增殖的風險遠低於有 BUD 的製劑。但請注意：這不是「隨便做」的許可證，仍需書面 SOP 和人員訓練。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>關鍵數字：Immediate-Use 的硬性限制</h4>
+            <pre>
+最多混合成分數量：≤ 3 種不同無菌產品
+給藥開始時限：   製備後 ≤ 4 小時
+單次劑量容器：   不得供多位病患使用
+未使用殘餘物：   製備完成後立即丟棄
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：常見誤解 — 「按仿單稀釋」算不算調配？</h4>
+            <p>1.4 節明確排除了按核准仿單操作的重配行為，但有兩個先決條件：(1) 為單一病患配製；(2) 仿單已涵蓋稀釋劑、濃度、容器和儲存時間。</p>
+            <p>若仿單缺少上述任一項資訊，該操作就落入 &langle;797&rangle; 範疇。實務上這常是稽查缺失的灰色地帶。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：袋瓶系統的兩種情境</h4>
+            <p>想像一個咖啡膠囊機：直接按鈕沖泡給客人喝（立即使用）= 不需特殊清潔室。但若事先把膠囊插入機器，留待稍後使用（future activation）= 就等同於提前調配，需要符合無菌環境要求。</p>
+            <p>Proprietary bag and vial system 的邏輯完全相同。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>急診護士從4支不同的單次劑量注射瓶中抽取藥物混合給藥。這是否符合 Immediate-Use 豁免條件？</li>
+                <li>某藥師在早上8點調配了一袋靜脈輸液，預計下午1點開始輸注，但未存放於 ISO Class 5 環境。是否違規？</li>
+                <li>按照製造商仿單重配抗生素注射劑，仿單只提供了稀釋液和濃度，但未說明儲存時間。這是否需要符合 &langle;797&rangle;？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 1.5: CSP Categories -->
+<div class="section-title">1.5 CSP Categories | CSP 分類系統</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This chapter distinguishes three categories of CSPs: <span class="key-term">Category 1</span>, <span class="key-term">Category 2</span>, and <span class="key-term">Category 3</span>, primarily based on the state of environmental control under which they are compounded, the probability for microbial growth during the time they will be stored, and the time period within which they must be used.</p>
+
+        <p><strong>Category 1 CSPs</strong> are compounded under the least controlled environmental conditions and therefore are assigned a BUD of 12 h or less at controlled room temperature or 24 h or less when refrigerated, if compounded in accordance with all of the applicable requirements for Category 1 CSPs in this chapter.</p>
+
+        <p><strong>Category 2 CSPs</strong> require more environmental controls and testing than Category 1 CSPs and may be assigned a BUD of greater than 12 h at controlled room temperature or more than 24 h if refrigerated, but not exceed the limits established in Table 13 (see 14. Establishing Beyond-Use Dates), if compounded in accordance with all of the applicable requirements for Category 2 CSPs in this chapter.</p>
+
+        <p><strong>Category 3 CSPs</strong> undergo sterility testing, supplemented by endotoxin testing when applicable, and have more requirements than Category 2 CSPs for personnel qualification, use of sterile garb, use of sporicidal disinfectants, frequency of environmental monitoring, and stability determination. Category 3 CSPs may be assigned longer BUDs than those set for Category 2 CSPs but not exceeding the limits in Table 14 (see 14. Establishing Beyond-Use Dates), if compounded in accordance with all applicable requirements for Category 3 CSPs in this chapter.</p>
+
+        <p>The requirements that are not specifically described as applicable to Category 1, Category 2, or Category 3, are applicable to the compounding of all CSPs unless the CSP is otherwise described in 1.1 Scope.</p>
+
+        <p>Category 1, Category 2, and Category 3 CSPs can be compounded by using only sterile starting ingredients, or by using some or all nonsterile starting ingredients. If all components used to compound are sterile from the start, the sterility of the components must be maintained during compounding to produce a CSP.</p>
+
+        <p>If one or more of the starting components being used to compound is not sterile, the sterility of the compounded preparation must be achieved through a sterilization process (e.g., terminal sterilization in the final sealed container) or sterilizing filtration, and then sterility must be maintained if the CSP is subsequently manipulated. When compounding with nonsterile starting components, supplies, or equipment, the quality of the components, the effectiveness of the sterilization step, and <span class="key-term">bacterial endotoxin</span> mitigation strategies are critical to achieving a sterile preparation that is free from excessive bacterial endotoxins.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>BUD at Room Temp</th>
+                <th>BUD Refrigerated</th>
+                <th>Key Requirements</th>
+            </tr>
+            <tr>
+                <td><strong>Category 1</strong></td>
+                <td>≤12 h</td>
+                <td>≤24 h</td>
+                <td>Minimum controls; SCA acceptable</td>
+            </tr>
+            <tr>
+                <td><strong>Category 2</strong></td>
+                <td>&gt;12 h (per Table 13)</td>
+                <td>&gt;24 h (per Table 13)</td>
+                <td>Cleanroom suite required; more testing</td>
+            </tr>
+            <tr>
+                <td><strong>Category 3</strong></td>
+                <td>Longer (per Table 14)</td>
+                <td>Longer (per Table 14)</td>
+                <td>Sterility testing; stability data; most controls</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：三分類系統的設計邏輯</h4>
+            <p><strong>分類決定因素：</strong>環境控制程度 × 儲存時間風險 × 微生物增殖概率。三個類別呈金字塔形：Category 1 門檻最低但 BUD 最短；Category 3 要求最多但可獲得最長使用期限。</p>
+            <p>這個設計反映一個核心理念：「你想存放越久，就必須付出更多品質控制的代價。」</p>
+        </div>
+
+        <div class="hierarchy-diagram">
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-1">Category 3 — 最嚴格要求 / 最長 BUD</div>
+            </div>
+            <div class="arrow-down">&#8595;</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-2">Category 2 — 中等要求 / 中等 BUD</div>
+            </div>
+            <div class="arrow-down">&#8595;</div>
+            <div class="hierarchy-level">
+                <div class="hierarchy-box level-3">Category 1 — 基本要求 / 最短 BUD</div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：非無菌起始原料的內毒素風險</h4>
+            <p>使用非無菌起始原料時，即使通過過濾滅菌，細菌內毒素（革蘭氏陰性菌細胞壁碎片）<strong>不會被 0.22 µm 濾膜去除</strong>。因此必須有額外的去熱原策略（如適當沖洗或選用通過 LAL 測試的原料）。</p>
+            <p>這是 Category 2/3 CSP 從非無菌原料調配時最常見的合規陷阱。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>選擇 Category 的決策樹</h4>
+            <pre>
+需要 BUD > 12 h (室溫) 或 > 24 h (冷藏)?
+    否 → Category 1 (SCA 可接受)
+    是 ↓
+需要 BUD 超過 Table 13 限制?
+    否 → Category 2 (需要 Cleanroom Suite)
+    是 ↓
+Category 3 (需要滅菌測試 + 穩定性數據)
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 合規場景</h4>
+            <p>許多 CDMO 接受醫院藥局的外包調配業務。在報價前必先確認：客戶需求的 BUD 屬於哪個 Category？ Category 3 CSP 的調配成本遠高於 Category 1（需要滅菌測試、穩定性研究、月頻環境監測），這直接影響定價策略。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>醫院藥局要調配一批靜脈化療藥物，需要在冰箱存放 7 天。屬於哪個 Category？</li>
+                <li>Category 3 CSP 比 Category 2 多了哪四項主要要求？</li>
+                <li>若以非無菌原料調配 Category 2 CSP，除了過濾滅菌之外，還需要特別注意什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>USP &langle;797&rangle; 設定 CSP 調配的<strong>最低標準</strong>，目的是防止六大患者危害（微生物污染、內毒素過量、含量偏差、物化不相容、化學污染物、劣質原料）</li>
+        <li>CSP 分三類：Category 1（最短 BUD，最少要求）→ Category 2（中等）→ Category 3（最長 BUD，最多要求）</li>
+        <li>Immediate-Use CSP 豁免需同時滿足7項條件，核心限制是：≤3種成分、≤4小時給藥</li>
+        <li>Designated Person 對 CSP 品質具有法律問責性，必須書面指派</li>
+        <li>非無菌起始原料即使經過過濾滅菌，仍需處理細菌內毒素風險</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP &langle;797&rangle; Pharmaceutical Compounding—Sterile Preparations</p>
+</div>
+
+</body>
+</html>

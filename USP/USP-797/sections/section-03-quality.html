@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 797 - Section 5: QA, Documentation & Special CSPs</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .formula-box h3, .formula-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul, .concept-box ol, .analogy-box ol, .note-box ol, .formula-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 5: QA, Documentation & Special CSPs</h1>
+    <div class="subtitle">品質保證、文件管理與特殊CSP</div>
+    <div class="page-info">USP General Chapter &langle;797&rangle; | Sections 15–21 + Glossary | Pages 30–38</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>說明使用商業製造產品（單次劑量、多次劑量、批量包裝）作為原料成分的時限規定</li>
+        <li>描述 SOP 的建立、審查和修訂要求，以及人員必須接受哪些訓練</li>
+        <li>區分 QA 和 QC 的定義與職責，並了解品質計畫的必要元素</li>
+        <li>說明召回程序、投訴處理和不良事件通報的 SOP 要求</li>
+        <li>解釋過敏原萃取物調配的特殊豁免規定（Section 21）及其前提條件</li>
+    </ul>
+</div>
+
+<!-- SECTION 15-16: Conventionally Manufactured Products -->
+<div class="section-title">15–16. Use of Conventionally Manufactured Products & CSPs as Components | 商業產品與CSP作為原料</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>15. Use of Conventionally Manufactured Products as Components</h3>
+
+        <p><strong>15.1 Use of Conventionally Manufactured Single-Dose Containers:</strong> A conventionally manufactured single-dose container is a container closure system that holds a sterile product for parenteral administration that is not required to meet antimicrobial effectiveness testing requirements.</p>
+        <p>If a single-dose vial is entered or punctured only in an ISO Class 5 or cleaner air, it may be used up to <strong>12 h after initial entry or puncture</strong> as long as the labeled storage requirements during that 12-h period are maintained. <strong>Opened single-dose ampules must not be stored for any time period.</strong></p>
+
+        <p><strong>15.2 Use of Conventionally Manufactured Multiple-Dose Containers:</strong> Once initially entering or puncturing the multiple-dose container, the multiple-dose container must not be used for more than <strong>28 days</strong> unless otherwise specified by the manufacturer on the labeling.</p>
+
+        <p><strong>15.3 Use of Conventionally Manufactured Pharmacy Bulk Packages:</strong> A pharmacy bulk package must be used according to the manufacturer's labeling. The pharmacy bulk package must be entered or punctured only in an ISO Class 5 PEC.</p>
+
+        <h3>16. Use of CSPs as Components</h3>
+        <p>When a CSP is used as a component, care must be taken to minimize the risk of contamination of both the starting component CSP and the final CSP(s).</p>
+
+        <p><strong>16.1 Use of Compounded Multiple-Dose CSPs:</strong> After a multiple-dose CSP is initially entered or punctured, the multiple-dose CSP must not be used for longer than the assigned BUD or 28 days, whichever is shorter.</p>
+
+        <p><strong>16.2 Use of Compounded Single-Dose CSPs and CSP Stock Solutions:</strong> When entered in ISO Class 5 or cleaner air, the component CSP may be used for sterile compounding for up to <strong>12 h or its assigned BUD</strong>, whichever is shorter. Any remainder must be discarded.</p>
+
+        <h3>17. SOPs</h3>
+        <p>Facilities that prepare CSPs must develop SOPs for the compounding process and other support activities. SOPs must include the types of CSPs prepared (Category 1, Category 2, Category 3). A designated person(s) must ensure that SOPs are appropriate and implemented, including ensuring that personnel demonstrate competency in performing every procedure that relates to their job function.</p>
+
+        <p>SOPs must be reviewed initially and at least every <strong>12 months</strong> by the designated person(s) to ensure that they reflect current practices. Any changes must be documented. Revisions must be communicated to all personnel involved, and personnel should document acknowledgment of the communication.</p>
+
+        <p>All compounding personnel must be trained to:</p>
+        <ul>
+            <li>Recognize potential problems, deviations, failures, or errors associated with preparing a CSP</li>
+            <li>Report any problems, deviations, failures, or errors to the designated person(s)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：開封後使用期限的邏輯</h4>
+            <p>商業製造產品開封後的使用期限是基於：容器被穿刺或打開後，無菌屏障即被破壞，微生物污染風險從這一刻開始。</p>
+            <ul>
+                <li><strong>單次劑量瓶（在 ISO 5 下穿刺）：</strong>12 小時</li>
+                <li><strong>安瓿（已開）：</strong>不得儲存任何時間 → 立即使用</li>
+                <li><strong>多次劑量瓶（含防腐劑）：</strong>28 天（或廠商標示）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：安瓿開封後的「零儲存」規定</h4>
+            <p>開封的單次劑量安瓿（glass ampule）必須立即使用，不得儲存任何時間。這比玻璃瓶（vial）嚴格得多——原因是安瓿開封後形成完全開放的開口，無任何再密封機制，微生物和微粒污染風險極高。</p>
+            <p>若調配需要安瓿的內容物，必須在無菌條件下立即使用，剩餘部分立即丟棄。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>開封後使用期限快速對照</h4>
+            <pre>
+商業產品：
+  單次劑量瓶（ISO 5 穿刺） → 最多 12 小時
+  安瓿（開封後）           → 零儲存，立即使用
+  多次劑量瓶               → 最多 28 天（或廠商標示）
+  藥房批量包裝             → 依廠商標示
+
+CSP 組件：
+  多次劑量 CSP（已開）     → BUD 或 28 天（較短者）
+  單次劑量/儲備液（ISO 5） → BUD 或 12 小時（較短者）
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：SOP 如同作業標準說明書</h4>
+            <p>想像一家連鎖餐廳：每個分店的廚師都遵循同一套詳細的烹飪 SOP——食材用量、料理順序、安全溫度、衛生要求。即使每天的廚師不同，出餐品質仍然一致。</p>
+            <p>調配設施的 SOP 作用相同：確保不同人員在不同班次中，都能以一致且合規的方式調配 CSP。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>藥師在 ISO Class 5 LAFW 中打開一支 20 mL 的單次劑量注射用生理食鹽水小瓶，用了 10 mL。剩餘的 10 mL 可以保留多久？</li>
+                <li>一批 Category 2 CSP 使用了一個 CSP 儲備液（stock solution）作為原料，該儲備液的 BUD 是 7 天。最終 CSP 的 BUD 可以超過 7 天嗎？</li>
+                <li>SOP 修訂後，指定人員是否需要通知所有相關人員？人員是否需要確認接受了修訂通知？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 18: QA and QC -->
+<div class="section-title">18. Quality Assurance and Quality Control | 品質保證與品質管制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Quality Assurance (QA)</span> is a system of procedures, activities, and oversight that ensures that the compounding process consistently meets quality standards. <span class="key-term">Quality Control (QC)</span> is the sampling, testing, and documentation of results that, taken together, ensure that specifications have been met before release of the CSP.</p>
+
+        <p>A facility's QA and QC programs must be formally established and documented in the facility's SOPs. Designated person(s) must ensure that the facility has formal, written QA and QC programs that establish a system of:</p>
+        <ol>
+            <li>Adherence to procedures</li>
+            <li>Prevention and detection of errors and other quality problems</li>
+            <li>Evaluation of complaints and adverse events</li>
+            <li>Appropriate investigations and corrective actions</li>
+        </ol>
+        <p>The overall QA and QC program must be reviewed at least once every <strong>12 months</strong> by the designated person(s). The results of the review must be documented.</p>
+
+        <h3>18.1 Notification About and Recall of Out-of-Specification Dispensed CSPs</h3>
+        <p>If a CSP is dispensed or administered before release testing results are known, the facility must have procedures to:</p>
+        <ul>
+            <li>Immediately notify the prescriber of a failure with the potential to cause patient harm</li>
+            <li>Recall any unused dispensed CSPs and quarantine any stock remaining in the pharmacy</li>
+            <li>Investigate if other lots are affected and recall if necessary</li>
+        </ul>
+
+        <p>An SOP for recall must contain:</p>
+        <ul>
+            <li>Procedures to determine the severity of the problem and the urgency for the recall</li>
+            <li>Procedures to determine the distribution of any affected CSP, including date and quantity</li>
+            <li>Procedures to identify patients who have received the CSP</li>
+            <li>Procedures for disposal and documentation of the recalled CSP</li>
+            <li>Procedures to investigate and document the reason for failure</li>
+        </ul>
+        <p>The recall must be reported to appropriate regulatory bodies as required by laws and regulations of the applicable regulatory jurisdiction.</p>
+
+        <h3>18.2 Complaint Handling</h3>
+        <p>Compounding facilities must develop and implement SOPs for handling complaints. A designated person(s) must review all complaints to determine whether the complaint indicates a potential quality problem. A readily retrievable written or electronic record of each complaint must be kept, containing the name of the complainant or unique identifier, date received, nature of the complaint, and the response. A CSP returned in connection with a complaint must be quarantined until destroyed after completion of the investigation.</p>
+
+        <h3>18.3 Adverse Event Reporting</h3>
+        <p>Adverse events potentially associated with the quality of CSPs must be reported in accordance with the facility's SOPs and all laws and regulations of the applicable regulatory jurisdiction. If the investigation reveals a quality problem likely to affect other patients, those patients and prescribers must be informed.</p>
+
+        <h3>19. CSP Handling, Storage, Packaging, Shipping, and Transport</h3>
+        <p><strong>19.1 Handling and Storing CSPs:</strong> Temperature must be monitored each day, either manually or by a continuous recording device. Temperature monitoring devices must be verified for accuracy at least every 12 months. When a CSP has been exposed to temperature excursions outside storage limits, a designated person(s) must determine whether the CSP retains its integrity or quality. If this cannot be determined, it must be discarded.</p>
+        <p><strong>19.2 Packaging:</strong> Packaging materials should protect CSPs from damage, leakage, contamination, degradation, and adsorption. If the CSP is sensitive to light, light-resistant packaging materials must be used.</p>
+        <p><strong>19.3 Shipping and Transporting:</strong> When shipping or transporting CSPs that require special handling, personnel must include specific handling instructions on the exterior of the container.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：QA vs QC — 系統 vs 測試</h4>
+            <p><strong>QA (Quality Assurance, 品質保證)：</strong>預防性的系統性活動，確保整個調配過程符合標準。QA 是「確保不會出錯的體制」。</p>
+            <p><strong>QC (Quality Control, 品質管制)：</strong>透過採樣、測試和記錄，在放行前確認規格已達到。QC 是「確認這批次沒有出錯的驗證」。</p>
+            <p>類比：QA 是餐廳的食安體系（培訓、清潔規範、驗收標準）；QC 是每道菜出餐前的試嚐確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：召回 SOP 的設計必須包含患者追蹤機制</h4>
+            <p>召回 SOP 中最關鍵但常被忽略的要素：必須能<strong>識別哪些患者已經接受了該 CSP</strong>。這需要完整的配發記錄追蹤系統。</p>
+            <p>若記錄不完整，一旦發生召回，無法通知受影響患者，將面臨重大監管和法律責任。這是調配設施需要強健的電子記錄系統的核心原因之一。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：CSP 召回如同汽車召回</h4>
+            <p>汽車製造商召回問題車型的流程：(1) 確認問題嚴重性、(2) 識別所有受影響車輛和車主、(3) 通知車主、(4) 提供補救措施、(5) 記錄和向監管機構報告。</p>
+            <p>CSP 召回程序完全相同邏輯，只是「車主」換成「患者」，「車輛 VIN」換成「CSP 批號/處方編號」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>QA/QC 年度審查要求</h4>
+            <pre>
+QA/QC 程序年度審查要求：
+  頻率：至少每 12 個月一次
+  執行者：Designated Person(s)
+  結果：必須記錄
+  必要時：採取適當行動
+
+SOP 年度審查要求：
+  頻率：至少每 12 個月一次
+  更改時：記錄、通知相關人員
+  人員應確認收到通知
+
+投訴記錄必須包含：
+  • 投訴者姓名或唯一識別碼
+  • 接到投訴日期
+  • 投訴性質
+  • 回應措施
+  • 調查結果和後續
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：溫度偏差的決策流程</h4>
+            <p>當發現 CSP 儲存溫度偏差時，designated person 必須根據以下步驟決策：</p>
+            <ol>
+                <li>確認偏差幅度和持續時間</li>
+                <li>查閱藥物穩定性文獻或廠商資料</li>
+                <li>若能確認 CSP 仍符合品質要求 → 記錄後放行或繼續使用</li>
+                <li>若無法確認 → 必須丟棄，不得猶豫</li>
+            </ol>
+            <p>每次偏差都必須記錄，即使決定繼續使用。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家調配設施的滅菌測試結果（在 CSP 已配發後）顯示某批次失敗。必須立即採取哪些步驟？</li>
+                <li>患者打電話投訴 CSP 顏色異常。投訴記錄中必須包含哪些最低資訊？</li>
+                <li>若 QA 年度審查發現某個 SOP 已過時，誰可以授權修改？修改後必須做什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 20-21: Documentation and Allergenic Extracts -->
+<div class="section-title">20–21. Documentation & Compounding Allergenic Extracts | 文件管理與過敏原萃取物調配</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>20. Documentation</h3>
+        <p>All facilities where CSPs are prepared must have and maintain written or electronic documentation demonstrating compliance with this chapter. Documentation must include at a minimum:</p>
+        <ul>
+            <li>Personnel training, competency assessments, and qualification records including corrective actions for any failures</li>
+            <li>Certification reports, including corrective actions for any failures</li>
+            <li>Environmental air and surface monitoring procedures and results</li>
+            <li>Equipment records (calibration, verification, and maintenance reports)</li>
+            <li>Receipt of components</li>
+            <li>SOPs, MFRs (if required), and CRs (if required)</li>
+            <li>Release inspection and testing records</li>
+            <li>Information related to complaints and adverse events including corrective actions taken</li>
+            <li>Results of investigations and corrective actions</li>
+        </ul>
+
+        <p>All required documentation for a particular CSP (e.g., MFR, CR, and release inspection and testing results) must be readily retrievable for at least <strong>2 years after preparation</strong> or as required by laws and regulations of the applicable regulatory jurisdiction or accrediting organization(s), whichever is longer.</p>
+
+        <h3>21. Compounding Allergenic Extracts</h3>
+        <p>Licensed allergenic extracts are mixed and diluted into prescription sets for an individual patient.</p>
+
+        <p><strong>21.1 Personnel Qualifications:</strong> A designated person with training and expertise in allergen immunotherapy is responsible for ensuring that personnel are trained, evaluated, and supervised. Annual personnel training and competency must be documented. Before independent compounding is allowed, all compounders must successfully complete GFT no fewer than 3 separate times. After initial evaluation, GFT must be completed at least every 12 months.</p>
+
+        <p><strong>21.2 Personnel Hygiene and Garbing for Allergenic Extracts:</strong> Minimum garb requirements include: low-lint garment with enclosed neck, low-lint disposable head cover, face mask, sterile powder-free gloves. Throughout the process, sterile 70% IPA must be applied to gloves and allowed to dry.</p>
+
+        <p><strong>21.3 Facilities for Allergenic Extracts:</strong> The compounding process must occur in an ISO Class 5 PEC or in a dedicated <span class="key-term">allergenic extract compounding area (AECA)</span>. The AECA must be located away from unsealed windows, doors to the outdoors, and traffic flow. Carpet is not allowed in the AECA. If used, a visible perimeter must define the AECA; access during compounding must be restricted to authorized personnel.</p>
+
+        <p><strong>21.4 Cleaning and Disinfecting for Allergenic Extracts:</strong> In a PEC, all interior surfaces must be cleaned and disinfected each day of use before compounding begins. Apply sterile 70% IPA to the horizontal work surface between each prescription set.</p>
+
+        <p><strong>21.5 BUDs for Allergenic Extract Prescription Sets:</strong> The BUD must be no later than the earliest expiration date of any allergenic extract or any diluent that is part of the prescription set, and the BUD must not exceed <strong>1 year from the date the prescription set is mixed or diluted</strong>.</p>
+
+        <p><strong>21.6 Labeling for Allergenic Extracts:</strong> Label must display: patient name, type and fractional dilution of each vial with corresponding vial number, BUD, storage conditions.</p>
+
+        <p><strong>21.8 Documentation for Allergenic Extracts:</strong> Documentation must include: SOPs, personnel training records, certification reports of the PEC (if used), temperature logs for refrigerators, CRs for individual prescription sets, complaints and adverse events records.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：文件保存的「2年規則」</h4>
+            <p>所有 CSP 相關文件必須保存至少 <strong>2 年</strong>，但若法規或認可機構要求更長，則以更長者為準。</p>
+            <p>這意味著設施必須建立系統性的文件管理：無論是紙本或電子，都必須易於查閱（readily retrievable）。在稽查時，能否在幾分鐘內調出2年前的特定批次記錄，是衡量文件管理成熟度的重要指標。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：過敏原萃取物的特殊豁免</h4>
+            <p>Section 21 是 &langle;797&rangle; 中少數具有顯著豁免的特殊案例。過敏原萃取物調配不需要符合一般 Category 1/2/3 的所有要求，但有嚴格的前提條件：</p>
+            <ol>
+                <li>必須使用已許可的商業無菌過敏原產品</li>
+                <li>只涉及無菌針頭/注射器穿刺和液體轉移</li>
+                <li>不涉及化學合成或非無菌原料</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：AECA — 過敏原調配的替代空間</h4>
+            <p>AECA（Allergenic Extract Compounding Area）是專為過敏原調配設計的非分類空間，類似 SCA 的概念但更寬鬆。AECA 不需要達到任何 ISO 等級，但必須有可見的周界（visible perimeter），且調配期間禁止其他活動進行。</p>
+            <p>這項豁免的存在反映了現實：大多數過敏科診所無法在短期內建造無菌調配室，但仍需在合規框架內為患者調配個人化的免疫治療注射液。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：文件是品質系統的「記憶」</h4>
+            <p>如果品質系統沒有文件，就像一家沒有記帳的企業——你不知道昨天賺了多少，更無法向稅務機關證明。</p>
+            <p>CSP 的文件管理也是如此：若沒有完整記錄，一旦患者出現不良反應，無法追溯是哪一批次的 CSP 出了問題，也無法證明設施按照 &langle;797&rangle; 規定操作。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>文件保存期限要求</h4>
+            <pre>
+最低要求：製備後 2 年
+例外：若法規或認可機構要求更長 → 以更長者為準
+
+常見情況：
+  ACHC/PCAB 認可機構可能要求更長保存期
+  某些州法規也可能要求 3 年以上
+
+過敏原萃取物 BUD 計算：
+  最長 = 混合/稀釋日期起算 1 年
+  或所有成分的最短效期（哪個早）
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：電子記錄系統的合規要求</h4>
+            <p>電子記錄和電子簽名可以滿足 &langle;797&rangle; 的文件要求，前提是：(1) 可隨時調取；(2) 有適當的備份機制；(3) 有審計追蹤（audit trail）防止擅自修改。</p>
+            <p>電子系統的稽查缺失通常集中在：無備份、可輕易修改記錄（沒有 audit trail）、或舊記錄在系統更新後無法讀取。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某設施 3 年前為一名患者調配了 Category 2 CSP，現在有投訴。設施是否仍需保留相關文件？</li>
+                <li>過敏科診所在診間調配個人化過敏原注射液，不使用 ISO Class 5 PEC，而是在 AECA 中調配。這是否符合 &langle;797&rangle;？前提條件是什麼？</li>
+                <li>過敏原萃取物處方集的 BUD 最長可達多久？是否有任何能延長 BUD 的條件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Glossary Key Terms -->
+<div class="section-title">Glossary — Selected Key Terms | 詞彙表精選</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text — Key Definitions</h2>
+
+        <p><strong>Aseptic processing:</strong> A method by which separate, sterile components (e.g., drugs, containers, or closures) are brought together under conditions that maintain their sterility. The components can either be purchased as sterile or, when starting with nonsterile components, can be separately sterilized prior to combining (e.g., by membrane filtration or by autoclave).</p>
+
+        <p><strong>Beyond-use date (BUD):</strong> The date, or hour and the date, after which a CSP must not be used, stored, or transported. The date is determined from the date and time the preparation is compounded.</p>
+
+        <p><strong>Classified area:</strong> An area that maintains an air quality classification based on the ISO standards required in this chapter.</p>
+
+        <p><strong>Compounded sterile preparation (CSP):</strong> A preparation intended to be sterile that is created by combining, admixing, diluting, pooling, reconstituting, repackaging, or otherwise altering a drug product or bulk drug substance.</p>
+
+        <p><strong>Critical site:</strong> A location that includes any component or fluid pathway surfaces (e.g., vial septa, injection ports, and beakers) or openings (e.g., opened ampules and needle hubs) that are exposed and at risk of direct contact with air, moisture, or touch contamination.</p>
+
+        <p><strong>Designated person(s):</strong> One or more individuals assigned to be responsible and accountable for the performance and operation of the facility and personnel as related to the preparation of CSPs.</p>
+
+        <p><strong>Direct compounding area (DCA):</strong> A critical area within the ISO Class 5 PEC where critical sites are exposed to unidirectional HEPA-filtered air, also known as first air.</p>
+
+        <p><strong>Dynamic airflow smoke pattern test:</strong> A PEC test in which a visible source of smoke is used to observe air patterns within the unidirectional space under dynamic operating conditions.</p>
+
+        <p><strong>Dynamic operating conditions:</strong> Conditions in the compounding area in which operating personnel are present and simulating or performing compounding. The conditions should reflect the largest number of personnel and highest complexity of compounding expected during routine operations.</p>
+
+        <p><strong>First air:</strong> The air exiting the HEPA filter in a unidirectional air stream.</p>
+
+        <p><strong>Pharmaceutical isolator:</strong> An enclosure that provides HEPA-filtered ISO Class 5 unidirectional air operated at a continuously higher pressure than its surrounding environment and is decontaminated using an automated system. It uses only decontaminated interfaces or rapid transfer ports for materials transfer. [Note—A CAI or CACI is NOT a pharmaceutical isolator.]</p>
+
+        <p><strong>Primary engineering control (PEC):</strong> A device or zone that provides an ISO Class 5 air quality environment for sterile compounding.</p>
+
+        <p><strong>Probability of a nonsterile unit (PNSU):</strong> The probability of an item being nonsterile after it has been exposed to a verified sterilization process. A PNSU value can only be applied to terminal sterilization. [Also called the sterility assurance level (SAL).]</p>
+
+        <p><strong>Secondary engineering control (SEC):</strong> The area where the PEC is placed (e.g., a cleanroom suite or an SCA). It incorporates specific design and operational parameters required to minimize the risk of contamination within the compounding area.</p>
+
+        <p><strong>Sterility assurance level (SAL):</strong> See the entry for Probability of a nonsterile unit (PNSU).</p>
+
+        <p><strong>Terminal sterilization:</strong> The application of a lethal process (e.g., steam, dry heat, irradiation) to sealed containers for the purpose of achieving a predetermined PNSU of greater than 10<sup>−6</sup>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：詞彙表的合規意義</h4>
+            <p>USP &langle;797&rangle; 的詞彙表不只是定義清單，而是具有法律效力的標準用語。使用精確的術語有三個實務重要性：</p>
+            <ol>
+                <li><strong>稽查溝通：</strong>稽查員和業者對同一術語有相同理解，避免誤解</li>
+                <li><strong>SOP 撰寫：</strong>使用官方術語確保 SOP 符合監管語言</li>
+                <li><strong>爭議解決：</strong>當法規解釋有爭議時，詞彙表提供基準定義</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：三個容易混淆的術語對比</h4>
+            <p><strong>CAI ≠ Pharmaceutical Isolator</strong>（本章明確聲明兩者不同）</p>
+            <ul>
+                <li>CAI：無自動去污系統，手動進出</li>
+                <li>Pharmaceutical Isolator：必須有自動去污系統（如 VHP）和 RTP，需要 ISO Class 8 室</li>
+            </ul>
+            <p><strong>DCA vs PEC：</strong></p>
+            <ul>
+                <li>PEC 是整個設備（如整個 LAFW 工作台）</li>
+                <li>DCA 是 PEC 內部最關鍵的直接調配區域，暴露於「第一道氣流 (first air)」</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：First Air — 最乾淨的空氣</h4>
+            <p>HEPA 過濾器就像淨水器的濾芯：直接從濾芯流出的水（first air）是最純凈的，尚未接觸任何其他表面。調配人員必須確保 CSP 的關鍵部位（critical sites）只暴露在 first air 中，而不是接觸過設備表面的「二手空氣」。</p>
+            <p>這就是「不要用身體阻擋 first air 流向 critical site」規則的根本依據。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：動態 vs 靜態操作條件的稽查意義</h4>
+            <p>「Dynamic operating conditions」要求在人員存在、模擬最複雜操作的條件下進行測試。這意味著：</p>
+            <ul>
+                <li>認證測試必須在代表最壞情況的條件下進行</li>
+                <li>環境監測採樣必須在動態條件下進行</li>
+                <li>若設施在「沒人、沒操作」時進行測試，結果會被認為不具代表性</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>本章綜合複習 Comprehensive Review</h4>
+            <ol>
+                <li>一位新藥師加入調配設施，聲稱他已在上一家設施完成過 Category 2 的 media-fill 測試（6個月前）。這個結果是否可以轉移使用？為什麼？</li>
+                <li>設施想用一台 Pharmaceutical Isolator 調配 Category 3 CSP。需要建造前室嗎？需要 ISO Class 7 緩衝室嗎？</li>
+                <li>一批 Category 2 CSP 從非無菌原料調配，以無菌充填方式，未進行滅菌測試，冷藏儲存。最長 BUD 為何？若加入滅菌測試且通過呢？</li>
+                <li>設施在 ISO Class 7 緩衝室的表面採樣（月度）結果為 7 cfu/media device（動作水準 &gt;5）。必須立即停止調配活動嗎？接下來的步驟是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>商業容器開封後使用期：</strong>單次劑量瓶（ISO 5）≤12h；安瓿零儲存；多次劑量瓶 ≤28天</li>
+        <li><strong>QA vs QC：</strong>QA 是確保過程的系統；QC 是確認結果的測試。兩者均需書面 SOP 並每年審查。</li>
+        <li><strong>召回 SOP：</strong>必須包含患者識別程序、分發追蹤、向監管機構報告</li>
+        <li><strong>文件保存：</strong>最少 2 年（法規要求更長者從其規定）</li>
+        <li><strong>過敏原萃取物：</strong>可使用 AECA（非分類空間）；BUD ≤1年（或最短成分效期）；GFT 每年一次</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP &langle;797&rangle; Pharmaceutical Compounding—Sterile Preparations</p>
+</div>
+
+</body>
+</html>

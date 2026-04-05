@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1790〉 - Section 3: AVI Validation &amp; Qualification</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75; color: var(--text-dark); background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 2rem; text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p,
+.key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol,
+.key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li,
+.key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.application) h3, .concept-box:not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 3: AVI Validation &amp; Qualification | AVI 驗證與資格確認</h1>
+    <div class="subtitle">USP 〈1790〉 Visual Inspection of Injections</div>
+    <div class="page-info">Pages 14–20 | Test Set Types, Inspector Qualification, Requalification, Products in Distribution, Conclusions</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>了解閾值研究（Threshold Study）的設計：粒子大小範圍、增量設定、標準曲線解讀</li>
+        <li>掌握 DIP 專用測試集的設計要求，以及括弧法（Bracketing Approach）在簡化資格確認中的應用</li>
+        <li>熟悉人員訓練的分階段方法：視力測試 → 影像/照片訓練 → 實物操作訓練 → 資格確認</li>
+        <li>掌握兩種資格確認方法（百分回收法 vs. RZE 法）的計算和適用場景</li>
+        <li>理解流通中產品（Products in Distribution）的處理原則，以及 Chapter 〈790〉 的「20瓶法則」</li>
+        <li>掌握 USP 〈1790〉 的整體結論：持續過程改進、預防優先、監管期望</li>
+    </ul>
+</div>
+
+<!-- SECTION 7.6 continued and 7.7 -->
+<div class="section-title">7.6 Types of Test Sets (continued) — 測試集類型（續）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>7.6 Types of Test Sets (continued from Section 2)</h3>
+        <p>The particle detection threshold can be determined for a specific inspection method and product/package combination. For example, it can be displayed as a standard curve of detection probabilities at various particle types and sizes in an approximate range of <span class="key-term">100–500 µm (with recommended increments of 100 µm)</span>. Fibers are typically observed in sizes greater than 500 µm.</p>
+
+        <p>Threshold studies are conducted to determine the sensitivity of manual inspection methods, using a range of particle sizes, in a blinded study that yields the particle-size detection capabilities of a defined group or of an individual inspector. The threshold studies indicate that the method of inspection is valid and has appropriate detection sensitivity. For example, for clear solutions in 10-mL tubing glass vials, past threshold studies indicate that particles within the range of <span class="key-term">150–250 µm (500–2000 µm for fibers)</span> can be detected with a PoD of 70% or greater.</p>
+
+        <p>Container and closure defects should also be evaluated for detection performance (PoD) with prepared test sets using the assigned risk categories in a manner similar to that for particles. <span class="key-term">Detection threshold studies are typically the first step in evaluating the performance of any new inspection method.</span></p>
+
+        <p>Depending on the product and/or presentation, rejects in the test set should represent all defect types anticipated for a given container type or product family. For particles, use a bracketed range of types (densities) and sizes, from near the lower limit of the visible range (&gt;100 µm in clear solutions) to the largest sizes routinely observed or expected in the pool of rejects.</p>
+
+        <p><span class="key-term">Separate test sets should be designed to represent the unique visual characteristics of DIPs</span>, such as lyophilized powders, suspensions, or emulsions or containers such as those made from amber glass. Threshold studies should be used to determine the size and type of particles that can be routinely detected (≥70% PoD) in this DIP. These data can be used to support risk assessment for an optimized inspection program and help identify when and where additional upstream controls may be needed.</p>
+
+        <p>For an individual manual test set, it is important that all containers and closures are of the same type, and the samples are blinded. UV ink (invisible to the inspectors) may be used to mark containers. Alternatively, bar codes or other coded labels may be used. Manual test sets can be used initially to qualify, or periodically to requalify, human inspectors. These test sets may also be used for direct comparison of manual inspection to semi-automated or automated inspection methods during initial qualification or for periodic requalification.</p>
+
+        <p>A bracketing approach may be used to represent a range of different container sizes when other visual characteristics are similar. Other specialized test set types may be prepared as needed to be used for <span class="key-term">daily challenge or suitability checks for automated inspection systems</span>.</p>
+
+        <h3>7.7 Training and Qualification of Human Inspectors</h3>
+        <p>Before training, potential inspectors should be tested for <span class="key-term">visual acuity</span> and color perception. Near-vision performance should be the equivalent of 6/6 m (20/20 ft), but not conducted at this distance, and with no impairment of color vision. Both the Snellen and Jaeger charts are useful for verifying visual acuity; they test far and near vision, respectively. The use of corrective lenses to achieve the desired visual acuity is permitted.</p>
+
+        <p>Training should include a <span class="key-term">phased approach</span> with a specified number of training hours expected for each segment. Initially, train the potential inspectors with defect photographs or a video library and clear, written descriptions. Utilize subject matter experts to mentor and provide hands-on training with defect standards for the specified method. Reinforce mental or silent counting and follow the paced sequence to achieve consistent inspection timing. Stress the importance of strict adherence to the inspection process (procedure, sequence, and timing).</p>
+
+        <p>Inspector fatigue may be addressed in the qualification process by testing under <span class="key-term">worst-case conditions</span> (e.g., at the end of a typical inspection shift).</p>
+
+        <p>Train all inspectors (QC, QA, and production) with common procedures used for 100% inspection and AQL inspection. All inspection practices should be standardized and consistently executed by all inspection groups.</p>
+
+        <p>Qualification should be performed for each product type and package that the inspector will encounter. A <span class="key-term">bracketed or matrix approach</span> can be used to simplify qualification of products with similar physical or visual characteristics such as container type and size, dosage form, product viscosity, color, and others (product families or groups). It is common to initially train and qualify personnel on clear solutions in clear containers (if produced at the facility) and then expand their expertise to the inspection of more difficult dosage forms or presentations.</p>
+
+        <h3>7.8 Inspector Qualification Requirements</h3>
+        <p>The qualification of all inspection personnel utilizes a manual test set to be inspected under normal operating conditions and inspection critical parameters, including inspection timing and sequence, physical environment, and inspection duration. <span class="key-term">Three successful inspections of the test set</span> are recommended to demonstrate consistent performance for initial qualification of new inspectors. Acceptance criteria for each defect class should be based on the PoD, or RZE observed during test set qualification for the package.</p>
+
+        <p>There are generally two basic approaches to establishing qualification acceptance criteria for the particulate matter detection sequence:</p>
+
+        <p><strong>Percent recovery qualification method:</strong> A test set is prepared with bracketing of each particle type with a one-seeded unit being near-threshold (just above 70% PoD) and the other larger with a higher PoD. Typically, <span class="key-term">not less than 80% or 90% of the units containing visible particles</span> are expected to be detected from the qualification test set.</p>
+
+        <p><strong>RZE qualification method:</strong> The previously determined test set RZE is used to assess the results obtained by the inspector to be qualified. Each inspector to be qualified would then inspect the blinded set, and the <span class="key-term">RZE (the average PoD for all units containing particles &gt;70% PoD)</span> is calculated for each trial. The acceptance criterion is to achieve an RZE during the qualification that is equal to or better than the RZE originally determined during the threshold study.</p>
+
+        <div class="quote-box">
+            %PoD = (Number of times rejected) / (Number of times inspected) × 100<br><br>
+            RZE = the average of all PoD values for all units in the test set with an individual %PoD &gt;70%
+        </div>
+
+        <p>When assessing inspector performance, a limit is also needed for false rejection. A target of <span class="key-term">&lt;5% falsely rejected good units</span> in the test set is recommended.</p>
+
+        <h3>7.9 Requalification</h3>
+        <p>Inspectors should be requalified <span class="key-term">at least annually</span>. Requalification includes a test of visual acuity and testing with at least one product/test set configuration. A <span class="key-term">single successful inspection of the test set</span> is sufficient for requalification. Requalification may also be necessary if poor performance is observed during routine inspection or if the inspector has been away from the inspection operation for an extended period (e.g., <span class="key-term">more than 3 months</span>).</p>
+
+        <p>If an inspector fails the requalification test, a retraining process should be initiated to identify the root cause and allow the inspector to receive additional instruction. After this process has been completed, the inspector may attempt to meet the acceptance criteria one additional time. If the inspector fails, he or she may attempt to qualify again after a specified time period.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>公式 — 閾值曲線建立步驟</h4>
+            <pre>
+閾值研究設計（以清澈溶液 10-mL 玻璃瓶為例）：
+
+步驟 1：選擇粒子類型
+  → 玻璃、不鏽鋼、彈性體、纖維（各 1 類）
+
+步驟 2：設定粒子大小範圍（100 µm 增量）
+  → 100, 200, 300, 400, 500 µm（非纖維）
+  → 500, 1000, 1500, 2000 µm（纖維）
+
+步驟 3：每個尺寸製備 1 顆粒子的標準品
+  → 用光學顯微鏡確認實際大小
+
+步驟 4：每個標準品由多名檢查員盲測 30–50 次
+
+步驟 5：計算各標準品的 PoD，繪製標準曲線
+
+步驟 6：確認 PoD ≥ 70% 的最小粒子大小
+  → 此即該方法的「偵測閾值」
+
+典型結果（清澈溶液，2000–3750 lux）：
+  150–250 µm → 70% PoD（粒子）
+  500–2000 µm → 70% PoD（纖維）
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 閾值研究的戰略價值</h4>
+            <p>閾值研究不只是驗證的技術步驟，它是整個檢查策略的科學基礎：</p>
+            <ul>
+                <li><strong>設定預期</strong>：閾值以下的粒子在正常檢查中無法可靠偵測 → 接受這個現實，通過預防策略控制</li>
+                <li><strong>比較研究</strong>：新 AVI 系統的閾值是否優於或等於 MVI？不是直觀比較，而是數據驅動</li>
+                <li><strong>DIP 的特殊挑戰</strong>：DIP 的閾值通常遠高於清澈溶液 → 量化這個差距，才能設計補充測試來填補</li>
+                <li><strong>持續監控基準</strong>：如果日常拒絕率突然偏離，閾值研究的數據提供了預期水平的參考</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — AVI 每日挑戰測試</h4>
+            <p>AVI 系統的「每日挑戰測試（Daily Challenge Test）」就像每天早晨開車前確認剎車是否正常：不需要重新做全套驗證，但需要確認昨天還能運作的系統今天也正常。</p>
+            <p>每日挑戰測試通常使用簡化的測試集（可以用球形標準粒子），目標不是完整的 PoD 評估，而是確認：</p>
+            <ul>
+                <li>機器的感測器（相機/光電管）仍在工作</li>
+                <li>拒絕機械仍能正確剔除被標記的容器</li>
+                <li>關鍵參數（光源強度、旋轉速度）在規格範圍內</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 最壞情況資格確認的意義</h4>
+            <p>USP 建議在「班末疲勞時」進行資格確認測試，這是一個深刻的思考：</p>
+            <p>如果只在早班、精神狀態最佳時測試，通過的資格確認並不能代表整個工作日的表現。真實的 100% 檢查工作可能在 8 小時後依然在進行。</p>
+            <p>最壞情況測試的策略：</p>
+            <ul>
+                <li>在一個完整模擬檢查班結束後立即進行測試集評估</li>
+                <li>如果此時仍能通過，說明系統（人 + 環境 + 程序）在疲勞條件下仍具備足夠靈敏度</li>
+                <li>這是「資格確認（Qualification）」而非「能力確認（Performance Monitoring）」的邏輯差異</li>
+            </ul>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 人員再確認的觸發條件清單</h4>
+            <p>以下任一情況應觸發目視檢查員再確認：</p>
+            <table>
+                <tr><th>觸發條件</th><th>再確認類型</th></tr>
+                <tr><td>每年例行（年度）</td><td>完整再確認（視力 + 1次測試集）</td></tr>
+                <tr><td>離開崗位 &gt; 3 個月</td><td>完整再確認</td></tr>
+                <tr><td>日常檢查表現不佳</td><td>根本原因分析 + 再確認</td></tr>
+                <tr><td>新增產品/容器類型</td><td>針對新產品/容器的額外確認</td></tr>
+                <tr><td>檢查程序重大變更</td><td>更新確認</td></tr>
+                <tr><td>視力矯正變化</td><td>視力重新測試 + 必要時再確認</td></tr>
+            </table>
+            <p>注意：一次再確認失敗允許在「再訓練後」進行第二次嘗試；若仍失敗，必須等待指定時間後才能再試。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你正在驗證一條 AVI 生產線用於新的高黏度眼用注射劑（黏度約為水的 5 倍）。為什麼不能直接套用現有清澈溶液產品的驗證數據？需要重新進行哪些研究？</li>
+                <li>一位目視檢查員在年度再確認的第一次測試集評估中，假拒率為 8%（超過 5% 的目標），但粒子回收率為 87%（通過 80% 的標準）。她算是通過了再確認嗎？</li>
+                <li>如果你們的 AVI 系統廠商要更新軟體（升級影像分析演算法），需要重新做完整的驗證嗎？還是只需要做「變更確認」？請依據 USP 〈1790〉 的精神說明你的判斷。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 8: PRODUCTS IN DISTRIBUTION -->
+<div class="section-title">8. Products in Distribution — 流通中的產品</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>8. Products in Distribution</h3>
+        <p>Chapter 〈790〉 states, "If it becomes necessary to evaluate product that has been shipped to customers (e.g., because of a complaint or regulatory concern), sample and inspect 20 units. If no particles are observed in the sample, the batch is considered essentially free of visible particulates. If available, additional units may be inspected to gain further information on the risk of particulates in the batch."</p>
+
+        <p>For products in distribution, questions regarding batch quality will occasionally arise from <span class="key-term">customer complaints, observations in the field, customer use questions, and from the use of nonstandard (sensitive) conditions of inspection</span>. As discussed in this chapter, the detection process is probabilistic, and the likelihood of detection is a cumulative function of the particle's visible attributes, drug product and container characteristics, and the inspection method used.</p>
+
+        <p>In an appropriately qualified manufacturing process, the batch is presumed to have been prepared according to robust processes and all containers with package defects and visible particles (nonconforming units) removed prior to labeling. In that regard, the evaluation outlined in 〈790〉, Inspection Procedure, Sampling at Batch Release (After 100% Manufacturing Inspection) and Product in Distribution is only permissible if <span class="key-term">both sampling at batch release and a 100% manufacturing inspection has been successfully completed</span>.</p>
+
+        <p>The particle detection threshold should be determined for a specific inspection method and product/package combination incorporating a variety of particle types and densities that are typically found in the manufacturing environment. For example, the detection threshold for routine, reliable detection (≥70% probability) of a single spherical particle in a clear solution contained in a 10-mL vial utilizing diffuse illumination between 2000 and 3000 lux is often near 150 µm in diameter. Units returned from distribution may be:</p>
+        <ul>
+            <li><span class="key-term">False positive</span> — particles detected under nonstandard (enhanced) conditions but that would not be detected under routine inspection conditions</li>
+            <li><span class="key-term">Particles larger than the acceptance threshold that were missed</span> — statistical reality of the inspection process</li>
+            <li><span class="key-term">Gray zone particles</span> — smaller than the detection threshold, passed through legitimately</li>
+            <li><span class="key-term">Physicochemical change</span> — particles that formed post-release during distribution or storage</li>
+        </ul>
+
+        <p>Ideally, there will be no visible particles in the containers released to market; however, there is always a low probability that this may occur.</p>
+
+        <p>Upon receipt, suspect containers should be subjected to the <span class="key-term">same inspection conditions and methodology used in the release inspection</span>. Particle(s) verified in the returned or re-evaluated supply must be carefully characterized by an analytical forensic process to determine their source and likely cause. Single particles of typical product-contact materials are unlikely to present a concern. Multiple particles, large particle sizes, and any particles indicative of physical or chemical change are significant events and should be subject to further investigation.</p>
+
+        <p>Rare instances of particulate material falling into the gray zone should be expected given the probabilistic nature of the inspection process and should not routinely trigger further evaluation of retention samples. Chapter 〈790〉 provides that <span class="key-term">zero particles found in the sampling and inspection of 20 units signify that the batch is "essentially free of visible particulates."</span> If multiple suspect containers from the same batch are detected, additional units should be inspected, and an appropriate rationale provided to support the batch's conformance to the registered specifications.</p>
+
+        <p>Overall batch quality using internal systems to control particulate matter and the means to investigate these occurrences is key to the life cycle approach for modern pharmaceutical production. Evaluation of retention and stability samples provides insight to batch quality, as do the field-use effects for any medication. While the presence of particles or product or container defects discovered in retained or returned product do not necessarily incriminate the quality of the batch, a careful investigation should be conducted to exclude systemic risks.</p>
+
+        <h3>9. Conclusions and Recommendations</h3>
+        <p>Visual inspection for particles and other visible defects continues to be an important part of the manufacturing process for injections. Chapter 〈790〉 provides a useful reference method and acceptance criteria for visible particulates in injections. Successful execution of visual inspection requires an understanding of the inspection process and careful control of inspection conditions. Both visual inspection procedures and investigative processes for elevated rejects consist of comprehensive and well-documented systems relevant for the products being manufactured. Inspectors must be trained to ensure consistent, high-quality performance.</p>
+
+        <p>Alternative inspection methods, either semi-automated or fully automated, may be used in place of manual inspection methods. Where machine methods are used, the equipment must be validated to demonstrate <span class="key-term">equivalent or better performance when compared to manual inspection</span>. The use of test sets that contain standard defects is an important element in inspector training and qualification as well as machine validation.</p>
+
+        <p>Good product development will lead to a stable product with a lower risk of particle formation. <span class="key-term">Identification of the type or types of particles found during product development and routine manufacturing is critical to reducing their occurrence</span>. Inspection results should be trended to further aid in continuous process improvement with the ultimate goal of defect prevention.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 流通中產品的「20瓶法則」</h4>
+            <p>USP 〈790〉 的「20瓶法則」是業界最常引用也最常誤解的標準之一。正確理解：</p>
+            <ul>
+                <li>「檢查 20 瓶，0 瓶發現粒子 = 批次基本不含可見粒子（essentially free）」</li>
+                <li><strong>前提條件</strong>：必須已完成批次放行的 100% 目視 + AQL 抽樣</li>
+                <li><strong>不是萬用免責條款</strong>：如果多個客戶投訴同一批次，20 瓶規則無法阻止進一步調查</li>
+                <li>「Essentially free（基本上不含）」不等於「零粒子保證」——這反映了目視檢查機率性本質的誠實承認</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 四種「客戶投訴粒子」場景</h4>
+            <p>把流通中發現粒子的四種情況想成四種「售後投訴」場景：</p>
+            <ul>
+                <li><strong>假陽性</strong>：客戶用放大鏡檢查，發現了容器玻璃的正常折射現象 → 正常現象被誤判為粒子</li>
+                <li><strong>漏檢的真實粒子</strong>：檢查員在統計機率下沒有偵測到的 150 µm 粒子 → 預期的系統局限性</li>
+                <li><strong>灰色區粒子</strong>：100 µm 粒子從未被設計為可偵測 → 符合規格的產品</li>
+                <li><strong>上架後形成的粒子</strong>：蛋白質在冷鏈中聚集，或玻璃脫層在長期儲存中發生 → 穩定性問題，需要根本原因調查</li>
+            </ul>
+            <p>每種情況需要完全不同的調查和回應策略。正確分類是 CDMO QA 的關鍵技能。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 客訴調查的分級回應</h4>
+            <p>收到含粒子的返回或投訴樣品時，USP 建議的調查方向：</p>
+            <ul>
+                <li><strong>低風險</strong>：單顆、典型產品接觸材質（如玻璃、彈性體）的粒子 → 記錄、分析、結案</li>
+                <li><strong>中風險</strong>：多顆粒子，但類型已知 → 擴大調查（保留樣品批量檢查、製程回顧）</li>
+                <li><strong>高風險</strong>：大顆粒（&gt;200 µm）、不明來源、有化學/物理變化跡象 → 立即升級調查，考慮市場行動</li>
+            </ul>
+            <p>「灰色區粒子不應常規觸發保留樣品擴大評估」——這是 USP 對業界過度反應的明確指導，但前提是確認為真正的灰色區，而非系統性問題的前兆。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式 — 「20瓶法則」的統計背景</h4>
+            <pre>
+如果 20 瓶中 0 瓶有粒子，批次被認定
+「基本上不含可見粒子」。
+
+統計含義（使用超幾何分佈）：
+若批次真實缺陷率 = 1%（100萬瓶有1萬瓶問題）
+抽 20 瓶都正常的機率 ≈ (0.99)^20 ≈ 82%
+
+→ 這意味著即使有 1% 缺陷率，20 瓶法則
+  仍有 82% 機率「通過」！
+
+因此：20 瓶法則是最低限度的調查工具，
+不是品質保證工具。它的目的是快速評估
+「是否有明顯的系統性問題」，而非確認
+「這批次絕對安全」。
+
+更保守的做法：
+  若發現粒子 → 立即檢查更多單元
+  若仍有疑慮 → 擴大至 AQL 全套抽樣
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 〈1790〉 的最終結論與 CDMO 戰略意涵</h4>
+            <p>USP 〈1790〉 的結論段落包含了三個核心訊息，對 CDMO 的長期策略有重要意涵：</p>
+            <ol>
+                <li><strong>「等效或更好」原則</strong>：AVI 必須驗證優於 MVI，不能因為「機器更貴」就假設更好</li>
+                <li><strong>缺陷識別優先</strong>：知道粒子是什麼，比知道有多少更重要 → 每個 OOS 事件的首要任務是粒子鑑定</li>
+                <li><strong>趨勢分析閉環</strong>：檢查數據不只是批次放行工具，更是持續改善的輸入 → 建立強健的趨勢系統是監管期望</li>
+            </ol>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 的完整目視檢查系統建立路線圖</h4>
+            <p>根據 USP 〈1790〉 全章，建立符合規範的目視檢查系統需要：</p>
+            <table>
+                <tr><th>階段</th><th>活動</th><th>文件輸出</th></tr>
+                <tr><td>產品開發</td><td>粒子來源風險評估、閾值研究設計</td><td>Product-specific Inspection Strategy</td></tr>
+                <tr><td>方法開發</td><td>確定光照條件、背景、速率、容器操作手法</td><td>Inspection Method Specification</td></tr>
+                <tr><td>標準品製備</td><td>缺陷分類、單顆粒子標準品製備、PoD 確定</td><td>Defect Standard Library + Calibration Records</td></tr>
+                <tr><td>測試集建立</td><td>組裝測試集（3區）、書面程序、品質核准</td><td>Test Set SOP + Certificate</td></tr>
+                <tr><td>人員培訓/確認</td><td>視力測試、分階段訓練、3次成功確認</td><td>Inspector Qualification Records</td></tr>
+                <tr><td>AVI 驗證</td><td>等效性研究、Recipe 驗證、每日挑戰</td><td>AVI Validation Report</td></tr>
+                <tr><td>商業生產</td><td>100% 目視、AQL 抽樣、趨勢監控</td><td>Batch Records + Trending Reports</td></tr>
+                <tr><td>持續維護</td><td>年度再確認、測試集更新、製程改善</td><td>Annual Review Reports</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一位重要客戶打電話說，他們在使用你工廠生產的抗體藥物時，在其中 3 瓶中發現了白色粒子。你作為 CDMO 的品管主管，接下來 24 小時的行動計畫是什麼？請按照 USP 〈1790〉 的原則說明你的分類和調查策略。</li>
+                <li>你的保留樣品（Retention Samples）在 18 個月穩定性測試時發現有透明粒子，在批次生產時的 100% 和 AQL 檢查中均未被偵測到。這最可能是哪種粒子類型？應如何分析？對批次品質有何影響？</li>
+                <li>USP 〈1790〉 建議「趨勢分析至少每年一次」，但對於高產量產品，可以更頻繁（如每季）。你的設施如何決定趨勢分析的頻率？哪些指標應該被追蹤？觸發行動的臨界值如何設定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER COMPLETE SUMMARY -->
+<div class="section-title">USP 〈1790〉 Complete Chapter Summary — 全章重點統整</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>完整章節結構回顧</h2>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>章節</th><th>核心主題</th><th>關鍵監管要求</th></tr>
+            <tr><td>1. Scope</td><td>適用範圍、DIP 定義</td><td>強制 100% 目視 + 補充測試 (DIP)</td></tr>
+            <tr><td>2. Background</td><td>PoD 機率性、患者風險</td><td>150 µm = 70% PoD 閾值；患者風險需個別評估</td></tr>
+            <tr><td>3. Process Flow</td><td>100% 檢查 → AQL → 補充</td><td>ANSI/ASQ Z1.4；AQL 值對應缺陷等級</td></tr>
+            <tr><td>4. Life Cycle</td><td>粒子分類、預防、趨勢</td><td>生命週期方法；至少每年趨勢分析</td></tr>
+            <tr><td>5. Defect Classification</td><td>Critical/Major/Minor；DIP 策略</td><td>70% PoD = Reject Zone；DIP 需書面補充計畫</td></tr>
+            <tr><td>6. Methods</td><td>MVI、Semi-Auto、AVI</td><td>2000–3750 lux；10 s/瓶；AVI 需驗證等效性</td></tr>
+            <tr><td>7. Qualification</td><td>標準品製備；Knapp PoD；測試集；人員確認</td><td>初始 3 次通過；年度再確認；假拒率 &lt;5%</td></tr>
+            <tr><td>8. Distribution</td><td>客訴處理；20瓶法則</td><td>同放行條件再檢查；粒子鑑定；系統性風險排除</td></tr>
+            <tr><td>9. Conclusions</td><td>預防優先；趨勢改善</td><td>AVI 等效性；缺陷識別；持續改善文化</td></tr>
+        </table>
+        </div>
+
+        <h3 style="margin-top:1rem;">關鍵數字總結</h3>
+        <ul>
+            <li>50 µm：幾乎 0% PoD</li>
+            <li>150 µm：70% PoD（粒子可靠偵測門檻）</li>
+            <li>200 µm：&gt;95% PoD</li>
+            <li>500 µm：70% PoD 纖維閾值</li>
+            <li>2000–3750 lux：MVI 標準光照範圍</li>
+            <li>10,000 lux：DIP（琥珀玻璃/BFS）最高光照</li>
+            <li>10 s/container：MVI 參考時間（5s黑+5s白）</li>
+            <li>30–50 次：PoD 確定所需重複檢查次數</li>
+            <li>3 次：初始資格確認通過次數</li>
+            <li>1 次：年度再確認通過次數</li>
+            <li>每小時：MVI 強制休息頻率</li>
+            <li>3 個月：離崗需重新資格確認</li>
+            <li>10%：測試集中缺陷品上限</li>
+            <li>&lt;5%：假拒率目標</li>
+            <li>20 瓶：流通中產品評估最低樣本量</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師最終解析 Final Commentary</h2>
+
+        <div class="note-box">
+            <h4>監管機構的查廠重點（PAI / GMP Inspection）</h4>
+            <p>根據 USP 〈1790〉 以及 FDA/EMA 的實際查廠經驗，以下是 CDMO 目視檢查最常見的缺失：</p>
+            <ul>
+                <li><strong>光照度超出範圍</strong>：實際測量值低於 2000 lux，但沒有觸發再檢查或調查</li>
+                <li><strong>人員資格確認文件不全</strong>：找不到年度再確認記錄，或有再確認但沒有視力測試</li>
+                <li><strong>AVI 驗證不完整</strong>：缺少 Knapp 測試集比較，或測試集設計不符合產品風險特性</li>
+                <li><strong>DIP 無補充計畫</strong>：產品是凍乾品或懸浮液，但沒有書面的補充測試程序</li>
+                <li><strong>趨勢分析流於形式</strong>：有數據但無分析，或分析後無後續行動</li>
+                <li><strong>客訴調查深度不足</strong>：所有粒子投訴都用「漏檢」結案，沒有嘗試鑑定粒子成分</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 生命週期方法是一個生態系統</h4>
+            <p>用「森林生態系統」比喻 USP 〈1790〉 的整體框架：</p>
+            <ul>
+                <li><strong>土壤（預防）</strong>：良好的製程設計、元件控制 = 基礎</li>
+                <li><strong>植物（100% 目視）</strong>：主要的過濾機制，移除大部分問題</li>
+                <li><strong>動物（AQL 抽樣）</strong>：監測整個生態系統的健康狀況</li>
+                <li><strong>氣候（趨勢分析）</strong>：長期監控，識別系統性變化</li>
+                <li><strong>生物多樣性（測試集/驗證）</strong>：確保系統能應對多種威脅</li>
+            </ul>
+            <p>破壞任何一個元素，整個生態系統的韌性就會降低。USP 〈1790〉 不是一個檢查清單，而是一個互相支持的完整系統。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 〈1790〉 在 CDMO 商業策略中的定位</h4>
+            <p>對 CDMO 而言，強健的目視檢查系統不只是合規要求，更是競爭優勢：</p>
+            <ul>
+                <li><strong>客戶信任</strong>：能夠向客戶展示 Knapp 方法論的完整驗證數據，證明系統的科學嚴謹性</li>
+                <li><strong>差異化能力</strong>：能夠接受 DIP 產品（凍乾品、生物製劑、CGT）的 CDMO，市場價值更高</li>
+                <li><strong>PAI 準備度</strong>：完整的趨勢數據和驗證文件包，是 Pre-Approval Inspection 快速通過的關鍵</li>
+                <li><strong>風險管理</strong>：有效的 100% 目視系統減少客訴，降低批次調查和潛在召回的風險</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>綜合應用 Final Scenario</h4>
+            <p><strong>情境：</strong>你的 CDMO 正在為一個新的生物製劑客戶建立 AVI 系統驗證計畫。產品是一個高濃度（150 mg/mL）mAb 注射劑，裝在 1 mL 預充填注射器中，溶液呈輕微乳白色（opalescence）。</p>
+            <ol>
+                <li>這個產品是否屬於 DIP？需要哪些補充測試？</li>
+                <li>AVI 閾值研究應使用哪些粒子類型和大小範圍？</li>
+                <li>如何處理「固有蛋白質聚集體」在 AVI 驗證中的角色——它們應該被定義為缺陷品還是驗收品？</li>
+                <li>這個系統的年度持續驗證計畫應包含哪些要素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- FINAL SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>全章最終重點回顧 Complete Chapter Summary</h3>
+    <ul>
+        <li>USP 〈1790〉 的核心原則：目視檢查是機率性過程，預防優先於偵測，生命週期方法貫穿整個系統</li>
+        <li>三層檢查防護：100% 目視（主要過濾）→ AQL 抽樣（系統性能驗證）→ 補充測試（DIP 彌補不足）</li>
+        <li>Knapp 方法學是業界黃金標準：30–50 次重複確定 PoD，70% 定義拒絕區，RZE 評估系統整體性能</li>
+        <li>人員資格確認是可量化的科學過程，而非主觀判斷：視力測試、3次通過初始確認、年度再確認</li>
+        <li>流通中產品投訴需要科學分析粒子類型，而非自動升級調查：單顆典型粒子 vs. 多顆/不明來源需不同回應</li>
+        <li>對 CDMO 而言，目視檢查能力是客戶信任、監管通過和商業競爭力的交叉點</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1790〉 Visual Inspection of Injections | Section 3: AVI Validation &amp; Qualification</p>
+</div>
+
+</body>
+</html>
