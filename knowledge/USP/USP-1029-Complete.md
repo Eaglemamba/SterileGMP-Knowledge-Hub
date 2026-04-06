@@ -1,0 +1,182 @@
+# USP General Chapter 〈1029〉: Good Documentation Guidelines
+
+USP General Chapter 〈1029〉 GOOD DOCUMENTATION GUIDELINES
+Official as of 01-May-2018 | Currently Official 17-Feb-2025
+
+INTRODUCTION
+
+Purpose
+
+Documentation can be viewed as the foundation of all quality systems because clear, complete, accurate records are essential to all operations and procedures. This general chapter provides guidelines on good documentation practices for the Good Manufacturing Practice (GMP)-regulated industries, to be used in the production and control of pharmaceutical products, active pharmaceutical ingredients (APIs), excipients, dietary supplements, food ingredients, and medical devices. This chapter describes the underlying principles of proper documentation for GMP operations to assist the user while working with GMP activities. These guidelines should be helpful for building the basic foundation of a quality system that will ensure proper documentation as well as record integrity and control.
+
+Scope
+
+This chapter covers different levels and types of documentation, including paper and electronic records that consist of raw data, reports, protocols, and procedures related to manufacturing controls and analytical data. The chapter also includes recommendations on information that should be recorded for various types of GMP documents. Electronic systems should be developed to meet guidelines described in this chapter.
+
+This chapter does not provide information about all applicable current legal requirements, nor does it affect any applicable current requirements under GMP regulations.
+
+PRINCIPLES OF GOOD DOCUMENTATION
+
+All steps related to the manufacturing, testing, packing, or holding of pharmaceutical products, APIs, excipients, dietary supplements, food ingredients, and medical devices should be documented.
+
+Good documentation principles for manual or electronic records include the following, as applicable:
+- Records should be clear, concise, accurate, and legible.
+- Data entries should be recorded promptly when actions are performed.
+- Backdating and postdating are not allowed.
+- All corrections to the original entries should be initialed and dated (or captured within an electronic audit trail), with an explanation included in cases where the reason for the change is not obvious.
+- Data entries should be traceable to the person who made the entry.
+- Uncommon abbreviations and acronyms should be defined.
+- Controls should be in place to protect the integrity of the records.
+- In the event that ink may have faded over time (e.g., thermal paper), a copy can be used with verification of its accuracy; the copy should be initialed and dated.
+- Notebooks, data sheets, and worksheets should be traceable.
+- An adequate documentation system is needed to ensure data integrity and availability of current and archived records.
+- Records should be retained per regulatory requirements and be readable during the retention period.
+- All pages should be paginated. Attachments (supporting documents) should be paginated with a reference to the parent document.
+
+DATA COLLECTION AND RECORDING
+
+Formats for data collection and recording include, but are not limited to, the following:
+- Paper forms, data sheets, and worksheets
+- Notebooks and logbooks
+- Instrument printouts
+- Electronic data obtained with a system such as an electronic data system, laboratory information management system (LIMS), or electronic laboratory notebook (ELN)
+
+All data should be permanently recorded directly and legibly when the activity is performed. If it is paper record, then it should be recorded in indelible ink. All data entries should be traceable to who made the entry and when. Additionally, electronic records must meet the requirements of the Code of Federal Regulations Title 21 (21 CFR), Part 11.
+
+Any change to an entry should be made in a way that does not obscure the original entry, with an explanation in cases where the reason for the change is not obvious. Changes should be traceable to who made the change and when the change was made. For clarity, predefined correction codes may be used, for example, WD = wrong date.
+
+Notebook pages and worksheets should be used consecutively, and information should be recorded chronologically. GMP records such as batch records, test methods, and specifications should be given unique identifiers and use version control for the documents.
+
+All data entry fields should be completed. A single line and/or "N/A" should be drawn through portion(s) of a page that are not used. If the record is in an electronic system and the system provides traceability of who filled each field and when, the field can be left blank.
+
+Decimals less than one should be preceded by a zero. Rounding rules and guidelines on significant figures are described in General Notices, 7.20 Rounding Rules.
+
+All dates should be expressed in a format that clearly indicates the day, month, and year.
+
+All GMP records for data collection should undergo appropriate review and signature by a second person to confirm the accuracy, compliance, and completeness of the entries. Additional signatures may be required on the basis of local Standard Operating Procedures (SOPs) for different levels of review (e.g., performed by, verified by, checked by, reviewed by, approved by) as accountability steps.
+
+An official record of signature and initials should exist for each employee or can be contained within the document. Controls should be in place for assigning signature approval requirements and delegation of signature authority, when needed.
+
+In the event that verified copies of raw data have been prepared, the verified copy may be substituted for the original source as raw data.
+
+All multiple-page data sheets or instrument printouts in paper form should be signed/initialed on the first or last page with a note indicating the total number of pages. The first page and all subsequent pages should be uniquely identified to the activity being performed, such as the notebook reference, study number, or worksheet reference.
+
+DIFFERENT TYPES OF GMP DOCUMENTS
+
+The following or similar documents should include the following information, but are not limited to these items.
+
+Laboratory Records
+
+Laboratory records should be organized to ensure that the records are concise, clear, legible, and accurate, and detail the following:
+- Description of materials, such as reagents. This information typically includes the material name, manufacturer and lot number, titer or concentration, expiration date, grade (if known), and a reference to the lab notebook if prepared in the lab
+- Identification of equipment used. This information typically includes equipment name, unique control number, and calibration expiration date, as applicable
+- Procedures used
+- Measurements
+- Formulae and calculations
+- Results and conclusions
+
+Equipment-Related Documentation
+
+All equipment used in manufacturing, testing, packing, or holding of a raw material, component, API, finished product, or other similar item should be maintained and qualified for its intended use. The documentation related to equipment includes:
+- Policies and procedures for operation and maintenance
+- Equipment use
+- Maintenance records
+- Calibration or qualification records
+- Instrument labeling
+
+Deviations and Investigations
+
+All aberrations, anomalies, and exceptions related to manufacturing, testing, packing, or holding of a raw material, component, API, finished product, or other similar item should be documented. Once documented, the deviation should be evaluated and investigated, as appropriate. Procedures should be in place for documenting, evaluating, and investigating such events. Documentation of the investigation should include the following:
+- Description of the event
+- Root-cause investigation
+- Evaluation of data trend
+- Responsibilities of people involved in the investigation or deviations
+- Impact assessment
+- Corrective Action and Preventive Action (CAPA) with timelines
+- Review and approval
+
+Batch Records
+
+A Master Batch Record (MBR) is created as a template for the manufacture of a specific product. An Executed Batch Record, based on the MBR, is used to document the steps and materials involved in the production of a specific batch of a raw material, component, API, finished product, or other similar item. Typically, the following sections are included in a Batch Record, and should be approved by an appropriate representative from the manufacturing site or packaging site:
+- Header information (e.g., product name, batch number, manufacturing site)
+- Unit of operation (e.g., blending, coating, filling)
+- Manufacturing process
+  - Target weights (raw materials)
+  - Conditions (time, temperature)
+  - Deviations and investigations
+- In-process sampling or testing
+- Other critical information, as applicable
+- Sampling plan for release, stability, and retention
+- Review and approval
+
+Certificate of Analysis
+
+The purpose of the Certificate of Analysis ("C of A" or CoA) is to report analytical results for a specific batch of a raw material, component, API, finished product, or other similar item. Typically, the following sections are included on a C of A and should be approved by an appropriate representative from the testing site:
+- Vendor, supplier, or manufacturer information (as applicable)
+- Product information (name and strength)
+- Results for the specific batch, with name of test, acceptance criteria, and result for each test
+- Conformance statement or equivalent
+- Reference to procedure and specification document
+- Reference of data source
+- Approval and date
+- Expiration date or retest information
+
+Standard Operating Procedures
+
+The purpose of an SOP is to provide directions to trained personnel regarding a given set of activities. SOPs should be clear and concise. The following sections are typically included in an SOP:
+- Purpose and scope
+- Instructions and procedure
+- Responsibilities and roles
+- Materials or equipment, as appropriate
+- Definitions or references, as needed
+- Review and approval
+- Revision history
+
+Protocols and Reports
+
+Many tasks and activities are executed on the basis of a predefined, preapproved protocol. The results of these activities are then documented in a final report with conclusions. Examples of such activities are as follows:
+- Equipment qualification
+- Analytical method validation or verification
+- Manufacturing process validation
+- Analytical method or manufacturing technology transfer
+- Cleaning validation
+- Stability study or testing
+- Comparability study
+
+Both the protocol and the report should typically include the following sections:
+- Purpose
+- Plan or instructions
+- Predetermined acceptance criteria
+- Deviations or investigations, or a reference to (for report only)
+- Assessment or evaluation (for report only)
+- Data reference (for report only)
+- Review and approval
+- Revision history
+
+Analytical Procedures
+
+Analytical procedures provide direction to an operator on how to perform a given analytical test. The following sections will typically be included in the analytical procedure:
+- Purpose
+  - Test information
+  - Product information
+- Safety information, if applicable
+- Materials and equipment
+- Procedure, as applicable
+  - System suitability
+  - Preparation of solutions and reagents
+  - Preparation of standards and samples
+  - Instrument parameters
+  - Calculations and reporting
+- Review and approval with approval dates
+- Revision history
+
+Training Documentation
+
+Personnel should be trained to perform their assigned tasks. The training should be documented, and the training records should be retained and kept readily accessible. In general, training documentation should include:
+- Training description including name of training, version, and mode (self-training or instructor led)
+- Completion date
+- Information on the trainer, as applicable
+
+Retention of Documents
+
+An adequate policy for record retention and archiving should be established for the above records. The required length of time depends on the regulatory requirements or company procedures; however, it should be at least 1 year after the batch expiration date.

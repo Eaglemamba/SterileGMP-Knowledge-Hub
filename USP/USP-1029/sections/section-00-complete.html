@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1029〉 - Good Documentation Guidelines</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box, .analogy-box, .note-box, .formula-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .analogy-box ul, .note-box ul { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box h4 { color: #2e7d32 !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h4 { color: #856404 !important; }
+.note-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h4 { color: #7b1fa2 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; }
+.practice-box li { font-size: 0.92rem !important; margin-bottom: 0.35rem !important; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } .header h1 { font-size: 1.1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>USP 〈1029〉 Good Documentation Guidelines</h1>
+    <div class="subtitle">良好文件規範 完整教學版</div>
+    <div class="page-info">USP General Chapter 〈1029〉 | Official as of 01-May-2018 | Complete Chapter</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解良好文件規範（GDocP）的核心原則，包括準確性、可追溯性與及時性</li>
+        <li>掌握不同類型GMP文件的組成要素：批次記錄、SOP、分析規程、CoA等</li>
+        <li>識別電子記錄系統（LIMS、ELN）在符合21 CFR Part 11要求方面的關鍵考量</li>
+        <li>能夠在CDMO生產環境中應用正確的文件更正與偏差記錄程序</li>
+        <li>了解培訓記錄與文件留存政策的合規要求</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<div class="section-title">Section 1: Introduction — Purpose &amp; Scope</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Purpose</h3>
+        <p><span class="key-term">Documentation</span> can be viewed as the foundation of all quality systems because clear, complete, accurate records are essential to all operations and procedures. This general chapter provides guidelines on <span class="key-term">good documentation practices</span> for the <span class="key-term">Good Manufacturing Practice (GMP)</span>-regulated industries, to be used in the production and control of pharmaceutical products, active pharmaceutical ingredients (APIs), excipients, dietary supplements, food ingredients, and medical devices.</p>
+        <p>This chapter describes the underlying principles of proper documentation for GMP operations to assist the user while working with GMP activities. These guidelines should be helpful for building the basic foundation of a quality system that will ensure proper documentation as well as <span class="key-term">record integrity</span> and control.</p>
+        <h3>Scope</h3>
+        <p>This chapter covers different levels and types of documentation, including paper and <span class="key-term">electronic records</span> that consist of raw data, reports, protocols, and procedures related to manufacturing controls and analytical data. The chapter also includes recommendations on information that should be recorded for various types of GMP documents. Electronic systems should be developed to meet guidelines described in this chapter.</p>
+        <p>This chapter does not provide information about all applicable current legal requirements, nor does it affect any applicable current requirements under GMP regulations.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>USP 〈1029〉 將「文件」定位為整個品質系統的基礎，這個定位在製藥產業中具有深遠意義。一個沒有完善文件的品質系統，就像一棟沒有地基的建築——外觀可能完好，但本質上是脆弱的。本章適用於製藥品（原料藥API、成品）、保健品、醫療器材等GMP管制行業，範圍廣泛。</p>
+            <ul>
+                <li>紙本記錄 → 需用不褪色墨水、不可竄改</li>
+                <li>電子記錄 → 須符合21 CFR Part 11規範</li>
+                <li>兩者均適用 → 可追溯性、準確性、完整性</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把GMP文件想成法庭上的證據鏈（chain of custody）。每份記錄都必須能回答：「誰做的？什麼時候做的？做了什麼？」如果任何一環斷了，整個證據就失效了。在製藥的世界裡，這條鏈子從原料入庫一直延伸到患者用藥——斷鏈的代價是患者安全。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>本章不取代現行法規要求。在CDMO環境中，須同時滿足：USP 〈1029〉 指引 + 客戶的特定GMP要求 + 當地主管機關法規（如FDA 21 CFR、EU GMP）。三者如有衝突，以最嚴格者為準。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在你的工廠中，哪些文件屬於「紙本」、哪些屬於「電子」？各自的控制措施是什麼？</li>
+                <li>如果一份批次記錄的某頁記載不清楚，你的處理程序是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: PRINCIPLES OF GOOD DOCUMENTATION -->
+<div class="section-title">Section 2: Principles of Good Documentation</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>All steps related to the manufacturing, testing, packing, or holding of pharmaceutical products, APIs, excipients, dietary supplements, food ingredients, and medical devices should be documented.</p>
+        <p>Good documentation principles for manual or electronic records include the following, as applicable:</p>
+        <ul>
+            <li>Records should be <span class="key-term">clear, concise, accurate, and legible</span>.</li>
+            <li>Data entries should be <span class="key-term">recorded promptly</span> when actions are performed.</li>
+            <li><span class="key-term">Backdating and postdating</span> are not allowed.</li>
+            <li>All corrections to the original entries should be <span class="key-term">initialed and dated</span> (or captured within an electronic audit trail), with an explanation included in cases where the reason for the change is not obvious.</li>
+            <li>Data entries should be <span class="key-term">traceable</span> to the person who made the entry.</li>
+            <li>Uncommon abbreviations and acronyms should be defined.</li>
+            <li>Controls should be in place to protect the <span class="key-term">integrity</span> of the records.</li>
+            <li>In the event that ink may have faded over time (e.g., thermal paper), a copy can be used with verification of its accuracy; the copy should be initialed and dated.</li>
+            <li>Notebooks, data sheets, and worksheets should be traceable.</li>
+            <li>An adequate documentation system is needed to ensure <span class="key-term">data integrity</span> and availability of current and archived records.</li>
+            <li>Records should be retained per regulatory requirements and be readable during the retention period.</li>
+            <li>All pages should be <span class="key-term">paginated</span>. Attachments should be paginated with a reference to the parent document.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — ALCOA+ 原則</h4>
+            <p>這12條原則對應業界熟知的 <strong>ALCOA+</strong> 資料完整性框架：</p>
+            <ul>
+                <li><strong>A</strong>ttributable（可歸屬）— 可追溯到具體人員</li>
+                <li><strong>L</strong>egible（清晰可讀）— 字跡清楚，永久保存</li>
+                <li><strong>C</strong>ontemporaneous（同步記錄）— 當下立即記錄，不事後補填</li>
+                <li><strong>O</strong>riginal（原始性）— 第一手記錄，非複製品</li>
+                <li><strong>A</strong>ccurate（準確性）— 反映實際發生的事</li>
+                <li><strong>+</strong>Complete, Consistent, Enduring, Available</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 記錄更正的「單線刪除法」</h4>
+            <p>更正記錄就像修改法律文件：不能用立可白塗掉原來的字，只能用單線劃掉、旁邊寫上正確資訊並簽名日期。就像法官修改判決書一樣——原始判決仍然可見，修改痕跡清晰，修改者身份明確。這樣做的目的是確保原始記錄永遠可追溯。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 熱感紙的特殊處理</h4>
+            <p>熱感紙（thermal paper，如收銀機紙條）隨時間會褪色，USP明確允許製作核實副本作為代替。在CDMO，某些設備的打印紙屬於此類。處理程序：列印後立即複印 → 在副本上注明「verified copy of original」→ 簽名日期 → 與原件一同歸檔（或在原件褪色後替代保存）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>實務應用 Practical Application</h4>
+            <p style="color:#166534;">在無菌充填操作中，操作員在灌裝重量記錄表上填錯了一個數字。正確的更正方式：在錯誤數字上畫單線 → 旁邊空白處寫上正確數字 → 簽上自己的縮寫字（initial）和日期時間 → 視情況添加更正說明（如「transposition error 更正筆誤」）。禁止：使用立可白、整頁撕除重填、未簽名的修改。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: DATA COLLECTION AND RECORDING -->
+<div class="section-title">Section 3: Data Collection and Recording</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Formats for data collection and recording include, but are not limited to, the following:</p>
+        <ul>
+            <li>Paper forms, data sheets, and worksheets</li>
+            <li>Notebooks and logbooks</li>
+            <li>Instrument printouts</li>
+            <li><span class="key-term">Electronic data</span> obtained with a system such as an electronic data system, <span class="key-term">laboratory information management system (LIMS)</span>, or <span class="key-term">electronic laboratory notebook (ELN)</span></li>
+        </ul>
+        <p>All data should be permanently recorded directly and legibly when the activity is performed. If it is paper record, then it should be recorded in <span class="key-term">indelible ink</span>. All data entries should be traceable to who made the entry and when. Additionally, electronic records must meet the requirements of the <span class="key-term">Code of Federal Regulations Title 21 (21 CFR), Part 11</span>.</p>
+        <p>Any change to an entry should be made in a way that does not obscure the original entry. For clarity, predefined <span class="key-term">correction codes</span> may be used, for example, WD = wrong date.</p>
+        <p>Notebook pages and worksheets should be used consecutively, and information should be recorded chronologically. GMP records such as batch records, test methods, and specifications should be given <span class="key-term">unique identifiers</span> and use <span class="key-term">version control</span> for the documents.</p>
+        <p>All data entry fields should be completed. A single line and/or "N/A" should be drawn through portion(s) of a page that are not used.</p>
+        <p>All dates should be expressed in a format that clearly indicates the day, month, and year.</p>
+        <p>All GMP records for data collection should undergo appropriate <span class="key-term">review and signature by a second person</span> to confirm the accuracy, compliance, and completeness of the entries. Additional signatures may be required on the basis of local SOPs for different levels of review (e.g., performed by, verified by, checked by, reviewed by, approved by) as accountability steps.</p>
+        <p>In the event that verified copies of raw data have been prepared, the <span class="key-term">verified copy</span> may be substituted for the original source as raw data.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 21 CFR Part 11</h4>
+            <p>21 CFR Part 11是美國FDA對電子記錄與電子簽名的核心法規。如果你的工廠使用任何電子系統記錄GMP數據，必須符合：</p>
+            <ul>
+                <li>稽核軌跡（Audit Trail）— 自動記錄所有操作（誰、何時、做什麼）</li>
+                <li>電子簽名 — 須能唯一識別個人，不可共用帳號</li>
+                <li>系統驗證 — LIMS/ELN本身須經過電腦化系統驗證（CSV）</li>
+                <li>數據安全 — 防止未授權刪除或修改</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 版本控制</h4>
+            <p>文件版本控制就像Word的「版本歷史」功能，但更正式。想像每份SOP都有自己的「身份證號碼」（文件編號）加上「出生年月」（版本號和生效日期）。當新版本生效時，舊版本自動「退休」但不消失——就像公司的組織架構圖，即使人員異動，舊版圖紙仍保存在歷史檔案中。這讓你在任何時間點都能重建「當時執行的是哪一版規程」。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 日期格式標準化</h4>
+            <pre>正確日期格式示例：
+DD-MMM-YYYY  →  06-APR-2026
+DD/MM/YYYY   →  06/04/2026
+YYYY-MM-DD   →  2026-04-06
+
+避免使用：
+MM/DD/YY  →  04/06/26  （美式，易與歐式混淆）
+4/6/26    →  （模糊，是4月6日還是6月4日？）
+
+建議：公司統一規定一種格式，並在所有SOP、表單中貫徹執行。</pre>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 雙人審查的意義</h4>
+            <p>第二人審查（2nd person review）不是「橡皮圖章」，審查者必須真正核對：計算是否正確？單位是否一致？結果是否在規格範圍內？缺失的欄位是否有說明？如果審查者發現問題，應啟動偏差程序，而不是直接代為填補。共謀（仿造他人簽名）是數據完整性的嚴重違規，可能導致FDA警告信。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠LIMS系統的稽核軌跡保留多久？符合法規要求嗎？</li>
+                <li>當儀器打印紙上的某個數值被發現與手動記錄不符時，應如何處理？</li>
+                <li>「N/A」的填寫是否有SOP規範？什麼情況下可以填N/A？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: DIFFERENT TYPES OF GMP DOCUMENTS -->
+<div class="section-title">Section 4: Different Types of GMP Documents</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Laboratory Records</h3>
+        <p>Laboratory records should be organized to ensure that the records are concise, clear, legible, and accurate, and detail the following:</p>
+        <ul>
+            <li>Description of materials, such as reagents (material name, manufacturer, lot number, titer/concentration, expiration date, grade)</li>
+            <li>Identification of equipment used (equipment name, unique control number, calibration expiration date)</li>
+            <li>Procedures used</li>
+            <li>Measurements</li>
+            <li>Formulae and calculations</li>
+            <li>Results and conclusions</li>
+        </ul>
+        <h3>Equipment-Related Documentation</h3>
+        <p>All equipment used in manufacturing, testing, packing, or holding should be maintained and qualified for its intended use. Documentation includes:</p>
+        <ul>
+            <li>Policies and procedures for operation and maintenance</li>
+            <li>Equipment use</li>
+            <li>Maintenance records</li>
+            <li>Calibration or qualification records</li>
+            <li>Instrument labeling</li>
+        </ul>
+        <h3>Deviations and Investigations</h3>
+        <p>All aberrations, anomalies, and exceptions should be documented. Documentation of the investigation should include:</p>
+        <ul>
+            <li>Description of the event</li>
+            <li>Root-cause investigation</li>
+            <li>Evaluation of data trend</li>
+            <li>Responsibilities of people involved</li>
+            <li>Impact assessment</li>
+            <li><span class="key-term">Corrective Action and Preventive Action (CAPA)</span> with timelines</li>
+            <li>Review and approval</li>
+        </ul>
+        <h3>Batch Records</h3>
+        <p>A <span class="key-term">Master Batch Record (MBR)</span> is created as a template for the manufacture of a specific product. An <span class="key-term">Executed Batch Record</span>, based on the MBR, is used to document the steps and materials involved in the production of a specific batch. Typically includes:</p>
+        <ul>
+            <li>Header information (product name, batch number, manufacturing site)</li>
+            <li>Unit of operation (blending, coating, filling)</li>
+            <li>Manufacturing process (target weights, conditions, deviations)</li>
+            <li>In-process sampling or testing</li>
+            <li>Sampling plan for release, stability, and retention</li>
+            <li>Review and approval</li>
+        </ul>
+        <h3>Certificate of Analysis</h3>
+        <p>The purpose of the <span class="key-term">Certificate of Analysis (CoA)</span> is to report analytical results for a specific batch. Typically includes:</p>
+        <ul>
+            <li>Vendor/supplier/manufacturer information</li>
+            <li>Product information (name and strength)</li>
+            <li>Results for the specific batch (test name, acceptance criteria, result)</li>
+            <li>Conformance statement</li>
+            <li>Reference to procedure and specification document</li>
+            <li>Approval and date</li>
+            <li>Expiration date or retest information</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — GMP文件階層</h4>
+            <p>GMP文件可分為三個層次，形成金字塔結構：</p>
+            <ul>
+                <li><strong>第一層（政策）</strong>：品質手冊、品質政策 — 說明「為什麼」</li>
+                <li><strong>第二層（程序）</strong>：SOP、規格書、驗證方案 — 說明「怎麼做」</li>
+                <li><strong>第三層（記錄）</strong>：批次記錄、實驗室記錄、偏差報告 — 說明「做了什麼」</li>
+            </ul>
+            <p>批次記錄（Batch Record）特別重要：MBR是「食譜模板」，Executed Batch Record是「烹飪日記」——記錄每次實際發生的一切，包括任何偏差。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — CoA就是藥品的「成績單」</h4>
+            <p>把CoA想成你高中時的成績單：學生姓名（產品名稱）、學號（批號）、各科目成績（各項測試結果）、及格標準（驗收標準）、校長蓋章（授權人簽名）。家長（客戶）用成績單來判斷孩子（產品）是否達標。如果成績單上有塗改或數據不實，不只是誠信問題，更可能造成患者傷害。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — CAPA的時效性</h4>
+            <p>偏差調查的CAPA必須附上時間表（timelines）。這不是形式主義：一個沒有截止日期的CAPA等於沒有承諾。在FDA/EMA稽查時，稽查員會特別查看CAPA是否按時完成、是否有效。在CDMO，客戶通常要求在規定時間內（如30天/60天）完成並提交偏差報告。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application — CDMO場景</h4>
+            <p>在代工充填（fill-finish）作業中，MBR由客戶提供（或與CDMO共同開發）。每次生產時，CDMO依據MBR執行並完成Executed Batch Record。關鍵點：客戶有權審查批次記錄 → CDMO必須確保記錄完整、清晰、無未說明的空白欄位。任何偏差必須開立deviation report，不能「自行判斷不重要就算了」。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: SOPs, PROTOCOLS, ANALYTICAL PROCEDURES -->
+<div class="section-title">Section 5: SOPs, Protocols, Reports, Analytical Procedures</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Standard Operating Procedures</h3>
+        <p>The purpose of an <span class="key-term">SOP</span> is to provide directions to trained personnel regarding a given set of activities. SOPs should be clear and concise. Typical sections include:</p>
+        <ul>
+            <li>Purpose and scope</li>
+            <li>Instructions and procedure</li>
+            <li>Responsibilities and roles</li>
+            <li>Materials or equipment, as appropriate</li>
+            <li>Definitions or references, as needed</li>
+            <li>Review and approval</li>
+            <li>Revision history</li>
+        </ul>
+        <h3>Protocols and Reports</h3>
+        <p>Many tasks and activities are executed on the basis of a predefined, preapproved protocol. Examples of such activities:</p>
+        <ul>
+            <li>Equipment qualification</li>
+            <li>Analytical method validation or verification</li>
+            <li>Manufacturing process validation</li>
+            <li>Analytical method or manufacturing technology transfer</li>
+            <li>Cleaning validation</li>
+            <li>Stability study or testing</li>
+            <li>Comparability study</li>
+        </ul>
+        <p>Both the protocol and the report should typically include: Purpose; Plan or instructions; Predetermined acceptance criteria; Deviations or investigations (report only); Assessment or evaluation (report only); Data reference (report only); Review and approval; Revision history.</p>
+        <h3>Analytical Procedures</h3>
+        <p>Analytical procedures provide direction to an operator on how to perform a given analytical test. Typical sections include:</p>
+        <ul>
+            <li>Purpose (test information, product information)</li>
+            <li>Safety information, if applicable</li>
+            <li>Materials and equipment</li>
+            <li>Procedure (system suitability; preparation of solutions, reagents, standards, and samples; instrument parameters; calculations and reporting)</li>
+            <li>Review and approval with approval dates</li>
+            <li>Revision history</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — Protocol vs. SOP的差異</h4>
+            <p>SOP和Protocol（方案）常被混淆，但有本質區別：</p>
+            <ul>
+                <li><strong>SOP</strong>：適用於重複性的常規活動（如清潔程序），長期有效，定期審查更新</li>
+                <li><strong>Protocol</strong>：針對特定一次性或限定次數活動（如工廠驗證），有明確的開始和結束，執行完成後產生Report</li>
+                <li><strong>Analytical Procedure（分析規程）</strong>：介於兩者之間，適用於特定測試方法，比SOP更詳細，包含系統適用性要求</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — SOP像「食譜」，Protocol像「試菜計劃」</h4>
+            <p>SOP是一份固定的食譜，任何廚師都可以用它每天做出同樣的菜。Protocol是米其林主廚為了測試新食材所寫的「試菜計劃」——有明確的測試目的、預設的成功標準，試完後要寫「試菜報告」（Report）說明結果，之後這個Recipe才可能變成正式的SOP。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 預先設定驗收標準</h4>
+            <p>驗證/確效協議中的驗收標準（acceptance criteria）必須在執行前預先設定，不能在看到結果後才決定「這樣算通過吧」。這是防止「結果導向」的關鍵保護措施。FDA稽查員特別關注：執行前版本的Protocol上的標準，是否與最終Report完全一致？如有變更，必須有書面的Protocol Amendment說明原因。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠SOP審查周期是幾年？如何確保SOP內容仍然反映實際操作？</li>
+                <li>如果分析規程中的系統適用性測試（SST）失敗，你的處理流程是什麼？</li>
+                <li>清潔驗證Protocol的驗收標準應該在什麼時候決定，由誰決定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 6: TRAINING AND RETENTION -->
+<div class="section-title">Section 6: Training Documentation &amp; Retention of Documents</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>Training Documentation</h3>
+        <p>Personnel should be trained to perform their assigned tasks. The training should be documented, and the training records should be retained and kept readily accessible. In general, training documentation should include:</p>
+        <ul>
+            <li>Training description including <span class="key-term">name of training, version, and mode</span> (self-training or instructor led)</li>
+            <li>Completion date</li>
+            <li>Information on the trainer, as applicable</li>
+        </ul>
+        <h3>Retention of Documents</h3>
+        <p>An adequate policy for <span class="key-term">record retention</span> and archiving should be established for the above records. The required length of time depends on the regulatory requirements or company procedures; however, it should be at least <span class="key-term">1 year after the batch expiration date</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 培訓記錄的法規要求</h4>
+            <p>培訓記錄是稽查必查項目。關鍵要素：</p>
+            <ul>
+                <li>訓練名稱必須包含<strong>版本號</strong>——確保員工受訓的版本與當前執行版本一致</li>
+                <li>訓練模式——自學（self-training）vs 講師帶教（instructor-led）有不同的文件要求</li>
+                <li>完成日期——需在SOP生效日之前完成培訓，方可執行相關操作</li>
+                <li>訓練師資訊——尤其在OJT（在職訓練）時，誰教的必須有記錄</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 文件留存就像醫療病歷</h4>
+            <p>製藥文件留存就像醫院的病歷保存制度。USP規定至少保留到批次有效期後1年，但這只是最低要求。FDA 21 CFR Part 211要求批次記錄保留至少有效期後1年，且不少於3年。EU GMP要求至少1年（一般至少2年）。在CDMO，還需考慮客戶契約要求（通常更長）。建議以最嚴格的要求為準，建立統一的留存矩陣（Retention Matrix）。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 版本追蹤的重要性</h4>
+            <p>「員工受訓的是哪個版本的SOP？」這個問題在稽查時非常重要。如果SOP更新了但員工還沒有受訓新版本，他執行操作時法理上依據的是舊版本。解決方案：訓練管理系統（LMS）應自動追蹤每位員工所受訓的文件版本，並在文件更新時自動觸發再培訓要求。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>建立文件留存矩陣（Retention Matrix）是最佳實踐：列出所有文件類型 × 各主要法規的留存要求（FDA/EMA/日本PMDA等）→ 取各法規最長要求作為公司標準。例如：批次記錄 = max(FDA 3年, EU 5年, 客戶要求) → 以最長為準，確保全球合規。</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>文件是品質系統的基礎</strong>：沒有文件，就沒有可以驗證的品質。GDocP確保每一步操作都有據可查。</li>
+        <li><strong>ALCOA+ 原則</strong>：所有記錄必須可歸屬（Attributable）、清晰可讀（Legible）、同步（Contemporaneous）、原始（Original）、準確（Accurate），加上完整、一致、持久、可取用。</li>
+        <li><strong>更正規範</strong>：單線劃除 + 簽名 + 日期 + 必要時附說明；禁止覆蓋或塗改。</li>
+        <li><strong>電子記錄</strong>：須符合21 CFR Part 11，含稽核軌跡、電子簽名、系統驗證。</li>
+        <li><strong>六大GMP文件類型</strong>：實驗室記錄、設備文件、偏差調查、批次記錄（MBR/Executed BR）、CoA、SOP/Protocol/分析規程。</li>
+        <li><strong>留存要求</strong>：至少批次有效期後1年（各地法規不同，取最嚴格者）。</li>
+        <li><strong>培訓記錄</strong>：必須記錄訓練版本號、完成日期、訓練師資訊。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:1.5rem;right:1.5rem;width:45px;height:45px;background:#3498db;color:white;border:none;border-radius:50%;cursor:pointer;font-size:1.3rem;box-shadow:0 3px 12px rgba(52,152,219,0.4);z-index:999;">↑</button>
+
+</body>
+</html>
