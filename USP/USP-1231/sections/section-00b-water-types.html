@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1231〉 - Part B: Validation, System Design &amp; Chemical Evaluations</title>
+    <style>
+/* SterileGMP Knowledge Hub - Shared CSS Template v2.0 */
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>USP 〈1231〉 Water for Pharmaceutical Purposes</h1>
+    <div class="subtitle">製藥用水 完整教學版（第二部分）</div>
+    <div class="page-info">USP General Chapter 〈1231〉 | Part B: Validation, System Design &amp; Chemical Evaluations (pp. 12–26)</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本節學習目標 Learning Objectives — Part B</h3>
+    <ul>
+        <li>理解水系統驗證生命週期（DQ/IQ/OQ/PQ）的各階段目的與要求</li>
+        <li>掌握水系統三階段性能確認（PQ Phase 1/2/3）的策略與時間安排</li>
+        <li>了解 PW 和 WFI 系統的主要單元操作（unit operations）及其微生物控制重點</li>
+        <li>理解系統材料選擇（MOC）、消毒方式（熱、化學、UV）對水質的影響</li>
+        <li>掌握 TOC 和導電度測試的原理，以及 Stage 1/2/3 導電度測試流程</li>
+        <li>了解化學評估中 Sterile Water 的特殊導電度和 TOC 規格</li>
+    </ul>
+</div>
+
+<!-- ===================== SECTION 4: VALIDATION ===================== -->
+<div class="section-title">Section 4 — Validation and Qualification of Water Systems 水系統驗證與確認</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>4. VALIDATION AND QUALIFICATION OF WATER PURIFICATION, STORAGE, AND DISTRIBUTION SYSTEMS</h3>
+        <h3>4.1 Validation Requirement</h3>
+        <p>Purified Water and Water for Injection systems must be <span class="key-term">validated</span> to reliably and consistently produce and distribute water of acceptable chemical and microbiological quality. Validation demonstrates that the water system performs as intended, within the defined design criteria and operating conditions.</p>
+
+        <h3>4.2 Validation Approach</h3>
+        <p>The validation protocol should be based on the boundaries of the water system and the critical water quality and process attributes needed to maintain consistent performance. The system boundary may stop at the point of use or may include the water transfer process.</p>
+
+        <h3>4.2.1 VALIDATION ELEMENTS</h3>
+        <p>Validation is accomplished through the use of a structured, documented process. The phases of this process include:</p>
+        <ul>
+            <li><span class="key-term">Design Qualification (DQ)</span> — verifies that the proposed design meets the user requirements</li>
+            <li><span class="key-term">Installation Qualification (IQ)</span> — verifies that the system is installed per design specifications</li>
+            <li><span class="key-term">Operational Qualification (OQ)</span> — verifies that the system operates as designed within specified ranges</li>
+            <li><span class="key-term">Performance Qualification (PQ)</span> — demonstrates that the system consistently produces water meeting quality specifications under production conditions</li>
+            <li><span class="key-term">Validation Maintenance</span> — ongoing activities to maintain validated state</li>
+        </ul>
+        <p>Factory Acceptance Testing (FAT), Site Acceptance Testing (SAT), and commissioning testing may supplement qualification tests for IQ or OQ.</p>
+
+        <h3>4.2.4 OPERATIONAL QUALIFICATION</h3>
+        <p>The OQ phase consisting of tests and inspections to verify that the equipment, system alerts, and controls are operating reliably and that appropriate Alert and Action Levels are established. During this phase of validation specific testing is performed for alarms, verifying control sequences, equipment functional checks, and verification of operating ranges. Standard operating procedures (SOPs) for all aspects of water system operation, maintenance, water use, water sampling, and testing should be in place and operator training completed.</p>
+
+        <h3>4.2.5 PERFORMANCE QUALIFICATION</h3>
+        <p>The prospective PQ stage considers two aspects of the water system: critical process parameters and critical water attribute parameters. These are evaluated in parallel by monitoring the water quality and demonstrating acceptable quality attributes while demonstrating control of the process parameters. The initial PQ stage may result in refinement of process parameters to yield appropriate water quality. This PQ stage includes an increased frequency of monitoring for approximately <span class="key-term">2–4 weeks</span>, or sufficient time to generate adequate data to demonstrate that water meeting the appropriate quality attributes is produced and distributed.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 水系統驗證生命週期</h4>
+            <p>水系統驗證遵循標準的製藥驗證生命週期模型，通常分為三個主要階段：</p>
+            <ul>
+                <li><strong>設計階段：</strong>DQ（設計確認）+ URS（使用者需求規格）</li>
+                <li><strong>安裝/操作確認：</strong>IQ（安裝確認）+ OQ（操作確認）</li>
+                <li><strong>性能確認：</strong>PQ Phase 1 → Phase 2 → Phase 3（長期監控）</li>
+            </ul>
+            <p>USP 〈1231〉 建議的 PQ 三階段策略（傳統 Approach）：</p>
+            <ul>
+                <li><strong>Phase 1（2–4 週）：</strong>強化監控，建立基準線，確認系統能穩定生產</li>
+                <li><strong>Phase 2（再 2–4 週）：</strong>繼續監控，跨越各種操作狀態（如消毒後）</li>
+                <li><strong>Phase 3（1 年以上）：</strong>降低監控頻率至例行水準，包含季節性變異</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>水系統驗證文件架構 Validation Documentation</h4>
+            <pre>
+驗證主計畫 (VMP)
+  └─ 水系統驗證計畫 (Water System Validation Plan)
+       ├─ URS（使用者需求規格）
+       ├─ DQ 報告
+       ├─ IQ 協議 + 報告
+       ├─ OQ 協議 + 報告（含 FAT/SAT）
+       ├─ PQ 協議 + 報告（Phase 1/2/3）
+       └─ 驗證總結報告 (Validation Summary Report)
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — OQ 的關鍵要素</h4>
+            <p>OQ 階段是「設備功能測試」的最後關卡，必須在 OQ 完成後才能進入 PQ（產品/水質測試）。OQ 的重點包括：報警功能確認（alarm verification）、控制序列確認（control sequence verification）、操作範圍確認（operating range）。特別重要的是：OQ 完成時，所有 SOP 必須已到位、操作員訓練必須完成——這是常見的驗證查廠 deficiency 項目。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — PQ 的三階段</h4>
+            <p>PQ 三階段就像新進員工的「試用期管理」：Phase 1 是密集觀察（每天報到），Phase 2 是常規監督（每週 check-in），Phase 3 是正式轉正（按季度考核）。水系統也一樣——剛啟動時必須密集監控，確認系統穩定後才能降低監控頻率，但從不停止監控。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 新廠房啟動時，水系統驗證通常是商業批次生產的先決條件（prerequisite）。常見的計畫錯誤是低估 PQ Phase 1 的時間——USP 要求「至少 2–4 週，且需涵蓋系統的各種操作狀態」。若新廠在冬季完成安裝並開始 PQ，必須確認 PQ Phase 3 能涵蓋夏季（季節性微生物負荷高峰），否則需要補充驗證數據。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 4.3: OPERATIONAL USE ===================== -->
+<div class="section-title">Section 4.3 — Operational Use: Monitoring, Maintenance &amp; Change Control 操作維護與變更控制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>4.3 Operational Use</h3>
+        <h3>4.3.1 MONITORING</h3>
+        <p>After successful completion of the validation process, a water system enters its operational use phase. During this phase, the system must be continuously monitored to ensure that it remains in a state of control. Monitoring programs should include both in-process (PC) monitoring and quality control (QC) monitoring. The frequency and locations of sampling should be sufficient to generate meaningful data for trending and system control purposes.</p>
+
+        <h3>4.3.2 VALIDATION MAINTENANCE</h3>
+        <p>Maintaining the validated state of the water system is an ongoing activity. <span class="key-term">Validation maintenance</span> activities include routine maintenance, preventive maintenance, calibration of instrumentation, corrective maintenance, sanitization activities, and periodic system review. A robust preventive maintenance program is essential to maintaining consistent water system performance.</p>
+
+        <h3>4.3.3 CHANGE CONTROL</h3>
+        <p>Any change to the water system that could affect its performance must be controlled through a formal <span class="key-term">change control</span> process. Changes to be considered include physical changes to equipment and piping, changes to operating parameters, software changes, and changes to operating or maintenance procedures. The change control process should include an impact assessment to determine the extent of requalification needed.</p>
+
+        <h3>4.3.4 PERIODIC REVIEW</h3>
+        <p>The water system qualification, maintenance history, calibration records, quality and process data, issues with the unit operations and any process variability, change control, and other validation maintenance data should be assessed periodically to determine impact on the state of control. The review may result in adjustments to operating or sanitization processes, calibration or maintenance plans, or monitoring plans. This may also result in additional testing or repeating certain qualification tasks (e.g., re-qualification).</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 驗證維護的持續性</h4>
+            <p>USP 強調「驗證」不是一次性活動，而是持續性的生命週期管理。水系統進入常規使用後，需要維持的三大支柱：</p>
+            <ul>
+                <li><strong>持續監控（Ongoing Monitoring）：</strong>PC + QC 取樣，建立趨勢，偵測異常</li>
+                <li><strong>預防性維護（Preventive Maintenance）：</strong>過濾器更換、膜清洗、UV 燈更換、校準</li>
+                <li><strong>變更控制（Change Control）：</strong>任何設備、管路、操作參數變更都需評估再驗證範圍</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 週期性回顧</h4>
+            <p>水系統的 Annual Product Review（APR）/ Annual Review 是 FDA 和 EU GMP 的明確要求。這個回顧必須包含：所有 OOS 事件分析、消毒頻率是否適當、維護歷史、校準記錄和趨勢分析。若回顧顯示系統持續超出 Alert Level，可能觸發再驗證（re-qualification）的需求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 變更控制的重要性</h4>
+            <p>水系統的變更控制就像飛機的適航維護——任何非計畫的零件更換或系統修改，都必須記錄在案並評估安全影響。一個看似微小的管路延長（dead leg 增加）或閥門更換，都可能改變水系統的流動特性和消毒效果，進而影響微生物控制。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 WFI 系統的循環泵需要緊急更換（型號相同但廠商不同），這是否需要啟動變更控制？需要哪些再驗證活動？</li>
+                <li>水系統連續 3 個月的微生物數據顯示接近 Action Level，週期性回顧應提出什麼建議？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5: SYSTEM DESIGN ===================== -->
+<div class="section-title">Section 5 — Design and Operation of PW and WFI Systems 系統設計與操作</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5. DESIGN AND OPERATION OF PURIFIED WATER AND WATER FOR INJECTION SYSTEMS</h3>
+        <p>The design, installation, and operation of systems to produce Purified Water and Water for Injection include similar components, control techniques, and procedures. The quality attributes of the two waters differ in their bioburden expectation, the presence of a bacterial endotoxin requirement for Water for Injection, and in their methods of preparation.</p>
+        <p>Production of pharmaceutical water involves sequential unit operations (processing steps) that address specific water quality attributes and protect the operation of subsequent unit operations in the production train.</p>
+
+        <h3>5.1 Unit Operations Considerations</h3>
+        <p><strong>5.1.2 Activated Carbon:</strong> The chief operating concerns regarding <span class="key-term">activated carbon beds</span> include the propensity to support bacterial growth, the potential for hydraulic channeling, the organic adsorption capacity, and insufficient contact time. Control measures may involve monitoring water flow rates and differential pressures, sanitizing with hot water or steam, backwashing, and frequent replacement of the carbon bed. Alternative technologies to activated carbon beds can be used to avoid their microbial challenges. These include disinfectant-neutralizing chemical additives and intense ultraviolet (UV) light for removal of chlorine, and regenerable organic scavenging deionizing resins for removal of organics.</p>
+
+        <p><strong>5.1.6 Deionization:</strong> Concerns for all forms of deionization units include microbial and endotoxin control, chemical additive impact on resins and membranes, and loss, degradation, and fouling of resin. Control measures may include continuous recirculation loops, effluent microbial control by UV light, conductivity monitoring, resin testing, and frequent regeneration.</p>
+
+        <p><strong>5.1.7 Reverse Osmosis:</strong> <span class="key-term">Reverse osmosis (RO)</span> units use semipermeable membranes. Many factors, including pH, temperature, source water hardness, permeate and reject flow rate, and differential pressure across the membrane, affect the selectivity and effectiveness of this permeation. For most source waters, a single stage of RO is usually not enough to meet Purified Water conductivity specifications. A second pass of this permeate water through another RO stage usually achieves the necessary performance.</p>
+
+        <p><strong>5.1.9 Microbial-Retentive Filtration:</strong> Filters rated as 0.2 to 0.22 µm may not provide absolute microbial retention in water systems because of the "pass-through" phenomenon resulting from tiny cells or less cell "stickiness," or perhaps by a "grow-through" phenomenon. Nevertheless, microbial retention success in water systems has been reported with the use of filters rated as 0.2 or 0.1 µm.</p>
+
+        <p><strong>5.1.11 Distillation:</strong> Methods of control may involve the following: preliminary steps to remove dissolved carbon dioxide and other volatile or noncondensable impurities; reliable mist elimination to minimize feed water droplet entrainment; on-line conductivity sensing with automated diversion to waste to prevent unacceptable water upon still start-up or malfunction.</p>
+
+        <p><strong>5.1.12 Storage Tanks:</strong> Storage tanks are included in water distribution systems to optimize processing equipment capacity. Areas of concern include microbial growth or corrosion due to irregular or incomplete sanitization and microbial contamination from unalarmed rupture disk failures caused by condensate-occluded vent filters. Control considerations may include the use of closed tanks with smooth interiors, spray balls on recirculating loop returns, and the use of heated, jacketed/insulated tanks.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 單元操作流程</h4>
+            <p>典型 PW/WFI 系統的單元操作序列（由前到後）：</p>
+            <ul>
+                <li>原水 → 預過濾（Prefiltration）</li>
+                <li>→ 活性碳（Activated Carbon）— 去除氯</li>
+                <li>→ 軟化器（Softener）— 去除硬水</li>
+                <li>→ 逆滲透（RO，通常 2 段）— 去離子、有機物、微生物</li>
+                <li>→ UV 254nm — 降低 TOC 或消毒</li>
+                <li>→ 去離子（DI/EDI）— 精密去離子</li>
+                <li>→ 超過濾（UF）— 去除內毒素（WFI 路線）</li>
+                <li>→ 蒸餾（Distillation）— WFI 傳統路線</li>
+                <li>→ 儲槽（Storage Tank）→ 配水系統（Distribution Loop）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 活性碳的微生物風險</h4>
+            <p>活性碳床（Activated Carbon Bed）是水系統中最容易形成生物膜的單元，因為它提供了大表面積且能吸附微生物賴以生長的有機物（包括它所吸附的氯也被移除，消除了抑菌效果）。USP 建議：以熱水或蒸汽消毒，或考慮使用替代技術（UV 去氯 + 有機掃除型離子交換樹脂）來規避這個風險。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — RO 膜的限制</h4>
+            <p>單段 RO 通常無法達到 PW 的導電度規格（≤1.3 µS/cm），這是因為 RO 的拒絕率（rejection rate）約 95–99%，取決於操作條件。工廠通常採用「雙段 RO（double-pass RO）」或「RO + EDI（電去離子）」來確保達標。注意：RO 不能有效去除所有 VOCs（揮發性有機物），若原水含有特殊有機物污染，需要在 RO 前後加裝活性碳或 UV/H₂O₂ 系統。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 儲槽的呼吸器</h4>
+            <p>水系統儲槽的排氣過濾器（vent filter）就像人的「鼻子」——儲槽水位上下波動時，必須允許空氣進出。但這個「鼻子」必須有過濾功能（0.2 µm 親水疏水膜），防止外界微生物進入。若排氣過濾器被蒸汽冷凝水阻塞，儲槽就「無法呼吸」，嚴重時可能導致槽體壓扁變形（負壓崩塌）。這就是為什麼儲槽排氣過濾器需要定期更換和熱追蹤（heat tracing）。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的水系統設計審查（design review）時，以下幾點是常見的疏漏：(1) 活性碳床缺少取樣口或缺少消毒連接；(2) 儲槽缺少噴球（spray ball）或噴球覆蓋不完整；(3) 排氣過濾器缺少壓差監控或無破盤報警（rupture disk alarm）；(4) 死角（dead leg）長度超過 6D（管徑的6倍），違反 ISPE Baseline Guide 要求。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 5.2–5.4: MATERIALS, SANITIZATION, OPERATION ===================== -->
+<div class="section-title">Section 5.2–5.4 — Materials, Sanitization &amp; Operation 材料選擇、消毒與操作控制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>5.2 Installation, Materials of Construction, and Component Selection</h3>
+        <p>Materials of construction should be selected to be compatible with control measures such as sanitizing, cleaning, or passivation. Temperature rating is a critical factor in choosing appropriate materials because surfaces may be required to handle elevated operating and sanitization temperatures. The finish on metallic materials such as stainless steel, whether it is a refined mill finish, polished to a specific grit, or an electropolished treatment, should complement the system design and provide satisfactory corrosion and microbial activity resistance. Auxiliary equipment and fittings that require seals, gaskets, diaphragms, filter media, and membranes should exclude materials that permit the possibility of <span class="key-term">extractables, shedding</span>, and microbial activity.</p>
+
+        <h3>5.3 Sanitization</h3>
+        <p><strong>5.3.1 Thermal Sanitization:</strong> Validation of thermal methods should include a heat distribution study to demonstrate that sanitization temperatures are achieved throughout the system, including the body of use point valves; sampling ports; instrument side branches; and fittings, couplings, and adapters, relying on water convection and thermal conduction through system materials for heat transfer to wetted surfaces.</p>
+
+        <p><strong>5.3.2 Chemical Sanitization:</strong> Oxidizing chemicals commonly used for sanitization of water systems include ozone (O₃), hydrogen peroxide (H₂O₂), peracetic acid (PAA), and chlorine compounds. It is important to note that microorganisms in a well-developed biofilm can be extremely difficult to kill, even by using aggressive oxidizing chemicals. Validation of chemical sanitization requires demonstration of adequate chemical concentrations throughout the system, exposure to all wetted surfaces including the body of use point valves, and <span class="key-term">complete removal of the sanitizing agent</span> from the system at the completion of treatment.</p>
+
+        <p><strong>5.3.3 UV Sanitization:</strong> In-line UV light at a wavelength of <span class="key-term">254 nm</span> also can be used to continuously "sanitize" only the water circulating in the system, but these devices must be properly sized for the water flow. Such devices inactivate a high percentage (but not 100%) of microorganisms that flow through the device but cannot be used to directly control existing biofilm upstream or downstream of the device.</p>
+
+        <h3>5.4 Operation, Maintenance, and Control</h3>
+        <p><strong>5.4.2 Process Monitoring Program:</strong> The process monitoring program should detect any developing adverse water quality trends early enough to allow for corrective action prior to exceeding alert levels, action levels, or specifications. This proactive approach to system control relies on trending of monitoring data.</p>
+
+        <p><strong>5.4.3 Routine Microbial Control:</strong> Effective microbial control of water systems relies on a multifaceted program that includes appropriate system design, operation, and maintenance; routine sanitization; and microbial monitoring and trending.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — MOC 不鏽鋼標準</h4>
+            <p>製藥水系統的材料選擇（Material of Construction, MOC）核心要求：</p>
+            <ul>
+                <li><strong>金屬材料：</strong>316L 不鏽鋼（SS316L）是主流選擇，電拋光（electropolish）表面粗糙度 Ra ≤ 0.5 µm（WFI 要求更嚴）</li>
+                <li><strong>接觸水的非金屬：</strong>PTFE、PVDF、矽膠墊片（確認符合 FDA 21 CFR 177 或 EU 10/2011）</li>
+                <li><strong>禁止：</strong>螺紋接頭（dead space risk）、PVC（可能釋放鄰苯二甲酸酯）、不相容金屬（chloride SCC 風險）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>三種消毒方式比較 Sanitization Method Comparison</h4>
+            <pre>
+方式            熱水消毒        化學消毒          UV 254nm
+──────────────────────────────────────────────────────
+溫度/濃度        ≥80°C          O₃/H₂O₂/PAA      需依流量計算劑量
+生物膜控制        佳             佳（需驗證殘留去除）  差（無法直接殺膜）
+連續操作          可（常溫熱水循環）可（定期處理）    可（在線連續）
+適用系統          WFI 熱循環     PW 常溫/WFI 補充  PW/WFI 輔助
+主要注意          熱分佈確認      殘留去除驗證       不能單獨替代消毒
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 化學消毒的殘留去除</h4>
+            <p>化學消毒（尤其是臭氧 O₃）必須驗證消毒劑在使用前已完全去除（通常用 UV 254nm 分解臭氧，或等待自然分解後取樣確認）。如果消毒劑殘留進入成品，可能造成藥物降解或患者安全問題。USP 特別要求：消毒劑的分析方法需要在驗證計畫中明確，包含殘留的偵測和定量方法。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — UV 的限制</h4>
+            <p>UV 消毒就像用「手電筒殺菌」——只對直接照射到的細菌有效，對已在管壁上形成的生物膜完全沒用，因為生物膜有 EPS（胞外多醣）保護層屏蔽。UV 最好的使用場景是「預防性維持」（防止浮游菌積聚），而非「治療性消毒」（殺死已建立的生物膜）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 PW 系統的微生物計數突然上升，消毒後恢復正常，但下次採樣又升高。這提示什麼根本問題？需要做哪些調查？</li>
+                <li>新安裝的不鏽鋼管路，IQ 後必須進行哪些處理才能進入 OQ/PQ 階段？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SECTION 7: CHEMICAL EVALUATIONS ===================== -->
+<div class="section-title">Section 7 — Chemical Evaluations 化學評估</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>7. CHEMICAL EVALUATIONS</h3>
+        <h3>7.1 Chemical Tests for Bulk Waters</h3>
+        <p>In 1996, USP moved away from traditional chemical attribute tests, switching to contemporary analytical technologies for the bulk waters Purified Water and Water for Injection. The intent was to upgrade the analytical technologies without tightening the quality requirements. The two contemporary analytical technologies employed were <span class="key-term">Total Organic Carbon (TOC)</span> and <span class="key-term">conductivity</span>.</p>
+        <p>The TOC test replaced the test for Oxidizable Substances that primarily targeted organic contaminants. A multi-staged conductivity test that detects ionic (mostly inorganic) contaminants replaced all of the inorganic chemical tests (i.e., Ammonia, Calcium, Carbon Dioxide, Chloride, Sulfate).</p>
+        <p>Replacing the heavy metals attribute was considered unnecessary because: 1) the source water specifications for individual heavy metals were tighter than the approximate limit of detection of the Heavy Metals test; 2) contemporary water system construction materials do not leach heavy metal contaminants; and 3) test results for this attribute have uniformly been negative.</p>
+        <p>The three-stage conductivity test (Stage 1: temperature-dependent limit; Stage 2: pH-based assessment; Stage 3: ion-specific calculation) provides a comprehensive evaluation of ionic purity. Stage 1 is the in-process on-line test. If Stage 1 fails, Stage 2 and Stage 3 are performed in the laboratory.</p>
+
+        <h3>7.2 Chemical Tests for Sterile Waters</h3>
+        <p>Packaged/sterile waters present a particular dilemma relative to the attributes of conductivity and TOC. The package itself is the major source of chemicals (inorganics and organics) that leach over time into the packaged water. Because Sterile Water for Injection is Water for Injection that has already met its monographed requirements for low conductivity and TOC, the Sterile Water for Injection attributes of conductivity and TOC reveal more about the <span class="key-term">packaging leachables</span> than they do about the water's original purity.</p>
+
+        <h3>7.2.1 CONDUCTIVITY FOR STERILE WATERS</h3>
+        <p>To better control the ionic packaging leachables, USP 〈645〉 is divided into two sections. The first, Bulk Water, applies to Purified Water, Water for Injection, Water for Hemodialysis, and Pure Steam, and includes the three-stage conductivity testing instructions and specifications. The second, Sterile Water, applies to Sterile Purified Water, Sterile Water for Injection, Sterile Water for Inhalation, and Sterile Water for Irrigation.</p>
+
+        <h3>7.4 Elemental Impurities in Pharmaceutical Waters</h3>
+        <p>Water that meets US EPA NPDWR or WHO Drinking Water Guidelines that has been purified by conventional technologies used to produce Water for Injection can comply with 〈232〉 for parenterals. Source water that meets drinking water standards has maximum contaminant levels for lead, mercury, cadmium, and arsenic that are NMT 10 times (1-log) higher than the EI limits for parenterals. The purification technologies needed to produce Water for Injection that reduce the impurities by a factor of 100 to 1000 will assure compliance with 〈232〉.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — TOC + 導電度的現代意義</h4>
+            <p>1996 年 USP 的改革，用 TOC 和導電度兩個現代分析技術，取代了以前一大堆個別化學測試（氨、鈣、二氧化碳、氯化物、硫酸鹽...）。</p>
+            <p>原因：</p>
+            <ul>
+                <li>TOC 和導電度可以<strong>在線連續監控（online/real-time）</strong>，舊方法只能離線批次測試</li>
+                <li>涵蓋範圍更廣：TOC 偵測有機污染，導電度偵測離子（無機）污染</li>
+                <li>這個改變讓廠商可以用在線儀器替代大量實驗室工作，節省成本且更即時</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>導電度三段測試流程 Conductivity 3-Stage Test</h4>
+            <pre>
+Stage 1（在線測試，依溫度設限）：
+  例：25°C 時，PW/WFI 限度 = 1.3 µS/cm
+  → 若通過：合格，可放行
+  → 若不通過：進行 Stage 2
+
+Stage 2（實驗室，pH 測定）：
+  取水樣，測 pH（5.0–7.0 為可接受範圍）
+  → 若 pH 超出範圍：不合格
+  → 若 pH 在範圍內：查 Stage 2 對照表
+
+Stage 3（計算各離子貢獻）：
+  分別計算 H⁺、OH⁻、HCO₃⁻、Cl⁻、Na⁺、NH₄⁺
+  各離子導電度總和 = Combined Stage 3 Limit
+  → 若合格：通過
+  → 若不合格：水不符規格
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 無菌水的化學特殊性</h4>
+            <p>無菌水（Sterile Waters）的導電度和 TOC 規格設計的目的不是評估水的原始純度，而是評估<strong>包裝材料的浸出物（leachables）</strong>。這就是為什麼 USP 〈645〉 對 Sterile Waters 有獨立的規格（通常比 Bulk Waters 寬鬆很多）。重要實務：如果要在實驗室用無菌水配製分析試劑，必須先確認該無菌水的導電度/TOC 是否適合此特定用途，不能假設「符合 monograph 規格 = 適合所有分析用途」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy — 導電度測試的意義</h4>
+            <p>導電度測試就像量「水的電阻」——純水電阻極高（幾乎不導電），任何離子溶入都會降低電阻（增加導電度）。就像在蒸餾水中加一小撮鹽，立即可以感受到水的「電阻降低」。製藥水的導電度規格（≤1.3 µS/cm）非常嚴格，相當於把一粒沙溶進一個游泳池的水量，精度是 ppb 等級。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>WFI 系統的在線導電度儀顯示 1.2 µS/cm（25°C），這個數據可以直接作為 QC 放行依據嗎？需要哪些前提條件？</li>
+                <li>若 Stage 1 導電度測試失敗，下一步是進行 Stage 2 還是直接判定不合格？</li>
+                <li>一批 Sterile WFI 小瓶（1 mL）的 TOC 測試結果顯示高於 Bulk WFI 規格（500 ppb），這一定是異常嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section B Summary</h3>
+    <ul>
+        <li>水系統驗證遵循 DQ→IQ→OQ→PQ 生命週期；PQ 通常分三階段，Phase 1/2 共 4–8 週密集監控，Phase 3 跨越完整年度</li>
+        <li>驗證維護是持續性活動：監控計畫 + 預防性維護 + 變更控制 + 週期性回顧，缺一不可</li>
+        <li>水系統單元操作序列：預過濾 → 活性碳 → 軟化 → RO（雙段）→ UV → DI/EDI → UF（WFI）→ 蒸餾（WFI傳統）</li>
+        <li>活性碳床是最高微生物風險點；RO 單段通常不足以達標；儲槽排氣過濾器需熱追蹤防堵塞</li>
+        <li>消毒三種方式：熱水（最佳生物膜控制）、化學（需驗證殘留去除）、UV 254nm（輔助，無法單獨控制生物膜）</li>
+        <li>1996 年起 USP 以 TOC + 導電度（三段測試）取代傳統化學個別測試，支持在線連續監控</li>
+        <li>Sterile Waters 的導電度/TOC 規格反映包裝浸出物，比 Bulk Waters 寬鬆；不可混用評估標準</li>
+        <li>水系統材料：316L SS + 電拋光，Ra ≤ 0.5 µm；禁止螺紋接頭；Dead leg ≤ 6D</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>USP 〈1231〉: Water for Pharmaceutical Purposes</p>
+    <p>SterileGMP Knowledge Hub | Part B: Validation, System Design &amp; Chemical Evaluations | pp. 12–26</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>
