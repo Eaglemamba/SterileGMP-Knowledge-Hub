@@ -120,17 +120,25 @@ See `SKILLS.md` for the full skill list with usage scenarios, initiating departm
 
 | Status | Count | Details |
 |--------|-------|---------|
-| Complete (multi-section HTML) | 38 | Full bilingual educational HTML + knowledge MD |
-| Single-section (short chapters) | 2 | USP-755, USP-789 |
-| Skeleton (metadata only) | 16 | USP-1229 sub-series, USP-151, USP-790 |
-| **Total in reports.json** | **56** | |
+| Complete (bilingual HTML + knowledge MD) | 76 | All with full section_map |
+| Skeleton (metadata only) | 0 | — |
+| **Total in reports.json** | **76** | |
 
-**Completion: 68%** (38/56 fully processed)
+**Completion: 100%** (76/76 fully processed)
 
-Batch 2 chapters completed (2026-04-05):
+Batch 1 chapters (2026-04-04): 〈71〉 〈85〉 〈151〉 〈161〉 〈788〉 〈1116〉 〈1211〉 + initial set
+Batch 2 chapters (2026-04-05):
 - 〈1228〉 series: 1228, 1228.1, 1228.3, 1228.4, 1228.5
 - Container/Closure: 〈381〉 〈660〉 〈661〉 〈670〉 〈671〉 〈729〉 〈755〉
 - Quality Tests: 〈55〉 〈771〉 〈785〉 〈787〉 〈789〉 〈791〉 〈797〉 〈1207〉 〈1660〉 〈1788〉 〈1790〉
+Batch 3 chapters (2026-04-06):
+- Biocompatibility: 〈87〉 〈88〉
+- Water/Analytical: 〈631〉 〈643〉 〈645〉 〈921〉 〈1231〉 (37 pages, 3 sections)
+- Packaging/Volume: 〈659〉 〈698〉
+- Quality Systems: 〈1029〉 〈1058〉 〈1079〉
+- Microbial/Validation: 〈1113〉 〈1225〉 〈1226〉
+- CCI Trilogy: 〈1207.1〉 〈1207.2〉 〈1207.3〉
+- E&L: 〈1663〉 〈1664〉
 
 ### Other Sources
 
@@ -142,7 +150,7 @@ Batch 2 chapters completed (2026-04-05):
 | USP Chapters | 56 complete — all multi-section HTML generated + knowledge MD |
 | ISO Standards | Not started |
 
-**Overall: 118 of 118 documents complete (100%)** — PDA 41 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 + USP 56 = 118 complete with full bilingual HTML + knowledge MD
+**Overall: 138 of 138 documents complete (100%)** — PDA 41 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 + USP 76 = 138 complete with full bilingual HTML + knowledge MD
 
 ---
 
@@ -157,7 +165,7 @@ Batch 2 chapters completed (2026-04-05):
 | 3 | **PIC/S** | Annex 1 (2022) — Manufacture of Sterile Medicinal Products | Orange | ✅ 1 complete |
 | 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red | ✅ 3 complete |
 | 5 | **ICH** | Q8(R2), Q9(R1), Q10 — the "quality trinity" | Teal | ✅ 3 complete |
-| 6 | **USP** | 56 General Chapters — sterility, endotoxin, particulates, microbial, container/closure | Gold | ✅ 56 complete |
+| 6 | **USP** | 76 General Chapters — sterility, endotoxin, particulates, microbial, container/closure, water, biocompatibility, CCI, E&L, validation, analytical | Gold | ✅ 76 complete |
 
 ### Planned — Phase 4 (Cleanrooms + ISO)
 
@@ -237,9 +245,9 @@ Batch 2 chapters completed (2026-04-05):
 | **Medical Device Risk Management** | Device constituent part risk assessment; required for 510(k)/PMA submissions | **ISO 14971** — pending |
 | **Human Factors / Usability Engineering** | FDA expects HF validation for all combination products; high inspection risk | **IEC 62366-1** — pending |
 | **Medical Device QMS** | Design controls for device constituent; required alongside drug CGMPs | **ISO 13485** — pending |
-| **Package Integrity (USP)** | CCI test method selection and validation — USP equivalent to PDA TR27 | **USP \<1207\>** — pending |
-| **Container Materials — Plastic** | Extractables/leachables risk from plastic primary packaging | **USP \<661\>** — pending |
-| **Drug Product Leachables** | Leachable assessment methodology for plastic packaging systems | **USP \<1664\>** — pending |
+| ~~**Package Integrity (USP)**~~ | ~~CCI test method selection and validation — USP equivalent to PDA TR27~~ | **USP 〈1207〉 / 〈1207.1〉 / 〈1207.2〉 / 〈1207.3〉** ✅ Done |
+| ~~**Container Materials — Plastic**~~ | ~~Extractables/leachables risk from plastic primary packaging~~ | **USP 〈661〉** ✅ Done |
+| ~~**Drug Product Leachables**~~ | ~~Leachable assessment methodology for plastic packaging systems~~ | **USP 〈1663〉 + 〈1664〉** ✅ Done (both extractables and leachables) |
 
 ### COO-Specific Knowledge Gaps
 
@@ -301,6 +309,7 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 | ~~**New source: USP**~~ | ~~\<1116\> Microbial Control of Aseptic Environments~~ | ✅ Done |
 | ~~**New source: USP**~~ | ~~\<1211\> Sterilization and Sterility Assurance~~ | ✅ Done |
 | ~~**Additional USP (Batch 2)**~~ | ~~〈1228〉 series, 〈55〉 〈381〉 〈660〉 〈661〉 〈670〉 〈671〉 〈729〉 〈755〉 〈771〉 〈785〉 〈787〉 〈789〉 〈791〉 〈797〉 〈1207〉 〈1660〉 〈1788〉 〈1790〉~~ | ✅ Done (23 chapters) |
+| ~~**Additional USP (Batch 3)**~~ | ~~〈87〉 〈88〉 〈631〉 〈643〉 〈645〉 〈659〉 〈698〉 〈921〉 〈1029〉 〈1058〉 〈1079〉 〈1113〉 〈1207.1〉 〈1207.2〉 〈1207.3〉 〈1225〉 〈1226〉 〈1231〉 〈1663〉 〈1664〉~~ | ✅ Done (20 chapters) |
 | **New source: ISO** | ISO 14644-1/2/3 (Cleanroom classification) | Medium |
 
 ### Phase 4: Topic Gap-Fillers + Remaining ISPE
@@ -346,10 +355,10 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 | Task | Document | Source | Effort |
 |------|----------|--------|--------|
-| New source: USP | **\<1207\>** — Package Integrity Evaluation (CCI methods) | USP | Small |
-| New source: USP | **\<661\>** — Plastic Packaging Systems and Materials of Construction | USP | Small |
-| New source: USP | **\<660\>** — Containers — Glass | USP | Small |
-| New source: USP | **\<1664\>** — Assessment of Drug Product Leachables | USP | Medium |
+| ~~New source: USP~~ | ~~**\<1207\>** — Package Integrity Evaluation (CCI methods)~~ | USP | ✅ Done (+ 1207.1/1207.2/1207.3 trilogy) |
+| ~~New source: USP~~ | ~~**\<661\>** — Plastic Packaging Systems and Materials of Construction~~ | USP | ✅ Done |
+| ~~New source: USP~~ | ~~**\<660\>** — Containers — Glass~~ | USP | ✅ Done |
+| ~~New source: USP~~ | ~~**\<1664\>** — Assessment of Drug Product Leachables~~ | USP | ✅ Done (+ 〈1663〉 Extractables) |
 
 #### Priority 4 — Additional PDA (if available)
 
