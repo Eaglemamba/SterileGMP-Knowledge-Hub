@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-06 — 118 documents complete (PDA 41, USP 56, ISPE 14, FDA 3, ICH 3, PIC/S 1); root cleanup + planned sources documented (EU GMP, Ph. Eur., WHO GMP)
+Last updated: 2026-04-06 — 138 documents complete (PDA 41, USP 76, ISPE 14, FDA 3, ICH 3, PIC/S 1); added 20 USP chapters (biocompatibility, water quality/analytical, CCI trilogy, E&L, quality systems, water for pharma purposes)
 
 ---
 
