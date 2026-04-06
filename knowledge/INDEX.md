@@ -313,6 +313,22 @@ Terms: process validation, lifecycle approach, Stage 1/2/3, QTPP (quality target
 
 ---
 
+## FDA/FDA-ComboProd-CGMP-Complete.md
+FDA Guidance: Current Good Manufacturing Practice Requirements for Combination Products (Jan 2017) | p1–p59 | 5
+Covers questions about: Which CGMP regulations apply to combination products (drug+device+biologic)? What is the streamlined approach under 21 CFR 4.4(b)? Drug CGMP-based vs device QS-based: how to choose? What are the 6 device QS provisions added to drug CGMPs? What are the 8 drug CGMP provisions added to device QS? What CGMP requirements apply to prefilled syringes? Drug-eluting stent CGMP compliance? How does Part 4 define "manufacture" and "manufacturer"? Multi-facility CGMP responsibilities? Change control for combination products?
+Terms: combination product, constituent part, 21 CFR Part 4, CGMP operating system, streamlined approach, drug CGMP-based, device QS-based, primary mode of action (PMOA), lead center, OCP (Office of Combination Products), 820.20 management responsibility, 820.30 design controls, 820.50 purchasing controls, 820.100 CAPA, 820.170 installation, 820.200 servicing, 211.84 component testing, 211.103 yield, 211.137 expiration dating, 211.165 release testing, 211.166 stability, 211.167 special testing, 211.170 reserve samples, single-entity combination product, co-packaged, cross-labeled, convenience kit, prefilled syringe (PFS), drug-eluting stent (DES), QMSR (Quality Management System Regulation), ISO 13485:2016
+Sections: Introduction & Background | General CGMP Considerations | CGMP: Device QS Provisions (IV.A) | CGMP: Drug & Biologics Provisions (IV.B+C) | Product Scenarios & Glossary
+
+---
+
+## FDA/FDA-ComboProd-HF-Complete.md
+FDA Draft Guidance: Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development (Feb 2016) | p1–p20 | 3
+Covers questions about: What are human factors studies for combination products? When is HF validation required for combination products? What are "critical tasks" for auto-injectors and inhalers? Formative vs validation HF studies — what is the difference? Simulated-use vs actual-use validation — when is each required? How do HF studies relate to IND/IDE submissions? When should HF validation be embedded in Phase 3 clinical studies? What happens if HF validation fails?
+Terms: human factors (HF), use-related risk, critical task, intended user, use environment, formative study, validation study, simulated-use validation, actual-use validation, knowledge task study, use-related risk analysis (URRA), use FMEA, training limitations, critical task failure, design change trigger, IND, IDE, NDA/BLA marketing application, pre-submission meeting, OCP coordination, CDRH human factors guidance, CDER/CBER combination product
+Sections: Introduction & Background | Human Factors Studies | Process & Clinical Study Considerations
+
+---
+
 ## ISPE/ISPE-CTC-Complete.md
 ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016) | p1–p116 | 9
 Terms: CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
@@ -367,6 +383,16 @@ Terms: quality culture, root cause analysis (RCA), human error, skill-based erro
 | Stage 2 PPQ process performance qualification, PPQ protocol, enhanced sampling, concurrent release / 第二階段製程效能確效、PPQ協議書、強化取樣、並行放行 | FDA-ProcessVal |
 | Stage 3 CPV continued process verification, SPC Cpk Ppk Xbar-R chart, OOT OOS, APR PQR / 第三階段持續製程查驗、統計製程管控、製程能力指數、管制圖、超趨勢、定期品質審查 | FDA-ProcessVal |
 | 21 CFR 211.100(a) 211.110(a) 211.180(e) process validation legal basis / 21 CFR製程驗證法規依據、FDCA 501 | FDA-ProcessVal |
+| Combination products CGMP, 21 CFR Part 4, drug-device combination regulatory compliance / 組合產品CGMP、21 CFR Part 4、藥品器材組合法規合規 | FDA-ComboProd-CGMP |
+| Streamlined approach drug CGMP-based device QS-based, CGMP operating system, Part 4.4(b) / 簡化途徑、藥品CGMP基礎、器材QS基礎、CGMP操作系統 | FDA-ComboProd-CGMP |
+| 820.20 820.30 820.50 820.100 820.170 820.200 device QS provisions for combo products / 組合產品附加器材QS規定 | FDA-ComboProd-CGMP |
+| 211.84 211.103 211.137 211.165 211.166 211.167 211.170 drug CGMP provisions for combo products / 組合產品附加藥品CGMP規定 | FDA-ComboProd-CGMP |
+| Prefilled syringe CGMP compliance, drug-eluting stent CGMP, drug-coated mesh regulatory / 預充填注射器CGMP合規、藥物洗脫支架、藥物塗層網格法規 | FDA-ComboProd-CGMP |
+| QMSR Quality Management System Regulation 21 CFR 820 ISO 13485 effective February 2026 / 品質管理系統法規、器材品質系統法規修訂、ISO 13485對齊 | FDA-ComboProd-CGMP |
+| Human factors combination products, use-related risk, critical tasks, HF validation / 組合產品人因工程、使用相關風險、關鍵任務、人因工程驗證 | FDA-ComboProd-HF |
+| Formative study vs validation study HF, simulated-use vs actual-use HF study / 人因工程形成性研究vs驗證研究、模擬使用vs實際使用驗證 | FDA-ComboProd-HF |
+| HF auto-injector critical tasks, inhaler critical tasks, injector usability study / 自動注射器關鍵任務、吸入器關鍵任務、注射器可用性研究 | FDA-ComboProd-HF |
+| HF studies IND IDE NDA BLA submission requirements, pre-submission meeting FDA HF / 人因工程研究法規提交要求、申請前會議 | FDA-ComboProd-HF |
 | Pharmaceutical water system sampling, PW sampling program, WFI sampling plan, water PQ / 製藥用水取樣計畫、純化水取樣、注射用水取樣計畫 | ISPE-Sampling + ISPE-Vol4 |
 | Three-phase water PQ sampling, initial intermediary extended phase, PQ sampling frequency / 三階段水系統PQ取樣、初始期、中間期、延伸期 | ISPE-Sampling |
 | Tables 2.2 2.3 2.4 ISPE water sampling, CUP NCUP sampling frequency, WFI daily / ISPE取樣表、現用點非現用點取樣頻率 | ISPE-Sampling |
@@ -699,7 +725,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
 
 **Regulatory Background — FDA/EMA GMP (法規)**
-→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | FDA-Aseptic ★★★ (FDA 2004 CGMP aseptic processing guidance: complete 21 CFR 210/211 application, buildings/facilities, personnel, EM, media fill, sterility testing, isolators, BFS) | FDA-ProcessInspection ★★★ (FDA 7356.002A: inspector's operational framework, six-system inspection, OAI/VAI/NAI, 483 escalation, sterile-specific inspection objectives) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
+→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | FDA-Aseptic ★★★ (FDA 2004 CGMP aseptic processing guidance: complete 21 CFR 210/211 application, buildings/facilities, personnel, EM, media fill, sterility testing, isolators, BFS) | FDA-ProcessInspection ★★★ (FDA 7356.002A: inspector's operational framework, six-system inspection, OAI/VAI/NAI, 483 escalation, sterile-specific inspection objectives) | FDA-ComboProd-CGMP ★★★ (FDA 2017 combination products CGMP guidance: 21 CFR Part 4 streamlined approaches, all specified provisions, QMSR update Feb 2026) | FDA-ComboProd-HF ★★ (FDA 2016 draft: HF requirements for combination products with device constituent parts) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP / PIC/S Annex 1**
 → PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
@@ -708,7 +734,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR26 ★★★ (primary filtration guidance) | PICS-Annex1 ★★★ (regulatory requirements: PUPSIT 8.87, redundant filters 8.92, bioburden sampling 8.93, single-batch discard 8.94) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
-→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
+→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | FDA-ComboProd-CGMP ★★★ (PFS as combination product: drug CGMP-based streamlined approach for PFS, CGMP requirements for syringe design controls 820.30, PFS-specific product scenario walkthrough) | FDA-ComboProd-HF ★★★ (HF studies for PFS/auto-injectors: critical task list, formative/validation studies, production-equivalent device requirements) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
+
+**Combination Products / Drug-Device / CGMP (組合產品/藥械組合/CGMP)**
+→ FDA-ComboProd-CGMP ★★★ (21 CFR Part 4 complete: both streamlined approaches, all 14 specified provisions, multi-facility CGMP, definitions, PFS/DES/mesh scenarios, glossary) | FDA-ComboProd-HF ★★★ (human factors for combination products: use-related risk, critical tasks, formative/validation studies, clinical study integration) | TR73-2 ★★★ (EU MDR/MDR Annex I requirements for PFS as combination product: GSPR, notified body, CE marking) | TR73 ★★ (PFS CCI and compatibility requirements relevant to combination product CGMP)
 
 **Supplier / Vendor Qualification (供應商確認)**
 → PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR65 ★★ (vendor/CDMO assessment in TT: facility fit, quality system evaluation) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
