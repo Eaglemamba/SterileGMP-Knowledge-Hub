@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-06 — 138 documents complete (PDA 41, USP 76, ISPE 14, FDA 3, ICH 3, PIC/S 1); added 20 USP chapters (biocompatibility, water quality/analytical, CCI trilogy, E&L, quality systems, water for pharma purposes)
+Last updated: 2026-04-06 — 140 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1); added FDA combination products CGMP guidance (2017) + FDA human factors for combo products draft guidance (2016)
 
 ---
 
@@ -145,12 +145,12 @@ Batch 3 chapters (2026-04-06):
 | Source | Status |
 |--------|--------|
 | PIC/S Annex 1 | ✅ Complete |
-| FDA Guidances | Aseptic Processing 2004 ✅ · CPGM 7356.002A Process Inspections ✅ · Process Validation (Jan 2011) ✅ |
+| FDA Guidances | Aseptic Processing 2004 ✅ · CPGM 7356.002A Process Inspections ✅ · Process Validation (Jan 2011) ✅ · Combination Products CGMP (Jan 2017) ✅ · HF Studies for Combo Products (Feb 2016 Draft) ✅ |
 | ICH Guidelines | Q8(R2) ✅ Q9(R1) ✅ Q10 ✅ — all three complete |
 | USP Chapters | 56 complete — all multi-section HTML generated + knowledge MD |
 | ISO Standards | Not started |
 
-**Overall: 138 of 138 documents complete (100%)** — PDA 41 + ISPE 14 + FDA 3 + ICH 3 + PIC/S 1 + USP 76 = 138 complete with full bilingual HTML + knowledge MD
+**Overall: 140 of 140 documents complete (100%)** — PDA 41 + ISPE 14 + FDA 5 + ICH 3 + PIC/S 1 + USP 76 = 140 complete with full bilingual HTML + knowledge MD
 
 ---
 
@@ -163,7 +163,7 @@ Batch 3 chapters (2026-04-06):
 | 1 | **PDA** | Technical Reports, Points to Consider, Guides | Blue | ✅ 41 complete |
 | 2 | **ISPE** | Baseline Guides, Good Practice Guides, GAMP | Green | ✅ 14 complete (1 pending OCR) |
 | 3 | **PIC/S** | Annex 1 (2022) — Manufacture of Sterile Medicinal Products | Orange | ✅ 1 complete |
-| 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red | ✅ 3 complete |
+| 4 | **FDA** | Selected Guidance for Industry documents (sterile-relevant only) | Red | ✅ 5 complete |
 | 5 | **ICH** | Q8(R2), Q9(R1), Q10 — the "quality trinity" | Teal | ✅ 3 complete |
 | 6 | **USP** | 76 General Chapters — sterility, endotoxin, particulates, microbial, container/closure, water, biocompatibility, CCI, E&L, validation, analytical | Gold | ✅ 76 complete |
 
@@ -240,10 +240,10 @@ Batch 3 chapters (2026-04-06):
 | **Sterilization & Sterility Assurance** | Foundation for all sterilization methods | **USP \<1211\>** — pending |
 | **Lyophilization** | Major sterile dosage form, completely absent | **PDA TR36** — pending |
 | **Cleanroom Standards** | Referenced by every facility document | **ISO 14644-1/2/3** — pending |
-| **Combination Product Regulatory Framework** | Dual GMP requirements (drug + device) — mandatory for PFS/autoinjector CDMO clients | **FDA CGMP for Combination Products Guidance (2017)** — pending |
+| ~~**Combination Product Regulatory Framework**~~ | ~~Dual GMP requirements (drug + device) — mandatory for PFS/autoinjector CDMO clients~~ | **FDA CGMP for Combination Products Guidance (2017)** ✅ Done |
 | **Injection System Device Standards** | Autoinjectors, pen injectors, wearable injectors — ISO-mandated design verification | **ISO 11608-1** — pending |
 | **Medical Device Risk Management** | Device constituent part risk assessment; required for 510(k)/PMA submissions | **ISO 14971** — pending |
-| **Human Factors / Usability Engineering** | FDA expects HF validation for all combination products; high inspection risk | **IEC 62366-1** — pending |
+| **Human Factors / Usability Engineering** | FDA expects HF validation for all combination products; high inspection risk | **FDA HF for Combo Products (2016 Draft)** ✅ Done; **IEC 62366-1** — pending |
 | **Medical Device QMS** | Design controls for device constituent; required alongside drug CGMPs | **ISO 13485** — pending |
 | ~~**Package Integrity (USP)**~~ | ~~CCI test method selection and validation — USP equivalent to PDA TR27~~ | **USP 〈1207〉 / 〈1207.1〉 / 〈1207.2〉 / 〈1207.3〉** ✅ Done |
 | ~~**Container Materials — Plastic**~~ | ~~Extractables/leachables risk from plastic primary packaging~~ | **USP 〈661〉** ✅ Done |
@@ -337,8 +337,8 @@ Beyond guidelines, a COO needs decision-oriented, synthesized knowledge:
 
 | Task | Document | Source | Effort |
 |------|----------|--------|--------|
-| New source: FDA | CGMP for Combination Products Guidance (2017) — dual GMP requirements | FDA | Small |
-| New source: FDA | Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development (2016) | FDA | Small |
+| ~~New source: FDA~~ | ~~CGMP for Combination Products Guidance (2017) — dual GMP requirements~~ | FDA | ✅ Done |
+| ~~New source: FDA~~ | ~~Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development (2016)~~ | FDA | ✅ Done |
 | New source: FDA | Design Considerations for Combination Products (2019 Draft) | FDA | Small |
 
 #### Priority 2 — Device Standards (ISO/IEC)
