@@ -1206,6 +1206,128 @@ Terms: visual inspection, injectable, defect classification, critical defect, ma
 
 ---
 
+## USP/USP-87-Complete.md
+USP 〈87〉 Biological Reactivity Tests, In Vitro | 3 pages | 1 section
+Covers questions about: in vitro cytotoxicity testing of plastic/elastomeric materials, agar diffusion test procedure, direct contact test, elution test, L-929 cell line, Grade scoring (0-4), test method selection, biological reactivity acceptance criteria
+Key terms: biological reactivity, cytotoxicity, L-929 cell line, agar diffusion, direct contact test, elution test, Grade 0-4, ZDEC/ZDBC positive control, USP Class VI plastics, ISO 10993
+
+---
+
+## USP/USP-88-Complete.md
+USP 〈88〉 Biological Reactivity Tests, In Vivo | 7 pages | 1 section
+Covers questions about: plastic material classification (Class I-VI), systemic injection test, intracutaneous reactivity test, implantation test, extracting media selection, in vivo biological reactivity acceptance criteria
+Key terms: Plastic Class I–VI, systemic injection test, intracutaneous test, implantation test, extracting media, normal saline extract, cotton seed oil extract, PEG 400 extract, alcohol extract, Draize scoring, rabbit implantation, rat implantation, USP biological reactivity classification
+
+---
+
+## USP/USP-631-Complete.md
+USP 〈631〉 Color and Achromicity | 10 pages | 1 section
+Covers questions about: organoleptic color assessment, CIELAB color measurement, color standards preparation, color matching fluids (BY, GY, B, R, BrY series), Method I procedure, Method II IIA/IIB instruments, ΔE* calculation, achromicity testing
+Key terms: color matching fluid, BY/GY/B/R/BrY color series, CIELAB color space, L* a* b* coordinates, ΔE* (delta E), achromicity, spectrophotometry, Method I (organoleptic), Method II (instrumental), illuminant D65, 10° standard observer, color tolerance
+
+---
+
+## USP/USP-643-Complete.md
+USP 〈643〉 Total Organic Carbon | 4 pages | 1 section
+Covers questions about: TOC testing for pharmaceutical water, system suitability validation, sucrose standard, 1,4-benzoquinone standard, bulk water TOC limit (0.50 mg/L), sterile water container-volume limit table, response ratio formula
+Key terms: TOC (total organic carbon), sucrose standard, 1,4-benzoquinone standard, response ratio, system suitability (85-115%), purified water, WFI, 0.50 mg/L limit, TOC analyzer, wet chemical oxidation, UV/persulfate oxidation, NDIR detection
+
+---
+
+## USP/USP-645-Complete.md
+USP 〈645〉 Water Conductivity | 4 pages | 1 section
+Covers questions about: three-stage conductivity testing, Stage 1 temperature-conductivity table, Stage 2 CO2 equilibration procedure, Stage 3 pH confirmation test, conductivity cell constant calibration, sterile water container-volume limits
+Key terms: water conductivity, Stage 1/2/3, conductivity cell, cell constant, temperature compensation, CO2 equilibration, pH confirmation, USP conductivity table, KCl standard, 0.1 µS/cm calibration, sterile water limits (5 µS/cm / 25 µS/cm)
+
+---
+
+## USP/USP-659-Complete.md
+USP 〈659〉 Packaging and Storage Requirements | 6 pages | 1 section
+Covers questions about: packaging system classifications, container/closure types for injections, temperature storage definitions (frozen/refrigerated/CRT/controlled cold/warm/excessive), light-resistant containers, moisture-proof containers, MKT calculation
+Key terms: immediate container, outer packaging, single-dose container, multiple-dose container, pharmacy bulk package, Type I/II/III glass, tight container, well-closed container, hermetic container, light-resistant container, CRT (controlled room temperature), MKT (mean kinetic temperature), PPPA (Poison Prevention Packaging Act), storage conditions
+
+---
+
+## USP/USP-698-Complete.md
+USP 〈698〉 Deliverable Volume | 3 pages | 1 section
+Covers questions about: deliverable volume testing for oral liquid preparations, density determination methods, gravimetric vs volumetric procedure, acceptance criteria for multiple-unit vs single-unit containers, three-stage acceptance criteria
+Key terms: deliverable volume, multiple-unit container, single-unit container, density measurement, gravimetric method, volumetric method, acceptance criteria stage 1/2/3, ≥100% average, ≥95% each unit, 95%-110% single-unit, oral liquid preparation
+
+---
+
+## USP/USP-921-Complete.md
+USP 〈921〉 Water Determination | 5 pages | 1 section
+Covers questions about: Karl Fischer titration (Methods Ia/Ib/Ic), toluene distillation (Method II), gravimetric loss-on-drying (Method III), reagent standardization, coulometric vs volumetric Karl Fischer, sample preparation requirements
+Key terms: Karl Fischer titration, Method Ia (direct), Method Ib (residual), Method Ic (coulometric), Karl Fischer reagent, sodium tartrate standardization, water equivalent factor F, toluene distillation Method II, loss on drying Method III, water content, anhydrous methanol, pyridine-free reagent
+
+---
+
+## USP/USP-1029-Complete.md
+USP 〈1029〉 Good Documentation Guidelines | 4 pages | 1 section
+Covers questions about: ALCOA+ principles, GMP document types (batch records, CoA, SOPs, lab records, protocols, training records), electronic records requirements (21 CFR Part 11), correction procedures, data integrity
+Key terms: ALCOA+ (attributable, legible, contemporaneous, original, accurate), data integrity, batch record, master batch record (MBR), CoA, SOP, deviation/CAPA record, 21 CFR Part 11, electronic signature, audit trail, correction procedure, good documentation practice (GDP), original record
+
+---
+
+## USP/USP-1058-Complete.md
+USP 〈1058〉 Analytical Instrument Qualification | 6 pages | 1 section
+Covers questions about: instrument classification (Group A/B/C), DQ/IQ/OQ/PQ lifecycle, Quality Triangle framework, software validation integration, change control for instruments, roles and responsibilities
+Key terms: AIQ (analytical instrument qualification), Group A (simple), Group B (moderate), Group C (complex with software), Design Qualification (DQ), Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ), Quality Triangle, user requirement specification (URS), firmware, configurable software, change control, instrument calibration
+
+---
+
+## USP/USP-1079-Complete.md
+USP 〈1079〉 Risks and Mitigation Strategies for Storage and Transportation of Finished Drug Products | 15 pages | 1 section
+Covers questions about: four-pillar risk mitigation framework (documentation/training/resources/qualification), temperature mapping protocol (11 influencing factors), thermal packaging qualification, MKT excursion assessment, quality agreements for distribution
+Key terms: storage risk mitigation, distribution quality management, temperature mapping, thermal packaging, MKT (mean kinetic temperature), temperature excursion, cold chain qualification, 3PL quality agreement, temperature monitoring device, excursion assessment, packaging qualification, CRT storage qualification, cold chain, last-mile distribution
+
+---
+
+## USP/USP-1113-Complete.md
+USP 〈1113〉 Microbial Characterization, Identification, and Strain Typing | 6 pages | 1 section
+Covers questions about: pure culture isolation techniques, phenotypic vs genotypic identification methods, gram staining, biochemical testing, 16S rRNA sequencing, MALDI-TOF MS, strain typing for environmental monitoring, method validation metrics
+Key terms: microbial identification, phenotypic methods, genotypic methods, 16S rRNA sequencing, MALDI-TOF MS, gram staining, biochemical fingerprinting, strain typing, PFGE, MLST, accuracy, reproducibility, sensitivity, specificity, Kappa statistic, environmental isolate, objectionable microorganism, EM excursion investigation
+
+---
+
+## USP/USP-1225-Complete.md
+USP 〈1225〉 Validation of Compendial Procedures | 6 pages | 1 section
+Covers questions about: 8 performance characteristics (accuracy, precision, specificity, LOD, LOQ, linearity, range, robustness), four validation category framework (Category I/II/III/IV), ICH Q2 harmonization, system suitability requirements
+Key terms: method validation, accuracy (trueness), precision (repeatability/intermediate/reproducibility), specificity, detection limit (LOD), quantitation limit (LOQ), linearity, range, robustness, Category I (assay), Category II (impurity), Category III (performance), Category IV (identification), ICH Q2(R1), system suitability, validation protocol
+
+---
+
+## USP/USP-1226-Complete.md
+USP 〈1226〉 Verification of Compendial Procedures | 2 pages | 1 section
+Covers questions about: compendial method verification requirements, risk-based performance characteristic selection, failed verification pathway, 21 CFR 211.194(a)(2) compliance, matrix effects assessment, difference between validation and verification
+Key terms: method verification, compendial procedure, 21 CFR 211.194(a)(2), specificity, matrix effects, risk-based verification, failed verification, alternative procedure, USP 〈1225〉 vs 〈1226〉, method suitability, laboratory transfer, verification protocol, test method suitability study
+
+---
+
+## USP/USP-1231-Complete.md
+USP 〈1231〉 Water for Pharmaceutical Purposes | 37 pages | 3 sections
+Covers questions about: water grades/types classification (PW/WFI/Highly Purified Water/Pure Steam/sterile waters), water system design and validation lifecycle (DQ/IQ/OQ/PQ), unit operations (RO/EDI/distillation/UF), TOC and conductivity limits, microbial and endotoxin control, biofilm control, Alert/Action Level framework
+Key terms: Purified Water (PW), Water for Injection (WFI), Highly Purified Water (HPW), Pure Steam, Water for Hemodialysis, TOC limit (0.50 mg/L), conductivity limits, WFI endotoxin limit (0.25 EU/mL), biofilm control, RODI, EDI, multi-effect distillation, vapor compression, sanitization frequency, microbial Alert Level, Action Level, water system validation, water sampling plan, passivation, flow velocity ≥1 m/s, temperature ≥70°C or ≤4°C
+
+---
+
+## USP/USP-1663-Complete.md
+USP 〈1663〉 Assessment of Extractables Associated with Pharmaceutical Packaging/Delivery Systems | 18 pages | 1 section
+Covers questions about: extractables study design, extraction conditions (pH/solvent/temperature/duration), analytical technique selection (GC-MS/LC-MS/ICP-MS), extractables threshold/safety concern threshold (SCT), extractables profiling strategy
+Key terms: extractables, analytical evaluation threshold (AET), safety concern threshold (SCT), extraction study, worst-case extraction, GC-MS, LC-MS/MS, ICP-MS, NMR, packaging/delivery system, leachables correlation, qualification threshold (QT), reporting threshold (RT), toxicological risk assessment, PQRI framework, ISO 10993, polyolefin, elastomer, extractables characterization
+
+---
+
+## USP/USP-1664-Complete.md
+USP 〈1664〉 Assessment of Drug Product Leachables Associated with Pharmaceutical Packaging/Delivery Systems | 12 pages | 1 section
+Covers questions about: leachables study design, AET (analytical evaluation threshold) calculation, leachables-extractables correlation, leachables specification development, safety qualification of leachables, routine leachables monitoring
+Key terms: leachables, analytical evaluation threshold (AET), leachables specification, qualification threshold (QT), reporting threshold (RT), safety concern threshold (SCT), drug product leachable, packaging/delivery system interaction, correlation study, leachables monitoring, toxicological risk assessment, safety qualification, permitted daily exposure (PDE), TTC (threshold of toxicological concern), PQRI guidance
+
+---
+
+
+---
+
 ## USP Quick Topic Routing Guide
 
 **Sterility Testing (無菌試驗)**
@@ -1271,3 +1393,57 @@ Terms: visual inspection, injectable, defect classification, critical defect, ma
 **Biologics — General (生物製劑通則)**
 → USP/USP-1085 ★★★ (biologics general considerations: cell banking, impurities, viral safety, comparability) | PDA/TR49 ★★ (biotech cleaning validation) | ISPE/ISPE-Vol6 ★★ (biopharmaceutical facility)
 
+
+**Biological Reactivity / Biocompatibility Testing (生物反應性/生物相容性試驗)**
+→ USP/USP-87 ★★★ (in vitro: agar diffusion, direct contact, elution tests; L-929 cytotoxicity; Grade 0-4 scoring) | USP/USP-88 ★★★ (in vivo: Plastic Class I-VI, systemic injection, intracutaneous, implantation tests) | USP/USP-661 ★★ (plastic containers biological reactivity requirements)
+
+**Color & Achromicity Testing (顏色與透明度試驗)**
+→ USP/USP-631 ★★★ (primary: Method I organoleptic, Method II CIELAB instrumental, ΔE* calculation, color matching fluids BY/GY/B/R/BrY) | USP/USP-1790 ★★ (visual inspection context for color)
+
+**Total Organic Carbon (TOC) Testing (總有機碳試驗)**
+→ USP/USP-643 ★★★ (primary: sucrose/benzoquinone system suitability, 0.50 mg/L bulk water limit, sterile water container-volume table) | USP/USP-1231 ★★★ (TOC in water system design and monitoring context)
+
+**Water Conductivity Testing (水導電率試驗)**
+→ USP/USP-645 ★★★ (primary: three-stage test procedure, temperature-conductivity table, CO₂ equilibration, KCl pH confirmation) | USP/USP-1231 ★★★ (conductivity in water system context)
+
+**Packaging & Storage Requirements (包裝與貯存要求)**
+→ USP/USP-659 ★★★ (primary: container types, temperature definitions CRT/cold/frozen, MKT, light-resistant, hermetic classifications) | PDA/TR52 ★★ (distribution: cold chain, GDP) | USP/USP-1079 ★★★ (storage/transportation risk mitigation)
+
+**Deliverable Volume / Fill Volume (可遞送體積/填充體積)**
+→ USP/USP-698 ★★★ (primary: multi-unit vs single-unit acceptance criteria, density determination, gravimetric/volumetric methods) | USP/USP-755 ★★ (minimum fill requirements)
+
+**Water Determination / Karl Fischer (水分測定/卡爾費雪法)**
+→ USP/USP-921 ★★★ (primary: Method Ia/Ib/Ic Karl Fischer, Method II toluene distillation, Method III gravimetric drying, standardization) — primary source for water content testing
+
+**Water for Pharmaceutical Purposes (製藥用水)**
+→ USP/USP-1231 ★★★ (comprehensive: PW/WFI/HPW/Pure Steam classification, system design, validation lifecycle, TOC/conductivity/endotoxin limits, biofilm control, Alert/Action Levels) | USP/USP-643 ★★★ (TOC testing procedure) | USP/USP-645 ★★★ (conductivity testing) | USP/USP-1228-4 ★★ (WFI rinsing for depyrogenation)
+
+**Good Documentation / Data Integrity (良好文件/數據完整性)**
+→ USP/USP-1029 ★★★ (primary: ALCOA+ principles, GMP document types, 21 CFR Part 11, correction procedures) | ICH/ICH-Q10 ★★ (pharmaceutical quality system, documentation requirements) | ISPE/ISPE-GAMP5 ★★ (computerized system validation, audit trails)
+
+**Analytical Instrument Qualification (分析儀器確效)**
+→ USP/USP-1058 ★★★ (primary: Group A/B/C classification, DQ/IQ/OQ/PQ lifecycle, Quality Triangle, software validation, change control) — primary source for lab instrument qualification
+
+**Drug Product Storage & Transportation Risks (成品藥儲運風險)**
+→ USP/USP-1079 ★★★ (primary: 4-pillar mitigation framework, temperature mapping 11 factors, MKT excursion, thermal packaging qualification, quality agreements) | PDA/TR52 ★★★ (GDPs, distribution qualification)
+
+**Microbial Characterization & Identification (微生物特性描述與鑑定)**
+→ USP/USP-1113 ★★★ (primary: phenotypic/genotypic ID methods, MALDI-TOF, 16S rRNA, strain typing, method validation metrics) | USP/USP-1116 ★★ (EM context for isolate identification)
+
+**Method Validation — Analytical (分析方法驗證)**
+→ USP/USP-1225 ★★★ (primary: 8 performance characteristics, Category I-IV framework, ICH Q2 harmonization) | ICH/ICH-Q2 ★★★ (regulatory basis for method validation) | USP/USP-1226 ★★ (compendial method verification complement)
+
+**Method Verification — Compendial (藥典方法適用性驗證)**
+→ USP/USP-1226 ★★★ (primary: 21 CFR 211.194(a)(2), risk-based approach, failed verification pathway) | USP/USP-1225 ★★★ (full validation when verification fails)
+
+**Extractables & Leachables — E&L (可萃取物與可滲出物)**
+→ USP/USP-1663 ★★★ (primary: extractables study design, analytical techniques, SCT/AET thresholds, extraction conditions) | USP/USP-1664 ★★★ (primary: leachables from drug product, AET calculation, L-E correlation, specification development) | PDA/TR26 ★★★ (E&L in sterilizing filtration context) | PDA/TR66 ★★★ (E&L for single-use systems)
+
+**CCI — Test Method Selection & Validation (CCI測試方法選擇與驗證)**
+→ USP/USP-1207-1 ★★★ (primary: lifecycle test method selection, MALL, 12 selection criteria, 8-element validation, deterministic vs probabilistic distinction) | USP/USP-1207 ★★★ (overview CCI chapter) | PDA/TR27 ★★★ (historical CCI reference)
+
+**CCI — Leak Test Technologies (CCI洩漏測試技術)**
+→ USP/USP-1207-2 ★★★ (primary: 6 deterministic methods HVLD/laser headspace/mass extraction/pressure decay/tracer gas/vacuum decay; 4 probabilistic methods; detection limits comparison table) | PDA/TR86 ★★★ (current CCI technologies)
+
+**CCI — Seal Quality Testing (CCI密封品質測試)**
+→ USP/USP-1207-3 ★★★ (primary: torque, burst, peel strength, RSF, airborne ultrasound — 5 seal quality technologies, distinction from leak testing) | PDA/TR86 ★★ (seal quality in broader CCI context)

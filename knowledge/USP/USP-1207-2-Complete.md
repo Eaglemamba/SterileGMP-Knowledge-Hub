@@ -1,0 +1,247 @@
+# USP General Chapter 〈1207.2〉: Package Integrity Leak Test Technologies
+
+USP General Chapter <1207.2>
+PACKAGE INTEGRITY LEAK TEST TECHNOLOGIES
+
+Status: Currently Official on 12-Feb-2025 | Official Date: Official as of 01-Aug-2016
+Document Type: General Chapter
+
+TABLE OF CONTENTS:
+1. INTRODUCTION
+2. DETERMINISTIC LEAK TEST TECHNOLOGIES
+   2.1 Electrical Conductivity and Capacitance (High-Voltage Leak Detection)
+
+### 2.2 Laser-Based Gas Headspace Analysis
+
+### 2.3 Mass Extraction
+
+### 2.4 Pressure Decay
+
+### 2.5 Tracer Gas Detection, Vacuum Mode
+
+### 2.6 Vacuum Decay
+
+3. PROBABILISTIC LEAK TEST TECHNOLOGIES
+
+### 3.1 Bubble Emission
+
+### 3.2 Microbial Challenge, Immersion Exposure
+
+### 3.3 Tracer Gas Detection, Sniffer Mode
+
+### 3.4 Tracer Liquid
+
+---
+
+1. INTRODUCTION
+
+The purpose of this chapter is to provide information guiding the selection and proper use of leak test technologies. The leak test technologies described in this chapter were selected on the basis of relevant research study data published in peer-reviewed journals and/or precision and bias study data generated in support of recognized test method standards.
+
+The technologies described in this chapter are not prescriptive methods but represent testing concepts that may be applied when leak testing sterile product–packages. Test technologies vary in terms of their potential detection limits, reliability, and applications; therefore, none are universally appropriate for leak testing all product–packages.
+
+The leak test methods included are divided into two categories: deterministic and probabilistic. Deterministic leak test methods are preferred over probabilistic methods when other key method selection criteria permit. Probabilistic leak test methods are best used when the product–package system proves incompatible with deterministic methods, or when method outcome requirements demand a particular probabilistic testing approach.
+
+Table 1. Deterministic Leak Test Technologies Summary:
+- Electrical conductivity and capacitance (HVLD): Row 3 detection limit; Nondestructive; Seconds
+- Laser-based gas headspace analysis: Row 1 detection limit; Nondestructive; Seconds
+- Mass extraction: Row 3 detection limit; Nondestructive; Seconds to minutes
+- Pressure decay: Row 3 detection limit; Nondestructive (unless barrier compromised); Minutes to days
+- Tracer gas detection, vacuum mode: Row 1 detection limit; Nondestructive (unless punctured); Seconds to minutes
+- Vacuum decay: Row 3 detection limit; Nondestructive; Seconds to minutes
+
+Table 2. Probabilistic Leak Test Technologies Summary:
+- Bubble emission: Row 4 detection limit; Destructive; Minutes
+- Microbial challenge, immersion exposure: Row 4 detection limit; Destructive; Weeks
+- Tracer gas detection, sniffer mode: Row 2 detection limit; Nondestructive (unless punctured); Seconds to minutes
+- Tracer liquid: Row 4 detection limit; Destructive; Minutes to hours
+
+---
+
+2. DETERMINISTIC LEAK TEST TECHNOLOGIES
+
+2.1 Electrical Conductivity and Capacitance (High-Voltage Leak Detection)
+
+#### 2.1.1 DESCRIPTION
+
+The electrical conductivity and capacitance leak test (high-voltage leak detection, or HVLD) is an approach for detecting the presence, and potentially the location, of a leak(s) in the wall of a nonporous, rigid or flexible package containing liquid or semi-liquid product. Test analysis is based on quantitative electrical conductance measurements. HVLD leak tests are generally nondestructive to the package and to the product, although an evaluation of HVLD exposure impact on product physicochemical stability is advised.
+
+The test is performed by first positioning the test sample (containing liquid product) onto an electrically grounded instrument test fixture. Upon test start, an electrode uniquely designed for the product–package type under test exposes all or part of the test sample to a high-frequency, high-voltage, low-amperage current. The presence of a leak path in the proximity of an electrically conductive, liquid-formulation product results in a drop in the electrical resistance of the test sample, as shown by a spike in current passing through the test sample above a predetermined pass/fail limit established using negative controls.
+
+#### 2.1.2 APPLICATION
+
+Rigid or flexible packages of nonporous components containing liquid or semi-liquid product may be tested:
+- Package components must be relatively electrically nonconductive.
+- Product must be electrically conductive, relative to the package.
+- Product must not be flammable (i.e., not a combustion risk).
+- Product must be near or at the leak inspection location at the time of the leak test.
+- Solidified, electrically conductive product that blocks leak paths may be detected.
+- Metal caps used to seal stoppered vial or cartridge packages conduct current, improving the likelihood of finding leaks under the cap.
+
+HVLD tests are rapid, requiring no more than several seconds for a full scan of the test sample, thus making them appropriate for off-line testing, or as an on-line, 100% product inspection test method.
+
+#### 2.1.3 TEST EQUIPMENT
+
+HVLD instrumentation comes equipped with tooling and/or a test sample transport system for proper test sample and probe/ground positioning, an internal high-voltage transformer, electrode voltage and ground potentiometer adjustment capabilities, and a test result output display.
+
+#### 2.1.4 TEST PARAMETERS
+
+- Conductivity of test sample product relative to test sample package: a greater difference will improve leak detection sensitivity
+- Test voltage set point: voltage is set high enough to ensure leak detection, but not so high that current will arc
+- Test sensitivity set point: sensitivity should be maximized to ensure leak detection without triggering a false reject result
+- Package content proximity to potential leak paths: leak detection sensitivity is directly related to the proximity of product to the leak path
+- Electrode probe position relative to potential leak paths: probe proximity to the leak is directly related to the test method sensitivity
+- Speed at which the electrode passes over the test sample surface
+- Moisture presence on the package: test sample surface condensation can potentially trigger a false reject reading
+
+### 2.2 Laser-Based Gas Headspace Analysis
+
+#### 2.2.1 DESCRIPTION
+
+Gas headspace analysis via laser-based techniques provides a quantitative, nondestructive measure of oxygen content, water vapor content, and low internal pressure in the headspace of a nonporous, rigid or nonrigid package. Some instruments are capable of measuring headspace carbon dioxide concentration as well.
+
+The test is performed by first placing the test sample in a fixture designed for precise test sample positioning. Upon test start, frequency-modulated spectroscopy is used to cause a near-infrared (IR) diode laser light to pass through the gas headspace region of the sealed test sample. Light is absorbed as a function of gas concentration and pressure. Final test sample readings are automatically generated based on a comparison of test sample signals to a calibration curve.
+
+#### 2.2.2 APPLICATION
+
+Test samples that may be analyzed fall into these categories:
+- Products that require low-oxygen or low-carbon-dioxide headspace content
+- Products that require low water vapor content (e.g., lyophilized or powdered products)
+- Products that require low internal package pressure (e.g., lyophilized products)
+
+Package integrity, or absence of leakage, is confirmed by replicating tests on a given test sample as a function of time. Longer time periods between tests are needed to detect smaller leaks.
+
+#### 2.2.3 TEST EQUIPMENT
+
+Test instrumentation for laser-based gas headspace analysis is capable of accurate and reproducible near-IR diode laser light emission, light detection, and signal analysis. Standards with components identical to the packages under test, in terms of both the materials of construction and the dimensions, are required.
+
+#### 2.2.4 TEST PARAMETERS
+
+- Test sample position with respect to laser beam transmission and detection points
+- Test sample headspace volume: the volume must meet minimum requirements for test instrumentation
+- Test sample headspace absolute pressure: headspace absolute pressure will influence the detection limit and range
+- Test sample speed: increase in testing speed will increase standard deviation of measurement
+- Test sample temperature: temperature can influence moisture and pressure test results
+- Test sample outer surface moisture: presence of moisture may hamper test performance
+- Time allotted between the replicate tests: performing replicate tests over a period of time allows calculation of continuous package leakage
+
+### 2.3 Mass Extraction
+
+#### 2.3.1 DESCRIPTION
+
+The mass extraction test is a nondestructive, quantitative measurement approach for detecting leakage in nonporous, rigid or flexible packages. Leakage of package headspace gases and/or leakage below the product fill level may be detected.
+
+The test is performed by placing the test sample inside a test chamber that is pneumatically connected to a mass extraction leak test system equipped with a vacuum generator package. Upon test start, the chamber is quickly evacuated for a predetermined time. After each evacuation cycle, measurements of absolute pressure, pressure decay rate, and/or gas mass flow rate are captured. Readings greater than predetermined limits established using negative controls are indicative of container leakage.
+
+#### 2.3.2 APPLICATION
+
+- Flexible packages or packages with nonfixed components require tooling to restrict package expansion or movement.
+- Gas headspace must be at atmospheric pressure or at a pressure notably greater than test vacuum conditions.
+- Packages ranging in volume from a few milliliters to several liters may be tested.
+
+### 2.4 Pressure Decay
+
+#### 2.4.1 DESCRIPTION
+
+The pressure decay test is a quantitative measurement approach for detecting leakage in nonporous, rigid or flexible packages. Pressure decay testing is intended for integrity testing of the gas headspace region of the test sample.
+
+To perform the test, a dry air or inert gas pressure source is attached to the test sample that is fitted with an internal pressure monitoring device. The test sample is pressurized to a predetermined pressure, after which the pressure source is isolated from the test sample. The decay in pressure is monitored for a predetermined time.
+
+#### 2.4.2 APPLICATION
+
+- Package surfaces that can be tested are those unobstructed by product (e.g., oils, water, or other liquids).
+- Flexible packages or packages with nonfixed components require tooling to restrict package expansion or movement.
+- Pressure decay can be used for testing packages from a few milliliters in volume to large, bulk-storage vessels.
+- Tests require anywhere from a few seconds to a several hours to perform.
+
+### 2.5 Tracer Gas Detection, Vacuum Mode
+
+#### 2.5.1 DESCRIPTION
+
+The leak detection method for tracer gas detects leakage from nonporous, rigid or flexible packages. Helium is the most commonly used tracer gas, and hydrogen is also used. The leakage rate of tracer gas is quantitatively measured using a spectrometric analytical instrument specific for the tracer gas.
+
+To perform the vacuum mode test, test samples that have been fully or partially flooded with tracer gas are placed inside an evacuation chamber that is pneumatically connected to the tracer gas analysis instrument. The instrument's vacuum pump evacuates the test chamber, drawing leaking tracer gas through the analyzer. The absolute leak rate of the test sample is calculated by normalizing test results by the partial pressure of the tracer gas within the test sample at the time of test.
+
+#### 2.5.2 APPLICATION
+
+- Tracer gas permeation through the package material must not be so great that the leakage rate of concern is masked.
+- Detection capabilities range from large leaks to the smallest leaks.
+- Caution is advised when testing liquid-filled packages, because vapors or liquid drawn into the test system can seriously damage instrumentation.
+
+### 2.6 Vacuum Decay
+
+#### 2.6.1 DESCRIPTION
+
+The vacuum decay test is a nondestructive, quantitative measurement approach for detecting leakage in nonporous, rigid or flexible packages. Leakage in the package headspace gas region and/or below the product-fill level may be detected.
+
+The test sample is placed in a closely fitting evacuation test chamber pneumatically connected to the leak test system, which is equipped with an external vacuum source. Upon test start, the test chamber plus test system dead space are evacuated. The rise in dead space pressure (i.e., vacuum decay) is monitored for a predetermined length of time. A pressure increase that exceeds a predetermined pass/fail limit established using negative controls indicates container leakage.
+
+#### 2.6.2 APPLICATION
+
+- Flexible packages or packages with nonfixed components require tooling.
+- Product–package gas headspace must be at atmospheric pressure or at a pressure notably greater than test vacuum conditions.
+- Vacuum-decay leak tests are useful in all phases of the product life cycle.
+- Higher-speed on-line equipment is generally used for detecting larger leaks.
+
+---
+
+3. PROBABILISTIC LEAK TEST TECHNOLOGIES
+
+### 3.1 Bubble Emission
+
+#### 3.1.1 DESCRIPTION
+
+The bubble emission leak test is a destructive, qualitative measurement approach for detecting and locating leaks in nonporous, rigid or flexible packages containing headspace gas.
+
+The test is performed in one of two ways. The first is an internal pressurization method in which the test sample is submerged in water and air pressure is applied. The second approach has the intact test sample submerged in water or other suitable submersion fluid contained in a vacuum chamber.
+
+With both approaches, leakage can be observed as a continuous stream of bubbles emitted from the leak site. The bubble emission test is categorized as a probabilistic leak test method because escaping gas can become entrapped within or between package components; false-leak outgassing events may occur; gas emitted from small leaks may solubilize in the immersion fluid before bubble formation.
+
+#### 3.1.2 APPLICATION
+
+- Packages must be able to tolerate wetting or submersion
+- Flexible packages or packages with nonfixed components generally require tooling
+- Only leak sites that are present in the gas headspace region of the package can be detected
+- This test is generally used for testing smaller-volume packages
+
+### 3.2 Microbial Challenge, Immersion Exposure
+
+#### 3.2.1 DESCRIPTION
+
+The immersion exposure microbial challenge is a destructive, qualitative measurement approach for confirming leaks in nonporous, rigid or flexible packages.
+
+The test is performed by first filling test samples with sterile, growth-supporting media. Samples are then immersed in a concentrated bacterial suspension for a predetermined time. Samples can be exposed during immersion to a predetermined vacuum. Samples are then incubated under growth-promoting conditions, followed by examination of package contents for evidence of microbial growth.
+
+The microbial challenge by immersion test is categorized as a probabilistic leak test because of the multiple events that must occur sequentially and/or simultaneously for leak detection to take place.
+
+#### 3.2.2 APPLICATION
+
+- Packages must be able to tolerate submersion.
+- Immersion microbial challenge tests are performed in a laboratory environment, not as an on-line test.
+- A test requires several days to prepare; the challenge plus post-challenge decontamination may take several hours. Final incubation followed by sample inspection may take 1–2 weeks.
+- Primarily used in product–package development and validation studies.
+
+#### 3.2.3 TEST EQUIPMENT
+
+Small, motile microorganisms are preferred for the challenge; examples include Brevundimonas diminuta and Serratia marcescens. Soybean-casein digest medium is one commonly used medium. Microorganism concentration should meet appropriate predetermined levels throughout the challenge test (a minimum concentration of 10^5 CFU/mL is commonly used).
+
+### 3.3 Tracer Gas Detection, Sniffer Mode
+
+#### 3.3.1 DESCRIPTION
+
+Tracer gas detection using a sniffer attachment is used to detect leak presence and location in nonporous, rigid or flexible packages. Test samples are checked for leakage by scanning the outer package surfaces using a vacuum wand that is pneumatically connected to the tracer gas analytical test instrument.
+
+The sniffer mode of tracer gas leak testing is a probabilistic leak test method because the presence of concentrated tracer gas near the test sample surface is not a well-defined or predictable event, and the sniffer scanning procedure is prone to variability related to human technique.
+
+### 3.4 Tracer Liquid
+
+#### 3.4.1 DESCRIPTION
+
+The tracer liquid test method is a destructive approach for detecting and potentially locating leaks in nonporous, rigid or flexible packages. The liquid submersion test uses one of two basic approaches. In the first approach, test samples are submerged in a tracer-element solution formulation. Examples of tracer elements include dyes, radionuclides, or metallic ions. In the second approach, test samples containing tracer formulation are submerged in tracer-free liquid.
+
+Liquid tracer tests are categorized as probabilistic methods. Successful liquid tracer detection relies on a combination of tracer solution wicking, tracer solution effusion, and tracer element diffusion through a liquid-filled leak path.
+
+#### 3.4.2 APPLICATION
+
+- Packages must be able to tolerate wetting or submersion.
+- Testing by submerging a test sample in tracer liquid is used when the test sample allows for visual examination of the tracer ingress.
+- Tests may require up to 1 h or longer for test sample exposure, cleaning, and inspection or analysis.

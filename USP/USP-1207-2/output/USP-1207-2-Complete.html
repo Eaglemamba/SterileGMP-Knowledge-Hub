@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1207.2〉 - Package Integrity Leak Test Technologies</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box, .analogy-box, .note-box, .formula-box, .key-point-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .formula-box h3, .formula-box h4, .key-point-box h3, .key-point-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p, .key-point-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul, .key-point-box ul, .concept-box ol, .note-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li, .key-point-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+.note-box, .key-point-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-point-box h3, .key-point-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+.practice-box ol, .practice-box ul { margin-left: 1.25rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.65rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.82rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } .header h1 { font-size: 1.1rem; } .main-content { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>USP 〈1207.2〉 Package Integrity Leak Test Technologies</h1>
+    <div class="subtitle">包裝完整性洩漏測試技術 完整教學版</div>
+    <div class="page-info">USP General Chapter 〈1207.2〉 | Official as of 01-Aug-2016 | Complete Chapter</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>掌握六種確定性 (Deterministic) 洩漏測試技術的原理、應用條件與偵測限</li>
+        <li>掌握四種機率性 (Probabilistic) 洩漏測試技術的原理與局限性</li>
+        <li>理解每種技術的關鍵測試參數，以便在方法開發時進行優化</li>
+        <li>能對照 USP〈1207.1〉Table 1（Row 1–6）正確定位各技術的偵測能力</li>
+        <li>理解為何 FDA 監管趨勢偏好確定性方法，並能在文件中論証方法選擇的合理性</li>
+        <li>了解各技術在不同生命週期階段（開發/製造/穩定性）的適用性</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: INTRODUCTION & OVERVIEW TABLE -->
+<div class="section-title">Section 1 — Introduction &amp; Technology Overview 導論與技術總覽</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The purpose of this chapter is to provide information guiding the selection and proper use of <span class="key-term">leak test technologies</span>. The technologies described are not prescriptive methods but represent testing concepts that may be applied when leak testing sterile product–packages. Test technologies vary in terms of their potential <span class="key-term">detection limits</span>, reliability, and applications; therefore, none are universally appropriate for leak testing all product–packages.</p>
+        <p>The leak test methods included are divided into two categories: <span class="key-term">deterministic</span> and <span class="key-term">probabilistic</span>. Deterministic leak test methods are preferred over probabilistic methods when other key method selection criteria permit.</p>
+        <table>
+            <tr><th>Technology</th><th>Category</th><th>Detect. Limit (Row)</th><th>Destructive?</th><th>Test Time</th></tr>
+            <tr><td>Electrical Conductivity &amp; Capacitance (HVLD)</td><td>Deterministic</td><td>Row 3</td><td>No</td><td>Seconds</td></tr>
+            <tr><td>Laser-Based Gas Headspace Analysis</td><td>Deterministic</td><td>Row 1</td><td>No</td><td>Seconds</td></tr>
+            <tr><td>Mass Extraction</td><td>Deterministic</td><td>Row 3</td><td>No</td><td>Sec–Min</td></tr>
+            <tr><td>Pressure Decay</td><td>Deterministic</td><td>Row 3</td><td>No*</td><td>Min–Days</td></tr>
+            <tr><td>Tracer Gas, Vacuum Mode</td><td>Deterministic</td><td>Row 1</td><td>No*</td><td>Sec–Min</td></tr>
+            <tr><td>Vacuum Decay</td><td>Deterministic</td><td>Row 3</td><td>No</td><td>Sec–Min</td></tr>
+            <tr><td>Bubble Emission</td><td>Probabilistic</td><td>Row 4</td><td>Yes</td><td>Minutes</td></tr>
+            <tr><td>Microbial Challenge (Immersion)</td><td>Probabilistic</td><td>Row 4</td><td>Yes</td><td>Weeks</td></tr>
+            <tr><td>Tracer Gas, Sniffer Mode</td><td>Probabilistic</td><td>Row 2</td><td>No*</td><td>Sec–Min</td></tr>
+            <tr><td>Tracer Liquid</td><td>Probabilistic</td><td>Row 4</td><td>Yes</td><td>Min–Hours</td></tr>
+        </table>
+        <p><em>* Nondestructive unless tracer gas introduction or pressurization compromises package barrier.</em></p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：十種技術的全貌</h4>
+            <p>USP〈1207.2〉收錄的 10 種技術可以用三個維度來理解：</p>
+            <ul>
+                <li><strong>確定性 vs. 機率性</strong>：6 種確定性（優先）+ 4 種機率性</li>
+                <li><strong>偵測靈敏度</strong>：從 Row 1（最靈敏，&lt;0.1 µm）到 Row 4（5-10 µm）</li>
+                <li><strong>測試時間</strong>：秒級（HVLD、雷射分析）→ 分鐘級（大多數）→ 週級（微生物挑戰）</li>
+            </ul>
+            <p>注意：偵測限標示的是<strong>典型值</strong>，實際驗證後的偵測限可能更好或更差，取決於特定產品-包裝系統。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>表中「*」提醒重要細節：壓力衰減法若需穿刺包裝才能引入加壓氣體，則為破壞性；氦氣示蹤氣體法若通過穿刺引入氦氣，同樣為破壞性。<strong>非破壞性的前提是不破壞包裝屏障</strong>。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這 10 種技術就像醫院的各種診斷儀器：有些快速（心電圖/X 光）但靈敏度有限，有些精確（MRI/基因測序）但費時昂貴。選擇哪種診斷工具取決於「要找什麼、在什麼情況下找」。CCI 方法選擇的邏輯完全相同。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2.1: HVLD -->
+<div class="section-title">Section 2.1 — Electrical Conductivity &amp; Capacitance (HVLD) 高電壓洩漏偵測</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.1 Description, Application &amp; Parameters</h2>
+        <p>The <span class="key-term">electrical conductivity and capacitance leak test (HVLD)</span> is an approach for detecting the presence, and potentially the location, of a leak(s) in the wall of a nonporous, rigid or flexible package containing liquid or semi-liquid product. HVLD leak tests are generally <span class="key-term">nondestructive</span>, although an evaluation of HVLD exposure impact on product physicochemical stability is advised.</p>
+        <p>The test works by: an electrode exposes the test sample to a high-frequency, high-voltage, low-amperage current. The presence of a leak path near an electrically conductive liquid product results in a <strong>drop in electrical resistance</strong> (spike in current) above a predetermined pass/fail limit.</p>
+        <p><strong>Application requirements:</strong></p>
+        <ul>
+            <li>Package components must be relatively electrically <span class="key-term">nonconductive</span></li>
+            <li>Product must be electrically <span class="key-term">conductive</span> (relative to package)</li>
+            <li>Product must not be flammable</li>
+            <li>Product must be near the leak inspection location at time of test</li>
+            <li>Metal caps (e.g., aluminum) actually <em>improve</em> leak detection under the cap</li>
+        </ul>
+        <p><strong>Key test parameters:</strong></p>
+        <ul>
+            <li>Conductivity differential between product and package</li>
+            <li>Test voltage set point (high enough to detect, not so high as to arc)</li>
+            <li>Electrode probe proximity to leak paths</li>
+            <li>Electrode scan speed over the test sample</li>
+            <li>Surface moisture (condensation can cause false rejects)</li>
+        </ul>
+        <p>HVLD tests are rapid (seconds), making them appropriate for off-line or <span class="key-term">on-line 100% product inspection</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：HVLD 的物理原理</h4>
+            <p>HVLD 利用「導電性差異」來偵測洩漏。簡化原理：</p>
+            <ul>
+                <li>完好包裝：電極掃描時，電阻高（絕緣包裝材料）→ 電流信號低</li>
+                <li>有洩漏的包裝：導電液體產品靠近洩漏路徑 → 形成導電通道 → 電阻下降 → 電流突增 → 觸發警報</li>
+            </ul>
+            <p>這也解釋了為什麼鋁蓋<strong>有助於</strong>偵測：金屬蓋導電，可以把電流引導到蓋下的洩漏位置，提高靈敏度。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：適用範圍限制</h4>
+            <p>HVLD 有幾個重要限制：</p>
+            <ul>
+                <li><strong>不適用</strong>：凍乾粉末（無導電液體）、固體製劑、可燃性液體</li>
+                <li><strong>不適用</strong>：鋁箔或金屬包裝（包裝本身導電）</li>
+                <li><strong>注意</strong>：需確認電流暴露不影響產品穩定性（特別是蛋白質藥物）</li>
+                <li>文獻記錄有少數案例：HVLD 電流觸發頭空間臭氧生成，導致產品氧化</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>HVLD 就像用導電筆檢測電路板上的斷路。完好的電路板（完好包裝）有絕緣層，電流無法通過；斷路位置（洩漏位置）如果有導電液體填充，就像「架橋」讓電流通過，儀器立即感測到異常。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼蛋白質注射液使用 HVLD 前，必須評估電流暴露對產品的影響？</li>
+                <li>如果灌裝線上的 HVLD 假陽性率突然增加，你會先檢查哪些參數？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2.2: LASER-BASED -->
+<div class="section-title">Section 2.2 — Laser-Based Gas Headspace Analysis 雷射氣體頭空間分析</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.2 Description, Application &amp; Parameters</h2>
+        <p><span class="key-term">Laser-based gas headspace analysis</span> provides a quantitative, nondestructive measure of oxygen content, water vapor content, and low internal pressure in the headspace of a nonporous, rigid or nonrigid package. Some instruments can also measure CO₂ concentration.</p>
+        <p>The test uses <span class="key-term">frequency-modulated spectroscopy</span>: a near-infrared (IR) diode laser passes through the gas headspace. Light is absorbed as a function of gas concentration and pressure. The output voltage is proportional to the absorption line shape, digitally converted, and compared to a calibration curve.</p>
+        <p><strong>Application — suitable for:</strong></p>
+        <ul>
+            <li>Products requiring low-oxygen or low-CO₂ headspace content</li>
+            <li>Products requiring low water vapor content (e.g., <span class="key-term">lyophilized</span> or powdered products)</li>
+            <li>Products requiring low internal package pressure (e.g., lyophilized products)</li>
+        </ul>
+        <p><strong>Package integrity confirmed by:</strong> replicating tests on a given test sample as a function of time. Longer time periods between tests are needed to detect <em>smaller</em> leaks. Mathematical models based on gas flow kinetics may be used to predict the time required.</p>
+        <p><strong>Key test parameters:</strong></p>
+        <ul>
+            <li>Test sample position relative to laser beam transmission points</li>
+            <li>Test sample headspace volume (must meet minimum requirements)</li>
+            <li>Headspace absolute pressure</li>
+            <li>Test sample temperature</li>
+            <li>Time allotted between replicate tests</li>
+        </ul>
+        <p>Typical measurement time: 2 s (lab), 0.2 s (on-line). Useful in any phase of the product life cycle.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：雷射分析的獨特優勢</h4>
+            <p>雷射頭空間分析是目前唯一可達到 Row 1（&lt;0.1 µm）偵測限且同時為確定性方法的技術。其獨特優勢：</p>
+            <ul>
+                <li><strong>非侵入性</strong>：雷射穿過透明包裝，完全不接觸包裝</li>
+                <li><strong>直接量測頭空間</strong>：不依賴氣體流出，而是直接分析包裝內部氣體成分</li>
+                <li><strong>可偵測超微小洩漏</strong>：通過觀察隨時間變化的氣體成分，偵測極小的洩漏速率</li>
+                <li><strong>適用凍乾產品</strong>：HVLD 不適用，但雷射分析可測真空度</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：單點 vs. 時間序列測試</h4>
+            <p><strong>重要區別</strong>：單一時間點的頭空間分析結果只反映「當前頭空間狀態」，<strong>不能</strong>直接証明包裝完整性。頭空間不合格可能是灌裝操作問題，而非洩漏。</p>
+            <p>要証明完整性，必須進行<strong>時間序列測試</strong>（同一包裝在不同時間點重複測量），觀察氣體成分是否隨時間變化——這才是真正的 CCI 測試。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>雷射頭空間分析就像對密封保鮮盒用雷射「透視」，不需要打開就能知道裡面的氣體狀態。如果今天量是 99% 氮氣，一週後量是 85% 氮氣，說明有氣體洩漏——這個趨勢就是 CCI 問題的証據。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>凍乾產品（lyophilized vials）的穩定性 CCI 方案最適合用雷射頭空間分析：測量頭空間殘氧量 (O₂) 和/或真空度 (absolute pressure) 的時間序列變化。若 12 個月穩定性樣品的頭空間真空度顯著下降，即可確認發生了洩漏，無需微生物挑戰試驗。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTIONS 2.3-2.6: MASS EXTRACTION, PRESSURE DECAY, TRACER GAS, VACUUM DECAY -->
+<div class="section-title">Sections 2.3–2.6 — Mass Extraction, Pressure Decay, Tracer Gas (Vacuum Mode), Vacuum Decay</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3 Mass Extraction</h2>
+        <p><span class="key-term">Mass extraction</span> is a nondestructive, quantitative measurement for detecting leakage. The test sample is placed in an evacuation chamber; the chamber is evacuated; then mass flow rate through a sensor is measured. Mass flow above a predetermined limit established using negative controls indicates container leakage.</p>
+        <p><strong>Key:</strong> Flexible packages require tooling to restrict expansion. Gas headspace must be at atmospheric pressure or notably greater than test vacuum. Product must not clog the leak path.</p>
+
+        <h2 style="margin-top:1.5rem;">2.4 Pressure Decay</h2>
+        <p><span class="key-term">Pressure decay</span> involves pressurizing the test sample with dry air or inert gas, then isolating the pressure source and monitoring the decay in pressure over time. Pressure decay exceeding a predetermined limit indicates container leakage.</p>
+        <p><strong>Key:</strong> Destructive if the means of pressurization compromises the package barrier. Cannot detect leaks below the liquid fill level. Temperature effects must be managed (gas temperature spike on pressurization can mimic leakage). Test times range from minutes to days.</p>
+
+        <h2 style="margin-top:1.5rem;">2.5 Tracer Gas Detection, Vacuum Mode</h2>
+        <p><span class="key-term">Tracer gas (vacuum mode)</span> uses helium (most common) or hydrogen as the tracer. Test samples flooded with tracer gas are placed in an evacuation chamber; leaking tracer gas is drawn through a mass spectrometer. The absolute leak rate is calculated by normalizing test results by tracer partial pressure.</p>
+        <p><strong>Key:</strong> Detection capability down to ~10⁻¹¹ mbar·L/s (Row 1). Caution with liquid-filled packages — liquids can damage the spectrometer. Tracer gas permeation through the package wall can mask small leaks or be falsely interpreted as leakage.</p>
+
+        <h2 style="margin-top:1.5rem;">2.6 Vacuum Decay</h2>
+        <p><span class="key-term">Vacuum decay</span> places the test sample in a closely fitting evacuation chamber, evacuates the chamber, then monitors the rise in dead space pressure (vacuum decay). A pressure increase exceeding a pass/fail limit established using negative controls indicates container leakage. Referenced standard: ASTM F2338.</p>
+        <p><strong>Key:</strong> Widely used, robust, works for liquid and gas-headspace packages. Test times: seconds to minutes. On-line versions available for large leak detection; lab-based for smaller leaks.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：四種技術的原理比較</h4>
+            <table>
+                <tr><th>技術</th><th>測量訊號</th><th>氣體方向</th><th>主要限制</th></tr>
+                <tr><td>質量萃取</td><td>質量流量</td><td>從包裝流出</td><td>outgassing 干擾</td></tr>
+                <tr><td>壓力衰減</td><td>壓力下降</td><td>從包裝流出（加壓）</td><td>溫度干擾、無法測液位以下</td></tr>
+                <tr><td>示蹤氣體（真空）</td><td>氦/氫氣濃度</td><td>從包裝流出</td><td>滲透干擾、液體會損儀器</td></tr>
+                <tr><td>真空衰減</td><td>壓力上升</td><td>從包裝流出</td><td>outgassing、揮發性產品</td></tr>
+            </table>
+            <p>共同點：都是偵測氣體或物質從包裝內部流出的信號。都是確定性方法，偵測限主要在 Row 1–3。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：真空衰減 vs. 質量萃取</h4>
+            <p>這兩種方法最為相似，關鍵區別：</p>
+            <ul>
+                <li><strong>真空衰減</strong>：量測腔室壓力回升（簡單、成本低）→ 業界最廣泛使用的 on-line CCI 技術</li>
+                <li><strong>質量萃取</strong>：量測氣體質量流量（更精確、可量化洩漏速率）→ 適合實驗室精確定量</li>
+                <li>兩者都不適用於會凝固堵塞洩漏路徑的產品（如某些蛋白質配方）</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>真空衰減就像在汽車輪胎旁邊抽真空，然後等著看氣壓計是否上升——如果輪胎漏氣，氣壓計很快上升。示蹤氣體法則更像在輪胎充入氦氣後，用「氦氣探測器」掃描表面，直接感測洩出的氦氣分子。兩種方法各有場景。</p>
+        </div>
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 壓力衰減溫度修正</h4>
+            <pre>問題：加壓後氣體溫度升高，溫度恢復後壓力自然下降
+→ 會被誤判為洩漏！
+
+緩解策略：
+1. 讓系統在開始計時前達到溫度平衡
+2. 最小化測試系統外部溫度變化
+3. 縮短測試時間
+4. 應用數學溫度校正係數：
+   ΔP(corrected) = ΔP(measured) - ΔP(thermal)
+
+在方法開發中，必須量化熱效應基線</pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼含有高濃度蛋白質的液態注射劑，在使用真空衰減法進行穩定性測試時需要特別注意？</li>
+                <li>如果你需要為一批 20mL 玻璃瓶（含凍乾粉末）選擇 CCI 方法，在示蹤氣體法（真空模式）和雷射頭空間分析之間，你會優先選哪個？理由是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: PROBABILISTIC -->
+<div class="section-title">Section 3 — Probabilistic Leak Test Technologies 機率性洩漏測試技術</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>3.1 Bubble Emission</h2>
+        <p>The <span class="key-term">bubble emission leak test</span> is destructive and qualitative. Two approaches: 1) internal pressurization — package submerged in water, air pressure applied; 2) vacuum method — intact package submerged in water/fluid in a vacuum chamber.</p>
+        <p>Leakage is observed as a <strong>continuous stream of bubbles</strong> from the leak site. Bubble diameter and emission rate may indicate relative leak size.</p>
+        <p>Classified as <em>probabilistic</em> because: gas can become entrapped between package components; false-leak outgassing events may occur; gas from small leaks may solubilize in the immersion fluid before forming bubbles. <span class="key-term">Leak detection limit: Row 4 (~5–10 µm)</span>. Test time: minutes.</p>
+
+        <h2 style="margin-top:1.5rem;">3.2 Microbial Challenge, Immersion Exposure</h2>
+        <p>The <span class="key-term">microbial challenge by immersion</span> is destructive and qualitative. Procedure: fill test samples with sterile growth-supporting media → pre-incubate to confirm sterility → immerse in concentrated bacterial suspension with vacuum/pressure challenge → incubate → inspect for microbial growth.</p>
+        <p>Challenge organisms: <em>Brevundimonas diminuta</em> and <em>Serratia marcescens</em>. Medium: soybean-casein digest. Minimum concentration: 10⁵ CFU/mL. Total test time: 1–2 weeks. Primarily used in development and validation studies.</p>
+        <p>Probabilistic because: microorganisms must be physically present at the leak site; liquid carrier presence in the leak path is unpredictable; multiple simultaneous events required for detection.</p>
+
+        <h2 style="margin-top:1.5rem;">3.3 Tracer Gas, Sniffer Mode</h2>
+        <p>The <span class="key-term">sniffer mode</span> uses a vacuum wand to scan outer package surfaces for leaking tracer gas. The sniffer mode is generally chosen when <em>leak location</em> is to be identified. Classified as probabilistic because the presence of concentrated tracer gas near the test sample surface is not a well-defined or predictable event, and the sniffer scanning procedure is prone to variability related to human technique. <span class="key-term">Detection limit: Row 2</span>.</p>
+
+        <h2 style="margin-top:1.5rem;">3.4 Tracer Liquid</h2>
+        <p>The <span class="key-term">tracer liquid test</span> is destructive. Two approaches: 1) submerge package in tracer solution (dye, radionuclides, metallic ions) — then inspect package interior; 2) fill package with tracer then submerge in tracer-free liquid — inspect exterior fluid. Differential pressure conditions (vacuum and/or positive pressure) are applied to encourage tracer passage through leak paths. Tracer detection: quantitative (spectrophotometric) or qualitative (visual). <span class="key-term">Detection limit: Row 4</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：機率性方法的共同問題</h4>
+            <p>四種機率性方法都面臨相同的根本挑戰：<strong>洩漏偵測依賴一連串不完全可控的事件</strong>。以染料侵入法為例，即使有洩漏，以下任一問題都可能導致假陰性：</p>
+            <ul>
+                <li>染料液體在洩漏路徑中被氣泡 (air lock) 阻塞</li>
+                <li>洩漏路徑被產品殘留物堵塞</li>
+                <li>液體表面張力阻礙進入微小洩漏路徑</li>
+                <li>差壓條件不足以驅動液體通過</li>
+                <li>觀察者漏看（定性目視評估的人為誤差）</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：微生物挑戰法的法規地位</h4>
+            <p>微生物挑戰法（浸泡暴露）在以下情況仍有其價值：</p>
+            <ul>
+                <li>沒有合適的理化法時（特殊容器設計）</li>
+                <li>方法結果必須<strong>直接証明</strong>防止微生物入侵的能力</li>
+                <li>建立理化法與微生物風險的相關性研究（配合 USP〈1207.1〉4.4 節的要求）</li>
+            </ul>
+            <p>但 FDA 近年越來越傾向要求使用理化法作為<strong>主要驗証方法</strong>，微生物法作為補充。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>泡泡放射測試就像用「觀察洗碗精泡泡」來找水管漏洞——看到泡泡就確定有洞，沒看到不代表沒洞（可能泡泡太小、被水溶解了）。因此，「無泡泡」≠「無洩漏」，這就是機率性方法的核心問題。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：染料侵入法 vs. 染料排出法</h4>
+            <p>追蹤液體法有兩個方向：</p>
+            <ul>
+                <li><strong>染料侵入 (Dye Ingress)</strong>：包裝浸在染料液中 → 檢查包裝內部是否有染料進入 → 較常見，但需透明容器或開啟包裝才能檢查</li>
+                <li><strong>染料排出 (Dye Egress)</strong>：含染料的包裝浸在無染料液中 → 檢查外部液體是否有染料 → 適合不透明容器</li>
+            </ul>
+            <p>定量偵測（分光光度計）優於定性目視，對小洩漏更可靠。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的包裝開發階段，泡泡放射法仍常用於「快速可行性篩查」——它不需要昂貴儀器，可以在幾分鐘內找到洩漏位置。但它僅作為探索性工具，不能作為正式的 CCI 測試方法用於批次放行或穩定性研究。方法驗證必須轉向確定性技術。</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>6 種確定性技術：</strong>HVLD（液態/導電）、雷射頭空間分析（氣體頭空間/透明）、質量萃取（通用）、壓力衰減（氣相）、示蹤氣體真空法（最靈敏 Row 1）、真空衰減（最廣泛使用）</li>
+        <li><strong>4 種機率性技術：</strong>泡泡放射（定性/定位）、微生物挑戰（直接証明屏障）、示蹤氣體嗅探法（定位）、追蹤液體（定性/定量）</li>
+        <li><strong>偵測限層次：</strong>Row 1（&lt;0.1 µm）= 示蹤氣體真空、雷射頭空間 → Row 2 = 示蹤氣體嗅探 → Row 3 = HVLD/質量萃取/真空衰減/壓力衰減 → Row 4 = 機率性方法</li>
+        <li><strong>選方法的首要問題：</strong>產品是液態還是固態/凍乾？包裝是透明還是不透明？需要 100% 在線測試嗎？</li>
+        <li><strong>機率性方法的核心缺陷：</strong>洩漏偵測依賴多個不可控事件的連鎖發生，需要大樣本量且假陰性風險高</li>
+        <li><strong>法規趨勢：</strong>FDA 越來越傾向確定性方法作為主要 CCI 方法；機率性方法（特別是染料侵入法）在批次放行中的使用受到越來越嚴格的審查</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>USP 〈1207.2〉: Package Integrity Leak Test Technologies</p>
+    <p>SterileGMP Knowledge Hub | Generated: 2026-04-06</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

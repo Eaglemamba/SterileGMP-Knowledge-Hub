@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈921〉 - Water Determination</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .formula-box h3, .formula-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .note-box ul, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+.note-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .header h1 { font-size: 1.1rem; } .main-content, .main-container { padding: 1rem; } }
+@media print { .header { background: linear-gradient(135deg, #92400e 0%, #d97706 100%) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .two-column, .content-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>USP 〈921〉 Water Determination</h1>
+    <div class="subtitle">水分測定 完整教學版</div>
+    <div class="page-info">USP General Chapter 〈921〉 | Official as of 01-May-2022 | Complete Chapter</div>
+</div>
+
+<div class="main-content">
+
+    <div class="learning-objectives">
+        <h3>本章學習目標 Learning Objectives</h3>
+        <ul>
+            <li>理解 USP 〈921〉 水分測定的三種主要方法：Method I 滴定法、Method II 共沸蒸餾法、Method III 重量法（乾燥減重法）</li>
+            <li>掌握 Karl Fischer 試劑的化學原理：二氧化硫與碘在有水存在時的定量反應</li>
+            <li>區分 Method Ia（直接滴定）、Method Ib（殘差滴定）、Method Ic（庫侖滴定）的適用場景</li>
+            <li>熟悉 Karl Fischer 試劑標定（Standardization）的計算：F = W/V</li>
+            <li>掌握各方法的精確度控制要點：排除大氣濕氣、電極終點判斷、樣品製備</li>
+            <li>了解 Method I（Water）與 Loss on Drying 〈731〉 的區別：前者僅測水分，後者測總揮發分</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 1: INTRODUCTION AND METHOD OVERVIEW -->
+    <div class="section-title">Section 1: Introduction &amp; Method Overview</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <h3>INTRODUCTION</h3>
+            <p>Many Pharmacopeial articles either are <span class="key-term">hydrates</span> or contain water in adsorbed form. As a result, the determination of the water content is important in demonstrating compliance with the Pharmacopeial standards. Generally one of the methods given below is called for in the individual monograph, depending upon the nature of the article. In rare cases, a choice is allowed between two methods.</p>
+            <p>When the article contains water of hydration, <span class="key-term">Method I (Titrimetric)</span>, <span class="key-term">Method II (Azeotropic)</span>, or <span class="key-term">Method III (Gravimetric)</span> is employed, as directed in the individual monograph, and the requirement is given under the heading <strong>Water</strong>. Unless otherwise specified in the monograph, determine the water by <span class="key-term">Method Ia</span>.</p>
+            <p>The heading <span class="key-term">Loss on Drying</span> (see Loss on Drying 〈731〉) is used in those cases where the loss sustained on heating may be not entirely water.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts — 水分測定方法總覽</h4>
+                <table>
+                    <tr><th>方法</th><th>名稱</th><th>原理</th><th>適用場景</th></tr>
+                    <tr><td>Method Ia</td><td>Karl Fischer 直接滴定</td><td>I₂ + SO₂ + H₂O 反應</td><td>預設方法，大多數固/液體</td></tr>
+                    <tr><td>Method Ib</td><td>Karl Fischer 殘差滴定</td><td>過量 KF，反滴定</td><td>水分釋放緩慢的樣品</td></tr>
+                    <tr><td>Method Ic</td><td>庫侖滴定</td><td>電化學產生 I₂</td><td>微量水分（&lt;1%），烴類、醇類</td></tr>
+                    <tr><td>Method II</td><td>甲苯共沸蒸餾</td><td>水與甲苯共沸，收集水層</td><td>揮發油、大量水分樣品</td></tr>
+                    <tr><td>Method III</td><td>重量法</td><td>加熱乾燥，秤重損失</td><td>生物製品、植物藥</td></tr>
+                </table>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy — Water vs. Loss on Drying</h4>
+                <p>「Water（水分）」與「Loss on Drying（乾燥減重）」的差別，就像分析一塊濕海綿：</p>
+                <ul>
+                    <li><strong>Water 測定</strong>（Method I/II）：專門測水分子（H₂O），就像只量海綿吸的水</li>
+                    <li><strong>Loss on Drying</strong>（〈731〉）：測所有加熱揮發的物質，包括水、殘留溶劑、揮發性輔料——就像量加熱後海綿的總重量損失</li>
+                </ul>
+                <p>如果加熱不只損失水（如含有乙醇、甲醇等溶劑），就必須用 Loss on Drying 而非 Water 作為標題，因為測到的不只是水。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>預設方法 Method Ia</strong>：2022 年 5 月更新後，除非各論另有規定，水分測定預設使用 Method Ia（Karl Fischer 直接滴定）。</p>
+                <p><strong>水合物（Hydrates）</strong>：含結晶水的化合物（如無水硫酸鈉、葡萄糖一水合物），水分含量是品質屬性的一部分，影響效價計算。若 API 是水合物，水分規格通常有上下限（而非單純上限）。</p>
+            </div>
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>某藥典各論規定「Loss on Drying: NMT 0.5%」，為何不寫「Water: NMT 0.5%」？這兩個指標在分析意義上有何差異？</li>
+                    <li>葡萄糖一水合物（Glucose monohydrate）的理論含水量是多少？如果測定值明顯低於此值，代表什麼品質問題？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: METHOD IA — KARL FISCHER DIRECT TITRATION -->
+    <div class="section-title">Section 2: Method Ia — Karl Fischer Direct Titration</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <h3>METHOD I (TITRIMETRIC) — Method Ia (Direct Titration)</h3>
+
+            <h3>PRINCIPLE</h3>
+            <p>The titrimetric determination of water is based upon the quantitative reaction of water with an anhydrous solution of <span class="key-term">sulfur dioxide and iodine</span> in the presence of a buffer that reacts with hydrogen ions.</p>
+            <p>In the original titrimetric solution, known as <span class="key-term">Karl Fischer Reagent</span>, the sulfur dioxide and iodine are dissolved in pyridine and methanol. The test specimen may be titrated with the Reagent directly, or the analysis may be carried out by a residual titration procedure. The stoichiometry of the reaction is not exact, and the reproducibility of a determination depends upon such factors as the relative concentrations of the Reagent ingredients, the nature of the inert solvent used to dissolve the test specimen, and the technique used in the particular determination. Therefore, an <span class="key-term">empirically standardized technique</span> is used in order to achieve the desired accuracy. Precision in the method is governed largely by the extent to which atmospheric moisture is excluded from the system.</p>
+
+            <h3>APPARATUS</h3>
+            <p>Any apparatus may be used that provides for adequate exclusion of atmospheric moisture and determination of the endpoint. In the case of a colorless solution that is titrated directly, the endpoint may be observed visually as a change in color from <span class="key-term">canary yellow to amber</span>. The reverse is observed in the case of a test specimen that is titrated residually. More commonly, the endpoint is determined electrometrically with an apparatus employing an electrical circuit and a pair of platinum electrodes immersed in the solution to be titrated. At the endpoint of the titration a slight excess of the reagent increases the flow of current, which is detected by the electrodes for not less than 30 s.</p>
+            <p>Commercially available apparatus generally comprises a closed system consisting of one or two automatic burets and a tightly covered titration vessel fitted with the necessary electrodes and a magnetic stirrer. The air in the system is kept dry with a suitable desiccant, and the titration vessel may be purged by means of a stream of dry nitrogen or current of dry air.</p>
+
+            <h3>REAGENT</h3>
+            <p>Prepare the <span class="key-term">Karl Fischer Reagent</span> as follows. Add 125 g of iodine to a solution containing 670 mL of methanol and 170 mL of pyridine, and cool. Place 100 mL of pyridine in a 250-mL graduated cylinder, and, keeping the pyridine cold in an ice bath, pass in dry sulfur dioxide until the volume reaches 200 mL. Slowly add this solution, with shaking, to the cooled iodine mixture. Shake to dissolve the iodine, transfer the solution to the apparatus, and allow the solution to stand overnight before standardizing. When freshly prepared, 1 mL of this solution is equivalent to approximately 5 mg of water, but it deteriorates gradually; therefore, standardize it within 1 h before use, or daily if in continuous use. Protect from light while in use. Store any bulk stock of the reagent in a suitably sealed, glass-stoppered container, fully protected from light, and under refrigeration.</p>
+            <p>For determination of trace amounts of water (less than 1%), it is preferable to use a Reagent with a <span class="key-term">water equivalency factor of not more than 2.0</span>, which will lead to the consumption of a more significant volume of titrant.</p>
+            <p>A commercially available, stabilized solution of Karl Fischer type reagent may be used. Commercially available reagents containing solvents or bases other than pyridine or alcohols other than methanol may be used also. These may be single solutions or reagents formed in situ by combining the components of the reagents present in two discrete solutions.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts — Karl Fischer 反應原理</h4>
+                <p>Karl Fischer 反應的核心化學（簡化版）：</p>
+                <p style="text-align:center;"><strong>I₂ + SO₂ + 2H₂O + 吡啶 → 2HI + SO₃（被吡啶緩衝）</strong></p>
+                <p>更精確地說：</p>
+                <ul>
+                    <li>碘（I₂）氧化 SO₂，消耗水分子</li>
+                    <li>吡啶（pyridine）或其他鹼性緩衝劑中和生成的 HI，維持反應前進</li>
+                    <li>甲醇（methanol）作為溶劑，並參與 SO₂ 的酯化反應</li>
+                    <li>計量比並非精確整數，因此需要實驗標定（empirical standardization）</li>
+                </ul>
+                <p><strong>現代商業試劑</strong>：無吡啶（pyridine-free）配方（如 Hydranal 系列），使用咪唑（imidazole）等替代緩衝劑，毒性更低，操作更安全。</p>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy — 終點判斷</h4>
+                <p>Karl Fischer 滴定的終點判斷就像停車場收費：</p>
+                <ul>
+                    <li><strong>目視法（金黃→琥珀色）</strong>：就像看煙霧信號——顏色變了代表過量，簡單直覺但只適合無色透明樣品</li>
+                    <li><strong>電量法（雙鉑電極）</strong>：就像電子收費閘門——準確、客觀，少量多餘碘在電極間建立電流（達 30 秒後確認），適合有色或不透明樣品</li>
+                </ul>
+                <p>電量終點更可靠，是現代儀器的標準配備。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>試劑保存與使用</strong>：Karl Fischer 試劑對光和濕氣極度敏感，必須：(1) 使用前重新標定，或每日標定；(2) 避光保存；(3) 冷藏保存大量存貨；(4) 系統保持密封，用乾燥管或乾燥氮氣。</p>
+                <p><strong>痕量水分測定（&lt;1%）</strong>：選用水當量因子（F）≤2.0 mg/mL 的稀釋試劑，確保消耗足夠體積的滴定液（提高精確度）。使用 Method Ic（庫侖法）更適合超低水分場景（0.5–5 mg 水）。</p>
+                <p><strong>大氣濕氣控制</strong>：這是 Karl Fischer 誤差的最主要來源！系統必須密封，傳輸管路使用乾燥劑。操作高吸濕性樣品時，需在充氮手套箱中進行。</p>
+            </div>
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>Karl Fischer 試劑開封使用 3 天後，每天都有標定。若第三天的 F 值比第一天下降了 8%，應如何處置？這代表什麼？</li>
+                    <li>某固體 API 已知是強吸濕性物質，如何設計 Karl Fischer 測試的樣品製備流程以最小化誤差？</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: TEST PREPARATION AND STANDARDIZATION -->
+    <div class="section-title">Section 3: Test Preparation &amp; Standardization of Reagent</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <h3>TEST PREPARATION</h3>
+            <p>Unless otherwise specified in the individual monograph, use an accurately weighed or measured amount of the specimen under test estimated to contain <span class="key-term">2–250 mg of water</span>. The amount of water depends on the water equivalency factor of the Reagent and on the method of endpoint determination. In most cases, the minimum amount of specimen, in milligrams, can be estimated using the formula:</p>
+            <p style="text-align:center; font-weight:bold;">Result = FCV/KF</p>
+            <p>in which F is the water equivalency factor of the Reagent, in milligrams per milliliter; C is the used volume, in percent, of the capacity of the buret; V is the buret volume, in milliliters; and KF is the limit or reasonable expected water content in the sample, in percent. C is generally between 30% and 100% for manual titration, and between 10% and 100% for the instrumental method endpoint determination.</p>
+            <p>[Note—It is recommended that the product of FCV be greater than or equal to 200 for the calculation to ensure that the minimum amount of water titrated is greater than or equal to 2 mg.]</p>
+            <p><strong>Special preparations:</strong></p>
+            <ul>
+                <li>Capsules: use a portion of the mixed contents of not fewer than 4 capsules</li>
+                <li>Tablets: use powder from not fewer than 4 tablets ground to a fine powder in an atmosphere of temperature and relative humidity known not to influence the results</li>
+                <li>Hygroscopic specimens: take an accurately weighed portion of the solid into the titration vessel, proceeding as soon as possible and taking care to avoid moisture uptake from the atmosphere</li>
+            </ul>
+            <p>When appropriate, the water may be desorbed or released from the sample by heat in an external oven connected with the vessel, to where it is transferred with the aid of an inert and dried gas such as pure nitrogen.</p>
+
+            <h3>STANDARDIZATION OF THE REAGENT</h3>
+            <p>Place enough methanol or other suitable solvent in the titration vessel to cover the electrodes, and add sufficient Reagent to give the characteristic endpoint color or the appropriate electrode response. Either <span class="key-term">Purified Water</span>, <span class="key-term">USP Sodium Tartrate Dihydrate RS</span>, or commercial standards with a certificate of analysis traceable to a national standard may be used to standardize the Reagent.</p>
+            <p>For Purified Water or water standards, calculate the water equivalency factor, F, in milligrams of water per milliliter of reagent:</p>
+            <p style="text-align:center; font-weight:bold;">Result = W/V</p>
+            <p>in which W is the weight, in milligrams, of the water contained in the aliquot of standard used; and V is the volume, in milliliters, of the Reagent used in the titration.</p>
+            <p>For sodium tartrate dihydrate:</p>
+            <p style="text-align:center; font-weight:bold;">Result = W/V (36.04/230.08)</p>
+            <p>in which 36.04 is 2 times the molecular weight of water and 230.08 is the molecular weight of sodium tartrate dihydrate.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+            <div class="formula-box">
+                <h4>公式與計算 — 樣品用量估算</h4>
+                <pre>樣品最小用量估算公式：
+Result = FCV/KF
+
+F = 試劑水當量因子（mg H₂O/mL 試劑）
+C = 滴定管使用體積比例（30%–100% 手動；10%–100% 儀器）
+V = 滴定管容量（mL）
+KF = 樣品預期含水量（%）
+
+建議：FCV ≥ 200（確保滴定水分量 ≥ 2 mg）
+
+例：F = 5 mg/mL，V = 10 mL，KF = 0.5%（預期含水量）
+最佳 C = 50%（手動中段）
+最小樣品量 = (5 × 0.5 × 10) / 0.5 = 50 mg
+驗證：FCV = 5 × 0.5 × 10 = 25（&lt;200，需增加樣品量）
+若 C = 100%：FCV = 5 × 1.0 × 10 = 50（仍 &lt;200）
+→ 改用較大滴定管（如 50 mL）：FCV = 5 × 0.5 × 50 = 125（≥ 需求 2mg 才合格）</pre>
+            </div>
+            <div class="formula-box">
+                <h4>公式與計算 — 試劑標定</h4>
+                <pre>用純水標定（Purified Water）：
+F = W/V
+W = 加入純水的重量（mg）
+V = 消耗試劑體積（mL）
+
+例：加入 50.2 mg 純水，消耗試劑 9.8 mL
+F = 50.2 / 9.8 = 5.12 mg/mL
+
+用酒石酸鈉二水合物標定：
+F = W/V × (36.04/230.08)
+• 36.04 = 2 × 18.02（兩個水分子）
+• 230.08 = 酒石酸鈉二水合物分子量
+
+例：加入 150.0 mg 酒石酸鈉二水合物，消耗試劑 20.3 mL
+理論含水量 = 150.0 × (36.04/230.08) = 23.5 mg
+F = 150.0/20.3 × (36.04/230.08) = 1.16 mg/mL</pre>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy — 為什麼要標定試劑？</h4>
+                <p>Karl Fischer 試劑就像一把「量水尺」——使用前需校準（標定）。酒石酸鈉二水合物是「標準砝碼」：它含有精確比例的水（理論值 15.66% w/w）且穩定，用它來校準尺的刻度。市售認證標準品則附有溯源至國家標準（NIST 等）的證書，確保計量鏈完整。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>膠囊與錠劑的特殊規定</strong>：至少要混合 4 粒膠囊內容物或 4 片研磨粉，是為了克服「批內個體差異（within-batch variability）」，確保測試樣品具代表性。研磨錠劑時必須在受控溫濕度環境下操作，防止粉末吸濕影響結果。</p>
+                <p><strong>加熱揮發法（Oven/Headspace KF）</strong>：對不溶解於 KF 溶劑的樣品（如聚合物、多孔材料、凍乾餅），可用外部烤箱加熱，以乾氮氣將揮發出的水分攜帶至滴定槽。需注意：加熱溫度不能導致樣品分解，否則產生的水不是原本的水分（假陽性）。</p>
+            </div>
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>標定 KF 試劑時，加入 30.5 mg 純水，消耗試劑 6.1 mL，計算 F 值。</li>
+                    <li>某凍乾製劑的水分規格為 NMT 1.0%，KF 試劑 F = 2.0 mg/mL，使用 10 mL 滴定管，預期用量 40%–60%。計算需要的樣品最小用量（mg），並驗證 FCV 是否 ≥200。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: METHOD IB, IC — RESIDUAL AND COULOMETRIC -->
+    <div class="section-title">Section 4: Method Ib (Residual Titration) &amp; Method Ic (Coulometric)</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <h3>Method Ib (Residual Titration)</h3>
+            <h3>PRINCIPLE</h3>
+            <p>In the residual titration, <span class="key-term">excess Reagent is added</span> to the test specimen, sufficient time is allowed for the reaction to reach completion, and the <span class="key-term">unconsumed Reagent is titrated</span> with a standard solution of water in a solvent such as methanol. The residual titration procedure is applicable generally and avoids the difficulties that may be encountered in the direct titration of substances from which the bound water is released slowly.</p>
+
+            <h3>PROCEDURE (Method Ib)</h3>
+            <p>Calculate the water content of the specimen, in milligrams, taken:</p>
+            <p style="text-align:center; font-weight:bold;">Result = F(X' − XR)</p>
+            <p>in which F is the water equivalence factor of the Reagent; X' is the volume, in milliliters, of the Reagent added after introduction of the specimen; X is the volume, in milliliters, of standardized Water Solution required to neutralize the unconsumed Reagent; and R is the ratio, V'/25 (mL Reagent/mL Water Solution).</p>
+
+            <h3>Method Ic (Coulometric Titration)</h3>
+            <h3>PRINCIPLE</h3>
+            <p>The Karl Fischer reaction is used in the coulometric determination of water. Iodine, however, is not added in the form of a volumetric solution but is <span class="key-term">produced in an iodide-containing solution by anodic oxidation</span>. The reaction cell usually consists of a large anode compartment and a small cathode compartment that are separated by a diaphragm. Each compartment has a platinum electrode that conducts current through the cell. Iodine, which is produced at the anode electrode, immediately reacts with water present in the compartment. When all the water has been consumed, an excess of iodine occurs, which usually is detected electrometrically, thus indicating the endpoint.</p>
+            <p>This method is particularly suited to <span class="key-term">chemically inert substances</span> like hydrocarbons, alcohols, and ethers. In comparison with the volumetric Karl Fischer titration, coulometry is a <span class="key-term">micro-method</span>.</p>
+
+            <h3>PROCEDURE (Method Ic)</h3>
+            <p>Using a dry device, inject or add directly an accurately measured amount of the sample or sample preparation estimated to contain between <span class="key-term">0.5 and 5 mg of water</span>, or an amount recommended by the instrument manufacturer into the anolyte, mix, and perform the coulometric titration to the electrometric endpoint. Read the water content of the liquid Test Preparation directly from the instrument's display, and calculate the percentage that is present in the substance. Perform a blank determination, as needed, and make any necessary corrections.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts — 三種 Method I 變體比較</h4>
+                <table>
+                    <tr><th>方法</th><th>操作方式</th><th>適用場景</th><th>水分範圍</th></tr>
+                    <tr><td>Method Ia（直接）</td><td>樣品加入，直接滴定到終點</td><td>大多數樣品，水分易釋放</td><td>2–250 mg</td></tr>
+                    <tr><td>Method Ib（殘差）</td><td>過量 KF 加入後等待，再反滴定</td><td>水分釋放緩慢的固體（結晶水）</td><td>2–250 mg</td></tr>
+                    <tr><td>Method Ic（庫侖）</td><td>電化學產生 I₂，微克級精度</td><td>微量水分，烴類、醇類、惰性物質</td><td>0.5–5 mg</td></tr>
+                </table>
+            </div>
+            <div class="formula-box">
+                <h4>公式與計算 — Method Ib 殘差滴定</h4>
+                <pre>Method Ib 水分含量計算：
+Result = F(X' − XR)
+
+F = KF 試劑水當量因子（mg/mL）
+X' = 加入樣品後消耗的試劑量（mL）（過量加入量）
+X = 反滴定消耗的水溶液量（mL）
+R = V'/25（試劑/水溶液的比值，從標定獲得）
+
+原理：
+水溶液標定：Result = V'F/25
+（V' = 標定水溶液時消耗的試劑量）
+
+例：F = 5.0 mg/mL，加入試劑 X' = 15.0 mL
+反滴定消耗水溶液 X = 2.5 mL，R = 0.8 mL試劑/mL水溶液
+水分量 = 5.0 × (15.0 − 2.5 × 0.8) = 5.0 × (15.0 − 2.0) = 65.0 mg</pre>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy — 殘差滴定 vs. 直接滴定</h4>
+                <p>Method Ia（直接滴定）就像直接用尺量繩子的長度——直接、快速。Method Ib（殘差滴定）就像先把繩子放進確定容量的桶子，再量桶子剩餘空間——適合繩子纏繞複雜，難以直接量的情況（水分被包埋在晶格中）。</p>
+                <p><strong>庫侖法（Method Ic）</strong>的特別之處：不需要標定！因為電量可以精確計算（法拉第定律：96,485 庫侖 = 1 莫耳電子 = 1 莫耳 I₂ = 1 莫耳 H₂O ≈ 18 mg）。這是絕對測量方法（primary method）。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>庫侖法不需要標定的原因</strong>：電流 × 時間 = 電量（庫侖），根據法拉第定律可直接換算 I₂ 的莫耳數，進而計算水分量。儀器微處理器直接顯示結果，無需手動計算。但注意：樣品必須與陽極液相容（無副反應）。</p>
+                <p><strong>Method Ib 的空白校正</strong>：水溶液標準品需每週標定，定期校正 R 值（Reagent/Water Solution 比值），確保計算的準確性。若忽略此步驟，累積誤差可能導致系統性偏差。</p>
+            </div>
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>某 API 是葡萄糖醛酸水合物，加熱後水分緩慢釋放。應選擇 Method Ia 還是 Method Ib？為什麼？</li>
+                    <li>某凍乾製劑規格要求殘留水分 NMT 0.5%（即 &lt;1%），應優先使用 Method Ia 還是 Method Ic？說明選擇的理由。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: METHOD II AND METHOD III -->
+    <div class="section-title">Section 5: Method II (Azeotropic) &amp; Method III (Gravimetric)</div>
+    <div class="two-column">
+        <div class="left-column">
+            <h2>原文內容 Original Text</h2>
+            <h3>METHOD II (AZEOTROPIC—TOLUENE DISTILLATION)</h3>
+            <h3>Apparatus</h3>
+            <p>Use a 500-mL glass flask A connected by means of a trap B to a reflux condenser C by ground glass joints. The connecting tube D is 9–11 mm in internal diameter. The trap is 235–240 mm in length. The condenser, if of the straight-tube type, is approximately 400 mm in length and not less than 8 mm in bore diameter. The <span class="key-term">receiving tube E</span> has a 5-mL capacity, and its cylindrical portion, 146–156 mm in length, is graduated in 0.1-mL subdivisions, so that the error of reading is not greater than 0.05 mL for any indicated volume. The source of heat is preferably an electric heater with rheostat control or an oil bath.</p>
+            <p>Clean the receiving tube and the condenser with a suitable cleanser, thoroughly rinse with water, and dry in an oven. Prepare the toluene to be used by first shaking with a small quantity of water, separating the excess water, and distilling the toluene.</p>
+
+            <h3>Procedure (Method II)</h3>
+            <p>Place in the dry flask a quantity of the substance, weighed accurately to the nearest centigram, which is expected to <span class="key-term">yield 2–4 mL of water</span>. Place about 200 mL of toluene in the flask, connect the apparatus, and fill the receiving tube E with toluene poured through the top of the condenser. Heat the flask gently for 15 min and, when the toluene begins to boil, distill at the rate of about 2 drops/s until most of the water has passed over, then increase the rate of distillation to about 4 drops/s. When the water has apparently all distilled over, rinse the inside of the condenser tube with toluene while brushing down the tube with a tube brush. Continue the distillation for 5 min, then remove the heat, and allow the receiving tube to cool to room temperature. When the water and toluene have separated completely, read the volume of water, and calculate the percentage that was present in the substance.</p>
+
+            <h3>METHOD III (GRAVIMETRIC)</h3>
+            <p><strong>Procedure for Chemicals:</strong> Proceed as directed in the individual monograph preparing the chemical as directed under 〈731〉.</p>
+            <p><strong>Procedure for Biologics:</strong> Proceed as directed in the individual monograph.</p>
+            <p><strong>Procedure for Articles of Botanical Origin:</strong> Place about 10 g of the drug, prepared as directed (see Articles of Botanical Origin 〈561〉, Methods of Analysis) and accurately weighed, in a tared evaporating dish. Dry at <span class="key-term">105° for 5 h</span>, and weigh. Continue the drying and weighing at 1-h intervals until the difference between two successive weighings corresponds to <span class="key-term">not more than 0.25%</span>.</p>
+        </div>
+        <div class="right-column">
+            <h2>導師解析 Tutorial Commentary</h2>
+            <div class="concept-box">
+                <h4>核心概念解析 Key Concepts — Method II 共沸蒸餾原理</h4>
+                <p><strong>甲苯（Toluene）共沸蒸餾</strong>：水與甲苯形成共沸混合物（沸點 84.1°C，低於水的 100°C 和甲苯的 110.6°C），共沸物到達接收管後，水（密度較大）沉降在底部，甲苯（密度較小）浮在上方並流回燒瓶繼續循環。最終讀取接收管底部水的體積。</p>
+                <p><strong>適用場景</strong>：</p>
+                <ul>
+                    <li>含大量水（需 2–4 mL 水）的樣品</li>
+                    <li>含揮發油的植物藥——揮發油溶於甲苯，不影響水分讀數</li>
+                    <li>對 Karl Fischer 試劑有干擾的樣品（如強還原劑、醛類）</li>
+                </ul>
+            </div>
+            <div class="analogy-box">
+                <h4>比喻說明 Analogy — 甲苯蒸餾 vs. KF 滴定</h4>
+                <p>甲苯蒸餾法就像「蒸餾酒廠分離水和酒精」——利用共沸點物理分離水分，最後直接量水的體積（非常直覺）。Karl Fischer 法則像「化學分析師用試劑定量計算」——適合精密定量微量水分。兩者各有優勢：甲苯法簡單直觀但精度較低（讀管精度 0.05 mL），KF 法精確但操作要求高。</p>
+            </div>
+            <div class="concept-box">
+                <h4>核心概念解析 — Method III 重量法（植物藥）</h4>
+                <p>植物藥（Articles of Botanical Origin）的水分測定採用烘箱乾燥重量法：</p>
+                <ul>
+                    <li><strong>條件</strong>：105°C，至少 5 小時起算</li>
+                    <li><strong>終點判定</strong>：連續兩次稱重差異 ≤0.25%</li>
+                    <li><strong>計算</strong>：（初重 − 末重）/ 初重 × 100%</li>
+                </ul>
+                <p>注意：植物藥通常含多種揮發性成分，此法測定的是「乾燥減重」（Loss on Drying）而非純水分，但 Method III 標題仍然使用「Water」，因為大多數損失為水分。</p>
+            </div>
+            <div class="note-box">
+                <h4>重點提示 Key Notes</h4>
+                <p><strong>甲苯安全注意事項</strong>：甲苯有毒，需在通風橱中操作，廢液需妥善處置。現代實驗室傾向改用二甲苯（xylene）或其他低毒溶劑，但 USP 仍規定甲苯（需確認各論允許替代溶劑）。</p>
+                <p><strong>甲苯預處理</strong>：使用前必須用少量水振搖甲苯，分去多餘水後再蒸餾。目的是確保甲苯充分飽和水分，防止吸收樣品中的水，造成假陰性結果。</p>
+                <p><strong>Method III 的「恆重」概念</strong>：連續兩次稱重差 ≤0.25%，體現了「恆重（constant weight）」的操作原則，確保乾燥完全。這個概念同樣出現在 〈731〉 Loss on Drying 和 〈281〉 Residue on Ignition 中。</p>
+            </div>
+            <div class="practice-box">
+                <h4>練習思考 Practice Questions</h4>
+                <ol>
+                    <li>某植物來源藥材含有揮發性精油，進行水分測定時選擇 KF 法還是甲苯蒸餾法？說明原因。</li>
+                    <li>甲苯蒸餾裝置的接收管每次使用前需要清洗並乾燥，為何？如果殘留水分，對結果有何影響？</li>
+                </ol>
+            </div>
+            <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+                <h4>實務應用 Practical Application</h4>
+                <p>在無菌凍乾（lyophilization）製劑的放行測試中，殘留水分（Residual Moisture）是關鍵品質屬性（Critical Quality Attribute, CQA）。USP 〈921〉 Method Ic（庫侖 KF）是最常用的方法，目標通常設定 NMT 1%（有些生物製品更嚴格，NMT 0.5%）。操作時需要在充氮保護下開啟西林瓶取樣，並立即進行測試，防止大氣濕氣干擾——這是 GMP 環境下 KF 測試的標準實務。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPTER SUMMARY -->
+    <div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+        <h3>本章重點回顧 Chapter Summary</h3>
+        <ul>
+            <li><strong>方法選擇</strong>：預設 Method Ia（直接 KF 滴定）；各論指定者依各論；Loss on Drying（〈731〉）用於測定非全為水的揮發損失</li>
+            <li><strong>Karl Fischer 原理</strong>：I₂ + SO₂ + H₂O → 定量反應；計量比不精確，需實驗標定（F = W/V）</li>
+            <li><strong>Method Ia（直接滴定）</strong>：樣品含 2–250 mg 水；電量終點（30 秒穩定電流）；大氣濕氣是主要誤差來源</li>
+            <li><strong>Method Ib（殘差滴定）</strong>：適用水分釋放緩慢樣品；Result = F(X' − XR)；水溶液標準每週標定</li>
+            <li><strong>Method Ic（庫侖滴定）</strong>：電化學產生 I₂；不需標定（絕對法）；適合微量水分 0.5–5 mg；特別適合凍乾品和惰性有機物</li>
+            <li><strong>試劑保存</strong>：避光、冷藏、密封；每次使用前或每日標定；選擇 F ≤ 2.0 用於微量水分</li>
+            <li><strong>Method II（共沸蒸餾）</strong>：甲苯與水共沸；適合含大量水或揮發油的樣品；2–4 mL 水；接收管讀數精度 0.05 mL</li>
+            <li><strong>Method III（重量法）</strong>：105°C 烘乾，至恆重（連續兩次差 ≤0.25%）；用於化學品、生物製品、植物藥</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="main-footer">
+    <p>USP 〈921〉: Water Determination | 水分測定</p>
+    <p>SterileGMP Knowledge Hub | 2026-04-06</p>
+</div>
+
+</body>
+</html>
