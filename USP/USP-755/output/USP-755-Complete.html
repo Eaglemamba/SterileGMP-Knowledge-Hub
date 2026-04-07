@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP General Chapter 〈755〉 - Minimum Fill</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+    
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-brand">
+            <h1>USP General Chapter 〈755〉</h1>
+            <p class="subtitle">Minimum Fill | 最低裝量 完整教學版</p>
+        </div>
+    </header>
+
+    <nav class="top-nav" id="topNav">
+        <button class="nav-scroll-btn hidden" id="navScrollLeft">&#8249;</button>
+        <div class="nav-container" id="navContainer">
+            <a href="#sec0" class="nav-item" data-section="sec0">
+                <span class="nav-num">0</span>
+                <span class="nav-label">Test Procedures & Requirements</span>
+            </a>
+        </div>
+        <button class="nav-scroll-btn" id="navScrollRight">&#8250;</button>
+    </nav>
+
+<main class="main-content">
+
+    <!-- ========== Section 0: Test Procedures & Requirements ========== -->
+    <section class="chapter-section" id="sec0">
+        <div class="chapter-divider">
+            <div class="chapter-badge">0</div>
+            <div class="chapter-info">
+                <h2>Section 0: Test Procedures & Requirements</h2>
+                <p>試驗程序與要求 | p1-p2</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <!-- SECTION HEADER -->
+<div class="page-info">USP General Chapter 〈755〉 | Pages 1–2 | Official as of 01-Dec-2020</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解最低裝量（Minimum Fill）測試的目的：確保每個容器的裝填量不低於標示量</li>
+        <li>掌握按重量（by weight）與按體積（by volume）標示產品的不同測試程序</li>
+        <li>熟悉氣溶膠（aerosols）、噴霧劑（sprays）及泡沫劑（foams）的特殊測試程序</li>
+        <li>理解兩階段接受標準（Stage 1 → Stage 2）的統計設計邏輯，以及如何在 GMP 製程中應用</li>
+    </ul>
+</div>
+
+<!-- SECTION: Scope & Purpose -->
+<div class="section-title">Scope &amp; Purpose — 適用範圍與目的</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>SCOPE</h3>
+        <p>The following tests and <span class="key-term">acceptance criteria</span> apply to articles such as creams, gels, lotions, ointments, pastes, powders, aerosols, foams, and sprays that are packaged in containers. To minimize the impact of entrained air for products labeled by volume, the fill determination is performed by <span class="key-term">mass from which the volume is calculated</span> by use of the <span class="key-term">density of the preparation</span>.</p>
+
+        <h3>PURPOSE</h3>
+        <div class="quote-box">
+            "The test for minimum fill ensures that the amount of material filled into the product conforms to the labeled amount."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Minimum Fill（最低裝量）：</strong>藥品標示量代表患者期望獲得的藥量。如果實際裝量低於標示量，患者可能無法完成完整療程（例如：標示 30 g 的皮膚軟膏，實際只裝了 25 g，患者可能在療程結束前就用完）。〈755〉 的目的就是確保「標示什麼就裝多少」。</p>
+            <p><strong>為何用質量換算體積？</strong>液體體積會隨溫度膨脹收縮，而且在充填過程中容易夾帶空氣（entrained air）造成體積虛高。用質量法測量後除以密度換算體積，排除了這些誤差來源，結果更準確可靠。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你去超市買一罐標示「淨重 500 g」的蜂蜜。你回家後把蜂蜜倒出來，把瓶子洗乾淨，然後秤空瓶重量，再用差減法算出裡面實際的蜂蜜重量。這正是 〈755〉 的核心測試邏輯——秤裝填前後的重量差（net weight by difference）。USP 連容器怎麼清洗、標籤要不要先撕掉，都有詳細規定，因為這些都會影響秤重的準確性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>適用劑型的廣泛性：</strong>〈755〉 不只適用於注射劑——它覆蓋乳膏（creams）、凝膠（gels）、洗劑（lotions）、軟膏（ointments）、糊劑（pastes）、散劑（powders）、氣溶膠（aerosols）、泡沫劑（foams）和噴霧劑（sprays）。這些劑型在 CDMO 業務中非常常見，特別是半固體（semi-solid）外用製劑的充填線。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼按體積標示的產品要用質量法測定再換算體積，而不是直接用量筒量體積？哪些因素使直接量體積不夠準確？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION: Procedure for Non-Aerosols -->
+<div class="section-title">Procedure for Dosage Forms Other Than Aerosols, Sprays, and Foams | 非氣溶膠劑型之試驗程序</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>PROCEDURE FOR DOSAGE FORMS OTHER THAN AEROSOLS, SPRAYS, AND FOAMS</h3>
+
+        <h4>For Containers Labeled by Weight</h4>
+        <p>Select a sample of <span class="key-term">10 filled containers</span>, and remove any labeling that might be altered in weight during the removal of the container contents. Thoroughly cleanse and dry the outside of the containers by a suitable means, and weigh individually. Quantitatively remove the contents from each container, cutting the latter open and washing with a suitable solvent, if necessary, taking care to retain the closure and other parts of each container that were present during the initial weighing. Dry and reweigh each empty container, together with its corresponding parts. Determine the <span class="key-term">net weight of the contents</span> of the container by difference.</p>
+
+        <h4>For Containers Labeled by Volume</h4>
+        <p>Proceed as indicated above for products labeled by weight, but convert the mass to volume using the density of the preparation. A suggested approach to determine the density of the materials is as follows:</p>
+        <ol>
+            <li>Tare a <span class="key-term">100-mL volumetric flask</span> containing 50.0 mL of liquid that is miscible with the formulation.</li>
+            <li>Add approximately 25 mL of a representative sample of the product and gently swirl the contents to mix.</li>
+            <li>Reweigh the flask.</li>
+            <li>From a burette, add an accurately measured amount of the miscible liquid to bring the flask contents to volume while gently swirling the contents of the flask. Record the volume taken from the burette.</li>
+            <li>Calculate the density of the sample:</li>
+        </ol>
+
+        <div style="background:#f8f9fa; padding:1rem; border-radius:6px; margin:1rem 0; font-family: 'Courier New', monospace; font-size:0.9rem;">
+            Result = W/V<br><br>
+            W = weight of the material taken (g)<br>
+            V = 50.0 minus the volume, in mL, of the miscible fluid necessary to adjust the contents of the flask to 100 mL
+        </div>
+
+        <p>Other methods of determining the density may be employed depending on the formulation (e.g., substantially nonaqueous formulations). Similarly, if the container contents are less than 25 mL, smaller graduated vessels may be used, with the quantities of miscible liquid adjusted accordingly.</p>
+
+        <p>Alternatively, pour the contents of 10 containers into 10 suitable <span class="key-term">graduated cylinders</span>, and allow to drain completely. Record the volume of the contents of each of the 10 containers.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Net Weight by Difference（差減法求淨重）：</strong>這是最基本但最重要的操作邏輯：</p>
+            <ul>
+                <li>步驟 1：稱帶蓋的裝填容器（gross weight）</li>
+                <li>步驟 2：完全移除內容物後，稱空容器+蓋子</li>
+                <li>步驟 3：淨重 = 步驟 1 − 步驟 2</li>
+            </ul>
+            <p>關鍵細節：蓋子（closure）和所有附件在初始秤重和空容器秤重時都必須保留——否則差減法的結果就不準確。</p>
+            <p><strong>密度計算公式：</strong>密度（ρ） = W（樣品重量） / V（佔用體積），其中 V = 50.0 mL − 補入的可混溶液體體積。這個巧妙的方法利用定容量瓶（100 mL）作為工具，精確測定樣品在混合液中的佔用體積。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+密度測定（Density Determination）：
+
+Setup: 100-mL volumetric flask
+  + 50.0 mL miscible liquid (tared)
+  + ~25 mL sample (weighed: W grams)
+  + miscible liquid to 100 mL mark
+    (volume added from burette: x mL)
+
+Calculation:
+  V = 50.0 - x  (volume displaced by sample)
+  ρ = W / V  (g/mL)
+
+Volume-Labeled Product:
+  Net Volume = Net Weight / ρ
+
+Example:
+  Net Weight = 24.50 g
+  ρ = 0.98 g/mL
+  Net Volume = 24.50 / 0.98 = 25.0 mL
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>密度測定的方法就像阿基米德的排水原理翻版。你把樣品加入已知體積的容器中，再補入液體直到回到原刻度，補入的液體量就代表樣品「佔走了」多少空間。用樣品重量除以它佔據的體積，就得到密度。這個方法的優點是不需要特殊設備，只需要精密天平和一個量瓶就能完成，適合半固體或高黏度物料（直接用比重計不適合）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>標籤必須先去除：</strong>USP 明確要求移除可能在去除容器內容物時影響重量的標籤（labeling）。實際操作中，有些標籤含有印刷油墨或黏膠，在溶劑清洗過程中可能溶解並改變容器重量——這個細節在 SOP 中常被忽略，卻是測試準確性的關鍵。</p>
+            <p><strong>「Quantitatively remove」的要求：</strong>「定量移除」意味著必須盡量完全去除容器內所有內容物（可用適當溶劑清洗），不能殘留。對於高黏度軟膏或凝膠，這一步需要明確的洗滌溶劑選擇和操作步驟，並在方法驗證中確認回收率。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在測試一個標示「30 mL」的乳膏時，某一容器的淨重為 30.6 g，但密度為 0.98 g/mL，計算實際體積。這個結果符合標示量嗎？</li>
+                <li>USP 提供了量筒直接量體積（graduated cylinder）作為替代方法。這個替代方法與質量法相比有哪些優缺點？在什麼情況下您會選擇量筒法？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION: Acceptance Criteria (Non-Aerosol) -->
+<div class="section-title">Acceptance Criteria — Non-Aerosol Products (Two-Stage) | 接受標準：非氣溶膠產品（兩階段）</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Acceptance Criteria</h3>
+        <p>This test meets the acceptance criteria either at Stage 1 or Stage 2:</p>
+
+        <h4>Stage 1:</h4>
+        <ol>
+            <li>The <span class="key-term">average net content</span> of the 10 containers is <span class="key-term">NLT</span> (not less than) the labeled amount, AND the net content of any single container is NLT 90% of the labeled amount where the labeled amount is <span class="key-term">60 g or 60 mL or less</span>, or NLT 95% of the labeled amount where the labeled amount is <span class="key-term">more than 60 g or 60 mL</span>.</li>
+            <li>If these criteria are not met, and the net content of NMT (not more than) 1 container is less than the threshold (90% or 95%), proceed to Stage 2.</li>
+        </ol>
+
+        <h4>Stage 2:</h4>
+        <ol>
+            <li>Determine the content of <span class="key-term">20 additional containers</span>.</li>
+            <li>The <span class="key-term">average content of the 30 containers</span> is NLT the labeled amount, AND the net content of NMT 1 of the 30 containers is less than 90% of the labeled amount (for ≤60 g/mL) or less than 95% of the labeled amount (for &gt;60 g/mL).</li>
+        </ol>
+
+        <h3>Summary Table: Two-Stage Acceptance Criteria</h3>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Stage</th>
+                    <th>Sample Size</th>
+                    <th>Average Criterion</th>
+                    <th>Individual Min (≤60 g/mL)</th>
+                    <th>Individual Min (&gt;60 g/mL)</th>
+                    <th>Max Failures</th>
+                </tr>
+                <tr>
+                    <td>Stage 1</td>
+                    <td>n = 10</td>
+                    <td>NLT 100% labeled</td>
+                    <td>NLT 90%</td>
+                    <td>NLT 95%</td>
+                    <td>NMT 1 container below threshold → go to Stage 2</td>
+                </tr>
+                <tr>
+                    <td>Stage 2</td>
+                    <td>n = 20 additional (total n = 30)</td>
+                    <td>NLT 100% labeled (30 units avg)</td>
+                    <td>NLT 90%</td>
+                    <td>NLT 95%</td>
+                    <td>NMT 1 of 30 below threshold</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>NLT（Not Less Than，不少於）與 NMT（Not More Than，不多於）：</strong>USP 的標準縮寫，在法規解讀中至關重要。NLT = ≥（大於或等於）；NMT = ≤（小於或等於）。</p>
+            <p><strong>兩階段測試設計的邏輯：</strong>Stage 1 用 10 個容器快速篩選。如果結果明顯合格，省下額外 20 個容器的測試成本。只有在邊界情況（1 個容器不合格）時，才進入 Stage 2 擴大樣本。這是一個平衡「消費者風險（Consumer Risk）」與「生產者風險（Producer Risk）」的統計抽樣設計。</p>
+            <p><strong>60 g / 60 mL 分界線：</strong>小包裝（≤60 g 或 mL）允許更大的個別容器偏差（最低至 90%），因為小包裝在充填技術上本就存在更大的相對誤差。大包裝（&gt;60 g 或 mL）要求更嚴格（最低至 95%），因為大包裝的充填設備通常具有更高精度，而且大量包裝的絕對重量偏差影響更大。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — Stage 1 Decision Tree</h4>
+            <pre>
+Stage 1 (n=10):
+  Criterion A: Average ≥ 100% of labeled amount
+  Criterion B (labeled ≤ 60g/mL): Min individual ≥ 90%
+  Criterion B (labeled > 60g/mL): Min individual ≥ 95%
+
+  PASS: Both A and B met → PASS
+  BORDERLINE: A met, but exactly 1 unit &lt; threshold → Stage 2
+  FAIL: Average &lt; 100%, OR ≥ 2 units below threshold → FAIL
+
+Stage 2 (additional n=20, total n=30):
+  Criterion A: Average of 30 units ≥ 100% labeled
+  Criterion B: NMT 1 of 30 units below threshold
+
+Example (labeled 50 g product):
+  Results: avg = 51.2 g (✓ ≥ 50 g)
+  Lowest unit: 44.1 g = 88.2% of 50 g (✗ &lt; 90%)
+  → 1 failure → Proceed to Stage 2
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>兩階段測試就像台灣高考的備取制度。第一輪放榜（Stage 1，10 個容器）：絕大多數批次直接通過。少數邊界情況進入第二輪（Stage 2，再加 20 個，共 30 個）——擴大樣本讓統計結論更可靠，減少因為「剛好抽到 1 個不好的容器」就判定整批失敗的機率。但如果 Stage 2 還是不過，批次就真的不合格了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>Stage 1 失敗條件（直接 FAIL，不進 Stage 2）：</strong>如果 ≥ 2 個容器低於閾值，或平均值低於 100% 標示量，則直接判定不合格，不需要進入 Stage 2。只有當「平均值合格，但恰好有 1 個容器低於閾值」時，才進入 Stage 2 做更大樣本的判斷。</p>
+            <p><strong>與 ICH Q6A 及其他充填量測試的關係：</strong>〈755〉 適用於非無菌外用製劑和半固體製劑。注射劑的裝量差異（fill volume uniformity）受 〈1〉（Injections and Implanted Drug Products）管轄；片劑重量差異受 〈2091〉（Weight Variation）管轄。了解哪個章節適用於哪種劑型，是 QC 和法規事務的基礎知識。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某批次 100 g 乳膏（大包裝，適用 95% 下限），Stage 1 結果：平均裝量 = 101.5 g，最低 1 個容器 = 93 g（93%），其餘 9 個均 ≥ 98 g。這批次結果應如何判定？需要進入 Stage 2 嗎？</li>
+                <li>如果某批次在 Stage 1 就已有 2 個容器低於 90% 下限（標示量 50 g），即便平均值仍大於 50 g，這批次是否還能進入 Stage 2 補救？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION: Aerosol Procedure -->
+<div class="section-title">Procedure for Aerosols, Sprays, and Foams | 氣溶膠、噴霧劑與泡沫劑之試驗程序</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>PROCEDURE FOR AEROSOLS, SPRAYS, AND FOAMS</h3>
+
+        <p>Select a sample of <span class="key-term">10 filled containers</span>, and remove any labeling that might be altered in weight during the removal of the container contents. Thoroughly cleanse and dry the outside of the containers by suitable means, and weigh individually. Remove the contents from each container by employing any safe technique (e.g., <span class="key-term">chill to reduce the internal pressure, remove the valve, and pour</span>). Remove any residual contents with suitable solvents, then rinse with a few portions of methanol.</p>
+
+        <p>Retain as a unit the container, the valve, and all associated parts, and heat them at <span class="key-term">100° for 5 min</span>. Cool, and again weigh each of the containers together with its corresponding parts. The difference between the original weight and the weight of the <span class="key-term">empty aerosol container</span> is the net fill weight. Determine the net fill weight for each container tested.</p>
+
+        <h3>Acceptance Criteria (Aerosols, Sprays, Foams)</h3>
+
+        <div class="quote-box">
+            "The requirements are met if the net weight of the contents of each of the 10 containers is NLT the labeled amount."
+        </div>
+
+        <p>Note: For aerosols, sprays, and foams, the acceptance criterion is applied to each individual container — no two-stage testing, no average calculation. Each container must independently meet NLT 100% of labeled amount.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>氣溶膠的特殊程序：</strong>氣溶膠罐（aerosol container）含有加壓推進劑（propellant），不能像軟膏一樣直接打開倒出。USP 規定的安全操作步驟是：先冷卻降低內部壓力 → 移除閥門（valve）→ 傾倒內容物 → 用甲醇（methanol）沖洗殘留物 → 在 100°C 烘烤 5 分鐘確保完全乾燥。</p>
+            <p><strong>為什麼要保留閥門和所有附件？</strong>因為初始秤重時已包含了閥門重量，如果空罐秤重時移除了閥門，差減法計算的「淨充填重量」就會被高估。閥門、密封圈等所有在初始秤重時存在的零件，都必須在空罐秤重時原封不動地保留。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>氣溶膠接受標準更嚴格——每個容器都必須達標：</strong>非氣溶膠產品允許用平均值補救（平均值 NLT 標示量，最多 1 個容器低於閾值），但氣溶膠、噴霧劑和泡沫劑的標準是：<strong>每一個容器（each container）的淨充填重量都必須 NLT 標示量</strong>——沒有例外，也沒有第二階段。</p>
+            <p><strong>為何氣溶膠標準更嚴格？</strong>因為氣溶膠產品（如哮喘吸入劑）的充填量直接關係到每次給藥的劑量準確性（dose uniformity）。每次使用都必須提供足夠的藥量，不能靠「平均值合格」來掩蓋個別容器裝填不足的問題。</p>
+            <p><strong>100°C 烘烤 5 分鐘的目的：</strong>驅除甲醇沖洗後的殘留溶劑，確保空罐秤重的準確性。如果殘留甲醇沒有完全揮發，空罐重量偏高，計算出的淨充填重量就會偏低，可能造成假性不合格。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>氣溶膠測試就像拆解一枚「迷你壓力鍋」。你不能直接打開（有壓力，危險），必須先讓它「冷靜下來」（冷卻降壓），再小心拆開閥門，把裡面的東西清空、沖乾淨、烘乾，最後秤空殼重量。整個過程中，所有的零件（閥門、密封環、噴嘴）都必須完整保留，才能確保計算的淨重是真實的充填量。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>對 CDMO 製造氣溶膠或定量吸入器（Metered Dose Inhaler, MDI）的場景：〈755〉 的最低裝量測試是批次放行的必要測試之一，但它測量的是整罐的總充填量（total fill weight），而非每次揿壓的劑量均一性（dose uniformity per actuation）。後者由 〈601〉 Aerosols 或 〈905〉 Uniformity of Dosage Units 管轄。這兩個測試的目的不同，必須同時滿足才能完整保障產品品質。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某批次哮喘吸入劑（標示 200 次揿壓量），10 罐測試結果：9 罐淨充填重量均在 98%–103% 標示量之間，但第 3 罐僅有 99.2%——如果這些是 &gt;60 g 的非氣溶膠產品，這批次如何判定？若這是氣溶膠產品，判定結果有何不同？</li>
+                <li>為什麼氣溶膠的接受標準要求「每個容器都 NLT 100% 標示量」，而非氣溶膠產品則允許「平均值 NLT 標示量，個別容器 NLT 90% 或 95%」？從患者安全的角度解釋這種差異的合理性。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Summary Table -->
+<div class="section-title">Complete Overview — USP 〈755〉 Minimum Fill Summary | 完整概覽</div>
+<div style="overflow-x:auto; background:white; border-radius:10px; padding:1.5rem; border:1px solid #e2e8f0; margin-bottom:1.5rem;">
+    <table>
+        <tr>
+            <th>Product Category</th>
+            <th>Procedure</th>
+            <th>Sample Size</th>
+            <th>Average Criterion</th>
+            <th>Individual Container Criterion</th>
+            <th>Two-Stage?</th>
+        </tr>
+        <tr>
+            <td>Non-aerosol, labeled by weight</td>
+            <td>Weigh filled → remove contents → weigh empty → difference</td>
+            <td>10 (Stage 1); +20 (Stage 2)</td>
+            <td>NLT 100% labeled</td>
+            <td>NLT 90% (≤60 g) / NLT 95% (&gt;60 g)</td>
+            <td>Yes (Stage 1 → Stage 2)</td>
+        </tr>
+        <tr>
+            <td>Non-aerosol, labeled by volume</td>
+            <td>Mass method + density conversion; OR graduated cylinder</td>
+            <td>10 (Stage 1); +20 (Stage 2)</td>
+            <td>NLT 100% labeled</td>
+            <td>NLT 90% (≤60 mL) / NLT 95% (&gt;60 mL)</td>
+            <td>Yes (Stage 1 → Stage 2)</td>
+        </tr>
+        <tr>
+            <td>Aerosols, sprays, foams</td>
+            <td>Chill → remove valve → pour → methanol rinse → 100°C/5 min → weigh empty → difference</td>
+            <td>10</td>
+            <td>N/A</td>
+            <td>Each container NLT 100% labeled</td>
+            <td>No</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>〈755〉 最低裝量測試確保每個容器的實際充填量符合標示量，適用於乳膏、凝膠、軟膏、散劑、氣溶膠等多種劑型</li>
+        <li>非氣溶膠產品採用兩階段測試（Stage 1：10 個容器；Stage 2：再加 20 個，共 30 個），平均值必須 NLT 100% 標示量</li>
+        <li>按重量標示產品的個別容器下限：≤60 g 為 90%，&gt;60 g 為 95%；按體積標示者先換算密度後套用相同標準</li>
+        <li>氣溶膠、噴霧劑和泡沫劑採用嚴格的一次性標準：每個容器淨充填重量都必須 NLT 100% 標示量，無兩階段設計</li>
+        <li>氣溶膠特殊操作：冷卻降壓 → 移除閥門 → 甲醇沖洗 → 100°C/5 min 烘乾 → 差減法求淨充填重量</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub — USP 〈755〉 Section 0</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+});
+</script>
+        </div>
+    </section>
+
+</main>
+
+    <footer class="main-footer">
+        <p>USP 〈755〉: Minimum Fill</p>
+        <p>Educational Material — 教學用途 | 本文件僅供學習參考</p>
+        <p>Generated by Claude Code Automation Pipeline</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.chapter-section');
+        const navItems = document.querySelectorAll('.nav-item');
+        const backToTop = document.getElementById('backToTop');
+        const navContainer = document.getElementById('navContainer');
+        const btnLeft = document.getElementById('navScrollLeft');
+        const btnRight = document.getElementById('navScrollRight');
+
+        // Reading progress — high-water mark (furthest section reached, never goes back)
+        const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        let _saveTimer = null;
+        let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
+
+        function _saveProgress() {
+            if (!_current) return;
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
+            try {
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
+                }));
+            } catch(e) {}
+        }
+
+        // Restore progress: honor URL hash first, then jump to furthest section reached
+        function _restoreProgress() {
+            var targetId = location.hash ? location.hash.substring(1) : null;
+            if (!targetId) {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                    if (saved && saved.id) targetId = saved.id;
+                } catch(e) {}
+            }
+            if (targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    setTimeout(function() { el.scrollIntoView({ behavior: 'smooth' }); }, 300);
+                }
+            }
+        }
+        _restoreProgress();
+
+        function updateNavArrows() {
+            btnLeft.classList.toggle('hidden', navContainer.scrollLeft <= 0);
+            btnRight.classList.toggle('hidden',
+                navContainer.scrollLeft + navContainer.clientWidth >= navContainer.scrollWidth - 1);
+        }
+        btnLeft.addEventListener('click', function() {
+            navContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        btnRight.addEventListener('click', function() {
+            navContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        navContainer.addEventListener('scroll', updateNavArrows);
+        updateNavArrows();
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            _current = '';
+            sections.forEach(function(section) {
+                var sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    _current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(function(item) {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === _current) {
+                    item.classList.add('active');
+                    item.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                }
+            });
+
+            clearTimeout(_saveTimer);
+            _saveTimer = setTimeout(_saveProgress, 500);
+        });
+    });
+    </script>
+
+</body>
+</html>

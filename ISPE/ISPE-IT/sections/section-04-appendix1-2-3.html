@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE GAMP IT Infrastructure - Appendices 1–3</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+/* ===== TOP NAVIGATION ===== */
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content, .main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+/* ===== KEY TERMS ===== */
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box {
+    display: inline-block; padding: 0.6rem 1.2rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+}
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+/* ===== BADGES ===== */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+/* ===== CARDS ===== */
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+
+/* ===== ISPE SOURCE BADGE ===== */
+.source-badge {
+    display: inline-block; background: #dcfce7; color: #15803d;
+    font-size: 0.75rem; font-weight: 700; padding: 2px 10px;
+    border-radius: 12px; letter-spacing: 0.05em; margin-bottom: 0.5rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <div class="source-badge">ISPE</div>
+    <h1>Appendices 1–3: Roles, Risk Assessment &amp; Qualification Deliverables</h1>
+    <div class="subtitle">附錄一至三：職責分工、風險評估與確認交付物</div>
+    <div class="page-info">ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance | App. 1–3 (p52–p67)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 IT 基礎架構中各角色（Platform Owner、Application Owner、IT Quality &amp; Compliance、Independent QA）的職責邊界</li>
+        <li>掌握「所有權不可外包」原則——受監管公司永遠保有 QA 最終責任</li>
+        <li>學習 GAMP 兩階段風險評估方法：Stage 1（可能性 × 衝擊）→ Stage 2（偵測概率）→ 風險優先級</li>
+        <li>了解 Type 與 Instance 資格確認的概念差異，以及 Table A3.1 各角色在各交付物的參與方式</li>
+    </ul>
+</div>
+
+<!-- ===================== APPENDIX 1 ===================== -->
+<div class="section-title">Appendix 1 — Roles and Responsibilities 職責分工</div>
+
+<!-- A1 §1 Introduction -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>1 Introduction</h3>
+        <p>Companies are organized in a variety of ways that fit each individual company's mode of operation, size, objectives, geographic layout, culture, etc.</p>
+        <p>Companies typically identify roles and responsibilities in a similar way; this Appendix discusses their interrelationships and a possible way of grouping them together.</p>
+        <p>The term <span class="key-term">'owner'</span> is used in this context both as a suggested title for personnel accepting ownership of a given item or process, and for the high level of accountability associated with assuming that role. Often, true ownership can be achieved only by personnel whose primary business objectives are directly dependent on the item's availability and performance.</p>
+        <p>The term <span class="key-term">'independent QA'</span> is used to denote the role of the Quality Assurance group as required by regulatory authorities.</p>
+        <p>Executive management is responsible for the successful implementation and qualification of the IT Infrastructure platforms, and commits and empowers resources to ensure adherence to all relevant GxP requirements, and other requirements such as those pertaining to security.</p>
+        <p>The key roles that a company may find useful to identify and allocate resources may include:</p>
+        <ul>
+            <li>Executive Management</li>
+            <li>Project Manager</li>
+            <li>Application (System/Data) Owner/Administrator/SMEs</li>
+            <li>Data Owner, if not coincident with the Application (System) Owner</li>
+            <li>IT Infrastructure Process Owner/Administrator/SMEs</li>
+            <li>Platform Owner/Administrator/SMEs</li>
+            <li>Independent QA</li>
+            <li>IT Quality and Compliance</li>
+        </ul>
+        <p>Roles should be organized to prevent critical objectives from being overlooked. Job descriptions should be assigned to named individuals. Such decisions should be justified and documented.</p>
+        <p>Technical and managerial staff with appropriate educational background and experience should be available. Provision of training should be planned to ensure the required skills are developed and maintained. Staff should be made aware of any regulatory requirements that apply to their duties, trained in those procedures that are applicable to them, and re-trained as changes occur. Records of training should be maintained.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：「Owner」的意義</h4>
+            <p><strong>Owner（負責人）</strong>不只是頭銜，更是一種<strong>業務問責</strong>。指南特別強調：真正的 ownership 只能由「其業務目標直接依賴該系統可用性與效能」的人承擔。</p>
+            <p>換言之，Owner 必須是使用者，不是 IT 維運人員。若系統停擺會直接衝擊他的業務 KPI，他才有動機負責。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>就像工廠生產線的線長（Line Leader）：他不一定最懂機器原理，但機器停了他最心急——因為產量是他的責任。IT 系統的 Owner 應該是同樣心態的人，而不是「幫別人保管系統」的 IT 工程師。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：8 大角色要記住</h4>
+            <p>GAMP IT 指南定義了 8 個關鍵角色。在 CDMO 中，這 8 個角色不一定對應 8 個人——一個人可能身兼多職，但<strong>每個角色的職責邊界必須書面化</strong>（Job Description + 簽名）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>在您的組織中，LIMS 系統的「Application Owner」是哪個部門？IT 還是 QC？為什麼？</li>
+                <li>若一個人同時是 Platform Owner 和 Data Owner，這樣的安排是否有利益衝突風險？如何緩解？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- A1 §2 Executive Management + §3 Project Manager -->
+<div class="section-title">§2 Executive Management &amp; §3 Project Manager</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>2 Executive Management (Project Sponsorship)</h3>
+        <p>Driven by business needs, executive management appoints members of management to assume the roles of 'sponsoring' projects and defining general requirements to the IT Infrastructure. Key initial activities include:</p>
+        <ul>
+            <li>financing the initial feasibility stages</li>
+            <li>determining the acceptable level of risk for the organization</li>
+            <li>selecting steering committee members</li>
+            <li>developing business cases and other formalities needed to obtain a fully funded and supported project established</li>
+        </ul>
+        <p>Close interaction with QA is recommended in these initial stages.</p>
+        <div class="quote-box">
+            "Whether a regulated company owns its IT Infrastructure or leases services from service providers, it is responsible for the qualification status and should specify, therefore, expectations and monitor the continuous fulfillment of those expectations, e.g., negotiate, agree, fund, and monitor general SLAs with IT Infrastructure service providers."
+        </div>
+        <div class="quote-box">
+            "Note that <span class="key-term">ownership and quality assurance of systems and data should not be outsourced</span> for reasons of Control and Compliance."
+        </div>
+
+        <h3>3 Project Manager</h3>
+        <p>Controls all project activities, including:</p>
+        <ul>
+            <li>Liaison with system and data owners on working processes and system requirements</li>
+            <li>Monitoring compliance of project deliverables with GxP and company standards for documentation, data control, training, software development (if inside the project scope), and technical support</li>
+            <li>Preparing the Infrastructure project and quality plan, or <span class="key-term">Infrastructure Qualification Plan</span></li>
+            <li>Review, approval, and reporting on key project deliverables under the qualification life cycle</li>
+            <li>Review and reporting on all change requirements</li>
+            <li>Assessing and managing project related risks</li>
+            <li>Ensuring timely resolution and escalation of issues</li>
+        </ul>
+        <p>A critical aspect in the initial project phases is the involvement of end-users, QA, and other long term stakeholders. A smooth transfer to the platform owner is a key objective at the end of the project.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="note-box">
+            <h4>重點提示：「不可外包的原則」</h4>
+            <p>這是整個 Appendix 1 最重要的句子：<strong>「系統與資料的 Ownership 和 QA 不可外包。」</strong></p>
+            <p>即使你把整個 IT 基礎架構委外給 AWS 或外部 IT 廠商，受監管公司仍然：</p>
+            <ul>
+                <li>保有 qualification status 的責任</li>
+                <li>必須設定 SLA 期望值並監控執行</li>
+                <li>不能將 QA 最終判斷外包給廠商</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p>就像藥廠委外生產（CMO）：成品的 QP 放行責任仍在製造授權持有人（MAH）身上，不在 CMO。IT 也是同理——即使系統跑在 Azure 雲上，GxP compliance 的負責人仍是藥廠自己。</p>
+        </div>
+        <div class="concept-box">
+            <h4>Project Manager vs. Platform Owner：轉移時機</h4>
+            <p><strong>Project Manager（專案經理）</strong>：在專案期間負責協調；專案完成後「交棒」給 Platform Owner 進行日常維運。</p>
+            <p>指南強調「順暢的交接」是 PM 最重要的收尾目標之一——文件必須完整，才能讓 PO 接手後繼續維持 compliance。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>您的公司使用 AWS 或 Azure 作為 IT 基礎架構，當稽核員問「誰負責 qualification？」時，您應如何回答？</li>
+                <li>IT 基礎架構專案的 PM，是否需要具備 GxP 知識？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- A1 §4 Application Owner + §5 Data Owner -->
+<div class="section-title">§4 Application Owner &amp; §5 Data Owner</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>4 Application (System/Data) Owner/Administrator/SMEs</h3>
+        <p>A system consists of the application plus whatever platforms and parts of the infrastructure are required to enable the application run. Therefore, depending on the applicable approach for a given project, the <span class="key-term">application (system/data) owner(s)/administrator(s)</span> should specify the detailed requirements a given application has of the underlying platform and IT Infrastructure processes, accordingly.</p>
+        <p>For GxP applications, the application (system/data) owner has further computer system validation specific responsibilities (see GAMP 4).</p>
+        <p>In relation to the infrastructure, the system administrator typically would have the following responsibilities:</p>
+        <ul>
+            <li>creation and maintenance of all required documentation, e.g., copies of platform qualification reports, as required</li>
+            <li>performance of required review activities</li>
+            <li>liaison with the platform groups and application specialists and ensuring clarity in mutual expectations</li>
+            <li>managing system user access profiles and permissions</li>
+            <li>managing SLAs with service providers</li>
+            <li>managing critical records and specifying any additional requirements to security for the platform groups</li>
+            <li>managing or approving system specific changes including those that are initiated from the platform side and may affect application performance or record integrity</li>
+            <li>making appropriate use of SMEs, such as application specialists</li>
+        </ul>
+        <p>The administrator should have a deep understanding of the system's functionality and impact on the businesses it supports or automates.</p>
+
+        <h3>5 Data Owner</h3>
+        <p>In cases where the data that a system stores, displays, manipulates, or transports are not logically owned by the application (system) owner, a company may choose to nominate <span class="key-term">data owners</span>. For example, when the system or file storage service provides hosting capabilities for a number of users who must account for inputted data over long periods of time, owners of such data need to be aware of their responsibilities.</p>
+        <p>Data owners would be responsible for ensuring that the established quality and security provisions are adequate. Considerations should be made for the provision of:</p>
+        <ul>
+            <li>backup and restoration</li>
+            <li>archiving</li>
+            <li>change management and audit trails</li>
+            <li>access restrictions in general and possibly specific settings</li>
+            <li>availability</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>三個「Owner」的區別</h4>
+            <p><strong>Application Owner（應用系統負責人）</strong>：對整個應用系統負責，包含其所依賴的 IT 基礎架構。他向 Platform Owner 提出平台需求。</p>
+            <p><strong>Data Owner（資料負責人）</strong>：當資料的邏輯歸屬與系統管理者不同時，另立資料負責人。例如：共用檔案伺服器的各部門資料，Application Owner 是 IT，但每個部門才是自己資料的 Data Owner。</p>
+            <p><strong>Platform Owner（平台負責人）</strong>：管理底層平台（伺服器、網路、客戶端）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明：大樓 vs. 租戶</h4>
+            <p>想像一棟辦公大樓：<br>
+            Platform Owner = 大樓管理員（負責電梯、電力、空調）<br>
+            Application Owner = 各樓層租戶（負責辦公室裡的業務系統）<br>
+            Data Owner = 租戶的重要文件夾主人（負責自己的資料安全）</p>
+            <p>大樓出了問題，租戶提需求給管理員；但租戶自己文件的保管，是自己的責任。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：Data Integrity 的關鍵</h4>
+            <p>Data Owner 必須確保的 5 項核心：備份還原、歸檔、變更管理與稽核軌跡、存取限制、可用性——這與 FDA 21 CFR Part 11 的 ALCOA+ 原則高度對應。在 GxP 環境中，<strong>Data Integrity 是監管稽查最常被挑戰的點</strong>。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>在您的 CDMO，LIMS 的 Application Owner 和 Data Owner 應該是同一人嗎？</li>
+                <li>如果備份系統故障導致 GxP 資料遺失，誰最終需要對監管機構負責？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- A1 §6 Infrastructure Process Owner + §7 Platform Owner -->
+<div class="section-title">§6 Infrastructure Process Owner &amp; §7 Platform Owner</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>6 Infrastructure Process Owner/Administrator/SMEs</h3>
+        <p>Depending on the size of a company, and thus, the infrastructure, it may be appropriate to assign dedicated staff or organizational units to take care of specific infrastructure processes.</p>
+        <p>As the objectives for the processes vary greatly so do the responsibilities of the owners, but in all cases, the scope and purpose of the process should be defined and described in <span class="key-term">SOPs or SLAs</span>, as appropriate.</p>
+        <p>Critical tasks should be described in SOPs and approved by authorized senior staff and IT Quality and Compliance or QA, as appropriate. Ongoing assessment methods should be documented.</p>
+        <p>Key performance indicators should be established and agreed upon, including adequate reporting and escalation mechanisms.</p>
+        <p>Infrastructure process owners also may own any supporting IT Infrastructure systems, in which case, they should be aware of any GxP impact that may warrant validation.</p>
+        <p>Infrastructure process owners should support audits and be trained in good conduct during regulatory inspections within their scope of responsibility.</p>
+
+        <h3>7 Platform Owner/Administrator/SMEs</h3>
+        <p>The role of owning an infrastructure process may coincide with the role of owning a platform, e.g., the server management process may coincide with or include the ownership of a given type of server hardware platforms.</p>
+        <p>Depending on the company's size, the responsibility for each type of technical platforms would be assigned to dedicated staff or organizational units allowing them to concentrate and specialize on characteristics of each platform type, e.g., <span class="key-term">servers, networks, clients, peripherals</span>.</p>
+        <p>If the platform supports one or more GxP applications (business or infrastructure), the platform owner should provide the necessary qualification documentation for inclusion or reference. The platform owner should:</p>
+        <ul>
+            <li>decide on short and long term strategies for the platforms</li>
+            <li>fund the platform operation and maintenance</li>
+            <li>appoint a platform administrator or SMEs as needed to take care of daily operations</li>
+            <li>act as escalation level for complaints and major problems</li>
+        </ul>
+        <p>The platform administrator/SMEs typically would have the following responsibilities:</p>
+        <ul>
+            <li>creating and maintaining all required documentation and operating procedures</li>
+            <li>qualifying the platforms – including 'building blocks,' and ensuring continued compliance</li>
+            <li>performing required review activities</li>
+            <li>managing user access profiles and permissions to shared services</li>
+            <li>managing SLAs with service providers</li>
+            <li>providing second and third level support</li>
+            <li>managing records</li>
+            <li>managing the implementation of service and security patches</li>
+            <li>conducting ongoing performance management</li>
+            <li>managing the configuration and platform specific changes</li>
+            <li>providing expertise in the exploitation of the platform and the various versions in operation</li>
+            <li>initiating and supporting supplier audits, as appropriate</li>
+            <li>presenting the platform documents and justifying all critical decisions to QA and regulators on request</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>Platform Owner 在 CDMO 的實際角色</h4>
+            <p><strong>Platform Owner（平台負責人）</strong>是 IT 基礎架構的核心技術角色，通常分成四類平台：</p>
+            <ul>
+                <li><strong>Clients</strong>（桌電、筆電、工作站）</li>
+                <li><strong>Servers</strong>（應用伺服器、資料庫伺服器）</li>
+                <li><strong>Networks</strong>（區域網路、防火牆、VPN）</li>
+                <li><strong>Hardware/Peripherals</strong>（印表機、標籤機、儀器介面）</li>
+            </ul>
+            <p>每類平台可能有各自的 PO，也可能一人管多類——規模決定分工。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：向稽查員說明的準備</h4>
+            <p>Platform Owner 最後一條職責很重要：<strong>「向 QA 和監管機構呈現平台文件，並為所有重要決策提出正當理由。」</strong></p>
+            <p>這意味著 PO 必須能在稽查時上場回答技術問題，不能只說「這是 IT 的事」。在 CDMO，IT 人員需要具備基本 GxP 素養。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻：Infrastructure Process Owner vs. Platform Owner</h4>
+            <p>Process Owner = 「制定維修 SOP 的工務主管」<br>
+            Platform Owner = 「負責某類設備（如空調系統）的技術工程師」<br>
+            兩個角色有時重疊（同一人），有時分開——但 SOP 必須清楚界定各自的職責範圍。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>您公司的 IT 工程師，是否被訓練過「如何在稽查時回答問題」？這是誰的責任？</li>
+                <li>Security patch 的安裝屬於 Platform Owner 的職責，但它可能影響 GxP 應用系統——誰有最終決定權？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- A1 §8 Independent QA + §9 IT Quality and Compliance -->
+<div class="section-title">§8 Independent QA &amp; §9 IT Quality and Compliance</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>8 Independent Quality Assurance</h3>
+        <p><span class="key-term">Quality Assurance, independent of IT</span>, has ultimate responsibility for assessing whether compliance with regulatory and company standards is achieved and maintained.</p>
+        <p>The degree of technical literacy should be commensurate with defined responsibilities in relation to the IT Infrastructure.</p>
+        <p>QA should:</p>
+        <ul>
+            <li>provide governance/oversight</li>
+            <li>provide high level company procedures to meet compliance obligations</li>
+            <li>develop and maintain policies, processes, procedures, and other guidance documents that comprise the compliance framework</li>
+            <li>review and approve documentation/records as appropriate, based on impact to GxP</li>
+            <li>plan and perform internal and external audits</li>
+            <li>review and approve Periodic Review reports, as appropriate</li>
+            <li>host regulatory inspections</li>
+        </ul>
+
+        <h3>9 IT Quality and Compliance</h3>
+        <p><span class="key-term">IT Quality and Compliance</span> provides quality and compliance expertise to projects and operations in support of a controlled environment and associated processes that meet the quality and compliance requirements of the company.</p>
+        <p>IT Quality and Compliance staff need in depth compliance and technical insight, and should:</p>
+        <ul>
+            <li>provide governance/oversight</li>
+            <li>liaise with QA to ensure alignment with the overall company compliance obligations</li>
+            <li>liaise with system and platform SMEs</li>
+            <li>liaise with appropriate industry groups to leverage and influence industry best practices and standards</li>
+            <li>keep abreast of the business, legal, and regulatory environment for interpretation, and assess the impact on IT Infrastructure</li>
+            <li>support the development and maintenance of policies, processes, procedures, and other guidance documents that comprise the compliance framework</li>
+            <li>review and approve documentation/records as appropriate, based on impact to GxP and business critical elements</li>
+            <li>escalate to QA for approval in accordance with company procedures (e.g., key documents, retention periods, critical changes)</li>
+            <li>provide education and awareness; develop and maintain an education program</li>
+            <li>train staff as appropriate</li>
+            <li>provide guidance/consultancy/validation management/SMEs such as test engineers</li>
+            <li>participate in projects, as appropriate, based on risk</li>
+            <li>participate in process reviews and support continuous improvement</li>
+            <li>perform internal quality and compliance assessments of IT processes</li>
+            <li>develop and maintain the assessment programs</li>
+            <li>perform periodic assessments/reviews</li>
+            <li>conduct supplier audits</li>
+            <li>support external audits of the IT Infrastructure organization</li>
+        </ul>
+        <div class="quote-box">
+            "The relationship between independent QA and IT Quality and Compliance, including delegation of activities, should be documented."
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>兩個 QA 角色的關鍵差異</h4>
+            <p><strong>Independent QA（獨立品保）</strong>：對 IT 保持獨立，是最終監管判斷者。有最高 sign-off 權力，負責主持法規稽查。</p>
+            <p><strong>IT Quality &amp; Compliance（IT 合規）</strong>：深嵌在 IT 組織中，具備技術深度，是 QA 和 IT 之間的橋樑。他們不能取代 QA 的最終判斷，但可代為執行許多日常合規工作。</p>
+            <p>兩者職責的邊界必須書面化（關鍵原則）。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻：醫院的質量管理</h4>
+            <p>Independent QA = 醫院的醫療品質委員會（外部視角，有最終否決權）<br>
+            IT Quality &amp; Compliance = 各科室的品管護士（日常操作，熟悉技術細節，向委員會匯報）<br><br>
+            科室品管護士不能批准違反醫療規範的操作，這需要委員會——但委員會不可能盯著每個細節，所以需要科室品管護士作為第一道防線。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：CDMO 常見缺失</h4>
+            <p>許多中小型 CDMO 沒有設置專門的 IT Quality &amp; Compliance 角色——這等於讓普通 IT 工程師直接面對 QA，但工程師通常不懂 GxP 框架。結果：</p>
+            <ul>
+                <li>變更管理不完整（缺乏合規評估）</li>
+                <li>稽查時 IT 人員答不出來</li>
+                <li>QA 無法有效監督 IT 活動</li>
+            </ul>
+            <p>建立這個橋樑角色，是 IT compliance 成熟度的重要指標。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>在您的組織，IT 與 QA 之間是否有正式的合規橋樑角色？若無，誰在扮演這個功能？</li>
+                <li>「delegation of activities should be documented」——您的公司是否有文件化 QA 和 IT Q&amp;C 之間的職責分工？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== APPENDIX 2 ===================== -->
+<div class="section-title">Appendix 2 — Example of Risk Assessment and Controls 風險評估範例</div>
+
+<!-- A2 §1-2 Background & Risk Analysis -->
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>1 Background</h3>
+        <p>Risk assessments should be performed at each major life cycle phase of any object or groups of objects (e.g., platforms or data) identified to be important or even critical for a company to fulfill its mission.</p>
+        <p><span class="key-term">Risk Assessment</span> may be taken to comprise two phases: risk analysis and risk evaluation. Note that NIST's Guide to Risk Management for Information Technology Systems suggests a further refinement into nine steps. GAMP 4, Appendix M3 describes a process for performing Risk Assessments of a computerized system to ensure design, specification, and test efforts are appropriately focused. This Appendix describes how a combined approach may be adopted for IT Infrastructures.</p>
+
+        <h3>2 Risk Analysis</h3>
+        <p>The purpose of risk analysis is to provide clarity of the boundaries of the infrastructure under analysis, and review the history of threats (hazards) and vulnerabilities in the light of its potential impact on the company's mission, which for GxP regulated companies includes considerations of public health.</p>
+        <p>Input to the process should include:</p>
+        <ul>
+            <li>platform specifications (hardware and software)</li>
+            <li>architecture/topology diagrams</li>
+            <li>applied or planned security policies and requirements</li>
+            <li>requirements from application (system/data) owners</li>
+            <li>levels of staff training and experience</li>
+            <li>history of attacks, weaknesses, failures, flaws</li>
+            <li>any audit or self assessment comments</li>
+            <li>current or planned controls that may prevent, detect, or otherwise mitigate harm before irreparable damage occurs</li>
+        </ul>
+        <p>Output from the analysis process would include:</p>
+        <ul>
+            <li>identification of the infrastructure objects scoped by the process</li>
+            <li>the hazards threatening the infrastructure's obligation to meet critical requirements</li>
+            <li>the vulnerabilities that may warrant further consideration</li>
+            <li>a list of critical controls</li>
+        </ul>
+        <p>The next step is to determine the <span class="key-term">likelihood</span> that a given harm occurs, the <span class="key-term">magnitude of the impact</span> of the harm, and the effect of any identified mitigation factors, e.g., early detection.</p>
+        <p>Each of the factors mentioned above should be rated in relation to each other as high, medium, or low in a two stage process:</p>
+        <p><strong>Figure A2.1: GAMP Risk Assessment, Stage 1</strong> — Output from this step is a classification of each hazard in one of three levels: one, two, or three.</p>
+        <p><strong>Figure A2.2: GAMP Risk Assessment, Stage 2</strong> — The next step is to evaluate the effect of mitigation factors, e.g., probability of detection before any harm to critical aspects occurs. Output from this stage is the risk priority.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>GAMP 兩階段風險評估框架</h4>
+            <p><strong>Stage 1（風險水平）：</strong></p>
+            <p>將「發生可能性（Likelihood）」× 「衝擊程度（Impact）」組合，產出 Level 1/2/3 的風險分類。</p>
+            <p><strong>Stage 2（風險優先級）：</strong></p>
+            <p>在 Stage 1 結果的基礎上，加入「偵測概率（Probability of Detection）」——若傷害很早就能被偵測到，風險優先級可以降低；若難以偵測，優先級提升。</p>
+        </div>
+        <div class="formula-box">
+            <h4>風險評估邏輯（概念式）</h4>
+            <pre>Stage 1:
+  Likelihood (高/中/低) × Impact (高/中/低)
+  → Risk Level: 1 (低) / 2 (中) / 3 (高)
+
+Stage 2:
+  Risk Level + Detection Probability (高/中/低)
+  → Risk Priority: 高優先 / 中優先 / 低優先
+
+風險優先級高 → 需要更嚴格的 Control 措施
+風險優先級低 → 可接受現有 Control 或監控即可</pre>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻：工廠火災風險</h4>
+            <p>Stage 1：工廠附近有化學品（高衝擊）× 員工操作不熟練（中可能性）→ Risk Level 2<br>
+            Stage 2：是否有火災感測器（Detection）？若有完善感測器 → 優先級下降；若感測器老舊 → 優先級維持高</p>
+            <p>IT 安全的邏輯相同：防火牆設定錯誤（高衝擊），加上是否有日誌監控（Detection）來決定最終優先級。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：主觀性與人員素質</h4>
+            <p>指南明確承認：「輸入此步驟的資料大多是主觀的，因為通常缺乏定量數據支撐評估。」這就是為什麼<strong>參與風險評估的人員素質至關重要</strong>——必須是有均衡技術背景和經驗的人員，而非單純的 IT 工程師或單純的 QA。</p>
+        </div>
+    </div>
+</div>
+
+<!-- A2 §3 Risk Evaluation + §4 Table A2.1 -->
+<div class="section-title">§3 Risk Evaluation &amp; Table A2.1 — Example Risk Assessment</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>3 Risk Evaluation</h3>
+        <p>Once a risk is prioritized, it should be evaluated to determine whether it is acceptable to the company under the influence of all identified factors. If this is not the case, some degree of rework is required to improve the situation, and the Risk Assessment process should be repeated for the change.</p>
+        <p>The results of the assessment, along with the assumptions made, should be documented.</p>
+        <p>Note that assessing risks typically is an <span class="key-term">iterative process</span>, repeated as activities progress and as more information becomes available.</p>
+
+        <h3>4 Application of the GAMP Risk Assessment Approach to the Infrastructure</h3>
+        <p>Table A2.1 presents some proposals for considering the scope of typical scenarios/events and shows a broad spectrum of infrastructure components directly related to GxP or business critical aspects.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left;">Table A2.1: Example of Infrastructure Risk Assessment</caption>
+            <thead>
+                <tr>
+                    <th>Hazard</th>
+                    <th>Risk Scenario</th>
+                    <th>Impact</th>
+                    <th>Likelihood of Occurrence</th>
+                    <th>Probability of Detection</th>
+                    <th>Risk Priority</th>
+                    <th>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Incorrect physical connection</td>
+                    <td>No function or malfunction</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Network Diagrams; IQ</td>
+                </tr>
+                <tr>
+                    <td>Failure of component, e.g., network interface card</td>
+                    <td>Performance degradation or loss of connection</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Defined Problem Management process; Defined alarm logs</td>
+                </tr>
+                <tr>
+                    <td>Access security compromised</td>
+                    <td>Unauthorized modifications of data/records, potential access to other (GxP) network areas</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Security procedures; IQ/OQ; Periodic Review</td>
+                </tr>
+                <tr>
+                    <td>Anti-virus definitions not maintained</td>
+                    <td>Lack of availability; Unauthorized modifications; Breach of confidentiality</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>Security procedures; Periodic Review</td>
+                </tr>
+                <tr>
+                    <td>Firewall incorrectly configured</td>
+                    <td>Corruption of GxP records; Lack of availability; Unauthorized modifications; Breach of confidentiality</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Specifications maintained for firewall configuration; IQ/OQ; Periodic Review</td>
+                </tr>
+                <tr>
+                    <td>Storage capacity limit</td>
+                    <td>Records/data not stored. Applications may halt.</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>Performance monitoring routines</td>
+                </tr>
+                <tr>
+                    <td>Insufficient network bandwidth/speed</td>
+                    <td>Applications run slowly</td>
+                    <td>Med</td>
+                    <td>Med</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Performance monitoring routines</td>
+                </tr>
+                <tr>
+                    <td>Network diagrams not maintained</td>
+                    <td>Unable to rebuild network in event of a disaster</td>
+                    <td>High</td>
+                    <td>Med</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Availability of diagrams; Change control process; Configuration Management; Periodic Review</td>
+                </tr>
+                <tr>
+                    <td>Installation of unauthorized software</td>
+                    <td>Interference with operation of existing software</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Security Procedures; Periodic Review</td>
+                </tr>
+                <tr>
+                    <td>Inaccurate or missing configuration records</td>
+                    <td>Inability to restore configuration in case of disaster</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Configuration Management process; Periodic Review</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="note-box">
+            <h4>重點提示：風險評估是迭代的</h4>
+            <p>指南明確說「風險評估通常是反覆進行的過程」——這不是一次性活動。每當：</p>
+            <ul>
+                <li>發現新漏洞或威脅</li>
+                <li>系統發生重大變更</li>
+                <li>稽查後有新發現</li>
+            </ul>
+            <p>風險評估就應重新執行。這與 ICH Q9 的風險管理原則完全一致。</p>
+        </div>
+        <div class="concept-box">
+            <h4>表格解讀：三個高風險案例</h4>
+            <p><strong>1. 存取安全遭破壞（Access security compromised）</strong><br>
+            高衝擊 + 中可能性，但<strong>偵測概率低</strong> → 風險優先級高。這正是為什麼 GxP 系統需要完整的 audit trail——讓偵測概率提升。</p>
+            <p><strong>2. 防火牆設定錯誤（Firewall misconfigured）</strong><br>
+            高衝擊 + 偵測困難 → 高優先。控制手段：維護正式的 firewall spec + IQ/OQ + Periodic Review。</p>
+            <p><strong>3. 安裝未授權軟體（Unauthorized software）</strong><br>
+            高衝擊 + 高可能性 + 低偵測 → 高優先。這是最常見的 IT 風險之一，控制手段需要 Security Procedures + 定期審查。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻：防火牆就是工廠的大門</h4>
+            <p>防火牆設定錯誤，就像工廠大門沒鎖好——外人可以進入（breach of confidentiality），也可以偷改生產紀錄（unauthorized modifications）。偵測困難（誰進去誰不知道）→ 風險優先級自然高。</p>
+            <p>解決方案：門要有設計規格（Spec）、安裝後要驗收（IQ/OQ）、定期檢查（Periodic Review）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>在 Table A2.1 中，「存儲容量上限」的風險優先級為「中」，但如果是 GxP 批次紀錄系統，您認為衝擊應評為多高？</li>
+                <li>「未授權軟體安裝」的控制措施是 Security Procedures + Periodic Review，您的組織多久進行一次這類審查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== APPENDIX 3 ===================== -->
+<div class="section-title">Appendix 3 — Qualification Deliverables 資格確認交付物</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This Appendix provides guidance on specifying life cycle qualification deliverables and deciding which organizational units are involved in preparation, review, and approval. Companies should determine actual involvement required commensurate with the assessed risks. Traceability between requirements, specifications, and qualification should be maintained, e.g., through the use of traceability matrices.</p>
+        <p>For Table A3.1, the following abbreviations apply:</p>
+        <ul>
+            <li><strong>PO</strong> — Platform Owner or Administrator</li>
+            <li><strong>SME</strong> — Subject Matter Expert / IT Quality and Compliance</li>
+            <li><strong>QA</strong> — Independent QA</li>
+        </ul>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left;">Table A3.1: Qualification Deliverables</caption>
+            <thead>
+                <tr>
+                    <th>Elements / Platforms</th>
+                    <th>Clients</th>
+                    <th>Servers</th>
+                    <th>Networks</th>
+                    <th>Hardware/Peripherals</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Qualification Plan</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Requirements</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Design Specifications</strong></td>
+                    <td>PO, SME</td>
+                    <td>PO, SME</td>
+                    <td>PO, SME, QA <sup>1</sup></td>
+                    <td>PO, SME</td>
+                </tr>
+                <tr>
+                    <td><strong>Risk Assessment</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Type <sup>2</sup> IQ</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Instance <sup>3</sup> IQ</strong></td>
+                    <td>SME</td>
+                    <td>SME</td>
+                    <td>SME</td>
+                    <td>SME</td>
+                </tr>
+                <tr>
+                    <td><strong>Type OQ</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Instance OQ</strong></td>
+                    <td>SME</td>
+                    <td>SME</td>
+                    <td>SME</td>
+                    <td>SME</td>
+                </tr>
+                <tr>
+                    <td><strong>Type Qualification Report</strong></td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                    <td>PO, SME, QA</td>
+                </tr>
+                <tr>
+                    <td><strong>Instance Qualification Report</strong></td>
+                    <td>SME (via remote management)</td>
+                    <td>PO, SME</td>
+                    <td>PO, SME</td>
+                    <td>PO, SME</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <p style="font-size:0.85rem; margin-top:0.75rem; color:#555;">
+            <sup>1</sup> Role of QA in ensuring that up-to-date Network Topology Diagrams are available should be determined.<br>
+            <sup>2</sup> <em>Type</em>: the generic specifications and derived documents relating to building blocks (standard configurations). Type qualification includes all the above except Instance IQ and OQ.<br>
+            <sup>3</sup> <em>Instance</em>: the individual documents specifying qualification details and capturing results for instances of building blocks. Instance qualification typically includes Instance IQ and OQ only, referring to the associated building block type documentation.
+        </p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>Type vs. Instance：最重要的概念</h4>
+            <p><strong>Type（類型）資格確認</strong>：針對「標準建構模組（Building Block）」的通用規格。例如：「Windows Server 2022 Standard Configuration」的 IQ/OQ——只做一次，適用於所有相同標準配置的伺服器。</p>
+            <p><strong>Instance（實例）資格確認</strong>：針對每一台實際部署的伺服器個別執行。僅需做 Instance IQ 和 OQ，並引用 Type 文件作為依據。</p>
+            <p>這個分層架構的好處：不必為每台伺服器重新做完整資格確認，大大提升效率。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻：房屋建設</h4>
+            <p><strong>Type 資格確認</strong> = 建築師為「標準戶型」審核並核准設計圖（只做一次）<br>
+            <strong>Instance 資格確認</strong> = 工地監工對每棟實際蓋出來的房子做竣工驗收（每棟都要做，但不需要重新審核設計圖）</p>
+            <p>設計圖（Type 文件）已通過 QA 批准；每棟房子的施工記錄（Instance 文件）只需 SME 確認，引用設計圖即可。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：QA 在 Instance 層級不需出現</h4>
+            <p>注意表格中的規律：</p>
+            <ul>
+                <li><strong>Type 層級</strong>：所有交付物都需要 PO + SME + QA 三方參與</li>
+                <li><strong>Instance 層級（IQ/OQ/Report）</strong>：只需 SME（或 SME + PO），<strong>不需要 QA</strong></li>
+            </ul>
+            <p>這是效率設計——標準已由 QA 在 Type 層審批，Instance 的個別執行授權 SME 負責，降低 QA 的行政負擔。</p>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用：CDMO 新設伺服器</h4>
+            <p>情境：您的 CDMO 新增第 5 台 LIMS 伺服器，與前 4 台規格相同。</p>
+            <ul>
+                <li>Type IQ/OQ（第 1 台時完成）：PO + SME + QA 參與 — 已有文件</li>
+                <li>第 5 台 Instance IQ/OQ：SME 執行，引用 Type 文件，<strong>不需要 QA 重新審批</strong></li>
+                <li>Instance Qualification Report：SME + PO 簽署即可</li>
+            </ul>
+            <p>效率提升顯著——規模擴張時的合規負擔大幅降低。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>如果一台伺服器的配置與 Type 文件有小差異（例如記憶體規格不同），仍可使用 Instance 流程嗎？</li>
+                <li>Table A3.1 中，Client（桌電）的 Instance Qualification Report 由「SME via remote management」負責——這在實務上如何實現？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>附錄 1</strong>：8 個關鍵角色各有邊界——Platform Owner 管底層平台，Application Owner 管業務系統，IT Q&amp;C 是技術橋樑，Independent QA 有最終判斷權。無論 IT 委外與否，QA 責任永遠留在受監管公司。</li>
+        <li><strong>附錄 2</strong>：GAMP 兩階段風險評估——Stage 1（可能性 × 衝擊 → 風險等級），Stage 2（加入偵測概率 → 風險優先級）。風險評估是迭代過程，必須隨系統生命週期持續更新。</li>
+        <li><strong>附錄 3</strong>：Type（標準模組）vs. Instance（個別部署）的資格確認分層——Type 層需要 PO + SME + QA 三方，Instance 層只需 SME（+ PO），有效降低規模擴張時的合規負擔。追溯性矩陣確保需求→規格→確認的完整鏈結。</li>
+        <li><strong>跨附錄主題</strong>：IT 基礎架構的合規是「風險驅動」的——從角色分工、風險評估到資格確認的參與深度，都應與所評估的 GxP 風險相稱。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function(){
+    var btn = document.getElementById('backToTop');
+    if(window.scrollY > 300){ btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

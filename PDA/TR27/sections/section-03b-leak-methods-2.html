@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR27 — Section 3B: Leak Test Methods 8.10–8.18</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.purple { background: #e2d9f3; color: #5a189a; }
+.badge.orange { background: #ffe5cc; color: #a04000; }
+.main-footer {
+    background: var(--primary-blue); color: white; padding: 2rem;
+    text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 3B: Leak Test Methods 8.10–8.18 | 洩漏試驗方法 8.10–8.18</h1>
+    <div class="subtitle">PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</div>
+    <div class="page-info">Methods: Residual Gas Ionization · Tracer Gas · Ultrasonic · Vacuum/Pressure Decay · Visual · Volumetric · Weight Loss/Gain</div>
+</div>
+
+<div class="main-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>Methods Covered in This Section | 本節涵蓋方法</h3>
+        <div class="toc-grid">
+            <a href="#m810">8.10 Residual Gas Ionization</a>
+            <a href="#m811">8.11 Tracer Gas</a>
+            <a href="#m812">8.12 Ultrasonic Gas Flow</a>
+            <a href="#m813">8.13 Ultrasonic Imaging</a>
+            <a href="#m814">8.14 Vacuum/Pressure Decay (Differential)</a>
+            <a href="#m815">8.15 Vacuum/Pressure Retention (Absolute)</a>
+            <a href="#m816">8.16 Visual Inspection</a>
+            <a href="#m817">8.17 Volumetric Gas Flow</a>
+            <a href="#m818">8.18 Weight Loss/Gain</a>
+            <a href="#comparison">Full Comparison Table</a>
+            <a href="#practice">Practice Questions</a>
+        </div>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Understand the operating principle, sensitivity, and applicability of all 9 methods (8.10–8.18)</li>
+            <li>Distinguish quantitative vs. qualitative methods and destructive vs. non-destructive testing</li>
+            <li>Compare vacuum/pressure decay (differential) with vacuum/pressure retention (absolute)</li>
+            <li>Apply the master comparison table to select the appropriate method for a given package type</li>
+            <li>掌握第 8.10–8.18 節九種洩漏試驗方法的原理、靈敏度與適用性，並能在不同包裝情境中做出正確選擇</li>
+        </ul>
+    </div>
+
+    <!-- ===== METHOD 8.10 ===== -->
+    <div class="chapter-section" id="m810">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.10</div>
+            <div class="chapter-info">
+                <h2>Residual Gas Ionization | 殘留氣體離子化</h2>
+                <p>High-voltage field ionizes headspace gas in vacuum-sealed packages — qualitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>A <span class="key-term">high voltage, high frequency field</span> is applied to packages sealed under vacuum. The field causes <span class="key-term">residual headspace gas</span> to ionize. A conducting plate located near the package detects the level of <span class="key-term">ionization current</span>. Ionization above an established limit triggers rejection of the package.</p>
+
+                    <h3>Validation</h3>
+                    <p>The <span class="key-term">residual gas ionization</span> method can be validated for the detection of insufficient vacuum in packages designed to maintain a minimal vacuum level. Validation studies should examine the ability of the ionization sensors to differentiate between packages containing various known levels of vacuum as a function of voltage, frequency, or package headspace.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity is based on the ability to accurately detect pressure exceeding a desired acceptance limit in evacuated packages. Instrument sensitivity can be determined using control packages containing known pressure levels. It is possible to detect smaller leaks and permeation rates as the time interval from when the package was originally evacuated to the test time is lengthened.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Voltage and frequency</li>
+                        <li>Conducting plate and voltage field positioning</li>
+                        <li>Package component ionization potential</li>
+                        <li>Package headspace volume</li>
+                        <li>Gaseous content of the residual headspace</li>
+                        <li>Package component geometry</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Less than a second.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Gas ionization instruments</li>
+                        <li>Package handling systems</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>High frequency high voltage spark. Impact of the voltage spark on product stability should be considered.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages designed to maintain a <span class="key-term">partial vacuum</span> in the headspace. The package tested must be relatively non-ionizing.</p>
+
+                    <h3>Literature References</h3>
+                    <p>Wu, 1989 &bull; Crist, 1994</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 殘留氣體離子化 (Residual Gas Ionization)</h4>
+                        <p>對封裝在真空條件下的容器施加<strong>高壓高頻電場</strong>。若包裝內有殘餘氣體（代表存在洩漏或真空不足），這些氣體會被電離，附近的導電板即可偵測到電離電流。電流超出允許限值時，該包裝即被拒絕。</p>
+                        <p><strong>類比：</strong>就像螢光燈管在低壓時發光一樣，氣體在高電場下會被激發發光/導電。真空越高（氣體越少），電離越弱；若有洩漏（氣體增加），電離增強。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定性方法（Qualitative）</strong>：只能判斷通過/拒絕，無法量化洩漏速率</li>
+                            <li><strong>非破壞性（Non-destructive）</strong>：包裝完好無損，可回收</li>
+                            <li>僅適用於<strong>真空密封</strong>包裝，不適用正壓包裝</li>
+                            <li>測試時間極短（&lt;1秒），適合生產線上的100%在線檢查</li>
+                            <li>包裝材料本身不能有太高的電離電位（即材料不能太導電）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>時間效應 | Time-Dependent Sensitivity</h4>
+                        <p>靈敏度會隨時間延長而提高：若包裝在密封後存放較久再測，即使只有微小洩漏，積累的氣體也較多，更容易被偵測。這意味著可以在包裝完成後延遲一段時間再測，以提高靈敏度。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>實際應用 | Practical Application</h4>
+                        <p>常見於凍乾注射劑（lyophilized injectables）的玻璃瓶封裝完整性檢查。凍乾後瓶內為真空，殘留氣體離子化法可快速篩選出真空不足的瓶子。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.11 ===== -->
+    <div class="chapter-section" id="m811">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.11</div>
+            <div class="chapter-info">
+                <h2>Tracer Gas Leak Detection | 示蹤氣體洩漏偵測</h2>
+                <p>Analytical detection of tracer gas permeating through package — quantitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>A <span class="key-term">tracer gas</span> is placed on one side of the package seal. An <span class="key-term">inert carrier gas</span> is passed across the opposite seal side. Tracer gas is detected by appropriate analytical methods. Examples of analytical methods include <span class="key-term">coulometric detectors</span> for oxygen detection and <span class="key-term">photoelectric sensors</span> for carbon dioxide and water vapor detection.</p>
+                    <p>This test is useful for the measurement of leakage and permeation from packages that require a specific gas headspace to ensure long term product stability, or for products that are susceptible to degradation upon exposure to environmental gases or vapors. While oxygen, carbon dioxide, and water vapor are typically selected for testing pharmaceutical packages, a wide variety of other tracer gases can be used as well.</p>
+
+                    <h3>Validation</h3>
+                    <p>This method can be validated for the detection, location, and measurement of gaseous leaks and permeation large enough to result in an unacceptable shift in headspace content over time or in product degradation. Validation studies should examine the ability of the analytical method to accurately measure gas leakage/permeation rate in the package system.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity of tracer gas detection methods is based on the ability to accurately measure tracer gas leakage/permeation rate in the package system. Instrument sensitivity can be established using reference gas mixtures of known tracer concentration. Test method sensitivity is largely dependent on the design of the <span class="key-term">test fixture</span>.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Quantitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Gas analytical instrument sensitivity and accuracy</li>
+                        <li>Package test fixture design and dimensions</li>
+                        <li>Temperature and humidity of the testing environment</li>
+                        <li>Inert carrier gas temperature and humidity</li>
+                        <li>Concentration of the tracer gas in the package</li>
+                        <li>Concentration of tracer gas in the effluent atmosphere</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Several hours to a few days.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Analytical gas measurement instrumentation with package test fixture</li>
+                        <li>Carrier gas source</li>
+                        <li>Tracer gas</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>None.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that are required to maintain a specified leakage/permeation rate of gas through the package to ensure product stability.</p>
+
+                    <h3>Literature References</h3>
+                    <p>Amini, 1981 &bull; ASNT, 1982 &bull; ASTM E 427 &bull; ASTM E 498 &bull; ASTM E 1603 &bull; Demorest, 1988, 1992, 1996 &bull; Elder, 1995 &bull; Gnanasekharan, 1994 &bull; Guazzo, 1996</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 示蹤氣體洩漏偵測 (Tracer Gas Leak Detection)</h4>
+                        <p>將<strong>示蹤氣體（tracer gas）</strong>置於密封的一側，另一側用惰性載體氣體沖洗，再用分析儀器偵測載體中是否含有示蹤氣體。示蹤氣體的選擇通常為：</p>
+                        <ul>
+                            <li><strong>氧氣（O₂）</strong>：庫侖計偵測器（coulometric detector）</li>
+                            <li><strong>二氧化碳（CO₂）/ 水蒸氣</strong>：光電感測器</li>
+                            <li>其他惰性氣體（氦氣 He 等）：質譜儀</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定量方法（Quantitative）</strong>：可測量實際洩漏/滲透速率</li>
+                            <li><strong>非破壞性（Non-destructive）</strong>：對包裝無應力</li>
+                            <li>測試時間長（數小時至數天）——不適合高通量 100% 在線檢查</li>
+                            <li>測試夾具（test fixture）的設計是靈敏度的關鍵變數</li>
+                            <li>適合評估需要特定氣體頭頂空間的包裝（如充 N₂ 的凍乾劑、充 CO₂ 的液體）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>何時使用示蹤氣體法？ | When to Use?</h4>
+                        <p>當您需要確認<strong>包裝在整個保質期內的氣體屏障性能</strong>時，示蹤氣體法最合適。例如：某凍乾注射劑要求氧氣含量 &lt;1%，需驗證包裝在 2 年貨架期內的滲透速率是否符合。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>與其他方法對比 | vs. Other Methods</h4>
+                        <p>示蹤氣體法同時測量<strong>洩漏（leakage）與滲透（permeation）</strong>，而壓力衰減法只測洩漏。因此，若要完整評估包裝屏障性能，示蹤氣體法更全面，但耗時更長。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.12 ===== -->
+    <div class="chapter-section" id="m812">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.12</div>
+            <div class="chapter-info">
+                <h2>Ultrasonic Detection of Gas Flow | 超聲波氣流偵測</h2>
+                <p>Detects turbulent gas escaping from pressurized packages — qualitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>Containers under pressure are placed near an <span class="key-term">ultrasonic sensor</span> capable of detecting acoustic energy in the <span class="key-term">ultrasonic range of 20–100 kHz</span>. Ultrasonic sensors will detect movement of air or gasses out of package leaks large enough to create <span class="key-term">turbulent gas flow</span>.</p>
+                    <p>Smaller leaks may be detected by the application of a special <span class="key-term">surfactant</span> to the seal. Bursting of surfactant bubbles is detected ultrasonically. There must be enough package headspace to permit detectable gas flow out of the package.</p>
+
+                    <h3>Validation</h3>
+                    <p>Ultrasonic gas flow detection methods can be validated for the detection and location of leaks in package systems sealed under pressure or in packages which can be "squeezed" or otherwise manipulated to create pressure inside the package. Validation studies should examine the ability of the ultrasonic sensor to detect control leaks as a function of instrument sensitivity settings, internal package pressure, package-sensor positioning, background noise, and line speeds.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>Sensitivity of the method is limited by the presence of <span class="key-term">turbulent flow</span> gas leakage and the ability to detect such flow using positive control package leaks or standard gaseous reference leaks.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Sensitivity settings</li>
+                        <li>Background noise</li>
+                        <li>Internal package pressure</li>
+                        <li>Line speeds</li>
+                        <li>Package-sensor positioning</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test time is almost instantaneous.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Ultrasonic detection instrumentation</li>
+                        <li>Package handling system for squeezing package and/or positioning near the sensor</li>
+                        <li>Surfactant for ultrasonic detection of bubble breakage</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Possible squeezing of flexible packages. Possible surfactant wetting of seal surface.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do not rely on a tortuous path or barrier seal, that contain a headspace volume, that are sealed under pressure or that are flexible enough to permit pressurization by squeezing.</p>
+
+                    <h3>Literature References</h3>
+                    <p>ASNT, 1982 &bull; ASTM E 1002 &bull; Bandes, 1988 &bull; Elder, 1995 &bull; Guazzo, 1997</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 超聲波氣流偵測 (Ultrasonic Detection of Gas Flow)</h4>
+                        <p>當加壓包裝有洩漏時，氣體從洩漏處逸出，形成<strong>紊流（turbulent flow）</strong>，產生 20–100 kHz 的超聲波聲能。超聲波感測器偵測此聲能即可判斷是否有洩漏。</p>
+                        <p>對於較小洩漏，可在密封處塗抹<strong>界面活性劑（surfactant）</strong>，洩漏氣泡破裂時也會產生超聲波訊號。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定性方法（Qualitative）</strong>：判斷通過/拒絕</li>
+                            <li><strong>非破壞性（Non-destructive）</strong></li>
+                            <li>測試幾乎<strong>瞬間完成</strong>，適合生產線在線檢查</li>
+                            <li>限制：僅能偵測到<strong>能產生紊流的較大洩漏</strong>；微小洩漏可能被漏掉</li>
+                            <li>背景噪音是干擾主要來源，需在驗證中評估</li>
+                            <li>需要包裝有足夠的頭頂空間（headspace），或可被擠壓加壓</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比較：8.12 vs. 8.13 超聲波法 | 8.12 vs. 8.13</h4>
+                        <p><strong>8.12（氣流偵測）</strong>：偵測氣體從洩漏處逸出的聲音，需要有壓差，適合壓力密封包裝。</p>
+                        <p><strong>8.13（超聲波成像）</strong>：用脈衝超聲波掃描密封界面，偵測密封缺陷的影像，不需要氣體流動，適合評估密封品質。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>適用包裝範例 | Applicable Packages</h4>
+                        <p>軟袋（IV bags）、充氣泡殼包裝（blister packs）、含正壓頭空間的安瓿（ampoules under pressure）。不適合依靠曲折路徑密封（tortuous path seal）的容器。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.13 ===== -->
+    <div class="chapter-section" id="m813">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.13</div>
+            <div class="chapter-info">
+                <h2>Ultrasonic Imaging | 超聲波成像</h2>
+                <p>High-frequency pulse imaging of seal integrity — qualitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>Very short <span class="key-term">ultrasound pulses</span> are generated at frequencies up to several hundred MHz. These ultrasound frequencies are focused on the container seal by <span class="key-term">acoustic lenses</span>. Once inside the package the ultrasonic pulses may be absorbed, scattered or reflected depending on the change in the material. The reflected ultrasound echoes are used to create an <span class="key-term">image</span> that can be analyzed for the presence of improper sealing, <span class="key-term">delamination</span>, gaps, or <span class="key-term">product-contaminated seals</span>.</p>
+                    <p>Alternate ultrasonic inspection methods work by contact transmission of ultrasonic energy through the package seal using an array of transmitters and receivers in direct contact with the seal region.</p>
+
+                    <h3>Validation</h3>
+                    <p>Ultrasonic imaging methods can be validated for the detection and location of seal imperfections in flat thermal or adhesive bonded seals, for instance a pouch. Validation studies should examine the ability of the ultrasonic sensor to detect control leaks as a function of ultrasound pulse generation and transmission variables, instrument sensor sensitivity settings, transmission and detection sensor positioning, package materials of construction, and package geometry. Validation studies should reflect the range of acceptable package sealing parameters.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>Sensitivity is based on the ability to detect positive control package defects such as gaps, seal contaminants, package material defects, and other seal inconsistencies.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Sensor sensitivity settings</li>
+                        <li>Quantity of transmitters and sensors per seal surface area</li>
+                        <li>Package-sensor and transmission positionings</li>
+                        <li>Ultrasound frequency</li>
+                        <li>Ultrasound pulse amplitude</li>
+                        <li>Package materials of construction</li>
+                        <li>Package geometry</li>
+                        <li>Dry package testing vs. water immersion testing</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test time is less than one second.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Ultrasonic detection and imaging instrumentation</li>
+                        <li>Package handling system for positioning packages in the sensor</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>None.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do not rely on a tortuous path or barrier seal, that contain a headspace volume, that are sealed under pressure or that are flexible enough to permit pressurization by squeezing.</p>
+
+                    <h3>Literature References</h3>
+                    <p>Adams, 1995</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 超聲波成像 (Ultrasonic Imaging)</h4>
+                        <p>以高頻（數百 MHz）超短脈衝超聲波掃描密封界面。超聲波在材料界面（如密封面與空氣間）發生<strong>反射、散射、吸收</strong>，反射回波形成影像。缺陷（如分層、污染物、間隙）會顯示出異常的反射特徵。</p>
+                        <p>可分為兩種模式：</p>
+                        <ul>
+                            <li><strong>反射模式（Reflection mode）</strong>：分析反射回波影像</li>
+                            <li><strong>透射模式（Transmission mode）</strong>：發射器與接收器夾住密封區域，檢測穿透強度</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定性方法（Qualitative）</strong>：影像判讀通過/拒絕</li>
+                            <li><strong>非破壞性（Non-destructive）</strong>：無應力施加於包裝</li>
+                            <li>測試時間極短（&lt;1秒），適合生產線</li>
+                            <li>特別適合偵測<strong>密封面污染（product-contaminated seals）</strong>，這是其他方法難以偵測的</li>
+                            <li>驗證需涵蓋<strong>乾式測試 vs. 水浸測試</strong>兩種模式</li>
+                            <li>頻率越高，解析度越好，但穿透深度越淺</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>實務優勢 | Practical Advantage</h4>
+                        <p>超聲波成像是少數能夠<strong>可視化密封缺陷位置</strong>的方法。不僅能說「有缺陷」，還能精確指出缺陷在密封區域的哪個部位，特別適合密封工藝開發與故障分析（root cause investigation）。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>適用包裝範例 | Applicable Packages</h4>
+                        <p>熱封袋（pouches with thermal seals）、黏合密封袋（adhesive bonded seals）。常用於評估熱封工藝參數範圍的驗證（如溫度、壓力、時間的邊界條件測試）。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.14 ===== -->
+    <div class="chapter-section" id="m814">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.14</div>
+            <div class="chapter-info">
+                <h2>Vacuum/Pressure Decay (Differential) | 真空/壓力衰減（差壓法）</h2>
+                <p>Measures pressure change vs. reference — qualitative or quantitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>A <span class="key-term">pressure differential</span> is applied to a package and the change in pressure or vacuum is measured either inside the package itself using a test fixture, or outside in a sealed <span class="key-term">package test chamber</span>. The change in test chamber pressure or vacuum can be determined by <span class="key-term">absolute pressure measurement</span>, or it can be determined using a <span class="key-term">differential pressure manometer</span> in which the test chamber pressure change is compared to that of a control package.</p>
+
+                    <h3>Validation</h3>
+                    <p>Vacuum/pressure decay methods can be validated for the detection or measurement of gaseous leaks large enough to allow a measurable change in pressure in the package or the test chamber over the duration of the test. Validation studies should examine the ability of the instrument to detect control leaks as a function of test chamber geometry, instrument sensor capabilities, differential pressure testing conditions, test time, and environmental temperature conditions.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>Sensitivity is based on the ability to detect and/or measure a change in pressure or vacuum resulting from gaseous leaks. Generally, <span class="key-term">pressure decay is considered a more sensitive test than vacuum rise</span>, and <span class="key-term">differential pressure is potentially more sensitive than absolute pressure sensors</span>.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative or quantitative</span>, depending on the instruments and test conditions used.</p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Pressure/vacuum sensor mechanism of operation and capabilities</li>
+                        <li>Volume of space being tested (test chamber or package headspace)</li>
+                        <li>Test chamber geometry</li>
+                        <li>Time allowed for measured pressure change to occur</li>
+                        <li>Stabilization time</li>
+                        <li>Differential pressure applied to package</li>
+                        <li>Water vapor pressure inside package</li>
+                        <li>Atmospheric pressure and temperature</li>
+                        <li>Package creep effects when exposed to differential pressure</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test time may range from less than a second to a few minutes.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Leak test instrumentation including vacuum or pressure sensors in absolute or differential pressure sensing mode</li>
+                        <li>Differential pressure source, monitors and controls</li>
+                        <li>Temperature and humidity controls and monitors</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Differential pressure applied to package. Consider: headspace volume impact, liquids plugging leaks under vacuum, and package tolerance to differential pressure (vacuum rise tests limited to 1 atm; pressure decay may be much greater).</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do not rely on a tortuous path or barrier seal and that can tolerate a differential pressure applied to the seal area.</p>
+
+                    <h3>Literature References</h3>
+                    <p>ASNT, 1982 &bull; Blakistone, 1995 &bull; Chrai et al., 1994 &bull; Elder, 1995 &bull; Gnanasekharan et al., 1992, 1994 &bull; Guazzo, 1994, 1996 &bull; Morton, 1987, 1989 &bull; Snow, 1992 &bull; The Parenteral Society, 1985</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 真空/壓力衰減差壓法</h4>
+                        <p>對包裝施加壓差，測量壓力/真空度隨時間的變化。有兩種測量模式：</p>
+                        <ul>
+                            <li><strong>絕對壓力模式（Absolute）</strong>：直接測量測試腔的壓力變化</li>
+                            <li><strong>差壓模式（Differential）</strong>：將測試包裝的壓力變化與參考包裝（control）比較，消除環境溫度波動影響</li>
+                        </ul>
+                        <p>有四種測試構型：</p>
+                        <ul>
+                            <li><strong>Vacuum rise（真空上升）</strong>：外腔抽真空，包裝內部有氣壓；若有洩漏，氣體進入外腔，壓力上升</li>
+                            <li><strong>Pressure decay（壓力衰減）</strong>：對包裝施加正壓；若有洩漏，壓力下降</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li>可為定性或<strong>定量（Qualitative or Quantitative）</strong>，取決於儀器與條件</li>
+                            <li><strong>非破壞性（Non-destructive）</strong></li>
+                            <li>靈敏度排序：<strong>差壓 &gt; 絕對壓力；壓力衰減 &gt; 真空上升</strong></li>
+                            <li>真空上升最大壓差限制為 <strong>1 atm</strong>；壓力衰減可施加更大壓差</li>
+                            <li>液體（或半固體）可能在真空下<strong>堵塞洩漏點</strong>，造成偽陰性</li>
+                            <li>包裝的<strong>潛變（creep）效應</strong>（特別是軟包裝）會干擾壓力讀數</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>8.14 vs. 8.15 區別 | Key Distinction</h4>
+                        <p><strong>8.14（差壓/衰減法）</strong>：從外部施加壓差，測量腔室或包裝的壓力/真空變化。較靈敏，適合一般密封完整性檢查。</p>
+                        <p><strong>8.15（直接量測/保留法）</strong>：用穿刺裝置直接進入包裝頭空間，讀取絕對壓力值。適合需維持真空或正壓的包裝（如凍乾劑）。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>選擇考量 | Selection Considerations</h4>
+                        <p>含液體的注射劑瓶在真空測試時，液體可能被吸入密封處堵住洩漏，宜改用壓力衰減法。粉末或凍乾劑則兩者均可適用。測試腔容積越小，靈敏度越高。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.15 ===== -->
+    <div class="chapter-section" id="m815">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.15</div>
+            <div class="chapter-info">
+                <h2>Vacuum/Pressure Retention (Absolute) | 真空/壓力保留（絕對量測法）</h2>
+                <p>Direct headspace pressure measurement via piercing — qualitative or quantitative, destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>Vacuum/pressure retention tests consist of directly measuring the vacuum or pressure within a <span class="key-term">package headspace</span> by typically using a <span class="key-term">package piercing device</span> and an <span class="key-term">absolute pressure gauge</span>. Vacuum/pressure retention tests are used for packages that are designed to maintain either a vacuum or positive pressure within the package as a function of product stability.</p>
+
+                    <h3>Validation</h3>
+                    <p>Vacuum/pressure retention methods can be validated for the detection or measurement of gaseous leaks large enough to allow a measurable change in pressure in the test chamber over the duration of the test. Validation studies should examine the ability to access the package headspace and accurately measure headspace pressure.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>Sensitivity is based on the ability to detect and/or measure a change in pressure or vacuum resulting from gaseous leaks. Test method sensitivity is dependent on the ability to access the package headspace <span class="key-term">without creating a loss of pressure or vacuum</span>.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative or quantitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Pressure/vacuum sensor mechanism of operation and capabilities</li>
+                        <li>Volume of space being tested (test chamber or package headspace)</li>
+                        <li>Time allowed for measured pressure change to occur</li>
+                        <li>Vacuum or pressure initially introduced to the package</li>
+                        <li>Water or other vapor pressure inside package</li>
+                        <li>Temperature of package and test system</li>
+                        <li>Technique for piercing or accessing package headspace</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>Test time is a few seconds.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Absolute pressure gauge</li>
+                        <li>Temperature controls and monitors</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Pressure or vacuum applied to access headspace.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that are designed to maintain a <span class="key-term">positive pressure or a vacuum</span> in the headspace over product shelf-life.</p>
+
+                    <h3>Literature References</h3>
+                    <p>ASNT, 1982 &bull; Morton, 1987 &bull; Chrai et al., 1994 &bull; PDA, 1981 &bull; Crist, 1994 &bull; Rhea et al., 1984 &bull; Gnanasekharan et al., 1992 &bull; Wang et al., 1997</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 真空/壓力保留絕對量測法</h4>
+                        <p>使用<strong>穿刺裝置（piercing device）</strong>插入包裝頭空間，連接<strong>絕對壓力計</strong>直接讀取包裝內部壓力值。若包裝設計為真空密封（如凍乾劑），測得值應接近 0（真空）；若為充氮密封（如正壓包裝），應讀到預定壓力值。</p>
+                        <p>比較 8.14 與 8.15 的核心差異：</p>
+                        <ul>
+                            <li><strong>8.14</strong>：從<em>外部</em>施加壓差，測量腔室變化（不穿刺）</li>
+                            <li><strong>8.15</strong>：<em>穿刺進入</em>包裝頭空間，直接讀絕對壓力</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li>由於需要穿刺包裝，通常視為<strong>破壞性（Destructive）</strong>測試（部分設計可重新密封，但一般屬破壞性）</li>
+                            <li>可為定性或定量（Qualitative or Quantitative）</li>
+                            <li>測試速度快（數秒）</li>
+                            <li>關鍵挑戰：穿刺過程不能改變包裝內的壓力——穿刺工具的設計至關重要</li>
+                            <li>包裝內的水蒸氣壓（water vapor pressure）會影響讀數，需在解讀時校正</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>典型應用場景 | Typical Application</h4>
+                        <p>凍乾注射劑（lyophilized injectables）的真空品質確認。例如：凍乾結束後，抽取樣品，以穿刺法確認瓶內真空值是否在規格內（如 &lt;200 mTorr），以此評估凍乾工藝的一致性。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>注意事項 | Caution</h4>
+                        <p>此方法因涉及穿刺，不適用於生產線 100% 在線檢查，通常作為<strong>抽樣測試（sampling test）</strong>或工藝開發中使用。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.16 ===== -->
+    <div class="chapter-section" id="m816">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.16</div>
+            <div class="chapter-info">
+                <h2>Visual Inspection | 目視檢查</h2>
+                <p>Human or electronic detection of product leakage — qualitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>The package is examined <span class="key-term">visually by human</span> or by <span class="key-term">electronic inspection devices</span> for evidence of product leakage. The test may be accompanied by additional package challenges of <span class="key-term">temperature or pressure extremes</span> to increase the sensitivity of the test.</p>
+
+                    <h3>Validation</h3>
+                    <p>Visual inspection for leakage determines the presence or location of leaks penetrated by the contained product. This method can be validated for the detection of <span class="key-term">larger leaks</span> or package imperfections. Validation will depend on the reliability and sensitivity of the mode of leakage detection.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity is based on the incidence of product migration through positive control package defects and the ability to detect such migration. There must be sufficient product or contents leakage to permit visible or electronic detection.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Qualitative test</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Package cleanliness</li>
+                        <li>Differential pressure and temperature exposure (optional)</li>
+                        <li>Light intensity, magnification, time, background, angle of inspection</li>
+                        <li>Visual inspector training and experience</li>
+                        <li>Electronic inspection parameters dependent on mode of inspection</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>From less than a second for electronic inspection to several minutes by visual inspection.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Temperature and/or pressure controls for optional stress testing</li>
+                        <li>Appropriate lighting, light meters, magnification, and color background</li>
+                        <li>Electronic inspection equipment and instrumentation</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Pressure or temperature differential (optional).</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to <span class="key-term">all pharmaceutical packages and closure/seal types</span>.</p>
+
+                    <h3>Literature References</h3>
+                    <p>ASNT, 1982 &bull; ASTM E 165 &bull; Chrai et al., 1994 &bull; Gnanasekharan et al., 1992 &bull; Hansen et al., 1995 &bull; Jones et al., 1995 &bull; Lin et al., 1982 &bull; Shaw, 1995</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 目視檢查 (Visual Inspection)</h4>
+                        <p>最傳統的包裝完整性方法。透過<strong>人工目視</strong>或<strong>電子/機器視覺系統</strong>，觀察包裝外部是否有產品滲漏的跡象（如液體痕跡、顏色變化、包裝變形等）。</p>
+                        <p>可搭配<strong>溫度或壓力應力（stress test）</strong>，迫使潛在洩漏點顯現，提高靈敏度。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定性方法（Qualitative）</strong>、<strong>非破壞性（Non-destructive）</strong></li>
+                            <li>唯一適用於<strong>所有包裝類型</strong>的方法（無限制）</li>
+                            <li>靈敏度低：僅能偵測到已發生<strong>可見產品外滲</strong>的較大洩漏</li>
+                            <li>人工目視受操作員訓練、燈光、角度等主觀因素影響，可重複性低</li>
+                            <li>電子視覺系統（AVI）速度快但仍依賴影像對比，對微小洩漏不靈敏</li>
+                            <li>是法規（FDA、EMA）要求的最低基線方法，幾乎所有產品都需進行</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>目視檢查的局限性 | Limitations</h4>
+                        <p>目視檢查只能看到「已發生的洩漏痕跡」，無法預測或偵測尚未顯現的微小洩漏。就像汽車的機油警告燈——它告訴你機油已經不夠了，而不是告訴你某個密封件有微小裂縫即將失效。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>法規要求 | Regulatory Context</h4>
+                        <p>FDA 無菌工藝指南（2004）要求所有注射劑進行 100% 目視檢查（21 CFR 211.167）。但同時也建議補充更靈敏的確定性方法（deterministic methods），如壓力衰減法，以確保微小洩漏也能被偵測。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.17 ===== -->
+    <div class="chapter-section" id="m817">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.17</div>
+            <div class="chapter-info">
+                <h2>Volumetric Gas Flow | 體積氣流法</h2>
+                <p>Measures outward gas flow rate under differential pressure — quantitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>A <span class="key-term">pressure differential</span> is applied to a package and the <span class="key-term">outward flow rate of gas</span> is measured.</p>
+
+                    <h3>Validation</h3>
+                    <p>Volumetric gas flow methods can be validated for the measurement of gaseous leaks large enough to allow a measurable flow of gas out of the package over the duration of the test. Validation studies should examine the ability of the volumetric flow rate instrument to measure control leaks as a function of instrument sensor capabilities, differential pressure testing conditions, and test time.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity is based on the ability to accurately measure gaseous flow out of a package under positive pressure. Instrument sensitivity can be verified using gaseous reference leaks or positive control package defects. Test method sensitivity is influenced primarily by <span class="key-term">flow meter accuracy</span>, test time, and the differential pressure applied to the package. Generally, <span class="key-term">volumetric gas flow is not as sensitive as vacuum/pressure decay methods</span>.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Quantitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Flow meter accuracy</li>
+                        <li>Time of test</li>
+                        <li>Differential pressure applied to package</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>A few seconds.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Leak test instrumentation equipped with flow meters</li>
+                        <li>Differential pressure source, monitors and controls</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Differential pressure.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to pharmaceutical packages that do not rely on a tortuous path or barrier seal and that can tolerate a differential pressure applied to the seal area. This test is particularly useful for checking <span class="key-term">critical orifice sizes</span> of specialty packages or devices. The test can often be used instead of vacuum/pressure decay for packages that tend to <span class="key-term">deform under pressure</span>.</p>
+
+                    <h3>Literature References</h3>
+                    <p>ASNT, 1982 &bull; Guazzo, 1996 &bull; Gnanasekharan et al., 1992, 1994 &bull; Hoffmann, 1996 &bull; Snow, 1992</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 體積氣流法 (Volumetric Gas Flow)</h4>
+                        <p>對包裝施加正壓，用<strong>流量計（flow meter）</strong>測量從包裝洩漏逸出的氣體流量（單位：mL/min 或 sccm）。流量越大，代表洩漏越嚴重。</p>
+                        <p>與壓力衰減法的差異：</p>
+                        <ul>
+                            <li><strong>體積氣流法</strong>：直接測量流量（流速）</li>
+                            <li><strong>壓力衰減法（8.14）</strong>：測量壓力下降速率（間接計算流量）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定量方法（Quantitative）</strong>：可測量實際氣體流量</li>
+                            <li><strong>非破壞性（Non-destructive）</strong></li>
+                            <li>靈敏度<strong>低於壓力衰減法</strong>（flow meter 精度限制）</li>
+                            <li>測試時間短（數秒）</li>
+                            <li>特別適合易在壓力下<strong>變形（deform）</strong>的包裝——變形包裝用壓力衰減法會因包裝膨脹/收縮造成偽陽性，而流量法不受此影響</li>
+                            <li>適合測試特定孔徑（critical orifice）規格，如吸入器（inhaler）的噴嘴</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>何時選擇體積法 vs. 壓力衰減法？</h4>
+                        <p>如果包裝是軟袋（如輸液袋）或其他在加壓時容易形變的容器，壓力衰減法讀數會受形變影響而失真。此時選擇<strong>體積氣流法</strong>更可靠，因為它直接測量逸出氣體量，不受容器形變影響。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== METHOD 8.18 ===== -->
+    <div class="chapter-section" id="m818">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.18</div>
+            <div class="chapter-info">
+                <h2>Weight Loss / Gain | 重量損失/增加法</h2>
+                <p>Gravimetric measurement of volatile loss or hygroscopic gain — quantitative, non-destructive</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Description</h3>
+                    <p>The container is filled with either a <span class="key-term">volatile liquid or solid</span>, or a <span class="key-term">hygroscopic material</span> such as a desiccant. The container is stored in an environment intended to promote migration of the substances out of the package (volatile materials), or to promote migration of water vapor into the package (hygroscopic materials). Leakage plus permeation are measured in units of <span class="key-term">package weight loss or weight gain</span>.</p>
+                    <p>For greater accuracy, it is recommended that <span class="key-term">control packages</span> filled with inert materials be tested at the same time. Each time the test units are weighed, the control packages' weight change should be subtracted from the change in test unit weights.</p>
+
+                    <h3>Validation</h3>
+                    <p>Weight loss or weight gain methods can be validated for the measurement of leaks of a wide variety of sizes, as well as for permeation measurement. Validation will depend on the test method parameters and the sensitivity of the balance used to monitor weight change. Acceptance limits are generally established as a function of the product-package system.</p>
+
+                    <h3>Sensitivity</h3>
+                    <p>The sensitivity is dependent on the extent of weight loss or gain. The weight change of the test units must vary <span class="key-term">significantly from the control units</span>, and should be above the limit of balance sensitivity.</p>
+
+                    <h3>Quantitative / Qualitative</h3>
+                    <p><span class="key-term">Quantitative</span></p>
+
+                    <h3>Critical Test Parameters</h3>
+                    <ul>
+                        <li>Volatility (weight loss) or hygroscopicity (weight gain) of the packaged material</li>
+                        <li>Time allowed for weight change</li>
+                        <li>Challenge environment: temperature, and either pressure (weight loss) or relative humidity (weight loss or gain)</li>
+                        <li>Handling of samples and weighing techniques</li>
+                    </ul>
+
+                    <h3>Time to Complete</h3>
+                    <p>A few minutes may be required for highly volatile materials (e.g., dry ice). Otherwise, <span class="key-term">several days or weeks</span> may be required.</p>
+
+                    <h3>Equipment Required</h3>
+                    <ul>
+                        <li>Balance</li>
+                        <li>For weight gain: relative humidity storage chamber; temperature and humidity monitors</li>
+                        <li>For weight loss: appropriate package storage environment; optional elevated temperature, differential pressure with monitors</li>
+                    </ul>
+
+                    <h3>Stress on Package</h3>
+                    <p>Environmental extremes of temperature, pressure, humidity.</p>
+
+                    <h3>Product / Package Types</h3>
+                    <p>Applicable to all pharmaceutical packages and seal types intended to contain products susceptible to weight change over shelf-life.</p>
+
+                    <h3>Literature References</h3>
+                    <p>Amini, 1981 &bull; Cilento, 1977 &bull; Guazzo, 1996 &bull; Morton, 1987 &bull; USP &lt;661&gt; &bull; USP &lt;671&gt;</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+
+                    <div class="term-box">
+                        <h4>原理說明 — 重量損失/增加法 (Weight Loss/Gain)</h4>
+                        <p>利用<strong>天平稱重</strong>監測包裝在特定儲存條件下的重量變化：</p>
+                        <ul>
+                            <li><strong>重量損失（Weight Loss）</strong>：包裝內含揮發性物質（如有機溶劑、乾冰），在壓力/溫度條件下，物質蒸發逸出，重量降低</li>
+                            <li><strong>重量增加（Weight Gain）</strong>：包裝內含乾燥劑等吸濕性物質，在高濕環境下，水蒸氣滲入，重量升高</li>
+                        </ul>
+                        <p>使用對照包裝（control packages，填充惰性材料）同步測試，以扣除環境因素影響。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>重點提示 | Key Points</h4>
+                        <ul>
+                            <li><strong>定量方法（Quantitative）</strong>：可測量洩漏 + 滲透的總量</li>
+                            <li><strong>非破壞性（Non-destructive）</strong>：稱重後包裝可繼續使用/觀察</li>
+                            <li>適用範圍廣：適合所有包裝類型與密封型式</li>
+                            <li>測試時間<strong>很長</strong>（數天至數週）——不適合在線檢查</li>
+                            <li>靈敏度取決於天平精度與重量變化量</li>
+                            <li>是 USP &lt;661&gt; 和 &lt;671&gt; 的參考方法，法規認可度高</li>
+                            <li>同時測量<strong>洩漏與滲透（leakage + permeation）</strong>，無法區分兩者貢獻</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>最適應用 | Best Use Case</h4>
+                        <p>包裝保質期驗證與貨架壽命研究（shelf-life study）中，用於確認包裝在整個保質期內的阻隔性能是否符合規格。例如：確認含乾燥劑的膠囊瓶在 25°C/60%RH 條件下，2 年內水分增重不超過限值。</p>
+                    </div>
+
+                    <div class="concept-box application">
+                        <h4>USP 關聯 | USP Reference</h4>
+                        <p>USP &lt;671&gt;（容器滲透性）規定了水蒸氣滲透的測試方法，重量法是其核心方法之一。USP &lt;661&gt;（注射用容器）也引用重量法作為容器密封性的評估工具。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MASTER COMPARISON TABLE ===== -->
+    <div class="chapter-section" id="comparison">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9776;</div>
+            <div class="chapter-info">
+                <h2>Master Comparison Table: All 18 Methods | 全部 18 種方法總比較表</h2>
+                <p>PDA TR27 Section 8.1–8.18 — Quantitative/Qualitative · Destructive/Non-destructive · Sensitivity · Test Time</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="note-box" style="margin-bottom:1rem;">
+                <h4>使用說明 | How to Use This Table</h4>
+                <p>本表涵蓋 TR27 第 8.1–8.18 節所有 18 種洩漏試驗方法的關鍵特性比較，供方法選擇與驗證計畫制定時參考。靈敏度排序為相對比較，實際數值取決於儀器、測試條件與包裝系統。</p>
+            </div>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method 方法</th>
+                            <th>Quant / Qual<br>定量/定性</th>
+                            <th>Destructive<br>破壞性</th>
+                            <th>Relative Sensitivity<br>相對靈敏度</th>
+                            <th>Test Time<br>測試時間</th>
+                            <th>Package Stress<br>包裝應力</th>
+                            <th>Key Application<br>主要應用</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>8.1 Dye Immersion<br>染料浸漬法</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge red">Yes 是</span></td>
+                            <td>Moderate 中</td>
+                            <td>Minutes–Hours<br>分鐘至數小時</td>
+                            <td>Immersion pressure<br>浸泡壓力</td>
+                            <td>Ampoules, vials 安瓿/小瓶</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.2 Electrical Conductivity<br>導電性法</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge red">Yes 是</span></td>
+                            <td>Moderate-High 中高</td>
+                            <td>Seconds–Minutes</td>
+                            <td>Electrolyte immersion<br>電解質浸泡</td>
+                            <td>Hermetic seals 密封件</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.3 Helium Leak Detection<br>氦氣洩漏偵測</strong></td>
+                            <td><span class="badge green">Quantitative<br>定量</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td><span class="badge green">Very High 極高</span></td>
+                            <td>Minutes<br>分鐘</td>
+                            <td>Pressure differential<br>壓差</td>
+                            <td>Small leaks, metal/glass 微小洩漏</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.4 High Voltage Leak Detection<br>高壓洩漏偵測</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate 中</td>
+                            <td>&lt;1 second</td>
+                            <td>High voltage spark<br>高壓放電</td>
+                            <td>Plastic containers 塑膠容器</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.5 Laser-Based Gas Headspace<br>雷射頭空間分析</strong></td>
+                            <td><span class="badge green">Quantitative<br>定量</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>High 高</td>
+                            <td>&lt;1 second</td>
+                            <td>None 無</td>
+                            <td>Lyophilized, gas-filled 凍乾/充氣</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.6 Liquid Bubble Emission<br>液泡法</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Low-Moderate 低中</td>
+                            <td>Seconds–Minutes</td>
+                            <td>Pressure differential<br>壓差</td>
+                            <td>Pressurized packages 加壓包裝</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.7 Liquid Tracer<br>液體示蹤法</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge red">Yes 是</span></td>
+                            <td>Moderate 中</td>
+                            <td>Hours–Days</td>
+                            <td>Pressure/immersion<br>壓力/浸泡</td>
+                            <td>Porous seals, pouches 多孔密封</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.8 Microbial Challenge<br>微生物挑戰法</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge red">Yes 是</span></td>
+                            <td>Moderate 中</td>
+                            <td>Days–Weeks</td>
+                            <td>Biological exposure<br>生物暴露</td>
+                            <td>Sterile barriers 無菌屏障</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8.9 Pressure Differential (General)<br>壓差法（通用）</strong></td>
+                            <td><span class="badge purple">Both 兩者</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate-High 中高</td>
+                            <td>Seconds–Minutes</td>
+                            <td>Pressure differential<br>壓差</td>
+                            <td>General containers 一般容器</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.10 Residual Gas Ionization<br>殘留氣體離子化</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate 中</td>
+                            <td>&lt;1 second</td>
+                            <td>HV spark 高壓放電</td>
+                            <td>Vacuum-sealed 真空密封</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.11 Tracer Gas<br>示蹤氣體法</strong></td>
+                            <td><span class="badge green">Quantitative<br>定量</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>High 高</td>
+                            <td>Hours–Days</td>
+                            <td>None 無</td>
+                            <td>Gas-headspace, permeation 頭空間/滲透</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.12 Ultrasonic Gas Flow<br>超聲波氣流</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Low-Moderate 低中</td>
+                            <td>Instantaneous 瞬間</td>
+                            <td>Squeezing/surfactant<br>擠壓/界面活性劑</td>
+                            <td>Pressurized/flexible 加壓/軟包裝</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.13 Ultrasonic Imaging<br>超聲波成像</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate-High 中高</td>
+                            <td>&lt;1 second</td>
+                            <td>None 無</td>
+                            <td>Seal defects, pouches 密封缺陷</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.14 Vacuum/Pressure Decay (Diff.)<br>壓力衰減（差壓）</strong></td>
+                            <td><span class="badge purple">Both 兩者</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td><span class="badge green">High 高</span></td>
+                            <td>&lt;1s – Minutes</td>
+                            <td>Differential pressure<br>壓差</td>
+                            <td>General pharma packages 一般藥品包裝</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.15 Vacuum/Pressure Retention<br>真空/壓力保留</strong></td>
+                            <td><span class="badge purple">Both 兩者</span></td>
+                            <td><span class="badge red">Yes* 是*</span></td>
+                            <td>Moderate 中</td>
+                            <td>Seconds 秒</td>
+                            <td>Piercing 穿刺</td>
+                            <td>Lyophilized, vacuum-sealed 凍乾劑</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.16 Visual Inspection<br>目視檢查</strong></td>
+                            <td><span class="badge blue">Qualitative<br>定性</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td><span class="badge red">Low 低</span></td>
+                            <td>&lt;1s – Minutes</td>
+                            <td>Optional stress<br>可選壓力/溫度</td>
+                            <td>All packages 所有包裝</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.17 Volumetric Gas Flow<br>體積氣流法</strong></td>
+                            <td><span class="badge green">Quantitative<br>定量</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate 中</td>
+                            <td>Seconds 秒</td>
+                            <td>Differential pressure<br>壓差</td>
+                            <td>Deformable packages, orifices 易形變包裝</td>
+                        </tr>
+                        <tr style="background:#fff9e6;">
+                            <td><strong>8.18 Weight Loss/Gain<br>重量損失/增加</strong></td>
+                            <td><span class="badge green">Quantitative<br>定量</span></td>
+                            <td><span class="badge green">No 否</span></td>
+                            <td>Moderate 中</td>
+                            <td>Days–Weeks</td>
+                            <td>Env. extremes<br>環境極限</td>
+                            <td>All packages, shelf-life 保質期驗證</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:0.8rem;color:#718096;margin-top:0.5rem;">* 8.15 may be non-destructive if a re-sealable access device is used, but typically considered destructive. Yellow rows = methods covered in this section (8.10–8.18).</p>
+
+            <!-- Vacuum/Pressure Decay Explainer -->
+            <div class="two-column" style="margin-top:1.5rem;">
+                <div class="left-column">
+                    <h3>Vacuum/Pressure Decay Types Explained | 真空/壓力衰減類型詳解</h3>
+                    <p><strong>Method 8.14</strong> can be implemented in four distinct configurations. Understanding the differences is critical for method selection and validation:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Configuration</th>
+                                <th>Applied to</th>
+                                <th>Leak Indicator</th>
+                                <th>Max Pressure</th>
+                                <th>Sensitivity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Vacuum Rise (Absolute)</strong></td>
+                                <td>External chamber evacuated</td>
+                                <td>Pressure rises in chamber</td>
+                                <td>1 atm limit</td>
+                                <td>Moderate</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vacuum Rise (Differential)</strong></td>
+                                <td>Test vs. reference package in vacuum</td>
+                                <td>Differential pressure rise</td>
+                                <td>1 atm limit</td>
+                                <td>Higher</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure Decay (Absolute)</strong></td>
+                                <td>Positive pressure into package</td>
+                                <td>Pressure drops over time</td>
+                                <td>&gt;1 atm possible</td>
+                                <td>Higher than vacuum rise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure Decay (Differential)</strong></td>
+                                <td>Test vs. reference package pressurized</td>
+                                <td>Differential pressure drop</td>
+                                <td>&gt;1 atm possible</td>
+                                <td>Highest</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="quote-box">
+                        "Generally, pressure decay is considered a more sensitive test than vacuum rise, and differential pressure is potentially more sensitive than absolute pressure sensors." — PDA TR27, Section 8.14
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>四種構型中文解析 | Four Configurations Explained</h3>
+                    <div class="term-box">
+                        <h4>記憶口訣：壓差 &gt; 絕對；衰減 &gt; 上升</h4>
+                        <p>靈敏度排序（由高至低）：</p>
+                        <ol style="margin-left:1.25rem;">
+                            <li><strong>壓力衰減 + 差壓感測</strong>（Pressure Decay Differential）—— 最高</li>
+                            <li><strong>壓力衰減 + 絕對感測</strong>（Pressure Decay Absolute）</li>
+                            <li><strong>真空上升 + 差壓感測</strong>（Vacuum Rise Differential）</li>
+                            <li><strong>真空上升 + 絕對感測</strong>（Vacuum Rise Absolute）—— 最低</li>
+                        </ol>
+                    </div>
+                    <div class="note-box">
+                        <h4>為何差壓更靈敏？</h4>
+                        <p>差壓模式中，測試包裝與參考包裝（無洩漏）同時加壓/抽真空。環境溫度波動對兩個腔室的影響幾乎相同，因此在差壓讀數中被抵消。這大幅減少了溫度漂移造成的假訊號，讓儀器可以偵測更微小的真實壓力變化。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>液體包裝的特殊考量</h4>
+                        <p>含液體的包裝（如注射液）在<strong>真空上升</strong>測試中，液體可能被吸入密封點，<strong>暫時封堵洩漏路徑</strong>，導致偽陰性（false negative）。此情況宜改用<strong>壓力衰減法</strong>，從包裝內部向外加壓，液體不會被吸向密封處。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRACTICE QUESTIONS ===== -->
+    <div class="chapter-section" id="practice">
+        <div class="chapter-divider">
+            <div class="chapter-badge">?</div>
+            <div class="chapter-info">
+                <h2>Practice Questions | 練習思考題</h2>
+                <p>Reinforce understanding of TR27 Section 8.10–8.18 | 強化對 8.10–8.18 方法的理解</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+
+            <div class="practice-box">
+                <h3>Question 1 | 題目一</h3>
+                <p><strong>A lyophilized injectable product is packaged in glass vials sealed under vacuum. You need to perform 100% in-line container closure integrity testing (CCIT) on the production line. The test must be completed in under one second per vial. Which method(s) from TR27 Section 8 would be most appropriate, and why?</strong></p>
+                <p>一種凍乾注射劑在玻璃瓶中真空密封。您需要在生產線上對每個瓶子進行 100% 在線容器密封完整性測試（CCIT），每瓶測試時間不超過一秒。哪種方法最合適？請說明理由。</p>
+                <details style="margin-top:0.75rem;">
+                    <summary style="cursor:pointer;color:#2c5282;font-weight:600;">Show Answer | 顯示答案</summary>
+                    <div style="margin-top:0.75rem;padding:0.75rem;background:white;border-radius:6px;">
+                        <p><strong>Best answer: 8.10 Residual Gas Ionization (殘留氣體離子化)</strong></p>
+                        <p>Rationale: (1) Speed &lt;1 second — meets the in-line requirement. (2) Specifically designed for vacuum-sealed packages. (3) Non-destructive — allows 100% testing without sample loss. (4) The high-voltage field ionizes residual headspace gas; a vial that has lost vacuum will show higher ionization current, triggering automatic rejection.</p>
+                        <p>Also consider: 8.16 Visual Inspection (required by regulation but insufficient alone), and 8.5 Laser-Based Headspace Analysis (if available, highly sensitive and also &lt;1 second).</p>
+                        <p><strong>理由：</strong>殘留氣體離子化法（8.10）：速度極快（&lt;1秒）、非破壞性、專為真空密封設計，完全符合在線 100% 檢查的要求。另需補充 8.16 目視檢查（法規要求）。雷射頭空間分析（8.5）若有條件也可考慮，靈敏度更高。</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="practice-box">
+                <h3>Question 2 | 題目二</h3>
+                <p><strong>You are validating a container closure integrity test for a pharmaceutical product filled in flexible plastic pouches. During method development, you find that the pouches deform significantly when subjected to differential pressure in the vacuum/pressure decay test, giving inconsistent results. What alternative method would you recommend, and what are its key validation parameters?</strong></p>
+                <p>您正在驗證軟性塑膠袋裝藥品的容器密封完整性測試。在方法開發中發現，施加差壓時袋子明顯形變，導致壓力衰減測試結果不穩定。您會建議哪種替代方法？關鍵驗證參數有哪些？</p>
+                <details style="margin-top:0.75rem;">
+                    <summary style="cursor:pointer;color:#2c5282;font-weight:600;">Show Answer | 顯示答案</summary>
+                    <div style="margin-top:0.75rem;padding:0.75rem;background:white;border-radius:6px;">
+                        <p><strong>Recommended: 8.17 Volumetric Gas Flow (體積氣流法)</strong></p>
+                        <p>TR27 explicitly states that volumetric gas flow "can often be used instead of vacuum/pressure decay for packages that tend to deform under pressure." Key validation parameters: (1) Flow meter accuracy, (2) Test time, (3) Differential pressure applied. Also consider: 8.12 Ultrasonic Detection of Gas Flow (for larger leaks, qualitative), 8.13 Ultrasonic Imaging (to characterize seal quality).</p>
+                        <p><strong>答案：</strong>推薦 8.17 體積氣流法。TR27 明確指出此法「常用於替代易形變包裝的壓力衰減法」。因為流量計直接測量逸出氣體量，不受容器形變影響。關鍵驗證參數：流量計精度、測試時間、施加壓差。輔助方案：8.13 超聲波成像，可評估熱封品質。</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="practice-box">
+                <h3>Question 3 | 題目三</h3>
+                <p><strong>A product team is developing a moisture-sensitive oral solid dosage form in a high-density polyethylene (HDPE) bottle with a desiccant. They want to establish the shelf-life specification for moisture ingress. Which leak test method from TR27 would best characterize the moisture barrier performance over a 24-month shelf life? What are the critical limitations of this method?</strong></p>
+                <p>一個產品團隊正在開發裝有乾燥劑的高密度聚乙烯（HDPE）瓶裝口服固體製劑，需要建立水分滲入的保質期規格。哪種 TR27 方法最適合評估 24 個月保質期的防潮性能？此方法的關鍵限制是什麼？</p>
+                <details style="margin-top:0.75rem;">
+                    <summary style="cursor:pointer;color:#2c5282;font-weight:600;">Show Answer | 顯示答案</summary>
+                    <div style="margin-top:0.75rem;padding:0.75rem;background:white;border-radius:6px;">
+                        <p><strong>Best answer: 8.18 Weight Gain (重量增加法)</strong></p>
+                        <p>Rationale: (1) Directly measures moisture ingress as weight gain — the most relevant metric. (2) Applicable to all package types including HDPE bottles. (3) Quantitative — provides actual mg/day permeation rate. (4) Referenced in USP &lt;671&gt; for container moisture permeation. (5) Desiccant inside the bottle serves as the hygroscopic material for the test.</p>
+                        <p>Critical limitations: (1) Very long test time (weeks to months for HDPE). (2) Measures leakage + permeation combined — cannot distinguish between defects and material permeation. (3) Requires precise balance and controlled humidity chamber. (4) Control packages (filled with inert material) must be tested simultaneously to subtract environmental effects.</p>
+                        <p><strong>答案：</strong>8.18 重量增加法最合適。理由：(1) 直接測量水分滲入量（重量增加），最符合保質期評估需求。(2) 瓶中乾燥劑本身即為吸濕材料，無需另行填充。(3) 定量，可獲得 mg/day 滲透速率。(4) USP &lt;671&gt; 引用此法。限制：測試時間長（數週至數月）；同時測量洩漏與滲透，無法區分；需同步測試對照包裝。</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="practice-box">
+                <h3>Question 4 — Comparison | 題目四 — 方法比較</h3>
+                <p><strong>Compare methods 8.14 and 8.15. A QA engineer says "they are both vacuum/pressure tests, so they are interchangeable." Do you agree? Explain the key differences and give a specific scenario where only one is appropriate.</strong></p>
+                <p>比較 8.14 與 8.15。一位 QA 工程師說「這兩個都是真空/壓力測試，可以互換使用。」您是否同意？請說明關鍵差異，並舉出一個只有其中一種適用的情境。</p>
+                <details style="margin-top:0.75rem;">
+                    <summary style="cursor:pointer;color:#2c5282;font-weight:600;">Show Answer | 顯示答案</summary>
+                    <div style="margin-top:0.75rem;padding:0.75rem;background:white;border-radius:6px;">
+                        <p><strong>Disagree — they are fundamentally different:</strong></p>
+                        <table>
+                            <tr><th>Feature</th><th>8.14 Decay (Differential)</th><th>8.15 Retention (Absolute)</th></tr>
+                            <tr><td>Measurement</td><td>External pressure change in test chamber</td><td>Direct internal headspace pressure</td></td></tr>
+                            <tr><td>Package access</td><td>No piercing required</td><td>Requires piercing/access to headspace</td></tr>
+                            <tr><td>Destructive?</td><td>No</td><td>Typically yes (piercing)</td></tr>
+                            <tr><td>Sensitivity driver</td><td>Chamber volume, sensor type</td><td>Piercing technique quality</td></tr>
+                            <tr><td>100% in-line?</td><td>Possible</td><td>Not practical</td></tr>
+                        </table>
+                        <p><strong>Only 8.15 is appropriate:</strong> To verify residual vacuum in lyophilized vials sampled from a batch — you need to know the actual headspace pressure value (e.g., confirm vacuum &lt;200 mTorr). Method 8.14 only tells you if pressure changed; it cannot tell you the absolute headspace pressure at the time of sealing.</p>
+                        <p><strong>不同意，兩者本質不同：</strong>8.14 在包裝外部施加壓差，偵測腔室壓力變化，非破壞性，適合在線 100% 測試。8.15 需要穿刺進入頭空間直接讀絕對壓力值，通常為破壞性，僅用於抽樣。情境：凍乾劑頭空間真空確認（需知道實際真空值 mTorr），只有 8.15 能提供此資訊。</p>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+    <p><strong>PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</strong></p>
+    <p>Section 3B: Leak Test Methods 8.10–8.18 | 洩漏試驗方法 8.10–8.18</p>
+    <p style="opacity:0.6;font-size:0.8rem;">SterileGMP Knowledge Hub &bull; Educational Reference Only &bull; Not for Regulatory Submission</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

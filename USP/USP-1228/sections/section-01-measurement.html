@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1228〉 - Section 1: Measuring Endotoxin & Control Strategies</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1: Measuring Endotoxin &amp; Control Strategies</h1>
+    <div class="subtitle">內毒素量測與控制策略</div>
+    <div class="page-info">USP General Chapter 〈1228〉 Depyrogenation | Pages 2–4</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px;margin:1.5rem auto;padding:1.25rem 1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 Bacterial Endotoxins Test (BET)〈85〉在除熱原研究中的核心角色，以及影響其結果的七大變數</li>
+        <li>理解傳統 3-log reduction 標準的局限性，以及 QbD 思維下如何科學地設定適當的降低目標</li>
+        <li>能清楚區分並解釋三大內毒素控制策略：Indirect Control（間接控制）、Process Control（製程控制）、Direct Control（直接控制）</li>
+        <li>掌握 Indirect Control 和 Process Control 的具體措施，並能識別各自的 CCP（關鍵控制點）</li>
+        <li>理解水系統（Water System）在內毒素控制中的特殊重要性及相關法規要求</li>
+    </ul>
+</div>
+
+<!-- SECTION 1.1: MEASURING ENDOTOXIN PRE- AND POST-PROCESSING -->
+<div class="section-title" style="max-width:1800px;margin:0 auto 1rem;padding:0 1.5rem 0.5rem;">1.1 Measuring Endotoxin Pre- and Post-Processing | 製程前後的內毒素量測</div>
+
+<div class="two-column" style="max-width:1800px;margin:0 auto 1.5rem;padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>MEASURING ENDOTOXIN PRE- AND POST-PROCESSING</h3>
+        <p>The primary procedure used for the measurement of bacterial endotoxin is the <span class="key-term">Bacterial Endotoxins Test 〈85〉 (BET)</span>. A well-controlled BET assay can provide assurance of accurate readings for the calculation of the <span class="key-term">reduction in challenge material activity</span> pre- and post-processing, as well as provide consistent quantitation of levels of native endotoxin in raw materials, at CCP in the manufacturing process, and in finished products.</p>
+
+        <p>There are many variables in study structure and test method that can affect the outcome of a depyrogenation study. Development of a test method depends on the material under test, the identification of an appropriate challenge preparation, and the method used to extract recoverable activity prior to processing and residual activity after processing. Once a test system is developed that includes the identification of a source for challenge material preparations, inoculation of the articles to be depyrogenated (including drying procedures), extraction or recovery methods, and appropriate BET test methodology and sensitivity, it is recommended that subsequent tests should use the same conditions to ensure the comparability of test results.</p>
+
+        <p>Points to consider when constructing a depyrogenation study include the following:</p>
+        <ol>
+            <li><strong>The challenge material:</strong> Consider the source of the endotoxin (purified or natural). When using purified LPS, choose a preparation with no fillers, because the presence of these fillers can add to the variability and therefore decrease the accuracy of the assay. Once challenge material preparation is chosen, it is recommended to use material from the same source in subsequent studies to reduce variability.</li>
+            <li><strong>The characteristics of the material being depyrogenated:</strong> It is important to understand the characteristics of the material being tested. For example, LPS may adsorb to plastics, and although two objects may be made of the same plastic, surface finish, surface area, and conformation differences may affect extraction efficiency and LPS recovery. For solutions, formulation matrices may affect aggregation of purified LPS in that pH, salt concentration, chelating agents, surfactants, and the presence of divalent cations may all have an impact on the recovery of the challenge material. The use of natural endotoxin may mitigate some of these recovery issues.</li>
+            <li><strong>The level of activity needed for the study:</strong> How much pre-processing activity do you need to execute the study? The <span class="key-term">current industry standard</span> is to add enough endotoxin to the system so that at least <span class="key-term">1000 EU</span> can be recovered prior to depyrogenation. However, depending on the test system, 1000 EU may be either excessive or insufficient.</li>
+            <li><strong>Preparation of test samples:</strong> The method used to affix challenge materials to the surface of materials to be depyrogenated may affect its removal or recovery. <span class="key-term">Air-drying</span> is the most convenient method of affixing challenge material to hard surfaces, but freeze drying and vacuum drying also have been used.</li>
+            <li><strong>Recovery methods:</strong> Although there are standard methods for the recovery of endotoxin from medical devices, there is no standard method for the recovery of endotoxin dried onto solid surfaces that are used as indicators in depyrogenation studies. A laboratory may choose to develop and validate a method that better suits the material under test. Recoveries of less than 100% of the challenge material nominal spike in positive controls are not uncommon. Perhaps more important than the percent recovery in positive controls is <span class="key-term">consistent recovery</span> across lots of the same material and across depyrogenation studies.</li>
+            <li><strong>Test method:</strong> Lysate formulations differ, and they may be subject to different interferences such as leachables, chelators, and salts. If interferences are encountered during method development that are difficult to overcome, consider trying another test method (e.g., <span class="key-term">gel clot, kinetic chromogenic, kinetic turbidimetric, endpoint chromogenic</span>) or a different source of reagent.</li>
+            <li><strong>Depyrogenation method:</strong> Variability in the depyrogenation treatment may impact recovery. Treatments vary in efficiency, both within and between treatment types. For example, a large difference in efficiency will be seen when comparing the depyrogenation of glass vials using <span class="key-term">dry heat versus rinsing in water for injection (WFI)</span>, and differences may be seen in the reduction of challenge material by the filtration of a solution depending on the type of filter chosen.</li>
+        </ol>
+
+        <p>The efficiency of a depyrogenation process has been historically measured in terms of a <span class="key-term">logarithmic (log) reduction</span> of a large "spike" or bolus of purified endotoxin that is added to or dried onto a material prior to treatment. Although log reduction is a convenient measurement benchmark, the more relevant and pragmatic indicator of depyrogenation efficiency is one based on process capability and patient safety, which is the reduction of the measured or anticipated <span class="key-term">worst case natural levels</span> of contaminating endotoxin to safe levels as defined by reference to calculated endotoxin limits for the material.</p>
+
+        <p>With the implementation of the principles of <span class="key-term">quality by design (QbD)</span> and risk management, the <span class="key-term">3-log reduction</span> that was first introduced in 1984 may be inappropriate as a universal benchmark for modern depyrogenation processes. For example, materials with a high level of native endotoxin, such as fermentation broths, could require more than a 3-log reduction to reach a safe level, whereas dry heat depyrogenation of materials with normally low or undetected levels of native endotoxin, such as washed glass vials, will require substantially less than a 3-log reduction. The appropriate endotoxin log reduction for the process should be determined by the user based on a full understanding of the product and process capability including input sources, levels of endotoxin, efficiency of depyrogenation methods, and output (product- or process-specific) endotoxin requirements.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — BET〈85〉：除熱原研究的量測基礎</h4>
+            <p><strong>Bacterial Endotoxins Test（細菌內毒素試驗，BET）〈85〉</strong> 是目前主流的內毒素定量方法，基於鱟（Horseshoe Crab）的血液凝固反應。常見的四種 BET 方法：</p>
+            <ul>
+                <li><strong>Gel Clot（凝膠凝固法）：</strong>定性/半定量，最傳統，終點為膠體凝固</li>
+                <li><strong>Kinetic Chromogenic（動態顯色法）：</strong>定量，利用顏色變化動態追蹤，精度高</li>
+                <li><strong>Kinetic Turbidimetric（動態濁度法）：</strong>定量，利用濁度變化，適合某些基質</li>
+                <li><strong>Endpoint Chromogenic（終點顯色法）：</strong>定量，在固定時間點讀取顏色</li>
+            </ul>
+            <p>選擇哪種方法取決於製劑基質——如果基質顏色深、含有干擾物質，就需要換方法或做稀釋。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式 — Log Reduction 的計算</h4>
+            <pre>
+Log Reduction（對數降低）計算：
+
+Log Reduction = log₁₀(Pre-process activity)
+                - log₁₀(Post-process activity)
+
+例：
+  Pre-process:  10,000 EU/mL
+  Post-process:    10 EU/mL
+
+  Log Reduction = log₁₀(10,000) - log₁₀(10)
+                = 4 - 1
+                = 3-log reduction ✓
+
+USP 重要觀點：
+  3-log reduction ≠ 萬能標準
+
+  適當的 log reduction 目標應基於：
+  1. 實際輸入端內毒素水平（input level）
+  2. 製程能力（process capability）
+  3. 成品的內毒素限度要求（output limit）
+
+  公式：需要的 Log Reduction ≥
+    log₁₀(Worst case input) - log₁₀(Endotoxin limit)
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 3-Log Reduction 的歷史與現代觀</h4>
+            <p>3-log reduction（1000 倍降低）是 1984 年引入的標準，當時科學理解有限。USP〈1228〉明確指出這個標準在 QbD 時代可能不再適用：</p>
+            <ul>
+                <li><strong>情境 A — 發酵液（高內毒素）：</strong>初始污染 10⁶ EU/mL → 目標 &lt;0.5 EU/mL → 需要 &gt;6-log reduction，3-log 遠遠不夠！</li>
+                <li><strong>情境 B — 已清洗玻璃瓶（低內毒素）：</strong>初始 &lt;0.1 EU/vial → 本來就很低，3-log reduction 要求反而過於嚴苛，難以驗證。</li>
+            </ul>
+            <p>現代科學方法：先確認最壞情況輸入值 → 再推算需要多少倍降低 → 設定合理的 log reduction 目標。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 1000 EU 挑戰量的選擇</h4>
+            <p>USP 建議在除熱原驗證前至少能回收 1000 EU，這就像壓力測試（stress test）：你要讓系統在「最糟的狀況下」証明有效。</p>
+            <p>但 1000 EU 並不是神聖不可侵犯的數字。就像測試防彈玻璃——如果現實中子彈最大能量只有 300 焦耳，你不需要用 10,000 焦耳去測試。但如果你的產品在極端情況下可能遇到 5,000 EU，那 1000 EU 的挑戰量反而不夠。挑戰量應該根據「最壞情況下的實際污染水平」來設定，並有文件支撐。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 方法一致性是驗證的核心</h4>
+            <p>USP 特別強調：一旦確定了挑戰材料來源、接種方式、回收方法和 BET 方法，後續研究都應該使用「相同條件」——這樣才能確保不同批次、不同時間點的結果具有可比性（comparability）。</p>
+            <p>在 CDMO 實務中，這意味著：(1) 挑戰材料批次要留存備份；(2) BET 試劑供應商不能隨意更換；(3) 每次換原料或製程調整後，需評估是否影響方法的一致性。這些都要有完整的 SOP 和變更管理（Change Control）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你正在驗證一個新型聚合物（polymer）容器的除熱原製程。你發現挑戰材料（純化 LPS）在這種材料表面的回收率只有 40%（即使在未除熱原的正控中也如此）。這個低回收率問題如何處理？是否需要達到 100% 回收才能驗證？</li>
+                <li>某工廠的乾熱隧道對玻璃瓶進行 3-log reduction 驗證，但你的新客戶要求以重組蛋白發酵液充填到這些瓶子中，且發酵液本身內毒素水平約為 5 × 10⁴ EU/mL。請問 3-log reduction 夠嗎？如何計算需要的最低降低倍數？（假設成品內毒素限度為 5 EU/mL）</li>
+                <li>BET〈85〉試驗遇到干擾（inhibition/enhancement）時，USP 建議可嘗試更換 BET 方法類型。請解釋為什麼不同的 BET 方法對同一樣品可能有不同的干擾敏感性。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 1.2: CONTROL OF ENDOTOXIN IN PARENTERAL PRODUCTS -->
+<div class="section-title" style="max-width:1800px;margin:0 auto 1rem;padding:0 1.5rem 0.5rem;">1.2 Control of Endotoxin in Parenteral Products | 注射製劑中的內毒素控制</div>
+
+<div class="two-column" style="max-width:1800px;margin:0 auto 1.5rem;padding:0 1.5rem;">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>CONTROL OF ENDOTOXIN IN PARENTERAL PRODUCTS</h3>
+        <p>The best control of endotoxin levels in parenteral products is the control of <span class="key-term">Gram-negative bioburden</span> in raw materials, equipment, process streams, and manufacturing environment and operators. Parenteral manufacturers may exercise three categories of control to keep endotoxin content in drug products at safe levels.</p>
+
+        <p>The first category is <span class="key-term">"indirect control"</span>, which is comprised of a series of preventive measures that control bioburden, the potential endotoxin contribution by formulation components (e.g., raw materials, APIs, excipients), water, primary packaging components, equipment, and the manufacturing environment, including personnel.</p>
+
+        <p>The second category is <span class="key-term">"process control"</span>, in which endotoxin is monitored at CCP during processing to ensure that there is no increase in endotoxin. These process control elements are subject to validation or qualification.</p>
+
+        <p>The third category is <span class="key-term">"direct control"</span>, or the direct destruction or removal of endotoxins from product streams, equipment, and primary packaging materials. As with controls on processing, direct measures of endotoxin destruction or removal must be validated.</p>
+
+        <h3>INDIRECT CONTROL</h3>
+        <p>Reducing opportunities for Gram-negative microbial proliferation at any stage of manufacturing will reduce the likelihood of endotoxin contamination in the following ways:</p>
+        <ul>
+            <li>Exercising control over the endotoxin content of <span class="key-term">incoming materials</span>, particularly materials derived from natural sources or those with high water activity, will reduce the opportunity for Gram-negative microbial proliferation and therefore reduce or eliminate the need for endotoxin removal downstream. Because of their manufacturing processes, glass and plastic containers as well as elastomeric closures are often received with very low or undetectable levels of endotoxin. <span class="key-term">Qualification of primary packaging suppliers</span> should include an audit that examines and confirms the supplier's consistent and documented control over applicable manufacturing processes.</li>
+            <li><span class="key-term">Bioburden and endotoxin control</span> should be a component of a vendor audit and supplier qualification program for formulation materials that could potentially contribute endotoxin to parenteral products.</li>
+            <li><span class="key-term">Water</span> is the most ubiquitous raw material in the manufacturing of parenteral products, but unless the generation and distribution of high-quality water is properly validated and controlled, the system will be prone to contamination by Gram-negative bacteria and the establishment of <span class="key-term">biofilms</span> that can contribute significantly to the endotoxin load of the product (see Water for Pharmaceutical Purposes 〈1231〉).</li>
+        </ul>
+
+        <h3>PROCESS CONTROL</h3>
+        <p>Product-specific process control requires the identification of CCP for the introduction or removal of endotoxin. Process control requires good process and equipment design consistent with QbD using a risk management tool such as HACCP. Process control measures include but may not be limited to the following:</p>
+        <ul>
+            <li><span class="key-term">Control of manufacturing practices</span> is essential to endotoxin control. Endotoxin control should be a part of validated cleaning procedures. The use of product contact materials for which endotoxin control cannot be established should be avoided. <span class="key-term">Clean product-contact equipment</span> should be stored dry to avoid bioburden and Gram-negative bacterial proliferation.</li>
+            <li><span class="key-term">Hold times</span> during manufacturing, particularly for nonsterile bulk in-process materials and drug product, should be validated to ensure that the hold conditions do not support microbial proliferation and therefore potential endotoxin production by Gram-negative bacteria.</li>
+            <li><span class="key-term">Environmental control</span>, including good manufacturing practices (aseptic, as appropriate), is essential to process management of endotoxin. Operators should be properly garbed and trained. Housekeeping and disinfecting practices should be established to reduce the possibility of microbial proliferation in critical areas. Cleaning regimens should emphasize that standing water be removed at the end of the cleaning process.</li>
+            <li>Endotoxin control and monitoring will be covered in a forthcoming chapter.</li>
+        </ul>
+
+        <h3>DIRECT CONTROL</h3>
+        <p>These processes require validation to ensure that endotoxins are removed or reduced to safe levels. Direct control may be accomplished by a variety of methods and processes that may be combined to ensure endotoxin reduction to a safe level. The most commonly used depyrogenation processes and the associated control measures are the subject of the 〈1228〉 series.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 三層次內毒素控制策略</h4>
+            <p>USP〈1228〉提出了一個系統性的三層次控制框架，從根本原因開始：</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-1">間接控制 Indirect Control</div>
+                </div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">製程控制 Process Control</div>
+                </div>
+                <div class="arrow-down">▼</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">直接控制 Direct Control</div>
+                </div>
+            </div>
+            <p>最高效的策略是從源頭（Indirect Control）開始——防止內毒素進入系統，遠比在下游試圖去除更省力、更可靠。這與製藥品質管理的「預防優先於糾正」哲學完全一致。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 三層次控制的餐廳比喻</h4>
+            <p>把注射劑生產想像成一家高級餐廳的廚房：</p>
+            <ul>
+                <li><strong>間接控制</strong>= 嚴格篩選食材供應商、確保食材新鮮（控制進貨品質）——不讓污染物進門</li>
+                <li><strong>製程控制</strong>= 廚房保持清潔、廚師洗手、食材在冷藏環境中保存、不讓食物在室溫放太久（監控製程中每個環節）——防止污染在廚房內滋生</li>
+                <li><strong>直接控制</strong>= 上菜前高溫殺菌或使用除菌過濾器（在關鍵步驟主動去除）——最後防線</li>
+            </ul>
+            <p>一家好廚房不會只依賴最後一步，而是三層都要做好。同樣，一個好的注射劑生產系統也應該三層俱全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 水系統是內毒素的頭號風險</h4>
+            <p>USP 在 Indirect Control 中特別點名「水」是注射製劑最普遍的原料，也是最大的內毒素風險來源。原因：</p>
+            <ul>
+                <li>水無處不在——用於配製、清洗設備、製備注射用水（WFI）</li>
+                <li>革蘭氏陰性菌（如 Pseudomonas）在水管系統中極易滋生，形成生物膜（Biofilm）</li>
+                <li>生物膜一旦形成，極難徹底清除，會持續釋放內毒素</li>
+                <li>WFI 系統需要定期消毒，並有完善的監控計畫</li>
+            </ul>
+            <p>法規要求：USP〈1231〉《水的藥用》提供了詳細指導。EU GMP Annex 1 也要求對水系統進行嚴格的驗證和監控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 設備存放「乾燥」的關鍵性</h4>
+            <p>Process Control 中一個容易被忽視的要點：已清洗的設備必須存放於乾燥狀態（stored dry）。</p>
+            <p>原因：任何殘留水分都可能成為革蘭氏陰性菌的「孳生地」。即使清洗後設備看起來很乾淨，只要有水的存在，幾個小時內就可能有細菌增殖，產生新的內毒素污染。這與後續滅菌是兩回事——滅菌可以殺死細菌，但無法去除已產生的內毒素！</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>三類控制措施比較表</h4>
+            <pre>
+┌─────────────────┬────────────────────────┬──────────┬──────────┐
+│ 控制類別        │ 措施範例               │ 驗證要求 │ 適用時機 │
+├─────────────────┼────────────────────────┼──────────┼──────────┤
+│ Indirect        │ 供應商審計             │ 資格確認 │ 預防性   │
+│ （間接控制）    │ 原料內毒素規格         │ 供應商稽核│ 持續性   │
+│                 │ WFI 系統管理           │ 驗證+監控│          │
+├─────────────────┼────────────────────────┼──────────┼──────────┤
+│ Process         │ 清洗程序驗證           │ 需驗證   │ 製程中   │
+│ （製程控制）    │ Hold time 驗證         │ 需驗證   │ 監控性   │
+│                 │ 環境監控               │ 資格確認 │          │
+├─────────────────┼────────────────────────┼──────────┼──────────┤
+│ Direct          │ 乾熱除熱原             │ 必須驗證 │ 主動去除 │
+│ （直接控制）    │ 過濾除熱原             │ 必須驗證 │ 最後防線 │
+│                 │ 化學除熱原（NaOH等）   │ 必須驗證 │          │
+└─────────────────┴────────────────────────┴──────────┴──────────┘
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 供應商管理</h4>
+            <p>對於 CDMO 來說，Indirect Control 中的「供應商資格確認（Supplier Qualification）」是一個高 ROI 的投資：一旦確認供應商的玻璃瓶或橡皮塞在出廠時內毒素水平極低（如 &lt;0.1 EU/piece），你的乾熱隧道設定可以更合理，不需要超過設計能力。</p>
+            <p>反過來說，如果供應商控制不穩定，你可能會面臨批次失敗、返工或廢棄的高成本。定期稽核供應商的 endotoxin control 記錄是保護 CDMO 商業利益的核心措施。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠中，一台已驗證清洗的 SS 316L 配液槽，在 CIP 後被工程師發現底部積有少量清洗用水，因為排水口輕微堵塞。這個情況屬於哪種類型的內毒素控制失敗？可能帶來什麼後果？應如何處理和預防？</li>
+                <li>一個新客戶的生物製劑原料藥（bulk drug substance）以發酵方式生產，初始內毒素水平估計在 10³ ~ 10⁵ EU/mL 範圍，因批次而異。你能依靠 Indirect Control 和 Process Control 就確保成品的安全嗎？還是必須有 Direct Control？請解釋理由。</li>
+                <li>為什麼對 WFI（注射用水）系統的管理要求遠比對純化水（Purified Water, PW）更嚴格？在哪些生產步驟中必須使用 WFI 而不能用 PW？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin: 0 auto 1.5rem; padding: 1.25rem 1.5rem;">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>BET〈85〉</strong>是除熱原研究的量測基礎，但有七大影響因素（挑戰材料、材料特性、活性水平、樣品製備、回收方法、試驗方法、除熱原方法），每個因素都可能影響結果的準確性和重現性。</li>
+        <li><strong>3-Log Reduction 不是萬能標準：</strong>現代 QbD 思維要求根據實際輸入/輸出內毒素水平科學計算所需的降低倍數，高內毒素來源可能需要 &gt;3-log，低污染材料可能不需要 3-log。</li>
+        <li><strong>三層次控制：</strong>Indirect（間接）→ Process（製程）→ Direct（直接），優先從源頭預防，最後才依賴主動去除（Direct Control）。</li>
+        <li><strong>水系統管理</strong>是 Indirect Control 的最高優先項目，生物膜（Biofilm）一旦形成，對整個生產系統的內毒素控制構成持續威脅。</li>
+        <li>所有 Process Control 和 Direct Control 措施均需<strong>驗證（Validation）或資格確認（Qualification）</strong>，文件記錄是 GMP 合規的核心要求。</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1228〉 Depyrogenation — Section 1</p>
+</div>
+
+</body>
+</html>

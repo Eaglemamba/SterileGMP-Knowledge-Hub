@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USP &lang;1085&rang; Section 2: Routine Testing &mdash; Sampling, Pooling &amp; Monitoring</title>
+<style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>USP &lang;1085&rang; Guidelines on the Endotoxins Test</h1>
+    <div class="subtitle">Section 2: Routine Testing &mdash; Sampling, Pooling &amp; Endotoxin Calculation</div>
+    <div class="page-info">USP General Chapter (Informational) &bull; Pages 8&ndash;11 of 14 &bull; Companion to &lang;85&rang;</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 BET 取樣策略的科學基礎 &mdash; 為什麼「頭、中、尾三瓶」可能不夠？</li>
+        <li>掌握合併樣品（Pooling）的優缺點與調整 MVD 的計算方法</li>
+        <li>學會從 EU/mL 轉換為 EU/mg 的內毒素含量計算</li>
+        <li>認識標準曲線控管的重要性 &mdash; 斜率、截距和 onset time 的監控</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SAMPLING                            -->
+<!-- ============================================ -->
+<div class="section-title" id="sampling">Sampling &mdash; 取樣策略</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>All materials used to sample materials for endotoxin content must be <span class="key-term">inert, sterile, and free of detectable endotoxins</span>. Even though samples are often taken in the field without a laminar flow hood, samplers must take precautions that a) they do not contaminate the sample, and b) in taking the sample, they do not contaminate the rest of the material.</p>
+
+        <p>Historically, the sampling scheme for finished drug products is to take at least <span class="key-term">3 units representing the beginning, middle, and end</span> of the batch. However, for a standard run of a small-volume parenteral, biological therapy, or large-volume parenteral, 3 units may not be a representative sample and may identify only those lots that are <span class="key-term">uniformly and highly contaminated</span>.</p>
+
+        <p>Sampling schemes should be justified and based on the known variability of the process, unit operations, historical knowledge, and materials used in manufacture.</p>
+
+        <p>Bacteria and endotoxins are generally <span class="key-term">not homogeneously distributed</span> in any product or material. Care must be taken to flush ports in a circulating water loop before sampling and use the same equipment for sampling that is used for manufacture.</p>
+
+        <p>For example, if a hose is attached to a port for transferring water from a circulating loop, the water sample must be taken from the same hose with the same flush times as used by manufacturing.</p>
+
+        <p>For highly viscous materials, a suitable inert rod free of detectable endotoxins may be used to mix prior to sampling. Samplers should have training on how to spot signs of <span class="key-term">non-uniformity</span> &mdash; differences in shape, size, color, moisture, stratification, viscosity, or particulate contamination.</p>
+
+        <p>For a new vendor of critical materials, a site audit may be in order. It is highly suggested that <span class="key-term">in-house confirmation</span> of the endotoxin level on the CoA be performed. Quality agreements should require manufacturers to inform of changes in processes, controls, or raw materials.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：取樣的代表性問題</h4>
+            <p>USP 在這裡挑戰了一個根深蒂固的行業習慣 &mdash;「頭、中、尾三瓶取樣」。這個方法有兩個根本假設：</p>
+            <ul>
+                <li>假設 1：內毒素在批次中均勻分布 &mdash; <strong>錯誤！</strong>內毒素在液體和粉末中通常不均勻分布</li>
+                <li>假設 2：三瓶足以代表整批 &mdash; <strong>可能不夠！</strong>只有高度且均勻污染的批次才會被三瓶取樣抓到</li>
+            </ul>
+            <p>正確的做法是基於製程知識和風險評估來設計取樣計劃。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>果園裡的蟲害檢查：</strong></p>
+            <p>想像你要檢查一大片果園是否有蟲害。如果你只看最前面、中間、最後面的三棵樹，你可能會漏掉一排特別靠近水溝（= 污染源）的樹。更好的做法是根據果園的地形、水源分布、過去蟲害的歷史來設計巡檢路線。</p>
+            <p>同樣地，充填線上某一根充填針頭如果清潔不當，可能只有那幾瓶藥品被污染。三瓶取樣很可能剛好沒取到那些瓶子。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：水系統取樣的關鍵細節</h4>
+            <p><strong>「用生產時的方式取樣」</strong> &mdash; 這是一個經常被忽略但極其重要的原則。如果生產時是透過軟管從循環水迴路的某個取樣口取水，那你的 BET 樣品也必須用同一條軟管、同樣的沖洗時間。</p>
+            <p>為什麼？因為取樣口本身可能是內毒素的來源。如果你用不同的設備或不同的沖洗方式取樣，得到的結果可能無法代表生產時的實際狀況。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的 CDMO 工廠充填一批小量注射劑（10,000 瓶），使用 8 根充填針頭。你會如何設計 BET 取樣計劃？為什麼？</li>
+                <li>一個關鍵原料供應商提供的 CoA 顯示內毒素結果為 &lt;0.5 EU/mL。你是新任 QC 經理，應該如何建立供應商管控機制？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: POOLING                             -->
+<!-- ============================================ -->
+<div class="section-title" id="pooling">Pooling &mdash; 合併樣品策略</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p><span class="key-term">Pooling</span> refers to creating a composite sample preparation that includes the total contents of several individual units or equal aliquots from units taken from the same lot. Pooling is an acceptable option for batch-release testing.</p>
+
+        <p>However, pooling has drawbacks: it will <span class="key-term">dilute endotoxins</span> that may be in any one unit, potentially concealing variability in endotoxin content among units.</p>
+
+        <p>If units are pooled, the MVD must be adjusted:</p>
+
+        <div class="formula-box">
+            <h4>Adjusted MVD for Pooled Samples</h4>
+            <pre>Adjusted MVD = Original MVD / Number of units pooled</pre>
+            <p>Example: MVD = 240, pooling 3 vials &rarr; Adjusted MVD = 240/3 = 80</p>
+        </div>
+
+        <p>Points to consider when pooling:</p>
+        <ul>
+            <li>Pooling may <span class="key-term">obscure non-uniformity</span> in endotoxin content &mdash; information valuable for troubleshooting</li>
+            <li>Aliquots should be taken using <span class="key-term">aseptic technique</span> with individual units vigorously mixed</li>
+            <li>Original containers should be <span class="key-term">retained for investigation</span> in event of OOS</li>
+            <li>The concept of adjusted MVD <strong>does not apply</strong> to medical devices (commonly pooled by convention)</li>
+            <li>Sampling must represent <span class="key-term">beginning, middle, and end</span> of batch</li>
+            <li>Products with <span class="key-term">low calculated MVDs</span> or suspensions may not be good candidates for pooling</li>
+            <li>Pooling is <strong>not appropriate</strong> for <span class="key-term">in-process samples</span> representing different stages</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Pooling 的數學代價</h4>
+            <p>Pooling 看似省錢省時，但有一個隱藏的數學代價：</p>
+            <p>假設三瓶中只有一瓶被污染（5 EU/mL），其餘兩瓶乾淨（&lt;0.05 EU/mL）。合併後的污染濃度變成約 1.7 EU/mL &mdash; 可能從「超標」變成「合格」。</p>
+            <p>為了補償這個稀釋效應，MVD 必須除以合併瓶數。這相當於把內毒素限值變得更嚴格，因為你的檢測「起點」更稀了。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>混合果汁的品質檢測：</strong></p>
+            <p>想像你有三瓶果汁，其中一瓶可能壞了。如果你把三瓶混在一起嘗味道，壞味道被稀釋了，你可能嘗不出來。所以你的「品嘗標準」（= MVD）必須變得更敏感（除以 3），才能在混合液中偵測到那一瓶的問題。</p>
+            <p>更好的做法可能是直接分別嘗每一瓶 &mdash; 雖然比較費時，但能精確找出問題源。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 的 Pooling 決策</h4>
+            <ul>
+                <li><strong>MVD 已經很低的產品不適合 pooling：</strong>如果 MVD 只有 20，pooling 3 瓶後變成 ~7，可能連消除干擾的空間都不夠</li>
+                <li><strong>保留原始容器：</strong>pooling 後如果 OOS，你需要回去測個別瓶子。如果已經丟了，調查就陷入死胡同</li>
+                <li><strong>製程中間體不要 pool：</strong>不同製程階段的樣品代表不同的製程狀態，合併會失去追溯價值</li>
+                <li><strong>醫療器材例外：</strong>器材的 pooling 不需要調整 MVD，因為限值已經是「per device」而非「per mL」</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的產品 MVD = 50。如果 pooling 5 瓶，adjusted MVD 變成 10。在 1:10 稀釋處仍有干擾。你會怎麼處理？</li>
+                <li>什麼情況下 pooling 是合理的選擇？什麼情況下你會強烈建議個別測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: ENDOTOXIN CONTENT CALCULATION       -->
+<!-- ============================================ -->
+<div class="section-title" id="calculation">Calculation of Endotoxin Content &mdash; 內毒素含量計算</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>All BET results are provided in <span class="key-term">EU/mL</span>. If the product has a limit expressed in EU per unit of weight or activity (e.g., EU/mg), a calculation must be made to convert EU/mL to EU/mg.</p>
+
+        <div class="formula-box">
+            <h4>Endotoxin Content Conversion</h4>
+            <pre>Example:
+Product concentration = 10 mg/mL
+Test result (adjusted for dilution) = 5 EU/mL
+
+Endotoxin content = 5 EU/mL &divide; 10 mg/mL = 0.5 EU/mg</pre>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：單位轉換</h4>
+            <p>BET 儀器直接輸出的結果永遠是 EU/mL。但產品限值可能以不同單位表示：</p>
+            <ul>
+                <li><strong>EU/mL</strong> &mdash; 直接比較，無需轉換</li>
+                <li><strong>EU/mg</strong> &mdash; 需要除以產品濃度（mg/mL）</li>
+                <li><strong>EU/unit</strong> &mdash; 需要除以產品效價（units/mL）</li>
+                <li><strong>EU/device</strong> &mdash; 需要乘以萃取體積</li>
+            </ul>
+            <p>轉換時別忘了先把稀釋倍數算回去！</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：稀釋倍數的陷阱</h4>
+            <p>如果你的樣品做了 1:100 稀釋，儀器讀到 0.05 EU/mL，那實際的內毒素含量是 0.05 &times; 100 = 5 EU/mL。許多 BET 軟體會自動帶入稀釋因子，但分析師必須確認軟體設定正確。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>產品濃度 25 mg/mL，限值 2 EU/mg，凝膠法在 1:50 稀釋處（最後陽性管）檢出。實際結果是多少 EU/mg？是否合格？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: STANDARD CURVE CONTROL              -->
+<!-- ============================================ -->
+<div class="section-title" id="standard-curve">Standard Curve Control &mdash; 標準曲線管控</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>Standard curves for <span class="key-term">endpoint chromogenic assay</span> evaluate the direct relationship between color intensity and standard concentration. The resulting curve has a <span class="key-term">positive slope</span>, and &lang;85&rang; indicates the correlation coefficient must be <span class="key-term">&ge; 0.980</span>.</p>
+
+        <p>For <span class="key-term">kinetic assays</span> (turbidimetric or chromogenic), the standard curve plots log<sub>10</sub> of onset/reaction time vs. log<sub>10</sub> of concentration. This results in a <span class="key-term">negative slope</span>, and the correlation coefficient must be <span class="key-term">&le; &minus;0.980</span>.</p>
+
+        <p>Therefore: the linearity requirement for all compendial quantitative BET assays is <span class="key-term">|r| &ge; 0.980</span>. The last "0" is important &mdash; it is inappropriate to have |r| = 0.979 and round up.</p>
+
+        <p>All standard curves have a corresponding linear equation <strong>y = mx + b</strong> where m is the slope and b is the y-intercept. Because log<sub>10</sub> of 1 is 0, the <span class="key-term">y-intercept is at the 1 EU standard</span>.</p>
+
+        <p>Accuracy of test results depends on accuracy of the standard curve. Onset times for standards from unique combinations of lysate/CSE lots should all be <span class="key-term">monitored</span> from run to run, instrument to instrument, analyst to analyst.</p>
+
+        <p>An analyst can make a <span class="key-term">twofold or tenfold dilution error</span> in standards, yet still produce a linear curve meeting |r| &ge; 0.980. The error would be evident in the onset times and y-intercept values, but <strong>not</strong> in the correlation coefficient alone.</p>
+
+        <div class="quote-box">
+            "An analyst can make a twofold or tenfold dilution error in the dilution of the standards, yet still produce a linear standard curve that meets the requirement |r| &ge; 0.980."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：|r| 不是萬靈丹</h4>
+            <p>這是 &lang;1085&rang; 中最有啟發性的警告之一：<strong>相關係數合格不代表標準曲線正確！</strong></p>
+            <p>為什麼？因為 r 值只衡量「線性關係的強度」，不衡量「位置是否正確」。你可以把所有標準品都稀釋錯兩倍，曲線照樣是一條漂亮的直線（r &ge; 0.980），但曲線整體偏移了。</p>
+            <ul>
+                <li><strong>過度稀釋</strong> &rarr; onset time 偏長 &rarr; 曲線向上偏移 &rarr; 樣品結果被高估</li>
+                <li><strong>稀釋不足</strong> &rarr; onset time 偏短 &rarr; 曲線向下偏移 &rarr; 樣品結果被低估</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>地圖的比例尺錯了：</strong></p>
+            <p>想像你有一張地圖，所有道路的相對位置都對（= r 值很高），但比例尺標錯了（= 標準品濃度不對）。你量兩點之間的距離會得到一個看似合理的數字，但實際距離完全不對。</p>
+            <p>這就是為什麼 USP 建議監控 onset time 和 y-intercept，而不只看 r 值。onset time 就是地圖上的「地標」&mdash; 它們應該在每次使用同一批試劑時保持一致。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 的標準曲線監控</h4>
+            <ul>
+                <li><strong>建立 onset time 資料庫：</strong>針對每個 lysate lot &times; CSE lot 組合，記錄每次運行的各濃度標準品 onset time</li>
+                <li><strong>設定趨勢警戒值：</strong>當 onset time 或 y-intercept 超出歷史範圍時發出警報，即使 r 值仍然合格</li>
+                <li><strong>跨分析師比較：</strong>不同分析師使用同一批試劑，onset time 應該一致。如果某分析師的 onset time 系統性偏長或偏短，可能是技術問題</li>
+                <li><strong>0.980 不能四捨五入：</strong>0.979 不合格，這一點在審計時經常被查</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的分析師報告標準曲線 r = 0.998，看起來很好。但你注意到本次的 y-intercept 比過去 20 次的平均值高了 15%。這可能代表什麼問題？你會怎麼調查？</li>
+                <li>為什麼 log<sub>10</sub> 轉換後的 kinetic 標準曲線對小變化特別敏感？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>取樣策略：</strong>「頭中尾三瓶」可能不夠 &mdash; 需要基於製程知識和風險評估來設計取樣計劃</li>
+        <li><strong>取樣設備：</strong>必須用與生產相同的設備和沖洗程序取樣，特別是水系統</li>
+        <li><strong>Pooling 代價：</strong>Adjusted MVD = Original MVD / 合併瓶數。合併可能掩蓋單瓶污染，降低調查價值</li>
+        <li><strong>單位轉換：</strong>BET 輸出 EU/mL，需要根據限值單位（EU/mg、EU/device）做適當轉換</li>
+        <li><strong>標準曲線管控：</strong>|r| &ge; 0.980 是必要條件但不充分 &mdash; 必須同時監控 onset time、slope、y-intercept</li>
+        <li><strong>稀釋錯誤的偽裝：</strong>標準品稀釋錯誤可能產生合格的 r 值，但導致所有結果系統性偏差</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+<footer class="main-footer">
+    <p>USP &lang;1085&rang; Guidelines on the Endotoxins Test &mdash; Section 2: Routine Testing</p>
+    <p>SterileGMP Knowledge Hub &bull; Bilingual Educational Document</p>
+</footer>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">&uarr;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

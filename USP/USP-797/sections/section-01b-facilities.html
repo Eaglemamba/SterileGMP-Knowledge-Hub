@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 797 - Section 2: Facilities, Engineering Controls & Certification</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul, .concept-box ol, .analogy-box ol, .note-box ol, .formula-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 2: Facilities, Engineering Controls & Certification</h1>
+    <div class="subtitle">設施、工程控制與認證</div>
+    <div class="page-info">USP General Chapter &langle;797&rangle; | Sections 4–5 | Pages 11–16</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>描述 SEC（二次工程控制）和 PEC（主要工程控制）的功能與差異，以及 ISO 等級對應關係</li>
+        <li>比較各類型 PEC（LAFW、IVLFZ、BSC、CAI、CACI、Pharmaceutical Isolator）的特性和適用情境</li>
+        <li>說明 ACPH 要求（ISO Class 7 ≥30、ISO Class 8 ≥20）的計算邏輯</li>
+        <li>識別 SCA（分隔調配區）的適用條件和限制</li>
+        <li>列舉認證和再認證所需的四項測試項目及其頻率</li>
+    </ul>
+</div>
+
+<!-- SECTION 4: Facilities -->
+<div class="section-title">4. Facilities and Engineering Controls | 設施與工程控制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Sterile compounding facilities must be designed, outfitted, and maintained properly to minimize the risk of contamination of CSPs. The required air quality must be achieved and maintained through <span class="key-term">primary engineering controls (PECs)</span> and <span class="key-term">secondary engineering controls (SECs)</span>. The anteroom, buffer room, and SCA must be separated from areas not directly related to compounding.</p>
+
+        <h3>4.1 Protection from Airborne Contaminants</h3>
+
+        <p><strong>4.1.1 Air quality standards:</strong> The ISO standards for air quality in controlled environments are referenced throughout this chapter.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>ISO Class</th>
+                <th>Particle Count per Cubic Meter (&ge;0.5 &micro;m, dynamic)</th>
+            </tr>
+            <tr><td>3</td><td>35.2</td></tr>
+            <tr><td>4</td><td>352</td></tr>
+            <tr><td>5</td><td>3,520</td></tr>
+            <tr><td>6</td><td>35,200</td></tr>
+            <tr><td>7</td><td>352,000</td></tr>
+            <tr><td>8</td><td>3,520,000</td></tr>
+        </table>
+        </div>
+        <p style="font-size:0.85rem;color:#666;">Table 4. ISO Classification of Particulate Matter in Room Air (adapted from ISO 14644-1)</p>
+
+        <p><strong>4.1.2 Design requirements:</strong> Facilities used for compounding CSPs must be designed so that air quality improves with movement through separate operational areas to the PEC. Classified areas include anterooms, buffer rooms, and PECs.</p>
+        <ul>
+            <li>Anterooms providing access only to positive-pressure buffer rooms must meet at least <strong>ISO Class 8</strong></li>
+            <li>Anterooms providing access to negative-pressure buffer rooms must meet at least <strong>ISO Class 7</strong></li>
+            <li>Buffer rooms must meet at least <strong>ISO Class 7</strong></li>
+            <li>Category 1, 2, and 3 CSPs must be compounded in <strong>ISO Class 5 or better PEC</strong></li>
+            <li>If compounding only Category 1 CSPs, the PEC may be placed in an <span class="key-term">unclassified SCA</span></li>
+        </ul>
+
+        <h3>4.2 Facility Design and Environmental Controls</h3>
+        <p>The cleanroom suite should be maintained at a temperature of 20° or cooler and a relative humidity of 60% or below. Temperature and humidity must be monitored in each room each day that compounding is performed and documented at least once daily. Free-standing air conditioners, humidifiers, and dehumidifiers must not be used within the classified area or the SCA.</p>
+
+        <p><strong>4.2.1 Types of SECs and design — Cleanroom suite:</strong> The ISO-classified anteroom and buffer room must be separated from the surrounding unclassified areas by fixed walls and doors. The classified rooms must be equipped with a <span class="key-term">pressure-differential monitoring system</span>. Air supplied to the cleanroom suite must be introduced through HEPA filters in the ceiling.</p>
+
+        <p>The anteroom must have a <span class="key-term">line of demarcation</span> to separate the clean side from the dirty side. Airlocks and interlocking doors may be used to facilitate better control of air balance. If a pass-through chamber is used, both doors must never be opened at the same time. Tacky mats must not be placed within ISO-classified areas.</p>
+
+        <p><strong>Segregated compounding area (SCA):</strong> A PEC may be located within an unclassified area without an anteroom or buffer room. Only Category 1 CSPs may be compounded in an SCA. The SCA must be located away from unsealed windows, doors that connect to the outdoors, and traffic flow. The area within 1 m of the PEC should be dedicated only for sterile compounding.</p>
+
+        <p><strong>4.2.2 The CSP compounding environment:</strong> The PEC must be certified to meet ISO Class 5 or better conditions during dynamic operating conditions. Unidirectional airflow must be maintained in the PEC. HEPA-filtered air must be supplied at a velocity sufficient to sweep particles away from critical sites.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SEC vs PEC — 設施層次</h4>
+            <p><strong>Primary Engineering Control, PEC (主要工程控制)：</strong>提供 ISO Class 5 無菌調配環境的設備（如 LAFW、BSC、CAI）。是 CSP 直接調配的工作空間。</p>
+            <p><strong>Secondary Engineering Control, SEC (二次工程控制)：</strong>放置 PEC 的區域（前室、緩衝室、SCA）。SEC 保護 PEC 免受外部污染。</p>
+            <p>兩者關係：SEC 是 PEC 的護盾，PEC 是 CSP 的最後防線。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：像一個俄羅斯套娃的防護層次</h4>
+            <p>想像三層保護圈：最外層 = 前室（ISO 8，換衣過渡）→ 中間 = 緩衝室（ISO 7，工作環境）→ 最內層 = PEC（ISO 5，直接調配）。每靠近一層，空氣品質就嚴格一個等級。</p>
+            <p>這就是為什麼「從外到內」的方向控制如此重要——永遠不能讓低品質的空氣進入高品質的區域。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>設施等級快速對照</h4>
+            <pre>
+[無分類空間] → [前室 ISO 8] → [緩衝室 ISO 7] → [PEC ISO 5]
+
+壓差要求（相鄰區域間）：
+  緩衝室 vs 前室：≥ 0.020" 水柱（正壓）
+  前室 vs 無分類區：≥ 0.020" 水柱
+
+溫度/濕度：
+  ≤ 20°C / ≤ 60% RH（每日監測記錄）
+  禁止使用獨立式空調/除濕機
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：SCA 的嚴格限制</h4>
+            <p>SCA（Segregated Compounding Area，分隔調配區）是一種彈性設計，讓小型診所或緊急情況無需建造完整無菌室。但有鐵律：</p>
+            <ul>
+                <li><strong>只能調配 Category 1 CSP</strong>（BUD ≤ 12h 室溫）</li>
+                <li>PEC 周圍 1 公尺範圍內不得有儲物、洗手、更衣或高產塵活動</li>
+                <li>不得鄰近廁所、倉庫、食物製備區</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某診所將 LAFW 放置在護理站角落（SCA 設計），用於調配 Category 2 IV 輸液。這是否合規？</li>
+                <li>前室的「line of demarcation」的目的是什麼？哪邊是「clean side」？</li>
+                <li>為什麼禁止在分類區域使用黏性地墊（tacky mats）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- PEC Types -->
+<div class="section-title">4.2.3 Types of PECs | PEC 類型</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Laminar airflow system (LAFS):</strong> An LAFS provides an ISO Class 5 or better environment. The unidirectional HEPA-filtered airflow within the LAFS helps protect the direct compounding area (DCA) from process-generated contamination.</p>
+
+        <p><strong>Laminar airflow workbench (LAFW):</strong> An LAFW is a device that provides an ISO Class 5 or better environment providing either horizontal or vertical unidirectional HEPA-filtered airflow. [Note—An LAFW must not be used for preparation of antineoplastic and/or API HDs.]</p>
+
+        <p><strong>Integrated vertical laminar flow zone (IVLFZ):</strong> A designated ISO Class 5 area serving as the PEC within an ISO Class 7 or cleaner buffer room. Unidirectional airflow is created by placing HEPA filters over the entire surface of the worktables. Both static and dynamic smoke studies must be documented with video. [Note—An IVLFZ must not be used for preparation of antineoplastic and/or API HDs. An IVLFZ must not be used in an unclassified area.]</p>
+
+        <p><strong>Class II biological safety cabinet (BSC):</strong> A ventilated cabinet with an open front and inward and downward unidirectional HEPA-filtered airflow and HEPA-filtered exhaust. The BSC provides worker protection from exposure to airborne drugs and an ISO Class 5 environment. [Note—The exhaust air from the BSC must be externally vented for preparation of antineoplastic and/or API HDs.]</p>
+
+        <p><strong>Restricted-access barrier system (RABS):</strong> A RABS is an enclosure that provides HEPA-filtered ISO Class 5 unidirectional air. RABS include <span class="key-term">compounding aseptic isolators (CAIs)</span> and <span class="key-term">compounding aseptic containment isolators (CACIs)</span>. In a CAI or CACI, glove ports are used to provide physical separation.</p>
+        <ul>
+            <li><strong>CAI:</strong> Designed for compounding non-HD CSPs. Air exchange from surrounding environment must not occur unless air has first passed through a HEPA filter. [Note—A CAI must not be used for antineoplastic and/or API HDs.]</li>
+            <li><strong>CACI:</strong> Designed to provide worker protection from exposure to undesirable levels of airborne drug throughout compounding and to maintain an ISO Class 5 environment for compounding sterile HD preparations.</li>
+        </ul>
+
+        <p><strong>Pharmaceutical isolator:</strong> Provides isolation from the surrounding area and maintains ISO Class 5 during dynamic operating conditions. [Note—A CAI or CACI is NOT a pharmaceutical isolator.] A pharmaceutical isolator comprises four elements: 1) controlled workspace, 2) transfer device(s), 3) access device(s), 4) integral decontamination system.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>PEC Type</th>
+                <th>For Category 1 Only</th>
+                <th>For Category 2 &amp; 3</th>
+            </tr>
+            <tr>
+                <td>LAFW / BSC / IVLFZ</td>
+                <td>Unclassified SCA</td>
+                <td>ISO Class 7 buffer room + ISO Class 8 anteroom</td>
+            </tr>
+            <tr>
+                <td>CAI or CACI (RABS)</td>
+                <td>Unclassified SCA</td>
+                <td>ISO Class 7 buffer room + ISO Class 8 anteroom</td>
+            </tr>
+            <tr>
+                <td>Pharmaceutical Isolator</td>
+                <td>Unclassified SCA</td>
+                <td>ISO Class 8 room (no anteroom required)</td>
+            </tr>
+        </table>
+        </div>
+        <p style="font-size:0.85rem;color:#666;">Table 5 Summary. Minimum Requirements for Placement of PECs for Non-HD CSPs</p>
+
+        <h3>4.2.4 Air Exchange Requirements</h3>
+        <p>Air changes per hour (ACPH) requirements for non-HD sterile compounding areas:</p>
+        <ul>
+            <li><strong>ISO Class 7 rooms: ≥30 total HEPA-filtered ACPH</strong>, with at least 15 ACPH from HVAC through ceiling HEPA filters. The HEPA-filtered air from the PEC, when added to HVAC-supplied air, must increase total to ≥30 ACPH.</li>
+            <li><strong>ISO Class 8 rooms: ≥20 total HEPA-filtered ACPH</strong>, with at least 15 ACPH from HVAC.</li>
+        </ul>
+        <p>If the PEC is used to meet minimum ACPH requirements, the PEC must not be turned off except for maintenance.</p>
+
+        <h3>4.2.5 Pressure Differentials</h3>
+        <p>A minimum differential positive pressure of <span class="key-term">0.020-inch water column</span> is required between adjacent ISO-classified areas (e.g., between buffer room and anteroom). The pressure differential between the anteroom and the unclassified area must not be less than 0.020-inch water column. A pressure differential monitoring device must be used to continuously monitor and document pressure differentials at least daily on days when compounding occurs.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：PEC 選擇矩陣</h4>
+            <p>七種 PEC 看起來複雜，但核心區別只有三個維度：</p>
+            <ul>
+                <li><strong>開放 vs 封閉：</strong>LAFW/BSC 是開放式；CAI/CACI/Pharmaceutical Isolator 是封閉式</li>
+                <li><strong>HD vs 非HD：</strong>CACI 和 LAFW（不可用）的 HD 適用性不同</li>
+                <li><strong>Category 3 的放置：</strong>Pharmaceutical Isolator 只需 ISO Class 8 室，其他 PEC 需要 ISO Class 7 + 8 套組</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：CAI vs Pharmaceutical Isolator — 手套箱 vs 隔離艙</h4>
+            <p>CAI 像是高級手套箱（glove box）：有手套、有 HEPA，但沒有自動去污系統。</p>
+            <p>Pharmaceutical Isolator 更像太空站的艙室：有完整的傳遞口（RTP）、自動去污系統（如 VHP），是更高層次的隔離。注意：USP 明確規定 CAI ≠ Pharmaceutical Isolator。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>ACPH 計算邏輯</h4>
+            <pre>
+ISO Class 7 緩衝室：
+  總 ACPH ≥ 30
+  其中 HVAC 供給 ≥ 15 ACPH
+  PEC 貢獻 = 總量 − HVAC量
+
+ISO Class 8 前室：
+  總 ACPH ≥ 20
+  其中 HVAC 供給 ≥ 15 ACPH
+
+舉例：緩衝室 HVAC 提供 15 ACPH
+→ PEC 必須至少再提供 15 ACPH
+→ 若 PEC 關閉，等效 ACPH 降為 15 → 違規
+→ 因此 PEC 不得在非維護時間關閉！
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：IVLFZ 的高難度設計</h4>
+            <p>USP 原文特別注記：動態煙霧測試已顯示 IVLFZ 很難在動態作業條件下維持單向氣流。這是一個隱含的警告，表示 USP 雖不禁止 IVLFZ，但知道其設計具有挑戰性。</p>
+            <p>實務建議：若資金允許，選擇傳統 LAFW 或 CAI 通常比 IVLFZ 更容易通過煙霧測試認證。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：Pharmaceutical Isolator 的 Category 2/3 優勢</h4>
+            <p>對需要調配 Category 2/3 CSP 的設施，Pharmaceutical Isolator 有一個重要優勢：只需要 ISO Class 8 室（不需要前室）。這可以節省相當可觀的設施建設成本。</p>
+            <p>代價是 Pharmaceutical Isolator 本身購置和維護成本較高，需要做總擁有成本（TCO）分析。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某設施使用 CAI 調配 Category 2 CSP，緩衝室 HVAC 提供 18 ACPH，CAI 貢獻 14 ACPH，總計 32 ACPH。是否符合要求？</li>
+                <li>CACI 和 CAI 的主要差異是什麼？各適用於何種 CSP？</li>
+                <li>若設施要新增 Pharmaceutical Isolator 調配 Category 3 CSP，是否需要建造前室？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: Certification -->
+<div class="section-title">5. Certification and Recertification | 認證與再認證</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Before a compounding area is used to compound CSPs, it must be independently certified using the requirements in this chapter and manufacturer specifications. Certification indicates that the compounding area is meeting its design and air quality specifications.</p>
+
+        <p>Certification of classified areas including the PEC must be performed initially, and <span class="key-term">recertification must be performed at least every 6 months</span> and must include:</p>
+        <ol>
+            <li><strong>Airflow testing:</strong> Determines acceptability of air velocity, room air exchange rate, and room pressure differential. The ACPH from HVAC, ACPH contributed from the PEC, and the total ACPH must be documented on the certification report.</li>
+            <li><strong>HEPA filter integrity testing:</strong> HEPA filters must be leak tested at the factory and then leak tested again after installation and as part of recertification.</li>
+            <li><strong>Total particle count testing:</strong> Must be performed under dynamic operating conditions using calibrated electronic equipment.</li>
+            <li><strong>Dynamic airflow smoke pattern test:</strong> Must be performed for each PEC during dynamic operating conditions to demonstrate unidirectional airflow and sweeping action over and away from the preparation(s).</li>
+        </ol>
+
+        <p>Classified areas must additionally be recertified if there are changes to the area such as redesign, construction, replacement or relocation of any PEC, or alteration in the configuration of the room that could affect airflow or air quality.</p>
+
+        <p>All certification and recertification records must be reviewed by the designated person(s). The number of personnel present in each PEC and SEC during total particle-count tests and dynamic airflow smoke-pattern tests must be documented. Records must be maintained in accordance with 20. Documentation.</p>
+
+        <p>A corrective action plan must be implemented and documented in response to any out-of-range results. Data collected in response to corrective actions must be reviewed to confirm effectiveness.</p>
+
+        <h3>5.1 Total Airborne Particle Sampling</h3>
+        <p>Total airborne particle count testing must be conducted in all classified areas during dynamic operating conditions at least every 6 months. Measurements of total airborne particles must be taken in each PEC at locations where there is greatest risk to the exposed CSPs, containers, and closures.</p>
+        <p>If levels measured during total air sampling exceed the criteria in Table 4 for the ISO classification of the area sampled, the cause must be investigated and corrective action taken. The extent of the investigation should include an evaluation of trends.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：認證的四個測試項目</h4>
+            <p>每次認證/再認證必須包含「四合一」測試：</p>
+            <ol>
+                <li><strong>氣流測試 (Airflow Testing)：</strong>測量風速、ACPH、壓差</li>
+                <li><strong>HEPA 濾芯完整性測試：</strong>確認無洩漏點</li>
+                <li><strong>總微粒計數 (Total Particle Count)：</strong>動態條件下測 ≥0.5µm 微粒數量</li>
+                <li><strong>動態煙霧測試 (Dynamic Smoke Pattern Test)：</strong>視覺確認單向氣流覆蓋</li>
+            </ol>
+            <p>每6個月一次，並在任何可能影響氣流的變更後立即重新認證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻：像汽車定期年檢</h4>
+            <p>認證就像汽車年檢——你的車每年必須通過煞車、排放、安全燈等多項測試。即使看起來沒問題，法規仍要求定期驗證。</p>
+            <p>同理，即使調配室「感覺正常」，每6個月的認證仍是強制的，因為 HEPA 可能有微小洩漏、壓差感測器可能漂移，只有測試才能確認。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：動態 vs 靜態煙霧測試</h4>
+            <p>USP 要求的是<strong>動態 (Dynamic)</strong> 煙霧測試——在人員存在且模擬操作的條件下進行。靜態測試（無人、無操作）不能充分代表實際調配時的氣流狀況。</p>
+            <p>煙霧測試的目的：確認單向氣流能「掃過」(sweep) 直接調配區 (DCA)，而不是在某處形成渦流（eddies）或停滯區（dead zones）。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>認證頻率規則</h4>
+            <pre>
+必須認證的時機：
+  ✓ 初始使用前
+  ✓ 至少每 6 個月一次
+  ✓ 設施改建或重新設計後
+  ✓ 任何 PEC 更換或移位後
+  ✓ 任何可能影響氣流的房間改變後
+
+認證報告必須包含：
+  HVAC 的 ACPH + PEC 貢獻的 ACPH + 總 ACPH
+  測試期間 PEC/SEC 中的人員數量
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用：搬移設備即觸發重新認證</h4>
+            <p>這是設施管理中常被忽略的規定：任何 PEC 的位置改變（即使只是稍微移動以便清潔），理論上都應重新進行動態煙霧測試，因為設備位置影響氣流模式。實務上建議在 SOP 中設定明確的「允許位移範圍」，超出即觸發重新認證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>認證中的 HEPA 完整性測試需要在幾個時間點進行？各是什麼時機？</li>
+                <li>動態微粒計數測試超出 ISO Class 7 限制（&gt;352,000 /m³），必須採取哪些步驟？</li>
+                <li>設施在 2 月完成認證，6 月進行例行 HEPA 更換。更換後需要立即重新認證嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>SEC 層次：</strong>前室（ISO 8）→ 緩衝室（ISO 7）→ PEC（ISO 5）；每層間壓差 ≥ 0.020" 水柱</li>
+        <li><strong>PEC 選擇：</strong>LAFW/BSC/CAI 用於 Cat 2/3 需 ISO 7+8 套組；Pharmaceutical Isolator 只需 ISO 8 室</li>
+        <li><strong>ACPH：</strong>ISO Class 7 ≥30 ACPH（含 HVAC ≥15）；ISO Class 8 ≥20 ACPH（含 HVAC ≥15）</li>
+        <li><strong>認證：</strong>初始 + 每6個月，包含氣流測試、HEPA 完整性、總微粒計數、動態煙霧測試四項</li>
+        <li><strong>SCA：</strong>僅適用 Category 1 CSP；PEC 周圍 1 公尺須專用於無菌調配</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP &langle;797&rangle; Pharmaceutical Compounding—Sterile Preparations</p>
+</div>
+
+</body>
+</html>

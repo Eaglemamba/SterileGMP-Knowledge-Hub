@@ -1,0 +1,848 @@
+# USP General Chapter 〈670〉: Auxiliary Packaging Components
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Mar-2024
+Document Type:
+General Chapter
+DocId:
+GUID-23441426-4E3D-43A3-A807-FC24D0191C03_5_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M2316_05_01
+DOI Ref:
+bu2j3
+© 2025 USPC
+Do not distribute
+〈670〉 AUXILIARY P
+ACKAGING COMPONENTS
+To view the Notice from the Exper t Committee that posted in conjunction with this accelerated revision, please click
+https:/
+/www.uspnf.com/rb-670-20240223.
+Auxiliary packaging components are ar ticles that are used to suppor t or enhance container–closure systems. These ar ticles include,
+but are not limited to, pharmaceutical coil, desiccants, and odor adsorbents for containers. The components covered in this chapter must
+meet the applicable requirements provided and the additional applicable requirements provided in other speci«ed chapters.
+PHARMACEUTICAL COIL
+Pharmaceutical coil is used as a «lling material in multiple-unit containers for solid oral dosage forms to prevent breakage of tablets or
+capsules during shipment. The «lling material should be discarded once the bottle is opened.
+•
+Solutions
+Iodinated zinc chloride solution:
+Dissolve 20 g of zinc chloride and 6.5 g of potassium iodide in 10.5 mL of Puri«ed Water. Add 0.5 g of
+iodine, and shake for 15 min. Filter if necessary. Protect from light.
+Zinc chloride–formic acid solution:
+Dissolve 20 g of zinc chloride in 80 g of an 850-g/L solution of anhydrous formic acid.
+1% DuPont Fiber Identi«cation Stain No. 41
+ solution:
+Dissolve 3.8 g of powdered stain in 378.5 mL of deionized water.
+•
+Cotton Pharmaceutical Coil
+Puri«ed cotton is the hair of the seed of cultivated varieties of Gossypium hirsutum Linné, or of other species of Gossypium (Fam.
+Malvaceae). It is deprived of fatty matter and bleached and does not contain more than traces of leaf residue, pericarp, seed coat, or
+other impurities. Cotton pharmaceutical coil is used in bottles of solid oral dosage forms to prevent breakage.
+Identi«cation
+A.
+When examined under a microscope, each «ber is seen to consist of a single cell, up to about 4 cm long and 40 µm wide, in the form of
+a ¬attened tube with thick and rounded walls that are often twisted.
+B.
+When treated with Iodinated zinc chloride solution, the «bers become violet.
+C.
+To 0.1 g of «bers add 10 mL of Zinc chloride–formic acid solution, heat to 40°, and allow to stand for 2 h, shaking occasionally: the «bers
+do not dissolve.
+D.
+Weigh about 5 g of «bers, wet with water, and squeeze out the excess. Add «bers to 100 mL of a boiling solution of a 1% DuPont Fiber
+Identi«cation Stain No. 4 solution, and gently boil for at least 1 min. Remove the «bers, rinse well in cold water, and squeeze out the
+excess moisture: the «bers become green.
+Acidity or alkalinity:
+Immerse about 10 g of «bers in 100 mL of recently boiled and cooled Puri«ed Water, and allow to macerate for 2 h.
+Decant 25-mL por tions of the water, with the aid of a glass rod, into each of two dishes. To one por tion add 3 drops of phenolphthalein TS,
+and to the other por tion add 1 drop of methyl orange TS. Neither por tion appears pink when viewed against a white background.
+Fluorescence:
+Examine a layer of about 5 mm in thickness under UV light at 365 nm. It displays only a slight brownish-violet ¬uorescence
+and a few yellow par ticles. It shows no intense blue ¬uorescence, apar t from that which may be shown by a few isolated «bers.
+Residual hydrogen peroxide concentration:
+Place 1 g of «bers in a beaker containing 30 mL of Puri«ed Water, and stir for 3 min with a
+stirring rod. Pour contents into another clean container (do not squeeze sample), or alternatively, remove the «bers from the solution with
+clean tweezers. Remove a peroxide analytical test strip
+ from its container, and immerse the test end into the sample liquid for 2 s. Shake
+to remove the excess liquid, immediately inser t the test strip into a suitable re¬ectometry instrument, and record the reading in mg/kg
+(ppm), and calculate residual hydrogen peroxide concentration in ppm.
+For an alternate method, place 20 g in a beaker, add 400 mL of Puri«ed Water, stir, add 20 mL of 20% sulfuric acid, and stir the
+contents. Titrate with 0.100 N potassium permanganate solution to a faint pink color that remains for 30 s. Record the amount of titer,
+and calculate the concentration in ppm.
+Calculation
+To calculate ppm of hydrogen peroxide, multiply % hydrogen peroxide (w/w) by 10,000.
+Not more than 50 ppm is found using either method.
+Loss on Drying 〈731〉
+Analysis:
+Dry 5 g of «bers in an oven at 105° to constant weight.
+Acceptance criteria:
+NMT 8.0%
+Residue on Ignition 〈281〉
+% Hydrogen peroxide  =
+  ×  100
+(mL of Titrant)(0.0017)
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 2 ===
+Analysis:
+Place 5 g of «bers in a porcelain or platinum dish, and moisten with 2 N sulfuric acid. Gently heat the cotton until it is charred,
+then ignite more strongly until the carbon is completely consumed.
+Acceptance criteria:
+NMT 0.20%
+Water-soluble substances:
+Place 10 g of «bers in a beaker containing 1000 mL of Puri«ed Water, and boil gently for 30 min, adding water as
+required to maintain the volume. Pour the water through a funnel into another vessel, and press out the excess water from the cotton with
+a glass rod. Wash the cotton in the funnel with two 250-mL por tions of boiling water, pressing the cotton after each washing. Filter the
+combined extract and washings, and wash the «lter thoroughly with hot water. Evaporate the combined extract and washings to a small
+volume, transfer to a tared porcelain or platinum dish, evaporate to dryness, and dry the residue at 105° to constant weight. The residue
+weighs NMT 0.35%.
+Fatty matter:
+Pack 10 g of «bers in a Soxhlet extractor provided with a tared receiver, and extract with ethyl ether for 4 h at a rate such that
+the ether siphons over not less than 4 times per hour. The ethyl ether solution in the ¬ask shows no trace of blue, green, or brownish color.
+Evaporate the extract to dryness, and dry at 105° for 1 h. The weight of the residue does not exceed 0.7%.
+Dyes:
+Pack about 10 g of «bers in a narrow percolator or a porcelain Büchner funnel, and extract slowly with alcohol until the percolate
+measures 50 mL. When observed downward through a column 20 cm in depth, the percolate may show a yellowish color, but not a blue or
+a green tint.
+Other foreign matter:
+Pinches contain no oil stains or metallic par ticles by visual inspection.
+•
+Rayon Pharmaceutical Coil
+Rayon pharmaceutical coil is a «brous form of bleached, regenerated cellulose, to be used as a «ller in bottles of solid oral dosage
+forms to prevent breakage. It consists exclusively of rayon «bers except for a few isolated foreign «bers that may be present. [Note—
+Rayon pharmaceutical coil has been found to be a potential source of dissolution problems for gelatin capsules or gelatin-coated tablets
+resulting from gelatin cross-linking.]
+Identi«cation
+A.
+When treated with Iodinated zinc chloride solution, the «bers become violet.
+B.
+Add 10 mL of Zinc chloride–formic acid solution to 0.1 g of «bers, heat to 40°, and allow to stand for 2 h, shaking occasionally: the «bers
+dissolve completely, except for mat rayon «bers where titanium par ticles remain.
+C.
+Weigh about 5 g of «bers, wet with water, and squeeze out the excess. Add «bers to 100 mL of a boiling solution of a 1% DuPont Fiber
+Identi«cation Stain No. 4 solution, and gently boil for at least 1 min. Remove the «bers, rinse well in cold water, and squeeze out the
+excess moisture: the «bers become blue–green.
+Acidity or alkalinity
+, Fluorescence, Fatty matter
+, Dyes, and Other foreign matter:
+Proceed as directed under Cotton Pharmaceutical Coil,
+except use rayon pharmaceutical coil. The sample weight for fatty matter is 5 g and weight of the residue does not exceed 0.5%.
+Loss on Drying 〈731〉
+Analysis:
+Dry 5 g of «bers in an oven at 105° to constant weight.
+Acceptance criteria:
+NMT 11.0%
+Residue on Ignition 〈281〉:
+NMT 1.50%, determined on a 5-g test specimen
+Acid-insoluble ash:
+To the residue obtained in the test for Residue on Ignition, add 25 mL of 3 N hydrochloric acid, and boil for 5 min. Collect
+the insoluble matter on a tared «ltering crucible, wash with hot water, ignite, and weigh: the residue weighs not more than 1.25%.
+Water-soluble substances:
+Proceed as directed under Cotton Pharmaceutical Coil, except to use rayon pharmaceutical coil. The residue
+weighs not more than 1.0%.
+•
+Pol
+yester Pharmaceutical Coil
+Polyester pharmaceutical coil is a white odorless material, to be used as a «ller in bottles of solid oral dosage forms to prevent
+breakage.
+Identi«cation
+A.
+Proceed as directed under Infrared spectroscopy in the Test Methods section. Determine the IR spectrum from 4000 to 650 cm
+−1
+ (2.5 to
+15 µm). The spectrum obtained from the specimen exhibits major absorption bands only at the same wavelengths as the spectrum of
+USP Polyethylene Terephthalate RS.
+B.
+Weigh about 5 g of «bers, wet with water, and squeeze out excess. Add «bers to 100 mL of a boiling solution of a 1% DuPont Fiber
+Identi«cation Stain No. 4 solution, and gently boil for at least 1 min. Remove the «bers, rinse well in cold water, and squeeze out the
+excess moisture: the «bers become pale orange.
+Acidity or alkalinity:
+Proceed as directed under Cotton Pharmaceutical Coil, except to use polyester pharmaceutical coil.
+Loss on Drying 〈731〉
+Analysis:
+Dry 5 g of «bers in an oven at 105° to constant weight.
+Acceptance criteria:
+NMT 1.0%
+Residue on Ignition 〈281〉:
+NMT 0.5%, determined on a 5-g test specimen
+Finish on «bers:
+The «nish on «bers used for processing should comply with FDA food contact regulations.
+•
+Test Methods
+Infrared spectroscopy
+Apparatus:
+FTIR or a double-beam spectrophotometer capable of scanning from 4000 to 650 cm
+−1
+ (2.5–15 µm).
+Specimen preparation:
+The ATR Spectroscopic Identi«cation Tests 〈197〉, Infrared Spectroscopy 197A technique can be used as alternative
+methods where the Reference Standard spectra is similarly obtained.
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 3 ===
+Method 1 (potassium bromide disc):
+Use scissors to cut polyester «bers (1–3 mg) into shor t lengths (less than 1 mm long), mix with
+200 mg of powdered potassium bromide, and grind in a ball mill for 1–2 min. Transfer to potassium bromide-disc die, and form a disc.
+Method 2 (melt film):
+Produce «lm by pressing polyester «bers between tetra¬uoroethylene-¬uorocarbon sheets and place between
+heated plates.
+DESICCANT
+Desiccants are used to remove moisture from air in containers in order to protect drug products, par ticularly solid oral dosage forms.
+They are supplied in a number of different packaging materials including cotton, Kraft paper, rayon and polyester cloth bags, perforated
+plastic, polymer «lms, or polymer housings. The most common types of commercial desiccants are bentonite; calcium chloride; calcium
+oxide; carbon, activated; molecular sieves; and silica gel. Other desiccants are subject to appropriate testing to ensure suitability for the
+intended application.
+Where desiccants are incorporated directly into the wall or cap of packaging containers or bound by a carrier material, use
+unincorporated desiccant in the test methods. For desiccants that are loaded with a predetermined moisture content, perform the testing
+before the moisture has been loaded or after the desiccant has been regenerated.
+•
+Bentonite
+Bentonite clay (also referred to as montmorillonite clay) is a native, colloidal, hydrated aluminum silicate.
+Appearance:
+Grayish-white powder or pellets with a yellowish or pinkish tint
+Identi«cation—X-Ray Powder Diffraction 〈941〉:
+For Sample preparation A, the largest peak corresponds to a d value between 15.0 and 17.2 Å.
+The major peak in the region between 1.48 and 1.54 Å from the pattern of Sample preparation B is between 1.492 and 1.504 Å.
+Identi«cation—precipitation:
+Formation of a gelatinous white precipitate
+Inorganic impurities
+Arsenic:
+NMT 10 mg/kg
+Lead:
+NMT 15 mg/kg
+Speci«c tests
+pH 〈791〉:
+4.5–10.5. Disperse 4.0 g in 200 mL of water, mix vigorously to facilitate wetting.
+Loss on Drying 〈731〉
+Sample:
+5–10-g sample
+Analysis:
+Dry the Sample at 110° to a constant weight.
+Acceptance criteria:
+It loses NMT 3.0%.
+[Note—Conduct the assay immediately after opening the original container.]
+Moisture adsorption capacity
+NL
+T 13% at 40% ± 5% relative humidity (RH) and 25 ± 2°
+NL
+T 23% at 80% ± 5% RH and 25 ± 2°
+Test methods
+Identi«cation—X-ray diffraction
+Sample preparation A:
+Add 2 g in small por tions to 100 mL of water with intense agitation. Allow to stand for 12 h to ensure complete
+hydration. Place 2 mL of the mixture so obtained on a suitable glass slide, and allow to air-dry at room temperature to produce an
+oriented «lm. Place the slide in a vacuum desiccator over a free surface of ethylene glycol. Evacuate the desiccator, and close the
+stopcock so that ethylene glycol saturates the desiccator chamber. Allow the slide to stand for 12 h.
+Sample preparation B:
+Prepare a random powder specimen of the sample.
+Analysis:
+Sample preparation A and Sample preparation B. Record the X-ray diffraction pattern of the samples, and determine the d
+values.
+Identi«cation—precipitation
+Sample:
+5 g
+Analysis:
+Add 1 g of potassium nitrate and 3 g of anhydrous sodium carbonate to the Sample contained in a metal crucible, heat until the
+mixture has melted, and allow it to cool. Add 20 mL of boiling water to the residue, mix, «lter, and wash the residue with 50 mL of water.
+Add 1 mL of hydrochloric acid and 5 mL of water to the residue, and «lter. Add 1 mL of 10 N sodium hydroxide to the «ltrate, «lter, and
+add 3 mL of 2 M ammonium chloride.
+Arsenic
+Sample solution:
+Transfer 8.0 g of dried sample into a 250-mL beaker containing 100 mL of dilute hydrochloric acid (1 in 25), mix, and
+cover with a watch glass. Boil gently, with occasional stirring, for 15 min without allowing excessive foaming. Pass the hot supernatant
+liquid through a rapid-¬ow «lter paper into a 200-mL volumetric ¬ask, and wash the «lter with four 25-mL por tions of hot dilute
+hydrochloric acid (1 in 25), collecting the washings in the volumetric ¬ask. Cool the combined «ltrates to room temperature, add dilute
+hydrochloric acid (1 in 25) to volume and mix.
+Arsenic trioxide stock solution:
+Accurately weigh 132.0 mg of arsenic trioxide, previously dried at 105° for 1 h, and dissolve in 5 mL of
+sodium hydroxide solution (1 in 5) in a 1000-mL volumetric ¬ask. Neutralize the solution with 2 N sulfuric acid, add an additional 10 mL
+of 2 N sulfuric acid, and bring to volume with recently boiled and cooled water and mix.
+Standard arsenic solution:
+Dilute the Arsenic trioxide stock solution to obtain solutions of suitable concentrations, adaptable to the linear
+or working range of the instrument. Keep in an all-glass container, and use within 3 days.
+Analysis:
+Proceed according to Elemental Impurities—Procedures 〈233〉.
+Lead
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 4 ===
+Sample solution:
+Transfer 3.75 g of sample into a 250-mL beaker containing 100 mL of dilute hydrochloric acid (1 in 25), stir, and cover
+with a watch glass. Boil for 15 min, then cool to room temperature, and pass through a rapid-¬ow «lter paper into a 400-mL beaker.
+Wash the «lter with four 25-mL por tions of hot water, collecting the washings in the 400-mL beaker. Concentrate the combined extracts
+by gentle boiling to approximately 20 mL. If a precipitate forms, add 2–3 drops of nitric acid, heat to boiling, and cool to room
+temperature. Pass the concentrated extracts through a rapid-¬ow «lter paper into a 50-mL volumetric ¬ask. Transfer the remaining
+contents of the 400-mL beaker through the «lter paper and into the ¬ask with water. Dilute with water to volume.
+Lead nitrate stock solution:
+Dissolve 159.8 mg of lead nitrate in 100 mL of water to which has been added 1 mL of nitric acid, then dilute
+with water to 1000 mL. Prepare and store this solution in glass containers free from soluble lead salts.
+Standard lead solution:
+On the day of use, dilute the Lead nitrate stock solution to obtain solutions of suitable concentrations, adaptable
+to the linear or working range of the instrument.
+Analysis:
+Proceed according to 〈233〉.
+Moisture adsorption capacity
+Equipment:
+Temperature-humidity chambers capable of controlled humidity at 40% ± 5% RH and 80% ± 5% RH at 25 ± 2° or a desiccator
+containing water-saturated salts that provide %RH at the required level plus an oven capable of maintaining 25 ± 2°.
+Method:
+5–10 g. Remove the sample from the packaging material. Where absorbents are incorporated directly into the wall or cap of
+packaging containers, use unincorporated desiccant. Add the sample to the humidity chamber or desiccator and measure the weight
+gain over time until this reaches equilibrium when two successive consecutive weighings do not differ by more than 3 mg/g of
+substance taken, the second weighing following an additional 3 ± 1 h of storage at the required temperature and humidity conditions.
+Calculate the adsorption capacity as percentage weight gained over the initial sample weight. Where two absorbents are packaged in
+combination, the moisture adsorption capacity speci«cation must be calculated in propor tion of the mix. For example, for a mixture of
+60% molecular sieve and 40% silica gel, the moisture adsorption capacity would be not less than 16.6% (9.0% + 7.6%) when the test
+condition is 40% ± 5% RH and 25 ± 2° and the moisture adsorption capacities taken at their minimum speci«cation.
+Calculation
+Molecular sieve:
+60% by weight × 15% moisture adsorption capacity = NL
+T 9.0% moisture adsorption capacity
+Silica gel:
+40% by weight × 19% moisture adsorption capacity = NL
+T 7.6% moisture adsorption capacity
+•
+Calcium Chloride, Anhydrous
+Identi«cation—calcium:
+Passes tests
+Identi«cation—chloride:
+Passes tests
+Assay:
+NL
+T 93.0% and NMT 100.5% of calcium chloride (CaCl
+)
+Inorganic impurities
+Arsenic:
+NMT 3 ppm
+Fluoride:
+NMT 0.004%
+Lead:
+NMT 5 ppm
+Magnesium and alkali salts:
+NMT 25 mg of residue (NMT 5.0%)
+Speci«c tests
+pH 〈791〉:
+4.5–11.0 (1:20 aqueous solution)
+Moisture adsorption capacity:
+NL
+T 28% at 80% ± 5% RH and 25 ± 2°
+Test methods
+Identi«cation—calcium
+Sample solution—100 mg/mL:
+Insoluble oxalate salts are formed when solutions of calcium salts are treated in the following manner.
+Using 2 drops of methyl red TS as the indicator, neutralize a 1:20 solution of a calcium salt with 6 N ammonia, then add 2.7 N
+hydrochloric acid, dropwise, until the solution is acid. A white precipitate of calcium oxalate forms upon the addition of ammonium
+oxalate TS. This precipitate is insoluble in acetic acid but dissolves in hydrochloric acid.
+Identi«cation—chloride
+Sample solution—100 mg/mL:
+Solutions of chlorides yield with silver nitrate TS a white, curdy precipitate that is insoluble in nitric acid
+but soluble in a slight excess of 6 N ammonia.
+Assay
+Sample:
+1.5 g
+Analysis:
+Transfer the Sample into a 250-mL volumetric ¬ask, dissolve it in a mixture of 100 mL of water and 5 mL of 2.7 N hydrochloric
+acid, dilute with water to volume, and mix. Transfer 50 mL of this solution into a suitable container and add 50 mL of water. While
+stirring, preferably with a magnetic stirrer, add about 30 mL of 0.05 M disodium ethylenediaminetetraacetic acid (EDTA) from a 50-mL
+buret. Then, add 15 mL of 1 N sodium hydroxide and 300 mg of hydroxy naphthol blue indicator. Continue the titration to a blue
+endpoint. Each milliliter of 0.05 M disodium EDTA is equivalent to 5.55 mg of calcium chloride (CaCl
+).
+Arsenic
+Sample solution:
+1 g in 10 mL
+Arsenic trioxide stock solution and Standard arsenic solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Fluoride
+Sodium ¬uoride solution—5 µg/mL:
+Transfer 2.210 g of sodium ¬uoride, previously dried at 200° for 4 h and accurately weighed, into a
+400-mL plastic beaker, add 200 mL of water, and stir until dissolved. Quantitatively transfer this solution into a 1000-mL volumetric
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 5 ===
+¬ask with the aid of water, dilute with water to volume, and mix. Store this stock solution in a plastic bottle. On the day of use, transfer
+5.0 mL of the stock solution into a 1000-mL volumetric ¬ask, dilute with water to volume, and mix.
+Calibration curve:
+Transfer 1.0, 2.0, 3.0, 5.0, 10.0, and 15.0 mL of the Sodium ¬uoride solution into separate 250-mL plastic beakers. Add
+50 mL of water, 5 mL of 1 N hydrochloric acid, 10 mL of 1 M sodium citrate, and 10 mL of 0.2 M disodium EDTA to each beaker and
+mix. Transfer each solution into separate 100-mL volumetric ¬asks, dilute with water to volume, and mix. Transfer a 50-mL por tion of
+each solution into separate 125-mL plastic beakers, and measure the potential of each solution with a suitable ion-selective electrode
+apparatus,
+ using a suitable reference electrode.
+ Plot the calibration curve on two-cycle semi-logarithmic paper
+ or with the use of a
+suitable graphing calculator or spreadsheet program.
+Analysis:
+Transfer 1.00 g of the sample into a 150-mL glass beaker, add 10 mL of water, and, while stirring continuously, slowly add 20
+mL of 1 N hydrochloric acid to dissolve the sample. Boil rapidly for 1 min, then transfer into a 250-mL plastic beaker, and cool rapidly in
+ice water. Add 15 mL of 1 M sodium citrate and 10 mL of 0.2 M disodium EDTA, and mix. Adjust the pH to 5.5 ± 0.1 with 1 N
+hydrochloric acid or 1 N sodium hydroxide, if necessary. Transfer into a 100-mL volumetric ¬ask, dilute with water to volume, and mix.
+Transfer a 50-mL por tion of this solution into a 125-mL plastic beaker, and measure the potential of the solution with the apparatus
+described under Calibration curve. Determine the ¬uoride content, in µg, of the sample from the Calibration curve. Determine the
+percentage of ¬uoride in the sample taken:
+Result = (C/W
+) × F × 100
+C
+= content of ¬uoride (µg)
+W
+= sample weight (g)
+F
+= factor conver ting µg to g, 0.000001
+Lead
+Sample solution:
+1 g in 20 mL
+Lead nitrate stock solution and Standard lead solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Magnesium and alkali salts
+Sample:
+1 g
+Analysis:
+Dissolve the Sample in 50 mL of water, add 500 mg of ammonium chloride, mix, and boil for 1 min. Rapidly add 40 mL of oxalic
+acid TS and stir vigorously until precipitation is well established. Immediately add 2 drops of methyl red TS. Then add 6 N ammonium
+hydroxide, dropwise, until the mixture is just alkaline, and cool. Transfer the mixture to a 100-mL cylinder, dilute with water to 100 mL,
+and let it stand for 4 h or overnight. Decant the clear, supernatant liquid through a dry «lter paper, and transfer 50 mL of the clear «ltrate
+to a platinum dish. Add 0.5 mL of sulfuric acid to the dish and evaporate the mixture on a steam bath to a small volume. Carefully
+evaporate the remaining liquid to dryness over a free ¬ame and continue heating until the ammonium salts have been completely
+decomposed and volatilized. Finally, ignite the residue to constant weight.
+Moisture adsorption capacity:
+Proceed as directed under Bentonite.
+•
+Calcium Oxide
+Identi«cation—calcium:
+Passes tests
+Assay:
+NL
+T 95.0% and NMT 100.5% of calcium oxide (CaO), on the ignited basis
+Inorganic impurities
+Acid-insoluble substances:
+NMT 1%
+Arsenic:
+NMT 3 ppm
+Fluoride:
+NMT 0.015%
+Lead:
+NMT 2 mg/kg
+Magnesium and alkali salts:
+NMT 3.6%
+Speci«c tests
+Loss on ignition:
+NMT 10.0%
+Moisture adsorption capacity:
+NL
+T 28% at 80% ± 5% RH and 25 ± 2°
+Test methods
+Identi«cation—calcium
+Sample solution:
+Shake 1 g of sample with 20 mL of water and add glacial acetic acid until the sample is dissolved.
+Analysis:
+Proceed as directed under Calcium Chloride, Anhydrous.
+Assay
+Sample:
+1 g of sample ignited to a constant weight (see Loss on ignition below)
+Analysis:
+Dissolve the Sample in 20 mL of 2.7 N hydrochloric acid. Cool the solution, dilute with water to 500.0 mL, and mix. Pipet 50.0
+mL of this solution into a suitable container, and add 50 mL of water. While stirring, preferably with a magnetic stirrer, add about 30
+mL of 0.05 M disodium EDTA from a 50-mL buret. Then, add 15 mL of 1 N sodium hydroxide and 300 mg of hydroxy naphthol blue
+indicator. Continue the titration with disodium EDTA to a blue endpoint. Each milliliter of 0.05 M disodium EDTA is equivalent to
+2.804 mg of calcium oxide (CaO).
+Arsenic
+S
+S
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 6 ===
+Sample solution:
+1 g in 15 mL of 2.7 N hydrochloric acid
+Arsenic trioxide stock solution and Standard arsenic solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Fluoride
+Sample:
+1.0 g
+Analysis:
+Proceed as directed under Calcium Chloride, Anhydrous.
+Lead
+Sample solution:
+1 g in 15 mL of 2.7 N hydrochloric acid
+Lead nitrate stock solution and Standard lead solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Acid-insoluble substances
+Sample solution:
+Shake 5 g of sample, and then mix it with 100 mL of water and su­cient hydrochloric acid, added dropwise, to dissolve
+it.
+Analysis:
+Boil the Sample solution, cool, add hydrochloric acid, if necessary, to make the solution distinctly acid, and pass through a tared
+glass «lter crucible. Wash the residue with water until free of chlorides, dry at 105° for 1 h, cool, and weigh.
+Magnesium and alkali salts
+Sample:
+500 mg
+Analysis:
+Dissolve the Sample in 30 mL of water and 15 mL of 2.7 N hydrochloric acid. Heat the solution, boil for 1 min, and rapidly add
+40 mL of oxalic acid TS, and stir vigorously. Add 2 drops of methyl red TS, and neutralize the solution with 6 N ammonium hydroxide to
+precipitate the calcium completely. Heat the mixture on a steam bath for 1 h and allow it to cool. Dilute the mixture with water to 100
+mL, mix well, and «lter. Add 0.5 mL of sulfuric acid to 50 mL of the «ltrate. Then evaporate to dryness and ignite to constant weight in a
+tared platinum crucible at 800 ± 25°.
+Loss on ignition
+Sample:
+1 g
+Analysis:
+Ignite the Sample to constant weight in a tared platinum crucible at 1100 ± 50°.
+Moisture adsorption capacity:
+Proceed as directed under Bentonite.
+•
+Carbon, Activated
+Carbon, activated (also known as “active carbon”) is a solid, porous material obtained from carbonaceous source materials (vegetable)
+matter by suitable carbonization processes, treated to increase its adsorptive power.
+Appearance:
+Black-colored powder or granule, or a mixture of powder and granule
+Solubility:
+Insoluble in water and in organic solvents
+Identi«cation:
+When heated to redness in atmosphere, it burns slowly without a ¬ame.
+Inorganic impurities
+Arsenic:
+NMT 10 mg/kg (ppm)
+Lead:
+NMT 15 mg/kg (ppm)
+Speci«c tests
+Loss on Drying 〈731〉
+Sample:
+5–10 g
+Analysis:
+Dry the Sample at 105°–120° to a constant weight.
+Acceptance criteria:
+It loses NMT 5% of its weight. [Note—Conduct assay immediately after opening the original container.]
+Residue on Ignition 〈281〉
+Sample:
+1.0 g
+Acceptance criteria:
+NMT 5.0%
+Moisture adsorption capacity:
+NL
+T 21% weight at 80% ± 5% relative humidity (RH) and 25 ± 2°
+Higher aromatic hydrocarbons:
+The sample shows no more color or ¬uorescence than the Control solution when observed under ultraviolet
+light at 365 nm.
+Water extractables:
+NMT 5.0%
+Test methods
+Inorganic impurities
+Sample:
+2.0 g
+Analysis:
+Combine the Sample and 50 mL of dilute hydrochloric acid in a conical ¬ask with a ground glass neck. Boil gently under a re¬ux
+condenser for 1 h and wash the «lter with dilute hydrochloric acid. Evaporate the combined «ltrate and washings to dryness on a water
+bath. Dissolve the residue in 0.1 M hydrochloric acid and dilute with 0.1 M hydrochloric acid to 50 mL.
+Arsenic trioxide stock solution and Standard arsenic solution:
+Prepare as directed under Bentonite.
+Lead nitrate stock solution and Standard lead solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Moisture adsorption capacity:
+Proceed as directed under Bentonite.
+Higher aromatic hydrocarbons
+Sample:
+1.0 g
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 7 ===
+Analysis:
+In a continuous-extraction apparatus, treat the Sample with 12 mL of cyclohexane for 2 h. Collect the liquid and dilute with
+cyclohexane to 12 mL. Place the Sample in a Nessler tube.
+Control solution:
+Prepare a solution of 83 ng/mL of quinine in 0.1 N sulfuric acid and transfer into a matching Nessler tube.
+Water extractables
+Sample:
+5.0 g
+Analysis:
+Transfer about 5 g of the Sample, accurately weighed, into a 250-mL ¬ask provided with a re¬ux condenser and a Bunsen valve.
+Add 100 mL of water and several glass beads, and re¬ux for 1 h. Cool slightly, and «lter through «lter paper,
+ discarding the «rst 10 mL
+of «ltrate. Cool the «ltrate to room temperature, and pipet 25.0 mL into a tared dish. Evaporate the «ltrate in the dish to incipient
+dryness on a hot plate, never allowing the solution to boil. Dry for 1 h at 100° in a vacuum oven, cool, and weigh. Calculate the
+percentage of water extractables in the «ltrate, based on the sample weight and volume of the sample taken for gravimetric
+measurement.
+•
+Molecular Sieves
+Molecular sieves are synthetic porous crystalline alkali-metal aluminosilicates in a beaded form with a tightly controlled pore size. The
+most commonly used molecular sieves for desiccants are described as types 3A, 4A, 5A, and 13X with a pore size range of approximately
+3–10 Å.
+Identi«cation A:
+The drop of water becomes turbid.
+Identi«cation B:
+Passes tests
+Inorganic impurities
+Lead:
+NMT 5 ppm
+Speci«c tests
+pH 〈791〉:
+6.5–12 (200 mg/mL in carbon dioxide-free water)
+Loss on Drying 〈731〉
+Sample:
+5–10 g sample
+Analysis:
+Dry the Sample at 575 ± 25° to a constant weight.
+Acceptance criteria:
+It loses NMT 4.5%.
+[Note—Conduct assay immediately after opening the original container.]
+Moisture adsorption capacity
+NL
+T 15.0% weight at 40% ± 5% RH and 25 ± 2°
+NL
+T 16.5% weight at 80% ± 5% RH and 25 ± 2°
+Test methods
+Identi«cation A
+Sample:
+500 mg
+Analysis:
+Mix the Sample with 2.5 g of anhydrous potassium carbonate, and heat the mixture in a platinum or nickel crucible until it melts
+completely. Cool, add 5 mL of water, and allow to stand for 3 min. Heat the bottom of the crucible gently, detach the melt, and transfer
+it into a beaker with the aid of about 50 mL of water. Gradually add hydrochloric acid until no effervescence is observed, add 10 mL
+more of the acid, and evaporate to dryness on a steam bath. Cool, add 20 mL of water, boil, and pass through ash-free «lter paper. An
+insoluble residue of silica remains. [Note—Retain the «ltrate for Identi«cation B.] Transfer the gelatinous residue to a platinum dish, and
+cautiously add 5 mL of hydro¬uoric acid. [Caution—Handle hydro¬uoric acid in a fume hood with appropriate precautions.] The
+precipitate dissolves. (If it does not dissolve, repeat the treatment with hydro¬uoric acid.) Heat the solution and introduce a glass
+stirring rod with a drop of water on the tip into the resulting vapors.
+Identi«cation B—aluminum
+Sample:
+Use 2 por tions of the «ltrate obtained in Identi«cation A.
+Analysis:
+The solution of a «rst por tion of the «ltrate obtained in Identi«cation A yields a white, gelatinous precipitate with 6 N ammonia
+that is insoluble in an excess of this reagent. The solution of a second por tion of the «ltrate obtained in Identi«cation A yields a white
+precipitate with a 1 N sodium hydroxide that is dissolved in an excess of this reagent.
+Lead
+Sample solution:
+Transfer 10.0 g of sample into a 250-mL beaker, add 50 mL of 0.5 N hydrochloric acid, cover with a watch glass, and
+heat slowly to boiling. Boil gently for 15 min, cool, and let the undissolved material settle. Decant the supernatant liquid through
+suitable «lter paper
+ into a 100-mL volumetric ¬ask, retaining as much as possible of the insoluble material in the beaker. Wash the
+slurry and beaker with three 10-mL por tions of hot water, decanting each washing through the «lter into the ¬ask. Finally, wash the «lter
+paper with 15 mL of hot water, cool the «ltrate to room temperature, dilute with water to volume, and mix.
+Lead nitrate stock solution and Standard lead solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Moisture adsorption capacity:
+Proceed as directed under Bentonite.
+•
+Silica Gel
+Silica gel is silicon dioxide (SiO
+ · H
+O) that has been manufactured by the addition of sodium silicate solution to a mineral acid to
+produce a gelatinous precipitate that is washed, then dehydrated to produce colorless silica gel in a bead, granular, or micronized form in
+a range of mesh sizes.
+Appearance:
+A white or translucent bead or granule
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 8 ===
+Identi«cation:
+A deep yellow color is produced.
+Assay:
+NL
+T 94.0% of silicon dioxide (SiO
+) on the ignited basis
+Inorganic impurities
+Lead:
+NMT 5 ppm
+Soluble ionizable salts (as Na SO ):
+The conductance produced by the sample is not more than that produced by the control solution
+(equivalent to NMT 5.0%).
+Speci«c tests
+pH 〈791〉:
+4–8 in a slurry (1 in 20)
+Loss on Drying 〈731〉
+Sample:
+5–10 g
+Analysis:
+Dry the Sample at 145° for 3 h.
+Acceptance criteria:
+It loses NMT 3.0%.
+[Note—Conduct assay immediately after opening the original container.]
+Moisture adsorption capacity
+NL
+T 19% weight at 40% ± 5% RH and 25 ± 2°
+NL
+T 27% weight at 80% ± 5% RH and 25 ± 2°
+Test methods
+Identi«cation
+Sample:
+5 mg
+Analysis:
+Place into a platinum crucible, mix with 200 mg of anhydrous potassium carbonate, and ignite over a burner at a red heat for
+about 10 min. Cool, dissolve the melt in 2 mL of freshly distilled water, warming if necessary, and slowly add 2 mL of ammonium
+molybdate TS.
+Assay
+Sample:
+1 g, previously dried
+Analysis:
+Transfer the Sample into a tared platinum crucible, ignite at 1000 ± 25° to constant weight, cool in a desiccator, and weigh to
+obtain the ignited sample weight (W
+). Moisten the residue with a few drops of alcohol, add 3 drops of sulfuric acid, then add enough
+hydro¬uoric acid to cover the wetted sample.
+[Caution—Handle hydro¬uoric acid in a well-ventilated fume hood with appropriate precautions.]
+Evaporate to dryness on a hot plate, using medium heat (95°–105°), then add a few milliliters of hydro¬uoric acid enough to cover the
+Sample, swirl the dish carefully to wash down the sides, and again evaporate to dryness taking care that the Sample does not spatter
+as dryness is approached. Heat the crucible to a red heat using a Meker burner, a propane torch, or in a mu®e furnace. Ignite the
+residue at 1000 ± 25° for 30 min, cool in a desiccator, and weigh to obtain the «nal weight (W
+). If a residue remains, repeat the Analysis
+beginning with the addition of hydro¬uoric acid until a constant weight is obtained. The difference between the ignited sample weight
+and the «nal weight (W
+ − W
+) represents the weight, in g, of silicon dioxide (SiO
+) in the initially ignited sample. Express the result as a
+percentage of the initially ignited basis.
+Lead
+Sample solution:
+Transfer 5.0 g of sample into a 250-mL beaker, add 50 mL of 0.5 N hydrochloric acid, cover with a watch glass, and
+slowly heat to boiling. Boil gently for 15 min, cool, and let the undissolved material settle. Decant the supernatant liquid through a
+suitable «lter paper
+ into a 100-mL volumetric ¬ask, retaining as much as possible of the insoluble material in the beaker. Wash the
+slurry and beaker with three 10-mL por tions of hot water, decanting each washing through the «lter into the ¬ask. Finally, wash the «lter
+paper with 15 mL of hot water, cool the «ltrate to room temperature, dilute with water to volume, and mix.
+Lead nitrate stock solution and Standard lead solution:
+Prepare as directed under Bentonite.
+Analysis:
+Proceed as directed under Bentonite.
+Soluble ionizable salts (as Na SO )
+Sample:
+5 g, previously dried
+Control solution:
+1 mg/mL of anhydrous sodium sulfate, made to 250 mL
+Analysis:
+Stir the Sample with 150 mL of water for at least 5 min in a high-speed mixer or homogenizer capable of >1500 rpm. Filter with
+the aid of suction, and wash the mixer and «lter with 100 mL of water in divided por tions, adding the washings to the «ltrate. Dilute the
+«ltrate with water to 250 mL. Determine the conductances of the diluted «ltrate and of the Control solution with a suitable conductance
+bridge assembly.
+Moisture adsorption capacity:
+Proceed as directed under Bentonite.
+Reagents—test solutions
+Ammonium molybdate TS:
+Dissolve 6.5 g of «nely powdered molybdic acid in a mixture of 14 mL of water and 14.5 mL of ammonium
+hydroxide. Cool the solution, and add it slowly, with stirring, to a well-cooled mixture of 32 mL of nitric acid and 40 mL of water. Allow
+to stand for 48 h, and «lter through a «ne-porosity, sintered-glass crucible. This solution deteriorates upon standing and is unsuitable
+for use if, upon the addition of 2 mL of dibasic sodium phosphate TS to 5 mL of the solution, an abundant yellow precipitate does not
+form at once or after slight warming. Store it in the dark. If a precipitate forms during storage, use only the clear supernatant.
+Oxalic acid TS:
+Dissolve 6.3 g of oxalic acid in water to make 100 mL.
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 9 ===
+Change to read:
+ODOR ADSORBENT
+•
+Carbon, Activated
+Proceed as directed under Carbon, Activated as a desiccant plus the addition of the following test.
+Volatiles Organic Compounds (VOC) Adsorption Power
+Butane activity
+This method determines the ability of carbon, activated to adsorb butane from dry air under controlled conditions and provides an
+indication of the pore size of carbon, activated for air/vapor applications. Butane activity is de«ned as the percent ratio of butane
+mass adsorbed by the mass of carbon, activated utilized when carbon, activated is saturated by butane under speci«ed conditions.
+Method:
+Dry the sample of charcoal, activated as per 〈731〉 and determine the bulk density (Bulk Density and Tapped Density of Powders
+〈616〉). Assemble a perforated porcelain disk or an extra coarse fritted disk to a glass Schwar tz drying tube to hold the sample.
+Accurately weigh the glass assembly together with the two glass stoppers to within 0.01 g. Transfer a sample of dried charcoal,
+activated equivalent to 16.70 ± 0.05 mL into the drying tube, add the two glass stoppers and weigh the assembly to within 0.01 g.
+Assemble a ¬ow meter to a source of n-butane and connect the ¬ow meter to a 1.9-m-long gas heat exchange coil. Attach the
+exchange coil to the inlet of the glass drying tube above the sample and an outlet tube to vent the butane. Securely clamp the drying
+tube in the ver tical position in a water bath maintained at 25 ± 0.2° in a fume hood. Remove the right-angle stop cock and regulate the
+¬ow of butane through the carbon, activated bed at 250 ± 5 mL/min for at least 15 min.
+[Caution—n-Butane is highly ¬ammable and can act as a narcotic and may cause asphyxiation and ventricular «brillation.]
+Turn off the butane ¬ow, disconnect the tubing and immediately stopper the drying tube. Remove the drying tube from the water
+bath and thoroughly dry the outer surface. Inspect visually for any condensed water vapor within the tube. Repeat the test procedure
+if any condensed water is observed. Weigh the sample tube plus stoppers to the nearest 0.01 g.
+Reconnect the sample tubing and repeat the procedure for consecutive 10-min intervals until the butane activity is constant within
+±0.02 g.
+Calculation
+Calculate according to the following equation, where:
+D
+= mass of butane-saturated carbon, sample tube, and stoppers
+C
+= mass of carbon, sample tube, and stoppers
+M
+= mass of sample tube and stoppers
+Acceptance criteria:
+Butane activity is NL
+T ▲
+17.6%.
+11▲ (RB 1-Mar-2024)
+DuPont Fiber Identi«cation Stain No. 4 is available from Pylam Products Co., 2175 East Cedar Street, Tempe, AZ 85281;
+www.pylamdyes.com.
+A suitable analysis system consisting of Re¬ectoquant
+®
+ peroxide test strips and a RQ¬ex
+®
+ re¬ectometry instrument may be obtained from
+Millipore Sigma; www.emdmillipore.com.
+Additional information on «ber identi«cation methods may be found in “Standard Test Methods for Identi«cation of Fibers in Textiles”.
+Current version of ASTM Method D276, published by ASTM International, 100 Barr Harbor Drive, P
+.O. Box C700, West Conshohocken, PA 19428-
+2959; www.astm.org.
+A suitable apparatus such as the Orion Model No. 94–09, with solid-state membrane may be used.
+A suitable electrode such as the Orion Model No. 90–01, with single junction may be used.
+A suitable semi-logarithmic paper such as K & E No. 465130 may be used.
+A suitable «lter paper such as Whatman No. 2 or equivalent may be used.
+A suitable «lter paper such as Whatman No. 4 or equivalent may be used.
+A suitable «lter paper such as Whatman No. 3 or equivalent may be used.
+Additional information on the odor adsorption method may be found in “Standard Test Method for Determination of Butane Activity of
+Activated Charcoal”. Current version of ASTM Method D5745, published by ASTM International, 100 Barr Harbor Drive, P
+.O. Box C700, West
+ASTM D5742-95 Standard Test Method for Determination of the Butane Activity of Activated Carbon.
+%  Butane  activity =
+× 100
+(D−C)
+(C−M)
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components
+
+=== PAGE 10 ===
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<670> AUXILIARY PACKAGING
+COMPONENTS
+Desmond G. Hunt
+Principal Scienti«c Liaison
+GCPD2020
+General Chapters - Packaging and
+Distribution
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 48(4)
+Current DocID: GUID-23441426-4E3D-43A3-A807-FC24D0191C03_5_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M2316_05_01
+DOI ref: bu2j3
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈670〉 Auxiliary Packaging Components

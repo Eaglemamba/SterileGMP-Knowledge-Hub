@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1790〉 - Section 1: Manual Visual Inspection Part 1</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75; color: var(--text-dark); background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 2rem; text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p,
+.key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol,
+.key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li,
+.key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.application) h3, .concept-box:not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 1: Manual Visual Inspection Part 1 | 手動目視檢查（上）</h1>
+    <div class="subtitle">USP 〈1790〉 Visual Inspection of Injections</div>
+    <div class="page-info">Pages 4–9 | MVI Critical Process Parameters, Inspector Qualification, Ergonomics, Semi-Automated Inspection, AVI Introduction</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>掌握手動目視檢查（Manual Visual Inspection, MVI）的關鍵製程參數：光照強度、背景對比、檢查速率、容器操作手法</li>
+        <li>了解 DIP（難以檢查產品）針對特定劑型和容器類型的補充檢查策略（凍乾品重建、懸浮液澄清、琥珀色玻璃增強光照）</li>
+        <li>理解缺陷分類（Critical/Major/Minor）與替代檢查策略（轉移、過濾、澄清、篩分）</li>
+        <li>掌握半自動目視檢查（Semi-Automated Visual Inspection）的原理與關鍵參數</li>
+        <li>了解自動化目視檢查（AVI）的技術原理：光遮蔽法（Light Obscuration）與影像法（Imaging Methods）</li>
+    </ul>
+</div>
+
+<!-- SECTION 5: INTERPRETATION OF INSPECTION RESULTS -->
+<div class="section-title">5. Interpretation of Inspection Results — 檢查結果的解讀</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>5.1 Defect Classification</h3>
+        <p>Defects are commonly grouped into classifications based on patient and compliance risk. The most common system uses three groups: <span class="key-term">critical, major, and minor</span>. Critical defects are those that may cause serious adverse reactions or death of the patient if the product is used. This classification includes any nonconformity that compromises the integrity of the container and thereby risks microbiological contamination of the sterile product. It may also include anomalous extrinsic particle types such as insects or other filth or adulteration.</p>
+
+        <p>Major defects carry the risk of temporary impairment or medically reversible reactions or involve a remote probability of a serious adverse reaction. <span class="key-term">Visible intrinsic particulate matter typically falls into the major defect category</span>. This classification is also assigned to any defect that impairs or makes the product unusable. Minor defects do not impact product performance or compliance; they are often cosmetic in nature, affecting only product appearance or pharmaceutical elegance.</p>
+
+        <p>Upon 100% inspection, visible extrinsic and intrinsic particles should be reliably removed. Particle motion aids in detection, and <span class="key-term">stationary particles (due to neutral buoyancy or fill viscosity) are difficult to detect</span>, exhibiting a significantly reduced PoD. The test method allows inherent particles to be accepted if the product appearance specification allows inherent particle types.</p>
+
+        <p>The <span class="key-term">"reject zone"</span> described in Knapp's methodology is used worldwide as a common industry practice for rejecting particle defects. Test sets characterized by repeated inspections are used to "calibrate" the inspection method's PoD, inspector performance, or automated inspection systems, and to demonstrate the sensitivity to threshold particle size at the reject zone of &gt;70% PoD.</p>
+
+        <h3>5.2 Unique Product and Container Considerations</h3>
+        <p><strong>Difficult-to-Inspect Products (DIPs):</strong> 100% visual inspection is required as a final control mechanism for particulate and other container and closure defects in injectable products. There are dosage forms for which the sensitivity of direct examination is significantly reduced. Often referred to as DIPs, the products hinder or block the inspectors' ability to reliably detect visible particulate matter. This is attributable to interference from the characteristics of the dosage form and/or the container or delivery system.</p>
+
+        <p>A DIP, unlike a clear solution in a transparent container, is not as amenable to defect reduction even by an optimized 100% inspection process. Thus, there is a higher probability after the 100% inspection of such products, that undetected visible particulates may remain in the batch. <span class="key-term">Supplemental testing</span> is required to better assess residual defects in the DIP.</p>
+
+        <p><strong>Lyophilized products:</strong> Lyophilized products should receive 100% inspection after the freeze-drying and sealing of each unit. However, the solid, lyophilized cake can mask the presence of visible particles because they cannot be seen within the solid matrix. A small sample of units is <span class="key-term">reconstituted and inspected</span> for visible particles in addition to the 100% inspection of the cakes. When reconstituted, the sample has a particle detection probability like that of solutions. Care must be taken during reconstitution to avoid contamination that can lead to false-positive results. Sample preparation should be done in a clean environment with appropriate particle-control measures.</p>
+
+        <p>Using an S-3 plan for a batch size of 100,000 units, the initial sample size is 20, with accept on 0 and reject on 1. If 1 unit is found with one or more visible particles, the S-4 (stricter) plan may be selected, and the new sample size of 80 may be used. An additional 60 samples are then tested and, if no further evidence of visible particles is detected, the batch meets the acceptance criterion.</p>
+
+        <p><strong>Powder products:</strong> Sterile powders are difficult to inspect for particles due to powder flow and the occlusion of white or light-colored particles by the drug product itself. Sterile powders should be reconstituted and inspected for visible foreign particles using an approach like that for lyophilized products.</p>
+
+        <p><strong>Emulsion and suspension products:</strong> The manufacturer may not be able to detect all extrinsic and intrinsic particle types due to the inherent characteristics of an emulsion or suspension. A test dissolving the suspension or disrupting the emulsion to provide for extrinsic and intrinsic particle detection, either by visual inspection or by filtration/microscopic exam, is also recommended as part of destructive supplemental testing.</p>
+
+        <p><strong>Cell and gene therapy products:</strong> Cell and gene therapies present unique challenges to the normal inspection strategies employed for particulate control and assessment. Particles may be introduced from the external environment, during the manufacturing process or because of cellular or protein degradation. As cell therapies do not undergo final filtration steps, particulates must be controlled and assessed during production with visual inspection at release and prior to administration. Testing is often further complicated by the small batch sizes, thus making more extensive destructive testing undesirable.</p>
+
+        <p><strong>Amber containers:</strong> Inspecting amber containers is challenging because selected glass component elements have been added to mask UV light penetration into the Type I glass container. Light transmission is blocked below 500 nm, thus <span class="key-term">increased light intensity (e.g., 8000–10,000 lux or higher) may be required</span> to observe visible particles during inspection. Directional lighting from below or behind the container may also be beneficial.</p>
+
+        <p><strong>Plastic containers:</strong> Transparent plastic containers should be inspected by procedures similar to those for products in clear glass. Translucent plastic containers (e.g., plastic syringes, blow-fill-seal [BFS]) may have optical properties that require significantly increased light (e.g., 8000–10,000 lux) to illuminate any visible particles against black and white backgrounds. Directional lighting from behind the container or from the bottom (Tyndall light) may also be beneficial.</p>
+
+        <p><strong>Large-volume containers:</strong> Large-volume containers (&gt;100 mL) may require additional time for a thorough inspection to be completed. The use of higher illumination intensities along with directional lighting combinations (e.g., from behind the container) should be considered to enhance the visibility of particles. Increased inspection time may be considered for larger fill-volume container systems.</p>
+
+        <p><strong>Combination products:</strong> When inspecting the unlabeled primary drug container for a combination product, the inspection considerations should be the same as those specified for a conventional drug product in a conventional package such as a vial or syringe. Where there are critical attributes that are only visible after assembly (such as alignment with a fill-level window), a second inspection after assembly may also be required.</p>
+
+        <h3>5.3 Alternate Inspection Strategies for Supplemental Testing</h3>
+        <p><strong>Transfer:</strong> When the container limits thorough inspection, <span class="key-term">transfer to a clear and readily inspectable container</span> is recommended. Using verified clean and clear containers, the sample is opened, transferred to the receiving container, stoppered, and then visually inspected.</p>
+        <p><strong>Filtration:</strong> Membrane filtration methods, such as in 〈788〉, Method 2 Microscopic Particle Count Test focusing on particles &gt;100 µm, collect all solid particles from the filled unit(s) onto a membrane. This method will reveal all solid particles (visible and subvisible), which may be sized microscopically, and permits qualitative categorization of these retained solids.</p>
+        <p><strong>Clarification:</strong> In the case of suspensions, the solids may be clarified/dissolved in the original container with an appropriate filtered solvent to allow subsequent visual inspection or membrane filtration/microscopic exam. Dissolution solvent compatibility with the formula or package and filtration membrane must be demonstrated.</p>
+        <p><strong>Sieving:</strong> If the solid particle suspension is small enough to allow selective sieving, this may be used as an alternative to membrane filtration. The very small solids pass through the sieve, and larger particles (&gt;100 µm) are retained, counted, and categorized.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 三級缺陷分類系統</h4>
+            <p>這套分類系統直接連結到 AQL 值的選擇，是 CDMO 建立檢查規格的核心架構：</p>
+            <ul>
+                <li><strong>Critical（關鍵）</strong>：威脅無菌性或造成嚴重患者傷害。AQL 0.010–0.10%，接受數通常為 0。例：容器裂縫、密封不完全、外來昆蟲</li>
+                <li><strong>Major（主要）</strong>：可見外源性或內源性粒子。AQL 0.10–0.65%，接受數 &gt; 0。是日常 100% 檢查最常偵測的目標</li>
+                <li><strong>Minor（次要）</strong>：純外觀問題，不影響功能。AQL 1.0–4.0%。例：輕微標籤歪斜</li>
+            </ul>
+            <p>關鍵提醒：每個 CDMO 設施的缺陷分類清單（Defect Classification List）應與客戶書面確認，因為同一種外觀異常在不同客戶的標準中可能被分為不同等級。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 中性浮力粒子（Neutral Buoyancy）的挑戰</h4>
+            <p>「靜止粒子的 PoD 顯著降低」這句話有深遠的實務意涵。中性浮力粒子的常見成因：</p>
+            <ul>
+                <li>矽油滴（密度接近水）：懸浮在溶液中，搖晃後不易移動</li>
+                <li>某些蛋白質聚集體：密度與配方溶液接近</li>
+                <li>高黏度製劑：粒子移動受限（如某些單株抗體高濃度製劑）</li>
+            </ul>
+            <p>這是為什麼搖晃/翻轉技術（container agitation technique）必須標準化——充分的運動才能讓粒子可見。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 凍乾品的兩階段抽樣</h4>
+            <p>把凍乾品的補充測試想成偵探辦案：100% 目視只能看到「案發現場外觀」（凍乾餅表面），無法知道餅內部有什麼。重建後的目視檢查則像解剖屍體——才能看到真正發生了什麼。</p>
+            <p>USP 規定的兩段式抽樣邏輯：第一次 20 瓶是初步偵查（快速、低成本）；如果發現問題，第二次追加 60 瓶是深入調查（更高把握）。兩次數據必須合計計算，不能只看第二次的結果——這防止了對數據的選擇性使用。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Cell &amp; Gene Therapy 的特殊挑戰</h4>
+            <p>細胞與基因治療產品代表了目視檢查的最前沿挑戰：</p>
+            <ul>
+                <li>無終端過濾步驟（cells would be removed）→ 粒子控制完全依賴製程</li>
+                <li>小批量（有時僅幾個劑量）→ 破壞性抽樣不可行</li>
+                <li>細胞聚集體本身可能是產品，也可能是缺陷 → 需要細胞活力分析區分</li>
+                <li>發展患者特定的驗收標準 → 基於臨床風險評估而非通用標準</li>
+            </ul>
+            <p>CDMO 若進入 CGT 業務，需要與 FDA/EMA 提前溝通建立適合的目視檢查方法。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Tyndall 效應的應用</h4>
+            <p><strong>Tyndall Light（廷達爾光）</strong>是從容器後方或底部投射的光線，利用光的散射效應使微小粒子可見。對以下情況特別有效：</p>
+            <ul>
+                <li>半透明塑膠容器（Blow-Fill-Seal）</li>
+                <li>大容量輸液袋</li>
+                <li>某些生物製劑（蛋白質聚集體在 Tyndall 光下呈現明顯散射）</li>
+            </ul>
+            <p>在設計半自動或 AVI 系統的光路時，Tyndall 光設置可以顯著提升某些特定缺陷的偵測能力。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — DIP 產品的檢查矩陣</h4>
+            <p>CDMO 接受 DIP 新產品時，應建立以下矩陣：</p>
+            <table>
+                <tr><th>DIP 類型</th><th>主要挑戰</th><th>補充測試方法</th></tr>
+                <tr><td>凍乾品</td><td>固態基質遮蔽</td><td>重建後目視檢查</td></tr>
+                <tr><td>懸浮液</td><td>固有粒子干擾</td><td>澄清/過濾顯微鏡</td></tr>
+                <tr><td>琥珀玻璃</td><td>光線穿透受限</td><td>8000–10,000 lux + 定向照明</td></tr>
+                <tr><td>BFS 容器</td><td>半透明光學特性</td><td>Tyndall 光 + 高照度</td></tr>
+                <tr><td>大容量袋</td><td>檢查時間不足</td><td>增加時間 + 背面照明</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 承接了一個高濃度單株抗體（mAb）產品，溶液呈輕微乳白色（opalescent）。在缺陷分類時，如何區分「固有蛋白質聚集（inherent，可接受）」與「超出預期的蛋白質顆粒（major defect，需拒絕）」？</li>
+                <li>凍乾品重建後的補充目視檢查在清潔環境中進行——這個環境應符合什麼 ISO 等級？為什麼？</li>
+                <li>針對一個 Blow-Fill-Seal（BFS）眼用製劑，你如何設計 100% 目視檢查方案？何種補充測試能提供最高的患者保護？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 6: INSPECTION METHODS -->
+<div class="section-title">6. Inspection Methods and Technologies — 檢查方法與技術</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>6.1 Manual Visual Inspection (MVI)</h3>
+        <p><span class="key-term">Manual visual inspection (MVI)</span> is the reference inspection method described in all major pharmacopeias. It consists of viewing filled and sealed containers under controlled conditions. This process may be aided using a tool to allow consistent examination of more than one container at a time. The quality decision, to either accept or reject the container, is made by a trained person. Inspection is a probabilistic process, and detection rates less than 100% are to be expected, especially for smaller or low-contrast defects.</p>
+
+        <p><strong>Critical Process Parameters in MVI:</strong></p>
+
+        <p><strong>Light intensity:</strong> The results of the manual inspection process are influenced by the intensity of the light in the inspection zone. Chapter 〈790〉 recommends that the minimum light levels be <span class="key-term">not less than 2000–3750 lux</span> at the point of inspection for routine inspection of clear glass containers. This range was chosen to harmonize with current European Pharmacopoeia requirements and is further supported by recent studies performed in Japan. Special attention should be given to ensure that inspection is not performed below the lower limit of 2000 lux. Increased light levels are recommended for translucent plastic containers or those made from amber glass. Under these circumstances, light levels as high as 10,000 lux may prove beneficial.</p>
+
+        <p>Light should be diffuse and even across the inspection zone, and it is a good practice to clearly identify this zone within the inspection station where the intensity meets the required levels. Fluorescent lamps have often been used as the light source for inspection. When fluorescent lamps are used, high-frequency ballasts are recommended to reduce visible flicker (and associated inspector fatigue). Light-emitting diodes (LED) offer an energy-efficient, stable source of light without the added heat of incandescent lamps.</p>
+
+        <p>Light intensity in each inspection station should be measured periodically to ensure continued compliance within the specified range. A <span class="key-term">lower light-intensity action limit</span> should be established to trigger corrective action before inspection is performed below the lower limit of the range.</p>
+
+        <p><strong>Background and contrast:</strong> Contrast between the defect of interest and the surrounding background is required for detection. The use of <span class="key-term">both black and white backgrounds</span> is described in 〈790〉. Matte/nonglossy backgrounds are recommended to avoid interference from reflection. The use of both backgrounds provides good contrast for a wide range of particulate and container defects, which can be light or dark in appearance.</p>
+
+        <p><strong>Inspection rate:</strong> Enough time must be provided to allow for thorough inspection of each container; 〈790〉 specifies a reference time of <span class="key-term">10 s/container (5 s each against both black and white backgrounds)</span>. Larger or more complex containers may require additional time for inspecting all attributes. Studies by Wolfe et al. suggest that there are diminishing or limited gains with increasing inspection time.</p>
+
+        <p>Time spent per container is typically a function of the inspector training or may be controlled using an inspector-triggered pacing device (proximity switch) using an indicator light or tone. Recording the time spent inspecting each batch and then calculating a nominal inspection rate is a good way to confirm that the rate of inspection was within established limits.</p>
+
+        <p><strong>Container handling and movement:</strong> When observing objects, the human eye is very sensitive to movement. Good techniques for manual inspection include a <span class="key-term">careful swirl or inversion of the liquid product</span> within the container. This displaces any particles from the upper inner surfaces of the container and the closure and puts them into motion. A technique that minimizes the introduction of air bubbles is important, as air bubbles can appear as particles and interfere with detection of offending particles.</p>
+
+        <p>Full rotation (360°) of the container during the container–closure defect inspection sequence is recommended for identifying small container defects such as cracks or chips.</p>
+
+        <p><strong>Magnification:</strong> Some inspection processes use a large magnifier to increase image size and thus increase the probability of detecting and rejecting containers with defects near the threshold of detection. Although magnification can be useful for critical examination of a portion of the container, it does not often lead to increased overall detection rates for defects of interest. As such, it is <span class="key-term">not recommended as part of the reference inspection method</span> described in 〈790〉. Although not recommended for use during routine inspections, magnification can be helpful for critical examination of a small number of units, as may be needed during an investigation.</p>
+
+        <p><strong>Inspector fatigue and ergonomic considerations:</strong> Inspecting for extended periods of time can cause inspector fatigue and a decrease in inspection performance. On the basis of industry experience, it is recommended that inspectors be given a <span class="key-term">documented break from performing inspection at least every hour</span>. This break should allow time to rest the eyes and mind and may be achieved with a short rest (e.g., 5 min) or a longer meal break. This need for regular breaks may also be met through rotation to a non-inspection function, such as material handling or documentation.</p>
+
+        <p>Inspection stations should be designed and operated in a manner that minimizes the inspector's risk of repetitive-motion injury. Adjustable chairs and careful positioning of light sources as well as incoming and inspected product can reduce the risk of such injury. The inspection room environment should also be considered. Temperature and humidity should be controlled for inspector comfort. <span class="key-term">Reduced ambient lighting</span> is recommended to focus the inspection process and to reduce distraction from extraneous reflections.</p>
+
+        <h3>6.2 Semi-Automated Visual Inspection</h3>
+        <p><span class="key-term">Semi-automated visual inspection</span> combines automated material handling of the containers to be inspected with human vision and judgment to make the decision to accept or reject. These systems often use a conveyor equipped with rollers to transport the containers in front of the inspector inside an inspection booth or station. For inspection of liquids, the booth can be equipped with a high-speed spin station to set particles in motion.</p>
+
+        <p>These systems offer a means to control the presentation of the vials and can offer additional lighting options, such as <span class="key-term">Tyndall lighting</span>, which may enhance the appearance of some defects such as cracks or small particles. Mirrors may also be used to provide a clear view of the top and bottom of each container. Rejected units may be removed from the rollers by hand, whereas some systems are equipped with a remote rejection system that can be triggered by the inspector.</p>
+
+        <p>With semi-automated visual inspection, performance should be demonstrated to be equivalent or better than that of MVI. Some increase in throughput may be achieved because the inspector spends all the available time viewing the containers rather than splitting the time between inspection and material handling.</p>
+
+        <p><strong>Critical process parameters for semi-automated inspection:</strong> Light intensity must be controlled, as with MVI. The rate of inspection is controlled by the speed of the roller/conveyor. Spin speed for liquid products and rotation rate for all containers should be established during validation/qualification and maintained within the validated range for routine inspection.</p>
+
+        <h3>6.3 Automated Visual Inspection (AVI)</h3>
+        <p><span class="key-term">Automated visual inspection (AVI)</span> combines automated material handling of the containers with electronic sensing of product appearance. Containers that do not meet preprogrammed acceptance criteria are automatically rejected by the machine. Early machines performed inspection for particles and fill level, but newer models have the capability to inspect all attributes of the containers, along with the contents. As with MVI, machines often spin the containers to set particles in motion and make them easier to detect. Multiple cameras are used to image various regions on the container in detail. A defect found by any camera is tracked through the machine to allow accurate ejection by the reject system.</p>
+
+        <p>AVI offers advantages in the areas of throughput and consistency, compared with MVI. AVI may also offer enhanced sensitivity for some defects, compared with MVI, but may suffer from <span class="key-term">higher false rejection rates</span> due to the inability to tolerate normal variation in containers or product. This is especially true for molded glass containers and flexible bags.</p>
+
+        <p>Validation of the automated inspection equipment should be based on comparison with the compendial manual inspection process with an expectation that alternative inspection methods demonstrate <span class="key-term">equivalent or better performance</span>. Recent experimentation with artificial intelligence (AI) or deep learning (DL) has shown promise in improving the discrimination ability of the AVI system. Early studies show both reduced false reject rates and improved detection performance. The use of these tools may also reduce the time to develop a recipe for a new product or container.</p>
+
+        <p><strong>Light-obscuration methods:</strong> Some systems use an optical sensor to detect the <span class="key-term">shadow of particles</span> in solution products. This LO technique requires particles to be in motion, typically using a high-speed spin and rapid braking of the container to achieve this motion. Spin conditions must be optimized to provide sensitivity for heavier particles while minimizing false rejections due to bubbles. These methods can generally detect single particles that are 100 µm in diameter and larger.</p>
+
+        <p><strong>Imaging methods:</strong> Continuing advances in camera technology now allow the rapid capture of high-resolution images for inspection. When coupled with high-speed processors, a powerful inspection tool can result. Images are divided into inspection windows, and an array of tools such as image subtraction, pixel counting, intensity analysis, and others are used to assess the images against programmed quality attributes. Imaging systems can detect particles and fill level, as well as other container and closure attributes. These systems can offer high sensitivity but may also have high false-rejection rates if container and product attributes are not tightly controlled.</p>
+
+        <p>X-ray imaging has also been explored to detect particles within freeze-dried cakes, powders, or suspensions.</p>
+
+        <p>These technologies may be used alone or in combination with other inspection methods (e.g., leak detection or container integrity) to provide a comprehensive assessment of product quality before labeling and packaging.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>關鍵數據 — MVI 光照強度規格</h4>
+            <pre>
+標準要求 (〈790〉 / EP 2.9.20 / JP 6.06):
+  最低光照度：2000 lux（不得低於此值）
+  標準範圍：2000–3750 lux
+  琥珀玻璃/半透明塑膠：8000–10,000 lux
+
+測量要求：
+  ・定期測量每個檢查站的照度
+  ・設定「照度行動限」（低於此值需立即停止
+    檢查並糾正，否則視為未進行合格檢查）
+  ・建議：照度行動限 = 2200 lux（比最低值
+    高出安全緩衝）
+
+光源選擇比較：
+  螢光燈：傳統選擇，需高頻安定器防閃爍
+  白熾燈：熱量大，少用
+  LED：穩定、節能、無熱量問題 ← 目前主流
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 黑白背景的意義</h4>
+            <p>為什麼需要同時使用黑色和白色背景？</p>
+            <ul>
+                <li><strong>白色背景</strong>：顯示<strong>深色缺陷</strong>（深色粒子、污染物、深色沉澱）</li>
+                <li><strong>黑色背景</strong>：顯示<strong>淺色缺陷</strong>（白色粒子、玻璃碎屑、某些蛋白質聚集體）</li>
+            </ul>
+            <p>如果只用單一背景，某些缺陷會與背景融合而無法偵測。例如，白色粒子在白色背景下幾乎看不見，但在黑色背景下清晰可見。這也是目視檢查程序規定「5秒黑背景 + 5秒白背景」的科學依據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — AVI vs. MVI 的取捨</h4>
+            <p>把 AVI 想成自動駕駛汽車，MVI 想成老練的人類駕駛：</p>
+            <ul>
+                <li>AVI 優勢：24/7 不疲勞，速度快（數百瓶/分鐘），記錄完整，批次間一致性好</li>
+                <li>AVI 劣勢：對非預期缺陷「視而不見」（訓練集外的缺陷），對正常容器變異容忍度低（高假拒率）</li>
+                <li>MVI 優勢：靈活應對各種不尋常缺陷，可以判斷「這個看起來不對勁」</li>
+                <li>MVI 劣勢：疲勞影響表現，受主觀因素影響，速度慢</li>
+            </ul>
+            <p>這就是為什麼即使使用 AVI，仍然需要手動 AQL 抽樣作為平行驗證——人的眼睛能發現機器未受訓練發現的缺陷。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 檢查速率的科學</h4>
+            <p>USP 規定每瓶 10 秒（5 秒黑 + 5 秒白）是基於科學研究的最低時間——但注意 Wolfe 等人的研究顯示：<strong>超過 10 秒後，額外時間帶來的偵測率提升非常有限</strong>。</p>
+            <p>這有兩個重要含義：</p>
+            <ol>
+                <li>檢查速率若過快（低於 10 秒），將導致顯著的偵測率下降，是法規違規的直接依據</li>
+                <li>無限增加每瓶時間並非解決方案——優化的重點在於光照、背景、搖晃技術，而非單純延長時間</li>
+            </ol>
+            <p>CDMO 應記錄每批次的實際檢查速率，並確認其在驗證範圍內。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — AI/Deep Learning 在 AVI 的應用</h4>
+            <p>USP 〈1790〉 是一個相對「前瞻性」的章節，明確提到 AI 和深度學習（DL）在 AVI 的應用潛力。目前的趨勢：</p>
+            <ul>
+                <li><strong>改善假拒率</strong>：AI 能學習「正常的容器變異」，比傳統規則式影像分析更有彈性</li>
+                <li><strong>縮短配方開發時間</strong>：新產品的 AVI Recipe 開發從數週縮短到數天</li>
+                <li><strong>未來挑戰</strong>：AI 模型的驗證框架尚在發展中（FDA GDUFA Science and Research Report 2023 已開始討論）</li>
+            </ul>
+            <p>CDMO 在採用 AI 增強 AVI 時，驗證策略需要包括 AI 模型的可解釋性和邊界條件測試。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 人因工程（Ergonomics）是 GMP 要求</h4>
+            <p>許多工廠把人因工程視為「人力資源議題」，但 USP 〈1790〉 明確將其定位為 GMP 要求——因為疲勞會直接降低檢查表現，從而威脅產品品質：</p>
+            <ul>
+                <li>每小時強制休息（5 分鐘或輪換到非檢查工作）</li>
+                <li>可調整座椅和工作台高度</li>
+                <li>環境溫濕度控制</li>
+                <li>減少環境光（避免眼睛需要適應不同光源）</li>
+                <li>避免有外窗的檢查室（日照隨時間和季節變化影響環境光）</li>
+            </ul>
+            <p>FDA 查廠時，人因工程設施的合理性是常見查核項目。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一條 AVI 產線在上午 100 瓶批次試跑時，假拒率為 2.1%（合格品被機器拒絕）。你作為品管主管，應如何評估這是否可接受？需要採取哪些行動？</li>
+                <li>在你設施的 MVI 站，照度計本月測量值為 1,950 lux。根據 USP 〈1790〉，這批已檢查的產品應如何處理？預防性行動限應設在哪裡才能避免此情況？</li>
+                <li>你正在評估半自動檢查系統（Semi-Automated）和全自動 AVI 系統的投資決策。哪些產品特性和生產規模因素會影響你的選擇？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>MVI 三大關鍵製程參數：光照強度（2000–3750 lux 標準；10,000 lux for DIP）、黑白雙背景、每瓶 10 秒時間；缺一不可</li>
+        <li>容器運動（搖晃/翻轉）是 MVI 偵測粒子的核心機制——靜止粒子 PoD 大幅降低，尤其是中性浮力粒子</li>
+        <li>DIP 補充策略需依劑型選擇：凍乾品重建、懸浮液澄清/過濾、琥珀容器增強光照、轉移至透明容器</li>
+        <li>AVI 優勢在於一致性和通量，但必須透過 Knapp 方法學驗證達到「等效或優於」MVI 的性能，且仍需平行手動 AQL 抽樣</li>
+        <li>人因工程不是「舒適問題」而是 GMP 要求：疲勞直接降低偵測率，每小時休息是 USP 推薦的最低標準</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1790〉 Visual Inspection of Injections | Section 1: Manual Visual Inspection Part 1</p>
+</div>
+
+</body>
+</html>

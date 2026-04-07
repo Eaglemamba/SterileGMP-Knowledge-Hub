@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR27 — Section 1: Integrity Assurance, Specifications &amp; Test Method Selection</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <h1>Section 1: Integrity Assurance, Specifications &amp; Test Method Selection</h1>
+    <div class="subtitle">完整性保證、規格與試驗方法選擇</div>
+    <div class="page-info">PDA Technical Report No. 27 (1998) &mdash; Sections 3, 4 &amp; 5</div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives &mdash; 學習目標</h3>
+        <ul>
+            <li>Understand the three phases of package integrity quality assurance: design/development, in-process control, and product testing (了解包裝完整性品質保證的三個階段)</li>
+            <li>Interpret leak rate units (std cc/s, atm cc/s, Pa m³/s) and their interconversion (解讀洩漏率單位及其換算關係)</li>
+            <li>Distinguish seals from closures and explain how each limits leakage (區分密封與封蓋，並說明各自限制洩漏的原理)</li>
+            <li>Apply the concept of critical leak size to microbial ingress and liquid passage (應用關鍵洩漏尺寸概念於微生物入侵及液體穿透判斷)</li>
+            <li>Select appropriate leak test methods based on sensitivity range and product life cycle stage (依靈敏度範圍與產品生命週期階段選擇適當試驗方法)</li>
+        </ul>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Contents &mdash; 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec-3-1">3.1 Package Design &amp; Durability</a>
+            <a href="#sec-3-2">3.2 In-Process Control</a>
+            <a href="#sec-3-3">3.3 Product Testing</a>
+            <a href="#sec-4">4. Leak Rate Specifications</a>
+            <a href="#sec-5-1">5.1 Test Method Sensitivity</a>
+            <a href="#sec-5-2">5.2 Selection Considerations</a>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 3.1 — Package Design, Process Dev & Durability -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-3-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.1</div>
+            <div class="chapter-info">
+                <h2>Package Design, Process Development, and Durability Assessment</h2>
+                <p>包裝設計、製程開發與耐久性評估</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: English source -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p><span class="key-term">Package integrity</span> quality assurance involves the selection of appropriate packaging materials, the design of the seal or closure system, and the verification that the incoming components meet specifications. Establishing <span class="key-term">leakage rate specifications</span> may be desirable early during product development based on the particular product and package performance characteristics to ensure that the product will reflect these limits.</p>
+
+                    <p>Packages may be closed via either <span class="key-term">seals</span> or <span class="key-term">closures</span>. By definition, a seal is the result of the bonding of two similar or dissimilar surfaces. Examples of seals include:</p>
+                    <ol>
+                        <li>Contiguous containers formed from a single material (e.g., glass or plastic ampoules);</li>
+                        <li>The direct fusion of two material surfaces, usually by heat (e.g., heat-sealed plastic bags or unit-dose blister packaging);</li>
+                        <li>The bonding of two material surfaces with an intermediate adhesive agent.</li>
+                    </ol>
+
+                    <p>A <span class="key-term">closure</span>, on the other hand, is the physical mating of two surfaces. In the strictest sense, all closures are <span class="key-term">tortuous path barriers</span>. The degree to which a closure can limit leakage is a function of the closure design, the viscoelastic nature of the package components, and the extent of package component fit. For instance, an elastomeric rubber-stoppered sterile vial is capable of achieving a very low gaseous leakage rate due to the viscoelastic nature of the rubber and its ability to conform to the vial surface upon compression.</p>
+
+                    <p>There are <span class="key-term">critical factors</span> that impact the quality of each package seal. Such factors typically include package component variables of composition, dimension, and critical defects; and sealing operation variables of time, temperature, pressure, and torque. The impact of processing on <span class="key-term">package integrity</span> must also be characterized. Package component washing, drying, siliconization and sterilization, and product processing such as terminal sterilization may all impact the ability of the package seal to maintain its effectiveness.</p>
+
+                    <p>During the package design and process development phases, the acceptable ranges for each critical variable should be established based on package performance criteria that incorporate integrity testing. Wherever feasible, the variables of design and processing should be exaggerated and their impact on <span class="key-term">package integrity</span> evaluated to help define the <span class="key-term">margin of safety</span>. Stability studies extending through shelf-life must also include integrity tests of the packaged product.</p>
+
+                    <p>The assurance of product quality depends on the ability of the product to maintain integrity throughout the stresses anticipated during storage, distribution, and use. Relevant types of stress may include temperature, pressure, and relative humidity extremes, shock and vibrational stress, and exposure to microorganisms. The <span class="key-term">durability assessment</span> may include exposure of the product to simulated conditions coupled with appropriate leakage detection methodology.</p>
+
+                    <div class="quote-box">
+                        "When greater time and effort are spent on package integrity verification during the design and process development phases, fewer problems will likely be encountered after commercialization."
+                    </div>
+                </div>
+
+                <!-- RIGHT: Chinese commentary -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="concept-box">
+                        <h4>包裝完整性生命週期階段 &mdash; Package Integrity Lifecycle Phases</h4>
+                        <p>TR27 將包裝完整性品質保證分為三個連續階段，彼此相輔相成：</p>
+                        <ul>
+                            <li><strong>階段一：包裝設計與製程開發</strong> — 選材、密封設計、規格建立、耐久性評估</li>
+                            <li><strong>階段二：製程中管控 (In-Process Control)</strong> — 關鍵製程參數監控、線上完整性驗證</li>
+                            <li><strong>階段三：產品測試 (Product Testing)</strong> — 最終產品抽樣檢驗、間接完整性指標</li>
+                        </ul>
+                        <p>設計階段投入越充分，商業化後問題越少。這是 TR27 的核心哲學。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>密封 vs. 封蓋 &mdash; Seal vs. Closure</h4>
+                        <p><strong>密封 (Seal)</strong>：兩個表面的結合（熔合、黏接），結合後成為連續整體，例如安瓿、熱封袋、泡殼包裝。</p>
+                        <p><strong>封蓋 (Closure)</strong>：兩個表面的物理配合，本質上是「曲折路徑屏障 (tortuous path barrier)」，例如橡皮塞小瓶、旋蓋瓶。</p>
+                        <p>橡皮塞之所以能達到極低洩漏率，是因為橡膠的黏彈性 (viscoelastic nature) 使其受壓後能緊密貼合瓶口，自動填補微小間隙。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵製程變數 &mdash; Critical Process Variables</h4>
+                        <p>影響包裝密封品質的關鍵變數包括：</p>
+                        <ul>
+                            <li>組件變數：材質組成、尺寸、關鍵缺陷</li>
+                            <li>密封操作變數：時間、溫度、壓力、扭力</li>
+                            <li>加工影響：清洗、乾燥、矽化、滅菌（包含終端滅菌）</li>
+                        </ul>
+                        <p>在驗證研究中，應刻意將各關鍵變數推至極端值，以界定安全邊界 (margin of safety)。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>實務比喻 &mdash; Real-World Analogy</h4>
+                        <p>橡皮塞封蓋就像冰箱門的橡膠密封條：冰箱門關上時，橡膠受壓變形並填滿邊框間隙，形成近乎氣密的封閉。若橡膠老化（材質劣化）或門框變形（尺寸偏差），密封就會失效。包裝完整性也是同樣道理。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 3.2 — In-Process Control                      -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-3-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.2</div>
+            <div class="chapter-info">
+                <h2>In-Process Control</h2>
+                <p>製程中管控</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p>The processes that have been determined during product development to most critically impact <span class="key-term">package integrity</span> should be those that are targeted for <span class="key-term">in-process control</span>. Performance criteria for in-process controls are typically based on the performance of a specific unit operation rather than the performance of the final product. For example, in-process controls and tests may be used to statistically verify that the time, temperature, and pressure variables of a sealing operation are "in control" as opposed to final product testing used to demonstrate that microbial barrier or rarefied internal atmosphere criteria have been met.</p>
+
+                    <p>During validation studies it must be demonstrated that a process "in control" yields only products that meet the established <span class="key-term">leakage rate specifications</span>.</p>
+
+                    <p>For a limited number of products, instrumentation exists that permits high-speed 100% on-line verification of <span class="key-term">package integrity</span> at the established leakage rate specifications. But for many sterile products, in-process leak test instruments have limitations that preclude high-speed, on-line integrity verification at the required product leakage rate specifications. In-process leak test instruments are designed to check for intermittent defective packages leaking at a gross rate that circumvented the various in-process controls.</p>
+
+                    <p>There are a variety of logical, validatable in-process integrity tests that can help verify product/package integrity. Examples include:</p>
+                    <ul>
+                        <li>Vision systems to cull out defective components;</li>
+                        <li>Gas flow rate meters installed on ampoule sealing lines;</li>
+                        <li>Time/temperature/pressure controls on thermal sealing equipment;</li>
+                        <li>Torque monitors on screw-capping equipment.</li>
+                    </ul>
+
+                    <p>These on-line in-process controls, in combination with well-designed product/process validation studies, are an essential part of the total package integrity quality assurance. However, no amount of in-process or final product testing can replace the need for the control and monitoring of various critical package and sealing parameters.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="concept-box">
+                        <h4>製程中管控的核心邏輯</h4>
+                        <p>In-process control 的目標是驗證「製程在管控中」，而非直接驗證最終產品品質。其邏輯鏈為：</p>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">製程關鍵變數受控<br>(Time, Temp, Pressure, Torque)</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-2">驗證研究確認「受控製程 = 符規產品」</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-3">產品符合洩漏率規格</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>線上完整性測試的侷限性</h4>
+                        <p>許多無菌產品的線上洩漏測試儀器<strong>無法達到</strong>產品所需的洩漏率規格靈敏度。這些儀器只能偵測「大漏」（gross leak），用於剔除明顯缺陷品，而非完整性定量驗證。</p>
+                        <p><strong>重要觀念</strong>：沒有任何測試可以取代對關鍵製程參數的監控與管制。測試是最後一道防線，不是第一道。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>製程中管控工具示例</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>工具 Tool</th>
+                                    <th>應用場景 Application</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>視覺系統 Vision System</td>
+                                    <td>剔除缺陷組件</td>
+                                </tr>
+                                <tr>
+                                    <td>氣體流量計 Gas Flow Meter</td>
+                                    <td>安瓿封管線即時監控</td>
+                                </tr>
+                                <tr>
+                                    <td>時/溫/壓控制器</td>
+                                    <td>熱封設備參數管控</td>
+                                </tr>
+                                <tr>
+                                    <td>扭力監控 Torque Monitor</td>
+                                    <td>旋蓋設備扭力驗證</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>工廠實務比喻</h4>
+                        <p>In-process control 就像生產線上的即時溫度警報：即使你無法在線上直接量測每支成品的密封強度，只要確保熱封溫度始終在 180±5°C，驗證資料就已證明這個條件下生產的產品必然符合規格。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 3.3 — Product Testing                         -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-3-3">
+        <div class="chapter-divider">
+            <div class="chapter-badge">3.3</div>
+            <div class="chapter-info">
+                <h2>Product Testing</h2>
+                <p>產品測試</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p>A product that has been properly and carefully designed with critical production processes well characterized and controlled should have little need for final product release testing for <span class="key-term">package integrity</span>. Certainly the quality of a pharmaceutical product cannot merely be based on the results of a product integrity test, especially when such tests are usually performed on a fraction of the production lot.</p>
+
+                    <p>Sterility tests have historically been considered an indicator of <span class="key-term">package integrity</span>; however, due to the insensitive nature of sterility tests, the small number of samples tested, and the possibility of false positives, these results are no longer considered reliable as a final indicator of package integrity.</p>
+
+                    <p>Generally, integrity test methods selected for final product testing are designed to verify the absence of gross leaks well above permeation rate levels. For those package systems that can be tested 100% on-line with instruments shown to measure near or below the leakage rate specification, there is no need for additional product integrity testing. For other products, a statistically established percentage of the batch may be integrity tested for in-house process control purposes.</p>
+
+                    <p>Indirect tests of <span class="key-term">package integrity</span> may also be employed on production lot samples. Examples of indirect measures include:</p>
+                    <ul>
+                        <li>Visual inspection;</li>
+                        <li>Residual seal force of a serum vial with elastomeric closure;</li>
+                        <li>Seal strength of an adhesive or thermal seal.</li>
+                    </ul>
+                    <p>The acceptance criteria for such tests should be based on the critical variable acceptance ranges established during the development phases of package design and process development.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="note-box">
+                        <h4>無菌測試不等於完整性驗證</h4>
+                        <p>TR27 明確指出：無菌測試 (sterility test) 歷史上曾被視為包裝完整性的指標，但現在已不被認為是可靠的最終指標，原因如下：</p>
+                        <ul>
+                            <li>靈敏度不足：無菌測試只能偵測微生物，無法量化洩漏率</li>
+                            <li>樣本數過少：抽樣比例遠不足以代表整批</li>
+                            <li>偽陽性風險：操作污染可能導致錯誤判讀</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>最終產品測試的三種情境</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>情境</th>
+                                    <th>做法</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>100% 線上測試（靈敏度達規格）</td>
+                                    <td>無需額外最終產品完整性測試</td>
+                                </tr>
+                                <tr>
+                                    <td>無線上測試能力</td>
+                                    <td>統計抽樣比例進行製程管控</td>
+                                </tr>
+                                <tr>
+                                    <td>間接測試</td>
+                                    <td>目視、殘留密封力、密封強度</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>間接完整性測試 &mdash; Indirect Integrity Tests</h4>
+                        <p>間接測試不直接量測洩漏，而是透過替代指標推斷密封品質：</p>
+                        <ul>
+                            <li><strong>殘留密封力 (Residual Seal Force, RSF)</strong>：量測橡皮塞對瓶口施加的壓縮力，反映密封完整性</li>
+                            <li><strong>密封強度 (Seal Strength)</strong>：剝離或拉伸測試，適用於熱封或黏著密封</li>
+                            <li><strong>目視檢查</strong>：偵測可見缺陷，靈敏度最低但最常用</li>
+                        </ul>
+                        <p>這些間接測試的接受標準必須回溯至設計階段建立的關鍵變數可接受範圍。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 4 — Leak Rate Specifications                  -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-4">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4</div>
+            <div class="chapter-info">
+                <h2>Package Integrity and Leak Rate Specifications</h2>
+                <p>包裝完整性與洩漏率規格</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p>A <span class="key-term">leak</span> is an unintended crack, hole, or porosity in a package capable of passing a liquid or gas through the package. <span class="key-term">Leakage</span> is the movement of the liquid or gas through the leak. Leakage is defined in units of mass or volume flow of a gas or liquid over time under defined conditions of temperature and pressure.</p>
+
+                    <p>Leakage is often described in units of standard cubic centimeters of gas (air) that can move through an orifice per second (<span class="key-term">std cc/s or scc/s</span>) under defined conditions of temperature and differential pressure. Similarly, leakage units of <span class="key-term">atm cc/s</span> are also used to define leakage measured at local atmospheric pressure and temperature. While the two are not identical, units of scc/s and atm cc/s are often used interchangeably. Another common unit of measure is the SI unit of <span class="key-term">Pa m³/s</span> (Pascal cubic meters per second). One Pa m³/s is equal to 9.87 scc/s or roughly 10 scc/s.</p>
+
+                    <h3>Leak Rate Scale Reference</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Phenomenon</th>
+                                <th>Approximate Leak Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Audible sound from orifice</td>
+                                <td>~1 scc/s</td>
+                            </tr>
+                            <tr>
+                                <td>Visible liquid flow detectable by human eye</td>
+                                <td>~0.1 scc/s</td>
+                            </tr>
+                            <tr>
+                                <td>No visible water leakage (dry air at same pressure)</td>
+                                <td>~10<sup>&minus;3</sup> scc/s</td>
+                            </tr>
+                            <tr>
+                                <td>Water cannot penetrate (liquid-borne microbial cutoff)</td>
+                                <td>&lt;10<sup>&minus;3</sup> scc/s</td>
+                            </tr>
+                            <tr>
+                                <td>Helium spectroscopy detection limit</td>
+                                <td>~10<sup>&minus;11</sup> scc/s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Strictly speaking, all packages demonstrate leakage to some extent, although such leakage may not affect product quality. Therefore it is important to establish an allowable <span class="key-term">leakage rate specification</span> for a given product/package system early during product development.</p>
+
+                    <p>For sterile liquid products: containers must prevent minute liquid product leakage and <span class="key-term">microbial ingress</span>. The leakage rate specification limit should be the same as the cut-off for liquid passage, as microorganisms are believed incapable of penetrating a leak smaller in size than can be penetrated by liquids. Water is generally thought to be incapable of penetrating pores that allow less than approximately 10<sup>&minus;3</sup> scc/s of airflow at a differential pressure of approximately 1 atmosphere. This relationship between gaseous flow, liquid leakage, and liquid-borne microbial ingress was demonstrated by L. Kirsch et al. and Morton, 1989.</p>
+
+                    <p>Leakage rate may also be expressed in alternative terms: product weight loss or gain, rise of percent oxygen in inert gas-flushed headspace, or volume of dye that has migrated through a package seal. Such descriptions must clearly and meaningfully define mass or volume flow over time, and are as acceptable as gas leak rate units.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="formula-box">
+                        <h4>洩漏率單位換算 &mdash; Leak Rate Unit Conversion</h4>
+                        <p>三種常見洩漏率單位及其關係：</p>
+                        <pre>
+1 Pa m³/s ≈ 9.87 scc/s ≈ 10 scc/s
+
+std cc/s (scc/s)
+  = 氣體在標準條件（101.3 kPa, 20°C）下
+    每秒通過開口的體積（cm³）
+
+atm cc/s
+  = 在當地大氣壓條件下量測
+  ≈ scc/s（常互換使用，但嚴格說來不同）
+
+Pa m³/s（SI 單位）
+  = 國際標準單位，精確換算為 9.87 scc/s
+        </pre>
+                        <p><strong>記憶訣竅</strong>：Pa m³/s ≈ 10 × scc/s，在工程估算中可直接換算。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>洩漏率與物理現象的對應</h4>
+                        <p>TR27 提供了一個非常直觀的洩漏率尺度，幫助建立量級感：</p>
+                        <ul>
+                            <li><strong>1 scc/s</strong>：可聽見聲音 — 肉眼可見的大漏</li>
+                            <li><strong>0.1 scc/s</strong>：可見液體流動 — 目視可偵測</li>
+                            <li><strong>10<sup>&minus;3</sup> scc/s</strong>：臨界洩漏尺寸 (Critical Leak Size) — 水無法穿透的邊界，也是微生物無法穿透的邊界</li>
+                            <li><strong>10<sup>&minus;11</sup> scc/s</strong>：氦質譜儀的偵測下限 — 目前最靈敏的洩漏測試方法</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>關鍵洩漏尺寸 &mdash; Critical Leak Size</h4>
+                        <p>10<sup>&minus;3</sup> scc/s 是包裝完整性中最重要的基準值：</p>
+                        <ul>
+                            <li>水（液體）無法穿過允許 &lt;10<sup>&minus;3</sup> scc/s 空氣流量的孔隙（差壓約 1 atm）</li>
+                            <li>微生物（液態傳播）也無法穿透小於液體穿透臨界值的裂縫</li>
+                            <li>因此，無菌液體產品及滅菌粉末、凍乾品的洩漏率規格上限，通常設定在 10<sup>&minus;3</sup> scc/s 以下</li>
+                        </ul>
+                        <p><strong>科學依據</strong>：Kirsch et al. 和 Morton (1989) 實驗性地確立了氣體流量、液體洩漏與液態微生物入侵之間的關係。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>替代洩漏率表示方式</h4>
+                        <p>並非所有洩漏都必須以氣體流量表示，以下替代方式同樣可接受：</p>
+                        <ul>
+                            <li><strong>重量損失/增加</strong>：如「產品在 35°C 儲存 2 年，每年損失 X 克」</li>
+                            <li><strong>頂部空間氧氣濃度上升</strong>：用於惰性氣體充填包裝</li>
+                            <li><strong>染料遷移體積</strong>：用於染料浸入測試</li>
+                        </ul>
+                        <p>關鍵要求：必須清楚說明質量或體積流量與時間的關係，並標明測試條件。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 5.1 — Test Method Sensitivity                 -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-5-1">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Test Method Sensitivity</h2>
+                <p>試驗方法靈敏度</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p>In selecting a leak test method it is important to choose a test which is capable of detecting the <span class="key-term">leakage rates of concern</span>. The leakage rate of concern will depend on the product/package system as well as the phase of the product life cycle in which the test will be utilized.</p>
+
+                    <p>Most physical leak test methods have an <span class="key-term">optimum sensitivity range</span>, meaning that a method capable of detecting leaks between 10<sup>&minus;6</sup> scc/s and 10<sup>&minus;7</sup> scc/s may not be appropriate for gross leaks of 10<sup>0</sup> scc/s. Some physical test methods have a "gross" and a "fine" leak test mode in order to expand this sensitivity window.</p>
+
+                    <p>However, it is inappropriate and can be quite costly to select a test method that is too sensitive. For instance, a helium leak test capable of detecting leaks as low as 10<sup>&minus;11</sup> scc/s would be an inappropriate test for a high density polyethylene screw-capped bottle merely intended to retain tablets and capsules. But the converse is also true: an airborne microbial challenge test would be meaningless for a product with a gaseous leakage rate specification of 10<sup>&minus;7</sup> scc/s.</p>
+
+                    <p>Because leak test methods have a range of sensitivity, and because the leakage rate of concern may differ depending on the stage of the product's life cycle, it may be necessary to test a given product using more than one leak test method, each designed to detect leaks of varying magnitude. A package containing a lyophilized powder undergoing shipping simulation studies may need to be tested for larger leaks resulting from shock or vibration damage, while long-term stability samples of the same product may need to be checked for leaks indicative of gaseous leakage and permeation.</p>
+
+                    <p>A test method's <span class="key-term">sensitivity</span> can be expressed in various units of measure. Optimum sensitivity of a method can only be realized through careful selection of the test parameter conditions. Examples:</p>
+                    <ul>
+                        <li>Oxygen analyzer: sensitivity expressed as smallest detectable change in headspace oxygen content;</li>
+                        <li>Dye test: sensitivity expressed as smallest volume of dye detectable under stated conditions;</li>
+                        <li>Helium mass spectrometry: sensitivity expressed as smallest measurable leak rate in scc of helium per second.</li>
+                    </ul>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="concept-box">
+                        <h4>試驗方法靈敏度 vs. 特異性 &mdash; Sensitivity vs. Specificity</h4>
+                        <p>在洩漏測試中，靈敏度 (sensitivity) 與特異性 (specificity) 的概念如下：</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>概念</th>
+                                    <th>定義</th>
+                                    <th>實例</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>靈敏度</strong></td>
+                                    <td>能偵測到的最小洩漏量（方法的下限）</td>
+                                    <td>氦質譜儀可低至 10<sup>&minus;11</sup> scc/s</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>適用範圍</strong></td>
+                                    <td>方法的最佳靈敏度窗口（上下限）</td>
+                                    <td>某方法適用 10<sup>&minus;6</sup>~10<sup>&minus;3</sup> scc/s</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>特異性</strong></td>
+                                    <td>方法偵測特定洩漏類型的能力</td>
+                                    <td>微生物挑戰試驗只對微生物有意義</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>靈敏度過高也是問題</h4>
+                        <p>TR27 明確警告：過度靈敏的方法同樣不適當，且代價高昂。</p>
+                        <ul>
+                            <li>對 HDPE 旋蓋瓶（裝片劑）使用氦質譜儀 = 殺雞用牛刀，浪費資源</li>
+                            <li>對洩漏率規格為 10<sup>&minus;7</sup> scc/s 的產品使用微生物挑戰試驗 = 完全沒有意義（微生物試驗靈敏度遠高於此規格）</li>
+                        </ul>
+                        <p><strong>原則</strong>：選擇方法時，靈敏度應與產品的洩漏率規格匹配，過高過低都不對。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>生命週期各階段的方法選擇</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>生命週期階段</th>
+                                    <th>洩漏偵測需求</th>
+                                    <th>典型方法</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>設計開發</td>
+                                    <td>達到規格值的精密測試</td>
+                                    <td>氦質譜、壓力衰減</td>
+                                </tr>
+                                <tr>
+                                    <td>運輸模擬（震動/衝擊）</td>
+                                    <td>大漏偵測（物理損傷）</td>
+                                    <td>大漏試驗、染料浸入</td>
+                                </tr>
+                                <tr>
+                                    <td>長期穩定性</td>
+                                    <td>小洩漏/滲透率</td>
+                                    <td>頂空氣體分析、氦質譜</td>
+                                </tr>
+                                <tr>
+                                    <td>商業生產線上</td>
+                                    <td>大漏剔除（高速）</td>
+                                    <td>真空衰減、高壓放電</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻 &mdash; 體溫計與 MRI</h4>
+                        <p>選擇太靈敏的測試就像用 MRI 做例行體溫量測：功能強大，但完全不符合場合需求，且成本極高。同樣地，測試靈敏度必須配合產品的實際風險等級。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SECTION 5.2 — Other Test Method Selection             -->
+    <!-- ===================================================== -->
+    <div class="chapter-section" id="sec-5-2">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Other Test Method Selection Considerations</h2>
+                <p>其他試驗方法選擇考量</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT -->
+                <div class="left-column">
+                    <p class="column-header">Original Text &mdash; 原文</p>
+
+                    <p>A wide variety of leak test methods are available for the evaluation of pharmaceutical packages. The usefulness of a physical method must be determined on a product-by-product basis by evaluating:</p>
+                    <ul>
+                        <li>The ability of a method to test the seal of interest;</li>
+                        <li>The <span class="key-term">sensitivity</span> of the instrument or method;</li>
+                        <li>Any relevant sources of measurement variation.</li>
+                    </ul>
+
+                    <p>In some cases, factors such as data storage, analysis and display functions, statistical manipulation of data, practicality, speed, safety, on-line integration feasibility, and expense may play important roles in the selection of the most appropriate leak test method.</p>
+
+                    <p>Sterile <span class="key-term">package integrity</span> has traditionally been verified by airborne or liquid immersion microbial challenge tests. Microbial challenge tests have a long history of use and may be an indicator of microbial package integrity. Section 6 reviews both the microbial challenge approach and the alternate physical testing approach for verifying a package's microbial barrier properties.</p>
+
+                    <p>Section 8 provides summaries of several of the most commonly used physical methods for <span class="key-term">package integrity</span> testing.</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="right-column">
+                    <p class="column-header">中文解說 &mdash; Commentary</p>
+
+                    <div class="concept-box">
+                        <h4>試驗方法選擇的全面考量框架</h4>
+                        <p>除靈敏度外，TR27 列出選擇洩漏測試方法時需考量的其他因素：</p>
+                        <ul>
+                            <li><strong>技術適用性</strong>：方法是否能有效偵測該密封類型的洩漏</li>
+                            <li><strong>量測變異來源</strong>：包括操作員、環境、儀器精密度</li>
+                            <li><strong>資料管理</strong>：是否支援資料儲存、統計分析、顯示功能</li>
+                            <li><strong>實用性與速度</strong>：是否適合生產線需求（高速 vs. 離線）</li>
+                            <li><strong>安全性</strong>：試劑毒性、高壓設備安全</li>
+                            <li><strong>線上整合可行性</strong>：能否整合至現有生產設備</li>
+                            <li><strong>成本</strong>：設備投資、耗材、驗證成本</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>物理測試 vs. 微生物挑戰試驗</h4>
+                        <p>傳統上，無菌包裝完整性以微生物挑戰試驗驗證（氣態或液態浸入法）。但現代趨勢是以<strong>確定性物理測試 (Deterministic Physical Test)</strong>取代機率性微生物挑戰：</p>
+                        <ul>
+                            <li><strong>微生物挑戰試驗</strong>：有使用歷史，間接反映微生物屏障效果；但靈敏度受限，結果受微生物濃度、接觸時間等變數影響</li>
+                            <li><strong>物理測試</strong>：量化洩漏率，可重複驗證，適合品質系統整合；FDA 及 USP &lt;1207&gt; 傾向支持物理測試取代微生物挑戰</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習題 1 &mdash; Practice Question 1</h4>
+                        <p>一無菌凍乾粉針劑（橡皮塞+鋁蓋小瓶）計畫進行包裝完整性驗證。下列哪個階段<strong>最需要</strong>使用能偵測至洩漏率規格的精密物理測試方法？</p>
+                        <ul>
+                            <li>A. 商業生產線上剔除大漏品</li>
+                            <li>B. 包裝設計驗證與穩定性研究</li>
+                            <li>C. 目視檢查例行抽樣</li>
+                            <li>D. 供應商組件進料檢驗</li>
+                        </ul>
+                        <p><strong>答案：B</strong> — 設計驗證與穩定性研究需要確認包裝系統能維持在洩漏率規格以下，必須使用靈敏度達規格水準的精密測試方法。商業生產線（A）通常使用大漏偵測即可。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>練習題 2 &mdash; Practice Question 2</h4>
+                        <p>某產品的洩漏率規格為 10<sup>&minus;3</sup> scc/s（無菌液體產品）。以下哪種情況描述正確？</p>
+                        <ul>
+                            <li>A. 洩漏率低於 10<sup>&minus;3</sup> scc/s 的包裝，液態水仍可能穿透並帶入微生物</li>
+                            <li>B. 洩漏率高於 10<sup>&minus;3</sup> scc/s 的包裝，液態水無法穿透，微生物也無法入侵</li>
+                            <li>C. 洩漏率低於 10<sup>&minus;3</sup> scc/s 時，水無法穿透，微生物也無法液態傳播入侵</li>
+                            <li>D. 10<sup>&minus;3</sup> scc/s 是氦質譜儀的偵測下限</li>
+                        </ul>
+                        <p><strong>答案：C</strong> — TR27 根據 Kirsch et al. 研究：水無法穿透允許 &lt;10<sup>&minus;3</sup> scc/s 空氣流量的孔隙（差壓 ~1 atm），微生物（液態傳播）同樣無法穿透。因此 10<sup>&minus;3</sup> scc/s 是液態屏障與微生物屏障的關鍵洩漏尺寸。氦質譜下限（D）是 10<sup>&minus;11</sup> scc/s，選項 A、B 均描述錯誤。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== KEY TERMS SUMMARY ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#128218;</div>
+            <div class="chapter-info">
+                <h2>Key Terms Summary</h2>
+                <p>關鍵術語總表</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <p class="column-header">English Terms</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition (Brief)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Package Integrity</strong></td>
+                                <td>Ability of a package to prevent leakage and maintain product protection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leak Rate</strong></td>
+                                <td>Mass/volume flow of gas or liquid through a defect per unit time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>In-Process Control</strong></td>
+                                <td>Monitoring critical process parameters to ensure output meets specifications</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Durability Assessment</strong></td>
+                                <td>Evaluation of package performance under simulated storage/distribution stresses</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Test Method Sensitivity</strong></td>
+                                <td>Smallest leak rate detectable by a given method under defined conditions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Critical Leak Size</strong></td>
+                                <td>~10<sup>&minus;3</sup> scc/s — threshold below which liquid and microbes cannot penetrate</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tortuous Path Barrier</strong></td>
+                                <td>Leakage-limiting mechanism of closures dependent on path geometry and material fit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Margin of Safety</strong></td>
+                                <td>Buffer between the established leakage specification and actual process extremes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <p class="column-header">中文術語對照</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>英文術語</th>
+                                <th>中文術語</th>
+                                <th>核心說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Package Integrity</td>
+                                <td><strong>包裝完整性</strong></td>
+                                <td>包裝防止洩漏、維護產品品質的能力</td>
+                            </tr>
+                            <tr>
+                                <td>Leak Rate</td>
+                                <td><strong>洩漏率</strong></td>
+                                <td>單位時間內通過缺陷的氣/液體積或質量</td>
+                            </tr>
+                            <tr>
+                                <td>In-Process Control</td>
+                                <td><strong>製程中管控</strong></td>
+                                <td>監控關鍵製程參數，確保輸出符合規格</td>
+                            </tr>
+                            <tr>
+                                <td>Durability Assessment</td>
+                                <td><strong>耐久性評估</strong></td>
+                                <td>模擬儲存/運輸壓力下的包裝性能評估</td>
+                            </tr>
+                            <tr>
+                                <td>Test Method Sensitivity</td>
+                                <td><strong>試驗方法靈敏度</strong></td>
+                                <td>特定條件下可偵測的最小洩漏率</td>
+                            </tr>
+                            <tr>
+                                <td>Critical Leak Size</td>
+                                <td><strong>關鍵洩漏尺寸</strong></td>
+                                <td>~10<sup>&minus;3</sup> scc/s — 液體及微生物無法穿透的臨界值</td>
+                            </tr>
+                            <tr>
+                                <td>Tortuous Path Barrier</td>
+                                <td><strong>曲折路徑屏障</strong></td>
+                                <td>封蓋藉由曲折路徑及材料配合限制洩漏的機制</td>
+                            </tr>
+                            <tr>
+                                <td>Margin of Safety</td>
+                                <td><strong>安全邊界</strong></td>
+                                <td>洩漏規格與製程極端值之間的緩衝</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Series</p>
+    <p>Sections 3 (3.1–3.3), 4, and 5 (5.1–5.2) &mdash; Package Integrity Assurance, Specifications &amp; Test Method Selection</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    // Back to top button
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

@@ -12,63 +12,105 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'DM Sans', 'Noto Sans TC', -apple-system, sans-serif; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .doc-card { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        .doc-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(51,65,85,0.12); }
-        .tag-pill { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
-        .search-hits { margin-top: 0.5rem; padding: 0.5rem 0.75rem; background: #f8fafc; border-left: 3px solid #64748b; border-radius: 0 0.375rem 0.375rem 0; font-size: 0.7rem; line-height: 1.6; color: #475569; }
-        .search-hits .hit-title { font-weight: 600; color: #334155; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
-        .search-hits mark { background: #fde68a; color: #92400e; padding: 0 2px; border-radius: 2px; }
-        .relevance-bar { height: 3px; border-radius: 2px; margin-top: 2px; transition: width 0.3s ease; }
-        .match-badges { display: flex; gap: 0.25rem; flex-wrap: wrap; }
-        .match-badge { font-size: 0.6rem; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
-        .match-badge-title { background: #dbeafe; color: #1e40af; }
-        .match-badge-summary { background: #d1fae5; color: #065f46; }
-        .match-badge-content { background: #f3e8ff; color: #6b21a8; }
-        .match-badge-tag { background: #fef3c7; color: #92400e; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-up { animation: fadeUp 0.4s ease-out forwards; opacity: 0; }
-        .fade-up:nth-child(2) { animation-delay: 0.05s; }
-        .fade-up:nth-child(3) { animation-delay: 0.1s; }
-        .fade-up:nth-child(4) { animation-delay: 0.15s; }
-        body.search-active #statsRow { display: none; }
-        body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
-        .last-viewed-badge { font-size: 0.6rem; padding: 1px 7px; border-radius: 9999px; font-weight: 700; background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; letter-spacing: 0.03em; white-space: nowrap; }
-        .doc-card.is-last-viewed { border-color: #fcd34d !important; box-shadow: 0 0 0 2px #fef3c7; }
-    </style>
+:root {
+    --c-primary: #1d1d1f;
+    --c-secondary: #6e6e73;
+    --c-tertiary: #aeaeb2;
+    --c-bg: #f5f5f7;
+    --c-surface: #ffffff;
+    --c-border: rgba(0,0,0,0.08);
+    --c-blue: #0071e3;
+    --r-card: 18px;
+    --r-btn: 980px;
+    --shadow-1: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-2: 0 4px 16px rgba(0,0,0,0.09), 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-3: 0 8px 28px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.05);
+    --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+    background: var(--c-bg);
+    color: var(--c-primary);
+    -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace; }
+.site-header { background: var(--c-surface); border-bottom: 1px solid var(--c-border); }
+.stat-tile { background: var(--c-surface); border-radius: 14px; padding: 14px 18px; box-shadow: var(--shadow-1) !important; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--c-primary); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--c-secondary); margin-top: 4px; font-weight: 500; }
+.search-wrap { background: var(--c-surface); border-radius: var(--r-btn); border: 1.5px solid #d2d2d7; display: flex; align-items: center; padding: 0 16px; gap: 8px; transition: all 0.15s var(--ease); height: 42px; }
+.search-wrap:focus-within { border-color: var(--c-blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.12); }
+.search-wrap input { flex: 1; background: transparent; border: none; outline: none; font-size: 14px; color: var(--c-primary); }
+.search-wrap input::placeholder { color: var(--c-tertiary); }
+.search-icon { color: var(--c-tertiary); flex-shrink: 0; }
+.seg-wrap { background: #e5e5ea; border-radius: 10px; padding: 3px; display: inline-flex; gap: 2px; flex-wrap: wrap; }
+.seg-btn { padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 500; color: var(--c-secondary); border: none; background: transparent; cursor: pointer; white-space: nowrap; transition: all 0.15s var(--ease); line-height: 1; }
+.seg-btn.active { background: var(--c-surface); color: var(--c-primary); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.14), 0 0 1px rgba(0,0,0,0.08); }
+.seg-btn:not(.active):hover { color: var(--c-primary); }
+.filter-pill { padding: 5px 14px; border-radius: var(--r-btn); font-size: 12px; font-weight: 500; color: var(--c-secondary); background: var(--c-surface); border: 1.5px solid #d2d2d7; cursor: pointer; white-space: nowrap; transition: all 0.15s var(--ease); line-height: 1; }
+.filter-pill.active { background: var(--c-primary); color: var(--c-surface); border-color: var(--c-primary); }
+.filter-pill:not(.active):hover { border-color: #8e8e93; color: var(--c-primary); }
+.sort-select { height: 32px; padding: 0 10px; border-radius: 8px; border: 1.5px solid #d2d2d7; background: var(--c-surface); font-size: 12px; font-weight: 500; color: var(--c-secondary); outline: none; cursor: pointer; }
+.doc-card { background: var(--c-surface); border-radius: var(--r-card); box-shadow: var(--shadow-1) !important; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease); border: none !important; }
+.doc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-3) !important; }
+.doc-card.is-last-viewed { box-shadow: 0 0 0 2.5px #f59e0b, var(--shadow-1) !important; }
+.doc-card.is-read { box-shadow: 0 0 0 2.5px #34d399, var(--shadow-1) !important; }
+.card-bar { height: 4px; flex-shrink: 0; }
+.card-body { padding: 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.tag-pill { font-size: 11px; padding: 3px 9px; border-radius: 6px; font-weight: 500; white-space: nowrap; letter-spacing: 0.01em; }
+.last-viewed-badge { font-size: 10px; padding: 2px 8px; border-radius: var(--r-btn); font-weight: 600; background: #fef3c7; color: #92400e; white-space: nowrap; }
+.read-badge { font-size: 10px; padding: 2px 8px; border-radius: var(--r-btn); font-weight: 600; background: #d1fae5; color: #065f46; white-space: nowrap; }
+.open-btn { display: inline-flex; align-items: center; height: 30px; padding: 0 16px; border-radius: var(--r-btn); font-size: 12px; font-weight: 600; color: white !important; text-decoration: none !important; white-space: nowrap; transition: all 0.15s var(--ease); }
+.open-btn:hover { filter: brightness(1.12); transform: scale(1.02); }
+.search-hits { margin-top: 10px; padding: 8px 12px; background: var(--c-bg); border-left: 2px solid #c7c7cc; border-radius: 0 8px 8px 0; font-size: 11px; line-height: 1.6; color: var(--c-secondary); }
+.search-hits .hit-title { font-weight: 600; color: var(--c-primary); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.search-hits mark { background: #fef08a; color: #713f12; padding: 0 2px; border-radius: 3px; }
+.match-badges { display: flex; gap: 4px; flex-wrap: wrap; }
+.match-badge { font-size: 10px; padding: 2px 7px; border-radius: 6px; font-weight: 600; }
+.match-badge-title { background: #dbeafe; color: #1e40af; }
+.match-badge-summary { background: #d1fae5; color: #065f46; }
+.match-badge-content { background: #f3e8ff; color: #6b21a8; }
+.match-badge-tag { background: #fef3c7; color: #92400e; }
+.relevance-bar { height: 2px; border-radius: 2px; margin-top: 2px; transition: width 0.3s ease; }
+.history-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease); }
+.history-panel.open { max-height: 600px; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp 0.3s var(--ease) forwards; opacity: 0; }
+.fade-up:nth-child(2) { animation-delay: 0.04s; }
+.fade-up:nth-child(3) { animation-delay: 0.08s; }
+.fade-up:nth-child(4) { animation-delay: 0.12s; }
+body.search-active #statsRow { display: none; }
+body.search-active .site-header { padding-bottom: 20px !important; }
+</style>
 </head>
-<body class="bg-slate-50 min-h-screen">
+<body class="min-h-screen">
 
     <!-- HEADER -->
-    <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white px-6 py-8 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/3"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/4"></div>
-        </div>
-        <div class="max-w-6xl mx-auto relative">
+    <div class="site-header px-6 py-10">
+        <div class="max-w-6xl mx-auto">
             <div class="text-center">
-                <h1 class="text-2xl font-bold tracking-tight">SterileGMP Knowledge Hub</h1>
-                <p class="text-slate-300 text-sm mt-1">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
-                <p class="text-xs text-slate-400 mt-2">Last updated: <span id="lastUpdated"></span></p>
+                <h1 style="font-size:34px;font-weight:700;letter-spacing:-0.02em;color:#1d1d1f;line-height:1.1">SterileGMP Knowledge Hub</h1>
+                <p style="font-size:17px;color:#6e6e73;margin-top:8px">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
+                <p style="font-size:12px;color:#aeaeb2;margin-top:6px">Updated <span id="lastUpdated"></span></p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5" id="statsRow"></div>
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-8" id="statsRow"></div>
         </div>
     </div>
 
     <!-- DOCUMENT TYPE FILTERS -->
-    <div class="max-w-6xl mx-auto px-6 mt-4">
-        <div class="flex gap-2 flex-wrap" id="typeBtns"></div>
+    <div class="max-w-6xl mx-auto px-6 mt-5">
+        <div id="typeBtns"></div>
     </div>
 
     <!-- SEARCH & FILTERS -->
-    <div class="max-w-6xl mx-auto px-6 mt-4 flex gap-3 flex-wrap items-center">
-        <input type="text" id="searchBox" placeholder="Search titles, sources, tags, and full content..."
-               class="flex-1 min-w-[250px] px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-800 text-sm focus:outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-400">
-        <span id="resultCount" class="text-xs text-slate-600 font-medium" style="display:none"></span>
-        <div class="flex gap-2 flex-wrap" id="filterBtns"></div>
-        <select id="sortSelect" onchange="this._userChanged=true;renderCards()"
-                class="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-gray-700 text-xs focus:outline-none focus:border-slate-500">
+    <div class="max-w-6xl mx-auto px-6 mt-3 flex gap-2 flex-wrap items-center">
+        <div class="search-wrap flex-1 min-w-[280px]">
+            <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="searchBox" placeholder="Search documents, tags, content...">
+            <span id="resultCount" style="font-size:11px;font-weight:500;color:#6e6e73;display:none;white-space:nowrap"></span>
+        </div>
+        <div class="flex gap-1.5 flex-wrap" id="filterBtns"></div>
+        <select id="sortSelect" onchange="this._userChanged=true;renderCards()" class="sort-select">
             <option value="relevance">Relevance</option>
             <option value="date-desc">Newest first</option>
             <option value="date-asc">Oldest first</option>
@@ -76,17 +118,30 @@
         </select>
     </div>
 
-    <!-- RESUME BANNER -->
-    <div class="max-w-6xl mx-auto px-6 mt-3" id="resumeWrap" style="display:none">
-        <div id="resumeBanner" class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3"></div>
+    <!-- READING HISTORY PANEL -->
+    <div class="max-w-6xl mx-auto px-6 mt-3" id="historyWrap" style="display:none">
+        <div style="background:white;border-radius:14px;box-shadow:var(--shadow-1);overflow:hidden">
+            <button onclick="toggleHistory()" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;text-align:left;background:transparent;border:none;cursor:pointer;font-family:inherit" id="historyToggleBtn">
+                <div style="display:flex;align-items:center;gap:8px">
+                    <span style="font-size:13px;font-weight:600;color:#1d1d1f">閱讀歷史</span>
+                    <span id="historyCount" style="font-size:10px;padding:2px 8px;border-radius:980px;background:#d1fae5;color:#065f46;font-weight:700"></span>
+                </div>
+                <span id="historyChevron" style="color:#aeaeb2;font-size:11px;transition:transform 0.3s;transform:rotate(180deg)">▼</span>
+            </button>
+            <div class="history-panel open" id="historyPanel">
+                <div id="historyList" style="max-height:288px;overflow-y:auto;border-top:1px solid rgba(0,0,0,0.06)"></div>
+                <div style="padding:8px 18px;border-top:1px solid rgba(0,0,0,0.06);display:flex;justify-content:flex-end">
+                    <button onclick="clearReadHistory()" style="font-size:11px;color:#aeaeb2;background:none;border:none;cursor:pointer;font-family:inherit">清除全部閱讀記錄</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- DOCUMENT CARDS -->
-    <div class="max-w-6xl mx-auto px-6 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="docGrid"></div>
+    <div class="max-w-6xl mx-auto px-6 py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="docGrid"></div>
 
-    <!-- FOOTER -->
-    <div class="max-w-6xl mx-auto px-6 py-6 text-center text-xs text-gray-400 border-t border-gray-200 mt-4">
-        <p>Pharma Manufacturing x Education | Built with Claude AI</p>
+    <div class="max-w-6xl mx-auto px-6 py-8 text-center mt-4" style="border-top:1px solid rgba(0,0,0,0.06)">
+        <p style="font-size:12px;color:#aeaeb2">Pharma Manufacturing × Education  ·  Built with Claude AI</p>
     </div>
 
 <script>window.searchIndex = window.searchIndex || [];</script>
@@ -124,6 +179,14 @@ async function loadData() {
         });
 
         tagCls = data.tagClasses || {};
+
+        // Load tagClasses from separate file if not in reports.json
+        if (Object.keys(tagCls).length === 0) {
+            try {
+                const tcRes = await fetch('./tag-classes.json');
+                if (tcRes.ok) tagCls = await tcRes.json();
+            } catch(e2) { /* fallback: no tag styling */ }
+        }
         return true;
     } catch(e) {
         // Fallback: hardcoded data for file:// access
@@ -287,7 +350,12 @@ async function loadData() {
     { date:"2026-04-01", title:"ICH Q10: Pharmaceutical Quality System", titleZh:"藥品品質系統",
       source:"ICH Q10", tags:["Quality Systems","PQS","PPQMS","CAPA","Change Management","Lifecycle","Management Review"],
       summary:"藥品品質系統全生命週期框架：PQS四大要素 (PPQMS/CAPA/變更管理/管理審查)、知識管理與QRM雙引擎、三大Q10目標",
-      sections:4, pages:"p1-p21", figures:0, file:"ICH/ICH-Q10/output/ICH-Q10-Complete.html" }
+      sections:4, pages:"p1-p21", figures:0, file:"ICH/ICH-Q10/output/ICH-Q10-Complete.html" },
+
+    { date:"2026-04-01", title:"FDA CPGM 7356.002A: Sterile Drug Process Inspections", titleZh:"FDA 無菌藥品製程查廠指引（完整教學版）",
+      source:"FDA 7356.002A", tags:["Inspection","Aseptic","Sterilization","GMP","FDA","Quality System","Microbiology","Validation","EM","Facilities","Laboratory Control","Risk"],
+      summary:"FDA查廠官員使用的無菌製程查廠指引（CPGM 7356.002A，2015年修訂）：涵蓋品質系統、廠房設備、物料系統、生產系統、包裝標籤、實驗室控制六大系統查廠要點，以及無菌工藝（過濾除菌+無菌填充）與最終滅菌之查廠方法。38頁。",
+      sections:6, pages:"p1-p38", figures:0, file:"FDA/FDA-ProcessInspection/output/FDA-ProcessInspection-Complete.html" }
         ]; // end fallback documents
 
         sourceColors = {
@@ -309,6 +377,8 @@ async function loadData() {
     "PDA PtC-15":     { bg:"#fef3c7", text:"#92400e", bar:"#f59e0b", short:"PtC-15" },
     "PDA PtC-Isolators": { bg:"#f0fdf4", text:"#14532d", bar:"#16a34a", short:"PtC-Isol" },
             "PDA PtC-9":       { bg:"#fef3c7", text:"#92400e", bar:"#d97706", short:"PtC-9" },
+            "PDA PtC-11":      { bg:"#fef3c7", text:"#78350f", bar:"#d97706", short:"PtC-11" },
+            "PDA PtC-Remote":  { bg:"#fef3c7", text:"#92400e", bar:"#d97706", short:"PtC-R" },
             "PDA TR39":        { bg:"#ecfdf5", text:"#065f46", bar:"#059669", short:"TR39" },
             "PDA TR70":        { bg:"#fff7ed", text:"#9a3412", bar:"#ea580c", short:"TR70" },
             "PDA TR46":        { bg:"#ffedd5", text:"#7c2d12", bar:"#f97316", short:"TR46" },
@@ -322,7 +392,8 @@ async function loadData() {
             "ISPE SUT":        { bg:"#1a3a2a", text:"#27ae60", bar:"#2ecc71", short:"SUT" },
             "ICH Q9(R1)":      { bg:"#f3f4f6", text:"#374151", bar:"#6b7280", short:"Q9R1" },
             "ICH Q8(R2)":      { bg:"#f3f4f6", text:"#374151", bar:"#6b7280", short:"Q8R2" },
-            "ICH Q10":         { bg:"#f3f4f6", text:"#374151", bar:"#6b7280", short:"Q10" }
+            "ICH Q10":         { bg:"#f3f4f6", text:"#374151", bar:"#6b7280", short:"Q10" },
+            "FDA 7356.002A":   { bg:"#1a1f3a", text:"#4a90d9", bar:"#2563eb", short:"FDA" }
         }; // end fallback sourceColors
 
         tagCls = {
@@ -410,8 +481,9 @@ function renderStats(){
     const allTags=[...new Set(documents.flatMap(d=>d.tags))];
     const srcCount=new Set(documents.map(d=>getSourceOrg(d.source))).size;
     const latest=documents.reduce((a,b)=>a.date>b.date?a:b);
-    const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'}];
-    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-slate-300 mt-0.5">${s.l}</div></div>`).join('');
+    const readCount=getReadHistory().length;
+    const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages'},{v:allTags.length,l:'Topics'},{v:readCount,l:'已讀'}];
+    document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="stat-tile"><div class="stat-num">${s.v}</div><div class="stat-label">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
 }
 
@@ -442,35 +514,24 @@ let activeSource = 'all';
 
 function initSourceFilters(){
     const orgs = ['all', ...new Set(documents.map(d => getSourceOrg(d.source)))];
-    document.getElementById('typeBtns').innerHTML = orgs.map(org => {
+    document.getElementById('typeBtns').innerHTML = `<div class="seg-wrap">` + orgs.map(org => {
         const isActive = org === activeSource;
         const oc = sourceOrgColors[org] || {};
-        let cls = 'px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors';
-        let style = '';
-        if (isActive && org !== 'all') {
-            style = `background:${oc.bg};color:${oc.text};border-color:${oc.bg}`;
-        } else if (isActive) {
-            cls += ' bg-slate-700 text-white border-slate-700';
-        } else if (org !== 'all' && oc.light) {
-            style = `background:${oc.light};color:${oc.bg};border-color:${oc.border}60`;
-            cls += ' hover:opacity-80';
-        } else {
-            cls += ' border-gray-300 text-gray-600 bg-white hover:border-slate-500 hover:text-slate-700';
-        }
-        return `<button class="${cls}" style="${style}" onclick="setSource('${org}')">${org === 'all' ? 'All Sources' : org}</button>`;
-    }).join('');
+        let extraStyle = '';
+        if (isActive && org !== 'all' && oc.bg) extraStyle = `background:${oc.bg};color:${oc.text};`;
+        return `<button class="seg-btn${isActive?' active':''}" style="${extraStyle}" onclick="setSource('${org}')">${org === 'all' ? 'All' : org}</button>`;
+    }).join('') + `</div>`;
 }
 function setSource(s){activeSource=s;initSourceFilters();renderCards();}
 
 function initFilters(){
     const tagCounts={};
     documents.forEach(d=>d.tags.forEach(t=>{tagCounts[t]=(tagCounts[t]||0)+1;}));
-    const topTags=Object.entries(tagCounts).filter(([,c])=>c>=2).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(([t])=>t);
+    const topTags=Object.entries(tagCounts).filter(([,c])=>c>=5).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(([t])=>t);
     const list=['all',...topTags];
     document.getElementById('filterBtns').innerHTML=list.map(f=>{
         const a=f===activeFilter;
-        const c=a?'bg-slate-700 text-white border-slate-700':'border-gray-200 text-gray-600 bg-white hover:border-slate-500 hover:text-slate-700';
-        return `<button class="px-3 py-1.5 rounded-lg text-xs font-medium border ${c} transition-colors" onclick="setFilter('${f}')">${f==='all'?'All':f}</button>`;
+        return `<button class="filter-pill${a?' active':''}" onclick="setFilter('${f}')">${f==='all'?'All':f}</button>`;
     }).join('');
 }
 function setFilter(f){activeFilter=f;initFilters();renderCards();}
@@ -515,51 +576,90 @@ function renderCards(){
     if(!docs.length){document.getElementById('docGrid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400">No documents match.</div>';return;}
     const mx=Math.max(...docs.map(d=>d._score||0),1);
     const _lv=getLastViewed();
+    const _readMap=Object.fromEntries(getReadHistory().map(h=>[h.file,h]));
 
     document.getElementById('docGrid').innerHTML=docs.map((d,i)=>{
         const sc=sourceColors[d.source]||{bg:'#f1f5f9',text:'#475569',short:d.source};
-        const tags=d.tags.slice(0,4).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
+        const tags=d.tags.slice(0,3).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
         const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
         const isLV=_lv&&_lv.file===d.file;
+        const readEntry=_readMap[d.file]||null;
         const prog=getProgress(d.file);
         const _href=d.file?getOpenHref(d.file):'';
+        const statusBadge = isLV
+            ? `<span class="last-viewed-badge">\u4e0a\u6b21\u95b1\u8b80</span>`
+            : (readEntry && prog && prog.pct !== undefined)
+            ? `<span class="read-badge">${prog.pct >= 95 ? '\u2713 \u5b8c\u8b80' : '\u5df2\u8b80\u00a0' + prog.pct + '%'}</span>`
+            : (readEntry && prog && prog.num)
+            ? `<span class="read-badge">Sec\u00a0${prog.num}</span>`
+            : readEntry
+            ? `<span class="read-badge">\u2713 \u5df2\u8b80</span>`
+            : '';
         const btn=d.file?`<a href="${_href}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
-            class="track-open text-xs text-white px-3 py-1 rounded no-underline transition-colors opacity-90 hover:opacity-100" style="background:${sc.bar||'#334155'}">${prog?'繼續閱讀':'Open'}</a>`:'';
+            class="track-open open-btn" style="background:${sc.bar||sc.bg||'#1d1d1f'}">${prog?'\u7e7c\u7e8c\u95b1\u8b80':'Open'}</a>`:'';
         let rel='';
         if(s&&d._score>0){const p=Math.round(d._score/mx*100);const bc=p>=70?'#334155':p>=40?'#64748b':'#94a3b8';
             const bm={title:'Title',tag:'Tag',summary:'Summary',content:'Content'};
             const bl={title:'match-badge-title',tag:'match-badge-tag',summary:'match-badge-summary',content:'match-badge-content'};
             const mb=d._matchTypes.map(t=>`<span class="match-badge ${bl[t]}">${bm[t]}</span>`).join('');
-            rel=`<div class="flex items-center gap-2 mt-2"><div class="match-badges">${mb}</div><div class="flex-1 bg-gray-100 rounded-full h-1.5"><div class="relevance-bar h-1.5 rounded-full" style="width:${p}%;background:${bc}"></div></div><span class="mono text-[10px] text-gray-400">#${i+1}</span></div>`;}
+            rel=`<div style="display:flex;align-items:center;gap:8px;margin-top:8px"><div class="match-badges">${mb}</div><div style="flex:1;background:#f1f5f9;border-radius:980px;height:3px"><div class="relevance-bar" style="width:${p}%;background:${bc}"></div></div><span class="mono" style="font-size:10px;color:#aeaeb2">#${i+1}</span></div>`;}
         let hh='';
-        if(d._hits&&d._hits.length>0){const sh=d._hits.slice(0,3);const mo=d._hits.length>3?`<div class="text-[10px] text-gray-400 mt-1">+${d._hits.length-3} more</div>`:'';
-            hh=`<div class="search-hits"><div class="hit-title">Content matches (${d._hits.length})</div>${sh.map(h=>`<div class="text-[10px]"><span class="font-medium text-slate-700">${h.sectionTitle}</span>: ${h.snippet}</div>`).join('')}${mo}</div>`;}
-        const bc2=s&&d._score>0?(d._score/mx>=0.7?'border-slate-500':d._score/mx>=0.4?'border-slate-300':'border-gray-200'):'border-gray-200';
+        if(d._hits&&d._hits.length>0){const sh=d._hits.slice(0,3);const mo=d._hits.length>3?`<div style="font-size:10px;color:#aeaeb2;margin-top:4px">+${d._hits.length-3} more</div>`:'';
+            hh=`<div class="search-hits"><div class="hit-title">Content matches (${d._hits.length})</div>${sh.map(h=>`<div style="font-size:10px"><span style="font-weight:600;color:#3a3a3c">${h.sectionTitle}</span>: ${h.snippet}</div>`).join('')}${mo}</div>`;}
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
-        const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
-        const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
-        const progBadge=prog&&prog.num?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`:'';
-        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}">
-            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
-            <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
-            ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
-            ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
-            ${rel}
-            ${ss?`<p class="text-xs text-gray-600 leading-relaxed mt-2 flex-1">${d.summary}</p>`:''}
-            ${hh}
-            <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                <div class="flex items-center gap-3"><span class="mono text-[10px] text-gray-400">${d.pages||''}</span><span class="mono text-[10px] text-gray-400">${d.sections?d.sections+' sections':''}</span></div>${btn}
-            </div></div>`;
+        return `<div class="doc-card fade-up${isLV?' is-last-viewed':''}${readEntry&&!isLV?' is-read':''}">
+            <div class="card-bar" style="background:${sc.bar||sc.bg||'#e8e8ed'}"></div>
+            <div class="card-body">
+                ${sm?`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                    <span style="font-size:11px;font-weight:600;letter-spacing:0.02em;color:${sc.text||'#6e6e73'}">${sc.short}</span>
+                    <div style="display:flex;align-items:center;gap:6px">
+                        ${statusBadge}
+                        <span class="mono" style="font-size:10px;color:#aeaeb2">${d.date}</span>
+                    </div>
+                </div>`:''}
+                <h3 style="font-size:15px;font-weight:600;line-height:1.35;color:#1d1d1f">${d.title}</h3>
+                ${d.titleZh?`<p style="font-size:13px;color:#3a3a3c;margin-top:4px;line-height:1.35">${d.titleZh}</p>`:''}
+                ${sm?`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">${tags}${fb}</div>`:''}
+                ${rel}
+                ${ss?`<p style="font-size:13px;color:#6e6e73;line-height:1.6;margin-top:12px;flex:1">${d.summary}</p>`:''}
+                ${hh}
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06)">
+                    <div style="display:flex;align-items:center;gap:10px">
+                        <span class="mono" style="font-size:11px;color:#aeaeb2">${d.pages||''}</span>
+                        ${d.sections?`<span style="font-size:11px;color:#aeaeb2">${d.sections}&thinsp;sec</span>`:''}
+                    </div>
+                    ${btn}
+                </div>
+            </div>
+        </div>`;
     }).join('');
 }
 
 // ============================================================
-// LAST VIEWED TRACKING
+// LAST VIEWED + READ HISTORY TRACKING
 // ============================================================
 const LS_KEY = 'sgk_last_viewed';
+const LS_HISTORY = 'sgk_read_history';
 
+function getReadHistory() {
+    try { return JSON.parse(localStorage.getItem(LS_HISTORY) || '[]'); } catch(e) { return []; }
+}
+function getReadEntry(file) {
+    return getReadHistory().find(x => x.file === file) || null;
+}
 function trackOpen(file, title, titleZh) {
-    try { localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() })); } catch(e) {}
+    try {
+        localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() }));
+        const hist = getReadHistory();
+        const ex = hist.find(h => h.file === file);
+        if (ex) { ex.lastRead = Date.now(); ex.count = (ex.count || 1) + 1; }
+        else { hist.push({ file, title, titleZh, firstRead: Date.now(), lastRead: Date.now(), count: 1 }); }
+        localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
+        renderHistoryPanel();
+        // Update the read-count stat badge live
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = getReadHistory().length;
+    } catch(e) {}
 }
 
 function getProgress(file) {
@@ -570,7 +670,24 @@ function getProgress(file) {
 
 function getOpenHref(file) {
     const p = getProgress(file);
+    // Scroll-tracked docs (scrollY present) restore position via page JS — no hash needed
+    if (p && p.scrollY !== undefined) return file;
     return p && p.id ? file + '#' + p.id : file;
+}
+
+function markComplete(file) {
+    try {
+        const stem = file.split('/').pop().replace('.html','');
+        const key = 'sgk_progress_' + stem;
+        const cur = JSON.parse(localStorage.getItem(key) || 'null') || {};
+        localStorage.setItem(key, JSON.stringify({
+            id: cur.id || 'sec0', num: cur.num || '0',
+            label: cur.label || 'Complete',
+            scrollY: cur.scrollY, pct: 100, complete: true, ts: Date.now()
+        }));
+        renderHistoryPanel();
+        renderCards();
+    } catch(e) {}
 }
 
 function getLastViewed() {
@@ -589,29 +706,85 @@ function timeAgo(ts) {
     return `${Math.floor(days / 30)} 個月前`;
 }
 
-function renderResumeBanner() {
-    const lv = getLastViewed();
-    const wrap = document.getElementById('resumeWrap');
-    const el = document.getElementById('resumeBanner');
-    if (!lv || !wrap || !el) return;
-    const displayTitle = lv.titleZh || lv.title;
-    const prog = lv.file ? getProgress(lv.file) : null;
-    const progInfo = prog && prog.num ? `<span class="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Section ${prog.num}: ${prog.label}</span>` : '';
-    const resumeHref = lv.file ? getOpenHref(lv.file) : '';
-    const link = lv.file
-        ? `<a href="${resumeHref}" target="_blank" data-track-file="${lv.file}" data-track-title="${lv.title}" data-track-zh="${lv.titleZh||''}"
-              class="track-open text-xs bg-slate-700 text-white px-3 py-1.5 rounded no-underline hover:bg-slate-600 whitespace-nowrap transition-colors">繼續閱讀</a>`
-        : '';
-    el.innerHTML = `<div class="flex items-center gap-3 flex-wrap">
-        <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest whitespace-nowrap">上次閱讀</span>
-        <span class="text-sm font-medium text-slate-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
-        ${progInfo}
-        <span class="text-xs text-slate-400 whitespace-nowrap">${timeAgo(lv.ts)}</span>
-        ${link}
-        <button onclick="localStorage.removeItem('${LS_KEY}');document.getElementById('resumeWrap').style.display='none';renderCards();"
-                class="text-slate-300 hover:text-slate-500 text-xl leading-none ml-1 transition-colors">&times;</button>
-    </div>`;
+// ============================================================
+// HISTORY PANEL
+// ============================================================
+let historyOpen = true;
+function toggleHistory() {
+    historyOpen = !historyOpen;
+    const panel = document.getElementById('historyPanel');
+    const chevron = document.getElementById('historyChevron');
+    if (panel) panel.classList.toggle('open', historyOpen);
+    if (chevron) chevron.style.transform = historyOpen ? 'rotate(180deg)' : '';
+}
+
+function renderHistoryPanel() {
+    const hist = getReadHistory().slice().sort((a,b) => b.lastRead - a.lastRead);
+    const wrap = document.getElementById('historyWrap');
+    const countEl = document.getElementById('historyCount');
+    const listEl = document.getElementById('historyList');
+    if (!wrap) return;
+    if (!hist.length) { wrap.style.display = 'none'; return; }
     wrap.style.display = 'block';
+    if (countEl) countEl.textContent = hist.length;
+    if (!listEl) return;
+    listEl.innerHTML = hist.map((h, idx) => {
+        const isLatest = idx === 0;
+        const prog = getProgress(h.file);
+        const isComplete = prog && prog.complete;
+        const progSpan = isComplete
+            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold">✓ 完讀</span>`
+            : prog && prog.pct !== undefined
+            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-blue-700 bg-blue-50 border-blue-200" title="捲軸最高位置">已讀 ${prog.pct}%</span>`
+            : prog && prog.num
+            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`
+            : '';
+        const markBtn = !isComplete
+            ? `<button onclick="markComplete('${h.file.replace(/'/g,"\\'")}');" title="標記為完讀"
+                       class="text-[10px] text-gray-300 hover:text-emerald-600 transition-colors flex-shrink-0 border border-gray-200 hover:border-emerald-300 rounded px-1.5 py-0.5 leading-none">✓</button>`
+            : '';
+        const href = h.file ? getOpenHref(h.file) : '#';
+        const displayTitle = h.titleZh || h.title;
+        const rowBg = isLatest ? 'bg-amber-50 hover:bg-amber-100' : 'hover:bg-gray-50';
+        const label = isLatest
+            ? `<span class="last-viewed-badge flex-shrink-0">上次閱讀</span>`
+            : `<span class="read-badge flex-shrink-0">✓ 已讀</span>`;
+        const btnLabel = isLatest ? '繼續閱讀' : '開啟';
+        const btnStyle = isLatest ? 'background:#92400e' : 'background:#334155';
+        return `<div class="flex items-center gap-2 px-4 py-2.5 transition-colors ${rowBg}">
+            ${label}
+            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate font-${isLatest?'medium':'normal'}" title="${displayTitle}">${displayTitle}</span>
+            ${progSpan}
+            ${markBtn}
+            <span class="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">${timeAgo(h.lastRead)}</span>
+            <a href="${href}" target="_blank" data-track-file="${h.file}" data-track-title="${h.title}" data-track-zh="${h.titleZh||''}"
+               class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="${btnStyle}">${btnLabel}</a>
+            <button onclick="removeReadEntry('${h.file.replace(/'/g, '\\')}');renderHistoryPanel();renderCards();"
+                    class="text-gray-300 hover:text-red-400 text-sm leading-none transition-colors flex-shrink-0">&times;</button>
+        </div>`;
+    }).join('');
+}
+
+function removeReadEntry(file) {
+    try {
+        const hist = getReadHistory().filter(h => h.file !== file);
+        localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = hist.length;
+        // Also clear isLV card badge if this was the last viewed doc
+        const lv = getLastViewed();
+        if (lv && lv.file === file) localStorage.removeItem(LS_KEY);
+    } catch(e) {}
+}
+
+function clearReadHistory() {
+    try {
+        localStorage.removeItem(LS_HISTORY);
+        document.getElementById('historyWrap').style.display = 'none';
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = '0';
+        renderCards();
+    } catch(e) {}
 }
 
 // Delegated click handler for all Open buttons (incl. resume banner)
@@ -625,7 +798,7 @@ document.addEventListener('click', e => {
 });
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderResumeBanner();});
+loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderHistoryPanel();});
 </script>
 </body>
 </html>

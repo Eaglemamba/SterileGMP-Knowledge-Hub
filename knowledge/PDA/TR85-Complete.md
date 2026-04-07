@@ -63,7 +63,6 @@ All rights reserved.
 Bethesda Towers
 4350 East West Highway
 Suite 200
-Bethesda, MD20814 USA
 Tel: 1(301) 656-5900
 Fax: 1(301) 986-0296
 E-mail: info@pda.org
@@ -1078,7 +1077,6 @@ Washington, D.C., 2017. Technol. 1980, 34 (1), 14-61.
 22. Aldrich, S.D.; Cherris, R.T.; Shabushnig, 30. Knapp, J.; Kushner, H.; Implementation
 J.G.; Visual Inspection and Particulate and Automation of a Particle Detection
 Control. DHI Publishing, LLC. River System for Parenteral Products. J. Parent.
-Grove, IL, 2016. Sci and Technol. 1980, 34 (5), 369-393.
 23. U.S. Pharmacopeial Convention General 31. Shabushnig, J.; PDA Survey: 2014 Vi-
 Chapter <788> Particulate Matter in Injec- sual Inspection. Parenteral Drug Associa-
 tions, USP 42-NF37, USP: Rockville, Md, tion (PDA), Bethesda, Md., 2015. DOI:
@@ -1877,7 +1875,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
 Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric
 Closures and Glass Containers
@@ -1946,7 +1943,6 @@ Marilyn Foster, Technical Editor/Writer
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendices 6 & 7: Testing Strategies & Templates | 測試策略範例與文件範本 — ISPE CTC Guide</title>
+<style>
+/* ============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template v2.0
+   ============================================================ */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    --ispe-bar: #16a34a;
+    --ispe-bg: #dcfce7;
+    --ispe-text: #15803d;
+    --ispe-border: #86efac;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.source-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #bbf7d0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--ispe-text); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #dcfce7;
+    border-radius: 6px;
+    color: var(--ispe-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--ispe-bar); color: white; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #16a34a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.45rem; }
+.right-column {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; font-size: 0.9rem; padding: 0.25rem 0.6rem; border-radius: 4px; display: inline-block; margin-bottom: 0.75rem; }
+.col-en { background: #dcfce7; color: #15803d; }
+.col-zh { background: #dbeafe; color: #1e40af; }
+.chapter-block {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+.chapter-header {
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.chapter-badge {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.chapter-header h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; }
+.chapter-header p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.concept-box, .note-box, .analogy-box, .practice-box, .term-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4, .note-box h4, .analogy-box h4, .practice-box h4, .term-box h4 {
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    font-weight: 600;
+}
+.concept-box ul, .note-box ul, .analogy-box ul, .practice-box ul, .term-box ul,
+.concept-box ol, .note-box ol, .analogy-box ol, .practice-box ol {
+    margin: 0.4rem 0 0.4rem 1.2rem;
+    font-size: 0.92rem;
+}
+.concept-box li, .note-box li, .analogy-box li, .practice-box li, .term-box li { margin-bottom: 0.3rem; }
+.term-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.term-box h4 { color: #2e7d32; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start), var(--yellow-end)); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd, #d1e9ff); border: 2px dashed #3182ce; border-radius: 10px; }
+.practice-box h4 { color: #2c5282; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.section-anchor { scroll-margin-top: 1.5rem; }
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.25rem; }
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+    background: var(--ispe-bar);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #15803d; transform: scale(1.1); }
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-block { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <div class="source-badge">ISPE GPG: CTC Mapping & Monitoring (2016)</div>
+    <h1>Appendices 6 &amp; 7: Testing Strategies &amp; Templates</h1>
+    <div class="subtitle">測試策略範例與文件範本 | Chapters 18–19</div>
+    <div class="page-info">Source pp. 92–108 &nbsp;|&nbsp; Section 07 of ISPE-CTC</div>
+</div>
+
+<div class="main-content">
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc">
+    <h3>Contents 目錄</h3>
+    <div class="toc-grid">
+        <a href="#learning-obj">Learning Objectives 學習目標</a>
+        <a href="#ex1-walk-in">App 6.1 — Walk-in CRT Space</a>
+        <a href="#ex2-fridge">App 6.2 — Refrigerator Mapping</a>
+        <a href="#ex3-warehouse">App 6.3 — Warehouse</a>
+        <a href="#ex4-protocol">App 6.4 — Test Protocol Elements</a>
+        <a href="#app7-periodic">App 7.1 — Periodic Review</a>
+        <a href="#app7-jha">App 7.2 — Job Hazard Analysis</a>
+        <a href="#ich-table">ICH Stability Conditions</a>
+    </div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div id="learning-obj" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">LO</div>
+        <div>
+            <h2>Learning Objectives | 學習目標</h2>
+            <p>Bilingual objectives for Appendices 6 &amp; 7</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Objectives</span>
+                <div class="learning-objectives">
+                    <ul>
+                        <li>Apply a step-by-step probe placement logic for walk-in spaces, refrigerators, and warehouses.</li>
+                        <li>Justify probe density based on volume thresholds (70 / 700 ft³) and airflow obstructions.</li>
+                        <li>Determine when seasonal (summer/winter) mapping is required vs. risk-justified as unnecessary.</li>
+                        <li>Structure a mapping test protocol covering instrument selection, load testing, and acceptance criteria.</li>
+                        <li>Use periodic review categories (1–3) to schedule re-qualification and understand Method 1 vs. Method 2.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文學習目標</span>
+                <div class="learning-objectives" style="background: linear-gradient(135deg,#dbeafe,#bfdbfe);">
+                    <ul>
+                        <li>能逐步套用探針佈點邏輯，適用步入式空間、冰箱及倉庫。</li>
+                        <li>依體積門檻（70 / 700 ft³）與氣流障礙合理化探針密度決策。</li>
+                        <li>判斷何時需要夏/冬季節性建圖，何時可依風險評估豁免。</li>
+                        <li>架構完整的建圖測試協議，涵蓋儀器選擇、負荷測試與合格標準。</li>
+                        <li>運用定期審查分類（1–3 類）排程再確效，理解方法一與方法二的差異。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 6.1: Walk-in CRT Space ===== -->
+<div id="ex1-walk-in" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">6.1</div>
+        <div>
+            <h2>Example 1 — Mapping Strategy for a Walk-in CRT Space</h2>
+            <p>App 6, §18.1 | 步入式常溫儲存空間建圖策略</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source</span>
+                <h3>Scenario</h3>
+                <p>A 20 ft × 20 ft × 10 ft (6 m × 6 m × 3 m) CRT space storing up to ten double-stacked pallets. No process steps that could cause variable heat loads.</p>
+                <h3>Step-by-step Probe Logic</h3>
+                <ol>
+                    <li><strong>Purpose:</strong> Storage only — no rolling heated material, no variable heat loads. No additional probes beyond baseline.</li>
+                    <li><strong>Three planes:</strong> Divide 3D space into upper / middle / lower levels.</li>
+                    <li><strong>Volume ≤ 70 ft³ (2 m³):</strong> Probes at 4 corners of upper and lower planes + 1 center (Fig. 18.1). Total = 9 probes.</li>
+                    <li><strong>Volume ≤ 700 ft³ (20 m³):</strong> Add probes at center of each wall face, ceiling, and floor (Fig. 18.2).</li>
+                    <li><strong>Volume &gt; 700 ft³ (20 m³):</strong> Use Fig. 18.2 as starting point; add supplementary probes so horizontal and vertical spacing does not exceed 30 ft (9 m).</li>
+                    <li><strong>Airflow:</strong> Ceiling diffuser, 4 corner returns, no shelving obstructions. Pallets max 6 ft — no significant flow blockage. No extra probes needed.</li>
+                    <li><strong>Envelope:</strong> Inside a building already conditioned to 20°C year-round — no concern for seasonal thermal penetration.</li>
+                    <li><strong>Heat sources:</strong> Lights present but no product stored near fixtures; no motors or exothermic materials. No extra probes needed.</li>
+                    <li><strong>HVAC:</strong> Single dedicated recirculation unit, no redundancy, no defrost cycles. Failure is acceptable since surrounding building is already conditioned — space temperature would not be impacted.</li>
+                </ol>
+                <p><em>This example volume is 4,000 ft³ (113 m³) — configuration of Fig. 18.2 is appropriate; no sensors are &gt;30 ft apart horizontally or vertically.</em></p>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>核心概念</h3>
+                <div class="term-box">
+                    <h4>三段體積門檻決定基礎探針數</h4>
+                    <ul>
+                        <li><strong>≤ 70 ft³：</strong>9 支（上下各4角 + 中心）</li>
+                        <li><strong>≤ 700 ft³：</strong>再加各面中心點</li>
+                        <li><strong>&gt; 700 ft³：</strong>以上述為基礎，間距不超過 30 ft (9 m) 為原則</li>
+                    </ul>
+                </div>
+                <div class="analogy-box">
+                    <h4>類比：建圖如盲人摸象</h4>
+                    <p>空間越大、障礙越多，需要更多「感知點」才能確認整體溫度均勻。30 ft 間距規則是行業共識，非法規硬性要求，但偏離需要書面理由。</p>
+                </div>
+                <div class="note-box">
+                    <h4>CDMO 實務重點</h4>
+                    <p>CDMO 的 CRT 原料倉常見問題：叉車動線熱負荷、收貨區門口溫度波動。本例單純儲存無特殊負荷，是最佳情境；真實環境應評估第 6–9 步是否有例外。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>Practice Questions 練習思考</h4>
+                    <ol>
+                        <li>若同一空間增設一台工業除濕機（有散熱），步驟 8 的結論會改變嗎？為什麼？</li>
+                        <li>若倉庫外牆暴露在日曬面，應在哪個步驟加入額外探針的考量？</li>
+                        <li>本例 HVAC 失效後室溫不受影響——若改在無外部溫控的廠房，你的測試策略如何調整？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 6.2: Refrigerator ===== -->
+<div id="ex2-fridge" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">6.2</div>
+        <div>
+            <h2>Example 2 — Mapping Strategy for a Refrigerator</h2>
+            <p>App 6, §18.2 | 冰箱建圖策略</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source</span>
+                <h3>Key Principles</h3>
+                <p>Same development steps as a walk-in unit. Critical difference: shelves obstruct airflow, so <strong>each shelf level is treated as its own mapping zone.</strong></p>
+                <h3>Probe Density Options</h3>
+                <ul>
+                    <li><strong>5 probes/shelf</strong> — poor circulation (solid shelves, densely packed)</li>
+                    <li><strong>3 probes/shelf</strong> — intermediate circulation (wire shelves, fully packed); alternating front/back corners each level</li>
+                    <li><strong>Corners + middle only</strong> — good circulation (wire shelves, lots of air space)</li>
+                </ul>
+                <h3>Load Temperature vs. Air Temperature</h3>
+                <p>Monitoring probes may be placed in the load or a suitable thermal buffer rather than measuring air, when short-term air fluctuations (defrost cycles, door openings) are acceptable but load temperature must remain within range.</p>
+                <h3>Simulated Product</h3>
+                <p>If simulated product is used, document what is used and why its thermal properties are comparable (e.g., "20 mL water approximates insulin because thermal properties are identical and this is the smallest container stored").</p>
+                <h3>Empty vs. Full State</h3>
+                <p>Map both empty and full states. Full = maximum anticipated load per URS and manufacturer recommendations. Also check under conditions of normal use after full-state mapping.</p>
+                <h3>Shelf Position Flexibility</h3>
+                <p>Define min/max shelf positions. Document limiting parameters on a label on the unit door — clearances (e.g., 3 in side/front/rear, 4 in bottom, 4 in top) and maximum room-temperature load (e.g., 20 lb / 9 kg).</p>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>與步入式空間的關鍵差異</h3>
+                <div class="term-box">
+                    <h4>分層 = 分區 (Each Shelf = Zone)</h4>
+                    <p>冰箱層架阻斷垂直氣流，每層視為獨立映射區。探針密度由貨架類型與裝載密度決定——這是與開放倉庫最大的不同點。</p>
+                </div>
+                <div class="note-box">
+                    <h4>除霜週期的影響</h4>
+                    <p>冰箱除霜期間空氣溫度短暫上升（可能超出設定範圍），但實體藥品因熱質（thermal mass）不會立即升溫。ISPE 允許監測探針置於產品或熱緩衝液中，而非測量空氣，但需要書面理由與驗證。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：冰箱如多層停車場</h4>
+                    <p>每層獨立，上層暖空氣不自動流入下層。「加裝通風格柵層架」等同打通層間通道，探針密度可降低，但需要再評估。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>Practice Questions 練習思考</h4>
+                    <ol>
+                        <li>一台冰箱有4層實心架，你選擇每層5支探針。若Layer 2換成網架且稀疏裝載，你需要重新建圖嗎？</li>
+                        <li>為什麼「空態 + 滿態」兩個狀態都要建圖，而不只選最差情況？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 6.3: Warehouse ===== -->
+<div id="ex3-warehouse" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">6.3</div>
+        <div>
+            <h2>Example 3 — Warehouse Mapping Layout &amp; Rationale</h2>
+            <p>App 6, §18.3 | 倉庫建圖佈局與理由</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source</span>
+                <h3>Basic Configuration</h3>
+                <p>Start with basic room probes ensuring ≤30 ft (9 m) vertical and horizontal separation. Then add probes at areas of restricted airflow from racks, drums, tanks, or HVAC direction.</p>
+                <h3>Empty vs. Full State</h3>
+                <p>Warehouses require both empty and full mapping. In warehouses, <strong>volume</strong> (not mass) is the primary factor affecting airflow patterns. Full state may be simulated with empty cartons/boxes to obstruct airflow as actual product would. Exception: where central heating/cooling relies on wall-side racking as insulation, thermal mass matters and a representative section should be loaded with simulated thermal mass.</p>
+                <h3>18.3.1 Load Testing Considerations</h3>
+                <ul>
+                    <li>Is the area used to condition material, or does material arrive already within spec?</li>
+                    <li>Worst case — empty store receiving max load at most extreme permitted condition, or fully loaded store where thermal mass/volume impedes airflow?</li>
+                    <li>Doors held open for maximum specified time in extreme environmental conditions?</li>
+                    <li>Testing during simulated cooling equipment component failures is encouraged to support continued-use decisions during operational failures.</li>
+                </ul>
+                <h3>18.3.2 Summer / Winter Seasonal Testing</h3>
+                <p>Organizations may use risk assessment to determine if seasonal testing is required. Risk mitigation factors that can justify single-season testing include:</p>
+                <ul>
+                    <li>Robust HVAC design software used to calculate performance</li>
+                    <li>Commissioning confirmed component performance (fan volumes, coil capacities)</li>
+                    <li>Monitoring sensor density provides "continuous mapping" — deviations would be visible</li>
+                    <li>External temperature extremes &lt;±6°C (±10°F) above normal for &lt;3 hours</li>
+                </ul>
+                <p>Unless in a temperate climate not subject to extremes, mapping should be performed in both summer and winter. If initial mapping is in one extreme, supplement within year 1 for the opposite season. Cold rooms (controlled environment) may be mapped once if monitoring provides adequate assurance of internal conditions.</p>
+                <p>The rationale for load and seasonal testing must be reviewed and approved by the Quality Unit and area/System Owner.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>倉庫建圖與冰箱的關鍵差別</h3>
+                <div class="term-box">
+                    <h4>體積 vs. 質量的影響</h4>
+                    <p>倉庫中，貨架/箱體的<strong>體積</strong>（阻礙氣流）比<strong>質量</strong>（熱緩衝）更重要。因此空紙箱可充當 simulated load，降低成本。但若 HVAC 依賴牆側貨架隔熱，熱質就變重要。</p>
+                </div>
+                <div class="note-box">
+                    <h4>季節性建圖判斷</h4>
+                    <p>台灣夏季高溫（>35°C）、冬季低溫（北部可達 10°C 以下）差距顯著，超出 ±6°C / 3小時的門檻。CDMO 在台灣通常需要夏冬兩季建圖，除非廠房 100% 在全年控溫建築內。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：「連續建圖」效果</h4>
+                    <p>若永久監測感測器密度夠高，日常監測數據等同於持續建圖。異常會被即時發現，無需單獨季節性建圖。這是在足夠監測密度下的風險豁免依據。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>Practice Questions 練習思考</h4>
+                    <ol>
+                        <li>你的 CDMO 倉庫位於有冷暖空調的廠房內，外牆無直接日曬暴露——你如何在 IQ/OQ 協議中論證僅需進行一次季節性建圖？需要哪些文件？</li>
+                        <li>空倉庫滿載空紙箱與實際滿載藥品原料，哪個代表更嚴苛的「最差情況」？理由為何？</li>
+                        <li>如果建圖後發現監測點位的數據顯示其中一角持續接近高溫警報限，你的第一個行動是什麼？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 6.4: Test Protocol Elements ===== -->
+<div id="ex4-protocol" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">6.4</div>
+        <div>
+            <h2>Example 4 — Test Document / Protocol Elements</h2>
+            <p>App 6, §18.4 | 測試協議必備要素</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source</span>
+                <h3>Required Protocol Elements (A–K)</h3>
+                <ol type="A">
+                    <li><strong>System definition &amp; instrument calibration:</strong> Instrument response time ≤63.2% time constant in 15 sec (IEST-RP-CC006.3) for strict environments = 75 sec to 99%. Confirm compliance with 21 CFR Part 11 / EudraLex Annex 11 for electronic records.</li>
+                    <li><strong>Facility operations:</strong> Define static vs. dynamic activities (e.g., door openings, people activity) and control system parameters (set points, operational limits).</li>
+                    <li><strong>Acceptance criteria:</strong> Define expected results appropriate to the system.</li>
+                    <li><strong>Probe types and locations:</strong> Document the rationale for all probe locations as developed in the mapping strategy.</li>
+                    <li><strong>Load test definition:</strong> Define the sequence of loading and unloading.</li>
+                    <li><strong>Issue resolution:</strong> Define how test deviations or unexpected results will be investigated and resolved.</li>
+                    <li><strong>Pre-test requirements:</strong> Commissioning completion, calibration certificates, signage, staff training records.</li>
+                    <li><strong>Test steps:</strong> Map under various operational states — defrost cycles, switchover between redundant systems, door openings, power loss, people activity.</li>
+                    <li><strong>Start/stop times:</strong> Record actual test start and stop times.</li>
+                    <li><strong>Testers:</strong> Record names of all personnel conducting the test.</li>
+                    <li><strong>Data analysis space:</strong> Provide space in the protocol for analysis of results with recommendations for corrective action if needed.</li>
+                </ol>
+                <div class="concept-box" style="background:#e8f5e9;border-left:4px solid #4caf50;">
+                    <h4 style="color:#2e7d32;">Instrument Response Time Note</h4>
+                    <p>T₆₃.₂% ≤ 15 sec → T₉₉% ≤ 75 sec (five time constants). The recording system must respond faster than the conditions change to get accurate data of equipment performance.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>協議架構解析</h3>
+                <div class="term-box">
+                    <h4>為何 11 個要素缺一不可</h4>
+                    <p>建圖協議是 IQ/OQ 文件的核心。稽核時最常被問到：<br>
+                    • A：儀器校正紀錄是否涵蓋建圖期間？<br>
+                    • D：探針位置的選擇理由是否有書面記載？<br>
+                    • F：測試偏差如何處理？是否有 CAPA？</p>
+                </div>
+                <div class="note-box">
+                    <h4>21 CFR Part 11 / Annex 11</h4>
+                    <p>電子數據完整性要求：建圖數據若以電子方式記錄，必須符合稽核追蹤、原始數據不可刪改的要求。CDMO 常見的系統如 DeltaTRAK、Ellab、Sensitech — 需確認系統已驗證。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：協議如劇本</h4>
+                    <p>A-G = 前期準備，H = 演出過程，I/J = 舞台記錄，K = 演後檢討。任何一環缺失，稽核就會問「這個場景沒有記錄，你怎麼知道當時發生了什麼？」</p>
+                </div>
+                <div class="practice-box">
+                    <h4>Practice Questions 練習思考</h4>
+                    <ol>
+                        <li>你的建圖感測器 T₆₃.₂% = 25 秒，超出建議值。你如何在協議中處理這個偏差——接受還是替換？</li>
+                        <li>建圖過程中 HVAC 意外停機 30 分鐘後恢復，你的協議要素 F 應如何記錄，以及這段數據是否納入分析？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 7.1: Periodic Review ===== -->
+<div id="app7-periodic" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">7.1</div>
+        <div>
+            <h2>Appendix 7 — Periodic Review of Controlled Temperature Chambers</h2>
+            <p>App 7, §19.1 | 受控溫度腔體定期審查</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source</span>
+                <h3>Categorization System</h3>
+                <p>Systems are categorized based on <strong>operating temperature range</strong> and <strong>material stored</strong>:</p>
+                <ul>
+                    <li><strong>Material Type A:</strong> API, drug product, stability samples, cool/hot packs (unverified before use)</li>
+                    <li><strong>Material Type B:</strong> WIP, reference standards, critical reagents, raw materials</li>
+                    <li><strong>Material Type C:</strong> EM supplies, reagents, media, test materials</li>
+                </ul>
+                <table>
+                    <caption style="text-align:left;font-size:0.85rem;color:#4a5568;margin-bottom:0.4rem;">Table 19.1 — Review Category Based on Material &amp; Temperature Range</caption>
+                    <thead>
+                        <tr>
+                            <th>Material Type</th>
+                            <th>Precision Unit (≤±6°C range)</th>
+                            <th>Standard Unit (&gt;±6°C range)</th>
+                            <th>Conditioned Room (CRT per USP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A</strong></td><td>Category 1</td><td>Category 2</td><td>Category 2</td></tr>
+                        <tr><td><strong>B</strong></td><td>Category 2</td><td>Category 2</td><td>Category 3</td></tr>
+                        <tr><td><strong>C</strong></td><td>Category 2</td><td>Category 3</td><td>Category 3</td></tr>
+                    </tbody>
+                </table>
+                <h3>Review Frequency</h3>
+                <ul>
+                    <li><strong>Category 1:</strong> Periodic review ≤3 years from last review</li>
+                    <li><strong>Category 2:</strong> No formal periodic review; system performance verification via defined maintenance job plan</li>
+                    <li><strong>Category 3:</strong> No performance verification or periodic review required</li>
+                </ul>
+                <h3>Method 1 — Risk-Based Report</h3>
+                <p>Reviews three aspects: (1) Internal layout &amp; loading, (2) Insulation, (3) Cooling system. Each aspect has defined review criteria and documented conclusions. Key sub-checks include:</p>
+                <ul>
+                    <li>Racking/storage locations unchanged vs. C&amp;Q file</li>
+                    <li>Stored material size/mass unchanged vs. test strategy</li>
+                    <li>Annual thermal scan of shell (no hot/cold spots vs. baseline)</li>
+                    <li>Utility penetrations — no leakage or condensation</li>
+                    <li>Door, seals, and vinyl curtain condition</li>
+                    <li>Alarm history review — frequency/severity acceptable</li>
+                    <li>PM confirms duty/standby function and refrigeration parameters within tolerance</li>
+                    <li>Independent monitoring data shows no degradation trend</li>
+                    <li>Alarm set points and delay periods verified at correct values</li>
+                </ul>
+                <p>Report conclusion must state if the system is <em>suitable for continued use</em>. If not, issue a nonconformance. Must be approved by System Owner (or delegate) and Quality Unit.</p>
+                <h3>Method 2 — Remapping</h3>
+                <p>Alternative to Method 1. Remapping must consider: loading/unloading impact, load effect on temperature distribution, and defrost impact. Results used to confirm or modify monitoring probe locations. Same approval requirements apply.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>分類邏輯解讀</h3>
+                <div class="term-box">
+                    <h4>分類決定審查負擔</h4>
+                    <p>CDMO 中大多數冰箱（2–8°C）存放 API 或藥品屬 Type A + Precision Unit = <strong>Category 1</strong>，最嚴格，每3年必須審查一次。CRT 原料倉存放 WIP 屬 Type B + CRT = <strong>Category 3</strong>，無需定期審查。正確分類可大幅節省合規資源。</p>
+                </div>
+                <div class="note-box">
+                    <h4>方法一 vs. 方法二的選擇</h4>
+                    <p><strong>方法一（風險評估報告）</strong>：適合系統穩定、無重大變更、監測數據趨勢正常的情況。成本低、時間短。<br>
+                    <strong>方法二（重新建圖）</strong>：適合有重大變更（如層架重排、新增負荷類型）或方法一無法排除疑慮時。數據最全，但成本高。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：健康檢查模式</h4>
+                    <p>Category 1 = 每年全身健康檢查（含復雜项目），Category 2 = 定期體重血壓自測，Category 3 = 自覺健康即可。分類後按對應頻率執行，不過度、不漏失。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>Practice Questions 練習思考</h4>
+                    <ol>
+                        <li>你的 CDMO 有一台 -20°C 冰箱存放 EM 培養基（Type C）。它屬於哪個 Category？需要定期重新建圖嗎？</li>
+                        <li>方法一審查時，你發現過去 3 年內有 4 次 Quality Alarm（超出溫度限值）。這如何影響審查結論，以及後續行動？</li>
+                        <li>一台冰箱的層架位置在 3 年間被操作人員移動了兩次（非 Change Control）。你的定期審查報告應如何記錄，並建議什麼行動？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== APPENDIX 7.2: Job Hazard Analysis ===== -->
+<div id="app7-jha" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">7.2</div>
+        <div>
+            <h2>Appendix 7 — Job Hazard Analysis: Formaldehyde Disinfection</h2>
+            <p>App 7, §19.2 | 工作危害分析範例（甲醛消毒）</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-header col-en">English Source — JHA Summary</span>
+                <p>Example JHA for formaldehyde vapor disinfection of enclosure-type equipment. Illustrates the GMP expectation that hazardous maintenance tasks have documented hazard identification and safe job actions before work begins.</p>
+                <h3>Key JHA Structure</h3>
+                <table>
+                    <thead>
+                        <tr><th>Work Operation</th><th>Representative Hazard</th><th>Key Control</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Preliminary Setup</td>
+                            <td>Workers untrained; units not cleared</td>
+                            <td>SOP training verification; confirm units cleared and disconnected</td>
+                        </tr>
+                        <tr>
+                            <td>2. Setup</td>
+                            <td>Enclosure breach; equipment malfunction</td>
+                            <td>Inspect for damage; seal breaches; function-test all equipment; set enclosure to -0.005" to -0.01" WC negative pressure with in-line adsorber filter</td>
+                        </tr>
+                        <tr>
+                            <td>3. Vapor Generation</td>
+                            <td>Personnel formaldehyde exposure</td>
+                            <td>Post signs; continuous room monitoring; if &gt;0.2 ppm, don full PPE and neutralize immediately</td>
+                        </tr>
+                        <tr>
+                            <td>4. Exposure Period (overnight)</td>
+                            <td>Lab/personnel exposure; power loss</td>
+                            <td>Post overnight signs; enclosures sealed under negative pressure; adsorber filter on only exhaust path</td>
+                        </tr>
+                        <tr>
+                            <td>5. Neutralization &amp; Ventilation</td>
+                            <td>Power loss during venting</td>
+                            <td>On-site during process; minimize residual exposure; wait for power restoration before evacuating residue</td>
+                        </tr>
+                        <tr>
+                            <td>6. Restore Conditions</td>
+                            <td>Residual formaldehyde / ammonium bicarbonate</td>
+                            <td>Wipe all exposed surfaces per SOP 82; confirm interior &lt;0.5 ppm before release</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem;color:#4a5568;margin-top:0.5rem;"><em>Required PPE: lab coat, safety glasses. Supplemental: Tyvek suit, full-face respirator with formaldehyde cartridges, gloves.</em></p>
+            </div>
+            <div class="right-column">
+                <span class="column-header col-zh">中文說明 &amp; CDMO 脈絡</span>
+                <h3>為什麼附錄包含 JHA？</h3>
+                <div class="term-box">
+                    <h4>GMP 中的安全文件要求</h4>
+                    <p>CTC 設備的建圖/消毒作業涉及受控物質（甲醛）。監管機構在廠房稽核時會查看：作業前是否有危害評估、操作人員是否接受特定任務訓練、緊急應變程序是否形成文件。</p>
+                </div>
+                <div class="note-box">
+                    <h4>CDMO 實務：甲醛消毒的替代方案</h4>
+                    <p>現代 CDMO 多改用 VHP（汽化過氧化氫）取代甲醛消毒，因 VHP 殘留風險低、分解為水和氧氣、監管接受度更高。JHA 架構（危害 → 控制）相同，僅物質和 PPE 不同。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>比喻：JHA 如飛機前置檢查表</h4>
+                    <p>不是因為每次都有意外，而是系統性確保每個步驟的危害都被辨識並有對應控制措施。形成文件後，即使原作業員離職，接班人員也能安全執行。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ICH STABILITY TABLE ===== -->
+<div id="ich-table" class="chapter-block section-anchor">
+    <div class="chapter-header">
+        <div class="chapter-badge">ICH</div>
+        <div>
+            <h2>ICH Stability Storage Conditions — CTC Context</h2>
+            <p>ICH Q1A(R2) 穩定性試驗條件摘要 | 與 CTC 對應關係</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="note-box" style="margin-bottom:1rem;">
+            <h4>Context 為何此表與 CTC 相關</h4>
+            <p>穩定性樣品是 CTC 中最常見的 Type A 儲存物料，也是 Category 1 的主要驅動因素。CTC 的溫濕度設定點和允差必須確保能夠維持 ICH 規定的穩定性儲存條件。建圖結果必須證明整個空間能在以下條件內均勻運行。</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Storage Type / 儲存類型</th>
+                    <th>Conditions / 條件</th>
+                    <th>Minimum Duration / 最短期限</th>
+                    <th>Typical CTC Equipment / 對應設備</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Long-term (長期)</strong></td>
+                    <td>25°C ± 2°C / 60% RH ± 5%</td>
+                    <td>12 months (NDA); up to 60 months</td>
+                    <td>CRT room / stability chamber</td>
+                </tr>
+                <tr>
+                    <td><strong>Intermediate (中間)</strong></td>
+                    <td>30°C ± 2°C / 65% RH ± 5%</td>
+                    <td>6 months</td>
+                    <td>Stability chamber (zone IVa/IVb countries)</td>
+                </tr>
+                <tr>
+                    <td><strong>Accelerated (加速)</strong></td>
+                    <td>40°C ± 2°C / 75% RH ± 5%</td>
+                    <td>6 months</td>
+                    <td>Walk-in or reach-in stability chamber</td>
+                </tr>
+                <tr>
+                    <td><strong>Refrigerated (冷藏)</strong></td>
+                    <td>5°C ± 3°C</td>
+                    <td>12 months (long-term) / 6 months (accl. at 25°C)</td>
+                    <td>Refrigerator / cold room</td>
+                </tr>
+                <tr>
+                    <td><strong>Frozen (冷凍)</strong></td>
+                    <td>-20°C ± 5°C</td>
+                    <td>12 months minimum</td>
+                    <td>Freezer / ultra-low freezer</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:0.85rem;color:#4a5568;margin-top:0.5rem;"><em>Source: ICH Q1A(R2) Stability Testing of New Drug Substances and Drug Products. ±2°C and ±5%RH are the ICH accuracy requirements — these directly determine the CTC's mapping acceptance criteria.</em></p>
+        <p style="font-size:0.85rem;color:#4a5568;margin-top:0.25rem;"><em>來源：ICH Q1A(R2)。±2°C 與 ±5%RH 的精度要求直接決定 CTC 建圖合格標準的設定。</em></p>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</p>
+    <p style="font-size:0.8rem;opacity:0.7;">Appendices 6 &amp; 7 | pp. 92–108 | SterileGMP Knowledge Hub</p>
+    <p style="font-size:0.75rem;opacity:0.6;margin-top:0.5rem;">© ISPE 2016. Educational commentary © SterileGMP Knowledge Hub 2026. For learning purposes only.</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+
+</body>
+</html>

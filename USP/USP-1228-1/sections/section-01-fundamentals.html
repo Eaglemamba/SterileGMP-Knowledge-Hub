@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1228.1〉 - Section 1: Fundamentals &amp; Process Control</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1: Fundamentals &amp; Process Control | 基本原理與製程控制</h1>
+    <div class="subtitle">USP General Chapter 〈1228.1〉 Dry Heat Depyrogenation</div>
+    <div class="page-info">USP-NF 〈1228.1〉 | Pages 2–3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解乾熱去熱原中空氣熱容量有限的影響，以及對裝載均勻性的要求。</li>
+        <li>掌握 F<sub>H</sub> 值（乾熱去熱原劑量計量單位）的定義、計算方式及其實務意義。</li>
+        <li>理解 z 值 (z-value) 在乾熱去熱原中的定義，以及標準 z 值 50°C 的應用。</li>
+        <li>能夠解釋製程控制（溫度感測器配置、保溫時間設計）如何確保去熱原效果的一致性。</li>
+    </ul>
+</div>
+
+<!-- SECTION: DRY HEAT DEPYROGENATION FUNDAMENTALS -->
+<div class="section-title">Dry Heat Depyrogenation Fundamentals 乾熱去熱原基本原理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>DRY HEAT DEPYROGENATION FUNDAMENTALS</h3>
+
+        <p>Dry heat depyrogenation uses air first to heat and then to cool the items. The <span class="key-term">limited heat capacity of dry air</span> results in relatively slow heating and cooling of the load items. Variability in <span class="key-term">temperature distribution</span> in dry heat ovens and tunnels is typically much higher than that observed in moist heat systems. The limited heat capacity of air requires that items in ovens be placed in the same locations as confirmed acceptable in the cycle development/validation effort. <span class="key-term">Packing and thermal mass</span> will also play critical roles in temperature management.</p>
+
+        <p>Caution must also be exercised with varying load mass and distribution as in some instances (resulting from oven design, airflow characteristics, and control probe position) <span class="key-term">minimum load sizes</span> may result in process variability.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 乾熱 vs 濕熱的溫度分佈差異</h4>
+            <p>乾熱與濕熱（蒸汽滅菌）的最大差異在於<strong>熱傳導介質</strong>的熱容量：</p>
+            <ul>
+                <li><strong>飽和蒸汽</strong>：潛熱 (Latent Heat) 大，凝結時釋放大量熱量，溫度均勻性極佳（通常 ±0.5°C 以內）</li>
+                <li><strong>乾熱空氣</strong>：熱容量低，對流傳熱效率差，溫度分佈變異可達 ±15°C 或更大</li>
+            </ul>
+            <p>這就是為什麼乾熱製程對裝載位置、熱質量 (Thermal Mass) 和氣流特性的要求特別嚴格。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 熱容量差異的生活比喻</h4>
+            <p>把手放進 100°C 的烤箱（乾熱），你可以維持幾秒不燙傷；但把手放進 100°C 的蒸汽，瞬間就嚴重燙傷。這說明蒸汽的熱傳導能力遠遠優於乾熱空氣——蒸汽凝結時釋放的潛熱讓熱能快速、均勻地傳遞到物品。乾熱空氣的熱傳導就像吹熱風，效果慢且不均勻。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 最小負載量的矛盾</h4>
+            <p>USP 特別警告：<strong>最小負載量反而可能造成製程變異</strong>。這初看起來有點違反直覺，原因是：</p>
+            <ul>
+                <li>負載量少時，熱質量小，烘箱的氣流和溫控探針的位置影響更顯著</li>
+                <li>空腔（無物品的空間）氣流特性與滿載時不同，可能造成局部過熱或冷點</li>
+                <li>因此驗證時必須針對最大與最小負載量分別進行</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼乾熱烘箱的溫度分佈變異（±15°C）遠大於高壓蒸汽滅菌鍋（±0.5°C）？請從熱傳導機制解釋。</li>
+                <li>「熱質量」(Thermal Mass) 的概念如何影響乾熱去熱原的製程設計？如果換用更厚的玻璃瓶，需要調整哪些製程參數？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION: DEPYROGENATION PROCESS CONTROL -->
+<div class="section-title">Depyrogenation Process Control 去熱原製程控制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>DEPYROGENATION PROCESS CONTROL</h3>
+
+        <p>Process temperatures in dry heat depyrogenation are controlled by <span class="key-term">calibrated temperature sensors</span> placed at specific locations within the equipment. The exposure portion of the process is designed to attain a <span class="key-term">minimum dwell time</span> at a predefined minimum temperature ensuring that depyrogenation conditions are adequately uniform. The defined dwell time is determined by using measurement devices (e.g., <span class="key-term">thermocouples</span>) directly in contact with the items to be depyrogenated during development. The inactivation of bacterial endotoxins by dry heat involves the control of only two parameters: time and temperature.</p>
+
+        <p>The simplicity of process control for these parameters provides a predictable depyrogenation effect. Once validated, a clear understanding of the inputs to the system, meaning <span class="key-term">resident endotoxin load</span> on incoming materials, and outputs of the system, meaning reduction of resident levels of endotoxin to safe levels, is more meaningful than spiking with unnaturally high levels of challenge material and looking for a prescriptive requirement for log reduction. The <span class="key-term">dosimetric measurement</span> for dry heat depyrogenation processes is the <span class="key-term">F<sub>H</sub> unit</span>. An F<sub>H</sub> = 1 is defined as the depyrogenation effect achieved by 1 min of heating at 250°. The F<sub>H</sub>-value enables the integration of temperature over the process duration (time). By convention, the rate at which depyrogenation destruction rate (<span class="key-term">D-value</span>) varies as a function of temperature change is defined as the <span class="key-term">z-value</span>. The z-value for dry heat depyrogenation has been shown to be in the range of 45°–55°. For the purposes of this chapter, 50° is used as a standard z-value. Other values may be used. (1,2)</p>
+
+        <p>The F<sub>H</sub> approach is used as a means to compare dry heat depyrogenation effects produced by processes that operate at varying temperatures. Basic mathematics can be used to calculate the depyrogenation effect produced at temperatures other than 250° to determine equivalence to that provided at 250°.</p>
+
+        <p>Using a reference temperature of 250° and an assumed z-value of 50°, the F<sub>H</sub> calculation can be determined:</p>
+
+        <ul>
+            <li>F<sub>H</sub> = accumulated destruction</li>
+            <li>t<sub>0</sub> = process start time</li>
+            <li>t<sub>f</sub> = process end time</li>
+            <li>T = temperature at each time increment</li>
+            <li>Δt = time interval between temperature measurements</li>
+        </ul>
+
+        <p>Summing the instantaneous temperature contributions over the entire depyrogenation process allows for the calculation of the overall process efficacy or F<sub>H</sub> delivered over the course of the process. Many commercial data loggers are equipped with software that enables them to make this calculation and integrate the total F<sub>H</sub> accumulated during a process. The F<sub>H</sub> calculation is used during <span class="key-term">initial validation</span>, <span class="key-term">validation maintenance</span>, and <span class="key-term">change control</span>. The mathematical principles of the F<sub>H</sub> calculation are essentially the same as those used to calculate lethality (F<sub>0</sub>) values in moist heat sterilization. F<sub>H</sub> values are used to confirm process consistency over time as correlation to endotoxin destruction is rarely possible.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — F<sub>H</sub> 值定義</h4>
+            <p><strong>F<sub>H</sub> 值 (Depyrogenation Value)</strong>：乾熱去熱原的劑量計量單位，表示製程累積的去熱原效果。</p>
+            <ul>
+                <li><strong>參考溫度</strong>：250°C</li>
+                <li><strong>定義</strong>：F<sub>H</sub> = 1 相當於在 250°C 加熱 1 分鐘的去熱原效果</li>
+                <li><strong>z 值</strong>：50°C（標準值，代表 D 值改變 10 倍所需的溫度變化量）</li>
+            </ul>
+            <p>這與濕熱滅菌的 F<sub>0</sub> 值（參考溫度 121°C，z = 10°C）概念完全平行，只是應用對象從細菌孢子改為細菌內毒素。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — F<sub>H</sub> 計算公式</h4>
+            <pre>
+F_H = Σ [ 10^((T - 250) / 50) × Δt ]
+
+其中：
+  T   = 每個時間點的測量溫度（°C）
+  Δt  = 相鄰溫度量測間的時間間隔（分鐘）
+  250 = 參考溫度（°C）
+  50  = 標準 z 值（°C）
+
+範例計算：
+  若在 300°C 加熱 1 分鐘：
+  F_H = 10^((300-250)/50) × 1 = 10^1 = 10
+
+  即在 300°C 加熱 1 分鐘 ≡ 在 250°C 加熱 10 分鐘
+  （F_H = 10）
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — F<sub>H</sub> vs F<sub>0</sub></h4>
+            <p>F<sub>H</sub> 和 F<sub>0</sub> 就像是兩種不同的「熱能貨幣」：</p>
+            <ul>
+                <li><strong>F<sub>0</sub>（濕熱滅菌）</strong>：以 121°C 為面額基準，z = 10°C，消滅細菌孢子</li>
+                <li><strong>F<sub>H</sub>（乾熱去熱原）</strong>：以 250°C 為面額基準，z = 50°C，破壞細菌內毒素</li>
+            </ul>
+            <p>兩者都是累積「熱能貢獻」的工具，讓你能比較不同溫度-時間組合的等效效果。z 值越大，表示溫度變化對效果影響較小（內毒素對溫度變化的敏感度比孢子低很多）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — USP 對「挑戰試驗」的重新定位</h4>
+            <p>這一段是 USP 〈1228.1〉 的重要觀點轉變：傳統上驗證去熱原製程需要進行<strong>加標挑戰試驗 (Spike Challenge Test)</strong>，要求達到特定對數降低值（如 3-log reduction）。</p>
+            <p>但 USP 指出：一旦製程已驗證，<strong>了解來料的內毒素殘留量（輸入）並確認降至安全水準（輸出）</strong>比人工加標非自然高濃度的挑戰材料更有意義。</p>
+            <p>這種以「劑量學」(Dosimetric) 為基礎的方法，強調製程理解而非單純的挑戰合格，符合現代基於風險的驗證思維。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — z 值的意義</h4>
+            <p><strong>z 值 (z-value)</strong>：使 D 值（滅活速率）改變 10 倍所需的溫度變化量（°C）。</p>
+            <ul>
+                <li>乾熱去熱原 z 值範圍：45°–55°C，標準使用 50°C</li>
+                <li>濕熱滅菌（孢子）z 值：約 10°C</li>
+            </ul>
+            <p>z 值越大，表示需要更大的溫度變化才能顯著影響破壞速率。細菌內毒素（z=50°C）對溫度的敏感度遠低於細菌孢子（z=10°C），因此在乾熱製程中，溫度略有波動對 F<sub>H</sub> 的影響相對較小。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個乾熱去熱原製程的設定為 300°C / 10 分鐘，請計算 F<sub>H</sub> 值（假設溫度恆定，z = 50°C）。這相當於在 250°C 加熱多少分鐘？</li>
+                <li>為什麼 USP 說 F<sub>H</sub> 值比「直接測定內毒素降低量」更實用？在日常批次製造中，哪種方法更容易執行？</li>
+                <li>若 z 值改為 45°C（比標準 50°C 更小），對同樣的溫度-時間組合，F<sub>H</sub> 計算結果會更大還是更小？請解釋原因及其驗證意涵。</li>
+            </ol>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — F<sub>H</sub> 在 CDMO 驗證策略中的角色</h4>
+            <p>在 CDMO 的乾熱去熱原驗證中，F<sub>H</sub> 扮演以下關鍵角色：</p>
+            <ul>
+                <li><strong>初始驗證</strong>：建立製程的最低可接受 F<sub>H</sub> 值，作為驗證通過標準</li>
+                <li><strong>驗證維護</strong>：定期量測確認 F<sub>H</sub> 值在驗證範圍內，確保製程持續受控</li>
+                <li><strong>變更管控</strong>：設備維修、更換元件或製程參數調整後，重新計算並確認 F<sub>H</sub> 是否符合要求</li>
+                <li><strong>日常放行</strong>：每批次確認溫度與時間參數均符合驗證範圍，等同確認 F<sub>H</sub> 達標</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>乾熱空氣熱容量有限，導致溫度分佈變異遠大於濕熱製程（可達 ±15°C），因此裝載位置固定、熱質量管理至關重要。</li>
+        <li>F<sub>H</sub> 值是乾熱去熱原的劑量計量單位，定義為 250°C 下加熱 1 分鐘的效果（F<sub>H</sub>=1），標準 z 值為 50°C。</li>
+        <li>F<sub>H</sub> 計算公式與濕熱滅菌的 F<sub>0</sub> 平行：透過積分溫度對時間的貢獻，比較不同溫度-時間組合的等效去熱原效果。</li>
+        <li>USP 強調製程理解（來料內毒素輸入與輸出安全水準）比人工加標挑戰試驗更具意義，體現現代劑量學驗證思維。</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+</div>
+</div><!-- end main-content -->
+
+</body>
+</html>

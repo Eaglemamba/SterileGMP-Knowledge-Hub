@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Process Gases — Ch7–9: Risk Assessment, Final Design, Commissioning & Operation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapters 7–9: Risk Assessment, Final Design, Commissioning &amp; Operation</h1>
+    <div class="subtitle">第七至九章：風險評估、最終設計、試運行確效與日常操作</div>
+    <div class="page-info">ISPE Good Practice Guide: Process Gases | p81–p98</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解品質風險管理 (QRM) 如何應用於製程氣體系統，以保障產品品質與病患安全</li>
+        <li>掌握 FMEA 風險評估框架：風險識別、風險分析、風險評估與風險控制的四步驟循環</li>
+        <li>了解工程移交文件包 (Engineering Turnover Package, ETOP) 的結構與查核重點</li>
+        <li>熟悉氣體系統試運行 (Commissioning) 與裝置確效/操作確效 (IQ/OQ) 的差異與銜接關係</li>
+        <li>掌握績效測試 (Performance Testing) 對各使用點 (POU) 氣體品質的驗收標準</li>
+        <li>了解維護與校正計畫在 GMP 合規中的法規要求與最佳實務</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 7: RISK ASSESSMENT -->
+<!-- ============================================================ -->
+
+<div class="section-title">Chapter 7 — Risk Assessment 風險評估</div>
+
+<!-- 7.1 Introduction -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">7.1 Introduction</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">risk assessment</span> process is normally part of the <span class="key-term">Quality Risk Management (QRM)</span> effort. The Quality Risk Management process, as applied to a process gas system, should ensure the reliable delivery of gas meeting the specifications to <span class="key-term">POUs</span>. The delivery system should not present a high risk of affecting defined quality attributes of the process gas supplied; therefore assuring suitability for the application for which the process gas is used.</p>
+        <p>This chapter follows the science- and risk-based principles described in <span class="key-term">ICH Q9</span>, ASTM E2500-07, and the ISPE Guide on the Science and Risk-Based Approach for the Delivery of Facilities, Systems, and Equipment.</p>
+        <p>Risk management should reduce risks to an acceptable level. Complete elimination of risk is neither practical nor necessary. In a process gas system, sources of risks to product quality and patient safety include:</p>
+        <ul>
+            <li>distribution system design</li>
+            <li>operation of system safety features</li>
+            <li>method of generation or source of a gas</li>
+        </ul>
+        <p>In order to apply a science- and risk-based approach, a thorough understanding of the product/process requirements, gas generation/source attributes, and the storage and distribution system are required. The utilization of process knowledge and understanding, which considers both <span class="key-term">Critical Quality Attributes (CQAs)</span> and <span class="key-term">Critical Process Parameters (CPPs)</span>, will help to optimize the design of a new gas system, or revisions to existing systems.</p>
+        <p>Relevant CQAs and CPPs should be defined. They will typically be determined by the application for which a process gas is used.</p>
+
+        <p style="margin-top:1rem;"><strong>Table 7.1 — Typical Quality Attributes for a Process Gas</strong></p>
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Quality Attribute</th>
+                <th>Specification / Guideline</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Gas Purity</td>
+                <td>Applicable for inert gases such as Nitrogen, as per USP/EU Monograph</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Moisture (Water Aerosols or Vapor)</td>
+                <td>Non-sterile or sterile applications — NMT 2.5 g/kg (−40°F/−40°C dewpoint)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Hydrocarbons (Oil Content)</td>
+                <td>NMT 0.5 mg/m³</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Other Chemical Impurities (as applicable)</td>
+                <td>Based on generation technology and/or USP/EU Monograph</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Microbial Count (Non-sterile Applications)</td>
+                <td>Guideline limits based on product bioburden; typical NMT 5 cfu/m³</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Microbial Count (Sterile Applications)</td>
+                <td>Per viable particle requirements for Grade area (Grade A, A/B, B, or C)</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Particle Count (Viable and Non-viable)</td>
+                <td>Typically equal to the at-rest condition of the area served</td>
+            </tr>
+        </table>
+        </div>
+
+        <p>The primary drivers of a process gas system's design are: (1) capacity, (2) usage, (3) output quality. A risk assessment should identify risk resulting from specific and critical aspects of a proposed design. Identified critical aspects should be the focus of the subsequent verification effort.</p>
+        <p>A risk assessment may be simplified for existing systems (i.e., <span class="key-term">legacy systems</span>), where system functionality and capacity have been demonstrated during the period of use, and the system operating range, performance capabilities, etc., are known.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — QRM 與製程氣體</h4>
+            <p><strong>品質風險管理 Quality Risk Management (QRM)：</strong>源自 ICH Q9，是一套系統化識別、評估、控制品質風險的方法論。應用於氣體系統時，核心目標是確保每個使用點 (POU) 都能穩定接收符合規格的氣體。</p>
+            <p><strong>風險的三個來源：</strong>設計缺陷、安全系統失效、氣體來源問題——這三者涵蓋了整個氣體系統的生命週期。</p>
+            <p><strong>CQA vs CPP 在氣體系統中：</strong>CQA 如露點、含油量、微生物計數；CPP 如壓力、流量、溫度。QRM 的本質是保護這些關鍵屬性不受風險影響。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把氣體系統的風險評估想像成<strong>醫院感染管控計畫 (CCS)</strong>：你無法消除所有細菌，但你可以識別高風險區域（手術室 vs 走廊），設定對應的控制措施，並持續監控。製程氣體 QRM 也是如此——不追求零風險，而是將風險降至可接受水準。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Note</h4>
+            <p>Table 7.1 的 CQA 列表非常實用：無菌應用 (Sterile) 的微生物計數要求必須符合所服務潔淨室等級的環境監控標準，例如 Grade A 區域的氣體就需達到 Grade A 的粒子規格。這是 CDMO 稽核中常被查核的重點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一條氮氣管線同時服務 Grade B 充填區和 Grade C 物料準備區，CQA 規格應以哪個等級為準？理由為何？</li>
+                <li>「完全消除風險既不實際也非必要」這句話的含義是什麼？在 CDMO 的商業環境中如何平衡？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.2 QRM for Process Gas Systems -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">7.2 Quality Risk Management for Process Gas Systems</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">Quality Risk Management</span> approach should be applied throughout the life cycle of a process gas system and is described within this Guide to support:</p>
+        <ul>
+            <li>development of the User Requirements</li>
+            <li>development and review of the process gas system design</li>
+            <li>determination of the scope of verification testing activities (commissioning, installation, functional, and performance testing)</li>
+            <li>determination of the optimum scope and scale of a calibration program</li>
+            <li>determination of appropriate preventive maintenance programs</li>
+            <li>determination of the scope and frequency of routine monitoring programs</li>
+            <li>to ensure assumptions made during the risk assessment were appropriate during system operation</li>
+        </ul>
+        <p>Risk management provides an opportunity to generate a rationale for scaling activities appropriately. Results may be used to justify reduction, increase, or the omission or inclusion of an activity.</p>
+        <p>The risk-based approach activities should be appropriately resourced and focused. Effort and time devoted to a risk management process should be commensurate with the potential impact on the supported business process.</p>
+        <p>The principles used for QRM may be used to review other (risk) areas such as:</p>
+        <ul>
+            <li>Environment, Health, and Safety (EHS)</li>
+            <li>identification of revalidation scope and frequency for existing systems</li>
+            <li>assessment of the potential impact of proposed changes</li>
+        </ul>
+        <p>Though, there is usually a desire to keep quality related aspects separate to facilitate future audit.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — QRM 的生命週期應用</h4>
+            <p>QRM 不是一次性的文件，而是貫穿氣體系統<strong>整個生命週期</strong>的持續活動：從 URS 撰寫、設計審查、試運行範圍決定、校正頻率設定、預防性維護計畫，到例行監控頻率調整，每個環節都由風險評估結果驅動。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 資源投入與風險成比例</h4>
+            <p>「投入的心力應與業務影響成比例」——這句話對 CDMO 特別重要。直接接觸產品的 Grade A 氣體系統，比工廠公用動力用壓縮空氣值得投入更多 QRM 資源。不要在低風險系統上過度確效，也不要在高風險系統上省略關鍵步驟。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>QRM 就像醫院的「分類系統 (Triage)」：急診室依病情嚴重程度分配醫療資源，而不是每個病人都用最高規格治療。氣體系統 QRM 也是如此——讓高風險的環節獲得充足驗證資源，低風險環節減少不必要的確效活動。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在 CDMO 接受新客戶委託時，常需要評估既有氣體系統是否適用於客戶產品。QRM 結果直接影響：是否需要追加確效測試、哪些 POU 需要加裝 POU 過濾器、預防性維護計畫是否需要調整。這些決策若有風險評估支撐，面對客戶稽核時更具說服力。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 7.3 Risk Assessment Process -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">7.3 Risk Assessment Process — 風險評估流程</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>7.3.1 Initiating a Risk Assessment</strong></p>
+        <p>Determining the risks associated with a process gas system requires an understanding of factors such as:</p>
+        <ul>
+            <li>site/organization standards and specifications</li>
+            <li>regulatory requirements</li>
+            <li>project approach (contracts, methods, timelines)</li>
+            <li>process/product requirements — used to determine required specification and potential risks</li>
+            <li>anticipated system design specifications: areas served, layout of distribution, environmental conditions at POU</li>
+            <li>system boundaries (what falls within scope)</li>
+        </ul>
+        <p>For existing process gas distribution systems (legacy systems), factors include:</p>
+        <ul>
+            <li>whether a single gas distribution system is shared between GMP and non-GMP applications</li>
+            <li>physical boundaries in place (non-return valves, filters) segregating critical and non-critical sections</li>
+            <li>available historical data (deviations, monitoring trends, performed changes)</li>
+            <li>design specifications: initial cleaning and commissioning specifications</li>
+        </ul>
+
+        <p style="margin-top:1rem;"><strong>The Risk Assessment process involves:</strong></p>
+        <ol>
+            <li>Risk Identification / Hazard Severity</li>
+            <li>Risk Analysis</li>
+            <li>Risk Evaluation</li>
+        </ol>
+
+        <p><strong>7.3.2 Risk Identification / Hazard Severity</strong></p>
+        <p>Risk identification involves the systematic use of data to identify hazards that could affect CPPs, CQAs, or critical aspects of a process gas system. Potential risks to typical product CQAs from a compressed air system include:</p>
+        <ul>
+            <li>hydrocarbon (oil vapor and particulate) content</li>
+            <li>increased moisture levels</li>
+            <li>viable particulates</li>
+            <li>non-viable particulates (other than hydrocarbon)</li>
+            <li>gaseous impurities</li>
+            <li><span class="key-term">process gas mix-up</span> (e.g., connection of oxygen container to nitrogen distribution system)</li>
+            <li>reverse flow</li>
+        </ul>
+
+        <p><strong>Risk Controls</strong> may include: (1) system design features, (2) procedural controls.</p>
+
+        <p><strong>7.3.3 Risk Analysis</strong></p>
+        <p>Risk analysis is the estimation of the risk associated with identified hazards. It is the qualitative or quantitative process of linking the <span class="key-term">severity</span> of a hazard, <span class="key-term">likelihood of occurrence</span>, and the ability to <span class="key-term">detect</span> harm.</p>
+        <p>A phased approach may be employed: initially using a qualitative assessment to differentiate low risks from medium to high risks, followed by quantitative scoring of medium-to-high risks.</p>
+
+        <p><strong>7.3.4 Risk Evaluation</strong></p>
+        <p>Risk evaluation compares the identified and analyzed risk against given risk criteria. Risk evaluations consider the strength of evidence for the three fundamental questions:</p>
+        <ol>
+            <li>What might go wrong?</li>
+            <li>What is the likelihood (probability) it will go wrong?</li>
+            <li>What are the consequences (severity)?</li>
+        </ol>
+        <p>Outcomes may be expressed qualitatively ("high," "medium," "low") or quantitatively (numeric ranking). Ranking systems should be pre-defined.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — FMEA 三要素</h4>
+            <p>氣體系統風險評估通常採用 <strong>FMEA (失效模式與影響分析)</strong> 架構，三個評分維度：</p>
+            <ul>
+                <li><strong>嚴重性 Severity (S)：</strong>失效後果對產品品質/病患安全的影響程度</li>
+                <li><strong>發生可能性 Occurrence (O)：</strong>在現有控制措施下，風險事件發生的機率</li>
+                <li><strong>可偵測性 Detection (D)：</strong>在危害發生後，被偵測到的難易度</li>
+            </ul>
+            <p>風險優先數 (RPN) = S × O × D，用於排序需要優先控制的失效模式。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>典型壓縮空氣系統 FMEA 範例</h4>
+            <pre>
+失效模式          S  O  D  RPN  控制措施
+壓縮機失效        4  2  2   16  備用機組+壓力警報
+過濾器堵塞        3  3  2   18  差壓監控+定期更換
+水分突破          4  2  1    8  露點連續監測+高警報
+N₂中混入O₂        5  1  1    5  止回閥+氣體分析儀
+油蒸氣污染        4  2  2   16  無油壓縮機+活性碳過濾
+微生物污染        4  1  3   12  POU過濾器+微生物監控
+
+S/O/D 評分 1-5（5=最高嚴重/最常發生/最難偵測）</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 氣體混用風險</h4>
+            <p><strong>Process gas mix-up（氣體混用）</strong>是評分嚴重性最高的風險之一：若氧氣容器錯接至氮氣分配系統，可能造成爆炸或產品氧化。控制措施包括：使用不同接頭規格、明確的顏色標示、接管前的 ID 測試程序，以及最終的 GC 分析確認。這在 CDMO 環境中是一個必須寫進 SOP 的管控項目。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>三步驟風險評估（識別→分析→評估）就像<strong>醫院的病例診斷程序</strong>：先列出所有可能症狀（識別），評估每個症狀的嚴重程度與發生機率（分析），最後決定是否達到需要治療的門檻（評估）。不是每個風險都需要立即處置，但每個高 RPN 的風險都必須有對應的控制措施。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在進行既有（legacy）氣體系統的風險評估時，歷史數據能發揮什麼作用？相比新系統，評估範圍會如何調整？</li>
+                <li>「逆流 (reverse flow)」風險在什麼情況下最容易發生？應採取哪些設計控制措施？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 7.4-7.6 Risk Control, Communication, Review -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">7.4–7.6 Risk Control, Communication &amp; Review</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>7.4 Risk Control</strong></p>
+        <p>Risk control includes decision making either to reduce risks or accept them, or both. The purpose of risk control is to reduce the risk to an acceptable level. The amount of effort applied to risk control should be proportional to the significance of the risk.</p>
+        <p>Risk control addresses the following questions:</p>
+        <ul>
+            <li>Is the risk above an acceptable level?</li>
+            <li>What can be done to reduce or eliminate the risk?</li>
+            <li>What is the appropriate balance of risk likelihood/controls?</li>
+            <li>Are new risks introduced as a result of the controls being applied?</li>
+        </ul>
+        <p>Risk reduction follows a hierarchy:</p>
+        <ol>
+            <li>reduction through design changes</li>
+            <li>reduction through procedural change</li>
+        </ol>
+        <p><strong>Potential for New or Increased Risk:</strong> The implementation of risk reduction measures can introduce new risks into a system or increase the significance of existing risks. After implementation, the results of a risk assessment should be reassessed.</p>
+        <p><span class="key-term">Risk acceptance</span> is a decision to accept risk. Risk acceptance can be formal (documented acceptance of residual risk) or passive (residual risks not specified).</p>
+
+        <p style="margin-top:1rem;"><strong>7.5 Risk Assessment Communication</strong></p>
+        <p>Risk communication should ensure that the results of a risk assessment are shared with relevant team members, the system owner, and senior management. Communication can occur at any stage of the risk management process.</p>
+        <p>The output and result of the <span class="key-term">Quality Risk Management</span> process should be appropriately documented and communicated. The risk assessment report may be used to assist in the definition of the scope of the required system verification.</p>
+        <p>The scores given in the risk assessment are normally based on the assumption that the controls defined are in place and operational; to accept the result of the risk assessment, the operation of the design controls should be verified and the procedural controls defined should be confirmed as being in place, with the relevant staff trained on the procedures.</p>
+
+        <p style="margin-top:1rem;"><strong>7.6 Risk Review</strong></p>
+        <p>The risk assessment should be <span class="key-term">periodically reviewed</span> to ensure that the scoring used reflects the operational experience with the system. The period between these re-evaluations should be defined and based on potential risk and the novelty of the system.</p>
+        <p>A periodic review may also be invoked by events such as changes in the system use or system modifications.</p>
+        <p>Data gathered during a risk assessment may be used to identify opportunities to decrease GMP risks. The results may be useful for product review, inspections, audits, or root cause failure investigations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 風險控制的層級優先順序</h4>
+            <p>ISPE 明確規定風險控制的優先順序：</p>
+            <ol>
+                <li><strong>設計變更（最優先）：</strong>從根本消除風險來源，例如改用無油壓縮機消除油污染風險</li>
+                <li><strong>程序控制（次之）：</strong>透過 SOP、人員訓練、警報設定等軟性控制降低風險</li>
+            </ol>
+            <p>這個優先順序與 EU GMP Annex 1 的污染控制策略 (CCS) 設計原則完全一致。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 風險評估的前提條件</h4>
+            <p>關鍵洞察：「風險評估分數假設控制措施已到位並運作中」——這意味著若驗收報告批准了風險評估，就等同於確認控制措施確實在運行。這是 CDMO 在設施稽核中必須能夠舉證的：你的 RPN 分數有多低，你的控制措施就需要有多健全的執行證據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 風險接受 vs 風險降低</h4>
+            <p>風險接受就像<strong>保險決策</strong>：你不會為了每一個可能的意外都買保險，但對高金額損失的風險（如氣體汙染批次報廢），你一定要有明確的保障措施。「被動接受」（從未定義殘餘風險）是不可接受的做法，就像開車不買任何保險。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 定期風險審查的觸發條件</h4>
+            <p>CDMO 實務中，以下事件應觸發風險評估審查：</p>
+            <ul>
+                <li>系統改建或管線變更（變更控制啟動）</li>
+                <li>新產品引入，改變了 POU 的使用目的</li>
+                <li>偏差事件或重複性 OOS 結果</li>
+                <li>定期（如每年）審查週期到期</li>
+                <li>監管機構視察後的改善要求</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若為了降低壓縮空氣含油風險而加裝額外過濾器，可能引入什麼新風險？</li>
+                <li>風險評估報告如何幫助定義系統確效 (Qualification) 的範圍？請舉一個具體例子。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 8: FINAL DESIGN / COMMISSIONING / IQ/OQ -->
+<!-- ============================================================ -->
+
+<div class="section-title">Chapter 8 — Final Design, Commissioning &amp; Qualification 最終設計、試運行與確效</div>
+
+<!-- 8.1 Introduction -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">8.1–8.2 Introduction &amp; Engineering Turnover Package (ETOP)</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>8.1 Introduction</strong></p>
+        <p>This section describes the installation, functional, and performance testing processes for process gas systems. These processes should demonstrate that a process gas system is <span class="key-term">"suitable for its intended purpose."</span></p>
+        <p>For process gas systems supplying product or product primary containers, performance testing should demonstrate that the supplied process gas quality meets the gas specifications required at the POUs.</p>
+        <p>Risk assessments may be used to develop an initial testing and ongoing performance monitoring strategy. Utilization of the results of a risk assessment can assist in optimizing system design, and define critical aspects of the system performance that require verification.</p>
+
+        <div class="quote-box">
+            "Process gas systems are intrinsically different from water and steam systems and any comparison with the requirements for these systems should be avoided. (From a quality perspective it is not usually critical to test for drainability/sloping, dead legs, Materials of Construction (MoC), or surface roughness.)"
+        </div>
+
+        <p><strong>8.2 Engineering Turnover Package (ETOP)</strong></p>
+        <p>The <span class="key-term">Engineering Turnover Package (ETOP)</span> is considered one of the main construction deliverables. The ETOP is composed of three sections:</p>
+
+        <p><strong>1. Construction Manager's Section</strong> — should contain:</p>
+        <ul>
+            <li>a copy of the basis of design (User Requirements)</li>
+            <li>a set of issue for construction drawings and specifications</li>
+            <li>a copy of the submittals</li>
+            <li>a copy of any relevant permits</li>
+            <li>a change record history</li>
+            <li>a Request for Information (RFI) history</li>
+            <li>the construction quality check records, including third party inspections where appropriate</li>
+            <li>a copy of the final (closed out) punch list</li>
+            <li>the formal contractors certificate of completion</li>
+        </ul>
+
+        <p><strong>2. Installation Contractor's Section</strong> — should contain:</p>
+        <ul>
+            <li>"red line" or "as built" record drawings and specifications</li>
+            <li>equipment list and instrument list</li>
+            <li>copies of calibration certificates or certificates of conformity</li>
+            <li>copies of warranties</li>
+            <li>welders certification or equivalent</li>
+            <li>weld procedures or equivalent</li>
+            <li>calibration certificates for construction equipment used</li>
+            <li>system and equipment operating and maintenance manuals</li>
+            <li>material certification/purchase orders and test records</li>
+        </ul>
+
+        <p><strong>3. Commissioning Section</strong> — should contain:</p>
+        <ul>
+            <li>walk down "as built" record drawings</li>
+            <li>verified equipment list and instrument list</li>
+            <li>commissioning report for the equipment/system/controls</li>
+            <li>initial system test records</li>
+        </ul>
+
+        <p>Monitoring the construction and completion of a project using the ETOP throughout the project to ensure timely and competent completion can save both time and money at the end of a project.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — ETOP 的角色</h4>
+            <p><strong>工程移交文件包 Engineering Turnover Package (ETOP)</strong> 是從「施工完成」到「確效開始」的橋樑文件。它的三個組成部分對應三個不同的責任方：</p>
+            <ul>
+                <li><strong>施工管理者：</strong>確保設計意圖被正確執行</li>
+                <li><strong>安裝承包商：</strong>提供設備安裝的完整證明文件</li>
+                <li><strong>試運行團隊：</strong>記錄系統初始性能基準</li>
+            </ul>
+            <p>ETOP 是 IQ 確效的主要資料來源——確效工程師從這裡取得圖面、設備清單、校正記錄，與現場實際狀況進行比對。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 常見稽核發現</h4>
+            <p>CDMO 在稽核中最常被查到的 ETOP 問題：</p>
+            <ul>
+                <li><strong>P&amp;ID 缺失或版本不一致：</strong>"As-built" 圖面與實際管路不符，尤其是後期的系統改建未更新 P&amp;ID</li>
+                <li><strong>校正紀錄缺漏：</strong>儀表安裝合格證明或出廠校正書未歸入 ETOP</li>
+                <li><strong>焊接紀錄不完整：</strong>高純度氣體管路的焊工資格證書遺失</li>
+                <li><strong>Punch list 未完全關閉：</strong>遺留的待改善項目在移交時未被記錄</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ETOP 就像<strong>新房交屋時的驗屋報告</strong>：建商必須提供完整的施工圖、材料規格書、水電管線圖，以及所有試驗合格證明。沒有完整的交屋文件，就算房子蓋好了，你也不知道裡面埋的是什麼材質的管線。氣體系統的 ETOP 邏輯完全相同——它是你對系統「來歷清白」的法律憑證。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 氣體系統 vs 水系統的差異</h4>
+            <p>ISPE 明確指出：氣體系統確效<strong>不需要</strong>測試排放坡度、死角、材質表面粗糙度等水系統的常規項目。這是因為氣體不會積水，微生物無法在乾燥氣體中繁殖。CDMO 的確效協議書不應盲目套用水系統的 IQ 查核清單於氣體系統。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若在安裝確效 (IQ) 期間發現 P&amp;ID 與實際安裝有差異，應如何處理？這會影響確效進度嗎？</li>
+                <li>ETOP 中的「Commissioning Section」與正式的 IQ/OQ 文件有何不同？哪些資料可以直接引用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.3 Commissioning -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">8.3 Commissioning 試運行</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The scope and extent of the commissioning activities for a process gas system depends on the system specifications and design.</p>
+        <p>Process gas systems should be commissioned according to <span class="key-term">Good Engineering Practice (GEP)</span> and documented evidence that the system is installed and operates in accordance with the design should be provided. As part of commissioning, calibration of instruments should be verified. The correct setting and function of the system safety devices should be checked.</p>
+        <p>Commissioning documents may be pre-approved by an organization's engineering group (relevant SMEs). For large projects, approvals may include a project manager. <span class="key-term">Commissioning documents do not normally require pre-approval by the quality unit.</span></p>
+        <p>Pre-start up or start up readiness checks — typical tests for <strong>Compressors and Air Dryers:</strong></p>
+        <ul>
+            <li>record of all cable tests (continuity, insulation)</li>
+            <li>record of all grounding (earth) testing</li>
+            <li>record of fuse ratings/overload settings</li>
+            <li>point to point wiring tests (where applicable)</li>
+            <li>instrument and loop calibration records as specified</li>
+            <li>sequence of operation testing including interlocks and alarms</li>
+            <li>system auto/manual operation; dryer switchover (if dual tower)</li>
+            <li>installation, operation, and maintenance manuals availability</li>
+            <li>parts list, spare parts lists, and consumables lists</li>
+            <li>"as built" drawings (E&amp;I diagrams, P&amp;ID, layout)</li>
+            <li>certification from appropriate organizations (e.g., CAGI)</li>
+        </ul>
+        <p>Typical tests for <strong>Distribution System:</strong></p>
+        <ul>
+            <li>material certification/purchase orders, inspection certificates, welding records</li>
+            <li>pipe work pressure testing records including insurance or inspection authority reports</li>
+            <li>record of pipe work cleaning and purging</li>
+            <li>pipe work passivation records (if applicable)</li>
+            <li>filter certification</li>
+            <li>instrument and loop calibration records as specified</li>
+            <li>sequence of operation testing: pressure control, economizer, vaporizer switchover, telemetry testing</li>
+            <li>"as built" drawings (E&amp;I diagrams, P&amp;ID, layout)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Commissioning vs Qualification 的分界</h4>
+            <p>這是製藥工程中一個關鍵的概念邊界：</p>
+            <ul>
+                <li><strong>試運行 Commissioning：</strong>由工程部門主導，依 GEP 執行，證明系統按設計安裝與運作。不需要 QA 事前批准。</li>
+                <li><strong>確效 Qualification (IQ/OQ/PQ)：</strong>由品保/確效部門主導，依 GMP 法規要求執行，需要 QA 事前批准協議書。</li>
+            </ul>
+            <p>ISPE 的「Science and Risk-Based Approach」(ASTM E2500) 框架允許充分利用試運行資料支援確效，避免重複測試，節省成本與時間。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>試運行就像<strong>新車出廠前的品管測試</strong>：工廠測試煞車、引擎、電氣系統，確保一切按規格運作。而確效（GMP 環境）則像<strong>醫療器材上市前的臨床驗證</strong>：在實際使用環境中，依照預定規格進行有文件記錄的驗證，最終由品保部門批准放行。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 壓力測試與清洗紀錄</h4>
+            <p>管路壓力測試 (pressure testing) 與吹掃/清洗紀錄 (purging) 是試運行的核心項目。對於高純度氣體系統：</p>
+            <ul>
+                <li>壓力測試通常在 1.5 倍最高工作壓力下進行，確認管路完整性</li>
+                <li>系統在性能測試前必須充分吹掃，以去除施工殘留物（金屬碎屑、焊接殘渣）</li>
+                <li>鈍化 (passivation) 紀錄適用於不鏽鋼高純度氣體管路</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 專案管理角度</h4>
+            <p>CDMO 在承接新廠建置或擴產項目時，建議在合約中明確規定 ETOP 的交付要求與時間點，並指定哪些試運行數據將被納入確效協議引用。這樣可以有效縮短從設施完工到第一批產品放行的時間軸。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 8.4 Installation and Operational Tests -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">8.4 Installation and Operational Tests (IQ/OQ) 裝置確效與操作確效</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Installation and operational tests are usually conducted in accordance with the design specifications and contracts, with the results documented in the commissioning document. The organization's requirements for engineering documentation should be specified, so that quality departments are able to use the engineering document to provide the evidence of installation and operation to meet the design specifications.</p>
+        <p>A typical P&amp;ID walk down procedure:</p>
+        <ul>
+            <li>Obtain the copy of the latest revision of the P&amp;ID with all changes incorporated, usually as construction redline drawings.</li>
+            <li>Perform a walk down of the P&amp;ID, red-lining it to reflect the as-built condition. Use an indelible ink pen of the following colors:
+                <ul>
+                    <li><strong>Red:</strong> indicate additions or corrections</li>
+                    <li><strong>Green:</strong> indicate deletions</li>
+                    <li><strong>Black:</strong> enter comments or notes</li>
+                    <li><strong>Yellow highlighter:</strong> show what sections have been verified</li>
+                </ul>
+            </li>
+            <li>Highlight all equipment, valves, instruments, lines, etc., to indicate installation per latest P&amp;ID.</li>
+            <li>Highlight tag numbers on the P&amp;ID to confirm correct tagging.</li>
+            <li>Upon completion, the person performing the walk down signs and dates "Verified by" on the P&amp;ID.</li>
+            <li>The system owner reviews the red-lined P&amp;ID and signs "Reviewed by".</li>
+            <li>Place items such as missing tags, incomplete insulation, etc., on the Punch list.</li>
+            <li>Review the changes and errors and decide if the installation is acceptable or if errors need correction (punch list items).</li>
+        </ul>
+        <p>Note that for compressed air systems, where the compressor/dryer capacities are critical, an independent certificate (e.g., a CAGI certificate) may be required as part of the specification.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — P&amp;ID Walk Down 的意義</h4>
+            <p><strong>P&amp;ID 現場查核 (Walk Down)</strong> 是 IQ 的核心活動之一。其目的是確認現場實際安裝與設計圖面完全一致，並將所有差異記錄在「紅線圖」上，最終決定這些差異是否可接受，或需要列入 Punch List 要求承包商改正。</p>
+            <p>對 CDMO 而言，IQ 確效協議通常引用試運行期間完成的 P&amp;ID walk down 記錄，而不需要重複執行相同的步驟——這正是科學風險導向確效的效益。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Punch List 的管理</h4>
+            <p>Punch List 是一份「待解決問題清單」。確效的前提是所有影響系統功能的 Punch List 項目必須關閉 (closed out)。允許保留的 open items 通常只限於對系統性能無影響的外觀或行政性問題，且必須有書面的風險評估支撐。稽核中常見的問題是確效報告批准時仍有未關閉的重要 Punch List 項目。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>IQ 查核清單重點項目</h4>
+            <pre>
+裝置確效 (IQ) 查核內容：
+□ P&amp;ID walk down 完成並簽署
+□ 設備清單與現場實物核對
+□ 儀表清單與校正憑證核對
+□ 材質合格證明 (Mill Certificates)
+□ 焊接紀錄與焊工資格
+□ 管路壓力測試紀錄
+□ 吹掃/清洗紀錄
+□ Punch List 全數關閉
+□ SOP 與維護手冊到位
+□ 人員訓練記錄到位</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>P&amp;ID walk down 發現某個安全閥的位置與圖面不符，但功能相同。這算不算需要列入 Punch List 的問題？</li>
+                <li>CAGI 認證對壓縮機的意義是什麼？為何這可能需要作為規格要求的一部分？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 8.5-8.6 Performance Testing & Acceptance -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">8.5–8.6 Performance Testing &amp; Acceptance and Release 性能測試與放行</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>8.5 Performance Testing</strong></p>
+        <p>Initial system performance testing and ongoing monitoring may be performed by an organization's quality unit. Performance testing should demonstrate correct system functionality under procedural control. This usually takes place after the commissioning tests have demonstrated that the system is capable of performing to meet the design specifications.</p>
+        <p>A test plan for verifying the system performance with a supporting rationale should be included in the performance testing document. Performance testing is normally performed in two phases:</p>
+        <ol>
+            <li>an initial set of tests to confirm installed system performance and release the system for use</li>
+            <li>an ongoing test plan to provide assurance that the critical performance parameters are being maintained (typically part of the routine monitoring program)</li>
+        </ol>
+        <p>Performance testing usually consists of <span class="key-term">sampling for the quality attributes at each POU</span> under normal operating conditions. <span class="key-term">Each POU should be sampled at least three consecutive times</span> over a defined period and the data obtained should be evaluated for compliance with predefined acceptance criteria.</p>
+        <p>Initially monitoring of the POUs may be performed at more frequent intervals to further demonstrate adequate system performance over time. Once sufficient confidence of correct system performance has been acquired, based upon a statistically representative data set, the monitoring frequency may be decreased appropriately.</p>
+
+        <p style="margin-top:1rem;"><strong>8.6 Acceptance and Release</strong></p>
+        <p>Completion of the verification phase should include a <span class="key-term">verification (qualification) summary report</span> which states whether the system is fit for its intended purpose and can be released for use. This report should confirm that:</p>
+        <ul>
+            <li>A system has been installed according to the design specification.</li>
+            <li>Instrumentation is calibrated in accordance with the design specifications.</li>
+            <li>The system operates in accordance with the design specifications.</li>
+            <li>Risk controls identified during any risk assessments are in place and operating as specified.</li>
+            <li>The system performance testing results complied with the acceptance criteria.</li>
+            <li>Operating and maintenance procedures are established.</li>
+        </ul>
+        <p>Approval of the verification (qualification) summary report by the system owner, engineering department, and validation/quality representative is normally considered confirmation that the system is suitable for intended use and is released for operational use.</p>
+        <p>Ownership should be transferred from the project team to the operations/engineering departments. Once the report is approved, formal <span class="key-term">Quality Assurance (QA) change and deviation management</span> should be applied to the system.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — OQ 與 PQ 的銜接</h4>
+            <p>氣體系統的「Performance Testing」相當於傳統確效架構中的 <strong>OQ（操作確效）</strong> 和 <strong>PQ（性能確效）</strong> 的組合：</p>
+            <ul>
+                <li><strong>類似 OQ：</strong>確認系統在規格範圍內運作，如壓力控制、流量、警報功能</li>
+                <li><strong>類似 PQ：</strong>在各 POU 採樣確認氣體品質符合規格（露點、粒子、微生物、油含量）</li>
+            </ul>
+            <p>「至少三次連續採樣」的要求是統計可信度的最低標準，對於新系統或高風險應用，應考慮增加取樣次數。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — OQ 失敗情境管理</h4>
+            <p>CDMO 實務中，若性能測試出現 OOS 結果（如 N₂ 沖洗後 O₂ 分析儀讀值超標），標準調查流程：</p>
+            <ol>
+                <li>確認儀器校正狀態是否正常（排除量測誤差）</li>
+                <li>延長沖洗時間並重新取樣</li>
+                <li>檢查接頭與閥件的密封完整性（排除外氣滲入）</li>
+                <li>確認系統清洗/吹掃紀錄是否充分</li>
+                <li>評估是否需要調整 OQ 接受標準（需有科學依據）</li>
+                <li>所有調查步驟必須書面記錄</li>
+            </ol>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 移交後的 QA 管控</h4>
+            <p>確效報告核准後，系統正式移交至運營部門，所有後續的：系統修改、儀表校正窗口變更、過濾器規格變更、操作參數調整，都必須通過 <strong>正式變更管控 (Change Control)</strong> 處理。這是稽核查核的高頻區域，特別是「系統在確效後有沒有被修改但沒有通知 QA」的問題。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 確效報告的批准結構</h4>
+            <p>標準的確效摘要報告批准三方：系統負責人 (System Owner)、工程部門代表、品保/確效代表。三方簽署等同於正式宣告系統符合 GMP 用途。CDMO 應確保批准層級與客戶期望一致，尤其是委外客戶提供確效策略時。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若壓縮空氣系統有 20 個 POU，是否每個都需要取樣三次？或者可以依風險分層選取代表性 POU？</li>
+                <li>績效測試通過後，監控頻率可以降低的依據是什麼？需要什麼統計工具或數據量支撐？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 9: OPERATION AND MAINTENANCE -->
+<!-- ============================================================ -->
+
+<div class="section-title">Chapter 9 — Operation and Maintenance 日常操作與維護</div>
+
+<!-- 9.1 Maintenance -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">9.1 Maintenance 維護管理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The principles described in the ISPE Good Practice Guide: Maintenance and the ISPE GAMP Good Practice Guide: A Risk-Based Approach to Calibration Management should be applied to process gas systems.</p>
+        <p>Equipment suppliers should provide general recommendations and training for equipment operation and maintenance, including the change frequency for worn components.</p>
+        <p>The effect of the financial value of product and equipment failure on the maintenance program should be assessed. The requirement for an equipment log should be considered (CFR 211.68/ Eudralex Volume 4 Annex 1).</p>
+
+        <p><strong>9.1.1 Factors for Consideration in a Maintenance Program</strong></p>
+
+        <p><strong>9.1.1.1 Risk Assessment Results</strong><br>
+        The results of a risk assessment should be reviewed to determine their effect on the maintenance strategy. Where maintenance is identified as a control, the scope and frequency of maintenance activities should be commensurate with the risk.</p>
+
+        <p><strong>9.1.1.2 Changing of Filters</strong><br>
+        General filters are normally industrial grade; their life should be defined by the designer or equipment supplier based on their usage. Filters should be changed regularly; the frequency change may depend on system usage.</p>
+        <p>Use of <span class="key-term">differential pressure</span> as a solitary indication for filter changing may not be a good practice, unless the differential pressure is monitored at a known gas flow rate.</p>
+        <p>Initial system performance monitoring should include one maintenance cycle for the filters as a minimum.</p>
+        <p>Higher grade or <span class="key-term">POU filters</span> should have a defined change and test routine, particularly where the filter is the critical component forming the interface between a non-GMP and GMP process gas system.</p>
+
+        <p><strong>9.1.1.3 Cleaning of the Equipment</strong><br>
+        Equipment should be kept clean to facilitate early recognition of any leaks and provide a visual assurance of the degree of care provided to critical equipment.</p>
+
+        <p><strong>9.1.1.4 Functional Testing of the Equipment</strong><br>
+        Where equipment is provided in a duty standby configuration, the automatic switchover should be checked routinely. Routine maintenance should be thorough, particularly of equipment that may impact on the CQAs of process gases, e.g., automatic drain valves. Regional regulations may require routine testing and inspection of safety equipment, pressure relief valves, and storage vessels, etc.</p>
+
+        <p><strong>9.1.1.5 Leak Testing and Energy and Usage Monitoring</strong><br>
+        Process gas systems should be tested for leaks. This may be performed using <span class="key-term">ultrasonic equipment</span> during system operation or using a <span class="key-term">pressure decay test</span>. Monitoring can identify significant changes in energy consumption or gas usage by a system.</p>
+
+        <p><strong>9.1.2 System Trending</strong><br>
+        Aspects that can be recorded and trended include:</p>
+        <ul>
+            <li>oil consumption of a lubricated compressor</li>
+            <li>power consumption of a gas system</li>
+            <li>gas consumption</li>
+            <li>system pressure</li>
+            <li>number of system stop/starts</li>
+            <li>system loading/unloading patterns</li>
+        </ul>
+        <p>Techniques such as oil analysis and vibration monitoring should be considered. Periodic monitoring of equipment vibration can identify significant changes that may indicate equipment wear or failure.</p>
+
+        <p><strong>9.1.2.1 Spares Holding</strong><br>
+        A strategy for defining spare parts and consumables inventory should be established. This should consider the availability of spare parts locally, and delivery times for key components. A stock holding and reorder level should be defined and reviewed periodically against usage history.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 預防性維護 (PM) 的法規依據</h4>
+            <p>EU GMP (Eudralex Vol.4 Annex 1) 和 FDA 21 CFR 211.68 都要求對製藥生產設備維護設備日誌 (equipment log)。氣體系統屬於「直接影響製程的公用設施」，因此其預防性維護計畫必須：</p>
+            <ul>
+                <li>有書面 PM 程序 (SOP)</li>
+                <li>依時程執行並有執行紀錄</li>
+                <li>PM 項目的設定有科學/風險依據</li>
+                <li>任何 PM 項目的更動需通過變更管控</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 過濾器更換的變更管控</h4>
+            <p>POU 過濾器是 GMP 與非 GMP 氣體系統之間的<strong>關鍵屏障</strong>。過濾器規格（孔徑、材質、廠商）的任何變更都必須經過正式的<strong>變更管控 (Change Control)</strong> 處理，包括：</p>
+            <ul>
+                <li>影響評估（是否影響 CQA？）</li>
+                <li>必要時重新進行過濾完整性測試</li>
+                <li>更新 PM 程序與設備清單</li>
+                <li>通知下游使用部門</li>
+            </ul>
+            <p>「單純更換相同規格的消耗品」通常不需要完整的變更管控，但需要有清楚的材料核准清單 (Approved Supplier List) 定義什麼是「相同規格」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 差壓不是唯一的換濾指標</h4>
+            <p>ISPE 明確指出：<strong>不應單獨用差壓作為換濾指標</strong>，除非差壓是在已知流量條件下量測的。原因：若流量降低（例如實際使用量減少），差壓也會降低，可能給出「過濾器狀態良好」的假象，即使過濾器已達壽命終點。建議結合時間基準 (time-based) 和差壓雙重標準執行換濾計畫。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>系統趨勢監控的意義</h4>
+            <pre>
+監控趨勢項目      異常訊號         可能原因
+油耗增加          超出基準 30%+    壓縮機密封件磨損
+電力消耗上升      持續增加趨勢     壓縮機效率降低/過濾器堵塞
+氣體消耗異常      突然大幅增加     系統洩漏
+啟停次數增加      超出設計頻率     壓縮機容量不足/洩漏
+振動值上升        超出基準值       軸承磨損/機械失衡
+
+趨勢監控 = 預防性維護的眼睛
+早期發現 → 計畫性停機維修
+晚期發現 → 緊急停機 + 潛在生產損失</pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 備件管理</h4>
+            <p>備件庫存策略對 CDMO 的生產連續性至關重要。POU 過濾器、露點感應器的更換元件、壓縮機密封套件——這些「關鍵備件」的交期若超過 4–6 週，就應納入安全庫存計畫，並定期審查使用歷史更新再訂購點 (reorder point)。避免因備件斷料造成計畫外的氣體系統停機。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一個工廠的壓縮空氣系統振動監控數值在過去 30 天持續上升 15%，應該如何回應？需要啟動哪些程序？</li>
+                <li>備用壓縮機（standby）的自動切換功能，在維護計畫中應如何驗證？多久驗證一次比較合適？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- 9.2 Calibration -->
+<div class="section-title" style="font-size:1rem; color:#2c5282;">9.2 Calibration 校正管理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>A <span class="key-term">calibration strategy</span> should be defined during the system design. This should consider the features of the specific design, the reliability, function, and likely failure modes of sensors. Equipment suppliers usually can provide advice on calibration methods and frequencies.</p>
+        <p>The results of a risk assessment should be reviewed to determine their effect on the calibration strategy. Where alarms or instrumentation data are identified as a control, the scope and frequency of calibration activities should be commensurate with the risk.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 風險導向的校正策略</h4>
+            <p>ISPE 強調：<strong>校正策略必須由風險評估結果驅動</strong>。實務上，氣體系統儀表依重要性分層：</p>
+            <ul>
+                <li><strong>產品關鍵 (Product Critical)：</strong>POU 露點感應器、O₂ 分析儀、微生物取樣設備 → 嚴格校正頻率（如每 6 個月）+ 校正失敗即啟動調查</li>
+                <li><strong>製程關鍵 (Process Critical)：</strong>系統壓力感應器、流量計 → 標準校正週期（如每年）</li>
+                <li><strong>非關鍵 (Non-Critical)：</strong>工程用壓力錶、非 GMP 區域儀表 → 延長校正間隔或目視檢查替代</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>校正策略就像<strong>定期健康檢查的頻率</strong>：心臟病高風險患者每 3 個月一次、一般人每年一次、年輕健康的人可能 2–3 年一次。你不會讓所有人都做一樣頻率的檢查，而是依據「若這個指標出錯，後果有多嚴重？」來決定檢查頻率。氣體系統儀表校正邏輯完全相同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 校正失敗的影響評估</h4>
+            <p>當一個關鍵儀表校正失敗（讀值超出允許誤差），CDMO 必須：</p>
+            <ol>
+                <li>立即隔離該儀表，避免繼續使用錯誤讀值做出決策</li>
+                <li>評估在上次校正合格日期至今，使用該儀表讀值做出的所有放行決定</li>
+                <li>若有批次在此期間放行，啟動回顧性偏差調查 (retrospective deviation)</li>
+                <li>確認是設備問題還是程序問題，並採取 CAPA</li>
+            </ol>
+            <p>這個流程的嚴謹度直接體現了 GMP 對於量測系統管控的要求。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>關鍵氣體系統儀表校正矩陣示例</h4>
+            <pre>
+儀表類型          重要性分類    校正頻率    校正標準
+露點感應器(POU)   產品關鍵      6個月       NIST 可追溯基準
+O₂分析儀(N₂系統) 產品關鍵      6個月       認證標準氣體
+系統壓力傳送器    製程關鍵      12個月      校正氣壓計
+流量計(用量監控)  製程關鍵      12個月      NIST 可追溯流量標準
+壓縮機出口壓力錶  非關鍵        24個月      目視+功能檢查
+工廠用壓力錶      非關鍵        24個月      比對法</pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若氮氣系統的 O₂ 分析儀在校正時發現讀值偏低 0.2%（實際 O₂ 濃度比顯示值高），這對於過去 3 個月的氮氣品質放行記錄有什麼影響？</li>
+                <li>設備供應商建議每 12 個月校正一次露點感應器，但風險評估將其評為「產品關鍵」，你應該採用哪個頻率？理由為何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary — Chapters 7–9</h3>
+    <ul>
+        <li><strong>Ch7 QRM 原則：</strong>品質風險管理應貫穿氣體系統整個生命週期，從 URS 到日常維護。風險評估的三步驟（識別→分析→評估）是 FMEA 的核心架構，ICH Q9 是基礎法規參考。</li>
+        <li><strong>Ch7 氣體系統常見失效模式：</strong>壓縮機失效、過濾器堵塞、水分突破、O₂ 滲入 N₂、氣體混用——每個都需要有對應的設計控制或程序控制作為風險降低措施。</li>
+        <li><strong>Ch8 ETOP 是確效的橋樑：</strong>工程移交文件包（施工管理者、安裝承包商、試運行三個部分）是 IQ 確效的主要數據來源，P&amp;ID 不一致和校正記錄缺漏是最常見的稽核發現。</li>
+        <li><strong>Ch8 試運行 vs 確效：</strong>試運行由工程主導（不需 QA 事前核准），確效由品保主導（需要事前核准的協議書）。ASTM E2500 框架允許充分借用試運行數據支援確效，避免重複工作。</li>
+        <li><strong>Ch8 性能測試三連抽：</strong>每個 POU 至少三次連續採樣是最低統計要求。確效摘要報告批准後，系統進入正式 QA 變更管控體系。</li>
+        <li><strong>Ch9 過濾器換濾管控：</strong>POU 過濾器規格變更須通過正式 Change Control；不應單獨依賴差壓作為換濾指標；POU 過濾器是 GMP 與非 GMP 氣體的關鍵屏障。</li>
+        <li><strong>Ch9 校正策略風險分層：</strong>校正頻率必須與儀表對 CQA 的影響成比例——露點感應器與 O₂ 分析儀屬「產品關鍵」，應採用最嚴格的校正計畫和失敗影響評估程序。</li>
+    </ul>
+</div>
+
+</div><!-- /main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

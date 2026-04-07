@@ -1,0 +1,171 @@
+# USP General Chapter 〈1229.8〉: Dry Heat Sterilization
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-May-2018
+Document Type:
+General Chapter
+DocId:
+GUID-9F132A95-F43F-47EE-B6DE-A9A2BB9224B5_3_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M7417_03_01
+DOI Ref:
+4grb4
+© 2025 USPC
+Do not distribute
+〈1229.8〉 DRY HEAT STERILIZATION
+Dry heat sterilization is a process utilized for heat-stable items (glass, stainless steel, nonaqueous liquids, powders, etc.) that are unsuited
+for steam sterilization because of either an absence of water (nonaqueous liquids and powders) or requirements for absolute dryness
+following processing (product contact par ts for nonaqueous products). Because dry heat relies on air for the transfer of heat to and from the
+load items, the process takes longer than a steam process for a comparable size item or load. Lengthy heating and cooling periods require
+that the load items be unaffected by heat over a long period of time and also require the use of the overkill method for cycle development
+and validation.
+Dry heat sterilization is typically performed in the range of 160°–190° where the objective is sterilization rather than depyrogenation.
+(Depyrogenation will be covered separately in Dry Heat Depyrogenation 〈1228.1〉). In dry heat sterilization, hot air is in direct contact with the
+load items (whether wrapped or unwrapped) and transfers some of its thermal energy. Unlike steam sterilization, in dry heat sterilization
+there is no phase change of the heating medium, and thus heat transfer is less e­cient. The items can be stainless steel, glass, ceramic, or
+other heat-stable materials and may be wrapped or covered with aluminum foil to protect them during pre- and postprocess handling. Dry
+heat sterilization is commonly used for heat-stable materials (e.g., petrolatum or powders).
+The limited heat transfer capacity of air requires that items in the oven be placed in locations that were con«rmed to be acceptable during
+the validation effor t. Manufacturers should exercise caution with varying load sizes because in some instances (resulting from system
+design and control probe positioning) minimum load sizes may present a worst case.
+STERILIZATION CYCLE CONTROL
+Process equipment for dry heat sterilization is controlled by calibrated temperature sensors. During the exposure por tions of the cycle,
+attainment of a minimum dwell time at a prede«ned temperature is used to document process lethality. Cycle e­cacy for dry heat
+sterilization customarily is measured using F
+, which typically is de«ned as the amount of time the load receives the equivalent of exposure
+at 170°. The F
+ approach is used to compare sterilization processes that operate at varying temperature conditions to a single standard. The
+process lethality at temperatures other than 170° can be calculated to determine lethality equivalent to that provided at 170°. Sterilizer
+control systems must deliver conditions within a prede«ned time–temperature or F
+ range. Simple mathematics can be used to calculate the
+total lethality over the course of the process. For the speci«c reference temperature of 170° and a z-value (for de«nitions see Steam
+Sterilization by Direct Contact 〈1229.1〉) of 20°, the F
+ calculation can be determined by the following equation:
+F
+ = accumulated lethality
+t
+ = end time
+t
+ = star t time
+T = temperature
+Accumulation of the lethality (F
+) for the sterilization process across the entire cycle (heat-up and cool-down segments included) includes
+the contribution of those segments and allows the cycle to be de«ned by a targeted lethality rather than by a time at a de«ned minimum
+temperature.
+VALIDATION OF DRY HEAT STERILIZATION
+Because dry air has limited heat capacity and dry heat conditions are more variable than those encountered with other thermal sterilization
+methods, analysts routinely validate their dry heat sterilization procedures using the overkill method as de«ned in Sterilization of Compendial
+Ar ticles 〈1229〉.
+Overkill sterilization can be de«ned as a method in which the destruction of a high concentration of a resistant microorganism suppor ts
+the destruction of reasonably anticipated bioburden that could be present during routine processing. That objective can be demonstrated by
+attaining any of the following: a de«ned minimum lethality; a de«ned set of method conditions; or con«rmation of minimum log reduction of
+a resistant biological indicator.
+The validation requirements for the overkill method are less onerous than those of the other sterilization approaches. Because the load
+items can withstand substantial amounts of heat without adverse consequence, the greater lethality provided by the overkill method clearly
+is justi«able.
+H
+H
+H
+H
+=
+ⅆt =
+Δt
+FH
+∫t2
+t1 10(
+)
+T−170
+∑t2
+t1 10(
+)
+T−170
+H
+H
+OFFICIAL
+2/12/25, 4:45 PM
+USP-NF 〈1229.8〉 Dry Heat Sterilization
+
+=== PAGE 2 ===
+Equipment Quali«cation
+Equipment quali«cation is a prede«ned program that focuses on the sterilizing equipment to con«rm that it has been properly installed and
+operates as intended before evaluation of the sterilization process. In some companies, equipment quali«cation is separated into installation
+quali«cation and operational quali«cation or is lumped together under a joint terminology of installation/operational quali«cation. The major
+use of quali«cation of the sterilizing equipment is to provide a baseline for preventive maintenance and change control, ensuring
+reproducibility of operation over time and assurance that the sterilization process is constantly and accurately performed.
+Empty Chamber Temperature Distribution
+The equipment should be evaluated for empty chamber temperature distribution. The oven or tunnel should be evaluated to determine the
+range of temperatures within the system, and the cycle parameters should be determined to ensure adequate lethality across the expected
+load. The acceptance criteria for empty chambers can vary with the equipment capabilities and customary use, but it is typically less uniform
+than observed in steam sterilizers. Biological indicators are not required during the evaluation of empty chamber temperature distribution.
+Component Mapping
+Load items that are complex and feature enclosed volumes and product contact surfaces should be subjected to component mapping to
+determine internal cold spots. This is par ticularly impor tant in powder sterilization. For each load item, manufacturers should establish the
+ability of heat to penetrate the items or containers and to bring them to the required temperature. These studies can be performed in a
+laboratory setting and need not be repeated when the same item is sterilized in other equipment. Thermocouples should be placed into
+direct contact with the item(s) being evaluated. During component mapping load items should be prepared and oriented in a manner that is
+consistent with how they will be processed.
+Load Mapping
+Fixed loading patterns for dry heat sterilization in batch ovens are preferable because the limited heat capacity of the air allows substantial
+temperature differences across the load. It may be possible to validate maximum and minimum loads as determined by either the number of
+items or their mass within the oven. Loading in a continuous tunnel process is typically well de«ned by the limitations of the conveying
+system. Load and component mapping ensures that all load items attain the required temperature. Information from the load mapping is
+used to adjust cycle timing to ensure appropriate lethality. System control must consider the relationship between load position and size
+relative to temperature control locations.
+Biological Indicators
+The biological indicator (BI) for dry heat sterilization is Bacillus atrophaeus (ATCC 9372), a thermophilic spore-former with high resistance
+to dry heat. The spore challenge is placed on a substrate positioned within the load or on a load item. If spores are used as intended by the BI
+manufacturer, the population and resistance information provided by the vendor can be used. End users should determine the population and
+resistance of their biological indicator used when inoculating their own items.
+Heat Penetration and Microbiological Challenge
+The core of the validation activity is the con«rmation of acceptable heat penetration using temperature measurements and microbial
+challenges. Thermocouples and BIs are placed within the load items at the locations determined during the component and load mapping to
+present the worst case. Thermocouples should be placed into direct contact with the item(s) being monitored. Proof of cycle e­cacy is
+provided by replicate studies in which the BIs are killed and the physical measurements correspond to the expected values of time–
+temperature or F
+. If the microbial and physical measurements do not correlate, manufacturers should conduct an investigation and should
+take corrective action to rectify the discrepancy. This study customarily is performed slightly subminimal to the lower speci«cation limits for
+time, temperature, and/or cumulative lethality.
+ROUTINE PROCESS CONTROL
+As with all sterilization processes, after the dry heat sterilization process has been validated, it must be subject to formalized controls that
+keep it in a validated state over time. General chapter Sterilization of Compendial Ar ticles 〈1229〉 details the general practices that are
+appropriate for all sterilization systems. This is accomplished by a number of related practices that are essential for the continued use of the
+process over an extended period of time. The essential practices to maintain validated status include calibration, physical measurements,
+physical integrators and indicators, ongoing process control, change control, preventive maintenance, and periodic reassessment and
+training.
+REFERENCE
+1. USP General Chapters—Microbiology Exper t Committee. An outline of planned changes to USPSterility Assurance 〈1211〉. Pharm
+Forum. 2012; 38(2).
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+H
+OFFICIAL
+2/12/25, 4:45 PM
+USP-NF 〈1229.8〉 Dry Heat Sterilization
+
+=== PAGE 3 ===
+T
+opic/Question
+Contact
+Exper t Committee
+<1229.8> DRY HEAT STERILIZATION
+Huiping Tu
+Director, Biologics
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 39(3)
+Current DocID: GUID-9F132A95-F43F-47EE-B6DE-A9A2BB9224B5_3_en-US
+Previous DocID: GUID-9F132A95-F43F-47EE-B6DE-A9A2BB9224B5_1_en-US
+Previous DocID: GUID-9F132A95-F43F-47EE-B6DE-A9A2BB9224B5_2_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M7417_03_01
+DOI ref: 4grb4
+OFFICIAL
+2/12/25, 4:45 PM
+USP-NF 〈1229.8〉 Dry Heat Sterilization

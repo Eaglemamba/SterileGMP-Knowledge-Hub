@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 1: Challenges with Methodologies | PDA TR86</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box,
+.key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: var(--accent-blue);
+    color: white; border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <h1>Section 1: Challenges with Methodologies | 測試方法挑戰</h1>
+  <div class="subtitle">PDA Technical Report No. 86 — Sections 3.0, 3.1, 3.1.1–3.1.5, 3.2</div>
+  <div class="page-info">Source pages: 4–10 &nbsp;|&nbsp; TR86 (2021)</div>
+</div>
+
+<!-- ===== TOP NAV ===== -->
+<nav class="top-nav">
+  <button class="nav-scroll-btn hidden" id="navLeft">&#8249;</button>
+  <div class="nav-container" id="navContainer">
+    <a class="nav-item active" href="#sec30">
+      <span class="nav-num">3.0</span><span class="nav-label">Overview 概覽</span>
+    </a>
+    <a class="nav-item" href="#sec31">
+      <span class="nav-num">3.1</span><span class="nav-label">Positive Controls 陽性對照</span>
+    </a>
+    <a class="nav-item" href="#sec311">
+      <span class="nav-num">3.1.1</span><span class="nav-label">Selecting Controls 選擇標準</span>
+    </a>
+    <a class="nav-item" href="#sec312">
+      <span class="nav-num">3.1.2</span><span class="nav-label">Using Controls 使用注意</span>
+    </a>
+    <a class="nav-item" href="#sec313">
+      <span class="nav-num">3.1.3</span><span class="nav-label">Simulated Defects 模擬缺陷</span>
+    </a>
+    <a class="nav-item" href="#sec314">
+      <span class="nav-num">3.1.4</span><span class="nav-label">Calibrated Leaks 校準洩漏</span>
+    </a>
+    <a class="nav-item" href="#sec315">
+      <span class="nav-num">3.1.5</span><span class="nav-label">Add'l Considerations 補充考量</span>
+    </a>
+    <a class="nav-item" href="#sec32">
+      <span class="nav-num">3.2</span><span class="nav-label">Blockage 阻塞效應</span>
+    </a>
+  </div>
+  <button class="nav-scroll-btn" id="navRight">&#8250;</button>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- ===== TOC ===== -->
+  <div class="toc">
+    <h3>Table of Contents | 本節目錄</h3>
+    <div class="toc-grid">
+      <a href="#sec30">3.0 Challenges Overview 方法挑戰概覽</a>
+      <a href="#sec31">3.1 Positive Controls 陽性對照組</a>
+      <a href="#sec311">3.1.1 Selecting Positive Controls 選擇考量</a>
+      <a href="#sec312">3.1.2 Using Positive Controls 使用考量</a>
+      <a href="#sec313">3.1.3 Types of Simulated Defects 模擬缺陷類型</a>
+      <a href="#sec314">3.1.4 Calibrated Leaks 校準洩漏</a>
+      <a href="#sec315">3.1.5 Additional Considerations 補充考量</a>
+      <a href="#sec32">3.2 Blockage of Leak Paths 洩漏路徑阻塞</a>
+      <a href="#comparison-table">Comparison Table 對照表</a>
+    </div>
+  </div>
+
+  <!-- ===== LEARNING OBJECTIVES ===== -->
+  <div class="learning-objectives">
+    <h3>Learning Objectives | 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+      <div>
+        <strong>After studying this section, you will be able to:</strong>
+        <ul>
+          <li>Explain why method selection in CCIT is driven by sensitivity, variability, and intended use</li>
+          <li>Describe the role of positive controls ("leak artifacts") across the CCIT lifecycle</li>
+          <li>Compare laser-drilled holes, glass micropipettes, and wire-based simulated defects</li>
+          <li>Define calibrated leaks and explain NIST-traceable standards</li>
+          <li>Identify the MALL concept and its relationship to positive control sizing</li>
+          <li>Explain how formulation components — proteins, crystals, silicone oil — can block defects and cause false negatives</li>
+          <li>Outline a CCI strategy that accounts for blockage risk</li>
+        </ul>
+      </div>
+      <div>
+        <strong>學完本節，你將能夠：</strong>
+        <ul>
+          <li>解釋 CCIT 方法選擇為何以靈敏度、變異性與預期用途為依據</li>
+          <li>描述陽性對照組（洩漏假樣品）在 CCIT 各生命週期階段的作用</li>
+          <li>比較雷射鑽孔、玻璃微管和金屬線三種模擬缺陷的優缺點</li>
+          <li>定義校準洩漏，說明 NIST 可追溯標準的意義</li>
+          <li>識別 MALL 概念及其與陽性對照尺寸的關係</li>
+          <li>解釋蛋白質、結晶物、矽油等製劑成分如何阻塞缺陷造成偽陰性</li>
+          <li>概述能夠應對阻塞風險的 CCI 整體策略</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.0 — CHALLENGES WITH METHODOLOGIES
+       =================================================================== -->
+  <div class="chapter-section" id="sec30">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.0</div>
+      <div class="chapter-info">
+        <h2>Challenges with Methodologies | 測試方法面臨的挑戰</h2>
+        <p>Method selection framework — sensitivity, variability, and known interference sources</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <!-- LEFT: original text -->
+        <div class="left-column">
+          <h3>3.0 Challenges with Methodologies</h3>
+          <p>The selection of container closure integrity methodology is based on sensitivity, reduced variability, and clarification of the intended result of leak detection. The selected method will present challenges to the investigator, however, inherent characteristics of the chosen method and other unknown factors can increase variability, for example:</p>
+          <ul>
+            <li>Formulations that impact flow through a leak or that create blockages within the leak.</li>
+            <li>Methods that impact formulations, e.g., a method that applies an energy level or introduces a new chemical compound that impacts the original formulation in any way.</li>
+            <li>Unintended impacts of method on a container closure system (CCS) potentially introducing a defect to or masking a defect in an otherwise unadulterated sample, e.g., pressure changing the shape of the container and potentially the nature of the defect.</li>
+          </ul>
+          <p>Section 3 addresses the challenges and potential impact of emerging issues on methodology design and selection of container closure integrity testing (CCIT).</p>
+        </div>
+
+        <!-- RIGHT: Chinese commentary -->
+        <div class="right-column">
+          <h3>中文解說 | 核心概念</h3>
+
+          <div class="concept-box">
+            <h4>三大方法選擇原則</h4>
+            <p>PDA TR86 開宗明義點出選擇 CCIT 方法的三個核心依據：</p>
+            <ul>
+              <li><strong>靈敏度（Sensitivity）</strong>：方法能偵測到多小的缺陷？</li>
+              <li><strong>低變異性（Reduced Variability）</strong>：結果的再現性是否足夠？</li>
+              <li><strong>預期偵測目標（Intended Result）</strong>：要找的是微生物滲入風險？還是氣體滲出？目標不同，方法不同。</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>三類主要干擾來源</h4>
+            <ul>
+              <li><strong>製劑本身的干擾</strong>：高濃度蛋白質、高黏度溶液、懸浮顆粒 — 這些可能堵住缺陷通道，讓洩漏難以被偵測。</li>
+              <li><strong>方法對製劑的影響</strong>：例如高壓差測試可能造成蛋白質聚集或乳化劑破壞，改變樣品本身的特性。</li>
+              <li><strong>方法對容器的影響</strong>：例如施加壓力後，柔性包裝的洞口可能縮小或擴大，造成測試前後缺陷尺寸不一致。</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>生活比喻：水管檢漏</h4>
+            <p>想像用加壓水柱測試水管有無裂縫。如果水裡加了很多麵粉（高黏度製劑），裂縫可能被麵糊堵住而測不出來。如果加壓太高（方法干擾容器），原本很細的裂縫可能被撐大，得到假性放大的洩漏訊號。這就是 Section 3.0 要強調的方法侷限性思維。</p>
+          </div>
+
+          <div class="concept-box application">
+            <h4>CDMO 應用提示</h4>
+            <p>在 CDMO 環境中，同一條填充線往往處理不同製劑（水針、凍乾粉、蛋白質藥物）。選擇 CCIT 方法時，必須針對<strong>每種產品</strong>評估以上三類干擾，不能將一種方法套用所有產品。特別注意：蛋白質藥物和高黏度眼科製劑是最容易出現阻塞干擾的品項。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的填充線同時生產 10 mg/mL 和 150 mg/mL 的單抗產品。為什麼不能用完全相同的 CCIT 方法驗證兩者？</li>
+              <li>高壓差真空衰減法（VD）在測試含矽油潤滑劑的玻璃注射器時，可能出現哪種干擾？屬於上述哪一類問題？</li>
+              <li>如果選擇的 CCIT 方法本身會改變容器形狀，對驗證結果的可靠性有何影響？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1 — POSITIVE CONTROLS (OVERVIEW)
+       =================================================================== -->
+  <div class="chapter-section" id="sec31">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1</div>
+      <div class="chapter-info">
+        <h2>Positive Controls | 陽性對照組（洩漏假樣品）</h2>
+        <p>Role, types, and lifecycle applications of leak artifacts in CCIT</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1 Positive Controls</h3>
+          <p>Container closure integrity (CCI) methods use positive control units, also called <strong>"leak artifacts."</strong> These controls are useful for different purposes and during different stages of test methods and product development, such as:</p>
+          <ul>
+            <li>Design and development of the container</li>
+            <li>Development of a test method</li>
+            <li>Determination of the level of sensitivity to various types of leaks</li>
+            <li>Determination of detection limits</li>
+            <li>Validation of a test method</li>
+            <li>Validation or system suitability of the level of sensitivity to various types of leaks</li>
+            <li>Testing of containers for their stability properties</li>
+            <li>Development of container manufacturing process (quality control) parameters</li>
+          </ul>
+          <p>Naturally occurring leaks are valuable positive controls during qualification of a CCIT method. Leaks that occur naturally also have a limited shelf life; they may be measurable today but not tomorrow. These samples might best be used for real-condition comparison of the method to better characterize the capability of the method to detect actual leak paths when engineered leak paths are used to characterize and develop a method.</p>
+          <p>Acquiring a sufficient set of leak artifacts for development purposes is a challenge due to the difficulty of using the normal container production processes to generate consistent, naturally occurring leaks. Therefore, positive control units with simulated defects can be produced to represent potential container and closure defects to use in method development and verification.</p>
+          <p>Naturally occurring leaks can also be used during process and product development. In most cases, the geometry and leak size of naturally occurring leaks are unknown, whereas positive controls with simulated defects (such as hole-type defects with channels) usually have leak paths with known geometry that can be generated using a controlled process. Use of both types of positive controls can provide useful information to develop methods for integrity testing.</p>
+          <p>Some CCIT system instruments can use calibrated leaks, another type of positive control. Calibrated leaks are systematically built into the CCIT system hardware to simulate a leak. The leaks are calibrated against traceable standards and installed inside robust housing (not the product container). If possible, the calibrated leak size should be equal to or less than the maximum allowed leak (MALL) for the specific container design. For a rapid 100% CCIT method, the MALL may not be achieved.</p>
+          <p>The calibrated leaks are used in routine system performance verification and, for some CCIT methods, as tools for routine and frequent calibration. The way in which the leaks were created and calibrated should be completely described.</p>
+          <div class="quote-box">Note: References that provide a broad overview of historical approaches to defect development and application can be found in the additional reading section.</div>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 陽性對照的本質與用途</h3>
+
+          <div class="concept-box">
+            <h4>什麼是「Leak Artifact」（洩漏假樣品）？</h4>
+            <p>陽性對照組（Positive Control）是人為製造或刻意保留有缺陷的包裝單元，用來確認 CCIT 方法「確實能偵測到洩漏」。TR86 用了一個更形象的術語：<span class="key-term">Leak Artifact</span>（洩漏假樣品），強調這是刻意製作出來的「假缺陷品」，不是真正的不良品。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>陽性對照的八大使用場景</h4>
+            <ul>
+              <li><strong>容器設計開發</strong>：評估新容器設計的密封性能邊界</li>
+              <li><strong>測試方法開發</strong>：確立方法的基本操作參數</li>
+              <li><strong>靈敏度範圍確認</strong>：了解方法對各類缺陷的偵測能力</li>
+              <li><strong>偵測極限（LoD）測定</strong>：確認方法能偵測到的最小缺陷尺寸</li>
+              <li><strong>方法驗證（Validation）</strong>：法規要求的正式驗證活動</li>
+              <li><strong>系統適用性（System Suitability）</strong>：常規測試前的儀器確認</li>
+              <li><strong>穩定性測試</strong>：監控容器密封性在儲存條件下的變化</li>
+              <li><strong>製程開發（QC 參數）</strong>：最佳化封填、壓蓋等製程參數</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>天然洩漏 vs 工程模擬缺陷</h4>
+            <table>
+              <thead>
+                <tr><th>特性</th><th>天然洩漏<br>Natural Leaks</th><th>模擬缺陷<br>Engineered Defects</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>幾何形狀</td><td>未知、不規則</td><td>已知、可控</td></tr>
+                <tr><td>尺寸</td><td>通常偏大且不穩定</td><td>可設計至微米級</td></tr>
+                <tr><td>再現性</td><td>低，易受時間影響</td><td>高，製程控制</td></tr>
+                <tr><td>保存期限</td><td>短（今天可測到，明天可能不行）</td><td>較長，需適當保存</td></tr>
+                <tr><td>驗證用途</td><td>不建議用於方法驗證</td><td>驗證主要依據</td></tr>
+                <tr><td>現實代表性</td><td>最接近真實缺陷</td><td>取決於設計方式</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="concept-box">
+            <h4>MALL — Maximum Allowable Leakage Limit</h4>
+            <p><span class="key-term">MALL</span>（最大允許洩漏限值）是一個由產品特性決定的關鍵數值，代表在此洩漏率以下，產品的無菌性和品質仍被認為可以接受。校準洩漏的尺寸理想上應等於或小於 MALL，以確保方法能夠偵測到具有臨床意義的缺陷。</p>
+            <p>實務上，100% 在線 CCIT 因為速度限制，有時無法達到 MALL 的靈敏度要求，這種情況需要在風險評估中明確說明。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>生活比喻：火災演習</h4>
+            <p>陽性對照就像消防演習時的「模擬火警警報」。你不需要真的發生火災，才能確認消防系統是否正常運作。每次演習的警報源頭是已知且受控的，這正是「工程模擬缺陷」的精神。天然洩漏則像偶然發現的真實火災殘跡，雖然真實，但時過境遷後可能已無法重現。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你在做凍乾西林瓶的 CCIT 方法驗證。為什麼不應該直接用生產線上偶然發現的破損瓶來當陽性對照？</li>
+              <li>天然洩漏「今天可測、明天可能不行」的原因是什麼？試列舉至少兩種機制。</li>
+              <li>校準洩漏（Calibrated Leak）被安裝在儀器內部而非產品容器上，這樣設計的優缺點各是什麼？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1.1 — SELECTING POSITIVE CONTROLS
+       =================================================================== -->
+  <div class="chapter-section" id="sec311">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1.1</div>
+      <div class="chapter-info">
+        <h2>Considerations for Selecting Positive Controls | 選擇陽性對照的考量</h2>
+        <p>Product package profile, method type, lifecycle phase, and defect size range</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1.1 Considerations for Selecting Positive Controls</h3>
+          <p>Positive controls should be selected based on <strong>product package profile</strong>, <strong>method type</strong>, and <strong>intended outcome of the method</strong> used during the intended lifecycle phase. Positive controls used for method development and validation should include a range of defect sizes and can include a set of different types of defects.</p>
+          <p>At a minimum it should include a set of surrounding leak sizes (above and below) that include the MALL rate for the specific product package and the intended limit of detection for the use of the selected method.</p>
+          <p>There is a limit to these types of defects; therefore, the method cannot be fully characterized to understand its capability or the true MALL of a CCS.</p>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 如何選擇正確的陽性對照</h3>
+
+          <div class="concept-box">
+            <h4>三個選擇依據</h4>
+            <ul>
+              <li><strong>產品包裝特性（Product Package Profile）</strong>：西林瓶用橡皮塞、預填式注射器有活塞，兩者的潛在缺陷位置和型態完全不同，需要對應不同的陽性對照設計。</li>
+              <li><strong>測試方法類型</strong>：電容放電（HVLD）vs 頂空氣體分析（HSA）vs 真空衰減（VD），每種方法的靈敏度特性不同，對應的最小可偵測缺陷尺寸也不同。</li>
+              <li><strong>生命週期階段的預期用途</strong>：方法開發用的陽性對照可以比較寬鬆，但驗證用的必須嚴格對應 MALL 和 LoD。</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>「圍繞 MALL 的缺陷尺寸範圍」是最低要求</h4>
+            <p>驗證用陽性對照必須包含：</p>
+            <ul>
+              <li>小於 MALL 的缺陷（方法<em>應該偵測不到</em>，或偵測到的概率很低）</li>
+              <li>等於 MALL 的缺陷（臨界點，方法應以高置信度偵測到）</li>
+              <li>大於 MALL 的缺陷（方法<em>必須</em>以 ≥95% 的可靠性偵測到）</li>
+            </ul>
+            <p>這個三段式設計讓你能描繪出方法的「偵測率曲線（POD Curve）」，是法規審查的核心內容。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>選擇邏輯示意</h4>
+            <pre>
+產品包裝特性  ──→  潛在缺陷位置和型態
+方法類型      ──→  靈敏度範圍和 LoD
+生命週期階段  ──→  驗證嚴格程度
+
+三者交集 ──→ 陽性對照的缺陷尺寸範圍
+         ──→ 陽性對照的缺陷類型
+         ──→ 陽性對照的數量要求</pre>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：磅秤校準</h4>
+            <p>選擇陽性對照就像為磅秤選校準砝碼。你不會只用一個砝碼測試，而是用一系列砝碼——包括量程的最小值、最大值和中間值——以確認整個量測範圍都準確。CCIT 驗證的陽性對照也需要「涵蓋 MALL 上下的範圍」，而非只挑一個尺寸。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>一支 2 mL 預填式注射器的 MALL 設定為 2 µm 等效孔徑。請列出你在驗證時至少需要準備哪些尺寸的陽性對照（以 µm 表示）？</li>
+              <li>為什麼同一種陽性對照不能同時適用於電氣式（HVLD）和壓力式（VD）兩種 CCIT 方法的驗證？</li>
+              <li>文中提到「方法無法完全表徵 CCS 的真實 MALL」，這句話的含義是什麼？對 CDMO 的風險評估有何影響？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1.2 — USING POSITIVE CONTROLS
+       =================================================================== -->
+  <div class="chapter-section" id="sec312">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1.2</div>
+      <div class="chapter-info">
+        <h2>Considerations When Using Positive Controls | 使用陽性對照的注意事項</h2>
+        <p>Handling challenges, plugging risk, and detection confidence requirements</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1.2 Considerations When Using Positive Controls</h3>
+          <p>Naturally occurring positive controls generated from manufacturing process failures present a challenge when attempting to control the size of leaks. In many cases, these types of defects generate large leaks, or leaks that are fragile and can be easily plugged by product. If found, these types of defects may be valuable to understand method performance against naturally occurring defects but <strong>naturally occurring defects should not be used for method validation</strong> due to the wide variability they exhibit.</p>
+          <p>Positive controls with simulated defects can also be easily plugged during handling and storage; therefore, proper storage and handling precautions should be used.</p>
+          <p>During the development and validation or qualification of a CCIT method, the test system must be challenged with positive controls. Positive controls should simulate large or gross leaks and those that simulate small leaks. Table 3.1.4-1 offers a summary of common positive controls or engineered defects. Engineered defects for positive controls can have the added advantage of being a micron-sized defect, but other factors should also be considered:</p>
+          <ul>
+            <li>Percentage of the micron-sized defects that can be consistently and reliably detected using a chosen CCIT method (NOTE: All positive controls with leaks at or above the claimed limit of detection (LoD) of the test method must be detected with high confidence, e.g., 95%).</li>
+            <li>Size and geometry of leaks that occur in real life and the ability of the test method to accurately detect those defects.</li>
+            <li>Leak size needed for microbial contamination to occur and pose a risk to product sterility or quality over the entire lifecycle of the product.</li>
+          </ul>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 使用陽性對照的關鍵注意點</h3>
+
+          <div class="note-box">
+            <h4>天然缺陷不能用於方法驗證 — 三個原因</h4>
+            <ol>
+              <li><strong>尺寸無法控制</strong>：製程失敗造成的缺陷通常偏大（如封口機設定錯誤），不代表最小臨界缺陷。</li>
+              <li><strong>高度脆弱</strong>：天然缺陷容易被產品堵住，測試重複性差。</li>
+              <li><strong>寬廣的變異性</strong>：同一批次發現的天然缺陷，幾何形狀和尺寸千差萬別，無法用於量化靈敏度。</li>
+            </ol>
+          </div>
+
+          <div class="concept-box">
+            <h4>95% 偵測置信度要求</h4>
+            <p>PDA TR86 明確要求：<strong>所有尺寸等於或大於方法 LoD 的陽性對照，必須以高置信度（例如 95%）被偵測到。</strong></p>
+            <p>這個要求呼應了統計學上的 POD（Probability of Detection）概念。在驗證時，通常需要足夠的樣本數（例如 n=20）以統計方式確認達到 ≥95% 的偵測率。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>模擬缺陷也會被堵住！</h4>
+            <p>即使是精心製作的工程模擬缺陷，在以下情況下也可能被堵塞：</p>
+            <ul>
+              <li>製品中的顆粒或蛋白質沉積於缺陷通道</li>
+              <li>不當搬運（震動、跌落）使微管破裂或移位</li>
+              <li>長期儲存後環境污染物進入缺陷通道</li>
+              <li>溫度變化使彈性材料回彈，縮小了缺陷開口</li>
+            </ul>
+            <p>因此，陽性對照需要專屬的儲存條件和處理 SOP，並在使用前做預先確認（pre-use verification）。</p>
+          </div>
+
+          <div class="concept-box">
+            <h4>驗證時需要「大缺陷 + 小缺陷」雙重挑戰</h4>
+            <p>方法驗證不只是確認能偵測最小缺陷，還要：</p>
+            <ul>
+              <li><strong>粗大缺陷（Gross Leaks）</strong>：確認方法在信號很強時不會飽和或誤判</li>
+              <li><strong>微小缺陷（Small Leaks）</strong>：確認方法能在臨界點附近正確分類</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：體溫計校準</h4>
+            <p>如果你要驗證一支醫用體溫計是否準確，不會只測 37°C，還要測 35°C（低溫）和 40°C（高溫），以確認整個臨床相關範圍都可靠。CCIT 陽性對照的「大小缺陷並用」道理完全相同。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的同事主張直接用生產線退件的破裂西林瓶作為 HVLD 方法驗證的陽性對照。你會如何回應？</li>
+              <li>設計一個陽性對照儲存和使用 SOP 的關鍵要素，至少包含三點。</li>
+              <li>為什麼偵測率（POD）要求是 95% 而不是 100%？從統計學角度解釋。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1.3 — TYPES OF SIMULATED POSITIVE CONTROLS
+       =================================================================== -->
+  <div class="chapter-section" id="sec313">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1.3</div>
+      <div class="chapter-info">
+        <h2>Types of Simulated Positive Controls | 模擬缺陷類型</h2>
+        <p>Glass micropipettes, wires, laser-drilling — mechanisms, sizes, and limitations</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1.3 Types of Simulated Positive Controls</h3>
+          <p>USP &lt;1207.1&gt; describes defect types as "positive controls representing realistic package flaws." Along with the examples given, it acknowledges that a chosen CCIT method may not be able to accurately detect some type defects in a given package design, so an alternative method should be identified. When a method cannot be identified, any information and design that can reduce the possible occurrence of such defects in the CCS should be sought.</p>
+          <p><strong>Common materials used to create simulated defects include:</strong></p>
+          <ul>
+            <li>Glass micropipette</li>
+            <li>Wire</li>
+            <li>Laser-drilled</li>
+          </ul>
+
+          <h4 style="color:var(--primary-blue); margin-top:1rem;">Glass Micropipettes</h4>
+          <p>Glass micropipettes are available in diameter sizes from 0.1 µm to 10 µm. The main advantage of a glass micropipette over laser-drilled and wire-simulated defects is the ability to generate relatively consistent defects at small sizes.</p>
+          <p>Use of a glass micropipette is considered a short microchannel of small diameter (5 µm and under); diameters under 2 µm are not perfectly round.</p>
+          <p>The micropipette is inserted through a protective tool (such as a hollow metallic syringe needle) into the septum or stopper and bonded to the container with epoxy, or through a hole drilled into the side glass or rigid wall and bonded with epoxy. A microscopic examination of the micropipette tip can be used to verify that the micropipette tip was not broken during sample preparation; then, a test cycle can be performed with an equivalent simulated flow rate for comparison to verify the actual performance of the micropipette.</p>
+          <p>Glass micropipettes are fragile, and the tip can be easily broken during sample preparation. Broken micropipette tips will typically yield an unusually higher flow rate; such a sample should not be used as a positive control.</p>
+
+          <h4 style="color:var(--primary-blue); margin-top:1rem;">Wires</h4>
+          <p>Wires can simulate foreign objects, such as a human hair (diameter range of 80 µm to 100 µm) at the sealing area. Various wire material and sizes are available in diameters of 10 µm and greater. For some sterile glass containers, a wire can be placed between the plunger and the glass barrel (syringes, cartridges) or between the aluminum-crimped stopper and the glass vial.</p>
+          <p>The elastomeric plunger or stopper, which has been press-fitted to the container, will not fully deform around the wire; therefore, small leak paths can be generated. This type of leak is also considered a microchannel. The defect size is dependent on, for example, the wire size, elastomeric material formulation and hardness, press-fit forces, or assembly forces (crimping for vials).</p>
+          <p>Leak paths with calculated or estimated sizes of 2 µm to 10 µm and less have been created for glass syringes and glass vials using nickel-titanium wires with diameters of 25 µm and greater.</p>
+          <p>Stainless steel wires (typically 50 µm and larger diameter) are used as simulated defects for heat-sealed or ultrasonically sealed trays and pouches. For lidded trays and pouches, where the container and lid material do not conform well to the wires generating a very large defect, the wire is pulled out shortly after sealing (and before full seal-curing) to generate a smaller leak path.</p>
+
+          <h4 style="color:var(--primary-blue); margin-top:1rem;">Laser-Drilled Holes</h4>
+          <p>A laser at various wavelengths, when applied to the container surface, generates localized heat, melting the material and creating an opening (or hole) in the package wall. Laser-drilling on the container walls will generate defects from equivalent sizes of 2 µm and greater. Containers are typically filled and sealed after the laser-drilling process.</p>
+          <p>Laser-drilling of glass products (e.g., vials, cartridges, and syringes) is done by drilling a tapered hole in the glass, where the hole does not protrude through the glass wall. The heat generated by this process results in cracking the glass near that hole, creating the leak path through the cracks. The geometry of such cracks is not consistent; however, the defect size and its behavior are hard to define. Its behavior can be a sharp-edge orifice, a very short microchannel, or a combination of both.</p>
+          <p>Updated laser-drilling technology can increase the time interval between laser shots to allow heat dissipation, effectively eliminating glass "cracking." These defects are essentially wormholes that have some consistent diameters across the entire glass wall thickness (i.e., hole-like defects).</p>
+          <p>Laser-drilling manufacturers can correlate the defect "equivalent diameter" using air flow and empirical air flow calibration curves generated from known sharp-edged metallic orifices. Defect sizes less than 10 µm in glass products may show larger variability. The size of laser-drilled defects in glass can be estimated to "equivalent micropipette" size using calibration curves. Calibration curves should not be extrapolated beyond their ranges.</p>
+          <p>Laser-drilled holes are often the most effective and reliable method for simulating positive controls in flexible packaging. They may be the preferred way to introduce engineered defects in such flexible containers as single-use systems (e.g., for bulk storage) or IV bags.</p>
+          <p>An alternative to laser-drilling directly into a container is to use stainless-steel discs. These can be subjected to laser-drilling to create defects as small as 0.5 µm and, generally, are more consistent defects to use in equipment.</p>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 三種主要模擬缺陷技術詳解</h3>
+
+          <div class="concept-box">
+            <h4>USP &lt;1207.1&gt; 連結</h4>
+            <p>TR86 在此呼應了 USP &lt;1207.1&gt; 的要求：陽性對照必須是「代表真實包裝缺陷的正控制樣本」。這代表你不能隨便用任何有洞的容器，缺陷的形態、尺寸和位置都需要在設計時考慮，使其接近真實生產環境中最可能出現的缺陷類型。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>方法一：玻璃微管（Glass Micropipette）</h4>
+            <p><strong>工作原理：</strong>將極細的玻璃毛細管（0.1–10 µm 內徑）插入橡皮塞或玻璃壁，用環氧樹脂固定，形成已知尺寸的通道缺陷。</p>
+            <p><strong>核心優勢：</strong>可製作出最小尺寸（低至 0.1 µm），適合極高靈敏度方法的驗證。</p>
+            <p><strong>主要限制：</strong></p>
+            <ul>
+              <li>極易破裂 — 製樣時輕微外力即可造成末端斷裂</li>
+              <li>斷裂後流速異常升高，但外觀上難以辨識</li>
+              <li>使用前<em>必須</em>做顯微鏡確認 + 流量核驗</li>
+              <li>若用於染料滲入或微生物侵入測試，需預先填充介質（priming）</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>方法二：金屬線插入（Wire Insertion）</h4>
+            <p><strong>工作原理：</strong>在壓蓋或組裝前，將細金屬線夾在橡皮塞/活塞與玻璃之間，由於彈性材料無法完全包覆金屬線，形成繞線的微通道缺陷。</p>
+            <p><strong>兩種主要應用：</strong></p>
+            <ul>
+              <li><strong>西林瓶 / 注射器</strong>：使用鎳鈦合金線（25 µm 以上直徑）→ 產生 2–10 µm 等效缺陷</li>
+              <li><strong>熱封袋 / 托盤</strong>：使用不鏽鋼線（≥50 µm），封合後拉出，留下通道</li>
+            </ul>
+            <p><strong>影響缺陷尺寸的因素：</strong>線徑、彈性材料硬度、壓蓋力/組裝力、放置到測試的時間間隔、溫度（影響橡皮彈性）</p>
+            <p><strong>注意：</strong>金屬線模擬的是「異物夾入密封面」這類真實缺陷，例如生產時有毛髮或纖維落入封口區，是 CDMO 最常見的容器密封失效模式之一。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>方法三：雷射鑽孔（Laser Drilling）</h4>
+            <p><strong>工作原理：</strong>用雷射光束在容器壁產生局部高溫，熔化或裂解材料，形成孔洞。</p>
+            <p><strong>玻璃容器的特殊性：</strong></p>
+            <ul>
+              <li>雷射只打到接近穿透但未完全穿透玻璃壁 → 熱應力造成裂紋 → 裂紋才是真正的洩漏通道</li>
+              <li>裂紋幾何形狀不規則：可能是銳孔、微通道或兩者組合</li>
+              <li>較新的技術（增加兩次雷射之間的冷卻時間）可製作出較規則的「蟲孔（wormhole）型」缺陷</li>
+            </ul>
+            <p><strong>彈性包裝的應用：</strong>雷射鑽孔是軟袋（IV bag）、單次使用系統（SUS）等柔性容器的首選缺陷製作方式。</p>
+            <p><strong>不鏽鋼碟片替代方案：</strong>可在鋼碟上雷射鑽孔至 0.5 µm，然後安裝在儀器測試迴路中，比直接在玻璃上鑽孔更一致且耐用。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>雷射鑽孔的尺寸校準問題</h4>
+            <p>雷射孔的「等效直徑」是用空氣流量 + 已知銳孔口徑曲線<em>間接推算</em>的，不是直接量測。這意味著：</p>
+            <ul>
+              <li>校準曲線不得外推（不能用 5–50 µm 範圍的曲線去推算 1 µm 的缺陷）</li>
+              <li>玻璃上 &lt;10 µm 的缺陷本身就有較大變異性</li>
+              <li>使用前建議驗證實際流量，避免因孔徑偏移造成偽陰性</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你需要為一支含活塞的預填式注射器（2 mL）製作 5 µm 等效缺陷的陽性對照。玻璃微管和金屬線兩種方法各有何優缺點？你會如何選擇？</li>
+              <li>雷射鑽孔玻璃瓶的缺陷是「通過裂紋」而非「通過孔洞」本身導通，這對 CCIT 方法的選擇有何影響？（提示：考慮 HVLD 和 VD 的偵測機制差異）</li>
+              <li>為什麼金屬線在熱封袋中需要「封合後立即拔出」而不是讓它留在裡面？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-width comparison table -->
+      <div id="comparison-table">
+        <h3 class="section-title">Comparison Table — Positive Control Types | 陽性對照類型對照表</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>類型 / Type</th>
+              <th>最小缺陷尺寸<br>Min Defect Size</th>
+              <th>優點 Advantages</th>
+              <th>限制 Limitations</th>
+              <th>適用容器<br>Applicable Containers</th>
+              <th>適用 CCIT 方法<br>Compatible Methods</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Glass Micropipette</strong><br>玻璃微管</td>
+              <td>0.1 µm</td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>可達最小缺陷尺寸</li>
+                  <li>通道清晰可見（透明）</li>
+                  <li>尺寸相對一致</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>極易破裂</li>
+                  <li>需顯微鏡確認完整性</li>
+                  <li>使用染料/微生物法需預填充</li>
+                  <li>破裂難以目視察覺</li>
+                </ul>
+              </td>
+              <td>西林瓶、注射器、卡匣（septum/stopper 位置）</td>
+              <td>VD、MST、染料滲入、He Leak、HVLD（需液體接觸）</td>
+            </tr>
+            <tr>
+              <td><strong>Wire Insertion</strong><br>金屬線插入</td>
+              <td>10 µm（等效）<br>實際可達 2–5 µm</td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>操作簡便、成本低</li>
+                  <li>模擬真實異物侵入場景</li>
+                  <li>適合可行性評估</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>缺陷幾何形狀受多因素影響</li>
+                  <li>氣液微生物洩漏動態可能與真實缺陷差異大</li>
+                  <li>彈性體回彈會縮小缺陷</li>
+                </ul>
+              </td>
+              <td>西林瓶（橡皮塞）、注射器（活塞）、熱封袋/托盤</td>
+              <td>VD、MST、染料滲入、微生物侵入</td>
+            </tr>
+            <tr>
+              <td><strong>Laser-Drilled (Glass)</strong><br>雷射鑽孔（玻璃）</td>
+              <td>2 µm ± 0.5 µm</td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>最接近真實包裝缺陷型態（裂紋/針孔）</li>
+                  <li>不同批次可重複製作</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>成本高</li>
+                  <li>裂紋幾何不規則</li>
+                  <li>需空氣流量校準推算等效尺寸</li>
+                  <li>&lt;10 µm 變異性增大</li>
+                </ul>
+              </td>
+              <td>玻璃西林瓶、安瓿、注射器、卡匣</td>
+              <td>VD、MST、He Leak、HVLD、頂空分析</td>
+            </tr>
+            <tr>
+              <td><strong>Laser-Drilled (Flexible)</strong><br>雷射鑽孔（軟包裝）</td>
+              <td>0.5 µm（不鏽鋼碟片）</td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>軟包裝首選方法</li>
+                  <li>不鏽鋼碟片版本一致性高</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>壓力測試時孔徑可能改變</li>
+                  <li>多個小孔加總可能模擬大洩漏</li>
+                  <li>薄壁容器穿透形態不同</li>
+                </ul>
+              </td>
+              <td>IV 袋、SUS 儲液袋、軟包裝托盤</td>
+              <td>VD、染料滲入、電導率法</td>
+            </tr>
+            <tr>
+              <td><strong>Calibrated Leak</strong><br>校準洩漏元件</td>
+              <td>依製造商設計</td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>NIST 可追溯、量值確定</li>
+                  <li>穩定性高、不易堵塞（有過濾保護）</li>
+                  <li>適合儀器系統適用性驗證</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="margin:0; padding-left:1rem; font-size:0.85rem;">
+                  <li>安裝在儀器內部，非產品容器</li>
+                  <li>需無限氣源，無法模擬密閉頂空</li>
+                  <li>只適用於特定方法</li>
+                </ul>
+              </td>
+              <td>安裝於儀器測試迴路（非容器本身）</td>
+              <td>He Leak、MST、VD（部分）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1.4 — CALIBRATED LEAKS
+       =================================================================== -->
+  <div class="chapter-section" id="sec314">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1.4</div>
+      <div class="chapter-info">
+        <h2>Calibrated Leaks | 校準洩漏元件</h2>
+        <p>NIST-traceable standards, He leak rates, equipment integration and system verification</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1.4 Calibrated Leaks</h3>
+          <p>Calibrated leaks are designed to yield a given leakage rate calibrated against independent, traceable calibration standards. A calibrated leak is typically an independent component that is introduced into the container barrier or into the test system volume to introduce a certified known flow rate into the test system during a challenge leak test.</p>
+          <p>These calibrated leaks are engineered inside a robust metallic housing and are protected from plugging via filter or clean-supplied gas. Generating a calibrated leak to mimic the headspace of sterile containers (a space with a limited air supply) is difficult because calibrated leaks need an infinite gas supply.</p>
+          <p>The inlet to the calibrated leak is normally open to the gas supply source, while the outlet of the calibrated leak is connected to the equipment test circuit or test chamber via a valve. When this valve is open, a known amount of gas leakage is injected either into the test circuit (in vacuum-test condition) or out of the test circuit (in pressure-test condition).</p>
+          <p>When running a test with a "master container," the calibrated leak simulates a defect that is consistent and robust, which can be used to challenge and verify the CCIT equipment performance. In this condition, the calibrated leak represents a positive control sample for the CCIT equipment to detect that leak.</p>
+
+          <div class="quote-box" style="margin-top:1rem;">
+            <strong>Table 3.1.4-1 Reference:</strong> A summary of common positive controls or engineered defects (including He leak rates and water leak rates corresponding to different capillary sizes) is provided in the source document. Key data points from this table indicate that:
+            <ul style="margin-top:0.5rem;">
+              <li>A 1 µm equivalent capillary yields: He leak rate ~1×10⁻⁵ mbar·L/s; water leak rate ~10⁻⁷ mL/s</li>
+              <li>A 10 µm equivalent capillary yields: He leak rate ~1×10⁻³ mbar·L/s; water leak rate ~10⁻⁵ mL/s</li>
+              <li>A 50 µm equivalent capillary yields: He leak rate ~1×10⁻¹ mbar·L/s; water leak rate ~10⁻³ mL/s</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 校準洩漏的工作原理與法規意義</h3>
+
+          <div class="concept-box">
+            <h4>什麼是「NIST 可追溯」的校準洩漏？</h4>
+            <p><span class="key-term">NIST（美國國家標準與技術研究院）</span>可追溯性是指：校準洩漏元件的洩漏量值，可以通過一條連續的校準鏈，追溯到國家或國際計量標準。</p>
+            <p>在 CCIT 中，這表示：</p>
+            <ul>
+              <li>你的校準洩漏標示的「He 洩漏率 = 1.2×10⁻⁴ mbar·L/s」是有文件依據的量值</li>
+              <li>這個量值由製造商用標準漏氣測試儀（mass spectrometer）對照 NIST 標準件進行校準</li>
+              <li>校準證書上會標明量值、不確定度、和可追溯鏈</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>He 洩漏率 vs 水洩漏率的換算關係</h4>
+            <p>由於氦氣（He）和水的黏度差異，同一個孔洞的 He 洩漏率和水洩漏率可以相互換算（在層流假設下）。常用公式：</p>
+            <div style="background:#f0f4ff; padding:0.75rem; border-radius:6px; font-family:monospace; font-size:0.88rem; margin:0.5rem 0;">
+              Q(water) ≈ Q(He) × (η_He / η_water) × (ΔP_water / ΔP_He)<br><br>
+              η_He ≈ 1.96×10⁻⁵ Pa·s (氦氣動態黏度)<br>
+              η_water ≈ 1.0×10⁻³ Pa·s (水動態黏度 @25°C)
+            </div>
+            <p>這個換算對於決定使用氦質譜法（He Mass Spectrometry）還是液體型 CCIT 方法（如染料滲入法）非常重要。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>校準洩漏的關鍵設計特點</h4>
+            <ul>
+              <li><strong>堅固金屬外殼</strong>：保護元件不受搬運損壞</li>
+              <li><strong>過濾器保護</strong>：防止顆粒堵塞校準孔道</li>
+              <li><strong>無限氣源連接</strong>：校準洩漏需要持續供氣，這意味著它無法模擬密閉頂空容器（如西林瓶）的有限氣體供應情況</li>
+              <li><strong>閥門控制</strong>：打開時注入已知流量，進行系統挑戰</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：測功機校準</h4>
+            <p>校準洩漏就像汽車測功機上的「標準負載砝碼」。測功機本身只是量測工具，砝碼確保測功機的讀數準確。每次啟動前，用砝碼確認儀器狀態，這就是「系統適用性驗證（System Suitability）」。校準洩漏在 CCIT 儀器中扮演的正是這個角色。</p>
+          </div>
+
+          <div class="concept-box application">
+            <h4>CDMO 應用：系統適用性的頻率設計</h4>
+            <p>在 GMP 環境中，校準洩漏通常用於：</p>
+            <ul>
+              <li><strong>每批次開始前</strong>：執行系統適用性（System Suitability Test）確認儀器敏感度未漂移</li>
+              <li><strong>設備維護後</strong>：確認維修未影響測試迴路的密封性</li>
+              <li><strong>驗證活動</strong>：作為已知洩漏率的挑戰標準</li>
+            </ul>
+            <p>注意：對於已驗證的決定性方法（Deterministic Methods），若儀器在校準維護狀態下，常規測試時可不再需要每次搭配產品陽性對照，但仍需定期校準洩漏驗證。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>校準洩漏無法模擬「密閉頂空容器」的情境，這對頂空氣體分析（HSA）方法的驗證意味著什麼？需要額外哪種陽性對照補充？</li>
+              <li>如果你的 He 漏氣測試儀的校準洩漏元件出現堵塞，系統適用性結果可能顯示什麼？（偽通過還是偽失敗？）</li>
+              <li>如何從一個 He 洩漏率為 5×10⁻⁴ mbar·L/s 的缺陷估算其水洩漏率？這個計算的假設條件是什麼？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.1.5 — ADDITIONAL CONSIDERATIONS
+       =================================================================== -->
+  <div class="chapter-section" id="sec315">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.1.5</div>
+      <div class="chapter-info">
+        <h2>Additional Considerations for Controls | 陽性對照的補充考量</h2>
+        <p>MALL variability across industry, deterministic vs probabilistic methods, system suitability</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.1.5 Additional Considerations for Controls</h3>
+          <p>The MALL used to define the CCI level of sterile products varies across the industry. This MALL is used to prepare positive controls with simulated defects.</p>
+          <p>System suitability can be performed on each instrument prior to sample analysis using calibrated standards or other means of instrument verification. If a deterministic method is validated and instruments are calibrated, the use of positive controls to establish sensitivity may no longer be required for routine testing. The use of controls during validation of a deterministic method demonstrates that leaks will be detected by the method, so they may not be needed with routine testing, as long as the system is in a calibrated and maintained state.</p>
+          <p>For probabilistic methods, system suitability may need to be performed along with sample analysis.</p>
+          <p>Section 6.5 provides an example of a study using positive controls. See Section 7.0 for additional resources.</p>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | MALL 的行業差異與常規測試豁免</h3>
+
+          <div class="concept-box">
+            <h4>MALL 在行業中沒有統一標準</h4>
+            <p>不同公司、不同產品類型對 MALL 的設定各不相同。目前業界常見的參考值包括：</p>
+            <ul>
+              <li>注射劑（水針）：通常設定 MALL = 1–10 µm 等效孔徑（參考微生物侵入臨界孔徑 ~0.2–1 µm 加上安全邊際）</li>
+              <li>凍乾粉針：因為乾粉對微生物污染的直接風險較低，但需關注水氣滲入造成的品質降解</li>
+              <li>眼科製劑：更嚴格，因無菌要求極高</li>
+            </ul>
+            <p>這種差異性意味著：陽性對照的設計標準因產品和公司而異，沒有放諸四海皆準的設定。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>決定性方法 vs 概率性方法的常規測試要求差異</h4>
+            <table>
+              <thead>
+                <tr><th>方法類型</th><th>定義</th><th>常規測試陽性對照需求</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>決定性方法</strong><br>Deterministic</td>
+                  <td>結果為確定性量測值（如壓力、電容），有直接的通過/失敗判定</td>
+                  <td>驗證時需要；常規測試<em>可豁免</em>，前提是儀器在校準維護狀態</td>
+                </tr>
+                <tr>
+                  <td><strong>概率性方法</strong><br>Probabilistic</td>
+                  <td>結果依賴統計模型或間接指標（如染料顏色、微生物計數），固有變異性較高</td>
+                  <td>常規測試時<em>仍需</em>搭配系統適用性確認</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note-box">
+            <h4>豁免常規陽性對照的前提條件</h4>
+            <p>決定性方法可以豁免常規陽性對照，但必須同時滿足：</p>
+            <ol>
+              <li>方法已通過正式驗證（含陽性對照挑戰）</li>
+              <li>儀器在現行校準週期內</li>
+              <li>儀器已按規定執行預防性維護</li>
+              <li>每次使用前執行系統適用性測試（使用校準洩漏或其他核准標準）</li>
+            </ol>
+            <p>缺少任何一項，陽性對照的豁免就不成立。</p>
+          </div>
+
+          <div class="concept-box application">
+            <h4>CDMO 常規 CCIT 作業設計建議</h4>
+            <p>根據 3.1.5 的原則，建議 CDMO 在批次測試 SOP 中明確區分：</p>
+            <ul>
+              <li><strong>驗證批次</strong>：必須使用一系列陽性對照（從小於 MALL 到大於 MALL 的完整範圍）</li>
+              <li><strong>常規生產批次（決定性方法）</strong>：系統適用性確認（含校準洩漏）+ 儀器校準記錄核查 → 可不使用產品陽性對照</li>
+              <li><strong>常規生產批次（概率性方法）</strong>：每批需搭配陽性對照進行系統適用性</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的 CCIT 方法是真空衰減法（Vacuum Decay — 決定性方法）。驗證完成後，可以完全取消每批測試的陽性對照嗎？需要滿足什麼條件？</li>
+              <li>染料滲入法（Dye Ingress）通常被歸類為概率性方法（因肉眼判斷有主觀性）。為什麼這類方法在常規測試中需要更多的系統確認步驟？</li>
+              <li>公司 A 設定 MALL = 2 µm，公司 B 設定 MALL = 10 µm（同類型產品）。兩者驗證時使用的陽性對照尺寸範圍會有何差異？哪個驗證更嚴格？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SECTION 3.2 — BLOCKAGE OF LEAK PATHS
+       =================================================================== -->
+  <div class="chapter-section" id="sec32">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.2</div>
+      <div class="chapter-info">
+        <h2>Blockage of Leak Paths | 洩漏路徑阻塞效應</h2>
+        <p>Protein aggregates, crystallization, silicone oil — false negatives, CCI strategy beyond CCIT</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+
+        <div class="left-column">
+          <h3>3.2 Blockage of Leak Paths</h3>
+          <p>Biopharmaceutical products are formulated with a wide variety of ingredients, such as proteins, nucleic acids, or living microorganisms and buffer solution. Some of these ingredients can present challenges to CCIT. For example, some CCI physical testing methods have difficulty detecting defects in samples formulated with proteins.</p>
+          <p>A study was performed to compare CCIT between a highly concentrated protein solution (120 mg/mL) and a surrogate solution with the same viscosity material property. The surrogate solution could flow out easily through defects, but the highly concentrated protein solution did not flow out. One hypothesis suggests that highly concentrated large molecules in solution are <strong>agglomerated around defect channels, completely or partially blocking the channels</strong>. The result was a solution that had difficulty flowing out through the channels. This supports the idea that proteins may play an important role in clogging the leak path.</p>
+          <p>Other types of defect clogging can occur when a product solution has ingredients that can <strong>crystallize upon drying</strong>. In this case, the solution easily leaks out through the defect channel, but the leaking solution will dry over time and turn into crystallized material in the defect channel. Once the solution has crystallized, it clogs the defect channel. This situation depends on the properties of the solution and the type of defect. Defect samples can be detected if they are tested soon after they are prepared, but the detection probability decreases as sample storage time increases.</p>
+          <p>When defect samples are clogged by proteins, vacuum or tracer gas-based CCI physical tests may not be able to detect defects due to the difficulty creating pressure, mass, or gas changes through the defect channel. Theoretically, if the clogged defect channels have some residual moisture and are still electrically conductive, <strong>high-voltage leak detection (HVLD)</strong> may be able to detect those leaks. Also, solution-based testing, such as the <strong>dye ingress test</strong>, may help to dissolve the crystallized materials in the clogged area if the materials are in direct contact with the dye solution, constituting a valid CCIT method for such products. However, that dye solution can also block small channels under certain conditions, such as drying or vacuum or pressure exposure.</p>
+          <p>When considering clogging by proteins or other ingredients in liquid-filled products over time, seal property, in addition to the CCIT, should be monitored in a stability program. This should be considered in feasibility studies and when selecting the CCIT method. CCIT may not be able to detect a defect in the seal if it is blocked by the clogging. <strong>Sterility could be breached if the product is contaminated prior to the clogging.</strong> Clogging is one of the challenges in CCIT; consequently, the drug manufacturers should not rely on CCIT to ensure the sterility but should develop a CCI strategy.</p>
+          <p>Manufacturers can develop different ways to resolve the clogging challenge. The CCI testing strategy and methods should address this clogging challenge. Visual inspection and RSF are examples. For example, when the seal is visible, like the plunger in a syringe, the plunger-rib contact length can be monitored to verify that the seal contact pressure does not change. When the seal is not visible, like the stopper in a vial or the disc seal in a cartridge, the residual seal force or rubber bulge height from the rubber compression can be used to verify that the seal contact pressure is acceptable.</p>
+        </div>
+
+        <div class="right-column">
+          <h3>中文解說 | 阻塞效應是 CCIT 最棘手的挑戰</h3>
+
+          <div class="note-box">
+            <h4>阻塞效應（Blockage）的核心邏輯</h4>
+            <p>阻塞效應的本質是：<strong>容器確實有缺陷，但 CCIT 測不到</strong>——因為缺陷通道已被製劑成分堵住。這是最危險的情境，因為：</p>
+            <ol>
+              <li>CCIT 結果顯示「合格」</li>
+              <li>但容器密封在阻塞前可能已經發生過微生物滲入</li>
+              <li>阻塞去除後（如運輸振動、溫度變化），洩漏可能重新出現</li>
+            </ol>
+          </div>
+
+          <div class="concept-box">
+            <h4>三種主要阻塞機制</h4>
+            <table>
+              <thead>
+                <tr><th>阻塞類型</th><th>機制</th><th>典型製劑</th><th>時序特點</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>蛋白質聚集阻塞</strong></td>
+                  <td>高濃度大分子在缺陷通道口聚集，物理性堵塞流道</td>
+                  <td>單抗 &gt;100 mg/mL、融合蛋白</td>
+                  <td>持續性，不隨時間自行消失</td>
+                </tr>
+                <tr>
+                  <td><strong>結晶物阻塞</strong></td>
+                  <td>液體滲出後蒸發，溶質結晶殘留在通道內</td>
+                  <td>高濃度糖類、鹽類、緩衝劑</td>
+                  <td>隨時間加重（儲存越久越嚴重）</td>
+                </tr>
+                <tr>
+                  <td><strong>矽油/高黏度阻塞</strong></td>
+                  <td>矽油塗層或高黏度製劑本身堵塞微小通道</td>
+                  <td>含矽油潤滑的注射器、油性注射液</td>
+                  <td>與黏度直接相關</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="concept-box">
+            <h4>關鍵研究結果：120 mg/mL 蛋白質 vs 相同黏度的替代液</h4>
+            <p>TR86 引用的研究清楚說明：即使排除黏度因素（使用相同黏度的替代液做對照），高濃度蛋白質溶液仍然無法通過缺陷通道。這證明了：</p>
+            <ul>
+              <li>阻塞效應不僅僅是「黏度太高流不過去」的問題</li>
+              <li>蛋白質分子本身的物理化學特性（聚集、吸附）是關鍵機制</li>
+              <li>用非蛋白質的替代液驗證的 CCIT 方法，可能<em>無法</em>準確預測真實蛋白質製劑的行為</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>不同 CCIT 方法對阻塞的反應差異</h4>
+            <table>
+              <thead>
+                <tr><th>CCIT 方法</th><th>阻塞影響</th><th>原因</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>真空衰減 (VD)</td>
+                  <td>嚴重影響 — 偽陰性</td>
+                  <td>需要氣體通過通道才能偵測壓差變化，阻塞後氣體無法通過</td>
+                </tr>
+                <tr>
+                  <td>He 質譜法 (MST)</td>
+                  <td>嚴重影響 — 偽陰性</td>
+                  <td>需要示蹤氣體通過通道，阻塞後氣體無法滲入</td>
+                </tr>
+                <tr>
+                  <td>HVLD（高壓洩漏檢測）</td>
+                  <td>部分有效</td>
+                  <td>如果阻塞物含有殘留水分仍具導電性，可能仍有電流訊號</td>
+                </tr>
+                <tr>
+                  <td>染料滲入法 (DI)</td>
+                  <td>可能有效</td>
+                  <td>染料溶液可能溶解結晶性阻塞物；但染料本身也可能在乾燥/真空時堵塞小通道</td>
+                </tr>
+                <tr>
+                  <td>目視檢查 (VI)</td>
+                  <td>補充方法</td>
+                  <td>可觀察可見封口外觀異常，但無法偵測微小缺陷</td>
+                </tr>
+                <tr>
+                  <td>殘餘封合力 (RSF)</td>
+                  <td>互補方法</td>
+                  <td>監控封口接觸壓力，不依賴通道是否暢通</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="analogy-box">
+            <h4>生活比喻：被水垢堵住的水管</h4>
+            <p>想像一根輕微裂縫的水管。初期會滲水（洩漏），但水中的礦物質慢慢沉積在裂縫處，最終將裂縫完全填補（阻塞）。這時如果你做漏水測試，結果顯示正常——但水管的結構性缺陷仍在，只是暫時被遮蓋了。下次震動或高壓時，阻塞物脫落，漏水重現。這就是 CCIT 阻塞效應的精確比喻。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>最關鍵的警語</h4>
+            <div class="quote-box">
+              "Sterility could be breached if the product is contaminated prior to the clogging. Clogging is one of the challenges in CCIT; consequently, the drug manufacturers should not rely on CCIT to ensure the sterility but should develop a CCI strategy."
+            </div>
+            <p>這句話是 TR86 Section 3.2 的核心結論：<strong>不能單靠 CCIT 保證無菌性。</strong>阻塞發生之前，微生物可能已經進入容器，阻塞後 CCIT 反而「看不見」這個問題。這就是為什麼需要整體 CCI 策略（Strategy），而非單一測試。</p>
+          </div>
+
+          <div class="concept-box application">
+            <h4>CCI 整體策略 — 超越 CCIT 的考量</h4>
+            <p>根據 3.2 的建議，對於含有阻塞風險製劑的產品（高濃度蛋白質、凍乾製劑等），應建立涵蓋以下要素的 CCI 整體策略：</p>
+            <ul>
+              <li><strong>CCIT 方法選擇</strong>：優先選擇對阻塞不敏感的方法（如 HVLD、目視）或互補方法組合</li>
+              <li><strong>穩定性程式中的封口特性監控</strong>：定期測量 RSF（殘餘封合力）或橡皮膨出高度</li>
+              <li><strong>目視外觀檢查</strong>：監控活塞-肋條接觸長度（注射器）、橡皮塞/碟封外觀（西林瓶/卡匣）</li>
+              <li><strong>可行性研究中的阻塞評估</strong>：在方法選擇階段即對真實製劑進行阻塞風險評估</li>
+              <li><strong>CCIT 測試時機設計</strong>：考慮在填充後盡快測試（結晶性阻塞隨時間加重）</li>
+            </ul>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的產品是 120 mg/mL 的融合蛋白凍乾製劑（復水前）。你計劃使用真空衰減法（VD）進行常規 CCIT。根據 3.2 的內容，這個選擇有何風險？應如何補充？</li>
+              <li>一批西林瓶在生產後立即 CCIT 測試全部合格，但 6 個月穩定性取樣時發現部分容器有明顯滲漏。最可能的原因是什麼？對製劑的哪種特性應重點調查？</li>
+              <li>HVLD 在阻塞場景下「可能有效」的前提是「殘留水分仍具導電性」。對於凍乾製劑（水分極低），這個前提成立嗎？這說明了什麼？</li>
+              <li>你的 CCI 策略文件中，如何設計「阻塞風險評估（Blockage Risk Assessment）」章節？請概述至少四個評估要素。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION SUMMARY ===== -->
+  <div class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge" style="font-size:1rem;">&#9733;</div>
+      <div class="chapter-info">
+        <h2>Section Summary | 本節重點總結</h2>
+        <p>Key takeaways from Sections 3.0 – 3.2</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Key Regulatory & Technical Takeaways</h3>
+          <ul class="structure-list">
+            <li><strong>3.0:</strong> CCIT method selection must account for three variability sources: formulation-induced blockage, method-induced formulation changes, and method-induced container deformation.</li>
+            <li><strong>3.1:</strong> Positive controls ("leak artifacts") are used across the full CCIT lifecycle — from container design to routine system suitability. Both naturally occurring and engineered defects have roles, but only engineered defects should be used for validation.</li>
+            <li><strong>3.1.1:</strong> Positive controls must bracket the MALL — include sizes above and below the maximum allowable leakage limit, selected based on product package profile, method type, and lifecycle phase.</li>
+            <li><strong>3.1.2:</strong> Natural defects must not be used for validation due to high variability. All positive controls at or above the claimed LoD must be detected with ≥95% confidence.</li>
+            <li><strong>3.1.3:</strong> Three main simulated defect types: glass micropipettes (0.1–10 µm, fragile), wire insertion (10 µm+, simple but variable), and laser-drilling (2 µm+, most realistic for flexible and glass containers).</li>
+            <li><strong>3.1.4:</strong> Calibrated leaks are NIST-traceable, installed in instrument hardware, and used for system suitability. They cannot simulate closed headspace due to requiring infinite gas supply.</li>
+            <li><strong>3.1.5:</strong> Deterministic methods may not require routine positive controls if validated and calibrated; probabilistic methods require ongoing system suitability with sample analysis.</li>
+            <li><strong>3.2:</strong> Protein aggregates, crystallization, and high-viscosity ingredients can block defect channels, causing false negatives. CCIT alone cannot guarantee sterility for blockage-prone products — a CCI strategy is required.</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>中文重點摘要</h3>
+          <ul class="structure-list">
+            <li><strong>3.0：</strong>方法選擇的三大變異來源——製劑干擾通道流動、方法干擾製劑特性、方法改變容器形態——缺一不可都需考量。</li>
+            <li><strong>3.1：</strong>陽性對照貫穿 CCIT 全生命週期。天然洩漏可用於方法能力了解，但不可用於正式驗證；工程模擬缺陷才是驗證的核心工具。</li>
+            <li><strong>3.1.1：</strong>驗證用陽性對照必須涵蓋 MALL 上下的缺陷尺寸範圍，根據產品包裝特性、方法類型和生命週期階段選擇。</li>
+            <li><strong>3.1.2：</strong>天然缺陷變異性太大，不可用於驗證。凡等於或大於 LoD 的陽性對照，方法必須以 ≥95% 置信度偵測到。</li>
+            <li><strong>3.1.3：</strong>三種主要模擬缺陷技術：玻璃微管（最小但最脆弱）、金屬線（簡便但幾何不一致）、雷射鑽孔（最接近真實缺陷，軟包裝首選）。</li>
+            <li><strong>3.1.4：</strong>校準洩漏元件具 NIST 可追溯性，安裝於儀器內部，用於系統適用性驗證，但無法模擬密閉頂空容器。</li>
+            <li><strong>3.1.5：</strong>決定性方法（如 VD）在驗證和校準完成後，常規測試可豁免陽性對照；概率性方法（如染料滲入）仍需每次系統確認。</li>
+            <li><strong>3.2：</strong>阻塞效應是最危險的 CCIT 失效模式——缺陷真實存在但測試偵測不到。對高風險製劑，必須超越 CCIT，建立涵蓋 RSF、目視、穩定性封口監控的 CCI 整體策略。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+  <p><strong>PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</strong></p>
+  <p>Section 1 — Challenges with Methodologies (3.0, 3.1, 3.1.1–3.1.5, 3.2)</p>
+  <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Educational Reference Only &nbsp;|&nbsp; Licensed Content — Not for Distribution</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+// Back to top
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btn.classList.toggle('visible', window.scrollY > 300);
+});
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Nav scroll arrows
+const nav = document.getElementById('navContainer');
+const leftBtn = document.getElementById('navLeft');
+const rightBtn = document.getElementById('navRight');
+
+function updateArrows() {
+  leftBtn.classList.toggle('hidden', nav.scrollLeft <= 0);
+  rightBtn.classList.toggle('hidden', nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 1);
+}
+nav.addEventListener('scroll', updateArrows);
+leftBtn.addEventListener('click', () => { nav.scrollBy({ left: -200, behavior: 'smooth' }); });
+rightBtn.addEventListener('click', () => { nav.scrollBy({ left: 200, behavior: 'smooth' }); });
+window.addEventListener('resize', updateArrows);
+updateArrows();
+
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('.chapter-section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.2, rootMargin: '-60px 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

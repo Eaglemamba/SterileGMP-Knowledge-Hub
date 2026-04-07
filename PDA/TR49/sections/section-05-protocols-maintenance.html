@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 5: Validation Protocols &amp; Maintenance of Validated State</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 5: Validation Protocols &amp; Maintenance of Validated State</h1>
+    <div class="subtitle">驗證協議與維持驗證狀態 | PDA Technical Report No. 49</div>
+    <div class="page-info">Covers Sections 7.0–7.2 (Protocols) and 8.0–8.7 (Maintenance of Validated State) | pp. 40–44</div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="main-content">
+    <div class="learning-objectives">
+        <h3>Learning Objectives &nbsp;|&nbsp; 學習目標</h3>
+        <ul>
+            <li>Describe the required elements of a cleaning validation protocol and distinguish it from a cleaning verification protocol. &nbsp;|&nbsp; 說明清潔驗證協議的必要要素，並區分驗證協議與確認協議的差異。</li>
+            <li>Explain how FDA regulatory evolution has changed the traditional "three-run" requirement. &nbsp;|&nbsp; 解釋 FDA 法規演進如何改變傳統「三次執行」的要求。</li>
+            <li>Identify the main tools for maintaining a validated state: change control, periodic monitoring, and trending. &nbsp;|&nbsp; 識別維持驗證狀態的主要工具：變更管控、定期監測與趨勢分析。</li>
+            <li>Differentiate between fixed critical parameter control and cycle feedback control strategies. &nbsp;|&nbsp; 區分固定關鍵參數管控與週期回饋管控策略。</li>
+            <li>Apply the concept of cumulative change review to real-world cleaning systems. &nbsp;|&nbsp; 將累積變更審查概念應用於實際清潔系統。</li>
+        </ul>
+    </div>
+
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <div class="toc">
+        <h3>Contents &nbsp;|&nbsp; 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec70">7.0 Validation Protocols 驗證協議</a>
+            <a href="#sec71">7.1 Verification Protocols 清潔確認協議</a>
+            <a href="#sec72">7.2 Regulatory Changes 法規變更</a>
+            <a href="#sec80">8.0 Maintenance of Validated State 維持驗證狀態</a>
+            <a href="#sec81">8.1 Critical Parameter Control 關鍵參數管控</a>
+            <a href="#sec82">8.2 Cycle Feedback 週期回饋</a>
+            <a href="#sec83">8.3 Process Alarms 製程警報</a>
+            <a href="#sec84">8.4 Change Control 變更管控</a>
+            <a href="#sec85">8.5 Cumulative Changes 累積變更</a>
+            <a href="#sec86">8.6 Periodic Monitoring 定期監測</a>
+            <a href="#sec87">8.7 Trending 趨勢分析</a>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 7.0 — CLEANING VALIDATION PROTOCOLS
+         =================================================== -->
+    <div class="chapter-section" id="sec70">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.0</div>
+            <div class="chapter-info">
+                <h2>Cleaning Validation Protocols &nbsp;|&nbsp; 清潔驗證協議</h2>
+                <p>Structure, common elements, and organizational rationale for biotech manufacturers</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>7.0 Cleaning Validation Protocols</h3>
+                    <p><span class="key-term">Cleaning validation protocols</span> have many of the same elements as process validation protocols. For reasons of clarity, the format of a <span class="key-term">cleaning validation protocol</span> usually follows the same approach (as appropriate) as used for process validation protocols for a given company. Common elements include purpose, scope, responsibilities, applicable product(s) and equipment, cleaning SOP, <span class="key-term">acceptance criteria</span> and a requirement for a final report.</p>
+                    <p>Key elements for <span class="key-term">cleaning validation protocols</span> include <span class="key-term">residue limits</span> (see Section 4.0), <span class="key-term">sampling procedures</span> (see Section 5.0) and <span class="key-term">analytical methods</span> (see Section 6.0). The organization and rationale for cleaning validation protocols for biotechnology manufacturers is fundamentally the same as for other pharmaceutical manufacturers.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 協議架構</h3>
+                    <div class="concept-box">
+                        <h4>清潔驗證協議必要要素 Checklist</h4>
+                        <ul class="checklist">
+                            <li>目的（Purpose）</li>
+                            <li>範圍（Scope）</li>
+                            <li>責任（Responsibilities）</li>
+                            <li>適用產品與設備（Applicable products &amp; equipment）</li>
+                            <li>清潔標準操作程序（Cleaning SOP）</li>
+                            <li>殘留限度（Residue limits — Section 4.0）</li>
+                            <li>取樣程序（Sampling procedures — Section 5.0）</li>
+                            <li>分析方法（Analytical methods — Section 6.0）</li>
+                            <li>驗收標準（Acceptance criteria）</li>
+                            <li>最終報告要求（Final report requirement）</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>實務比喻</h4>
+                        <p>清潔驗證協議就像工廠的「考試題目」——事先明訂考什麼、怎麼考、達到什麼分數才算過關。生技廠商的協議架構與一般藥廠相同，只是「考題內容」（殘留物種類）不同。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 7.1 — CLEANING VERIFICATION PROTOCOLS
+         =================================================== -->
+    <div class="chapter-section" id="sec71">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.1</div>
+            <div class="chapter-info">
+                <h2>Cleaning Verification Protocols &nbsp;|&nbsp; 清潔確認協議</h2>
+                <p>Single-event protocols and compliance perspective</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>7.1 Cleaning Verification Protocols</h3>
+                    <p>Protocols for <span class="key-term">cleaning verification</span> purposes are the same as for <span class="key-term">cleaning validation</span>, except that the protocol is specific to one cleaning event. From a compliance perspective, the protocol applies only to the one cleaning event (although from a scientific perspective the data may suggest similar performance if the cleaning event were repeated).</p>
+                    <p>Another difference is that because a <span class="key-term">verification protocol</span> is typically performed on a unique cleaning event, there may be limited cleaning development before execution of that protocol. Alternatively, companies might use a concept that defines explicit requirements for <span class="key-term">cleaning verification</span> in an SOP and documents the specific activities, <span class="key-term">sample positions</span>, etc., on a form, which will be approved.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 驗證 vs 確認</h3>
+                    <div class="term-box">
+                        <h4>關鍵區分：Validation vs Verification</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>面向</th>
+                                    <th>清潔驗證 (Validation)</th>
+                                    <th>清潔確認 (Verification)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>適用範圍</td>
+                                    <td>多次重複清潔事件</td>
+                                    <td>單一清潔事件</td>
+                                </tr>
+                                <tr>
+                                    <td>法規效力</td>
+                                    <td>證明製程可重現</td>
+                                    <td>僅適用該次事件</td>
+                                </tr>
+                                <tr>
+                                    <td>開發前置</td>
+                                    <td>通常有完整開發研究</td>
+                                    <td>開發可能有限</td>
+                                </tr>
+                                <tr>
+                                    <td>常見情境</td>
+                                    <td>常規生產製程</td>
+                                    <td>臨床批次、罕見產品</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>實務重點</h4>
+                        <p>確認協議可透過 SOP 定義明確要求，並以表單記錄取樣位置等活動，再經核准——這是一種輕量化但合規的作法，適合一次性或低頻清潔事件。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 7.2 — KEY ISSUES BASED ON REGULATORY CHANGES
+         =================================================== -->
+    <div class="chapter-section" id="sec72">
+        <div class="chapter-divider">
+            <div class="chapter-badge">7.2</div>
+            <div class="chapter-info">
+                <h2>Key Issues Based on Regulatory Changes &nbsp;|&nbsp; 基於法規變更的關鍵議題</h2>
+                <p>Number of runs, worst-case conditions, and the life cycle approach</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>7.2 Key Issues Based on Regulatory Changes</h3>
+                    <p>It is assumed that the <span class="key-term">validation protocol</span> is not written and approved until the cleaning process has been designed and developed (see Section 3.0). This is particularly important as it relates to a <span class="key-term">life cycle approach</span> to validation. Two key issues for protocols, each of which is in a state of flux because of regulatory changes, are discussed below.</p>
+
+                    <h3>7.2.1 Number of Runs in a Protocol</h3>
+                    <p>The traditional approach for <span class="key-term">cleaning validation protocols</span> has been to require an evaluation of a minimum of <span class="key-term">three consecutive runs</span> of the cleaning processes. By consecutive, it has meant that no cleaning events of that same process are skipped without appropriate rationale.</p>
+                    <p>This practice is in flux because of changes in approach by the <span class="key-term">U.S. FDA</span>; the Agency no longer suggests a minimum of three runs. Rather, the manufacturer must provide a rationale (based on its understanding of the process) for determining the number of runs. Providing such a rationale is not straightforward for cleaning processes, and some companies specify in their master plans that three runs will be required unless there is a written rationale for a different number.</p>
+                    <p>It should be noted that as of publication of this Technical Report, the question of the "number of runs" remains a significant issue in terms of applicability to cleaning validation and <span class="key-term">global harmonization</span> for cleaning validation.</p>
+
+                    <h3>7.2.2 Worst-Case Process Conditions</h3>
+                    <p>The traditional approach for <span class="key-term">cleaning validation protocols</span> has been to include <span class="key-term">worst-case process conditions</span> in the three protocol runs. Worst-case process conditions may include:</p>
+                    <ul>
+                        <li>Maximum <span class="key-term">dirty hold time</span></li>
+                        <li>Maximum batches in a campaign</li>
+                        <li>Use of different operators for manual cleaning</li>
+                        <li>Shortest allowed time for manual cleaning steps</li>
+                        <li>Lowest allowed temperature for manual cleaning processes</li>
+                        <li>Worst-case circuits for CIP skid selection</li>
+                    </ul>
+                    <p>Parameters such as temperature, cleaning agent concentration, and process step times for automated cleaning processes are generally controlled in a narrow range such that challenging the cleaning process at the lower or upper end of the specification is not appropriate. In this traditional approach, worst-case process conditions may be addressed in each of the three required validation runs, unless there is adequate data from the design and development of the cleaning process to support worst-case conditions in fewer runs.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 法規演進</h3>
+                    <div class="note-box">
+                        <h4>生命週期觀點 Life Cycle Approach</h4>
+                        <p>協議必須等清潔製程完成設計與開發後才能撰寫——這體現了生命週期觀點：先理解製程，再設計測試，而非倒過來以測試定義製程。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>「三次執行」的演變</h4>
+                        <p><strong>傳統做法：</strong>三次連續執行 = 標準答案，審查員熟悉，廠商也易遵循。</p>
+                        <p><strong>FDA 新方向：</strong>不再硬性規定三次，改要求廠商提供「為什麼是這個次數」的科學理由。</p>
+                        <p><strong>實務建議：</strong>若無特殊理由，許多公司仍在主計劃中預設三次，以降低審查風險。</p>
+                    </div>
+
+                    <div class="term-box">
+                        <h4>最惡化條件 Worst-Case Conditions 六大面向</h4>
+                        <ul>
+                            <li><strong>最長髒置時間</strong>（Maximum dirty hold time）</li>
+                            <li><strong>最多批次活動</strong>（Maximum campaign batches）</li>
+                            <li><strong>不同操作員</strong>（手動清潔，人員差異最大）</li>
+                            <li><strong>最短手動清潔時間</strong></li>
+                            <li><strong>最低允許溫度</strong>（手動清潔）</li>
+                            <li><strong>最難回路</strong>（CIP skid 選擇）</li>
+                        </ul>
+                        <p style="margin-top:0.5rem;font-size:0.88rem;">注意：自動化製程中，溫度與濃度通常控制在窄範圍，不適合進行上下限挑戰。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 1</h4>
+                        <p>某公司計劃對一套 CIP 系統執行清潔驗證，製程設計已完成。目前正在起草協議，但主管建議只跑兩次。</p>
+                        <p><strong>Q：</strong>根據 TR49 的指引，公司需要準備什麼文件來支持「兩次執行」的決定？如果無法提供足夠科學理由，最安全的做法是什麼？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.0 — MAINTENANCE OF VALIDATED STATE
+         =================================================== -->
+    <div class="chapter-section" id="sec80">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.0</div>
+            <div class="chapter-info">
+                <h2>Maintenance of Validated State &nbsp;|&nbsp; 維持驗證狀態</h2>
+                <p>Overview — change control, periodic monitoring, trending, and training</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.0 Maintenance of Validated State</h3>
+                    <p>A key part of the <span class="key-term">validation life cycle</span> for any system is <span class="key-term">maintenance of the validated state</span>. This section deals with activities after the cleaning process has been designed and developed and after the formal validation protocols have been successfully executed. This is critical for cleaning validation, because a lapse in the validated state has the potential to adversely impact the quality, safety and purity of subsequent batches of the same or different products.</p>
+                    <p>The main tools for ensuring the continued <span class="key-term">maintenance of the validated state</span> are:</p>
+                    <ul>
+                        <li><span class="key-term">Change control</span></li>
+                        <li>Risk-based <span class="key-term">periodic monitoring</span></li>
+                        <li>Data <span class="key-term">trending</span> review</li>
+                    </ul>
+                    <p>Additionally, training and retraining are important areas of control for <span class="key-term">manual cleaning processes</span>, as they are the primary mechanisms for controlling the cleaning cycle. In each of these three areas, knowledge of the <span class="key-term">design space</span> (see Section 3.8) should be applied.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 驗證狀態維持概述</h3>
+                    <div class="concept-box">
+                        <h4>維持驗證狀態的三大支柱</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-1">維持驗證狀態 (Maintenance of Validated State)</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+                                <span class="hierarchy-box level-2">變更管控<br>Change Control</span>
+                                <span class="hierarchy-box level-2">定期監測<br>Periodic Monitoring</span>
+                                <span class="hierarchy-box level-2">趨勢分析<br>Trending</span>
+                            </div>
+                        </div>
+                        <p style="margin-top:0.75rem;font-size:0.88rem;">對手動清潔製程，<strong>訓練與再訓練</strong>是額外的關鍵管控工具。三個領域均應套用<strong>設計空間</strong>知識。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>為何如此重要？</h4>
+                        <p>驗證狀態一旦失效，將影響後續批次（包含相同或不同產品）的品質、安全與純度。清潔不只是清潔本身——它是交叉污染防線的核心。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.1 — CRITICAL PARAMETER CONTROL
+         =================================================== -->
+    <div class="chapter-section" id="sec81">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.1</div>
+            <div class="chapter-info">
+                <h2>Critical Parameter Control &nbsp;|&nbsp; 關鍵參數管控</h2>
+                <p>Fixed-value control strategy for validated cleaning processes</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.1 Critical Parameter Control</h3>
+                    <p>In controlling a validated cleaning process, it is of utmost importance to understand the <span class="key-term">critical parameters</span> used to control the cleaning process. Typically these include:</p>
+                    <ul>
+                        <li>Cleaning agent <span class="key-term">concentration</span></li>
+                        <li><span class="key-term">Temperature</span></li>
+                        <li><span class="key-term">Flow rate</span></li>
+                        <li><span class="key-term">Times</span> for all processing steps</li>
+                    </ul>
+                    <p>During the design phase, an appropriate level of understanding of the process and its variability should be obtained to design a cleaning process capable of addressing this inherent variability. Once the process is well defined, there are a variety of control strategies that may be used.</p>
+                    <p>One control strategy is to set <span class="key-term">minimum and/or maximum values</span> for each of the key parameters during a cleaning cycle. In this model, each of the steps of the cycle has a defined range that must be monitored and maintained during each execution of the cleaning cycle, and each parameter does not vary outside that range. This approach has an advantage in that it is straightforward to implement and control.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 關鍵參數管控策略</h3>
+                    <div class="term-box">
+                        <h4>典型清潔關鍵參數（CIP 系統）</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>參數</th>
+                                    <th>說明</th>
+                                    <th>管控方式</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>清潔劑濃度</td>
+                                    <td>確保足夠去污能力</td>
+                                    <td>電導度回授或定量投加</td>
+                                </tr>
+                                <tr>
+                                    <td>溫度</td>
+                                    <td>影響清潔效率與微生物控制</td>
+                                    <td>溫度計 + 警報</td>
+                                </tr>
+                                <tr>
+                                    <td>流速</td>
+                                    <td>確保湍流（turbulent flow）</td>
+                                    <td>流量計 + 警報</td>
+                                </tr>
+                                <tr>
+                                    <td>各步驟時間</td>
+                                    <td>預洗、清洗、漂洗等各階段</td>
+                                    <td>計時器 + 最小值設定</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>固定範圍管控策略的優點</h4>
+                        <p>類似工廠的「紅綠燈系統」——設定上下限，參數不出界即合格。簡單、直覺、易於稽核，是最常見的清潔製程管控模式。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.2 — CONTROL BY CYCLE FEEDBACK
+         =================================================== -->
+    <div class="chapter-section" id="sec82">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.2</div>
+            <div class="chapter-info">
+                <h2>Control by Cycle Feedback &nbsp;|&nbsp; 週期回饋管控</h2>
+                <p>PAT-based analytical feedback for adaptive cleaning cycle control</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.2 Control by Cycle Feedback</h3>
+                    <p>Another control strategy is to use <span class="key-term">analytical feedback</span> to determine cycle step length. For example, the final rinse for a <span class="key-term">CIP cycle</span> may be continued until the rinse <span class="key-term">conductivity</span> indicates adequate completion of the rinsing step. This approach has elements of <span class="key-term">Process Analytical Technology (PAT)</span> (see Section 11.8) to ensure the cleaning cycle is appropriately controlled.</p>
+                    <p>In the example given, other control parameters, such as temperature and cleaning agent concentration, are maintained in their appropriate ranges. Furthermore, it must be ensured in the design/development steps that conductivity is adequate to measure process step completion. Based on the initial validation, other analytical results (e.g., <span class="key-term">TOC</span>) may be deemed more indicative of cycle step completion.</p>
+                    <p>However, since the cleaning of biotechnology products is accomplished by highly alkaline and/or acidic cleaning agents, <span class="key-term">conductivity</span> is usually an appropriate indicator of completion of the rinsing step. If one ensures minimum and maximum values are set for other critical parameters and uses these values in concert with control of the rinse time based on <span class="key-term">analytical feedback</span>, this approach will yield appropriate control of the cleaning cycle.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 週期回饋管控</h3>
+                    <div class="concept-box">
+                        <h4>Cycle Feedback 運作邏輯</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-3">CIP 最終漂洗開始</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level">
+                                <span class="hierarchy-box level-2">即時量測電導度（Conductivity）</span>
+                            </div>
+                            <div class="arrow-down">&#8595;</div>
+                            <div class="hierarchy-level" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+                                <span class="hierarchy-box level-3">達標 &#10004; → 停止漂洗</span>
+                                <span class="hierarchy-box level-1">未達標 &#10008; → 繼續漂洗</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <h4>為何電導度適合生技產品？</h4>
+                        <p>生技產品清潔通常使用強鹼或強酸清潔劑，這類清潔劑的電導度與濃度具良好線性關係。漂洗後電導度回歸背景值，即可判定漂洗完成——比定時更具科學依據。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>PAT 應用概念</h4>
+                        <p>Cycle Feedback 是 PAT 理念在清潔驗證的體現：不靠固定時間，而靠「量測結果」決定步驟長度。優點是更節省時間、更具科學性；缺點是感測器本身需要驗證與維護。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.3 — PROCESS ALARMS
+         =================================================== -->
+    <div class="chapter-section" id="sec83">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.3</div>
+            <div class="chapter-info">
+                <h2>Process Alarms &nbsp;|&nbsp; 製程警報</h2>
+                <p>Alarming of critical parameters and response strategies</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.3 Process Alarms</h3>
+                    <p>Another key component of applying <span class="key-term">design space</span> to cleaning processes is <span class="key-term">alarming of critical parameters</span>. In an automated <span class="key-term">CIP cycle</span>, alarms may be based on a variety of parameters, such as:</p>
+                    <ul>
+                        <li>Temperature of the wash and rinse solutions</li>
+                        <li>Conductivity of the recirculating wash solution</li>
+                        <li>Pressure at the spray device</li>
+                        <li>Flow through various circuits</li>
+                        <li>Conductivity of the final rinse</li>
+                    </ul>
+                    <p>In all cases, the cause of the alarm should be investigated. One strategy is that on specified alarm conditions, the cleaning cycle may be restarted. For example, if inadequate cleaning agent concentration occurred (as indicated by an alarm on the wash cycle conductivity), the cleaning cycle can be restarted from the beginning after appropriate actions are taken to ensure the alarm does not reoccur. This is a conservative approach and ensures a complete cleaning cycle is performed, but care must be taken that alarms are noted and <span class="key-term">trended</span> to ensure cycle performance is not trending towards being ineffective and to better correct repetitive problems.</p>
+                    <p>Alternately, the step in which the alarm occurs may be restarted. This approach strikes a balance between ensuring cycle performance and minimizing cleaning time, as the entire cycle does not have to be repeated.</p>
+                    <p>Automated alarming is generally not done in manual cleaning operations. However, if cleaning agent dilution is confirmed by conductivity, or cleaning agent temperature is confirmed by temperature measurement, measurements outside the specified range can serve as an "alarm." In addition, for all cleaning processes, <span class="key-term">visual inspection</span> after cleaning can serve as an "alarm." In all cases, it must be ensured that cycles performed during validation are not "best case" due to alarm conditions.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 警報管理策略</h3>
+                    <div class="term-box">
+                        <h4>警報回應策略比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>策略</th>
+                                    <th>做法</th>
+                                    <th>優點</th>
+                                    <th>注意事項</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>從頭重啟</td>
+                                    <td>整個週期重新開始</td>
+                                    <td>保守、確保完整清潔</td>
+                                    <td>耗時；需防止反覆警報</td>
+                                </tr>
+                                <tr>
+                                    <td>步驟重啟</td>
+                                    <td>僅重啟發生警報的步驟</td>
+                                    <td>省時、平衡效率</td>
+                                    <td>需確認步驟邊界清楚</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>驗證期間的重要提醒</h4>
+                        <p>驗證期間若頻繁觸發警報導致多次重啟，該週期可能變成「最佳條件」而非「最惡化條件」，這將使驗證結果失去代表性。必須確保驗證執行的週期不是因警報而被優化的特殊情境。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>手動清潔的「警報」替代方案</h4>
+                        <p>手動清潔無法自動警報，但可用「電導度確認清潔劑稀釋度」或「溫度計量測清潔液溫度」作為人工查核點。最後一道：目視檢查（visual inspection）永遠是所有清潔製程的最終「警報」機制。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.4 — CHANGE CONTROL
+         =================================================== -->
+    <div class="chapter-section" id="sec84">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.4</div>
+            <div class="chapter-info">
+                <h2>Change Control &nbsp;|&nbsp; 變更管控</h2>
+                <p>Robust change control system for maintaining cleaning validation state</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.4 Change Control</h3>
+                    <p>A robust <span class="key-term">change control system</span> is critical to ensuring <span class="key-term">maintenance of the validated state</span> for cleaning processes. The change control system must cover all key parameters and components of the cleaning system to ensure that all changes with a potential to impact maintenance of the validated state are evaluated. This includes not only changes in the cleaning process, but also changes in equipment and changes in the manufacturing process (for example, a change in temperature in a manufacturing process) which might affect the performance of the validated cleaning process. <span class="key-term">Quality preapproval</span> and robust tracking of changes are key requirements for this system.</p>
+                    <p>The change control system should provide for a review of each change by an <span class="key-term">interdisciplinary team</span>. This must include a review of current validation for the equipment being changed, and depending on the nature of the change, may result in laboratory, pilot scale and/or commercial scale evaluations. Significantly major changes may result in the decision that the new cleaning process requires separate validation as a new process.</p>
+                    <p>There are some important considerations for designing the test plan to verify changes:</p>
+                    <ul>
+                        <li>Control parameters must stay within their <span class="key-term">validated ranges</span> or must be revalidated.</li>
+                        <li>The <span class="key-term">acceptance criteria</span> for analytical methods should remain unchanged from the previous validation unless there is a justified reason for the difference.</li>
+                        <li>Reduced sample sites and/or fewer analytical methods may be appropriate in many cases to confirm validation based on a change. These differences must be justified in the testing plan/protocol.</li>
+                    </ul>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 變更管控流程</h3>
+                    <div class="concept-box">
+                        <h4>變更管控流程描述</h4>
+                        <p><strong>第一步：變更識別</strong><br>識別任何可能影響已驗證清潔狀態的變更來源，包含：清潔製程、設備、生產製程（如製造溫度改變）。</p>
+                        <p><strong>第二步：品質預核准</strong><br>變更須在實施前取得品質部門核准（Quality preapproval），並建立追蹤機制。</p>
+                        <p><strong>第三步：跨職能審查</strong><br>由跨部門團隊（工程、品質、製造、法規）共同評估變更影響，審查現行驗證文件。</p>
+                        <p><strong>第四步：評估層級</strong><br>依變更影響程度決定所需評估規模：<br>
+                        &bull; 微小變更 → 僅文件更新<br>
+                        &bull; 中等變更 → 實驗室或中試規模評估<br>
+                        &bull; 重大變更 → 商業規模再驗證或視為新製程</p>
+                        <p><strong>第五步：測試計劃設計</strong><br>設定驗收標準、取樣位置、分析方法；可採用簡化方案，但需文件化理由。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>三個設計測試計劃的原則</h4>
+                        <ul>
+                            <li>關鍵參數必須維持在已驗證範圍內，否則需再驗證</li>
+                            <li>驗收標準不得無故變更（維持一致性）</li>
+                            <li>可合理簡化取樣點與分析方法，但需說明理由</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.5 — EVALUATION OF CUMULATIVE CHANGES
+         =================================================== -->
+    <div class="chapter-section" id="sec85">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.5</div>
+            <div class="chapter-info">
+                <h2>Evaluation of Cumulative Changes &nbsp;|&nbsp; 累積變更評估</h2>
+                <p>Beyond individual changes — assessing the total impact on the validated system</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.5 Evaluation of Cumulative Changes</h3>
+                    <p>Equally important as a review of each individual change is the review of the <span class="key-term">cumulative impact</span> of changes on a system. This review must provide evidence that the cleaning cycle meets prescribed requirements. It is possible that many <span class="key-term">minor changes</span> (each deemed to have no impact on the validated state) could have an impact when considered in total.</p>
+                    <p>This review of <span class="key-term">cumulative changes</span> should take two approaches:</p>
+                    <ol>
+                        <li>A documented analysis (i.e., review of the changes and the impact these changes will have on other parts of the process) of the changes should be undertaken on a <span class="key-term">regular basis</span>.</li>
+                        <li>Process performance and alarms must be <span class="key-term">monitored</span> (as discussed above) to ensure continued maintenance of the validated state and system performance.</li>
+                    </ol>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 累積變更的隱形風險</h3>
+                    <div class="analogy-box">
+                        <h4>「千里之堤，潰於蟻穴」</h4>
+                        <p>每一個單獨的微小變更評估為「無影響」，但多個微小變更疊加後，可能產生意想不到的複合效應。例如：泵浦流量小幅降低 + 清潔劑濃度略微下調 + 溫度設定點微幅降低 → 三者合計可能使清潔效果低於驗證邊界。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>累積變更審查的兩軌並行</h4>
+                        <ul>
+                            <li><strong>文件審查軌</strong>：定期（例如每季、每年）彙整所有變更，進行系統性影響分析，確認製程整體仍在驗證狀態內。</li>
+                            <li><strong>數據監測軌</strong>：持續監測製程表現與警報，作為早期偵測累積效應的訊號。</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>實務建議</h4>
+                        <p>建議在年度產品品質審查（APR/PQR）中納入清潔系統累積變更的專項審查，並將結果與趨勢數據交叉比對。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.6 — PERIODIC MONITORING
+         =================================================== -->
+    <div class="chapter-section" id="sec86">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.6</div>
+            <div class="chapter-info">
+                <h2>Periodic Monitoring &nbsp;|&nbsp; 定期監測</h2>
+                <p>Risk-based monitoring program to sustain the validated state</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.6 Periodic Monitoring</h3>
+                    <p>Another tool for ensuring <span class="key-term">maintenance of the validated state</span> is a risk-based <span class="key-term">periodic monitoring</span> program. A periodic monitoring program may provide analytical data to be <span class="key-term">trended</span>. In most cases involving automated processes, the data are provided by the CIP equipment itself. For example, data may be generated by the <span class="key-term">CIP skid</span> on:</p>
+                    <ul>
+                        <li>Wash solution conductivity</li>
+                        <li>Final rinse conductivity</li>
+                        <li>Temperatures</li>
+                        <li>Times</li>
+                        <li>Pressure</li>
+                    </ul>
+                    <p>In other cases, separate sampling may be established for data collection, such as rinse <span class="key-term">bioburden</span> or <span class="key-term">TOC</span>. Visual examination after each cleaning process is another type of <span class="key-term">periodic monitoring</span>. For routine use, however, visual inspection typically does not involve disassembly of equipment solely for the purpose of that inspection.</p>
+                    <p>A documented risk-based approach should be used to optimize compliance in an efficient manner. This could include leveraging <span class="key-term">family approaches</span>, reduced sample sites and reduced analytical methods. When defining these approaches, the inherent risk associated with a given cleaning process and historical experience/data should be considered.</p>
+                    <p>Historically it was considered acceptable to perform <span class="key-term">periodic revalidation</span> on cleaning processes in lieu of periodic monitoring. However, this approach yields a much less robust picture of the state of control of the cleaning process.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 持續監測策略</h3>
+                    <div class="concept-box">
+                        <h4>定期監測資料來源分類</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>資料類型</th>
+                                    <th>來源</th>
+                                    <th>說明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CIP 設備自動記錄</td>
+                                    <td>CIP skid</td>
+                                    <td>電導度、溫度、時間、壓力——最省力，直接用</td>
+                                </tr>
+                                <tr>
+                                    <td>獨立取樣</td>
+                                    <td>人工或自動取樣</td>
+                                    <td>漂洗液生物負荷（bioburden）、TOC——視風險決定頻率</td>
+                                </tr>
+                                <tr>
+                                    <td>目視檢查</td>
+                                    <td>操作員</td>
+                                    <td>每次清潔後，不需拆設備即可執行</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="term-box">
+                        <h4>風險導向監測策略要素</h4>
+                        <ul>
+                            <li><strong>家族方法（Family approach）：</strong>設計相似的設備共用一套監測方案，降低總測試量</li>
+                            <li><strong>簡化取樣點：</strong>驗證已建立信心後，可縮減監測位置</li>
+                            <li><strong>簡化分析方法：</strong>例如生物反應器驗證時測 TOC swab + rinse，定期監測僅測 rinse TOC</li>
+                            <li><strong>歷史數據基礎：</strong>歷史表現好的製程，可採較低頻率監測</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>定期再驗證 vs 定期監測</h4>
+                        <p>過去曾以「定期再驗證」取代持續監測，但 TR49 明確指出：這種方式只能提供「快照」，無法呈現製程的持續管控狀態。持續監測搭配趨勢分析，才能真正掌握清潔製程的健康程度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         SECTION 8.7 — TRENDING
+         =================================================== -->
+    <div class="chapter-section" id="sec87">
+        <div class="chapter-divider">
+            <div class="chapter-badge">8.7</div>
+            <div class="chapter-info">
+                <h2>Trending &nbsp;|&nbsp; 趨勢分析</h2>
+                <p>Proactive investigation of adverse trends before cleaning failures occur</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <!-- LEFT: Original English -->
+                <div class="left-column">
+                    <h3>8.7 Trending</h3>
+                    <p><span class="key-term">Trending</span> of cleaning cycle performance, analytical data from routine monitoring, and alarms are another recommendation to ensure continued cleaning cycle performance. When trending any of these data sets, procedures must be in place to initiate an <span class="key-term">investigation</span> when adverse trends are observed, even if ineffective cleaning cycles have not occurred.</p>
+                    <p><span class="key-term">Trending</span> of cleaning cycle performance data is important for identifying potential cleaning cycle issues before they result in ineffective cleaning cycles. For example, a slowly increasing trend in the <span class="key-term">final rinse conductivity</span> may not be indicative of an ineffective cleaning process. However, such a trend should require an investigation of the cause.</p>
+                    <p>In the example given, it may be that the spray device is becoming clogged, in which case it should be cleaned, and appropriate steps should be taken to prevent clogging in the future. On the other hand, it may be a result of a fouled <span class="key-term">conductivity sensor</span>. <span class="key-term">Alarm monitoring</span> and trending will indicate cycle failure, though it will not proactively identify potential issues, as is desired. The incidents of all alarms should still be trended to determine if additional process controls are required to reduce the frequency of alarming.</p>
+                </div>
+                <!-- RIGHT: Chinese Commentary -->
+                <div class="right-column">
+                    <h3>中文解說 &nbsp;|&nbsp; 趨勢分析的實踐</h3>
+                    <div class="term-box">
+                        <h4>趨勢分析的三類資料來源</h4>
+                        <ul>
+                            <li><strong>清潔週期表現數據：</strong>溫度、電導度、時間、流量等 CIP 記錄——最具預測性</li>
+                            <li><strong>例行監測分析數據：</strong>TOC、bioburden 等——確認清潔效果</li>
+                            <li><strong>警報記錄：</strong>記錄警報頻率與類型——反應性指標</li>
+                        </ul>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>趨勢分析的預警概念</h4>
+                        <p><strong>情境：</strong>最終漂洗電導度緩慢上升，但尚未超出規格。</p>
+                        <p><strong>可能原因 A：</strong>噴射裝置（spray device）逐漸堵塞 → 清潔噴射裝置，並預防未來堵塞。</p>
+                        <p><strong>可能原因 B：</strong>電導度感測器污染（fouled sensor）→ 校正或更換感測器。</p>
+                        <p><strong>關鍵原則：</strong>即使清潔仍有效，趨勢本身就足以觸發調查——這正是「主動預防」而非「事後補救」的精髓。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>警報趨勢 vs 製程趨勢的互補</h4>
+                        <p>警報監測只告訴你「週期失敗了」，無法預警。製程數據趨勢才能在問題爆發前，提供「快要失敗」的早期訊號。兩者互補，缺一不可。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 2</h4>
+                        <p>你負責一套 CIP 系統的定期監測計劃。過去六個月的趨勢分析顯示：最終漂洗電導度的平均值從 0.5 μS/cm 緩慢上升至 1.8 μS/cm，但規格上限為 5.0 μS/cm，目前尚未觸發警報，實際清潔結果亦合格。</p>
+                        <p><strong>Q1：</strong>根據 TR49 的建議，你應該採取什麼行動？需要啟動調查嗎？</p>
+                        <p><strong>Q2：</strong>如果同期還有三次小幅設備更改均被評估為「無影響」，你應該如何整合這兩個信號進行風險評估？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION SUMMARY TABLE ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9654;</div>
+            <div class="chapter-info">
+                <h2>Section Summary &nbsp;|&nbsp; 本節重點摘要</h2>
+                <p>Key takeaways for Sections 7.0–8.7</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Key Points — English</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Core Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Protocol Elements</td>
+                                <td>Purpose, scope, responsibilities, acceptance criteria, residue limits, sampling, analytics, final report</td>
+                            </tr>
+                            <tr>
+                                <td>Validation vs Verification</td>
+                                <td>Verification applies to a single cleaning event only; scientific data may suggest repeatability but compliance scope is limited</td>
+                            </tr>
+                            <tr>
+                                <td>Number of Runs</td>
+                                <td>FDA no longer mandates three runs; manufacturer must justify the number based on process understanding</td>
+                            </tr>
+                            <tr>
+                                <td>Worst-Case Conditions</td>
+                                <td>Address dirty hold time, campaign batches, operators, times, temperatures, CIP circuits in protocol design</td>
+                            </tr>
+                            <tr>
+                                <td>Critical Parameters</td>
+                                <td>Concentration, temperature, flow rate, step times — controlled via fixed ranges or cycle feedback (PAT)</td>
+                            </tr>
+                            <tr>
+                                <td>Change Control</td>
+                                <td>Must cover cleaning process, equipment, and manufacturing process changes; quality preapproval required</td>
+                            </tr>
+                            <tr>
+                                <td>Cumulative Changes</td>
+                                <td>Each minor change may be acceptable individually but could have combined impact — periodic systematic review required</td>
+                            </tr>
+                            <tr>
+                                <td>Periodic Monitoring</td>
+                                <td>Risk-based program using CIP data, supplemental sampling, visual inspection; more robust than periodic revalidation</td>
+                            </tr>
+                            <tr>
+                                <td>Trending</td>
+                                <td>Investigate adverse trends even before failures occur; process data trending is more proactive than alarm monitoring alone</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-column">
+                    <h3>重點整理 — 中文</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>主題</th>
+                                <th>核心訊息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>協議要素</td>
+                                <td>目的、範圍、責任、驗收標準、殘留限度、取樣、分析方法、最終報告</td>
+                            </tr>
+                            <tr>
+                                <td>驗證 vs 確認</td>
+                                <td>確認協議僅適用單次清潔事件；科學上可能具重現性，但法規效力有限</td>
+                            </tr>
+                            <tr>
+                                <td>執行次數</td>
+                                <td>FDA 不再硬性要求三次；廠商需依製程理解提供次數理由</td>
+                            </tr>
+                            <tr>
+                                <td>最惡化條件</td>
+                                <td>協議設計需涵蓋髒置時間、活動批次、操作員、時間、溫度、CIP 回路</td>
+                            </tr>
+                            <tr>
+                                <td>關鍵參數</td>
+                                <td>濃度、溫度、流速、步驟時間——以固定範圍或週期回饋（PAT）管控</td>
+                            </tr>
+                            <tr>
+                                <td>變更管控</td>
+                                <td>涵蓋清潔製程、設備、生產製程變更；須品質預核准</td>
+                            </tr>
+                            <tr>
+                                <td>累積變更</td>
+                                <td>單一無影響的微小變更累積後可能產生複合效應——需定期系統審查</td>
+                            </tr>
+                            <tr>
+                                <td>定期監測</td>
+                                <td>風險導向方案：CIP 數據 + 補充取樣 + 目視檢查；優於定期再驗證</td>
+                            </tr>
+                            <tr>
+                                <td>趨勢分析</td>
+                                <td>在失敗發生前調查不良趨勢；製程數據趨勢比單靠警報更具主動預警性</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p>Section 5: Validation Protocols &amp; Maintenance of Validated State | Sections 7.0–8.7 | pp. 40–44</p>
+    <p style="opacity:0.6;font-size:0.8rem;">SterileGMP Knowledge Hub — Educational bilingual reference. Not for regulatory submission.</p>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+    // Back-to-top button visibility
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

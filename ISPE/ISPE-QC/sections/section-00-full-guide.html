@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE-PDA Guide to Improving Quality Culture: RCA & Human Error Analysis Tools</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (ISPE green) ===== */
+.source-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== COMPLEXITY BADGE ===== */
+.complexity-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+}
+.complexity-low { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.complexity-medium { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.complexity-high { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>ISPE-PDA Guide to Improving Quality Culture: RCA &amp; Human Error Analysis Tools</h1>
+    <div class="subtitle">品質文化提升指南：根本原因分析與人為錯誤分析工具</div>
+    <div class="page-info">ISPE-PDA Guide to Improving Quality Culture in Pharmaceutical Manufacturing Facilities (2019) | p1–p10</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 ISPE 與 PDA 合作制定本指南的背景，以及品質文化為何成為 FDA、MHRA、PIC/S 法規查廠的焦點</li>
+        <li>掌握根本原因分析 (RCA) 的核心邏輯：區分「症狀/效果」與「真正根本原因」，避免 CAPA 失效再發</li>
+        <li>依據問題複雜度選擇適切的 RCA 工具（低/中/高複雜度分層框架）</li>
+        <li>理解人為錯誤分析的正確起點：人為錯誤是調查的開始，而非結論，工程防錯優於行政管控</li>
+        <li>建立無菌充填 CDMO 的核心工具箱：Fishbone + 5 Whys + FMEA 黃金三角組合</li>
+    </ul>
+</div>
+
+<!-- MAIN CONTENT AREA -->
+<div class="main-content">
+
+<!-- ============================================================
+     PART 0: BACKGROUND
+     ============================================================ -->
+<div class="section-title">背景與指南目的 — Background &amp; Purpose</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE-PDA 2019</span>
+
+        <p><strong>Background</strong></p>
+        <p><span class="key-term">Quality Culture</span> has always been important within pharmaceutical manufacturing operations. Strong companies know this and have invested resources in systems and personnel to support and promote a focus on quality processes, product quality, and meeting patient needs. More recently, health authorities have placed additional emphasis on quality culture by including it in guidance documents and inspection protocols like the <span class="key-term">PIC/S Data Integrity Guidance</span>, the <span class="key-term">FDA New Inspection Protocol Project (NIPP)</span>, and the <span class="key-term">MHRA Data Integrity Guideline</span>.</p>
+
+        <p>Both ISPE and PDA have developed information and resources to help pharmaceutical companies better understand why quality culture is important and how to assess the current situation within a site or organization. The <span class="key-term">ISPE Cultural Excellence Report</span> shares the vision of quality culture improvements across six dimensions, utilizes a 19-behavior cultural maturity assessment, outlines a series of practices and tools to support implementation, and provides a practical frame of reference for companies that want to build healthy quality cultures within their organizations. The <span class="key-term">PDA Quality Culture Assessment Program</span> is based on a Maturity Model containing 21 quality culture metrics and offers training for assessors, a PDA-administered all employee survey, and access to composite benchmarking results for comparison with peer sites.</p>
+
+        <p>Members of the ISPE and PDA culture task forces have come together to develop this reference guide that identifies specific aspects of quality systems and culture and recommendations for tools, techniques, and processes. The purpose of this guide is not to provide complete training or implementation of any tools or to be an all-inclusive list; instead, the guide is intended to serve as a resource with links to additional information for the most commonly used tools. The tools included in this reference guide are accessible without fee.</p>
+
+        <p>The guidance is divided into two sections: <strong>"Root Cause Analysis Tools and Approaches"</strong> and <strong>"Human Error Analysis Tools and Approaches."</strong></p>
+
+        <div class="quote-box">
+            "In closing, while the focus of many CAPA systems in practice today is on major compliance breaches, consideration should also be given to applying these techniques proactively to smaller non-conformance or out-of-trend events that often present risks to product quality, waste time and money, or more importantly, a missed opportunity for learning. Moreover, nothing guarantees that some of these more minor events will not recur with more severe consequences under unfavourable circumstances at some time in the future."
+        </div>
+
+        <p><em>Author Team: Tami Frederick (Perrigo, Lead), Denyse Baker (AstraZeneca), Nuala Calnan (Biopharm Excel), Steven Mendivil (Amgen), Matt Pearson (Genentech Roche), Brianna Peterson (Boehringer-Ingelheim)</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為什麼 ISPE + PDA 要合作？</h4>
+            <p><strong>品質文化 (Quality Culture)</strong>：不只是文件與流程的合規，而是組織從上到下對品質的價值觀、行為模式與思維習慣。</p>
+            <p>ISPE 擁有工程與設施設計的深度，PDA 擁有無菌製程與法規科學的專業。兩者合作，代表本指南兼顧「硬體/流程」與「人員/文化」兩個維度，適合 CDMO 現場應用。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 法規趨勢：查廠已延伸至「文化層面」</h4>
+            <p>FDA NIPP（新查廠議定書）、MHRA 數據完整性指引、PIC/S PI 041-1，這三大監管機構已明確將「品質文化」納入查廠評估。這意味著：</p>
+            <ul>
+                <li>現場查廠不只看 SOP 文件，更觀察員工的實際行為與態度</li>
+                <li>CAPA 的品質（是否真正找到根本原因）直接影響 483 觀察與警告信</li>
+                <li>CDMO 若無法展示系統性 RCA 能力，將在客戶審廠中失分</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 品質文化就像醫院的安全文化</h4>
+            <p>想像一家醫院：規章制度都齊全，但護士怕被罵不敢回報藥物錯誤，醫生自認不會出錯不接受建議——這就是「有系統、無文化」。反之，一家鼓勵主動回報、系統性學習的醫院，才能真正減少病患傷害。製藥廠亦然：法規文件是必要條件，品質文化是充分條件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你所在的工廠，上一次 CAPA 調查有沒有用到系統性的 RCA 工具？使用的是哪一種？</li>
+                <li>如果查廠官員問：「你們如何確保 CAPA 不只是症狀修正而是根本原因解決？」你會如何回答？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 1: RCA INTRODUCTORY REMARKS
+     ============================================================ -->
+<div class="section-title">RCA 導論 — Root Cause Analysis Introductory Remarks</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <div class="quote-box">
+            "An ounce of prevention is worth a pound of cure." — Benjamin Franklin
+        </div>
+
+        <p>The mark of a mature culture within an organization is how it deals with ever-increasing complexity as failures and deviations arise. Also important is whether it proactively evaluates potential risks to prevent failures or recurring deviations or reactively detects and corrects failures after they have occurred. Twenty-first century <span class="key-term">Pharmaceutical Quality Systems (PQS)</span> require a more balanced approach to prevent and cure.</p>
+
+        <p><span class="key-term">Corrective and Preventive Action (CAPA)</span> systems are designed to implement and record both corrective and preventative actions. <span class="key-term">ICH Q10</span> goes further about effective CAPA processes by recommending:</p>
+
+        <div class="quote-box">
+            "A structured approach to the investigation process should be used with the objective of determining the root cause. The level of effort, formality, and documentation of the investigation should be commensurate with the level of risk, in line with ICH Q9. CAPA methodology should result in product and process improvements and enhanced product and process understanding."
+        </div>
+
+        <p>A common problem encountered within CAPA systems is the <span class="key-term">lack of rigor applied to identifying the true root cause</span> of failure events. This leads to situations where "effects" of a given failure or "causal factors" (those factors that could potentially have prevented the incident or mitigated its consequences) are identified and corrected, rather than the underlying cause. These symptoms of failure are often more visible and easily reported, while the actual root causes of the problem may be submerged, unknown, and therefore not addressed. <strong>Not surprisingly, this often leads to recurrence of the failure at another time or in another context in the organization.</strong></p>
+
+        <p><span class="key-term">RCA (Root Cause Analysis)</span> is a systematic problem-solving process of unearthing these root causes to apply lasting solutions. Effective RCA requires the application of critical thinking, a multi-disciplinary knowledge seeking approach applied across the organization, site, and even shift rotation.</p>
+
+        <p>Different approaches or tools may be better suited for some problems or situations. In many situations, a combination of RCA tools will provide the most comprehensive results. Another best practice is for a firm to <strong>select a set of tools, not more than six, that are used repeatedly to build expertise and consistency of results.</strong></p>
+
+        <p>Accompanying each RCA tool are recommendations for best applications <strong>"✓"</strong> and cautions or special considerations for use <strong>"⚠"</strong>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — RCA 的三層邏輯</h4>
+            <p><strong>根本原因分析 (Root Cause Analysis, RCA)</strong>：一套系統性方法，目的是找到問題發生的「最深層原因」，而非只處理表面症狀。</p>
+            <p>三個層次的區分：</p>
+            <ul>
+                <li><strong>症狀/效果 (Effect/Symptom)</strong>：肉眼可見的問題，例如：培養基充填模擬失敗</li>
+                <li><strong>因果因子 (Causal Factor)</strong>：直接促成問題的條件，例如：操作員未遵循更衣流程</li>
+                <li><strong>根本原因 (Root Cause)</strong>：最底層原因，例如：更衣流程設計不符合人因工學，導致步驟容易被跳過</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CAPA 失效的最常見原因</h4>
+            <p>FDA 483 觀察中，「CAPA 無效」排名前三。根本問題幾乎都是：<strong>只修正了效果，沒有解決原因。</strong></p>
+            <p>典型案例：無菌充填線出現環境微生物超標 → CAPA 是「加強清潔並重新培訓操作員」→ 三個月後同一問題再發 → 真正根本原因是 HVAC 過濾器更換頻率設定錯誤。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 冰山理論</h4>
+            <p>問題就像冰山：浮在水面上的是症狀（你看得到、容易報告），沉在水下的才是根本原因（需要工具才能挖掘）。大多數 CAPA 系統只在處理水面以上的部分，所以問題一再重演。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 如何建立「不超過六種工具」的標準工具箱</h4>
+            <p>指南建議：選擇不超過六種 RCA 工具，重複使用以建立專業能力。對於無菌充填 CDMO，建議的核心工具箱：</p>
+            <ul>
+                <li>5 Whys — 日常偏差快速分析</li>
+                <li>Fishbone (Ishikawa) — 微生物/設備相關複雜偏差</li>
+                <li>FMEA — 新產品/製程風險評估</li>
+                <li>Barrier Analysis — 多部門流程缺失</li>
+                <li>Process Mapping — 數據完整性生命週期</li>
+                <li>Poka-Yoke — 人為錯誤工程防錯</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ICH Q10 要求調查深度與風險等級相稱。一個輕微偏差（Minor Deviation）需要用到 Fishbone 嗎？何時應該升級工具複雜度？</li>
+                <li>「多班次輪替」為何是 RCA 調查的難點？你會如何確保夜班的知識被納入根本原因分析？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 1 TOOLS: LOW COMPLEXITY
+     ============================================================ -->
+<div class="section-title">Part 1 — RCA 工具：低複雜度 Low Complexity Tools</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="complexity-badge complexity-low">LOW COMPLEXITY</span>
+
+        <p><strong>"If you are unable to understand the cause of a problem, it is impossible to solve it." — Naoto Kan</strong></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:28%">Tool / Description</th>
+                    <th style="width:20%">Useful For</th>
+                    <th style="width:22%">&#10003; Best Practices</th>
+                    <th style="width:16%">&#9888; Cautions</th>
+                    <th style="width:14%">For Further Reading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Silent Brainstorming of Undesirable Effects; <span class="key-term">Affinity Diagrams</span></strong><br>
+                        A list of problems that may be gathered into like categories through affinity and mapped in a cause-and-effect diagram/tree or a causal circle. An Affinity Diagram is used to generate and organize information into categories. It allows you to represent the structure of big and complex factors which impact a problem into smaller groups.
+                    </td>
+                    <td>Lower complexity events, simple solutions, problem identification, and affinization. Use as a lead into other more complex tools.</td>
+                    <td>Participants knowledge and background are important.</td>
+                    <td>—</td>
+                    <td>asq.org/quality-resources/affinity<br>sixsigmadaily.com/the-affinity-diagram-tool/</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Five (5) Whys</span></strong><br>
+                        An iterative interrogative technique used to explore cause-and-effect relationships for a problem; it involves asking "Why?" at least five successive times to drill down through multiple causal effects to underlying root causes.
+                    </td>
+                    <td>Lower complexity events, simple solutions.</td>
+                    <td>
+                        Focus on the questions. Do immediately after the event at the place of occurrence. Use simple and complete sentences to ensure accurate "Whys."
+                    </td>
+                    <td>
+                        Tool is not as structured as others. Ensure purpose is to uncover why events occurred vs. who is to blame. Need additional tools for complex events.
+                    </td>
+                    <td>asq.org/healthcare-use/why-quality/five-whys.html<br>mindtools.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Barrier Analysis</span></strong><br>
+                        This method considers the pathways through which a hazard can affect a target and then characterizes the performance of actual or potential barriers or controls. A barrier is anything in place that prevents an error from occurring or assures it will be detected, e.g., physical separation, in-process controls, administrative or procedural controls, or automation. Potential hazards are identified at each point in a process map, then current barriers are identified and effectiveness evaluated. Also captures ways to strengthen existing or add new barriers.
+                    </td>
+                    <td>Low complexity events; activities that include multiple departments, handoffs, or rework cycles; white space.</td>
+                    <td>
+                        Easy to use and apply, requires minimal resources. Works well in combination with other methods. Results translate naturally into corrective action recommendations.
+                    </td>
+                    <td>
+                        Must have a process map to begin. Sometimes subjective in results. Cross check with other RCA methods to ensure less obvious causes are not missed.
+                    </td>
+                    <td>bill-wilson.net/root-cause-analysis/rca-tools/barrier-analysis</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 三種低複雜度工具的定位</h4>
+            <p><strong>親和圖 (Affinity Diagram)</strong>：先發散再收斂。讓跨部門成員各自寫下觀察到的問題，再依相似性分組。適合頭腦風暴階段。</p>
+            <p><strong>5 個為什麼 (5 Whys)</strong>：最常用、最容易誤用的工具。連續追問五次「為什麼」，強迫思考者從症狀往原因鑽探。</p>
+            <p><strong>障礙分析 (Barrier Analysis)</strong>：以「防護層」思維分析。現有哪些屏障本應阻止問題發生？這些屏障為何失效？適合跨部門流程（如移交、手寫記錄）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 5 Whys 最常見的三個誤用</h4>
+            <ol>
+                <li><strong>停在人身上</strong>：「為什麼？因為操作員沒注意。」→ 這是責怪，不是根本原因</li>
+                <li><strong>只問一條線</strong>：真實問題通常有多個因果鏈，5 Whys 只追一條，可能遺漏系統性問題</li>
+                <li><strong>事後會議室重建</strong>：指南特別提醒「在事發地點、事發後立即進行」——記憶會快速退化</li>
+            </ol>
+            <p>結論：5 Whys 適合「快速初步分析」，複雜事件必須搭配其他工具。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Barrier Analysis 像保險的多層保障</h4>
+            <p>想像你的家有門鎖、防盜警報、保全攝影機三層防護。小偷進入 → 調查哪一層防護失效、為什麼失效、能否加強或新增防護。Barrier Analysis 在製藥廠的邏輯相同：SOP 是一層屏障、IPC 是一層屏障、視覺確認是一層屏障。某個偏差發生，代表多層屏障同時失效，要逐一審視。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 無菌充填線的 5 Whys 範例</h4>
+            <p><strong>問題</strong>：培養基充填模擬 (APS) 中有一個單元容量偏低</p>
+            <ul>
+                <li>Why 1：充填量為何偏低？→ 充填泵在某個循環中輸出不穩定</li>
+                <li>Why 2：為什麼不穩定？→ 泵的蠕動管路有局部磨耗</li>
+                <li>Why 3：為什麼管路磨耗？→ 該管路使用時數超過預防性維護週期</li>
+                <li>Why 4：為什麼超過週期？→ 換線記錄沒有追蹤每段管路的累計使用時數</li>
+                <li>Why 5：為什麼記錄不追蹤？→ 管路追蹤不在 BPR 必填欄位中</li>
+            </ul>
+            <p><strong>根本原因</strong>：BPR 設計缺漏，無耗材壽命追蹤機制 → CAPA：修訂 BPR 表單並納入管路累計時數欄位</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你執行 5 Whys 時，如何避免調查「走向責怪個人」而不是「發現系統問題」？</li>
+                <li>Barrier Analysis 的前提是「需要有流程圖」。如果一個偏差發生的製程目前沒有流程圖，應先做什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 1 TOOLS: MEDIUM COMPLEXITY
+     ============================================================ -->
+<div class="section-title">Part 1 — RCA 工具：中複雜度 Medium Complexity Tools</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="complexity-badge complexity-medium">MEDIUM COMPLEXITY</span>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:28%">Tool / Description</th>
+                    <th style="width:20%">Useful For</th>
+                    <th style="width:22%">&#10003; Best Practices</th>
+                    <th style="width:16%">&#9888; Cautions</th>
+                    <th style="width:14%">For Further Reading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Process Mapping</span></strong><br>
+                        According to ASQ, "A picture of the separate steps of a process in sequential order… Elements that may be included are a sequence of actions, materials or series entering or leaving the process (inputs and outputs), decisions that must be made, people who may become involved, time involved at each step, re-work loops, and/or process measurements."
+                    </td>
+                    <td>Events likely related to activities that include multiple departments, handoffs, or rework cycles; white space; data [integrity] life cycle mapping/review; can be a starting point for further analyses.</td>
+                    <td>
+                        Use additional mapping types, such as process test bed or swim lanes. Valuable for investigation reports and training purposes. Use cross-functional group. Be mindful of differences between shifts/teams.
+                    </td>
+                    <td>
+                        Often requires use of additional tools/analysis to determine root cause. Beware: process maps created in a meeting room are rarely accurate.
+                    </td>
+                    <td>asq.org/quality-resources/flowchart</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Cause and Effect Matrix (C&amp;E Matrix)</span></strong><br>
+                        Relates the process inputs to process outputs or causes to effects. Inputs and outputs are rated by their interaction impact. This determines what key process input variables should be given the most attention or may aid in the focus on root cause.
+                    </td>
+                    <td>Simple events with discrete causes.</td>
+                    <td>
+                        Great for use with technical teams. Use consistency in numerical values.
+                    </td>
+                    <td>—</td>
+                    <td>sixsigmadsi.com/how-to-complete-the-ce-matrix/<br>gembaacademy.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Causal Circle</span></strong> (Causal Loop)<br>
+                        Also known as Causal Loop, Causal Circle is a visual diagram that depicts how different system variables are interrelated using directional arrows to connect identified causes or Undesirable Effects (UDEs); helps distinguish causes from effects. Visually based results.
+                    </td>
+                    <td>Simple events with discrete causes.</td>
+                    <td>
+                        Great for use with creative teams. Excellent tool for separating causes from effects.
+                    </td>
+                    <td>
+                        May need to drill causes down further to RCA. Consistently ask "Does factor X cause factor Y to occur?" around the complete circle.
+                    </td>
+                    <td>thesystemsthinker.com<br>isixsigma.com/causal-loop-diagrams</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Causal Factor Tree Analysis</span></strong><br>
+                        Causal Factor Tree Analysis is a Root Cause Analysis technique used to record and display, in a logical, tree-structured hierarchy, all the actions and conditions (or Causal Factors) that were necessary and sufficient for a given consequence to have occurred.
+                    </td>
+                    <td>Simple events with discrete causes.</td>
+                    <td>
+                        Great for use with logical or visual learners. May need to drill causes down further to RCA.
+                    </td>
+                    <td>
+                        Use consistency of causal factor hierarchy.
+                    </td>
+                    <td>bill-wilson.net/root-cause-analysis/rca-tools/causal-factor-tree-analysis</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 中複雜度工具的共同特徵</h4>
+            <p>這四種工具都需要更多前置準備（流程圖、跨功能團隊、數值評分系統），但能覆蓋「多部門、多因果鏈」的場景，是低複雜度工具的自然延伸。</p>
+            <ul>
+                <li><strong>製程圖 (Process Mapping)</strong>：視覺化整個流程，找出「白色空間」（沒有人負責的空隙）</li>
+                <li><strong>C&E Matrix</strong>：量化各輸入因子對輸出結果的影響程度，適合篩選「最值得調查的原因」</li>
+                <li><strong>因果圈 (Causal Circle)</strong>：揭示系統中的循環回饋關係，適合複雜系統問題</li>
+                <li><strong>因果因子樹 (Causal Factor Tree)</strong>：樹狀結構呈現所有必要且充分的因果因子</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「會議室流程圖很少是準確的」</h4>
+            <p>指南特別警告：在會議室裡憑記憶畫出的流程圖，幾乎都不準確。</p>
+            <p>正確做法：走到現場（Gemba Walk），觀察實際操作流程，與操作員一起驗證每個步驟。不同班次、不同操作員的實際做法可能不同——這個差異本身就可能是根本原因之一。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — C&amp;E Matrix 評分邏輯</h4>
+            <pre>
+輸出重要性分數（Y）: 1–10分
+輸入對輸出的相關性（X→Y）: 0, 1, 3, 9
+
+單一輸入的加權分數 =
+    Σ (輸出重要性 × 相關性分數)
+
+分數越高 = 該輸入因子越值得優先調查
+
+範例：
+充填量偏差（Y重要性=9）
+- 蠕動管路磨耗（相關性=9）→ 加權 81
+- 操作員技術（相關性=3）→ 加權 27
+- 溫度波動（相關性=1）→ 加權 9
+優先調查：管路磨耗
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 因果圈就像交通堵塞的蝴蝶效應</h4>
+            <p>道路堵塞 → 司機繞路 → 其他道路也堵 → 更多人繞路 → 全城堵塞。這是循環因果，沒有單一「起點」，任何一個切入點都可能是介入機會。製藥廠裡，「人手不足 → 操作趕進度 → 錯誤增加 → CAPA 增加 → 更忙碌 → 更少人手應付日常工作」也是類似的惡性循環，因果圈工具幫助你看清這個系統。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Process Mapping 提到「白色空間（white space）」。請試著舉例：在無菌充填線的 BPR 記錄流程中，可能存在哪些白色空間？</li>
+                <li>C&E Matrix 在六標準差項目中廣泛使用。它與 FMEA 的主要差異是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 1 TOOLS: HIGH COMPLEXITY
+     ============================================================ -->
+<div class="section-title">Part 1 — RCA 工具：高複雜度 High Complexity Tools</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="complexity-badge complexity-high">HIGH COMPLEXITY</span>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:28%">Tool / Description</th>
+                    <th style="width:20%">Useful For</th>
+                    <th style="width:22%">&#10003; Best Practices</th>
+                    <th style="width:16%">&#9888; Cautions</th>
+                    <th style="width:14%">For Further Reading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Fishbone (Ishikawa) Diagram</span></strong> — 6M Analysis<br>
+                        Also called an Ishikawa Diagram or 6M Analysis, this tool separates all the potential causes of a specific event or problem into major categories; categories are often assigned as the 6Ms: <strong>manpower, machine, method, material, measurement, and milieu</strong> (often called environment or Mother Nature).
+                    </td>
+                    <td>Moderate to high complexity events, equipment and microbiology related events.</td>
+                    <td>
+                        Brainstorm to generate ideas. Use affinity diagram to create a group-specific fishbone. Look for "How did problem occur?", "How did the problem escape detection?", and "What occurred in the system that enabled the specific process break?" Must use cross-functional team and culture of inclusion. Manage interpersonal dynamics during creation. Start with a clear and agreed upon problem statement. Don't forget causal factors related to team or workplace environment/culture.
+                    </td>
+                    <td>
+                        Must use cross-functional team. Manage interpersonal dynamics. Start with a clear problem statement. Don't forget culture/environment as a causal factor.
+                    </td>
+                    <td>asq.org/learn-about-quality/cause-analysis-tools/overview/fishbone.html<br>mindtools.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Failure Mode Effects Analysis (FMEA)</span></strong><br>
+                        FMEA is a team-based proactive step-by-step approach for identifying all possible failures in a design, manufacturing, or assembly process or a product or service. According to ASQ, "'Failure modes' means the ways, or modes, in which something might fail. Failures are any errors or defects, especially ones that affect the customer, and can be potential or actual. 'Effects analysis' refers to studying the consequences of those failures."
+                    </td>
+                    <td>Preventive tool for implementation of equipment/process/product design, continuous improvement projects.</td>
+                    <td>
+                        Complete the tool from left to right for each item. Use after implementation to develop the control plan. Also useful for CAPA effectiveness.
+                    </td>
+                    <td>
+                        Must use knowledgeable SMEs. Requires high process/product/system knowledge.
+                    </td>
+                    <td>asq.org/quality-resources/fmea<br>isixsigma.com/fmea-quick-guide</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong><span class="key-term">Fault Tree Analysis</span></strong><br>
+                        A model to visualize all potential technical faults that may occur for a piece of equipment, sorted by major categories. This analysis typically supports the creation of a control plan for the equipment. It is often performed prior to implementation of equipment/process.
+                    </td>
+                    <td>Developing control plans for technical measures; identifying all potential events/faults for a standard process (e.g., packaging lines).</td>
+                    <td>
+                        Use as a preventive tool. Use for risk assessments for equipment or safety measures. SMEs for various aspects of process must be involved.
+                    </td>
+                    <td>
+                        Beware: Simple fault trees are not likely complete or accurate.
+                    </td>
+                    <td>asq.org/quality-progress/2016/01/what-is-a-fault-tree-analysis.pdf</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Fishbone 的 6M 框架</h4>
+            <p><strong>石川圖 (Ishikawa / Fishbone Diagram)</strong>：以「魚骨」形狀呈現問題原因，骨幹代表問題（魚頭），各肋骨代表 6M 大類別。</p>
+            <ul>
+                <li><strong>Manpower（人員）</strong>：訓練、技能、疲勞、輪班差異</li>
+                <li><strong>Machine（機器）</strong>：設備校正、磨耗、維護狀態</li>
+                <li><strong>Method（方法）</strong>：SOP 設計、製程參數、步驟順序</li>
+                <li><strong>Material（物料）</strong>：原料規格、供應商變更、組件批次差異</li>
+                <li><strong>Measurement（量測）</strong>：儀器精度、取樣方法、分析方法驗證</li>
+                <li><strong>Milieu（環境）</strong>：溫濕度、ISO 潔淨等級、HVAC、班次文化</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — FMEA（預防）vs. Fault Tree（反應）的核心差異</h4>
+            <p><strong>FMEA 是主動式（Proactive）</strong>：在設計或製程建立「之前」，系統性列出所有可能的失效模式及其後果，計算 RPN 分數（嚴重性×發生率×可偵測性），優先處理高風險項目。</p>
+            <p><strong>Fault Tree 是反應式（Reactive）也可預防式</strong>：從一個已知的頂層失效事件出發，反向推導所有可能導致該失效的下層原因，以邏輯樹呈現（AND/OR 閘）。常用於設備導入前的風險評估。</p>
+            <p><strong>關鍵區別</strong>：FMEA = 從底部往上問「這個環節失效了會怎樣？」；Fault Tree = 從頂部往下問「這個失效是怎麼造成的？」</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Fishbone 就像病歷的鑑別診斷</h4>
+            <p>醫生在診斷一個複雜症狀時，不會只看一個原因，而是依照器官系統（心臟、肺臟、神經系統...）逐一排除可能性。Fishbone 對製程問題做同樣的事：依 6M 分類，確保每個面向都被系統性檢查，不遺漏任何角落。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — 無菌充填線微生物污染調查的 Fishbone</h4>
+            <p>假設問題陳述：「2026年Q1批次環境監測（EM）中，充填區域 A 點微生物超標」</p>
+            <ul>
+                <li><strong>Manpower</strong>：更衣資格、APS 培訓記錄、當班操作員行為觀察</li>
+                <li><strong>Machine</strong>：RABS 手套完整性、HVAC 差壓記錄、自動加塞機故障記錄</li>
+                <li><strong>Method</strong>：EM 取樣位置與頻率、UDAF 氣流驗證時間、清潔消毒頻率</li>
+                <li><strong>Material</strong>：培養基批號、瓶塞供應商批次、清潔劑配製記錄</li>
+                <li><strong>Measurement</strong>：EM 培養基有效期、培養條件、陽性對照結果</li>
+                <li><strong>Milieu</strong>：前一批次生產、設備維護後首批、季節氣候變化</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FMEA 中的 RPN（Risk Priority Number）計算有一個常被批評的缺點：RPN = 嚴重性 × 發生率 × 可偵測性，其中嚴重性極高但其他兩項極低的失效，RPN 可能偏低。如何改善這個問題？</li>
+                <li>Fault Tree 的警告是「簡單的故障樹通常不完整也不準確」。你會如何確保 Fault Tree 的完整性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 2: HUMAN ERROR ANALYSIS
+     ============================================================ -->
+<div class="section-title">Part 2 — 人為錯誤分析工具 Human Error Analysis Tools</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>When investigating root causes of a problem or deviation, the analysis will frequently point to <span class="key-term">human error</span>. While it is tempting to stop there and insert countermeasures such as <strong>"retrain the operator"</strong> or <strong>"update the SOP,"</strong> human performance is inherently variable and dependent on the conditions of the environment, which means these tools and approaches alone are unlikely to lead to long-term, stable solutions.</p>
+
+        <p>A more in-depth analysis of the <span class="key-term">human factors</span> behind the errors in any given process or problem should be conducted. <strong>Human error should not be the conclusion of a root cause investigation but the starting point.</strong> This analysis should also include a thorough understanding or assessment of the culture of a sub-team, working group, or organization. Research has shown the frequency of mistakes is increased by the stress or complexity of the environment. Once the human factors are well understood, actions such as <span class="key-term">error proofing</span>, <span class="key-term">poka-yoke</span>, or related engineering solutions can be put in place to reduce the potential for human error.</p>
+
+        <span class="complexity-badge complexity-low">LOW COMPLEXITY</span>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:30%">Tool / Description</th>
+                    <th style="width:70%">Details &amp; Resources</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><span class="key-term">Poka-Yoke</span></strong></td>
+                    <td>
+                        Poka-Yoke is a Japanese phrase that means error prevention; A "poka" is an inadvertent error and "yokeru" is Japanese for preventing. This system implements countermeasures that force actions to be carried out correctly, leaving no room for misunderstandings. Many solutions in Poka-Yoke tend to be simple, cheap, and effective and can be integrated into the product design or one of the process steps.<br>
+                        <em>Resource: toolshero.com/quality-management/poka-yoke/</em>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <span class="complexity-badge complexity-medium">MEDIUM COMPLEXITY</span>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:30%">Tool / Description</th>
+                    <th style="width:70%">Details &amp; Resources</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><span class="key-term">Human Factors and their Optimization</span></strong><br><em>(Process Improvement Institute)</em></td>
+                    <td>
+                        From the abstract, "This paper lists where focus should be placed (i.e., which human factors tend to be key) and provides proven ways to optimize these human factors so that the base human error rate at a site is as low as possible."<br>
+                        <em>Resource: process-improvement-institute.com — Human_Factors_and_their_Optimization</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong><span class="key-term">ABC Model</span></strong><br><em>(Antecedent-Behavior-Consequence)</em></td>
+                    <td>
+                        "The Antecedent-Behavior-Consequence (ABC) Model is an approach that can be used to help people examine behaviors (they) want to change, the triggers of those behaviors, and the impact of those behaviors on negative or maladaptive patterns. In ABC Analysis, the antecedent, behavior, and consequence provide considered 'building blocks' in understanding, analyzing, and potentially changing how one acts. ABC charts can be used to provide 'snapshots' into the situation, potentially enabling further comprehension of the behavior."<br>
+                        <em>Resource: betterhelp.com — understanding-the-antecedent-behavior-consequence-model/</em>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 為什麼「重新培訓操作員」幾乎從不是真正根本原因</h4>
+            <p>這是本指南最重要的洞察之一。</p>
+            <p>指南明確指出：<strong>人為錯誤應是調查的起點，不是終點。</strong></p>
+            <p>當我們說「操作員出錯」，我們其實應該問：</p>
+            <ul>
+                <li>是什麼環境條件讓錯誤更容易發生？（壓力、分心、疲勞）</li>
+                <li>SOP 是否設計得讓正確行為容易執行，錯誤行為難以執行？</li>
+                <li>設備/工具是否存在讓人困惑的設計？</li>
+                <li>該操作員是否具備執行任務所需的條件（時間、工具、清晰指引）？</li>
+            </ul>
+            <p>「重新培訓」只解決「知識不足」這一種假設，但大多數人為錯誤並非源於知識不足。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 三種人為錯誤工具的選用邏輯</h4>
+            <p><strong>Poka-Yoke（防錯）</strong>：工程層面的解決方案。讓正確的做法成為唯一可能的做法。例如：試劑容器的接口設計成只能連接正確管路（物理防錯）；系統在完成前一步驟前鎖定下一步驟（軟體防錯）。<em>成本低、效果持久、不依賴人員記憶。</em></p>
+            <p><strong>Human Factors Optimization</strong>：系統性評估工作環境中影響人員表現的因素（光線、噪音、疲勞、資訊量、工具設計等），並提供降低基礎人為錯誤率的策略。</p>
+            <p><strong>ABC Model</strong>：行為科學框架。分析「前因（Antecedent）→ 行為（Behavior）→ 後果（Consequence）」的鏈條，找出哪些前因在觸發不良行為，以及哪些後果在強化或削弱該行為。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Poka-Yoke 就像 USB 接口的設計改良史</h4>
+            <p>第一代 USB：正反面不明確，每次插入都要試兩次（人為錯誤機會）。USB-C：不分正反面，任何方向都能插入（Poka-Yoke：消除了插錯的可能）。製藥廠的 Poka-Yoke 也應追求同樣目標：讓操作員「不可能」做錯，而不是靠訓練讓他們「記得不要做錯」。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>ABC Model 分析框架</h4>
+            <pre>
+前因 (Antecedent) → 行為 (Behavior) → 後果 (Consequence)
+
+範例：操作員跳過雙重核查步驟
+- 前因：時間壓力 + 批次延誤告警 + 主管在場催促
+- 行為：省略 BPR 雙核簽確認步驟
+- 後果：短期→ 進度趕上（正向強化）
+         長期→ 偏差事件發生（延遲負向後果）
+
+介入點：
+- 修改前因：消除時間壓力的制度性根源
+- 修改後果：讓省略步驟有立即、明確的後果
+              （系統鎖定、警報觸發）
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 無菌充填的 Poka-Yoke 設計思維</h4>
+            <p>常見人為錯誤場景及對應的工程防錯方案：</p>
+            <ul>
+                <li><strong>場景</strong>：操作員忘記更換蠕動管路 → <strong>防錯</strong>：BMS 系統追蹤累計使用時數，超時自動鎖定充填泵，必須完成更換確認才能解鎖</li>
+                <li><strong>場景</strong>：組件混用（A 批次瓶蓋用於 B 批次）→ <strong>防錯</strong>：條碼掃描比對系統，掃描不匹配時設備不啟動</li>
+                <li><strong>場景</strong>：手套破損未被發現 → <strong>防錯</strong>：手套完整性定時測試系統，作業前自動觸發測試流程</li>
+                <li><strong>場景</strong>：環境監測取樣點漏做 → <strong>防錯</strong>：電子化 EM 系統，必須掃描每個採樣點的 QR code 才能關閉批次記錄</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ABC Model 分析顯示，操作員省略步驟的「後果」是「短期成功感受」（趕上進度）而非「懲罰」。你會如何重新設計後果，使其立即且具體？</li>
+                <li>Poka-Yoke 強調簡單、便宜、有效。在現有資源限制下，你能為無菌充填線的某個高風險步驟設計一個 Poka-Yoke 方案嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     PART 3: TOOL SELECTION MATRIX
+     ============================================================ -->
+<div class="section-title">工具選擇矩陣 — RCA Tool Selection Guide for CDMO</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>工具選用速查表 Quick Reference Matrix</h2>
+        <p><em>Based on ISPE-PDA Guide complexity framework — practical decision aid for sterile CDMO investigations.</em></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>場景類型</th>
+                    <th>建議首選工具</th>
+                    <th>建議輔助工具</th>
+                    <th>複雜度</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>日常小偏差（Minor Deviation），單一部門</td>
+                    <td>5 Whys</td>
+                    <td>Affinity Diagram</td>
+                    <td><span class="complexity-badge complexity-low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td>多部門流程缺失、移交問題</td>
+                    <td>Process Mapping + Barrier Analysis</td>
+                    <td>Causal Factor Tree</td>
+                    <td><span class="complexity-badge complexity-medium">MEDIUM</span></td>
+                </tr>
+                <tr>
+                    <td>微生物污染 / 環境監測異常</td>
+                    <td>Fishbone (6M)</td>
+                    <td>5 Whys（各分支）</td>
+                    <td><span class="complexity-badge complexity-high">HIGH</span></td>
+                </tr>
+                <tr>
+                    <td>設備導入 / 製程變更風險評估</td>
+                    <td>FMEA</td>
+                    <td>Fault Tree</td>
+                    <td><span class="complexity-badge complexity-high">HIGH</span></td>
+                </tr>
+                <tr>
+                    <td>人為錯誤重複發生</td>
+                    <td>Poka-Yoke 工程防錯</td>
+                    <td>ABC Model</td>
+                    <td><span class="complexity-badge complexity-low">LOW→MEDIUM</span></td>
+                </tr>
+                <tr>
+                    <td>數據完整性生命週期評估</td>
+                    <td>Process Mapping</td>
+                    <td>C&amp;E Matrix</td>
+                    <td><span class="complexity-badge complexity-medium">MEDIUM</span></td>
+                </tr>
+                <tr>
+                    <td>CAPA 有效性驗證</td>
+                    <td>FMEA（更新 RPN）</td>
+                    <td>Barrier Analysis</td>
+                    <td><span class="complexity-badge complexity-medium">MEDIUM</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p style="margin-top:1rem; font-size:0.88rem; color:#718096;"><em>Reference: ISPE-PDA Guide to Improving Quality Culture in Pharmaceutical Manufacturing Facilities, 2019.</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — CDMO 核心工具箱「黃金三角」</h4>
+            <p>指南建議每家公司選定「不超過六種工具」重複練習。對無菌充填 CDMO，最具價值的核心三角是：</p>
+            <ul>
+                <li><strong>5 Whys</strong> — 速度快、進入障礙低，適合日常偏差即時處理</li>
+                <li><strong>Fishbone (Ishikawa)</strong> — 6M 框架確保全面性，特別適合微生物與設備事件</li>
+                <li><strong>FMEA</strong> — 主動識別風險，是新產品導入、工藝轉移、設備確效的必備工具</li>
+            </ul>
+            <p>這三種工具涵蓋「快速反應→深度調查→預防前置」的完整週期。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 工具組合是最佳實踐</h4>
+            <p>指南明確指出：「在許多情況下，RCA 工具的組合能提供最全面的結果。」</p>
+            <p>典型組合流程：</p>
+            <ol>
+                <li>事發後立即：5 Whys（現場、快速）</li>
+                <li>跨功能團隊：Fishbone（全面性分析）</li>
+                <li>量化優先順序：C&E Matrix（篩選最重要因子）</li>
+                <li>CAPA 設計：若涉及人為錯誤 → Poka-Yoke；若涉及設備 → FMEA 更新</li>
+                <li>有效性驗證：Barrier Analysis（確認新屏障是否建立）</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 工具就像外科手術器械</h4>
+            <p>外科醫生不會只用一把刀做所有手術，但也不會每次手術都帶上醫院裡所有器械。他們有「核心工具箱」，能在不同場景中靈活選擇與組合。RCA 工具的使用邏輯相同：熟練掌握六種以內，遠勝於淺嘗十五種。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>最終整合練習 Capstone Question</h4>
+            <p>情境：無菌充填 CDMO 在客戶的第三方審廠中，查廠官員指出：「過去18個月內，你們的環境監測超標事件發生了四次，每次的 CAPA 都是『加強清潔』或『重新培訓操作員』，但事件仍在重複發生。」</p>
+            <ol>
+                <li>這說明當前 CAPA 系統存在什麼根本問題？</li>
+                <li>你會如何設計一個系統性的 RCA 調查流程，從本指南中選擇哪些工具，按照什麼順序使用？</li>
+                <li>如何向查廠官員展示你們的 CAPA 系統已改善？需要哪些指標或證據？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); margin: 0 1.5rem 1.5rem;">
+    <h3>本指南重點回顧 Full Guide Summary</h3>
+    <ul>
+        <li>品質文化已成為 FDA、MHRA、PIC/S 查廠的明確考核項目，CAPA 品質直接影響法規立場</li>
+        <li>RCA 的核心邏輯：效果（症狀）≠ 根本原因；不找到真正根本原因，問題必然再發</li>
+        <li>低複雜度工具（5 Whys、親和圖、Barrier Analysis）適合快速初步分析，但對複雜事件不夠充分</li>
+        <li>中複雜度工具（Process Mapping、C&E Matrix、因果圈/樹）適合多部門、多因果鏈場景</li>
+        <li>高複雜度工具（Fishbone 6M、FMEA、Fault Tree）適合設備/微生物複雜事件及預防性風險管理</li>
+        <li>人為錯誤是調查的起點，不是終點；「重新培訓」很少是真正根本原因；Poka-Yoke 工程防錯比行政管控更持久</li>
+        <li>CDMO 黃金工具箱推薦：5 Whys + Fishbone + FMEA，涵蓋快速反應、深度調查、主動預防三個層次</li>
+        <li>工具組合使用優於單一工具；選定六種以內的工具重複練習，建立團隊專業能力</li>
+    </ul>
+</div>
+
+<div class="main-footer">
+    <p>ISPE-PDA Guide to Improving Quality Culture in Pharmaceutical Manufacturing Facilities (2019)</p>
+    <p>SterileGMP Knowledge Hub — Bilingual Educational Material | p1–p10</p>
+    <p style="font-size:0.8rem; opacity:0.7; margin-top:0.5rem;">&#169;Copyright 2019 ISPE / PDA. Educational commentary in Traditional Chinese by SterileGMP Knowledge Hub.</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1207〉 - Section 0: Introduction & Integrity Testing Framework</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Integrity Testing Framework | 簡介與完整性試驗框架</h1>
+    <div class="subtitle">USP 〈1207〉 Package Integrity Evaluation—Sterile Products</div>
+    <div class="page-info">USP General Chapter 〈1207〉 | Pages 1–2</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Package Integrity（包裝完整性）的核心定義，以及它與 Container–Closure Integrity（容器密封完整性）之間的關係</li>
+        <li>能夠分辨三類 Leaks of Concern（問題洩漏）及其對產品品質的風險影響</li>
+        <li>掌握 Leakage（洩漏）與 Permeation（滲透）的本質差異，明白為何滲透不在本章範疇內</li>
+        <li>了解不同 Closure Type（密封類型）的機制，包括物理配合與物理化學鍵結兩大類</li>
+        <li>建立 Maximum Allowable Leakage Limit（最大允許洩漏限值）的科學與風險決策框架概念</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<div class="section-title">1. Introduction | 簡介</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>This chapter provides guidance on the integrity assurance of nonporous packages intended for sterile pharmaceutical products. Background instruction is provided on the topics of leaks, leakage rate, and package sealing/closure mechanisms. Explanation is given as to how packages that conform to specified leakage limits help to ensure the contained product meets and maintains sterility and relevant physicochemical specifications. The integration of package integrity assurance as a key component of the entire product life cycle is stressed.</p>
+
+        <p>The term <span class="key-term">product–package</span> refers to the container–closure system plus the product contents. The container–closure system consists of the primary packaging components, those components that are or may be in intimate contact with the product, as well as secondary packaging components vital to ensuring correct package assembly, for example, the aluminum cap used to seal a stoppered vial package.</p>
+
+        <p>Suitable container–closure systems adequately store and protect the contained pharmaceutical product. Thus, <span class="key-term">sterile product–package integrity</span> is the ability of a sterile product container–closure system to keep product contents in, while keeping detrimental environmental contaminants out.</p>
+
+        <p>Specifically, leaks of concern for sterile product–packages include the following three categories described in Table 1. In other words, the leaks of concern for a given product–package are a function of the degree of package protection demanded by the product to ensure that all relevant product physicochemical and microbiological quality attributes are met through product expiry and use.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Leaks of Concern</th>
+                <th>Product Quality Risks Posed by Leaks</th>
+            </tr>
+            <tr>
+                <td>Capable of allowing entry of microorganisms</td>
+                <td>Failure of product sterility quality attribute</td>
+            </tr>
+            <tr>
+                <td>Capable of allowing escape of the product dosage form or allowing entry of external liquid or solid matter</td>
+                <td>Failure of relevant product physicochemical quality attributes</td>
+            </tr>
+            <tr>
+                <td>Capable of allowing change in gas headspace content. For example, loss of headspace inert gases (e.g., nitrogen), loss of headspace vacuum, and/or entry of gases (e.g., oxygen, water vapor, air).</td>
+                <td>Failure of relevant product physicochemical quality attributes and/or hindrance of product access by the end-user</td>
+            </tr>
+        </table>
+        </div>
+
+        <p><span class="key-term">Package integrity</span> is synonymous with container–closure integrity; these terms are used interchangeably throughout this chapter. In the past, to say a sterile product–package has container–closure integrity commonly meant that the package either had passed or was capable of passing a microbiological challenge test. This guidance chapter defines the concept of container–closure integrity more broadly, encompassing the absence of all package leaks that risk product quality.</p>
+
+        <p>By this definition, a package is considered to have integrity if it allows no leakage greater than the <span class="key-term">product–package maximum allowable leakage limit</span>. In other words, the largest and smallest leaks of concern are absent.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Package Integrity（包裝完整性）：</strong>這不只是「瓶子沒有裂」這麼簡單。USP 的定義涵蓋三種風險：微生物進入、內容物外漏或汙染物進入、以及頭部空間氣體組成改變。三者缺一不可。</p>
+            <p><strong>Product–Package（產品–包裝）：</strong>指的是容器密封系統加上產品內容物的整體。一個完整的無菌注射劑包裝包括：玻璃瓶 + 橡膠塞 + 鋁蓋 + 藥液 + 頭部空間氣體，任何一環出問題都會破壞整體完整性。</p>
+            <p><strong>三類問題洩漏：</strong>
+                <ul>
+                    <li>微生物侵入 → 無菌性失敗（最嚴重）</li>
+                    <li>產品外漏或外物進入 → 理化品質失敗</li>
+                    <li>頭部空間氣體改變 → 穩定性或使用性失敗</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在高級餐廳點了一瓶名貴紅酒。「包裝完整性」就像這瓶酒的軟木塞系統：它必須讓酒液不外漏（液體封閉）、讓空氣無法進入導致氧化（氣體封閉）、讓細菌無法汙染（微生物封閉）。如果軟木塞輕微受損，即便酒液沒有漏出，酒的品質也可能早已劣化——這正是「頭部空間完整性」的概念。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>歷史觀念的轉變：</strong>過去業界常把「容器密封完整性」等同於「通過微生物挑戰試驗」。USP 1207 擴大了這個定義——即使沒有微生物問題，只要有任何影響產品品質的洩漏，就不符合完整性要求。</p>
+            <p>這對 CDMO 的影響：你的 CCI（Container-Closure Integrity，容器密封完整性）驗證策略必須考慮所有三種洩漏風險，而不只是做微生物侵入試驗就算數。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一支含有凍乾粉末的西林瓶，頭部空間充有氮氣以保護藥品穩定性。請問哪一類 Leaks of Concern 對這個產品最重要？為什麼？</li>
+                <li>某眼藥水瓶通過了微生物挑戰試驗，但在穩定性研究中發現溶液出現氧化降解。這符合 USP 1207 的 package integrity 定義嗎？請解釋。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: SCOPE -->
+<div class="section-title">2. Scope | 適用範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The package integrity leak tests and seal quality tests outlined in this chapter apply to the testing of both large and small volume container–closure systems for sterile pharmaceutical dosage forms. Such package systems include, but are not limited to, the following examples:</p>
+        <ul>
+            <li>Vials or bottles closed with elastomeric closures or screw-thread caps</li>
+            <li>Form-fill-seal plastic or glass ampules</li>
+            <li>Syringes or cartridges</li>
+            <li>Flexible bags or pouches</li>
+            <li>Packages for some drug/device combination products (e.g., packages cased inside autoinjectors)</li>
+        </ul>
+
+        <p>Outside the chapter scope are packaging systems and processing equipment used in the preparation, storage, and manufacture of sterile pharmaceutical products. Examples include containers for active pharmaceutical ingredients and containers for product intermediate or final bulk product.</p>
+        <p>Outside the chapter scope are packages used for sterile diagnostic products or medical devices, and some packages used for sterile drug/device combination products.</p>
+        <p>Outside the chapter scope are products having a primary package composed of <span class="key-term">porous barrier package materials</span>, i.e., materials designed with pores or openings to allow volumetric air flow while preventing airborne microbial contamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>適用範圍的邊界：</strong>USP 1207 適用於「最終產品的密封容器」，不適用於製程中間物的容器（如原料藥儲罐、bulk 產品容器）。這個區分很重要——你的原料藥桶可能不需要按照 USP 1207 做完整性測試，但你的成品西林瓶肯定需要。</p>
+            <p><strong>Porous vs. Nonporous：</strong>本章只討論非多孔（nonporous）包裝。多孔材料（如 Tyvek 袋，常用於醫療器材的包裝）允許空氣流通但阻止微生物，這類包裝的完整性評估是不同的概念。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>好比餐廳的設備管理規範：本章只管「送到客人桌上的餐具（最終包裝）」，不管後廚的儲存容器（製程中間物）。即使後廚的鍋子有小洞，那是另一套管理規範的問題，不是本章要處理的。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對 CDMO 而言，重要的是明確區分哪些包裝屬於本章規範：成品西林瓶、安瓿、注射器、卡式管、藥袋，以及某些藥械組合產品的包裝（如自動注射器中的注射器）均在範疇之內。在設計驗證計畫時，先確認包裝類型是否適用，再選擇相應的測試方法。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的工廠生產一種預充式注射器（prefillable syringe）作為最終包裝，以及一種用 Tyvek 袋包裝的無菌醫療器材。哪一個適用 USP 1207？</li>
+                <li>原料藥（API）的儲存容器是否在 USP 1207 範疇內？如果不在，那要用什麼標準評估其完整性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: LEAKS AND LEAKAGE RATE -->
+<div class="section-title">3. Leaks and Leakage Rate | 洩漏與洩漏速率</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Leaks are commonly conceptualized as holes of a defined diameter, or channels of distinctive diameter and length, although leaks that occur naturally are generally complex, multicavity tortuous paths and are rarely uniform in size or shape. Even artificially created leaks such as laser-drilled defects (also called holes) used for leak-test method development and validation are irregular in size, shape, and depth.</p>
+
+        <p><span class="key-term">Gaseous leakage rate</span> is a measure of the rate of gas flow (in mass or volume units) that passes through a leak path under specific conditions of temperature and the concentration or pressure differential across the barrier wall. Therefore, gaseous leakage rate has dimensions of pressure multiplied by volume, divided by time. The international standard SI nomenclature is pascal cubic meter per second (Pa · m³ · s⁻¹).</p>
+
+        <p>Unintentional leaks in packages are often detected or sized using gas as a tracer element. Given a situation in which a tracer gas partial pressure difference exists across the package barrier wall and no absolute pressure difference exists, gaseous leakage is predominantly <span class="key-term">diffusional</span> in nature as the tracer gas moves from a region of higher concentration to a region of lower concentration.</p>
+
+        <p>Given the situation in which an absolute pressure difference exists across the package barrier wall, gas leakage through package gaps is more rapid (flux being primarily <span class="key-term">convective</span>) as gas moves from the higher pressure region to one of lower pressure.</p>
+
+        <p><span class="key-term">Liquid leakage rate</span> is a measure of the volume of liquid that moves through a leak path as a function of time under specified conditions of temperature and absolute differential pressure across the barrier wall. Liquid movement through a leak path occurs only when leak size/shape, package materials of construction, the absence of leak obstruction, tracer liquid composition, and test parameters all work together.</p>
+
+        <p><span class="key-term">Leakage</span> differs from <span class="key-term">permeation</span>. Leakage is the unintentional entry or escape of matter (solids, liquids, or gases) through a breach in a package wall or through a gap between package components. In the context of this chapter, permeation is the passage of fluid (e.g., gas) into, through, and out of a nonporous package wall. Permeation, not leakage, occurs when only a small fraction of molecules is able to move through a barrier by way of any one hole.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>洩漏的真實樣貌：</strong>現實中的洩漏不像教科書圖示的完美圓孔，而是複雜的曲折路徑（tortuous path，曲折路徑）。這解釋了為什麼同一個「名義孔徑（nominal diameter）」的缺陷，在不同測試條件下可能給出不同結果。</p>
+            <p><strong>氣體洩漏速率的兩種機制：</strong>
+                <ul>
+                    <li><strong>擴散（Diffusion）：</strong>無壓差，靠濃度梯度驅動（如氦氣從高濃度往低濃度移動）</li>
+                    <li><strong>對流（Convection）：</strong>有壓差，氣體從高壓往低壓快速流動（更容易被儀器偵測）</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+氣體洩漏速率 (Gaseous Leakage Rate)
+單位：Pa · m³ · s⁻¹（SI單位）
+常用單位：mbar · L · s⁻¹ 或 std · cm³ · s⁻¹
+
+換算參考：
+1 Pa · m³ · s⁻¹ = 10 mbar · L · s⁻¹
+標準條件：1 atm 差壓、乾燥空氣、25°C
+
+洩漏 vs. 滲透：
+洩漏 (Leakage) = 通過缺陷/間隙的體積流動
+滲透 (Permeation) = 分子穿越完整包裝壁的緩慢傳輸
+兩者量級不同，測試方法也不同
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>「洩漏 vs. 滲透」就像水壩與海綿的差別：水壩破了一個洞（洩漏），水從洞口大量湧出；海綿沒有破洞，但水分子緩慢地從材料本身滲過（滲透）。對於包裝材料而言，我們擔心的是「洩漏」——那個讓微生物和雜質通過的真實缺陷。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>對於超低溫儲存（≤−80°C）產品：彈性橡膠塞在極低溫下可能失去彈性，導致氣體侵入。在升溫過程中，被捕集的氣體會造成容器內壓升高。這個特殊情境提醒我們，洩漏速率的評估必須涵蓋產品的整個生命週期，包括儲存、運輸及使用的所有溫度條件。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個充氮保護的凍乾西林瓶，用 Headspace Analysis（頭部空間分析）偵測到氧氣濃度隨時間上升。這是洩漏還是滲透？如何區分？</li>
+                <li>為什麼液體洩漏速率不如氣體洩漏速率常用？在什麼情況下液體洩漏速率測試才有意義？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: CLOSURE TYPE AND MECHANICS -->
+<div class="section-title">4. Closure Type and Mechanics | 密封類型與機制</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>An understanding of closure mechanics makes it possible to better characterize, monitor, and test packages for integrity. This section discusses various closure systems and how each type functions to ensure package integrity.</p>
+
+        <h3>4.1 Physically Mated Closures | 物理配合密封</h3>
+        <p>Closure can be achieved by the close physical mating of two surfaces that often are dissimilar in material composition. Examples include the interference fit of a plunger inserted in a syringe barrel, the compression fit of an elastomeric closure capped onto a vial finish surface, and the application force of a screw-cap torqued onto a bottle. Physically mated surfaces are not bonded together; therefore, a tiny gap exists even between well-closed components.</p>
+        <p>Nevertheless, when properly designed and assembled, closure systems fit together such that liquid leakage (and microbial ingress) is prevented and gas migration is limited. Regarding screw-thread closures such as those used for ophthalmic-product dropper bottles, the barrier to leakage is afforded by inner cap surfaces pressing against the package opening, in some cases aided by a secondary gasket or plug. The winding path afforded by the threads of a screw-cap does not provide an optimal barrier to gas or liquid leakage, or to microbial ingress in the event of liquid presence in the cap threads.</p>
+
+        <h3>4.2 Physicochemically Bonded Closures | 物理化學鍵結密封</h3>
+        <p>Seals are formed when two similar or dissimilar surfaces are physicochemically bonded together. One example is the formation and sealing of contiguous containers from a single material (e.g., glass or plastic ampules). In other form, fill, and seal systems, sheets of material are mated by means of a heat or ultrasonic welding process. Two dissimilar materials may be joined using an intermediate bonding material. <span class="key-term">Fully fused seals</span> inherently block liquid leakage and microbial ingress; however, gaseous leakage and permeation may occur.</p>
+
+        <h3>4.3 Multiple-Dose Package Closures | 多劑量包裝密封</h3>
+        <p>Multiple-dose package closures are designed to allow product access while limiting microbial ingress and product leakage between doses. For example, elastomeric closures for parenteral products requiring needle-puncture access are designed to offer reseal protection against microbial ingress and product leakage. Some multiple-dose ophthalmic dosage form package closures are designed with filters, plugs, or other mechanical means that allow the product to be dispensed while restricting microbial ingress and product leakage.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三種密封類型比較：</strong></p>
+            <ul>
+                <li><strong>物理配合（Physically Mated）：</strong>靠機械力壓緊，存在微小間隙，完整性依賴組件尺寸公差與組裝品質。例：西林瓶 + 橡膠塞 + 鋁蓋</li>
+                <li><strong>物理化學鍵結（Physicochemically Bonded）：</strong>材料融合在一起，本質上更好的液體和微生物屏障，但仍可能有氣體洩漏。例：玻璃安瓿、BFS（Blow-Fill-Seal）容器</li>
+                <li><strong>多劑量密封（Multiple-Dose）：</strong>設計上允許反覆刺穿後恢復密封（reseal），是折衷設計——方便使用 vs. 維持完整性</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像三種飲料包裝：橡皮塞西林瓶像螺旋蓋的礦泉水（物理配合，靠壓力密封）；安瓿像用火封口的玻璃管（物理化學鍵結，熔合後本質封閉）；多劑量藥瓶像啤酒桶的出酒龍頭（多劑量，每次使用後必須自動「恢復密封」）。不同設計有不同的完整性挑戰。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>螺旋蓋的警示：</strong>USP 明確指出，螺旋蓋的螺紋「winding path（曲折路徑）」並非最佳的氣體、液體或微生物屏障。如果螺旋蓋沒有輔助墊片或塞子，其密封可靠性低於橡膠塞西林瓶。在設計眼藥水瓶等產品的完整性測試時，需要特別注意這一點。</p>
+            <p><strong>多劑量包裝的特殊規定：</strong>多劑量包裝在「使用中（in-use）」需要單獨建立 in-use maximum allowable leakage limit（使用中最大允許洩漏限值），因為使用過程本身會反覆破壞密封。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO，你可能同時生產：①單劑量安瓿（物理化學鍵結）；②橡膠塞西林瓶（物理配合）；③多劑量眼藥水瓶（多劑量密封）。每種包裝的完整性驗證策略都應針對其密封機制設計——安瓿的 CCI 測試著重熔封品質；西林瓶的測試關注橡膠塞壓縮力和鋁蓋封口品質；多劑量瓶還需額外的「反覆穿刺後密封性」驗證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Form-Fill-Seal（FFS，成型–充填–密封）技術在安全性上通常優於橡膠塞系統？它的密封機制屬於哪一類？</li>
+                <li>一個含防腐劑的多劑量眼藥水瓶，第一次開封後可以使用30天。在建立其 in-use maximum allowable leakage limit 時，你需要研究哪些因素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 5: PRODUCT QUALITY REQUIREMENTS -->
+<div class="section-title">5. Product–Package Quality Requirements and the Maximum Allowable Leakage Limit | 產品–包裝品質要求與最大允許洩漏限值</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>As noted in Introduction, package integrity is necessary to maintain product critical quality attributes within physicochemical label-claim specifications and to ensure product sterility until time of use. Most package types display very low but definite gaseous leakage flow through the gap that exists even between well-fitted closures. Therefore, it is not practical to require that packages be absolutely leak-free. Rather, it is the significance of leakage in relation to product quality that needs to be considered. In other words, the package should not permit leakage beyond the product's <span class="key-term">maximum allowable leakage limit</span>.</p>
+
+        <h3>5.1 Sterility and Product Formulation Content must be Preserved; Gas Headspace Content Preservation is not Required</h3>
+        <p>This category includes product–packages for which the maximum allowable leakage limit correlates to the prevention of product formulation escape, or product contamination by external liquid or solid matter or by microorganisms, while gas headspace preservation (i.e., ambient pressure air) is of no concern.</p>
+        <p>A key study series found orifice leaks of approximately 0.1 µm in nominal diameter placed in rigid packages demonstrate a small risk of aqueous liquid passage, while orifice leaks as small as approximately 0.3 µm in nominal diameter first demonstrate some risk of microbial ingress by liquid challenge. Given this body of evidence, a <span class="key-term">maximum allowable leakage limit of less than 6 × 10⁻⁶ mbar · L/s</span> (measured by helium mass spectrometry in the vacuum mode) can be adopted for products in this category packaged in rigid container–closure systems.</p>
+
+        <h3>5.2 Sterility, Product Formulation Content, and Gas Headspace Content must be Preserved</h3>
+        <p>The second category includes product–packages for which the package must preserve the gas headspace content or absolute pressure in addition to preventing product formulation escape and contamination. Preservation of headspace content and/or pressure is needed to maintain product stability within physicochemical specification limits, and/or to aid end-user product access. Thus, the maximum allowable leakage limit for such products is likely more stringent than that described in the first category.</p>
+
+        <h3>5.3 Sterility must be Preserved; Product Access is Required (Multiple-Dose)</h3>
+        <p>This subcategory represents a quality requirement applicable only to multiple-dose product–packages. Once the product–package has reached the end-user and the closure has been activated or otherwise compromised to allow dosage access and delivery, the <span class="key-term">in-use maximum allowable leakage limit</span> is defined in terms of microbial ingress and product loss prevention between and during dosage access.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Maximum Allowable Leakage Limit（最大允許洩漏限值，MALL）：</strong>這是一個科學與風險決策的結果，而非固定標準。它取決於：</p>
+            <ul>
+                <li>產品對微生物侵入的敏感性（有無防腐劑？）</li>
+                <li>頭部空間氣體是否需要保護（凍乾品、氧敏感品）</li>
+                <li>包裝材料和幾何形狀</li>
+                <li>產品生命週期（儲存、運輸、使用條件）</li>
+            </ul>
+            <p><strong>三類產品品質要求：</strong>
+                <ul>
+                    <li>類別 1：保護無菌性 + 液體完整性（頭部空間不重要）→ MALL ≤ 6×10⁻⁶ mbar·L/s</li>
+                    <li>類別 2：以上 + 頭部空間保護 → 更嚴格的 MALL</li>
+                    <li>類別 3（多劑量）：以上 + 使用中重複密封 → 需要 in-use MALL</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+類別 1 的 MALL 基準（剛性容器）：
+MALL < 6 × 10⁻⁶ mbar · L/s
+（氦質譜法真空模式測量）
+
+對應的孔徑意義：
+0.1 µm 孔徑 → 低風險液體洩漏
+0.3 µm 孔徑 → 開始出現微生物侵入風險
+< 6×10⁻⁶ mbar·L/s → 微生物侵入概率 < 0.10
+
+類別 2 的 MALL：
+更嚴格，由頭部空間允許變化量反推
+（每種產品需個別建立）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「絕對不洩漏」是不現實的：</strong>即使是完美組裝的西林瓶，橡膠塞和瓶頸之間也會有極微小的氣體通道。USP 的務實做法是確認洩漏速率低於 MALL，而非追求零洩漏。這是科學導向的監管思維。</p>
+            <p><strong>超低溫儲存的特殊考量：</strong>在 ≤ −80°C 儲存的產品，橡膠塞可能暫時失去密封性導致氣體侵入。升溫後內壓升高。即使這個產品「不需要」保護頭部空間，超低溫儲存也可能把它升級為「類別 2」的考量。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 接受新品委託時，應在早期 CMC 會議中確認產品屬於哪一類洩漏風險類別：①是否需要保護頭部空間氣體（凍乾品、含 O₂ 敏感成分）？②是否為多劑量包裝？③儲存溫度是否涉及超低溫？這些問題的答案直接決定完整性測試方法的選擇和驗證要求的嚴格程度。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一支含抗體的凍乾西林瓶，充有氮氣保護，儲存於 −20°C。它屬於哪個類別？MALL 的建立需要考慮哪些因素？</li>
+                <li>為什麼類別 1 的 MALL（6×10⁻⁶ mbar·L/s）被認為是保守的？它在什麼情況下可能需要更嚴格的限值？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 6: INHERENT PACKAGE INTEGRITY -->
+<div class="section-title">6. Inherent Package Integrity and the Package Integrity Profile | 固有包裝完整性與包裝完整性檔案</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Inherent package integrity</span> is the leakage characteristic of a well-assembled container–closure system using no-defect package components. Inherent package integrity is first determined during product–package development and qualification and is a measure of the leak tightness of a container–closure system, given anticipated variables of material composition, dimension, processing, and assembly.</p>
+
+        <p>Confirmation that the inherent package integrity conforms to the maximum allowable leakage limit is the first step in product–package integrity verification. Verification of package integrity continues throughout the product life cycle. The <span class="key-term">package integrity profile</span> is an ongoing database of product life cycle package leak and seal quality test results. This profile provides information regarding package integrity given operative variations in package component design and material; package assembly and processing; and product storage, distribution, and stability.</p>
+
+        <p>In summary, a product–package system having integrity is one in which the inherent package integrity conforms to the required product–package maximum allowable leakage limit. Further, the package integrity profile database operates as a risk management tool to ensure that finished product container–closure systems are intact, able to block microbial ingress, restrict loss of product contents including critical headspace gases, and prevent entry of detrimental gases or other substances, thus ensuring that the product meets all relevant physicochemical and microbiological label-claim specifications through expiry and final end-use.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Inherent Package Integrity（固有包裝完整性）：</strong>這是一個「基準值」——在所有組件都完好、正確組裝的理想狀態下，這個包裝的洩漏特性。它是驗證的起點：首先你要確認「完美的包裝」本身就能通過 MALL，然後才在此基礎上建立常規品管方法。</p>
+            <p><strong>Package Integrity Profile（包裝完整性檔案）：</strong>這是一個動態的資料庫概念，貫穿產品整個生命週期——從開發、商業化生產、穩定性研究到上市後監測。它是一個 Risk Management（風險管理）工具，而不只是一個「通過/不通過」的測試記錄。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像一輛新車出廠：製造商先測試一輛「完美狀態」的車（等同於 inherent package integrity），確認其密封性符合標準。然後，車輛在行駛、停車、各種天氣條件下積累的密封狀態記錄，就是這輛車的「密封完整性檔案（package integrity profile）」。這個檔案讓工廠知道何時需要更換密封件，何時性能開始下降。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>生命週期整合的重要性：</strong>包裝完整性不只是出廠前的一次測試。整個 package integrity profile 需要在以下時間點收集數據：開發/驗證期（方法開發）、商業批（100% 或統計抽樣）、穩定性研究（觀察老化影響）、工程變更後（組件或製程改變）。這與 ICH Q8/Q9/Q10 的生命週期品質管理理念一致。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個新的西林瓶供應商的瓶子尺寸公差略有不同，這會影響 inherent package integrity 嗎？你需要重新評估什麼？</li>
+                <li>Package integrity profile 如何作為一個「風險管理工具」？請舉一個具體例子說明它如何幫助發現潛在的品質風險。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>USP 1207 的 package integrity 定義涵蓋三類風險：微生物侵入、產品外漏/汙染物進入、頭部空間氣體改變——必須全面考量，不能只看微生物挑戰試驗</li>
+        <li>洩漏（Leakage）≠ 滲透（Permeation）：洩漏是通過缺陷的體積流動，滲透是分子透過完整包裝壁的緩慢傳輸；本章只處理洩漏</li>
+        <li>三類密封機制（物理配合、物理化學鍵結、多劑量）各有不同的完整性特性和測試重點</li>
+        <li>Maximum Allowable Leakage Limit（MALL）是科學風險決策的結果；類別 1 的基準值為 &lt; 6×10⁻⁶ mbar·L/s；類別 2（頭部空間保護）需更嚴格限值</li>
+        <li>Inherent package integrity 是驗證的起點；Package integrity profile 是貫穿產品生命週期的風險管理資料庫</li>
+    </ul>
+</div>
+
+<!-- GLOSSARY NOTE -->
+<div class="section-title">Glossary | 詞彙表（節錄重要定義）</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><strong>Deterministic leak test method:</strong> A deterministic leak test method is one in which the leakage event being detected or measured is based on phenomena that follow a predictable chain of events. In addition, the measure of leak detection is based on physicochemical technologies that are readily controlled and monitored, yielding objective quantitative data.</p>
+        <p><strong>Probabilistic leak test method:</strong> A probabilistic leak test method is the converse of a deterministic leak test method, being stochastic in nature. Probabilistic tests rely on a series of sequential and/or simultaneous events, each associated with random outcomes described by probability distributions. Thus, the findings are associated with uncertainties that necessitate large sample sizes and rigorous test-condition controls to obtain meaningful results.</p>
+        <p><strong>Detection limit:</strong> The leak test detection limit is a measure of test method sensitivity. The detection limit is the smallest leakage rate (or leak size) that a leak test method can reliably detect. Also called limit of detection.</p>
+        <p><strong>Positive control:</strong> A positive control is a package with a known, intentional defect. Positive controls used for leak test method development and validation studies should duplicate study negative controls in terms of materials of construction, package assembly, and component processing.</p>
+        <p><strong>Negative control:</strong> A negative control is a package with no known leak. Negative controls used for leak test method development and validation studies represent packages optimally assembled using normally processed components.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念：確定性 vs. 概率性方法</h4>
+            <p><strong>Deterministic（確定性）方法：</strong>基於物理化學原理，每次給出客觀定量數值（如壓力衰減值、氦氣洩漏速率）。可控性強、重現性好，是 FDA 和業界推薦的首選。</p>
+            <p><strong>Probabilistic（概率性）方法：</strong>基於統計和概率（如染料浸入、微生物挑戰）。結果受多種隨機因素影響，需要大樣本量才能得到可靠結論。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：FDA 的立場</h4>
+            <p>FDA 在其指引中明確表示優先支持使用確定性方法（deterministic methods）替代傳統概率性方法。這是因為確定性方法提供客觀定量數據，可以直接與 MALL 比較，且不受操作者主觀判斷影響。如果你的工廠仍在使用染料浸入試驗（dye ingress test）作為主要完整性測試方法，需要考慮是否符合現行最佳實踐。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>壓力衰減法（Vacuum Decay）和染料浸入法（Dye Ingress）分別屬於確定性還是概率性方法？各自的優缺點是什麼？</li>
+                <li>在設計確定性方法的 Positive Control 時，如何確保人工缺陷（如雷射鑽孔）能代表真實生產中可能出現的缺陷？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1207〉 Package Integrity Evaluation—Sterile Products | Section 0</p>
+</div>
+
+</body>
+</html>

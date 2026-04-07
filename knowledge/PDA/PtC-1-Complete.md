@@ -3611,7 +3611,6 @@ the following statement contained within the Introduction, EN 285 is applicable 
 This document specifies test procedures and acceptance criteria to confirm whether the steril-
 izer is safe and can deliver an operating cycle for sterilizing the range of medical devices and
 loading configurations used in healthcare.
-Additionally, EN 285 provides the following reference to ISO 17665-1 and its applicability to valida-
 tion and routine control of sterilization:
 …Requirements for the validation and routine control of sterilization are not addressed as
 they are specified EN ISO17665-1.
@@ -3736,7 +3735,6 @@ Marcel Dekker, Inc., New York, NY: 1998.
 Wiley, New York, NY: 1962.
 5.	 Jennings, T. Lyophilization: Introduction and Basic Principles. Interpharm Press, Denver, CO: 1999.
 6.	 Ryans, J.L., and Roper, D.L. Process Vacuum System Design and Operation. McGraw-Hill, New
-York, NY: 1986.
 Points to Consider No. 1: Aseptic Processing (Revised 2023)
 Topic I:  Sterilizing Grade Gas or Vent Filter Integrity Testing
 Problem Statement
@@ -4050,7 +4048,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Tehya Enger, Publications Manager, +1 (301) 656-5900.
 Written correspondence can be sent to: PDA, Inc. Attn: Tehya Enger, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 Points to Consider No. 1: Aseptic Processing (Revised 2023)
 About PDA Technical Reports
 PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside
@@ -4127,7 +4124,6 @@ Kristin Valente, Merck & Co., Inc.
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

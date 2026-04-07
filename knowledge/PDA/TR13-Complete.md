@@ -3435,7 +3435,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
 Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 Fundamentals of an Environmental Monitoring Program
 About PDA Technical Reports
@@ -3510,7 +3509,6 @@ Kristin Valente, Merck & Co., Inc.
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

@@ -1,0 +1,111 @@
+# USP General Chapter 〰921〱: Water Determination
+
+USP General Chapter 〈921〉 WATER DETERMINATION
+Status: Currently Official on 13-Feb-2025 | Official Date: Official as of 01-May-2022
+DOI: https://doi.org/10.31003/USPNF_M99710_02_01
+
+INTRODUCTION
+Many Pharmacopeial articles either are hydrates or contain water in adsorbed form. As a result, the determination of the water content is important in demonstrating compliance with the Pharmacopeial standards. Generally one of the methods given below is called for in the individual monograph, depending upon the nature of the article. In rare cases, a choice is allowed between two methods. When the article contains water of hydration, Method I (Titrimetric), Method II (Azeotropic), or Method III (Gravimetric) is employed, as directed in the individual monograph, and the requirement is given under the heading Water. Unless otherwise specified in the monograph, determine the water by Method Ia.
+
+The heading Loss on Drying (see Loss on Drying 〈731〉) is used in those cases where the loss sustained on heating may be not entirely water.
+
+METHOD I (TITRIMETRIC)
+
+Method Ia (Direct Titration)
+
+PRINCIPLE
+The titrimetric determination of water is based upon the quantitative reaction of water with an anhydrous solution of sulfur dioxide and iodine in the presence of a buffer that reacts with hydrogen ions.
+
+In the original titrimetric solution, known as Karl Fischer Reagent, the sulfur dioxide and iodine are dissolved in pyridine and methanol. The test specimen may be titrated with the Reagent directly, or the analysis may be carried out by a residual titration procedure. The stoichiometry of the reaction is not exact, and the reproducibility of a determination depends upon such factors as the relative concentrations of the Reagent ingredients, the nature of the inert solvent used to dissolve the test specimen, and the technique used in the particular determination. Therefore, an empirically standardized technique is used in order to achieve the desired accuracy. Precision in the method is governed largely by the extent to which atmospheric moisture is excluded from the system. The titration of water is usually carried out with the use of anhydrous methanol as the solvent for the test specimen.
+
+APPARATUS
+Any apparatus may be used that provides for adequate exclusion of atmospheric moisture and determination of the endpoint. In the case of a colorless solution that is titrated directly, the endpoint may be observed visually as a change in color from canary yellow to amber. More commonly, the endpoint is determined electrometrically with an apparatus employing an electrical circuit and a pair of platinum electrodes immersed in the solution to be titrated. At the endpoint of the titration a slight excess of the reagent increases the flow of current, which is detected by the electrodes for not less than 30 s. Commercially available apparatus generally comprises a closed system consisting of one or two automatic burets and a tightly covered titration vessel fitted with the necessary electrodes and a magnetic stirrer. The air in the system is kept dry with a suitable desiccant, and the titration vessel may be purged by means of a stream of dry nitrogen or current of dry air.
+
+REAGENT
+Prepare the Karl Fischer Reagent as follows. Add 125 g of iodine to a solution containing 670 mL of methanol and 170 mL of pyridine, and cool. Place 100 mL of pyridine in a 250-mL graduated cylinder, and, keeping the pyridine cold in an ice bath, pass in dry sulfur dioxide until the volume reaches 200 mL. Slowly add this solution, with shaking, to the cooled iodine mixture. Shake to dissolve the iodine, transfer the solution to the apparatus, and allow the solution to stand overnight before standardizing. When freshly prepared, 1 mL of this solution is equivalent to approximately 5 mg of water, but it deteriorates gradually; therefore, standardize it within 1 h before use, or daily if in continuous use. Protect from light while in use. Store any bulk stock of the reagent in a suitably sealed, glass-stoppered container, fully protected from light, and under refrigeration. For determination of trace amounts of water (less than 1%), it is preferable to use a Reagent with a water equivalency factor of not more than 2.0.
+
+A commercially available, stabilized solution of Karl Fischer type reagent may be used. Commercially available reagents containing solvents or bases other than pyridine or alcohols other than methanol may be used also. These may be single solutions or reagents formed in situ by combining the components of the reagents present in two discrete solutions.
+
+TEST PREPARATION
+Unless otherwise specified in the individual monograph, use an accurately weighed or measured amount of the specimen under test estimated to contain 2–250 mg of water. In most cases, the minimum amount of specimen, in milligrams, can be estimated using the formula:
+
+Result = FCV/KF
+
+in which F is the water equivalency factor of the Reagent, in milligrams per milliliter; C is the used volume, in percent, of the capacity of the buret; V is the buret volume, in milliliters; and KF is the limit or reasonable expected water content in the sample, in percent. C is generally between 30% and 100% for manual titration, and between 10% and 100% for the instrumental method endpoint determination.
+
+[Note—It is recommended that the product of FCV be greater than or equal to 200 for the calculation to ensure that the minimum amount of water titrated is greater than or equal to 2 mg.]
+
+Where the specimen under test is capsules, use a portion of the mixed contents of not fewer than 4 capsules.
+Where the specimen under test is tablets, use powder from not fewer than 4 tablets ground to a fine powder.
+Where the monograph specifies that the specimen under test is hygroscopic, take an accurately weighed portion of the solid into the titration vessel, proceeding as soon as possible and taking care to avoid moisture uptake from the atmosphere.
+
+STANDARDIZATION OF THE REAGENT
+Place enough methanol or other suitable solvent in the titration vessel to cover the electrodes, and add sufficient Reagent to give the characteristic endpoint color or the appropriate electrode response. Either Purified Water, USP Sodium Tartrate Dihydrate RS, or commercial standards with a certificate of analysis traceable to a national standard may be used to standardize the Reagent. Calculate the water equivalency factor, F, in milligrams of water per milliliter of reagent:
+
+Result = W/V
+
+in which W is the weight, in milligrams, of the water contained in the aliquot of standard used; and V is the volume, in milliliters, of the Reagent used in the titration.
+
+For sodium tartrate dihydrate:
+Result = W/V (36.04/230.08)
+
+in which 36.04 is 2 times the molecular weight of water and 230.08 is the molecular weight of sodium tartrate dihydrate.
+
+PROCEDURE
+Unless otherwise specified, transfer enough methanol or other suitable solvent to the titration vessel, ensuring that the volume is sufficient to cover the electrodes (approximately 30–40 mL), and titrate with the Reagent to the electrometric or visual endpoint to consume any moisture that may be present. Quickly add the Test Preparation, mix, and again titrate with the Reagent to the electrometric or visual endpoint. Calculate the water content of the specimen taken, in milligrams:
+
+Result = SF
+
+in which S is the volume, in milliliters, of the Reagent consumed in the second titration; and F is the water equivalence factor of the Reagent.
+
+Method Ib (Residual Titration)
+
+PRINCIPLE
+In the residual titration, excess Reagent is added to the test specimen, sufficient time is allowed for the reaction to reach completion, and the unconsumed Reagent is titrated with a standard solution of water in a solvent such as methanol. The residual titration procedure is applicable generally and avoids the difficulties that may be encountered in the direct titration of substances from which the bound water is released slowly.
+
+APPARATUS, REAGENT, AND TEST PREPARATION
+Use Method Ia.
+
+STANDARDIZATION OF WATER SOLUTION FOR RESIDUAL TITRATION
+Prepare a Water Solution by diluting 2 mL of water with methanol or other suitable solvent to 1000 mL. Standardize this solution by titrating 25.0 mL with the Reagent, previously standardized as directed under Standardization of the Reagent. Calculate the water content, in milligrams per milliliter, of the Water Solution taken:
+
+Result = V'F/25
+
+in which V' is the volume, in milliliters, of the Reagent consumed, and F is the water equivalence factor of the Reagent. Determine the water content of the Water Solution weekly, and standardize the Reagent against it periodically as needed.
+
+PROCEDURE
+Calculate the water content of the specimen, in milligrams, taken:
+
+Result = F(X' − XR)
+
+in which F is the water equivalence factor of the Reagent; X' is the volume, in milliliters, of the Reagent added after introduction of the specimen; X is the volume, in milliliters, of standardized Water Solution required to neutralize the unconsumed Reagent; and R is the ratio, V'/25 (mL Reagent/mL Water Solution).
+
+Method Ic (Coulometric Titration)
+
+PRINCIPLE
+The Karl Fischer reaction is used in the coulometric determination of water. Iodine, however, is not added in the form of a volumetric solution but is produced in an iodide-containing solution by anodic oxidation. The reaction cell usually consists of a large anode compartment and a small cathode compartment that are separated by a diaphragm. Each compartment has a platinum electrode that conducts current through the cell. Iodine, which is produced at the anode electrode, immediately reacts with water present in the compartment. When all the water has been consumed, an excess of iodine occurs, which usually is detected electrometrically, thus indicating the endpoint. This method is particularly suited to chemically inert substances like hydrocarbons, alcohols, and ethers. In comparison with the volumetric Karl Fischer titration, coulometry is a micro-method.
+
+APPARATUS
+Any commercially available apparatus consisting of an absolutely tight system fitted with the necessary electrodes and a magnetic stirrer is appropriate. The instrument's microprocessor controls the analytical procedure and displays the results. Calibration of the instrument is not necessary, as the current consumed can be measured absolutely.
+
+PROCEDURE
+Using a dry device, inject or add directly an accurately measured amount of the sample or sample preparation estimated to contain between 0.5 and 5 mg of water, or an amount recommended by the instrument manufacturer into the anolyte, mix, and perform the coulometric titration to the electrometric endpoint. Read the water content of the liquid Test Preparation directly from the instrument's display, and calculate the percentage that is present in the substance.
+
+METHOD II (AZEOTROPIC—TOLUENE DISTILLATION)
+
+Apparatus
+Use a 500-mL glass flask A connected by means of a trap B to a reflux condenser C by ground glass joints. The connecting tube D is 9–11 mm in internal diameter. The trap is 235–240 mm in length. The condenser, if of the straight-tube type, is approximately 400 mm in length and not less than 8 mm in bore diameter. The receiving tube E has a 5-mL capacity, and its cylindrical portion, 146–156 mm in length, is graduated in 0.1-mL subdivisions, so that the error of reading is not greater than 0.05 mL for any indicated volume. The source of heat is preferably an electric heater with rheostat control or an oil bath.
+
+Procedure
+Place in the dry flask a quantity of the substance, weighed accurately to the nearest centigram, which is expected to yield 2–4 mL of water. Place about 200 mL of toluene in the flask, connect the apparatus, and fill the receiving tube E with toluene poured through the top of the condenser. Heat the flask gently for 15 min and, when the toluene begins to boil, distill at the rate of about 2 drops/s until most of the water has passed over, then increase the rate of distillation to about 4 drops/s. When the water has apparently all distilled over, rinse the inside of the condenser tube with toluene. Continue the distillation for 5 min, then remove the heat, and allow the receiving tube to cool to room temperature. When the water and toluene have separated completely, read the volume of water, and calculate the percentage that was present in the substance.
+
+METHOD III (GRAVIMETRIC)
+
+Procedure for Chemicals
+Proceed as directed in the individual monograph preparing the chemical as directed under 〈731〉.
+
+Procedure for Biologics
+Proceed as directed in the individual monograph.
+
+Procedure for Articles of Botanical Origin
+Place about 10 g of the drug, prepared as directed (see Articles of Botanical Origin 〈561〉, Methods of Analysis) and accurately weighed, in a tared evaporating dish. Dry at 105° for 5 h, and weigh. Continue the drying and weighing at 1-h intervals until the difference between two successive weighings corresponds to not more than 0.25%.

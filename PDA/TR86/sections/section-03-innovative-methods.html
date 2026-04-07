@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 3: Innovative Methods for Existing Technologies | TR86</title>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1.5rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column h4 { color: var(--primary-blue); margin: 0.75rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column h4 { color: #2c5282; margin: 0.75rem 0 0.5rem; font-size: 1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.4rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header { color: #2c5282; }
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.concept-box, .analogy-box, .note-box, .term-box, .formula-box, .key-point-box, .application-box {
+    border-radius: 8px; padding: 1rem 1.25rem;
+    margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7;
+}
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-point-box h3, .key-point-box h4,
+.application-box h3, .application-box h4 {
+    margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600;
+}
+.concept-box p, .analogy-box p, .note-box p, .term-box p,
+.formula-box p, .key-point-box p, .application-box p {
+    margin-bottom: 0.5rem; font-size: 0.92rem;
+}
+.concept-box ul, .analogy-box ul, .note-box ul, .term-box ul,
+.formula-box ul, .key-point-box ul, .application-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem;
+}
+.concept-box li, .analogy-box li, .note-box li, .term-box li,
+.formula-box li, .key-point-box li, .application-box li {
+    margin-bottom: 0.35rem; font-size: 0.92rem;
+}
+.term-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.term-box h3, .term-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h3, .analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h3, .note-box h4 { color: #c65102; }
+.key-point-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.key-point-box h3, .key-point-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h3, .formula-box h4 { color: #7b1fa2; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h3, .application-box h4 { color: #1565c0; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h3, .concept-box h4 { color: #2e7d32; }
+.quote-box {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px;
+    color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.badge {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 4px; font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.purple { background: #e8d5f5; color: #6b21a8; }
+.figure-note {
+    background: #f8fafc; border: 1px dashed #cbd5e0;
+    border-radius: 8px; padding: 0.75rem 1rem;
+    font-size: 0.85rem; color: var(--text-medium);
+    text-align: center; margin: 0.75rem 0; font-style: italic;
+}
+.mechanism-diagram {
+    background: #f0f4ff; border: 1px solid #c3d5f5;
+    border-radius: 8px; padding: 1rem; margin: 0.75rem 0;
+    font-family: 'Courier New', monospace; font-size: 0.82rem;
+    line-height: 1.6; color: #2d3748; overflow-x: auto;
+    white-space: pre;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.section-title {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--accent-blue); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header" id="top">
+  <h1>Section 3: Innovative Methods for Existing Technologies | 創新測試方法</h1>
+  <p class="subtitle">PDA Technical Report No. 86 (2021) — Sections 5.0–5.4 | Pages 26–37</p>
+  <p class="page-info">Helium Testing · Optical Emission Spectroscopy · Airborne Ultrasound · X-Ray Detection</p>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>Contents — Section 3 目錄</h3>
+    <div class="toc-grid">
+      <a href="#sec50">5.0 Overview 概述</a>
+      <a href="#sec51">5.1 Helium Testing 氦氣測試</a>
+      <a href="#sec511">5.1.1 Application 應用</a>
+      <a href="#sec512">5.1.2 Equipment &amp; Parameters 設備與參數</a>
+      <a href="#sec513">5.1.3 Detection Limit 偵測極限</a>
+      <a href="#sec514">5.1.4 Considerations 注意事項</a>
+      <a href="#sec52">5.2 OES 光學發射光譜</a>
+      <a href="#sec521">5.2.1 Application 應用</a>
+      <a href="#sec522">5.2.2 Equipment &amp; Parameters 設備與參數</a>
+      <a href="#sec523">5.2.3 Detection Limit 偵測極限</a>
+      <a href="#sec524">5.2.4 Considerations 注意事項</a>
+      <a href="#sec53">5.3 Airborne Ultrasound 空氣超音波</a>
+      <a href="#sec531">5.3.1 Application 應用</a>
+      <a href="#sec532">5.3.2 Equipment &amp; Parameters 設備與參數</a>
+      <a href="#sec533">5.3.3 Detection Limit 偵測極限</a>
+      <a href="#sec534">5.3.4 Considerations 注意事項</a>
+      <a href="#sec54">5.4 X-Ray Detection X射線偵測</a>
+      <a href="#sec541">5.4.1 Application 應用</a>
+      <a href="#sec542">5.4.2 Equipment &amp; Parameters 設備與參數</a>
+      <a href="#sec543">5.4.3 Leak Detection 洩漏偵測</a>
+      <a href="#sec544">5.4.4 Considerations 注意事項</a>
+      <a href="#summary-table">Summary Table 綜合比較表</a>
+    </div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="learning-objectives">
+    <h3>Learning Objectives 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+      <div>
+        <strong>After studying this section, you will be able to:</strong>
+        <ul>
+          <li>Explain the operating principles of helium testing, OES, airborne ultrasound, and X-ray for CCI.</li>
+          <li>Identify which package types are best suited to each innovative method.</li>
+          <li>Compare the leak detection limits (LOD) of all four methods.</li>
+          <li>Recognize the key limitations and challenges for each method in pharmaceutical manufacturing.</li>
+          <li>Apply the correct method selection logic for SUS bags, vials, syringes, and flexible pouches.</li>
+          <li>Understand CDMO validation strategy considerations for each method.</li>
+        </ul>
+      </div>
+      <div>
+        <strong>學完本節後，你將能夠：</strong>
+        <ul>
+          <li>說明氦氣測試、OES、空氣超音波及X射線偵測的工作原理。</li>
+          <li>辨別哪種包裝類型最適合各項創新方法。</li>
+          <li>比較四種方法的洩漏偵測極限（LOD）。</li>
+          <li>了解各方法在製藥生產中的主要限制與挑戰。</li>
+          <li>針對SUS袋、瓶、注射器及軟包裝，套用正確的方法選擇邏輯。</li>
+          <li>理解各方法在CDMO驗證策略中的考量。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 5.0 ===================== -->
+  <div class="chapter-section" id="sec50">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.0</div>
+      <div class="chapter-info">
+        <h2>Innovative Methods for Existing Technologies — Overview</h2>
+        <p>創新測試方法概述 | p26</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text — English</div>
+          <p>The pharmaceutical industry is constantly searching for new package integrity testing technologies to support the sterility assurance of drug products. Two innovative CCIT methods—helium testing and optical emission spectroscopy—and two seal-integrity methods—ultrasound and x-ray detection—are described in Section 5. Though these methods may be improvements in technology, they, too, present limitations and challenges.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <div class="term-box">
+            <h4>本節四大創新方法</h4>
+            <p>TR86 Section 5 介紹業界正在採用的四項創新技術：</p>
+            <ul>
+              <li><strong>氦氣測試（Helium Testing）</strong>：決定性、非破壞性CCIT，適用於SUS袋</li>
+              <li><strong>光學發射光譜（OES）</strong>：利用頭空氣體特徵光譜偵測洩漏</li>
+              <li><strong>空氣超音波（Airborne Ultrasound）</strong>：密封完整性測試，適用多孔性包裝</li>
+              <li><strong>X射線偵測（X-Ray）</strong>：支援性CCI評估工具，用於玻璃缺陷/器械內部檢測</li>
+            </ul>
+          </div>
+          <div class="note-box">
+            <h4>重要提醒</h4>
+            <p>PDA明確指出，即使是「創新方法」，也仍有其限制與挑戰。這是選擇方法時的核心認識——沒有完美的單一技術。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>CDMO視角</h4>
+            <p>對於接受多客戶委託的CDMO而言，這四種方法分別對應不同的產品類型與包裝格式。理解各方法的適用範圍，能讓你在客戶技術審查或法規查核中快速對答如流。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 5.1 ===================== -->
+  <div class="chapter-section" id="sec51">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.1</div>
+      <div class="chapter-info">
+        <h2>Helium Testing 氦氣測試</h2>
+        <p>Deterministic, nondestructive CCI for flexible SUS bag systems | p26–28</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text — English</div>
+          <p>Helium integrity testing is a well-known, deterministic, nondestructive test method that has been used for many years in several industries to test rigid containers. The technology, which has special applications, now allows the testing of flexible polymeric container systems, such as those described in Section 4.2.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <div class="term-box">
+            <h4>氦氣測試基本定義</h4>
+            <ul>
+              <li><strong>決定性（Deterministic）</strong>：測試結果有科學根據，非機率性</li>
+              <li><strong>非破壞性（Nondestructive）</strong>：測試後產品可繼續使用</li>
+              <li><strong>原本用途</strong>：剛性容器（如金屬或硬質容器）</li>
+              <li><strong>現在擴展到</strong>：軟性高分子容器系統（如SUS袋）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.1.1 -->
+      <div id="sec511">
+        <div class="section-title">5.1.1 Application — 應用</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Helium testing is suitable for test units that are dry and can withstand at least 1 psi pressure differential once they are restrained by a special holder. This test method can be used to verify the integrity of fully-assembled 2-D and 3-D single-use bags (such as disposable bioreactor or mixing and storage bags) as well as complex manifold systems consisting of multiple 2-D or 3-D bags connected to a central tubing manifold (Figure 5.1.1-1). Specific components that have a natural leak rate above the determined limit, e.g., aseptic connectors with porous membranes, cannot be tested and must be excluded. Permeation leak rate of nondefective assemblies should also be considered. The complex assemblies, which have more than 100 connection points (such as barb–tube, film–film, and film–fitment joints), can be tested to a defect size of a 2 µm pinhole equivalent flow-effective diameter.</p>
+            <p>The method involves placing a finished biopharmaceutical single-use bag assembly into an enclosed test chamber, evacuating the chamber to create a vacuum, and then introducing a measured quantity of helium gas into the bag assembly being tested. A specialized pumping technique reduces the stress on the bag assembly by reducing the internal pressure of the bag along with the external (chamber) pressure. In addition, the test chamber can be equipped with restraining plates and porous spacers to mechanically support the assembly under test and avoid the masking effect of defects. The helium-filled bag assembly is then held for a fixed time while the surrounding vacuum is monitored for leaking helium using a sensitive mass spectrometer. An automatically preceded pressure-sensing gross leak check prevents the test chamber from being saturated with large quantities of helium, practically eliminating the system down times due to helium pollution. This method has the advantage that it can be made semi-automatic, reducing the role of the operator.</p>
+            <div class="figure-note">Figure 5.1.1-1: Sample Manifold with 10 2-D Bags Attached to a Central Fluid Line with 70+ Joining Points</div>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>適用條件</h4>
+              <ul>
+                <li>測試品必須是<strong>乾燥</strong>的</li>
+                <li>需能承受至少 <strong>1 psi</strong> 壓差</li>
+                <li>適用2-D及3-D SUS袋（包括生物反應器袋、混合袋、儲液袋）</li>
+                <li>可測試複雜管路歧管系統（100個以上接點）</li>
+                <li>有天然洩漏率超過限值的元件（如帶多孔膜的無菌連接器）必須<strong>排除在外</strong></li>
+              </ul>
+            </div>
+            <div class="analogy-box">
+              <h4>流程比喻：潛水艇加壓測試</h4>
+              <p>想像把SUS袋放進密封艙室，先抽真空（讓外部壓力降低），再把氦氣充進袋子裡。如果袋子有洞，氦氣就會跑進艙室的真空環境，被質譜儀偵測到。就像潛水艇加壓測試一樣——哪裡漏氣，儀器就知道。</p>
+            </div>
+            <div class="mechanism-diagram">流程示意圖（文字版）：
+
+[SUS袋組裝體]
+      |
+      v
+放入密封測試艙室
+      |
+      v
+抽真空（降低外部壓力）
+      |
+      v
+充入氦氣至袋內
+      |
+      v
+保持固定時間
+      |
+      v
+質譜儀偵測洩漏氦氣
+      |
+   ┌──┴──┐
+   |       |
+PASS    FAIL
+（無洩漏）（偵測到洩漏）</div>
+            <div class="note-box">
+              <h4>掩蔽效應（Masking Effect）</h4>
+              <p>若袋子在測試過程中因壓差而變形，可能蓋住缺陷位置，導致偽陰性。解決方式：在測試艙中安裝<strong>約束板與多孔間隔片</strong>，讓袋子在機械支撐下維持形狀。</p>
+            </div>
+            <div class="application-box">
+              <h4>CDMO實務重點</h4>
+              <p>生技製藥廠的SUS袋管路（manifold）系統往往有數十個接點——barb-tube、film-film、film-fitment。氦氣測試是唯一能一次對整套系統做決定性完整性驗證的方法，適合作為放行（release）測試的一部分。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.1.2 -->
+      <div id="sec512">
+        <div class="section-title">5.1.2 Test Equipment and Parameters — 測試設備與參數</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>The helium test apparatus includes a vacuum test chamber, pressure sensors, a vacuum pump, and a path providing the helium to escape. The chamber can optionally be equipped with restraining plates and porous spacers constraining the bag volume. The test chamber is connected via two lines: the first line evacuates the test chamber and, in the process, carries any helium molecules in the test chamber to the detector; the second line introduces helium into the bag assembly undergoing the test.</p>
+            <p>Typically, this test is performed in a vacuum chamber with low test pressures, at room temperature. The test time varies depending on the complexity and/or volume of the bag design being tested. The critical parameters impacting the test results are defect size, helium permeability of a single-use bag wall, test pressure, test temperature, bag-tubing surface area, helium injection volume, and test time (time during which helium is collected). Actual test parameters must be obtained by collecting data for defective versus nondefective bags that provide the highest difference between the two.</p>
+            <p>Helium molecules escaping through the defects are sensed by mass spectrometer and are related to a leak rate through a known defect size.</p>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>關鍵設備元件</h4>
+              <ul>
+                <li><strong>真空測試艙室</strong>：容納測試品並維持真空環境</li>
+                <li><strong>壓力感測器</strong>：監控艙室壓力，及早發現總洩漏</li>
+                <li><strong>真空泵</strong>：抽空艙室環境</li>
+                <li><strong>質譜儀（Mass Spectrometer）</strong>：高靈敏度偵測氦氣分子</li>
+                <li><strong>雙管路系統</strong>：一條抽真空兼攜帶氦氣去偵測器；一條充氦氣進入袋子</li>
+              </ul>
+            </div>
+            <div class="formula-box">
+              <h4>影響測試結果的關鍵參數（Critical Parameters）</h4>
+              <ul>
+                <li>缺陷尺寸（Defect Size）</li>
+                <li>SUS袋壁的氦氣透過率（He Permeability）</li>
+                <li>測試壓力（Test Pressure）</li>
+                <li>測試溫度（Test Temperature）</li>
+                <li>袋體及管路表面積（Surface Area）</li>
+                <li>氦氣注入量（He Injection Volume）</li>
+                <li>測試時間（Test Time / Collection Time）</li>
+              </ul>
+              <p><em>所有參數必須透過收集正常袋（nondefective）與缺陷袋（defective）的對比數據來決定，以最大化兩者差距為目標。</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.1.3 -->
+      <div id="sec513">
+        <div class="section-title">5.1.3 Leak Detection Limit — 洩漏偵測極限</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Helium testing can sense helium leak rates in the range of 10<sup>-8</sup> to 10<sup>-4</sup> atmosphere mbar L/s. The test sensitivity depends on the background helium leak rate of a nondefective bag assembly versus one with a defect. The greater the difference between the background leak rate of the nondefective bag assembly versus the defective bag assembly, the higher the confidence that a defect can be detected. Helium testing is capable of detecting 2 µm laser-drilled defects, as shown in Figure 5.1.3-1 (examples of helium leak rates of a nondefective bag versus a defective bag). Just as design-specific characteristics like numbers of connections, surface area, and type of film and tubing material can highly impact the natural background leak rate of nondefective assemblies, an individual acceptance limit must be identified and proven with a statistically significant number of positive and negative controls.</p>
+            <div class="figure-note">Figure 5.1.3-1: Comparison of Helium Leak Rates of a Nondefective Bag versus a Defective Bag</div>
+          </div>
+          <div class="right-column">
+            <div class="formula-box">
+              <h4>偵測範圍</h4>
+              <p>氦氣測試的偵測範圍：<strong>10<sup>-8</sup> 至 10<sup>-4</sup> atm·mbar·L/s</strong></p>
+              <p>能偵測到直徑 <strong>2 µm</strong> 的雷射鑽孔缺陷（2微米針孔等效流徑）</p>
+            </div>
+            <div class="note-box">
+              <h4>靈敏度的關鍵概念</h4>
+              <p>真正決定方法靈敏度的不是儀器本身的最小偵測量，而是：</p>
+              <p><strong>有缺陷袋的洩漏率 − 無缺陷袋的背景洩漏率 = 信噪比（S/N）</strong></p>
+              <p>背景洩漏率（background leak rate）受以下因素影響：</p>
+              <ul>
+                <li>接點數量（越多，背景越高）</li>
+                <li>袋膜表面積（越大，氦氣滲透越多）</li>
+                <li>膜材與管路材質的氦氣透過率</li>
+              </ul>
+            </div>
+            <div class="application-box">
+              <h4>驗證策略含義</h4>
+              <p>每種SUS袋設計都必須建立<strong>個別的接受標準（acceptance limit）</strong>，並以足夠統計數量的陽性控制（positive controls，含已知缺陷）及陰性控制（negative controls）來支持。這是無法跨產品直接套用的。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.1.4 -->
+      <div id="sec514">
+        <div class="section-title">5.1.4 Considerations and Challenges — 注意事項與挑戰</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Instrument performance can be verified by using standard calibrated helium leaks. A helium leak rate through the actual test sample with a known defect size versus a helium leak rate through nondefective samples helps determine the smallest detectable defect for a given test unit. Helium testing provides a quantitative leak rate. The test can detect the presence of multiple defects, but not the location of a defect.</p>
+            <p>The preferred test method uses test units with reasonable gas barrier properties. If the test unit is highly permeable to helium, then sensitivity drops significantly. The risk of false positives can be minimized by incorporating an in-line leak in the instrument to ensure that the sensor is in good working condition during each test cycle.</p>
+          </div>
+          <div class="right-column">
+            <div class="key-point-box">
+              <h4>五大注意事項</h4>
+              <ul>
+                <li><strong>儀器效能驗證</strong>：使用標準校準氦氣洩漏件（calibrated helium leaks）驗證儀器狀態</li>
+                <li><strong>定量洩漏率</strong>：氦氣測試給出的是定量數值，不只是通過/不通過</li>
+                <li><strong>多重缺陷</strong>：可偵測多個缺陷的存在，但<strong>無法定位</strong>缺陷位置</li>
+                <li><strong>高透氦材質問題</strong>：若袋膜對氦氣透過性很高，靈敏度會大幅下降</li>
+                <li><strong>偽陽性控制</strong>：在儀器中加裝內建洩漏件（in-line leak），確保每次測試循環中感測器正常運作，降低偽陽性風險</li>
+              </ul>
+            </div>
+            <div class="analogy-box">
+              <h4>比喻：不能定位但能確認</h4>
+              <p>氦氣測試就像你知道房間裡有人在說話，但不知道是哪個人在說。它能確認「有洩漏」以及洩漏量，但要找到洩漏位置，還需要其他輔助方法（如視覺檢測或分段測試）。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 5.2 ===================== -->
+  <div class="chapter-section" id="sec52">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.2</div>
+      <div class="chapter-info">
+        <h2>Optical Emission Spectroscopy (OES) 光學發射光譜</h2>
+        <p>Headspace gas analysis for deterministic CCI | p28–30</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text — English</div>
+          <p>The emission spectrum of a chemical element or compound (atom or molecule) is the spectrum of frequencies of electromagnetic radiation emitted due to the atom or molecule making a transition from high energy state to a lower energy state. The energy of the emitted photon is equal to the difference between the two states. For each atom, there are many possible electron transitions, and each transition has a specific energy difference. This collection of different transitions, leading to different radiated wavelengths, makes up an emission spectrum. Each element's emission spectrum is unique; therefore, optical emission spectroscopy (OES) can be used to identify the elements in matter of unknown composition or to perform chemical analysis of substances.</p>
+          <p>OES analysis does not require any specific tracer gas to measure total leakage on sealed containers. Instead, the gas mixture naturally present in the container headspace of the primary container is used to perform high-sensitivity tests over a large detection range.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <div class="term-box">
+            <h4>OES 基本物理原理</h4>
+            <p>每種化學元素在激發後發出的電磁輻射頻率是獨一無二的，就像「元素的指紋」。OES利用這個特性，在真空環境中分析從容器洩漏出來的氣體成分。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：燃燒火焰顏色</h4>
+            <p>不同金屬燃燒會發出不同顏色的火焰（鈉=黃、銅=綠、鉀=紫）。OES原理相同——用特定波長的光譜線來識別是哪種氣體在洩漏。</p>
+          </div>
+          <div class="note-box">
+            <h4>OES最大優勢</h4>
+            <p>不需要預先充入示蹤氣體！直接利用容器頭空間中<strong>原本就有的氣體</strong>（N<sub>2</sub>、CO<sub>2</sub>、O<sub>2</sub>、水蒸氣）作為偵測標記。這讓OES比傳統示蹤氣體方法更適合直接應用於已封裝的成品。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2.1 -->
+      <div id="sec521">
+        <div class="section-title">5.2.1 Application — 應用</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>The OES equipment measures the total leak rate for a specific gas from a sample under vacuum. The test method is deterministic, nondestructive, easy to use, easy to set up, and highly sensitive.</p>
+            <p>OES has been developed to measure or check the CCI of a variety of sterile CCS such as pouches, vials, prefilled syringes, and cartridges. In the case of prefilled liquid products, water leaks coming from the surface and air leaks coming from the air headspace can potentially be measured simultaneously. The ability to analyze the molecular signature of the leaking gas helps troubleshoot the source and location of the leak (e.g., for a CO<sub>2</sub>-filled liquid package, a higher level of CO<sub>2</sub> indicates headspace leakage). In addition, the molecular signature may reduce false rejects (e.g., for dry products filled with nitrogen, an unusually high level of hydrogen may suggest moisture leakage into the chamber due to chamber-seal leakage).</p>
+            <p>For sterile glass products, the low outgassing rate of the glass vials and syringes allows testing of the products in batches of several syringes, potentially increasing the throughput while maintaining the high sensitivity of the test.</p>
+          </div>
+          <div class="right-column">
+            <div class="application-box">
+              <h4>適用包裝類型</h4>
+              <ul>
+                <li>小袋（Pouches）</li>
+                <li>玻璃瓶（Vials）</li>
+                <li>預充注射器（Prefilled Syringes）</li>
+                <li>卡匣（Cartridges）</li>
+              </ul>
+            </div>
+            <div class="term-box">
+              <h4>分子特徵的雙重價值</h4>
+              <p><strong>用途1：定位洩漏來源</strong><br>CO<sub>2</sub>充填液體包裝 → CO<sub>2</sub>升高 = 頭空間洩漏</p>
+              <p><strong>用途2：降低偽陽性</strong><br>氮氣充填乾燥產品 → 氫氣異常升高 = 艙室密封洩漏（不是產品洩漏）→ 避免誤判</p>
+            </div>
+            <div class="note-box">
+              <h4>玻璃產品的批次測試優勢</h4>
+              <p>玻璃的外氣率（outgassing rate）極低，因此多支注射器可以同時放入艙室批次測試，提升生產效率，同時維持高靈敏度。這對大批量注射劑生產線特別有價值。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2.2 -->
+      <div id="sec522">
+        <div class="section-title">5.2.2 Test Equipment and Parameters — 設備與參數</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>The OES equipment includes a certified calibrated leak, which is used for the calibration. The leakage is measured in leak flow unit of mbar·L/s.</p>
+            <p>The OES sensor is connected directly to a test chamber in which the container to be analyzed is loaded. The test chamber is evacuated and, at low pressure (&lt;5×10<sup>-2</sup> mbar), the OES sensor is able to generate plasma. The excited atoms and ions in the discharge plasma generate light through numerous characteristic emission spectral lines generated by the elements in the gas mixture and captured by a camera. The wavelength and intensity (amplitude) of each emission line is analyzed. The emission intensity (amplitude) is dependent on the partial pressure (mol ratio) of the related element in the gas mixture, and change in intensity over time is proportional to leakage and/or outgassing.</p>
+            <p>Testing time is a direct consequence of the desired LoD in combination with the total outgassing flow, which depends on the materials under vacuum and the relative humidity in the ambient air trapped on the container.</p>
+            <p>The test sequence has three major steps:</p>
+            <ol>
+              <li><strong>Rough Evacuation Step.</strong> The chamber starts at barometric conditions and is evacuated down to a few mbar. At the end of this step, if the set vacuum level is not reached due to a gross leak, the test will stop and a proper test failure message will be displayed.</li>
+              <li><strong>High-Vacuum Evacuation Step.</strong> When the pressure inside the test chamber reaches the maximum allowed pressure for the turbo pump (typically a few mbar), the OES sensor is in contact with the test chamber and pressure can be measured. It takes one or two seconds to reach steady measurement due to pressure fluctuations.</li>
+              <li><strong>Measurement Step.</strong> The OES sensor is measuring continuously while the pressure is continuously decreasing. The test duration has been defined during the calibration of the equipment in order to achieve a signal-to-noise ratio large enough to reach a good capability.</li>
+            </ol>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>OES 測試三步驟</h4>
+              <div class="mechanism-diagram">步驟1：粗抽真空（Rough Evacuation）
+從大氣壓抽到幾mbar
+→ 若有嚴重洩漏，無法達到目標真空
+→ 測試中止，顯示錯誤
+
+步驟2：高真空抽氣（High-Vacuum Evacuation）
+壓力降至 &lt; 5×10⁻² mbar
+→ OES感測器開始與艙室接觸
+→ 等待1-2秒壓力穩定
+
+步驟3：測量（Measurement）
+OES感測器持續測量
+→ 激發等離子體（plasma）
+→ 相機捕獲特徵光譜線
+→ 分析波長與強度（amplitude）
+→ 強度隨時間變化 ∝ 洩漏率</div>
+            </div>
+            <div class="formula-box">
+              <h4>關鍵物理關係</h4>
+              <p>發射強度（emission intensity）∝ 氣體混合物中該元素的分壓（partial pressure）</p>
+              <p>強度隨時間的<strong>變化率</strong> ∝ 洩漏率 + 外氣率（outgassing）</p>
+              <p>測試時間由所需LOD與材料外氣率共同決定</p>
+            </div>
+            <div class="note-box">
+              <h4>校準要求</h4>
+              <p>設備必須配備<strong>認證校準洩漏件（certified calibrated leak）</strong>，校準程序包含：</p>
+              <ul>
+                <li>陰性樣品（negative sample）</li>
+                <li>含適當氣體的校準洩漏件</li>
+              </ul>
+              <p>每種新產品都需要重新進行初始校準（initial set-up calibration）。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2.3 -->
+      <div id="sec523">
+        <div class="section-title">5.2.3 Leak Detection Limit — 洩漏偵測極限</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>The instrument measures the leak rate for any gas in a container (e.g., oxygen, nitrogen or even water vapor) escaping from a leaking sample under vacuum. Because the test is performed under high vacuum, the driving parameter of the OES method sensitivity is the outgassing rate of the container material in contact with or exposed to high vacuum. The smaller the leak, the longer the outgassing takes for creating a measurable pressure difference, and this rate or better the amount of gas escaping from a leak determines as a consequence the LoD for a given test time. Due to the physical constraints under those high-vacuum conditions, water exists only in vapor form, which enhances the LoD towards smaller leak sizes when the leak is filled with water because an evaporating droplet of water creates significantly more gas as if it would escape from the head space of a container. In other words, in the case of a small dry leak, compared to the same small leak with liquid behind it, due to a constant water evaporation during the measurement cycle, the amount of gas escaping through the leak is far higher and the detection limit for those holes is also shifted toward much smaller hole sizes.</p>
+            <p>The upper detection limit, the limit of how large a leak can be to become detected with a differential pressure method, depends on the size of the headspace volume compared to the amount of liquid in the container. If a leak is very large relative to the container size and fill level during this evacuation cycle, all gas and water vapor could be evacuated before the test cycle can start. Under these conditions, the test will produce a false-positive detection, which means a leaking product can pass as an integral product because the container is already empty. Usually those conditions do not occur on all container and fill level variations, but it should be considered as a risk factor before choosing the method.</p>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>LOD的決定因素</h4>
+              <p>OES的靈敏度（LOD）由<strong>容器材料的外氣率（outgassing rate）</strong>決定，而非儀器本身的限制。外氣率越低，背景雜訊越小，能偵測的洩漏越小。</p>
+            </div>
+            <div class="note-box">
+              <h4>含液體洩漏的特殊效應</h4>
+              <p>在高真空條件下，水只以蒸氣形式存在。當洩漏通道中有液體時：</p>
+              <ul>
+                <li>液態水不斷蒸發 → 持續產生大量水蒸氣</li>
+                <li>通過洩漏的氣體量<strong>遠高於</strong>乾燥洩漏</li>
+                <li>LOD向<strong>更小的孔洞尺寸</strong>偏移（更靈敏）</li>
+              </ul>
+              <p>因此，對於含液體的預充注射器或液態藥品，OES的靈敏度比對乾燥產品更高。</p>
+            </div>
+            <div class="key-point-box">
+              <h4>風險：大洩漏反而通過測試</h4>
+              <p>若洩漏非常大，在抽真空階段所有氣體和水蒸氣就已被抽出，到了測量步驟時容器已空，OES無法偵測到任何訊號差異 → <strong>偽陰性（false-negative = leaker passes as intact）</strong></p>
+              <p>建議：選用此方法前評估此風險，必要時配合視覺檢查（檢查空容器或變形容器）。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.2.4 -->
+      <div id="sec524">
+        <div class="section-title">5.2.4 Considerations and Challenges — 注意事項與挑戰</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>A number of factors should be considered when using OES, such as safety considerations and the design of the vacuum chamber. Local safety rules and regulations should be followed at all times, and particular attention should be paid when handling toxic drugs, especially if large leaks may be present.</p>
+            <p>Design of the vacuum chamber affects both testing and packaging. Proper chamber design is critical to contain liquid spills and minimize test volume. Tests are performed at high vacuum (under 5×10<sup>-2</sup> bar-absolute), during which large-molecule drugs may plug the leak path; consequently, this method should be qualified for the specific drug being tested. In addition, flexible packages, or packages with moving parts (e.g., prefilled syringes), must have proper vacuum chamber design to constrain expansion from causing damage to the package. Flexible packages with large outgassing, such as IV bags, should be tested based on the specific application, as outgassing depends on the package material.</p>
+          </div>
+          <div class="right-column">
+            <div class="key-point-box">
+              <h4>四大挑戰與考量</h4>
+              <ul>
+                <li><strong>安全性</strong>：處理毒性藥物時，若有大洩漏，操作人員暴露風險升高，需遵守當地安全法規</li>
+                <li><strong>艙室設計</strong>：需設計防液體溢出功能，並最小化測試體積</li>
+                <li><strong>大分子藥物</strong>：高真空下，大分子可能堵塞洩漏通道，影響偵測 → 必須針對特定藥物進行方法確效</li>
+                <li><strong>彈性包裝/活動部件</strong>：預充注射器活塞可能在真空下移動並損壞包裝，艙室必須有適當約束設計</li>
+              </ul>
+            </div>
+            <div class="analogy-box">
+              <h4>CDMO選用OES的關鍵判斷</h4>
+              <p>OES對玻璃容器（瓶、注射器）最理想，因為玻璃外氣率低。若客戶產品是IV袋或其他高外氣率材質，需先評估是否會干擾測試結果。每更換一個藥品配方，都需要重新確效。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 5.3 ===================== -->
+  <div class="chapter-section" id="sec53">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.3</div>
+      <div class="chapter-info">
+        <h2>Airborne Ultrasound 空氣超音波</h2>
+        <p>Through-transmission seal integrity for flexible and porous packaging | p31–33</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text — English</div>
+          <p>Ultrasonic waves are high-frequency sound waves that exhibit behaviors characteristic of sound waves. When a boundary exists between two media with varying acoustic impedances, the ultrasonic waves are partially reflected and partially transmitted through one medium into the other. Additionally, refraction, absorption, and diffraction occur at various instances. Airborne ultrasound is a point-focused signal that pulsates at 500 pulses per second.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <div class="term-box">
+            <h4>超音波物理基礎</h4>
+            <p>超音波是高頻聲波，在兩種<strong>聲阻抗（acoustic impedance）</strong>不同的介質交界面，會發生：</p>
+            <ul>
+              <li>部分反射（reflection）</li>
+              <li>部分穿透（transmission）</li>
+              <li>折射（refraction）</li>
+              <li>吸收（absorption）</li>
+              <li>繞射（diffraction）</li>
+            </ul>
+            <p>空氣超音波為<strong>點焦式訊號</strong>，每秒脈衝500次。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3.1 -->
+      <div id="sec531">
+        <div class="section-title">5.3.1 Application — 應用</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Airborne ultrasound, a seal integrity test, is a "through transmission technology" that transmits ultrasound through a material and receives the signal on the opposite side of the material. Since, porous packaging film allows the passage of gases (such as air) while maintaining a sterile barrier, traditional vacuum decay or tracer gas leak tests cannot be used to ensure its integrity. Airborne ultrasound seal inspection allows the seals of porous packaging to be inspected online, quantitatively and nondestructively.</p>
+            <p>Porous sterile barrier packaging is one of a variety of flexible package formats available. Creating a functional flexible barrier package typically requires bonding two films together to create a flexible package structure, then sealing it once it has been filled with the product. Each of the pouch seals is critical to the integrity of the pouch, and measuring the quality of those seals is a means of ensuring the integrity of the flexible packaging.</p>
+            <p>Visual inspection of both porous and nonporous flexible packaging assumes that all defects are visible. The quality of a seal is dependent only on physical properties; therefore, the visual appearance of a seal area does not ensure the integrity of the seal. Heat-sealing bars can leave a seal imprint on the outside of a package, while the inner seal fails to reach bonding temperature and never seals completely or has a weak peel strength.</p>
+          </div>
+          <div class="right-column">
+            <div class="note-box">
+              <h4>為何多孔包裝需要超音波？</h4>
+              <p>多孔性無菌屏障包裝（如Tyvek袋）允許氣體通過以維持無菌屏障，但這同時意味著：</p>
+              <ul>
+                <li>真空衰減法 → 無法用（氣體會穿透膜材）</li>
+                <li>示蹤氣體法 → 無法用（示蹤氣體會從膜材本體逸出）</li>
+                <li><strong>空氣超音波 → 可以用</strong>（偵測密封區的物理黏合品質，非氣體洩漏）</li>
+              </ul>
+            </div>
+            <div class="key-point-box">
+              <h4>視覺檢查的盲點</h4>
+              <p>外觀良好的密封不等於完整密封！熱封條（heat-sealing bar）可能在袋子外表留下完美的熱封痕跡，但內層實際上沒有完全黏合——這種「外好內壞」的密封只能用超音波偵測到。</p>
+            </div>
+            <div class="application-box">
+              <h4>主要應用場景</h4>
+              <ul>
+                <li>線上生產檢測（online inspection，封口後立即掃描）</li>
+                <li>Tyvek無菌袋密封品質驗證</li>
+                <li>軟性屏障包裝的密封強度篩查</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3.2 -->
+      <div id="sec532">
+        <div class="section-title">5.3.2 Test Equipment and Parameters — 設備與參數</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>The airborne ultrasound system consists of an ultrasound sensor head and a signal processing system. The sensor head is used to pulse sound at a bonded film material and measure the signal strength on the opposing side. The ultrasound signal processor gathers the ultrasound pulsing measurements and processes the measurement into quantitative summary data for evaluation.</p>
+            <p>The sound is focused on an active area relative to frequency (or wavelength) of the sound. The active area determines the resolution of the focused measurement. Airborne ultrasound is primarily suited for film materials, providing an acoustic signature of bond materials or material characteristics based on thickness, density, and material uniformity.</p>
+            <p>The principle of ultrasound measurement relates to double-paned, soundproof windows. A single-pane window allows sound to propagate through the single pane and be measured on the opposing side. A double-pane window absorbs and reflects most of the sound waves, preventing the majority of sound from reaching the opposing side. Relating this principle to airborne ultrasound, the sound waves will propagate through a well-bonded seal (a single pane). The signal transmitted through a bonded seal is measured and used to determine seal quality. A weak seal, seal defect, or point of nonbonding will prevent the ultrasound from propagating through the seal. For multiple layers (no seal), the signal through the seal is blocked completely (like the double-paned window).</p>
+            <p>The ultrasound signal is a point-focused measurement. Test data comprises signal intensity associated with a position on the material or seal area and the decibel-level signal strength. Seal defects can create additional transitions of plastic-to-air or plastic-to-foreign contaminant, causing multiple reflections and refractions. Trapped air or sufficiently large solid contamination (≥1 mm) could also cause the signal to attenuate or decrease in strength. Alternatively, the presence of cuts or holes in the seal would result in a peak in the signal strength.</p>
+            <p>The measurement can be presented in a line graph format (Figure 5.3.2-3), or a composite scan can pair line scans to create an optoacoustic image (Figure 5.3.2-4). The optoacoustic image is a data matrix of ultrasonic signal strength data paired with X-Y coordinates. The data is presented in the form of a bitmap file, making the image quantitative in its base measurement.</p>
+            <p>While an optoacoustic image can be used to evaluate seal quality, the linear scan inspection mode is the most appropriate for discrete defect detection. The leak detection is based on processing a series of high-frequency data points and compiling the population of data into summary statistics for each scan. Summary statistics consist of the average signal, maximum signal, minimum signal, standard deviation of the signal, and length of the scan.</p>
+            <p>A low signal value or minimum value usually indicates the presence of a defect such as contamination, inclusions, delamination, voids, or no seal. A very high signal or maximum value indicates the presence of a cut or gap in the seal, or that the test was taken too close to the edge of the sample.</p>
+            <div class="figure-note">Figure 5.3.2-1: Airborne Ultrasound Through Transmission</div>
+            <div class="figure-note">Figure 5.3.2-2: Propagation of Ultrasound Through Material Being Tested</div>
+            <div class="figure-note">Figure 5.3.2-3: Ultrasound Single Linear Scan Graph of Channel Defect within a Pouch Seal</div>
+            <div class="figure-note">Figure 5.3.2-4: Ultrasound Composite Scan / Optoacoustic Image of Channel Defect within a Pouch Seal</div>
+          </div>
+          <div class="right-column">
+            <div class="analogy-box">
+              <h4>雙層隔音窗比喻</h4>
+              <div class="mechanism-diagram">良好密封（bonded seal）= 單層玻璃窗
+  → 超音波順利穿透
+  → 接收端訊號強度高
+  → PASS
+
+密封不良或無密封 = 雙層隔音窗
+  → 超音波大部分被反射/吸收
+  → 接收端訊號強度低
+  → FAIL
+
+有切割/孔洞
+  → 超音波繞過密封直接穿過
+  → 接收端訊號異常高峰
+  → FAIL</div>
+            </div>
+            <div class="term-box">
+              <h4>兩種數據呈現方式</h4>
+              <p><strong>線性掃描（Linear Scan）</strong></p>
+              <ul>
+                <li>結果呈折線圖（訊號強度 vs 位置）</li>
+                <li>最適合<strong>離散缺陷偵測</strong></li>
+                <li>統計摘要：平均值、最大值、最小值、標準差、掃描長度</li>
+              </ul>
+              <p><strong>複合掃描（Composite Scan / Optoacoustic Image）</strong></p>
+              <ul>
+                <li>多條線性掃描組合成2D聲學影像</li>
+                <li>以bitmap格式呈現（本質上是定量的）</li>
+                <li>更適合<strong>整體密封品質評估</strong>與視覺化</li>
+              </ul>
+            </div>
+            <div class="formula-box">
+              <h4>訊號解讀規則</h4>
+              <table>
+                <tr><th>訊號特徵</th><th>可能原因</th><th>判定</th></tr>
+                <tr><td>低訊號 / 最小值異常低</td><td>污染、夾雜物、脫層、空洞、無密封</td><td>FAIL</td></tr>
+                <tr><td>高訊號 / 最大值異常高</td><td>切割、缺口、掃描超出密封邊緣</td><td>FAIL</td></tr>
+                <tr><td>訊號在規格範圍內</td><td>良好密封</td><td>PASS</td></tr>
+              </table>
+            </div>
+            <div class="note-box">
+              <h4>接受標準（Acceptance Limits）</h4>
+              <p>系統使用統計摘要數據來判定通過/不通過。若任何統計值超出接受限值 → 判定失敗。所有統計值均在限值內 → 判定通過。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3.3 -->
+      <div id="sec533">
+        <div class="section-title">5.3.3 Leak Detection Limit — 洩漏偵測極限</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Defect detection using airborne ultrasound is based on the quantitative assessments of a scanned seal. As described in Section 5.3.2, the defect is detected by breaching a set-point limit for a summary statistic; defects can also be visually apparent in graphical form. The ability of the airborne ultrasound to detect a defect is based on a variety of factors. Defects that can be detected are typically cold seals, channel defects, wrinkles, areas of nonbonding, poor seals, material variations, seal variations, cuts, or holes. The ability to detect these defects is primarily dependent on the physics of ultrasound and the material properties.</p>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>可偵測的缺陷類型</h4>
+              <ul>
+                <li><strong>冷封（Cold Seals）</strong>：熱封溫度不足，未達黏合溫度</li>
+                <li><strong>通道缺陷（Channel Defects）</strong>：密封中有連通外部的通道</li>
+                <li><strong>皺褶（Wrinkles）</strong>：膜材皺摺導致密封不均</li>
+                <li><strong>未黏合區域（Non-bonding）</strong>：部分區域未完成密封</li>
+                <li><strong>材質變異（Material Variations）</strong>：膜材密度或厚度不均</li>
+                <li><strong>切割/孔洞（Cuts/Holes）</strong>：密封區的物理破損</li>
+              </ul>
+              <p>偵測能力主要取決於<strong>超音波物理特性</strong>和<strong>材料特性</strong>。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.3.4 -->
+      <div id="sec534">
+        <div class="section-title">5.3.4 Considerations and Challenges — 注意事項與挑戰</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>Two additional factors that need to be evaluated before an application can be considered are the package contents and the seal geometry. With package contents, many seal defects occur due to product inclusion in the seal area. Liquids can propagate an ultrasonic signal effectively from one material to another, which means the sound would transfer through a defect if liquid were present in the defect. The presence of liquids in the seal can produce test results similar to that of a good seal.</p>
+            <p>Seal geometry can also affect seal inspection. The ultrasonic signal is a focused beam of sound, and approximately 90% of the sound remains within the target focal point. Some sound energy resides outside the focal point. If a seal is located on the edge of the material and a scan is performed on the edge of the material, sound will travel around the edge and will be measured on the receiving side. The ultrasonic sensor must be within 2 mm to 3 mm inside the pouch to produce a useful ultrasonic signal response. As the sensor nears the edge of a seal, the ultrasonic signal is impacted by sound reflecting within the seal, as well as sound passing around a seal edge to reach the receiver. These two factors limit the ability of an ultrasound to scan near the edge of a seal.</p>
+          </div>
+          <div class="right-column">
+            <div class="key-point-box">
+              <h4>兩大挑戰</h4>
+              <p><strong>1. 液體夾帶（Product Inclusion）</strong></p>
+              <p>若產品液體被夾入密封區內（常見的密封缺陷原因），液體能有效傳導超音波訊號——即使密封不完整，訊號也可能看起來像良好密封 → <strong>偽陰性風險</strong></p>
+              <p><strong>2. 密封幾何形狀（Seal Geometry）</strong></p>
+              <p>感測器必須在袋子邊緣內側<strong>2-3 mm</strong>以上的範圍掃描，才能產生有效訊號。靠近邊緣時，音波會繞過密封邊緣直接到達接收端，干擾判讀。</p>
+            </div>
+            <div class="analogy-box">
+              <h4>比喻：水中傳音</h4>
+              <p>水的聲阻抗比空氣低得多，聲音在水中傳播比在空氣中容易。如果缺陷通道中充滿液體，超音波就像在水中傳播一樣順暢通過——儀器誤以為密封完整。這就是為什麼超音波對液體夾帶的密封缺陷有盲點。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 5.4 ===================== -->
+  <div class="chapter-section" id="sec54">
+    <div class="chapter-divider">
+      <div class="chapter-badge">5.4</div>
+      <div class="chapter-info">
+        <h2>X-Ray Detection X射線偵測</h2>
+        <p>Physical attribute evaluation for glass containers and assembled devices | p34–37</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text — English</div>
+          <p>X-ray detection may not be considered a leak test, as it neither quantitatively nor qualitatively evaluates leak rates or leakage; however, X-ray technologies support CCI evaluations in a variety of ways. Technological breakthroughs in manufacturing of less costly and more sensitive large detector arrays, as well as the increased acceptability of products exposed to X-ray radiation, have resulted in an increased potential for its use.</p>
+          <p>X-radiation is a form of electromagnetic radiation that has a wavelength in the range of 0.01 nm to 10 nm, corresponding to frequencies in the range of 30 PHz to 30 EHz and energies in the range of 100 eV to 100 keV. X-rays are shorter in wavelength than UV rays and longer than gamma rays. X-rays can be generated by an X-ray tube, a vacuum tube that uses a high voltage to accelerate the electrons released by a hot cathode to a high velocity. The high velocity electrons collide with a metal target, the anode, creating the X-rays.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <div class="note-box">
+            <h4>重要定位：X射線不是洩漏測試</h4>
+            <p>X射線偵測<strong>既不定量也不定性地評估洩漏率</strong>，它是<strong>支援性CCI評估工具</strong>，用來識別可能導致洩漏的<strong>物理缺陷</strong>（如玻璃裂縫、塞子配合不佳），而非直接量測洩漏。</p>
+            <p>實務上通常與真正的洩漏測試（如氦氣測試）<strong>配合使用</strong>。</p>
+          </div>
+          <div class="term-box">
+            <h4>X射線物理特性</h4>
+            <ul>
+              <li>波長：0.01–10 nm</li>
+              <li>頻率：30 PHz–30 EHz</li>
+              <li>能量：100 eV–100 keV</li>
+              <li>波長比UV短，比gamma射線長</li>
+              <li>產生方式：X射線管（高壓加速電子轟擊金屬陽極）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.4.1 -->
+      <div id="sec541">
+        <div class="section-title">5.4.1 Application — 應用</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>X-ray is applied to package systems to evaluate physical attributes of the test system that may not be visible to the naked eye or even to some visual inspection systems. For this reason, X-ray detection, in its current state, is best used as a supporting technology rather than a leak test, as a supplemental means of characterizing a package system with respect to CCI. Physical attributes may include defects conducive to leakage, such as poor stopper fit or cracks in a glass vial or syringe, but not necessarily the propensity for gas or liquid to leak, or flow, through such defects.</p>
+          </div>
+          <div class="right-column">
+            <div class="application-box">
+              <h4>X射線的應用定位</h4>
+              <p>X射線能偵測肉眼或一般視覺系統看不到的物理屬性缺陷：</p>
+              <ul>
+                <li>玻璃瓶/注射器裂縫（glass cracks）</li>
+                <li>塞子配合不佳（poor stopper fit）</li>
+                <li>鋁蓋下方的玻璃缺陷（defects under crimp）</li>
+                <li>組裝器械內部的功能缺陷</li>
+              </ul>
+              <p><strong>注意</strong>：X射線能顯示缺陷「存在」，但不能證明氣體或液體實際會從該缺陷洩漏。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.4.2 -->
+      <div id="sec542">
+        <div class="section-title">5.4.2 Test Equipment and Parameters — 設備與參數</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>For pharmaceutical CCI applications, an X-ray image can be produced in a number of ways. The first is a line scan technique (Figure 5.4.2-1), where the object to be inspected is slowly moved through a plane of X-ray radiation and the picture is created in a linear X-ray-sensitive diode array. This technique is called fan or line-beam X-ray scanning. The advantage is high resolution, although from a very low speed, and the scan speed defines the resolution.</p>
+            <p>A variation of this scanning technique known as X-ray tomography, or CT (computerized tomography) scan, employs the use of multiple X-ray scans at different angles to reconstruct a 3-D volume rendering of the external and, importantly, internal geometries of the sample. CT scans have the advantage of high resolution and complete 3-D rendering, enabling the operator to evaluate a single package from an array of angles. However, a single scan may span minutes, hours, or even days depending on instrument capability and resolution.</p>
+            <p>Another technique for X-ray analysis is the area X-ray camera, which works much like a simple photography camera. Here, the object will be penetrated by the radiation, attenuated by the object, and the result captured as a gray-scale image on a large X-ray-sensitive diode array (See Figure 5.4.2-2). This scanning process produces 2-D as well as 3-D pictures.</p>
+            <p>The area imaging technique is fast and reliable because the pictures are taken during a complete standstill of sample and beam. With this technology, a picture can be produced and evaluated within 100 ms or faster.</p>
+            <p>There are two types of X-ray tubes. The first is the closed-tube design, which produces radiation with a focus between 800 µm and 1500 µm. The most useful application field, as it pertains to CCI evaluation, is referred to as the microfocus tube design, which has a focus between 1 µm and 5 µm.</p>
+            <div class="figure-note">Figure 5.4.2-1: Principle of the Line Scan Imaging Technique</div>
+            <div class="figure-note">Figure 5.4.2-2: Principle of the Area Scan Imaging Technique</div>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>三種X射線成像技術比較</h4>
+              <table>
+                <tr>
+                  <th>技術</th>
+                  <th>原理</th>
+                  <th>速度</th>
+                  <th>解析度</th>
+                  <th>主要用途</th>
+                </tr>
+                <tr>
+                  <td><strong>線掃描<br>(Line Scan)</strong></td>
+                  <td>樣品緩慢通過X射線平面，線性二極管陣列逐行成像</td>
+                  <td>慢<br>（掃描速度決定解析度）</td>
+                  <td>高</td>
+                  <td>線上自動化檢查</td>
+                </tr>
+                <tr>
+                  <td><strong>CT掃描<br>(Tomography)</strong></td>
+                  <td>多角度掃描重建3D立體影像（錐形束）</td>
+                  <td>非常慢<br>（分鐘到數天）</td>
+                  <td>極高</td>
+                  <td>研究調查、離線抽樣</td>
+                </tr>
+                <tr>
+                  <td><strong>面掃描<br>(Area Scan)</strong></td>
+                  <td>類似相機快照，靜止拍攝灰階影像</td>
+                  <td>快<br>（&lt;100 ms）</td>
+                  <td>中高</td>
+                  <td>快速線上/離線檢查</td>
+                </tr>
+              </table>
+            </div>
+            <div class="formula-box">
+              <h4>X射線管類型</h4>
+              <p><strong>密封管（Closed-tube）</strong>：焦點 800–1500 µm，一般用途</p>
+              <p><strong>微焦管（Microfocus tube）</strong>：焦點 1–5 µm，CCI評估最佳選擇</p>
+              <p>焦點越小 → 空間解析度越高 → 能看到越細微的缺陷</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.4.3 -->
+      <div id="sec543">
+        <div class="section-title">5.4.3 Leak Detection — 洩漏偵測</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>X-ray technology can detect cracks in glass containers like syringes, vials, and cartridges if the spatial resolution of the separation of the glass edges is adequate. If this resolution is sufficient, X-ray can detect glass defects under the vial crimp due to its ability to easily penetrate aluminum. This ability also provides options to inspect assembled devices or syringes inside blisters or other secondary packs. For this reason, X-ray detection may be a valuable addition to an automated process or may be used as an offline tool to evaluate the physical characteristics behind a known leaking sample.</p>
+            <p>Figures 5.4.3-1 through 5.4.3-4 show defects identified by X-ray technology. Spotting the crack in Figure 5.4.3-2 strongly depends on the angle of the view. For an automated inspection, a minimum of six angles needs to be inspected. A more comprehensive CT scan may prove more valuable for nonautomated, offline sampling.</p>
+            <p>X-ray technology also has the ability to detect functional defects in pharmaceutical primary packages, especially in syringes. Many defects can be associated with prefilled syringes, ranging from imperfections in glueing the needle socket to defective luer locks around the syringe socket. Other defects can be associated with bent needles within the needle shield or cut-off needle tips that can cause package integrity issues or detrimental effects to the patient.</p>
+            <div class="figure-note">Figure 5.4.3-1: X-Ray Picture of a Large Crack in the Syringe Barrel Inside an Auto-Injector Device</div>
+            <div class="figure-note">Figure 5.4.3-2: X-Ray Picture of a Vial with a Glass Defect at the Rim under the Crimp</div>
+            <div class="figure-note">Figure 5.4.3-3: X-Ray Picture of an Ampoule Neck with a Glass Cut Detection</div>
+            <div class="figure-note">Figure 5.4.3-4: X-ray Picture of Needle Socket with the Glue made Visible</div>
+          </div>
+          <div class="right-column">
+            <div class="term-box">
+              <h4>X射線能偵測的玻璃/器械缺陷</h4>
+              <ul>
+                <li>注射器筒身大裂縫（syringe barrel cracks）</li>
+                <li>瓶口鋁蓋下方的玻璃缺陷（glass defects under crimp）</li>
+                <li>安瓿頸部玻璃切割缺陷</li>
+                <li>針座黏膠缺陷（needle socket gluing imperfections）</li>
+                <li>注射器Luer lock缺陷</li>
+                <li>針護罩內的彎針/截斷針頭</li>
+              </ul>
+            </div>
+            <div class="note-box">
+              <h4>鋁蓋穿透的特殊優勢</h4>
+              <p>X射線能輕易穿透鋁材，因此可以：</p>
+              <ul>
+                <li>看穿西林瓶鋁軋蓋，檢查瓶口的玻璃缺陷</li>
+                <li>在不拆包裝的情況下，檢查吸塑包裝（blister）或二次包裝內的器械</li>
+              </ul>
+              <p>自動化裂縫偵測需要<strong>最少6個角度</strong>的掃描，以避免裂縫方向導致的偽陰性。</p>
+            </div>
+            <div class="application-box">
+              <h4>調查工具的價值</h4>
+              <p>當已知某批次有洩漏問題時，X射線CT掃描是最有價值的調查工具——能在不破壞樣品的情況下，3D可視化洩漏源的物理原因（如塞子壓縮量、密封幾何形狀）。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5.4.4 -->
+      <div id="sec544">
+        <div class="section-title">5.4.4 Considerations and Challenges — 注意事項與挑戰</div>
+        <div class="two-column">
+          <div class="left-column">
+            <p>An increasingly popular application of X-ray technology in CCI occurs in the package design and development stages. X-ray might be used to support package component selection and assembly parameters, or even to evaluate the impact of storage conditions, such as frozen conditions, on sealing geometries. Low temperature storage is known to contribute to stopper shrinkage as a glass transition state (Tg) is reached; see Section 4.4. This effect may be characterized by X-ray imaging. These efforts are typically performed in tandem with a true leak test, such as helium leak detection or headspace analysis.</p>
+            <p>In a 2016 study, Mathaes et al. performed a comprehensive capping optimization study, evaluating correlations between capping settings, stopper compression, residual seal force, and CCI as tested by helium leak detection. CT scans using X-rays were used to both calculate stopper compression, a critical assembly parameter, and provide visualization of sealing geometries for a range of stoppers.</p>
+            <p>In a 2016 study by Nieto et al., CT scans were used to visually and geometrically explain a difference in leak test results between two stopper groups stored at frozen conditions. CT scans identified gaps between the flip-off cap and the elastomer, as well as the outer edge of the land seal in the group with fewer ideal leak results.</p>
+            <div class="figure-note">Figure 5.4.4-1: Comparative CT Scans of Four Different Elastomers Used to Calculate Stopper Compression and Fit; Stopper D Shows Signs of Dimpling</div>
+          </div>
+          <div class="right-column">
+            <div class="key-point-box">
+              <h4>包裝開發階段的X射線應用</h4>
+              <ul>
+                <li><strong>包材選擇</strong>：評估不同塞子的壓縮量與配合情況</li>
+                <li><strong>組裝參數優化</strong>：軋蓋（capping）設定對塞子壓縮的影響</li>
+                <li><strong>冷凍儲存影響</strong>：塞子因達到玻璃轉化溫度（Tg）而收縮，CT掃描可定量表徵此效應</li>
+                <li><strong>塞子凹陷（Dimpling）評估</strong>：不同彈性體的幾何形狀比較</li>
+              </ul>
+            </div>
+            <div class="term-box">
+              <h4>文獻案例</h4>
+              <p><strong>Mathaes et al. (2016)</strong>：軋蓋優化研究——CT掃描計算塞子壓縮量並可視化密封幾何，與氦氣洩漏測試結果相互驗證。</p>
+              <p><strong>Nieto et al. (2016)</strong>：冷凍儲存條件下，CT掃描解釋兩組塞子洩漏測試結果差異——發現翻蓋（flip-off cap）與彈性體之間有間隙，以及land seal外緣問題。</p>
+            </div>
+            <div class="analogy-box">
+              <h4>CDMO開發階段的典型X射線工作流程</h4>
+              <div class="mechanism-diagram">1. 候選包材篩選（3-4種塞子）
+        ↓
+2. CT掃描 → 計算各塞子壓縮量
+   + 可視化密封幾何
+        ↓
+3. 配合氦氣洩漏測試驗證完整性
+        ↓
+4. 評估冷凍/解凍循環後的塞子收縮
+   （使用CT掃描量化）
+        ↓
+5. 選定最佳包材 + 確定軋蓋參數</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SUMMARY TABLE ===================== -->
+  <div class="chapter-section" id="summary-table">
+    <div class="chapter-divider">
+      <div class="chapter-badge">&#9776;</div>
+      <div class="chapter-info">
+        <h2>Summary Comparison Table — 四大創新方法綜合比較</h2>
+        <p>Method | Principle | Application | LOD | Advantages | Limitations</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p style="margin-bottom:1rem; font-size:0.95rem; color:var(--text-medium);">This table summarizes all four innovative methods covered in Section 5 for quick reference and exam review. 本表整合Section 5四種方法，供快速對照與複習。</p>
+      <div style="overflow-x: auto;">
+        <table style="font-size:0.88rem; min-width:900px;">
+          <thead>
+            <tr>
+              <th style="min-width:120px;">Method 方法</th>
+              <th style="min-width:150px;">Principle 原理</th>
+              <th style="min-width:150px;">Primary Application 主要應用</th>
+              <th style="min-width:110px;">LOD 偵測極限</th>
+              <th style="min-width:160px;">Advantages 優點</th>
+              <th style="min-width:160px;">Limitations 限制</th>
+              <th style="min-width:120px;">CDMO Considerations CDMO考量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Helium Testing</strong><br>
+                <span style="color:#2c5282;">氦氣測試</span><br>
+                <span class="badge blue">CCIT</span> <span class="badge green">Deterministic</span>
+              </td>
+              <td>
+                充氦氣至SUS袋，真空艙室中質譜儀偵測逸出氦氣。<br>
+                <em>He-filled bag in vacuum chamber; mass spectrometer detects escaping He molecules.</em>
+              </td>
+              <td>
+                2-D/3-D SUS袋、複雜管路歧管系統（100+接點）<br>
+                <em>SUS bags, complex manifold systems with 100+ connection points</em>
+              </td>
+              <td>
+                <strong>10<sup>-8</sup>–10<sup>-4</sup> atm·mbar·L/s</strong><br>
+                能偵測 2 µm 針孔
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>決定性、非破壞性</li>
+                  <li>定量洩漏率</li>
+                  <li>半自動化可行</li>
+                  <li>可測整套組裝體</li>
+                  <li>可偵測多個缺陷</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>無法定位缺陷位置</li>
+                  <li>高透氦材質靈敏度低</li>
+                  <li>帶多孔膜的無菌連接器需排除</li>
+                  <li>需針對每種袋設計建立個別接受標準</li>
+                </ul>
+              </td>
+              <td>
+                適合SUS袋組裝放行測試；需要充足正/負控制樣品數量支持驗證。
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Optical Emission Spectroscopy</strong><br>
+                <span style="color:#2c5282;">光學發射光譜 (OES)</span><br>
+                <span class="badge blue">CCIT</span> <span class="badge green">Deterministic</span>
+              </td>
+              <td>
+                高真空下激發頭空間逸出氣體產生等離子體，分析特徵光譜線識別洩漏氣體成分。<br>
+                <em>Plasma excitation of headspace gases under high vacuum; characteristic emission lines identify leaking gases.</em>
+              </td>
+              <td>
+                玻璃瓶、預充注射器、卡匣、小袋；預充液體產品可同時測水與空氣洩漏<br>
+                <em>Vials, PFS, cartridges, pouches; simultaneous detection of water and air leaks in liquid-filled products</em>
+              </td>
+              <td>
+                取決於容器材料外氣率；含液體洩漏時LOD更佳（水蒸發效應）
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>不需示蹤氣體</li>
+                  <li>分子特徵幫助定位洩漏源</li>
+                  <li>降低偽陽性</li>
+                  <li>玻璃產品可批次測試</li>
+                  <li>決定性、非破壞性</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>大洩漏可能產生偽陰性</li>
+                  <li>大分子藥物可能堵塞洩漏通道</li>
+                  <li>彈性包裝/活動部件需特殊艙室設計</li>
+                  <li>高外氣率材質（如IV袋）干擾測試</li>
+                  <li>有毒藥物安全風險</li>
+                </ul>
+              </td>
+              <td>
+                玻璃容器首選；每換藥品須重新確效；IV袋等軟性容器需評估可行性。
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Airborne Ultrasound</strong><br>
+                <span style="color:#2c5282;">空氣超音波</span><br>
+                <span class="badge yellow">Seal Integrity</span> <span class="badge green">Nondestructive</span>
+              </td>
+              <td>
+                穿透傳輸技術：超音波穿過密封材料，接收端測量訊號強度，訊號衰減程度反映密封品質。<br>
+                <em>Through-transmission: ultrasound propagates through seal; signal attenuation on receiving side reflects seal quality.</em>
+              </td>
+              <td>
+                多孔性無菌屏障包裝（Tyvek袋）、軟性薄膜包裝密封品質線上檢測<br>
+                <em>Porous sterile barrier packaging, flexible pouch seals — online seal inspection</em>
+              </td>
+              <td>
+                可偵測冷封、通道缺陷、皺褶、脫層、非黏合區域（&ge;1 mm的污染/空洞）
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>唯一適用多孔包裝的方法</li>
+                  <li>線上即時檢測</li>
+                  <li>定量結果（訊號強度）</li>
+                  <li>可視化光聲影像</li>
+                  <li>非破壞性</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>液體夾帶密封可能誤判通過</li>
+                  <li>密封邊緣2-3 mm範圍內無法有效掃描</li>
+                  <li>不能用於剛性容器</li>
+                  <li>不評估氣體洩漏率</li>
+                </ul>
+              </td>
+              <td>
+                Tyvek袋與軟性包裝密封確認首選；需在封口機後立即整合線上掃描；液體夾帶風險需在工藝設計中控制。
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>X-Ray Detection</strong><br>
+                <span style="color:#2c5282;">X射線偵測</span><br>
+                <span class="badge purple">Supporting CCI</span> <span class="badge green">Nondestructive</span>
+              </td>
+              <td>
+                電磁輻射穿透容器，不同密度材料衰減程度不同，產生灰階影像，顯示內部物理缺陷。<br>
+                <em>EM radiation penetrates container; differential attenuation creates grayscale images revealing internal physical defects.</em>
+              </td>
+              <td>
+                玻璃容器裂縫/缺陷、器械內部功能缺陷（注射器、auto-injector）、包裝開發階段塞子壓縮量評估<br>
+                <em>Glass cracks, device functional defects (syringe/auto-injector), stopper compression in package development</em>
+              </td>
+              <td>
+                空間解析度取決於X射線管焦點尺寸；微焦管（1-5 µm）解析度最高；裂縫偵測需至少6個角度
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>能穿透鋁蓋檢查瓶口缺陷</li>
+                  <li>能在不拆包裝下檢查組裝器械</li>
+                  <li>CT掃描提供3D可視化</li>
+                  <li>包裝開發強大工具</li>
+                  <li>面掃描速度快（&lt;100 ms）</li>
+                </ul>
+              </td>
+              <td>
+                <ul style="padding-left:1rem; margin:0;">
+                  <li>不是真正的洩漏測試（無洩漏率數值）</li>
+                  <li>CT掃描速度慢（不適合批量檢測）</li>
+                  <li>需配合洩漏測試使用</li>
+                  <li>放射性曝露考量</li>
+                  <li>裂縫偵測角度依賴性高</li>
+                </ul>
+              </td>
+              <td>
+                包裝開發/調查的輔助工具；自動化線上檢測用面掃描；異常調查用CT掃描；需與氦氣測試或頭空間分析配套使用。
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="two-column" style="margin-top:1.5rem;">
+        <div class="left-column">
+          <h3>Method Selection Decision Guide</h3>
+          <table>
+            <tr>
+              <th>Package/Scenario</th>
+              <th>Recommended Method(s)</th>
+            </tr>
+            <tr><td>SUS bag with manifold, 100+ joints</td><td>Helium Testing (primary)</td></tr>
+            <tr><td>Glass vials — routine release</td><td>OES or Headspace Analysis</td></tr>
+            <tr><td>Prefilled syringes (liquid)</td><td>OES (high sensitivity for liquid leaks)</td></tr>
+            <tr><td>Tyvek / porous sterile pouch</td><td>Airborne Ultrasound (only viable option)</td></tr>
+            <tr><td>Flexible non-porous pouch</td><td>Airborne Ultrasound + vacuum/tracer gas</td></tr>
+            <tr><td>Glass vial — crack investigation</td><td>X-Ray (supporting) + He leak test</td></tr>
+            <tr><td>Auto-injector internal defect check</td><td>X-Ray detection</td></tr>
+            <tr><td>Package development, stopper selection</td><td>X-Ray CT + He leak test</td></tr>
+            <tr><td>Frozen storage impact study</td><td>X-Ray CT (stopper shrinkage, Tg)</td></tr>
+          </table>
+        </div>
+        <div class="right-column">
+          <h3>方法選擇決策指引</h3>
+          <table>
+            <tr>
+              <th>包裝/場景</th>
+              <th>建議方法</th>
+            </tr>
+            <tr><td>SUS袋歧管系統（100+接點）</td><td>氦氣測試（主要方法）</td></tr>
+            <tr><td>玻璃瓶 — 常規放行</td><td>OES 或 頭空間分析</td></tr>
+            <tr><td>預充注射器（液體）</td><td>OES（對液體洩漏靈敏度高）</td></tr>
+            <tr><td>Tyvek / 多孔性無菌袋</td><td>空氣超音波（唯一可行選項）</td></tr>
+            <tr><td>非多孔軟性包裝</td><td>空氣超音波 + 真空衰減/示蹤氣體</td></tr>
+            <tr><td>玻璃瓶裂縫調查</td><td>X射線（輔助）+ 氦氣洩漏測試</td></tr>
+            <tr><td>Auto-injector內部缺陷檢查</td><td>X射線偵測</td></tr>
+            <tr><td>包裝開發、塞子選擇</td><td>X射線CT + 氦氣洩漏測試</td></tr>
+            <tr><td>冷凍儲存影響研究</td><td>X射線CT（塞子收縮、Tg）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quick-reference key points box -->
+      <div class="key-point-box" style="margin-top:1.5rem;">
+        <h4>Section 5 核心記憶點 — Key Takeaways for Exam &amp; Audit Readiness</h4>
+        <div class="two-column" style="margin-bottom:0;">
+          <div>
+            <ul>
+              <li><strong>He testing</strong>: deterministic + nondestructive; mass spectrometer detects He; 2 µm LOD; cannot locate defect.</li>
+              <li><strong>OES</strong>: no tracer gas needed; uses native headspace gas; molecular signature helps troubleshoot; large leak = false-negative risk.</li>
+              <li><strong>Airborne Ultrasound</strong>: only method for porous packaging; liquid in seal = false-negative risk; ±2–3 mm edge limitation.</li>
+              <li><strong>X-ray</strong>: NOT a leak test — supporting CCI tool; CT = 3D, slow; area scan = fast (&lt;100 ms); microfocus tube = best CCI resolution.</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li><strong>氦氣測試</strong>：決定性非破壞性；質譜儀偵測；能測整套組裝；無法定位缺陷位置。</li>
+              <li><strong>OES</strong>：不需示蹤氣體；用頭空間原有氣體；大洩漏有偽陰性風險；含液體時LOD更佳。</li>
+              <li><strong>空氣超音波</strong>：多孔包裝唯一選擇；液體夾帶=偽陰性；密封邊緣2-3mm盲區。</li>
+              <li><strong>X射線</strong>：不是洩漏測試，是支援性工具；CT提供3D但很慢；面掃描快速；用於玻璃缺陷、器械內部及包裝開發。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CDMO VALIDATION STRATEGY ===================== -->
+  <div class="chapter-section" id="cdmo-validation">
+    <div class="chapter-divider">
+      <div class="chapter-badge">&#10003;</div>
+      <div class="chapter-info">
+        <h2>CDMO Validation Strategy &amp; Regulatory Considerations — CDMO驗證策略與法規考量</h2>
+        <p>Practical guidance for implementing innovative CCI methods in a pharmaceutical contract manufacturing context</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Validation Framework for Innovative CCI Methods</div>
+          <h4>General Validation Requirements</h4>
+          <p>All CCIT methods, whether deterministic or probabilistic, require a documented method validation package before use in GMP release or in-process testing. For the four innovative methods in Section 5, the following validation elements are universally applicable:</p>
+          <ol>
+            <li><strong>Sensitivity / LOD determination</strong> — establish the smallest detectable defect using positive controls with known defect sizes (e.g., laser-drilled pinholes of 2 µm, 5 µm, 10 µm).</li>
+            <li><strong>Specificity</strong> — demonstrate that the test discriminates between defective and nondefective units with statistical confidence (false positive rate and false negative rate).</li>
+            <li><strong>Repeatability and reproducibility</strong> — run the same sample multiple times and across different operators/instruments to confirm consistency.</li>
+            <li><strong>Robustness</strong> — evaluate the effect of small but deliberate changes in key parameters (pressure, temperature, test time) on test outcome.</li>
+            <li><strong>Calibration traceability</strong> — all reference leaks and calibrated standards must be traceable to national or international standards.</li>
+          </ol>
+          <h4>Reference Standards</h4>
+          <ul>
+            <li>USP &lt;1207&gt; Package Integrity Evaluation — Sterile Products</li>
+            <li>ASTM F2338 (vacuum decay), F2981 (OES), F3287 (ultrasound)</li>
+            <li>ISO 11607 (sterile barrier systems)</li>
+            <li>PDA TR27 (pharmaceutical package integrity)</li>
+            <li>FDA Guidance: Container Closure Integrity Testing in lieu of Sterility Testing</li>
+          </ul>
+          <h4>Method Qualification vs. Validation</h4>
+          <p>For new container/closure systems introduced by a CDMO client, a full method <em>validation</em> is expected. For minor changes to an already-validated container (e.g., different vial size but same material), a method <em>qualification</em> or verification study may be sufficient, subject to risk assessment and regulatory strategy.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 — CDMO驗證實務</div>
+          <div class="term-box">
+            <h4>驗證套件必備要素</h4>
+            <ul>
+              <li><strong>靈敏度/LOD確立</strong>：使用已知缺陷尺寸的陽性控制樣品（如雷射鑽孔），建立最小可偵測缺陷</li>
+              <li><strong>特異性</strong>：統計學上區分有缺陷與無缺陷樣品（偽陽性率與偽陰性率）</li>
+              <li><strong>重複性與再現性</strong>：同樣品多次測試，跨操作員/儀器確認一致性</li>
+              <li><strong>穩健性</strong>：關鍵參數小幅變動對結果的影響評估</li>
+              <li><strong>校準溯源性</strong>：所有參考洩漏件必須溯源至國家或國際標準</li>
+            </ul>
+          </div>
+          <div class="application-box">
+            <h4>各方法的驗證特殊考量</h4>
+            <table style="font-size:0.85rem;">
+              <tr><th>方法</th><th>特殊驗證重點</th></tr>
+              <tr><td>氦氣測試</td><td>每種SUS袋設計個別建立接受標準；充足的陽性/陰性控制數量；背景洩漏率表徵</td></tr>
+              <tr><td>OES</td><td>針對特定藥物確效（大分子藥物堵塞風險）；艙室設計驗證；外氣率評估</td></tr>
+              <tr><td>空氣超音波</td><td>密封幾何對訊號的影響；液體夾帶風險評估；線上整合確認</td></tr>
+              <tr><td>X射線</td><td>掃描角度充分性（&ge;6角度）；解析度確認；與洩漏測試的配合驗證</td></tr>
+            </table>
+          </div>
+          <div class="note-box">
+            <h4>法規提交策略</h4>
+            <p>當CCIT方法寫入CMC（Chemistry, Manufacturing and Controls）章節時，申請人需提供：</p>
+            <ul>
+              <li>方法描述與原理</li>
+              <li>驗證數據摘要（LOD、靈敏度、特異性）</li>
+              <li>正控制（positive control）缺陷尺寸的科學依據</li>
+              <li>日常監控計劃（ongoing monitoring）</li>
+            </ul>
+            <p>FDA與EMA對「確定性方法（deterministic methods）」有更強的偏好，這使得氦氣測試和OES在法規審查中具備優勢。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <div class="left-column">
+          <h4>Common Audit Questions for Innovative CCI Methods</h4>
+          <ul>
+            <li>How was the positive control defect size selected, and what is the scientific rationale for it representing a relevant microbiological ingress risk?</li>
+            <li>What is the background leak rate of a nondefective assembly, and how does it compare to the defective assembly signal?</li>
+            <li>How is instrument calibration verified before each production test run?</li>
+            <li>What is the frequency of requalification when container/closure components change?</li>
+            <li>How are out-of-specification (OOS) CCIT results investigated and dispositioned?</li>
+            <li>Has the method been qualified for the specific drug product formulation (especially for OES with large-molecule biologics)?</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <div class="analogy-box">
+            <h4>查廠常見問題 — 預備答案要點</h4>
+            <ul>
+              <li><strong>陽性控制缺陷尺寸選擇依據</strong>：通常基於微生物進入風險研究（microbial ingress studies）或文獻數據，確認該尺寸與無菌性風險相關</li>
+              <li><strong>背景洩漏率 vs. 缺陷訊號</strong>：需有統計數據顯示兩者間有足夠的分離度（signal separation）</li>
+              <li><strong>儀器校準頻率</strong>：每次生產測試前應確認校準狀態，並有記錄</li>
+              <li><strong>重新確效觸發條件</strong>：容器/密封元件變更、供應商更換、設備重大維修後</li>
+              <li><strong>OOS CCIT處理</strong>：需有書面OOS調查程序，明確定義何時隔離批次、何時進行額外測試</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+  <p>PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</p>
+  <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">Section 3: Innovative Methods for Existing Technologies (5.0–5.4) | Pages 26–37 | SterileGMP Knowledge Hub</p>
+  <p style="font-size:0.8rem; opacity:0.6; margin-top:0.25rem;">Licensed content — Educational use only</p>
+</div>
+
+<!-- Section navigation hint -->
+<div style="background:#f0f2f5; text-align:center; padding:0.75rem; font-size:0.82rem; color:#4a5568;">
+  <strong>TR86 Section Navigation:</strong>
+  &nbsp;
+  <a href="../sections/section-01-background.html" style="color:#3498db; text-decoration:none;">&#8592; Section 1: Background</a>
+  &nbsp;|&nbsp;
+  <a href="../sections/section-02-conventional-methods.html" style="color:#3498db; text-decoration:none;">Section 2: Conventional Methods</a>
+  &nbsp;|&nbsp;
+  <span style="color:#1e3a5f; font-weight:600;">Section 3: Innovative Methods (current)</span>
+  &nbsp;|&nbsp;
+  <a href="../sections/section-04-flexible-containers.html" style="color:#3498db; text-decoration:none;">Section 4: Flexible Containers &#8594;</a>
+  &nbsp;|&nbsp;
+  <a href="../output/TR86-Complete.html" style="color:#3498db; text-decoration:none;">Full Document</a>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+<!-- End of Section 3: Innovative Methods for Existing Technologies (5.0–5.4) -->
+<!-- PDA TR86 (2021) | SterileGMP Knowledge Hub | Generated for educational use -->
+</body>
+</html>
