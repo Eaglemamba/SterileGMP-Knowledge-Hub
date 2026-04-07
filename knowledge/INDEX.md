@@ -1247,6 +1247,43 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISO/ISO-13408-7-Complete.md
+**Report:** ISO 13408-7:2012 — Aseptic Processing of Health Care Products, Part 7: Alternative Processes for Medical Devices and Combination Products
+**Pages:** piv–p19 | **Sections:** 7
+
+**Covers questions about:**
+- When to apply Part 7 instead of ISO 13408-1: two triggering conditions (terminal sterilization not possible AND standard media fill per 13408-1 not feasible)
+- What qualifies as a "combination product" under ISO 13408-7: device + drug/biologic combinations that cannot be processed with standard media fill
+- How to build an Aseptic Process Definition (APD) for medical devices: required elements, risk management lifecycle, FIH milestone documentation
+- Surrogate product selection criteria: must provide equivalent or greater challenge to asepsis than actual product; documented justification required
+- Small batch rule (< 5,000 units): simulation count must equal or exceed maximum batch size; 100% sample testing required
+- Process simulation lifecycle: FIH (first-in-human) before clinical trials, iterative updates at each clinical phase, commercial PPQ three-run program
+- Dual-attempt documentation: when a simulation attempt is abandoned mid-run, the original interruption plus restart must both be documented
+- FMEA (Failure Mode and Effects Analysis) as the mandatory risk assessment tool for ISO 13408-7
+- RPN (Risk Priority Number) calculation: Severity × Occurrence × Detection (1–10 each); risk acceptance threshold RPN ≤ 100
+- How RABS technology reduces FMEA risk scores: automated/robotic operations lower Occurrence and Severity scores, driving RPN below threshold
+- Sample selection strategy for simulations: how to achieve representative selection when using subset of process units
+- Investigation framework for positive results in process simulation: immediate halt, root cause, corrective action, requalification required
+- Sterility testing for viable-cell products (living cell therapies, CAR-T, etc.): rapid microbiological methods (RMM) as alternative to compendial sterility test
+- RMM equivalence requirements: sensitivity, specificity, reproducibility demonstrated versus compendial method
+- In situ sterility testing methodology and when it applies
+- Elution/flush sterility testing: last-resort method, requires validation of flush process for residual media removal
+- Annex B: actual product testing and surrogate product decision framework
+- Annex C: testing option selection matrix (Table C.1) — direct immersion vs. in situ vs. elution/flush
+
+**Key terms:** alternative aseptic process, aseptic process definition (APD), aseptic process simulation (APS), surrogate product, combination product, medical device, viable-cell product, cell therapy, CAR-T, FMEA (failure mode and effects analysis), RPN (risk priority number), severity, occurrence, detection, risk acceptance threshold, first-in-human (FIH), clinical trial phase, process performance qualification (PPQ), small batch rule, 100% sample testing, dual-attempt documentation, RABS (restricted access barrier system), rapid microbiological method (RMM), direct immersion, in situ testing, elution flush testing, sterility test, Annex A FMEA case study, Annex B surrogate product decision, Annex C testing option matrix, ISO 13408-1, ISO 13408-7:2012
+
+**Sections:**
+- Section 0: Foreword, Introduction & Scope (why Part 7 exists; two triggering conditions; document structure)
+- Section 1: Terms, Quality System & Aseptic Process Definition (Clauses 2–5: 4 key terms; quality system elements; APD requirements; risk management lifecycle with FIH milestone)
+- Section 2: Manufacturing Environment, Equipment, Personnel & Product Manufacture (Clauses 6–9: all reference ISO 13408-1 clauses; commentary on what those clauses require)
+- Section 3: Process Simulation (Clause 10: simulation procedures, strategy development, lifecycle stages, surrogate product criteria, small batch rule, dual-attempt documentation, IPQ, periodic requalification, subset failure investigation)
+- Section 4: Test for Sterility (Clause 11: general requirements including viable-cell additions, RMM framework, positive result investigation)
+- Section 5: Annex A — Risk Assessment & FMEA Case Study (FMEA method, RPN calculation, risk acceptance RPN ≤ 100, RABS risk reduction, full Table A.1 summary, clinical vs. commercial simulation requirements)
+- Section 6: Annex B & C — Sample Selection, Testing Options & Bibliography (actual product vs. surrogate decision tree, Table C.1 testing option considerations, cross-standard ecosystem)
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
@@ -1285,7 +1322,7 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Glove integrity testing, pressure decay test, glove port design, half-suit contamination risk / 手套完整性測試、壓力衰減法、手套端口設計、半身服污染風險 | ISO-13408-6 |
 | RTP rapid transfer port, airlock, double-door autoclave, material transfer isolator / 快速傳遞口、氣鎖、雙門滅菌器、隔離器物料傳遞 | ISO-13408-6 |
 | ISO 13408-6 Amendment 1 2013 changes, should vs shall, bioburden biocontamination terminology / ISO 13408-6修正案1變更清單、術語更正、強制性要求升級 | ISO-13408-6 |
-| Aseptic processing for medical devices combination products, alternative media fill, surrogate product simulation / 醫療器械組合產品無菌製程、替代培養基充填、代替品模擬試驗 | ISO-13408 Part 7 |
+| Aseptic processing for medical devices combination products, alternative media fill, surrogate product simulation, FMEA RPN for aseptic process, small batch rule simulation, viable cell product sterility test, CAR-T cell therapy sterility, RMM rapid microbiological method, elution flush in situ sterility testing / 醫療器械組合產品無菌製程、替代培養基充填、代替品模擬試驗、無菌製程FMEA風險評估、RPN計算、小批量規則、活細胞產品無菌測試、快速微生物檢驗法 | ISO-13408-7 |
 | Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
 | Media fill, APS, aseptic simulation / 培養基充填、無菌製程模擬 | TR22 |
 | Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
