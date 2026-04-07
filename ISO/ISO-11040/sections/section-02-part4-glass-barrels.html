@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 11040 Part 4: Glass Barrels for Injectables</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box.analogy { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISO 11040 Part 4: Glass Barrels for Injectables and Sterilized Subassembled Syringes Ready for Filling</h1>
+    <div class="subtitle">可注射藥品玻璃注射管筒及預填充注射器預組裝件規範</div>
+    <div class="page-info">ISO 11040-4:2015 | Third Edition</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解玻璃注射管筒的設計尺寸要求，包括Luer錐頭（Luer cone）和Luer鎖定（Luer lock）設計</li>
+        <li>掌握預組裝注射器（Sterilized Subassembled Syringe Ready for Filling）的組成、性能要求及無菌保證水平（SAL 10⁻⁶）</li>
+        <li>了解玻璃注射管筒的材料要求（Type I玻璃）和機械性能測試方法</li>
+        <li>認識ISO 11040-4在CDMO填充作業中的質量體系要求</li>
+    </ul>
+</div>
+
+<div class="section-title">Part 4.1–4.3 — General Requirements: Quality Systems, Testing, Documentation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>4 General Requirements</h3>
+        <p>4.1 <strong>Quality systems:</strong> Activities within this part of ISO 11040 shall be carried out within a <span class="key-term">formal quality system</span>. NOTE: ISO 15378 contains requirements for a suitable quality management system for primary packaging materials for medicinal products.</p>
+
+        <p>4.2 <strong>Testing:</strong></p>
+        <ul>
+            <li>Gauge repeatability and reproducibility (GR&amp;R) ≤ 20% of tolerance range for non-destructive tests; ≤ 30% for destructive tests, covering ±2 standard deviations.</li>
+            <li>Sampling plans shall be based on statistically valid rationale (e.g. ISO 2859-1, ISO 3951).</li>
+            <li>Testing at ambient laboratory conditions unless agreed otherwise.</li>
+        </ul>
+
+        <p>4.3 <strong>Documentation:</strong></p>
+        <ul>
+            <li>All compliance demonstrations shall be documented.</li>
+            <li>Documentation retained considering regulatory requirements, expiration date, and traceability.</li>
+            <li>Electronic records, signatures, and handwritten signatures on electronic records shall be reliable.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>量具重複性與再現性 (GR&amp;R, Gauge Repeatability and Reproducibility)：</strong>衡量測量系統誤差佔公差範圍百分比的指標。GR&amp;R ≤ 20%意味著測量工具的不確定性不超過公差的20%，確保測量結果能真實反映產品品質。這是MSA（量測系統分析）的核心概念。</p>
+            <p><strong>ISO 15378：</strong>專為藥品初級包裝材料設計的質量管理體系標準，是在ISO 9001基礎上加入GMP要求的特定版本。這意味著玻璃管筒供應商不僅需要ISO 9001認證，更理想的是符合ISO 15378。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>GR&amp;R的實際意義：</strong>若玻璃管筒外徑公差為±0.1 mm（範圍0.2 mm），測量儀器的GR&amp;R需 ≤ 0.04 mm（20%×0.2）。超標的GR&amp;R意味著你無法區分「真實的產品變異」和「測量誤差」，導致誤放行或誤退貨。</p>
+            <p><strong>電子記錄可靠性：</strong>直接引用了21 CFR Part 11的精神，強調電子記錄和電子簽名的可信性。這對於在無紙化生產環境中使用ERP/MES系統的CDMO至關重要。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的玻璃注射管筒供應商使用一台GR&amp;R為35%的卡尺測量管筒外徑，這符合ISO 11040-4的要求嗎？應該採取什麼行動？</li>
+                <li>為什麼破壞性測試允許較高的GR&amp;R（30% vs 20%）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="section-title">Part 4 Clause 5 — Syringe Barrel: Dimensions and Performance</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>5 Syringe Barrel</h3>
+        <p>5.1 <strong>Design including dimensions:</strong> Dimensions per Figure 1 and Table 1. Head design agreed between manufacturer and customer. Luer and Luer lock design per ISO 594-1, ISO 594-2, and ISO 80369-1.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr><th>Nominal Volume</th><th>d1 (outer dia.)</th><th>d2 (inner dia.)</th><th>Total Length (l)</th></tr>
+            <tr><td>0.5 ml</td><td>6.85 mm</td><td>4.65 ±0.1 mm</td><td>57.5 mm</td></tr>
+            <tr><td>1 ml (long)</td><td>8.15 mm</td><td>6.35 mm</td><td>64.0 ±0.5 mm</td></tr>
+            <tr><td>1 ml (short)</td><td>10.85 ±0.1 mm</td><td>8.65 mm</td><td>46.7 mm</td></tr>
+            <tr><td>2 ml</td><td>10.85 mm</td><td>8.65 mm</td><td>60.0 mm</td></tr>
+            <tr><td>5 ml</td><td>14.45 mm</td><td>11.85 mm</td><td>80.0 ±0.75 mm</td></tr>
+            <tr><td>10 ml</td><td>17.05 ±0.2 mm</td><td>14.25 mm</td><td>100.5 ±1.0 mm</td></tr>
+            <tr><td>20 ml</td><td>22.05 mm</td><td>19.05 mm</td><td>114.9 ±1.0 mm</td></tr>
+        </table>
+        </div>
+
+        <p>5.2 <strong>Functional testing of Luer connection:</strong> Performance demonstrated using plastic female reference connectors (not steel) compliant with ISO 594-1, as glass tip has a "wavy" surface from forming process.</p>
+
+        <p>5.3 <strong>Material:</strong> Colourless (cl) or amber (br) glass, <span class="key-term">hydrolytic resistance grain class HGA 1 per ISO 720:1985</span>. Also covered by Ph. Eur. 3.2.1 (Type I glass), USP &lt;660&gt;, JP 7.01.</p>
+
+        <p>5.4 <strong>Performance requirements:</strong></p>
+        <ul>
+            <li>5.4.1 Hydrolytic resistance: HC 1 per ISO 4802-1 or ISO 4802-2</li>
+            <li>5.4.2 Annealing quality: Residual stress ≤ 40 nm/mm optical retardation</li>
+            <li>5.4.3 Inner surface lubrication: If lubricated, per Clause 6.5.1.2</li>
+            <li>5.4.4 Flange breakage resistance: Limits per manufacturer-customer agreement; tested per Annex C.1</li>
+            <li>5.4.5 Luer cone breakage resistance: Limits per agreement; tested per Annex C.2</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Luer錐頭系統 (Luer Cone / Luer Lock)：</strong>6%錐度的標準連接系統，允許注射管筒與針頭、靜脈輸液系統等設備連接。Luer（無鎖定）靠摩擦力固定；Luer Lock（帶鎖定）有螺旋鎖定機構，更安全。ISO 80369-7是最新的國際標準，逐步取代舊的ISO 594系列。</p>
+            <p><strong>Type I玻璃（一類玻璃）：</strong>最高等級的藥用玻璃，具有最強的水解抗性（HGA 1）。適用於幾乎所有注射劑，特別是pH敏感或容易與玻璃反應的藥品。Type II玻璃僅適用於水溶液，Type III僅適用於固體製劑。預填充注射器必須使用Type I玻璃。</p>
+            <p><strong>琥珀色玻璃 (Amber Glass)：</strong>通過添加氧化鐵和硫化亞鐵製成，能阻擋290-450 nm波長的光線，保護光敏感藥品（如某些生物製劑、維生素）。透明玻璃適用於需要直接觀察藥液外觀的產品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>玻璃注射管筒的Luer錐頭就像電源插座的標準化接口——全球統一的6%錐度設計確保不同廠家的針頭都能與注射管筒可靠連接，而不需要適配器。但玻璃的成型工藝不像注塑那麼精密，表面有「波浪紋」，所以必須用塑膠（而非金屬）測試件來評估功能性，就像用柔性接口測試而非剛性標準件。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>凸緣斷裂抗力 (Flange Breakage Resistance)：</strong>玻璃注射管筒的凸緣（Finger Flange）是握持和操作的關鍵部位，尤其在自動注射裝置（Auto-injector）中承受更大的機械應力。ISO 11040-4要求進行凸緣斷裂測試，但具體限值由製造商和客戶協商——這意味著在CDMO引入新藥品包裝時，必須明確定義這個關鍵機械性能指標。</p>
+            <p><strong>內表面矽化 (Inner Surface Siliconization)：</strong>在玻璃內表面塗覆微量矽油以降低活塞塞的滑動阻力。矽化量過少→活塞塞難以推動（Break-Loose Force過高）；矽化量過多→矽油可能遷移入藥品，需符合藥典對矽油的限量要求。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+凸緣斷裂抗力測試 (Annex C.1)：
+  施加彎曲力矩至凸緣直至斷裂
+  記錄斷裂力（N）
+  作為生產監控和設計驗證基準
+
+Luer錐頭功能測試（用塑膠參考接頭）：
+  液體洩漏測試
+  分離力測試（針頭拔出力）
+  旋轉力矩測試（Luer lock）
+  → 不使用金屬參考接頭（玻璃表面特性不兼容）
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</html>
+            <ol>
+                <li>一個CDMO客戶要求將其生物製劑從玻璃小瓶（Vial）轉移到預填充注射器，需要選擇1 ml long還是1 ml short規格？考量因素有哪些？</li>
+                <li>為什麼ISO 11040-4要求凸緣斷裂測試，但沒有規定具體的通過/失敗限值？這種「限值由雙方協商」的設計有什麼優缺點？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="section-title">Part 4 Clause 6 — Sterilized Subassembled Syringes Ready for Filling</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>6.1 General</h3>
+        <p>6.1.2 Properties to consider when selecting raw materials/components and design:</p>
+        <ul>
+            <li>a) microbial barrier</li>
+            <li>b) biocompatibility and toxicological attributes</li>
+            <li>c) physical and chemical properties</li>
+            <li>d) ability for sterilization and compatibility with intended sterilization process</li>
+            <li>e) maintenance of sterility of the subassembly</li>
+            <li>f) shelf-life limitations</li>
+            <li>g) functionality for intended use</li>
+            <li>h) robustness of closure system during transport</li>
+        </ul>
+
+        <h3>6.2 Sterility</h3>
+        <p>Sterilized subassembled syringes shall have been sterilized to a <span class="key-term">sterility assurance level (SAL) of 10⁻⁶</span> using a validated sterilization method (ISO 11135-1 for EO, ISO 17665-1 for moist heat, ISO 11137 for radiation, or ISO 14937 for other). Sterility testing per Ph. Eur. 2.6.1, USP &lt;71&gt;, JP 4.06.</p>
+
+        <h3>6.3 Pyrogenicity/Endotoxins</h3>
+        <p>Limit for syringes: <span class="key-term">&lt;0.25 EU/ml</span> based on nominal volume. Sub-visible particles: ≥10 µm: ≤600 per syringe; ≥25 µm: ≤60 per syringe. Three log endotoxin reduction validation required.</p>
+
+        <h3>6.4 Particles</h3>
+        <p>Sub-visible particle limits: ≥10 µm: 600 max. per syringe; ≥25 µm: 60 max. per syringe. (10% of USP &lt;788&gt; limit for small volume parenterals).</p>
+
+        <h3>6.5.1 Barrel (Inner Surface Lubrication)</h3>
+        <p>Lubrication (typically <span class="key-term">siliconization</span>) applied to improve gliding properties. If silicone oil used, attention to pharmacopoeia requirements. Limit values by manufacturer-customer agreement.</p>
+
+        <h3>6.5.2 Needle (for Staked Needle Syringes)</h3>
+        <p>Material/dimensions per ISO 9626; bevel, dimensions and bond per ISO 7864. Needle surface treated with lubricant (e.g. silicone oil). Needle penetration force limits via risk assessment and usability engineering.</p>
+
+        <h3>6.5.3 Closure System</h3>
+        <p>Material contacting injectable product per ISO 8871-1. Closure system shall allow sterilization. Liquid leakage resistance tested per Annex G.2. Tip caps/needle shields: removal torque and pull-off force agreed by manufacturer and customer.</p>
+
+        <h3>6.6 Closure System Barrel Integrity</h3>
+        <p>Components shall provide sealing during filling, applicable final sterilizations (moist heat autoclaving), and throughout storage and transport, also through different external air pressures. Dye solution tightness test (Annex H) recommended for design development.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>預組裝注射器 (Sterilized Subassembled Syringe Ready for Filling)：</strong>這是現代CDMO最常使用的注射器形式——由注射管筒廠商預先完成組裝（含密封件）、清洗除熱原、內表面矽化、放入巢穴（Nest）和托盤（Tub），再用EO或其他方法滅菌後，以無菌狀態交付給藥品製造商直接在無菌填充線上填藥。</p>
+            <p><strong>無菌保證水平 10⁻⁶ (SAL of 10⁻⁶)：</strong>每百萬個注射器中最多允許一個非無菌單位。這是無菌包材的行業標準SAL，透過驗證的滅菌工藝（EO/輻射/蒸汽）達成，而非依賴滅菌後的無菌測試（USP &lt;71&gt;）。</p>
+            <p><strong>內毒素限值 0.25 EU/ml：</strong>基於USP注射用水的內毒素標準（0.25 EU/ml）衍生而來。空注射器的內毒素限值要求注射器殘留的內毒素不超過藥品注射後計算得到的允許劑量——三個對數級（3-log）的內毒素去除驗證是市場主流要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>預組裝注射器就像超市賣的預切好的「即炒蔬菜包」——蔬菜廠商已完成洗滌、切割、包裝和殺菌，廚師（藥品製造商）只需直接下鍋炒（填充藥品）。這比自己從頭清洗蔬菜（自行處理散裝注射管筒）節省大量時間，但必須嚴格確認蔬菜包在交付時的新鮮度和無菌狀態（入廠放行測試）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>微粒限值的設計邏輯：</strong>ISO 11040-4設定的微粒限值（≤600/syringe for ≥10µm）是USP &lt;788&gt;小容量注射劑限值的10%。這個設計留出了90%的「微粒預算」給藥品填充過程中可能產生的微粒，確保成品藥符合藥典要求。CDMO填充商需要了解自己的填充工藝貢獻多少微粒，以管理整體微粒負荷。</p>
+            <p><strong>插入針頭（Staked Needle）的矽化：</strong>針頭外表面矽化的目的是減少注射疼痛，而非減少滑動力。矽化量過多可能在高壓蒸汽終端滅菌（Final Sterilization）後被洗去，需要在終端滅菌後的「使用狀態」下評估穿刺力。</p>
+            <p><strong>密閉性設計（Closure System Barrel Integrity）：</strong>預組裝注射器必須在運輸、不同大氣壓條件（如空運）和蒸汽高壓滅菌後維持密閉性。染料溶液滲透測試（Dye Tightness Test, Annex H）是設計開發階段的有力工具，用於早期識別密閉性缺陷。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO在引進預組裝注射器時的入廠放行測試清單應包括：(1) 外觀和完整性檢查（托盤/密封蓋無破損）；(2) 內毒素測試（LAL法，目標&lt;0.25 EU/ml）；(3) 微粒計數（光阻法，≥10µm和≥25µm）；(4) 活塞塞滑動力（Glide Force，評估矽化質量）；(5) 無菌性抽樣測試。所有測試結果需歸入批記錄，作為GMP放行的依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO在使用預組裝注射器填充單抗生物製劑時，如果入廠微粒測試結果為≥10µm: 550個/注射器，是否通過ISO 11040-4的要求？填充後成品的微粒控制目標應如何設定？</li>
+                <li>某注射器廠商計劃將EO滅菌改為伽馬射線輻射滅菌，作為CDMO客戶應要求哪些重新驗證數據？</li>
+                <li>預組裝注射器的「3-log內毒素去除驗證」具體是什麼意思？廠商應如何驗證？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>ISO 11040-4規定了玻璃注射管筒（0.5 ml–20 ml）的標準尺寸和Type I玻璃材料要求，是選擇預填充注射器規格的首要參考標準</li>
+        <li>預組裝注射器（Sterilized Subassembled Syringe Ready for Filling）須達到SAL 10⁻⁶無菌保證水平，並滿足嚴格的內毒素（&lt;0.25 EU/ml）和微粒（10% of USP &lt;788&gt;）限值</li>
+        <li>質量體系要求（ISO 15378）、GR&amp;R測量確認（≤20%）、以及文件可靠性是預組裝注射器供應商管理的核心要求</li>
+        <li>密封件材料（ISO 8871-1）、針頭（ISO 9626/7864）、矽化（Siliconization）和密閉性（Closure System Integrity）構成預組裝注射器性能評估的完整框架</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 11040 Prefilled Syringes Series — Part 4: Glass Barrels for Injectables</p>
+    <p>SterileGMP Knowledge Hub | 無菌製劑知識平台</p>
+</div>
+
+</body>
+</html>

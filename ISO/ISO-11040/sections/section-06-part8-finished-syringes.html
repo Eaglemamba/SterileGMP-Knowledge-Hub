@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 11040 Part 8: Requirements for Finished Prefilled Syringes</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .term-box p, .formula-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .note-box ul, .note-box ol, .formula-box ul { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box.analogy { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .application-box h3 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISO 11040 Part 8: Requirements and Test Methods for Finished Prefilled Syringes</h1>
+    <div class="subtitle">成品預填充注射器的性能、藥品及文件要求</div>
+    <div class="page-info">ISO 11040-8:2016 | First Edition</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解成品預填充注射器（Finished Prefilled Syringe）的完整定義和監管定位（藥品、組合產品或醫療器械）</li>
+        <li>掌握用戶需求（User Requirements）分析、風險管理（ISO 14971）和可用性工程（IEC 62366）在設計中的應用</li>
+        <li>熟悉成品注射器的系統表徵、功能性能測試（6項）和藥品要求（6項）的完整框架</li>
+        <li>認識ISO 11040-8作為「系統性能」標準與前7個部分（組件標準）的互補關係</li>
+    </ul>
+</div>
+
+<div class="section-title">Part 8 Clauses 1–4 — Scope, User Requirements, Risk Management, Usability</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>1 Scope</h3>
+        <p>This part of ISO 11040 is applicable to <span class="key-term">aseptically filled or terminally sterilized finished prefilled syringes</span> (intended for single use only) based on ISO 11040-4 or ISO 11040-6, together with ISO 11040-5, for parenteral injection preparations with focus on quality, functional performance and safety requirements.</p>
+        <p>NOTE 1: Can also be used as guidance for other types, designs and/or sizes (e.g. dual chamber prefilled syringes).</p>
+        <p>NOTE 2: If used in a needle-based injection system, see also ISO 11608-3.</p>
+        <p>NOTE 4: Finished prefilled syringes containing so-called borderline products (e.g. hyaluronic acid) are included, though not always regulated as pharmaceutical products.</p>
+
+        <h3>3 Terms and Definitions</h3>
+        <p>3.1 <strong>Finished prefilled syringe:</strong> <em>Prefilled container closure system for parenteral injection preparations as it is marketed, including e.g. assembly of components, terminal sterilization and final packaging.</em></p>
+        <p>3.2 <strong>Manufacturer:</strong> <em>Natural or legal person holding the licence for the pharmaceutical product with responsibility for the design, manufacture, packaging, and labelling of a finished prefilled syringe, before it is placed on the market.</em></p>
+
+        <h3>4 User Requirements</h3>
+        <p>4.1 <strong>Definition of intended use:</strong> Manufacturer shall define intended use considering:</p>
+        <ul>
+            <li>Users including their health status</li>
+            <li>Route of administration</li>
+            <li>Additional medical devices/application aids (needle-based injection systems, infusion tubes, plunger rod/finger flange)</li>
+            <li>Characteristics of environment during transport, storage and use</li>
+            <li>Point of use (hospital, homecare)</li>
+            <li>Frequency of application; criticality of medication</li>
+        </ul>
+
+        <p>4.2 <strong>Risk management:</strong> Manufacturers shall follow a risk-based approach per ISO 14971 during design, development, manufacture and life cycle. Risk management shall consider <span class="key-term">intended use, interactions between content and container, and environmental conditions</span>. This can result in product-specific requirements and test methods that differ from this part of ISO 11040.</p>
+
+        <p>4.3 <strong>Application of usability engineering:</strong> The usability of the prefilled syringe shall be considered and validated according to a process compliant with IEC 62366. Instructions for use are part of usability testing.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>成品預填充注射器的雙重監管身份：</strong>ISO 11040-8的Introduction明確指出，成品預填充注射器需要上市許可（Marketing Authorization）作為藥品、組合產品（Combination Product）或醫療器械，取決於內容物和預期用途。在EU，藥品主導的組合產品按藥品法規（2001/83/EC）審批，並需要符合MDR（EU 2017/745）的相關要求；在美國，依據21 CFR 3.2(e)分類後，由FDA的相關部門（CDER/CDRH/CBER）主導審查。</p>
+            <p><strong>ISO 14971（醫療器械風險管理）：</strong>要求對整個生命周期的風險進行系統識別、評估、控制和監控。對預填充注射器而言，風險評估需覆蓋：(1) 容器-藥品相互作用（如矽油與蛋白質的相互作用）；(2) 使用錯誤（Use Error）——患者在家庭環境中的操作失誤；(3) 製造工藝風險（如終端滅菌對密封性的影響）。</p>
+            <p><strong>IEC 62366（可用性工程）：</strong>要求在設計過程中系統評估預期用戶在預期使用環境下的操作能力。對帶有自動注射裝置的預填充注射器（如pen-injector），必須進行形成性（Formative）和總結性（Summative）可用性研究，確認用戶能夠安全正確地使用產品。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>ISO 11040-8就像一輛完整汽車的驗收標準，而Parts 1–7是各個零部件（引擎、輪胎、方向盤）的規格。零部件各自符合標準，不代表整車能安全行駛——需要系統性的整車功能測試（剎車性能、轉向靈敏度等），就像ISO 11040-8對成品預填充注射器進行系統功能性能測試（啟動力、爆破壓力、密封完整性等）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>製造商定義的廣泛性：</strong>ISO 11040-8對「製造商」的定義是「持有藥品上市許可的法人」，而非「生產設施的所有者」。這意味著即使CDMO代工生產，最終責任仍在藥品持有人（MAH）。CDMO與MAH之間的責任劃分應在質量協議（Quality Agreement）中明確規定。</p>
+            <p><strong>邊界產品的包容性：</strong>ISO 11040-8明確將透明質酸（Hyaluronic Acid）等「邊界產品」納入範圍，這些產品有時按醫療器械監管（如關節注射填充劑）。這體現了ISO 11040-8作為「中性框架」的設計意圖——適用於任何預填充注射器，無論監管身份。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個CDMO客戶開發了一種用於家庭注射的預填充注射器（含生物製劑）。根據ISO 11040-8第4章，製造商應定義哪些關鍵的「預期使用」要素？這對CDMO的設計確認（Design Qualification）工作有何影響？</li>
+                <li>為什麼ISO 11040-8強調「風險管理可能導致產品特定的要求和測試方法與本標準不同」？這對ISO 11040-8作為強制性參考標準的地位有何影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="section-title">Part 8 Clauses 5–8 — System Characterization, Performance, Pharmaceutical, and Documentation Requirements</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>5 System Characterization</h3>
+        <p>5.1 <strong>Critical dimensions:</strong> Defined considering intended use. Special focus on interfaces with other devices (e.g. auto-injectors, needleless connectors) and plunger stopper position.</p>
+        <p>5.2 <strong>Description of components and materials:</strong> ISO 11040-4 and ISO 11040-6 shall apply for barrel. Barrel can include staked needle. Needle dimensions (inner/outer diameter) consistent with intended use (route, injection systems, viscosity).</p>
+        <p>5.3 <strong>Description of content:</strong> Critical parameters of content: viscosity, density, surface tension, fill volume (with tolerances), pH. These are temperature dependent and can change over time.</p>
+
+        <h3>6 Performance Requirements</h3>
+        <p>6.1 <strong>General:</strong> Manufacturer shall ensure finished prefilled syringe meets appropriate functional requirements until end of shelf life.</p>
+
+        <p>6.2 <strong>Break loose and extrusion forces:</strong> Tested with final system (assembled plunger + rod) at application temperature. Test speed defined based on intended use and content properties. Forces might change over shelf life.</p>
+
+        <p>6.3 <strong>Burst resistance:</strong> Tested per ISO 11040-4:2015, G.2 with sealed front end. Test pressures defined for intended use including high viscosity content and use in injection systems.</p>
+
+        <p>6.4 <strong>Break resistance:</strong> Flange break per ISO 11040-4:2015, 5.4.4; Luer cone breakage per ISO 11040-4:2015, 5.4.5.</p>
+
+        <p>6.5 <strong>Closure system forces and torques:</strong> Test methods of ISO 11040-4:2015, G.3 to G.6 apply.</p>
+
+        <p>6.6 <strong>Connectivity with fluid path connectors:</strong> Additional connectors tested per ISO 80369-1, ISO 80369-7, ISO 80369-20.</p>
+
+        <p>6.7 <strong>Residual volume:</strong> Tested in combination with components as considered in intended use. ISO 11040-4:2015, 6.5.1.3 applies.</p>
+
+        <p>6.8 <strong>Needle penetration force:</strong> Per ISO 11040-4:2015, Annex F. NOTE: Terminal sterilization (moist heat) can affect silicone layer on needle.</p>
+
+        <p>6.9 <strong>Needle pull-out force:</strong> ISO 11040-4:2015, 6.5.2.5 applies.</p>
+
+        <p>6.10 <strong>Sharps injury protection:</strong> If integrated sharps injury protection features, shall meet ISO 23908.</p>
+
+        <p>6.11 <strong>Liquid leakage beyond plunger:</strong> Per ISO 7886-1:2015, Annex B; with blocked fluid path, axial force on plunger stopper consistent with maximum force generated during use.</p>
+
+        <p>6.12 <strong>Markings:</strong> All graduation/indicator lines shall be verified for accuracy appropriate for intended use.</p>
+
+        <h3>7 Pharmaceutical Requirements</h3>
+        <p>7.1 <strong>General:</strong> Container closure system suitable for content (protection, safety, compatibility, performance) considering intended use.</p>
+        <p>7.2 <strong>Drug-container interaction:</strong> Compatibility of drug product with all container components, including leachables, adsorption, and degradation. Study conditions shall reflect actual use conditions including shelf life and storage temperature.</p>
+        <p>7.3 <strong>Biological requirements:</strong> Per ISO 10993-1; biocompatibility evaluation shall consider all materials in contact with drug product and patient.</p>
+        <p>7.4 <strong>Container closure integrity (CCI):</strong> Integrity shall be maintained throughout shelf life. Test methods and acceptance criteria shall be established per ICH Q1A, ISO 11607-1, or USP &lt;1207&gt;. Probabilistic methods (e.g. CCIT) preferred over sterility testing.</p>
+        <p>7.5 <strong>Deliverable volume:</strong> Shall comply with stated fill volume within appropriate tolerances, per national/regional regulations.</p>
+        <p>7.6 <strong>Particles (visible and subvisible):</strong> Per applicable pharmacopoeia. Visible inspection per applicable methods. Sub-visible per USP &lt;788&gt;, &lt;787&gt; or Ph. Eur. 2.9.19/2.9.20.</p>
+
+        <h3>8 Documentation</h3>
+        <p>Documentation shall demonstrate that the finished prefilled syringe meets requirements of this standard and applicable regulatory requirements. Documentation shall include results of tests, process controls, and any deviations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>啟動力與推出力 (Break-Loose Force and Extrusion Force)：</strong></p>
+            <ul>
+                <li><strong>Break-Loose Force（啟動力）：</strong>使活塞塞從靜止狀態開始移動所需的力，通常高於持續推進力。活塞塞在靜態儲存期間（特別是經過終端滅菌後）會與玻璃/矽化層形成一定粘附，導致啟動力增加。</li>
+                <li><strong>Extrusion Force（推出力）：</strong>維持活塞塞持續推進所需的力。過高會導致患者無法完成注射；過低意味著密封性不足，可能漏液。</li>
+            </ul>
+            <p><strong>容器密封完整性測試 (CCI, Container Closure Integrity)：</strong>ISO 11040-8明確要求CCI必須在整個保質期內維持，並推薦使用概率性方法（Probabilistic CCIT，如氦氣洩漏測試、頂空分析、高壓放電測試）而非無菌測試作為主要CCI測試方法，這與USP &lt;1207&gt;的指導原則一致。</p>
+            <p><strong>藥品-容器相互作用研究 (Drug-Container Interaction)：</strong>必須涵蓋浸出物（Leachables）、吸附（Adsorption，如蛋白質吸附到注射管筒內壁或活塞塞）和降解（Degradation，如藥物被矽油氧化）三個維度。研究條件需包括保質期和儲存溫度的最壞情況（Worst Case）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>成品預填充注射器的性能測試就像一輛賽車上賽道前的完整技術檢查：</p>
+            <ul>
+                <li>啟動力/推出力 = 離合器和油門靈敏度測試</li>
+                <li>爆破壓力 = 液壓系統最大承壓測試</li>
+                <li>CCI = 油箱密封性和氣密性測試</li>
+                <li>藥品-容器相互作用 = 燃料與燃油箱材料的化學相容性測試</li>
+                <li>可見異物 = 油箱異物（殘渣/顆粒）視覺檢查</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>終端滅菌對注射器性能的影響：</strong>ISO 11040-8特別指出，終端蒸汽滅菌（Moist Heat Sterilization）可能影響針頭上的矽油層（Clause 6.8 NOTE），並可能增加活塞塞啟動力。因此，性能測試必須在滅菌後的「上市狀態」下進行，而非僅在填充後立即測試。這對CDMO的性能驗證計劃設計至關重要。</p>
+            <p><strong>針刺傷防護（Clause 6.10）：</strong>ISO 23908要求針刺傷防護功能（Safety Feature）在使用後自動激活，保護醫護人員免受針刺傷。越來越多的監管機構（特別是歐盟和美國）要求帶自動注射裝置的預填充注射器配備這一功能，CDMO在設計評審時需要確認是否符合此要求。</p>
+            <p><strong>CCI測試方法選擇的重要性：</strong>ISO 11040-8明確指出CCI應由在保質期內經驗證的測試方法確認，並偏好確定性（Deterministic）方法（如氦氣洩漏、高壓放電）而非概率性的無菌測試。這與USP &lt;1207&gt;於2016年的更新方向一致。CDMO在CCI驗證方案設計時，應優先考慮確定性方法，並建立靈敏度（Sensitivity）和特異性（Specificity）的可接受標準。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+成品預填充注射器性能測試矩陣（ISO 11040-8 Clause 6）：
+
+測試項目                  參考方法                適用注射器類型
+───────────────────────────────────────────────
+啟動/推出力              ISO 11040-4 Annex E    All
+爆破壓力                 ISO 11040-4 G.2        All
+凸緣斷裂抗力             ISO 11040-4 5.4.4       All
+Luer錐頭斷裂抗力         ISO 11040-4 5.4.5       Luer/LL
+密封件力/扭矩            ISO 11040-4 G.3–G.6    All
+流體接頭連接性           ISO 80369 系列         Luer/LL
+殘留量                   ISO 11040-4 6.5.1.3    All
+針頭穿刺力               ISO 11040-4 Annex F    Staked needle
+針頭拔出力               ISO 11040-4 6.5.2.5    Staked needle
+針刺傷防護               ISO 23908              Safety devices
+活塞塞液體洩漏           ISO 7886-1 Annex B     All
+
+藥品要求（ISO 11040-8 Clause 7）：
+  7.2 藥品-容器相互作用（Leachables/Adsorption）
+  7.3 生物相容性（ISO 10993-1）
+  7.4 CCI（USP &lt;1207&gt; / Ph. Eur.）
+  7.5 交付量（Deliverable Volume）
+  7.6 可見/亞可見異物（USP &lt;788&gt;）
+            </pre>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO在承接預填充注射器成品放行批的驗證工作時，應基於ISO 11040-8建立完整的成品規格書（Finished Product Specification），至少包含以下測試項目及驗收標準：(1) 外觀和可見異物；(2) 裝量偏差（Fill Volume Accuracy）；(3) 亞可見異物（HIAC法或膜過濾法）；(4) 無菌測試；(5) 內毒素；(6) 啟動力/推出力（加速穩定性各時間點）；(7) 容器密封完整性（CCI，確定性方法優先）；(8) 藥品特異性的相容性指標（如蛋白質含量、純度、力價）。這些測試項目的驗收標準應基於ICH Q6A/Q6B（生物製劑）和ISO 11040-8的要求共同建立。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個CDMO在承接某單抗預填充注射器的商業化生產。該注射器的保質期為24個月（2-8°C冷藏）。根據ISO 11040-8第6章，至少需要在哪些穩定性時間點進行啟動力/推出力測試？測試時使用哪種溫度的藥液？</li>
+                <li>一個新型預填充注射器設計包含一個集成的針刺傷防護機構（Safety Guard）。根據ISO 11040-8 Clause 6.10，該安全機構的確認測試應符合哪個標準的要求？CDMO在設計確認過程中應關注哪些關鍵性能指標？</li>
+                <li>為什麼ISO 11040-8第7.4條關於CCI測試偏好「確定性方法」而非「無菌測試」？從監管科學（Regulatory Science）的角度解釋這種偏好的合理性。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>ISO 11040-8是ISO 11040系列的「系統級」標準，涵蓋成品預填充注射器的功能性能（12項）和藥品要求（6項），補充了Parts 1–7的組件級要求</li>
+        <li>風險管理（ISO 14971）和可用性工程（IEC 62366）是成品注射器設計和驗證的核心方法論，所有性能要求和測試方法均可基於風險評估進行調整</li>
+        <li>容器密封完整性（CCI）測試應優先使用確定性方法（如氦氣洩漏），並在保質期全程驗證其維持能力</li>
+        <li>藥品-容器相互作用研究需覆蓋浸出物、吸附和降解三個維度，並在保質期最壞情況條件下進行，是商業化上市前最複雜的技術工作之一</li>
+    </ul>
+</div>
+
+</div>
+
+<div class="main-footer">
+    <p>ISO 11040 Prefilled Syringes Series — Part 8: Requirements for Finished Prefilled Syringes</p>
+    <p>SterileGMP Knowledge Hub | 無菌製劑知識平台</p>
+</div>
+
+</body>
+</html>
