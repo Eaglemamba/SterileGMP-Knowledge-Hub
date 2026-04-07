@@ -699,8 +699,12 @@ function renderHistoryPanel() {
     if (!listEl) return;
     listEl.innerHTML = hist.map(h => {
         const prog = getProgress(h.file);
+        const docData = documents.find(d => d.file === h.file);
+        const isSingle = docData && docData.sections <= 1;
         const progSpan = prog && prog.num
-            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}</span>`
+            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`
+            : isSingle
+            ? `<span class="text-[10px] text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 whitespace-nowrap">全文</span>`
             : '';
         const href = h.file ? getOpenHref(h.file) : '#';
         const displayTitle = h.titleZh || h.title;
@@ -723,6 +727,13 @@ function removeReadEntry(file) {
         localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
         const sc = document.querySelector('#statsRow div:last-child .mono');
         if (sc) sc.textContent = hist.length;
+        // Also clear resume banner if this was the last viewed doc
+        const lv = getLastViewed();
+        if (lv && lv.file === file) {
+            localStorage.removeItem(LS_KEY);
+            const wrap = document.getElementById('resumeWrap');
+            if (wrap) wrap.style.display = 'none';
+        }
     } catch(e) {}
 }
 
