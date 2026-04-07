@@ -3644,7 +3644,6 @@ Hamilton, D, et al. A Better Approach to Aseptic Process Simulation for Lyophili
 Pharmaceutical Online 2021.
 15.
 Association, P D. Points to Consider for Microbial Control in ATMP Manufacturing; PDA:
-Bethesda, MD, 2022.
 16.
 Parenteral Drug Association. Technical Report No. 66: Application of Single-Use Systems in
 Pharmaceutical Manufacturing; PDA: Bethesda, Md., 2014.
@@ -5965,7 +5964,6 @@ pda.org
 
 PDA Global Headquarters
 4350 East West Highway, Suite 600
-Bethesda, MD 20814 USA
 TEL +1 (301) 656-5900
 FAX +1 (301) 986-0296
 PDA Europe

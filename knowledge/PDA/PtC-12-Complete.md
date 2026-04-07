@@ -938,7 +938,9 @@ ability to remain closed during setup and operation. Efforts to minimize the nee
 should be taken to reduce the impact or risk to process performance and product sterility. Examples include
 reducing, eliminating, or repositioning activities, manipulations, and interventions. Figure 1.4-1
 distinguishes which part of the RABS are the glove ports and which are the RABS gloves (1).
-Figure 1.4-1: Differentiation of Glove Ports and Gloves
+
+*[Figure 1.4-1: Differentiation of Glove Ports and Gloves]*
+
 When determining where to place/position the RABS glove ports (typically done during mock-up studies),
 several factors that may pose a risk to the performance of the aseptic process and sterility of the product
 should be considered such as:
@@ -1267,7 +1269,9 @@ After setup, the use of automatic decontamination reduces the risk of ingress of
 Grade A.
 
 === PDF PAGE 34 ===
-Figure 1.8-1: Unidirectional Airflow Layout of oRABS Filling Line
+
+*[Figure 1.8-1: Unidirectional Airflow Layout of oRABS Filling Line]*
+
 Rationale
 Open-door activities typically necessary for equipment setup are of a higher risk as personnel must ingress
 into the Grade A space. All activities that minimize the risk of introducing bioburden into the Grade A
@@ -2302,7 +2306,9 @@ RABS gloves are disassembled and are tested remotely.
 Pin Hole
 Torn
 Color Stain
-Figure 4.6-1: Examples of Glove Defects
+
+*[Figure 4.6-1: Examples of Glove Defects]*
+
 See PDA PTC-Isolators for further details on glove integrity-testing methods.
 
 === PDF PAGE 64 ===
@@ -2506,7 +2512,6 @@ RABS gloves are used for interventions; therefore, they are required to be steri
 decontaminated in situ thereafter. During use, RABS gloves are likely to contact surfaces inside the RABS
 that have been disinfected, not sterilized. Where open-door interventions are permitted, a barrier glove may
 well reside in a lower grade for the duration of the intervention and then be disinfected as the door is shut.
-Also, RABS gloves are made of flexible materials prone to puncture. RABS gloves that may have come into
 proximity with or breach First Air over sterile primary packaging, open product, or product-contact parts
 potentially puts the product at risk and should be sampled; such events should be avoided whenever
 possible.
@@ -2546,7 +2551,9 @@ Using plate sliders, with the outer surfaces of the plate being disinfected at t
 point. Care must be taken to ensure that no disinfectant goes inside the plate. Design should ensure
 that no airflow enters the RABS from the cleanroom. An example of a plate slider can be seen in
 Figure 5.3-1.
-Figure 5.3-1: Plate Slider
+
+*[Figure 5.3-1: Plate Slider]*
+
 It is not recommended to open RABS doors to transfer EM plates in or out of the RABS after line setup is
 complete or when critical surfaces are exposed.
 Rationale
@@ -2981,7 +2988,6 @@ sporicidal disinfection must be defined in the CCS.
 *Note: Sensitive equipment (e.g., environmental monitoring equipment) must be considered during
 cleaning, disinfection and/or decontamination and may need to be covered at a certain cleaning step. This
 should be documented in the CCS.
-Typically, RABS will include installed process equipment (e.g., filling lines) that are also subjected to
 cleaning and disinfection together with the RABS barrier. Cleanability assessments will therefore include
 suitability and access of process equipment surfaces for cleaning and disinfection procedures.
 Cleaning is a prerequisite to effective bio-decontamination processes. Initially, at start-up and after
@@ -3083,7 +3089,6 @@ sterile surfaces in the first place.
 
 === PDF PAGE 95 ===
 Rationale
-Primarily, RABS are manually cleaned and disinfected using qualified agents and a qualified procedure of
 application of these qualified agents executed by trained operators. EM, in combination with other microbial
 challenges (e.g., gowning, material transfers, and environmental control systems), is used to monitor the
 outcome (effectiveness).
@@ -4026,7 +4031,6 @@ Life Scientia, Ltd.
 pda.org
 PDA Global Headquarters
 4350 East West Highway, Suite 600
-Bethesda, MD 20814 USA
 TEL +1 (301) 656-5900
 FAX +1 (301) 986-0296
 PDA Europe

@@ -341,8 +341,9 @@ authorization holder must incorporate a periodic review into the excipient risk 
 *[Figure 1.0-1 illustrates this overall, iterative risk management process as it is used in supply chain]*
 
 management (6).
-1.1
-Purpose
+
+### 1.1 Purpose
+
 This report is based on the general principles of quality risk management (QRM) as outlined in ICH
 Quality Guideline Q9 Quality Risk Management (7). It has been developed to provide additional guid-
 ance on the excipient risk assessment process required by the EC Guidelines and incorporated into the
@@ -369,8 +370,9 @@ challenging. Second, an excipient may be used in different dosage forms by manuf
 tion holders. One manufacturing authorization holder may use a single excipient in both tablets and
 injectables, which may result in different quality requirements applying to a single excipient from the
 same supplier. This also may lead to conflicting requirements for GMP.
-1.2
-Scope
+
+### 1.2 Scope
+
 The information in TR 54-6 applies to all excipients used in drug products for human use at all stages
 of the product lifecycle. It assumes the excipient will be used for the drug product in the commercial
 supply phase; however, the manufacturing authorization holder may choose to apply this practical
@@ -552,8 +554,9 @@ See Broker.
 Warehousing Company
 Organization providing a warehouse that may be
 used to store excipients and other materials.
-2.1
-Abbreviations
+
+### 2.1 Abbreviations
+
 EC
 European Commission
 CMO	 Contract Manufacturing Organization
@@ -562,8 +565,9 @@ Critical Quality Attributes
 GMP	 Good Manufacturing Practices
 QMS	 Quality Management System
 QRM	 Quality Risk Management
-3.0
-Overall Strategy – A Holistic View
+
+## 3.0 Overall Strategy – A Holistic View
+
 TR 54-6 provides guidance on quality risk management principles that can be used to assess the risks
 to the quality, safety, and function of an excipient in a drug product. The proposed generic model al-
 lows the user to answer the risk question “Is the excipient fit for use in the drug product” through the
@@ -619,8 +623,9 @@ and approval workflows, and for ensuring that updated information is included in
 sessment repository. The repository would serve as a knowledge base for all excipients, allowing the
 drug product manufacturer or manufacturing authorization holder to communicate its requirements
 to the excipient manufacturer with a single voice representing all local owners.
-3.1
-Risk Areas Beyond Quality
+
+### 3.1 Risk Areas Beyond Quality
+
 While the focus of the excipient risk assessment is quality, a company also should consider other as-
 pects that can impact the excipient and, with this, product availability for the patient. These include
 excipient availability; business continuity risk; environmental, socio-economic, environment, health,
@@ -628,8 +633,9 @@ safety, and geographic risks; and general business data. While consideration of 
 part of an overall strategy, it is out of scope of this document and is not discussed further.
 
 --- PAGE 12 ---
-4.0
-Supply Chain — End to End
+
+## 4.0 Supply Chain — End to End
+
 Section 4.0 provides examples of supply chains, helps identify the various actors in the supply chain,
 and describes their typical roles. The subsections herein offer examples of the types of information and
 documentation that the various actors could provide. Additionally, it discusses some aspects of the
@@ -640,8 +646,9 @@ to the manufacturer of the excipient, the distributor, broker, and contract manu
 (CMO) each plays a role in the supply chain, and each contributes to the risks to quality in one way
 or another. Each of these companies also could provide information on the excipient’s manufacture,
 testing, and distribution that might be relevant for the risk assessment.
-4.1
-Types of Supply Chains and Risks Presented
+
+### 4.1 Types of Supply Chains and Risks Presented
+
 Many materials used as excipients are not manufactured specifically for pharmaceutical use, but are
 intended for other applications such as food, cosmetics, or home care. As such, the direct supply of an
 excipient from the manufacturer to the end user may be unusual. In addition, the quantities of excipi-
@@ -732,8 +739,9 @@ End User
 Broker
 Distributor
 --- PAGE 34 ---
-10.0
-Annex I: Real World Examples of Risk Assessments
+
+## 10.0 Annex I: Real World Examples of Risk Assessments
+
 The generic model proposed in Section 6.0 was developed based on real-world risk assessment pro-
 cesses donated by several marketing authorization holders. Many risk assessment approaches used
 some form of risk ranking and filtering approach—conducting assessments in two separate streams
@@ -963,8 +971,7 @@ Conducting a formalized assessment process provides clarity to sourcing partners
 and external.
 •
 The risk assessment acts as an effective standard for comparing and assessing supply chain risks.
-11.0
-References (for Annex 1)
+11.0 References (for Annex 1)
 1.
 European Commission. Guidelines of 19 March 2015 on the Formalised Risk Assessment for Ascertaining the Appropriate
 Good Manufacturing Practice for Excipients of Medicinal Products for Human Use. European Commission: Brussels, 2015.
@@ -1019,7 +1026,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
 Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 --- PAGE 44 ---
 About PDA Technical Reports
@@ -1099,7 +1105,6 @@ Germany
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org
@@ -1169,8 +1174,9 @@ Company
 Haulier
 
 --- PAGE 15 ---
-5.0
-Different Roles in the Supply Chain and Information-Gathering
+
+## 5.0 Different Roles in the Supply Chain and Information-Gathering
+
 To successfully complete the formalized risk assessment process, the information and evidence ob-
 tained must support conclusions on risks, identify gaps in GMP, and determine control strategies. The
 risk assessment process is applicable throughout the lifecycle of the excipient—from selection to ter-
@@ -1252,8 +1258,9 @@ prioritization of manufacturer/supplier management activities
 –	 Use third-party audit program (e.g., EXCiPACT™)
 
 --- PAGE 17 ---
-6.0
-A Model for Quality Risk Management for Excipients
+
+## 6.0 A Model for Quality Risk Management for Excipients
+
 Experts on the TR 54-6 Task Force conducted an informal survey examining industry practices relating to quality risk management for excipients. Based on analysis and dis-
 cussion, they developed a model combining best practices. In addition, the Task Force assessed real-world company models after several manufacturing authorization holders
 shared examples of actual risk assessment processes. See Annex 1 (Section 10.0).
@@ -1361,8 +1368,9 @@ the Excipient
 Supply Chain
 
 --- PAGE 18 ---
-6.1
-Initiate Risk Management Activities and Identify Assessment Team
+
+### 6.1 Initiate Risk Management Activities and Identify Assessment Team
+
 The risk assessment process begins with the identification of a need to qualify an excipient or to re-
 view an existing excipient risk assessment (e.g., at new product introduction, as a result of obtaining a
 second source, being notified by the supplier of major changes, or one of the numerous other drivers
@@ -1423,8 +1431,9 @@ Having a multidisciplinary team of individuals working collaboratively to gather
 assess the potential for risk is critical to ensuring that all risks are considered holistically. The excipient
 risk management process should be built into a company’s existing processes and quality management
 system (QMS).
-6.2
-Identify Intrinsic Risk Factors
+
+### 6.2 Identify Intrinsic Risk Factors
+
 In identifying the excipient’s intrinsic risk factors, numerous factors should be considered.
 One primary source is input from product and process development. The Quality Target Product Profile
 of the drug product(s) in which the excipient is to be used provides requirements for the drug product,
@@ -1463,8 +1472,9 @@ equipment and/or facilities
 ment if appropriate
 –	 Excipient stability
 –	 Packaging integrity evidence
-6.3
-Excipient Risk Analysis
+
+### 6.3 Excipient Risk Analysis
+
 The excipient risk analysis can be carried out in two steps. First, an initial excipient impact assessment
 can be conducted to provide input to the internal specification of the excipients, to identify intrinsic
 risk factors relating to the excipient’s impact on the drug product. This assessment is used in the second
@@ -1587,8 +1597,9 @@ consideration or to weight the individual risk factors based on the company’s 
 
 The resulting risk score (ERPN), along with a similar overall score for the supply chain, will be used to
 evaluate the suitability and acceptability of the current excipient setup.
-6.4
-Supply Chain Risk Analysis
+
+### 6.4 Supply Chain Risk Analysis
+
 A supply chain risk score (SCRPN) is created using a risk ranking system similar to that used for evalu-
 ating the excipient risk score. The ranking should consider input from the supplier, including knowl-
 edge from questionnaires, as well as knowledge gained through previous experience, audits, visits, and
@@ -1650,8 +1661,9 @@ consideration or to weight the individual risk factors based on the company’s 
 The resulting risk score (SCRPN) across the excipient risk factors (RF S) will be used, together with the
 overall score for the excipient described above, to evaluate the suitability and acceptability of the cur-
 rent supply chain setup.
-6.5
-Risk Evaluation
+
+### 6.5 Risk Evaluation
+
 The excipient risk score and the supply chain risk score are then evaluated together using a risk matrix
 approach (Figure 6.5-1), based on the excipient risk score (ERPN) on one side and the supply chain risk
 score (SCRPN) on the other side, to create an overall risk score. Figure 6.5-1 highlights one section of the
@@ -1735,8 +1747,9 @@ turing authorization holder may calculate a risk score for the original manufact
 and another risk score for each player in the supply chain. In the calculation in Figure 6.5.2-1, the
 manufacturing authorization holder would use these individual mean risk scores in place of the more
 general supply chain risk score.
-6.6
-Implementation of Controls—Risk Mitigation
+
+### 6.6 Implementation of Controls—Risk Mitigation
+
 When the risk is found to be at an acceptable level, the risk assessment process is concluded. The iden-
 tified controls should be documented, and the agreement with the manufacturer or supplier should
 ensure effective maintenance of those controls. This process is illustrated in Figure 6.6-1.
@@ -1915,13 +1928,15 @@ Is the
 combined risk
 acceptable?
 Probability
-7.0
-Ongoing Review—Formalized Risk Assessment Lifecycle
+
+## 7.0 Ongoing Review—Formalized Risk Assessment Lifecycle
+
 Once the excipient risk assessment is formally in place, it will be used as living data and will contribute to a knowledge base through ongoing risk review. Figure
 7.0-1 shows the overall generic risk model with respect to risk review only, for simplification. Risk review generally will be conducted periodically (i.e., monitoring)
 or as a result of triggering factors.
-7.1
-Triggers for Risk Assessment Review
+
+### 7.1 Triggers for Risk Assessment Review
+
 Trending of excipient and drug product quality plays a key role in the risk assessment to ensure science- and data-based assessments. Key performance indicators
 or other metrics should be monitored on an ongoing basis to demonstrate the effectiveness of the risk controls. That monitoring should highlight any triggers that
 indicate the need to reassess the risk and, possibly, revise the assessment.
@@ -1964,8 +1979,9 @@ When triggering events occur, both the event and the existing excipient risk ass
 reviewed, and a decision should be made about the need to revise the excipient risk assessment based
 on the new knowledge. The process, decision, and rationale should all be documented. Updates to the
 risk assessment may lead to revised control decisions.
-8.0
-Benefits and Value / QRM / Knowledge Management
+
+## 8.0 Benefits and Value / QRM / Knowledge Management
+
 A global excipient risk assessment throughout the drug product lifecycle delivers the following advantages:
 •
 Documented knowledge, in a structured
@@ -2001,8 +2017,9 @@ throughout the supply chain
 Opportunities for knowledge-sharing and
 comparative assessments between manufac-
 turers or suppliers and end users
-9.0
-References
+
+## 9.0 References
+
 1.
 European Commission. Directive 2011/62/EU of the
 European Parliament and of the Council of 8 June 2011
@@ -2120,7 +2137,6 @@ Certification Scheme for GMP for Cosmetic Ingredients
 26.	 International Food Additives Council. IFAC Quality
 Systems, Food Safety and Good Manufacturing Practices
 Guide for Food Additives and GRAS Substances; IFAC:
-Washington, DC, 2019.
 27.	 International Organization for Standardization. ISO
 9001:2015 Quality management systems — Require-
 ments; ISO: Geneva, 2015.

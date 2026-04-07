@@ -448,7 +448,6 @@ ICH Q12 defines ECs as legally binding information considered necessary to assur
 Consequently, any change to an EC necessitates a submission to the regulatory authority. ICH Q12,
 which the FDA officially adopted in May 2021, further considers ECs to be the elements of the phar-
 maceutical development activities that result in an appropriate control strategy (23).
-Previously, FDA defined ECs as the description of the product, manufacturing process, facilities and
 equipment, and elements of the associated control strategy, as defined in an application, that assure
 process performance and quality of a product (11). Japan has a similar concept, called “approved mat-
 ters,” that refers to an item of information described in a dossier for an application that was approved
@@ -1985,8 +1984,9 @@ neering Run 3, which was performed with OFB drug product solution.
 5.8
 5.7
 5.6
+5.5
 
-### 5.5 Figure 12-3 Distribution of Fill Volumes for Engineering Run 2
+*[Figure 12-3 Distribution of Fill Volumes for Engineering Run 2]*
 
 )Lm(
 emuloV
@@ -2406,7 +2406,6 @@ Marilyn Foster, Technical Editor/Writer
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org
