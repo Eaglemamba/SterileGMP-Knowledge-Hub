@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 13408 Part 5 - Sterilization-in-Place (SIP)</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box, .application-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4, .application-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p, .application-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul, .application-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li, .application-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box li { font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: #7c3aed; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(124,58,237,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } .main-content { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISO 13408 Part 5: Sterilization-in-Place (SIP)</h1>
+    <div class="subtitle">無菌處理醫療保健產品 — 第五部分：就地滅菌技術</div>
+    <div class="page-info">ISO 13408-5:2006 | 22 pages</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 SIP（就地滅菌）的定義範圍及其在無菌製程中的關鍵地位：設備內表面的滅菌保證</li>
+        <li>掌握蒸汽 SIP（Steam SIP）的驗證原理：SAL 概念適用於 SIP（不同於過濾），F₀ 值與 Biological Indicator 的使用</li>
+        <li>學習 SIP 死角（Dead Leg）的重要性及其對滅菌均勻性的影響</li>
+        <li>理解 SIP 最差條件識別方法及熱分布研究（Heat Distribution / Heat Penetration）</li>
+        <li>掌握 SIP 日常監控參數及再驗證觸發條件</li>
+    </ul>
+</div>
+
+<!-- Section 1: Scope and Definitions -->
+<div class="section-title">Clauses 1–5: Scope, Definitions, and Process Characterization</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>1 Scope</h3>
+        <p><strong>1.1</strong> This part of ISO 13408 specifies the general requirements for <span class="key-term">sterilization in place (SIP)</span> applied to product contact surfaces of equipment used in the manufacture of sterile health care products by aseptic processing. NOTE: SIP can be achieved by using steam or other gaseous or liquid sterilizing agents.</p>
+
+        <h3>Key Definitions</h3>
+        <ul>
+            <li><strong>SIP (3.6):</strong> Method of sterilization of the internal surfaces of parts of the equipment or an entire process system <span class="key-term">in situ, without disassembly</span>, using appropriate sterilizing agents. NOTE: In ISO 13408-5, "SIP" includes not only steam in place, but all kinds of sterilization used in situ.</li>
+            <li><strong>SAL (3.7):</strong> Probability of a single viable microorganism occurring on an item after sterilization. NOTE: For the purposes of this part, the product is considered to be <span class="key-term">product contact surfaces subject to SIP</span>.</li>
+            <li><strong>Dead leg (3.1):</strong> Location which, by design, does not permit adequate accessibility of the sterilizing agent</li>
+        </ul>
+
+        <h3>5.1 General Concepts for SIP</h3>
+        <p>Specifications for the SIP process shall include, but not be limited to:</p>
+        <ul>
+            <li>a) compatibility of the equipment with the sterilizing agent(s)</li>
+            <li>b) pre-requisite cleaning procedure, where necessary</li>
+            <li>c) introduction, homogeneity, distribution and <span class="key-term">contact time</span> with the sterilizing agent</li>
+            <li>d) physical and/or chemical characteristics of sterilizing agent(s)</li>
+            <li>e) demonstration of the efficacy of the process</li>
+            <li>f) sterilizing agent residuals or degradation products</li>
+            <li>g) drying of product contact surfaces, where necessary</li>
+            <li>h) <span class="key-term">maintenance of sterility after the completion of the process</span></li>
+            <li>i) acceptable tolerances for any potential residues in the product</li>
+            <li>j) physical integrity testing and establishing limits</li>
+        </ul>
+
+        <p><strong>5.2</strong> The <span class="key-term">sterility assurance level (SAL)</span> of the process shall be established and documented. Justification of the process parameters shall be included.</p>
+
+        <p><strong>5.1.3</strong> During production processes, the sterilizing conditions achieved shall be <span class="key-term">monitored, maintained within specified tolerances, and documented throughout the duration</span> of the sterilization process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：SIP 與過濾的根本差異 — SAL 的適用</h4>
+            <p>SIP 與過濾的最大不同：<strong>SIP 是真正的滅菌過程，可以計算 SAL！</strong></p>
+            <p>蒸汽滅菌的微生物殺滅動力學遵循對數曲線（D 值、Z 值），可以外推計算到 SAL = 10⁻⁶（即百萬分之一的存活機率）。這與過濾（物理攔截，無法計算 SAL）完全不同。</p>
+            <p><strong>SIP 驗證的目標：</strong>確認在整個設備內表面（包括最難到達的位置），滅菌劑的接觸條件都足以達到目標 SAL（通常 10⁻⁶）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：管路的高壓消毒</h4>
+            <p>SIP 就像在不拆開機器的情況下，用蒸汽「從裡面消毒整個管路系統」。想象一個複雜的水管系統（配液罐、管路、閥門、過濾器外殼）——普通消毒劑可以清洗表面，但 SIP 用 121°C 以上的飽和蒸汽，讓每個角落都達到可殺死芽孢的溫度。就像高壓鍋從裡面加熱，而不是從外面加熱。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵概念：維持滅菌狀態（Post-SIP Sterility Maintenance）</h4>
+            <p>ISO 13408-5 第 5.1.1(h) 特別強調：SIP 完成後必須<strong>維持設備的無菌狀態</strong>直到使用。這通常通過：</p>
+            <ul>
+                <li>保持正壓惰性氣體（無菌氮氣）填充管路</li>
+                <li>關閉所有通往環境的閥門</li>
+                <li>設定 SIP 後到使用的最大保持時間（需有驗證支持）</li>
+            </ul>
+            <p>如果在 SIP 後到使用之間發生任何可能破壞無菌性的事件（如儀表故障、管路接頭鬆動），必須重新評估是否需要重做 SIP。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>SIP 後的設備需要用無菌氮氣保壓維持無菌狀態。如果氮氣過濾器（vent filter）的完整性測試失敗，此設備是否仍可認為是無菌的？你的決策依據是什麼？</li>
+                <li>一個複雜的配液系統有 15 個溫度探頭，SIP 驗證時哪些位置最重要？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Validation and Biological Indicators -->
+<div class="section-title">Clauses 6–9: Validation — Heat Distribution, Penetration, and Biological Indicators</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Annex A — Specific Guidance on Steam SIP</h3>
+        <p>(Annex A provides detailed guidance on Steam SIP, the most common SIP method)</p>
+
+        <p><strong>A.1 General:</strong> Steam SIP is based on the same principle as steam sterilization in an autoclave. The main differences are:</p>
+        <ul>
+            <li>Steam is directed to the equipment to be sterilized via the existing pipework and connections</li>
+            <li>Non-condensable gases present in the system (air) must be removed to achieve saturated steam conditions</li>
+            <li>Temperature measurements at <span class="key-term">multiple positions</span> (including worst-case positions such as dead legs, lowest points, and steam traps) are used to demonstrate that sterilizing conditions are maintained throughout</li>
+        </ul>
+
+        <p><strong>A.2 Heat Distribution Study:</strong> A heat distribution study shall be performed to demonstrate that the sterilizing temperature is uniformly achieved and maintained throughout the equipment during the sterilization phase. This is typically done by placing calibrated temperature probes at defined positions including worst-case positions.</p>
+
+        <p><strong>A.3 Biological Indicator Study:</strong> Biological indicators (BIs) shall be placed at the <span class="key-term">worst-case positions</span> to demonstrate sterilization efficacy. The use of Geobacillus stearothermophilus spores (D-value ≥ 1.5 min at 121°C) is appropriate for steam SIP. The acceptance criterion is that all BIs at all positions shall be negative after the SIP process.</p>
+
+        <p><strong>A.4 Process Cycle Development:</strong> The SIP cycle shall be developed to ensure that all product contact surfaces achieve the <span class="key-term">target F₀ value</span> (equivalent time at 121°C with z = 10°C). The target F₀ value shall be established considering the bioburden and the required SAL.</p>
+
+        <h3>6 Routine Monitoring</h3>
+        <p>Each SIP cycle shall be monitored and documented, including: temperature at defined monitoring points throughout the cycle; duration of sterilization phase; correlation of monitoring data with validated cycle parameters.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="formula-box">
+            <h4>F₀ 值計算與 SIP 驗證</h4>
+            <pre>
+F₀ 值（等效 121°C 滅菌時間）計算：
+
+F₀ = ∫L dt
+
+其中 L = 10^((T-121)/z)
+T = 實際溫度（°C）
+z = 10°C（蒸汽滅菌的典型 z 值）
+
+範例：
+- 溫度 121°C，時間 15 min → F₀ = 15 min
+- 溫度 125°C，時間 15 min → F₀ = 15 × 10^(4/10) ≈ 38 min
+- 溫度 118°C，時間 15 min → F₀ = 15 × 10^(-3/10) ≈ 7.5 min
+
+SIP 驗證的典型 F₀ 目標：
+- 生物製劑系統（低生物負荷）：F₀ ≥ 15 min
+- 高風險位置（Dead Legs）：確認 F₀ 不低於目標值
+
+注意：F₀ 是對整個 SIP 過程的累積計算
+不只是保溫時間，升溫和降溫階段也有貢獻
+            </pre>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念：生物指示劑（BI）的使用</h4>
+            <p><strong>Geobacillus stearothermophilus（嗜熱脂肪芽孢桿菌）</strong>是蒸汽滅菌的標準 BI：</p>
+            <ul>
+                <li>D₁₂₁ 值 ≥ 1.5 min（ISO 要求），商業 BI 通常 D₁₂₁ = 1.5-2.5 min</li>
+                <li>含有 10⁶ 個孢子，理論上在 SAL = 10⁻⁶ 條件下全部殺滅（12 log reduction）</li>
+                <li>驗證後的 BI 需培育（55°C, 7 天）確認無菌生長</li>
+            </ul>
+            <p><strong>SIP 驗證中 BI 的策略：</strong>放置在最難滅菌的位置（Dead Legs、水平管段最低點）。如果最差位置的 BI 全部陰性，整個系統的所有其他位置理論上也已達標。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>死角（Dead Leg）的危害與設計規範</h4>
+            <p>Dead Leg 是 SIP 驗證中最常見的失敗原因。典型規則：</p>
+            <ul>
+                <li><strong>業界規範：</strong>Dead Leg 長度不應超過接頭直徑的 2 倍（2D 規則）</li>
+                <li>超過 2D 的 Dead Leg 需要特殊設計（如自排液閥）或單獨的滅菌程序</li>
+                <li>溫度探頭、壓力傳感器的安裝點都是潛在的 Dead Leg</li>
+                <li>取樣閥的設計必須考慮閥座後的 Dead Leg 問題</li>
+            </ul>
+            <p>新設備採購時，應在 DQ（設計資格確認）階段就識別並消除 Dead Leg，成本遠低於後期改造。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：Steam SIP 驗證典型設計</h4>
+            <p>典型的蒸汽 SIP 驗證方案：</p>
+            <table>
+                <tr><th>驗證活動</th><th>目的</th><th>工具/方法</th></tr>
+                <tr><td>熱分布研究（Heat Distribution）</td><td>確認溫度均勻性</td><td>多點溫度探頭（含 Dead Legs）</td></tr>
+                <tr><td>F₀ 計算</td><td>量化累積殺滅效果</td><td>溫度-時間積分計算</td></tr>
+                <tr><td>生物指示劑挑戰</td><td>直接證明微生物殺滅</td><td>G. stearothermophilus，最差位置</td></tr>
+                <tr><td>非凝氣體排除確認</td><td>確保達到飽和蒸汽條件</td><td>壓力-溫度對比（飽和蒸汽曲線）</td></tr>
+                <tr><td>管路完整性確認</td><td>確認無洩漏影響蒸汽接觸</td><td>壓力保持測試</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 SIP 熱分布研究中，你發現一個 Dead Leg 位置的最高溫度只能達到 118°C（而非目標 121°C）。在 15 分鐘保溫時間下，這個位置的 F₀ 值是多少？是否符合 SAL 10⁻⁶ 的要求？</li>
+                <li>一套配液系統的 SIP 驗證在三批次中，兩批次所有 BI 均陰性，一批次有一個 Dead Leg 位置的 BI 呈陽性。此驗證是否合格？你應採取什麼行動？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SIP Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本部分重點回顧 Part 5 Summary</h3>
+    <ul>
+        <li><strong>SIP vs 過濾：</strong>SIP 是真正的滅菌過程，可計算 SAL（目標 10⁻⁶）；過濾是物理攔截，無法計算 SAL</li>
+        <li><strong>F₀ 值：</strong>蒸汽 SIP 以 F₀（121°C 等效分鐘）量化累積殺滅效果，最差位置（Dead Legs）必須達到目標 F₀</li>
+        <li><strong>BI 挑戰：</strong>G. stearothermophilus 孢子放置在最差條件位置，驗證後全部陰性為合格標準</li>
+        <li><strong>Dead Leg 管理：</strong>設計上消除死角（2D 規則），SIP 驗證時特別關注 Dead Leg 位置的溫度分布</li>
+        <li><strong>維持無菌：</strong>SIP 後到使用的無菌保持（正壓惰性氣體）是關鍵，需驗證保持時間</li>
+        <li><strong>CIP 先於 SIP：</strong>清潔是滅菌的前提——有機物殘留（生物膜）會保護微生物免於滅菌劑接觸</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
+</script>
+
+</body>
+</html>
