@@ -80,22 +80,17 @@
         </select>
     </div>
 
-    <!-- RESUME BANNER -->
-    <div class="max-w-6xl mx-auto px-6 mt-3" id="resumeWrap" style="display:none">
-        <div id="resumeBanner" class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3"></div>
-    </div>
-
     <!-- READING HISTORY PANEL -->
-    <div class="max-w-6xl mx-auto px-6 mt-2" id="historyWrap" style="display:none">
+    <div class="max-w-6xl mx-auto px-6 mt-3" id="historyWrap" style="display:none">
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
             <button onclick="toggleHistory()" class="w-full flex items-center justify-between px-4 py-2.5 text-left hover:bg-gray-50 transition-colors" id="historyToggleBtn">
                 <div class="flex items-center gap-2">
                     <span class="text-sm font-semibold text-gray-700">閱讀歷史</span>
                     <span id="historyCount" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 font-bold"></span>
                 </div>
-                <span id="historyChevron" class="text-gray-400 text-xs transition-transform">▼</span>
+                <span id="historyChevron" class="text-gray-400 text-xs transition-transform" style="transform:rotate(180deg)">▼</span>
             </button>
-            <div class="history-panel" id="historyPanel">
+            <div class="history-panel open" id="historyPanel">
                 <div id="historyList" class="divide-y divide-gray-100 max-h-72 overflow-y-auto"></div>
                 <div class="px-4 py-2 border-t border-gray-100 flex justify-end">
                     <button onclick="clearReadHistory()" class="text-[10px] text-gray-400 hover:text-red-500 transition-colors">清除全部閱讀記錄</button>
@@ -652,35 +647,10 @@ function timeAgo(ts) {
     return `${Math.floor(days / 30)} 個月前`;
 }
 
-function renderResumeBanner() {
-    const lv = getLastViewed();
-    const wrap = document.getElementById('resumeWrap');
-    const el = document.getElementById('resumeBanner');
-    if (!lv || !wrap || !el) return;
-    const displayTitle = lv.titleZh || lv.title;
-    const prog = lv.file ? getProgress(lv.file) : null;
-    const progInfo = prog && prog.num ? `<span class="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Section ${prog.num}: ${prog.label}</span>` : '';
-    const resumeHref = lv.file ? getOpenHref(lv.file) : '';
-    const link = lv.file
-        ? `<a href="${resumeHref}" target="_blank" data-track-file="${lv.file}" data-track-title="${lv.title}" data-track-zh="${lv.titleZh||''}"
-              class="track-open text-xs bg-slate-700 text-white px-3 py-1.5 rounded no-underline hover:bg-slate-600 whitespace-nowrap transition-colors">繼續閱讀</a>`
-        : '';
-    el.innerHTML = `<div class="flex items-center gap-3 flex-wrap">
-        <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest whitespace-nowrap">上次閱讀</span>
-        <span class="text-sm font-medium text-slate-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
-        ${progInfo}
-        <span class="text-xs text-slate-400 whitespace-nowrap">${timeAgo(lv.ts)}</span>
-        ${link}
-        <button onclick="localStorage.removeItem('${LS_KEY}');document.getElementById('resumeWrap').style.display='none';renderCards();"
-                class="text-slate-300 hover:text-slate-500 text-xl leading-none ml-1 transition-colors">&times;</button>
-    </div>`;
-    wrap.style.display = 'block';
-}
-
 // ============================================================
 // HISTORY PANEL
 // ============================================================
-let historyOpen = false;
+let historyOpen = true;
 function toggleHistory() {
     historyOpen = !historyOpen;
     const panel = document.getElementById('historyPanel');
@@ -699,7 +669,8 @@ function renderHistoryPanel() {
     wrap.style.display = 'block';
     if (countEl) countEl.textContent = hist.length;
     if (!listEl) return;
-    listEl.innerHTML = hist.map(h => {
+    listEl.innerHTML = hist.map((h, idx) => {
+        const isLatest = idx === 0;
         const prog = getProgress(h.file);
         const progSpan = prog && prog.num
             ? (prog.pct !== undefined
@@ -708,13 +679,19 @@ function renderHistoryPanel() {
             : '';
         const href = h.file ? getOpenHref(h.file) : '#';
         const displayTitle = h.titleZh || h.title;
-        return `<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors">
-            <span class="read-badge flex-shrink-0">✓ 已讀</span>
-            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
+        const rowBg = isLatest ? 'bg-amber-50 hover:bg-amber-100' : 'hover:bg-gray-50';
+        const label = isLatest
+            ? `<span class="last-viewed-badge flex-shrink-0">上次閱讀</span>`
+            : `<span class="read-badge flex-shrink-0">✓ 已讀</span>`;
+        const btnLabel = isLatest ? '繼續閱讀' : '開啟';
+        const btnStyle = isLatest ? 'background:#92400e' : 'background:#334155';
+        return `<div class="flex items-center gap-3 px-4 py-2.5 transition-colors ${rowBg}">
+            ${label}
+            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate font-${isLatest?'medium':'normal'}" title="${displayTitle}">${displayTitle}</span>
             ${progSpan}
             <span class="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">${timeAgo(h.lastRead)}</span>
             <a href="${href}" target="_blank" data-track-file="${h.file}" data-track-title="${h.title}" data-track-zh="${h.titleZh||''}"
-               class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="background:#334155">開啟</a>
+               class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="${btnStyle}">${btnLabel}</a>
             <button onclick="removeReadEntry('${h.file.replace(/'/g, '\\')}');renderHistoryPanel();renderCards();"
                     class="text-gray-300 hover:text-red-400 text-sm leading-none transition-colors flex-shrink-0">&times;</button>
         </div>`;
@@ -727,13 +704,9 @@ function removeReadEntry(file) {
         localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
         const sc = document.querySelector('#statsRow div:last-child .mono');
         if (sc) sc.textContent = hist.length;
-        // Also clear resume banner if this was the last viewed doc
+        // Also clear isLV card badge if this was the last viewed doc
         const lv = getLastViewed();
-        if (lv && lv.file === file) {
-            localStorage.removeItem(LS_KEY);
-            const wrap = document.getElementById('resumeWrap');
-            if (wrap) wrap.style.display = 'none';
-        }
+        if (lv && lv.file === file) localStorage.removeItem(LS_KEY);
     } catch(e) {}
 }
 
@@ -758,7 +731,7 @@ document.addEventListener('click', e => {
 });
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderResumeBanner();renderHistoryPanel();});
+loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderHistoryPanel();});
 </script>
 </body>
 </html>
