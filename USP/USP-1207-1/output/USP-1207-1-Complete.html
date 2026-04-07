@@ -551,6 +551,13 @@ window.addEventListener('scroll', function() {
     var btn = document.getElementById('backToTop');
     if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
 });
+// Progress tracking (single-section doc: mark as read on visit)
+(function() {
+    try {
+        var _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
+        localStorage.setItem(_pKey, JSON.stringify({id:'sec0', num:'0', label:'Complete Chapter', ts: Date.now()}));
+    } catch(e) {}
+})();
 </script>
 </body>
 </html>
