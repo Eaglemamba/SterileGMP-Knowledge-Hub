@@ -576,7 +576,6 @@ Safety and Performance Requirements,” “Benefit-Risk Analysis and Risk Manage
 cation and Validation.” Individual sections of the submission file can be more or less detailed, at the discretion
 of the submitting pharmaceutical company. Guidance can also be found in the Team-NB position papers
 on documentation requirements and on best practices for the submission of technical documentation (2,3).
-Likewise, TR-73-2 follows the same structure as the submission file. The first paragraph of each section of this
 report describes the proposed content of the corresponding section of the submission file.
 To facilitate the review, summaries of each chapter can be provided. Additionally, an overview of design devel-
 opment might be helpful to navigate the GSPR checklist and attached reports. The summaries should clearly
@@ -2385,7 +2384,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Whitney Alexis, Publications Manager, +1 (301) 656-5900.
 Written correspondence can be sent to: PDA, Inc. Attn: Whitney Alexis, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 === PDF PAGE 40 ===
 Application of Medical Device Regulation Annex I Requirements for Staked Needle Syringes
@@ -2457,7 +2455,6 @@ Kelly Waldron, ValSource
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

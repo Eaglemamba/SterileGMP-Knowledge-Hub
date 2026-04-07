@@ -1442,7 +1442,6 @@ Bioprocessing Equipment; ASME: New York, NY, 2022.
 ASTM International
 ASTM International. ASTM E2500-20 Standard Guide for Specification, Design, and Verification of
 Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment; ASTM: West
-Conshohocken, PA, 2020.
 European Commission
 European Commission. Directive 2001/83/EC of the European Parliament and of the Council of 6
 November 2001 on the Community Code Relating to Medicinal Products for Human Use; OJ. Publications
@@ -1477,7 +1476,6 @@ International Society for Pharmaceutical Engineering. ISPE Good Practice Guide: 
 Edition. ISPE: Bethesda, MD, 2023.
 International Society for Pharmaceutical Engineering. ISPE Good Practice Guide: Approaches to
 Commissioning and Qualification of Pharmaceutical Water and Steam Systems, 3rd Edition. ISPE:
-Bethesda, MD, 2016.
 International Society for Pharmaceutical Engineering. ISPE Good Practice Guide: Critical Utilities GMP
 Compliance. ISPE: Bethesda, MD, 2020.
 International Society for Pharmaceutical Engineering. ISPE Guide: Advanced Therapy Medicinal Products
