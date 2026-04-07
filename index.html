@@ -36,6 +36,10 @@
         body.search-active .bg-gradient-to-br { padding-bottom: 1.5rem; }
         .last-viewed-badge { font-size: 0.6rem; padding: 1px 7px; border-radius: 9999px; font-weight: 700; background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; letter-spacing: 0.03em; white-space: nowrap; }
         .doc-card.is-last-viewed { border-color: #fcd34d !important; box-shadow: 0 0 0 2px #fef3c7; }
+        .read-badge { font-size: 0.6rem; padding: 1px 7px; border-radius: 9999px; font-weight: 700; background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; letter-spacing: 0.03em; white-space: nowrap; }
+        .doc-card.is-read { border-left: 3px solid #6ee7b7 !important; }
+        .history-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .history-panel.open { max-height: 600px; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
@@ -52,7 +56,7 @@
                 <p class="text-slate-300 text-sm mt-1">Sterile Manufacturing GMP — Bilingual Educational Document Index</p>
                 <p class="text-xs text-slate-400 mt-2">Last updated: <span id="lastUpdated"></span></p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5" id="statsRow"></div>
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-5" id="statsRow"></div>
         </div>
     </div>
 
@@ -79,6 +83,25 @@
     <!-- RESUME BANNER -->
     <div class="max-w-6xl mx-auto px-6 mt-3" id="resumeWrap" style="display:none">
         <div id="resumeBanner" class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3"></div>
+    </div>
+
+    <!-- READING HISTORY PANEL -->
+    <div class="max-w-6xl mx-auto px-6 mt-2" id="historyWrap" style="display:none">
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <button onclick="toggleHistory()" class="w-full flex items-center justify-between px-4 py-2.5 text-left hover:bg-gray-50 transition-colors" id="historyToggleBtn">
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-semibold text-gray-700">閱讀歷史</span>
+                    <span id="historyCount" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 font-bold"></span>
+                </div>
+                <span id="historyChevron" class="text-gray-400 text-xs transition-transform">▼</span>
+            </button>
+            <div class="history-panel" id="historyPanel">
+                <div id="historyList" class="divide-y divide-gray-100 max-h-72 overflow-y-auto"></div>
+                <div class="px-4 py-2 border-t border-gray-100 flex justify-end">
+                    <button onclick="clearReadHistory()" class="text-[10px] text-gray-400 hover:text-red-500 transition-colors">清除全部閱讀記錄</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- DOCUMENT CARDS -->
@@ -426,7 +449,8 @@ function renderStats(){
     const allTags=[...new Set(documents.flatMap(d=>d.tags))];
     const srcCount=new Set(documents.map(d=>getSourceOrg(d.source))).size;
     const latest=documents.reduce((a,b)=>a.date>b.date?a:b);
-    const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'}];
+    const readCount=getReadHistory().length;
+    const stats=[{v:t,l:'Documents'},{v:srcCount,l:'Sources'},{v:tp+'p',l:'Pages Covered'},{v:allTags.length,l:'Topics'},{v:readCount,l:'已讀文件'}];
     document.getElementById('statsRow').innerHTML=stats.map(s=>`<div class="bg-white/10 backdrop-blur rounded-lg px-4 py-3 border border-white/20 hover:border-white/40 transition-colors text-center"><div class="mono text-2xl font-bold text-white">${s.v}</div><div class="text-xs text-slate-300 mt-0.5">${s.l}</div></div>`).join('');
     document.getElementById('lastUpdated').textContent=latest.date;
 }
@@ -531,12 +555,14 @@ function renderCards(){
     if(!docs.length){document.getElementById('docGrid').innerHTML='<div class="col-span-full text-center py-12 text-gray-400">No documents match.</div>';return;}
     const mx=Math.max(...docs.map(d=>d._score||0),1);
     const _lv=getLastViewed();
+    const _readMap=Object.fromEntries(getReadHistory().map(h=>[h.file,h]));
 
     document.getElementById('docGrid').innerHTML=docs.map((d,i)=>{
         const sc=sourceColors[d.source]||{bg:'#f1f5f9',text:'#475569',short:d.source};
         const tags=d.tags.slice(0,3).map(t=>`<span class="tag-pill ${tagCls[t]||'bg-gray-100 text-gray-600'}">${t}</span>`).join('');
         const fb=d.figures?`<span class="tag-pill bg-orange-50 text-orange-600">${d.figures} fig</span>`:'';
         const isLV=_lv&&_lv.file===d.file;
+        const readEntry=_readMap[d.file]||null;
         const prog=getProgress(d.file);
         const _href=d.file?getOpenHref(d.file):'';
         const btn=d.file?`<a href="${_href}" target="_blank" data-track-file="${d.file}" data-track-title="${d.title.replace(/"/g,'&quot;')}" data-track-zh="${(d.titleZh||'').replace(/"/g,'&quot;')}"
@@ -554,9 +580,10 @@ function renderCards(){
         const sm=!s,ss=!s||!(d._hits&&d._hits.length>0);
         const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
         const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
+        const readBadge=readEntry&&!isLV?`<span class="read-badge" title="上次開啟 ${timeAgo(readEntry.lastRead)}">✓ 已讀</span>`:'';
         const progBadge=prog&&prog.num?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`:'';
-        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}">
-            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
+        return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}${readEntry&&!isLV?' is-read':''}">
+            ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}${readBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
             <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
             ${d.titleZh?`<p class="text-xs text-gray-500 mt-0.5">${d.titleZh}</p>`:''}
             ${sm?`<div class="flex gap-1 flex-wrap mt-2">${tags}${fb}</div>`:''}
@@ -570,12 +597,30 @@ function renderCards(){
 }
 
 // ============================================================
-// LAST VIEWED TRACKING
+// LAST VIEWED + READ HISTORY TRACKING
 // ============================================================
 const LS_KEY = 'sgk_last_viewed';
+const LS_HISTORY = 'sgk_read_history';
 
+function getReadHistory() {
+    try { return JSON.parse(localStorage.getItem(LS_HISTORY) || '[]'); } catch(e) { return []; }
+}
+function getReadEntry(file) {
+    return getReadHistory().find(x => x.file === file) || null;
+}
 function trackOpen(file, title, titleZh) {
-    try { localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() })); } catch(e) {}
+    try {
+        localStorage.setItem(LS_KEY, JSON.stringify({ file, title, titleZh, ts: Date.now() }));
+        const hist = getReadHistory();
+        const ex = hist.find(h => h.file === file);
+        if (ex) { ex.lastRead = Date.now(); ex.count = (ex.count || 1) + 1; }
+        else { hist.push({ file, title, titleZh, firstRead: Date.now(), lastRead: Date.now(), count: 1 }); }
+        localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
+        renderHistoryPanel();
+        // Update the read-count stat badge live
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = getReadHistory().length;
+    } catch(e) {}
 }
 
 function getProgress(file) {
@@ -630,6 +675,67 @@ function renderResumeBanner() {
     wrap.style.display = 'block';
 }
 
+// ============================================================
+// HISTORY PANEL
+// ============================================================
+let historyOpen = false;
+function toggleHistory() {
+    historyOpen = !historyOpen;
+    const panel = document.getElementById('historyPanel');
+    const chevron = document.getElementById('historyChevron');
+    if (panel) panel.classList.toggle('open', historyOpen);
+    if (chevron) chevron.style.transform = historyOpen ? 'rotate(180deg)' : '';
+}
+
+function renderHistoryPanel() {
+    const hist = getReadHistory().slice().sort((a,b) => b.lastRead - a.lastRead);
+    const wrap = document.getElementById('historyWrap');
+    const countEl = document.getElementById('historyCount');
+    const listEl = document.getElementById('historyList');
+    if (!wrap) return;
+    if (!hist.length) { wrap.style.display = 'none'; return; }
+    wrap.style.display = 'block';
+    if (countEl) countEl.textContent = hist.length;
+    if (!listEl) return;
+    listEl.innerHTML = hist.map(h => {
+        const prog = getProgress(h.file);
+        const progSpan = prog && prog.num
+            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}</span>`
+            : '';
+        const href = h.file ? getOpenHref(h.file) : '#';
+        const displayTitle = h.titleZh || h.title;
+        return `<div class="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors">
+            <span class="read-badge flex-shrink-0">✓ 已讀</span>
+            <span class="text-xs text-gray-800 flex-1 min-w-0 truncate" title="${displayTitle}">${displayTitle}</span>
+            ${progSpan}
+            <span class="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">${timeAgo(h.lastRead)}</span>
+            <a href="${href}" target="_blank" data-track-file="${h.file}" data-track-title="${h.title}" data-track-zh="${h.titleZh||''}"
+               class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="background:#334155">開啟</a>
+            <button onclick="removeReadEntry('${h.file.replace(/'/g, '\\')}');renderHistoryPanel();renderCards();"
+                    class="text-gray-300 hover:text-red-400 text-sm leading-none transition-colors flex-shrink-0">&times;</button>
+        </div>`;
+    }).join('');
+}
+
+function removeReadEntry(file) {
+    try {
+        const hist = getReadHistory().filter(h => h.file !== file);
+        localStorage.setItem(LS_HISTORY, JSON.stringify(hist));
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = hist.length;
+    } catch(e) {}
+}
+
+function clearReadHistory() {
+    try {
+        localStorage.removeItem(LS_HISTORY);
+        document.getElementById('historyWrap').style.display = 'none';
+        const sc = document.querySelector('#statsRow div:last-child .mono');
+        if (sc) sc.textContent = '0';
+        renderCards();
+    } catch(e) {}
+}
+
 // Delegated click handler for all Open buttons (incl. resume banner)
 document.addEventListener('click', e => {
     const a = e.target.closest('a.track-open');
@@ -641,7 +747,7 @@ document.addEventListener('click', e => {
 });
 
 let st;document.getElementById('searchBox').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderCards,150);});
-loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderResumeBanner();});
+loadData().then(()=>{initSourceFilters();initFilters();renderStats();renderCards();renderResumeBanner();renderHistoryPanel();});
 </script>
 </body>
 </html>
