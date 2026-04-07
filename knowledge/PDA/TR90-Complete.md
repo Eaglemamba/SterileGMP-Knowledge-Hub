@@ -2490,7 +2490,6 @@ Unplanned/corrective maintenance
 The goal of trending is to permit a holistic analysis of control information over a period of time or
 across different circumstances. Such analysis facilitates identification of patterns, potential influences,
 and genuine root causes of nonconformances.
-Metrics, KPIs, and data relevant to routine monitoring should be categorized and trended to monitor
 the holistic performance of CCS, for example:
 •
 Root causes of nonconformances (e.g., control designs, training, knowledge, communication)
@@ -4120,7 +4119,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Tehya Enger, Publications Manager, +1 (301) 656-5900.
 Written correspondence can be sent to: PDA, Inc. Attn: Tehya Enger, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 === PDF PAGE 74 ===
 Contamination Control Strategy Development in Pharmaceutical Manufacturing
@@ -4196,7 +4194,6 @@ Kristin Valente, Merck & Co., Inc.
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

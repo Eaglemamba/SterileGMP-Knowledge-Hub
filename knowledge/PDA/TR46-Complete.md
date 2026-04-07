@@ -2133,7 +2133,6 @@ U.S. Food and Drug Administration.
 Licensing of Wholesale Prescription Drug
 Distributors; U.S. Department of
 Health and Human Services:
-Washington, DC, 1999.
 25.
 U.S. Food and Drug Administration.
 21 CFR 203—Prescription Drug
@@ -2280,7 +2279,6 @@ Association. ISTA PCG-03 Thermal
 Shipping System: Performance Qualification
 (PQ) and Performance Verification (PV)
 Best Practice Guideline; ISTA: East
-Lansing, MI, 2022.
 48.
 van Asselt, E J, et al. Pharma
 Requirements for Temperature
@@ -2575,7 +2573,6 @@ Marilyn Foster, Technical Editor/Writer
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

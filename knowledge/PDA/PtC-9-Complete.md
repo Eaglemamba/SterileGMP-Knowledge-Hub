@@ -976,7 +976,6 @@ having its own standalone BCP. Some were focused more on the health and safety a
 ers were aimed more on recovery of the IT infrastructure. These different BCP designs had a direct
 impact not only on the speed of response, but on the overall effectiveness of the response of the various
 pharmaceutical organizations.
-Also, BCPs impacted whether the activities of the affected corporate organizations were disrupted
 or if they were able to implement the already formalized actions. It identified the need to conduct
 mock-up actions prior to the actual challenge in a defined frequency, providing the opportunity to the
 effectiveness of the arrangements in place, and to confirm that they remain robust and fit for use. This
@@ -1978,7 +1977,6 @@ Suite 150, Bethesda, MD 20814.
 To order reprints, please contact:
 Tehya Enger, Publications Manager, +1 (301) 656-5900.
 Written correspondence can be sent to: PDA, Inc. Attn: Tehya Enger, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic
 About PDA Points to Consider
 PDA Points to Consider are global consensus documents which reflect current industry best practices and think-
@@ -2046,7 +2044,6 @@ Kelly Waldron, ValSource
 Bethesda Towers
 4350 East West Highway
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

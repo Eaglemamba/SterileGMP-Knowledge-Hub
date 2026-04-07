@@ -1,4 +1,4 @@
-# Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice (2004): Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice
+# FDA Guidance for Industry: Sterile Drug Products by Aseptic Processing — CGMP (2004)
 
 --- PAGE 1 ---
 

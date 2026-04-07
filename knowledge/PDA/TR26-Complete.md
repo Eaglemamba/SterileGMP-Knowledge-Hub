@@ -917,13 +917,13 @@ pipe adjacent to each other at the bottom plate of the housing (Figure 4.2-5B). 
 housing is positioned at the dome of the housing and the outlet pipe on the bottom plate (Figure 4.2-
 6B). Most housings and capsules also have vent ports for removing air.
 
-Figure 4.2-5A Filter T-Style Housing
+*[Figure 4.2-5A Filter T-Style Housing]*
 
-Figure 4.2-5B Flow Diagram for T-Style Filter
+*[Figure 4.2-5B Flow Diagram for T-Style Filter]*
 
-Figure 4.2-6A Cutaway View of an In-line Style Stainless-Steel Filter Housing with Cartridge
+*[Figure 4.2-6A Cutaway View of an In-line Style Stainless-Steel Filter Housing with Cartridge]*
 
-Figure 4.2-6B Flow Diagram for In-Line Filter
+*[Figure 4.2-6B Flow Diagram for In-Line Filter]*
 
 In addition to housing styles, the filter elements themselves have multiple adapter options (Figure 4.2-7) for
 fitting the filter into the housing. The most common filter-cartridge adapter is a double O-ring, doublebayonet
