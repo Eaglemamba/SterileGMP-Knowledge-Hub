@@ -1724,25 +1724,49 @@ tr:nth-child(even) {
         const btnLeft = document.getElementById('navScrollLeft');
         const btnRight = document.getElementById('navScrollRight');
 
-        // Reading progress tracking
+        // Reading progress — high-water mark (furthest section reached, never goes back)
         const _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
         let _saveTimer = null;
         let _current = '';
+        let _maxIdx = -1;
+
+        // Init: restore existing max index from storage
+        (function() {
+            try {
+                var ex = JSON.parse(localStorage.getItem(_pKey) || 'null');
+                if (ex && ex.maxId) {
+                    sections.forEach(function(s, i) {
+                        if (s.getAttribute('id') === ex.maxId) _maxIdx = i;
+                    });
+                }
+            } catch(e) {}
+        })();
 
         function _saveProgress() {
             if (!_current) return;
-            const nav = document.querySelector('.nav-item.active');
+            var curIdx = -1;
+            sections.forEach(function(s, i) {
+                if (s.getAttribute('id') === _current) curIdx = i;
+            });
+            if (curIdx > _maxIdx) _maxIdx = curIdx; // only advance
+            var maxSec = sections[_maxIdx];
+            if (!maxSec) return;
+            var maxId = maxSec.getAttribute('id');
+            var maxNav = document.querySelector('.nav-item[data-section="' + maxId + '"]');
+            var isComplete = _maxIdx >= sections.length - 1;
             try {
                 localStorage.setItem(_pKey, JSON.stringify({
-                    id: _current,
-                    label: nav ? (nav.querySelector('.nav-label')||{}).textContent||'' : '',
-                    num: nav ? (nav.querySelector('.nav-num')||{}).textContent||'' : '',
-                    ts: Date.now()
+                    id:       maxId,
+                    maxId:    maxId,
+                    label:    maxNav ? (maxNav.querySelector('.nav-label')||{}).textContent||'' : '',
+                    num:      maxNav ? (maxNav.querySelector('.nav-num')||{}).textContent||'' : '',
+                    complete: isComplete,
+                    ts:       Date.now()
                 }));
             } catch(e) {}
         }
 
-        // Restore progress: honor URL hash first, then saved progress
+        // Restore progress: honor URL hash first, then jump to furthest section reached
         function _restoreProgress() {
             var targetId = location.hash ? location.hash.substring(1) : null;
             if (!targetId) {
@@ -1783,7 +1807,7 @@ tr:nth-child(even) {
 
             _current = '';
             sections.forEach(function(section) {
-                const sectionTop = section.offsetTop - 100;
+                var sectionTop = section.offsetTop - 100;
                 if (window.scrollY >= sectionTop) {
                     _current = section.getAttribute('id');
                 }
@@ -1797,7 +1821,6 @@ tr:nth-child(even) {
                 }
             });
 
-            // Debounced save
             clearTimeout(_saveTimer);
             _saveTimer = setTimeout(_saveProgress, 500);
         });
