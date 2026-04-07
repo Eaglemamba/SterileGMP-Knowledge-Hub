@@ -206,6 +206,8 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 The fastest path: just run `/project-sync` — it audits all files automatically and makes edits where needed.
 
+> **Note:** `/project-sync` covers items 1, 2, and 5 automatically (ROADMAP dates/counts, INDEX.md entries, folder integrity). It does **not** cover items 3 and 4 — after running it, manually verify whether `CLAUDE.md` or `docs/PROMPT.md` need updating.
+
 ### Manual checklist (if not using /project-sync)
 
 #### 1. docs/ROADMAP.md — always update
