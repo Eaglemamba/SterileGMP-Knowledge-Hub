@@ -200,32 +200,56 @@ git add PDA/TRXX/ reports.json knowledge/ "Raw pdfs/processed/" && git commit -m
 
 ---
 
-## After Every git push — Update ROADMAP.md
+## After Every git push — Project File Sync
 
-**Whenever a `git push` is executed (regardless of which documents were added), immediately update `docs/ROADMAP.md` to reflect current status.** Do this AFTER the push completes, before ending the session.
+**Whenever a `git push` is executed, run `/project-sync` OR manually complete the checklist below before ending the session.**
 
-Update these fields in `docs/ROADMAP.md` by reading the actual state from `reports.json`:
+The fastest path: just run `/project-sync` — it audits all files automatically and makes edits where needed.
 
-1. **Last updated** date — set to today
-2. **PDA Current Status table** — recount: how many have `section_map` (complete) vs skeleton (metadata only, no section_map or empty section_map)
-3. **ISPE Current Status table** — same recount per report
-4. **Overall completion percentage** — complete count / total target (~65-70)
-5. **Phase 1 Roadmap table** — tick off any tasks that are now done (move from pending to complete)
+### Manual checklist (if not using /project-sync)
 
-To get accurate counts:
+#### 1. docs/ROADMAP.md — always update
+- [ ] "Last updated" line → set to today + describe what changed
+- [ ] "Current Status at a Glance" table → recount from `reports.json`
+- [ ] Per-source counts (PDA, ISPE, USP, FDA, ICH, PIC/S, ISO) → recount from `reports.json`
+- [ ] Active Priorities → still accurate? Re-order if needed
+- [ ] Phase tasks → tick off newly completed items
+
 ```bash
+# Accurate count by source:
 python3 -c "
-import json
+import json, collections
 d = json.load(open('reports.json'))
-reports = d['reports']
-for k, v in reports.items():
-    has_sections = bool(v.get('section_map'))
-    source = v.get('source', k)
-    print(f'{k}: {\"COMPLETE\" if has_sections else \"skeleton\"} | {source}')
+src = collections.Counter()
+for k, v in d['reports'].items():
+    if v.get('section_map'):
+        s = v.get('source','').split()[0]
+        src[s] += 1
+for k,v in sorted(src.items()): print(f'{k}: {v}')
+print('Total:', sum(src.values()))
 "
 ```
 
-Do NOT rewrite the entire `docs/ROADMAP.md` — only update the numbers and dates that have changed. Keep all strategy, gap analysis, and roadmap text intact.
+#### 2. knowledge/INDEX.md — update when new knowledge MDs added
+- [ ] New report block added (file name, covers questions about, key terms, sections)
+- [ ] Quick Topic Routing Guide table has new row
+- [ ] Cross-Report Topics updated if new report overlaps existing topics
+
+#### 3. CLAUDE.md (this file) — update when workflow changes
+- [ ] New source org added → add to Naming Conventions + source color note
+- [ ] New folder type introduced → update File Structure Convention diagram
+- [ ] New known pitfall discovered → add to Known Pitfalls section
+
+#### 4. docs/PROMPT.md — update when generation approach changes
+- [ ] Section generation instructions still match current HTML structure
+- [ ] Any new source org needs its own color/header template documented
+
+#### 5. Folder structure integrity — check when folders moved or renamed
+- [ ] `reports.json` `folder` field matches actual folder path for affected reports
+- [ ] `index.html` Open button links still resolve (open in browser to verify)
+- [ ] `knowledge/EXPERT/` exists if Expert Knowledge Base files were added
+
+Do NOT rewrite entire files — only update sections where actual changes occurred.
 
 ---
 
