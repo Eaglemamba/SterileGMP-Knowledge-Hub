@@ -581,7 +581,7 @@ function renderCards(){
         const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
         const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
         const readBadge=readEntry&&!isLV?`<span class="read-badge" title="上次開啟 ${timeAgo(readEntry.lastRead)}">✓ 已讀</span>`:'';
-        const progBadge=prog&&prog.num?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`:'';
+        const progBadge=prog&&prog.num?(prog.pct!==undefined?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium border whitespace-nowrap ${prog.pct>=95?"bg-emerald-50 text-emerald-700 border-emerald-200":"bg-blue-50 text-blue-700 border-blue-200"}" title="捲軸位置已儲存">${prog.pct}%</span>`:`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`):'';
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}${readEntry&&!isLV?' is-read':''}">
             ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}${readBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
             <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
@@ -631,6 +631,8 @@ function getProgress(file) {
 
 function getOpenHref(file) {
     const p = getProgress(file);
+    // Scroll-tracked docs (scrollY present) restore position via page JS — no hash needed
+    if (p && p.scrollY !== undefined) return file;
     return p && p.id ? file + '#' + p.id : file;
 }
 
@@ -699,12 +701,10 @@ function renderHistoryPanel() {
     if (!listEl) return;
     listEl.innerHTML = hist.map(h => {
         const prog = getProgress(h.file);
-        const docData = documents.find(d => d.file === h.file);
-        const isSingle = docData && docData.sections <= 1;
         const progSpan = prog && prog.num
-            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`
-            : isSingle
-            ? `<span class="text-[10px] text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200 whitespace-nowrap">全文</span>`
+            ? (prog.pct !== undefined
+                ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap ${prog.pct >= 95 ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-blue-700 bg-blue-50 border-blue-200'}" title="捲軸位置已儲存">已讀 ${prog.pct}%</span>`
+                : `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`)
             : '';
         const href = h.file ? getOpenHref(h.file) : '#';
         const displayTitle = h.titleZh || h.title;

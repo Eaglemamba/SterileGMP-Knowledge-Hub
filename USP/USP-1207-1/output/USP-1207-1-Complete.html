@@ -551,11 +551,30 @@ window.addEventListener('scroll', function() {
     var btn = document.getElementById('backToTop');
     if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
 });
-// Progress tracking (single-section doc: mark as read on visit)
+// Scroll-position tracking & restore (single-section doc, no nav)
 (function() {
     try {
         var _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
-        localStorage.setItem(_pKey, JSON.stringify({id:'sec0', num:'0', label:'Complete Chapter', ts: Date.now()}));
+        // Restore saved scroll position
+        var _saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
+        if (_saved && _saved.scrollY) {
+            window.addEventListener('load', function() {
+                setTimeout(function() { window.scrollTo(0, _saved.scrollY); }, 200);
+            });
+        }
+        // Save scroll progress (debounced)
+        var _t = null;
+        window.addEventListener('scroll', function() {
+            clearTimeout(_t);
+            _t = setTimeout(function() {
+                var maxScroll = document.body.scrollHeight - window.innerHeight;
+                var pct = maxScroll > 0 ? Math.round(window.scrollY / maxScroll * 100) : 100;
+                localStorage.setItem(_pKey, JSON.stringify({
+                    id: 'sec0', num: '0', label: 'Complete Chapter',
+                    scrollY: window.scrollY, pct: pct, ts: Date.now()
+                }));
+            }, 400);
+        });
     } catch(e) {}
 })();
 </script>
