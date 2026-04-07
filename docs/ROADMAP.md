@@ -25,6 +25,81 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 **Why separate repos for Layer 3:** This repo is public. Site SOPs contain proprietary process logic and may reflect client product information. Even after desensitization, the document structure itself carries IP risk. Layer 3 lives in a private repo, read locally by skills.
 
+---
+
+## Expert Knowledge Base — Practitioner Layer
+
+> **Session note — 2026-04-07:** This section was planned in a working session to capture David Kuo's 10 years of sterile manufacturing experience as a structured knowledge layer. It sits alongside Layer 1 (regulatory reference) as interpretive, experiential content — the "what it actually means in practice" companion to official guidelines.
+
+### What This Layer Is
+
+Layer 1 documents what regulations *say*. This layer documents what a practitioner *knows from doing it* — the failure modes, judgment calls, shortcuts that backfire, and decisions that aren't documented anywhere. Knowledge of this type is:
+- Tacit (in someone's head, not in any guideline)
+- Rare (very few people have the same cross-functional exposure)
+- Perishable (gets lost when people move on or organizations change)
+- High-leverage (saves weeks of trial and error for the next person)
+
+### Practitioner Background — David Kuo
+
+| Period | Role | Organization | Key Domain |
+|--------|------|-------------|------------|
+| 2014–2016 | Assistant Scientist | TWi Pharmaceuticals | Parenteral lyo ANDA formulation development |
+| 2016–2018 | Manager | Noratech Pharmaceuticals | US ANDA tech transfer, CMO/CRO management, CTD filing → FDA approval |
+| 2018–2019 | Production Specialist | Pfizer | Aseptic processing (antibiotic injectables), deviation handling |
+| 2019–2021 | Senior Technology Development Specialist | Amaran Biotech | DP line expansion (conceptual → construction → C&Q), DS scale-up tech transfer |
+| 2021–2025 | Assistant Manufacturing Manager | Amaran Biotech | Vanrx SA25 robotic filling (full lifecycle), VPHP validation, APS, new format integration |
+| 2025–now | Plant Operations Director | Amaran Biotech | 4-dept CDMO operations, 6 customer tech transfers, AI integration into GMP ops |
+
+**Proof points:**
+- ANDA 211463 — US FDA approved 2019-09-13 (parenteral lyo + diluent, first end-to-end ANDA managed as PM)
+- Vanrx SA25 — virtual installation through annual requalification, VPHP cycle dev & validation, new format integration
+- DP line built from zero — HAZOP, value engineering, construction supervision, C&Q completion
+- 6 customer products — 100% on-spec commercial batches delivered on schedule as CDMO
+
+### Ownable Knowledge Areas (Priority-Ranked)
+
+These are topics where David's experience is rare enough to constitute a knowledge moat — few practitioners have documented these from direct execution, and no public regulatory document covers the "how it actually went" dimension.
+
+| Priority | Topic | Why It's Ownable | Target File |
+|----------|-------|-----------------|-------------|
+| **#1** | Vanrx SA25 robotic aseptic filling — full lifecycle | Few SA25 sites globally; no public case documentation for virtual install → VPHP → APS → new format integration as a continuous narrative | `knowledge/EXPERT/vanrx-SA25-lifecycle.md` |
+| **#2** | Lyo ANDA end-to-end: bench → FDA approval | Formulation dev (TWi) + tech transfer + CMO mgmt + full CTD authorship + FDA discipline review response + approval — entire arc owned, ANDA 211463 as evidence | `knowledge/EXPERT/lyo-ANDA-end-to-end.md` |
+| **#3** | AI in GMP operations — live implementation | Deviation report agent, change control agent, BD evaluation tool — already running in GMP environment 2025; regulatory frameworks haven't caught up yet | `knowledge/EXPERT/ai-in-gmp-operations.md` |
+| **#4** | CDMO DP line: zero to commercial | Facility expansion (HAZOP to construction) → C&Q → first commercial batches for external clients — the "build and run" perspective | `knowledge/EXPERT/cdmo-line-build-to-commercial.md` |
+| **#5** | Sponsor ↔ CMO dual perspective | Managed CMOs as sponsor (Noratech); operated as CMO being managed (Amaran) — rare bilateral view of tech transfer negotiations, audit dynamics, quality agreements | `knowledge/EXPERT/sponsor-cmo-bilateral-view.md` |
+| **#6** | VPHP cycle development & validation | Cycle parameter rationale, failure modes, bioindicator placement — minimal public documentation on the decision process behind validated cycles | `knowledge/EXPERT/vphp-cycle-development.md` |
+| **#7** | Aseptic filling deviation patterns | 23 deviation reports written at Pfizer + ongoing CDMO deviation handling — pattern recognition across deviation types, investigation pitfalls, CAPA design | `knowledge/EXPERT/aseptic-deviation-patterns.md` |
+| **#8** | US ANDA CTD authorship (parenteral) | Sections 2.3.P, 3.2.P.2/3/7/8, M1 (labeling/packaging) — practical authorship decisions, FDA discipline review letter dynamics | `knowledge/EXPERT/anda-ctd-authorship.md` |
+| **#9** | CDMO business operations | Cost reduction (IPC frequency, RTP bags, filter redesign — 15–20% savings), energy load-shedding, BD at exhibitions, client audit preparation | `knowledge/EXPERT/cdmo-operations-economics.md` |
+
+### Capture Method
+
+Each file will be built using one of three inputs — whichever is available:
+
+| Input Type | Method |
+|-----------|--------|
+| Existing Word/PDF documents | Extract + restructure into knowledge MD format |
+| Partial notes + recall | Structured interview (topic-by-topic guided Q&A) |
+| Pure recall | Guided oral dictation with follow-up questions |
+
+**Format:** Each knowledge MD uses the same conventions as `knowledge/PDA/*.md` and `knowledge/ISPE/*.md` — but content is original practitioner knowledge, not extracted from a regulatory document. Source attribution: `Source: David Kuo, direct experience [year range]`.
+
+### Status
+
+| File | Status | Input Available |
+|------|--------|----------------|
+| `vanrx-SA25-lifecycle.md` | ⬜ Not started | Recall + possible internal docs |
+| `lyo-ANDA-end-to-end.md` | ⬜ Not started | Recall (ANDA 211463 as anchor) |
+| `ai-in-gmp-operations.md` | ⬜ Not started | Recall + AI tool artifacts |
+| `cdmo-line-build-to-commercial.md` | ⬜ Not started | Recall + possible C&Q docs |
+| `sponsor-cmo-bilateral-view.md` | ⬜ Not started | Recall |
+| `vphp-cycle-development.md` | ⬜ Not started | Recall + possible validation report |
+| `aseptic-deviation-patterns.md` | ⬜ Not started | Recall |
+| `anda-ctd-authorship.md` | ⬜ Not started | Recall |
+| `cdmo-operations-economics.md` | ⬜ Not started | Recall |
+
+---
+
 ### Layer 2 — Operational MD Files to Build (~27 files)
 
 | Type | Files | Used by |
