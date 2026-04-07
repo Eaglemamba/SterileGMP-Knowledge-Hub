@@ -1,0 +1,508 @@
+# USP General Chapter 〈1207〉: Package Integrity Evaluation—Sterile Products
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Aug-2016
+Document Type:
+General Chapter
+DocId:
+GUID-0AE321D5-158A-4B6F-8F2B-DB66B2342E95_1_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99926_01_01
+DOI Ref:
+g77z7
+© 2025 USPC
+Do not distribute
+〈1207〉 P
+ACKAGE INTEGRITY EVALUATION—STERILE PRODUCTS
+1. INTRODUCTION
+This chapter provides guidance on the integrity assurance of nonporous packages intended for sterile pharmaceutical products.
+Background instruction is provided on the topics of leaks, leakage rate, and package sealing/closure mechanisms. Explanation is given as to
+how packages that conform to speci«ed leakage limits help to ensure the contained product meets and maintains sterility and relevant
+physicochemical speci«cations. The integration of package integrity assurance as a key component of the entire product life cycle is
+stressed. Guidance in the selection, validation, and use of leak test methodologies as well as package seal quality tests is included. Detailed
+recommendations are presented in three subchapters listed below:
+Package Integrity Testing in the Product Life Cycle—Test Method Selection and Validation 〈1207.1〉
+Package Integrity Leak Test Technologies 〈1207.2〉
+Package Seal Quality Test Technologies 〈1207.3〉
+At the end of this chapter, the Glossary section de«nes terms as they are used in the context of this set of four general information
+chapters.
+The term product–package refers to the container–closure system plus the product contents. The container–closure system consists of
+the primary packaging components, those components that are or may be in intimate contact with the product, as well as secondary
+packaging components vital to ensuring correct package assembly, for example, the aluminum cap used to seal a stoppered vial package.
+Suitable container–closure systems adequately store and protect the contained pharmaceutical product. Thus, sterile product–package
+integrity is the ability of a sterile product container–closure system to keep product contents in, while keeping detrimental environmental
+contaminants out. Speci«cally, leaks of concern for sterile product–packages include the following three categories described in Table 1. In
+other words, the leaks of concern for a given product–package are a function of the degree of package protection demanded by the product
+to ensure that all relevant product physicochemical and microbiological quality attributes are met through product expiry and use.
+T
+able 1. Product Quality Risks Posed by Leaks of Concern
+Leaks of Concern
+Product Quality Risks Posed by Leaks
+Capable of allowing entry of microorganisms
+Failure of product sterility quality attribute
+Capable of allowing escape of the product dosage form or allowing
+entry of external liquid or solid matter
+Failure of relevant product physicochemical quality attributes
+Capable of allowing change in gas headspace content. For
+example, loss of headspace iner t gases (e.g., nitrogen), loss of
+headspace vacuum, and/or entry of gases (e.g., oxygen, water
+vapor, air).
+Failure of relevant product physicochemical quality attributes
+and/or
+hindrance of product access by the end-user
+Package integrity is synonymous with container–closure integrity; these terms are used interchangeably throughout this chapter. In the
+past, to say a sterile product–package has container–closure integrity commonly meant that the package either had passed or was capable
+of passing a microbiological challenge test. This guidance chapter de«nes the concept of container–closure integrity more broadly,
+encompassing the absence of all package leaks that risk product quality. By this de«nition, a package is considered to have integrity if it
+allows no leakage greater than the product–package maximum allowable leakage limit. In other words, the largest and smallest leaks of
+concern are absent.
+Leakage differs from permeation. Leakage is the unintentional entry or escape of matter (solids, liquids, or gases) through a breach in a
+package wall or through a gap between package components. Leakage can also refer to the leaking matter itself. Leakage ¬ow rate is a
+function of the absolute and/or par tial pressure gradient of leaking matter that exists across the package barrier. In the context of this
+chapter, permeation is the passage of ¬uid (e.g., gas) into, through, and out of a nonporous package wall. Permeation, not leakage, occurs
+when only a small fraction of molecules is able to move through a barrier by way of any one hole. A nonporous package is able to permit
+permeation, but not the volumetric ¬ow of air. Package permeation test methodologies fall outside of the chapter scope and are not
+described.
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 2 ===
+Package integrity tests are leak test methods. A leak test is a method that detects the presence of (and in some cases, the magnitude or
+location of) a package breach or gap.
+Package seal quality tests are techniques used to characterize and monitor the quality and consistency of a package seal or closure
+system parameter, which can in¬uence the package’s ability to maintain integrity. An example is the peel force test widely used to test seal
+strength. Seal quality tests are not leak tests but can play a valuable role by monitoring a characteristic of the seal itself, the package
+materials, the package components, and/or the processes required to create the seal or closure mechanism.
+Integrity test methods vary not only in their application and detection limit, but also in terms of detection range, precision, and speci«city,
+for example. No one test is appropriate for all packages or for all leak testing applications. Selection criteria for package integrity test
+methods, as well as method comparison aids, are presented to guide the user in the selection process.
+Leak tests, even many commonly recognized industry standard testing approaches, require optimization and validation for each product–
+package application. A science- and risk-based approach may allow some tests to be leveraged for broader application under cer tain
+circumstances. For example, small differences in product formulation or package design and materials may permit the use of one test for
+multiple product–packages. Package integrity veri«cation plays an impor tant role throughout the product life cycle, star ting with product
+development and continuing through marketed product stability studies.
+2. SCOPE
+The package integrity leak tests and seal quality tests outlined in this chapter apply to the testing of both large and small volume
+container–closure systems for sterile pharmaceutical dosage forms. Such package systems include, but are not limited to, the following
+examples.
+Vials or bottles closed with elastomeric closures or screw-thread caps
+Form-«ll-seal plastic or glass ampules
+Syringes or car tridges
+Flexible bags or pouches
+Packages for some drug/device combination products (e.g., packages cased inside autoinjectors)
+Outside the chapter scope are packaging systems and processing equipment used in the preparation, storage, and manufacture of sterile
+pharmaceutical products. Examples include containers for active pharmaceutical ingredients and containers for product intermediate or «nal
+bulk product.
+Outside the chapter scope are packages used for sterile diagnostic products or medical devices, and some packages used for sterile
+drug/device combination products.
+Outside the chapter scope are products having a primary package composed of porous barrier package materials, i.e., materials designed
+with pores or openings to allow volumetric air ¬ow while preventing airborne microbial contamination.
+3. LEAKS AND LEAKAGE RATE
+Leaks are commonly conceptualized as holes of a de«ned diameter, or channels of distinctive diameter and length, although leaks that
+occur naturally are generally complex, multicavity tor tuous paths and are rarely uniform in size or shape. Even ar ti«cially created leaks such
+as laser-drilled defects (also called holes) used for leak-test method development and validation are irregular in size, shape, and depth. When
+stating the size of a leak, it is impor tant to de«ne the measurement approach. In some cases leaks are measured dimensionally, but quite
+often, leak size is determined based on gaseous leakage rate. For example, a package wall laser-drilled defect having a nominal diameter of
+5 ± 2 µm may have been size-cer ti«ed by matching the air¬ow rate through the drilled defect to that of a 5 ± 2 µm hole present in a thin metal
+plate reference standard when pressurized with dry air at speci«ed differential pressure and temperature conditions.
+Gaseous leakage rate is a measure of the rate of gas ¬ow (in mass or volume units) that passes through a leak path under speci«c
+conditions of temperature and the concentration or pressure differential across the barrier wall. Therefore, gaseous leakage rate has
+dimensions of pressure multiplied by volume, divided by time. The international standard SI nomenclature is pascal cubic meter per second
+(Pa · m
+ · s
+−1
+). These leakage measurement units refer to the quantity of leaking gas (Pa · m
+) per unit of time. When a leakage rate is
+described and no test conditions are noted, standard conditions of one standard atmosphere differential pressure with dry air at 25° are
+assumed. For a more complete discussion of gaseous leakage rates and units of measure refer to reference 1.
+Unintentional leaks in packages are often detected or sized using gas as a tracer element. Given a situation in which a tracer gas par tial
+pressure difference exists across the package barrier wall and no absolute pressure difference exists, gaseous leakage is predominantly
+diffusional in nature as the tracer gas moves from a region of higher concentration to a region of lower concentration. For example, the
+headspace in a vial package low in oxygen concentration and at ambient pressure at time of closure will exhibit a rise in headspace oxygen
+concentration over time as a function of diffusion rate (relative to package leak size) plus permeation rate (relative to permeability through
+the package). Such a change can be monitored instrumentally, as is discussed later in the chapter.
+Given the situation in which an absolute pressure difference exists across the package barrier wall, gas leakage through package gaps is
+more rapid (¬ux being primarily convective) as gas moves from the higher pressure region to one of lower pressure. For most package
+materials, the permeation rate of the gas of concern through the package wall is insigni«cant in comparison. In this example, the rate of
+leakage into the package is determined by monitoring the change in headspace absolute pressure as a function of time.
+For many instrumental leak test methods described in this chapter, gas ¬ow into or out of package leaks is induced by exer ting a pressure
+gradient across the package. In this way, a wide range of leak types and sizes can be identi«ed.
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 3 ===
+Liquid leakage rate is a measure of the volume of liquid that moves through a leak path as a function of time under speci«ed conditions of
+temperature and absolute differential pressure across the barrier wall. Liquid movement through a leak path occurs only when leak
+size/shape, package materials of construction, the absence of leak obstruction, tracer liquid composition, and test parameters all work
+together. All sterile product–packages within the chapter scope are intended to prevent liquid leakage and block microbial entry, thus it is the
+absence of liquid leakage ¬ow or the absence of liquid in the leak path, rather than the rate at which liquid leakage occurs that is typically
+veri«ed in relevant package leak tests. Liquid leakage rate measurements are only useful in measuring larger size leaks.
+4. CLOSURE TYPE AND MECHANICS
+An understanding of closure mechanics makes it possible to better characterize, monitor, and test packages for integrity. This section
+discusses various closure systems and how each type functions to ensure package integrity.
+
+### 4.1 Physically Mated Closures
+
+Closure can be achieved by the close physical mating of two surfaces that often are dissimilar in material composition. Examples include
+the interference «t of a plunger inser ted in a syringe barrel, the compression «t of an elastomeric closure capped onto a vial «nish surface,
+and the application force of a screw-cap torqued onto a bottle. Physically mated surfaces are not bonded together; therefore, a tiny gap
+exists even between well-closed components. Never theless, when properly designed and assembled, closure systems «t together such that
+liquid leakage (and microbial ingress) is prevented and gas migration is limited. Regarding screw-thread closures such as those used for
+ophthalmic-product dropper bottles, the barrier to leakage is afforded by inner cap surfaces pressing against the package opening, in some
+cases aided by a secondary gasket or plug. The winding path afforded by the threads of a screw-cap does not provide an optimal barrier to
+gas or liquid leakage, or to microbial ingress in the event of liquid presence in the cap threads.
+
+### 4.2 Physicochemically Bonded Closures
+
+Seals are formed when two similar or dissimilar surfaces are physicochemically bonded together. One example is the formation and
+sealing of contiguous containers from a single material (e.g., glass or plastic ampules). In other form, «ll, and seal systems, sheets of
+material are mated by means of a heat or ultrasonic welding process. Two dissimilar materials may be joined using an intermediate bonding
+material. Fully fused seals inherently block liquid leakage and microbial ingress; however, gaseous leakage and permeation may occur.
+
+### 4.3 Multiple-Dose Package Closures
+
+Multiple-dose package closures are designed to allow product access while limiting microbial ingress and product leakage between doses.
+For example, elastomeric closures for parenteral products requiring needle-puncture access are designed to offer reseal protection against
+microbial ingress and product leakage. Some multiple-dose ophthalmic dosage form package closures are designed with «lters, plugs, or
+other mechanical means that allow the product to be dispensed while restricting microbial ingress and product leakage. For example,
+ophthalmic product–package closure systems have been designed to automatically pinch shut between intermittent dosing to limit microbial
+entry and product loss.
+5. PRODUCT
+–P
+ACKAGE QUALITY REQUIREMENTS AND THE MAXIMUM ALLOWABLE LEAKAGE LIMIT
+As noted in Introduction, package integrity is necessary to maintain product critical quality attributes within physicochemical label-claim
+speci«cations and to ensure product sterility until time of use. Detrimental contaminants include microorganisms and any substances that
+threaten patient safety or product quality. Product leakage can cause a product to fail content or potency speci«cation limits. For cer tain
+products to maintain product physicochemical stability, the package needs to maintain a headspace of nonreactive gases and/or low water
+vapor content, sealed under atmospheric or reduced-pressure conditions. Headspace vacuum conditions may also be necessary to facilitate
+product ease of use, e.g., product reconstitution using a diluent injected into the container.
+Most package types display very low but de«nite gaseous leakage ¬ow through the gap that exists even between well-«tted closures.
+Therefore, it is not practical to require that packages be absolutely leak-free. Rather, it is the signi«cance of leakage in relation to product
+quality that needs to be considered. In other words, the package should not permit leakage beyond the product’s maximum allowable
+leakage limit. Such leaks of concern should be absent.
+Identifying the maximum allowable leakage limit for a product–package is a science- and risk-based decision. The smaller the leak path,
+the less likely the product can escape and the less likely microorganisms or other contaminants can enter. Eventually, leak paths may be so
+small that only headspace gas exchange is realistically possible. Package construction and assembly, package contents, and the range of
+environments a given product–package may be exposed to during its life cycle are to be considered when specifying the maximum allowable
+leakage limit.
+There are two major product–package quality requirement categories used when specifying the maximum allowable leakage limit and one
+subcategory that applies only to multiple-dose packages. These are discussed below.
+
+### 5.1 Sterility and Product Formulation Content must be Preserved; Gas Headspace Content Preservation is not Required
+
+This category includes product–packages for which the maximum allowable leakage limit correlates to the prevention of product
+formulation escape, or product contamination by external liquid or solid matter or by microorganisms, while gas headspace preservation (i.e.,
+ambient pressure air) is of no concern. The smallest leak paths that allow only limited gas exchange are irrelevant as they pose no real risk to
+product quality.
+Considerable published research exists exploring rigid package leaks and their relationship to risk of aqueous solution leakage and/or
+microbial ingress. A key study series found ori«ce leaks of approximately 0.1 µm in nominal diameter (using micropipettes) placed in rigid
+packages demonstrate a small risk of aqueous liquid passage, while ori«ce leaks as small as approximately 0.3 µm in nominal diameter «rst
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 4 ===
+demonstrate some risk of microbial ingress by liquid challenge (2,3). For a summary of similar studies comparing risks of microbial ingress
+and liquid leakage to leak size and type, the reader may refer to reference 4.
+Given this body of evidence, a maximum allowable leakage limit of less than 6 × 10
+−6
+ mbar · L/s (measured by helium mass spectrometry
+in the vacuum mode) can be adopted for products in this category packaged in rigid container–closure systems. This leakage rate equates
+to the presence of an ori«ce of nominal diameter of between 0.1 and 0.3 µm. At this leakage rate, the probability of microbial ingress was
+determined to be <0.10 (2). Selecting this conservative maximum allowable leakage limit will ensure a low risk of microbial ingress and liquid
+leakage and can eliminate the need to perform additional microbial ingress or liquid challenge studies as a function of leak size.
+For other container systems such as those made using ¬exible materials or those with complex, lengthy closure/seal interfaces, or those
+meant to contain a product of markedly greater leakage potential, the risk of microbial ingress or liquid passage through leak paths is not as
+widely publicized or perhaps understood. In such cases, where the relationship between defect size/type to the risks of microbial ingress
+and/or liquid passage is less prescriptive, a study exploring these relationships could be useful. Test results can be used to establish a
+meaningful maximum allowable leakage limit for the given product–package system, which can be employed for package integrity
+veri«cation by other validated leak test methods of choice. Once established, this maximum allowable leakage limit can be applied to similar
+product–packages with appropriate justi«cation.
+Finally, before classifying a product–package in this category, one may consider the potential impact of product life cycle processing,
+storage, distribution and use scenarios on package integrity. For example, elastomeric closures have been found to shrink and lose their
+viscoelastic proper ties during ultra-cold storage (≤−80°) to such an extent that gas in¬ux into stoppered vial packages may occur. During
+warming, package closure is restored, trapping gases and notably raising internal package pressure. In such cases, gas headspace
+preservation may be a product quality concern, even if the product does not require speci«c headspace content or pressure for optimum
+stability.
+
+### 5.2 Sterility
+
+, Product Formulation Content, and Gas Headspace Content must be Preserved
+The second category includes product–packages for which the package should prevent product formulation escape and product
+contamination by external liquid or solid matter or by microorganisms, but in addition, the package must preserve the gas headspace content
+or absolute pressure. Preservation of headspace content and/or pressure is needed to maintain product stability within physicochemical
+speci«cation limits, and/or to aid end-user product access. Thus, the maximum allowable leakage limit for such products is likely more
+stringent than that described in the «rst category. Although outside the chapter scope, the in¬uence of gas permeation through the package
+itself may also need to be considered when establishing the maximum allowable leakage limit as permeation plus leakage can impact
+package headspace content.
+The maximum allowable leakage limit for products in this category may be expressed in terms of the maximum allowable package
+headspace content or pressure change as a function of time. This limit, established for each product–package system, may be applied to
+other similar product–packages systems with appropriate justi«cation.
+
+### 5.3 Sterility must be Preserved; Product Access is Required
+
+This subcategory represents a quality requirement applicable only to multiple-dose product–packages included in either of the above two
+categories. Once the product–package has reached the end-user and the closure has been activated or otherwise compromised to allow
+dosage access and delivery, the maximum allowable leakage limit at this life cycle phase (called the in-use maximum allowable leakage
+limit) is de«ned in terms of microbial ingress and product loss prevention between and during dosage access. For example, elastomeric
+closures of multiple-dose vials or car tridges containing antimicrobial-preserved parenteral products are designed to afford reseal protection
+against microbial ingress and product formulation leakage as product is accessed via needle puncture as well as between doses.
+To establish the in-use maximum allowable leakage limit for multiple-dose package closure systems, a study will likely be required to
+explore the relationship between product access attempts, product loss risk and/or microbial ingress risk, versus leakage measurement by
+an alternative adequately sensitive leak test method of choice. These data can be used to establish a meaningful in-use maximum allowable
+leakage limit expressed in units of measure re¬ective of the preferred leak test method and that will assure that product loss and microbial
+ingress risk during use is minimal. The in-use maximum allowable leakage limit established for a given product–package may be applied to
+other similar product–packages systems with appropriate justi«cation.
+6. INHERENT P
+ACKAGE INTEGRITY AND THE P
+ACKAGE INTEGRITY PROFILE
+Inherent package integrity is the leakage characteristic of a well-assembled container–closure system using no-defect package
+components. Inherent package integrity is «rst determined during product–package development and quali«cation and is a measure of the
+leak tightness of a container–closure system, given anticipated variables of material composition, dimension, processing, and assembly.
+Inherent package integrity may also be determined as a function of anticipated «nal product storage, distribution, and use. Acceptable
+inherent package integrity for a container–closure system conforms to the speci«c product–package maximum allowable leakage limit.
+Inherent package integrity is expressed in terms that allow a meaningful comparison to the maximum allowable leakage limit.
+Con«rmation that the inherent package integrity conforms to the maximum allowable leakage limit is the «rst step in product–package
+integrity veri«cation. Veri«cation of package integrity continues throughout the product life cycle. The package integrity pro«le is an ongoing
+database of product life cycle package leak and seal quality test results. This pro«le provides information regarding package integrity given
+operative variations in package component design and material; package assembly and processing; and product storage, distribution, and
+stability. These concepts are more fully explored in Package Integrity Testing in the Product Life Cycle—Test Method Selection and Validation
+〈1207.1〉, Test Instrument Quali«cation, Method Development, and Method Validation.
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 5 ===
+In summary, a product–package system having integrity is one in which the inherent package integrity conforms to the required product–
+package maximum allowable leakage limit. Fur ther, the package integrity pro«le database operates as a risk management tool to ensure that
+«nished product container–closure systems are intact, able to block microbial ingress, restrict loss of product contents including critical
+headspace gases, and prevent entry of detrimental gases or other substances, thus ensuring that the product meets all relevant
+physicochemical and microbiological label-claim speci«cations through expiry and «nal end-use.
+REFERENCES
+1. Jackson CN, Sherlock CN, Moore PO, editors. In: Nondestructive testing handbook. 3rd ed. Vol. 1. Leak testing. Columbus, OH: The
+American Society for Nondestructive Testing; 1997.
+2. Kirsch LE, Nguyen L, Moeckly CS, Ger th R. Pharmaceutical container/closure integrity. II: The relationship between microbial ingress
+and helium leak rates in rubber-stoppered glass vials. PDA J Pharm Sci Technol. 1997;51(5):195–202.
+3. Kirsch LE. Pharmaceutical container/closure integrity. VI: A repor t on the utility of the liquid tracer methods for evaluating the
+microbial barrier proper ties of pharmaceutical packaging. PDA J Pharm Sci Technol. 2000;54(4):305–314.
+4. Guazzo DM, Singer DC, Stevens-Riley M, Walker D, Kirsch LE, Buus P
+, et al. Proposed revisions to general chapter sterile product
+packaging—integrity evaluation 〈1207〉. Stimuli to the revision process. Pharmacopeial Forum. 2014;40(5).
+GLOSSARY
+For de«nitions of container, materials of construction, packaging component, packaging system, primary packaging component, and
+secondary packaging component, see Packaging and Storage Requirements 〈659〉. In the context of this chapter and its subchapters, the
+following de«nitions relevant to packaging and package integrity methods, seal and closure mechanisms apply. For de«nitions of speci«c
+leak test and seal quality test methods, refer to 〈1207.2〉 and 〈1207.3〉, respectively.
+Accuracy:
+The accuracy of a leak test method is a measure of the ability of the method to correctly differentiate packages that leak above the
+claimed detection limit from those that leak below this limit (do not leak); a measure of false positive and negative occurrence. Alternatively, for
+those methods that deliver an outcome that is a direct quantitative measure of gas leakage rate (or of gas content or pressure), accuracy is a
+measure of the method’s ability to produce an outcome comparable to a true standard, such as a nationally recognized gas standard.
+Container–closure integrity:
+Container–closure integrity is the ability of a package to prevent product loss, to block microorganism ingress,
+and to limit entry of detrimental gases or other substances, thus ensuring that the product meets all necessary safety and quality standards.
+Synonymous with Package integrity.
+Container–closure integrity test:
+A container–closure integrity test is any package leak test (either physicochemical or microbiological) that
+detects the presence of a package breach or gap. Some tests may also be able to identify the leak magnitude and/or location. The term
+container–closure integrity test is synonymous with package leak test or package integrity test.
+Container–closure system:
+See Packaging and Storage Requirements 〈659〉, General De«nitions, Packaging System.
+Detection limit:
+The leak test detection limit is a measure of test method sensitivity. The detection limit is the smallest leakage rate (or leak
+size) that a leak test method can reliably detect. Also called limit of detection.
+Deterministic leak test method:
+A deterministic leak test method is one in which the leakage event being detected or measured is based on
+phenomena that follow a predictable chain of events. In addition, the measure of leak detection is based on physicochemical technologies that
+are readily controlled and monitored, yielding objective quantitative data.
+In-use maximum allowable leakage limit:
+See Maximum allowable leaking limit.
+Inherent package integrity:
+Inherent package integrity is the leakage rate (or leak size) of a well-assembled container–closure system using
+no-defect package components. Inherent package integrity is a measure of the leak tightness of a container–closure system, given anticipated
+variables of material composition, dimension, processing, assembly; package storage, distribution and use.
+Leak:
+A leak is a breach in a package wall or a gap between package components that is capable of permitting the passage of gas, liquid, or
+solid matter. Leak is synonymous with leak path.
+Leakage:
+Leakage is the unintentional escape or entry of matter (solid, liquid, or gas) through a breach in the package wall or through a gap
+between package components. Leakage can also refer to the substance that enters or escapes from a compromised package. For example,
+“Leakage from the cracked container stained the package label.
+”
+Leakage rate:
+Gaseous leakage rate is a measure of the rate of gas ¬ow (in mass or volume units) that passes through a leak path under
+speci«c conditions of temperature and absolute pressure or concentration differential. Leakage rate has dimensions of pressure multiplied by
+volume, divided by time. For example, the international standard SI nomenclature is pascal cubic meter per second (Pa · m
+ · s
+−1
+). Other
+common units of measure include standard cubic centimeters per second (std · cm
+ · s
+−1
+ or sccs) and mbar liters per second (mbar · L · s
+−1
+).
+Liquid leakage rate is a measure of the volume of liquid that moves through a leak path as a function of time under speci«ed conditions of
+temperature and absolute differential pressure across the barrier wall. Liquid leakage rate measurement, possible for larger leak tests, requires
+that leak size, materials of construction; absence of leak obstruction; tracer liquid composition; and test parameters work together to ensure
+liquid movement through the leak path.
+Linearity:
+Leak test method linearity is the ability of the method to elicit test results that are mathematically propor tional to leak path size or
+leakage rate.
+Master:
+A master is a package prototype, model, or facsimile made to simulate an actual package in shape and design. Masters may be made
+of solid plastic or metal, or they may be simply a designated container–closure unit. Masters are designed to simulate a no-leaking package,
+and are often used in leak test system suitability tests to verify instrument performance.
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 6 ===
+Maximum allowable leakage limit:
+The maximum allowable leakage limit is the greatest leakage rate (or leak size) tolerable for a given
+product–package that poses no risk to product safety and no or inconsequential impact on product quality. The maximum allowable leakage
+limit for a sterile pharmaceutical dosage form package will ensure the content's sterility, preserve product contents, and prevent entry by
+detrimental gases or other substances, thus ensuring that the product meets relevant physicochemical and microbiological speci«cations
+through expiry and use. For multiple-dose product–packages, the in-use maximum allowable leakage limit is de«ned as the degree of
+protection demanded of the closure to limit microbial ingress and product formulation leakage between and during dosage access.
+Microbiological challenge test:
+A microbiological challenge test is a package leak test whereby package integrity is evaluated by exposing
+containers «lled with growth-suppor tive media to microorganisms suspended in submersion media (a liquid-borne challenge test). Leakage is
+evidenced by the subsequent growth of the challenge microorganisms in the package contents. Synonymous with microbial challenge test.
+Negative control:
+A negative control is a package with no known leak. Negative controls used for leak test method development and validation
+studies represent packages optimally assembled using normally processed components. Negative controls should duplicate the container–
+closure system of the product under integrity investigation. For some methods, it may be necessary for negative controls to simulate test
+product headspace and formulation content as well.
+Nonporous:
+Nonporous packaging does not have pores or openings to allow volumetric air ¬ow. In other words, NMT a small fraction of
+molecules is able to pass through any one hole. Nonporous materials may be impermeable, semi-permeable, or permeable to the passage of
+¬uid through the package barrier wall.
+Nominal diameter:
+In the context of this chapter, nominal diameter is a means of expressing the size of a package leak. Package leaks are
+typically irregular tor tuous paths or matrices that cross a package wall or barrier. Such leaks are di­cult to size in accurate or meaningful
+terms. The nominal diameter of a leak path is de«ned as the width of an ori«ce of relatively shor t depth, through which gas (e.g., dry air) at
+equivalent air¬ow rate may pass when subject to one atmosphere differential pressure at controlled temperature conditions.
+Package integrity:
+See Container–closure integrity.
+Package integrity test:
+See Container–closure integrity test.
+Package integrity pro«le:
+The package integrity pro«le is a database of product life cycle package leak and seal quality test results that
+denotes product–package integrity given operative variations in package component design and material; package assembly and processing;
+and product storage, distribution, and stability.
+Package leak test:
+See Container–closure integrity test.
+Package seal quality:
+Package seal quality relates to the consistency of a package seal’s performance within required speci«cation limits.
+Examples of package seal quality attributes include heat seal bond strength and capped vial package residual seal force.
+Package seal quality test:
+A package seal quality test is used to characterize and monitor the quality of a product–package seal or closure
+system to ensure that package assembly is consistently kept within established limits. Package seal quality tests are not and cannot substitute
+for leak tests. However, they can provide some assurance of the package’s ability to maintain integrity by monitoring a characteristic of the seal
+itself, the package materials, the package components, and/or the processes required to create the seal or closure mechanism. Examples
+include the seal peel force test and the capped vial package residual seal force test.
+Permeation:
+Permeation is the passage of ¬uid into, through, and out of a nonporous package wall. Permeation, not leakage, occurs when the
+package barrier has no holes large enough for more than a small fraction of molecules to pass through any one hole.
+Physicochemical package integrity test:
+A physicochemical package integrity test is a leak test that detects the presence of a package leak, or
+detects/measures package leakage rate, via physical or chemical means. All leak test methods that do not use microorganisms for leak
+detection are physicochemical leak test methods.
+Porous:
+A porous package or package material has pores or openings to allow volumetric air ¬ow while still blocking airborne microbial
+passage. Examples include coated paper or spun-bonded polyole«n barrier materials that permit package penetration by ethylene oxide gas or
+steam.
+Positive control:
+A positive control is a package with a known, intentional defect. Positive controls used for leak test method development and
+validation studies should duplicate study negative controls in terms of materials of construction, package assembly, and component
+processing. Positive controls are used during leak test method development and validation. Some methods require the use of positive controls
+during routine testing as well.
+Precision:
+Leak test method precision is a measure of the method’s ability to yield reliable, repeatable data. Precision includes repeatability
+(repeat testing of a single homogeneous test sample population set), ruggedness (within laboratory tests performed by multiple operators on
+multiple days, using multiple instruments; also known as intermediate precision), and reproducibility (tests among multiple laboratories).
+Probabilistic leak test method:
+A probabilistic leak test method is the converse of a deterministic leak test method, being stochastic in nature.
+Probabilistic tests rely on a series of sequential and/or simultaneous events, each associated with random outcomes described by probability
+distributions. Thus, the «ndings are associated with uncer tainties that necessitate large sample sizes and rigorous test-condition controls to
+obtain meaningful results. Typically, sample size and test condition rigor are inversely related to leak size.
+Product:
+The pharmaceutical product includes the pharmaceutical formulation as well as the packaged headspace, which may consist of
+ambient air or nonreactive gases with speci«ed water-vapor content under full or sub-atmospheric pressure conditions.
+Product–package:
+The product–package includes the primary package with critical secondary components (the container–closure system)
+plus the packaged product (the contents).
+Qualitative measure of analysis:
+A qualitative measure of analysis for leak testing is a measurement approach based on a subjective
+evaluation of some quality, attribute, or characteristic of the test sample. Visual inspection is an example of a qualitative measure of analysis.
+Quantitation limit:
+The quantitation limit is a leak test method characteristic de«ning the lowest leakage rate or leak size that can be
+differentiated with accuracy and precision under the stated experimental conditions.
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products
+
+=== PAGE 7 ===
+Quantitative measure of analysis:
+A quantitative measure of analysis for leak testing is a measurement approach based on objective, numeric
+data that either directly or indirectly correlates with leak presence, leak location, or leakage rate. Examples include the mass-of-gas-per-time
+reading generated by the helium mass spectrometry tracer-gas leak test, or the pressure reading as a function of test time measurement
+produced by the vacuum-decay method.
+Range:
+The range of a leak test method is that interval between the smallest to largest leak size (or leakage rate) that can be detected by a
+given leak test method with a suitable level of accuracy and precision.
+Robustness:
+Robustness of a leak test method is the method’s ability to accurately identify leaking versus nonleaking packages despite small
+but deliberate variations in procedural parameters, providing an indication of the method’s suitability during normal usage.
+Speci«city:
+The speci«city of a leak test method is the ability of the method to accurately differentiate leaking and nonleaking packages,
+despite interfering factors that may cause false detection.
+System suitability:
+System suitability is a manner of ensuring that the leak test method including all factors, which may be subject to variability,
+that may impact test results (such as instrumentation, analysts, test sample preparation steps, and the test environment) are adequately
+controlled and maintained in such a fashion that the method is rugged and robust.
+System suitability test:
+A system suitability test is a test to verify that the leak test method and all key factors that may impact test results are
+correctly controlled and set prior to method performance.
+T
+or tuous path:
+As applied to leaks, a tor tuous path is a convoluted, complex leakage pathway. Most naturally occurring leaks, such as cracks
+and tears, are tor tuous in nature, rather than pristine holes. As applied to sealing mechanisms, a sealing material that has tor tuous barrier
+qualities can block microbial entry. [Note—The winding path afforded by the threads of a screw-cap (e.g., an ophthalmic dropper bottle closure)
+does not provide an optimal barrier to gas or liquid leakage, nor does it provide an optimal barrier to microbial ingress in the event of a liquid
+presence in the cap threads.]
+Type defect:
+A type defect is a positive-control package that represents realistic package ¬aws. Type-defect positive controls may be included
+in leak test method feasibility and development studies before method validation. An example of a type defect is a heat seal wrinkle or a loose
+cap. Type defects are inherently irregular in size and shape and are often described qualitatively instead of being described in terms of leak
+size or leakage rate.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<1207> STERILE PRODUCT PACKAGING--
+INTEGRITY EVALUATION
+Leslie Furr
+Associate Scienti«c Liaison
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 40(5)
+Current DocID: GUID-0AE321D5-158A-4B6F-8F2B-DB66B2342E95_1_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99926_01_01
+DOI ref: g77z7
+OFFICIAL
+2/12/25, 4:29 PM
+USP-NF 〈1207〉 Package Integrity Evaluation—Sterile Products

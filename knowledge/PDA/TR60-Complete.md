@@ -359,7 +359,6 @@ pharmaceutical development and manufacturing quality. These approaches identify 
 process parameters and product quality attributes with the greatest potential to affect product quality.
 Specific guidance on the application of ICH Q9(R1) concepts can be found in PDA Technical Report No.
 54: Implementation of Quality Risk Management for Pharmaceutical and Biotechnology Manufacturing
-Operations, PDA Technical Report No. 54-5: Quality Risk Management for the Design, Qualification, and
 Operation of Manufacturing Systems, and PDA Technical Report No. 59: Utilization of Statistical Methods
 for Production and Business Processes. The FDA Guidance for Industry: Process Validation: General
 Principles and Practices stresses using a risk-based approach to develop criteria and process performance
@@ -2260,7 +2259,6 @@ regarding their impact on product quality. The PACMP will include specific accep
 met for the change to be implemented and a proposed reporting category for reporting data supporting the
 change. The advantages of using a PACMP are that it allows for lower reporting categories and faster
 review and implementation times for anticipated changes with robust test verification strategies (4, 46).
-However, PACMP development requires foresight and robust planning to document and report the
 anticipated product lifecycle changes and to design suitable tests, studies, and acceptance criteria to
 demonstrate continued control over process performance and product quality per ICH Q12.
 
@@ -2745,7 +2743,6 @@ available for the evaluation to demonstrate, with a high level of assurance, a p
 consistently delivering quality product, allowing the normal range of variation and trends to be established
 and providing sufficient data for evaluation. The evaluation of data should include objective measures (e.g.,
 statistical metrics), wherever feasible and meaningful, to achieve adequate assurance.
-Additionally, FDA’s GMP regulations regarding sampling set forth a number of requirements for validation:
 •
 Samples must represent the batch under analysis (54)
 •
@@ -7438,7 +7435,6 @@ Inc.: Hoboken, NJ;, 2009; p. 63.
 9. Wheeler, D J, Chambers, D S. Understanding Statistical Process Control, Third Edition. SPC
 Press: Knoxville, Tenn., 2010.
 10. Scherder, T. et al. Benefits and challenges of process capability metrics. Pharmaceutical
-Engineering, ISPE, November-December, 2023.
 11. Burdick, R. K. & Graybill, F. A. Confidence intervals on variance components. CRC Press, 1992.
 12. Farnuma, N; Stantona, L. Narrow Limit Gauging: Go or No Go? Qual Eng 1991, 3 (3), 293-307.
 13. Nelson, L. Nomograph of Sample Size for Estimating Standard Deviation. J Quality Tech 2018, 11
@@ -7671,7 +7667,6 @@ pda.org
 
 PDA Global Headquarters
 4350 East West Highway, Suite 600
-Bethesda, MD 20814 USA
 TEL +1 (301) 656-5900
 FAX +1 (301) 986-0296
 PDA Europe

@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR1 Section 3: Process Development — Design Approaches &amp; Load Types</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>Section 3: Process Development — Design Approaches &amp; Load Types</h1>
+    <div class="subtitle">製程開發：設計方法與負載類型</div>
+    <div class="page-info">PDA Technical Report No. 1 (Revised 2007) &nbsp;|&nbsp; Sections 4.0 – 4.3</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- Learning Objectives -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives / 學習目標</h3>
+        <ul>
+            <li>Distinguish between overkill and product-specific design approaches and know when to apply each. / 區別過度殺滅與產品特定設計方法，並了解各自的適用時機。</li>
+            <li>Classify a sterilization load as porous/hard goods or liquid and explain the implications for process selection. / 將滅菌負載分類為多孔/硬質器具或液體，並解釋對製程選擇的影響。</li>
+            <li>Compare gravity displacement and pre-vacuum (SFPP) saturated steam cycles. / 比較重力置換與前真空飽和蒸汽週期。</li>
+            <li>Explain the role of air overpressure in liquid-container sterilization and contrast SAM vs. superheated water processes. / 說明空氣過壓在液體容器滅菌中的作用，比較蒸汽-空氣混合法與過熱水法。</li>
+            <li>Apply the semilogarithmic survivor curve equation to calculate minimum F<sub>0</sub> for both design approaches. / 應用半對數存活曲線方程式計算兩種設計方法的最低 F₀。</li>
+        </ul>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Section Contents / 本節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec40">4.0 Process Development Intro</a>
+            <a href="#sec41">4.1 Design Approaches</a>
+            <a href="#sec411">4.1.1 Survivor Curve &amp; Equations</a>
+            <a href="#sec4111">4.1.1.1 Overkill Approach</a>
+            <a href="#sec4112">4.1.1.2 Product-Specific Approach</a>
+            <a href="#sec42">4.2 Load Types</a>
+            <a href="#sec421">4.2.1 Porous/Hard Goods</a>
+            <a href="#sec422">4.2.2 Liquid Loads</a>
+            <a href="#sec43">4.3 Sterilization Processes</a>
+            <a href="#sec431">4.3.1 Saturated Steam</a>
+            <a href="#sec432">4.3.2 Air Overpressure</a>
+        </div>
+    </div>
+
+    <!-- ===== 4.0 PROCESS DEVELOPMENT INTRO ===== -->
+    <div class="chapter-section" id="sec40">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.0</div>
+            <div class="chapter-info">
+                <h2>Sterilization Process Development / 滅菌製程開發</h2>
+                <p>Overview and decision framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.0 Sterilization Process Development</h3>
+                    <p>The objective of sterilization process development is to develop a process that fulfills the <span class="key-term">design requirements</span>. This section progresses from establishing design requirements and determining load types to process selection and parameter determination.</p>
+                    <p>A decision tree has been developed to guide the user of this document in the selection of a <span class="key-term">cycle design approach</span> and sterilization process development (Figure 4.0-1). The decision tree summarizes key product and process considerations and provides recommendations regarding recommended cycle design approaches and process development steps based on these considerations.</p>
+                    <div class="note-box">
+                        <h4>Decision Tree Logic — Key Branch Points</h4>
+                        <ul>
+                            <li><strong>Heat-labile materials?</strong> Yes → Product-Specific Design Approach; No → Overkill Design Approach</li>
+                            <li><strong>Load type?</strong> Porous/Hard Goods (Section 4.2.1) or Sealed Liquid Load (Section 4.2.2)</li>
+                            <li><strong>Air removal challenge?</strong> Yes → consider Pre-Vacuum process (Section 4.4)</li>
+                            <li><strong>Air overpressure needed?</strong> Yes → SAM or Superheated Water process (Section 4.3.2)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：製程開發框架</h3>
+                    <p>製程開發的核心目標是建立符合<strong>設計需求</strong>的滅菌製程。PDA TR1 提供了一個決策樹（Figure 4.0-1），幫助使用者依產品特性系統性地選擇適合的設計方法與製程類型。</p>
+                    <div class="concept-box">
+                        <h4>決策樹三個核心問題</h4>
+                        <ol>
+                            <li><strong>產品是否熱敏感？</strong>決定設計方法（過度殺滅 vs. 產品特定）</li>
+                            <li><strong>負載類型是什麼？</strong>多孔/硬質器具 vs. 密封液體容器</li>
+                            <li><strong>容器是否需要空氣過壓？</strong>決定使用飽和蒸汽 vs. 空氣過壓製程</li>
+                        </ol>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>實際情境比喻</h4>
+                        <p>就像在點餐前先問「你吃素嗎？」一樣——TR1 的決策樹先問「產品耐熱嗎？」，才能決定後續的所有製程參數選擇。跳過這個問題，後面的設計全部白費。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1 DESIGN APPROACHES ===== -->
+    <div class="chapter-section" id="sec41">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1</div>
+            <div class="chapter-info">
+                <h2>Design Approaches / 設計方法</h2>
+                <p>Overkill vs. Product-Specific — choosing the right framework</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1 Design Approaches</h3>
+                    <p>Two principal sterilization cycle design approaches may be used for the development of sterilization processes: the <span class="key-term">overkill design approach</span> and the <span class="key-term">product-specific design approach</span>. Both approaches are able to provide the same level of sterility assurance to the product or materials being sterilized.</p>
+                    <p>In the design of sterilization cycles, the choice between the two design approaches is largely based on the <span class="key-term">thermal stability</span> of the product or materials being sterilized.</p>
+                    <p>The overkill design approach requires less initial and ongoing information on the bioburden of the materials being sterilized. It requires a greater heat input, and consequently has a greater potential to degrade the items being sterilized.</p>
+                    <p>The product-specific design approach requires a greater amount of initial and continuing information on: the items being sterilized, the <span class="key-term">indicator organisms</span> (those test organisms shown to be most resistant to the sterilization process), and the bioburden levels. The accumulation of this information provides confidence in the values determined in development to use a lower thermal input than required for the overkill design approach.</p>
+                    <p>Using a lower thermal input also has the added benefit of providing greater stability of the materials being sterilized, potentially increasing their shelf life. For this reason, the product-specific design approach is more appropriate for the terminal sterilization of heat-labile formulations in their final containers.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：兩大設計方法比較</h3>
+                    <div class="concept-box">
+                        <h4>設計方法選擇指南</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>比較項目</th>
+                                    <th>過度殺滅法 (Overkill)</th>
+                                    <th>產品特定法 (Product-Specific)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>適用產品</td>
+                                    <td>耐熱產品、器具</td>
+                                    <td>熱敏感（heat-labile）產品</td>
+                                </tr>
+                                <tr>
+                                    <td>熱輸入量</td>
+                                    <td>較高</td>
+                                    <td>較低</td>
+                                </tr>
+                                <tr>
+                                    <td>生物負載監測</td>
+                                    <td>幾乎不需要</td>
+                                    <td>需要持續監測</td>
+                                </tr>
+                                <tr>
+                                    <td>開發資料需求</td>
+                                    <td>少</td>
+                                    <td>多（D值、N₀、生物指標菌）</td>
+                                </tr>
+                                <tr>
+                                    <td>產品穩定性風險</td>
+                                    <td>較高（可能降解）</td>
+                                    <td>較低（保護熱敏感成分）</td>
+                                </tr>
+                                <tr>
+                                    <td>典型 PNSU 目標</td>
+                                    <td>10⁻⁶（以最壞情況假設）</td>
+                                    <td>10⁻⁶（以實測生物負載計算）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>生活比喻</h4>
+                        <p>過度殺滅法像「全部用最高溫洗碗機洗」——簡單省事，但玻璃杯可能碎裂。產品特定法像「依材質選溫度」——需要更多資訊，但能保護精細物品。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.1 SURVIVOR CURVE ===== -->
+    <div class="chapter-section" id="sec411">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.1</div>
+            <div class="chapter-info">
+                <h2>Survivor Curve in Cycle Design / 存活曲線應用</h2>
+                <p>Semilogarithmic model and F₀ calculation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.1 Use of Survivor Curve in Cycle Design Approaches</h3>
+                    <p>The following semilogarithmic survivor curve equation is used in both cycle design approaches to determine the necessary lethal dose requirements to achieve the desired endpoint (N<sub>F</sub>) — a <span class="key-term">PNSU of 10<sup>−6</sup></span>.</p>
+
+                    <div class="formula-box">
+                        <h4>Equation 1 — Survivor Curve</h4>
+                        <pre>Log N_F = −F_BIO / D_T + Log N_0
+
+Rearranged for F:
+F_BIO = (Log N_0 − Log N_F) × D_T</pre>
+                        <p><strong>Where:</strong></p>
+                        <ul>
+                            <li><strong>N<sub>0</sub></strong> = initial bioburden population</li>
+                            <li><strong>N<sub>F</sub></strong> = final (desired) bioburden population = 10<sup>−6</sup> (PNSU)</li>
+                            <li><strong>D<sub>T</sub></strong> = decimal reduction time at temperature T</li>
+                            <li><strong>F<sub>BIO</sub></strong> = biological lethality delivered</li>
+                        </ul>
+                    </div>
+                    <p>From a design standpoint, the overkill and product-specific design approaches differ in the values that are used for D and N<sub>0</sub>.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：存活曲線與 F₀ 計算</h3>
+                    <p>半對數存活曲線方程式是 TR1 滅菌設計的數學核心。兩種設計方法均使用同一條方程式，差異僅在於 N₀ 和 D<sub>T</sub> 的假設值。</p>
+                    <div class="concept-box">
+                        <h4>關鍵參數說明</h4>
+                        <ul>
+                            <li><strong>N₀（初始菌數）</strong>：過度殺滅法假設 10⁶；產品特定法用實測值</li>
+                            <li><strong>N<sub>F</sub>（目標菌數）</strong>：兩種方法均以 10⁻⁶ 為目標（PNSU ≤ 10⁻⁶）</li>
+                            <li><strong>D<sub>T</sub>（十進制殺滅時間）</strong>：在指定溫度下殺滅 90% 微生物所需時間</li>
+                            <li><strong>F₀（121°C 等效殺菌分鐘數）</strong>：綜合殺菌效力指標</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>PNSU 的意義</h4>
+                        <p>PNSU（Probability of a Non-Sterile Unit，非無菌單位機率）= 10⁻⁶ 意謂每百萬件產品中，預期不超過一件非無菌品。這是全球公認的無菌保證標準。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.1.1 OVERKILL ===== -->
+    <div class="chapter-section" id="sec4111">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.1.1</div>
+            <div class="chapter-info">
+                <h2>Overkill Design Approach / 過度殺滅設計方法</h2>
+                <p>Worst-case assumptions — F₀ ≥ 12 minutes</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.1.1 Overkill Design Approach</h3>
+                    <p>The objective of the overkill design approach is to assure a level of sterility assurance regardless of the number and heat resistance of the actual bioburden organisms in the load. The assumed product bioburden values for population and resistance are set at the following levels:</p>
+
+                    <div class="formula-box">
+                        <h4>Overkill Design Assumptions</h4>
+                        <pre>N_0     = 10⁶ organisms
+D_121°C = 1.0 minute
+z       = 10°C
+N_F     = 10⁻⁶ (PNSU target)
+
+Calculated minimum lethality:
+F_0 = D_121°C × (Log N_0 − Log N_F)
+F_0 = 1.0 min × (Log 10⁶ − Log 10⁻⁶)
+F_0 = 1.0 × 12 = 12 minutes</pre>
+                    </div>
+
+                    <p>Thus, a cycle designed with the overkill design approach can be defined as a sterilization cycle that is demonstrated to deliver an <span class="key-term">F<sub>PHY</sub> and F<sub>BIO</sub> of at least 12 minutes</span> to the items being sterilized.</p>
+                    <p>EU regulations for terminally sterilized dosage forms defines overkill as sterilization by moist heat at <span class="key-term">121°C for 15 minutes</span>.</p>
+                    <p>Very few naturally occurring microorganisms have been found to have a D<sub>121°C</sub>-value greater than 0.5 minutes. The overkill design approach assumes both a higher bioburden population and resistance than would be expected. Because worst-case assumptions are made for the bioburden population and resistance with this design approach, there is little scientific necessity for routine bioburden monitoring of the load items.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：過度殺滅方法詳解</h3>
+                    <p>過度殺滅法採用「最壞情況假設」——假設初始菌數高達 10⁶ 個，且 D 值高達 1 分鐘（遠超過大多數自然環境微生物的實際 D 值 &lt;0.5 分鐘）。</p>
+                    <div class="concept-box">
+                        <h4>過度殺滅法核心特點</h4>
+                        <ul>
+                            <li><strong>最低 F₀ 要求：12 分鐘</strong>（PDA 計算值）</li>
+                            <li><strong>EU 法規定義：121°C × 15 分鐘</strong>（更保守）</li>
+                            <li>無需例行生物負載監測（worst-case assumptions 已內建）</li>
+                            <li>適用：耐熱器具、硬質材料、多孔負載</li>
+                            <li>不適用：熱敏感藥品（會造成降解）</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>PDA vs. EU 標準差異</h4>
+                        <p>PDA 計算最低 F₀ 為 12 分鐘，EU 法規要求 121°C/15 分鐘。實務上多數設施採用 121°C/15 分鐘以同時符合兩個標準，並留有安全餘裕。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻說明</h4>
+                        <p>過度殺滅法就像「不管衣服多髒，統一用 95°C 洗」——假設最髒的情況來設計程序，洗完必定乾淨，但棉質衣物可能縮水。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.1.1.2 PRODUCT-SPECIFIC ===== -->
+    <div class="chapter-section" id="sec4112">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.1.1.2</div>
+            <div class="chapter-info">
+                <h2>Product-Specific Design Approach / 產品特定設計方法</h2>
+                <p>Bioburden-based cycle design for heat-labile products</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.1.1.2 Product-Specific Design Approach</h3>
+                    <p>An overkill design approach cannot ordinarily be used when sterilizing <span class="key-term">heat-labile products</span> or items. A cycle must be developed which will adequately destroy the microbial load but will not result in unacceptable product degradation. The cycle is dependent on studies to determine the number and heat resistance of microorganisms in the product. Once characterized, a cycle can be designed that will result in a PNSU of 10<sup>−6</sup>.</p>
+                    <p>For design purposes, the values selected for N<sub>0</sub> and D<sub>T</sub> are based on values determined by bioburden analysis plus additional safety margins based on: 1) professional judgment; 2) the extent of the bioburden data; and 3) the degree of product bioburden testing that will be conducted on an ongoing basis.</p>
+                    <p>Actual bioburden population for products made under CGMPs should be very low, 1.0–100 cfu per container. Generally, only spore-forming environmental or product isolates need be subjected to D-value determination. Heat-shocking the product for 10–15 minutes at 80–100°C can screen out less resistant organisms.</p>
+                    <p>The value selected for D<sub>T</sub> should include a safety margin over the most resistant organisms detected in bioburden studies. The safety margin selected inversely correlates to the frequency and magnitude of ongoing tests conducted for bioburden population and resistance.</p>
+                    <p>When multiple products are processed using the same cycle, a minimum lethality (e.g., an F<sub>0</sub> of 8.0 minutes) may be specified, regardless of the results of bioburden testing for individual products. Ongoing bioburden monitoring is then conducted to assure that the specified cycle continues to be appropriate.</p>
+
+                    <div class="note-box">
+                        <h4>Product-Specific Examples (from TR1)</h4>
+                        <p><strong>Example 1:</strong> Observed N₀ = 10¹, D<sub>obs</sub> = 0.25 min; Design uses N₀ = 10², D<sub>T</sub> = 0.4 min → Minimum F₀ = 3.2 min (frequent bioburden monitoring required)</p>
+                        <p><strong>Example 2:</strong> Observed N₀ = 10¹, D<sub>obs</sub> = 0.25 min; Design uses N₀ = 10², D<sub>T</sub> = 1.0 min → Minimum F₀ = 8.0 min (conservative D-value reduces ongoing monitoring burden)</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：產品特定方法詳解</h3>
+                    <p>產品特定法是熱敏感藥品（如蛋白質製劑、某些小分子藥物）唯一可行的滅菌設計路徑。核心原則：用<strong>實測生物負載數據</strong>取代最壞情況假設，以降低熱輸入。</p>
+                    <div class="concept-box">
+                        <h4>產品特定法開發步驟</h4>
+                        <ol>
+                            <li>測定產品實際生物負載（N₀，每容器 cfu 數）</li>
+                            <li>以熱休克（80–100°C，10–15 min）篩選孢子型微生物</li>
+                            <li>測定最耐熱菌株的 D 值（D<sub>T</sub>）</li>
+                            <li>加入安全餘裕後設定設計用 N₀ 和 D<sub>T</sub></li>
+                            <li>計算最低 F₀ = (Log N₀ − Log N<sub>F</sub>) × D<sub>T</sub></li>
+                            <li>建立持續生物負載監測計畫</li>
+                        </ol>
+                    </div>
+                    <div class="note-box">
+                        <h4>安全餘裕與監測頻率的反比關係</h4>
+                        <p>設計用 D<sub>T</sub> 越接近實測值 → 安全餘裕越小 → 需要越頻繁的持續監測。</p>
+                        <p>設計用 D<sub>T</sub> 遠大於實測值（如選用 1.0 min，但實測僅 0.25 min）→ 安全餘裕大 → 監測頻率可降低。</p>
+                        <p>這是法規文件審查的重點：D 值選取依據是否合理？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2 LOAD TYPES ===== -->
+    <div class="chapter-section" id="sec42">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.2</div>
+            <div class="chapter-info">
+                <h2>Load Types / 負載類型</h2>
+                <p>Porous/Hard Goods vs. Liquid — classifying items for process selection</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2 Load Types</h3>
+                    <p>The next step in sterilization process development is to determine the exact physical nature of each discrete container, package or other item that collectively constitute the <span class="key-term">load</span> to be sterilized. By first understanding the physical characteristics of each item in the load, such as permeability to steam, the load can be further characterized (or "typed") as <span class="key-term">porous/hard goods</span> or <span class="key-term">liquid</span>. Based on this determination, it is possible to select an appropriate sterilization process.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：負載分類的重要性</h3>
+                    <p>負載類型（Load Type）是選擇滅菌製程的關鍵分支。不同物理特性的物品對蒸汽穿透、熱傳遞方式完全不同，必須先分類才能選擇正確的製程。</p>
+                    <div class="note-box">
+                        <h4>分類邏輯</h4>
+                        <p>蒸汽能直接接觸物品表面？→ 多孔/硬質器具負載<br>
+                        液體填充於密封容器中？→ 液體負載（熱傳靠傳導/對流）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.1 POROUS/HARD GOODS ===== -->
+    <div class="chapter-section" id="sec421">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.2.1</div>
+            <div class="chapter-info">
+                <h2>Porous/Hard Goods Loads / 多孔負載與硬質器具</h2>
+                <p>Steam-contact sterilization — filters, closures, machine parts</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2.1 Defining Porous/Hard Goods Loads</h3>
+                    <p><span class="key-term">Porous/hard goods loads</span> contain items where sterilization is achieved through direct contact with saturated steam. Heat is transferred when steam condenses directly on the surface of the items being sterilized. (By contrast, energy from moist heat is transferred to the contents of liquid-filled containers through conduction and/or convection.)</p>
+                    <p>Porous/hard goods loads, as used in the pharmaceutical industry, encompass true porous items (such as cartridge filters and packed fabric) and hard items (such as stainless-steel vessels and filling machine parts). It is not common practice to develop specific sterilization cycles for each item type. It is common to have standard cycles that are capable of providing the same minimum level of sterility assurance, irrespective of load content.</p>
+                    <p><strong>Examples of porous/hard goods items include but are not restricted to:</strong></p>
+                    <ul>
+                        <li>Filters* (disc membranes, cartridge membranes, and depth filters)</li>
+                        <li>Stoppers and other polymeric closure materials</li>
+                        <li>Tubing and hoses</li>
+                        <li>Garments</li>
+                        <li>Cleaning equipment</li>
+                        <li>Machine change parts</li>
+                    </ul>
+                    <p><em>* Filters should be sterilized according to manufacturers' recommendations.</em></p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：多孔/硬質器具負載</h3>
+                    <div class="concept-box">
+                        <h4>負載類型分類表</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>子類型</th>
+                                    <th>典型例子</th>
+                                    <th>滅菌關鍵挑戰</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>多孔負載 (Porous)</td>
+                                    <td>過濾器、布料、蓋子</td>
+                                    <td>空氣殘留、蒸汽穿透</td>
+                                </tr>
+                                <tr>
+                                    <td>硬質器具 (Hard Goods)</td>
+                                    <td>不鏽鋼容器、填充機零件、管路</td>
+                                    <td>冷凝水積聚、最冷點定位</td>
+                                </tr>
+                                <tr>
+                                    <td>組合負載</td>
+                                    <td>同一滅菌器同時處理多種器具</td>
+                                    <td>最大負載配置驗證</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>最冷點（Cold Spot）概念</h4>
+                        <p>在多孔/硬質器具負載中，<strong>最冷點</strong>（Cold Spot）是整個負載中溫度最慢達到設定值的位置。驗證時溫度感測器必須放置在冷點，確保即使最冷處也能達到所需 F₀。</p>
+                        <p>常見冷點位置：濾芯中心、密堆積的布料內層、管路彎曲末端。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>多孔負載就像「蒸籠裡的包子」——蒸汽要穿透到每一層每一個角落，外面熟了不代表裡面也熟了。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.2.2 LIQUID LOADS ===== -->
+    <div class="chapter-section" id="sec422">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.2.2</div>
+            <div class="chapter-info">
+                <h2>Liquid Loads / 液體負載</h2>
+                <p>Sealed containers — terminal sterilization of drug products</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.2.2 Defining Liquid Loads</h3>
+                    <p>Sealed liquid-filled containers in a production setting are often homogeneous, comprised of containers of a single size, single fill-volume, and are from a single lot. <span class="key-term">Liquid load cycles</span> are usually developed and validated using the product-specific design approach, although the overkill design approach may also be used.</p>
+                    <p>If the product is not an aqueous solution (e.g., some oil-based products), special consideration should be made in order to ensure it is suitable for moist heat sterilization.</p>
+                    <p><strong>Examples of liquid-filled containers include, but are not restricted to:</strong></p>
+                    <ul>
+                        <li>Formulations (solutions, suspensions and/or emulsions) in their final product container (e.g., vial, bag, bottle, syringe or ampoules)</li>
+                        <li>Post-test or post-process waste fluids containing potentially pathogenic microorganisms</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：液體負載特性</h3>
+                    <p>液體負載（Liquid Load）最常見於注射劑最終產品的終端滅菌（Terminal Sterilization）。熱傳遞方式不同於多孔負載，主要靠<strong>傳導與對流</strong>，而非蒸汽直接接觸。</p>
+                    <div class="concept-box">
+                        <h4>液體負載設計要點</h4>
+                        <ul>
+                            <li>通常採用<strong>產品特定設計方法</strong>（因多數液體製劑有熱穩定性限制）</li>
+                            <li>容器類型影響熱傳效率：玻璃瓶 vs. 塑膠袋 vs. 預填充注射器</li>
+                            <li>非水溶液（如油性製劑）需特別評估是否適合濕熱滅菌</li>
+                            <li>密封容器內的頭頂空間氣體（headspace gas）會隨加熱膨脹，產生內部壓力</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>為何液體負載需要空氣過壓？</h4>
+                        <p>密封容器（如預填充注射器、塑膠袋）在加熱時，容器內部壓力會升高。若腔室壓力不足，容器可能變形甚至破裂（注射器活塞可能被頂出）。因此需要空氣過壓（Air Overpressure）來平衡內外壓差。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3 STERILIZATION PROCESSES ===== -->
+    <div class="chapter-section" id="sec43">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.3</div>
+            <div class="chapter-info">
+                <h2>Sterilization Processes / 滅菌製程類型</h2>
+                <p>Saturated steam and air overpressure processes — overview</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3 Sterilization Processes</h3>
+                    <p>For moist heat sterilization, two major types of processes are typically used: <span class="key-term">saturated steam sterilization processes</span> and <span class="key-term">air overpressure sterilization processes</span>. Saturated steam processes are typically used for sterilization of porous/hard goods loads, while air overpressure processes are typically used for liquid product loads.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：製程類型總覽</h3>
+                    <div class="concept-box">
+                        <h4>製程類型 vs. 負載類型對應</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>製程類型</th>
+                                    <th>適用負載</th>
+                                    <th>主要製程</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>飽和蒸汽製程</td>
+                                    <td>多孔/硬質器具</td>
+                                    <td>前真空（SFPP）、重力置換</td>
+                                </tr>
+                                <tr>
+                                    <td>空氣過壓製程</td>
+                                    <td>密封液體容器</td>
+                                    <td>蒸汽-空氣混合（SAM）、過熱水噴淋</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.1 SATURATED STEAM ===== -->
+    <div class="chapter-section" id="sec431">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.3.1</div>
+            <div class="chapter-info">
+                <h2>Saturated Steam Processes / 飽和蒸汽製程</h2>
+                <p>Pre-vacuum (SFPP) and Gravity Displacement cycles</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3.1 Saturated Steam Processes</h3>
+                    <p>There are two main types of saturated steam sterilization processes: <span class="key-term">prevacuum</span> and <span class="key-term">gravity displacement</span>. The principles of saturated steam are discussed in Section 3.3.3.</p>
+
+                    <h3>4.3.1.1 Prevacuum Process</h3>
+                    <p>The most commonly used saturated steam process is the <span class="key-term">prevacuum process</span>. This method removes air from the chamber using a mechanical vacuum pump or steam eductor before the sterilization phase of the process begins. The prevacuum process is particularly suited for load items that can trap air, such as tubing, filters and filling machine assemblies. Vacuum pulsing processes are used frequently in the pharmaceutical industry to sterilize porous/hard goods loads that contain items from which air removal can be difficult.</p>
+                    <p>Treatment of the load prior to the start of the sterilization exposure phase is important. If each vacuum pull is to 0.1 atmosphere, then each pulse will reduce the air in the sterilizer by 90%, or one log. Three vacuum pulses (three vacuum pulls with corresponding steam charges) create a 3-log reduction, effectively removing 99.9% of the air. Additional positive pulses (steam charges with corresponding evacuations above atmospheric pressure to avoid air leaking into the chamber) may be added to condition the load. Through this approach, air removal efficiency can be increased, leading to shorter equilibration times. The precise number and type of pulses should be determined during the development of the cycle.</p>
+
+                    <h3>4.3.1.2 Gravity Displacement Process</h3>
+                    <p>The typical <span class="key-term">gravity displacement process</span> is based on the principle that cold air within the chamber is heavier than the steam entering and will sink to the bottom of the chamber. As the steam enters the chamber, air is pushed out of the drain at the bottom of the chamber and exits (with the condensate) through the steam trap.</p>
+                    <p>The success of the process in removing air depends on the correct operation of the trap and the proper distribution of steam. Steam is injected into the sterilizer chamber through a baffle or spreader bar (such as a perforated pipe). If steam is added too rapidly or not distributed properly, air pockets may be trapped near the top of the load. If steam is added too slowly, the air can be heated, diffuse into the steam, and become more difficult to remove.</p>
+                    <p><span class="key-term">Gravity displacement sterilizers</span> are less efficient in air removal than other designs and are not recommended for items with air removal challenges.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：飽和蒸汽製程比較</h3>
+                    <div class="concept-box">
+                        <h4>前真空 vs. 重力置換週期比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>比較項目</th>
+                                    <th>前真空/SFPP</th>
+                                    <th>重力置換</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>除氣原理</td>
+                                    <td>機械真空泵或蒸汽噴射器</td>
+                                    <td>冷空氣自然下沉排出</td>
+                                </tr>
+                                <tr>
+                                    <td>除氣效率</td>
+                                    <td>高（3次脈衝可去除99.9%）</td>
+                                    <td>低（受蒸汽分佈影響大）</td>
+                                </tr>
+                                <tr>
+                                    <td>適用負載</td>
+                                    <td>多孔、管路、濾器、填充機組件</td>
+                                    <td>簡單硬質器具、無空氣殘留問題者</td>
+                                </tr>
+                                <tr>
+                                    <td>法規推薦度</td>
+                                    <td>首選（TR1 推薦）</td>
+                                    <td>較低（不建議用於有空氣挑戰的負載）</td>
+                                </tr>
+                                <tr>
+                                    <td>週期組成</td>
+                                    <td>真空脈衝 → 正壓脈衝 → 升溫 → 暴露 → 乾燥後真空</td>
+                                    <td>升溫（蒸汽入腔排冷空氣）→ 暴露 → 冷卻</td>
+                                </tr>
+                                <tr>
+                                    <td>設備複雜度</td>
+                                    <td>較高（需真空系統）</td>
+                                    <td>較低</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>前真空週期的脈衝邏輯</h4>
+                        <p>每次真空抽至 0.1 atm → 去除 90% 空氣（1 log）<br>
+                        3 次脈衝 = 3 log 減少 = 去除 99.9% 空氣<br>
+                        正壓脈衝（Positive Pulse）：蒸汽充壓後再抽真空，進一步調理負載，縮短平衡時間。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>重力置換的失效風險</h4>
+                        <p>重力置換失效的兩種情境：<br>
+                        1. 蒸汽進入過快 → 頂部形成空氣袋（air pocket），導致冷點<br>
+                        2. 蒸汽進入過慢 → 空氣被加熱後擴散，更難排除</p>
+                        <p>因此重力置換對蒸汽進量速率的控制要求非常嚴格。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻</h4>
+                        <p>前真空 = 「先用吸塵器把空氣抽走，再充蒸汽」。重力置換 = 「開門讓熱氣把冷氣推出去」——後者取決於物理密度差，效果受很多因素影響。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 4.3.2 AIR OVERPRESSURE ===== -->
+    <div class="chapter-section" id="sec432">
+        <div class="chapter-divider">
+            <div class="chapter-badge">4.3.2</div>
+            <div class="chapter-info">
+                <h2>Air Overpressure Processes / 空氣過壓製程</h2>
+                <p>SAM and Superheated Water — for sealed liquid containers</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>4.3.2 Air Overpressure Processes</h3>
+                    <p>In nearly all liquid containers, there is gas (air, nitrogen, or other inert gas) in the headspace above the liquid. As the liquid is heated, the headspace gas expands, and pressure within the container increases.</p>
+                    <p>For most liquid load applications, such as prefilled syringes, some glass bottles or vials, plastic bags and semirigid containers, the chamber pressure needs to be increased to minimize the differential pressure (between the internal container pressure and the chamber), maintaining the container shape and closure integrity, and in the case of syringes, stopper position. The air overpressure needed to compensate for internal container pressure may vary significantly, depending on the item type (i.e., glass bottles versus plastic bags).</p>
+                    <p>It is common to use oil-free compressed air for air overpressure processes. The quality of the air is dependent on the application. In some cases, a microbial-retentive air filter may be necessary in the air supply line.</p>
+
+                    <h3>4.3.2.1 Steam-Air Mixture (SAM) Process</h3>
+                    <p>When air is added to steam to create a total pressure above the saturation pressure of the steam (at the specified temperature), it is called a <span class="key-term">steam-air mixture (SAM) process</span>. The presence of air, although necessary, reduces the heat transfer rate when compared to saturated steam. The steam-air mixture process must continuously circulate the steam and air to:</p>
+                    <ul>
+                        <li>Prevent stratification and formation of <span class="key-term">cold spots</span> within the load</li>
+                        <li>Reduce depletion of steam in the steam-air mixture next to the cold container</li>
+                    </ul>
+                    <p>Fans are typically used to circulate the steam-air mixture. Internal container pressure and temperature dynamics are a function of the container type (e.g., rigid or nonrigid), fill volume, head space volume, and chamber temperature.</p>
+                    <p>The steam-air mixture process can use various methods to cool the product after the exposure phase. The most common method is to cool the recirculating air by adding chilled water to the sterilizer jacket or to coils within the sterilizer. Some steam-air sterilizers reduce the product temperature by spraying cooling water over the product.</p>
+
+                    <h3>4.3.2.2 Superheated Water Process</h3>
+                    <p>Sterilization of liquid-filled containers with <span class="key-term">recirculating superheated water</span> is an efficient way to sterilize some products. The most common type uses a pump to continuously recirculate water from the bottom of the sterilizer (below the load zone) to spray nozzles above the load zone. A slight modification uses a water distribution pan to create a water cascade in lieu of spray nozzles.</p>
+                    <p>The recirculating water can be heated and cooled, either directly by the injection of steam and cooling water or indirectly via heat exchanger(s). Use of an indirect cooling method is preferred, because the cooling water that directly contacts the sealed containers has been sterilized along with the product.</p>
+                    <p>Another type involves the complete submersion of the product in water. Most superheated water processes are conducted in batch sterilizers, but continuous sterilizers can also be used.</p>
+                    <p>All of these recirculating superheated water processes use air overpressure that can be controlled during the sterilization process. The minimum overpressure is determined by the temperature being used, the pressure needed to maintain desired product characteristics, and the required overpressure needed to keep the recirculation pump primed.</p>
+                    <p>One of the primary advantages of the recirculating water process over other steam sterilization methods is that the <span class="key-term">heat-up and cool-down rates</span> are easier to control and, if set up properly, are not influenced by variations in product load and utility supply.</p>
+                    <p>The primary quality attribute of the water used is the microbial content. The water may be sterilized in the chamber with the load, sterilized in a separate vessel, maintained at elevated temperatures, or chemically treated to maintain the desired low microbial content. The use of recirculating water provides efficient cooling of terminally sterilized products, thereby increasing sterilizer throughput. This rapid cooling also might be necessary to help ensure product stability.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說：空氣過壓製程詳解</h3>
+                    <p>空氣過壓製程是液體負載（密封容器）的標準選擇。核心挑戰是：加熱時容器內部壓力升高，若不補充外部壓力，容器可能變形或破損。</p>
+                    <div class="concept-box">
+                        <h4>SAM vs. 過熱水製程比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>比較項目</th>
+                                    <th>蒸汽-空氣混合 (SAM)</th>
+                                    <th>過熱水噴淋/浸泡</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>加熱介質</td>
+                                    <td>蒸汽 + 空氣混合氣</td>
+                                    <td>循環過熱水</td>
+                                </tr>
+                                <tr>
+                                    <td>熱傳效率</td>
+                                    <td>中（空氣降低傳熱率）</td>
+                                    <td>高（水的熱容量大）</td>
+                                </tr>
+                                <tr>
+                                    <td>均勻性關鍵</td>
+                                    <td>風扇強制循環（防冷點）</td>
+                                    <td>泵浦循環水流</td>
+                                </tr>
+                                <tr>
+                                    <td>升/降溫速率控制</td>
+                                    <td>較難控制（受負載量影響）</td>
+                                    <td>較易控制（不受負載量影響）</td>
+                                </tr>
+                                <tr>
+                                    <td>冷卻水品質要求</td>
+                                    <td>一般（噴灑冷卻水或套管冷卻）</td>
+                                    <td>高（直接接觸容器的水需已滅菌）</td>
+                                </tr>
+                                <tr>
+                                    <td>適用容器類型</td>
+                                    <td>玻璃瓶、部分塑膠容器</td>
+                                    <td>預填充注射器、塑膠袋、半硬容器</td>
+                                </tr>
+                                <tr>
+                                    <td>設備複雜度</td>
+                                    <td>中（需風扇）</td>
+                                    <td>高（需泵浦、熱交換器）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>SAM 製程的冷點風險</h4>
+                        <p>空氣的存在使熱傳率低於純飽和蒸汽。若循環不均，容器周圍會形成<strong>冷點</strong>（Cold Spot）——溫度低於設定值的區域。驗證時必須確認風扇循環能消除分層（stratification）現象。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>過熱水製程的水質要求</h4>
+                        <p>直接與密封容器接觸的循環水必須具備低微生物含量。常見方法：<br>
+                        1. 與產品一起在腔室內滅菌<br>
+                        2. 在獨立容器中預先滅菌<br>
+                        3. 維持在高溫（抑制微生物生長）<br>
+                        4. 化學處理維持低生物負載</p>
+                        <p>間接冷卻（透過熱交換器）優於直接注入冷水，因為間接法不引入新的微生物風險。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>生活比喻</h4>
+                        <p>過熱水製程就像「高壓電鍋加水煮罐頭」——水浴式加熱均勻、升降溫速率穩定，特別適合對溫度衝擊敏感的塑膠容器或生物製劑。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Questions -->
+            <div class="practice-box">
+                <h3>Practice Questions / 練習思考題</h3>
+                <ol>
+                    <li>
+                        <strong>Q1：</strong>A formulated protein drug product (heat-labile) in prefilled syringes requires terminal sterilization. Using the TR1 decision tree, which design approach and sterilization process would you recommend? Justify your answer.
+                        <br><em>一種熱敏感蛋白質藥品填充於預填充注射器中需進行終端滅菌。依據 TR1 決策樹，您會推薦哪種設計方法和製程？請說明理由。</em>
+                    </li>
+                    <li>
+                        <strong>Q2：</strong>Your bioburden data shows: N₀ = 10² organisms/container, worst-case D₁₂₁°C = 0.3 min. You select a design D-value of 1.0 min for the product-specific approach. Calculate the minimum F₀ required and explain how this D-value selection affects your ongoing monitoring obligation.
+                        <br><em>生物負載數據顯示：N₀ = 10²，最差 D₁₂₁°C = 0.3 分鐘。您選擇設計 D 值為 1.0 分鐘。請計算所需最低 F₀，並說明此 D 值選擇如何影響持續監測義務。</em>
+                    </li>
+                    <li>
+                        <strong>Q3：</strong>A filling machine assembly including tubing, filters, and stainless-steel components needs sterilization. Should you use a gravity displacement or pre-vacuum (SFPP) cycle? What is the primary concern driving this decision?
+                        <br><em>一個包含管路、濾器和不鏽鋼零件的填充機組件需要滅菌。您應選擇重力置換還是前真空（SFPP）週期？驅動此決策的主要考量是什麼？</em>
+                    </li>
+                    <li>
+                        <strong>Q4：</strong>During SAM (steam-air mixture) cycle development, thermocouple data shows a temperature differential of 3°C between the chamber and one container position. What is the likely root cause, and what corrective action would you investigate?
+                        <br><em>在 SAM 週期開發中，熱電偶數據顯示腔室與某容器位置之間有 3°C 溫差。可能的根本原因是什麼？您會調查哪些矯正措施？</em>
+                    </li>
+                    <li>
+                        <strong>Q5：</strong>Why is indirect cooling preferred over direct water injection in a superheated water sterilization process? Name two potential risks of using direct cooling water injection.
+                        <br><em>在過熱水滅菌製程中，為什麼間接冷卻優於直接注入冷水？請列舉直接冷卻水注入的兩種潛在風險。</em>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<div class="main-footer">
+    <p>PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes</p>
+    <p>Section 3: Process Development — Design Approaches &amp; Load Types | Sections 4.0–4.3</p>
+    <p>SterileGMP Knowledge Hub &nbsp;|&nbsp; Educational Reference Only</p>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" title="Back to top">&#8679;</button>
+
+<script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

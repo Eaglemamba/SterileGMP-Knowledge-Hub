@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈771〉 - Section 0: Introduction & Requirements</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.concept-box {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box h3, .concept-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p, .practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Requirements | 簡介與要求</h1>
+    <div class="subtitle">USP 〈771〉 Ophthalmic Products—Quality Tests</div>
+    <div class="page-info">United States Pharmacopeia General Chapter 〈771〉 | Pages 1–2 (Lines 1–127)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解眼用製劑（Ophthalmic Products）的定義、給藥途徑分類，以及 USP 〈771〉 的適用範圍</li>
+        <li>辨別各種眼用劑型（溶液、懸浮液、軟膏、凝膠、乳劑、條帶、注射劑、插入劑、植入劑）的特性與製造注意事項</li>
+        <li>掌握眼用製劑的通用品質要求：無菌性（Sterility）、澄清度（Clarity）、微粒（Particulates）、pH、滲透壓（Osmolarity）及防腐劑（Preservatives）</li>
+        <li>理解藥-器械複合產品（Drug–Device Combination Products）在 USP 〈771〉 中的適用邊界</li>
+    </ul>
+</div>
+
+<!-- SUBSECTION: INTRODUCTION -->
+<div class="section-title">Introduction — 簡介</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>〈771〉 OPHTHALMIC PRODUCTS—QUALITY TESTS</h3>
+        <h3>INTRODUCTION</h3>
+        <p><span class="key-term">Ophthalmic products</span> are sterile products that are intended for application to any ocular structure, including any space adjacent to an ocular structure and its immediate surrounding spaces.</p>
+        <p>The <span class="key-term">routes of administration</span> of ophthalmic products fall into three general categories: topical, intraocular injections, and extraocular injections. Topical drug products are intended to be administered to an ocular surface component, such as the eyelid, conjunctiva, or cornea, and can produce local or systemic effects. Intraocular and extraocular injections are administered through external boundary tissue. Due to the potential sensitivity of some ocular tissues, injections have additional requirements for subvisible particulate matter content (see Particulate and Foreign Matter, <em>Subvisible Particulate Matter in Intraocular Solutions 〈789〉</em>, and <em>Visible Particulates in Injections 〈790〉</em>). The ophthalmic routes of administration include, but are not limited to: topical, subconjunctival, sub-Tenons, subretinal, subchoroidal, intracorneal, intrascleral, suprachoroidal, intravitreal, intracameral, juxtascleral, and retrobulbar routes.</p>
+        <p>Ophthalmic products are administered to the eye in a wide variety of <span class="key-term">dosage forms</span>, including but not restricted to: solutions, suspensions, ointments, gels, emulsions, strips, injections, inserts, and implants.</p>
+        <div class="quote-box">
+            "This chapter provides lists of consolidated common product quality test requirements in a concise and coherent fashion. This chapter applies, in part or in its entirety, when referenced in a drug product monograph."
+        </div>
+        <p>This chapter includes the quality tests for the specific route of administration. The quality tests listed can be used, as appropriate, by manufacturers toward the development of new drug product monographs for submission to the USP–NF.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Ophthalmic Products（眼用製劑）：</strong>所有用於眼部構造的無菌製劑，包括眼球表面及其周邊空間。「無菌」是眼用製劑最基本也最不可妥協的要求。</p>
+            <p><strong>三大給藥途徑分類：</strong></p>
+            <ul>
+                <li><strong>局部（Topical）：</strong>施用於眼瞼、結膜或角膜表面，最常見</li>
+                <li><strong>眼內注射（Intraocular）：</strong>穿透角膜或鞏膜等邊界組織，風險最高</li>
+                <li><strong>眼外注射（Extraocular）：</strong>注射至眼球周邊空間，如球後注射</li>
+            </ul>
+            <p>給藥途徑不同，微粒要求的嚴格程度也不同。眼內注射需額外符合 〈789〉 不可見微粒標準，因為玻璃體腔或前房幾乎無自我清除能力。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像眼球就像一個密封的魚缸。局部點眼藥水只是把藥倒在魚缸蓋子上，藥物慢慢滲入；眼內注射則是直接把注射器插進魚缸。兩者對「水質（微粒清潔度）」的要求完全不同等級——魚缸內的水一旦引入雜質，魚（眼組織）立刻受損，根本無法靠換水（淚液沖洗）來補救。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>USP 〈771〉 的適用範圍是被動觸發的：<strong>只有當藥品專論（monograph）明確引用本章時，才全部或部分適用</strong>。這是 General Notices 3.10 的原則。製造商在撰寫新藥申請的品質規格時，可以參考本章提供的品質測試項目作為新藥專論草稿的基礎。</p>
+            <p>同時需要記住：效能測試（dissolution/drug release）不在本章範疇，另見 〈1771〉 Ophthalmic Products—Performance Tests。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼眼內注射製劑對亞可見微粒（subvisible particulates）的要求比局部點眼製劑嚴格得多？請從眼球解剖學角度說明。</li>
+                <li>USP 〈771〉 是強制性章節（mandatory）還是選用性章節（guideline）？何時成為強制要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SUBSECTION: OPHTHALMIC DOSAGE FORMS -->
+<div class="section-title">Ophthalmic Dosage Forms — 眼用劑型</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>OPHTHALMIC DOSAGE FORMS</h3>
+        <p>This chapter discusses the specific characteristics of dosage forms that are administered to any structure in the eye. See <em>Pharmaceutical Dosage Forms 〈1151〉</em> for additional information pertaining to the description and manufacturing of pharmaceutical dosage forms.</p>
+        <p>Ophthalmic products have the same or similar requirements as injectables and implants. For more information on the requirements for these dosage forms, see <em>Injections and Implanted Drug Products 〈1〉</em>.</p>
+        <p>Degradation and/or morphological changes of the drug product can occur during the sterilization step of the manufacturing process depending on the formulation, container-closure system, and sterilization process. These changes should be minimized. Temperatures required for autoclaving can cause irreversible damage to certain dosage forms such as suspensions, semisolids, emulsions, and others, whereas filtration is applicable only to formulations containing particulates with particle sizes &lt;0.2 µm. An alternative approach is to manufacture the drug product from sterile ingredients maintained within an <span class="key-term">aseptic environment</span>.</p>
+        <p>Multi-dose products shall contain a <span class="key-term">suitable antimicrobial preservative</span>, and the effectiveness of the preservative over the shelf life of the product must be verified. Alternatively, preservative-free multi-dose products require a packaging system that has been demonstrated to maintain sterility over the shelf-life of the product.</p>
+
+        <h3>Solutions（溶液）</h3>
+        <p>[Note—Included in this section are solutions and those solid products that, when reconstituted according to the instructions in the labeling, result in a solution.]</p>
+        <p>The corneal contact time of topical ophthalmic solutions increases with the <span class="key-term">viscosity</span> of the formulations. Several synthetic polymers, including but not limited to polyvinyl alcohol, polyvinylpyrrolidone, polyethylene glycol, poly(acrylic acid), and cellulose derivatives such as hypromellose and hydroxyethyl cellulose, are commonly used as <span class="key-term">viscosity enhancers</span> because of their physiologic compatibility and desirable physicochemical properties.</p>
+        <p>Another approach to increase the corneal contact time involves the use of polymers that provide the liquid formulation with semisolid consistency only when the liquid formulation is placed in the conjunctival or corneal area. "Hydrogel", or "water-based gels", are three-dimensional networks of polymer chains containing water within the network. The in-situ gelling phenomenon is caused upon delivery to the eye by a change in the conformation of the polymer(s) that can be triggered by external stimuli such as temperature, pH, ionic content, and lacrimal fluid.</p>
+        <p>Solutions can be injected not only by the intravitreal route but also by other routes, such as subconjunctival, sub-Tenons, retrobulbar, suprachoroidal, and subretinal routes.</p>
+
+        <h3>Suspensions（懸浮液）</h3>
+        <p>Use of aqueous or oily suspensions may be considered for a number of reasons: 1) a drug is poorly soluble in water, 2) a drug has poor stability in water, and 3) in cases where there is a need to increase contact time with the eye and to increase wetting of the eye. A <span class="key-term">drug particle size of &lt;10 µm</span> is desirable to reduce irritation.</p>
+        <p>After topical instillation, particles are expected to be retained in the cul-de-sac, and the drug slowly dissolves or is released from the polymeric structures by diffusion, dissolution, polymer degradation, or ion-exchange.</p>
+
+        <h3>Ointments（軟膏）</h3>
+        <p>Eye ointments are semisolid products usually intended for application to the conjunctiva, cornea, or eyelid. They have longer contact time when compared to many solutions. A suitable ophthalmic ointment base is nonirritating to the eye and permits diffusion of the drug substance throughout the secretions bathing the eye.</p>
+        <p>The majority of water-free, oleaginous eye ointment bases are composed of <span class="key-term">white petrolatum</span> and liquid petrolatum (mineral oil). They are designed to melt at body temperature.</p>
+
+        <h3>Gels（凝膠）</h3>
+        <p>Semisolid gel products are an alternative to traditional ointments and are based on the effect of increasing the viscosity to prolong the retention of the drug in the eye. Several types of gelling agents can be used, such as poly(acrylic acid) derivatives (e.g., carbomer) or hypromellose.</p>
+
+        <h3>Emulsions（乳劑）</h3>
+        <p>Topical ophthalmic emulsions are generally prepared by dissolving or dispersing the drug substance into an oil phase, adding suitable emulsifying and suspending agents, and vigorously mixing these components with water to form a uniform <span class="key-term">oil-in-water emulsion</span>. Each phase is typically sterilized before or during charging into the mixing vessel. High-shear homogenization may be used to reduce oil droplet size to submicron size.</p>
+
+        <h3>Strips（條帶）</h3>
+        <p>Ophthalmic strips can have different ophthalmic uses including, but not limited to, use as a diagnostic tool to visualize defects or aberrations in the corneal epithelium or to measure the amount of tear production. They are made of filter paper, and they can contain compounds such as fluorescein sodium. They are individually packed to preserve sterility until the moment of use.</p>
+
+        <h3>Inserts（插入劑）</h3>
+        <p>Ophthalmic inserts and ocular systems are solid dosage forms of appropriate size and shape that are placed in the conjunctival fornix, in the lacrimal punctum, or on the cornea. Inserts can usually be removed, if adverse effects develop, and can provide <span class="key-term">extended release</span> of the drug over a certain period of time. Inserts can be classified as bioabsorbable (soluble) or non-bioabsorbable (insoluble).</p>
+        <p>Soluble inserts may be placed in the lower cul-de-sac and generally dissolve within <strong>12–24 h</strong>. Bioabsorbable polymeric products undergo gradual dissolution while releasing the drug. Insoluble inserts need to be removed after a certain period of time.</p>
+
+        <h3>Implants（植入劑）</h3>
+        <p>Implants are injected or implanted into the anterior segment (intracameral, subconjunctival, sub-Tenon, or other parts of the anterior segment) or intravitreal cavities. Implants can be made of non-bioabsorbable or bioabsorbable polymers.</p>
+
+        <h3>Drug–Device Combination Products（藥-器械複合產品）</h3>
+        <p>An ophthalmic drug–device combination product is constituted, in most cases, of two components. One is a pharmaceutical dosage form containing the drug substance(s), and the other is a device that will activate or facilitate the penetration of the drug substance(s) from the dosage form into a particular region of the eye. Some examples of the devices are those that generate waveforms (heat or light). Light sources can activate photoresponsive drugs.</p>
+        <p>This chapter is applicable only to the pharmaceutical dosage form component of the ophthalmic drug–device combination product. The appropriate FDA regulations regarding medical devices should be used for the device component.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>滅菌策略選擇的層次邏輯：</strong>眼用製劑滅菌三大路徑各有限制：</p>
+            <ul>
+                <li><strong>高壓滅菌（Autoclave）：</strong>溫度可能破壞懸浮液、半固態、乳劑等不耐熱劑型</li>
+                <li><strong>過濾除菌（Filtration）：</strong>僅適用於微粒 &lt;0.2 µm 的製劑，無法處理懸浮液或半固態</li>
+                <li><strong>無菌製造（Aseptic Manufacturing）：</strong>用無菌原料在受控環境中生產，為前兩者不可行時的替代方案</li>
+            </ul>
+            <p>這三條路徑直接影響製造廠的設施投資與驗證策略，是 CDMO 接案時首要評估的技術節點。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>眼用劑型的藥物滯留時間就像不同類型的眼藥貼服方式：</p>
+            <ul>
+                <li><strong>溶液</strong> = 噴水霧在玻璃上，很快流走</li>
+                <li><strong>加黏度的溶液</strong> = 塗蜂蜜，流速慢多了</li>
+                <li><strong>in-situ 凝膠</strong> = 倒入熔融果凍液，接觸眼睛就固化，大幅延長接觸時間</li>
+                <li><strong>軟膏</strong> = 凡士林，附著力最強，但會模糊視線</li>
+                <li><strong>Insert（插入劑）</strong> = 緩釋膠囊放進結膜囊，12–24 小時慢慢溶解</li>
+            </ul>
+            <p>每種劑型的「黏著力」不同，製造的無菌挑戰也不同。半固態製劑最難過濾除菌，只能靠無菌製造或原料預滅菌。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>多劑量產品（Multi-dose Products）的防腐劑規定：</strong>一旦開封、多次使用，就必須有效的抗菌防腐劑，或使用能維持無菌的包裝系統（如無防腐劑的特殊瓶塞設計）。防腐劑有效性需依 〈51〉 Antimicrobial Effectiveness Testing 驗證，整個貨架壽命期間均需維持。</p>
+            <p><strong>懸浮液的粒徑上限：</strong>藥物粒徑 &lt;10 µm 是降低眼部刺激的關鍵門檻。粒徑過大會造成沙粒感，直接影響患者耐受性。這個數字在懸浮液配方開發時是硬性設計目標。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與關鍵數字 Key Numbers</h4>
+            <pre>
+過濾除菌適用條件：微粒粒徑 &lt; 0.2 µm
+懸浮液藥物粒徑目標：&lt; 10 µm（降低刺激）
+眼用 Insert 溶解時間：12–24 小時（可溶型）
+油膏：設計熔點 = 體溫（約 37°C）
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>作為 CDMO 的製造科學家，當客戶帶來一個水難溶性眼科藥物時，你的選擇矩陣：</p>
+            <ul>
+                <li>若能做成奈米懸浮液（&lt;10 µm）→ 考慮眼用懸浮液，需驗證再分散性</li>
+                <li>若藥物光敏感 → 可能考慮藥-器械複合（光激活系統），但設備監管另循 FDA 醫療器械法規</li>
+                <li>若需要長效局部作用 → Ocular Insert 或 Implant，但製程複雜度大幅增加</li>
+                <li>所有路徑均需無菌製造評估：哪個 sterilization route 可行？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某藥物不耐熱、分子量大無法過濾，應採用哪種滅菌策略？需要哪些額外驗證活動？</li>
+                <li>藥-器械複合眼用產品中，「藥物劑型」與「器械」分別依循哪些法規要求？USP 〈771〉 管轄範圍在哪裡停止？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>眼用製劑涵蓋廣泛劑型（溶液至植入劑），共同要求是<strong>無菌性</strong>，且均受 USP 〈771〉 管轄（當藥品專論引用時）</li>
+        <li>給藥途徑三大分類（局部、眼內注射、眼外注射）決定微粒控制的嚴格程度階梯：眼內注射要求最嚴（需符合 〈789〉）</li>
+        <li>滅菌策略選擇受制於劑型特性：不耐熱製劑需轉向無菌製造，過濾僅適用溶液（&lt;0.2 µm）</li>
+        <li>多劑量製劑必須有效防腐系統，藥-器械複合產品的器械部分不在 〈771〉 範疇內</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub — USP 〈771〉 Ophthalmic Products—Quality Tests | Section 0</p>
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

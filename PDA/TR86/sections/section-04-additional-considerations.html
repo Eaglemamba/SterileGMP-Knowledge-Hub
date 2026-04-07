@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TR86 Section 4: Additional Considerations &amp; References | 額外考量與參考文獻</title>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.term-box, .key-term-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; }
+.application-box h3, .application-box h4 { color: #1565c0 !important; margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.flow-diagram { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; margin: 1rem 0; }
+.flow-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; }
+.flow-num { width: 32px; height: 32px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+.flow-content { flex: 1; }
+.flow-arrow { text-align: center; color: var(--accent-blue); font-size: 1.2rem; margin: 0.25rem 0; }
+.ref-list { list-style: none; padding: 0; }
+.ref-list li { padding: 0.6rem 0.85rem; border-left: 3px solid #3182ce; margin-bottom: 0.6rem; background: #f7fafc; border-radius: 0 6px 6px 0; font-size: 0.88rem; }
+.ref-list li .ref-num { font-weight: 700; color: var(--primary-blue); }
+.ref-list li .ref-note { font-style: italic; color: var(--text-medium); margin-top: 0.2rem; font-size: 0.83rem; }
+.lifecycle-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.lifecycle-table th { background: var(--primary-blue); color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.84rem; }
+.lifecycle-table td { padding: 0.55rem 0.75rem; border: 1px solid #e2e8f0; vertical-align: top; }
+.lifecycle-table tr:nth-child(even) { background: #f0f7ff; }
+.simulation-block { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 1.25rem; margin: 1rem 0; }
+.simulation-block h4 { color: var(--primary-blue); font-size: 0.95rem; margin-bottom: 0.5rem; border-bottom: 1px solid #dee2e6; padding-bottom: 0.35rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) {
+  .two-column, .content-grid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.1rem; }
+  .main-content { padding: 1rem; }
+  .chapter-body { padding: 1rem; }
+}
+@media print {
+  .back-to-top { display: none !important; }
+  .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Section 4: Additional Considerations &amp; References | 額外考量與參考文獻</h1>
+  <p class="subtitle">PDA TR86 — Sections 6.0–9.0 | 第6.0至9.0節</p>
+  <p class="page-info">Pages p38–p52 | 頁碼 p38–p52</p>
+</div>
+
+<div class="main-content">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <h3>Section Contents | 本節目錄</h3>
+    <div class="toc-grid">
+      <a href="#sec6-0">6.0 Additional Considerations</a>
+      <a href="#sec6-1">6.1 Transportation &amp; Distribution</a>
+      <a href="#sec6-1-1">6.1.1 Physical Stressors</a>
+      <a href="#sec6-1-2">6.1.2 Pressure</a>
+      <a href="#sec6-1-3">6.1.3 Testing Approaches</a>
+      <a href="#sec6-2">6.2 100% Online Testing</a>
+      <a href="#sec6-3">6.3 QbD Approach</a>
+      <a href="#sec6-3-1">6.3.1 Risk Assessment</a>
+      <a href="#sec6-4">6.4 Bulk Container Lifecycle</a>
+      <a href="#sec6-5">6.5 LOD Simulation</a>
+      <a href="#sec7-0">7.0 Conclusion</a>
+      <a href="#sec8-0">8.0 References</a>
+      <a href="#sec9-0">9.0 Additional Reading</a>
+    </div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="learning-objectives">
+    <h3>Learning Objectives | 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+      <div>
+        <strong>After studying this section, you will be able to:</strong>
+        <ol style="margin-left:1.25rem; margin-top:0.5rem;">
+          <li>Identify distribution stressors (shock, vibration, pressure) and relevant standards (ISTA, ASTM)</li>
+          <li>Explain the concept and advantages of 100% in-line CCIT versus statistical sampling</li>
+          <li>Apply QbD principles to build a container closure integrity testing (CCIT) program</li>
+          <li>Describe the bulk/single-use container lifecycle approach and associated testing requirements</li>
+          <li>Interpret method LOD studies using positive/negative control populations and define detection limits statistically</li>
+          <li>Articulate TR86's contribution and how it extends USP &lt;1207&gt; for complex packaging systems</li>
+        </ol>
+      </div>
+      <div>
+        <strong>完成本節學習後，您將能夠：</strong>
+        <ol style="margin-left:1.25rem; margin-top:0.5rem;">
+          <li>識別流通配送中的壓力因子（衝擊、振動、氣壓），以及相關標準（ISTA、ASTM）</li>
+          <li>說明100%在線CCIT的概念與優勢，相較統計抽樣的差異</li>
+          <li>應用QbD原則，建立完整的容器密封完整性測試（CCIT）計畫</li>
+          <li>描述大量/單次使用容器的生命週期方法與各階段測試需求</li>
+          <li>使用陽性/陰性對照族群詮釋方法LOD研究，並以統計方式定義偵測極限</li>
+          <li>說明TR86的貢獻，以及如何延伸USP &lt;1207&gt;處理複雜包裝系統</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.0 -->
+  <div class="chapter-section" id="sec6-0">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6</div>
+      <div class="chapter-info">
+        <h2>6.0 Additional Considerations for Package Integrity Profiling | 包裝完整性概況分析的額外考量</h2>
+        <p>Lifecycle stressors from manufacturing through distribution | 從製造到配送的生命週期壓力因子</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.0</h3>
+          <p>A robust package integrity profile for a given product-package system considers factors experienced throughout the product's lifecycle as required by USP &lt;1207&gt;. As such, a package integrity profile must consider anticipated or experienced stresses, including those resulting from transportation and distribution. Such stresses may include shock, vibration, compression, temperature, pressure, and general package storage environment.</p>
+          <div class="term-box">
+            <h4>Key Concept: Package Integrity Profile</h4>
+            <p>A <span class="key-term">package integrity profile</span> is the comprehensive, lifecycle-spanning record of a product-package system's integrity status. It encompasses results from development, manufacturing, stability, and distribution phases. USP &lt;1207&gt; requires that this profile account for all stresses the package will experience throughout its life.</p>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.0節</h3>
+          <p>一個穩健的<span class="key-term">包裝完整性概況（Package Integrity Profile）</span>，必須考量產品-包裝系統在整個生命週期中可能承受的所有因子，這是USP &lt;1207&gt;的要求。包裝完整性概況必須涵蓋預期或實際發生的壓力，包括：</p>
+          <ul>
+            <li><strong>震動（Shock/Vibration）</strong>：運輸途中物理撞擊</li>
+            <li><strong>壓縮（Compression）</strong>：堆疊儲存造成的壓力</li>
+            <li><strong>溫度（Temperature）</strong>：冷鏈與溫度偏差</li>
+            <li><strong>氣壓（Pressure）</strong>：航空運輸中的低壓環境</li>
+            <li><strong>儲存環境（Storage Environment）</strong>：濕度、紫外線等</li>
+          </ul>
+          <div class="analogy-box">
+            <h4>生活比喻</h4>
+            <p>「包裝完整性概況」就像一本護照，記錄這個產品-包裝系統從「出生」（開發）到「退休」（使用後）的每段旅程及考驗。監管機構要求你能說清楚：這個包裝在人生每個階段是否仍然完整？</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.1 -->
+  <div class="chapter-section" id="sec6-1">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6.1</div>
+      <div class="chapter-info">
+        <h2>6.1 Transportation and Distribution | 運輸與配送</h2>
+        <p>Distribution chain stressors unique to each product-package system | 每個產品-包裝系統獨特的配送鏈壓力</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.1</h3>
+          <p>A package integrity profile is unique to each product-package system, a concept that also applies to storage and distribution considerations. The types of stresses experienced in these lifecycle phases vary widely with dosage form, pack-out configuration, product requirements, and distribution chain. Additionally, the impact of any single stress factor, such as a temperature excursion, can vary with respect to product. An excursion critical to one product may be insubstantial to the quality of another.</p>
+          <p>Given the potential impact to product quality and sterility, appropriate challenges and assessments should be made to ensure that product quality is not affected during the transportation and distribution circuit. The types of challenge conditions and subsequent assessments performed, however, reflect the properly assessed risks for the system in question.</p>
+          <p>As the intent of this report is to focus on package integrity, only those distribution challenges impacting integrity are discussed here. Transportation and distribution challenges are not limited solely to integrity of the package, however. A fully integral package containing a proteinaceous product may experience vibration and shock that does not lead to integrity failure but, for example, may cause aggregation of protein. Thus, in addition to post-challenge CCIT, other assessments may be necessary to evaluate the impact of distribution on overall product quality.</p>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.1節</h3>
+          <p>配送壓力因子會因劑型、包裝形式、產品特性和配送鏈不同而有極大差異。以溫度偏差為例，對某些蛋白質製劑可能是致命的，但對另一類產品卻幾乎無影響。</p>
+          <div class="note-box">
+            <h4>重要提醒：完整性≠產品品質全部</h4>
+            <p>TR86的重點是包裝完整性，但務必記得：一個在物理上完整（沒有洩漏）的包裝，仍可能因震動導致蛋白質聚集（aggregation）等品質問題。因此除了CCIT之外，還需要進行其他品質評估（如SE-HPLC測定蛋白質聚集）。</p>
+          </div>
+          <div class="term-box">
+            <h4>配送圈（Distribution Circuit）概念</h4>
+            <p>「配送圈」包含從製造廠出發，經過倉儲、批發商、物流中心、零售藥局，一直到患者手中的整個旅程。每個環節的壓力條件都應被評估並納入完整性概況中。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.1.1 -->
+      <div id="sec6-1-1">
+        <div class="section-divider">6.1.1 Physical Stressors | 物理壓力因子</div>
+        <div class="two-column">
+          <div class="left-column">
+            <h3>Original Text — Section 6.1.1</h3>
+            <p>Perhaps the most obvious challenges experienced during distribution are physical stresses such as shock, vibration, and compression. Often, these types of events result in gross leakage, for instance, a vial shattering. This type of gross defect is easily detected and generally prevents final use of the product. The formation of cracks, checks, chips, and other small defects, however, may result in leakage that negatively impacts product quality but is not readily detectable by the end user. Thus, these types of defects present a more latent and use-specific risk.</p>
+            <p>Furthermore, such types of defects may result in more serious integrity concerns further along in the distribution chain, as a check may develop into a crack, or a crack may widen and permit liquid loss or microbial ingress.</p>
+            <p>Consequently, to evaluate and reduce risk associated with a shipment, not only the primary package, but the secondary and tertiary packaging should be considered. Numerous standards are available from such organizations as ASTM and the International Safe Transit Association (ISTA) to reliably and reproducibly subject package systems to physical stresses that replicate a variety of distribution chains, including via truck, rail, air, sea, or others.</p>
+            <p>The effects of temperature on packaging and distribution is also discussed in Section 4.4 on Cryogenic Conditions.</p>
+          </div>
+          <div class="right-column">
+            <h3>中文解說 — 第6.1.1節</h3>
+            <p>物理壓力因子是配送中最直觀的風險，但危害程度差異很大：</p>
+            <table>
+              <tr><th>缺陷類型</th><th>可見度</th><th>風險等級</th></tr>
+              <tr><td>破瓶（Shattering）</td><td>顯而易見</td><td>立即阻止使用</td></tr>
+              <tr><td>細裂紋（Crack/Check）</td><td>不易察覺</td><td>潛伏性高風險</td></tr>
+              <tr><td>缺口（Chip）</td><td>需仔細檢查</td><td>可能演變為裂縫</td></tr>
+            </table>
+            <div class="note-box">
+              <h4>「潛伏性風險」的概念</h4>
+              <p>細裂紋（check）的危險在於它是一個「時間炸彈」：在製造時可能僅是微小缺陷，但在配送過程中可能擴大成裂縫，最終導致微生物侵入（microbial ingress）或藥液滲漏。這就是為何必須評估整個包裝系統（一次、二次、三次包裝）。</p>
+            </div>
+            <div class="term-box">
+              <h4>ISTA 標準</h4>
+              <p><span class="key-term">ISTA（International Safe Transit Association）</span>提供一系列標準化的配送模擬測試，其中ISTA 2A是常用的運輸模擬標準，涵蓋振動、衝擊、堆疊壓縮等測試條件，可重現陸運、航空等不同配送鏈。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.1.2 -->
+      <div id="sec6-1-2">
+        <div class="section-divider">6.1.2 Pressure | 氣壓變化</div>
+        <div class="two-column">
+          <div class="left-column">
+            <h3>Original Text — Section 6.1.2</h3>
+            <p>In cases where a low-pressure environment could present challenges to the package and product it contains, evaluation of the pressure differentials in a distribution chain could be critical. This is particularly relevant in cases of air shipment, where product may be stored in cargo areas with partial to nonexistent pressurization that, if left unevaluated, may result in unintended consequences. The ability of a sealed flexible container to resist creep or burst during air shipment is an example of risk that should be characterized.</p>
+            <p>Another example, one discussed with increasing frequency as the prevalence of prefilled syringes and prefilled syringe-based devices expands, is the concept of plunger movement. Although the degree to which plunger movement occurs is impacted by fill level, headspace volume, general package design, and pressure differentials experienced, how a low-pressure environment may impact product sterility and quality in these types of systems must also be characterized. As a plunger moves backward, the seal, and possibly the product, may move into an unsterile area of the container. In extreme cases, the plunger may completely exit the barrel.</p>
+          </div>
+          <div class="right-column">
+            <h3>中文解說 — 第6.1.2節</h3>
+            <p>航空運輸是氣壓評估最關鍵的場景。商業貨機貨艙的氣壓約為地面的<strong>75%（約0.75 atm）</strong>，相當於海拔8,000英尺的環境壓力。這個壓差對多種包裝都有潛在影響：</p>
+            <div class="term-box">
+              <h4>氣壓風險：預充填注射器的柱塞移動</h4>
+              <p>預充填注射器（Prefilled Syringe, PFS）中，低氣壓會造成<span class="key-term">柱塞向後移動（Plunger Retraction）</span>：</p>
+              <ul>
+                <li>柱塞後退 → 密封界面暴露於非無菌區域</li>
+                <li>極端情況下柱塞可能完全脫出筒身</li>
+                <li>影響程度取決於：充填量、頂空體積、包裝設計、壓差大小</li>
+              </ul>
+            </div>
+            <div class="analogy-box">
+              <h4>比喻：飛機上的礦泉水瓶</h4>
+              <p>您是否注意到乘坐飛機時，密封礦泉水瓶會因艙壓變化而稍微凹陷？同樣原理，柔性包裝（如袋子）可能「膨脹」，而密封預填充注射器的柱塞可能被「吸出」。這就是為何航空運輸的氣壓評估不可忽略。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.1.3 -->
+      <div id="sec6-1-3">
+        <div class="section-divider">6.1.3 Testing Approaches | 測試方法</div>
+        <div class="two-column">
+          <div class="left-column">
+            <h3>Original Text — Section 6.1.3</h3>
+            <p>Numerous documents from internationally recognized organizations (e.g., ASTM, ISTA, ICH, ISO) are available for reference and provide reproducible ways of evaluating some of these stressors, including physical shock events, thermal cycling, and pressure cycling. However, the simulated distribution chain should reflect the anticipated stressors. Standards are meant to employ reproducible simulations but may not account for the variations and intricacies of specific distribution networks, such as iterative air shipments or a combination of different modes of transport. As with the application of many test methods and techniques, a proper assessment of the risks should inform decisions on evaluating such risks.</p>
+          </div>
+          <div class="right-column">
+            <h3>中文解說 — 第6.1.3節</h3>
+            <p>使用標準化測試方法（ISTA、ASTM、ICH、ISO）的目的是確保<strong>可重現性（Reproducibility）</strong>，但標準並非萬能：</p>
+            <div class="key-point-box">
+              <h4>標準的局限性</h4>
+              <ul>
+                <li>ISTA等標準提供的是「通用場景」模擬，可能無法完整重現特定配送網絡的複雜性</li>
+                <li>例如：「先陸運→空運→再陸運」的多模式組合運輸，各段壓力的累積效應標準未必涵蓋</li>
+                <li>關鍵原則：<span class="key-term">模擬測試必須反映實際預期的壓力條件</span>，而非盲目套用標準</li>
+              </ul>
+            </div>
+            <table>
+              <tr><th>組織</th><th>相關標準</th><th>主要應用</th></tr>
+              <tr><td>ISTA</td><td>ISTA 2A, 3A</td><td>運輸模擬（振動、衝擊、堆疊）</td></tr>
+              <tr><td>ASTM</td><td>D4169, D7386</td><td>包裝性能測試</td></tr>
+              <tr><td>ICH</td><td>Q1A, Q1B</td><td>穩定性測試含運輸應力</td></tr>
+              <tr><td>ISO</td><td>ISO 4180</td><td>完整包裝的運輸試驗</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.2 -->
+  <div class="chapter-section" id="sec6-2">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6.2</div>
+      <div class="chapter-info">
+        <h2>6.2 100% Online Testing | 100%在線測試</h2>
+        <p>In-line CCIT at fill/finish for every container | 充填封口線上對每個容器進行CCIT</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.2</h3>
+          <p>A holistic approach to controlling CCI should be taken to ensure package integrity at the time of manufacture as well as over the shelf life of the product. This holistic approach includes consideration of:</p>
+          <ul>
+            <li>CCIT method (in-line, near-line, off-line)</li>
+            <li>Quality of primary package components</li>
+            <li>Primary package design</li>
+            <li>Manufacturing process qualification</li>
+            <li>Product manufacturing process</li>
+            <li>Change control process</li>
+            <li>Shelf-life assessment</li>
+          </ul>
+          <p>The CCIT method is a critical part of the control strategy, and an in-line test can make the overall approach more robust. However, the in-line test should not be the sole point of control.</p>
+          <p>In-line testing is defined as 100% testing of all filled and sealed primary packages for CCI during the production process, after the final sealing operation.</p>
+          <p>Currently, some regulatory requirements state that all container types fused and filled on the filling line (e.g., ampules, blow-fill-seal containers) must be 100% inspected. For other products, no current regulatory requirement exists for 100% in-line testing. The decision to conduct 100% in-line testing for other products should be based on risk assessment, as part of a holistic approach.</p>
+          <p>A package that is accepted at the in-line test station is not guaranteed to maintain its CCI during the shelf life and use of the product. Conversely, a package that is rejected by the in-line test station is guaranteed not to meet the product's CCI requirements. Therefore, the in-line test station acts as a filter for rejected packages, reducing the risk of CCI failures due to random process failure modes.</p>
+          <p>Consistent failure modes that are due to equipment malfunctioning or setup can be detected by other means, such as off-line quality control testing. A particular advantage of in-line CCIT compared to off-line quality control testing is the elimination (and cost savings) of handling suspect lots of products due to sample rejection at the off-line test station.</p>
+          <p>For high-speed lines, current technologies cannot test for the small-sized defects that off-line test methods can. However, since most process failure modes result in medium to large defects in the package, widening the reject limit for in-line testing is a reasonable and low-risk decision.</p>
+          <p>While it can add value in some situations, technology is not currently available to enable 100% in-line testing for all CCS and product types. Where feasible, regulations and quality risk management principles identified in ICH Quality Guideline Q9: Quality Risk Management should be used to determine if 100% in-line testing should be implemented.</p>
+          <p>Integrating 100% in-line testing into the manufacturing process requires a strong commitment. The in-line test station requires capital investment and the operational cost of the equipment, which adds to the cost of the product. Multiple test stations may be required on each filling line to overcome differences between line speeds and test station throughput.</p>
+          <p>No one test method fits all products. In-line test methods must be nondestructive for the specific product to be tested.</p>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.2節</h3>
+          <p><span class="key-term">100%在線測試（100% In-Line Testing）</span>指在充填封口後，對生產線上每一個容器進行CCIT，不遺漏任何一個。這是「整體性CCI控制策略」的核心環節之一。</p>
+          <div class="term-box">
+            <h4>測試位置定義對比</h4>
+            <table>
+              <tr><th>類型</th><th>英文</th><th>說明</th></tr>
+              <tr><td>在線</td><td>In-line</td><td>樣品不離開生產線，非破壞性；100%測試</td></tr>
+              <tr><td>近線</td><td>On-line</td><td>樣品暫時分流，非破壞性；可返回生產線</td></tr>
+              <tr><td>旁線</td><td>At-line</td><td>樣品從生產線取出，在旁邊分析</td></tr>
+              <tr><td>離線</td><td>Off-line</td><td>樣品移至實驗室，通常為抽樣測試</td></tr>
+            </table>
+          </div>
+          <div class="note-box">
+            <h4>In-line測試的雙向邏輯</h4>
+            <p><strong>通過</strong>在線測試 ≠ 保證整個保存期限都維持CCI（後續仍可能因儲存、配送等因素失效）</p>
+            <p><strong>未通過</strong>在線測試 = 確定不符合CCI要求（100%確定淘汰）</p>
+            <p>因此，在線測試的功能是<span class="key-term">「過濾器」</span>，將確定缺陷品剔除，但無法保證通過者的長期完整性。</p>
+          </div>
+          <div class="key-point-box">
+            <h4>In-line vs Off-line：成本效益關鍵差異</h4>
+            <ul>
+              <li><strong>Off-line測試失敗</strong>：整批產品被標記為「疑似批次」，需封存、重測、調查，成本高昂</li>
+              <li><strong>In-line測試失敗</strong>：僅剔除該單一容器，不影響整批；即時反饋，生產繼續</li>
+              <li>因此在線測試的最大優勢是<strong>消除疑似批次處理成本</strong></li>
+            </ul>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：機場安全檢查</h4>
+            <p>100%在線CCIT就像機場安全門——每位旅客都必須通過，不抽樣。通過的人不代表一定沒問題（例如隱藏得很好的違禁品），但沒通過的人確定有問題。離線QC測試則像隨機抽查——效率高但存在漏網之魚的風險。</p>
+          </div>
+          <div class="term-box">
+            <h4>法規要求</h4>
+            <p>目前歐盟GMP附件1（Annex 1, 2008/2022版）及EudraLex Volume 4明確要求：安瓿（Ampoules）及吹-充填-封（BFS）容器必須進行<span class="key-term">100%密封完整性檢驗</span>。其他容器類型則依風險評估決定是否需要100%在線測試。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.3 -->
+  <div class="chapter-section" id="sec6-3">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6.3</div>
+      <div class="chapter-info">
+        <h2>6.3 Building a Quality by Design (QbD) Approach into the CCIT Program | 將QbD導入CCIT計畫</h2>
+        <p>Systematic, science-based, risk-driven framework for package integrity | 系統化、科學導向、風險驅動的包裝完整性框架</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.3</h3>
+          <p>Pharmaceutical QbD is a systematic approach to development that begins with predefined objectives and emphasizes product and process understanding and control based on sound science and risk management. A QbD concept can be built into a CCIT program, including such elements as:</p>
+          <ul>
+            <li>Quality target product profile that identifies the critical quality attributes (CQAs) of the product-package system</li>
+            <li>Package design and understanding, including identification of critical material attributes that can affect package integrity</li>
+            <li>Process design and understanding, including identification of CPPs, linking the material attributes and process parameters to the CQAs</li>
+            <li>Control strategy that includes specifications for the product-package configuration with respect to CCI as well as controls during each step of the manufacturing process</li>
+            <li>Regular quality checks on process capability and continual improvement initiatives</li>
+          </ul>
+          <p>One of the ways users can build QbD into a CCIT program is to employ a risk-based approach. A risk-based CCIT program is built on science-based decisions; it offers an ongoing database of product lifecycle CCIT results (also called a package integrity profile) and a risk management tool for package integrity assurance throughout the lifecycle of the product. The program should demonstrate CCI as a function of ongoing, operative variations that takes into consideration:</p>
+          <ul>
+            <li>Design and material of the package</li>
+            <li>Package assembly</li>
+            <li>Processing conditions</li>
+            <li>Storage, distribution, and stability conditions</li>
+          </ul>
+          <p>Key aspects for building a risk-based CCIT program using QbD principles:</p>
+          <ul>
+            <li><strong>CCI over the entire lifecycle of product:</strong> The CCIT tool kit needs to demonstrate CCI over the entire lifecycle of the product. More than one test may be employed during a given product's lifecycle based on the critical parameters to be controlled at that stage.</li>
+            <li><strong>Choice of deterministic versus probabilistic methods:</strong> Deterministic methods are those where the leakage event is based on phenomena that follow a predictable chain of events. Probabilistic methods offer qualitative outcomes subject to the probability of a series of events.</li>
+            <li><strong>Choice of off-line versus in-line, on-line or at-line test methods</strong></li>
+            <li><strong>Sampling:</strong> Scientifically valid sampling plans should be based on risk assessment in association with appropriate statistical criteria.</li>
+            <li><strong>Defining the MALL:</strong> CCI is established when a package meets its maximum allowable leak limit. Product quality requirements define the MALL.</li>
+            <li><strong>Designing a CCIT tool kit:</strong> The CCIT tool kit should encompass different test methods that can be employed to detect defect types critical to product quality and sterility.</li>
+            <li><strong>Ensuring continuous improvement:</strong> In the event of a change to package design, material, or manufacturing processing conditions, the risk-based strategy should trigger a review of the CCIT tool kit.</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.3節</h3>
+          <p><span class="key-term">QbD（Quality by Design，設計品質）</span>是ICH Q8所定義的系統性開發方法：從預定目標出發，以科學和風險管理為基礎，深入理解產品與製程。將QbD理念導入CCIT計畫，代表不再是被動應對缺陷，而是主動預防。</p>
+
+          <div class="flow-diagram">
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem;">QbD CCIT計畫建構流程</h4>
+            <div class="flow-step">
+              <div class="flow-num">1</div>
+              <div class="flow-content"><strong>建立QTPP</strong>：定義產品-包裝系統的品質目標（含CQAs）</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">2</div>
+              <div class="flow-content"><strong>識別CMAs &amp; CPPs</strong>：找出影響包裝完整性的關鍵材料屬性與製程參數</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">3</div>
+              <div class="flow-content"><strong>定義MALL</strong>：依產品品質需求設定最大允許洩漏限值</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">4</div>
+              <div class="flow-content"><strong>建立CCIT工具組</strong>：選擇覆蓋全生命週期各階段的測試方法組合</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">5</div>
+              <div class="flow-content"><strong>設計控制策略</strong>：制定抽樣計畫、接受標準、變更控制觸發機制</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">6</div>
+              <div class="flow-content"><strong>持續改進</strong>：將CCIT數據納入包裝完整性概況資料庫，定期審查</div>
+            </div>
+          </div>
+
+          <div class="term-box">
+            <h4>確定性 vs. 概率性方法選擇</h4>
+            <ul>
+              <li><span class="key-term">確定性方法（Deterministic）</span>：基於可預測的物理現象（如氦氣洩漏率、真空衰減），結果定量、客觀，需較少準備</li>
+              <li><span class="key-term">概率性方法（Probabilistic）</span>：結果定性，依賴一系列事件發生的概率（如微生物侵入測試）；某些情況下靈敏度更佳，可提供缺陷位置信息</li>
+            </ul>
+          </div>
+          <div class="note-box">
+            <h4>MALL的核心地位</h4>
+            <p><span class="key-term">MALL（Maximum Allowable Leakage Limit，最大允許洩漏限值）</span>是整個CCIT計畫的定錨點。所有測試方法的選擇、LOD的要求，都必須以「能可靠偵測到等於或小於MALL的缺陷」為前提。MALL的設定則源自於產品品質需求（如無菌性維持、劑量準確性等）。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6.3.1 Risk Assessment -->
+      <div id="sec6-3-1">
+        <div class="section-divider">6.3.1 Risk Assessment | 風險評估</div>
+        <div class="two-column">
+          <div class="left-column">
+            <h3>Original Text — Section 6.3.1</h3>
+            <p>A risk-based approach using the quality tools mentioned in ICH Q9 can be a very effective way to assess sterile package integrity and testing applications. Following the lifecycle phases, relevant package integrity parameters are considered to determine product-package quality intent and how to evaluate the critical parameters that effectively impact the integrity of the CCS.</p>
+            <p>A lifecycle assessment process provides ample time and opportunity to develop improved learning, better understanding, and ongoing generation of compelling data to support the risk of package integrity failure. This QbD approach consists of learning, evaluation, and control strategy determination. The impact or risk of an integrity failure is relevant to both patient and product.</p>
+            <p>A first step in risk assessment (e.g., using the Hazard Analysis Critical Control Points (HACCP) quality tool) is to identify each incremental process step and the appropriate materials relevant to that step. Next, a verification of the potential risk of failure (i.e., a leak) at the process step is made and a list drawn up of causal factors that might lead to each failure type. Another list is developed that indicates what controls may exist that could mitigate the risks. Subsequently, the risk tool can be used to determine what types of testing (monitoring) are valuable, how frequently testing should be performed, and where or what types of samples should be taken for evaluation.</p>
+            <p>Similar to Six Sigma thinking (define-measure-analyze-improve-control), the risk assessment process is an ongoing methodology for quality improvement.</p>
+          </div>
+          <div class="right-column">
+            <h3>中文解說 — 第6.3.1節</h3>
+            <p>包裝完整性的風險評估，可借用ICH Q9所介紹的多種工具：</p>
+            <table>
+              <tr><th>風險工具</th><th>應用方式</th></tr>
+              <tr><td>HACCP</td><td>識別每個製程步驟的潛在洩漏危害點與控制措施</td></tr>
+              <tr><td>FMEA</td><td>分析每種失效模式的嚴重性、發生率、可偵測性</td></tr>
+              <tr><td>Ishikawa</td><td>追溯包裝失效的根本原因（材料、設備、人員等）</td></tr>
+              <tr><td>FTA</td><td>從頂層事件（洩漏）向下推導所有潛在原因路徑</td></tr>
+            </table>
+            <div class="analogy-box">
+              <h4>比喻：Six Sigma DMAIC循環</h4>
+              <p>包裝完整性風險評估遵循與Six Sigma類似的循環：<br>
+              <strong>Define</strong>（定義）→ 識別製程步驟與材料<br>
+              <strong>Measure</strong>（量測）→ 評估失效風險與潛在缺陷<br>
+              <strong>Analyze</strong>（分析）→ 列出失效原因與現有控制措施<br>
+              <strong>Improve</strong>（改善）→ 制定測試策略，設計控制點<br>
+              <strong>Control</strong>（控制）→ 持續監測，建立完整性概況資料庫</p>
+            </div>
+            <div class="key-point-box">
+              <h4>風險評估的兩大影響維度</h4>
+              <p>包裝完整性失效的影響不僅限於產品，更涉及患者安全：</p>
+              <ul>
+                <li><strong>對產品</strong>：污染、氧化、藥效喪失、pH變化</li>
+                <li><strong>對患者</strong>：感染（微生物侵入）、過量/劑量不足、不良反應</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.4 -->
+  <div class="chapter-section" id="sec6-4">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6.4</div>
+      <div class="chapter-info">
+        <h2>6.4 Bulk Container Lifecycle Approach | 大量容器生命週期方法</h2>
+        <p>Single-use systems: from supplier manufacturing through user deployment | 單次使用系統：從供應商製造到使用者部署</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.4</h3>
+          <p>Bulk containers go through two distinct phases of lifecycle: First, the development phase that encompasses material selection, design, and qualification and, second, the product phase, from manufacturing steps through supply chain to point of use. QbD and QRM principles can be applied throughout both phases, during which specific risks are identified and evaluated using appropriate methods.</p>
+          <p>Increasingly, according to the criticality of their application, users are asking suppliers to conduct testing, or choose to do it themselves to mitigate the risk of leakage or contamination. The materials used for these applications are engineered polymers that must be specified and controlled appropriately up the supply chain to ensure consistency of product quality.</p>
+          <p>For the flexible container manufacturer, test methods may differ between the phases of the lifecycle. At the supplier site, specific test methods are used during the design phase to establish the capability for integrity assurance. The right materials in a laminate structure are selected and the welds and seals are designed for the intended use. Other tests are applied during the manufacturing phase, such as those used for in-process controls.</p>
+          <p><strong>Table 6.4-1: Considerations for Single-Use System's Lifecycle at User's Site</strong></p>
+          <table class="lifecycle-table">
+            <tr><th>Area to Manage Product Quality</th><th>Considerations</th></tr>
+            <tr><td>Risk assessment</td><td>Evaluate the quality risk from the supply chain as well as the risks associated with their processes that can affect integrity; develop a control strategy, which may involve use of a physical leak test method</td></tr>
+            <tr><td>Incoming goods inspection</td><td>Identify seal quality and integrity attributes to be evaluated upon receipt</td></tr>
+            <tr><td>Assembly storage</td><td>Ensure that products are stored in a manner that prevents damage</td></tr>
+            <tr><td>Assembly unpacking and installation</td><td>Ensure that assemblies are transported through the plant in a manner that does not induce damage; support the product appropriately (large surface), eliminating use of sharp tools and short-term storage racks with sharp edges</td></tr>
+            <tr><td>Visual inspection</td><td>Check visually for marks, damages, and abnormalities on the SUS</td></tr>
+            <tr><td>Pre-use leak testing</td><td>Verify integrity after transportation and handling directly before use; supplement release testing at supplier</td></tr>
+            <tr><td>Use</td><td>Use the SUS within its specifications</td></tr>
+            <tr><td>Post-use leak testing</td><td>Verify integrity of the SUS after use to support the sterility claim on the final product</td></tr>
+            <tr><td>Operator training</td><td>Ensure that operators understand in which modes assemblies may be damaged by handling and deployment, how to inspect an assembly prior to use, and how to run a leak test</td></tr>
+            <tr><td>Supplier feedback</td><td>Inform supplier of integrity failures so supplier can understand and correct issues</td></tr>
+          </table>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.4節</h3>
+          <p><span class="key-term">大量容器（Bulk Container）</span>，特別是<span class="key-term">單次使用系統（Single-Use System, SUS）</span>如生物製藥中的一次性袋（Bioprocess Bags），其生命週期涵蓋兩大階段，每個階段的測試重點不同：</p>
+
+          <div class="term-box">
+            <h4>SUS生命週期兩大階段</h4>
+            <p><strong>第一階段：開發階段（Development Phase）</strong></p>
+            <ul>
+              <li>材料選擇（Material Selection）：工程聚合物的規格與相容性</li>
+              <li>設計確認（Design Qualification）：焊縫、密封設計驗證</li>
+              <li>供應商端完整性測試：建立完整性保證能力</li>
+            </ul>
+            <p style="margin-top:0.5rem;"><strong>第二階段：產品階段（Product Phase）</strong></p>
+            <ul>
+              <li>供應鏈管控：從製造商出貨到用戶接收</li>
+              <li>用戶端使用前、使用中、使用後測試</li>
+              <li>最終產品無菌性的支持性佐證</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>使用前vs.使用後測試的監管意義</h4>
+            <ul>
+              <li><span class="key-term">使用前洩漏測試（Pre-use Leak Testing）</span>：驗證接收後處理/搬運沒有損害完整性，補充供應商放行測試的保障</li>
+              <li><span class="key-term">使用後洩漏測試（Post-use Leak Testing）</span>：支持最終產品無菌性聲明（Sterility Claim）——若SUS使用後仍完整，表示整個製程中無外部污染機會進入</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：從食材到餐桌的冷鏈管理</h4>
+            <p>SUS的生命週期管理，就像高級餐廳從農場到餐桌的整個供應鏈管理。食材（SUS袋）從農場（供應商）出發，歷經冷藏運輸（入廠前）、廚房儲存（組裝存放）、使用前檢查（目視、漏水測試）、烹飪過程（生物製程使用），以及最後確認（使用後測試）。每個環節都有檢查點，任何一環失效都可能影響最終品質。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6.5 -->
+  <div class="chapter-section" id="sec6-5">
+    <div class="chapter-divider">
+      <div class="chapter-badge">6.5</div>
+      <div class="chapter-info">
+        <h2>6.5 Educational Simulation: LOD and Method Selection | 教育性模擬：LOD與方法選擇</h2>
+        <p>PharmaCo-A case study — screening, optimizing, and validating four leak-test technologies | PharmaCo-A案例：篩選、優化及驗證四種洩漏測試技術</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 6.5 Overview</h3>
+          <p>In this textual illustration of the key role leak testing can play in the lifecycle of a parenteral product, fictional firm PharmaCo-A is working to bring a new parenteral product to market. During development, the inherent integrity of the primary package met the MALL for the intended product. However, during scale-up, poor quality package components and line equipment issues resulted in defective packages.</p>
+          <p><em>This illustration is purely fictional, and the content is provided for educational purposes only. There is no requirement to follow this approach in content, specificity, or scale.</em></p>
+          <div class="simulation-block">
+            <h4>Package Development</h4>
+            <p>PharmaCo-A's CCS was selected based on package selection criteria. Empty package units were assembled and processed on mock-production equipment and leak tested using a highly sensitive quantitative test method. Results showed gaseous leakage rates met the MALL when properly assembled. These studies provided information on optimum component design, component processing, and package assembly parameters.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Package Processing and Assembly Validation</h4>
+            <p>During scale-up, cracked containers, torn closures, and misassembled container closures were noted. Failure mode analysis linked defects to insufficient process control, outdated production equipment, and a lapse in component quality. An action plan addressed each issue. Additionally, PharmaCo-A decided to identify and implement a nondestructive leak test method for monitoring batch quality and culling out problematic packaged product units.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Leak Test Method Selection</h4>
+            <p>Requirements: compatible with product-filled package units in routine manufacturing; nondestructive; accurately screen out defective packages; suitable also for QA stability study samples.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Leak Test Method Feasibility</h4>
+            <p>Feasibility studies used nondefective units (negative controls) plus defective units (positive controls): rejects from manufacturing scale-up, simulated rejects (type defects), and laser-drilled packages. All four technologies showed potential to identify larger defects.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Optimization and Validation</h4>
+            <p>Optimization aimed to achieve maximum defect detection sensitivity while minimizing false rejection of good units. Each method was evaluated for specificity (ability to detect leaking packages despite interfering factors) and robustness (ability to detect defects despite shifts in test parameters, equipment operation, environment, and units). All four methods performed satisfactorily.</p>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第6.5節概述</h3>
+          <p>第6.5節以虛構公司PharmaCo-A為案例，生動呈現一個腸外藥品公司如何從開發階段到商業化，完整執行洩漏測試方法的篩選、優化與驗證。這個教育性模擬直接體現了前幾節QbD、MALL、LOD等概念的實際應用。</p>
+
+          <div class="flow-diagram">
+            <h4 style="color:var(--primary-blue); font-size:0.95rem; margin-bottom:0.75rem;">PharmaCo-A 案例進程</h4>
+            <div class="flow-step">
+              <div class="flow-num">1</div>
+              <div class="flow-content"><strong>包裝開發</strong>：空包裝驗證符合MALL，確立組件設計參數</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">2</div>
+              <div class="flow-content"><strong>放大生產問題</strong>：發現裂縫容器、撕裂密封件等問題，啟動行動計畫</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">3</div>
+              <div class="flow-content"><strong>方法選擇</strong>：非破壞性、相容、可用於QA穩定性樣品</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">4</div>
+              <div class="flow-content"><strong>可行性研究</strong>：四種技術以陽性/陰性對照族群初篩</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">5</div>
+              <div class="flow-content"><strong>優化與驗證</strong>：最大靈敏度vs.最低誤拒率，評估特異性與穩健性</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">
+              <div class="flow-num">6</div>
+              <div class="flow-content"><strong>LOD確認與精確度驗證</strong>：見下方LOD研究詳述</div>
+            </div>
+          </div>
+
+          <div class="term-box">
+            <h4>陽性對照 vs 陰性對照</h4>
+            <ul>
+              <li><span class="key-term">陰性對照（Negative Controls）</span>：已知無洩漏的包裝；用於驗證「方法不誤報好品（Accuracy）」</li>
+              <li><span class="key-term">陽性對照（Positive Controls）</span>：已知有特定尺寸缺陷的包裝；用於驗證「方法能偵測到特定大小的缺陷（LOD）」</li>
+              <li>PharmaCo-A使用<strong>雷射鑽孔（Laser-Drilled）</strong>缺陷作為陽性對照，因為尺寸可控、可重現、可獨立認證</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>LOD預定義標準的重要性</h4>
+            <p>PharmaCo-A在研究開始前就<strong>預先定義</strong>LOD接受標準：「在所有測試日，最小缺陷尺寸子集中95%以上被偵測為洩漏，即為偵測限。且所有大於此尺寸的缺陷必須100%被偵測。」這種預先定義避免了事後調整標準的偏見，是GxP研究的正確做法。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOD Table -->
+      <div class="section-divider">Table 6.5-1: Detection Limit and Accuracy Study Results | LOD與精確度研究結果</div>
+      <div class="two-column">
+        <div class="left-column">
+          <h3>LOD Study Data — Table 6.5-1 (Hypothetical)</h3>
+          <p>PharmaCo-A defined the detection limit as the smallest defect size (defined as the average size in each positive control-size subset) in which 95% or more of the defect size-subset was detected as leaking on all test days. All defects larger than the detection limit must fail. Method accuracy was confirmed if all negative controls pass.</p>
+          <table>
+            <tr>
+              <th>Defect Size</th>
+              <th colspan="3">Method A (%)</th>
+              <th colspan="3">Method B (%)</th>
+              <th colspan="3">Method C (%)</th>
+              <th colspan="3">Method D (%)</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>D1</th><th>D2</th><th>D3</th>
+              <th>D1</th><th>D2</th><th>D3</th>
+              <th>D1</th><th>D2</th><th>D3</th>
+              <th>D1</th><th>D2</th><th>D3</th>
+            </tr>
+            <tr><td>0 µm (n=300)</td><td>0.3</td><td>0</td><td>0.7</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>3 µm (n=40)</td><td>90</td><td>87.5</td><td>92.5</td><td>5</td><td>7.7</td><td>5</td><td>30</td><td>0</td><td>20</td><td>0</td><td>0</td><td>2.5</td></tr>
+            <tr><td>6 µm (n=40)</td><td>100</td><td>100</td><td>95</td><td>12.5</td><td>20</td><td>10</td><td>100</td><td>2.5</td><td>0</td><td>2.5</td><td>2.5</td><td>2.5</td></tr>
+            <tr><td>10 µm (n=40)</td><td>100</td><td>100</td><td>100</td><td>20</td><td>10</td><td>30</td><td>100</td><td>100</td><td>95</td><td>50</td><td>20</td><td>20</td></tr>
+            <tr><td>20 µm (n=40)</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>100</td><td>92.5*</td><td>100</td><td>80</td><td>90</td><td>100</td></tr>
+            <tr style="background:#e8f5e9;"><td><strong>LOD</strong></td><td colspan="3"><strong>6 µm</strong></td><td colspan="3">Suggests 20 µm</td><td colspan="3"><strong>10 µm</strong></td><td colspan="3">Undefined</td></tr>
+            <tr><td>All Larger Detected</td><td colspan="3">Yes</td><td colspan="3">Data absent</td><td colspan="3">Confirmed</td><td colspan="3">Undefined</td></tr>
+            <tr><td>All Neg Controls Pass</td><td colspan="3"><span style="color:#c0392b;font-weight:700;">No</span></td><td colspan="3">Yes</td><td colspan="3">Yes</td><td colspan="3">Yes</td></tr>
+          </table>
+          <p style="font-size:0.82rem; color:#666; margin-top:0.3rem;">* Later investigation found 3 packages clogged; 100% of remaining defects were rejected. Data are hypothetical.</p>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — LOD結果分析</h3>
+          <table>
+            <tr><th>方法</th><th>LOD</th><th>精確度</th><th>結果</th></tr>
+            <tr style="background:#e8f5e9;"><td><strong>A</strong></td><td>6 µm</td><td>有少量誤拒好品</td><td>繼續評估</td></tr>
+            <tr><td><strong>B</strong></td><td>~20 µm</td><td>無誤拒</td><td>暫停（靈敏度不足）</td></tr>
+            <tr><td><strong>C</strong></td><td>10 µm（調查後確認）</td><td>符合</td><td>暫停（日間變異大）</td></tr>
+            <tr><td><strong>D</strong></td><td>無法確定</td><td>無法確認</td><td>排除</td></tr>
+          </table>
+
+          <div class="note-box">
+            <h4>方法A的兩難困境與解法</h4>
+            <p>方法A的LOD最佳（6 µm），但存在少量誤拒好品（False Positive）。PharmaCo-A提出兩個方向：</p>
+            <ul>
+              <li><strong>方向一：降低靈敏度</strong>，減少誤拒率。LOD可能從6 µm變為接近6 µm，對於MALL評估影響有限</li>
+              <li><strong>方向二：維持原始設定</strong>，接受一定誤拒率，但為QA穩定性樣品建立「重複測試確認」協議，以避免虛假調查</li>
+            </ul>
+          </div>
+
+          <div class="term-box">
+            <h4>方法C的調查教訓</h4>
+            <p>第2天，3個20 µm缺陷未被偵測，原本會使方法C的LOD確認失敗。但後續調查發現這3個包裝的缺陷是<strong>堵塞的（Clogged）</strong>，因此這些數據被合理排除。這展示了：<span class="key-term">數據異常應調查根本原因，而非直接廢棄數據</span>。調查後，方法C的LOD可確認為10 µm，但日間結果差異仍引發可靠性疑慮。</p>
+          </div>
+
+          <div class="formula-box">
+            <h4>LOD定義的統計邏輯（β-Content概念）</h4>
+            <pre>
+PharmaCo-A的LOD標準：
+  - 在所有測試日
+  - 最小尺寸子集中 ≥95% 的陽性對照被偵測
+  - 且所有更大尺寸缺陷 100% 被偵測
+
+這等同於統計容忍區間（Tolerance Interval）的概念：
+β-Content（例如 95%）= 期望偵測比例
+信心水準（Confidence Level）= 研究跨日數據的統計可信度
+
+實際應用：
+  LOD ≤ MALL → 方法被認可
+  LOD > MALL → 方法靈敏度不足，需更換或優化</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Outcome of 6.5 -->
+      <div class="two-column" style="margin-top:1rem;">
+        <div class="left-column">
+          <h3>Final Outcome — Section 6.5</h3>
+          <div class="simulation-block">
+            <h4>Method A: Final Evaluation</h4>
+            <p>Method A was notably best at culling out defective packages. Two paths proposed: (1) adjust test method parameters slightly to reduce false reject risk with minimal impact on 6 µm LOD; (2) use as-is with replicate testing protocols for QA stability samples. PharmaCo-A continued to pursue Method A.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Method B: On Hold</h4>
+            <p>No false rejections of good product, but LOD at ~20 µm — too large. Smaller defects capable of putting product quality at risk would likely be missed. Further work placed on hold given availability of more sensitive option.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Method C: On Hold</h4>
+            <p>LOD confirmed at 10 µm after investigation. However, wide discrepancies in detection across test days caused questions about overall reliability. Further work placed on hold.</p>
+          </div>
+          <div class="simulation-block">
+            <h4>Method D: Eliminated</h4>
+            <p>No detection limit could be defined. Method D was considered too insensitive and eliminated from further consideration.</p>
+          </div>
+          <p>Leak test Method A was finalized and implemented for routine manufacturing and QA stability study sample verification. PharmaCo-A obtained commercial product market approval. Ongoing Method A data and package component quality trends remained part of the package integrity profile database.</p>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 最終決策與案例啟示</h3>
+          <p>最終，方法A被選定並實施於：（1）例行製造的批次監控；（2）QA穩定性樣品的完整性驗證。商業化獲批後，持續累積的方法A數據成為包裝完整性概況資料庫的一部分。</p>
+
+          <div class="practice-box">
+            <h4>案例學習問題</h4>
+            <ol>
+              <li>如果PharmaCo-A的MALL設定為5 µm，方法A（LOD=6 µm）是否可接受？為什麼？</li>
+              <li>方法B雖無誤拒問題，但LOD 20 µm。在什麼產品或容器情境下，20 µm的LOD可能仍然可接受？</li>
+              <li>如果方法C的日間變異過大，你會如何嘗試找出根本原因？（提示：操作人員、設備、環境、包裝因素）</li>
+              <li>PharmaCo-A為何選擇雷射鑽孔缺陷而非製程中自然產生的缺陷作為陽性對照？</li>
+            </ol>
+          </div>
+
+          <div class="key-point-box">
+            <h4>案例的核心啟示</h4>
+            <ul>
+              <li><strong>沒有完美的方法</strong>：每種技術都有取捨（靈敏度 vs. 特異性 vs. 穩健性）</li>
+              <li><strong>預先定義標準</strong>：LOD接受標準必須在研究前設定，避免事後偏見</li>
+              <li><strong>調查異常數據</strong>：方法C第2天異常後的根因調查，是科學誠信的體現</li>
+              <li><strong>整合入生命週期</strong>：選定方法後，其數據持續納入包裝完整性概況資料庫，支持商業化後的持續監控</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7.0 CONCLUSION -->
+  <div class="chapter-section" id="sec7-0">
+    <div class="chapter-divider">
+      <div class="chapter-badge">7</div>
+      <div class="chapter-info">
+        <h2>7.0 Conclusion | 結論</h2>
+        <p>TR86's contribution to package integrity science and practice | TR86對包裝完整性科學與實踐的貢獻</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Original Text — Section 7.0</h3>
+          <p>Best practices in pharmaceutical packaging suggest that all activities must be evaluated for risk to the product quality attributes and, by extension, to the patient. Failure of CCI is a critical risk that can potentially result in serious to dire consequences. While USP &lt;1207&gt; defined the basic concepts of CCI and integrity testing methodologies, this technical report serves as a resource that addresses the challenges with test methods and complex packaging systems, introduces new uses of some existing technologies, and discusses additional considerations, such as use of a risk-based approach relevant to the packaging lifecycle. There is no one-size-fits-all approach for packaging integrity testing methods; however, using a risk-based approach and leveraging existing test methods as described in this technical report can assist in better understanding and potentially mitigating, if not eliminating, the risks to package integrity.</p>
+          <div class="quote-box">
+            "There is no one-size-fits-all approach for packaging integrity testing methods; however, using a risk-based approach and leveraging existing test methods as described in this technical report can assist in better understanding and potentially mitigating, if not eliminating, the risks to package integrity."
+            <br><em>— PDA TR86, Conclusion</em>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 第7.0節</h3>
+          <p>TR86的結論提煉了整份報告的核心精神：<span class="key-term">沒有萬能的CCI測試方法</span>，但風險導向的方法加上現有技術的靈活運用，可以有效管理包裝完整性風險。</p>
+
+          <div class="term-box">
+            <h4>TR86 vs USP &lt;1207&gt;：互補關係</h4>
+            <table>
+              <tr><th></th><th>USP &lt;1207&gt;</th><th>PDA TR86</th></tr>
+              <tr><td>定位</td><td>基礎性法規參考章節</td><td>實務性技術指南</td></tr>
+              <tr><td>重點</td><td>定義CCI概念、測試方法分類</td><td>挑戰、複雜系統、新應用</td></tr>
+              <tr><td>覆蓋</td><td>通用框架</td><td>特殊包裝（PFS、SUS、低溫等）</td></tr>
+              <tr><td>方法</td><td>確定性vs概率性分類</td><td>各方法的深入挑戰分析</td></tr>
+              <tr><td>風險管理</td><td>基本概念</td><td>生命週期QbD、MALL定義、LOD研究</td></tr>
+            </table>
+          </div>
+
+          <div class="key-point-box">
+            <h4>TR86的三大核心貢獻</h4>
+            <ol>
+              <li><strong>解決複雜包裝挑戰</strong>：預充填注射器、單次使用袋、低溫儲存等USP &lt;1207&gt;未完整覆蓋的情境</li>
+              <li><strong>引入風險生命週期框架</strong>：從開發到商業化後的持續完整性概況管理</li>
+              <li><strong>提供LOD方法論</strong>：以統計嚴謹方式定義和驗證偵測極限，鏈接MALL與方法能力</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8.0 REFERENCES -->
+  <div class="chapter-section" id="sec8-0">
+    <div class="chapter-divider">
+      <div class="chapter-badge">8</div>
+      <div class="chapter-info">
+        <h2>8.0 References | 參考文獻</h2>
+        <p>Key literature cited in TR86 | TR86引用的關鍵文獻</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>References List</h3>
+          <ul class="ref-list">
+            <li><span class="ref-num">[1]</span> Parenteral Drug Association. <em>Technical Report No. 27: Pharmaceutical Package Integrity.</em> PDA: Bethesda, Md., 1998; PDA J Pharm Sci Technol, July-August 1998, Supplement.<div class="ref-note">TR27 — the predecessor to TR86. Established foundational package integrity testing concepts still relevant today.</div></li>
+            <li><span class="ref-num">[2]</span> U.S. Pharmacopeial Convention. <em>General Chapter &lt;1207&gt; Sterile Product Packaging—Integrity Evaluation.</em> In USP 41–NF 36, USP: Rockville, Md., 2018; p 7578.<div class="ref-note">USP &lt;1207&gt; — the foundational compendial reference for CCI. Defines deterministic vs. probabilistic methods; TR86 extends and builds upon its framework.</div></li>
+            <li><span class="ref-num">[3]</span> <em>Quality Guideline Q9: Quality Risk Management.</em> International Conference on Harmonisation, 2006. www.ich.org.<div class="ref-note">ICH Q9 — the cornerstone risk management guideline. Provides FMEA, HACCP, and other quality tools referenced throughout TR86's QbD approach.</div></li>
+            <li><span class="ref-num">[4]</span> U.S. Pharmacopeial Convention. <em>General Chapter &lt;1207.1&gt; Package Integrity and Test Method Selection.</em> In USP 41–NF 36, USP: Rockville, MD, 2018; p 7585.<div class="ref-note">USP &lt;1207.1&gt; — subsidiary chapter on test method selection criteria. Provides practical decision guidance complementary to &lt;1207&gt;.</div></li>
+            <li><span class="ref-num">[5]</span> Nieto, A, et al. Evaluation of Container Closure System Integrity for Frozen Storage Drug Products. <em>PDA J Pharm Sci Technol</em> 2016, 70(2), 120–33.<div class="ref-note">Frozen/cryogenic CCI challenges — referenced in the cryogenic storage section (4.4) of TR86.</div></li>
+            <li><span class="ref-num">[6]</span> Yoon, Seung-Yil, et al. Mass Extraction Container Closure Integrity Physical Testing Method Development for Parenteral Container Closure Systems. <em>PDA J Pharm Sci Technol</em> September 2012, 66(5), 403–419.<div class="ref-note">Mass extraction method development — relevant to vacuum decay and pressure-based deterministic methods.</div></li>
+            <li><span class="ref-num">[7]</span> Parenteral Drug Association. <em>Technical Report No. 73: Prefilled Syringe User Requirements for Biotechnology Applications.</em> PDA: Bethesda, Md., 2015.<div class="ref-note">TR73 — PFS user requirements. Provides background for PFS-specific CCI challenges discussed in TR86.</div></li>
+            <li><span class="ref-num">[8]</span> U.S. Pharmacopeial Convention. <em>General Chapter &lt;381&gt; Elastomeric Closures for Injections.</em> In USP 42-NF 37, USP: Rockville, Md., 2018.<div class="ref-note">USP &lt;381&gt; — elastomeric closure testing including permeation and extraction; relevant to stopper/closure integrity contributions.</div></li>
+            <li><span class="ref-num">[9]</span> International Organization for Standardization. <em>ISO 13926-3:2012 Pen systems — Part 3: Seals for pen-injectors for medical use.</em> ISO: Geneva, 2012.<div class="ref-note">ISO pen injector seal standard — relevant to auto-injector and pen device CCI considerations.</div></li>
+            <li><span class="ref-num">[10]</span> International Organization for Standardization. <em>ISO 11040-5:2012 Prefilled syringes — Part 5: Plunger stoppers for injectables.</em> ISO: Geneva, 2012.<div class="ref-note">ISO PFS plunger stopper standard — defines requirements relevant to plunger retraction risks discussed in section 6.1.2.</div></li>
+            <li><span class="ref-num">[11]</span> Asselta, R. <em>Parenteral Vial Sealing and Integrity.</em> Presented Jan 26 2017; Genesis Packaging Technologies: 2017.<div class="ref-note">Conference presentation on vial sealing — supports residual seal force (RSF) and CCIT methodology for vials.</div></li>
+            <li><span class="ref-num">[12]</span> ASTM International. <em>ASTM WK64337: New Guide for Integrity Assurance and Testing of Single-Use Systems.</em> ASTM: West Conshohocken, Pa., 2018.<div class="ref-note">SUS integrity guide — directly relevant to section 6.4 bulk container lifecycle approach.</div></li>
+            <li><span class="ref-num">[13]</span> Aliaskarisohi, S., et al. Single-Use System Integrity I: Using a Microbial Ingress Test Method to Determine the Maximum Allowable Leakage Limit (MALL). <em>PDA J Pharm Sci Technol</em>, Vol. 73(5), 459–469, September 2019.<div class="ref-note">MALL determination for SUS using microbial ingress — foundational reference for MALL concept in bulk/SUS context.</div></li>
+            <li><span class="ref-num">[14]</span> ASTM International. <em>ASTM WK64975: Proposed Standard Test Method for Microbial Ingress Testing on Single-Use Systems.</em> ASTM: West Conshohocken, Pa., 2020.<div class="ref-note">Microbial ingress test standardization for SUS — extends the MALL determination methodology.</div></li>
+            <li><span class="ref-num">[17]</span> Ewan, S., Jiang, M., Stevenson, C., et al. White Paper: Container Closure Integrity Control versus Integrity Testing during Routine Manufacturing. <em>PDA J Pharm Sci Technol</em> 2015, 69, 461–465.<div class="ref-note">Control vs. testing distinction — directly referenced in section 6.2 to support the holistic approach to CCI during manufacturing.</div></li>
+            <li><span class="ref-num">[19]</span> EudraLex. <em>Volume 4: EU Guidelines to GMP for Medicinal Products — Annex 1, Manufacture of Sterile Medicinal Products.</em> European Commission: 2008.<div class="ref-note">EU GMP Annex 1 — mandates 100% inspection for ampules and BFS; the regulatory basis for section 6.2 on 100% in-line testing requirements.</div></li>
+            <li><span class="ref-num">[21]</span> Mathaes, R., et al. Impact of Vial Capping on Residual Seal Force and Container Closure Integrity. <em>PDA J Pharm Sci Technol</em> 2016, 70(1), 12–19.<div class="ref-note">RSF and CCIT correlation for vials — relevant to capping process as a CPP for vial integrity.</div></li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 關鍵文獻導讀</h3>
+          <p>TR86的參考文獻體系構成了現代製藥包裝完整性測試的知識架構。以下是最重要的核心文獻群：</p>
+
+          <div class="term-box">
+            <h4>三層監管/標準體系</h4>
+            <table>
+              <tr><th>層級</th><th>文獻</th><th>定位</th></tr>
+              <tr><td>法規層</td><td>EU GMP Annex 1 [19]</td><td>強制性要求（100%密封測試）</td></tr>
+              <tr><td>藥典層</td><td>USP &lt;1207&gt; [2], &lt;1207.1&gt; [4]</td><td>官方標準（概念定義、方法分類）</td></tr>
+              <tr><td>指南層</td><td>ICH Q9 [3], PDA TR27 [1], TR73 [7]</td><td>最佳實踐（風險管理、技術指導）</td></tr>
+            </table>
+          </div>
+
+          <div class="key-point-box">
+            <h4>必讀文獻優先順序（實務建議）</h4>
+            <ol>
+              <li><strong>USP &lt;1207&gt; + &lt;1207.1&gt;</strong>：理解CCI的官方語言和分類系統</li>
+              <li><strong>ICH Q9</strong>：學習風險評估工具（FMEA、HACCP等）的應用框架</li>
+              <li><strong>PDA TR27</strong>：了解TR86的歷史背景和演進</li>
+              <li><strong>EU GMP Annex 1（2022年更新版）</strong>：最新監管要求，包含強化的CCIT規定</li>
+              <li><strong>Aliaskarisohi et al. [13]</strong>：SUS的MALL測定方法，對生物製藥非常重要</li>
+            </ol>
+          </div>
+
+          <div class="note-box">
+            <h4>注意：EU GMP Annex 1 2022更新</h4>
+            <p>TR86引用的EU GMP Annex 1為2008版。2022年，Annex 1已大幅修訂，進一步強化了CCIT要求。<span class="key-term">建議同時參考2022年更新版</span>，特別是第8.90-8.93節關於CCI的強化要求，包括對預充填注射器和軟袋的特定規定。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9.0 ADDITIONAL READING -->
+  <div class="chapter-section" id="sec9-0">
+    <div class="chapter-divider">
+      <div class="chapter-badge">9</div>
+      <div class="chapter-info">
+        <h2>9.0 Additional Reading | 延伸閱讀</h2>
+        <p>Further resources for deeper study of CCI testing methodology | 深入研究CCI測試方法的延伸資源</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Additional Reading List</h3>
+          <ul class="ref-list">
+            <li><span class="ref-num">[AR1]</span> Guazzo, D. Nondestructive Detection of Leaks in Packages by Vacuum Decay Method ASTM F2338, Presented at 2nd Annual PDA Global Conference on Pharmaceutical Microbiology, Bethesda, Md., Oct. 29–Nov. 2, 2007; Parenteral Drug Association.<div class="ref-note">Vacuum decay method (ASTM F2338) — the most widely adopted deterministic CCIT method; essential reading for LOD characterization and method development.</div></li>
+            <li><span class="ref-num">[AR2]</span> Morrical, B, et al. Leak Testing in Parenteral Packaging: Establishment of a Direct Correlation between Helium Leak Rate and Microbial Ingress for Two Different Leak Types. <em>PDA J Pharm Sci Technol</em> 2007, 61(4), 226–36.<div class="ref-note">Helium leak rate vs. microbial ingress correlation — essential for MALL determination using physicochemical proxy methods.</div></li>
+            <li><span class="ref-num">[AR3]</span> Orosz, J S; Guazzo, D. Glass Vial Finish Defects: Leak Detection and Product Risk Assessment, Presented at Packaging Science Interest Group, PDA Annual Meeting, Orlando, Fla., March 16, 2010.<div class="ref-note">Glass vial finish defects and their leak detection — practical case studies for vial CCI challenges.</div></li>
+            <li><span class="ref-num">[AR4]</span> Patel, J, et al. Vacuum Decay Container Closure Integrity Leak Test Method Development and Validation for a Lyophilized Product-Package System. <em>PDA J Pharm Sci and Tech</em> 2011, 65(5), 486–505.<div class="ref-note">Lyophilized product CCI validation — highly relevant to freeze-dried vials; demonstrates full method development lifecycle.</div></li>
+            <li><span class="ref-num">[AR5]</span> Pelaez, S., et al. Comparing Physical Container Closure Integrity Test Methods and Artificial Leak Methodologies. <em>PDA J Pharm Sci and Tech</em> 2019, 74(1), 7–46.<div class="ref-note">Comprehensive comparison of multiple CCIT methods — excellent cross-reference for selecting among available technologies.</div></li>
+            <li><span class="ref-num">[AR6]</span> U.S. Food and Drug Administration. <em>Guidance for Industry: Container Closure System Integrity Testing In lieu of Sterility Testing as a Component of the Stability Protocol for Sterile Products.</em> 2008.<div class="ref-note">FDA guidance on CCI as a stability tool — regulatory basis for using CCIT in lieu of sterility testing in stability programs.</div></li>
+            <li><span class="ref-num">[AR7]</span> Victor, K. Method Development for Container Closure Integrity Evaluation via Headspace Gas Ingress by Using Frequency Modulation Spectroscopy. <em>PDA J Pharm Sci Technol</em> 2017, Nov 71(6), 429–453.<div class="ref-note">Headspace analysis using FMS — covers laser-based headspace oxygen/CO₂ ingress methods as deterministic CCIT tools.</div></li>
+            <li><span class="ref-num">[AR8]</span> Vogt, S.-R. B. (2012). Influence of X-ray Radiation as PAT Method on Model Substances Tramadol and Nifedipine Compared to the Influence of UV-Vis Radiation. <em>Techno Pharm</em> 2, Nr. 3, S. 200–210.<div class="ref-note">X-ray as PAT/CCIT — evaluates X-ray radiation effects on drug substances; relevant to X-ray-based 100% in-line inspection feasibility.</div></li>
+            <li><span class="ref-num">[AR9]</span> Zuleger, B, et al. Container/Closure Integrity Testing and the Identification of a Suitable Vial/Stopper Combination for Low Temperature Storage at −80 °C. <em>PDA J Pharm Sci Technol</em> 2012, 66(5), 453–65.<div class="ref-note">Ultra-low temperature (−80°C) CCI — critical for mRNA vaccine and gene therapy products stored at cryogenic conditions.</div></li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 延伸閱讀導讀</h3>
+          <p>延伸閱讀清單按主題可分為以下幾類，建議依實際工作需求選擇優先閱讀：</p>
+
+          <div class="term-box">
+            <h4>按主題分類閱讀建議</h4>
+            <table>
+              <tr><th>主題</th><th>推薦文獻</th></tr>
+              <tr><td>真空衰減方法</td><td>[AR1], [AR4]</td></tr>
+              <tr><td>氦氣洩漏率與MALL</td><td>[AR2]</td></tr>
+              <tr><td>玻璃瓶缺陷</td><td>[AR3]</td></tr>
+              <tr><td>多方法比較</td><td>[AR5]</td></tr>
+              <tr><td>穩定性中的CCI</td><td>[AR6]</td></tr>
+              <tr><td>頂空分析法</td><td>[AR7]</td></tr>
+              <tr><td>低溫/超低溫CCI</td><td>[AR9]</td></tr>
+              <tr><td>X光在線檢測</td><td>[AR8]</td></tr>
+            </table>
+          </div>
+
+          <div class="application-box">
+            <h4>實務建議：針對mRNA/基因治療產品</h4>
+            <p>如果您從事的是mRNA疫苗或基因治療產品（需要-80°C儲存），重點閱讀：</p>
+            <ul>
+              <li>[AR9] Zuleger et al. — 極低溫下瓶塞組合的CCI評估方法</li>
+              <li>[AR2] Morrical et al. — 氦氣洩漏率與微生物侵入的相關性，有助於低溫MALL設定</li>
+              <li>搭配TR86第4.4節（低溫條件）和本節6.4（SUS生命週期）閱讀</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>FDA CCI穩定性指南的實務應用</h4>
+            <p>[AR6] FDA 2008年指南允許在穩定性方案中使用CCIT代替無菌測試——這是一個重大的監管轉變。主要條件：</p>
+            <ul>
+              <li>CCIT方法必須經過充分驗證</li>
+              <li>必須確認CCI與產品無菌性的直接相關性</li>
+              <li>LOD必須與MALL相對應</li>
+            </ul>
+            <p>此做法可顯著降低穩定性試驗成本，同時提供更直接的包裝完整性保證。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL SUMMARY PANEL -->
+  <div class="chapter-section">
+    <div class="chapter-divider" style="background: linear-gradient(135deg, #1a6b3a 0%, #2e7d32 100%);">
+      <div class="chapter-badge" style="background: rgba(255,255,255,0.2);">&#x2605;</div>
+      <div class="chapter-info">
+        <h2>Section 4 Summary | 本節總結</h2>
+        <p>Key takeaways from Additional Considerations, Conclusion &amp; References | 額外考量、結論與參考文獻的核心要點</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Key Concept Summary</h3>
+          <table>
+            <tr><th>Topic</th><th>Key Point</th></tr>
+            <tr><td>6.1 Distribution</td><td>Profile must account for shock, vibration, compression, pressure (air transport ~0.75 atm). Use ISTA/ASTM standards but customize to actual distribution chain.</td></tr>
+            <tr><td>6.1.2 Pressure/PFS</td><td>Low-pressure environments risk plunger retraction in PFS, flexible container burst/creep. Must characterize effect on sterility and quality.</td></tr>
+            <tr><td>6.2 100% In-Line</td><td>Acts as filter: rejected = confirmed fail; accepted ≠ guaranteed shelf-life CCI. Advantage: no suspect lots. Must be nondestructive. Not currently feasible for all CCS.</td></tr>
+            <tr><td>6.3 QbD</td><td>QTPP → CMAs/CPPs → MALL → CCIT tool kit → control strategy → continuous improvement. MALL anchors method selection.</td></tr>
+            <tr><td>6.3.1 Risk Assessment</td><td>HACCP/FMEA for each process step. Ongoing lifecycle assessment database. Six Sigma DMAIC analogy.</td></tr>
+            <tr><td>6.4 Bulk/SUS</td><td>Two phases: development (design/qualification) and product (manufacturing to use). Pre-use and post-use leak testing required at user site.</td></tr>
+            <tr><td>6.5 LOD Simulation</td><td>Predefine LOD criteria: ≥95% detection of smallest subset on all test days, 100% larger detected, all negative controls pass. Laser-drilled defects as positive controls.</td></tr>
+            <tr><td>7.0 Conclusion</td><td>No one-size-fits-all. Risk-based approach + existing technologies = best defense. TR86 extends USP &lt;1207&gt; for complex systems.</td></tr>
+          </table>
+        </div>
+        <div class="right-column">
+          <h3>中文重點整理</h3>
+          <div class="term-box">
+            <h4>TR86 Section 4 核心概念圖</h4>
+            <div style="text-align:center; padding:0.5rem;">
+              <div style="background:#1e3a5f; color:white; padding:0.5rem 1rem; border-radius:8px; display:inline-block; font-size:0.9rem; margin-bottom:0.5rem;">包裝完整性概況（Package Integrity Profile）</div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.5rem;">
+                <div style="background:#e8f5e9; border:1px solid #4caf50; border-radius:6px; padding:0.5rem; font-size:0.85rem;"><strong>6.1</strong><br>配送壓力<br>ISTA/ASTM</div>
+                <div style="background:#e3f2fd; border:1px solid #1976d2; border-radius:6px; padding:0.5rem; font-size:0.85rem;"><strong>6.2</strong><br>100%在線測試<br>過濾器功能</div>
+                <div style="background:#fff3e0; border:1px solid #ff9800; border-radius:6px; padding:0.5rem; font-size:0.85rem;"><strong>6.3 QbD</strong><br>MALL→工具組<br>持續改進</div>
+                <div style="background:#f3e5f5; border:1px solid #9c27b0; border-radius:6px; padding:0.5rem; font-size:0.85rem;"><strong>6.4 SUS</strong><br>開發+產品<br>兩階段週期</div>
+              </div>
+              <div style="background:#fff9e6; border:1px solid #f6ad55; border-radius:6px; padding:0.5rem; margin-top:0.5rem; font-size:0.85rem;"><strong>6.5 LOD模擬</strong>：PharmaCo-A案例 — 四種技術篩選、95%標準、誤拒vs靈敏度取捨</div>
+            </div>
+          </div>
+          <div class="key-point-box" style="margin-top:1rem;">
+            <h4>考試/面試高頻問題</h4>
+            <ol>
+              <li>MALL是什麼？如何設定？與LOD的關係？</li>
+              <li>100%在線測試通過是否等同於整個保存期限的CCI保證？</li>
+              <li>QbD在CCIT中如何應用？從QTPP到控制策略的步驟</li>
+              <li>SUS使用前和使用後測試各自的目的是什麼？</li>
+              <li>如何定義洩漏測試方法的偵測極限（LOD）？需要什麼樣的正對照和負對照？</li>
+              <li>TR86與USP &lt;1207&gt;的互補關係？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- DEEP DIVE: QbD Decision Flow for Building a CCI Testing Program -->
+  <div class="chapter-section">
+    <div class="chapter-divider" style="background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);">
+      <div class="chapter-badge">&#x2318;</div>
+      <div class="chapter-info">
+        <h2>Deep Dive: QbD Decision Flow for a CCIT Program | 深度解析：建立CCIT計畫的QbD決策流程</h2>
+        <p>Step-by-step framework integrating MALL, risk assessment, method selection and lifecycle control | 整合MALL、風險評估、方法選擇與生命週期控制的逐步框架</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Decision Framework: From Product to Validated CCIT Program</h3>
+          <p>Building a complete CCIT program under QbD principles requires a structured decision process that begins with product quality needs and ends with a validated, lifecycle-spanning control strategy. The following framework integrates the concepts from sections 6.2, 6.3, and 6.5.</p>
+
+          <div class="flow-diagram">
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 1 — Define the QTPP and CQAs</h4>
+            <p style="font-size:0.92rem;">Identify the product's Quality Target Product Profile. For a sterile injectable, key CQAs include: sterility, particulate matter absence, potency, pH stability. The CCS must support all CQAs throughout shelf life. This defines the starting point for integrity requirements.</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 2 — Determine the MALL</h4>
+            <p style="font-size:0.92rem;">Based on the CQAs, determine the Maximum Allowable Leakage Limit (MALL). Common approaches: (a) microbial ingress studies to establish the leak size at which microbial contamination risk becomes unacceptable; (b) moisture vapor or oxygen transmission studies for moisture- or oxygen-sensitive products; (c) headspace pressure requirements for lyophilized products. The MALL is a specific physical parameter (e.g., equivalent helium leak rate, nominal defect diameter) that defines the integrity threshold.</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 3 — Identify Process Failure Modes (Risk Assessment)</h4>
+            <p style="font-size:0.92rem;">Apply HACCP or FMEA to map each step of the CCS assembly, filling, and sealing process. For each step, identify: potential failure modes (e.g., under-crimped vial, cracked barrel, misaligned stopper), potential causes (worn tooling, operator error, component variability), and existing controls. Rank by risk priority number (RPN) or risk level. High-risk failure modes drive the choice of testing approach (100% vs. statistical sampling).</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 4 — Select CCIT Methods (Tool Kit Design)</h4>
+            <p style="font-size:0.92rem;">Select methods whose LOD ≤ MALL. Criteria include: deterministic vs. probabilistic, destructive vs. nondestructive, in-line vs. off-line applicability, testing speed and throughput, compatibility with product and package materials, and regulatory acceptance. More than one method may be needed across different lifecycle stages (development, manufacturing, stability, post-distribution).</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 5 — Develop and Validate the Selected Method(s)</h4>
+            <p style="font-size:0.92rem;">Follow the PharmaCo-A model: feasibility → optimization → LOD/accuracy determination → full validation. Establish LOD using positive controls (laser-drilled or characterized defects) and confirm accuracy using negative controls. Document predefined acceptance criteria. For in-line methods, qualify the equipment and establish alert/action limits.</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 6 — Define the Control Strategy and Sampling Plan</h4>
+            <p style="font-size:0.92rem;">Determine: testing frequency, sample size (based on statistical confidence and risk level), acceptance criteria, and response to failures. Where feasible, consider 100% in-line testing for high-risk or regulatory-mandated container types. For other containers, design statistically valid sampling plans referencing applicable standards.</p>
+            <div class="flow-arrow">↓</div>
+            <h4 style="color:var(--primary-blue); margin-bottom:0.75rem; font-size:0.95rem; font-weight:700;">Step 7 — Build the Package Integrity Profile Database and Continuous Improvement Loop</h4>
+            <p style="font-size:0.92rem;">Collect and trend CCIT results over time. Include data from manufacturing, stability studies, post-distribution testing, and complaint investigations. Use this database to trigger reviews when process changes occur, to detect trends before failures become OOS events, and to continuously improve the control strategy as knowledge accumulates over the product lifecycle.</p>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — QbD決策流程逐步說明</h3>
+          <p>將QbD整合到CCIT計畫，意味著將「測試品質（Test Quality In）」的被動思維，轉換為「設計品質（Design Quality In）」的主動思維。以下是七步決策框架的中文詳解：</p>
+
+          <div class="term-box">
+            <h4>步驟1 — 定義QTPP與CQAs</h4>
+            <p>「<span class="key-term">品質目標產品概況（QTPP）</span>」是QbD的起點。它定義了「這個產品最終要達到什麼標準」，而CQAs則是具體的品質屬性清單。在包裝完整性的語境下，CQAs包括：無菌性維持、防氧化保護、頂空氣體完整性等。</p>
+          </div>
+
+          <div class="term-box">
+            <h4>步驟2 — 確定MALL</h4>
+            <p><span class="key-term">MALL（最大允許洩漏限值）</span>的設定方法取決於產品特性：</p>
+            <ul>
+              <li><strong>注射劑（無菌要求）</strong>：透過微生物侵入研究，確定哪個孔徑尺寸允許微生物通過</li>
+              <li><strong>凍乾製品</strong>：依據殘留水分對效期的影響，設定水蒸氣滲透率限值</li>
+              <li><strong>氧敏感製品</strong>：依據氧化速率，設定氧氣滲透率限值</li>
+              <li><strong>CO₂充填製品</strong>：依據頂空CO₂濃度需求，設定氣體洩漏率限值</li>
+            </ul>
+          </div>
+
+          <div class="analogy-box">
+            <h4>MALL設定的直觀理解</h4>
+            <p>MALL就像一個「紅線」：一旦包裝的洩漏程度超過這條線，產品品質就會受到不可接受的影響。你的測試方法LOD必須比這條線更靈敏——只有能「看到」紅線之前的問題，才算是有效的監控工具。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>步驟3 — 失效模式分析的實務重點</h4>
+            <p>在FMEA/HACCP分析中，包裝完整性最常見的高風險失效模式包括：</p>
+            <ul>
+              <li>注射劑瓶：壓蓋力不足（Residual Seal Force不達標）→ 滾邊/壓蓋製程為CPP</li>
+              <li>預充填注射器：柱塞安裝不當→ 密封失效或劑量不準確</li>
+              <li>單次使用袋：焊縫強度不足→ 蠕變或破裂</li>
+              <li>卡式瓶：橡膠塞刺穿後復原性不佳→ 多次使用後洩漏</li>
+            </ul>
+          </div>
+
+          <div class="key-point-box">
+            <h4>步驟7 — 持續改進的觸發機制</h4>
+            <p>以下任何事件應觸發對CCIT工具組的審查：</p>
+            <ul>
+              <li>包裝組件或材料變更（新供應商、新批號規格）</li>
+              <li>製程參數變更（壓蓋機調整、充填量變更、滅菌條件變更）</li>
+              <li>穩定性結果出現趨勢（CCIT失敗率上升）</li>
+              <li>客戶投訴或市場返回品的完整性問題</li>
+              <li>法規更新（如EU GMP Annex 1 2022年修訂）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEP DIVE: Statistical Concepts in LOD Determination -->
+  <div class="chapter-section">
+    <div class="chapter-divider" style="background: linear-gradient(135deg, #4a235a 0%, #7b1fa2 100%);">
+      <div class="chapter-badge">&#x03B2;</div>
+      <div class="chapter-info">
+        <h2>Deep Dive: Statistical Concepts in LOD — β-Content and Tolerance Intervals | 深度解析：LOD的統計學基礎</h2>
+        <p>How to establish defensible detection limits using statistical tolerance intervals | 如何使用統計容忍區間建立可辯護的偵測極限</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>The Statistical Basis for LOD in CCIT</h3>
+          <p>The detection limit (LOD) in leak testing is not a single-point measurement. It is a statistical statement about the probability of detecting a defined type of defect with defined confidence. Two key statistical concepts underpin the LOD determination as used in TR86's PharmaCo-A example:</p>
+
+          <div class="formula-box">
+            <h4>Concept 1: β-Content Tolerance Interval</h4>
+            <p>A tolerance interval specifies a range within which at least a proportion β (the "content") of the population falls, with a specified confidence level (1-α).</p>
+            <pre>
+In CCIT LOD context:
+  β-Content = proportion of defective packages
+              of a given size that will be detected
+              (e.g., 95% = at least 95% detected)
+
+  Confidence Level = statistical confidence that
+                     the β-content requirement is met
+                     across repeated studies
+
+PharmaCo-A's definition:
+  LOD = smallest defect size where ≥95%
+        of that size subset is detected
+        on ALL test days (across operators,
+        days, instruments)
+
+This provides a conservative, reproducible
+definition of method capability.</pre>
+          </div>
+
+          <div class="formula-box">
+            <h4>Concept 2: False Positive Rate (Method Accuracy)</h4>
+            <pre>
+False Positive = a good package (no defect)
+                 incorrectly identified as leaking
+
+In PharmaCo-A's study:
+  Negative controls (n=300 per method)
+  were tested across all days
+
+  Method A: 0.3%, 0%, 0.7% false positives
+  Methods B, C, D: 0% false positives
+
+Implication:
+  False positive rate affects:
+  - Yield loss (good product rejected)
+  - Investigation burden for QA samples
+  - Confidence in positive findings
+
+Acceptance criterion:
+  All negative controls pass = 0 false
+  positives → confirmed method accuracy</pre>
+          </div>
+
+          <div class="formula-box">
+            <h4>Concept 3: Sample Size Considerations</h4>
+            <pre>
+For LOD studies, sample size per defect
+size subset affects statistical power.
+
+PharmaCo-A used n=40 per defect size subset.
+
+To detect 95% defect detection with
+95% confidence, the minimum sample
+size can be estimated using:
+
+  n ≥ log(1 - CL) / log(β)
+  where CL = confidence level (0.95)
+        β = proportion to be detected (0.95)
+
+  n ≥ log(0.05) / log(0.95) ≈ 58.4 → 59
+
+Note: PharmaCo-A used n=40, which is
+a commonly applied practical number.
+Consult a statistician for formal sample
+size justification in validation studies.</pre>
+          </div>
+
+          <p>The number of test days and operators also contributes to the statistical robustness. PharmaCo-A used 3 days and 2+ operators, providing a preliminary estimate of intermediate precision (between-day, between-operator variability).</p>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — LOD的統計學基礎</h3>
+          <p>LOD（偵測極限）在洩漏測試中是一個統計性聲明，而非單一測量值。理解其統計基礎對於正確設計和詮釋LOD研究至關重要。</p>
+
+          <div class="term-box">
+            <h4>β-Content 容忍區間的直觀理解</h4>
+            <p>當我們說「方法的LOD為6 µm」，真正的意思是：</p>
+            <ul>
+              <li>如果你拿100個6 µm孔徑缺陷的包裝去測，</li>
+              <li>在正常操作條件下（不同天、不同操作員），</li>
+              <li>至少95個會被正確識別為洩漏。</li>
+            </ul>
+            <p>這個「95%」就是β-Content。更嚴格的定義還會要求這個95%在統計上以95%的信心水準達成（雙重95%標準）。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>比喻：金屬探測器的靈敏度設定</h4>
+            <p>機場金屬探測器的LOD類比：「能100%偵測到10克以上金屬，對5克金屬偵測率達95%，對1克金屬偵測率約30%」。洩漏測試的LOD定義與此完全相同——它描述的是方法在不同缺陷「大小」下的偵測概率曲線，而LOD是在這條曲線上選擇一個可接受的操作點。</p>
+          </div>
+
+          <div class="note-box">
+            <h4>誤報（False Positive）的實務影響</h4>
+            <p>方法A的誤報率雖然很低（&lt;1%），但對於QA穩定性研究的影響不可忽視：</p>
+            <ul>
+              <li>穩定性研究通常樣本量少（每時間點可能只有3-6個），誤報一個就可能觸發OOS調查</li>
+              <li>OOS調查費時費力，且可能錯誤地質疑產品批次</li>
+              <li>解決方案：要求陽性結果進行複測（Replicate Testing），並在每次疑似失敗後用已知好品（Master）驗證儀器狀態</li>
+            </ul>
+          </div>
+
+          <div class="formula-box">
+            <h4>LOD vs MALL：關鍵不等式</h4>
+            <pre>
+基本要求：
+  LOD ≤ MALL
+
+含義：
+  方法必須能可靠地偵測到等於或
+  小於MALL的缺陷
+
+實例：
+  若 MALL = 10 µm（等效名義孔徑）
+  則所選方法的 LOD ≤ 10 µm
+
+  方法A（LOD=6 µm）：合格 ✓
+  方法B（LOD=20 µm）：不合格 ✗
+  方法C（LOD=10 µm）：邊界合格，
+    但需考慮日間穩定性 ⚠
+
+安全裕度建議：
+  實務上建議 LOD ≤ 0.5 × MALL
+  以提供足夠的方法安全裕度</pre>
+          </div>
+
+          <div class="application-box">
+            <h4>實際驗證研究設計建議</h4>
+            <p>根據TR86的PharmaCo-A範例，設計LOD驗證研究的建議：</p>
+            <ul>
+              <li><strong>陽性對照選擇</strong>：優先使用尺寸可驗證的人工缺陷（雷射鑽孔），範圍從預期LOD的0.5倍至2-3倍</li>
+              <li><strong>陰性對照規模</strong>：n≥200（TR86用n=300），確保對誤報率有足夠的統計靈敏度</li>
+              <li><strong>測試天數</strong>：至少3天（評估日間變異），每天使用新的陽性對照子集</li>
+              <li><strong>操作員數量</strong>：至少2名操作員（評估操作員間變異）</li>
+              <li><strong>預先定義標準</strong>：在研究開始前，以書面形式固定LOD接受標準</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEEP DIVE: Distribution Testing — ISTA Standards Detail -->
+  <div class="chapter-section">
+    <div class="chapter-divider" style="background: linear-gradient(135deg, #7b3f00 0%, #c06000 100%);">
+      <div class="chapter-badge">&#x2708;</div>
+      <div class="chapter-info">
+        <h2>Distribution Testing Detail: ISTA Standards and Air Transport Pressure | 配送測試詳解：ISTA標準與航空運輸氣壓</h2>
+        <p>Practical guidance on transport simulation testing for package integrity | 包裝完整性運輸模擬測試的實務指引</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Distribution Simulation Standards Overview</h3>
+          <p>The following outlines the major standards and their application to pharmaceutical packaging integrity testing during transportation and distribution:</p>
+
+          <table>
+            <tr>
+              <th>Standard</th>
+              <th>Organization</th>
+              <th>Scope</th>
+              <th>Pharmaceutical Application</th>
+            </tr>
+            <tr>
+              <td>ISTA 2A</td>
+              <td>ISTA</td>
+              <td>Packaged products &gt;68 kg; truck/ground</td>
+              <td>Most commonly cited for pharma distribution simulation; vibration + shock + compression</td>
+            </tr>
+            <tr>
+              <td>ISTA 3A</td>
+              <td>ISTA</td>
+              <td>Packaged products, general simulation</td>
+              <td>More comprehensive; includes climate conditioning; often used for international shipments</td>
+            </tr>
+            <tr>
+              <td>ASTM D4169</td>
+              <td>ASTM</td>
+              <td>Performance testing of shipping containers</td>
+              <td>Alternative/complementary to ISTA; defines distribution cycles by hazard profile</td>
+            </tr>
+            <tr>
+              <td>ASTM D7386</td>
+              <td>ASTM</td>
+              <td>Small packaged products (&lt;68 kg)</td>
+              <td>Suitable for unit-dose pharmaceutical products shipped via parcel carriers</td>
+            </tr>
+            <tr>
+              <td>ISO 4180</td>
+              <td>ISO</td>
+              <td>Complete, filled transport packages</td>
+              <td>International harmonization; referenced in EU pharmaceutical distribution guidelines</td>
+            </tr>
+            <tr>
+              <td>ICH Q1A(R2)</td>
+              <td>ICH</td>
+              <td>Stability testing conditions</td>
+              <td>Addresses stress conditions during shipping as part of stability protocol design</td>
+            </tr>
+          </table>
+
+          <div class="note-box" style="margin-top:1rem;">
+            <h4>Air Transport Pressure — Technical Detail</h4>
+            <p>Commercial cargo aircraft cargo holds are typically pressurized to approximately <strong>6,000–8,000 feet equivalent altitude</strong>, corresponding to an atmospheric pressure of approximately <strong>0.75–0.80 atm</strong> (75–80 kPa). Some older or smaller aircraft may have unpressurized or partially pressurized cargo holds, resulting in pressures as low as 0.50–0.60 atm at cruising altitude.</p>
+            <p>Key considerations:</p>
+            <ul>
+              <li>Pressure differential from sea-level manufacturing to cargo hold: approximately 20–25% reduction</li>
+              <li>Duration of exposure: may extend 6–12 hours for intercontinental flights</li>
+              <li>Combined effect with temperature changes in cargo holds (can drop below 0°C on some routes)</li>
+              <li>Pressure cycles: repeated pressurization/depressurization on multi-leg journeys create fatigue stress on closures</li>
+            </ul>
+          </div>
+
+          <div class="term-box" style="margin-top:1rem;">
+            <h4>Prefilled Syringe Plunger Retraction — Calculation Example</h4>
+            <p>For a prefilled syringe with:</p>
+            <ul>
+              <li>Barrel inner diameter: 6.35 mm</li>
+              <li>Headspace volume: 0.1 mL (at sea level, 1 atm)</li>
+              <li>Fill volume: 1.0 mL</li>
+            </ul>
+            <p>At 0.75 atm (aircraft cargo), the headspace volume expands per Boyle's Law:</p>
+            <p style="font-family: monospace; background:#f5f5f5; padding:0.5rem; border-radius:4px;">V₂ = V₁ × (P₁/P₂) = 0.1 mL × (1.00/0.75) = 0.133 mL</p>
+            <p>Volume increase = 0.033 mL, corresponding to a plunger retraction of approximately 1.0 mm — potentially moving the plunger stopper into an unsterile zone of the barrel if the stopper travel clearance is insufficient.</p>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — 配送測試與航空氣壓詳解</h3>
+          <p>選擇正確的配送模擬標準，是確保測試「反映真實壓力」的第一步。以下是各標準的中文實務解說：</p>
+
+          <div class="term-box">
+            <h4>ISTA vs ASTM：如何選擇？</h4>
+            <ul>
+              <li><strong>ISTA 2A/3A</strong>：藥廠最常使用，特別是向美國FDA/EMA提交的包裝設計驗證。ISTA 3A更全面，含溫度調整條件，適合國際路線</li>
+              <li><strong>ASTM D4169</strong>：美國工業界廣泛接受，依「危害概況（Assurance Level）」設計測試強度（Level I/II/III），彈性更高</li>
+              <li><strong>ISO 4180</strong>：國際醫藥法規（如EU MDR/IVDR）較傾向引用，有助於歐盟申報</li>
+            </ul>
+            <p style="margin-top:0.5rem;"><strong>建議</strong>：視主要目標市場選擇對應標準，或同時執行ISTA和ASTM以涵蓋最廣監管範圍。</p>
+          </div>
+
+          <div class="analogy-box">
+            <h4>航空氣壓數字的直觀感受</h4>
+            <p>0.75 atm的壓力相當於站在約2,500公尺（約8,200英尺）的高山上。您是否曾在登高時感到耳鳴（氣壓降低導致耳腔壓力失衡）？預充填注射器的柱塞，面對的就是類似的「壓力失衡」——只不過對象是頂空氣體，而後果可能影響藥品無菌性。</p>
+          </div>
+
+          <div class="key-point-box">
+            <h4>柱塞後退（Plunger Retraction）評估方法</h4>
+            <p>評估預充填注射器在航空運輸壓差下的柱塞穩定性，常用以下方法：</p>
+            <ul>
+              <li><strong>壓力腔（Altitude Chamber）測試</strong>：將PFS置於可控壓力腔，模擬從1 atm降至0.75 atm（或更低）的壓力循環，測量前後柱塞位移</li>
+              <li><strong>X光或CT掃描</strong>：非破壞性地量化柱塞位置變化</li>
+              <li><strong>CCIT前後對比</strong>：壓力循環前後進行CCIT，確認密封完整性未受影響</li>
+              <li><strong>外觀檢查</strong>：確認柱塞未完全脫出筒身</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>多模式運輸的累積壓力效應</h4>
+            <p>對於一個從台灣運往美國再轉運歐洲的製藥產品，其配送路線可能涵蓋：</p>
+            <ol>
+              <li>工廠→機場：陸運（振動、衝擊）</li>
+              <li>台灣→美國：空運（氣壓循環×1次）</li>
+              <li>美國倉儲：溫度波動</li>
+              <li>美國→歐洲：空運（氣壓循環×1次）</li>
+              <li>歐洲→配送中心：陸運（振動）</li>
+            </ol>
+            <p>標準化測試只涵蓋其中部分場景，因此必須根據<strong>實際配送路線設計定制化測試方案</strong>。</p>
+          </div>
+
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <p>您的公司準備將一批預充填注射器（1 mL，液體充填）通過空運從台灣運往德國（途經香港）。請思考：</p>
+            <ol>
+              <li>您會選擇哪個/哪些配送模擬標準？為什麼？</li>
+              <li>航空運輸部分，您最擔心的風險是什麼？如何設計評估方案？</li>
+              <li>如果空運後的CCIT顯示5%的包裝密封失效，您會如何進行調查？</li>
+              <li>溫度條件（冷藏2-8°C產品）如何影響整個測試設計？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CROSS-REFERENCE PANEL -->
+  <div class="chapter-section">
+    <div class="chapter-divider" style="background: linear-gradient(135deg, #1a4731 0%, #276749 100%);">
+      <div class="chapter-badge">&#x27F6;</div>
+      <div class="chapter-info">
+        <h2>Cross-Reference: TR86 in the Regulatory Landscape | 交叉參照：TR86在監管架構中的定位</h2>
+        <p>How TR86 connects to USP &lt;1207&gt;, ICH Q9, EU GMP Annex 1 and FDA expectations | TR86如何與USP &lt;1207&gt;、ICH Q9、EU GMP附件1及FDA期望相連接</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <h3>Regulatory Landscape for CCI</h3>
+          <p>Container Closure Integrity is addressed across multiple regulatory frameworks. Understanding how these documents relate helps practitioners build compliant programs that satisfy inspectors from different health authorities.</p>
+
+          <table>
+            <tr>
+              <th>Document</th>
+              <th>Type</th>
+              <th>Key CCI Requirements/Guidance</th>
+              <th>TR86 Relationship</th>
+            </tr>
+            <tr>
+              <td><strong>USP &lt;1207&gt;</strong></td>
+              <td>Compendial Standard</td>
+              <td>Defines CCI; classifies deterministic vs. probabilistic methods; establishes basic validation requirements</td>
+              <td>Foundation that TR86 extends; TR86 addresses challenges not fully covered by USP &lt;1207&gt;</td>
+            </tr>
+            <tr>
+              <td><strong>USP &lt;1207.1&gt;</strong></td>
+              <td>Compendial Guidance</td>
+              <td>Decision trees for test method selection by container type and risk level</td>
+              <td>Complementary method selection guidance; TR86 provides deeper technical detail</td>
+            </tr>
+            <tr>
+              <td><strong>USP &lt;1207.2&gt;</strong></td>
+              <td>Compendial Guidance</td>
+              <td>Packaging system CCI guidance; validation approach</td>
+              <td>Validation framework; TR86 provides lifecycle and LOD simulation detail</td>
+            </tr>
+            <tr>
+              <td><strong>ICH Q9</strong></td>
+              <td>Guideline</td>
+              <td>Risk management tools: FMEA, HACCP, risk ranking; quality risk management framework</td>
+              <td>Risk-based CCIT program foundation; TR86 Section 6.3.1 directly applies ICH Q9 tools</td>
+            </tr>
+            <tr>
+              <td><strong>ICH Q8(R2)</strong></td>
+              <td>Guideline</td>
+              <td>QbD framework: QTPP, CQAs, CMAs, CPPs, Design Space, Control Strategy</td>
+              <td>QbD language and framework; TR86 Section 6.3 applies ICH Q8 to CCIT program design</td>
+            </tr>
+            <tr>
+              <td><strong>EU GMP Annex 1 (2022)</strong></td>
+              <td>Regulation</td>
+              <td>Mandates CCIT for all sterile products; 100% for ampules/BFS; risk-based for others; enhanced PFS requirements</td>
+              <td>Regulatory mandate that makes TR86 guidance operationally necessary; Annex 1 2022 strengthens requirements aligned with TR86 approach</td>
+            </tr>
+            <tr>
+              <td><strong>FDA 2008 CCI Guidance</strong></td>
+              <td>Guidance</td>
+              <td>CCIT in lieu of sterility testing in stability programs; method validation expectations</td>
+              <td>TR86 provides the technical depth needed to implement FDA guidance requirements</td>
+            </tr>
+            <tr>
+              <td><strong>PDA TR27</strong></td>
+              <td>Technical Report</td>
+              <td>Predecessor to TR86; established pharmaceutical package integrity testing framework</td>
+              <td>Historical foundation; TR86 supersedes and extends TR27 for modern complex packaging systems</td>
+            </tr>
+          </table>
+        </div>
+        <div class="right-column">
+          <h3>中文解說 — CCI監管架構全貌</h3>
+          <p>CCI測試的監管要求分散在多個文件中，理解這些文件的層次關係，有助於建立一個能同時滿足FDA、EMA和PIC/S檢查的完整計畫。</p>
+
+          <div class="term-box">
+            <h4>三層監管文件架構</h4>
+            <p><strong>第一層：強制性法規</strong></p>
+            <ul>
+              <li>EU GMP附件1（2022版）：歐盟市場的強制要求，規定CCIT的最低標準</li>
+              <li>21 CFR Part 211（美國cGMP）：包裝組件和容器要求的法規基礎</li>
+            </ul>
+            <p style="margin-top:0.5rem;"><strong>第二層：官方標準/指南</strong></p>
+            <ul>
+              <li>USP &lt;1207&gt;、&lt;1207.1&gt;、&lt;1207.2&gt;：美國藥典官方章節，FDA引用</li>
+              <li>ICH Q8/Q9：國際協調指南，定義QbD和QRM框架</li>
+              <li>FDA 2008 CCIT Guidance：穩定性中使用CCIT代替無菌測試的指引</li>
+            </ul>
+            <p style="margin-top:0.5rem;"><strong>第三層：技術指南（最佳實踐）</strong></p>
+            <ul>
+              <li>PDA TR86（本報告）：複雜包裝系統的深度技術指導</li>
+              <li>PDA TR27：歷史基礎，已被TR86延伸</li>
+              <li>ASTM/ISTA/ISO測試標準：具體測試方法標準</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <h4>EU GMP Annex 1 2022 — 重要更新要點</h4>
+            <p>2022年版Annex 1（自2023年8月強制執行）對CCIT有顯著強化：</p>
+            <ul>
+              <li>第8.90節：要求所有無菌藥品製造商建立書面的容器密封完整性控制策略</li>
+              <li>第8.91節：要求對密封過程進行製程確效（Process Validation），不只是終產品測試</li>
+              <li>第8.92節：明確要求預充填注射器的密封完整性研究，特別提及柱塞後退風險</li>
+              <li>第8.93節：要求建立持續的包裝完整性監測計畫，並與APR/PQR整合</li>
+            </ul>
+            <p>TR86提供的框架（特別是QbD方法、生命週期方法和LOD研究設計）與Annex 1 2022的要求高度契合。</p>
+          </div>
+
+          <div class="key-point-box">
+            <h4>監管檢查常見問題準備</h4>
+            <p>在GMP檢查中，CCI相關的常見問題包括：</p>
+            <ul>
+              <li>「您的MALL是如何確定的？有什麼科學依據？」（需要有MALL設定的研究報告）</li>
+              <li>「您的CCIT方法的LOD是多少？如何確認它小於MALL？」（需要LOD驗證研究）</li>
+              <li>「您的密封製程CPPs是什麼？它們如何影響CCI？」（需要製程確效報告）</li>
+              <li>「您有沒有評估過配送對包裝完整性的影響？」（需要運輸驗證研究）</li>
+              <li>「最近一次包裝組件變更時，您是否重新評估了CCIT計畫？」（需要變更控制記錄）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+  <p>PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing</p>
+  <p style="font-size:0.8rem; opacity:0.7; margin-top:0.4rem;">Section 4: Additional Considerations &amp; References (6.0–9.0) | Pages p38–p52 | SterileGMP Knowledge Hub</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+</body>
+</html>

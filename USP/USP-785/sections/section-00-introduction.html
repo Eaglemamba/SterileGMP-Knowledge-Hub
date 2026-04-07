@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈785〉 - Section 0: Introduction & Theoretical Background</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p {
+    margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem;
+}
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+.column-header {
+    font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px; font-weight: 600;
+    color: #155724; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+.note-box, .key-note, .key-point-box,
+.concept-box[class*="note"], .concept-box[class*="highlight"],
+.key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+
+.concept-box.application, .application-box {
+    background: #e3f2fd !important; border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white;
+    border-radius: 6px; border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7;
+    border-radius: 6px; color: var(--primary-blue); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+
+.pump-card, .tech-card, .info-card {
+    background: white; border-radius: 8px; padding: 1rem;
+    border: 1px solid #e2e8f0; margin-bottom: 0.75rem;
+}
+
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px;
+    background: var(--accent-blue); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+
+@media (max-width: 1200px) {
+    .two-column, .content-grid, .side-by-side { gap: 1rem; }
+    .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; }
+}
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .top-header h1, .header h1 { font-size: 1.1rem; }
+    .nav-label { display: none; }
+    .nav-item { padding: 0.75rem; }
+    .nav-num { width: 28px; height: 28px; font-size: 0.85rem; }
+    .chapter-divider { padding: 0.85rem 1rem; }
+    .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; }
+    .chapter-info h2 { font-size: 1rem; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Theoretical Background | 簡介與理論背景</h1>
+    <div class="subtitle">USP 〈785〉 Osmolality and Osmolarity</div>
+    <div class="page-info">USP General Chapter 〈785〉 | Pages 1–3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解滲透壓 (osmotic pressure) 的生物學意義，及其在無菌注射劑開發中的核心地位</li>
+        <li>區分並正確使用 osmolality（滲透量）、osmolarity（滲透濃度）與 tonicity（張力）三個術語</li>
+        <li>掌握凍結點下降 (freezing-point depression)、蒸氣壓下降 (vapor pressure depression) 等依數性質的數學基礎</li>
+        <li>了解 Pitzer–Debye–Hückel 方程如何用於推算 NaCl 校正液的標準濃度</li>
+        <li>認識滲透量測量在製藥品管與患者安全上的直接關聯</li>
+    </ul>
+</div>
+
+<!-- ===================== SUBSECTION: INTRODUCTION ===================== -->
+<div class="section-title">Introduction 簡介</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Osmotic pressure</span> plays a critical role in all biological processes that involve diffusion of solutes or transfer of fluids through membranes.</p>
+
+        <p><span class="key-term">Osmosis</span> occurs when the osmotic pressure drives the solvent, but not solute, to cross a <span class="key-term">semipermeable membrane</span> from regions of lower to higher solute concentrations until equilibrium is reached. Osmotic pressure is a <span class="key-term">colligative property</span> that depends on the number, but not the identity, of moles of solutes present in solution. Quantitative measurement of the number of moles of solutes in solution is necessary for predicting and controlling the potential damage to biological tissues due to fluid transfer across biological tissue membranes.</p>
+
+        <p>The terms <span class="key-term">osmolality</span>, <span class="key-term">osmolarity</span>, and <span class="key-term">tonicity</span> are often used to describe the number of solutes in the solution, however, it is incorrect to use these terms interchangeably. The measurement of the number of solutes in the solution, using colligative properties, allows the direct determination of the osmolality of the solution with units of <strong>moles of solutes per kilogram of solvent</strong>. This result can be converted into a value for osmolarity with units of <strong>moles of solutes per liter of solvent</strong>, typically water. Tonicity is a medical term that relates to the osmotic pressure difference between the internal and external sides of a cell membrane.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Osmolality (滲透量)：</strong>直接測量值，單位為 mOsmol/kg（溶質莫耳數 ÷ 溶劑公斤數）。這是實驗室實際量到的數字。</p>
+            <p><strong>Osmolarity (滲透濃度)：</strong>計算值，單位為 mOsmol/L（溶質莫耳數 ÷ 溶液公升數）。臨床常用，但必須由 osmolality 換算而來。</p>
+            <p><strong>Tonicity (張力)：</strong>醫學術語，描述溶液對細胞膜造成的淨滲透壓差。並非所有 osmolality 貢獻都能影響 tonicity（例如尿素可自由穿越細胞膜，對 tonicity 無貢獻）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把細胞膜想像成一扇只讓水分子通過、但擋住鹽分子的半透膜。當細胞外液太鹹（高滲），水會從細胞內流出，細胞就像葡萄乾一樣萎縮；若外液太淡（低滲），水則湧入細胞直到細胞脹破。這就是為何靜脈注射劑的滲透量必須嚴格管控。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>三個術語「不可互換使用」是 USP 的明確警示。在 CMC 文件、標籤及檢驗報告中，必須清楚標明使用的是 osmolality（測量值）還是 osmolarity（計算值）。混用術語可能導致臨床劑量計算錯誤。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼滲透壓是「依數性質 (colligative property)」？這意味著什麼物理現象？</li>
+                <li>一個滲透量高的溶液打入靜脈，對紅血球會有什麼影響？請用生理學解釋。</li>
+                <li>Tonicity 和 osmolality 的關鍵差異是什麼？舉一個溶質的例子說明兩者可能不一致的情況。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SUBSECTION: THEORETICAL BACKGROUND ===================== -->
+<div class="section-title">Theoretical Background 理論背景</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The <span class="key-term">osmotic pressure</span> of a solution depends on the number of solutes in a solution, and is therefore referred to as a <span class="key-term">colligative property</span>. For an ideal solution with water as the solvent, the osmotic pressure, Π, is a function of the water activity, a<sub>w</sub>:</p>
+
+        <div class="quote-box">
+            Π = −(RT / V<sub>m</sub>) · ln a<sub>w</sub>, where a<sub>w</sub> = γ<sub>w</sub> · x<sub>w</sub>
+        </div>
+
+        <p>where V<sub>m</sub> is the molar volume of water at temperature T, V<sub>m</sub> = 18.018 cm³ mol⁻¹ at 273.15 K; R is the gas constant, R = 8.3144598 J mol⁻¹ K⁻¹; T is the temperature in Kelvin; γ<sub>w</sub> is the activity coefficient of water; and x<sub>w</sub> is the mole fraction of water, x<sub>w</sub> = (1 − x<sub>s</sub>), where x<sub>s</sub> is the mole fraction of solute.</p>
+
+        <p>At low solute concentrations, the equation can be simplified to the <span class="key-term">van't Hoff equation</span> for osmotic pressure:</p>
+
+        <div class="quote-box">
+            Π = (RT·M<sub>W</sub> / V<sub>m</sub>) · ξ<sub>m,ideal</sub>
+        </div>
+
+        <p>where ξ<sub>m,ideal</sub> is the osmolality of the solution in moles per kilogram of water; ν is the stoichiometric coefficient for the solute; and m is the molal concentration of the solute in moles of solute per kilogram of water.</p>
+
+        <p>For an ideal, non-dissociating solute, ν = 1 and the osmolality, ξ, is equal to the molal concentration of solute. For a dissociating solute, ν is equal to the stoichiometric number of moles into which one mole of solute will dissociate.</p>
+
+        <p>For non-ideal solutes, an <span class="key-term">osmolality coefficient</span>, Φ<sub>m</sub>, is introduced to correct for the difference between predicted ideal behavior and observed real behavior:</p>
+
+        <div class="quote-box">
+            ξ<sub>m,real</sub> = ν · m · Φ<sub>m</sub>
+        </div>
+
+        <p>When multiple solutes are present, the osmolality may be approximated by summing the contributions from all individual solutes:</p>
+
+        <div class="quote-box">
+            ξ<sub>m,real</sub> = Σ<sub>i</sub> ν<sub>i</sub> · m<sub>i</sub> · Φ<sub>m,i</sub>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Water activity (水活度) a<sub>w</sub>：</strong>描述溶液中水分子「有效可用程度」的無量綱值。純水的 a<sub>w</sub> = 1；加入溶質後 a<sub>w</sub> 下降，導致水從高 a<sub>w</sub> 端流向低 a<sub>w</sub> 端（即從低溶質端流向高溶質端）。</p>
+            <p><strong>Osmolality coefficient Φ<sub>m</sub>（滲透量係數）：</strong>真實溶液的修正因子。理想溶液 Φ<sub>m</sub> = 1；實際溶液（尤其是電解質）Φ<sub>m</sub> ≠ 1，需要實驗測定。NaCl 在生理濃度下 Φ<sub>m</sub> ≈ 0.93。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Key Formulas</h4>
+            <pre>
+Van't Hoff (ideal dilute):
+  Π = CRT  (C = molar concentration)
+
+Osmolality (ideal):
+  ξ_ideal = ν × m
+
+Osmolality (real):
+  ξ_real = ν × m × Φm
+
+Multi-solute mixture:
+  ξ_total = Σ (νi × mi × Φm,i)
+
+Example — 0.9% NaCl:
+  NaCl → Na⁺ + Cl⁻  (ν = 2)
+  m ≈ 0.154 mol/kg
+  Φm ≈ 0.926
+  ξ ≈ 2 × 0.154 × 0.926 ≈ 285 mOsmol/kg
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>把 ν（解離係數）想像成一個家庭分家後的成員數。NaCl 這個「家庭」分成 Na⁺ 和 Cl⁻ 兩個成員，因此它對滲透量的貢獻是同樣濃度不解離溶質（如葡萄糖）的兩倍。這就解釋了為何 0.9% NaCl 的滲透量比同重量的葡萄糖溶液高得多。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>多溶質疊加法（additive approach）假設每種溶質的 Φ<sub>m</sub> 在混合物中與單獨存在時相同。這在低濃度下是合理近似，但在高濃度或有溶質-溶質相互作用時可能產生誤差。USP 明確提示此為簡化方法。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若一種藥物在溶液中部分解離（ν = 1.5），理論上如何計算其 osmolality 貢獻？</li>
+                <li>為何要引入 Φ<sub>m</sub>（滲透量係數）？它反映了溶液的什麼物理性質？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SUBSECTION: FREEZING-POINT DEPRESSION ===================== -->
+<div class="section-title">Freezing-Point Depression & Vapor Pressure Methods 凍結點下降與蒸氣壓法</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>In addition to osmotic pressure, other <span class="key-term">colligative properties</span> can be used to measure the osmolality of solutions including <span class="key-term">dew-point depression</span>, <span class="key-term">boiling-point elevation</span>, and <span class="key-term">freezing-point depression</span>. The most commonly used method for analysis of the osmolality of solutions is freezing-point depression.</p>
+
+        <p>The <span class="key-term">freezing-point depression</span>, ΔT<sub>f</sub>, of an aqueous solution relative to pure water is proportional to the change in the water activity, a<sub>w</sub>:</p>
+
+        <div class="quote-box">
+            ΔT<sub>f</sub> = (RT²<sub>f</sub> / ΔH<sub>fus</sub>) · Δln a<sub>w</sub>
+        </div>
+
+        <p>At low solute concentrations, this can be simplified to express freezing-point depression in terms of osmolality as:</p>
+
+        <div class="quote-box">
+            ΔT<sub>f</sub> = K<sub>f</sub> · ξ<sub>m</sub>
+        </div>
+
+        <p>where K<sub>f</sub> = RT²<sub>f</sub> · M<sub>W</sub> / ΔH<sub>fus</sub>. For water, the value of ΔH<sub>fus</sub> at 273.15 K is 6006.78 J mol⁻¹, which gives a value for K<sub>f</sub> of <strong>1.86056 K kg mol⁻¹</strong>.</p>
+
+        <p><span class="key-term">Vapor pressure osmometers</span> measure the relative humidity of the air above the sample that is in equilibrium with the sample. The <span class="key-term">dew point</span> is the temperature below which the water vapor in the air is above saturation and condensation occurs. The change in the dew point of the air, ΔT<sub>D</sub>, is given by the <span class="key-term">Clausius–Clapeyron equation</span>:</p>
+
+        <div class="quote-box">
+            ΔT<sub>D</sub> = K<sub>D</sub> · ξ<sub>m</sub>
+        </div>
+
+        <p>where K<sub>D</sub> = M<sub>W</sub>RT²<sub>D</sub> / ΔH<sub>vap</sub>. At 25°C (298.15 K), ΔH<sub>vap</sub> = 43.990 kJ mol⁻¹, giving K<sub>D</sub> = 0.3027 K kg mol⁻¹. At the boiling point (373.15 K), K<sub>D</sub> = 0.5130 K kg mol⁻¹, equivalent to the ebullioscopic constant, K<sub>b</sub>, for water.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Freezing-point depression (凍結點下降)：</strong>溶液凍結點低於純水（0°C），下降幅度正比於滲透量。是最常用的 osmolality 測量原理。每 1 mOsmol/kg ≈ 1.86 × 10⁻³ °C 的凍結點下降。</p>
+            <p><strong>Vapor pressure osmometry（蒸氣壓滲透量測定）：</strong>利用露點 (dew point) 下降原理，在室溫下測量。測量值代表環境溫度下的 osmolality，與凍結點法（在凍結點測量）結果可能不同——因為某些溶質的解離程度隨溫度改變。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式速查 Formula Reference</h4>
+            <pre>
+凍結點下降法 (Freezing-Point):
+  ΔTf = Kf × ξm
+  Kf (water) = 1.86056 K·kg/mol
+  例：290 mOsmol/kg → ΔTf = 1.86056 × 0.290
+                            = 0.5396°C 下降
+
+蒸氣壓法 (Vapor Pressure, at 25°C):
+  ΔTD = KD × ξm
+  KD (25°C) = 0.3027 K·kg/mol
+
+兩法靈敏度比:
+  Kf / KD = 1.86 / 0.30 ≈ 6.2×
+  凍結點法靈敏度約為蒸氣壓法的6倍
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你在山頂（低氣壓）煮水，水的沸點比海平面低。依數性質的道理是一樣的——溶液中加入溶質，就像改變了水分子的「逃逸意願」：沸點升高（難以逃逸成蒸氣）、凍結點下降（難以結成冰晶）。這些微小的溫度變化就是滲透量計的量測原理。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>兩種方法對相同樣品可能給出不同結果。這不是錯誤，而是物理現象：凍結點法在 0°C 測量；蒸氣壓法在室溫（~25°C）測量。含揮發性成分（如乙醇）的樣品，蒸氣壓法會產生誤差，因為揮發性溶質會在測量過程中蒸發。此情況必須改用凍結點法。</p>
+        </div>
+
+        <div class="concept-box application">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 製劑開發時，若產品含乙醇（如某些注射用溶媒）或其他揮發性輔料，必須選用凍結點滲透量計。如果誤用蒸氣壓法，乙醇在量測過程中揮發，會低估實際滲透量，導致產品被誤判為等滲而進入臨床。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若測得某注射劑的凍結點為 -0.558°C（相對純水），其 osmolality 為多少 mOsmol/kg？</li>
+                <li>為何含有乙醇的樣品不能用蒸氣壓滲透量計測量？請從原理解釋。</li>
+                <li>凍結點法與蒸氣壓法哪個對低 osmolality 樣品更靈敏？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SUBSECTION: NaCl CALIBRATION STANDARD ===================== -->
+<div class="section-title">Calibration Standards — NaCl Solutions 氯化鈉校正標準液</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>To calibrate instruments for measurements of water activity and osmolality, it is necessary to have well-characterized solutions that are easy to prepare. The nonlinear relationship between the <span class="key-term">osmolality coefficient</span>, Φ<sub>m</sub>, and the molality of the solute has been studied for many solutions of single salts and is most often represented by the <span class="key-term">Pitzer–Debye–Hückel equation</span> as a virial expansion in terms of molality:</p>
+
+        <div class="quote-box">
+            Φ<sub>m</sub> − 1 = f<sup>Φ</sup> + B<sup>Φ</sup>m + C<sup>Φ</sup>m²
+        </div>
+
+        <p>where f<sup>Φ</sup> = −A<sub>Φ</sub>·(√I / (1 + b√I)), B<sup>Φ</sup> = β<sub>0</sub> + β<sub>1</sub>·e<sup>−α√I</sup>, I = ½Σ m<sub>i</sub>z<sub>i</sub>², and A<sub>Φ</sub> is the Debye–Hückel slope; b = 1.2 (empirical ion size parameter); α = 2.0 (empirical ionic strength dependence parameter).</p>
+
+        <p>For a simple 1:1 electrolyte like <span class="key-term">sodium chloride (NaCl)</span>, the ionic strength I equals the molality. For NaCl at 273.15 K and standard pressure, A<sub>Φ</sub> = 0.37642. With best-fit parameters β<sub>0</sub> = 0.040933, β<sub>1</sub> = 0.26955, C<sup>Φ</sup> = 0.004506, the resulting recipes for <span class="key-term">Standard Solutions</span> are listed in Table 1, spanning the experimental range from <strong>2–7300 mOsmol/kg</strong>.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>mOsmol/kg</th>
+                <th>g NaCl / kg H₂O</th>
+                <th>mOsmol/kg</th>
+                <th>g NaCl / kg H₂O</th>
+            </tr>
+            <tr><td>50</td><td>1.530</td><td>400</td><td>12.71</td></tr>
+            <tr><td>100</td><td>3.098</td><td>500</td><td>15.94</td></tr>
+            <tr><td>150</td><td>4.683</td><td>600</td><td>19.18</td></tr>
+            <tr><td>200</td><td>6.278</td><td>700</td><td>22.41</td></tr>
+            <tr><td>250</td><td>7.880</td><td>1000</td><td>32.12</td></tr>
+            <tr><td>290</td><td>9.165</td><td>2000</td><td>64.08</td></tr>
+            <tr><td>300</td><td>9.487</td><td>4000</td><td>124.48</td></tr>
+            <tr><td>350</td><td>11.10</td><td colspan="2"><em>(Full table: 50–4000 mOsmol/kg)</em></td></tr>
+        </table>
+        </div>
+
+        <p><small><strong>Table 1 Notes:</strong> NaCl dried at 110°C for 2 h; weigh to ±0.03 g; water to ±0.2 g. Accuracy ±1 mOsmol/kg if correctly prepared. Store in nonpermeable (e.g., glass) containers; prepare fresh at least monthly.</small></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>Pitzer–Debye–Hückel 方程：</strong>這是電解質溶液非理想行為的最佳半理論模型，結合了長程靜電作用（Debye–Hückel 項）與短程離子-離子相互作用（virial 展開項）。對於滲透量校正液的精確配製至關重要。</p>
+            <p><strong>為什麼用 NaCl？</strong>NaCl 是生物體液的主要電解質、溶解度高、純度可精確控制、與人體滲透量範圍完美匹配（生理值約 285–310 mOsmol/kg），且其 Φ<sub>m</sub>-molality 關係已有大量實驗數據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>校正用 NaCl 溶液就像音叉之於調音師——它的滲透量已由第一原理推算並經實驗驗證，可信度高。USP Table 1 所列的配方精度（±1 mOsmol/kg）遠高於市售校正液（±2 mOsmol/kg 或 ±0.5%），自配時必須嚴格遵守秤量精度要求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <ul>
+                <li>NaCl 必須預先在 110°C 乾燥 2 小時，去除吸附水分</li>
+                <li>稱量精度：NaCl ±0.03 g；水 ±0.2 g——這不是建議，是保證 ±1 mOsmol/kg 精度的必要條件</li>
+                <li>儲存在玻璃容器（非透氣容器），防止水分蒸發改變濃度</li>
+                <li>非無菌非防腐劑溶液，每月至少新鮮配製一次</li>
+                <li>市售安瓿裝校正液：一次性使用，開封後丟棄</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>實驗室計算示例</h4>
+            <pre>
+配製 290 mOsmol/kg 標準液（模擬血漿滲透量）：
+  Table 1 → 9.165 g NaCl per kg H₂O
+
+  步驟：
+  1. 稱取 NaCl（已於 110°C 乾燥2h）= 9.165 ± 0.03 g
+  2. 稱取純水（Milli-Q 或同等級）= 1000.0 ± 0.2 g
+  3. 溶解混勻
+  4. 儲存於玻璃容器，標記製備日期
+
+  精度保證：±1 mOsmol/kg
+  有效期：每月更新
+            </pre>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何必須使用「乾燥後」的 NaCl 配製標準液？若未乾燥，對結果有何影響？</li>
+                <li>市售校正安瓿與自配 NaCl 標準液相比，各有何優缺點？在哪些情境下你會選擇各自哪種？</li>
+                <li>若需要測量 1500 mOsmol/kg 的高濃度溶液，應選擇哪個 Table 1 標準液進行校正？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>滲透壓是依數性質，由溶質粒子的數量決定，不取決於種類——這是 osmolality 測量的根本原理</li>
+        <li>Osmolality（mOsmol/kg）是測量值；osmolarity（mOsmol/L）是計算值；tonicity 是醫學術語，三者不可混用</li>
+        <li>凍結點下降法（K<sub>f</sub> = 1.86 K·kg/mol）是最靈敏、最常用的測量方法；蒸氣壓法在室溫運作，但不適用於含揮發性溶質的樣品</li>
+        <li>真實溶液需引入 osmolality coefficient（Φ<sub>m</sub>）修正；NaCl 的 Φ<sub>m</sub> 由 Pitzer–Debye–Hückel 方程精確推算，支撐 USP Table 1 校正液配方</li>
+        <li>校正標準液的配製精度（秤量、乾燥、儲存）直接決定滲透量測量的可追溯性，是品質體系的關鍵控制點</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈785〉 Osmolality and Osmolarity | Section 0: Introduction &amp; Theoretical Background</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

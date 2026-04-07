@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 1116 - Section 1: Monitoring Methods</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1 &mdash; Monitoring Methods: Air, Surface &amp; Personnel Sampling</h1>
+    <div class="subtitle">第一章：監測方法 &mdash; 空氣、表面與人員取樣</div>
+    <div class="page-info">USP &lang;1116&rang; Microbiological Control and Monitoring of Aseptic Processing Environments | p5 &ndash; p10</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>認識各類主動式空氣取樣器（STA, Sieve Impactor, Centrifugal, SAS, Gelatin Filter）的工作原理與適用場景</li>
+        <li>理解被動式沉降板（Settle Plates）的角色、暴露時間建議（4&ndash;5 小時），以及為何在 ISO 5 環境中可能更適用</li>
+        <li>掌握表面取樣方法（Contact Plates, Swabs）的標準化現狀與回收率限制（&lt;50%）</li>
+        <li>認識人員監測（手套、衣著）的時機與注意事項</li>
+        <li>理解取樣體積需求（至少 1 立方米空氣）與遠端取樣系統的考量</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: AIRBORNE SAMPLING                   -->
+<!-- ============================================ -->
+<div class="section-title" id="airborne-sampling">Sampling Airborne Microorganisms &mdash; 空氣微生物取樣</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Among the most commonly used tools for monitoring aseptic environments are <span class="key-term">impaction and centrifugal samplers</span>. A number of commercially available samplers are listed for informational purposes. The selection, appropriateness, and adequacy of using any particular sampler are the responsibility of the user.</p>
+
+        <h3>Slit-to-Agar Air Sampler (STA)</h3>
+        <p>The unit is powered by an attached source of controllable vacuum. The air intake is obtained through a <span class="key-term">standardized slit</span> below which is placed a slowly revolving Petri dish that contains a nutrient agar. Airborne particles that have sufficient mass impact the agar surface, and viable organisms are allowed to grow. A remote air intake is often used to minimize disturbance of unidirectional airflow.</p>
+
+        <h3>Sieve Impactor</h3>
+        <p>This apparatus consists of a container designed to accommodate a Petri dish that contains a nutrient agar. The cover of the unit is <span class="key-term">perforated with openings of a predetermined size</span>. A vacuum pump draws a known volume of air through the cover, and airborne particles that contain microorganisms impact the agar medium in the Petri dish. Some samplers feature a cascaded series of sieves that contain perforations of decreasing size, allowing determination of the size range distribution of particulates that contain viable microorganisms.</p>
+
+        <h3>Centrifugal Sampler</h3>
+        <p>The unit consists of a <span class="key-term">propeller or turbine</span> that pulls a known volume of air into the unit and then propels the air outward to impact on a tangentially placed nutrient agar strip set on a flexible plastic base.</p>
+
+        <h3>Sterilizable Microbiological Atrium</h3>
+        <p>The unit is a variant of the single-stage sieve impactor. The unit's cover contains uniformly spaced orifices approximately 0.25 inch in size. The base of the unit accommodates one Petri dish containing a nutrient agar. A vacuum pump controls the movement of air through the unit, and a multiple-unit control center as well as a remote sampling probe are available.</p>
+
+        <h3>Surface Air System Sampler (SAS)</h3>
+        <p>This integrated unit consists of an entry section that accommodates an <span class="key-term">agar contact plate</span>. Immediately behind the contact plate is a motor and turbine that pulls air through the unit's perforated cover over the agar contact plate and beyond the motor, where it is exhausted.</p>
+
+        <h3>Gelatin Filter Sampler</h3>
+        <p>The unit consists of a vacuum pump with an extension hose terminating in a filter holder that can be located <span class="key-term">remotely</span> in the critical space. The filter consists of random fibers of gelatin capable of retaining airborne microorganisms. After a specified exposure time, the filter is aseptically removed and dissolved in an appropriate diluent and then plated on an appropriate agar medium to estimate its microbial content.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：主動式空氣取樣器分類</h4>
+            <p>USP 列出六種主動式空氣取樣器，可以依照「收集原理」分為三大類：</p>
+            <ul>
+                <li><strong>衝擊式（Impaction）</strong> &mdash; STA、Sieve Impactor、SAS：利用慣性將微生物衝擊到培養基表面</li>
+                <li><strong>離心式（Centrifugal）</strong> &mdash; Centrifugal Sampler：利用離心力將微粒甩向培養基</li>
+                <li><strong>過濾式（Filtration）</strong> &mdash; Gelatin Filter：將空氣通過明膠濾膜捕捉微生物</li>
+            </ul>
+            <p>每種方法的回收效率不同，USP 特別強調「不應假設不同方法取相同體積的空氣會產生相似的回收率」。這對 CDMO 的 method validation 有重大意義。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：捕魚的不同方法</h4>
+            <p>想像你要估算一條河裡有多少魚。你可以用刺網（衝擊式 &mdash; 魚撞上去被捕獲）、旋轉水車（離心式 &mdash; 水流帶魚到收集區）、或篩網（過濾式 &mdash; 水通過但魚留下來）。</p>
+            <p>每種方法能捕到的魚種和數量不同 &mdash; 大魚容易被刺網捕到，小魚可能從刺網的洞逃走但被篩網攔住。所以用不同方法得到的「魚數」不能直接比較。空氣取樣也一樣：不同型號的取樣器對同一環境給出的 cfu 數據可能相差 5&ndash;10 倍。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 實務選型考量</h4>
+            <ul>
+                <li><strong>STA（Slit-to-Agar）</strong>：可提供時間分辨資訊（旋轉盤），適合追蹤汙染事件的時間點，但體積大不適合 Isolator 內部</li>
+                <li><strong>Sieve Impactor（如 Andersen sampler）</strong>：最常見的製藥環境取樣器，一次取樣 1 m&sup3; 約需 15 分鐘（80 L/min）</li>
+                <li><strong>SAS</strong>：輕便、可手持，適合快速巡邏式取樣</li>
+                <li><strong>Gelatin Filter</strong>：最大優勢是可遠端取樣，探頭放在 ISO 5 區域，設備主體在外面 &mdash; 減少人員介入</li>
+            </ul>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 (2022) Section 9.25 要求 active air sampling「至少 1 m&sup3;」，與 USP &lang;1116&rang; 的建議一致。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 正在評估兩家不同品牌的 sieve impactor。為什麼 USP 強調不同設備取相同體積的空氣可能得到不同結果？這對你的 Method Validation Protocol 有什麼啟示？</li>
+                <li>在一條 Isolator 充填線中，你會選擇哪種空氣取樣器？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SETTLE PLATES                       -->
+<!-- ============================================ -->
+<div class="section-title" id="settle-plates">Settling Plates &mdash; 沉降板</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This method is still widely used as a simple and inexpensive way to <span class="key-term">qualitatively assess</span> the environments over prolonged exposure times. Published data indicate that settling plates, when exposed for <span class="key-term">4- to 5-hour periods</span>, can provide a limit of detection for a suitable evaluation of the aseptic environment.</p>
+
+        <p><span class="key-term">Settling plates may be particularly useful in critical areas</span> where active sampling could be intrusive and a hazard to the aseptic operation.</p>
+
+        <p>One of the major drawbacks of mechanical air samplers is the <span class="key-term">limited sample size of air</span> being tested. When the microbial level in the air of a controlled environment is expected to contain extremely low levels of contamination per unit volume, at least <span class="key-term">1 cubic meter of air</span> should be tested in order to maximize sensitivity. Typically, slit-to-agar devices have an 80-L/min sampling capacity. If 1 cubic meter of air were tested, then it would require an exposure time of 15 min.</p>
+
+        <p>It may be necessary to use sampling times in excess of 15 min to obtain a representative environmental sample. Although some samplers are reported to have high sampling volumes, consideration should be given to the potential for <span class="key-term">disruption of the airflow patterns</span> in any critical area and to the creation of turbulence.</p>
+
+        <p>Technicians may wish to use <span class="key-term">remote sampling systems</span> in order to minimize potential risks resulting from intervention by environmental samplers in critical zones. Regardless of the type of sampler used, analysts must determine that the extra tubing needed for a remote probe does not reduce the method's sensitivity to such an extent that detection of low levels of contamination becomes unlikely or even impossible.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Settle Plates 的獨特價值</h4>
+            <p>沉降板（Settle Plates）是最古老也最簡單的空氣微生物取樣方法，但 USP 特別指出它有一個關鍵優勢：</p>
+            <ul>
+                <li><strong>非侵入性</strong> &mdash; 不需要設備、不需要電源、不會干擾氣流</li>
+                <li><strong>長時間暴露</strong> &mdash; 4&ndash;5 小時的連續監測，增加偵測低濃度汙染的機會</li>
+                <li><strong>在 ISO 5 critical zone 特別適用</strong> &mdash; 因為主動式取樣器在此區域可能造成更多問題</li>
+            </ul>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 Table 7 規定 Grade A 的 settle plate limit 為 &lt;1 cfu/4 hours。這個 4 小時暴露時間與 USP 的建議完全吻合。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：路口的測速方式</h4>
+            <p>主動式空氣取樣器就像交通警察用測速槍 &mdash; 精確但需要人員在場操作，而且每次只能測一瞬間。沉降板則像路口的固定式攝影機 &mdash; 雖然不如測速槍「精準」，但它 24 小時不間斷地記錄，更容易捕捉到偶發的超速車輛。</p>
+            <p>在微生物極少的 ISO 5 環境中，「長時間持續觀察」比「短時間精確測量」更有價值 &mdash; 因為汙染事件本身就極為罕見。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：取樣體積的關鍵要求</h4>
+            <p>USP 建議至少取 <strong>1 m&sup3; 空氣</strong>（1000 L），這是一個非常重要的實務標準：</p>
+            <ul>
+                <li>以 80 L/min 的典型流速計算 &rarr; 需要 12.5 分鐘</li>
+                <li>USP 建議可能需要超過 15 分鐘的取樣時間</li>
+                <li>但必須同時考慮取樣器對氣流的干擾</li>
+            </ul>
+            <p>在 CDMO 環境中，這意味著你的 EM SOP 需要明確定義取樣體積和時間，並在 method validation 中證明選定的組合能提供足夠的靈敏度。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>FDA 查廠員發現你的 ISO 5 主動空氣取樣只取 200 L（約 2.5 分鐘）。引用 USP &lang;1116&rang; 的建議，這樣的取樣量是否足夠？你會如何辯護或改善？</li>
+                <li>你的客戶要求在充填過程中不使用沉降板（擔心板子掉入產品）。你會如何平衡監測需求和產品安全？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: SURFACE SAMPLING                    -->
+<!-- ============================================ -->
+<div class="section-title" id="surface-sampling">Surface Sampling &mdash; 表面取樣</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Another component of the microbial-control program in controlled environments is <span class="key-term">surface sampling of equipment, facilities, and personnel</span>. The standardization of surface sampling methods and procedures has not been as widely addressed in the pharmaceutical industry as has the standardization of air-sampling procedures.</p>
+
+        <p><span class="key-term">Contact plates</span> filled with nutrient agar are used for sampling regular or flat surfaces and are directly incubated for the appropriate time and temperature for recovery of viable organisms. Specialized agar can be used for the recovery of organisms that have specific growth requirements. Microbial estimates are reported per contact plate.</p>
+
+        <p>The <span class="key-term">swabbing method</span> can be used to supplement contact plates for sampling of irregular surfaces, especially irregular surfaces of equipment. The area that will be swabbed is defined with a sterile template of appropriate size. In general, it is in the range of <span class="key-term">24&ndash;30 cm&sup2;</span>. After sample collection the swab is placed in an appropriate diluent or transport medium and is plated onto the desired nutrient agar. The microbial estimates are reported per swab of defined sampling area.</p>
+
+        <p>Surface monitoring is used as an environmental assessment tool in all types of classified environments. In ISO 5 environments for aseptic processing, surface monitoring is generally performed <span class="key-term">beside critical areas and surfaces</span>. Component hoppers and feed chutes that contact sterile surfaces on closures and filling needles can be tested for microbial contamination.</p>
+
+        <p><span class="key-term">Surface monitoring on surfaces that directly contact sterile parts or product should be done only after production operations are completed.</span> Surface sampling is not a sterility test and should not be a criterion for the release or rejection of product. Because these samples must be taken aseptically by personnel, it is difficult to establish with certainty that any contamination recovered is product related.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：兩種表面取樣方法</h4>
+            <p>USP 描述了兩種互補的表面取樣方法：</p>
+            <table>
+                <tr><th>特性</th><th>Contact Plate（接觸板）</th><th>Swab（拭子）</th></tr>
+                <tr><td>適用表面</td><td>平坦、規則表面</td><td>不規則、凹凸表面</td></tr>
+                <tr><td>取樣面積</td><td>固定（約 25 cm&sup2;）</td><td>需用模板定義（24&ndash;30 cm&sup2;）</td></tr>
+                <tr><td>處理方式</td><td>直接培養</td><td>需轉移至稀釋液再塗板</td></tr>
+                <tr><td>報告方式</td><td>cfu/plate</td><td>cfu/swab area</td></tr>
+                <tr><td>操作複雜度</td><td>低</td><td>較高（多一步轉移）</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：蓋章 vs 擦拭</h4>
+            <p>Contact plate 就像在桌面上「蓋印章」&mdash; 把培養基直接壓在表面上，表面的微生物就會轉移到培養基上。簡單快速，但只能用在平坦表面。</p>
+            <p>Swab 則像用濕抹布「擦拭」&mdash; 可以擦到角落和縫隙，但擦完後還需要把抹布上的東西洗下來才能計數。多了一步轉移，就多了一層不確定性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Product Contact Surface 只能在生產結束後取樣</h4>
+            <p>這是一個在 FDA 查廠中經常被關注的重點：</p>
+            <ul>
+                <li>在生產過程中對產品接觸面取樣 &rarr; <strong>可能引入汙染</strong>（取樣人員、取樣器材、培養基殘留）</li>
+                <li>培養基或稀釋液的殘留可能促進微生物在表面增殖</li>
+                <li>清潔殘留物需要額外的人員介入和動作 &rarr; 更多汙染風險</li>
+                <li>表面取樣結果<strong>不能</strong>作為產品放行或拒收的依據</li>
+            </ul>
+            <p><strong>Cross-reference：</strong>EU GMP Annex 1 Section 9.30 要求 Grade A 表面監測在「操作結束後」進行，與 USP 完全一致。PDA TR13 也有詳細的取樣時機指導。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 有一台充填機的產品接觸面有許多不規則凹槽。Contact plate 無法有效取樣。你會如何設計 swabbing protocol？需要定義哪些參數？</li>
+                <li>一位 QA 同事主張「如果表面取樣發現汙染，就應該拒收當批產品」。引用 USP &lang;1116&rang;，你會如何回應？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: CULTURE MEDIA & IDENTIFICATION      -->
+<!-- ============================================ -->
+<div class="section-title" id="culture-media">Culture Media, Diluents &amp; Microbial Identification &mdash; 培養基、稀釋液與微生物鑑定</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Culture Media and Diluents</h3>
+        <p>The type of medium, liquid or solid, used for sampling or plating microorganisms depends on the procedure and equipment used. Any medium used should be <span class="key-term">evaluated for suitability</span> for the intended purpose. The most commonly used all-purpose solid microbiological growth medium is <span class="key-term">soybean&ndash;casein digest agar</span>. This medium can be supplemented with chemicals that counteract the effect of various antimicrobials.</p>
+
+        <h3>Identification of Microbial Isolates</h3>
+        <p>A successful environmental control program includes an appropriate level of <span class="key-term">identification of the flora</span> obtained by sampling. A knowledge of the flora in controlled environments aids in determining the usual microbial flora anticipated for the facility and in evaluating the effectiveness of the cleaning and sanitization procedures, methods, agents, and recovery methods.</p>
+
+        <p>The information gathered by an identification program can be <span class="key-term">useful in the investigation of the source of contamination</span>, especially when recommended detection frequencies are exceeded.</p>
+
+        <p><span class="key-term">Identification of isolates from critical and immediately adjacent areas should take precedence</span> over identification of microorganisms from noncritical areas. Identification methods should be verified, and ready-to-use kits should be qualified for their intended purpose.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：微生物鑑定的分層策略</h4>
+            <p>USP 建議一個<strong>基於風險的鑑定優先順序</strong>：</p>
+            <ol>
+                <li><strong>最高優先</strong> &mdash; ISO 5 critical zone 和鄰近區域的分離株 &rarr; 必須鑑定到種（species level）</li>
+                <li><strong>次要優先</strong> &mdash; 支持區域（ISO 7/8）的分離株 &rarr; 至少鑑定到屬（genus level）</li>
+                <li><strong>最低優先</strong> &mdash; 非關鍵區域的分離株 &rarr; 根據調查需要決定是否鑑定</li>
+            </ol>
+            <p>這個分層策略在資源有限的 CDMO 環境中尤其重要 &mdash; 不是所有的菌落都需要同等深度的鑑定。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：犯罪現場的指紋處理</h4>
+            <p>微生物鑑定就像犯罪現場的指紋分析。在銀行金庫（ISO 5）發現的每一個指紋都必須詳細比對 &mdash; 因為那是高風險區域。但在銀行大廳（ISO 7/8）的指紋，你可能只需要確認「是不是自己人的」。至於銀行外面人行道（非分級區域）的指紋，除非有特殊案件需要，通常不需要分析。</p>
+            <p>建立「環境菌群庫」（facility flora library）就像建立一個「員工指紋資料庫」&mdash; 當新指紋出現時，你可以立刻知道這是不是預期的菌種。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：FDA 查廠焦點 &mdash; 環境菌群趨勢</h4>
+            <p>FDA 查廠員在審查 EM 計畫時，特別關注以下問題：</p>
+            <ul>
+                <li>你有沒有建立 facility-specific 的「正常菌群」清單？</li>
+                <li>當出現不在正常清單上的菌種時，你的調查程序是什麼？</li>
+                <li>特別關注 objectionable organisms（如 <em>Staphylococcus aureus</em>, <em>Pseudomonas</em> spp., <em>Burkholderia cepacia</em>）的出現</li>
+                <li>微生物鑑定方法（如 16S rRNA, MALDI-TOF, Vitek）是否經過驗證？</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 在 ISO 5 區域發現一株 <em>Bacillus</em> species。這個發現的意義是什麼？它通常的來源是什麼？你會展開什麼樣的調查？</li>
+                <li>你正在評估是否引進 MALDI-TOF 微生物鑑定系統。與傳統生化鑑定相比，它的主要優勢和限制分別是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<footer class="main-footer">
+    <p>USP &lang;1116&rang; Microbiological Control and Monitoring of Aseptic Processing Environments</p>
+    <p>Section 1: Monitoring Methods &mdash; Air, Surface &amp; Personnel Sampling | SterileGMP Knowledge Hub</p>
+</footer>
+
+</body>
+</html>

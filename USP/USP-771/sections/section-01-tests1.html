@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈771〉 - Section 1: Test Methods Part 1</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white; padding: 1rem 2rem; text-align: center;
+}
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav {
+    background: #2d3748; position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch;
+}
+.nav-container {
+    display: flex; justify-content: flex-start; align-items: center;
+    flex: 1; padding: 0 0.5rem; overflow-x: auto;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn {
+    background: #2d3748; border: none; color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1;
+    flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1rem; color: rgba(255,255,255,0.85);
+    text-decoration: none; white-space: nowrap;
+    border-bottom: 3px solid transparent; transition: all 0.2s ease;
+}
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num {
+    width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.75rem; font-weight: 600;
+}
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white; border-radius: 12px; margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+.chapter-divider {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.2);
+    border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--primary-blue); border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bee3f8;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: #2c5282; border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header {
+    font-weight: 600; color: var(--primary-blue);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce; padding: 1rem 1.25rem;
+    margin: 1rem 0; border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+.analogy-box {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note {
+    background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600; color: var(--primary-blue); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--primary-blue);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;
+}
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.main-footer {
+    background: var(--primary-blue); color: white;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px; background: var(--accent-blue);
+    color: white; border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .main-content, .main-container { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .top-nav, .back-to-top, .header { display: none !important; }
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; }
+    .main-content, .main-container { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 1: Test Methods Part 1 | 試驗方法（一）</h1>
+    <div class="subtitle">USP 〈771〉 Ophthalmic Products—Quality Tests</div>
+    <div class="page-info">United States Pharmacopeia General Chapter 〈771〉 | Pages 2–5 (Lines 127–253)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握眼用製劑的通用品質測試（Universal Tests）架構：描述、鑑別、含量測定、雜質、pH、滲透壓、微粒/異物</li>
+        <li>理解微粒與異物（Particulate and Foreign Matter）的三類分類體系，以及各給藥途徑對應的 USP 章節要求矩陣</li>
+        <li>辨別無菌性（Sterility）要求與抗菌防腐劑（Antimicrobial Preservatives）的各自法規依據與邊界條件</li>
+        <li>了解細菌內毒素（Bacterial Endotoxins）限量規定及其適用劑型範圍</li>
+    </ul>
+</div>
+
+<!-- SUBSECTION: DRUG PRODUCT QUALITY — OVERVIEW -->
+<div class="section-title">Drug Product Quality — Universal Tests 概述 | 藥品品質—通用測試</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>DRUG PRODUCT QUALITY</h3>
+        <p>Procedures and acceptance criteria for testing ophthalmic products are divided into two categories:</p>
+        <ol>
+            <li>Those that assess <span class="key-term">general quality attributes</span>, e.g., identification, potency, purity (and impurities), sterility, and particulate matter</li>
+            <li>Those that assess <span class="key-term">in vitro product performance</span>, i.e., dissolution or drug release of the drug substance from the drug product</li>
+        </ol>
+        <p>Quality tests assess the integrity of the dosage form, whereas the performance tests assess drug release and other attributes that relate to in vivo drug performance. Taken together, quality and performance tests ensure the identity, strength, quality, purity, and efficacy of the drug product. This chapter addresses the quality tests for ophthalmic products. The performance tests (dissolution/drug release) are addressed by <em>Ophthalmic Products—Performance Tests 〈1771〉</em>.</p>
+
+        <h3>Universal Tests</h3>
+        <p>Universal tests in this chapter mean the tests that are applicable to all ophthalmic products, regardless of the dosage form type.</p>
+
+        <h4>description</h4>
+        <p>A qualitative description of the drug product should be provided. The acceptance criteria should contain the final acceptable appearance, including clarity and color, of the dosage form and packaging. If the color changes during storage, a quantitative procedure may be appropriate. This is not a compendial test but is part of the manufacturer's specification of the drug product.</p>
+
+        <h4>identification</h4>
+        <p><span class="key-term">Identification tests</span> are discussed in General Notices, 5.40 Identification. Identification tests should establish the identity of the drug or drugs present in the article and should discriminate between compounds of closely related structures that are likely to be present. Identity tests should be specific for the drug substance(s). If the test is nonspecific, at least two orthogonal nonspecific tests should be used. Identification by use of a single chromatographic retention time does not constitute a specific test.</p>
+
+        <h4>assay</h4>
+        <p>A specific and <span class="key-term">stability-indicating</span> test should be used to determine the strength (content) of the drug product. In cases where the use of a nonspecific assay test is justified, other supporting analytical procedures should be used to achieve overall specificity. A specific procedure should be used when there is evidence of excipient interference with the nonspecific assay test. Additional information on specific assays may be found in <em>Antibiotics—Microbial Assays 〈81〉, Chromatography 〈621〉</em>, and <em>Ion Chromatography 〈1065〉</em>.</p>
+
+        <h4>impurities</h4>
+        <p>Process impurities, synthetic byproducts, and other inorganic and organic impurities may be present in the drug substance and excipients. Organic impurities arising from the degradation of the drug substance in the drug product and those impurities arising during the manufacturing process should be monitored. All articles meet the requirements in <em>Elemental Impurities—Limits 〈232〉</em> and <em>Residual Solvents 〈467〉</em>.</p>
+
+        <h4>pH</h4>
+        <p>See <em>pH 〈791〉</em>. Normal tears have a pH of about <strong>7.4</strong>. The eye can tolerate products over a range of pH values from about <strong>3.0 to about 8.6</strong>, depending on the buffering capacity of the formulation. The pH value of the formulation should be the one where the drug product is the most stable. Formulations that target the extremes of the acceptable pH range will have better patient acceptability if the formulations have a <span class="key-term">low buffering capacity</span>.</p>
+
+        <h4>osmolarity</h4>
+        <p>See <em>Osmolality and Osmolarity 〈785〉</em>. Ophthalmic products may be tolerated over a wide range of <span class="key-term">tonicity</span> (<strong>0.5%–5% sodium chloride equivalent, about 171–1711 mOsm/kg</strong>). Hypotonic solutions are better tolerated than hypertonic solutions. Precautions should be taken to ensure that the product maintains its osmolarity during shelf life. Any possible contributions or interferences from the packaging system should be considered.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>品質測試（Quality Tests）vs 效能測試（Performance Tests）的根本區分：</strong></p>
+            <ul>
+                <li><strong>品質測試</strong>：確認劑型「存在的完整性」——無菌、純度、含量、微粒、pH。由 〈771〉 管轄。</li>
+                <li><strong>效能測試</strong>：確認藥物「能否從劑型釋放出來進入眼組織」——溶出、藥物釋放。由 〈1771〉 管轄。</li>
+            </ul>
+            <p>這個分工類似於「食品安全檢查」vs「食物營養標示」：前者確保食品沒有問題，後者確保食品有預期價值。兩者合在一起才能保證藥品有效且安全。</p>
+            <p><strong>Stability-indicating assay（穩定性指示性試驗）：</strong>含量測試方法必須能夠區分原藥與其降解產物，不能因為降解物的存在而高估或低估主藥含量。這是 ICH Q2 驗證的核心要求之一。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>關鍵數字 Key Numbers</h4>
+            <pre>
+正常淚液 pH：7.4
+眼部可耐受 pH 範圍：3.0 ~ 8.6
+（根據緩衝能力而定）
+
+眼部可耐受滲透壓範圍：
+  171 ~ 1711 mOsm/kg
+  相當於 0.5% ~ 5% NaCl 當量
+
+等張標準（目標）：
+  ~308 mOsm/kg（相當於 0.9% NaCl）
+
+低張 &lt; 等張 &lt; 高張
+耐受性：低張 &gt; 高張
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p><strong>pH 與緩衝能力的平衡：</strong>想像把檸檬汁（pH≈2）倒入眼睛，即使稀釋到 pH 4.0，如果緩衝能力強（像是加了很多磷酸緩衝液），淚液無法快速中和，刺激時間就會很長。但如果緩衝能力低，淚液很快就能把 pH 拉回 7.4，患者幾乎感覺不到刺激。</p>
+            <p>所以開發眼用配方時，極端 pH（如 pH 3.0）需要搭配低緩衝能力，才能在臨床上被患者接受。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>鑑別測試的特異性規則：</strong>USP 明確規定「單一色譜保留時間不構成特異性鑑別」。這意味著必須結合質譜、UV 光譜、或其他正交方法（orthogonal methods）才能通過鑑別要求。在申請藥品上市許可時，分析方法章節常見的審查意見之一就是鑑別特異性不足。</p>
+            <p><strong>滲透壓包材影響：</strong>眼藥水長期儲存中，包裝材料（特別是 LDPE 瓶）可能吸收水分或釋放可溶性物質，影響滲透壓。貨架壽命穩定性研究中應特別監測此參數。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>某眼藥水含量測定方法為 HPLC，只測保留時間，未做光譜確認。這個方法符合 USP 〈771〉 的鑑別要求嗎？為什麼？</li>
+                <li>配方開發人員想把眼藥水 pH 設定在 4.5（偏低但在耐受範圍內）以提升藥物穩定性，應採取什麼措施來提高患者耐受性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SUBSECTION: PARTICULATE AND FOREIGN MATTER -->
+<div class="section-title">Particulate and Foreign Matter | 微粒與異物</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>particulate and foreign matter</h3>
+        <p>As described in <em>Visual Inspection of Injections 〈1790〉</em>, 4.1 Extrinsic, Intrinsic, or Inherent Particles, unwanted particulate matter is categorized as:</p>
+        <ul>
+            <li><span class="key-term">Extrinsic</span> (foreign matter)</li>
+            <li><span class="key-term">Intrinsic</span> (formulation-, process-, or container-related matter or particulate matter due to product instability or product package interactions)</li>
+            <li><span class="key-term">Inherent</span>: a physical state that is an expected attribute of the product, such as a suspension or emulsion</li>
+        </ul>
+        <p>It is expected that the manufacturer has established an acceptable control level for any inherent attribute, such as solution color, haze, or drug/excipient-related particle content.</p>
+        <p>The term <span class="key-term">100% unit inspection</span> is defined in 〈1790〉, 3.1 100% Inspection as the complete nondestructive inspection of the container–closure system and its contents. Therefore, evaluation of package and fill acceptability is shown by using the methodology in <em>Visible Particulates in Injections 〈790〉</em>, and this methodology is applied to all ophthalmic products.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <caption style="font-weight:600; margin-bottom:0.5rem; text-align:left; color:#1e3a5f;">Table 1. Particulate and Foreign Matter Requirements for Ophthalmic Solutions</caption>
+            <tr>
+                <th>Route of Administration</th>
+                <th>Must comply with</th>
+            </tr>
+            <tr><td>Topical</td><td>〈790〉</td></tr>
+            <tr><td>Peribulbar</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Superior rectus</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Sub-Tenon</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Subconjunctival</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Inferior rectus</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Retrobulbar</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Suprachoroidal</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Juxtascleral</td><td>〈790〉, 〈788〉</td></tr>
+            <tr><td>Intrascleral</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Intracorneal</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Subchoroidal</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Subretinal</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Intracameral</td><td>〈790〉, 〈789〉</td></tr>
+            <tr><td>Intravitreal</td><td>〈790〉, 〈789〉</td></tr>
+        </table>
+        </div>
+        <p style="font-size:0.85rem; font-style:italic;">Note: Chapter 〈787〉 may be used instead of 〈788〉 for protein biotherapeutic formulas.</p>
+
+        <p>For nonsolution dosage forms (e.g., ointments, gels, suspensions, and emulsions) and dosage forms packaged in opaque containers (e.g., opaque bottles, metal tubes), the approach must be modified because these products are not directly amenable to the tests listed in Table 1. It is recommended to use <span class="key-term">100% unit inspection per 〈790〉</span> for package acceptability (including but not limited to integrity, form, dimensions, cleanliness, label); whereas, an alternate testing strategy may be used for foreign particles where the dosage form hinders or precludes the use of these tests. For these products, a statistically relevant sample, examined by a destructive or other alternative method, will determine batch acceptability for visible particles.</p>
+        <p>All ophthalmic products will benefit from evaluation of unwanted particulate matter content through the control strategy discussed in 〈1790〉 and in the FDA's current good manufacturing practices guidance. The final product benefits from a control strategy including comprehensive evaluation of excipient and active ingredient quality, processing effects, package quality, and fill control.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三類微粒分類（Extrinsic / Intrinsic / Inherent）是監管審查的核心框架：</strong></p>
+            <ul>
+                <li><strong>Extrinsic（外源性）：</strong>來自外部污染，如纖維、玻璃碎片、操作員掉落物——製造過程控制失效的標誌，監管最不能接受</li>
+                <li><strong>Intrinsic（固有性）：</strong>來自配方、製程或容器密封系統本身——蛋白質聚集、矽油液滴、降解產物等——需要系統性控制策略</li>
+                <li><strong>Inherent（本質性）：</strong>產品本身預期存在的物理狀態——如懸浮液的藥物微粒——需建立可接受範圍</li>
+            </ul>
+            <p><strong>100% unit inspection（100% 單元檢驗）：</strong>每一個容器都要接受目視或自動化非破壞性檢查，確認包裝完整性與內容物可接受性。這是眼用製劑的基本要求，不同於一般藥品可能採用的抽樣檢查。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>三類微粒就像餐廳食物裡發現的異物：</p>
+            <ul>
+                <li><strong>Extrinsic</strong>：湯裡有頭髮或鉛筆屑 → 廚房衛生出問題，立刻令客人退餐，餐廳面臨投訴</li>
+                <li><strong>Intrinsic</strong>：炒菜油在低溫下凝固成白色顆粒 → 因製程（溫度管理）或食材（油脂種類）引起，可以透過配方調整解決</li>
+                <li><strong>Inherent</strong>：柳橙汁裡的果肉 → 本來就該有，需要告知消費者並建立「果肉量」的可接受範圍</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>微粒要求的關鍵升級點：</strong>Table 1 的核心規律是：</p>
+            <ul>
+                <li>所有眼用製劑（包括局部）都需符合 〈790〉 可見微粒</li>
+                <li>眼外（非局部）注射追加 〈788〉 亞可見微粒（光遮蔽法）</li>
+                <li>眼內注射（穿透邊界組織者）追加 〈789〉 亞可見微粒（針對眼內溶液的更嚴格標準）</li>
+            </ul>
+            <p>蛋白質生物製劑配方可用 〈787〉 代替 〈788〉，因傳統光遮蔽法對蛋白質聚集體不適用。</p>
+            <p><strong>軟膏、懸浮液等非透明劑型</strong>無法直接做目視可見微粒檢查，需採用替代方法（如顯微鏡檢查、光遮蔽法）並以統計抽樣確定批次可接受性。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>假設 CDMO 承接一款玻璃體內注射用蛋白質眼科藥物（Intravitreal biologic），根據 Table 1，品質測試策略需包含：</p>
+            <ul>
+                <li>〈790〉 可見微粒：100% 自動化目視檢查（AVI）+ 人工 MVI</li>
+                <li>〈789〉 亞可見微粒（眼內溶液專屬，比 〈788〉 更嚴格）</li>
+                <li>〈787〉（代替 〈788〉，因為是蛋白質生物製劑）</li>
+                <li>內毒素、無菌性、pH、滲透壓均需包括</li>
+            </ul>
+            <p>這些測試項目需在品質協議（Quality Agreement）和規格表中一一列明。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一瓶眼用懸浮液，懸浮顆粒本身屬於哪類微粒（Extrinsic/Intrinsic/Inherent）？如果懸浮顆粒聚集結塊，應歸為哪類？</li>
+                <li>某批玻璃體內注射液目視檢查通過，但 〈789〉 超標。這批次能放行嗎？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SUBSECTION: STERILITY -->
+<div class="section-title">Sterility | 無菌性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>sterility</h3>
+        <p>Ophthalmic dosage forms must meet the requirements of <span class="key-term">Sterility Tests 〈71〉</span>. If the specific ingredients used in the formulation do not lend themselves to routine sterilization techniques, ingredients that meet the sterility requirements described in 〈71〉, along with <span class="key-term">aseptic manufacture</span>, may be used. The immediate container for ophthalmic products shall be sterile at the time of filling and closing. See also Universal Tests, Container–Closure Integrity.</p>
+
+        <h3>antimicrobial preservatives</h3>
+        <p>Antimicrobial agents must be added to products that are packaged in containers that allow for the withdrawal or administration of multiple doses, unless one of the following conditions prevails:</p>
+        <ol>
+            <li>There are different directions in the individual monograph;</li>
+            <li>The radiopharmaceutical drug product contains a radionuclide with a physical half-life of &lt;24 h;</li>
+            <li>The drug product, without additional agents, is sufficiently microbicidal to meet the requirements of <em>Antimicrobial Effectiveness Testing 〈51〉</em>;</li>
+            <li>The container–closure system is capable of maintaining sterility of the product throughout its shelf life until opened or accessed. Once opened or accessed, it must maintain antimicrobial effectiveness during the intended use period.</li>
+        </ol>
+        <p>Antimicrobial agents must meet the requirements of <span class="key-term">〈51〉</span> and <em>Antimicrobial Agents—Content 〈341〉</em>. Acceptance criteria for antimicrobial preservative content in multi-dose products should be established.</p>
+
+        <h3>bacterial endotoxins</h3>
+        <p>All injected ophthalmic drug products shall be prepared in a manner designed to minimize <span class="key-term">bacterial endotoxins</span> as defined in <em>Bacterial Endotoxins Test 〈85〉</em>. The limits are:</p>
+        <ul>
+            <li>Not more than <strong>0.5 EU/mL</strong> for ophthalmic irrigation products</li>
+            <li>Not more than <strong>2.0 EU/dose/eye</strong> for injected or implanted drug products</li>
+        </ul>
+        <p>Typically, this test is not required for topically applied ophthalmic products. This chapter does not address the endotoxin limits for devices that are injected or implanted.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>無菌性（Sterility）在眼用製劑的地位：</strong>根據本章所有要求，無菌是最基礎的前提條件——眼球不具備像腸道那樣的天然菌叢保護機制，任何微生物污染都可能引發嚴重眼部感染（如眼內炎，endophthalmitis），甚至導致失明。因此無菌保證是眼用製劑中不可妥協的優先事項。</p>
+            <p><strong>抗菌防腐劑的豁免條件（四條例外）：</strong>多劑量製劑原則上必須加防腐劑，但四種情況可豁免，其中最重要的是條件 4——容器密封系統（Container-Closure System）本身能維持無菌並維持使用期間抗菌效果，這是目前無防腐劑多劑量眼藥水的技術創新方向。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>細菌內毒素限量 Endotoxin Limits</h4>
+            <pre>
+眼部灌洗製劑：≤ 0.5 EU/mL
+注射/植入眼用製劑：≤ 2.0 EU/dose/eye
+
+比較：靜脈注射一般限量 = 5 EU/kg/hr
+      腰椎穿刺注射限量 = 0.2 EU/mL（最嚴格）
+
+眼用注射介於兩者之間。
+局部眼藥水：通常不要求內毒素測試。
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>眼用製劑的多劑量防腐劑要求，就像餐廳的「自助取用醬料瓶」問題：開封後每次都有人用湯匙舀取，如果沒有任何抗菌機制，幾天後瓶裡就滋生細菌。解決方案有兩種：</p>
+            <ul>
+                <li><strong>加防腐劑</strong>（如苯扎氯銨）= 在醬料裡加防腐成分，但有些人對防腐劑過敏（長期使用眼藥水的患者如青光眼患者）</li>
+                <li><strong>特殊包裝系統</strong>（無菌自封閥）= 瓶口設計讓外界細菌進不去，每次取用後自動密封——這是現代無防腐劑多劑量眼藥水的設計思路</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>容器（直接容器）需在灌裝時就是無菌的：</strong>這是製造工藝的直接要求。生產前容器清洗、去熱原、滅菌（如 DET 隧道爐）均是關鍵製程步驟，任何偏差都可能導致批次報廢。</p>
+            <p><strong>內毒素測試的適用邊界：</strong>局部眼藥水通常不要求，但一旦穿透眼組織（注射、植入），就必須嚴格控制。眼球的血-眼屏障（blood-ocular barrier）一旦被注射行為打破，內毒素就可能進入全身循環，引發嚴重炎症反應。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個無防腐劑多劑量眼藥水使用「COMOD 系統」（特殊氮氣加壓瓶），開封後可使用 6 個月。這個產品豁免防腐劑的法規依據是四條例外中的哪一條？需要什麼驗證證明？</li>
+                <li>玻璃體內注射製劑的細菌內毒素限量是 2.0 EU/dose/eye。若一劑注射量為 0.05 mL，每毫升的允許上限是多少 EU/mL？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>眼用製劑品質測試分兩大類：通用品質測試（鑑別、含量、雜質、pH、滲透壓、微粒）和效能測試（溶出/藥物釋放，另由 〈1771〉 管轄）</li>
+        <li>微粒三類分類框架（Extrinsic / Intrinsic / Inherent）決定控制策略層次；Table 1 明確各給藥途徑的微粒章節要求，眼內注射要求最嚴（〈790〉+〈789〉）</li>
+        <li>無菌性是眼用製劑最基礎要求；多劑量製劑必須有抗菌防腐系統（或符合四項豁免之一）</li>
+        <li>細菌內毒素限量：灌洗液 ≤0.5 EU/mL，注射/植入 ≤2.0 EU/dose/eye；局部製劑通常免測</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub — USP 〈771〉 Ophthalmic Products—Quality Tests | Section 1</p>
+</div>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

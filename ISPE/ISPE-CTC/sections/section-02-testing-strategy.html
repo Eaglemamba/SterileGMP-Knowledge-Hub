@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Testing Strategy | ISPE CTC Mapping and Monitoring</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* ISPE Green overrides */
+    --ispe-green: #16a34a;
+    --ispe-green-light: #dcfce7;
+    --ispe-green-border: #86efac;
+    --ispe-green-dark: #14532d;
+    --ispe-green-mid: #166534;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--ispe-green);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--ispe-green);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--ispe-green-mid);
+    border-bottom: 2px solid var(--ispe-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--ispe-green-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--ispe-green-border);
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: var(--ispe-green-mid);
+    border-bottom: 2px solid var(--ispe-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--ispe-green-mid);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: var(--ispe-green-mid);
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.ispe-quote {
+    background: linear-gradient(to right, var(--ispe-green-light), #bbf7d0);
+    border-left: 4px solid var(--ispe-green);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ispe-green-dark);
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, var(--ispe-green-light) 0%, #bbf7d0 100%);
+    font-weight: 600;
+    color: var(--ispe-green-mid);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--ispe-green);
+}
+
+.learning-objectives h3 {
+    color: var(--ispe-green-mid);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid var(--ispe-green);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--ispe-green-mid);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--ispe-green-mid);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: var(--ispe-green-light);
+    border-radius: 6px;
+    color: var(--ispe-green-mid);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border: 1px solid var(--ispe-green-border);
+}
+
+.toc-grid a:hover {
+    background: var(--ispe-green);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge.ispe {
+    background: var(--ispe-green-light);
+    color: var(--ispe-green-mid);
+    border: 1px solid var(--ispe-green-border);
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--ispe-green);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FLOWCHART ===== */
+.flowchart {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.25rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+}
+
+.flow-step.decision {
+    background: #fffbeb;
+    border: 1px solid #f59e0b;
+    color: #92400e;
+}
+
+.flow-step.action {
+    background: var(--ispe-green-light);
+    border: 1px solid var(--ispe-green-border);
+    color: var(--ispe-green-mid);
+}
+
+.flow-step.warning {
+    background: #fff1f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+.flow-connector {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    margin: 0.1rem 0;
+}
+
+/* ===== RISK MATRIX ===== */
+.risk-matrix td {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.82rem;
+}
+
+.risk-high {
+    background: #fee2e2 !important;
+    color: #991b1b;
+}
+
+.risk-med {
+    background: #fef3c7 !important;
+    color: #92400e;
+}
+
+.risk-low {
+    background: #dcfce7 !important;
+    color: #166534;
+}
+
+/* ===== KEY MESSAGE BANNER ===== */
+.key-message {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.key-message strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--ispe-green-dark);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--ispe-green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22, 163, 74, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--ispe-green-mid);
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--ispe-green-dark) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <h1>Chapter 6: Testing Strategy | 測試策略</h1>
+    <div class="subtitle">ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</div>
+    <div class="page-info">Source Pages: 28–35 &nbsp;|&nbsp; Section 02 of ISPE-CTC</div>
+</header>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- KEY MESSAGE BANNER -->
+    <div class="key-message">
+        <strong>Chapter Key Message / 章節核心訊息</strong>
+        A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br>
+        <span style="font-size:0.92rem;opacity:0.9;">只在理想條件下進行的溫度分佈研究，只會帶給你虛假的安全感。真正的風險，藏在那些你從未測試過的極端條件裡。</span>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc" id="top">
+        <h3>Chapter 6 Contents | 本章目錄</h3>
+        <div class="toc-grid">
+            <a href="#objectives">Learning Objectives | 學習目標</a>
+            <a href="#sec61">6.1 Outcomes | 測試目標</a>
+            <a href="#sec62">6.2 Risk Assessment | 風險評估</a>
+            <a href="#sec621">6.2.1 Risk-based Approach | 風險導向</a>
+            <a href="#sec63">6.3 When to Map | 何時執行</a>
+            <a href="#sec631">6.3.1 Pre-mapping Requirements | 前置要求</a>
+            <a href="#sec64">6.4 Mapping Strategy Factors | 影響因素</a>
+            <a href="#sec641">6.4.1 Equipment Selection | 設備選擇</a>
+            <a href="#sec642">6.4.2 Sensor Number &amp; Location | 感測器數量與位置</a>
+            <a href="#sensor-table">Sensor Placement Table | 感測器位置表</a>
+            <a href="#test-matrix">Test Condition Matrix | 測試條件矩陣</a>
+            <a href="#risk-matrix">Risk Assessment Matrix | 風險評估矩陣</a>
+        </div>
+    </div>
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives" id="objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <div class="two-column" style="margin-bottom:0;">
+            <div>
+                <strong style="color:#166534;">After reading this chapter, you will be able to:</strong>
+                <ol style="margin-top:0.5rem;margin-left:1.25rem;">
+                    <li>State the two primary outcomes that temperature mapping must confirm</li>
+                    <li>List the five major risk factors evaluated before developing a mapping strategy</li>
+                    <li>Explain why CFD modeling supplements but cannot replace actual testing</li>
+                    <li>Describe the rationale for sensor placement at corners, doors, vents, and obstructions</li>
+                    <li>Apply sensor number guidance based on chamber volume (&lt;2 m³ vs. &lt;20 m³)</li>
+                    <li>Compare empty vs. loaded test conditions and explain which represents worst-case</li>
+                    <li>Define measurement uncertainty and explain how calibration accuracy affects acceptance criteria</li>
+                    <li>Explain when seasonal variation (summer) represents the critical mapping period</li>
+                    <li>Describe minimum pre-mapping documentation requirements</li>
+                    <li>Apply zoning concepts for multi-unit HVAC systems</li>
+                </ol>
+            </div>
+            <div>
+                <strong style="color:#166534;">讀完本章後，你將能夠：</strong>
+                <ol style="margin-top:0.5rem;margin-left:1.25rem;">
+                    <li>說明溫度分佈研究必須確認的兩大主要目標</li>
+                    <li>列舉制定測試策略前需評估的五大風險因素</li>
+                    <li>解釋為何CFD模擬只能補充、不能取代實際測試</li>
+                    <li>描述感測器應放置於角落、門口、風口及障礙物旁的原因</li>
+                    <li>依據腔體體積（&lt;2 m³ 及 &lt;20 m³）應用感測器數量指引</li>
+                    <li>比較空載與滿載測試條件，說明哪種情境代表最壞情況</li>
+                    <li>定義量測不確定度，並解釋校準精度如何影響接受標準</li>
+                    <li>說明季節變化（夏季）為何是關鍵的映射時機</li>
+                    <li>描述啟動溫度分佈研究前的最低文件要求</li>
+                    <li>應用分區概念於多機組HVAC系統</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.1 ===== -->
+    <div class="chapter-section" id="sec61">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.1</div>
+            <div class="chapter-info">
+                <h2>Outcomes | 測試目標</h2>
+                <p>What temperature mapping is designed to confirm — Source pp. 28</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.1 Outcomes</h3>
+                    <p>Testing is intended to:</p>
+                    <ol>
+                        <li>Confirm that the space that will be used for storage remains within defined limits with respect to <span class="key-term">temperature uniformity</span> and <span class="key-term">stability over time</span> across usable space.</li>
+                        <li>Determine locations representing <span class="key-term">operating temperature extremes</span> to establish the strategy for monitoring and alarming the space used for storage and/or processing.</li>
+                    </ol>
+                    <p>The operational temperature limits should be defined, together with any allowable excursions (time periods, acceptable limits).</p>
+                    <div class="note-box">
+                        <h4>Why Two Outcomes, Not One?</h4>
+                        <p>Outcome 1 answers: "Does this chamber work uniformly?" Outcome 2 answers: "Where do I put my monitoring sensors permanently?" Both are required — you cannot claim compliance without addressing both.</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <p>ISPE將溫度分佈研究的目的簡化為兩個核心問題：</p>
+                    <div class="concept-box">
+                        <h4>目標一：溫度均一性確認</h4>
+                        <p>確認整個可用儲存空間在整個使用期間，溫度維持在定義限度內。這是最基本的合規門檻。若某角落長期偏高2°C，但監測探針卻設在中央，你對偏差毫無預警。</p>
+                    </div>
+                    <div class="concept-box">
+                        <h4>目標二：確定極端位置 → 決定監測點</h4>
+                        <p>這是常被忽略但更具戰略意義的目標。分佈研究的最終產出，是一份科學化的監測點位選擇依據——最高點、最低點、最難維持溫度的位置，就是永久監測探針應該放的地方。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>比喻：天氣觀測站的選點邏輯</h4>
+                        <p>你不會把氣象站設在最舒適的平地；你應該設在最容易出現極端天氣的山頂或海岸。溫度分佈研究的邏輯完全相同——找出極端，監測極端。</p>
+                    </div>
+                    <div class="concept-box application">
+                        <h4>CDMO多客戶環境的意涵</h4>
+                        <p>在合約生產組織（CDMO）環境中，同一冷藏庫可能同時儲存多家客戶的產品，各自有不同的溫度規格（如2–8°C vs. 15–25°C）。Outcome 2的重要性更高：若監測點位選擇不當，無法保護最嚴格規格的客戶產品。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 1</h4>
+                        <p><strong>問：</strong> 一間冷藏室的溫度分佈研究顯示，中央位置2–7°C，但東南角落持續9–10°C。這間冷藏室通過Outcome 1的測試了嗎？通過Outcome 2了嗎？</p>
+                        <p><strong>引導：</strong> 兩個目標各自獨立評估。未通過Outcome 1的設施，是否仍能使用？需要什麼條件？</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 2</h4>
+                        <p><strong>問：</strong> 你的永久監測探針放在腔體中央（最穩定的位置）。它能同時滿足Outcome 1和Outcome 2的要求嗎？為什麼？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.2 ===== -->
+    <div class="chapter-section" id="sec62">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2</div>
+            <div class="chapter-info">
+                <h2>Risk Assessment | 風險評估</h2>
+                <p>Factors to evaluate before developing the test strategy — Source pp. 28–29</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.2 Risk Assessment</h3>
+                    <p>Prior to developing the test strategy, evaluate potential sources of excursions taking into account the following factors:</p>
+                    <p><em>(Note: a company may use Computational Fluid Dynamics (CFD) modeling to evaluate impact of these factors but still needs some level of confirmation of the results through actual testing.)</em></p>
+                    <ol>
+                        <li><strong>Purpose of the facility:</strong> storage, process cooling, transportation preconditioning</li>
+                        <li><strong>Size:</strong> speed and magnitude of changes impacted by the footprint as well as the height, with attention to potential stratification with heights over 15 ft (457 cm)</li>
+                        <li><strong>Layout/configuration:</strong> walls and obstructions, fixed racks, temporary racks, pallets on floors, duct supply and return locations</li>
+                        <li><strong>Location of facility:</strong> geographic with respect to external climate exposures, physical location within temperature-controlled facility, windows, doors, traffic and access frequency</li>
+                        <li><strong>Operating characteristics of the HVAC system:</strong> defrost cycles, redundant systems, number of units supporting storage space and how they interact with each other</li>
+                    </ol>
+                    <div class="note-box">
+                        <h4>CFD Modeling — Supplement, Not Substitute</h4>
+                        <p>CFD can help visualize airflow patterns and predict temperature gradients before physical testing. However, it cannot account for all real-world variables (door seals, product loading behavior, actual defrost timing). ISPE is explicit: actual testing is always required.</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <p>ISPE要求在設計測試策略<strong>之前</strong>，先完成風險評估。這不是形式上的文件動作，而是決定你需要多少感測器、測試什麼條件的根本依據。</p>
+
+                    <div class="concept-box">
+                        <h4>五大風險因素的實務意義</h4>
+                        <ul>
+                            <li><strong>用途（Purpose）：</strong> 純儲存 vs. 調溫（conditioning）的測試要求截然不同。調溫設備需要確認物品能在規定時間內達到目標溫度。</li>
+                            <li><strong>尺寸（Size）：</strong> 15英尺（457公分）是溫度分層的警戒高度。超過此高度的倉庫，上下溫差可達3–5°C，必須在高低兩層各設感測器。</li>
+                            <li><strong>佈局（Layout）：</strong> 固定貨架 vs. 移動棧板，直接影響氣流路徑。每次貨架配置改變，理論上都應評估是否需要重新分佈研究。</li>
+                            <li><strong>地理位置（Location）：</strong> 面西的外牆在台灣夏季下午可能讓室內升溫超過1°C。</li>
+                            <li><strong>HVAC特性：</strong> 除霜週期（defrost cycle）是最常見的短暫溫度偏差來源，必須在測試設計中明確說明如何處理。</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：CFD就像天氣預報</h4>
+                        <p>天氣預報能告訴你明天可能下雨，但它不能取代實際的降雨量測量。CFD模擬能預測哪裡可能有熱點，但它不能取代真實的溫度分佈研究——因為真實世界總有模擬無法捕捉的變數。</p>
+                    </div>
+
+                    <!-- Risk Assessment Matrix for Mapping Triggers -->
+                    <h3 id="risk-matrix" style="margin-top:1.25rem;">風險評估矩陣：何時需要觸發分佈研究</h3>
+                    <table class="risk-matrix">
+                        <thead>
+                            <tr>
+                                <th>變更事件</th>
+                                <th>對溫度的潛在影響</th>
+                                <th>建議行動</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HVAC壓縮機更換</td>
+                                <td class="risk-high">高</td>
+                                <td>完整重新分佈研究</td>
+                            </tr>
+                            <tr>
+                                <td>新增/移除大型固定貨架</td>
+                                <td class="risk-high">高</td>
+                                <td>完整重新分佈研究</td>
+                            </tr>
+                            <tr>
+                                <td>增加常駐產品品項，負載增加30%+</td>
+                                <td class="risk-med">中</td>
+                                <td>風險評估 + 可能需補充測試</td>
+                            </tr>
+                            <tr>
+                                <td>HVAC控制參數調整（±1°C設定點）</td>
+                                <td class="risk-med">中</td>
+                                <td>風險評估 + 監測數據回顧</td>
+                            </tr>
+                            <tr>
+                                <td>門封更換（同規格）</td>
+                                <td class="risk-low">低</td>
+                                <td>文件記錄 + 監測數據確認</td>
+                            </tr>
+                            <tr>
+                                <td>感測器校準（無硬體更動）</td>
+                                <td class="risk-low">低</td>
+                                <td>校準記錄更新即可</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="practice-box">
+                        <h4>思考練習 3</h4>
+                        <p><strong>問：</strong> 你的CDMO設施新增一個大型冷凍乾燥機（lyophilizer），機器本身產生大量廢熱。這是否觸發相鄰冷藏室的重新分佈研究需求？依據ISPE的哪個風險因素判斷？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.2.1 ===== -->
+    <div class="chapter-section" id="sec621">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.2.1</div>
+            <div class="chapter-info">
+                <h2>Risk-based Approach | 風險導向方法</h2>
+                <p>ASTM-E2500 alignment and independent monitoring system rationale — Source pp. 29–30</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.2.1 Risk-based Approach</h3>
+                    <p>With the advent of <span class="key-term">ASTM-E2500</span> "Standard Guide for Specification, Design, and Verification of Pharmaceutical and Biopharmaceutical Manufacturing Systems and Equipment," an organization may use a risk-based approach, with the equipment installation and operation being verified. For further information, see:</p>
+                    <ul>
+                        <li>The ISPE Good Practice Guide: Cold Chain Management</li>
+                        <li>The ISPE Guide: Science and Risk-Based Approach for the Delivery of Facilities, Systems and Equipment</li>
+                    </ul>
+                    <p>There should be a clear definition of the acceptance criteria; typically, this is provided in the URS or equivalent document.</p>
+                    <p>Temperature mapping is used to confirm that the system is operating to meet specifications — i.e., the temperature range within the unit is acceptable.</p>
+                    <p>It is standard practice in the pharmaceutical industry to provide monitoring of critical parameters using an <span class="key-term">independent system</span>. Advantages include:</p>
+                    <ul>
+                        <li>Calibration of the monitoring sensors can be carried out without impacting the system operation</li>
+                        <li>The independent system becomes the quality "system of record"</li>
+                        <li>The data can be used to provide continuous verification of acceptable system performance</li>
+                    </ul>
+                    <p>Mapping results may be used to define the number and location of monitoring sensors for a warehouse, cold room, or chamber.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>ASTM-E2500 與風險導向驗證</h4>
+                        <p>ASTM-E2500將傳統的IQ/OQ/PQ驗證框架轉向「規格、設計、確認」的科學導向方法。關鍵轉變：不再強制要求固定格式的文件，而是要求有科學理由支持每個決策。對溫度分佈研究的實際影響是：你必須在協議書中解釋「為什麼選這些位置」，而不只是「我選了這些位置」。</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>獨立監測系統（Independent System）的三大優勢</h4>
+                        <ul>
+                            <li><strong>可獨立校準：</strong> 不影響系統正常運作即可校準監測探針。（試想：若監測系統與控制系統共用同一探針，校準時怎麼辦？）</li>
+                            <li><strong>品質記錄系統（System of Record）：</strong> 監測系統的數據是官方記錄，不受設備控制系統的數據格式限制。</li>
+                            <li><strong>持續驗證：</strong> 每一筆監測數據都是對「系統仍在規格內運作」的確認，形成連續的合規證據。</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>CDMO環境下的獨立監測系統設計重點</h4>
+                        <p>在多客戶CDMO設施中，獨立監測系統還必須滿足：</p>
+                        <ul>
+                            <li>數據存取控制（不同客戶只能看到自己的溫度記錄）</li>
+                            <li>21 CFR Part 11電子記錄合規（稽核軌跡、電子簽名）</li>
+                            <li>警報接收人分配（誰在哪間倉庫的偏差時收到警報）</li>
+                            <li>多套校準週期管理（不同設備可能有不同校準頻率要求）</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 4</h4>
+                        <p><strong>問：</strong> 你的冷藏設備控制系統（BMS）自帶溫度監測和警報功能。為什麼ISPE仍建議使用獨立的監測系統？這個建議在稽核時如何向查廠員解釋？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.3 ===== -->
+    <div class="chapter-section" id="sec63">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3</div>
+            <div class="chapter-info">
+                <h2>When to Perform Temperature Mapping | 何時執行溫度分佈研究</h2>
+                <p>Timing within commissioning and relationship to supporting systems — Source pp. 30</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.3 When to Perform Temperature Mapping</h3>
+                    <p>Temperature mapping should start <span class="key-term">as early as possible during commissioning</span>. This allows:</p>
+                    <ul>
+                        <li>Early detection and resolution of any performance issues</li>
+                        <li>Identification of potential operational constraints to discuss with End Users, to determine if the constraints are acceptable or require resolution</li>
+                    </ul>
+                    <p>Where there are systems that support operation of a system (e.g., the warehouse, HVAC system, or a condenser water cooling system), these systems should be:</p>
+                    <ul>
+                        <li>Identified and commissioned or in a known (and monitored) state prior to temperature mapping</li>
+                        <li>This helps ensure complete and representative testing, and facilitates investigation in the event of performance problems</li>
+                    </ul>
+                    <div class="note-box">
+                        <h4>Acceptable Exception — Chilled Water System</h4>
+                        <p>It can be acceptable to temperature map an area served by an HVAC system where a chilled water system has not been fully balanced, IF the chilled water system is known to provide an adequate supply of chilled water at a constant temperature. The BMS/BAS could provide supporting data that the chilled water supply temperature remains within operating limits and that the HVAC cooling control valve does not fully open (indicating adequate supply).</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>「盡早開始」的戰略意義</h4>
+                        <p>溫度分佈研究越早做，越容易在設計階段修正問題（成本低、影響小）。若等到設施完工後才發現一個角落有持續的熱點，此時可能需要大幅修改HVAC管路——工程代價遠超過一個早期測試的成本。</p>
+                        <p>在台灣的CDMO環境，夏季的高溫高濕是最嚴苛的試驗條件。如果新設施在冬季完工並通過測試，應明確要求在夏季進行重複（seasonal）測試。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>「前置系統就緒」的判斷基準</h4>
+                        <p>溫度分佈研究的結果，只代表「測試當時的系統狀態」。若測試時冷凍水系統處於非穩定狀態，測試數據可能無法代表正常操作條件。ISPE允許的例外條件很嚴格：</p>
+                        <ul>
+                            <li>冷凍水必須已知可提供穩定供應</li>
+                            <li>必須有BMS數據証明冷凍水溫度在範圍內</li>
+                            <li>控制閥未全開（証明冷凍水供應充足）</li>
+                        </ul>
+                        <p>若這三個條件無法同時滿足，則分佈研究的測試數據不具代表性，必須在前置系統穩定後重新執行。</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：季節測試的重要性（台灣觀點）</h4>
+                        <p>台灣的夏季（7–9月）平均室外溫度35°C+，且濕度超過80%。冷藏設備的壓縮機效率在高溫環境下會下降（因為散熱條件變差）。一間在3月通過測試的冷藏室，到了8月可能出現以前從未出現過的溫度異常。這就是「季節最壞情況（summer worst-case）」測試的必要性。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 5</h4>
+                        <p><strong>問：</strong> 你的新冷藏倉庫在1月完工，同月完成溫度分佈研究並通過。客戶問你：「這份分佈研究報告足以支持全年的產品儲存嗎？」你如何回答？需要增加什麼測試計畫？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.3.1 ===== -->
+    <div class="chapter-section" id="sec631">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.3.1</div>
+            <div class="chapter-info">
+                <h2>Prior to Temperature Mapping | 分佈研究前置要求</h2>
+                <p>Documentation checklist and pre-approval requirements — Source pp. 30–31</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.3.1 Prior to Temperature Mapping</h3>
+                    <p>Before temperature mapping commences, the commissioning plan/temperature mapping strategy should be <span class="key-term">approved by the Quality Unit</span>.</p>
+                    <p>The level of detail, number of personnel, or number of suppliers involved can vary depending on the type of project.</p>
+                    <p>Temperature mapping equipment should be <span class="key-term">calibrated</span>.</p>
+                    <p>Documents which should be available from the supplier/construction company (as applicable):</p>
+                    <ul>
+                        <li>Control System I/O list</li>
+                        <li>Control System Drawings (control panel layout, wiring diagram)</li>
+                        <li>Equipment and instrument lists</li>
+                        <li>Materials receiving and inspection reports/material certifications</li>
+                        <li>Equipment receipt and/or installation verification records</li>
+                        <li>Cable tests (continuity, insulation)</li>
+                        <li>Grounding (earth) tests</li>
+                        <li>Motor insulation "megger" and direction of rotation tests</li>
+                        <li>Fuse and breaker ratings/overload settings</li>
+                        <li>Control loop wiring checks</li>
+                        <li>Piping leak (hydrostatic) and evacuation tests</li>
+                        <li>Pipework cleaning/flushing records</li>
+                        <li>Record of cleaning for ductwork</li>
+                        <li>Ductwork and Air Handling Unit (AHU) leakage tests</li>
+                        <li>Operation and Maintenance manuals</li>
+                        <li>As-built drawings/specifications</li>
+                    </ul>
+                    <p>The test requirements will depend on the type of system, and how critical performance is to the product and/or business. Project specifications should define documentation and test requirements.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>「品質部門核准」為何是前置條件</h4>
+                        <p>溫度分佈研究是一個正式的驗證活動（validation/qualification activity）。依照GMP規範，所有驗證協議必須在執行前獲得品質部門（QA）核准。原因：</p>
+                        <ul>
+                            <li>確保測試設計符合法規期望</li>
+                            <li>確保接受標準已預先定義（不是測完才決定要不要過）</li>
+                            <li>若測試失敗，有明確的偏差處理程序</li>
+                        </ul>
+                        <p>若先執行測試、再補核准，這在FDA稽查中屬於重大發現（Major Observation）。</p>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>設備校準的量測不確定度實務指引</h4>
+                        <p>ISPE特別提到：溫度分佈研究設備必須校準。這不只是「有校準證書」就可以，關鍵是理解校準的不確定度（measurement uncertainty）如何影響接受標準：</p>
+                        <ul>
+                            <li>若接受標準是2–8°C（範圍6°C）</li>
+                            <li>若感測器準確度為 ±0.5°C</li>
+                            <li>則實際可被感測器可靠偵測的範圍是 2.5–7.5°C</li>
+                            <li>廉價資料記錄器若準確度只有 ±2°C，則6°C的範圍根本無法可靠評估</li>
+                        </ul>
+                        <p><strong>規則：</strong> 感測器準確度 ≤ 接受標準範圍的 1/6（工業常規）。</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>量測不確定度計算框架</h4>
+                        <pre>
+接受標準範圍 = 上限 - 下限
+            = 8°C - 2°C = 6°C
+
+感測器準確度要求（建議）:
+  ≤ 接受範圍 / 6
+  = 6°C / 6 = ±1.0°C（最大允許）
+
+較嚴格建議（ISPE範例）:
+  ±0.5°C（可得出 3–7°C 的有效判斷範圍）
+
+廉價資料記錄器（±2°C）:
+  -> 不適用於此接受標準
+  -> 若要使用，須重新定義接受標準
+     或取得設備豁免的科學依據
+                        </pre>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 6</h4>
+                        <p><strong>問：</strong> 你的供應商提供了一批分佈研究記錄器，規格書顯示準確度為 ±1.5°C。你的產品儲存規格是15–25°C（範圍10°C）。這批記錄器適用嗎？請用數字計算並說明判斷依據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.4 ===== -->
+    <div class="chapter-section" id="sec64">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4</div>
+            <div class="chapter-info">
+                <h2>Factors Influencing the Mapping Strategy | 影響測試策略的因素</h2>
+                <p>Comprehensive factor list including load state, probe types, and sampling rate — Source pp. 30–32</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.4 Factors Influencing the Mapping Strategy</h3>
+                    <ul>
+                        <li><strong>Purpose:</strong> storage, processing, transportation, conditioning</li>
+                        <li><strong>Type of facility:</strong> general warehouse, CRT warehouse, cold storage, freezer, refrigerator, incubator, stability chamber</li>
+                        <li><strong>Size of facility:</strong> span (air change rates and flow patterns), height (potential stratification)</li>
+                        <li><strong>Number of conditioning units controlling environment</strong></li>
+                        <li><strong>Layout/configuration:</strong> open space versus walls, racks, obstructions; fixed vs. variable racks; duct supply/return positions; variable obstructions (moveable pallets, racks)</li>
+                        <li><strong>Location:</strong> geographic impact of external climate conditions; physical relationship within facility (conditioned space, windows, doors, exposed walls, high traffic areas, frequency and duration of access)</li>
+                        <li><strong>Contents of facility:</strong> motors, coils, lights, people; exothermic/endothermic reactive substances; hot material being cooled within facility</li>
+                        <li><strong>HVAC operating characteristics:</strong> defrost cycles, redundancies, interactions between evaporators, Fan Coil Units (FCUs), Direct Expansion (DX) coils; failure modes; hysteresis and time lags</li>
+                        <li><strong>Empty versus Full state:</strong>
+                            <ul>
+                                <li>Testing using a simulation of fully loaded conditions should be performed</li>
+                                <li>Testing with a partial load can be considered unnecessary (system tested at operating extremes)</li>
+                                <li>Note: typically, chambers are tested empty</li>
+                            </ul>
+                        </li>
+                        <li><strong>Probe types:</strong> accuracy, reliability, ease of use and calibration — all impact measurement uncertainty</li>
+                        <li><strong>Buffered probes:</strong>
+                            <ul>
+                                <li>May be used for monitoring if performance relationship to stored product is known</li>
+                                <li>Should NOT be used as controlling probes</li>
+                                <li>Should NOT be used for mapping (when goal is to see actual room temperatures)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sample rate:</strong> at least once every 5 minutes; may need to be more frequent if temperature spikes anticipated (defrost, door openings)</li>
+                        <li><strong>Operational requirements:</strong> how long doors open, how many people, traffic patterns, equipment</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+
+                    <!-- Empty vs Loaded Comparison Table -->
+                    <h3>空載 vs. 滿載 vs. 部分負載：測試情境比較</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>測試條件</th>
+                                <th>ISPE建議</th>
+                                <th>代表的極端情況</th>
+                                <th>CDMO適用性</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>空載（Empty）</td>
+                                <td><span class="badge ispe">標準起點</span></td>
+                                <td>冷卻最快，熱負荷最小。<br>顯示設備本身的均一性。</td>
+                                <td>驗收測試（FAT/SAT）必做</td>
+                            </tr>
+                            <tr>
+                                <td>模擬滿載（Simulated Full Load）</td>
+                                <td><span class="badge green">強烈建議</span></td>
+                                <td>熱負荷最高，冷卻最慢。<br>代表最差溫度控制能力。</td>
+                                <td>正式資格確認（QC）測試必做</td>
+                            </tr>
+                            <tr>
+                                <td>部分負載（Partial Load）</td>
+                                <td><span class="badge yellow">通常不必要</span></td>
+                                <td>介於兩者之間，不代表任何極端。</td>
+                                <td>除非有特殊理由，否則跳過</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="concept-box">
+                        <h4>緩衝探針（Buffered Probe）的用途限制</h4>
+                        <p>緩衝探針（通常是包裹在甘油或沙粒中的探針）用來模擬產品感受到的溫度，而不是空氣溫度。ISPE明確區分三種使用情境：</p>
+                        <ul>
+                            <li><strong>可以用（OK）：</strong> 作為永久監測點，前提是已確認緩衝探針讀值與產品溫度的對應關係</li>
+                            <li><strong>不可以用（No）：</strong> 作為設備控制探針（緩衝延遲會造成控制失準）</li>
+                            <li><strong>不可以用（No）：</strong> 作為分佈研究探針（因為目標是量測真實空氣溫度，而非產品溫度）</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <h4>採樣頻率的選擇邏輯</h4>
+                        <p>ISPE最低要求：每5分鐘一次。但對以下情境需提高頻率：</p>
+                        <ul>
+                            <li>除霜週期（defrost cycle）：每次除霜可能使溫度在2–5分鐘內上升3–10°C，5分鐘間隔可能漏掉峰值</li>
+                            <li>頻繁開門（如物流分類區）：每次開門可能造成短暫溫度偏差</li>
+                            <li>調溫腔體（conditioning chambers）：需要追蹤物品升降溫曲線</li>
+                        </ul>
+                        <p><strong>建議：</strong> 對2–8°C冷藏庫，採用每1–2分鐘一次的採樣頻率，以確保能捕捉除霜事件的完整溫度曲線。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 7</h4>
+                        <p><strong>問：</strong> 你的5°C冷藏室設有自動除霜功能，每4小時觸發一次，持續約8分鐘。你的分佈研究採用5分鐘採樣間隔。這個設計有什麼潛在問題？你會如何修改測試協議？</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 8</h4>
+                        <p><strong>問：</strong> 一個CDMO客戶要求你在「貨架滿載（其他客戶產品佔據80%空間）但該客戶產品佔最後20%」的條件下，特別執行一次分佈研究。根據ISPE的邏輯，這個要求合理嗎？如何用「部分負載通常不必要」的原則來回應？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.4.1 ===== -->
+    <div class="chapter-section" id="sec641">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4.1</div>
+            <div class="chapter-info">
+                <h2>Selection of Mapping Equipment | 量測設備的選擇</h2>
+                <p>Accuracy requirements, measurement uncertainty, and humidity mapping — Source pp. 31–32</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.4.1 Selection of Mapping Equipment</h3>
+                    <p>Selection of the equipment to be used for mapping should consider the required <span class="key-term">accuracy and repeatability</span> related to the predefined acceptance criteria.</p>
+                    <p><strong>Example:</strong> A unit with acceptance criteria of 2°C to 8°C (USP standard storage conditions). If the mapping system has an accuracy of ±0.5°C, this provides results (allowing for rounding) to meet the acceptance criteria of 2°C to 8°C.</p>
+                    <p>The user requirements may have a tighter design specification, e.g., expected results of 3–7°C.</p>
+                    <p><strong>Important:</strong> Some low-cost mapping dataloggers have accuracy specifications of <span class="key-term">±2°C</span>. Use of these devices would not be appropriate for this application unless the acceptance criteria or expected results were revised to allow for the potential error.</p>
+                    <p>Temperature sensors with a <span class="key-term">rapid response time</span> are typically used for temperature mapping, to provide accurate information on system performance.</p>
+                    <p><strong>Humidity mapping considerations:</strong></p>
+                    <ul>
+                        <li>If humidity has been defined as a critical quality attribute, humidity sensors should be included</li>
+                        <li>If there are no significant sources of humidity in the warehouse, it may be assumed that absolute humidity will equalize — a small number of sensors may suffice (one at low level, one at high level for stratification)</li>
+                        <li>If there are significant sources of moisture, a greater number of humidity sensors will be required — number and location developed using similar concepts as temperature mapping</li>
+                        <li>Where RH is the criteria, levels should be checked based on temperature variations using measured RH at the local temperature</li>
+                        <li>Duplex sensors (T+RH combined) can simplify data analysis</li>
+                    </ul>
+                    <p>Mapping sensor locations should be documented to allow a test to be repeated if necessary. The proposed load test strategy should be reviewed and approved by the Quality Unit and the System Owner.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+                    <div class="formula-box">
+                        <h4>量測不確定度對接受標準的影響（實例）</h4>
+                        <pre>
+情境一：標準冷藏（2–8°C）
+  接受標準範圍 = 6°C
+  感測器 ±0.5°C → 適用
+  感測器 ±2.0°C → 不適用（±2°C超過範圍的1/3）
+
+情境二：室溫儲存（15–25°C）
+  接受標準範圍 = 10°C
+  感測器 ±0.5°C → 非常適用
+  感測器 ±2.0°C → 邊緣適用（需要額外評估）
+  感測器 ±3.0°C → 不適用
+
+情境三：超低溫（-80°C ± 10°C）
+  接受標準範圍 = 20°C
+  感測器 ±1.0°C → 適用
+  感測器 ±3.0°C → 邊緣（需要評估）
+
+結論：感測器準確度選擇標準
+  感測器準確度 ≤ 接受標準範圍 × 1/4
+  （保守：×1/6，非常嚴格：×1/10）
+                        </pre>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>台灣CDMO設施的濕度管理考量</h4>
+                        <p>台灣夏季室外相對濕度常超過85%。對以下空間，濕度分佈研究尤其重要：</p>
+                        <ul>
+                            <li><strong>CRT倉庫（15–25°C）：</strong> 台灣夏季不開空調可能導致相對濕度超過60%，影響吸濕性藥品的穩定性</li>
+                            <li><strong>冷凍/冷藏倉庫：</strong> 頻繁開門導致濕空氣進入，長期累積可能造成結霜，影響HVAC效能</li>
+                            <li><strong>穩定性試驗箱（Stability chambers）：</strong> 同時監控溫度和濕度是基本要求（ICH Q1A）</li>
+                        </ul>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>比喻：快速響應探針 vs. 緩慢探針</h4>
+                        <p>用秒錶計時跑步，和用日曆計時跑步，你會選哪個？快速響應探針就像秒錶——能捕捉除霜事件、開門衝擊等短暫溫度變化。緩慢探針（或緩衝探針）就像日曆——只能告訴你大致趨勢，看不到關鍵的短暫偏差。</p>
+                    </div>
+
+                    <div class="practice-box">
+                        <h4>思考練習 9</h4>
+                        <p><strong>問：</strong> 你正在為一個新的冷凍倉庫（-20°C ± 5°C）選擇分佈研究設備。供應商提供以下兩個選項：A款（准確度 ±0.3°C，$500/支），B款（準確度 ±1.5°C，$80/支）。你需要20個感測器。哪款符合ISPE要求？從成本效益角度如何說服管理層選擇合適的設備？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 6.4.2 + SENSOR TABLE ===== -->
+    <div class="chapter-section" id="sec642">
+        <div class="chapter-divider">
+            <div class="chapter-badge">6.4.2</div>
+            <div class="chapter-info">
+                <h2>Sensor Number &amp; Location | 感測器數量與位置</h2>
+                <p>Science-based rationale, zone concepts, and the ISPE placement table — Source pp. 32–35</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>6.4.2 Determining Number and Locations for Mapping Sensors</h3>
+                    <p>The diagram in Figure 6.1 shows:</p>
+                    <ul>
+                        <li><strong>Small chambers (&lt;70 cu ft / &lt;2 m³):</strong> minimum suggested sensor locations as illustrated in the guide's left diagram</li>
+                        <li><strong>Medium chambers (&lt;700 cu ft / &lt;20 m³):</strong> minimum sensor locations as illustrated in the guide's right diagram</li>
+                    </ul>
+                    <p>The inner box represents the working area (where product is stored); circles represent the sensor locations.</p>
+                    <p>The sensor locations used for mapping should be defined based on:</p>
+                    <ul>
+                        <li>Where product will be stored</li>
+                        <li>The potential major influences on the internal conditions during use</li>
+                        <li>The number and location of heating/cooling units</li>
+                        <li>For conditioning units: sensors should be in the load</li>
+                        <li>Defrost cycles should be considered when outlining test procedures</li>
+                    </ul>
+
+                    <div class="note-box">
+                        <h4>Critical Note on Rationale Requirement</h4>
+                        <p>General guidance should not be used without a supporting rationale. For example, "there should be a sensor every 4 m" — if the area being mapped has no factor that could cause a change in temperature, multiple sensors to monitor the same effects would be redundant. The rationale describing the location and number of sensors must be reviewed and approved by the Quality Unit and the area/System Owner.</p>
+                    </div>
+
+                    <p><strong>Additional considerations for sensor number and locations:</strong></p>
+                    <ul>
+                        <li>Increase mapping sensor locations as necessary to monitor areas where changes in conditions are likely (e.g., near conditioned air discharge)</li>
+                        <li>Where multiple HVAC outlets operate consistently, the area may be treated as a zone, with the mapping sensor layout developed for those zones</li>
+                        <li>An area may be divided into zones that perform similarly — mapping a representative zone may provide adequate data to represent the whole area</li>
+                        <li>Where appropriate, there should be a mapping sensor adjacent to the system control sensor</li>
+                    </ul>
+
+                    <p><strong>For systems with external walls:</strong> Data should be available on external conditions from another calibrated reference source (e.g., BMS/BAS) — not from the mapping system itself. This allows the designer to evaluate data in the context of design temperature ranges.</p>
+
+                    <p><strong>For conditioned rooms or standard catalogue systems:</strong> There should be data on facility/room conditions at the time of testing outside the store, to ensure that any open-door tests are representative of normal operating conditions.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解析 | Commentary</h3>
+
+                    <!-- Sensor Placement Decision Flowchart -->
+                    <h3 id="sensor-flowchart">感測器位置決策流程</h3>
+                    <div class="flowchart">
+                        <div class="flow-step decision">步驟1：確認腔體體積</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step action">&lt;2 m³：最少感測器（角、中央）約8–10個</div>
+                        <div class="flow-step action">&lt;20 m³：最少感測器，增加高低層及每個角 約12–16個</div>
+                        <div class="flow-step action">&gt;20 m³ / 倉庫：依分區邏輯設計，每區最少代表性點位</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step decision">步驟2：識別所有潛在影響因素</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step action">有門 → 在門口兩側各加1個</div>
+                        <div class="flow-step action">有固定貨架 → 在最遠角落各加1個</div>
+                        <div class="flow-step action">高度&gt;457cm → 在最高點額外加感測器</div>
+                        <div class="flow-step action">有障礙物 → 在死角區域各加1個</div>
+                        <div class="flow-step action">有HVAC出風口 → 在出風口附近加1個</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step decision">步驟3：確認是否有控制探針 → 旁邊加mapping探針</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step action">步驟4：撰寫位置選擇科學理由（QA核准）</div>
+                        <div class="flow-connector">↓</div>
+                        <div class="flow-step action">步驟5：文件化座標圖，確保可重複執行</div>
+                    </div>
+
+                    <div class="concept-box">
+                        <h4>CDMO多客戶環境的分區（Zoning）策略</h4>
+                        <p>當CDMO設施有多個HVAC機組各自控制一個區域時，ISPE的分區概念特別實用：</p>
+                        <ul>
+                            <li><strong>每個HVAC分區獨立評估：</strong> 兩個HVAC機組的交界處，是最可能出現溫度異常的位置（兩個控制系統的「無人管轄區域」）</li>
+                            <li><strong>代表性區域可外推：</strong> 若西區和東區的佈局、負載完全相同，對西區的詳細分佈測試可以代表東區——但需要有充分的科學依據</li>
+                            <li><strong>變動負載重新評估：</strong> 多客戶環境中，負載的組成和分佈可能每週都不同。需要評估「最不利的負載情境」並以此作為測試基準</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FULL WIDTH SENSOR PLACEMENT TABLE -->
+            <div id="sensor-table" style="margin-top:1.5rem;">
+                <h3 class="section-title">Table 6.1 — Recommended Placement of Measuring Devices | 建議的量測設備放置位置</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:25%">Location / 位置</th>
+                            <th style="width:30%">Rationale (Original) / 原文理由</th>
+                            <th style="width:45%">CDMO Commentary / CDMO解析</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Adjacent to the CTC monitoring sensor / 控溫設備監控探針旁</strong></td>
+                            <td>Ensures that the CTC monitoring probe is correctly monitoring the set parameters</td>
+                            <td>這是最重要的位置之一。透過在控制探針旁放置獨立mapping探針，可以驗證：控制系統「看到」的溫度，是否能代表整個空間。若控制探針位置不佳，整個控制系統的設定點都可能是錯誤的。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Storage rack corners including geometric center / 貨架角落及幾何中心</strong></td>
+                            <td>Ensures that the furthest locations can maintain temperature and that distribution temperature is met and maintained</td>
+                            <td>CDMO環境中，貨架的角落往往是第一個出現溫度偏差的地方——離HVAC出風口最遠，空氣循環最弱。特別是底層角落（低溫死角）和頂層角落（熱空氣積累）。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adjacent to ingresses/egresses (Doors) / 門口附近</strong></td>
+                            <td>A potential area for temperature deviation</td>
+                            <td>在CDMO設施中，門口是最高頻率的溫度衝擊點。建議在門口內側50–100cm處放置感測器，並在開門測試（door-opening test）時記錄溫度恢復時間。多班制作業的CDMO設施，開門頻率可達每小時20–30次。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Near Air Supply and Return Outlets / 送風及回風口附近</strong></td>
+                            <td>To monitor air temperature within proximity to air inlets and outlets</td>
+                            <td>送風口（supply）溫度通常最低；回風口（return）溫度最高。這兩個位置的溫差代表了HVAC系統的換熱效率。若兩者差異過大，表示空氣循環不足或負載過重。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Near Air Distributors (fans, blowers) / 空氣分配器旁</strong></td>
+                            <td>Ensures air distributors do not create temperature excursions or dead air pockets</td>
+                            <td>風扇/送風機是HVAC系統中的熱源（馬達運轉產熱）。在正前方可能出現局部冷點（直接吹到的位置），在側面可能出現死角（氣流分叉後的低速區域）。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shelving positions / 層架位置</strong></td>
+                            <td>Ensures that the type of shelving structure does not create dead air pockets</td>
+                            <td>實心底板的層架（如不銹鋼板式）比網格式層架（如wire deck pallet rack）更容易造成死空氣層。CDMO採購貨架時，應將通風性納入採購規格。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adjacent to physical/structural obstructions / 結構障礙物旁</strong></td>
+                            <td>Ensures that structures within the CTC do not create dead air pockets</td>
+                            <td>包括：柱子、牆面轉角、固定設備基座、管路走線區域。這些位置的氣流速度極低，是溫度偏差的高風險區。建議在廠房平面圖上逐一標記所有固定障礙物，再決定感測器位置。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Height of component storage / 儲存高度</strong></td>
+                            <td>Ensures that the intended height of component storage is monitored at the maximum height of any potential material to be stored</td>
+                            <td>溫度分層（stratification）是大型倉庫的主要挑戰。熱空氣上升，冷空氣下沉，在高度超過457cm的空間，上下溫差可超過3–5°C。建議在最低儲存層、中間層、最高儲存層各設一個感測器。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adjacent to lighting / 燈光附近</strong></td>
+                            <td>Ensures that lights do not create warm spots when turned on</td>
+                            <td>傳統螢光燈管每支發熱約20–40W。在密閉冷藏室中，若所有燈同時開啟，局部溫升可達0.5–2°C。LED燈的發熱量少得多，但仍需要在OQ測試中確認。對稽查人員開燈進行長時間查廠的情境，這個因素值得特別關注。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TEST CONDITION MATRIX -->
+            <div id="test-matrix" style="margin-top:2rem;">
+                <h3 class="section-title">Test Condition Matrix | 測試條件矩陣</h3>
+                <p style="font-size:0.9rem;color:#4a5568;margin-bottom:1rem;">This matrix maps the intersection of load state, seasonal condition, and door scenario to clarify which combinations require testing. | 此矩陣說明負載狀態、季節條件與開門情境的組合，以釐清哪些組合需要測試。</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Load State<br>負載狀態</th>
+                            <th>Summer / High Ambient<br>夏季 / 高環境溫度</th>
+                            <th>Winter / Low Ambient<br>冬季 / 低環境溫度</th>
+                            <th>Door Closed (Steady State)<br>門關（穩態）</th>
+                            <th>Door Open Scenario<br>開門情境</th>
+                            <th>ISPE Priority<br>優先級</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Empty / 空載</strong></td>
+                            <td class="risk-high">Recommended<br>建議</td>
+                            <td class="risk-low">Optional<br>可選</td>
+                            <td class="risk-high">Required<br>必要</td>
+                            <td class="risk-med">Recommended<br>建議</td>
+                            <td><span class="badge green">高</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Simulated Full Load<br>模擬滿載</strong></td>
+                            <td class="risk-high">Required (Worst-case)<br>必要（最壞情況）</td>
+                            <td class="risk-low">Optional<br>可選</td>
+                            <td class="risk-high">Required<br>必要</td>
+                            <td class="risk-high">Required<br>必要</td>
+                            <td><span class="badge red">最高</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partial Load<br>部分負載</strong></td>
+                            <td class="risk-low">Generally unnecessary<br>通常不必要</td>
+                            <td class="risk-low">Generally unnecessary<br>通常不必要</td>
+                            <td class="risk-low">Generally unnecessary<br>通常不必要</td>
+                            <td class="risk-low">Generally unnecessary<br>通常不必要</td>
+                            <td><span class="badge yellow">低</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conditioning Test<br>調溫測試</strong></td>
+                            <td class="risk-high">Required<br>必要</td>
+                            <td class="risk-med">Consider<br>考慮</td>
+                            <td class="risk-high">Required<br>必要</td>
+                            <td class="risk-low">N/A<br>不適用</td>
+                            <td><span class="badge green">高</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="two-column" style="margin-top:1.5rem;">
+                <div class="left-column">
+                    <!-- intentionally left for balance -->
+                    <div class="note-box">
+                        <h4>Zoning Approach for Large Facilities</h4>
+                        <p>For areas with multiple HVAC units that operate consistently, each unit's area may be treated as a zone. Mapping a representative zone can provide adequate data to represent performance of the whole area — but only when the zones are truly equivalent in design, layout, and loading conditions.</p>
+                        <p>When zones differ (e.g., one zone near an external wall, another in the building core), each must be mapped independently.</p>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="concept-box">
+                        <h4>季節測試的台灣CDMO操作建議</h4>
+                        <p>根據ISPE的夏季最壞情況（summer worst-case）原則，台灣CDMO的建議做法：</p>
+                        <ul>
+                            <li><strong>初始分佈研究（Initial Mapping）：</strong> 在7–9月（最熱季節）執行，以確保最惡劣環境條件下的合規性</li>
+                            <li><strong>定期再驗證（Periodic Re-mapping）：</strong> 若初始研究在非夏季進行，應在設施首個夏季再執行一次</li>
+                            <li><strong>台灣特殊挑戰：</strong> 颱風季節（7–10月）的氣壓變化可能影響密閉空間的換氣效率，是額外的環境因素</li>
+                            <li><strong>記錄外部條件：</strong> 所有分佈研究報告應記錄測試當時的室外溫濕度（來自BMS或中央氣象局數據）</li>
+                        </ul>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 10</h4>
+                        <p><strong>問：</strong> 你的CDMO設施有三個2–8°C冷藏室，由三組獨立HVAC機組分別控制，佈局完全相同。你能否只對一個房間做完整分佈研究，然後以此代表另外兩間？根據ISPE的分區（zoning）原則，需要什麼前提條件？</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="left-column">
+                    <div class="practice-box">
+                        <h4>思考練習 11</h4>
+                        <p><strong>問：</strong> 一個FDA稽查員問你：「你的冷藏室感測器位置是如何決定的？」以下哪個回答最符合ISPE的科學化理由要求：</p>
+                        <ol style="margin-left:1.25rem;">
+                            <li>「我們依照行業慣例，每4平方公尺放一個。」</li>
+                            <li>「我們參考了ISO 17025標準的最低感測器密度要求。」</li>
+                            <li>「我們首先識別了所有可能影響溫度的因素（HVAC位置、門口、障礙物、高度差），然後在每個高風險位置放置感測器，並在協議書中逐一說明每個位置的選擇理由，由QA核准後執行。」</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="practice-box">
+                        <h4>思考練習 12</h4>
+                        <p><strong>問：</strong> 你的分佈研究報告顯示，冷藏室的最高溫點位於東北角（靠近外牆的上層貨架），測量值為7.8°C（接受標準上限8°C）。測試是在3月執行的，室外溫度22°C。這份報告是否足夠？如何向QA解釋夏季季節性風險？你會建議什麼後續行動？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SUMMARY SECTION ===== -->
+    <div class="chapter-section">
+        <div class="chapter-divider">
+            <div class="chapter-badge">&#9733;</div>
+            <div class="chapter-info">
+                <h2>Chapter 6 Summary &amp; Key Takeaways | 章節總結與核心要點</h2>
+                <p>Consolidated learning from all sub-sections</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="key-message">
+                <strong>Chapter Key Message | 章節核心訊息</strong>
+                A mapping study that only tests ideal conditions gives you a false sense of security — the risk lives in the extremes you haven't tested.<br>
+                <span style="font-size:0.9rem;opacity:0.85;">只在理想條件下進行的溫度分佈研究，只會帶給你虛假的安全感。真正的風險，藏在那些你從未測試過的極端條件裡。</span>
+            </div>
+
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>Core Principles Summary</h3>
+                    <ul class="structure-list">
+                        <li><strong>Two outcomes required:</strong> Uniformity confirmation AND identification of monitoring locations — neither alone is sufficient.</li>
+                        <li><strong>Risk assessment first:</strong> The five factors (purpose, size, layout, location, HVAC) must be evaluated before designing the test strategy.</li>
+                        <li><strong>CFD supplements, never replaces:</strong> Computational modeling is a useful planning tool, but actual sensor data is always required by ISPE.</li>
+                        <li><strong>QA pre-approval is mandatory:</strong> The mapping protocol must be approved before execution — not after.</li>
+                        <li><strong>Equipment accuracy matters:</strong> Sensor accuracy must be appropriate for the acceptance criteria. Low-cost ±2°C loggers are often unsuitable for pharmaceutical applications.</li>
+                        <li><strong>Buffered probes ≠ mapping probes:</strong> Use unbuffered sensors during mapping to capture actual air temperatures, including short-duration excursions.</li>
+                        <li><strong>Sample at least every 5 minutes:</strong> Increase frequency when defrost cycles or frequent door openings are expected.</li>
+                        <li><strong>Test the extremes:</strong> Empty + full-load; summer worst-case; door-open scenarios — not just steady-state, not just empty.</li>
+                        <li><strong>Scientific rationale is non-negotiable:</strong> Every sensor location requires a documented reason, reviewed and approved by QA.</li>
+                        <li><strong>Seasonal variation is a risk:</strong> A winter test result does not guarantee summer performance — especially in Taiwan's climate.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>CDMO多客戶環境核心要點</h3>
+                    <ul class="structure-list">
+                        <li><strong>目標二優先：</strong> 在多客戶環境中，永久監測點位的選擇尤為關鍵——必須能保護規格最嚴格的客戶產品。</li>
+                        <li><strong>負載變化是持續性風險：</strong> 不同客戶產品的進出，使負載狀態持續變動。需定義「最不利負載情境」作為測試基準，並評估日常負載變動的影響。</li>
+                        <li><strong>台灣夏季測試不可省略：</strong> 7–9月的夏季是最苛刻的測試條件。初始分佈研究若在低溫季節執行，必須規劃補充的夏季測試。</li>
+                        <li><strong>獨立監測系統的多客戶設計：</strong> 數據存取控制、稽查軌跡、客戶隔離——這些是CDMO獨立監測系統的額外要求，超出ISPE基本要求。</li>
+                        <li><strong>分區策略降低重新驗證成本：</strong> 合理的分區設計，讓局部改變只觸發受影響區域的重新評估，而非全場重新分佈研究。</li>
+                        <li><strong>除霜週期文件化：</strong> CDMO設施的除霜事件必須在分佈研究中被完整捕捉和記錄，以向客戶和監管機構展示這些事件不構成產品風險。</li>
+                        <li><strong>量測不確定度傳播：</strong> 校準不確定度 + 感測器準確度 + 數據採集系統誤差 = 整體系統不確定度。這必須在接受標準的設計中被考慮進去。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FINAL REVIEW TABLE -->
+            <h3 class="section-title" style="margin-top:1.5rem;">Chapter 6 Quick-Reference Summary Table | 快速參考總結表</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Topic / 主題</th>
+                        <th>ISPE Requirement / ISPE要求</th>
+                        <th>CDMO Implication / CDMO意涵</th>
+                        <th>Common Pitfall / 常見錯誤</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Testing Outcomes</td>
+                        <td>Confirm uniformity + identify monitoring locations</td>
+                        <td>Monitoring locations must protect most stringent product spec</td>
+                        <td>Treating mapping as a pass/fail test only, ignoring Outcome 2</td>
+                    </tr>
+                    <tr>
+                        <td>Risk Assessment</td>
+                        <td>5 factors evaluated before strategy development</td>
+                        <td>Add: multi-client load variability, adjacent heat sources</td>
+                        <td>Copying last project's mapping strategy without re-assessing</td>
+                    </tr>
+                    <tr>
+                        <td>CFD Modeling</td>
+                        <td>Supplement only — cannot replace actual testing</td>
+                        <td>Useful for initial sensor placement planning</td>
+                        <td>Accepting CFD results as qualification evidence</td>
+                    </tr>
+                    <tr>
+                        <td>Pre-approval</td>
+                        <td>QA approval required before testing begins</td>
+                        <td>Multi-client CDMO may need client QA co-review</td>
+                        <td>Executing first, approving protocol retrospectively</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor Accuracy</td>
+                        <td>Must match acceptance criteria range</td>
+                        <td>±0.5°C recommended for 2–8°C cold chain</td>
+                        <td>Using ±2°C loggers for pharmaceutical cold chain</td>
+                    </tr>
+                    <tr>
+                        <td>Buffered Probes</td>
+                        <td>Not for mapping, not for controlling</td>
+                        <td>Can be used for permanent monitoring if relationship is characterized</td>
+                        <td>Using buffered probes during temperature mapping study</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Rate</td>
+                        <td>≥ every 5 min; more frequent if spikes expected</td>
+                        <td>1–2 min for facilities with frequent defrost or door opening</td>
+                        <td>5-min interval missing peak temperatures during defrost</td>
+                    </tr>
+                    <tr>
+                        <td>Load State Testing</td>
+                        <td>Empty + full-load; partial load generally unnecessary</td>
+                        <td>Define "worst-case load scenario" for multi-client environment</td>
+                        <td>Only testing empty state, never validating loaded performance</td>
+                    </tr>
+                    <tr>
+                        <td>Seasonal Testing</td>
+                        <td>Summer worst-case is the critical test period</td>
+                        <td>Taiwan July–September = mandatory seasonal mapping period</td>
+                        <td>Mapping in winter and assuming year-round compliance</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor Rationale</td>
+                        <td>Scientific rationale + QA approval required</td>
+                        <td>Document each location individually; general rules insufficient</td>
+                        <td>"We placed sensors every 4 meters" without risk-based justification</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div><!-- end .main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</p>
+    <p style="opacity:0.7;font-size:0.82rem;margin-top:0.4rem;">Chapter 6: Testing Strategy | Section 02 | SterileGMP Knowledge Hub</p>
+    <p style="opacity:0.55;font-size:0.78rem;margin-top:0.3rem;">For individual use only. &copy; Copyright ISPE 2016. All rights reserved. Educational commentary &copy; 2026 SterileGMP Knowledge Hub.</p>
+</footer>
+
+<!-- ===== BACK TO TOP JS ===== -->
+<script>
+(function() {
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, {passive: true});
+})();
+</script>
+
+</body>
+</html>

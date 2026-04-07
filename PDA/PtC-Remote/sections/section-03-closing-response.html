@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtC Remote - Part III: Closing, Conclusion & Response</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== REFERENCE LIST ===== */
+.reference-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reference-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.6rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.reference-list li .ref-num {
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-right: 0.4rem;
+}
+
+.guidance-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.guidance-list li {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #2e7d32;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.guidance-list li .agency-tag {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+}
+
+.guidance-list li .year-tag {
+    display: inline-block;
+    background: #e3f2fd;
+    color: #1565c0;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Part III: Closing, Conclusion &amp; Response</h1>
+    <div class="subtitle">Part III：結束、結論與回應</div>
+    <div class="page-info">PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021) | p28 - p33</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解遠端稽查正式結束的判斷方法，以及為何必須主動確認結束（Topic A.1）</li>
+        <li>掌握遠端稽查報告的最低必要內容，以及 CAPA (矯正與預防措施) 回應流程（Topic A.2）</li>
+        <li>釐清遠端稽查後核發 GMP/GDP 證書的效力，消除管理層及客戶的疑慮（Topic A.3）</li>
+        <li>了解再稽查頻率的六大決定因素，並認識遠端稽查對再稽查時間間隔的影響（Topic B.1）</li>
+        <li>認識全球主要法規機關發布的相關指引，並理解監管趨同趨勢（References &amp; Global Guidances）</li>
+    </ul>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC A.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic A.1 — Knowing an Inspection Has Ended | 如何判斷稽查已結束</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic A.1: Knowing an Inspection Has Ended</h3>
+        <p><strong>Problem Statement</strong></p>
+        <p>How do we know the inspection has ended?</p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>As mentioned in Topic I.C.2 Planning the Agenda, the inspector and inspected site should discuss the starting and ending dates for the inspection early in the process.</p>
+
+        <p>Remote inspections should end with a <span class="key-term">closing meeting</span> via video communication platform, teleconference, or other communication method. If the inspectors do not clearly state that the inspection has ended, the inspected site should ask the inspectors for confirmation.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>For remote inspections, which intrinsically consist of iterative requests for information between personnel in different locations and for which the duration might not have been communicated in advance, it may not be obvious that the inspection is complete. Therefore, it is best to explicitly ask the inspectors.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 正式結束會議的關鍵性</h4>
+            <p><strong>Closing Meeting（結束會議）</strong> 是遠端稽查中最重要的里程碑之一。它標誌著稽查的正式終止，並為後續報告發布與 CAPA 回應啟動計時。</p>
+            <p>在傳統現場稽查中，稽查員離開廠區的那一刻通常就是結束的明顯信號。但在遠端稽查中，整個過程透過電子通訊進行，雙方可能持續往來訊息和文件，讓「結束」的時間點變得相當模糊。</p>
+            <p><strong>三種可接受的結束會議形式：</strong></p>
+            <ul>
+                <li>視訊會議平台（video communication platform）</li>
+                <li>電話會議（teleconference）</li>
+                <li>其他雙方同意的溝通方式</li>
+            </ul>
+            <p>重點：無論採用何種形式，都必須讓雙方明確知道「稽查已正式結束」。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 就診結束的確認</h4>
+            <p>想像你去看醫生做例行健康檢查。傳統面診時，當醫生站起來說「好了，今天就到這裡」並送你到門口，你自然清楚診療已結束。</p>
+            <p>但如果是視訊看診，醫生可能說「我還需要看你的另一份檢驗報告，請你發給我」——然後沉默了幾天。你不確定：他是在等我的報告？還是診療已經完成了？</p>
+            <p>遠端稽查的情況完全相同。當你不確定時，應該主動詢問：「請問稽查是否已正式結束？」——這不是失禮，而是專業負責的表現。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Desktop 稽查的特殊模糊性</h4>
+            <p>在桌面稽查（desktop inspection）中，雙方的互動完全以文件交換為主，沒有視訊鏡頭、沒有廠區導覽。稽查員可能分批、分次提出文件審查要求，跨越數天甚至數週。</p>
+            <p>這種「迭代式」的資訊交換（iterative requests for information）讓人特別難以判斷結束點。主動確認結束，能避免廠區誤以為「沒有新的文件請求 = 稽查結束」，實際上稽查員可能只是暫時停下來思考。</p>
+            <p><strong>建議做法：</strong>在稽查計畫階段（Topic I.C.2）就明確約定預計結束日期，並要求在結束會議中獲得書面確認（如 email）。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若稽查員在最後一次文件交換後三天沒有任何回應，廠區應如何處理？應該等待還是主動聯絡確認稽查是否結束？請說明你的理由。</li>
+                <li>在稽查計畫階段（Pre-inspection Planning），廠區應如何在議程中明確定義「結束條件」，以避免稽查結束時間不確定的問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC A.2 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic A.2 — Inspection Report and Findings and Response | 稽查報告、發現事項與回應</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic A.2: Inspection Report and Findings and Response</h3>
+        <p><strong>Problem Statement</strong></p>
+        <p>Will an <span class="key-term">inspection report</span> be issued for a remote inspection? How will the inspection findings be communicated? Is the response process for a remote inspection different from that of an on-site inspection?</p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The inspector's task, regardless of the tools used, is to confirm <span class="key-term">compliance</span>. Thus, the issuance of a report and communication of findings in a remote inspection should not differ from that of an on-site inspection. The common practice is for inspectors to finalize any observations identified during the remote inspection in a written inspection report, along with a request that the manufacturing site provide an answer and a plan for <span class="key-term">CAPAs</span>, including a timeframe for response. This report is likely to describe, at a minimum:</p>
+        <ul>
+            <li>The documentation that was reviewed and by whom</li>
+            <li>Whether physical aspects of the facility were assessed, and the methods used</li>
+            <li>Inspection outcome</li>
+            <li>Rationale for the decision</li>
+        </ul>
+
+        <p>The inspection report also should indicate the processes that could not be <span class="key-term">assessed remotely</span> and whether they will be assessed on-site to allow for completion of the inspection in a hybrid format. The report also may explain the need for an on-site inspection. This may be a standard practice for some health authorities following remote inspections. For other health authorities, a follow-up on-site inspection may be necessary only when the remote assessment is inconclusive in evaluating the site's compliance status.</p>
+
+        <p>The process to respond to remote inspection findings should be the same as in on-site inspections unless the health authority communicates a different procedure. During the <span class="key-term">closing meeting</span> or equivalent, the inspectors should communicate the path forward for the inspection response process.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>While the remote inspection process is slightly different from an on-site inspection, the documentation and communication of the inspection outcome in most cases will remain the same, with the presentation of any inspectional findings, issuance of an inspection report, and expectations of responses as appropriate.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 稽查報告最低必要內容（檢核清單）</h4>
+            <p>PDA 建議遠端稽查報告至少應包含以下四項要素：</p>
+            <ul>
+                <li><strong>文件審查紀錄：</strong>哪些文件被審查了？由哪些稽查員負責審查？</li>
+                <li><strong>設施實體評估方式：</strong>是否進行了廠區評估？若有，使用了哪些方法（如視訊導覽、照片）？</li>
+                <li><strong>稽查結論（Inspection Outcome）：</strong>整體合規性判斷結果為何？</li>
+                <li><strong>決策理由（Rationale for Decision）：</strong>稽查員作出判斷的依據與邏輯說明</li>
+            </ul>
+            <p>此外，報告中還應特別說明：哪些製程「無法透過遠端方式評估」，以及是否需要後續現場稽查（on-site follow-up）加以補充。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 稽查報告如同醫師的診療紀錄</h4>
+            <p>醫師在診療後填寫的病歷，記錄了：「今天做了哪些檢查、結果如何、診斷是什麼、建議後續處置」。不論是親自面診還是視訊看診，病歷的格式與完整性要求都是一致的。</p>
+            <p>稽查報告的邏輯完全相同。無論稽查員是否踏進廠區，他的任務是「確認合規性」，而這份確認必須以正式書面報告呈現，讓雙方都有明確的法律和品質依據。</p>
+            <p>若診療完全是線上進行，醫師也應說明「哪些檢查因為無法親自執行而未完成」，以確保病歷的完整性——稽查報告亦同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 「無法遠端評估」的項目是後續現場稽查的觸發點</h4>
+            <p>這是遠端稽查與現場稽查最關鍵的結構性差異之一：報告中明確列出的「無法遠端評估項目」，會直接決定是否需要後續現場稽查（hybrid format 或 follow-up on-site inspection）。</p>
+            <p>對廠區而言，這意味著：</p>
+            <ul>
+                <li>若某些製程複雜、高風險，且難以透過視訊或文件充分呈現，應提前準備好替代評估方案（如詳細視訊記錄、即時視訊演示）</li>
+                <li>若法規機關預設在遠端稽查後必須進行現場跟進（部分 HA 的標準程序），廠區應將此納入稽查後行動計畫（Post-inspection Action Plan）</li>
+            </ul>
+            <p><strong>實務結論：</strong>稽查前的準備，就是為了讓「無法遠端評估的項目清單」盡可能縮短。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 的 CAPA 回應最佳實踐</h4>
+            <p>遠端稽查的 CAPA（Corrective Action and Preventive Action，矯正與預防措施）回應流程，與現場稽查完全相同——除非法規機關另行告知不同程序。</p>
+            <p><strong>對 CDMO 的建議：</strong></p>
+            <ul>
+                <li><strong>回應時效管理：</strong>在結束會議中，主動確認稽查機關的回應截止期限（通常為 15–30 天），並於廠內啟動標準 CAPA 流程</li>
+                <li><strong>主題分類回應：</strong>針對報告中每一項 Finding，逐一撰寫根本原因分析（Root Cause Analysis）+ 矯正措施 + 預防措施 + 完成時程</li>
+                <li><strong>回應語氣：</strong>對於遠端稽查中的 Finding，不要因為「稽查員沒有親眼看到」而輕視——報告中的 Finding 具有與現場稽查相同的法律效力</li>
+                <li><strong>提前準備：</strong>對於在稽查中已預感可能被提出的疑慮，可在結束會議後立即開始起草 CAPA，不必等待正式報告</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC A.3 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic A.3 — Issuance of GMP/GDP Certificate | GMP/GDP 證書的核發</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic A.3: Issuance of GMP/GDP Certificate</h3>
+        <p><strong>Problem Statement</strong></p>
+        <p>If the outcome of the remote inspection is positive, will a <span class="key-term">GMP/GDP certificate</span> be issued?</p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>If the outcome of the remote inspection is positive, a GMP or GDP certificate should be issued as part of the normal activity of the health authority, as per the applicable local and regional laws.</p>
+
+        <p>The certificate might specify that virtual tools were used to conduct the inspection, but this distinction may not be necessary as GMP/GDP certificates issued after an on-site inspection often do not include discussion of all tools used (e.g., site tour, document review prior to arrival on site).</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>While the assessment process per se is slightly different in remote inspections than in on-site inspections, the decision to release a GMP/GDP certificate, and the validity of the certificate, is based on the evidence of <span class="key-term">compliance</span> demonstrated during the inspection.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — GMP/GDP 證書效力不因稽查形式而降低</h4>
+            <p>這一點對 CDMO 的商業運作至關重要：<strong>遠端稽查通過後核發的 GMP/GDP 證書，在法律效力和有效期上，與現場稽查後核發的證書完全等同。</strong></p>
+            <p>兩個關鍵原則：</p>
+            <ul>
+                <li><strong>證書決定基礎是合規證據（evidence of compliance）</strong>，而非稽查形式（format of inspection）</li>
+                <li>證書上可能會標注「使用虛擬工具進行稽查」，但這僅是說明性備註，不改變其法律效力</li>
+            </ul>
+            <p>有效期：與現場稽查後核發的證書相同（通常為 2–3 年，依法規機關而異）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 向管理層和客戶說明證書效力</h4>
+            <p>在實務中，CDMO 的客戶（特別是 Big Pharma 的 Regulatory Affairs 或 Quality 部門）可能對「遠端稽查核發的 GMP/GDP 證書」持疑慮，擔心其是否被其他國家監管機關接受。</p>
+            <p><strong>建議溝通策略：</strong></p>
+            <ul>
+                <li>強調「證書決定的依據是合規性證據，而非稽查工具」——這是 PDA 的官方立場，也是各大 HA 的共識</li>
+                <li>若證書上有「virtual tools used」備注，可主動解釋這是透明揭露，而非效力限制</li>
+                <li>對於需要在多個市場申請藥品上市的客戶，建議提前確認各市場監管機關對遠端稽查核發證書的接受立場</li>
+            </ul>
+            <p>對 CDMO 管理層的訊息：合規性是核心資產，達成合規的稽查形式只是手段，不影響最終認定。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 考試形式不影響學位效力</h4>
+            <p>在 COVID-19 期間，許多大學改為線上考試。學生透過遠端監考系統完成考試，獲得的學位與傳統面試或考場考試一模一樣，學位證書上不會標注「線上考試」。</p>
+            <p>GMP/GDP 證書亦同。學位的效力來自於「你是否真的具備相應能力」，不是來自「考試在哪裡進行」。同樣地，GMP/GDP 證書的效力來自「工廠是否符合 GMP/GDP 標準」，而不是「稽查員是否踏進了廠房」。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>若 CDMO 的某個潛在客戶對遠端稽查核發的 GMP/GDP 證書表示疑慮，作為品質部門代表，你會如何以 PDA PtC 的立場回覆客戶的疑問？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOPIC B.1 -->
+<!-- ============================================================ -->
+<div class="section-title">Topic B.1 — Frequency of Reinspection | 再稽查頻率</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Topic B.1: Frequency of Reinspection</h3>
+        <p><strong>Problem Statement</strong></p>
+        <p>Is the frequency of <span class="key-term">reinspection</span> impacted by the type of inspection (remote or on-site)?</p>
+
+        <p><strong>Recommendation</strong></p>
+        <p>The frequency of reinspection depends on multiple parameters, including <span class="key-term">criticality of the product</span>, <span class="key-term">complexity of the process</span>, <span class="key-term">compliance history</span> of the facility, <span class="key-term">regulatory resources</span>, <span class="key-term">geographic location</span> of the facility, and <span class="key-term">format of the inspection</span> (e.g., on-site, desktop, or virtual). This determination will be guided by the health authority's risk-based approach. The next inspection following a remote inspection may occur at a <span class="key-term">reduced time interval</span> due to the inherent limitations of a remote inspection as compared to on-site inspections.</p>
+
+        <p><strong>Rationale</strong></p>
+        <p>Technology can help in performing a remote inspection that is adequate to allow the inspector to make an informed decision about the site's compliance status and/or compliance with the content in a regulatory submission. Even so, intrinsic limitations in a remote inspection may present challenges in accessing all the necessary information. Inspectorates are likely to take this into consideration when determining the frequency for the next inspection.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 決定再稽查頻率的六大因素</h4>
+            <p>法規機關採用風險基礎方式（risk-based approach）決定下次稽查的時間間隔，以下六個因素均會納入考量：</p>
+            <table>
+                <tr>
+                    <th>因素</th>
+                    <th>說明</th>
+                    <th>對頻率的影響</th>
+                </tr>
+                <tr>
+                    <td><strong>產品關鍵性</strong><br>(Product Criticality)</td>
+                    <td>無菌注射劑 &gt; 口服固體製劑</td>
+                    <td>關鍵性越高 → 頻率越高</td>
+                </tr>
+                <tr>
+                    <td><strong>製程複雜度</strong><br>(Process Complexity)</td>
+                    <td>複雜生物製劑 vs. 簡單小分子</td>
+                    <td>複雜度越高 → 頻率越高</td>
+                </tr>
+                <tr>
+                    <td><strong>合規歷史</strong><br>(Compliance History)</td>
+                    <td>過往是否有重大 483 / Warning Letter</td>
+                    <td>不良記錄 → 頻率越高</td>
+                </tr>
+                <tr>
+                    <td><strong>法規資源</strong><br>(Regulatory Resources)</td>
+                    <td>HA 的稽查員人力與預算</td>
+                    <td>資源有限 → 可能降低頻率</td>
+                </tr>
+                <tr>
+                    <td><strong>地理位置</strong><br>(Geographic Location)</td>
+                    <td>境外廠址稽查成本高</td>
+                    <td>遠距 → 可能降低頻率（但遠端稽查抵消此影響）</td>
+                </tr>
+                <tr>
+                    <td><strong>稽查形式</strong><br>(Inspection Format)</td>
+                    <td>現場 vs. 桌面 vs. 虛擬</td>
+                    <td>遠端稽查 → <strong>縮短</strong>下次間隔</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 縮短的再稽查間隔是遠端稽查的隱性成本</h4>
+            <p>對 CDMO 而言，這是遠端稽查最需要向客戶和管理層說明的「隱性影響」：</p>
+            <p>遠端稽查本身節省了雙方的旅行時間和成本；然而，由於遠端稽查的固有限制（intrinsic limitations），法規機關可能在下一個稽查周期中，安排一次現場稽查——而且時間可能比正常周期更早。</p>
+            <p><strong>對 CDMO 客戶管理的影響：</strong></p>
+            <ul>
+                <li>若 CDMO 在遠端稽查後被安排更早的再稽查，客戶需理解這並不代表廠區存在問題，而是法規機關基於稽查形式的標準做法</li>
+                <li>更頻繁的稽查需要廠區維持更高的稽查準備狀態（inspection-readiness），這涉及持續的人力與資源投入</li>
+            </ul>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 如何降低再稽查頻率、展現合規品質</h4>
+            <p>縮短再稽查間隔，根本上反映的是「法規機關對廠區資訊的信心不足」。CDMO 可以採取以下策略來提升信心、爭取較長的再稽查間隔：</p>
+            <ul>
+                <li><strong>建立強健的合規歷史：</strong>零重大缺失（Major Deficiency）或警告信記錄，是法規機關在風險評估中最重要的正向指標</li>
+                <li><strong>主動提供超出要求的文件：</strong>在遠端稽查中，對於無法親眼查看的設施或製程，主動提供高質量的視訊記錄、照片或即時演示，降低「資訊差距」</li>
+                <li><strong>加強遠端稽查的呈現技術：</strong>清晰的文件管理系統、流暢的視訊展示能力，都直接影響稽查員對廠區透明度的觀感</li>
+                <li><strong>CAPA 品質：</strong>對過往稽查發現的 CAPA 回應要具體、有說服力，並附上驗證效果的數據——展示廠區「自我修正能力」</li>
+                <li><strong>主動溝通：</strong>在稽查間隔期間，主動向 HA 更新重大製程變更、定期提交變更管理紀錄，維持透明關係</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 CDMO 剛完成對 EMA 的遠端稽查（虛擬稽查），請列出至少三個可能導致 EMA 縮短下次稽查間隔的因素，以及 CDMO 應採取的對應措施。</li>
+                <li>遠端稽查的「intrinsic limitations（固有限制）」具體包含哪些方面？為什麼這些限制會讓法規機關傾向於更早安排下一次稽查？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- REFERENCES -->
+<!-- ============================================================ -->
+<div class="section-title">IV. References | 參考文獻</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>IV. References</h3>
+        <ul class="reference-list">
+            <li>
+                <span class="ref-num">1.</span>
+                U.S. Food and Drug Administration. <em>FDA Warns Public of Continued Extortion Scam by FDA Impersonators</em>; U.S. Department of Health and Human Services: Rockville, Md., 2009. https://netdoc.com/fda-warns-public-of-continued-extortion-scam-by-fda-impersonators/ (accessed 26 Mar 2021).
+            </li>
+            <li>
+                <span class="ref-num">2.</span>
+                Pharmaceutical Inspection Convention/Cooperation Scheme (PIC/S). <em>Guidance: GMP Inspection Reliance</em>; PIC/S: Geneva, 2018.
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 兩篇參考文獻的背景意義</h4>
+            <p><strong>參考文獻 1 — FDA 冒充詐騙警告（2009）：</strong><br>
+            FDA 在 2009 年即已公開警告「冒充 FDA 稽查員進行詐騙」的情況。在遠端稽查時代，這個風險更加突出——因為稽查員無需到場，核實身份更加困難。這也是 PDA PtC 在 Topic I.B.1（稽查員身份核實）中強調身份核實程序的重要背景。</p>
+            <p><strong>參考文獻 2 — PIC/S GMP Inspection Reliance 指引（2018）：</strong><br>
+            PIC/S 的「Inspection Reliance（稽查互信）」機制，允許各成員國的監管機關相互依賴對方的稽查結果，減少對同一廠址重複稽查的需求。這與遠端稽查高度相關：若已有成員國進行了遠端稽查並出具結果，其他 PIC/S 成員國可以「reliance」此結果，而不必再單獨安排稽查。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- GLOBAL GUIDANCES -->
+<!-- ============================================================ -->
+<div class="section-title">V. Relevant Global Guidances | 相關全球法規指引</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>V. Relevant Global Guidances</h3>
+        <ul class="guidance-list">
+            <li>
+                <span class="agency-tag">TGA</span>
+                Australian Therapeutic Goods Administration. <em>TGA Expectations for Overseas Manufacturing Sites Hosting Remote Inspections during the COVID-19 Pandemic</em>. TGA: Woden ACT, Australia.
+                <span class="year-tag">2020</span>
+            </li>
+            <li>
+                <span class="agency-tag">MHRA</span>
+                David Churchward, MHRA. <em>Good Practice (GxP) Inspections during the COVID-19 Outbreak</em>. MHRA: London.
+                <span class="year-tag">2020</span>
+            </li>
+            <li>
+                <span class="agency-tag">EMA</span>
+                European Medicines Agency. <em>Guidance related to GMP/GDP and PMF Distant Assessments</em>. EMA: Brussels.
+                <span class="year-tag">2020</span>
+            </li>
+            <li>
+                <span class="agency-tag">IFPMA</span>
+                International Federation of Pharmaceutical Manufacturers &amp; Associations. <em>Points to Consider for Virtual GMP Inspections</em>. IFPMA: Geneva.
+                <span class="year-tag">2020</span>
+            </li>
+            <li>
+                <span class="agency-tag">MHRA</span>
+                Medicines and Healthcare products Regulatory Agency. <em>Guidance for Industry on MHRA's Expectations for Return to UK On-site Inspections</em>. MHRA: London.
+                <span class="year-tag">2020</span>
+            </li>
+            <li>
+                <span class="agency-tag">FDA</span>
+                U.S. Food and Drug Administration. <em>Guidance for Industry: Remote Interactive Evaluations of Drug Manufacturing and Bioresearch Monitoring Facilities During the COVID-19 Public Health Emergency</em>. U.S. Department of Health and Human Services: Silver Spring, Md.; 13 pp.
+                <span class="year-tag">2021</span>
+            </li>
+            <li>
+                <span class="agency-tag">FDA</span>
+                U.S. Food and Drug Administration. <em>Sec. 5.3.8.3.2, Electronic Databases and Queries</em>. In <em>FDA Investigations Operations Manual</em>. U.S. Department of Health and Human Services: Silver Spring, Md.; p 5-46.
+                <span class="year-tag">2020</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 全球法規趨同（Regulatory Convergence）的意義</h4>
+            <p>這份指引清單清晰呈現了一個重要趨勢：在 2020–2021 年短短兩年內，來自澳洲（TGA）、英國（MHRA，兩份文件）、歐盟（EMA）、美國（FDA，兩份文件）以及全球製藥行業協會（IFPMA）幾乎同步發布了遠端稽查的相關指引。</p>
+            <p>這種「多監管機關快速協調」的現象被稱為<strong>監管趨同（Regulatory Convergence）</strong>，在製藥法規史上相當罕見。它說明：</p>
+            <ul>
+                <li><strong>遠端稽查不是特例，而是被全球監管體系認可的稽查模式</strong></li>
+                <li>各 HA 雖然細節做法不同，但核心框架具有共通性——便於 CDMO 建立統一的「遠端稽查應對體系」適用於多個市場</li>
+                <li>PDA PtC Remote 的定位，正是在各 HA 指引的基礎上，從業界角度提供跨監管機關的整合建議</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 各指引的核心差異點</h4>
+            <p>雖然各 HA 指引的總體方向一致，但仍存在若干差異，CDMO 應按市場分別了解：</p>
+            <ul>
+                <li><strong>TGA（澳洲）：</strong>專注於「境外廠址」（overseas sites）的遠端稽查期望，與 CDMO 作為海外供應商特別相關</li>
+                <li><strong>MHRA（英國）：</strong>發布兩份文件，分別針對 COVID 期間的 GxP 稽查調整，以及後疫情時代「回歸現場稽查」的預期（Return to On-site）——為稽查正常化提供了路線圖</li>
+                <li><strong>EMA（歐盟）：</strong>使用「Distant Assessments（遠距評估）」術語，而非「virtual inspection」，涵蓋 GMP、GDP 及 PMF（Plasma Master File）三個範疇</li>
+                <li><strong>FDA：</strong>使用「<span class="key-term">Remote Interactive Evaluations (RIE)</span>（遠端互動評估）」術語，其 2021 年指引最為詳盡，同時納入了 BIMO（Bioresearch Monitoring）設施</li>
+                <li><strong>IFPMA：</strong>代表業界（industry）視角，與 PDA PtC 互補，提供廠址的最佳實踐建議</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 各國交通法規的趨同</h4>
+            <p>在自動駕駛汽車技術出現之初，各國交通法規並未預見這種情況。當技術成熟後，各國幾乎在同一時期開始制定相關法規，儘管細節不同，但「允許自動駕駛上路」的核心方向完全一致。</p>
+            <p>遠端稽查的法規發展也是如此。COVID-19 是技術突破的觸媒——各 HA 在極短時間內快速建立框架，因為他們面對的是同一個技術現實。作為全球供應的 CDMO，理解這些指引之間的「共同語言」，是建立全球稽查應對能力的基礎。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION SUMMARY -->
+<!-- ============================================================ -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>A.1 稽查結束確認：</strong>遠端稽查的迭代性使「結束」時間點模糊，必須以正式結束會議（closing meeting）確認，若稽查員未明確聲明，廠區應主動詢問。</li>
+        <li><strong>A.2 稽查報告與回應：</strong>遠端稽查報告的最低內容包含四項要素；報告應說明無法遠端評估的製程；CAPA 回應流程與現場稽查相同，除非 HA 另行規定。</li>
+        <li><strong>A.3 GMP/GDP 證書效力：</strong>遠端稽查正向結果後，GMP/GDP 證書照常核發，效力與現場稽查完全相同——合規性依據是合規證據，而非稽查形式。</li>
+        <li><strong>B.1 再稽查頻率：</strong>受六大因素影響；遠端稽查後，下次稽查間隔可能縮短——這是遠端稽查的隱性成本，應透過高品質的合規表現來爭取較長間隔。</li>
+        <li><strong>全球趨同：</strong>TGA、MHRA、EMA、FDA 和 IFPMA 在 2020–2021 年集中發布遠端稽查指引，顯示全球監管體系對此模式的廣泛認可，各 HA 術語與細節略有差異，CDMO 應分市場掌握。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1207〉 - Section 2: Probabilistic Methods & Validation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Probabilistic Methods &amp; Validation | 概率性方法與驗證</h1>
+    <div class="subtitle">USP 〈1207〉 Package Integrity Evaluation—Sterile Products</div>
+    <div class="page-info">USP General Chapter 〈1207〉 / 〈1207.1〉 / 〈1207.2〉 | Pages 5–8 (Probabilistic Methods, Validation, Method Transfer)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 Probabilistic Test Methods（概率性試驗方法）的本質：結果受隨機因素影響、需要大樣本量、帶有不確定性</li>
+        <li>掌握主要概率性方法：Dye Ingress（染料浸入法）、Microbial Ingress（微生物浸入法）、Bubble Emission（氣泡發射法）的原理與局限</li>
+        <li>了解 CCI Method Validation（容器密封完整性方法驗證）的核心要素：靈敏度、特異性、準確性、精密度</li>
+        <li>理解 Method Transfer（方法轉移）的要求，以及何時適合將一個方法應用到新產品–包裝系統</li>
+        <li>能夠評估現有概率性方法的侷限，並識別何時需要遷移至確定性方法</li>
+    </ul>
+</div>
+
+<!-- PROBABILISTIC METHODS OVERVIEW -->
+<div class="section-title">2.1 Probabilistic Test Methods Overview | 概率性方法概述</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <div class="quote-box">
+            "A probabilistic leak test method is the converse of a deterministic leak test method, being stochastic in nature. Probabilistic tests rely on a series of sequential and/or simultaneous events, each associated with random outcomes described by probability distributions. Thus, the findings are associated with uncertainties that necessitate large sample sizes and rigorous test-condition controls to obtain meaningful results. Typically, sample size and test condition rigor are inversely related to leak size." — USP 〈1207〉 Glossary
+        </div>
+
+        <p>Probabilistic methods share several defining characteristics that distinguish them from deterministic approaches:</p>
+        <ul>
+            <li>Results are <span class="key-term">qualitative or semi-quantitative</span> (pass/fail based on observation, not a direct physical measurement)</li>
+            <li>Outcomes depend on multiple random events occurring in sequence (e.g., liquid must enter the defect, traverse the tortuous path, and be visible)</li>
+            <li>Require <span class="key-term">large sample sizes</span> to achieve statistical confidence — the smaller the leak, the larger the sample size needed</li>
+            <li>Test conditions must be tightly controlled to minimize variability, yet variability cannot be eliminated</li>
+            <li>Cannot be directly correlated to a specific leakage rate in mbar·L/s without extensive correlation studies</li>
+            <li>Results may vary between operators, laboratories, and test runs</li>
+        </ul>
+
+        <p>Despite their limitations, probabilistic methods have a long history of use in pharmaceutical package integrity testing and remain in use today, particularly where deterministic alternatives have not been fully qualified. However, the current FDA guidance (2023) and industry consensus (PDA TR27, USP 〈1207〉) clearly advocate for transitioning to deterministic methods wherever feasible.</p>
+
+        <p>The three primary probabilistic methods covered in USP 〈1207.2〉 are:</p>
+        <ul>
+            <li>Dye Ingress Test (染料浸入試驗)</li>
+            <li>Microbial Ingress / Microbiological Challenge Test (微生物浸入試驗)</li>
+            <li>Bubble Emission Test (氣泡發射試驗)</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>「隨機（Stochastic）」的深層含義：</strong>概率性方法的結果不是單一物理測量的直接輸出，而是多個隨機事件連鎖的結果。以染料浸入法為例，測試結果取決於：①缺陷孔的大小和形狀；②毛細管效應的物理條件；③染料的表面張力和黏度；④浸泡時間；⑤染料濃度；⑥操作者的視覺判斷能力。任何一個因素的隨機變化都會影響結果。</p>
+            <p><strong>「樣本量需求」的實務衝擊：</strong>對於接近偵測極限的小缺陷，概率性方法可能需要數百個樣本才能得到統計上有意義的結論。這在方法開發和驗證中是巨大的資源消耗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>歷史背景：</strong>染料浸入法和微生物挑戰試驗在製藥行業已使用了幾十年，是許多公司驗證文件的歷史基礎。但 USP 1207 和 FDA 2023 指引的訊息很清楚：「歷史悠久」不等於「當前最佳實踐」。如果你的 CCI 驗證文件只依賴傳統概率性方法，在 FDA 檢查或 NDA/BLA 審查中可能面臨質疑。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>概率性方法像傳統天氣預報（只說「明天可能下雨」，成功率 70%）；確定性方法像現代氣象儀器（直接量測氣溫、濕度、氣壓，給出具體數值預報）。前者依賴經驗和統計，後者基於物理測量。監管機構現在要求的是「氣象儀器式」的客觀數據，而不是「老農預測式」的模糊判斷。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼概率性方法「樣本量需求與洩漏大小成反比」？（即洩漏越小，需要越多樣本？）請用邏輯推理解釋。</li>
+                <li>如果一個概率性方法的結果「operator-dependent（依賴操作者判斷）」，這會在 FDA 審查時帶來什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- DYE INGRESS -->
+<div class="section-title">2.2 Dye Ingress Test | 染料浸入試驗</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">Dye Ingress Test (染料浸入試驗)</span> is a probabilistic, typically destructive package integrity test referenced in USP 〈1207.2〉. It has been one of the most widely used traditional CCI tests in the pharmaceutical industry.</p>
+
+        <p>Operating principle: The test package (typically filled with water, buffer, or the actual product) is immersed in a solution of a visible dye (most commonly methylene blue or tartrazine at a specified concentration) under conditions of differential pressure (either vacuum or elevated external pressure). After the immersion period, the packages are removed, the exterior is cleaned, the packages are opened, and the solution inside is inspected for dye color.</p>
+
+        <p>Test parameters requiring control:</p>
+        <ul>
+            <li>Dye type, concentration, and solution properties (surface tension, viscosity)</li>
+            <li>Applied pressure differential (vacuum or positive external pressure)</li>
+            <li>Duration of immersion</li>
+            <li>Temperature of the test solution</li>
+            <li>Visual inspection method (visual or spectrophotometric analysis for quantitation)</li>
+        </ul>
+
+        <p>Limitations of dye ingress:</p>
+        <ul>
+            <li>Typically <span class="key-term">destructive</span>: packages cannot be released after the test</li>
+            <li>Cannot detect very small leaks (below the capillary flow threshold for the dye under test conditions)</li>
+            <li>Results are <span class="key-term">qualitative</span>: colored = fail, not colored = pass; cannot quantify leakage rate</li>
+            <li>Sensitive to test conditions: different pressures, times, and dye concentrations can give different results for the same package</li>
+            <li>Challenging for opaque or colored containers, or products with naturally colored formulations</li>
+            <li>Cannot be directly converted to a leakage rate in mbar·L/s without a correlation study using a reference method (e.g., helium mass spectrometry)</li>
+        </ul>
+
+        <p>Despite these limitations, dye ingress may still be used as a supporting technique during method development, as a visual reference in validation studies, or in situations where no validated deterministic alternative exists yet. If used, it must be properly validated with documented positive and negative controls.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>染料浸入法的核心問題——毛細管作用閾值：</strong>染料液體要進入一個微小缺陷，必須克服表面張力。非常小的孔隙（< 0.1–0.3 µm）下，毛細管排斥力可能大於浸入驅動力，染料根本進不去。這意味著染料浸入法對於最小的「問題洩漏」（正好在 MALL 附近的洩漏）可能完全沒有偵測能力——而這些洩漏恰恰是最需要偵測的。</p>
+            <p><strong>破壞性檢測的商業影響：</strong>由於染料浸入是破壞性測試，測過的產品不能放行，只能做抽樣檢測。這意味著你不能做 100% 批放行，而只能依靠統計推斷，本身就帶有不確定性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>染料浸入法像用藍色墨水測試雨衣是否防水：把雨衣浸在藍色墨水裡，看裡面有沒有變藍。問題是：①測試後雨衣不能賣了（破壞性）；②極細微的針孔可能因表面張力而阻止墨水進入（漏網）；③「有藍色還是沒藍色」的判斷依賴人眼（主觀性）。現代汽車工廠檢測車門密封用超聲波掃描，而不是潑油漆看滲漏——這就是從概率性走向確定性的轉變。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>染料浸入法的「合規生存空間」：</strong>FDA 不是說「立即禁止使用染料浸入法」，而是說「應轉移到確定性方法」。在過渡期間，如果你仍在使用染料浸入法，需要：①有完整的驗證（方法驗證報告）；②有明確的正負對照；③有方法相關研究（correlation study）建立染料法結果與 MALL 的關係；④有清晰的遷移計畫，說明何時完成確定性方法的驗證。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個橙色著色的眼藥水，能否用傳統的染料浸入法（藍色甲基藍染料）做 CCI 測試？如果不能，請說明原因並提出替代方案。</li>
+                <li>在染料浸入法的驗證中，如何設計「最差條件（worst-case）」的正對照？需要考慮哪些因素？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- MICROBIAL INGRESS -->
+<div class="section-title">2.3 Microbial Ingress / Microbiological Challenge Test | 微生物浸入試驗</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">Microbiological Challenge Test (微生物挑戰試驗)</span>, also called microbial ingress test, is a probabilistic package integrity test that evaluates whether microorganisms can enter a sealed package under the test conditions. It is referenced in USP 〈1207.2〉 and historically has been considered the "gold standard" for CCI testing of sterile products.</p>
+
+        <p>Operating principle: The test package (filled with growth-supportive media such as tryptic soy broth, TSB) is immersed in a suspension of a specified challenge microorganism (typically a small bacteria such as <em>Serratia marcescens</em> or <em>Brevundimonas diminuta</em>) in an aqueous challenge medium. After the challenge period, the packages are incubated and inspected for turbidity (growth) as evidence of microbial ingress.</p>
+
+        <div class="quote-box">
+            "A microbiological challenge test is a package leak test whereby package integrity is evaluated by exposing containers filled with growth-supportive media to microorganisms suspended in submersion media (a liquid-borne challenge test). Leakage is evidenced by the subsequent growth of the challenge microorganisms in the package contents." — USP 〈1207〉 Glossary
+        </div>
+
+        <p>Critical limitations and USP's assessment:</p>
+        <ul>
+            <li><span class="key-term">Large sample sizes required</span>: because microbial ingress is inherently probabilistic (a single cell must enter, survive, and grow), large numbers of test units are needed to achieve statistical confidence, especially at small leak sizes</li>
+            <li>Cannot quantify leakage rate: a positive result (turbid = growth) confirms ingress occurred but cannot say at what leakage rate</li>
+            <li>Destructive: packages must be opened or discarded after testing</li>
+            <li>Test conditions (microbial challenge concentration, immersion conditions, incubation conditions) significantly affect results</li>
+            <li>At orifice diameters smaller than ~0.3 µm, the probability of microbial ingress becomes very low even with large sample sizes — meaning the test may pass a package that has a concerning leak</li>
+            <li>Historically misused as the sole definition of "sterile package integrity" — USP now explicitly broadens the definition</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>為什麼微生物挑戰試驗不再是「黃金標準」？</strong></p>
+            <p>這個方法的最大問題是：它只能評估「微生物侵入」這一個風險維度，而 USP 1207 現在定義的包裝完整性涵蓋三個維度（微生物侵入、產品外漏/汙染物進入、頭部空間氣體改變）。即使一個包裝「通過」了微生物挑戰試驗，它仍可能因頭部空間氧氣升高而導致藥品降解——這個真實的品質風險被微生物試驗完全忽略了。</p>
+            <p>另一個問題是0.3 µm 的「盲點」：比0.3 µm 小的洩漏孔，即使真的存在，微生物也幾乎無法通過，所以微生物試驗會「通過」這種包裝——但這個孔對氣體洩漏來說已經是 MALL 的邊界了。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>用微生物挑戰試驗評估「包裝完整性」，就像用「有沒有老鼠進來」評估家裡的防蟲措施——老鼠進不來，不代表螞蟻進不來，不代表水汽進不來，不代表你的食物不會腐壞。微生物挑戰試驗只問一個問題（細菌進不進來），而現代 CCI 評估需要回答三個問題（菌、液體/固體汙染物、氣體）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>樣本量計算的監管挑戰：</strong>在 FDA 審查中，審查員常常要求看微生物挑戰試驗的樣本量計算（sample size justification）。如果你用了 30 個樣本，但統計上需要 200 個才能達到 95% 置信區間（P &lt; 0.05），你的驗證數據可能被認為不足。確定性方法沒有這個問題，因為它給出的是可直接量化的數字，不依賴統計推斷。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>如果你的 CDMO 客戶要求在 NDA/BLA 申報中用微生物挑戰試驗作為主要 CCI 方法，你需要主動建議：①補充確定性方法的驗證資料；②至少進行相關性研究，建立微生物試驗結果與洩漏速率的關聯；③在文件中說明微生物試驗的局限性並提供科學理由；④制定確定性方法的遷移計畫。這不只是法規合規，也是保護客戶的商業投資。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個西林瓶的洩漏孔名義直徑為 0.2 µm。微生物挑戰試驗會通過還是失敗？真空衰減法呢？這個洩漏孔對產品品質有風險嗎？</li>
+                <li>為什麼選擇 <em>Serratia marcescens</em>（灰沙雷氏菌）或 <em>Brevundimonas diminuta</em>（少動鞘胺醇單胞菌）作為挑戰微生物？這些菌的特性有什麼意義？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- BUBBLE EMISSION -->
+<div class="section-title">2.4 Bubble Emission Test | 氣泡發射試驗</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The <span class="key-term">Bubble Emission Test (氣泡發射試驗)</span> is a probabilistic, visual leak test method based on detecting gas bubbles escaping from a pressurized package when submerged in or wetted by a liquid. It is referenced in USP 〈1207.2〉.</p>
+
+        <p>Operating principle: The test package is pressurized (internally) or placed under differential pressure, then submerged in a liquid (water, surfactant solution, or a designated test fluid). Gas leaking from the package through any breach forms visible bubbles. The location and rate of bubble formation are observed visually.</p>
+
+        <p>Variants:</p>
+        <ul>
+            <li><strong>Submersion method:</strong> Package is fully submerged in a liquid bath, and bubbles are observed on the package exterior</li>
+            <li><strong>Wet method / trace method:</strong> Specific areas of the package are wetted with test fluid, and localized bubble formation is observed</li>
+        </ul>
+
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Can provide information on <span class="key-term">leak location</span> as well as detection</li>
+            <li>Qualitative: results are based on visual observation of bubbles — subjective and operator-dependent</li>
+            <li>Not suitable for small leaks: very small leaks may produce bubbles too small to see, or below the bubble formation threshold</li>
+            <li>Cannot quantify leakage rate</li>
+            <li>Potentially destructive (liquid exposure may damage some products)</li>
+            <li>Limited to packages that can be pressurized with gas</li>
+            <li>Primarily used in R&amp;D, troubleshooting (OOS investigations), and method development — not typically suitable for routine 100% batch testing</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>氣泡試驗的最佳使用場景：</strong>雖然氣泡試驗靈敏度有限且主觀性強，但它有一個獨特優點：可以直接看到洩漏的位置（哪個地方冒泡，洩漏就在哪裡）。這讓它在以下場景非常有用：</p>
+            <ul>
+                <li><strong>OOS 根本原因分析（RCA）：</strong>當其他方法偵測到洩漏但無法定位時，氣泡試驗可以找出具體位置</li>
+                <li><strong>初步篩選/可行性評估：</strong>在方法開發早期，快速判斷某種缺陷類型是否產生可觀察的洩漏</li>
+                <li><strong>工廠模擬缺陷驗證：</strong>確認人工製作的缺陷（如雷射鑽孔）確實存在並連通</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>氣泡試驗就像用肥皂水找輪胎漏氣點——只要氣泡在哪裡冒出來，洩漏就在那裡。簡單直觀，但有兩個問題：很小的洩漏可能產生的氣泡太微小難以肉眼看見，而且測試後輪胎表面被弄濕了。這個方法用來「找在哪裡漏」很好用，但不能用來判斷「漏了多少」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>在 FDA 483 觀察意見（Form 483）中，CCI 相關的常見問題包括：①驗證方法靈敏度不足；②缺乏與 MALL 的相關性研究；③概率性方法樣本量不足；④操作者培訓記錄缺失。氣泡試驗因為高度依賴操作者目視判斷，特別容易受到這類質疑。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在 OOS 調查中，某批次凍乾西林瓶真空衰減法顯示有幾支異常，你想定位洩漏位置。氣泡試驗是否適合？需要注意哪些事項？</li>
+                <li>如果氣泡試驗和染料浸入法都屬於概率性方法，各自的最佳使用場景是什麼？何時應選哪個？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- VALIDATION REQUIREMENTS -->
+<div class="section-title">2.5 Method Validation Requirements | 方法驗證要求</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Package integrity leak test method validation is a process that demonstrates the suitability of a given leak test method for a specific product–package application. Validation is required for both deterministic and probabilistic methods, though the validation approaches differ. Key validation parameters for CCI methods include:</p>
+
+        <ul>
+            <li><span class="key-term">Accuracy (準確性)</span>: The method's ability to correctly differentiate packages that leak above the detection limit from those that do not leak. Measured by the rate of false positives and false negatives using positive controls (packages with known, characterized defects) and negative controls (optimally assembled, defect-free packages).</li>
+            <li><span class="key-term">Sensitivity / Detection Limit (靈敏度 / 偵測極限)</span>: The smallest leakage rate (or defect size) that the method can reliably detect. The method's detection limit must be at or below the established MALL.</li>
+            <li><span class="key-term">Specificity (特異性)</span>: The method's ability to distinguish leaking from non-leaking packages despite interfering factors (e.g., package surface condensation, product residue, environmental noise).</li>
+            <li><span class="key-term">Precision (精密度)</span>: The method's ability to yield reliable, repeatable data. Includes repeatability (same operator, same day), intermediate precision (multiple operators, multiple days), and reproducibility (multiple sites).</li>
+            <li><span class="key-term">Linearity / Quantitation Limit</span>: For quantitative methods — the ability to yield results proportional to leak size, and the smallest leak size that can be quantified with acceptable accuracy and precision.</li>
+            <li><span class="key-term">Robustness (耐用性)</span>: The method's ability to accurately identify leaking vs. non-leaking packages despite small but deliberate variations in test parameters.</li>
+        </ul>
+
+        <p>System suitability: A system suitability test should be performed prior to each test run to verify that the instrument and method are performing correctly. System suitability typically involves testing a positive control and a negative control to verify that the method can detect the target leak size and does not produce false positives.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>CCI 方法驗證的核心邏輯：</strong>驗證的目的是回答兩個問題：①這個方法夠靈敏嗎（能偵測到 MALL 附近的洩漏）？②這個方法夠準確嗎（不會漏掉真正有問題的包裝，也不會誤判好的包裝）？</p>
+            <p><strong>關鍵驗證項目的實際意義：</strong></p>
+            <ul>
+                <li><strong>準確性（Accuracy）：</strong>用已知孔徑的正對照和完美包裝的負對照，計算假陽性（false positive）和假陰性（false negative）率</li>
+                <li><strong>靈敏度（Sensitivity）：</strong>方法的偵測極限必須 ≤ MALL</li>
+                <li><strong>精密度（Precision）：</strong>重複測試同一個洩漏，結果要一致（確定性方法通常比概率性方法好很多）</li>
+                <li><strong>特異性（Specificity）：</strong>排除干擾因素，如玻璃瓶表面的水珠不會誤觸發警報</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+CCI 方法驗證核心指標計算：
+
+False Positive Rate (誤拒率) =
+  False Positives / (True Negatives + False Positives)
+
+False Negative Rate (誤放率，更危險) =
+  False Negatives / (True Positives + False Negatives)
+
+對 CCI 而言，False Negative Rate 更關鍵：
+→ 漏掉一個洩漏的包裝 = 可能有不合格產品流入市場
+
+檢測能力（Detection Power）：
+用已知洩漏速率的 positive controls 測試，
+確認方法在 MALL 處有充分靈敏度（通常要求 ≥ 95% 偵測率）
+
+System Suitability（系統適用性）：
+每次測試前必須確認：
+- Positive control 判定為不合格（方法有靈敏度）
+- Negative control 判定為合格（方法無假陽性）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>假陰性（False Negative）是最危險的錯誤：</strong>假陽性浪費產品（好的包裝被誤判為洩漏），但假陰性更嚴重（有洩漏的包裝被判定合格，流入市場）。CCI 方法驗證必須特別關注偵測極限，確保方法不會「漏掉」 MALL 附近的洩漏。</p>
+            <p><strong>正對照的選擇：</strong>正對照必須真實模擬生產中可能出現的缺陷。雷射鑽孔（laser-drilled holes）是常用的人工缺陷，因為孔徑可以精確控制和標定（通常用氦質譜法驗證其洩漏速率）。但要注意：雷射孔是近乎圓形的直通孔，而真實洩漏是曲折路徑——兩者行為可能有差異，需要進行 type defect（型態缺陷）研究。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>設計一個西林瓶真空衰減法的驗證正對照組：你需要什麼規格的雷射鑽孔？如何確認這個孔的洩漏速率對應 MALL？</li>
+                <li>什麼是「Robustness（耐用性）」驗證？請舉出三個你會故意改變的測試參數，來評估真空衰減法的耐用性。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- METHOD TRANSFER -->
+<div class="section-title">2.6 Method Transfer Considerations | 方法轉移考量</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><span class="key-term">Method transfer (方法轉移)</span> in the context of CCI testing refers to the process of extending a validated test method to a new product–package application, or of transferring a validated method from one testing site to another. The extent of validation work required for a method transfer depends on the degree of similarity between the new application and the original validated application.</p>
+
+        <p>Key considerations for method transfer:</p>
+        <ul>
+            <li><strong>Package similarity:</strong> If the new product–package has the same container and closure type, same material of construction, and same size range as the originally validated package, the transfer validation effort may be reduced (leveraging existing validation with limited bridging studies).</li>
+            <li><strong>Product differences:</strong> Changes in product formulation (viscosity, conductivity, color) may affect the performance of the test method and require re-evaluation.</li>
+            <li><strong>MALL similarity:</strong> If the MALL for the new product–package is less stringent than the MALL for the original application, and the test was already validated at the more stringent level, transfer may be straightforward.</li>
+            <li><strong>Instrument equivalency:</strong> If the transfer is to a different instrument of the same type (e.g., vacuum decay instrument from Vendor A to Vendor B), instrument qualification (IQ, OQ, PQ) and comparative performance testing against the original instrument are required.</li>
+            <li><strong>Regulatory strategy:</strong> For methods used in approved applications (NDA, BLA, ANDA), changes to the test method or transfer to a new site may require a prior approval supplement (PAS) or CBE-30 notification depending on the nature of the change.</li>
+        </ul>
+
+        <p>A science- and risk-based approach to method transfer allows some simplification of the validation package when the differences between the original and new application are minimal and well-documented. However, the core validation parameters (detection limit, accuracy at MALL) must always be demonstrated for the specific product–package being tested.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>方法轉移的本質問題：</strong>「這個方法在原來的產品–包裝上被驗證過，可以直接用在新的產品–包裝上嗎？」答案是：「視相似程度而定」。關鍵在於識別哪些因素可能影響方法性能：</p>
+            <ul>
+                <li>產品導電性變了嗎？（影響 HVLD 的靈敏度）</li>
+                <li>容器壁厚變了嗎？（影響 HVLD 的電壓設定）</li>
+                <li>頭部空間體積變了嗎？（影響真空衰減的壓力讀數）</li>
+                <li>MALL 更嚴格了嗎？（需要確認方法仍夠靈敏）</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>CDMO 的方法轉移挑戰：</strong>CDMO 常常需要為來自不同客戶的多個產品驗證類似的 CCI 方法。可以建立一個「通用驗證框架（platform validation）」，以最嚴格的條件（最小的 MALL，最具挑戰性的包裝）為基礎驗證，然後用橋接研究（bridging study）將方法延伸到較不嚴格的應用場景。這樣可以顯著減少每個產品的驗證工作量，但需要有充分的科學理由支持。</p>
+            <p><strong>法規申報影響：</strong>如果方法轉移涉及已批准的藥品，必須評估是否需要提交補充申請（supplement）。通常情況下，同廠同設備的方法擴展（line extension）風險最低；跨廠或換設備供應商需要更多文件支持。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>典型的 CDMO 方法轉移場景：客戶的藥品已在另一家 CMO 生產，CCI 方法是真空衰減法，驗證文件由原 CMO 持有。轉到你的工廠時，你需要：①取得原有驗證數據和正對照規格；②進行 IQ/OQ/PQ 確認你的設備性能等效；③進行橋接研究（Bridging Study），確認你的設備在使用相同正對照時得到相同結果；④如果客戶有 NDA/BLA，評估是否需要法規申報。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</html>
+            <ol>
+                <li>你的工廠用真空衰減法驗證了一個 2 mL 西林瓶的 CCI。現在同樣的橡膠塞和鋁蓋，但換成 5 mL 西林瓶（頭部空間更大）。需要全面重新驗證，還是只做橋接研究？你的決策依據是什麼？</li>
+                <li>為什麼「方法轉移後 MALL 更嚴格」是最高風險的情況？需要做哪些額外工作？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- REGULATORY EXPECTATIONS SUMMARY -->
+<div class="section-title">2.7 Regulatory Expectations — Transition from Probabilistic to Deterministic | 監管期望：從概率性方法向確定性方法的轉移</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>The current regulatory environment strongly encourages the transition from probabilistic CCI test methods to deterministic alternatives. Key regulatory positions include:</p>
+
+        <ul>
+            <li><strong>FDA Container Closure Integrity Testing Guidance (2023):</strong> States that deterministic methods are preferred for package integrity testing because they provide objective, quantitative data that can be directly compared to the MALL. The guidance acknowledges that probabilistic methods may still be used but requires robust justification and validation when deterministic alternatives exist.</li>
+            <li><strong>USP 〈1207〉 framework:</strong> Defines both deterministic and probabilistic methods but provides a clear framework that ties CCI to the MALL and encourages quantitative, science-based approaches.</li>
+            <li><strong>PDA Technical Report No. 27 (2013, revised):</strong> Provides detailed guidance on sterility testing and CCI, recommending deterministic methods as the current state of the science.</li>
+            <li><strong>ICH Q8/Q9/Q10 framework:</strong> Although not specific to CCI, the Quality by Design (QbD) and risk-based approach principles support using the most scientifically rigorous test methods available.</li>
+        </ul>
+
+        <p>When probabilistic methods are still being used, the following must be demonstrated:</p>
+        <ul>
+            <li>Method is fully validated for the specific product–package system</li>
+            <li>Positive controls are well-characterized with documented leak sizes</li>
+            <li>A correlation study has been performed to link the qualitative result to the MALL</li>
+            <li>Sample sizes are statistically justified</li>
+            <li>A transition plan to deterministic methods is in place, or a scientific justification for continuing to use probabilistic methods is documented</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>法規演進的趨勢線：</strong></p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><span class="hierarchy-box level-1">1990s–2000s：微生物挑戰試驗 = 黃金標準</span></div>
+                <div class="arrow-down">↓</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-2">2010s：USP 1207 引入確定性 vs. 概率性框架</span></div>
+                <div class="arrow-down">↓</div>
+                <div class="hierarchy-level"><span class="hierarchy-box level-3">2023：FDA 明確優先確定性方法，要求 MALL 關聯</span></div>
+            </div>
+            <p>這個趨勢不可逆。製藥公司和 CDMO 的策略應該是：「現有方法繼續使用並保持完整驗證，同時制定並執行向確定性方法的遷移計畫。」</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>「科學理由（Scientific Justification）」的重要性：</strong>如果你的工廠決定繼續使用某種概率性方法（而非立即遷移），在 FDA 检查或審查中，你必須能夠提供充分的書面科學理由說明：①為什麼這個方法仍然適用；②為什麼暫時無法遷移到確定性方法；③你的遷移時間表。沒有書面理由，只說「我們一直這樣做」是不夠的。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p><strong>CCI 現代化策略（適用 CDMO）：</strong></p>
+            <ul>
+                <li><strong>短期（0–12 個月）：</strong>盤點所有現有 CCI 方法；確認哪些是概率性方法；確認哪些方法有完整驗證文件和 MALL 相關性研究</li>
+                <li><strong>中期（1–3 年）：</strong>優先對新產品採用確定性方法；為高風險產品（生物製劑、凍乾品）啟動方法轉換計畫</li>
+                <li><strong>長期：</strong>建立確定性方法平台（如自動化真空衰減 + TDLAS），作為所有新產品的預設 CCI 策略</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個客戶的 BLA 已批准，其 CCI 方法是染料浸入法，且沒有與 MALL 的相關性研究。下一次 FDA 檢查（PAI 或例行 GMP 檢查）中，這可能帶來什麼風險？你如何提前準備？</li>
+                <li>設計一個從染料浸入法遷移到真空衰減法的橋接研究計畫。需要評估哪些項目？可以接受什麼作為「等效性（equivalency）」的證明？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>概率性方法（Dye Ingress、Microbial Ingress、Bubble Emission）結果受多種隨機因素影響，帶有固有不確定性，需要大樣本量，且通常無法直接量化洩漏速率</li>
+        <li>染料浸入法：破壞性、定性（通過/失敗）、靈敏度有毛細管閾值限制，對最小的問題洩漏可能失效；微生物挑戰試驗：只評估微生物侵入一個風險維度，且在 &lt; 0.3 µm 洩漏孔時靈敏度迅速下降</li>
+        <li>CCI 方法驗證必須涵蓋準確性、靈敏度/偵測極限（必須 ≤ MALL）、特異性、精密度和耐用性；假陰性（False Negative）是最危險的錯誤</li>
+        <li>方法轉移時需評估包裝相似性、產品差異、MALL 嚴格程度變化，並通過橋接研究確認等效性；法規申報影響必須提前評估</li>
+        <li>FDA 2023 指引和 USP 1207 明確優先確定性方法；CDMO 應建立現有概率性方法的完整驗證（包括 MALL 相關性研究）並制定向確定性方法遷移的計畫</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1207〉 Package Integrity Evaluation—Sterile Products | Section 2</p>
+</div>
+
+</body>
+</html>

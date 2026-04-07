@@ -3702,7 +3702,6 @@ Technol.2007, 16, 5, 383–399.
 American Society of Microbiologists, May 2006. Poster O-407.
 18. Madigan, M.T.; Martinko, J.M.; Parker, J. Brock Biology of  Microorganisms, 8th ed. Prentice Hall: New Jersey, 1997.
 19. Maniyannan, G. Disinfection and Decontamination: Principles, Applications and Related Issues. CRC Press: Boca
-Raton, FL, 2009.
 20. Nagai, K.; Maurata, T.; Ohta, S.; Zenda, H.; Ohnishi, M.; Hayashi, T. Two Different Mechanisms Are Involved
 in the Extremely High-Level Benzalkonium Chloride Resistance of a Pseudomonas Fluroescens Strain. J.
 Microbiol. Immunol. 2003, 47 (10),709–715.
@@ -3887,7 +3886,6 @@ Glenn Wright, Eli Lilly and Company
 Bethesda Towers
 4350 East West Highway
 Suite 200
-Bethesda, MD 20814 USA
 Tel:
 1 (301) 656-5900
 Fax:

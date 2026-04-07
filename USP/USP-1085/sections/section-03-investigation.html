@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USP &lang;1085&rang; Section 3: OOS Investigation, LER &amp; Alternate Methods</title>
+<style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>USP &lang;1085&rang; Guidelines on the Endotoxins Test</h1>
+    <div class="subtitle">Section 3: OOS Investigation, LER &amp; Alternate Methods</div>
+    <div class="page-info">USP General Chapter (Informational) &bull; Pages 11&ndash;14 of 14 &bull; Companion to &lang;85&rang;</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>掌握 BET OOS 調查的 Phase I（實驗室評估）和 Phase II（製程評估）框架</li>
+        <li>理解「無效試驗」與「OOS 結果」的根本區別</li>
+        <li>認識凝膠法「最終裁決」條款的正確解讀 &mdash; 以及常見的誤用</li>
+        <li>了解低內毒素回收（LER）現象對生物製劑 BET 的影響</li>
+        <li>掌握替代方法驗證的基本要求，包括 rFC 技術的考量</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: OOS INVESTIGATION                   -->
+<!-- ============================================ -->
+<div class="section-title" id="oos-investigation">Out-of-Specification Results &mdash; 超規結果調查</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>An endotoxins test result that does not meet product specifications necessitates an <span class="key-term">investigation</span>. The suspect result is considered valid unless a comprehensive investigation clearly demonstrates otherwise.</p>
+
+        <p><span class="key-term">Invalid tests are not OOS results.</span> Invalid tests are those where system suitability parameters (negative controls, PPCs, confirmation of label claim, or generation of a linear standard curve) do not function as expected. Although invalid tests should be tracked and trended, a true OOS test failure only exists when a <span class="key-term">valid assay</span> has been performed and generates results exceeding the specification.</p>
+
+        <h3>Phase I: Laboratory Investigation</h3>
+        <p>The FDA OOS guidance terms this a Phase I investigation. The checklist should include:</p>
+        <ul>
+            <li><span class="key-term">Testing history</span> of the material under test</li>
+            <li>Sampling procedures, container integrity, sample preparation</li>
+            <li>Reagent preparation, storage, and use</li>
+            <li>Calibration and maintenance status of instrumentation</li>
+            <li>Appropriateness of contact equipment and disposables</li>
+            <li>Test procedure consistency with suitability data</li>
+            <li>All controls and system suitability indicators</li>
+            <li>Calculation accuracy (limits, MVD, contamination levels)</li>
+            <li>Analyst training and OOS history</li>
+        </ul>
+
+        <p>Two important directions to analysts in the SOP:</p>
+        <ol>
+            <li>If an analyst realizes a <span class="key-term">mistake during testing</span>, the test should be stopped and the reason documented at the time the error was identified</li>
+            <li>Analysts should <span class="key-term">not discard</span> the original sample, dilution tubes, or reagents until results are evaluated against specification</li>
+        </ol>
+
+        <h3>Phase II: Production Investigation</h3>
+        <p>Assessment of all <span class="key-term">manufacturing activities</span> that could have impacted endotoxin content. A product manufactured under a state of control should not fail endotoxins testing, so Phase II should focus on <span class="key-term">anything different</span> about the lot in question.</p>
+
+        <p>Investigational tests are <span class="key-term">not re-tests</span> and should not be used to release material. They are used to identify conditions contributing to inaccuracy.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：Invalid vs OOS &mdash; 兩條完全不同的路</h4>
+            <p>這是 BET 調查中最常被混淆的概念：</p>
+            <table>
+                <tr><th>項目</th><th>Invalid Test（無效試驗）</th><th>OOS Result（超規結果）</th></tr>
+                <tr><td>定義</td><td>系統適用性不過（NC、PPC、r 值等）</td><td>系統適用性通過，但結果超出限值</td></tr>
+                <tr><td>意義</td><td>試驗不可靠，結果無效</td><td>產品可能有問題</td></tr>
+                <tr><td>處理</td><td>追蹤趨勢，重新測試</td><td>啟動正式調查（Phase I + Phase II）</td></tr>
+                <tr><td>放行影響</td><td>不影響（但頻繁發生需 CAPA）</td><td>產品不可放行，除非調查推翻結果</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>體溫計壞了 vs 真的發燒：</strong></p>
+            <p>Invalid test 就像體溫計壞了 &mdash; 它量出 39&deg;C，但你知道體溫計有問題（= 系統適用性不過），所以這個數字不算數。你換一支好的體溫計重新量就好。</p>
+            <p>OOS 就像你確認體溫計是好的（= 系統適用性通過），量出來就是 39&deg;C。你不能因為不喜歡這個結果就說體溫計壞了。你需要認真調查為什麼在發燒。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：Phase I Checklist 的黃金法則</h4>
+            <ul>
+                <li><strong>「不要丟東西！」</strong> &mdash; OOS 發生後，所有原始樣品、稀釋管、試劑都必須保留。這些是調查的關鍵證據</li>
+                <li><strong>「即時記錄錯誤」</strong> &mdash; 如果分析師在操作過程中發現自己犯了錯，應該立即停止試驗並記錄原因。事後才「發現」的錯誤在審計員眼中可信度很低</li>
+                <li><strong>調查性試驗 ≠ 重測</strong> &mdash; Phase I/II 期間做的額外測試是為了驗證假設，不能用來推翻原始 OOS 結果或放行產品</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的分析師做了一個 BET，PPC 回收率正常（80%），但產品結果超出限值。這是 Invalid test 還是 OOS？為什麼？</li>
+                <li>Phase II 調查應該由哪些部門參與？為什麼 &lang;1085&rang; 建議包含微生物學家？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: GEL-CLOT DISPUTE CLAUSE             -->
+<!-- ============================================ -->
+<div class="section-title" id="gel-clot-clause">The Gel-Clot "Dispute" Clause &mdash; 凝膠法裁決條款</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The statement in &lang;85&rang; that reads "<span class="key-term">In the event of doubt or dispute, the final decision is made based upon the gel-clot limit test unless otherwise indicated in the monograph</span>" has been <span class="key-term">widely misinterpreted</span>.</p>
+
+        <p>It is relevant <strong>only</strong> to the specific case of a conflicting result between a regulatory agency using the gel-clot method for lot release testing and a testing laboratory using a different LAL-bacterial endotoxins test platform.</p>
+
+        <p>It is <strong>not intended</strong> to allow a laboratory to use a gel-clot result that provides passing results when the laboratory's customary assay method for the product shows an OOS test result.</p>
+
+        <p>In the event of a product failure, the <span class="key-term">total level of endotoxins activity</span> in the failed sample(s) should be determined. For gel-clot assays, this may involve testing of dilutions <span class="key-term">beyond the MVD</span> until an endpoint is reached. These values may provide a clue as to the source of potential contamination, a case of mishandling of a positive control, or a tube mix-up.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：被誤解的「最終裁決」</h4>
+            <p>這可能是 &lang;85&rang; 中被誤用最嚴重的條款。許多實驗室錯誤地認為：</p>
+            <p><strong>錯誤理解：</strong>「如果我的 kinetic 法結果 OOS，我可以改用 gel-clot 法，如果 gel-clot 通過了，就算產品合格。」</p>
+            <p><strong>正確理解：</strong>這個條款只適用於一個非常特定的場景 &mdash; <strong>FDA 用 gel-clot 做放行確認檢測，而你的實驗室用其他方法，兩者結果衝突時</strong>。它不是讓你「方法挑選」（method shopping）的藉口。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>考試的申訴機制：</strong></p>
+            <p>這個條款就像大學考試的「申訴機制」&mdash; 如果學生（實驗室）和老師（FDA）對同一份考卷的評分有爭議，以老師用的「標準答案」（gel-clot）為準。但這不代表你可以先用 A 卷（kinetic 法）考試，考砸了之後要求改用 B 卷（gel-clot）重考。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：OOS 後的實際行動</h4>
+            <p><strong>測到 endpoint：</strong>產品 OOS 後，應該繼續稀釋測試（超出 MVD）直到找到 endpoint。知道實際內毒素含量（例如 50 EU/mL vs 500 EU/mL）對根因分析非常有價值 &mdash; 前者可能是設備清潔問題，後者可能是原料污染。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的客戶堅持要用凝膠法「確認」kinetic 法 OOS 結果。你應該如何解釋 &lang;1085&rang; 的立場？</li>
+                <li>一個產品在 MVD 處 OOS，你繼續稀釋後發現實際含量是 200 EU/mL（限值為 5 EU/mL）。這個資訊對調查方向有什麼幫助？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: LER & HOLD TIME                     -->
+<!-- ============================================ -->
+<div class="section-title" id="ler-holdtime">Low Endotoxin Recovery (LER) &amp; Hold Time Studies &mdash; 低內毒素回收與保存時間驗證</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <p>The original text addresses several points related to endotoxin behavior in product matrices:</p>
+
+        <p>Endotoxin standards, attributed to differences in source and manner of preparation, could "<span class="key-term">react differently from native sources of endotoxins</span>." Standards extracted by the Westphal method may not always be representative surrogates for modeling the behavior of natural endotoxins in some pharmaceutical, biopharma, or medical device extraction experiments.</p>
+
+        <p>Do not store RSE or CSE dilutions without a <span class="key-term">validation study</span> that includes:</p>
+        <ul>
+            <li>Vessel type and materials of manufacture</li>
+            <li>Concentrations of RSE or CSE to be held</li>
+            <li>Hold temperature</li>
+            <li>Volume of the dilutions to be held</li>
+        </ul>
+
+        <p>Sample hold times and conditions should be determined and subsequently documented to ensure that accurate test results can be generated within the qualified time.</p>
+
+        <p>References cited in the chapter include key publications on endotoxin masking and hold-time studies by <span class="key-term">Bolden et al. (2017)</span> on harmonized endotoxin recovery protocol evaluation by 14 BioPhorum companies, and <span class="key-term">Bolden et al. (2014)</span> on evidence against a bacterial endotoxin masking effect.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：LER（低內毒素回收）</h4>
+            <p><strong>什麼是 LER？</strong></p>
+            <p>LER 是指在某些產品基質中（特別是含有 citrate、polysorbate 等成分的生物製劑），用純化 LPS（CSE）做的 endotoxin spike 在保存一段時間後回收率顯著下降的現象。</p>
+            <p><strong>爭議核心：</strong></p>
+            <ul>
+                <li><strong>「遮蔽效應」假說</strong> &mdash; 某些配方成分會「遮蔽」內毒素，使 LAL 無法偵測到，即使內毒素仍然存在且有生物活性</li>
+                <li><strong>反對意見</strong> &mdash; Bolden et al. (2014) 提出證據認為生物藥品中不存在內毒素遮蔽效應。BioPhorum 的多公司研究（2017）進一步探討了這個問題</li>
+            </ul>
+            <p><strong>&lang;1085&rang; 的態度：</strong>謹慎但不恐慌。承認標準品與天然內毒素行為可能不同，但沒有全面否定現行 BET 方法學。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>油漆蓋住的釘子：</strong></p>
+            <p>LER 的「遮蔽效應」假說就像一面牆上有突出的釘子（= 內毒素），你用 CSE 模擬了一根相同大小的釘子插進去。過了幾天，油漆（= 配方成分）把釘子蓋住了，你摸不到了（= LAL 偵測不到）。但釘子還在那裡（= 內毒素仍有生物活性）。</p>
+            <p>反對者則說：「你插進去的是假釘子（純化 LPS），它跟真釘子（天然內毒素）的材質不同，所以它被油漆蓋住的方式也不同。」</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 的 Hold Time 驗證策略</h4>
+            <p><strong>對 CDMO 的直接影響：</strong>如果你承接生物製劑客戶，bulk drug substance 的保存時間驗證（hold time study）必須包含 endotoxin spike recovery。</p>
+            <p><strong>驗證要素（四個參數）：</strong></p>
+            <ul>
+                <li><strong>容器材質</strong> &mdash; 不同材質對 LPS 的吸附特性不同（玻璃 vs 塑膠 vs 不鏽鋼）</li>
+                <li><strong>CSE 濃度</strong> &mdash; 不同濃度的 spike 可能有不同的回收行為</li>
+                <li><strong>保存溫度</strong> &mdash; 2-8&deg;C vs 室溫 vs -20&deg;C</li>
+                <li><strong>保存體積</strong> &mdash; 表面積/體積比影響吸附程度</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的客戶產品含有 polysorbate 80 和 citrate buffer。在做 hold time study 時，你會如何設計 endotoxin spike recovery 試驗？</li>
+                <li>如果 spike recovery 在 T=0 時是 95%，但在 T=24h 時降到 40%，你會如何解讀這個結果？對日常 BET 操作有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SECTION: ALTERNATE TEST METHODS              -->
+<!-- ============================================ -->
+<div class="section-title" id="alternate-methods">Alternate Test Methods &amp; Glossary &mdash; 替代方法與術語表</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>Original Text</h2>
+
+        <h3>Alternate Test Methods</h3>
+        <p>The methods listed in &lang;85&rang; (gel-clot limits test, gel-clot assay, kinetic chromogenic, endpoint chromogenic, kinetic turbidimetric) are considered to be <span class="key-term">validated</span>.</p>
+
+        <p>A laboratory may choose to use an assay methodology not listed in &lang;85&rang;. If such a choice is made, the alternate test must be <span class="key-term">fully validated</span> to ensure that decisions made using the alternate methodology are <span class="key-term">equivalent to or better than</span> decisions made using the validated USP methods and ultimately approved by the appropriate regulatory authority.</p>
+
+        <p>Guidance on validation of alternate methods can be found in &lang;1223&rang; (Validation of Alternative Microbiological Methods) and &lang;1225&rang; (Validation of Compendial Procedures).</p>
+
+        <h3>Key Glossary Terms</h3>
+        <table>
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td><span class="key-term">Bacterial endotoxins</span></td><td>A GNB outer membrane macromolecular complex of polysaccharide, lipid, and protein. Extracted, purified (protein-free) endotoxin is generally referred to as LPS.</td></tr>
+            <tr><td><span class="key-term">BET</span></td><td>Compendial bacterial endotoxins test</td></tr>
+            <tr><td><span class="key-term">CSE</span></td><td>A preparation with a stable endotoxin concentration calibrated against RSE. CSEs are not certified for purity or activity by a third party &mdash; best described as calibration analytes.</td></tr>
+            <tr><td><span class="key-term">Intrathecal</span></td><td>A parenteral injection resulting in product contacting cerebrospinal fluid</td></tr>
+            <tr><td><span class="key-term">LAL</span></td><td>Limulus amebocyte lysate &mdash; the reagent used in BET performance</td></tr>
+            <tr><td><span class="key-term">RSE</span></td><td>Primary endotoxin standard. Extracted, purified, and formulated <em>E. coli</em> 0113:H10:K LPS</td></tr>
+            <tr><td><span class="key-term">Suitability</span></td><td>Demonstration that the chosen assay is appropriate for its defined purpose in testing the material</td></tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：rFC &mdash; 替代方法的新星</h4>
+            <p>雖然 &lang;1085&rang; 沒有直接提到 <strong>recombinant Factor C (rFC)</strong>，但它是當前最受矚目的替代方法。了解替代方法驗證的框架，對評估 rFC 至關重要：</p>
+            <ul>
+                <li><strong>rFC 的優勢</strong> &mdash; 不依賴鱟（horseshoe crab）血液，解決動物福利和供應鏈問題；不受 glucan 干擾（因為沒有 Factor G 路徑）</li>
+                <li><strong>驗證要求</strong> &mdash; 必須證明與 USP 方法「等效或更好」；需要法規機構批准</li>
+                <li><strong>現狀</strong> &mdash; 歐洲藥典已接受 rFC 作為替代方法（Ph.Eur. 2.6.32），USP 也在評估中</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>從馬車到汽車的轉型：</strong></p>
+            <p>LAL 方法就像馬車 &mdash; 已經用了幾十年，大家都很熟悉，法規也圍繞它建立。rFC 就像汽車 &mdash; 技術上可能更好（更特異、更穩定、更環保），但要取代馬車需要重新修路（法規更新）、培訓司機（分析師訓練）、建設加油站（供應鏈建設）。</p>
+            <p>目前的階段是「馬車和汽車共存」 &mdash; 你可以選擇使用 rFC，但必須先通過嚴格的「路測」（等效性驗證）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 的替代方法策略</h4>
+            <ul>
+                <li><strong>不要急著轉換：</strong>除非有明確的商業或科學理由（如 glucan 干擾嚴重），目前繼續使用 LAL 方法是最安全的選擇</li>
+                <li><strong>關注法規動態：</strong>USP、Ph.Eur.、JP 對 rFC 的接受程度不同。你的客戶目標市場決定了你能使用什麼方法</li>
+                <li><strong>雙重驗證準備：</strong>如果計劃未來轉換到 rFC，可以開始做「橋接研究」&mdash; 同一批產品同時用 LAL 和 rFC 測試，累積比較數據</li>
+                <li><strong>Monocyte Activation Test (MAT)：</strong>別忘了 MAT 也是一個替代方法選項，特別適合可能含有非內毒素熱原的產品</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：術語表的關鍵洞察</h4>
+            <p><strong>CSE 不是「標準品」：</strong>原文特別強調，CSE 雖然被稱為「control standard endotoxin」，但它不像 RSE 那樣經過第三方認證純度和活性。CSE 更準確的描述是「校正分析物」（calibration analyte）。這個區別在審計時可能被問到。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>如果你的 CDMO 想導入 rFC 方法取代 LAL，根據 &lang;1085&rang; 的框架，你需要完成哪些驗證步驟？</li>
+                <li>一個歐洲客戶要求你使用 rFC 方法，但你的 FDA 客戶要求使用 &lang;85&rang; 方法。你會如何管理這個差異？</li>
+                <li>CSE 被重新定義為「校正分析物」而非「標準品」，這對實驗室的品質系統文件有什麼影響？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>Invalid ≠ OOS：</strong>系統適用性不過是 Invalid（無效），需重測；系統適用性通過但超標才是 OOS（超規），需啟動正式調查</li>
+        <li><strong>Phase I + Phase II：</strong>OOS 調查分兩階段 &mdash; 先查實驗室（分析誤差），再查生產（製程偏差）</li>
+        <li><strong>不要丟證據：</strong>OOS 發生後，原始樣品、稀釋管、試劑全部保留。分析師發現操作錯誤應即時記錄並停止試驗</li>
+        <li><strong>Gel-clot 裁決條款：</strong>僅適用於實驗室 vs 法規機構的結果爭議，不是「方法挑選」的許可證</li>
+        <li><strong>LER 現象：</strong>純化 LPS 在某些產品基質中保存後回收率下降 &mdash; 對 hold time 驗證設計有重要影響</li>
+        <li><strong>替代方法：</strong>rFC 等非 &lang;85&rang; 方法必須經過完整驗證並獲得法規批准。目前 LAL 仍是主流選擇</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+<footer class="main-footer">
+    <p>USP &lang;1085&rang; Guidelines on the Endotoxins Test &mdash; Section 3: OOS Investigation &amp; Alternate Methods</p>
+    <p>SterileGMP Knowledge Hub &bull; Bilingual Educational Document</p>
+</footer>
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">&uarr;</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

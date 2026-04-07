@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP〈1211〉Section 0: Introduction & SAL Concepts</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>USP〈1211〉Sterilization Assurance</h1>
+    <div class="subtitle">Section 0: Introduction &amp; SAL Concepts &mdash; 導論與無菌保證水準概念</div>
+    <div class="page-info">Pages 1&ndash;3 | USP General Chapter (Informational)</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解「無菌」（Sterility）的絕對定義及其在實務上無法完全證明的根本矛盾</li>
+        <li>掌握 <span class="key-term">Sterility Assurance</span>（無菌保證）的核心概念：不是靠測試，而是靠整體系統控制</li>
+        <li>了解 SAL 10<sup>&minus;6</sup>（Sterility Assurance Level）的定義與適用場景</li>
+        <li>區分終端滅菌（Terminal Sterilization）與無菌製程（Aseptic Processing）的基本差異</li>
+        <li>認識 USP〈1211〉作為「總綱文件」如何串連〈71〉、〈1116〉、〈1229〉等相關章節</li>
+        <li>理解 Quality by Design（QbD）在無菌製造中的獨特應用方式</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- INTRODUCTION                                  -->
+<!-- ============================================ -->
+<div class="section-title">Introduction &mdash; 緒論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>This informational chapter provides general information on the concepts and principles involved in the preparation of materials that must be sterile. Within the strictest definition of <span class="key-term">sterility</span>, an item is deemed sterile only when it contains no viable microorganisms. However, this textual definition cannot be applied to actual items labeled as sterile because of irresolvable limitations in testing. <span class="key-term">Sterility</span> cannot be demonstrated without the destructive testing of every sterile unit.</p>
+
+        <p>In a real sense, microbiological safety is achieved through the implementation of interrelated controls that in combination provide confidence that the items are suitable for use as labeled. It is the controls that provide the desired assurance from microbiological risk rather than the results of any in-process or finished goods testing. The verification of safety of products labeled sterile is generally known as <span class="key-term">&ldquo;sterility assurance&rdquo;</span> and that nomenclature will be used throughout this chapter.</p>
+
+        <div class="quote-box">
+            &ldquo;It is the controls that provide the desired assurance from microbiological risk rather than the results of any in-process or finished goods testing.&rdquo;
+        </div>
+
+        <p>The establishment of an effective <span class="key-term">sterility assurance program</span> requires information about the material to be sterilized. An initial determination should be made regarding the potential for <span class="key-term">terminal sterilization</span> of the material in its primary container applying the principles defined in <span class="key-term">Sterilization of Compendial Articles 〈1229〉</span>. As described, the appropriate process provides a balance between conditions that are lethal to potential bioburden present in/on the item and those that preserve its essential quality attributes.</p>
+
+        <p>Depending upon the results of that determination, sterility of the item may be achieved by either <span class="key-term">aseptic processing</span> or <span class="key-term">terminal sterilization</span>. The potential for a process that relies on both the protective measures inherent to aseptic processing and the lethal nature of terminal sterilization may offer advantages.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 &mdash; 無菌的悖論</h4>
+            <p><strong>無菌（Sterility）的絕對定義：</strong>一個物品「不含任何有生命力的微生物」。這是一個全有或全無（all-or-nothing）的概念。</p>
+            <p><strong>根本矛盾：</strong>要證明一個物品是無菌的，唯一的方法是把它打開、培養、測試 &mdash; 但這個動作本身就破壞了無菌狀態。你無法在不破壞產品的前提下證明它是無菌的。</p>
+            <p><strong>因此：</strong>USP 明確表示，無菌保證不是來自「測試結果」，而是來自「整體控制系統」&mdash; 包括設施設計、設備、人員、製程控制、環境監控等所有要素的綜合表現。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>機場安全類比：</strong>一個機場能否確保沒有危險物品上飛機？你無法逐一檢查每位旅客身上的每個細胞。但透過 X 光機、金屬探測門、行李掃描、安全人員巡邏、旅客身份驗證等多層控制，你可以將風險降到極低水準。</p>
+            <p>「無菌保證」就是這個道理 &mdash; 不是靠最後的一次測試來「證明」安全，而是靠整個系統的每一層防護來「確保」安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; USP〈1211〉的定位</h4>
+            <p><strong>Informational Chapter（資訊性章節）：</strong>USP 章節編號在〈1000〉以上的屬於資訊性章節，不具有強制性法規效力。但〈1211〉是所有無菌製造的概念基礎，被 FDA、EMA 等監管機構廣泛引用。</p>
+            <p><strong>串連功能：</strong>〈1211〉就像一張路線圖，將無菌試驗〈71〉、滅菌方法〈1229〉系列、環境監控〈1116〉、去熱原〈1228〉等章節的核心概念整合為一個完整的無菌保證架構。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- STERILITY VS STERILIZATION                    -->
+<!-- ============================================ -->
+<div class="section-title">Sterility Assurance Level (SAL) &mdash; 無菌保證水準</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Terminal Sterilization</h3>
+        <p>Terminally sterilized products are the lowest risk category of sterile pharmaceutical products. Unlike products aseptically manufactured under conditions designed to prevent microbial ingress, terminally sterilized products are subjected to a sterilization process that imparts a <span class="key-term">quantifiable safety level</span>. Terminal sterilization processes achieve this by delivering measurable physical conditions that correspond to microbial lethality.</p>
+
+        <p>For terminally sterilized products, sterility assurance is defined in terms of the <span class="key-term">probability of nonsterility (PNS)</span>, or the probability of the terminal sterilization process generating a nonsterile unit (<span class="key-term">PNSU</span>). Terminal sterilization processes must achieve a consistent validated performance of a PNSU of &le;10<sup>&minus;6</sup> (a probability of NMT 1 nonsterile unit in 1 million units produced).</p>
+
+        <p>The convention by which terminal sterilization cycles are developed and validated ensures that the actual PNSU is typically much lower (better) than the minimum standard of &lt;10<sup>&minus;6</sup>.</p>
+
+        <h3>Aseptic Processing</h3>
+        <p>There are a substantial number of sterile products that cannot be terminally sterilized because of adverse impact on the product/package&rsquo;s essential properties and must be prepared by <span class="key-term">aseptic processing</span>. Aseptic processes are designed to prevent the introduction of viable microorganisms into/onto separately sterilized materials during their assembly into a sealed sterile package.</p>
+
+        <p>Regardless of process scale, all of the individually sterilized materials must be protected from contamination from the point of sterilization through closure of the primary package. This is accomplished through adherence to the principles described below in which an <span class="key-term">ISO 5 condition</span> is maintained when materials are exposed to the environment.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 &mdash; SAL 10<sup>&minus;6</sup></h4>
+            <p><strong>Sterility Assurance Level（SAL）：</strong>終端滅菌製程的安全水準以「非無菌機率」（PNSU）來定量表達。SAL 10<sup>&minus;6</sup> 表示每一百萬個單位中，最多只有一個非無菌單位的機率。</p>
+            <ul>
+                <li>SAL 10<sup>&minus;6</sup> = 百萬分之一的非無菌機率</li>
+                <li>這是終端滅菌的「最低門檻」&mdash; 實務上驗證過的製程通常遠優於此</li>
+                <li>SAL 的概念僅適用於終端滅菌製程，無菌製程（Aseptic Processing）無法以此方式量化</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; 兩條路徑的根本差異</h4>
+            <table>
+                <tr><th>面向</th><th>終端滅菌 Terminal Sterilization</th><th>無菌製程 Aseptic Processing</th></tr>
+                <tr><td>核心原理</td><td>先充填，再殺菌</td><td>分別滅菌，再無菌組裝</td></tr>
+                <tr><td>風險等級</td><td>較低（可量化 SAL）</td><td>較高（依賴過程控制）</td></tr>
+                <tr><td>品質保證基礎</td><td>物理參數（溫度、時間、劑量）</td><td>設施、設備、人員、環境的整體控制</td></tr>
+                <tr><td>產品適用</td><td>耐熱/耐輻射產品</td><td>生物製劑、蛋白質藥物等熱敏感產品</td></tr>
+                <tr><td>法規偏好</td><td>首選 &mdash; 風險最低</td><td>僅在終端滅菌不可行時使用</td></tr>
+            </table>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 &mdash; 無菌製程的 ISO 5 要求</h4>
+            <p><strong>ISO 5 環境：</strong>無菌製程中，所有暴露在環境中的已滅菌物料必須處於 ISO 5 等級的潔淨環境下。ISO 5 的含義是每立方公尺空氣中 &ge;0.5 &mu;m 的粒子數不超過 3,520 個。</p>
+            <p>這個要求確保了從滅菌完成到密封封裝之間的整個「暴露窗口」都有最高等級的環境保護。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- POST-ASEPTIC TERMINAL STERILIZATION           -->
+<!-- ============================================ -->
+<div class="section-title">Post-Aseptic Processing Terminal Sterilization &mdash; 無菌製程後終端滅菌</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>An <span class="key-term">aseptic process followed by a terminal sterilization process</span> provides superior control over the presterilization bioburden, such that the subsequent sterilization process can be designed with less overall lethality, thereby making it possible to substantially extend the use of terminal sterilization to products with greater sensitivity to the applied energy of the process.</p>
+
+        <p>From a patient safety perspective, this approach has the following distinct advantages:</p>
+        <ul>
+            <li>An adventitious contaminant introduced during aseptic processing is easily killed by the terminal sterilization step, reducing the extent of in-process environmental monitoring performed</li>
+            <li>Bioburden controls for the terminal process are simplified because all units have been aseptically filled</li>
+            <li>Where a product is made using either process alone, the limitations of each (no terminal lethal component in aseptic, more degradation in terminal sterilization) would persist</li>
+            <li>Where bioburden is controlled through aseptic processing, terminal sterilization can be applicable at lower lethality levels</li>
+        </ul>
+
+        <p>The focus must be on the ability of the process to kill bioburden organisms rather than biological indicators (see 〈1229〉 and <span class="key-term">Moist Heat Sterilization of Aqueous Liquids 〈1229.2〉</span>).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 &mdash; 混合策略的優勢</h4>
+            <p><strong>Aseptic + Terminal = 最佳方案？</strong>USP〈1211〉提出了一個進階策略：先用無菌製程充填，再用溫和的終端滅菌處理。這個組合解決了兩種方法各自的弱點：</p>
+            <ul>
+                <li><strong>無菌製程的弱點</strong>：無法殺死意外引入的污染微生物</li>
+                <li><strong>終端滅菌的弱點</strong>：標準滅菌條件（如 121&deg;C / 15 min）可能破壞熱敏感產品</li>
+                <li><strong>混合方案</strong>：因為無菌充填已將生物負載控制到極低水準，終端滅菌只需要很溫和的條件即可達到 SAL 10<sup>&minus;6</sup></li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>雙重安全鎖：</strong>想像一間金庫。第一道門（無菌製程）已經排除了 99.99% 的入侵者。第二道門（終端滅菌）只需要一個普通的鎖就夠了，因為能闖過第一道門的人已經極少。如果只靠第二道門，你就需要一個超級重型鎖（高溫長時間滅菌），但這可能會損壞金庫裡的物品（產品品質劣化）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; CDMO 實務應用</h4>
+            <p><strong>策略價值：</strong>對 CDMO 而言，這個混合策略代表可以將終端滅菌的適用範圍擴展到更多產品類型。關鍵在於：</p>
+            <ul>
+                <li>產品穩定性研究必須確認溫和滅菌條件不會影響產品品質</li>
+                <li>需要對生物負載（bioburden）來源進行全面評估，而非僅依賴生物指示劑（BI）</li>
+                <li>這個策略在 EU Annex 1（2023）中也得到認可，監管趨勢是鼓勵更多使用終端滅菌</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- QbD IN STERILE MANUFACTURING                  -->
+<!-- ============================================ -->
+<div class="section-title">Quality by Design in Sterile Manufacturing &mdash; 品質源於設計</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Consideration of these principles adapts the <span class="key-term">Quality by Design (QbD)</span> approach widely adopted in regulatory standards. Using QbD concepts in sterile operations is markedly different from the applications in the typical formulation, pharmaceutical, chemical, or biological synthesis process.</p>
+
+        <p>The establishment of direct linkage between a monitored condition and process outcome with respect to sterile manufacturing is <span class="key-term">statistically difficult and analytically uncertain</span>. The situation with respect to the definition of physical design elements is similar. Given the great variation in sterile product manufacturing with respect to scale, configuration, and complexity, it follows that the design alternatives and operating practices must also be flexible.</p>
+
+        <p>Thus, the recommendations provided in this chapter are entirely <span class="key-term">non-numeric</span>, because there are no ready means with which to demonstrate the suitability of specific values. Instead, QbD for sterile processing should be driven toward a singular goal of <span class="key-term">optimizing contamination control</span> with a particular focus on the microbial risk impact of personnel.</p>
+
+        <p>Recognition that <span class="key-term">operating personnel are the most significant contributors of microbiological risk</span> leads to design preferences and operating principles:</p>
+        <ul>
+            <li>The use of <span class="key-term">automation technology</span>&mdash;to reduce or eliminate personnel interventions and thus personnel-borne contamination</li>
+            <li>The use of <span class="key-term">separative technologies</span>&mdash;to eliminate, to the extent technically possible, human sourced contamination</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 &mdash; QbD 在無菌製造的獨特性</h4>
+            <p><strong>為什麼無菌製造的 QbD 不同？</strong>在一般製藥製程中，你可以建立「輸入參數」與「輸出品質」之間的直接數學關係（如攪拌速度 vs 粒徑分布）。但在無菌製造中：</p>
+            <ul>
+                <li>你無法建立「環境微粒數 = X」→「產品無菌機率 = Y」這樣的直接關聯</li>
+                <li>環境監控數據都是「快照」&mdash; 只代表採樣那一刻的狀態</li>
+                <li>微生物污染是隨機、低機率事件，統計分析困難</li>
+            </ul>
+            <p>因此 USP〈1211〉明確表示：本章所有建議都是「非數值性」的 &mdash; 不會給你一個具體的微粒限值或 CFU 上限，而是提供設計原則和控制策略。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; 人員是最大風險源</h4>
+            <p>USP〈1211〉反覆強調的核心訊息：<strong>在無菌製造中，人是最大的微生物污染來源</strong>。這個認知直接驅動了兩大設計原則：</p>
+            <ul>
+                <li><strong>自動化（Automation）：</strong>減少人員介入的需求</li>
+                <li><strong>隔離技術（Separative Technologies）：</strong>如隔離器（Isolator）、RABS，將人與無菌區域物理隔離</li>
+            </ul>
+            <p>這與 EU Annex 1（2023）的方向完全一致 &mdash; 新法規明確偏好隔離器和 RABS 而非傳統開放式潔淨室。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 USP〈1211〉說無菌保證來自「控制」而非「測試」？如果你是 FDA 稽查員，在查廠時發現一家公司過度依賴最終無菌試驗而忽視過程控制，你會有什麼反應？</li>
+                <li>在你的 CDMO 工廠中，有哪些產品目前使用無菌製程但可能適合採用「無菌製程 + 溫和終端滅菌」的混合策略？考慮產品穩定性和經濟效益。</li>
+                <li>USP 說 QbD 在無菌製造中是「非數值性」的。但 EU Annex 1 對環境監控有明確的數值限值。這兩者是否矛盾？如何調和？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- RELATIONSHIP TO OTHER CHAPTERS                -->
+<!-- ============================================ -->
+<div class="section-title">Relationship to Other USP Chapters &mdash; 與其他 USP 章節的關係</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>The establishment of an effective sterility assurance program requires consideration of multiple interrelated USP chapters. USP〈1211〉references the following key chapters:</p>
+
+        <table>
+            <tr><th>USP 章節</th><th>主題</th><th>關係</th></tr>
+            <tr><td>〈71〉</td><td>Sterility Tests</td><td>無菌試驗方法 &mdash; 產品放行的必要檢驗（除非已核准參數放行）</td></tr>
+            <tr><td>〈85〉</td><td>Bacterial Endotoxins Test</td><td>內毒素測試 &mdash; 注射劑的必要品質屬性</td></tr>
+            <tr><td>〈790〉</td><td>Visible Particulates in Injections</td><td>可見微粒 &mdash; 注射劑外觀品質</td></tr>
+            <tr><td>〈1116〉</td><td>Microbiological Control and Monitoring of Aseptic Processing Environments</td><td>無菌製程環境的微生物監控</td></tr>
+            <tr><td>〈1207〉</td><td>Package Integrity Evaluation</td><td>容器密封完整性 &mdash; 無菌狀態的維持</td></tr>
+            <tr><td>〈1222〉</td><td>Terminally Sterilized Products &mdash; Parametric Release</td><td>參數放行 &mdash; 終端滅菌產品免除無菌試驗</td></tr>
+            <tr><td>〈1228〉</td><td>Depyrogenation</td><td>去熱原 &mdash; 容器、設備的熱原控制</td></tr>
+            <tr><td>〈1229〉系列</td><td>Sterilization of Compendial Articles</td><td>各種滅菌方法的詳細要求（蒸汽、乾熱、輻射、氣體、過濾）</td></tr>
+        </table>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 &mdash; USP 無菌章節架構</h4>
+            <p>理解 USP〈1211〉的最好方式是把它看作無菌製造知識體系的「總目錄」。它不深入任何單一主題，而是建立所有相關主題之間的邏輯連結。</p>
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level"><div class="hierarchy-box level-1">〈1211〉Sterilization Assurance &mdash; 總綱</div></div>
+                <div class="arrow-down">&darr;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-2">〈1229〉滅菌方法</div>
+                    &nbsp;
+                    <div class="hierarchy-box level-2">〈1116〉環境監控</div>
+                    &nbsp;
+                    <div class="hierarchy-box level-2">〈1228〉去熱原</div>
+                </div>
+                <div class="arrow-down">&darr;</div>
+                <div class="hierarchy-level">
+                    <div class="hierarchy-box level-3">〈71〉無菌試驗</div>
+                    &nbsp;
+                    <div class="hierarchy-box level-3">〈85〉內毒素</div>
+                    &nbsp;
+                    <div class="hierarchy-box level-3">〈1222〉參數放行</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 &mdash; CDMO 的章節應用策略</h4>
+            <p>對 CDMO 而言，理解這個章節架構有直接的實務價值：</p>
+            <ul>
+                <li><strong>客戶提案階段：</strong>根據產品特性，快速判斷適用的滅菌路徑和需要遵循的 USP 章節組合</li>
+                <li><strong>驗證策略開發：</strong>確保驗證方案涵蓋所有相關章節的要求</li>
+                <li><strong>法規查廠準備：</strong>稽查員通常會從〈1211〉的概念框架出發，深入到各個具體章節</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>無菌的悖論：</strong>無菌是絕對概念（不含任何活微生物），但無法透過測試證明 &mdash; 只能透過整體控制系統來「保證」</li>
+        <li><strong>SAL 10<sup>&minus;6</sup>：</strong>終端滅菌的安全基準 &mdash; 每百萬個單位中最多一個非無菌單位的機率。僅適用於終端滅菌製程</li>
+        <li><strong>兩條路徑：</strong>終端滅菌（先充填再殺菌，風險較低、可量化）vs 無菌製程（分別滅菌再組裝，適用於熱敏感產品）</li>
+        <li><strong>混合策略：</strong>無菌製程 + 溫和終端滅菌 &mdash; 結合兩者優勢，擴展終端滅菌的適用範圍</li>
+        <li><strong>QbD 在無菌製造：</strong>非數值性的設計原則，核心目標是最大化污染控制，特別聚焦於人員風險</li>
+        <li><strong>人員 = 最大風險源：</strong>驅動自動化和隔離技術的採用 &mdash; 這是整個章節最反覆強調的主題</li>
+        <li><strong>USP〈1211〉的角色：</strong>串連〈71〉、〈1116〉、〈1229〉系列等章節的概念總綱</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+</body>
+</html>

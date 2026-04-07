@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈671〉 - Section 0: Introduction & Container Types</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 0: Introduction &amp; Container Types | 簡介與容器類型</h1>
+    <div class="subtitle">USP 〈671〉 Containers—Performance Testing</div>
+    <div class="page-info">USP General Chapter 〈671〉 | Pages 1–3</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding-left:1.5rem; padding-right:1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 USP 〈671〉 的目的：為固體和液體口服劑型的包裝系統建立功能性標準</li>
+        <li>掌握水蒸氣透過率（Moisture Vapor Transmission Rate, MVTR）的概念及其對藥品穩定性的重要性</li>
+        <li>識別並區分多種單元容器（multiple-unit）與單位劑量容器（unit-dose）的測試方法分類（Methods 1–8）</li>
+        <li>理解分類系統（Classification System）如何協助藥師和機構重新包裝者選擇適當容器</li>
+        <li>掌握乾燥劑方法（Desiccant Methods）與水方法（Water Method）的差異與適用場景</li>
+    </ul>
+</div>
+
+<div class="main-content">
+
+<!-- ==================== SUBSECTION: INTRODUCTION ==================== -->
+<div class="section-title">Introduction 簡介</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Status: Currently Official on 12-Feb-2025<br>
+        Official Date: Official as of 01-Dec-2020<br>
+        Document Type: General Chapter<br>
+        &copy; 2025 USPC</p>
+
+        <h3>〈671〉 CONTAINERS—PERFORMANCE TESTING</h3>
+
+        <h3>INTRODUCTION</h3>
+        <p>It is the purpose of this chapter to provide standards for the functional properties of <span class="key-term">packaging systems</span> used for <span class="key-term">solid oral dosage forms (SODFs)</span> and <span class="key-term">liquid oral dosage forms (LODFs)</span>. The tests in this chapter may be applied to packaging systems for other dosage forms with the appropriate justification.</p>
+
+        <p>These tests determine the <span class="key-term">moisture vapor transmission rate (MVTR)</span>, i.e., water vapor permeation rate, for plastic packaging systems for manufacturers, packagers, and repackagers (Table 1). This chapter also includes a <span class="key-term">classification system</span> that allows pharmacists and institutional repackagers to select appropriate containers to repackage SODFs and LODFs. Definitions that apply to this classification system are provided in <span class="key-term">Packaging and Storage Requirements 〈659〉</span>.</p>
+
+        <p>Guidance on the application of these methods to determine the MVTR and the use of MVTR data to support the demonstration of the equivalence of plastic packaging systems when repackaging SODFs is contained in <span class="key-term">The Application of Moisture Vapor Transmission Rates for Solid Oral Dosage Forms in Plastic Packaging Systems 〈1671〉</span>. Definitions of a blister, blister card, barrier blister types, moisture vapor transmission rate, and test specimen are contained in 〈1671〉, Glossary.</p>
+
+        <p>The chapter also contains a method for the determination of <span class="key-term">spectral transmission</span> of plastic containers.</p>
+
+        <div class="quote-box">
+            "It is the purpose of this chapter to provide standards for the functional properties of packaging systems used for solid oral dosage forms (SODFs) and liquid oral dosage forms (LODFs)."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>USP 〈671〉 的定位：</strong>這是一個功能性測試章節（Performance Testing），專門評估包裝系統的「屏障性能」——也就是說，包裝能多好地保護藥品不受環境中水分和光線的影響。</p>
+            <p><strong>兩大目標使用者：</strong></p>
+            <ul>
+                <li><strong>製造商/包裝商</strong>：需要知道自己產品的 MVTR 數值，用於穩定性測試和上市申請（NDA/ANDA）</li>
+                <li><strong>藥師/機構重新包裝者</strong>：需要知道如何選擇適當的容器來分裝原廠包裝的藥品</li>
+            </ul>
+            <p><strong>Moisture Vapor Transmission Rate (MVTR, 水蒸氣透過率)：</strong>水蒸氣在單位時間內穿透包裝系統的速率，單位通常是 mg/day/container 或 mg/day/cavity。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你有一個保溫飯盒和一個普通塑膠袋。你用兩種容器分別裝餅乾，一週後哪個還是脆的？保溫飯盒就像「高屏障」包裝——它阻擋了空氣中的水分進入，讓餅乾保持乾燥。</p>
+            <p>MVTR 就是在量化：「每天有多少毫克的水蒸氣能穿透這個容器壁進入裡面？」數值越低，包裝屏障越強，藥品越安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>〈671〉 vs 〈659〉 vs 〈1671〉 的分工：</strong></p>
+            <ul>
+                <li><strong>〈659〉</strong>：定義容器類型（密封容器、緊閉容器等），提供術語定義</li>
+                <li><strong>〈671〉</strong>：提供實際測試方法和數值標準（本章）</li>
+                <li><strong>〈1671〉</strong>：提供 MVTR 數據如何應用於 SODF 重新包裝等値性論證的指導</li>
+            </ul>
+            <p>三個章節彼此互補，閱讀 〈671〉 時應同時參考其他兩章。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 CDMO 客戶的藥品是口服固體錠劑，委外給藥局分裝成小包裝。藥局應使用 〈671〉 中哪個部分的方法來選擇適當容器？</li>
+                <li>MVTR 和藥品有效期限有什麼關係？為什麼屏障性能差的包裝可能導致藥品提前失效？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: TABLE 1 — METHOD OVERVIEW ==================== -->
+<div class="section-title">Table 1 — Moisture Vapor Transmission Test Methods 測試方法總覽表</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><strong>Table 1. Moisture Vapor Transmission Test Methods for Plastic Packaging Systems</strong></p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Section</th>
+                <th>Subsection / Method</th>
+                <th>Application</th>
+                <th>Users</th>
+            </tr>
+            <tr>
+                <td rowspan="2">Moisture Vapor Transmission for Plastic Packaging Systems</td>
+                <td>Desiccant Method (Methods 1, 2, and 3)</td>
+                <td>Multiple-unit containers and single-unit or unit-dose containers</td>
+                <td>Manufacturers, Packagers, Repackagers</td>
+            </tr>
+            <tr>
+                <td>Water Method (Method 4)</td>
+                <td>Single-unit and unit-dose containers</td>
+                <td>Manufacturers, Packagers, Repackagers</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Classification System for Plastic Packaging Systems</td>
+                <td>Classification Based on Desiccant Method for SODF (Methods 5, 6, and 7)</td>
+                <td>Multiple-unit containers and single-unit/unit-dose containers</td>
+                <td>Manufacturers, Packagers, Repackagers, Pharmacies</td>
+            </tr>
+            <tr>
+                <td>Classification Based on Water Method for LODF (Method 8)</td>
+                <td>Multiple-unit containers</td>
+                <td>Manufacturers, Packagers, Repackagers, Pharmacies</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 方法體系架構</h4>
+            <p>〈671〉 的八個方法可以用兩個維度來理解：</p>
+            <ul>
+                <li><strong>目的維度：</strong>測量 MVTR 數值（Methods 1–4）vs 分類容器等級（Methods 5–8）</li>
+                <li><strong>填充物維度：</strong>乾燥劑法（放吸濕劑，量重量增加）vs 水法（放水，量重量減少）</li>
+            </ul>
+            <p>乾燥劑法和水法的測試條件「相反」但等效：乾燥劑法在 40°C/75% RH（高濕）下測量水分進入；水法在 40°C/25% RH（低濕）下測量水分流出，兩者的壓力差相同。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你要測試一個水桶有多防漏：</p>
+            <ul>
+                <li><strong>乾燥劑法</strong>：把乾燥劑放進桶裡，把桶放在潮濕環境中，觀察乾燥劑吸了多少水（水從外進入）</li>
+                <li><strong>水法</strong>：把水放進桶裡，把桶放在乾燥環境中，觀察水少了多少（水從內流出）</li>
+            </ul>
+            <p>兩種方法測的是同一個「漏洞」，只是方向不同。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>誰需要用哪個方法？</strong></p>
+            <ul>
+                <li><strong>原廠製造商</strong>：主要使用 Methods 1–4 取得 MVTR 數值，用於穩定性申報</li>
+                <li><strong>藥局/重新包裝者</strong>：主要使用 Methods 5–8 進行分類，確認容器等級符合原廠要求</li>
+            </ul>
+            <p>這個區別非常重要——分類（Classification）≠ 精確 MVTR 值，分類只是確認是否符合「tight」或「well-closed」等等級門檻。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Method 3 是針對什麼類型的包裝設計的？為什麼它的稱重時間間隔比 Method 2 短很多？</li>
+                <li>為什麼水法（Method 4）使用的是 40°C/25% RH 而不是 40°C/75% RH？這個設計的邏輯是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SUBSECTION: MOISTURE VAPOR TRANSMISSION INTRODUCTION ==================== -->
+<div class="section-title">Moisture Vapor Transmission — Introduction 水蒸氣透過測試介紹</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>MOISTURE VAPOR TRANSMISSION FOR PLASTIC PACKAGING SYSTEMS</h3>
+        <h3>Introduction</h3>
+
+        <p>The purpose of the <span class="key-term">moisture vapor transmission test method</span>, which is based upon American Society for Testing and Materials (<span class="key-term">ASTM</span>) method D7709, is to obtain reliable and specific MVTRs that can be used to distinguish barrier performance of packaging systems used for regulated articles by manufacturers, packagers, and repackagers. This test method will establish a value that represents the MVTR of the <span class="key-term">container–closure system</span> being evaluated.</p>
+
+        <p>There may be additional packaging systems where the test methods in this section could be applied; however, any deviation should be described. If other methods are used to measure MVTR, these methods should be described in sufficient detail to justify their use.</p>
+
+        <h3>Desiccant Methods for Packaging Systems</h3>
+
+        <p>This section describes moisture vapor transmission test methods for <span class="key-term">multiple-unit containers</span> (see Method 1), <span class="key-term">high-barrier and ultra-high barrier</span> single-unit and unit-dose containers (see Method 2), and <span class="key-term">low-barrier</span> single-unit and unit-dose containers (see Method 3).</p>
+
+        <p>These methods include the following characteristics:</p>
+        <ul>
+            <li>A specific moisture vapor transmission value for a container rather than a classification</li>
+            <li>Sufficient sensitivity and precision to allow differentiation among moisture barrier performance for containers</li>
+            <li>Conditions used for testing packaging systems that are the same as those used for <span class="key-term">accelerated stability testing</span> of the primary packaging of regulated articles [typically 40°/75% relative humidity (RH)]</li>
+        </ul>
+
+        <h3>Equipment</h3>
+        <p>The following equipment should be used to complete the test method:</p>
+        <ul>
+            <li>A <span class="key-term">balance</span> for weighing the test specimens that has sufficient capacity. The balance must have sensitivity adequate to measure small differences in weight. The weighing uncertainty must be less than 5% of the weight gain from one time point to the next. The weighing uncertainty is typically three times the balance resolution/sensitivity. As an example, a balance with a resolution of 0.1 mg is acceptable for packaging systems whose weight gain per time interval is more than or equal to 6 mg [(0.1 × 3)/5%], which is 60 times the balance sensitivity.</li>
+            <li>A <span class="key-term">chamber</span> capable of maintaining 40 ± 2° and 75 ± 5% RH. Other chamber conditions can be used, but should be noted in the report, as long as the balance sensitivity is adequate to measure small weight differences from one time point to the next time point.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — ASTM D7709 基礎</h4>
+            <p><strong>ASTM D7709 (水蒸氣透過率測試標準)：</strong>USP 〈671〉 的乾燥劑法直接基於 ASTM D7709，這是業界廣泛認可的重量法（gravimetric method）——用重量變化來推算水蒸氣透過速率。</p>
+            <p>重量法的邏輯：容器內有乾燥劑，水蒸氣從外部穿透容器壁進入，被乾燥劑吸收。容器整體重量增加的速率 = MVTR。</p>
+            <p><strong>三種屏障等級定義：</strong></p>
+            <ul>
+                <li><strong>Low-barrier (低屏障)：</strong>MVTR &gt; 1.0 mg/cavity/day（用 Method 3）</li>
+                <li><strong>High-barrier (高屏障)：</strong>MVTR &lt; 1.0 mg/cavity/day（用 Method 2）</li>
+                <li><strong>Ultra-high barrier (超高屏障)：</strong>MVTR &lt; 0.01 mg/cavity/day（用 Method 2，但需更多空腔）</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — 天平靈敏度要求</h4>
+            <pre>
+天平靈敏度要求計算：
+最小重量增加 ≥ 60 × 天平精度
+
+例：天平解析度 = 0.1 mg
+  稱量不確定度 = 0.1 × 3 = 0.3 mg
+  最低重量增加 = 0.3 / 5% = 6 mg
+
+  即：每個稱量時間點間隔的重量增加
+  必須 ≥ 6 mg（= 60 × 0.1 mg）
+
+若包裝屏障很高（重量增加很慢），
+需要更高解析度的天平或更長的稱量間隔。
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>測試條件 40°C/75% RH 正是 ICH Q1A 規定的加速穩定性測試條件。這不是巧合——USP 特意把 MVTR 測試條件設計成與加速穩定性測試一致，這樣包裝在穩定性研究中看到的降解，就能直接與 MVTR 數據關聯起來。</p>
+            <p>就像你用同樣的「極端天氣」來測試雨傘和車漆，方便直接比較不同材料的性能。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>天平選擇的實務考量：</strong>對於超高屏障的鋁箔/鋁箔泡殼（foil-foil blister），水蒸氣幾乎無法穿透，每個稱量間隔的重量增加可能只有 0.01–0.1 mg 等級。此時需要微克級天平（microbalance），而且需要使用更多空腔（>10 個，最多 30 個）來累積足夠的訊號。</p>
+            <p>這就是為什麼方法的靈敏度設計如此重要——稱量不確定度必須遠小於你要測量的信號。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個包裝系統每個稱量間隔預計增加 3 mg 重量，你需要至少什麼解析度的天平？</li>
+                <li>為什麼稱量時間間隔的溫度/濕度控制很重要？如果每次稱量前不做平衡處理，數據會有什麼問題？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>USP 〈671〉 提供塑膠包裝系統的功能性測試標準，核心指標是 MVTR（水蒸氣透過率）</li>
+        <li>測試方法分兩大類：MVTR 定量測量（Methods 1–4）和容器等級分類（Methods 5–8）</li>
+        <li>乾燥劑法與水法的測試壓力差相同，但方向相反：前者在高濕環境測重量增加，後者在低濕環境測重量減少</li>
+        <li>天平靈敏度要求：稱量不確定度必須 &lt; 每時間點重量變化量的 5%（最低重量增加 ≥ 60× 天平精度）</li>
+        <li>測試條件 40°C/75% RH 與 ICH 加速穩定性測試條件一致，便於直接關聯穩定性數據</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub — USP 〈671〉 Containers—Performance Testing | Section 0: Introduction &amp; Container Types</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+});
+</script>
+
+</body>
+</html>

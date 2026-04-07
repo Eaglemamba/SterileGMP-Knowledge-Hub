@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USP 〈1117〉 Section 2: Lab Operations & Sample Handling</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+</style>
+</head>
+<body>
+
+<!-- COPYRIGHT NOTICE -->
+<div style="background: #fff3cd; border-left: 4px solid #856404; padding: 0.75rem 1.25rem; margin: 0; font-size: 0.85rem; color: #856404;">
+    <strong>Copyright Notice:</strong> The original English text of USP &lang;1117&rang; is the intellectual property of the United States Pharmacopeial Convention (USPC). This educational document presents selected excerpts for teaching purposes only, accompanied by independent Traditional Chinese commentary. It is not a substitute for the official USP&ndash;NF publication. &copy; 2025 USPC. Do not distribute.
+</div>
+
+<div class="header">
+    <h1>USP &lang;1117&rang; Microbiological Best Laboratory Practices</h1>
+    <div class="subtitle">Section 2: Laboratory Layout &amp; Operations, Sample Handling, Incubation Temperature Excursions</div>
+    <div class="page-info">Pages 6&ndash;9 | Informational Chapter | Currently Official 12-Feb-2025</div>
+</div>
+
+<div class="main-content">
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解微生物實驗室「乾淨區」與「活菌區」的分區設計原則及交叉汙染防控</li>
+        <li>掌握 PCR/DNA/RNA 測試區域與傳統微生物區域的隔離要求（2022 新增）</li>
+        <li>了解樣品處理的關鍵時間與溫度限制：取樣後盡快開始測試、不得冷凍保存微生物樣品</li>
+        <li>認識無菌試驗的環境控制要求：隔離器（Isolator）優於潔淨室</li>
+        <li>學習培養溫度偏移（Temperature Excursion）的影響評估與處置原則</li>
+    </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- LABORATORY LAYOUT AND OPERATIONS              -->
+<!-- ============================================ -->
+<div class="section-title" id="lab-layout">Laboratory Layout and Operations &mdash; 實驗室佈局與操作</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Laboratory layout and design should carefully consider the requirements of good practices in a microbiology laboratory and <span class="key-term">laboratory safety</span>. It is essential that <span class="key-term">cross-contamination of microbial cultures</span> or <span class="key-term">DNA/RNA samples for PCR testing</span> be minimized to the greatest extent possible.</p>
+
+        <p>In general, a laboratory should be divided into <span class="key-term">clean or aseptic areas</span> and <span class="key-term">live culture areas</span>. Areas in which environmental and other microbiological test samples are handled and incubated should be maintained completely free of live cultures, if possible. If complete separation of live and clean culture zones cannot be accomplished, then other <span class="key-term">barriers and aseptic practices</span> should be employed to reduce the likelihood of accidental contamination.</p>
+
+        <p>When growth is detected, the sample should be taken from the clean section of the laboratory to the <span class="key-term">live culture section</span> without undue delay. Subculturing, staining, microbial identification, or other investigational operations should be undertaken in the live culture section.</p>
+
+        <p>Staff engaged in sampling activities should not enter or work in the live culture handling section unless special precautions are taken, including wearing <span class="key-term">dedicated protective clothing</span> that should not be worn outside the laboratory and gloves and carefully washing and sanitizing hands upon exiting.</p>
+
+        <p>All testing in laboratories used for <span class="key-term">critical testing procedures</span>&mdash;such as sterility testing of final dosage forms, bulk product, seed cultures for biological production or PCR testing of cell cultures&mdash;should be performed under controlled conditions. <span class="key-term">Sterility tests should preferably be carried out in an isolator with ISO 5 classification.</span></p>
+
+        <p>For less-critical microbiological testing, such as with nonsterile product or intermediate bioburden samples, testing under a <span class="key-term">unidirectional airflow (UDAF) cabinet</span>, or as applicable is preferable. During qualification, the UDAF air must meet the air quality grade for which it is being qualified.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：實驗室兩區分離原則</h4>
+            <p>微生物實驗室的佈局核心是將操作區域分為兩個截然不同的區域：</p>
+            <table>
+                <tr><th>區域</th><th>用途</th><th>典型操作</th><th>汙染風險</th></tr>
+                <tr><td><span class="badge green">乾淨區 / 無菌區</span></td><td>處理未知樣品</td><td>環境監測讀盤、生物負載測試、無菌試驗</td><td>假陽性（外源汙染）</td></tr>
+                <tr><td><span class="badge red">活菌區</span></td><td>處理已知/活菌</td><td>繼代培養、鑑定、革蘭氏染色、生化試驗</td><td>交叉汙染到乾淨區</td></tr>
+            </table>
+            <p><strong>單向流動原則：</strong>樣品一旦在乾淨區發現有生長，就「單向」移到活菌區做後續分析，不再回到乾淨區。含有生長菌落的樣品絕不應在乾淨區打開。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>醫院感染管控的比喻：</strong>就像醫院把感染病房和普通病房分開一樣。微生物實驗室也需要這種「區域管控」。如果你剛在感染病房（活菌區）照顧過有傳染性的病人，不能穿著同一套衣服直接走進手術室（乾淨區）去做無菌手術。同樣的，實驗室人員從活菌區出來必須更換防護衣、洗手消毒後才能進入乾淨區。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示</h4>
+            <p><strong>PCR 區域隔離（2022 新增）：</strong>2022 年修訂版特別新增了 DNA/RNA 樣品和 PCR 測試的隔離要求。PCR 對 DNA 汙染極度敏感 &mdash; 即使極微量的 DNA 也會被擴增產生假陽性。在 CDMO 環境中，如果你使用支原體 PCR 檢測法，PCR 操作區域必須與常規微生物實驗室完全隔離。</p>
+            <p><strong>無菌試驗的環境要求：</strong>USP 明確建議無菌試驗優先使用隔離器（Isolator），因為隔離器的環境汙染水平低於有人操作的潔淨室。對 CDMO 而言，投資隔離器不僅降低假陽性風險，也在稽查時展示了對無菌保證的承諾。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的實驗室空間有限，無法實現乾淨區和活菌區的完全物理隔離。你會設計哪些「替代屏障措施」來降低交叉汙染風險？</li>
+                <li>一位環境監測取樣員在取完無菌製程區的培養碟後，需要將碟子送回實驗室培養。途中他必須經過活菌操作區的走廊。你認為這有風險嗎？如何改善？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SAMPLE HANDLING                               -->
+<!-- ============================================ -->
+<div class="section-title" id="sample-handling">Sample Handling &mdash; 樣品處理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p>Viable microorganisms in most microbiology samples&mdash;particularly water, environmental monitoring, and bioburden samples&mdash;are <span class="key-term">sensitive to handling and storage conditions</span>. Critical parameters in these conditions include product (or sample) composition, container composition, time of storage, and temperature of storage.</p>
+
+        <p>It is important to minimize the amount of time between the <span class="key-term">sampling event and the initiation of testing</span> and to control, as much as possible, the conditions of storage. <span class="key-term">Microbiological samples should never be stored in a frozen state</span> before testing because this practice leads to loss of cell viability.</p>
+
+        <p>When monitoring water or bioburden prior to bioburden-reducing steps or sterilizing steps, samples may be held at <span class="key-term">2&deg;&ndash;8&deg; for up to 24 h</span> from the time of sample collection until the start of the analysis. When testing within 24 h is not possible (e.g., when contract laboratories are used), the actual maximum hold time between collection and testing should be supported by <span class="key-term">experimental studies</span> (e.g., challenge tests).</p>
+
+        <p>If environmental monitoring samples cannot be incubated within a reasonable time frame (e.g., due to the use of an off-site testing laboratory), the time from sample collection to the start of incubation should be supported with <span class="key-term">experimental data</span>.</p>
+
+        <p>All microbiological samples should be taken using <span class="key-term">aseptic techniques</span>, including those taken in support of nonsterile products.</p>
+
+        <p>Samples submitted to the microbiology laboratory should be accompanied by <span class="key-term">documentation</span> detailing source of the sample, date the sample was taken, date of sample submission, person or department responsible, storage conditions, and any potentially hazardous materials associated with the sample.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：樣品處理的時間-溫度管控</h4>
+            <p>微生物樣品中的活菌數量會隨著時間和儲存條件而變化。延遲測試或不當儲存會導致：</p>
+            <ul>
+                <li><strong>菌數減少</strong> &mdash; 某些微生物在不利條件下會死亡，導致計數偏低</li>
+                <li><strong>菌數增加</strong> &mdash; 在營養豐富的樣品中，室溫保存會促進微生物繁殖</li>
+                <li><strong>菌相改變</strong> &mdash; 不同微生物對儲存條件的耐受性不同，長時間儲存會改變菌群組成</li>
+            </ul>
+            <p><strong>標準做法：</strong>水樣和生物負載樣品在 2&deg;&ndash;8&deg;C 保存，24 小時內開始測試。超過 24 小時需要有挑戰試驗數據支持。</p>
+            <p><strong>絕對禁止：</strong>冷凍微生物樣品 &mdash; 結凍/解凍過程會殺死部分微生物，嚴重影響計數準確性。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>新鮮食材的比喻：</strong>微生物樣品就像新鮮食材 &mdash; 買回來的魚放在冰箱（2&deg;&ndash;8&deg;C）可以保存一天左右，但不能無限期放下去。放在室溫下幾小時就開始變質。而冷凍魚雖然可以長期保存，但解凍後口感和質地完全不同了（細胞結構被破壞）。同理，冷凍微生物樣品會導致細胞死亡，讓你的計數結果嚴重偏低。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示：CDMO 外包測試的挑戰</h4>
+            <p><strong>委外實驗室的樣品運輸：</strong>2022 年修訂版特別提到了使用委外實驗室時的挑戰 &mdash; 當測試無法在 24 小時內開始時，必須有挑戰試驗數據來驗證延長保存時間的可行性。對 CDMO 而言，如果你將環境監測樣品或水樣送到外部實驗室測試，運輸過程的時間和溫度控制就變得至關重要。</p>
+            <p><strong>樣品伴隨文件：</strong>USP 要求每個送到實驗室的樣品都應附有完整的文件記錄。這在 CDMO 環境中尤其重要 &mdash; 多條產品線、多個客戶的樣品混在一起時，完善的標識和文件系統是防止混淆的唯一保障。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的 CDMO 計畫將環境監測樣品的培養工作外包給一家距離 2 小時車程的委外實驗室。你需要建立什麼樣的驗證方案來確保運輸過程不影響測試結果？</li>
+                <li>一位取樣員在週五下午 5 點取了一批水樣，但實驗室已經下班。樣品被放在冰箱（2&deg;&ndash;8&deg;C）直到週一早上才開始測試（約 63 小時）。這符合 USP 的建議嗎？你需要什麼數據來支持這個做法？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- INCUBATION TEMPERATURE EXCURSIONS             -->
+<!-- ============================================ -->
+<div class="section-title" id="temp-excursions">Incubation Temperature Excursions &mdash; 培養溫度偏移</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <p><span class="key-term">Incubation equipment qualification</span> and ongoing calibration provide the acceptable range for temperature conditions relative to the expected procedural incubation temperatures or range.</p>
+
+        <p>When an excursion occurs outside of the procedural incubation temperature(s), an <span class="key-term">assessment</span> should be performed to determine the potential impact on the test samples and what, if any, action should be taken with the test samples.</p>
+
+        <p>The effect of a higher or lower temperature on <span class="key-term">microbial recovery</span> from the test samples for the recorded period of time should be evaluated.</p>
+
+        <p>An <span class="key-term">investigation</span> of the excursion should be documented along with the disposition of the test samples. For instance, a slightly lower temperature excursion (e.g., <span class="key-term">1&deg;&ndash;2&deg;</span>) for a brief time could be compensated with an <span class="key-term">increase in incubation time</span>; or, for a higher temperature excursion (e.g., greater than <span class="key-term">40&deg;</span> for a total aerobic microbial count or greater than <span class="key-term">30&deg;</span> for a total yeasts and molds count) consider any negative impact on recovery.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：溫度偏移評估框架</h4>
+            <p>培養溫度偏移是微生物實驗室最常見的偏差類型之一。USP 提供了一個實用的評估框架：</p>
+            <table>
+                <tr><th>偏移方向</th><th>範例</th><th>影響</th><th>可能的補救措施</th></tr>
+                <tr><td>低溫偏移（小幅）</td><td>低 1&deg;&ndash;2&deg;C，短時間</td><td>生長速度減慢</td><td>延長培養時間補償</td></tr>
+                <tr><td>高溫偏移（嚴重）</td><td>TAMC &gt;40&deg;C</td><td>某些微生物可能死亡</td><td>評估回收率影響，可能需重新測試</td></tr>
+                <tr><td>高溫偏移（嚴重）</td><td>TYMC &gt;30&deg;C</td><td>黴菌和酵母菌受抑制</td><td>考慮回收率的負面影響</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明</h4>
+            <p><strong>烤箱溫度偏差的比喻：</strong>如果你在烤蛋糕時烤箱溫度偏低了一點（比如設定 180&deg;C 但實際只有 178&deg;C），多烤幾分鐘通常就能補救。但如果溫度飆到 250&deg;C，蛋糕表面就燒焦了，這時候延長時間沒有用 &mdash; 傷害已經造成。微生物培養也是同理：低溫偏移可以用延長時間補救，但高溫偏移可能已經殺死了部分微生物，無法逆轉。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示</h4>
+            <p><strong>TAMC vs TYMC 的溫度敏感性差異：</strong>USP 特別舉出了兩個不同的高溫閾值 &mdash; TAMC（總需氧微生物計數）的關注溫度是 &gt;40&deg;C，而 TYMC（總酵母菌和黴菌計數）的關注溫度是 &gt;30&deg;C。這是因為黴菌和酵母菌通常在 20&deg;&ndash;25&deg;C 培養，對高溫更加敏感。</p>
+            <p><strong>文件化要求：</strong>每次溫度偏移都必須有書面調查記錄，包括偏移的持續時間、幅度、對樣品的影響評估，以及樣品的最終處置決定。這些文件在 FDA 稽查中經常被檢查。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>你的 30&deg;&ndash;35&deg;C 培養箱在週末因為壓縮機短暫故障，溫度一度升到 38&deg;C 持續了 4 小時，然後恢復正常。箱內有正在培養中的環境監測樣品和無菌試驗樣品。你會如何分別評估這兩類樣品的影響？</li>
+                <li>你的實驗室使用持續溫度記錄器監控培養箱溫度。如果記錄器顯示了一次短暫的低溫偏移（降到 28&deg;C，持續 30 分鐘），但事後校準發現記錄器本身有 &plusmn;1&deg;C 的誤差，你需要如何處理這個情況？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li><strong>兩區分離：</strong>實驗室分為乾淨區（處理未知樣品）和活菌區（處理已知/活菌）。含生長菌落的樣品從乾淨區單向移至活菌區</li>
+        <li><strong>PCR 隔離（2022 新增）：</strong>DNA/RNA 樣品和 PCR 測試區域必須與活菌區隔離，防止 DNA 汙染</li>
+        <li><strong>人員流動管控：</strong>取樣人員不應進入活菌區；進入者須穿專用防護衣、出來後洗手消毒</li>
+        <li><strong>無菌試驗環境：</strong>首選隔離器（ISO 5），次選潔淨室。UDAF 適用於非關鍵測試</li>
+        <li><strong>樣品時間-溫度：</strong>2&deg;&ndash;8&deg;C 保存、24 小時內測試。絕不冷凍。超過 24 小時需挑戰試驗數據</li>
+        <li><strong>溫度偏移評估：</strong>低溫小幅偏移可延長培養時間補償；高溫偏移（TAMC &gt;40&deg;C、TYMC &gt;30&deg;C）需評估回收率影響</li>
+        <li><strong>樣品文件：</strong>每個樣品須附來源、日期、送樣人、儲存條件等完整記錄</li>
+    </ul>
+</div>
+
+</div> <!-- end main-content -->
+
+<div class="main-footer">
+    <p>USP &lang;1117&rang;: Microbiological Best Laboratory Practices</p>
+    <p>Section 2 &mdash; Lab Operations &amp; Sample Handling | Pages 6&ndash;9</p>
+    <p>SterileGMP Knowledge Hub &mdash; Bilingual Educational Resource</p>
+</div>
+
+</body>
+</html>

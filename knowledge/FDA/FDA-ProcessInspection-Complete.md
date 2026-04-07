@@ -1,0 +1,2753 @@
+# FDA Compliance Program Guidance Manual 7356.002A: Sterile Drug Process Inspections (2015): Sterile Drug Process Inspections — FDA CPGM 7356.002A
+
+===== PAGE 1 =====
+ Page 1 of 38
+FOOD AND DRUG ADMINISTRATION
+COMPLIANCE PROGRAM GUIDANCE MANUAL
+PROGRAM
+7356.002A
+
+CHAPTER 56 – DRUG QUALITY ASSURANCE
+
+SUBJECT:
+STERILE DRUG PROCESS INSPECTIONS
+
+Revision Note: Program revised 09/11/2015 to update
+implementation date, completion date,
+organizational/procedural changes and program
+contacts.
+IMPLEMENTATION DATE
+September 11, 2015
+COMPLETION DATE
+September 11, 2016
+DATA REPORTING
+PRODUCT CODES
+PRODUCT/ASSIGNMENT CODES
+Industry codes 54, 56 and 60-66 inclusive
+Domestic / Foreign Inspections:
+56002A (Full Inspection)
+56002I (Abbreviated Inspection)
+Related PACs
+56002
+56002C
+56002M
+
+FIELD REPORTING REQUIREMENTS:
+
+Establishment Inspection Reports (EIRs) are to be created and filed electronically using the specific
+module in TurboEIR or replacement system that is accessible to both ORA and CDER.
+For inspections of routine commercial manufacturing classified as Official Action Indicated (OAI) due to
+failure to comply with 21 CFR Part 210 and 211 Current Good Manufacturing Practice (CGMP) as they
+apply to sterile drug process inspections, submit advisory, administrative, or judicial action
+recommendations via MARCS-CMS in accordance with the Regulatory Procedures Manual (RPM).
+Districts should immediately report significant issues according to current FACTS, Panorama and CMS
+procedures. This includes promptly filing and changing OAI notifications.
+During an inspection, if you obtain information pertaining to inadequate adverse drug experience (ADE)
+reporting, unapproved drug issues, or post-approval reporting violations (application supplements, Field
+Alert Reports (FARs), etc.), report in accordance with directions provided in the applicable compliance
+programs and under separate captions in the EIR. Data system information about these inspectional
+activities should be reported under separate Program Assignment Codes (PACs).  Expansion of coverage
+under these programs into a CGMP inspection should be reported under this compliance program.
+
+===== PAGE 2 =====
+PROGRAM
+7356.002A
+PAGE 2 of 38
+
+The Districts are requested to use this compliance program for all sterile drug process inspections.
+
+NOTE: Districts should assure that each operation performed by direction of this program circular is
+entered against the correct Product Code and Program/Assignment Code (P/AC).
+
+===== PAGE 3 =====
+PROGRAM
+7356.002A
+PAGE 3 of 38
+
+TABLE OF CONTENTS
+
+PART I
+BACKGROUND ................................................................................................... 4
+
+PART II
+IMPLEMENTATION ............................................................................................. 5
+2.1   Objective....................................................................................................... 5
+2.2   Program Management Instructions .............................................................. 5
+A. Strategy ............................................................................................... 5
+B. Inspection Planning............................................................................. 6
+C. Profile Reporting ................................................................................. 6
+
+PART III
+INSPECTIONAL ................................................................................................... 7
+3.1   Types of Sterilization .................................................................................... 7
+A. Terminal sterilization ........................................................................... 7
+B. Aseptic processing .............................................................................. 7
+3.2   Reporting ...................................................................................................... 8
+3.3   Inspection Approaches................................................................................. 9
+3.4   System Inspection Coverage ..................................................................... 11
+3.5   Quality System ........................................................................................... 11
+3.6   Facilities and Equipment System ............................................................... 13
+A. Facilities ............................................................................................ 13
+B. Equipment ......................................................................................... 14
+3.7   Materials System ........................................................................................ 19
+3.8   Production System ..................................................................................... 21
+3.9   Packaging and Labeling System ................................................................ 27
+3.10 Laboratory Control System......................................................................... 27
+3.11 Sampling..................................................................................................... 29
+
+PART IV
+ANALYTICAL..................................................................................................... 30
+
+PART V
+REGULATORY/ADMINISTRATIVE STRATEGY .............................................. 31
+
+PART VI
+REFERENCES, ATTACHMENTS AND PROGRAM CONTACTS ................... 33
+6.1   References ................................................................................................. 33
+6.2   Attachments................................................................................................ 34
+6.2   Contacts ..................................................................................................... 34
+
+PART VII
+CENTER RESPONSIBILITIES .......................................................................... 36
+
+ATTACHMENT A
+.................................................................................................................A
+
+[end Cover Page]
+
+===== PAGE 4 =====
+PROGRAM
+7356.002A
+PAGE 4 of 38
+
+PART I - BACKGROUND
+
+This program covers the manufacture and testing of all sterile drug products, including drugs that are
+sterilized by filtration or other means and aseptically processed, and drug products that are terminally
+sterilized. The type of products covered by this program include sterile bulk drugs, ophthalmic drugs,
+otic dosage forms, small volume parenteral (SVS) products for small molecule and licensed biological
+therapeutic drug products, large volume parenteral (LVP) products, and any other drug products
+required to be sterile or labeled as sterile. Center for Biologics Evaluation and Research (CBER)
+regulated products and veterinary drug products are excluded from coverage under this program.
+
+The guidance information in this program is tailored to sterile manufacturing operations and should be
+used in conjunction with the Compliance Program for Drug Manufacturing Inspections (CP 7356.002).
+
+In 2004, Food and Drug Administration (FDA) published the Guidance for Industry Sterile Drug
+Products Produced by Aseptic Processing-- Current Good Manufacturing Practice, which is referred to
+throughout this Compliance Program as FDA’s “2004 Aseptic Processing Guidance.” The document
+represents FDA’s current thinking on Current Good Manufacturing Practices (CGMPs) for aseptically
+processed drugs.
+
+The Guidance for Industry does not establish mandatory requirements and should not be referred to as
+the justification for an inspectional observation. Justification for inspectional observations originates
+from the CGMP regulations, 21 CFR Parts 210 and 211.
+
+Manufacturers who follow the 2004 Aseptic Processing Guidance are generally considered compliant
+with CGMP regulations. However, alternate approaches may be used if such approaches satisfy the
+requirements of 21 CFR Parts 210 and 211.
+
+For technical questions and unusual circumstances encountered during an inspection, investigators are
+encouraged to contact their District, ORA Office of Medical Products and Tobacco Operations/Division
+of Medical Products and Tobacco Program Operations and/or CDER for consultation. For questions
+concerning microbiological analysis, sterility and related sampling concerns, contact ORA Office of
+Regulatory Science/Medical Products and Tobacco Scientific Staff.
+
+[end Part I]
+
+===== PAGE 5 =====
+PROGRAM
+7356.002A
+PAGE 5 of 38
+
+PART II - IMPLEMENTATION
+
+### 2.1 OBJECTIVES
+
+The primary objective of this program is to provide guidance for conducting inspections of
+manufacturers of sterile bulk1 and sterile finished dosage drug products to determine compliance with
+the Food, Drug, and Cosmetic Act and the Current Good Manufacturing Practice Regulations (CGMPs),
+Title 21, CFR Parts 210 and 211.
+
+Other objectives include:
+• Obtain information on operations impacting on sterility, to identify areas for improvement and
+correction.
+• Evaluate current good manufacturing practices in the sterile drug industry.
+• Initiate appropriate action against manufacturers observed to be out of compliance.
+
+### 2.2 PROGRAM MANAGEMENT INSTRUCTIONS
+
+A. STRATEGY
+(1) Inspection of Systems
+
+Inspections of drug manufacturers should be made and reported using the system definitions and
+organization in this compliance program. Focusing on systems will increase inspection efficiency
+because the systems are often applicable to multiple profile classes. The selection of the system(s) for
+coverage will be made by the District Office based on the firm’s specific operation, previous coverage,
+compliance history, or other priorities determined by the District Office.
+
+The inspection should normally result in a determination of acceptability or non-acceptability for all
+profile classes. Coverage of a system should be sufficiently detailed, i.e., select an example of each
+profile class, so that the conclusion about the system’s state-of-control applies to all the profiles classes.
+However, the determination that a system is adequately controlled for one profile class can be extended
+to another profile class(es) even if that other profile class(es) was not specifically reviewed. The lead
+Investigator must consider the uniqueness of the various manufacturing situations at the plant and use
+their best judgment when selecting profile classes to review.
+
+Selecting specific areas unique functions within a system will be at the discretion of the lead
+Investigator.
+
+The options for system coverage are described in CPGM 56002. Any given inspection need not cover
+every system. See  Part III - Inspectional.
+
+Complete inspection of one system may necessitate further follow up of some items within the activities
+of another system(s) to fully document the findings. Such follow up does not constitute full coverage of
+the other system (and cannot be reported as such in FACTS); nor does that follow up obligate the
+investigator to perform full coverage of the other system.
+
+1 “Sterile bulk” refers to sterile active pharmaceutical ingredients (APIs).
+
+===== PAGE 6 =====
+PROGRAM
+7356.002A
+PAGE 6 of 38
+
+(2) Inspectional Scope
+Inspections of sterile product drug manufacturers are performed as either Full Inspections or
+Abbreviated Inspections using the systems strategy outlined in Part II –Implementation, of Compliance
+Program 7356.002, Drug Manufacturing Inspections.
+
+See Part III – Inspectional, of this program for a complete discussion of the coverage requested under
+these inspection options.
+
+B. INSPECTION PLANNING
+Implement this program when sterile drug manufacturers are inspected as part of a regular statutory
+inspection. CDER will identify firms for inspection based on the risk-based prioritization model on
+annual performance goals, as part of the initiative to ensure risk-based prioritization of inspection
+coverage.
+
+Consider using a team approach for conducting inspections when appropriate. Utilize investigators
+familiar with sterile drug manufacturing and aseptic processing and consider the participation of a
+microbiologist with expertise in microbial controls. Specifically,
+• All team members should be very familiar with FDA’s Guidance for Industry Sterile Drug
+Products Produced by Aseptic Processing – Current Good Manufacturing Practice (September
+2004).
+• Investigators or team members should be well qualified in sterile product manufacturing, and
+have completed formal training courses in parenteral drug manufacture, aseptic technique,
+sterilization methods, and related procedures and equipment. Microbiologists involved should
+have experience in sterility, endotoxin testing, and evaluation of microbial controls in
+manufacturing.
+
+C. PROFILE REPORTING
+
+Update all applicable profile classes in the profile screen of the FACTS coversheet based on inspection
+findings. The following is a list of sterile product profile classes effective at the time this program was
+implemented. Use the codes corresponding to the product and process type covered.
+
+PROFILE
+CLASS
+FULL DESCRIPTION
+LVP
+Large Volume Parenterals are sterile injectable drugs packaged in containers labeled as
+containing more than 100 mL. Most are terminally sterilized, but some can be sterilized by
+filtration and aseptically processed.
+SVT
+Small Volume Parenterals are sterile injectable drugs packaged in containers labeled as
+containing less than 100 mL that are terminally sterilized.
+SVS
+Small Volume Parenterals are sterilized by filtration and aseptically processed.
+SVL
+Small Volume Parenteral are sterilized by filtration, aseptically filled and lyophilized.
+SLQ
+Sterile liquid (other than suspensions and emulsions)
+SON
+Sterile ointment
+SPW
+Sterile powder
+CSS
+Sterile bulk drugs that are made by chemical synthesis.
+CFS
+Sterile crude drugs made by fermentation.
+CRX
+API sterile or API intermediate/NEC inorganic/mineral
+[end Part II]
+
+===== PAGE 7 =====
+PROGRAM
+7356.002A
+PAGE 7 of 38
+
+PART III - INSPECTIONAL
+
+### 3.1 TYPES OF STERILIZATION
+
+There are two broad methods to produce a sterile drug product:
+
+• Terminal Sterilization
+• Aseptic Processing of sterilized unit components
+
+There are basic differences between the production of sterile drug products using aseptic processing and
+production using terminal sterilization. Terminal sterilization should be utilized when the product and
+container/closure system are able to withstand the terminal sterilization process.
+
+A. TERMINAL STERILZATION - The terminal sterilization process usually involves filling and
+sealing product containers under high quality environmental conditions designed to minimize microbial
+and particulate contamination of the product. This minimization of upstream bioburden reduces the
+challenge to the subsequent sterilization process. In most cases, the product, container, and closure have
+low bioburden, but are not sterile at the time of filling. The product is then subjected to a sterilization
+process in its final container.
+
+There are various methods of terminal sterilization including:
+
+• Moist Heat Sterilization
+• Irradiation
+• Ethylene Oxide (typically for assembled components/kits)
+Types of sterilization cycles include:
+
+1. Overkill method:
+o Generally used for heat stable materials.
+o Designed to provide a significant level of sterility assurance regardless of the number and
+resistance of the actual bioburden organisms in the load.
+o Results in greater heat/exposure input to the product or items being sterilized.
+
+2.  Bioburden Based cycle:
+o Requires studies to determine the number and resistance of the microorganisms found in the
+product and the bioburden load of the incoming components and containers/closures.
+o Cycle development to destroy the microbial load, but not degrade the product.
+o Routine bioburden monitoring of batches and ongoing knowledge of the heat/exposure
+resistance of organisms found in product bioburden, container/closure bioburden and
+environmental monitoring samples.
+
+Reference to terminal sterilization:  PDA Technical Report No. 1 (Revised 2007) Validation of Moist
+Heat Sterilization Processes: Cycle Design, Development, Qualification and Ongoing Control.
+
+B. ASEPTIC PROCESSING  - Aseptic processing presents a higher risk of microbial contamination of
+the product than terminal sterilization. In an aseptic filling process, the drug product, containers and
+
+===== PAGE 8 =====
+PROGRAM
+7356.002A
+PAGE 8 of 38
+
+closures are sterilized separately and then brought together under an extremely high quality
+environmental condition designed to reduce the possibility of a non-sterile unit. Aseptic processing
+involves more variables than terminal sterilization. Any manual or mechanical manipulation of the
+sterilized drug, containers, or closures prior to or during aseptic filling and assembly poses the risk of
+microbial contamination.
+
+Some types of aseptic processing involve manual manipulations of sterile components, containers, and
+closures in addition to routine operator interventions in the critical area. Humans are a significant source
+of contamination in traditional aseptic processing, especially in production lines that require operators to
+routinely enter critical areas (Class 100, ISO 5, or Grade A) of the filling line. Aseptic processing
+systems based on more advanced control-based technologies, such as Restricted Access Barrier Systems
+(RABS) and Blow-Fill-Seal systems, are designed to reduce human interventions in the critical areas of
+the fill line while an isolator system completely separates the aseptic filling line from the external
+environment and minimizes employee interaction with the critical area.
+
+Note: More information about Isolator Technology and Blow-Fill-Seal systems is found
+in FDA’s 2004 Aseptic Processing Guidance.
+
+When conducting inspections of sterile drug manufacturers, it is important to cover systems and areas
+within systems that present the greatest risk of product contamination and/or require strict control of
+processing parameters. For example, if a firm has several aseptic processing lines, cover the line(s) that
+require the most manual manipulations in the Class 100 (ISO 5) areas. If the firm terminally sterilizes a
+number of products, review one that is sensitive to heat and requires a product specific (bioburden
+based) sterilization cycle.
+
+Note:  For terminal sterilized products that are aseptically filled prior to terminal sterilization, less
+rigorous aseptic controls can be considered.
+
+Because of the time limitations often associated with foreign inspections, careful inspection planning is
+particularly important. Prioritize areas for coverage based upon their potential impact on product
+quality.
+
+### 3.2 REPORTING
+
+Follow instructions in the current editions of the IOM (Investigations Operations Manual) and Guide to
+International Inspection and Travel in preparing the inspection report.
+
+Use Turbo EIR for all reports, both domestic and international, even if a FDA-483 was not issued or was
+issued outside of Turbo EIR. The “Manufacturing / Design Operations” section of the report should be
+organized by the systems described in this program that were covered during the inspection. Briefly
+summarize your review of each covered system in accordance with the key elements outlined in this
+Compliance Program. Add more details and supporting evidence for the systems found to be deficient.
+
+===== PAGE 9 =====
+PROGRAM
+7356.002A
+PAGE 9 of 38
+
+### 3.3 INSPECTION APPROACHES
+
+If the sterile drug products to be inspected are radioactive drugs, then Compliance Program 7356.002C,
+Radioactive Drugs, should be followed as supplementary guidance. This program should not be used for
+the inspection of Positron Emission Tomography (PET) Drug. Compliance Program 7356.002P is
+specific for PET drugs.
+
+This program (CP 7356.002A) should also be used in conjunction with Compliance Program
+7356.002M, Inspection of Licensed Biological Therapeutic Drug Products for the inspection of sterile
+licensed biological products.
+
+The CGMP Compliance Program 7356.002 provides general information on the system based approach
+to conducting inspections of drug manufacturers. It describes the six systems (Quality, Facilities and
+Equipment, Materials, Production, Packaging and Labeling, and Laboratory) and the two inspection
+options (Full Inspection and Abbreviated Inspection). It also provides guidance on when each option
+should be selected and discusses what “state of control” means in relation to the systems inspected.
+
+Inspections of sterile drug manufacturers are performed as either Full or Abbreviated inspections using
+the systems strategy outlined below.
+
+Full Inspections include surveillance or compliance inspections and provide a comprehensive evaluation
+of the firm’s compliance with CGMP. A Full Inspection will normally include an inspection of at least
+four systems, one of which must be the Quality System. Under this program, a Full Inspection should
+include the Facilities & Equipment, and Production Systems due to the critical role these systems play in
+the sterility assurance of finished product.
+
+Full Inspections (PAC 56002A) are conducted
+
+• when initial inspection of the drug firm is to be conducted;
+• when it is the first inspection conducted as a follow-up to a Warning Letter,  regulatory action,
+or significant FDA 483 findings;
+• when information obtained during the Abbreviated Inspection reveals significant deficiencies
+with the firm’s practices and procedures in one or more system areas;
+• when there have been significant changes in the firm’s operations since the last inspection; or
+• for surveillance purposes at the District’s discretion because the firm has a history of recurring
+violations, fluctuating in and out of compliance, or when other information (samples,
+complaints, Field Alerts, recalls, etc.) calls into question the firm’s ability to produce quality
+products.
+
+Abbreviated Inspections (PAC 56002I) may be appropriate if the following two conditions are satisfied:
+
+1. the firm has implemented a formal risk management program that assures effective design and
+control (including maintenance). This includes a risk mitigating design of their processing lines
+that incorporates a modern separation and automation approach (e.g., isolators, closed RABS),
+and upstream bioburden controls. The responsiveness of the firm’s quality system to potential
+hazards is also part of the evaluation, including whether the firm’s program provides robust
+
+===== PAGE 10 =====
+PROGRAM
+7356.002A
+PAGE 10 of 38
+
+daily assurance and effective consumer protection through a formal lifecycle quality risk
+management program that proactively uncovers and corrects issues in accord with ICH Q9.
+
+2. the firm has a record of sustained acceptable compliance history and a strong risk management
+program.
+o the firm produces finished drug products that are terminally sterilized using robust
+sterilization methods. (Note: Terminal sterilization provides a much more robust process to
+ensure sterility);  or,
+o the firm has implemented robust risk management that provides daily assurance through
+their overall design and control program;
+o at the start of the inspection, conduct an extensive review of sterility assurance data since
+the last Full Inspection. The review of media fills, sterility testing data, recalls,
+defect/adverse event complaints, and reports reveals no findings of sterility failure of a
+distributed batch, and
+o the firm has a record of satisfactory CGMP compliance (e.g., two consecutive NAI or no
+more than one VAI inspection), with no Class 1 recalls.
+
+Microbial controls and sterility assurance should be the main focus of an abbreviated sterile drug
+inspection. The following critical elements of each system (other than the Quality System) should be
+covered in an Abbreviated Inspection under this program:
+
+• Facilities and Equipment:
+o cleaning and disinfection
+o facility/equipment layout and air handling system for preventing viable and non-viable
+contamination
+o material flow
+o quality control of classified areas, including air pressure balance and HEPA filtration
+o trending data supporting the adequacy of clean room quality
+o documented investigation into discrepancy
+
+• Materials:
+o microbial and bacterial endotoxin control of incoming materials and components
+o quality of water supply, maintenance, qualification
+o operation of the systems that provide the requisite water and process gases
+o documented investigations into OOS, deviations, and discrepancies
+
+• Production:
+o observation of adequacy of operator behavior and aseptic techniques during manufacturing
+o production line operations and interventions
+o personnel training in aseptic techniques
+o major production line repair or maintenance issues
+o risk assessment on microbial and bacterial endotoxin controls, including hold times of
+critical steps
+
+===== PAGE 11 =====
+PROGRAM
+7356.002A
+PAGE 11 of 38
+
+o validation of sterilization of equipment, container-closures and supplies
+o media fills design and results
+o documented investigations into, deviations, discrepancies, and OOS results
+
+• Laboratory:
+o investigations into OOS, deviations, and discrepancies
+o test methods and controls, including adherence to validated methods
+o training and qualifications of laboratory personnel
+o trending of water system test results
+o systems used for recovery, identification and trending of environmental monitoring isolates
+
+### 3.4 SYSTEM INSPECTION COVERAGE
+
+Compliance Program 7356.002, Drug Manufacturing Inspections, lists the areas that should be covered
+when inspecting each of the six systems. This program provides additional guidance, by system, for
+areas of specific concern for sterile drug products.
+
+Attachment A is a list of questions intended to be an aid in conducting inspections and obtaining
+information needed to assess a firm’s operations. The answers do not have to be reported in the EIR
+unless they are relevant. The list of questions covers: moist heat sterilization; dry heat
+sterilization/depyrogenation; aseptic filling; lyophilization; isolators; environmental monitoring; and
+biological indicators.
+
+### 3.5 QUALITY SYSTEM
+
+As noted in Compliance Program 7356.002, the inspection of the quality system is two-phased. The first
+phase is to evaluate whether the Quality Unit has fulfilled their responsibility regarding the review and
+approval of procedures and assured their suitability for use. The second phase is to assess the data
+collected by the firm to identify potential quality problems. For sterile manufacturing operations, this
+latter objective involves large amounts of data that link to the other inspectional systems. The
+comprehensive review of such data by the firm is an essential element in assuring that products are
+produced with a high degree of sterility assurance. It is therefore important to review the firm’s system
+for using the data to assess the state of control of their manufacturing operations and facility. The data
+summaries and trend reports maintained by the Quality Unit should be reviewed during every
+inspection. During a routine CGMP inspection, this review can help determine which option (Full or
+Abbreviated) to select.
+
+The inspection of the Quality System should include the areas listed in CP7356.002. For this program,
+the inspection should include a review of all data and reports that may indicate product contamination
+and sterility assurance issues.
+
+Records pertaining to quality consist of the following:
+
+1. Periodic product evaluations, complaints, adverse events, investigations, Field Alert Reports,
+product retain evaluations, complaints, rejected lots, stability, and returned goods that indicate
+
+===== PAGE 12 =====
+PROGRAM
+7356.002A
+PAGE 12 of 38
+
+possible product contamination or risks to patients (for example, hazy or cloudy product,
+foreign matter/particulates in injectable products, cracked, and leaky containers).
+
+2. Discrepancy and failure investigations, such as:
+
+o All initial positive sterility tests and endotoxin and media fill failures regardless of final
+disposition.
+o Unexpected results or trends.
+o All failures that occurred during validation or revalidation of sterilization / depyrogenation
+processes.
+o All investigations involving media fills / process simulations.
+o Environmental (microbial/viable and particle/non-viable counts) and personnel monitoring
+results that exceed alert or action levels.
+o Process deviations or equipment malfunctions that involve critical equipment, such as
+sterilizers and lyophilizers.
+o Out of Specification (OOS) results for assay, impurities, particulate matter, or reconstitution
+time, if applicable.
+o Product rejects (rejects determined during manufacturing and Quality Control test)
+
+3. Trends reports/ summaries of quality indicators:
+
+o For aseptic processing, summary of all media fills performed since last inspection.
+o Environmental monitoring trend data (microbial and particle counts).
+o Personnel monitoring trend data.
+o Summary of water system test results.
+
+4. Summary of change controls for critical utilities and equipment implemented since the  last
+inspection, for example:
+
+o Sterilizers, lyophilizers, depyrogenation equipment
+o Aseptic processing line
+o Clean steam generator, process gas system
+o WFI and / or Purified Water system
+o Air handling systems
+o Automated building management system
+
+Every inspection of a sterile drug manufacturer should include a review of the type of information listed
+above and observation of the manufacturing operations occurring in the critical areas. The information
+can be used to select other system(s) to be covered during the inspection.
+
+In addition, the review of summary data and observation of operations can focus the inspection on
+potential problem areas and provides an overview of the effectiveness of the Quality System. The
+inspection of the Quality System may necessitate follow-up within another system. However, this
+coverage does not constitute or require complete coverage of these systems.
+
+===== PAGE 13 =====
+PROGRAM
+7356.002A
+PAGE 13 of 38
+
+### 3.6 FACILITIES AND EQUIPMENT SYSTEM
+
+Compliance Program 7356.002 lists the general areas to cover when inspecting the Facilities and
+Equipment System. The areas are applicable to sterile drug products and should be covered if this
+system is selected. The principle objective of an effective sterile drug manufacturing operation from a
+facility and equipment standpoint is to provide suitable protection of product. The inspectional
+evaluation of this objective is again two-part:
+
+• Review and evaluate the firm’s rationale for, and adequacy of, the facility and equipment
+design (Reference: Section IV of FDA’s 2004 Aseptic Processing Guidance).
+• Evaluate the data that provide information relevant to the state of control of the facility and
+equipment.
+
+In addition to the review of design elements and data, investigators should look for visible deficiencies in
+the facility and equipment, such as cleanliness, equipment deterioration (e.g., warping, corrosion),
+inaccessible and/or difficult to clean surfaces, and changes to critical equipment or systems that have not
+been qualified which may impact product quality. Investigator should look for aberrant events due to
+facility deterioration, a pattern of recurring and uncorrected maintenance issues, and increase or changes
+in production output that exceed the capacity of the facility and equipment.
+
+A. FACILITIES
+
+Evaluate the design and layout of the facility (e.g., personnel/material flow, cleanroom design).
+
+Specifications for clean room areas (layout, air filtration, appropriate air classification, pressure
+differentials between rooms and areas, temperature, and humidity) should be appropriate, and based on
+the risk of product contamination with particulate matter and microorganisms. Review the certification
+and qualification of the clean room areas to verify the areas meet design criteria and specifications.
+Certification and qualification typically includes data in support of the following: air flow pattern
+studies, HEPA (High Efficiency Particulate Air) filter integrity testing, air velocity measurement, non-
+viable particle, and verification of appropriate pressure differentials, temperature and humidity setpoints.
+Evaluate the airflow pattern (smoke studies) conducted under dynamic conditions to verify the
+unidirectional airflow and air turbulence within the critical area where sterilized drug product,
+containers, and closures are exposed to environmental conditions.
+
+• Reference: Section IV of FDA’s 2004 Aseptic Processing Guidance.
+• Routine monitoring and maintenance to assure air handling systems continue to operate within
+established parameters (microbiological monitoring is discussed under the Laboratory Control
+System).
+o Afford special attention to facilities that are performing construction in the clean areas, or at
+the vicinity of cleanroom. Because microbes (e.g., fungal spores) can be liberated from the
+movement of walls and other construction activities, determine if the facility is returned to
+acceptable environmental control through proper measures (environmental monitoring,
+media fills) before production can resume.
+o Verify that environmental monitoring of non-viable particle is occurring during operations
+including sites where there is the most risk to exposed product, container and closures.
+
+===== PAGE 14 =====
+PROGRAM
+7356.002A
+PAGE 14 of 38
+
+o Check if pressure differentials, temperature, and humidity are continuously monitored
+during routine production.
+o Determine if continuous monitoring systems are alarmed to alert operators of excursions.
+o Check if excursions from acceptable ranges are investigated to determine impact on product
+and that needed corrective actions are taken.
+o Evaluate the program for periodic testing / recertification of the HEPA filters in critical
+areas to maintain appropriate air flow. The tests typically include integrity testing of the
+HEPA filters and air velocity checks.
+
+• Sanitization / disinfection of clean room areas, processing lines, and non autoclavable
+equipment, materials, and components should be reviewed. Focus on the areas where the
+sterile product is exposed up to and including sealing operations. These critical areas represent
+the highest risk to the product. The suitability, efficacy, and limitations of disinfecting agents
+and adequacy of procedures should be reviewed, including the data that establishes the expiry
+of the disinfection solution. (Reference:  Section X.A.3 of FDA’s 2004 Aseptic Processing
+Guidance)
+• For multi-use facilities and non-dedicated equipment, evaluate the adequacy of the changeover
+procedures and cleaning to prevent cross-contamination between products.
+
+B. EQUIPMENT
+
+Equipment used in the manufacture of sterile drug products may include the following:
+
+• Production Equipment
+• Container/closure processing equipment (e.g. stopper washer, glassware depyrogenation
+equipment)
+• Support system/material system related equipment (e.g. WFI system and related equipment,
+process gas related equipment)
+
+Specific considerations include:
+
+(1) Production Equipment
+
+(a) Aseptic Processing Equipment. Determine that all equipment that comes in direct contact
+with product (e.g., filters, transfer lines, holding tanks, stopper bowls, filling line equipment) and
+sterile components (e.g., stoppers) are sterilized and protected from contamination prior to and
+during use. Equipment logs or other related information may provide insight into significant
+maintenance or other problems that may increase exposure of batches to contamination risk.
+
+(b) Stopper washer. Inspectional considerations include the qualification of the equipment,
+cycle validation and supporting data, equipment preventative maintenance (maintenance
+requirements and frequency), quality of water used for washing, and associated water
+sampling/qualification data. The appropriateness of the air supply used in any drying operations
+should also be verified.
+
+(c) Capping Equipment (vials). The vial cap provides the final closure element of a sealed vial.
+The capping machine folds and crimps the cap (aluminum) over the neck of the stoppered vial.
+The cap on the vial protects the stopper from external damage, while firmly holding the stopper
+
+===== PAGE 15 =====
+PROGRAM
+7356.002A
+PAGE 15 of 38
+
+in the fully seated, sealed position. Evaluate the established processing settings (crimp angles,
+pressures), and preventative maintenance schedules of the capping machine. Air supply quality
+to the capping units should also be evaluated.
+
+(d) Post fill Visual Inspection/Automated Inspection Equipment. The 100% inspection of the
+final filled and sealed product may occur via a manual, automated, or semi-automated inspection
+process. Manual and semi-automated inspection processes involve specified viewing fields and
+calibrated light sources. Semi-automated processes may use conveyor belts and rotational units
+that present the filled product to an operator for visual inspection. All conveyor and rotational
+speed set points should be verified against established parameters. Automated inspection systems
+may inspect for one or all types of defects in a given filled product. Defect categories with
+relevant action levels should be defined. The qualification of the equipment and the challenges
+performed to verify equipment functionality prior to routine use should be evaluated as well as
+the training program for operators performing manual visual inspections.
+
+(e) Sterilizers. The inspection should cover the Installation and Operation Qualification of
+equipment and the Performance Qualification of the process (IQ, OQ and PQ), and operation,
+calibration and preventative maintenance of representative types of equipment used to sterilize
+finished dosage forms, filling equipment, containers, closures, etc. Such equipment includes
+autoclaves, dry heat ovens, dry heat tunnels, steam-in-place (SIP) equipment and chemical
+sterilization systems (i.e., hydrogen peroxide, peracetic acid). Inspection of sterilizers should
+include physical examination of the equipment. Review the engineering specifications which
+may be described in the equipment’s DQ (Design Qualification). DQ is performed prior to the IQ
+(Installation Qualification) and OQ (Operational Qualification), and verify that the sterilizer is
+maintained, calibrated and drained properly and that it has appropriate measuring devices
+(temperature sensors, pressure gauges, etc.).
+
+Records of unplanned maintenance, as well as preventative maintenance, should be reviewed to
+assure all significant changes have been evaluated and qualified as appropriate. Equipment logs
+should also be reviewed. For example, repeat sterilization of loads because of cycle failures can
+indicate a serious problem with a sterilizer. Impact of re-sterilization to product quality should be
+evaluated. (Performance qualification is covered under the Production System).
+
+The equipment can be computer controlled or operated in a manual mode. For computer
+controlled system, programmable logic controller (PLC) or a more complex Supervisory
+Controlled and Data Acquisition Management System (SCADA), may require an assessment to
+determine if the computer control and/or monitoring system are Part 11 compliant.
+
+Reference:
+o PDA Technical Report No. 1 Revised 2007 Validation of Moist Heat Sterilization
+Processes: Cycle Design, Development, Qualification and Ongoing Control;
+o ISO 17665 Moist Heat Sterilization.
+
+(f) Lyophilizer. Because partially sealed vials are used in the lyophilization process, sterile
+product is exposed to the environment from the time of filling until the vials are fully stoppered
+in the lyophilization chamber at the end of the cycle. The inspection should verify that partially
+
+===== PAGE 16 =====
+PROGRAM
+7356.002A
+PAGE 16 of 38
+
+sealed vials are transported and loaded into the lyophilizers under Class 100 (ISO 5) protection.
+Investigators should observe the transport of vials and loading of lyophilizers.
+
+Other key equipment areas to cover include: validation of the sterilization of the lyophilization
+chamber between uses, current sterilization controls, leak testing of the chamber, integrity testing
+of air/gas filters, and calibration of temperature and pressure controllers.
+
+Reference: FDA’s Guide to Inspections of Lyophilization of Parenterals.
+
+(g) Isolators. Evaluate the design and control elements that maintain the separation or isolation
+of the product. Pressure differential, glove integrity, and protection of the transfer (i.e., entry,
+exit) ports are key elements for the isolators. The transfer of containers, closures and supplies
+(including environmental monitoring supplies) into an isolator should be carefully controlled.
+Another critical element for these systems is the effectiveness of the chamber decontamination
+program. Current methods (e.g., vaporized hydrogen peroxide, steam hydrogen peroxide,
+peracetic acid) used to decontaminate isolator barriers are capable of surface sterilization but
+lack the penetrating capabilities of steam sterilization. Investigators should be mindful of the
+limitations of these surface sterilants, including their inefficiency in penetrating obstructed or
+protected surfaces. Validation of the decontamination of the interior (surfaces) of an isolator
+should demonstrate a 6-log reduction of the biological indicator (BI). Quantitative measuring
+devices (e.g., near infrared) or chemical indicators (qualitative test) can be used to determine the
+worst case location for decontamination validation using BI. Factors to be considered in
+decontamination validation include the location of the BI and the type of surfaces where the BIs
+are inoculated.
+
+Utensils and equipment surfaces inside the isolator that have direct contact with sterile product
+and components should be sterilized to render them free of microorganisms. The sterilization
+validation should achieve a minimum of a 6-log reduction of the BI
+
+Reference:
+o Appendix 1 of FDA’s 2004 Aseptic Processing Guidance;
+o PDA Technical Report 51 (2010) Biological Indicators for Gas and Vapor Phase
+Decontamination Processes: Specifications, Manufacture, Control and Use provides
+general principles to be considered in decontamination by BI.
+
+(h) Restricted Access Barrier System (RABS). In general, a RABS is a fill-finish line in a rigid
+wall enclosure that provides full physical separation of the filling line from operators. It is
+important to note that the inside surfaces of the RABS are disinfected with a sporicidal agent2 ,
+but this is not accomplished using the automated decontamination cycles employed for isolators.
+This requires firms to carefully supervise disinfection procedures and assure ongoing
+effectiveness of the disinfection program. Operators use glove ports, half suits or automation to
+access areas within the enclosure during filling. There are 2 types of RABS, “open” and “closed”
+RABS. The doors to a “closed” RABS are never opened during an operation. While an “open”
+RABS is designed to operate with doors closed at all times, on rare pre-defined circumstances
+
+2 Robust disinfection of all non-product contact surfaces within the RABS should be performed with a suitable sporicidal
+agent before batch manufacture. Product contact equipment should be subject to sterilization.
+
+===== PAGE 17 =====
+PROGRAM
+7356.002A
+PAGE 17 of 38
+
+the doors of the enclosure can be opened to perform certain interventions. If doors are routinely
+opened during a filling operation, the system is not considered a RABS because it no longer
+restricts access to the critical areas. Typically, the cleanroom surrounding the RABS is
+controlled as a Class 10,000 (ISO 7) area and operators are fully gowned.
+
+Reference: Restricted Access Barrier Systems (RABS) for Aseptic Processing; ISPE; August 16
+2005.
+
+When inspecting a RABS:
+o Determine that the gloves and gauntlets attached to the glove ports are sterile when
+installed. After installation, the gloves should be disinfected or changed at appropriate
+intervals to minimize the risk of contamination.
+o Verify there is a well defined written procedure that describes what is done when an open-
+door intervention is performed. All open-door interventions should be documented and
+described in batch records, and followed by disinfection.
+o RABS entry is often accompanied by an appropriate line clearance, which should be clearly
+documented in batch records.
+o Determine that all fluid pathways and product contact parts such as stopper bowl, feed and
+placement systems are sterilized prior to the filling of each batch.
+o Observe how sterile components and supplies are transferred to the RABS. Verify that the
+transfer system prevents exposure of sterile surfaces to less clean environments.
+o Verify that non-product contact surfaces within the RABS undergo thorough disinfection
+with a sporicidal agent before each batch. The effectiveness of the overall disinfection
+program should be validated and routinely evaluated by the environmental monitoring
+program.
+
+(i) Blow-fill-seal (BFS) Technology. BFS is an automated aseptic filling process in which
+containers are formed, filled and sealed in a continuous operation. BFS systems can reduce the
+risk of product contamination by reducing operator interventions. The systems are typically used
+for filling sterile ophthalmic and respiratory care products. See Appendix 2 of FDA’s 2004
+Aseptic Processing Guidance for information about BFS systems. It should be noted that the
+inner surfaces of the containers can be exposed to the surrounding environment during the
+formation and molding steps prior to filling. The sterile product can also be exposed to the
+environment during the filling and sealing steps of the BFS process. Therefore, the air quality
+should meet the microbiological level established for Class 100 (ISO 5) should be supplied to
+where the sterile product or its containers are exposed during the BFS process. Some of the more
+advanced BFS equipments that provide enhanced protection for the sterile product operation can
+be located in a Class 100,000 (ISO 8) area. Otherwise, a Class 10,000 (ISO 7) area is
+appropriate. Research has demonstrated a direct relationship between the number of
+contaminated units and the level of microbial contamination in the air surrounding the machine
+(see Reference #20). Typically, the product supply line and sterilizing product filters are steam
+sterilized-in-place (SIP).
+
+When inspecting BFS:
+
+===== PAGE 18 =====
+PROGRAM
+7356.002A
+PAGE 18 of 38
+
+o Verify that HEPA-filtered or sterile air is used during steps where sterile product or
+materials are exposed (e.g., parison formation, container molding, and filling steps).
+o Evaluate the monitoring and preventative maintenance programs to determine the integrity
+of the utilities (cooling water, heating, etc.) associated with the BFS machine is routinely
+checked. Leaks in the molds or utility connections at the molds can contaminate the sterile
+product or containers.
+o Review the SIP system used to sterilize the product line. Determine the sterilization cycle
+has been validated and the condensate properly drains from the line. The line should also be
+protected between sterilization and use.
+o Verify that personnel who enter the classified environment surrounding the BFS machine
+are properly gowned and trained.
+o If possible, observe equipment setup and any difficulties that can lead to contamination
+risks.
+
+Other control procedures (media fills, environmental monitoring, disinfection of surfaces, etc.)
+are the same as discussed for conventional aseptic processing line.
+
+(j) Reactor, Centrifuge, Dryer, Mill. This type of equipment can be used to aseptically
+manufacture sterile bulk Active Pharmaceutical Ingredients (APIs). The equipment and all
+transfer piping must be sterilized prior to processing. This is typically done with sterilize-in-
+place (SIP) systems which use clean steam or a chemical sterilant. Review the validation, cycle
+controls and the routine monitoring of the SIP system. The equipment and all transfer piping
+must remain integral (no fluid or air leaks) and sterile throughout the entire manufacturing
+process. Determine how the firm verifies the integrity of the equipment train throughout the
+process. If a piece of equipment is opened in the process (e.g. adding seed crystals), verify the
+area surrounding the open operation is robustly protected from contamination risks with a Class
+100 (ISO 5) air system as well as implementing a carefully designed aseptic operation.
+Reference: FDA’s Guide to Inspections of Sterile Drug Substance Manufacturers.
+(2) Container/Closure Processing Equipment
+
+Depyrogenation equipment may include a dry heat oven and/or depyrogenation tunnel.
+Depyrogenation of stoppers can also be accomplished by dilution via a washing process. The
+final rinse of the washing process uses Water for Injection (WFI). For more information, see
+FDA’s Aseptic Processing Guidance, Section VI.B, Containers/Closures.
+
+(3) Support Utilities
+
+(a) Water System. Specifically, review WFI generation equipment and distribution loop(s),
+including tanks, water lines, isometric diagrams, vent filters, and preventive maintenance
+schedules (See also Materials System). Monitoring equipment associated with the Water System
+should also be evaluated.
+
+(b)HVAC. Refer to Section IV of FDA’s 2004 Aseptic Processing Guidance on qualification
+and maintenance of the HVAC system.
+
+===== PAGE 19 =====
+PROGRAM
+7356.002A
+PAGE 19 of 38
+
+(c) Process Gases. Gases that are in contact with the drug product or components in drug
+manufacturing operations are referred to as process gases. Gases used in aseptic operations, or
+downstream of sterilization, must be filtered through a sterilizing grade filter to maintain asepsis.
+The integrity testing of these filters (typically hydrophobic) should be evaluated. The system
+used in the generation of the process gas(es) should also be evaluated including preventive
+maintenance (PM) schedules, monitoring (including temperature, pressure, and humidity), and
+sampling. See also under Materials System.
+
+### 3.7 MATERIALS SYSTEM
+
+Compliance Program 7356.002 lists the areas to cover when inspecting the Materials System. The areas
+are applicable to sterile drug products and should be covered if this system is selected. In sterile
+operations, the quality attributes of each of the materials (ingredients, WFI, containers, closures) have a
+bearing on the critical attributes of the finished product. Review the firm’s procedures for receipt,
+handling, sampling, testing, approval and storage of manufacturing materials to verify their fitness for
+use. Emphasis should be placed on incoming materials that are represented to be sterile and / or pyrogen
+free.
+
+Areas of special concern for sterile drug products include:
+
+(1) Water Systems. Water for Injection (WFI) is an ingredient in many sterile drugs, including
+injectable products and sterile ophthalmic products. It is also used in depyrogenation (or endotoxin
+removal) of equipment and stoppers and in cleaning operations. The quality of the water, and its
+endotoxin levels and controls, used in the upstream process should also be evaluated in order to ensure
+the removal of bacterial endotoxin to the appropriate level downstream. Purified water can be used for
+some sterile non-injectable solutions.
+
+• Observe and understand elements of the generation and distribution systems.
+• Evaluate the water system “As Built” diagrams” and inspect for leaks, pipe slopes (via the
+isometric diagrams and verification of the degree of the slopes), so called “dead legs”, and
+non-sanitary fittings in the distribution system.
+• Evaluate how microbial alert and action levels are established.
+• Evaluate sampling sites, procedures, frequencies and tests performed.
+• Review procedures for preventative maintenance and calibration of critical instruments,
+including scheduling and equipment update procedures.
+• Review raw data to verify that all of the above is completed per established procedure.
+• Review and observe routine monitoring (in-line TOC and conductivity) of water system.
+• Review trend data for chemistry, microbiological and endotoxin tests.
+• Review investigation of results that are at or over alert and action levels.
+Reference: FDA’s Guide to Inspections of High Purity Water Systems.
+
+(2) Process Gas. Process gas and related equipment controls may be covered in conjunction with the
+Facilities and Equipment System. Specific considerations include controls over final filtration of the
+
+===== PAGE 20 =====
+PROGRAM
+7356.002A
+PAGE 20 of 38
+
+processed gas and filter integrity testing. Gas used as a component in a finished product may include the
+Nitrogen gas overlay for Oxygen sensitive products.
+
+(3) Pre-washed / Ready to Sterilize Closures. The CGMP regulation (21 CFR 211.94(c)) states that,
+where indicated, containers and closures must be processed to remove pyrogenic substances. Many
+manufacturers of small volume parenterals purchase stoppers that are ready-to-sterilize, (i.e., they are
+pyrogen-free). No washing or depyrogenation is done by the dosage form manufacturers but these firms
+are still responsible for assuring the stoppers are of acceptable quality for use in manufacturing. The
+pyrogen requirements should be included in specifications for the stoppers and, if the manufacturer does
+not conduct testing of each incoming lots for pyrogen/endotoxin, they should establish the reliability of
+the supplier’s test results by qualification of the vendor, followed by periodic testing.
+
+(4) Microbiological and Endotoxin Testing of Component, Container and Closure. 21 CFR
+211.84(d) specifies that each lot of component, container or closure that is liable to microbial
+contamination which is objectionable in view of its intended use shall be subjected to microbiological
+tests before use. Evaluate the firm’s system for determining if microbiological or endotoxin testing is
+required and the rationale for setting acceptance criteria. Review test data to verify that the materials
+meet test criteria and, if not, verify that investigations were conducted to determine the cause and
+corrective actions were implemented.
+
+(5) Verification of Container and Closures. The physical and chemical characteristics of containers
+and closures can be critical to the sterility and stability of the finished product. Many containers and
+closures look alike (color and dimensions), but are made of different materials or have a different
+surface treatment such as silicone on stoppers and ammonium sulfate on Type I glass. Evaluate the
+firm’s procedures for assuring containers and closure consistently meet appropriate specifications.
+Determine what tests and examinations are done to verify the containers and closures are made of the
+correct materials with the correct dimensions (critical to ensuring continuing container-closure integrity)
+and are free of critical defects.
+
+(6) Container / Closure Integrity. The integrity of the container / closure system is critical to assuring
+that all units of drug products remain sterile through shipment, storage and use. Leaking containers or
+closures lead to product contamination.
+
+Reference: FDA’s 1994 Guidance for Industry for the Submission of Sterilization Process Validation in
+Applications for Human and Veterinary Drug Products.
+
+Evaluate the tests and studies performed to demonstrate the integrity of container / closure systems for
+all sterile drugs, including:
+
+• Verify that all incoming container-closure components meet specifications, including all
+appropriate dimensions.
+• Determine studies adequately simulate the stress conditions of the sterilization process,
+handling and storage.
+• Verify that the units tested in validation are appropriate (e.g., for terminally sterilized drug
+product, the units selected should be exposed to the maximum sterilization cycles using the
+production process).
+
+===== PAGE 21 =====
+PROGRAM
+7356.002A
+PAGE 21 of 38
+
+• Sensitivity of the test is specified.
+• Container-closure integrity is demonstrated during validation and as part of the stability
+program (in lieu of sterility testing), over the shelf life of the product.
+
+===== PAGE 22 =====
+PROGRAM
+7356.002A
+PAGE 22 of 38
+
+### 3.8 PRODUCTION SYSTEM
+
+Compliance Program 7356.002 lists areas to cover when inspecting the Production System. The listed
+areas are applicable to sterile drug products and should be covered during inspections.
+
+Production practices and conditions can have a direct and significant adverse impact on drug sterility
+assurance. The Production System, as well as the Quality System, should be included in all Full
+Inspections. Coverage of critical elements, which are typically defined by the firm of the Production
+System, should be part of all inspections (full and abbreviated) of aseptically processed sterile drug
+manufacturers.
+
+The risk of contamination posed by an operation depends greatly on the design of the overall
+manufacturing operation. Observation of manufacturing is a critical part of evaluating the adequacy of
+an aseptic processing operation. The following should be carefully observed.
+
+• adequacy of aseptic technique [See section V of FDA aseptic processing guidance]
+• personnel behavior and practices in the cleanroom [See section V of FDA aseptic processing
+guidance]
+• movement of people and materials before and during the aseptic operation
+• robustness of production process design (e.g., process performance, validation, impact of
+equipment configuration on ergonomics of aseptic manipulations)  [See section IV of FDA
+aseptic processing guidance]
+• disinfection practices   [See section X.A.3 of FDA aseptic processing guidance]
+
+More specifically, the inspection must include real time observation of the higher risk operations
+including but not limited to (these are examples and not an all inclusive list):
+
+• Set-up of filling lines, especially difficult to assemble lines (e.g. powder filling lines), and lines
+that require multiple aseptic assemblies or do not employ SIP of the product pathway.
+• Cleaning and disinfection of the line and room to ensure all difficult to access surfaces are
+consistently and properly cleaned and disinfected.
+• Protection of critical contact surfaces to ensure their sterility throughout operations and post
+sterilizations.
+• Aseptic technique and cleanroom behavior during operations, including handling of equipment
+jams and stoppages.
+• Personnel flow in relation to microbial control of the environment.
+• Material flow (e.g., whether materials are moved from a lesser controlled area to a cleaner area
+without disinfection), including number of staff and their activities in the aseptic filling room.
+• Filling operations, especially personnel gowning technique, gown integrity, strict adherence to
+SOPs), the nature and frequency of interventions (interventions are also performed during the
+media fill simulations), and overall condition of the critical filling area.
+• Atypical interventions associated with unplanned events (e.g., operator attempts to change the
+filling pump during operations).
+
+===== PAGE 23 =====
+PROGRAM
+7356.002A
+PAGE 23 of 38
+
+• Extra manipulations during filling operations for assembly of sterile filtration apparatus that is
+not SIP sterilized.
+• Handling (transfer, storage, loading) of partially stoppered vials in lyophilization processes.
+Note that for lyophilized products, vials of sterile products are stoppered but not fully sealed
+until the lyophilization process is completed. The sterile product is exposed to the environment
+during filling, half-stoppering, transport, loading of the lyophilizer, and the lyophilization
+cycle. Complete seating of stoppers typically occurs in the chamber after the cycle is
+completed. All of these manipulations must be performed under Class 100 conditions.
+• Preparation of equipment for sterilization (cleaning, the type of wrapping to ensure protection
+while still allowing for penetration as part of the validated sterilization cycle with defined
+loading patterns).
+• Environmental monitoring (while the monitoring program is considered a Laboratory System,
+inspection should include observation of the actual monitoring operations and rationale for
+sample site locations).
+• Proper placement and sealing of stoppers on vials as applicable, and the capping (aluminum
+crimp) is performed in a protected area under unidirectional flow.
+• Production of sterile suspensions and sterile bulk powders (e.g., antibiotics) where sterile
+filtration of the final bulk is not feasible. These are typically formulated and manufactured
+under aseptic conditions. This requires the sterilization of large pieces of production equipment
+(e.g., tanks, reactors, dryers and associated lines) and assurance that these pieces of equipment
+retain their integrity and remain sterile.
+
+Critical operations that should be covered during an inspection of the Production System include:
+
+(1) Media fills or process simulations. Media fills are used to validate aseptic processing operations,
+including those employing newer technologies, such as isolators, BFS or RABS systems. Media fills
+representing manually intensive aseptic operations should equal or approach the size and duration of a
+commercial production lot. In contrast, a process conducted in an isolator is designed to have a lower
+risk of microbial contamination because of the lack of direct human intervention and can be simulated
+with a lower number of units as a proportion of the overall operation. All media fills should closely
+simulate manufacturing operations, incorporating, as appropriate, worst-case activities and conditions as
+well as operator interventions. FDA’s current expectations for media fills are discussed in Section IX.A
+of the 2004 Aseptic Processing Guidance.
+• Verify Media Fills represent actual manufacturing operations by comparing observed
+operations to those documented in Media Fill batch records.
+• Determine if media fills are conducted semi-annually for each processing line. The activities
+and interventions representative of each shift should be included in the semi-annual media fill
+program. This may require more than one media fill per line every 6 months, if aseptic
+processing is performed during more than one shift. With the exception of isolator operations,
+at least one semi-annual media fill is performed per line per shift. Determine if the aseptic
+filling of all types of containers are supported by the media fills performed. If a matrix
+approach is used, evaluate the firm’s justification for selecting the worst case container /
+closure configurations for each line.
+• Determine accountability of all filled units (units filled vs. units incubated).
+
+===== PAGE 24 =====
+PROGRAM
+7356.002A
+PAGE 24 of 38
+
+• Verify that all units that were discarded during and after filling have a reasonable and
+assignable cause for rejection (e.g., rubber stopper missing, aluminum cap missing).
+• Determine that cracked and leaking units found after incubation are investigated, counted and
+all rejected units properly justified (e.g., is there an assignable cause that is reasonable for the
+rejection?).
+• Determine how and who examines units after incubation. If the examination is not performed
+by a microbiologist, determine if it is overseen by the quality unit and if the operators doing
+the exam are properly trained by a microbiologist.
+
+Reference:
+• FDA’s 2004 Aseptic Processing Guidance, Section IX A.
+• PDA Technical Report No. 28, revised 2006, Process Simulation Testing for Sterile Bulk
+Pharmaceutical Chemicals.
+• PDA Technical Report No. 22, revised 2011, Process Simulation for Aseptically Filled
+Products.
+
+(2) Sterile filtration (aseptic processing).
+
+• Verify filters used in production are identical to those used in validation studies (i.e., those
+submitted in drug applications)
+• Verify that actual operating parameters and allowable extremes are covered in the validation
+studies.
+• Determine that validation of filter sterilization has been performed for all products. Pay special
+attention to legacy products. These include older products and those for which applications
+have not been submitted.
+• Observe filter integrity testing to verify procedures are followed.
+• Review investigations of any integrity test failures.
+
+Reference:
+• FDA’s 2004 Aseptic Processing Guidance, Section IX.B; and
+• PDA Technical Report #26, 2008, Sterilizing Filtration of Liquids.
+
+(3) Sterilization and depyrogenation of containers, closures and processing equipment.
+
+• Review the validation or revalidation of sterilization and depyrogenation processes used for
+containers, closures and, in the case of aseptic processing, equipment that comes in contact
+with the sterile product or sterile components.
+• Check if firm verifies that validated parameters (loading patterns, cycle parameters) are met for
+each load.
+• Rubber stoppers that are not purchased pre-sterilized or pre-siliconized may require
+depyrogenation and siliconization prior to use. As previously noted, depyrogenation may be
+achieved via a washing dilution process with the use of repeated WFI washing steps. The
+validation should demonstrate a successful 3-log reduction of bacterial endotoxin. When the
+firm performs its own siliconization of stoppers, silicon level after wash should be validated to
+meet the predetermined acceptance criteria.
+
+===== PAGE 25 =====
+PROGRAM
+7356.002A
+PAGE 25 of 38
+
+• Stoppers are sterilized by steam sterilization. Verify that the clean steam used to provide the
+sterilization is acceptable and has been assayed for endotoxin.
+• Review the practices and procedures to determine if a firm needs to revalidate the sterilization
+and depyrogenation process.
+• Review change control procedures.
+• Determine if reprocessing is performed.
+• Evaluate bioburden level:  Evaluate the firm’s understanding of process bioburden (e.g., from
+incoming components/container/closure) and determine if the firm has adequately validated
+hold time for critical steps. It is important to note that increased bioburden can lead to the
+degradation of the drug product as well as contributing impurities (including endotoxin) to the
+drug product. Sampling points (location in process flow) and methods should be evaluated
+based on product quality risks.
+
+(4) Lyophilization.
+
+• Review the validation of lyophilization cycles established for selected products.
+• Verify the firm confirms all critical cycle parameters are met for each lot.
+• Determine environmental monitoring is routinely performed in the areas of loading and
+unloading of the product from the lyophilizer. In addition, ensure personnel monitoring is
+conducted on those operators who perform the loading and unloading operations.
+• Observe the transport of the partially stoppered vials and the loading of the lyophilization
+chambers to verify it is done under proper environmental conditions (Class 100) and to verify
+that proper aseptic techniques are used.
+
+Reference: FDA’s Guide to Inspections of Lyophilization of Parenterals.
+
+(5) Sealing of vials.
+
+• A vial is not sealed until the aluminum overseal is placed over the rubber stopper and crimped
+in place.
+• If stoppered vials exit the aseptic processing zone prior to capping, verify proper safeguards
+are in place, such as HEPA filtered air protection and qualified in-line detectors that reject
+vials with improperly seated stoppers.
+
+(6) Terminal sterilization.
+
+• Determine what type of sterilization cycles are used (bioburden based or overkill).
+• Review validation / revalidation / or periodic evaluation of terminal sterilization cycles for
+representative types of products.
+• For selected products, verify that the parameters and loading patterns used in production are
+the same as those used in validation studies.
+• Determine the minimum acceptable cycle allowed in the SOP (as opposed to the nominal or
+routine cycle) and compare that to the validated cycle (using BI) to verify it has been properly
+qualified.
+• Determine how sterilization cycles are documented, monitored and reviewed.
+
+===== PAGE 26 =====
+PROGRAM
+7356.002A
+PAGE 26 of 38
+
+• Review deviations or atypical data from sterilization operations that indicate inconsistencies in
+process performance.
+
+(7) Parametric release of terminally sterilized drug product. This is defined as a sterility assurance
+release based on demonstrated control of the sterilization process. It enables a firm to use defined
+critical process control data, in lieu of the sterility test to fulfill the intent of 21 CFR 211.167(a). It is
+allowed only for products that are terminally sterilized by heat and it must be identified in the
+appropriate regulatory filing as the release method. Parametrically released product must have an
+approved application.
+
+• If encountered during an inspection, verify the parametric release method has been submitted
+and approved in the appropriate drug application. If the drug is not the subject of an approved
+application, collect pertinent information and validation data for evaluation by the Center.
+• Verify that the conditions described in FDA’s Compliance Policy Guide Section 490.200,
+Parametric Release – Drug Products Terminally Sterilized by Heat, are met.
+
+(8) 100% inspection of injectable products including: cracks, visible particles and other significant
+defects.
+
+• Verify the firm has written procedures that define the defects to be removed from the lot and
+actions to take if the number of critical defects exceeds a pre-determined level.
+• Significant defect categories should be identified. Results of inspection of each batch should be
+compared to established action levels.
+• Evaluate the appropriateness of and the rationale or justification for pre-determined action
+levels.
+• Evaluate the firm’s investigation into the cause of rejects, including units rejected for cracks
+and visible particulates (e.g., foreign matter).
+• Observe the inspection process.
+• Challenge visual/manual inspection rates through observation.
+• Evaluate the adequacy of written procedures for visual inspection.
+• Evaluate personnel qualification and requalification and equipment qualifications according to
+established procedures. Evaluate personnel qualification including the use of reference samples
+for qualification.
+o If a manual system is used, determine if employees are trained and qualified to verify they
+can recognize and remove defects under actual or simulated production conditions.
+o If an automated or semi-automated system is used, determine the equipment is qualified and
+the software program or equipment settings have been validated for all types of products
+being inspected (e.g., clear vials, amber vials, colored solution, suspensions). If the
+equipment is an automatically controlled computer based system, an assessment of the
+system and validation is warranted.
+• Evaluate the firm’s program for sampling and examination of inspected vials and evaluate the
+effectiveness of inspection and action taken if the reject level is reached.
+
+===== PAGE 27 =====
+PROGRAM
+7356.002A
+PAGE 27 of 38
+
+• Evaluate the firm’s assessment of units rejected during filling operations (any separate
+inspection prior to the 100% inspection stage), established alert/action limits, and
+investigations where appropriate.
+
+(9) Personnel (gowning, training, aseptic techniques). The type of gowns and personal protective
+equipment (PPE) worn by employees should be appropriate for the areas in which they work. There
+should be detailed written procedures that describe the gowning requirements for each processing area.
+Evaluate the following:
+
+• For aseptic processing, determine the gowns (which typically include face masks, hoods,
+protective goggles, gloves, and boots) are sterilized and made of non-particle shedding
+material. Ensure that the gowns cover all skin, hair and facial hair.
+• Review how the incoming sterile gowns/garb are accepted or rejected for use.
+• Evaluate the firm’s program for training, testing and qualifying and re-qualifying employees
+who work in the controlled areas, especially those who set-up and operate aseptic processing
+lines.
+• Evaluate the aseptic techniques of employees by observing aseptic processing operations.
+• For selected employees, verify the training, testing, qualifying, and re-qualifying were done as
+specified in procedures.
+• Verify the training is done on a continuing basis.
+Reference:  FDA’s 2004 Aseptic Processing Guidance, Section V.
+(10) Batch records.
+
+• Review of environmental and personnel monitoring data, as well as other data relating to
+acceptability of support systems (e.g., HEPA / HVAC, WFI, steam generator) and
+manufacturing equipment. This review is considered essential to batch release decisions. The
+batch record should include documentation that assures this type of holistic review is done
+before the release of a lot for distribution.
+• For aseptic processing, verify interventions into critical areas (Class 100/ ISO 5) are
+documented so they can be reviewed and evaluated by the Quality Unit.
+• Review batch records to verify they include complete information for all sterilization
+processes.
+
+Reference: FDA Aseptic Processing Guidance, Section XII.
+
+(11) Environmental and personnel monitoring.
+
+•
+See section below under “Laboratory Control System”.
+
+===== PAGE 28 =====
+PROGRAM
+7356.002A
+PAGE 28 of 38
+
+### 3.9 PACKAGING AND LABELING SYSTEM
+
+Compliance Program 7356.002 lists the areas to cover when inspecting the Packaging and Labeling
+Control System. All of the areas that are applicable to sterile drug products and should be covered if this
+system is selected for coverage. Areas of special concern for sterile products include:
+
+• Determine that packaging and labeling operations do not introduce risk to product integrity (for
+example, damage to the container or closure that could affect the integrity of the unit).
+• Determine that the container, closure and packaging systems provide adequate protection
+against foreseeable external factors in storage, shipment, and use that can cause contamination
+or deterioration (e.g. cracked vials during shipment if not properly protected; pinhole leaks in
+bags, frozen drug products, tears or holes in overwraps of sterile bulk antibiotics and large
+volume parenterals; and unseating of stoppers in aluminum cans containing sterile bulk APIs
+due to pressure changes during shipment by air).
+• It is not unusual for filled containers of sterile products to be stored unlabeled for a period of
+time. The firm must have adequate controls to assure proper identification of the unlabeled
+product at all times.
+• Tracking of refrigerated or temperature controlled units for room temperature exposure times
+(e.g. warm up of refrigerated units prior to label application).
+• Tracking and investigation (as specified and appropriate) of rejected units culled during
+packaging and labeling operations.
+
+### 3.10 LABORATORY CONTROL SYSTEM
+
+Compliance Program 7356.002 lists general areas to cover when inspecting laboratories. Inspections of
+sterile drug manufacturers should also cover microbiology laboratories. Quality control tests (sterility
+and Limulus Amebocyte Lysate or LAL test) and the collection of environmental and personnel
+monitoring samples should be observed to verify that acceptable techniques are used and written
+procedures are followed. The inspection of microbiology laboratory should evaluate the following:
+
+• Sterility testing, including the collection of samples that are representative of the entire lot and
+processing conditions; adequate control and monitoring of the testing environment; validation
+of the method for specific products; growth promotion testing of the media; and incubation
+times and temperature. It is important to note that increasing the number of samples or the
+number of tests does not greatly increase the probability of detecting contamination if it is
+present at a very low level in a lot. Reference: FDA’s Guide to Inspections of Microbiology
+Pharmaceutical Quality Control Laboratories and FDA’s 2004 Aseptic Processing Guidance,
+Section XI.
+
+• LAL testing, including product specific validation; collection of representative samples of raw
+materials, components/containers, in-process, and finished product, where appropriate; and
+adequate laboratory facilities for conducting the tests. Verify the rationale of sample size of
+endotoxin test relative to the production batch. Reference: Bacterial endotoxins – Test
+methodologies, routine monitoring, and alternatives to batch testing. ANSI/AAMI ST
+72:2002/ (R) 2010, Association for the Advancement of Medical Instrumentation.
+• Environmental monitoring, which includes: a well defined written program that covers all
+production shifts and includes air, floors, walls, equipment surfaces, and, in aseptic process
+
+===== PAGE 29 =====
+PROGRAM
+7356.002A
+PAGE 29 of 38
+
+operations, critical surfaces that come in contact with sterile product, containers and closures;
+establishment of appropriate alert and action levels, use of sampling (contact plates, swabs,
+active air samplers) and testing methods (media, plate exposure times, incubation times and
+temperatures) that are designed to detect environmental isolates. Evaluation of the validity of
+the sampling locations and sampling methods. Reference: FDA 2004 Aseptic Processing
+Guidance, Section X. Note: environmental monitoring is performed during the processing of
+all types of sterile drug products, including an appropriate program for terminally sterilized
+products.
+• Personnel monitoring which includes: a routine program for daily/shift monitoring of operators
+gloves and an appropriate schedule for monitoring gowns; establishment of limits that are
+based on the contamination risk to the product; and investigations of results that exceed the
+established levels or demonstrate an adverse trend. Personnel monitoring is important in all
+sterile product operations, but it is especially critical in aseptic processing, and inspectional
+emphasis should be risk based, focusing on those operations that require employees to enter
+the critical areas of the processing line. Reference:  FDA’s 2004 Aseptic Processing Guidance,
+Section V.C.
+• Efficacy of disinfectants, including assessment of the suitability, efficacy and limitations of the
+disinfecting agents used in the controlled area, production equipment and laboratories. The
+firm’s assessment typically includes laboratory studies that test the effectiveness of agents on
+different surface materials. Material coupons are usually used with surfaces types as found in
+production. The studies should be done with the same disinfecting agents, contact times (which
+should be clearly defined in written procedures). It is also important to understand that
+disinfectants have limitations and most are not effective against every type of microorganism.
+For this reason, firms should normally use more than one type of disinfectant. Reference:
+FDA’s 2004 Aseptic Processing Guidance, Section X.A.3.
+• Identification of microorganisms, including procedures that require identification of organisms
+found in positive sterility tests, media fills, and environmental monitoring (environmental and
+personnel) samples as specified by the firm. The program should assure routine identification
+of microorganisms found in samples are taken in critical areas, surrounding areas and from
+personnel in the production area. Review the procedures, equipment and controls used in
+identification activities of the contaminants.
+• Microbiological media, including the preparation, sterilization and growth promotion testing of
+the media used in performing tests (sterility tests, raw material testing, pre-filtration bioburden,
+environmental monitoring, media fills, etc.). Where appropriate, inactivating agents for
+disinfectants or product residuals should be added to allow detection of contaminants.
+• BIs and biological cultures used in sterilization validation studies should be used and stored
+under appropriate conditions. Typically, the conditions are described in the literature received
+with the BI, if supplied by a vendor. The microbial population should be confirmed by testing
+each lot. Spore counts should be verified prior to use in validation studies. The D-value should
+be determined for each lot of a BI if it is used in a way not described by the vendor. If used
+specifically as directed, the D-value supplied by the vendor can be accepted if the reliability of
+the Certificate of Analysis has been established, but D-value of incoming batches should be
+periodically verified. Reference: 2004 FDA Aseptic Guidance.
+
+===== PAGE 30 =====
+PROGRAM
+7356.002A
+PAGE 30 of 38
+
+• Microorganisms (e.g., ATCC) are used for growth promotion tests of media. Organisms
+isolated from environmental monitoring samples can also be used to perform growth
+promotion test.
+• Monitoring, calibration and maintenance programs for microbiology laboratory equipment,
+such as incubators.
+• Training of microbiologists and evaluation of microbiologists or technicians that perform
+sterility, LAL and environmental monitoring tests.
+• Documented investigations into out-of-specification results. Evaluate positive sterility tests and
+media fill and LAL failures investigations. Also review environmental / personnel monitoring
+results at alert and action levels to identify and determine the firm’s response to the significant
+incidents or trends. Because of the limited sensitivity of the sterility tests to detect batch
+contamination, any positive is a serious issue and should be thoroughly investigated by the
+firm with quality unit oversight and approval. The investigation and followed should be
+reviewed during inspections to assess the decision making process. An initial positive can be
+found invalid only if there is clear documented evidence that the microbial growth was
+unequivocally a laboratory error. Reference: Section XI.C of FDA’s 2004 Aseptic Processing
+Guidance.
+
+21 CFR 211.180(e) requires that records be maintained in such a manner that the data can be used to
+evaluate adherence to quality standards. The evaluation of data generated by the microbiology lab plays
+an integral role in establishing the sterility assurance of the finished product. The inspection should
+determine if the firm generates and reviews testing data and product quality related data (e.g., trend
+reports) to make timely, informed and science-based decisions to assure an ongoing state of control.
+
+### 3.11 SAMPLING
+
+Samples of sterile drug products should be collected to document suspected contamination, adulteration
+or misbranding encountered during an inspection. The samples can be physical or documentary. In the
+event of a for-cause assignment where in-process samples are being requested, collect the samples
+aseptically at points where such contamination might occur. These samples should be collected by the
+firm under the observation of the investigator. Great care shall be taken to prevent the possibility of
+contamination and/or compromising the integrity of the sample for all physical samples of raw
+materials, in-process samples or finished drug products. Consult the district management and/or Center
+as well as the servicing laboratory for guidance on sample size and sampling techniques. A production
+lot with an initial sterility failure result that was invalidated by the firm may be considered a good
+candidate for sampling.
+
+Physical sample analysis is not necessary to document CGMP deficiencies. Documentary samples may
+be submitted when the documentation illustrates the deficiencies and to obtain evidence of interstate
+shipment. Please be aware to collect the appropriate number of sample units in order to accommodate
+the 702(b) section of the Act.
+
+For finished products requiring sterility testing, collect 48 units of product. For finished products
+requiring endotoxin testing, collect 20 units of product.
+
+For additional sampling guidance, refer to Investigations Operations Manual (IOM) Chapter 4.
+
+===== PAGE 31 =====
+PROGRAM
+7356.002A
+PAGE 31 of 38
+
+[end Part III]
+
+===== PAGE 32 =====
+PROGRAM
+7356.002A
+PAGE 32 of 38
+
+PART IV - ANALYTICAL
+
+In general, samples will be submitted to your District's designated servicing laboratory, except as
+requested in a special assignment or your supervisor.
+
+4.1 . ANALYZING LABORATORIES
+
+For Sterility and Bacterial Endotoxin testing:
+
+Region
+Examining Laboratory
+NER
+NRL
+SER
+SRL
+CER
+NRL
+PAR
+SAN-DO
+SWR
+DEN-DO
+
+For particulate matter in injectables analysis, contact the ORA/Office of Regulatory Science/Medical
+Products and Tobacco Staff to determine the most appropriate laboratory for this test.
+
+### 4.2 ANALYSIS
+
+Sterility testing methods should be based on current editions of USP <71> Sterility Tests and the
+Sterility Analytical Manual (SAM). The SAM provides supplemental information to the USP. The SAM
+has the goal of standardizing the performance of testing for pharmaceutical microbiology in FDA
+laboratories.
+
+Bacterial endotoxin testing methods should be based on current editions of USP <85> Bacterial
+Endotoxin Test and the Sterility Analytical Manual (SAM).
+
+Particulate matter testing methods should be based on current editions of USP <78>.
+
+Other microbiological examinations should be based on appropriate sections of USP and the SAM.
+
+[end Part IV]
+
+===== PAGE 33 =====
+PROGRAM
+7356.002A
+PAGE 33 of 38
+
+PART V - REGULATORY/ADMINISTRATIVE STRATEGY
+
+A recommendation for regulatory action should be submitted by the District Office when a judgment is
+made that the firm is not operating in a state of control and management of the firm is unwilling or
+unable to make adequate corrective actions in an appropriate time frame. The therapeutic use of the drug
+product and the potential adverse effect of the CGMP deviations on the finished product must be
+considered in determining the appropriate action needed.
+
+When deciding the type of action to recommend, the initial decision should be based on the seriousness
+of the problem and the most effective way to protect the consumer (i.e., when non-sterile parenterals are
+found, injunction/seizure, recall would be the action(s) of choice). Instructions in the Regulatory
+Procedures Manual (RPM) should be followed.
+
+If the nature of the CGMP deviations is determined to pose minimal risks when considered in relation to
+the intended use of the drug, the primary action should normally be voluntary corrections by the firm.
+The District should require that all commitments for achieving voluntary compliance by firm
+management be submitted in writing and contain a time schedule for completion. The District should
+determine if the schedule is a reasonable time frame and should monitor the progress.
+
+When voluntary action is not accomplished or when the deviations observed pose a serious risk to the
+consumer, regulatory and / or administrative action should be recommended.
+
+NOTE:  Regulatory action is independent of the collection of a violative physical
+sample. The lack of a violative physical sample is not a barrier to pursuing
+regulatory and/or administrative action providing the CGMP deficiencies have
+been well documented. Physical samples found to be in compliance likewise
+are not a barrier to pursuing action under CGMP charges.
+
+The following list of deficiencies represents examples of practices that CDER believes could warrant
+regulatory and/or administrative action (please note the following is not intended to be an inclusive list):
+
+1.
+Contamination with filth, objectionable microorganisms, toxic chemicals or other drug
+chemicals; or a reasonable potential for product contamination, with demonstrated avenues of
+contamination such as poor aseptic methods, contact with unclean equipment, or airborne
+contamination.
+
+2.
+Failure to assure that each batch conforms to label claims or established specifications, such as
+NDA, ANDA, USP monographs, and the firm’s finished product specifications.
+
+3.
+Distribution of product which does not conform to established specifications.
+
+4.
+Lack of adequate validation of critical steps in sterilization processes, including sterilization by
+filtration; sterilization cycles used for drug products; and, for aseptically processed products,
+sterilization processes used to sterilize components (formulation and/or its ingredients, as well as
+containers and closures), or to sterilize equipment surfaces that contact sterile product or any
+elements of the product.
+
+5.
+Lack of adequate validation of aseptic processing operations (media fills).
+
+===== PAGE 34 =====
+PROGRAM
+7356.002A
+PAGE 34 of 38
+
+6.
+Failure to appropriately conduct and document investigations of discrepancies and failures of
+drug products or any of their components to meet specifications, especially inadequate
+investigations of sterility test failures, media fill failures and repeated or significant
+environmental or personnel monitoring results that meet or exceed action levels.
+
+7.
+Facilities and equipment which do not provide adequate protection for aseptically processed
+product while the sterile product or sterile components are exposed to the environment. This
+includes both lack of robustness due to poor design, as well as failure to maintain equipment as
+sterile (e.g., by providing proper barriers as well as assuring adequate sterilization frequency).
+
+8.
+Failure to assure a robust cleanroom disinfection program. This may include the failure to assure
+sufficiently detailed cleaning procedures to assure repeatability in cleaning, or failure to
+demonstrate the suitability and efficacy of the disinfecting agents used for the critical controlled
+areas and production equipment.
+
+9.
+Failure of a WFI system to deliver water that consistently meets chemical, microbiological and
+endotoxin specifications.
+
+10.
+For aseptic processing, poor employee practices that increase the risk of product contamination.
+
+11.
+Failure to provide adequate training to employees who work in critical operations, such as
+operators on aseptic processing lines, operators responsible for initiating and checking
+sterilization cycles and those who perform the 100% inspection of filled injectable products.
+
+12.
+Failure to perform adequate 100% inspections of injectable products for particulate matter and
+other defects.
+
+13.
+Failure of batch records to include complete information related to the production and control of
+each batch, including documentation that assures environmental and personnel monitoring data
+and data related to the support systems, and assure quality unit review of these records prior to
+approval of a lot for distribution and release. For aseptically processed product, batch
+documentation includes records of purposeful operator interventions into critical (Class 100 /
+ISO 5) areas of the line. Operator intervention should be minimized as much as possible to
+preclude and control contamination.
+
+14.
+Use of test methodology (sterility test, endotoxin test) that is not adequate or validated.
+
+15.
+Lack of an adequate environmental monitoring program, that is, one that does not include
+dynamic monitoring during all production shifts or has not established appropriate alert and
+action levels and, in the case of aseptic processing, does not include representative critical
+surfaces that come in contact with sterile product, containers and closures.
+
+16.
+Lack of an adequate personnel monitoring program for aseptic processing operations. For
+example, the program does not include daily monitoring of operators’ gloves and periodic
+monitoring of gowns; has not established appropriate limits or does not require investigations
+and corrective actions when limits are exceeded.
+
+[end Part V]
+
+===== PAGE 35 =====
+PROGRAM
+7356.002A
+PAGE 35 of 38
+
+PART VI - REFERENCES, ATTACHMENTS, AND PROGRAM CONTACTS
+
+### 6.1 REFERENCES
+
+All of the references listed below, with the exception of number 17 through 26, are available on FDA’s
+internet website.
+
+1.
+Code of Federal Regulations, Title 210 and 211 as revised, including the preamble.
+
+2.
+Guidance for Industry Sterile Drug Products Produced by Aseptic Processing – Current Good
+Manufacturing Practice; FDA; September 2004.
+
+3.
+Guidance for Industry for the Submission Documentation for Sterilization Process Validation in
+Applications for Human and Veterinary Drug Products; FDA; November 1994.
+
+4.
+Guidance for Industry Process Validation: General Principles and Practices of Process; FDA;
+January 2011.
+
+5.
+Guide to Inspections of Lyophilization of Parenterals; FDA; July 1993.
+
+6.
+Guide to Inspections of Microbiology Pharmaceutical Quality Control Laboratories: FDA; July
+1993.
+
+7.
+Guide to Inspections of High Purity Water Systems, FDA; July 1993.
+
+8.
+Guide to Inspections of Sterile Drug Substance Manufacturers; FDA; July 1994.
+
+9.
+Guide to Inspection of Dosage Form Drug Manufacturers; FDA; Oct. 1993.
+
+10.
+Compliance Policy Guide 7132a.13, Parametric Release – Drug Products Terminally Sterilized
+by Heat; FDA.
+
+11.
+Compliance Program 7356.002, Drug Manufacturing Inspections.
+
+12.
+Compliance Program 7356.002C, Radioactive Drugs.
+
+13.
+Compliance Program 7356.002M, Inspection of Licensed Biological Therapeutic Drug Products.
+
+14.
+Investigations Operations Manual
+
+15.
+Guide to the International Inspections and Travel
+
+16.
+Regulatory Procedures Manual
+
+17.
+Restricted Access Barrier Systems (RABS) for Aseptic Processing ISPE Definition; ISPE; August
+16 2005.;
+
+18.
+ISO 17665 Moist Heat Sterilization.
+
+19.
+ISO 14644 Cleanrooms and Associated Controlled Environments.
+
+20.
+ISO 14698 Cleanrooms and Associated Controlled Environments- Biocontamination Control.
+
+21.
+PDA Technical Report No. 1 (Revised 2007) Validation of Moist Heat Sterilization Processes:
+Cycle Design, Development, Qualification and Ongoing Control.
+
+===== PAGE 36 =====
+PROGRAM
+7356.002A
+PAGE 36 of 38
+
+22.
+PDA Journal of Pharmaceutical Science & Technology; Vol. 49, No. 6; November – December
+1995 Performance of Blow/Fill/Seal Equipment under Controlled Airborne Microbial
+Challenge.
+
+23.
+PDA Technical Report 51 (2010) Biological Indicators for Gas and Vapor-Phase
+Decontamination Processes: Specifications, Manufacture, Control and Use.
+
+24.
+PDA Technical Report No. 22, revised 2011, Process Simulation for Aseptically Filled Products.
+
+25.
+PDA Technical Report No. 28, revised 2006, Process Simulation Testing for Sterile Bulk
+Pharmaceutical Chemicals.
+
+26.
+PDA Technical Report #26, 2008, Sterilizing Filtration of Liquids.
+
+27.
+Bacterial endotoxins – Test Methodologies, Routine Monitoring, and Alternatives to Batch
+Testing. ANSI/AAMI ST 72:2002/ (R) 2010, Association for the Advancement of Medical
+Instrumentation.
+
+28.
+CGMP Q&As. FDA website.
+
+29.
+Sterility Analytical Manual (SAM); FDA May 2012.
+
+### 6.2 ATTACHMENTS
+
+A  “Inspections: Points to Consider” This attachment includes a list of questions intended to be an aid
+in conducting inspections and obtaining information needed to assess a firm’s operations. This list of
+questions and/or considerations is not intended to be an all inclusive or an exhaustive list of
+concerns. They are intended to assist focusing of the inspection and include areas worthy of
+consideration and evaluation during an inspection. The answers do not have to be reported in the
+EIR unless they are relevant. The list of questions covers: Moist Heat Sterilization; Dry Heat
+Sterilization / Depyrogenation; Aseptic Filling; Lyophilization; Isolators; Environmental
+Monitoring; and Biological Indicators. CDER welcomes feedback and any additional questions to
+this list.
+
+### 6.3 CONTACTS
+
+Office of Regulatory Affairs (ORA)
+
+For technical questions concerning inspections contact:
+Office of Regulatory Affairs (ORA)
+Office of Medical Products and Tobacco Operations (OMPTO)
+Division of Medical Products and Tobacco Program Operations (DMPTPO)
+Telephone number: 301-796-0358
+Email: ORAHQDrugInspectionPOC@fda.hhs.gov
+
+For questions concerning particulate matter in injectables analysis and appropriate testing laboratory
+contact:
+
+Office of Regulatory Affairs (ORA)
+Office of Regulatory Science (ORS)
+Medical Products and Tobacco Scientific Staff (MPTSS)
+
+===== PAGE 37 =====
+PROGRAM
+7356.002A
+PAGE 37 of 38
+
+Bruce Harris
+Telephone number: 301-796-3030
+E-mail: Bruce.Harris@fda.hhs.gov
+
+For questions concerning microbiological analysis, sterility issues and related sampling concerns
+contact:
+
+Office of Regulatory Affairs (ORA)
+Office of Regulatory Science (ORS)
+Medical Products and Tobacco Scientific Staff (MPTSS)
+Angele Smith
+Telephone number: 301-796- 4200
+E-mail:   Angele.smith@fda.hhs.gov
+
+Center for Drug Evaluation and Research (CDER)
+
+CGMP or any Quality-Related Policy Questions
+For CGMP or any quality-related policy question, technical or scientific questions or
+information needs, including questions about this program, please send an email to the
+following address and it will be handled as a top priority:
+
+CDER-OPQ-Inquiries@fda.hhs.gov
+
+Enforcement-Related Guidance or Policy
+For enforcement-related guidance or policy, including evidence need and sufficiency,
+citations, and case evaluation/recommendation advice, please send an email
+to the following address and it will be handled as a top priority:
+
+CDER OMQ Compliance Policy: CDEROMQCompliance@fda.hhs.gov
+
+Labeling Requirements and Policies
+
+Office of Unapproved Drugs and Labeling Compliance, see intranet home page for
+contacts
+[CDER | Office of Compliance | Office of Unapproved Drugs and Labeling Compliance]
+
+Registration and Drug Listing Requirements
+CDER Office of Compliance, see “CDER: Who’s the Lead” intranet page for contacts
+[CDER | Office of Communications | CDER: Who’s the Lead]
+
+[end Part VI]
+
+===== PAGE 38 =====
+PROGRAM
+7356.002A
+PAGE 38 of 38
+
+PART VII - CENTER RESPONSIBILITIES
+
+A. COMPLIANCE
+
+The CDER Office of Product Quality (OPQ), Office of Surveillance (OS) will evaluate the operations
+under this Compliance Program. Reports of these evaluations will be shared with the ORA
+Headquarters offices, field offices and CDER headquarters offices.
+
+The Center reviews enforcement recommendations and provides the agency’s technical decisions in
+coordination with District Offices and Office of Chief Counsel
+
+B. DRUG SHORTAGES
+
+If a violative conditions are identified that may result in a shortage, field staff should notify CDER drug
+shortage staff at DrugShortages@CDER.fda.gov and ensure the company also contacts this staff. This
+notification should occur as soon as the District becomes aware of a possible shortage or through
+communication with the firm.
+
+CGMPs are a preventive system intended to preclude to the occurrence of critical product defects and
+loss of assurance of quality. A warning letter is an advisory action meant to notify a manufacturer that
+significant violative conditions compromising the assurance of quality, safety, and/or efficacy were
+observed and must be promptly corrected by an appropriate and timely action plan. In situations where
+the firm’s corrective actions may reduce the supply of medically necessary products, the agency will
+work closely with the firm to assure the medically necessary drugs remain available and the CGMP
+deficiencies are corrected in a timely manner.
+
+[end Part VII]
+
+===== PAGE 39 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 1 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+Inspections: Points to Consider
+Below is an extensive list of questions provided as an aid in conducting inspections and obtaining
+information needed to assess a firm’s operations.
+o This list of questions and/or considerations is not intended to be an all inclusive or an
+exhaustive list of concerns. They are intended to assist focusing of the inspection and include
+areas worthy of consideration and evaluation during an inspection.
+o The answers do not have to be reported in the EIR unless they are relevant.
+
+TOPICS:
+
+Moist Heat Sterilization
+Dry Heat Sterilization / Depyrogenation
+Aseptic Filling
+Lyophilization
+Isolator Barrier Technology
+Environmental Monitoring (Non-viable)
+Environmental and Personnel Monitoring – Microbiology
+Biological Indicators.
+
+CDER welcomes feedback and any additional questions to this list.
+
+MOIST HEAT STERILIZATION
+
+Reference:  PDA Technical Report No. 1 Revised 2007 Validation of Moist Heat Sterilization Processes:
+Cycle Design, Development, Qualification and Ongoing Control; and
+
+General.
+
+1. Who is the manufacturer of the steam sterilizer (autoclave)?
+
+2. What is the model number, age, and internal volume of the autoclave?
+
+3. What is the sterilizing agent? (e.g., steam, air over pressure, superheated water, gamma irradiation)?
+
+4. If jacketed, what pressure/temperature is maintained in the jacket as opposed to the chamber?
+
+5. What types of vent filters are used and how often are they integrity tested?
+
+6. Are vent filters hydrophobic? Are the vent filter housings heated to prevent condensation?
+
+7. Are cycles controlled manually or automatically?
+
+8. What type of monitoring and controlling sensors are used (e.g., mercury-in-glass thermometer,
+thermocouple, RTD, pressure gauge)?
+
+9. How are these sensors calibrated? Are the standards NIST traceable (or traceable to a National
+standards for foreign firms), where appropriate?
+
+10.  Is the autoclave equipped with a steam spreader (more than one steam entry line would be
+considered in this category)?
+
+11.  If more than one autoclave is used by the firm, what is the system's capacity for steam production in
+relation to all autoclaves being in operation at the same time?
+
+===== PAGE 40 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 2 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+12.  What are the sterilization cycle parameters? (Compare Master Process Record / SOP specifications
+against processing records completed for selected drug products)
+
+13.  What are the firm's specifications and observed parameters for:
+
+• Time
+
+• Temperature
+
+• Pressure (psi, in. Hg)
+
+14.  Where is the cycle controller sensor located?
+
+15.  How are each of the sterilization (#13) parameters monitored?  Are the come-up times for chamber
+temperature during sterilization reproducible when compared to the come-up time achieved in
+validation studies?
+
+16.  Is the slowest to heat spot ("cold spot") in each load monitored during each autoclave cycle?
+
+17.  Have any changes in the steam sterilization system occurred since the last EI? Have these changes
+been evaluated for the need for re-validation?
+
+18.  Is clean steam being used (control of bacterial endotoxin)?
+
+Validation.
+
+19.  Does the firm have written procedures for validation that include
+
+• Design  Objectives
+• Installation qualification (IQ) of equipment
+• Operational qualification (OQ) of equipment
+• Performance qualification (PQ) with product (maximum and minimum load submitted in the
+application, and any changes after)
+• Description of circumstances requiring revalidation of the system
+• Procedures for revalidation
+
+20.  Does validation documentation include the following?
+
+A.   Empty chamber / loaded chamber heat distribution studies:
+o Number of runs?
+o Was cold spot determined?
+o Allowable variation?
+o Actual variation found?
+o What is the worst-case load?
+
+B. Heat penetration studies
+o For each type of loading pattern/for each container size utilized?
+
+===== PAGE 41 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 3 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+o Number of runs per pattern?
+o Was the "cold spot" determined for each pattern?
+o Is the established load configuration submitted in the application followed and/or
+reportable changes submitted as appropriate?
+
+21.  What type of temperature measurement system was used? Does it provide a separate printed reading
+for each thermocouple?
+
+22.  What type of temperature sensors were used, and were they calibrated before and after each run?
+
+23.  If biological indicators were used during validation runs:
+
+• Type of indicator (spore strip, inoculated product, ampule)
+• Source of indicator
+• Microorganism used, including concentration and D value
+• Were BIs used in an "end point" or "count reductions" mode? If any positive BIs were found
+(when not expected), what was the firm's response?
+
+23.  In the event a heat distribution or penetration variance was disclosed during the studies, how did the
+firm correct or allow for it?
+
+24.  Has the firm determined lag times for all container sizes/mass, product viscosities, etc. and adjusted
+their cycles accordingly?
+
+DRY HEAT STERILIZATION / DEPYROGENATION
+
+Dry heat sterilizers are used, primarily, to sterilize and depyrogenate glass containers for injectable drug
+products. Both dry heat ovens and dry heat tunnels are used. An oven is a batch process and, at the end
+of the cycle, the sterile vials are manually removed from the oven, transported and then manually loaded
+onto the filling line. A dry heat tunnel uses a continuous, integrated process. In a tunnel, the vials move
+on a belt from the wash processing through a heating zone where the vials are sterilized and
+depyrogenated to a cooling zone and then directly into the Class 100 area of a filling line. Typically,
+firms validate the depyrogenation of the glassware rather than the sterilization cycle. This is based on
+the fact that it is generally more difficult to remove or denature pyrogenic substances than
+microorganisms. Components that have undergone heat depyrogenation are rendered sterile.
+
+General.
+
+25.  Determine what types of dry heat sterilizers are used (ovens, tunnels)?
+
+26.  Determine the location of the heat source. The heating element/device that generates the
+depyrogenation temperature can affect the HEPA filters and their ability to provide the desired
+filtration for non-viable particles. For example, the high temperatures create expansion and
+contraction of the HEPA filters and filter housing, which can compromise the integrity and
+functionality of the HEPA filters.
+
+27.  How is the heat distributed in the oven or tunnel (fan or convection)?
+
+===== PAGE 42 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 4 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+28.  Where are the HEPA filters located in the oven or tunnel?  What zones in a tunnel are supplied with
+HEPA filtered air (supply, heating, cooling zones)?  Does the cool down section of the tunnel
+provide a Class 100 conditions to ensure the sterility of the containers are maintained? What zones
+are controlled as Class 100 areas?
+
+29.  Due to thermal dynamics (high temperature of >360 degree C leads to the expansion and contraction
+of the filter housing), the HEPA filter normally undergoes integrity testing every 6 months.
+However, depending on the amount of usage of the depyrogenation tunnel and data obtained from
+particle monitoring in the vicinity outside the heat tunnel, integrity testings may need to be
+conducted on a more frequent basis. How does the firm assure integrity of the HEPA filters? How
+often are HEPA filters changed?
+
+30.  Are non-viable particle counts taken in hot air tunnel? Non-viable particle measurement for the
+Class 100/ ISO-5 zone of the depyrogenation tunnel are not done during routine operation because
+of high temperature. However, periodic measurement of non-viable in ISO 5 area should be verified
+and they are normally measured prior to and subsequent to the manufacture of a batch/campaign
+and at ambient temperature.
+
+31.  Are the sterilization / depyrogenation cycles controlled manual or automatically?
+
+32.  What type of monitoring and controlling sensors are used (e.g., thermocouple, RTD, pressure
+gauge, belt speed indicators)? How often are they calibrated?
+
+Parameters.
+
+33.  What are the sterilization / depyrogenation cycle parameters or equipment settings?  Compare
+master production record / SOP specifications and processing records for specific representative
+products.
+
+34.  What are the firm's specifications for time, temperature, belt speed, and pressures if applicable?
+
+35.  What are the critical parameters? How were they established? How does the firm assure the critical
+parameters are met for each lot or cycle?
+
+36.  Where are the sensors for the cycle controllers located?
+
+37.  How are each of the above parameters monitored? Are any of the parameters not monitored?  Are
+the critical parameters alarmed in continuous systems, such as those used in tunnels?   What is done
+when there is an alarm?
+
+38.  How does the firm assure that all critical parameters are met for each cycle in an oven or for the
+continuous run of the tunnel?
+
+39.  Do dry heat tunnels have alarms to alert operators if critical parameters (heat, belt speed, pressure)
+are not met?  Are the alarms documented?  Did the conditions that caused the alarm require the
+implementation of change controls and did they impact the validated process?
+
+===== PAGE 43 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 5 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+40.  Have any changes in the dry heat sterilization / depyrogenation system occurred since the last
+inspection?  Have these changes been evaluated for the need for revalidation?
+
+Validation.
+
+41.  Does the firm have written procedures for qualifying the dry heat sterilizers that include:
+
+• Design Objectives
+• Installation qualification of equipment
+• Operational qualification of equipment
+• Performance qualification with product
+• Description of circumstances requiring re-validation and procedures
+
+42.  Does validation documentation include heat distribution / penetration studies?
+
+• What is the firm's allowable temperature variation and the actual variation found in
+production?
+• What type of temperature measurement system was used?
+• Was calibration performed before and after the validation?
+• If dry heat sterilizer is an oven, was the slowest to heat area determined?
+
+43.  How was the depyrogenation cycle validated?
+
+• Was a known amount of endotoxin added to vials?
+• Was the endotoxin allowed to dry on the vials?
+• Was validation conducted with recovery tests to assure the spiked endotoxin can be recovered?
+Were the vials challenged with enough endotoxin to allow calculation of a 3-log reduction?
+• What cycle or equipment settings were used in the validation runs?
+• Was a 3 log reduction of endotoxin achieved?
+
+44.  Are the depyrogenation cycles for all vials validated or does the firm use a matrix approach?  If a
+matrix approach (vial sizes/mass) is used, what criteria are used to select the worst case challenges
+to the system? Are all vials types and sizes bracketed?
+
+45.  Have the dry heat sterilizer cycles or equipment settings changed since the validation studies were
+completed?   Compare validation studies, current SOPs and processing records for recent batches.
+
+ASEPTIC FILLING
+
+46.  When observing personnel during production, do operators practice proper cleanroom behaviors as
+specified in established cleanroom SOPs?
+
+47.  Can you observe the aseptic filling processes without going into the clean room (i.e., through
+window or TV monitor)?
+
+===== PAGE 44 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 6 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+A.   If yes, watch / observe the aseptic filling processes from preparation of bulk liquid product
+to filling and sealing of final dosage form, including the environmental monitoring
+performed in critical areas during actual production.
+
+B. If not, consider observing the aseptic filling inside the clean room, for example, via a Class
+10,000 (ISO-7) area. Prior to entry, consult the District.
+o Do personnel enter and perform interventions at the critical Class 100 (ISO 5) areas of
+the filling lines?  If so, how are such entries recorded?
+
+o How is this done (full body entry, hands only)?
+
+o Why?
+
+o Is this done routinely or infrequently?
+
+o Are proper aseptic techniques used?  [Reference: FDA 2004 Aseptic Processing
+Guidance, Section V.A.]
+
+o Do hands or arms go over open vials for sterile components?  If yes, are the vials
+discarded?
+
+48.  Does the firm have written procedures describing aseptic filling of drug products?  Does it include
+discussions of proper aseptic techniques and acceptable techniques for performing interventions
+into the Class 100 areas?
+
+49.  Review trend reports of the non-viable, viable and personnel monitoring data.
+
+• Have any trends been identified by the firm? If yes, what is done?
+
+• Are investigations done of out of limit results?
+
+Aseptic Filling Validation.
+
+Reference:  FDA’s 2004 Aseptic Processing Guidance, Section IX
+
+50.  How does the process used for media fill compare to the aseptic filling of commercial drug
+products?  Does the firm accurately evaluate the production operation on a routine basis (changes
+over time) against the media fill design?  Does the firm have detailed procedures that describe the
+media fill process, including frequency, challenge conditions, personnel participation, container /
+closures, interventions, duration of fill, reconciliation of vials, acceptance criteria, incubation,
+examination after incubation, actions to take if positive growth is found, etc?
+
+51.  Request a summary of all media fills conducted since last inspection, including lot identification,
+fill dates, production lines, number of units filled, number of units incubated, number of vials with
+no growth, number of vials with positive growth, microbial identification for any containers with
+growth, disposition of media fill units, etc.
+
+• Have media fills been done at the frequency described in the procedure?
+
+• Have any media fills showed positive growth?
+
+• Have any media fills failed to meet acceptance criteria?
+
+===== PAGE 45 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 7 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+52.  Are procedures followed when positive growth is found in media filled vials? Are investigations
+conducted of all positive growth found in media filled vials?  What is done when a media fill fails
+to meet acceptance criteria? Review investigations of any positive growth.
+
+53.  Are media fills performed on all shifts (e.g., representative of shift operations in a campaign)?  Do
+media fills include shift changes and breaks that occur during routine production?
+
+54.  When can media fills be aborted or units not incubated?  Would production lots be rejected if the
+same conditions existed during filling?
+
+55.  Are all personnel included in the media fill program?  Does this include set up personnel and
+mechanics who work on the aseptic filling lines?  What system does the firm have for assuring all
+personnel are included?
+
+56.  If end-line filters are used in actual manufacture, are they also used during media fills?
+
+57.  What size vials or ampules are used for media fills?  Evaluate justification for selecting worst case
+challenge if firm does not perform media fills using all the container / closure configurations filled
+on the line.
+
+58.  Are vials inverted before incubation to assure media touches all inner surfaces?
+
+59.  How does the firm conduct media fills for products that are filled into amber or opaque containers?
+
+60.  How does the firm assure that all integral vials are incubated?  How does the firm handle filled vials
+removed during the run because of interventions?
+
+61.  Do media fills include interventions that occur during routine production?  Are there written
+procedures specifying removal of media fill units (type of intervention and number of units
+removed) corresponding to the practice of a routine production run?  Did you observe any
+interventions during the filling of routine production lots that are not included in media fills?
+
+62.  Does the duration of a media fill approximate the duration of a routine production lot?  If not,
+evaluate firm’s justification for running shorter media fills?
+
+63.  What is the microbial growth medium?
+
+64.  Are growth promotion studies performed on each type of medium used?
+
+65.  Are growth promotion studies conducted every time a media fill is done?
+
+66.  When are the growth promotion studies performed (before/after filling; after incubation; etc.)?
+
+67.  What organisms are used to perform the growth promotion tests?  Are any environmental organisms
+used?
+
+68.  What temperatures and incubation times are used to incubate media filled vials?
+
+===== PAGE 46 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 8 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+69.  Are microorganisms from positive vials identified to genus and species? Are such microorganisms
+correlated to those found during environmental monitoring?
+
+70.  Is an investigation done when cracked vials are found after incubation begins?
+
+71.  When and where are the media filled vials examined?
+
+72.  Who performs the examination of media filled vials?  If production employees perform the
+examination, have they been trained to recognize all types of microbial growth. Is a microbiologist
+present when the examination is done?
+
+73.  What incubators are used to incubate media filled vials?  How is the temperature controlled and
+monitored?  Have tests been done to determine if the temperature is uniform throughout the
+incubator?
+
+LYOPHILIZATION (FREEZE-DRYING)
+
+Reference: Guide to Inspections of Lyophilization of Parenterals; FDA; July 1993
+
+General.
+
+74.  Who is the manufacturer of the lyophilizer?
+
+75.  Describe the heating and cooling systems used in the lyophilizer; the vacuum system; gas that is
+used to break the vacuum and whether it is sterile; and the temperature controlling system.
+
+76.  How are the vials transported from the filling line to the lyophilizer?  How are Class 100 (ISO 5)
+conditions maintained during transport, loading, and unloading of the lyophilizer?
+
+77.  Are the loading and unloading of the vials automated or manual?
+
+78.  How is the sealing of vials (final seating of stoppers) performed?
+
+79.  If the stoppering is performed automatically in the chamber at the end of the cycle, is it under
+vacuum? If not under vacuum, what gas is used and how is it sterilized?
+
+80.  If the vials are stoppered outside of the chamber, how is the lyophilized product protected from
+contamination during transport to the stoppering station and during the stoppering operation?
+
+81.  Describe the chamber clean-up procedures between batches of the same product and between
+different products (including sterilant / cleaning agents used, monitoring for sterilant residue where
+appropriate, and exposure cycle).
+
+82.  Past history has shown that the lyophilizer condenser can be a source of contamination and an
+assessment of the lyophilization process should include an inspection of the condenser. How is
+lyophilization cycle monitored/ documented and reviewed?
+
+===== PAGE 47 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 9 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+Lyophilization Validation – Sterilization of Chamber.
+
+81.  How is the lyophilization chamber sterilized?  How are all surfaces, such as all surfaces of moving
+shelves, exposed to steam?
+
+82.  When is the lyophilization chamber sterilized? What is explanation / justification if it is not done
+between each batch?
+
+83.  How are sterilization cycles controlled (manual, programmed)?  How are cycles monitored during
+production?
+
+84.  Has the sterilization of the lyophilization chamber been validated? Have the slowest to heat surfaces
+in the chamber been determined and challenged in the validation runs?
+
+85.  Review current procedures and sterilization records for production lots. Are the cycle parameters
+the same as those used during validation?  Do production cycles meet the validated cycle
+parameters?
+
+Lyophilization Validation – Aseptic Handling.
+
+86.  Is the aseptic handling of lyophilized products validated by media fills?
+
+87.  In the aseptic process, is lyophilization simulation performed during media fill?
+
+88.  Is the maximum amount of time the vials are held prior to lyophilization simulated during media
+fills? If vials are not sealed in lyophilization chamber, is the maximum hold time prior to stoppering
+simulated in media fills?
+
+89.  During validation, what level of vacuum is pulled on the lyophilization chamber?
+
+90.  How long do media fill vials remain in the lyophilization chamber under vacuum? How does this
+compare to commercial lots?
+
+91.  Does the process simulation result in freezing of the media? Note that this process simulation
+should not include freezing of the media.
+
+92.  Is environmental monitoring performed during loading of the lyophilizer both during production
+and as well as during validation?
+
+93.  Does the firm have data on growth promotion of the media?  Are growth promotion tests done on
+vials after incubation is completed?
+
+94.  Is environmental monitoring performed during unloading of the chamber during production as well
+as during media fill validation?
+
+95.  What is used to break the vacuum during media fills (nitrogen, air, other gas)?
+
+===== PAGE 48 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 10 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+Lyophilization Validation – Process.
+
+98.  Has the firm validated the lyophilization cycle (e.g., time, rate of heat input, temperatures, eutectic
+melting point) for each product? Review validation records for selected drug products with different
+physical and chemical characteristics.
+
+99.  Review lyophilization production records for the same products. Are the cycle parameters and
+observed results within the validated cycles?
+
+100.  What are the firm’s criteria for acceptable vs. unacceptable runs, including general appearance,
+cake appearance, meltback, reconstitution time, moisture, etc.?
+
+101.  Has the firm performed equipment qualification, preventative maintenance, critical instrument
+calibration, and cleaning validation?
+
+Lyophilization of sterile API: The aseptic process may include either a manual or automated transferring
+process, or a combination of both, to transfer the lyophilized API out of the lyophilizer and into an SIP
+holding vessel or transfer tank. It is equally important to observe and assess the manual operations of the
+aseptic lyophilization process and assure that similar operations are performed during the media fill
+processing steps for the API.
+
+ISOLATOR BARRIER TECHNOLOGY
+
+Reference: Appendix 1 of FDA’s 2004 Aseptic Processing Guidance
+
+NOTE: Methods (e.g., hydrogen peroxide, peracetic acid) used to decontaminate isolator
+barriers are capable of rendering surfaces free of viable organisms, but lack the
+capabilities of steam sterilization. While these agents do not effectively penetrate
+obstructed or protected surfaces, validated systems are highly effective at assuring
+contamination-free internal isolator surfaces.
+
+102.  Determine:
+
+•  Model of isolator or barrier, and materials of construction
+
+•  Type of isolator (open or closed)?
+
+•  Airflow (turbulent, unidirectional)?
+
+•  Classification of surrounding room environment
+
+•  Number and location of gloves or half-suits
+
+•  Attire worn by operators (e.g., are sterile gloves worn under isolator gloves?)
+
+•  Operating parameters (pressures, air velocities, temperature, humidity)
+
+103.  Is a written maintenance program in place which requires routine documented checks or tests of
+gloves, half-suits, door seals, etc. for integrity?  What type of tests/checks are done and how
+frequently?
+
+===== PAGE 49 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 11 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+104.  Do written procedures specify glove replacement frequency? If so, what is the frequency and is
+the SOP followed?
+
+105.  Does the isolator maintain continuous positive pressure and at sufficient levels?
+
+106.  How are materials transferred into and out of the isolator?  How robust are the transfer
+mechanisms?
+
+107.  Are the equipment and surfaces that have direct contact with sterile products and components
+sterilized by heat. Does it achieve a minimum of a six-log reduction of the BI spores?
+
+108.  What method is used to decontaminate the inner surface of the isolator barrier (e.g., vapor
+hydrogen peroxide, steam hydrogen peroxide, chlorine dioxide, etc.)?  Determine decontamination
+parameters.
+
+109.  Did the surface decontamination validation study sufficiently address the ability of the sterilant to
+disperse throughout the chamber and reach all surfaces?  Did the decontamination process include
+the use of Chemical Indicators (CI) to determine the presence or absence of the VHP on the work
+surfaces and/or the worst case locations to decontaminate?  The CI can assists in the evaluation
+process by providing useful qualitative data. Were replicate BIs placed throughout the isolator,
+including the most difficult to reach locations (e.g., underneath any items remaining in isolator
+during sterilization). Are the most difficult to sterilize materials evaluated?
+
+110.  What is the isolator decontamination frequency and is it justified by validation data?
+
+111.  Is a decontamination cycle performed after a power failure or pressure reversal or other
+unanticipated breach of system integrity?
+
+112.  How often is the isolator decontamination cycle revalidated?
+
+113.  Does the written environmental monitoring program include routine tests for nonviable particles,
+as well as an appropriate number of microbial tests (e.g., active air and surface samples; gloves
+samples) during each campaign?  Evaluate the tests performed and the testing frequencies.
+
+Testing Isolators (Sterility test).
+
+114.  Have any false positives been identified in the laboratory isolator barrier (this should be an
+exceedingly rare occurrence)?  Were the false positive investigated to determine and correct the
+cause.
+
+ENVIRONMENTAL MONITORING – Non-viable
+
+Reference: FDA’s 2004 Aseptic Processing Guidance, Section IV.
+
+115.  Is the air supplied to critical areas (exposed product / filling areas) filtered through HEPA filters
+under positive pressure?
+
+===== PAGE 50 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 12 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+116.  Is the air flow in critical areas unidirectional when delivered to the point of use? At what velocity?
+Is velocity determined at the critical work height and at the filter face? Air flow pattern
+evaluations (smoke studies) under dynamic conditions are performed to visualize and demonstrate
+unidirectional air flow within a designated area/room [e.g., Class 100 & 10,000 (ISO5 & ISO7)].
+The smoke studies may also reveal air turbulences and air eddies that could be a vector assisting
+the dissemination of microbial and/or non-viable contamination within critical manufacturing
+areas.
+
+117.  How is the air filtered that is supplied to critical areas (where unsterilized product, in-process
+materials, and container/closures are prepared)?
+
+118.  What are the firm's air quality classifications for the following areas:
+
+•  Compounding
+•  Equipment preparation
+•  Any area where product or sterilized components are exposed
+•  Areas where aseptic connections are made
+•  Filling lines
+•  Room surrounding filling lines
+•  Capping (crimping) area
+
+119.  How often are HEPA filters integrity tested? What test method is used? What is done if leaks are
+found?  If done by an outside firm, are results reviewed by on-site personnel including the quality
+unit?
+
+120.  How often are air flow velocities checked for each HEPA filter?  What are the air velocity
+specifications?  What is done if velocity readings are out of specification?
+
+121.  Does the firm have a written monitoring program for classified areas that includes scientifically
+sound sampling schedules; descriptions of sampling locations and frequency of sampling?   How
+were the locations selected?
+
+122.  What type of instrument is used to check non-viable particle counts in the classified areas?  Is the
+air sampled continuously? If continuous, is there an alarm when counts exceed pre-set limits or
+detects cleanroom doors open for an extended time?  What is done in response to the alarms?  Is
+there an alarm log? Are permanently installed sensors used or portable units that are taken into
+and out of the critical areas?  What is done if counts meet or exceed alert and action limits?
+
+123.  What are the pressure differential requirements in the sterile core area?  Does this assure an air
+cascade from most clean area to least clean air (by air classification)?
+
+124.  How are pressure differentials monitored?  Is a continuous monitoring system used? If yes, does it
+include alarms so operators are aware of excursions?  Are alarm conditions documented (alarm
+log)? What is done in response to an alarm?  How long must a condition exist before an alarm
+sounded?
+
+===== PAGE 51 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 13 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+125.  How are temperature and humidity monitored?  What is the acceptable range?  What is done if the
+reading is outside of the range?
+
+126.  How are environmental excursions (readings that meet or exceed alert and action levels) handled?
+Are the excursions investigated to determine impact on product, root cause and needed corrective
+actions?
+
+ENVIRONMENTAL AND PERSONNEL MONITORING – Microbiology
+
+Reference:  FDA’s 2004 Aseptic Processing Guidance, Sections V and X.A
+
+Air.
+
+127.  Does the firm have an effective Environmental Monitoring (EM) Program in place?  What is the
+purpose and scope of the EM Program? Are EM sampling locations strategic, based on product
+contamination risk of the process and operation? Are the microbial alert and action levels based on
+the historical EM data derived from the manufacturing operations, support utilities and personnel
+practices performed at the manufacturing site?  What is the frequency of microbiological sampling
+of air using "active" samplers (systems that sample a known volume of air) in various locations,
+such as:
+• Areas where product or sterile components are exposed to the environment
+• Filling areas
+• Loading areas for lypohilizers
+• Surrounding areas
+
+128.  What are the established microbial alert and action levels or limits for quantitative air samples?
+What is the length of the sampling period? Is sampling done during production or at rest?
+
+129.  What type of active air sampling equipment is used (centrifugal, impaction, membrane)?  Is the
+sampling equipment calibrated? What is the efficiency of the active air sampler?
+
+130.  Does the firm have data on the ability of these samplers to recover organisms without deleterious
+effect on survivability such as through impact or desiccation of the media?
+
+131.  What is the actual volume of air sampled per location?
+
+132.  Are settling plates used?  What is the length of exposure period?  Sampling frequency? Locations
+(including proximity to critical operations)?  Microbial limits?
+
+Surfaces.
+
+133.  Are there written procedures that describe the monitoring of surfaces in the clean rooms?  Does it
+describe locations, frequency and sampling techniques?
+
+134.  What surfaces are sampled in the critical (Class 100 / ISO 5) areas?  Are critical surfaces included
+(those that touch the sterile product or sterile components)?
+
+===== PAGE 52 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 14 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+135.  When are surface samples taken?  Are critical surfaces only sampled at the end of the operation?
+
+136.  What is the frequency of sampling surfaces?
+
+137.  What types of samples are collected at each location (RODAC plate, swab samples)?
+
+138.  What are the alert and action levels / limits for the microbial sampling of critical surfaces, surfaces
+in Class 100 areas and surfaces in other classified areas?  How were the levels / limits established?
+What is done when the samples meet or exceed alert and action levels?
+
+Personnel.
+
+139.  Are there specific programs for training personnel who work in classified and aseptic processing
+areas?  Does the program include microbiological testing or qualifying employees before they are
+allowed to work in these areas?  Does the program include prequalification requirements?
+
+140.  How often is monitoring performed on filling room personnel?   Is it done at least upon existing
+the cleanroom (e.g., per shift)?  How often are gloves (hands) sampled?  How often are gowns
+sampled?  Is any sampling done after interventions are performed?
+
+141.  Who performs the sampling of personnel?  Is it self-sampling? Is the sampling performed by
+another production employee, a microbiologist, technician or other quality control employee?
+
+142.  What are the firm's alert and action levels / limits for personnel monitoring?  How were the levels
+/ limits established?  What is done if the sample results reach or exceed the alert and action limits?
+
+143.  Do employees spray their hands with sanitizer or disinfectant before the sample is taken?
+
+General.
+
+144.  What are the microbiological growth media used for environmental and personnel monitoring
+samples?
+
+145.  Are the media used in the viable monitoring program shown to be capable of detecting molds and
+yeasts as well as bacteria by means of growth promotion tests?
+
+146.  Is anaerobic monitoring ever performed?  When?
+
+147.  Are inactivators used for antibiotics or other bactericidal / bacteriostatic substances? Has the firm
+shown that these are effective?  Are records available?
+
+148.  When are recovered microorganisms identified? To what level (genus, species)?
+
+149.  What are the incubation times and temperatures?
+
+150.  How are environmental and personnel monitoring data trended?  How often are trend reports
+prepared?  How often are they reviewed?  Who reviews the trend reports?  What type of action is
+taken based on review of trend reports?
+
+===== PAGE 53 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 15 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+151.  Are environmental and personnel monitoring samples that exceed action levels investigated to
+determine product impact, cause and needed corrective actions?  What is done when an alert level
+is exceeded?
+
+Review and assess the EM trending data, which will provide a good indication if the viable and non-
+viable particles are maintained within the established levels or drifting out of control. What are the
+causes of the aberrant events? Were corrective actions and preventive measures taken to preclude the
+reoccurrence of the viable and non-viable particle anomalies?
+
+BIOLOGICAL INDICATORS (BIs)
+
+In sterile drug manufacturing, BIs are typically used to validate the cycles used for terminal sterilization,
+sterilization of equipment and components. BIs are also used to validate SIP systems used to sterilize
+lyophilizers, processing tanks, sterilizing filters, and product lines and systems used to decontaminate
+surfaces in isolators.
+
+152.  What type of indicator is used (e.g., inoculated carrier, inoculated product, inoculated simulated
+product, etc.)?  Are BIs inoculated into the components (i.e., stoppers) used whenever possible?
+What are their corresponding D values?  Is the sterilization cycle adequate corresponding to the D
+value of the BI?
+
+153.  If the source of the indicator is commercial, what is the brand name and manufacturer?  What
+labeling is received with the BI?  If the BI is prepared in-house, determine the supplier of the
+organism, how the BI is propagated and stored, and the method of preparation?
+
+154.  What organism is used (Genus, species)? Is it the appropriate microorganism used for
+sterilization?
+
+155.  What is the challenge level of the biological indicator prior to exposure to sterilant?
+
+156.  Does the firm verify viable spore count on each lot of BIs before use in validation?
+
+157.  Does the firm or the BI labeling claim to meet USP performance criteria for steam or ETO
+biological indicators?
+
+158.  Does the firm perform USP testing on each lot of BIs received?
+
+159.  What is the approximate D-value of the biological indicator?  Is this verified prior to validation?
+
+160.  How many BIs are used per sterilizer load?
+
+161.  What procedure is used to assay the indicators after exposure? What growth media is used? What
+are the optimal and actual incubation time and temperature for the BI (compare to COA received
+with the BI)?
+
+162.  How are the BIs prepared for sterilization?
+
+===== PAGE 54 =====
+PROGRAM
+7356.002A
+ATTACHMENT A
+2012–CPGM-CDER-001
+ATT. A
+PAGE 16 of 16
+TRANSMITTAL #
+FORM FDA 2438g (electronic-02/2003)
+
+163.  Are biological indicators located in the most difficult to sterilize product sites (explain)? How are
+these locations determined?
+
+164.  Is there a diagram of the distribution of biological indicators in the loading pattern(s) used?
+
+165.  What is the elapsed time (hrs.) between removing indicators from the sterilizer and testing? Are
+there time limits established for this period? What happens if they are exceeded?
+
+166.  What is done if positive BIs are found after sterilization?
+
+167.  Describe biological indicator storage conditions:
+
+A.   Type of room, cabinet, etc. (if stored in freezer or refrigerator, state if frost-free)
+B. Temperature
+C. Relative humidity (if known)
+
+D.   Compare to literature received with BI or written procedures
+
+168.  Does the firm use chemical process monitor(s) to indicate cycle exposure or to measure one or
+more cycle parameters?

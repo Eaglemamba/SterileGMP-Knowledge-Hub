@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDA CPGM 7356.002A - Parts I–II: Background &amp; Implementation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - FDA Blue Theme
+   FDA CPGM 7356.002A: Sterile Drug Process Inspections
+   ============================================================= */
+
+:root {
+    --primary-blue: #1a1f3a;
+    --accent-blue: #2563eb;
+    --light-gray: #fafafa;
+    --light-blue: #eff6ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a1f3a 0%, #2563eb 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.two-column {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3 {
+    color: #1a1f3a; border-bottom: 2px solid #2563eb;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.left-column h4 { color: #1a1f3a; margin: 1rem 0 0.5rem; font-size: 1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: var(--light-blue); border-radius: 10px;
+    padding: 1.5rem; border: 1px solid #bfdbfe;
+}
+.right-column h2, .right-column h3 {
+    color: #1e3a8a; border-bottom: 2px solid #3b82f6;
+    padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+
+.column-header {
+    font-weight: 600; color: #1a1f3a; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.right-column .column-header { color: #1e3a8a; }
+
+.key-term, .highlight-term {
+    background: linear-gradient(to right, #dbeafe, #bfdbfe);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #1e3a8a; font-size: 0.9em;
+}
+
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #eff6ff, #dbeafe);
+    border-left: 4px solid #2563eb;
+    padding: 1rem 1.25rem; margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important; padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p,
+.formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+
+/* Analogy Box - Yellow */
+.analogy-box, .concept-box.analogy {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+
+/* Concept/Term Box - Blue */
+.term-box, .key-term-box,
+.concept-box:not(.analogy):not(.application) {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+    border-left: 4px solid #2563eb !important;
+}
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #1e3a8a !important; }
+
+/* Note Box - Orange */
+.note-box, .key-note, .key-point-box, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+
+/* Formula Box - Purple */
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+
+/* Practice Box - Dashed Blue */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #2563eb !important; border-radius: 10px !important;
+    padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #1e3a8a !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+.practice-box ul, .practice-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); font-weight: 600; color: #1e3a8a; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+    border: 1px solid #bfdbfe;
+}
+.learning-objectives h3 { color: #1e3a8a; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li {
+    padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 4px solid #2563eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: 1.1rem; color: #1a1f3a;
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #e2e8f0;
+}
+.toc h3 { color: #1a1f3a; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #edf2f7; border-radius: 6px; color: #1a1f3a;
+    text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+}
+.toc-grid a:hover { background: #2563eb; color: white; }
+
+.section-summary {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 10px; padding: 1.25rem; margin-top: 1.5rem; margin-bottom: 1.5rem;
+    border: 1px solid #bfdbfe;
+}
+.section-summary h3 { color: #1e3a8a; margin-bottom: 0.75rem; font-size: 1rem; }
+.section-summary ul { margin-left: 1.25rem; }
+.section-summary li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.fda-badge {
+    display: inline-block; background: #2563eb; color: white;
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em;
+    margin-right: 0.4rem;
+}
+.cfr-ref {
+    background: #fef3c7; border: 1px solid #f59e0b;
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+    font-size: 0.85em; font-weight: 600; color: #92400e;
+}
+
+@media (max-width: 1200px) { .two-column { gap: 1rem; } }
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+}
+@media print {
+    .header { display: none !important; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Parts I–II: Background &amp; Implementation</h1>
+    <div class="subtitle">第一部分至第二部分：計畫背景、目標與執行架構</div>
+    <div class="page-info">FDA CPGM 7356.002A (Rev. September 2015): Sterile Drug Process Inspections | p1–p6</div>
+</div>
+
+<div class="main-content">
+
+<!-- Learning Objectives -->
+<div class="learning-objectives">
+    <h3>📋 本節學習目標 Learning Objectives</h3>
+    <ul>
+        <li>了解 FDA CPGM 7356.002A 的法規地位、適用範圍與排除品項</li>
+        <li>掌握本查廠計畫的主要目標與六大系統查廠策略框架</li>
+        <li>辨識各無菌產品類型的 Profile Class 代碼（LVP、SVT、SVS、SVL 等）</li>
+        <li>理解查廠規劃的風險優先模型（Risk-Based Prioritization）</li>
+        <li>熟悉 EIR、FACTS、OAI 等 FDA 查廠行政系統術語</li>
+    </ul>
+</div>
+
+<!-- COVER PAGE & PROGRAM OVERVIEW -->
+<h2 class="section-title" id="cover">封面頁：計畫識別 Cover Page — Program Identification</h2>
+<div class="two-column">
+    <div class="left-column">
+        <h3>Program 7356.002A — Cover Page</h3>
+        <p><strong>FOOD AND DRUG ADMINISTRATION<br>COMPLIANCE PROGRAM GUIDANCE MANUAL</strong></p>
+        <p><strong>CHAPTER 56 — DRUG QUALITY ASSURANCE</strong><br>
+        <strong>SUBJECT: STERILE DRUG PROCESS INSPECTIONS</strong></p>
+        <p><em>Revision Note: Program revised 09/11/2015 to update implementation date, completion date, organizational/procedural changes and program contacts.</em></p>
+
+        <h4>Program Codes</h4>
+        <table>
+            <tr><th>Code Type</th><th>Code</th></tr>
+            <tr><td>Industry Codes</td><td>54, 56 and 60–66</td></tr>
+            <tr><td>Full Inspection</td><td>56002A</td></tr>
+            <tr><td>Abbreviated Inspection</td><td>56002I</td></tr>
+            <tr><td>Related PACs</td><td>56002, 56002C, 56002M</td></tr>
+        </table>
+
+        <h4>Field Reporting Requirements</h4>
+        <ul>
+            <li>Establishment Inspection Reports (EIRs) must be created and filed electronically using TurboEIR or replacement system accessible to both ORA and CDER.</li>
+            <li>OAI (Official Action Indicated) recommendations submitted via MARCS-CMS per the Regulatory Procedures Manual (RPM).</li>
+            <li>Districts must immediately report significant issues via FACTS, Panorama, and CMS procedures.</li>
+            <li>Issues pertaining to ADE reporting, unapproved drugs, or post-approval reporting violations should be reported under separate Program Assignment Codes (PACs).</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>📘 計畫識別解讀 — 查廠官員的「工作手冊」</h3>
+        <div class="concept-box">
+            <h4>什麼是 CPGM（Compliance Program Guidance Manual）？</h4>
+            <p>CPGM 是 FDA 查廠官員（Investigator/Inspector）在執行查廠任務時所依循的<strong>內部工作指引</strong>。它不是對藥廠的直接規範，而是告訴 FDA 人員「要查什麼、怎麼查、怎麼報告」。</p>
+            <p>本計畫 <strong>7356.002A</strong> 是無菌藥品製程查廠的專屬 CPGM，搭配通用查廠計畫 <strong>7356.002</strong> 使用。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>💡 比喻：CPGM 就像查廠官員的「標準作業程序（SOP）」</h4>
+            <p>正如藥廠的 SOP 告訴員工如何操作設備，CPGM 告訴 FDA Investigator 如何系統性地評估藥廠是否符合 GMP。兩者的邏輯完全相同——<strong>程序標準化、結果可比較、文件可稽核</strong>。</p>
+        </div>
+        <div class="note-box">
+            <h4>⚠️ 重要：查廠代碼的意義</h4>
+            <ul>
+                <li><strong>56002A（Full Inspection）</strong>：完整查廠，覆蓋全部系統</li>
+                <li><strong>56002I（Abbreviated Inspection）</strong>：縮短查廠，選定系統查核</li>
+                <li><strong>OAI（Official Action Indicated）</strong>：缺失嚴重，需採取正式監管行動</li>
+                <li><strong>EIR（Establishment Inspection Report）</strong>：每次查廠後的正式書面記錄</li>
+            </ul>
+        </div>
+        <div class="key-term-box">
+            <h4>關鍵術語</h4>
+            <ul>
+                <li><span class="key-term">PAC</span>：Program Assignment Code，計畫分配代碼，用於 FACTS 系統記錄查廠活動</li>
+                <li><span class="key-term">FACTS</span>：FDA 的查廠記錄資料庫系統</li>
+                <li><span class="key-term">MARCS-CMS</span>：FDA 監管行動管理系統</li>
+                <li><span class="key-term">ADE</span>：Adverse Drug Experience，藥物不良事件</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- PART I: BACKGROUND -->
+<h2 class="section-title" id="part1">Part I — Background 計畫背景</h2>
+<div class="two-column">
+    <div class="left-column">
+        <h3>PART I — BACKGROUND</h3>
+        <p>This program covers the manufacture and testing of <strong>all sterile drug products</strong>, including drugs that are:</p>
+        <ul>
+            <li>Sterilized by filtration or other means and aseptically processed</li>
+            <li>Terminally sterilized</li>
+        </ul>
+
+        <h4>Products Covered</h4>
+        <ul>
+            <li>Sterile bulk drugs</li>
+            <li>Ophthalmic drugs</li>
+            <li>Otic dosage forms</li>
+            <li>Small volume parenterals (SVS) — small molecule and licensed biological therapeutic drug products</li>
+            <li>Large volume parenterals (LVP)</li>
+            <li>Any other drug products required to be sterile or labeled as sterile</li>
+        </ul>
+
+        <h4>Exclusions</h4>
+        <ul>
+            <li>Center for Biologics Evaluation and Research (CBER) regulated products</li>
+            <li>Veterinary drug products</li>
+        </ul>
+
+        <p>The guidance information in this program is tailored to sterile manufacturing operations and should be used in conjunction with the <strong>Compliance Program for Drug Manufacturing Inspections (CP 7356.002)</strong>.</p>
+
+        <h4>Reference to 2004 Aseptic Processing Guidance</h4>
+        <p>In 2004, FDA published the <em>Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing — Current Good Manufacturing Practice</em> (referred to throughout as "FDA's 2004 Aseptic Processing Guidance").</p>
+        <div class="quote-box">
+            "The Guidance for Industry does not establish mandatory requirements and should not be referred to as the justification for an inspectional observation. Justification for inspectional observations originates from the CGMP regulations, <strong>21 CFR Parts 210 and 211</strong>."
+        </div>
+        <p>Manufacturers who follow the 2004 Aseptic Processing Guidance are generally considered compliant with CGMP regulations. However, alternate approaches may be used if such approaches satisfy the requirements of 21 CFR Parts 210 and 211.</p>
+    </div>
+    <div class="right-column">
+        <h3>📘 背景解讀 — 適用範圍與法規層級</h3>
+        <div class="concept-box">
+            <h4>本計畫的雙重定位</h4>
+            <p>本 CPGM 7356.002A 是<strong>無菌製程查廠的專門補充</strong>，必須與母計畫 CP 7356.002（一般藥品製造查廠）搭配使用。查廠時，兩份文件同時適用。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>兩大製程的法規意義</h4>
+            <table>
+                <tr><th>製程類型</th><th>特點</th><th>查廠重點</th></tr>
+                <tr><td><strong>最終滅菌</strong><br>Terminal Sterilization</td><td>產品在密封容器內接受滅菌處理</td><td>滅菌驗證、生物指示劑、F₀值</td></tr>
+                <tr><td><strong>無菌加工</strong><br>Aseptic Processing</td><td>個別組件分別滅菌後在潔淨環境組合</td><td>APS（培養基模擬試驗）、環境監控、人員行為</td></tr>
+            </table>
+            <p>FDA 認為無菌加工的<strong>污染風險高於</strong>最終滅菌，因此對其有更嚴格的查廠要求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>⚠️ 指引 vs 法規：關鍵區別</h4>
+            <p>2004 Aseptic Processing Guidance（指引）<strong>不是</strong>法規強制要求。</p>
+            <p>查廠缺失的法律依據必須來自 <span class="cfr-ref">21 CFR Part 210</span> 或 <span class="cfr-ref">21 CFR Part 211</span>（法規強制）。</p>
+            <p><strong>實務意涵</strong>：藥廠可以偏離指引，但必須用替代方法達到同等效果，且必須能向查廠官員說明替代方法如何符合 CFR 要求。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>💡 CBER 為何排除在外？</h4>
+            <p>CBER（生物製品評估與研究中心）負責監管疫苗、血液製品、基因療法等。這類產品有其專屬的查廠計畫。本 CPGM 7356.002A 僅涵蓋 CDER（藥物評估與研究中心）監管的無菌藥品，包括<strong>小分子藥物</strong>和<strong>授權生物治療藥品（licensed biologic therapeutics）</strong>。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>🏭 對藥廠的實務啟示</h4>
+            <ul>
+                <li>了解 FDA Investigator 的查廠邏輯，有助於 <strong>internal audit 的設計</strong></li>
+                <li>查廠官員的觀察依據是 21 CFR，不是 Guidance——藥廠答辯時同樣要引用 CFR</li>
+                <li>CBER 產品（如疫苗）適用不同的查廠計畫，不在本文件範圍</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- PART II: IMPLEMENTATION -->
+<h2 class="section-title" id="part2">Part II — Implementation 執行架構</h2>
+
+<!-- 2.1 Objectives -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.1 OBJECTIVES</h3>
+        <p>The <strong>primary objective</strong> of this program is to provide guidance for conducting inspections of manufacturers of sterile bulk and sterile finished dosage drug products to determine compliance with the Food, Drug, and Cosmetic Act and the CGMPs, <strong>Title 21, CFR Parts 210 and 211</strong>.</p>
+
+        <h4>Other Objectives</h4>
+        <ul>
+            <li>Obtain information on operations impacting on sterility, to identify areas for improvement and correction.</li>
+            <li>Evaluate current good manufacturing practices in the sterile drug industry.</li>
+            <li>Initiate appropriate action against manufacturers observed to be out of compliance.</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>📘 目標解讀 — 查廠的三重目的</h3>
+        <div class="concept-box">
+            <h4>查廠目標的優先層次</h4>
+            <ol>
+                <li><strong>合規評估</strong>：主要目標——確認廠商是否符合 21 CFR 210/211</li>
+                <li><strong>資訊蒐集</strong>：識別可改善的製程缺失（不一定構成違規）</li>
+                <li><strong>法規行動</strong>：對不合規廠商啟動正式監管措施（Warning Letter、進口警示等）</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>💡 查廠不只是「找缺失」</h4>
+            <p>FDA 查廠的目的包含<strong>了解產業現況</strong>以制定政策，不僅僅是懲罰不合規廠商。這也是為什麼查廠官員即使在合規廠商也會詳細記錄製程——這些資訊有助於 FDA 了解產業趨勢。</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2.2 Program Management Instructions -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>2.2 PROGRAM MANAGEMENT INSTRUCTIONS</h3>
+        <h4>A. STRATEGY — (1) Inspection of Systems</h4>
+        <p>Inspections should be made and reported using the <strong>system definitions</strong> in this compliance program. Focusing on systems increases inspection efficiency because the systems are often applicable to multiple profile classes.</p>
+        <p>Selection of system(s) for coverage is made by the <strong>District Office</strong> based on:</p>
+        <ul>
+            <li>The firm's specific operation</li>
+            <li>Previous coverage</li>
+            <li>Compliance history</li>
+            <li>Other priorities determined by the District Office</li>
+        </ul>
+        <p>The inspection should normally result in a determination of acceptability or non-acceptability for all profile classes. Coverage of a system should be sufficiently detailed so that the conclusion applies to all profile classes.</p>
+        <p>The determination that a system is adequately controlled for one profile class can be extended to another profile class even if not specifically reviewed.</p>
+
+        <h4>A. STRATEGY — (2) Inspectional Scope</h4>
+        <p>Inspections are performed as either:</p>
+        <ul>
+            <li><strong>Full Inspections</strong> (56002A)</li>
+            <li><strong>Abbreviated Inspections</strong> (56002I)</li>
+        </ul>
+        <p>Using the systems strategy outlined in CP 7356.002.</p>
+
+        <h4>B. INSPECTION PLANNING</h4>
+        <p>Implement this program when sterile drug manufacturers are inspected as part of a regular statutory inspection. CDER identifies firms for inspection based on a <strong>risk-based prioritization model</strong> aligned with annual performance goals.</p>
+        <p>Consider using a team approach when appropriate. Team members should:</p>
+        <ul>
+            <li>Be very familiar with FDA's 2004 Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing</li>
+            <li>Be well qualified in sterile product manufacturing (parenteral drug manufacture, aseptic technique, sterilization methods)</li>
+            <li>Include microbiologists with experience in sterility testing, endotoxin testing, and microbial controls</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h3>📘 策略解讀 — 系統式查廠的邏輯</h3>
+        <div class="concept-box">
+            <h4>六大系統查廠框架（Six Systems Framework）</h4>
+            <p>FDA 採用系統式查廠（Systems-Based Inspection）而非逐項清單式查廠。本 CPGM 7356.002A 涵蓋以下六大系統（詳見 Part III）：</p>
+            <ol>
+                <li><strong>品質系統</strong> Quality System（3.5）</li>
+                <li><strong>廠房與設備系統</strong> Facilities &amp; Equipment（3.6）</li>
+                <li><strong>物料系統</strong> Materials System（3.7）</li>
+                <li><strong>生產系統</strong> Production System（3.8）</li>
+                <li><strong>包裝與標籤系統</strong> Packaging &amp; Labeling（3.9）</li>
+                <li><strong>實驗室控制系統</strong> Laboratory Control System（3.10）</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>💡 系統式查廠的優勢</h4>
+            <p>傳統逐項清單查廠容易流於表面；系統式查廠要求查廠官員<strong>從源頭理解整個系統的控制狀態</strong>。例如：查品質系統時，會評估 CAPA、偏差管理、變更管制是否相互連結，而不只是確認文件是否存在。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>⚠️ 縮短查廠（Abbreviated Inspection）不等於寬鬆</h4>
+            <p>Abbreviated Inspection 並非「走走看看」，而是針對<strong>特定系統</strong>進行深度查核。District Office 根據廠商合規歷史決定查核哪些系統——若有既往 OAI 記錄，缺失系統必然被重點查核。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>風險優先查廠模型（Risk-Based Prioritization）</h4>
+            <p>CDER 使用風險評分模型決定查廠優先順序，評估因素包括：</p>
+            <ul>
+                <li>查廠間隔時間（越久未查，風險越高）</li>
+                <li>既往缺失記錄（OAI 歷史）</li>
+                <li>產品對患者的重要性（essential medicines）</li>
+                <li>製程複雜度（無菌加工 > 最終滅菌）</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>🏭 藥廠準備要點</h4>
+            <ul>
+                <li>熟悉六大系統框架，按此架構設計 <strong>mock inspection</strong></li>
+                <li>查廠團隊應有微生物學家——確保廠內微生物相關系統（EM、APS、無菌測試）有專人管理</li>
+                <li>CDER 的風險模型偏向高頻查廠無菌製程，需保持<strong>持續性合規</strong>，而非「查前突擊準備」</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Reporting Table -->
+<div class="two-column">
+    <div class="left-column">
+        <h3>C. PROFILE REPORTING — Sterile Product Profile Classes</h3>
+        <p>Update all applicable profile classes in the profile screen of the FACTS coversheet based on inspection findings. Use the codes corresponding to the product and process type covered.</p>
+        <table>
+            <tr>
+                <th>Profile Class</th>
+                <th>Full Description</th>
+            </tr>
+            <tr><td><strong>LVP</strong></td><td>Large Volume Parenterals — sterile injectable drugs in containers labeled &gt;100 mL. Most are terminally sterilized; some may be aseptically processed.</td></tr>
+            <tr><td><strong>SVT</strong></td><td>Small Volume Parenterals — sterile injectable drugs in containers labeled &lt;100 mL that are <em>terminally sterilized</em>.</td></tr>
+            <tr><td><strong>SVS</strong></td><td>Small Volume Parenterals — sterilized by <em>filtration and aseptically processed</em>.</td></tr>
+            <tr><td><strong>SVL</strong></td><td>Small Volume Parenterals — sterilized by filtration, aseptically filled and <em>lyophilized</em>.</td></tr>
+            <tr><td><strong>SLQ</strong></td><td>Sterile liquid (other than suspensions and emulsions)</td></tr>
+            <tr><td><strong>SON</strong></td><td>Sterile ointment</td></tr>
+            <tr><td><strong>SPW</strong></td><td>Sterile powder</td></tr>
+            <tr><td><strong>CSS</strong></td><td>Sterile bulk drugs made by chemical synthesis</td></tr>
+            <tr><td><strong>CFS</strong></td><td>Sterile crude drugs made by fermentation</td></tr>
+            <tr><td><strong>CRX</strong></td><td>API sterile or API intermediate/NEC inorganic/mineral</td></tr>
+        </table>
+    </div>
+    <div class="right-column">
+        <h3>📘 Profile Class 解讀 — 產品代碼與查廠差異</h3>
+        <div class="concept-box">
+            <h4>Profile Class 的重要性</h4>
+            <p>Profile Class 代碼決定查廠的<strong>重點方向</strong>。製程類型不同，查廠要求也不同：</p>
+            <table>
+                <tr><th>重要代碼</th><th>製程特點</th><th>查廠重點差異</th></tr>
+                <tr><td><strong>SVL</strong></td><td>過濾除菌 + 無菌填充 + 凍乾</td><td>凍乾機驗證、塞瓶完整性特別重要</td></tr>
+                <tr><td><strong>SVS</strong></td><td>過濾除菌 + 無菌填充</td><td>過濾器完整性測試、APS</td></tr>
+                <tr><td><strong>SVT</strong></td><td>最終熱滅菌</td><td>滅菌曲線驗證、F₀值</td></tr>
+                <tr><td><strong>LVP</strong></td><td>大容量注射劑</td><td>大量配液污染控制</td></tr>
+                <tr><td><strong>CSS</strong></td><td>化學合成無菌原料</td><td>最終滅菌或無菌合成步驟</td></tr>
+            </table>
+        </div>
+
+        <div class="analogy-box">
+            <h4>💡 生物製劑（SVS）的特殊性</h4>
+            <p>蛋白質藥物（如抗體、胰島素）<strong>無法承受熱滅菌</strong>，必須採過濾除菌（0.22 μm 過濾）加上無菌加工。這也是生物製劑工廠必然面對更複雜無菌查廠要求的原因。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>⚠️ 凍乾產品（SVL）的雙重挑戰</h4>
+            <p>SVL 產品（凍乾注射劑）需要通過<strong>兩個高風險步驟</strong>：</p>
+            <ol>
+                <li>無菌填充到小瓶（Aseptic Filling）</li>
+                <li>凍乾機內的塞瓶操作（In-Lyophilizer Stoppering）</li>
+            </ol>
+            <p>任何一個步驟出現問題都可能導致整批產品無菌性失敗，是 FDA 查廠時的高風險焦點。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>🏭 確認您廠的 Profile Class</h4>
+            <ul>
+                <li>確認廠內每個產品線對應的 Profile Class</li>
+                <li>不同 Profile Class 的 APS（培養基模擬試驗）設計需求不同——SVL 需包含塞瓶模擬</li>
+                <li>查廠官員會根據 Profile Class 調整查廠重點，廠方應按此規劃 quality system 文件</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Section Summary -->
+<div class="section-summary">
+    <h3>📌 本節重點摘要 Section Summary — Parts I &amp; II</h3>
+    <ul>
+        <li><strong>法規地位</strong>：CPGM 7356.002A 是 FDA Investigator 的查廠工作手冊，查廠缺失的法律依據為 21 CFR Parts 210 &amp; 211，非本文件本身</li>
+        <li><strong>適用範圍</strong>：所有 CDER 監管的無菌藥品（過濾除菌、無菌加工、最終滅菌）；排除 CBER 產品與獸藥</li>
+        <li><strong>查廠框架</strong>：六大系統式查廠（品質、廠房設備、物料、生產、包裝標籤、實驗室控制）</li>
+        <li><strong>查廠類型</strong>：Full Inspection（56002A）或 Abbreviated Inspection（56002I），由 District Office 決定</li>
+        <li><strong>風險優先</strong>：CDER 依風險模型排定查廠優先順序；無菌製程廠商屬高優先級</li>
+        <li><strong>Profile Class</strong>：LVP、SVT、SVS、SVL、CSS 等代碼決定查廠方向；凍乾（SVL）與無菌加工（SVS）屬最高關注類別</li>
+        <li><strong>2004 指引</strong>：遵循 Aseptic Processing Guidance 視為符合 CGMP，但允許替代方法，前提是符合 21 CFR</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+</body>
+</html>

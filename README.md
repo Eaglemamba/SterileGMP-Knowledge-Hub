@@ -2,7 +2,7 @@
 
 A multi-source GMP knowledge base for sterile pharmaceutical manufacturing — combining human-readable HTML educational guides with a chatbot-ready Markdown knowledge base and a Claude Code skill for conversational access.
 
-Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annex 1**, **ISO Standards**, and **ECA Guides** — all focused on sterile/injectable pharmaceutical manufacturing.
+Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S Annex 1**, **ICH Guidelines**, **USP Chapters**, and **ISO Standards** — all focused on sterile/injectable pharmaceutical manufacturing.
 
 ## What's in Here
 
@@ -10,25 +10,29 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 |-------|--------|---------|
 | Section HTMLs | `PDA/*/sections/*.html`, `ISPE/*/sections/*.html` | Source content — bilingual, styled, educational |
 | Merged documents | `PDA/*/output/*-Complete.html` | Human reading — sticky nav, bilingual layout |
-| Knowledge base | `knowledge/PDA/*.md`, `knowledge/ISPE/*.md` | Chatbot Q&A — clean Markdown, searchable |
+| Knowledge base | `knowledge/PDA/*.md`, `knowledge/ISPE/*.md`, `knowledge/FDA/*.md`, `knowledge/ICH/*.md`, `knowledge/PICS/*.md` | Chatbot Q&A — clean Markdown, searchable |
 | Dashboard | `index.html` | Browse all documents, keyword search, filter by source |
 | Skill | `.claude/commands/gmp-ask.md` | `/gmp-ask` chatbot via Claude Code |
 
 ## Documents Covered
 
-### PDA Technical Reports & Points to Consider (34 complete)
+### PDA Technical Reports & Points to Consider (39 complete)
 
 | Document | Topic |
 |----------|-------|
 | PDA Guide No.1 | Aseptic Filling Machine Design and Operation |
+| PDA TR1 | Validation of Moist Heat Sterilization Processes: Cycle Design, Development, Qualification and Ongoing Control (Revised 2007) |
 | PDA TR13 | Fundamentals of Environmental Monitoring Program (2022) |
 | PDA TR13-2 | EM for Low Bioburden Products — Annex 1 (2020) |
 | PDA TR22 | Process Simulation for Aseptically Filled Products |
 | PDA TR26 | Sterilizing Filtration of Liquids |
+| PDA TR27 | Pharmaceutical Package Integrity |
+| PDA TR29 | Points to Consider for Cleaning Validation |
 | PDA TR39 | Temperature-Controlled Medicinal Products |
 | PDA TR41 | Virus Retentive Filtration (2022) |
 | PDA TR43 | Identification and Classification of Nonconformities in Glass Containers (2023) |
 | PDA TR46 | Last Mile GDP for Pharma Products to End Users (2024) |
+| PDA TR49 | Points to Consider for Biotechnology Cleaning Validation (2010) |
 | PDA TR52 | Good Distribution Practices (GDPs) |
 | PDA TR54-6 | Formalized Risk Assessment for Excipients (2019) |
 | PDA TR56 | Phase-Appropriate Quality Systems for Biological Drug Substance (2026) |
@@ -42,6 +46,7 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | PDA TR73-2 | MDR Annex I for Staked Needle Systems |
 | PDA TR84 | Data Integrity in Manufacturing and Packaging (2020) |
 | PDA TR85 | Enhanced Test Methods for Visible Particle Detection |
+| PDA TR86 | Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing (2021) |
 | PDA TR87 | Current Best Practices for Glass Vial Handling and Processing |
 | PDA TR88 | Microbial Data Deviation Investigations |
 | PDA TR90 | Contamination Control Strategy (CCS) |
@@ -54,36 +59,95 @@ Covers **PDA Technical Reports**, **ISPE Guidelines**, **FDA Guidance**, **PIC/S
 | PDA PtC-15 | Mobile Manufacturing |
 | PDA PtC-Isolators | Aseptic Processing in Isolators |
 
-### ISPE Guidelines (6 complete, more in progress)
+### ISPE Guidelines (14 complete, 1 pending)
 
 | Document | Status | Topic |
 |----------|--------|-------|
 | ISPE Baseline Vol.3 | ✅ Complete | Sterile Manufacturing Facilities |
 | ISPE Baseline Vol.4 | ✅ Complete | Water & Steam Systems |
 | ISPE Baseline Vol.5 C&Q (2nd Ed.) | ✅ Complete | Commissioning & Qualification |
+| ISPE Baseline Vol.6 | ✅ Complete | Biopharmaceutical Manufacturing Facilities |
 | ISPE Baseline Vol.7 | ✅ Complete | Risk-Based Manufacture of Pharmaceutical Products |
 | ISPE GPG HVAC | ✅ Complete | Heating, Ventilation and Air Conditioning |
 | ISPE GPG Single-Use Technology | ✅ Complete | Single-Use Systems |
-| ISPE Baseline Vol.6 | 📋 PDF ready | Biopharmaceutical Manufacturing Facilities |
-| ISPE GAMP 5 (2nd Ed.) | 📋 PDF ready | Computerized Systems Validation |
-| ISPE GPG Sampling | 📋 PDF ready | Pharmaceutical Water, Steam & Process Gases |
-| ISPE GPG CTC | 📋 PDF ready | Mapping and Monitoring |
-| ISPE GPG Technology Transfer | 📋 PDF ready | 3rd Edition |
-| ISPE Good Engineering Practice | 📋 PDF ready | GEP Framework |
-| ISPE Process Gases | 📋 PDF ready | Process Gas Systems |
-| ISPE IT Infrastructure | 📋 PDF ready | Control and Compliance |
-| ISPE-PDA Quality Culture | 📋 PDF ready | Guide to Improving Quality Culture |
+| ISPE GAMP 5 (2nd Ed.) | ✅ Complete | Computerized Systems Validation |
+| ISPE GPG Sampling | ✅ Complete | Pharmaceutical Water, Steam & Process Gases |
+| ISPE GPG CTC | ✅ Complete | Mapping and Monitoring |
+| ISPE GPG Technology Transfer | ✅ Complete | Technology Transfer — 3rd Edition |
+| ISPE Process Gases | ✅ Complete | Process Gas Systems |
+| ISPE IT Infrastructure | ✅ Complete | Control and Compliance |
+| ISPE-PDA Quality Culture | ✅ Complete | Guide to Improving Quality Culture |
+| ISPE Good Engineering Practice | ⏳ Pending | GEP Framework (scanned PDF — OCR required) |
 
-### Regulatory & Standards (planned)
+### Regulatory & Standards
 
-| Document | Body | Topic |
-|----------|------|-------|
-| FDA Guidance — Aseptic Processing (2004) | FDA | Sterile drug products by aseptic processing |
-| PIC/S Annex 1 (2022) | PIC/S | Manufacture of sterile medicinal products |
-| ISO 13408-1 (2008) | ISO | Aseptic processing of health-care products |
-| ISO 13926-1/2/3 (2018) | ISO | Aseptic processing standards |
-| ECA CCS Guide (2023) | ECA | Contamination Control Strategy development |
-| USP \<382\> | USP | Elastomeric component functional suitability |
+| Document | Body | Status | Topic |
+|----------|------|--------|-------|
+| Aseptic Processing Guidance (2004) | FDA | ✅ Complete | Sterile drug products by aseptic processing |
+| Process Validation Guidance (2011) | FDA | ✅ Complete | Lifecycle approach to process validation |
+| Process Inspection CPGM 7356.002A | FDA | ✅ Complete | Drug process inspection procedures |
+| Annex 1 (2022) | PIC/S | ✅ Complete | Manufacture of sterile medicinal products |
+| Q8(R2) Pharmaceutical Development | ICH | ✅ Complete | Design space and quality by design |
+| Q9(R1) Quality Risk Management | ICH | ✅ Complete | Risk management methodology framework |
+| Q10 Pharmaceutical Quality System | ICH | ✅ Complete | Pharmaceutical quality system framework |
+| 14644-1/2/3 Cleanroom Classification | ISO | ⏳ Planned | Cleanroom standards and monitoring |
+
+### USP General Chapters (38 complete, 18 skeleton)
+
+| Chapter | Topic | Status |
+|---------|-------|--------|
+| 〈1〉 | Injections and Implanted Drug Products | ✅ Complete |
+| 〈55〉 | Biological Indicators—Resistance Performance Tests | ✅ Complete |
+| 〈71〉 | Sterility Tests | ✅ Complete |
+| 〈85〉 | Bacterial Endotoxins Test | ✅ Complete |
+| 〈151〉 | Pyrogen Test | ✅ Complete |
+| 〈161〉 | Transfusion and Infusion Assemblies | ✅ Complete |
+| 〈381〉 | Elastomeric Components in Injectable Packaging | ✅ Complete |
+| 〈660〉 | Containers—Glass | ✅ Complete |
+| 〈661〉 | Plastic Packaging Systems | ✅ Complete |
+| 〈670〉 | Auxiliary Packaging Components | ✅ Complete |
+| 〈671〉 | Containers—Performance Testing | ✅ Complete |
+| 〈729〉 | Globule Size Distribution in Lipid Injectable Emulsions | ✅ Complete |
+| 〈755〉 | Minimum Fill | ✅ Complete |
+| 〈771〉 | Ophthalmic Products—Quality Tests | ✅ Complete |
+| 〈785〉 | Osmolality and Osmolarity | ✅ Complete |
+| 〈787〉 | Subvisible Particulate Matter in Therapeutic Protein Injections | ✅ Complete |
+| 〈788〉 | Particulate Matter in Injections | ✅ Complete |
+| 〈789〉 | Particulate Matter in Ophthalmic Solutions | ✅ Complete |
+| 〈790〉 | Visible Particulates in Injections | ✅ Complete |
+| 〈791〉 | pH | ✅ Complete |
+| 〈797〉 | Pharmaceutical Compounding—Sterile Preparations | ✅ Complete |
+| 〈1071〉 | Rapid Microbiological Methods | ✅ Complete |
+| 〈1072〉 | Disinfectants and Antiseptics | ✅ Complete |
+| 〈1085〉 | Guidelines on Biologics—General Considerations | ✅ Complete |
+| 〈1115〉 | Bioburden Control of Non-Sterile Drug Substances | ✅ Complete |
+| 〈1116〉 | Microbial Control of Aseptic Environments | ✅ Complete |
+| 〈1117〉 | Microbiological Best Laboratory Practices | ✅ Complete |
+| 〈1207〉 | Package Integrity Evaluation—Sterile Products | ✅ Complete |
+| 〈1211〉 | Sterilization and Sterility Assurance | ✅ Complete |
+| 〈1228〉 | Depyrogenation | ✅ Complete |
+| 〈1228.1〉 | Dry Heat Depyrogenation | ✅ Complete |
+| 〈1228.3〉 | Depyrogenation by Filtration | ✅ Complete |
+| 〈1228.4〉 | Depyrogenation by Rinsing | ✅ Complete |
+| 〈1228.5〉 | Endotoxin Indicators for Depyrogenation | ✅ Complete |
+| 〈1229〉 | Sterilization of Compendial Articles | ✅ Complete |
+| 〈1229.1〉–〈1229.15〉 | Sterilization sub-series (15 chapters) | ⏳ Skeleton |
+| 〈1660〉 | Evaluation of Inner Surface Durability of Glass Containers | ✅ Complete |
+| 〈1788〉 | Methods for the Determination of Subvisible Particulate Matter | ✅ Complete |
+| 〈1790〉 | Visual Inspection of Injections | ✅ Complete |
+
+> **Note:** USP chapters < 1000 are legally enforceable in the US; chapters ≥ 1000 are informational. See [SOURCES.md](SOURCES.md) for details on each source organization.
+
+### Planned Additions
+
+| Document | Body | Priority | Fills This Gap |
+|----------|------|----------|----------------|
+| Annex 15 — Qualification & Validation | EU GMP | High | EU inspection standard for IQ/OQ/PQ; pairs with ISPE Vol.5 |
+| Annex 2 — Biological Products | EU GMP | Medium | EU regulatory GMP for biologics/ATMPs |
+| 5.1.1 / 2.6.1 / 2.6.14 key chapters | Ph. Eur. | Medium | EU pharmacopeial equivalents to USP sterility/endotoxin chapters |
+| TRS 961 Annex 6 — Sterile Products | WHO GMP | Medium | WHO prequalification standard; required for global health supply chains |
+| 14644-1/2/3 Cleanroom Classification | ISO | High | Cleanroom class definitions cited by Annex 1 §4 and FDA aseptic guidance |
+| Q11 Drug Substance Development | ICH | Low | Biological/chemical API development; extends Q8 framework |
 
 ## Using the Chatbot Skill
 
@@ -115,7 +179,7 @@ python gmp_engine.py scaffold ISPE-Vol5 --source ISPE  # ISPE
 # 4. Generate knowledge MD
 python gmp_engine.py md FOLDER_ID
 
-# 5. Generate bilingual HTML sections using PROMPT.md template
+# 5. Generate bilingual HTML sections using docs/PROMPT.md template
 
 # 6. Merge sections
 python gmp_engine.py merge FOLDER_ID
@@ -134,12 +198,15 @@ See `CLAUDE.md` for detailed rules, naming conventions, and known pitfalls.
 
 Each guideline body has a distinct color in the dashboard:
 
-| Source | Color |
-|--------|-------|
-| PDA | Blue |
-| ISPE | Green |
-| FDA | Red |
-| PIC/S | Orange |
-| ISO | Purple |
-| ECA | Teal |
-| USP | Gold |
+| Source | Color | Status |
+|--------|-------|--------|
+| PDA | Blue | Active |
+| ISPE | Green | Active |
+| FDA | Red | Active |
+| PIC/S | Orange | Active |
+| ICH | Teal | Active |
+| USP | Gold | Active |
+| ISO | Purple | Planned |
+| EU GMP | Indigo | Planned |
+| Ph. Eur. | Rose | Planned |
+| WHO | Slate | Planned |

@@ -1,0 +1,66 @@
+# USP General Chapter 〈1229.12〉: New Sterilization Methods
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Aug-2016
+Document Type:
+General Chapter
+DocId:
+GUID-768122F6-B56E-451C-BF
+AB-0352AF0E2F20_1_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M9836_01_01
+DOI Ref:
+zzd1i
+© 2025 USPC
+Do not distribute
+〈1229.12〉 NEW STERILIZATION METHODS
+INTRODUCTION
+Sterilization processes are developed for the elimination of viable microorganisms while preserving the essential physical, chemical, and
+biological proper ties of the materials subjected to them. Where this cannot be accomplished by the sterilization methods described in
+Sterilization of Compendial Ar ticles 〈1229〉, it may be possible to sterilize by using a proposed method not commonly used. When doing so, it
+is the end user's responsibility to demonstrate that the proposed new method can be used safely and effectively.
+POINTS TO CONSIDER FOR A NEW STERILIZATION METHOD
+The major steps in the implementation of a new sterilization method include the following:
+Elimination of any established method through experimental evidence and/or comprehensive literature review of any materials used
+A literature review to identify suppor tive information on the proposed method
+Identi«cation and con«rmation of reproducible lethality against a broad range of microorganisms, including bacterial spore-formers
+Identi«cation and de«nition of critical process parameters necessary to ensure su­cient lethality. The effective range of these
+parameters should be explored to identify necessary conditions for the proposed sterilization process. Among the parameters to be
+considered, depending upon the nature of the process under consideration, are process dwell time, temperature, concentration, energy
+or power, and relative humidity. This evaluation should include positive and negative controls to ensure that the proposed method is in
+fact responsible for microbial destruction.
+The selection of a biological indicator (usually a spore-forming microorganism) with increased resistance to the sterilization method
+Evaluation of the proposed method against anticipated bioburden microorganisms and comparison of relative resistance of the
+bioburden microorganism to that of the chosen biological indicator
+The identi«cation of in-process and/or post-process measurements and/or analysis that can reliably con«rm the effectiveness of the
+proposed sterilization process.
+Where the proposed new method is used for materials intended for human and/or veterinary use, the relevant regulatory authorities should
+be contacted to secure their acceptance before either investigational or clinical usage. Validation of the proposed new method should be
+completed before use on a commercial basis.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<1229.12> NEW STERILIZATION METHODS
+Huiping Tu
+Director, Biologics
+GCM2022
+General Chapters - Microbiology
+2022
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 41(2)
+Current DocID: GUID-768122F6-B56E-451C-BF
+AB-0352AF0E2F20_1_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M9836_01_01
+DOI ref: zzd1i
+OFFICIAL
+2/12/25, 4:46 PM
+USP-NF 〈1229.12〉 New Sterilization Methods

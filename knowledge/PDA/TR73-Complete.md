@@ -1286,7 +1286,6 @@ mapping
 Conformation
 Fluorescence, circular dichroism (CD)
 Potency/Activity
-Biacore, ELISA, cell-based assays
 During all analyses, manufacturers must give special consideration to the presence of the silicone
 coating in glass PFSs and the potential for the product to interact with the silicone, as well as the
 movement of the silicone over time or when the product is delivered (109; 110). Beyond having a

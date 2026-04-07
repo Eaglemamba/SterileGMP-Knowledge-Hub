@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapters 4–5: CTC Types &amp; Commissioning | 受控溫度腔體類型與試運行 — ISPE CTC Guide</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    --ispe-bar: #16a34a;
+    --ispe-bg: #dcfce7;
+    --ispe-text: #15803d;
+    --ispe-border: #86efac;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+.source-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #bbf7d0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: #15803d; margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #dcfce7;
+    border-radius: 6px;
+    color: #15803d;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border: 1px solid #86efac;
+}
+.toc-grid a:hover { background: #16a34a; color: white; }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #86efac;
+}
+.learning-objectives h3 { color: #15803d; margin-bottom: 0.75rem; font-size: 1rem; font-weight: 700; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.block {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.block-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+}
+.block-num {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; flex-shrink: 0;
+}
+.block-header h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; }
+.block-header p { font-size: 0.85rem; opacity: 0.85; }
+
+.block-body { padding: 1.5rem; }
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #16a34a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.left-column p { margin-bottom: 0.85rem; font-size: 0.93rem; text-align: justify; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.93rem; }
+.left-column li { margin-bottom: 0.4rem; }
+
+.right-column {
+    background: #f0fdf4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bbf7d0;
+}
+.right-column h3 {
+    color: #15803d;
+    border-bottom: 2px solid #4ade80;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.right-column p { margin-bottom: 0.85rem; font-size: 0.93rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.93rem; }
+.right-column li { margin-bottom: 0.4rem; }
+
+.column-header {
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+}
+.col-en { background: #e2e8f0; color: #1e3a5f; }
+.col-zh { background: #dcfce7; color: #15803d; }
+
+.concept-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .concept-box ol { margin: 0.5rem 0 0.5rem 1.25rem; }
+.concept-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+
+.term-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.term-box h4 { color: #2e7d32; }
+
+.analogy-box { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+
+.key-point-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+.key-point-box h4 { color: #92400e; }
+
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd, #d1e9ff);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+}
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; }
+
+.key-message {
+    background: linear-gradient(135deg, #14532d, #15803d);
+    color: white;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 12px rgba(21,128,61,0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+}
+th, td { padding: 0.55rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #dcfce7, #bbf7d0); font-weight: 600; color: #14532d; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.badge-green { background: #d4edda; color: #155724; }
+.badge-red { background: #f8d7da; color: #721c24; }
+.badge-blue { background: #cce5ff; color: #004085; }
+.badge-yellow { background: #fff3cd; color: #856404; }
+.badge-purple { background: #e8daef; color: #4a235a; }
+
+.quote-box {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.main-footer {
+    background: #1e3a5f;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #15803d; transform: scale(1.1); }
+
+.section-divider { border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0; }
+
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .block-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none; }
+    .block { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="source-badge">ISPE Good Practice Guide 2016</div>
+    <h1>Chapters 4–5: CTC Types &amp; Commissioning</h1>
+    <p class="subtitle">受控溫度腔體類型與試運行</p>
+    <p class="page-info">Source Pages 16–27 &nbsp;|&nbsp; Section 01 of ISPE-CTC Series</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- TOC -->
+<div class="toc">
+    <h3>Section Contents / 本節內容</h3>
+    <div class="toc-grid">
+        <a href="#block-freezers">4.1 Freezers 冷凍庫</a>
+        <a href="#block-refrigerators">4.2 Refrigerators 冷藏庫</a>
+        <a href="#block-coldrooms">4.3 Cold Rooms 冷藏室</a>
+        <a href="#block-stability">4.4 Stability / Incubators 穩定性腔體</a>
+        <a href="#block-comm-scope">5.1 Commissioning Scope 試運行範疇</a>
+        <a href="#block-comm-strategy">5.2 Commissioning Strategy 試運行策略</a>
+        <a href="#block-design-phase">5.3 Design Phase Activities 設計階段活動</a>
+        <a href="#block-install-phase">5.4 Installation Phase Activities 安裝階段活動</a>
+        <a href="#block-handover">5.5 Handover &amp; Safety 移交與安全</a>
+        <a href="#block-comm-vs-qual">Commissioning vs IQ/OQ/PQ 比較表</a>
+    </div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives / 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+        <div>
+            <p style="font-size:0.88rem; font-weight:600; color:#15803d; margin-bottom:0.5rem;">After studying this section, you will be able to:</p>
+            <ul>
+                <li>Distinguish the six major CTC types by temperature range and design features</li>
+                <li>Explain why freezers require independent monitoring systems for GMP use</li>
+                <li>Describe how cold room PLCs differ from standalone refrigerator controllers</li>
+                <li>Define commissioning and explain its position in the qualification lifecycle</li>
+                <li>List the four categories of commissioning activities during installation</li>
+                <li>Explain the purpose and content of "red-line" drawings</li>
+                <li>Describe FAT and SAT scope for CTCs and their documentation requirements</li>
+                <li>Identify which change scenarios trigger re-commissioning or re-qualification</li>
+                <li>Distinguish between acceptance criteria and expected results in commissioning</li>
+            </ul>
+        </div>
+        <div>
+            <p style="font-size:0.88rem; font-weight:600; color:#15803d; margin-bottom:0.5rem;">完成本節學習後，您將能夠：</p>
+            <ul>
+                <li>依溫度範圍與設計特性區分六種主要 CTC 類型</li>
+                <li>說明為何冷凍庫在 GMP 用途中需要獨立監控系統</li>
+                <li>描述冷藏室 PLC 與獨立冷藏庫控制器的差異</li>
+                <li>定義試運行，並說明其在確認生命週期中的位置</li>
+                <li>列出安裝階段四大類試運行活動</li>
+                <li>解釋「紅線圖」的目的與內容</li>
+                <li>描述 CTC 的 FAT 與 SAT 範疇及文件要求</li>
+                <li>識別哪些變更情境需觸發再試運行或再確認</li>
+                <li>區分試運行中「驗收標準」與「預期結果」的差異</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 1: FREEZERS (4.1)
+     ============================================================ -->
+<div class="block" id="block-freezers">
+    <div class="block-header">
+        <div class="block-num">4.1</div>
+        <div>
+            <h2>Freezers / 冷凍庫</h2>
+            <p>-20°C to -196°C storage — design, defrost cycles, and GMP monitoring requirements</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <!-- LEFT: Source Text -->
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.16–18)</div>
+
+                <h3>4.1 Freezers</h3>
+                <p>Freezers are used for short to long term preservation of pharmaceutical and biopharmaceutical materials, including: Active Pharmaceutical Ingredients (APIs), process intermediates, stability samples, laboratory materials, and cell banks. Temperature uniformity is maintained within a qualified range to ensure product quality is preserved. Freezers with set points ranging from -20°C to -80°C (-4°F to -112°F) are frequently used.</p>
+
+                <p>Operation can be controlled via a temperature controller that maintains the locally configured temperature set point and also provides a local alarm. Manual defrost chambers are usually equipped with the general freezer refrigeration components of: compressor, receiver, condenser, evaporator, tubing, insulation, and structural support.</p>
+
+                <p>The refrigerant compressors are usually hermetically sealed for integrity. The evaporator is typically a tube and fin design. The chamber control monitors interior temperature using a permanently installed thermocouple or Resistance Temperature Detector (RTD) — referred to as the <strong>control probe</strong>. Typically, the control probe is calibrated at the factory based on the temperature at the geometric center of the chamber. The evaporator is usually located within the upper portion of the chamber interior and chamber temperature uniformity is obtained through natural air circulation.</p>
+
+                <p>For units with automatic defrost, the control actuates an automatic defrost cycle at a predetermined frequency (typically 6 to 24 hours) to minimize ice accumulation. The defrost cycle is terminated by: elapsed time, evaporator coil temperature set point, or a combination of time and temperature. The frequency of defrost is adjustable to allow for conditions of use (frequency of door openings, length of time for door openings, and exterior air humidity level).</p>
+
+                <p><strong>For GMP applications these systems should be monitored by an independent system.</strong> It can be difficult to calibrate the system control sensor, and the use of an independent system allows routine calibration, and the flexibility to place the sensor in a location that measures the "worst case" temperature. This system is used as the quality "system of record" to provide the data used to demonstrate that materials are being stored at the specified conditions.</p>
+
+                <h3>4.1.1 Conditioning / Blast Freezers</h3>
+                <p>Facilities may process large quantities of bulk product that needs to be frozen from ambient conditions to a specified temperature, e.g., -70°C, prior to transfer into -70°C storage locations. Dedicated conditioning freezers are needed to perform this function, as storage freezers are not capable of handling the large volume of product and significant temperature disparity without potentially compromising the temperature of stored material. This type of equipment is outside the scope of this guide.</p>
+
+                <h3>4.1.2 Liquid Nitrogen Freezers</h3>
+                <p>Used for storage of material below -120°C (-184°F), e.g., cell banks. If materials are immersed into liquid nitrogen, they eventually assume the temperature of the liquid (-196°C). Materials stored in the vapor above the liquid become warmer as they are moved away from the liquid (up to -120°C). The temperature of the vapor can be changed by varying the amount of liquid nitrogen in the chamber.</p>
+            </div>
+
+            <!-- RIGHT: Commentary -->
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>冷凍庫溫度範圍速查</h4>
+                    <table>
+                        <tr><th>類型</th><th>設定點</th><th>典型用途</th></tr>
+                        <tr><td>標準冷凍庫</td><td>-20°C</td><td>API、中間體短期儲存</td></tr>
+                        <tr><td>超低溫冷凍庫 (ULT)</td><td>-70 / -80°C</td><td>生物製劑原液、穩定性樣品</td></tr>
+                        <tr><td>液態氮槽</td><td>-120 ~ -196°C</td><td>細胞庫、主種子庫</td></tr>
+                    </table>
+                </div>
+
+                <div class="concept-box analogy-box">
+                    <h4>比喻：控制探針 vs. 獨立監控系統</h4>
+                    <p>冷凍庫原廠內建的<strong>控制探針</strong>就像汽車儀表板的油溫表 — 它讓引擎運作，但不能用來做法規報告。<strong>獨立監控系統</strong>才是你的品質記錄系統，相當於行車記錄器，提供可稽核的連續數據。</p>
+                    <p>ISPE 明確要求：GMP 應用必須有獨立監控系統作為「品質記錄系統 (system of record)」。控制探針僅維持設定點，獨立系統才用於合規報告。</p>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>CDMO 多客戶情境：冷凍庫獨立監控的重要性</h4>
+                    <p>在多客戶 CDMO 環境中，同一台 -80°C 冷凍庫可能同時存放三個不同客戶的 API 樣品。獨立監控系統的數據需能：</p>
+                    <ul>
+                        <li>按時間戳追溯每次門開啟事件</li>
+                        <li>顯示除霜週期期間的溫度波動是否影響儲存物</li>
+                        <li>提供客戶專屬的偏差記錄（需按客戶區隔報告）</li>
+                        <li>支援批次放行決策的溫度合規佐證</li>
+                    </ul>
+                    <p>獨立系統的感測器位置應設在「最差案例」位置（最可能超出限度的角落），而非幾何中心。</p>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>除霜週期對 GMP 的影響</h4>
+                    <p>除霜週期（每 6-24 小時）期間，蒸發器溫度短暫升高以融化積霜。監控系統必須：</p>
+                    <ul>
+                        <li>能區分除霜引起的短暫溫升與真實的設備異常</li>
+                        <li>確認除霜期間產品溫度仍在可接受範圍內</li>
+                        <li>在確認中記錄除霜週期對腔體溫度的實際影響</li>
+                    </ul>
+                    <p>確認時需在除霜週期期間進行溫度 mapping，記錄其影響。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>您的廠房有一台 -80°C 冷凍庫，客戶要求提供過去 30 天的連續溫度記錄。如果只有原廠控制探針的日誌，為何這份記錄可能不被接受？</li>
+                        <li>除霜頻率設定過低可能導致哪些 GMP 風險？設定過高又會有什麼問題？</li>
+                        <li>Blast Freezer（急凍庫）為何不在本指南範疇內？這對設備採購時的分類有何影響？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 2: REFRIGERATORS (4.2)
+     ============================================================ -->
+<div class="block" id="block-refrigerators">
+    <div class="block-header">
+        <div class="block-num">4.2</div>
+        <div>
+            <h2>Refrigerators / 冷藏庫</h2>
+            <p>2–8°C storage — forced air vs. convection, wire shelving, auto-defrost</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, p.17)</div>
+
+                <h3>4.2 Refrigerators</h3>
+                <p>Refrigerators are typically used to store material and vaccines within a qualified range of 2°C to 8°C (36°F to 46°F). The capability of the equipment to achieve temperature uniformity should be considered when assigning the chamber set point.</p>
+
+                <p>Operation is typically controlled via a temperature controller that is used to maintain the locally configured temperature set point, and may also provide a local alarm. Refrigerators may be equipped with fans which cool via forced air circulation and utilize a hermetically sealed compressor and refrigeration system. Alternatively, refrigerators may use a heat exchanger located in the storage space, relying on convection to maintain an even temperature.</p>
+
+                <p><strong>Refrigerators should have wire shelving to improve air circulation.</strong></p>
+
+                <p>Refrigerators will usually automatically defrost the evaporator to maintain system performance. Evaporator defrost occurs by re-directing the hot refrigerant gas into the evaporator coil for a short time to melt any ice/frost accumulation.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>冷藏庫核心設計要點</h4>
+                    <p><strong>設定點 vs. 確認範圍</strong>：ISPE 提醒，設定點的選擇必須考量設備達到溫度均一性的能力。若設備在 4°C 設定下邊角溫度達到 8.5°C，則確認範圍可能無法涵蓋 2-8°C 規格，需調整設定點。</p>
+                    <p><strong>強制氣流 vs. 對流</strong>：有風扇的強制氣流型溫度均一性通常較佳，但門開啟時冷空氣流失更快。對流型較溫和，但對貨物擺放方式更敏感。</p>
+                    <p><strong>網架要求</strong>：ISPE 明確要求使用金屬網架而非實心板架，以確保空氣可在貨物之間流通，避免局部熱點。</p>
+                </div>
+
+                <div class="concept-box analogy-box">
+                    <h4>比喻：設定點 ≠ 確認範圍</h4>
+                    <p>設定點是你告訴冷藏庫「維持在這個溫度」的指令，確認範圍是你用 mapping 資料<em>證明</em>腔體各處實際達到的溫度帶。兩者之間的差距，就是你在選設定點時必須預留的「緩衝帶」。若 mapping 顯示偏差 ±1.5°C，設定點應設在 4-5°C，而非緊貼 8°C 上限。</p>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>CDMO 多產品情境：冷藏庫分區管理</h4>
+                    <p>多客戶 CDMO 常見問題：不同客戶的疫苗、API 或中間體共用同一冷藏庫。建議：</p>
+                    <ul>
+                        <li>按客戶/產品劃定貨架區域，貼標識別</li>
+                        <li>確認時需模擬實際最大裝載量（worst case loading）</li>
+                        <li>實心板架違反 ISPE 建議，會在稽查中被提出</li>
+                        <li>每次新增客戶產品前確認擺放方式不會遮擋氣流</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>一台 2-8°C 冷藏庫的溫度 mapping 顯示角落溫度為 8.3°C。這對設定點選擇有何影響？</li>
+                        <li>客戶要求用實心金屬板架存放其產品（擔心落塵）。你如何回應這個要求，並找到符合雙方需求的解決方案？</li>
+                        <li>強制氣流冷藏庫與對流冷藏庫在 mapping 策略上應有何不同考量？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 3: COLD ROOMS (4.3)
+     ============================================================ -->
+<div class="block" id="block-coldrooms">
+    <div class="block-header">
+        <div class="block-num">4.3</div>
+        <div>
+            <h2>Cold Rooms / 冷藏室（步入式）</h2>
+            <p>Walk-in cold rooms — PLC control, redundant condensing, multi-sensor configurations</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.17–18)</div>
+
+                <h3>4.3 Cold Rooms</h3>
+                <p>Cold rooms are typically used for storage of material within a qualified range of 2°C to 8°C (36°F to 46°F). Cold rooms should be equipped with a refrigeration compressor/condensing unit. The air-cooled condensing unit is usually located outside, e.g., on the roof of the building. Cold rooms may be provided with redundant condensing systems, each capable of handling the total system load.</p>
+
+                <p>Walk-in cold rooms may be prefabricated, metal-clad structures, furnished and installed as self-contained units. These may include all essential refrigeration equipment, controls, air circulation, and other equipment necessary to reach the specified environmental conditions.</p>
+
+                <p>Cold room control systems usually consist of a local <strong>Programmable Logic Controller (PLC)</strong> to monitor and control the temperature within the cold room. Within the main chamber, the temperature may be measured by temperature sensors placed in different locations. One sensor should be routed to the main controller for controlling interior temperature. The second sensor should be connected to a monitoring system for temperature trending and alarm; for larger units there may be multiple monitoring sensors.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>冷藏室 vs. 獨立冷藏庫：系統複雜度比較</h4>
+                    <table>
+                        <tr><th>特性</th><th>獨立冷藏庫</th><th>步入式冷藏室</th></tr>
+                        <tr><td>控制系統</td><td>整合式控制器</td><td>獨立 PLC</td></tr>
+                        <tr><td>冷凝機組</td><td>內建</td><td>通常在建築外（屋頂）</td></tr>
+                        <tr><td>備援能力</td><td>通常無</td><td>可配置冗餘冷凝機組</td></tr>
+                        <tr><td>感測器數量</td><td>1-2 個</td><td>多個（依體積決定）</td></tr>
+                        <tr><td>試運行複雜度</td><td>較低</td><td>較高（設施整合）</td></tr>
+                        <tr><td>確認策略</td><td>標準目錄設備</td><td>現場客製建置系統</td></tr>
+                    </table>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>PLC 控制與 CSV 要求</h4>
+                    <p>冷藏室的 PLC 屬於電腦化系統，在 GMP 環境中可能觸發 21 CFR Part 11 或 Annex 11 的電腦化系統驗證 (CSV) 要求。關鍵考量：</p>
+                    <ul>
+                        <li>PLC 軟體版本控制需納入變更管控</li>
+                        <li>存取權限管理（哪些人可修改設定點）</li>
+                        <li>審計追蹤（Audit trail）：記錄每次設定變更</li>
+                        <li>數據完整性：PLC 記錄的數據是否可被篡改？</li>
+                    </ul>
+                    <p>若 PLC 涉及 GMP 關鍵數據，即使是冷藏室也需要進行 IQ/OQ 確認和 CSV 評估。</p>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>冗餘冷凝機組的 GMP 意義</h4>
+                    <p>冷藏室備有冗餘冷凝機組（各自能承擔完整負載）是高風險儲存物料的最佳實踐。試運行時必須測試：</p>
+                    <ul>
+                        <li>主機組切換至備援機組的時間</li>
+                        <li>切換過程中腔體溫度的波動範圍</li>
+                        <li>備援機組長期運作的穩定性（不能只是短暫啟動測試）</li>
+                    </ul>
+                    <p>此數據在確認中同樣需要執行，以形成正式品質記錄。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>冷藏室的屋頂冷凝機組在夏天高溫環境下對冷藏室性能有何潛在影響？試運行時如何模擬最差案例？</li>
+                        <li>如果冷藏室 PLC 的軟體升級了，這是否需要重新進行確認？依據什麼判斷？</li>
+                        <li>一個 200 m³ 步入式冷藏室應配置多少個監控感測器？決定感測器數量的因素有哪些？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 4: STABILITY CHAMBERS / INCUBATORS (4.4)
+     ============================================================ -->
+<div class="block" id="block-stability">
+    <div class="block-header">
+        <div class="block-num">4.4</div>
+        <div>
+            <h2>Stability Chambers &amp; Incubators / 穩定性腔體與培養箱</h2>
+            <p>ICH conditions 25/30/40°C — humidity, CO₂, multi-parameter control</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, p.18)</div>
+
+                <h3>4.4 Stability Chambers, Incubators / Incubator Shakers</h3>
+                <p>Stability chambers are chambers that are designed to maintain a stable environment for incubating materials or holding samples. These may include cultures for microorganisms or cell culture and hybridization in production or Quality Control laboratories. The incubator may accommodate cell culture vessels from small tissue culture flasks to roller bottles and small spinner flasks.</p>
+
+                <p>A local controller should control system operation for process parameters such as temperature, humidity, and CO₂. Incubator shakers can also control shaker speed (Revolutions Per Minute (RPM) of the drive).</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>ICH 穩定性條件與對應腔體類型</h4>
+                    <table>
+                        <tr><th>ICH 條件</th><th>溫度</th><th>濕度 (%RH)</th><th>適用市場</th></tr>
+                        <tr><td>Zone I（長期）</td><td>25°C ± 2°C</td><td>60% ± 5%</td><td>溫帶地區</td></tr>
+                        <tr><td>Zone II（加速）</td><td>40°C ± 2°C</td><td>75% ± 5%</td><td>全球通用</td></tr>
+                        <tr><td>Zone IVb（長期）</td><td>30°C ± 2°C</td><td>65% ± 5%</td><td>熱帶地區（如台灣）</td></tr>
+                        <tr><td>冷藏（長期）</td><td>5°C ± 3°C</td><td>—</td><td>生物製劑</td></tr>
+                        <tr><td>冷凍（長期）</td><td>-20°C ± 5°C</td><td>—</td><td>冷凍製品</td></tr>
+                    </table>
+                    <p style="font-size:0.85rem; color:#555; margin-top:0.5rem;">穩定性腔體的 mapping 必須同時驗證溫度<strong>和</strong>濕度的均一性。</p>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>多參數控制的確認複雜度</h4>
+                    <p>與冷凍/冷藏庫相比，穩定性腔體和培養箱涉及多個受控參數：</p>
+                    <ul>
+                        <li><strong>溫度</strong>：通常需要 ±2°C 以內的均一性</li>
+                        <li><strong>濕度</strong>：需要 ±5% RH 以內的均一性（對機械也是挑戰）</li>
+                        <li><strong>CO₂ 濃度</strong>：培養箱特有，影響細胞培養 pH</li>
+                        <li><strong>振盪速度 (RPM)</strong>：培養振盪箱的附加參數</li>
+                    </ul>
+                    <p>每個參數都需要各自的感測器、校正記錄和確認測試。確認協議（IQ/OQ/PQ）的複雜度遠高於簡單儲存設備。</p>
+                </div>
+
+                <div class="concept-box analogy-box">
+                    <h4>比喻：穩定性腔體是「人工氣候室」</h4>
+                    <p>穩定性腔體相當於一個精密人工氣候室，必須同時模擬全球不同地區的氣候條件。台灣的 CDMO 若要服務全球市場，通常需要配備能覆蓋所有 ICH 條件的穩定性腔體群。每個條件一旦偏離，整批穩定性數據可能需要被視為無效，對客戶申請影響巨大。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>穩定性腔體在溫度 mapping 時，是否需要同時進行濕度 mapping？這對感測器配置有何要求？</li>
+                        <li>一台培養箱同時控制溫度、CO₂ 和轉速，當轉速感測器發生故障時，是否需要執行設備偏差報告？</li>
+                        <li>台灣市場的新藥申請需要哪些 ICH 穩定性條件？這對穩定性腔體的採購規格有何影響？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     KEY MESSAGE
+     ============================================================ -->
+<div class="key-message">
+    "Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant."
+    <br><span style="font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;">試運行是工程層面的驗證；確認是法規層面的驗證 — 兩者都是必要的，互不取代。</span>
+</div>
+
+<!-- ============================================================
+     BLOCK 5: COMMISSIONING SCOPE (5.1)
+     ============================================================ -->
+<div class="block" id="block-comm-scope">
+    <div class="block-header">
+        <div class="block-num">5.1</div>
+        <div>
+            <h2>Scope of Commissioning / 試運行範疇</h2>
+            <p>Standard catalogue systems vs. site-built systems — documentation expectations</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.19–20)</div>
+
+                <h3>5.1 Scope of the Commissioning</h3>
+                <p>The commissioning process should be a well-planned, documented, and managed engineering approach to the start-up and turnover of both the system and the equipment to the End User. Commissioning should result in a safe and functional environment that meets established design requirements and stakeholder expectations (see also the ISPE Baseline® Guide: Commissioning and Qualification). The complexity of commissioning can vary, depending on the type of system.</p>
+
+                <p>If a risk-based approach is being used, the commissioning documentation may be used to provide evidence of the installation and operation. The commissioning documentation needs to be of an acceptable standard. Typical expectations for the commissioning documentation are provided (see Section 6).</p>
+
+                <h3>5.1.1 Standard "Catalogue" Systems</h3>
+                <p>Standard "Catalogue" Systems are comprised of mechanical components assembled and/or produced by a manufacturer for general industry applications. There is a limited standard menu of options with respect to hardware and/or software. A manufacturer normally provides a standard operations manual that applies to the operation and maintenance of the system. Standard "Catalogue" Systems are usually set to work following the manufacturer's instructions. Examples include freestanding freezers and refrigerators.</p>
+
+                <p>Commissioning is usually simpler for standard catalogue equipment, as the control system is an integrated part of the standard catalogue system, with data on all the components contained within the supplier documentation. A typical commissioning approach could follow the steps listed below:</p>
+                <ul>
+                    <li>Recording of system data</li>
+                    <li>Verification of correct installation (installation verification)</li>
+                    <li>Confirmation of satisfactory operation / temperature mapping (operational verification)</li>
+                </ul>
+                <p>Generally, Standard "Catalogue" Systems have been set up in a factory by the manufacturer; typically, the scope of work does not include mapping — this is usually added to the vendor's requirements.</p>
+
+                <h3>5.1.2 Site (Custom) Built Systems</h3>
+                <p>Site (Custom) Built Systems normally require additional verification to ensure that operation is as specified, usually with more adjustment (set up and tuning) of the refrigeration and associated control systems, in order to ensure that performance meets the user requirements and design specifications.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>試運行的核心定義</h4>
+                    <p>試運行（Commissioning）是在正式安裝（IQ）之前或同步進行的<strong>工程性驗證活動</strong>，目的是確認設備安全、功能正常、符合設計要求，並完成移交給最終使用者（End User）的過程。</p>
+                    <p>ISPE 強調：試運行是「橋樑」— 連接安裝完成與正式確認啟動。沒有完善的試運行，確認活動的基礎就不穩固。</p>
+                </div>
+
+                <div class="concept-box analogy-box">
+                    <h4>比喻：新屋交屋驗收</h4>
+                    <p>試運行就像房屋交屋前的驗收過程：建商帶你走遍每個房間，確認電燈會亮、水龍頭有水、門窗可以關緊。這不是政府驗屋（確認），但是交屋的工程前提。沒通過驗屋，建商不能交屋；沒通過試運行，GMP 確認不能開始。</p>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>標準目錄設備 vs. 現場客製建置：文件要求差異</h4>
+                    <table>
+                        <tr><th>面向</th><th>標準目錄設備</th><th>現場客製建置</th></tr>
+                        <tr><td>試運行複雜度</td><td>低</td><td>高</td></tr>
+                        <tr><td>控制系統資料來源</td><td>廠商標準文件</td><td>需自行建立</td></tr>
+                        <tr><td>調整校調工作</td><td>最小</td><td>需要大量 set-up 和 tuning</td></tr>
+                        <tr><td>Mapping 通常包含？</td><td>需另行要求</td><td>通常納入規格要求</td></tr>
+                        <tr><td>文件標準</td><td>廠商手冊為主</td><td>需自行制定試運行協議</td></tr>
+                        <tr><td>典型例子</td><td>獨立冷凍庫、冷藏庫</td><td>步入式冷藏室、恆溫室</td></tr>
+                    </table>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>風險基礎方式下的試運行文件</h4>
+                    <p>ISPE 允許以風險基礎方式使用試運行文件來<strong>支持確認活動</strong>（即「leveraging」或「bridging」策略）。這意味著：</p>
+                    <ul>
+                        <li>廠商提供的 FAT 數據可作為 IQ 的部分證據</li>
+                        <li>試運行中的功能測試可支持 OQ 的設計</li>
+                        <li>但文件必須達到 GMP 可接受標準（可追溯、可核查、符合數據完整性要求）</li>
+                        <li>需要正式的文件審查和批准流程，不能只是工程報告</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>一台新購入的 -80°C 冷凍庫（標準目錄設備），廠商提供完整的 FAT 報告。您如何利用這份報告減少現場 IQ 的工作量？需要確認哪些條件？</li>
+                        <li>如果試運行文件要達到「可接受標準」，具體指的是哪些 GMP 文件要求？（提示：數據完整性 ALCOA+）</li>
+                        <li>現場客製建置的冷藏室，試運行調校（tuning）階段發現溫度均一性不佳。應如何記錄這個過程，以確保後續確認不受影響？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 6: COMMISSIONING STRATEGY (5.2)
+     ============================================================ -->
+<div class="block" id="block-comm-strategy">
+    <div class="block-header">
+        <div class="block-num">5.2</div>
+        <div>
+            <h2>Commissioning Strategy / 試運行策略</h2>
+            <p>Commissioning Plan objectives, roles, and acceptance criteria definition</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.20–22)</div>
+
+                <h3>5.2.1 Execution Process</h3>
+                <p>The testing strategy and the acceptance criteria should be documented in a Commissioning Plan prior to test execution. The objective is to:</p>
+                <ul>
+                    <li>Show that the work will meet Owner and regulatory agency expectations</li>
+                    <li>Provide clear and early definition of deliverables and handover requirements</li>
+                    <li>Define roles and responsibilities</li>
+                    <li>Define the Engineering Change Management System</li>
+                    <li>Define the approach to be used for training of the maintenance department and End Users</li>
+                    <li>Ensure consistency of approach and testing across the project</li>
+                    <li>Ensure full transparency on progress metrics (test execution and productivity)</li>
+                    <li>Scope the testing required</li>
+                    <li>Provide review and approval of test method statements</li>
+                    <li>Provide progress reporting</li>
+                    <li>Provide reporting and handling of test discrepancies</li>
+                    <li>Define the location and marking (identification) of mapping points</li>
+                    <li>Define the acceptance criteria / expected results</li>
+                    <li>Witnessing requirements and notification procedures</li>
+                    <li>Handling/retention of raw data</li>
+                    <li>Format and content of the commissioning report</li>
+                    <li>Defined responsibilities for operating and maintaining a facility during commissioning</li>
+                    <li>Identify who is responsible for maintaining the operating log from start-up to handover</li>
+                    <li>Define how handover is to be managed</li>
+                </ul>
+                <p>The Commissioning Plan should also define how safety is considered. When executing the plan, Commissioning and Qualification may be performed in two distinct phases, or the phases can be combined.</p>
+                <p><em>Note: acceptance criteria are "non-negotiable" test results; expected results may be acceptable across a broader range, or are results taken for reference purposes.</em></p>
+
+                <h3>5.2.2 Roles and Coordination</h3>
+                <p>Typical roles and responsibilities of parties involved include:</p>
+                <ul>
+                    <li><strong>Commissioning Lead</strong> — responsible for coordinating and managing commissioning activities and allocating resources; writes and/or executes the activity; responsible for accuracy of content</li>
+                    <li><strong>System Owner</strong> — reviews content; by signing the Plan and Test Report, agrees to the content; has decision making authority and is accountable for compliance to the URS; during construction, determines acceptance of the "as built" system at mechanical completion</li>
+                    <li><strong>Commissioning Team Member</strong> — involved in execution, documentation, and expertise (site activities: verification, safety analysis, protocol execution, punch items, maintenance training; office activities: document preparation, red-line updating, archiving)</li>
+                    <li><strong>Engineering/Technical Services and Validation Group</strong> — on distribution list; may review as SMEs but do not take direct action on commissioning documents</li>
+                </ul>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>試運行計畫（Commissioning Plan）的核心功能</h4>
+                    <p>Commissioning Plan 是試運行的「憲法」— 在任何測試執行<strong>之前</strong>必須完成並批准。它的存在確保：</p>
+                    <ul>
+                        <li>所有相關方事前同意測試範圍和驗收標準</li>
+                        <li>沒有人可以在測試後才「倒填」標準（防止數據操縱）</li>
+                        <li>測試差異（discrepancy）的處理方式已預先定義</li>
+                        <li>資料保留和移交格式已明確規定</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box key-point-box">
+                    <h4>關鍵區別：驗收標準 vs. 預期結果</h4>
+                    <table>
+                        <tr><th>面向</th><th>驗收標準（Acceptance Criteria）</th><th>預期結果（Expected Results）</th></tr>
+                        <tr><td>定義</td><td>不可妥協的測試結果</td><td>參考用，範圍可較寬或為記錄用</td></tr>
+                        <tr><td>失敗後果</td><td>必須調查並採取 CAPA</td><td>可記錄偏差，不一定阻止移交</td></tr>
+                        <tr><td>例子</td><td>腔體內所有點 ≤ 8°C</td><td>穩定達到設定點的時間約 2 小時</td></tr>
+                        <tr><td>更改時機</td><td>必須在測試前完成，不可倒填</td><td>可作為改善基礎更新</td></tr>
+                    </table>
+                    <p style="font-size:0.85rem; color:#555;">理解此區別對於稽查應對至關重要：稽查員會問「你的驗收標準是測試前定義的嗎？」</p>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>CDMO 中的角色對應</h4>
+                    <p>在 CDMO 環境中，試運行角色通常由以下部門承擔：</p>
+                    <ul>
+                        <li><strong>Commissioning Lead</strong>：工程/設施部門主管或專案經理</li>
+                        <li><strong>System Owner</strong>：QA 或生產部門代表（對法規合規負責）</li>
+                        <li><strong>Commissioning Team Member</strong>：工程師、儀控技術員、廠商代表</li>
+                        <li><strong>Validation Group</strong>：負責確認協議，可審查試運行文件作為 IQ 依據</li>
+                    </ul>
+                    <p>System Owner 的角色特別重要：他/她在簽署試運行計畫時，正式接受對 URS 合規性的問責。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>試運行計畫中的「原始數據保留」條款，與 21 CFR Part 11 的數據完整性要求有何關聯？如果試運行數據只有紙本，應如何管理？</li>
+                        <li>System Owner 在試運行中「接受 as-built 系統」這個動作，對後續確認的 IQ 階段有什麼意義？是否可以省略？</li>
+                        <li>如果試運行期間測試失敗，但技術人員直接修正後重新測試，未更新試運行計畫。這在稽查中會引發什麼問題？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 7: DESIGN PHASE (5.3)
+     ============================================================ -->
+<div class="block" id="block-design-phase">
+    <div class="block-header">
+        <div class="block-num">5.3</div>
+        <div>
+            <h2>Commissioning at the Design Phase / 設計階段的試運行活動</h2>
+            <p>Design Review, FMEA risk assessment, URS verification, utility interactions</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.22–23)</div>
+
+                <h3>5.3.1 The Design Review</h3>
+                <p>From the commissioning perspective, the Design Review is intended for the commissioning team to become familiar with the project and to verify that the design has adequate provision for the tests required, as defined in the equipment specification and URS.</p>
+                <p>Requirements in the URS should be clarified with attendees. Key design documents should then be reviewed. Issues relevant to continuous operation of the Chamber are critical aspects to consider and include:</p>
+                <ul>
+                    <li>Chamber loading scenarios</li>
+                    <li>Loading and unloading of products</li>
+                    <li>External/adjacent environmental conditions</li>
+                </ul>
+                <p>Typical documents for verification include:</p>
+                <ul>
+                    <li>Layout and HVAC zoning layout</li>
+                    <li>Room environmental parameter schedule</li>
+                    <li>Piping and Instrumentation Diagram (P&amp;ID)</li>
+                    <li>Functional specifications</li>
+                </ul>
+                <p>During the Design Review phase, documents relevant to the areas surrounding the chamber and to the utilities serving it (e.g., hot water, chilled/glycol water, electricity) should be included in the review in order to properly understand the interaction between the Controlled Temperature Chamber and the rest of the facility.</p>
+                <p>The Commissioning Team should define the list and sequence of at-site activities and verifications needed, and complete the Commissioning Plan. A tailored approach is usually required as the sequence and activities are dependent upon the specific site conditions, utilities available, operating conditions and type of Controlled Temperature Chamber.</p>
+                <p>In this phase, the Commissioning Team should be given opportunity to provide suggestions to the designer, in order to obtain a design that will facilitate Commissioning Tests and activities. Suggestions may include availability of access to regulation points, provision of testing points in an appropriate location, or access ports to the room for installation of cabling, if required during temperature mapping.</p>
+
+                <h3>5.3.2 Design Risk Assessment</h3>
+                <p>A risk assessment may be used to help critique and develop a robust design. A Failure Mode Effects Analysis (FMEA) risk assessment can be used to identify possible failures that could lead to the loss of the required performance, identified by review of design and vendor documentation.</p>
+                <p>Risks should be evaluated as to their probability and severity, in order to determine the impact to process variation and effect.</p>
+                <p>Unacceptable risks should be mitigated following the preferred hierarchy of:</p>
+                <ul>
+                    <li>Elimination by design</li>
+                    <li>Elimination by automated control</li>
+                    <li>Elimination by procedural controls</li>
+                </ul>
+                <p>The risk management requirements identified should be designated as critical and include all components, functions, and features of the design that serve to control risks. These functions and features should be tested during commissioning.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>設計審查中試運行團隊的角色</h4>
+                    <p>試運行團隊參與設計審查的目的，不是批准設計，而是<strong>確保設計「可測試」</strong>。常見的試運行可測試性問題：</p>
+                    <ul>
+                        <li>感測器安裝位置沒有足夠的接線導管，mapping 時無法佈線</li>
+                        <li>冷藏室牆壁沒有預留穿線孔，臨時開孔影響氣密性測試</li>
+                        <li>壓縮機組沒有壓力測試連接點，預防性維護困難</li>
+                        <li>控制閥沒有旁通管路，維修時必須停機</li>
+                    </ul>
+                    <p>在設計階段提出這些問題，成本遠低於施工後修改。</p>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>P&amp;ID 在 CTC 試運行的核心作用</h4>
+                    <p>管線儀表圖（P&amp;ID）是試運行最重要的設計文件之一，記錄：</p>
+                    <ul>
+                        <li>所有管線、閥件、感測器的位置和識別號</li>
+                        <li>儀控系統的連接邏輯</li>
+                        <li>壓力/溫度安全裝置的設定值</li>
+                        <li>公用設施（冷凍水、電力、壓縮空氣）的供應點</li>
+                    </ul>
+                    <p>試運行完成後，P&amp;ID 必須更新為「紅線版本」（as-built），反映所有施工期間的變更。這份文件最終成為設施生命週期管理的基礎。</p>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>FMEA 在 CTC 設計階段的應用</h4>
+                    <p>針對 CTC 設計的 FMEA 常見失效模式包括：</p>
+                    <table>
+                        <tr><th>失效模式</th><th>影響</th><th>緩解措施</th></tr>
+                        <tr><td>壓縮機故障</td><td>溫度上升，產品損壞</td><td>冗餘壓縮機 + 高溫警報</td></tr>
+                        <tr><td>門封損壞</td><td>冷氣外洩，溫度不均</td><td>定期門封檢查程序</td></tr>
+                        <tr><td>除霜控制失效</td><td>積冰 → 蒸發器效率下降</td><td>除霜週期監控 + 警報</td></tr>
+                        <tr><td>停電</td><td>所有電力系統失效</td><td>UPS + 備用電源</td></tr>
+                        <tr><td>感測器漂移</td><td>錯誤的控制回應</td><td>定期校正計畫</td></tr>
+                    </table>
+                    <p>FMEA 識別的關鍵功能，必須在試運行時進行測試。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>一台步入式冷藏室計畫安裝在廚房旁邊（鄰近熱源）。在設計審查中，試運行團隊應提出哪些具體問題？</li>
+                        <li>設計審查發現 P&amp;ID 上缺少壓力安全閥的識別號。這個發現應如何記錄和追蹤？</li>
+                        <li>FMEA 評估後，壓縮機故障被列為高風險。如果決定用「程序控制」（定期巡檢）作為緩解措施而非增設備援，這在 GMP 合規上是否可接受？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 8: INSTALLATION PHASE (5.4)
+     ============================================================ -->
+<div class="block" id="block-install-phase">
+    <div class="block-header">
+        <div class="block-num">5.4</div>
+        <div>
+            <h2>Commissioning During Installation / 安裝階段試運行活動</h2>
+            <p>Physical inspection, safety checks, setting to work, functional testing, red-line drawings, FAT/SAT</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.23–26)</div>
+
+                <h3>5.4 Commissioning Activities during the Installation Phase</h3>
+                <p>Commissioning activities may be divided into four broad categories:</p>
+                <ol>
+                    <li><strong>Inspection of the physical installation</strong> — field verification of installation drawings and documentation/test verification (e.g., pipework pressure and evacuation tests) to ensure compliance with design specifications</li>
+                    <li><strong>Pre-operational safety checks</strong></li>
+                    <li><strong>Setting to Work</strong> — setting a static system into motion ("shake down") and regulation and adjustment</li>
+                    <li><strong>Functional testing</strong> — regulation, adjustment, and functional testing may be iterative activities within fine tuning of the system</li>
+                </ol>
+
+                <h3>5.4.1 Inspection of the Physical Installation</h3>
+                <p>The Commissioning Team scope should include confirmation that:</p>
+                <ul>
+                    <li>The equipment and materials are checked to ensure compliance with design data sheet and specifications</li>
+                    <li>Installation has been completed in accordance with the design specifications and manufacturer instructions</li>
+                    <li>As-built documentation is available and correct</li>
+                </ul>
+                <p>Usually, 100% of the installation is verified (packaged units such as the compressor would be considered as a single system component).</p>
+                <p>It is usually a duty of the Commissioning Team to maintain a <strong>"red line"</strong> copy of the construction record documents. Comments and changes should be marked on the document following a defined procedure, to be turned over to the responsible party for updating the record documents to be provided to the System Owner.</p>
+                <p>Some of these activities may be performed at the vendor's factory and documented within specific <strong>Factory Acceptance Test (FAT)</strong> protocols/reports. Completion of this stage should verify that the installation meets specifications.</p>
+
+                <h3>5.4.2 Pre-operational Safety Checks</h3>
+                <p>This phase is intended to eliminate as many risks as possible in regard to the safety of personnel during commissioning and also during operation. The "Lock Out/Tag Out" procedure can determine that utilities (chilled water/gas/steam and electrical power) are provided to the system once the following are available and documented:</p>
+                <ul>
+                    <li>Conformity of electrical system and correct settings (e.g., overloads/fuse ratings)</li>
+                    <li>Evidence of pressure test of utilities lines</li>
+                    <li>Presence of pressure/temperature safety release devices (with right settings)</li>
+                </ul>
+
+                <h3>5.4.3 Setting to Work</h3>
+                <p>This is the initial startup and tuning of the system. This may include:</p>
+                <ul>
+                    <li>Energizing the system</li>
+                    <li>Filling with fluids</li>
+                    <li>Check motor drives (mechanically, electrically) and direction of rotation checks</li>
+                    <li>Internal layout of the Chamber verification and as-built dimension measurements</li>
+                    <li>Chamber and doors tightness verification</li>
+                    <li>Input/Output (I/O) check of the control system</li>
+                    <li>Alarms check</li>
+                    <li>Calibration of the instruments</li>
+                    <li>Balancing and fine tuning</li>
+                </ul>
+
+                <h3>5.4.4 Functional Testing</h3>
+                <p>Checks performed in previous phases should have been executed successfully as a prerequisite to functional tests. The system should be tested to confirm that the design performance is achieved within the acceptance ranges specified in all working modes.</p>
+                <p>Where feasible, the worst case conditions for the surrounding environment should be simulated during testing. Where the area being tested has duty/standby conditioning units, these should both be tested to ensure they will perform adequately. Studies of trends of the transition phase between the stop of the main system and the full operation of the standby system should be included in testing.</p>
+                <p>The operation and influence of the surrounding environment on defrosting systems should be verified and documented during the Commissioning and Qualification Phase.</p>
+
+                <h3>5.4.5 Engineering Change Management</h3>
+                <p>During Design — cumulative changes should not influence the ability of the design to meet user requirements. During Construction and Commissioning — changes proposed should be agreed with by the engineer of record. If a test fails and can be repeated after adjustments, it is acceptable to annotate the test sheet with the adjustments made and repeat the test; where changes are required, an engineering change control should be used to gain approval prior to execution and repeating the tests.</p>
+                <p>Once Qualification is complete, change should be managed through the site GMP change control system.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>安裝階段四大類試運行活動速覽</h4>
+                    <table>
+                        <tr><th>#</th><th>活動類別</th><th>核心目的</th><th>典型輸出</th></tr>
+                        <tr><td>1</td><td>實體安裝檢查</td><td>符合設計規格</td><td>安裝核查清單、紅線圖</td></tr>
+                        <tr><td>2</td><td>操作前安全檢查</td><td>人員安全</td><td>LOTO 記錄、壓力測試報告</td></tr>
+                        <tr><td>3</td><td>啟動調校</td><td>系統正常運作</td><td>調校記錄、I/O 核查表</td></tr>
+                        <tr><td>4</td><td>功能測試</td><td>設計性能達標</td><td>功能測試報告、最差案例記錄</td></tr>
+                    </table>
+                </div>
+
+                <div class="concept-box note-box">
+                    <h4>「紅線圖」(Red-Line Drawings) 詳解</h4>
+                    <p>紅線圖是施工期間所有設計變更的<strong>即時文件記錄</strong>。名稱來自傳統上用紅筆在藍圖上標注變更的做法。其重要性在於：</p>
+                    <ul>
+                        <li>記錄「as-built」狀態：實際安裝如何不同於設計圖</li>
+                        <li>任何未記錄在紅線圖的變更，在稽查中都是違規（未授權變更）</li>
+                        <li>紅線圖由試運行團隊即時維護，不是事後補寫</li>
+                        <li>完成後需正式轉為更新版本的工程圖，不能永遠停留在「紅線」狀態</li>
+                    </ul>
+                    <div class="quote-box" style="margin-top:0.75rem;">
+                        「如果它不在紅線圖上，它等於沒發生。如果它發生了但不在紅線圖上，它就是未經授權的變更。」
+                    </div>
+                </div>
+
+                <!-- FAT/SAT Checklist -->
+                <div class="concept-box application-box">
+                    <h4>FAT / SAT 核查清單 — CTC 適用</h4>
+                    <table>
+                        <tr><th>項目</th><th>FAT（廠商工廠）</th><th>SAT（現場）</th></tr>
+                        <tr><td>設備型號/序號核查</td><td>✓</td><td>✓</td></tr>
+                        <tr><td>材料/組件符合 URS</td><td>✓</td><td>—</td></tr>
+                        <tr><td>電氣/機械完整性</td><td>✓</td><td>✓（現場重新確認）</td></tr>
+                        <tr><td>控制系統 I/O 測試</td><td>✓</td><td>✓（現場接線確認）</td></tr>
+                        <tr><td>警報功能測試</td><td>✓</td><td>✓</td></tr>
+                        <tr><td>溫度達到設定點</td><td>✓（模擬環境）</td><td>✓（實際環境）</td></tr>
+                        <tr><td>門封氣密測試</td><td>✓</td><td>✓（安裝後重測）</td></tr>
+                        <tr><td>安裝符合設計圖</td><td>—</td><td>✓</td></tr>
+                        <tr><td>公用設施連接確認</td><td>—</td><td>✓</td></tr>
+                        <tr><td>紅線圖更新</td><td>—</td><td>✓</td></tr>
+                        <tr><td>儀器校正記錄</td><td>✓（初始校正）</td><td>✓（現場重新校正）</td></tr>
+                        <tr><td>備援系統切換測試</td><td>—</td><td>✓（如適用）</td></tr>
+                    </table>
+                </div>
+
+                <div class="concept-box key-point-box">
+                    <h4>工程變更管理：試運行期間的實務操作</h4>
+                    <p>試運行期間測試失敗是正常的 — 但處理方式決定文件的可接受性：</p>
+                    <table>
+                        <tr><th>情況</th><th>允許的處理方式</th><th>不可接受的做法</th></tr>
+                        <tr><td>輕微調整後重測</td><td>在測試表上記錄調整內容，重新執行測試</td><td>塗改原始數據，只留最終通過的記錄</td></tr>
+                        <tr><td>需要設計變更</td><td>提出工程變更單（ECR），批准後修改再重測</td><td>直接修改後重測，事後補填文件</td></tr>
+                        <tr><td>確認完成後的變更</td><td>走正式 GMP 變更管控流程</td><td>以「試運行調整」之名繞過 GMP 變更管控</td></tr>
+                    </table>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>FAT 在廠商工廠中完成，但設備運輸到現場後發現壓縮機有輕微損傷。哪些 FAT 測試需要在現場 SAT 中重新執行？判斷標準是什麼？</li>
+                        <li>試運行期間調校（Balancing and fine tuning）發現溫度均一性不符合設計規格。如果技術員直接調整 PLC 設定後重測通過，但沒有走工程變更流程，後續 IQ 審查時會面臨什麼問題？</li>
+                        <li>Lock Out/Tag Out (LOTO) 程序主要針對人員安全。但若 LOTO 記錄不完整，這對 GMP 合規有何影響（提示：想想設備使用狀態記錄）？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 9: HANDOVER & SAFETY (5.5 / 5.6)
+     ============================================================ -->
+<div class="block" id="block-handover">
+    <div class="block-header">
+        <div class="block-num">5.5–5.6</div>
+        <div>
+            <h2>Handover, System Manual &amp; Safety / 移交、系統手冊與安全</h2>
+            <p>Punch list management, handover certificate, job safety analysis</p>
+        </div>
+    </div>
+    <div class="block-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (ISPE 2016, pp.26–27)</div>
+
+                <h3>5.5 Handover, the System Manual, and Training</h3>
+                <p>Handover usually represents turnover of the system to the user, with handover of operation and maintenance. Commissioning and Qualification activities are usually completed. There should be a documented record confirming that the functionality and operation of the system is considered acceptable and Commissioning can be considered complete. This may be the Commissioning or Qualification Summary Report, or a separate handover certificate, depending on site practices.</p>
+                <p>A <strong>punch list (snag list)</strong> is typically used to manage completion of the system to meet the specifications. Major items on this list would prohibit handover, other items that can be resolved following handover are generally accepted. Typical categories used for a punch list include:</p>
+                <ol>
+                    <li>Items that affect performance — to be addressed prior to handover</li>
+                    <li>Items that affect safe operation of the equipment — to be addressed prior to handover</li>
+                    <li>Items that block next activities/verifications — to be addressed prior to handover</li>
+                    <li>Minor items that do not impact operation — to be addressed after handover</li>
+                    <li>Desirable changes/improvements — to be addressed after handover through the change control system</li>
+                </ol>
+                <p>Following handover, responsibility for operation and maintenance of the system should be transferred to End Users and the maintenance team. Appropriate operation and maintenance procedures should be established.</p>
+
+                <h3>5.6 Safety</h3>
+                <p>A job safety analysis covering all the phases of commissioning should be prepared by the personnel who will execute the site activities. The analysis should describe the potential risks, their probability, and should identify protection devices. Operators or technical personnel should be informed about the outcome of this analysis when receiving permission to execute commissioning activities. When judged appropriate, the testing area or room should have signs informing personnel of risks or forbidding access.</p>
+            </div>
+
+            <div class="right-column">
+                <div class="column-header col-zh">解析與 CDMO 情境應用</div>
+
+                <div class="concept-box term-box">
+                    <h4>Punch List（待辦清單）的 GMP 實務意義</h4>
+                    <p>Punch list 是試運行移交的關鍵工具，但其分類直接決定移交是否可以進行：</p>
+                    <table>
+                        <tr><th>類別</th><th>移交前必須完成？</th><th>CDMO 常見例子</th></tr>
+                        <tr><td>1. 影響性能</td><td>是</td><td>溫度均一性未達規格</td></tr>
+                        <tr><td>2. 影響安全操作</td><td>是</td><td>警報系統未正常運作</td></tr>
+                        <tr><td>3. 阻擋後續驗證</td><td>是</td><td>儀器未完成校正</td></tr>
+                        <tr><td>4. 不影響操作的輕微項</td><td>否</td><td>標籤位置輕微偏移</td></tr>
+                        <tr><td>5. 期望的改善</td><td>否（走變更管控）</td><td>增加溫度感測器數量</td></tr>
+                    </table>
+                    <p style="font-size:0.85rem; color:#555;">稽查員常關注：第 1-3 類項目是否在移交前確實完成關閉？若移交時仍有 open items 且屬 1-3 類，這是嚴重缺失。</p>
+                </div>
+
+                <div class="concept-box application-box">
+                    <h4>移交後的責任轉移</h4>
+                    <p>移交（Handover）是一個正式的責任轉移事件：</p>
+                    <ul>
+                        <li><strong>移交前</strong>：設施/工程部門對設備負責，GMP 尚未適用</li>
+                        <li><strong>移交後</strong>：生產/QA 部門接管，GMP 完全適用</li>
+                        <li>操作 SOP、維護程序需在移交前建立並培訓相關人員</li>
+                        <li>移交後的任何變更必須走正式 GMP 變更管控，不能再以「試運行調整」處理</li>
+                    </ul>
+                </div>
+
+                <!-- Change Control Trigger Matrix -->
+                <div class="concept-box note-box">
+                    <h4>變更觸發矩陣：何時需要再試運行或再確認？</h4>
+                    <table>
+                        <tr><th>變更類型</th><th>需要再試運行？</th><th>需要再確認？</th><th>說明</th></tr>
+                        <tr><td>更換同型號壓縮機</td><td>可能需要</td><td>可能需要（OQ）</td><td>依廠商建議和風險評估</td></tr>
+                        <tr><td>更換不同型號壓縮機</td><td>需要</td><td>需要（OQ + PQ）</td><td>性能特性改變</td></tr>
+                        <tr><td>設定點調整（在確認範圍內）</td><td>否</td><td>否（記錄即可）</td><td>變更管控 + 主動監控</td></tr>
+                        <tr><td>設定點超出確認範圍</td><td>否</td><td>需要（重新 OQ/PQ）</td><td>需新的 mapping 支持</td></tr>
+                        <tr><td>增加/移動貨架</td><td>否</td><td>需要（重新 PQ）</td><td>空氣流場改變</td></tr>
+                        <tr><td>移動設備至不同位置</td><td>需要</td><td>需要（完整重確認）</td><td>環境條件完全改變</td></tr>
+                        <tr><td>控制系統軟體升級</td><td>否</td><td>需要（OQ 相關部分）</td><td>CSV 評估後決定範疇</td></tr>
+                        <tr><td>建築改建影響鄰近環境</td><td>可能需要</td><td>可能需要</td><td>需評估環境條件變化影響</td></tr>
+                        <tr><td>冷媒更換（環保替代品）</td><td>需要</td><td>需要（OQ + PQ）</td><td>熱力學特性改變</td></tr>
+                    </table>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <ol>
+                        <li>試運行的 Punch list 中有 3 個第 4 類（輕微不影響操作）項目仍 open，確認工作是否可以開始？請說明理由和需要的文件記錄。</li>
+                        <li>一台已完成確認的 -80°C 冷凍庫，因夏季空調故障導致設備間溫度升高 8°C 達 4 小時，之後恢復正常。需要執行哪些評估和記錄？是否需要重新確認？</li>
+                        <li>客戶要求在已確認的冷藏室中增加一層貨架以提高儲存量。依據變更觸發矩陣，應走什麼程序？需要的最低限度重新確認是什麼？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     BLOCK 10: COMMISSIONING vs IQ/OQ/PQ COMPARISON TABLE
+     ============================================================ -->
+<div class="block" id="block-comm-vs-qual">
+    <div class="block-header">
+        <div class="block-num">Ref</div>
+        <div>
+            <h2>Commissioning vs. IQ / OQ / PQ — Full Comparison</h2>
+            <p>試運行 vs. 安裝確認 / 操作確認 / 性能確認 全面比較</p>
+        </div>
+    </div>
+    <div class="block-body">
+
+        <div class="key-message">
+            "Commissioning is the engineering proof; qualification is the regulatory proof — both are necessary, they are not redundant."
+            <br><span style="font-size:0.9rem; font-weight:400; opacity:0.9; margin-top:0.4rem; display:block;">試運行是工程層面的驗證；確認是法規層面的驗證 — 兩者都是必要的，互不取代。</span>
+        </div>
+
+        <p style="margin-bottom:1rem; font-size:0.93rem;">The following table compares commissioning with the three stages of formal qualification. Understanding these differences — and where they overlap — is essential for designing an efficient, compliant qualification strategy for CTCs.</p>
+        <p style="margin-bottom:1.5rem; font-size:0.93rem;">下表比較試運行與三個正式確認階段。理解兩者的差異與重疊，是設計高效合規的 CTC 確認策略的基礎。</p>
+
+        <div style="overflow-x:auto;">
+        <table style="font-size:0.87rem;">
+            <thead>
+                <tr>
+                    <th style="width:15%">面向 / Aspect</th>
+                    <th style="width:21%">試運行<br>Commissioning</th>
+                    <th style="width:21%">安裝確認 IQ<br>Installation Qualification</th>
+                    <th style="width:21%">操作確認 OQ<br>Operational Qualification</th>
+                    <th style="width:22%">性能確認 PQ<br>Performance Qualification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>主要目的</strong></td>
+                    <td>確認系統安全、功能正常、符合設計要求，完成移交</td>
+                    <td>確認設備安裝正確、符合設計規格和廠商建議</td>
+                    <td>確認設備在設計操作範圍內運作符合預設標準</td>
+                    <td>確認系統在實際生產條件下持續達到可接受標準</td>
+                </tr>
+                <tr>
+                    <td><strong>法規驅動？</strong></td>
+                    <td><span class="badge badge-yellow">工程實踐</span><br>非法規強制，但為 GMP 最佳實踐</td>
+                    <td><span class="badge badge-red">法規要求</span><br>FDA/EMA/PIC/S 強制要求</td>
+                    <td><span class="badge badge-red">法規要求</span></td>
+                    <td><span class="badge badge-red">法規要求</span></td>
+                </tr>
+                <tr>
+                    <td><strong>執行時機</strong></td>
+                    <td>安裝期間和完成後；可先於 IQ</td>
+                    <td>安裝完成後；試運行之後或同期</td>
+                    <td>IQ 完成並批准後</td>
+                    <td>OQ 完成並批准後</td>
+                </tr>
+                <tr>
+                    <td><strong>主要活動</strong></td>
+                    <td>
+                        <ul style="margin-left:1rem; font-size:0.85rem;">
+                            <li>設計審查</li>
+                            <li>FAT / SAT</li>
+                            <li>實體安裝核查</li>
+                            <li>安全檢查（LOTO）</li>
+                            <li>啟動調校</li>
+                            <li>功能測試</li>
+                            <li>紅線圖更新</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin-left:1rem; font-size:0.85rem;">
+                            <li>設備識別（型號、序號）</li>
+                            <li>安裝核查（螺栓、管路、接線）</li>
+                            <li>公用設施連接確認</li>
+                            <li>材料符合性（SDS, CoC）</li>
+                            <li>校正記錄確認</li>
+                            <li>SOP 和維護計畫存在確認</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin-left:1rem; font-size:0.85rem;">
+                            <li>警報測試（高/低溫警報）</li>
+                            <li>控制系統功能測試</li>
+                            <li>溫度均一性測試（空載）</li>
+                            <li>溫度恢復測試（開門後）</li>
+                            <li>除霜週期影響測試</li>
+                            <li>備援切換測試</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="margin-left:1rem; font-size:0.85rem;">
+                            <li>滿載條件下的溫度 mapping</li>
+                            <li>最差案例裝載測試</li>
+                            <li>長期溫度均一性驗證</li>
+                            <li>實際使用條件下的性能確認</li>
+                            <li>季節性（夏/冬）測試（如適用）</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>主要文件</strong></td>
+                    <td>試運行計畫、FAT/SAT 報告、紅線圖、Punch list、移交證書</td>
+                    <td>IQ 協議、IQ 報告、校正證書（附 NIST 追溯）、偏差記錄</td>
+                    <td>OQ 協議、OQ 報告、警報測試記錄、偏差記錄</td>
+                    <td>PQ 協議、PQ 報告、溫度 mapping 數據、統計分析、偏差記錄</td>
+                </tr>
+                <tr>
+                    <td><strong>驗收標準來源</strong></td>
+                    <td>URS + 設計規格 + 廠商規格</td>
+                    <td>URS + 設計規格 + 廠商建議</td>
+                    <td>URS + 設計規格（通常更嚴格）</td>
+                    <td>URS + 法規要求（最嚴格）</td>
+                </tr>
+                <tr>
+                    <td><strong>主要負責人</strong></td>
+                    <td>工程/設施 + Commissioning Lead</td>
+                    <td>驗證部門（QA 監督）</td>
+                    <td>驗證部門（QA 監督）</td>
+                    <td>驗證部門（QA 批准）</td>
+                </tr>
+                <tr>
+                    <td><strong>QA 介入程度</strong></td>
+                    <td>審查文件標準；不主導執行</td>
+                    <td>批准協議；見證關鍵測試</td>
+                    <td>批准協議；審查所有結果</td>
+                    <td>批准協議和最終報告；決定放行</td>
+                </tr>
+                <tr>
+                    <td><strong>失敗後果</strong></td>
+                    <td>工程調整後重試；記錄偏差</td>
+                    <td>調查偏差；需 CAPA 後重新執行</td>
+                    <td>調查偏差；需 CAPA；可能需修改 OQ</td>
+                    <td>調查偏差；產品可能受影響；需 CAPA</td>
+                </tr>
+                <tr>
+                    <td><strong>是否可互相借用結果？</strong></td>
+                    <td colspan="4" style="text-align:center; background:#f0fdf4;">是的 — 風險基礎方式下，試運行文件（FAT/SAT 數據）可作為 IQ/OQ 的支持證據，但必須達到 GMP 可接受的文件標準（ALCOA+）。</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="two-column" style="margin-top:1.5rem;">
+            <div class="concept-box term-box" style="margin-bottom:0;">
+                <h4>校正追溯鏈說明 — Calibration Traceability Chain</h4>
+                <p>Mapping 前的感測器校正必須建立完整的<strong>計量追溯鏈</strong>，確保測量結果可追溯至國家/國際標準：</p>
+                <div style="text-align:center; margin:0.75rem 0;">
+                    <div style="display:inline-block; background:#dcfce7; border:2px solid #16a34a; border-radius:6px; padding:0.4rem 1rem; font-size:0.85rem; font-weight:600; color:#14532d;">NIST / SI 國際標準</div>
+                    <div style="color:#555; font-size:1.2rem; margin:0.25rem 0;">↓</div>
+                    <div style="display:inline-block; background:#e3f2fd; border:2px solid #1976d2; border-radius:6px; padding:0.4rem 1rem; font-size:0.85rem; font-weight:600; color:#1565c0;">認可校正實驗室參考標準（ISO/IEC 17025）</div>
+                    <div style="color:#555; font-size:1.2rem; margin:0.25rem 0;">↓</div>
+                    <div style="display:inline-block; background:#fff3e0; border:2px solid #ff9800; border-radius:6px; padding:0.4rem 1rem; font-size:0.85rem; font-weight:600; color:#c65102;">廠內工作標準（每年校正）</div>
+                    <div style="color:#555; font-size:1.2rem; margin:0.25rem 0;">↓</div>
+                    <div style="display:inline-block; background:#f3e5f5; border:2px solid #9c27b0; border-radius:6px; padding:0.4rem 1rem; font-size:0.85rem; font-weight:600; color:#4a235a;">Mapping 用溫度感測器（每次使用前校正）</div>
+                    <div style="color:#555; font-size:1.2rem; margin:0.25rem 0;">↓</div>
+                    <div style="display:inline-block; background:#fafafa; border:2px solid #666; border-radius:6px; padding:0.4rem 1rem; font-size:0.85rem; font-weight:600; color:#333;">設備內建控制探針 / 獨立監控感測器</div>
+                </div>
+                <p style="font-size:0.85rem; color:#555;">每個環節都必須有有效的校正證書，記錄：校正日期、有效期、不確定度、校正機構認可資格。校正記錄必須在 mapping 開始前完成，並包含在 mapping 報告的附件中。</p>
+            </div>
+
+            <div class="concept-box analogy-box" style="margin-bottom:0;">
+                <h4>比喻：試運行與確認的完美比喻</h4>
+                <p><strong>試運行 = 廚師烹飪時的試味</strong><br>主廚烹飪過程中不斷嚐味、調整鹽糖、確認火候。這是廚藝的工程驗證——確保菜可以端出去。</p>
+                <p><strong>確認 = 餐廳衛生稽查</strong><br>政府衛生人員按照法規標準進行稽查，確認廚房設施、溫度記錄、衛生標準都符合要求。這不是在重複廚師的工作——它是獨立的法規驗證，給公眾（和監管機構）信心。</p>
+                <p>廚師的試味（試運行）讓衛生稽查（確認）更容易通過，但兩者不能互相取代：試味通過不等於衛生稽查過關，衛生稽查也不能替代廚師的烹飪技術。</p>
+                <div class="quote-box" style="margin-top:0.75rem; font-style:normal;">
+                    <strong>核心訊息：</strong>完善的試運行讓確認工作更順暢、更有效率，但不能被確認所取代，也不能替代確認。兩者在 GMP 生命週期中各自有其不可取代的位置。
+                </div>
+            </div>
+        </div>
+
+        <div class="practice-box" style="margin-top:1.5rem;">
+            <h4>綜合練習：整合思考題</h4>
+            <ol>
+                <li>一個新建的 CDMO 設施計畫安裝 3 台 -80°C 冷凍庫、2 台步入式冷藏室和 4 台穩定性腔體。請描述如何設計一個整合的試運行與確認策略，以最大化效率、最小化重複工作，同時符合 GMP 要求。</li>
+                <li>客戶審計員詢問：「您的試運行文件和 IQ 文件有什麼不同？可以給我看紅線圖嗎？」請準備一個 2 分鐘的口頭解釋，說明兩者的角色和關係。</li>
+                <li>假設您是一個新設 CDMO 的 QA 主管，試運行負責人（工程部門）告訴您：「試運行都做完了，我們可以直接進行 OQ，跳過 IQ 嗎？因為試運行報告裡已經有所有的安裝核查數據。」您如何回應？需要什麼條件才能接受這個提議？</li>
+                <li>Mapping 前的感測器校正需要 NIST 追溯性。您的廠內有一台未經 ISO/IEC 17025 認可的溫度校正器。這台設備能否用於 mapping 前的校正？如果不能，應如何解決？</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p style="font-weight:600; font-size:1rem; margin-bottom:0.5rem;">ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</p>
+    <p>Section 01 — Chapters 4–5: CTC Types &amp; Commissioning | 受控溫度腔體類型與試運行</p>
+    <p style="opacity:0.7; font-size:0.85rem; margin-top:0.5rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; For educational use only &nbsp;|&nbsp; &copy; ISPE 2016, original content</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Back to top visibility
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>

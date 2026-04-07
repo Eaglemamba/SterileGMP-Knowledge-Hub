@@ -1,0 +1,878 @@
+# USP General Chapter 〈671〉: Containers—Performance Testing
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Dec-2020
+Document Type:
+General Chapter
+DocId:
+GUID-99FB391E-ADC7-4247-B254-094C4DC7486C_3_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M99430_03_01
+DOI Ref:
+j957d
+© 2025 USPC
+Do not distribute
+〈671〉 CONTAINERS—PERFORMANCE TESTING
+Change to read:
+INTRODUCTION
+MOISTURE VAPOR TRANSMISSION FOR ▲PLASTIC▲ (USP 1-Dec-2020) PACKAGING SYSTEMS
+Introduction
+Desiccant Methods for Packaging Systems ▲
+▲ (USP 1-Dec-2020)
+▲Water Method for Packaging Systems▲ (USP 1-Dec-2020)
+CLASSIFICATION SYSTEM FOR PLASTIC PACKAGING SYSTEMS
+Introduction
+Classification Based on Desiccant Method ▲for Solid Oral Dosage Forms▲ (USP 1-Dec-2020)
+Classification Based on Water Method ▲for Liquid Oral Dosage Forms▲ (USP 1-Dec-2020)
+SPECTRAL TRANSMISSION ▲FOR LIGHT-RESISTANT PACKAGING COMPONENTS OR SYSTEMS▲ (USP 1-Dec-2020)
+Apparatus
+Procedure
+Limits
+▲▲ (USP 1-Dec-2020)
+Change to read:
+INTRODUCTION
+It is the purpose of this chapter to provide standards for the functional proper ties of packaging systems used for solid oral dosage forms
+(SODFs) and liquid oral dosage forms (LODFs). The tests in this chapter may be applied to ▲
+packaging systems for▲ (USP 1-Dec-2020)
+other
+dosage forms with the appropriate justi«cation. ▲
+These▲ (USP 1-Dec-2020)
+tests ▲
+▲ (USP 1-Dec-2020)
+determine the moisture vapor
+transmission rate (MVTR) i.e., water vapor permeation rate, for plastic packaging systems for manufacturers, packagers, and repackagers
+(Table 1). This chapter also includes a classi«cation system that allows pharmacists and institutional repackagers to select appropriate
+containers to repackage SODFs and LODFs. De«nitions that apply to this classi«cation system are provided in Packaging and Storage
+Requirements 〈659〉.
+▲
+Guidance on the application of these methods to determine the MVTR and the use of MVTR data to suppor t the demonstration of the
+equivalence of plastic packaging systems when repackaging SODFs is contained in The Application of Moisture Vapor Transmission Rates for
+Solid Oral Dosage Forms in Plastic Packaging Systems 〈1671〉. De«nitions of a blister, blister card, barrier blister types, moisture vapor
+transmission rate, and test specimen are contained in 〈1671〉, Glossary.
+The chapter also contains a method for the determination of spectral transmission of plastic containers.▲ (USP 1-Dec-2020)
+T
+able 1. Moisture Vapor Transmission Test Methods for ▲
+Plastic▲ (USP 1-Dec-2020)
+Packaging Systems
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 2 ===
+Section
+Moisture Vapor
+Transmission for
+▲
+Plastic▲ (USP 1-Dec-2020)
+Packaging Systems
+Classi«cation System for ▲
+Plastic▲ (USP 1-Dec-2020)
+Packaging Systems
+Subsection
+▲
+Desiccant Method
+(Methods 1, 2, and 3)
+Water Method (Method
+4)▲ (USP 1-Dec-2020)
+Classi«cation Based on Desiccant Method ▲
+for
+SODF (Methods 5, 6, and 7)▲ (USP 1-Dec-2020)
+Classi«cation Based on
+Water Method ▲
+for
+LODF (Method 8)▲ (USP
+1-Dec-2020)
+Application
+Multiple-unit containers
+▲
+▲ (USP 1-Dec-2020)
+and
+single-unit or unit-dose
+containers
+Multiple-unit containers
+▲
+▲ (USP 1-Dec-2020)
+Single-unit and unit-dose
+containers ▲
+▲ (USP 1-Dec-
+2020)
+Multiple- ▲
+▲ (USP 1-Dec-
+2020)
+unit containers
+Users
+Manufacturers,
+▲
+Packagers
+Repackagers▲ (USP 1-
+Dec-2020)
+Manufacturers
+Packagers
+Repackagers
+Pharmacies
+Manufacturers
+Packagers
+Repackagers
+Pharmacies
+Manufacturers
+Packagers
+Repackagers
+Pharmacies
+Change to read:
+MOISTURE VAPOR TRANSMISSION FOR ▲
+PLASTIC▲ (USP 1-DEC-2020)
+P
+ACKAGING SYSTEMS
+Introduction
+The purpose of the moisture vapor transmission test method, which is based upon American Society for Testing and Materials (ASTM)
+method D7709,
+ is to obtain reliable and speci«c MVTRs that can be used to distinguish barrier performance of packaging systems used for
+regulated ar ticles by manufacturers, packagers, and repackagers. This test method will establish a value that represents the MVTR of the
+container–closure system being evaluated. There may be additional packaging systems where the test methods in this section could be
+applied; however, any deviation should be described. If other methods are used to measure MVTR, these methods should be described in
+su­cient detail to justify their use.
+Desiccant Methods for Packaging Systems ▲
+▲ (USP 1-Dec-2020)
+This section describes moisture vapor transmission test methods for multiple-unit containers (see Method 1), high-barrier ▲
+and ultra-high
+barrier▲ (USP 1-Dec-2020)
+single-unit and unit-dose containers (see Method 2), and low-barrier single-unit and unit-dose containers (see Method
+3). ▲▲ (USP 1-Dec-2020)
+These methods include the following:
+A speci«c moisture vapor transmission value for a container rather than a classi«cation
+Su­cient sensitivity and precision to allow differentiation among moisture barrier performance for containers
+Conditions used for testing packaging systems that are the same as those used for accelerated stability testing of the primary
+packaging of regulated ar ticles [typically 40°/75% relative humidity (RH)]
+equipment
+The following equipment should be used to complete the test method:
+A balance for weighing the test specimens that has su­cient capacity to weigh the test specimens throughout the period of the test.
+▲
+▲ (USP 1-Dec-2020)
+The balance must have sensitivity adequate to measure small differences in weight from one time point to the
+next. The weighing uncer tainty must be less than 5% of the weight gain from one time point to the next. The weighing uncer tainty is
+typically three times the balance resolution/sensitivity. As an example, a balance with a resolution of 0.1 mg is acceptable for
+packaging systems whose weight gain per time interval is more than or equal to 6 mg [(0.1 × 3)/5%], which is 60 times the balance
+sensitivity.
+A chamber capable of maintaining 40 ± 2° and 75 ± 5% RH. Other chamber conditions can be used, ▲
+but should be noted in the
+repor t,▲ (USP 1-Dec-2020)
+as long as the balance sensitivity is adequate to measure small weight differences from one time point to the
+next time point.
+desiccant
+Method 1:
+The desiccant is anhydrous calcium chloride in granular form. Other desiccants, such as a molecular sieve or silica gel, may be
+suitable. If anhydrous calcium chloride is used, pre-dry at 215 ± 5° for 7¼±¼ h to ensure that any hexahydrate present is fully conver ted to
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 3 ===
+the anhydrate. Cool the desiccant in a desiccator for at least 2 h before use. [Note—It has been shown
+  that anhydrous calcium chloride
+may contain calcium hexahydrate, which loses water only when the temperature reaches 200°.]
+Methods 2 and 3: ▲
+USP Desiccant, Small RS; USP Desiccant, Medium RS; and USP Desiccant, Large RS. The Reference Standards for
+desiccants are molecular sieves molded in a form to «t the size and shape of the blister cavity used. These desiccants should be at or near
+their original values when stored in their original and unopened containers, and thus drying should not be required. Prior to use, if the
+average weight of 10 tablets exceeds the weight speci«ed on the USP cer ti«cate by more than 3%, drying shall be performed. Dry at 250 ± 5°
+for 1–2 h and cool in a desiccator for at least 2 h before use. Store desiccant in a tightly closed container in the driest conditions possible
+after being removed from original container.▲ (USP 1-Dec-2020)
+procedure
+Method 1:
+Use 15 multiple-unit containers and 15 closures representative of the system to be tested. Prepare the test specimens by «lling
+each multiple-unit container to two-thirds ▲
+of its nominal volume▲ (USP 1-Dec-2020)
+with desiccant and then, for screw-type closures,
+applying the closure using the torque that is within the range of tightness speci«ed in Table 2. For other closure types, apply the closure
+according to the intended method. ▲
+If the intended use of the container shall have an impervious seal, then▲ (USP 1-Dec-2020)
+ensure that a
+proper seal has been made with the intended membrane to the land area of the bottle ▲
+opening.▲ (USP 1-Dec-2020)
+Identify each multiple-unit
+container with indelible ink. Do not use a label. If there is a need to increase the precision of the method, the user can test the system
+without the closure as long as an impervious seal remains on the container. If desired, weigh each multiple-unit container at ambient
+temperature and RH. Record this weight for time 0, but do not use it in the calculation of permeation. Place all containers in the test
+chamber (40°/75% RH) within 1 h of weighing. Weigh all multiple-unit containers at time intervals of 7 days ± 1 h. Weigh the multiple-unit
+containers at 7, 14, 21, 28, and 35 days to get ▲
+«ve▲ (USP 1-Dec-2020)
+steady-state data points. (The time interval from time 0 to day 7 is the
+period of equilibration.) Prior to weighing at each time interval, equilibrate the containers for about 30 min at the weighing temperature and
+RH. Limit the time out of the chamber to less than 2 h. Record the weights in an appropriate manner for later computation of the regression
+line.
+T
+able 2. T
+orque Applicable to Screw-Type Container
+Closure Diameter
+a
+(millimeters)
+Suggested Tightness Range with
+Manually Applied T
+orque
+b
+(inch-pounds)
+Suggested Tightness Range with
+Manually Applied T
+orque
+b
+(Newton-meters)
+0.56
+0.68
+0.90
+5–9
+0.56–1.02
+7–10
+0.79–1.13
+8–12
+0.90–1.36
+9–14
+1.02–1.58
+10–18
+1.13–2.03
+12–21
+1.36–2.37
+13–23
+1.47–2.60
+15–25
+1.69–2.82
+17–26
+1.92–2.94
+17–27
+1.92–3.05
+19–30
+2.15–3.39
+21–36
+2.37–4.07
+23–40
+2.60–4.52
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 4 ===
+Closure Diameter
+a
+(millimeters)
+Suggested Tightness Range with
+Manually Applied T
+orque
+b
+(inch-pounds)
+Suggested Tightness Range with
+Manually Applied T
+orque
+b
+(Newton-meters)
+25–43
+2.82–4.86
+26–45
+2.94–5.08
+28–50
+3.16–5.65
+32–65
+3.62–7.35
+40–65
+4.52–7.35
+40–70
+4.52–7.91
+45–70
+5.09–7.91
+45–70
+5.09–7.91
+55–95
+6.22–10.74
+60–95
+6.78–10.74
+a
+The torque designated for the next larger closure diameter is to be applied in testing containers having a closure diameter intermediate to
+the diameters listed.
+b
+A suitable apparatus is available from SecurePak, www.secure-pak.com. An MRA model of a spring torque tester with indicators on both
+the removal and application sides is available in the following ranges: 1) 0–25 inch-pounds, read in 1-inch-pound increments; 2) 0–50 inch-
+pounds, read in 2-inch-pound increments; and 3) 0–100 inch-pounds, read in 5-inch-pound increments.
+Method 2:
+Use 10 test units for this method. Provide a minimum of 10 blister cavities for each test unit. If the ▲
+blister▲ (USP 1-Dec-2020)
+card
+contains fewer than 10 cavities, bundle the cards to form a ▲
+▲ (USP 1-Dec-2020)
+test unit of at least 10 cavities. This is required to provide
+su­cient weight gain at each time interval. Fill with predried desiccant, and seal the blisters on equipment that is capable of correctly «lling
+and sealing the blister. The desiccant should «ll the cavity. The total weight of the desiccant must be su­cient to meet the quantity required
+to avoid par tial saturation of the Desiccant before completion of the test. Fill the blisters in a low-humidity atmosphere (as low as possible,
+but not greater than 50% RH). Do not expose the desiccants to room humidity for more than 30 min before sealing. Identify each test
+specimen with indelible ink; do not use a label. ▲▲ (USP 1-Dec-2020)
+It should be noted that bundling of the blisters during storage can impact
+air ¬ow and correspondingly increase data variability.
+Weigh each test unit at ambient temperature and RH. Record this weight for time 0. Place all test units in the test chamber (40°/75% RH)
+within 1 h of weighing. Weigh all test units at time intervals of 7 days ± 1 h. Weigh the test units at 7, 14, 21, 28, and 35 days to get «ve
+steady-state data points. (The time interval from time 0 to day 7 is the period of equilibration.) Prior to weighing at each time interval,
+equilibrate the containers for 30 ± 5 min at the controlled weighing temperature and RH. Limit the time out of the chamber to less than 2 h.
+Record the weights in an appropriate manner for later computation of the regression line.
+Ultra-high barrier blisters may not show the full measure of precision and sensitivity this method can provide. For ultra-high barrier
+blisters, test units should have more than 10 cavities, but NMT 30 cavities. Examples are foil–foil blisters or very small blisters formed from
+other materials. An alternative approach is to double or triple the length of weighing intervals to achieve at least a 6-mg weight gain per time
+interval by the test specimen.
+Method 3:
+Prepare the test units as directed in Method 2. Place all test units in the test chamber (40°/75% RH) within 1 h of weighing. Weigh
+the test units at the end of 2 days (48 ± 1 h). At this time, the difference in weight (the weight gain) is divided by the number of blister
+▲
+cavities▲ (USP 1-Dec-2020)
+and days (2) in each test unit and this is taken as the MVTR in mg/day/▲
+cavity.▲ (USP 1-Dec-2020)
+The number of
+blisters tested depends on the barrier characteristics of the material, the size of the blister, and the sensitivity of the balance used in the
+test. For this method, the requirement of «ve consecutive weighings is waived because the desiccant quickly becomes saturated when
+packed in a low-barrier package and stored at 40°/75% RH. [Note—For low-barrier single-unit and unit-dose containers, the weight gain after
+the second day displays a curvilinear pro«le typical of approaching saturation of the desiccant. To obtain «ve weighings within 2 days is not
+viable and is likely to increase variability. Methods 2 and 3 may require that the blister cards be bundled in multiples to achieve periodic
+weight gains of su­cient magnitude to use the balance sensitivity; when bundled, these cards or test specimens are called test units. The
+weight gain in each weighing period must be 20 times the sensitivity of the balance, and the balance sensitivity is three times the balance
+precision. In other words, the minimal weight gain per time interval should be at least 60 times the balance precision.]
+calculations
+Methods 1 and 2:
+Perform the regression analysis for each test unit (see Regression equation). Typically, the initial data point (at day 0) is
+not included in «tting the regression line. The slope of the regression line is the MVTR of each test unit. For Method 1, the slope is the MVTR
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 5 ===
+for the corresponding multiple-unit container. For Method 2, the MVTR of each blister cavity is calculated by dividing the slope by the
+number of cavities in each test unit.
+Method 3:
+Calculate the weight gain in mg/day/▲
+cavity▲ (USP 1-Dec-2020)
+from day 0 to day 2 using the 10 test units (see Calculations). The
+MVTR of each blister ▲
+cavity▲ (USP 1-Dec-2020)
+is calculated by dividing the weight gain by 2 (for 2 days) and the number of ▲
+blister
+cavities▲ (USP 1-Dec-2020)
+in each test unit.
+Regression equation:
+W = I + MT
+Calculations:
+Intercept (I) = W − MT
+W
+= measured weight (mg)
+I
+= regression line intercept (point where regression line intersects the ver tical axis)
+M
+= regression line slope
+T
+= time point
+N
+= number of data points (each point consists of a weight and a time)
+W
+= overall weight mean
+T
+= overall time point mean
+equals the sum of cross-products (for example, for each of the N data points, subtract the overall weight mean from the measured weight
+and the overall time point mean from the time point and multiply the two differences to get a cross-product, then sum all N cross-products).
+equals the sum of squared deviations (for example, for each of the N data points, subtract the overall time point mean from the time point
+and square the difference, then use the sum of all N squared differences).
+resul
+ts
+Method 1:
+Repor t the MVTR as the average value, in mg/day/container, and the standard deviation of the 15 slopes. Properly describe the
+container–closure system tested ▲
+(e.g., material, size, shape, and color).▲ (USP 1-Dec-2020)
+Method 2:
+Repor t the MVTR as the average value, in mg/day/cavity, and the standard deviation of the 10 test unit slopes. Properly describe
+the container–closure system tested ▲
+(e.g., material, size, shape, and color).▲ (USP 1-Dec-2020)
+Method 3:
+Repor t the MVTR as the average value from day 0 to day 2, in mg/day/▲
+cavity,▲ (USP 1-Dec-2020)
+and the standard deviation of the
+10 test unit slopes. Properly describe the container–closure system tested ▲
+(e.g., material, size, shape, and color).
+Water Method for Packaging Systems
+This section describes moisture vapor transmission test methods (see Method 4) for low-barrier, high-barrier, and ultra-high barrier single-
+unit and unit-dose containers.
+Method 4 includes the following:
+A speci«c moisture vapor transmission value for a packaging system rather than a classi«cation.
+Su­cient sensitivity and precision to allow differentiation among moisture barrier performance for plastic blister packaging systems.
+Inverse environmental conditions (40°/25% RH) from those that are used for the desiccant method and stability testing of the primary
+packaging of regulated ar ticles (40°/75% RH). These inverse conditions achieve the same pressure difference when water is used in
+place of desiccant.
+MVTR determination is based upon weight loss instead of weight gain.
+equipment
+The following equipment should be used to complete the test method:
+A humidity-controlled glove box capable of maintaining relative humidity at 25% ± 5%.
+A balance for weighing the test specimens that has su­cient capacity to weigh the test specimens throughout the period of the test.
+The balance must have sensitivity adequate to measure small differences in weight from one time point to the next. The weighing
+uncer tainty must be less than 5% of the weight gain from one time point to the next. The weighing uncer tainty is typically three times
+Slope (M) =
+[(
+−
+) (
+−
+)]/
+∑
+i=1
+N
+Wi
+W
+¯ ¯ ¯ ¯Ti
+T¯¯¯
+∑
+i=1
+N
+(
+−
+)
+Ti
+T¯¯¯
+[(
+−
+) (
+−
+)]
+∑
+i=1
+N
+Wi
+W
+¯ ¯ ¯ ¯Ti
+T¯¯¯
+∑
+i−1
+N
+(T −
+)
+T¯¯¯
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 6 ===
+the balance resolution/sensitivity. As an example, a balance with a resolution of 0.1 mg is acceptable for packaging systems whose
+weight gain per time interval is more than or equal to 6 mg [(0.1 × 3)/5%], which is 60 times the balance sensitivity.
+A chamber capable of maintaining 40 ± 2°/25% ± 5% RH.
+amount of water for test containers
+For blisters, approximately 10–100 mg of water per blister cavity (about 1–10 drops), depending upon expected MVTR, is adequate for all
+blister types at 40°/25% RH. As an example, consider the preparation of a low-barrier MVTR package, e.g., a polyvinyl chloride (PVC) water-
+«lled blister. The expected MVTR is about 1.5 mg water/(day × cavity) at 40° and a 75% RH vapor–pressure difference. The initial amount of
+water required to create 100% RH at 40° in this blister (approximately 0.5 cc volume) is 0.025 mg, on the basis of absolute humidity. For a
+typical MVTR study of a low-barrier blister, 7 days are allowed for equilibration, followed by a study period of 28 days for obtaining 3–5
+weight determinations. This is a total exposure time, or permeation time, of 35 days. According to the Water-based method equation, a
+minimum of 52.5 mg of water is needed.
+Water-based method equation:
+1.5 mg water/(day × cavity) × 35 days + 0.025 mg = 52.5 mg water/cavity
+The recommended amount of water for this blister system is about 100 mg per cavity. The water-based method equation can be used to
+determine the minimum amount of water for all blister types, and this amount should then be multiplied by a factor between 2 and 3 to
+achieve an excess.
+procedure
+Method 4:
+Use 10 test units for this method. Provide a minimum of 10 blister cavities for each test unit. If the blister card contains fewer
+than 10 cavities, bundle the cards to form a test unit of at least 10 cavities. This is required to provide su­cient weight loss at each time
+interval.
+Fill blister cavities with a su­cient quantity of water. Care should be taken to insure the cavities are not over«lled and that water does not
+end up on the seal area.
+Identify each test specimen with indelible ink; do not use a label. High-barrier plastic blister cards may be bundled to increase weight loss
+between weight determinations. Low-barrier plastic blister cards do not need to be bundled, regardless of the number of cavities per card.
+For bundled test units, it should be noted that bundling of the blisters during testing can impact air ¬ow and correspondingly increase data
+variability.
+Place test units in the humidity-controlled glove box at 25% RH for 60 min. Remove test units from the glove box and record initial weight
+to nearest 0.1 mg and time. Place all test units in the test chamber (40°/25% RH) and weigh at time intervals of 7 days ± 1 h. Weigh the test
+units at 7, 14, 21, 28, and 35 days to get «ve steady-state data points. Additional time points can be added to provide for laboratory
+operations and higher barrier blisters. At each time point, place the test units in the humidity-controlled glove box and allow to equilibrate for
+60 min, then weigh, and record the time. After weighing, samples are placed back into the test chamber. [Note—It is imperative that the
+weighing order of test units be consistent among all time point weight determinations.]
+Ultra-high barrier blisters may not show the full measure of precision and sensitivity this method can provide. For ultra-high barrier
+blisters, test units should have more than 10 cavities, but NMT 30 cavities. Examples are foil–foil blisters or very small blisters formed from
+other materials. An alternative approach is to double or triple the length of weighing intervals to achieve at least a 6-mg weight gain per time
+interval by the test specimen.
+All test units should be inspected for the presence of water at each time point. Opaque and cold-form foil blisters should be opened at the
+conclusion of the test to insure the presence of water in each cavity since visual inspection is not possible.
+calculations
+Method 4:
+Perform the linear regression analysis for each test unit by following the Calculations in Methods 1 and 2 in Desiccant Methods for
+Packaging Systems, except the slope in Water Method for Packaging Systems is negative because of the moisture egresses and weight loss
+with time in the water method. The MVTR of each blister cavity is calculated by dividing the absolute value of the slope by the number of
+cavities in each test unit.
+resul
+ts
+Method 4:
+Repor t the MVTR as the average value, in mg/day/cavity, and the standard deviation of the 10 test unit slopes. Properly describe
+the container–closure system tested.▲ (USP 1-Dec-2020)
+Change to read:
+CLASSIFICATION SYSTEM FOR PLASTIC P
+ACKAGING SYSTEMS
+Introduction
+A classi«cation system is included to provide methods that allow pharmacists and institutional repackagers to select appropriate
+containers for repackaging. Repackaging is the act of taking a «nished drug product from the container in which it was distributed by the
+original manufacturer and placing it into a different container without fur ther manipulation of the drug. The classi«cation system provided
+can also be used by the drug product manufacturer for testing packaging systems that have had the primary seal broached.
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 7 ===
+Classi«cation Based on Desiccant Method ▲
+for Solid Oral Dosage Forms▲ (USP 1-Dec-2020)
+This section describes the methods for assigning the classi«cation for multiple-unit containers (Method ▲
+5),▲ (USP 1-Dec-2020)
+multiple-unit
+containers with induction seals (Method ▲
+6),▲ (USP 1-Dec-2020)
+and single-unit and unit-dose containers (Method ▲
+7)▲ (USP 1-Dec-2020)
+used by
+pharmacists and institutional repackagers.
+desiccant
+Methods ▲
+5 and 6:▲ (USP 1-Dec-2020)
+Place a quantity of 4- to 8-mesh, anhydrous calcium chloride
+ in a shallow container, taking care to
+exclude any «ne powder, dry at 215 ± 5° for 7¼±¼ h, and cool in a desiccator ▲
+for at least 2 h before use.▲ (USP 1-Dec-2020)
+[Note—It has been
+shown
+ that anhydrous calcium chloride may contain calcium hexahydrate, which loses water only when the temperature reaches 200°.]
+Method ▲
+7:
+Use USP Desiccant, Small RS; USP Desiccant, Medium RS; or USP Desiccant, Large RS. The USP Reference Standards for
+desiccants are molecular sieves molded in a form to «t the size and shape of the blister cavity used. These desiccants should be at or near
+their original values when stored in their original and unopened containers, and thus drying should not be required. Prior to use, if the
+average weight of 10 tablets exceeds the weight speci«ed on the USP cer ti«cate by more than 3%, drying shall be performed. Dry at 250 ± 5°
+for 1–2 h, and cool in a desiccator for at least 2 h before use. Store desiccant in a tightly closed container in the driest conditions possible
+after being removed from original container.▲ (USP 1-Dec-2020)
+procedure
+Method ▲
+5:▲ (USP 1-Dec-2020)
+Select 12 containers of a uniform size and type. Clean the sealing surfaces with a lint-free cloth, and close
+and open each container 30 times within the range of tightness speci«ed in Table 2. Add desiccant to 10 of the containers, designated “test
+containers”, «lling each to within 13 mm of the closure if the container volume is 20 mL or more, or «lling each to two-thirds of ▲
+its nominal
+volume▲ (USP 1-Dec-2020)
+if the container volume is less than 20 mL. If the interior of the container is more than 63 mm in depth, an iner t «ller
+or spacer ▲
+(e.g., glass beads)▲ (USP 1-Dec-2020)
+may be placed in the bottom to minimize the total weight of the container and desiccant; the
+layer of desiccant in such a container must be NL
+T 5 cm in depth. Close each container immediately after adding desiccant, and apply the
+torque designated in Table 2 when closing screw-capped containers. To each of the remaining two containers, designated “controls”, add a
+su­cient number of glass beads to attain a weight approximately equal to that of each of the test containers, and close, applying the torque
+designated in Table 2 when closing screw-capped containers. Record the weight of the individual containers to the nearest 0.1 mg if the
+container volume is less than 20 mL, to the nearest milligram if the container volume is 20 mL or more but less than 200 mL, or to the
+nearest centigram (10 mg) if the container volume is 200 mL or more, and store at 75 ± 3% RH and a temperature of 23 ± 2°. [Note—A
+saturated system of 35 g of sodium chloride with each 100 mL of water placed in the bottom of a desiccator maintains the speci«ed
+humidity. Other methods may be employed to maintain these conditions.] After 336 ± 1 h (14 days), record the weight of the individual
+containers in the same manner. Completely «ll 5 empty containers of the same size and type as that of the containers under test with water
+or a noncompressible, free-¬owing solid, such as well-tamped «ne glass beads, to the level indicated by the closure surface when in place.
+Transfer the contents of each to a graduated cylinder, and determine the average container volume, in milliliters.
+Method ▲
+6:▲ (USP 1-Dec-2020)
+Proceed as directed under Method ▲
+5,▲ (USP 1-Dec-2020)
+except «t containers with impervious seals obtained
+by heat-sealing the bottles with an aluminum foil–polyethylene laminate or other suitable seal. If there is a need to increase the precision of
+the method, the user can test the system without the closure as long as an impervious seal remains on the container. Keeping the cap on
+causes variation and the absorption of water by the cap liner is not par t of the moisture permeation.
+Method ▲
+7:▲ (USP 1-Dec-2020)
+Use this procedure for packs (e.g., punch-out cards) and blister cards that incorporate one or more separately
+sealed unit-dose containers or blisters. Seal a su­cient number of packs, such that NL
+T 4 packs and a total of NL
+T 10 unit-dose containers
+or blisters «lled with 1 pellet in each unit are tested. Seal a corresponding number of empty packs, each pack containing the same number
+of unit-dose containers or blisters as used in the test packs, to provide the controls. Store all of the containers at 75 ± 3% RH and at a
+temperature of 23 ± 2°. [Note—A saturated system of 35 g of sodium chloride with each 100 mL of water placed in the bottom of a
+desiccator maintains the speci«ed humidity. Other methods may be employed to maintain these conditions.] After 24 h, and at each multiple
+thereof (see Classi«cation), remove the packs from the chamber, and allow them to equilibrate for about 45 min. Record the weights of the
+individual packs, and return them to the chamber. Weigh the control packs as a unit, and divide the total weight by the number of control
+packs to obtain the average empty pack weight. [Note—If any indicating pellets turn pink during the procedure, or if the average pellet weight
+increase in any pack exceeds 10%, terminate the test, and regard only earlier determinations as valid.] The test and control containers are
+weighed after every 24 h and after suitable test intervals for the «nal weighings. W
+ and C
+ are as follows: 24 h for Class D, 48 h for Class C,
+7 days for Class B, and NL
+T 28 days for Class A.
+calculations
+Methods ▲
+5 and 6:▲ (USP 1-Dec-2020)
+Calculate the rate of moisture vapor transmission, in mg/day/L:
+(1000/14V)[(T
+ − T
+) − (C
+ − C
+)]
+V
+= volume of the container (mL)
+F
+F
+F
+I
+F
+I
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 8 ===
+T
+= «nal weight of each test container (mg)
+T
+= initial weight of each test container (mg)
+C
+= average «nal weight of the two controls (mg)
+C
+= average initial weight of the two controls (mg)
+Method ▲
+7:▲ (USP 1-Dec-2020)
+Calculate, to two signi«cant «gures, the average rate of moisture vapor transmission, in mg/day, for each unit-
+dose container or blister in each pack taken:
+[1/(N × X)][(W
+ − W
+) − (C
+ − C
+)]
+N
+= number of days expired in the test period (beginning after the initial 24-h equilibration period)
+X
+= number of separately sealed units per pack
+W
+= «nal weight of each test pack (mg)
+W
+= initial weight of each test pack (mg)
+C
+= «nal weight of the control packs (mg)
+C
+= initial weight of the control packs (mg)
+▲
+classification▲ (USP 1-Dec-2020)
+Method ▲
+5:▲ (USP 1-Dec-2020)
+Packaging systems are ▲
+classi«ed as▲ (USP 1-Dec-2020)
+“tight” if NMT 1 of the 10 test containers exceeds 100
+mg/day/L in moisture vapor transmission, and none exceeds 200 mg/day/L. Packaging systems are ▲
+classi«ed as▲ (USP 1-Dec-2020)
+“well-
+closed” if NMT 1 of the 10 test containers exceeds 2000 mg/day/L in moisture vapor transmission, and none exceeds 3000 mg/day/L.
+Method ▲
+6:▲ (USP 1-Dec-2020)
+Packaging systems are classi«ed as ▲
+“tight”▲ (USP 1-Dec-2020)
+if the moisture vapor transmission exceeds 10
+mg/day/L in NMT 1 of the 10 test containers, and none exceeds 25 mg/day/L.
+Method ▲
+7:▲ (USP 1-Dec-2020)
+Class A: No pack tested exceeds 0.5 mg/day/unit in average blister MVTR; Class B: No pack tested exceeds 5
+mg/day/unit in average blister MVTR; Class C: No pack tested exceeds 20 mg/day/unit in average blister MVTR; and Class D: None of the
+packs tested meet any of the above average blister MVTR requirements.
+Classi«cation Based on Water Method ▲
+for Liquid Oral Dosage Forms▲ (USP 1-Dec-2020)
+The following procedure and classi«cation scheme ▲
+(Method 8)▲ (USP 1-Dec-2020)
+is provided to ▲
+classify multiple-unit containers as
+“tight” for liquid oral dosage forms.▲ (USP 1-Dec-2020)
+[Note—Determine the weights of individual container–closure systems (bottle; inner seal, if used; and closure), both as tare weights and «ll
+weights, to the nearest 0.1 mg if the bottle capacity is less than 200 mL, to the nearest milligram if the bottle capacity is 200 mL or more but
+less than 1000 mL, or to the nearest ▲
+0.1 g▲ (USP 1-Dec-2020)
+if the bottle capacity is 1000 mL or more.]
+procedure
+▲
+Method 8:▲ (USP 1-Dec-2020)
+Select 12 bottles of a uniform size and type, and clean the sealing surfaces with a lint-free cloth. Fit each
+bottle with a seal, closure liner (if applicable), and closure. Number each container–closure system, and record the tare weight.
+Remove the closures and, using a pipet, «ll 10 bottles with water to the «ll capacity. Fill two containers with glass beads, to the same
+weight as the «lled test containers. If using screw closures, apply a torque that is within the range speci«ed in Table 2, and store the sealed
+containers at a temperature of 25 ± 2° and 40 ± 2% RH. After 336 ± 1 h (14 days), record the weight of the individual containers, and
+calculate the water weight loss rate, in %/year, for each bottle taken:
+W
+= initial weight of each individual bottle (i) (mg)
+W
+= tare weight (mg)
+W
+= weight of each individual bottle (i) at 14 days (mg)
+W
+= initial weight of the control container at day 1 (mg)
+W
+= weight of the control container at 14 days (mg)
+F
+I
+F
+I
+F
+I
+F
+I
+F
+I
+F
+I
+× 365 × 100
+[(
+−
+) −(
+−
+)−(
+−
+)]
+W1i
+WT
+W14i
+WT
+WC1
+WC14
+−
+)×14
+(W1i
+WT
+1i
+T
+14i
+C1
+C14
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 9 ===
+▲
+classification
+Method 8:▲ (USP 1-Dec-2020)
+The packaging systems are classi«ed as “tight” ▲
+if NMT 1 of the 10 test containers exceeds 2.5%/year
+percentage of water weight loss and does not exceed 5.0%/year in any of them.▲ (USP 1-Dec-2020)
+Change to read:
+SPECTRAL TRANSMISSION ▲
+FOR LIGHT
+-RESISTANT P
+ACKAGING COMPONENTS OR SYSTEMS
+A packaging component or system intended to provide protection from light or offered as a light-resistant container meets the
+requirements for Spectral Transmission for Light-Resistant Packaging Components or Systems, where such protection or resistance is by
+vir tue of the speci«c proper ties of the material of which the plastic component or system is composed, including any coating. A clear and
+colorless or a translucent packaging system that has light protection by means of an opaque enclosure by application of a suitable coating
+or wrapping (see General Notices) is exempt from the requirements for Spectral Transmission for Light-Resistant Packaging Components or
+Systems.▲ (USP 1-Dec-2020)
+Apparatus
+▲
+If the suitability of the packaging system is demonstrated through stability testing, spectral transmission testing is not required;
+otherwise, use a UV-visible spectrophotometer of suitable sensitivity and accuracy (see 〈857〉), adapted for measuring the amount of light
+transmitted by plastic materials used for pharmaceutical containers.▲ (USP 1-Dec-2020)
+Procedure
+Select a section representing the average ▲▲ (USP 1-Dec-2020)
+thickness. Cut a circular section from ▲
+the packaging component or
+system,▲ (USP 1-Dec-2020)
+and trim as necessary to get a segment convenient for mounting in the spectrophotometer. After cutting, wash and
+dry the specimen, taking care to avoid scratching the surfaces. If the specimen is too small to cover the opening in the specimen holder,
+mask the uncovered por tion of the opening with opaque paper or masking tape, provided that the length of the specimen is greater than that
+of the slit in the spectrophotometer. Immediately before mounting in the specimen holder, wipe the specimen with lens tissue. Mount the
+specimen with the aid of a tacky wax, or by other convenient means, taking care to avoid leaving «ngerprints or other marks on the surfaces
+through which light must pass. Place the section in the spectrophotometer with its cylindrical axis parallel to the plane of the slit and
+approximately centered with respect to the slit. When properly placed, the light beam is normal to the surface of the section and re¬ection
+losses are at a minimum.
+Continuously measure the transmittance of the section with reference to air in the spectral region of interest with a recording instrument or
+at intervals of about 20 nm with a manual instrument, in the region of 290–450 nm.
+▲
+Acceptance Criteria▲ (USP 1-Dec-2020)
+The observed spectral transmission does not exceed the limits given in Table 3 for ▲
+plastic components and systems▲ (USP 1-Dec-2020)
+for
+parenteral use. The observed spectral transmission for plastic containers for products intended for oral or topical administration does not
+exceed 10% at any wavelength in the range of 290–450 nm.
+T
+able 3. ▲
+Spectral Transmission Limits for Plastic Packaging Components or Systems▲ (USP 1-Dec-2020)
+Nominal Size (mL)
+Maximum Percentage of Spectral Transmission at Any Wavelength
+Between 290 and 450 nm
+▲
+25▲ (USP 1-Dec-2020)
+▲
+20▲ (USP 1-Dec-2020)
+▲
+15▲ (USP 1-Dec-2020)
+▲
+13▲ (USP 1-Dec-2020)
+▲
+12▲ (USP 1-Dec-2020)
+▲
+50▲ (USP 1-Dec-2020)
+▲
+10▲ (USP 1-Dec-2020)
+▲
+>▲ (USP 1-Dec-2020)
+▲
+10▲ (USP 1-Dec-2020)
+Delete the following:
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
+
+=== PAGE 10 ===
+▲
+GLOSSARY
+Blister:
+Formed, lidded, and sealed plastic or foil dome that contains the capsule or tablet (usually a single unit or unit dose).
+Low-barrier blister:
+Blisters made from low-barrier materials, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is
+greater than 1.0 mg/cavity/day.
+High-barrier blister:
+Blisters made from high-barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is less
+than 1.0 mg/cavity/day.
+Ultra-high barrier blister:
+Blisters made from ultra-high barrier material, formed and sealed so that the moisture vapor transmission rate when tested at 40°/75% RH is
+less than 0.01 mg/cavity/day.
+Blister card:
+A contiguous group of blisters formed and sealed with lid in place. The number of blisters per card commonly ranges from 1 to 10 but may
+be more. The blister card may sometimes be referred to as a packaging system.
+Cavity:
+Formed, lidded, and sealed plastic or foil dome (see Blister).
+Moisture vapor transmission rate:
+The steady-state moisture vapor transmission (in unit time) through a packaging system, under speci«c conditions of temperature and
+humidity. These test methods use gravimetric measurement to determine the rate of weight gain as a result of moisture vapor transmission
+into the packaging system and subsequent uptake by a desiccant enclosed within the packaging system.
+Test specimen (or specimen):
+For multiple-unit containers, the bottle is the test specimen, and for single-unit or unit-dose containers, the blister card containing multiple
+blister cavities is the test specimen. For blisters, more than 1 card (or specimen) may be grouped into a test unit for conducting the test.
+Test unit:
+For multiple-unit containers, the bottle is the test unit as well as being the test specimen, and for single-unit or unit-dose containers, the test
+unit is a group of test specimens (blister cards) processed together for temperature and humidity exposure and for weighing at each time
+point. The purpose of the test unit for single-unit or unit-dose containers is to gain the advantage of additive weight gain resulting from more
+blister cavities than are present on a single card. The test unit, when applied to bottles, is used to maintain naming congruence among test
+methods 1, 2, and 3.
+▲ (USP 1-Dec-2020)
+ASTM D7709. Standard Test Methods for Measuring Water Vapor Transmission Rate (WVTR) of Pharmaceutical Bottles and Blisters published
+by ASTM International, 100 Barr Harbor Drive, P
+.O. Box C700, West Conshohocken, PA 19428-2959.
+Chen Y
+, Li Y
+. Determination of water vapor transmission rate (WVTR) of HDPE bottles for pharmaceutical products. Int J Pharm. 2008;358(1-
+2):137–143.
+Suitable 4- to 8-mesh, anhydrous calcium chloride is available from VWR International.
+Auxiliary Information - Please
+check for your question in the F
+AQs
+before contacting USP
+.
+T
+opic/Question
+Contact
+Exper t Committee
+<671> CONTAINERS--PERFORMANCE
+TESTING
+Desmond G. Hunt
+Principal Scienti«c Liaison
+GCPD2020
+General Chapters - Packaging and
+Distribution
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. PF 44(3)
+Current DocID: GUID-99FB391E-ADC7-4247-B254-094C4DC7486C_3_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M99430_03_01
+DOI ref: j957d
+OFFICIAL
+2/12/25, 3:11 PM
+USP-NF 〈671〉 Containers—Performance Testing
