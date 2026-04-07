@@ -576,7 +576,7 @@ function renderCards(){
         const org=getSourceOrg(d.source);const oc=sourceOrgColors[org]||{};
         const lvBadge=isLV?`<span class="last-viewed-badge">上次閱讀</span>`:'';
         const readBadge=readEntry&&!isLV?`<span class="read-badge" title="上次開啟 ${timeAgo(readEntry.lastRead)}">✓ 已讀</span>`:'';
-        const progBadge=prog&&prog.num?(prog.pct!==undefined?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium border whitespace-nowrap ${prog.pct>=95?"bg-emerald-50 text-emerald-700 border-emerald-200":"bg-blue-50 text-blue-700 border-blue-200"}" title="捲軸位置已儲存">${prog.pct}%</span>`:`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`):'';
+        const progBadge=prog?(prog.complete?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 whitespace-nowrap">✓ 完讀</span>`:(prog.pct!==undefined?`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium border whitespace-nowrap ${prog.pct>=95?'bg-emerald-50 text-emerald-700 border-emerald-200':'bg-blue-50 text-blue-700 border-blue-200'}" title="捲軸最高位置">${prog.pct}%</span>`:`<span class="text-[10px] px-1.5 py-0.5 rounded font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" title="上次讀到 Section ${prog.num}: ${prog.label}">&#9654; Sec ${prog.num}</span>`)):'';
         return `<div class="doc-card fade-up bg-white rounded-xl border ${bc2} p-4 flex flex-col${isLV?' is-last-viewed':''}${readEntry&&!isLV?' is-read':''}">
             ${sm?`<div class="flex items-center justify-between"><span class="mono text-xs text-gray-400">${d.date}</span><div class="flex items-center gap-1.5">${progBadge}${lvBadge}${readBadge}<span class="text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide" style="background:${oc.bg||sc.bg};color:${oc.text||sc.text}">${org}</span><span class="text-[10px] px-2 py-0.5 rounded font-medium" style="background:${sc.bg};color:${sc.text}">${sc.short}</span></div></div>`:''}
             <h3 class="text-sm font-semibold text-gray-900 ${sm?'mt-2':''} leading-snug">${d.title}</h3>
@@ -631,6 +631,21 @@ function getOpenHref(file) {
     return p && p.id ? file + '#' + p.id : file;
 }
 
+function markComplete(file) {
+    try {
+        const stem = file.split('/').pop().replace('.html','');
+        const key = 'sgk_progress_' + stem;
+        const cur = JSON.parse(localStorage.getItem(key) || 'null') || {};
+        localStorage.setItem(key, JSON.stringify({
+            id: cur.id || 'sec0', num: cur.num || '0',
+            label: cur.label || 'Complete',
+            scrollY: cur.scrollY, pct: 100, complete: true, ts: Date.now()
+        }));
+        renderHistoryPanel();
+        renderCards();
+    } catch(e) {}
+}
+
 function getLastViewed() {
     try { return JSON.parse(localStorage.getItem(LS_KEY) || 'null'); } catch(e) { return null; }
 }
@@ -672,10 +687,17 @@ function renderHistoryPanel() {
     listEl.innerHTML = hist.map((h, idx) => {
         const isLatest = idx === 0;
         const prog = getProgress(h.file);
-        const progSpan = prog && prog.num
-            ? (prog.pct !== undefined
-                ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap ${prog.pct >= 95 ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-blue-700 bg-blue-50 border-blue-200'}" title="捲軸位置已儲存">已讀 ${prog.pct}%</span>`
-                : `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`)
+        const isComplete = prog && prog.complete;
+        const progSpan = isComplete
+            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold">✓ 完讀</span>`
+            : prog && prog.pct !== undefined
+            ? `<span class="text-[10px] px-1.5 py-0.5 rounded border whitespace-nowrap text-blue-700 bg-blue-50 border-blue-200" title="捲軸最高位置">已讀 ${prog.pct}%</span>`
+            : prog && prog.num
+            ? `<span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200 whitespace-nowrap">&#9654; Sec ${prog.num}${prog.label ? ': ' + prog.label : ''}</span>`
+            : '';
+        const markBtn = !isComplete
+            ? `<button onclick="markComplete('${h.file.replace(/'/g,"\\'")}');" title="標記為完讀"
+                       class="text-[10px] text-gray-300 hover:text-emerald-600 transition-colors flex-shrink-0 border border-gray-200 hover:border-emerald-300 rounded px-1.5 py-0.5 leading-none">✓</button>`
             : '';
         const href = h.file ? getOpenHref(h.file) : '#';
         const displayTitle = h.titleZh || h.title;
@@ -685,10 +707,11 @@ function renderHistoryPanel() {
             : `<span class="read-badge flex-shrink-0">✓ 已讀</span>`;
         const btnLabel = isLatest ? '繼續閱讀' : '開啟';
         const btnStyle = isLatest ? 'background:#92400e' : 'background:#334155';
-        return `<div class="flex items-center gap-3 px-4 py-2.5 transition-colors ${rowBg}">
+        return `<div class="flex items-center gap-2 px-4 py-2.5 transition-colors ${rowBg}">
             ${label}
             <span class="text-xs text-gray-800 flex-1 min-w-0 truncate font-${isLatest?'medium':'normal'}" title="${displayTitle}">${displayTitle}</span>
             ${progSpan}
+            ${markBtn}
             <span class="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">${timeAgo(h.lastRead)}</span>
             <a href="${href}" target="_blank" data-track-file="${h.file}" data-track-title="${h.title}" data-track-zh="${h.titleZh||''}"
                class="track-open text-[10px] text-white px-2 py-1 rounded no-underline flex-shrink-0 transition-colors" style="${btnStyle}">${btnLabel}</a>
