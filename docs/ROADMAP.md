@@ -2,7 +2,7 @@
 
 This document summarizes the current coverage status, gap analysis, and expansion roadmap for building a comprehensive sterile pharmaceutical manufacturing knowledge hub suitable for COO-level operational decision-making.
 
-Last updated: 2026-04-07 — 140 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1); Expert Knowledge Base layer added (9 files planned, not started)
+Last updated: 2026-04-07 — 142 documents complete (PDA 41, USP 76, ISPE 14, FDA 5, ICH 3, PIC/S 1, ISO 2); Expert Knowledge Base layer added (9 files planned, not started)
 
 ---
 
@@ -36,7 +36,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 | Component | Status | Count |
 |-----------|--------|-------|
-| Layer 1 — Regulatory Reference | ✅ Complete | 140 documents |
+| Layer 1 — Regulatory Reference | ✅ Complete | 142 documents |
 | Expert Knowledge Base | ⬜ Not started | 9 files planned |
 | Layer 2 — Operational Frameworks | ⬜ Not started | ~27 files planned |
 | Layer 2 — Skills System | ⬜ Not started | 26 slash commands planned |
@@ -53,7 +53,7 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 
 ---
 
-## Layer 1: Regulatory Reference — ✅ COMPLETE (140 documents)
+## Layer 1: Regulatory Reference — ✅ COMPLETE (142 documents)
 
 ### Completion Summary
 
@@ -65,12 +65,12 @@ Layer 3: Site-Specific Documents             ~/Amaran-Site-Knowledge/
 | **FDA** | 5 | Aseptic Processing, Process Validation, Process Inspection, Combination Products CGMP, HF for Combo Products | ✅ Complete |
 | **ICH** | 3 | Q8(R2), Q9(R1), Q10 | ✅ Complete |
 | **PIC/S** | 1 | Annex 1 (2022) | ✅ Complete |
-| **ISO** | 0 | 14644 series, 17665, 11608, 14971, 13485 | ⬜ Not started |
+| **ISO** | 2 | ISO 11040 (Prefilled Syringes Parts 1–8), ISO 13408 (Aseptic Processing Parts 1–7) — 14644, 17665, 11608, 14971, 13485 pending | 🔄 In progress |
 | **IEC** | 0 | 62366-1 (usability engineering) | ⬜ Not started |
 | **EU GMP** | 0 | Annex 15, Annex 2, Annex 20 | ⬜ Future (Phase 6) |
 | **Ph. Eur.** | 0 | 5.1.1, 2.6.1, 2.6.14, 2.9.19/20 | ⬜ Future (Phase 6) |
 | **WHO GMP** | 0 | TRS 961 Annex 6, TRS 1010 | ⬜ Future (Phase 6) |
-| **Total** | **140** | | |
+| **Total** | **142** | | |
 
 ### USP Batch History
 
@@ -370,7 +370,7 @@ Add only when client mix justifies:
 | ISO 11135 (EtO sterilization) | Rarely used for sterile injectables |
 | ISO 11137 (Radiation sterilization) | Niche; for devices not primary pharma injectables |
 | ISO 11608-4/5 (Electronic/automated injection systems) | Advanced device electronics — out of scope |
-| ISO 11040 series (Prefilled syringes — glass barrels) | Component-level spec; TR73 covers finished product perspective |
+| ISO 11608-4/5 only (Electronic/automated injection systems) | Advanced device electronics — out of scope (ISO 11608-1/3 in Phase 5) |
 | IEC standards other than 62366-1 | Electrical safety, EMC, cybersecurity — outside GMP scope |
 | Full PDA TR catalog | Many TRs cover non-sterile topics. Only sterile-relevant TRs included |
 | BP (British Pharmacopoeia) | ~95% harmonized with Ph. Eur. post-Brexit. Add Ph. Eur. first |
@@ -410,7 +410,9 @@ Add only when client mix justifies:
 │   ├── USP-85/
 │   └── ...
 ├── ISO/                    # Phase 4–5: cleanrooms + device standards
-│   └── ISO-14644/
+│   ├── ISO-11040/          # ✅ Complete — Prefilled Syringes Parts 1–8
+│   ├── ISO-13408/          # ✅ Complete — Aseptic Processing Parts 1–7
+│   └── ISO-14644/          # Phase 4: Cleanroom classification (pending)
 ├── knowledge/              # Chatbot knowledge base (English-only)
 │   ├── INDEX.md
 │   ├── PDA/
