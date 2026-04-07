@@ -555,24 +555,34 @@ window.addEventListener('scroll', function() {
 (function() {
     try {
         var _pKey = 'sgk_progress_' + location.pathname.split('/').pop().replace('.html','');
-        // Restore saved scroll position
-        var _saved = JSON.parse(localStorage.getItem(_pKey) || 'null');
-        if (_saved && _saved.scrollY) {
+        var _saved = JSON.parse(localStorage.getItem(_pKey) || 'null') || {};
+
+        // Restore: go to last scroll position (skip if already complete)
+        if (_saved.scrollY && !_saved.complete) {
             window.addEventListener('load', function() {
                 setTimeout(function() { window.scrollTo(0, _saved.scrollY); }, 200);
             });
         }
-        // Save scroll progress (debounced)
+
+        // Save progress — pct is a HIGH-WATER MARK (only increases)
         var _t = null;
         window.addEventListener('scroll', function() {
+            if (_saved.complete) return; // already done, stop tracking
             clearTimeout(_t);
             _t = setTimeout(function() {
                 var maxScroll = document.body.scrollHeight - window.innerHeight;
-                var pct = maxScroll > 0 ? Math.round(window.scrollY / maxScroll * 100) : 100;
-                localStorage.setItem(_pKey, JSON.stringify({
+                var curPct = maxScroll > 0 ? Math.round(window.scrollY / maxScroll * 100) : 100;
+                var highPct = Math.max(curPct, _saved.pct || 0); // never decrease
+                var isComplete = highPct >= 95;
+                var next = {
                     id: 'sec0', num: '0', label: 'Complete Chapter',
-                    scrollY: window.scrollY, pct: pct, ts: Date.now()
-                }));
+                    scrollY: window.scrollY,   // current position — for restore
+                    pct: highPct,              // max reached — for display
+                    complete: isComplete,
+                    ts: Date.now()
+                };
+                localStorage.setItem(_pKey, JSON.stringify(next));
+                _saved = next;
             }, 400);
         });
     } catch(e) {}
