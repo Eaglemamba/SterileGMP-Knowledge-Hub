@@ -1074,10 +1074,218 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 
 ---
 
+## ISO/ISO-13408-5-Complete.md
+**Report:** ISO 13408-5:2006 — Aseptic processing of health care products: Part 5: Sterilization in place
+**Pages:** p1–p14 | **Sections:** 7
+
+**Covers questions about:**
+- What is SIP (Sterilization in Place) and how it differs from Autoclave/off-line sterilization
+- SIP system design requirements: eliminating dead legs, drainability, material compatibility, air displacement
+- Sterilizing agent selection criteria: compatibility, residue limits, microbicidal effectiveness
+- Steam SIP design: air displacement, condensate drainage, cold spots, filter sterilization via steam
+- SIP process parameters: temperature, pressure, hold time, F₀ calculation
+- SIP cycle development: identifying most-difficult-to-sterilize locations (worst case/cold spots)
+- SIP validation lifecycle: DQ, IQ, OQ, PQ requirements and acceptance criteria
+- Biological indicators for SIP: Geobacillus stearothermophilus, three consecutive runs requirement
+- Routine SIP monitoring and records: batch record content, review before next batch
+- Change control for SIP: impact assessment, requalification triggers
+- Steam quality requirements: dry, saturated, not superheated; WFI-grade condensate for parenterals
+- Clean steam vs plant steam for pharmaceutical SIP applications
+
+**Key terms:** SIP (sterilization in place), steam SIP, dead leg, cold spot, sterility assurance level (SAL), biological indicator (BI), Geobacillus stearothermophilus, D-value, F₀ value, design qualification (DQ), installation qualification (IQ), operational qualification (OQ), performance qualification (PQ), temperature mapping, most-difficult-to-sterilize location, sterilizing agent, process parameter, process variable, MSDS, clean steam, WFI condensate, condensate drain, gravity displacement, pre-vacuum, failure detection, change control, requalification
+
+**Sections:**
+- Section 0: Foreword & Introduction
+- Section 1: Scope, Normative References & Definitions
+- Section 2: Quality System Elements & Process/Equipment Characterization (Clauses 4–5)
+- Section 3: Sterilizing Agent Characterization & SIP Process (Clauses 6–7)
+- Section 4: Validation — DQ, IQ, OQ, PQ (Clause 8)
+- Section 5: Routine Monitoring, Control & Personnel Training (Clauses 9–10)
+- Section 6: Annex A — Steam SIP Guidelines & Bibliography
+
+---
+
+## ISO/ISO-13408-6-Complete.md
+**Report:** ISO 13408-6:2005/Amd.1:2013 — Aseptic Processing of Health Care Products, Part 6: Isolator Systems (including Amendment 1:2013)
+**Pages:** p1–p17 | **Sections:** 4
+
+**Covers questions about:**
+- What is an isolator system and how it differs from RABS and conventional cleanrooms
+- Isolator design requirements: pressure differential, HEPA filtration, transfer systems (RTP, airlock, double-door autoclave)
+- User requirement specification (URS) for isolators: 8 key elements and how it drives design qualification
+- Bio-decontamination (VHP/VPHP) cycle development, validation and routine monitoring
+- Biological indicator (BI) strategy for VHP: worst-case placement, SAL ≥ 10⁻⁶, Geobacillus stearothermophilus
+- Aeration validation: three safety targets (operator, product, subsequent processes)
+- VHP residue limits and risk assessment framework (Amendment 1:2013 updated requirements)
+- DQ/IQ/OQ/PQ qualification lifecycle for isolator systems
+- Glove and sleeve integrity testing: frequency, methods (pressure decay), Amendment 1 mandatory requirements
+- Half-suit design, contamination risk, and additional controls
+- Indirect support zone classification: risk assessment-based approach (replaces "surrounding environment")
+- Personnel exposure limits for VHP: OSHA limits, monitoring requirements (Amendment 1 addition)
+- Documentation system for isolators: 8 document categories, electronic records, data integrity
+- Amendment 1:2013 complete change summary: 20+ changes across all clauses
+
+**Key terms:** isolator, positive pressure isolator, negative pressure isolator, RABS (restricted access barrier system), critical zone, indirect support zone (formerly surrounding environment), bio-decontamination, VHP (vaporized hydrogen peroxide), VPHP, hydrogen peroxide vapor, bio-decontamination cycle, aeration, biological indicator (BI), Geobacillus stearothermophilus, SAL (sterility assurance level), glove integrity test, glove port, rapid transfer port (RTP), airlock, dynamic pass-through, half-suit, HEPA filter integrity test, pressure differential, pressure decay test, alert limit, action limit, DQ/IQ/OQ/PQ, user requirement specification (URS), personnel exposure limits, data integrity, ALCOA+, contamination control strategy (CCS), EU GMP Annex 1, ISO 14644-7, ISO 13408-1:2008
+
+**Sections:**
+- Section 0: Foreword, Scope, Normative References & Terms (Clauses 1–3)
+- Section 1: General Requirements & Isolator Design (Clauses 4–6)
+- Section 2: Qualification, Testing & Bio-decontamination Validation (Clauses 7–8)
+- Section 3: Gloves, Sleeves, Documentation & Amendment 1 Complete Summary (Clauses 9–10 + Annex A)
+
+---
+
+## ISO/ISO-13408-4-Complete.md
+**Report:** ISO 13408-4:2005 — Aseptic Processing of Health Care Products: Part 4: Clean-in-Place Technologies
+**Pages:** p1–p14 | **Sections:** 9
+
+**Covers questions about:**
+- What is CIP (Clean-in-Place) and how it differs from disassembly cleaning
+- CIP process specification: 11 required elements (cleaning agent delivery, pre-cleaning, pass number, drying, hold period)
+- Equipment design requirements for CIP compatibility: dead leg elimination, surface finish, drainability, spray coverage
+- Cleaning agent selection: residual removal, equipment compatibility, detection method for residual cleaning agent
+- Cleaning agent quality specifications: identity, bioburden, concentration, shelf life
+- CIP process parameters: flow rate/pressure, temperature, concentration, time, volume (TACT principle)
+- Sampling methods for cleaning effectiveness: swab, rinse, placebo — with recovery correction requirement
+- Acceptance criteria calculation: 1/1000 therapeutic dose method (3-log reduction) and analogue methodology
+- CIP validation lifecycle: DQ, IQ, OQ (including CSV for control software), PQ (3 consecutive runs, worst-case)
+- Microbiological and endotoxin requirements in CIP validation
+- Routine CIP monitoring: per-batch records, review before next batch release
+- Change control triggers for CIP: equipment, cleaning agent, process parameter or product changes
+- Personnel training requirements for CIP operators: theory, operation, failure response, safety
+
+**Key terms:** CIP (clean-in-place), cleaning agent, dead leg (L/D ratio), worst-to-clean, design qualification (DQ), installation qualification (IQ), operational qualification (OQ), performance qualification (PQ), swab sampling, rinse sampling, placebo sampling, recovery efficiency, acceptance criteria, carryover, 1/1000 therapeutic dose, 3-log reduction, analogue methodology, TOC (total organic carbon), conductivity, bioburden, endotoxin, TACT (temperature/action/chemistry/time), surface roughness Ra, turbulent flow Reynolds number, change control, requalification, material safety data sheet (MSDS)
+
+**Sections:**
+- Section 0: Foreword & Introduction
+- Section 1: Scope, Normative References & Terms (Clauses 1–3)
+- Section 2: Quality System Elements (Clause 4: General, Management Responsibility, Design Control, Measuring Instruments)
+- Section 3: Process & Equipment Characterization (Clause 5: CIP specification, effectiveness, equipment design, failure detection)
+- Section 4: Cleaning Agent Characterization (Clause 6: selection, quality, safety)
+- Section 5: CIP Process (Clause 7: parameters, sampling methods, acceptance criteria, visual/chemical/microbiological/endotoxin/particulate examination)
+- Section 6: Validation — DQ, IQ, OQ, PQ (Clause 8)
+- Section 7: Routine Monitoring, Control & Personnel Training (Clauses 9–10)
+- Section 8: Annexes A & B — Sampling Methods & Calculation Examples + Bibliography
+
+---
+
+## ISO/ISO-13408-2-Complete.md
+**Report:** ISO 13408-2:2018 — Aseptic Processing of Health Care Products: Part 2: Sterilizing Filtration
+**Pages:** p1–p34 | **Sections:** 10 sections + Annex A
+
+**Covers questions about:**
+- What is sterilizing filtration and how it differs from terminal sterilization (no SAL, physical retention)
+- Filter characterization: selecting the right filter for a given fluid and process
+- Microbial removal effectiveness: 6 variables affecting retention (membrane, equipment, fluid chemistry, bioburden, process conditions, sterilization effects)
+- Extractables and leachables (E&L) from filters, adsorption of product components onto filter
+- Process and equipment characterization: filtration system design, PUPSIT risk assessment, system configurations
+- Risk management for filter selection: single/serial/parallel/redundant filter configurations
+- Fluid definition: 9 fluid attributes required (pH, viscosity, osmolarity, bioburden, etc.)
+- Process definition: filter sizing, compatibility studies, filtration process parameters (hold time, differential pressure, flow rate, flushing)
+- Filter integrity testing: pre-use, post-use, PUPSIT, acceptance criteria definition
+- Validation: bacterial challenge test (BCT) design — 3 lots/3 runs, minimum 10⁷ CFU/cm², challenge organism selection
+- Test organism selection: Brevundimonas diminuta (0.2 µm) vs. Acholeplasma laidlawii (0.1 µm/Mycoplasma)
+- Integrity test correlation to bacterial retention — establishing production filter acceptance criteria
+- Gas filter validation: aerosol challenge, hydrophobic membrane testing, service life
+- Routine monitoring: bioburden per-batch, process parameter recording, post-use integrity test
+- Batch records for sterility filtration: 13 required items; records missing = non-conforming product
+- Maintaining process effectiveness: recalibration, preventive maintenance, requalification, change assessment
+- Change control for filtration: 7 trigger categories including manufacturer material changes
+- Filter reuse guidance: not recommended for liquid sterilizing filtration; regulatory stance
+- PUPSIT omission conditions: automatic batch rejection or re-filtration permissible (ISO guidance; EU Annex 1 stricter)
+
+**Key terms:** sterilizing filtration, bacterial challenge test (BCT), Brevundimonas diminuta, Acholeplasma laidlawii, Mycoplasma, filter integrity test, bubble point, diffusive flow, water intrusion test, PUPSIT (pre-use post-sterilization integrity test), post-use integrity test, extractables, leachables, adsorption, pore size rating, bioburden, indigenous bioburden, filter characterization, filter validation, serial filter, parallel filter, redundant filter, filter capsule, filter cartridge, filter housing, filter assembly, filtration system, SIP (filter sterilization), change assessment, requalification, single-use filter system
+
+**Sections:**
+- Section 0: Foreword & Introduction (no SAL for filtration, 2018 edition updates)
+- Section 1-3: Scope, References & Definitions (exclusions: viruses, HEPA; 11 key terms including E/L)
+- Section 4: Quality System Elements (5 mandatory training items, procurement procedures, traceability)
+- Section 5: Sterilizing Filter Characterization (filter formats, microbial removal variables, material effects)
+- Section 6: Process & Equipment Characterization (risk management, PUPSIT, system design requirements, configurations)
+- Section 7: Fluid Definition (9 fluid attributes, bioburden control, multiple filtration cycles)
+- Section 8: Process Definition (filter sizing, E&L compatibility, process parameters, integrity test procedure)
+- Section 9: Validation (BCT: 3 lots/3 runs; test organism selection; integrity test correlation; gas filter validation)
+- Section 10-12: Routine Monitoring, Product Release & Maintenance (13 batch record items, requalification, change assessment)
+- Annex A: Guidance (filter terminology diagram, 7 system configurations, filter reuse guidance, PUPSIT equipment diagrams)
+
+---
+
+## ISO/ISO-13408-Complete.md
+**Report:** ISO 13408 (Parts 1–7) — Aseptic Processing of Healthcare Products: Complete Series
+**Pages:** p1–p206 (across all 7 parts) | **Sections:** 6
+
+**Covers questions about:**
+- General requirements for aseptic processing systems: scope, quality system, design qualification, Aseptic Process Definition (APD)
+- Contamination Control Strategy (CCS) framework within ISO: risk management, Aseptic Process Assessment (APA) zone classification
+- Cleanroom classification and HVAC requirements: Grade A/B/C/D equivalent, unidirectional airflow, pressure cascades, HEPA filtration
+- Environmental monitoring program design: viable/non-viable methods, alert and action limits, monitoring frequency by zone
+- Equipment qualification lifecycle (IQ/OQ/PQ) for aseptic processing: design qualification, installation verification, operational performance, performance qualification
+- Personnel aseptic qualification (APAQ): gowning qualification, fingertip/glove integrity sampling, training program requirements
+- Process simulation (APS/Media Fill): design principles, sample size, incubation requirements, contamination rate criteria, failure investigation
+- Sterility testing linkage to aseptic processing: destructive test limitations vs. process assurance
+- Sterilizing filtration (Part 2): no-SAL concept, filter validation framework (BCT 3 lots/3 runs), PUPSIT, integrity test correlation
+- Challenge organism selection: Brevundimonas diminuta (0.2 µm), Acholeplasma laidlawii (0.1 µm/Mycoplasma filtration)
+- Lyophilization (Part 3): critical process parameters, 4 hold time limits, lyophilizer IQ/OQ/PQ (leak test, thermal control, vacuum, condenser capacity)
+- Lyophilizer loading/unloading requirements: Grade A environment, SIP per batch vs. campaign, vent filter management
+- Clean-in-Place (CIP, Part 4): TACT principles, dead leg elimination (L/D ratio), surface finish Ra, acceptance criteria (1/1000 dose / HBELs), 3-run worst-case PQ, swab/rinse/placebo sampling
+- Sterilization-in-Place (SIP, Part 5): SAL for thermal SIP, F₀ calculation, Geobacillus stearothermophilus BI, dead leg 2D rule, heat distribution/penetration studies
+- Post-SIP sterility maintenance: positive-pressure inert gas blanketing, steam condensate draining, system pressure monitoring
+- Isolator technology (Part 6, Amendment 1): VHP bio-decontamination validation, BI strategy, concentration monitoring, residue removal, surrounding vs. indirect support zone
+- Isolator vs. RABS comparison: Type A/B isolators, pressure cascade requirements, glove integrity testing, material transfer decontamination
+- Alternative processes for aseptic manufacture (Part 7): when media fill not feasible (medical devices, combination products), risk-based simulation strategy with surrogate products
+- Lifecycle approach to aseptic process simulation: full process coverage requirement, critical step mapping, surrogate product criteria
+
+**Key terms:** Aseptic Process Definition (APD), Aseptic Processing Assessment (APA), aseptic process simulation (APS), media fill, contamination control strategy (CCS), Grade A/B/C/D, unidirectional airflow (UDAF), pressure cascade, HEPA filtration, environmental monitoring (EM), viable/non-viable particles, alert/action limits, IQ/OQ/PQ (installation/operational/performance qualification), design qualification (DQ), APAQ (aseptic processing area qualification), fingertip sampling, gowning qualification, sterilizing filtration, bacterial challenge test (BCT), Brevundimonas diminuta, Acholeplasma laidlawii, PUPSIT, filter integrity test, lyophilization, critical process parameters, hold time limits, lyophilizer qualification, leak test, condenser capacity test, CIP (clean-in-place), TACT, dead leg, L/D ratio, swab sampling, rinse sampling, 1/1000 dose, HBEL, SIP (sterilization-in-place), SAL (sterility assurance level), F₀ value, D-value, Geobacillus stearothermophilus, biological indicator (BI), heat distribution study, heat penetration study, isolator, VHP (vaporized hydrogen peroxide), bio-decontamination validation, RABS (restricted access barrier system), material transfer airlock, surrogate product, alternative aseptic process simulation, risk-based simulation
+
+**Sections:**
+- Section 1 (Part 1): General Requirements — Scope, Quality System, APD, APA Zone Classification, HVAC/EM, Equipment IQ/OQ/PQ, APAQ, Process Simulation (APS/Media Fill), Sterility Testing
+- Section 2 (Part 2): Sterilizing Filtration — No-SAL concept, Filter Characterization, PUPSIT, BCT Validation (3 lots/3 runs), Integrity Test Correlation, Gas Filter Validation, Change Assessment
+- Section 3 (Part 3): Lyophilization — CPPs, 4 Hold Time Limits, Lyophilizer IQ/OQ/PQ (Leak, Thermal Control, Vacuum, Condenser), Loading/Unloading in Grade A, SIP Frequency
+- Section 4 (Part 4): Clean-in-Place (CIP) — TACT, Dead Leg Design, Surface Finish, Sampling Methods, Acceptance Criteria, 3-Run PQ, Change Control
+- Section 5 (Part 5): Sterilization-in-Place (SIP) — F₀ Calculation, BI Validation, Heat Distribution/Penetration Studies, 2D Dead Leg Rule, Post-SIP Sterility Maintenance
+- Section 6 (Parts 6 & 7): Isolators & Alternative Processes — VHP Bio-decontamination Validation, Isolator vs. RABS Comparison, Amendment 1 Changes, Part 7 Surrogate Product Strategy
+
+---
+
 ## Quick Topic Routing Guide
 
 | Topic (English / 中文 / common lay terms) | Look in... |
 |---|---|
+| Sterilizing filtration, filter sterilization, 0.22 µm filter, 0.2 µm membrane filtration / 滅菌過濾、過濾除菌、0.22微米過濾器 | ISO-13408-2 + TR26 |
+| Bacterial challenge test BCT, microbial retention validation, Brevundimonas diminuta / 細菌挑戰測試、微生物截留驗證、微小短波單胞菌 | ISO-13408-2 + TR26 |
+| Filter integrity test acceptance criteria, correlation to BCT, diffusive flow bubble point / 過濾器完整性測試接受標準、細菌截留相關性 | ISO-13408-2 + TR26 |
+| PUPSIT pre-use post-sterilization integrity test / 使用前滅菌後完整性測試 | ISO-13408-2 + TR26 + PICS-Annex1 |
+| Mycoplasma filtration, 0.1 µm filter, Acholeplasma laidlawii / 黴漿菌過濾、0.1微米過濾器 | ISO-13408-2 |
+| Filter E&L extractables leachables from filter / 過濾器可萃取物可溶出物 | ISO-13408-2 + TR26 |
+| Indigenous bioburden, pre-filtration bioburden control / 原生生物負荷、過濾前生物負荷控制 | ISO-13408-2 |
+| Redundant filter vs series filter, parallel filtration system / 冗餘過濾器與串聯過濾器的區別、並聯過濾系統 | ISO-13408-2 |
+| Filter reuse validation, maximum reuse cycles / 過濾器重複使用驗證、最大重複使用週期 | ISO-13408-2 |
+| Gas filter validation, vent filter, hydrophobic membrane integrity test / 氣體過濾器驗證、通氣過濾器、疏水膜完整性測試 | ISO-13408-2 |
+| CIP, clean-in-place, in-situ cleaning, equipment cleaning without disassembly / 就地清洗、設備清洗、不拆卸清洗 | ISO-13408-4 |
+| Dead leg piping design, L/D ratio, worst-to-clean location for CIP / 死角管路設計、CIP最難清洗位置 | ISO-13408-4 |
+| CIP validation DQ IQ OQ PQ, cleaning agent characterization / CIP確效、清洗劑特性鑑定 | ISO-13408-4 |
+| Cleaning acceptance criteria, 1/1000 dose method, 3-log reduction, carryover calculation / 清潔驗收標準、千分之一劑量法、攜帶量計算 | ISO-13408-4 |
+| Swab sampling, rinse sampling, placebo sampling, recovery efficiency / 棉拭採樣、沖洗採樣、安慰劑採樣、回收率 | ISO-13408-4 |
+| CIP process parameters: TACT temperature action chemistry time, flow rate turbulence / CIP製程參數、TACT原則、流速湍流 | ISO-13408-4 |
+| Cleaning agent selection, NaOH alkaline cleaning, TOC conductivity residue testing / 清洗劑選擇、鹼液清洗、TOC電導率殘留測試 | ISO-13408-4 |
+| SIP, sterilize-in-place, steam SIP, in-situ sterilization / 就地滅菌、蒸汽原位滅菌 | ISO-13408-5 |
+| Dead leg, cold spot, worst case sterilization location / 死角、冷點、最難滅菌位置 | ISO-13408-5 |
+| SIP validation DQ IQ OQ PQ, biological indicator BI for SIP / SIP驗證、生物指示劑 | ISO-13408-5 |
+| Clean steam, WFI condensate, steam quality, Geobacillus stearothermophilus / 潔淨蒸汽、WFI冷凝水、嗜熱脂肪芽孢桿菌 | ISO-13408-5 |
+| SAL sterility assurance level, D-value F0 for SIP / 無菌保證水準、D值、F0值 | ISO-13408-5 |
+| Aseptic processing general requirements, ISO 13408 overview, aseptic manufacturing framework / 無菌處理一般要求、ISO 13408總覽、無菌製造框架 | ISO-13408 Part 1 |
+| Aseptic Process Definition APD, aseptic process assessment APA, contamination control strategy for aseptic / 無菌製程定義、無菌製程評估、無菌製造污染控制策略 | ISO-13408 Part 1 |
+| Personnel aseptic qualification APAQ, aseptic gowning qualification, operator qualification for aseptic / 人員無菌確效、無菌更衣確效、無菌操作員資格 | ISO-13408 Part 1 |
+| Media fill design ISO requirements, APS sample size per ISO 13408, aseptic process simulation design / 培養基充填設計ISO要求、模擬試驗樣本量、無菌製程模擬設計 | ISO-13408 Part 1 + TR22 |
+| Lyophilization process validation, freeze dryer IQ OQ PQ, lyophilizer qualification / 凍乾製程確效、冷凍乾燥機IQ OQ PQ確效 | ISO-13408 Part 3 + TR22 |
+| Lyophilizer leak test, condenser capacity test, vacuum system qualification / 凍乾機洩漏測試、冷凝器容量測試、真空系統確效 | ISO-13408 Part 3 |
+| Isolator VHP decontamination validation, hydrogen peroxide bio-decontamination cycle, isolator BI strategy / 隔離器VHP去污染確效、過氧化氫生物去污染週期、隔離器生物指示劑策略 | ISO-13408-6 + ISO-13408 Part 6 + PtC-Isolators |
+| Isolator system design, positive negative pressure isolator, indirect support zone, isolator vs RABS / 隔離器系統設計、正壓負壓隔離器、間接支援區、隔離器與RABS比較 | ISO-13408-6 |
+| VHP aeration validation, residue limits, operator safety OEL, product compatibility / VHP通風散逸驗證、殘留限值、操作員安全暴露限值、產品相容性 | ISO-13408-6 |
+| Glove integrity testing, pressure decay test, glove port design, half-suit contamination risk / 手套完整性測試、壓力衰減法、手套端口設計、半身服污染風險 | ISO-13408-6 |
+| RTP rapid transfer port, airlock, double-door autoclave, material transfer isolator / 快速傳遞口、氣鎖、雙門滅菌器、隔離器物料傳遞 | ISO-13408-6 |
+| ISO 13408-6 Amendment 1 2013 changes, should vs shall, bioburden biocontamination terminology / ISO 13408-6修正案1變更清單、術語更正、強制性要求升級 | ISO-13408-6 |
+| Aseptic processing for medical devices combination products, alternative media fill, surrogate product simulation / 醫療器械組合產品無菌製程、替代培養基充填、代替品模擬試驗 | ISO-13408 Part 7 |
 | Filling machines, pump types, dose accuracy / 充填機、幫浦類型、劑量精準度 | Guide-No1 |
 | Media fill, APS, aseptic simulation / 培養基充填、無菌製程模擬 | TR22 |
 | Filter validation, integrity test, PUPSIT / 過濾器驗證、完整性測試、過濾器破損檢查 | TR26 |
@@ -1095,6 +1303,25 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
+| Plastic barrel for prefilled syringe, polymer syringe barrel, COC COP PP syringe barrel / 塑料桶筒、聚合物注射器桶筒、COC/COP/PP材料 | ISO-11040-6 |
+| Sterilized subassembled syringe ready for filling, RTF syringe, tub-and-nest, staked needle / 滅菌預組裝注射器、RTF系統、Tub-Nest包裝、固定針頭 | ISO-11040-6 |
+| Syringe barrel dimensions Table 1, d1 d2 outer inner diameter, stopper travel length l1 / 注射器桶筒尺寸、外徑內徑、活塞行程長度 | ISO-11040-6 |
+| LLA Luer lock adaptor pull-off force 22N, tip cap removal force, needle shield closure system / LLA拉拔力22N、tip cap移除力、針頭保護帽密封系統 | ISO-11040-6 |
+| Sub-visible particles 600 per syringe 10 micron 60 per syringe 25 micron, endotoxin 0.25 EU ml / 次可見微粒限值、內毒素0.25 EU/ml | ISO-11040-6 |
+| Flange breakage resistance Annex C, Luer cone breakage test, syringe mechanical strength / 法蘭斷裂測試、錐頭斷裂、桶筒力學強度 | ISO-11040-6 |
+| Siliconization lubrication glide force, inner barrel surface lubricant, RTF packaging SAL / 矽化潤滑評估、滑動力、桶筒潤滑可見性、RTF包裝無菌保證 | ISO-11040-6 |
+| Plunger stopper for injectable syringe, PSL PST, plunger stopper dimensions, Shore A hardness / 注射用活塞塞、活塞塞尺寸、硬度 | ISO-11040-5 |
+| Elastomeric stopper extractables, aqueous extractables, ISO 8871-1, ISO 8871-4, biological requirements / 彈性體萃取物、水萃取物、生物安全要求 | ISO-11040-5 |
+| Plunger stopper ageing, shelf life, type sample, stopper sterilization autoclave / 活塞塞老化、貨架期、型式樣品、高壓蒸汽滅菌 | ISO-11040-5 |
+| Spacers height, sprues, plunger rod thread, aspiration detach / 間隔物高度、澆口、螺紋、抽吸脫落 | ISO-11040-5 |
+| Dental cartridge, dental anaesthetic glass cylinder, ISO 11040-1 / 牙科麻醉藥筒玻璃管、ISO 11040-1 | ISO-11040-1 |
+| Glass hydrolytic resistance, ISO 720 HGA 1, ISO 4802 HC 1, glass cylinder dimensions / 玻璃水解阻力、玻璃管尺寸 | ISO-11040-1 |
+| Annealing, residual stress, optical retardation, glass quality / 退火、殘餘應力、光學遲滯、玻璃品質 | ISO-11040-1 |
+| RTU syringe packaging, nest tub bag, sterile barrier system, prefilled syringe packaging / RTU注射器包裝、巢架托盤保護袋、無菌屏障系統 | ISO-11040-7 |
+| Nest dimensions, cavity count, 160-cavity 100-cavity 64-cavity, nest deflection / 巢架尺寸、孔穴數量、巢架偏轉 | ISO-11040-7 |
+| 3-inch tub, tub flange, sealing lid peelability, insert liner particle control / 三英寸托盤、密封蓋可剝性、嵌入式襯墊顆粒控制 | ISO-11040-7 |
+| Reel bag, header bag, bag orientation, bag-to-tub end distance, automatic opening threshold / 卷軸袋、標頭袋、保護袋方向、自動開袋閾值 | ISO-11040-7 |
+| EtO sterilization packaging, e-beam decontamination, VHP H2O2 compatible, ISO 11607-1 sterile barrier / EtO滅菌包裝、電子束去汙、ISO 11607-1無菌屏障 | ISO-11040-7 |
 | EU MDR, Annex I, combination product / 歐盟醫療器材法規、組合產品 | TR73-2 |
 | Biopharmaceutical facility design, biologics facility, MAb plant, cell culture facility / 生物製藥廠房設計 | ISPE-Vol6 |
 | Process closure, closed system, open system, functionally closed / 製程密閉、密閉系統 | ISPE-Vol6 |
@@ -1264,22 +1491,28 @@ For these topics, search the PRIMARY report deeply and SECONDARY reports lightly
 Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Media Fill / APS (培養基充填 / 無菌製程模擬)**
-→ TR22 ★★★ (automated/semi-automated APS) | TR62 ★★★ (manual process APS: zero contamination criterion, all 13 design elements) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
+→ ISO-13408 ★★★ (Part 1: normative APS requirements — sample size, incubation, contamination criteria, investigation; Part 7: alternative simulation for medical devices/combination products using surrogate products) | TR22 ★★★ (automated/semi-automated APS) | TR62 ★★★ (manual process APS: zero contamination criterion, all 13 design elements) | Guide-No1 ★★ (filling machine APS) | PtC-12 ★★ (RABS APS) | TR90 ★ (CCS context)
+
+**Sterilizing Filtration / Filter Validation (滅菌過濾 / 過濾器驗證)**
+→ ISO-13408-2 ★★★ (primary ISO standard: complete requirements framework — filter characterization, process definition, BCT validation requirements, integrity test correlation, gas filter validation, routine monitoring, change assessment) | TR26 ★★★ (detailed practical guidance: filter sizing, flux calculations, integrity test procedures, PUPSIT step-by-step, E&L methodology) | PICS-Annex1 ★★★ (regulatory requirements: PUPSIT mandatory for EU, filtration as part of Annex 1 Section 8c) | TR26 ★★★ (PDA TR26 revised 2025: comprehensive filter validation) | ISO-13408-5 ★★ (SIP validation of filter assembly — overlapping filter sterilization requirements)
 
 **Extractables & Leachables / E&L (可萃取物與可滲出物)**
-→ ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components)
+→ ISPE-SUT ★★★ (PQRI framework for SUT: AET calculation, SCT, leachables testing methodology, stability interaction testing) | TR26 ★★★ (filter E&L) | TR66 ★★★ (SUS E&L) | TR73 ★★ (syringe components) | ISO-13408-2 ★★ (filter E&L requirements: Sections 5.3, 8.2.2; use of process fluid for leachables study)
 
 **Environmental Monitoring / EM (環境監控)**
-→ TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
+→ ISO-13408 ★★★ (Part 1: normative EM requirements — viable/non-viable monitoring methods, APA zone classification, alert/action limits, monitoring frequency) | TR13 ★★★ (EM program fundamentals: limits, alert levels, qualification, RMM, investigations) | TR13-2 ★★★ (EM for low bioburden/biologics: risk assessment methodology, worked examples) | PICS-Annex1 ★★★ (regulatory EM limits: Tables 5 & 6, continuous monitoring Grade A/B, APS monitoring, viable/non-viable methods) | TR90 ★★★ (CCS framework) | PtC-12 ★★★ (RABS EM) | PtC-Isolators ★★★ (isolator EM: risk-based frequency, surface sampling, plate transfer) | TR88 ★★★ (EM deviation investigation: Phase I/II framework) | TR22 ★★ (APS EM) | TR70 ★★ (disinfection impact on EM) | PtC-14 ★ (ATMP context)
 
 **Aseptic Processing (無菌製程)**
-→ PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
+→ ISO-13408 ★★★ (complete ISO requirements: APD, APA zone classification, HVAC/EM, equipment IQ/OQ/PQ, APAQ, APS/media fill framework, sterility testing — the normative foundation for all 7 parts) | PICS-Annex1 ★★★ (regulatory requirements: grade selection, RABS/isolator justification, interventions, vial capping, visual inspection, sterilisation principles) | Guide-No1 ★★★ (filling line) | TR22 ★★★ (APS/media fill) | TR62 ★★★ (manual aseptic processes: LAF, isolator, RABS design + APS) | PtC-Isolators ★★★ (isolator aseptic processing: design, EM, material transfer) | PtC-12 ★★★ (RABS) | TR90 ★★ (CCS) | TR26 ★★ (filtration step)
 
 **Container Closure Integrity / CCI (容器密封完整性)**
-→ TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+→ TR73 ★★★ (prefilled syringe CCI methods) | TR43 ★★★ (glass defects that compromise CCI: Critical classification, seal integrity risks) | ISO-11040 ★★★ (Part 8: CCI as mandatory test — probabilistic/deterministic methods per USP <1207>; tub-and-nest sterile barrier system integrity per ISO 11607-1) | TR90 ★★ (CCS containers) | Guide-No1 ★★ (vial/syringe filling line)
+
+**Isolator Systems / VHP Bio-decontamination (隔離器系統 / VHP生物去污)**
+→ ISO-13408-6 ★★★ (primary ISO standard for isolator systems: complete requirements — design, qualification DQ/IQ/OQ/PQ, VHP bio-decontamination validation, BI strategy, aeration validation, residue limits, glove integrity testing, Amendment 1:2013 changes) | PtC-Isolators ★★★ (PDA guidance: isolator design Q&A, pressure differential, RTP, EM, material transfer, VHP cycle development) | ISO-13408 ★★★ (Part 6 overview in series context) | PtC-12 ★★ (RABS comparison) | TR90 ★★ (CCS isolator context) | PICS-Annex1 ★★★ (regulatory requirement: isolator as preferred technology, Annex 1 §4.20-4.24) | TR62 ★★ (manual processes in isolator context)
 
 **Contamination Control (污染控制)**
-→ TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
+→ ISO-13408 ★★★ (Part 1: normative contamination control requirements — APA zone classification, cleanroom design, HVAC, EM, barrier systems, personnel control; Part 6: isolator VHP decontamination as contamination control barrier) | ISO-13408-6 ★★★ (isolator as highest-assurance barrier technology: design requirements, VHP bio-decontamination, glove integrity, indirect support zone) | TR90 ★★★ (CCS strategy) | ISPE-Vol3 ★★★ (facility-level contamination control: HVAC, classification, pressure cascades, barriers) | ISPE-HVAC ★★★ (HVAC engineering: AHU, filtration, pressure control, air change rates, risk assessment) | ISPE-Vol6 ★★★ (biopharmaceutical-specific: process closure layers, biological waste, containment vs classification) | PtC-12 ★★★ (RABS barrier) | PtC-Isolators ★★★ (isolator barrier & decontamination) | TR70 ★★★ (cleaning & disinfection program) | TR13 ★★ (EM as contamination detection tool) | TR22 ★★ (APS contamination) | PtC-14 ★★ (ATMP segregation) | TR26 ★★ (bioburden before filtration)
 
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
@@ -1288,7 +1521,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
 **Process Validation (製程驗證)**
-→ TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | TR26 ★★ (filter validation) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
+→ ISO-13408 ★★★ (complete validation frameworks across all 7 parts: Part 1 APS/media fill design; Part 2 filter BCT 3-lot/3-run; Part 3 lyophilizer PQ; Part 4 CIP 3-run worst-case PQ; Part 5 SIP BI-confirmed PQ; Part 6 isolator VHP bio-decontamination validation; Part 7 alternative simulation strategy) | TR60 ★★★ (lifecycle PV framework) | TR22 ★★ (APS as validation tool) | ISO-13408-2 ★★★ (filter validation: BCT 3-lot/3-run framework, integrity test correlation, gas filter validation) | TR26 ★★ (filter validation practical guidance) | TR90 ★★ (CCS validation) | Guide-No1 ★ (filling line qualification)
 
 **Risk Assessment (風險評估)**
 → TR54 ★★★ (excipient risk assessment: ERPN, SCRPN, OverallRPN, supply chain risk, 6 case studies) | TR84 ★★★ (DI risk: 9-Box vulnerability grid, FMEA for data processes, ATRA tool) | TR60 ★★★ (ICH Q9, design space) | TR22 ★★★ (APS risk-based design) | TR13-2 ★★★ (EM risk assessment for low bioburden: criticality factors, worked examples) | TR68 ★★★ (drug shortage risk triage: Risk Level A/B/C, Priority Level 1/2/3, PHA approach) | TR26 ★★ (filter risk) | PtC-14 ★★ (ATMP risk) | TR90 ★★ (CCS risk) | TR66 ★★ (SUS risk)
@@ -1297,7 +1530,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR62 ★★★ (manual aseptic operator qualification, gowning qualification, fingertip sampling, human factors) | PtC-Isolators ★★★ (isolator gowning, glove disinfection) | PtC-12 ★★★ (RABS gowning, gloves) | TR22 ★★★ (APS personnel qualification) | TR90 ★★ (CCS personnel training) | PtC-14 ★★ (ATMP gowning)
 
 **Equipment Qualification IQ/OQ/PQ (設備確效)**
-→ TR60 ★★★ (lifecycle qualification framework) | ISPE-HVAC ★★★ (HVAC commissioning & qualification: V-diagram, particle counting, recovery test, DP alarm delay) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
+→ ISO-13408 ★★★ (Parts 1–5: comprehensive equipment qualification across all aseptic process equipment — Part 1: general IQ/OQ/PQ framework for aseptic processing equipment; Part 3: lyophilizer qualification including leak test/thermal control/vacuum/condenser; Part 4: CIP DQ/IQ/OQ/PQ; Part 5: SIP DQ/IQ/OQ/PQ with BI confirmation) | ISO-13408-6 ★★★ (isolator qualification: DQ URS review, IQ HEPA integrity + leak testing [7.3.4.2 shall be removed], OQ pressure/airflow/HEPA/particle/BI/aeration tests, PQ repeated VHP cycles + APS media fills) | TR60 ★★★ (lifecycle qualification framework) | ISO-13408-5 ★★★ (SIP equipment qualification: DQ design suitability, IQ installation verification, OQ temperature mapping/cold spot identification, PQ three-run BI confirmation) | ISO-13408-4 ★★★ (CIP equipment qualification: DQ design review, IQ installation + CSV qualification, OQ operating parameters, PQ 3 consecutive runs at worst-case conditions) | ISPE-HVAC ★★★ (HVAC commissioning & qualification: V-diagram, particle counting, recovery test, DP alarm delay) | TR90 ★★ (equipment as CCS element) | TR26 ★★ (filter installation qualification) | Guide-No1 ★★ (filling machine qualification)
 
 **HVAC Engineering / Air Handling (暖通空調工程)**
 → ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
@@ -1308,11 +1541,17 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Annex 1 (2022) EU GMP / PIC/S Annex 1**
 → PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
 
+**Sterilization in Place / SIP (就地滅菌)**
+→ ISO-13408-5 ★★★ (primary ISO standard: full requirements for SIP validation, DQ/IQ/OQ/PQ, steam SIP guidelines, biological indicators, dead leg design, routine monitoring) | ISPE-Vol3 ★★ (clean steam and utility systems for SIP in sterile facilities) | ISPE-Vol4 ★★ (clean steam generation and WFI for SIP condensate) | ISPE-SUT ★★ (CIP/SIP elimination advantages of single-use systems) | PICS-Annex1 ★★ (regulatory context for SIP in sterile manufacturing) | Guide-No1 ★★ (SIP for filling line fluid path) | ISO-13408-4 ★★ (CIP precedes SIP in typical workflow; dead leg design, drainability, equipment design shared requirements)
+
+**Clean-in-Place / CIP (就地清洗)**
+→ ISO-13408-4 ★★★ (primary ISO standard: complete CIP requirements — equipment design for cleanability, cleaning agent characterization, process parameters, DQ/IQ/OQ/PQ validation lifecycle, sampling methods, acceptance criteria calculation, routine monitoring, change control, personnel training) | ISO-13408-5 ★★ (SIP follows CIP; in-situ concept, equipment design overlap: dead legs, drainability) | ISPE-SUT ★★ (single-use systems eliminate CIP: business case, contamination risk reduction) | ISPE-Vol6 ★★ (SUS impact: CIP/SIP footprint elimination in biopharmaceutical facilities) | Guide-No1 ★★ (CIP/SIP analogy in filling line context) | TR90 ★★ (cleaning as part of Contamination Control Strategy)
+
 **Sterile Filtration / Bioburden Control (除菌過濾/微生物負荷)**
 → TR26 ★★★ (primary filtration guidance) | PICS-Annex1 ★★★ (regulatory requirements: PUPSIT 8.87, redundant filters 8.92, bioburden sampling 8.93, single-batch discard 8.94) | PtC-1 ★★★ (PUPSIT, filter integrity testing, two-filter redundancy, gas filters) | TR90 ★★ (bioburden as CCS element) | TR22 ★★ (bioburden before APS) | Guide-No1 ★★ (sterile fluid path)
 
 **Prefilled Syringe (預充填注射器)**
-→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine)
+→ TR73 ★★★ (CCI, compatibility, manufacturing) | TR73-2 ★★★ (EU MDR regulatory) | ISO-11040 ★★★ (complete prefilled syringe series Parts 1–8: glass barrels Type I, plastic barrels COP/COC, plunger stoppers PSL/PST, tub-and-nest packaging, finished syringe requirements — 12 performance tests, Break-Loose/Extrusion Force, CCI per USP <1207>, drug-container interaction, biocompatibility per ISO 14971/IEC 62366) | TR43 ★★ (syringe glass defect lexicon: cone, flange, barrel defects) | Guide-No1 ★★ (syringe filling machine) | ISO-11040-6 ★★★ (plastic polymer barrel for injectables: COC/COP/PP materials, RTF sterilized subassembled syringe, Table 1 dimensions, SAL 10⁻⁶, particles 600/60, endotoxin 0.25 EU/ml, LLA 22N, Annex C flange/cone breakage, Annex G closure tests) | ISO-11040-5 ★★ (plunger stopper for injectables: dimensions, material, hardness, extractables, ageing) | ISO-11040-1 ★ (dental cartridge glass cylinder: dimensions, material, hydrolytic resistance, marking)
 
 **Supplier / Vendor Qualification (供應商確認)**
 → PtC-13 ★★★ (ATMP material supplier qualification: tiering, audit, SQA, RUO suppliers) | TR66 ★★★ (SUS supplier qualification) | TR65 ★★ (vendor/CDMO assessment in TT: facility fit, quality system evaluation) | TR52 ★★ (3PL qualification) | TR39 ★★ (LSP/carrier qualification, quality agreements) | TR90 ★★ (raw material suppliers)
@@ -1329,8 +1568,8 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Statistical Methods / SPC (統計方法)**
 → TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)
 
-**Cleaning Validation (清潔確效)**
-→ Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element)
+**Cleaning Validation / CIP (清潔確效 / 就地清洗)**
+→ ISO-13408-4 ★★★ (primary ISO standard: full CIP requirements — equipment design, cleaning agent selection, process parameters, DQ/IQ/OQ/PQ, sampling methods, 1/1000 dose acceptance criteria, routine monitoring, change control) | Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element) | ISO-13408-5 ★★ (SIP immediately follows CIP; in-situ treatment concept)
 
 **Glass Container Quality / Nonconformity (玻璃容器品質/不符合項)**
 → TR43 ★★★ (5 defect lexicons: moulded glass, ampoules, cartridges, syringes, vials; classification framework, RTU standards) | TR87 ★★★ (glass vial handling, breakage prevention, depyrogenation, capping best practices) | TR85 ★★ (visible particle inspection methods for glass containers) | TR73 ★★ (syringe-specific glass container requirements) | Guide-No1 ★ (vial washing and depyrogenation tunnel)
@@ -1356,6 +1595,9 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Aseptic Processing — Regulatory Positions & Best Practices (無菌製程法規立場)**
 → PtC-1 ★★★ (comprehensive PDA best practices across all 7 domains: environment, EM, APS, personnel, materials, CDS, utilities) — single primary source for current industry position
 
+**Aseptic Process Definition (APD) / Contamination Control Strategy for Aseptic Manufacturing (無菌製程定義/無菌製造污染控制策略)**
+→ ISO-13408 ★★★ (Part 1: APD as foundational document for each aseptic operation — APA zone classification, critical step identification, control parameters, personnel/equipment/environment requirements; Part 7: APD extension to medical devices/combination products with alternative simulation approach) | TR90 ★★★ (CCS as overarching contamination control framework aligned to Annex 1 2022) | PICS-Annex1 ★★★ (regulatory requirement for CCS: Section 4 of Annex 1 2022) | PtC-1 ★★ (industry best practices for APD elements across 7 domains)
+
 **Blow-Fill-Seal (BFS 製程)**
 → PtC-1 ★★★ (K.1-K.3: design, resin handling, APS for BFS, Grade A air shroud) — single primary source
 
@@ -1372,7 +1614,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-Vol4 ★★★ (passivation procedures, rouging types, orbital welding, weld defects, surface finish, PVDF) | ISPE-Vol3 ★ (construction materials)
 
 **Lyophilization / Freeze-drying (凍乾)**
-→ TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
+→ ISO-13408 ★★★ (Part 3: complete lyophilizer qualification requirements — critical process parameters, 4 hold time limits, IQ/OQ/PQ including leak test/thermal control uniformity/vacuum system/condenser capacity, vent filter management, loading/unloading in Grade A, SIP frequency per batch vs. campaign) | TR22 ★★★ (lyo APS) | TR87 ★★ (lyo glass handling: product expansion, stoppering forces)
 
 **GDP / Good Distribution Practices (優良運銷規範)**
 → TR52 ★★★ (GDP framework, audit checklist) | TR46 ★★★ (last-mile GDP: global supply chains, serialization, technologies, cost) | TR39 ★★ (lane qualification, OQ/PQ, OPV)
@@ -1442,6 +1684,131 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 
 **Barrier Technology: RABS & Isolator (屏障技術: RABS與隔離器)**
 → ISPE-Vol3 ★★★ (oRABS/cRABS/isolator comparison, design, decontamination, EM, leak testing) | PtC-12 ★★★ (RABS operational detail) | PtC-Isolators ★★★ (isolator operational detail) | TR90 ★★ (CCS barrier context)
+
+**Dental Local Anaesthetic Cartridge / Glass Cylinder (牙科局部麻醉藥筒/玻璃管)**
+→ ISO-11040-1 ★★★ (glass cylinder dimensions, materials, hydrolytic resistance, annealing, marking) — single primary source for dental cartridge glass cylinders
+
+---
+
+## ISO Standards Knowledge Base
+
+## ISO/ISO-11040-1-Complete.md
+**Report:** ISO 11040-1:2015 — Prefilled Syringes, Part 1: Glass Cylinders for Dental Local Anaesthetic Cartridges
+**Pages:** p1–p10 (4 technical pages) | **Sections:** 3
+
+**Covers questions about:**
+- Scope and applicability: 1.7 ml, 1.8 ml, 2.2 ml glass cylinders for dental local anaesthetic cartridges (single use only)
+- Dimensions and tolerances: cylinder length, neck opening (3.15 ± 0.15 mm), truncated cone design variations
+- Designation format: how to read and write ISO 11040-1 compliant designations (e.g., ISO 11040-1 – cl)
+- Material requirements: colourless glass (cl), ISO 720 HGA 1 hydrolytic resistance grain class
+- 9-month advance notification obligation for glass composition changes
+- Performance requirements: sealing surface (4.2.1), seed/bubbles (4.2.2), air lines (4.2.3), hydrolytic resistance HC 1 (4.2.4), residual stress 40 nm/mm (4.2.5)
+- Annealing concept and residual stress limit: optical retardation ≤ 40 nm/mm
+- Outer packaging marking: five mandatory items including lot number or date of production
+- Normative references: ISO 720, ISO 4802-1, ISO 4802-2
+
+**Key terms:** glass cylinder, dental cartridge, dental local anaesthetic, hydrolytic resistance, HC 1, HGA 1, ISO 720, ISO 4802, truncated cone, neck opening, annealing, residual stress, optical retardation, designation, single use, primary pack, sealing surface, seed, bubble, air line, lot number, shall vs should
+
+**Sections:** Clause 1 (Foreword, Scope & Normative References) → Clause 2 (Dimensions & Designation) → Clause 3 (Requirements, Marking & Bibliography)
+
+---
+
+## ISO/ISO-11040-5-Complete.md
+**Report:** ISO 11040-5:2012 — Prefilled Syringes, Part 5: Plunger Stoppers for Injectables
+**Pages:** p1–p5 (5 technical pages) | **Sections:** 5
+
+**Covers questions about:**
+- Scope and applicability: plunger stoppers for glass barrels (single-chamber) for injection preparations (ISO 11040-4 compatible); single use only; excludes barrier-coated plunger stoppers
+- Classification: PSL (plunger stopper with snap lid) vs. PST (plunger stopper with thread) — PSL for 0.5 ml, PST for 1 ml (long) to 20 ml
+- Shape and dimensions: Table 1 with 7 volume sizes (0.5 ml to 20 ml); key parameters d1 (outer diameter), d2 (neck), d3 (top), h1 (total height), h2 (effective sealing height); ISO 3302-1 Class M3 general tolerances
+- Spacers requirement: must be present; height ≤ 0.3 mm; shape agreed between manufacturer and assembler
+- Sprues: must not protrude beyond the surface
+- Thread safety: plunger stopper must not detach from plunger rod during normal use including aspiration
+- Designation format: Plunger ISO 11040-5 - [PSL/PST] - [volume] - [lg for long version]
+- Material: elastomeric formulation approved by end user; each delivery must conform to type sample; sterilization tolerance: 121±2°C × 30 min × 2 autoclave cycles; alternative sterilization (e.g., irradiation) requires separate suitability evaluation
+- Physical requirements: hardness ±5 Shore A (ISO 7619-1) or ±5 IRHD (ISO 48) vs. type sample; resistance to ageing — performance must be maintained throughout entire shelf-life of medicinal product
+- Chemical requirements: aqueous extractables must meet ISO 8871-1 limits
+- Biological requirements: ISO 8871-4 applies (cytotoxicity, sensitization, intracutaneous reactivity, acute systemic toxicity, hemolysis)
+- Labelling: packed stoppers meeting standard requirements can be labelled with Clause 5 designation
+
+**Key terms:** plunger stopper, PSL, PST, snap lid, thread, elastomeric, Shore A, IRHD, hardness, spacers, sprues, nominal inner diameter, d1 d2 d3 h1 h2, ISO 8871-1, ISO 8871-4, ISO 7619-1, ISO 3302-1, ISO 11040-4, aqueous extractables, resistance to ageing, type sample, sterilization tolerance, autoclave, single use, prefilled syringe, plunger rod, aspiration, barrier-coated, designation, ISO 15378
+
+**Sections:** Clause 0 (Foreword & Introduction) → Clause 1 (Scope, References & Classification) → Clause 2 (Shape & Dimensions) → Clause 3 (Designation, Material & Requirements) → Clause 4 (Labelling & Bibliography)
+
+---
+
+## ISO/ISO-11040-Complete.md
+**Report:** ISO 11040 Prefilled Syringes Series (Parts 1–8) — General and Specific Requirements for Prefilled Syringes
+**Pages:** Parts 1–8 (complete series) | **Sections:** 6
+
+**Covers questions about:**
+- Parts 1–3 (Dental Cartridge Components): glass cylinders for dental local anaesthetic cartridges (1.7/1.8/2.2 ml), Type I glass HGA 1, plunger stoppers for dental cartridges, seals (caps) for dental cartridges
+- Part 4 (Glass Barrels for Injectables): sterilized subassembled syringes — Type I glass (hydrolytic resistance HGA 1), dimensional requirements (0.5 ml to 20 ml), SAL 10⁻⁶, endotoxin <0.25 EU/ml, particle limits, siliconization requirements, needle assembly requirements (Luer cone/Luer lock), closure system
+- Part 5 (Plunger Stoppers for Injectables): PSL (snap lid) vs. PST (thread) classification, hardness ±5 Shore A or ±5 IRHD vs. type sample, aqueous extractables per ISO 8871-1, biological requirements per ISO 8871-4, resistance to ageing throughout shelf-life
+- Part 6 (Plastic Barrels): COP/COC cyclic olefin polymer barrels, 0.5 ml–100 ml range, multiple sterilization modes (EtO/irradiation/autoclave/VHP), polymer change notification duty to customers
+- Part 7 (Packaging Systems): tub-and-nest packaging for RTU sterilized subassembled syringes — three-tier hierarchy (nest→tub+sealing lid→protective bag), sterile barrier system per ISO 11607-1, 160/100/64/42/30/20-cavity nest dimensions in Annex A, sealing lid peelability requirements, reel bag vs. header bag protective configurations, 40 mm automatic opening threshold
+- Part 8 (Finished Prefilled Syringes): user requirements (ISO 14971 risk management, IEC 62366 usability engineering), 12 mechanical/functional performance tests (Break-Loose Force, Gliding Force, Extrusion Force, needle pull-out, cap removal, dead volume, etc.), 6 pharmaceutical requirements (CCI per USP <1207>, drug-container interaction, elemental impurities, extractables/leachables, biocompatibility, microbiological quality), ISO 15378 QMS requirement
+
+**Key terms:** prefilled syringe, glass barrel, plastic barrel, COP, COC, cyclic olefin polymer, plunger stopper, PSL, PST, tub-and-nest, RTU syringe, ready-to-use, sterile barrier system, ISO 11607-1, nest, 160-cavity, tub, sealing lid, protective bag, SAL 10⁻⁶, HGA 1, hydrolytic resistance, siliconization, Luer cone, Luer lock, Break-Loose Force, Gliding Force, Extrusion Force, dead volume, CCI, USP <1207>, drug-container interaction, extractables leachables, biocompatibility, ISO 14971, IEC 62366, ISO 8871-1, ISO 8871-4, ISO 15378, Shore A, IRHD, type sample, SAL, endotoxin, sterility assurance level, subassembled syringe, polymer change notification, ageing resistance, dental cartridge
+
+**Sections:** Parts 1–3 (Dental Cartridge Components) → Part 4 (Glass Barrels for Injectables) → Part 5 (Plunger Stoppers for Injectables) → Part 6 (Plastic Barrels) → Part 7 (Tub-and-Nest Packaging Systems) → Part 8 (Finished Prefilled Syringe Requirements)
+
+---
+
+## ISO/ISO-11040-7-Complete.md
+**Report:** ISO 11040-7:2015 — Prefilled Syringes, Part 7: Packaging Systems for Sterilized Subassembled Syringes Ready for Filling
+**Pages:** p1–p27 (27 pages) | **Sections:** 8
+
+**Covers questions about:**
+- Scope: packaging systems for sterilized subassembled syringes (RTU format) ready for aseptic filling; three-tier system = nest → tub+sealing lid (sterile barrier) → protective bag
+- Normative references: ISO 11607-1 (sterile barrier requirements) as sole normative reference
+- Terms and definitions: 11 key terms including nest, tub, insert liner, sealing lid, protective bag, sterile barrier system, trading unit
+- General requirements (Clause 4.1): ISO 11607-1 compliance for sterile barrier; contamination prevention throughout packaging, transport, filling; 11-step assembly process flow
+- Nest requirements (Clause 4.2): cavity dimensions in Annex A; material/dimensional stability; bevel edges; deflection limits; alignment requirements; e-beam compatibility
+- Tub requirements (Clause 4.3): nominal 3" tub (227×260 mm, depth 97.5 mm, flange 12.7 mm); sterilization indicator placement; stack ribs; detailed dimensions in Annex C
+- Insert liner (Clause 4.4): particle control function; e-beam shielding; material compatibility; position stability inside tub
+- Sealing lid (Clause 4.5): sterile barrier function per ISO 11607-1; peel initiation tab; peelability without delamination; compatibility with tub flange; transparent/opaque options
+- Protective bag (Clause 4.6): single-bag (small syringes) and double-bag configurations; reel bag vs. header bag types; window requirements; seal integrity; Annex D orientation; Annex F 40 mm threshold
+- Information requirements (Clause 5): manufacturer info provision including material characteristics and window location; compatibility data
+- Marking (Clause 6): 7 mandatory tub marking items — batch number, manufacture date, manufacturer identity, contents description, quantity, sterilization indicator, storage conditions
+- Trading unit (Clause 7): protection requirements; ageing tests; shipping/transport tests
+- Annex A: nest dimension tables — Table A.1 (160-cavity, 0.5–1 ml), A.2 (100-cavity, 1–3 ml), A.3 (64/42/30/20-cavity, 2–50 ml); universal external dimensions A×B ≈ 230.2×198.5 mm
+- Annex B: nest deflection measurement procedure — two support methods, depth gauge, 0.01 mm precision
+- Annex C: standard 3" tub dimension table with flange design and stack rib specifications
+- Annex D: protective bag orientation configurations D.1–D.6 for filling and transport; EtO transparency warning
+- Annex E: reel bag vs. header bag design; Table E.1 dimension requirements; cutting area formula Lc = C − S4 − Lt
+- Annex F: bag-to-tub end distance test apparatus; 40 mm automatic opening threshold specification
+
+**Key terms:** nest, tub, 3-inch tub, insert liner, sealing lid, protective bag, sterile barrier system, trading unit, RTU syringe, ready-to-use, aseptic filling, ISO 11607-1, EtO sterilization, e-beam, VHP, reel bag, header bag, 160-cavity, 100-cavity, 64-cavity, nest deflection, depth gauge, bag orientation, bag-to-tub distance, cutting area, peelability, delamination, flange, stack rib, sterilization indicator, batch number, ageing test, shipping test
+
+**Sections:** Foreword & Introduction → Clause 1–3 (Scope, References, Terms) → Clause 4.1–4.2 (General & Nest) → Clause 4.3–4.6 (Tub, Liner, Lid, Bag) → Clauses 5–7 (Information, Marking, Trading Unit) → Annex A (Nest Dimensions) → Annex B–C (Deflection & Tub) → Annex D–F + Bibliography (Bag Orientation, Design, Test)
+
+---
+
+## ISO/ISO-11040-6-Complete.md
+**Report:** ISO 11040-6:2019 — Prefilled Syringes, Part 6: Plastic Barrels for Injectables and Sterilized Subassembled Syringes Ready for Filling
+**Pages:** p1–p53 (53 pages) | **Sections:** 9
+
+**Covers questions about:**
+- Scope: polymer barrel specifications and sterilized subassembled (RTF) syringe system requirements; what is in scope vs excluded (plunger/rod not in scope; inline moulding-filling systems not applicable)
+- Terms: 8 key definitions including sterilized subassembled syringe (3.7) with 6-step pre-treatment process, syringe closure system (3.8), staked needle syringe (3.5)
+- General requirements: quality system (ISO 15378 recommended), Gauge R&R ≤20% tolerance (≤30% for destructive tests), statistically valid sampling plans (ISO 2859-1, ISO 3951), electronic records reliability
+- Dimensions and designation: Table 1 with 7 parameters (d1/d2/l/l1/h1/d3/d4) for 10 nominal volumes (0.5–100 ml); 4 head designs (Model A staked needle, B Luer cone, C Luer lock, D integrated Luer lock per ISO 80369-7)
+- Material requirements: 8 selection factors (microbial barrier, biocompatibility, sterilization compatibility, O2/H2O permeability, shelf-life, fill-finish functionality, transport robustness); change notification obligation
+- Needle, closure, CCI requirements: ISO 7864/9626 needle; ISO 8871-1 closure materials; LLA pull-off ≥22 N (G.3); liquid leakage 110 kPa (G.2); tip cap pull-off/torque by agreement
+- Physical requirements: SAL 10⁻⁶; sub-visible particles ≤600 (≥10µm) / ≤60 (≥25µm) per syringe; lubricant not visible as droplets
+- Chemical/biological requirements: minimize migrating chemical constituents; endotoxin <0.25 EU/ml × nominal volume; USP <85> / Ph.Eur. 2.6.14 testing
+- Annex C (normative): flange breakage test (C.1: 2500N load cell, 100 mm/min) and Luer cone breakage test (C.2: 25 mm/min); limit values by agreement
+- Annex G (normative): 6 closure tests — G.1 needle pull-out (50 mm/min), G.2 liquid leakage 110 kPa, G.3 LLA ≥22N, G.4 LLA torque, G.5 tip cap unscrewing torque, G.6 pull-off (Method 1 and 2)
+- Annex D (informative): endotoxin sample prep (ISO 5 environment, 10 min shaking, LAL); particle prep (ISO 5, 20 inversions, 2 min rest)
+- Annex E/F (informative): glide force test for lubrication quality (break-loose / glide / end-of-stroke regions); needle penetration force 8-stage curve
+- Annex H (informative): dye tightness test (270 mbar vacuum, 30 min); not sufficient alone for CCI
+- Annex I (informative): material codification — COC, COP, PP, OTH; material selection considerations for sterilization method compatibility
+- Graduation and packaging: graduation optional (ISO 7886-1 reference); RTF packaging per ISO 11040-7; plastic barrel labelling by agreement
+
+**Key terms:** sterilized subassembled syringe, ready for filling, RTF, polymer barrel, COC cyclo-olefin copolymer, COP cyclo-olefin polymer, PP polypropylene, staked needle, Luer cone, Luer lock, LLA Luer lock adaptor, tip cap, needle shield, SAL 10⁻⁶, sub-visible particles, endotoxin EU/ml, siliconization, glide force, flange breakage, Luer cone breakage, container closure integrity CCI, dye tightness test, tub-and-nest, ISO 80369-7, ISO 8871-1, ISO 10993-1, sterile barrier system, dead space
+
+**Sections:** Foreword & Introduction → Scope/References/Terms → General Requirements (QMS/Testing/Documentation) → Dimensions (Table 1, 10 sizes, 4 head designs) → Requirements (Material/Physical/Chemical/Biological) → Graduation/Packaging/Labelling → Annex A–C (types, head designs, barrel test methods) → Annex D–G (sample prep, lubrication, needle penetration, closure tests) → Annex H–I & Bibliography (dye test, materials guidance, references)
 
 ---
 

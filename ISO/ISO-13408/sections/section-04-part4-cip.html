@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 13408 Part 4 - Clean-in-Place (CIP)</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+.right-column { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .formula-box, .application-box { border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.92rem; line-height: 1.7; }
+.concept-box h4, .analogy-box h4, .note-box h4, .formula-box h4, .application-box h4 { margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+.concept-box p, .analogy-box p, .note-box p, .formula-box p, .application-box p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.concept-box ul, .analogy-box ul, .note-box ul, .formula-box ul, .application-box ul { margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem; }
+.concept-box li, .analogy-box li, .note-box li, .formula-box li, .application-box li { margin-bottom: 0.35rem; font-size: 0.92rem; }
+.concept-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.concept-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4 { color: #c65102; }
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%); border: 2px dashed #3182ce; border-radius: 10px; padding: 1.25rem; margin: 1.25rem 0; font-size: 0.92rem; }
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box li { font-size: 0.92rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: #7c3aed; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(124,58,237,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+@media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } .main-content { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISO 13408 Part 4: Clean-in-Place (CIP)</h1>
+    <div class="subtitle">無菌處理醫療保健產品 — 第四部分：就地清洗技術</div>
+    <div class="page-info">ISO 13408-4:2005 | 22 pages</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解 CIP（就地清洗）的定義範圍：適用於不拆卸設備的內表面清洗，不適用於拆卸後清洗</li>
+        <li>掌握 CIP 設計的關鍵要素：最難清洗部位（Worst-to-Clean）識別、死角（Dead Leg）消除、排水性設計</li>
+        <li>學習 CIP 驗證的科學基礎：殘留物種類、清潔標準設定（可接受殘留限值）及驗證方法</li>
+        <li>理解 CIP 製程參數（溫度、濃度、流速、接觸時間）的驗證要求</li>
+        <li>了解 CIP 與 SIP 的整合關係（Part 5），以及整個清洗/滅菌系統的驗證策略</li>
+    </ul>
+</div>
+
+<!-- Section 1 -->
+<div class="section-title">Clauses 1–5: Scope, Definitions, and Process/Equipment Characterization</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>1 Scope</h3>
+        <p>This part of ISO 13408 specifies the general requirements for <span class="key-term">clean-in-place (CIP) processes</span> applied to product contact surfaces of equipment used in the manufacture of sterile health care products by aseptic processing. It is <strong>not applicable</strong> to processes where equipment is dismantled and cleaned in a washer.</p>
+
+        <h3>Key Definitions</h3>
+        <ul>
+            <li><strong>CIP (3.2):</strong> Method of cleaning of the internal surfaces of parts of the equipment or an entire process system <span class="key-term">without or with minimal disassembly</span>. NOTE: CIP also includes the removal of remaining residual cleaning agent to an acceptable level.</li>
+            <li><strong>Dead leg (3.3):</strong> Location which, by design, does <span class="key-term">not permit adequate accessibility of the cleaning agent</span></li>
+            <li><strong>Worst-to-clean (3.6):</strong> Most difficult conditions for cleaning. EXAMPLES: Materials to be removed, surface types to be cleaned, process parameters to be met or position(s) to be reached.</li>
+        </ul>
+
+        <h3>5.1 General Concepts</h3>
+        <p>The specification for the CIP process shall include but not be limited to:</p>
+        <ul>
+            <li>a) physical and chemical properties of the material to be removed and the strength of its adherence</li>
+            <li>b) physical and chemical properties and mechanism of action of cleaning agent(s)</li>
+            <li>c) compatibility of the equipment with the cleaning agents and processing conditions</li>
+            <li>d) pre-cleaning period and conditions prior to cleaning</li>
+            <li>e) the number of passes (single-pass or multi-pass cleaning)</li>
+            <li>f) filling and immersing period with cleaning agent(s)</li>
+            <li>g) agitation or spraying of cleaning agent(s)</li>
+            <li>h) cleaning agent(s) elimination</li>
+            <li>i) post-cleaning drying</li>
+            <li>j) post-cleaning protection of the cleanliness</li>
+            <li>k) maximum post-cleaning hold period and conditions</li>
+        </ul>
+
+        <h3>5.2 Effectiveness of CIP</h3>
+        <p><strong>5.2.1</strong> The necessary level of cleanliness shall be established and documented. Justification of the process parameters and the permitted levels of <span class="key-term">residual substances</span> shall be included. There shall be <span class="key-term">no residue that poses a significant risk to patient safety</span>.</p>
+
+        <p><strong>5.2.2</strong> Criteria for cleanliness are dependent in part, on the nature of the product that was previously processed, taking into account potency, toxicity, biocompatibility, carcinogenicity, mutagenicity, potential for tissue sensitization where equipment is not dedicated. Where removal is not possible with sufficient efficacy, it may be necessary to use <span class="key-term">dedicated equipment</span>.</p>
+
+        <h3>5.3.1 Equipment to be Subjected to CIP</h3>
+        <p>Design considerations shall include but not be limited to:</p>
+        <ul>
+            <li>smoothness of inner surface</li>
+            <li>distribution of cleaning agent(s) to all relevant surfaces</li>
+            <li>absence of dead legs in piping systems</li>
+            <li>drainability of the system (slope of piping)</li>
+            <li>compatibility of materials of construction with cleaning agents</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：CIP 的四要素（TACT）</h4>
+            <p>有效的 CIP 依賴四個相互補充的要素：</p>
+            <ul>
+                <li><strong>T (Temperature 溫度)：</strong>高溫加速化學反應、增強清潔劑效力（通常 60-80°C）</li>
+                <li><strong>A (Action 機械作用)：</strong>流速產生的湍流（turbulence）和噴射力，物理去除殘留物</li>
+                <li><strong>C (Concentration 濃度)：</strong>清潔劑的化學清洗能力（通常 NaOH 1-2%、HNO₃ 1%等）</li>
+                <li><strong>T (Time 時間)：</strong>清潔劑接觸時間，使化學反應充分發生</li>
+            </ul>
+            <p>這四個要素可以互換補充：提高溫度可縮短時間；增大流速可降低濃度。但驗證必須確認所選的參數組合有效。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：工業洗碗機</h4>
+            <p>CIP 就像一台超大的工業洗碗機：它就地清洗（不需要把管道拆開搬去洗碗槽），用高溫熱水 + 洗碗精 + 噴射水壓，清洗整個管路系統的內表面。死角（Dead Leg）就像碗盤疊在一起的夾縫——清潔劑到不了，污垢就殘留在那裡。好的 CIP 系統設計就是確保每個角落都能被清潔劑「噴到」。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>關鍵概念：可接受殘留限值（Acceptance Limits）</h4>
+            <p>ISO 13408-4 要求設定「無顯著患者安全風險的殘留」，這在實務上通常通過以下方法計算：</p>
+            <ul>
+                <li><strong>10 ppm 規則：</strong>前一產品在後一產品中的殘留不超過 10 ppm（傳統方法，已逐漸被淘汰）</li>
+                <li><strong>0.1% 治療劑量規則：</strong>前一產品殘留量不超過其最低治療劑量的 0.1%（基於毒理學）</li>
+                <li><strong>HBELs（Health-Based Exposure Limits）：</strong>基於 PDE（Permitted Daily Exposure）或 ADE 計算的限值——這是 EMA 2014 指引要求的現代方法</li>
+            </ul>
+            <p>對 CDMO 而言，HBELs 評估現在是客戶清潔驗證計畫的基礎文件，通常需要毒理學家評估。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>清潔驗證限值計算框架</h4>
+            <pre>
+清潔驗證殘留限值計算：
+
+方法 1：最低治療劑量法（傳統）
+殘留限值 = (最小治療劑量 × 安全因子) /
+            最大批量 × 最小一日劑量
+
+方法 2：PDE/ADE 法（現代，基於 HBEL）
+殘留限值 (mg/設備表面) =
+    ADE (mg/day) × 最小一日劑量 /
+    次日最大生產批量
+
+清潔驗證採樣方法：
+1. 擦拭採樣（Swab Sampling）
+   - 直接接觸法，最具代表性
+   - 用於可及表面
+
+2. 沖洗採樣（Rinse Sampling）
+   - 用最終沖洗水/溶劑採樣
+   - 覆蓋更大面積
+   - 靈敏度較低
+
+3. 直觀檢查（Visual Inspection）
+   - 輔助方法，確認無明顯殘留
+   - 通常作為必要條件但不充分
+            </pre>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CDMO 多產品共用設備的 CIP 挑戰</h4>
+            <p>CDMO 最大的 CIP 挑戰是<strong>多產品共用設備</strong>。每次產品切換都需要：</p>
+            <ol>
+                <li>識別前一產品和後一產品的配對組合（矩陣方法）</li>
+                <li>確定最差情況（Worst Case）產品組合進行驗證</li>
+                <li>HBELs 評估（特別是高活性藥物 HPAPI 的殘留）</li>
+                <li>清潔驗證完成後才能放行設備用於下一產品</li>
+            </ol>
+            <p>對於無法有效清潔去除的高毒性藥物（如腫瘤藥），可能需要<strong>專用設備</strong>，這是 CDMO 在接收此類客戶時必須預先評估的 CapEx 問題。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個配液系統有一個 T 型接頭，其中一個分支被閥門關閉（形成 Dead Leg）。Dead Leg 的長度對 CIP 效果有何影響？通常的設計規範是什麼？</li>
+                <li>你的 CDMO 要接收一個新的高活性單株抗體（mAb）客戶，使用現有的多產品共用充填線。請描述清潔驗證策略的主要步驟，以及你需要什麼資料來設定可接受殘留限值。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2: Validation -->
+<div class="section-title">Clauses 6–9: Validation and Routine Monitoring</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>6 Process Simulation and Validation</h3>
+        <p><strong>6.1</strong> Validation of the CIP process shall be performed under <span class="key-term">worst-case conditions</span> for the cleaning process, taking into account all variables affecting the cleanliness. These variables include the product to be cleaned, the cleaning agents, the cleaning conditions and the equipment configuration.</p>
+
+        <p><strong>6.2</strong> The <span class="key-term">worst-to-clean location(s)</span> shall be identified and appropriately sampled.</p>
+
+        <p><strong>6.3</strong> Validation acceptance criteria for residual substances shall be specified, including the residual limit for each substance. The rationale for the <span class="key-term">acceptable residual level</span> shall be documented.</p>
+
+        <p><strong>6.4</strong> Validation of the CIP process shall be conducted a <span class="key-term">minimum of three times</span> under consistent and reproducible conditions. Validation results shall demonstrate that the CIP process is capable of producing a consistently clean equipment surface.</p>
+
+        <h3>7 Qualification of CIP Equipment</h3>
+        <p>The following aspects shall be addressed in equipment qualification:</p>
+        <ul>
+            <li>DQ — Design Qualification</li>
+            <li>IQ — Installation Qualification</li>
+            <li>OQ — Operational Qualification (demonstrating that the CIP process meets specifications)</li>
+            <li>PQ — Performance Qualification (demonstrating consistent cleaning effectiveness)</li>
+        </ul>
+
+        <h3>9 Routine Monitoring and Control</h3>
+        <p><strong>9.1</strong> A programme for routine monitoring and control of the CIP process shall be established. This shall include:</p>
+        <ul>
+            <li>monitoring of CIP process parameters (temperature, concentration, flow rate, time)</li>
+            <li>microbiological monitoring</li>
+            <li>chemical residue monitoring</li>
+            <li>periodic revalidation following changes</li>
+        </ul>
+
+        <p><strong>9.2</strong> Cleaning agents shall be replenished at defined intervals. The efficacy of the <span class="key-term">cleaning agent(s) concentration</span> shall be confirmed prior to use.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：CIP 驗證的最差條件設計</h4>
+            <p>CIP 驗證必須在最差條件下進行。「最差條件」通常包含：</p>
+            <ul>
+                <li><strong>最難清除的殘留物：</strong>通常是驗證矩陣中最高濃度或最黏稠的產品</li>
+                <li><strong>最難清洗的位置（Worst-to-Clean）：</strong>死角、噴嘴覆蓋不到的區域、焊縫</li>
+                <li><strong>最低清洗劑濃度（下限）：</strong>驗證在批准範圍的最低端仍然有效</li>
+                <li><strong>最短接觸時間（下限）：</strong>驗證在最短規定時間內仍有效</li>
+                <li><strong>最低溫度（下限）：</strong>驗證在溫度規格最低端仍有效</li>
+            </ul>
+            <p><strong>邏輯：</strong>如果在最差條件下驗證通過，正常條件下一定也通過。反之不成立。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>CIP 驗證的三次重複要求</h4>
+            <p>ISO 13408-4 第 6.4 條要求最少三次驗證。這個要求與 APS 的三次要求類似——三次成功的一致結果說明製程具有重現性。但注意：</p>
+            <ul>
+                <li>三次必須在相同（或更差的）條件下</li>
+                <li>三次必須使用相同的取樣位置（包含 Worst-to-Clean 位置）</li>
+                <li>每次都必須達到預設的殘留限值</li>
+            </ul>
+            <p>如果第一次通過但第二次或第三次失敗，整個驗證失敗，需要找出原因、優化 CIP 程序後重新驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：餐廳洗碗標準</h4>
+            <p>就像一個高檔餐廳規定：餐具清洗後，用 ATP 發光儀器（類似細菌和食物殘留的快速偵測）檢測必須低於某個數值才能重新使用。這就是 CIP 的「可接受殘留限值」概念。CDMO 的 CIP 不只要求物理乾淨（視覺無殘留），還要求化學殘留量低到不影響下一個產品，以及微生物負荷達到可接受的水平。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：CIP 再驗證觸發條件</h4>
+            <p>以下情況需要 CIP 再驗證或變更評估：</p>
+            <table>
+                <tr><th>變更類型</th><th>行動</th></tr>
+                <tr><td>清潔劑品牌/濃度改變</td><td>再驗證</td></tr>
+                <tr><td>設備重大修改（焊接、更換管段）</td><td>再驗證關鍵位置</td></tr>
+                <tr><td>新增產品到設備使用清單</td><td>更新殘留限值評估 + 驗證</td></tr>
+                <tr><td>CIP 程序時間/溫度改變</td><td>再驗證或最差條件評估</td></tr>
+                <tr><td>年度定期再評估</td><td>確認製程依然符合</td></tr>
+            </table>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CIP 程序使用 1.5% NaOH 在 70°C 清洗 30 分鐘，然後用 WFI 沖洗至電導率 &lt;1.2 µS/cm。如果供應商建議改為 1.0% NaOH，你需要進行哪些評估才能接受這個改變？</li>
+                <li>在 CIP 驗證取樣中，擦拭採樣（Swab Sampling）和沖洗採樣（Rinse Sampling）各自的優缺點是什麼？為何通常兩種方法都要使用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- CIP Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本部分重點回顧 Part 4 Summary</h3>
+    <ul>
+        <li><strong>CIP 適用範圍：</strong>不拆卸設備的內表面清洗，利用 TACT（溫度、機械力、濃度、時間）四要素組合實現有效清洗</li>
+        <li><strong>設計先行：</strong>消除死角、確保排水性、光滑不鏽鋼表面 Ra ≤0.8 µm 是 CIP 有效性的設計前提</li>
+        <li><strong>可接受殘留限值：</strong>基於 HBELs（ADE/PDE）而非傳統 10 ppm 方法，確保患者安全</li>
+        <li><strong>最差條件驗證：</strong>最難清除的殘留物 + 最難清洗的位置 + 最嚴格的參數下限組合</li>
+        <li><strong>三次重複：</strong>三次一致成功的結果，每次均需在 Worst-to-Clean 位置採樣</li>
+        <li><strong>CDMO 關鍵：</strong>多產品共用設備需要矩陣式清潔驗證，HPAPI 可能需要專用設備</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
+</script>
+
+</body>
+</html>

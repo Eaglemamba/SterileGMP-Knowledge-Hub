@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 13408 Part 2 - Sterilizing Filtration</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: #7c3aed; }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box:not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: #7c3aed; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(124,58,237,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #6d28d9; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ISO 13408 Part 2: Sterilizing Filtration</h1>
+    <div class="subtitle">無菌處理醫療保健產品 — 第二部分：滅菌過濾</div>
+    <div class="page-info">ISO 13408-2:2018 (Second Edition) | 42 pages</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解無菌過濾（Sterilizing Filtration）的本質與限制，以及為何無法使用 SAL 表達無菌保證</li>
+        <li>掌握 0.2 µm 過濾的標準驗證挑戰菌（Brevundimonas diminuta）及 0.1 µm 對 Mycoplasma 的特殊要求</li>
+        <li>學習過濾器完整性測試（Filter Integrity Test）的原理、方法類型及 PUPSIT 的合規要求</li>
+        <li>理解過濾器相容性（化學相容性、萃出物/浸出物、吸附）對生物製劑的特殊挑戰</li>
+        <li>建立完整的過濾驗證程式設計能力，包括生物負荷控制、序列/冗餘過濾設計</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: Scope and Overview -->
+<div class="section-title">Clause 1–4: Scope, Definitions, and Quality System</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>1 Scope</h3>
+        <p>This document specifies requirements for <span class="key-term">sterilizing filtration</span> as part of aseptic processing of health care products conducted in accordance with ISO 13408-1. It also offers guidance to filter users concerning general requirements for set-up, validation and routine operation of a sterilizing filtration process.</p>
+
+        <p>This document is <strong>not applicable</strong> to removal of viruses. Sterilizing filtration is not applicable to fluids that intentionally contain particles larger than the pore size of the filter (e.g. bacterial whole-cell vaccines).</p>
+
+        <h3>Introduction — Key Distinctions</h3>
+        <div class="quote-box">
+            "During terminal sterilization the kinetics of inactivation follows a mathematical order and allow calculation of a sterility assurance level (SAL). Removal of organisms from a fluid by filtration does not follow such mathematical order and so the use of the term 'sterility assurance level' is not appropriate for product sterilized by filtration."
+        </div>
+
+        <h3>Key Definitions</h3>
+        <ul>
+            <li><strong>Sterilizing filtration (3.11):</strong> Removal of viable microorganisms from fluids by passage through a filter under specified process conditions resulting in a sterile filtrate</li>
+            <li><strong>Bacterial challenge test (3.1):</strong> Technical operation to evaluate the capability of a filter to retain organisms from liquid bacterial suspension under defined conditions</li>
+            <li><strong>Filter integrity test (3.7):</strong> Non-destructive physical test that can be correlated to the bacterial retention capability of a filter assembly</li>
+            <li><strong>Extractable (3.4):</strong> Substance that can be released from a filter using extraction solvents or conditions expected to be at least as aggressive as normal use conditions</li>
+            <li><strong>Leachable (3.8):</strong> Substance that can be released from a filter or filter assembly during normal use conditions</li>
+        </ul>
+
+        <h3>4.3 Procurement of Filters</h3>
+        <p><strong>4.3.2</strong> There shall be a <span class="key-term">written agreement</span> between the filter user and filter manufacturer that the filter manufacturer will notify the filter user of any <span class="key-term">changes in the filter manufacturing conditions</span> with potential to affect the defined fluid and process parameters.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：無菌過濾的本質與 SAL 的侷限</h4>
+            <p>終端滅菌（如高壓蒸汽）的殺菌動力學遵循對數曲線，可外推計算 SAL（如 10⁻⁶）。但過濾是<strong>物理攔截</strong>，並非殺滅。</p>
+            <p>過濾膜不能保證 100% 攔截（尤其是接近孔徑大小的微生物），且濾膜受損就完全失效。因此：</p>
+            <ul>
+                <li>無菌過濾<strong>不能</strong>用 SAL 值表達可靠性</li>
+                <li>可靠性必須通過：過濾器驗證（菌挑戰測試） + 完整性測試（每批）</li>
+                <li>過濾後的整個系統無菌維持同樣關鍵</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重要提示：供應商變更通知義務</h4>
+            <p>第 4.3.2 條要求過濾器供應商在任何可能影響性能的製造工藝變更時通知用戶。這是為什麼你必須：</p>
+            <ul>
+                <li>與過濾器供應商簽訂<strong>品質協議（Quality Agreement）</strong></li>
+                <li>協議中明確列出觸發通知的變更類型（膜材料、孔徑、製造設施等）</li>
+                <li>建立供應商變更評估程序，判斷是否需要重新驗證</li>
+            </ul>
+            <p>這一要求在多起藥品召回事件中都扮演了重要角色——供應商悄悄改變了過濾器材料，導致產品中出現未預期的浸出物。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：過濾器就像咖啡濾紙</h4>
+            <p>0.2 µm 過濾器就像超精密咖啡濾紙：可以過濾掉細菌（咖啡渣），但如果濾紙破了一個洞（完整性失敗），所有渣都會通過。因此「濾紙完好性」的確認（完整性測試）比過濾行為本身更關鍵。而且你需要用被過濾的液體（咖啡），而不是清水，來做挑戰測試。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 ISO 13408-2 明確說明「不適用於病毒去除」？去除病毒的過濾有哪些不同的驗證要求？</li>
+                <li>供應商通知義務（4.3.2）在實際執行上如何落實？你的 QA 系統應有哪些機制來接收和評估此類通知？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: Filter Characterization and Validation -->
+<div class="section-title">Clauses 5–9: Filter Characterization, Process Definition, and Validation</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>5.2 Microbial Removal Effectiveness</h3>
+        <p><strong>5.2.1</strong> Microbial removal effectiveness data shall be developed for each combination of <span class="key-term">sterilizing grade filter and fluid type</span>. This is usually by demonstration of retention of a product-specific microbial challenge for liquid filtration.</p>
+
+        <p><strong>5.2.2</strong> Variables that affect microbial removal effectiveness include:</p>
+        <ul>
+            <li>Filter membrane characteristics (pore size distribution, surface chemistry, polymer type)</li>
+            <li>Fluid characteristics (surfactants, pH, viscosity, osmolarity, surface tension, ionic strength)</li>
+            <li>Fluid bioburden (number, type and cell size of organisms)</li>
+            <li>Process conditions (batch size, temperature, differential pressure, flow rate, hold times)</li>
+        </ul>
+
+        <h3>8.4 Integrity Testing Process Definition</h3>
+        <p><strong>8.4.1</strong> A sterilizing grade filter shall be subject to a <span class="key-term">non-destructive integrity test post use</span> and without removal of the filter from its housing. Test results shall correlate to the microbial retention capability.</p>
+
+        <p><strong>8.4.2</strong> The integrity of the filtration system <span class="key-term">prior to use</span> is critical to ensure product sterility. Consideration should be given to carrying out integrity testing <span class="key-term">pre- and post-filtration</span> (PUPSIT). The decision to omit the pre-use test shall be based on risk assessment and documented.</p>
+
+        <h3>9.2 Validation of Microbial Retention</h3>
+        <p><strong>9.2.1.1</strong> Liquid-sterilizing filtration shall be validated during initial process qualification by an appropriate <span class="key-term">bacterial challenge test</span> using at least one filter from each of <span class="key-term">not less than three lots</span> of filters with <span class="key-term">three consecutive successful outcomes</span>.</p>
+
+        <p><strong>9.2.2.2</strong> If the fluid does not contain organisms smaller than <span class="key-term">Brevundimonas diminuta</span>, the challenge organism for a 0.2 µm sterilizing filter shall be <em>Brevundimonas diminuta</em> (ATCC 19146).</p>
+
+        <p><strong>9.2.2.5</strong> The minimum challenge level shall be <span class="key-term">1 × 10⁷ CFU/cm²</span> of effective filter surface area.</p>
+
+        <p><strong>9.2.2.6</strong> Where a 0.1 µm sterilizing filter is selected to prevent the passage of <span class="key-term">Mycoplasma</span> or other organisms smaller than B. diminuta, the challenge organism may be <span class="key-term">Acholeplasma laidlawii</span> (ATCC 23206). The minimum challenge level shall be 1 × 10⁷ CFU/cm².</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：為何是 Brevundimonas diminuta？</h4>
+            <p><em>Brevundimonas diminuta</em>（過去稱 Pseudomonas diminuta）是 0.2 µm 過濾驗證的標準挑戰菌，因為：</p>
+            <ul>
+                <li>體積極小（約 0.3-0.4 µm），是已知最小的非孢子形成革蘭氏陰性菌之一</li>
+                <li>培養條件會影響細胞大小（飢餓條件下更小），可產生「最差條件」挑戰</li>
+                <li>通過特定培養可產生具有挑戰性的細胞大小（ASTM F838-15 方法）</li>
+            </ul>
+            <p><strong>關鍵警示：</strong>如果你的產品生物負荷中含有比 B. diminuta 更小的微生物（如某些 Mycoplasma），必須更換挑戰菌！</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>過濾驗證程式設計 Filtration Validation Programme</h4>
+            <pre>
+過濾器驗證的四個主要組件：
+
+1. 微生物攔截驗證（Microbial Retention）
+   挑戰菌：B. diminuta (0.2µm) 或 A. laidlawii (0.1µm)
+   挑戰量：≥1×10⁷ CFU/cm²
+   過濾器批次：≥3批，連續3次成功
+   條件：最差工藝條件（壓差、溫度、流速上限）
+
+2. 完整性測試相關性（Integrity Test Correlation）
+   - 建立細菌攔截 vs 物理完整性的相關性
+   - 設定生產過濾器的完整性測試規格（如泡點/前進流量限值）
+
+3. 過濾器-流體相容性（Filter-Fluid Compatibility）
+   - 化學相容性（過濾器材料不被溶解）
+   - 浸出物（Leachables）：生產條件下
+   - 萃出物（Extractables）：極端條件下
+   - 吸附（Adsorption）：產品成分損失
+
+4. 過濾系統滅菌驗證
+   - SIP（就地滅菌）或高壓滅菌器滅菌
+   - 滅菌循環對過濾器性能的影響
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>PUPSIT — 使用前滅菌後完整性測試</h4>
+            <p><strong>PUPSIT（Pre-Use Post-Sterilization Integrity Test）</strong>是 EU GMP Annex 1 (2022) 的強制要求，ISO 13408-2 也明確支持（8.4.2）。</p>
+            <p>PUPSIT 的目的：確認過濾器在滅菌過程（如 SIP）中沒有受損。這是對高壓蒸汽滅菌可能造成濾膜機械損傷的預防。</p>
+            <p><strong>挑戰：</strong>PUPSIT 操作本身引入污染風險（需要潤濕測試液、連接儀器）。因此必須有經過驗證的 PUPSIT 程序，確保測試過程不破壞下游無菌性。</p>
+            <p><strong>不做 PUPSIT 的前提：</strong>必須有風險評估支持，並說明替代控制措施（如 HCF 是否接受）。FDA 通常期望 PUPSIT，省略需要強有力的科學依據。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明：出門前檢查安全帶</h4>
+            <p>PUPSIT 就像在每次出行前檢查安全帶是否完好（而不只是在事故後才檢查）。過濾器滅菌（SIP 或高壓）就像拉緊安全帶——這個動作本身可能損壞某些部件。出發前確認安全帶正常（PUPSIT），比在終點發現它早就斷了（後使用完整性測試失敗）要好得多，因為那時候已經充填了整批產品。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：生物製劑的特殊挑戰</h4>
+            <p>單株抗體（mAb）等生物製劑在過濾驗證中的特殊挑戰：</p>
+            <ul>
+                <li><strong>高黏度：</strong>高濃度 mAb（>100 mg/mL）黏度高，過濾壓差大，增加過濾時間</li>
+                <li><strong>吸附：</strong>蛋白質可能吸附在 PVDF 或 PES 濾膜上，導致濃度損失或 Fc 效應喪失</li>
+                <li><strong>抗菌特性：</strong>某些抗菌肽類藥物會殺死 B. diminuta，使挑戰菌試驗無效，需要使用「模擬液」</li>
+                <li><strong>顆粒：</strong>高濃度蛋白質聚合體可能堵塞過濾器，影響過濾能力（filter capacity）</li>
+            </ul>
+            <p>CDMO 接新生物製劑客戶時，過濾相容性研究通常是最複雜且最耗時的驗證活動之一，需要在工藝開發階段早期就開始。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一個 mAb 製劑含有抑菌特性，無法直接用 B. diminuta 做挑戰測試。請說明至少兩種可行的替代方案，並各自的優缺點。</li>
+                <li>如果你的 0.2 µm 過濾器後使用完整性測試失敗（Flow Rate 超限），你應採取哪些行動？此批次產品如何處置？</li>
+                <li>為什麼 ISO 13408-2 要求使用「不少於三批過濾器（three lots）」進行驗證，而不是只用一批過濾器做更多次測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: Routine Operation and Maintenance -->
+<div class="section-title">Clauses 10–12: Routine Monitoring, Product Release, and Process Maintenance</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>10 Routine Monitoring and Control</h3>
+        <p><strong>10.1</strong> A programme for the routine monitoring and control of the sterilizing filtration process shall be established to confirm that the process continues to operate within the <span class="key-term">validated process parameters</span>.</p>
+
+        <p><strong>10.2</strong> Each production filtration shall be <span class="key-term">traceable</span> to the specific filtration equipment, filter lot, equipment qualification status, filter condition before and after use and the environmental data recorded during filtration.</p>
+
+        <p><strong>10.3</strong> Process variables that shall be monitored during routine production filtration include:</p>
+        <ul>
+            <li>temperature of the fluid during filtration</li>
+            <li>differential pressure across the filter</li>
+            <li>flow rate and/or total volume</li>
+            <li>filtration time</li>
+        </ul>
+
+        <h3>11 Product Release from Sterilizing Filtration</h3>
+        <p><strong>11.1</strong> The filtration process shall be considered complete when:</p>
+        <ul>
+            <li>a) all process parameters are within validated limits</li>
+            <li>b) the integrity test of the sterilizing filter has been performed and passed</li>
+        </ul>
+
+        <p><strong>11.2</strong> If a post-use filter integrity test fails, the batch shall be <span class="key-term">rejected</span> unless it can be demonstrated that the failure was not caused by inadequate microbial removal by the sterilizing filter. Any re-filtration shall be evaluated for its potential impact on product quality.</p>
+
+        <h3>12 Maintaining Process Effectiveness</h3>
+        <p><strong>12.4</strong> <span class="key-term">Requalification</span> of the filtration process shall be considered following:</p>
+        <ul>
+            <li>significant changes to the process fluid (formulation, concentration, pH, viscosity)</li>
+            <li>significant changes to the filtration equipment</li>
+            <li>changes to the filter itself (different lot characteristics, manufacturer's notification)</li>
+            <li>changes to the sterilization procedure</li>
+            <li>failures identified during routine integrity testing</li>
+        </ul>
+
+        <p><strong>12.5 Assessment of Change:</strong> If there is a change in the fluid to be filtered (e.g. changes in raw materials, chemical composition, concentrations, viscosity, changes to processing conditions), it is necessary to assess the change to see if it could have an adverse effect on the performance of the sterilizing grade filter, or whether it might invalidate the existing filter validation studies.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念：完整性測試失敗 = 批次拒絕？</h4>
+            <p>第 11.2 條的規定非常重要：後使用完整性測試（Post-Use Integrity Test）失敗，<strong>原則上批次必須拒絕</strong>。</p>
+            <p>例外情況（難以接受）：<br>
+            必須能夠「證明失敗不是由於過濾器微生物攔截不足引起的」——實際上幾乎不可能做到，因為你無法在事後用非破壞性方法測試微生物是否通過了。</p>
+            <p>實務上，完整性測試失敗是批次拒絕的充分條件。這也說明了 PUPSIT 的商業價值：在充填前就發現問題，避免充填了整批產品後才發現。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>過濾變更評估矩陣 Change Assessment Matrix</h4>
+            <pre>
+變更類型              | 需要重新驗證？ | 備考
+─────────────────────────────────────────
+配方成分改變           | 可能需要      | 評估對黏度、pH、微生物特性影響
+原料藥濃度 ±10%        | 可能需要      | 評估對過濾能力和浸出物的影響
+pH 值偏移             | 可能需要      | 影響 B. diminuta 細胞大小
+過濾器孔徑規格改變      | 必須重新驗證   | 整個驗證需重做
+過濾器換不同供應商      | 必須重新驗證   | 新供應商的膜材可能不同
+同供應商新批次（生命週期）| 年度監控即可  | 完整性測試數據趨勢分析
+過濾系統 SIP 程序改變   | 重新評估      | 評估滅菌效果和對濾膜的影響
+生產批量大幅增加        | 可能需要      | 評估過濾器面積是否足夠
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重要提示：批次可追溯性要求</h4>
+            <p>第 10.2 條要求每次生產過濾必須可追溯至：</p>
+            <ul>
+                <li>具體的過濾設備（序號）</li>
+                <li>過濾器批號（Lot Number）</li>
+                <li>設備資格確認狀態</li>
+                <li>使用前後的過濾器狀況（完整性測試數據）</li>
+                <li>過濾期間的環境數據</li>
+            </ul>
+            <p>這些記錄構成批次放行決策的核心證據鏈。在任何批次調查或 regulatory inspection 中，這些記錄都會被詳細審查。</p>
+        </div>
+
+        <div class="application-box">
+            <h4>實務應用：冗餘過濾器設計策略</h4>
+            <p>高風險應用（如生物製劑、高價值批次）中，常見的過濾器設計策略：</p>
+            <ul>
+                <li><strong>串聯（Series/Redundant）：</strong>兩個 0.2 µm 過濾器串聯，其中一個是備用（redundant）。如果主過濾器完整性測試通過，備用過濾器的測試不是必需的。但如果主過濾器失敗，可以檢查備用過濾器的狀態——但這需要在驗證中預先定義好判斷策略。</li>
+                <li><strong>生物負荷削減過濾器：</strong>在滅菌過濾之前加一個 0.22 µm 生物負荷削減過濾器（bioburden reduction filter），減少終端過濾器的挑戰量，延長過濾能力。這個「前置過濾器」不需要與滅菌過濾器相同的驗證要求。</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在冗餘過濾系統（redundant filtration）中，若主過濾器的後使用完整性測試失敗，而備用過濾器通過，此批次是否可以放行？你的決策依據是什麼？需要哪些文件支持？</li>
+                <li>一個原本驗證在 20°C 進行的過濾製程，現在計劃改為 4°C 冷鏈條件下過濾（為保護熱敏感產品）。這個溫度變更是否需要重新驗證？需要重新評估哪些具體方面？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Part 2 Summary -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本部分重點回顧 Part 2 Summary</h3>
+    <ul>
+        <li><strong>本質限制：</strong>無菌過濾不適用 SAL，可靠性依賴驗證（細菌挑戰測試）+ 每批完整性測試，不是理論計算</li>
+        <li><strong>標準挑戰菌：</strong>0.2 µm 用 B. diminuta (ATCC 19146)，0.1 µm Mycoplasma 過濾用 A. laidlawii，最低挑戰量 10⁷ CFU/cm²，需3批過濾器、3次連續成功</li>
+        <li><strong>PUPSIT：</strong>EU GMP Annex 1 強制要求，ISO 13408-2 支持；省略需有書面風險評估；操作本身需驗證不引入污染</li>
+        <li><strong>完整性測試失敗 = 批次拒絕（原則上）：</strong>後使用測試失敗的批次不能放行，除非有幾乎不可能提供的反證</li>
+        <li><strong>相容性研究：</strong>化學相容性 + 浸出物/萃出物 + 吸附，對生物製劑尤其關鍵；需使用實際生產流體</li>
+        <li><strong>變更管理：</strong>配方、設備、過濾器規格的任何重大變更都可能需要重新驗證，供應商必須依品質協議通知</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+});
+</script>
+
+</body>
+</html>
