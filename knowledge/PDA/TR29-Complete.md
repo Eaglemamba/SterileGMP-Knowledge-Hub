@@ -1,0 +1,4997 @@
+# PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation
+
+Points to Consider for
+Cleaning Validation
+Paradigm Change in
+Manufacturing Operations
+SM
+PDA Task Force on Technical Report No. 29 (Revised 2012):
+Points to Consider for Cleaning Validation
+Authors
+Destin A. LeBlanc, Cleaning Validation Technologies
+(Chair)
+Gretchen Allison, Pfizer
+Jennifer L. Carlson, Genentech
+Koshy George, Consultant
+Igor Gorsky, ConcordiaValSource
+Irwin S. Hirsh, Novo Nordisk AS
+Jamie Osborne, Siegfried (USA), Inc.
+Greg Randall, Baxter Bioscience
+Pierre-Michel Riss, Eli Lilly
+George Verghese, STERIS Corporation
+Jenn Walsh, Bristol-Myers Squibb
+Vivienne Yankah, Sanofi-Pasteur, Ltd.
+The content and views expressed in this Technical Report are the result of a consensus achieved by the authorizing
+Task Force and are not necessarily views of the organizations they represent.
+Points to Consider for
+Cleaning Validation
+ISBN: 978-0-939459-48-3
+All rights reserved.
+Paradigm Change in Manufacturing Operations (PCMO
+SM)
+PDA launched the project activities related to the PCMO program in December 2008 to help imple-
+ment the scientific application of the ICH Q8, Q9 and Q10 series. The PDA Board of Directors ap-
+proved this program in cooperation with the Regulatory Affairs and Quality Advisory Board, and the
+Biotechnology Advisory Board and Science Advisory Board of PDA.
+Although there are a number of acceptable pathways to address this concept, the PCMO program fol-
+lows and covers the drug product lifecycle, employing the strategic theme of process robustness with-
+in the framework of the manufacturing operations. This project focuses on Pharmaceutical Quality
+Systems as an enabler of Quality Risk Management and Knowledge Management.
+Using the Parenteral Drug Association’s (PDA) membership expertise, the goal of the Paradigm
+Change in Manufacturing Operations Project is to drive the establishment of ‘best practice’ docu-
+ments and /or training events in order to assist pharmaceutical manufacturers of Investigational
+Medicinal Products (IMPs) and commercial products in implementing the ICH guidelines on Phar-
+maceutical Development (ICH Q8, Q11), Quality Risk Management (ICH Q9) and Pharmaceutical
+Quality Systems (ICH Q10).
+The PCMO program facilitates communication among the experts from industry, university and regula-
+tors as well as experts from the respective ICH Expert Working Groups and Implementation Working
+Group.  PCMO task force members also contribute to PDA conferences and workshops on the subject.
+PCMO follows the product lifecycle concept and has the following strategic intent:
+• Enable an innovative environment for continual improvement of products and systems
+• Integrate science and technology into manufacturing practice
+• Enhance manufacturing process robustness, risk based decision making and knowledge manage-
+ment
+• Foster communication among industry and regulatory authorities
+Product
+Discontinuation
+Commercial
+Manufacturing
+Technology
+Transfer
+Pharmaceutical
+Development
+The Product Life Cycle
+For more information, including the PCMO Dossier, and to get involved, go to
+www.pda.org/pcmo
+1.0  Introduction.........................................................1
+1.1	 Purpose/Scope................................................. 1
+2.0  Glossary of Terms................................................3
+2.1	 Definition of Acronyms.................................... 5
+3.0	 Cleaning Process Design and Development........7
+3.1 	Cleaning Process Design.................................. 7
+3.2	 Cleaning Process Overview.............................. 8
+3.2.1	 Physical-chemical Aspects ................. 9
+3.3	 Design Considerations................................... 10
+3.3.1	 Location of Cleaning........................... 10
+3.3.1.1 In-Place Cleaning.......................... 10
+3.3.1.1.1	 Clean-in-Place (CIP) Systems........ 10
+3.3.1.1.2	 Solvent Reflux Cleaning................ 11
+
+##### 3.3.1.1.3 Placebo Batches as a
+
+Cleaning Method........................... 11
+3.3.1.2 Out-of-Place Cleaning................... 11
+3.3.1.2.1	 Clean-Out-of-Place Systems......... 12
+3.3.2	 Automated vs. Manual Systems........ 12
+3.3.2.1 Manual Processes......................... 12
+3.3.2.2 Semi-Automated Processes.......... 12
+3.3.2.3 Automated Processes................... 13
+3.3.3	 Soil Evaluation and Categorization..... 13
+3.3.3.1 Soil Categories.............................. 13
+3.3.3.2 Soil Removal................................. 13
+3.3.4	 Equipment Considerations................. 14
+
+##### 3.3.4.1 Dedicated – Nondedicated
+
+Manufacturing Equipment............. 14
+
+##### 3.3.4.2 Nonproduct Contact – Product
+
+Contact Surfaces.......................... 15
+3.3.4.3 Low-Risk Sites – High-Risk Sites.. 15
+3.3.4.4 Materials of Construction.............. 15
+3.3.5	 Operational Considerations................ 15
+3.3.6 	 Cleaning Agent Selection................... 16
+3.3.7 	 Product Considerations...................... 16
+3.3.7.1 Product Risk Considerations......... 17
+
+### 3.4 Cleaning Development
+
+Laboratory Experiments ................................ 17
+3.4.1	 Soil Selection .................................... 17
+3.4.2	 Parameter Selection........................... 18
+3.4.2.1 Parameter Interactions ................. 19
+
+#### 3.4.3 Measurements to Determine
+
+Cleaning Effectiveness....................... 19
+3.5	 Cleaning Process Scale-Up............................ 19
+3.5.1	 Setting Process Controls.................... 19
+
+### 3.6 Applying the “Design Space” Concept to
+
+Cleaning Processes ....................................... 20
+3.7	 Standard Operating Procedures..................... 21
+3.8	 Operator Training for the Cleaning Process.... 21
+
+### 3.9 Introduction of New Products to a
+
+Validated Cleaning System............................. 22
+4.0	 Qualification.......................................................23
+4.1	 Protocol Elements.......................................... 23
+4.2	 Key Protocol Issues ....................................... 23
+4.2.1	 Number of Runs in a Protocol............ 24
+4.2.2	 Mock Soiling...................................... 24
+4.2.3	 Worst-Case Process Conditions......... 24
+
+#### 4.2.4 Disposition of Products and Equipment
+
+during Validation................................ 25
+4.3	 Grouping/Family Approach............................. 25
+4.3.1	 Product Grouping............................... 26
+4.3.2	 Equipment Grouping........................... 26
+
+#### 4.3.3 Introduction of a New Product or
+
+Equipment into a Group...................... 27
+4.4	 “Cleaning Verification” Documentation........... 27
+5.0	 Residue and Limits.............................................29
+5.1	  Considerations for Developing Limits............ 29
+5.2	 The Basis for Quantitative Limits............. 30
+
+### 5.3 Acceptable Concentration of Residue in
+
+Next Product...................................... 30
+5.3.1	 ARL Based on Drug Active Dose........ 30
+5.3.2 	 ARL Based on Toxicity....................... 31
+
+##### 5.3.2.1 ADE Determinations Based on ISPE’s
+
+Risk-MaPP.................................... 31
+
+##### 5.3.2.2 Toxicity Calculations Based
+
+on LD50 Data.................................. 32
+5.3.3	 Other ARL Determinations.................. 33
+5.4 	Acceptable Total Carryover............................ 33
+5.5	 Surface Area Limit......................................... 34
+5.6	 Limit in Protocol Samples.............................. 34
+5.6.1	 Limit per Swab................................... 34
+
+#### 5.6.2 Concentration Limit in
+
+Extracted Swab Solvent..................... 34
+
+#### 5.6.3 Concentration Limit in
+
+Rinse Sampling Solution.................... 35
+5.7	 Consolidated Expressions.............................. 35
+5.8	 Example Calculations..................................... 36
+5.9	 Other Considerations...................................... 36
+5.9.1	 Multiple Next Products...................... 36
+
+#### 5.9.2 Next Product in Verification
+
+Approach........................................... 37
+5.9.3	 Default Limits..................................... 37
+Table of Contents
+5.9.4	 Use of Different Safety Factors.......... 38
+5.9.5	 Different Routes of Administration..... 38
+
+#### 5.9.6 Different Doses for
+
+Adults and Children............................ 38
+
+#### 5.9.7 Human and Veterinary
+
+Products Manufactured on the
+Same Equipment................................ 38
+
+#### 5.9.8 Residues of Genotoxic and Other Highly
+
+Hazardous Active Ingredients............. 38
+
+#### 5.9.9 Limits Based on Analytical
+
+Detection Limits................................. 39
+5.9.10	 Degradation of the Active Ingredient.. 39
+5.9.11	 Limits Not Measureable..................... 39
+5.9.12 	Limits for Organic Solvents................ 39
+5.9.13	 Dedicated Equipment ........................ 40
+
+#### 5.9.14 Dividing a Limit among Various
+
+Pieces of Equipment........................... 40
+5.9.15	 .Limits for Preferential Transfer to a First
+Portion of the Next Product................ 40
+
+#### 5.9.16 Limits for Biotechnology
+
+Manufacture...................................... 40
+
+#### 5.9.17 Products with More Than One Active
+
+Ingredient........................................... 41
+5.10 Bioburden Limits..................................... 41
+5.11 Endotoxin Limits...................................... 42
+5.12 Visually Clean Criterion .......................... 42
+6.0	 Sampling............................................................43
+6.1	 Sampling Method Selection........................... 43
+6.1.1	 Direct Sampling Methods................... 43
+6.1.1.1 Visual Inspection........................... 43
+6.1.1.2 Instrumental Methods................... 44
+6.1.2	 Rinse Sampling.................................. 44
+
+##### 6.1.2.1 Extraction Rinse Sampling for Small
+
+Parts............................................. 46
+6.1.2.2 Solvent Reflux Sampling............... 46
+6.1.3	 Swab and Wipe Sampling.................. 46
+6.2	 Placebo Sampling.......................................... 47
+
+### 6.3 Sampling for Microbial and
+
+Endotoxin Analysis......................................... 47
+6.4 Additional Considerations............................... 48
+6.5	 Sampling Recovery Studies........................... 48
+6.5.1	 General Considerations...................... 48
+6.5.2	 Swab/Wipe Recovery........................ 49
+6.5.3	 Rinse Recovery.................................. 50
+6.5.4	 “Recovery” in Visual Inspection......... 51
+
+#### 6.5.5 Recovery for Bioburden and
+
+Endotoxin Sampling........................... 51
+6.6	 Training and Qualification of Samplers........... 51
+
+#### 6.6.1 Key Issues for Training
+
+for Swab Sampling............................. 52
+
+#### 6.6.2 Key Issues for Training for Rinse
+
+Sampling............................................ 52
+6.6.3	 Training for Visual Inspection............. 52
+7.0	 Analytical Methods............................................54
+7.1	 Purposes of the Analytical Methods.............. 54
+
+### 7.2 Practical Considerations in Selecting Analytical
+
+Methods........................................................ 54
+
+### 7.3 Specific vs. Nonspecific Analytical Methods for
+
+Validation Protocols....................................... 55
+
+#### 7.3.1 Regulatory Status of Specific and
+
+Nonspecific Methods.................... 55
+7.4	 Most Commonly Used Analytical Techniques.56
+7.4.1	 Liquid Chromatography (LC)............... 56
+
+#### 7.4.2 UltraViolet/Visible Spectrophotometry
+
+(UV/Vis).............................................. 57
+7.4.3	 Total Organic Carbon (TOC)................ 57
+7.4.4	 Conductivity....................................... 57
+7.4.5	 Organoleptic Evaluation..................... 58
+7.5	 Other Useful Analytical Techniques................ 59
+7.5.1	 pH...................................................... 59
+7.5.2	 InfraRed (IR)....................................... 59
+7.5.3	 Light Microscopy............................... 59
+7.5.4	 Titrations............................................ 59
+7.5.5	 Gravimetric Analysis.......................... 59
+
+#### 7.5.6 Enzyme Linked Immunosorbant
+
+Assay (ELISA).................................... 60
+7.5.7	 Capillary Zone Electrophoresis (CZE)....60
+
+#### 7.5.8 Atomic Absorption (AA) and
+
+Inductively Coupled Plasma (ICP)....... 60
+7.5.9	 Ion Mobility Spectrometry (IMS)........ 60
+7.6	 Microbial Test Methods................................. 60
+7.6.1	 Endotoxin........................................... 60
+7.6.2	 Bioburden........................................... 60
+7.7	 Analytical Method Validation......................... 61
+7.7.1	 General Principles.............................. 61
+7.7.2	 Compendial Methods......................... 62
+7.7.3	 Visual Inspection................................ 63
+7.7.4	 Bioburden Methods............................ 63
+
+#### 7.7.5 Transfer to another Laboratory and
+
+Use of Contract Laboratories.............. 63
+8.0	 Maintenance of Validated State........................64
+8.1	 Critical Parameter Measurement.................... 64
+8.2	 Process Alarms.............................................. 64
+8.3	 Change Control.............................................. 65
+8.4	 Routine Monitoring........................................ 66
+8.5 	Data Trending and Review............................. 66
+8.6	 Evaluation of Cumulative Changes................. 67
+8.7	 Training.......................................................... 67
+8.8	 Periodic Review............................................. 67
+9.0 Documentation...................................................69
+9.1	 Cleaning Validation Master Plans................... 69
+9.1.1	 Elements of a Comprehensive Plan.... 70
+
+#### 9.1.2 Harmonization of Site Cleaning
+
+Validation Programs .......................... 71
+9.2	 Documentation for Design/Development........ 71
+9.3	 Documentation for Qualification..................... 72
+9.4	 Documentation for Validation Maintenance... 72
+9.5	 Other Documentation Considerations............. 73
+10.0	Special Considerations....................................75
+10.1 Cleaning Agents...................................... 75
+10.1.1	 Types................................................. 75
+10.1.1.1	 Water............................................. 75
+10.1.1.2	 Organic Solvents............................ 75
+10.1.1.3	 Commodity Alkali........................... 75
+10.1.1.4	 Commodity Acids........................... 75
+10.1.1.5	 Formulated Detergents................... 75
+10.1.2	 Factors in Selection............................ 76
+10.1.2.1	 Broad Spectrum Effectiveness........ 76
+10.1.2.2	  Substrate Compatibility................. 76
+10.1.2.3	 Stability and Shelf Life.................... 76
+10.1.2.4	 Analyzability................................... 76
+10.1.2.5	 Disposal.......................................... 76
+10.1.2.6	 Safety............................................. 76
+10.1.2.7	 Toxicity........................................... 76
+10.1.2.8	 Rinsability....................................... 76
+10.1.2.9	 Quality............................................ 76
+10.2 Nonproduct Contact Surfaces................. 76
+10.3 Process Analytical Technology................ 77
+10.3.1	 Timely Measurements....................... 77
+10.3.2	 PAT for Cleaning Process Control....... 77
+
+#### 10.3.3 Additional Considerations for Online
+
+Measurements................................... 78
+10.4 Clean Hold Considerations...................... 78
+10.5 New and Used Equipment....................... 80
+10.5.1 New Equipment.................................. 80
+10.5.1.1	 Cleaning Procedure Development... 80
+10.5.1.2	 Post-Installation Cleaning............... 81
+10.5.1.3 Grouping Impact.............................. 81
+10.5.1.4 Limit Calculation Impact................... 81
+10.5.2	 Used Equipment................................. 81
+10.6 Measurement Systems Analysis (MSA) .81
+10.6.1	 MSA Components.............................. 82
+10.6.2	 Attribute R&R..................................... 82
+10.6.3	 Minimizing Variations......................... 82
+
+#### 10.6.4 MSA and Cleaning
+
+Validation Strategy............................. 82
+10.7 Cleaning for API Manufacture................. 83
+10.8 Topical Drug Products............................. 84
+
+#### 10.8.1 Topical Drug Products with
+
+Systemic Availability.......................... 84
+
+#### 10.8.2 Topical Drug Products with No or
+
+Limited Systemic Availability............. 85
+10.8.2.1	 Adjusted Calculation....................... 85
+
+##### 10.8.2.2 Modification Based on
+
+Frequency of Application................ 85
+
+##### 10.8.2.3 Modification Based on Amount
+
+Applied per Surface Area................ 85
+10.8.2.4	 Additional Considerations............... 86
+10.8.3	 Additional Safety Considerations....... 86
+10.8.4	 Additional Cleaning Considerations.... 86
+10.9 Animal Drug Products............................. 86
+
+### 10.10 Packaging Components and
+
+Packaging Equipment................................ 86
+10.10.1 Primary Packaging Components....... 86
+
+##### 10.10.1.1 Oral Dosage Forms Primary
+
+Packaging Components................. 87
+
+##### 10.10.1.2 Parenteral Dosage Forms Primary
+
+Packaging Components................. 87
+10.10.2 Packaging Equipment........................ 87
+10.10.2.1	 Primary Packaging Equipment....... 87
+10.10.2.2	 Secondary Packaging Equipment.. 88
+10.11 Tubing and Hoses.................................... 88
+10.12 Excipients............................................... 89
+10.13 Dedicated Equipment.............................. 89
+10.13.1 Reasons for Dedication..................... 89
+10.13.2 Cleaning Validation Issues................. 90
+11.0 Regulatory and Guidance Documents..............91
+12.0 References........................................................92
+13.0 Suggested Readings.........................................94
+FIGURES AND TABLES INDEX
+
+**Table 3.1-1**
+
+CPP and CQA Considerations that
+have Potential Risk Impact to a
+Cleaning Process.................................. 7
+
+**Table 3.1-2**
+
+The Cleaning Spectrum........................ 8
+
+**Table 3.2-1**
+
+Cleaning Process Steps (Examples)..... 9
+
+**Table 6.1.2-1**
+
+Comparison of Grab Sampling versus
+Separate Sampling Rinse................... 45
+
+**Table 6.1.2-2**
+
+Advantages and Limitations
+of Rinse Sampling.............................. 45
+
+**Table 6.1.3-1**
+
+Advantages and Limitations
+of Swab/Wipe Sampling.................... 47
+Figure 9.5-1
+Documentation for Process Flow....... 74
+Cleaning validation plays an important role in reducing the possibility of product contamination from
+pharmaceutical manufacturing equipment. It demonstrates that the cleaning process adequately and
+consistently removes product residues, process residues and environmental contaminants from the
+manufacturing equipment/system, so that this equipment/system can be safely used for the manu-
+facture of specified subsequent products (which may be the same or a different product). As used in
+this Technical Report, “product” may be a drug product, active pharmaceutical ingredient, intermedi-
+ate, or another type of formulation. If “drug product” is intended, that terminology will be utilized.
+Principles and practices given in this report may apply to a variety of manufacturing situations. It is
+incumbent on the reader to decide the appropriateness of those principles and practices to his/her
+specific situation.
+This report builds on the 1998 PDA Technical Report No. 29, Points to Consider for Cleaning Validation (1).
+This report also has utilized principles and specific wording from the 2010 PDA Technical Report No. 49,
+Points to Consider for Biotechnology Cleaning Validation (2). The authors of this revised Technical Report
+#29 would like to thank the members of the Task Forces who were responsible for those two earlier
+documents for making our job easier.
+This revised Technical Report presents updated information that is aligned with lifecycle approaches
+to validation and the International Conference on Harmonisation (ICH) guidelines Q8 (R2) - Phar-
+maceutical Development, Q9 - Quality Risk Management and Q10 - Pharmaceutical Quality System (3,4,5).
+Also, this report aims to assist readers who want to create or benchmark a cleaning validation pro-
+gram for their equipment and facilities.
+This Task Force was composed of European and North American professionals from pharmaceutical
+manufacturers, cleaning chemical suppliers, and consulting companies. The report has undergone a
+global, technical peer review to ensure concepts, terminology, and practices presented are reflective
+of sound science and can be used globally.
+1.1	 Purpose/Scope
+This Technical Report covers all facets of cleaning validation for pharmaceutical manufacturers, in-
+cluding both manufacturers of APIs and drug products. It also applies to biotechnology manufactur-
+ing; however, the reader should consult PDA Technical Report No. 49, Points to Consider for Biotechnology
+Cleaning Validation for more detail and specifics for biotechnology manufacturing (2). We have includ-
+ed a lifecycle cleaning validation approach, including design/development of the cleaning process,
+process qualification (including the protocol runs), and ongoing validation maintenance. While the
+document discusses risk-based approaches, it does not provide details about risk-based manufactur-
+ing. PDA has formed a Task Force to write a Technical Report on that topic.
+We cannot emphasize enough how important risk analyses are in the selection of and validation of
+cleaning processes and their validation. This includes the traditional risk analysis based on effects on
+product quality and on patients. It also includes business risk considerations, such as steps taken to
+minimize lost product from contamination (even if detection systems are in place to prevent release
+of that contaminated product for consumer use).
+These practices and the associated guidance in this Technical Report are based on technical consider-
+ations and should be applicable in all regulatory environments. However, the intent of this Technical
+Report is not to provide a detailed plan or roadmap for a pharmaceutical manufacturer to perform
+cleaning validation. Rather, as the title suggests, it presents “points to consider” as one designs a clean-
+ing validation program for process equipment based on an understanding of one’s manufacturing
+and cleaning processes. In cleaning validation, there are generally multiple ways to accomplish the
+
+## 1.0 Introduction
+
+same goal of a compliant, scientifically sound and practical cleaning validation program. Where op-
+tions are given, the rationales for such options are also generally given. Examples are not meant to be
+prescriptive or limiting; they merely illustrate a certain practice. Actual acceptable practices should
+not be considered limited by the discussion in this Technical Report. Based on an understanding of
+the unique nature of any individual situation, different approaches or additional issues should also be
+considered. Sound science based on an understanding of the cleaning and manufacturing processes
+may lead to other equally acceptable practices. The Task Force that developed this document hopes
+that the report will be used in this spirit and will not be solely used as a checklist.
+This report should be considered to be a resource to help guide the development or evaluation of a
+cleaning validation program. It is not intended to establish mandatory standards for cleaning valida-
+tion. It is intended to be a single-source overview for pharmaceutical manufacturers that comple-
+ments existing regulatory guidance and other documents referenced in this document. The reader
+should also be aware that a specific topic may be discussed in several sections of this Technical Report.
+Therefore, a more complete perspective may be obtained by considering all relevant sections about a
+certain topic. Furthermore, while many approaches are presented here, specific approaches utilized
+for a given cleaning process should be selected based on a good understanding of that process, as well
+as the appropriateness of the selected practice for that specific situation. It is not enough to merely say
+that the practice is mentioned as an acceptable one in PDA Technical Report No. 29; each firm should
+be prepared to defend why the selected approach is a valid one for its operations (1).
+Acceptable Daily Exposure
+A dose that is unlikely to cause an adverse effect
+if an individual is exposed, by any route, at or be-
+low this dose every day for a lifetime.
+Acceptable Daily Intake
+An amount of a substance consumed on a daily
+basis that is considered at a safe level.
+Acceptance Criteria
+Numerical limits, ranges, or other suitable mea-
+sures for the acceptance of test results.
+Acceptance Limit
+The maximum amount of residue allowed in a
+product, in an analytical sample, or as an amount
+per surface area.
+Active Pharmaceutical Ingredient (API) or
+Drug Substance
+Any substance or mixture of substances intend-
+ed to be used in the manufacture of a drug (me-
+dicinal) product and when used in the produc-
+tion of a drug, becomes an active ingredient of
+the drug product (also called “drug substance”).
+Analyte
+Substance (usually a residue) for which an analy-
+sis is being performed.
+Blank
+Analytical sample taken to establish background
+value for the analytical measurement which may
+be subtracted from an experimental value to de-
+termine the “true” value.
+Campaign
+Processing of multiple lots or batches of the
+same product serially in the same equipment.
+Changeover
+The steps taken for switching multiproduct equip-
+ment from the manufacture of one product to the
+manufacture of a different product.
+Clean
+Having product residues, process residues, and
+environmental contaminants removed to an ac-
+ceptable level.
+Clean Hold Time
+The time from the end of the cleaning process
+until the equipment is used again (which may be
+product manufacture, autoclaving, or a steam in
+place (SIP) cycle).
+Cleaning Agent
+The solution or solvent used in the washing
+step of a cleaning process. Examples of cleaning
+agents are water, organic solvent, commodity
+chemical diluted in water, and formulated deter-
+gent diluted in water.
+Cleaning Procedure
+The documentation that assures any product and
+process-related material introduced into equipment
+as part of the manufacturing process stream is re-
+moved and the equipment is adequately stored.
+Cleaning Process
+A process that is used to remove any product,
+process-related material and environmental con-
+taminant introduced into equipment as part of
+the manufacturing stream.
+Cleaning Validation
+Documented evidence with a high degree of
+assurance that a cleaning process will result in
+products meeting their predetermined quality
+attributes throughout its life cycle.
+Cleaning Verification
+A one-time sampling and testing to ensure that
+specified equipment has been properly cleaned
+following a specific cleaning event.
+Contamination
+An undesired residue or residue level on cleaned
+equipment surfaces or in a manufactured product.
+Coupon
+A small, generally flat portion of a defined ma-
+terial of construction (such as stainless steel or
+PTFE) and of a defined surface finish, typically
+used for laboratory cleaning evaluations and/or
+for laboratory sampling recovery studies
+Dedicated Equipment
+Equipment used exclusively for the manufacture
+of only one drug product, bulk drug substance,
+or intermediate.
+Degradation
+Breakdown (usually chemical) of material dur-
+ing manufacture (including during and after the
+cleaning process).
+
+## 2.0 Glossary of Terms
+
+Dirty Hold Time
+The time from the end of product manufactur-
+ing until the beginning of the cleaning process
+(also called “soiled hold time”).
+Dry Equipment
+No visible water in the equipment or line when
+viewed under appropriate lighting conditions.
+Equipment Train
+The sequence of equipment through which a
+product is produced or processed.
+Free Drained Equipment
+No visible water pool in the equipment or line
+when viewed under appropriate lighting condi-
+tions (but may contain water droplets).
+Grouping Strategy
+A strategy for establishing similar cleaning pro-
+cesses, usually based on similar products or
+similar equipment, and to validate the cleaning
+process based primarily on validation data for a
+representative of the group.
+Highly Hazardous Drug Active
+A drug active that can cause serious adverse effects
+at typical doses. Those adverse effects are gener-
+ally not related to the main therapeutic activity
+of the drug, and includes effects such as carcino-
+genicity, mutagenicity, genotoxicity, reproductive
+hazards, allergenicity, and cytotoxicity.
+Investigational Medicinal Product
+A pharmaceutical form of an active substance or
+placebo being tested or used as a reference in a
+clinical trial.
+LD50
+The dose of a material which results in 50%
+mortality in an animal test
+Limit
+A value for a residue above which a cleaning pro-
+cess would not be acceptable.
+Marker
+Component of a product or a cleaning agent
+used as an analyte to quantitate the total amount
+of product or cleaning agent present.
+Mock Soil
+A soil which is used in place of the manufac-
+tured product during a cleaning validation pro-
+tocol (also called a “surrogate” soil).
+Mock Soiling
+A process of soiling the equipment for a cleaning
+validation protocol in which soil is applied to the
+equipment surfaces to simulate the condition of
+the soil on those surfaces following typical prod-
+uct manufacturing.
+Normal Dose
+The therapeutic dose of a product as given on
+the approved product labeling.
+Product Changeover
+Procedural steps taken for switching from the
+manufacturing of one product to another product.
+Recovery Study
+A laboratory study combining the sampling
+method and analytical method to determine the
+quantitative recovery of a specific residue for a
+defined surface.
+Residue
+Chemical or microbiological material remaining
+on equipment surfaces after a cleaning process.
+Soil
+The chemical or microbiological materials left
+on process equipment after completion of pro-
+cess manufacturing, but before initiation of the
+cleaning process.
+Worst-Case Process Condition
+A condition or set of conditions encompassing
+upper and/or lower processing limits and cir-
+cumstances, within standard operating proce-
+dures, which pose the greatest chance of prod-
+uct or process failure when compared to ideal
+conditions (such conditions do not necessarily
+induce product or process failure).
+Worst Case Soil
+A soil that is the most difficult to clean from pro-
+duction equipment based on knowledge gener-
+ated from laboratory studies, scientific proper-
+ties, and/or production experience.
+
+### 2.1 Definition of Acronyms
+
+AA: Atomic Absorption
+ADE: Acceptable Daily Exposure
+ADI: Acceptable Daily Intake
+API: Active Pharmaceutical Ingredient
+CAPA: Corrective and Preventive Actions
+CBER: Centers For Biological Evaluation and
+Research
+CDER: Centers for Drug Evaluation and Research
+CFU: Colony Forming Unit
+CGMPs: Current Good Manufacturing Practices
+CIP: Clean-In-Place
+COP: Clean Out-of-Place
+CPP: Critical Process Parameters
+CQA: Critical Quality Attributes
+CZE: Capillary Zone Electrophoresis
+DOE: Design of Experiments
+ELISA: Enzyme Linked Immunosorbant Assay
+EPDM: Ethylene Propylene Diene Monomer
+Rubber
+EU: Endotoxin Units
+U.S. FDA: Food and Drug Administration
+FMEA: Failure Mode and Effects Analysis
+FTIR: Fourier Transform InfraRed
+HPLC: High Performance Liquid Chromatography
+ICH: International Conference on Harmonisation
+ICP: Inductively Coupled Plasma
+IMS: Ion Mobility Spectrometry
+LOD: Limit of Detection
+LOQ: Limit of Quantitation
+MAC (or MACO): Maximum Allowable
+Carryover
+NOEL: No Observable Effect Level
+NOAEL: No Observable Adverse Effect Level
+NIR: Near Infrared
+LD50: Lethal Dose 50 Percent
+PAI: Pre-Approval Inspection
+PAT: Process Analytical Technology
+PIC/S: Pharmaceutical Inspection Cooperation
+Scheme
+PLC: Programmable Logic Controller
+PPQ: Process Performance Qualification
+PTFE: PolyTetraFluoroEthylene
+PW: Purified water
+QA: Quality Assurance
+QbD: Quality by Design
+QC: Quality Control
+OIT: Operator Interface Terminal
+RSD: Relative Standard Deviation
+SAL: Surface Acceptance Limit
+SEM: Scanning Electron Microscopy
+SIP: Steam-In-Place (or Sterilization-In-Place)
+SPC: Statistical Process Control
+SOP: Standard Operating Procedure
+SUPAC: Scale Up and Post Approval Changes
+TACT: Time, Action, Concentration and Tem-
+perature
+TLC: Thin Layer Chromatography
+TNTC: Too Numerous To Count
+TOC: Total Organic Carbon
+TTC: Threshold of Toxicological Concern
+UPLC: UltraPerformance Liquid Chromatography
+UV/Vis: Ultraviolet/visible Spectrophotometry
+WFI: Water for Injection
+WHO: World Health Organization
+
+## 3.0 Cleaning Process Design and Development
+
+This section describes the application of operational parameters and measurements, design of laboratory
+scale experiments, selection of appropriate test soils, and scale-up for the cleaning of the manufacturing
+equipment. Additionally, the concept of “Design Space,” a Quality by Design approach to the develop-
+ment of pharmaceutical processes, is discussed and applied to the development of cleaning processes.
+The cleaning process requires design and development prior to implementation in a manufacturing
+plant to ensure the cleaning process and equipment are acceptable for use.
+The operational parameters that describe the cleaning process include:
+• Cleaning agent
+• Concentration
+• Contact time
+• Cemperature
+Factors which affect the cleaning process include:
+• Product characteristics
+• Product condition
+ Relevant specifics about the cleaning equipment include:
+• Automated cleaning pathways
+• The sequence of manual or automated cleaning steps
+• Flow rates during each step
+These operational parameters should be determined prior to implementation.
+Generally, establishment of acceptable cleaning processes (or confirmation of acceptable processes
+for new soils being introduced to the manufacturing plant) follows a standard progression of activi-
+ties, beginning with identification of control variables, cleaning measurements, and performance cri-
+teria. Laboratory (scale-down) experimentation, analogous to laboratory experimentation for process
+characterization, along with specific equipment requirements may provide data to establish cleaning
+parameter control ranges.
+
+### 3.1 Cleaning Process Design
+
+Design starts with a consideration of the Critical Process Parameters (CPPs) and Critical Quality At-
+tributes (CQAs) of the cleaning system. Table 3.1-1 lists representative CPPs and CQAs that might be
+applicable to a cleaning process.
+
+**Table 3.1-1	 CPP and CQA Considerations that have Potential Risk Impact to a Cleaning Process (2)**
+
+Critical Process Parameters
+Critical Quality Attributes
+• Process temperature
+• Process pressure
+• Process flow
+• Process time
+• Cleaning agent concentration
+• Dirty hold time (soil condition)
+• Clean hold conditions
+• Visual detection or limits
+• Cleaning agent residues
+• Product residues
+• Microbiological residue limits
+• Drainability/drying
+• Conductivity/resistivity
+Table 3.1-2 describes the factors in the cleaning spectrum. For each factor, there is a range of pos-
+sible operating differences utilized within the industry. The development of a specific process should
+consider the number and complexity of issues surrounding the cleaning process and the variety of
+facilities, products and equipment in use.
+The cleaning spectrum helps manufacturers to establish the factors which are critical for individual
+processes, thereby enabling them to set priorities, develop grouping philosophies and establish the
+‘‘scientific rationales’’ that will govern the cleaning program. The cleaning spectrum can be used
+during the initial phases of defining a cleaning validation program or during a new product cleaning
+process development.
+The cleaning spectrum includes cleaning program criteria, equipment characteristics, quality attri-
+butes of equipment design, formulation/product attributes, and manufacturing/process attributes.
+All of the factors in the cleaning spectrum directly affect the ability to clean; however, their relative
+importance and criticality may be different in different situations.
+
+**Table 3.1-2	 The Cleaning Spectrum**
+
+Automated Cleaning
+Manual Cleaning
+In-place Cleaning
+Out-of-Place Cleaning
+Dedicated Equipment
+Non-Dedicated Equipment
+Indirect Product Contact Surfaces
+Product Contact Surfaces
+Low Risk Site
+High Risk Site
+Minor Equipment
+Major Equipment
+Low Risk Drugs
+High Risk Drugs
+Highly Characterized
+Poorly Characterized
+Liquid Formulations
+Solid Formulations
+Easy to Clean Product
+Difficult to Clean Product
+Materials with a Smooth, Non-porous Surface
+Porous Materials
+Single Product Facility
+Multiple Product Facility
+Non-Campaigned Production
+Campaigned Production
+
+### 3.2 Cleaning Process Overview
+
+Cleaning processes generally contain multiple steps. Each step in the process has a function and a set
+of parameters that are controlled within defined ranges to ensure effective soil (and cleaning agent)
+removal. Steps in a typical cleaning cycle for a cleaning process are outlined below in Table 3.2-1. De-
+tails of the cleaning processes may vary from site-to-site and for different types of process equipment.
+Differences may include the use and type of detergents and/or solvent, presence of an acid cleaning
+step, concentration of cleaning agents, contact time of cleaning agents on equipment, feed pressure or
+flow rate, cleaning temperature, and required length or volume, length and/or number of rinse steps.
+
+**Table 3.2-1	 Cleaning Process Steps (Examples)**
+
+Step
+Function
+Comments
+Vacuum
+or Pre-
+Rinse
+Removal of readily soluble and/or non-adher-
+ing residues
+Reduction of soil load prior to washing step.
+Wash
+with
+Cleaning
+Solution
+Removal of soluble and dried residues, solu-
+bilization of soils by degradation, heat, and/or
+wetting with detergents
+Primary step for soil and bioburden removal.
+Often performed at elevated temperatures.
+May include alkaline detergents or alkali
+hydroxides, acid detergents or acids, com-
+binations of the two, or may be a solvent or
+solvent mixture.
+Rinse
+Removal of suspended or solubilized soils
+and, if applicable, of cleaning solution
+May include a series of pulse rinses, and
+may include final rinse with higher grade of
+rinse solvent.
+Dry
+Removal of water and other solvents
+May be done by air or nitrogen flow or by
+heat. Water removal may be assisted by an
+organic solvent final rinse.
+
+#### 3.2.1 Physical-chemical Aspects
+
+There are four principal cleaning input parameters that can be varied for each step in the cleaning
+process. These four parameters are typically referred to as TACT (Time, Action, Concentration, and
+Temperature). These four variables are interrelated and have a direct relationship on the success of
+each phase in the cleaning cycle. For example, cleaning agents may be heated to increase their effec-
+tiveness. The effect of each of these variables on soil removal should be determined and acceptable
+ranges established as part of the cleaning development effort. (Soil type and condition is an additional
+input that is discussed in Section 3.3.3.)
+Time is defined as the length of time for the cycle step. There are two typical ways, direct and indirect,
+of defining and measuring contact time during a cycle step. Using the direct method, a cycle step
+counter is used to measure the cycle step time. Time also may be measured indirectly. For example,
+for a rinse step, volume is sometimes tracked instead of time because the volume and flow rate define
+a time. For final water rinse, it is also common to add more requirements, such as achieving a speci-
+fied conductivity level.
+Action is the mechanism used to deliver the cleaning agent. This mechanism may be characterized as
+soak, scrubbing, impingement or turbulent flow. Agitation often enhances the chemical actions of the
+cleaning agents and helps to increase the effectiveness of the cleaning process, such as by shortening
+the required contact time. Manual cleaning typically includes soaking or scrubbing as the action to
+achieve cleaning. Automated cycles typically employ impingement and/or turbulence as a cleaning
+action. The mechanisms of action should be understood for each cleaning process step. If critical, the
+flow rate of the cleaning and rinse fluids traveling through the equipment should be specified and
+verified in the cleaning process. Spray devices have minimum and maximum flow rate requirements,
+and piping should be flushed at a velocity sufficient to assure adequate coverage and turbulence.
+Cleaning agent concentrations directly affect the performance of the cleaning process. Selection of
+the cleaning agent should consider various aspects including soil type, ease of removal, and need for
+chelating agents. Cleaning chemicals are available in concentrated forms that are diluted and used in
+cleaning cycles. Effectiveness of the cleaners may be related to their concentration. Too low of a con-
+centration may result in failure to remove the soil from equipment; too high of a concentration may
+result in difficulty in removal of cleaning agent residues and may require excessive rinsing. Chemicals
+may be costly, both in their purchase and disposal, and thus determining the correct concentration
+of cleaning agent required to ensure cleanability should be considered. The automated dilution and
+addition of the cleaning agent to the cleaning equipment system must be designed for reproducibility.
+Regardless of the method of addition, confirmation or verification of the cleaning agent concentra-
+tion helps verify consistency. For automated cleaning processes, the easiest means to verify cleaning
+agent concentration for highly alkaline or acidic aqueous cleaning agents is by conductivity. Other
+considerations in the use of cleaning agents include a toxicity/safety evaluation and the possible need
+for surfactants, chelants and other functional aids in formulated detergents.
+A process should be in place to detect anomalies in detergent concentration based on the mechanism
+by which chemical make-up is performed. For example, some systems control chemical addition by
+volume and use conductivity as a confirmation. An alarm would be triggered if the conductivity is
+outside a preset range. The allowable range should be supported by cleaning development data.
+The optimal temperature ranges will vary for the different steps of the cleaning process. Initial solvent
+rinses are typically performed at ambient temperatures to minimize any denaturation or degradation
+effects and to maximize the dilution effects. Cleaning solutions may be heated to increase their effec-
+tiveness. Final rinse solvent steps may be performed at high temperatures to increase the solubility of
+cleaning process residues and to increase the drying rate of rinse solvents.
+
+### 3.3 Design Considerations
+
+#### 3.3.1 Location of Cleaning
+
+Equipment may be cleaned at its installed location, or it may be disassembled and moved to a central
+location for cleaning.
+
+##### 3.3.1.1 In-Place Cleaning
+
+The cleaning of large pieces of equipment may be performed in the equipment’s permanent location,
+generally in a configuration very similar to that in which it is utilized for production. In this docu-
+ment, in-place cleaning can be either for automated or manual cleaning processes.
+
+##### 3.3.1.1.1 Clean-in-Place (CIP) Systems
+
+The term ‘‘Clean-in-Place’’ usually refers to an automated system that consists of a system which uses
+various tanks and piping to deliver a cleaning solution through the equipment to be cleaned. There
+may be a prerinse tank and a final rinse tank. The CIP system utilizes spraying devices to provide cover-
+age and physical impingement of the cleaning solution on the process equipment surfaces. The spray-
+balls may be stationary or moving (e.g., rotating, oscillating). These systems are commonly used to
+clean large pieces of equipment, such as manufacturing tanks, blenders, fluid bed dryers, reactors and
+fermentation tanks. The CIP system may be a recirculation system or it may be a single-pass system.
+Centralized CIP systems can provide a single location for handling cleaning agents and reduce the plant
+requirements for cleaning-related equipment (pumps, tanks) and instrumentation. However, central-
+ized systems often require interconnected piping designs and may complicate desires to segregate
+parts of the process. Some process equipment may require special cleaning agents that are different
+than those used for the rest of the process equipment. For these situations, dedicated CIP systems that
+are integrated into the process skids may be desirable.
+Design of centralized CIP systems should consider the potential for carryover of product residues
+between process steps; between products being manufactured concurrently in multiproduct facilities;
+and between different products after a product changeover. To address the potential for product car-
+ryover, central CIP systems are often dedicated to one part of the manufacturing plant. Non-recircu-
+lating systems also reduce the potential for product carryover via the CIP equipment itself.
+Piping of the equipment being cleaned and of the CIP skid should be sloped continuously to a physi-
+cal low point to ensure acceptable draining of the lines. If supply and/or return loop headers are used,
+the loop must be designed such that liquid flows in both parts of the loop at adequate speeds. If this is
+not achieved, one part of the loop may become a functional deadleg. The pressure drop in the piping
+also needs to be considered. The CIP skids are often located remotely from the process area, and the
+length of the distribution piping results in a total pressure drop that can be significant. The greatest
+challenge is sizing the distribution piping when the supply flow rates in the system have high variabil-
+ity. This has been addressed in some facilities by installing pumps in distribution piping before major
+equipment to control flow rates. For CIP systems, diameters of drains should be adequate to ensure
+adequate drainage without a buildup of cleaning or rinse solution in the vessel.
+
+##### 3.3.1.1.2 Solvent Reflux Cleaning
+
+For small-molecule API manufacture by organic synthesis, cleaning may involve boiling a volatile sol-
+vent (such as methanol) in the reactor vessel. This is a type of in-place process (but not a CIP system
+as defined in 3.3.1.1.1). The solvent vapors rise to other portions of the equipment, and condense on
+those cooler surfaces. The condensed solvent may dissolve residues on those other surfaces, and carry
+the dissolved residue back to the boiling solvent in the bottom of the reactor vessel. Such a process is
+called solvent reflux cleaning. Key issues in solvent reflux cleaning are to make sure that the residues
+are soluble in the chosen solvent, and the solvent vapors contact and condense on all intended surfaces.
+The cleaning should also provide an effective rinse of the reactor vessel that held the boiling solvent.
+
+##### 3.3.1.1.3 Placebo Batches as a Cleaning Method
+
+Placebo cleaning is another type of in-place cleaning. For certain highly viscous ointments or products,
+it may be feasible to use a placebo run as a method of cleaning equipment. This approach requires
+the use of a placebo that has no detrimental quality impact on the next product manufactured in the
+equipment. The principle of using a placebo batch for cleaning is that the action of the placebo run-
+ning through the equipment would clean the equipment of drug residues or process residuals from
+the previous batch. The advantage for this type of cleaning is that the placebo is processed through
+the equipment in the same fashion as the manufactured product. Therefore, the material would touch
+the same surfaces and in the same manner as the next product batch. Disadvantages of this method
+include the cost of cleaning and the difficulty of demonstration of the effectiveness of the process.
+
+##### 3.3.1.2 Out-of-Place Cleaning
+
+Smaller equipment items and portable process equipment that are difficult to clean as installed are
+often disassembled and transported to a designated cleaning or wash area where the cleaning proce-
+dure is performed, either manually or automated. The additional activities involved with transport of
+equipment to and from the wash room, component identification, and the elimination of the potential
+for cross-contamination during transfer, reassembly, and storage prior to use makes the validation of
+these procedures somewhat more complex than the comparable in-place activity. Care should be exer-
+cised for routes and means of soiled equipment entering a washing area and routes and means of clean
+equipment exiting the washing area, as well as storage of cleaned equipment in the washing area. Care
+should also be used to assure contact and/or flow of the cleaning agent through all parts of the equip-
+ment, such as for lumens or hoses. The need for manual manipulation is an integral part of out-of-place
+procedures, and generally requires both more detail in the procedures and appropriate training. The
+manual manipulation makes these concerns similar to those of manual in-place cleaning.
+
+##### 3.3.1.2.1 Clean-Out-of-Place Systems
+
+Clean-out-of-place (COP) equipment includes items such as wash tanks used to clean small parts or
+parts removed from large equipment. Examples include a recirculating bath used for cleaning small
+parts, pump components, gaskets and other parts removed from larger equipment. COP systems
+may also include dishwasher type cabinets where small manufacturing vessels, drums, filter housings
+or hoppers can be loaded inside the cabinet and cleaned. The placement of the parts, disassembly of
+equipment and loading patterns are critical to the success of cleaning when using COP systems. The
+use of these systems significantly reduces the differences between CIP cleaning and COP cleaning, al-
+though issues related to disassembly and transport of equipment to the parts washer are still present.
+
+#### 3.3.2 Automated vs. Manual Systems
+
+Three broad definitions of cleaning processes follow, although it should be recognized that they repre-
+sent points on a continuum. The distinctions between these processes are important to the establish-
+ment of an appropriate cleaning process.
+
+##### 3.3.2.1 Manual Processes
+
+Manual cleaning is typically defined as the direct cleaning of equipment by a trained equipment op-
+erator using a variety of hand tools and cleaning agents. Although some process parameters may
+be monitored by gauges, the regulation and control of these parameters is the responsibility of the
+cleaning personnel.
+Important cleaning parameters for manual cleaning may include:
+• Volume of cleaning agents
+• Volume of rinse water
+• Temperature of wash and rinse solutions
+• Sequence and duration (contact time) of soaking, wash and rinse steps
+• Scrubbing action
+• Pressure of solutions
+• Detergent concentration
+It is important to specify in writing the extent of the equipment disassembly to ensure the reproduc-
+ibility of the cleaning process. Consistency of manual cleaning over time is accomplished by operator
+training, adequate supervision, and a well-defined, documented cleaning procedure.
+
+##### 3.3.2.2 Semi-Automated Processes
+
+As opposed to manual cleaning, semi-automated cleaning includes various levels of automatic con-
+trol. At one extreme, this could consist of simply manually removing gaskets/fittings for manual
+cleaning prior to the automated CIP of a tank, or disassembly of a pump or filter housing prior to
+cleaning in an automated COP system. At the other extreme, the operator may use a high pressure
+spray device to clean a surface or may simply open and close valves supplying spray balls inside a ves-
+sel. This type of cleaning is intermediate between fully automated and fully manual cleaning.
+
+##### 3.3.2.3 Automated Processes
+
+Automated cleaning typically does not involve personnel intervention (except perhaps to select a cycle
+and the start/stop of the operation). The system is usually programmable for the various cleaning
+cycles. Use of automation provides consistent and robust control and monitoring of the automated
+cycles and parameters (such as time, flow rate or pressure, cleaning agent concentration, and tem-
+perature).
+Important cleaning parameters for automated cleaning may include the volume of cleaning agents,
+volume of rinse water, flow rates and temperature of wash and rinse solutions, duration of wash
+and rinse cycles, pressure of solution, operating ranges and detergent concentration. Disassembly of
+equipment may still be necessary to allow for complete cleaning or to allow for the separate cleaning
+of delicate parts.
+In an automated cleaning system, the cleaning may be controlled through relay logic, a computer or
+programmable logic controller (PLC). The control system is an integral and critical part of the overall
+cleaning process. The control system regulates the cleaning cycles, addition of cleaning agents, tem-
+perature, time and other critical cleaning parameters.
+There may also be a control interface or operator interface terminal (OIT) to start the process, stop
+the process, monitor various stages of the process and change the process sequence. Given the in-
+creased complexity of the newer PLC and computer interfaces, training and validation are important
+issues that impact the ability of the system to provide consistent cleaning. The validation of control
+systems is critical to the success of automated cleaning processes.
+
+#### 3.3.3 Soil Evaluation and Categorization
+
+##### 3.3.3.1 Soil Categories
+
+There are a large variety of substances that contact process equipment surfaces during the manufac-
+ture of pharmaceutical products. They include manufactured products, degradation products, pro-
+cess aids, solvents, and cleaning agents. Cleaning processes and cleaning validation should be designed
+and tested to address this wide variety of potential process soils. These tasks may be simplified by
+creating categories of soils and selecting representative soils for testing and tracking during the devel-
+opment and validation of cleaning processes.
+The final selection of a representative soil within a process stream should be based on the similarity of
+the physiochemical properties of the soils. In many circumstances, categories may be combined and
+the number of representative soils used for development activities further reduced.
+
+##### 3.3.3.2 Soil Removal
+
+Soils may be removed by physical and/or chemical means. Physical removal may be accomplished
+by putting energy into the cleaning process through use of high pressure spray, high velocity flow,
+manual scrubbing, or vacuuming in order to remove soils from the equipment. Physical removal may
+be dependent on solubility, soil amount and its degree of adhesion to the equipment surface.
+Chemical cleaning mechanisms include solubility, emulsification, wetting, chelation, dispersion, hy-
+drolysis and oxidation. Cleaning agents are generally chosen for their ability to remove process soils
+by one or more of these mechanisms. In some cases, multiple cleaning steps may be used in order
+to take advantage of different chemical cleaning mechanisms. For instance, alkaline detergent for
+solubilization and emulsification may be followed by a sodium hypochlorite solution for oxidation
+of protein soils. It should always be kept in mind that the more aggressive the cleaning solutions are
+(e.g., solutions with high concentrations of sodium hypochlorite), the more corrosion may occur.
+The right choice of materials for cleaning purposes is part of the development phase.
+Factors affecting “cleanability” also include the surface geometry, the surface type, the soil type, and
+the soil level. The ease with which a soil is released from the equipment surface by one of the mecha-
+nisms described above determines its cleanability. Soil response to a particular cleaning mechanism
+may influence the choice of cleaning agent and cleaning conditions. Attachment to surfaces can be
+by a combination of van der Waals forces, electrostatic effects, and other forces. The time that the
+soil resides on the equipment can also influence the difficulty of soil removal. Fresh soils are generally
+easier to remove than soils that have been allowed to dry on the surface. The time between soiling and
+cleaning must be considered when designing the cleaning studies to simulate the dirty hold time, if ap-
+plicable. In some cases, difficulty of cleaning does not change with increased dirty hold time. If this is
+the case and any dirty hold time can be used in a protocol, it must be clearly justified and documented.
+High soil amounts can complicate removal by saturating the cleaning solvent or depleting surfactants
+or other components of the cleaner (such as oxidizers or emulsifiers). This may impact the mini-
+mum cleaning solution volumes and should be considered in the cleaning cycle design when high soil
+amounts are anticipated.
+
+#### 3.3.4 Equipment Considerations
+
+Equipment usage during production is another important aspect to consider in designing a clean-
+ing process. It is important to understand the role that the equipment plays in the production train.
+Equipment design characteristics, as established during product development, are often driven by
+equipment functionality and the requirements of the process. With the current emphasis on cleaning
+validation, it makes sense that ‘‘cleanability’’ be an important criterion in the design of equipment.
+Equipment should be free-draining and have limited intricate or complex parts. Sanitary designs em-
+ploying principles such as appropriately finished surfaces, lack of crevices, absence of dead legs and
+suitable construction materials are recommended.
+Cleaning equipment should be designed to ensure adequate coverage of all process equipment sur-
+faces to be cleaned, and to not contribute possible contamination. In tankage and enclosed piping sys-
+tems, the volume of cleaning solution available must be sufficient to clean all interior surfaces of the
+pipe. For spray ball or nozzle spray apparatus, all equipment surfaces should be available for contact
+with the spray. The concern here is that areas can be ‘‘shadowed’’ by the presence of dip tubes and
+mixer baffles, blades, and shafts. Spray patterns may be originally designed by computer simulation,
+but should be confirmed by a spray coverage test, such as one using a dilute solution of riboflavin.
+
+##### 3.3.4.1 Dedicated – Nondedicated Manufacturing Equipment
+
+Dedicated equipment is used solely for the production of a single product, or in some cases, of a
+single product line (e.g., containing the same active ingredient). Concerns over cross-contamination
+with other products are markedly reduced. However, consideration must be given to residues of
+cleaning agents, degradants, bioburden, and endotoxin.
+Where the same piece of equipment is utilized for different product formulations (i.e., nondedicated
+equipment), the prevention of carryover of active ingredients between products becomes a major fo-
+cus of the cleaning process. For nondedicated equipment, a design consideration is whether a unique
+cleaning process will be developed for each manufactured product, or whether one cleaning process
+will be designed to address all (or a group) of manufactured products.
+Certain products (such as beta-lactams) may require segregated production areas. A risk-based analysis
+should be performed on other products which may be highly hazardous (e.g., mutagenic active ingredi-
+ents) in order to determine whether dedicated facilities should be used. For other products, dedication
+of equipment may be made not on a patient risk basis, but rather as a practical business decision.
+
+##### 3.3.4.2 Nonproduct Contact – Product Contact Surfaces
+
+Validation of cleaning has focused on product contact surfaces. However, indirect product contact
+surfaces (“nonproduct contact” surfaces with close proximity to open product) may be included in a
+cleaning validation program. An example of an indirect product contact surface for which cleaning
+validation is commonly done is a lyophilizer shelf used in lyophilization of vials. Nonproduct contact
+surfaces such as floors and walls typically have cleaning processes, but those cleaning processes are
+lower risk, are controlled consistent with GMPs, and are outside the scope of a cleaning validation
+program. However, cleaning of floors and walls may be addressed as part of an overall cross-contam-
+ination program, particularly for highly hazardous drug active ingredients.
+
+##### 3.3.4.3 Low-Risk Sites – High-Risk Sites
+
+Risk is a function of the identification of hazard, the ability to detect that hazard, and the potential
+exposure of the hazard on product quality and patient safety. Those locations where there is the dan-
+ger of a residue affecting a single dose with a high level of contamination are high-risk sites. Examples
+of such sites are a filling needle and a tablet punch. Sites which are difficult to clean are also high-risk
+sites. Those difficult-to-clean sites may include ports, drains, baffles, and the undersides of agitator
+blades. These high-risk sites may require special disassembly, cleaning, and/or inspection emphasis.
+Other sites which are easier to clean and uniformly transfer residue to the next product are generally
+considered lower risk.
+The distinction between ‘‘major’’ and ‘‘minor’’ equipment is not a definitive one. The Good Manu-
+facturing Practice (GMP) (6) make mention of ‘‘major’’ equipment, but are silent on the subject of
+‘‘minor’’ equipment except with regard to items described as utensils. Major and minor designations
+do not generally reflect the challenge of cleaning, nor define whether the equipment surfaces are a
+lower or higher risk for cleaning processes. Both major and minor product contact equipment items
+require cleaning verification or validation for multiproduct equipment.
+
+##### 3.3.4.4 Materials of Construction
+
+Factors affecting “cleanability” include the surface type and the surface finish. The most common
+surface types encountered are stainless steel and glass, but surface types may include other metals and
+a variety of plastics and elastomers. Surface finish also affects the removal of soils. Rough surfaces
+provide more area for soil contact and may contain cracks and crevices that are difficult for the clean-
+ing agent to penetrate. The interior surfaces of stainless steel process equipment may be modified
+to smooth and/or polish rough surfaces. The materials of construction of the equipment should be
+considered carefully when designing a cleaning validation program.
+Porous materials may require special cleaning processes. Items such as filter bags and filter mem-
+branes are typically dedicated to a given product.
+
+#### 3.3.5 Operational Considerations
+
+Operational issues such as the use of campaigns, the utilization of equipment, and the complexity of
+the equipment impact the design of the cleaning validation program.
+A campaign is a series of batches of the same product manufactured one after the other. Consider-
+ation should be given to the need to clean, and the extent of cleaning, between batches in a campaign.
+Depending on the product, there may be no cleaning between batches or some level of cleaning is
+done between batches. If the cleaning between batches is simply a vacuuming (for solid products)
+or a solvent or water rinse (for liquid products), such cleaning is sometimes called “minor” cleaning
+or “in-process” cleaning. Such minor or in-process cleaning steps do not require separate validation.
+However, consideration should be given to the effect of such minor or in-process cleaning steps on
+the efficiency of the “full” cleaning process done at the end of a campaign for changeover to a new
+product or campaign.
+If only the cleaning process at the end of the campaign is to be validated, consideration should also be
+given to the number of batches and/or the total elapsed time for a campaign. For example, elapsed
+time might be critical if the active ingredient left on equipment surfaces degrades over time due to
+exposure to heat or light. Furthermore, the repetitive production of a single product without vali-
+dated cleaning between batches might also result in the penetration of materials into a location where
+single lot production might not present a problem.
+
+#### 3.3.6 Cleaning Agent Selection
+
+Cleaning agent selection should be based on a scientific rationale. Cleaning agents should be selected
+for their suitability to remove the product residues; their compatibility with equipment; their ease of
+cleaning agent removal; and low toxicity. Solvents, formulated detergents, and commodity chemicals
+should be acceptable for the process and for use with pharmaceutical products. Water alone or or-
+ganic solvent alone may be used as the cleaning agent, particularly for readily soluble soils.
+At the time of design of the cleaning process, it is important to review and document information
+about any cleaning agents to be used. The established cleaning agents should be reviewed against the
+vendor’s current specification sheets and descriptions, including material safety data sheets. Those
+documents should be available as a minimum requirement for use of those cleaning agents before
+evaluating the cleaning process. When selecting a new cleaning agent or utilizing an established clean-
+ing agent for a new process, it is important to know all of the ingredients, as well as the percentage
+each constituent comprises, that are in the cleaning agent. This allows for the establishment of the
+consistency of cleaning agent formulation over time, as well as for selecting a possible marker com-
+ponent for analysis of cleaning agent residues.
+Cleaning agents and their vendors should be qualified in much the same way as a raw material and
+raw material vendor is qualified. Change control of the cleaning agent formulation, as well as notifica-
+tion of significant changes, should be required of the cleaning agent vendor.
+During the development of the cleaning cycle, quantities of cleaning agents, their concentration and
+their addition mode should be studied. Methods of storage, expiration dating, inventory control, and
+change control of the cleaning agents will help establish and maintain a reproducible process.
+Water used to prepare cleaning agents and for equipment rinse should be of suitable quality (7). Gen-
+erally, water used for final rinse should be the same grade as used for the manufactured product, e.g.,
+parenteral products should utilize WFI and oral products should employ purified water.
+
+#### 3.3.7 Product Considerations
+
+Chemical and physical attributes of the product should be taken into account when establishing a cy-
+cle development program for a specific product. Characteristics such as the solubility, concentration,
+physical properties of the active ingredients and excipients, possible degradation products and the
+effect of the cleaning agent are important factors in establishing that the cleaning method is appropri-
+ate. The interaction of the product with all surfaces with which it will come into contact is critical.
+
+##### 3.3.7.1 Product Risk Considerations
+
+The cleaning of equipment is closely tied to the type of materials being removed from the surface.
+The product formulation (including the active ingredients and excipients and formulation aids), in-
+cluding the nature of the product at various intermediate steps of manufacture, should be considered.
+Because limits for highly hazardous drug active ingredients (e.g., those with serious allergenic, cyto-
+toxic and mutagenic properties) are generally more stringent, more robust cleaning processes may
+have to be designed. Such highly hazardous drug active ingredients may be manufactured on nondedi-
+cated equipment provided an appropriate risk analysis and cleaning validation is performed. Some
+firms may choose to use dedicated facilities and/or equipment for such highly hazardous drug active
+ingredients even though that might not be a regulatory requirement. Another approach for such
+highly hazardous drug active ingredients is to include in the cleaning process a deactivation or degra-
+dation step such that residues from the active ingredient do not have those properties that make the
+active ingredient highly hazardous. In addition, any unusual hazards of degradation products (either
+unintended or intended degradation products) should be considered.
+The route of administration of a product may affect the acceptable residue limits, and may therefore
+affect the nature of the cleaning process. Generally speaking, injectable products, intra-ocular formu-
+lations, and some inhalants which provide direct access to the systemic circulation systems of patients
+are a much greater concern if cross-contamination occurs.
+Another risk factor to consider is the amount or extent of information available on the product to
+be cleaned. For example, the amount of information available for a marketed product may be much
+more extensive than information on a new drug active ingredient being manufactured for human
+clinical trials. In addition, in such early clinical manufacturing, a cleaning verification approach may
+be utilized. With such an approach, the cleaning process may be significantly overdesigned so that
+after the cleaning process, residue levels are well within acceptance limits.
+
+### 3.4 Cleaning Development Laboratory Experiments
+
+Laboratory testing often includes screening a combination of soils and relevant process surfaces.
+Screening experiments are designed to test soil removal capability using representative soils and cou-
+pons of relevant surface materials. Cleaning conditions can be selected based on the soil-surface com-
+bination encountered in the production equipment.
+Laboratory evaluation of the interaction between product and surfaces can be performed using test
+coupons made of the surface of interest under simulated cleaning conditions. Based on the process
+details, appropriate materials of construction with the appropriate surface finish characteristics should
+be selected for use in lab-scale cleaning experiments. To minimize the number of experiments, it may
+be sufficient to include only those surfaces that are expected to be the most difficult to clean (based on
+prior knowledge and risk assessment tools). Stainless steel coupons are the most common choice as
+they often represent a majority of equipment surfaces in a production facility. Non-electro-polished
+stainless steel coupons with a representative or worse surface finish compared to equipment surfaces
+may be preferred for lab evaluations.
+
+#### 3.4.1 Soil Selection
+
+Care should be taken in the choice of soils and soil conditions used for selection of cleaning agents
+during laboratory evaluation. The soils should be representative of the soils on equipment in the
+manufacturing plant, including the chemical and physical (dried, baked) nature of the soils.
+Solutions or suspensions of soils selected for experimentation are generally coated on coupons repre-
+senting the process contact surfaces and dried to simulate the soil condition on the process equipment
+prior to testing for removal with cleaning agents. The number of representative soils will vary with an
+organization’s experience and history, as knowledge about the content and cleanability of the various
+process steps.
+Preparation of coupons typically involves use of a cleaning procedure in order to ensure that all cou-
+pons are uniformly cleaned at the start of the experiment. This also helps to ensure that any foreign
+material deposited on the coupon surface during the fabrication process is removed to minimize
+interference with the process soils or cleaning agent. The coupons are then completely dried before
+spotting them with soils. It is important that the spotting of soil onto each coupon be kept consistent
+to minimize experimental variability. The coupons are then dried for a fixed time to simulate the
+soiled equipment surfaces at the time of cleaning, before they are subjected to the lab-scale cleaning
+process. That fixed time is generally the desired dirty hold time, or a longer time.
+The purpose of the experiment could be to make one or more determinations related to cleanabil-
+ity, including comparison of the various materials of construction for a given soil; different process
+streams for a given surface; different cleaning conditions (such as concentration of cleaning agent and
+temperature); different products for the same process step and surface; or a combination of these.
+The outcome of these studies can be analyzed to create the “design space” for cleaning. In any case,
+it is important that the performance of the cleaning process in the laboratory represents, as much as
+practical, the performance in the pilot plant or larger scale process. Important operational parameters
+such as temperature, time, mode of action and concentration are controlled to mimic what is used
+in the manufacturing plant. If it is difficult to simulate the actual process conditions in the laboratory,
+conditions representing a worst-case scenario should be employed. The laboratory studies can also
+be used to challenge the cleaning process by modifying different variables of the cleaning process to
+further outline the design space.
+Evaluation of performance for cleaning design space studies can utilize the various analytical meth-
+ods listed in Section 7.0.
+
+#### 3.4.2 Parameter Selection
+
+A variety of parameters can impact the performance of a cleaning regimen. These include: nature and
+strength of the interactions between the product and the surface; nature of the interaction between
+the cleaning agent and the soil; time (dirty hold time, time for each cleaning cycle); cleaning agent
+and concentration; temperature; cleaning action [flow properties (stagnant, laminar, turbulent) and
+pressure]; and properties of the cleaning solution (such as ionic strength, pH, components, viscosity,
+and density). All of these, except the cleaning action, are independent of the equipment. Selection
+of parameters to be examined in an experimental study should be done on a case-by-case basis. The
+larger the number of parameters evaluated, the more the number of experiments may be required
+to understand the impact of the parameters and their interactions. On the other hand, if critical pa-
+rameters are not picked, the resulting conclusions in terms of identifying the important operational
+parameters and their ranges are likely to be erroneous, since important effects might be overlooked.
+Use of a risk analysis tool, such as Failure Mode and Effects Analysis (FMEA), may assist with priori-
+tizing the various operational parameters for further examination. Single parameter studies that vary
+one parameter at a time can be designed to identify the parameters that have significant impact on
+the performance. One such study conducted at the bench scale reported concentration and tempera-
+ture of the cleaning solution to be the parameters with predominant effects (8). As discussed in the
+following section, single-parameter studies can then be followed by Design of Experiments (DOE) to
+investigate the interactions between these parameters. Alternatively, if only a few parameters need to
+be examined, just performing a DOE to measure both the main effects and the interactions may be
+more resource- and time-efficient.
+
+##### 3.4.2.1 Parameter Interactions
+
+The use of DOE style experiments helps to determine the effect of varying individual parameters on
+cleanability as well as providing an indication of their interaction. Statistical tools including regression
+analysis, leverage plots, response surface analysis and interaction profiles can be used to study both
+main and interaction effects. Relationships and interactions between parameters, such as temperature
+of cleaning solution and the concentration of the cleaning agent, may be determined. Such DOE
+analyses can be used to construct a multi-parameter design space for the cleaning process and to es-
+tablish the ranges of operational parameters that provide acceptable cleaning process performance.
+
+#### 3.4.3 Measurements to Determine Cleaning Effectiveness
+
+Cleaning effectiveness may be determined by the sampling and analytical methods described in Sec-
+tions 6.0 and 7.0. They include visual inspection, and analytical techniques for measuring any res-
+idues, such as of manufactured product, degradant, cleaning agent, bioburden and/or endotoxin.
+Depending on the purpose and the design/development phase, these may be online and/or offline
+measurements of rinse or swab samples.
+Using existing knowledge and a risk-based approach, cleaning experiments can be reduced or elimi-
+nated, e.g., for transfer of a manufacturing process from one facility to another.
+
+### 3.5 Cleaning Process Scale-Up
+
+Following selection of cleaning agents and cleaning parameter ranges (such as temperature, contact
+time, cleaning agent concentration, and flow stream hydrodynamics) from historical plant data (if avail-
+able) and laboratory development work, the cleaning process can be implemented for use on larger-
+scale manufacturing equipment. Determination of soil and cleaning agent residue removal is generally
+performed prior to formal cleaning validation protocols. Adjustments to cleaning parameters may be
+made during the scale-up process based on plant experience and laboratory development studies.
+
+#### 3.5.1 Setting Process Controls
+
+It is both prudent and consistent with current Good Manufacturing Practice (CGMP) to establish
+control ranges for the cleaning process operational and performance parameters. As appropriate,
+operational parameters for cleaning processes include:
+• Dirty hold time for equipment (time between completion of use and initiation of cleaning)
+• Clean hold time for equipment (time between completion of cleaning and next use)
+• Flow rate and/or delivery pressure of the cleaning stream (proof of flow for any parallel flow paths)
+• Cleaning agent concentration
+• Duration of each step in the cleaning process (by time or volume)
+• Temperature of washing solutions and rinses
+• Air flow verification during any water removal or drying steps
+Instrumentation for each of these parameters should be included in the system design. Alert and/
+or action levels can be set for each critical cleaning process parameter in order to maintain proper
+operation. Parameters may be significant for business or economic reasons, as well as for patient and
+product quality reasons, as long as the parameters set for business and economic reasons are more
+“stringent” than for patient and product quality reasons. Alert levels may be set based on expected
+variability of the equipment and instrumentation in the cleaning system. Action levels should be set
+at values that permit adjustment to the equipment to avoid jeopardizing acceptable operation. Both
+alert and action levels should be within the acceptable ranges for each parameter. It is also reasonable
+to establish check times, so that if parameters do not reach their set points (e.g., volume flow, conduc-
+tivity) within that time, then an alarm or notification occurs.
+Performance parameters should also be evaluated during scale-up. As applicable, performance param-
+eters may include:
+• Final rinse solvent analysis for active ingredients/
+degradants
+• Final rinse solvent analysis for cleaning agent
+• Final rinse water bioburden
+• Final rinse water endotoxin
+
+### 3.6 Applying the “Design Space” Concept to Cleaning
+
+Processes
+“Design Space” is the multidimensional combination and interaction of input variables and process
+parameters that have been demonstrated to provide assurance of quality. The Design Space concept
+has been introduced by the International Committee on Harmonization (ICH) (3) to describe an ap-
+proach to the development and control of pharmaceutical manufacturing processes. An analogous
+approach can be applied to cleaning processes.
+The cleaning design space for a manufacturing facility is defined through a risk- and science-based
+approach relying on cleaning process knowledge, product/equipment knowledge, regulations and
+quality practices (requirements). Similar to manufacturing process development, control, and valida-
+tion, cleaning process operational parameters (inputs) can be controlled to ensure predictable and
+acceptable performance as evidenced by appropriate measurements (outputs). The cleaning design
+space is represented by the range of each of the operational parameters that results in acceptable
+performance of the cleaning process.
+Steps in defining the design space for a cleaning process may be slightly different from steps taken to
+define design space for a manufacturing process, in that the design space for a manufacturing process
+is unique to a given process (e.g., a granulation process). However, many manufacturers may want to
+design one cleaning process for a specific equipment train that is used regardless of the manufactured
+product. This may be accomplished by identifying the “worst-case” soils and defining the design space
+around cleaning process performance using these soils.
+Specifications are developed to support the design, installation and operation of the cleaning system.
+Risks are identified and assessed for impacts to safety and cleaning effectiveness (e.g., severity, prob-
+ability of occurrence, detectability). Parameters may be categorized based on their level of criticality,
+with the most critical parameters monitored closely so that the cleaning operation can be corrected
+if parameters are not kept within their predetermined ranges. The criticality of cleaning process op-
+erational parameters is based on laboratory studies and other data/experiences that document the
+influence of each parameter on cleaning effectiveness.
+Cleaning effectiveness may be influenced by the following factors:
+• Soil type or family
+• Nature of the soil on the surface
+• Equipment and contact surface type and finish
+• Cleaning technology and functional specifications
+for the cleaning process.
+This information is used to drive the design requirements for the cleaning method. Cleaning validation re-
+quires consideration of the worst-case operating conditions. Field conditions such as the flow rate, clean-
+ing agent concentration, contact time, process temperature, and dirty hold time are conditions that are
+considered when developing an effective cleaning process. The assumption is that any cleaning process
+that is performed within the space defined by these conditions will be effective, reliable and consistent.
+
+### 3.7 Standard Operating Procedures
+
+One of the outputs of the design and development of a cleaning process should be a draft Standard
+Operating Procedure (SOP). That draft SOP should reflect sufficient detail to ensure process consis-
+tency. For the draft SOP, the following issues should be considered:
+• The maximum allowable hold time for a piece of equipment:
+• after use, but before cleaning
+• after cleaning, but before reuse, sanitization, or sterilization.
+• The steps to be taken for disassembly of equipment. Disassembly should be such that the equipment is broken
+down in a manner that will allow all parts to be effectively cleaned.
+• Critical sites or difficult-to-clean areas that may require special cleaning emphasis or a specific inspection
+• Cleaning process parameters
+• Assignment of responsibility for cleaning of equipment
+• Cleaning schedules, and where appropriate, sanitizing schedules
+• Removal or obliteration of previous batch identification
+• A description in sufficient detail of the methods, equipment, and materials used in cleaning
+• Sampling and testing that is part of the routine cleaning process
+• The steps to be taken for reassembling equipment (as necessary) for storage and subsequent use
+• Visual inspection for equipment wear, product residuals and foreign materials
+• Protection of clean equipment from contamination prior to use
+• Batch records as appropriate for the cleaning process. For fully automated processes, the batch record
+information may be collected and stored as part of the control system. For fully manual processes, the level
+of detail to be collected for a batch record will depend on the complexity of the process.
+
+### 3.8 Operator Training for the Cleaning Process
+
+Operator training is critical. During cycle development, operators should be trained in the requirements
+of the evolving or existing SOPs. Proper training consists of understanding the SOP, demonstration of
+the correct procedure by a trained operator and demonstration of the correct procedure by the train-
+ee. Operator training for manual cleaning may also include qualification and/or requalification of the
+trainee by measuring residues on equipment cleaned by the operator. Operator training should be done
+on a more frequent basis for manual cleaning processes as compared to automated cleaning processes.
+Training practices will vary from one company to another, but operator training may be improved by
+some of the following suggestions:
+• Clearly written, understandable and detailed SOPs
+• Use of checklists to determine that all operations are
+carried out in the proper sequence and are documented
+• Periodic monitoring of cleaning processes to
+ensure proper training of operators and continued
+compliance with SOPs
+• Dedicated or assigned cleaning personnel
+• Feedback from operators to modify procedures
+• Use of video to demonstrate proper cleaning
+operations and techniques.
+The operators should understand the process of cleaning and the operation of the equipment they
+are cleaning. In addition the operators should be aware of the cleaning process impact on the quality
+and safety of the next product manufactured in the same equipment.
+
+### 3.9 Introduction of New Products to a Validated Cleaning
+
+System
+When new products or significantly different raw materials are introduced to the plant, a system must
+be in place to ensure that the cleaning process will remain effective.
+Generally, the cleaning effectiveness of the existing system for new products can be tested by perform-
+ing laboratory experiments using coupons of relevant materials (see Section 3.4 on Cleaning Devel-
+opment Laboratory Experiments). These experiments can be designed to test both the effectiveness
+of the proposed cleaning regimen and the relative difficulty of cleaning the new soils compared to
+soils that have already been introduced to the plant. If the new soils are easier to clean than the most
+difficult soil already being cleaned, introduction of the new material using existing cleaning proce-
+dures can be made with confidence. If the material is more difficult to clean than each of the present
+soils, some modifications to the current cleaning process may be required, and cleaning validation for
+the new product is an expectation. However, if the new soil is easier to clean, then based on a risk as-
+sessment, the number of confirmatory runs needed (if any) is determined.
+
+## 4.0 Qualification
+
+Qualification is a part of cleaning validation involving the traditional activities of equipment qualifica-
+tion and process qualification. For cleaning validation purposes, equipment qualification focuses on
+qualifying (or verifying) the equipment used as part of the cleaning process, such as a CIP skid and
+automated parts washer. For fully manual cleaning operations, such as a brushing or scrubbing, there
+may be no equipment qualification activities. Design qualification has also been considered as another
+qualification activity, which is addressed in the design and development stage.
+The emphasis for this section is on process qualification activities. Process qualification involves the
+runs performed under a protocol designed to demonstrate the consistency of the cleaning process.
+The traditional approach for cleaning validation has been to focus on the qualification protocols to
+demonstrate effectiveness and consistency. The lifecycle approach that the industry has been moving
+toward involves a different approach with a more comprehensive view, with qualification runs being
+only one of the stages of validation. The lifecycle approach also includes design/development activi-
+ties and validation maintenance (ongoing controls).
+This section covers protocol elements and specific important issues for cleaning validation proto-
+cols, including the number of validation runs required, mock soiling for validation runs, worst-case
+process conditions, and the disposition of equipment/product during validation runs. It also covers
+grouping approaches for products and equipment as well as important considerations in clean hold
+time studies. It ends with a discussion of documentation for “cleaning verification”.
+
+### 4.1 Protocol Elements
+
+Cleaning validation protocols have many of the same elements as process validation protocols. For
+reasons of clarity, the format of a cleaning validation protocol usually follows the same approach
+(as appropriate) as used for process validation protocols for a given company. Common elements
+include (but are not limited to) purpose, validation design/strategy, scope, responsibilities, applicable
+product(s) and equipment, cleaning procedure and associated documentation, acceptance criteria,
+training, and a requirement for a final report. Key elements for cleaning validation protocols include
+residue limits (see Section 5.0), sampling procedures (see Section 6.0) and analytical methods (see
+Section 7.0).
+Two approaches are used for documentation of elements. One general approach is to reference other
+documents for details regarding that element. For example, specification of swab sampling sites can
+be in the protocol while the rationale for selection of those sites can be in another document that is
+referenced in the protocol. The advantage of referencing other documents is that only the detailed
+information required for executing the protocol is included in the protocol; supporting information
+is only referenced thus allowing for more “streamlined” protocols. Another approach is to include
+all relevant details for a given element in the protocol. The advantage of having more details in the
+protocol is that greater clarity is provided to those executing the protocol. The approach used should
+consider the knowledge management systems within a given firm.
+
+### 4.2 Key Protocol Issues
+
+The validation protocol is not written and approved until the cleaning process has been designed and
+developed (see Section 3.0). The execution of the protocol should not begin until the protocol is ap-
+proved. However, execution of the protocol as an engineering or practice run can be helpful in some
+circumstances (e.g., for activities that are highly complicated or new to those executing the protocol).
+Any problems in the execution of the engineering/practice run can be corrected before actual valida-
+tion runs. The time spent in such runs may lead to the higher likelihood of “right first time” protocol
+execution for the formal qualification runs.
+Key issues for protocols (aside from limits, analytical methods and sampling procedures, which are
+covered elsewhere) are discussed below.
+
+#### 4.2.1 Number of Runs in a Protocol
+
+The traditional approach for cleaning validation protocols has been to require an evaluation of three
+consecutive runs of the cleaning processes. “Consecutive” means that no cleaning events of that same
+process are skipped without an appropriate rationale. For example, if the cleaning validation is for
+cleaning of Product A, there may be manufacture and cleaning of Product B in between manufacture
+of lots or batches of Product A.
+Based on lifecycle approaches to validation, as well as several regulatory documents including the
+2011 U.S. FDA process validation guidance, the newer approach has been to provide a rationale,
+based on an understanding of the cleaning process, documentation from the design and develop-
+ment phase, and data from sufficiently similar cleaning processes, for a specific number of validation
+runs required (9,10). This might result in fewer than three runs or greater than three runs. It should
+be recognized that this new U.S. FDA process validation guidance does not formally cover cleaning
+validation. However, a number of principles in that document may be applicable to the validation of
+cleaning processes.
+
+#### 4.2.2 Mock Soiling
+
+Ordinarily a cleaning validation run is performed by cleaning on a commercial-scale batch. An alter-
+native approach is to use what is called “mock soiling” or “artificial soiling” to simulate the nature
+and condition of the manufactured product on the commercial equipment at the time of initiating
+the cleaning process. If mock soiling is used, a rationale must be provided for its use as well as why
+the mock soiling simulates a “realistic” manufacturing situation. A common reason for mock soiling
+has been to obtain three consecutive cleaning validation runs without being forced to make three
+commercial-scale batches of the cleaned product. “Mock soiling” (a process) should be distinguished
+from a “mock soil” (sometimes called a “surrogate soil”), which is a product which simulates the physi-
+cochemical properties of the actual soil.
+
+#### 4.2.3 Worst-Case Process Conditions
+
+The traditional approach for cleaning validation protocols has been to include worst-case process
+conditions in the three protocol runs. Rationales for worst-case conditions should be given in or refer-
+enced in the protocol. For example, worst-case process conditions may include maximum dirty hold
+time, maximum batches or elapsed time in a campaign, shortest allowed time for manual cleaning
+steps, lowest allowed temperature for manual cleaning processes, and worst-case circuits for CIP skid
+selection. Parameters such as temperature, cleaning agent concentration, flow rates, and process step
+times for automated cleaning processes are generally controlled in a narrow range such that challeng-
+ing the cleaning process in the validation runs at the lower or upper end of the specification is not
+appropriate. If those narrowly controlled parameters are to be challenged in the extremes or outside
+the specified range, those challenges can be evaluated in development studies to demonstrate the
+robustness of the cleaning process.
+There may be different approaches for addressing worst-case process conditions. In one approach,
+a worst-case process condition is addressed in each of the required validation runs. An alternative
+approach is to address a specific worst-case condition in the design and development of the cleaning
+process such that the cleaning process is developed to address a worst-case condition. Data from such
+design and development studies may support the use of worst-case conditions in fewer runs.
+Another example of worst-case conditions is the number of batches in a campaign where validated
+cleaning is only performed at the end of campaign. In such cases, there may be no cleaning between
+batches or there may be only “minor cleaning” (such as vacuuming for solids manufacture or a wa-
+ter rinse for liquids manufacture). In this case, the maximum number of batches may represent the
+worst case. Therefore, the validation protocol should consider the effect of the maximum number of
+batches in the campaign.
+In such an approach, it may not be feasible to schedule three consecutive campaigns with the same
+maximum number of batches. One practical way to address this is to manufacture and perform clean-
+ing validation after a specified number of batches that may represent a minimum campaign length.
+When a campaign involves more than the previous number of batches, a validation protocol is ex-
+ecuted on that longer campaign. Data from the longer campaign are then compared with data from the
+earlier validation runs to determine whether the data are equivalent. The specifics of the results will
+indicate whether additional validation runs are needed to extend the validated length of the campaign.
+A third approach is to address campaign length during the design and development phase. If data or a
+rationale can be developed to support no change in the difficulty of cleaning regardless of  the campaign
+length, then the validation runs can be at any campaign length.
+
+#### 4.2.4 Disposition of Products and Equipment during Validation
+
+A cleaning process generally only affects the next product manufactured in the cleaned equipment.
+Therefore, following protocol execution the “cleaned” product may be released following company
+procedures for product release. That release of product is independent of the data obtained for the
+immediately following cleaning process. The data from that cleaning process is used for the release
+of the cleaned equipment.
+There are several approaches used for disposition of the equipment following the cleaning process.
+One approach is to not release the equipment until acceptable data (including meeting all residue cri-
+teria) are obtained for that specific validation run. At that time, the equipment may be safely released
+for manufacture of the same or another product. An alternative approach is to release the equipment
+following company procedures at risk for manufacture of the next product. However, that next prod-
+uct cannot be released until acceptable data (including meeting all residue criteria) are obtained for
+that specific validation run. If the cleaning validation run fails to meet its acceptance criteria, then the
+impact on that specific next manufactured product should be assessed as part of the investigation into
+that non-conformance. The results of the investigation will determine whether that next manufac-
+tured product can be released.
+If there are separate validation protocols for equipment items in a train used to manufacture the
+product on which the validation is being performed, each equipment item can be released based on
+the protocol data for that validation run for that equipment item. It is not necessary to wait until vali-
+dation is complete on all equipment items in the train before any item can be released for subsequent
+manufacture.
+4.3	 Grouping/Family Approach
+Grouping is a strategy whereby manufactured products and/or equipment are considered together,
+and a formal protocol is performed on a representative from the group. The representative from the
+group is usually the worst case among products or equipment in a group. Grouping is also called ma-
+trixing, family approach or bracketing. The rationale for grouping is to generate optimum value from
+cleaning validation tasks based on a risk approach. One requirement for grouping is that product and
+equipment be cleaned by the same cleaning process. The use of products and equipment grouping may
+be used to streamline cleaning validation programs while ensuring sufficient data are available to sup-
+port the validation of procedures, processes, and equipment associated with cleaning. The grouping
+program for a given facility or company should be specified or referenced (e.g., by pointing to a facil-
+ity cleaning rationale) in a well-designed validation program/validation master plan.
+
+#### 4.3.1 Product Grouping
+
+Products may be grouped together if they are manufactured on the same or equivalent equipment,
+and cleaned by the same cleaning procedure. Products may be assessed for their relative cleanabil-
+ity by several methods. Relative cleanability may be affected by the nature of the active ingredients,
+of the excipients, and/or of degradation products. One example of assessing relative cleanability
+involves selecting the product with the least-soluble active ingredient in the cleaning solution. This
+approach may be appropriate for small-molecule API synthesis cleaned with a solvent or for finished
+drug product manufacture involving water-soluble formulations. Such an approach may also be pos-
+sible for solid dosage drug products provided that the excipient portion of the different drug products
+has the same effect on the difficulty of cleaning. Another approach involves determining relative dif-
+ficulty of cleaning using laboratory studies. For laboratory studies, cleanability is assessed on coupons
+or small equipment parts using representative surfaces, with stainless steel being the most common
+because of its predominance in pharmaceutical equipment. For coupons, the roughness of the sur-
+face should be the same or rougher (as a worst case) than actual equipment surfaces. From the lab
+results, the relative cleanability of each product is defined, typically by determining under proposed
+cleaning parameters which product requires the longest time to clean. Bioactivity and clinical effects
+may also be considered for the selection of a representative product.
+One option for product grouping is to use a surrogate worst-case product. In this situation, the worst-
+case product is an artificially constructed product (which may not be a commercial product) designed
+to be more difficult to clean than products expected to be routinely manufactured. One rationale
+for this approach is to maintain continuity of the worst-case product (in cases where a commercial
+product might be discontinued). Another rationale is to minimize situations in which new worst-case
+products are added.
+A qualification protocol on the representative (worst-case) product is performed. The acceptance cri-
+terion for that worst-case product is generally the most stringent acceptance criterion of all products
+in the group (that is, the lowest residue limit). Successful cleaning validation of the representative
+(worst-case) product means the cleaning of the other products in the group is also validated. Based on
+risk assessments (addressing both quality risks and business risks), one approach is to perform a single
+confirmatory validation run on every other product in the group. Also based on a risk assessment,
+another approach is to perform qualification protocols on both the most difficult to clean product and
+the product with the lowest limit.
+
+#### 4.3.2 Equipment Grouping
+
+Equipment may be grouped together if they are similar and can be cleaned by the same cleaning pro-
+cedure. Grouping of equipment is an effective method for encompassing equipment from a limited
+population of systems undergoing cleaning validation without redundant testing. The grouping strat-
+egy is based on designating equipment as “identical” or “similar,” based on design, mode of opera-
+tion, and cleanability. Such a determination usually involves evaluating the equipment qualification,
+with the stipulation that qualification differences that do not affect the cleaning process may allow
+one to conclude that two equipment items are identical for cleaning purposes. Regulatory documents
+such as the U.S. FDA SUPAC guidance may assist in that determination (11).
+Once equipment has been placed within a designation, the designation defines the cleaning validation
+requirements. If it involves identical equipment, a protocol involving any combination of identical
+equipment items in the group is performed. Provided an adequate rationale is given for determining
+the equipment items are identical, there is no need to perform validation runs on every item in the
+group. For similar equipment, the representative equipment is the worst case or may involve bracket-
+ing of the equipment. For example, for storage tanks that are of the same size but different complex-
+ity due to the number of baffles, the more complex equipment is chosen as the worst case. For similar
+equipment of different sizes, the largest and smallest (representing the extremes) may be chosen for
+the formal validation runs (unless one size can be determined as the worst case). If there is no worst
+case or bracketing involved, then any equipment items in the group of similar items may be chosen
+for validation runs. Confirmatory validation runs (perhaps only one run) are an option for other equip-
+ment (not a worst-case) within the group.
+A specific case of equipment grouping involves “minor” equipment, such as utensils, small parts, and
+smaller equipment. In the case of such minor equipment, it may be appropriate to evaluate a cleaning
+procedure for those parts and to validate the cleaning process using equipment grouping. The group-
+ing of the parts may involve selection of worst-cases based on complexity, size and functionality.
+
+#### 4.3.3 Introduction of a New Product or Equipment into a Group
+
+The introduction of a new product into an already validated group is assessed using the same science
+and risk-based evaluation process (e.g., based on solubility in the cleaning solvent, a laboratory cou-
+pon study, and/or information from other process cleaning studies) to initially determine the worst-
+case product. It is recommended that if each new product is tested in a lab evaluation, a suitable con-
+trol, such as the previous worst-case product, be included. Relative product cleanability is then used to
+determine validation requirements for that new product on equipment used for other products in that
+group. The relative cleanability of the product in relation to the preceding worst-case product, as well
+as any change in the lowest limit for products in the group, will dictate the validation requirements.
+Based on a documented risk assessment, introduction of an easier-to-clean product may just require
+laboratory and/or scale-up studies to confirm ease of cleaning or may require one confirmatory run.
+Introduction of a more difficult-to-clean product requires validation of that new worst-case product.
+Based on risk considerations, introduction of new identical equipment may simply involve a deter-
+mination that it is equivalent or may require an additional confirmatory run. Introduction of new
+similar equipment requires an evaluation if that new equipment represents a new worst case or a new
+bracketing extreme. If not a new worst case or new extreme, special attention should be paid to the
+first commercial cleaning event to confirm effectiveness. If the new equipment is a new worst case or
+bracketing extreme, the validation requirements for the previous worst case or bracketing extreme
+should be performed for the new worst-case or bracketing extreme equipment.
+4.4	 “Cleaning Verification” Documentation
+“Cleaning verification” as used in this Technical Report refers to documentation which says that a
+one-off cleaning event is effective for cleaning equipment so that the equipment can be used for subse-
+quent manufacture of a product. There may be a variety of other terms for this same concept that are
+used by various companies. Examples of where cleaning verification might be used include cleaning
+after manufacture of a clinical trial product or cleaning after product manufacture where there is a
+deviation (e.g., the dirty hold time is exceeded) that affects a validated cleaning processes.
+Documentation for cleaning verification purposes is similar to the documentation for cleaning valida-
+tion, except that the verification data is specific to one cleaning event. From a compliance perspective,
+the data applies only to the one cleaning event (although from a scientific perspective the data may
+suggest similar performance if the cleaning event were repeated). Another difference is that because
+cleaning verification is typically performed on a unique cleaning event, there may be limited cleaning
+design and development before execution of that event. One approach is to utilize a cleaning SOP
+and a cleaning verification protocol. Alternatively, companies might use a concept that defines explicit
+requirements for cleaning verification in an SOP and documents the specific activities, sample posi-
+tions and so on in a form which will be approved. It is generally not appropriate to consider three
+cleaning verification runs as constituting a “validation” especially if the element of appropriate design
+and development is absent.
+Based on the understanding of the cleaning process, potential residues remaining on equipment sur-
+faces after cleaning can be identified. Residues may include the active drug, excipients, processing
+aids, cleaning agents, bioburden, endotoxin, and degradants. Those residues, if present at unaccept-
+able levels and could potentially contaminate or adulterate the next manufactured product, should
+be identified. Based on a risk assessment, residues are selected that will be measured in a cleaning
+validation protocol, and for which limits should be established. Typically for non-sterile manufactur-
+ing, this includes the drug active, the cleaning agent and bioburden. Typically, for sterile manufacture,
+endotoxin should also be included. Other potential residues may be added to this list based on the risk
+assessment. Furthermore, based on a process understanding and risk assessment, it may be acceptable
+to not set limits for potential residues in this list. For example, in non-sterile manufacturing, setting
+limits for and measuring bioburden in a protocol may not be required if there is a final wipe or rinse
+of equipment surfaces with a sanitizing or disinfecting agent, such as 70% isopropanol, provided there
+is a scientific rationale and/or supporting laboratory studies.
+The determination of cleaning limits and acceptance criteria is a crucial element of a cleaning valida-
+tion program. A limit is typically an actual numerical value and is one of the acceptance criteria of a
+cleaning validation protocol. Limits and acceptance criteria should be:
+• Practical
+• Verifiable
+• Achievable
+• Scientifically sound
+The limits should be practical in the sense that the limit chosen should be appropriate for the actual
+cleaning situation to be validated. Also, the limits must be verifiable by a qualified analytical procedure.
+In addition, the limits must be achievable by the cleaning process for the product and by the analytical
+methodology available for the target residue. Finally, the company should develop a scientifically sound
+rationale for the limits chosen. It is very important that cleaning limits not be selected arbitrarily but
+rather there be a logical and scientific basis for the limits selected. The scientific rationale should be ap-
+propriately documented and should be logical, comprehensive, and readily understood.
+
+### 5.1 Considerations for Developing Limits
+
+As used in this Technical Report, “product” may be drug product, API, intermediate, or another type
+of formulation. If “drug product” is intended, that terminology will be utilized.
+Residues remaining on equipment may transfer to a subsequently manufactured product. Thus, it is
+important to have information about the potential residues as well as the product which could become
+contaminated. Furthermore, the nature of the cleaning process itself is also important. Once these
+areas have been considered, it is important to obtain a cleaning process understanding (e.g., through
+process mapping), and then to perform a risk assessment for the appropriate evaluation of limits.
+Relevant information for the subsequently manufactured product may include, as appropriate for the
+nature of the product (drug product, API, or intermediates), the formulation, the product’s specifi-
+cations, the dosing, the route of administration, the batch size, and the shared equipment. Product
+specifications may be important, e.g., for establishing bioburden limits. Relevant information on the
+cleaned product includes the formulation, the dosing, the toxicity, and the route of administration.
+Relevant information on the cleaning process includes the cleaning agent, cleaning method, and the
+various cleaning parameters (see Section 3.0 on design and development of cleaning processes).
+
+## 5.0 Residue and Limits
+
+### 5.2 The Basis for Quantitative Limits
+
+Limits are usually based on one of the following as described in later sections:
+• The medical or pharmacological potency of the drug active
+• The toxicity of the residue
+• A default value
+Different manufacturing and cleaning situations may require different approaches. For example, for in
+vitro diagnostics, the effect of the residue on the stability or performance of the subsequently manu-
+factured product may provide a better scientific rationale for establishing limits. The following section
+discusses the basis of typical carryover calculations. Depending on the manufacturer, the expression
+of those calculations may be different because it may combine various steps given below. However, it
+is critical that the units used in the equation be internally consistent; for this reason, unit conversion
+factors (e.g., grams to micrograms) may be utilized in these equations. In addition, companies may
+use different terms (or acronyms) for the same concept but still apply the same basic principles in
+calculations; this is to be expected in a field as diverse as cleaning validation.
+
+### 5.3 Acceptable Concentration of Residue in Next Product
+
+The first determination is the acceptable level (i.e., concentration) of the target residue in the sub-
+sequently manufactured product. This may be called by different terms, but for this document that
+concentration will be called Acceptable Residue Level (abbreviated ARL). This is an expression of the
+maximum concentration of residue allowed in that next product, as determined by medical, pharma-
+cological, safety, stability and/or performance issues. For chemical residues (such as the drug active or
+cleaning agent), this concentration is typically given as μg/g or μg/mL (or an equivalent expression
+depending on the units selected). For bioburden, this is typically given as colony forming units (CFU),
+CFU/g or CFU/mL.
+
+#### 5.3.1 ARL Based on Drug Active Dose
+
+For drug actives in drug product manufacture, this is typically determined as one-one thousandth (0.001)
+of minimum daily dose of the drug active in a maximum daily dose of the next drug product. This
+approach is an alternative to the acceptable daily exposure (ADE) (see Section 5.3.2.1) approach
+for non-highly hazardous active ingredients for manufacture in nondedicated equipment. This is ex-
+pressed in the following equation:
+[Equation 5A]
+ARL = MDD × SF
+LDD
+Where:
+ARL = the acceptable residue level in the next drug product
+MDD = the minimum daily dose of the active of the cleaned product
+SF = the safety factor, which is typically 0.001
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+[Note 1: For API manufacture, where both the cleaned product and the next manufactured product are
+APIs, Equation 5A, as well as other applicable equations in Section 5.3, is modified with LDD being
+the largest daily dose of the next drug active manufactured in the same equipment.]
+[Note 2: For MDD, another approach is to use the single therapeutic dose rather than the minimum
+daily dose. The use of a minimum daily dose has a scientific rationale based on normalizing the dos-
+age frequency for the cleaned product and the next product. For products administered daily, the use
+of a single therapeutic dose may be more stringent so it is an acceptable practice. However, if the
+cleaned product is administered once a week, and the next product is administered once a day then
+the use of a single therapeutic dose in place of the MDD will result in patients who take the next
+product receiving 0.001 of a single weekly dose taken on a weekly basis. Therefore, in the latter case,
+it is preferable to compare both products on the same basis, either weekly or daily (convert a daily
+dose to a weekly dose by multiplying by 7, or convert a weekly dose to a daily dose by dividing by 7).]
+[Note 3: Another approach is to express the safety factor (SF) as 1000 rather than 0.001. In such cases,
+SF will be in the denominator of Equation 5A.]
+
+#### 5.3.2 ARL Based on Toxicity
+
+There are typically two types of calculations based on the toxicity of the residue for either drug prod-
+uct or API manufacture.
+One approach is the Risk-MaPP Acceptable Daily Exposure (ADE) approach (12), which may be appli-
+cable to residues of drug actives, intermediates, and degradants. The limit is generally based on a No
+Observable Adverse Effect Level (NOAEL) or other relevant toxicological data. For highly hazardous
+drug actives, using the ADE approach is generally required in order to justify manufacturing those
+active ingredients in nondedicated equipment. For non-highly hazardous drug actives, the ADE ap-
+proach is an alternative to the dose-based approach (see Section 5.3.1).
+A second approach may be the use of LD50 values for limits for residues like cleaning agents which do
+not have a dose.
+
+##### 5.3.2.1 ADE Determinations Based on ISPE’s Risk-MaPP
+
+The safe daily amount in this approach is called the ADE. The first step is to identify the NOAEL for
+that chemical (usually in an animal study or from relevant human data) by evaluating the response
+that makes the chemical hazardous. An ADE is estimated by a qualified toxicologist based on the body
+weight and a variety of adjustment factors as given in Equation 5B. While the ADE definition specifies
+safety by any route of exposure, use of an ADE for a specific and relevant route of exposure is also
+allowed; this may allow for higher ADE value provided that the potential exposure is limited to that
+specific route of exposure.
+[Equation 5B]
+ADE = NOAEL × BW
+UFC × MF × PK
+Where:
+NOAEL = No Observable Adverse Effect Level
+BW = body weight of patient taking next product
+UFC = a composite uncertainty factor determined from such factors as interspecies differences,
+intraspecies differences, subchronic to chronic extrapolation, LOAEL to NOAEL extrapolation, and
+database completeness
+MF = a factor based on the judgment of the toxicologist
+PK = a pharmacokinetic factor to account for different routes of exposures
+The ARL for drug product manufacture is then calculated by the following equation:
+[Equation 5C]
+ARL = ADE
+LDD
+Where:
+ARL = the acceptable residue level in the next drug product
+ADE = Acceptable Daily Exposure of the residue
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+[Note: For API manufacture, the LDD value is the largest daily dose of the next drug active manufac-
+tured in the same equipment.]
+
+##### 5.3.2.2 Toxicity Calculations Based on LD50 Data
+
+This approach is used for residues where the relevant data are short-term toxicity studies, such as a
+LD50 study. Examples of such residues include cleaning agents and intermediates. In this case, the
+NOEL is estimated from the LD50 value using the following equation:
+[Equation 5D]
+NOEL = LD50 × BW
+MF1
+Where:
+NOEL = No Observable Effect Level
+LD50 = the 50% lethal dose of the target residue in an animal, typically in mg/kg of body weight
+(by the appropriate route of administration)
+BW = body weight of patient taking next product
+MF1 = modifying factor or factors, selected by the toxicologist
+The cumulative modifying factors selected are generally no more than 1000.
+Once the NOEL is estimated, the SDI is determined by Equation 5E.
+[Equation 5E]
+SDI = NOEL
+MF2
+Where:
+SDI = Safe Daily Intake of the residue
+NOEL = No Observable Effect Level
+MF2 = modifying factor or factors, selected by the toxicologist
+The cumulative modifying factors selected are generally no more than 1000.
+Once the SDI is established, the ARL is determined by Equation 5F.
+[Equation 5F]
+ARL = SDI
+LDD
+Where:
+ARL = the acceptable residue level in the next drug product
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+In Equations 5D and 5E, the modifying factors can be based on one of several published references
+(13-15). An alternative approach for this series of calculations is to combine Equations 5D, 5E and 5F
+into one equation for determining the ARL directly.
+
+#### 5.3.3 Other ARL Determinations
+
+For residues which are genotoxic, one alternative approach used when the NOEL values are not available
+is to determine the SDI using the Threshold of Toxicological Concern principle (16) which, based on an
+U.S. FDA determination about safe levels in foods, is established at 1.5 μg/day. While this may be appropri-
+ate for oral doses, it may not be appropriate for injectables since the U.S. FDA determination was based on
+safe levels in foods (which are taken orally). The ARL is expressed in the following equation:
+[Equation 5G]
+ARL = SDI
+LDD
+Where:
+ARL = the acceptable residue limit in the next drug product
+SDI = the safe daily intake of the residue
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+For residues for which the concern is a possible deleterious effect on stability, performance or efficien-
+cy of a subsequent product or process, the ARL must be determined directly based on an understand-
+ing of the products, the process, and the expected effect. For example, for an in vitro diagnostic, the
+acceptable level of residue of a previous product may be determined based on the effect on stability
+or performance of that next in vitro diagnostic. That level may be determined by spiking studies of
+residue in the in vitro diagnostic to determine effects on stability and/or performance (e.g., false posi-
+tives or false negatives).
+
+### 5.4 Acceptable Total Carryover
+
+Once the ARL is determined, the maximum allowable carryover (MAC or MACO) can be calculated.
+MAC is the total amount of a target residue allowed in a batch of the next manufactured product. It is cal-
+culated by multiplying the ARL by the minimum batch size of the next product. MAC, which may be ex-
+pressed in mass units for chemical residues (e.g., μg or mg or g), is expressed in the following calculation:
+[Equation 5H]
+MAC = ARL × MBS
+Where:
+MAC = the Maximum Allowable Carryover
+ARL = the Acceptable Residue Limit in the next product
+MBS = the Minimum Batch Size of the next product
+Note that the minimum batch size is typically expressed in mass units if ARL is expressed as μg/g or
+in volume units if ARL is expressed as μg/mL. For API manufacture, where both the cleaned product
+and the next manufactured product are APIs, Equation 5H is modified with MBS being the minimum
+batch size of the next drug active manufactured in the same equipment
+Because the MAC is the total amount allowed in the next manufactured product, it is also the total
+amount allowed on shared equipment surfaces (that is, shared between the cleaned product and the
+next manufactured product).
+
+### 5.5 Surface Area Limit
+
+Once the MAC is determined, the surface area limit (SAL) can be calculated by dividing the MAC by
+the total equipment shared surface area between the two products. SAL, which may be expressed for
+chemical residues in mass units per surface area (e.g., μg/cm2), is expressed in the following calculation:
+[Equation 5I]
+SAL = MAC
+SSA
+Where:
+SAL = the Surface Area Limit (on shared equipment surfaces)
+MAC = Maximum Allowable Carryover
+SSA = Shared Surface Area
+
+### 5.6 Limit in Protocol Samples
+
+Once the SAL is determined, the limit in swab or rinse samples can be calculated. Three typical cases
+of limits in samples are covered below.
+
+#### 5.6.1 Limit per Swab
+
+For swab sampling, one approach is to express the limit as a mass-per-swab sample (e.g., μg of residue per
+swab or μg/swab). The mass-limit-per-swab is determined by multiplying the SAL by the area sampled
+(typical swab sampling areas are 25 cm2 and 100 cm2) (17). This is expressed in the following calculation:
+[Equation 5J]
+Limit per swab = SAL × swabbed area
+Where:
+SAL = the Surface Area Limit (on shared equipment surfaces)
+
+#### 5.6.2 Concentration Limit in Extracted Swab Solvent
+
+For swab sampling, another approach is to express the limit as a concentration of the residue in a
+fixed amount of solvent (aqueous or organic) used for extracting the swab. The concentration limit is
+typically expressed in units such as μg/g, μg/mL or ppm. This concentration limit is determined by
+multiplying the SAL by the area sampled, and then dividing the result by the amount of solvent used
+for extracting the swab (in g or mL). This is expressed in the following calculation:
+[Equation 5K]
+Concentration Limit = SAL × swabbed area
+SEA
+Where:
+SAL = Surface Area Limit (on shared equipment surfaces)
+SEA = Solvent Extraction Amount
+
+#### 5.6.3 Concentration Limit in Rinse Sampling Solution
+
+For rinse sampling, most companies express the limit as a concentration of the residue in a fixed
+amount of the rinse sampling solution. This concentration limit is typically express in units such as
+μg/g, μg/mL or ppm. This concentration limit is determined by multiplying the SAL by the area
+sampled by rinse sampling and then dividing the result by the amount of rinse solution used for the
+sampling rinse (in g or mL). This is expressed in the following calculation:
+[Equation 5L]
+Concentration Limit = SAL × Area Sampled by Rinse Sampling
+Rinse Sampling Volume
+Where:
+SAL = the Surface Area Limit
+If the entire equipment train is rinsed with one rinse solution, then the SSA and the “Area Sampled
+by Rinse Sampling” are identical. Therefore, a simplified expression for the concentration limit in the
+rinse sample (avoiding the need to determine the SSA) is:
+[Equation 5M]
+Concentration Limit =
+MAC
+
+Rinse Sampling Volume
+
+### 5.7 Consolidated Expressions
+
+While the calculations in Sections 5.3 to 5.6 are presented to explicitly show the steps in quantitative
+calculations for limits, it is common for companies, based on an understanding of their cleaning vali-
+dation practices, to combine several equations together to simplify calculations. For example, compa-
+nies that set limit for a drug active primarily on a fraction of the therapeutic dose may address all the
+factors in Equation 5A and 5H with an overall equation for MAC as follows:
+[Equation 5N]
+MAC = MDD × SF × MBS
+ LDD
+Where:
+MAC = Maximum Allowable Carryover
+MDD = the minimum daily dose of the active of the cleaned product
+SF = the safety factor, which is typically 0.001
+MBS = the Minimum Batch Size of the next product
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+Other companies that set limits for drug active primarily on a fraction of the therapeutic dose may
+address all the factors in Equations 5A, 5H, 5I, and 5K with an overall equation for the concentration
+limit in an extracted swab sample as follows:
+[Equation 5O]
+Concentration Limit = MDD × SF × MBS × swabbed area
+LDD × SSA × SEA
+Where:
+MDD = the minimum daily dose of the active of the cleaned product
+SF = the safety factor, which is typically 0.001
+MBS = the Minimum Batch Size of the next product
+LDD = the largest daily dose of the next drug product to be manufactured in the same equipment
+SSA = Shared Surface Area
+SEA = Solvent Extraction Amount
+
+### 5.8 Example Calculations
+
+As an example of an overall calculation of a MAC limit based on a fraction of a therapeutic dose, we use
+the case of the cleaned drug product having a daily therapeutic dose of 100 mg of the active. If the next
+drug product to be manufactured in the same equipment has a batch size of 10 kg, and a largest daily dose
+of 800 mg, then using a safety factor (SF) of 0.001, the calculation (using Equation 5N) would be:
+ MAC = MDD × SF × MBS
+LDD
+= 100 mg × 0.001 × 10,000,000 mg = 1250 mg
+800 mg
+This is the total limit for all residues of the specified active on all shared equipment between the two
+products.
+Below is a second example of an overall calculation of a concentration limit in an extracted swab
+sample, again using the case of the cleaned drug product having a daily therapeutic dose of 100 mg
+of the active. The next drug product to be manufactured in the same equipment has a batch size of 10
+kg and a largest daily dose of 800 mg, and a safety factor of 0.001. If the shared surface area is 250,000
+cm2, the swabbed area 100 cm2, and the amount of solvent used for extraction of the swab is 5 mL,
+then the calculation (using Equation 5O) would be:
+Concentration Limit = MDD × SF × MBS × swabbed area
+LDD × SSA × SEA
+= 100 mg × 0.001 × 10,000,000 mg × 100
+800 mg × 250,000 × 5
+= 0.1 mg/mL (or 100 μg/mL)
+
+### 5.9 Other Considerations
+
+The items discussed below are issues that may be considered as part of any evaluation in establishing limit.
+
+#### 5.9.1 Multiple Next Products
+
+In many pharmaceutical manufacturing situations, there is not just one product that could possibly
+be manufactured after a given product for which limits are being established. If flexibility is desired to
+manufacture products in any order, calculations should be considered for all “subsequently manufac-
+tured products”, and the resulting lowest limit (typically the lowest limit per surface area) should be
+established for the cleaned product. As discussed previously, relevant factors to consider for the next
+product are dosing, batch size and shared surface area. In this manner, any of the products considered
+may be safely manufactured after cleaning of the first product. In such evaluations, the combination
+of the specific relevant factors for each next product should be considered. However, it is also accept-
+able as a worst-case to consider only the most stringent of each of the three relevant factors.
+Another option is to restrict the order of manufacturing based, for example, on a specific subsequent-
+ly manufactured product causing a limit to be very low. In such cases, procedures should be in place
+to assure that the restricted order of manufacture is consistently followed.
+A third option is to operate in cleaning verification mode where the acceptability of each specific
+cleaning event is determining based on a limit for the immediately following next product. In this way,
+the limit for cleaning a given product may vary depending on subsequently manufactured product.
+In this verification mode, residues are measured after each cleaning event and compared to the ac-
+ceptance limit calculated based on the product immediately following.
+
+#### 5.9.2 Next Product in Verification Approach
+
+In a cleaning verification protocol, only the actual immediately following product is required for estab-
+lishing limits. Particularly in development or clinical manufacturing, where a verification approach is
+commonly used, the next product may not be known at the time of  the cleaning verification evaluation.
+In such cases, one approach is to measure residues following cleaning, and then not to release the
+equipment until the next product is determined. At that time, a carryover evaluation is performed to
+determine whether the residues measured are acceptable. If the measured residues are not accept-
+able, the equipment may be recleaned and cleaning verification performed again. A second approach
+is to establish, based on the types of products manufactured, some worst-case values for the relevant
+factors for the next product. These worst-case values are used for establishing limits, and the equip-
+ment is cleaned to meet those values. When the next product is determined, it is appropriate to verify
+that the relevant parameters of the next product are within the worst-case values.
+
+#### 5.9.3 Default Limits
+
+As used in this document, default limits are one of two types. One type is a default limit which is uti-
+lized if the default value is more stringent than what is established by the medically safe calculation (as
+given in Sections 5.3 through 5.8). A second type is a default limit where a medically safe limit cannot
+be established, such as for intermediates in API manufacture. In the latter case, the default limit may
+be established on criteria that are specific to the individual situation, based on process understanding
+and a risk assessment.
+One example of the first type of default limit is a default limit used for the ARL. For drug products,
+the most common default limit for the ARL (the limit in the next product) is 10 ppm; however, other
+values may be used. If the ARL calculation (Equation 5A, 5D or 5F) results in a value above 10 ppm,
+then 10 ppm is used as the ARL. If the ARL calculation results in a value below 10 ppm, then that
+lower calculated value is used as the ARL. For API manufacture, more common default limits for the
+ARL are 50 ppm or 100 ppm (18), although other values may be selected and used if they are more
+stringent than what is established by the medically safe calculation.
+A second example of this type of default limit is a default limit for the SAL. For either drug product
+or API manufacture, the most typical default value for the SAL used is 4μg/cm2. This level is com-
+monly cited as the upper limit for what is considered visually clean. If the SAL calculation (Equation
+5I) results in a value above 4 μg/cm2, then 4 μg/cm2 is used as the SAL. If the SAL calculation results
+in a value below 4 μg/cm2, then that lower calculated value is used as the SAL.
+It should be understood that in these two examples, the logic is that any value below the medically safe
+value may be used as it represents a more stringent criterion.
+
+#### 5.9.4 Use of Different Safety Factors
+
+The safety factor applied to a minimum daily dose is typically 0.001 (one one-thousandth), regardless
+of the route of administration. Based on a risk assessment, a more stringent or less stringent safety
+factor may be applied as appropriate for a specific situation. For example, for clinical trial materials
+where the dose is not fully established, a more stringent safety factor may be considered. Since the
+safety factor of 0.001 was originally established for drug product administered chronically, it may be
+acceptable (again based on a risk assessment) to use a less stringent factor for drug products adminis-
+tered for a short time (such as cold tablets, which may be administered for only 10 days).
+
+#### 5.9.5 Different Routes of Administration
+
+If the cleaned product and the next product are administered by different routes (such as the first
+product being an oral dose and the second product being an injectable), a risk assessment should be
+considered. This risk assessment might include an evaluation of hazards of the oral drug if adminis-
+tered as an injectable, or it might include a review of data for the extent of systemic availability of the
+oral drug if given orally.
+
+#### 5.9.6 Different Doses for Adults and Children
+
+For two products where both products have different doses for adults and for children, it is appropri-
+ate to determine the ARL based on both products with the adult dose, and then for both products
+using the child’s dose. The lower ARL of the two values should be used for subsequent limit calcula-
+tions. In cases where one product may be dosed only for adults and the next product only dosed for
+children, then a risk assessment should be considered.
+
+#### 5.9.7 Human and Veterinary Products Manufactured on the Same Equipment
+
+For this situation, a risk assessment should be considered to set limits appropriately. In addition to the
+species difference, the body weight difference may also be a significant factor.
+
+#### 5.9.8 Residues of Genotoxic and Other Highly Hazardous Active Ingredients
+
+One approach to genotoxic residues is covered in Section 5.3.3, which is to utilize the Threshold of
+Toxicological Concern (TTC) value of 1.5 μg/day as the safe daily intake (16), and utilize conventional
+calculations to set an acceptable limit in an analytical sample. Another approach for genotoxic residues
+(provided the genotoxic residue is the active ingredient and not a degradant), as well as other residues
+of special medical concern, is to dedicate equipment to that one product and thus avoid the issue of
+the genotoxic residue being carried over to a different product. A third approach is to perform clean-
+ing validation, with limits based on a toxicological evaluation related to the genotoxic effect (or other
+special toxicity concern) using the principles in Section 5.3.2.2. A fourth approach is to set the limit for
+the genotoxic residue as below the limit of detection of the best available analytical technique. In the
+latter case, a medical risk assessment should be performed to determine whether residues at that detec-
+tion limit are acceptable. In this latter case, it may also be possible to include in the cleaning process a
+step which deactivates or degrades the genotoxic material such that genotoxic properties are no longer
+present. Such a determination of deactivation or degradation is preferably performed as a laboratory
+study. These approaches may also be applicable to other active ingredients with special concerns, such
+as reproductive toxicity hazards, allergenicity, cytotoxicity, and mutagenicity.
+
+#### 5.9.9 Limits Based on Analytical Detection Limits
+
+Limits may be established based on the analytical detection limits providing residues at those analyti-
+cal detection limits are determined to be safe. It should be recognized that this method is not normally
+recommended because with ever improving analytical methods, the limits will be driven exceedingly
+low so as not be practically achievable. The issue is not whether the residue can be measured, but
+rather whether the residue is medically safe and does not affect subsequent product quality.
+
+#### 5.9.10 Degradation of the Active Ingredient
+
+If the active ingredient degrades during the cleaning process (or after the cleaning process during the time
+before sampling), it may not be appropriate to measure residues of that active ingredient using a specific
+analytical procedure in a cleaning validation protocol. The reason is that the relevant residue to measure
+is the degradant. There are at least two approaches to dealing with this situation. One approach is to set
+limits for the degradant, and then measure the degradant in the protocol using an appropriate analytical
+method. This assumes that there is a specific degradant for which limits can be established (e.g., based on
+a toxicity calculation). Another approach is to set limits for the undegraded active based on its dose. Resi-
+dues are then measured with a nonspecific analytical method (such as TOC). The residue as measured
+by that nonspecific method is converted to an equivalent amount of undegraded active ingredient and
+compared to the calculated limit. This approach may be acceptable if the safety concerns from residues
+of the degradant(s) are no more serious than the safety concerns of the active ingredient. There may be
+other acceptable approaches based on the specific of the situation and a risk assessment.
+
+#### 5.9.11 Limits Not Measureable
+
+If calculations for the limit of the active ingredient in the analytical sample result in values that are not
+measurable by available analytical methods, there are several options. One option is to dedicate the equip-
+ment to that one product, thereby reducing the need to measure the active ingredient except by a visually
+clean criterion. A second option is to modify the parameters of the next manufactured product such that
+the limit is higher. For example, raising the minimum batch size of the next product will increase the limit.
+It may also be possible to restrict the order of manufacture such that certain products, which drive the
+limit lower, are not manufactured after the cleaned product with the low limit. In such cases, appropriate
+measures should be put in place to insure that only those approved products are manufactured as the next
+product. A third option is to modify the sampling parameters. For example, for swab sampling, sampling
+a larger area (100 cm2 rather than 25 cm2) or extracting the swab with a smaller amount of solvent will
+result in an increased limit in the analytical sample. A fourth option is lower the rinse volume for rinse
+sampling. A fifth option is to concentrate the rinse sample by a technique such as vacuum evaporation.
+
+#### 5.9.12 Limits for Organic Solvents
+
+For organic solvents that are typically used for cleaning in small molecule API synthesis, limits may
+be established based on toxicity calculations. Another approach is to use the values in ICH Q3C (R5),
+which establishes acceptable levels for solvents in API’s and in drug products (19). It should be rec-
+ognized that Q3C technically applies to solvents used in the manufacture of API’s. While cleaning
+processes are sometimes considered manufacturing steps, they are often considered part of the sup-
+porting “equipment and facilities”. Therefore this approach should be carefully evaluated before use.
+Another approach is not to set limits for volatile organic solvents. One situation where this may apply
+is if there is an adequate determination (based on process understanding and appropriate studies) that
+there are adequate conditions for the volatile solvent to evaporate. Note that this latter consideration
+also applies to use of isopropanol or ethanol used as final rinse or wipe for drug product manufacture.
+Another situation where limits may not be required is where the same solvent is used for the final
+rinse as for manufacture of the next product.
+
+#### 5.9.13 Dedicated Equipment
+
+For equipment trains dedicated to manufacture of only one product, the concern about carryover
+of the active ingredient from one batch to the next is minimized. As stated in the U.S. FDA guidance
+document, visually clean may be appropriate to address such a concern (20). However, cleaning vali-
+dation may still be required because of concerns about other residues, such as degradants, cleaning
+agent and bioburden, carrying over to the next batch of the same product.
+If only parts of an equipment train are dedicated to one product, then that dedicated part is not consid-
+ered as part of the shared surface area for calculating limits for an active ingredient. However, the surface
+area of that part may be relevant for calculating other limits, such as the limit for the cleaning agent.
+Another approach is to set limits for the active ingredient and measure residues of the active ingredient
+in a cleaning validation protocol for dedicated equipment for other reasons, such as concerns about
+batch integrity or certain equipment surfaces may not be easily evaluated by visual examination.
+
+#### 5.9.14 Dividing a Limit among Various Pieces of Equipment
+
+In order to evaluate a processing operation composed of several unit operations, it is important to
+consider the accumulated residue from each piece of process equipment. The MAC is the sum of all
+target residues that could be present on the various pieces of relevant shared equipment surfaces. A
+common practice is to require the same SAL for each and every surface in an equipment train. An
+alternative is to apportion the total amount (the MAC) differently among the different equipment
+items, such that the total amount present still reflects the MAC amount. For example, for an equip-
+ment train comprising three separate vessels each of the same surface area, the SAL limit might be
+1.0 μg/cm2 if the MAC is distributed evenly over all surface areas. In contrast, the MAC might be
+apportioned such that the SAL was 0.5 μg/cm2 for Equipment A, 1.0 μg/cm2 for Equipment B, and
+1.5 μg/cm2 for Equipment C, provided the total carryover limit was still at the calculated MAC value.
+
+#### 5.9.15 Limits for Preferential Transfer to a First Portion of the Next Product
+
+An equipment train should be delineated to separate those portions in which the residue would be
+evenly (homogeneously) distributed in the next product (e.g., blender, granulator) from those in
+which the residue could be transferred to an individual dosage unit of the next product (e.g., tablet
+press, vial filler). To address the situation of preferential (non-homogeneous) transfer, the carryover
+calculations can be adjusted based on the surface area subject to preferential transfer and the portion
+of the next batch subject to being potentially contaminated with the transferred residue. This will
+result in using a different, more stringent limit to the equipment surfaces which can preferentially
+transfer to the next product, thus restricting potential carryover to an initially manufactured single
+product dose of the next product. In addition, this preferential transfer can be addressed based on
+production techniques if an adequate first portion of the next manufactured product (e.g., filled vials,
+tablets) is discarded. Another option is to utilize equipment parts dedicated to one product where this
+preferential transfer may occur.
+
+#### 5.9.16 Limits for Biotechnology Manufacture
+
+More information on limits for biotechnology manufacture is given in PDA Technical Report No. 49,
+“Points to Consider for Biotechnology Cleaning Validation” (2).
+
+#### 5.9.17 Products with More Than One Active Ingredient
+
+In drug product manufacture, there may be more than one active ingredient in the drug product. In
+such cases, there are at least two options. One option is to set limits for all active ingredients and mea-
+sure each active ingredient in a cleaning validation protocol. Another option is to determine a “worst
+case” among the different active ingredients, and to only set limits for that worst-case active ingredi-
+ent based on the lowest limit of any active ingredient in the group. Considerations for determining
+the worst-case active ingredient include difficulty of cleaning, solubility in the cleaning solution, and
+concentration of the active.
+
+### 5.10 Bioburden Limits
+
+In considering bioburden limits following cleaning, it is not expected that the cleaning process itself
+results in sterile equipment. If limits are established for bioburden in a cleaning validation proto-
+col, those limits can be established using carryover calculations using the principles in Sections 5.3
+through 5.6. For non-sterile manufacture, the starting point is an ARL in CFU/g or CFU/mL of the
+next manufactured product. The starting point for that ARL value is the bioburden specification of
+that next product. However, since there are sources of bioburden other than the cleaned equipment
+(e.g., from the raw materials of the next product), an adjustment factor is usually applied to the
+product specification to lower the bioburden ARL. These carryover calculations typically result in
+SAL values significantly above 10 CFU/cm2 or a rinse sampling solution limit significantly above 100
+CFU/mL. A risk assessment should be done to determine the acceptability of such values, including
+the nature of the next product (low water activity, which will not allow proliferation in the product
+vs. high water activity which, without preservatives, will allow proliferation in the next product). The
+acceptable bioburden level should also take into consideration effects on bioburden proliferation dur-
+ing the clean hold time. For this reason, many companies will establish very conservative bioburden
+limits, such as 1-2 CFU/cm2 for surface sampling methods and the typical purified water limit of 100
+CFU/mL for rinse samples.
+However, even if the process equipment is steamed in place or autoclaved prior to manufacture of
+the next product, or even if the next product is sterile-filtered, it is typically the practice to evaluate
+bioburden to establish that the subsequent process is not overly challenged. Achievement of typical
+bioburden limits for non-sterile manufacturing (1-2 CFU/cm2) is considered more than adequate for
+surface sampling. For rinse sampling that is performed with WFI, one approach is to utilize typical
+WFI values (10 CFU/100 mL), while another approach is to utilize a value of either 100 CFU/100 mL
+or 1,000 CFU/100 mL. The rationale for the higher limit is that the equipment will be subsequently
+steamed. Furthermore the WFI value is the value for the WFI in the recirculating loop; once it is
+removed from that loop and passed through clean equipment, there is not necessarily an expectation
+that it will still meet the WFI value.
+An additional consideration for bioburden evaluation is the determination of objectionable organ-
+isms. Objectionable organisms are not necessarily limited to the USP specified organisms, but include
+organisms selected based on an understanding of the product and manufacturing situation. What
+makes an organism objectionable is not just the species, but also the number. The degree of iden-
+tification may be identification down to the species level, or it may just include methods to exclude
+objectionable organisms. Furthermore, one approach is to identify all colonies that are found, while
+another approach is to only identify colonies if the number is above a certain threshold (e.g., 50% of
+the acceptance limit).
+
+### 5.11 Endotoxin Limits
+
+Endotoxin carryover to the final product is a concern for any product with endotoxin specifications.
+In this situation, it is common practice to measure endotoxin in the final rinse water, with limits typi-
+cally set at the WFI limit of 0.25 EU/mL. If the equipment is depyrogenated by heat, endotoxin will
+be deactivated and measurement of endotoxin for cleaned equipment may not be required.
+
+### 5.12 Visually Clean Criterion
+
+Visual appearance of production surfaces is a direct measurement that verifies removal of residuals.
+The most common use of a visually clean criterion is to supplement swab and/or rinse testing for
+residues for cleaning validation protocols. In such cases, it is common practice not to establish a quan-
+titative visual limit.
+If visual examination is used without swab and rinse sampling, it is required to establish a quantitative
+visual limit for a residue on a specified surface under specified viewing conditions. If visual examina-
+tion supplements swab and/or rinse sampling, such a visual limit determination may be done to fur-
+ther refine and/or limit what visually clean means. A discussion of that methodology for establishing
+a visual limit is given in Section 7.7.3. Provided the quantitative visual limit is more stringent than a
+SAL carryover limit (see Section 5.5) and provided that the equipment surfaces can be viewed in the
+cleaning validation protocol under conditions that are the same or more stringent than the viewing
+conditions established for the quantitative limit, then this visually clean criterion may be used without
+swab or rinse sampling. If this approach is used, a second-person verification in protocol execution
+should be utilized. Typical visual limits reported in the literature are 1-4 μg/cm2. However, it should
+be recognized that this limit depends on factors or conditions such as the nature of the residue, the
+nature of the surface, the lighting, the distance of viewing, the angle of viewing, and the visual acuity
+of the operator.
+The requirement for “visual cleanness” usually applies to equipment surfaces. It is not necessarily a
+requirement that swabs be visually clean after a surface is swabbed, due to the fact that residue which
+is not visible on a larger surface may become “visible” when concentrated on the smaller area of the
+swab head.
+In order to evaluate cleaning effectiveness, it is necessary to sample the surfaces of the equipment
+to establish the level of residuals present. It is essential for a cleaning validation program that the
+appropriate sampling methods are utilized. This section discusses issues that might be addressed in
+determining the appropriateness of types of sampling methods, sampling recovery validation studies,
+and training and qualification of samplers.
+
+### 6.1 Sampling Method Selection
+
+Selection of a sampling method depends on the nature of the equipment, the nature of the residue
+being measured, the residue limit, and the desired analytical method. Sampling methods discussed
+here are:
+• Direct surface sampling
+• Rinse sampling
+• Swabbing
+• Placebo sampling.
+It should be noted that while regulatory documents refer to swabbing as “direct” sampling and to
+rinse sampling as “indirect” sampling, it is operationally more descriptive to refer to those sampling
+methods as “swab sampling” and “rinse sampling,” and reserve the term “direct sampling” for tech-
+niques such as visual inspection.
+Swab/wipe sampling, rinse sampling, and visual examination are listed as acceptable sampling tech-
+niques in most regulatory documents (20, 21, 22). Each method has its advantages and limitations. In
+a given protocol, multiple sampling methods may be used, such as “both rinse sampling and visual
+examination” or “rinse sampling, swab sampling, and visual examination,” as required to adequately
+determine that the equipment is acceptably clean.
+
+#### 6.1.1 Direct Sampling Methods
+
+Direct sampling methods (as used in this document) include both instrumental methods and visual in-
+spection. It should be recognized that direct surface sampling incorporates elements of both sampling
+and analytical methods.
+
+##### 6.1.1.1 Visual Inspection
+
+It is a well-accepted practice that a cleaning process should remove visible residues from the produc-
+tion equipment surfaces. The visual inspection of equipment has limitations in that some equipment
+surfaces (e.g., piping) are usually not accessible for viewing. The use of optical equipment like mir-
+rors or endoscopes, as well as the use of additional lighting, can help to facilitate visual inspection.
+Ordinarily surfaces that are visually examined should be dry, as this represents a worst-case condition
+for visual inspection.
+Remote inspection techniques (e.g., with fiber-optic probes and a viewing screen) are utilized when
+visual inspection by a trained inspector is difficult to perform. Things that might make visual inspec-
+tion difficult include issues related to tank entry, the hazards of a potential residue, or inaccessibility
+of critical equipment surfaces. Additionally, one might use remote inspection techniques to supple-
+ment an “unaided” visual inspection procedure.
+Borescopes, Fiberscopes, and Videoscopes allow visual inspection of hard-to-reach areas. Borescopes
+have been used to view the interior of piping and tank welds. A benefit of these scopes is that they typ-
+ically can fit into confined spaces not accessible to operators. They are typically very maneuverable,
+
+## 6.0 Sampling
+
+have additional lighting attached, and may come with optional magnification and/or zooming capa-
+bilities. The major drawbacks of these scopes are the difficulty of use, controlling lighting/brightness,
+and that the operator still has to make the determination if the area viewed is visually clean.
+A Remote Visual Camera allows operators to view remote areas on a screen. The camera has most
+of the same strengths and weaknesses as the scopes, but the added benefit that operators can typi-
+cally also record video or take pictures. Multiple operators can, at the same time, view what is on
+the screen. The potential to record video and allow multiple operators to view the screen may help
+support a site’s visual inspection training program. Pictures printed from the camera may distort the
+actual amount of residue present since operators will typically zoom in on a particular area when
+taking a picture.
+It should be noted that the basic regulatory expectation is that the equipment be visually clean by
+viewing with the unaided eye. Use of aids to magnify or otherwise improve visibility of residues
+should be seen as a more stringent use of visual examination.
+
+##### 6.1.1.2 Instrumental Methods
+
+Instrumental methods typically involve a surface probe connected to an analytical instrument by a
+fiber-optic cable. For example, this may involve an attenuated total reflection probe connected to
+an FTIR instrument by a fiber-optic cable. The advantage of this type of sampling is that it is not
+necessary (as in swab and rinse sampling) to remove the residue from the surface for analysis. It also
+therefore does not require a separate sampling recovery study. The main disadvantages of this tech-
+nique are limited length of the fiber-optic probe and the requirement that surfaces be relatively flat
+(therefore, many worst-case locations may not be sampled by this technique).
+
+#### 6.1.2 Rinse Sampling
+
+Rinse sampling involves sampling the equipment by flowing solvent (which may be water, an aqueous
+solution, an organic solvent, or a water/organic solvent mixture) over all relevant equipment surfaces
+to remove residues, which are then measured in the rinse solvent. Collection of rinse samples should
+consider solubility, location, timing and volume. One type of rinse sampling technique is to take a
+“grab” sample from the final portion of the rinse solvent during the final rinse of the cleaning process.
+A “grab” sample is a single sample collected from a rinse solution that represents the composition of
+the rinse solution at that time. As used in this document, a grab sample generally refers to a single
+sample withdrawn from the final portion of a CIP rinse.
+A second type of rinse sampling is to utilize a separate sampling rinse after completion of the process
+rinse. This separate sampling rinse may involve filling the equipment to an appropriate level with solvent
+and agitating that solvent to make the composition of the residue in the sampling rinse is homogeneous.
+Then a sample of that solvent is taken and analysed. This separate sampling rinse may alternatively be
+a separate CIP sampling rinse, which may involve a once-through sampling rinse or a recirculating sam-
+pling rinse. For a once-through separate sampling rinse, it is necessary to collect the entire volume of the
+separate sampling rinse, agitate it until it is homogeneous, and analyze a sample from the homogenous
+rinse. For a recirculating separate rinse, homogeneity is generally achieved by recirculation.
+Advantages and disadvantages of both methods for rinse sampling are shown in Table 6.1.2-1.
+
+**Table 6.1.2-1**
+
+Comparison of Grab Sampling versus Separate Sampling Rinse
+“Grab” Sampling from Final Process Rinse
+Separate Sampling Rinse
+Advantages
+• Represents the normal cleaning process
+• Requires no additional amounts of rinse solvent
+• Equipment can be used for further processing
+without additional steps
+• Results can easily be used for carryover calcula-
+tions
+• Represents what is left on surfaces after comple-
+tion of cleaning process
+• More likely to result in an acceptable result if done
+correctly
+• Recirculating rinse likely to provide higher recovery
+• Allows use of a sampling solution other than the
+process rinse
+Disadvantages
+• Sample represents a worst case carryover to
+the next batch in that it reflects residue in the
+final rinse, not residue on surfaces after comple-
+tion of the final rinse (but can demonstrate ro-
+bustness of cleaning process)
+• Need to make assumptions about sampling for
+carryover calculations
+• Utilizes an additional step
+• Require additional amount of rinse solvent
+• Possible contamination due to method of rinse
+solvent addition
+Advantages and disadvantages of rinse sampling are given in Table 6.1.2-2.
+
+**Table 6.1.2-2**
+
+Advantages and Limitations of Rinse Sampling
+Advantages
+Limitations
+• During rinsing, the entire product-containing sur-
+face is wetted. One analysis result represents the
+sum of all removed residues for the flow path.
+• The sampling procedure may not contaminate the
+equipment if process solvent is used.
+• Re-cleaning may not be required after sampling.
+• This method allows for conclusions on the cleanli-
+ness of areas that are not accessible for swabbing.
+• Adaptable to on-line analysis.
+• Less technique dependent.
+• Applicable for actives, cleaning agents, and bio-
+burden.
+• Allows sampling of unique (e.g., porous) surfaces
+such as membranes and resins.
+• Useful for cleaning process design/development.
+• Only residues soluble in rinse solvent can be de-
+tected.
+• Must assure that rinse sampling solution contacts
+all surfaces to adequately measure residues.
+• Does not deal with residues that preferentially
+transfer from one part of the equipment to the
+next product.
+• May dilute out the residue to be undetectable by
+the analytical method.
+• Limited information about location of areas that
+contributed to residues.
+• Knowing the rinse volume is critical to ensure ac-
+curate interpretation of results.
+• Usually limited to rinsing an entire piece of equip-
+ment, such as a vessel (except for extraction
+sampling).
+• Accessibility or presence of sampling ports for
+legacy equipment may be problematic.
+Rationales for the use of rinse sampling include the following:
+•
+Equipment not accessible for other types of sampling
+•
+The residue is volatile, so measuring it on dried surfaces is not appropriate
+•
+Rinse sampling adequately measures residues on surfaces.
+
+##### 6.1.2.1 Extraction Rinse Sampling for Small Parts
+
+One special case of rinse sampling is sampling of small parts. Those parts may be sampled by swab-
+bing but there are two options for rinse sampling. One type of rinse sampling is extraction from small
+parts. In an extraction procedure, the extraction solvent is placed in a clean vessel large enough to
+hold the sampled part. The small part is then placed in the extraction solution and agitated or soni-
+cated for a fixed time. The sampling solution is then analyzed for potential residues. A second type of
+rinse sampling for small parts is typically used for items with an orifice, such as filling needles. In this
+procedure, a fixed volume of sampling solution is passed through the lumen and collected in a clean
+collection vessel. The sampling solution is agitated for uniformity, and then analyzed for the potential
+residues. Because the surface area and sampling volume are precisely known, limits can be accurately
+calculated for such situations.
+
+##### 6.1.2.2 Solvent Reflux Sampling
+
+A second special case of rinse sampling is organic solvent reflux sampling. In this process, volatile
+organic solvent is added to the reactor of a manufacturing vessel. The solvent is heated to vaporize it.
+The solvent vapors condense on various upper parts of the manufacturing equipment, dissolve any
+soluble residues and carry it back to the reactor. While the technique for distribution of the solvent to
+the surfaces for sampling is different, the principles of rinse sampling are still present.
+
+#### 6.1.3 Swab and Wipe Sampling
+
+Both swab sampling and wipe sampling involve wiping a surface with a fibrous material (most com-
+monly). During the wiping procedure, the residue on the surface may be transferred to the fibrous
+material. The fibrous material is then placed in a solvent to transfer the residue to the solvent. The
+solvent is then analyzed for the residue by an appropriate and validated analytical method. For swabs,
+the fibrous material is some kind of textile (knitted, woven or nonwoven) attached to a plastic handle.
+Wipes are fibrous materials, usually woven or non-woven textiles, which are applied to the sampled
+surface by hand. A special case of swabs is the use of cotton balls or pads, which are moved across a
+surface with forceps. The selection of swab or wipes to be used requires an evaluation of the swab
+properties, such as extractables and shedding properties. Recovery of residues from surfaces also de-
+pends on the size and shape of the swab head or wipe, as well as the properties (such as flexibility and
+length) of the swab handle.
+In most cases, the swabs and wipes are wetted with a solvent prior to sampling the surface. The
+solvent selected should be able to assist in dissolving the residue and also be compatible with the
+analytical method. For example, for HPLC analysis, the solvent could be mobile phase. For TOC and
+conductivity, the solvent is almost always water. For sampling the same site, companies may choose
+to sample the same surface area with multiple swabs or wipes in order to provide a higher percent
+recovery of residue from the surface. In such cases, the additional swab(s) or wipe(s) utilized may be
+either dry or wetted with the same solvent.
+Wipes are typically larger pieces of textile material, and may be used to sample larger equipment areas.
+The swab or wipe that has been applied to the surface is then extracted with a suitable solvent to
+remove the analyte from the swab into the extraction solvent for analysis (see Table 6.1.3-1 for ad-
+vantages and limitations). The extraction solvent may be the same or different solvent as that used for
+wetting the swab.
+
+**Table 6.1.3-1**
+
+Advantages and Limitations of Swab/Wipe Sampling
+Advantages
+Limitations
+• Enables the analysis of residues found on the spe-
+cific surfaces.
+• Allows for sampling of areas that are more dif-
+ficult to clean (i.e., worst cases).
+• Allows both dissolution and physical removal of
+residues.
+• Adaptable to a wide variety of surfaces
+• Economical and widely available.
+• Allows sampling of a defined area.
+• Applicable to active, microbial, and cleaning
+agent residues.
+• Small extraction volumes may provide for greater
+detectability.
+• Only discrete sampling areas can be analysed to
+represent the entire equipment – sampling must
+include worst case locations.
+• The sampling itself can potentially contaminate
+(from fibers or solvent) the equipment. Re-clean-
+ing may be required after sampling.
+• Some areas are not accessible for swabbing (e.g.,
+piping systems).
+• Results may be technique dependent (such as
+surface area sampled).
+• Results may be location dependent (such as dif-
+ficult to access surfaces)
+• Swab material and design may inhibit recovery
+and specificity of the method
+
+### 6.2 Placebo Sampling
+
+Placebo sampling can be used to detect residues on equipment through the processing of a placebo
+batch subsequent to the cleaning process. Placebo sampling is used primarily to demonstrate the lack
+of carryover to the next product. The placebo should mimic product attributes. The equipment char-
+acteristics also impact the choice of the placebo batch size. Placebo sampling may present analytical
+challenges for measuring residues in a true placebo. Placebo sampling may also be called “mock runs”
+or “blank runs”, which in biotechnology generally involves processing only with water. This latter
+concept is different from rinse sampling, in that the water is processed through the equipment much
+as the product would be processed.
+In this sampling process, the equipment is first cleaned. Following cleaning, a manufacturing process
+is performed (to the extent feasible) using only a placebo product. Following processing, the placebo
+product is evaluated for residues as for any other cleaning validation sample as measures of possible
+contamination of a manufactured product with those residues. Placebo runs can be performed to
+demonstrate actual carryover to the processed material, but if done, are typically done to complement
+swab/wipe and/or rinse sampling.
+
+### 6.3 Sampling for Microbial and Endotoxin Analysis
+
+Sampling for bioburden may involve rinse-water sampling and/or swabbing, but may also involve
+contact plates. Consideration should be given to the sampling solution for swabbing and rinsing. For
+swabbing, a sterile solution, such as phosphate-buffered saline, should be used. For rinse sampling, it
+is generally not practical to sample large equipment items with sterile water; however, for extraction
+of small parts, the use of sterile water or a sterile solution is preferred. For large equipment, rinse
+sampling is generally done with purified water or WFI, and results may be compared to a blank taken
+from the same use point. Rinse-water sampling for bioburden should involve use of sterile sample
+containers. “Aseptic” sampling technique, much like is used for cleanroom bioburden sampling, is
+required for any microbial method to avoid external contamination of the sample.
+Sampling for endotoxin is almost always a rinse water sample, preferably with low endotoxin water.
+
+### 6.4 Additional Considerations
+
+It is preferred to have a separate sampling SOP (apart from any special instructions in a cleaning vali-
+dation protocol). This helps prevent “procedure drift”, which might occur if the swabbing procedure
+text is just repeated in every protocol. It also helps insure that the same sampling procedure is used in
+recovery studies as in protocol execution, and thus simplifies training. The rinse sampling procedure
+may be the same procedure that is used for sampling water systems, appropriately modified to cover
+sampling of process equipment.
+In selecting sampling techniques, considerations should be given to the compatibility of the sampling
+materials (such as vials, swabs, sampling solutions) with each other, with the nature of the residue,
+and the nature of the analytical method. Furthermore, any requirement for cleaning or removing
+sampling materials from the sampled surface in a cleaning validation protocol should be addressed in
+the design/selection of sampling methods, materials, and parameters.
+Finally, in taking samples in a protocol, consideration should be given to the impact of a given sample
+on subsequent samples. This includes the order in which samples are taken. This “order” includes
+consideration of the type of sampling method (e.g., visual, rinse, swab) as well as the type of residue
+(e.g., active, cleaning agent, bioburden, endotoxin).
+
+### 6.5 Sampling Recovery Studies
+
+Sampling recovery studies are generally required to adequately demonstrate that a residue, if pres-
+ent on equipment surfaces, can be adequately measured or quantified by the combination of the
+analytical method and the sampling procedure. These studies provide a scientific basis for utilizing
+those sampling and analytical methods to measure residues. The objective should be to establish a
+reproducible level of recovery from the equipment surfaces. Three types of sampling recoveries are
+discussed below: swab sampling recovery, rinse sampling recovery and “visual examination” recovery.
+For swab and rinse sampling, recovery studies may be performed as part of the analytical method vali-
+dation or they may be performed as separate studies once it is determined that the analytical method
+can appropriately measure residues in solutions. Sampling recovery studies are laboratory studies in-
+volving coupons of sampled equipment of different materials of construction (such as stainless steel,
+glass, PTFE, and EPDM) spiked with residues to be measured.
+
+#### 6.5.1 General Considerations
+
+Recovery studies may not be required for certain residues that are known to be readily soluble (e.g., as
+defined in the USP or Merck Index and used well below the solubility limit (such as sodium hydroxide
+or phosphoric acid used as cleaning agents), provided the residues are not reactive with or absorbed
+into the surface.
+In performing recovery studies for swabbing and rinse sampling, the amount of material spiked onto
+coupons should represent an amount equal to what could be present at the residue limit. If addi-
+tional levels are spiked, levels should represent levels of actual values present in cleaning validation
+protocols. It should be recognized that spiked levels at extremely low levels may give lower recovery
+percentages due to the inherent variability of the analytical method at those low levels.
+The spiked residue should represent the same residue present at the end of the cleaning process. In
+actual fact, the residues present at the end of cleaning may include a combination of active ingredient,
+cleaning agent, excipient, and/or degradation products. It is common practice, however, to only spike
+the active ingredient when doing recovery studies for the active ingredient, and to only spike with
+cleaning agent when doing recovery studies for cleaning agent. Spiking of the active ingredient in its fi-
+nal formulation may be considered when spiking of the active ingredient alone is not practical. Finally,
+drying and/or holding times of spiked coupons should be appropriate for the nature of the residue.
+If the active degrades during the cleaning process, it is common practice to perform recovery studies
+by spiking with the active ingredient itself, unless there is information that indicates the degradation
+products may have a significantly different recovery level from the active ingredient itself. Further-
+more, if the degradation product has unusual safety or solubility concerns, recovery studies by spiking
+directly with that degradant should be considered. Because of possible concerns about degradation
+of the active ingredient after completion of the cleaning process, but before sampling, that maximum
+time interval between spiking and sampling should be considered in performing recovery studies.
+Recovery values should be established for all surfaces sampled. For swab and rinse sampling, one ap-
+proach for this is to perform recovery studies on all surfaces. An alternative is to perform one residue
+study on a surface which through documented evidence is equivalent (in terms of percent recovery)
+to other surfaces for which a formal recovery study is not performed. This is essentially a grouping or
+family approach for recovery studies. Equivalence for establishing the group or family may be estab-
+lished based on published studies or in-house data. Another approach is to exclude formal recovery
+studies for sampled surfaces constituting less than a small percentage (such as 1% or 2%) of the total
+equipment surface area; in such cases, the recovery value used for that excluded surface is the lowest
+recovery of any other surface type for which a formal sampling recovery study was performed, or the
+minimum acceptable recovery percentage required by the company’s procedures.
+6.5.2	 Swab/Wipe Recovery
+For this section, the term swab or swabbing is used; however, descriptions for swab recovery studies also
+apply to wipe sampling, except as noted. For swab recovery studies, coupons are spiked in a controlled
+manner with solutions of the sampled residue, allowed to dry, and sampled with the swabbing proce-
+dure to be utilized in the cleaning validation protocol. The swab is extracted in a suitable solvent and the
+amount of residue measured in that solvent sample. The amount recovered is compared to the amount
+spiked on the coupon and the result is expressed as percent recovery. Because swabbing is a manual pro-
+cedure, typically each person performs a recovery study with three replicates. It is preferable to have at
+least two people perform swabbing recovery studies for each combination of residue and surface type.
+The recovery percentage established by the study may be defined in different ways, but typically is defined
+as the lowest average recovery of any one swab operator. An acceptable swab recovery depends on how
+that swab recovery is being used. If the recovery is performed to qualify the sampling method without
+correction of either a limit or an analytical result then a recovery percentage such as 70% or more is typi-
+cally required. If the recovery percentage is used to correct a residue limit or an analytical result then a
+recovery of 50% or more is typically required. An upper limit for percent recovery should be established
+to deal with studies where the measured recovery is greater than 100%. Recoveries of less than 50% typi-
+cally require a written rationale of why that percentage is appropriate.
+As part of the swab method development, spiking of residue directly onto the swab head to deter-
+mine recovery (release) from the swab head material may be done. Such a study should also be con-
+sidered if recovery levels from spiking of surfaces is unacceptable, and it is desired to find the cause
+of the low recovery.
+At a minimum, recovery values are generally performed at the residue limit on the surface (e.g., in
+μg/cm2). While it is possible to perform recoveries at different spiked levels, in general there is little
+value to such additional spiked levels because of the variability of the sampling procedure. It is prefer-
+able to perform additional replicates at the one residue limit rather than studies at additional levels.
+Acceptable variation for recovery results at one spiked level is typically on the order of 15-30% RSD.
+If recovery studies are done by more than one swab operator, it is also appropriate to have a criterion
+for determining acceptable variation between operators. Examples of criteria used include variation
+of no more than a maximum amount between average percentage values, or variation of no more
+than a maximum relative percentage between average percentage values. Use of statistical tests for
+significance is generally not necessary for such determinations.
+Swab recovery studies are typically performed on a nominal coupon surface area using the same area
+as is swabbed during sampling for protocol execution. This area is typically either 25 cm2 or 100 cm2
+while wiping studies are done on larger areas. In sampling manufacturing equipment for a protocol,
+it is not always possible to swab a 10 cm X 10 cm area (it might be necessary to swab a 5 cm X 20 cm
+area). Furthermore, it might not be practical to swab exactly 100 cm2 (an area of 60 cm2 or 128 cm2
+may be required because of the specific equipment geometry). In such cases, the recovery percentage
+based on sampling 10 cm X 10 cm may be applied to each of those cases. If such an approach is used,
+a range of acceptable surface area (such 25% to 150% of the nominal sampled area) should be estab-
+lished. However, if the sampled area for equipment surfaces in a protocol varies from the nominal
+value, the residue limit for that sample should be adjusted based on the actual surface area swabbed.
+
+#### 6.5.3 Rinse Recovery
+
+Rinse recovery studies address the validity of rinse sampling for that residue. They demonstrate that if
+the residue were on a surface, that residue would be effectively removed and could be analyzed in the
+rinse solution. Rinse recovery studies address the U.S. FDA’s “dirty pot” and “baby/bath water” analo-
+gies (20). Rinse recovery studies, like swab recovery studies, can be performed on coupons that have
+been spiked with solutions of the target residue and then allowed to dry. For swab recoveries, it is neces-
+sary to perform the exact swabbing procedure to be used in the cleaning validation protocol. For rinse
+sampling, in contrast, the exact rinsing procedure (except for the special case of extraction sampling)
+cannot be duplicated in the laboratory. However, it is possible to simulate the rinsing procedure in the
+laboratory. Where possible, the conditions of the simulated rinse should be the same as the equipment
+rinsing situation. This includes selection of rinsing solvent as well as the temperature of the rinsing sol-
+vent. In other cases, the rinsing conditions should be selected as the same or a worst case as compared
+to the equipment rinsing situation. For example, the ratio of solvent to sampled surface area should be
+the same or lower in the recovery study as compared to the equipment rinsing situation.
+One method of simulating the rinse process is to suspend a spiked coupon above a clean collection
+vessel, and cascade rinse solution across the surface into the collection vessel. Another method is to
+spike the bottom of a beaker of the appropriate material of construction, allow the residue to dry,
+add rinse solution to the beaker and apply gentle agitation for a time which approximates the time of
+the final rinse. The rinse solution is either pipetted or decanted from the beaker and analyzed. A third
+option, used in cases where a beaker of suitable material of construction is not available, is to place
+a spiked coupon in the bottom of a beaker and perform a simulated rinse as in the second method.
+Since laboratory rinse sampling studies are generally not operator dependent, three replicates by one
+operator may be adequate to determine the percent recovery. Acceptable percent recoveries are typi-
+cally established at the same levels and conditions as for swab recovery studies.
+6.5.4	 “Recovery” in Visual Inspection
+This process is actually the determination of a quantitative “visual detection limit”. If visual exami-
+nation is used to supplement swab or rinse sampling, such determination of a visual detection limit
+may be done but is not required. A visual detection limit under specified viewing conditions can be
+determined by spiking coupons of the equipment surface materials with solutions of the residue at
+different levels (in μg/cm2), and having a panel of trained observers determine the lowest level at
+which residues are clearly visible across the spiked surface. The significance of such a visual detection
+limit is that if equipment surfaces are determined to be visually clean under the same (or more strin-
+gent) viewing conditions in a cleaning validation protocol, the level of the residue is below the visual
+detection limit. Appropriate viewing conditions include distance, lighting and angle. The visual limit
+depends on the nature of the residue as well as the nature of the surface (e.g., stainless steel vs. PTFE)
+and the visual acuity of the inspector. Typical values reported in the literature for a visual detection
+limit are 1-4 μg/cm2 (23). For this determination, a percent recovery is not established; the purpose is
+to establish a value where residues are clearly visible so that any surface observed as visually clean is
+clearly below that value.
+
+#### 6.5.5 Recovery for Bioburden and Endotoxin Sampling
+
+Recovery studies to determine percentage recovery from surfaces are not appropriate and are not nor-
+mally done for microbiological sampling. One reason for this is the question of enumeration in mi-
+crobiological tests – “colony forming units” are typically counted as opposed to individual organisms.
+A second reason for this is that vegetative organisms will die or lose viability when dried on a coupon
+in a standard sampling recovery procedure. A third reason is that it is unclear which species should be
+used for a recovery study. A fourth reason is that typically the limits set for bioburden are significantly
+below what could possibly cause either product quality issues or process performance (e.g., SIP) is-
+sues; therefore, even though recovery may be low (<50%), product quality and/or process perfor-
+mance is not impacted by not including a recovery factor.
+Endotoxin recovery studies from surfaces using the sampling method are not ordinarily performed.
+One reason is related to the low levels that are typically present on cleaned surfaces. Additionally, only
+standard endotoxin from LAL test kit suppliers can be used for recovery studies and these may not be
+indicative regarding detection and/or removal of endogenic endotoxins present from a manufactur-
+ing process. Finally, the largest quantity of endotoxin present in a manufacturing vessel typically is
+endotoxin within a soil matrix. The cleaning process itself is very effective in physically removing this
+endotoxin along with other manufacturing soils.
+
+### 6.6 Training and Qualification of Samplers
+
+Training involves the steps taken to assist the prospective sampler in learning the technique of sam-
+pling/inspection. For purposes of this section, “sampling” and “sampler” also include “inspection”
+and “inspector” for visual evaluation. Qualification involves the process of “certifying” that the pro-
+spective sampler can appropriately sample.
+Training always precedes qualification. At a minimum, training involves reading of the sampling pro-
+cedure and demonstrating the correct procedure by a trained sampler. During the reading and dem-
+onstration, the trained sampler provides commentary on the rationale for certain practices or aspects
+of the sampling procedure. Demonstration of technique may also utilize a visual indicator on the
+swabbed surface which assists the trainee in seeing consequences of poor technique. The last step in
+training is demonstration of the correct procedure by the prospective sampler.
+Qualification processes used for sampling will depend on the type of sampling performed. Qualifica-
+tion may involve merely demonstration of correct technique (that is, the last step of the training
+process), or it may involve a “test” that challenges the trainee’s ability to perform the activity correctly
+(e.g., perform visual inspection using an array of coupons where some are soiled and others are not
+or perform swab sampling for a known soil residue level on coupons). Either type of qualification
+may be repeated on a regular basis or upon any retraining of a sampler. Retraining may be conducted
+based on suspected operator error in a swabbing process, or it may be done because an operator has
+not performed a swabbing event over a certain time frame.
+
+#### 6.6.1 Key Issues for Training for Swab Sampling
+
+Note that what is written in this section about swab sampling applies appropriately to wipe sampling.
+Four keys to consistency in swab sampling training are emphasis on consistency of wetting the swab
+head, consistency of the swabbing motion (including overlapping strokes), consistency in applied
+pressure, and consistency in swabbing of the correct surface area. It is assumed, of course, that the
+correct swab, the correct number of swabs, and the correct wetting solution (if any) for the swab are
+utilized. A fifth factor for some types of swab sampling (such as sampling involving TOC analysis) is
+the emphasis on preventing external contamination of the swab, such as from the presence of volatile
+organics in the atmosphere around the sampling location.
+Since swab sampling is not unlike manual cleaning processes in that it depends on a person for a
+high degree for consistency, consideration should be given to have swab samplers retrained and/or
+requalified on an established basis. Retraining may involve the same process as for initial training or
+may involve only portions of that initial training. Requalification generally involves a repeat of the
+initial qualification process. The need for retraining and/or requalification should also be addressed
+as part of change control for the swabbing procedure as well as when swab sampling “operator error”
+is suspected in the investigation of a nonconforming result.
+
+#### 6.6.2 Key Issues for Training for Rinse Sampling
+
+The major concern for accuracy in rinse samples is to prevent contamination of the rinse sample. This
+contamination may come from for example, the sampling port, environment around the sampling port,
+and/or the operator. Steps to prevent contamination may include adequately flushing or cleaning the
+port prior to taking a sample, as well as avoiding sample contamination due to the use of isopropanol
+on gloves or use of isopropanol to clean the port (prior to sampling) if TOC is the analytical procedure.
+In training rinse samplers to take a grab sample for the final rinse of a CIP cycle, timing of the sampling
+process is critical. Typically, the very last portion of the rinse is sampled but it may be acceptable to sample
+before that time if such sampling represents a worst case. However, once process rinsing is complete,
+there is no way to go back and collect a rinse sample (unless a separate sampling rinse is performed).
+Since the consistency of rinse sampling is less operator dependent, there may be no need for routine
+retraining and/or requalification of operators; however, the need for retraining and requalification
+should also be addressed as part of change control for the rinse sampling procedure as well as when
+rinse sampling “operator error” is suspected in the investigation of a nonconforming result.
+
+#### 6.6.3 Training for Visual Inspection
+
+Training for visual inspection depends on whether the visual inspection is part of a protocol execu-
+tion, routine monitoring, or laboratory “limit of detection” determination. In any case, it is preferred
+to have a visual inspection SOP so that training can be for that SOP. Visual acuity of visual inspectors
+for either type of visual examination should be addressed.
+For training of visual inspectors in a protocol execution, key issues are access to sites for viewing, appro-
+priate lighting, and the ability to discern the difference between residues on the surface and surface
+imperfections. An important element of visual inspection training is to know when to call for further
+analysis to determine the nature of the residue. For example, if what appears to be rouge is seen
+on the equipment, the presence of that residue should be noted. Determining whether that residue
+causes a failure in the cleaning process is a separate decision.
+The procedure for visual inspection for laboratory “limit of detection” determination is generally dif-
+ferent from that of visual inspection during protocol execution because the objective is different. The
+objective is to determine at what level a certain residue can be consistently seen across a spiked surface
+in order to correlate a visual detectability limit with a level of known residue(s) below that spiked
+level. This procedure may be in a separate SOP or may be incorporated in an overall SOP for visual
+inspection. In addition to the same elements that are included in training for protocol execution, a key
+consideration for training in this procedure, which involves viewing spiked coupons, is a careful dis-
+tinction between a visually clean surface, a partially soiled surface (in which residue is apparent only
+over a portion of the spiked area), and a “fully” soiled surface. Furthermore, the determination of a
+“visual limit” in the laboratory should be done under conditions similar (or worst case) as compared
+to visual examination of equipment in a protocol. This includes considerations of lighting, distance,
+and angle of viewing.
+It is essential to a cleaning validation program that the appropriate analytical methods are utilized.
+Analytical methods must be appropriate in that they can adequately detect and measure the residue(s)
+of concern. It is also important to understand what can be concluded from the analytical result (e.g.,
+was the product or cleaning agent measured and were the results acceptable?). The results of testing
+will determine if the cleaning cycle is acceptable or needs improvement. This section discusses con-
+siderations in selecting the appropriate test methods, including information on the applicability and
+use of both chemical and microbial test methods, and test method validation.
+The emphasis in this section will not be so much on describing the features and limitations of meth-
+ods (although that will be done to a limited extent), as it will be on the thought process of deciding
+what information is obtained and when a certain analytical method will be useful. Cleaning process
+understanding is the key to selecting the appropriate analytical method for various stages of cleaning
+validation
+
+### 7.1 Purposes of the Analytical Methods
+
+In a lifecycle approach to cleaning validation, different analytical methods may be appropriate for
+evaluation of residues at the different stages of the cleaning validation lifecycle. The lifecycle stages
+of cleaning validation are design/development, qualification, and validation maintenance. Analytical
+methods may also be used as part of investigations during any lifecycle stage. It is important to con-
+sider and evaluate what information one wants to obtain and what information can be obtained from
+use of a given analytical procedure.
+For example, in early development work, there may not be adequate information on the nature of
+residues (e.g., is the active ingredient degraded?) and a specific analytical method may not have been
+validated. However, nonspecific methods may give a reasonably accurate picture of the overall ef-
+fectiveness of the cleaning process for cleaning process development, even though that nonspecific
+method may or may not be the analytical method chosen for the cleaning validation protocols.
+Another example involves the selection of analytical methods for investigations. For the validation
+runs (qualification runs), it is usually preferred to have an analytical method that can appropriately
+determine whether the target residue (e.g., the active ingredient) is at or below the predetermined ac-
+ceptance limit for that residue. But for an investigation into a deviation (nonconformance), in certain
+circumstances (such as with the use of a nonspecific method in a validation protocol) it may be more
+important for the investigation to have an analytical method that can qualitatively determine the na-
+ture of that residue (e.g., is it active ingredient, cleaning agent or excipient?).
+It is important to emphasize that the thought process of why an analytical method is being used is
+critical for having a robust, science and risk-based approach to cleaning validation. Just because a
+method has been used in the past does not necessarily mean it will useful for a new application.
+
+### 7.2 Practical Considerations in Selecting Analytical Methods
+
+In an ideal world, the best method for a given task could be chosen; in the real world, selection of
+analytical methods may be limited by practical considerations. In many cases, it is important not that
+the analytical method be the best method available but that it be adequate for the intended purpose.
+In selecting analytical methods, one must consider readily available methodologies within a given
+company. For example, it is not likely that a company will invest in a new analytical method if existing
+methods are adequate for the intended purpose. New methods may mean capital equipment pur-
+chases, training of analysts and maintenance of the equipment; the related costs should be weighed
+against the expected benefits. For example, total organic carbon (TOC) was not widely considered for
+
+## 7.0 Analytical Methods
+
+cleaning validation until TOC replaced the readily oxidizable substances pharmacopeial method, after
+which pharmaceutical companies were readily familiar with and comfortable with the technology.
+On the other hand, if a new analytical method is required because existing in-house methods are
+not adequate for the intended purpose, then that new method should be considered. These may be
+implemented by using contract analytical laboratories or by bringing the new analytical methodol-
+ogy in-house. A decision on bringing the method in-house versus using a contract laboratory may be
+based on business considerations.
+
+### 7.3 Specific vs. Nonspecific Analytical Methods for Validation
+
+Protocols
+Specific analytical methods are those which measure a certain residue in the presence of expected
+interferences. If the target analyte in a validation protocol is the active ingredient, such interferences
+may include degradation products and related substances, excipients, cleaning agents and cleaning
+process by-products. Examples of specific methods include liquid chromatography (including HPLC,
+UPLC and TLC) and spectrophotometry (including UV, visible and infrared). Each of these methods
+requires the use of an appropriate reference standard. In contrast, nonspecific analytical methods
+measure a general property, such as conductivity or TOC, which could be due to a variety of analytes
+or sources.
+Selection of an analytical method may depend on the nature of the residue as it exists after the clean-
+ing process. Only if an active ingredient is not degraded during the cleaning process (e.g., surviving
+high temperatures and pH extremes in an aqueous environment) does it make sense to use a specific
+analytical method for that active ingredient. If a specific analytical method for an active ingredient
+were utilized following a cleaning process that has been demonstrated to degrade that active ingredi-
+ent, it is likely that residues of the active ingredient would be nondetectable (i.e. not measurable) by
+that specific analytical method. In such a case, use of a specific analytical method for the degradant or
+use of a nonspecific method (such as TOC) may be considered for measuring residues in a validation
+protocol. Alternatively, if limits are established for the degradation product of an active ingredient,
+then a specific analytical method for the degradant may be considered for use.
+It should be recognized that the proper use of a nonspecific analytical method may provide a more
+robust demonstration of acceptable cleaning in a validation protocol, because it may have responses
+from species other than the target residue, yet those responses must be assumed as due to the target
+residue (24). However, exceeding the residue limit using a nonspecific analytical method provides no
+information on the nature of the failure. The high analytical result may be due to responses from the
+active ingredient, the excipients, the cleaning agent, and/or a combination of those species.
+Nothing in this Technical Report should be interpreted as saying that, as a general principle, specific
+analytical methods should be used in preference to nonspecific analytical methods.
+
+#### 7.3.1 Regulatory Status of Specific and Nonspecific Methods
+
+Both specific methods and nonspecific methods have been found acceptable by regulatory authorities.
+However, one must be careful not to misuse an analytical method. For example, specific methods can
+be misused by failing to recognize the degradation of the active ingredient in the cleaning process,
+and nonspecific methods can be misused by failing to attribute the nonspecific response entirely to
+the residue of concern.
+The U.S. FDA cleaning validation guidance states that one should “Determine the specificity and
+sensitivity of the analytical method used to detect residuals or contaminants” (20). While some have
+interpreted this to mean that a specific analytical method should be used, a better interpretation is
+that irrespective of the type of method selected, make sure it is used appropriately. The European
+PIC/S recommendations state that “The analytical methods used to detect residuals or contaminants
+should be specific for the substance to be assayed….” (22). This again has been interpreted to mean
+that only specific analytical methods should be used. However, it is not applied in that manner since
+nonspecific methods are widely used by companies worldwide and have been accepted by the U.S.
+FDA and European regulatory authorities.
+
+### 7.4 Most Commonly Used Analytical Techniques
+
+The focus of this section is to discuss the most commonly used analytical procedures in pharmaceu-
+tical cleaning validation (25). The Task Force believes it was more appropriate to focus on common
+uses of analytical methods, based on the stages of cleaning validation where they have been demon-
+strated to provide relevant information. The features, benefits and limitations of methods are often
+situational and are therefore not covered here.
+Additional considerations in selecting methods are listed below:
+• Availability of instrumentation
+• Speed of analysis
+• Specificity of technique
+• Sampling limitations (including sampling solvents)
+• Detection/quantitation limit
+• Linearity of response
+• Online adaptability
+• Cost
+Most applications in pharmaceutical cleaning validation involve quantitation of residues over a vali-
+dated range. However, in certain situations, pass-fail tests, also known as ‘‘go-no go’’ testing, may be
+used to establish that the residue is below the acceptance limit. Such testing may be used in qualifica-
+tion runs for clinical manufacture (where the effort to fully validate an analytical method over a linear
+range may be costly) or for routine monitoring and equipment release based on final rinse solvent
+testing. A pass-fail test generally does not demonstrate the robustness of the cleaning process unless
+the pass-fail point is significantly below the desired acceptance limit. Since the transition point is a
+range, the range must be known and its relationship to the limits must be established in the validation
+process. The actual result, although passing, could have been very close to failure and with normal
+plus/minus variation it could actually represent a failed result.
+For more information on analytical method use in biotechnology manufacture, please consult PDA
+7.4.1	 Liquid Chromatography (LC)
+LC includes HPLC (High Performance Liquid Chromatography), UPLC (Ultra Performance Liquid
+Chromatography, and TLC (Thin Layer Chromatography). All these methods involve the separation
+of component by a chromatography procedure and then the measurement of one or more separated
+species. For HPLC and UPLC, the measurement is typically ultraviolet (UV) detectors, although other
+appropriate detectors may be used based on the analyte of interest.
+HPLC and UPLC methods are typically specific methods, which are widely used for measurement
+of active ingredients in small molecule-manufacturing (both API and drug product manufacturing).
+In many cases, HPLC/UPLC methods have been previously developed as a potency assay method
+for the active ingredient, and only need minor modification to make the method suitable for use as a
+method for residue determination in qualification runs. Those additional modifications may involve
+confirming that the useful range is suitable for residue determinations and that additional “expected
+interferences” that are present in the cleaning system do not interfere with measurement of the active
+ingredient. HPLC/UPLC methods may not be suitable for measuring residues of an active ingredient
+if the active ingredient is degraded in the cleaning process, unless the chromatography conditions al-
+low separation and measurement of degradants of interest.
+TLC methods may be used for various stages for cleaning of small molecules. For example it may be
+used for design/development to confirm and characterize degradation of the active. TLC methods
+may also be used for any investigation (at any stage of cleaning validation) to characterize residues.
+7.4.2	 UltraViolet/Visible Spectrophotometry (UV/Vis)
+UV/Vis involves measuring transmission/absorbance of a specified wavelength of light by a solvent
+solution of the residue. It typically requires a chromophore in the molecule, although it is also pos-
+sible to modify the residue to produce a chromophore. For example, it is commonly used in small-
+molecule manufacturing, particularly for API manufacturing where it is not necessary to separate it
+from a matrix to quantify the residue. Because of its simplicity, UV/Vis techniques may be used in the
+design/development, qualification and validation maintenance stages of cleaning validation as well as
+for any investigations. UV/Vis has also the possibility of being used in PAT applications for comple-
+tion of the cleaning steps for small molecule API manufacturing (26).
+7.4.3	 Total Organic Carbon (TOC)
+TOC is applicable to any residue containing significant amounts of organic carbon. The TOC meth-
+od is based on oxidizing the carbon present and measuring the carbon dioxide produced. Oxidizing
+methods include UV, persulfate, and combustion. Techniques for measuring the generated carbon
+dioxide include conductivity, membrane-based conductivity and infrared. Both online and offline ap-
+plications of TOC are possible.
+For use of TOC, the target residue must have adequate aqueous solubility for the intended purpose.
+The most common way of applying the TOC method to a cleaning validation testing strategy is to
+assume that all residues detected are due to the target residue (24). In manufacturing situations, TOC
+is commonly used for measuring residues if the target residue (e.g., the active ingredient) is degraded
+during the cleaning process. However, it may also be used in situations where the active is not de-
+graded. The rationale for use of TOC in such situations is ease of analytical method development and
+the worst-case assumptions inherent in TOC analysis.
+TOC may be used for all stages of cleaning validation, including design/development, qualification
+and validation maintenance as well as for investigations.
+
+#### 7.4.4 Conductivity
+
+Conductivity measurement is a method to detect dissociated ionic substances in water samples. For
+qualification protocols conductivity readings are expressed in micro-Siemens/cm (µS/cm); for con-
+trol and monitoring of the cleaning solution, conductivity readings are expressed as milliSiemens/cm
+(mS/cm). It is often used to measure cleaning agent residues (e.g., caustic or acidic agents) and to con-
+trol cleaning agent concentration in automated cleaning processes (e.g., CIP). Conductivity readings
+are highly influenced by the sample temperature. Temperature adjustment of the sample, automated
+temperature compensation or a conductivity/concentration curve at a specified temperature can be
+used to standardize the measurements.
+To allow correlation of conductivity readings with concentrations of cleaning agent, a dilution curve
+(conductivity vs. concentration) should be established (at a relevant temperature) by conductivity
+measurements of different dilutions in the relevant range near the acceptance value.
+Conductivity is a nonspecific method that correlates linearly (within a defined range) to the ion con-
+centration in an aqueous sample. Analytical instruments are robust and can be used on the manufac-
+turing floor by trained personnel. The method cannot differentiate between different ions. Therefore,
+as with TOC, all conductivity results above the water baseline should be attributed to the contami-
+nant in question (e.g., the cleaning agent).
+Conductivity is often a function of alkaline or acidic cleaning agent. Measuring conductivity is a good
+measure of the completion of rinsing, and therefore an indirect measure of good cleaning for routine
+monitoring of a cleaning process.
+Conductivity can also be used for measuring residues of an ionic active ingredient, either in cases
+where the cleaning agent is water alone or in other cases involving ionic cleaning agents if all the
+conductivity response is attributed to the active ingredient (even though some of the response may
+be due to the cleaning agent).
+
+#### 7.4.5 Organoleptic Evaluation
+
+“Organoleptic” evaluation includes visual inspection as well as other evaluations such as smell. Visual
+inspection is commonly used during all stages of cleaning validation, as it is a minimum requirement
+under GMPs for use of equipment for manufacture. Visual inspection is a nonspecific method in that
+the nature of the residue generally cannot be identified except by further analysis.
+Training and a detailed documented procedure is required to ensure that “visually clean” from one
+operator to the next is consistent. What one can visually see will vary with distance, angle, lighting,
+nature of surface, and inspector’s visual acuity. Some equipment surfaces (e.g., piping) are usually not
+accessible for visual inspection. The use of optical equipment like mirrors, remote videoscopes, or
+borescopes can help to facilitate visual inspection.
+The visual inspection procedure should specify how operators are to deal with visual observations.
+Visual inspection may find four different types of visual observations: residue, surface anomalies,
+foreign object and water. Residue is the main concern which would constitute a visual failure when
+one is assessing the acceptability of a cleaning cycle. A sample of the residue should be collected for
+further testing, if possible, to assist in the investigation of the cause. Typically, surface anomalies and
+foreign objects are not considered visual inspection failures for cleaning validation purposes, but must
+be further investigated and corrected, as applicable. Surface anomalies should be noted and a “suit-
+ability for use” assessment should be performed to remediate any issue(s) found. Rouge is the most
+common type of surface anomaly discovered during visual inspection; rouge is generally considered
+a preventive maintenance problem, not a cleaning process problem. Foreign objects and their removal
+should be documented. Also, how the foreign object came to be in the equipment should be investi-
+gated. Sometimes a distinction is made between absence of water pooling (“free drained equipment”)
+and the absence of any visible water droplets (“dry equipment”). Particularly for water pooling, the
+observation should be documented, the cause investigated, and the impact on issues such as visual
+examination and bioburden proliferation on storage should be addressed.
+All equipment surfaces should be visually inspected if possible. Visual inspection may not be per-
+formed on the interior of lines and tubing (although outlets may be inspected) on equipment where
+disassembly of the equipment is not practical or possible, or where inspection of the equipment could
+potentially be dangerous to the inspector (e.g., entry into a confined space).
+A training program should be developed for visual inspection. Inspectors typically should be trained
+and/or requalified on an established basis. If visual inspection is not possible on an area of concern,
+it is important to ensure that other sampling methods (such as rinse sampling) can adequately detect
+potential residues of concern.
+Smell as an organoleptic method is generally only used if an unusual smell occurs during sampling of
+the equipment, which would suggest the need for an investigation.
+
+### 7.5 Other Useful Analytical Techniques
+
+Below are other techniques which may be useful for various stages of cleaning validation.
+7.5.1	 pH
+pH is a measure of the hydrogen ion concentration. It can be used as a monitoring process check,
+particularly when equipment is stored wet in a preservative solution (typically acid or base). pH can
+also be used to verify qualitatively the presence of the correct cleaning solution. pH can be used to
+complement conductivity measurements. However, pH is less useful than conductivity for measuring
+residues of alkaline or acidic cleaning solutions because pH has a logarithmic relation with hydro-
+gen ion concentration, whereas conductivity has a direct, linear relationship with ions. Furthermore,
+there is not necessarily a direct correlation of conductivity and pH, particularly for neutralized clean-
+ing agents.
+7.5.2	 InfraRed (IR)
+This includes both FTIR (Fourier Transform InfraRed) and NIR (Near InfraRed). These techniques
+are most useful in an investigation where there is a need to identify organic residues that may be pres-
+ent. FTIR has also been combined with a fiber-optic probe for direct quantitative measurement of
+residues on surfaces for qualification protocols (27).
+
+#### 7.5.3 Light Microscopy
+
+Light microscopy, including Scanning Electron Microscopy (SEM), is a method of identifying con-
+taminants on equipment surfaces. In many cases, conventional light microscopy and SEM can be
+combined with other analytical techniques, such as x-ray diffraction, mass spectrometry, and nuclear
+magnetic resonance (NMR). Microscopic techniques alone may identify the physical nature of a resi-
+due but not the chemical nature. One of the practical applications of microscopy is in the evaluation
+and identification of unknown contaminants on new or used equipment. These techniques are espe-
+cially valuable in the evaluation of residues in an investigation.
+
+#### 7.5.4 Titrations
+
+Titration is another simple analytical method that is often overlooked even though it might provide
+valuable information in the proper cleaning situation. Titrations may be specific (orthophosphate
+ions) or nonspecific (e.g., for all anionic surfactants). This method is more likely to be used for alkaline
+or acidic cleaning agent analysis in qualification runs.
+
+#### 7.5.5 Gravimetric Analysis
+
+Gravimetric analysis can be useful for design/development studies and for qualification runs. It is
+most commonly used for determining residues in small-molecule API synthesis where a larger vol-
+ume of a solvent rinse or solvent reflux is evaporated to dryness.
+7.5.6	 Enzyme Linked Immunosorbant Assay (ELISA)
+An ELISA assay is an antigen-antibody type reaction involving the use of specific chemicals developed
+especially for the residue involved. Its use is generally limited to biotechnology and biologics manu-
+facture where it can be used in the design/development stage to confirm degradation of the active
+ingredient and in any investigations.
+7.5.7	 Capillary Zone Electrophoresis (CZE)
+Also known as capillary electrophoresis (CE), this technique separates residues by charge and friction-
+al forces in an electrical field. Detection is usually with a fluorescence detector. CZE has been applied
+mostly in the biotechnology industry for active ingredients and degraded active ingredients where it
+can be used in design/development and qualification stages as well as in investigations.
+7.5.8	 Atomic Absorption (AA) and Inductively Coupled Plasma (ICP)
+Both of these techniques can be used for measuring metals in solution, where the metal is part of a
+formulation or for unknown residues, such as suspected rouge.
+7.5.9	 Ion Mobility Spectrometry (IMS)
+This technique is a type of mass spectrometry which only provides information on the time of flight
+of the analyzed species. It has been promoted for its short analysis time (a few minutes). It may have
+more application for routine monitoring and release.
+
+### 7.6 Microbial Test Methods
+
+The 1993 U.S. FDA cleaning validation guidance states that “Control of the bioburden through ad-
+equate cleaning and storage of equipment is important to ensure that subsequent sterilization or sani-
+tization procedures achieve the necessary assurance of sterility” (20). The PIC/S recommendations
+call for “the validation of cleaning procedures for the removal of contaminants associated with the
+previous products, residues of cleaning agents as well as the control of potential microbial contami-
+nants” (22). Control of microbial residues is thus an important part of cleaning validation. Microbial
+residues include bioburden and endotoxin. Typically bioburden sampling and analysis is performed
+during cleaning validation protocols unless there is a documented science- and risk-rationale for omit-
+ting such sampling and analysis. Science- and risk-based rationales for excluding microbiological test-
+ing in protocols may include manufacturing considerations, such as all solvent processing for small-
+molecule API manufacture, use of a final alcohol rinse for oral dose drug products, use of subsequent
+sterilization cycles, and/or demonstration of adequate microbial control in sufficiently similar clean-
+ing processes.
+
+#### 7.6.1 Endotoxin
+
+Typically, endotoxin testing is performed for cleaning validation runs if the next product has endo-
+toxin specifications. Endotoxin analytical methods are typically compendial methods. Science- and
+risk-based rationales for excluding endotoxin testing in protocols may include manufacturing con-
+siderations, such as all solvent processing for small-molecule API manufacture, use of a validated
+endotoxin reduction step, and/or demonstration of adequate endotoxin control in sufficiently similar
+cleaning processes.
+
+#### 7.6.2 Bioburden
+
+Testing of bioburden is done through rinse-water sampling, swab sampling and contact plate sam-
+pling. Rinse-water sampling typically involves membrane filtration, placement of the membrane on
+an appropriate agar, incubation, and a count of CFUs. The main rationale for rinse-water sampling
+for bioburden is that it provides an overall picture of equipment cleanliness. Also, bioburden testing
+of rinse water is typically already a qualified method for testing water systems for bioburden. The
+biggest weakness of rinse-water sampling and membrane filtration is that the full range of the accep-
+tance criteria is not able to be utilized. For example, if 100 ml of rinse water is used for testing with an
+acceptance criteria of 100 CFU/mL. The typical number of colonies that can be counted is 300 before
+Too Numerous To Count (TNTC) is achieved; this only allows an acceptance criterion of 3 CFU/mL
+before failing to demonstrate that the acceptance criterion is met. In most situations this is not an is-
+sue; it may result in the need to test smaller sample volumes (or diluted samples). An alternative is to
+perform spread-plate or pour-plate microbiological analyses.
+Two methods for directly measuring on surfaces are swab and contact plate. For swab samples, the
+swab can be desorbed and a count made by a pour-plate or spread-plate method. Contact plates are
+directly incubated and enumerated. The biggest concern with contact plates and swab procedures is
+potentially exposing product contact surfaces to an unknown media or buffer solution from swabs;
+thus acceptable removal of this media or buffer solution should be demonstrated before manufactur-
+ing can occur. Another concern is that contact plates require flat surfaces.
+Most companies use analytical techniques for bioburden involving incubation in an appropriate me-
+dium and counting of CFUs. Such a procedure has the disadvantage of only providing a number for
+CFUs and not individual cells. Sampling and processing of the test sample may affect the reported
+number of CFUs due to disruption of aggregated cells. In addition, while it is common to report
+bioburden counts below 20 CFU as quantifiable numbers, it is recognized that enumeration below 20
+CFU is not scientifically established. Another alternative is to use rapid instrumental microbiological
+procedures. PDA Technical Report 33, Evaluation, Validation and Implementation of  New Microbiological
+Testing Methods should be consulted for a discussion of rapid methods (28).
+
+### 7.7 Analytical Method Validation
+
+This section focuses on analytical method validation for “chemical” residues. Typically endotoxin
+methods are compendial methods and do not require formal validation but require a confirmation for
+their application of use or suitability. Microbial methods that are approved microbiology laboratory
+methods do not require additional method validation.
+
+#### 7.7.1 General Principles
+
+Since one key part of cleaning validation is setting residue limits and then measuring (using an analyti-
+cal method) the actual residues left on surfaces after cleaning, it is critical that the analytical method
+be appropriately validated. Method validation is typically accomplished using the criteria in ICH Q2
+(R1) (29). However, the types of assays listed in ICH Q2 do not explicitly cover cleaning validation
+methods. One approach is to essentially validate analytical methods, much like an “Assay” in ICH Q2,
+establishing accuracy, precision, specificity, linearity and range, with added determination of limit of
+quantitation/ limit of detection (LOD/LOQ). LOD/LOQ must be below the acceptance limit for the
+sample, and ideally is significantly below the acceptance limit so that the robustness of the cleaning
+process can be established. In addition to the ICH Q2 parameters, sample stability as a function of
+storage conditions (time, temperature, vial for storage, etc.) may be evaluated if there is a significant
+interval between sampling and analysis. Specific methods should address possible interferences from
+other species, such as cleaning agents, which might occur only in the cleaning process.
+In cases where a nonspecific method is utilized, it is not necessary to compensate for the lack of speci-
+ficity by “other supporting analytical procedures” (as suggested in ICH Q2). The reason for this is
+that for cleaning validation purposes, the limit value is not a target (as it is for a potency assay); rather
+the limit is a value not to be exceeded. As long as these other species that contribute to the nonspecific
+response do so in a positive manner (thus increasing the response value), and as long as the total mea-
+sured value is attributed to the target residue, such complementary methods suggested by ICH Q2
+are not required. Furthermore, it is not required to correlate nonspecific methods with a specific ana-
+lytical method except to the extent that accuracy in the method validation of the nonspecific method
+may be established using a known standard where the concentration or activity is established by a
+specific analytical method. While Detection Limit and Quantitation Limit are not part of the “Assay”
+requirement in ICH Q2, it is critical that these values be at or below the pre-established limit for the
+residue (otherwise it would not be possible to claim that residues were below predetermined limit
+values). However, it is not necessary to drive detection or quantitation limits as low as possible; hav-
+ing detection or quantitation limits of 10% or less of the residue limit in the analytical sample is ideal
+(but not always possible) to establish the robustness of the cleaning process. Assay capability should
+take into account both the target/limit and the process capability, and provide relevant measurements
+for both.
+When performing carryover calculations it should be ensured that the analytical methods that will be
+used for cleaning validation are sensitive enough to meet the acceptance criteria. To provide reliable
+results for carryover calculations, the results should be equal to or above the LOQ. Results between
+the LOQ and the LOD typically show a higher-than-acceptable variation of the results obtained and
+are typically reported as less than LOQ.
+For companies that use a pass/fail analytical method for meeting cleaning validation limits, analyti-
+cal method validation is less extensive. In such a procedure, the only conclusion of the analytical
+procedure is whether the experimental sample is less than or equal to or above the pass/fail value.
+Accuracy and precision are typically performed only at the residue limit but linearity and range are
+not performed. Note that in this case, the pass/fail value selected should take into consideration any
+applicable correction factor due to the sampling method recovering less than 100% from the surface.
+Such pass/fail methods do not allow collection of relevant data to support a process capability de-
+termination to establish action or alert levels for routine monitoring. Pass/fail analytical procedures
+are more likely to be used in manufacture of early clinical trial materials where a cleaning verification
+mode is employed. However, such methods can also be used for qualification runs and for routine
+monitoring.
+Analytical method validation protocols may only include validation of the residue in solutions. It may
+also include sampling recovery studies, although those sampling recovery studies may be performed
+as separate studies apart from the analytical method validation.
+Acceptability of variability of results for parameters, such as accuracy and precision for chemical
+methods at typical residue levels, are generally much broader than in a typical potency assay. Relative
+standard deviation (RSD) requirements of 15-20% are typical.
+
+#### 7.7.2 Compendial Methods
+
+Compendial methods do not require separate analytical method validation provided those methods
+are used within the parameters in the compendia. For example, a compendial method for endotoxin
+is generally appropriate for measuring endotoxin in final rinse water samples. However, suitability of
+use of compendial methods should be addressed.
+When using swab or rinse samples with a compendial analytical method, items that should be con-
+sidered for suitability of use include the validated range, possible interferences from the cleaning pro-
+cess, possible interference from the swab, and recovery of residue from the swab (see Section 6.1.3).
+When using TOC in rinse-water samples (a compendial method), additional work should be done to
+support its applicability for test samples where the TOC values could be above 500 ppb or where a
+linear range is to be established. Just performing system suitability as specified in the USP requirement
+may not be adequate to demonstrate that the TOC analytical procedure could accurately analyze
+samples at 1 ppm or 5 ppm. For that reason, analytical method validation as for any other method
+should be considered. An additional reason for formal method validation for TOC in rinse-water
+samples is that the USP method is essentially set up as a pass/fail test, not as a quantitative assay.
+
+#### 7.7.3 Visual Inspection
+
+Method validation in this case is actually the determination of a quantitative “visual limit” where
+visual examination is the sole sampling/analytical method and “visually clean” is used as the sole ac-
+ceptance criterion for the given residue in the absence of swab or rinse sampling for that residue. If visual
+examination is used to supplement swab or rinse sampling, such determination of a visual limit is not
+required. A visual limit under specified viewing conditions can be determined by spiking coupons of the
+equipment surface materials with solutions of the residue at different levels (in μg/cm2) and having a
+panel of trained observers determine the lowest level at which residues are clearly visible across the
+spiked surface. The significance of such a visual limit is that if equipment surfaces are determined
+to be visually clean under the same (or more stringent) viewing conditions in a cleaning validation
+protocol, the level of the residue is below the visual limit. Appropriate viewing conditions include
+distance, lighting and angle. The visual limit depends on the nature of the residue as well as the nature
+of the surface (e.g., stainless steel vs. PTFE).
+
+#### 7.7.4 Bioburden Methods
+
+Approved and qualified microbiological lab procedures do not require additional method validation
+for use in cleaning validation programs. However, suitability for use of such methods in the presence
+of cleaning process chemicals should be addressed (30).
+
+#### 7.7.5 Transfer to another Laboratory and Use of Contract Laboratories
+
+Other laboratories (other than the laboratory that originally validated a method) can be utilized to
+perform an analytical method for cleaning validation purposes. In such cases, a method transfer pro-
+tocol should be established and executed to determine that the other laboratory can suitably analyze
+samples using that method. If a method is developed by a contract laboratory and qualification run
+samples are analyzed by that contract laboratory, then no transfer protocol is required. It is preferable
+that analytical method validation protocol be reviewed and approved by the pharmaceutical company
+prior to execution of that protocol. Care should be used in the transfer protocol to first determine
+whether the measurements between the two laboratories are practically significant before any deter-
+mination of statistical significance is performed (31). If an analytical method has been developed and
+validated previously by the contract laboratory, then the pharmaceutical company should review that
+protocol and the final report to determine the acceptability of the method for its (new) intended use
+as well as perform an audit of the contract laboratory.
+A key part of the validation lifecycle for any system is maintenance of the validated state. A variety
+of terms are used within the industry for those activities that follow the cleaning process design/
+development and successful execution of the formal validation protocols. The term used in this Tech-
+nical Report for those activities is “validation maintenance”; other related terms used in the industry
+include “continued process verification”, “ongoing process maintenance”, “ongoing process control”,
+“monitoring”, and “continued process control”. Validation maintenance is critical for cleaning valida-
+tion because a lapse, shift, and/or change in the validated state has the potential to adversely impact
+the quality, safety and purity of subsequent batches of the same or different products. The main tools
+for ensuring the continued maintenance of the validated state are change control, periodic monitor-
+ing and data trending review. Additionally, training is an important area of control for cleaning pro-
+cesses, and it is one of the primary mechanisms for controlling manual cleaning consistency.
+In each of these areas, knowledge of the operational parameters and/or design space (see Section
+3.0) should be applied. Furthermore, application of risk management principles should be used for
+selection of validation maintenance practices for a given facility or process. Risks to be addressed
+include not only product quality risks. Note that for formal risk management assessments, the risk
+focus should be on risks to patients and product quality. However, risks related to business operations
+and operator safety may be the rationale for certain validation maintenance practices. For example,
+monitoring of conductivity in the recirculating cleaning solution line may be based primarily on qual-
+ity concerns. However, provided that such monitoring of the recirculating cleaning solution is done,
+monitoring of detergent level in a drum may be based primarily on a business risk to prevent inter-
+ruptions in manufacture. Activities (and the frequency of those activities) to be conducted during
+validation maintenance should be initially selected during the design/development and qualification
+stages. However, they may be modified based on new information and/or data collected during rou-
+tine commercial manufacture. Examples of such information include newly discovered sources of
+variation or consistent trending data. Maintenance of the validated state should include the cleaning
+process and equipment, including preventive maintenance and calibration for the equipment being
+cleaned and the equipment used for cleaning.
+
+### 8.1 Critical Parameter Measurement
+
+It is of utmost importance to understand the control range of critical parameters used to define the
+cleaning process. Typically, these include cleaning agent concentration, temperature, flow rate and
+times for all processing steps. During the design phase, an appropriate level of understanding of the
+process and its variability should be obtained to design a cleaning process capable of addressing this
+inherent variability. Once the process is well defined, there are a variety of control strategies that may
+be used.
+One control strategy is to set minimum and/or maximum values for each of the critical cleaning pa-
+rameters during a cleaning cycle. In this approach, each of the steps of the cycle has a defined proven
+range or threshold (lower threshold or upper threshold) that should be measured and maintained dur-
+ing each execution of the cleaning cycle, and each parameter should be within that range or within
+that threshold. This approach has an advantage in that it is straightforward to implement and control
+and demonstrates proper performance of the cleaning process on each cleaning run.
+Measurement of parameters for purpose of feedback for process control (such as process completion)
+is discussed separately in Section 11.3 on Process Analytical Technology.
+
+### 8.2 Process Alarms
+
+Another practice for validation maintenance is alarming of critical parameters or events. Alarms for
+
+## 8.0 Maintenance of Validated State
+
+process parameters and/or events are typically based on a quality risk approach but there may be
+alarms based on business or safety concerns. In an automated cleaning cycle, alarms may be based
+on a variety of parameters, such as temperature of the wash and rinse solutions, online analytical
+results of the recirculating wash solution, pressure at the spray device, flow through various circuits,
+and online analytical results of the final rinse. These are typically automated alarms, in which a light
+flashes, a buzzer sounds, or the cleaning process is aborted, with the generation of a failure record.
+When using measurement probes for alarm purposes, the device should have appropriate accuracy
+and should be maintained in current calibration. There may also be other “nonautomated” alarms, in
+which observations by an operator trigger a response (e.g., visual observation by an operator that a
+cleaning detergent drum is empty).
+There are a variety of approaches to cleaning the equipment on which an alarm occurred. The cause
+of the alarm should be investigated. This may be done as part of a Corrective and Preventative Ac-
+tion (CAPA) program. One strategy is that on specified alarm conditions, the cleaning cycle may be
+restarted. For example, if inadequate cleaning agent concentration occurred (as indicated by an alarm
+on the wash cycle conductivity), the cleaning cycle can be restarted from the beginning after appro-
+priate actions are taken to ensure that the alarm does not reoccur and that the cleaning effectiveness
+will not be adversely affected. This is a conservative approach and ensures a complete cleaning cycle is
+performed, but care should be taken that alarms are noted and trended to ensure cycle performance is
+not trending towards being ineffective and to better correct repetitive problems. Alternately, the step
+in which the alarm occurs may be restarted. This approach strikes a balance between ensuring cycle
+performance and minimizing cleaning time as the entire cycle does not have to be repeated. Automat-
+ed alarming is generally not done in manual cleaning operations. However, if cleaning agent dilution
+is confirmed by conductivity, or cleaning agent temperature is confirmed by temperature measure-
+ment, measurements outside the specified range can serve as an “alarm.” In all cases, it should be en-
+sured that cycles performed during validation are not “best case” due to alarm conditions. For example,
+if equipment is soiled and during the validation runs of the cleaning cycle, alarms occur that result in
+multiple additional rinse steps being completed, this cycle may no longer be representative or worst
+case but may be a best case.
+
+### 8.3 Change Control
+
+A change control system is critical for ensuring maintenance of the validated state for cleaning pro-
+cesses. The change control system should cover all key parameters and components of the cleaning
+system to ensure that all changes with a potential to impact maintenance of the validated state are
+evaluated. This includes not only changes in the cleaning process but also changes in equipment and
+changes in the manufacturing process (e.g., a change in temperature in a manufacturing process) that
+might affect the performance of the validated cleaning process. Quality preapproval and tracking of
+changes are key requirements for this system.
+The change control system should provide for a review of each change by an interdisciplinary team.
+This should include a review of current validation for the equipment being changed, and depending
+on the nature of the change, may result in laboratory, pilot scale and/or commercial scale evalua-
+tions. This may also involve a review of the relevant sections of any risk assessment previously done.
+Significantly major changes may result in the decision that the new cleaning process requires separate
+validation as a new process. There are some important considerations for designing the test plan to
+verify changes; review of the process design considerations will assist in this evaluation. First, con-
+trol parameters should stay within their validated ranges. If changes are made to extend or widen a
+validated range, an evaluation should be made to determine the nature and extent of testing (if any)
+necessary to change that range. For example, if the pump on a CIP skid is validated to deliver wa-
+ter between 60 and 70 liters per minute, and the desired change is to increase the flow rate to 70-80
+liters per minute, new validation testing is required to verify that the pump is capable of delivering
+the desired flow before validation of the cleaning cycle can occur. Second, the acceptance criteria for
+analytical methods should remain unchanged from the previous validation unless there is a justified
+reason for the difference. This is to ensure that changes result in maintenance of the validated state
+rather than creation of a new state, which may require significant testing to ensure it is still validated.
+Finally, reduced sample sites and/or fewer analytical methods may be appropriate in many cases to
+confirm validation maintenance based on a change. For example, if the effect of the change is only on
+bioburden then it may be appropriate to evaluate only bioburden in studies that evaluate the effects
+of the change. These differences should be justified in the testing plan/protocol.
+
+### 8.4 Routine Monitoring
+
+Another tool for ensuring maintenance of the validated state is a risk-based routine monitoring pro-
+gram. A routine monitoring program may provide analytical data to be trended (see Section 8.5
+below), such as by SPC. In most cases involving automated processes, the data are provided by the
+automated equipment itself. For example, data may be generated by the CIP skid on wash-solution
+conductivity, final rinse conductivity, temperatures, times, flow rates and pressure. In other cases,
+separate sampling may be established for data collection, such as rinse analysis by UV/Vis, HPLC, or
+TOC. Visual examination after each cleaning process is another type of routine monitoring. Visual
+inspection after each cleaning process typically does not involve disassembly of equipment solely for
+the purpose of that inspection.
+A documented risk-based approach should be used to optimize compliance in an efficient manner.
+This could include leveraging family or grouping approaches, reduced sample sites and reduced
+analytical methods. Leveraging in this manner is most common on cleaning processes which were
+grouped for qualification purposes but it may also be done for cleaning processes which were quali-
+fied separately. In both cases, all members of the group should be considered for routine monitoring
+activities in a risk-based approach. When defining these approaches, the inherent risk associated with
+a given cleaning process and historical experience/data should be considered. For example, when
+performing the initial validation on process equipment, residues of an active ingredient may be mea-
+sured via a variety of swab and rinse samples. However, with the proper data analysis, it may be
+appropriate to measure using only rinse sampling during routine monitoring. However, it may be
+appropriate for cleaning of highly hazardous drug active ingredients (as compared to cleaning of
+drug active ingredients that are not highly hazardous) to include more sampling for residues as part
+of routine monitoring after completion of the qualification runs.
+
+### 8.5 Data Trending and Review
+
+Trending of cleaning cycle performance, analytical data from routine monitoring, and alarms are an-
+other recommendation to ensure continued cleaning cycle performance. Data that is trended can be
+continuous data (such as final rinse water analysis) or discrete data (“yes/no” data such as occurrence
+of an alarm). When trending any of these data sets, procedures should be in place to initiate an inves-
+tigation when adverse trends are observed even if ineffective cleaning cycles have not occurred. Trend-
+ing of cleaning cycle performance data is important for identifying potential cleaning cycle issues
+before they result in ineffective cleaning cycles. For example, a slowly increasing trend in the final rinse
+analytical result may not be indicative of an ineffective cleaning process. However, such a trend should
+require an investigation of the cause. In the example given, it may be that the spray device is becom-
+ing clogged, in which case it should be cleaned, and appropriate steps should be taken to prevent
+clogging in the future. On the other hand, it may be a result of a fouled sensor, such as a conductivity
+sensor. Alarm monitoring and trending will help indicate cycle failure although alarm data will not
+proactively identify potential issues. The incidence of all alarms should still be trended to determine if
+additional process controls are required to reduce the frequency of alarming. Data trending may also
+serve as an important input for a continuous improvement program.
+For data trending, there should be appropriate criteria established for action and/or alert levels. It is
+advisable to obtain guidance from a statistician to determine the appropriate number of data points
+necessary to obtain a statistically relevant data set. These values are typically less than any pass/fail
+acceptance criteria established for the qualification runs. Statistical process capability studies, based
+on multiple (e.g., 20-25) data points, may be used to establish action/alert levels. Since such extensive
+data may not be available for initial commercial manufacture, data from development runs and/
+or sufficiently similar cleaning processes may be used to establish tentative action/alert levels. Ap-
+propriate technical judgment should be utilized in establishing action/alert levels that are practically
+significant and not just statistically significant. For example, consistently obtaining “zeroes” for rinse
+bioburden data for the cleaning process may not alone be sufficient to require a “one-time” value of
+3 CFU to be a significant event which needs an investigation.
+
+### 8.6 Evaluation of Cumulative Changes
+
+Review of the cumulative impact of changes on a system should be considered. Such a review may
+be initiated based on data/events from the cleaning process or may be time-based. One approach is
+to include a review of cumulative changes for every change control event. This review should pro-
+vide evidence that the cleaning cycle continues to meet specified requirements despite multiple small
+changes, each of which was appropriately approved. It is possible that many minor changes (each
+deemed to have no impact on the validated state) could have an impact when considered in total. This
+review of cumulative changes may involve two approaches. First, a documented analysis (i.e. review
+of the changes and the impact these changes will have on other parts of the process) of the changes
+should be undertaken. Second, process performance and alarms should be monitored to ensure con-
+tinued maintenance of the validated state and system performance.
+
+### 8.7 Training
+
+Training after the initial qualification runs should be done to help assure maintenance of the validated
+state. One type of training may involve training on a procedure revised for either clarification or for
+a cleaning process change. Another type of training is retraining of a previously trained operator be-
+cause of suspected operator error. A third type of training is retraining on a regular basis for manual
+cleaning processes. This latter training may be done on a regular basis to avoid process “creep”. Of
+course, training of any new (previously untrained) operators should also be done. Training should
+cover cleaning process operators, sampling personnel, and analytical personnel as applicable.
+
+### 8.8 Periodic Review
+
+As part of lifecycle validation, it is common practice to perform an overall periodic review of the
+validation state. The frequency of such a review will depend on a risk assessment. Such a review typi-
+cally involves a review of data collected as described in Sections 8.1 through 8.7 above. In addition, it
+typically involves a review of any changed regulations as well as any change in common industry or
+inspectional practices that might be considered part of current Good Manufacturing Practice. This pe-
+riodic review should be documented and should include a conclusion as to the validation status of the
+cleaning process. It may also include recommended or planned improvements in the cleaning process.
+Historically, it was considered acceptable to perform periodic revalidation on cleaning processes in
+lieu of routine monitoring and periodic review. However, the approach of revalidation yields a much
+less robust picture of the state of control of the cleaning process and may be more resource-intensive.
+Revalidation as a concept is no longer used by some regulatory agencies because of a preference for a
+lifecycle validation approach. Under a lifecycle validation approach, a significant change in a cleaning
+process involves not the revalidation of the previous process, but rather validation of a new process.
+Such validation of a new process, however, may rely on data from the old process based on it being
+sufficiently similar.
+Documentation is pivotal to cleaning process knowledge management. Documentation of cleaning
+validation activities will vary with individual company practices. This is particularly the case in terms
+of where data, reports and other documents are stored and how they are retrieved. There might be
+variations among companies in terms of determining at what stage of validation (i.e., design/devel-
+opment, qualification, and validation maintenance) those documents are considered. All data and
+documents relevant to a determination of the extent of control and consistency of a cleaning process
+should be appropriately controlled and consistent with GMP regulatory requirements and with the
+company’s quality system. This system should be such that those documents can be readily retrieved.
+This documentation should be part of, or consistent with, a company’s quality management system.
+A procedure on documentation, with specifics for cleaning validation documents, should be consid-
+ered for knowledge management.
+This section will cover documentation for a high-level cleaning validation master plan and/or policy,
+for design/development, for qualification, and for validation maintenance. Figure 9.5-1 contains the
+typical steps in a cleaning validation process flow where appropriate documentation should be con-
+sidered.
+
+### 9.1 Cleaning Validation Master Plans
+
+It is good practice to have a document or documents near the top of the cleaning validation docu-
+mentation hierarchy that broadly define the expectations for a cleaning validation program. This
+document is often called the “cleaning validation master plan”. Such a master plan is not a regulatory
+requirement but is a practical “requirement” in order to facilitate regulatory inspections as well as to
+ensure consistency of execution within a facility.
+The plan should provide a description of responsibilities and activities for the planning and execution
+of cleaning validation. This is best accomplished by a specific cleaning validation master plan. The
+cleaning validation master plan could be described in detail or referenced as a separate document in the
+overall site validation master plan. The cleaning master plan may be all-encompassing. An alternative
+approach is to have a high-level cleaning validation policy and then have a cleaning validation master
+plan that has more detailed explanations of the validation requirements. This approach is common for
+multinational companies where a cleaning validation policy is set at the corporate level. Individual sites
+will prepare master plans consistent with that policy, but with requirements more appropriate for the
+manufacturing situation at that site. If this approach is used, care should be utilized in the higher level
+policy so as not to set policy requirements that may not be appropriate for every site.
+These documents are living documents that should be reviewed and updated as needed and on a
+defined frequency specified in the master plan. A report to the plan may be written periodically to
+summarize the major activities executed under the plan during that interval.
+The cleaning master plan will describe the overall plan, rationale and methodology to be used in per-
+forming cleaning validation. The plan should provide a high-level description of the cleaning valida-
+tion philosophy and strategy that will support the validation activities performed at the site. Detailed
+procedures on the execution of cleaning validation will be in individual protocols. The plan will de-
+fine the efforts required to ensure the cleaning program complies with current Good Manufacturing
+Practices (CGMPs). The validation activities are documented according to the requirements of the
+plan to provide sufficient scientific rationale to assess the suitability of the cleaning program in order
+to consistently clean equipment to the required specifications. During a regulatory inspection, an in-
+spector may ask to review the master plan and then look at the specific validation protocols and final
+reports to determine if the plan is appropriate and to assure that the elements of both the plan and
+individual protocols are being followed.
+
+## 9.0 Documentation
+
+#### 9.1.1 Elements of a Comprehensive Plan
+
+The master plan should address each important aspect of the cleaning validation program. Elements
+of a master plan and the appropriate details provided for those elements will depend on the practices
+of the specific facility. One approach is to include more detail in the master plan while another ap-
+proach is to include that level of detail for procedures consistent with the master plan. Elements of a
+master plan may include, but are not limited to, the following topics:
+• Purpose of the plan
+• Scope of the cleaning validation program
+• Designation of responsibilities
+• List of equipment to be validated
+• Definitions and glossary of terms
+• Means of cleaning documentation (e.g., procedures and records)
+• Prerequisites to cleaning validation (e.g., equipment and utility qualifications)
+• Spray device coverage testing
+• Use of various cleaning systems (e.g., CIP, COP, mechanical washers or manual cleaning)
+• Cleaning reagents and mechanisms
+• Cleaning cycle development requirements
+• Cleaning equipment lists
+• Product list
+• Cleaning SOPs
+• Precleaning methods
+• Conditions for use of artificial or surrogate soils
+• Definition and use of “worst-case conditions” associated with a cleaning process (e.g., flow rates or step
+durations)
+• Description of family approach and grouping of products/equipment/systems based on similarities,
+including an approach to determine “worst-case product” based upon attributes that impact cleaning (e.g.,
+solubility of all components in the “soil”)
+• Use of dedicated or shared equipment; single use (disposable) equipment
+• Definition of circumstances in which cleaning verification is preferred or acceptable (e.g., clinical stages)
+• Strategies and definitions for indirect product contact surfaces
+• Cleaning of components and single-use equipment
+• Use of quality risk management to determine the scope and extent of validation activities
+• Establishment of design space based on cleaning parameters and use in ongoing monitoring
+• Use of mock, blank, or placebo runs
+• Equipment hold study approaches (e.g., dirty hold, clean hold or storage hold)
+• Microbial contamination (e.g., bioburden and endotoxin)
+• Sampling techniques (e.g., visual inspection, rinse sampling or swab sampling)
+• Training/qualification for sampling techniques
+• Analytical methods (e.g., validation and recovery requirements)
+• Rationale for the use of product-specific assays and nonspecific assays
+• Rationales and formulas for limits for process residues, microbial contaminants and cleaning agents
+• Validation maintenance (including routine monitoring, change control, and periodic review)
+• Attachments/appendices (e.g., various tables or lists of items within the realm of the plan such as a
+responsibility matrix)
+• Requirement for reassessment of cleaning validation master plan
+• Roadmap or summary of current status and upcoming plans
+• References
+Note that this is a comprehensive list. Some items listed may not be applicable to a given manufac-
+turer. Some items may be maintained by a manufacturer in a system outside the cleaning validation
+master plan.
+
+#### 9.1.2 Harmonization of Site Cleaning Validation Programs
+
+For a product made at more than one site, where appropriate, the cleaning requirements should
+preferably be the same. However, if the process equipment scale , the type of cleaning equipment
+available, analytical equipment, and/or cleaning process is different (e.g., CIP skid vs. manual), the
+programs can only be harmonized to a limited degree. The acceptance criteria may differ for any limit
+that is based on batch size and equipment surface area. The same would also apply to some degree if a
+contract manufacturer were making the same product. However, there is an additional consideration
+in that the contractor is also obliged to follow its own master plan. A contract manufacturer may vali-
+date their cleaning process using techniques and procedures that differ from those of the sponsor but
+the resulting validation must be compliant and must meet appropriate regulatory expectations. Any
+critical differences should be addressed upfront in a quality agreement with the sponsor. The ultimate
+responsibility for the cleaning validation does reside with the sponsor.
+
+### 9.2 Documentation for Design/Development
+
+In a risk-based environment, it may be appropriate to begin the design/development stage of cleaning
+validation with a risk assessment to provide a rationale for the development plan as well as to identify
+CQAs and CPPs. This assessment will be different for an entirely new cleaning process as compared
+to a consideration of an existing cleaning process for a new product.
+The output of laboratory studies (if any) will typically include initial selection of the cleaning agent,
+cleaning agent concentration (if applicable), temperature and time of the washing step (see Section
+3.0). It may also include stress studies to identify the robustness of those selected parameters. Labo-
+ratory studies may also be used to determine the nature and/or characteristics of residues (such as
+degradation of the API) following the cleaning process. Reports for laboratory studies should have
+clear conclusions with references to documentation for supporting data. The output of lab studies
+may also be leveraged to aid in equipment design.
+The output of pilot-scale studies (if any) will typically include a confirmation and/or modification of
+the basic cleaning parameters, plus an evaluation of any engineering issues (such as dead legs) that
+may affect the selection of those cleaning parameters. Reports for pilot-scale studies should have clear
+conclusions with references to documentation for supporting data.
+Any studies on full-scale equipment are generally performed to collect data not practical in a pilot-
+scale or lab-scale study, to investigate any possible issues where lab-scale data may not reflect ac-
+curately performance on full-scale equipment, and/or to confirm the performance of the cleaning
+process on full-scale equipment prior to qualification runs. Reports for full-scale studies should have
+clear conclusions based on documented supporting data references. For studies on full-scale equip-
+ment, cleaning verification should be performed in order to release the equipment for subsequent
+manufacture of a commercial product.
+Clinical batches may be made on pilot-scale and/or full-scale equipment. The cleaning verification data
+from such studies should also be leveraged to support conclusions of the design/development report.
+The output of design/development stage should be both a development report (also called a technol-
+ogy transfer report) and a draft cleaning process procedure (SOP). It may also include a risk assess-
+ment report based on the cleaning procedure, although this risk assessment may be done as an initial
+step in the Qualification stage.
+
+### 9.3 Documentation for Qualification
+
+Documentation for the Qualification stage starts with Commissioning and IQ/OQ protocols/reports
+on the equipment utilized for cleaning (assuming that Commissioning, IQ and OQ for the equipment
+to be cleaned are already done as part of the process validation). The emphasis for this stage is design
+and execution of the protocols for the validations runs (sometimes called process performance quali-
+fication, or PPQ, runs). Validation runs should not be considered experiments to gain new informa-
+tion but are a confirmation of what is known. Documentation that may be needed prior to prepara-
+tion of the protocol may include:
+• Validation strategy, including rationale for product and/or equipment grouping
+• Draft cleaning SOP, including CPPs
+• Acceptance criteria and how those criteria were established
+• Analytical methods and their validation
+• Sampling methods and sampling sites (locations)
+• Sampling recovery studies
+• Selection of protocol challenges, including hold times
+• Rationale for the selection of number of validation (PPQ) runs
+• How equipment cleaning is to documented
+• Responsibilities for execution of the protocol
+• Training of operators, samplers and analysts on applicable procedures
+• Plans for validation maintenance (see Section 8.0)
+• Plans for equipment and product disposition during the protocol execution.
+Note that the number of validation (PPQ) runs should be based on cumulative knowledge based on
+data collected during the development and qualification stages, and ordinarily is not based on a statis-
+tical evaluation.
+The next document developed is the protocol itself. One approach is to include all the documenta-
+tion covered in the prior paragraph in the protocol itself while another approach is to only put in
+the details critical to execution of the protocol and have references in the protocol to the supporting
+rationales/data that are in separate documents.
+Interim reports may be written for each validation (PPQ) run. The last document developed for this
+stage is the final report, summarizing the results of protocol execution with a conclusion as to the
+state of control of the cleaning process. The final report should also include documentation of con-
+clusions of any investigations of deviations. It may also include recommendations for improvements,
+including changes in the validation maintenance program.
+
+### 9.4 Documentation for Validation Maintenance
+
+Documentation for the validation maintenance stage will depend on activities selected for this stage.
+It should include reports related to the following activities, as applicable:
+• Alarms and alerts, including investigations and corrective/preventive actions
+• Routine monitoring, including trending of data and evaluation of such trending (may include statistical
+evaluation)
+• Change control
+• Deviations, including investigation and corrective/preventive actions
+• Evaluations of cumulative changes (which might be as a result of a deviation investigation or a periodic
+review)
+• Training and retraining
+• Periodic cleaning process review
+• Risk assessments relating to any process changes or shifts.
+Cleaning log records (such as cleaning log books or cleaning batch records) are generally a GMP re-
+quirement and should also be considered.
+
+### 9.5 Other Documentation Considerations
+
+Whenever a risk assessment is performed, it is critical that risk communication be made to depart-
+ments and/or functions affected by the risk assessment. Documentation of events, deviations, fail-
+ures, and/or investigations involving a cleaning process should follow approved practices within a
+company for such documentation.
+Cleaning validation final reports may not be part of a regulatory filing. The requirement for comple-
+tion of cleaning validation will vary by regulatory authority and nature of the product. In the USA,
+CDER likes to at least see a plan for cleaning validation as part of the PAI, but CBER requires cleaning
+validation summaries as part of the BLA filing.
+Documentation for cleaning verification follows the same principles as for cleaning validation except
+that the extent of design/development may be as appropriate for a one-time cleaning activity.
+Figure 9.5-1
+Documentation for Process Flow
+Documentation for Process Flow
+Design/Development
+Qualification/Validation
+Validation
+Maintenance
+Identify Validation
+Needs
+Risk Assessment for
+Design
+Identify CQAs and
+CPPs
+Development Plans
+Development Report/Tech
+Transfer Report
+Pilot Scale Studies
+Risk Assessment of
+Cleaning Process
+Draft Cleaning SOP
+Full Scale Studies
+Lab Studies/
+Cleanability studies
+Qualification Plan
+Finalize Acceptance
+Criteria
+Validation of Analytical
+Methods/Recovery
+Studies
+Identify Sampling
+Sites
+CV Final Reports
+Cleaning Validation
+Protocol
+Analytical Results/
+Investigation Reports
+Protocol Execution
+Training
+Qualification
+Challenges
+Validation
+Maintenance Plans
+Validation
+Maintenance Data
+Data Trending
+Periodic Validation
+Maintenance Review
+Modifications/
+Improvements of
+Cleaning Process
+
+### 10.1 Cleaning Agents
+
+A variety of cleaning agent options is available. These include water, organic solvents, commodity
+alkalis and acids, and formulated detergents.
+
+#### 10.1.1 Types
+
+##### 10.1.1.1 Water
+
+Although the typical use of water is in the prerinsing, post rinsing, and preparation of use-dilutions,
+water is also used as a sole cleaning agent for readily water-soluble residues. As a general rule, the
+quality of water used in the final rinse should be at least as good as the water used in the manufactur-
+ing of the drug product. The water quality used in cleaning should also meet the chemical, microbio-
+logical and endotoxin levels as appropriate for the application.
+
+##### 10.1.1.2 Organic Solvents
+
+Organic solvents, such as methanol, are used for cleaning in small-molecule API synthesis processes.
+Solvents are chosen based on the solubility of the manufacturing soils in the solvent. The clean-
+ing process typically involves agitating the solvent in the reactor vessel, circulating it through pipes,
+and refluxing the heated solvent through overhead risers and condensers. The issue of flammability
+should be considered for organic solvents. Organic solvents, like isopropyl alcohol, are also used in fin-
+ished pharmaceutical manufacturing for manual cleaning of parts and to facilitate drying of surfaces.
+
+##### 10.1.1.3 Commodity Alkali
+
+A commodity alkali, such as sodium hydroxide, is often used for the alkaline wash step. The high pH
+and alkalinity of sodium hydroxide solutions may enhance solubility of organic process residues and,
+in some cases, facilitate hydrolysis. Sodium hydroxide is also widely available, relatively inexpensive
+and, being a single component containing no organic carbon, is relatively easy to analyze and validate
+for cleaning-agent removal. The higher pH of sodium hydroxide also facilitates the precipitation of
+salts or oxides of such ions as calcium, magnesium and iron if those ions are present during the clean-
+ing process. However, commodity cleaners, such as sodium hydroxide, may have limited effectiveness
+for tenaciously adhered or baked-on residues. They also have limited wetting characteristics and soil-
+suspending ability.
+
+##### 10.1.1.4 Commodity Acids
+
+An acid washing step may be used alone for cleaning. The addition of an acid wash step after the caus-
+tic wash/rinse may overcome precipitation and buildup of inorganic compounds, improve rinsing,
+and help broaden the spectrum of soils cleaned (although at the expense of adding another cycle). In
+addition, maintaining a clean surface and limiting the deposition and buildup of iron oxides or other
+contaminants may help minimize the potential for stainless steel corrosion and rouge formation.
+
+##### 10.1.1.5 Formulated Detergents
+
+Formulated detergents are multicomponent cleaning agents that take advantage of several different
+cleaning mechanisms, thus providing broader spectrum effectiveness. In addition to the mechanisms
+of alkalinity and hydrolysis offered by a commodity caustic, a formulated alkaline detergent might
+provide improved wetting and soil penetration, emulsification, chelation of calcium, iron oxide or
+other inorganic ions, and might facilitate dispersion of particulates in the wash step.
+
+## 10.0 Special Considerations
+
+#### 10.1.2 Factors in Selection
+
+A number of factors need to be considered when selecting cleaning agents for CGMP applications.
+These include:
+
+##### 10.1.2.1 Broad Spectrum Effectiveness
+
+The cleaning agent should be effective at removing the residues that may range from single com-
+ponents to complex mixtures of various chemistries that constitute a product’s active ingredients,
+excipients, degradants, and other contaminants. A broad-spectrum cleaner may also facilitate more
+effective grouping strategies.
+
+##### 10.1.2.2 Substrate Compatibility
+
+The cleaning agent should be compatible with the various equipment substrate materials, such as
+stainless steel, polymers, glass, and soft metals.
+
+##### 10.1.2.3 Stability and Shelf Life
+
+To ensure consistent performance after transportation and storage, cleaning agent stability and shelf
+life under those exposure conditions should be considered.
+
+##### 10.1.2.4 Analyzability
+
+Cleaning agents should be analyzable and quantifiable down to the acceptance criteria established.
+
+##### 10.1.2.5 Disposal
+
+Cleaning agents should meet the local waste water discharge requirements such as limits on pH,
+phosphates and heavy metals. When organic solvents are used, air emission requirements may need
+to be considered.
+
+##### 10.1.2.6 Safety
+
+Particularly for cleaners used for manual cleaning applications, appropriate personal protective equip-
+ment may be required.
+
+##### 10.1.2.7 Toxicity
+
+Cleaning agent toxicity is not only important for personnel safety during cleaning, but also is used in
+determining the residue limit and consequently cleaning process efficiency.
+
+##### 10.1.2.8 Rinsability
+
+Cleaning agents should be free-rinsing. Cleaning agents that foam can be difficult to rinse and may
+also cause pump cavitation in CIP systems and COP washers.
+
+##### 10.1.2.9 Quality
+
+Cleaning agents should have a specification, be lot-traceable, and preferably be manufactured using
+CGMP practices with appropriate change control policies.
+
+### 10.2 Nonproduct Contact Surfaces
+
+Nonproduct contact surfaces may be defined in different ways by manufacturers. For surfaces with no
+product contact (e.g., floors, walls, outsides of process equipment), there should be cleaning proce-
+dures. However, these cleaning processes are generally less critical and do not require cleaning valida-
+tion. Cleaning for these nonproduct contact surfaces may be repeated in full or in part if the cleaning
+process results in visible and/or gross levels of residual soils.
+There are other nonproduct contact surfaces which may contact the product indirectly, such as by a
+vector or by an airborne route. These are sometimes called “indirect product contact surfaces”. Ex-
+amples of these types of surfaces might include lyophilizers, equipment used solely to manufacture
+and transfer buffers, media, and excipients, and stopper bowls. These indirect product contact sur-
+faces should be included in the cleaning validation program. However, because of the limited impact
+of these indirect product contact surfaces, requirements for cleaning validation, such as limits, may
+be different from cleaning validation for direct product contact surfaces. A risk assessment should be
+utilized to define the requirements, which will depend on the specifics of the manufacturing situation.
+For example, for highly hazardous drug active ingredients, cleaning validation of nonproduct contact
+surfaces may be performed in order to document any potential of airborne transfer to another prod-
+uct as well as for operator safety reasons (12).
+See Section 10.9 for information related to secondary packaging equipment surfaces.
+
+### 10.3 Process Analytical Technology
+
+Process Analytical Technology (PAT) is defined by the U.S. FDA to be “a system for designing, analyzing,
+and controlling manufacturing through timely measurements (i.e. during processing) of critical quality
+and performance attributes of raw and in-process materials and processes, with the goal of ensuring
+final product quality” (32). The U.S. FDA further notes that “the term ‘analytical’ in PAT is viewed
+broadly to include chemical, physical, microbiological, mathematical, and risk analysis conducted in an
+integrated manner.” The use of a PAT approach may replace traditional validation approaches.
+Much has been published about PAT in general and about PAT in many processes; the reader should
+investigate current literature for a general background on PAT. However, there are limited publica-
+tions about PAT in cleaning processes and cleaning validation as compared to PAT for other manufac-
+turing operations. The use of a feedback loop from the analytical measurement to control a cleaning
+process or cleaning process step is the point of using PAT. It should be noted that consistent with PAT
+principles, the timely measurement could be in-line, online or at-line.
+
+#### 10.3.1 Timely Measurements
+
+“Timely measurements” have long been used in cleaning processes to assist in the design of rinse cycle
+times in automated CIP systems. For example, a common practice in the design of the rinsing process
+using cleaning solutions or products with high conductivity values has been to measure conductiv-
+ity of the final rinse as a function of rinse time. If evaluated over several cleaning process runs in the
+design phase, a minimum time to consistently complete the rinsing process can be effectively deter-
+mined. A safety factor (additional time) may be included as part of this determination. While such a
+study in the design phase would be appropriate for a PAT application, unless it combines the timely
+measurement with a feedback mechanism to control the cleaning process during commercial clean-
+ing processes, it would not be considered to be a PAT. As described in this paragraph, the purpose of
+the timely measurement is not to control the rinsing process but to assist in selecting a fixed rinse time.
+
+#### 10.3.2 PAT for Cleaning Process Control
+
+The more relevant use of PAT for cleaning processes is the use of a timely measurement to define the
+completion of a cleaning process. In this case, the achievement of a certain analytical measurement is
+a controlling mechanism for completion of that process. In the situation referred to previously about
+measuring conductivity online, if it is possible to determine through experimentation and modeling that
+the achievement of a certain conductivity correlates in a statistically significant and operationally mean-
+ingful manner with the end of the rinsing process, conductivity could be employed in a PAT approach.
+That is, the rinse time is not fixed but could be variable depending on the time needed to achieve that
+predetermined conductivity value. In addition, consistent with PAT principles, it would be expected that
+the achievement of that conductivity value would be within a defined time window. The U.S. FDA PAT
+guidance (32) states “Within the PAT framework, a process end point is not a fixed time; rather it is the
+achievement of the desired material attributes. This, however, does not mean that process time is not
+considered. A range of acceptable process times (process window) is likely to be achieved during the man-
+ufacturing phase and should be evaluated, and considerations for addressing significant deviations from
+acceptable process times should be developed.” In both cases, a final conductivity is recorded and a final
+rinse time is recorded. However, in the traditional approach, time is the step-controlling parameter and
+conductivity is the monitoring parameter. In a PAT approach, conductivity could be the step-controlling
+parameter and time would be the monitoring parameter. Lack of achieving the desired conductivity
+within the time window should result in an investigation under a CAPA program.
+Another example of a PAT application for cleaning is in the use of organic solvent cleaning in small-
+molecule API synthesis. In this situation, the active ingredient in the solvent may be measured using
+online UV spectroscopy. The achievement of a low absorbance value, corresponding to the limit of
+the active in the rinse or solvent reflux sample, may be used to determine the process completion.
+Sometimes there is an objection to the use of PAT in this way because it seems to violate the cleaning
+validation principle of not cleaning until clean (or testing until the equipment is clean). However, one
+of the features of PAT is that traditional rules of what is done for validation may not apply. As noted in
+the U.S. FDA’s 2011 Process Validation guidance, “In the case of a strategy using PAT, the approach
+to process qualification will differ from that used in other process designs” (10).
+
+#### 10.3.3 Additional Considerations for Online Measurements
+
+It should be clarified that online methods by themselves do not necessarily constitute PAT. As dis-
+cussed previously, online measurements (such as UV spectroscopy or conductivity) of a final rinse can
+be a routine monitoring tool in a cleaning process step without controlling a process step. Such online
+measurements, even though they don’t control process completion, may be used as a means of clean-
+ing verification after each cleaning event.
+
+### 10.4 Clean Hold Considerations
+
+Following cleaning, equipment that is to be reused should be stored in a manner to protect it from
+contamination during storage. Clean hold time is the time from the end of cleaning until subsequent
+use of the equipment, which may be product manufacture or may be a steam-in-place (SIP) cycle.
+“Clean hold time” is different from “dirty hold time” in that dirty hold time should be evaluated in
+the basic cleaning validation protocol as a worst-case condition or challenge. Clean hold time may be
+included as a second part of the basic cleaning validation protocol or may be considered as a separate
+protocol (apart from the basic cleaning validation protocol). The cleaning process validation study
+and the clean hold time study are related in that the data for bioburden at the end of the cleaning
+process also serve as the “time zero” bioburden data for the clean hold study.
+The major concern with the clean hold time is the possibility of recontamination from external sourc-
+es and the possibility of microbial proliferation because the equipment is wet with water during the
+clean hold period. The major regulatory concern is the control of microbial proliferation during the
+storage of equipment. If the microorganisms that proliferate are Gram-negative bacteria then issues
+with endotoxin may also arise. External sources of recontamination can be prevented by closing the
+dry equipment or by wrapping the dry equipment in plastic (or storing in plastic bags). Selection
+of an area for storage (including temperature and humidity) is also important for preventing exter-
+nal recontamination. Water in the equipment can come from lack of drying at the end of cleaning,
+condensation of water onto equipment surfaces from humid air because of a temperature drop, and
+external sources (such as splashing water onto cleaned equipment because the equipment is stored
+next to a wash sink).
+Criteria used to determine acceptability after storage under defined conditions may include lack of
+microbial proliferation, endotoxin level and visual examination. A major regulatory concern is the
+control of microbial proliferation during the storage of equipment. While based on a risk assessment
+it may be possible to justify not measuring bioburden for a clean hold time before a sterilization pro-
+cess, it may be prudent to measure bioburden after the clean hold time to ensure that the subsequent
+sterilization is not excessively challenged. This is also important from the standpoint of the control
+of pyrogens from Gram-negative bacteria, which may not be removed or inactivated by sterilization
+processes. An additional issue is to insure that plastic wrap or bags are intact and not compromised
+during the clean hold storage. Storage instructions should be specified in a control document, such as
+the cleaning procedure or approved storage procedure.
+The best procedures are to store cleaned equipment in a dry state or in a solution that inhibits the
+microbial proliferation. If equipment is to be stored in a dry state, manufacturing controls should be
+in place to ensure that equipment is sufficiently drained and dried upon completion of the cleaning
+process, as well as to minimize the amount of condensed water accumulation in the equipment after
+cleaning due to equipment cooling. In addition, it is preferred that equipment be stored in a manner
+to prevent external recontamination. If stored in a dry state and if protected from external contami-
+nation (e.g., by sealing the equipment or by covering any openings with appropriate “GMP” covers),
+formal studies to demonstrate lack of microbial proliferation may not be necessary. Based on sound
+scientific principles, microorganisms will not proliferate on clean, dry surfaces. If stored in an inhibit-
+ing solution, the solution should be known to inhibit microbial growth (such as dilute caustic) or data
+should be developed to demonstrate inhibition. Recirculation of the storage solutions may also assist
+in microbial growth inhibition. Procedures should be in place to adequately remove that inhibiting
+solution from equipment prior to use.
+If the equipment is stored with a possibility of water in all or parts of the equipment, there are two com-
+mon strategies to control microbial proliferation during the storage of equipment. One strategy is to
+establish an acceptable time between the end of cleaning and the beginning of the next use (which may
+be sterilization, sanitization, or a manufacturing process step) by performing a clean hold validation. After
+a predetermined storage time, sampling by a suitable method is performed and the post-hold data is com-
+pared to the data at the beginning of storage. If rinse sampling is used, it should be ambient temperature
+water so that what is measured is the bioburden remaining on surfaces (the use of a hot water rinse may
+reduce the bioburden in the rinse solution). Bioburden (and possibly endotoxin) levels in the equipment
+are measured to ensure that levels would not challenge the sterilization or sanitization procedures or
+exceed in-process manufacturing specifications. Since purified water or WFI is not an ideal medium for
+bacterial growth, another approach is to require the use of the cleaned equipment within a short time
+period, such as one shift or 24 hours, such that microbial proliferation is not likely to occur.
+If clean hold validation is not performed, or if the validated clean hold time is exceeded, a validated
+water (usually hot purified water or WFI) flush may be used before sterilization, sanitization, and/
+or use of the equipment to reduce microbial proliferation that might have occurred during storage
+to an acceptable level before further manufacturing or processing on the equipment. After the water
+flush, sampling (by rinse, swab or plating) is performed. Bioburden (and optionally endotoxin) levels
+in the equipment are measured to ensure that levels would not challenge the sterilization or sanitiza-
+tion procedures or exceed in-process manufacturing specifications. Another approach is to perform
+additional bioburden sampling to document that microbial proliferation has not occurred.
+For clean hold time studies using rinse water fed from process lines, a few common approaches for
+establishing the acceptable amount of rinse water to use are based on the minimum working vol-
+ume of the system or the minimum CIP rinse based on the design. Bioburden values in rinse sample
+should be compared to the measured bioburden values based on the equivalent rinse sampling at the
+beginning of storage. It is preferable to collect the entire volume of rinse solution and agitate it for
+a specified period of time to ensure homogeneity before collecting the sub-sample for testing. This
+collection of the entire rinse sample may be done in the process vessel itself or in an external vessel.
+Validation of clean hold studies on a given piece of equipment is applicable to all products using that
+equipment and to all cleaning processes for that equipment, provided the final state of the cleaned
+equipment and the storage conditions are consistent. If a validated clean hold time is exceeded, an
+assessment should be made as to the need for corrective action. Appropriate corrective actions before
+use or further processing may include cleaning the equipment again using a validated cleaning pro-
+cess or using a validated hot water rinse (as described above) to bring bioburden to an acceptable level.
+If any changes to the equipment, manufacturing processes and/or cleaning procedures are made, the
+impact of these changes on the clean hold studies should be evaluated.
+If cleaned equipment is to be stored for an extended period of time in an area that is not controlled, it
+is even more important that the equipment be stored in a dry state because of possibilities of signifi-
+cant bacterial or mold proliferation. In any case, there should be a procedure in place to deal with the
+return of such equipment to active use. This may be an individual determination on a case-by-case
+basis, it may be treating the equipment as if it exceeded the dirty hold time, or it may be treating the
+equipment as if it exceeded the clean hold time. A risk assessment for the specific facility will help
+determine which option is utilized.
+
+### 10.5 New and Used Equipment
+
+Introducing additional equipment into a firm’s established cleaning validation program presents sev-
+eral issues which will require careful consideration. Factors such as equipment design, materials of
+construction, modes of operation and product-contact surface area are likely to influence decisions
+on how the incoming equipment will fit and on what steps should be taken to integrate the equip-
+ment into the cleaning program. Additionally, whether the equipment is of new construction or was
+obtained as a used piece of equipment should be considered when developing steps to utilize the
+equipment. These considerations for new and used equipment may also be applicable to equipment
+that has been repaired or refurbished.
+
+#### 10.5.1 New Equipment
+
+When adding new equipment to a cleaning program, some points to consider are as follows.
+
+##### 10.5.1.1 Cleaning Procedure Development
+
+If the new equipment is sufficiently similar to existing equipment, design/development for the new
+equipment may leverage knowledge from that existing equipment. If the new equipment is not simi-
+lar to existing equipment, additional cleaning development work may be required. The design charac-
+teristics and operational parameters of the new equipment may present hard-to-clean areas or operat-
+ing ranges not previously encountered in existing equipment.
+
+##### 10.5.1.2 Post-Installation Cleaning
+
+Following the installation of the new equipment, cleaning is typically required in order to remove any
+grease, dust or other debris. Manufactured product residues are not usually a concern at this point.
+The effectiveness of this cleaning may be shown using a visual inspection, water-break evaluation, a
+white-glove (or black-glove) test, and/or various chemical tests (such as TOC and conductivity). This
+cleaning is not typically validated, but is verified (see Section 4.4 on “Cleaning Verification”).
+
+##### 10.5.1.3 Grouping Impact
+
+If a firm employs a grouping approach regarding equipment, the addition of new equipment into the
+production facility may have an impact on established equipment groups. See Section 4.3 “Group-
+ing/Family Approach” for more information.
+
+##### 10.5.1.4 Limit Calculation Impact
+
+The addition of new equipment into an established train, line or group may have an impact on accep-
+tance limits based on the increase or decrease of product-contact surface area. Calculations should be
+reviewed for any impact and any changes implemented through a change control program.
+
+#### 10.5.2 Used Equipment
+
+When adding used equipment to a cleaning validation program, the points noted in the previous sec-
+tion about new equipment apply. An additional point to consider for used equipment is equipment his-
+tory. It is desirable to have as much information as possible about the compounds that were previously
+manufactured in the equipment. Some information of interest would be the type of compound (e.g.,
+pharmaceutical or pesticide) and the hazards and/or toxicity of the compounds. That information may
+be used to determine an acceptable cleaning process for the used equipment, and to set acceptance
+limits for those compounds for a cleaning verification evaluation following the cleaning process.
+If little to no information about the previous compounds is available, it may be possible to identify
+potential manufactured products by FTIR analysis of swabbed surfaces. Additional surface modifica-
+tion steps (e.g., descaling, pickling, passivation, reglassing, repolishing) may be taken to assure the
+cleanliness of the equipment. An evaluation of cleanliness may also entail TOC analysis (as a general
+measurement of equipment cleanliness) and/or FTIR analysis of sampled surfaces (to confirm re-
+moval of any potentially objectionable organic residues identified in the precleaning FTIR analysis).
+The justification for a firm’s decision should be captured in a documented risk-consideration. In some
+cases, the additional cost of the steps taken for used equipment may negate any cost benefit; there-
+fore, this consideration should be made well in advance of the purchase.
+10.6	 Measurement Systems Analysis (MSA)
+The identification and measurement of variation in the process are needed to determine if the system is
+performing as desired and if not, to provide insights into what must be better controlled in order to meet
+specifications. The purpose of measurement systems analysis is to measure, understand and control the
+variation caused by measurement systems. By separating out this source of variation, the impact of varia-
+tion in the parameters or aspects being measured can be understood in relation to the cleaning method.
+Before beginning a MSA it is extremely important:
+• To clearly define the parameters or aspects to be controlled
+• To identify tests capable of achieving the measurements needed
+• To understand measurement requirements (bias, gage Repeatability and Reproducibility (R&R), accuracy,
+stability, linearity, etc.)
+It can be very wasteful and stressful to achieve an unnecessarily low level of measurement sensitivity.
+For example, if lower limits of detection are quite good compared to the threshold level specification,
+then statistically significant differences between two tests, provided both are well below the threshold
+for acceptance, often have no operational significance. Be careful not to confuse the process of MSA
+for the overall goal: a safe and robust cleaning process that consistently meets its target values.
+
+#### 10.6.1 MSA Components
+
+The measurement system variation for continuous data can be broken down into the sum of two
+components: R&R. Such studies examine the precision of a measurement system but not the accuracy.
+Repeatability is an estimate of short term variation of the error that occurs when successive measure-
+ments are made under the same conditions.
+Reproducibility is an estimate of the variation in the average of measurements made between opera-
+tors using the same equipment or between laboratories performing the same assays and it captures
+the precision of the different groups (labs or operators).
+
+#### 10.6.2 Attribute R&R
+
+Attribute R&R are used for discrete data often with binary outcomes and distributions (e.g., pass/
+fail, good/bad, yes/no). In these studies the focus is on analysis of the ability of the evaluator to de-
+tect nonconformance. This is called effectiveness. The effectiveness of different evaluators is compared
+when assessing reproducibility and how biased the evaluator is towards acceptance or rejection. The
+probability of false negatives/positives is also calculated, which results in the ability to measure bias
+towards one outcome or the other.
+
+#### 10.6.3 Minimizing Variations
+
+There are guidelines for acceptable levels of variation for continuous data as well as attribute levels
+(effectiveness, bias (False Acceptance/Rejection)) (33). However the main goal is, as always, to achieve
+an acceptable level of control for the system in question based upon a previously agreed upon set of
+criteria that make sense from a business and patient safety perspective. Ideally, the bulk of the varia-
+tion that one measures should come from the items being tested, not the test methods themselves.
+Many actions can be taken to improve the precision of measurements.
+• Regular maintenance and calibration of equipment
+• Maintaining and updating SOPs
+• Meaningful operator training
+• Mapping or charting the process to identify sources of variation (noise)
+• Alternative measurement systems for the aspect in focus
+• analytical method with greater resolution (discrimination)
+• development of better standards for comparison
+• ensure random sampling/test performance when collecting data
+• change from manual to automated system
+
+#### 10.6.4 MSA and Cleaning Validation Strategy
+
+In cleaning validation carryover calculations, safety factors are always included in order to cover un-
+certainties due to cleaning as measured by visual inspection, assumptions about surface area, or the
+system in general. Sometimes one is faced with the dilemma of needing to have measurable limits and
+thus being unable to apply the safety factor best practice would indicate. Within this framework of
+uncertainty, one must create a control strategy whose capabilities are sufficient to ensure patient safety.
+MSA is a statistical tool that aids both the analytical methods of detection for carryover as well as the
+process parameters monitored in the control strategy for the cleaning process. Once the MSA for the
+analytic is under control, one can use the same MSA techniques to measure the variation within the
+control strategy. For example, one can answer the question about whether the pressure fluctuations
+measured at the spray ball are responsible for or correlated to the trends in TOC from rinse tests or is
+the variation simply due to the system used for pressure measurements? One can thus systematically
+address critical process parameters for better control. Should these investigations prove fruitless, then
+one must re-examine the assumptions in the risk assessments and control strategy that lead to the
+prioritization of these process parameters.
+
+### 10.7 Cleaning for API Manufacture
+
+Equipment for multiproduct intermediate and API manufacturing can be exposed to a large variety
+of substances and agents (e.g., solvents, reagents, catalysts, cell cultures and processing aids). Detailed
+written procedures should be established to enable effective and reproducible cleaning of these residues
+and subsequent release of the equipment for next use. Acceptance criteria for residues and the choice
+of cleaning procedures and cleaning agents should be justified on the basis of being practical, achiev-
+able and scientifically sound. For equipment producing later stage intermediates and final APIs, cleaning
+procedures will therefore need to be developed and validated to remove manufacturing residues that
+may include raw materials, un-isolated intermediates, by-products, degradants and the product itself. It
+should be noted that equipment used solely for some raw materials that are Generally Recognized as
+Safe (GRAS) and for raw materials or intermediates, visual inspection alone may be appropriate if all
+parts of the equipment are visually inspectable. For API manufacturing, lack of adequate cleaning may
+impact not only potential cross contamination of the next product, it may also impact the processing of
+the next product (e.g., if residual materials interfere with subsequent process reactions).
+The need for limits for residual organic solvents should be evaluated and can utilize a risk assessment.
+For example, some residual organic solvents evaporate upon drying of the equipment. If there are
+measures in place (e.g., equipment drying or flush with next process solvent) that may mitigate the
+risk for residues of residual solvents then analytical limits may not be necessary. If necessary, limits
+for residual organic solvents may be derived from ICH Q3 guidance (19). Limits for other residues
+expected to be present after cleaning must also be established. For some residues, such as earlier in-
+termediates, dose, toxicity, or acceptable daily intake information may not be established or available.
+For other residues, such as proteins or unstable residues, degradation may occur to produce multiple
+other residues, some of which may not be characterized. For these cases, other approaches to the
+establishment of limits may be necessary. Industry benchmarking data may be used to determine if
+there are common limits applied for these cases. For any limits approach used, the rationales and risk
+assessments used to establish that approach should be documented and approved.
+Facilities and manufacturing systems for intermediates and APIs should be designed to facilitate cleaning
+as appropriate to the type and stage of manufacture. Equipment used for API manufacturing is often large,
+closed and complex. It often includes a significant amount of process piping and large-scale vessels, dryers,
+condensers and/or chromatography columns. For this reason, visual inspection of much of the equipment
+may not be possible due to inaccessibility. Equipment design for cleanability is a significant factor in the
+ease and reproducibility of cleaning for these types of large closed systems. Design factors of particular
+importance can include equipment and pipe sloping for drainage, elimination or minimization of deadlegs,
+adequate pump size for turbulent flow of cleaning solutions, and the use of spray coverage devices.
+Quality risk-assessments should be used to determine the need for microbiological specifications (if
+any) after cleaning, if any. The harsh chemical environment (e.g., pH extremes, use of organic sol-
+vents, high temperature processes) that is often associated with small-molecule intermediate and API
+manufacture may eliminate the risk to product quality from microbiological proliferation. Where
+microbiological specifications have been established for the cleaning, facilities should be designed to
+limit exposure to objectionable microbiological contaminants. Equipment cleaning and/or sanitation
+studies should address microbiological and endotoxin contamination for those processes where there
+is a need to reduce total microbiological count or endotoxins in the API or other processes where
+such contamination could be of concern (e.g., aqueous-based processing of non-sterile APIs used to
+manufacture sterile products).
+Cleaning validation at product changeover should be directed to situations or process steps where
+contamination or carryover of materials poses the greatest risk to API quality (34). Cleaning valida-
+tion is typically performed on equipment used to produce later stage intermediates and APIs. See
+ICH Q7 Table 1 for guidance on where cleaning validation may be expected (34). For equipment used
+in early intermediate production, it may be unnecessary to validate equipment cleaning procedures.
+In these cases, cleaning verification for multipurpose equipment is still required. Validated analytical
+methods used to verify the equipment cleaning should be used. If product/processing residues are
+demonstrated to be removed by subsequent purification steps, this may be considered in a document-
+ed risk assessment to determine the level of cleaning and cleaning validation necessary.
+Cleaning procedures should be monitored at appropriate intervals after validation to ensure that they
+remain effective when used during routine changeovers. Depending on equipment design and com-
+plexity, it is typical for API equipment cleanliness to be routinely monitored by analytical testing
+and/or visual examination, where feasible, after each cleaning after cleaning validation is completed.
+This is often associated with the higher risk of some API cleaning circumstances (e.g., large closed
+equipment that cannot be easily visually inspected and the fact that contamination of one batch of
+API can often implicate many batches of drug product). This routine cleaning monitoring after each
+campaign for multipurpose equipment is often accomplished via rinse sampling and testing for large
+closed equipment.
+For more information on biotechnology API manufacture, see PDA Technical Report No. 49 (2).
+
+### 10.8 Topical Drug Products
+
+The major issue with topical drug products relates to how limits are set. The approach to setting
+limits depends on the systemic availability of the drug active ingredient when applied to the skin.
+Some topical products, such as drug patches, are actually transdermal delivery mechanisms to allow
+systemic availability of the drug active ingredients. While for other topical drug products, the effect of
+the drug active ingredient is limited to the skin itself and there is generally no, or very low, systemic
+availability of the drug active ingredient.
+
+#### 10.8.1 Topical Drug Products with Systemic Availability
+
+Limits for topical drug products where the drug active ingredient is topically designed to be available
+systemically are established based on a typical carryover calculation based on a safe level in the next
+product. That safe level may be established on either a fraction of the dose or on a toxicological evalu-
+ation (see Section 5.0). A significant difference may be the portion of the active in the topical drug
+product that is systemically available from the cleaned topical product versus the portion of the active
+ingredient that is systemically available when that active ingredient is present as a residue in the next
+topical product. In the absence of specific information, it may be assumed as a worst case that the
+residue of the cleaned active is 100% systemically available when in the next product. As with other
+carryover calculation based on the therapeutic dose, the minimum dose of cleaned active ingredient
+and the maximum dose of the next product should be adjusted based on factors such as the number
+of applications per day (or per other time period) and the amount of product applied per application.
+Another factor that may be considered in setting limits in this situation is dermal irritation of the ac-
+tive ingredient. In most cases, this will not be a limiting factor, but it may be considered, particularly
+if the active ingredient, which is the residue, is not systemically available when present in the next
+topical drug product.
+
+#### 10.8.2 Topical Drug Products with No or Limited Systemic Availability
+
+For some topical drug products, the therapeutic effect is limited to the skin to which the drug product
+is applied. An example of such a product is sunscreen (a drug product in some countries, such as the
+USA). If the therapeutic effect of the active ingredient is so limited then a modification of a traditional
+carryover calculation may be utilized. The reason is that a “dose” for such topical drug products is
+generally not well defined, as the “use instructions” may typically read “Apply to the affected area.”
+
+##### 10.8.2.1 Adjusted Calculation
+
+A traditional carryover calculation bases the limit on a minimum dose of active ingredient of the prod-
+uct that is cleaned and a maximum dose of the next drug product. However, in this situation (where
+the effect of the active ingredient is limited to the skin it is applied to) it is not necessary to consider
+the minimum dose of the cleaned active ingredient as application to a very small area (such as 100 cm2)
+and the maximum dose of the next product as application to the entire body (such as 1.6 m2). Those
+calculations can be used but they result in extremely low limits. However, the relevant safety concern is
+what happens if 0.001 of the amount of active applied to a given area (such as 100 cm2) appears in the
+next drug product which is also applied to the same surface area (in this example, 100 cm2). Because
+the therapeutic effect is limited to the skin surface the drug product is applied to, limits can be based on
+0.001 of the concentration of the active ingredient from the cleaned product in the subsequently man-
+ufacture drug product (suitably modified by application conditions which will be discussed shortly). In
+other words, if the drug product which is cleaned contains 0.5% drug active ingredient, then the safe
+level in the next drug product is 0.001 of that concentration, or 0.0005% (5 ppm).
+
+##### 10.8.2.2 Modification Based on Frequency of Application
+
+Carryover calculations should be modified first based on the frequency of application. For example,
+if the cleaned product is applied a minimum of once per day and the second product is applied a
+maximum of three times a day, then the limit should be lower by a factor of 3 (with a resulting limit
+of 0.00016% in the example given). If the first product is applied a minimum of three times a day and
+the second product applied a maximum of once per day, then the limit may be higher by a factor of 3
+(resulting in a limit of 0.0015% in the example given).
+
+##### 10.8.2.3 Modification Based on Amount Applied per Surface Area
+
+A second modifying factor is based on the amount applied per surface area. This is sometimes difficult to
+assess. However, if it is clear that one product is applied at a significantly higher amount per surface area
+then that factor should also be considered. For example, if the cleaned product is typically applied at a rate
+of 2 mg/cm2 and the second product typically applied at a rate of 4 mg/cm2, the concentration limit in
+the basic example given would be lower by a factor of 2 (resulting in a concentration limit of 0.00025%).
+One approach is to establish a therapeutic dose of topical preparation in terms of area of application
+covered by one fingertip unit (FTU), which is defined as the amount of topical preparationointment
+dosadelivered from a tube with a 5-mm diameter nozzle, applied from the distal skin-crease to the
+tip of index finger an adult forefinger (35). One FTU measures approximately 0.5g. As the average
+human adult area covered by 1 FTU is 286 cm2, approximately 1.75 mg of the topical formulation is
+applied per each square centimeter of the skin surface area.
+
+##### 10.8.2.4 Additional Considerations
+
+If a firm has a policy or procedure for a default limit (such as 10 ppm of the cleaning active in the next
+drug product), then the calculated limit (considering the modification discussed in Sections 10.8.2.2
+and 10.8.2.3) should be compared to that default limit and the lower of the two values utilized for
+subsequent calculations.
+In addition, if there is evidence that the active ingredient in the cleaned product would be systemically
+available if it were present in the vehicle (excipients) of the next product, then the calculation in 10.8.1
+may not be applicable. In such a case, either the calculation in 10.8.1 should be considered or the order
+of manufacture may be restricted.
+
+#### 10.8.3 Additional Safety Considerations
+
+If active ingredients used in topical preparations produce adverse skin irritation effects, hypersensitiv-
+ity, and/or possible photosensitivity reactions, those considerations should be evaluated to determine
+whether more stringent residue limits should be established.
+
+#### 10.8.4 Additional Cleaning Considerations
+
+Topical drug products may present cleaning challenges because of the nature of the excipients used
+and the high viscosities of the drug product. In place of a water prerinse, it may be necessary to physi-
+cally remove gross amounts of product left on equipment surfaces using a plastic scraper or a nonwo-
+ven wipe. Particularly if the excipients are designed to make the topical drug product “waterproof”,
+more stringent cleaning process conditions, such as higher temperatures or higher concentrations of
+cleaning agents, may be required for effective cleaning.
+
+### 10.9 Animal Drug Products
+
+Cleaning validation for animal drug products is basically the same as for human drug products. The
+main complication is in setting limits because one product (the cleaned product) may be for one animal
+species and the next product manufactured in the cleaned equipment may be for a different species. For
+example, the cleaned product may be dosed only to horses and the next product dosed only to dogs. In
+this situation, a toxicological assessment to determine a safe limit should be considered for the effect of
+the active ingredient of the cleaned product (dosed only to horses) as if it were used for dogs. All rel-
+evant toxicology and safety information should be considered; for example, drugs that may be residues
+in products for cows may have restrictions not based on toxicity to the cows but because of concerns
+about safety of the cow’s milk. These concerns may also apply to facilities that make both human and
+animal drugs. Limits based on toxicological evaluations are discussed in Section 5.0.
+
+### 10.10 Packaging Components and Packaging Equipment
+
+#### 10.10.1 Primary Packaging Components
+
+Product contact surface of primary packaging closures and containers should be free of materials that
+could adulterate the drug product to the extent that fitness for use would be compromised. An evalu-
+ation of suitability may include considerations of manufacturing process residues, cleaning agents/
+solvents, particles, bioburden and/or endotoxin.
+
+##### 10.10.1.1 Oral Dosage Forms Primary Packaging Components
+
+Cleaning of containers and stoppers used for oral dosage forms is based on a risk analysis. The risk
+should be assessed and appropriate cleaning levels defined that will control the risks to acceptable
+levels. Cleaning of containers for solid oral dosage forms, related to risk analysis, could be limited
+to removing of solid material by blowing a stream of compressed filtered air into the bottles while
+inverted. From a microbial perspective, most solid oral drug products will not allow microorganisms
+to proliferate, due to the extremely low water activities of these types of products.
+Some consideration could be provided for the cleaning of containers for liquid oral dosage forms even
+if the liquid does inhibit growth of microorganisms, due to presence of components, like preserva-
+tives or sugar at high concentrations, or a final terminal heat treatment.
+
+##### 10.10.1.2 Parenteral Dosage Forms Primary Packaging Components
+
+Cleaning of containers and stoppers used for parenteral dosage forms is based on a risk analysis. The
+risk should be assessed and the cleaning levels validated at the acceptance criteria. Since the parenteral
+container/closure components are in contact with the drug product, similar cleaning qualification con-
+siderations as for direct product contact surfaces for manufacturing equipment should be addressed.
+For cleaning processes used as a depyrogenation step for container/closure components, the qualifi-
+cation should demonstrate successful endotoxin removal (36). The efficiency of the cleaning process
+to depyrogenate can be assessed by spiking containers or closures with known quantities of endo-
+toxin, followed by measuring endotoxin content after cleaning. The studies are typically performed by
+applying a reconstituted endotoxin solution onto the test surfaces and allowing the solution to air dry.
+Positive controls (test surfaces with applied endotoxin but without the endotoxin reduction process)
+should be used to measure the percentage recovery in the test method. Data should demonstrate that
+the cleaning process reduces the endotoxin content by at least a 3-log reduction in a spiking study.
+Container washer qualification should start by using a spray coverage test to verify all the surfaces are
+efficiently rinsed. The cleaning performance qualification should consider removal of residues com-
+ing from the surface treatment (if applicable) and/or particles (which, as an example, could come
+from burned glass molding lubricant as well as glass particles if breakage occurs before wash).
+For closures (such as stoppers), the cleaning performance qualification should consider removal of
+residues coming from the closure manufacturing process, like the lubricant and cleaning agent used,
+as well as particles.
+
+#### 10.10.2 Packaging Equipment
+
+Packaging equipment may be categorized into primary and secondary equipment.
+
+##### 10.10.2.1 Primary Packaging Equipment
+
+Primary packaging equipment may exert direct impact on the quality of the finished product. Examples
+of such equipment may include oral, topical and aseptic liquid fillers, tablet fillers, oral powder fillers,
+tube fillers, blister machines and other filling machinery that has parts with direct finished dosage product
+contact. The cleaning processes and validation practices for primary equipment should not differ from
+the same practices utilized for direct impact manufacturing equipment as they present similar risk of cross
+contamination. Auxiliary equipment such as hoppers, tubing, piping, conveyors, cappers, cottoners and
+other product contact surfaces should be cleaned and validated the same as associated filling equipment.
+The design of packaging equipment should consider “gentle handling” of finished product to minimize
+possible attrition and breakage in the case of solid dosage products and possible adsorption of liquids. The
+cleaning of dedicated primary packaging lines may not require validation. Consideration should be given
+to design of the lines and cleaning procedures to minimize validation efforts. While there is a possibility
+of preferential transfer of residues from the primary packaging equipment to an initial portion of the
+packaged product, this risk may be reduced by discarding an initial portion of processed product.
+
+##### 10.10.2.2 Secondary Packaging Equipment
+
+Secondary packaging equipment, such as induction sealers, retorquers, labelers, palletizers and other
+similar equipment that does not have direct impact on the quality of the product, should be designed
+to allow only minimal inevitable residuals generated by the packaging process. However, appropriate
+attention should be given to document cleaning of this secondary equipment.
+Once the drug substance is sealed in its primary packaging, the risk of cross-contamination is gener-
+ally relatively low. Cleaning processes should be used on the packaging lines after primary packaging,
+but do not require cleaning validation. The main concern with cross-contamination is a compromised
+primary package (such as a broken vial or a crushed bottle) that might release product that transfers
+to the outside of the primary packaging of a different product. Depending on the hazard properties
+of the product, its presence on the outside of the primary packaging of a different drug product
+may be an unacceptable risk. Cleaning processes for such situations should be considered. However,
+because contamination of the next product may only involve contamination of the outside of the
+primary package, the requirements for cleaning validation should be assessed based on risk to patients
+or to people handling the vials from that external contamination on the primary package. In those
+cases where the risk is significant (such as a genotoxic API), a dedicated line or a cleaning step known
+to remove, deactivate or degrade that active drug should be considered. Degradation processes may
+appropriately be confirmed in a laboratory study demonstrating degradation or inactivation of the
+highly hazardous API.
+
+### 10.11 Tubing and Hoses
+
+Tubing and hoses have diverse transfer applications in pharmaceutical manufacturing operations.
+Types may vary from flexible plastics to fixed stainless steel piping. Conditions for use may be single-
+or multiple-use. Biocompatibility and inertness of the tubing with the contact material is a primary
+consideration prior to use. The regulatory standards on transfer tubing and hoses used in manufactur-
+ing processes are covered under compliance with U.S. FDA standards 21 CFR Part 177.2600 (37). This
+rule is applied in combination with ISO 10993-1 (38) standard for medical devices and USP class I-VI
+plastics tests (39).
+The procedure for cleaning should be effective for exposing all product contact surfaces and the inter-
+nal bore of tubing to the cleaning detergent and rinsing solution or water. A key for cleaning of tubing
+and hoses is to assure turbulent flow throughout as well as to assure proper sloping for drainage for
+fixed tubing. Visual inspection of the internal bore of the tubing/hose to evaluate the efficiency for
+removal of residue may be performed with the aid of video devices, such as a borescope. It is recom-
+mended to drain tubing and hoses of any water/resident solution when not in use. Tubing/hoses
+cleaned in place attached to the main equipment receive the same cleaning regimen as the equipment.
+Although priority is given to the attached equipment when selecting the cleaning detergent and pro-
+cedure, evaluation of the impact on the cleaning and storage (hold time) conditions of tubing/hoses
+should be considered. Shorter tubing length may benefit cleaning ability, drainage and storage man-
+agement. CIP cleaning equipment or automated hose washers often may be utilized and qualified to
+consistently perform cleaning of tubing or hoses.
+Design of the tubing and hoses should take into consideration welded or permanently embedded
+fittings for ease of cleaning. If removable end fittings are used, they should be removed during each
+cleaning cycle. If not dried before storage, tubing/hose should be stored on the slope (to allow drain-
+age) and should be covered using hose-end covers of spun-bonded polyolefin or similar materials to
+reduce the risk of microbial and/or particulate contamination during storage.
+Based on the material of composition, the indicators of damage (such as pressure testing) should be
+predefined for the tubing under the conditions of use. Qualification for use of product contact tub-
+ing and hoses should include an assessment of the useful lifetime for the manufacturing operation.
+The assessment should integrate a visual component of inspecting tubing periodically for signs of
+tear, pitting and disintegration, with wear characteristics, such as particulate shedding detected under
+subvisible conditions.
+
+### 10.12 Excipients
+
+The excipients used for a drug product should be considered in the cleaning validation program. One
+issue for excipients is the possible effect on cleaning of a drug product. This effect is generally more
+pronounced for solid dosage products, where the excipient may be a coating or other functional mate-
+rial designed to retard dissolution. This is one reason why some companies prefer to use a laboratory
+cleaning study, as compared to only evaluating the solubility of the active ingredient, to determine the
+difficulty of cleaning of different products in a grouping approach.
+Unless the excipient has some kind of unusual toxicity, limits are generally not set for excipients in
+a cleaning validation protocol. A case where limits may be set for excipients is where the excipient
+is known to have a significant effect on the performance of the next manufactured product, such as
+complexing with the API to reduce bioavailability. However, it should be recognized that in all cases,
+residues of excipients after cleaning should be such that the equipment is visually clean. A surface
+which is not “visually clean” due to a high level of an excipient should be generally considered a clean-
+ing validation failure.
+
+### 10.13 Dedicated Equipment
+
+Equipment for pharmaceutical manufacturing and packaging may be dedicated for processing only
+one product. Some points to consider regarding cleaning validation of dedicated equipment are cov-
+ered below.
+
+#### 10.13.1 Reasons for Dedication
+
+Reasons for dedication of equipment may be quality driven (such as to avoid cross-contamination of
+one active ingredient into another product) or may be based on business considerations (such as for
+production efficiency). Regulatory agencies recommend dedicated equipment and/or facilities in cer-
+tain situations. For example, the PIC/S recommendations state that “Dedicated equipment should be
+used for products which are difficult to remove (e.g., tarry or gummy residues in bulk API manufac-
+turing), for equipment which is difficult to clean (e.g., bags for fluid bed dryers), or for products with
+a high safety risk (e.g., biological or products of high potency which may be difficult to detect below
+an acceptable limit)” (22). That PIC/S document also states that “For certain allergenic ingredients,
+penicillins, cephalosporins or potent steroids and cytotoxics, the limit should be below the limit of de-
+tection by best available analytical methods. In practice this may mean that dedicated plants are used
+for these products.” Additionally, the ANVISA Resolution – RDC No. 17 states that “There should
+be used segregated facilities and dedicated to the production of certain medications such as certain
+biological preparations (e.g., live microorganisms) and the highly sensitizing materials (e.g., penicillin,
+cephalosporin, carbapenem and other beta-lactic derivatives) in order to minimize the risk of serious
+damage to health due to cross contamination”, and further that “The production of certain highly
+active products, such as some antibiotics, certain hormones, cytotoxic substances should be held in
+segregated areas” (40). Finally, there are the U.S. FDA draft recommendations about dedication for
+beta-lactams (41).
+Risk assessments and appropriate controls should be considered in cases where regulatory documents
+may be unclear or overly strict on the requirement for dedication or segregation for manufacturing.
+
+#### 10.13.2 Cleaning Validation Issues
+
+Since cross-contamination of the active ingredient from the previous product to the next product is
+not an issue for dedicated equipment, cleaning validation related to the active itself is generally not
+considered a requirement. The 1993 U.S. FDA cleaning validation guidance states that “When the
+cleaning process is used only between batches of the same product (or different lots of the same in-
+termediate in a bulk process) the firm need only meet a criteria of, “visibly clean” for the equipment.
+Such between batch cleaning processes do not require validation” (20). Since “between batches of
+the same product” may refer to dedicated equipment and/or a campaign between products, it can be
+interpreted that cleaning validation is not required for these scenarios. However, cleaning validation
+should be considered for dedicated equipment if carryover of the cleaning agent or the contribution
+of bioburden or degradation byproducts to the next manufactured batch is a concern. In its Compli-
+ance Guidance Manual 7356_002, U.S. FDA clarified their position by stating that “lack of demonstra-
+tion of effectiveness of cleaning” for dedicated equipment warrants a warning letter (42). It makes
+good sense for manufacturers to conduct risk assessments for all cleaning scenarios to determine the
+need for cleaning validation to comply with product quality (including residues and lot integrity) and
+regulatory expectations. Principles for determining acceptance criteria for cleaning agent, bioburden,
+endotoxin, and degradation products for cleaning validation of dedicated equipment are essentially
+the same as for nondedicated equipment. It is considered to be best practice to document effective-
+ness of a cleaning process for dedicated equipment even if “visually clean” is the only criteria.
+Cleaning validation is required by regulatory authorities worldwide. It is encapsulated in the U.S.
+CGMPs (6,43) and in the EU GMPs (22,44). ICH Q7 also stresses the importance of cleaning valida-
+tion for API manufacture (36). FDA, PIC/S and WHO also require cleaning validation in guidances
+(20,22,45). There are other guidance documents from various countries but most are a variation on
+the U.S. FDA guidance and/or the PIC/S recommendations. It is recommended that the applicable
+regulations and guidances be carefully consulted as part of the design or evaluation of a cleaning
+validation program.
+
+## 11.0 Regulatory and Guidance Documents
+
+1.
+Validation; Parenteral Drug Association: 1998.
+2.
+nology Cleaning Validation;  Parenteral Drug Asso-
+ciation: 2010.
+3.
+Quality Guideline Q8(R2): Pharmaceutical Develop-
+ment; International Conference on Harmonisation:
+2009. www.ich.org.
+4.
+Quality Guideline Q9: Quality Risk Management;
+International Conference on Harmonisation: 2005.
+www.ich.org.
+5.
+Quality Guideline Q10: Pharmaceutical Quality Sys-
+tems; International Conference on Harmonisation:
+2008. www.ich.org
+6.
+U.S. Code of Federal Regulations, Title 21 Part
+211: Current Good Manufacturing Practice for Finished
+Pharmaceuticals. www.ecfr.gpoaccess.gov.
+7.
+Note for Guidance on the Quality of  Water for Pharma-
+ceutical Use;  EMEA: 2002.
+8.
+Rathore, N.; Qi, W.; Chen, C.; Ji, W. Bench-Scale
+Characterization of Cleaning Process Design
+Space for Biopharmaceuticals. BioPharm Internat.
+2009, 22, 32-45.
+9.
+U.S. Food and Drug Administration, Center for
+Drug Evaluation and Research Press Release. U.S.
+FDA Takes First Step in Recognizing the Role of  Emerg-
+ing Technologies in the Area of  Process Validation; 2004
+(March).
+http://www.cleaningvalidation.com/
+Resources/Press%20release%203%20val%20
+runs%20March%202004.pdf .
+10.	 Guidance for Industry: Process Validation: General
+Principles and Practices; U.S. Food and Drug Admin-
+istration: 2011.
+11.	 Guidance for Industry: SUPAC-IR/MR: Immediate
+Release and Modified Release Solid Oral Dosage Forms
+Manufacturing Equipment Addendum, CMC 9; U.S.
+Food and Drug Administration: 1999.
+12.	 Baseline Guide: Risk-Based Manufacture of Pharmaceutical
+Products (Risk-MaPP), First Edition;  ISPE: 2010.
+13.	 Conine, D.L.; Naumann, B.D.; Hecker, L.H. Setting
+Health-Based Residue Limits for Contaminants in
+Pharmaceuticals and Medical Devices. Qual. Assur.
+1992, 1(3), 171-180.
+14.	 Kramer, H.J.; van den Ham, W.A.; Slob, W.; Piet-
+ers, M.N. Conversion Factors Estimating Indicative
+Chronic No-Observed-Adverse-Effect Levels from
+Short-Term Toxicity Data. Reg. Tox.Pharmacol.
+1996,  23, 249-255.
+15.	 Layton, D.B.; et al. Deriving Allowable Daily In-
+takes for Systemic Toxicants Lacking Chronic Tox-
+icity Data. Reg. Tox. Pharmacol. 1987, 7, 96-112.
+16.	 Guidance on the Limits of  Genotoxic Impurities;
+EMEA: 2006.
+17.	 LeBlanc, D.A. PDA Survey Results: Cleaning
+Validation Sampling Practices. PDA Letter. 2008,
+44(10), 11-15.
+18.	 Guidance on aspects of cleaning validation in active
+pharmaceutical ingredient plants; CEFIC: 2000. http://
+apic.cefic.org/pub/pub-cleaning-validation.pdf
+(accessed January 26, 2012).
+19.	 Quality Guideline Q3C(R5): Impurities: Guideline
+for Residual Solvents; International Conference on
+Harmonisation: 2011. www.ich.org.
+20.	 Guide to Inspections of Validation of Cleaning Practices;
+U.S. Food and Drug Administration: 1993. www.
+fda.gov/ICECI/Inspections/InspectionGuides/
+ucm074922.htm (accessed Dec. 20, 2012).
+21.	 Guide-0028: Cleaning Validation Guidelines; Health
+Canada: 2008. www.hc-sc.gc.ca/dhp-mps/compli-
+conform/gmp-bpf/validation/gui-0028_cleaning-
+nettoyage_ltr-doc-eng.php (accessed Dec. 20,
+2012).
+22.	 PI 006-3 PIC/S Guide: Recommendations on
+Validation Master Plan, Installation and Operational
+Qualification, Non-Sterile Process Validation Cleaning
+Validation; Pharmaceutical Inspection Convention
+(Scheme): 2007. www.picscheme.org (accessed
+Dec. 20, 2012).
+23.	 Fourman, G.L.;Mullen, M.V. Determining Cleaning
+Validation Acceptance Limits for Pharmaceutical
+Manufacturing Operations. Pharm. Technol. 1993,
+17, 54-60.
+24.	 Questions and Answers on Current Good Manu-
+facturing Practices, Good Guidance Practices, Lev-
+el 2 Guidance Equipment Question 2; U.S. Food
+and Drug Administration:  2005. http://www.fda.
+gov/Drugs/GuidanceComplianceRegulatoryIn-
+formation/Guidances/ucm124777.htm (accessed
+Dec. 20, 2012).
+25.	 LeBlanc, D.A. PDA Survey on Analytical Methods
+for Cleaning Validation. PDA Letter. 2007, 43(10),16-
+18.
+26.	 LeBlanc, D.A. Cleaning Validation: Practical Compli-
+ance Solutions for Pharmaceutical Manufacturing, Vol.
+I; Parenteral Drug Association/DHi: 2006, 191-
+194. www.pda.org/bookstore.
+27.	 Mehta, N.K. Development of an In Situ Spectroscopic
+Method for Cleaning Validation Using Mid-IR Fiber-
+Optics. Biopharm Internat. 2002, 15, 36-42.
+28.	 Technical Report No. 33: Evaluation, Validation
+and Implementation of  New Microbiological Testing
+Methods; Parenteral Drug Association: 2000. www.
+pda.org/bookstore.
+
+## 12.0 References
+
+29.	 Quality Guideline Q2(R1): Validation of  Analyti-
+cal Procedures: Text and Methodology; International
+Conference on Harmonisation: 2005. www.ich.org
+30.	 General Chapter <1227> Validation of Microbial
+Recovery from Pharmacopeial Articles. USP 34/NF
+29; U. S. Pharmacopeia: 2011. www.usp.org
+31.	 Torbeck, L.D. Statistical Solutions: %RSD: Friend
+or Foe. Pharm. Tech. 2010, 34, 37-38.
+32.	 Guidance for Industry: PAT — A Framework for
+Innovative Pharmaceutical Development, Manufacturing
+and Quality Assurance; U.S. Food and Drug
+Administration: 2004. www.fda.gov/downloads/
+Drugs/.../Guidances/ucm070305.pdf
+(accessed
+Dec. 20, 2012).
+33.	 Measurement Systems Analysis; 4th edition, Automotive
+Industry Action Group: Michigan, 2010.  www.aiag.
+org (accessed Dec. 20, 2012).
+34.	 Quality
+Guideline
+Q7:
+Good Manufacturing
+Practice Guide for Active Pharmaceutical Ingredients;
+International Conference on Harmonisation: 2000.
+www.ich.org.
+35.	 Long C.C.; Finlay, A.Y. The fingertip unit: a new
+practical measure. Clin. Exper. Dermatol. 1991, 16,
+444-446.
+36.	 Guidance for Industry: Sterile Drug Products Produced
+by Aseptic Processing -- Current Good Manufacturing
+Practice; U.S. Food and Drug Administration: 2004.
+http://www.fda.gov/downloads/Drugs/.../
+Guidances/ucm070342.pdf (accessed Dec. 20, 2012).
+37.	 U.S. Code of Federal Regulations, Title 21 Part
+177.2600: Indirect Food Additives: Polymers,
+Articles Intended for Repeated Use; www.ecfr.
+gpoaccess.gov.
+38.	 ISO 10993-1:2009: Biological evaluation of medical
+devices Part 1: Evaluation and testing in the risk
+management process; International Organization
+for Standardization: 2009. www.iso.org.
+39.	 General Chapter <88> Biological Reactivity Tests,
+In Vivo. USP34/NF29 U. S. Pharmacopeia:  2011.
+www.usp.org
+40.	 RDC no. 17: Technical Regulation of  Good Manu-
+facturing Practices of  Drugs; ANVISA: www.rx-360.
+org/LinkClick.aspx?fileticket=yvGoEzQimQc%3
+D&tabid=38. (accessed Nov. 29, 2011).
+41.	 Draft Guidance for Industry: Non-Penicillin Beta-
+Lactam Risk Assessment: A CGMP Framework; U.S.
+Food and Drug Administration: 2011. http://
+www.fda.gov/downloads/Drugs/.../Guidances/
+UCM246958.pdf (accessed Dec. 20, 2011).
+42.	 Compliance Program Guidance Manual for FDA Staff:
+Drug Manufacturing Inspections Program 7356.002;
+U.S. Food and Drug Administration: 2002. http://
+www.fda.gov/AboutFDA/CentersOffices/
+OfficeofMedicalProductsandTobacco/CDER/
+ucm095598.htm
+43.	 U.S. Code of Federal Regulations, Title 21 Part
+210: Current Good Manufacturing Practice in
+Manufacturing, Processing, Packing, or Holding
+of Drug; General. www.ecfr.gpoaccess.gov.
+44.	 Qualification and Validation: Final Version of  Annex
+15 to the EU Guide to Good Manufacturing Practice.
+European Commission Enterprise Directorate:
+Working Party on Control of Medicines and
+Inspections: 2001. http://ec.europa.eu/health/
+files/eudralex/vol-4/pdfs-en/v4an15_en.pdf
+(accessed 21 March 2011).
+45.	 Appendix 3 of Annex 4, Supplementary Guidelines
+on Good Manufacturing Practices: Validation,
+WHO Technical Report Series 937: World Health
+Organization: 2006.
+Note that these readings are in addition to the various footnoted references specific to a given topic.
+1.
+Bioprocessing Equipment (BPE) Standard; American
+Society of Mechanical Engineers: 2009.
+2.
+E2500-07: Standard Guide for Specification, Design, and
+Verification of  Pharmaceutical and Biopharmaceutical
+Manufacturing Systems and Equipment; American
+Society for Testing and Materials: 2007.
+3.
+E2363 - 06a: Standard Terminology Relating to Process
+Analytical Technology in the Pharmaceutical Industry,
+American Society for Testing and Materials: 2006.
+4.
+E2537-08; Standard Guide for Application of
+Continuous Quality Verification to Pharmaceutical and
+Biopharmaceutical Manufacturing, American Society
+for Testing and Materials: 2008.
+5.
+Bismuth, G.; Neumann, S. Cleaning Validation: A
+Practical Approach; Interpharm Press: Colorado,
+1999.
+6.
+EudraLex, EU Guide to Good Manufacturing Practice,
+Volume 4 Annex 15, Qualification and Validation;
+European Commission: 2001.
+7.
+Laban, F. et. al. Validation of Cleaning Processes:
+Report of a SFSTP Commission. S.T.P. Pharma
+Pratiques. 1996, 6, 5-40.
+8.
+LeBlanc, D.A. PDA Survey Sheds Light on Current
+Practices in Setting Residue Limits. PDA Letter.
+2007, 43(5),11-14.
+9.
+LeBlanc, D.A. PDA Survey Results: Cleaning
+Validation Sampling Recovery Practices, PDA Lett.
+2009, 45(7), 9-15.
+10.	 LeBlanc, D.A. Validated Cleaning Technologies for
+Pharmaceutical Manufacturing; Interpharm Press:
+Colorado, 2000.
+11.	 LeBlanc, D.A. Cleaning Validation: Practical Compli-
+ance Solutions for Pharmaceutical Manufacturing, Vol.
+II. PDA/DHI: 2010. www.pda.org/bookstore.
+12.	 Pharmaceutical CGMPs For The 21st Century – A Risk-
+Based Approach: Final Report; U.S. Food and Drug
+Administration, U.S. Government Printing Office:
+13.	 Cleaning and Cleaning Validation: Volume I; Pluta,
+P.L. (ed.); Parenteral Drug Association/DHI: 2009.
+www.pda.org/bookstore.
+14.	 Verghese, G. Selection of Cleaning Agents and Parameters
+for cGMP Processes in Proceedings of the INTERPHEX
+Conference, Philadelphia, PA, March 17-19, 1998.
+
+## 13.0 Suggested Readings
+
+Terms of Usage for PDA Electronic Publications (Technical Reports, Books, etc.)
+An Authorized User of this electronic publication is the purchaser.
+Authorized Users are permitted to do the following:
+• Search and view the content of the PDA Electronic Publication
+• Download the PDA Electronic Publication for the individual use of an Authorized User
+• Print the PDA Electronic Publication for the individual use of an Authorized User
+• Make a reasonable number of photocopies of a printed PDA Electronic Publication for the individual use of an Authorized User
+Authorized Users are not permitted to do the following:
+• Allow anyone other than an Authorized User to use or access the PDA Electronic Publication
+• Display or otherwise make any information from the PDA Electronic Publication available to anyone other than an Autho-
+rized User
+• Post the PDA Electronic Publication or portions of the PDA Electronic Publication on websites, either available on the Internet or
+an Intranet, or in any form of online publications without a license from PDA, Inc.
+• Transmit electronically, via e-mail or any other file transfer protocols, any portion of the PDA Electronic Publication
+• Create a searchable archive of any portion of the PDA Electronic Publication
+• Use robots or intelligent agents to access, search and/or systematically download any portion of the PDA Electronic Publication
+• Sell, re-sell, rent, lease, license, sublicense, assign or otherwise transfer the use of the PDA Electronic Publication or its content
+• Use or copy the PDA Electronic Publication for document delivery, fee-for-service use, or bulk reproduction or distribution of
+materials in any form, or any substantially similar commercial purpose
+• Alter, modify, repackage or adapt any portion of the PDA Electronic Publication
+• Make any edits or derivative works with respect to any portion of the PDA Electronic Publication including any text or graphics
+• Delete or remove in any form or format, including on a printed article or photocopy, any copyright information or notice con-
+tained in the PDA Electronic Publication
+• Combine any portion of the PDA Electronic Publication with any other material
+To License or purchase Reprints
+• Licensing: Site licenses and licenses to distribute PDA Electronic Publication can be obtained for a fee.
+To learn more about licensing options and rates, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900,
+ext. 133. Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway,
+Suite 150, Bethesda, MD 20814.
+• Reprints: Reprints of PDA Electronic Publication can be purchased for a fee.
+To order reprints, please contact:
+Janny Chua, Publications Manager, +1 (301) 656-5900, ext. 133.
+Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150, Bethesda, MD 20814.
+About PDA Technical Reports
+PDA Technical Reports are global consensus documents, prepared by member-driven Task Forces (listed on inside front cover) com-
+prised of content experts, including scientists and engineers working in the pharmaceutical/biopharmaceutical industry, regulatory
+authorities and academia. While in development, PDA Technical Reports are subjected to a global review of PDA members and
+other topic-specific experts, often including regulatory officials. Comments from the global review are then considered by the au-
+thoring Task Force during the preparation of the final working draft. The level of expertise of the Task Force and those participating
+in the global review ensure a broad perspective reflecting best thinking and practices currently available.
+The final working draft is next reviewed by the PDA Advisory Board or Boards that sanctioned the project. PDA’s Advisory Boards
+are: Science Advisory Board, Biotechnology Advisory Board, Regulatory Affairs and Quality Committee, and Audit Guidance Advi-
+sory Board. Following this stage of review, the PDA Board of Directors conducts the final review and determines whether to publish
+or not publish the document as an official PDA Technical Report.
+PDA Officers and Directors
+Officers
+Chair: Anders Vinther, Ph.D., Genentech
+Chair-Elect: Harold Baseman, ValSource
+Treasurer: Rebecca Devine, Ph.D., Regulatory Consultant
+Secretary: Steven Mendivil, Amgen
+Imm. Past Chair: Maik Jornitz, G-Con
+President: Richard Johnson
+Directors
+Ursula Busse, Ph.D., Novartis
+Jette Christensen, Novo Nordisk
+John Finkbohner, Ph.D., MedImmune
+Gabriele Gori, Novartis
+Zena Kaufman, Abbott
+Michael Sadowski, Baxter Healthcare
+Junko Sasaki, Dainippon Sumitomo Pharmaceuticals
+Sue Schniepp, Allergy Laboratories
+Lisa Skeens, Ph.D., Baxter Healthcare
+Christopher Smalley, Ph.D., Merck
+Martin VanTrieste, Amgen
+Glenn Wright, Eli Lilly
+PDA Publication Production and Editing
+Richard V. Levy, Ph.D., Senior VP, Scientific & Regulatory Affairs
+Jahanvi (Janie) Miller, Senior Project Manager
+Walter Morris, Director of  Publishing
+Katja Yount, Publication Designer
+Sanctioning Advisory Board: Science Advisory Board
+John Shabushnig, Pfizer (Chair)
+Hal Baseman, Valsource, LLC (Co-Chair)
+Raphael Bar, BR Consulting
+Joyce Bloomfield, Merck
+Jette Christensen, Novo Nordisk
+Jean-Luc	Clavelin
+Walter De Matteo, Lilly France, S.A.S.
+Phil DeSantis, DeSantis Consulting Associates
+Jens Eilertsen, Novo Nordisk
+Don Elinski, Lachman Consultants
+Kris Evans, Amgen
+Tor Graberg, Medical Products Agency – Sweden
+Joachim Leube, Crucell
+Mike Long, ConcordiaValsource LLC.
+Maik Jornitz, G-Con
+Russell Madsen, The Williamsburg Group
+Grace McNally, U.S. FDA
+Jeanne Moldenhauer, Excellent Pharma Consulting
+Christopher Smalley, Merck
+Brenda Uratani, U.S. FDA
+Glenn Wright, Eli Lilly and Company
+Bethesda Towers
+4350 East West Highway
+Suite 200
+Tel:
+1 (301) 656-5900
+Fax:
+1 (301) 986-0296
+E-mail: info@pda.org
+Web site: www.pda.org

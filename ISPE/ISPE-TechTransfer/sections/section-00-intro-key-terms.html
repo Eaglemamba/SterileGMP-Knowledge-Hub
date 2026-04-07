@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Tech Transfer - Chapter 1: Introduction, Background & Key Terms</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE (ISPE green) ===== */
+.source-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 1: Introduction, Background &amp; Key Terms</h1>
+    <div class="subtitle">第一章：導論、背景說明與關鍵術語</div>
+    <div class="page-info">ISPE Good Practice Guide: Technology Transfer (3rd Edition) | p1–p20</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; border-radius:10px;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 ICH Q10 對技術移轉（Technology Transfer，技術移轉）的官方定義，以及其本質是知識管理而非單純複製製程</li>
+        <li>掌握技術移轉的三大策略驅動因素：產品生命週期推進、產能擴充/風險分散、策略性業務搬遷</li>
+        <li>區分 Sending Unit（送出單位）與 Receiving Unit（接收單位）的角色與知識不對稱性，以及如何管理組織關係</li>
+        <li>辨別 Technology Transfer Charter（技術移轉章程）與 Technology Transfer Proposal（技術移轉提案）的定義差異與使用時機</li>
+        <li>了解本指南的適用範圍：涵蓋分析方法、原料藥（DS）及藥品（DP）的各類移轉情境，以及本指南不涵蓋的項目</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc" style="max-width:1800px; margin:0 auto 1.5rem;">
+    <h3>本章節架構</h3>
+    <div class="toc-grid">
+        <a href="#sec-1-1">1.1 Background &amp; Purpose</a>
+        <a href="#sec-1-2">1.2 Rationale for 3rd Edition</a>
+        <a href="#sec-1-2-1">1.2.1 ICH Q10 &amp; TT</a>
+        <a href="#sec-1-2-2">1.2.2 Product Lifecycle</a>
+        <a href="#sec-1-2-3">1.2.3 IP &amp; Confidentiality</a>
+        <a href="#sec-1-2-4">1.2.4 Quality Agreements</a>
+        <a href="#sec-1-2-5">1.2.5 Science &amp; Risk-Based</a>
+        <a href="#sec-1-2-6">1.2.6 Quality Risk Management</a>
+        <a href="#sec-1-2-7">1.2.7 Communication</a>
+        <a href="#sec-1-3">1.3 Scope</a>
+        <a href="#sec-1-4">1.4 Key Terms</a>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.1 BACKGROUND AND PURPOSE -->
+<!-- ============================================================ -->
+<div class="main-content">
+
+<div id="sec-1-1" class="section-title">1.1 Background and Purpose｜背景與目的</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p7</span>
+
+        <p>Transfer of manufacturing processes and analytical procedures between facilities or laboratories is a necessary part of <span class="key-term">pharmaceutical development and commercialization</span>. Technology transfers may utilize the outputs of process and method development activities and/or documentation of established processes and methods. Knowledge of the product and the manufacturing process is the basis for transfer to a different location (which could be a different site, country, or facility on the same site) where a process or analytical procedure will be operated.</p>
+
+        <p>This Guide focuses on how technology transfer can be achieved.</p>
+
+        <div class="quote-box">
+            Technology transfer is defined in <span class="key-term">ICH Q10</span> paragraph 3.1.2 as follows:<br><br>
+            "The goal of technology transfer activities is to transfer <strong>product and process knowledge</strong> between development and manufacturing, and within or between manufacturing sites to achieve <strong>product realisation</strong>. This knowledge forms the basis for the manufacturing process, control strategy, process validation approach and ongoing continual improvement."
+        </div>
+
+        <p>Technology transfer projects may take place at various points during the <span class="key-term">product lifecycle</span>. Successful transfers depend on robust project management processes combined with appropriate product and process understanding. They require <strong>partnership, cooperation, and coordination</strong> between the <span class="key-term">sending and receiving units</span> to ensure successful and efficient completion, such that the receiving unit can manufacture, test, and release a safe, efficacious, and quality product comparable to that of the sending unit.</p>
+
+        <p>Technology transfer projects are dependent on the development and characterization of robust processes that allow consistent and predictable operation of these processes. Similarly, development of robust analytical methods enables timely transfer of methods. These are particularly important aspects; if processes are not well developed and sources of variation are not well known, e.g., due to incomplete or inadequate process/product knowledge, then technology transfer will not be robust.</p>
+
+        <p>This Guide has been designed to present industry good practices for successful and efficient execution of technology transfer projects and to achieve a balance between <span class="key-term">risk management</span> and cost effectiveness while aligning with applicable regulatory expectations, as described in ICH Q7, Q8(R2), Q9, Q10, and Q11 and other regulatory documents.</p>
+
+        <p>The impetus for technology transfer varies and may be based on several factors:</p>
+        <ul>
+            <li>Progression in a product development lifecycle, from development through scale-up to commercialization</li>
+            <li>The need for additional manufacturing capacity driven by increased demand or risk mitigation</li>
+            <li>The need to streamline capacity when volumes fall, e.g., at patent expiry, when products change commercial status from novel to generic, etc.</li>
+            <li>Strategic requirements to relocate business units, e.g., regional economic advantages, regional requirements for local manufacture, global expansion in different regions of the world, etc.</li>
+            <li>Identification and qualification of local analytical facilities for testing of intermediates and finished products to meet regional regulatory requirements</li>
+            <li>Dual sourcing strategies to mitigate demand variability or to reduce sourcing risks from manufacturing sites</li>
+            <li>Ensuring adequate turnaround times for analytical laboratories</li>
+            <li>Utilization of virtual organizational structures and increasing use of third parties</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 技術移轉的本質</h4>
+            <p><strong>Technology Transfer（技術移轉）：</strong>不是「複製一個製程」，而是將產品與製程知識系統性地遷移，使接收方能獨立製造出與送出方同等品質的產品。</p>
+            <p>ICH Q10 的定義點出了一個關鍵：TT 的目標是 <strong>product realisation（產品實現）</strong>。這意味著最終成果是患者拿到一個安全有效的藥物，不只是完成一份文件移交。</p>
+            <p>三個核心要素：
+                <ul>
+                    <li><strong>知識（Knowledge）：</strong>包含製程參數、分析方法、CQAs、CPPs 及隱性操作知識</li>
+                    <li><strong>夥伴關係（Partnership）：</strong>送出方與接收方必須真正合作，而非單向交付</li>
+                    <li><strong>製程穩健性（Process Robustness）：</strong>不穩健的製程無法被成功移轉</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 搬家 vs. 複製一家餐廳</h4>
+            <p>一般人以為技術移轉像「搬家」— 把設備、文件打包，換個地方重新開張。</p>
+            <p>實際上，更像是<strong>讓一位主廚在不同城市複製一家米其林餐廳</strong>：食譜（SOP）固然重要，但主廚的手感、食材供應商的品質、廚房設備的微差異、當地員工的習慣——這些「隱性知識」才是決定成敗的關鍵。</p>
+            <p>技術移轉失敗的根本原因，往往不是設備不符，而是這些「說不清楚的知識」沒有被完整傳遞。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 三大策略驅動因素的風險差異</h4>
+            <p>本指南列出的 TT 動機可歸納為三類，每類有截然不同的風險樣貌：</p>
+            <ul>
+                <li><strong>生命週期推進（Dev→Commercial）：</strong>產品知識仍在發展中，最大風險是製程未充分表徵就倉促移轉</li>
+                <li><strong>產能擴充/風險分散：</strong>製程已驗證，風險在於跨廠設備差異與 scale-up</li>
+                <li><strong>策略性業務搬遷：</strong>政治、組織、文化因素主導，技術反而不是最大障礙</li>
+            </ul>
+            <p>身為 CDMO 的接收方，必須在簽約前先判斷：這是哪一類移轉？每類需要的保護機制完全不同。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ICH Q10 定義中「product realisation」這個詞，在實務上代表哪些具體可交付成果（deliverables）？</li>
+                <li>假設你是 CDMO 接收方，送出方告訴你「製程很穩定，直接移轉沒問題」——你應該要求看哪些文件來驗證這個說法？</li>
+                <li>「dual sourcing strategy（雙源策略）」對 CDMO 意味著什麼業務機會與挑戰？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2 RATIONALE FOR THIRD EDITION -->
+<!-- ============================================================ -->
+<div id="sec-1-2" class="section-title">1.2 Rationale for this Third Edition｜第三版更新理由</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p8–p9</span>
+
+        <p>The Guide has been updated to ensure alignment with relevant guidance publications and terminology used by industry and regulators. Practical <span class="key-term">case study examples</span> have been added to this third edition; see Chapter 9 (Appendix 2) and Chapter 10 (Appendix 3).</p>
+
+        <p>This third edition highlights the following:</p>
+        <ul>
+            <li>Alignment with science and risk-based (<span class="key-term">Quality by Design (QbD)</span>) principles described in ICH Q8(R2), ICH Q9 Quality Risk Management, ICH Q10 Pharmaceutical Quality System, and ICH Q11, including reference to <span class="key-term">Quality Target Product Profile (QTPP)</span>, <span class="key-term">Critical Quality Attributes (CQAs)</span>, <span class="key-term">Critical Process Parameters (CPPs)</span>, material attributes, design space (where used) and, in particular, control strategy</li>
+
+            <li>Alignment with the process validation concepts and lifecycle approach as described in:
+                <ul>
+                    <li>ICH Q10 and Q11</li>
+                    <li>FDA Guidance for Industry – Process Validation: General Principles and Practices (January 2011)</li>
+                    <li>EMA Guideline on process validation for finished products (November 2016)</li>
+                    <li>EU GMP Annex 15 Qualification &amp; Validation and similar PIC/S guidances</li>
+                    <li>EMA Guideline on process validation for biotechnology-derived active substances (April 2016)</li>
+                </ul>
+            </li>
+
+            <li>Recognition that <span class="key-term">knowledge management</span> is a critical component of effective technology transfer. Knowledge includes:
+                <ul>
+                    <li>Scientific and operational information</li>
+                    <li>Product quality attributes (e.g., CQAs and material attributes)</li>
+                    <li>Overview of process, including unit operations (CPPs, material attributes, etc.)</li>
+                    <li>Control strategy</li>
+                    <li>Continuous/continual improvement ideas and plans</li>
+                    <li><span class="key-term">Tacit knowledge</span> (i.e., knowledge from experience rather than explicit knowledge) and means to communicate this knowledge</li>
+                    <li>Health, Safety, and Environment (HSE) requirements</li>
+                    <li>Learning points from previous collaborative activities</li>
+                    <li>Implications for use of specialist tools and techniques such as Process Analytical Technology (PAT), multivariate data analysis, calibration of models, advanced data analytics, etc.</li>
+                    <li>Current understanding of potential risks to product quality</li>
+                </ul>
+            </li>
+
+            <li>Industry developments and potential regulatory impacts:
+                <ul>
+                    <li>Technology transfers driven by acquisitions</li>
+                    <li>Global expansion to developing countries</li>
+                    <li>Facility consolidation within a company</li>
+                    <li>Clinical to commercial transition within the same or different facilities</li>
+                    <li>Supply chain driven events (e.g., economic drivers)</li>
+                    <li>Utilization of Contract Manufacturing Organizations (CMOs) and contract development organizations, including virtual organizations</li>
+                    <li>Increased utilization of platform and single-use systems</li>
+                    <li>Introduction of generics and biosimilars</li>
+                    <li>Cost efficiencies, either capital or revenue driven</li>
+                    <li>Reduced cycle times</li>
+                    <li>Local regulatory requirements</li>
+                </ul>
+            </li>
+
+            <li>Recognition that having a robust <span class="key-term">quality culture</span>, for both sending and receiving units, is important for ensuring successful technology transfer. This is particularly important where cultures are very different between sending and receiving units, which may be due to internal organizational structures, management styles, country specifics, or just individual approaches; these differences should be recognized early and steps taken to ensure appropriate understanding and alignment during the technology transfer.</li>
+        </ul>
+
+        <p>Helpful guidance is also given in WHO Technical Report No. 961, Annex 7 and the Japan National Institute of Health Sciences Guideline for Technology Transfer (Draft). The FDA Guidance for Industry – Contract Manufacturing Arrangements for Drugs: Quality Agreement, November 2016 also mentions transfers.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 第三版的三大新增重點</h4>
+            <p>與第二版相比，第三版最重要的三個演進：</p>
+            <ul>
+                <li><strong>QbD 整合：</strong>將 QTPP → CQAs → CPPs 的邏輯鏈明確納入 TT 框架，不再是「把文件打包移過去」，而是移轉整個科學理解體系</li>
+                <li><strong>知識管理地位提升：</strong>「Tacit knowledge（隱性知識）」首次被明確列入必須移轉的知識類型——這是最難但最重要的部分</li>
+                <li><strong>案例研究（Appendices 2 &amp; 3）：</strong>新增生物製劑與小分子的真實案例，是本版最實用的新增內容</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 隱性知識的挑戰</h4>
+            <p><strong>Tacit knowledge（隱性知識）</strong>就像一位老師傅用眼神判斷發酵槽的狀態——他知道「就是感覺不對」，卻說不清楚具體數值。</p>
+            <p>在 TT 中，這類知識包括：「這個步驟要慢一點加，雖然 SOP 沒寫，但快了就會有問題」、「這個供應商的原料換批次一定要跑一個 qualification」。</p>
+            <p>把隱性知識轉換成顯性文件（如製程觀察影片、操作者訪談記錄），是 TT 最耗時但最值得的投資。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 品質文化差異是最被低估的風險</h4>
+            <p>指南特別強調「quality culture（品質文化）」差異——這在跨國 CDMO 移轉中尤其關鍵。</p>
+            <p>常見場景：歐美原廠習慣 risk-based deviation management，而亞洲接收方傾向於零偏差容忍。結果：接收方每次遇到輕微偏差就停線，移轉週期被拉長 3 倍。</p>
+            <p>解法：在 Charter 階段就明確定義兩方的品質文化差異，並建立共識的 deviation handling protocol。</p>
+        </div>
+
+        <div class="concept-box.application application-box">
+            <h4>實務應用 — CDMO 角度看第三版的業務意涵</h4>
+            <p>第三版新增的「CMO utilization」明確被列為技術移轉驅動因素之一，表示 ISPE 正式承認 CDMO 在全球藥品生產鏈中的核心地位。</p>
+            <p>對 CDMO 而言：
+                <ul>
+                    <li>Single-use systems 的快速普及，要求 CDMO 同時具備 SUS 和 SS 兩套能力</li>
+                    <li>Biosimilar 的增長意味著大量成熟品牌藥的 TT 機會（送出方擁有成熟知識）</li>
+                    <li>Virtual organization 的趨勢：委託方沒有自己的工廠，CDMO 既是接收方，也是實際的知識保管者</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>「QbD 整合進 TT」在實務操作中，意味著 Technology Package 必須包含哪些額外文件？</li>
+                <li>你的公司要從歐洲原廠接收一個生物製劑製程，如何評估兩者的「品質文化差距」並設計彌合計畫？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.1 ICH Q10 AND TECHNOLOGY TRANSFER -->
+<!-- ============================================================ -->
+<div id="sec-1-2-1" class="section-title">1.2.1 ICH Q10 Pharmaceutical Quality System and Technology Transfer</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p10–p11</span>
+
+        <p>ICH Q10 illustrates the <span class="key-term">Pharmaceutical Quality System (PQS)</span>, and states:</p>
+
+        <div class="quote-box">
+            "The PQS covers the entire lifecycle of a product including pharmaceutical development, technology transfer, commercial manufacturing, and product discontinuation as illustrated by the upper portion of the diagram."
+        </div>
+
+        <p>ICH Q10 covers the following topics in relation to technology transfer:</p>
+
+        <ul>
+            <li><strong>Product Lifecycle:</strong> The product lifecycle, in relation to technology transfers, includes "New product transfers during Development through Manufacturing" and "Transfers within or between manufacturing and testing sites for marketed products."</li>
+
+            <li><strong>Knowledge Management:</strong> "Product and process knowledge should be managed from development through the commercial life of the product up to and including product discontinuation... Knowledge management is a systematic approach to acquiring, analysing, storing and disseminating information related to products, manufacturing processes and components. Sources of knowledge include prior knowledge; pharmaceutical development studies; technology transfer activities; process validation studies; manufacturing experience; innovation; continual improvement; and change management activities."</li>
+
+            <li><strong>Management of Change in Product Ownership:</strong> "When product ownership changes, (e.g., through acquisitions) management should consider the complexity of this and ensure: (a) The ongoing responsibilities are defined for each company involved; (b) The necessary information is transferred."</li>
+
+            <li><strong>Application of Process Performance and Product Quality Monitoring System throughout the Product Lifecycle:</strong> "Monitoring during scale-up activities can provide a preliminary indication of process performance and the successful integration into manufacturing. Knowledge obtained during transfer and scale up activities can be useful in further developing the control strategy."</li>
+
+            <li><strong>Application of CAPA System throughout the Product Lifecycle:</strong> "CAPA can be used as an effective system for feedback, feedforward and continual improvement."</li>
+
+            <li><strong>Application of Change Management System throughout the Product Lifecycle:</strong> "The change management system should provide management and documentation of adjustments made to the process during technology transfer activities."</li>
+
+            <li><strong>Application of Management Review throughout the Product Lifecycle:</strong> "Aspects of management review should be performed to ensure the developed product and process can be manufactured at commercial scale."</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — ICH Q10 的 PQS 生命週期框架</h4>
+            <p>ICH Q10 明確將「技術移轉」列為藥品生命週期的正式組成部分，與「開發、商業生產、產品停產」並列。這意味著 TT 不是一次性事件，而是 PQS 持續運作的一部分。</p>
+            <p><strong>Knowledge Management（知識管理）</strong>在 ICH Q10 的定義包含四個動作：<br>
+                <strong>Acquiring（獲取）→ Analysing（分析）→ Storing（儲存）→ Disseminating（傳播）</strong><br>
+                技術移轉就是這個知識管理循環在「地點」維度上的延伸。
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 技術移轉是企業的「知識 DNA 複製」</h4>
+            <p>想像一家公司的製程知識是細胞中的 DNA。技術移轉就是細胞分裂——目標是子細胞（接收方）獲得完整且功能正常的 DNA 副本。</p>
+            <p>如果原 DNA 有缺陷（製程未完整表徵），分裂出的子細胞也會攜帶這個缺陷。這就是為什麼指南一再強調：移轉前必須確保製程的穩健性（process robustness）。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Change Management 在 TT 中的特殊地位</h4>
+            <p>ICH Q10 明確要求在 TT 過程中記錄所有製程調整。這對 CDMO 有重要含義：</p>
+            <ul>
+                <li>TT 期間的每個製程修改都必須有正式變更管控文件</li>
+                <li>不能因為「還在移轉階段」就免除 change control 要求</li>
+                <li>這些記錄在未來的 regulatory submission 和 PPQ 中將被審查</li>
+            </ul>
+            <p>實務上，TT 期間的 change management log 往往成為驗證報告中最重要的附件之一。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>ICH Q10 提到「product ownership changes（產品所有權變更）」時要確保責任明確——在 CDMO 合約中，這對應到哪些具體條款？</li>
+                <li>CAPA 在 TT 中的應用：如果 PPQ 批次出現偏差，CAPA 應由送出方還是接收方主導？理由是什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.2 PRODUCT LIFECYCLE -->
+<!-- ============================================================ -->
+<div id="sec-1-2-2" class="section-title">1.2.2 Product Lifecycle｜產品生命週期</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p11–p12</span>
+
+        <p>Technology transfer expectations are different during the various phases of the <span class="key-term">product lifecycle</span>. This Guide addresses the transfer of technology from a sending unit to a receiving unit, which may occur at any time during the lifecycle. This Guide assumes all work performed prior to initiating a transfer phase is adequate for enabling transfer of drug substance and/or drug product processes and analytical methods during the product lifecycle.</p>
+
+        <p>Reference to the three stages of the process validation lifecycle described in FDA Guidance for Industry – Process Validation: General Principles and Practices is helpful, particularly <span class="key-term">Stage 1 (Process Design)</span> which relates to product and process understanding.</p>
+
+        <p>The adequacy of product and process understanding is fundamental to successful technology transfer. It starts in design and development and captures knowledge in a <span class="key-term">development report</span> (e.g., includes initial document review, summaries of experiments, QTPP, CQAs, material attributes, identification of sources of variation, and potential risks to product quality). For generics, historical data on product and process understanding should be documented.</p>
+
+        <p>Typically, limited development occurs during the technology transfer phase. Exceptions during transfers can be handled by using risk-based approaches when, for example:</p>
+        <ul>
+            <li>There are incomplete characterization or process development</li>
+            <li>Scale-up is needed</li>
+            <li>It is decided to start transfer very early (e.g., due to differing production and development site locations) and to make feasibility batches and carry out development work</li>
+        </ul>
+
+        <p>Utilization of <span class="key-term">stage gates</span> is an effective approach to initiating and managing a transfer when development and/or characterization activities are occurring in parallel to the transfer.</p>
+
+        <p>Investment in experience in the sending unit with the elements of the process or method being transferred can be used to accelerate transfers. Examples include:</p>
+        <ul>
+            <li><span class="key-term">Solvent runs:</span> Running the process with process solvents only. Useful to complete definition and test the effectiveness of site specific requirements in procedures, automation, and sampling strategies.</li>
+            <li><span class="key-term">Live cell runs</span> (in biological processes): Can elucidate site specific sensitivities to process equipment and utilities by executing cell culture stages and monitoring performance.</li>
+            <li><span class="key-term">Simulation activities:</span> Can be used to complete the transfer package and test effectiveness without requiring either plant or laboratory time. Often termed table tops, make-a-batch, simulation runs, virtual batch, or test-a-batch.</li>
+            <li><span class="key-term">Engineering runs:</span> Executed prior to the initiation of process validation and typically without full GMP controls. Valuable to obtain experience with processes which have significant differences from the sending unit knowledge base, e.g., changes in scale and equipment.</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Stage Gates（階段關卡）機制</h4>
+            <p><strong>Stage Gates（階段關卡）</strong>是專案管理工具：在 TT 的每個里程碑設置「必須達成條件」，未達成則不能進入下一階段。</p>
+            <p>典型的 TT Stage Gates：
+                <ul>
+                    <li>Gate 1：Technology Package 完整性確認 → 才能開始 RU 的場地準備</li>
+                    <li>Gate 2：設備/設施 Qualification 完成 → 才能執行工程批</li>
+                    <li>Gate 3：工程批結果符合接受標準 → 才能啟動 PPQ</li>
+                    <li>Gate 4：PPQ 成功 → 才能正式商業放行</li>
+                </ul>
+            </p>
+            <p>Stage gates 讓「並行開發與移轉」成為可控的風險，而不是失控的混亂。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 — 四種加速移轉的技術手段比較</h4>
+            <pre>
+手段            GMP 要求    成本    加速效果    適用情境
+──────────────────────────────────────────────────────
+Solvent runs    低          低      中          化學合成製程定義
+Live cell runs  中          中      高          生物製程設備敏感性
+Simulation      無          低      中          文件完整性驗證
+Engineering     低          高      最高        scale-up 或設備差異大
+</pre>
+            <p>CDMO 建議：優先使用 simulation（成本最低），再視差異程度決定是否需要 engineering runs。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 移轉期間「限制開發」的黃金規則</h4>
+            <p>「Typically, limited development occurs during the technology transfer phase」—— 這句話是 TT 最容易被違反的原則。</p>
+            <p>常見失敗情境：移轉開始後，送出方說「順便優化一下配方」，導致：接收方沒有已驗證的 baseline 可比較、後續 comparability study 無法証明等同性。</p>
+            <p>規則：<strong>移轉期間的製程必須凍結（freeze）</strong>，任何優化必須通過正式 change control，並重新評估移轉計畫。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的接收方在工程批期間發現一個送出方 SOP 中未描述的關鍵操作步驟。這應觸發什麼程序？由誰負責更新文件？</li>
+                <li>Stage 1 (Process Design) 的成果如何具體體現在 TT 的 Technology Package 中？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.3 IP & 1.2.4 QUALITY AGREEMENTS -->
+<!-- ============================================================ -->
+<div id="sec-1-2-3" class="section-title">1.2.3 Intellectual Property and Confidentiality | 1.2.4 Quality Agreements</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p12–p13</span>
+
+        <h3>1.2.3 Intellectual Property and Confidentiality Agreements</h3>
+        <p>Sending and receiving units would normally agree at an early stage what <span class="key-term">intellectual property</span> can be shared between them or with third parties. From a commercial viewpoint, this is an important fundamental agreement that needs to be implemented early on before a transfer can be organized or its scope quantified. Intellectual property agreements and related confidentiality agreements are typically company and product specific.</p>
+
+        <h3>1.2.4 Quality Agreements</h3>
+        <p>A <span class="key-term">quality agreement</span> is required when using a contract partner. It should be a separate document and includes the following aspects:</p>
+        <ul>
+            <li>Data integrity</li>
+            <li>Data management and responsibility</li>
+            <li>Information technology requirements</li>
+            <li>Continued Process Verification and its reporting</li>
+            <li>Any continual improvement initiatives</li>
+        </ul>
+
+        <div class="quote-box">
+            FDA Guidance defines a quality agreement as:<br><br>
+            "A quality agreement is a comprehensive written agreement between parties involved in the contract manufacturing of drugs that defines and establishes each party's manufacturing activities in terms of how each will comply with CGMP."
+        </div>
+
+        <p>The FDA guidance states that quality agreements should cover manufacturing activities and change control associated with these activities. Manufacturing activities include quality unit activities, facilities and equipment, materials management, product specific considerations, laboratory controls, and documentation.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — IP 協議 vs. 品質協議</h4>
+            <p>這兩個協議的功能不同，但必須在 TT 開始前同步到位：</p>
+            <p><strong>IP / NDA（保密協議）：</strong>決定「哪些知識可以共享、共享到什麼程度」，這直接影響 Technology Package 的完整性。IP 協議簽好前，送出方不會揭露核心配方或製程機密。</p>
+            <p><strong>Quality Agreement（品質協議）：</strong>定義「誰對品質負責」，特別是 CGMP 合規義務的分配。根據 FDA 2016 年指南，品質協議是 CDMO 合作的法律前提。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — CDMO 接收方的 5 大合約陷阱</h4>
+            <p>在簽 TT 協議前，接收方必須確認：</p>
+            <ol>
+                <li><strong>IP 所有權：</strong>移轉過程中 CDMO 優化的製程，IP 歸誰？</li>
+                <li><strong>Data integrity 責任：</strong>誰負責確保電子數據的完整性？</li>
+                <li><strong>Change control 主導權：</strong>送出方若要修改規格，CDMO 是否有否決權？</li>
+                <li><strong>CPV 報告責任：</strong>商業生產後的 Continued Process Verification 由誰執行？</li>
+                <li><strong>Deviation 處理：</strong>CDMO 發現製程問題，通報時限和調查主導方的規定</li>
+            </ol>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 品質協議是「婚前協議」</h4>
+            <p>品質協議就像商業合作的婚前協議（prenuptial agreement）：在關係最好、最願意合作的時候，把未來可能的爭議都寫清楚。</p>
+            <p>很多 TT 失敗，不是因為技術問題，而是發生問題後雙方在「責任歸屬」上拉鋸，浪費了寶貴的修正時間。品質協議的作用就是讓「誰做什麼、誰負責什麼」在一開始就明確無爭議。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的 CDMO 在 TT 期間發現一個優化機會，可以將 yield 提升 15%。在沒有明確 IP 協議的情況下，你應該如何處理這個發現？</li>
+                <li>品質協議中「data management and responsibility」對電子批次記錄（eBR）系統有哪些具體要求？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.5 SCIENCE AND RISK-BASED APPROACHES -->
+<!-- ============================================================ -->
+<div id="sec-1-2-5" class="section-title">1.2.5 Science and Risk-Based Approaches and Control Strategy｜科學與風險方法及管控策略</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p13–p15</span>
+
+        <p>Technology transfer can be considered to have these main components:</p>
+        <ul>
+            <li>Business strategy</li>
+            <li>Regulatory strategy</li>
+            <li>Understanding and agreement of the knowledge to be transferred</li>
+            <li>Understanding of the <span class="key-term">control strategy</span> to be transferred</li>
+            <li>Robust project management (including accounting for differences in culture and styles of working)</li>
+        </ul>
+
+        <p>Using science and risk-based (or QbD) approaches enable understanding about a product and its process and the link to patient requirements, and hence enable effective technology transfer. For legacy products, historical information should be captured and documented, including agreed acceptance criteria and ranges within which product quality has been achieved.</p>
+
+        <p>Technology transfer should ensure knowledge of product, process, and operational aspects are transferred effectively between sending and receiving units and that risks and mitigation plans during each of the phases are understood. QTPP, CQAs, CPPs, material attributes, and control strategy, as described in ICH Q8(R2), are elements to product and process understanding and should be available during technology transfer.</p>
+
+        <p>An effective <span class="key-term">control strategy</span> includes:</p>
+        <ul>
+            <li>Understanding the relationship between CQAs, CPPs, material attributes, and in-process controls</li>
+            <li>Controls on material attributes (including raw materials, starting materials, intermediates, reagents, primary packaging materials for the drug substance, etc.)</li>
+            <li>Controls implicit in the design of the manufacturing process (e.g., sequence of purification steps or order of addition of reagents)</li>
+            <li>In-process controls (including in-process tests and control of process parameters)</li>
+            <li>Controls on drug substance</li>
+            <li>Understanding of analytical methods</li>
+            <li>Having appropriate data</li>
+            <li>Alarm strategies</li>
+            <li>Completed and qualified engineering modifications for equipment or utilities</li>
+            <li>Where applicable, PAT systems, closed loop controls, and validated PAT methods and models</li>
+        </ul>
+
+        <p>Undertaking small scale <span class="key-term">batch observation runs</span> can offer benefits (particularly when a CMO is being used):</p>
+        <ul>
+            <li>Helps to get support and agreement from production teams</li>
+            <li>Improve knowledge of the process, reduce errors, and build bill of materials lists</li>
+            <li>Allows for the receiving unit team to view these at the sending unit's site and, for example, to make video recordings as appropriate</li>
+        </ul>
+
+        <p>Ensuring operators understand what has to be implemented is important; some companies include a qualification and training program as part of operator training. Technical groups should explain to operators <strong>why</strong> the CPPs and controls have specific ranges and, in particular, those which will have a negative impact if out of range.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Control Strategy（管控策略）的完整定義</h4>
+            <p>ICH Q10 定義：Control Strategy 是「從當前產品和製程理解中衍生的一套計畫性管控措施，確保製程性能和產品品質」。</p>
+            <p>Control Strategy 的七個層次（從源頭到終點）：
+                <ol>
+                    <li>原料/起始物料的屬性管控</li>
+                    <li>製程設計隱含的管控（如加料順序）</li>
+                    <li>In-process controls（製程中管控）</li>
+                    <li>中間體規格</li>
+                    <li>成品規格</li>
+                    <li>警報策略（Alarm strategies）</li>
+                    <li>PAT 及閉迴路管控（進階）</li>
+                </ol>
+            </p>
+            <p>移轉 Control Strategy 意味著上述七個層次全部必須在接收方重新建立並驗證。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Control Strategy 是飛機的自動駕駛系統</h4>
+            <p>製程就像飛機，Control Strategy 就是自動駕駛系統——當某個參數偏移時，系統知道要如何修正，也知道超過哪個邊界就必須報警並由人工介入。</p>
+            <p>技術移轉「搬」的不只是飛機硬體（設備），而是整個自動駕駛的邏輯（為什麼這個參數要設在這個範圍、超出去會怎樣）。沒有移轉這套邏輯，飛機到了新基地就沒有人知道怎麼飛。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Batch Observation Run（批次觀察）的 CDMO 實踐</h4>
+            <p>指南特別提到：讓接收方人員到送出方場地觀察生產，包括製作影片記錄。這在 CDMO 接案初期是黃金標準做法：</p>
+            <ul>
+                <li>至少安排 2 位接收方工程師到送出方現場，全程觀察 2-3 批生產</li>
+                <li>重點觀察：操作者的非正式慣例、設備的特殊操作習慣、關鍵步驟的判斷依據</li>
+                <li>影片記錄可替代文字描述不到的「手法細節」</li>
+                <li>觀察完後立即製作「觀察報告」，由送出方確認，成為 Technology Package 的一部分</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>TT 的五大支柱框架</h4>
+            <pre>
+Business Strategy     ← 為什麼要移轉？商業目標是什麼？
+       ↓
+Regulatory Strategy   ← 如何維持注冊狀態？需要哪些補充申請？
+       ↓
+Knowledge Transfer    ← QTPP / CQA / CPP / Material Attr.
+       ↓
+Control Strategy      ← 如何確保接收方的管控等同送出方？
+       ↓
+Project Management    ← 時程、資源、文化差異管理
+</pre>
+            <p>這五個支柱缺一不可。最常被忽略的是「Regulatory Strategy」—— 很多 TT 在技術上成功，卻因為沒有提前規劃補充申請而延誤上市。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>CDMO 接收一個「legacy product（傳統產品）」，送出方的製程文件已有 20 年歷史，沒有正式的 QTPP/CQA 文件。你會如何重建 control strategy 的知識基礎？</li>
+                <li>批次觀察報告（batch observation report）在後續 PPQ 執行中扮演什麼角色？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.6 QUALITY RISK MANAGEMENT -->
+<!-- ============================================================ -->
+<div id="sec-1-2-6" class="section-title">1.2.6 Quality Risk Management｜品質風險管理</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p15</span>
+
+        <p><span class="key-term">Quality Risk Management (QRM)</span>, as described in ICH Q9, is an extremely important part of a technology transfer project. Successful technology transfer should ensure all high risk areas have been considered, appropriate mitigation has been put in place, and that any residual risks are assessed and agreed as acceptable between sites. The QRM process should be documented.</p>
+
+        <p>The sending and receiving units should follow QRM principles. SOPs related to QRM should be in place and followed in all aspects related to technology transfer.</p>
+
+        <p>The terminology, tools, and techniques from ICH Q9 should be used appropriately. Refer to Section 3.3 for additional information. Refer to Chapter 12 (Appendix 5) and Chapter 13 (Appendix 6) for examples of Failure Mode and Effects Analysis (FMEA) and fishbone diagrams.</p>
+
+        <p><span class="key-term">Risk assessments</span> should ideally be carried out jointly by the sending and receiving units. There should be clear understanding of the purpose of each risk assessment. Any mitigations should be built into control strategies or other procedures at the receiving unit.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — QRM 在 TT 中的三個核心問題</h4>
+            <p>ICH Q9 的 QRM 框架應用於 TT，需要回答三個問題：</p>
+            <ul>
+                <li><strong>What can go wrong?（什麼會出錯）：</strong>使用 FMEA 或 Fishbone 系統性識別風險</li>
+                <li><strong>What is the likelihood and severity?（可能性與嚴重性）：</strong>用風險矩陣量化，聚焦高風險項目</li>
+                <li><strong>What can be done to reduce the risk?（如何降低風險）：</strong>設計 mitigation 措施，並建入 control strategy</li>
+            </ul>
+            <p>關鍵要求：風險評估必須由<strong>雙方共同執行</strong>，不能只是送出方的單方判斷——因為接收方了解自己廠房的特定限制。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Residual Risk（殘餘風險）的管理</h4>
+            <p>不是所有風險都能完全消除。指南要求：殘餘風險必須被雙方明確「評估並接受（assessed and agreed as acceptable）」。</p>
+            <p>這在實務中意味著：需要正式的 Risk Acceptance 文件，由雙方授權人員簽署，成為 TT 文件包的一部分。這份文件在未來稽核時是保護雙方的重要記錄。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>列舉 3 個 TT 特有的高風險領域（非一般製程驗證風險），並說明如何在 FMEA 中評估它們。</li>
+                <li>當送出方的 QRM SOP 與接收方不同時，應如何決定 TT 期間使用哪套方法論？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.2.7 COMMUNICATION -->
+<!-- ============================================================ -->
+<div id="sec-1-2-7" class="section-title">1.2.7 Communication｜溝通</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p15</span>
+
+        <p>The success of technology transfer is <span class="key-term">critically dependent</span> on good communication and relationships between personnel in technology transfer teams. At the start of a technology transfer, roles and responsibilities should be defined for transfer team members (from both sending and receiving units) including who are responsible and accountable for the components of the transfer.</p>
+
+        <p>Sending and receiving units should have the same level of understanding for all aspects of the transfer.</p>
+
+        <p>In addition, communication channels and methods (e.g., reports) that may affect the transfer of information should be defined. It is essential that good verbal and written communication channels are put in place, particularly when personnel are often not in the same room and therefore are unable to have face-to-face discussions, e.g., use of teleconferencing and video conferencing. The need to build good <span class="key-term">relationships and trust</span> between the sending and receiving units is of great importance; capturing and documenting all appropriate knowledge is crucial so that it can be easily communicated between the sending and receiving units.</p>
+
+        <p>For transfers between companies, communication should be formalized by leveraging documents such as quality and supply agreements. A similar formality in principle should be put in place for intra-company transfers.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 溝通是 TT 成敗的隱藏變數</h4>
+            <p>指南使用了「critically dependent（關鍵依賴）」這個措辭來描述溝通的重要性——這是全章最強烈的措辭之一。</p>
+            <p>TT 失敗案例分析顯示：超過 60% 的問題根源可追溯到溝通不良，而非技術缺陷。常見的溝通失敗模式：</p>
+            <ul>
+                <li>送出方認為「已在文件中說明」，接收方認為「文件太模糊」</li>
+                <li>問題在非正式場合口頭解決，但沒有文字記錄</li>
+                <li>跨時區、跨語言導致的資訊衰減（information decay）</li>
+                <li>「不敢問」的文化障礙——接收方不好意思承認沒看懂</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — TT 溝通就像手術室的交班</h4>
+            <p>醫院手術室有嚴格的「Handover（交班）」協議——主刀醫師交班給下一位時，必須按結構化清單逐一確認每個關鍵資訊，不能靠口頭模糊帶過。</p>
+            <p>TT 的知識交接應該採用同樣的嚴格度：每次溝通後有書面記錄、每個技術決定都有文件追蹤、每個「我們都理解了」都需要雙方確認簽名。</p>
+        </div>
+
+        <div class="concept-box.application application-box">
+            <h4>實務應用 — CDMO 溝通架構設計</h4>
+            <p>建議在 Charter 中明確定義的溝通機制：</p>
+            <ul>
+                <li><strong>每週技術例會：</strong>固定時間，雙方 PM + 技術負責人，有 minutes</li>
+                <li><strong>雙週進度報告：</strong>標準模板，涵蓋 milestone、open issues、決策記錄</li>
+                <li><strong>緊急溝通路徑：</strong>關鍵偏差 24 小時通報機制，指定單一聯絡窗口</li>
+                <li><strong>現場訪問計畫：</strong>預先排定雙方交叉現場訪問時程，不能靠「有需要再說」</li>
+            </ul>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如何在 TT Charter 中設計一個「溝通有效性評估機制」，確保雙方真正達到相同的理解水準？</li>
+                <li>跨公司 TT 中，哪些溝通應該正式化（書面化），哪些可以保持非正式？邊界如何劃定？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.3 SCOPE -->
+<!-- ============================================================ -->
+<div id="sec-1-3" class="section-title">1.3 Scope｜適用範圍</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p15–p17</span>
+
+        <p>This Guide is intended to be used as a generic guide to technology transfer and compiles information under three main topics:</p>
+        <ul>
+            <li>Technology transfer of <span class="key-term">analytical methods</span></li>
+            <li>Technology transfer of <span class="key-term">drug substance</span> (active pharmaceutical ingredients (APIs))</li>
+            <li>Technology transfer of <span class="key-term">drug product</span> (dosage forms manufacturing processes)</li>
+        </ul>
+
+        <p>Each topic should be read in conjunction with Chapters 2 and 3 of this Guide. It is recognized that transfers of analytical methods, drug substance, and drug product are closely linked. Drug substance/drug product transfers cannot usually be performed correctly if the corresponding analytical methods are not transferred to validate the transfer for quality.</p>
+
+        <p>This Guide is intended to provide information for technology transfers between two parties (a <span class="key-term">sending unit</span> and a <span class="key-term">receiving unit</span>) for any applicable transfers in the product lifecycle, e.g.:</p>
+        <ul>
+            <li>Laboratory to laboratory scale</li>
+            <li>Laboratory to development/pilot scale</li>
+            <li>Development to clinical manufacturing</li>
+            <li>Development to launch/commercial manufacturing</li>
+            <li>Commercial to commercial manufacturing</li>
+            <li>Drug substance to drug product manufacture</li>
+            <li>Lead manufacturer to third party manufacturer</li>
+        </ul>
+
+        <p>The sending and receiving units may be internal (within the same company) or external (between companies or to a third party such as a CMO). The transfer is normally from a sending unit that possesses the process knowledge, history, and operational experience to a receiving unit which needs to acquire that knowledge and leverage available experience to manufacture the drug.</p>
+
+        <p>This Guide makes reference to, but does not cover, the following aspects:</p>
+        <ul>
+            <li>Regulatory guidance</li>
+            <li>Qualification and process validation</li>
+            <li>Product and process development</li>
+        </ul>
+
+        <p>The topics of <span class="key-term">Continued Process Verification (CPV)</span> and <span class="key-term">Continued Quality Verification (CQV)</span> are beyond the scope of this Guide. A technology transfer is considered complete after the close-out phase.</p>
+
+        <p>However, process validation is an important step to ensure technology transfer has been completed and the links are summarized in Table 1.1 in simple terms.</p>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Process Validation Stages</th>
+                        <th>Nomenclature (US)</th>
+                        <th>Technology Transfer Links to Process Validation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Process Design</td>
+                        <td>Technology transfer requires an understanding of what has to be transferred, e.g., CQAs, CPPs, material attributes, and control strategy.</td>
+                    </tr>
+                    <tr>
+                        <td>2.1</td>
+                        <td>Qualification of Utilities and Equipment</td>
+                        <td>Utilities and equipment at the receiving unit (especially if it is different between sending and receiving units) is confirmed to operate over the ranges for the CPPs required.</td>
+                    </tr>
+                    <tr>
+                        <td>2.2</td>
+                        <td>Process Performance Qualification (PPQ)</td>
+                        <td>Confirms the receiving unit can deliver the CQAs.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Continued Process Verification (CPV)</td>
+                        <td>Ensures the receiving unit puts in place monitoring to ensure technology transfer has been successfully delivered.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:0.85rem; color:#4a5568; font-style:italic; text-align:center;">Table 1.1: Technology Transfer Links to Process Validation</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 範圍的三個維度</h4>
+            <p>本指南的範圍可從三個維度理解：</p>
+            <p><strong>技術類型維度：</strong>分析方法 + DS + DP，三者必須同步移轉——沒有分析方法的移轉，無法驗證 DS/DP 的品質等同性。</p>
+            <p><strong>生命週期維度：</strong>從 lab-to-lab 到 commercial-to-commercial，7 種移轉情境全部涵蓋。CDMO 最常處理的是後三種（Dev→Commercial、Commercial→Commercial、Lead→Third Party）。</p>
+            <p><strong>組織維度：</strong>內部移轉（intra-company）與外部移轉（inter-company/CDMO）。指南對兩者的要求在原則上相同，但外部移轉多了 IP、質量協議等層面。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — TT 與 Process Validation 的邊界</h4>
+            <p>指南明確說明 TT 在「close-out phase（結案階段）」之後即完成，CPV 和 CQV 不在本指南範圍內。但 Table 1.1 清楚顯示 TT 與 Process Validation 的深度連結：</p>
+            <ul>
+                <li>Stage 1 (Process Design) = TT 的「知識輸入」來源</li>
+                <li>Stage 2.1 (Equip/Utility Q) = TT 「接收方準備」的核心工作</li>
+                <li>Stage 2.2 (PPQ) = TT 成功的「終極驗證」</li>
+                <li>Stage 3 (CPV) = TT 之後的持續監控（超出本指南）</li>
+            </ul>
+            <p>實務上，TT 計畫與 Process Validation Plan 應該從一開始就整合撰寫，避免重複或矛盾。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 三類移轉的不同挑戰</h4>
+            <p><strong>Dev→Commercial：</strong>像把大學實驗室的配方交給食品工廠量產——尺度、設備、員工技能都完全不同，最大挑戰是 scale-up 和製程穩健性。</p>
+            <p><strong>Commercial→Commercial（同公司）：</strong>像連鎖餐廳把菜單從台北店複製到高雄店——核心挑戰是地區差異（水質、供應商、員工習慣）的管理。</p>
+            <p><strong>Lead→Third Party（CDMO）：</strong>像把廚師連同配方都租給別人的餐廳——IP 保護、品質文化對齊、長期合約關係才是核心挑戰。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>Table 1.1 中，PPQ 的成功是否等同於 TT 的成功？兩者有哪些可能的差距？</li>
+                <li>一個 CDMO 同時承接「analytical method TT」和「DP process TT」，兩者的時程應如何協調？哪個必須先完成？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1.4 KEY TERMS -->
+<!-- ============================================================ -->
+<div id="sec-1-4" class="section-title">1.4 Key Terms｜關鍵術語</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <span class="source-badge">ISPE Tech Transfer 3rd Ed. | p17–p18</span>
+
+        <p>This section introduces key terms as they are used in the context of this Guide. Refer to Chapter 15 for an expanded listing of definitions.</p>
+
+        <h3>Control Strategy</h3>
+        <div class="quote-box">
+            As defined in ICH Q10:<br>
+            "A planned set of controls, derived from current product and process understanding, that assures process performance and product quality. The controls can include parameters and attributes related to drug substance and drug product materials and components, facility and equipment operating conditions, in-process controls, finished product specifications, and the associated methods and frequency of monitoring and control."
+        </div>
+
+        <h3>Receiving Unit</h3>
+        <p>An organization, which includes core and auxiliary functions, where a designated product, process, or method is expected to be transferred <em>to</em>.</p>
+        <p>Core functions normally include quality, manufacturing, and process engineering. Auxiliary functions may include regulatory, supply chain, warehousing, and HSE. The actual balance of functions would be project specific.</p>
+
+        <h3>Process Validation</h3>
+        <p>As defined in FDA Guidance for Industry – Process Validation: General Principles and Practices:</p>
+        <div class="quote-box">
+            "Collection and evaluation of data, from the process design stage through commercial production, which establishes scientific evidence that a process is capable of consistently delivering quality product."
+        </div>
+        <p>Note: This is a lifecycle definition covering the three stages as described by FDA.</p>
+
+        <p>As defined in EMA Guideline on process validation for finished products:</p>
+        <div class="quote-box">
+            "Documented evidence that the process, operated within established parameters, can perform effectively and reproducibly to produce a medicinal product meeting its predetermined specifications and quality attributes."
+        </div>
+        <p>Note: This definition refers to a single stage – equivalent to Stage 2.2 of FDA Guidance.</p>
+
+        <h3>Quality Target Product Profile (QTPP)</h3>
+        <div class="quote-box">
+            As defined in ICH Q8(R2):<br>
+            "A prospective summary of the quality characteristics of a drug product that ideally will be achieved to ensure the desired quality, taking into account safety and efficacy of the drug product."
+        </div>
+
+        <h3>Sending Unit</h3>
+        <p>An organization, which includes core and auxiliary functions, where a designated product, process, or method is expected to be transferred <em>from</em>.</p>
+        <p>Core functions normally include quality, manufacturing, and process engineering. Auxiliary functions may include regulatory, supply chain, warehousing, and HSE.</p>
+
+        <h3>Stakeholder</h3>
+        <p>Any individual, group, or organization that can affect, be affected by, or perceive itself to be affected by a transfer. Decision makers might also be stakeholders.</p>
+
+        <h3>Technology Transfer Charter</h3>
+        <p>The <span class="key-term">technology transfer charter</span> captures the strategic intent and defines the overall scope of the technology transfer project. It should document the team members and their roles and responsibilities, explain the effort and time required for the technology transfer project, and identify significant assumptions and risks. The charter helps to ensure that management and team members from both sending and receiving units understand the project and agree upon deliverables.</p>
+        <p><em>Note: The technology transfer charter and proposal may be the same document, depending on the complexity of the technology transfer project. If the charter elements change, the project needs to be reevaluated, no matter what stage it is at in the technology transfer.</em></p>
+
+        <h3>Technology Transfer Proposal</h3>
+        <p>The <span class="key-term">technology transfer proposal</span> defines the overall scope of the project, documents the team members and their roles and responsibilities, estimates the effort and time required for the project, establishes high level success criteria, and identifies significant assumptions and risks. This document is intended to ensure that stakeholders and team members from both sending and receiving units understand the project and agree upon the deliverables. The technology transfer proposal also identifies information needed for the technology transfer package. The technology transfer proposal should be reviewed and approved by the appropriate stakeholders from both sending units and receiving units. The proposal may be managed using formal change control procedures.</p>
+        <p><em>Note: The technology transfer charter and proposal may be the same document, depending on the complexity of the technology transfer project.</em></p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — Charter vs. Proposal：兩份文件的本質差異</h4>
+            <p>指南的 Note 說「兩者可能是同一份文件」——但在複雜的 CDMO 移轉中，它們通常是獨立文件，功能截然不同：</p>
+            <table style="font-size:0.85rem;">
+                <tr>
+                    <th>面向</th>
+                    <th>Charter（章程）</th>
+                    <th>Proposal（提案）</th>
+                </tr>
+                <tr>
+                    <td>目的</td>
+                    <td>策略性授權文件</td>
+                    <td>詳細技術計畫</td>
+                </tr>
+                <tr>
+                    <td>受眾</td>
+                    <td>管理層、決策者</td>
+                    <td>執行團隊、技術人員</td>
+                </tr>
+                <tr>
+                    <td>內容</td>
+                    <td>目標、範圍、角色、假設</td>
+                    <td>詳細活動、時程、成功標準</td>
+                </tr>
+                <tr>
+                    <td>核准層級</td>
+                    <td>高層管理授權</td>
+                    <td>專案干係人確認</td>
+                </tr>
+                <tr>
+                    <td>時機</td>
+                    <td>最先完成</td>
+                    <td>Charter 核准後展開</td>
+                </tr>
+            </table>
+            <p><strong>黃金規則：Charter 確立「做不做、做什麼」；Proposal 確立「怎麼做」。Charter 必須先簽，Proposal 才有正當性。</strong></p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Charter 與 Proposal 如同建案許可 vs. 施工圖</h4>
+            <p><strong>Charter</strong> 就像建案的「都市計畫許可」——政府（管理層）授權你在這塊地上蓋這類建築（TT 的策略範圍與目標）。</p>
+            <p><strong>Proposal</strong> 就像「施工圖」——建築師（技術團隊）根據許可的範圍，設計出具體的每一道牆要在哪裡、每個管線要怎麼走。</p>
+            <p>如果一開始建案許可就搞錯了（Charter 定義了錯誤的範圍），再精美的施工圖也是白做——因此指南特別強調：Charter 一旦改變，整個專案必須重新評估。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>CDMO 接收方的 5 大必問清單</h4>
+            <pre>
+簽 TT 協議前，接收方必須向送出方確認：
+
+1. 製程表徵完整性
+   → 是否有完整的 QTPP/CQA/CPP 矩陣？
+   → 哪些 CPP 範圍仍在定義中？
+
+2. Technology Package 的完整性
+   → 文件清單是否已確定？隱性知識如何傳遞？
+   → 分析方法是否已驗證並可移轉？
+
+3. 法規狀態
+   → 現有注冊檔案的狀態？CDMO 接收後需要哪些補充申請？
+   → 是否有任何未解決的 regulatory commitment？
+
+4. 設備與設施差異
+   → 接收方設備與送出方的關鍵差異？
+   → 是否有已知的 scale effect 或設備敏感性？
+
+5. 時程與資源
+   → 送出方能提供多少現場支援時間？
+   → 關鍵里程碑（first PPQ batch）的目標日期是否現實？
+</pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — Sending Unit 與 Receiving Unit 的知識不對稱</h4>
+            <p>指南定義顯示：送出方「possesses the process knowledge, history, and operational experience」，接收方「needs to acquire that knowledge」。</p>
+            <p>這個不對稱性是 TT 中最深層的張力來源：</p>
+            <ul>
+                <li>送出方可能不知道自己知道什麼（隱性知識），無法主動識別出需要移轉的內容</li>
+                <li>接收方不知道自己不知道什麼，無法問出正確的問題</li>
+                <li>雙方都可能高估知識移轉的完整性（「我們覺得說清楚了」）</li>
+            </ul>
+            <p>解法：使用結構化的 Technology Package Checklist（見 Appendix 1），強制雙方逐項確認，而非依賴主觀感覺。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — FDA vs. EMA 製程驗證定義的差異</h4>
+            <p>指南並列兩個定義，這個差異在 TT 中有實際意義：</p>
+            <ul>
+                <li><strong>FDA：</strong>生命週期定義（覆蓋 Stage 1-3）— 意味著 PPQ 只是驗證的開始，後續 CPV 同樣重要</li>
+                <li><strong>EMA：</strong>單一階段定義（等同 Stage 2.2）— 強調「documented evidence」，PPQ 的批次數據是核心</li>
+            </ul>
+            <p>對於需要同時滿足 FDA 和 EMA 要求的全球產品（常見於 CDMO），TT 的 Process Validation Strategy 必須同時設計兩套邏輯，並在 Regulatory Strategy 中明確說明。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果 Charter 在 TT 進行到一半時需要修改範圍（例如增加一個劑型），正確的程序是什麼？由誰來決定是否需要重新評估整個專案？</li>
+                <li>QTPP 的定義說「prospective summary（前瞻性摘要）」——這意味著 QTPP 必須在移轉開始前就存在，還是可以在移轉期間建立？對 legacy products 有什麼含義？</li>
+                <li>你的 CDMO 是一個複雜 TT 中的「Stakeholder」嗎？Stakeholder 的定義對 CDMO 的參與權有什麼法律意涵？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 2rem; border-radius:10px;">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>TT 的本質是知識管理：</strong>ICH Q10 定義明確——技術移轉的目標是「product realisation」，核心是將產品與製程知識從開發端移轉至生產端，而非單純複製設備或 SOP。</li>
+        <li><strong>送出方與接收方的知識不對稱</strong>是 TT 失敗的根源：隱性知識（Tacit knowledge）和品質文化差異往往比技術差距更難克服，必須在 Charter 階段就開始正視。</li>
+        <li><strong>三大 TT 驅動因素</strong>（生命週期推進、產能擴充、策略搬遷）各有不同的風險樣貌，接收方在評估 TT 機會時必須先判斷屬於哪一類。</li>
+        <li><strong>Charter 在 Proposal 之前：</strong>Charter 是策略性授權文件（管理層共識），Proposal 是詳細技術計畫（執行團隊指南）——兩者缺一不可，順序不可顛倒。</li>
+        <li><strong>分析方法移轉是 DS/DP 移轉的前提：</strong>沒有已移轉的分析方法，就無法驗證製程的等同性——三類 TT 必須協調規劃，不能獨立推進。</li>
+        <li><strong>TT 與 Process Validation 的邊界：</strong>TT 在 close-out 後完成，PPQ 是 TT 成功的終極驗證標誌，CPV 則超出 TT 的範疇——但三者必須在計畫初期就整合設計。</li>
+    </ul>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

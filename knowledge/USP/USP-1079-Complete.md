@@ -1,0 +1,163 @@
+# USP General Chapter 〈1079〉: Risks and Mitigation Strategies for the Storage and Transportation of Finished Drug Products
+
+USP General Chapter 〈1079〉 RISKS AND MITIGATION STRATEGIES FOR THE STORAGE AND TRANSPORTATION OF FINISHED DRUG PRODUCTS
+Official as of 01-Dec-2023 | Currently Official 12-Feb-2025
+
+1. INTRODUCTION
+
+Proper storage and transportation of finished drug products are critical activities in an integrated supply chain. These finished drug products include but are not limited to temperature-sensitive small molecules, vaccines, biologics, biotechnological products, radiopharmaceuticals, and combination products. With the globalization of the pharmaceutical industry, various individuals and organizations from locations around the world can come into contact with the finished drug product. The storage and transportation processes for a drug product may involve complex movements with differences in documentation, handling requirements, and communication between the various entities throughout the supply chain.
+
+Environmental controls play a key role in maintaining drug safety, quality, and efficacy. Temperature is one of the most important parameters to control. Drugs must be stored and transported according to predetermined conditions (e.g., temperature) as supported by stability data. Temperature excursions outside of their respective labeled storage conditions, for brief periods, may be acceptable provided that stability data and scientific/technical justification exist, demonstrating that product safety, quality, and efficacy is not affected.
+
+To maintain the original quality, every party involved in the storage and transportation of a finished product should have an in-depth understanding of the storage and transportation risks and have the appropriate mitigation strategies in place to control these risks. The intent of this chapter is to identify common risks in the storage and transportation of drug products and to recommend mitigation strategies. The chapter is not meant to prescribe specific approaches or discuss regulatory frameworks currently in place, but rather to focus on risks and mitigation strategies for quality processes to maintain product and supply chain integrity. The principles of this chapter can be used to facilitate the storage and transportation of drug products throughout a supply chain that is controlled, measured, and analyzed for continuous improvements while also maintaining the integrity of the drug product in its packaging during distribution.
+
+2. SCOPE
+
+This chapter applies to organizations and individuals involved in the storage and transportation of drug products, including but not limited to the following:
+- Manufacturers of drug products, radiopharmaceuticals, biological products, and biotechnological products
+- Repackaging operations in which the product may be owned by a company other than the primary manufacturer
+- Healthcare providers and institutions such as hospitals; outpatient, ambulatory, and urgent care centers; home health providers; vaccine clinics; emergency departments; and medical, dental, and veterinary offices
+- Pharmacies, including but not limited to retail, compounding (sterile and nonsterile), specialty, mail order, hospital, nursing home, and hospice
+- Importers and exporters
+- Wholesale distributors
+- Third-party logistics providers, brokers, freight forwarders, consolidators, and other organizations involved in storage; road, rail, sea, and/or air transport services, or mail distributors that offer expedited or controlled-temperature shipping services
+
+Manufacturers of active pharmaceutical ingredients, excipients, packaging materials, medical devices, and dietary supplements are not within the scope of this chapter.
+
+3. RISK-BASED APPROACH TO THE STORAGE AND TRANSPORTATION OF FINISHED DRUG PRODUCTS
+
+*[Figure 1 illustrates the risk-based approach of a quality management system (QMS). It represents how product knowledge and process knowledge facilitate the identification of risk. The figure also illustrates how mitigation strategies that are planned to reduce the identified risks, categorized in clusters, form the pillars of a QMS.]*
+
+Product and process knowledge is the starting point in identifying risks related to the storage and transportation of drug products. Product knowledge includes but is not limited to the following: intended use; storage conditions; potential hazards to environment and personnel; and inherent vulnerability. Process knowledge includes but is not limited to the following: knowledge of supply chain partners; physical modes of transportation (air, sea, rail, road, or a combination of modes); transportation routes; and national and international regulation.
+
+Risk identification is the systematic use of information to identify potential sources of harm (hazards). Information can include historical data, theoretical analysis, informed opinions, product and process knowledge, and the concerns of stakeholders. Risk identification addresses the question: "What might go wrong?" Mitigation strategies are part of the risk control process, specifically risk reduction. Risk reduction addresses the question: "What can be done to reduce or eliminate risks?"
+
+Generally, mitigation strategies fall within four categories related to: 1) documentation, i.e., providing instructions for a specific operation or process to standardize it and establish consistency; 2) training, i.e., ensuring competence; 3) resources, i.e., providing capability through infrastructure and human resources; and 4) qualification and validation, i.e., assurance that the resources and processes are reliable, reproducible, and robust.
+
+Several informal and formal tools can be used to conduct risk assessments and control risk. Examples include: flow charts, process mapping, trends, historical data records, and observations. Other tools such as failure mode effects analysis (FMEA), fault tree analysis (FTA), hazard analysis and critical control points (HACCP), hazard operability analysis (HAZOP), and preliminary hazard analysis (PHA) can also be used for conducting risk management.
+
+Table 1 contains illustrative examples of the risks related to drug product storage and transportation, along with their mitigation strategies:
+
+General Risk:
+- Human error due to excessive duties or lack of training or competence → Mishandling along the supply chain → Training and Resources
+- Buy from or sell to unlicensed trading partners → Legal sanctions; patient safety → Documentation and Resources
+- Shipping and receiving delays due to inclement weather, natural disasters, traffic disruption → Patient safety; temperature excursions → Documentation, Training, and Resources
+
+Storage Risks:
+- Improper entry into a materials management system → Inaccurate stock; picking/shipping errors → Documentation and Validation
+- Product stored in wrong physical location → Patient safety, picking error → Documentation, Training, and Validation
+- Environmental conditions out of specification → Product quality, integrity, and patient safety → Qualification and Validation, Training, and Documentation
+- Temperature monitoring device failure → Temperature excursion; product loss → Documentation and Resources
+- Storage or temperature system failure → Temperature excursion; product loss → Documentation and Resources
+- Fear of reporting nonconformance → Product integrity issues → Training and Resources
+
+Picking Risks:
+- Picking (human) error → Wrong item shipped; product returns → Documentation, Training, and Qualification and Validation
+
+4. RISK MITIGATION CATEGORIES AS QMS ELEMENTS
+
+A QMS is necessary to implement, monitor, and maintain a robust storage and transportation process. Key elements of a QMS are management responsibility, documentation, training, resource management, complaint handling, deviation/excursion handling, returns and recalls management, qualification/validation, monitoring, audit, corrective action, preventive action, and continuous improvement.
+
+The four categories of risk mitigation strategies are:
+
+### 4.1 Documentation and Procedures
+
+Documentation provides written information that allows for consistency and traceability of actions. For this reason, documentation is a fundamental part of any quality system. In a risk-based approach, documentation is a category of risk mitigation. Some examples of documentation include quality manuals; standard operating procedures (SOPs); labeling; records pertaining to procurement, receiving, storage, and transportation; supplier qualification records; quality agreements; recalls; and excursion-handling records.
+
+#### 4.1.1 QUALITY MANUAL
+
+A quality manual is a top-level quality document for all areas of the business affected by the quality system. The quality manual contains the quality policy, quality objectives, quality system structure, and information related to the management of a specific organization. The content may also include information on inspection management, customer complaints, recalls, withdrawals and holds, corrective and preventive actions, nonconformance and change control, information about regulatory issues, and performance evaluation through quality indicators.
+
+#### 4.1.2 STANDARD OPERATING PROCEDURES
+
+SOPs are controlled documents, with document owners and approvers, effective dates, revision management, and scheduled reviews. Procedures should cover areas governed by the quality manual and should cover all aspects of the operation that may affect product quality, including handling, distribution, and all regulated activities in relation to the specific business. SOPs should also address actions that are performed to identify and mitigate risks.
+
+Some key components are, but not limited to, the following: Corrective action/preventive action (CAPA); Documentation; Record keeping; Inventory management; Licensing; Management reviews; Nonconforming product; Order processing; Purchasing; Picking; Packing and shipping; Receiving; Returns; Storage; Training.
+
+Procurement: A procurement procedure ensures that a product is purchased according to product specifications and that purchases are made from qualified partners that are licensed as appropriate.
+
+Receiving: Each organization should have a receiving procedure that determines the appropriate checks for this operation. All incoming products should be segregated from salable inventory and identified. Products should be transferred to their respective storage areas according to their classification and storage specification.
+
+Storage and transportation: During storage and transportation, two approaches can be used to keep the product within its required labeled specifications: 1) Controlling the environmental conditions within equipment, storage rooms, and transportation vehicles; 2) Using packaging materials that allow for the control of environmental conditions.
+
+Recalls: All supply chain partners are responsible for maintaining the quality and integrity of products under their control. Anytime a deviation is found that likely affects the safety or efficacy of a marketed product, an appropriate action should be taken, including a potential recall.
+
+Returns: A risk-based evaluation should be performed to determine if the product will be acceptable for restocking and resale or if it needs to be destroyed. A written procedure for handling returns should be in place.
+
+Supplier qualification: Supplier qualification is a process in which the organization assesses its suppliers regarding their licenses, authorizations, and compliance with regulatory requirements for the distribution of drug products.
+
+#### 4.1.3 LABELS
+
+Labels are fundamental to material identification. For this reason, any label change should be communicated to downstream supply chain partners. Labels applied, even to small containers, should be clear, indelible, unambiguous, and permanently fixed. The shipping label should include wording or icons to emphasize storage and transportation conditions, handling requirements, and hazards.
+
+#### 4.1.4 QUALITY AGREEMENTS
+
+Written agreements should be in place between applicable organizations involved in the supply chain. Each supply chain partner should ensure that its respective service level agreements and supporting documents cover delivery and receiving responsibilities.
+
+#### 4.1.5 EXCURSION HANDLING
+
+Short-term temperature excursions can occur during distribution, storage, and transportation. Each excursion should be documented and handled with a deviation or appropriate risk assessment. Product disposition should be established on the basis of an assessment of the excursion (i.e., the temperature to which the material or product was exposed, and for how long), the stability data obtained from traditional stability studies, and distribution stability studies. Combining stability data from long-term and accelerated studies with mean kinetic temperature (MKT), temperature-excursion, and thermal-cycling studies should provide the information necessary to evaluate the effects of excursions.
+
+### 4.2 Training
+
+Training is a teaching-learning process used in the workplace to provide knowledge and develop skills and behaviors. The objective of training is to reduce the gap between the existing competencies and those required for performing the work.
+
+A written training procedure is necessary to establish who can be the trainer, how training needs are identified, and how training effectiveness will be evaluated. SOPs are the foundation of a quality system, and training must be provided for each SOP to the appropriate job roles responsible for executing the processes outlined in each SOP.
+
+The effectiveness of training should be considered and evaluated to determine its impact on task execution and quality. Evaluation of training effectiveness may include a review of written or performance tests, observation, error rates, non-conformance or CAPAs, customer complaints, and internal and external audits.
+
+As a risk mitigation strategy, training should be performed before the SOP becomes effective. All employees whose actions have an impact on product quality and security should have initial and ongoing training.
+
+### 4.3 Resources for Storage, Transportation, and Personnel
+
+In the context of this chapter, resources are warehouses, vehicles, and organizational personnel. Facilities, equipment, and transportation vehicles are emphasized as systems that function to control environmental conditions in accordance with product specifications.
+
+#### 4.3.1 STORAGE
+
+The facility should be designed to maintain the quality and integrity of the stored drug product. Buildings should be constructed in such a way that they are appropriate for the intended operations, taking into account: Security; Product characteristics; Product status; Product required storage temperature; Ease of cleaning and maintenance; Logical flow of personnel and materials; Means of preventing mix-ups and cross-contamination; Ergonomic measures; Product demand; Local, national, or international requirements; Necessary environmental controls.
+
+Drug product storage areas are required to maintain the product temperature between the limits defined on the product label. Product storage areas/units should utilize recording systems to log and track temperatures. Alarm systems should be an integral part of the monitoring system for product temperatures.
+
+#### 4.3.2 TRANSPORTATION
+
+All vehicles used in supply chain activities should be suitable for the intended purpose because they are providing in-transit storage and should prevent exposure to conditions that affect stability and package integrity. Risk identification and mitigation strategies should be applied to determine whether the transportation method adequately protects the product from environmental exposures.
+
+#### 4.3.3 PERSONNEL
+
+Organizations should hire personnel and contractors who meet the requirements for handling drugs safely and securely per applicable laws and regulations. Job descriptions and individual profiles should be reviewed to ensure that all experience and training requirements are met and maintained.
+
+### 4.4 Qualification and Validation
+
+Qualification and validation for storage and transportation of drugs focus on the assurance that the storage and transportation methods meet predetermined criteria and that processes and procedures produce the desired outcome.
+
+#### 4.4.1 CALIBRATION OF INSTRUMENT OR DEVICE
+
+Calibration ensures that measurements such as temperature and humidity meet recognized standards. Calibration frequency may be determined by the device manufacturer, device workload, operational demands, and/or damage that require repairs. Instruments or devices used for qualification or monitoring of set criteria must be calibrated to recognized standards such as those from the National Institute of Standards and Technology (NIST).
+
+#### 4.4.2 QUALIFICATION
+
+For the purposes of this chapter, performance qualification is defined as all tests designed and executed to evaluate whether the storage rooms and areas, warehouse facilities, utilities, equipment, transport vehicles, and shipping containers are suitable for their intended purpose. Qualification studies should reflect actual load configurations and environmental conditions.
+
+During the qualification process, temperature mapping is performed to provide information relative to temperature consistency throughout a product area. Temperature mapping in facilities and equipment considers: size of the space; location of HVAC equipment; sun-facing walls; low ceilings or roofs; geographic location; airflow inside the storage location; temperature variability outside; workflow variation; loading or storage patterns; equipment capabilities; and SOPs.
+
+Temperature mapping for shipping packaging and vehicles: Pharmaceutical manufacturers should consider primary, secondary, and tertiary packaging that best protects the drug product during storage and distribution. Shipping package performance testing should be documented as part of a QMS.
+
+When developing a thermal package qualification protocol, the following factors should be considered: Transportation temperature profile for the shipping lane(s); Delivery cycle time; Testing beyond qualification time; Seasonal changes; Use of seasonal configurations; Testing with actual payload; Variable order sizes; Probe placement; Replicate tests; Allow conditioning; Utilize a recognized standard.
+
+#### 4.4.3 VALIDATION OF INFORMATION SYSTEMS
+
+Before an information system that can impact the quality of the product in storage or in transportation is brought into use, it should be demonstrated through appropriate validation or verification studies that the system is capable of achieving the desired results accurately, consistently, and reproducibly.
+
+Validation or verification tests should cover: Security; Data validity; Documentation; Functionality; Data integrity.
+
+GLOSSARY
+
+Calibration: A process that typically focuses on instruments or devices to provide assurance that they produce results within specified limits.
+
+Qualification: The assurance that systems or equipment meet predetermined acceptance criteria. Some types include design qualification, installation qualification, operational qualification, and performance qualification.
+
+Service level agreement (SLA): A negotiated agreement between the customer and service provider that defines the common understanding about materials or service quality specifications, responsibilities, guarantees, and communication mechanisms.
+
+Temperature excursion: An event in which a pharmaceutical product is exposed to temperatures outside of the range(s) prescribed for storage and/or transport. Temperature ranges are determined by the product manufacturer, based on stability data.
+
+Validation: Typically focuses on processes and procedures, to provide assurance that the processes or equipment produce the desired outcome.

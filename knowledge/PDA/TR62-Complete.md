@@ -1243,7 +1243,6 @@ Glenn Wright, Eli Lilly and Company
 Bethesda Towers
 4350 East West Highway
 Suite 200
-Bethesda, MD 20814 USA
 Tel:
 1 (301) 656-5900
 Fax:

@@ -30,25 +30,19 @@ Before searching, analyse the user's question:
 
 ---
 
-## Step 1 — Read the Master Index and plan
+## Step 1 — Route via compact index (then detail if needed)
 
-Read `knowledge/INDEX.md` in full.
+**First**, read `knowledge/INDEX-router.md` (compact, ~200 lines). It has:
+- **Synonym Table** — translate user terms to search terms
+- **Topic Router** — topic → ★★★ primary / ★★ secondary reports **with section hints** (e.g., TR26 §7)
 
-**A) Check if the topic is in scope:**
-- If the topic maps to one or more reports → proceed to search
-- If the topic is clearly outside this knowledge base (e.g., asked about a report not listed, or a topic like general chemistry, business strategy) → stop and tell the user:
-  - What this knowledge base covers (PDA, ISPE, and other GMP guideline sources)
-  - Which report(s) are closest to their question, if any
-  - Suggest rephrasing if applicable
+**A) Scope check:** If the topic doesn't match any router entry → check "Not Covered" at the bottom. Tell user what's covered and suggest rephrasing.
 
-**B) Identify which reports to search:**
-- Check **Cross-Report Topics** first — if the topic is listed there, note PRIMARY (★★★) and SECONDARY (★★) reports
-- Otherwise use **Quick Topic Routing Guide** to identify 1–2 reports
+**B) Identify reports:** Match the question to a Topic Router row. Use the section hints to plan targeted grep.
 
-**C) Build your search plan:**
-- Single-report topic → deep grep on 1 file
-- Cross-report topic → tiered grep (Step 2)
-- Overview question → read first 100 lines of the relevant MD file + grep section headings
+**C) Fallback to full index:** Only if the compact router doesn't cover the topic, read `knowledge/INDEX.md` (detailed, ~970 lines) for Terms-based keyword matching and Cross-Report Topics.
+
+**D) Search plan:** Single-report → deep grep at hinted section. Cross-report → tiered grep (Step 2). Overview → read first 80 lines + grep `^##`.
 
 ---
 
@@ -56,8 +50,9 @@ Read `knowledge/INDEX.md` in full.
 
 ### For specific technical questions:
 
-**Primary report (★★★) — deep grep:**
-- `path: knowledge/<SOURCE>/<primary>.md`, `output_mode: content`, `-C 25`
+**Primary report (★★★) — deep grep with section targeting:**
+- If the router provides a section hint (e.g., `TR26 §7`), first grep for the section heading to find its line range, then read that range with `offset`/`limit` for full context
+- Fallback: `path: knowledge/<SOURCE>/<primary>.md`, `output_mode: content`, `-C 25`
 - Pattern: the **technical terms** identified in Step 0 (not the user's original lay words)
 
 **Secondary reports (★★) — targeted grep:**
@@ -118,6 +113,23 @@ End with 1–2 concrete follow-up questions phrased in plain language, connectin
 
 ---
 
-**Knowledge base:** `knowledge/PDA/`, `knowledge/ISPE/` — GMP documents as Markdown, routed via `knowledge/INDEX.md`
+---
 
-**Sources:** PDA Technical Reports, ISPE Baseline Guides, and more. Check `knowledge/INDEX.md` for the full list of available documents.
+## Step 5 — Index gap detection (auto-update)
+
+After answering, check: was this question's topic found in `knowledge/INDEX-router.md` Topic Router?
+
+**If NOT found** AND the answer drew from 2+ reports:
+1. Add a new row to the appropriate category table in `knowledge/INDEX-router.md`, with ★★★/★★ reports and section hints
+2. Also add a Cross-Report Topic entry to `knowledge/INDEX.md` following the existing format: `**Topic (中文)** → Report ★★★ (angle) | Report ★★ (angle)`
+3. Notify the user: `Added to router: "[topic]" → [reports with section hints].`
+
+Keep entries concise. Use the same ★★★/★★/★ rating convention as existing entries.
+
+---
+
+**Knowledge base:** `knowledge/PDA/`, `knowledge/ISPE/` — GMP documents as Markdown
+
+**Routing files (two-layer system):**
+- `knowledge/INDEX-router.md` — compact router (~200 lines), read FIRST every query
+- `knowledge/INDEX.md` — detailed reference (~970 lines), read only as fallback

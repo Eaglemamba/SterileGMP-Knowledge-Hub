@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapters 10–12: Operational Issues, Packaged Transport &amp; Maintenance | ISPE CTC Guide</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* ISPE green overrides */
+    --ispe-green: #16a34a;
+    --ispe-green-dark: #14532d;
+    --ispe-green-light: #dcfce7;
+    --ispe-green-border: #86efac;
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== ISPE HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+
+/* ===== KEY MESSAGE BANNER ===== */
+.key-message-banner {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 6px solid #d97706;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 10px 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #78350f;
+}
+.key-message-banner .zh { font-size: 0.9rem; color: #92400e; margin-top: 0.25rem; font-weight: 400; }
+
+/* ===== MAIN CONTENT ===== */
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+/* ===== CHAPTER SECTIONS ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN ===== */
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h3 { color: var(--ispe-green-dark); border-bottom: 2px solid var(--ispe-green); padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.05rem; }
+.left-column h4 { color: var(--ispe-green); margin: 0.85rem 0 0.5rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+/* ===== RIGHT COLUMN ===== */
+.right-column {
+    background: var(--ispe-green-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--ispe-green-border);
+}
+.right-column h3 { color: var(--ispe-green-dark); border-bottom: 2px solid var(--ispe-green); padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.05rem; }
+.right-column h4 { color: var(--ispe-green-dark); margin: 0.85rem 0 0.5rem; font-size: 0.95rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+
+/* ===== COLUMN HEADER LABELS ===== */
+.column-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+.col-label-en { background: var(--ispe-green); color: white; }
+.col-label-zh { background: var(--ispe-green-dark); color: white; }
+
+/* ===== CONCEPT BOXES ===== */
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-point-box, .highlight-box, .practice-box, .application-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4, .analogy-box h4, .note-box h4, .key-note h4, .term-box h4,
+.formula-box h4, .key-point-box h4, .highlight-box h4, .practice-box h4, .application-box h4 {
+    margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600;
+}
+.concept-box ul, .analogy-box ul, .note-box ul, .key-note ul, .term-box ul,
+.formula-box ul, .key-point-box ul, .highlight-box ul, .practice-box ul, .application-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li,
+.formula-box li, .key-point-box li, .highlight-box li, .practice-box li, .application-box li {
+    margin-bottom: 0.35rem; font-size: 0.92rem;
+}
+
+/* Green concept box */
+.term-box { background: var(--green-bg); border-left: 4px solid var(--green-border); }
+.term-box h4 { color: #2e7d32; }
+
+/* Yellow analogy box */
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+
+/* Orange note box */
+.note-box, .key-note { background: var(--orange-bg); border-left: 4px solid var(--orange-border); }
+.note-box h4, .key-note h4 { color: #c65102; }
+
+/* Purple formula box */
+.formula-box { background: var(--purple-bg); border-left: 4px solid var(--purple-border); }
+.formula-box h4 { color: #7b1fa2; }
+
+/* Blue application box */
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+
+/* Practice box - blue dashed */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+}
+.practice-box h4 { color: #2c5282; }
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+/* ===== TOC ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--ispe-green-dark); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: var(--ispe-green-light);
+    border-radius: 6px;
+    color: var(--ispe-green-dark);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid var(--ispe-green-border);
+    transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--ispe-green); color: white; }
+
+/* ===== TABLES ===== */
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #e8f5e9 0%, var(--ispe-green-light) 100%); font-weight: 600; color: var(--ispe-green-dark); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7faf8; }
+
+/* ===== FLOWCHART STYLES ===== */
+.flowchart {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+.flowchart-title { font-weight: 700; color: var(--ispe-green-dark); font-size: 0.95rem; margin-bottom: 1rem; }
+.flow-step {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.25rem;
+    min-width: 180px;
+    text-align: center;
+}
+.flow-trigger { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.flow-immediate { background: #fef3c7; border: 2px solid #f59e0b; color: #78350f; }
+.flow-assess { background: #dbeafe; border: 2px solid #3b82f6; color: #1e40af; }
+.flow-action-ok { background: var(--ispe-green-light); border: 2px solid var(--ispe-green); color: var(--ispe-green-dark); }
+.flow-action-ng { background: #fee2e2; border: 2px solid #dc2626; color: #991b1b; }
+.flow-decision {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #fef3c7;
+    border: 2px solid #d97706;
+    color: #78350f;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transform: rotate(0deg);
+    border-radius: 4px;
+    margin: 0.25rem;
+    min-width: 160px;
+    text-align: center;
+}
+.flow-arrow { font-size: 1.3rem; color: #6b7280; margin: 0.15rem 0; display: block; }
+.flow-row { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 0.25rem 0; flex-wrap: wrap; }
+.flow-branch-label { font-size: 0.75rem; color: #6b7280; font-weight: 600; }
+
+/* ===== DECISION TREE ===== */
+.decision-tree {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+}
+.decision-tree-title { font-weight: 700; color: var(--ispe-green-dark); font-size: 0.95rem; margin-bottom: 0.75rem; text-align: center; }
+.dt-node {
+    border-left: 4px solid var(--ispe-green);
+    padding: 0.6rem 0.85rem;
+    margin: 0.5rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.88rem;
+    background: #f9fafb;
+}
+.dt-node.dt-question { background: #eff6ff; border-left-color: #3b82f6; color: #1e40af; font-weight: 600; }
+.dt-node.dt-yes { background: var(--ispe-green-light); border-left-color: var(--ispe-green); color: var(--ispe-green-dark); }
+.dt-node.dt-no { background: #fee2e2; border-left-color: #ef4444; color: #b91c1c; }
+.dt-node.dt-action { background: #fef3c7; border-left-color: #f59e0b; color: #78350f; }
+.dt-indent { margin-left: 1.5rem; }
+
+/* ===== PM TABLE ===== */
+.pm-table th { background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%); color: white; }
+.freq-monthly { background: #dcfce7; color: #14532d; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+.freq-quarterly { background: #dbeafe; color: #1e40af; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+.freq-annual { background: #fef3c7; color: #78350f; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+.freq-asneeded { background: #f3e8ff; color: #6b21a8; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.75rem; position: relative; font-size: 0.92rem; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--ispe-green); font-size: 1rem; }
+
+/* ===== BADGE ===== */
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.orange { background: #ffe0b2; color: #bf360c; }
+.badge.purple { background: #e1bee7; color: #4a148c; }
+
+/* ===== COMPARISON TABLE ===== */
+.comparison-table th:first-child { width: 25%; }
+
+/* ===== SECTION DIVIDER ===== */
+.section-divider { border: none; border-top: 2px solid #e2e8f0; margin: 1.5rem 0; }
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--ispe-green-dark);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--ispe-green);
+    color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--ispe-green-dark); transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+    .flow-step, .flow-decision { min-width: 120px; font-size: 0.78rem; }
+}
+
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+    <h1>Chapters 10–12: Operational Issues, Packaged Transport &amp; Maintenance</h1>
+    <p class="subtitle">操作問題、包裝運輸系統與維護 | ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</p>
+    <p class="page-info">Section 04 &nbsp;|&nbsp; Source pages 50–60 &nbsp;|&nbsp; Bilingual Educational Edition</p>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+<!-- KEY MESSAGE BANNER -->
+<div class="key-message-banner">
+    "A mapped chamber that isn't maintained properly is a mapped chamber that no longer reflects reality."
+    <div class="zh">「一台已完成溫度映射但未妥善維護的設備，其映射結果已不再反映現實狀態。」</div>
+</div>
+
+<!-- ===== LEARNING OBJECTIVES ===== -->
+<div class="learning-objectives">
+    <h3>Learning Objectives | 學習目標</h3>
+    <div class="two-column" style="gap:1rem; margin-bottom:0;">
+        <div>
+            <strong>English</strong>
+            <ul>
+                <li>Explain how loading practices and door-opening events affect CTC temperature distribution</li>
+                <li>Describe open-door recovery testing methodology and acceptance criteria</li>
+                <li>Outline a power outage response procedure including product disposition logic</li>
+                <li>Apply a temperature excursion assessment protocol to determine product impact</li>
+                <li>Compare unit qualification vs. supplier assessment approaches for active ULD shippers</li>
+                <li>Distinguish lane-based from performance-based transport qualification strategies</li>
+                <li>Describe trailer design standards (TMC / ATP) and their pharmaceutical relevance</li>
+                <li>Build a preventive maintenance program covering coils, seals, refrigerant, and alarms</li>
+                <li>Establish a calibration recall system aligned with GMP monitoring expectations</li>
+                <li>Determine when a PM event triggers a re-qualification requirement</li>
+            </ul>
+        </div>
+        <div>
+            <strong>中文</strong>
+            <ul>
+                <li>解釋裝載方式與開門事件如何影響CTC溫度分佈</li>
+                <li>描述開門恢復測試的方法論與驗收標準</li>
+                <li>概述停電應急程序，包括產品處置邏輯</li>
+                <li>將溫度偏差評估協議應用於產品影響判斷</li>
+                <li>比較主動型ULD運輸容器的單機資格認證 vs. 供應商評估方法</li>
+                <li>區分基於路線(lane-based)與基於性能(performance-based)的運輸驗證策略</li>
+                <li>描述冷藏拖車設計標準(TMC/ATP)及其在製藥的意義</li>
+                <li>建立涵蓋盤管、密封、冷媒及警報的預防性維護計畫</li>
+                <li>建立符合GMP監測期望的儀器校準召回系統</li>
+                <li>判斷PM事件何時需要觸發重新資格認證</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TABLE OF CONTENTS ===== -->
+<div class="toc">
+    <h3>Table of Contents | 目錄</h3>
+    <div class="toc-grid">
+        <a href="#ch10-loading">10.1 Loading &amp; Operational Activities</a>
+        <a href="#ch10-door">10.2 Open Door Recovery Test</a>
+        <a href="#ch10-power">10.3 Power Outage / Thermal Degradation Test</a>
+        <a href="#ch10-calibration">10.4 Calibration Strategies</a>
+        <a href="#ch10-access">10.5 Access Control &amp; Dehumidification</a>
+        <a href="#ch11-uld">11.1 Active ULD Shipping Containers</a>
+        <a href="#ch11-trailer">11.2–11.5 Temperature Controlled Trailers</a>
+        <a href="#ch11-loading">11.6 Trailer Loading &amp; Inspection</a>
+        <a href="#ch12-coils">12.1–12.4 Coils, Condensate, Leaks</a>
+        <a href="#ch12-thermal">12.5–12.6 Thermal Scanning &amp; Alarms</a>
+        <a href="#ch12-pm">12.x PM by Equipment Type</a>
+    </div>
+</div>
+
+<!-- =========================================================
+     CHAPTER 10: OPERATIONAL ISSUES
+     ========================================================= -->
+<div class="chapter-section" id="ch10-loading">
+    <div class="chapter-divider">
+        <div class="chapter-badge">10</div>
+        <div class="chapter-info">
+            <h2>Chapter 10: Operational Issues | 操作問題</h2>
+            <p>Section 10.1 — Challenging the Area with Operational Activities | 以操作活動挑戰受測區域</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>10.1 Challenging the Area with Operational Activities</h3>
+                <p>The area being mapped should be challenged with specific known operational activities during the thermal mapping process. These activities should simulate normal processes and functions that would occur for routine operations, such as opening interior doors, opening exterior doors (Receiving Dock Doors, Shipping Dock Doors), running of equipment (e.g., thermo-formers, stretch wrappers, forklifts, conveyors) etc. where there is a potential impact to the conditions.</p>
+                <p>By performing these functions and operating equipment during the execution of the mapping studies, cause and effect relationships can be identified for the thermal profile.</p>
+                <p>Operational activities to simulate during mapping include:</p>
+                <ul>
+                    <li>Opening interior and exterior doors (dock doors, personnel doors)</li>
+                    <li>Running warehouse equipment: forklifts, conveyors, stretch wrappers</li>
+                    <li>Simulating loading and unloading cycles</li>
+                    <li>Normal personnel traffic through the space</li>
+                </ul>
+                <div class="analogy-box">
+                    <h4>Note on Cause and Effect</h4>
+                    <p>The primary purpose of operational challenges is to capture the <em>actual</em> thermal profile experienced during real production — not an idealized empty-room baseline. A mapping study that omits these activities may underestimate temperature variability and produce specifications that cannot be met during routine operation.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>操作挑戰與熱圖譜映射</h3>
+                <div class="term-box">
+                    <h4>核心概念：操作活動挑戰</h4>
+                    <p>熱映射研究不只是在空置、靜態的設備中放置感測器。ISPE要求在<strong>模擬真實生產條件</strong>下執行映射，以暴露潛在的溫度變化因子。</p>
+                    <p>這等同於在「最接近實際使用場景」的條件下驗證設備性能。</p>
+                </div>
+
+                <div class="application-box">
+                    <h4>CDMO共用冷藏室裝載風險場景</h4>
+                    <p>在CDMO環境中，冷藏室通常同時存放來自多個客戶的產品，裝載風險更為複雜：</p>
+                    <ul>
+                        <li><strong>場景1：多客戶同時存取</strong> — 不同班次的操作員頻繁進出，若無vinyl curtain，每次開門都會造成熱侵入</li>
+                        <li><strong>場景2：大批量裝載進入</strong> — 大量托盤同時裝入可能暫時阻擋冷風循環，形成局部熱點</li>
+                        <li><strong>場景3：叉車進入造成氣流擾動</strong> — 叉車引擎散熱 + 門口開啟同時發生，放大溫度衝擊</li>
+                        <li><strong>場景4：非工作時間的最低頻率開門</strong> — 凌晨班次進出頻率不同，代表最差情況(worst case)未必在白天</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考 1/3</h4>
+                    <p><strong>Q：</strong>您的設施在進行冷藏室熱映射時，是否模擬了叉車進入及多次連續開門的場景？如果沒有，映射結果可能存在什麼風險？</p>
+                    <p><strong>提示：</strong>思考「驗證的場景」與「實際操作的場景」之間的差距（validation gap）對產品安全性的影響。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 10.2 Open Door Recovery -->
+<div class="chapter-section" id="ch10-door">
+    <div class="chapter-divider">
+        <div class="chapter-badge">10</div>
+        <div class="chapter-info">
+            <h2>Chapter 10: Operational Issues | 操作問題</h2>
+            <p>Section 10.2 — Open Door Recovery Test | 開門恢復測試</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>10.2 Open Door Recovery Test</h3>
+                <p>An example of a typical operational activity is to examine recovery time for the internal chamber temperature after opening the access door and simulating loading/unloading. It is recommended to determine the time that the chamber door may remain fully open before the monitoring sensors are no longer within the acceptable range.</p>
+                <p>This test can also help to determine how quickly the monitoring sensor recovers and returns to the normal operating temperature range.</p>
+                <h4>Recommended Test Conditions</h4>
+                <ul>
+                    <li>Use a <strong>minimum (simulated) load or no load</strong> — worst case with no thermal mass</li>
+                    <li>Locate temperature sensors as recommended for thermal mapping, with <strong>special attention to sensors nearest the door</strong></li>
+                    <li>Set data acquisition rate to <strong>1-minute intervals</strong> due to uncertainty in test duration</li>
+                </ul>
+                <h4>Acceptance Criteria</h4>
+                <p>Generally, there are no specific acceptance criteria for this test unless a recovery time is specified in the unit manufacturer's specifications. The key output is a data-supported understanding of the chamber's tolerance for door-open events.</p>
+                <div class="analogy-box">
+                    <h4>Special Case: Walk-in with Vinyl Curtains</h4>
+                    <p>For larger walk-in CTCs fitted with vinyl curtains, the units may be able to maintain internal conditions indefinitely, as the impact of passing through curtains is short-term and negligible. Vinyl curtains should be well-fitted, rest on the unit walls, and sit just clear of the floor.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>開門恢復測試詳解</h3>
+                <div class="term-box">
+                    <h4>為何選擇「最小/無負載」作為最差情況？</h4>
+                    <p>熱質量(thermal mass)越大，設備抵抗溫度波動的能力越強。若測試時使用空倉（最小熱質量），任何熱侵入都會被快速放大，反映最差情況。</p>
+                    <p>這與工廠驗收測試(FAT/SAT)的邏輯一致：在最容易失敗的條件下驗證，通過才代表真正的品質保證。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>開門緩衝時間 (Buffering Time) — 操作意義</h4>
+                    <p>開門恢復測試的關鍵輸出是<strong>開門允許時間上限</strong>，這個數字必須轉化為：</p>
+                    <ul>
+                        <li>SOP中明確規定的「最大開門時間」</li>
+                        <li>作業員訓練的考核項目</li>
+                        <li>CAPA追蹤的偏差觸發條件</li>
+                    </ul>
+                    <p>如果SOP只寫「盡速關門」而沒有具體時間限制，等同於沒有控制。</p>
+                </div>
+
+                <!-- Power Failure Flowchart preview here -->
+                <div class="flowchart">
+                    <div class="flowchart-title">開門事件對溫度影響示意</div>
+                    <div class="flow-step flow-trigger">門打開 (T=0)</div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-step flow-immediate">熱侵入開始<br>最靠近門的感測器升溫</div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-decision">超過可接受範圍?</div>
+                    <div class="flow-row">
+                        <div>
+                            <span class="flow-branch-label">是 (門持續開啟)</span><br>
+                            <div class="flow-step flow-action-ng">觸發報警<br>立即關門 / 記錄偏差</div>
+                        </div>
+                        <div>
+                            <span class="flow-branch-label">否 (門已關閉)</span><br>
+                            <div class="flow-step flow-action-ok">進入恢復期<br>監測回復時間</div>
+                        </div>
+                    </div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-step flow-action-ok">溫度恢復至正常範圍<br>恢復時間記錄於報告</div>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考 2/3</h4>
+                    <p><strong>Q：</strong>您的SOP中是否明訂冷藏室最大開門時間？這個時間是基於開門恢復測試數據還是僅憑經驗設定？</p>
+                    <p><strong>延伸：</strong>若冷藏室安裝了vinyl curtain，開門時間限制是否可以放寬？放寬的前提是什麼？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 10.3 Power Outage -->
+<div class="chapter-section" id="ch10-power">
+    <div class="chapter-divider">
+        <div class="chapter-badge">10</div>
+        <div class="chapter-info">
+            <h2>Chapter 10: Operational Issues | 操作問題</h2>
+            <p>Section 10.3 — Power Outage / Thermal Degradation Test | 停電/熱降解測試</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>10.3 Power Outage / Thermal Degradation Test</h3>
+                <p>Another type of test that may be helpful from a business continuity, disaster recovery, and operational perspective is a simulated Power Outage Test. This type of test would measure the amount of time the Controlled Temperature Chamber remained within the desired temperature range once electrical power was turned off.</p>
+                <p><strong>Note:</strong> although it is expected the Controlled Temperature Chamber will have redundant and backup power supplies, the results from this test would provide data to define how quickly materials need to be moved to another location if the backup power systems failed. Doors to the storage chamber should remain closed during this test.</p>
+                <h4>Recommended Test Setup</h4>
+                <ul>
+                    <li>Use a minimum (simulated) load or no load in the CTC (worst case)</li>
+                    <li>Perform as commissioning activity referenced in OQ before the storage unit is put into use, if possible</li>
+                    <li>Locate temperature sensors as recommended for thermal mapping</li>
+                    <li>Data acquisition rate: <strong>1-minute intervals</strong></li>
+                </ul>
+                <h4>Additional Operational Value</h4>
+                <p>Once power is restored, the amount of time required to return to the appropriate required temperature can be of value for disaster recovery planning — specifically, the elapsed time from when power is restored until the <em>last</em> temperature sensor returns to the acceptable range.</p>
+                <p><strong>Note:</strong> This test was previously included in the USP, but has subsequently been removed.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>停電應對程序與產品處置</h3>
+
+                <!-- Power failure flowchart -->
+                <div class="flowchart">
+                    <div class="flowchart-title">停電應急SOP流程圖 | Power Failure Response SOP</div>
+                    <div class="flow-step flow-trigger">停電事件發生<br>(Power Failure Detected)</div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-step flow-immediate">立即確認<br>備用電源(UPS/Generator)是否啟動</div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-decision">備用電源正常?</div>
+                    <div class="flow-row">
+                        <div style="text-align:center">
+                            <span class="flow-branch-label">是</span><br>
+                            <div class="flow-step flow-action-ok">持續監測<br>記錄事件開始時間<br>每30分鐘確認溫度</div>
+                        </div>
+                        <div style="text-align:center">
+                            <span class="flow-branch-label">否 (備援失效)</span><br>
+                            <div class="flow-step flow-action-ng">立即啟動產品轉移程序<br>參考停電測試結果<br>確認可用時間視窗</div>
+                        </div>
+                    </div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-step flow-assess">評估已存放產品的暴露時間<br>查閱熱映射報告中的<br>停電衰減曲線</div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-decision">溫度是否超出規格?</div>
+                    <div class="flow-row">
+                        <div style="text-align:center">
+                            <span class="flow-branch-label">否</span><br>
+                            <div class="flow-step flow-action-ok">持續監測<br>電力恢復後確認<br>回復時間並記錄</div>
+                        </div>
+                        <div style="text-align:center">
+                            <span class="flow-branch-label">是</span><br>
+                            <div class="flow-step flow-action-ng">隔離產品<br>開立偏差報告(Deviation)<br>QA評估產品可用性</div>
+                        </div>
+                    </div>
+                    <span class="flow-arrow">↓</span>
+                    <div class="flow-step flow-action-ok">電力恢復 → 記錄恢復時間<br>設備重新達溫後方可重新使用<br>完整事件報告 + CAPA</div>
+                </div>
+
+                <div class="note-box">
+                    <h4>CDMO視角：停電測試的業務連續性價值</h4>
+                    <p>停電測試的輸出直接回答一個關鍵問題：<br>「如果備援電源完全失效，我有多少時間可以轉移產品？」</p>
+                    <ul>
+                        <li>2°C–8°C冷藏室：典型空倉衰減時間可能只有30–60分鐘</li>
+                        <li>-20°C冷凍庫：空倉衰減時間可能達2–4小時（但滿倉更長）</li>
+                        <li>這些數據必須納入業務連續性計畫(BCP)和緊急應變程序(ERP)</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考 3/3</h4>
+                    <p><strong>Q：</strong>您的設施是否有停電測試數據支撐緊急程序？如果備援電源在凌晨2點失效，值班人員能在多少分鐘內收到通知並採取行動？</p>
+                    <p><strong>情境延伸：</strong>若停電發生時冷藏室中存放的是某客戶的臨床試驗用藥，停電後2小時才發現，QA應如何評估產品可用性？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 10.4 Calibration + Access Control -->
+<div class="chapter-section" id="ch10-calibration">
+    <div class="chapter-divider">
+        <div class="chapter-badge">10</div>
+        <div class="chapter-info">
+            <h2>Chapter 10: Operational Issues | 操作問題</h2>
+            <p>Sections 10.4–10.5 — Calibration Strategies, Access Control &amp; Dehumidification | 校準策略、進出管制與除濕</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>Calibration and Calibration Strategies</h3>
+                <p>There are benefits to be derived from a considered calibration strategy:</p>
+                <ul>
+                    <li><strong>Refrigeration system instruments:</strong> Many can only be calibrated when the system is emptied for major maintenance — therefore, they are calibrated following manufacturer recommendations</li>
+                    <li><strong>Control sensor:</strong> Can be verified at a single point, as the control functions are usually based on whether the system is above or below the operating set point</li>
+                    <li><strong>Monitoring sensors:</strong> Should be calibrated across the operating range, as they provide the data to support quality determinations in support of product quality</li>
+                </ul>
+
+                <h3 style="margin-top:1.25rem;" id="ch10-access">Access Control</h3>
+                <p>Areas where product is stored should have a system to prevent unauthorized access. This system can be part of a site keycard system, or use a lock and key with procedural controls which identify who holds, and is entitled to use, the key.</p>
+
+                <h3 style="margin-top:1.25rem;">Dehumidification</h3>
+                <p>Dehumidification should be considered for a cold room or freezer. The life of the equipment can be extended where there are fewer defrost cycles required (reduced expansion/contraction). Dehumidification can also reduce the risk of ice forming on a freezer floor, which presents a safety hazard.</p>
+                <p>For large distribution facilities it may be worth considering the layout, and providing access to a walk-in freezer through a cold room, in order to reduce moisture in the freezer.</p>
+
+                <h3 style="margin-top:1.25rem;">Equipment Durability</h3>
+                <p>When specifying a new facility, it is worthwhile defining the system design life — the expected operating lifespan without significant maintenance. High quality refrigeration systems can have an expected life of 12 to 15 years. Standby systems are usually installed for an installation holding material of a significant commercial value.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>校準策略與進出管制深度解析</h3>
+
+                <div class="term-box">
+                    <h4>三層校準策略框架</h4>
+                    <table>
+                        <thead><tr><th>感測器類型</th><th>校準要求</th><th>頻率</th><th>GMP理由</th></tr></thead>
+                        <tbody>
+                            <tr><td>冷媒系統儀表</td><td>依製造商建議<br>大維護時校準</td><td>每次大PM時</td><td>系統運行時不可接觸</td></tr>
+                            <tr><td>控制感測器 (Control Sensor)</td><td>單點驗證即可</td><td>定期</td><td>僅判斷高/低於設定點</td></tr>
+                            <tr><td>監測感測器 (Monitoring Sensor)</td><td>全量程多點校準</td><td>每年或更頻繁</td><td>直接支撐產品品質判斷</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:0.5rem; font-size:0.85rem;">關鍵原則：監測感測器的校準標準高於控制感測器，因為監測數據是產品放行的依據。</p>
+                </div>
+
+                <div class="application-box">
+                    <h4>校準召回追蹤系統 (Calibration Recall System)</h4>
+                    <p>一個有效的校準召回系統應包含：</p>
+                    <ul>
+                        <li><strong>儀器清冊(Asset Register)</strong>：每個感測器均有唯一ID、位置、校準週期、上次校準日期</li>
+                        <li><strong>到期提醒</strong>：提前30天發送警示給校準工程師和QA</li>
+                        <li><strong>逾期鎖定</strong>：超過校準有效期的感測器自動標記，其數據不得用於放行決策</li>
+                        <li><strong>回溯評估</strong>：感測器超過校準期間若有偏差，需評估期間所有產品的影響</li>
+                        <li><strong>替換驗證</strong>：校準後感測器重新安裝需確認讀值與同位置其他感測器的一致性</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>進出管制的GMP意義</h4>
+                    <p>進出管制不只是安全問題，也是GMP合規問題。未授權進入可能導致：</p>
+                    <ul>
+                        <li>產品被未記錄的方式取出（影響庫存完整性）</li>
+                        <li>不當操作造成溫度偏差（門被長時間打開）</li>
+                        <li>訪客接觸未貼標籤產品（交叉污染風險）</li>
+                    </ul>
+                    <p>FDA 21 CFR Part 211.68 和 EU GMP Annex 15均要求儲存區域有適當的進出控制。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的設施中，監測感測器(monitoring sensor)和控制感測器(control sensor)是否有不同的校準頻率規定？如果兩者都使用年度校準，這樣的做法是否符合ISPE的差異化要求？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     CHAPTER 11: PACKAGED TRANSPORT SYSTEMS
+     ========================================================= -->
+<div class="chapter-section" id="ch11-uld">
+    <div class="chapter-divider">
+        <div class="chapter-badge">11</div>
+        <div class="chapter-info">
+            <h2>Chapter 11: Packaged Transport Systems | 包裝運輸系統</h2>
+            <p>Sections 11.1 — Active Shipping Containers: Unit Load Devices (ULD) | 主動式運輸容器：單位裝載設備</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>11.1 Active Shipping Containers: Unit Load Devices</h3>
+                <p>Currently there are two types of Unit Load Devices (ULD) systems suitable for the shipping of temperature sensitive product, designed for use in aircraft. They are powered to either cool or heat the air within the container.</p>
+
+                <h4>System 1 (TCCU) Key Features</h4>
+                <ul>
+                    <li>Maintains 5°C (41°F) for <strong>72 hours</strong> at 30°C (86°F) ambient</li>
+                    <li>Handles brief ambient excursions from -40°C to +60°C</li>
+                    <li>GPS/GSM module for real-time location and temperature transmission</li>
+                    <li>Two modes: recharge mode (connected to AC) and transport mode (24VDC battery)</li>
+                    <li>Interior designed for 40×48 inch pallet, up to 500 kg product</li>
+                </ul>
+
+                <h4>System 2 Key Features</h4>
+                <ul>
+                    <li>Maintains 5°C for <strong>30 hours</strong> at -10°C to +30°C ambient</li>
+                    <li>NiMH batteries; three cooling compressors with heaters</li>
+                    <li>Supports US and EURO pallet sizes, up to 953 kg</li>
+                    <li>LED alarm indicators: system on (green), charge (blue), alarm (red), alert (yellow)</li>
+                    <li>Alert triggers: battery &lt;30%, inside temp out of spec, ambient temp out of spec, compressor failure</li>
+                </ul>
+
+                <h4>11.1.3 Qualification Approaches</h4>
+                <p>Two possible approaches for active shipping containers:</p>
+                <ul>
+                    <li><strong>Unit Qualification:</strong> Map each individual unit; confirm satisfactory operation; qualify service supplier for maintenance and calibration quality systems</li>
+                    <li><strong>Supplier Assessment:</strong> (1) Qualify the manufacturer (design + factory testing); (2) Qualify service supplier (maintenance + calibration quality systems). Usually paired with an independent temperature logger per shipment.</li>
+                </ul>
+                <p>Regardless of approach, loading and unloading methods must be qualified and procedurally defined. When unloading, shipment should be placed into quarantine until data logger confirms conditions were maintained. If out-of-conditions, a Non-Conformance must be raised and the implications investigated.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>主動式ULD運輸容器資格認證</h3>
+
+                <div class="term-box">
+                    <h4>主動式 vs. 被動式運輸容器</h4>
+                    <table>
+                        <thead><tr><th>特性</th><th>主動式 (Active)</th><th>被動式 (Passive)</th></tr></thead>
+                        <tbody>
+                            <tr><td>溫控機制</td><td>電力驅動壓縮機/加熱器</td><td>隔熱材料 + 冷媒(乾冰/保冷劑)</td></tr>
+                            <tr><td>自主運行時間</td><td>30–72小時(依電池)</td><td>數小時至數天(依設計)</td></tr>
+                            <tr><td>適用距離</td><td>長途國際空運</td><td>短程/中程運輸</td></tr>
+                            <tr><td>資格認證方式</td><td>單機資格或供應商評估</td><td>包裝設計驗證(ISTA/WHO)</td></tr>
+                            <tr><td>ISPE分類</td><td>CTC的移動子類別</td><td>包裝運輸系統</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="application-box">
+                    <h4>單機資格 vs. 供應商評估：選擇邏輯</h4>
+                    <ul>
+                        <li><strong>選單機資格：</strong>當ULD由同一家供應商長期租用，數量固定，可針對每台設備建立獨立的資格文件。適合高價值/高風險產品。</li>
+                        <li><strong>選供應商評估：</strong>當ULD數量龐大或頻繁更換，個別映射不切實際。透過審核製造商設計和服務商維護品質，輔以隨貨數據記錄器作為補充保證。</li>
+                        <li><strong>關鍵補充措施：</strong>無論採哪種方法，每次運輸都應附帶獨立的溫度記錄器，這是最後一道確認機制。</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>冷鏈交接點 (Hand-off Points) 風險</h4>
+                    <p>從設施到最終目的地的冷鏈中，最脆弱的環節通常是<strong>交接點</strong>：</p>
+                    <ul>
+                        <li>設施倉庫 → 快遞取貨：產品在裝卸區暴露時間</li>
+                        <li>機場地面操作：從貨倉到飛機貨艙的轉移時間</li>
+                        <li>轉機點：兩段航班之間的等待時間</li>
+                        <li>目的地機場 → 客戶設施：最後一哩配送</li>
+                    </ul>
+                    <p>每個交接點都應有明確的溫度確認程序和責任分工協議(Quality Agreement)。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的設施在使用ULD運輸臨床試驗用藥時，採用的是單機資格還是供應商評估方式？隨貨溫度記錄器的數據是否有人系統性地審查，還是只在收貨時檢查一下就歸檔？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 11.2-11.5 Trailers -->
+<div class="chapter-section" id="ch11-trailer">
+    <div class="chapter-divider">
+        <div class="chapter-badge">11</div>
+        <div class="chapter-info">
+            <h2>Chapter 11: Packaged Transport Systems | 包裝運輸系統</h2>
+            <p>Sections 11.2–11.5 — Temperature Controlled Trailers: Design, Insulation &amp; Validation | 溫控拖車：設計、隔熱與驗證</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>11.2 Temperature Controlled Trailers</h3>
+                <p>Temperature controlled over-the-road trailers can be used to move significant amounts of temperature sensitive pharmaceutical product. Trailers have a different set of environmental and usage profiles when compared to in situ custom-built CTCs:</p>
+                <ul>
+                    <li>Loading and unloading operations</li>
+                    <li>Defrost cycles</li>
+                    <li>Loading patterns</li>
+                </ul>
+                <p>Moisture, as a degradation element, is much more prevalent in trailers due to the operational profile — continuous running for several days, followed by periods of downtime when the trailer is empty. Rigorous inspection of each trailer should be performed prior to loading.</p>
+
+                <h4>11.3 Trailer Design</h4>
+                <p>Product loaded into the trailer should be equilibrated to the appropriate temperature before loading. During transit, as heat or cold penetrates the walls, roof, and floor, circulating airflows capture the environmental heat or cold and condition it to the desired temperature in the HVAC unit on the front of the trailer.</p>
+                <p>Depending on the geographical area, manufacturers build and test trailers to meet standards of one of two organizations:</p>
+                <ul>
+                    <li><strong>North America:</strong> American Trucking Association (ATA) Technology &amp; Maintenance Council (TMC)</li>
+                    <li><strong>Europe:</strong> ATP Agreement on International Carriage of Perishable Foodstuffs</li>
+                </ul>
+
+                <h4>TMC / ATP Classification Table</h4>
+                <table>
+                    <thead><tr><th>TMC (North America)</th><th>ATP (Europe)</th><th>Application</th></tr></thead>
+                    <tbody>
+                        <tr><td>C65</td><td>FRA</td><td>Controlled Room Temperature</td></tr>
+                        <tr><td>C35</td><td>FRB</td><td>Refrigerated (2–8°C)</td></tr>
+                        <tr><td>F</td><td>FRC</td><td>Frozen (-20°C)</td></tr>
+                        <tr><td>DF</td><td>—</td><td>Deep Frozen (-25°C or below)</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>11.4 Insulation Degradation</h4>
+                <p>Polyurethane foam insulation gradually loses its blowing agent gas (CO₂ and other gases) over time, which is replaced with air and water vapor. This transition occurs slowly over years and is normal. The temperature control unit is sized to assure a useful life of 15 years with timely maintenance.</p>
+
+                <h4>11.5 Trailer Validation Approach</h4>
+                <p>The validation exercise is focused on loading patterns and assuring that proper airflow can be achieved under conditions of heat and cold. Loading practices that block airflow impede heat addition/removal and result in product temperatures that may not be controlled within the required range. A written protocol should document temperatures nearest the product during seasonal extremes.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>溫控拖車驗證策略與CTC比較</h3>
+
+                <div class="term-box">
+                    <h4>包裝運輸資格認證 vs. 固定式CTC資格認證</h4>
+                    <table class="comparison-table">
+                        <thead><tr><th>面向</th><th>固定式CTC</th><th>溫控拖車</th></tr></thead>
+                        <tbody>
+                            <tr><td>設備特性</td><td>固定安裝，受控環境</td><td>移動設備，多變環境</td></tr>
+                            <tr><td>溫度挑戰</td><td>已知的季節性室溫波動</td><td>跨地區溫度極值(熱帶/極地)</td></tr>
+                            <tr><td>水分影響</td><td>受控，僅入門時帶入</td><td>嚴重，每次裝卸都有暴露</td></tr>
+                            <tr><td>驗證方法</td><td>全面熱映射 + 感測器網格</td><td>基於裝載模式的家族驗證</td></tr>
+                            <tr><td>映射頻率</td><td>每台設備需個別映射</td><td>同型號拖車可使用"家族法"</td></tr>
+                            <tr><td>管制標準</td><td>內部SOP + USP/WHO</td><td>TMC (北美) / ATP (歐洲)</td></tr>
+                            <tr><td>最常見分類</td><td>適用於各溫度帶</td><td>F級(北美最常見)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>比喻：為什麼F級拖車成功也意味著DF級會成功？</h4>
+                    <p>ISPE指出，在F級拖車上成功完成的驗證研究，也意味著DF級(深冷凍)拖車同樣適用。</p>
+                    <p>這就像汽車安全測試：如果一輛配備標準安全設備的車通過了碰撞測試，那麼裝備更多安全功能的高配版車款自然也能通過 — 因為F級是市場主流且絕緣能力更低，通過代表更高標準的DF也能達標。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>隔熱衰退的實務意義</h4>
+                    <p>聚氨酯泡沫的隔熱性能會隨時間下降（發泡劑氣體逸散 → 空氣和水蒸氣取代），這意味著：</p>
+                    <ul>
+                        <li>新拖車的初始性能 ≠ 使用5–10年後的性能</li>
+                        <li>驗證研究應考慮設備年齡和使用歷史</li>
+                        <li>定期熱掃描(thermal scanning)可早期發現隔熱劣化</li>
+                        <li>質量協議應要求承運商定期提供拖車維護記錄</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的設施使用溫控拖車進行產品配送時，是否與承運商簽訂品質協議？該協議是否涵蓋拖車的TMC/ATP認證等級要求、定期檢查標準，以及溫度超規時的通報程序？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 11.6 Loading Patterns -->
+<div class="chapter-section" id="ch11-loading">
+    <div class="chapter-divider">
+        <div class="chapter-badge">11</div>
+        <div class="chapter-info">
+            <h2>Chapter 11: Packaged Transport Systems | 包裝運輸系統</h2>
+            <p>Section 11.6 — Trailer Loading Patterns &amp; Inspectional Criteria | 拖車裝載模式與檢查標準</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>11.6 Trailer Loading Patterns</h3>
+                <p>Loading patterns in a well maintained truck are the key determinant in assuring even product temperature within the trailer. Key requirements:</p>
+                <ul>
+                    <li>Product should be loaded on <strong>pallets that allow free airflow</strong> the length of the trailer</li>
+                    <li>Product should <strong>not be in contact with the walls</strong> of the trailer</li>
+                    <li>Double stacking of refrigerated goods should be carefully considered, as airflow distribution in the rear of the trailer may not be sufficient to maintain uniform temperature under extreme conditions</li>
+                    <li>Product should be <strong>equilibrated to the appropriate temperature</strong> before loading</li>
+                </ul>
+
+                <h4>11.6.1 Inspectional Criteria</h4>
+                <p>The Quality Agreement between the carrier and the company should define the shared responsibilities of inspection. The following items should be inspected for each use:</p>
+                <ul>
+                    <li>Air distribution chute intact</li>
+                    <li>Air supply, air returns and floor drains clear of debris</li>
+                    <li>Repairs to interior and exterior surfaces (damage from forklifts etc.)</li>
+                    <li>Door seals intact</li>
+                    <li>General cleanliness (visual inspection)</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>裝載模式對溫度均一性的關鍵影響</h3>
+
+                <div class="term-box">
+                    <h4>裝載模式的三大原則</h4>
+                    <ul>
+                        <li><strong>原則1 — 氣流暢通：</strong>托盤之間必須保留足夠間距讓冷空氣循環，阻擋氣流等同於阻擋溫度調節能力</li>
+                        <li><strong>原則2 — 不接觸側壁：</strong>拖車側壁是熱交換最強的區域（尤其夏季），接觸側壁的產品最容易超出溫度範圍</li>
+                        <li><strong>原則3 — 預冷後才裝載：</strong>裝載未冷卻至目標溫度的產品，等同於在拖車內引入一個熱源，增加冷機負擔</li>
+                    </ul>
+                </div>
+
+                <div class="application-box">
+                    <h4>每次使用前的拖車檢查清單</h4>
+                    <ul class="checklist">
+                        <li>空氣分配導管(air distribution chute)完整無損</li>
+                        <li>送風口、回風口、地板排水孔無堵塞</li>
+                        <li>內外側壁無叉車造成的穿孔或凹陷</li>
+                        <li>門封條(door seals)完整，無裂縫或破損</li>
+                        <li>整體清潔度符合要求（無異物、無前次貨物殘留）</li>
+                        <li>冷機組(reefer unit)正常運轉，設定點正確</li>
+                        <li>拖車內部溫度已達到目標範圍</li>
+                        <li>TMC/ATP認證標牌可見且在有效期內</li>
+                    </ul>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的設施在出貨前是否有書面的拖車檢查記錄？若承運商提供的拖車門封條出現輕微裂縫但拖車溫度仍在範圍內，您會如何決策：使用這台拖車還是要求更換？</p>
+                    <p><strong>提示：</strong>思考「當下合格」與「長途運輸過程中的潛在風險」之間的平衡。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     CHAPTER 12: MAINTENANCE
+     ========================================================= -->
+<div class="chapter-section" id="ch12-coils">
+    <div class="chapter-divider">
+        <div class="chapter-badge">12</div>
+        <div class="chapter-info">
+            <h2>Chapter 12: Maintenance | 維護</h2>
+            <p>Sections 12.1–12.4 — Coils, Condensate, Functional Testing &amp; Leak Testing | 盤管、冷凝管、功能測試與洩漏測試</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>Chapter 12 Maintenance — Overview</h3>
+                <p>The supplier of the refrigeration equipment should provide general recommendations for the maintenance of the equipment. These recommendations may not recognize the high value of the stored goods in this application. The potential impact on the maintenance program should be assessed.</p>
+
+                <h4>12.1 Cleaning of the Coils</h4>
+                <p>The coils (unit cooler and air cooled condenser) should be cleaned regularly and checked for any damage to ensure that performance levels are maintained. Damaged or distorted fins should be straightened with a suitable comb. This inspection should also ensure that there is no corrosion of the fins.</p>
+                <p>Regular inspection should also confirm that the defrost cycle is effective (where applicable), especially if the cycle is adjusted to account for seasonal variation.</p>
+                <p><strong>General Cleaning:</strong> Dry cleaning is preferred, in order to minimize risk of contamination. Regular inspection is recommended to ensure that there is no unseen microbial/fungicidal growth.</p>
+
+                <h4>12.2 Check the Condensate Pipework</h4>
+                <p>The condensate pipework should be checked to ensure that it is not damaged and that it has the correct fall and flows freely. Trace heating or insulation also should be checked. Periodic verification during operation is also recommended; this should ensure that the pipe supports are adequate and have not loosened.</p>
+
+                <h4>12.3 Functional Testing of Unit Coolers / Defrost Elements</h4>
+                <p>There is usually no feedback from the solenoid valve on the unit coolers, so the only way of checking their correct operation is to carry out, periodically, a functional check to verify the performance of each unit cooler.</p>
+
+                <h4>12.4 Leak Testing</h4>
+                <ul>
+                    <li>Periodically check pipe runs and equipment for leaks using electronic test devices</li>
+                    <li>Check refrigerant fluid level and pressure against system specification — early detection may help avoid system failure</li>
+                    <li>Keep a record of refrigerant used for the system (may be mandatory depending on region)</li>
+                    <li>Equipment rooms may be fitted with leakage detectors/alarms — these should be calibrated and checked regularly</li>
+                    <li>End Users should be aware of local regulatory requirements</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>盤管、冷凝管與洩漏測試詳解</h3>
+
+                <div class="note-box">
+                    <h4>關鍵洞察：製造商建議 ≠ GMP要求</h4>
+                    <p>ISPE明確指出，設備製造商的維護建議通常不考慮<strong>高價值藥品儲存</strong>的特殊需求。這意味著：</p>
+                    <ul>
+                        <li>製造商建議可能是基於食品或一般工業應用</li>
+                        <li>GMP環境下的維護頻率和標準必須由使用方（CDMO）自行評估和設定</li>
+                        <li>維護計畫必須考慮「若此設備失效，對產品品質的影響是什麼？」</li>
+                    </ul>
+                    <p>這正是風險基礎的PM計畫的基礎：<strong>設備關鍵性 → 決定維護頻率和深度。</strong></p>
+                </div>
+
+                <div class="term-box">
+                    <h4>盤管清潔的微生物風險</h4>
+                    <p>ISPE推薦乾式清潔(dry cleaning)而非濕式清潔，原因是：</p>
+                    <ul>
+                        <li>濕式清潔引入水分，可能在盤管翼片(fins)上形成生物膜(biofilm)滋生環境</li>
+                        <li>冷藏室的低溫並非無菌環境 — 某些嗜冷菌(psychrotrophic bacteria)和黴菌在2–8°C下仍可緩慢生長</li>
+                        <li>微生物污染的盤管可能通過氣流將孢子傳播至儲存產品的環境</li>
+                    </ul>
+                </div>
+
+                <div class="application-box">
+                    <h4>冷媒洩漏記錄的法規要求</h4>
+                    <p>許多地區對冷媒使用和洩漏有強制性記錄要求：</p>
+                    <ul>
+                        <li><strong>歐盟 F-Gas Regulation (EU 517/2014)：</strong>含氟冷媒超過一定量需定期洩漏檢查並記錄</li>
+                        <li><strong>EPA Section 608 (美國)：</strong>ODS冷媒洩漏超過閾值需修復並記錄</li>
+                        <li><strong>GMP視角：</strong>冷媒洩漏可能污染產品，且洩漏事件可能影響設備效能，進而影響儲存溫度</li>
+                    </ul>
+                    <p>冷媒記錄(refrigerant log)應成為PM文件系統的一部分。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的冷藏設備上次盤管清潔是什麼時候？清潔記錄是否包含了「清潔前/後目視檢查結果」以及清潔方法？如果不是乾式清潔，是否評估過微生物污染風險？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 12.5-12.6 Thermal Scanning and Alarms -->
+<div class="chapter-section" id="ch12-thermal">
+    <div class="chapter-divider">
+        <div class="chapter-badge">12</div>
+        <div class="chapter-info">
+            <h2>Chapter 12: Maintenance | 維護</h2>
+            <p>Sections 12.5–12.6 — Thermal Scanning &amp; System Alarms | 熱掃描與系統警報</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>12.5 Thermal Scanning</h3>
+                <p>The panels, doors, door seals, and sealing of utility penetrations can degrade over time (foamed panels may be better in this respect than panels filled with mineral wool). A thermal scan of the installation will allow any degradation to be seen and appropriate action taken.</p>
+                <p>As a minimum, the penetrations should be visually inspected to ensure that they are sound with no leakage/ingress of condensation. For conduit penetrations, the internal sealing also should be checked to ensure that condensation is not leaking inside the conduit.</p>
+
+                <h3 style="margin-top:1.25rem;">12.6 System Alarms</h3>
+                <p>The entire alarm system should be periodically tested by direct or simulated temperature change against the specified alarm set points and proper functionality of audible and visual alarms at local and/or remote alarm stations (e.g., emails, phone calls, or text based alerts) should be confirmed and documented.</p>
+                <p>Regardless of the root cause, product losses from cold storage-related failures can be prevented with the proper design and operation of the alarm system, and proper End User response to an alarm event. Periodic testing of the alarm system should help to ensure that it will work when needed.</p>
+                <p>The system maintenance procedures can be used to provide a confirmation that the system performance remains satisfactory, supporting a <strong>reduced requirement for remapping</strong> where appropriate. The data from the monitoring system should be reviewed periodically, to look for any negative performance trends.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; CDMO應用</span>
+                <h3>熱掃描、警報系統與重新映射觸發條件</h3>
+
+                <div class="term-box">
+                    <h4>熱掃描(Thermal Scanning) — 非破壞性隔熱檢測</h4>
+                    <p>紅外熱成像(Infrared Thermography)可在不拆除板材的情況下，透過溫度差異識別隔熱劣化區域：</p>
+                    <ul>
+                        <li><strong>正常隔熱：</strong>表面溫度均勻，無明顯熱橋</li>
+                        <li><strong>隔熱劣化：</strong>面板某區域出現「熱點」，代表冷橋或隔熱材料受損</li>
+                        <li><strong>門封條洩漏：</strong>門框周圍出現溫度梯度異常</li>
+                        <li><strong>管道穿牆處：</strong>若密封不良，凝結水會沿管道滲入</li>
+                    </ul>
+                    <p>建議：熱掃描應在設備滿載運行時進行，內外溫差最大，最容易發現問題。</p>
+                </div>
+
+                <div class="note-box">
+                    <h4>警報測試的GMP要求</h4>
+                    <p>「定期測試警報」不只是技術要求，更是GMP合規要求。一個從未被測試的警報系統，在真正需要時可能完全失效。</p>
+                    <ul>
+                        <li><strong>測試方式：</strong>直接溫度變化（模擬真實偏差）或受控模擬（注入測試信號）</li>
+                        <li><strong>測試範圍：</strong>本地聲光警報 + 遠端通報（Email/SMS/Phone）</li>
+                        <li><strong>文件要求：</strong>測試結果必須記錄，包含測試時間、觸發條件、通報到達時間</li>
+                        <li><strong>Response time目標：</strong>從警報觸發到有人確認，應有明確的期望時間</li>
+                    </ul>
+                </div>
+
+                <div class="application-box">
+                    <h4>維護數據 → 減少重新映射需求</h4>
+                    <p>ISPE提供了一個重要的生命週期管理原則：如果系統維護記錄良好，且監測數據顯示性能穩定，可以<strong>減少重新熱映射的頻率</strong>。</p>
+                    <p>這需要SME（主題專家）定期審查：</p>
+                    <ul>
+                        <li>監測數據趨勢 vs. 資格認證時的基準數據</li>
+                        <li>警報歷史記錄（是否出現新的偏差模式？）</li>
+                        <li>維護歷史（是否有影響性能的重大維修？）</li>
+                        <li>設備年齡和隔熱衰退評估</li>
+                    </ul>
+                    <p>相反地，若出現以下情況，必須觸發重新映射：重大維修更換（壓縮機、冷凝器）、設備搬遷、性能數據顯示明顯趨勢偏移。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考</h4>
+                    <p><strong>Q：</strong>您的設施上次警報系統測試是什麼時候？測試記錄是否涵蓋了遠端通報渠道（SMS/Email）的響應確認？若值班人員更換了手機號碼，警報通報系統是否會自動更新？</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 12.x PM by Equipment Type -->
+<div class="chapter-section" id="ch12-pm">
+    <div class="chapter-divider">
+        <div class="chapter-badge">12</div>
+        <div class="chapter-info">
+            <h2>Chapter 12: Maintenance | 維護</h2>
+            <p>PM by Equipment Type + Calibration Recall System + PM Frequency Table | 依設備類型的PM程序 + 校準召回系統 + PM頻率表</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <span class="column-label col-label-en">ISPE Source Text</span>
+                <h3>PM Procedures by Equipment Type</h3>
+
+                <h4>CRT Storage Area (Warehouse)</h4>
+                <ol>
+                    <li>Inspect building envelope — no visible degradation of materials of construction or seals/curtains that would impact ingress of unconditioned air</li>
+                    <li>Review system alarm history since last maintenance (temperature monitoring system, HVAC temperature/humidity, airflow volume sensors) — look for negative performance trends</li>
+                    <li>Visually check HVAC system balance — verify balancing dampers remain in their as-commissioned/marked settings</li>
+                    <li>Check and clean heating/cooling coils if necessary</li>
+                    <li>Check control system records — confirm control valves are not operating at 100% (indicating performance limits or utility system issues)</li>
+                </ol>
+
+                <h4>Walk-in Refrigerators / Freezers</h4>
+                <ol>
+                    <li>Inspect system envelope — no visible degradation, door/window seals, door curtains, or air leakage paths (moisture or ice buildup)</li>
+                    <li>Review system alarm history (temperature monitoring + refrigeration system alarms) — note observations in maintenance record</li>
+                    <li>Check refrigeration system set point being maintained (e.g., compressor suction pressure)</li>
+                    <li>Review maintenance history to confirm:
+                        <ul>
+                            <li>Coils have been cleaned if needed</li>
+                            <li>Fan operation has been checked</li>
+                            <li>Operation of unit cooler control valves and thermal expansion valves checked</li>
+                            <li>Defrost settings and operation verified (if applicable)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Standalone Refrigerators and Freezers</h4>
+                <p>Same four-point checklist as walk-in units (envelope inspection, alarm history review, set point verification, maintenance history review for coils / fans / valves / defrost).</p>
+
+                <h4>Performance Review by SME (Alternative to Full PM)</h4>
+                <p>Where a system has multiple monitoring locations (control sensor + independent temperature monitor at hot/cold spots), the preventive maintenance is not required to confirm satisfactory unit operation in every cycle. Instead:</p>
+                <p>A review of current system performance data against the as-Qualified data by an SME can be used to confirm consistent system performance. This review should assess the thermal performance of unit insulation and the conditioning system, allowing the SME to determine if there has been a significant change in performance that may require maintenance activities, or if the system is still performing acceptably.</p>
+            </div>
+            <div class="right-column">
+                <span class="column-label col-label-zh">中文解析 &amp; PM計畫設計</span>
+                <h3>預防性維護計畫要素與頻率表</h3>
+
+                <!-- PM Frequency Table -->
+                <div style="margin-bottom:1rem;">
+                    <h4 style="color: var(--ispe-green-dark); margin-bottom:0.5rem;">PM頻率建議表 | PM Frequency Reference</h4>
+                    <table class="pm-table">
+                        <thead><tr><th>維護項目</th><th>設備類型</th><th>建議頻率</th><th>ISPE依據</th></tr></thead>
+                        <tbody>
+                            <tr><td>盤管翼片清潔檢查</td><td>所有冷藏/冷凍設備</td><td><span class="freq-quarterly">每季</span></td><td>12.1 — 維持性能水平</td></tr>
+                            <tr><td>除霜週期驗證</td><td>有除霜功能設備</td><td><span class="freq-quarterly">每季</span></td><td>12.1 — 特別是季節調整後</td></tr>
+                            <tr><td>冷凝水管路檢查</td><td>所有制冷設備</td><td><span class="freq-quarterly">每季</span></td><td>12.2 — 坡度、流暢度、支撐</td></tr>
+                            <tr><td>單元冷卻器功能測試</td><td>Walk-in / 獨立冷藏</td><td><span class="freq-quarterly">每季</span></td><td>12.3 — 電磁閥無反饋</td></tr>
+                            <tr><td>冷媒洩漏檢測</td><td>所有制冷設備</td><td><span class="freq-quarterly">每季</span></td><td>12.4 — 電子洩漏偵測器</td></tr>
+                            <tr><td>警報系統全面測試</td><td>所有CTC</td><td><span class="freq-quarterly">每季</span></td><td>12.6 — 本地+遠端警報</td></tr>
+                            <tr><td>熱掃描(隔熱檢查)</td><td>Walk-in / 倉庫</td><td><span class="freq-annual">每年</span></td><td>12.5 — 識別隔熱劣化</td></tr>
+                            <tr><td>監測感測器校準</td><td>所有CTC</td><td><span class="freq-annual">每年</span></td><td>10.4 — 全量程多點校準</td></tr>
+                            <tr><td>控制感測器驗證</td><td>所有CTC</td><td><span class="freq-annual">每年</span></td><td>10.4 — 單點驗證</td></tr>
+                            <tr><td>HVAC平衡阻尼器確認</td><td>CRT倉庫</td><td><span class="freq-annual">每年</span></td><td>12.6 — 確認初始設定未變</td></tr>
+                            <tr><td>冷媒使用量記錄更新</td><td>所有制冷設備</td><td><span class="freq-monthly">每月</span></td><td>12.4 — 法規要求(依地區)</td></tr>
+                            <tr><td>SME性能趨勢審查</td><td>多監測點設備</td><td><span class="freq-monthly">每月</span></td><td>12.6 — 替代全面PM</td></tr>
+                            <tr><td>大型維修後重新映射</td><td>所有CTC</td><td><span class="freq-asneeded">按需</span></td><td>觸發條件評估</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PM Elements Checklist -->
+                <div class="application-box">
+                    <h4>PM計畫完整要素清單</h4>
+                    <ul class="checklist">
+                        <li><strong>設備清冊：</strong>每台設備有唯一ID、型號、安裝日期、關鍵性等級</li>
+                        <li><strong>PM時間表：</strong>基於設備關鍵性和製造商建議的頻率設定</li>
+                        <li><strong>PM工作單(Work Order)：</strong>清晰的步驟指示、所需工具和備件</li>
+                        <li><strong>維護記錄：</strong>每次PM的執行人、日期、發現事項、措施</li>
+                        <li><strong>逾期PM追蹤：</strong>PM逾期時的升級通報機制</li>
+                        <li><strong>PM影響評估：</strong>重大PM對溫度映射有效性的影響評估</li>
+                        <li><strong>備件管理：</strong>關鍵備件庫存（過濾器、密封條、保險絲）</li>
+                        <li><strong>供應商認證：</strong>外包維護供應商的資格和品質協議</li>
+                        <li><strong>校準整合：</strong>PM時同步確認感測器校準狀態</li>
+                        <li><strong>CAPA整合：</strong>PM中發現的問題直接進入CAPA系統</li>
+                    </ul>
+                </div>
+
+                <!-- Excursion Assessment Decision Tree -->
+                <hr class="section-divider">
+                <h3>溫度偏差評估決策樹</h3>
+                <p style="font-size:0.9rem; margin-bottom:0.75rem;">Temperature Excursion Assessment Protocol | 溫度超規評估流程</p>
+                <div class="decision-tree">
+                    <div class="decision-tree-title">溫度偏差(Excursion)產品影響評估決策樹</div>
+
+                    <div class="dt-node dt-question">1. 警報觸發或監測數據顯示溫度超規 — 是否已記錄偏差時間和持續時間？</div>
+                    <div class="dt-indent">
+                        <div class="dt-node dt-no">否 → 立即記錄發現時間，估算最長可能暴露時間（最差情況）</div>
+                        <div class="dt-node dt-yes">是 → 進入步驟2</div>
+                    </div>
+
+                    <div class="dt-node dt-question">2. 超規溫度和持續時間是否在產品說明書(SmPC)的允許累積暴露範圍內？</div>
+                    <div class="dt-indent">
+                        <div class="dt-node dt-yes">是 → 記錄評估結論，確認後續監測加強，開立輕微偏差報告</div>
+                        <div class="dt-node dt-no">否 → 進入步驟3（產品隔離）</div>
+                    </div>
+
+                    <div class="dt-node dt-action">3. 立即隔離涉及批次，通知QA和產品SME，開立主要偏差報告</div>
+
+                    <div class="dt-node dt-question">4. 是否有已核准的超標穩定性數據(out-of-storage stability data)支撐產品可用性？</div>
+                    <div class="dt-indent">
+                        <div class="dt-node dt-yes">是 → QA審查數據，若支持 → 有條件放行或縮短有效期</div>
+                        <div class="dt-node dt-no">否 → 進入步驟5</div>
+                    </div>
+
+                    <div class="dt-node dt-question">5. 是否可進行額外穩定性測試評估產品品質？</div>
+                    <div class="dt-indent">
+                        <div class="dt-node dt-yes">是 → 送樣測試，結果支持則有條件放行，否則廢棄</div>
+                        <div class="dt-node dt-no">否 → 廢棄受影響批次，完整CAPA分析，根本原因調查</div>
+                    </div>
+
+                    <div class="dt-node dt-action">6. 無論最終決定，必須識別根本原因並實施CAPA，評估是否需要觸發重新映射</div>
+                </div>
+
+                <div class="practice-box">
+                    <h4>練習思考（綜合題）</h4>
+                    <p><strong>情境：</strong>週五深夜，2°C–8°C冷藏室溫度升至12°C，持續了4小時才有人察覺。室內存放了3個批次的生物製劑原液，其中一批是客戶即將用於III期臨床試驗的關鍵批次。</p>
+                    <p><strong>Q1：</strong>您的第一個行動是什麼？（提示：思考時間線重建）</p>
+                    <p><strong>Q2：</strong>產品說明書上寫「2–8°C儲存，避免超過25°C」，這是否足以判定這4小時偏差是否影響產品品質？</p>
+                    <p><strong>Q3：</strong>這次偏差是否應觸發冷藏室重新映射？判斷依據是什麼？</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-width PM Re-qualification Trigger Table -->
+        <hr class="section-divider">
+        <h3 style="color: var(--ispe-green-dark); margin-bottom:1rem;">PM事件對映射有效性的影響評估 | PM Impact on Qualification Status</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>PM / 維修事件</th>
+                    <th>對溫度映射的潛在影響</th>
+                    <th>需要重新映射？</th>
+                    <th>最低要求動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>例行盤管清潔</td>
+                    <td>輕微 — 清潔後性能應改善或持平</td>
+                    <td><span class="badge green">否</span></td>
+                    <td>PM記錄 + 清潔前後溫度確認</td>
+                </tr>
+                <tr>
+                    <td>更換門封條</td>
+                    <td>中等 — 密封改善可能改變氣流模式</td>
+                    <td><span class="badge yellow">評估</span></td>
+                    <td>更換後監測2週趨勢，SME評估</td>
+                </tr>
+                <tr>
+                    <td>更換壓縮機</td>
+                    <td>高 — 制冷能力和運行特性可能改變</td>
+                    <td><span class="badge red">強烈建議</span></td>
+                    <td>完整重新映射或縮短範圍的再確認</td>
+                </tr>
+                <tr>
+                    <td>更換/增加蒸發器(unit cooler)</td>
+                    <td>高 — 直接影響氣流分佈和溫度均一性</td>
+                    <td><span class="badge red">必要</span></td>
+                    <td>完整重新映射</td>
+                </tr>
+                <tr>
+                    <td>牆板修復(含局部泡沫補注)</td>
+                    <td>中等 — 局部隔熱改變，影響熱橋位置</td>
+                    <td><span class="badge yellow">局部評估</span></td>
+                    <td>修復區域附近額外感測器監測</td>
+                </tr>
+                <tr>
+                    <td>更換控制系統/控制器</td>
+                    <td>高 — 控制邏輯和回應特性可能改變</td>
+                    <td><span class="badge red">強烈建議</span></td>
+                    <td>至少執行開門恢復測試和穩態測試</td>
+                </tr>
+                <tr>
+                    <td>設備搬遷至新位置</td>
+                    <td>極高 — 環境條件完全改變</td>
+                    <td><span class="badge red">必要</span></td>
+                    <td>完整重新映射，如同全新資格認證</td>
+                </tr>
+                <tr>
+                    <td>冷媒更換(補充)</td>
+                    <td>低至中 — 若補充至規格量則性能應恢復</td>
+                    <td><span class="badge yellow">監測</span></td>
+                    <td>補充後監測2週確認溫度穩定</td>
+                </tr>
+                <tr>
+                    <td>PM逾期超過2個PM週期</td>
+                    <td>不確定 — 設備狀態未知</td>
+                    <td><span class="badge yellow">風險評估</span></td>
+                    <td>完整PM + SME趨勢數據審查 + 偏差報告</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- =========================================================
+     SUMMARY & KEY TAKEAWAYS
+     ========================================================= -->
+<div class="chapter-section" id="summary">
+    <div class="chapter-divider">
+        <div class="chapter-badge">&#10003;</div>
+        <div class="chapter-info">
+            <h2>Section Summary &amp; Key Takeaways | 章節總結與關鍵要點</h2>
+            <p>Chapters 10–12 Integrated Learning | 第10–12章整合學習</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <h3>Key Messages from Chapters 10–12</h3>
+
+                <div class="term-box">
+                    <h4>Chapter 10 Core Takeaways</h4>
+                    <ul>
+                        <li><strong>Operational realism:</strong> Mapping studies must include real operational activities — door openings, equipment operation, loading simulation — to be valid</li>
+                        <li><strong>Open door recovery:</strong> Test under empty (worst-case) conditions; 1-minute data acquisition; outputs inform SOP time limits</li>
+                        <li><strong>Power outage:</strong> Empty-chamber degradation data = the clock that governs your emergency response window</li>
+                        <li><strong>Calibration differentiation:</strong> Monitoring sensors need full-range multi-point calibration; control sensors only need single-point verification</li>
+                        <li><strong>Access control:</strong> Unauthorized access is a GMP deficiency, not just a security issue</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>Chapter 11 Core Takeaways</h4>
+                    <ul>
+                        <li><strong>ULD qualification:</strong> Two approaches — individual unit mapping or supplier assessment system. Either way, an independent in-shipment logger is essential</li>
+                        <li><strong>Trailer as a CTC:</strong> Trailers are a mobile subclass of CTCs, with additional challenges from moisture, loading patterns, and road vibration</li>
+                        <li><strong>TMC/ATP standards:</strong> Industry standards provide a "family" qualification basis — an F-rated trailer study covers DF as well</li>
+                        <li><strong>Airflow is everything:</strong> Loading patterns that block airflow are the leading cause of temperature non-uniformity in trailers</li>
+                        <li><strong>Pre-shipment inspection:</strong> Every trailer, every time — document it per the Quality Agreement</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h4>Chapter 12 Core Takeaways</h4>
+                    <ul>
+                        <li><strong>Manufacturer ≠ GMP:</strong> Equipment supplier maintenance recommendations do not account for high-value pharmaceutical storage — you must set your own risk-based standards</li>
+                        <li><strong>Dry clean coils:</strong> Moisture introduced during wet cleaning creates microbial growth risk in cold environments</li>
+                        <li><strong>Alarm testing is non-negotiable:</strong> Periodic testing of the full alarm pathway (local + remote) is a GMP requirement, not optional</li>
+                        <li><strong>Good maintenance can reduce re-mapping:</strong> Consistent PM + SME trend review can justify extended intervals between full thermal mapping studies</li>
+                        <li><strong>Major repairs trigger re-qualification:</strong> Compressor replacement, unit cooler change, controller replacement — all require re-assessment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-column">
+                <h3>整合應用：CDMO Operations Director視角</h3>
+
+                <div class="key-message-banner" style="margin-top:0;">
+                    "A mapped chamber that isn't maintained properly is a mapped chamber that no longer reflects reality."
+                    <div class="zh">「已完成映射但維護不當的設備，其映射結果已無法反映現實。」</div>
+                </div>
+
+                <div class="application-box">
+                    <h4>從運營總監角度的三個核心問責問題</h4>
+                    <ol>
+                        <li style="margin-bottom:0.75rem;"><strong>操作合規性：</strong>我的團隊在每次開門、裝載、進出冷藏室時，是否都遵循了基於映射數據制定的SOP？是否有監控機制確保合規？</li>
+                        <li style="margin-bottom:0.75rem;"><strong>維護完整性：</strong>我的PM計畫是否真正基於設備關鍵性設計？最近一次PM逾期是什麼時候？逾期期間的產品狀態是否有評估？</li>
+                        <li><strong>系統可靠性：</strong>如果今晚凌晨3點發生停電，我的警報系統是否會在5分鐘內通知到正確的人？我有多久沒有測試這個假設了？</li>
+                    </ol>
+                </div>
+
+                <div class="term-box">
+                    <h4>映射 → 操作 → 維護的生命週期閉環</h4>
+                    <div class="flowchart" style="margin-top:0.5rem;">
+                        <div class="flow-step flow-action-ok">熱映射建立基準<br>(Thermal Mapping)</div>
+                        <span class="flow-arrow">↓</span>
+                        <div class="flow-step flow-assess">操作程序基於映射數據<br>SOP開門時間、裝載規範</div>
+                        <span class="flow-arrow">↓</span>
+                        <div class="flow-step flow-assess">PM計畫維持設備性能<br>確保映射條件不改變</div>
+                        <span class="flow-arrow">↓</span>
+                        <div class="flow-decision">定期SME性能審查</div>
+                        <div class="flow-row">
+                            <div style="text-align:center">
+                                <span class="flow-branch-label">性能穩定</span><br>
+                                <div class="flow-step flow-action-ok">延長映射間隔<br>維持現有PM計畫</div>
+                            </div>
+                            <div style="text-align:center">
+                                <span class="flow-branch-label">性能偏移</span><br>
+                                <div class="flow-step flow-action-ng">強化PM<br>或觸發重新映射</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-box">
+                    <h4>最終綜合思考題</h4>
+                    <p><strong>場景：</strong>您剛接任CDMO的QA副總裁職位，被要求在90天內評估冷鏈GMP合規狀態。</p>
+                    <p><strong>基於Chapters 10–12，您的前15天優先審查清單包含哪些？</strong></p>
+                    <p>請思考：(1) 操作合規性文件審查 (2) PM記錄完整性 (3) 校準召回狀態 (4) 警報測試記錄 (5) 最近偏差的根本原因分析品質 (6) 承運商品質協議覆蓋範圍</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016)</p>
+    <p>Section 04 — Chapters 10–12: Operational Issues, Packaged Transport Systems &amp; Maintenance</p>
+    <p style="margin-top:0.75rem; opacity:0.65; font-size:0.8rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Bilingual Educational Edition &nbsp;|&nbsp; For internal training use only</p>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+// Back to top button visibility
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

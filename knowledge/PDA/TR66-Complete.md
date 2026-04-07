@@ -6986,7 +6986,6 @@ final rinse
 Washing
 Yes
 Tap water
-Washing, PW production
 Changing rooms, utility pro-
 duction, process equipment
 Yes
@@ -8690,14 +8689,12 @@ Munich, Germany, June 16-17,2009.
 and Leachables in Single-Use Systems, Disposable and
 Single-Use Biopharmaceutical Manufacturing Systems,
 Proceedings of the PharmaED Conference,
-Philadelphia, PA, Sept 27-28, 2010.
 
 === PDF PAGE 148 ===
 98.	 Smith, E. In Extractables and Leachables for
 Disposables and Process Components: Disposable and
 Single-Use Biopharmaceutical Manufacturing Systems,
 Proceedings of the PharmaED Conference,
-Philadelphia, USA, Sep 27-28, 2010.
 99.	 Morren K. In Extractables & Leachables, Proceedings
 of the Challenges of Single-Use Technology
 Biopractis Workshop, Nantes, France, 21 April, 2013.
@@ -8715,7 +8712,6 @@ Efforts
 from BPROG Working Group, Proceedings of
 IBC’s 10th Annual Single-Use Applications for
 Biopharmaceutical Manufacturing Conference,
-Durham, NC, June 3-4, 2013.
 102.	The
 Extractables
 and
@@ -8923,7 +8919,6 @@ Wendy Zwolenski-Lambert, Novartis
 Bethesda Towers
 4350 East West Highway
 Suite 200
-Bethesda, MD 20814 USA
 Tel:
 1 (301) 656-5900
 Fax:

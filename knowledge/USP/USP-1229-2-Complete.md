@@ -1,0 +1,302 @@
+# USP General Chapter 〈1229.2〉: Moist Heat Sterilization of Aqueous Liquids
+
+=== PAGE 1 ===
+Status: Currently O­cial on 12-Feb-2025
+O­cial Date: O­cial as of 01-Aug-2022
+Document Type:
+General Chapter
+DocId:
+GUID-D516FF11-E0D7-4288-9979-2074A9B283FD_3_en-US
+DOI:
+https:/
+/doi.org/10.31003/USPNF_M7411_03_01
+DOI Ref:
+7m5wx
+© 2025 USPC
+Do not distribute
+〈1229.2〉 MOIST HEAT STERILIZATION OF AQUEOUS LIQUIDS
+INTRODUCTION
+Steam sterilization of aqueous liquids (including both suspensions and emulsions with mixing), also known as sterilization of nonporous
+loads, is the method of choice for aqueous parenteral products, in-process aqueous liquids, laboratory media, and biological waste materials.
+This type of sterilization is accomplished primarily in closed containers. During steam sterilization by direct contact (also called steam
+sterilization of par ts, hard goods, or porous items) the steam in the chamber directly contacts the surface of load items to effect sterilization
+(see Steam Sterilization by Direct Contact 〈1229.1〉). In contrast, sterilization of liquids in containers is accomplished by application of heat to
+the container, heating of the container wall, and ultimately heating of the internal liquid volume. This can be accomplished using steam,
+superheated water, and air in various combinations. Some aqueous liquids are susceptible to over-processing that could render them un«t
+for their intended use. Manufacturers should consider the in¬uence of these differences when they establish a suitable process.
+During the sterilization of liquid-«lled containers, differential pressures between the interior of the containers and the sterilization chamber
+may potentially impact container integrity. Air over-pressure is used to minimize the pressure differential between the container and the
+sterilizer to protect the integrity of the container, especially pre«lled syringes and plastic containers. Before sterilization of product
+containers, manufacturers should consider the potential adverse consequences of excess heat on the materials. In order to ensure sterility
+as well as functionality, the process de«nition and validation method used must incorporate both lower and upper temperature and time
+limits on the process conditions.
+When the overkill method can be used for sterilization of sealed liquid containers, it is the preferred method and is described in 〈1229.1〉.
+When product quality attributes can be impaired by excessive heat, the sterilization process should use less time or a lower temperature to
+minimize the adverse effect on the materials. Sterilization time–temperature or F
+ conditions (F
+ is de«ned as the equivalent sterilization
+time relative to a base temperature of 121°) include both lower (sterility-related) and upper (stability-related) limits.
+ Manufacturers
+commonly employ the bioburden/biological indicator (BB/BI) or bioburden methods when constraints on the material's ability to withstand
+the process require the use of less aggressive conditions. This approach requires appropriate controls on presterilization bioburden and/or
+product-related D-values in conjunction with bioindicators of lower spore count or resistance to ensure sterilization.
+Terminal Sterilization of Products
+The maintenance of product attributes may require the use of sterilizing conditions that are less aggressive and sterilization equipment,
+cycles, and validation methods adapted to these more restricted circumstances. The substantial variations in equipment designs and
+methods for terminal sterilization preclude a singular description of a typical cycle. All terminal sterilizers heat the load, but they accomplish
+this in varying ways: saturated steam; steam–air mixtures, steam–air–water mixtures, and superheated water. Air over-pressure for
+maintenance of container integrity and cooling containers and water for heating/cooling of the load may be present depending upon the
+autoclave size, throughput expectations, and container.
+In-Process Fluids
+In-process ¬uids are used for pH adjustment, dilution to a speci«ed volume, lubrication, and other purposes. In many instances these
+liquids are sterilized in conjunction with items that must be sterilized by direct steam contact, and the sterilization process must ensure that
+all items are adequately sterilized.
+Laboratory Media
+Laboratory media often are sterilized in standard steam autoclaves with minor adaptations. Provision for slow exhaust (to reduce stress
+on container integrity and minimize boil over) and jacket cooling can help improve the basic steam sterilizer design and operation to better
+accommodate the materials. The sterilization process may be speci«c for media containers or a combination of both liquid-«lled containers
+and hard goods. This process may resemble the methods used for terminally sterilized products (see above). The sterilization of laboratory
+media may entail the processing of a number of different containers that contain different materials. Manufacturers should be aware of the
+potential for under- and over-processing across the load and must consider container size, container contents, and position. When liquid-
+«lled containers are combined in the same load with hard goods, manufacturers must consider the unique concerns of each to ensure all
+items are properly sterilized. Because laboratory media are considered self-indicating with respect to sterility, the use of internal biological
+indicators during validation is not required.
+Biowaste Sterilization
+The sterilization of biowaste in sealed containers from laboratory or production use is similar to par ts sterilization. The process is de«ned
+to ensure a minimum time–temperature exposure or attainment of a speci«ed F
+ value throughout all items of the load. Depending on the
+OFFICIAL
+2/12/25, 4:42 PM
+USP-NF 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids
+
+=== PAGE 2 ===
+potential contaminants present, the autoclave design may incorporate condensate collection/sterilization or sterilizable exhaust «lters to
+ensure that pathogens are adequately contained. Because the objective of biowaste sterilization is to render the materials safe for contact
+and disposal, the overkill method described in 〈1229.1〉 is employed.
+Change to read:
+BIOBURDEN/BIOLOGICAL INDICATOR METHOD
+Application of the BB/BI method requires a thorough understanding of the bioburden type, population, and resistance typically present in
+the presterilized product-«lled container. The method relies on substantial differences between moist heat resistance and the population of
+the bioburden present and the biological indicator used during validation (Figure 1).
+
+*[Figure 1. Relative resistance and population of typical bioburden and biological indicator microorganisms.]*
+
+BB/BI is a method in which the incomplete destruction (or destruction of a modest population) of a resistant biological indicator can be
+used to demonstrate the capability of the process to reliably destroy any bioburden. This is accomplished using detailed knowledge of the BB
+and BI populations and their relative resistance.
+Typical BB microorganisms have only minimal resistance in comparison to BIs, and this can be con«rmed by heat screening of BB isolates.
+The BB population is controlled by «ltration steps for the ¬uid, process time limits, environmental controls, gowning systems, and other
+means. The conventional BIs for terminal sterilization using the BB/BI method are Clostridium sporogenes ATCC 7955 and Bacillus subtilis
+ATCC 5230, although other strains can be used. The use of Geobacillus stearothermophilus for terminal sterilization is uncommon with the
+BB/BI method because the organism's strong resistance to moist heat makes it poorly suited for this application.
+Con«rmation of an acceptable probability of a nonsterile unit (PNSU) can be accomplished using physical measurements and BI response
+(which de«ne the lethality of the process) in conjunction with processing limits for the BB population and resistance (which de«ne the N
+ and
+D-value). D-value is the time (customarily in minutes) required to reduce the microbial population by 90% or 1 log
+ cycle (i.e., to a surviving
+fraction of 1/10) and must be associated with the speci«c lethal conditions at which it was determined. For example, D
+ is the D-value at
+121°. Ar ticles intended to be sterile must attain a ≤10
+−6
+ PNSU, i.e., less than or equal to 1 chance in 1 million that viable bioburden
+microorganisms are present. The PNSU can be determined from Equation 1.
+log N
+ = −F/D + log N
+
+[1]
+N
+= PNSU
+F
+= F
+-value of the process (lethality)
+D
+= D-value of the natural bioburden
+N
+= bioburden population per container
+The following example indicates the resulting PNSU under the de«ned conditions of validation and routine operation (Table 1).
+T
+able 1. Examples of PNSU Calculation
+u
+u
+OFFICIAL
+2/12/25, 4:42 PM
+USP-NF 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids
+
+=== PAGE 3 ===
+Validation
+Routine Usage
+F
+ = 8.0 min
+F
+ = 8.0 min
+D
+ of BI = 0.5 min
+D
+ of bioburden = 0.005 min
+N
+ of BI = 10
+N
+ of bioburden = 100 (or 10
+ )
+PNSU for BI = 10
+–10
+PNSU for BB = 10
+–1598
+Determining the resistance of the bioburden is accomplished using a heat-screening process during which a pure culture (a laboratory
+culture containing a single species of organism spores with minimal vegetative cells) is boiled at 100° for various periods. If the bioburden
+microorganism is viable after exposure, its resistance at 121° can be estimated for use in the PNSU calculation (▲
+see Methods for
+Determination of Resistance of Microorganisms to Sterilization Processes 〈56〉▲ (USP 1-Aug-2022)
+). ▲▲ (USP 1-Aug-2022)
+Bioburden Method
+In most respects the BB method is similar to the BB/BI indicator method. The difference lies in the isolation and characterization of the
+most-resistant bioburden microorganism. The worst-case isolate is used as the biological indicator in the evaluation of the process. For use
+in this manner, it must be cultured to produce a suitable challenge population. When this method is used, the bioburden of each process
+cycle must be closely controlled with respect to population and must be monitored for resistance.
+Sterilization Cycle Control
+Process equipment for terminal sterilization typically is controlled by calibrated and pressure sensors in/on the chamber/equipment.
+During the exposure por tions of the cycle, attainment of a minimum dwell time at a prede«ned temperature is used to suppor t process
+lethality. Cycle lethality for terminal sterilization customarily is measured using F
+, which is de«ned as an actual exposure time at a variable
+process temperature that is equivalent to an exposure at 121° based on an ideal microorganism with a z-value of 10°. This can include
+lethality delivered during the heat-up and cooling phases of the sterilization process. A z-value is de«ned as the number of degrees of
+temperature change necessary to change the D-value by a factor of 10. The F
+ approach is used to evaluate to a single standard sterilization
+processes that are operated at varying temperature conditions. The process lethality at temperatures other than 121° can be calculated to
+determine lethality equivalent to that provided at 121°. Sterilizer control systems for terminal sterilization deliver conditions within a
+prede«ned time–temperature or F
+ range to avoid over-processing.
+Simple mathematics can be used to calculate the total lethality over the course of the process. For the speci«c reference temperature of
+121° and a z-value of 10.0°, the F
+ calculation can be determined by Equation 2:
+
+[2]
+t = time
+T = temperature
+Summing the instantaneous lethality contributions over the entire sterilization process allows the calculation of the overall process
+lethality or F
+ delivered over the course of the entire process at varying conditions.
+Validation of Liquid-Filled Container Sterilization
+As previously noted, the preferred method for steam sterilization is the overkill method as de«ned in Sterilization of Compendial Ar ticles
+〈1229〉 and 〈1229.1〉. However, when the processed materials are susceptible to damage by moist heat at the overkill conditions, the BB/BI
+method is better suited because it results in reduced heat input while affording the same degree of process e­cacy but with different
+controls. As noted above, terminal sterilization processes require greater consideration of the effects of the treatment on material proper ties.
+This has implications for many of the elements of the quali«cation and validation exercises as indicated below. The validation requirements
+for the BB/BI and BB methods are more rigorous than those associated with the overkill method. Although the overkill method can be
+con«dently used without detailed consideration of the presterilization bioburden, application of the BB/BI and BB methods require continued
+monitoring and control of the bioburden, speci«cally the population and resistance. This is accomplished by testing of «lled containers just
+before sterilization and measuring the number of colony-forming units per container and con«rming the absence of resistant BB isolates.
+When resistant isolates are found, their thermal resistance in the ¬uid should be determined.
+effect of the sterilization process
+A preliminary determination of the liquid and the container–closure system's ability to withstand the expected sterilizing conditions
+should be made during product development. This can be accomplished by sterilization at conditions slightly in excess of the maximum
+expected and evaluating the effect on the material. The evaluation should encompass the essential quality attributes with attention focused
+on known and potential new impurities. Appearance and other physical proper ties also should be evaluated as a par t of this effor t.
+=
+10(
+)dt =   10(
+)Δt
+F0
+∫ts
+t1
+T − 121
+Σ
+t1
+ts
+T −   121
+OFFICIAL
+2/12/25, 4:42 PM
+USP-NF 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids
+
+=== PAGE 4 ===
+equipment qualification
+Equipment quali«cation is a prede«ned program that con«rms the equipment has been properly installed and that it operates as intended.
+Quali«cation of the sterilizing equipment provides a baseline for preventive maintenance and change control for the sterilizer. The
+sterilization equipment may require quali«cation of air, water, utility, and other systems that impact the sterilization equipment's
+performance.
+empty chamber temperature distribution
+The dual considerations of sterility and stability commonly associated with sterilization of liquids require that equal attention be paid to
+potential under- and over-processing of the load. For this reason the temperature gradient across the sterilizer may require substantially
+tighter control than that expected in sterilization by direct contact. The objective is to minimize the time–temperature or F
+ differences
+across the load throughout the process. Biological indicators are not required in the evaluation of empty chamber temperature distribution.
+biological indicators
+The selection of a BI must be considered carefully because of the balance that must be maintained between attaining sterilization and
+maintaining the sterilized material's essential quality attributes. The biological challenge is either directly inoculated into a liquid-«lled
+container or is introduced via self-contained units provided there is adequate correlation between their resistance and the resistance that
+would occur in the process ¬uid. The liquid can be either the product or a surrogate ¬uid. The resistance of the indicator in the product (and
+surrogate ¬uid, where used) must be known. The surrogate's physical proper ties should approximate those of the product. If there are
+surfaces within the container that are not presterilized, biological challenge of those surfaces may be required.
+liquid D-value determination
+Determination of the thermal resistance (D-value and z-value) for the biological indicator in the liquid is required. This must be performed
+in a Biological Indicator Evaluation Resistometer (BIER) in replicate. The thermal resistance of each BI lot in the liquid should be determined.
+When a surrogate liquid is used for convenience (e.g., a master solution approach) or because of microbial inhibition of the BI by the liquid,
+the thermal resistance in the surrogate must be determined.
+container mapping
+Liquid-«ll containers with volumes greater than or equal to 100 mL should be mapped to determine internal cold spots. The mapping
+should be performed with product containers oriented as they would be within the load. The temperature probes should be introduced into
+the containers using methods that maintain container integrity. Internal suppor ts (of minimally heat-conductive materials) may be required
+to ensure proper positioning of the probe within the container. After these locations are determined, they are used as either monitoring
+locations or are correlated to external conditions on the container during validation and routine processing. Smaller containers (less than
+100 mL) have fewer discernible cold spots, the impor tance of which is reduced as container size decreases. Smaller containers (less than
+100 mL) can be monitored with temperature probes secured to their exterior. The “cold spot” should be considered a “region” and not a
+single point in the container.
+load positioning and mapping
+A «xed loading position within the sterilizer may be necessary for proper sterilization to ensure uniformity of heating and cooling in
+routine use. Once the load is positioned properly, its size can vary within a de«ned range. Load-mapping studies should be performed to
+determine the coldest and hottest locations within the load. These locations may not be speci«c individual containers but rather regions.
+This ensures that the containers are neither under- nor over-processed in routine operation of the sterilizer. Validation of variable-size load
+patterns is accomplished using a bracketing approach for which success with maximum and minimum loads (avoiding both under- and
+over-processing) establishes the acceptability of intermediate-size loads. However, evaluation of intermediate load sizes may be bene«cial.
+In product sterilization, only a single-size container with a single product lot is processed concurrently.
+heat penetration and microbiological challenge
+The core of the validation activity is con«rmation of acceptable heat penetration using temperature measurements and microbial
+challenge inactivation. Temperature probes and biological indicators are placed within the load at worst-case locations (e.g., the coldest
+por tions of the loaded chamber). Introduction of the thermocouples must not alter the integrity of the container. Biological challenges are
+placed in containers adjacent to those that contain heat penetration probes (or the same unit with external temperature measurement).
+Proof of cycle e­cacy is provided by replicate studies in which the BIs perform as expected and the physical measurements correspond
+to the expected values of time and temperature or F
+. If the microbial and physical measurements do not correlate, an investigation is in
+order, and corrective action must be taken to rectify the discrepancy. Samples from the hottest regions of the load are used for evaluation
+of material stability and quality.
+product quality and stability evaluation
+Manufacturers must conduct ongoing evaluation of the product's ability to withstand the routine sterilizing conditions. The evaluation
+should encompass the essential quality attributes with attention focused on known and potential new impurities and those materials that
+receive the most heat input. Manufacturers also should evaluate appearance, other physical proper ties, and container–closure integrity as a
+par t of this effor t. For microbiological media, the ability of the media to meet growth promotion and other requirements is required as
+indicated in the appropriate test chapter(s) (e.g., Microbial Enumeration Tests 〈61〉, Tests for Speci«ed Microorganisms 〈62〉, and Sterility
+Tests 〈71〉).
+OFFICIAL
+2/12/25, 4:42 PM
+USP-NF 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids
+
+=== PAGE 5 ===
+Routine Process Control
+All sterilization processes should be subject to formalized practices that maintain them in a controlled state. The practices outlined in
+〈1229〉 include the general requirements appropriate for all sterilization systems. This is accomplished by a number of related practices that
+are essential for continued use of the process over an extended period of time. The practices include: calibration, physical measurements,
+physicochemical integrators, indicators for sterilization, monitoring of bioburden, ongoing process control, change control, preventive
+maintenance, periodic reassessment, and training.
+The use of parametric release is common in the terminal sterilization of «nished product containers. This subject is addressed in
+Terminally Sterilized Pharmaceutical Products—Parametric Release 〈1222〉.
+REFERENCES
+Berger T & Trupp K, Validation of Terminal Sterilization. In: Validation of Pharmaceutical Processes, 3rd edition; Agalloco J & Carleton F
+J, eds.;
+InformaUSA, New York; 2007.
+Owens J, Sterilization of L
+VPs and SVP's, In: Sterilization Technology—A Practical Guide for Manufacturers and Users of Health Care Products.
+Morrissey R & Phillips GB; Van Nostrand Reinhold, New York; 1993.
+Young J, Sterilization with Steam under Pressure. In: Sterilization Technology—A Practical Guide for Manufacturers and Users of Health Care
+Products. Morrissey R & Phillips GB, Van Nostrand Reinhold, New York; 1993.
+Degradation kinetics may differ from those of microbial kill, and F
+ values may not be su­cient to fully evaluate “worst case” effects.
+Loading Auxiliary Information…
+Most Recently Appeared In:
+Pharmacopeial Forum: Volume No. 45(6)
+Current DocID: GUID-D516FF11-E0D7-4288-9979-2074A9B283FD_3_en-US
+DOI: https:/
+/doi.org/10.31003/USPNF_M7411_03_01
+DOI ref: 7m5wx
+OFFICIAL
+2/12/25, 4:42 PM
+USP-NF 〈1229.2〉 Moist Heat Sterilization of Aqueous Liquids

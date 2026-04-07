@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPE Process Gases - Chapter 6: Control & Monitoring Systems</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+/* ===== SOURCE BADGE ===== */
+.source-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    letter-spacing: 0.03em;
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Chapter 6: Design Options — Control &amp; Monitoring Systems</h1>
+    <div class="subtitle">第六章：管控與監測系統設計選項</div>
+    <div class="page-info">ISPE Good Practice Guide: Process Gases | p69–p80</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解製程氣體管控系統的三大類別：壓縮空氣系統、鋼瓶系統、現場產氣與槽儲系統，及各自的控制邏輯</li>
+        <li>掌握品質監測的核心參數：壓力、露點（水分）、微生物、微粒、碳氫化合物，並了解每項參數為何對藥廠製程至關重要</li>
+        <li>了解取樣策略設計原則：POU取樣位置、過濾器前後的選擇依據，以及樣品代表性的確認方法</li>
+        <li>熟悉各種水分監測技術（冷鏡、電解、阻抗、高分子薄膜）的原理與適用場合</li>
+        <li>連結CDMO實務：製程氣體OOS事件如何觸發批次偏差調查，並影響放行決策</li>
+    </ul>
+</div>
+
+<!-- ==================== 6.1 INTRODUCTION ==================== -->
+<div class="section-title">6.1 Introduction — 導論</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p><span class="key-term">Control and monitoring systems</span> may act as a risk mitigation tool in process gas systems.</p>
+
+        <p>Where appropriate in this chapter, a distinction is made between <span class="key-term">process gas systems</span> and <span class="key-term">compressed air systems</span> based upon differences in ownership and responsibility; compressed air systems are usually owned by an organization, whereas process gas storage/generation systems are usually rented from a specialist supplier.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>管控與監測系統 (Control and Monitoring Systems):</strong> 這章的核心主張是：監測系統本身就是風險緩解工具。換言之，即便氣體品質偶爾波動，只要能即時偵測並觸發響應（自動關閥、發出警報、啟動備用設備），就能防止不合規氣體流入製程。</p>
+            <p><strong>所有權差異的重要性：</strong> 壓縮空氣系統由工廠自有，儀器校正、維護、文件都在廠內GMP體系下管理。製程氣體（N₂、CO₂、Ar）通常租自氣體供應商——他們有自己的控制系統，但廠方仍須確保這些系統的告警信號能接入廠內監控。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>這個所有權區分就像大樓的電力系統（工廠自有、自管）vs 外租的備用發電機（廠商維護，但你需要知道它的電量與故障信號）。兩者都要能接入你的中央控制室，才能完整掌握廠務安全。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>當製程氣體由外部供應商提供時，廠方可能需要<strong>複製安裝監測儀表</strong>（duplicate monitoring instruments），目的是：(1) 讓氣體供應商用他自己的標準儀器；(2) 廠方用自己管理校正的儀器，確保數據符合GMP文件要求。兩套儀器並行，不互相依賴。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果氣體供應商的控制系統發出警報，但廠方BMS沒有接收到信號，可能的後果是什麼？</li>
+                <li>為什麼廠方要自行管理監測儀表的校正，而不完全依賴氣體供應商的數據？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.2 CONTROL SYSTEMS ==================== -->
+<div class="section-title">6.2 Control Systems — 管控系統</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>There are three categories of system which are controlled:</p>
+        <ul>
+            <li>Compressed Air Systems</li>
+            <li>Cylinder Systems</li>
+            <li>On Site Gas Generation and Bulk Storage Systems</li>
+        </ul>
+
+        <h3>6.2.1 Compressed Air Systems</h3>
+        <p>The compressors normally have a specific proprietary <span class="key-term">control system</span>. This should control and monitor the compressor, shutting it down in the event of an alarm or sensor failure in order to protect the equipment. Usually compressor control is based on maintaining a minimum pressure at its discharge – on a basic system through shutting down or starting up the compressor, on a more sophisticated system through regulating the compressor output.</p>
+
+        <p>There is usually provision for interconnecting these control systems or linking them through a "supervisory" controller that will manage multiple compressors, usually rotating the primary duty unit to ensure equal use of each system.</p>
+
+        <p>The dryers within a system typically come with a supplier's proprietary control system. The control systems typically operate based on a timer to control the sequence of operation between the two dryer vessels or the <span class="key-term">changeover between vessels is controlled by the discharge pressure dewpoint</span>. The latter system is considered more energy efficient.</p>
+
+        <p>In the event of a system failure, the alarm from a <span class="key-term">dryer pressure dewpoint monitor</span> may be used to automatically close the valve downstream of the dryer, as this would prevent putting potentially wet air into a distribution system – where a sudden loss of supply would create problems, this signal could also initiate a standby dryer.</p>
+
+        <p>The system status and any system alarms can be fed through a <span class="key-term">Building Management System (BMS)</span> to facilitate remote monitoring, and management of any alarms.</p>
+
+        <h3>6.2.1.1 Cylinder Systems</h3>
+        <p>There are two basic types of cylinder systems:</p>
+        <ol>
+            <li>Manual Changeover</li>
+            <li>Automatic Changeover</li>
+        </ol>
+
+        <p><strong>Manual Changeover:</strong> These require the standby cylinder to be manually selected when the duty cylinder runs on low pressure. These basic systems do not provide capability for remote monitoring, though a low cylinder pressure switch may be provided for connection to either a local alarm, an alarm in the area in which the gas is used, or to a BMS.</p>
+
+        <p><strong>Automatic Changeover:</strong> The system automatically changes over from a duty to a standby cylinder, and will give an alarm signal to notify the system owner that the empty cylinder needs to be changed. This may be connected to a local alarm, an alarm in the area in which the gas is used, or to a BMS.</p>
+
+        <h3>6.2.2 On Site Generation Systems and Bulk Storage Systems</h3>
+        <p>These systems are typically supplied and maintained by a specialist supplier; with their own control and monitoring systems.</p>
+
+        <p>The design and operation of these systems should be understood by the user, and alarm signals from the system made available for connection to a monitoring system, as required. Users may <span class="key-term">duplicate monitoring instruments</span> for connection to their monitoring system to allow the gas system supplier to provide a standard package. This also has the advantage that the user retains management of the calibration of the devices.</p>
+
+        <p>The integration and monitoring of process gas systems should be considered during the <span class="key-term">design phase</span> to ensure that the optimum solution is specified.</p>
+
+        <p>Where there are defined <span class="key-term">Lower Explosive Limits (LELs)</span> for gas concentrations, monitoring systems and local safety alarms may be required by local regulations.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三類系統的管控邏輯差異：</strong></p>
+            <ul>
+                <li><strong>壓縮空氣系統：</strong> 廠方完整擁有，從壓縮機到乾燥機到配管都需納入GMP體系。控制邏輯以「維持最低出口壓力」為核心。</li>
+                <li><strong>鋼瓶系統：</strong> 最簡單——人工切換或自動切換。管理重點是確保備用鋼瓶在位、壓力低點告警能傳遞到值班人員或BMS。</li>
+                <li><strong>現場產氣/大型槽儲：</strong> 複雜度最高，通常由氣體公司遠程監控，廠方需整合其告警信號到自己的BMS或DCS。</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>露點控制換向 vs 計時換向</h4>
+            <p>乾燥機雙塔切換有兩種邏輯：</p>
+            <ul>
+                <li><strong>計時換向（Timer-based）：</strong> 固定時間切換，簡單但不考慮實際乾燥效果，可能提前切換（浪費能源）或延遲切換（露點惡化）。</li>
+                <li><strong>露點換向（Dewpoint-controlled）：</strong> 偵測出口露點，只在實際需要時才切換，更節能、更穩定。ISPE明確指出此方式更佳。</li>
+            </ul>
+            <p>關鍵安全邏輯：若露點監測器發出警報，應自動關閉下游閥門，防止潮濕空氣進入配管。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>手動換鋼瓶就像手動加油站——你要自己去確認油量低了再換。自動切換系統則像現代汽車油箱：油位低自動亮燈，且在舊桶用完前就已切換到備用桶，不間斷供應。對於藥廠的連續製程，自動切換是基本要求，否則氣體中斷可能直接造成批次失敗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — LEL 爆炸下限</h4>
+            <p><strong>Lower Explosive Limit (LEL，爆炸下限)：</strong> 可燃性氣體（如氫氣）在空氣中達到某濃度時才會爆炸，LEL是最低引爆濃度。例如氫氣LEL約4%（v/v）。</p>
+            <p>N₂和CO₂本身不可燃，但高濃度會造成<strong>缺氧窒息</strong>危害，需要氧氣不足警報（O₂ deficiency alarm）而非LEL警報。這是CDMO安全管理上的常見誤解——必須根據氣體特性選擇正確的安全監測類型。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在CDMO的無菌充填廠，N₂覆蓋（nitrogen blanketing）用於防止配方氧化。若N₂鋼瓶採用手動切換且未及時更換，導致N₂供應中斷，充填腔體可能進入空氣，造成O₂濃度上升、產品氧化降解——這是一個直接影響批次品質的OOS事件，需要完整偏差調查。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>在設計階段未考慮BMS整合，日後要補接氣體系統告警信號，會面臨哪些驗證文件上的挑戰？</li>
+                <li>露點換向乾燥機（dewpoint-controlled）和計時換向乾燥機在GMP文件記錄上有何差異？哪種更容易舉證合規？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3 MONITORING - OPERATIONAL PARAMETERS ==================== -->
+<div class="section-title">6.3.1 Operational Parameter Monitoring — 操作參數監測</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p><span class="key-term">Pressure</span> is often categorized as a <span class="key-term">CPP (Critical Process Parameter)</span> for a process gas system, usually introducing a concomitant calibration and monitoring regime.</p>
+
+        <p>The gas supply system may be controlled by the pressure, either in the system receiver or in the entry point to the distribution system.</p>
+
+        <p>The distribution system should be sized so that end users receive the necessary flow and associated inlet pressure, based on design usage diversity or calculated pressure drop under peak usage.</p>
+
+        <div class="quote-box">
+            "This Guide proposes that the pressure is usually an engineering parameter and not a CPP."
+        </div>
+
+        <p>The basis for this is:</p>
+        <ul>
+            <li>Any piece of equipment supplied by the gas system that has a requirement for a specific flow/pressure will have an inlet pressure switch that monitors and alarms for that use; this is a critical location/instrument.</li>
+            <li>The system pressure control provides a general indication, but does not monitor at each POU, or consider any usage, or effect at an individual POU.</li>
+        </ul>
+
+        <p>It may be appropriate to review specific installations to determine if that rationale is appropriate.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>壓力：是CPP還是工程參數？</strong> 這是ISPE提出的一個重要觀點。傳統上許多廠房把供氣幹管壓力列為CPP，配上嚴格的校正計畫。但ISPE認為，幹管壓力只是「大方向」指標，真正重要的是<strong>每個使用點（POU, Point of Use）</strong>的入口壓力。</p>
+            <p><strong>邏輯推論：</strong> 幹管壓力正常，不代表最遠端POU的壓力足夠（因為有壓降）。因此，真正的關鍵是在設備入口安裝壓力開關，直接監測設備可用的氣體壓力。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula</h4>
+            <pre>
+壓力分配設計邏輯：
+
+幹管設計壓力 = 最遠端POU需求壓力
+             + 管路壓降（由流量、管徑計算）
+             + 安全裕度
+
+Peak usage 壓降需以最大同時使用量計算
+（diversity factor 多樣性係數）
+            </pre>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>幹管壓力就像城市自來水主幹管的水壓——市政局知道主幹壓力正常，但你家頂層浴室的水壓夠不夠，要看你家的供水設計。製程氣體也一樣：關鍵在於每個設備「入口」的壓力，而非系統層面的幹管壓力。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>ISPE這個建議具有實質的成本含義：把幹管壓力降級為「工程參數」，可以減少校正負擔（calibration burden）和文件要求。但這需要在URS（用戶需求規格）中明確說明，並在DQ/IQ/OQ文件中留下完整的風險評估理由。若監管機構在查廠時提問，廠方需能清楚說明為何不將幹管壓力視為CPP。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果你的無菌充填機需要最低5 bar N₂入口壓力，你會在哪個位置安裝壓力開關？警報下限設在幾bar比較合理？</li>
+                <li>在peak usage期間（多台設備同時用氣），如何確認幹管壓力不會因壓降過大而影響最遠端設備？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2 QUALITY MONITORING ==================== -->
+<div class="section-title">6.3.2 Quality Monitoring — 品質監測</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p><span class="key-term">Quality monitoring</span> is required at POUs located in controlled room environments. Regulations require that the particulate and microbiological quality of the compressed gas be equal to or better than that of the air in the environment into which the gas is introduced (at rest). (See Eudralex Volume 4 Annex-1, 2004; 21 CFR Part 210.)</p>
+
+        <p>Process gas systems may be operated at very low dewpoints or negative dewpoints, in accordance with user requirements. A properly operated process gas system with low moisture should not support the growth or survival of microorganisms.</p>
+
+        <p>The quantity of water necessary to support microbiological growth is usually expressed as <span class="key-term">water activity (aw)</span>. For gases, water activity is related to relative humidity (RH = aw × 100%) and also dewpoint which may be used to express moisture in a compressed gas. <strong>Molds and yeasts do not grow where the aw is less than 0.6 and bacteria do not grow where the aw is less than 0.85</strong> (Scott et al., 2001).</p>
+
+        <p>Process gas systems are not normally designed to be sterilized. Control of microorganisms is usually accomplished at the POUs by using <span class="key-term">0.2 μm sterilizing grade filters</span>.</p>
+
+        <p>Low moisture environments may be used to preserve pharmaceutical products but may not prevent survival of microorganisms:</p>
+        <ol>
+            <li>Desiccation has been a long recognized method for short term preservation of microbiological cultures. Desiccated microorganisms have a variable death rate and a sizable population would have to be introduced into a system to be detectable downstream.</li>
+            <li>Bacteria may also survive through the production of <span class="key-term">endospores</span>. Endospores are tough, dormant non-reproductive structures produced by bacteria with the primary function to ensure survival through periods of environmental stress. Endospores may persist indefinitely in a dormant state awaiting conditions favorable for sporulation or return to vegetative growth.</p>
+        </ol>
+
+        <p>Where the user requirements are particularly demanding, the requirement to ensure that a process gas system facilitates cleaning activities may be included, and the design specified accordingly (e.g., facilitate complete drainage).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>品質等同原則（Quality Equivalence Principle）：</strong> 製程氣體進入潔淨室時，其微粒與微生物品質必須<strong>等於或優於</strong>所在潔淨室的靜態等級。例如在ISO 5 / EU Grade A環境下操作，送入的N₂品質也必須達到ISO 5等級。這是Annex 1和21 CFR Part 210的明確要求。</p>
+            <p><strong>Water Activity (水活性, aw):</strong> 表示系統中可供微生物利用的「自由水」量。aw = 1 為純水，aw &lt; 0.6 幾乎沒有生物能存活。乾燥氣體（低露點）的aw接近0，理論上不利於微生物生長——但這不等於無菌！</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 內孢子的威脅</h4>
+            <p><strong>Endospores (內孢子/芽孢)：</strong> 這是理解乾燥氣體微生物風險的關鍵。芽孢桿菌（Bacillus）等細菌在惡劣環境下形成芽孢，可在極端乾燥、高溫、輻射條件下存活數十年。</p>
+            <p>換言之：乾燥氣體可以<strong>抑制微生物生長</strong>，但無法<strong>殺滅</strong>芽孢。一旦氣體到達有水分、有營養的環境（如產品），芽孢可能復活。這就是為何產品接觸型氣體必須使用0.2 µm滅菌級過濾器，而不能僅靠低露點來保證微生物安全。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>芽孢就像植物的種子：在沙漠裡（乾燥氣體中）靜止不動，一旦遇水（產品中的水分）就會發芽生長。乾燥的管路好比沙漠，種子在裡面不生長，但並未消失。0.2 µm過濾器才是真正的「擋種子」屏障。</p>
+        </div>
+
+        <div class="formula-box">
+            <h4>微生物生長界限 Water Activity Thresholds</h4>
+            <pre>
+aw &lt; 0.60  →  黴菌、酵母菌無法生長（Molds & Yeasts）
+aw &lt; 0.85  →  一般細菌無法生長（Most Bacteria）
+aw &lt; 0.91  →  大部分致病菌無法生長
+
+關係換算：
+RH (%) = aw × 100
+aw = 0.6 約等於 RH 60%
+極低露點（如 -40°C dp）→ RH &lt;1% → aw &lt;&lt; 0.01
+            </pre>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在無菌充填線（aseptic filling line）的N₂覆蓋設計中：最終使用點（POU）應安裝0.2 µm滅菌過濾器，並定期進行完整性測試（integrity test）。微生物監測取樣點應設在過濾器上游（pre-filter），因為過濾器後取樣可能因取樣行為本身引入污染風險（暴露了已滅菌的流路）。這與ISPE 6.3.2的取樣策略討論直接對應。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的廠使用N₂進行無菌充填的氣體覆蓋，且依賴低露點（-60°C）控制微生物風險。FDA查廠官員問你「你如何確保芽孢不會污染產品？」你如何回答？</li>
+                <li>非無菌口服液製程中的CO₂充填用氣，需要監測微生物嗎？如果需要，監測哪類微生物？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2.1 TEST METHOD CONSIDERATIONS ==================== -->
+<div class="section-title">6.3.2.1 Test Method Considerations — 測試方法考量</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>Test method(s) normally depend on the types of microorganisms that are desired to be detected. Factors that should be considered include the:</p>
+        <ul>
+            <li>drug product(s) manufactured within the facility</li>
+            <li>type of process gas</li>
+            <li>regulatory controls</li>
+            <li>manufacturing processes</li>
+        </ul>
+
+        <p>The drug product manufacturing associated risks should be considered. Parenteral drug products are manufactured to be sterile; therefore, the process gas should be rendered sterile prior to use in the manufacturing process. Non-sterile drug products may be manufactured using process gases that are not rendered sterile; therefore, the introduction of <span class="key-term">objectionable microorganisms</span> should be considered.</p>
+
+        <p>A <span class="key-term">risk assessment</span> should be used to develop a rationale for the sample point strategy.</p>
+
+        <p>Process gas systems may be designed and controlled using combinations of <span class="key-term">inline and POU filters</span>. Monitoring strategies for inline and POU filter sample locations should be considered. Monitoring may occur upstream or downstream of a filter, or duplex filters may be required.</p>
+
+        <p>For example, in the case of gas supply to a sterile operation (e.g., nitrogen blanketing during aseptic filling processes), the process gas sample should be taken <span class="key-term">before the final sterile filter</span>. As this gas is 0.2 µm filtered for particulate, the process gas quality should be the same pre- and post- the sterile final filter.</p>
+
+        <p>To take a clean compressed air sample after the sterile filter requires the sampling site to follow the same level of sterilization as the unit operation. Sampling after a final filter poses a potential risk to the unit operation each time a sample is taken.</p>
+
+        <p>Design of sample points should avoid piping common to other utilities such as high purity waters and pure steam.</p>
+
+        <p>A sample should represent the quality at a POU; the location used should be demonstrated to represent the quality at the POU.</p>
+
+        <p>The type of process gas should be considered. <span class="key-term">Process air and O₂</span> should be monitored for aerobic microorganisms. <span class="key-term">Reduced oxygen content gases such as N₂, CO₂, and Ar</span> should be monitored for microorganisms capable of anaerobic growth.</p>
+
+        <p>The size of a sample can affect the monitoring method chosen. Sample size may be based on the sample size required for room classification (in accordance with ISO-14644). A sample size of <span class="key-term">0.7 m³</span> would be required for ISO 5 environments.</p>
+
+        <p>Process gas distribution systems are <span class="key-term">not environmentally classified</span>.</p>
+
+        <p>A gas generation and distribution process is a closed environment, with minimal risk of contamination from an external source. Contaminants in pipe work are most likely to come from the process gas or the pipe work; therefore, a sample taken from the <span class="key-term">longest pipe run</span> is the most likely to find issues resulting from this cause of contamination.</p>
+
+        <p>Inclusion of <span class="key-term">0.2 μm sterilizing grade filters at a POU</span> can ensure that process gas quality at a POU is equal to or better than that of the air in the environment into which the gas is introduced.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>取樣位置策略（Sampling Location Strategy）：</strong> ISPE的關鍵建議是將取樣點設在最終滅菌過濾器「上游」（before the final sterile filter）。原因有二：</p>
+            <ul>
+                <li>過濾器上游的氣體品質 = 過濾器下游的品質（因為0.2 µm過濾器截留所有微粒和微生物）</li>
+                <li>在過濾器下游取樣，每次取樣都會打開已滅菌流路，引入外部污染風險——這是重複性的製程風險，不可接受。</li>
+            </ul>
+            <p><strong>最長管路（Longest Pipe Run）：</strong> 封閉管路系統的污染主要來自管路內部（管材、焊接點、滯留液體），因此最長管路的終端最可能累積問題，是最具挑戰性的取樣點。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>好氧 vs 厭氧微生物監測</h4>
+            <p>這是容易忽視的細節：</p>
+            <ul>
+                <li><strong>壓縮空氣、O₂供應：</strong> 環境含氧，監測<strong>好氧菌（aerobic microorganisms）</strong></li>
+                <li><strong>N₂、CO₂、Ar供應：</strong> 低氧環境，監測<strong>厭氧菌（anaerobic microorganisms）</strong></li>
+                <li>ISPE特別指出：性能測試期間若確認無好氧菌，常規監測可只看厭氧菌（低氧氣體系統）。這是科學化的降負荷設計，但需要文件支持。</li>
+            </ul>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 取樣體積</h4>
+            <p>ISO 14644-1規定ISO 5環境的微粒取樣體積為0.7 m³。製程氣體品質需達到ISO 5等級的系統，應以相同體積取樣，確保統計可信度。</p>
+            <p>注意：ISO 8573-7（壓縮空氣微生物標準）建議用1 m³，但業界實際採用並不廣泛。對於日常監測，較小體積（如1立方英尺）也被接受，但初始驗證測試應使用較大體積。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>在最終過濾器後取樣就像：醫護人員剛完成手術器械滅菌，然後打開包裝來「檢驗」是否無菌——每次開包就是一次污染機會。正確做法是在滅菌前確認品質，以及定期對過濾器本身做完整性測試，而非在使用中反覆取樣。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application — OOS事件處理</h4>
+            <p>假設你的N₂微生物監測在最長管路取樣點偵測到厭氧菌超出行動限（Action Limit），CDMO的標準響應流程：</p>
+            <ol>
+                <li><strong>立即隔離：</strong> 停止使用該管路氣體，評估批次衝擊</li>
+                <li><strong>根本原因調查：</strong> 檢查過濾器完整性、管路死角、最近維護記錄</li>
+                <li><strong>批次衝擊評估：</strong> 問「是否有產品接觸到此氣體？」、「過濾器是否在位且完好？」</li>
+                <li><strong>整改：</strong> 管路消毒/清洗、過濾器更換，並重新取樣確認</li>
+                <li><strong>文件：</strong> 完整偏差報告、CAPA，必要時報告給客戶和監管機構</li>
+            </ol>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你廠有三條N₂使用點管路，長度分別為10m、50m、120m。常規微生物監測應重點監測哪條管路？為什麼？</li>
+                <li>製程氣體配管系統「未進行環境等級分類」這句話的實際意涵是什麼？代表可以放寬監測要求嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2.2 MICROBIAL MONITORING ==================== -->
+<div class="section-title">6.3.2.2 Microbial Monitoring — 微生物監測方法</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>Methods existing for monitoring environments may be extended to monitor process gases. The recovery medium for the microorganisms should include the growth media used in the environmental monitoring program for room air, surfaces, and personnel (PDA Technical Report No. 13), as a minimum. The medium should include the demonstrated ability to support the growth of a variety of bacteria and fungi.</p>
+
+        <p>The sample device should be sanitizable or sterilizable prior to collection of each microbiological sample. Validation or performance qualification of the method should be considered prior to implementation.</p>
+
+        <h3>Impaction Methods</h3>
+        <p><strong>Slit to Agar Sampler:</strong> This method uses a revolving agar plate located at a specified distance from a slit orifice to impinge the sample air flow onto an agar surface. This device can sample a large volume of gas and can provide a time versus concentration relationship. The equipment is large, requires 150 mm agar plates, and is difficult to sanitize.</p>
+
+        <p><strong>Impact Sampler:</strong> Pulls a stream of air through a metal plate containing many small and evenly spaced holes onto an agar surface. These samplers for process gases are relatively large and difficult to sanitize; however, the entire sample flow path and impaction plate can be steam sterilized. These units have the advantage of sampling a cubic meter of gas in less than ten minutes.</p>
+
+        <p><strong>Centrifugal Sampler:</strong> These samplers use a fan to pull a cylinder shaped cone of air into the sample head and particles or microorganisms are deposited by centrifugal force onto an agar strip. The sample head can be steam sterilized and the units are light in weight. Special agar strips are required. Special adapters for sampling process gases are available.</p>
+
+        <h3>Filtration</h3>
+        <p>Filtration is a simple to use and low cost method for monitoring microorganisms in process gases, relative to methods requiring instrumentation. When numerous sample points should be monitored on a regular basis, it may be less costly to stock multiple filter holders than multiple sample instruments.</p>
+
+        <p>The method consists of a type of filter holder (plastic or stainless steel), sterile filters, and a calibrated flow meter. The appropriate volume of gas is filtered through the filter and the filter is aseptically transferred to an agar medium for growth and enumeration. The membrane usually has a nominal pore size rating of <span class="key-term">0.45 μm</span>.</p>
+
+        <h3>Membrane Filter Materials</h3>
+        <p>Membrane filters for environmental monitoring may be made of:</p>
+        <ul>
+            <li>cellulose nitrate</li>
+            <li>cellulose acetate</li>
+            <li>mixed cellulose esters</li>
+            <li>Polyethersulfone (PES)</li>
+            <li>hydrophilic PVDF</li>
+            <li>gelatin</li>
+            <li>nylon</li>
+        </ul>
+        <p>Users should verify that the filter does not inhibit the recovery of indicator microorganisms. A cubic meter sample may be collected in a twelve minute time period. <span class="key-term">Gelatin membrane filters are not suitable for compressed gas monitoring.</span></p>
+
+        <h3>Liquid Impingement</h3>
+        <p>Liquid impingement methods use a liquid to trap and collect microorganisms. The stream of gas is directed through an orifice at high velocity into the liquid. Microorganisms are forced into the liquid and removed from the gas stream.</p>
+        <p>Disadvantages may include a glass construction resulting in a fragile device. Improper sample handling may result in false positive data. The method should be qualified to demonstrate that it does not destroy vegetative microorganisms.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts — 四種方法比較</h4>
+            <table>
+                <tr>
+                    <th>方法</th>
+                    <th>優點</th>
+                    <th>限制</th>
+                </tr>
+                <tr>
+                    <td>縫隙衝擊（Slit to Agar）</td>
+                    <td>大體積、時間分布圖</td>
+                    <td>設備大、難消毒</td>
+                </tr>
+                <tr>
+                    <td>衝擊取樣（Impact）</td>
+                    <td>可蒸汽滅菌、&lt;10分鐘取1 m³</td>
+                    <td>笨重、難消毒</td>
+                </tr>
+                <tr>
+                    <td>離心取樣（Centrifugal）</td>
+                    <td>輕巧、可蒸汽滅菌、有氣體接頭</td>
+                    <td>需特殊培養條</td>
+                </tr>
+                <tr>
+                    <td>過濾法（Filtration）</td>
+                    <td>低成本、多點監測友善</td>
+                    <td>需確認濾材不抑菌</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>明膠膜（Gelatin membrane filter）不適用壓縮氣體：</strong> 明膠遇到乾燥高壓氣流會脆化甚至破裂，造成取樣失敗或假陰性，這是一個必須避免的選材錯誤。在驗證取樣方法時，應明確確認所用濾材對目標菌種無抑制作用（菌回收率驗證, recovery validation）。</p>
+            <p><strong>0.45 µm vs 0.2 µm：</strong> 環境微生物監測用0.45 µm（截留細菌），而不是0.2 µm——因為0.2 µm流阻大，取樣流量低，取樣時間過長。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>四種方法就像四種捕魚方式：衝擊法（撒大網）效率高但設備笨重；離心法（捕魚桶）輕巧靈活；過濾法（魚網）便宜可批量部署；液體衝擊法（魚缸過濾）可捕捉最脆弱的魚（vegetative cells），但玻璃設備易破。選擇哪種，取決於你要捕的「魚」種類和取樣點數量。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>對CDMO來說，過濾法（filtration method）通常最實際：多客戶產品、多取樣點、需要靈活部署。但在無菌充填廠（aseptic filling facility）的N₂取樣，可能需要能蒸汽滅菌的衝擊取樣器——因為取樣本身不能污染系統，設備必須能完全滅菌，且取樣操作必須在RABS或隔離器環境中執行。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你要同時監測工廠的10個N₂使用點，預算有限。你會選擇哪種取樣方法？理由是什麼？</li>
+                <li>取樣方法驗證（method validation）中，「回收率」測試的目的是什麼？如何設計此測試？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2.3 PARTICULATE MONITORING ==================== -->
+<div class="section-title">6.3.2.3 Particulate Monitoring — 微粒監測</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>There are several methods and a variety of instrumentation available for detecting, sizing, and quantifying particulates in compressed gases.</p>
+
+        <p>Methods include laser particle counting, condensation nucleus counting coupled with scanning mobility particle sizing, differential mobility analysis, and membrane capture. The application of these methods is covered in ISO-8573-4:2001.</p>
+
+        <p>The <span class="key-term">laser particle counter</span> method is commonly used for process gases, due to the moderate sample rate, relatively low cost, and low maintenance requirements. Care should be taken to avoid including <span class="key-term">moisture as droplets in particle counts</span> and to ensure that the sample hose connecting the particle counter and the sample point does not contribute to the particle count. The tubing should be made of a smooth non-shedding material and as short as possible to avoid particle fallout. The connection to the sample port should avoid introducing exterior air or generation of particles.</p>
+
+        <h3>Monitoring Process (high/low pressure)</h3>
+        <p>Process gas systems usually supply gas at a flow or pressure that is too high for a particle counting instrument. The flow to the instrument should be restricted to prevent damage to the particle counter, as high pressure may damage the sensor. This is usually accomplished by using a device that supplies an appropriate flow rate to the particle counter while allowing the excess gas to be safely vented.</p>
+
+        <p>The monitoring process should ensure that the compressed gas flow to the particle counter does not fall below the point where <span class="key-term">outside air is introduced into the sample process</span>. Sample points may supply process gas at flow or pressure below this critical threshold and a different technique should be used.</p>
+
+        <p>For such low flow/pressure sample points, the gas may be passed through a tube that would allow the pressure to diffuse while allowing the particle counter to sample the airflow without the gas stream being forced into the sensor. A qualification process should ensure that the particle counter is representatively counting particles in the gas stream.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>雷射微粒計數器（Laser Particle Counter, LPC）：</strong> 製程氣體微粒監測的主流技術。原理是讓氣體流過雷射光束，微粒散射光被偵測並計數/分級（通常為≥0.5 µm 和 ≥5.0 µm）。藥廠常用，符合ISO 8573-4和ISO 14644標準。</p>
+            <p><strong>高壓取樣的挑戰：</strong> 製程氣體通常在6-8 bar以上輸送，但LPC的感測器設計在大氣壓附近，高壓氣體直接進入會損壞儀器。必須使用流量限制器（flow restrictor）或稀釋裝置（diluter），讓超量氣體安全排放。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 水霧干擾計數</h4>
+            <p>液態水滴（moisture droplets）在LPC中會被計為「微粒」，造成假性計數升高。這是一個系統性誤差來源，必須通過：</p>
+            <ul>
+                <li>確保氣體露點遠低於取樣環境溫度（避免凝結）</li>
+                <li>取樣管線保溫或加熱</li>
+                <li>使用疏水性材料的取樣管</li>
+            </ul>
+            <p>低壓側的反向問題是：若氣體流量不足，環境空氣可能透過取樣孔進入（文氏效應），造成環境微粒污染取樣讀值——即「負壓引入外氣」現象。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>對LPC進行高壓製程氣體監測就像用一般血壓計量液壓機的壓力——你需要先用减壓閥把壓力降到儀器可接受範圍，讓超量壓力安全排出，儀器才能正確測量。取樣管線就像血壓計的充氣管，必須不脫落材質（non-shedding），否則管線自身的微粒會污染讀值。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的N₂供氣壓力為7 bar，環境溫度20°C，露點-40°C。在取樣時，你是否需要擔心水霧干擾微粒計數？為什麼？</li>
+                <li>取樣管線的材質選用有何要求？為什麼要「盡可能短」？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2.4 MOISTURE MONITORING ==================== -->
+<div class="section-title">6.3.2.4 Moisture Monitoring — 水分監測</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>Moisture in process gases is usually measured as <span class="key-term">dewpoint</span> or <span class="key-term">pressure dewpoint</span>. Methods usually include condensation devices, e.g.:</p>
+        <ul>
+            <li>cooled mirror dewpoint hygrometers</li>
+            <li>electrolytic hygrometers</li>
+            <li>impedance hygrometers</li>
+            <li>polymer film relative humidity sensors</li>
+        </ul>
+
+        <p>Quartz crystal microbalance and Surface Acoustic Wave (SAW) devices are usually too complex for pharmaceutical process gas applications.</p>
+
+        <p>When using a hygrometer, the temperature and line pressure should be accounted for during dewpoint measurements. The instruments may be used in line for continuous monitoring or may be used to periodically monitor critical POUs.</p>
+
+        <p>The type used should be determined by the degree of accuracy required for downstream processes, maintenance and calibration schedules, costs, and equipment reliability.</p>
+
+        <h3>Chilled Mirror Hygrometer</h3>
+        <p>The chilled mirror is a widely used measurement device with an accurate field measured dewpoint over a wide range. A surface mirror or polished surface in contact with the gas stream is cooled until condensation forms. The temperature at which condensation is formed is the dewpoint. Chilled mirror hygrometers are negatively affected by particulates in the air stream and by hygroscopic inorganic salts and are considered an expensive instrument routinely used for process gases.</p>
+
+        <h3>Electrolytic Hygrometer</h3>
+        <p>This method is described in the PhEur and USP as a method for determining water in gases. The method is based on absorption of water by diphosphorus pentoxide to produce phosphoric acid as an electrical conductor. A voltage is applied to the water to produce electrolysis. The resulting current is proportional to the water content and based on Faraday's Law. The technique can provide stable and repeatable data but requires more attention to proper use to provide accurate results than other methods.</p>
+
+        <h3>Impedance Hygrometers</h3>
+        <p>These are typically ceramic, aluminum oxide, and silicon oxide based sensors. These sensors rely on a change in electrical property such as capacitance, impedance, or resistance of a porous layer in response to moisture in the gas stream. When properly calibrated and maintained, these instruments can provide good quality results. Calibration is required on a regular basis.</p>
+
+        <h3>Polymer Film Relative Humidity (RH) Sensors</h3>
+        <p>These sensors are similar to impedance hygrometers. These are constructed of a polymer with a hygroscopic dielectric material. As the water content changes, the dielectric properties change and the capacitance of the sensor changes to provide an electrical response. Hygrometers based on this principle offer <span class="key-term">relatively low cost and good quality results</span>. These types of sensors are less susceptible to particulate contamination.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>露點（Dewpoint）vs 壓力露點（Pressure Dewpoint）：</strong></p>
+            <ul>
+                <li><strong>露點：</strong> 氣體在大氣壓下降溫至凝露的溫度，例如 -40°C dp</li>
+                <li><strong>壓力露點：</strong> 氣體在管線實際壓力（如7 bar）下的露點。同一批氣體，在高壓管線中的壓力露點比大氣露點高約20-25°C（因為壓縮使水分相對濃度升高）</li>
+            </ul>
+            <p>比對規格書時必須注意：供應商通常標示大氣露點，但你的設備可能需要的是大氣壓下使用（降壓後），應正確換算。</p>
+        </div>
+
+        <div class="concept-box">
+            <h4>四種水分監測技術比較</h4>
+            <table>
+                <tr>
+                    <th>技術</th>
+                    <th>原理</th>
+                    <th>優點</th>
+                    <th>限制</th>
+                </tr>
+                <tr>
+                    <td>冷鏡（Chilled Mirror）</td>
+                    <td>冷卻至凝露，測溫</td>
+                    <td>精準、量程廣</td>
+                    <td>貴、怕微粒</td>
+                </tr>
+                <tr>
+                    <td>電解（Electrolytic）</td>
+                    <td>P₂O₅吸水、法拉第定律</td>
+                    <td>PhEur/USP收載</td>
+                    <td>操作要求高</td>
+                </tr>
+                <tr>
+                    <td>阻抗（Impedance）</td>
+                    <td>陶瓷/Al₂O₃電容變化</td>
+                    <td>穩定、可在線</td>
+                    <td>需定期校正</td>
+                </tr>
+                <tr>
+                    <td>高分子薄膜（Polymer Film）</td>
+                    <td>介電常數隨水分變化</td>
+                    <td>低成本、耐微粒</td>
+                    <td>量程相對窄</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>露點監測的雙重意義：</strong></p>
+            <ul>
+                <li><strong>產品保護：</strong> 許多藥品（粉末、凍乾品）對水分敏感，氣體帶入水分會影響產品穩定性和CQA。</li>
+                <li><strong>系統保護：</strong> 高水分會造成配管腐蝕、過濾器堵塞、微生物繁殖。乾燥機失效→露點升高→下游問題連鎖。</li>
+            </ul>
+            <p>電解法（P₂O₅法）被PhEur和USP收載為官方方法，代表在監管文件中具有最強的公信力，但操作技術要求高，廠方人員需培訓。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>冷鏡式露點計就像黃金標準的精密天秤——精確但昂貴且嬌貴。高分子薄膜傳感器就像電子秤——便宜、耐用、精度夠用，適合日常在線監測。選擇哪種，就像選擇計量工具：關鍵應用用天秤，日常監控用電子秤。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在CDMO的凍乾製程（lyophilization）中，腔體充填N₂前必須確認N₂露點達到規格（例如≤-40°C dp）。推薦策略：在N₂進入腔體的POU安裝在線阻抗式或高分子薄膜傳感器做連續監測，並定期用可攜式冷鏡式露點計進行比對校驗（calibration check）。若在線傳感器偏離，立即觸發OOS調查，並評估近期批次是否受影響。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的N₂乾燥機在6 bar壓力下的壓力露點規格為 -20°C pp dp。降壓到大氣壓後，理論大氣露點大約是多少？（提示：壓縮比約7倍，需換算）</li>
+                <li>為什麼電解式露點計「操作要求比其他方法更高」？你認為在校正計畫中需要特別注意什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6.3.2.5 HYDROCARBONS MONITORING ==================== -->
+<div class="section-title">6.3.2.5 Hydrocarbons Monitoring — 碳氫化合物監測</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text <span class="source-badge">ISPE</span></h2>
+
+        <p>Compressed air and other process gas systems intended for pharmaceutical applications should be designed and constructed with <span class="key-term">oil free compressors</span> and hygienic piping. The installation of systems should include the concept of <span class="key-term">"build clean"</span> where the equipment and piping are supplied in a clean condition and installed in a manner to prevent contamination.</p>
+
+        <p>The monitoring of hydrocarbons in compressed gas systems contributes to the qualification phase to ensure the piping is free of oils prior to use. When compressed air systems are appropriately designed and installed, the most significant risk to the system is the introduction of <span class="key-term">diesel (auto) fumes at the air intake</span> for the compressor. Air intake for compressors should be considered in the design stage and care should be taken to avoid introduction of fumes into the system.</p>
+
+        <p>Depending on the air quality in the vicinity of a facility, compressed air quality may need to be monitored on an ongoing basis for high risk contaminants.</p>
+
+        <p>Two distinct methods may be identified based on the type of hydrocarbon component targeted:</p>
+        <ol>
+            <li><span class="key-term">Total Hydrocarbon (THC)</span></li>
+            <li><span class="key-term">Total Volatile Hydrocarbons (TVHCs)</span></li>
+        </ol>
+
+        <p><strong>Total Hydrocarbon (THC) / Total Oil Mist:</strong> These may be detected and quantified using indicator tubes. The tubes contain chemicals that react with an introduced substance and change color. Oil indicator tubes are designed to monitor for specific oils and mists derived from a variety of mineral and synthetic oils. The detection limits are dependent on the volume of gas exposed to the tube medium and the specific type of oil. These tubes are not designed to detect hydrocarbon fumes.</p>
+
+        <p><strong>Total Volatile Hydrocarbons (TVHCs):</strong> Volatile hydrocarbons are compounds that are either gases or liquids that can evaporate and act as a gas. The method does not detect oil mists. TVHCs may comprise many different types of volatile hydrocarbons; therefore, are measured and expressed as <span class="key-term">parts per million calculated as methane</span>.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>THC vs TVHC：兩種不同的碳氫污染：</strong></p>
+            <ul>
+                <li><strong>THC（Total Hydrocarbons / Oil Mist）：</strong> 液態油霧，來自壓縮機潤滑油、軸封洩漏等。即便使用無油壓縮機，進氣端的油霧污染也可能殘留。用指示管（indicator tubes）即時偵測。</li>
+                <li><strong>TVHC（Total Volatile Hydrocarbons）：</strong> 揮發性氣態碳氫化合物，如汽油蒸氣、溶劑蒸氣，來自壓縮機進氣口周圍的環境空氣（停車場、鍋爐房、實驗室廢氣）。用ppb/ppm儀器偵測，以甲烷當量表達。</li>
+            </ul>
+            <p><strong>指示管（Indicator tubes）：</strong> 單次使用的比色試管，成本低、現場快速測定，但精度有限，適合定性/半定量用途。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes — 進氣口設計</h4>
+            <p>壓縮機進氣口位置是系統設計中最常被忽視的安全細節之一。正確選址原則：</p>
+            <ul>
+                <li>遠離停車場、裝卸區、發電機排氣管</li>
+                <li>高度應高於地面（減少地面塵埃和廢氣吸入）</li>
+                <li>設置空氣過濾器（空氣品質差的地區考慮活性炭前處理）</li>
+                <li>定期採樣確認進氣口空氣品質</li>
+            </ul>
+            <p>若廠址附近有新開幕的停車場或施工工地，需重新評估是否需要增加TVHC例行監測頻率。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>油霧（THC）就像肉眼幾乎看不到的廚房油煙，直接來自設備本身；揮發性碳氫化合物（TVHC）就像鄰居燒烤的煙——來自外部環境，從窗戶（進氣口）飄入。前者靠選用無油壓縮機預防，後者靠選對進氣口位置和持續環境監測。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 CDMO Application</h4>
+            <p>在CDMO資格確認（qualification）流程中，壓縮空氣的碳氫化合物測試通常在IQ/OQ階段執行，目的是確認系統安裝時未引入油污。但ISPE指出：若廠房附近環境空氣品質差（如位於工業區、鄰近停車場），需要納入<strong>常規監測</strong>計畫，而非僅做一次性資格確認。這是CDMO在廠房選址或改建時需要預先評估的風險。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的廠剛完成壓縮空氣系統安裝，驗收測試顯示THC（油霧）讀值高於規格。可能的根本原因有哪些？如何逐一排除？</li>
+                <li>TVHCs監測結果以「ppm calculated as methane」表達，這種表達方式有何意涵？當監測對象是複合有機溶劑蒸氣時，此方法有什麼局限性？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>管控系統三類：</strong> 壓縮空氣（廠方自有，露點控制切換）、鋼瓶（自動切換+BMS整合）、現場產氣（供應商控制，廠方需複製儀表管理校正）。設計階段即需規劃整合。</li>
+        <li><strong>壓力非CPP的ISPE立場：</strong> 幹管壓力是工程參數，真正的關鍵監測點在各POU入口，設備自帶的壓力開關才是關鍵儀表。</li>
+        <li><strong>品質等同原則：</strong> 製程氣體進入潔淨室，微粒和微生物品質必須≥所在室的靜態等級（Annex 1 / 21 CFR Part 210要求）。</li>
+        <li><strong>低露點不等於無菌：</strong> 乾燥可抑制微生物生長，但芽孢（endospores）在極乾環境下仍可長期存活。唯一可靠的屏障是0.2 µm滅菌級POU過濾器。</li>
+        <li><strong>取樣位置策略：</strong> 取樣應在最終過濾器上游進行，最長管路末端是最具代表性的風險點；過濾器下游取樣風險大，每次取樣都可能污染已滅菌流路。</li>
+        <li><strong>水分監測選型：</strong> 冷鏡（最精準但貴）、電解（PhEur/USP認可）、阻抗（穩定在線）、高分子薄膜（低成本、耐微粒）——根據應用精度和預算選擇；露點vs壓力露點需正確換算。</li>
+        <li><strong>碳氫化合物雙重風險：</strong> THC（油霧，來自設備）靠無油壓縮機和指示管監測；TVHC（揮發性碳氫，來自外部環境）靠進氣口選址和持續環境監測管控。</li>
+        <li><strong>CDMO OOS連接：</strong> 任何製程氣體品質OOS事件都必須觸發偏差調查，評估批次衝擊，並決定放行、隔離或報廢——氣體品質數據是批次記錄的一部分。</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

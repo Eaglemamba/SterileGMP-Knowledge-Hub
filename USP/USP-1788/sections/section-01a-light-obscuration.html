@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1788〉 - Section 1: Light Obscuration Method Part 1</title>
+    <style>
+:root { --primary-blue: #1e3a5f; --accent-blue: #3498db; --light-gray: #fafafa; --light-blue: #f0f7ff; --yellow-start: #fff9e6; --yellow-end: #fff3cd; --green-bg: #e8f5e9; --green-border: #4caf50; --orange-bg: #fff3e0; --orange-border: #ff9800; --purple-bg: #f3e5f5; --purple-border: #9c27b0; --text-dark: #2d3748; --text-medium: #4a5568; --header-height: 60px; --nav-height: 50px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .header h1 { font-size: 1.1rem; } .main-content, .main-container { padding: 1rem; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Section 1: Light Obscuration Method Part 1 | 光阻法（上）</h1>
+    <div class="subtitle">USP 〈1788〉 Methods for the Determination of Subvisible Particulate Matter</div>
+    <div class="page-info">Pages 5–8 | Sections 6–8 (Particulate Evaluation, USP Limits, Control of Particulate Matter)</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解粒子評估的整合策略：分類、鑑定、資料庫建立</li>
+        <li>掌握 USP 〈788〉 法定微粒限量（Table 2）：LVI vs SVI，LO vs MM</li>
+        <li>瞭解最終過濾器豁免條款（Final Filter Exemption）的條件與限制</li>
+        <li>理解微粒管控的開發策略：早期導入、正交方法、目標規格制定</li>
+        <li>掌握統計採樣計劃（Statistical Sampling Plan）的基本原則</li>
+        <li>理解風險導向方法（Risk-Based Approach）在微粒管控中的應用</li>
+        <li>認識矽油液滴與氣泡的特殊處理考量</li>
+    </ul>
+</div>
+
+<!-- Section 6: Particulate Material Evaluation -->
+<div class="section-title">6. Particulate Material Evaluation | 微粒物質評估</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>For all particle determination efforts, and ultimately to reach a comprehensive control strategy, it is necessary to understand the category, if not the identity, of the particle population. As described in this chapter, extrinsic and intrinsic particles may be quantified (using LO), quantified and described (using MM and FI), and isolated (using MM) for further analysis.</p>
+        <p>For extrinsic and intrinsic particle varieties, it is recommended to use a database consisting of an <span class="key-term">internal particle library</span> that provides particle references. The database is a key component of particle classification, risk assessment, and the ultimate identification. Some public domain and vendor databases are available, but the best database comes from compilation of particle species from your own operations.</p>
+        <p>Evaluation of the inherent particle-population baseline will utilize 〈788〉 techniques but also those described in 〈1787〉. For protein therapeutic drugs, establishment of the inherent baseline of proteinaceous particles is necessarily important and has been discussed in detail.</p>
+        <p>LO provides only particle concentration for specified <span class="key-term">size bins</span>. Although these data are valuable for tracking product quality and manufacturing consistency, LO does not differentiate among particles based on particle types. Both MM and FI provide additional information on particle attributes other than size. FI reveals the images of all particles streaming by the camera system and thus allows classification according to morphology and image intensity. MM not only tabulates counts but also reveals the particle image and provides an isolate for analysis after counting.</p>
+        <p>However, much more can be done to fully characterize and possibly identify particulate matter with an integrated approach using <span class="key-term">light microscopy</span>, <span class="key-term">vibrational spectroscopy</span>, <span class="key-term">elemental analysis</span>, and <span class="key-term">electron microscopy</span>. These references describe a forensic pathway of identification.</p>
+        <p>Applicability of any of these tests for specific products should be evaluated using appropriate qualification steps. Qualification of the instrument should be based on frequency of use, maintenance schedule, and accuracy requirements. General guidance on performing qualification is provided in Validation of Compendial Procedures 〈1225〉 and Verification of Compendial Procedures 〈1226〉.</p>
+
+        <h3>6.1 Final Filter Exemption</h3>
+        <p>General chapter 〈788〉 provides the following: "Parenteral products for which the labeling specifies use of a <span class="key-term">final filter</span> prior to administration are exempt from the requirements of 〈788〉, provided that scientific data are available to justify this exemption." The purpose of this exemption is to offer a mechanism to reduce the subvisible particulate burden inherent in the final drug product when the amount would exceed acceptable limits and cannot otherwise be reduced through formulation adjustments or the manufacturing process prior to use.</p>
+        <p>The utilization of an in-line filter should be driven by <span class="key-term">risk benefit evaluation</span> of the potential clinical implication of subvisible particulates for the intended user population, but not be recommended to mitigate a Current Good Manufacturing Practices (cGMP)-related product quality issue (e.g., the presence of extrinsic particles). The application of this exemption should be supported by scientific evidence sufficient to justify its adoption and generally include the composition and mechanism of formation of the particles in addition to demonstrating that process-optimization strategies failed to reduce the particle load.</p>
+        <p>Labeled recommendations of filter type and size should also be supported by appropriate drug product compatibility assessments, consistency in particle removal, and clinical data as necessary. Demonstration that drug potency is not significantly affected is essential. An associated risk assessment is strongly encouraged to evaluate the potential clinical implications to the intended user populations if a final in-line filter is not utilized.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念 — 微粒資料庫建立的重要性</h4>
+            <p><strong>Internal Particle Library（內部微粒資料庫）：</strong>透過長期收集和分析自廠生產過程中出現的各類微粒，建立一個具有照片、化學成分、尺寸特徵、來源溯源的參考資料庫。</p>
+            <p>這個資料庫是品質調查的核心工具：當新批次出現異常微粒計數時，首先比對資料庫，判斷是已知的可接受微粒，還是代表新問題的未知微粒。</p>
+            <p><strong>實際建立方式：</strong>MM 分離出的粒子 → 顯微鏡拍照 → 紅外光譜（IR）鑑定 → 記錄來源與處置結果</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — 最終過濾器豁免的嚴格條件</h4>
+            <p>Final Filter Exemption（最終過濾器豁免）的使用必須滿足：</p>
+            <ol>
+                <li>已窮盡製程優化措施，無法降低微粒負荷</li>
+                <li>有充分科學證據說明微粒的組成和形成機制</li>
+                <li>過濾器規格有相容性和粒子去除一致性資料</li>
+                <li>確認過濾不影響藥效（效價測試）</li>
+                <li><strong>嚴格禁止：</strong>不得用此豁免來掩蓋 GMP 合規問題（如外源性污染）</li>
+            </ol>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 — 最終過濾器豁免不是萬靈丹</h4>
+            <p>想像一家餐廳的食物偶爾有沙粒（外源性污染）。告訴客人「自己過濾再吃」並非解決方案——這只是在掩蓋廚房的衛生問題。最終過濾器豁免只適用於「食材本身含有難以完全去除的天然顆粒」（固有性或部分內源性）的情況，而不能用來掩蓋環境或設備污染問題。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個單株抗體藥品，因蛋白聚集體而導致 LO 結果接近 〈788〉 限量。公司可以申請 Final Filter Exemption 嗎？需要準備哪些支撐數據？</li>
+                <li>為什麼「只用 LO 方法放行」會對蛋白質藥品的風險評估造成誤導？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section 7: USP Particle Limits -->
+<div class="section-title">7. USP Subvisible Particle Limits | USP 亞可見微粒限量</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Current limits for 〈787〉 and harmonized 〈788〉 methods are set at maximum allowable particles per container or particles per unit volume at size thresholds <span class="key-term">≥10 and ≥25 µm</span>. These limits are historical and have changed over time based on method development and species of concern. Chapter 〈789〉 applies the 10- and 25-µm thresholds as well, plus a <span class="key-term">50-µm threshold</span>. In 〈789〉, the limits are provided only on a per milliliter basis.</p>
+        <p>The calculation of allowable particle content is based on product volume (as determined by the manufacturer) for the <span class="key-term">SVI (small-volume injection)</span> market, and on a particles-per-milliliter basis for the <span class="key-term">LVI (large-volume injection)</span> market. However, these limits are generous, and actual particle loads are often an order of magnitude below them. All efforts to reduce particle load and maintain a consistent low-particle contribution are encouraged.</p>
+
+        <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Technique</th>
+                <th>Technique Range</th>
+                <th>Particle Size</th>
+                <th colspan="2">SVI ≤100 mL</th>
+                <th colspan="2">LVI &gt;100 mL</th>
+            </tr>
+            <tr>
+                <th></th><th></th><th></th>
+                <th>≥10 µm</th><th>≥25 µm</th>
+                <th>≥10 µm</th><th>≥25 µm</th>
+            </tr>
+            <tr>
+                <td>LO</td>
+                <td>2–500 µm</td>
+                <td>—</td>
+                <td>6000/container</td>
+                <td>600/container</td>
+                <td>25/mL</td>
+                <td>3/mL</td>
+            </tr>
+            <tr>
+                <td>MM</td>
+                <td>5 µm to several mm</td>
+                <td>—</td>
+                <td>3000/container</td>
+                <td>300/container</td>
+                <td>12/mL</td>
+                <td>2/mL</td>
+            </tr>
+        </table>
+        </div>
+        <p class="figure-caption">Table 2. 〈788〉 Particle Content Limits. [Note: 〈787〉 limits total LVI particles to 6000 ≥10 µm and 600 ≥25 µm. For ophthalmic products, consult 〈771〉]</p>
+
+        <p>No limits have been established for the use of FI or for the collection of data with size thresholds &lt;10 µm for 〈787〉, 〈788〉, and 〈789〉. As Table 2 shows, the registration limits vary according to technique and injection product volume. Furthermore, as discussed previously, the technique capabilities are certainly not equivalent across a broad range of sizes.</p>
+        <p>Particle concentration should be monitored even for samples that give results below the Table 2 limits. Although technically within USP specifications, particle content in a single container near the limit may be a concern and may indicate problems in product quality. Results that are out of trend with what is normal for a product, even if well below the specification limits, would be of concern as well and should also be investigated.</p>
+        <p>The Table 2 particle concentration limits are often significantly higher than the particle concentrations observed with many commercial products. The limits apply both at time of release and at the end of shelf life, and they apply to a range of product types, from the simplest to the most complex formulas with stability issues. These limits are historical and based on historical clinical exposure; internal target choices allow for consideration of product histories, product types, therapeutic uses, and patient populations.</p>
+        <p>The intent of these tests is to provide a control strategy framework for designing the most stable formula, selecting the most stable and inert package, and employing an elegant fill/finish in a high-quality, state-of-the-market factory. The limits are imposed as a minimal standard of control, with the intent that the innovator, contract manufacturing operation, or generic producer will meet and exceed this standard across all injectable dosage forms.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="formula-box">
+            <h4>公式重點 — 限量計算規則</h4>
+            <pre>
+SVI（小容量注射劑，≤100 mL）：
+  以「每容器」計算
+  LO: ≥10µm → ≤6000/container
+       ≥25µm → ≤600/container
+  MM: ≥10µm → ≤3000/container
+       ≥25µm → ≤300/container
+
+LVI（大容量注射劑，>100 mL）：
+  以「每毫升」計算
+  LO: ≥10µm → ≤25/mL
+       ≥25µm → ≤3/mL
+  MM: ≥10µm → ≤12/mL
+       ≥25µm → ≤2/mL
+
+注意：LO 的限量 = MM 的 2 倍
+（因 LO 會計入矽油和氣泡）
+            </pre>
+        </div>
+        <div class="concept-box">
+            <h4>核心概念 — 為什麼 LO 限量比 MM 寬鬆？</h4>
+            <p>LO 計數包含固體粒子、矽油液滴和氣泡，因此其計數結果天然偏高。為了維持可比性，USP 給予 LO 2 倍的寬鬆限量（例如 SVI ≥10 µm：LO 6000 vs MM 3000）。</p>
+            <p>這是一個方法論的補償設計，而非表示 LO 標準更低。實際上，LO 和 MM 對相同樣品應給出相容的結論。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — 「符合規格」≠「高品質」</h4>
+            <p>USP Table 2 的限量是「最低可接受標準」，而非品質目標。原文明確指出：</p>
+            <ul>
+                <li>許多商業產品的實際微粒負荷比限量<strong>低一個數量級</strong></li>
+                <li>即使符合規格，趨勢偏離正常值也應調查</li>
+                <li>CDMO 和藥廠應設定自己的「內部目標值」（更嚴格），不只是遵守 USP 限量</li>
+            </ul>
+            <p>類比：高速公路速限是 110 km/h，但在雨天或濃霧中，「符合法規」並不等於「安全駕駛」。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 — SVI vs LVI 的計算邏輯</h4>
+            <p>想像兩種餐廳：</p>
+            <ul>
+                <li><strong>SVI（小容量）：</strong>每份餐點的總細菌數不能超過標準——重視的是整份餐點的安全</li>
+                <li><strong>LVI（大容量）：</strong>每公升食物的細菌濃度不能超標——因為點滴袋體積很大，需要用濃度來統一比較</li>
+            </ul>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個 50 mL 的靜脈注射劑（SVI），LO 測試結果 ≥10 µm 計數為 5800/container。符合 USP 規格嗎？你會採取什麼行動？</li>
+                <li>為什麼 〈787〉 對 LVI 蛋白質藥品設定了比 〈788〉 更嚴格的每容器總計數限量（6000 ≥10 µm）？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section 8: Control of Particulate Matter -->
+<div class="section-title">8. Control of Particulate Matter | 微粒管控</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>It is the intent of 〈1〉 that in the design of formulations, selection of packages, and final assembly of packages, a stable final product is attained. Using the methods and limits in 〈788〉 and 〈789〉, high-quality commercial product cleanliness and stability are verified. This state can be described as "clean" (few particles) and "stable" (avoiding changes that promote particle growth). Process streams, equipment, filling lines, pumps, staging tanks, personnel gowning, packaging cleanliness, and environmental quality all may contribute particulate matter to the product.</p>
+
+        <h3>8.1 Development</h3>
+        <p>Due diligence using particle detection methods endorsed by USP or alternate method strategies for the best product design is recommended during product and process development and may be continued in selected evaluations during commercial production. The use of many methods early in development is an important consideration for limiting the number of particles in the product and for full understanding and characterization of the particle population.</p>
+        <p>To accomplish this, start early and conduct analyses often, using methods appropriate to the product development phase. Analysis using only lot release methods will give a limited understanding of the particle population. As the development cycle progresses, the use of <span class="key-term">orthogonal techniques</span> provides greater confidence in particle assessment. It is important to explore the incidence of change in the number of particles during early phases of development to provide the optimal selection of formulation, manufacturing process, and packaging. Also, prior to commercialization, the character of inherent solids must be fully explored to establish the range of its acceptability.</p>
+        <p>Particles may form during manufacturing or over time due to any one or more of the following factors:</p>
+        <ul>
+            <li>Formulation instability</li>
+            <li>Package cleanliness</li>
+            <li>Package selection (quality/stability)</li>
+            <li>Inorganic extracts</li>
+            <li>Organic extracts</li>
+            <li>Product-package interaction</li>
+            <li>Process contributions</li>
+            <li>Stresses throughout the process (e.g., pH swings, surface exposures)</li>
+            <li>Silicone content</li>
+        </ul>
+        <p>The chosen <span class="key-term">target specifications</span> unique to a product are an important extension of the USP limits in Table 2. In the implementation of a target-specification strategy, several tenets apply:</p>
+        <ul>
+            <li>Understand and minimize inherent particle load when appropriate</li>
+            <li>Minimize intrinsic particle load</li>
+            <li>Identify and characterize particles during development, and establish a particle database</li>
+            <li>Correlate particle load to visible particle rejects</li>
+            <li>Track the particle population within product families and across historical batches to reveal anomalous trends and initiate remediation</li>
+            <li>Establish targets for particle content relevant to product family, including considerations of manufacturing arena, packaging, and formulation complexity</li>
+        </ul>
+
+        <h3>8.2 Statistical Sampling Plan</h3>
+        <p>Chapter 〈788〉 provides the sampling plan according to product volume, while 〈787〉 emphasizes a statistically relevant sample plan independent of volume. For all products, regardless of volume, comprehensive experience regarding the integrity and consistency of the batch is gained throughout development by analyzing a number of samples throughout each batch.</p>
+        <p>The sampling plan should consider the statistical precision of the obtained counts, the likely heterogeneity within a vial or other vessel, the likely heterogeneity between vials or other vessels, and variations in particle concentration with time or other variables.</p>
+        <p>Conditions that promote heterogeneity in particle loading include:</p>
+        <ol>
+            <li>Insufficient or inconsistent container washing</li>
+            <li>Particle load on the stoppers</li>
+            <li>Variations in silicone coater performance</li>
+            <li>Particles contributed by the filling equipment (particle load may vary from pump to pump)</li>
+            <li>Particles contributed by the drying/sterilization system</li>
+            <li>Failure of aseptic filling conditions</li>
+            <li>Self-association of active ingredient or formulation components</li>
+            <li>Particles generated over time, due to formulation instability or product-package interaction</li>
+        </ol>
+        <p>Chapter 〈788〉 provides a sampling plan according to product volume. This plan is based solely upon the limitations of traditional optical counting instruments for adequate, multiple-sample aliquot draws. Originally, the sample volume for the LO method was set at 25 mL. Due to the current capability of MM to process any liquid aliquot regardless of volume, a wide range of sampling volumes can now be accommodated.</p>
+        <p>Unit variability is an important quality parameter 1) during development of the formulation; 2) after process changes; and 3) when changing package vendors. Evaluation of the non-pooled vials can give a better measure of inter-vial variability and also can eliminate the introduction of particles in the pooling process.</p>
+
+        <h3>8.3 Risk-Based Approach</h3>
+        <p>The USP limits in Table 2 mirror the historical approach of obtaining particle concentrations above given size thresholds and treating all particles as equivalently deleterious to product quality. However, the increased variety of particle types in modern pharmaceuticals, each with different risk factors, suggests that a better approach would be to identify the particle concentrations of the component subtypes of the total particle load and to then assess the <span class="key-term">risk to product quality</span> posed by each particle type.</p>
+        <p>For example, the presence of <span class="key-term">extrinsic particles</span> could be evidence of a breach in sterility, with a high product risk. Increases in intrinsic particle load may be associated with the production process and/or package-related sources, which can be indicative of systemic problems. Conversely, the presence of air bubbles is not a concern.</p>
+        <p>Risk for elevated final product particulate levels will be reduced when there is deep product knowledge and when systems are utilized to control the process stream in the reduction of particle load (type). Consideration should also be given to the following:</p>
+        <ul>
+            <li>Package selection with regard to formulation (stability)</li>
+            <li>Package source and preparation quality (removal and addition)</li>
+            <li>Product-contact surfaces (particle load and extractable substances)</li>
+            <li>Filling arena cleanliness and practices (addition)</li>
+            <li>Formulation design (stability)</li>
+        </ul>
+        <p>Successful risk analysis may require considerable particle characterization, beyond what can be achieved by LO, MM, and FI, and utilization of prior knowledge.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念 — 微粒管控的「雙目標」</h4>
+            <p>USP 對注射劑品質的定義：</p>
+            <ul>
+                <li><strong>Clean（潔淨）：</strong>微粒數量少——通過 GMP 製程控制達成</li>
+                <li><strong>Stable（穩定）：</strong>微粒不隨時間增長——通過配方設計與包材選擇達成</li>
+            </ul>
+            <p>這兩個目標缺一不可。一個在放行時潔淨但隨時間產生大量微粒的產品，同樣是不合格的。這就是為什麼穩定性研究中必須包含微粒測試。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 — 統計採樣計劃的重要性</h4>
+            <p>想像一家餐廳的廚師每天製作 1000 份便當，其中少數幾份因特定原料批次而含有異物。如果你只抽查 5 份就宣告「全部合格」，代表的是整批的品質嗎？</p>
+            <p>同理，微粒測試的採樣計劃必須足夠統計顯著性，才能對整批產品的品質有信心。批間變異性（批內 vs 批間）的理解，來自開發期間積累的大量數據。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — 批間異質性的八大來源</h4>
+            <p>微粒計數批內異質性（vial-to-vial variation）是品質保證的核心挑戰。造成異質性的主要原因需逐一排查：</p>
+            <ul>
+                <li>容器清洗效果不一致 → 建立洗瓶機驗證記錄</li>
+                <li>瓶塞微粒負荷 → 供應商管理 + 規格設定</li>
+                <li>矽油塗佈不均勻 → 製程監控</li>
+                <li>不同灌裝泵的微粒貢獻 → 各泵分別評估</li>
+                <li>滅菌/乾燥系統 → 驗證確認</li>
+                <li>無菌充填失效 → APS 模擬</li>
+            </ul>
+        </div>
+        <div class="concept-box application">
+            <h4>實務應用 — CDMO 的目標規格策略</h4>
+            <p>USP Table 2 是「底線」，CDMO 應為客戶建立更嚴格的「內部目標值」（Internal Action Limits）。實務做法：</p>
+            <ul>
+                <li>收集首批商業生產的 20+ 批次數據，建立統計基準線</li>
+                <li>設定 Action Level（行動水準）＝ 基準線均值 + 3σ，而非等到 USP 限量才反應</li>
+                <li>將趨勢分析納入批次放行檢查，異常趨勢提前調查</li>
+                <li>建立微粒資料庫，連結不同批次的微粒事件與根因</li>
+            </ul>
+        </div>
+        <div class="formula-box">
+            <h4>公式概念 — 風險評估矩陣</h4>
+            <pre>
+風險等級 = 粒子類型危害性 × 粒子濃度 × 患者曝露
+
+外源性微粒（如玻璃碎片）：
+  危害性 HIGH × 任何濃度 → 批次拒絕調查
+
+內源性微粒（如容器萃取物）：
+  危害性 MEDIUM × 濃度趨勢 → 供應商調查
+
+固有性微粒（如蛋白聚集體）：
+  危害性依免疫原性風險評估 → 臨床資料支持
+            </pre>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個批次的 LO ≥10 µm 計數比歷史平均高出 300%，但仍低於 USP Table 2 限量。你需要調查嗎？調查方向是什麼？</li>
+                <li>為什麼在藥品開發早期就應該進行微粒分析，而不是到放行階段才開始？</li>
+                <li>矽油塗佈量的增加如何影響 LO 和 MM 的計數結果？各有何差異？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Section 9 & 10: Silicone + Challenging Samples -->
+<div class="section-title">9. Silicone Droplets &amp; Air Bubbles | 矽油液滴與氣泡 &nbsp;|&nbsp; 10. Challenging Samples | 挑戰性樣品</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <h3>9. Silicone Droplets and Air Bubbles Versus Non-Silicone Particles</h3>
+        <p>With the historical use of a single optical particle counting approach (LO), there was high reliability, reproducibility, and throughput for the quality control lab analysis of particle load. However, the technique does not provide differentiation between solid, liquid, and gaseous matter initiating the counting pulse. Both FI and MM can be useful adjuncts to LO in distinguishing <span class="key-term">air bubbles</span> and <span class="key-term">silicone oil droplets</span> from other particle types.</p>
+        <p>Certainly, the content of gas bubbles identified as counts by a particle counter may be considered an artifact of the formulation and/or sample preparation and may be alleviated or negated by sampling or preparation methodology or data manipulation. The counts by optical methods of immiscible liquids, which are largely composed of the ubiquitous <span class="key-term">silicone lubricants</span> in pharmaceutical articles, must be considered. For some dosage forms such as cartridges, syringes, and some devices, lubrication (usually by silicone oil) is necessary.</p>
+        <p>There is a difference of opinion regarding the relative risk posed by silicone oil droplets. These opinions range from "no risk"—based on the droplet sterility and on the long history of medical use and patient exposure to silicone oil—to "potential concerns" about the increased immunogenicity of biologic drugs. Immunogenicity would arise from possible interactions between the droplets and the protein, resulting in an increase in protein aggregation or the silicone oil acting as an adjuvant.</p>
+        <p>Historically, MM was used as a "referee" method to resolve the occurrence of elevated LO particle counts by verifying whether the counts were due to solid particles rather than gases and liquids. With the addition of FI, it is now possible in many cases to begin to resolve and differentiate gases and liquids counted as particles from the semisolid to solid particle fraction.</p>
+        <p>Air and immiscible liquids do not affect the membrane count. Membrane surface artifacts and semisolid particles can, however, complicate this analysis, while many protein samples spread out on the surface such that they are not detectable. This procedure is also time consuming and difficult to reproduce, requiring extensive operator training.</p>
+
+        <h3>10. Challenging Samples</h3>
+        <p>Alternate methods may be necessary for dosage forms for which 〈788〉 cannot be directly applied. This includes some of the sample types described in 5. Applicability of Methods (e.g., process streams, vehicles, or components). Alternate methods and/or evaluation should be considered for dosage forms and process samples for which optical detection is not practical.</p>
+        <p>For example, some products have inherent properties that affect or preclude particle counting so 〈788〉 methods cannot be used as written. Direct evaluation of container–closure rinses and product vehicles may be used for these suspension systems by the 〈788〉 methods. When the product is not a solution or is viscous or will otherwise confound the 〈788〉 methods, it must be altered or accommodated to facilitate the assay. Examples of alternate methodologies are:</p>
+        <ul>
+            <li>Particle determination of product after treatment with solvent to dissolve all product solids</li>
+            <li>Use of centrifugation to separate product solids from the vehicle</li>
+            <li>Use of selected screens or sieves to separate product solids from the product vehicle to minimize interference</li>
+            <li>Evaluation of the product filling system by using an alternate, clear fluid such as sterile media or saline</li>
+        </ul>
+        <p>Use the methods that are best adapted to the particle type and volume of sample. Selected sampling requires careful statistical evaluation of the batch population when using small sample volumes to evaluate product acceptability; this applies to all methods. Regardless of the sample size, the number of samples tested should be determined statistically based on acceptable risk and development history.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念 — 矽油的雙面性</h4>
+            <p><strong>Silicone Oil（矽油）：</strong>在預填充注射器、藥筒（cartridge）等器械中，矽油是必要的潤滑劑。然而：</p>
+            <ul>
+                <li>LO 會將矽油液滴計入微粒數，造成計數偏高</li>
+                <li>MM 無法偵測矽油液滴（會穿過薄膜孔或鋪散在膜面）</li>
+                <li>FI 可明確拍到矽油液滴的圓球狀高對比影像</li>
+            </ul>
+            <p>因此，對於預填充注射器的微粒管控，必須同時考量矽油液滴的貢獻，並有策略地運用 FI 進行鑑別。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 — 矽油與蛋白質藥品的潛在交互作用</h4>
+            <p>對生物製劑而言，矽油不只是計數干擾，更有潛在的安全疑慮：</p>
+            <ul>
+                <li>矽油液滴可能吸附蛋白質分子，加速蛋白聚集</li>
+                <li>矽油可能作為佐劑（adjuvant），增強蛋白質的免疫原性</li>
+                <li>此問題在 PFS（預填充注射器）藥品特別重要</li>
+            </ul>
+            <p>目前學界仍有爭議，但監管機構（FDA、EMA）要求提供矽油含量和粒子分析數據作為申請資料的一部分。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 — 挑戰性樣品的處理策略</h4>
+            <p>就像測量一碗濃濃的玉米濃湯（渾濁懸浮劑）中的異物——你不能直接用光學儀器看穿濃湯。解決方案包括：稀釋（但不能溶解異物）、過濾分離（但不能讓異物通過）、或者先取用空湯碗測試（評估容器清潔度）。每種方法都有其前提假設，必須透過可行性研究加以驗證。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考</h4>
+            <ol>
+                <li>一個碳酸氫鈉配方（碳酸飲料型）的 LO 計數異常高。這是真正的微粒問題，還是測試假陽性？如何確認？</li>
+                <li>對於一個佐劑疫苗（含氫氧化鋁懸浮顆粒），如何設計微粒監控策略？可以直接使用 〈788〉 方法嗎？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>USP 〈788〉 Table 2 限量是最低合規標準：SVI 用每容器計、LVI 用每 mL 計；LO 限量為 MM 的 2 倍（因 LO 計入氣泡和液滴）</li>
+        <li>最終過濾器豁免（Final Filter Exemption）有嚴格條件：不能用於掩蓋 GMP 問題，必須有科學證據支持</li>
+        <li>微粒管控需雙目標：潔淨（製程控制）+ 穩定（配方與包材設計）；穩定性測試中必須包含微粒評估</li>
+        <li>統計採樣計劃必須考慮批內與批間的異質性來源（容器、瓶塞、灌裝泵等）</li>
+        <li>矽油液滴與氣泡會影響 LO 計數但不影響 MM；FI 是鑑別矽油液滴的最佳方法</li>
+        <li>挑戰性樣品（懸浮劑、乳劑等）需要客製化的替代方法，必須通過可行性研究驗證</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈1788〉 Section 1</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

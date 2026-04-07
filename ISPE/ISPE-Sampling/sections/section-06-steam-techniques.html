@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 3 Part 2: Steam Techniques, Handling & Other Factors | ISPE Sampling Guide</title>
+<style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+    /* ISPE green overrides */
+    --ispe-green: #2e7d32;
+    --ispe-green-light: #e8f5e9;
+    --ispe-green-mid: #4caf50;
+    --ispe-green-dark: #1b5e20;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+.header {
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 60%, #388e3c 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--ispe-green-dark) 0%, var(--ispe-green) 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.left-column, .original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 {
+    color: var(--ispe-green-dark);
+    border-bottom: 2px solid var(--ispe-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.left-column h4 { color: var(--ispe-green); margin: 0.75rem 0 0.5rem; font-size: 0.95rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem;
+}
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary {
+    background: var(--ispe-green-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #a5d6a7;
+}
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 {
+    color: var(--ispe-green-dark);
+    border-bottom: 2px solid var(--ispe-green-mid);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.right-column h4 { color: var(--ispe-green); margin: 0.75rem 0 0.5rem; font-size: 0.95rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.right-column li { margin-bottom: 0.5rem; }
+.column-header {
+    font-weight: 600; color: var(--ispe-green-dark);
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor; font-size: 1rem;
+}
+.key-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 600; color: #155724; font-size: 0.9em;
+}
+.quote-box, .important-quote {
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-left: 4px solid var(--ispe-green);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic; font-size: 0.95rem;
+}
+.concept-box, .analogy-box, .note-box, .key-note, .term-box,
+.formula-box, .key-term-box, .key-point-box, .highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.term-box h3, .term-box h4, .formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.concept-box p, .analogy-box p, .note-box p, .key-note p,
+.term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p {
+    margin-bottom: 0.5rem !important; font-size: 0.92rem !important;
+}
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol, .key-note ul, .key-note ol,
+.term-box ul, .term-box ol, .formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important;
+}
+.concept-box li, .analogy-box li, .note-box li, .key-note li,
+.term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li {
+    margin-bottom: 0.35rem !important; font-size: 0.92rem !important;
+}
+.analogy-box, .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"],
+.concept-box[class*="highlight"], .key-point, .highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+.note-box h3, .note-box h4, .key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem; border-radius: 6px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem;
+    overflow-x: auto; white-space: pre-wrap;
+}
+.concept-box.application, .application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+.concept-box.application h3, .concept-box.application h4,
+.application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important; margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important; font-weight: 600 !important;
+}
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    font-weight: 600; color: var(--ispe-green-dark); font-size: 0.85rem;
+}
+tr:nth-child(even) { background: #f7faf7; }
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem;
+}
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.toc {
+    background: white; border-radius: 10px; padding: 1.25rem;
+    margin-bottom: 1.5rem; border: 1px solid #a5d6a7;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--ispe-green-dark); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block; padding: 0.4rem 0.8rem;
+    background: #e8f5e9; border-radius: 6px;
+    color: var(--ispe-green-dark); text-decoration: none;
+    font-size: 0.85rem; transition: all 0.2s;
+    border: 1px solid #a5d6a7;
+}
+.toc-grid a:hover { background: var(--ispe-green); color: white; }
+.section-title, .section-divider {
+    font-size: 1.1rem; color: var(--ispe-green-dark);
+    margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: 2px solid #c8e6c9;
+}
+.badge {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 4px; font-size: 0.8rem; font-weight: 600;
+}
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.badge.purple { background: #f3e5f5; color: #6a0080; }
+.main-footer {
+    background: var(--ispe-green-dark);
+    color: white; padding: 2rem; text-align: center; margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 45px; height: 45px;
+    background: var(--ispe-green); color: white;
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1.3rem; box-shadow: 0 3px 12px rgba(46,125,50,0.4);
+    z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--ispe-green-dark); transform: scale(1.1); }
+.step-list { counter-reset: step; list-style: none; padding: 0; }
+.step-list li {
+    counter-increment: step;
+    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+    position: relative; margin-bottom: 0.5rem;
+    background: white; border-radius: 6px;
+    border-left: 3px solid var(--ispe-green-mid);
+    font-size: 0.92rem;
+}
+.step-list li::before {
+    content: counter(step);
+    position: absolute; left: 0.5rem;
+    width: 1.4rem; height: 1.4rem;
+    background: var(--ispe-green);
+    color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; top: 0.55rem;
+}
+.warn-box {
+    background: #fff3e0; border-left: 4px solid #e65100;
+    border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0;
+    font-size: 0.92rem;
+}
+.warn-box strong { color: #bf360c; }
+@media (max-width: 900px) {
+    .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column, .content-grid { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="top">
+  <h1>Chapter 3 Part 2: Steam — Techniques, Handling &amp; Other Factors</h1>
+  <p class="subtitle">純蒸汽：取樣技術、樣品處理與其他因素 (3.5–3.8)</p>
+  <p class="page-info">ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases &nbsp;|&nbsp; pp. 69–79</p>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Section Navigator | 章節導覽</h3>
+    <div class="toc-grid">
+      <a href="#sec35">3.5 Sample Valve Design<br><small>取樣閥設計</small></a>
+      <a href="#sec36">3.6 Pure Steam Sampling Techniques<br><small>純蒸汽取樣技術</small></a>
+      <a href="#sec361">3.6.1 Representative Samples<br><small>代表性樣品</small></a>
+      <a href="#sec362">3.6.2–3 Training &amp; Preparation<br><small>訓練與準備</small></a>
+      <a href="#sec364">3.6.4 Sampling Procedures<br><small>取樣程序</small></a>
+      <a href="#sec364b">3.6.4.4–6 NCG, Dryness, Superheat<br><small>NCG / 乾燥度 / 過熱</small></a>
+      <a href="#sec37">3.7 Sample Handling<br><small>樣品處理</small></a>
+      <a href="#sec38">3.8 Other Factors<br><small>其他影響因素</small></a>
+      <a href="#tables">Reference Tables<br><small>參考表格</small></a>
+    </div>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="learning-objectives">
+    <h3>Learning Objectives | 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+      <div>
+        <strong>After studying this section you will be able to:</strong>
+        <ol>
+          <li>Explain why pure steam cannot be tested directly in its vapor state and must be condensed first.</li>
+          <li>Describe equipment requirements for a pure steam condensing sampler (materials, cooling, depyrogenation).</li>
+          <li>Execute the Henriksen non-condensable gas (NCG) test and calculate % NCG.</li>
+          <li>Execute the dryness fraction test using a Dewar flask and interpret acceptance criteria.</li>
+          <li>Identify the acceptance criteria for NCG, dryness, and superheat per BS EN 285.</li>
+          <li>List the chemical and microbiological tests required for pure steam condensate and link them to WFI specifications.</li>
+          <li>State the correct sample handling requirements (time, temperature) for condensate.</li>
+          <li>Describe how source water type (WFI / PW / potable) affects the required PSG sampling strategy.</li>
+        </ol>
+      </div>
+      <div>
+        <strong>完成本節學習後，你將能夠：</strong>
+        <ol>
+          <li>解釋為何純蒸汽無法以氣態直接檢測，必須先冷凝。</li>
+          <li>描述純蒸汽冷凝取樣器的設備需求（材質、冷卻、去熱原）。</li>
+          <li>執行 Henriksen 不凝性氣體（NCG）測試並計算 % NCG。</li>
+          <li>使用 Dewar 瓶執行乾燥度測試並判讀合格標準。</li>
+          <li>列出 NCG、乾燥度及過熱度的合格標準（依 BS EN 285）。</li>
+          <li>列出純蒸汽冷凝物所需的化學及微生物測試，並連結 WFI 規格。</li>
+          <li>說明冷凝物的正確樣品處理要求（時間、溫度）。</li>
+          <li>描述進料水類型（WFI / PW / 飲用水）如何影響 PSG 取樣策略。</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY MESSAGE BOX -->
+  <div class="note-box" style="margin-bottom:1.5rem;">
+    <h3>Key Message | 核心訊息</h3>
+    <p><strong>Steam sampling is technically the most challenging of all pharmaceutical utility sampling.</strong> The condensate must meet WFI specifications, AND steam quality parameters (dryness, NCG, superheat) must be measured separately using specialized apparatus. A single sampling visit may require three distinct test setups. Every aspect — equipment, personnel, containers, and handling — must be controlled to avoid invalidating results.</p>
+    <p><strong>蒸汽取樣是所有製藥公用系統中技術難度最高的。</strong>冷凝物必須符合 WFI 規格，同時蒸汽品質參數（乾燥度、不凝性氣體、過熱度）需使用專用儀器分別量測。單次取樣可能需要三種不同的測試設置。設備、人員、容器與樣品處理的每個環節都必須受控，才能確保結果有效。</p>
+  </div>
+
+  <!-- ===== SECTION 3.5 ===== -->
+  <section class="chapter-section" id="sec35">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.5</div>
+      <div class="chapter-info">
+        <h2>Sample Valve Design | 取樣閥設計</h2>
+        <p>Diaphragm valves, materials compatibility, condensate trap considerations</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <h3>3.5 Sample Valve Design</h3>
+          <p>This is covered in Section 2.4 of this Guide.</p>
+          <p>For pure steam sampling applications, sample valves must be compatible with the high temperature and pressure conditions of pure steam systems. Key considerations include:</p>
+          <ul>
+            <li>Valve body and seat materials must withstand saturated steam at 3–4 bar (approximately 135–145°C) without leaching contaminants into the condensate sample.</li>
+            <li>Diaphragm valves are the preferred design for pure steam sample points due to their sanitary construction and ability to be cleaned and sterilized in place.</li>
+            <li>All wetted surfaces should be 316L stainless steel with electropolished finish, free of dead legs and crevices.</li>
+            <li>The sample valve should be located downstream of the condensate trap where applicable, to avoid sampling mixed condensate and vapor.</li>
+            <li>Valve materials (including seals and gaskets) must not contribute TOC, endotoxin, metals, or particulate to the condensate sample.</li>
+            <li>Where sample valves are located at manufacturing-grade POU connections, the design standard should match that of the distribution system.</li>
+          </ul>
+          <div class="quote-box">
+            "Sample valves should be of a sanitary design, although laboratory points may not need to be as hygienically designed as those supplying pure steam to manufacturing."
+            <br><em>— ISPE Sampling Guide, Section 3.6.4.1</em>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>取樣閥設計要點</h3>
+          <div class="concept-box">
+            <h4>為什麼要用隔膜閥？</h4>
+            <p>隔膜閥（diaphragm valve）是純蒸汽系統最常見的取樣閥設計。其優點：</p>
+            <ul>
+              <li>無死角（no dead leg）——蒸汽無法積留在閥體內</li>
+              <li>可 SIP（就地滅菌）——隨系統一起滅菌，無需拆卸</li>
+              <li>密封面（diaphragm）可更換，防止洩漏</li>
+              <li>流道簡單，易清潔</li>
+            </ul>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：閥門就像取樣的門口</h4>
+            <p>想象取樣閥是你進入蒸汽系統的門口。如果門框材質不好（會溶出金屬離子、TOC），或門縫積污（死角），無論蒸汽本身多乾淨，你採到的樣本都是污染的。所以「閥門選得好，樣品自然好」。</p>
+          </div>
+          <div class="note-box">
+            <h4>CDMO 實務重點</h4>
+            <p>在 CDMO 的純蒸汽資格認證（Pure Steam Qualification）中，取樣閥的材質認證文件（material certification）是 IQ 必查項目。要確認：</p>
+            <ul>
+              <li>316L SS + 電解拋光（electropolish）</li>
+              <li>PTFE 或 EPDM 膜片（diaphragm），有 USP Class VI 認證</li>
+              <li>不含矽膠（silicon）——矽膠易釋出 TOC</li>
+            </ul>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>為什麼取樣點應設置在冷凝水阻（condensate trap）下游？如果設在上游會有什麼問題？</li>
+              <li>隔膜閥的 PTFE 膜片在長期高溫蒸汽接觸後可能釋出什麼物質？對哪個測試項目影響最大？</li>
+              <li>一個 POU 閥門同時用於製程用汽（manufacturing）和品質取樣（QC sampling），設計上有何要求？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.6 ===== -->
+  <section class="chapter-section" id="sec36">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.6</div>
+      <div class="chapter-info">
+        <h2>Pure Steam Sampling Techniques | 純蒸汽取樣技術</h2>
+        <p>Condensate collection, equipment requirements, sample containers, temperature</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- 3.6.1 Representative Samples -->
+      <div id="sec361"></div>
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">3.6.1 Obtaining Representative Samples</div>
+          <p>The goal of the sampling program is to obtain samples that accurately reflect the contents of the steam system. When sampling a liquid, contaminant distribution should be accounted for as part of the sample evaluation.</p>
+          <p>Pure steam cannot be evaluated in its vapor state; therefore, pure steam needs to be condensed in order to be evaluated. Based on compendial requirements (USP, EP, JP, etc.), condensed pure steam should be evaluated using the same criteria used to evaluate WFI. The techniques used are similar to those for water; however, there are two issues that can affect pure steam condensate sampling:</p>
+          <ol>
+            <li>The equipment used to condense the pure steam and collect samples</li>
+            <li>The final temperature of the condensate</li>
+          </ol>
+          <h4>3.6.1.1 Equipment Considerations</h4>
+          <p>When condensing pure steam for sampling, the equipment should not contribute contaminants to the sample. The equipment should be designed to allow for complete cleaning and drainage. It should also be possible to sterilize the equipment and for it to be depyrogenated to ensure that no endotoxins are added to the sample.</p>
+          <p>In addition, the equipment typically requires a cooling source (such as chilled water) to facilitate condensation. The amount of chilled water required may be significant, necessitating larger than expected equipment sizes and/or cooling media flow rates, because of the significant amount of latent heat that needs to be removed to condense the pure steam.</p>
+          <p>Sampling heat exchangers can be sterilized in place, using the pure steam from the system. This can help to simplify the sampling process, but may result in a larger cooling load.</p>
+          <p>Heat exchangers used for pure steam condensation may need to meet the requirements of heat exchangers used for WFI sampling in order to mitigate the risk of undetectable cooling water contamination of the condensate sample. Requirements may include <span class="key-term">double tube sheet design</span> and routine maintenance.</p>
+          <p>The size of this equipment will depend on the:</p>
+          <ol>
+            <li>Pure steam pressure (and resulting temperature)</li>
+            <li>Sample temperature desired ("delta T")</li>
+            <li>Temperature and flow of cooling media available</li>
+          </ol>
+          <h4>3.6.1.2 Final Temperature of the Condensate</h4>
+          <p>The condensate temperature for steam sampling should be <strong>&lt; 50°C (122°F)</strong> and preferably near ambient temperature. It is recommended that sample conditioning condensers, coolers, and associated fittings and valves be constructed of <span class="key-term">316 stainless steel</span> and passivated.</p>
+          <p>Any special sampling equipment required that can make steam contact during collection (e.g., POU gaskets, sanitary fittings, hose barbs, steam condensing equipment) should be pyrogen free or must have been depyrogenated.</p>
+          <div class="quote-box">
+            "Note: bioburden is not required of steam sampling per the USP/NF. However, establishing that the pure steam line has no thermophilic bioburden should be an evaluation done prior to or during the PQ."
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>代表性樣品的挑戰</h3>
+          <div class="concept-box">
+            <h4>核心概念：蒸汽必須先冷凝才能測試</h4>
+            <p>這是純蒸汽取樣最根本的特殊性：你無法直接取「蒸汽」送去化驗室。蒸汽必須在取樣現場被冷凝成液態水，這個冷凝過程本身就是污染風險的主要來源。</p>
+            <p>因此，取樣設備（condenser/heat exchanger）的品質直接決定了樣品的有效性。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：冷凝器就是你的「取樣試管」</h4>
+            <p>如果化驗水質，你的試管必須是 TOC 級玻璃瓶。同樣道理，冷凝蒸汽的換熱器就是你的「試管」——如果它有內毒素、TOC，或冷卻水滲漏，你的樣品就被污染了，但你渾然不知。</p>
+          </div>
+          <div class="note-box">
+            <h4>Double Tube Sheet 設計 — 關鍵防線</h4>
+            <p>雙管板（double tube sheet）設計的意義：在兩塊管板之間留有洩漏偵測空間。若冷卻水（通常是一般純化水或冷卻水）滲漏，液體會先流到管板間的空間並被偵測到，而不會直接污染冷凝物樣品。</p>
+            <p>這個設計與 WFI 系統的熱交換器要求相同，因為後果同樣嚴重。</p>
+          </div>
+          <div class="concept-box">
+            <h4>冷凝物溫度為何要 &lt; 50°C？</h4>
+            <p>原因一：溫度越高，CO₂ 越難溶於水，導電度測試失準。<br>
+            原因二：高溫樣品在容器中繼續蒸發，會改變 pH 和導電度。<br>
+            原因三：微生物樣品需要在適當溫度下才能維持活菌數的準確性。<br>
+            最佳做法：控制在接近室溫（20-25°C）。</p>
+          </div>
+          <div class="concept-box">
+            <h4>什麼是熱嗜菌（Thermophilic Bioburden）？</h4>
+            <p>一般細菌在蒸汽環境（&gt;100°C）中無法存活，但有些<strong>孢子形成菌</strong>（spore-forming bacteria）可以在高溫下以孢子形式存活。若蒸汽冷凝水中發現活菌，通常代表：</p>
+            <ul>
+              <li>蒸汽阻（steam trap）失效，冷凝積水孳生細菌</li>
+              <li>取樣設備清潔不足</li>
+              <li>取樣操作污染</li>
+            </ul>
+            <p>USP/NF 不強制要求蒸汽的 bioburden 測試，但 PQ 前應做一次評估。</p>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>如果你的純蒸汽取樣冷凝器只有單管板（single tube sheet）設計，在驗證時需要增加哪些控制措施？</li>
+              <li>冷凝物溫度超過 50°C 時，哪些測試項目最容易失準？為什麼？</li>
+              <li>如果蒸汽冷凝物的導電度 OOS，而同期 WFI 系統導電度全部合格，最可能的原因是什麼？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Containers -->
+      <h3 class="section-title">3.6.1 (cont.) Sample Containers &amp; Types | 樣品容器與類型</h3>
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Sample Container Requirements</div>
+          <p>For most high purity and pure steam samples, three to four groups of samples are taken:</p>
+          <h4>1. TOC</h4>
+          <p>TOC samples should be taken in <span class="key-term">TOC collection vials</span> (glass). Plastic containers can introduce TOC to the sample results. The TOC vials typically hold a 40 ml sample and should be filled completely before the closure is applied.</p>
+          <h4>2. Conductivity and pH</h4>
+          <p>Typically, glass (borosilicate), sterile polypropylene plastic, or inert fluoropolymer containers are the most common container material. Glass containers may introduce trace residues that will change both the conductivity and pH. Plastics tend to avoid the ionic leachables, but most are somewhat permeable to atmospheric CO₂, which will alter the conductivity of the sample. Containers should be able to hold at least 300 ml of sample to allow for Conductivity Stage 1, Stage 2, and Stage 3 testing.</p>
+          <h4>3. Bioburden</h4>
+          <p>Bioburden samples should be taken in sterile containers, typically an inert plastic such as polypropylene or a suitable fluoropolymer.</p>
+          <h4>4. Endotoxin</h4>
+          <p>Endotoxin sampling should be done using pyrogen free containers of either glass or inert plastic. If considering plastic, the type of plastic container is important to minimize the potential for endotoxin adsorption issues that could result in false negative results. Collecting approximately 10 to 20 ml in sterile pyrogen free containers.</p>
+          <div class="quote-box">
+            "Efforts should be made to ensure that sampling containers do not introduce measurable contaminants. This may necessitate using several types of sample containers to sample a given POU."
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>樣品容器選擇的邏輯</h3>
+          <div class="concept-box">
+            <h4>為什麼每個測試要用不同容器？</h4>
+            <p>每種容器材質都有其「弱點」，會對特定測試項目產生干擾。選錯容器，結果就無效。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>測試項目</th>
+                <th>容器材質</th>
+                <th>注意事項</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TOC</td>
+                <td>玻璃 TOC 瓶（40 mL）</td>
+                <td>塑膠釋出有機物，干擾 TOC；需填滿，避免空氣中有機物污染</td>
+              </tr>
+              <tr>
+                <td>導電度 / pH</td>
+                <td>硼矽玻璃或氟聚合物（300 mL）</td>
+                <td>玻璃可能釋出離子影響 pH；塑膠 CO₂ 滲透改變導電度；需快速測試</td>
+              </tr>
+              <tr>
+                <td>生物負荷（Bioburden）</td>
+                <td>無菌 PP 或氟聚合物</td>
+                <td>需滅菌容器；保冷但不冷凍；24 小時內測試</td>
+              </tr>
+              <tr>
+                <td>內毒素（Endotoxin）</td>
+                <td>無熱原玻璃或特定塑膠（10–20 mL）</td>
+                <td>部分塑膠會吸附內毒素（假陰性）；玻璃較可靠；容器需去熱原處理</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note-box">
+            <h4>實務提醒：Blank（空白對照）的重要性</h4>
+            <p>每次取樣都應送一個空白容器（未接觸樣品）到化驗室。空白結果異常代表容器批次有問題，可以在不否決整批樣品的情況下查明原因。這在驗證期間尤其重要。</p>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的 TOC 結果突然升高，但同期 WFI 系統 TOC 正常。你懷疑是容器問題。如何用空白對照（blank）來確認或排除這個假設？</li>
+              <li>為什麼導電度測試的容器需要至少 300 mL？（提示：Stage 1、Stage 2、Stage 3 測試各需要多少體積？）</li>
+              <li>塑膠容器對 CO₂ 的滲透性如何影響導電度測試結果？方向是升高還是降低？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.6.2 & 3.6.3 ===== -->
+  <section class="chapter-section" id="sec362">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.6</div>
+      <div class="chapter-info">
+        <h2>3.6.2–3.6.3 Training &amp; Preparation | 人員訓練與取樣準備</h2>
+        <p>Operator safety, training requirements, sample point preparation, duplicate samples and blanks</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Original Text (English)</div>
+          <h3>3.6.2 Training Sample Collectors</h3>
+          <p>Operators should be properly trained and should have demonstrated their ability to collect samples following the approved sample collection SOP. There should be a <strong>particular emphasis on safety training</strong> when sampling pure steam, its condensate, or other hot liquid. Pressurized pure steam, often at pressures of 30 to 45 psig (135°C to 145°C) and its condensed water (at temperatures near 82°C) can cause severe burns and potentially death.</p>
+          <p>During their training samplers should have observed a trained sampler who demonstrates the collection procedure for each type of collection, as well as the proper handling of each type of collected sample prior to hand off to the testing function. When collecting samples during training, there should be a duplicate set of samples taken by the trainer.</p>
+          <p>Based on industry accepted best practice, trainees may be required to demonstrate that they can collect a minimum of <span class="key-term">three distinct sets of samples</span>, one set per day for each type of collection and each unique location.</p>
+          <h3>3.6.3 Preparation for Sample Collection</h3>
+          <p>Materials should be prepared before beginning the actual sampling process. Examples of typical items that may be staged for use include:</p>
+          <ul>
+            <li>Rolling railed cart, stainless or cleanable plastic</li>
+            <li>Plastic/wire baskets and TOC racks</li>
+            <li>Sample containers (all types, labeled)</li>
+            <li>Labels, waterproof markers and indelible ink pens</li>
+            <li>Laminated sampling plan</li>
+            <li>Heat resistant gloves</li>
+          </ul>
+          <h4>3.6.3.1 Sample Point Preparation</h4>
+          <p>Sample point preparation for sampling pure steam may or may not include flushing, spraying, disinfecting, or other treatments, based on the temperature, and assuming proper design. If particulate contamination from the local environment may be a problem, physical cleaning of the sample outlet may be indicated.</p>
+          <h4>3.6.3.4 Duplicate Samples</h4>
+          <p>An important but often times overlooked part of any quality control program is to perform a predetermined percentage of all analytical tests in duplicate. Duplicate samples should be taken from the same sample location, but in two separate sample containers. Both containers should be labeled with the same sample identification, but can be distinguished by adding "-1" and "-2" after the sample number.</p>
+          <h4>3.6.3.5 Blanks</h4>
+          <p>A blank containing no sample should be submitted to the laboratory for each type of container used during sampling. The blank collection container should be from the same lot as the collection container used for that date.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>人員訓練：安全第一</h3>
+          <div class="warn-box">
+            <strong>安全警告：純蒸汽可致命</strong>
+            <p>純蒸汽系統操作壓力 30–45 psig，溫度 135–145°C。蒸汽噴出時無聲無形，反應時間不足。冷凝水仍高達 82°C，同樣可造成嚴重燙傷。操作人員必須在受訓合格後才能獨立取樣。</p>
+          </div>
+          <div class="concept-box">
+            <h4>訓練合格標準（業界最佳實務）</h4>
+            <ol>
+              <li>觀察資深取樣員示範（觀摩階段）</li>
+              <li>在資深員監督下取樣（OJT 階段）</li>
+              <li>連續 3 天，每天各取一組樣品，結果與訓練員比對，差異在預定範圍內（獨立驗證階段）</li>
+            </ol>
+            <p>這個「3天3組」標準確保訓練員不只是運氣好，而是真正掌握了技術。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：就像外科手術訓練</h4>
+            <p>外科醫師不是看完手術就能操刀，需要在主治醫師監督下執刀數次，成果達標後才能獨立。蒸汽取樣員的訓練遵循同樣邏輯——因為後果（燙傷 / 無效樣品）都很嚴重。</p>
+          </div>
+          <div class="note-box">
+            <h4>Duplicate Sample 的品質意義</h4>
+            <p>重複樣品（duplicate）不是「備份」，而是品質管控工具：</p>
+            <ul>
+              <li>若 -1 和 -2 結果相差很大 → 可能是取樣操作問題（人員技術不穩定）</li>
+              <li>若兩者都 OOS → 可能是系統問題（真正的水質異常）</li>
+              <li>此區別對 CAPA 方向非常重要</li>
+            </ul>
+          </div>
+          <div class="concept-box application">
+            <h4>CDMO 驗證工作流程：PQ 前訓練規劃</h4>
+            <p>在 PQ（Performance Qualification）之前，取樣人員訓練記錄必須已完成。建議的流程：</p>
+            <ol>
+              <li>IQ/OQ 完成後，系統已正常運行 → 訓練員先完成 SOP</li>
+              <li>指定至少 2 名合格取樣員（互為 backup）</li>
+              <li>PQ 期間所有樣品由已合格人員採集，並附上訓練記錄的引用</li>
+            </ol>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>一位取樣員在訓練的第 3 次取樣中，其 TOC 結果比訓練員高出 3 倍。你會怎麼處理？是繼續訓練還是調查系統？</li>
+              <li>如果 3% H₂O₂ 被用來清潔取樣點，為什麼使用前必須確認其對 TOC 結果的影響？如何確認？</li>
+              <li>在 PQ 期間，取樣 SOP 仍是草稿（draft）版本，這樣做合規嗎？請引用指南內容支持你的回答。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.6.4 General + Labeling ===== -->
+  <section class="chapter-section" id="sec364">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.6</div>
+      <div class="chapter-info">
+        <h2>3.6.4 Sampling Procedures — General &amp; Labeling | 取樣程序：總則與標示</h2>
+        <p>GMP gowning, flush requirements, sample labeling, TOC/Conductivity/Bioburden/Endotoxin collection steps</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">3.6.4.1 General Considerations</div>
+          <p>For routine operation of critical systems that have completed PQs, there should be detailed sampling procedures approved for use. It is a good practice to keep pure steam sampling procedures separated from those used to collect pure water samples.</p>
+          <p>When systems are new and undergoing PQ or have been modified and as part of a requalification PQ with a new sampling plan, it is acceptable to use the draft procedures.</p>
+          <div class="warn-box">
+            <strong>Safety:</strong> Care should be taken to protect the sampler from scalding. Proper heat resistant gloves should be present in the collection kit and worn to protect the sampler from accidental burning.
+          </div>
+          <p>If the POU is located in a dirty area, clean the sample port with <strong>3% hydrogen peroxide</strong> or <strong>70% sterile IPA</strong> prior to flushing the sample point. The cleaning procedure must be qualified prior to routine use and must account for the fact that the use of sterile IPA will impact TOC results.</p>
+          <p>Samplers should wear powder free gloves before taking samples or handling sample containers.</p>
+          <p>Samplers should open the sample valve and flush the POU by running steam/condensed water to waste for the qualified flush time interval.</p>
+          <h4>3.6.4.2 Sample Labeling</h4>
+          <p>Samplers should label all sample containers with:</p>
+          <ol>
+            <li>Sample identification — POU (include system ID and building)</li>
+            <li>Type of sample (e.g., condensed steam) and indicate if a duplicate sample</li>
+            <li>Date and time of sampling</li>
+            <li>Analysis required</li>
+            <li>Sampler's name</li>
+          </ol>
+          <h4>3.6.4.3 Sampling Procedure for TOC, Conductivity/pH, Bacteria, and Endotoxin</h4>
+          <ol class="step-list">
+            <li>Flush the POU for the qualified flush time interval and at the qualified flush flow rate.</li>
+            <li>Wear clean powder free gloves.</li>
+            <li>Remove and set aside the sample container closure, then manually open the valve on the condenser.</li>
+            <li>To prevent contamination, do not let anything except the sample touch the inside of the container or closure.</li>
+            <li>Fill each container completely, except for conductivity/pH samples where approximately 1 inch of air space should be left at the top to allow for adequate agitation prior to analysis.</li>
+            <li>Securely close the sample containers to prevent leakage or contamination.</li>
+          </ol>
+          <p><em>If there is any question whether a sample has become contaminated, it should be discarded and a new sample taken.</em></p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>取樣程序的 GMP 要求</h3>
+          <div class="concept-box">
+            <h4>為什麼純蒸汽 SOP 要與純化水分開？</h4>
+            <p>兩個系統的取樣設備、步驟和安全要求完全不同：</p>
+            <ul>
+              <li>純蒸汽需要冷凝器設備、冷卻水源、耐熱手套</li>
+              <li>純蒸汽取樣有燙傷風險，純化水沒有</li>
+              <li>混用 SOP 容易導致步驟遺漏或操作錯誤</li>
+            </ul>
+            <p>在 CDMO 中，建議建立獨立的 PS-SOP（純蒸汽取樣操作程序），並在培訓記錄中單獨追蹤。</p>
+          </div>
+          <div class="note-box">
+            <h4>IPA 對 TOC 的影響：不可忽視的交叉污染</h4>
+            <p>70% IPA 是有機溶劑，TOC（Total Organic Carbon）測試對有機物極敏感。若 IPA 殘留進入取樣流路，TOC 結果可能假性升高。</p>
+            <p>解決方案：在使用 IPA 清潔後，必須用合格的沖洗程序（qualified flush）確保 IPA 完全排出，並在方法驗證時確認 IPA 不干擾結果。</p>
+          </div>
+          <div class="concept-box">
+            <h4>樣品標示五要素記憶口訣</h4>
+            <p>「位置、類型、時間、項目、人名」</p>
+            <ul>
+              <li><strong>位置</strong>：哪個 POU、哪棟樓、哪個系統</li>
+              <li><strong>類型</strong>：冷凝蒸汽、是否重複樣品</li>
+              <li><strong>時間</strong>：取樣日期 + 時間（精確到分鐘）</li>
+              <li><strong>項目</strong>：要做哪些化驗</li>
+              <li><strong>人名</strong>：取樣員姓名（可追溯性）</li>
+            </ul>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：導電度瓶要留 1 吋空間</h4>
+            <p>導電度測試前需要搖勻樣品（agitation），讓樣品與電極充分接觸。如果瓶子裝太滿，搖動時液體無法流動，測量結果不準確。就像你搖一瓶完全裝滿的可樂——什麼都不會動。</p>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>取樣員在取樣時手套不小心碰到容器開口，正確的處理方式是什麼？有哪些文件需要記錄？</li>
+              <li>如果某 POU 的合格沖洗時間（qualified flush time）尚未建立，在 PQ 期間應如何處理？</li>
+              <li>為什麼樣品標示需要包含「取樣時間」而不只是「取樣日期」？在哪些情境下時間資訊至關重要？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.6.4.4-6 NCG, DRYNESS, SUPERHEAT ===== -->
+  <section class="chapter-section" id="sec364b">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.6</div>
+      <div class="chapter-info">
+        <h2>3.6.4.4–6 Steam Quality Tests: NCG, Dryness &amp; Superheat | 蒸汽品質測試</h2>
+        <p>Non-condensable gases (Henriksen method), dryness fraction (Dewar flask), superheat measurement</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <!-- Steam Quality Comparison Table -->
+      <div id="tables"></div>
+      <h3 class="section-title">Steam Quality Test Method Comparison | 蒸汽品質測試方法比較表</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter 參數</th>
+            <th>Method 方法</th>
+            <th>Key Equipment 主要設備</th>
+            <th>Acceptance Criteria 合格標準</th>
+            <th>Standard 標準依據</th>
+            <th>Why It Matters 重要性</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Non-Condensable Gases (NCG)</strong><br>不凝性氣體</td>
+            <td>Henriksen method — displacement of deaerated water in inverted burette</td>
+            <td>2L container, burette, graduated cylinder, needle valve, funnel</td>
+            <td><span class="badge green">≤ 3.5% (V/V)</span></td>
+            <td>BS EN 285:2015</td>
+            <td>NCG inhibits steam penetration in autoclave loads; causes cold spots; NCG must pass before dryness test</td>
+          </tr>
+          <tr>
+            <td><strong>Dryness Fraction</strong><br>乾燥度分率</td>
+            <td>Dewar flask calorimetric method — enthalpy balance</td>
+            <td>Dewar flask, pitot tube, rubber tube, temperature sensor, precision balance</td>
+            <td><span class="badge green">≥ 0.95 (metal loads)</span><br><span class="badge yellow">≥ 0.90 (other loads)</span></td>
+            <td>BS EN 285:2015</td>
+            <td>Wet steam carries water droplets that can dilute chemical sterilants, cause cool spots, or deposit minerals on loads</td>
+          </tr>
+          <tr>
+            <td><strong>Superheat</strong><br>過熱度</td>
+            <td>Thermometric — temperature differential between steam pipe and sterilizer chamber</td>
+            <td>Calibrated temperature sensors (RTD/thermocouple), data logger</td>
+            <td><span class="badge green">≤ 25°C above saturation</span><br>Temp diff ≤ 3°C vs dryness test</td>
+            <td>BS EN 285:2015, HTM 2010</td>
+            <td>Superheated steam behaves like a gas — reduced condensation rate → reduced sterilization effectiveness</td>
+          </tr>
+          <tr>
+            <td><strong>Condensate Chemistry</strong><br>冷凝物化學</td>
+            <td>Same as WFI testing — conductivity stages 1–3, TOC, pH</td>
+            <td>Online/offline conductivity meter, TOC analyzer, pH meter</td>
+            <td>WFI specifications: <span class="badge green">Cond ≤ 1.3 µS/cm @25°C</span><br><span class="badge green">TOC ≤ 500 ppb</span></td>
+            <td>USP &lt;1231&gt;, EP 0169, JP</td>
+            <td>Condensate contacts product/container — must be as clean as WFI</td>
+          </tr>
+          <tr>
+            <td><strong>Condensate Microbiology</strong><br>冷凝物微生物</td>
+            <td>Sterility test (USP &lt;71&gt;), Endotoxin/LAL (USP &lt;85&gt;)</td>
+            <td>Sterile containers, culture media, LAL reagent kit</td>
+            <td><span class="badge green">Sterility: No growth</span><br><span class="badge green">Endotoxin: ≤ 0.25 EU/mL</span></td>
+            <td>USP &lt;71&gt;, USP &lt;85&gt;</td>
+            <td>Spores can survive in steam traps; endotoxin from feed water may carry over if PSG lacks mist elimination</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- NCG Test Detail -->
+      <div class="two-column" style="margin-top:1.5rem;">
+        <div class="left-column">
+          <div class="column-header">3.6.4.4 Non-Condensable Gases (NCG) — Henriksen Method</div>
+          <p>It is recommended that a sequence of tests should be performed to determine the variability in the level of non-condensable gases. The procedure is as follows:</p>
+          <ol class="step-list">
+            <li>Fill the 2 L container and burette with cold, <span class="key-term">deaerated water</span>. Invert the burette with great care to ensure no air is trapped in the burette.</li>
+            <li>Remove the steam sampling pipe from the 2 L container and open the needle valve to purge all air from the pipe. Return sampling pipe to container, allowing it to bubble into the funnel. Add deaerated water to the 2 L container until water flows out through the overflow pipe.</li>
+            <li>Place the graduated cylinder to collect overflow. Adjust the needle valve to allow a continuous flow of steam into the funnel, ensuring that the steam enters the funnel in a way that any non-condensable gases will be collected in the burette.</li>
+            <li>Close the sampling valve.</li>
+            <li>Start the sterilization cycle and when steam is flowing to the sterilizer, open the sampling valve, allowing a continuous sample of steam into the funnel at a rate sufficient to cause a small amount of steam hammer.</li>
+            <li>Allow the steam sample to condense in the funnel. Any non-condensable gases will collect in the top of the burette. Collect the overflow in the graduated cylinder and observe the temperature of the water in the 2 L container. When the temperature in the container is between <span class="key-term">70°C to 75°C</span>, close the needle valve.</li>
+            <li>Record the volume of water displaced in the burette and the volume of water collected in the graduated cylinder.</li>
+            <li>Calculate using the equation below.</li>
+          </ol>
+          <div class="formula-box">
+            <h4>NCG Calculation Formula</h4>
+            <pre>
+Cn (%) = (Vb / Vc) × 100
+
+Where:
+  Cn = concentration of NCG (%)
+  Vb = volume of non-water displaced from burette (mL)
+  Vc = volume of water collected in graduated cylinder (mL)
+
+Acceptance criterion: Cn ≤ 3.5% (V/V)
+            </pre>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 — NCG 測試</div>
+          <h3>不凝性氣體：最容易被忽視的滅菌殺手</h3>
+          <div class="concept-box">
+            <h4>什麼是不凝性氣體（NCG）？</h4>
+            <p>不凝性氣體（Non-Condensable Gases）是蒸汽中混入的空氣、CO₂、N₂ 等氣體。在純蒸汽系統中，這些氣體主要來自：</p>
+            <ul>
+              <li>進料水中溶解的氣體（最主要來源）</li>
+              <li>預處理設備不良（如 CO₂ / NH₃ 滲透進蒸汽）</li>
+              <li>蒸汽發生器設計缺陷（無 NCG 排放設計）</li>
+            </ul>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：NCG 就是滅菌釜裡的「冷袋子」</h4>
+            <p>想象高壓滅菌釜內，蒸汽在 134°C 殺滅所有微生物。但如果蒸汽中有 NCG（空氣），這些氣體無法凝結，會在滅菌物周圍形成隔熱層——就像裹了一個冷袋子，蒸汽無法接觸到物品表面，滅菌失敗。這就是為什麼 EN 285 要求 NCG ≤ 3.5%，且 NCG 測試必須在乾燥度測試之前通過。</p>
+          </div>
+          <div class="concept-box">
+            <h4>Henriksen 法的原理</h4>
+            <p>原理非常直觀：蒸汽遇到冷水會凝結（體積驟降），但空氣（NCG）不會凝結，所以它會跑到倒置量管（burette）的頂部被收集。量管中被頂出的水體積 = NCG 體積（Vb），流出的水體積 = 蒸汽冷凝水體積（Vc）。</p>
+            <p><strong>關鍵操作：必須使用去氣水（deaerated water）</strong>，否則水中溶解的空氣會釋出，干擾 NCG 測量結果（假性升高）。</p>
+          </div>
+          <div class="note-box">
+            <h4>為什麼要在 70–75°C 停止？</h4>
+            <p>測試時，2L 容器中的水溫要上升到 70–75°C 才停止。這是為了確保已有足夠量的蒸汽樣品通過裝置（確保數據具代表性），同時 70–75°C 是水中大部分溶解氣體已釋出的溫度，讓測試更準確。</p>
+          </div>
+          <div class="concept-box application">
+            <h4>與滅菌驗證的連結</h4>
+            <p>在高壓蒸汽滅菌器（autoclave）的驗證中，NCG 測試通常是必需的 OQ 測試項目（依 EN 285）。若 NCG &gt; 3.5%，則乾燥度測試無效，且通常伴隨熱分佈（heat distribution）不均的問題。對 CDMO 來說，純蒸汽 NCG 超標是 PQ 失敗的常見原因之一，排查方向：</p>
+            <ol>
+              <li>進料水的溶解氣體含量（是否使用去氣裝置？）</li>
+              <li>蒸汽發生器的排氣設計（是否有 NCG 排放閥？）</li>
+              <li>地理位置 / 進水源（如含氯胺的市水會產生 NH₃）</li>
+            </ol>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>如果量管中看到的是氣泡而非連續的氣柱，對測試結果有什麼影響？這個現象代表什麼？</li>
+              <li>NCG 結果為 4.2%（超標）。你的 CDMO 純蒸汽進料水來自 PW 分配系統。可能的根本原因有哪些？請排列調查優先順序。</li>
+              <li>為什麼 ISPE 指南規定 NCG 測試必須在乾燥度測試之前通過？如果順序顛倒，可能發生什麼後果？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dryness Test Detail -->
+      <h3 class="section-title" style="margin-top:2rem;">3.6.4.5 Dryness Fraction | 乾燥度分率</h3>
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Dryness — Dewar Flask Method</div>
+          <p>Steam should be tested for, and should pass the non-condensable gases test, prior to being tested for dryness. This test assumes the use of a large steam sterilizer operating in the textile cycle.</p>
+          <ol class="step-list">
+            <li>Assemble the apparatus as shown in BS EN 285:2015 Figure 3.7.</li>
+            <li>Weigh the assembled Dewar flask and record the mass as <strong>Me</strong>.</li>
+            <li>After several sterilization cycles, select the textile cycle with a temperature of 134°C.</li>
+            <li>Remove the stopper assembly and place 650 ml of water into the Dewar flask, with the water at a temperature at or below 27°C. Weigh the new assembly and record the mass as <strong>Ms</strong>.</li>
+            <li>Place a standard test pack (details in BS EN 285:2015) in the sterilizer.</li>
+            <li>Introduce a temperature sensor into the Dewar flask and note the temperature of the fluid in the flask, record this value as <strong>T1</strong>.</li>
+            <li>When the sterilizer steam valve first opens, attach the rubber tube to the pitot tube ensuring free drainage of condensate into the Dewar flask. Record the steam temperature as <strong>T3</strong>.</li>
+            <li>When the water in the Dewar flask reaches approximately 80°C, disconnect the rubber tube, agitate the flask to thoroughly mix the contents and record the temperature as <strong>T2</strong>.</li>
+            <li>Weigh the Dewar flask again, record this mass as <strong>Mf</strong>.</li>
+          </ol>
+          <div class="formula-box">
+            <h4>Dryness Fraction Formula</h4>
+            <pre>
+D = [(T2 – T1) × (Cpw × (Ms – Me) + A)] / [L × (Mf – Ms)]
+    – [(T3 – T2) × Cpw] / L
+
+Where:
+  D    = dryness fraction
+  T1   = initial water temperature in flask (°C)
+  T2   = final mixed temperature in flask (°C)
+  T3   = steam temperature (°C)
+  Ms   = mass of flask + 650 mL water (g)
+  Me   = mass of empty flask assembly (g)
+  Mf   = mass of flask after test (g)
+  L    = latent heat of steam at T3 (kJ/kg)
+  Cpw  = specific heat of water = 4.18 kJ/kg/°K
+  A    = effective heat capacity of apparatus = 0.24 kJ/°K
+
+Acceptance:
+  D ≥ 0.95 for metal loads
+  D ≥ 0.90 for other load types
+            </pre>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 — 乾燥度測試</div>
+          <h3>乾燥度：蒸汽中到底有多少水滴？</h3>
+          <div class="concept-box">
+            <h4>乾燥度分率（Dryness Fraction）的物理意義</h4>
+            <p>乾燥度 D = 0.95 代表：每 1 kg 蒸汽中，有 0.95 kg 是乾燥蒸汽（水蒸氣），0.05 kg 是懸浮的水滴（液態水）。D = 1.0 是理想的完全乾燥蒸汽，實際上幾乎不可能達到。</p>
+            <p>EN 285 設定的合格標準：D ≥ 0.95（金屬負載）或 D ≥ 0.90（紡織品等其他負載）。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：乾燥度就像蒸汽的「含水率」</h4>
+            <p>把蒸汽想象成一杯奶泡咖啡：D = 0.95 代表 95% 是泡沫（乾蒸汽），5% 是液體咖啡（水滴）。如果水滴太多（D 太低），水滴帶著礦物質、導電物質，進入滅菌物品，可能：</p>
+            <ul>
+              <li>稀釋化學消毒劑（如 H₂O₂）</li>
+              <li>在金屬器具上留下水漬、礦物沉積</li>
+              <li>影響熱傳導，造成局部冷點</li>
+            </ul>
+          </div>
+          <div class="formula-box">
+            <h4>Dewar 瓶法的原理（能量守恆）</h4>
+            <p>公式基於<strong>能量守恆</strong>：進入 Dewar 瓶的蒸汽帶入的熱量 = 使瓶內水溫升高所需的熱量。</p>
+            <ul>
+              <li>蒸汽中水蒸氣部分釋放<strong>潛熱（L）</strong>冷凝成水</li>
+              <li>蒸汽中已有的水滴（濕汽部分）只有<strong>顯熱（Cpw）</strong></li>
+              <li>透過量測前後溫度和質量，逆推乾燥度</li>
+            </ul>
+            <p>這就是為什麼稱為「量熱法（calorimetric method）」。</p>
+          </div>
+          <div class="note-box">
+            <h4>測試細節：Dewar 瓶的作用</h4>
+            <p>Dewar 瓶（保溫瓶）的作用是隔熱，確保測試過程中熱量不會散失到環境中，使能量守恆計算有效。如果使用普通玻璃瓶，散熱太快，計算結果會偏低（乾燥度偏高，假性合格）。</p>
+          </div>
+          <div class="concept-box application">
+            <h4>CDMO 實務：乾燥度測試的時機</h4>
+            <p>乾燥度測試通常在以下時機執行：</p>
+            <ul>
+              <li>滅菌器 OQ（Operational Qualification）階段</li>
+              <li>純蒸汽系統 PQ 階段</li>
+              <li>PSG 維修或更換後的重新驗證</li>
+              <li>年度定期再確認（periodic requalification）</li>
+            </ul>
+            <p>注意：乾燥度測試在<strong>紡織負載循環（textile cycle, 134°C）</strong>下進行，而非一般器具循環（121°C），因為 EN 285 要求如此。</p>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>如果在計算時 T1 記錄錯誤（偏低），計算出的 D 值會偏高還是偏低？這對測試結果的判讀有什麼影響？</li>
+              <li>你的 PSG 沒有霧沫消除器（mist eliminator）。預期乾燥度會如何變化？如何改善？</li>
+              <li>乾燥度 D = 0.92（使用金屬負載）：結果不合格。在修復 PSG 之前，你能繼續使用這台滅菌器嗎？應採取哪些措施？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Superheat -->
+      <h3 class="section-title" style="margin-top:2rem;">3.6.4.6 Superheat | 過熱度</h3>
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Superheat Measurement</div>
+          <p>Superheat refers to the condition where steam temperature exceeds the saturation temperature corresponding to the steam pressure. Superheated steam behaves more like a gas than a condensing vapor.</p>
+          <p>The procedure per BS EN 285:2015 involves:</p>
+          <ol class="step-list">
+            <li>Assemble the apparatus as indicated in Figures 3.8 and 3.9 of BS EN 285.</li>
+            <li>Run a sterilization cycle with an empty chamber.</li>
+            <li>At the completion of this cycle, immediately place a full textile load and run another sterilization cycle. At the completion of the sterilization cycle, check the temperature recordings and confirm that the temperature did not differ by more than <span class="key-term">3°C</span> from that measured in the steam pipe during the dryness test.</li>
+          </ol>
+          <div class="quote-box">
+            "Superheated steam does not condense as readily as saturated steam, reducing the rate of heat transfer to the load. This impairs the sterilization process."
+          </div>
+          <p>Common causes of superheat:</p>
+          <ul>
+            <li>Pressure drops through steam traps or pressure reducing valves (PRVs)</li>
+            <li>Excessive pipeline heat loss in long, uninsulated steam mains</li>
+            <li>Throttling of steam through partially open valves</li>
+          </ul>
+          <p>Acceptance criterion: Steam temperature should not exceed saturation temperature by more than 25°C, and temperature difference between steam pipe and chamber should not exceed 3°C compared to the dryness test measurement.</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 — 過熱度</div>
+          <h3>過熱蒸汽：滅菌效果的隱形殺手</h3>
+          <div class="concept-box">
+            <h4>飽和蒸汽 vs 過熱蒸汽</h4>
+            <p><strong>飽和蒸汽（Saturated Steam）</strong>：在特定壓力下，溫度剛好等於沸點（如 134°C @ 3 bar abs），接觸冷表面立即凝結，釋放大量潛熱（2.26 MJ/kg），實現高效滅菌。</p>
+            <p><strong>過熱蒸汽（Superheated Steam）</strong>：溫度高於同壓力下的沸點。表現像乾燥氣體，在接觸物品時不立即凝結，熱傳效率大幅降低。</p>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：飽和蒸汽像「結冰的水」，過熱蒸汽像「熱風」</h4>
+            <p>把手放進 0°C 的冰水 vs 0°C 的冷空氣——冰水讓你感覺冷很多，因為液態水的熱傳導率遠高於空氣。飽和蒸汽凝結時的熱傳效率約是過熱蒸汽的 10 倍以上。這就是為什麼滅菌需要飽和蒸汽，而不是過熱蒸汽。</p>
+          </div>
+          <div class="note-box">
+            <h4>過熱蒸汽的常見成因</h4>
+            <p>在 CDMO 中，最常見的過熱蒸汽原因：</p>
+            <ul>
+              <li><strong>減壓閥（PRV）節流過度</strong>：蒸汽通過 PRV 降壓後溫度不降，形成過熱</li>
+              <li><strong>管路保溫不良</strong>：長距離蒸汽管道散熱，壓力下降但溫度相對升高</li>
+              <li><strong>蒸汽阻（steam trap）失效（閉合）</strong>：冷凝水無法排出，過熱蒸汽累積</li>
+            </ul>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的滅菌器腔體溫度比蒸汽管道溫度低 5°C（超過 3°C 的允許偏差）。可能的原因和修正措施各是什麼？</li>
+              <li>過熱度超標是系統問題還是操作問題？在 OOS 調查中，如何區分兩者？</li>
+              <li>在純蒸汽驗證中，過熱度、乾燥度和 NCG 三個測試必須都通過才算合格。如果只有過熱度不合格，對乾燥度和 NCG 結果的有效性有何影響？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.7 ===== -->
+  <section class="chapter-section" id="sec37">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.7</div>
+      <div class="chapter-info">
+        <h2>Sample Handling | 樣品處理</h2>
+        <p>Condensate handling, time to analysis, temperature effects, endotoxin considerations</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">3.7 Sample Handling</div>
+          <p>Clear instructions should be provided to personnel collecting and handling pure steam condensate samples. A <span class="key-term">sample holding time limit</span> should be established prior to the PQ to confirm the maximum time between collection and testing.</p>
+          <p>Samples should be transferred to the laboratory and placed on test within <strong>an hour of collection</strong>, to help increase the accuracy of the test results. If multiple samples are being collected and the collection process takes longer than an hour, the collector should divide up the sampling process, deliver samples to the testing laboratory, and then return to sampling.</p>
+          <p><strong>Refrigerating samples will help to inhibit microbial growth, but gas absorption may create inaccurate test results.</strong></p>
+          <div class="quote-box">
+            "A sample holding time limit should be established prior to the PQ to confirm the maximum time between collection and testing."
+          </div>
+          <p>Key handling requirements for pure steam condensate samples:</p>
+          <ul>
+            <li>Maintain sample integrity from point of collection to laboratory</li>
+            <li>Minimize exposure to atmosphere (CO₂ absorption affects conductivity)</li>
+            <li>Do not allow condensate to cool below ambient where phase separation may occur</li>
+            <li>Endotoxin samples: keep at room temperature, test within validated hold time</li>
+            <li>Bioburden samples: refrigerate at 2–8°C if not tested within 1 hour, but consider CO₂ absorption impact on other tests</li>
+            <li>Chemical (conductivity, TOC, pH) samples: test as soon as possible, within qualified hold time</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>樣品處理：時間就是一切</h3>
+          <div class="note-box">
+            <h4>1 小時規則：為什麼這麼嚴格？</h4>
+            <p>純蒸汽冷凝物樣品特別容易隨時間變化：</p>
+            <ul>
+              <li><strong>導電度</strong>：CO₂ 從空氣中溶入水，形成碳酸，導電度上升（假性升高，可能誤判 OOS）</li>
+              <li><strong>pH</strong>：CO₂ 溶入降低 pH，影響判讀</li>
+              <li><strong>TOC</strong>：相對穩定，但塑膠容器可能緩慢釋出有機物</li>
+              <li><strong>Endotoxin</strong>：吸附在容器壁上（假陰性）；室溫保存較穩定</li>
+              <li><strong>Bioburden</strong>：微生物在室溫下繁殖，需冷藏，但冷藏影響 CO₂ 溶解度</li>
+            </ul>
+          </div>
+          <div class="analogy-box">
+            <h4>比喻：樣品就像生魚片</h4>
+            <p>你剛從市場買到的新鮮生魚片，2 小時後和 6 小時後的品質截然不同。純蒸汽冷凝物樣品也是如此——越快測試，結果越能代表當時的系統狀況。</p>
+          </div>
+          <div class="concept-box">
+            <h4>冷藏的矛盾：Bioburden vs 導電度</h4>
+            <p>這是樣品處理中最困難的取捨：</p>
+            <ul>
+              <li>Bioburden 需要冷藏（2–8°C）以抑制微生物生長</li>
+              <li>但冷藏增加 CO₂ 在水中的溶解度，升溫後 CO₂ 釋出，改變導電度</li>
+            </ul>
+            <p><strong>解決方案</strong>：使用不同容器分開採集，Bioburden 樣品冷藏，化學樣品（導電度、TOC）在室溫下盡快測試（1 小時內）。這就是為什麼一個 POU 通常需要 3–4 組不同容器。</p>
+          </div>
+          <div class="concept-box application">
+            <h4>CDMO 驗證前置作業：Hold Time Study</h4>
+            <p>在 PQ 開始之前，必須完成<strong>樣品保存時間研究（Sample Hold Time Study）</strong>：</p>
+            <ol>
+              <li>使用相同系統（或符合規格的 WFI）的水樣</li>
+              <li>在不同時間點（0h、0.5h、1h、2h、4h）測試各項目</li>
+              <li>確定各測試項目的最長有效保存時間</li>
+              <li>記錄保存條件（溫度、容器類型）</li>
+            </ol>
+            <p>這個研究結果直接寫入取樣 SOP，作為 PQ 的前提條件。</p>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的化驗室距離純蒸汽取樣點步行需要 45 分鐘，且中間需要在更衣室換裝。設計一套樣品轉移流程，確保導電度樣品在 1 小時內抵達化驗室。</li>
+              <li>在 Hold Time Study 中，導電度在 2 小時後超出 WFI 規格（> 1.3 µS/cm）。SOP 中應設定的最長保存時間是多少？</li>
+              <li>取樣員在採集樣品後被其他緊急任務耽誤，2 小時後才能送樣。你會如何判斷這組樣品是否有效？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3.8 ===== -->
+  <section class="chapter-section" id="sec38">
+    <div class="chapter-divider">
+      <div class="chapter-badge">3.8</div>
+      <div class="chapter-info">
+        <h2>Other Factors Influencing Sampling Strategies | 其他影響取樣策略的因素</h2>
+        <p>Geographic variation, source water types (WFI / PW / potable), PSG design, mist elimination</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">3.8 Other Factors</div>
+          <p>Sampling strategies may be influenced by other factors such as:</p>
+          <ul>
+            <li>Geographic location of the plant</li>
+            <li>Incoming water quality</li>
+            <li>Pretreatment equipment</li>
+            <li>PSG (Pure Steam Generator) design</li>
+          </ul>
+          <p>The geographic location of the plant may lead to variation in incoming water quality as well as variations in the type of chemical treatment in use (e.g., chlorine, chloramine, ozone, etc.). In some instances, <span class="key-term">ammonia</span> may be present as a byproduct of the chloramine process. Ammonia and carbon dioxide are particularly troublesome since they will pass through a pure steam generator and will influence the non-condensable gas content as well as the conductivity.</p>
+          <h4>3.8.1 Source Water</h4>
+          <h4>3.8.1.1 Feed Water from WFI Systems</h4>
+          <p>When the feed water to a PSG already has very low or undetectable levels of endotoxin, and is otherwise chemically pure, no additional PSG feed water pretreatment system monitoring is required. When properly operated, the chemical attributes of the PSG feed water are essentially the same as those of the steam it generates.</p>
+          <h4>3.8.1.2 Feed from Purified Water Systems</h4>
+          <p>With PW, there is no requirement that it is free from bacterial endotoxins; therefore, without specific microbial and endotoxin control precautions, excessive levels of endotoxin may be present.</p>
+          <p>Since PSGs have a finite impurity removal capability (including endotoxin), the endotoxin levels in the PW feeding the PSG should be monitored to ensure that the removal capability is not overwhelmed. Assuming a minimum <span class="key-term">3-log endotoxin removal capability</span> and proper equipment operation, the endotoxin level in the feed water would have to be <strong>100 EU/mL or greater</strong> to be problematic.</p>
+          <h4>3.8.1.3 Potable Water</h4>
+          <p>Although there is no compendial requirement that this water first meets PW or WFI specifications, it should be suitable feed water for the steam generator in terms of its chemical content. The source of the potable water supply could have a dramatic impact on its starting purity, and therefore, on the required pretreatment.</p>
+          <h4>3.8.2 Steam Generator Mist Elimination Capability</h4>
+          <p>The USP monograph for pure steam specifically states that the pure steam generation process uses a process that "prevents source water entrainment." Well designed and well operated systems using WFI as steam generator feed water essentially have no need for mist elimination since the feed water quality is already suitable for steam.</p>
+          <p>A standalone PSG feed water system that is either not well designed or not properly maintained carries a <strong>high risk of contaminant carry over</strong> into the PS. These systems can be significantly more susceptible to the variable quality of the incoming potable water and could also experience endotoxin and TOC generated in situ by the pretreatment system.</p>
+          <p>The purification system generating the water feeding a PSG typically needs the same monitoring and maintenance attention as pretreatment systems feeding distillation units that generate WFI. It is commonly accepted that the phase change and mist elimination processes of distillation will purify that feed water by at least <span class="key-term">three orders of magnitude</span> (≥ 1000-fold or ≥ 99.9% impurity reduction).</p>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 Commentary</div>
+          <h3>取樣策略的根本決定因素：進料水</h3>
+          <div class="concept-box">
+            <h4>三種進料水對 PSG 的影響差異</h4>
+            <p>這一節的核心邏輯：進料水越乾淨，需要的取樣/監控就越少；進料水越雜，需要的控制措施越嚴格。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>進料水類型</th>
+                <th>內毒素風險</th>
+                <th>化學風險</th>
+                <th>所需監控強度</th>
+                <th>需要霧沫消除？</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>WFI</strong></td>
+                <td><span class="badge green">極低</span></td>
+                <td><span class="badge green">極低</span></td>
+                <td>低（WFI 本身已監控）</td>
+                <td>相對低優先</td>
+              </tr>
+              <tr>
+                <td><strong>PW</strong></td>
+                <td><span class="badge yellow">中等</span><br>可能有內毒素</td>
+                <td><span class="badge green">低</span></td>
+                <td>中（需監控內毒素）</td>
+                <td>建議有</td>
+              </tr>
+              <tr>
+                <td><strong>飲用水（Potable）</strong></td>
+                <td><span class="badge red">高</span></td>
+                <td><span class="badge red">高</span><br>氯胺、NH₃</td>
+                <td>高（需完整預處理監控）</td>
+                <td>必須有</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note-box">
+            <h4>氨（Ammonia）：氯胺水源的隱形問題</h4>
+            <p>許多城市使用<strong>氯胺（chloramine）</strong>消毒自來水（相對於直接加氯），因為氯胺更穩定、消毒副產物更少。但氯胺在高溫下會分解，釋出<strong>氨（NH₃）</strong>。</p>
+            <p>NH₃ 是揮發性鹼性氣體，通過蒸汽發生器後進入純蒸汽，影響：</p>
+            <ul>
+              <li>導電度（升高）</li>
+              <li>pH（升高，呈鹼性）</li>
+              <li>NCG 含量</li>
+            </ul>
+            <p>解決方案：在預處理中加入去氨裝置（如強酸型 RO 或特殊離子交換），並在取樣策略中增加氨的監控。</p>
+          </div>
+          <div class="concept-box">
+            <h4>3-log 內毒素去除率的意義</h4>
+            <p>PSG 可透過蒸餾（水相變氣相）去除至少 3 個對數（log）的內毒素。</p>
+            <p>計算：若進料水內毒素 = 100 EU/mL，3-log 去除後 → 殘留 = 0.1 EU/mL（仍低於 WFI 規格 0.25 EU/mL）。</p>
+            <p>所以進料水內毒素需 ≥ 100 EU/mL 才會導致純蒸汽內毒素超標。一般 PW 系統控制良好時，不太可能達到這個程度，但仍需定期監控以確認。</p>
+          </div>
+          <div class="concept-box">
+            <h4>霧沫消除（Mist Elimination）的重要性</h4>
+            <p>霧沫消除器（mist eliminator）是 PSG 的重要設計元素。USP 純蒸汽專論要求生成過程「防止源水夾帶（prevents source water entrainment）」。</p>
+            <p>若無霧沫消除器：進料水的水霧（含其中所有雜質——內毒素、TOC、金屬離子）會直接被蒸汽帶走，大幅降低純化效果，使 3-log 去除率假設失效。</p>
+            <p>設施風險分級：WFI 進料 + 有霧沫消除 = 最低風險；飲用水進料 + 無霧沫消除 = 最高風險，需最嚴格的取樣策略。</p>
+          </div>
+          <div class="concept-box application">
+            <h4>CDMO 取樣策略設計：風險矩陣思維</h4>
+            <p>設計純蒸汽取樣策略時，從這個框架出發：</p>
+            <ol>
+              <li><strong>識別進料水類型</strong>（WFI / PW / 飲用水）</li>
+              <li><strong>評估 PSG 設計</strong>（有無霧沫消除、NCG 排放設計）</li>
+              <li><strong>識別地理/季節風險</strong>（進水水質季節性變化、氯胺使用）</li>
+              <li><strong>設計監控頻率</strong>：高風險 → 高頻率（如週測）；低風險 → 低頻率（如月測或季測）</li>
+              <li><strong>設計觸發條件</strong>：什麼情況下需要加密取樣？（如維護後、水質異常後、季節轉換後）</li>
+            </ol>
+          </div>
+          <div class="practice-box">
+            <h4>思考練習</h4>
+            <ol>
+              <li>你的 CDMO 工廠位於台灣北部，使用自來水作為 PSG 進料（經 RO + UV 預處理，但非 PW 等級）。當地水廠在夏季使用氯胺消毒，冬季改用直接加氯。你的純蒸汽取樣策略需要如何調整？</li>
+              <li>若你的 PSG 沒有霧沫消除器，但進料水是 WFI，你還需要常規監控純蒸汽的內毒素嗎？依據是什麼？</li>
+              <li>PSG 年度預防性維護（PM）完成後，哪些取樣項目應該重新執行？為什麼？需要做完整 PQ 還是只需縮短版的確認取樣？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONDENSATE TEST SPEC TABLE ===== -->
+  <section class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge">REF</div>
+      <div class="chapter-info">
+        <h2>Pure Steam Condensate Test Specification Table | 純蒸汽冷凝物測試規格對照表</h2>
+        <p>WFI specifications applied to pure steam condensate — container types, methods, hold times</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Test 測試項目</th>
+            <th>Specification 規格</th>
+            <th>Compendial Reference 典籍</th>
+            <th>Container Type 容器類型</th>
+            <th>Min. Volume 最低量</th>
+            <th>Max. Hold Time 最長保存</th>
+            <th>Storage 保存條件</th>
+            <th>Key Risk 主要風險</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Conductivity (Stage 1)<br>導電度（第一階段）</td>
+            <td>≤ 1.3 µS/cm @ 25°C</td>
+            <td>USP &lt;645&gt;, EP 2.2.38</td>
+            <td>Glass or fluoropolymer</td>
+            <td>300 mL</td>
+            <td>1 hour</td>
+            <td>Room temp, sealed</td>
+            <td>CO₂ absorption raises conductivity; glass ion leach</td>
+          </tr>
+          <tr>
+            <td>TOC<br>總有機碳</td>
+            <td>≤ 500 ppb (0.5 mg/L)</td>
+            <td>USP &lt;643&gt;, EP 2.2.44</td>
+            <td>Glass TOC vial (40 mL)</td>
+            <td>40 mL (filled)</td>
+            <td>7 days (refrigerated)</td>
+            <td>2–8°C, no headspace</td>
+            <td>Plastic introduces organic carbon; air headspace adds TOC</td>
+          </tr>
+          <tr>
+            <td>pH<br>酸鹼值</td>
+            <td>5.0–7.0</td>
+            <td>USP &lt;791&gt;, EP 2.2.3</td>
+            <td>Borosilicate glass or fluoropolymer</td>
+            <td>100 mL</td>
+            <td>1 hour</td>
+            <td>Room temp, sealed</td>
+            <td>CO₂ absorption lowers pH; glass ion exchange raises pH</td>
+          </tr>
+          <tr>
+            <td>Endotoxin (LAL)<br>內毒素</td>
+            <td>≤ 0.25 EU/mL</td>
+            <td>USP &lt;85&gt;, EP 2.6.14</td>
+            <td>Depyrogenated glass or specific plastic</td>
+            <td>10–20 mL</td>
+            <td>Per validated hold time (typically 24–72 h)</td>
+            <td>Room temp or 2–8°C</td>
+            <td>Adsorption to plastic (false negative); glass preferred</td>
+          </tr>
+          <tr>
+            <td>Bioburden / Sterility<br>生物負荷 / 無菌</td>
+            <td>Sterile: No growth<br>Bioburden: TVC per SOP</td>
+            <td>USP &lt;71&gt;, EP 2.6.1</td>
+            <td>Sterile PP or fluoropolymer</td>
+            <td>100 mL</td>
+            <td>24 hours</td>
+            <td>2–8°C</td>
+            <td>Microbial growth at room temp; contamination during collection</td>
+          </tr>
+          <tr>
+            <td>Heavy Metals<br>重金屬</td>
+            <td>≤ 0.1 ppm (Pb equivalent)</td>
+            <td>USP &lt;231&gt;, EP 2.4.8</td>
+            <td>Acid-washed glass or HDPE</td>
+            <td>50 mL</td>
+            <td>6 months (acidified)</td>
+            <td>RT, acidified to pH &lt; 2</td>
+            <td>Metal leach from SS containers if not passivated</td>
+          </tr>
+          <tr>
+            <td>Nitrates<br>硝酸鹽</td>
+            <td>≤ 0.2 ppm</td>
+            <td>EP Purified Water test</td>
+            <td>Glass or HDPE</td>
+            <td>50 mL</td>
+            <td>24 hours</td>
+            <td>2–8°C</td>
+            <td>Biological conversion of nitrate to nitrite at room temp</td>
+          </tr>
+          <tr>
+            <td>Oxidizable Substances<br>可氧化物</td>
+            <td>Pass EP test</td>
+            <td>EP 0169 (Water for Inj.)</td>
+            <td>Glass</td>
+            <td>100 mL</td>
+            <td>Test immediately</td>
+            <td>RT, analyze promptly</td>
+            <td>Organic oxidizable substances degrade over time</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:1rem;">
+        <h4>重點提醒：WFI 規格 = 純蒸汽冷凝物規格</h4>
+        <p>根據 USP、EP、JP 等各藥典的規定，純蒸汽冷凝物（pure steam condensate）應符合注射用水（WFI）的所有規格。這意味著純蒸汽系統的驗證工作，其化學與微生物測試標準與 WFI 完全相同——唯一的差別是需要額外的蒸汽品質測試（NCG、乾燥度、過熱度），這些是純蒸汽特有的。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CDMO WORKFLOW SUMMARY ===== -->
+  <section class="chapter-section">
+    <div class="chapter-divider">
+      <div class="chapter-badge">WF</div>
+      <div class="chapter-info">
+        <h2>CDMO Pure Steam Qualification Workflow | CDMO 純蒸汽資格認證工作流程</h2>
+        <p>Practical sequence from IQ through ongoing monitoring</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="two-column">
+        <div class="left-column">
+          <div class="column-header">Qualification Workflow Overview</div>
+          <h4>Phase 1: Installation Qualification (IQ)</h4>
+          <ul>
+            <li>Verify material certifications: valve bodies (316L SS + EP), gaskets (PTFE/EPDM, USP Class VI), heat exchanger (double tube sheet)</li>
+            <li>Verify PSG design: mist eliminator present, NCG vent design, blowdown rate</li>
+            <li>Verify instrumentation calibration (temperature, pressure, flow sensors)</li>
+            <li>Confirm all sampling points identified and labeled</li>
+          </ul>
+          <h4>Phase 2: Operational Qualification (OQ)</h4>
+          <ul>
+            <li>NCG test: ≤ 3.5% — perform at each PSG + major autoclave fed by the system</li>
+            <li>Dryness test: ≥ 0.95 (metal) / ≥ 0.90 (textile)</li>
+            <li>Superheat test: ≤ 25°C above saturation; ≤ 3°C temp differential</li>
+            <li>Establish flush time for each sampling POU</li>
+          </ul>
+          <h4>Phase 3: Performance Qualification (PQ)</h4>
+          <ul>
+            <li>Sample all POU per approved sampling plan (minimum 3 consecutive days × 3 weeks per ISPE guidance)</li>
+            <li>Test: conductivity, TOC, pH, endotoxin, (bioburden as evaluation)</li>
+            <li>Parallel steam quality tests (NCG, dryness, superheat) at key distribution points</li>
+            <li>Confirm all results meet WFI specifications</li>
+          </ul>
+          <h4>Phase 4: Ongoing Monitoring</h4>
+          <ul>
+            <li>Routine: conductivity and TOC at each POU (frequency per risk assessment)</li>
+            <li>Periodic: endotoxin, pH, NCG (quarterly or annually)</li>
+            <li>Trigger-based: full requalification after major maintenance, PSG replacement, or feed water source change</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <div class="column-header">中文解說 — 驗證流程要點</div>
+          <div class="concept-box">
+            <h4>純蒸汽驗證的特殊性</h4>
+            <p>純蒸汽資格認證相比 WFI 系統有額外的複雜度：</p>
+            <ol>
+              <li>需要專用的蒸汽品質測試設備（Dewar 瓶、量管等）</li>
+              <li>測試必須在滅菌器運行時同步進行（NCG、乾燥度測試）</li>
+              <li>NCG → 乾燥度 → 過熱度有強制的執行順序</li>
+              <li>取樣人員需要額外的安全訓練</li>
+            </ol>
+          </div>
+          <div class="note-box">
+            <h4>PQ 取樣天數的 ISPE 指引</h4>
+            <p>ISPE 指南建議 PQ 期間每個取樣點採集至少 3 次（3 consecutive days），覆蓋代表性的操作條件，包括不同班次、不同負載、不同季節（若適用）。新廠通常採 3 週 × 每週取樣，確保統計代表性。</p>
+          </div>
+          <div class="concept-box application">
+            <h4>季節性變化的應對策略</h4>
+            <p>Section 3.8 特別提到地理位置和季節變化。以台灣為例：</p>
+            <ul>
+              <li>夏季：高溫導致水源中生物活性增加，內毒素風險升高</li>
+              <li>颱風後：水源水質驟變，需加密取樣</li>
+              <li>水廠消毒劑切換（冬/夏）：氯/氯胺比例變化，影響 NH₃ 和導電度</li>
+            </ul>
+            <p>建議在年度取樣計劃中加入季節性評估，並在季節轉換時增加取樣頻率（至少 1 個月）。</p>
+          </div>
+          <div class="practice-box">
+            <h4>綜合思考練習</h4>
+            <ol>
+              <li>你的 CDMO 剛換了 PSG（Pure Steam Generator），舊的 PSG 只有 PW 進料且無霧沫消除器，新的 PSG 改為 WFI 進料且有霧沫消除器。新系統的 PQ 取樣策略可以比舊系統簡化嗎？哪些測試可以降低頻率？哪些測試仍需維持？</li>
+              <li>一台滅菌器的年度蒸汽品質測試結果：NCG = 2.8%（合格），乾燥度 = 0.93（金屬負載，不合格）。PSG 和分配管路沒有明顯改變。可能的根本原因是什麼？首先調查哪裡？</li>
+              <li>設計一份「純蒸汽取樣風險評估」框架，涵蓋：進料水類型、PSG 設計、地理位置、使用用途（直接接觸藥品 vs 間接使用），並說明如何用這個框架決定各因素的取樣頻率和測試項目。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+  <p>ISPE Good Practice Guide (2016): Sampling for Pharmaceutical Water, Steam, and Process Gases</p>
+  <p>Chapter 3 — Pharmaceutical Steam | Sections 3.5–3.8 | pp. 69–79</p>
+  <p style="opacity:0.6; font-size:0.8rem; margin-top:0.5rem;">SterileGMP Knowledge Hub &nbsp;|&nbsp; Educational Use Only &nbsp;|&nbsp; Not for Regulatory Submission</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.pageYOffset > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+</body>
+</html>

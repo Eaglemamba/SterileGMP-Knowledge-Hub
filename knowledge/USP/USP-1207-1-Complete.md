@@ -1,0 +1,362 @@
+# USP General Chapter 〈1207.1〉: Package Integrity Testing — Test Method Selection and Validation
+
+USP General Chapter <1207.1>
+PACKAGE INTEGRITY TESTING IN THE PRODUCT LIFE CYCLE—TEST METHOD SELECTION AND VALIDATION
+
+Status: Currently Official on 12-Feb-2025 | Official Date: Official as of 01-Dec-2020
+Document Type: General Chapter
+
+TABLE OF CONTENTS:
+1. INTRODUCTION
+2. PACKAGE INTEGRITY TESTING IN THE PRODUCT LIFE CYCLE
+
+### 2.1 Development and Validation
+
+#### 2.1.1 Package Development
+
+#### 2.1.2 Package Processing and Assembly Validation
+
+### 2.2 Product Manufacturing
+
+### 2.3 Commercial Product Stability
+
+3. TEST METHOD SELECTION CRITERIA
+
+### 3.1 Package Contents
+
+### 3.2 Package Design, Materials of Construction, and Mechanics
+
+#### 3.2.1 Rigid or Flexible Packages
+
+#### 3.2.2 Moveable or Fixed Components
+
+#### 3.2.3 Polymeric Materials
+
+#### 3.2.4 Metallic Materials
+
+#### 3.2.5 Transparent or Opaque Materials
+
+### 3.3 Closure Type and Mechanics
+
+### 3.4 Maximum Allowable Leakage Limit
+
+#### 3.4.1 Sterility and Product Formulation Content Must Be Preserved; Gas Headspace Preservation Is Not Required
+
+#### 3.4.2 Sterility, Product Formulation Content, and Gas Headspace Content Must Be Preserved
+
+#### 3.4.3 Sterility Must Be Preserved; Product Access Is Required
+
+### 3.5 Deterministic or Probabilistic Methods
+
+### 3.6 Physicochemical or Microbiological Methods
+
+### 3.7 Method Outcome
+
+### 3.8 Quantitative or Qualitative Methods of Analysis
+
+### 3.9 Leak Test Detection Limit
+
+### 3.10 Leak Test Method Range
+
+### 3.11 Nondestructive or Destructive Methods
+
+### 3.12 Off-Line or On-Line Methods
+
+4. TEST INSTRUMENT QUALIFICATION, METHOD DEVELOPMENT, AND METHOD VALIDATION
+
+### 4.1 Instrumentation and Equipment Qualification
+
+### 4.2 Method Development and Validation
+
+#### 4.2.1 Accuracy
+
+#### 4.2.2 Precision
+
+#### 4.2.3 Specificity
+
+#### 4.2.4 Detection Limit
+
+#### 4.2.5 Quantitation Limit
+
+#### 4.2.6 Linearity
+
+#### 4.2.7 Range
+
+#### 4.2.8 Robustness
+
+### 4.3 System Suitability
+
+### 4.4 Microbial Ingress Risk Comparison
+
+### 4.5 Negative and Positive Controls
+
+#### 4.5.1 Defect Creation Methods
+
+#### 4.5.2 Type Defects
+
+---
+
+1. INTRODUCTION
+
+Package Integrity Evaluation—Sterile Products <1207> provides guidance in the integrity assurance of product packages. This chapter describes package integrity verification during three product life cycle phases: 1) package development, and package processing and assembly validation; 2) product manufacturing; and 3) commercial product shelf-life stability assessments. Further, this chapter provides information on how to select, develop, and validate leak test methods.
+
+---
+
+2. PACKAGE INTEGRITY TESTING IN THE PRODUCT LIFE CYCLE
+
+Appropriate packaging for a sterile product can be determined on the basis of a knowledge-gaining effort conducted during the product's life cycle.
+
+### 2.1 Development and Validation
+
+#### 2.1.1 PACKAGE DEVELOPMENT
+
+Package development begins with the preparation of a product–package profile (e.g., user requirements specification), which considers the product end use, stability requirements, and method of manufacture, as well as the anticipated storage, shipment, and distribution environments. This profile also defines the proper product–package quality requirements and the package's maximum allowable leakage limit. With this prospectively developed body of information, one can select each package component's materials of construction, choose suitable component sources, and establish critical physical attributes and component dimensional tolerances. Each component material, with its critical dimensional tolerances, directly affects the integrity of the final packaged product. Assurance of package integrity originates from the use of appropriate materials, accurate and optimum closing properties, matching dimensional fit, appropriate multi-component stack heights and tolerances, and consistent control of processes used to assemble the closed package.
+
+The manner in which the package is processed, formed, or assembled is an important consideration in package integrity assurance. A preliminary assessment of package integrity at the end of the development phase under conditions representative of the marketed product manufacturing system is prudent.
+
+These conditions include processes such as sealing operations and component sterilization. Establishing appropriate physical characteristic specifications for container materials, considering lot-to-lot variations, can ensure that the most extreme processing conditions anticipated (e.g., multiple sterilization cycles) do not physically damage materials in a manner that would adversely affect package integrity.
+
+Finally, the robustness of the manufactured product–package system may be evaluated during the development phase by exposing a representative number of product samples to specified storage, shipment, distribution, and final product-use environments. A battery of integrity and seal quality test methods may be employed during product–package development. Inherent package integrity of a viable package system conforms to the product's maximum allowable leakage limit.
+
+Test package quantities for inherent package integrity verification may vary on the basis of: 1) the complexity of the product–package, 2) the specifics of the user specification requirements, and 3) the prior experience of the producer. In some cases inherent package integrity verification may be more readily and economically determined by using empty or placebo-filled container–closure systems.
+
+The outputs of the packaging development phase include the final user requirement specifications, which form the basis of production purchasing specifications for package components.
+
+#### 2.1.2 PACKAGE PROCESSING AND ASSEMBLY VALIDATION
+
+Final confirmation of acceptable inherent package integrity is generally part of a larger process validation activity for the overall production process. The scope depends upon the product type and whether the organization has previous experience with the container–closure system.
+
+All processes germane to the sterilization and formation of a package having integrity are to be evaluated against the user requirement specifications established in the package development phase, including likely process extremes. For example, inherent package integrity verification may consider extremes of package assembly variables such as line speed, heat-sealing temperature, screw-cap application torque, and vial-capping forces, as well as resterilization processes, labeling, and secondary and tertiary packaging processes.
+
+Testing done during technical transfer from the product development site to the manufacturing sites will assist in determining whether the user requirement specification targets and the control ranges established in development require any modification when packages are made on a full manufacturing scale.
+
+Integrity test methods for package processing and assembly validation studies are meant to verify the packages' continued conformance to the product's maximum allowable leakage limit. Seal quality tests suitable for use include those able to monitor package processing and/or assembly consistency.
+
+Successful validation will result in a package that meets its user requirement specifications. The primary objective in package development and subsequent validation is to arrive at a quality product–package prepared using processes that reliably and consistently run within specified operating parameters, yielding critical package defects at a satisfactorily low rate. When performed, in-process and end-product package integrity testing should complement, not replace, thorough package development efforts.
+
+### 2.2 Product Manufacturing
+
+To ensure the quality of the manufactured product–package, it is critical to specify components of sufficient quality and to select vendors carefully. The factors to consider include:
+- Acceptable results of the initial vendor or supplier evaluation
+- Appropriate vendor acceptance quality limits and statistical sampling plan(s), or relevant certification
+- Incoming component quality verification, including statistical assessment of quality against purchase specifications
+- Appropriate procedure(s) for establishing corrective and preventive action when a vendor falls short of quality expectations
+
+Package integrity re-evaluation is considered when changes occur in the product, package design, package materials, or manufacturing/processing conditions. The extent of change control efforts are evaluated on a case-by-case basis, while the level of testing required to support the change is determined based on impact assessment.
+
+The product's package integrity profile is compiled over the course of commercial manufacture. This database of ongoing leak and seal quality test results serves to flag potentially harmful package integrity excursions that may be linked to operative variations in package component design/material and package assembly/processing. The proper combination of package leak tests, complementary package seal quality tests, and visual inspection is largely based on package failure results observed in earlier production validation and package development studies.
+
+Testing production lot samples can provide a measure of package integrity confirmation, while entire testing by nondestructive means is able to yield an ongoing assessment of integrity assurance. In some cases regulatory requirement dictates the level of testing performed.
+
+For example, glass or plastic ampules closed by heat fusion are customarily subjected to 100% nondestructive leak testing. Products sealed under vacuum require appropriate package assembly validation supplemented by testing over time to ensure that the vacuum is retained.
+
+### 2.3 Commercial Product Stability
+
+Container–closure integrity tests have been recommended as alternatives to sterility testing as part of commercial product stability programs. The goal is to ensure package integrity as a function of long-term product storage. [Note—Package integrity tests do not replace product release sterility tests.] Testing product for sterility is a poor measure of product–package integrity and also will not ensure product–package integrity over the shelf life of the product when performed as part of the stability program. Validated package integrity test methods are more sensitive and reliable than product lot sterility testing for detecting a breach in package integrity.
+
+Ideally, package integrity tests selected to support marketed-product stability studies are able to verify the absence of the smallest leaks of concern for a given product–package system. In other words, the product's maximum allowable leakage limit falls within the chosen test method leak detection range.
+
+In situations where the package integrity test chosen to support stability studies should have a detection limit as close as feasible to the product's maximum allowable leakage limit, an understanding of what the method is capable of evaluating and how this is applicable to microbial integrity assurance is warranted.
+
+For products that demand package headspace content preservation, it is appropriate that the integrity test for stability studies verify the continued presence of specific headspace gases or subatmospheric pressure over time.
+
+Stability test samples intended for package integrity evaluation are kept at labeled storage conditions for the marketed product. If an integrity test is nondestructive to the product or package, samples that pass package integrity testing may be further used in the stability testing for that specific test period or interval.
+
+---
+
+3. TEST METHOD SELECTION CRITERIA
+
+No single package leak test or package seal quality test method is applicable to all product–package systems. Test method selection is made on a product–package on a case-by-case basis. Often more than one test method is employed during a given product's life cycle.
+
+### 3.1 Package Contents
+
+When selecting a leak test method, the first determining factor is the nature of the package contents. Whether the package contains a liquid or solid formulation, and whether it contains a headspace of inert gas, air, vacuum, or even no headspace at all, will influence leak test method choice. For example, if testing liquid-filled packages by vacuum decay or mass extraction, test vacuum conditions may trigger some formulations to solidify inside leak paths, thereby blocking gas leakage flow and making the test ineffective. Alternatively, electrical conductivity and capacitance tests can be used, but only if the liquid product is more electrically conductive than the package materials.
+
+### 3.2 Package Design, Materials of Construction, and Mechanics
+
+Packages vary widely in their design, their materials of construction, and the mechanisms whereby package closure is affected. Each of these variables influences the leak test method choice.
+
+#### 3.2.1 RIGID OR FLEXIBLE PACKAGES
+
+Rigid (nonporous) packages can tolerate the pressure or vacuum-challenge conditions required in several leak tests, including tracer liquid ingress, vacuum decay, mass extraction, and some tracer gas tests. In contrast, some flexible packages can tolerate differential-pressure test conditions only if special tooling is used to restrict package expansion and prevent subsequent seal damage.
+
+#### 3.2.2 MOVEABLE OR FIXED COMPONENTS
+
+Moveable package components, such as syringe stoppers (plungers or pistons), may require restraint to prevent their dislocation during the differential pressure test conditions required for a majority of leak test procedures.
+
+#### 3.2.3 POLYMERIC MATERIALS
+
+When exposed to test vacuum conditions, package materials such as plastics and some elastomers may outgas volatiles that raise vacuum-decay leak test results as well as mass extraction results, falsely implicating package leakage. Plastic packages that are highly permeable to tracer gases may not be compatible with helium tracer gas leak detection.
+
+#### 3.2.4 METALLIC MATERIALS
+
+Packages made of foil laminate materials may prove incompatible with electrical conductivity and capacitance leak detection, which works best with relatively nonconductive package materials. However, aluminum caps used to secure vials closed with elastomeric closures pose no hindrance to electrical conductivity and capacitance tests.
+
+#### 3.2.5 TRANSPARENT OR OPAQUE MATERIALS
+
+Packages made of transparent or translucent materials allow for visual inspection and electromagnetic wave passage. Therefore, transparent or translucent materials can be tested by laser-based gas headspace analysis techniques, as well as tracer-liquid ingress or microbial ingress. Opaque packages are incompatible with testing approaches that require visual inspection of the package contents.
+
+### 3.3 Closure Type and Mechanics
+
+The design of the closure system and its leakage restriction function (i.e., the maximum allowable leakage), plus the types of defects anticipated, influence the integrity test method choice.
+
+### 3.4 Maximum Allowable Leakage Limit
+
+#### 3.4.1 STERILITY AND PRODUCT FORMULATION CONTENT MUST BE PRESERVED; GAS HEADSPACE PRESERVATION IS NOT REQUIRED
+
+Integrity tests for this product quality category include those able to verify that the maximum allowable leakage limit that prevents liquid and microbial ingress is not exceeded. Tracer gas tests performed using the vacuum mode and laser-based gas headspace analysis test methods are two examples. Both have been shown to be sensitive enough to quantitatively analyze leakage through the smallest leak paths found to pose the smallest chance of liquid leakage or microbial ingress in rigid packaging.
+
+#### 3.4.2 STERILITY, PRODUCT FORMULATION CONTENT, AND GAS HEADSPACE CONTENT MUST BE PRESERVED
+
+For this product quality category, leak test options include those that directly check for package headspace pressure and/or content, such as laser-based gas headspace analysis techniques.
+
+#### 3.4.3 STERILITY MUST BE PRESERVED; PRODUCT ACCESS IS REQUIRED
+
+The product quality subcategory relates to the additional integrity requirement for those products that are contained in multiple-dose packages once the product is accessed by the end user. Physicochemical as well as microbiological test methods designed to characterize and verify the unique barrier properties specific for the given container–closure system and its end-use application may be required.
+
+Elastomeric closures of multiple-dose parenteral products are meant to reseal, limiting microbial ingress and product leakage during and between product access via needle puncture.
+
+### 3.5 Deterministic or Probabilistic Methods
+
+A "deterministic leak test method" is one in which the leakage event is based on phenomena that follow a predictable chain of events, and leakage is measured using physicochemical technologies that are readily controlled and monitored, yielding objective quantitative data. Most deterministic leak test methods rely on the predictable movement of gas that inevitably occurs through an open leak path, given specific differential pressure and/or partial pressure test conditions (e.g., tracer gas, laser-based gas headspace analysis, pressure decay, vacuum decay, and mass extraction). Deterministic methods are characterized as being capable of reproducibly detecting leaks at clearly defined and predictable detection limits.
+
+A "probabilistic leak test method" is stochastic in nature in that it relies on a series of sequential and/or simultaneous events each associated with uncertainties, yielding random outcomes described by probability distributions. Probabilistic methods include microbial challenge tests, as well as some physicochemical tests: bubble emission tests, tracer liquid tests, and tracer gas tests by the sniffer probe approach.
+
+A deterministic leak test method having the ability to detect leaks at the product's maximum allowable leakage limit is preferred when establishing the inherent integrity of a container–closure system.
+
+### 3.6 Physicochemical or Microbiological Methods
+
+"Physicochemical leak test methods" are those that use physical and/or chemical analysis techniques to test for package integrity. "Microbiological leak test methods" are probabilistic methods of analysis that use viable microorganisms to evaluate test sample integrity.
+
+### 3.7 Method Outcome
+
+The outcome(s) sought from leak test results will often drive the test method choice. These desired outcomes may include:
+- Leak path presence of detection
+- Leak path location determination
+- Leakage rate measurement
+- Liquid egress/ingress potential
+- Microbial ingress potential
+
+All leak test methods are meant to identify the leak path presence. Methods that also provide evidence of leak path location include electrical conductivity and capacitance tests, bubble emission tests, tracer gas sniffer probe tests, and some tracer liquid tests. Methods that provide a measure of whole-package leakage rate include laser-based gas headspace analysis, mass extraction, pressure and vacuum decay methods, and tracer gas tests by the vacuum mode.
+
+Microbial challenge tests provide information on the degree of protection afforded by the product–package against microbial ingress.
+
+### 3.8 Quantitative or Qualitative Methods of Analysis
+
+Leak test methods that use a "quantitative measure of analysis" include electrical conductivity and capacitance tests, laser-based gas headspace analysis, mass extraction, pressure and vacuum decay, tracer gas tests (especially when testing via the vacuum mode), and tracer liquid tests that use quantitative analysis.
+
+A "qualitative measure of analysis" is based on subjective observation. Bubble emission tests that report visible evidence of continuous bubbling, and tracer liquid tests that rely on visible evidence of dye migration are examples. When method considerations permit, leak test methods that yield quantitative measurements are preferred.
+
+### 3.9 Leak Test Detection Limit
+
+The detection limit of a leak test is the smallest leakage rate or leak size that the method can reliably detect, given the product–package of interest.
+
+Table 1. Gaseous Leakage Rate versus Orifice Leak Size:
+Row 1: Air Leakage Rate <1.4 × 10−6 std·cm3/s | Orifice Leak Size <0.1 µm
+Row 2: 1.4 × 10−6 to 1.4 × 10−4 std·cm3/s | 0.1 to 1.0 µm
+Row 3: >1.4 × 10−4 to 3.6 × 10−3 std·cm3/s | >1.0 to 5.0 µm
+Row 4: >3.6 × 10−3 to 1.4 × 10−2 std·cm3/s | >5.0 to 10.0 µm
+Row 5: >1.4 × 10−2 to 0.36 std·cm3/s | >10.0 to 50.0 µm
+Row 6: >0.36 std·cm3/s | >50.0 µm
+
+Leak detection limit should not be the only or perhaps even the primary basis for choosing a test method.
+
+### 3.10 Leak Test Method Range
+
+Leak test method range is the interval between the smallest and largest leak size (or leakage rate) that can be detected by a given leak test method with a suitable level of accuracy and precision.
+
+### 3.11 Nondestructive or Destructive Methods
+
+The need to preserve the test product–packages may influence the decision to select a nondestructive leak test method, rather than a destructive one. Destructive test methods damage the test sample and/or expose it to potential contaminants; hence, the product is not recoverable. Only nondestructive test methods are appropriate for leak testing product–package units earmarked for commercial or clinical study distribution.
+
+Examples of destructive leak test methods include tracer liquid ingress tests, bubble emission tests, and microbiological challenge tests.
+
+Examples of nondestructive leak test methods include mass extraction and vacuum decay leak tests, as well as noninvasive gas headspace analysis tests.
+
+### 3.12 Off-Line or On-Line Methods
+
+Off-line leak testing is generally performed on a stratified random sampling of the product lot, away from the manufacturing line. Off-line package evaluation allows for the use of any validated nondestructive or destructive leak test and seal quality test option compatible with the product–package.
+
+On-line leak testing is commonly integrated into a continuous fill and seal product–package manufacturing process. A prerequisite for an on-line leak test method for entire lot testing is that it be nondestructive to the package and its contents. On-line testing can potentially provide greater assurance that all packages have integrity and can yield instant feedback in the event of package misassembly or breakage, enabling real-time line corrections.
+
+---
+
+4. TEST INSTRUMENT QUALIFICATION, METHOD DEVELOPMENT, AND METHOD VALIDATION
+
+Leak test methods are validated in order to demonstrate method effectiveness. Method validation is preceded by instrument/equipment qualification, followed by test method development.
+
+### 4.1 Instrumentation and Equipment Qualification
+
+The qualification of instruments or equipment to be used for leak testing includes: 1) evaluation of instrument/equipment functionality, and 2) determination of test system detection capabilities using appropriate calibration tools or reference standards to simulate with-leak test conditions.
+
+### 4.2 Method Development and Validation
+
+After successful instrument/equipment qualification, leak test method parameters are developed and optimized to ensure a leak test method is able to meet all relevant leak detection performance criteria specific for the test product–package system.
+
+#### 4.2.1 ACCURACY
+
+"Accuracy" is a measure of the method's ability to correctly differentiate packages that leak above the claimed detection limit from those that leak below this limit. Accuracy provides a measure of false positive and false negative occurrence.
+
+#### 4.2.2 PRECISION
+
+"Precision" is the ability of the method to yield reliable, repeatable data. Precision includes repeatability, ruggedness (within laboratory tests; also known as intermediate precision), and reproducibility (among laboratories tests).
+
+#### 4.2.3 SPECIFICITY
+
+"Specificity" is the ability of the method to accurately differentiate between leaking and nonleaking packages, despite interfering factors that may cause false detection.
+
+#### 4.2.4 DETECTION LIMIT
+
+The detection limit of a leak test is specific for a given testing approach when performed using a specific instrument make/model in evaluating a given product–package system. Detection limit is demonstrated by challenging packages with and without known defects by the leak test method for multiple test days by multiple operators.
+
+Example: "The detection limit for method X was determined to be 5 ± 2 µm. Validation studies found defects of this nominal size were detected 95% of the time; all larger defects were detected 100% of the time. Studies included three replicate test series performed on multiple days by multiple operators in a single laboratory using one instrument."
+
+#### 4.2.5 QUANTITATION LIMIT
+
+"Quantitation limit" is that lowest leakage rate or leak size that can be determined with acceptable accuracy and precision under the stated experimental conditions.
+
+#### 4.2.6 LINEARITY
+
+"Linearity" is the ability of the method to elicit test results that are mathematically proportional to leak path size or leakage rate.
+
+#### 4.2.7 RANGE
+
+Leak detection range is defined in Leak Test Method Range. Range is evaluated by using sets of negative controls and appropriately sized larger-defect positive controls.
+
+#### 4.2.8 ROBUSTNESS
+
+"Robustness" is the method's ability to accurately identify leaking versus nonleaking packages despite small but deliberate variations in procedural parameters.
+
+### 4.3 System Suitability
+
+"System suitability" is a manner of ensuring that the leak test method, including all factors that may be subject to variability that may impact test results, is adequately controlled and maintained in such fashion that the method is rugged and robust.
+
+### 4.4 Microbial Ingress Risk Comparison
+
+While an understanding of the relationship between physicochemical leak test method capabilities and microbial ingress risk may be important, an experimental comparison may not be needed or useful in all cases.
+
+Situations when comparison study is NOT needed:
+- If the validated physicochemical leak test method has a proven detection limit at or below the product-package maximum allowable leakage limit.
+- If the validated physicochemical leak test method is not being used to verify the absence of all leaks of concern.
+
+Situations when comparison study MAY be useful:
+- If the validated physicochemical leak test method is being relied upon to measure or confirm the inherent package integrity but the method's limit of detection is notably greater than the maximum allowable leakage limit.
+- If the maximum allowable leakage limit is either lacking or not well defined.
+
+### 4.5 Negative and Positive Controls
+
+"Negative controls" are packages with no known leak, and "positive controls" are packages with intentional or known leaks. Negative and positive controls are designed and assembled for use in method development and validation.
+
+A "master" is a type of negative control test unit. It is a package prototype, model, or facsimile made to simulate the test package in shape and design.
+
+#### 4.5.1 DEFECT CREATION METHODS
+
+Laser drilling is often used to create package defects. Currently, laser-drilled defects in rigid glass or plastic components can be made as small as about 2–3 µm in nominal diameter. Glass micropipettes can be used to simulate single-orifice defects as small as about 0.1 µm in diameter. Microtubes (also called microcapillaries) inserted through the package wall and fixed in place with sealant are another means of creating positive control defects.
+
+#### 4.5.2 TYPE DEFECTS
+
+"Type defects" are positive controls representing realistic package flaws. A few types of defect examples:
+- Heat sealed bag: weak seal, wrinkled seal, seal gap, seal channel, product entrapment in seal
+- Stoppered vial package: vial finish channel defect, loosely capped stopper, product trapped between stopper and vial
+- Prefilled syringe: needle shield punctured by staked needle, defective plunger
+- Ophthalmic dropper bottle: loose cap, missing or poorly inserted dropper tip, defective tip or cap

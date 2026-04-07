@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈1207.1〉 - Package Integrity Testing: Test Method Selection and Validation</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   ============================================================= */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-point-box h3, .key-point-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .term-box p, .formula-box p, .key-point-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .note-box ul, .term-box ul, .formula-box ul, .key-point-box ul { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .term-box li, .formula-box li, .key-point-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4 { color: #856404 !important; }
+.concept-box { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box h3, .concept-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-point-box h3, .key-point-box h4 { color: #c65102 !important; }
+.formula-box { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156,39,176,0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+.practice-box ol, .practice-box ul { margin-left: 1.25rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52,152,219,0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .header h1 { font-size: 1.1rem; } .main-content { padding: 1rem; } }
+@media print { .back-to-top { display: none !important; } .two-column { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header" style="background: linear-gradient(135deg, #92400e 0%, #d97706 100%);">
+    <h1>USP 〈1207.1〉 Package Integrity Testing in the Product Life Cycle — Test Method Selection and Validation</h1>
+    <div class="subtitle">包裝完整性測試：測試方法選擇與驗證 完整教學版</div>
+    <div class="page-info">USP General Chapter 〈1207.1〉 | Official as of 01-Dec-2020 | Complete Chapter</div>
+</div>
+
+<div class="main-content">
+
+<div class="learning-objectives">
+    <h3>本章學習目標 Learning Objectives</h3>
+    <ul>
+        <li>理解容器密封完整性 (CCI) 測試在藥品生命週期三個階段的角色與要求</li>
+        <li>掌握 12 項測試方法選擇標準，能針對特定產品-包裝系統做出合理選擇</li>
+        <li>區分確定性 (Deterministic) 與機率性 (Probabilistic) 洩漏測試方法的本質差異</li>
+        <li>了解方法開發與驗證的八大要素：準確性、精密性、專一性、偵測限、定量限、線性、範圍、穩健性</li>
+        <li>能設計陰性對照品與陽性對照品，並理解缺陷製作方法</li>
+        <li>理解 FDA 2008 穩定性指引中以 CCI 測試取代無菌試驗的科學依據</li>
+    </ul>
+</div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<div class="section-title">Section 1 — Introduction 導論</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p><em>Package Integrity Evaluation—Sterile Products</em> <span class="key-term">〈1207〉</span> provides guidance in the integrity assurance of product packages. This chapter describes <span class="key-term">package integrity verification</span> during three product life cycle phases: 1) package development, and package processing and assembly validation; 2) product manufacturing; and 3) commercial product shelf-life stability assessments. Further, this chapter provides information on how to select, develop, and validate <span class="key-term">leak test methods</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p>USP〈1207〉系列包含三個子章節：〈1207.1〉方法選擇、〈1207.2〉洩漏技術、〈1207.3〉密封品質技術。這三章合在一起構成 USP 對 CCI（Container Closure Integrity）的完整指引。</p>
+            <p>本章的核心訴求：<strong>包裝完整性驗證必須貫穿產品整個生命週期</strong>，而非僅在上市前完成一次。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>想像你買了一輛新車。CCI 測試就像汽車的防水測試：不只是出廠時測一次，而是在設計階段（研發）、生產線上（製造）、以及長時間存放後（穩定性）都要確認「密封無虞」。藥品包裝也是同樣邏輯。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: PRODUCT LIFE CYCLE -->
+<div class="section-title">Section 2 — Package Integrity Testing in the Product Life Cycle 產品生命週期中的包裝完整性測試</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.1 Development and Validation — Package Development</h2>
+        <p>Package development begins with the preparation of a <span class="key-term">product–package profile</span> (e.g., user requirements specification), which considers the product end use, stability requirements, and method of manufacture, as well as the anticipated storage, shipment, and distribution environments. This profile also defines the proper product–package quality requirements and the package's <span class="key-term">maximum allowable leakage limit</span>.</p>
+        <p>Assurance of package integrity originates from the use of appropriate materials, accurate and optimum closing properties, matching dimensional fit, appropriate multi-component stack heights and tolerances, and consistent control of processes used to assemble the closed package.</p>
+        <p>A battery of integrity and seal quality test methods may be employed during product–package development, starting with techniques able to measure the product's <span class="key-term">inherent package integrity</span>. Inherent package integrity of a viable package system conforms to the product's maximum allowable leakage limit.</p>
+        <p>Test package quantities for inherent package integrity verification may vary on the basis of: 1) the complexity of the product–package, 2) the specifics of the user specification requirements, and 3) the prior experience of the producer.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：產品-包裝概況 (Product-Package Profile)</h4>
+            <p>開發階段的關鍵輸出是「使用者需求規格書 (URS)」，必須涵蓋：</p>
+            <ul>
+                <li>產品用途與穩定性需求</li>
+                <li>預期的儲存、運輸、配送環境</li>
+                <li><strong>最大允許洩漏限度 (MALL)</strong>——這是整個 CCI 策略的核心數字</li>
+                <li>關鍵物理屬性與尺寸公差</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>固有包裝完整性 (Inherent Package Integrity)</strong> 的概念非常重要：它指的是在沒有任何缺陷的情況下，包裝系統本身就能達到的完整性水準。這是設定 MALL 的基礎。</p>
+            <p>USP 建議使用空瓶或安慰劑填充的容器進行大樣本量的固有完整性測試，以避免產品配方干擾測試方法。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為何 MALL 的設定需要先於測試方法的選擇？</li>
+                <li>如果你負責一個凍乾產品的包裝開發，哪些環境條件必須納入產品-包裝概況？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.1.2 Package Processing and Assembly Validation</h2>
+        <p>Final confirmation of acceptable inherent package integrity is generally part of a larger <span class="key-term">process validation</span> activity for the overall production process. The scope depends upon the product type and whether the organization has previous experience with the container–closure system.</p>
+        <p>All processes germane to the sterilization and formation of a package having integrity are to be evaluated against the user requirement specifications, including likely process extremes. For example, inherent package integrity verification may consider extremes of package assembly variables such as <span class="key-term">line speed</span>, <span class="key-term">heat-sealing temperature</span>, <span class="key-term">screw-cap application torque</span>, and <span class="key-term">vial-capping forces</span>.</p>
+        <p>Successful validation will result in a package that meets its user requirement specifications. The primary objective is to arrive at a quality product–package prepared using processes that reliably and consistently run within specified operating parameters, yielding critical package defects at a <strong>satisfactorily low rate</strong>. When performed, in-process and end-product package integrity testing should complement, not replace, thorough package development efforts.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：組裝驗證的關鍵參數</h4>
+            <p>包裝組裝驗證必須覆蓋製程極端值，不能只測最佳條件。例如玻璃瓶軋蓋驗證必須包含：</p>
+            <ul>
+                <li>最低/最高軋蓋力 (vial-capping forces)</li>
+                <li>最低/最高線速 (line speed)</li>
+                <li>重新滅菌後的完整性</li>
+                <li>二次與三次包裝製程的影響</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>包裝組裝驗證就像汽車的碰撞測試：不只測試正常行駛，而是要在最惡劣的撞擊條件下（製程極端值）確認安全性（包裝完整性）。通過極端值測試，才能對日常生產的包裝有信心。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>USP 明確指出：製程內與成品的包裝完整性測試是<strong>「補充」而非「取代」</strong>充分的包裝開發工作。這與 FDA 的觀點一致——品質不是靠測試測出來的，而是設計進去的。</p>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.2 Product Manufacturing</h2>
+        <p>To ensure the quality of the manufactured product–package, it is critical to specify components of sufficient quality and to select vendors carefully. The factors to consider include:</p>
+        <ul>
+            <li>Acceptable results of the initial vendor or supplier evaluation</li>
+            <li>Appropriate <span class="key-term">vendor acceptance quality limits</span> and statistical sampling plan(s), or relevant certification</li>
+            <li>Incoming component quality verification, including statistical assessment of quality against purchase specifications</li>
+            <li>Appropriate procedure(s) for establishing <span class="key-term">corrective and preventive action</span> when a vendor falls short of quality expectations</li>
+        </ul>
+        <p>Package integrity re-evaluation is considered when changes occur in the product, package design, package materials, or manufacturing/processing conditions. The extent of <span class="key-term">change control</span> efforts are evaluated on a case-by-case basis.</p>
+        <p>The proper combination of package leak tests, complementary package seal quality tests, and visual inspection is largely based on package failure results observed in earlier production validation and package development studies.</p>
+        <p>For example, glass or plastic ampules closed by heat fusion are customarily subjected to <span class="key-term">100% nondestructive leak testing</span>.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：製造階段的品質策略</h4>
+            <p>製造階段的 CCI 控制策略包含三個層次：</p>
+            <ul>
+                <li><strong>供應商管理</strong>：進料品質的統計抽樣與驗收</li>
+                <li><strong>製程監控</strong>：結合洩漏測試、密封品質測試、目視檢查</li>
+                <li><strong>變更控制</strong>：任何產品、包裝設計或製程的變更都需重新評估 CCI</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：100% 非破壞性測試</h4>
+            <p>玻璃安瓿（熔封）是 100% 非破壞性洩漏測試的典型要求。這在法規上有依據——FDA 的無菌製造指引要求安瓿進行 100% 完整性測試。在 fill-finish 設施設計時，這是產線設備配置的重要考量。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 的 aseptic fill-finish 生產中，當客戶提出包裝材料的供應商替代時，必須評估 CCI 影響。USP〈1207.1〉第 2.2 節提供了清單：不只是供應商評估，還需要對新組件的進料品質進行統計評估，並更新 CAPA 程序。</p>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>2.3 Commercial Product Stability</h2>
+        <p><span class="key-term">Container–closure integrity tests</span> have been recommended as alternatives to sterility testing as part of commercial product stability programs. The goal is to ensure package integrity as a function of long-term product storage. [Note—Package integrity tests do not replace product release sterility tests.]</p>
+        <p>Testing product for sterility is a poor measure of product–package integrity and also will not ensure product–package integrity over the shelf life of the product when performed as part of the stability program. Validated package integrity test methods are more sensitive and reliable than product lot <span class="key-term">sterility testing</span> for detecting a breach in package integrity.</p>
+        <p>Ideally, package integrity tests selected to support marketed-product stability studies are able to verify the absence of the smallest leaks of concern for a given product–package system. In other words, the product's <span class="key-term">maximum allowable leakage limit</span> falls within the chosen test method leak detection range.</p>
+        <p>Stability test samples intended for package integrity evaluation are kept at labeled storage conditions for the marketed product. If an integrity test is nondestructive to the product or package, samples that pass package integrity testing may be further used in the stability testing for that specific test period or interval.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：CCI 取代穩定性無菌試驗</h4>
+            <p>FDA 2008 年發布的指引允許以 CCI 測試替代穩定性方案中的無菌試驗。理由是：</p>
+            <ul>
+                <li>無菌試驗樣本量太小，統計代表性不足</li>
+                <li>無菌試驗只能偵測已經污染的樣本，無法預防性確保整個貨架期的完整性</li>
+                <li>CCI 測試（如真空衰減、雷射氣體分析）對微小洩漏更靈敏</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>穩定性無菌試驗就像每年只做一次血液檢查來確認自己有沒有生病——樣本量小、時間點有限。CCI 測試則像是持續監測體溫——更能反映整個儲存期間容器是否保持「密封無虞」的狀態。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>非破壞性 CCI 測試通過的樣品可繼續用於當期穩定性測試，但<strong>不可</strong>在一個時間點（如 12 個月）測試後，再存放到下一個時間點（如 24 個月）使用。每個穩定性時間點必須有獨立的樣本組。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 USP 明確指出 CCI 測試「不取代放行無菌試驗」？兩者的目的有何不同？</li>
+                <li>如果某產品的 MALL 小於測試方法的偵測下限，在穩定性方案中應如何處理？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: TEST METHOD SELECTION -->
+<div class="section-title">Section 3 — Test Method Selection Criteria 測試方法選擇標準</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>3.1–3.4 Package Contents, Design, Materials &amp; Leakage Limit</h2>
+        <p>No single package leak test or package seal quality test method is applicable to all product–package systems. Test method selection is made on a product–package on a <span class="key-term">case-by-case basis</span>.</p>
+        <p><strong>3.1 Package Contents:</strong> Whether the package contains a liquid or solid formulation, and whether it contains a headspace of inert gas, air, vacuum, or even no headspace at all, will influence leak test method choice. For example, if testing liquid-filled packages by vacuum decay or mass extraction, test vacuum conditions may trigger some formulations to solidify inside leak paths.</p>
+        <p><strong>3.2 Package Design:</strong></p>
+        <ul>
+            <li><em>Rigid or Flexible:</em> Rigid packages can tolerate pressure/vacuum-challenge conditions. Flexible packages may need special tooling to restrict expansion.</li>
+            <li><em>Moveable Components:</em> Syringe stoppers may require restraint to prevent dislocation during differential pressure tests.</li>
+            <li><em>Polymeric Materials:</em> Plastics and elastomers may outgas volatiles under vacuum, falsely implicating leakage.</li>
+            <li><em>Metallic Materials:</em> Foil laminates may be incompatible with electrical conductivity tests.</li>
+            <li><em>Transparent/Opaque:</em> Transparent materials allow laser-based headspace analysis; opaque packages are incompatible with visual inspection-based methods.</li>
+        </ul>
+        <p><strong>3.4 Maximum Allowable Leakage Limit (MALL):</strong></p>
+        <ul>
+            <li><em>3.4.1:</em> Sterility &amp; formulation preserved; no headspace requirement → tracer gas (vacuum mode), laser-based headspace analysis</li>
+            <li><em>3.4.2:</em> Headspace content must also be preserved → laser-based gas headspace analysis</li>
+            <li><em>3.4.3:</em> Multiple-dose packages with reseal requirement → physicochemical + microbiological methods</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：MALL 是方法選擇的核心</h4>
+            <p>最大允許洩漏限度 (MALL) 決定了你需要的測試靈敏度。簡單邏輯：</p>
+            <ul>
+                <li>MALL 越小（越嚴格）→ 需要更靈敏的測試方法（偵測限要更低）</li>
+                <li>產品類別不同 → MALL 設定不同 → 方法選擇不同</li>
+                <li>液態注射劑（需防菌入侵）vs. 凍乾劑（需保護真空頭空間）有根本上不同的需求</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：材料相容性是第一道篩選</h4>
+            <p>在選方法之前，先問「這個方法與包裝材料相容嗎？」</p>
+            <ul>
+                <li>塑料/彈性體 + 真空衰減 = 可能有 outgassing 干擾</li>
+                <li>鋁箔層壓 + HVLD = 不相容（鋁導電）</li>
+                <li>不透明容器 + 雷射分析 = 不相容</li>
+                <li>含溶液產品 + 壓力衰減 = 需注意液體覆蓋洩漏點</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>選擇 CCI 測試方法就像選擇醫學影像技術：X 光（快速便宜但限制多）、超音波（適合軟組織）、MRI（精細但昂貴慢）。沒有一種方法適用所有情況——必須根據「要找什麼、在哪裡找」來選擇。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 接到新產品時的 CCI 方法選擇流程：(1) 確認產品類別（液態/凍乾/固態）→ (2) 確認容器材質（玻璃/塑料/鋁箔）→ (3) 確認頭空間需求 → (4) 查 MALL → (5) 比對各技術的偵測限（見〈1207.2〉Table 1）→ (6) 確認方法是否可上線或只能離線。</p>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>3.5–3.8 Deterministic vs. Probabilistic; Outcome; Quantitative vs. Qualitative</h2>
+        <p><strong>3.5 Deterministic Methods:</strong> A "<span class="key-term">deterministic leak test method</span>" is one in which the leakage event is based on phenomena that follow a predictable chain of events, and leakage is measured using physicochemical technologies that are readily controlled and monitored, yielding <strong>objective quantitative data</strong>. Examples: tracer gas (vacuum mode), laser-based gas headspace analysis, pressure decay, vacuum decay, mass extraction.</p>
+        <p>A "<span class="key-term">probabilistic leak test method</span>" relies on a series of sequential and/or simultaneous events each associated with uncertainties, yielding random outcomes described by probability distributions. Thus, the findings are associated with uncertainties that necessitate larger sample sizes. Examples: microbial challenge tests, bubble emission tests, tracer liquid tests, tracer gas sniffer probe.</p>
+        <p>A deterministic leak test method having the ability to detect leaks at the product's <span class="key-term">maximum allowable leakage limit</span> is preferred when establishing the inherent integrity of a container–closure system.</p>
+        <p><strong>3.7 Method Outcome</strong> — desired outcomes may include:</p>
+        <ul>
+            <li>Leak path presence detection</li>
+            <li>Leak path location determination</li>
+            <li>Leakage rate measurement</li>
+            <li>Liquid egress/ingress potential</li>
+            <li>Microbial ingress potential</li>
+        </ul>
+        <p><strong>3.8:</strong> When method considerations permit, leak test methods that yield <span class="key-term">quantitative measurements</span> are preferred over qualitative ones.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：確定性 vs. 機率性</h4>
+            <p>這是 USP〈1207〉最重要的分類概念：</p>
+            <table style="margin-top:0.5rem;">
+                <tr><th>特性</th><th>確定性 Deterministic</th><th>機率性 Probabilistic</th></tr>
+                <tr><td>結果可預測性</td><td>高</td><td>低（隨機）</td></tr>
+                <tr><td>所需樣本量</td><td>少</td><td>多（需統計效力）</td></tr>
+                <tr><td>偵測限</td><td>明確定義</td><td>依賴概率分布</td></tr>
+                <tr><td>數據類型</td><td>定量</td><td>多為定性</td></tr>
+                <tr><td>法規偏好</td><td>優先選擇</td><td>當無更好選擇時使用</td></tr>
+            </table>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：FDA/USP 的監管立場</h4>
+            <p>USP 明確表明：<strong>能偵測到 MALL 的確定性方法為首選</strong>。這與 FDA 2016 年後對 CCI 的監管趨勢一致——越來越多的 FDA 警告信點名企業使用機率性方法（如染料侵入法）而未進行充分驗證。</p>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>確定性方法像是數位體重計——每次測量值都一樣，可以精確記錄是否超重（超過 MALL）。機率性方法像是問路人「這個人看起來超重嗎？」——答案依賴觀察者判斷，樣本越多才越準確。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼染料侵入試驗 (Dye Ingress Test) 被歸類為機率性方法？它的不確定性來源是什麼？</li>
+                <li>你的客戶希望用泡泡放射測試 (Bubble Emission) 進行批次放行，請說明為何這在法規上有風險。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>3.9 Leak Test Detection Limit — Table 1</h2>
+        <p>The detection limit of a leak test is the smallest leakage rate or leak size that the method can reliably detect, given the product–package of interest.</p>
+        <table>
+            <tr><th>Row</th><th>Air Leakage Rate (std·cm³/s)</th><th>Orifice Leak Size (µm)</th></tr>
+            <tr><td>1</td><td>&lt;1.4 × 10⁻⁶</td><td>&lt;0.1</td></tr>
+            <tr><td>2</td><td>1.4 × 10⁻⁶ to 1.4 × 10⁻⁴</td><td>0.1 to 1.0</td></tr>
+            <tr><td>3</td><td>&gt;1.4 × 10⁻⁴ to 3.6 × 10⁻³</td><td>&gt;1.0 to 5.0</td></tr>
+            <tr><td>4</td><td>&gt;3.6 × 10⁻³ to 1.4 × 10⁻²</td><td>&gt;5.0 to 10.0</td></tr>
+            <tr><td>5</td><td>&gt;1.4 × 10⁻² to 0.36</td><td>&gt;10.0 to 50.0</td></tr>
+            <tr><td>6</td><td>&gt;0.36</td><td>&gt;50.0</td></tr>
+        </table>
+        <p><em>Note: Dry air leakage rate measured at 1 atm differential pressure at 25°. Orifice sizes assume a leak path of negligible length. These are approximation ranges.</em></p>
+        <p><strong>3.10 Leak Test Method Range:</strong> All leak test methods have an optimum detection range. Therefore, it is possible that additional tests may be needed to catch those leaks of concern that fall outside the chosen leak test method's detection range.</p>
+        <p><strong>3.11 Nondestructive or Destructive:</strong> Only nondestructive test methods are appropriate for leak testing product–package units earmarked for commercial or clinical study distribution.</p>
+        <p><strong>3.12 Off-Line or On-Line:</strong> On-line testing can potentially provide greater assurance that all packages have integrity and can yield instant feedback in the event of package misassembly or breakage, enabling real-time line corrections.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 洩漏率參考表的應用</h4>
+            <pre>偵測下限對應表（參考用）：
+Row 1 → 氦氣質譜法（真空模式）→ &lt;0.1 µm
+Row 2 → 追蹤氣體嗅探模式 → 0.1-1.0 µm
+Row 3 → HVLD, 真空衰減, 質量萃取, 壓力衰減 → 1-5 µm
+Row 4 → 泡泡放射, 微生物挑戰, 追蹤液體 → 5-10 µm
+Row 6 → 目視檢查（大缺陷）→ &gt;50 µm
+
+實際驗證的偵測限可能偏離以上值
+——必須針對特定產品-包裝系統建立</pre>
+        </div>
+        <div class="concept-box">
+            <h4>核心概念解析：偵測限 vs. 偵測範圍</h4>
+            <p><strong>偵測限（Detection Limit）</strong>：方法能可靠偵測的最小洩漏。</p>
+            <p><strong>偵測範圍（Detection Range）</strong>：方法的最小到最大偵測能力。注意：能偵測小洩漏的方法，不一定能偵測非常大的漏洞（如缺失組件）——可能需要視覺系統補充。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：On-line vs. Off-line 的取捨</h4>
+            <p>On-line 測試的優點：100% 批次覆蓋、即時回饋。缺點：高線速→測試周期短→偵測靈敏度下降。Off-line 測試：只能抽樣，但靈敏度更高。這不是「哪個更好」，而是互補——填充線越複雜，越需要組合策略。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在無菌灌裝線設計時，常見的組合策略：On-line HVLD（快速，Row 3 偵測）用於 100% 篩查 + Off-line 真空衰減（慢速，更靈敏）用於穩定性研究樣本。兩個方法互補，覆蓋從粗大缺陷到微小洩漏的完整範圍。</p>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: VALIDATION -->
+<div class="section-title">Section 4 — Test Instrument Qualification, Method Development, and Method Validation 測試儀器資格確認、方法開發與方法驗證</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>4.1–4.2 Instrumentation Qualification and Method Validation Parameters</h2>
+        <p><strong>4.1 Instrumentation and Equipment Qualification:</strong> includes: 1) evaluation of instrument/equipment functionality, and 2) determination of test system detection capabilities using appropriate calibration tools or reference standards to simulate with-leak test conditions.</p>
+        <p><strong>4.2 Method Development and Validation</strong> — The following properties of a valid test method are defined:</p>
+        <p><strong>4.2.1 Accuracy:</strong> a measure of the method's ability to correctly differentiate packages that leak above the claimed detection limit from those that leak below this limit (do not leak). Accuracy provides a measure of <span class="key-term">false positive</span> and <span class="key-term">false negative</span> occurrence.</p>
+        <p><strong>4.2.2 Precision:</strong> the ability of the method to yield reliable, repeatable data. Includes <em>repeatability</em> (same instrument, same day), <em>ruggedness/intermediate precision</em> (multiple operators, multiple days, multiple instruments), and <em>reproducibility</em> (among laboratories).</p>
+        <p><strong>4.2.3 Specificity:</strong> the ability to accurately differentiate between leaking and nonleaking packages despite interfering factors that may cause false detection. For example, helium permeation through the package wall may mask small leaks or be falsely interpreted as leakage.</p>
+        <p><strong>4.2.4 Detection Limit:</strong> demonstrated by challenging packages with and without known defects by the leak test method for multiple test days by multiple operators.</p>
+        <p><em>Example of detection limit expression: "The detection limit for method X was determined to be 5 ± 2 µm. Validation studies found defects of this nominal size were detected 95% of the time; all larger defects were detected 100% of the time. Studies included three replicate test series performed on multiple days by multiple operators in a single laboratory using one instrument."</em></p>
+        <p><strong>4.2.8 Robustness:</strong> the method's ability to accurately identify leaking versus nonleaking packages despite small but deliberate variations in procedural parameters.</p>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：CCI 方法驗證的八要素</h4>
+            <p>對應 ICH Q2(R1) 分析方法驗證，CCI 方法驗證的八個要素：</p>
+            <ul>
+                <li><strong>準確性 (Accuracy)</strong>：正確區分洩漏/不洩漏的能力 → 衡量假陽性與假陰性率</li>
+                <li><strong>精密性 (Precision)</strong>：重複測試的一致性（含重複性、中間精密性、再現性）</li>
+                <li><strong>專一性 (Specificity)</strong>：排除干擾因素的能力</li>
+                <li><strong>偵測限 (Detection Limit)</strong>：最小可偵測洩漏</li>
+                <li><strong>定量限 (Quantitation Limit)</strong>：最小可定量洩漏速率</li>
+                <li><strong>線性 (Linearity)</strong>：結果與洩漏大小成正比的能力</li>
+                <li><strong>範圍 (Range)</strong>：偵測範圍的上下邊界</li>
+                <li><strong>穩健性 (Robustness)</strong>：方法在小偏差下仍可靠的能力</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>CCI 方法驗證就像校準一把尺：準確性 = 這把尺量出來的 10cm 是真的 10cm；精密性 = 同一個人量三次都一樣；專一性 = 溫度變化不會讓尺變長；偵測限 = 這把尺能分辨到 0.1mm 還是 1mm？每個要素都是確保測量可靠性的一塊拼圖。</p>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：假陰性比假陽性更危險</h4>
+            <p>在 CCI 驗證中，<strong>假陰性（漏掉洩漏）</strong>的風險遠高於假陽性（錯判洩漏）。FDA 的 CCI 相關警告信中，最常見的批評是方法無法可靠地偵測到接近 MALL 的小洩漏。驗證時應重點確保：在 MALL 附近的缺陷被偵測的概率達到可接受水準（通常 ≥ 95%）。</p>
+        </div>
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如何在 CCI 驗證方案中設計「穩健性 (Robustness)」研究？以真空衰減法為例，列出三個需要測試的方法參數偏差。</li>
+                <li>氦氣示蹤氣體法的專一性問題是什麼？如何在驗證中評估此干擾？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>4.3–4.5 System Suitability, Microbial Ingress Risk, Negative and Positive Controls</h2>
+        <p><strong>4.3 System Suitability:</strong> a manner of ensuring that the leak test method, including all factors that may be subject to variability, is adequately controlled. System suitability is important for all leak test methods. Extra care may be required for probabilistic methods more prone to variability.</p>
+        <p><strong>4.4 Microbial Ingress Risk Comparison:</strong> An experimental comparison of physicochemical leak test to microbiological challenge data may NOT be needed when:</p>
+        <ul>
+            <li>The validated physicochemical method has a proven detection limit at or below the product-package MALL.</li>
+            <li>The method is used to find leaks notably larger than the MALL (e.g., for damaged package rejection).</li>
+        </ul>
+        <p>Comparison study MAY be useful when the method's limit of detection is notably greater than the MALL, or when the MALL is lacking or not well defined.</p>
+        <p><strong>4.5 Negative and Positive Controls:</strong> "Negative controls" are packages with no known leak, and "positive controls" are packages with intentional or known leaks. A "<span class="key-term">master</span>" is a type of negative control — a no-leaking mock package used in system suitability verification.</p>
+        <p><strong>4.5.1 Defect Creation Methods:</strong></p>
+        <ul>
+            <li><span class="key-term">Laser drilling</span>: creates defects as small as 2–3 µm in rigid glass or plastic; not ideal (non-cylindrical, asymmetric), but simulates actual defects</li>
+            <li><span class="key-term">Glass micropipettes</span>: simulate single-orifice defects as small as ~0.1 µm</li>
+            <li><span class="key-term">Microtubes (microcapillaries)</span>: can be as narrow as 2 µm; good for channel defects</li>
+            <li>Needle insertion, wire/microfilament between sealing surfaces, holed metal plate: useful for larger defects in feasibility studies</li>
+        </ul>
+        <p><strong>4.5.2 Type Defects</strong> — realistic package flaws:</p>
+        <ul>
+            <li>Heat sealed bag: weak seal, wrinkled seal, seal gap, seal channel, product entrapment in seal</li>
+            <li>Stoppered vial: vial finish channel defect, loosely capped stopper, product trapped between stopper and vial</li>
+            <li>Prefilled syringe: needle shield punctured, defective plunger</li>
+            <li>Ophthalmic dropper bottle: loose cap, missing/poorly inserted dropper tip</li>
+        </ul>
+    </div>
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+        <div class="concept-box">
+            <h4>核心概念解析：陽性對照品設計的層次</h4>
+            <p>USP 要求陽性對照品必須覆蓋完整的偵測範圍：</p>
+            <ul>
+                <li><strong>第一層</strong>：接近偵測限的小缺陷（最關鍵）→ 確認方法在邊界能否偵測</li>
+                <li><strong>第二層</strong>：括弧式缺陷（稍大和稍小於偵測限）→ 建立偵測機率曲線</li>
+                <li><strong>第三層</strong>：大缺陷（確認方法上限）→ 確保大缺陷不會「miss」</li>
+                <li><strong>類型缺陷 (Type Defects)</strong>：模擬真實生產中可能出現的缺陷型態</li>
+            </ul>
+        </div>
+        <div class="note-box">
+            <h4>重點提示：激光鑽孔的局限性</h4>
+            <p>激光鑽出的「孔洞」並非完美的圓形小孔，而是非對稱的微裂紋矩陣。因此：</p>
+            <ul>
+                <li>不能直接用幾何公式計算洩漏率</li>
+                <li>需要通過「與標準孔板的氣體洩漏率比較」來定名直徑</li>
+                <li>優點是接近真實缺陷形態（如裂縫）</li>
+            </ul>
+        </div>
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>系統適用性 (System Suitability) 就像每天早上上班前校準辦公室的體重計。在開始一批測試之前，先用已知的陰性/陽性對照品確認儀器今天是否正常運作——這是保障每批測試數據可信度的例行動作。</p>
+        </div>
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 aseptic vial filling 的 CCI 驗證中，類型缺陷 (Type Defects) 的設計應包含：(1) 瓶口通道缺陷（模擬瓶口缺角）→ 最常見的真實生產缺陷；(2) 膠塞未完全插入（loosely capped stopper）→ 模擬軋蓋失敗；(3) 產品夾在膠塞與瓶口之間（product trapped）→ 模擬灌裝過量。這三類缺陷若無法被選定的 CCI 方法偵測，需要補充其他監控措施。</p>
+        </div>
+    </div>
+</div>
+
+<!-- CHAPTER SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Chapter Summary</h3>
+    <ul>
+        <li><strong>三階段生命週期：</strong>CCI 測試涵蓋開發/驗證、製造、商業穩定性三個階段，各有不同目標與方法要求</li>
+        <li><strong>MALL 是核心：</strong>最大允許洩漏限度定義了測試方法必須達到的靈敏度門檻</li>
+        <li><strong>確定性方法優先：</strong>能達到 MALL 的確定性方法為 FDA/USP 首選；機率性方法在確定性方法不適用時才考慮</li>
+        <li><strong>12 項選擇標準：</strong>包裝內容物、設計材質、密封類型、MALL、確定性/機率性、理化/微生物學、結果類型、定量/定性、偵測限、偵測範圍、破壞性/非破壞性、離線/在線</li>
+        <li><strong>八要素驗證：</strong>準確性（偽陽/偽陰）、精密性（三層次）、專一性、偵測限、定量限、線性、範圍、穩健性</li>
+        <li><strong>對照品設計：</strong>陰性對照品（完好包裝）+ 陽性對照品（已知缺陷，需涵蓋偵測限附近的括弧式範圍）+ 類型缺陷（真實生產場景）</li>
+        <li><strong>法規要點：</strong>CCI 測試可取代穩定性方案中的無菌試驗（FDA 2008），但不取代批次放行無菌試驗</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<div class="main-footer">
+    <p>USP 〈1207.1〉: Package Integrity Testing in the Product Life Cycle — Test Method Selection and Validation</p>
+    <p>SterileGMP Knowledge Hub | Generated: 2026-04-06</p>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.getElementById('backToTop');
+    if (window.scrollY > 300) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+});
+</script>
+</body>
+</html>

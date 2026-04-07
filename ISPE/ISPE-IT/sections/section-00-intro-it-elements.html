@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapters 1–2: Introduction & IT Infrastructure Elements | 導論與IT基礎設施元素 — ISPE GAMP IT Infrastructure</title>
+<style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --ispe-bar: #16a34a;
+    --ispe-bg: #dcfce7;
+    --ispe-text: #15803d;
+    --ispe-border: #86efac;
+    --ispe-dark: #14532d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+.header {
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.source-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #bbf7d0;
+    border-top: 4px solid var(--ispe-bar);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.toc h3 { color: var(--ispe-text); margin-bottom: 0.75rem; font-size: 1rem; font-weight: 700; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #dcfce7;
+    border-radius: 6px;
+    color: var(--ispe-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #86efac;
+    transition: all 0.2s;
+}
+.toc-grid a:hover { background: var(--ispe-bar); color: white; border-color: var(--ispe-bar); }
+
+.learning-objectives {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #86efac;
+}
+.learning-objectives h3 { color: #14532d; margin-bottom: 0.75rem; font-size: 1rem; font-weight: 700; }
+.learning-objectives ul { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: 1.5rem;
+}
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+    color: white;
+}
+.chapter-badge {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
+}
+.chapter-info h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.1rem; }
+.chapter-info p { font-size: 0.82rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.left-column {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+.left-column h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #16a34a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.left-column h4 { color: var(--primary-blue); margin: 1rem 0 0.5rem; font-size: 0.95rem; }
+.left-column p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li { margin-bottom: 0.5rem; }
+
+.right-column {
+    background: #f0fdf4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bbf7d0;
+}
+.right-column h3 {
+    color: #14532d;
+    border-bottom: 2px solid #4ade80;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.right-column h4 { color: #14532d; margin: 1rem 0 0.5rem; font-size: 0.95rem; }
+.right-column p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.right-column ul, .right-column ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.93rem; }
+.right-column li { margin-bottom: 0.45rem; }
+
+.column-header {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+.col-en { background: #e2e8f0; color: #1e3a5f; }
+.col-zh { background: #dcfce7; color: #14532d; }
+
+.concept-box, .analogy-box, .note-box, .key-note,
+.term-box, .key-term-box, .key-point-box, .highlight-box, .application-box {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+.concept-box h4, .analogy-box h4, .note-box h4, .key-note h4,
+.term-box h4, .key-term-box h4, .key-point-box h4, .highlight-box h4, .application-box h4 {
+    margin-bottom: 0.6rem; font-size: 0.95rem; font-weight: 600;
+}
+.concept-box p, .analogy-box p, .note-box p, .term-box p,
+.key-term-box p, .key-point-box p, .highlight-box p, .application-box p {
+    margin-bottom: 0.5rem; font-size: 0.92rem;
+}
+.concept-box ul, .analogy-box ul, .note-box ul, .term-box ul,
+.key-term-box ul, .key-point-box ul, .highlight-box ul, .application-box ul {
+    margin: 0.5rem 0 0.5rem 1.25rem; font-size: 0.92rem;
+}
+.concept-box li, .analogy-box li, .note-box li, .term-box li,
+.key-term-box li, .key-point-box li, .highlight-box li, .application-box li {
+    margin-bottom: 0.35rem;
+}
+.term-box, .key-term-box { background: #e8f5e9; border-left: 4px solid #4caf50; }
+.term-box h4, .key-term-box h4 { color: #2e7d32; }
+.analogy-box { background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%); border-left: 4px solid #f6ad55; }
+.analogy-box h4 { color: #856404; }
+.note-box, .key-note, .key-point-box { background: #fff3e0; border-left: 4px solid #ff9800; }
+.note-box h4, .key-note h4, .key-point-box h4 { color: #c65102; }
+.highlight-box { background: #fff3e0; border-left: 4px solid #ff9800; }
+.highlight-box h4 { color: #c65102; }
+.application-box { background: #e3f2fd; border-left: 4px solid #1976d2; }
+.application-box h4 { color: #1565c0; }
+
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%);
+    border: 2px dashed #3182ce;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+    font-size: 0.92rem;
+}
+.practice-box h4 { color: #2c5282; margin-bottom: 0.75rem; font-size: 0.95rem; font-weight: 600; }
+.practice-box ol { margin-left: 1.25rem; }
+.practice-box li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+
+.quote-box {
+    background: linear-gradient(to right, #f0fdf4, #dcfce7);
+    border-left: 4px solid #16a34a;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+.quote-box cite { font-style: normal; font-size: 0.82rem; color: var(--text-medium); display: block; margin-top: 0.5rem; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+th, td { padding: 0.55rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); font-weight: 600; color: #14532d; font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.table-title { font-weight: 700; font-size: 0.95rem; color: #14532d; margin-bottom: 0.5rem; }
+
+.key-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+
+.diagram-box {
+    background: white;
+    border: 2px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+.diagram-box .diagram-title { font-weight: 700; color: #14532d; font-size: 0.95rem; margin-bottom: 1rem; }
+.diagram-layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.4rem 0;
+    flex-wrap: wrap;
+}
+.diagram-block {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    min-width: 120px;
+    text-align: center;
+}
+.block-app { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+.block-platform { background: #dcfce7; border-color: #16a34a; color: #14532d; }
+.block-hw { background: #e0f2fe; border-color: #0284c7; color: #075985; }
+.block-proc { background: #fef9c3; border-color: #ca8a04; color: #713f12; }
+.block-scope { background: #f3e8ff; border-color: #9333ea; color: #6b21a8; }
+.diagram-arrow { font-size: 1.3rem; color: #6b7280; margin: 0.2rem 0; }
+.diagram-label { font-size: 0.78rem; color: #6b7280; margin-top: 0.4rem; font-style: italic; }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin: 0 2px;
+}
+.badge-green { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.badge-red { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+.badge-blue { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+.badge-orange { background: #fff3e0; color: #c65102; border: 1px solid #fdba74; }
+.badge-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 1.5rem 0;
+}
+
+.main-footer {
+    background: #14532d;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--ispe-bar);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(22,163,74,0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #15803d; transform: scale(1.1); }
+
+@media (max-width: 900px) {
+    .two-column { grid-template-columns: 1fr; }
+    .header h1 { font-size: 1.1rem; }
+    .main-content { padding: 1rem; }
+    .chapter-body { padding: 1rem; }
+}
+@media print {
+    .back-to-top { display: none !important; }
+    .chapter-section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; }
+    .two-column { grid-template-columns: 1fr 1fr; }
+    .main-content { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="source-badge">ISPE GAMP Good Practice Guide</div>
+    <h1>Chapters 1–2: Introduction &amp; IT Infrastructure Elements | 導論與IT基礎設施元素</h1>
+    <div class="subtitle">GAMP Good Practice Guide: IT Infrastructure Control and Compliance</div>
+    <div class="page-info">Preface · Chapter 1 (Sections 1.1–1.7) · Chapter 2 (Sections 2.1–2.3) · Pages 1–17</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本節內容 Contents</h3>
+    <div class="toc-grid">
+        <a href="#preface">Preface 序言</a>
+        <a href="#sec1-1">1.1 Overview 概述</a>
+        <a href="#sec1-2">1.2 Purpose 目的</a>
+        <a href="#sec1-3">1.3 Scope 範圍</a>
+        <a href="#sec1-4">1.4 Benefits 效益</a>
+        <a href="#sec1-5">1.5 Objectives 目標</a>
+        <a href="#sec1-6">1.6 Guide Structure 指南結構</a>
+        <a href="#sec1-7">1.7 Key Concepts 核心概念</a>
+        <a href="#sec2-1">2.1 Platforms 平台</a>
+        <a href="#sec2-2">2.2 Processes 流程</a>
+        <a href="#sec2-3">2.3 Personnel 人員</a>
+        <a href="#gxp-table">GxP系統分類表</a>
+        <a href="#reg-compare">法規比較 Reg. Comparison</a>
+        <a href="#gamp-cats">GAMP Categories</a>
+    </div>
+</div>
+
+<!-- BILINGUAL LEARNING OBJECTIVES -->
+<div class="learning-objectives">
+    <h3>Learning Objectives | 學習目標</h3>
+    <div class="two-column" style="margin-bottom:0;">
+        <ul>
+            <li>Explain why IT Infrastructure qualification is required for GxP compliance</li>
+            <li>Distinguish between <em>platform</em> qualification and <em>application</em> validation</li>
+            <li>Describe the horizontal (platform-based) approach and its advantages over a vertical approach</li>
+            <li>Identify the three IT Infrastructure elements: Platforms, Processes, Personnel</li>
+            <li>Assign GAMP categories to platform components (networks, OS, servers, clients)</li>
+            <li>Map regulatory requirements (21 CFR Part 11, EU Annex 11) to IT Infrastructure controls</li>
+        </ul>
+        <ul>
+            <li>說明為何GxP法規要求IT基礎設施必須進行資格確認</li>
+            <li>區分平台（Platform）資格確認 vs. 應用程式（Application）驗證</li>
+            <li>描述水平式（平台導向）方法及其相較垂直式方法的優勢</li>
+            <li>辨識IT基礎設施三大元素：平台、流程、人員</li>
+            <li>為平台元件（網路、OS、伺服器、用戶端）分配GAMP類別</li>
+            <li>將法規要求（21 CFR Part 11、EU Annex 11）對應到IT基礎設施管控</li>
+        </ul>
+    </div>
+</div>
+
+<!-- =========================================================
+     PREFACE
+     ========================================================= -->
+<div class="chapter-section" id="preface">
+    <div class="chapter-divider">
+        <div class="chapter-badge">P</div>
+        <div class="chapter-info">
+            <h2>Preface | 序言</h2>
+            <p>Purpose and legal context of the GAMP IT Infrastructure Guide · 指南目的與法律聲明</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>This document, the <strong>GAMP® Good Practice Guide: IT Infrastructure Control and Compliance</strong>, is intended as a supplement to the Guide for Validation of Automated Systems (GAMP® 4). It provides an approach to meeting current regulatory expectations for compliant IT Infrastructure platforms, including the need to identify, qualify, and control those aspects impacted by GxP.</p>
+                <p>This document has been designed so that it may be used in conjunction with guidance provided in GAMP® 4 and other ISPE publications, such as the ISPE Baseline® Guides.</p>
+                <div class="note-box">
+                    <h4>Disclaimer</h4>
+                    <p>This Guide is meant to assist pharmaceutical companies in managing the validation of IT Infrastructure platforms. The GAMP Forum cannot ensure and does not warrant that a system managed in accordance with this Guide will be acceptable to regulatory authorities. This Guide does not replace the need for hiring professional engineers or technicians.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box">
+                    <h4>這份指南是什麼？</h4>
+                    <p>GAMP IT基礎設施指南是GAMP 4的<strong>補充文件</strong>，專門聚焦於支撐GxP應用程式的底層IT環境——包含伺服器、網路、作業系統、資料庫平台等。</p>
+                    <p>在製藥CDMO中，IT基礎設施是所有數位化製造系統的地基。MES出問題了？先查OS patch。LIMS資料遺失？先看backup策略是否合規。這本指南就是管控這個「地基層」的標準。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>建築比喻</h4>
+                    <p>應用程式（MES、LIMS、QMS）是建築物，IT基礎設施是地基和鋼筋。即使建築物本身設計完美，若地基不穩定，整棟建築都有崩塌風險。這份指南確保「地基」本身符合GxP要求。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>為什麼IT基礎設施指南需要作為GAMP 4的「補充」而非單獨存在？</li>
+                        <li>CDMO的IT部門和QA部門在閱讀此指南時，各自的關注重點會有哪些不同？</li>
+                        <li>「法規當局不保證接受」這個免責聲明對你的法規策略有何實際影響？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.1 OVERVIEW
+     ========================================================= -->
+<div class="chapter-section" id="sec1-1">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.1</div>
+        <div class="chapter-info">
+            <h2>Overview | 概述</h2>
+            <p>Why IT Infrastructure control matters for GxP compliance · 為何IT基礎設施管控對GxP合規至關重要</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>GxP regulated companies have an ever increasing dependency on computerized systems when conducting their day-to-day businesses.</p>
+                <p>The validated status of GxP applications that are dependent upon an underlying IT Infrastructure is compromised if that IT Infrastructure is not maintained in a demonstrable state of control and regulatory compliance.</p>
+                <p>The consequences of the IT Infrastructure being out of effective control can be significant. Depending on the nature of a failure, an entire site or geographic region of operations could be brought to a standstill while the problem is resolved.</p>
+                <p>The infrastructure should be brought into initial conformance with the company's established standards through a planned qualification process building upon acknowledged good IT practices. Once in conformance, this state should be maintained by documented standard processes and quality assurance activities, the effectiveness of which should be periodically verified.</p>
+                <p><strong>Key aspects to consider include:</strong></p>
+                <ul>
+                    <li>Installation and operational qualification of infrastructure components</li>
+                    <li>Configuration management and change control in a highly dynamic environment</li>
+                    <li>Management of risks to IT Infrastructure</li>
+                    <li>Involvement of service providers in critical infrastructure processes</li>
+                    <li>Security management — access controls, availability of services and data integrity</li>
+                    <li>Backup, restore, and disaster recovery</li>
+                    <li>Archiving</li>
+                </ul>
+                <div class="quote-box">
+                    "IT Infrastructure" and "infrastructure" are used synonymously to indicate an aggregation of platforms and services including their associated processes, procedures, and personnel.
+                    <cite>— GAMP IT Infrastructure Guide, Footnote 1</cite>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="key-note">
+                    <h4>核心警示：連鎖失效風險</h4>
+                    <p>指南明確說明：若IT基礎設施失控，<strong>整個廠區或地區的作業可能停擺</strong>。在CDMO環境中，這意味著：</p>
+                    <ul>
+                        <li>MES停機 → 批次記錄無法建立 → 生產暫停</li>
+                        <li>LIMS無法存取 → 放行檢驗無法完成 → 批次卡關</li>
+                        <li>DCS/SCADA失效 → 製程監控中斷 → FDA 21 CFR Part 11 數據完整性疑慮</li>
+                    </ul>
+                </div>
+                <div class="application-box">
+                    <h4>CDMO的IT基礎設施涵蓋範圍</h4>
+                    <ul>
+                        <li><strong>Server infrastructure</strong>：MES、LIMS、QMS的主機伺服器</li>
+                        <li><strong>Network</strong>：廠區內部網路、隔離的GxP網段</li>
+                        <li><strong>OS/Database</strong>：Windows Server、Oracle DB等</li>
+                        <li><strong>Virtualization</strong>：VMware環境（若使用）</li>
+                        <li><strong>Storage/Backup</strong>：批次記錄的長期保存系統</li>
+                    </ul>
+                </div>
+                <div class="term-box">
+                    <h4>關鍵定義：IT Infrastructure</h4>
+                    <p><span class="key-term">IT Infrastructure（IT基礎設施）</span> = 平台（Platforms）+ 服務（Services）+ 相關流程、程序、人員的集合體。</p>
+                    <p>這個定義很重要：IT基礎設施不只是硬體，還包含圍繞它運作的流程和負責的人員。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>列出你廠區中三個依賴IT基礎設施的GxP應用程式，並描述若底層伺服器發生故障的影響。</li>
+                        <li>「可示範的控制狀態（demonstrable state of control）」在法規稽查時意味著需要準備哪些文件？</li>
+                        <li>為何備份（Backup）和災難復原（Disaster Recovery）被列為IT基礎設施的關鍵考量？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.2 PURPOSE
+     ========================================================= -->
+<div class="chapter-section" id="sec1-2">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.2</div>
+        <div class="chapter-info">
+            <h2>Purpose | 目的</h2>
+            <p>What this Guide aims to achieve · 本指南的目標</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>This Guide provides comprehensive guidance on meeting current regulatory expectations for compliant IT Infrastructure platforms, including the need to <strong>identify, qualify, and control</strong> those aspects impacted by GxP.</p>
+                <p>This Guide intends to satisfy the growing need for guidance on key IT Infrastructure subjects in relation to current international GxP regulations, and to align terminology and language with other GAMP® Good Practice Guides.</p>
+                <p>The Guide is intended primarily for regulated life science industries, including pharmaceutical, biological, and medical devices, but also provides valuable information for suppliers of systems, products, or services.</p>
+                <p>This Guide includes the description of a <strong>scaleable qualification framework</strong> which has been derived from key principles and practices. It describes how this framework can be applied to different platform types in order to determine the extent and scope of qualification efforts.</p>
+                <p>In addition, this Guide provides an overview of current best practices for the design, qualification, and operation of an IT Infrastructure with emphasis on the qualification requirements of the major components.</p>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box">
+                    <h4>三個核心動作：Identify → Qualify → Control</h4>
+                    <p>這三個動詞定義了整個IT基礎設施合規管理的生命週期：</p>
+                    <ul>
+                        <li><strong>Identify（識別）</strong>：哪些IT元件支撐GxP應用程式？哪些在GxP範圍內？</li>
+                        <li><strong>Qualify（資格確認）</strong>：執行IQ/OQ，確認元件能滿足規格要求</li>
+                        <li><strong>Control（管控）</strong>：持續的變更管理、組態管理、定期審查</li>
+                    </ul>
+                </div>
+                <div class="application-box">
+                    <h4>可縮放資格確認框架（Scaleable Qualification Framework）</h4>
+                    <p>框架可依據以下因素調整規模：</p>
+                    <ul>
+                        <li>平台的GxP衝擊程度（風險驅動）</li>
+                        <li>公司規模（小型CDMO vs 跨國大廠）</li>
+                        <li>平台類型（獨立伺服器 vs 虛擬化環境 vs 雲端）</li>
+                    </ul>
+                    <p>這表示框架不是一刀切的——你可以根據風險評估調整資格確認的深度和廣度。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>「可縮放框架」對資源有限的小型CDMO意味著什麼？你會如何優先排序？</li>
+                        <li>IT供應商（如外包的雲端服務商）閱讀此指南後，需要承擔哪些責任？</li>
+                        <li>如何確保你廠區的IT術語與GAMP指南一致，避免稽查時的溝通誤差？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.3 SCOPE
+     ========================================================= -->
+<div class="chapter-section" id="sec1-3">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.3</div>
+        <div class="chapter-info">
+            <h2>Scope | 適用範圍</h2>
+            <p>What is included and excluded from this Guide · 本指南的涵蓋範圍與排除項目</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>This Guide addresses compliance with international GxP regulations and considers:</p>
+                <ul>
+                    <li>The establishment of new platforms and extensions to existing ones</li>
+                    <li>Existing platforms already in support of GxP applications</li>
+                </ul>
+                <p><strong>GxP regulations considered:</strong></p>
+                <ul>
+                    <li>Good Manufacturing Practice (GMP)</li>
+                    <li>Good Clinical Practice (GCP)</li>
+                    <li>Good Laboratory Practice (GLP)</li>
+                    <li>Good Distribution Practice (GDP)</li>
+                </ul>
+                <p><strong>Specific regulations and guidelines considered:</strong></p>
+                <ul>
+                    <li>US FDA regulations and Compliance Policy Guides</li>
+                    <li>Relevant parts of EU GMPs, e.g., Annexes 11, 15, and 18</li>
+                    <li>PIC/S Guidance</li>
+                </ul>
+                <p>This Guide covers a range of IT Infrastructures, from those found in companies operating globally to isolated or semi-isolated GxP regulated infrastructures.</p>
+                <div class="note-box">
+                    <h4>Out of Scope</h4>
+                    <p>Business Continuity Planning is led by business users and application owners — it is outside the scope of this Guide. This Guide covers IT disaster recovery and contingency planning, but <em>not</em> alternative operating procedures for business processes in case of failure.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box">
+                    <h4>適用範圍清單（CDMO視角）</h4>
+                    <p><strong>涵蓋（In Scope）：</strong></p>
+                    <ul>
+                        <li>支撐MES、LIMS、QMS、DCS/SCADA的伺服器和網路</li>
+                        <li>GxP資料庫平台（Oracle、SQL Server）</li>
+                        <li>作業系統（Windows Server、Linux）</li>
+                        <li>虛擬化平台（VMware等）</li>
+                        <li>儲存和備份系統</li>
+                        <li>既有平台（legacy）和新建平台</li>
+                    </ul>
+                    <p><strong>排除（Out of Scope）：</strong></p>
+                    <ul>
+                        <li>MES、LIMS等應用程式本身的驗證（由GAMP 4規範）</li>
+                        <li>業務連續性計畫（BCP）中的替代作業程序</li>
+                    </ul>
+                </div>
+                <div class="application-box">
+                    <h4>新平台 vs 既有平台的實務差異</h4>
+                    <ul>
+                        <li><strong>新平台</strong>：從需求規格開始，完整走過IQ/OQ流程，文件較完整</li>
+                        <li><strong>既有平台（Legacy）</strong>：需進行回溯性資格確認（retrospective qualification），評估現況是否符合要求，補齊文件落差</li>
+                    </ul>
+                    <p>許多CDMO的IT基礎設施在指南出版之前已存在，因此「既有平台」的合規路徑尤其重要。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>你廠區的哪些IT系統屬於GMP範圍？哪些屬於GLP？哪些兩者都有？</li>
+                        <li>若廠區同時支援GMP和非GMP客戶，你會如何在同一IT基礎設施中進行GxP邊界劃分？</li>
+                        <li>業務連續性計畫（BCP）被排除在外，但IT災難復原（DR）在範圍內——兩者的界線在哪裡？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.4 BENEFITS
+     ========================================================= -->
+<div class="chapter-section" id="sec1-4">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.4</div>
+        <div class="chapter-info">
+            <h2>Benefits | 效益</h2>
+            <p>Advantages of the horizontal platform-based approach · 水平式平台導向方法的優勢</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>This Guide applies a structured approach, including Risk Management, to the qualification, management, and control of IT Infrastructure platforms supporting GxP applications.</p>
+                <p>A <strong>vertical, or system based</strong>, approach to qualification and audit of IT Infrastructure would be inefficient and impractical, as overlapping and often identical platform elements would be dealt with repeatedly. To avoid unnecessary effort, this Guide describes a <strong>horizontal, or platform based</strong>, approach.</p>
+                <p><strong>Benefits of a horizontal approach include:</strong></p>
+                <ul>
+                    <li>Higher level of standardization throughout the entire life cycle</li>
+                    <li>Minimal overlap in documentation</li>
+                    <li>Minimal overlap in qualification</li>
+                    <li>Minimal overlap in audits, inspections, and assessments</li>
+                </ul>
+                <p>The approach also builds upon:</p>
+                <ul>
+                    <li>The relatively <strong>low residual risk</strong> to GxP applications attributable to IT Infrastructure platforms (in contrast to application software designed to create and manipulate data)</li>
+                    <li>Industry standard components with built-in error detection and self-correction features</li>
+                    <li>Current good IT practices and international standards for reliable network performance</li>
+                    <li>Efficient, automatic, standardized IT monitoring and management software tools</li>
+                    <li>Many similar platform components used in similar configurations across a company</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="analogy-box">
+                    <h4>垂直 vs 水平方法：超市收銀機比喻</h4>
+                    <p><strong>垂直方法（低效）</strong>：每台收銀機都獨立稽查一次POS系統的伺服器、網路、OS——但同一台伺服器可能服務20台收銀機，結果做了20次重複的工作。</p>
+                    <p><strong>水平方法（高效）</strong>：先資格確認「收銀機共用平台」一次，後續每台收銀機的應用程式驗證只需確認「平台已合規」即可。</p>
+                    <p>在CDMO中，若一台伺服器同時支援MES和LIMS，水平方法讓伺服器只需資格確認一次。</p>
+                </div>
+                <div class="term-box">
+                    <h4>為何平台的殘留風險較低？</h4>
+                    <p>平台（OS、資料庫）設計目的是<strong>保護資料完整性</strong>，而應用程式設計目的是<strong>建立和操作資料</strong>。應用程式更可能引入業務邏輯錯誤，導致數據問題；平台的風險通常是可用性（availability）而非數據正確性。</p>
+                </div>
+                <div class="application-box">
+                    <h4>水平方法的CDMO實踐</h4>
+                    <ul>
+                        <li><strong>Standard server build</strong>：建立標準化伺服器配置包，資格確認一次後可複製部署</li>
+                        <li><strong>Platform qualification package</strong>：一份平台資格確認文件，多個應用程式共用</li>
+                        <li><strong>One audit for the platform</strong>：稽查人員只需審查一次平台文件，不需重複查每個應用程式的底層基礎設施</li>
+                    </ul>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>若你的廠區有5個GxP應用程式都運行在同一台虛擬化伺服器上，水平方法能節省多少資格確認工作量？</li>
+                        <li>「標準化元件有自我錯誤偵測功能」這個特性如何支持較輕量的資格確認策略？</li>
+                        <li>水平方法在哪些情況下可能不適用（例如：特殊配置或高度客製化環境）？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.5 OBJECTIVES
+     ========================================================= -->
+<div class="chapter-section" id="sec1-5">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.5</div>
+        <div class="chapter-info">
+            <h2>Objectives | 指導原則</h2>
+            <p>GAMP Council guiding principles for this Guide · GAMP委員會制定本指南的指導原則</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>IT Infrastructure Control and Compliance should target those IT related aspects that could potentially affect <strong>product quality and public health</strong>. In order to be effective, applicable methods also must be practical and efficient.</p>
+                <p>To this end, the GAMP® Council set out the following guiding principles:</p>
+                <ul>
+                    <li>Provide a consistent, standalone document that would guide stakeholders to take advantage of current best practices in the field to achieve compliance with applicable regulations</li>
+                    <li>Define infrastructure and other key terms and concepts referenced or introduced</li>
+                    <li>Provide guidance on best practice for network, client, and server qualification and management</li>
+                    <li>Provide guidance on security issues in the light of BS7799/ISO17799</li>
+                    <li>Address change control in light of virus signature updates and security patches</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="key-note">
+                    <h4>GxP IT管控的根本目的</h4>
+                    <p>指南開宗明義：IT管控的目標是保護<strong>產品品質和公眾健康</strong>，而非為了技術本身。這個框架讓你在回答稽查員問題時有明確的論述基礎：「我們的每一項IT控制措施都是為了確保GxP記錄的完整性和系統的可靠性，最終保護患者安全。」</p>
+                </div>
+                <div class="term-box">
+                    <h4>Change Control中的特殊挑戰：Patch Management</h4>
+                    <p>指南特別提到病毒簽名更新和安全性補丁的變更控制——這在GxP環境中是高頻率的實際挑戰：</p>
+                    <ul>
+                        <li>安全補丁需要快速部署（資安要求）</li>
+                        <li>但每次OS patch都可能影響已驗證的應用程式（GxP要求）</li>
+                        <li>解決方案：建立patch管理SOP，包含影響評估和快速回歸測試程序</li>
+                    </ul>
+                </div>
+                <div class="application-box">
+                    <h4>ISO17799（現為ISO 27001）在GxP中的應用</h4>
+                    <p>資訊安全標準ISO17799（現已演進為ISO 27001）與GxP的IT安全要求高度重疊，尤其在：訪問控制、審計日誌、事件管理、備份程序等方面。許多CDMO同時追求ISO 27001認證和GxP合規，兩者可以共用大量管控措施。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>當資安部門要求緊急部署安全補丁，但QA要求先進行影響評估——你如何設計一個能同時滿足兩方的流程？</li>
+                        <li>ISO27001認證和GxP IT合規有哪些重疊之處？在CDMO中如何整合兩套要求？</li>
+                        <li>「實用且高效（practical and efficient）」的目標如何影響你在小型CDMO中設計合規程序的方式？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.6 STRUCTURE
+     ========================================================= -->
+<div class="chapter-section" id="sec1-6">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.6</div>
+        <div class="chapter-info">
+            <h2>Structure of this Guide | 指南架構</h2>
+            <p>Main body and appendices overview · 主體與附錄概覽</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>This Guide consists of a main body and a set of supporting appendices.</p>
+                <p><strong>Main body framework covers:</strong></p>
+                <ul>
+                    <li>IT Infrastructure elements</li>
+                    <li>Using a Quality Management System</li>
+                    <li>Applying Risk Management</li>
+                    <li>Qualification of new platforms</li>
+                    <li>Maintaining the qualified state during operation</li>
+                    <li>Retirement of platforms</li>
+                    <li>Qualification of legacy platforms</li>
+                </ul>
+                <p><strong>Supporting appendices include:</strong></p>
+                <ul>
+                    <li>Roles and Responsibilities</li>
+                    <li>Risk Assessment examples</li>
+                    <li>Qualification Deliverables</li>
+                    <li>Standard Operating Procedures (SOPs)</li>
+                    <li>Periodic Reviews</li>
+                    <li>Infrastructure Security</li>
+                    <li>Upgrade and Patch Management</li>
+                    <li>Outsourcing</li>
+                    <li>Server, Client, and Network Management</li>
+                    <li>Glossary and References</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="application-box">
+                    <h4>指南章節地圖（CDMO使用順序）</h4>
+                    <table>
+                        <tr>
+                            <th>章節</th>
+                            <th>內容</th>
+                            <th>優先對象</th>
+                        </tr>
+                        <tr>
+                            <td>Ch 1–2</td>
+                            <td>導論與IT元素</td>
+                            <td>所有人</td>
+                        </tr>
+                        <tr>
+                            <td>Ch 3</td>
+                            <td>品質管理系統</td>
+                            <td>QA / IT-QA</td>
+                        </tr>
+                        <tr>
+                            <td>Ch 4</td>
+                            <td>風險管理</td>
+                            <td>QA / IT管理</td>
+                        </tr>
+                        <tr>
+                            <td>Ch 5</td>
+                            <td>平台資格確認</td>
+                            <td>IT工程師</td>
+                        </tr>
+                        <tr>
+                            <td>Ch 6</td>
+                            <td>維持已確認狀態</td>
+                            <td>IT Operations</td>
+                        </tr>
+                        <tr>
+                            <td>Ch 7</td>
+                            <td>平台退場</td>
+                            <td>IT管理 / QA</td>
+                        </tr>
+                        <tr>
+                            <td>Appendices</td>
+                            <td>模板與範例</td>
+                            <td>實作參考</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="term-box">
+                    <h4>附錄的實務價值</h4>
+                    <p>附錄提供可直接使用的模板和範例，包含：</p>
+                    <ul>
+                        <li>外包供應商管理要求（Appendix 8）——適用於使用雲端或外包IT的CDMO</li>
+                        <li>Patch管理程序（Appendix 7）——解決GxP與資安的平衡</li>
+                        <li>SOP範本（Appendix 4）——可依公司規模調整</li>
+                    </ul>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>若你是剛上任的IT-QA主管，會從指南的哪個章節開始閱讀？為什麼？</li>
+                        <li>「舊有平台資格確認（Legacy qualification）」在指南主體中被提及但沒有獨立章節——這說明了什麼？</li>
+                        <li>外包章節（Appendix 8）在CDMO環境中特別重要，請說明原因。</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 1.7 KEY CONCEPTS
+     ========================================================= -->
+<div class="chapter-section" id="sec1-7">
+    <div class="chapter-divider">
+        <div class="chapter-badge">1.7</div>
+        <div class="chapter-info">
+            <h2>Key Concepts | 核心概念</h2>
+            <p>Horizontal approach, key terminology, qualification vs validation · 水平方法、關鍵術語、資格確認vs驗證</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <h4>1.7.1 Horizontal Platform Based Approach</h4>
+                <p>The IT Infrastructure exists to support the primary business, by providing:</p>
+                <ul>
+                    <li><strong>Platforms</strong> to run business applications (e.g., CDMS, IVRS, LIMS, or ERP)</li>
+                    <li><strong>IT Infrastructure processes</strong> that facilitate a capable and controlled IT environment</li>
+                    <li><strong>General IT services</strong> (e.g., email, office tools, intranet, file storage)</li>
+                </ul>
+                <p>Where platform components support multiple applications, these components should be <strong>qualified separately from the applications</strong> to avoid unnecessary duplication of activities and effort.</p>
+                <p>Separate qualification of the IT Infrastructure means that adding or changing a business application would require only the validation of the application. Similarly, changing components in the IT Infrastructure may not require further validation of the business application; however, the risk to GxP applications of each controlled change should be assessed.</p>
+                <p>Standard, re-usable, qualified platform components are referred to as <strong>building blocks</strong> throughout this Guide.</p>
+
+                <hr class="section-divider">
+
+                <h4>1.7.2 Key Terminology</h4>
+                <p><strong>Requirements:</strong> Often specified in documents such as Service Level Agreements (SLAs). For infrastructures supporting real-time applications (such as process control), requirement specifications may be more specific.</p>
+                <p><strong>Commissioning:</strong> A well planned, documented, managed engineering approach to start-up and handover to end-user, resulting in a safe and functional environment meeting established design requirements. In the context of IT Infrastructures, useful for aspects that do not support GxP activities directly.</p>
+                <p><strong>Qualification:</strong> A process of demonstrating the ability of an entity to fulfill specified requirements. Demonstrates the ability of servers, clients, and peripherals to fulfill specified requirements. Basic requirements include: QA involvement, formally verified design solutions, test results compliant with GxP documentation requirements, traceability of actions.</p>
+                <p><strong>Validation:</strong> In the context of an IT Infrastructure, validation applies to the GxP applications that run on the infrastructure, rather than the infrastructure platforms themselves. The focus for platforms is on qualification of components.</p>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+
+                <!-- PLATFORM vs APPLICATION DISTINCTION DIAGRAM -->
+                <div class="diagram-box">
+                    <div class="diagram-title">Platform vs Application 層次架構圖</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-block block-app">GxP Applications<br><small>MES / LIMS / QMS / DCS</small></div>
+                    </div>
+                    <div class="diagram-arrow">↕ 驗證（Validation）— 應用程式層</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-block block-platform">Database Platform<br><small>Oracle / SQL Server</small></div>
+                        <div class="diagram-block block-platform">OS Platform<br><small>Windows Server / Linux</small></div>
+                    </div>
+                    <div class="diagram-layer">
+                        <div class="diagram-block block-platform">Virtualization<br><small>VMware / Hyper-V</small></div>
+                        <div class="diagram-block block-platform">Network<br><small>Switches / Firewalls</small></div>
+                    </div>
+                    <div class="diagram-arrow">↕ 資格確認（Qualification）— 平台層</div>
+                    <div class="diagram-layer">
+                        <div class="diagram-block block-hw">Physical Hardware<br><small>Servers / Storage</small></div>
+                    </div>
+                    <div class="diagram-label">平台（綠色）= 本指南範圍 | 應用程式（紅色）= GAMP 4範圍</div>
+                </div>
+
+                <div class="term-box">
+                    <h4>Building Blocks（積木）概念</h4>
+                    <p>標準化、可重用的已資格確認平台元件稱為「building blocks」。</p>
+                    <p>實務範例：若你建立了一套標準Windows Server配置並完成資格確認，下次部署相同配置的伺服器時，只需確認配置一致，不需重新從頭做完整IQ/OQ——大幅降低重複工作。</p>
+                </div>
+
+                <div class="term-box">
+                    <h4>Commissioning vs Qualification 的區別</h4>
+                    <table>
+                        <tr>
+                            <th>項目</th>
+                            <th>Commissioning</th>
+                            <th>Qualification</th>
+                        </tr>
+                        <tr>
+                            <td>適用對象</td>
+                            <td>非GxP直接相關的IT元件</td>
+                            <td>GxP相關平台元件</td>
+                        </tr>
+                        <tr>
+                            <td>QA介入程度</td>
+                            <td>較低</td>
+                            <td>必須有QA參與</td>
+                        </tr>
+                        <tr>
+                            <td>文件要求</td>
+                            <td>工程交接文件</td>
+                            <td>GxP文件（可追溯性）</td>
+                        </tr>
+                        <tr>
+                            <td>測試目的</td>
+                            <td>確認功能正常運作</td>
+                            <td>確認符合規格要求</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="key-note">
+                    <h4>Qualification vs Validation：關鍵區別</h4>
+                    <p><span class="key-term">Qualification（資格確認）</span>適用於<strong>IT基礎設施平台</strong>（伺服器、網路、OS、資料庫）。</p>
+                    <p><span class="key-term">Validation（驗證）</span>適用於運行在基礎設施上的<strong>GxP應用程式</strong>（MES、LIMS）。</p>
+                    <p>稽查員問你的LIMS伺服器有沒有「驗證」時，正確答案是：「伺服器已完成資格確認（qualified），LIMS應用程式已完成驗證（validated）。」</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>你廠區的Oracle資料庫伺服器同時支援LIMS和QMS，請說明如何用「building block」方法進行資格確認。</li>
+                        <li>若MES供應商發布新版本，根據水平方法，IT基礎設施平台需要重新資格確認嗎？</li>
+                        <li>SLA（服務水準協議）在IT基礎設施的GxP合規中扮演什麼角色？應包含哪些關鍵要求？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     GxP SYSTEM CLASSIFICATION TABLE
+     ========================================================= -->
+<div class="chapter-section" id="gxp-table">
+    <div class="chapter-divider">
+        <div class="chapter-badge">REF</div>
+        <div class="chapter-info">
+            <h2>GxP IT System Classification | GxP IT系統分類表</h2>
+            <p>Which systems are GxP-impacted in a pharma CDMO · 製藥CDMO中哪些系統屬於GxP範圍</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">GxP IT System Classification</div>
+                <p class="table-title">Table: GxP-Impacted Systems in Aseptic Fill-Finish CDMO</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>System</th>
+                            <th>GxP Category</th>
+                            <th>21 CFR Part 11?</th>
+                            <th>Infrastructure Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MES</strong><br><small>Manufacturing Execution System</small></td>
+                            <td><span class="badge badge-green">GMP</span></td>
+                            <td>Yes — electronic batch records</td>
+                            <td>High — production-critical servers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LIMS</strong><br><small>Laboratory Information Mgmt System</small></td>
+                            <td><span class="badge badge-green">GMP</span> <span class="badge badge-orange">GLP</span></td>
+                            <td>Yes — lab data and e-signatures</td>
+                            <td>High — data integrity requirements</td>
+                        </tr>
+                        <tr>
+                            <td><strong>QMS</strong><br><small>Quality Management System</small></td>
+                            <td><span class="badge badge-green">GMP</span></td>
+                            <td>Yes — deviations, CAPAs, change controls</td>
+                            <td>Medium — document management servers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DCS / SCADA</strong><br><small>Process Control Systems</small></td>
+                            <td><span class="badge badge-green">GMP</span></td>
+                            <td>Yes — process parameters, alarms</td>
+                            <td>High — real-time, OT network</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ERP</strong><br><small>Enterprise Resource Planning</small></td>
+                            <td><span class="badge badge-blue">GDP</span> (partial GMP)</td>
+                            <td>Partial — batch traceability</td>
+                            <td>Medium — business network</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EDMS</strong><br><small>Electronic Document Mgmt</small></td>
+                            <td><span class="badge badge-green">GMP</span></td>
+                            <td>Yes — controlled documents</td>
+                            <td>Medium — document servers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CDS</strong><br><small>Chromatography Data System</small></td>
+                            <td><span class="badge badge-orange">GLP</span> <span class="badge badge-green">GMP</span></td>
+                            <td>Yes — analytical data</td>
+                            <td>High — analytical lab servers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email / Office</strong></td>
+                            <td><span class="badge" style="background:#f3f4f6;color:#374151;border:1px solid #d1d5db;">Non-GxP</span></td>
+                            <td>No</td>
+                            <td>Low — general IT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box">
+                    <h4>GxP衝擊判斷標準</h4>
+                    <p>一個IT系統是否屬於GxP範圍，取決於它是否直接影響以下任一項：</p>
+                    <ul>
+                        <li><strong>產品品質</strong>：製程參數、批次記錄、放行檢驗</li>
+                        <li><strong>患者安全</strong>：無菌保證、效價記錄</li>
+                        <li><strong>記錄完整性</strong>：資料可被修改、刪除，或無法追溯</li>
+                    </ul>
+                </div>
+                <div class="key-note">
+                    <h4>OT網路 vs IT網路的分離</h4>
+                    <p>在無菌製藥CDMO中，DCS/SCADA等製程控制系統（OT）的網路通常需要與一般IT網路實體隔離或邏輯隔離：</p>
+                    <ul>
+                        <li>OT網路（製程控制層）：高可用性要求，不容許隨意patch</li>
+                        <li>IT網路（辦公室/業務層）：標準IT管理</li>
+                        <li>DMZ（非軍事區）：兩者之間的受控交換點</li>
+                    </ul>
+                </div>
+                <div class="application-box">
+                    <h4>無菌製藥CDMO的IT基礎設施架構</h4>
+                    <div class="diagram-box" style="margin:0;">
+                        <div class="diagram-layer">
+                            <div class="diagram-block block-app">Business IT Zone<br><small>Email, ERP, Office</small></div>
+                        </div>
+                        <div class="diagram-arrow">Firewall / DMZ</div>
+                        <div class="diagram-layer">
+                            <div class="diagram-block block-platform">GxP IT Zone<br><small>MES, LIMS, QMS, EDMS</small></div>
+                        </div>
+                        <div class="diagram-arrow">Firewall / Air-gap</div>
+                        <div class="diagram-layer">
+                            <div class="diagram-block block-hw">OT / Control Zone<br><small>DCS, SCADA, BAS</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>若MES和ERP共用同一台資料庫伺服器，這個伺服器屬於GxP範圍嗎？你如何處理這個混合使用情況？</li>
+                        <li>SCADA系統的網路路由器需要進行GAMP資格確認嗎？屬於哪個類別？</li>
+                        <li>一家CDMO的IT部門聲稱「雲端服務提供商的伺服器不在GxP範圍內，所以不需要資格確認」——你認為這種說法正確嗎？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     REGULATORY COMPARISON TABLE
+     ========================================================= -->
+<div class="chapter-section" id="reg-compare">
+    <div class="chapter-divider">
+        <div class="chapter-badge">REG</div>
+        <div class="chapter-info">
+            <h2>Regulatory Context | 法規背景比較</h2>
+            <p>21 CFR Part 11 vs EU Annex 11 — key requirements for IT Infrastructure · 美歐法規對IT基礎設施的要求比較</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Regulatory Requirements Comparison</div>
+                <p class="table-title">Table: 21 CFR Part 11 vs EU Annex 11 — IT Infrastructure Relevance</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>21 CFR Part 11 (US FDA)</th>
+                            <th>EU Annex 11 (EMA)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Scope</strong></td>
+                            <td>Electronic records and electronic signatures in FDA-regulated activities</td>
+                            <td>Computerized systems used in GMP-regulated activities</td>
+                        </tr>
+                        <tr>
+                            <td><strong>System validation</strong></td>
+                            <td>§11.10(a): Validated systems to ensure accuracy, reliability, consistent performance</td>
+                            <td>Clause 4: Validation — risk-based approach, life cycle documentation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Audit trail</strong></td>
+                            <td>§11.10(e): Computer-generated time-stamped audit trails</td>
+                            <td>Clause 9: Audit trails capturing user actions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Access control</strong></td>
+                            <td>§11.10(d): Limiting system access to authorized individuals</td>
+                            <td>Clause 12.1: Physical and logical access restrictions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data backup</strong></td>
+                            <td>§11.10(c): Protection of records — retrievability</td>
+                            <td>Clause 7.2: Regular back-ups, verified ability to restore</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disaster recovery</strong></td>
+                            <td>Business continuity (implied)</td>
+                            <td>Clause 16: Disaster recovery plans required</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Change control</strong></td>
+                            <td>§11.10(k): Use of operational system checks</td>
+                            <td>Clause 10: Changes — including infrastructure changes evaluated</td>
+                        </tr>
+                        <tr>
+                            <td><strong>E-signatures</strong></td>
+                            <td>§11.50: Signature manifestations required</td>
+                            <td>Clause 17: Electronic signatures — EU directive compliant</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IT Infrastructure</strong></td>
+                            <td>Implicit in system validation requirements</td>
+                            <td>Clause 4.7: Infrastructure qualification explicitly mentioned</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">法規比較解讀</div>
+                <div class="term-box">
+                    <h4>兩大法規的核心差異</h4>
+                    <ul>
+                        <li><strong>21 CFR Part 11</strong>：美國法規，重點在電子記錄和電子簽名的技術控制（以IT功能要求為主）</li>
+                        <li><strong>EU Annex 11</strong>：歐盟GMP附件，涵蓋整個電腦化系統生命週期，對IT基礎設施的明確要求更多</li>
+                    </ul>
+                    <p>EU Annex 11 在2011年更新後，對供應商管理、雲端/外包、以及基礎設施資格確認都有更明確的規定，比Part 11更全面地涵蓋IT基礎設施。</p>
+                </div>
+                <div class="application-box">
+                    <h4>CDMO合規策略：同時滿足兩套法規</h4>
+                    <p>服務美歐市場的CDMO必須同時符合兩套要求。實務上：</p>
+                    <ul>
+                        <li><strong>Audit trail</strong>：系統層級的時間戳記審計日誌（滿足Part 11 §11.10(e)和Annex 11第9條）</li>
+                        <li><strong>Backup &amp; restore</strong>：定期備份並驗證還原能力（滿足Annex 11第7.2條）</li>
+                        <li><strong>Access control</strong>：角色型存取控制，最小權限原則（滿足兩者）</li>
+                        <li><strong>Change control SOP</strong>：涵蓋IT基礎設施變更（滿足Annex 11第10條）</li>
+                    </ul>
+                </div>
+                <div class="key-note">
+                    <h4>EU Annex 11 第4.7條的重要性</h4>
+                    <p>EU Annex 11明確要求「IT基礎設施資格確認」，是法規史上少數直接點名IT基礎設施（而非只談應用程式）需要資格確認的法規條文。這直接呼應本GAMP指南的核心主張。</p>
+                </div>
+                <div class="note-box">
+                    <h4>21 CFR Part 11 vs Annex 11 適用情境</h4>
+                    <ul>
+                        <li>FDA PAI（上市前稽查）：重點查Part 11合規</li>
+                        <li>EMA GMP稽查：重點查Annex 11合規</li>
+                        <li>PICS稽查（日本PMDA、澳洲TGA等）：通常遵循Annex 11框架</li>
+                        <li>雙重申報（美歐）：兩套要求都需滿足</li>
+                    </ul>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>若你的DCS系統只向FDA申報（不申報歐盟），你是否還需要滿足EU Annex 11的要求？</li>
+                        <li>21 CFR Part 11第11.10(e)的「電腦生成時間戳記審計日誌」——時間同步（NTP伺服器）是IT基礎設施還是應用程式的責任？</li>
+                        <li>EU Annex 11明確提到「外包服務」，若你的LIMS資料庫外包給第三方雲端，供應商協議需要包含哪些GxP要求？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     CHAPTER 2 — IT INFRASTRUCTURE ELEMENTS
+     ========================================================= -->
+<div class="chapter-section" id="sec2-1">
+    <div class="chapter-divider">
+        <div class="chapter-badge">2.1</div>
+        <div class="chapter-info">
+            <h2>Chapter 2 — Platforms | 第2章：平台</h2>
+            <p>Platform components and GAMP categories · 平台元件與GAMP類別分配</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>On-going quality management of the IT Infrastructure includes assurance that all processes and procedures are in place to control the life cycle activities of the IT Infrastructure platforms, and that qualified personnel are available to complete assigned tasks.</p>
+                <p>The IT Infrastructure may be looked upon as consisting of three major elements of fundamentally different nature:</p>
+                <ul>
+                    <li><strong>Platforms</strong></li>
+                    <li><strong>Processes</strong></li>
+                    <li><strong>Personnel</strong></li>
+                </ul>
+                <p>Platforms provide a well defined foundation for other well defined hardware or software components.</p>
+                <p class="table-title">Table 2.1: Platform Components and GAMP® Categories</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Platform Component</th>
+                            <th>GAMP Category</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Networks</strong><br><small>Switches, hubs, routers, firewalls, wireless hotspots, cables</small></td>
+                            <td>HW Cat 1; SW Cat 1 or 2<br>(Customized cables: HW Cat 2)</td>
+                            <td>Critical configuration information should be recorded and managed. Internet-based networks add security/integrity challenges.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hardware &amp; Peripherals</strong><br><small>Servers, power supplies, NIC cards, disk arrays, printers</small></td>
+                            <td>HW Category 1</td>
+                            <td>Standard, commercially available components used in direct support of applications and IT Infrastructure services.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Firmware</strong></td>
+                            <td>SW Category 2 (when updated independently)</td>
+                            <td>When firmware is updated independently of the hardware, it should be managed as software in its own right.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operating Systems</strong><br><small>OS + device drivers + communication protocols</small></td>
+                            <td>SW Category 1 (most)</td>
+                            <td>Configuration must be documented. OS access/privilege features used by applications may be validated as part of the application.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Management Software</strong><br><small>File storage, DBMS, web services, interface software</small></td>
+                            <td>SW Category 1 (most); some may be Cat 2+</td>
+                            <td>Elements often support more than one application. Complexity and configurability determine the category.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Servers</strong><br><small>Standard or individually configured</small></td>
+                            <td>HW Cat 1 + SW Cat 1 or 2 (combination)</td>
+                            <td>Actual set-up dictates the qualification strategy. Standard server building blocks allow efficient duplication.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clients</strong><br><small>Thin to thick clients</small></td>
+                            <td>HW Cat 1 + SW Cat 1 or 2 (combination)</td>
+                            <td>Range from thin clients (no local processing) to thick clients (local data storage). Set-up dictates life cycle model.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Applications</strong><br><small>Off-the-shelf to custom software</small></td>
+                            <td>SW Categories 3, 4, or 5</td>
+                            <td>Validation of applications is OUTSIDE the scope of this Guide.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box" id="gamp-cats">
+                    <h4>GAMP類別速查（IT基礎設施版）</h4>
+                    <table>
+                        <tr>
+                            <th>GAMP類別</th>
+                            <th>描述</th>
+                            <th>IT基礎設施範例</th>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-blue">HW Cat 1</span></td>
+                            <td>標準硬體</td>
+                            <td>伺服器、網路交換器、NIC卡</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-blue">HW Cat 2</span></td>
+                            <td>客製化硬體</td>
+                            <td>客製化線纜</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-green">SW Cat 1</span></td>
+                            <td>基礎設施軟體（OS等）</td>
+                            <td>Windows Server、Linux OS、驅動程式</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-green">SW Cat 2</span></td>
+                            <td>不可配置的標準軟體包</td>
+                            <td>網路設備韌體、某些中介軟體</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-orange">SW Cat 3</span></td>
+                            <td>非配置的標準軟體</td>
+                            <td>（偏應用程式層）</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-orange">SW Cat 4</span></td>
+                            <td>可配置的標準軟體</td>
+                            <td>MES、LIMS（應用程式範圍）</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-red">SW Cat 5</span></td>
+                            <td>客製開發軟體</td>
+                            <td>客製化應用程式（應用程式範圍）</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top:0.5rem;font-size:0.85rem;">IT基礎設施平台主要落在 HW Cat 1, SW Cat 1-2；應用程式為 SW Cat 3-5。</p>
+                </div>
+                <div class="analogy-box">
+                    <h4>為何大多數IT基礎設施是Cat 1？</h4>
+                    <p>Cat 1（基礎設施軟體）的假設是：這類軟體由大廠商（Microsoft、Cisco、VMware）廣泛測試和部署，行業已積累大量使用經驗，自我錯誤偵測能力強。因此，只需確認安裝正確、配置符合規格，不需要像應用程式一樣進行完整的業務功能測試。</p>
+                </div>
+                <div class="key-note">
+                    <h4>實務提醒：韌體的特殊處理</h4>
+                    <p>韌體（Firmware）通常被視為硬體的一部分。但當韌體可以<strong>獨立更新</strong>時（如伺服器BIOS/UEFI、網路設備韌體），就需要像軟體一樣管理：</p>
+                    <ul>
+                        <li>納入變更管理流程</li>
+                        <li>分類為SW Category 2</li>
+                        <li>記錄版本和更新紀錄</li>
+                    </ul>
+                    <p>在GxP環境中，韌體更新需要評估對上層GxP應用程式的潛在影響。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>你廠區的Cisco防火牆屬於哪個GAMP類別？其配置文件需要如何管理？</li>
+                        <li>若VMware vSphere被用作GxP應用程式的虛擬化層，它應被分類為哪個GAMP類別？資格確認策略是什麼？</li>
+                        <li>「thin client vs thick client」的選擇對GxP合規有哪些影響？本地儲存的資料如何管理？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 2.2 PROCESSES
+     ========================================================= -->
+<div class="chapter-section" id="sec2-2">
+    <div class="chapter-divider">
+        <div class="chapter-badge">2.2</div>
+        <div class="chapter-info">
+            <h2>Processes | 流程</h2>
+            <p>ITIL-based IT Infrastructure processes for GxP compliance · 基於ITIL的IT基礎設施流程</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>The number of IT Infrastructure processes a company decides to implement and the method of implementation depend mainly on the <strong>criticality of the business processes being supported</strong> and on the size of the company.</p>
+                <p>The processes listed cover typical aspects required for good business practice, as well as compliance. This list, which takes into account <strong>ITIL</strong> (IT Infrastructure Library), is indicative only, and organizations may view different processes as being sub-processes to other processes.</p>
+                <p><strong>Key IT Infrastructure Processes:</strong></p>
+                <ul>
+                    <li>Change Management</li>
+                    <li>Configuration Management</li>
+                    <li>Security Management</li>
+                    <li>Server Management</li>
+                    <li>Client Management</li>
+                    <li>Network Management</li>
+                    <li>Problem Management</li>
+                    <li>Help Desk (also known as Service Desk in ITIL)</li>
+                    <li>Backup, Restore, and Archiving</li>
+                    <li>Disaster Recovery</li>
+                    <li>Performance Monitoring</li>
+                    <li>Supplier Management</li>
+                </ul>
+                <p>Key processes are considered further in Section 6 of this Guide.</p>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="application-box">
+                    <h4>ITIL框架與GxP的整合</h4>
+                    <p>ITIL（IT基礎設施資源庫）是全球IT服務管理的最佳實踐框架。許多IT部門已遵循ITIL，而GAMP指南承認ITIL的有效性，意味著：</p>
+                    <p><strong>若你的IT部門已實施ITIL：</strong>大部分流程框架可直接用於GxP合規，只需在現有流程上增加GxP相關要求（如更嚴格的文件記錄和QA審查）。</p>
+                    <p><strong>若尚未實施ITIL：</strong>可以從GxP要求最高的流程開始建立，再逐步完善。</p>
+                </div>
+
+                <div class="term-box">
+                    <h4>12個流程的GxP優先順序（CDMO視角）</h4>
+                    <table>
+                        <tr>
+                            <th>流程</th>
+                            <th>GxP重要性</th>
+                            <th>主要風險</th>
+                        </tr>
+                        <tr>
+                            <td>Change Management</td>
+                            <td><span class="badge badge-red">極高</span></td>
+                            <td>未控制的變更影響已驗證狀態</td>
+                        </tr>
+                        <tr>
+                            <td>Configuration Mgmt</td>
+                            <td><span class="badge badge-red">極高</span></td>
+                            <td>配置漂移導致系統不符合規格</td>
+                        </tr>
+                        <tr>
+                            <td>Backup &amp; Restore</td>
+                            <td><span class="badge badge-red">極高</span></td>
+                            <td>GxP記錄遺失無法復原</td>
+                        </tr>
+                        <tr>
+                            <td>Security Management</td>
+                            <td><span class="badge badge-red">極高</span></td>
+                            <td>未授權存取、資料完整性</td>
+                        </tr>
+                        <tr>
+                            <td>Problem Management</td>
+                            <td><span class="badge badge-orange">高</span></td>
+                            <td>系統失效影響GxP作業</td>
+                        </tr>
+                        <tr>
+                            <td>Disaster Recovery</td>
+                            <td><span class="badge badge-orange">高</span></td>
+                            <td>重大事件後無法恢復作業</td>
+                        </tr>
+                        <tr>
+                            <td>Supplier Management</td>
+                            <td><span class="badge badge-orange">高</span></td>
+                            <td>外包服務失控</td>
+                        </tr>
+                        <tr>
+                            <td>Performance Monitoring</td>
+                            <td><span class="badge badge-green">中</span></td>
+                            <td>效能降級影響系統可靠性</td>
+                        </tr>
+                        <tr>
+                            <td>Help Desk</td>
+                            <td><span class="badge badge-green">中</span></td>
+                            <td>問題記錄不完整</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>Change Management的特殊GxP挑戰</h4>
+                    <p>在GxP環境中，IT的「變更管理」比一般企業複雜：每一次OS patch、網路設備韌體更新、伺服器配置調整都需要評估是否影響已驗證的應用程式。這需要IT和QA緊密協作，而不是IT單獨決定。</p>
+                </div>
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>你廠區目前有哪些ITIL流程已實施？哪些尚未建立但GxP上是必要的？</li>
+                        <li>「Configuration Management（組態管理）」在GxP環境中的「組態漂移（configuration drift）」是什麼意思？如何預防？</li>
+                        <li>若廠區的IT Help Desk是外包的，如何確保Help Desk記錄的問題和解決方案符合GxP的文件追溯要求？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SECTION 2.3 PERSONNEL
+     ========================================================= -->
+<div class="chapter-section" id="sec2-3">
+    <div class="chapter-divider">
+        <div class="chapter-badge">2.3</div>
+        <div class="chapter-info">
+            <h2>Personnel | 人員</h2>
+            <p>Roles, responsibilities, training, and qualifications · 角色、責任、訓練與資格</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Original Text (English)</div>
+                <p>Management should define roles and responsibilities (job descriptions) in terms of tasks to be undertaken, and the qualifications and experience needed. Individual job descriptions should be assigned to named individuals fulfilling those roles, permanently or on an ad-hoc basis.</p>
+                <p><strong>Key roles that may be identified include:</strong></p>
+                <ul>
+                    <li>Executive Management (Project Sponsorship)</li>
+                    <li>Project Manager</li>
+                    <li>Application (system/data) owner / administrator / application-oriented SMEs</li>
+                    <li>Data owners (if not coinciding with application owner)</li>
+                    <li>IT Infrastructure process owner / administrators / SMEs (e.g., IT support engineers)</li>
+                    <li>Platform owner / administrator / SMEs (e.g., network engineers)</li>
+                    <li>Independent QA in relation to information technology</li>
+                    <li>IT Quality and Compliance</li>
+                </ul>
+                <p>Technical and managerial staff with appropriate educational background and experience should be available. Provision of training should be planned to ensure the required skills are developed and maintained.</p>
+                <p>Staff should be made aware of any regulatory requirements that apply to their duties, trained in those procedures that are applicable to them, and re-trained as changes occur. Records of training should be maintained.</p>
+                <p>Appendix 1 of this Guide provides more detailed guidance on the various roles.</p>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">CDMO 實務解讀</div>
+                <div class="term-box">
+                    <h4>IT / QA / Regulatory 角色責任比較表</h4>
+                    <table>
+                        <tr>
+                            <th>角色</th>
+                            <th>主要職責</th>
+                            <th>GxP責任</th>
+                        </tr>
+                        <tr>
+                            <td><strong>IT Manager</strong><br><small>IT基礎設施管理者</small></td>
+                            <td>IT基礎設施整體規劃、預算、資源管理</td>
+                            <td>確保IT流程支持GxP合規；批准基礎設施變更</td>
+                        </tr>
+                        <tr>
+                            <td><strong>System Administrator</strong><br><small>系統管理員</small></td>
+                            <td>伺服器、OS、資料庫日常維運；patch管理</td>
+                            <td>執行變更時遵循GxP變更管理程序；維護配置文件</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Network Engineer</strong><br><small>網路工程師</small></td>
+                            <td>網路規劃、設計、配置管理</td>
+                            <td>GxP網路區段的資格確認；防火牆規則的變更控制</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Application Owner</strong><br><small>應用程式擁有者</small></td>
+                            <td>業務系統（MES/LIMS）的需求與驗收</td>
+                            <td>定義GxP需求；批准應用程式驗證文件；通知IT基礎設施需求變更</td>
+                        </tr>
+                        <tr>
+                            <td><strong>QA Reviewer</strong><br><small>品保審查員</small></td>
+                            <td>資格確認和驗證文件審查與批准</td>
+                            <td>獨立審查所有GxP相關IT文件；稽查IT流程；批准偏差</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IT Quality &amp; Compliance</strong><br><small>IT品質合規專員</small></td>
+                            <td>IT與QA之間的橋樑；協調GxP IT活動</td>
+                            <td>制定IT合規政策；監督GxP IT活動；處理法規查詢</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Owner</strong><br><small>資料擁有者</small></td>
+                            <td>特定GxP資料集的責任人</td>
+                            <td>確保資料完整性；定義資料保留期限；批准資料存取</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="application-box">
+                    <h4>IT人員的GxP訓練要求</h4>
+                    <p>IT人員通常具備技術背景但缺乏GxP法規意識。必要的訓練項目包括：</p>
+                    <ul>
+                        <li><strong>法規認知</strong>：21 CFR Part 11、EU Annex 11的基本要求</li>
+                        <li><strong>流程訓練</strong>：GxP變更管理SOP、偏差處理程序</li>
+                        <li><strong>文件要求</strong>：ALCOA+原則（可歸屬、清晰、同步、原始、正確、完整、一致、持久、可用）</li>
+                        <li><strong>資格確認</strong>：IQ/OQ文件撰寫和執行</li>
+                    </ul>
+                </div>
+
+                <div class="key-note">
+                    <h4>「獨立QA」的重要性</h4>
+                    <p>指南特別強調「independent QA in relation to information technology」——QA對IT活動的審查必須是<strong>獨立的</strong>，不能由IT部門自己審查自己的資格確認文件。</p>
+                    <p>在小型CDMO中，QA可能沒有IT專業背景，這時可考慮：</p>
+                    <ul>
+                        <li>聘請兼具IT和GxP背景的IT Quality Compliance專員</li>
+                        <li>外部顧問提供獨立審查</li>
+                        <li>建立交叉審查機制</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <h4>Application Owner vs Data Owner：不一定是同一人</h4>
+                    <p>指南明確區分兩個角色：</p>
+                    <ul>
+                        <li><strong>Application Owner</strong>：對LIMS系統（軟體）負責的人，通常是Lab Manager</li>
+                        <li><strong>Data Owner</strong>：對特定資料集負責的人，例如品保副總可能是「批次放行資料」的Owner，即使她不擁有LIMS系統</li>
+                    </ul>
+                    <p>在GxP數據完整性調查中，釐清誰是Data Owner非常重要。</p>
+                </div>
+
+                <div class="practice-box">
+                    <h4>思考練習</h4>
+                    <ol>
+                        <li>你廠區是否有明確定義的「IT Quality and Compliance」角色？這個角色在組織架構中向誰匯報最合適？</li>
+                        <li>若IT系統管理員執行了一個未記錄的伺服器配置變更，這在GxP稽查中會引發哪些問題？如何從人員/流程角度預防？</li>
+                        <li>「訓練記錄應被維護」——你廠區的IT人員訓練記錄是在哪個系統中管理的？這個系統本身是否也需要GxP合規？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     SUMMARY TABLE — CHAPTER 1-2 KEY TAKEAWAYS
+     ========================================================= -->
+<div class="chapter-section">
+    <div class="chapter-divider">
+        <div class="chapter-badge">SUM</div>
+        <div class="chapter-info">
+            <h2>Chapter 1–2 Summary | 第1–2章總結</h2>
+            <p>Key takeaways and self-assessment · 重點整理與自我評估</p>
+        </div>
+    </div>
+    <div class="chapter-body">
+        <div class="two-column">
+            <div class="left-column">
+                <div class="column-header col-en">Key Takeaways</div>
+                <div class="term-box">
+                    <h4>The Core Logic of IT Infrastructure GxP Compliance</h4>
+                    <ul>
+                        <li>GxP applications depend on IT Infrastructure → Infrastructure must be qualified</li>
+                        <li>Horizontal (platform-based) approach avoids duplication — qualify the platform once, validate applications separately</li>
+                        <li>IT Infrastructure = Platforms + Processes + Personnel (all three must be managed)</li>
+                        <li>Platform components are mostly GAMP HW Cat 1, SW Cat 1–2 (lower risk than applications)</li>
+                        <li>ITIL provides a solid foundation — add GxP requirements on top</li>
+                        <li>Key regulatory hooks: 21 CFR Part 11 (US) and EU Annex 11 (EU GMP)</li>
+                    </ul>
+                </div>
+                <div class="note-box">
+                    <h4>Common Inspection Findings — IT Infrastructure</h4>
+                    <ul>
+                        <li>Lack of documented IT infrastructure qualification (IQ/OQ) for GxP-supporting systems</li>
+                        <li>Undocumented changes to servers/OS/database configurations</li>
+                        <li>No formal change control for security patches in GxP environments</li>
+                        <li>Backup not tested — no verified restore capability</li>
+                        <li>Access control gaps — shared accounts, no audit trail</li>
+                        <li>IT staff with no GxP training records</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="column-header col-zh">核心重點整理</div>
+                <div class="term-box">
+                    <h4>Ch 1–2 的五條核心訊息</h4>
+                    <ol>
+                        <li><strong>IT基礎設施是GxP系統的地基</strong>：地基失控，上面的應用程式驗證就失效。</li>
+                        <li><strong>水平方法是核心策略</strong>：一次資格確認平台，多個應用程式受益，避免重複工作。</li>
+                        <li><strong>三元素缺一不可</strong>：平台資格確認了、但沒有受過訓練的人員和文件化流程，合規依然不完整。</li>
+                        <li><strong>風險驅動，規模可調</strong>：小公司不需要和大型跨國藥廠做同樣深度的資格確認，但框架邏輯相同。</li>
+                        <li><strong>IT和QA必須協同</strong>：沒有獨立的QA監督，IT基礎設施的GxP合規就是空架子。</li>
+                    </ol>
+                </div>
+                <div class="practice-box">
+                    <h4>最終自我評估 — 你準備好了嗎？</h4>
+                    <ol>
+                        <li>你能向FDA稽查員解釋為什麼你們採用水平（而非垂直）的IT資格確認方法嗎？</li>
+                        <li>你的廠區能立即提供所有GxP伺服器的IQ/OQ文件嗎？</li>
+                        <li>你能說出每個GxP應用程式的Application Owner和Data Owner分別是誰嗎？</li>
+                        <li>若明天伺服器發生故障，你能在RTO（恢復時間目標）內恢復GxP系統並提供完整的事件記錄嗎？</li>
+                        <li>你的IT人員上次接受GxP相關訓練是什麼時候？訓練記錄在哪裡？</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance</strong></p>
+    <p>Chapters 1–2: Introduction &amp; IT Infrastructure Elements | 導論與IT基礎設施元素</p>
+    <p style="opacity:0.6;font-size:0.8rem;">SterileGMP Knowledge Hub · Educational Reference · For internal training use only</p>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+});
+</script>
+
+</body>
+</html>

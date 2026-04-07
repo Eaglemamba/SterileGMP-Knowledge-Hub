@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtC-Remote - Part I: Planning &amp; Notification of a Remote Inspection</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Part I: Planning &amp; Notification of a Remote Inspection</h1>
+    <div class="subtitle">Part I：遠端查驗的規劃與通知</div>
+    <div class="page-info">PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021) | p4 - p19</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="main-content">
+<div class="learning-objectives">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>了解衛生主管機關（HA）如何以風險評估為基礎，決定採用遠端查驗的類型（桌面審查 vs. 虛擬查驗 vs. 混合查驗）</li>
+        <li>掌握通知時機與起算點的差異：桌面查驗以文件索取為起算，虛擬查驗以開幕會議為起算</li>
+        <li>建立「遠端查驗主持人」（Remote Inspection Host）角色及查驗團隊組成的完整認識</li>
+        <li>理解遠端查驗在議程規劃、硬體設備、資訊分享平台及技術使用上的具體最佳實務</li>
+        <li>熟悉查驗前協議（pre-inspection agreement）的法律合規要素，包括錄音錄影限制與資料保護規定</li>
+        <li>掌握文件準備、查驗報告分享及文件提交時程的最佳實務，特別是針對 CDMO 多客戶環境的應用</li>
+    </ul>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h3>本章主題索引 Topics Covered</h3>
+    <div class="toc-grid">
+        <a href="#topic-a1">A.1 查驗類型</a>
+        <a href="#topic-b1">B.1 通知</a>
+        <a href="#topic-b2">B.2 查驗員身分驗證</a>
+        <a href="#topic-c1">C.1 查驗團隊組成</a>
+        <a href="#topic-c2">C.2 議程規劃</a>
+        <a href="#topic-d1">D.1 硬體需求</a>
+        <a href="#topic-d2">D.2 資訊分享規劃</a>
+        <a href="#topic-d3">D.3 技術有效使用</a>
+        <a href="#topic-d4">D.4 查驗前協議</a>
+        <a href="#topic-e1">E.1 文件準備</a>
+        <a href="#topic-e2">E.2 查驗報告分享</a>
+        <a href="#topic-e3">E.3 文件提交時程</a>
+    </div>
+</div>
+
+<!-- ========== TOPIC A.1 ========== -->
+<div class="section-title" id="topic-a1">Topic A.1 — Types of Inspections Performed Remotely（遠端查驗的類型）| p4</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What factors might health authorities consider in determining whether a <span class="key-term">remote inspection</span> of a site is appropriate?</p>
+
+        <h3>Recommendation</h3>
+        <p>Health authorities can use <span class="key-term">risk assessments</span> to determine the suitable use of remote inspections, including desktop and virtual inspections, on a case-by-case basis. Authorities will determine the level of risk based on several factors including results of previous inspections, availability of historical information and inspection reports by other <span class="key-term">trusted inspectorates</span>, complexity of the manufacturing processes, and criticality of the products being manufactured. <span class="key-term">Desktop inspections</span> often are more suitable for less critical assessments, while on-site inspections may be necessary for more critical inspections. External factors also may be considered, and an inspectorate may decide to use remote inspection tools for products or sites related to a public health need when an on-site inspection is not possible (e.g., during a pandemic or due to prioritization of regulatory resources).</p>
+
+        <p>In determining the appropriate format and tools for an inspection, the inspectorate also should consider any technological limitations and the processes, activities, or sites that can be assessed remotely with the technological tools available. For instance, inspectors may not be able to see the "full scene" virtually due to technological, security, and/or safety constraints. Wi-Fi network coverage may be limited in certain parts of the inspected facility, and some communication devices cannot be used in areas that present a risk of explosion.</p>
+
+        <p>Health authorities may determine that some inspections cannot be conducted remotely. For instance, some health authorities may determine that <span class="key-term">for-cause inspections</span>, some follow-up inspections (e.g., following a warning letter or equivalent outcome), or some <span class="key-term">pre-approval inspections (PAIs)</span> might not be suitable candidates for remote inspection at this time.</p>
+
+        <p>If some inspection objectives can be achieved remotely, a <span class="key-term">hybrid inspection</span> may be used. In this scenario, the remote portion of the inspection, whether desktop or virtual, can partially address the inspection scope and a later on-site inspection can be used to complete the assessment.</p>
+
+        <p>The legal and regulatory framework in some countries may not allow remote inspections.</p>
+
+        <h3>Rationale</h3>
+        <p>While, theoretically, each type of inspection can be performed remotely, the level of scrutiny possible in a remote inspection may not always be equivalent to an on-site inspection. Remote inspections are heavily dependent on the technology available and scope of the inspection (e.g., physical manufacturing facility versus <span class="key-term">quality management system (QMS)</span> documentation review).</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 — 遠端查驗類型選擇矩陣</h4>
+            <p>PDA 將遠端查驗依風險高低分為三種類型，各有其適用情境：</p>
+            <table>
+                <tr>
+                    <th>查驗類型</th>
+                    <th>適用情境</th>
+                    <th>適合程度</th>
+                </tr>
+                <tr>
+                    <td><strong>桌面查驗（Desktop Inspection）</strong></td>
+                    <td>低風險定期查驗、QMS 文件審查</td>
+                    <td><span class="badge green">高度適合</span></td>
+                </tr>
+                <tr>
+                    <td><strong>虛擬查驗（Virtual Inspection）</strong></td>
+                    <td>一般 GMP 監視查驗、設施初步評估</td>
+                    <td><span class="badge blue">適合（需完善技術）</span></td>
+                </tr>
+                <tr>
+                    <td><strong>混合查驗（Hybrid Inspection）</strong></td>
+                    <td>部分目標可遠端完成，部分需現場</td>
+                    <td><span class="badge yellow">視情況而定</span></td>
+                </tr>
+            </table>
+            <p>風險評估考量因素包括：過去查驗結果、製程複雜度、產品關鍵性、是否有其他 HA 查驗歷史可參考。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — For-Cause 查驗幾乎不適合遠端進行</h4>
+            <p><strong>For-Cause Inspection（專案查驗）</strong>：是因特定問題或重大合規疑慮（例如 Warning Letter、重大不良事件）而觸發的查驗，目的在深入調查，非例行性監視。</p>
+            <p>此類查驗需要查驗員能「親眼看到」現場實際狀況，例如：</p>
+            <ul>
+                <li>實地觀察製程操作行為</li>
+                <li>直接查閱原始紙本記錄</li>
+                <li>訪談當事人員並觀察反應</li>
+            </ul>
+            <p>同樣地，部分 <strong>PAI（Pre-Approval Inspection，上市前查驗）</strong> 也不適合遠端進行，特別是首次申請的無菌製劑設施。CDMO 在承接新客戶藥品申請時，需留意 HA 是否要求現場 PAI。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 就像決定要不要親自去看房</h4>
+            <p>買房時，你可以先看網路上的照片和平面圖（桌面查驗），視訊直播看屋（虛擬查驗），或先視訊看完再親自去簽約（混合查驗）。</p>
+            <p>但如果這間房子之前被舉報有重大結構問題（for-cause），你絕對不會只靠視訊決定——你一定要親自去。遠端查驗亦同。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>一家 CDMO 正在接受客戶委託生產某新藥的 PAI，HA 表示希望改為虛擬查驗。你會如何評估並回應？</li>
+                <li>某設施在上次查驗後收到 Warning Letter，現在 HA 通知要進行 follow-up 查驗。根據本節建議，遠端查驗是否適合？為什麼？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC B.1 ========== -->
+<div class="section-title" id="topic-b1">Topic B.1 — Notification（通知）| p5</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>How can an inspectorate provide notification of a remote inspection? Should this be provided in advance?</p>
+
+        <h3>Recommendation</h3>
+        <p>For a remote inspection, the health authority may provide notification through emails, phone calls, or periodic teleconferences and meetings.</p>
+
+        <p>Because both parties must prepare and test the <span class="key-term">document-sharing platform</span> and, in the case of virtual inspections, the <span class="key-term">video communication platform</span>, the inspector is strongly recommended to provide adequate <span class="key-term">advance notification</span> of each remote inspection. Advance notification also is necessary to allow the inspected site to prepare documentation as well as on-site and remote resources and logistics. This preparation time will allow for a smoother and more effective inspection and will help prevent frustration and lost time over technical issues during the inspection. For virtual inspections, in particular, the inspector should notify the site of the anticipated starting date as early as possible.</p>
+
+        <p>For a virtual inspection, additional pre-inspection requests may be sent to the inspected site, in addition to or embedded in the usual documentation request, to be completed within a specified timeframe (e.g., within two calendar weeks of receipt of the request). This additional information will assist in determining if the site is ready for a virtual inspection.</p>
+
+        <div class="quote-box">
+            "For desktop inspections, the request for documentation signals the beginning of the inspection, whereas the beginning of a virtual inspection is denoted by the opening meeting."
+        </div>
+
+        <h3>Rationale</h3>
+        <p>A key difference between a remote inspection and an on-site inspection is the sharing of data and documentation with inspectors using electronic methods. In an on-site inspection, binders of paper documents can be easily provided to the inspectors for their review, and tours of the facility do not require the preparation and sharing of videos. To facilitate electronic sharing of information in a remote inspection, appropriate communication channels must be established and tested. Data and documentation may need to be prepared in advance for electronic exchange. For example, paper documents may need to be scanned, documents may need to be translated into the language of the inspectorate if requested, and data may need to be extracted from computerized databases.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 「查驗起算點」的關鍵差異</h4>
+            <p>這是遠端查驗中最容易混淆、也最有法規合規意義的一個概念：</p>
+            <table>
+                <tr>
+                    <th>查驗類型</th>
+                    <th>查驗起算點</th>
+                    <th>實務意義</th>
+                </tr>
+                <tr>
+                    <td>桌面查驗（Desktop）</td>
+                    <td><strong>收到文件索取通知</strong>即為查驗開始</td>
+                    <td>查驗時鐘從文件需求信到來就開始計算</td>
+                </tr>
+                <tr>
+                    <td>虛擬查驗（Virtual）</td>
+                    <td><strong>開幕會議（Opening Meeting）</strong>開始才算查驗起點</td>
+                    <td>前期文件準備屬查驗前（pre-inspection）活動</td>
+                </tr>
+            </table>
+            <p>為什麼這很重要？因為 GMP 合規記錄需要明確標示哪些文件是「為查驗準備」的，哪些是「在查驗中提供」的，兩者的法律地位和 GMP 記錄狀態不同。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 收到通知後的 2 週準備清單</h4>
+            <p>當 HA 發出虛擬查驗通知後，建議在 2 週內完成以下準備：</p>
+            <ul>
+                <li><strong>第 1–2 天</strong>：確認 Remote Inspection Host、組建核心團隊、確認 HA 查驗員清單</li>
+                <li><strong>第 3–5 天</strong>：建立並測試文件分享平台；準備查驗員所需帳號或存取連結</li>
+                <li><strong>第 5–8 天</strong>：整理常規查驗文件包（SOP 清單、CAPA、APR、偏差報告等）並完成 PDF 數位化</li>
+                <li><strong>第 9–12 天</strong>：執行 30 分鐘技術測試（視訊、文件分享、備用電話線）</li>
+                <li><strong>第 13–14 天</strong>：完成議程確認、備份人員分配、法律諮詢確認（若涉及錄影授權）</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 遠端面試與現場面試的準備差異</h4>
+            <p>現場面試只需要印幾份履歷帶去就好；但視訊面試前你需要：測試電腦、確認網路、準備好背景、確認音訊。遠端查驗也是同樣道理——技術測試是成功的關鍵前提。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC B.2 ========== -->
+<div class="section-title" id="topic-b2">Topic B.2 — Verification of an Inspector's Identity（查驗員身分驗證）| p6</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>In the remote setting, how can a site verify the identity and affiliation of a person presenting him/herself as a regulatory inspector?</p>
+
+        <h3>Recommendation</h3>
+        <p>Verifying the identity and affiliation of any inspector conducting a remote inspection is critical. The remote context makes this <span class="key-term">verification</span> more difficult than it is during an on-site visit, where the inspected site personnel can view the visitor's official credentials in person.</p>
+
+        <p>The inspected site should ensure that the regulatory inspector or other representative is legitimately employed by the health authority he/she represents. Companies can take the following steps:</p>
+        <ol>
+            <li>Become familiar with published policies and procedures followed by relevant health authorities. Check websites or inquire directly about the normal process and sequence of events that the health authority uses to initiate each type of remote inspection. Determine whether the health authority has defined a protocol for inspectors to validate their affiliation.</li>
+            <li>If personnel at the inspected site have any reason to doubt the authenticity of the source of an inspection notification, contact the health authority by email or telephone to confirm it.</li>
+            <li>Report any suspected <span class="key-term">impersonation</span> of a health authority official directly to the health authority's management, providing as much detail as possible.</li>
+        </ol>
+
+        <h3>Rationale</h3>
+        <p>While reported instances of impersonation of regulatory inspectors are rare, they have occurred. For example, in December 2009, the <span class="key-term">U.S. FDA issued a press release warning</span> of an impersonation scam. By impersonating an inspector, a person could engage in <span class="key-term">industrial espionage</span> and gain access to records, trade secrets, and confidential information.</p>
+
+        <p>The company can protect itself by verifying the legitimacy of the inspector. While it may be more challenging to confirm the inspector's legitimacy in the remote context, steps should be taken to verify identity and authenticate affiliation before releasing records, answering questions, or enabling views of premises, equipment, and processes.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 冒充查驗員的工業間諜風險</h4>
+            <p>這不是理論上的威脅。2009 年 FDA 就曾公開警告有人冒充 FDA 查驗員進行詐騙，目的是取得製造商的機密記錄、商業秘密和配方資訊。</p>
+            <p>在遠端查驗情境下，風險更高，因為：</p>
+            <ul>
+                <li>無法現場核查實體證件（官方 ID card）</li>
+                <li>視訊畫面可以偽造身分背景</li>
+                <li>電子郵件通知可能被仿冒（Phishing）</li>
+            </ul>
+            <p>對 CDMO 而言，客戶產品的製程秘密、CMC 數據、批次記錄都是高度敏感資訊，一旦洩漏損失極大。<strong>任何不尋常的查驗通知都應先向 HA 官方管道確認。</strong></p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 就像讓外包商進廠前先查驗資格</h4>
+            <p>負責任的工廠在讓外部承包商進入管制區域前，一定會核查其公司執照、人員資格證書，而不是看對方說「我是某某公司的人」就放行。</p>
+            <p>視訊查驗也是同樣道理：看對方螢幕背景掛著 FDA 的徽章，並不等於對方真的是 FDA 查驗員——<strong>打電話去 HA 官方號碼確認</strong>，才是正確做法。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>你的公司收到一封聲稱來自 TFDA 的電子郵件，要求立即啟動虛擬查驗，但你之前未收到任何預通知。你的第一步應該是什麼？</li>
+                <li>請列出貴公司驗證 HA 查驗員身分的 SOP 應包含哪三個核查步驟。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC C.1 ========== -->
+<div class="section-title" id="topic-c1">Topic C.1 — Remote Inspection Team Formation（遠端查驗團隊組成）| p7–8</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What team should the inspected site assemble to prepare for a remote inspection? What is the role of the <span class="key-term">Remote Inspection Host</span>?</p>
+
+        <h3>Recommendation</h3>
+        <p>The first point of contact for the health authority usually will be the same person that would be notified of an on-site inspection. The first point of contact should promptly involve the personnel responsible for establishing a suitable communication channel for the exchange of confidential information.</p>
+
+        <p>To ease the communication process, the inspected site should identify one person to serve as the <span class="key-term">"Remote Inspection Host" / Single Point of Contact (SPOC)</span>. The inspectors should use the Remote Inspection Host as the single point of contact for all inspection-related communication before, during, and after the inspection. This person must have or be supported by adequate authority to ensure that the remote inspection can proceed smoothly. For instance, the Remote Inspection Host must be able to quickly obtain support from the <span class="key-term">Information Technology (IT)</span> or similar department to solve any problems that arise during the inspection.</p>
+
+        <p>If several inspectors will be involved, it may be useful to have multiple Remote Inspection Hosts. The inspection team should indicate the number of inspectors that will be involved or the number of workstreams that will be necessary.</p>
+
+        <p>The team that manages the remote inspection for the inspected site should be the same as for an on-site inspection. The team should include the inspection management personnel, the site leadership team (at least for opening and wrap up/closing meetings), <span class="key-term">subject matter experts (SMEs)</span>, local operating company representatives as applicable, IT support, and representatives of global functions when required.</p>
+
+        <p>During the remote inspection, a <span class="key-term">core operational team</span>, including a designated leader, Remote Inspection Host, and IT support, should be present at the inspected site. The on-site core operational team will be responsible for document and data management during the inspection. In a virtual inspection, this team also will manage video requests and <span class="key-term">virtual facility tours</span>.</p>
+
+        <p>The core operational team must fully respect required controls for health and safety, e.g., during a pandemic virus outbreak. When health and safety rules limit the number of people that may be present at a site or limit access to the manufacturing areas, the inspected site should mention such constraints up front.</p>
+
+        <p>The inspected site should provide the inspector a list of anticipated participants in the different steps of the inspection. A complete list of all personnel that participated should be provided by both parties at the conclusion of the inspection.</p>
+
+        <h3>Rationale</h3>
+        <p>The remote inspection format inherently allows more people to participate from diverse locations on behalf of both the health authority and the inspected site. With this increase in the number of participants, personnel roles and responsibilities should be clarified at the beginning of the process.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — Remote Inspection Host 的角色與職權</h4>
+            <p><strong>Remote Inspection Host（遠端查驗主持人）</strong>是整個遠端查驗流程的核心樞紐。其核心職責包括：</p>
+            <ul>
+                <li>作為 HA 與公司之間的<strong>唯一聯繫窗口（Single Point of Contact, SPOC）</strong></li>
+                <li>確保技術問題（平台當機、連線中斷）能即時找到 IT 支援解決</li>
+                <li>協調文件請求的接收、處理與上傳</li>
+                <li>管理多個工作流（workstream）中的人員調度</li>
+                <li>在查驗前、中、後維持溝通一致性</li>
+            </ul>
+            <p>此職位需要充足的職權（adequate authority）——意味著 Host 必須能直接調動資源，而非層層請示。在許多公司，此角色由品質部門的資深主管擔任。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — Host 就像航管中心（Air Traffic Controller）</h4>
+            <p>想像虛擬查驗是一場複雜的空中交通：HA 查驗員是需要降落的飛機，SMEs 是跑道，文件是燃料，IT 是地面支援。</p>
+            <p>Remote Inspection Host 就是航空管制員——他不親自飛，但他指揮誰降落、何時降落、降落在哪條跑道，確保整個空域不混亂。沒有好的航管，就是空難。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 遠端查驗團隊組成清單</h4>
+            <p>以下是 CDMO 建議的遠端查驗團隊配置：</p>
+            <ul class="checklist">
+                <li>Remote Inspection Host（具調動 IT 和 QA 資源的職權）</li>
+                <li>查驗帶領人（Designated Leader，負責策略決策）</li>
+                <li>IT 支援人員（現場待命，解決平台問題）</li>
+                <li>QA 主管（負責文件審查確認）</li>
+                <li>生產/製程 SME（各相關部門）</li>
+                <li>法規事務代表（協助解讀 HA 問題）</li>
+                <li>文件管理人員（搜尋、掃描、上傳）</li>
+                <li><strong>備援人員</strong>（每個關鍵角色應有備份，以防網路中斷）</li>
+            </ul>
+            <p>多客戶 CDMO 特別注意：若同時有不同客戶產品被查驗，需確認客戶保密協議（NDA）是否允許跨產品的 SME 參與同一查驗。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC C.2 ========== -->
+<div class="section-title" id="topic-c2">Topic C.2 — Planning the Agenda（議程規劃）| p9–10</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>How might an inspection agenda be different in the desktop or virtual setting?</p>
+
+        <h3>Recommendation</h3>
+        <p>Virtual inspections generally range in duration from a few days to 2 weeks, with intense support required during this period. The overall time span to complete a virtual inspection can be <span class="key-term">double or triple that of an on-site inspection</span> if the amount of time spent in a virtual inspection on any day is less (e.g., 4 hours instead of 7). In contrast, the timeframe for <span class="key-term">desktop inspections</span> tends to be especially long, as they are iterative in nature. Desktop inspections can take more than a month to complete.</p>
+
+        <p>The agenda for a virtual inspection may be different from an on-site inspection agenda. An agenda that <span class="key-term">alternates short live conversations with periods of off-line document preparation</span> and review can help prevent fatigue and inattention. Hourly short breaks allowing participants to move around and/or turn away from the computer screen also are important to maintain well-being.</p>
+
+        <p><span class="key-term">Time zones</span> also must be considered when inspectors and inspected facilities are in different areas of the world. Video communications and interviews should be conducted during the normal working hours of both the inspected facility and the inspectors, to the extent possible. If this cannot be done, the inspectors should consider shifting their working hours to those of the inspected site.</p>
+
+        <p>It is helpful for the inspector to share the date on which the virtual or hybrid inspection will start and end, if possible. A <span class="key-term">daily wrap-up</span> may be built into the agenda to allow the parties to discuss any technical issues or necessary adjustments to the agenda.</p>
+
+        <h3>Rationale (Key Challenges)</h3>
+        <ul>
+            <li>The review process might last longer than it would in an on-site inspection</li>
+            <li>Additional time may be required for clarification of some topics</li>
+            <li>Less time is available for informal "hallway" conversation, making it more difficult to build rapport</li>
+            <li><span class="key-term">Communication style and cultural differences</span> are more difficult to understand remotely, and the lack of body language is a further complication</li>
+            <li>Potential connection issues may impact the quality of audio and video communications</li>
+            <li>Being seated and using the screen continuously can be challenging and tiresome</li>
+        </ul>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 遠端查驗的「2–3 倍工期」現實</h4>
+            <p>許多公司在首次遠端查驗時大感意外：一個原本預計 4 天的現場查驗，虛擬版本竟然需要 10–14 天。</p>
+            <p>原因在於每天有效工作時數縮短（4 小時 vs. 7 小時）加上：</p>
+            <ul>
+                <li>文件數位化和上傳需要額外時間</li>
+                <li>連線品質問題造成重複說明</li>
+                <li>時差（若跨國查驗）限制有效工作時段</li>
+                <li>書面確認取代即興對話，造成迭代來回</li>
+            </ul>
+            <p><strong>CDMO 規劃建議</strong>：對外向客戶溝通遠端查驗的預期工期時，應以現場查驗天數的 2.5 倍作為保守估計，並預留 buffer 處理延伸請求。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 文化差異與肢體語言缺失的挑戰</h4>
+            <p>這是一個常被忽視但實際上影響查驗結果的「軟性」因素。在現場查驗中，有經驗的查驗員和受查方都會透過肢體語言、表情、語調來判斷對方的信心程度和資訊可信度。</p>
+            <p>遠端查驗中：</p>
+            <ul>
+                <li>視訊畫質限制了面部表情的可讀性</li>
+                <li>網路延遲可能被誤解為「刻意停頓」</li>
+                <li>不同文化對於「沉默」的詮釋不同（東亞文化的沉默可能代表尊重而非迴避）</li>
+                <li>語言翻譯在虛擬環境中更難即時確認理解程度</li>
+            </ul>
+            <p>建議：在開幕會議中主動說明語言和文化背景，並建立明確的「確認理解」機制（例如：每個議題結束後由 Host 總結雙方達成共識的內容）。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 視訊會議的「馬拉松」效應</h4>
+            <p>現場查驗像跑 10 公里——強度高但快速結束。遠端查驗更像馬拉松——持續時間長，需要配速管理和體能儲備。</p>
+            <p>每小時短暫休息、每天議程不超過 4–5 小時、下班前 30 分鐘留給每日收尾總結——這些不是「放鬆」，而是保持長期戰力的策略。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC D.1 ========== -->
+<div class="section-title" id="topic-d1">Topic D.1 — Hardware Requirements（硬體需求）| p11–12</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What hardware is required or recommended for a virtual inspection?</p>
+
+        <h3>Recommendation — Basic Requirements</h3>
+        <ul>
+            <li><strong>Computer:</strong> All participants must have a computer with a reliable internet connection of a speed that matches the requirements of the technological tools and communications platforms to be used.</li>
+            <li><strong>Webcam or conference camera:</strong> A videoconferencing camera or a camera built-in to the computer can be used.</li>
+            <li><strong>Audio:</strong> Computer audio must be suitable. The speakers and microphone for each participant should be of appropriate quality.</li>
+            <li><strong>Intranet or virtual private network (VPN) connectivity</strong> at inspected site: The inspected site should test connectivity from all locations involved in the inspection.</li>
+        </ul>
+
+        <h3>Suggested Items</h3>
+        <ul>
+            <li><strong>Telephone line:</strong> A separate telephone line should be designated as a backup means of communication in case of an internet or computer software outage.</li>
+            <li><strong>Larger monitor:</strong> A 20-inch or larger monitor is highly recommended. <span class="key-term">Participation in an inspection by tablet or handheld device is strongly discouraged.</span></li>
+            <li><strong>Multiple monitors:</strong> Allows management of documents on one monitor while participating in video communication on the other.</li>
+            <li><strong><span class="key-term">Document camera:</span></strong> A document camera is a real-time image capture device that functions as a high-resolution web camera, mounted on an arm. Document cameras can be used to show real-time images of such documents as in-process records, logbooks, or test data. <em>These cameras can enhance the inspection and reduce the burden of additional copying and transmission of records.</em></li>
+            <li><strong>High-speed scanner:</strong> Helpful in all types of remote inspections as the inspected site prepares documents for sharing.</li>
+        </ul>
+
+        <h3>Virtual Tour Hardware</h3>
+        <ul>
+            <li>Virtual view tools such as <span class="key-term">360° cameras</span> or virtual reality goggles may be used. Other companies may use a laptop or mobile device mounted on a <span class="key-term">movable trolley or gimbal</span> for a stable picture.</li>
+            <li>Additional audio tools may be necessary for the person operating the camera during the virtual tour in areas with significant background noise.</li>
+            <li>In areas of the facility where the <span class="key-term">Wi-Fi signal</span> may not be strong enough, consider whether it might be useful to install devices to amplify the signal.</li>
+            <li>All devices used to support an inspection should be approved for use within the area of intended use, including <span class="key-term">classified cleanrooms and hazardous areas</span>. Controlled/explosive zones may require special precautions.</li>
+        </ul>
+
+        <h3>Rationale</h3>
+        <p>The hardware used in an inspection can significantly contribute to the efficiency and effectiveness of the inspection. The utility of a virtual facility tour is dependent upon the camera operator's responsiveness in providing a stable image of requested aspects of the manufacturing site.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 硬體分層：必要 vs. 建議</h4>
+            <p>PDA 將硬體分為兩個層次，幫助公司優先配置資源：</p>
+            <table>
+                <tr>
+                    <th>分類</th>
+                    <th>設備</th>
+                    <th>缺少的影響</th>
+                </tr>
+                <tr>
+                    <td><span class="badge red">必要（Required）</span></td>
+                    <td>電腦、攝影機、音訊、VPN/內網</td>
+                    <td>查驗無法進行</td>
+                </tr>
+                <tr>
+                    <td><span class="badge yellow">建議（Suggested）</span></td>
+                    <td>備用電話線、大螢幕、多螢幕、文件攝影機、高速掃描機</td>
+                    <td>查驗效率降低、審查員疲勞</td>
+                </tr>
+                <tr>
+                    <td><span class="badge blue">虛擬導覽（Virtual Tour）</span></td>
+                    <td>360° 攝影機、雲台/推車、無線訊號放大器</td>
+                    <td>無法提供廠區視覺審查</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 文件攝影機（Document Camera）的 CDMO 應用價值</h4>
+            <p>文件攝影機是遠端查驗中最被低估但效益最高的設備之一。考量以下情境：</p>
+            <p>一次驗證查驗中，HA 要求審查 3 個 PPQ 批次的批次生產記錄（Batch Manufacturing Records），每本記錄約 200 頁，全部手寫。若靠掃描：</p>
+            <ul>
+                <li>600 頁 × 平均 30 秒/頁 = 約 5 小時掃描時間</li>
+                <li>加上 PDF 整理、命名、上傳：約 2 小時</li>
+                <li><strong>合計：7 小時額外準備工作</strong></li>
+            </ul>
+            <p>使用文件攝影機：查驗員即時看到原始記錄的任何頁面，無需預先掃描。只有查驗員要求留存的特定頁面才需掃描上傳。</p>
+            <p>CDMO 建議：每個有實體記錄的查驗站點，都應配備至少一台文件攝影機，並預先測試與視訊平台的相容性。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 潔淨室與爆炸性區域的設備管理</h4>
+            <p>虛擬導覽使用的設備必須通過相關區域的安全與品質認可。這意味著：</p>
+            <ul>
+                <li>進入 ISO 5 無菌充填區的設備，必須符合 URS（如不脫落顆粒、可消毒）</li>
+                <li>含有機溶劑的製造區（防爆區），設備需符合 ATEX 或同等防爆規範</li>
+                <li>任何臨時引入的設備都需要有書面的設備引入授權（Equipment Introduction Authorization）</li>
+            </ul>
+            <p>提前 2–3 週進行設備進場確認，避免查驗當天才發現設備不符規定。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC D.2 ========== -->
+<div class="section-title" id="topic-d2">Topic D.2 — Planning to Share Information（資訊分享規劃）| p13–14</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What is the most suitable process for sharing documentation in a remote inspection? In a virtual inspection, what is the most suitable process for conducting interviews and providing virtual tours of the facility?</p>
+
+        <h3>Recommendation — Documentation</h3>
+        <p>The inspected site should prepare documents in digital format. Documents shared electronically should be:</p>
+        <ul>
+            <li>Formatted to be <span class="key-term">searchable</span>, to the extent possible</li>
+            <li>Provided in a clearly organized manner, consistent with the document request</li>
+            <li>Identified in a way that enables the inspector to understand each document's contents from its title or file name without having to open the document</li>
+            <li>Provided in a digital form that can be opened with widely-used software applications (e.g., <span class="key-term">.pdf or .csv format</span>)</li>
+        </ul>
+
+        <p>In general, the use of a <span class="key-term">document-sharing platform</span> is recommended. The document-sharing platform should provide the appropriate level of security while also allowing auditors to easily locate, review, and annotate documents.</p>
+
+        <p>Documents may be shared by email using an email address specified for inspection communications. <span class="key-term">This should be avoided generally</span>, as it is difficult to manage the large number of emails. File size may be limited if sharing via email.</p>
+
+        <p>Documents also might be shipped through traditional mail or courier services. However, this <span class="key-term">usually should be a last alternative</span>, as it might require more time and paper documents are not easily searchable.</p>
+
+        <h3>Remote Interviews and Virtual Tours</h3>
+        <p>Livestream videos and videoconferences are the most effective method of conducting remote interviews and virtual tours of facilities. Examples of <span class="key-term">video communication platforms</span> are GoToMeeting™, Microsoft Teams™, Cisco WebEx™, and Zoom™.</p>
+
+        <p>The inspected site should consider preparing a video giving a general overview of the facility, which could be made available during the opening meeting if requested by the inspector.</p>
+
+        <div class="quote-box">
+            "Note that some materials developed by the inspected site for the inspection might be considered GMP records, which would be subject to additional protections. The purpose of the record defines whether or not it is a GMP record... most videos, photos, presentations, and interview records (if recorded) that are created specifically to support a remote inspection would not, in most cases, be GMP records. However, inspected sites should review the status of the documents with legal counsel in advance..."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 可搜尋 PDF 的合規要求</h4>
+            <p><strong>為什麼「可搜尋的 PDF（Searchable PDF）」如此重要？</strong></p>
+            <p>查驗員在審查一份 200 頁的批次記錄時，需要快速找到特定偏差編號、參數值或操作人員簽名。如果是掃描圖片（Image-only PDF），查驗員必須逐頁翻閱；但可搜尋 PDF 只需按 Ctrl+F 輸入關鍵字即可定位。</p>
+            <p><strong>如何產生可搜尋 PDF？</strong></p>
+            <ul>
+                <li>直接從電子系統（如 MES、QMS）匯出：天然可搜尋</li>
+                <li>掃描紙本文件：使用具 OCR（光學文字辨識）功能的掃描器</li>
+                <li>事後處理：使用 Adobe Acrobat 的 OCR 功能轉換</li>
+            </ul>
+            <p>CDMO 採購掃描設備時，OCR 功能應列為必要規格。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 電子郵件不應作為大量文件分享方式</h4>
+            <p>使用電子郵件傳送查驗文件的問題：</p>
+            <ul>
+                <li>附件大小限制（通常 10–25 MB），大型文件需分割</li>
+                <li>多封郵件來回後版本控制混亂（哪封是最新版？）</li>
+                <li>查驗員收件箱中混雜查驗文件和日常郵件，難以管理</li>
+                <li>無法記錄查驗員是否已確認收到並可存取文件</li>
+                <li>難以追蹤哪些文件已提供、哪些待提供</li>
+            </ul>
+            <p><strong>正確做法</strong>：建立一個專屬的文件分享平台資料夾，按查驗員的請求編號分類。電子郵件僅用於通知「已上傳」，不用於傳輸文件本身。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 查驗相關影片是否為 GMP 記錄？</h4>
+            <p>這是一個法律灰色地帶，需要法律顧問在查驗前釐清。PDA 的立場是：</p>
+            <ul>
+                <li><strong>通常不是 GMP 記錄</strong>：為查驗目的而製作的影片、照片、簡報</li>
+                <li><strong>可能是 GMP 記錄</strong>：若影片內容記載了 GMP 法規要求記錄的活動（例如，直播的無菌操作影片，若被要求作為合規證據保留）</li>
+            </ul>
+            <p>建議在查驗前協議（Pre-Inspection Agreement）中明確約定：哪些影像資料需要保留、保留多久、以何種格式保存。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>查驗員要求你分享過去 2 年所有偏差報告的清單（共約 800 筆）。你會選擇哪種格式和哪種分享方式？為什麼？</li>
+                <li>你的公司習慣用 Outlook 電子郵件傳送文件。請說明為何本次虛擬查驗應改用文件分享平台，以及如何說服 IT 部門快速配置。</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC D.3 ========== -->
+<div class="section-title" id="topic-d3">Topic D.3 — Planning for Effective Use of Technology（技術有效使用規劃）| p15</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What additional considerations might improve the use of technology in a virtual inspection?</p>
+
+        <h3>Recommendation</h3>
+        <p>In selecting technology for a virtual inspection, two points are important to keep in mind:</p>
+
+        <ul>
+            <li><strong><span class="key-term">Technology Overkill</span>:</strong> Technology is intended to help the successful execution of the inspection, not to showcase different options. Companies being inspected may range from large, well-resourced global companies to smaller organizations in remote locations with less-developed infrastructure. Balance should be maintained in technology options.</li>
+            <li><strong><span class="key-term">Technology Exploration</span>:</strong> Exploring new technologies or options during the inspection is not recommended, as these options may require installation and training time or may unnecessarily delay the inspection.</li>
+        </ul>
+
+        <p>Because many factors can impact the actual performance of the technological tools during a virtual inspection, all technology must be tested in advance. A <span class="key-term">half-hour real-time test several days before the inspection</span> can be helpful to check for and resolve any issues, including any limitations on software use based on geographical region, elapsed time, and number of users.</p>
+
+        <p>In discussing the software and applications to be used, the two parties should be sure to identify any known or potential compatibility issues, such as <span class="key-term">antivirus software</span>, that is known to inhibit the use of certain applications. The inspected site may recommend an internet browser to be used during the inspection.</p>
+
+        <p>If site personnel will be demonstrating <span class="key-term">site-specific software</span> during the inspection, they should verify in advance that the software is accessible from the computer system that the personnel will use during the inspection. Software specific to the manufacturing location or laboratory, including software used for issuance of batch records, temperature and pressure monitoring, and other integrated manufacturing software systems, may not be accessible from all company computers.</p>
+
+        <p>Whether inspectors will be given <span class="key-term">direct access to data systems</span> also should be discussed early. As covered more fully in Topic II.C.1 Inspector Access to Systems, allowing inspectors direct access to GxP systems is not recommended due to the need for training and the risk of creating errors within the systems.</p>
+
+        <h3>Rationale</h3>
+        <p>While it is important to select effective technological tools for a virtual inspection, it is equally important that site personnel and inspectors are able to use the tools, and that the parties have consistent expectations about how the technologies will be used.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 兩種技術失敗模式：過度 vs. 臨場探索</h4>
+            <p>PDA 點出了虛擬查驗中最常見的兩種技術失誤，兩者都是導致查驗延誤的主要原因：</p>
+            <p><strong>Technology Overkill（技術過度）</strong>：公司試圖展示最先進的技術平台，但查驗員不熟悉，HA 的 IT 政策也可能不允許安裝新軟體。結果：查驗員花 2 小時在設定帳號，而非審查 GMP 文件。</p>
+            <p><strong>Technology Exploration（臨場探索）</strong>：查驗進行中突然說「我們來試試這個新功能」或「改用這個軟體更清楚」。結果：安裝失敗、不相容錯誤、查驗中斷 30–60 分鐘。</p>
+            <p><strong>黃金原則</strong>：查驗當天使用的所有技術，都應是查驗前已充分測試並雙方確認的工具。No surprises.</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 30 分鐘查驗前技術測試協定</h4>
+            <p>建議在查驗開始前 3–5 天執行以下測試（30–45 分鐘）：</p>
+            <ul>
+                <li><strong>視訊平台測試</strong>：確認 HA 查驗員可以登入，畫質和音質符合要求</li>
+                <li><strong>文件平台測試</strong>：上傳測試文件，確認查驗員可存取和下載</li>
+                <li><strong>GMP 軟體存取測試</strong>：在查驗將使用的電腦上確認 MES、LIMS、環監系統等可以正常開啟</li>
+                <li><strong>網路連線測試</strong>：測試生產區域、實驗室、倉儲等現場連線穩定性</li>
+                <li><strong>備用電話線測試</strong>：撥打測試通話，確認若網路中斷仍可溝通</li>
+                <li><strong>防毒軟體相容性確認</strong>：確認防毒軟體不會封鎖視訊平台或文件分享工具</li>
+            </ul>
+            <p>測試完成後，製作一份「技術就緒確認清單（Technology Readiness Checklist）」並雙方簽署，作為查驗前協議的附件。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 不在音樂會上調音</h4>
+            <p>專業的管弦樂團不會在音樂會正式開始後才開始調音——他們在後台就已經準備好，上台前最後確認一次。</p>
+            <p>遠端查驗的技術測試就是「調音」。查驗當天是「演出」，不是排練。查驗員不是來幫你測試設備的。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC D.4 ========== -->
+<div class="section-title" id="topic-d4">Topic D.4 — Pre-Inspection Agreements（查驗前協議）| p16</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What agreement should the parties reach before the inspection begins?</p>
+
+        <h3>Recommendation</h3>
+        <p>The parties should agree upon, and describe <span class="key-term">in writing</span>, the equipment and technology to be used in the remote inspection, including the document-sharing platform and video communication platform. An agreement should be reached as far in advance of the start of the inspection as possible.</p>
+
+        <p>The parties also should define clear rules for the sharing, retention, and disposal of any electronic records as part of the inspection process to ensure appropriate handling of confidential and/or sensitive information and compliance with applicable laws.</p>
+
+        <p>The use of technology in a remote inspection is limited by the need to properly protect data and information. <span class="key-term">Cybersecurity</span> issues should be considered carefully. Both parties should:</p>
+        <ul>
+            <li>Confirm the applicability of confidentiality controls to prevent disclosure of confidential commercial, personal privacy, or trade secret information</li>
+            <li>Verify the security of the communication channels</li>
+        </ul>
+
+        <p>Legal counsel should be consulted during the planning, as local law may require additional agreements from both sides. For instance, local law may prevent the recording of sound and images or may require authorization to capture or use images of individuals. Where applicable, the <span class="key-term">Data Protection Officer (DPO)</span> of both organizations should assess the proposed procedures and identify, in advance, any confidential or sensitive information and its proper handling.</p>
+
+        <div class="quote-box">
+            "The site should not record any portion of a remote inspection (whether by video, audio, or other recording) unless the inspected site has made a clear, formal request to do so, and the health authority has expressly granted permission. If the proposed video communication platform automatically records all sessions, all parties should be made aware of this fact during planning."
+        </div>
+
+        <h3>Rationale</h3>
+        <p>Prior agreement to the technology to be used and the protections to be given will build confidence and help assure a successful inspection. Legal counsel for both parties should review the agreed-upon framework.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="note-box">
+            <h4>重點提示 — 錄影錄音：未經明確授權即為禁止</h4>
+            <p>這是遠端查驗合規風險最高的一個議題。請注意 PDA 使用的語言非常強烈：<strong>「unless... the health authority has expressly granted permission（除非 HA 明確授予許可）」</strong>。</p>
+            <p>為什麼禁止錄影？</p>
+            <ul>
+                <li>查驗員的問話和討論屬於執法活動，受到保密義務保護</li>
+                <li>未經 HA 書面同意錄影，可能被視為妨礙執法行為，導致更嚴格的後果</li>
+                <li>部分國家（例如台灣、德國）有嚴格的個人影像隱私法，在他人未知情下錄影可能違法</li>
+            </ul>
+            <p><strong>特別警告</strong>：Microsoft Teams、Zoom 等平台的「會議自動錄製」功能，若未事先關閉或通知查驗員，可能在不知情下觸法。<strong>在查驗前務必確認平台設定，並在查驗前協議中明確說明錄製功能狀態。</strong></p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — 查驗前協議的核心要素清單</h4>
+            <p>一份完整的遠端查驗前協議（Pre-Inspection Agreement）應涵蓋以下要素：</p>
+            <ul class="checklist">
+                <li>使用的視訊通訊平台名稱及版本</li>
+                <li>使用的文件分享平台名稱及存取控制規則</li>
+                <li>查驗員的下載/列印權限（是否允許、範圍）</li>
+                <li>文件保留期限和查驗後處置方式</li>
+                <li>保密控制規定（哪些資訊受保護）</li>
+                <li>網路安全要求（加密標準、存取日誌）</li>
+                <li>錄影錄音規定（明確禁止或明確授權）</li>
+                <li>個人影像隱私處理（Data Protection Officer 確認）</li>
+                <li>適用法律管轄（尤其是跨國查驗）</li>
+                <li>各方法律顧問簽署確認</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 就像工程合約的施工前確認會議</h4>
+            <p>大型工程開工前一定有「施工前確認會議（Pre-Construction Meeting）」，雙方確認施工規範、安全規定、驗收標準。這份會議記錄不是形式——它是後續所有爭議的仲裁基準。</p>
+            <p>遠端查驗前協議也是同樣作用：它不是官僚程序，而是保護雙方（HA 和受查廠）的法律護盾。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC E.1 ========== -->
+<div class="section-title" id="topic-e1">Topic E.1 — Preparing Necessary Documents（必要文件的準備）| p17</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What information and documents should the inspected site prepare in advance of a remote inspection?</p>
+
+        <h3>Recommendation</h3>
+        <p>Health authorities expect sites to be inspection-ready. As health authorities increasingly use remote tools for inspections, sites should maintain appropriate documentation to support a remote inspection on short notice.</p>
+
+        <p>Many sites have developed a standard list of documents that are likely to be requested in an on-site inspection. This list is equally applicable in remote inspections. The documents can include:</p>
+        <ul>
+            <li>Site organization, size, products manufactured</li>
+            <li>List of <span class="key-term">standard operating procedures (SOPs)</span></li>
+            <li>Deviation reports</li>
+            <li><span class="key-term">Site master files</span></li>
+            <li>Biological product deviation reports or field alert reports and out-of-specification results</li>
+            <li><span class="key-term">Corrective and Preventive Actions (CAPA)</span></li>
+            <li>Applicable <span class="key-term">Annual Product/Quality Reviews (APR)</span> that include details on change controls, complaints, recalls, batches manufactured</li>
+            <li>Aseptic process simulations with outcomes</li>
+            <li>Environmental monitoring data, trends for utilities</li>
+            <li>Sterility test failures</li>
+        </ul>
+
+        <p>In advance of a remote inspection, the inspected site should also prepare the documentation that an inspector would normally review on-site. Typically, this additional documentation might include:</p>
+        <ul>
+            <li>Data analysis (e.g., deviation recurrence analysis, equipment failure rate, <span class="key-term">CAPA</span> effectiveness review) and/or lists that can be searched or filtered</li>
+            <li>Comprehensive inspection history, especially for the first remote inspection of the site and for-cause inspections</li>
+            <li>History of or changes to key SOPs since the last inspection, along with training records</li>
+            <li>Information related to relevant investigations</li>
+        </ul>
+
+        <p>If a virtual inspection will include video or photos of the site, it can be helpful to orient the inspectors by supplying <span class="key-term">site schematics or layouts, drawings, and/or process flow diagrams</span>. The location from which any videos or photos were taken should be marked on the site schematics. Using the drawings already submitted to the agency, which are included in the <span class="key-term">Site Master File</span>, should be considered.</p>
+
+        <p>Appendix 1 provides a list of documentation covering most of the areas and subjects that typically may be assessed in an inspection (37-item list).</p>
+
+        <h3>Rationale</h3>
+        <p>Early preparation is especially important for remote inspections, in which rapid or real-time translation and review of documentation may not be feasible or convenient.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 — CDMO 查驗就緒文件：哪些應常時保持數位格式？</h4>
+            <p>對 CDMO 而言，「隨時查驗就緒（Always Inspection-Ready）」不是口號，而是商業競爭力。以下文件應在日常工作中即維持可立即分享的數位格式：</p>
+            <p><strong>A 級：24 小時內應可提供（高頻請求）</strong></p>
+            <ul>
+                <li>Site Master File（最新版，PDF 可搜尋格式）</li>
+                <li>過去 3 年查驗歷史摘要（按 HA 分類）</li>
+                <li>CAPA 狀態總覽表（可過濾的 Excel/CSV）</li>
+                <li>偏差報告彙整（依嚴重性、部門、產品分類，可搜尋）</li>
+                <li>SOP 清單（含版本號、最後修訂日期）</li>
+            </ul>
+            <p><strong>B 級：48–72 小時內可提供（中頻請求）</strong></p>
+            <ul>
+                <li>APR（含批次統計、趨勢分析）</li>
+                <li>關鍵 SOP 修訂歷史 + 訓練記錄</li>
+                <li>環境監控趨勢報告（過去 12 個月）</li>
+                <li>廠區平面圖（含 ISO 等級標示、物料流向）</li>
+            </ul>
+            <p><strong>C 級：需臨時準備的深度文件</strong></p>
+            <ul>
+                <li>特定批次的 BMR/BPR（依 HA 請求調取）</li>
+                <li>驗證資料（IQ/OQ/PQ 報告）</li>
+                <li>調查報告全文</li>
+            </ul>
+        </div>
+
+        <div class="concept-box">
+            <h4>核心概念 — 廠區圖的「定向」功能</h4>
+            <p>PDA 特別建議，在虛擬導覽影片和照片中，應在廠區平面圖上標記拍攝位置（marked on the site schematics）。這個細節非常重要：</p>
+            <p>查驗員看到一個無菌充填設備的影片，如果不知道它在哪個廠房、哪個樓層、哪個 ISO 等級的區域，他無法評估是否符合隔離屏障要求。</p>
+            <p>最佳做法：製作一份「查驗導覽圖（Inspection Navigation Map）」，標示每張照片/影片的拍攝位置，並與 Site Master File 中提交給 HA 的圖紙版本保持一致，避免資料完整性疑慮。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC E.2 ========== -->
+<div class="section-title" id="topic-e2">Topic E.2 — Sharing of Inspection Reports（查驗報告的分享）| p18</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>Will a health authority share its inspection reports with other health authorities? Can an inspected site share inspection reports with inspectors from other authorities to facilitate the inspection?</p>
+
+        <h3>Recommendation</h3>
+        <p>Inspectors may leverage information and data that other health authorities have collected through on-site inspections. Inspected sites should anticipate that inspectors have reviewed other health authorities' inspection reports.</p>
+
+        <p>Confidentiality arrangements in place within the <span class="key-term">Pharmaceutical Inspection Co-operation Scheme (PIC/S)</span>, or between <span class="key-term">mutual recognition partners</span> and other collaborating health authorities, allow health authorities to share and access GxP information on international organizations and supply chains. The <span class="key-term">PIC/S inspection reliance</span> procedure is particularly important, as it sets out a framework for participating authorities to rely on the inspection information provided by the network.</p>
+
+        <p>Inspectors also may ask the inspected site to share inspection reports and <span class="key-term">GMP certificates</span> from other health authorities. Some inspectors will expect the reports to be shared. Inspectors also may request evidence of appropriate post-inspection CAPA implementation.</p>
+
+        <p>Some health authorities, however, may require that they be consulted or informed before their inspection reports are shared. The site also should verify whether the relevant authorities have <span class="key-term">mutual recognition agreements (MRA)</span> or if the document is subject to freedom of information legislation. If no MRA is in place and the document is not subject to freedom of information, <span class="key-term">or if the report includes a nondisclosure clause, personnel at the inspected site should consult with legal counsel</span> and ask the issuing authority for approval to share the information.</p>
+
+        <h3>Rationale</h3>
+        <div class="quote-box">
+            "Informed decisions on the GMP compliance of a manufacturing facility can be made, in certain circumstances, based on the outcome of work by another regulatory authority or authorities. Consequently, it is possible (outside the established framework of Mutual Recognition Agreements, or equivalent and where legal requirements allow) for Inspectorates to identify specific instances where an onsite inspection of a manufacturing facility in an overseas territory is not required because an acceptable level of GMP compliance has been confirmed and assured by another regulatory authority or authorities." — PIC/S Guidance Section 2.2
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — PIC/S 查驗依賴框架與 MRA</h4>
+            <p><strong>PIC/S（Pharmaceutical Inspection Co-operation Scheme，藥品查驗合作計畫）</strong>是一個國際互相認可查驗結果的框架。目前有 50+ 個 HA 成員（包括 EMA、FDA、TGA、MHLW 等）。</p>
+            <p><strong>MRA（Mutual Recognition Agreement，相互認可協議）</strong>：兩個 HA 之間的雙邊協議，允許一方直接採用另一方的查驗結果，無需重複查驗。</p>
+            <p>這對 CDMO 的實務意義是：一次優秀的 FDA 查驗結果，可能幫助你在 EMA 查驗中獲得較寬鬆的對待；反之，一次 EMA 的 483 觀察項目，可能在 FDA 查驗員的手機裡已經看過了。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 分享查驗報告前，先檢查保密條款</h4>
+            <p>這是許多公司在虛擬查驗中容易犯的錯誤：查驗員要求你提供某 HA 的查驗報告，你直接傳過去——但這份報告的末頁有一行小字：「本報告內容不得向第三方揭露（Non-disclosure clause）」。</p>
+            <p>後果可能是：</p>
+            <ul>
+                <li>違反與原發文 HA 的保密約定，影響未來合作關係</li>
+                <li>若該 HA 有行政管轄權，可能面臨罰款或其他處分</li>
+            </ul>
+            <p><strong>正確流程</strong>：收到報告分享請求後，先確認：(1) 兩個 HA 之間是否有 MRA；(2) 報告是否有 Non-disclosure 條款；(3) 若有疑慮，聯繫法律顧問並向原發文 HA 申請授權分享。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 — 成績單的分享規則</h4>
+            <p>你的成績單（查驗報告）是由學校（HA）發給你的，但它不自動屬於你的財產，你不能任意分享給其他人。就像求職時雇主（另一個 HA）要求看你的成績單，你需要先確認學校的隱私政策，必要時請學校出具同意書。</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== TOPIC E.3 ========== -->
+<div class="section-title" id="topic-e3">Topic E.3 — Timelines for Sharing Documentation（文件提交時程）| p19</div>
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+
+        <h3>Problem Statement</h3>
+        <p>What are the timelines to respond to the pre-inspection notification and documentation request? Is it possible to send the requested documentation in multiple shipments?</p>
+
+        <h3>Recommendation</h3>
+        <p>Most authorities require inspected sites to provide documents for pre-inspection (in the virtual or hybrid context) or inspection (in the desktop context) within <span class="key-term">ten working days or two calendar weeks</span>. In general, timelines for responding to the first notification and to additional requests should be negotiated with the inspector, considering:</p>
+        <ul>
+            <li>The quantity of information and data requested</li>
+            <li>Their format</li>
+            <li>Any translation requirements</li>
+            <li>The size of the site</li>
+            <li>The complexity of the operations</li>
+            <li>The inspection scope</li>
+            <li>The level of risk associated with the inspection</li>
+        </ul>
+
+        <p>It may be necessary or helpful to share the information and documentation with the inspectorate in <span class="key-term">several different bundles</span> to avoid delaying the review process. To prevent misunderstanding, the inspected site should clearly inform the inspector of its intention to send several different packages of information.</p>
+
+        <p>If the inspector numbers its requests, the inspected site should provide documents in folders that use the <span class="key-term">same numbering system</span> to facilitate review and confirmation that all documents have been provided.</p>
+
+        <p>The site also might consider including <span class="key-term">notes with documents</span> as necessary to help the inspectorate understand the context.</p>
+
+        <p>In the rare circumstance that documents or data are not available, the inspected site should <span class="key-term">communicate this fact to the inspectorate in a timely manner with explanation</span>.</p>
+
+        <h3>Rationale</h3>
+        <p>The quality and clarity of the documentation provided is critical to an efficient and effective inspection. Therefore, the inspector should allow the inspected site sufficient time to prepare. Usually, two calendar weeks may be sufficient for the inspected site to provide the first set of documentation requested.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念 — 時程協商的考量因素矩陣</h4>
+            <p>「10 個工作日或 2 個行事曆週」是一般原則，但實際時程應依以下因素彈性協商：</p>
+            <table>
+                <tr>
+                    <th>因素</th>
+                    <th>對時程的影響</th>
+                </tr>
+                <tr>
+                    <td>文件數量龐大（如完整驗證包）</td>
+                    <td>需更長時間，建議分批提交</td>
+                </tr>
+                <tr>
+                    <td>紙本記錄比例高（需掃描 OCR）</td>
+                    <td>增加 20–40% 的文件準備時間</td>
+                </tr>
+                <tr>
+                    <td>需翻譯（中文→英文）</td>
+                    <td>每份文件額外 1–3 個工作日</td>
+                </tr>
+                <tr>
+                    <td>PAI（新藥上市前查驗）</td>
+                    <td>HA 通常較少彈性，時程較緊</td>
+                </tr>
+                <tr>
+                    <td>For-Cause（重大合規問題）</td>
+                    <td>HA 可能要求更快回應（3–5 天）</td>
+                </tr>
+                <tr>
+                    <td>例行 GMP 監視查驗</td>
+                    <td>較有協商空間</td>
+                </tr>
+            </table>
+            <p>協商技巧：在確認收到文件請求的第一封回覆中，即說明預計提交時程和分批計畫，讓 HA 有心理準備，避免後續催促。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 — 文件無法提供時的正確處理方式</h4>
+            <p>這個情況比想像中常見。例如：查驗員要求查看 5 年前的某批次記錄，但公司正在進行系統遷移，或文件在異地倉儲尚未數位化。</p>
+            <p><strong>錯誤做法</strong>：沉默，等文件找到了再說；或提供不完整的替代文件而不說明。</p>
+            <p><strong>正確做法</strong>：<strong>立即主動通知</strong>查驗員，說明：</p>
+            <ul>
+                <li>哪份文件無法提供</li>
+                <li>原因說明（例如：「目前正進行文件管理系統遷移，預計 YYYY/MM/DD 前完成整合，屆時可提供」）</li>
+                <li>預計可提供的目標日期</li>
+                <li>若有替代資訊，一併說明</li>
+            </ul>
+            <p>主動溝通展現誠信，比被動等待發現問題，更能維護與 HA 的信任關係。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>HA 傳來一個包含 45 個請求項目的文件清單，你評估需要分 4 批提交。你會如何告知查驗員，並建議什麼樣的提交計畫？</li>
+                <li>查驗員使用序號 001–045 來標記其文件請求。你在組織文件分享平台的資料夾結構時應如何設計，以確保查驗員能快速找到對應文件？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+    <h3>本章重點回顧 Section Summary — Part I: Planning &amp; Notification</h3>
+    <ul>
+        <li><strong>A.1</strong>：HA 以風險評估決定查驗類型；For-Cause 查驗和部分 PAI 通常不適合遠端進行；混合查驗是彈性解法</li>
+        <li><strong>B.1</strong>：強烈建議提前通知；桌面查驗以文件索取為起算、虛擬查驗以開幕會議為起算；通知後 2 週是關鍵準備窗口</li>
+        <li><strong>B.2</strong>：遠端查驗使身分驗證更困難；任何可疑查驗通知均應向 HA 官方管道確認，防範工業間諜風險</li>
+        <li><strong>C.1</strong>：指定單一 Remote Inspection Host 作為 SPOC，需具備調動資源的職權；核心現場團隊包括指定領導人、Host、IT 支援</li>
+        <li><strong>C.2</strong>：虛擬查驗總工期可達現場查驗的 2–3 倍；議程應交替安排現場對話與離線文件準備；時區差異和文化溝通需特別關注</li>
+        <li><strong>D.1</strong>：硬體必備項目（電腦、攝影機、音訊、VPN）；文件攝影機大幅降低現場記錄的掃描負擔；虛擬導覽設備需符合潔淨區和防爆區安全規範</li>
+        <li><strong>D.2</strong>：文件應為可搜尋 PDF；使用文件分享平台而非電子郵件；查驗專用影像資料通常非 GMP 記錄，但需法律顧問確認</li>
+        <li><strong>D.3</strong>：避免 Technology Overkill 和 Technology Exploration 兩大失敗模式；查驗前 3–5 天執行 30 分鐘技術測試</li>
+        <li><strong>D.4</strong>：查驗前協議需書面化，涵蓋平台、保密、資料處置、DPO 確認；未經 HA 書面授權，嚴禁錄影錄音（含平台自動錄製）</li>
+        <li><strong>E.1</strong>：維持常時查驗就緒的數位文件庫；虛擬導覽影片應搭配標示拍攝位置的廠區平面圖</li>
+        <li><strong>E.2</strong>：分享其他 HA 查驗報告前，先確認 MRA 適用性和報告是否含保密條款，必要時諮詢法律顧問</li>
+        <li><strong>E.3</strong>：一般時程為 10 個工作日或 2 個行事曆週，可依情況協商；分批提交需主動告知；文件無法提供時應即時通知並說明原因和預計日期</li>
+    </ul>
+</div>
+
+</div><!-- end main-content -->
+
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+window.addEventListener('scroll', function() {
+    var btn = document.querySelector('.back-to-top');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+
+</body>
+</html>

@@ -2382,7 +2382,6 @@ p
 To order reprints, please contact:
 Janny Chua, Publications Manager, + 1 (301) 656-5900, ext. 133.
 Written correspondence can be sent to: PDA, Inc. Attn: Janny Chua, 4350 East West Highway, Suite 150,
-Bethesda, MD 20814.
 
 PDA Points to Consider for the Aseptic Processing of
 Sterile Pharmaceutical Products in Isolators
@@ -2447,7 +2446,6 @@ Bethesda Towers
 4350 East West Highw
 ay
 Suite 600
-Bethesda, MD 20814 USA
 Tel: +1 (301) 656-5900
 Fax: +1 (301) 986-0296
 E-mail: info@pda.org

@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA TR49 — Section 3: Sampling Methods | 取樣方法</title>
+    <style>
+/* =============================================================
+   SterileGMP Knowledge Hub - Shared CSS Template
+   Version: 2.0 (for Claude Code automation)
+   Last Updated: 2025
+
+   Usage: Embed this entire file inside <style> tags in each
+   section HTML. This ensures each file works standalone
+   AND merges correctly into the final TopNav document.
+   ============================================================= */
+
+/* ===== CSS VARIABLES ===== */
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    color: var(--text-dark);
+    background: #f0f2f5;
+}
+
+/* ===== SECTION HEADER ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 0.3rem;
+}
+
+.header .page-info {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== TOP HEADER (for merged TopNav) ===== */
+.top-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.top-header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.top-header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* ===== TOP NAVIGATION (for merged TopNav) ===== */
+.top-nav {
+    background: #2d3748;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: stretch;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.nav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-scroll-btn {
+    background: #2d3748;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    padding: 0 0.9rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.nav-scroll-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-scroll-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    color: white;
+    border-bottom-color: var(--accent-blue);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-num {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active .nav-num {
+    background: var(--accent-blue);
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== MAIN CONTENT WRAPPER ===== */
+.main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.main-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ===== CHAPTER SECTIONS (for merged TopNav) ===== */
+.chapter-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
+
+.chapter-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%);
+    color: white;
+}
+
+.chapter-badge {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.chapter-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.chapter-body {
+    padding: 1.5rem;
+}
+
+/* ===== TWO COLUMN LAYOUT ===== */
+.two-column,
+.content-grid,
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== LEFT COLUMN - Original Content ===== */
+.left-column,
+.original-content {
+    background: var(--light-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.left-column h2,
+.left-column h3,
+.original-content h2,
+.original-content h3 {
+    color: var(--primary-blue);
+    border-bottom: 2px solid #3182ce;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.left-column p,
+.original-content p {
+    margin-bottom: 0.85rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.left-column ul, .left-column ol,
+.original-content ul, .original-content ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.left-column li,
+.original-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== RIGHT COLUMN - Commentary ===== */
+.right-column,
+.commentary {
+    background: var(--light-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #bee3f8;
+}
+
+.right-column h2,
+.right-column h3,
+.commentary h2,
+.commentary h3 {
+    color: #2c5282;
+    border-bottom: 2px solid #63b3ed;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.right-column p,
+.commentary p {
+    margin-bottom: 0.85rem;
+    font-size: 0.95rem;
+}
+
+/* ===== COLUMN HEADERS ===== */
+.column-header {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid currentColor;
+    font-size: 1rem;
+}
+
+.right-column .column-header,
+.commentary .column-header {
+    color: #2c5282;
+}
+
+/* Hide original container padding in merged mode */
+.chapter-body .container,
+.chapter-body .main-container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== KEY TERMS (inline highlight) ===== */
+.key-term,
+.highlight-term {
+    background: linear-gradient(to right, #d4edda, #c3e6cb);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #155724;
+    font-size: 0.9em;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote-box,
+.important-quote {
+    background: linear-gradient(to right, #e7f3ff, #d6e9ff);
+    border-left: 4px solid #3182ce;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* ===== CONCEPT BOXES - Unified Base ===== */
+.concept-box,
+.analogy-box,
+.note-box,
+.key-note,
+.term-box,
+.formula-box,
+.key-term-box,
+.key-point-box,
+.highlight-box {
+    border-radius: 8px !important;
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+}
+
+.concept-box h3, .concept-box h4,
+.analogy-box h3, .analogy-box h4,
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.term-box h3, .term-box h4,
+.formula-box h3, .formula-box h4,
+.key-term-box h3, .key-term-box h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.concept-box p,
+.analogy-box p,
+.note-box p,
+.key-note p,
+.term-box p,
+.formula-box p,
+.key-term-box p,
+.key-point-box p,
+.highlight-box p {
+    margin-bottom: 0.5rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box ul, .concept-box ol,
+.analogy-box ul, .analogy-box ol,
+.note-box ul, .note-box ol,
+.key-note ul, .key-note ol,
+.term-box ul, .term-box ol,
+.formula-box ul, .formula-box ol,
+.key-term-box ul, .key-term-box ol,
+.key-point-box ul, .key-point-box ol,
+.highlight-box ul, .highlight-box ol {
+    margin: 0.5rem 0 0.5rem 1.25rem !important;
+    font-size: 0.92rem !important;
+}
+
+.concept-box li,
+.analogy-box li,
+.note-box li,
+.key-note li,
+.term-box li,
+.formula-box li,
+.key-term-box li,
+.key-point-box li,
+.highlight-box li {
+    margin-bottom: 0.35rem !important;
+    font-size: 0.92rem !important;
+}
+
+/* ===== ANALOGY BOX (Yellow) - 比喻說明 ===== */
+.analogy-box,
+.concept-box[class*="analogy"],
+.concept-box.analogy,
+div[class*="analogy"]:not(.content-grid):not(.two-column) {
+    background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important;
+    border-left: 4px solid #f6ad55 !important;
+}
+
+.analogy-box h3, .analogy-box h4,
+.concept-box.analogy h3, .concept-box.analogy h4 {
+    color: #856404 !important;
+}
+
+/* ===== TERM/CONCEPT BOX (Green) - 核心概念 ===== */
+.term-box,
+.key-term-box,
+.concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) {
+    background: var(--green-bg) !important;
+    border-left: 4px solid var(--green-border) !important;
+}
+
+.concept-box:not(.analogy):not(.application) h3,
+.concept-box:not(.analogy):not(.application) h4,
+.term-box h3, .term-box h4,
+.key-term-box h3, .key-term-box h4 {
+    color: #2e7d32 !important;
+}
+
+/* ===== NOTE/HIGHLIGHT BOX (Orange) - 重點提示 ===== */
+.note-box,
+.key-note,
+.key-point-box,
+.concept-box[class*="note"],
+.concept-box[class*="highlight"],
+.key-point,
+.highlight-box {
+    background: var(--orange-bg) !important;
+    border-left: 4px solid var(--orange-border) !important;
+}
+
+.note-box h3, .note-box h4,
+.key-note h3, .key-note h4,
+.key-point-box h3, .key-point-box h4,
+.highlight-box h3, .highlight-box h4 {
+    color: #c65102 !important;
+}
+
+/* ===== FORMULA BOX (Purple) - 公式計算 ===== */
+.formula-box,
+.concept-box[class*="formula"] {
+    background: var(--purple-bg) !important;
+    border-left: 4px solid var(--purple-border) !important;
+}
+
+.formula-box h3, .formula-box h4 {
+    color: #7b1fa2 !important;
+}
+
+.formula-box pre {
+    background: rgba(156, 39, 176, 0.08);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* ===== APPLICATION BOX ===== */
+.concept-box.application,
+.application-box {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2 !important;
+}
+
+.concept-box.application h3,
+.concept-box.application h4,
+.application-box h3,
+.application-box h4 {
+    color: #1565c0 !important;
+}
+
+/* ===== PRACTICE BOX (Blue dashed) - 練習思考 ===== */
+.practice-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important;
+    border: 2px dashed #3182ce !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin: 1.25rem 0 !important;
+    font-size: 0.92rem !important;
+}
+
+.practice-box h3, .practice-box h4 {
+    color: #2c5282 !important;
+    margin-bottom: 0.75rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.practice-box p,
+.practice-box li {
+    font-size: 0.92rem !important;
+}
+
+/* ===== TABLES ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+}
+
+tr:nth-child(even) {
+    background: #f7fafc;
+}
+
+/* ===== LEARNING OBJECTIVES ===== */
+.learning-objectives {
+    background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.learning-objectives h3 {
+    color: #117a65;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.learning-objectives ul,
+.learning-objectives ol {
+    margin-left: 1.25rem;
+}
+
+.learning-objectives li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+}
+
+/* ===== STRUCTURE LIST ===== */
+.structure-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.structure-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title,
+.section-divider {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.section-divider {
+    border-bottom: 1px solid #e2e8f0;
+    margin: 2rem 0;
+}
+
+/* ===== TABLE OF CONTENTS (per section) ===== */
+.toc {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.toc h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.toc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toc-grid a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #edf2f7;
+    border-radius: 6px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.toc-grid a:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* ===== FIGURE CONTAINERS ===== */
+.figure-container {
+    margin: 1.25rem 0;
+    text-align: center;
+}
+
+.figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.figure-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+/* ===== HIERARCHY DIAGRAM ===== */
+.hierarchy-diagram {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.hierarchy-level {
+    margin: 0.5rem 0;
+}
+
+.hierarchy-box {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.hierarchy-box.level-1 {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #b91c1c;
+}
+
+.hierarchy-box.level-2 {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #92400e;
+}
+
+.hierarchy-box.level-3 {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin: 0.25rem 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge.green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge.red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge.blue {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.badge.yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ===== CHECKLIST ===== */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+}
+
+/* ===== CARDS ===== */
+.pump-card,
+.tech-card,
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+    background: var(--primary-blue);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-footer p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        gap: 1rem;
+    }
+
+    .left-column, .right-column,
+    .original-content, .commentary {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr;
+    }
+
+    .top-header h1,
+    .header h1 {
+        font-size: 1.1rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 0.75rem;
+    }
+
+    .nav-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .chapter-divider {
+        padding: 0.85rem 1rem;
+    }
+
+    .chapter-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .chapter-info h2 {
+        font-size: 1rem;
+    }
+
+    .main-content,
+    .main-container {
+        padding: 1rem;
+    }
+
+    .chapter-body {
+        padding: 1rem;
+    }
+}
+
+/* ===== PRINT ===== */
+@media print {
+    .top-nav, .back-to-top, .header {
+        display: none !important;
+    }
+
+    .top-header {
+        background: var(--primary-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .chapter-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    .two-column,
+    .content-grid,
+    .side-by-side {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-content,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+}
+    </style>
+</head>
+<body>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="header">
+    <h1>Section 3: Sampling Methods | 取樣方法</h1>
+    <div class="subtitle">PDA Technical Report No. 49 — Points to Consider for Biotechnology Cleaning Validation</div>
+    <div class="page-info">Source: Section 5.0 — pp. 24–31 | Covers 5.1–5.5 including Recovery Studies &amp; Sampler Qualification</div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-content">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h3>Section Contents | 章節目錄</h3>
+        <div class="toc-grid">
+            <a href="#sec51">5.1 Method Selection</a>
+            <a href="#sec511">5.1.1 Direct Sampling</a>
+            <a href="#sec512">5.1.2 Rinse Sampling</a>
+            <a href="#sec513">5.1.3 Swab Sampling</a>
+            <a href="#sec514">5.1.4 Swab vs. Rinse</a>
+            <a href="#sec52">5.2 Placebo Sampling</a>
+            <a href="#sec53">5.3 Microbial &amp; Endotoxin</a>
+            <a href="#sec54">5.4 Recovery Studies</a>
+            <a href="#sec541">5.4.1 General</a>
+            <a href="#sec542">5.4.2 Swab Recovery</a>
+            <a href="#sec543">5.4.3 Rinse Recovery</a>
+            <a href="#sec544">5.4.4 Visual Recovery</a>
+            <a href="#sec545">5.4.5 Bio/Endotoxin</a>
+            <a href="#sec55">5.5 Training &amp; Qualification</a>
+        </div>
+    </div>
+
+    <!-- LEARNING OBJECTIVES -->
+    <div class="learning-objectives">
+        <h3>Learning Objectives | 學習目標</h3>
+        <ul>
+            <li>Distinguish between direct, swab, rinse, and placebo sampling methods and understand when each is appropriate.</li>
+            <li>Explain the advantages and limitations of swab sampling versus rinse sampling.</li>
+            <li>Describe the design and acceptance criteria for swab and rinse recovery studies.</li>
+            <li>Understand why recovery studies are NOT required for microbiological and endotoxin sampling.</li>
+            <li>Identify the four key consistency factors in swab sampling training and the qualification requirements for samplers.</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1 — SAMPLING METHOD SELECTION -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec51">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1</div>
+            <div class="chapter-info">
+                <h2>Sampling Method Selection | 取樣方法選擇</h2>
+                <p>Overview of the four primary sampling approaches used in cleaning validation</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.0 Sampling Methods</h3>
+                    <p>It is essential to a <span class="key-term">cleaning validation</span> program that the appropriate <span class="key-term">sampling techniques</span> are utilized. Sampling must be conducted with techniques appropriate for the equipment surfaces and for the nature of the study, including the analytical methods used. This section discusses types of sampling methods, <span class="key-term">sampling recovery validation studies</span>, and the training and qualification of samplers.</p>
+
+                    <h3>5.1 Sampling Method Selection</h3>
+                    <p>Selection of a <span class="key-term">sampling method</span> depends on the nature of the equipment and the nature of the residue being measured. Sampling methods discussed here are <span class="key-term">direct surface sampling</span>, <span class="key-term">swabbing</span>, <span class="key-term">rinse water sampling</span> and <span class="key-term">placebo sampling</span>.</p>
+                    <p>It should be noted that while regulatory documents refer to swabbing as "direct" sampling and to rinse water sampling as "indirect" sampling, it is preferable and more descriptive to refer to those sampling methods as "<span class="key-term">swab sampling</span>" and "<span class="key-term">rinse sampling</span>," and reserve the term "<span class="key-term">direct sampling</span>" for techniques such as the use of visual inspection.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>核心概念：四種取樣方法</h4>
+                        <p>TR49 定義了四種主要取樣方法，各有適用情境：</p>
+                        <ul>
+                            <li><strong>直接取樣（Direct Sampling）</strong>：目視檢查（Visual Inspection）</li>
+                            <li><strong>棉棒取樣（Swab Sampling）</strong>：擦拭特定表面</li>
+                            <li><strong>沖洗取樣（Rinse Sampling）</strong>：分析最後沖洗水</li>
+                            <li><strong>安慰劑取樣（Placebo Sampling）</strong>：模擬製程後取樣</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>重要術語澄清</h4>
+                        <p>TR49 特別更正了術語混淆問題：法規文件（如 FDA）將棉棒取樣稱為「直接」取樣，但 TR49 建議保留「直接取樣」一詞專指目視檢查，避免歧義。</p>
+                        <p>實務上：棉棒取樣 = Swab Sampling；沖洗取樣 = Rinse Sampling。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>生活比喻</h4>
+                        <p>就像清潔廚房鍋具後，你可以：用眼睛看（目視）、用紙巾擦（棉棒）、用水沖後驗水（沖洗）、或用鍋子再煮一次純水來檢驗（安慰劑）。每種方法偵測角度不同。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1.1 — DIRECT SAMPLING -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec511">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1.1</div>
+            <div class="chapter-info">
+                <h2>Direct Sampling Methods | 直接取樣方法</h2>
+                <p>Visual inspection and remote optical techniques</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1.1 Direct Sampling Methods</h3>
+                    <p><span class="key-term">Direct sampling methods</span> (as used in this document) include <span class="key-term">visual inspection</span>. It is a well-accepted practice that a cleaning process should remove visible residues from the production process off of equipment surfaces. The visual inspection of equipment has limitations in that some equipment surfaces (e.g., piping) are usually not accessible for viewing. The use of optical equipment like mirrors or endoscopes, as well as the use of additional lighting, can help to facilitate visual inspection.</p>
+                    <p><span class="key-term">Remote inspection techniques</span> (with fiber-optic probes and a LCD viewing screen) are utilized when visual inspection by a trained inspector is difficult to perform because of access to equipment surfaces, or when one prefers to supplement an "unaided" visual inspection procedure.</p>
+                    <p><span class="key-term">Borescopes</span>, <span class="key-term">fiberscopes</span>, and <span class="key-term">videoscopes</span> allow visual inspection of hard-to-reach areas. Borescopes have been used to view the interior of piping and tank welds. Typical benefits of these scopes are that they:</p>
+                    <ul>
+                        <li>Can fit into confined spaces not accessible to operators</li>
+                        <li>Are very maneuverable</li>
+                        <li>Have additional lighting attached</li>
+                        <li>May come with optional magnification and/or zooming capabilities</li>
+                    </ul>
+                    <p>The major drawback of these scopes is the complexity of use, controlling lighting/brightness, and that the operator still has to make the determination if the area viewed is visually clean.</p>
+                    <p>A <span class="key-term">remote visual camera</span> allows operators to view remote areas on a screen. The camera has most of the same strengths and weaknesses as the scopes, with the added benefit that operators can typically also record video or take pictures. Multiple operators can, at the same time, view what is on the screen. The potential to record video and allow multiple operators to view the screen may help support a site's visual inspection training program. Pictures printed from the camera may distort the actual amount of residue present, since operators will typically zoom in on a particular area when taking a picture.</p>
+                    <p>All these techniques, like visual inspection, require an adequate training program.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>直接取樣 = 目視檢查</h4>
+                        <p>TR49 的「直接取樣」專指目視方法，而非棉棒。目視檢查雖然直觀，但存在關鍵限制：管道內部、焊縫等區域無法以肉眼直視。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>進階目視工具比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>工具</th>
+                                    <th>優點</th>
+                                    <th>限制</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>硬式內視鏡 (Borescope)</td>
+                                    <td>可進入狹小空間，帶光源</td>
+                                    <td>操作複雜，判斷仍依賴人員</td>
+                                </tr>
+                                <tr>
+                                    <td>軟式纖維鏡 (Fiberscope)</td>
+                                    <td>靈活可彎曲</td>
+                                    <td>影像解析度較低</td>
+                                </tr>
+                                <tr>
+                                    <td>遠端攝影機</td>
+                                    <td>可錄影、多人同時觀看</td>
+                                    <td>縮放照片可能誇大殘留量</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>實務提示</h4>
+                        <p>遠端攝影機的錄影功能對訓練計畫很有價值，但要注意：局部放大拍攝的照片可能讓殘留看起來比實際更嚴重，不宜作為定量依據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1.2 — RINSE SAMPLING -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec512">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1.2</div>
+            <div class="chapter-info">
+                <h2>Rinse Sampling | 沖洗取樣</h2>
+                <p>Grab sampling from CIP final rinse vs. separate sampling rinse</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1.2 Rinse Sampling</h3>
+                    <p><span class="key-term">Rinse sampling</span> involves sampling the equipment by flowing water over all relevant equipment surfaces to remove residues, which are then measured in the <span class="key-term">rinse water</span>. The most common rinse sampling technique is to take a <span class="key-term">grab sample</span> from the final rinse water during the final rinse of the cleaning process. Another option is to fill the entire equipment with water after the cleaning procedure is completed. Then, a bulk sample is taken and analyzed. A third option is to utilize a separate <span class="key-term">CIP sampling rinse</span> of defined volume following the completion of the final process rinse.</p>
+                    <p>Advantages and disadvantages of both methods for CIP rinsing are shown in Table 5.1.2.</p>
+
+                    <p><strong>Table 5.1.2 — Comparison of CIP Grab Sampling versus Separate CIP Sampling Rinse</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Grab Sampling from CIP Final Rinse</th>
+                                <th>Separate CIP Sampling Rinse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Advantages</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Represents the normal cleaning process</li>
+                                        <li>Allows on-line testing</li>
+                                        <li>Requires no additional amounts of rinse water</li>
+                                        <li>Equipment can be used for further processing without additional steps</li>
+                                        <li>Results can easily be used for carryover calculations</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Represents what is left on surfaces after the completion of the cleaning process</li>
+                                        <li>More likely to result in an acceptable result if done correctly</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Disadvantages</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Sample represents a <span class="key-term">worst-case</span> carryover to the next batch (but can demonstrate robustness of the cleaning process)</li>
+                                        <li>Assumptions need to be made about sampling for carryover calculations</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Utilizes an additional step</li>
+                                        <li>Requires additional amounts of rinse water</li>
+                                        <li>Contamination is possible due to the method of water addition</li>
+                                        <li>Online testing not practical</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>A special case of rinse sampling is the sampling of <span class="key-term">small parts</span>. Those parts may be sampled by swabbing, but there are two options for rinse sampling:</p>
+                    <ol>
+                        <li><strong>Extraction procedure</strong>: The extraction solution (typically water) is placed in a clean vessel. The small part is then placed in the extraction solution and agitated or sonicated for a fixed time. The sampling solution is then analyzed for potential residues.</li>
+                        <li><strong>Lumen flushing</strong> (for items with an orifice, such as filling needles): A fixed volume of sampling solution is passed through the lumen and collected in a clean collection vessel. The sampling solution is agitated for uniformity, and then analyzed for the potential residues. Because the surface area and sampling volume are precisely known, limits can be accurately calculated for such situations.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>沖洗取樣三種方式</h4>
+                        <ul>
+                            <li><strong>方式一：抓取樣（Grab Sample）</strong> — 直接從 CIP 最後沖洗水取樣，最常見</li>
+                            <li><strong>方式二：充滿取樣</strong> — 清潔後注滿水，取批量樣品</li>
+                            <li><strong>方式三：獨立取樣沖洗</strong> — 在最後沖洗後額外執行一次定量沖洗</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>CIP 取樣選擇指引</h4>
+                        <p><strong>抓取樣的優勢</strong>：代表正常製程，可即時線上測試，不需額外用水，直接用於殘留量計算。</p>
+                        <p><strong>獨立沖洗的優勢</strong>：代表清潔完成後實際表面狀態，更接近真實殘留情形。</p>
+                        <p>在法規驗證中，抓取樣雖然代表「最差情況（Worst Case）」殘留至下批次，但這也是其優點：可證明清潔製程的穩健性。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>小零件取樣特殊處理</h4>
+                        <p><strong>萃取法（Extraction）</strong>：將零件浸入溶劑並震盪/超音波處理，適用表面積明確的零件。</p>
+                        <p><strong>管腔沖洗法（Lumen Flush）</strong>：適用填充針等有管腔的零件，定量溶劑通過管腔後收集分析，表面積精確已知，限度計算最為準確。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1.3 — SWAB SAMPLING -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec513">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1.3</div>
+            <div class="chapter-info">
+                <h2>Swab Sampling | 棉棒取樣</h2>
+                <p>Fibrous material wiping technique for direct surface residue measurement</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1.3 Swab Sampling</h3>
+                    <p><span class="key-term">Swab sampling</span> involves wiping a surface with a fibrous material (most commonly). During the wiping procedure, the residue on the surface may be transferred to the fibrous material. The fibrous material is then placed in a solvent to transfer the residue to the solvent. The solvent is then analyzed for the residue by an acceptable analytical technique. The most common fibrous material is some kind of textile (knitted, woven or nonwoven) attached to a plastic handle.</p>
+                    <p>In most cases the swabs are wetted with a solvent prior to sampling the surface. For <span class="key-term">TOC</span> and <span class="key-term">conductivity</span>, the solvent is almost always water. For sampling the same site, companies may choose to sample the same surface area with multiple swabs in order to provide a higher percent recovery of residue from the surface. In such cases, the additional swab(s) utilized may be either dry swab(s) or swab(s) wetted with the same solvent.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>棉棒取樣步驟流程</h4>
+                        <div class="hierarchy-diagram">
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-1">溼潤棉棒（通常用純水）</div>
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-2">依規定動作擦拭表面</div>
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-3">棉棒放入溶劑解吸</div>
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="hierarchy-level">
+                                <div class="hierarchy-box level-1">溶劑分析（TOC/蛋白質等）</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <h4>多支棉棒策略</h4>
+                        <p>在同一取樣點使用多支棉棒（第一支濕棒 + 第二支乾棒）可提高回收率。第二支棉棒可以是乾棒或再次濕潤的棒，用於擷取第一支未能完全收集的殘留物。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>實務提示</h4>
+                        <p>TOC 分析時，棉棒必須注意外部有機碳的污染。類似微生物取樣的無菌技術理念，避免手套上的有機物（如異丙醇）污染棉棒，否則會造成偽高 TOC 值。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.1.4 — SWAB vs. RINSE COMPARISON -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec514">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.1.4</div>
+            <div class="chapter-info">
+                <h2>Comparison of Swab and Rinse Sampling | 棉棒與沖洗取樣比較</h2>
+                <p>Regulatory acceptance, advantages, disadvantages, and justification for non-swabbable surfaces</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.1.4 Comparison of Swab and Rinse Sampling</h3>
+                    <p>Both <span class="key-term">swab sampling</span> and <span class="key-term">rinse sampling</span> are listed as acceptable sampling techniques in most regulatory documents. Both methods have their advantages and disadvantages, as shown in Table 5.1.4.</p>
+
+                    <p><strong>Table 5.1.4 — Comparison of Swab Sampling and Rinse Sampling</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Swab Sampling</th>
+                                <th>Rinse Sampling</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Advantages</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Enables analysis of residues on specific surfaces, including denatured/adhered proteins</li>
+                                        <li>Allows sampling of areas that are more difficult to clean (i.e., <span class="key-term">worst cases</span>)</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>During rinsing, the entire <span class="key-term">product-contacting surface</span> is wetted; one result represents the sum of all removed residues for the flow path</li>
+                                        <li>Sampling procedure does not contaminate the equipment; re-cleaning not required</li>
+                                        <li>Allows conclusions on cleanliness of areas not accessible for swabbing</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Disadvantages</strong></td>
+                                <td>
+                                    <ul>
+                                        <li>Only discrete sampling areas can be analyzed; must represent entire equipment and include <span class="key-term">worst-case locations</span></li>
+                                        <li>Sampling can potentially contaminate the equipment; re-cleaning may be required</li>
+                                        <li>Some areas are not accessible for swabbing (e.g., piping systems)</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>Only water soluble residues can be detected</li>
+                                        <li>Areas that are hard to clean cannot be identified</li>
+                                        <li>Does not deal with residues that preferentially transfer from one part of the equipment to the next product</li>
+                                        <li>May dilute out the residue to be undetectable by the analytical method</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>In cases where the equipment surface is difficult to access for swabbing (e.g., piping), swabbing is not an option. It should be appropriately justified that the cleaning procedure is considered effective if swab testing will not be performed. The following situations will justify a decision to not swab a surface:</p>
+                    <ul>
+                        <li>Equipment not accessible for swabbing is constructed of the same materials as equipment that allows swabbing.</li>
+                        <li>Difficult to access equipment surfaces are exposed to the same residues and conditions as equipment surfaces that allow swabbing.</li>
+                        <li>Difficult to access equipment surfaces are cleaned with the same cleaning procedure (same cleaning agents and same temperature) as equipment that allows swabbing.</li>
+                        <li>The mechanical forces during cleaning in piping systems (e.g., turbulent flow) are higher compared to tank cleaning using spray balls.</li>
+                        <li>In contrast to tanks, the piping system is completely filled with flowing liquid during cleaning.</li>
+                        <li><span class="key-term">Rinse sampling</span> appropriately addresses the issue of cross-contamination from those surfaces.</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>棉棒 vs. 沖洗取樣比較表（中文摘要）</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>比較項目</th>
+                                    <th>棉棒取樣</th>
+                                    <th>沖洗取樣</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>取樣範圍</td>
+                                    <td>特定離散點</td>
+                                    <td>整個流路表面</td>
+                                </tr>
+                                <tr>
+                                    <td>可及性</td>
+                                    <td>有限（管道不可及）</td>
+                                    <td>廣泛（整體覆蓋）</td>
+                                </tr>
+                                <tr>
+                                    <td>蛋白質殘留</td>
+                                    <td>可偵測變性蛋白</td>
+                                    <td>僅水溶性殘留</td>
+                                </tr>
+                                <tr>
+                                    <td>最差情況</td>
+                                    <td>可針對難清潔區</td>
+                                    <td>無法識別難清潔點</td>
+                                </tr>
+                                <tr>
+                                    <td>設備污染風險</td>
+                                    <td>有（需重新清潔）</td>
+                                    <td>無</td>
+                                </tr>
+                                <tr>
+                                    <td>稀釋效應</td>
+                                    <td>無</td>
+                                    <td>可能稀釋至偵測限以下</td>
+                                </tr>
+                                <tr>
+                                    <td>法規接受度</td>
+                                    <td>接受</td>
+                                    <td>接受</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>不使用棉棒的合理性論證</h4>
+                        <p>若管道等區域無法棉棒取樣，需有書面理由支持。六個合理性條件：</p>
+                        <ol>
+                            <li>材質相同（與可取樣區）</li>
+                            <li>殘留條件相同</li>
+                            <li>清潔程序相同</li>
+                            <li>管道機械力（湍流）更高</li>
+                            <li>管道完全充滿液體</li>
+                            <li>沖洗取樣已有效覆蓋</li>
+                        </ol>
+                        <p>這六點需在驗證文件中明確陳述。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 1</h4>
+                        <p>您的工廠有一條 50m 長的不鏽鋼輸送管道，連接配製槽與填充機，清潔方式為 CIP。在清潔驗證取樣計畫中，您會如何合理說明不對此管道進行棉棒取樣？請列出至少三個合理性論點。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.2 — PLACEBO SAMPLING -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec52">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.2</div>
+            <div class="chapter-info">
+                <h2>Placebo Sampling | 安慰劑取樣</h2>
+                <p>WFI or buffer-based simulation to demonstrate actual carryover</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.2 Placebo Sampling</h3>
+                    <p>In biotechnology, <span class="key-term">placebo sampling</span> generally does not include actual product placebo; instead, it includes only <span class="key-term">WFI</span> or the <span class="key-term">aqueous processing buffer</span> without any product. In this sampling process, the equipment is cleaned. Following cleaning, a manufacturing process is performed (to the extent feasible) using only WFI or buffer. Following processing, the WFI or buffer is evaluated as any other cleaning validation sample, typically for <span class="key-term">TOC</span> (or Total Protein), <span class="key-term">conductivity</span>, <span class="key-term">bioburden</span> and <span class="key-term">endotoxin</span>, as measures of possible contamination of a manufactured product with those residues.</p>
+                    <p>Placebo runs can be done for both bulk and formulation/fill manufacturing to demonstrate actual <span class="key-term">carryover</span> to the processed material.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>生技安慰劑取樣的特殊性</h4>
+                        <p>一般製藥的安慰劑可能包含輔料配方，但生技產品的「安慰劑」在 TR49 中特指使用 <strong>注射用水（WFI）</strong> 或 <strong>水性緩衝液</strong>，不含任何活性蛋白成分。</p>
+                        <p>清潔後，以此溶液模擬製程操作，再分析溶液中是否含有殘留物（蛋白質、TOC、內毒素等），以證明實際的殘留帶入量（Carryover）。</p>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>生活比喻</h4>
+                        <p>就像洗完鍋子後，用清水煮一次白飯，看白飯是否有異味或顏色——這就是安慰劑概念：用「無害替代品」模擬實際使用，確認清潔效果。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>分析項目提醒</h4>
+                        <p>安慰劑樣品通常分析：TOC（或總蛋白質）、導電度、生物負荷（Bioburden）、內毒素（Endotoxin）。這四項涵蓋化學殘留與微生物安全兩個維度。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.3 — MICROBIAL & ENDOTOXIN SAMPLING -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec53">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.3</div>
+            <div class="chapter-info">
+                <h2>Sampling for Microbial and Endotoxin Analysis | 微生物與內毒素取樣</h2>
+                <p>Sterile sampling requirements and special considerations for biotechnology</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.3 Sampling for Microbial and Endotoxin Analysis</h3>
+                    <p>Sampling for <span class="key-term">bioburden</span> involves <span class="key-term">rinse water sampling</span>, <span class="key-term">swabbing</span> or <span class="key-term">contact plates</span>. Rinse water sampling for bioburden must involve the use of <span class="key-term">sterile sample containers</span>. A careful sampling technique is required for any microbial method to avoid external contamination of the sample.</p>
+                    <p>Sampling for <span class="key-term">endotoxin</span> is almost always a rinse water sample.</p>
+                    <p>There is nothing unique to biotechnology about the use of these sampling techniques for microbial evaluation.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>微生物取樣三種方式</h4>
+                        <ul>
+                            <li><strong>沖洗水取樣</strong>：必須使用無菌容器，最常用</li>
+                            <li><strong>棉棒取樣</strong>：用於特定表面點位</li>
+                            <li><strong>接觸碟（Contact Plates）</strong>：RODAC 碟，直接按壓表面</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>關鍵要求</h4>
+                        <p>所有微生物取樣的核心要求：<strong>防止外部污染</strong>。沖洗水樣品必須用無菌容器收集，否則結果無效。</p>
+                        <p>內毒素取樣幾乎固定採用沖洗水樣品（非棉棒），因為內毒素分析方法（LAL）需要液態樣品。</p>
+                        <p>生技清潔驗證在微生物取樣方式上與一般製藥並無特殊差異。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4 — SAMPLING RECOVERY STUDIES (OVERVIEW + 5.4.1) -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec54">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4</div>
+            <div class="chapter-info">
+                <h2>Sampling Recovery Studies | 取樣回收率研究</h2>
+                <p>Scientific basis for validating sampling and analytical methods</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4 Sampling Recovery Studies</h3>
+                    <p><span class="key-term">Sampling recovery studies</span> are generally required to adequately demonstrate that a residue, if present on equipment surfaces, can be adequately measured or quantified by the combination of the analytical method and the sampling procedure. These studies provide a scientific basis for utilizing those sampling and analytical methods to measure residues. Three types of sampling recoveries are discussed below: <span class="key-term">swab sampling recovery</span>, <span class="key-term">rinse sampling recovery</span>, and <span class="key-term">"visual examination" recovery</span>.</p>
+                    <p>For swab and rinse sampling, recovery studies may be performed as part of the analytical method validation, or they may be performed as separate studies, once it is determined that the analytical method can appropriately measure residues in solutions. Sampling recovery studies are laboratory studies involving <span class="key-term">coupons</span> of sampled equipment of different <span class="key-term">materials of construction</span> (such as stainless steel, glass, PTFE and silicone) spiked with residues to be measured.</p>
+
+                    <h3 id="sec541">5.4.1 General Considerations</h3>
+                    <p>Recovery studies may not be required for certain residues which are known to be readily water soluble and are used well below the solubility limit, such as sodium hydroxide or phosphoric acid used as cleaning agents.</p>
+                    <p>In performing recovery studies for swabbing and rinse sampling, the amount of material spiked onto coupons should represent an amount equal to what could be present at the <span class="key-term">residue limit</span>, as this represents a <span class="key-term">worst case</span>.</p>
+                    <p>The residue spiked should be the same residue present at the end of the cleaning process. For biotechnology protein actives, this is actually <span class="key-term">degraded protein fragment</span>. However, it is common practice to spike the native protein active, as this is simpler and represents a worst case. For bulk biotechnology manufacturing, some manufacturers only perform recovery with the bulk active, whereas others will also utilize an early stage harvest product to represent early stage residues.</p>
+                    <p>Recovery values should be established for all surfaces sampled. For swab and rinse sampling, this may be accomplished by performing recovery studies on all surfaces. An alternative is to perform one residue study on a surface, which through documented evidence, is equivalent (in terms of percent recovery) to other surfaces — essentially a <span class="key-term">grouping or family approach</span> for recovery studies. Another approach used by some companies is to exclude formal recovery studies for sampled surfaces constituting less than a small percentage (such as 1% or 2%) of the total equipment surface area; in such cases, the recovery value used for that excluded surface is the lowest recovery of any other surface type for which a formal sampling recovery study was performed, or the minimum acceptable recovery percentage required by the company's procedures.</p>
+                    <p><span class="key-term">Swab recovery studies</span> are typically performed on a nominal coupon square surface area of either <strong>25 cm²</strong> or <strong>100 cm²</strong>. In sampling manufacturing equipment for a protocol, it is not always possible to swab a 10 cm × 10 cm area. If the sampled area varies from the nominal value, the residue limit for that sample should be adjusted based on the actual surface area swabbed. If such an approach is used, a range of acceptable surface area (such as 25% to 150% of the nominal sampled area) should be established.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>回收率研究的目的</h4>
+                        <p>回收率研究（Recovery Study）回答一個核心問題：<strong>「如果殘留存在於表面，我們的取樣方法能測量到多少？」</strong></p>
+                        <p>研究使用材質試片（Coupon），以已知濃度的殘留物加標（Spike），再執行實際取樣流程，計算回收百分比。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>加標設計原則</h4>
+                        <ul>
+                            <li><strong>加標量 = 殘留限度（Worst Case）</strong>：不要用低濃度，因為這才是驗證臨界情況的方式</li>
+                            <li><strong>加標物質</strong>：應為清潔後實際存在的殘留（降解蛋白），但使用原始活性蛋白也可接受（更保守）</li>
+                            <li><strong>材質覆蓋</strong>：必須涵蓋所有取樣表面材質（SS、玻璃、PTFE、矽膠等）</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>分組策略（Grouping/Family Approach）</h4>
+                        <p>並非每個表面都需要獨立做回收率研究。可將相同材質或相似特性的表面分組，以最具代表性的一個表面做研究，其他表面引用該數據。</p>
+                        <p>對於佔總表面積比例極小的材質（&lt;1-2%），可直接使用所有已研究材質中最低的回收率值作為保守估計。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>棉棒取樣面積調整原則</h4>
+                        <pre>標準取樣面積：25 cm² 或 100 cm²
+接受範圍：標準面積的 25% ~ 150%
+若實際取樣面積偏離標準值，
+則殘留限度需依實際面積進行比例調整
+
+例：標準 100 cm²，實際取樣 60 cm²
+→ 殘留限度 = 原限度 × (60/100)</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4.2 — SWAB RECOVERY -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec542">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4.2</div>
+            <div class="chapter-info">
+                <h2>Swab Recovery | 棉棒回收率</h2>
+                <p>Study design, analyst requirements, and acceptance criteria</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4.2 Swab Recovery</h3>
+                    <p>For <span class="key-term">swab recovery studies</span>, coupons are spiked with solutions of the target residue, allowed to dry, and sampled with the swabbing procedure to be utilized in the cleaning validation protocol. The swab is desorbed in a suitable solvent, and the amount of residue is measured in that solvent sample. The amount recovered is compared to the amount spiked on the coupon, and the result is expressed as <span class="key-term">percent recovery</span>.</p>
+                    <p>Because swabbing is a manual procedure, typically each person performing a recovery study performs <strong>three replicates</strong>. It is preferable to have <strong>at least two persons</strong> perform swabbing recovery studies for each combination of residue and surface type. The recovery percentage established by the study may be defined in different ways, but typically is defined as the <span class="key-term">lowest average recovery of any one analyst</span>.</p>
+                    <p>An acceptable swab recovery depends on how that swab recovery is being used:</p>
+                    <ul>
+                        <li>If the recovery is performed to qualify the sampling method <strong>without correction</strong> of either a limit or an analytical result, a recovery of <span class="key-term">70% or more</span> is typically required.</li>
+                        <li>If the recovery percentage is used to <strong>correct a residue limit or an analytical result</strong>, a recovery of <span class="key-term">50% or more</span> is typically required.</li>
+                    </ul>
+                    <p>An upper limit for percent recovery should be established.</p>
+                    <p>At a minimum, recovery values are generally performed at the residue limit on the surface (in μg/cm², for example). It is preferable to perform additional replicates at the one-residue limit rather than studies at additional levels. Acceptable variation for recovery results at one spiked level is typically on the order of <span class="key-term">15–30% RSD</span>.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>棉棒回收率研究設計要點</h4>
+                        <ul>
+                            <li><strong>重複次數</strong>：每位分析員至少 3 個重複</li>
+                            <li><strong>分析員數量</strong>：至少 2 位，因棉棒取樣高度依賴人員操作</li>
+                            <li><strong>回收率定義</strong>：取所有分析員中最低的平均值（最保守）</li>
+                            <li><strong>加標濃度</strong>：在殘留限度水準（而非多個濃度）</li>
+                        </ul>
+                    </div>
+                    <div class="formula-box">
+                        <h4>棉棒回收率接受標準</h4>
+                        <pre>情境一：不校正限度或結果
+→ 回收率 ≥ 70%
+
+情境二：用於校正殘留限度或分析結果
+→ 回收率 ≥ 50%
+
+變異度：同一加標水準，
+可接受 RSD = 15~30%
+
+注意：需同時設定回收率上限</pre>
+                    </div>
+                    <div class="note-box">
+                        <h4>為何要求兩位分析員？</h4>
+                        <p>棉棒取樣是手動操作，不同人的施力、手法差異顯著影響回收率。使用兩位分析員的數據，可評估方法的操作員間變異，確保取樣方法的穩健性，不依賴單一人員的技巧。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 2</h4>
+                        <p>某分析員 A 的平均棉棒回收率為 68%，分析員 B 為 75%。依據 TR49，若公司決定不對限度或結果進行校正，此回收率研究是否通過？若不通過，您會採取什麼措施？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4.3 — RINSE RECOVERY -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec543">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4.3</div>
+            <div class="chapter-info">
+                <h2>Rinse Recovery | 沖洗回收率</h2>
+                <p>Laboratory simulation of rinsing conditions and acceptance criteria</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4.3 Rinse Recovery</h3>
+                    <p><span class="key-term">Rinse recovery studies</span> address the validity of rinse sampling for that residue. They demonstrate that if the residue were on a surface, that residue would be effectively removed and could be analyzed in the rinse solution. Rinse recovery studies address the U.S. FDA's "<span class="key-term">dirty pot</span>" and "<span class="key-term">baby/bath water</span>" analogies.</p>
+                    <p>Rinse recovery studies, like swab recovery studies, are performed on coupons that have been spiked with solutions of the target residue and then allowed to dry. For swab recoveries, it is necessary to perform the exact swabbing procedure to be used in the cleaning validation protocol. For rinse sampling, in contrast, the exact rinsing procedure cannot be duplicated in the laboratory. However, it is possible to <span class="key-term">simulate the rinsing procedure</span> in the laboratory. Where possible, the conditions of the simulated rinse should be the same as the equipment rinsing situation, including the selection of rinsing solvent (typically water) as well as the temperature of the rinsing solvent. In other cases, the rinsing conditions should be selected as the <span class="key-term">same or worst case</span> as compared to the equipment rinsing situation. For example, the <span class="key-term">ratio of solvent to sampled surface area</span> should be the same or lower in the recovery study compared to the equipment-rinsing situation.</p>
+                    <p>Three methods of simulating the rinse process:</p>
+                    <ol>
+                        <li>Suspend a spiked coupon above a clean collection vessel and cascade the rinse solution across the surface into the collection vessel.</li>
+                        <li>Spike the bottom of a beaker of the appropriate material of construction, allow the residue to dry, add rinse solution to the beaker and apply gentle agitation for a time which approximates the time of the final rinse. The rinse solution is either pipetted or decanted from the beaker and analyzed.</li>
+                        <li>Where a beaker of suitable material of construction is not available, place a spiked coupon in the bottom of a beaker and perform a simulated rinse as in option 2.</li>
+                    </ol>
+                    <p>Since rinse sampling is not significantly operator dependent, <strong>three replicates by one operator</strong> are adequate to determine percent recovery. Acceptable percent recoveries are typically established at the same levels and conditions as for swab recovery studies.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>FDA 類比解釋</h4>
+                        <p>TR49 提到 FDA 的兩個比喻，說明為何需要做沖洗回收率研究：</p>
+                        <ul>
+                            <li><strong>"Dirty Pot"（髒鍋）</strong>：鍋子洗不乾淨，但沖洗水測不出來——殘留附著在表面，水沖不下來</li>
+                            <li><strong>"Baby/Bath Water"（洗澡水）</strong>：沖洗水被大量稀釋，即使有殘留也偵測不到</li>
+                        </ul>
+                        <p>回收率研究正是要證明：殘留能被沖洗下來，且濃度足以被分析方法偵測到。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>沖洗模擬的關鍵原則</h4>
+                        <p>實驗室無法完全複製大型設備的 CIP 沖洗過程，但必須確保：</p>
+                        <ul>
+                            <li>溶劑類型相同（通常為純水）</li>
+                            <li>溫度相同或更嚴格</li>
+                            <li><strong>溶劑量/表面積比值 &le; 設備實際比值</strong>（最差情況：比值更小，稀釋效果更少）</li>
+                        </ul>
+                        <p>與棉棒回收率不同：沖洗回收率<strong>只需 1 位操作員 × 3 重複</strong>，因為沖洗步驟操作員依賴性低。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>三種模擬沖洗方法比較</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>方法</th>
+                                    <th>操作</th>
+                                    <th>適用情境</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>瀑布法</td>
+                                    <td>試片懸空，溶劑流過表面</td>
+                                    <td>模擬流動沖洗</td>
+                                </tr>
+                                <tr>
+                                    <td>燒杯底部加標</td>
+                                    <td>燒杯底加標乾燥，加溶劑震盪</td>
+                                    <td>有對應材質燒杯</td>
+                                </tr>
+                                <tr>
+                                    <td>試片置燒杯底</td>
+                                    <td>試片放燒杯底部，同方法 2</td>
+                                    <td>無對應材質燒杯</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4.4 — VISUAL RECOVERY -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec544">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4.4</div>
+            <div class="chapter-info">
+                <h2>"Recovery" in Visual Inspection | 目視檢查的「回收率」</h2>
+                <p>Visual detection limit determination under specified viewing conditions</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4.4 "Recovery" in Visual Inspection</h3>
+                    <p>This process is actually the determination of a quantitative <span class="key-term">visual detection limit</span> where visual examination is the sole sampling/analytical method and "visually clean" is used as the sole acceptance criterion for the given residue in the absence of swab or rinse sampling for that residue. If visual examination is used to supplement swab or rinse sampling, such determination of a visual detection limit is not required.</p>
+                    <p>A <span class="key-term">visual detection limit</span> under specified viewing conditions can be determined by spiking coupons of the equipment surface materials with solutions of the residue at different levels (in μg/cm²) and by having a panel of trained observers determine the lowest level at which residues are clearly visible across the spiked surface.</p>
+                    <p>The significance of such a visual detection limit is that if equipment surfaces are determined to be visually clean under the same (or more stringent) viewing conditions in a cleaning validation protocol, the level of the residue is below the visual detection limit.</p>
+                    <p>Appropriate viewing conditions include <span class="key-term">distance</span>, <span class="key-term">lighting</span> and <span class="key-term">angle</span>. The visual limit depends on the nature of the residue as well as the nature of the surface (for example, stainless steel vs. PTFE) and the <span class="key-term">visual acuity</span> of the inspector.</p>
+                    <p>Typical values reported in the literature for a visual detection limit are <span class="key-term">1–4 μg/cm²</span>.</p>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>目視「回收率」= 偵測限研究</h4>
+                        <p>目視檢查的「回收率」概念與棉棒/沖洗不同，它實際上是確定<strong>目視偵測限（Visual Detection Limit）</strong>：在規定條件下，人眼能看到的最低殘留量（μg/cm²）。</p>
+                    </div>
+                    <div class="note-box">
+                        <h4>何時需要目視偵測限研究？</h4>
+                        <p><strong>需要</strong>：當目視檢查是<u>唯一</u>取樣/判定方法時（無棉棒或沖洗作為補充）。</p>
+                        <p><strong>不需要</strong>：目視只是補充棉棒或沖洗取樣，不作為主要判定依據。</p>
+                    </div>
+                    <div class="formula-box">
+                        <h4>目視偵測限設定方法</h4>
+                        <pre>步驟：
+1. 準備不同殘留濃度的試片（μg/cm²）
+2. 在規定條件下（距離、光源、角度）
+3. 由多位訓練觀察員判斷
+4. 確定「清楚可見」的最低濃度
+
+文獻典型值：1–4 μg/cm²
+
+影響因素：
+- 殘留物本身性質（顏色、質地）
+- 表面材質（不鏽鋼 vs. PTFE）
+- 觀察員視力</pre>
+                    </div>
+                    <div class="analogy-box">
+                        <h4>實務意義</h4>
+                        <p>若清潔驗證方案中設備目視清潔的觀察條件 &ge; 偵測限研究條件（更嚴格），則「目視清潔」等同於「殘留低於偵測限」。這提供了目視判定的科學依據。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.4.5 — BIOBURDEN & ENDOTOXIN RECOVERY -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec545">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.4.5</div>
+            <div class="chapter-info">
+                <h2>Recovery for Bioburden and Endotoxin Sampling | 生物負荷與內毒素回收率</h2>
+                <p>Why recovery studies are NOT required for microbiological testing</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.4.5 Recovery for Bioburden and Endotoxin Sampling</h3>
+                    <p>Recovery studies to determine percentage recovery from surfaces are <strong>not appropriate and are not required</strong> for microbiological sampling or for endotoxin sampling for the following reasons:</p>
+                    <ol>
+                        <li>The question of enumeration in microbiological tests — "<span class="key-term">colony forming units</span>" are typically counted, as opposed to individual organisms.</li>
+                        <li>Vegetative organisms will <span class="key-term">die or lose viability</span> when dried on a coupon in a standard sampling recovery procedure.</li>
+                        <li>It is unclear which <span class="key-term">species</span> should be used for a recovery study.</li>
+                        <li>The limits set for bioburden typically are significantly below what could possibly cause either product quality issues or process performance (e.g., SIP) issues; therefore, even though recovery may be low (&lt;50%), product quality and/or process performance are not impacted by excluding a recovery factor.</li>
+                    </ol>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>為何微生物不做回收率研究？</h4>
+                        <p>這是許多人容易疑惑的問題。TR49 給出四個明確理由：</p>
+                        <ol>
+                            <li><strong>計數單位問題</strong>：微生物用菌落形成單位（CFU）計數，不是分子計數，無法用百分比回收率表達</li>
+                            <li><strong>乾燥致死問題</strong>：在試片上乾燥加標過程中，活菌會死亡，造成加標回收率完全失真</li>
+                            <li><strong>菌種選擇不明</strong>：不知道要用哪個菌種做加標</li>
+                            <li><strong>限度足夠保守</strong>：生物負荷限度設定本就遠低於可能造成問題的水準，即使回收率低也不影響產品安全</li>
+                        </ol>
+                    </div>
+                    <div class="note-box">
+                        <h4>實務重點</h4>
+                        <p>在 GMP 審計中，驗證人員無需為微生物/內毒素取樣提供回收率數據。但需確保取樣方法本身的適當性（如無菌容器、避免外部污染）。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 3</h4>
+                        <p>審計員質疑：「你們的清潔驗證報告中，微生物取樣的回收率研究在哪裡？」請根據 TR49 Section 5.4.5，起草一份簡短的書面回應，解釋為何微生物取樣不需要（且不適合）回收率研究。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5.5 — TRAINING & QUALIFICATION -->
+    <!-- ============================================================ -->
+    <div class="chapter-section" id="sec55">
+        <div class="chapter-divider">
+            <div class="chapter-badge">5.5</div>
+            <div class="chapter-info">
+                <h2>Training and Qualification of Samplers | 取樣人員訓練與資格認定</h2>
+                <p>Swab, rinse, and visual inspection — training principles and requalification triggers</p>
+            </div>
+        </div>
+        <div class="chapter-body">
+            <div class="two-column">
+                <div class="left-column">
+                    <h3>5.5 Training and Qualification of Samplers</h3>
+                    <p><span class="key-term">Training</span> involves the steps taken to assist the prospective sampler in learning the technique of sampling/inspection. <span class="key-term">Qualification</span> involves the process of "certifying" that the prospective sampler can appropriately sample.</p>
+                    <p><strong>Training always precedes qualification.</strong> At a minimum, the trainee should read the sampling procedure, and a trained sampler should demonstrate the correct procedure. During the reading and demonstration, the trained sampler provides commentary on the rationale for certain practices. Demonstration of technique may also utilize a visual indicator on the swabbed surface. The last step in training is demonstration of the correct procedure by the prospective sampler.</p>
+                    <p>Qualification processes depend on the type of sampling performed. Qualification may involve merely demonstration of the correct technique, or it may involve a "test" which challenges the trainee's ability. Either type of qualification may be repeated on a regular basis, or upon any retraining of a sampler.</p>
+
+                    <h3>5.5.1 Key Issues for Training for Swab Sampling</h3>
+                    <p>It is preferred to have a separate swab sampling SOP for training prospective samplers. Four keys to consistency in swab sampling training are:</p>
+                    <ol>
+                        <li>Consistency of <span class="key-term">wetting the swab head</span></li>
+                        <li>Consistency of the <span class="key-term">swabbing motion</span> (including overlapping strokes)</li>
+                        <li>Consistency in applying <span class="key-term">pressure</span></li>
+                        <li>Consistency in swabbing of the <span class="key-term">correct surface area</span></li>
+                    </ol>
+                    <p>A fifth key factor for swab sampling involving TOC is emphasis on preventing external contamination of the swab due to the ubiquitous presence of organic carbon. It can be beneficial to emphasize "aseptic technique" used in microbiological sampling in training swab samplers, particularly when the sampling involves TOC analysis. In contrast to aseptic techniques used in microbiological sampling, however, the negative consequences of using <span class="key-term">isopropanol on gloves</span> or on adjacent surfaces prior to sampling should be emphasized.</p>
+                    <p>Consideration should be given to retraining and/or requalifying swab samplers on an established basis. The need for retraining and/or requalification should also be addressed as part of <span class="key-term">change control</span> for the swabbing procedure and as remedial action when swab sampling "operator error" is suspected in the investigation of a non-conforming result.</p>
+
+                    <h3>5.5.2 Key Issues for Training for Rinse Sampling</h3>
+                    <p>It is preferred to have a separate rinse sampling SOP. The major concern for accuracy in rinse samples is to prevent contamination of the rinse sample due to the <span class="key-term">sampling port</span> and the environment around the sampling port. This includes adequately flushing or cleaning the port prior to taking a sample, as well as avoiding sample contamination due to the use of isopropanol on gloves or the use of isopropanol to clean the port (prior to sampling).</p>
+                    <p>In training rinse samplers to take a sample for the final rinse of a CIP cycle, <span class="key-term">timing of the sampling process</span> is critical. Typically the very last portion of the rinse is sampled; but, it may be acceptable to sample before that time if such sampling represents a worst case. However, once process rinsing is complete, there is no way to go back and collect a rinse sample.</p>
+                    <p>Since the consistency of rinse sampling is less operator dependent, the need for retraining and requalification should also be addressed as part of change control for the rinse sampling procedure, as well as when rinse sampling "operator error" is suspected.</p>
+
+                    <h3>5.5.3 Training for Visual Inspection</h3>
+                    <p>Training for visual inspection depends on whether the visual inspection is part of a protocol execution or whether the visual inspection is the laboratory "limit of detection" determination. In either case, it is preferred to have a visual inspection SOP. Visual inspectors for either type of visual examination should have appropriate <span class="key-term">vision tests</span>.</p>
+                    <p>For training of visual inspectors in a protocol execution, key issues are:</p>
+                    <ul>
+                        <li>Access to sites for viewing</li>
+                        <li>Appropriate lighting</li>
+                        <li>Ability to discern the difference between residues on the surface and surface imperfections</li>
+                    </ul>
+                    <p>An important element of visual inspection training is knowing when to call for further analysis to determine the nature of the residue. For example, if what appears to be rouge is seen on the equipment, the presence of that residue should be noted. Determining whether that residue causes a failure in the cleaning process is a separate decision.</p>
+                    <p>For training in the laboratory "limit of detection" determination, a key is a careful distinction between:</p>
+                    <ul>
+                        <li>A <span class="key-term">visually clean</span> surface</li>
+                        <li>A <span class="key-term">partially soiled</span> surface (residue apparent only over a portion of the spiked area)</li>
+                        <li>A "<span class="key-term">fully soiled</span>" surface</li>
+                    </ul>
+                </div>
+                <div class="right-column">
+                    <h3>中文解說 | Commentary</h3>
+                    <div class="concept-box">
+                        <h4>訓練 vs. 資格認定</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>項目</th>
+                                    <th>訓練（Training）</th>
+                                    <th>資格認定（Qualification）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>目的</td>
+                                    <td>學習技術</td>
+                                    <td>認證能力</td>
+                                </tr>
+                                <tr>
+                                    <td>順序</td>
+                                    <td>必須在前</td>
+                                    <td>訓練後執行</td>
+                                </tr>
+                                <tr>
+                                    <td>內容</td>
+                                    <td>閱讀 SOP、觀摩示範、練習操作</td>
+                                    <td>展示技術或實際測試（已知加標試片）</td>
+                                </tr>
+                                <tr>
+                                    <td>頻率</td>
+                                    <td>初次 + 變更控制 + 糾正措施時</td>
+                                    <td>定期重新認定</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="note-box">
+                        <h4>棉棒取樣的四大一致性要素</h4>
+                        <ol>
+                            <li><strong>棉頭濕潤度</strong>：過濕或過乾都影響回收率</li>
+                            <li><strong>擦拭動作</strong>：需有重疊筆畫（overlapping strokes），確保完整覆蓋</li>
+                            <li><strong>施力大小</strong>：力量太輕收不到殘留，太重可能損傷表面</li>
+                            <li><strong>取樣面積</strong>：必須與回收率研究的面積一致</li>
+                        </ol>
+                        <p><strong>第五要素（TOC 特別注意）</strong>：避免手套上的有機物（如異丙醇）污染棉棒！使用 IPA 擦手後再取樣會造成偽高 TOC。</p>
+                    </div>
+                    <div class="term-box">
+                        <h4>沖洗取樣的關鍵要點</h4>
+                        <ul>
+                            <li><strong>取樣口清潔</strong>：取樣前需充分沖洗取樣閥/取樣口，防止殘留污染</li>
+                            <li><strong>時機點</strong>：通常取最後沖洗水的最後部分（最嚴格條件）；一旦 CIP 結束就沒有機會補取</li>
+                            <li><strong>異丙醇問題</strong>：不要用 IPA 清潔取樣口，原因同棉棒——會造成偽高 TOC</li>
+                        </ul>
+                    </div>
+                    <div class="note-box">
+                        <h4>重新訓練/認定的觸發情境</h4>
+                        <ul>
+                            <li>定期（例行）重新資格認定</li>
+                            <li>取樣程序變更（Change Control）</li>
+                            <li>不合格結果調查中懷疑操作員錯誤</li>
+                        </ul>
+                    </div>
+                    <div class="term-box">
+                        <h4>目視檢查訓練的三個判定類別</h4>
+                        <p>用於偵測限研究的訓練，觀察員必須能清楚區分：</p>
+                        <ul>
+                            <li><strong>目視清潔（Visually Clean）</strong>：表面無可見殘留</li>
+                            <li><strong>局部污染（Partially Soiled）</strong>：部分區域有殘留可見</li>
+                            <li><strong>完全污染（Fully Soiled）</strong>：整體可見殘留</li>
+                        </ul>
+                        <p>訓練時需特別強調：區分「殘留」與「表面缺陷/瑕疵」，兩者判定結果不同。</p>
+                    </div>
+                    <div class="practice-box">
+                        <h4>思考練習 4（綜合）</h4>
+                        <p>您正在建立生技工廠清潔驗證的取樣人員訓練計畫。針對棉棒取樣人員，請列出：(a) 初次訓練的最低要求步驟、(b) 資格認定的方式、(c) 哪些情況需要啟動重新訓練/認定？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end main-content -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+    <p>PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation</p>
+    <p>Section 3: Sampling Methods | 取樣方法 — Source: Section 5.0, pp. 24–31</p>
+    <p>SterileGMP Knowledge Hub — Educational Reference Material</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+</script>
+
+</body>
+</html>

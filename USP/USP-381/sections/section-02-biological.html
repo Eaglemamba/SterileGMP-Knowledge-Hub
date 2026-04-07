@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USP 〈381〉 - Section 2: Biological Tests & Packaging System Evaluation</title>
+    <style>
+:root {
+    --primary-blue: #1e3a5f;
+    --accent-blue: #3498db;
+    --light-gray: #fafafa;
+    --light-blue: #f0f7ff;
+    --yellow-start: #fff9e6;
+    --yellow-end: #fff3cd;
+    --green-bg: #e8f5e9;
+    --green-border: #4caf50;
+    --orange-bg: #fff3e0;
+    --orange-border: #ff9800;
+    --purple-bg: #f3e5f5;
+    --purple-border: #9c27b0;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --header-height: 60px;
+    --nav-height: 50px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif; line-height: 1.75; color: var(--text-dark); background: #f0f2f5; }
+.header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+.header .subtitle { font-size: 1rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header .page-info { font-size: 0.8rem; opacity: 0.7; }
+.top-header { background: linear-gradient(135deg, var(--primary-blue) 0%, #2c5282 100%); color: white; padding: 1rem 2rem; text-align: center; }
+.top-header h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
+.top-header .subtitle { font-size: 0.85rem; opacity: 0.85; }
+.top-nav { background: #2d3748; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); display: flex; align-items: stretch; }
+.nav-container { display: flex; justify-content: flex-start; align-items: center; flex: 1; padding: 0 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-container::-webkit-scrollbar { display: none; }
+.nav-scroll-btn { background: #2d3748; border: none; color: rgba(255,255,255,0.7); padding: 0 0.9rem; cursor: pointer; font-size: 1.3rem; line-height: 1; flex-shrink: 0; transition: background 0.2s, color 0.2s, opacity 0.2s; }
+.nav-scroll-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-scroll-btn.hidden { opacity: 0; pointer-events: none; }
+.nav-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; color: rgba(255,255,255,0.85); text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s ease; }
+.nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-item.active { color: white; border-bottom-color: var(--accent-blue); background: rgba(255,255,255,0.05); }
+.nav-num { width: 24px; height: 24px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; }
+.nav-item.active .nav-num { background: var(--accent-blue); }
+.nav-label { font-size: 0.85rem; font-weight: 500; }
+.main-content { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.main-container { max-width: 1800px; margin: 0 auto; padding: 1.5rem; }
+.chapter-section { background: white; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; scroll-margin-top: calc(var(--nav-height) + 1rem); }
+.chapter-divider { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, #3182ce 100%); color: white; }
+.chapter-badge { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; flex-shrink: 0; }
+.chapter-info h2 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.15rem; }
+.chapter-info p { font-size: 0.85rem; opacity: 0.85; }
+.chapter-body { padding: 1.5rem; }
+.two-column, .content-grid, .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.left-column, .original-content { background: var(--light-gray); border-radius: 10px; padding: 1.5rem; border: 1px solid #e2e8f0; }
+.left-column h2, .left-column h3, .original-content h2, .original-content h3 { color: var(--primary-blue); border-bottom: 2px solid #3182ce; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.left-column p, .original-content p { margin-bottom: 0.85rem; text-align: justify; font-size: 0.95rem; }
+.left-column ul, .left-column ol, .original-content ul, .original-content ol { margin: 0.75rem 0 0.75rem 1.5rem; font-size: 0.95rem; }
+.left-column li, .original-content li { margin-bottom: 0.5rem; }
+.right-column, .commentary { background: var(--light-blue); border-radius: 10px; padding: 1.5rem; border: 1px solid #bee3f8; }
+.right-column h2, .right-column h3, .commentary h2, .commentary h3 { color: #2c5282; border-bottom: 2px solid #63b3ed; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.1rem; }
+.right-column p, .commentary p { margin-bottom: 0.85rem; font-size: 0.95rem; }
+.column-header { font-weight: 600; color: var(--primary-blue); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid currentColor; font-size: 1rem; }
+.right-column .column-header, .commentary .column-header { color: #2c5282; }
+.chapter-body .container, .chapter-body .main-container { max-width: 100%; padding: 0; margin: 0; }
+.key-term, .highlight-term { background: linear-gradient(to right, #d4edda, #c3e6cb); padding: 1px 6px; border-radius: 4px; font-weight: 600; color: #155724; font-size: 0.9em; }
+.quote-box, .important-quote { background: linear-gradient(to right, #e7f3ff, #d6e9ff); border-left: 4px solid #3182ce; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 0.95rem; }
+.concept-box, .analogy-box, .note-box, .key-note, .term-box, .formula-box, .key-term-box, .key-point-box, .highlight-box { border-radius: 8px !important; padding: 1rem 1.25rem !important; margin-bottom: 1rem !important; font-size: 0.92rem !important; line-height: 1.7 !important; }
+.concept-box h3, .concept-box h4, .analogy-box h3, .analogy-box h4, .note-box h3, .note-box h4, .key-note h3, .key-note h4, .term-box h3, .term-box h4, .formula-box h3, .formula-box h4, .key-term-box h3, .key-term-box h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { margin-bottom: 0.6rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.concept-box p, .analogy-box p, .note-box p, .key-note p, .term-box p, .formula-box p, .key-term-box p, .key-point-box p, .highlight-box p { margin-bottom: 0.5rem !important; font-size: 0.92rem !important; }
+.concept-box ul, .concept-box ol, .analogy-box ul, .analogy-box ol, .note-box ul, .note-box ol, .key-note ul, .key-note ol, .term-box ul, .term-box ol, .formula-box ul, .formula-box ol, .key-term-box ul, .key-term-box ol, .key-point-box ul, .key-point-box ol, .highlight-box ul, .highlight-box ol { margin: 0.5rem 0 0.5rem 1.25rem !important; font-size: 0.92rem !important; }
+.concept-box li, .analogy-box li, .note-box li, .key-note li, .term-box li, .formula-box li, .key-term-box li, .key-point-box li, .highlight-box li { margin-bottom: 0.35rem !important; font-size: 0.92rem !important; }
+.analogy-box, .concept-box[class*="analogy"], .concept-box.analogy, div[class*="analogy"]:not(.content-grid):not(.two-column) { background: linear-gradient(135deg, var(--yellow-start) 0%, var(--yellow-end) 100%) !important; border-left: 4px solid #f6ad55 !important; }
+.analogy-box h3, .analogy-box h4, .concept-box.analogy h3, .concept-box.analogy h4 { color: #856404 !important; }
+.term-box, .key-term-box, .concept-box:not([class*="analogy"]):not([class*="note"]):not([class*="formula"]):not([class*="practice"]):not([class*="highlight"]):not(.analogy):not(.application) { background: var(--green-bg) !important; border-left: 4px solid var(--green-border) !important; }
+.concept-box:not(.analogy):not(.application) h3, .concept-box:not(.analogy):not(.application) h4, .term-box h3, .term-box h4, .key-term-box h3, .key-term-box h4 { color: #2e7d32 !important; }
+.note-box, .key-note, .key-point-box, .concept-box[class*="note"], .concept-box[class*="highlight"], .key-point, .highlight-box { background: var(--orange-bg) !important; border-left: 4px solid var(--orange-border) !important; }
+.note-box h3, .note-box h4, .key-note h3, .key-note h4, .key-point-box h3, .key-point-box h4, .highlight-box h3, .highlight-box h4 { color: #c65102 !important; }
+.formula-box, .concept-box[class*="formula"] { background: var(--purple-bg) !important; border-left: 4px solid var(--purple-border) !important; }
+.formula-box h3, .formula-box h4 { color: #7b1fa2 !important; }
+.formula-box pre { background: rgba(156, 39, 176, 0.08); padding: 0.75rem; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; }
+.concept-box.application, .application-box { background: #e3f2fd !important; border-left: 4px solid #1976d2 !important; }
+.concept-box.application h3, .concept-box.application h4, .application-box h3, .application-box h4 { color: #1565c0 !important; }
+.practice-box { background: linear-gradient(135deg, #e8f4fd 0%, #d1e9ff 100%) !important; border: 2px dashed #3182ce !important; border-radius: 10px !important; padding: 1.25rem !important; margin: 1.25rem 0 !important; font-size: 0.92rem !important; }
+.practice-box h3, .practice-box h4 { color: #2c5282 !important; margin-bottom: 0.75rem !important; font-size: 0.95rem !important; font-weight: 600 !important; }
+.practice-box p, .practice-box li { font-size: 0.92rem !important; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; border: 1px solid #e2e8f0; text-align: left; }
+th { background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%); font-weight: 600; color: var(--primary-blue); font-size: 0.85rem; }
+tr:nth-child(even) { background: #f7fafc; }
+.learning-objectives { background: linear-gradient(135deg, #e8f8f5 0%, #d1f2eb 100%); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+.learning-objectives h3 { color: #117a65; margin-bottom: 0.75rem; font-size: 1rem; }
+.learning-objectives ul, .learning-objectives ol { margin-left: 1.25rem; }
+.learning-objectives li { margin-bottom: 0.4rem; font-size: 0.92rem; }
+.structure-list { list-style: none; padding: 0; margin: 0; }
+.structure-list li { padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: white; border-radius: 6px; border-left: 4px solid #3182ce; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 0.9rem; }
+.section-title, .section-divider { font-size: 1.1rem; color: var(--primary-blue); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+.section-divider { border-bottom: 1px solid #e2e8f0; margin: 2rem 0; }
+.toc { background: white; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.toc h3 { color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; }
+.toc-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.toc-grid a { display: inline-block; padding: 0.4rem 0.8rem; background: #edf2f7; border-radius: 6px; color: var(--primary-blue); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+.toc-grid a:hover { background: var(--accent-blue); color: white; }
+.figure-container { margin: 1.25rem 0; text-align: center; }
+.figure-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.figure-caption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-medium); font-style: italic; }
+.hierarchy-diagram { text-align: center; margin: 1rem 0; }
+.hierarchy-level { margin: 0.5rem 0; }
+.hierarchy-box { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.hierarchy-box.level-1 { background: #fee2e2; border: 2px solid #ef4444; color: #b91c1c; }
+.hierarchy-box.level-2 { background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; }
+.hierarchy-box.level-3 { background: #d1fae5; border: 2px solid #10b981; color: #065f46; }
+.arrow-down { font-size: 1.2rem; color: var(--text-medium); margin: 0.25rem 0; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge.green { background: #d4edda; color: #155724; }
+.badge.red { background: #f8d7da; color: #721c24; }
+.badge.blue { background: #cce5ff; color: #004085; }
+.badge.yellow { background: #fff3cd; color: #856404; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; color: var(--accent-blue); }
+.pump-card, .tech-card, .info-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #e2e8f0; margin-bottom: 0.75rem; }
+.main-footer { background: var(--primary-blue); color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+.main-footer p { opacity: 0.9; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; background: var(--accent-blue); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.3rem; box-shadow: 0 3px 12px rgba(52, 152, 219, 0.4); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: #2980b9; transform: scale(1.1); }
+@media (max-width: 1200px) { .two-column, .content-grid, .side-by-side { gap: 1rem; } .left-column, .right-column, .original-content, .commentary { padding: 1.25rem; } }
+@media (max-width: 900px) { .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr; } .top-header h1, .header h1 { font-size: 1.1rem; } .nav-label { display: none; } .nav-item { padding: 0.75rem; } .nav-num { width: 28px; height: 28px; font-size: 0.85rem; } .chapter-divider { padding: 0.85rem 1rem; } .chapter-badge { width: 38px; height: 38px; font-size: 1.1rem; } .chapter-info h2 { font-size: 1rem; } .main-content, .main-container { padding: 1rem; } .chapter-body { padding: 1rem; } }
+@media print { .top-nav, .back-to-top, .header { display: none !important; } .top-header { background: var(--primary-blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .chapter-section { break-inside: avoid; page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; margin-bottom: 1rem; } .two-column, .content-grid, .side-by-side { grid-template-columns: 1fr 1fr; } .main-content, .main-container { max-width: 100%; padding: 0; } }
+    </style>
+</head>
+<body>
+
+<!-- SECTION HEADER -->
+<div class="header">
+    <h1>Section 2: Biological Tests &amp; Packaging System Evaluation | 生物試驗與包裝系統評估</h1>
+    <div class="subtitle">USP 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems</div>
+    <div class="page-info">USP General Chapter 〈381〉 | 4.1 Biological Reactivity, 4.3 Functionality Tests (Penetrability, Fragmentation, Self-Sealing)</div>
+</div>
+
+<!-- LEARNING OBJECTIVES -->
+<div class="learning-objectives" style="max-width:1800px; margin:1.5rem auto; padding:1.25rem 1.5rem;">
+    <h3>本章學習目標</h3>
+    <ul>
+        <li>理解 〈87〉 體外生物反應性試驗和 〈88〉 體內試驗的關係，以及 Type I/II 組件的選擇邏輯</li>
+        <li>掌握功能適用性三項試驗（穿刺性、碎屑測試、自密封性）的程序要求與接受標準</li>
+        <li>能夠解釋 21 gauge、bevel angle 12±2° 針頭規格與橡膠塞穿刺測試的關聯</li>
+        <li>了解生物反應性測試「基線信息」的局限性，以及為何需要與監管機構溝通產品特定適用性</li>
+    </ul>
+</div>
+
+<div class="main-container">
+
+<!-- SUBSECTION: Biological Reactivity -->
+<div class="section-title">4.1 Biological Reactivity — 生物反應性</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>Elastomeric components (Type I and Type II) meet the requirements of <span class="key-term">Biological Reactivity Tests, In Vitro 〈87〉</span>. If components do not meet the requirements of 〈87〉, they can be subjected to in vivo testing set forth in <span class="key-term">Biological Reactivity Tests, In Vivo 〈88〉</span>, Systemic Injection Test and 〈88〉, Intracutaneous Test. Components that meet the requirements of 〈87〉 are not required to undergo 〈88〉 testing.</p>
+
+        <p>Type I and Type II closures must both conform to the requirements of either the in vitro or the in vivo biological reactivity tests.</p>
+
+        <p><strong>Acceptance criteria:</strong> Test selection and results are consistent with 〈87〉 and/or 〈88〉.</p>
+
+        <div class="quote-box">
+            Footnote 1: "Biological reactivity testing in support of elastomeric components used for final pharmaceutical product packaging/delivery systems (drugs and drug/device combination products) provides <strong>baseline information</strong> and will often not be sufficient to assess the final suitability for use expectations of regulatory authorities. Thus, it is important to work with the appropriate regulatory authority for guidance regarding a product-specific application."
+        </div>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>〈87〉 體外生物反應性試驗 (In Vitro Biological Reactivity)：</strong>使用細胞培養方法（如 MEM Elution, Agar Diffusion, Direct Contact）測試萃取液的細胞毒性（cytotoxicity）。體外試驗快速、成本低，是首選方法。</p>
+            <p><strong>〈88〉 體內生物反應性試驗 (In Vivo Biological Reactivity)：</strong>當體外試驗不符合要求時，可改用小鼠（全身注射試驗）或兔子（皮內注射試驗）的體內試驗作為補充。符合 〈87〉 則不需要 〈88〉。</p>
+            <p>這個「先體外，不過再體內」的邏輯符合 3Rs 原則（Replace, Reduce, Refine）——盡量減少動物試驗。</p>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p>腳注 1 是一個非常重要的監管聲明：〈381〉 的生物反應性測試只提供「基線信息（baseline information）」，通常<strong>不足以</strong>滿足監管機構的最終適用性要求。這意味著：</p>
+            <ul>
+                <li>通過 〈87〉/〈88〉 測試 ≠ 監管批准</li>
+                <li>特別是對於新型生物製劑、高敏感性製劑，還需要進行完整的 〈1663〉/〈1664〉 研究</li>
+                <li>必須主動與監管機構（FDA、EMA）溝通，確認特定產品的要求</li>
+            </ul>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>生物反應性測試就像餐廳的食材衛生基礎檢查——通過衛生局基本檢查（〈87〉/〈88〉），只說明食材沒有明顯毒素，但這不代表它適合供應給有特殊飲食需求的客人（如過敏、特殊藥物）。針對特定患者（高風險藥品），還需要額外的深度評估（〈1663〉/〈1664〉）。基線就是最低門檻，不是終點。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>CDMO 廠承接一個 mRNA 疫苗客戶，要使用含氟聚合物塗層的橡膠塞。即使供應商提供了符合 〈87〉 的測試報告，你仍需要：（1）要求供應商提供特定批次的 CoA；（2）評估 〈1663〉 可萃取物研究是否已針對 mRNA 製劑的特殊條件（如低溫儲存、pH 範圍）執行；（3）在 CMC 模塊中向 FDA 說明包材選擇的完整科學依據。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>為什麼 Type I 和 Type II 橡膠塞都需要生物反應性測試？Type II 允許更多的化學萃取物，為何它的生物安全標準和 Type I 一樣？</li>
+                <li>一個橡膠塞通過了 〈87〉 細胞毒性試驗，但你的 CDMO 客戶的藥品是一種蛋白抗體。〈87〉 結果是否足夠支持這個應用？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- SUBSECTION: Functionality Tests -->
+<div class="section-title">4.3 Functionality Tests — 功能適用性試驗</div>
+
+<div class="two-column">
+    <div class="left-column">
+        <h2>原文內容 Original Text</h2>
+        <p>[Note—Samples treated as described for preparation of Sample solution and air-dried should be used for the functionality tests of 4.3.1 Penetrability, 4.3.2 Fragmentation, and 4.3.3 Self-Sealing Capacity. Functionality tests are performed on closures intended to be pierced by a hypodermic needle. The 4.3.3 Self-Sealing Capacity test is required only for closures intended for <span class="key-term">multiple-dose containers</span>. The needle specified for each test is a lubricated, long-bevel (bevel angle <span class="key-term">12 ± 2°</span>) hypodermic needle with an external diameter of <span class="key-term">0.8 mm (21 gauge)</span>.]</p>
+
+        <h3>4.3.1 Penetrability（穿刺性）</h3>
+        <p>Fill 10 suitable vials to the nominal volume with water, fit the closures to be examined, and secure with a cap. Using a new hypodermic needle as described above for each closure, pierce the closure with the needle perpendicular to the surface.</p>
+        <p><strong>Acceptance criteria:</strong> The force for piercing is no greater than <span class="key-term">10 N (1 kilogram-force)</span> for each closure, determined with an accuracy of ±0.25 N (25 gram-force).</p>
+
+        <h3>4.3.2 Fragmentation（碎屑測試）</h3>
+        <p><strong>Closures for liquid preparations:</strong> Fill 12 clean vials with water to 4 mL less than the nominal capacity. Fit the closures to be examined, secure with a cap, and allow to stand for 16 h.</p>
+        <p><strong>Closures for dry preparations:</strong> Fit closures to be examined into 12 clean vials, and secure each with a cap.</p>
+        <p><strong>Procedure:</strong> Using a hypodermic needle as described above fitted to a clean syringe, inject into each vial 1 mL of water while removing 1 mL of air. Repeat this procedure 4 times for each closure, piercing each time at a different site. Use a new needle for each closure. Filter the total volume of liquid in all the vials through a single filter with a nominal pore size NMT 0.5 µm. Count the rubber fragments on the surface of the filter visible to the naked eye.</p>
+        <p><strong>Acceptance criteria:</strong> There are no more than <span class="key-term">5 fragments</span> visible. This limit is based on the assumption that fragments with a diameter &gt;50 µm are visible to the naked eye. In case of doubt or dispute, the particles are examined microscopically to verify their nature and size.</p>
+
+        <h3>4.3.3 Self-Sealing Capacity（自密封性）</h3>
+        <p>[Note—Required only for closures intended for multiple-dose containers.]</p>
+        <p>Fill 10 suitable vials with water to the nominal volume. Fit the closures that are to be examined, and cap. Using a new hypodermic needle as described above for each closure, pierce each closure <span class="key-term">10 times</span>, piercing each time at a different site. Immerse the 10 vials in a solution of <span class="key-term">0.1% methylene blue</span>, and reduce the external pressure by <span class="key-term">27 kPa</span> for 10 min. Restore to atmospheric pressure, and leave the vials immersed for 30 min. Rinse the outside of the vials.</p>
+        <p><strong>Acceptance criteria:</strong> None of the vials contain any trace of blue solution.</p>
+    </div>
+
+    <div class="right-column">
+        <h2>導師解析 Tutorial Commentary</h2>
+
+        <div class="concept-box">
+            <h4>核心概念解析 Key Concepts</h4>
+            <p><strong>三項功能試驗的目的：</strong></p>
+            <ul>
+                <li><strong>Penetrability（穿刺性）</strong>：確保護士/藥師能夠輕鬆穿刺橡膠塞，過緊的塞子會導致操作困難、針頭偏斜，甚至增加針刺傷風險。≤10 N（約 1 kg）的力度確保安全操作性。</li>
+                <li><strong>Fragmentation（碎屑測試）</strong>：每次穿刺都可能切削下橡膠碎屑，這些碎屑進入藥液是嚴重的可見/不可見異物污染問題。≤5 碎屑的標準是保護患者的底線。</li>
+                <li><strong>Self-Sealing Capacity（自密封性）</strong>：多劑量容器（multi-dose containers）被多次穿刺後，橡膠必須能「自動閉合」防止細菌進入。亞甲藍（methylene blue）的藍色是非常靈敏的洩漏指示劑。</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+            <h4>公式與計算 Formula — 碎屑試驗設計邏輯</h4>
+            <pre>
+12 個西林瓶 × 5 次穿刺 = 60 次穿刺總計
+
+每次穿刺在不同位置（different site）
+→ 確保測試完整的瓶塞表面，
+  而非集中在同一弱點
+
+所有 12 瓶液體合併過濾（single filter）
+→ 最大化碎屑收集效率
+
+接受標準：≤5 碎屑（可見，>50 µm）
+→ 若有疑義，顯微鏡確認材質和尺寸
+
+注意：液體製劑需浸泡 16 小時
+（模擬儲存期間的液體接觸效果）
+            </pre>
+        </div>
+
+        <div class="note-box">
+            <h4>重點提示 Key Notes</h4>
+            <p><strong>針頭規格的標準化意義：</strong>21 gauge、bevel angle 12±2° 是標準化試驗條件，確保不同實驗室的結果可比較。臨床上使用的針頭規格千變萬化（18G 到 27G），但測試用 21G 是通過科學研究選定的「代表性最壞情況」規格。在實際產品設計中，如果預期使用更大直徑的針頭（如 18G 用於黏稠藥品），可能需要額外測試。</p>
+            <p><strong>自密封試驗的 27 kPa 負壓：</strong>模擬臨床取藥時注射器抽取藥液造成的瓶內負壓，這是最容易導致外部液體（包含細菌）被吸入的時機。如果橡膠在負壓條件下密封失效，外部的亞甲藍水溶液就會被吸入瓶內——這就是試驗的模擬邏輯。</p>
+        </div>
+
+        <div class="analogy-box">
+            <h4>比喻說明 Analogy</h4>
+            <p>自密封試驗就像測試游泳圈（橡膠）被刺破多次後是否還能防水——你用針刺穿 10 個洞，然後把游泳圈（西林瓶）浸入有顏色的水（亞甲藍），並且製造負壓（像在拉游泳圈上的開口），看看有色水會不會滲入。如果沒有藍色，代表橡膠的自癒合（self-sealing）能力夠強，能在多次穿刺後依然保持屏障。</p>
+        </div>
+
+        <div class="practice-box" style="border-style:solid; background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color:#22c55e;">
+            <h4>實務應用 Practical Application</h4>
+            <p>在 CDMO 廠接受預充式注射器客戶時，活塞（plunger）的穿刺性測試通常不適用（活塞不被針頭穿刺），但碎屑問題仍然存在於組裝和推注過程。應重點評估：（1）活塞在注射力 (glide force) 下的矽油膜穩定性；（2）針頭護套 (needle shield) 的穿刺力；（3）多劑量藥瓶 (multi-dose vial) 的橡膠塞則需完整執行全部三項功能試驗。</p>
+        </div>
+
+        <div class="practice-box">
+            <h4>練習思考 Practice Questions</h4>
+            <ol>
+                <li>如果一個橡膠塞碎屑試驗結果顯示 8 個可見碎屑，超過限量。你應如何調查原因？哪些因素可能導致過多碎屑？</li>
+                <li>為什麼 Self-Sealing Capacity 試驗只針對多劑量容器（multiple-dose containers），而不包括單劑量西林瓶？</li>
+                <li>穿刺力試驗要求每個瓶塞都用一根新針頭（using a new needle for each closure）。如果重複使用同一根針頭會如何？</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Test Requirements Summary -->
+<div class="section-title">〈381〉 完整試驗要求矩陣</div>
+<div style="overflow-x:auto; max-width:1800px;">
+<table>
+    <tr>
+        <th>試驗類別</th>
+        <th>試驗項目</th>
+        <th>Type I</th>
+        <th>Type II</th>
+        <th>僅限特定容器</th>
+    </tr>
+    <tr>
+        <td rowspan="2">生物反應性</td>
+        <td>〈87〉 In Vitro（首選）</td>
+        <td>必須</td>
+        <td>必須</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>〈88〉 In Vivo（〈87〉 不通過時）</td>
+        <td>替代</td>
+        <td>替代</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td rowspan="7">理化試驗</td>
+        <td>4.2.1 Appearance (渾濁度)</td>
+        <td>≤6 NTU</td>
+        <td>≤18 NTU</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.2 Color</td>
+        <td colspan="2">不深於 Color standard</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.3 Acidity/Alkalinity</td>
+        <td colspan="2">≤0.3 mL NaOH 或 ≤0.8 mL HCl</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.4 Absorbance</td>
+        <td>≤0.2</td>
+        <td>≤4.0</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.5 Reducing Substances</td>
+        <td>≤3.0 mL</td>
+        <td>≤7.0 mL</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.6 Volatile Sulfides</td>
+        <td colspan="2">≤control</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td>4.2.7 Ammonium</td>
+        <td colspan="2">≤2 ppm NH₄⁺</td>
+        <td>—</td>
+    </tr>
+    <tr>
+        <td rowspan="3">功能適用性</td>
+        <td>4.3.1 Penetrability</td>
+        <td colspan="2">≤10 N (1 kgf)</td>
+        <td>僅穿刺型瓶塞</td>
+    </tr>
+    <tr>
+        <td>4.3.2 Fragmentation</td>
+        <td colspan="2">≤5 碎屑 (&gt;50 µm)</td>
+        <td>僅穿刺型瓶塞</td>
+    </tr>
+    <tr>
+        <td>4.3.3 Self-Sealing Capacity</td>
+        <td colspan="2">無亞甲藍滲入</td>
+        <td>僅多劑量容器</td>
+    </tr>
+</table>
+</div>
+
+</div><!-- end main-container -->
+
+<!-- SECTION SUMMARY -->
+<div class="learning-objectives" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); max-width:1800px; margin:0 auto 1.5rem; padding:1.25rem 1.5rem;">
+    <h3>本節重點回顧 Section Summary</h3>
+    <ul>
+        <li>生物反應性試驗：先做 〈87〉 體外試驗（細胞毒性），不符合才做 〈88〉 體內試驗；Type I 和 Type II 使用相同標準。但 〈381〉 僅提供基線信息，高風險藥品必須與監管機構溝通，並完成 〈1663〉/〈1664〉 深度研究</li>
+        <li>穿刺性試驗（10 個瓶 × 1 次穿刺）：≤10 N；碎屑試驗（12 個瓶 × 5 次穿刺，合併過濾）：≤5 個可見碎屑（&gt;50 µm）</li>
+        <li>自密封試驗（10 個瓶 × 10 次穿刺，浸入 0.1% 亞甲藍 + 27 kPa 負壓）：所有瓶均無藍色滲入；此試驗<strong>僅適用於多劑量容器</strong></li>
+        <li>功能試驗使用標準化針頭（21G，bevel 12±2°），試驗樣品需先按樣品溶液制備步驟處理並乾燥，確保測試條件的代表性</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="main-footer">
+    <p><strong>版權聲明：</strong>本教材為教育目的之結構化摘要與導師解析。原始內容版權屬 USP 所有，&copy; 2025 USPC。</p>
+    <p>SterileGMP Knowledge Hub | USP 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems</p>
+</div>
+
+</body>
+</html>

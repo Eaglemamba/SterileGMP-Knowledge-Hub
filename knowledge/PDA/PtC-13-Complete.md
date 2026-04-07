@@ -1,5 +1,102 @@
 # PDA Points to Consider No. 13 (2025): Materials in ATMP Manufacturing
 
+i
+
+ii
+
+Points to Consider
+No. 13
+Materials in ATMP Manufacturing
+2025
+
+ISBN: 978-1-945584-50-3
+© 2025Parenteral Drug Association, Inc.
+All rights reserved
+
+i
+
+Authors
+Co-Leads
+Friedrich von Wintzingerode, PhD
+Roche-Genentech
+Marc Glogovsky
+ValSource, Inc.
+
+Michael Blackton
+Ocugen
+Basak Clements
+Biomatria
+Lori Dingledine
+Roche-Genentech
+Athenesia Faggins
+Minaris Advanced Therapies
+Philip Garibaldi
+Lonza
+Jason Kuo
+BMS
+Christoph Meyer
+Lonza
+
+Ryan Murray
+ValSource, Inc.
+Arpy Ohanian
+Moderna
+Takehiro Okumura
+Alloy Therapeutics
+Kara Quinn
+U.S. Food and Drug Administration
+Joel Reynolds
+Kite Pharma
+Michael Skidmore
+Pharmaceutical Quality Consulting, Inc.
+
+ii
+
+Table of Contents
+Authors ................................................................................................................................................................ i
+Table of Contents ............................................................................................................................................. ii
+Introduction ...................................................................................................................................................... 1
+Glossary ............................................................................................................................................................. 2
+Abbreviations ................................................................................................................................................... 3
+Topic 1. ATMP Material Categories ............................................................................................................ 4
+Q 1.1. Which ATMP material categories exist and how are they defined? ...................................... 4
+Topic 2. Defining an ATMP Material Strategy ......................................................................................... 9
+Q 2.1. What are key considerations when defining an ATMP material strategy? ........................... 9
+Topic 3. Risk – Based Material Qualification .......................................................................................... 11
+Q 3.1. What are key considerations for ATMP material qualification and specification setting?
+ ............................................................................................................................................................. 11
+Q 3.2. What are the General Requirements? ......................................................................................... 12
+Q 3.3. What are specific considerations for ATMP single-use components and final containers?
+ ............................................................................................................................................................. 22
+Topic 4. Risk-Based Supplier Qualification ............................................................................................. 23
+Q 4.1. What are the key considerations when qualifying an ATMP material vendor or supplier?
+ ............................................................................................................................................................. 23
+Topic 5. Lifecycle Management Considerations for Commercial Manufacturing .......................... 26
+Q 5.1. How do you manage the situation when the supplier does not provide GMP service for
+the material, for example, if only Research Use Only grade is available? .......................... 27
+Q 5.2. How to implement principles of GMP and enable IND filing? ............................................... 28
+Q 5.3. How to mitigate risks for cross-contamination and microbial contamination? ................. 29
+Q 5.4. How to assure the quality of the product (i.e., gRNA, nuclease)? ......................................... 30
+
+iii
+References ...................................................................................................................................................... 31
+
+Figures and Tables Index
+Table 1.1-1 Commonly Used ATMP Material Categories ....................................................................... 6
+
+**Table 3.2-1 Overview of Relevant Guidelines Related to Microbial and Viral Safety and**
+
+Transmissible Spongiform Encephalopathy/ Bovine Spongiform Encephalopathy and Creutzfeldt-
+Jakob Disease Safety ..................................................................................................................................... 14
+
+**Table 3.2-2 Overview of United States and the European Union GMP Regulations Related to**
+
+Material Identification Testing .................................................................................................................... 18
+
+*[Figure 3.2-1 Application of United States and the European Union GMP Regulations related to]*
+
+material Identification Testing ………………………………………………………………………………………………… 19
+
 Introduction
 This document provides key "Points to Consider" for navigating the complexities of raw materials in the
 manufacturing of advanced therapy medicinal products (ATMP), aiming to guide stakeholders in
@@ -189,9 +286,247 @@ derived materials
 Any of the material categories presented in Table 1.1-1 could also be subclassified as primary, secondary,
 or tertiary animal-derived or primary, secondary, or tertiary human-derived mater
 
-| Material Category | Definition | Reference Document | Examples |
-| --- | --- | --- | --- |
+**Table 1.1-1 Commonly Used ATMP Material Categories**
 
+Material Category
+Definition
+Reference Document
+Examples
+Ancillary Raw Materials
+Raw materials used during
+the medicinal product
+processing that are not
+intended to be a part of the
+final product formulation
+Modified from:
+USP <1043>
+ISO 20399
+•
+Feeder cells
+•
+Growth factors
+•
+Cell differentiation reagents
+•
+Expansion Media
+Starting Materials
+ATMP starting materials
+are defined as all the
+materials from which the
+active substance is
+manufactured
+EMA/CAT/22473/2025
+
+ EMA/246400/2021
+Based on health authority feedback, the following ATMP
+starting materials have been defined:
+•
+mRNA-based individualized therapy:
+o
+DNA template for in-vitro mRNA transcription
+o
+mRNA capping reagent
+o
+RNA ribonucleotides
+•
+AAV-based gene therapy:
+o
+Plasmids
+o
+Cell banks (e.g., HEK293)
+•
+CAR T-cell therapy:
+o
+Patient leukapheresis material
+o
+Cell Banks
+o
+Packaging and transfer plasmids and plasmid cell
+banks
+o
+Viral and non-viral vectors
+o
+Gene editing reagents (e.g., gRNA, CAS nuclease)
+•
+TIL therapy:
+o
+Tumor specimen
+
+Excipients
+An excipient is any
+ingredient or substance
+intentionally added to a
+drug that is not part of the
+active substance (e.g., to
+aid in the protection,
+support, stability,
+bioavailability, or patient
+acceptability).
+EMEA/CHMP/QWP/3969
+51/2006,
+FDA 2005 Guidance for
+Industry
+Nonclinical Studies for the
+Safety Evaluation of
+Pharmaceutical Excipients
+•
+HEPES–liposomes and lipid nanoparticles for mRNA
+therapeutics
+•
+DMSO–biological preservative like human serum, and
+proprietary materials for cell therapies
+Subcategory of
+Excipients– Novel
+Excipient
+A novel excipient is one
+used for the first time in a
+drug product or by a new
+route of administration. It
+may be a new chemical
+entity or a well-established
+one that has not yet been
+used for human
+administration and /or for
+a particular human
+administration pathway.
+EMEA/CHMP/QWP/3969
+51/2006,
+FDA 2005 Guidance for
+Industry
+Nonclinical Studies for the
+Safety Evaluation of
+Pharmaceutical Excipients
+PF68 in AAV formulation for intra-cisternal magna injection
+Single-Use Components
+Components directly
+contacting the process
+stream in product
+manufacturing for a single
+purpose and discarded
+BioPhorum 2019 Raw
+Material Risk Assessments
+A holistic approach to Raw
+Material Risk Assessments
+through Industry
+Collaboration
+•
+Bioprocess bags
+•
+Tubing
+•
+Filters
+•
+Connectors
+•
+Microcarriers
+•
+Magnetic beads
+GMP Support Materials
+Procured materials
+supporting GMP
+manufacturing without
+direct product contact
+BioPhorum 2019 Raw
+Material Risk Assessments
+A holistic approach to Raw
+Material Risk Assessments
+through Industry
+Collaboration
+•
+Clean-in-place
+•
+Cleaning agents/disinfectants
+•
+Aseptic gowning materials
+•
+Process equipment gaskets
+•
+Process-simulation media
+
+Laboratory Reagents
+(Testing Materials)
+Used as part of analytical
+testing either in-line, in-
+process or off-line, with no
+contact with the process
+stream
+BioPhorum 2019 Raw
+Material Risk Assessments
+A holistic approach to Raw
+Material Risk Assessments
+through Industry
+Collaboration
+•
+Analytical reference standards, assay controls and
+materials
+•
+Assay-specific critical reagents
+•
+Cell lines
+•
+Positive control test material
+Primary Packaging
+Components/Container–
+Closure Systems
+Container–closure systems
+and device components
+directly in contact with the
+final drug product or
+directly employed for the
+delivery of the final drug
+product
+USP <659>
+•
+Cryo bags
+•
+Vials
+•
+Stoppers
+•
+Caps
+•
+Prefilled syringes
+Process Aids
+Materials used to facilitate
+the manufacturing process
+that are not consumed
+during processing and may
+or may not be multiuse
+(primarily a physical
+function)
+BioPhorum 2019 Raw
+Material Risk Assessments
+A holistic approach to Raw
+Material Risk Assessments
+through Industry
+Collaboration
+•
+Resins
+•
+Chromatography columns
+•
+Process filters
+•
+In-process containers
+Process Gasses
+Gases that come in direct
+contact with the product
+or primary container
+surfaces
+The Rules Governing
+Medicinal Products in the
+European Union
+Volume 4 EU Guidelines
+for Good Manufacturing
+Practice for Medicinal
+Products for Human and
+Veterinary Use Annex 1
+Manufacture of Sterile
+Medicinal Products
+•
+Material transfer ports integrated into rigid barrier
+
+Topic 2. Defining an ATMP Material Strategy
 Q 2.1. What are key considerations when defining an ATMP material strategy?
 Defining an ATMP material strategy means to constantly maintain a balance between imperfections
 regarding material quality and supply standards and potential fast-track commercialization (e.g., clinical
@@ -305,9 +640,189 @@ License Application (BLA)/Marketing Authorization Application process. Conductin
 assessment against relevant regulations is recommended to create a strategy for the product development
 lifecycle via consultation with health authorities for the intended region.
 
-| Type of ATMP Material | Relevant Guideline | Example | Comment |
-| --- | --- | --- | --- |
+**Table 3.2-1 Overview of Relevant Guidelines Related to Microbial and Viral Safety and Transmissible Spongiform Encephalopathy/**
 
+Bovine Spongiform Encephalopathy and Creutzfeldt-Jakob Disease Safety
+Type of ATMP Material
+Relevant Guideline
+Example
+Comment
+Non-Human/ Non -Animal
+Derived Material
+U.S. GMP regulations
+EMA EudraLex – Vol. 4 for ATMPs
+•
+Chemically defined
+cell culture media
+•
+E. coli plasmid
+•
+Nucleotides (e.g.,
+guide RNA)
+Microbial and viral
+safety requirements
+must be defined as part
+of the product’s overall
+contamination control
+strategy
+Human Blood Derived
+Material
+•
+U.S. 21 CFR 610.40
+•
+U.S. 21 CFR 640
+•
+Ph. Eur. 5.2.12
+•
+Ph. Eur. 1646
+•
+MHLW Notification No. 37 (2018):
+Japanese Standards for Biological
+Raw Materials (JSBRM)
+•
+FDA Guidance for Industry:
+Recommendations to Reduce the
+Possible Risk of Transmission of
+Creutzfeldt-Jakob Disease and
+Variant Creutzfeldt-Jakob Disease
+by Blood and Blood Components
+(2022)
+•
+FDA Draft Guidance for Industry:
+Considerations for the Use of
+Human- and Animal-Derived
+Materials in the Manufacture of
+Cellular and Gene Therapy and
+Tissue-Engineered Medical
+Products (2024
+
+•
+Human serum
+•
+Human serum
+albumin
+None
+
+Human Tissue and Cell
+Derived Material
+•
+FDA Guidance for Industry:
+Recommendations to Reduce the
+Possible Risk of Transmission of
+Creutzfeldt-Jakob Disease and
+Variant Creutzfeldt-Jakob Disease
+by Blood and Blood Components
+(2022)
+•
+U.S. 21 CFR 1271.50
+•
+FDA Guidance for Industry:
+Chemistry, Manufacturing, and
+Control (CMC) Information for
+Human Gene Therapy
+Investigational New Drug
+Applications (INDs) (2020)
+FDA Guidance for Industry: Characterization
+and Qualification of Cell Substrates and
+Other Biological Materials Used in the
+Production of Viral Vaccines for Infectious
+Disease Indications (2010)
+•
+Ph. Eur. 5.2.12
+•
+USP <1046>
+•
+EU Directive 2004/23/EC on
+setting standards of quality and
+safety for the donation,
+procurement, testing, processing,
+preservation, storage and
+distribution of human tissues and
+cells
+•
+Directive 2006/17/EC
+implementing -Directive
+2004/23/EC
+•
+Directive 2002/98/EC on setting
+standards…for the collection,
+testing, processing, storage and
+distribution of human blood and
+blood components
+
+•
+Feeder cells (e.g.,
+cord-derived feeder
+cells)
+•
+HEK293 cell banks
+•
+Autologous:
+Apheresis material
+•
+Allogeneic: PBMC
+for iPSC
+Allogeneic: Cord blood
+•
+Allogeneic: hESC
+Donor eligibility must
+be determined through
+screening for risk
+factors and/or clinical
+evidence of infection
+due to relevant
+communicable disease.
+Donor testing for
+relevant communicable
+disease is also required
+to demonstrate
+conformity with
+appropriate
+requirements.
+
+•
+Directive 2004/33/EC
+implementing -Directive
+2002/98/EC
+•
+Directive 2006/86/EC regards
+traceability requirements…for the
+coding, processing, preservation,
+storage and distribution of human
+tissues and cells
+•
+MHLW Notification No. 37 (2018):
+Japanese Standards for Biological
+Raw Materials (JSBRM)
+•
+“Enhancement of Quality and Safety
+of Drugs and Medical Devices
+Produced Using Raw Materials of
+Human Origin” (PFSB Notification
+No. 1213002
+Animal Derived
+•
+9 CFR 113: Standard Requirements
+—viral safety for animal materials
+•
+MHLW Notification No. 37 (2018):
+Japanese Standards for Biological
+Raw Materials (JSBRM)
+•
+ICH Q5A
+•
+WHO Guidelines on Transmissible
+Spongiform Encephalopathies in
+relation to Biological and
+Pharmaceutical Products 2003
+•
+EMA/410/01
+FBS
+None
+
+Specific Safety Considerations for Allogeneic Therapies
+For allogeneic therapies, testing at various levels (e.g., donor cells, cell banks, during drug substance/drug
+product manufacture) can address additional safety concerns from donor cells not covered by donor
 testing at the first timing of donation. Ensuring donor consent for commercial usage is recommended;
 otherwise, it may become an issue at the timing of commercialization if it is not fully agreed upon. For
 allogeneic ATMP manufacturing, which falls under the PIC/S GMP regulation, detailed guidance on seed
@@ -326,8 +841,65 @@ for critical raw materials (e.g., excipients), see Table 3.2-2 and Figure 3.2-1 
 strategy for verifying the identity of raw materials upon receipt should be considered early, within the
 development phase of the product lifecycle.
 
-| Reference | Requirement | Guidance on Implementation |
-| --- | --- | --- |
+**Table 3.2-2 Overview of United States and the European Union GMP Regulations Related to Material Identification Testing**
+
+Reference
+Requirement
+Guidance on Implementation
+U.S. 21 CFR Part 210.2(c), Applicability of
+Current Good Manufacturing Practice
+Regulations
+Production of an investigational drug for use in a
+Phase 1 study is exempt from compliance with the
+regulations in 21 CFR Part 211. However, this
+exemption does not apply once the investigational
+drug has been made available for use by or for the
+sponsor in a Phase 2 or Phase 3 study.
+U.S. FDA Guidance for Industry:
+Investigational Drug for Use in a Phase 1
+Study
+U.S. 21 CFR Part 211.84(d)(2), Testing and
+Approval or Rejection of Components,
+Drug Product Containers, and Closures
+Each component shall be tested for conformity with
+all appropriate written specifications for purity,
+strength, and quality. In lieu of such testing by the
+manufacturer, a report of analysis may be accepted
+from the supplier of a component, provided that at
+least one specific identity test is conducted.
+USP <1043> Ancillary Materials for
+Cell, Gene, and Tissue-Engineered
+Products
+USP <1046> Cell-Based Advanced
+Therapies and Tissue-Based Products
+USP <1047> Gene Therapy Products
+USP <1665> Characterization and
+Qualification of Plastic Components
+and Systems Used to Manufacture
+Pharmaceutical Drug Products and
+Biopharmaceutical Drug Substances
+and Products
+EudraLex  - Vol. 4 -  Guidelines on Good
+Manufacturing Practice Specific to
+Advanced Therapy Medicinal Products,
+Section 7.15
+The ATMP manufacturer should verify compliance of
+the supplier’s materials with the agreed
+specifications…Reliance on the certificate of analysis
+of the supplier is acceptable if all the risks are duly
+understood, and measures are put in place to
+eliminate the risks or mitigate them to an acceptable
+level (e.g. qualification of suppliers).
+EMA Guideline on Quality, Non-
+Clinical and Clinical Aspects of
+Medicinal Products Containing
+Genetically Modified Cells
+EMA Guideline on Plasma-Derived
+Medical Products
+EMA Guideline on Quality, Non-
+Clinical and Clinical Requirements for
+Investigational Advanced Therapy
+Medicinal Products in Clinical Trials
 
 *[Figure 3.2-1 Application of United States and the European Union GMP Regulations related to]*
 
@@ -891,7 +1463,6 @@ pda.org
 
 PDA Global Headquarters
 4350 East West Highway, Suite 600
-Bethesda, MD 20814 USA
 TEL +1 (301) 656-5900
 FAX +1 (301) 986-0296
 PDA Europe

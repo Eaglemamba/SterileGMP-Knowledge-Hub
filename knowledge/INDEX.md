@@ -1,4 +1,4 @@
-# PDA Knowledge Base — Master Index
+# SterileGMP Knowledge Base — Master Index
 
 This index helps route questions to the correct report(s) before searching.
 Read this file first, identify the 1–2 most relevant reports, then grep only those.
@@ -6,1071 +6,356 @@ Read this file first, identify the 1–2 most relevant reports, then grep only t
 ---
 
 ## PDA/Guide-No1-Complete.md
-**Report:** PDA Manufacturing Technology Guide No. 1: Filling Machine Design and Operation
-**Pages:** p1–p267 | **Sections:** 20 topics
-
-**Covers questions about:**
-- Filling machine types: peristaltic pump, rotary piston pump, time-pressure (TP), diaphragm pump (DP), needle-based systems
-- Dose accuracy, dose control, overfill, weight-based filling
-- Container closure systems: vials, syringes, cartridges, stoppers, crimping, capping
-- Sterile fluid path design, aseptic liquid transfer, tubing connections
-- Component introduction (vial washing, depyrogenation tunnel, stopper washing)
-- Sterilization preparation for filling line components
-- APS / media fill for filling machines
-- Powder filling: auger, vacuum powder systems
-- Batch setup, batch record, changeover, cleaning
-- CDMO filling line flexibility and design strategy
-- Case studies for real-world filling line decisions
-
-**Key terms:** peristaltic pump, rotary piston pump, time-pressure filling, diaphragm pump, dose weight, CCI (container closure integrity), stopper, crimp, depyrogenation, aseptic filling, URS, FRS, SDS, media fill, APS
-
-**Sections:** Topic 0 (Intro) → Topic 21 (Case Studies)
+PDA Manufacturing Technology Guide No. 1: Filling Machine Design and Operation | p1–p267 | 20 topics
+Terms: peristaltic pump, rotary piston pump, time-pressure filling, diaphragm pump, dose weight, CCI (container closure integrity), stopper, crimp, depyrogenation, aseptic filling, URS, FRS, SDS, media fill, APS
 
 ---
 
 ## PDA/TR22-Complete.md
-**Report:** PDA TR22: Process Simulation for Aseptically Filled Products
-**Pages:** p1–p115 | **Sections:** 9
-
-**Covers questions about:**
-- What is Aseptic Process Simulation (APS) / media fill and why it is required
-- APS design: frequency, batch size, fill volume, incubation conditions
-- Acceptance criteria: contamination limits, how many units to fill
-- Environmental monitoring during APS
-- Personnel qualification and gowning requirements for APS
-- Documentation requirements for APS studies
-- Lyophilization (freeze-drying) APS considerations
-- Risk assessment approach for APS design
-- Failed APS: investigation, corrective actions, re-qualification
-
-**Key terms:** media fill, aseptic process simulation, TSB (tryptic soy broth), contamination unit, incubation, 0.1% contamination rate, worst-case simulation, personnel intervention, environmental monitoring, lyophilization APS, failed APS investigation
-
-**Sections:** Section 0 (Intro) → Section 6 (Lyophilization) + Appendices A1–A3
+PDA TR22: Process Simulation for Aseptically Filled Products | p1–p115 | 9
+Terms: media fill, aseptic process simulation, TSB (tryptic soy broth), contamination unit, incubation, 0.1% contamination rate, worst-case simulation, personnel intervention, environmental monitoring, lyophilization APS, failed APS investigation
 
 ---
 
 ## PDA/TR26-Complete.md
-**Report:** PDA TR26: Sterilizing Filtration of Liquids (Revised 2025)
-**Pages:** p1–p73 | **Sections:** 8 + 3 appendices
-
-**Covers questions about:**
-- How sterilizing-grade filters work: membrane structure, pore size, bacterial retention
-- Filter qualification vs. validation: what tests are required
-- Integrity testing: bubble point, diffusive flow, water intrusion, PUPSIT
-- Filter sizing: throughput, flux, scale-up calculations
-- Process design for filtration: pre-filters, bioburden control, filter train
-- Extractables and leachables (E&L) from filters
-- Filter sterilization methods: autoclaving, gamma irradiation
-- Troubleshooting: filter failure, integrity test failure root cause
-- Regulatory requirements: FDA, EMA expectations for filter validation
-
-**Key terms:** 0.22 μm, 0.45 μm, bacterial retention, bubble point, diffusive flow, water intrusion test, PUPSIT (pre-use post-sterilization integrity test), filter qualification, filter validation, extractables, leachables, bioburden, flux, throughput, filter sizing, Brevundimonas diminuta
-
-**Sections:** Section 1 (Intro) → Section 8 (Sterilization) + Appendix I–III
+PDA TR26: Sterilizing Filtration of Liquids (Revised 2025) | p1–p73 | 8 + 3 appendices
+Terms: 0.22 μm, 0.45 μm, bacterial retention, bubble point, diffusive flow, water intrusion test, PUPSIT (pre-use post-sterilization integrity test), filter qualification, filter validation, extractables, leachables, bioburden, flux, throughput, filter sizing, Brevundimonas diminuta
 
 ---
 
 ## PDA/TR52-Complete.md
-**Report:** PDA TR52: Good Distribution Practices (GDPs)
-**Pages:** p1–p31 | **Sections:** 5
-
-**Covers questions about:**
-- What are Good Distribution Practices (GDP) and regulatory requirements
-- Cold chain management: temperature monitoring during transport and storage
-- Qualification of distribution routes and lanes
-- Stability requirements for shipped drug products
-- Selecting and qualifying logistics partners / 3PL
-- Performance metrics for distribution: KPIs, deviation management
-- GDP audit checklist and self-inspection criteria
-- Risk assessment for distribution activities
-
-**Key terms:** GDP, cold chain, temperature excursion, lane qualification, 3PL (third-party logistics), distribution qualification, stability, temperature mapping, deviation, KPI, WHO GDP, EU GDP guidelines
-
-**Sections:** Section 0 (Intro) → Section 4 (GDP Checklist) + References
+PDA TR52: Good Distribution Practices (GDPs) | p1–p31 | 5
+Terms: GDP, cold chain, temperature excursion, lane qualification, 3PL (third-party logistics), distribution qualification, stability, temperature mapping, deviation, KPI, WHO GDP, EU GDP guidelines
 
 ---
 
 ## PDA/TR60-Complete.md
-**Report:** PDA TR60: Process Validation — A Lifecycle Approach (Revised 2026)
-**Pages:** p1–p155 | **Sections:** 8
-
-**Covers questions about:**
-- Process validation (PV) lifecycle: Stage 1 (Design), Stage 2 (Qualification), Stage 3 (Verification)
-- Stage 1 Process Design: design of experiments (DoE), risk assessment, design space, CPP/CQA identification
-- Stage 2 Performance Qualification (PPQ): protocol design, acceptance criteria, number of batches
-- Stage 3 Continued Process Verification (CPV): statistical process control (SPC), control charts
-- Process Validation Master Plan (PVMP) content and structure
-- Enabling systems: equipment qualification (IQ/OQ/PQ), computerized systems, cleaning validation
-- Statistical methods for PV: tolerance intervals, capability indices (Cpk)
-- Regulatory background: FDA 2011 PV Guidance, ICH Q8/Q9/Q10/Q13
-
-**Key terms:** process validation, lifecycle approach, Stage 1/2/3, CPP (critical process parameter), CQA (critical quality attribute), design space, DoE, PPQ (process performance qualification), CPV (continued process verification), SPC, control chart, PVMP, IQ/OQ/PQ, Cpk, tolerance interval, ICH Q8, FDA 2011 guidance
-
-**Sections:** Section 0 (Intro) → Section 4 (Enabling Systems) + Appendices A1–A1b-II
+PDA TR60: Process Validation — A Lifecycle Approach (Revised 2026) | p1–p155 | 8
+Terms: process validation, lifecycle approach, Stage 1/2/3, CPP (critical process parameter), CQA (critical quality attribute), design space, DoE, PPQ (process performance qualification), CPV (continued process verification), SPC, control chart, PVMP, IQ/OQ/PQ, Cpk, tolerance interval, ICH Q8, FDA 2011 guidance
 
 ---
 
 ## PDA/TR66-Complete.md
-**Report:** PDA TR66: Single-Use Systems in Pharmaceutical Manufacturing
-**Pages:** p1–p145 | **Sections:** 9
-
-**Covers questions about:**
-- What are Single-Use Systems (SUS) / disposable systems and when to use them
-- SUS manufacturing strategy: business case, total cost of ownership
-- SUS technology types: bags, tubing, connectors, filters, bioreactors, mixers
-- Extractables and leachables (E&L) from SUS: testing approach, risk assessment
-- Particle generation and integrity testing for SUS assemblies
-- Quality considerations: supplier qualification, change control, incoming inspection
-- SUS implementation: user requirement specification (URS), process equipment plan (PEP)
-- Training requirements for SUS handling
-- Comparing SUS vs. stainless steel (traditional) systems
-
-**Key terms:** single-use system (SUS), disposable, bag, tubing, connector, extractables, leachables, particle, integrity test, bioreactor, mixer, URS (user requirement specification), PEP (process equipment plan), supplier qualification, change control, total cost of ownership, multi-use
-
-**Sections:** Section 0 (Intro) → Section 5 (Implementation) + Appendix A1–A3
+PDA TR66: Single-Use Systems in Pharmaceutical Manufacturing | p1–p145 | 9
+Terms: single-use system (SUS), disposable, bag, tubing, connector, extractables, leachables, particle, integrity test, bioreactor, mixer, URS (user requirement specification), PEP (process equipment plan), supplier qualification, change control, total cost of ownership, multi-use
 
 ---
 
 ## PDA/TR73-Complete.md
-**Report:** PDA TR73: Prefilled Syringe Technology (Sections 12–18, p74–p102)
-**Pages:** p74–p102 | **Sections:** 4 (partial report — Sections 12–18 only)
-
-**Covers questions about:**
-- Container closure integrity (CCI) for prefilled syringes: test methods, acceptance criteria
-- CCI testing methods: helium leak, dye ingress, headspace analysis, vacuum decay
-- Manufacturing requirements for staked-needle prefilled syringes
-- Drug product compatibility with syringe components: silicone oil, tungsten, adhesive
-- Extractables from syringe barrel, plunger stopper, needle shield
-
-**Key terms:** prefilled syringe, container closure integrity (CCI), helium leak test, dye ingress, vacuum decay, headspace analysis, staked needle, barrel, plunger stopper, silicone oil, tungsten, drug compatibility, needle shield
-
-**Sections:** Section 12 (CCI) → Section 15–18 (Appendices)
+PDA TR73: Prefilled Syringe Technology (Sections 12–18, p74–p102) | p74–p102 | 4 (partial report — Sections 12–18 only)
+Terms: prefilled syringe, container closure integrity (CCI), helium leak test, dye ingress, vacuum decay, headspace analysis, staked needle, barrel, plunger stopper, silicone oil, tungsten, drug compatibility, needle shield
 
 ---
 
 ## PDA/TR73-2-Complete.md
-**Report:** PDA TR73-2: MDR Annex I Essential Requirements for Staked Needle Systems
-**Pages:** p1–p33 | **Sections:** 5
-
-**Covers questions about:**
-- EU Medical Device Regulation (MDR) Annex I requirements for combination products with staked needles
-- GSPRs (General Safety and Performance Requirements) applicable to drug-device combination products
-- Regulatory submission file content for MDR compliance
-- Technical documentation requirements for CE marking of combination products
-- Combination product classification: drug-led vs. device-led
-
-**Key terms:** MDR (EU Medical Device Regulation), Annex I, GSPR (General Safety and Performance Requirements), combination product, drug-device, CE marking, notified body, technical documentation, staked needle, 93/42/EEC, EU 2017/745
-
-**Sections:** Section 0 (Intro) → Section 3 (GSPRs) + References
+PDA TR73-2: MDR Annex I Essential Requirements for Staked Needle Systems | p1–p33 | 5
+Terms: MDR (EU Medical Device Regulation), Annex I, GSPR (General Safety and Performance Requirements), combination product, drug-device, CE marking, notified body, technical documentation, staked needle, 93/42/EEC, EU 2017/745
 
 ---
 
 ## PDA/TR90-Complete.md
-**Report:** PDA TR90: Contamination Control Strategy (CCS) Development in Pharmaceutical Manufacturing
-**Pages:** p1–p65 | **Sections:** 15
-
-**Covers questions about:**
-- What is a Contamination Control Strategy (CCS) and how to develop one
-- CCS elements: facilities, utilities, equipment, personnel, materials, environment
-- Cleanroom design and environmental monitoring for CCS
-- Raw material control as part of CCS
-- Personnel training and gowning as CCS elements
-- Equipment design and surface finishing for contamination control
-- Container closure system control within CCS
-- Quality systems governance for CCS: change control, deviation management
-- Microbial excursion investigation and root cause analysis
-- CCS templates, case studies, practical implementation examples
-- EU GMP Annex 1 (2022) alignment with CCS requirements
-
-**Key terms:** contamination control strategy (CCS), cleanroom, environmental monitoring (EM), bioburden, endotoxin, particulate, gowning, HVAC, unidirectional airflow (UDAF), first air, disinfection, personnel qualification, Annex 1 (2022), microbial excursion, root cause analysis, CCS governance
-
-**Sections:** Section 0 (Intro) → Section 11 (References) + Appendices A1–A5
+PDA TR90: Contamination Control Strategy (CCS) Development in Pharmaceutical Manufacturing | p1–p65 | 15
+Terms: contamination control strategy (CCS), cleanroom, environmental monitoring (EM), bioburden, endotoxin, particulate, gowning, HVAC, unidirectional airflow (UDAF), first air, disinfection, personnel qualification, Annex 1 (2022), microbial excursion, root cause analysis, CCS governance
 
 ---
 
 ## PDA/PtC-12-Complete.md
-**Report:** PDA PtC-12: Restricted Access Barrier Systems (RABS)
-**Pages:** p1–p115 | **Sections:** 10
-
-**Covers questions about:**
-- What is RABS (Restricted Access Barrier System) and how it differs from isolators
-- RABS design types: active RABS, passive RABS, open RABS, closed RABS
-- Physical environment inside RABS: airflow, Grade A maintenance, ISO 5
-- Personnel interaction with RABS: glove ports, interventions, gowning
-- Glove integrity testing for RABS glove ports
-- Environmental monitoring inside and outside RABS
-- Material transfer into/out of RABS: rapid transfer ports (RTP), alpha-beta ports
-- Decontamination cycle development: H₂O₂ VHP cycles
-- APS (media fill) for RABS: design, acceptance criteria
-- Best practices and regulatory expectations for RABS
-
-**Key terms:** RABS, restricted access barrier system, isolator, Grade A, ISO 5, unidirectional airflow, glove port, glove integrity, intervention, rapid transfer port (RTP), alpha-beta port, VHP (vaporized hydrogen peroxide), decontamination, environmental monitoring, active RABS, passive RABS, open RABS, closed RABS
-
-**Sections:** Topic 0 (Intro) → Topic 9 (Best Practices)
+PDA PtC-12: Restricted Access Barrier Systems (RABS) | p1–p115 | 10
+Terms: RABS, restricted access barrier system, isolator, Grade A, ISO 5, unidirectional airflow, glove port, glove integrity, intervention, rapid transfer port (RTP), alpha-beta port, VHP (vaporized hydrogen peroxide), decontamination, environmental monitoring, active RABS, passive RABS, open RABS, closed RABS
 
 ---
 
 ## PDA/PtC-1-Complete.md
-**Report:** PDA Points to Consider No. 1: Aseptic Processing (Revised 2023)
-**Pages:** p1–p119 | **Sections:** 9
-
-**Covers questions about:**
-- Airflow velocity (0.45 m/s ±20%), airflow visualization (smoke studies), HEPA filter integrity testing
-- Differential pressure requirements between cleanroom grades
-- RABS vs Isolator: when to use each, regulatory preference, VHP decontamination
-- Blow-Fill-Seal (BFS): Grade A air shroud, parison design, APS for BFS
-- Air locks, at-rest vs in-operation classification, ≥0.5 µm and ≥5 µm particle monitoring
-- Environmental monitoring: alert levels, action limits, Grade A/B/C/D limits, excursion investigation
-- EM disinfection rotation, identification of environmental isolates (Table H-1)
-- APS/Media fill: acceptance criteria, duration, incubation temps, reconciliation, interventions, PUPSIT APS
-- Personnel qualification (AAPP), glove monitoring, gowning, occupancy, hygiene
-- Material transfer into aseptic area; sterile hold times for components
-- Cleaning & disinfection: sporicide rotation, sterilization of disinfectants
-- Steam sterilization: F0 concept, overkill vs bioburden-based, lyophilizer leak qualification
-- PUPSIT: EU Annex 1 requirement, FDA vs EU regulatory comparison, alternatives
-- Filter integrity testing: pre-use, post-use, gas filters, two-filter redundancy
-- WFI production methods (distillation vs cold membrane), WFI quality requirements
-
-**Key terms:** airflow velocity, smoke study, HEPA patching, differential pressure, Grade A/B/C/D, RABS, open RABS, closed RABS, isolator, BFS, blow-fill-seal, air shroud, at-rest, in-operation, APS, media fill, acceptance criteria, interventions, PUPSIT, reconciliation, alert level, action limit, EM excursion, sporicide, F0, overkill, WFI, TOC, endotoxin, aseptic personnel qualification, AAPP, glove monitoring, sterile hold time, filter integrity
-
-**Sections:** Section 0 (Intro/Glossary) → I-A–H (Airflow/HEPA) → I-I–O (RABS/BFS/Airlocks) → II (EM) → III-A–H (APS Acceptance) → III-I–P (APS Interventions) → IV (Personnel) → V+VI-A–H (Material/CDS) → VI-I–L+VII (PUPSIT/Filters/WFI)
+PDA Points to Consider No. 1: Aseptic Processing (Revised 2023) | p1–p119 | 9
+Terms: airflow velocity, smoke study, HEPA patching, differential pressure, Grade A/B/C/D, RABS, open RABS, closed RABS, isolator, BFS, blow-fill-seal, air shroud, at-rest, in-operation, APS, media fill, acceptance criteria, interventions, PUPSIT, reconciliation, alert level, action limit, EM excursion, sporicide, F0, overkill, WFI, TOC, endotoxin, aseptic personnel qualification, AAPP, glove monitoring, sterile hold time, filter integrity
 
 ---
 
 ## PDA/PtC-13-Complete.md
-**Report:** PDA PtC-13: Materials in ATMP Manufacturing (2025)
-**Pages:** p1–p35 | **Sections:** 5
-
-**Covers questions about:**
-- ATMP material categories: starting materials, ancillary materials, excipients, single-use components, CCS
-- Primary/Secondary/Tertiary Animal-Derived and Human-Derived material classification
-- What is a "critical raw material" under EU vs US regulatory definitions
-- Risk-based material qualification strategy for ATMP: phase-appropriate approach
-- TSE/BSE safety requirements for animal-derived ATMP materials
-- Microbial and viral safety testing requirements (Table 3.2-1 cross-regulatory overview)
-- ID testing: US (21 CFR 211.84(d)(2)) vs EU (EudraLex Vol.4 CoA-based) requirements
-- Single-use component qualification for ATMP (cryobags, vials, extractables & leachables)
-- Risk-based supplier qualification: tiering, audit strategy, SQA requirements
-- Managing RUO-grade material suppliers with immature GMP systems
-- Lifecycle management for commercial ATMP manufacturing (Q5.1–Q5.4)
-- IND filing material requirements, cross-contamination control, gRNA/nuclease quality
-
-**Key terms:** ATMP, critical raw material, ancillary material, primary animal-derived, secondary animal-derived, TSE, BSE, CJD, sterility assurance, ID testing, CoA, CoO, RUO (Research Use Only), IND, single-use component, extractables and leachables, supplier qualification, SQA, gRNA, AAV, CAR-T, autologous, allogeneic, phase-appropriate, PIC/S Annex 2A, EudraLex Vol.4
-
-**Sections:** Section 0 (Intro, Glossary, Abbreviations) → Topic 1-2 (Categories & Strategy) → Topic 3a (Q3.1-Q3.2 Qualification) → Topic 3b-4 (Single-Use & Supplier) → Topic 5 (Lifecycle & References)
+PDA PtC-13: Materials in ATMP Manufacturing (2025) | p1–p35 | 5
+Terms: ATMP, critical raw material, ancillary material, primary animal-derived, secondary animal-derived, TSE, BSE, CJD, sterility assurance, ID testing, CoA, CoO, RUO (Research Use Only), IND, single-use component, extractables and leachables, supplier qualification, SQA, gRNA, AAV, CAR-T, autologous, allogeneic, phase-appropriate, PIC/S Annex 2A, EudraLex Vol.4
 
 ---
 
 ## PDA/PtC-14-Complete.md
-**Report:** PDA PtC-14: Manufacturing of ATMPs — Facility Design
-**Pages:** p6–p55 | **Sections:** 6
-
-**Covers questions about:**
-- What are ATMPs (Advanced Therapy Medicinal Products): gene therapy, cell therapy, tissue engineering
-- Facility design for ATMP manufacturing: segregation, containment, cleanroom classification
-- Risk management approach for ATMP facilities: contamination risk, cross-contamination
-- ATMP-specific utilities: HVAC, WFI, clean steam, waste inactivation
-- Process equipment for ATMPs: bioreactors, centrifuges, closed systems
-- Regulatory requirements: EMA ATMP GMP, containment for viral vectors
-
-**Key terms:** ATMP, advanced therapy medicinal product, gene therapy, cell therapy, CAR-T, viral vector, lentivirus, AAV, contamination control, segregation, containment, cleanroom classification, biosafety level, waste inactivation, closed system, HVAC, EMA ATMP GMP
-
-**Sections:** Section 0 (Intro) → Section 5 (Supplementary Info)
+PDA PtC-14: Manufacturing of ATMPs — Facility Design | p6–p55 | 6
+Terms: ATMP, advanced therapy medicinal product, gene therapy, cell therapy, CAR-T, viral vector, lentivirus, AAV, contamination control, segregation, containment, cleanroom classification, biosafety level, waste inactivation, closed system, HVAC, EMA ATMP GMP
 
 ---
 
 ## PDA/PtC-15-Complete.md
-**Report:** PDA PtC-15: Mobile Manufacturing
-**Pages:** p1–p16 | **Sections:** 3
-
-**Covers questions about:**
-- What is mobile pharmaceutical manufacturing (mobile units, modular facilities)
-- Regulatory strategy for mobile manufacturing: how to avoid re-validation when moving
-- Single-use technology role in mobile manufacturing
-- Key drivers: supply chain resilience, personalized medicine, geopolitical risk
-- Regulatory submission and site change considerations for mobile units
-- Technology evolution enabling mobile manufacturing
-
-**Key terms:** mobile manufacturing, modular facility, mobile unit, single-use technology, site change, regulatory strategy, supply chain resilience, personalized medicine, geopolitical risk, FAT (factory acceptance testing), SAT (site acceptance testing), re-validation
-
-**Sections:** Section 0 (Intro) → Section 2–3 (Regulatory & Implementation)
+PDA PtC-15: Mobile Manufacturing | p1–p16 | 3
+Terms: mobile manufacturing, modular facility, mobile unit, single-use technology, site change, regulatory strategy, supply chain resilience, personalized medicine, geopolitical risk, FAT (factory acceptance testing), SAT (site acceptance testing), re-validation
 
 ---
 
 ## PDA/TR85-Complete.md
-**Report:** PDA TR85: Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers (2021)
-**Pages:** p1–p52 | **Sections:** 6
-
-**Covers questions about:**
-- Current state and limitations of visual inspection for visible particles
-- Risk assessment for particulate contamination in parenteral products
-- Enhanced Component Inspection Method (ECIM) for elastomeric closures
-- Enhanced test methods for glass container visible particle inspection
-- Method validation strategy for ECIM and glass inspection methods
-- Statistical design of experiments (DOE) for inspection qualification
-- Defect libraries and reference sets for particle inspection methods
-- Regulatory perspective on visible particle inspection standards
-- Container-closure system particle risk (rubber particles, glass particles)
-- AQL-based vs. risk-based inspection approach comparison
-
-**Key terms:** visible particle inspection, ECIM (Enhanced Component Inspection Method), elastomeric closure, rubber particle, particulate contamination, defect library, AQL, visual inspection qualification, 100% inspection, statistical sampling, particle enumeration, container-closure system (CCS), glass particle, inspection sensitivity, probability of detection
-
-**Sections:** Introduction & Glossary → Current State of Visual Inspection → Elastomeric Closures Test Method → Glass Container Inspection Method → Conclusion & References → Appendices A–D
+PDA TR85: Enhanced Test Methods for Visible Particle Detection and Enumeration on Elastomeric Closures and Glass Containers (2021) | p1–p52 | 6
+Terms: visible particle inspection, ECIM (Enhanced Component Inspection Method), elastomeric closure, rubber particle, particulate contamination, defect library, AQL, visual inspection qualification, 100% inspection, statistical sampling, particle enumeration, container-closure system (CCS), glass particle, inspection sensitivity, probability of detection
 
 ---
 
 ## PDA/PtC-9-Complete.md
-**Report:** PDA Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic (2024)
-**Pages:** p1–p65 | **Sections:** 6
+PDA Points to Consider No. 9: Lessons Learned from the COVID-19 Pandemic (2024) | p1–p65 | 6
+Terms: GMP pandemic controls, mRNA manufacturing, LNP (lipid nanoparticle), saRNA, essential workers, cohorting, remote inspection, ICMRA, PIC/S, deviation reporting, CAPA commitment, ICH Q12, supply chain resilience, single-use systems shortage, cold chain, ultra-cold storage, vertical integration, BCP (business continuity plan), data integrity, cybersecurity, remote workforce
 
-**Covers questions about:**
-- How GMP controls protect product quality during a pandemic (COVID-19 risk assessments)
-- mRNA and gene therapy drug product rapid development (LNP manufacturing, saRNA)
-- Scaling up vaccine manufacturing capacity rapidly (modular cleanrooms, technology transfer)
-- Workforce shortage management: cohorting, essential worker protocols, remote verification
-- Remote regulatory inspection preparation: hybrid models, FDA/EMA/PMDA approaches
-- Global regulator collaboration during pandemic: ICMRA, PIC/S, bilateral agreements
-- Managing deviation reporting and CAPA commitments during a pandemic
-- Prioritizing regulatory change submissions under pandemic conditions (ICH Q12)
-- Supply chain constraints for single-use systems, container closures, excipients, APIs
-- Cold chain challenges for mRNA vaccine distribution (ultra-low temperature storage)
-- Vertical integration of vaccine supply chains (LNP in-house, captive fill-finish)
-- Business continuity planning (BCP): pandemic preparedness, ICT resilience, cybersecurity
+---
 
-**Key terms:** GMP pandemic controls, mRNA manufacturing, LNP (lipid nanoparticle), saRNA, essential workers, cohorting, remote inspection, ICMRA, PIC/S, deviation reporting, CAPA commitment, ICH Q12, supply chain resilience, single-use systems shortage, cold chain, ultra-cold storage, vertical integration, BCP (business continuity plan), data integrity, cybersecurity, remote workforce
+## PDA/PtC-11-Complete.md
+PDA Points to Consider No. 11 (2025): Development, Classification, Manufacture, Control, and Testing of Plasmids and Vectors Used in ATMP Production | p1–p48 | 8
+Terms: ATMP, viral vector, plasmid DNA (pDNA), AAV, lentiviral vector (LV), critical starting material, drug substance, QTPP, CQA, CMA, CPP, phase-appropriate GMP, Quality Agreement, adventitious agents, replication-competent virus, aseptic process simulation (APS), low-bioburden, sterile filtration, nanofiltration, bridging study, comparability (ICH Q5E), platform technology, matrix PPQ, potency assay, mechanism of action (MOA), supercoil integrity, ex vivo genetic modification, CAR-T, gene of interest (GOI)
 
-**Sections:** Section 1 (Intro + I. Manufacturing) → Section 2 (II. People) → Section 3 (III. Quality) → Section 4a (IV. Regulatory Part 1) → Section 4b (IV. Regulatory Part 2) → Section 5 (V. Supply Chain + VI. Vendor Resources)
+---
+
+## PDA/PtC-Remote-Complete.md
+PDA Points to Consider in Remote and Hybrid GMP/GDP Inspections (2021) | p1–p66 | 5
+Terms: desktop inspection, virtual inspection, hybrid inspection, Remote Inspection Host, document-sharing platform, video communication platform, document camera, virtual tour, pre-inspection agreement, question log, workstream, breakout room, inspector identity verification, GMP/GDP certificate, reinspection frequency, PIC/S reliance, mutual recognition agreement (MRA), FDA 21 USC 374, FDA impersonation warning, chain of custody
 
 ---
 
 ## PDA/TR70-Complete.md
-**Report:** PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities
-**Pages:** p1–p75 | **Sections:** 9
-
-**Covers questions about:**
-- Difference between sanitizer, disinfectant, and sporicide — when to use each in aseptic manufacturing
-- Regulatory requirements for cleaning and disinfection programs (FDA, EU GMP Annex 1, USP <1072>)
-- How to qualify a new disinfectant supplier: in-suspension studies, carrier surface studies, AOAC/EN test protocols
-- In-use expiration dating for diluted disinfectants: labeling requirements, bioburden testing, audit observations
-- Cleaning and disinfection procedures by cleanroom grade: Grade A/B (most critical), Grade C, Grade D
-- Application methods: spray-and-wipe, mop, soak — technique, wiping sequence, sterile wiper requirements
-- Cleaning materials: sterile gamma-irradiated wipers, mop head validation, bucket system per grade
-- Disinfectant resistance and rotation strategy: primary/secondary agent rotation + sporicide schedule
-- Cleaning frequency, hold time validation, return-from-shutdown procedures
-- Training curriculum, competency assessment, documentation requirements for GMP audits
-- EM excursion investigation linked to cleaning failures: root cause analysis approach
-- VHP and gaseous decontamination: cycle parameters, biological indicators, large-scale room gassing
-- AOAC vs. EN test method comparison for US and EU market compliance
-
-**Key terms:** sanitizer, disinfectant, sporicide, Grade A/B/C/D cleaning, sterile wiper, in-use expiration, carrier surface study, in-suspension study, log reduction, AOAC, EN 1276, EN 13727, EPA registration, BPR (EU biocidal products regulation), disinfectant rotation, hold time, VHP (vaporized hydrogen peroxide), VPHP, biological indicator (BI), in-situ field study, EM excursion investigation, mop head validation, lyophilizer cleaning
-
-**Sections:** Section 1 (Intro + Glossary + Regulatory) → Section 2 (Supplier Qualification) → Section 3 (In-Use Expiration + Environment + In-Situ) → Section 4a (Cleaning Areas) → Section 4b (Cleaning Surfaces) → Section 5 (Frequency + Resistance + Training) → Section 6a (Investigations + Conclusion + App I–IV) → Section 6b (App V–VII) → Section 6c (App VIII + References)
+PDA Technical Report No. 70 (2015): Fundamentals of Cleaning and Disinfection Programs for Aseptic Manufacturing Facilities | p1–p75 | 9
+Terms: sanitizer, disinfectant, sporicide, Grade A/B/C/D cleaning, sterile wiper, in-use expiration, carrier surface study, in-suspension study, log reduction, AOAC, EN 1276, EN 13727, EPA registration, BPR (EU biocidal products regulation), disinfectant rotation, hold time, VHP (vaporized hydrogen peroxide), VPHP, biological indicator (BI), in-situ field study, EM excursion investigation, mop head validation, lyophilizer cleaning
 
 ---
 
 ## PDA/TR39-Complete.md
-**Report:** PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products
-**Pages:** p1–p29 | **Sections:** 4
-
-**Covers questions about:**
-- How to design a temperature-controlled pharmaceutical distribution process (URS, risk assessment, DQ)
-- Passive vs. active temperature-controlled packaging: selection criteria and qualification requirements
-- Operational Qualification (OQ) and Performance Qualification (PQ) for shipping systems and lanes
-- Ongoing Process Verification (OPV): KPIs, temperature excursion monitoring, trend analysis
-- Nonconformance handling and CAPA for cold chain temperature deviations
-- Stability budget concept: cumulative time-out-of-refrigeration across the supply chain
-- Re-qualification triggers: carrier change, route change, seasonal bracketing
-- GDP audit readiness: SOPs, training records, quality agreements with LSPs
-- Case study: distribution incident trends analysis (deviation classification, Percentile-95 trigger)
-- Case study: passive shipper SOP development (PCM conditioning, packaging instructions)
-- Case study: qualification master plan structure for multi-lane, multi-product programs
-
-**Key terms:** temperature-controlled distribution, passive shipper, active shipper, PCM (phase change material), URS (user requirements specification), DQ (design qualification), OQ (operational qualification), PQ (performance qualification), OPV (ongoing process verification), stability budget, lane qualification, seasonal bracketing, temperature excursion, nonconformance, CAPA, LSP (logistics service provider), GDP (good distribution practice), TTI (time-temperature indicator), data logger, cold chain, Last Mile
-
-**Sections:** Section 1 (Intro + Glossary) → Section 2 (Process Design + Qualification) → Section 3 (Ongoing Process Verification) → Section 4 (Conclusion + Case Studies)
+PDA Technical Report No. 39 (Revised 2021): Guidance for Temperature-Controlled Medicinal Products | p1–p29 | 4
+Terms: temperature-controlled distribution, passive shipper, active shipper, PCM (phase change material), URS (user requirements specification), DQ (design qualification), OQ (operational qualification), PQ (performance qualification), OPV (ongoing process verification), stability budget, lane qualification, seasonal bracketing, temperature excursion, nonconformance, CAPA, LSP (logistics service provider), GDP (good distribution practice), TTI (time-temperature indicator), data logger, cold chain, Last Mile
 
 ---
 
 ## PDA/TR87-Complete.md
-**Report:** PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021)
-**Pages:** p1–p48 | **Sections:** 7 (incl. 3 appendices)
-
-**Covers questions about:**
-- Best practices for minimizing glass vial damage throughout pharmaceutical processing
-- Glass-to-glass and glass-to-metal contact: when, where, and how to reduce friction
-- Risk assessment (FMEA, RPN) for glass breakage events
-- Glass vial handling process: washing, depyrogenation, filling, lyophilization, capping, inspection
-- Lyophilization-specific risks: product expansion, hydraulic stoppering, shelf levelness
-- Capping failure mechanisms and root causes
-- Ready-to-use (RTU) vials, robotic automation, and surface coatings as damage-prevention technologies
-- Fundamentals of glass science: CTE, annealing, Griffith fracture theory, practical strength
-- Glass breakage investigation: initial assessment, fractography, root cause analysis, CAPA
-- Glass breakage investigation worksheet for operators (Appendix III)
-
-**Key terms:** glass vial, glass breakage, flaw, practical strength, coefficient of friction (COF), coefficient of thermal expansion (CTE), borosilicate glass, Type I glass, depyrogenation, stuck marks, scuff rings, accumulator, star wheel, screw feed, dead plate, lyophilization, hydraulic stoppering, capping, FMEA, RPN, fractography, fracture analysis, CAPA, ready-to-use (RTU) vials, chemical strengthening, adsorption layer, Griffith equation
-
-**Sections:** Introduction & Glossary → Best Practices for Handling → Risk Assessments → Glass Vial Handling Process (5.1–5.6) → Glass Vial Handling Process (5.7–5.15) → Damage Prevention & References → Appendix I (Glass Science) → Appendix II & III (Investigations + Worksheet)
+PDA TR87: Current Best Practices for Pharmaceutical Glass Vial Handling and Processing (2021) | p1–p48 | 7 (incl. 3 appendices)
+Terms: glass vial, glass breakage, flaw, practical strength, coefficient of friction (COF), coefficient of thermal expansion (CTE), borosilicate glass, Type I glass, depyrogenation, stuck marks, scuff rings, accumulator, star wheel, screw feed, dead plate, lyophilization, hydraulic stoppering, capping, FMEA, RPN, fractography, fracture analysis, CAPA, ready-to-use (RTU) vials, chemical strengthening, adsorption layer, Griffith equation
 
 ---
 
 ## PDA/TR46-Complete.md
-**Report:** PDA Technical Report No. 46 (Revised 2024): Last Mile: Guidance for Good Distribution Practices for Pharmaceutical Products to End Users
-**Pages:** p1–p39 | **Sections:** 6
-
-**Covers questions about:**
-- What "last mile" distribution means and how it differs from upstream supply chain activities
-- Global pharmaceutical supply chain structures: EU, Africa (Senegal), Brazil (ANVISA/SUS), United States (DSCSA), Canada (Health Canada/College of Pharmacy), China (NMPA/hospital-centric)
-- Product stability budget and MKT (Mean Kinetic Temperature) calculation for evaluating temperature excursions
-- Storage facility requirements, environmental control, and temperature mapping for last-mile points
-- Passive vs. active thermal packaging: selection, qualification, sustainability considerations
-- Transportation modes: road transport, drone delivery, mail-service pharmacy last-mile
-- Temperature monitoring: data loggers vs. TTIs, risk-based approach to monitoring
-- Serialization requirements: EU FMD/EMVS 2D Data Matrix system vs. US DSCSA/EPCIS track-and-trace
-- Data integrity (ALCOA+) for GDP documentation, data governance, electronic records
-- Emerging technologies: RFID, IoT real-time monitoring, blockchain for immutable records, ML for predictive analytics
-- Deviation and complaint management, OTIF and performance KPIs for last-mile operations
-- Training of healthcare professionals and patient information on drug storage
-- Inventory management (FIFO/FEFO), waste stream, recycling/reverse logistics, cost of failure, BCP
-
-**Key terms:** last mile, GDP (Good Distribution Practices), MKT (Mean Kinetic Temperature), stability budget, passive thermal packaging, active thermal packaging, PCM (phase change material), TTI (time-temperature indicator), data logger, serialization, FMD (Falsified Medicines Directive), EMVS, DSCSA, EPCIS, RFID, IoT, blockchain, machine learning, ALCOA+, data governance, FIFO, FEFO, reverse logistics, OTIF, BCP (business contingency plan), ANVISA, SUS (Brazil), NMPA (China), Health Canada, wholesaler authorization, quality agreement
-
-**Sections:** Section 1–2 (Introduction & Glossary) → Section 3a (Supply Chains: Overview, EU & Africa) → Section 3b (Supply Chains: Brazil & USA) → Sections 3.7–5 (Canada/China + Products & Temperature Services) → Section 6 (Data & Knowledge Management) → Sections 7–9 (Cost Management, Sustainability & Summary)
+PDA Technical Report No. 46 (Revised 2024): Last Mile: Guidance for Good Distribution Practices for Pharmaceutical Products to End Users | p1–p39 | 6
+Terms: last mile, GDP (Good Distribution Practices), MKT (Mean Kinetic Temperature), stability budget, passive thermal packaging, active thermal packaging, PCM (phase change material), TTI (time-temperature indicator), data logger, serialization, FMD (Falsified Medicines Directive), EMVS, DSCSA, EPCIS, RFID, IoT, blockchain, machine learning, ALCOA+, data governance, FIFO, FEFO, reverse logistics, OTIF, BCP (business contingency plan), ANVISA, SUS (Brazil), NMPA (China), Health Canada, wholesaler authorization, quality agreement
 
 ---
 
 ## PDA/TR13-Complete.md
-**Report:** PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program
-**Pages:** p1–p63 | **Sections:** 8
-
-**Covers questions about:**
-- What constitutes a comprehensive Environmental Monitoring (EM) program for aseptic manufacturing
-- ISO and EU GMP cleanroom classification: Grade A/B/C/D, ISO 5–8, particulate and microbial limits
-- Setting alert levels and action limits: statistical methods (Cusum, EWMA, regression, historical data)
-- Qualification of EM equipment and program: IQ/OQ/PQ, BioPhorum 6-factor qualification grid
-- Rapid Microbial Methods (RMM): technology types (ATP, flow cytometry, MALDI-TOF), validation, regulatory status
-- Data management and trending: ALCOA, electronic records, trending rules, CRR reporting
-- EM monitoring applications: Grade A/B air (settle plates, active air samplers), surfaces, personnel, water, utilities
-- Microbial identification: classical methods vs. MALDI-TOF, species significance in investigation
-- Investigation systems: identification, trending, OOS, deviation, and CAPA investigation types
-- Prerequisites for EM: personnel training, gowning qualification, disinfection programs, HVAC, SOP frameworks
-- Regulatory comparison: FDA 2004 Aseptic Guidance, EU GMP Annex 1 (2022), PIC/S, WHO, Japan MHLW
-
-**Key terms:** environmental monitoring (EM), alert level, action limit, Grade A/B/C/D, ISO 14644, particulate limit, microbial limit, settle plate, active air sampler, contact plate, RODAC, dual-temperature incubation, RMM (rapid microbial methods), MALDI-TOF, ATP bioluminescence, flow cytometry, trending, Cusum, EWMA, regression, CRR (cumulative recovery rate), ALCOA, data integrity, OQ/PQ, BioPhorum qualification grid, microbial identification, CAPA, cleanroom qualification, HVAC, EU GMP Annex 1, FDA aseptic guidance, PIC/S, WHO, MHLW
-
-**Sections:** Section 1 (Introduction & Glossary) → Section 3 (Regulatory Classifications & Limits) → Section 4 (EM Program Qualification) → Section 5a (Alert Levels & Data Trending) → Section 5b (RMM & Investigations) → Section 6 (Monitoring Applications) → Section 7 (Prerequisites & References) → Section 9 (Appendices: FMEA, HACCP, OQ/Recertification Tables)
+PDA Technical Report No. 13 (Revised 2022): Fundamentals of an Environmental Monitoring Program | p1–p63 | 8
+Terms: environmental monitoring (EM), alert level, action limit, Grade A/B/C/D, ISO 14644, particulate limit, microbial limit, settle plate, active air sampler, contact plate, RODAC, dual-temperature incubation, RMM (rapid microbial methods), MALDI-TOF, ATP bioluminescence, flow cytometry, trending, Cusum, EWMA, regression, CRR (cumulative recovery rate), ALCOA, data integrity, OQ/PQ, BioPhorum qualification grid, microbial identification, CAPA, cleanroom qualification, HVAC, EU GMP Annex 1, FDA aseptic guidance, PIC/S, WHO, MHLW
 
 ---
 
 ## PDA/TR13-2-Complete.md
-**Report:** PDA Technical Report No. 13-2 (2020): Fundamentals of an Environmental Monitoring Program — Annex 1: Environmental Monitoring of Facilities Manufacturing Low Bioburden Products
-**Pages:** p1–p21 | **Sections:** 3
-
-**Covers questions about:**
-- How to design an EM program for low bioburden products (biologics drug substance, mammalian cell culture, ATMPs) — not covered by TR13 (which focuses on sterile manufacturing)
-- Difference between EM for sterile vs. low bioburden processes: contamination control goal vs. elimination
-- Three system types and their EM implications: Open System / Functionally Closed System / Closed System
-- Environmental Risk Assessment methodology: facility RA + process RA + EM RA as three-tier framework
-- Eight contamination source categories: personnel, materials/waste, and facility design (5 sub-factors)
-- Three-group Criticality Factor matrix: Process Step / Potential Contributors to Contamination / Unusual Sources
-- High/Medium/Low risk criteria for mammalian cell culture environments (Tables 4.3.1-1, 4.3.1-2)
-- Monitoring frequency determination based on risk rating (Table 4.3.3-1)
-- Worked Example 1: Warm Room risk assessment for mammalian cell culture — scoring, site selection, priority designation
-- Worked Example 2: Media supplementation process EM program — step-specific monitoring for open operation in UDF
-
-**Key terms:** low bioburden product, bioburden control, open system, functionally closed system, closed system, unidirectional flow hood (UDF), criticality factors, risk rating, sampling priority, environmental risk assessment, process risk assessment, EM risk assessment, mammalian cell culture, warm room, media supplementation, inoculum preparation, dynamic monitoring, batch-related monitoring, routine monitoring, critical operations monitoring, ISO 14644, Grade A/C, FMEA, HACCP, ICH Q9
-
-**Sections:** Section 1–3 (Introduction, Glossary & Low Bioburden Overview) → Section 4a (Risk Assessment Framework & Criticality Factors) → Section 4b (Worked Examples: Cell Culture & Media Supplementation)
+PDA Technical Report No. 13-2 (2020): Fundamentals of an Environmental Monitoring Program — Annex 1: Environmental Monitoring of Facilities Manufacturing Low Bioburden Products | p1–p21 | 3
+Terms: low bioburden product, bioburden control, open system, functionally closed system, closed system, unidirectional flow hood (UDF), criticality factors, risk rating, sampling priority, environmental risk assessment, process risk assessment, EM risk assessment, mammalian cell culture, warm room, media supplementation, inoculum preparation, dynamic monitoring, batch-related monitoring, routine monitoring, critical operations monitoring, ISO 14644, Grade A/C, FMEA, HACCP, ICH Q9
 
 ## PDA/TR62-Complete.md
-**Report:** PDA Technical Report No. 62 (2013): Manual Aseptic Processes
-**Pages:** p1–p23 | **Sections:** 5
-
-**Covers questions about:**
-- What constitutes a "manual aseptic process" and how it differs from automated/semi-automated operations
-- Cleanroom environment requirements for manual aseptic operations (ISO 5 minimum, Table 3.0-1 particle limits)
-- Personnel qualification, gowning qualification, fingertip sampling for manual aseptic operators
-- Human factors and risk management specific to manual interventions
-- Equipment/component preparation and sterilization for manual operations
-- Process time limitations: personnel time in Grade A, equipment hold times
-- Design principles for manual aseptic processes in LAF/UAFH (First Air rules, operator tiers)
-- Design principles in Isolators and RABS (glove ports, half-suit, VHP decontamination)
-- Process Simulation (APS/media fill) for manual aseptic processes: all 13 design elements (8.1–8.13)
-- Acceptance criterion for MAP APS: absolute zero contamination (no statistical allowance)
-
-**Key terms:** manual aseptic process (MAP), unidirectional airflow hood (UAFH), Grade A, ISO 5, First Air, critical zone, gowning qualification, fingertip sampling, APS, media fill, TSB, compositing, formulation simulation, filling simulation, incubation, growth promotion, operator qualification, RABS, isolator, VHP, process time limitation, aseptic technique
-
-**Sections:** Section 0 (Introduction & Glossary) → Section 1 (Facilities & Personnel 3.0–4.0) → Section 2 (Equipment, Time Limits & Process Design 5.0–7.0) → Section 3 (APS Process Simulation 8.0) → Section 4 (Conclusion & References)
+PDA Technical Report No. 62 (2013): Manual Aseptic Processes | p1–p23 | 5
+Terms: manual aseptic process (MAP), unidirectional airflow hood (UAFH), Grade A, ISO 5, First Air, critical zone, gowning qualification, fingertip sampling, APS, media fill, TSB, compositing, formulation simulation, filling simulation, incubation, growth promotion, operator qualification, RABS, isolator, VHP, process time limitation, aseptic technique
 
 ---
 
 ## PDA/PtC-Isolators-Complete.md
-**Report:** PDA Points to Consider: Aseptic Processing in Isolators (2020)
-**Pages:** p1–p72 | **Sections:** 7 topics
-
-**Covers questions about:**
-- What is an isolator system for aseptic processing and how it differs from RABS
-- Isolator design: pressure differential (>10 Pa positive), glove design, minimizing interventions
-- Physical environment: surrounding room classification (ISO 8), unidirectional airflow in fill zone, airflow visualization
-- Personnel gowning requirements and glove disinfection for isolator operations
-- Integrity testing of isolator enclosure and gloves: visual, mechanical, pressure decay methods
-- Glove maintenance programs, replacement frequency (6–12 months), response to integrity failure
-- Environmental monitoring inside isolators: risk-based frequency, surface sampling, EM plate transfer
-- Material transport and loading: RTP (rapid transfer port), VHP decontamination of surfaces, stopper transfer, tub transfer
-- Cleaning, disinfection, and decontamination cycle development: VHP and peracetic acid parameters
-- Temperature and humidity mapping during decontamination qualification
-
-**Key terms:** isolator, aseptic processing, VHP (vaporized hydrogen peroxide), peracetic acid, Grade A, ISO 5, ISO 8, RABS, glove port, glove integrity testing, pressure decay, pressure differential, rapid transfer port (RTP), decontamination, biological indicator (BI), unidirectional airflow, airflow visualization, environmental monitoring, material transfer, stopper transfer, ready-to-use, intervention
-
-**Sections:** Topic 1 (Isolator Design Q1-1–Q1-3) → Topic 2 (Physical Environment Q2-1–Q2-5) → Topic 3 (Personnel Q3-1–Q3-2) → Topic 4 (Integrity Testing Q4-1–Q4-3) → Topic 5 (EM Q5-1–Q5-5) → Topic 6 (Material Transport Q6-1–Q6-4) → Topic 7 (Cleaning & Decontamination Q7-1–Q7-3)
+PDA Points to Consider: Aseptic Processing in Isolators (2020) | p1–p72 | 7 topics
+Terms: isolator, aseptic processing, VHP (vaporized hydrogen peroxide), peracetic acid, Grade A, ISO 5, ISO 8, RABS, glove port, glove integrity testing, pressure decay, pressure differential, rapid transfer port (RTP), decontamination, biological indicator (BI), unidirectional airflow, airflow visualization, environmental monitoring, material transfer, stopper transfer, ready-to-use, intervention
 
 ---
 
 ## PDA/TR65-Complete.md
-**Report:** PDA Technical Report No. 65 (Revised 2022): Technology Transfer
-**Pages:** p1–p50+ | **Sections:** 8 + 12 case studies
-
-**Covers questions about:**
-- What is technology transfer (TT) and the types: clinical-clinical, development-commercial, commercial-commercial
-- Site types for TT: internal-internal, internal-external, external-internal, external-external (most challenging)
-- Six-stage TT process: Initiation, Planning, Knowledge Transfer, Readiness, Execution, Handover
-- Stage gate review process: steering committee decision-making at each stage boundary
-- Cross-functional roles: Business, PM, Process, Analytical, Engineering, Manufacturing, Regulatory, Quality, Sourcing
-- Facility fit assessment: equipment, utilities, automation, capacity evaluation at receiving unit
-- Knowledge transfer package: tacit knowledge, process history, master batch records, PPQ data
-- Sending unit (SU) vs receiving unit (RU) roles and responsibilities
-- CDMO/CMO technology transfer: managing differences in quality systems and procedures
-- Regulatory strategy for TT: filing categories, CMC requirements, health authority interactions
-- Comparability plan development and PPQ protocol design for receiving unit
-- 12 real-world case studies covering charter development, failed qualification lessons, effective KT, stage gates
-
-**Key terms:** technology transfer (TT), sending unit (SU), receiving unit (RU), CDMO, CMO, QTPP (quality target product profile), stage gate, facility fit assessment, knowledge transfer (KT), knowledge management (KM), PPQ (process performance qualification), comparability, URS (user requirements specification), MAH, CMC, FAT, SAT, engineering batch, control strategy, VMP (validation master plan), EHS
-
-**Sections:** Section 1–2 (Introduction & Glossary) → Section 3 (Types of TT: Lifecycle & Site Types) → Section 4 (TT Process & Oversight) → Section 5.1–5.2 (Initiation & Planning Stages) → Section 5.3 (Knowledge Transfer Stage) → Section 5.4–5.6 (Readiness, Execution & Handover) → Section 7–8 (References & 12 Case Studies)
+PDA Technical Report No. 65 (Revised 2022): Technology Transfer | p1–p50+ | 8 + 12 case studies
+Terms: technology transfer (TT), sending unit (SU), receiving unit (RU), CDMO, CMO, QTPP (quality target product profile), stage gate, facility fit assessment, knowledge transfer (KT), knowledge management (KM), PPQ (process performance qualification), comparability, URS (user requirements specification), MAH, CMC, FAT, SAT, engineering batch, control strategy, VMP (validation master plan), EHS
 
 ---
 
 ## PDA/TR88-Complete.md
-**Report:** PDA Technical Report No. 88 (2022): Investigation of Microbial Data Deviations
-**Pages:** p1–p54 | **Sections:** 6
-
-**Covers questions about:**
-- What constitutes a microbial data deviation (OOS/OOL) and when investigation is required
-- Microbiologist roles: laboratory microbiologist, manufacturing investigator, SME, QCU responsibilities
-- Phase I: Laboratory investigation — confirming test validity (sampling, methodology, equipment, personnel, environment)
-- Phase I specific tests: sterility testing (USP <71>), bacterial endotoxin (USP <85>), antimicrobial effectiveness (USP <51>), mycoplasma, biological indicators
-- Sterility test invalidation criteria and decision trees based on microorganism identification
-- Bacterial endotoxin testing investigation: LAL vs recombinant methods, MVD calculation issues
-- APS / media fill failure investigation approach
-- Environmental monitoring excursion investigation: trending, root cause, CAPA
-- Utilities monitoring: pharmaceutical water system investigation (sample handling, test methods, trending data)
-- Phase II: Manufacturing investigation — root cause analysis when lab test is confirmed valid
-- Sterility-positive manufacturing investigation workflow
-- Evidence-based investigation principles: avoiding confirmation bias and hindsight bias
-
-**Key terms:** microbial data deviation, OOS (out-of-specification), OOL (out-of-limit), Phase I investigation, Phase II investigation, sterility test (USP <71>), BET (bacterial endotoxin test, USP <85>), LAL (Limulus amoebocyte lysate), antimicrobial effectiveness (USP <51>), mycoplasma, biological indicator (BI), media fill, APS, environmental monitoring (EM), water system monitoring, root cause analysis (RCA), CAPA, QCU, SME, WFI, FTM, SCDM, microbial identification, polyphasic identification
-
-**Sections:** Section 1–2 (Introduction, Purpose, Scope & Glossary) → Section 3 (Microbiologist Roles 3.1–3.5) → Section 4a (Phase I Lab Investigation: Microbial ID, Sterility, BET) → Section 4b (Phase I: AET, Mycoplasma, BI, APS, EM, Utilities) → Section 5 (Phase II: Manufacturing Investigation & Root Cause) → Section 6 (Conclusion & References)
+PDA Technical Report No. 88 (2022): Investigation of Microbial Data Deviations | p1–p54 | 6
+Terms: microbial data deviation, OOS (out-of-specification), OOL (out-of-limit), Phase I investigation, Phase II investigation, sterility test (USP <71>), BET (bacterial endotoxin test, USP <85>), LAL (Limulus amoebocyte lysate), antimicrobial effectiveness (USP <51>), mycoplasma, biological indicator (BI), media fill, APS, environmental monitoring (EM), water system monitoring, root cause analysis (RCA), CAPA, QCU, SME, WFI, FTM, SCDM, microbial identification, polyphasic identification
 
 ---
 
 ## PDA/TR91-Complete.md
-**Report:** PDA Technical Report No. 91 (2023): Post-Approval Changes — A Global Perspective
-**Pages:** p1–p60 | **Sections:** 10 + 2 appendix case studies
-
-**Covers questions about:**
-- What are post-approval changes (PACs) and why they take 2–5 years to approve globally
-- Pharmaceutical Quality System (PQS) elements enabling PAC: management review, CAPA, change management, process monitoring
-- Quality Risk Management (QRM) and Knowledge Management (KM) as key enablers for PAC decisions
-- Established Conditions (ECs): legally binding parameters vs non-ECs managed internally
-- Benefits of defining ECs: reducing non-value-added regulatory submissions
-- Post-Approval Change Management Protocol (PACMP / Comparability Protocol): prospective change planning
-- Product Lifecycle Management (PLCM): strategy documents for monitoring and managing ECs over product life
-- Global PAC landscape: ICH regions (clearer guidance, 6-month timelines) vs non-ICH regions (longer, less defined)
-- Legacy marketed products: challenges applying ICH Q12 principles to already-approved products
-- Harmonization recommendations: three change categories — "Do and Record", "Do and Tell", "Tell, Wait and Do"
-- Mutual recognition of PAC approvals across ICH jurisdictions
-- Case Study 1: Replacing traditional mycoplasma detection with PCR-based methods (NAT)
-- Case Study 2: Introducing new isolator system for aseptic filling of biologically active therapeutics
-
-**Key terms:** post-approval change (PAC), established conditions (EC), PACMP (post-approval change management protocol), comparability protocol, ICH Q12, PLCM (product lifecycle management), PQS (pharmaceutical quality system), CMC, CQA, CPP, change management, CAPA, QRM, KM, prior approval supplement (PAS), CBE (changes being effected), variation, CTD, CDMO, CMO, regulatory harmonization, NAT (nucleic acid amplification techniques), PCR, mycoplasma, isolator
-
-**Sections:** Section 1–2 (Introduction & Glossary) → Section 3 (Background & PAC Landscape) → Section 4 (PQS Elements: Management Review, CAPA, Change Management, Monitoring, QRM/KM) → Section 5 (PAC Tools: Established Conditions, PACMP, PLCM) → Section 6 (Global PAC: ICH vs Non-ICH Regions) → Section 7–9 (Legacy Products, Harmonization Recommendations & Conclusion) → Appendix 1 (Case Study: PCR Mycoplasma) → Appendix 2 (Case Study: Isolator Introduction)
+PDA Technical Report No. 91 (2023): Post-Approval Changes — A Global Perspective | p1–p60 | 10 + 2 appendix case studies
+Terms: post-approval change (PAC), established conditions (EC), PACMP (post-approval change management protocol), comparability protocol, ICH Q12, PLCM (product lifecycle management), PQS (pharmaceutical quality system), CMC, CQA, CPP, change management, CAPA, QRM, KM, prior approval supplement (PAS), CBE (changes being effected), variation, CTD, CDMO, CMO, regulatory harmonization, NAT (nucleic acid amplification techniques), PCR, mycoplasma, isolator
 
 ---
 
 ## PDA/TR54-6-Complete.md
-**Report:** PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients (Joint PDA–IPEC)
-**Pages:** p1–p36 | **Sections:** 7
-
-**Covers questions about:**
-- What is a formalized excipient risk assessment and why is it required (EU FMD, EC Guidelines 2015, PIC/S, FDA FDASIA 2012)
-- How to define the risk question: "Is the excipient fit for use in the drug product?"
-- Supply chain mapping: types of supply chains (direct, distributor, repackager, broker, international, CMO)
-- Intrinsic excipient risk factors (ERPN): route of administration, function, CQA impact, drug product type
-- Supply chain risk analysis (SCRPN): calculate risk from each supply chain actor
-- Risk matrix: combining ERPN × SCRPN to determine OverallRPN (Option 1) or weighted Final Risk Score (Option 2)
-- Risk mitigation: selecting appropriate GMP standard (EXCiPACT, NSF/IPEC/ANSI 363, USP <1078>)
-- Ongoing review triggers: product deviations, recalls, supply chain changes, regulatory updates
-- Six real-world anonymized case studies (Companies U–Z) showing diverse risk assessment implementations
-
-**Key terms:** excipient, MAH (manufacturing authorization holder), ERPN (excipient risk priority number), SCRPN (supply chain risk priority number), OverallRPN, risk ranking and filtering, EU FMD, EC Guidelines, EXCiPACT, IPEC, broker, distributor, repackager, CMO, quality agreement, excipient information package (EIP), residual risk, ICH Q9, QRM, supply chain transparency, risk lifecycle
-
-**Sections:** Section 0 (Foreword & Introduction) → Section 1 (Glossary) → Section 2 (Overall Strategy & Supply Chain 3.0–5.0) → Section 3 (QRM Model: Risk ID & Analysis 6.0–6.3) → Section 4 (QRM Model: Evaluation & Mitigation 6.4–6.6) → Section 5 (Lifecycle, Benefits & References 7.0–9.0) → Section 6 (Annex I: 6 Case Studies)
+PDA Technical Report No. 54-6 (2019): Formalized Risk Assessment for Excipients (Joint PDA–IPEC) | p1–p36 | 7
+Terms: excipient, MAH (manufacturing authorization holder), ERPN (excipient risk priority number), SCRPN (supply chain risk priority number), OverallRPN, risk ranking and filtering, EU FMD, EC Guidelines, EXCiPACT, IPEC, broker, distributor, repackager, CMO, quality agreement, excipient information package (EIP), residual risk, ICH Q9, QRM, supply chain transparency, risk lifecycle
 
 ---
 
 ## PDA/TR68-Complete.md
-**Report:** PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages
-**Pages:** p1–p54 | **Sections:** 6
-
-**Covers questions about:**
-- How to assess drug shortage risk using the 4-step Risk Triage Model (PHA approach)
-- Classifying products by Risk Level A/B/C (patient impact) and Priority Level 1/2/3 (risk triage output)
-- How to develop a Drug Shortage Risk Register — single source of truth for shortage risks
-- How to create a Drug Shortage Prevention and Response Plan (DSPR Plan): 5 components
-- Supply chain mapping using Value Stream Mapping (VSM) to identify inventory stress points
-- Managing risks from aging manufacturing facilities and legacy analytical technologies
-- Expedited Post-Approval Changes (PACs) and the ICH Q12 regulatory flexibility framework
-- Stakeholder management: when and how to notify FDA/EMA of a potential drug shortage
-- Global regulatory landscape for shortage notification (US Section 506C, EU GMP Article 13)
-- Management responsibilities and quality culture elements for shortage prevention
-- Risk-based decision-making by companies and health authorities during active shortages
-
-**Key terms:** drug shortage, Risk Triage Model, Risk Level A/B/C, Risk Priority Level 1/2/3, Drug Shortage Risk Register, Drug Shortage Prevention and Response Plan, Value Stream Mapping (VSM), meaningful disruption, medically necessary drug, critical medicine, Marketing Authorization Holder (MAH), Post-Approval Change (PAC), ICH Q9(R1), ICH Q10, ICH Q12, continuous process verification (CPV), global change protocol (gCP), Quality Risk Management (QRM), Pharmaceutical Quality System (PQS), supply chain resilience, preliminary hazards analysis (PHA)
-
-**Sections:**
-0. Introduction & Glossary (Sections 1.0–2.0, p1–p5)
-1. Drug Shortage — Global Problem & Management Responsibilities (Sections 3.0–4.0, p6–p11)
-2. Risk-Based Prevention Framework (Section 5.0, p12–p15)
-3. Risk Triage Model — Steps 1–4 & Supply Chain/Aging/PAC (Sections 6.0–6.4, p16–p32)
-4. Prevention Plan & Stakeholder Management (Sections 7.0–8.0, p33–p37)
-5. Conclusions, References & Appendices (Sections 9.0–12.0, p38–p54)
+PDA Technical Report No. 68 (Revised 2024): Risk-Based Approach for Prevention and Management of Drug Shortages | p1–p54 | 6
+Terms: drug shortage, Risk Triage Model, Risk Level A/B/C, Risk Priority Level 1/2/3, Drug Shortage Risk Register, Drug Shortage Prevention and Response Plan, Value Stream Mapping (VSM), meaningful disruption, medically necessary drug, critical medicine, Marketing Authorization Holder (MAH), Post-Approval Change (PAC), ICH Q9(R1), ICH Q10, ICH Q12, continuous process verification (CPV), global change protocol (gCP), Quality Risk Management (QRM), Pharmaceutical Quality System (PQS), supply chain resilience, preliminary hazards analysis (PHA)
 
 ---
 
 ## PDA/TR43-Complete.md
-**Report:** PDA Technical Report No. 43 (Revised 2023): Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing
-**Pages:** p1–p199 | **Sections:** 6
-
-**Covers questions about:**
-- How to classify glass container nonconformities using 5-level system (Critical / Major A / Major B / Minor / Acceptable Imperfection)
-- What are the risk/impact categories for glass defects: CCI/Sterility, User Injury, Remote Risk, Functional, Machinability, Negligible, Aesthetic
-- How to identify specific glass defects by name, definition, location, and inspection method
-- Moulded glass bottle & vial defects (Table 8.0-1): ~30+ defect types
-- Tubular ampoule defects (Table 8.0-2): tip quality, seal integrity, glass particle risks
-- Tubular cartridge defects (Table 8.0-3): plunger compatibility, RTU cartridge standards
-- Tubular syringe defects (Table 8.0-4): cone/flange/barrel integrity, prefilled syringe (PFS) quality
-- Tubular vial defects (Table 8.0-5): the largest lexicon (~50+ defects), RTU vial stricter standards
-- RTU (Ready-to-Use) container classification differences vs. standard containers
-- Glass container specification development: quality agreements between pharma and glass suppliers
-- AQL-based sampling programs for incoming glass container inspection
-- Visual inspection methods: calibrated measurement, TAPPI chart, tactile, limit sample, flat surface
-
-**Key terms:** nonconformity, nonconformance, defect classification, Critical, Major A, Major B, Minor, Acceptable Imperfection, AQL (Acceptance Quality Limit), CCI (Container Closure Integrity), RTU (Ready-to-Use), moulded glass, tubular glass, ampoule, cartridge, syringe, vial, adhered glass, loose glass, crack, check, chip, delamination, glass stringer, spiticule, bird swing, reboil, stone, knot, airline, seed, bump check, bruise, contamination, limit sample, visual inspection
-
-**Sections:**
-0. Introduction & Classification Framework (Sections 1.0–7.0, p1–p14)
-1. Moulded Glass Containers — Table 8.0-1 (p15–p48)
-2. Tubular Ampoules — Table 8.0-2 (p49–p76)
-3. Tubular Cartridges — Table 8.0-3 (p77–p98)
-4. Tubular Syringes — Table 8.0-4 (p99–p122)
-5. Tubular Vials — Table 8.0-5 (p123–p199)
+PDA Technical Report No. 43 (Revised 2023): Identification and Classification of Nonconformities in Moulded and Tubular Glass Containers for Pharmaceutical Manufacturing | p1–p199 | 6
+Terms: nonconformity, nonconformance, defect classification, Critical, Major A, Major B, Minor, Acceptable Imperfection, AQL (Acceptance Quality Limit), CCI (Container Closure Integrity), RTU (Ready-to-Use), moulded glass, tubular glass, ampoule, cartridge, syringe, vial, adhered glass, loose glass, crack, check, chip, delamination, glass stringer, spiticule, bird swing, reboil, stone, knot, airline, seed, bump check, bruise, contamination, limit sample, visual inspection
 
 ---
 
 ## ISPE/ISPE-Vol5-Complete.md
-**Report:** ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition)
-**Pages:** p9–p212 | **Sections:** 11 sections (Ch1-Ch14 + Appendices)
-
-**Covers questions about:**
-- C&Q (Commissioning and Qualification) process framework and how it differs from traditional IQ/OQ/PQ
-- System Classification: Direct Impact vs Not Direct Impact systems; 8 classification criteria (Q1-Q8)
-- User Requirements Specification (URS): development, approval, what to include and what NOT to include
-- System Risk Assessment (SRA): identifying CDEs and CAs through QRM; risk levels Low/Medium/High; 13-column SRA format
-- Design Review (DR) and Design Qualification (DQ): objectives, process, timing, Traceability Matrix
-- C&Q Planning: plan contents, approval matrix, timing sequence, document strategy
-- C&Q Testing: FAT/SAT/PDI/RI, Turnover Packages, Installation/Operational/Performance testing, Discrepancy Management
-- Acceptance and Release: qualified state initiation, 4 report options, Quality System Elements
-- Periodic Review: 3-tier approach (Tier A/B/C), system categorization (Cat 0/1/2/3), risk-based frequency
-- Vendor Assessment: using vendor FAT docs for qualification, assessment factors, GMP-unfamiliar vendors
-- Engineering Quality Process (EQP): relationship to PQS, document hierarchy, Deming's principle
-- Change Management: Engineering Change Management (ECM) vs Quality Change Control (QCC)
-- Good Documentation Practice (GDocP): ALCOA+, data integrity, electronic records, corrections
-
-**Key terms:** C&Q, CDE (Critical Design Element), CA (Critical Aspect), Direct Impact System, URS, System Risk Assessment, SRA, DQ, DR, C&Q Plan, FAT, SAT, PDI, TOP (Turnover Package), Acceptance and Release, Qualified State, Periodic Review, Traceability Matrix, Engineering Quality Process, QRM, GEP, ALCOA+, GDocP, ECM, QCC
-
-**Sections:**
-0. Introduction & Key Concepts (Ch1, p9-18)
-1. URS & System Classification (Ch2-3, p19-26)
-2. System Risk Assessment (Ch4, p27-34)
-3. Design Review & Design Qualification (Ch5, p35-40)
-4. C&Q Planning (Ch6, p41-48)
-5a. C&Q Testing & Documentation Part 1 (Ch7a, p49-56)
-5b. C&Q Testing Part 2 + Acceptance & Release (Ch7b-8, p57-68)
-6. Periodic Review (Ch9, p69-78)
-7. Vendor Assessment & Engineering Quality Process (Ch10-11, p79-88)
-8. Change Management & Good Documentation Practice (Ch12-13, p89-104)
-9. Implementation Strategies & Key Appendices (Ch14+App, p105+)
+ISPE Baseline® Guide: Commissioning and Qualification (2nd Edition) | p9–p212 | 11 sections (Ch1-Ch14 + Appendices)
+Terms: C&Q, CDE (Critical Design Element), CA (Critical Aspect), Direct Impact System, URS, System Risk Assessment, SRA, DQ, DR, C&Q Plan, FAT, SAT, PDI, TOP (Turnover Package), Acceptance and Release, Qualified State, Periodic Review, Traceability Matrix, Engineering Quality Process, QRM, GEP, ALCOA+, GDocP, ECM, QCC
 
 ## ISPE/ISPE-Vol3-Complete.md
-**Report:** ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities
-**Pages:** p1–p244 | **Sections:** 21 (13 chapters, split into subsections)
-
-**Covers questions about:**
-- Sterile manufacturing facility design: regulatory basis (EU GMP Annex 1, FDA Aseptic Guidance, ISO 14644)
-- Cleanroom area classification: Grade A/B/C/D, ISO 5/7/8, at rest vs in operation
-- Risk-based facility design: Quality by Design (QbD), ICH Q9 applied to facility layout
-- Process equipment for sterile manufacturing: formulation, filling, lyophilization, washing, sterilization, inspection
-- Architecture and layout: cleanroom wall/ceiling/floor systems, material/personnel flow, pressure cascades, airlocks
-- HVAC system design: air change rates, HEPA filtration, temperature/humidity control, energy efficiency
-- Utility systems: WFI, purified water, clean steam, compressed gases, CIP/SIP
-- Electrical and control/instrumentation: BMS, SCADA, alarm management, door interlocks
-- Barrier and isolator technology: oRABS vs cRABS vs isolator comparison, VHP decontamination, glove integrity
-- Environmental monitoring within barriers, leak rate testing, maintenance and training
-- General considerations: waste management, health & safety, site selection, energy, security
-- HVAC engineering appendix: air change rate calculations, particle generation, UAF design, pressure control
-
-**Key terms:** Grade A/B/C/D, ISO 14644, cleanroom, RABS (oRABS/cRABS), isolator, HVAC, HEPA, UAF (unidirectional air flow), differential pressure, air change rate, WFI, clean steam, CIP, SIP, lyophilizer, depyrogenation tunnel, airlock, pass-through, gowning, pressure cascade, smoke study, VHP, BMS, SCADA, QbD, CQA, CPP
-
-**Sections:**
-0. Introduction (Ch1, p9-16)
-1a. Regulatory & Design Concepts (Ch2a, p17-26)
-1b. Classification & Integrated Design (Ch2b, p27-36)
-2a-2d. Process Equipment (Ch3, p37-78) — 4 parts
-3a-3c. Architecture & Layout (Ch4, p79-106) — 3 parts
-4a-4c. HVAC (Ch5, p107-142) — 3 parts
-5. Utility Systems (Ch6, p143-150)
-6. Electrical & Controls (Ch7-8, p151-166)
-7a-7b. Barrier & Isolator Technology (Ch9, p167-188) — 2 parts
-8. General Considerations (Ch10, p189-198)
-9a-9b. Appendix 1: HVAC Engineering (Ch11, p199-222) — 2 parts
-10. References & Glossary (Ch12-13, p223-244)
+ISPE Baseline Guide Volume 3 (3rd Edition, 2018): Sterile Product Manufacturing Facilities | p1–p244 | 21 (13 chapters, split into subsections)
+Terms: Grade A/B/C/D, ISO 14644, cleanroom, RABS (oRABS/cRABS), isolator, HVAC, HEPA, UAF (unidirectional air flow), differential pressure, air change rate, WFI, clean steam, CIP, SIP, lyophilizer, depyrogenation tunnel, airlock, pass-through, gowning, pressure cascade, smoke study, VHP, BMS, SCADA, QbD, CQA, CPP
 
 ---
 
 ## ISPE/ISPE-HVAC-Complete.md
-**Report:** ISPE Good Practice Guide: Heating, Ventilation, and Air Conditioning (HVAC)
-**Pages:** p1–p288 | **Sections:** 13 (6 chapters + 7 appendices, split into 19 subsections)
-
-**Covers questions about:**
-- HVAC system design fundamentals for pharmaceutical facilities: air handling units (AHU), coils, fans, dampers, humidifiers
-- Cleanroom classification and environmental control: Grade A/B/C/D, ISO classes, air change rates, particle control
-- Design process and risk assessment: CPP/CQA impact, parameter risk tables, facility programming and layout
-- HVAC design considerations for API, oral solid dosage, aseptic, and laboratory areas
-- Design review methodology: conceptual, basic, and detailed design stages
-- Equipment specification, qualification (IQ/OQ/PQ), commissioning, and maintenance (PM/PdM)
-- HEPA filtration: integrity testing, filter arrangements, MPPS, bleed-through
-- Pressure cascade control: differential pressure, airlocks (cascade/bubble/sink), air leakage calculations
-- Ventilation strategies: dilution vs. displacement air distribution, UDAF
-- Psychrometrics: heating/cooling/humidification/dehumidification processes on psychrometric chart
-- Science-based quality risk management for HVAC: ICH Q9, FMEA, RCM, PdM
-- HVAC engineering calculations: ideal gas law, Bernoulli, fan power, particle recovery, cascaded HEPA efficiency
-- Economics and sustainability: energy efficiency, heat recovery, CO₂ impact
-- Temperature mapping methodology: NF X15-140, seasonal testing, sensor placement
-- Medical device manufacturing HVAC requirements
-
-**Key terms:** HVAC, AHU (air handling unit), HEPA, ULPA, differential pressure, air change rate, Grade A/B/C/D, ISO 14644, cleanroom, pressure cascade, airlock, pass-through, UDAF (unidirectional airflow), fan, coil, damper, humidifier, dehumidifier, psychrometric chart, commissioning, qualification, IQ/OQ/PQ, PM (preventive maintenance), PdM (predictive maintenance), RCM (reliability centered maintenance), FMEA, ICH Q9, TAB (testing adjusting balancing), AFD, AF&ID, recovery test, MPPS, energy recovery, sustainability
-
-**Sections:**
-0. Introduction (Ch1, p9-20)
-1a-1b. Design Process (Ch2, p21-46) — 2 parts
-2a-2b. Design Considerations (Ch3, p47-88) — 2 parts (API/OSD/Aseptic/Labs)
-3. Design Review (Ch4, p89-96)
-4a-4c. Equipment Specification & Qualification (Ch5, p89-136) — 3 parts
-5. Documentation (Ch6, p137-146)
-6. App 1: HVAC Fundamentals (p147-158)
-7a-7b. App 2: HVAC Applications (p159-198) — 2 parts (AHU/Coils + Fans/Dampers)
-8. App 3: Psychrometrics (p199-208)
-9. App 4: Risk Management (p209-216)
-10. App 5-8: Examples (p217-232)
-11. App 9: Economics & Sustainability (p233-246)
-12a-12b. App 10-13: Misc, References & Glossary (p247-288) — 2 parts
+ISPE Good Practice Guide: Heating, Ventilation, and Air Conditioning (HVAC) | p1–p288 | 13 (6 chapters + 7 appendices, split into 19 subsections)
+Terms: HVAC, AHU (air handling unit), HEPA, ULPA, differential pressure, air change rate, Grade A/B/C/D, ISO 14644, cleanroom, pressure cascade, airlock, pass-through, UDAF (unidirectional airflow), fan, coil, damper, humidifier, dehumidifier, psychrometric chart, commissioning, qualification, IQ/OQ/PQ, PM (preventive maintenance), PdM (predictive maintenance), RCM (reliability centered maintenance), FMEA, ICH Q9, TAB (testing adjusting balancing), AFD, AF&ID, recovery test, MPPS, energy recovery, sustainability
 
 ---
 
 ## ISPE/ISPE-Vol4-Complete.md
-**Report:** ISPE Baseline Guide Volume 4: Water and Steam Systems
-**Pages:** p1–p250 | **Sections:** 14 (10 chapters + 4 appendix groups, split into 18 subsections)
-
-**Covers questions about:**
-- Pharmaceutical water system design: PW, WFI, non-compendial water specifications and selection
-- USP water quality requirements: three-stage conductivity testing, TOC limits, microbial/endotoxin limits
-- Key design philosophies: Design Range vs Operating Range, Critical Process Parameters (CPP)
-- Water pretreatment options: filtration, softening, activated carbon, chlorination, UV, pH adjustment
-- Final treatment for Purified Water: ion exchange, CEDI, reverse osmosis (RO), UF, MF, UV
-- Final treatment for WFI: distillation (SE, ME, VC), RO for WFI, systems comparison
-- Pharmaceutical steam: utility steam vs clean steam, purity decision tree, sizing, distribution
-- Storage and distribution system design: tank types, loop configurations (hot/cold/ambient), deadlegs
-- Microbial control: continuous vs periodic sanitization, ozone, UV, heat, chemical methods
-- Instrumentation and control: conductivity, TOC, pH, ozone, flow, automation levels
-- Commissioning and qualification: three-phase sampling program, acceptance criteria, change control
-- Materials of construction: 316L SS, PVDF, surface finish, orbital welding, passivation, rouging
-- Fabrication: weld criteria, weld defects catalog, borescoping, PVDF welding, sanitary clamps
-- European perspective: EP vs USP differences for water and steam
-
-**Key terms:** WFI (Water for Injection), PW (Purified Water), USP, conductivity, TOC (Total Organic Carbon), endotoxin, RO (reverse osmosis), CEDI, ion exchange, distillation (SE/ME/VC), clean steam, utility steam, deadleg, biofilm, ozone, UV, passivation, rouging, 316L SS, PVDF, orbital welding, borescoping, three-stage testing, Alert/Action limits, loop velocity, vent filter, spray ball
-
-**Sections:**
-0. Introduction & Background (Ch1, p3-17)
-1. Key Design Philosophies (Ch2, p19-29)
-2. Water Options & Planning (Ch3, p31-41)
-3. Pretreatment Options (Ch4, p43-55)
-4. Final Treatment: Purified Water (Ch5, p57-73)
-5. Final Treatment: WFI (Ch6, p75-87)
-6a-6b. Pharmaceutical Steam (Ch7, p89-109) — 2 parts
-7a-7b. Storage & Distribution (Ch8, p111-145) — 2 parts
-8. Instrumentation & Control (Ch9, p147-156)
-9. Commissioning & Qualification (Ch10, p157-163)
-10. Appendix: USP & Passivation (App 11.1-11.3, p165-185)
-11a-11b. Appendix: Treatment Details (App 11.4-11.6, p186-210) — 2 parts
-12a-12b. Appendix: Steam & Fabrication (App 11.7-11.9, p211-236) — 2 parts
-13. Appendix: Design & Glossary (App 11.10-11.12, p229-250)
+ISPE Baseline Guide Volume 4: Water and Steam Systems | p1–p250 | 14 (10 chapters + 4 appendix groups, split into 18 subsections)
+Terms: WFI (Water for Injection), PW (Purified Water), USP, conductivity, TOC (Total Organic Carbon), endotoxin, RO (reverse osmosis), CEDI, ion exchange, distillation (SE/ME/VC), clean steam, utility steam, deadleg, biofilm, ozone, UV, passivation, rouging, 316L SS, PVDF, orbital welding, borescoping, three-stage testing, Alert/Action limits, loop velocity, vent filter, spray ball
 
 ---
 
 ## ISPE/ISPE-SUT-Complete.md
-**Report:** ISPE Good Practice Guide: Single-Use Technology
-**Pages:** p7–p174 | **Sections:** 10
-
-**Covers questions about:**
-- Single-use component types: bags, tubing, connectors, filters, sensors, bioreactors, mixing systems
-- Extractables and leachables (E&L): study design, AET, simulation conditions, analytical methods (GC-MS, LC-MS, ICP-MS)
-- Process equipment design for SUT: P&ID, sensors, valves, pumps, bioreactors, chromatography, UF/DF
-- Quality requirements for SUT: incoming inspection, CoC/CoQ, bioburden, endotoxin, particulates, shelf life
-- Supplier qualification and audit methodology for SUT suppliers
-- User Requirement Specification (URS) development for single-use systems
-- Facility design for SUT: ballroom vs dance floor vs factory-in-a-box, upstream/downstream/fill-finish zones
-- Technology transfer and regulatory compliance for SUT implementation
-- Validation: IQ/OQ/PQ for SUT, leachables study, container integrity, filter validation
-- Supply chain management: quality agreements, lead times, safety stock, change notification
-- Training program design for SUT assembly and inspection
-- Risk management for SUT: FMEA, PCM qualification attributes (15 types), risk scoring (A×B×C×D)
-- Change management for SUT: maintenance vs disruptive change, notification mechanisms
-- Waste management: single-use waste disposal, autoclave decontamination, incineration
-- Case study: 2000L single-use bioreactor implementation in GMP facility
-
-**Key terms:** single-use technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, AET (analytical evaluation threshold), TTC (threshold of toxicological concern), SCT (safety concern threshold), PCM (process contact material), PPC (primary packaging component), CoC (certificate of compliance), CoQ (certificate of quality), P&ID, holdup volume, gamma irradiation, biocompatibility (ISO 10993), CCI (container closure integrity), URS, facility design, waste decontamination, FMEA, change notification, ballroom layout, technology transfer
-
-**Sections:**
-0. Ch1: Introduction & Key Concepts (p7-12)
-1a. Ch2.1–2.2: Components, Assemblies & Extractables (p13-28)
-1b. Ch2.3–2.4: Equipment Design & Quality Requirements (p29-50)
-1c. Ch2.5–2.8: Supplier, URS, Facility Design & Waste (p51-78)
-2. Ch3: Implementation & Use (p79-102)
-3. Ch4: Program Management (p103-120)
-4. App1–3: Regulations, Training & Defective Products (p121-132)
-5. App4: Risk Management Qualification Attributes (p133-146)
-6. App5: Case Study — 2000L Single-Use Bioreactor (p147-158)
-7. App6–7: References & Glossary (p159-174)
+ISPE Good Practice Guide: Single-Use Technology | p7–p174 | 10
+Terms: single-use technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, AET (analytical evaluation threshold), TTC (threshold of toxicological concern), SCT (safety concern threshold), PCM (process contact material), PPC (primary packaging component), CoC (certificate of compliance), CoQ (certificate of quality), P&ID, holdup volume, gamma irradiation, biocompatibility (ISO 10993), CCI (container closure integrity), URS, facility design, waste decontamination, FMEA, change notification, ballroom layout, technology transfer
 
 ---
 
 ## ISPE/ISPE-Vol7-Complete.md
-**Report:** ISPE Baseline® Guide Volume 7 (2nd Edition): Risk-Based Manufacture of Pharmaceutical Products
-**Pages:** p4–p182 | **Sections:** 9 (13 chapters + appendices, split into 11 subsections)
-
-**Covers questions about:**
-- Cross-contamination risk management in shared pharmaceutical manufacturing facilities
-- Health-Based Exposure Limits (HBEL/ADE/PDE): derivation methodology, NOAEL, adjustment factors
-- Occupational Exposure Limits (OEL) and Occupational Exposure Bands (OEB) for worker protection
-- Logic Diagram: sequential decision framework for determining if a product can be manufactured in a shared facility
-- Quality system requirements for cross-contamination prevention: technology transfer, change control, CAPA, PQR, training
-- Four routes of cross-contamination: mix-up, retention (cleaning validation), mechanical transfer, airborne transfer
-- Risk analysis: probability of occurrence, detection methods, non-product contact area assessment
-- Risk reduction hierarchy: elimination, substitution, engineering controls, administrative controls, PPE
-- Facility engineering for risk reduction: spatial configuration, material/people flow, dedicated vs shared vs campaign
-- HVAC for hazardous compounds: once-through vs recirculation, quantitating airborne CC risk, pressure regimens
-- Containment technologies: open vessels → LEV → closed systems → gloveboxes → isolators
-- Risk management tools: Risk Matrix, Fishbone/Ishikawa, FMEA (RPN = S×O×D), statistical analysis
-- Risk acceptance, review, and communication: QRMP summary document template
-- Four case scenarios (Appendix 1): obviously acceptable, apparently acceptable but NOT, apparently unacceptable but WAS, large product portfolio
-
-**Key terms:** Risk-MaPP, HBEL (Health-Based Exposure Limit), ADE (Acceptable Daily Exposure), PDE (Permitted Daily Exposure), MACO (Maximum Allowable Carryover), OEL (Occupational Exposure Limit), OEB (Occupational Exposure Band), NOAEL, adjustment factors, cross-contamination, shared facility, dedicated facility, campaign manufacture, mix-up, retention, mechanical transfer, airborne transfer, Cpk/Ppk, cleaning validation, logic diagram, FMEA, RPN, risk matrix, fishbone, ALARP, QRMP
-
-**Sections:**
-0. Introduction & Regulatory Philosophy (Ch1-2, p4-22)
-1. Quality System & Logic Diagram (Ch3, p23-36)
-2. Risk Assessment & Identification (Ch4-5, p37-52)
-3a-3b. Risk Analysis (Ch6, p53-78) — 2 parts
-4. Risk Evaluation & Control (Ch7-8, p79-84)
-5a-5b. Risk Reduction (Ch9, p85-108) — 2 parts
-6. Risk Tools, Review & Communication (Ch10-13, p109-124)
-7a-7b. Appendix 1: Case Scenarios (Ch14, p125-162) — 2 parts
-8. References & Glossary (Ch15-16, p163-182)
+ISPE Baseline® Guide Volume 7 (2nd Edition): Risk-Based Manufacture of Pharmaceutical Products | p4–p182 | 9 (13 chapters + appendices, split into 11 subsections)
+Terms: Risk-MaPP, HBEL (Health-Based Exposure Limit), ADE (Acceptable Daily Exposure), PDE (Permitted Daily Exposure), MACO (Maximum Allowable Carryover), OEL (Occupational Exposure Limit), OEB (Occupational Exposure Band), NOAEL, adjustment factors, cross-contamination, shared facility, dedicated facility, campaign manufacture, mix-up, retention, mechanical transfer, airborne transfer, Cpk/Ppk, cleaning validation, logic diagram, FMEA, RPN, risk matrix, fishbone, ALARP, QRMP
 
 ---
 
 ## ISPE/ISPE-SUT-Complete.md
-**Report:** ISPE Good Practice Guide: Single-Use Technology
-**Pages:** p7–p174 | **Sections:** 10 (introduction, components/E&L, equipment/quality [×2], supplier/URS/facility, implementation, program management, appendices 1–7)
-
-**Covers questions about:**
-- SUT implementation strategy: when to choose single-use over stainless steel, hybrid configurations
-- Single-use components, assemblies, and systems: classification, design, and selection criteria
-- Extractables and Leachables (E&L): PQRI framework, AET, SCT, leachables testing methodology
-- Process equipment design: sensors (pH, DO, flow, pressure, temperature/conductivity), pinch valves, pumps (peristaltic, diaphragm, centrifugal), bioreactors, chromatography, ultrafiltration
-- Bioreactor scale-up: kLa, P/V, VVM, mixing time, geometric ratio — equivalence between scales
-- Environmental classification: open vs closed vs functionally closed processes, process closure risk assessment
-- Control systems: GAMP 5 compliance, OPC communication, 21 CFR Part 11, batch management
-- Quality requirements at three levels: component (E&L/bioburden/particulate), assembly (manufacturing environment/packaging/sterilization/ISTA shipping), system (NEC/21 CFR Part 11/HMI)
-- Supplier qualification: supplier assessment matrices for components, assemblies, and systems; AVL management; quality agreements
-- Quality checks: supplier responsibilities vs end-user responsibilities for SU product receipt and use
-- User Requirement Specification (URS): development, communication flow, design specification
-- Implementation plan: project management, single-use program lifecycle
-- Regulatory landscape: FDA, EMA, ASTM E2500, ASTM E3051, BioPhorum, BPSA guidelines
-- Risk management: FMEA for SU systems, risk-based qualification approach, Appendix 4 risk qualification attributes
-- 2000L single-use bioreactor (SUB) case study: Appendix 5 end-to-end implementation example
-
-**Key terms:** Single-Use Technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, E&L, AET (Analytical Evaluation Threshold), SCT (Safety Concern Threshold), bioprocess bag, peristaltic pump, diaphragm pump, pinch valve, bioreactor scale-up, kLa, P/V, VVM, open process, closed process, functionally closed process, process closure risk assessment, URS (User Requirement Specification), supplier assessment matrix, GAMP 5, 21 CFR Part 11, OPC, FAT (Factory Acceptance Test), SAT (Site Acceptance Test), ISTA shipping test, ASTM D4169, spallation, vacuum integrity, irradiation marker, QbD, ICH Q8, ICH Q9, ASTM E2500, BioPhorum, BPSA
-
-**Sections:**
-0. Introduction & Key Concepts (Ch1, p7–12)
-1a. Components & Extractables/Leachables (Ch2.1–2.2, p13–28)
-1b. Equipment Design & Quality Requirements (Ch2.3–2.4, p29–50)
-1c. Supplier Qualification, URS & Facility Design (Ch2.5–2.8, p51–78)
-2. Implementation & Use (Ch3, p79–102)
-3. Program Management (Ch4, p103–120)
-4. Appendix 1–3: Regulations, Glossary & Training (p121–132)
-5. Appendix 4: Risk Qualification Attributes (p133–146)
-6. Appendix 5: Case Study — 2000L Single-Use Bioreactor (p147–158)
-7. Appendix 6–7: References & Glossary (p159–174)
+ISPE Good Practice Guide: Single-Use Technology | p7–p174 | 10 (introduction, components/E&L, equipment/quality [×2], supplier/URS/facility, implementation, program management, appendices 1–7)
+Terms: Single-Use Technology (SUT), single-use system (SUS), single-use assembly, extractables, leachables, E&L, AET (Analytical Evaluation Threshold), SCT (Safety Concern Threshold), bioprocess bag, peristaltic pump, diaphragm pump, pinch valve, bioreactor scale-up, kLa, P/V, VVM, open process, closed process, functionally closed process, process closure risk assessment, URS (User Requirement Specification), supplier assessment matrix, GAMP 5, 21 CFR Part 11, OPC, FAT (Factory Acceptance Test), SAT (Site Acceptance Test), ISTA shipping test, ASTM D4169, spallation, vacuum integrity, irradiation marker, QbD, ICH Q8, ICH Q9, ASTM E2500, BioPhorum, BPSA
 
 ---
 
 ## ISPE/ISPE-GAMP5-Complete.md
-**Report:** ISPE GAMP® 5 Guide: A Risk-Based Approach to Compliant GxP Computerized Systems (2nd Edition, 2022)
-**Pages:** p9–p404 | **Sections:** 16 sections across 9 tabs (Chapters 1–8 + Appendices M, D, O, S, G)
-
-**Covers questions about:**
-- What GAMP 5 is and how it differs from the 1st edition (new: critical thinking, AI/ML, blockchain, Agile, updated QRM)
-- The 5 key concepts: fit for intended use, life cycle approach, scalable effort, science-based QRM, leveraging supplier involvement
-- Computerized system life cycle: 4 phases (Concept, Project, Operation, Retirement) and all sub-activities
-- GAMP software categories: Category 1 (infrastructure), Category 3 (non-configured COTS), Category 4 (configured COTS), Category 5 (custom)
-- Quality Risk Management (QRM) for computerized systems: risk identification, assessment, control, communication, review
-- Regulated company activities: governance, system inventory, supplier assessment, validation planning and execution
-- Supplier activities: good practices, QMS, sub-supplier assessment, commercial release, support during operation
-- Validation planning: Validation Master Plan (VMP), System Validation Plan, traceability matrix, validation summary report
-- Testing: IQ/OQ/PQ for computerized systems, scripted vs unscripted testing, defect management, regression testing
-- Operational appendices: handover, change management, periodic review, backup/restore, business continuity, security, archiving
-- IT infrastructure: Category 1 qualification, cloud computing (SaaS/PaaS/IaaS), disaster recovery, system monitoring
-- Critical thinking: applying proportionate effort, avoiding over- and under-validation
-- Agile development in GxP: sprint-based validation, iterative testing, documentation strategies
-- AI/ML in pharma manufacturing: model validation, continuous learning, drift detection, regulatory perspective
-- Blockchain/distributed ledger: pharma applications, validation considerations, audit trail implications
-- Electronic batch records (eBR): 21 CFR Part 11, EU Annex 11, ALCOA+, audit trail requirements
-- Spreadsheet validation: GxP spreadsheet controls, validation approach, Excel macro risk
-- Patch and update management for validated systems: security vs. GxP tension, risk-based strategy
-- Compliance with 21 CFR Part 11, EU GMP Annex 11, ICH Q9, ICH Q10, ASTM E2500
-
-**Key terms:** CSV (Computer System Validation), GxP, GAMP, computerized system, life cycle, fit for intended use, scalable effort, critical thinking, Category 1/3/4/5 software, URS (User Requirement Specification), FRS (Functional Requirements Specification), CS (Configuration Specification), IQ/OQ/PQ, validation master plan, validation summary report, traceability matrix, system risk assessment, supplier assessment, RTM, QRM (Quality Risk Management), COTS (Commercial Off-The-Shelf), infrastructure, critical aspect, process owner, system owner, change control, configuration management, periodic review, business continuity, backup and restore, audit trail, access control, electronic records, e-signatures, 21 CFR Part 11, EU Annex 11, ALCOA+, data integrity, Agile, sprint, AI/ML, machine learning, model drift, blockchain, distributed ledger, eBR (electronic batch record), EPR (electronic production record), spreadsheet validation, patch management, data migration, data archiving, ASTM E2500
-
-**Sections:**
-0. Introduction & Key Concepts (Ch1–2, p9–22)
-1. Life Cycle Approach & Phases (Ch3–4, p23–48)
-2. QRM & Regulated/Supplier Activities + Efficiency (Ch5–8, p49–84)
-3. Appendices M1–M4: Validation Planning, Supplier Assessment, QRM, Software Categories (p85–134)
-4. Appendices M5–M12: Design Review, Change Mgmt, Documentation, IT Infrastructure, Critical Thinking (p135–182)
-5. Appendices D1–D5: Requirements, Configuration, Software Development & Testing (p183–234)
-6. Appendices D6–D11: System Descriptions, Data Migration, Agile, Tools, Blockchain, AI/ML (p235–280)
-7. Appendices O–O13: Operations — Handover, Monitoring, CAPA, Change Mgmt, Security, Archiving (p281–346)
-8. Appendices S1–S6 + G1–G2: Special Topics (eBR, Spreadsheets, Patches) + References & Glossary (p347–404)
+ISPE GAMP® 5 Guide: A Risk-Based Approach to Compliant GxP Computerized Systems (2nd Edition, 2022) | p9–p404 | 16 sections across 9 tabs (Chapters 1–8 + Appendices M, D, O, S, G)
+Terms: CSV (Computer System Validation), GxP, GAMP, computerized system, life cycle, fit for intended use, scalable effort, critical thinking, Category 1/3/4/5 software, URS (User Requirement Specification), FRS (Functional Requirements Specification), CS (Configuration Specification), IQ/OQ/PQ, validation master plan, validation summary report, traceability matrix, system risk assessment, supplier assessment, RTM, QRM (Quality Risk Management), COTS (Commercial Off-The-Shelf), infrastructure, critical aspect, process owner, system owner, change control, configuration management, periodic review, business continuity, backup and restore, audit trail, access control, electronic records, e-signatures, 21 CFR Part 11, EU Annex 11, ALCOA+, data integrity, Agile, sprint, AI/ML, machine learning, model drift, blockchain, distributed ledger, eBR (electronic batch record), EPR (electronic production record), spreadsheet validation, patch management, data migration, data archiving, ASTM E2500
 
 ---
 
 ## PDA/TR84-Complete.md
-**Report:** PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations
-**Pages:** p1–p57 | **Sections:** 8 (including split appendix)
-
-**Covers questions about:**
-- What is data integrity in pharmaceutical manufacturing context (ALCOA+ principles)
-- Data integrity regulatory trends: FDA warning letters, EU GMP inspections, MHRA guidance
-- Quality Risk Management (QRM) applied to data integrity: 9-Box vulnerability grid, data criticality classification
-- Data Process Flow Maps (DPFMs): mapping data creation, storage, transfer, review
-- Human factors in DI risk: unintentional errors vs. intentional falsification
-- DI controls framework: prevention vs. detection controls, differentiation for paper/electronic/hybrid systems
-- 13 specific DI control areas: audit trail, access controls, system clock, data backup, CSV, blank controls, printouts, raw data, true copies, data transfer, error/alarm management, periodic review, training
-- ATRA tool for audit trail risk assessment
-- Big Data considerations: IoT sensors, continuous manufacturing, automated alarm management
-- 54 worked examples across API, FDF, sterility assurance, and tablet packaging operations
-
-**Key terms:** ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, EBR, hybrid system, CSV, GDocP, looped memory, Big Data, IoT
-
-**Sections:** Section 0 (Intro & Glossary) → Section 1 (DI Regulatory Trends) → Section 2 (QRM Applied to DI) → Section 3 (DI Controls Framework) → Section 4 (DI Controls Specific Areas) → Section 5 (Big Data & References) → Section 6a (Appendix: API & FDF Examples) → Section 6b (Appendix: Sterility & Packaging Examples)
+PDA TR84: Integrating Data Integrity into Manufacturing and Packaging Operations | p1–p57 | 8 (including split appendix)
+Terms: ALCOA+, data integrity, audit trail, 21 CFR Part 11, EU GMP Annex 11, MHRA, data lifecycle, data criticality, data vulnerability, 9-Box grid, DPFM, FMEA, ATRA, access control, system clock, true copy, raw data, EBR, hybrid system, CSV, GDocP, looped memory, Big Data, IoT
 
 ---
 
 ## ISPE/ISPE-Vol6-Complete.md
-**Report:** ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities
-**Pages:** p7–p140 | **Sections:** 11 (Ch4 split 4A/4B)
-
-**Covers questions about:**
-- Why biopharmaceuticals need different facilities from small molecule drugs (living organisms, shear sensitivity, contamination types)
-- Process closure strategy: closed vs open vs functionally closed — the central design philosophy of Vol.6
-- Layers of protection model: how adding protection layers reduces required room grade
-- Risk-based environmental classification: mapping each unit operation to appropriate room grade based on closure level
-- Containment vs Classification: the critical biopharmaceutical distinction (protect workers/environment vs protect product)
-- Regulatory requirements: FDA 21 CFR Part 211, EU GMP Annex 2, ICH Q5 series for biologicals
-- CQAs and CPPs unique to biologics: glycosylation, aggregation, host cell proteins
-- Operations: multi-product campaigns, single-use systems, automation, supply chain
-- cGMP layout: segregation strategies, ballroom concept, 6 case studies, 40% cost difference example
-- Vaccines and biological hazard containment: BSL containment vs GMP classification conflict
-- Architectural design: white/grey/black space zoning, modular facilities, BIM
-- Mechanical systems: HVAC for containment, biological waste inactivation, CO2/N2/O2 utilities, UPS for cell culture
-- Risk-based classification methodology: FMEA approach, Tables 10.1 and 10.2
-
-**Key terms:** process closure, closed system, open system, functionally closed, containment, classification, layers of protection, CNC, axenic state, bioburden-free, bioreactor, upstream, downstream, chromatography, UF/DF, viral filtration, SUS (single-use system), CIP, SIP, BSL (biosafety level), negative pressure, campaign manufacturing, multi-product, BIM, modular facility, biological waste inactivation, CQA, CPP, ICH Q5
-
-**Sections:**
-1+3. Introduction & Risk Management (p7-p31)
-2. Regulatory — Containment vs Classification, CQAs/CPPs (p15-p25)
-4A. Process Closure — Sources & Layers of Protection (p31-p42)
-4B. Process Closure — Appropriate Environments Based on Risk (p42-p49)
-5. Operations — SUS, Multi-product, Automation (p49-p61)
-6A. cGMP Layout — Protection & Segregation, 6 Case Studies (p61-p74)
-6B. cGMP Layout — Flows, Cleaning, Vaccines/BSL (p74-p85)
-7. Architectural — Modular design, BIM, site planning (p85-p97)
-8. Mechanical — HVAC, biological waste, utilities, UPS (p97-p111)
-9+A1. Sustainability & Appendix 1 — Risk-based classification, Tables 10.1/10.2 (p111-p121)
-A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
+ISPE Baseline Guide Vol.6 (2nd Ed.): Biopharmaceutical Manufacturing Facilities | p7–p140 | 11 (Ch4 split 4A/4B)
+Terms: process closure, closed system, open system, functionally closed, containment, classification, layers of protection, CNC, axenic state, bioburden-free, bioreactor, upstream, downstream, chromatography, UF/DF, viral filtration, SUS (single-use system), CIP, SIP, BSL (biosafety level), negative pressure, campaign manufacturing, multi-product, BIM, modular facility, biological waste inactivation, CQA, CPP, ICH Q5
 
 ---
 
 ## PICS/PICS-Annex1-Complete.md
-**Report:** PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products
-**Pages:** p1–p58 | **Sections:** 11 (+ Section 8 split into 3 parts)
+PIC/S Annex 1 (2022) — Manufacture of Sterile Medicinal Products | p1–p58 | 11 (+ Section 8 split into 3 parts)
+Terms: CCS, contamination control strategy, Grade A, Grade B, Grade C, Grade D, cleanroom, RABS, isolator, UDAF, unidirectional airflow, pressure cascade, WFI, pure steam, gowning qualification, aseptic processing, terminal sterilisation, F0 value, Fh value, depyrogenation, PUPSIT, BFS, FFS, lyophilization, APS, media fill, alert level, action limit, environmental monitoring, sterility testing, parametric release, SAL, bioburden
 
-**Covers questions about:**
-- Contamination Control Strategy (CCS): what it is, what it must cover, how to build one
-- Cleanroom grade classification: Grade A/B/C/D particle and microbial limits (Table 1, 2, 5, 6)
-- RABS vs Isolator: design requirements, background grade, VHP decontamination, glove testing
-- Premises design: airlock design, pressure cascades, material transfer via RTP/double-door autoclaves
-- Equipment and utility requirements for sterile manufacturing (WFI, pure steam, compressed gases)
-- Personnel: gowning qualification by grade, health monitoring, shedding organism exclusion
-- Terminally sterilised vs aseptic processing: grade requirements, Table 3 and Table 4
-- Sterilisation methods: moist heat (F0), dry heat (Fh, depyrogenation), radiation, EO gas, filtration
-- PUPSIT: when required, how to validate exemptions, pre-use vs post-sterilization integrity testing
-- BFS, FFS, Lyophilization: specific requirements and critical process parameters
-- Environmental monitoring programme: alert levels, action limits, trending, continuous monitoring
-- APS/media fill: frequency, batch size, intervention simulation, failed APS response
-- Quality Control: sterility testing role, parametric release, rapid microbial methods
-- Glossary of 40+ key sterile manufacturing terms with regulatory context
+---
 
-**Key terms:** CCS, contamination control strategy, Grade A, Grade B, Grade C, Grade D, cleanroom, RABS, isolator, UDAF, unidirectional airflow, pressure cascade, WFI, pure steam, gowning qualification, aseptic processing, terminal sterilisation, F0 value, Fh value, depyrogenation, PUPSIT, BFS, FFS, lyophilization, APS, media fill, alert level, action limit, environmental monitoring, sterility testing, parametric release, SAL, bioburden
+## FDA/FDA-Aseptic-Complete.md
+FDA Guidance for Industry: Sterile Drug Products Produced by Aseptic Processing — CGMP (2004) | p1–p63 | 7
+Terms: Class 100 (ISO 5), HEPA filter, unidirectional airflow, pressure differential, media fill, Brevundimonas diminuta, SAL 10⁻⁶, endotoxin, depyrogenation, bioburden, D-value, environmental monitoring, alert level, action level, sterility testing, USP <71>, batch record, intervention, isolator, BFS (blow-fill-seal), 21 CFR 211.42, 21 CFR 211.113, gowning qualification, container closure integrity, prefiltration bioburden
 
-**Sections:**
-1. Scope
-2. Principle (CCS framework — 2.1–2.7)
-3. Pharmaceutical Quality System
-4. Premises (Grade classification tables, RABS/Isolator, airlocks)
-5. Equipment
-6. Utilities (WFI, pure steam, gases)
-7. Personnel (gowning, health monitoring)
-8a. Production: Terminally Sterilised + Aseptic Processing (8.1–8.49)
-8b. Production: Sterilisation Methods — Heat, Radiation, EO (8.50–8.79)
-8c. Production: Filtration, FFS, BFS, Lyophilization, Closed Systems (8.80–8.128)
-9. Environmental and Process Monitoring (Tables 5 & 6, APS)
-10. Quality Control
-11. Glossary
+---
+
+## FDA/FDA-ProcessInspection-Complete.md
+FDA Compliance Program Guidance Manual 7356.002A: Sterile Drug Process Inspections (2015) | p1–p38 | 6
+Terms: CPGM 7356.002A, six-system inspection, OAI, VAI, NAI, 483 observation, EIR, establishment inspection report, Full Inspection 56002A, Abbreviated Inspection 56002I, terminal sterilization, aseptic processing, media fill inspection, environmental monitoring inspection, quality system, materials system, production system, facilities equipment system, laboratory controls, sterility test failure 483, endotoxin 483, warning letter, import alert, 21 CFR 211.113, 21 CFR 211.42, lyophilization inspection, CAPA inspection, change control inspection
+
+---
+
+## PDA/TR27-Complete.md
+PDA Technical Report No. 27 (1998): Pharmaceutical Package Integrity | p1–p53 | 5
+Terms: container/closure integrity (CCI), package integrity, leak rate, critical leak size, microbial ingress, microbial challenge test, liquid immersion challenge, airborne challenge, direct correlation, indirect correlation, bubble test, helium mass spectrometry, HVLD (high voltage leak detection), headspace analysis, vacuum decay, pressure decay, tracer gas, ultrasonic imaging, non-destructive testing (NDT), deterministic vs probabilistic method, RSF (reliable, sensitive, feasible), USP <1207>
+
+---
+
+## PDA/TR1-Complete.md
+PDA Technical Report No. 1 (Revised 2007): Validation of Moist Heat Sterilization Processes: Cycle Design, Development, Qualification and Ongoing Control | p1–p57 | 7
+Terms: moist heat sterilization, autoclave, F0 value, D-value, z-value, SAL, overkill, bioburden-based, biological indicator (BI), Geobacillus stearothermophilus, survivor curve, lethality, lethal rate, cold spot, saturated steam, superheated steam, noncondensable gases, dryness fraction, pre-vacuum cycle, SFPP, gravity cycle, liquid cycle, SAM (steam-air mixture), temperature mapping, thermocouple, equilibration time, half-cycle study, worst-case load, PPQ, physical qualification, biological qualification, bracketing, parametric release, system suitability, requalification
+
+---
+
+## PDA/TR49-Complete.md
+PDA Technical Report No. 49 (2010): Points to Consider for Biotechnology Cleaning Validation | p1–p76 | 9
+Terms: cleaning validation, biotechnology, carryover, MAC (maximum allowable carryover), MSSR (maximum safe surface residue), CIP (clean-in-place), COP (clean-out-of-place), soil, soil matrix, acceptance limits, TOC (total organic carbon), swab sampling, rinse sampling, recovery study, LOD, LOQ, method validation, D-value, dirty hold, clean hold, design space, DOE, bioburden, endotoxin, single-use equipment, multi-host facility, PAT, FMEA, immunogenicity, HAMA/HACA/HAHA, worst case, critical surface
+
+---
+
+## PDA/TR29-Complete.md
+PDA Technical Report No. 29 (Revised 2012): Points to Consider for Cleaning Validation | p1–p105 | 9
+Terms: cleaning validation, acceptance limits, 10 ppm limit, dose-based limit, MAC (maximum allowable carryover), MACO, HBEL, ADE, PDE, worst-case approach, CIP (clean-in-place), COP (clean-out-of-place), manual cleaning, swab sampling, rinse sampling, recovery study, HPLC, TOC (total organic carbon), visual inspection, cleaning agent, detergent, dirty hold time, clean hold time, dedicated equipment, grouping approach, bracketing, revalidation, PAT (process analytical technology), MSA (measurement system analysis), cleaning qualification, protocol, critical surface
+
+---
+
+## PDA/TR86-Complete.md
+PDA Technical Report No. 86 (2021): Industry Challenges and Current Technologies for Pharmaceutical Package Integrity Testing | p1–p52 | 5
+Terms: CCI (container closure integrity), CCIT, MALL (maximum allowable leak limit), CCS (container closure system), positive control, leak artifact, calibrated leak, deterministic method, probabilistic method, laser-drilled defect, blockage (false negative), prefilled syringe (PFS), staked needle, luer lock, stopper, silicone oil, single-use system (SUS), 2-D bag, 3-D bag, IV bag, cryogenic CCI, headspace analysis, TDLS, helium leak test, optical emission spectroscopy (OES), airborne ultrasound, X-ray detection, LOD (limit of detection), QbD, lifecycle approach, USP <1207>, TR27, β-Content
+
+---
+
+## ISPE/ISPE-Sampling-Complete.md
+ISPE Baseline Guide: Sampling for Pharmaceutical Water, Steam, and Process Gases (2nd Ed.) | p1–p119 | 9
+Terms: PW (Purified Water), WFI (Water for Injection), PSG (pharmaceutical-grade steam), NCG (non-condensable gas), dryness fraction, superheat, Henriksen method, Dewar flask method, CUP (currently used point), NCUP (not currently used point), Alert Level, Action Level, 2σ/3σ control limits, three-phase PQ, initial phase, intermediary phase, extended phase, PQ report, annual PSE (periodic system evaluation), dead-leg, biofilm, diaphragm valve, T-tap, flush volume, sample hold time, chain of custody, parametric release, RTR (real-time release), compressed air quality, ISO 8573, dew point, oil aerosol, oil vapor, viable particle, process gas
+
+---
+
+## FDA/FDA-ProcessVal-Complete.md
+FDA Guidance for Industry: Process Validation — General Principles and Practices (January 2011) | p1–p22 | 6
+Terms: process validation, lifecycle approach, Stage 1/2/3, QTPP (quality target product profile), CQA (critical quality attribute), CPP (critical process parameter), CMA (critical material attribute), NOR (normal operating range), PAR (proven acceptable range), design space, DOE (design of experiments), PPQ (process performance qualification), CPV (continued process verification), SPC (statistical process control), Cpk, Ppk, Xbar-R chart, OOT (out of trend), OOS (out of specification), APR/PQR (annual/periodic product review), PDR (process development report), concurrent release, validation master plan (VMP), 21 CFR 211, FDCA 501(a)(2)(B), ICH Q8/Q9/Q10 alignment
+
+---
+
+## FDA/FDA-ComboProd-CGMP-Complete.md
+FDA Guidance: Current Good Manufacturing Practice Requirements for Combination Products (Jan 2017) | p1–p59 | 5
+Covers questions about: Which CGMP regulations apply to combination products (drug+device+biologic)? What is the streamlined approach under 21 CFR 4.4(b)? Drug CGMP-based vs device QS-based: how to choose? What are the 6 device QS provisions added to drug CGMPs? What are the 8 drug CGMP provisions added to device QS? What CGMP requirements apply to prefilled syringes? Drug-eluting stent CGMP compliance? How does Part 4 define "manufacture" and "manufacturer"? Multi-facility CGMP responsibilities? Change control for combination products?
+Terms: combination product, constituent part, 21 CFR Part 4, CGMP operating system, streamlined approach, drug CGMP-based, device QS-based, primary mode of action (PMOA), lead center, OCP (Office of Combination Products), 820.20 management responsibility, 820.30 design controls, 820.50 purchasing controls, 820.100 CAPA, 820.170 installation, 820.200 servicing, 211.84 component testing, 211.103 yield, 211.137 expiration dating, 211.165 release testing, 211.166 stability, 211.167 special testing, 211.170 reserve samples, single-entity combination product, co-packaged, cross-labeled, convenience kit, prefilled syringe (PFS), drug-eluting stent (DES), QMSR (Quality Management System Regulation), ISO 13485:2016
+Sections: Introduction & Background | General CGMP Considerations | CGMP: Device QS Provisions (IV.A) | CGMP: Drug & Biologics Provisions (IV.B+C) | Product Scenarios & Glossary
+
+---
+
+## FDA/FDA-ComboProd-HF-Complete.md
+FDA Draft Guidance: Human Factors Studies and Related Clinical Study Considerations in Combination Product Design and Development (Feb 2016) | p1–p20 | 3
+Covers questions about: What are human factors studies for combination products? When is HF validation required for combination products? What are "critical tasks" for auto-injectors and inhalers? Formative vs validation HF studies — what is the difference? Simulated-use vs actual-use validation — when is each required? How do HF studies relate to IND/IDE submissions? When should HF validation be embedded in Phase 3 clinical studies? What happens if HF validation fails?
+Terms: human factors (HF), use-related risk, critical task, intended user, use environment, formative study, validation study, simulated-use validation, actual-use validation, knowledge task study, use-related risk analysis (URRA), use FMEA, training limitations, critical task failure, design change trigger, IND, IDE, NDA/BLA marketing application, pre-submission meeting, OCP coordination, CDRH human factors guidance, CDER/CBER combination product
+Sections: Introduction & Background | Human Factors Studies | Process & Clinical Study Considerations
+
+---
+
+## ISPE/ISPE-CTC-Complete.md
+ISPE Good Practice Guide: Controlled Temperature Chamber Mapping and Monitoring (2016) | p1–p116 | 9
+Terms: CTC (Controlled Temperature Chamber), thermal mapping, temperature mapping, URS (User Requirements Specification), IQ/OQ/PQ, commissioning, FAT (Factory Acceptance Testing), SAT (Site Acceptance Testing), guard-banding, measurement uncertainty, Alert Level, Alarm Level, setpoint, worst-case location, sensor placement, data logger, BMS (Building Management System), 21 CFR Part 11, periodic evaluation, re-mapping trigger, excursion assessment, stability chamber, ICH Q1A, WHO TRS 961, EU GDP, USP <659>, USP <1079>
+
+---
+
+## ISPE/ISPE-IT-Complete.md
+ISPE GAMP Good Practice Guide: IT Infrastructure Control and Compliance (2005) | p1–p126 | 8
+Terms: IT Infrastructure, GAMP, CSV (Computerized System Validation), IQ/OQ, building block, type qualification, instance qualification, Platform Owner, Application Owner, IT Quality and Compliance, QMS, configuration management, change control, 21 CFR Part 11, EU Annex 11, CIA triad (Confidentiality/Integrity/Availability), ISO/IEC 17799, PKI (Public Key Infrastructure), intrusion detection (IDS), SLA (Service Level Agreement), KPI, NOC (Network Operations Center), SNMP, Syslog, RMON, backup/restore, Disaster Recovery, Periodic Review, patch management, outsourcing
+
+---
+
+## ISPE/ISPE-TechTransfer-Complete.md
+ISPE Technology Transfer (3rd Edition, 2014) | p1–p240 | 10
+Terms: technology transfer, sending unit (SU), receiving unit (RU), facility fit, process characterization, analytical method transfer, method equivalence, co-validation, critical process parameter (CPP), critical quality attribute (CQA), process performance qualification (PPQ), drug substance API, drug product, biologics TT, cell banking, scale-up, equipment bridging, cleaning validation bridging, FMEA, risk management, QRM, master TT plan, TT report, CDMO, out-licensing, in-licensing, concurrent manufacture
+
+---
+
+## ISPE/ISPE-ProcessGas-Complete.md
+ISPE Good Practice Guide: Process Gases (2011) | p1–p180 | 8
+Terms: process gas, compressed air, nitrogen, CO2, oxygen, argon, ISO 8573, dew point, oil aerosol, viable particle, purity class, pressure swing adsorption (PSA), membrane separation, cryogenic liquid, bulk storage, cylinder manifold, distribution loop, deadleg, velocity, 316L SS, URS, DQ, IQ, OQ, gas quality testing, FMEA, risk assessment, GMP gas, pharmaceutical gas
+
+---
+
+## ISPE/ISPE-QC-Complete.md
+ISPE Guide: Improving Quality Culture (2017) | p1–p40 | 1 (full guide)
+Terms: quality culture, root cause analysis (RCA), human error, skill-based error, rule-based error, knowledge-based error, latent failure, active failure, contributing factor, CAPA, FMEA, 5 Whys, fishbone diagram, Ishikawa diagram, fault tree analysis (FTA), deviation investigation, corrective action, preventive action, maturity model, quality metrics, leadership accountability, organizational factors, GMP culture
 
 ---
 
@@ -1338,6 +623,74 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | Lane qualification, OQ, PQ, passive shipper, PCM, stability budget / 運輸路線確效、被動式保溫箱、穩定性預算 | TR39 |
 | Temperature excursion, nonconformance, OPV, cold chain KPI / 溫度偏差、持續製程驗證、冷鏈KPI | TR39 |
 | Process validation, PPQ, CPV, lifecycle / 製程驗證、持續製程驗證 | TR60 |
+| FDA process validation guidance 2011, FDA PV lifecycle, three-stage model Stage 1 2 3 / FDA製程驗證指引2011、生命週期方法、三階段模型 | FDA-ProcessVal |
+| Stage 1 process design, QTPP CQA CPP, NOR PAR design space, DOE, PDR / 第一階段製程設計、品質目標產品概況、關鍵品質屬性、關鍵製程參數、正常操作範圍、設計空間、實驗設計 | FDA-ProcessVal |
+| Stage 2 PPQ process performance qualification, PPQ protocol, enhanced sampling, concurrent release / 第二階段製程效能確效、PPQ協議書、強化取樣、並行放行 | FDA-ProcessVal |
+| Stage 3 CPV continued process verification, SPC Cpk Ppk Xbar-R chart, OOT OOS, APR PQR / 第三階段持續製程查驗、統計製程管控、製程能力指數、管制圖、超趨勢、定期品質審查 | FDA-ProcessVal |
+| 21 CFR 211.100(a) 211.110(a) 211.180(e) process validation legal basis / 21 CFR製程驗證法規依據、FDCA 501 | FDA-ProcessVal |
+| Combination products CGMP, 21 CFR Part 4, drug-device combination regulatory compliance / 組合產品CGMP、21 CFR Part 4、藥品器材組合法規合規 | FDA-ComboProd-CGMP |
+| Streamlined approach drug CGMP-based device QS-based, CGMP operating system, Part 4.4(b) / 簡化途徑、藥品CGMP基礎、器材QS基礎、CGMP操作系統 | FDA-ComboProd-CGMP |
+| 820.20 820.30 820.50 820.100 820.170 820.200 device QS provisions for combo products / 組合產品附加器材QS規定 | FDA-ComboProd-CGMP |
+| 211.84 211.103 211.137 211.165 211.166 211.167 211.170 drug CGMP provisions for combo products / 組合產品附加藥品CGMP規定 | FDA-ComboProd-CGMP |
+| Prefilled syringe CGMP compliance, drug-eluting stent CGMP, drug-coated mesh regulatory / 預充填注射器CGMP合規、藥物洗脫支架、藥物塗層網格法規 | FDA-ComboProd-CGMP |
+| QMSR Quality Management System Regulation 21 CFR 820 ISO 13485 effective February 2026 / 品質管理系統法規、器材品質系統法規修訂、ISO 13485對齊 | FDA-ComboProd-CGMP |
+| Human factors combination products, use-related risk, critical tasks, HF validation / 組合產品人因工程、使用相關風險、關鍵任務、人因工程驗證 | FDA-ComboProd-HF |
+| Formative study vs validation study HF, simulated-use vs actual-use HF study / 人因工程形成性研究vs驗證研究、模擬使用vs實際使用驗證 | FDA-ComboProd-HF |
+| HF auto-injector critical tasks, inhaler critical tasks, injector usability study / 自動注射器關鍵任務、吸入器關鍵任務、注射器可用性研究 | FDA-ComboProd-HF |
+| HF studies IND IDE NDA BLA submission requirements, pre-submission meeting FDA HF / 人因工程研究法規提交要求、申請前會議 | FDA-ComboProd-HF |
+| Pharmaceutical water system sampling, PW sampling program, WFI sampling plan, water PQ / 製藥用水取樣計畫、純化水取樣、注射用水取樣計畫 | ISPE-Sampling + ISPE-Vol4 |
+| Three-phase water PQ sampling, initial intermediary extended phase, PQ sampling frequency / 三階段水系統PQ取樣、初始期、中間期、延伸期 | ISPE-Sampling |
+| Tables 2.2 2.3 2.4 ISPE water sampling, CUP NCUP sampling frequency, WFI daily / ISPE取樣表、現用點非現用點取樣頻率 | ISPE-Sampling |
+| Sample valve design, diaphragm valve T-tap, flush volume dead volume, sampling technique / 取樣閥設計、隔膜閥、沖洗體積、死體積、取樣技術 | ISPE-Sampling |
+| Sample hold time, water sample storage temperature, chain of custody / 樣品保留時間、水樣儲存溫度、保管鏈 | ISPE-Sampling |
+| Pure steam PSG sampling, NCG dryness superheat, Henriksen method, Dewar flask method / 純蒸汽取樣、不可凝氣體、乾燥度分數、過熱度、蒸汽品質試驗方法 | ISPE-Sampling |
+| Process gas sampling, compressed air quality, ISO 8573, dew point oil aerosol viable particle / 製程氣體取樣、壓縮空氣品質、露點、油氣溶膠、活菌粒子 | ISPE-Sampling |
+| Alert level action level water 2-sigma 3-sigma control limits / 警戒限行動限水系統2σ3σ管制限值 | ISPE-Sampling + TR13 |
+| CTC mapping thermal mapping temperature mapping refrigerator freezer stability chamber / 受控溫度腔體對應測試、冷藏庫、冷凍庫、穩定性試驗腔體溫度對應測試 | ISPE-CTC |
+| CTC URS user requirements specification testable requirements IQ OQ PQ cold storage / 受控溫度腔體用戶需求規格書、可測試需求、冷藏設備確效 | ISPE-CTC |
+| CTC commissioning vs qualification FAT SAT NIST calibration traceability / 受控溫度腔體試運行與確效差異、工廠驗收測試、現場驗收測試 | ISPE-CTC |
+| Sensor placement CTC number of mapping sensors volume-based worst case location / CTC感測器數量與位置、體積基礎計算、最差情況位置 | ISPE-CTC |
+| Measurement uncertainty guard-banding CTC acceptance criteria temperature / 量測不確定度、保護帶、受控溫度腔體驗收標準 | ISPE-CTC |
+| Alert alarm level CTC monitoring setpoint BMS data logger 21 CFR Part 11 / CTC監測警戒行動限值、建築管理系統、數據記錄器、電子記錄 | ISPE-CTC |
+| CTC excursion power failure temperature deviation product assessment / CTC溫度偏差、斷電應對、溫度超限產品評估 | ISPE-CTC |
+| Stability chamber ICH conditions 25 40 degree mapping qualification / 穩定性試驗腔體ICH條件、25°C/40°C對應測試確效 | ISPE-CTC |
+| WHO TRS 961 EU GDP cold storage qualification temperature mapping regulation / WHO TRS 961、歐盟GDP、冷藏確效、溫度對應測試法規要求 | ISPE-CTC |
+| IT infrastructure qualification, server network client hardware IQ OQ / IT基礎設施確效、伺服器網路用戶端IQ/OQ | ISPE-IT |
+| GAMP IT building block type qualification instance qualification / GAMP IT基礎設施積木式確效、類型確效、實例確效 | ISPE-IT |
+| IT QMS quality management system roles responsibilities IT infrastructure GxP / IT品質管理系統、職責分工、GxP IT基礎設施 | ISPE-IT |
+| IT infrastructure risk assessment GAMP 2-stage likelihood impact detection priority / IT基礎設施風險評估、GAMP兩階段法、發生可能性、影響、可偵測性 | ISPE-IT |
+| Platform Owner Application Owner Data Owner IT Quality Compliance independent QA / 平台擁有者、應用系統擁有者、資料擁有者、IT品質合規、獨立QA | ISPE-IT |
+| IT security CIA triad confidentiality integrity availability ISO 17799 / IT資安CIA三元素、機密性、完整性、可用性 | ISPE-IT |
+| Patch management urgency emergency fix urgent update validated system GxP / 修補管理緊急程度、緊急修補、已驗證系統GxP | ISPE-IT |
+| 4 testing levels platform upgrade no testing confirmation confidence full regression / 平台升級四級測試、確認測試、信心測試、完整回歸測試 | ISPE-IT |
+| IT outsourcing SLA KPI compliance oversight non-delegable contract audit / IT委外管理、服務水準協議、合規監督不可委外 | ISPE-IT |
+| IT SOP requirements matrix platform management data backup security quality / IT SOP需求矩陣、平台管理、資料備份、安全管理 | ISPE-IT |
+| IT periodic review checklist infrastructure qualification change management / IT定期審查清單、基礎設施確效、變更管理 | ISPE-IT |
+| Server management backup restore off-site storage restoration testing performance / 伺服器管理、備份還原、異地存放、還原測試、效能監控 | ISPE-IT |
+| Client management PC types unrestricted restricted controlled GxP image deployment / 用戶端管理、PC類型、受控PC、映像部署 | ISPE-IT |
+| Network management NOC SNMP Syslog RMON network performance metrics / 網路管理、網路運作中心、網路效能指標 | ISPE-IT |
+| Quality culture assessment, site culture maturity model, culture change pharma / 品質文化評估、廠區文化成熟度模型、製藥文化改變 | ISPE-QC |
+| Root cause analysis RCA tools, 5 Whys, fishbone Ishikawa, fault tree analysis FTA / 根本原因分析工具、五個為什麼、魚骨圖、石川圖、故障樹分析 | ISPE-QC |
+| Human error taxonomy skill-based rule-based knowledge-based error, latent active failure / 人為錯誤分類、技能型規則型知識型錯誤、潛伏失誤、主動失誤 | ISPE-QC |
+| CAPA design from RCA, systemic corrective preventive action, deviation root cause CAPA / CAPA設計、系統性根本原因行動、糾正預防措施、偏差CAPA | ISPE-QC |
+| Deviation investigation quality, contributing factors, organizational root cause / 偏差調查品質、貢獻因素、組織性根本原因 | ISPE-QC |
+| Leadership GMP quality culture, management commitment, accountability for quality / 領導力與GMP品質文化、管理層承諾、品質問責制 | ISPE-QC |
+| Process gas URS, pharmaceutical gas requirements specification, gas system design / 製程氣體用戶需求規格書、製藥氣體需求規格、氣體系統設計 | ISPE-ProcessGas |
+| Compressed air system design, oil-free compressor, desiccant dryer, compressed air quality / 壓縮空氣系統設計、無油壓縮機、乾燥器、壓縮空氣品質 | ISPE-ProcessGas |
+| ISO 8573 compressed air purity class, dew point limit, oil aerosol viable particle / ISO 8573壓縮空氣純度等級、露點限值、油氣溶膠、活菌粒子 | ISPE-ProcessGas + ISPE-Sampling |
+| Nitrogen CO2 oxygen argon pharmaceutical grade, inert gas purity, bulk liquid storage / 氮氣二氧化碳氧氣氬氣製藥級、惰性氣體純度、低溫液體儲槽 | ISPE-ProcessGas |
+| Gas distribution piping, 316L SS copper aluminum, velocity pressure drop deadleg gas / 氣體分配管路、316L不銹鋼銅鋁管、流速壓降死角管路 | ISPE-ProcessGas |
+| Process gas qualification, gas system IQ OQ, gas sampling testing protocol / 製程氣體確效、氣體系統IQ/OQ、氣體取樣測試協議 | ISPE-ProcessGas |
+| PSA pressure swing adsorption, membrane separation on-site gas generation / 壓力變換吸附、薄膜分離、現場氣體製造 | ISPE-ProcessGas |
+| Technology transfer pharmaceutical, sending receiving unit, CDMO TT, site transfer / 製藥技術轉移、發送方接收方、CDMO技轉、廠址轉移 | ISPE-TechTransfer + TR65 |
+| Facility fit assessment, capacity equipment compatibility, receiving site readiness / 設施適配性評估、產能設備相容性、接收廠點準備就緒 | ISPE-TechTransfer + TR65 |
+| Analytical method transfer, method equivalence, co-validation, partial transfer strategy / 分析方法轉移、方法等效性、共同驗證、部分轉移策略 | ISPE-TechTransfer |
+| Drug substance API technology transfer, process characterization CPP CQA scale-up / 原料藥技術轉移、製程表徵、關鍵製程參數、關鍵品質屬性、放大 | ISPE-TechTransfer |
+| Drug product technology transfer, formulation scale-up, equipment bridging, PPQ design / 製劑技術轉移、劑型放大、設備橋接、製程效能確效設計 | ISPE-TechTransfer |
+| Biologics technology transfer, cell banking, upstream fermentation, downstream purification, viral clearance / 生物製劑技術轉移、細胞庫、上游發酵、下游純化、病毒清除 | ISPE-TechTransfer |
+| Technology transfer FMEA, TT risk management, TT failure mode risk scoring / 技術轉移FMEA、技轉風險管理、失效模式風險評分 | ISPE-TechTransfer |
+| TT master plan, TT protocol, TT report, TT closure criteria / 技術轉移主計畫、技轉協議書、技轉報告、結案標準 | ISPE-TechTransfer |
+| Cleaning validation bridging, equipment qualification receiving site, utilities TT / 清潔驗證橋接、接收廠點設備確效、公用工程技術轉移 | ISPE-TechTransfer |
 | Single-use systems, SUS, disposable / 一次性系統、拋棄式系統 | TR66 |
 | Prefilled syringe, CCI, drug compatibility / 預充填注射器、容器密封完整性、藥品相容性 | TR73 |
 | Plastic barrel for prefilled syringe, polymer syringe barrel, COC COP PP syringe barrel / 塑料桶筒、聚合物注射器桶筒、COC/COP/PP材料 | ISO-11040-6 |
@@ -1367,12 +720,62 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | ICH Q5A Q5B Q5C Q5D Q5E, biologics quality guidelines / 生物製劑品質指引 | ISPE-Vol6 |
 | Contamination control strategy, CCS, Annex 1 / 污染控制策略、歐盟GMP附錄一（2022） | PICS-Annex1 + TR90 |
 | PIC/S Annex 1 (2022), sterile manufacturing regulation, GMP regulation for sterile / PIC/S附件1、無菌藥品製造法規 | PICS-Annex1 |
+| FDA aseptic processing guidance 2004, FDA sterile drug guidance, 21 CFR 211 aseptic / FDA無菌製程指引2004、21 CFR 211 | FDA-Aseptic |
+| Class 100 ISO 5 critical area, Class 10000 ISO 7, Class 100000 ISO 8, FDA air classification table / FDA潔淨室分級、Table 1空氣分類 | FDA-Aseptic |
+| Media fill acceptance criteria FDA, contaminated unit threshold, 5000 10000 units / FDA培養基充填接受標準、汙染數量門檻 | FDA-Aseptic |
+| Brevundimonas diminuta filter challenge, 0.2 micron filter validation FDA / 布氏短波單胞菌過濾確效、FDA過濾器驗證 | FDA-Aseptic |
+| Gowning qualification FDA, aseptic technique rules, glove monitoring / FDA更衣資格認證、無菌技術規則、手套監測 | FDA-Aseptic |
+| Endotoxin control CIP FDA, dry heat inactivation, 3-log depyrogenation / FDA內毒素管控、就地清洗、乾熱滅活、3-log去熱原 | FDA-Aseptic |
+| Isolator FDA guidance, VHP 4-6 log, isolator pressure differential / FDA隔離器指引、VHP4-6對數去污、隔離器壓差 | FDA-Aseptic |
+| BFS blow-fill-seal FDA, parison formation, polymer qualification / FDA吹塑充填密封指引、管坯成型、聚合物確效 | FDA-Aseptic |
+| Sterility test investigation 7-point, sterility positive investigation framework / 無菌試驗7點調查、無菌試驗陽性調查框架 | FDA-Aseptic |
+| FDA inspection program, sterile drug CPGM 7356.002A, six-system inspection framework / FDA查廠計畫、無菌藥品六大系統查廠框架 | FDA-ProcessInspection |
+| OAI VAI NAI classification, 483 observation trigger, EIR, official action indicated / OAI/VAI/NAI分類、483觀察值、查廠行動指標 | FDA-ProcessInspection |
+| Six systems GMP inspection, Quality System Facilities Materials Production Lab Packaging / GMP六大系統查廠、品質系統、廠房設備、物料、生產、包裝、實驗室 | FDA-ProcessInspection |
+| FDA sterile facility inspection approach, aseptic vs terminal sterilization inspector focus / FDA無菌設施查廠方法、無菌製程vs最終滅菌查廠重點 | FDA-ProcessInspection |
+| Warning letter import alert escalation, OAI trigger criteria, regulatory action / 警告信、進口警示、法規行動升級標準 | FDA-ProcessInspection |
+| 21 CFR 211.113 aseptic processing citation, common 483 sterile drug / 21 CFR 211.113無菌製程條文、常見無菌藥品483 | FDA-ProcessInspection |
 | Grade A B C D classification, cleanroom limits, particle count table / A/B/C/D級潔淨室分級、粒子限值表 | PICS-Annex1 |
 | Terminal sterilisation vs aseptic, sterilisation methods, autoclave F0, depyrogenation Fh / 最終滅菌與無菌操作、滅菌方法、F0值、去熱原 | PICS-Annex1 |
 | PUPSIT, pre-use post-sterilization integrity test, filter integrity exemption / 使用前滅菌後完整性測試 | PICS-Annex1 + TR26 |
 | BFS blow-fill-seal, FFS form-fill-seal, lyophilization annex 1 requirements / 吹塑充填密封、成型充填密封、冷凍乾燥Annex 1要求 | PICS-Annex1 |
 | Environmental monitoring limits, EM alert action limits, Table 5 Table 6, viable non-viable / 環境監測限值、警戒限、行動限 | PICS-Annex1 + TR13 |
 | RABS, isolator, glove port, VHP / 限制進出屏障系統、隔離器、手套口、去污 | PtC-12 + TR70 |
+| Container closure integrity CCI, package integrity, leak testing pharmaceutical / 容器密封完整性、包裝完整性、洩漏試驗 | TR27 + TR73 + TR90 + TR86 |
+| CCI positive controls, leak artifacts, calibrated leaks, NIST traceability, MALL / CCI正對照、洩漏人工品、校正洩漏、MALL | TR86 |
+| Leak blockage false negative, silicone oil CCI, protein aggregation block leak / 洩漏堵塞假陰性、矽油CCI、蛋白質聚集堵塞 | TR86 |
+| SUS bag integrity testing, single-use bag CCI, 70 joining points, flexible container leak / 單次使用袋完整性測試、70個接合點、軟性容器洩漏 | TR86 |
+| Prefilled syringe CCI challenges, PFS leak test, staked needle luer stopper interface / 預充填注射器CCI挑戰、注射器密封試驗 | TR86 |
+| Cryogenic CCI, -80C storage integrity, freeze thaw leak, headspace gas analysis cryo / 低溫CCI、-80°C儲存完整性、凍融洩漏、頂空氣體分析 | TR86 |
+| Helium leak testing pharma, OES optical emission spectroscopy CCI, airborne ultrasound seal / 氦氣洩漏試驗、光學發射光譜、超音波密封完整性 | TR86 |
+| X-ray CCI detection, glass crack detection, auto-injector inspection / X光CCI檢測、玻璃裂紋偵測、自動注射器檢測 | TR86 |
+| MALL maximum allowable leak limit, LOD CCI method, β-Content tolerance interval / 最大允許洩漏限度、CCI方法LOD、β-Content容差區間 | TR86 |
+| TR86 vs TR27 vs USP 1207, package integrity hierarchy, CCI reference framework / TR86 vs TR27 vs USP 1207、包裝完整性層級、CCI參考框架 | TR86 |
+| Helium mass spectrometry CCI, HVLD high voltage leak detection, vacuum decay / 氦質譜分析CCI、高電壓洩漏偵測、真空衰減 | TR27 |
+| Bubble test, headspace analysis, pressure decay, ultrasonic CCI testing / 氣泡試驗、頂空分析、壓力衰減、超聲波CCI試驗 | TR27 |
+| Microbial ingress test, microbial challenge CCI, liquid immersion airborne challenge / 微生物滲入試驗、微生物挑戰CCI | TR27 |
+| Moist heat sterilization, autoclave, steam sterilization, F0 value, D-value, z-value / 濕熱滅菌、高壓滅菌釜、F0值、D值、z值 | TR1 |
+| Overkill approach, bioburden-based sterilization, SAL, 10^-6 sterility assurance / 過度殺滅法、生物負載法、無菌保證水準 | TR1 |
+| Biological indicator BI sterilization, Geobacillus stearothermophilus, BI D-value placement / 生物指示劑、嗜熱脂肪土芽孢桿菌 | TR1 |
+| Saturated steam, superheated steam, noncondensable gases, steam quality, dryness fraction / 飽和蒸汽、過熱蒸汽、不可凝氣體、蒸汽品質 | TR1 |
+| Pre-vacuum cycle SFPP, gravity cycle, liquid cycle, autoclave cycle type / 前真空週期、重力置換週期、液體滅菌週期 | TR1 |
+| Temperature mapping thermocouple, cold spot, worst-case load, equilibration time / 溫度分佈驗證、最冷點、最差情況負載、均衡時間 | TR1 |
+| PPQ physical qualification biological qualification autoclave, bracketing sterilizer equivalence / 製程效能確效、物理確效、生物確效、括弧策略 | TR1 |
+| Parametric release sterilization, requalification autoclave, system suitability moist heat / 參數放行、滅菌再確效、系統適用性 | TR1 |
+| Cleaning validation, carryover, MAC, MSSR, acceptance limits, biotechnology cleaning / 清潔驗證、殘留攜帶、最大允許攜帶量、生物技術清潔 | TR49 |
+| Cleaning validation pharma, 10 ppm limit, dose-based limit, MAC MACO, cleaning acceptance limits / 製藥清潔驗證、10ppm限值、劑量基礎限值、最大允許攜帶量 | TR29 |
+| CIP COP manual cleaning qualification, cleaning process design, worst-case equipment / 就地清洗、離線清洗、手動清洗確效、清潔製程設計、最差情況設備 | TR29 |
+| Dirty hold time, clean hold time, equipment hold study / 清潔前保留時間、清潔後保留時間、設備保留研究 | TR29 + TR49 |
+| Dedicated equipment cleaning, campaign manufacture, β-lactam segregation / 專用設備清潔、活動式生產、β-內醯胺分隔 | TR29 |
+| Cleaning agent selection, detergent validation, cleaning agent residue limits / 清潔劑選擇、清潔劑確效、清潔劑殘留限值 | TR29 |
+| MSA measurement system analysis for swab sampling, visual cleanliness criteria / 量測系統分析、棉棒取樣、目視清潔標準 | TR29 |
+| Biotech cleaning: swab vs rinse sampling, recovery study, sampler qualification / 生物製藥取樣方法、棉棒vs沖洗取樣、回收率研究 | TR49 |
+| TOC, total organic carbon, cleaning analytical method, LOD LOQ method validation / 總有機碳、清潔分析方法、偵測極限 | TR49 |
+| Dirty hold, clean hold, product changeover, cleaning after biotech fermentation / 清潔前後保留時間、產品切換、生物發酵後清潔 | TR49 |
+| Single-use equipment cleaning validation, bypass SUS, disposable bioreactor / 一次性設備清潔驗證 | TR49 |
+| Multi-host facility, CDMO cleaning, shared equipment, cross-contamination limits / 多產品廠清潔、CDMO共用設備、交叉汙染限度 | TR49 |
+| Viral clearance vs cleaning boundary, prion cleaning, mycoplasma biotech / 病毒去除vs清潔邊界、普恩蛋白清潔 | TR49 |
+| Cleaning validation master plan, site harmonization, CVMP / 清潔驗證總體計畫、多廠點協調 | TR49 |
 | Cleaning disinfection, sanitizer, sporicide, disinfectant rotation / 清潔消毒、消毒劑輪替、殺孢子劑 | TR70 |
 | Disinfectant qualification, efficacy testing, AOAC, EN test / 消毒劑確效、效力測試 | TR70 |
 | Hold time, in-use expiration, cleaning frequency / 保存時限、使用效期、清潔頻率 | TR70 |
@@ -1391,6 +794,19 @@ A2+A3. References & Glossary — ICH Q5 series, 75+ abbreviations (p121-p140)
 | MAH accountability supply chain, CDMO contract manufacturer shortage / MAH供應鏈責任、CDMO合約製造商短缺責任 | TR68 |
 | ATMP, cell therapy, gene therapy, CAR-T / 先進療法、細胞治療、基因治療 | PtC-14 |
 | Mobile manufacturing, modular facility / 行動式製造、模組化設施 | PtC-15 |
+| ATMP plasmid classification, viral vector starting material vs drug substance / ATMP質體分類、病毒載體起始原料vs藥品原料 | PtC-11 |
+| AAV lentivirus filtration, aseptic processing when filtration not possible / AAV慢病毒過濾、無法過濾時無菌加工 | PtC-11 |
+| ATMP QbD QTPP CQA CMA CPP MAH CRO CMO responsibility / ATMP QbD品質目標產品概況、MAH與CMO職責 | PtC-11 |
+| Viral vector control strategy, microbiological control sterile vs low-bioburden / 病毒載體管控策略、微生物管控 | PtC-11 |
+| Comparability bridging ICH Q5E ATMP gene therapy / 可比較性Bridging ICH Q5E基因治療 | PtC-11 |
+| Platform technology matrix PPQ AAV pDNA CAR-T lentivirus / 平台技術矩陣PPQ | PtC-11 |
+| Potency assay MOA ATMP gene therapy supercoil nucleic acid surrogate / 效價測定MOA基因治療超螺旋核酸替代指標 | PtC-11 |
+| Remote inspection virtual inspection hybrid inspection GMP GDP / 遠端查驗虛擬查驗混合式查驗GMP GDP | PtC-Remote |
+| Remote Inspection Host inspector identity verification document sharing platform / 遠端查驗主持人稽查員身份驗證文件共享平台 | PtC-Remote |
+| Virtual inspection hardware document camera multiple monitors 360 camera / 虛擬查驗硬體文件攝影機多螢幕 | PtC-Remote |
+| Inspector access GMP systems LIMS screen sharing refusal / 稽查員存取GMP系統LIMS螢幕共享拒絕 | PtC-Remote |
+| GMP certificate reinspection frequency after remote inspection / GMP證書遠端查驗後再查驗頻率 | PtC-Remote |
+| Pre-inspection agreement cybersecurity recording prohibition / 查驗前協議網路安全錄音禁止 | PtC-Remote |
 | Extractables & leachables / 可萃取物、可滲出物 | TR26 + TR66 |
 | Environmental monitoring, EM / 環境監控、微生物監測 | TR13 + TR90 + PtC-12 + TR22 |
 | EM program fundamentals, alert levels, action limits, EM qualification / 環境監測計畫基礎、警戒線、行動線、EM確效 | TR13 |
@@ -1554,6 +970,12 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Cleaning & Disinfection Programs (清潔與消毒程序)**
 → TR70 ★★★ (full C&D framework for aseptic facilities) | PtC-Isolators ★★★ (isolator cleaning, VHP/peracetic acid decontamination cycle) | PtC-12 ★★ (RABS-specific C&D) | TR90 ★★ (C&D as CCS element)
 
+**Moist Heat Sterilization / Autoclave Validation (濕熱滅菌 / 高壓滅菌確效)**
+→ TR1 ★★★ (primary reference: F0/D-value/z-value science, overkill vs bioburden approaches, cycle types, temperature mapping, PPQ, parametric release, bracketing) | PICS-Annex1 ★★★ (regulatory requirements: terminal sterilization F0≥8, overkill F0≥12, sterilisation principles, EU GMP context) | TR60 ★★ (lifecycle validation framework applied to sterilization) | TR22 ★ (sterilization as prerequisite for aseptic processing)
+
+**Cleaning Validation (清潔驗證)**
+→ TR29 ★★★ (pharma/sterile: 10 ppm limit, dose-based limits, HBEL/ADE/PDE limits, MAC/MACO, swab/rinse sampling, MSA, dirty/clean hold times, cleaning agent limits, grouping/bracketing, dedicated equipment, packaging/tubing, full regulatory alignment) | TR49 ★★★ (biotech-specific: MAC/MSSR limits, swab/rinse sampling, TOC/protein methods, design space, hold times, SUS, viral boundaries, master plan, risk assessment, carryover calculation appendix) | ISPE-Vol7 ★★★ (HBEL/ADE/PDE-based limits, MACO, multi-product cross-contamination, Risk-MaPP) | TR70 ★★ (C&D program underpinning cleaning validation) | TR60 ★★ (lifecycle validation framework applied to cleaning)
+
 **Single-Use Systems / SUS (一次性系統 / 拋棄式系統)**
 → ISPE-SUT ★★★ (complete SUT guide: component/assembly/system hierarchy, equipment design, E&L, environmental classification, supplier qualification, program management, 2000L case study) | TR66 ★★★ (full SUS guidance: design principles, E&L, qualification, supply chain) | ISPE-Vol6 ★★★ (SUS impact on facility design: footprint reduction, CIP/SIP elimination, changeover, supply chain risk, TCO) | PtC-15 ★★ (SUS in mobile manufacturing) | PtC-14 ★★ (SUS for ATMPs) | TR26 ★ (single-use filter assemblies)
 
@@ -1573,7 +995,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-HVAC ★★★ (comprehensive HVAC guide: AHU design, filtration, pressure control, psychrometrics, risk management, maintenance, economics) | ISPE-Vol3 ★★★ (HVAC for sterile facilities: air change rates, pressure cascades, HEPA, UDAF) | TR90 ★★ (HVAC as CCS element) | PtC-12 ★ (RABS HVAC requirements)
 
 **Regulatory Background — FDA/EMA GMP (法規)**
-→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
+→ TR60 ★★★ (FDA 2011 PV, ICH Q8/Q9/Q10) | TR91 ★★★ (global PAC regulatory landscape, ICH Q12, harmonization) | FDA-Aseptic ★★★ (FDA 2004 CGMP aseptic processing guidance: complete 21 CFR 210/211 application, buildings/facilities, personnel, EM, media fill, sterility testing, isolators, BFS) | FDA-ProcessInspection ★★★ (FDA 7356.002A: inspector's operational framework, six-system inspection, OAI/VAI/NAI, 483 escalation, sterile-specific inspection objectives) | FDA-ComboProd-CGMP ★★★ (FDA 2017 combination products CGMP guidance: 21 CFR Part 4 streamlined approaches, all specified provisions, QMSR update Feb 2026) | FDA-ComboProd-HF ★★ (FDA 2016 draft: HF requirements for combination products with device constituent parts) | TR26 ★★ (FDA/EMA filter guidance) | TR22 ★★ (FDA aseptic guidance) | TR90 ★★ (Annex 1 2022) | PtC-12 ★★ (Annex 1 RABS)
 
 **Annex 1 (2022) EU GMP / PIC/S Annex 1**
 → PICS-Annex1 ★★★ (primary source: full 2022 revised text, all 11 sections, Tables 1–6, all sterilisation methods, APS, PUPSIT, BFS/FFS/Lyo, EM, QC) | PtC-1 ★★★ (comprehensive PDA Annex 1 alignment: EM, APS, PUPSIT, RABS/Isolator, BFS, personnel) | TR90 ★★★ (CCS aligned to Annex 1) | PtC-12 ★★★ (RABS requirements under Annex 1) | TR13 ★★★ (EM limits and classification per Annex 1) | TR22 ★★ (APS under Annex 1) | TR70 ★★ (C&D under Annex 1)
@@ -1596,6 +1018,8 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Change Control (變更管制)**
 → TR91 ★★★ (post-approval change management: ECs, PACMP, PLCM, ICH Q12, global harmonization) | TR60 ★★★ (lifecycle change control) | TR66 ★★ (SUS change notification) | TR90 ★★ (CCS change control) | TR68 ★★ (PAC expediting for shortage prevention: ICH Q12, gCP framework) | PtC-9 ★★ (pandemic change prioritization, ICH Q12 tools)
 
+**Remote/Hybrid GMP Inspections:** | **PtC-Remote ★★★** (complete remote inspection guide: desktop/virtual/hybrid types, planning, hardware, document sharing, system access, closing, reinspection frequency, 2021 global survey) | PtC-9 ★★ (pandemic inspection experiences, hybrid models, FDA/EMA/PMDA approaches)
+
 **Pandemic Preparedness / Business Continuity (疫情準備/業務持續計畫)**
 → PtC-9 ★★★ (manufacturing, people, quality, regulatory, supply chain) | TR68 ★★★ (drug shortage prevention framework, VSM, DSPR Plan) | TR91 ★★ (PAC expediting to prevent supply disruption)
 
@@ -1603,7 +1027,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR68 ★★★ (risk triage model, Risk Register, DSPR Plan, VSM, aging facilities, PAC expediting) | PtC-9 ★★ (pandemic supply chain, SUS/API shortage lessons)
 
 **Statistical Methods / SPC (統計方法)**
-→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics)
+→ TR60 ★★★ (Cpk, tolerance intervals, control charts) | FDA-ProcessVal ★★★ (Stage 3 CPV: Cpk/Ppk formulas, Xbar-R charts, Western Electric rules, OOT vs OOS decision) | TR13 ★★★ (EM alert level statistics: Cusum, EWMA, regression, CRR trending) | TR22 ★★ (APS batch statistics) | ISPE-Sampling ★★ (2σ/3σ Alert/Action limits for water and steam)
+
+**Pharmaceutical Water / Steam Sampling Programs (製藥用水與蒸汽取樣計畫)**
+→ ISPE-Sampling ★★★ (primary sampling guide: three-phase PQ framework, Tables 2.2/2.3/2.4 frequency matrix, valve design, techniques, sample handling, pure steam NCG/dryness/superheat methods, process gas testing, appendices/glossary) | ISPE-Vol4 ★★★ (water and steam system design, commissioning, qualification: three-phase sampling program architecture, Alert/Action limits, system qualification context) | TR88 ★★ (EM program for low bioburden: water system monitoring applicability) | TR13 ★★ (Alert/Action level statistical methodology applicable to water systems)
 
 **Cleaning Validation / CIP (清潔確效 / 就地清洗)**
 → ISO-13408-4 ★★★ (primary ISO standard: full CIP requirements — equipment design, cleaning agent selection, process parameters, DQ/IQ/OQ/PQ, sampling methods, 1/1000 dose acceptance criteria, routine monitoring, change control) | Guide-No1 ★★★ (filling machine cleaning) | TR90 ★★ (cleaning as CCS element) | ISO-13408-5 ★★ (SIP immediately follows CIP; in-situ treatment concept)
@@ -1612,10 +1039,10 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → TR43 ★★★ (5 defect lexicons: moulded glass, ampoules, cartridges, syringes, vials; classification framework, RTU standards) | TR87 ★★★ (glass vial handling, breakage prevention, depyrogenation, capping best practices) | TR85 ★★ (visible particle inspection methods for glass containers) | TR73 ★★ (syringe-specific glass container requirements) | Guide-No1 ★ (vial washing and depyrogenation tunnel)
 
 **Cold Chain / Temperature Control (冷鏈/溫度管控)**
-→ TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
+→ ISPE-CTC ★★★ (CTC mapping and monitoring: thermal mapping methodology, sensor placement, IQ/OQ/PQ for refrigerators/freezers/stability chambers, monitoring Alert/Alarm levels, measurement uncertainty, guard-banding, excursion response, packaged transport qualification) | TR39 ★★★ (lane qualification, OQ/PQ, OPV, case studies) | TR52 ★★★ (GDP cold chain framework) | TR46 ★★★ (last-mile cold chain: MKT, packaging, monitoring, global supply chains) | PtC-9 ★★ (mRNA ultra-cold chain, vaccine distribution) | PtC-14 ★★ (ATMP cold chain requirements)
 
 **ATMP / Cell & Gene Therapy (先進療法)**
-→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes)
+→ PtC-13 ★★★ (raw materials, supplier qualification, lifecycle) | PtC-14 ★★★ (facility design) | PtC-15 ★★ (mobile manufacturing for ATMPs) | TR13-2 ★★ (EM program design for ATMP/biologics low bioburden processes) | **PtC-11 ★★★** (plasmid/vector development, classification, manufacture, control: QbD, control strategy, filtration, comparability, platform, potency)
 
 **ATMP Raw Materials / Material Qualification (ATMP原材料/材料資格認定)**
 → PtC-13 ★★★ (complete material strategy: categories, risk-based qualification, supplier, lifecycle) — single primary source
@@ -1684,7 +1111,7 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 → ISPE-Vol7 ★★★ (HBEL derivation: NOAEL → adjustment factors → PDE/ADE calculation, HBEL vs OEL distinction, documentation requirements) — single primary source
 
 **Technology Transfer (技術轉移)**
-→ TR65 ★★★ (complete TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
+→ ISPE-TechTransfer ★★★ (complete ISPE TT guide: 6-stage lifecycle, facility fit, analytical method transfer, API TT, drug product TT, biologics TT, FMEA, engineering considerations, case studies) | TR65 ★★★ (PDA TT framework: 6 stages, cross-functional roles, facility fit, 12 case studies) | TR60 ★★ (PV context for TT validation) | PtC-15 ★★ (mobile manufacturing TT considerations)
 
 **Microbial Investigation / OOS (微生物調查/OOS)**
 → TR88 ★★★ (Phase I/II investigation framework: sterility, BET, EM, APS, water system) | TR13 ★★★ (EM investigation and trending) | TR70 ★★ (EM excursion linked to cleaning failure) | TR22 ★★ (APS failure investigation)
@@ -1704,8 +1131,11 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 **Data Integrity / ALCOA+ / Electronic Records (資料完整性/電子記錄)**
 → TR84 ★★★ (complete DI framework: 9-Box grid, 13 control areas, ATRA, 54 worked examples, paper/electronic/hybrid) — single primary source
 
+**IT Infrastructure Qualification / GxP IT 基礎設施確效 (IT Infrastructure for Regulated Systems)**
+→ ISPE-IT ★★★ (complete IT infrastructure qualification guide: V-model, building block strategy, type/instance qualification, QMS for IT, risk assessment, IQ/OQ, operation/maintenance processes, security, patch management, outsourcing, server/client/network management, periodic review, SOPs — the GAMP companion guide for IT platforms supporting GxP applications) | ISPE-GAMP5 ★★ (CSV lifecycle for applications, references IT infrastructure as foundation layer) | TR84 ★★ (DI controls for computerized systems: access controls, audit trail, system clock — IT infrastructure dependent)
+
 **Computer System Validation / CSV (電腦系統驗證)**
-→ ISPE-GAMP5 ★★★ (complete CSV lifecycle framework: categories, QRM, supplier assessment, planning, testing, operations, special topics) | TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
+→ ISPE-GAMP5 ★★★ (complete CSV lifecycle framework: categories, QRM, supplier assessment, planning, testing, operations, special topics) | TR84 ★★★ (CSV as DI control area, access controls, audit trail, system clock) | ISPE-IT ★★ (IT infrastructure qualification as the platform layer beneath validated applications: IQ/OQ for servers/networks/clients) | ISPE-Vol5 ★★ (CSV in C&Q context) | TR60 ★★ (CSV in process validation)
 
 **GxP Software / GAMP Categories / Computerized Systems (GxP軟體/GAMP類別/電腦化系統)**
 → ISPE-GAMP5 ★★★ (Cat 1/3/4/5 definitions, examples, validation depth per category, hardware categories, QRM-based categorization) — single primary source
@@ -1899,3 +1329,482 @@ Format: **Topic** → PRIMARY ★★★ | secondary ★★ | mentioned ★
 | Process Validation | Approach | Supports | Implementation |
 | Change Management | Design Phase | Assessment | Control & Approval |
 | Knowledge Management | Development | Documentation | Lifecycle |
+
+---
+
+## USP General Chapters Knowledge Base
+
+---
+
+## USP/USP-1-Complete.md
+USP 〈1〉 Injections and Implanted Drug Products — Requirements | 4 sections
+Terms: injection, implant, large-volume parenteral (LVP), small-volume parenteral (SVP), sterility, particulate matter, pyrogens, endotoxin, pH, tonicity, container closure, label, beyond-use date, osmolality, isotonic
+
+---
+
+## USP/USP-71-Complete.md
+USP 〈71〉 Sterility Tests | 3 sections
+Terms: sterility test, membrane filtration, direct inoculation, fluid thioglycollate medium (FTM), soybean-casein digest medium (SCDM), incubation, 14-day incubation, bacteriostasis, fungistasis, LAL, validation, positive control, negative control, aseptic technique, invalid test, retest, product inhibition
+
+---
+
+## USP/USP-55-Complete.md
+USP 〈55〉 Biological Indicators—Resistance Performance Tests | 2 sections
+Terms: biological indicator (BI), D-value, z-value, survivor curve, Geobacillus stearothermophilus, Bacillus atrophaeus, spore suspension, paper carrier, fiber carrier, BIER vessel, ISO 18472, resistance performance, kill time, survival time, Stumbo-Murphy-Cochran, LSK method, sterilization validation
+
+---
+
+## USP/USP-85-Complete.md
+USP 〈85〉 Bacterial Endotoxins Test | 3 sections
+Terms: bacterial endotoxin, BET, LAL (Limulus amoebocyte lysate), gel-clot method, turbidimetric method, chromogenic method, endotoxin unit (EU), reference standard endotoxin (RSE), control standard endotoxin (CSE), maximum valid dilution (MVD), product inhibition/enhancement, spike recovery, BET limit, endotoxin limit calculation, rFC (recombinant Factor C), rCRA
+
+---
+
+## USP/USP-151-Complete.md
+USP 〈151〉 Pyrogen Test | 1 section
+Terms: pyrogen test, rabbit pyrogen test, temperature rise, fever, interleukin, monocyte activation test (MAT), non-endotoxin pyrogens, in vitro pyrogen test, limulus test comparison
+
+---
+
+## USP/USP-161-Complete.md
+USP 〈161〉 Transfusion and Infusion Assemblies and Similar Medical Devices | 1 section
+Terms: transfusion set, infusion set, medical device, biocompatibility, extractables, sterility, pyrogenicity, ISO 10993, needle, tubing
+
+---
+
+## USP/USP-381-Complete.md
+USP 〈381〉 Elastomeric Components in Injectable Pharmaceutical Product Packaging/Delivery Systems | 3 sections
+Terms: elastomeric stopper, rubber closure, vial stopper, cartridge closure, syringe plunger, elastomeric component, extractables, physicochemical test, reducing substances, volatile sulfides, ammonium, absorbance, acidity/alkalinity, penetrability, fragmentation, self-sealing, Type I/II classification, biological reactivity, cytotoxicity, USP 〈87〉, USP 〈88〉, BPCS (biological performance classification system)
+
+---
+
+## USP/USP-660-Complete.md
+USP 〈660〉 Containers—Glass | 3 sections
+Terms: glass container, Type I glass, Type II glass, Type III glass, NP (non-parenteral) glass, borosilicate glass, soda-lime glass, glass classification, powdered glass test, water attack test, surface glass test, arsenic release, spectral transmission, chemical resistance, hydrolytic resistance, dealkalization, glass grains test, USP limit
+
+---
+
+## USP/USP-661-Complete.md
+USP 〈661〉 Plastic Packaging Systems and Their Materials of Construction | 3 sections
+Terms: plastic container, plastic packaging, polyethylene (HDPE/LDPE/PE), polypropylene (PP), polyethylene terephthalate (PET/PETG), single-unit container, multiple-unit container, plastic classification, IR/MIR spectroscopy, DSC (differential scanning calorimetry), nonvolatile residue, heavy metals, buffering capacity, biological reactivity, cytotoxicity, extractables, leachables, functional suitability
+
+---
+
+## USP/USP-670-Complete.md
+USP 〈670〉 Auxiliary Packaging Components | 3 sections
+Terms: pharmaceutical coil, cotton coil, rayon coil, polyester coil, desiccant, silica gel, molecular sieve, calcium chloride, calcium oxide, activated carbon, odor adsorbent, oxygen scavenger, bentonite, water absorption capacity, butane activity, desiccant qualification, moisture protection
+
+---
+
+## USP/USP-671-Complete.md
+USP 〈671〉 Containers—Performance Testing | 3 sections
+Terms: container performance testing, light transmission, UV-Vis spectrophotometry, moisture vapor transmission rate (MVTR), moisture permeation, desiccant method, water vapor permeation, tight container, well-closed container, single-unit container, multiple-unit container, unit-dose container, blister pack, strip pack, Class A/B/C/D container, light-resistant container
+
+---
+
+## USP/USP-729-Complete.md
+USP 〈729〉 Globule Size Distribution in Lipid Injectable Emulsions | 2 sections
+Terms: lipid injectable emulsion, globule size, PFAT5 (percentage of fat in globules >5 µm), dynamic light scattering (DLS), light obscuration/SPOS, pulmonary embolism risk, mean droplet diameter (MDD), volume-weighted distribution, acceptance criterion PFAT5 ≤ 0.05%, Brownian motion, Stokes-Einstein equation, system suitability, NIST calibration
+
+---
+
+## USP/USP-755-Complete.md
+USP 〈755〉 Minimum Fill | 1 section
+Terms: minimum fill, labeled amount, net weight, density determination, two-stage acceptance criteria, aerosol minimum fill, spray container, foam container, stage 1 (n=10), stage 2 (n=30), weight by difference method
+
+---
+
+## USP/USP-771-Complete.md
+USP 〈771〉 Ophthalmic Products—Quality Tests | 3 sections
+Terms: ophthalmic product, eye drops, ophthalmic ointment, ophthalmic gel, ophthalmic suspension, sterility, clarity, particulate matter, metal particles in ophthalmic ointments, leakage test, minimum fill, uniformity of dosage units, preservative effectiveness, antimicrobial effectiveness, viscosity, resuspendability, particle size, drop size, pH, osmolality, intraocular, subconjunctival
+
+---
+
+## USP/USP-785-Complete.md
+USP 〈785〉 Osmolality and Osmolarity | 3 sections
+Terms: osmolality, osmolarity, tonicity, colligative properties, osmotic pressure, freezing point depression, vapor pressure, osmometer, freezing point osmometer, vapor pressure osmometer, membrane osmometer, Peltier cooling, dew point, NaCl standards, calibration, Pitzer-Debye-Hückel, mOsmol/kg, mOsmol/L, isotonic (308 mOsmol/kg), IQ/OQ/PQ under 〈1058〉, osmolality vs osmolarity distinction
+
+---
+
+## USP/USP-787-Complete.md
+USP 〈787〉 Subvisible Particulate Matter in Therapeutic Protein Injections | 2 sections
+Terms: subvisible particulate, therapeutic protein, biologic, protein aggregation, protein particles, silicone oil, extrinsic particles, intrinsic particles, inherent particles, light obscuration (LO), microscopic particle count, SVP (small-volume parenteral), LVP (large-volume parenteral), acceptance criteria (≥10 µm, ≥25 µm), in-line filter exemption, dual-limit logic, gas bubbles, degassing
+
+---
+
+## USP/USP-788-Complete.md
+USP 〈788〉 Particulate Matter in Injections | 3 sections
+Terms: particulate matter, injectables, light obscuration method, microscopic particle count, HIAC, particle counter, 10 µm, 25 µm limits, LVP (NMT 25/mL ≥10µm; NMT 3/mL ≥25µm), SVP (NMT 6000/container ≥10µm; NMT 600/container ≥25µm), blank test, system suitability, membrane, counting chamber, rubber stopper particles
+
+---
+
+## USP/USP-789-Complete.md
+USP 〈789〉 Particulate Matter in Ophthalmic Solutions | 1 section
+Terms: particulate matter, ophthalmic solution, eye drops, light obscuration, microscopic particle count, 10 µm limit, 25 µm limit, 50 µm limit, intraocular product, acceptance criteria, Table 1, Table 2
+
+---
+
+## USP/USP-790-Complete.md
+USP 〈790〉 Visible Particulates in Injections | 1 section
+Terms: visible particles, visual inspection, injectable, 100% inspection, AQL sampling, particle enumeration, extrinsic contamination, white background, black background, inspection conditions
+
+---
+
+## USP/USP-791-Complete.md
+USP 〈791〉 pH | 3 sections
+Terms: pH, potential of hydrogen, hydrogen ion activity, Nernst equation, glass electrode, reference electrode, combination electrode, liquid junction, salt bridge, calomel electrode, silver-silver chloride electrode, pH meter, two-point calibration, slope, offset, primary buffer standards, secondary buffer standards, temperature compensation, nonaqueous pH, mixed solvent pH, pH standardization procedure
+
+---
+
+## USP/USP-797-Complete.md
+USP 〈797〉 Pharmaceutical Compounding—Sterile Preparations | 6 sections
+Terms: compounded sterile preparation (CSP), Category 1 CSP, Category 2 CSP, Category 3 CSP, beyond-use date (BUD), immediate-use CSP, designated person, garbing, gowning, gloved fingertip sampling (GFT), media fill, ISO Class 5, ISO Class 7, ISO Class 8, primary engineering control (PEC), secondary engineering control (SEC), LAFW (laminar airflow workbench), BSC (biological safety cabinet), CAI (compounding aseptic isolator), CACI, ACPH (air changes per hour), environmental monitoring, sterility testing, endotoxin testing, sporicidal disinfectant, master formulation record (MFR), compounding record (CR), compounding pharmacist, 503A, 503B
+
+---
+
+## USP/USP-1071-Complete.md
+USP 〈1071〉 Rapid Microbiological Methods | 2 sections
+Terms: rapid microbiological method (RMM), alternative method, growth-based, viability-based, nucleic acid-based, ATP bioluminescence, flow cytometry, PCR, equivalency study, method validation, USP 〈1223〉, FCA (false compliance assessment)
+
+---
+
+## USP/USP-1072-Complete.md
+USP 〈1072〉 Disinfectants and Antiseptics | 2 sections
+Terms: disinfectant, antiseptic, sporicidal agent, bactericidal, fungicidal, virucidal, isopropyl alcohol (IPA), hydrogen peroxide, peracetic acid, chlorine dioxide, quaternary ammonium compounds, phenolics, efficacy testing, AOAC use-dilution test, AOAC carrier test, EN 13697, in-use testing, rotation, contact time, concentration, cleanroom disinfection
+
+---
+
+## USP/USP-1085-Complete.md
+USP 〈1085〉 Guidelines on Biologics — General Considerations | 2 sections
+Terms: biological product, biologic, biotechnology-derived product, cell banking, master cell bank (MCB), working cell bank (WCB), host cell protein (HCP), host cell DNA, process-related impurities, product-related impurities, aggregation, viral safety, viral clearance, in-process controls, bioassay, potency, comparability, ICH Q5 series
+
+---
+
+## USP/USP-1115-Complete.md
+USP 〈1115〉 Bioburden Control of Non-Sterile Drug Substances and Drug Products | 2 sections
+Terms: bioburden, non-sterile, action limit, alert limit, microbial enumeration, TAMC (total aerobic microbial count), TYMC (total yeast and mold count), objectionable microorganism, water activity, TAMC limit, 10 CFU/g, 100 CFU/g, 1000 CFU/g, Salmonella, E. coli, indicator organisms, risk-based approach
+
+---
+
+## USP/USP-1116-Complete.md
+USP 〈1116〉 Microbial Control of Aseptic Environments | 2 sections
+Terms: microbial control, aseptic environment, environmental monitoring (EM), ISO Class 5, ISO Class 7, ISO Class 8, Grade A/B/C/D, action level, alert level, CFU (colony forming unit), settle plates, active air sampling, contact plates, personnel monitoring, cleanroom qualification, EM program design, RMM, trending, excursion investigation
+
+---
+
+## USP/USP-1117-Complete.md
+USP 〈1117〉 Microbiological Best Laboratory Practices | 2 sections
+Terms: laboratory best practice, incubation temperature, incubation time, culture media, QC testing, positive controls, negative controls, analyst qualification, media growth promotion, method suitability, sampling, chain of custody, environmental conditions, data integrity in microbiology
+
+---
+
+## USP/USP-1207-Complete.md
+USP 〈1207〉 Package Integrity Evaluation—Sterile Products | 3 sections
+Terms: container closure integrity (CCI), package integrity, CCIT, deterministic method, probabilistic method, vacuum decay, pressure decay, helium mass spectrometry, HVLD (high voltage leak detection), headspace analysis (TDLAS), mass extraction, tracer gas, dye ingress, microbial ingress, bubble emission, leak detection limit (LDL), maximum allowable leakage limit (MALL), method validation, method transfer, USP 〈1207〉 vs PDA TR27
+
+---
+
+## USP/USP-1211-Complete.md
+USP 〈1211〉 Sterilization and Sterility Assurance of Compendial Articles | 3 sections
+Terms: sterility assurance level (SAL), SAL 10⁻⁶, terminal sterilization, aseptic processing, moist heat sterilization, dry heat sterilization, gas sterilization (EO), radiation sterilization, filtration sterilization, F0 value, Fh value, D-value, z-value, biological indicator (BI), chemical indicator (CI), parametric release, overkill, bioburden-based approach, cycle development, qualification
+
+---
+
+## USP/USP-1228-Complete.md
+USP 〈1228〉 Depyrogenation | 3 sections
+Terms: depyrogenation, endotoxin, pyrogen, LPS (lipopolysaccharide), lipid A, O-antigen, native endotoxin, puri fied LPS, challenge material, 3-log reduction, log reduction value (LRV), BET (bacterial endotoxin test), indirect control, process control, direct control, validation of depyrogenation, routine process control, endotoxin destruction, endotoxin removal
+
+---
+
+## USP/USP-1228-1-Complete.md
+USP 〈1228.1〉 Dry Heat Depyrogenation | 3 sections
+Terms: dry heat depyrogenation, tunnel depyrogenation, batch oven depyrogenation, continuous conveyor tunnel, F_H value, Fh, z-value (170°C basis), dosimetric approach, endotoxin indicator (EI), thermocouple, load mapping, depyrogenation tunnel qualification, heat distribution, heat penetration study, 3-log LRV, routine monitoring, temperature uniformity
+
+---
+
+## USP/USP-1228-3-Complete.md
+USP 〈1228.3〉 Depyrogenation by Filtration | 2 sections
+Terms: depyrogenation by filtration, endotoxin removal, microporous membrane filtration, reverse osmosis (RO), ultrafiltration (UF), charge-modified depth filter, activated carbon filtration, membrane adsorber, LRV (log reduction value), endotoxin adsorption, pH effect, salt concentration, process parameter, WFI generation, filtration validation
+
+---
+
+## USP/USP-1228-4-Complete.md
+USP 〈1228.4〉 Depyrogenation by Rinsing | 2 sections
+Terms: depyrogenation by rinsing, WFI rinse, temperature danger zone (8–55°C), rinsing procedure, endotoxin indicator, rinsing volume, endotoxin dilution, LRV calculation, water quality, rinsing process control, critical process parameters, equipment rinsing, container rinsing, validation of rinsing depyrogenation
+
+---
+
+## USP/USP-1228-5-Complete.md
+USP 〈1228.5〉 Endotoxin Indicators for Depyrogenation | 2 sections
+Terms: endotoxin indicator (EI), endotoxin spike preparation, challenge material, inoculation method, drying procedure, extraction method, recovery efficiency, log reduction value (LRV), 3-log reduction standard, validation protocol, pre-approved protocol, conservative approach, multi-step reduction, additive LRV
+
+---
+
+## USP/USP-1229-Complete.md
+USP 〈1229〉 Sterilization of Compendial Articles | 2 sections
+Terms: sterilization, SAL 10⁻⁶, method selection, decision tree, terminal sterilization preference, aseptic processing, parametric release, bioburden testing, sterilization methods overview, regulatory framework, USP 〈1229〉 series
+
+---
+
+## USP/USP-1660-Complete.md
+USP 〈1660〉 Evaluation of the Inner Surface Durability of Glass Containers | 2 sections
+Terms: glass delamination, glass flakes, glass lamellae, inner surface durability, borosilicate glass, Type I glass, soda-lime glass, ammonium sulfate treatment, alkali borate evaporation, phase separation, glass container sourcing, surface glass test limitations, ICP-MS, SEM-EDX, SIMS, DIC microscopy, aggressive screening, delamination risk, mitigation strategy, risk factors, drug product lifecycle
+
+---
+
+## USP/USP-1788-Complete.md
+USP 〈1788〉 Methods for the Determination of Subvisible Particulate Matter | 4 sections
+Terms: subvisible particulate, light obscuration (LO), HIAC, microscopic particle count, flow imaging (MFI), resonant mass measurement (RMM), particle detection ranges, system suitability test (SST), instrument suitability test (IST), calibration spheres, NIST traceable, coincidence limit, degassing, blank count, LVP acceptance criteria, SVP acceptance criteria, USP limits (Table 2), method validation, linearity, recovery, precision, specificity, detection limit, Appendix 1 (historical development), Appendix 2 (cleaning procedures)
+
+---
+
+## USP/USP-1790-Complete.md
+USP 〈1790〉 Visual Inspection of Injections | 4 sections
+Terms: visual inspection, injectable, defect classification, critical defect, major defect, minor defect, manual visual inspection (MVI), automated visual inspection (AVI), probability of detection (PoD), inspector qualification, visual acuity, Jaeger test, inspection station, illumination (2000–3750 lux), background (black/white), AQL (acceptable quality level), Knapp study, reference set, worst acceptable unit (WAU), threshold study, false reject rate (FRR), inspection life cycle, semi-automated inspection, particle visibility, container shape effects
+
+---
+
+
+---
+
+## USP/USP-87-Complete.md
+USP 〈87〉 Biological Reactivity Tests, In Vitro | 3 pages | 1 section
+Covers questions about: in vitro cytotoxicity testing of plastic/elastomeric materials, agar diffusion test procedure, direct contact test, elution test, L-929 cell line, Grade scoring (0-4), test method selection, biological reactivity acceptance criteria
+Key terms: biological reactivity, cytotoxicity, L-929 cell line, agar diffusion, direct contact test, elution test, Grade 0-4, ZDEC/ZDBC positive control, USP Class VI plastics, ISO 10993
+
+---
+
+## USP/USP-88-Complete.md
+USP 〈88〉 Biological Reactivity Tests, In Vivo | 7 pages | 1 section
+Covers questions about: plastic material classification (Class I-VI), systemic injection test, intracutaneous reactivity test, implantation test, extracting media selection, in vivo biological reactivity acceptance criteria
+Key terms: Plastic Class I–VI, systemic injection test, intracutaneous test, implantation test, extracting media, normal saline extract, cotton seed oil extract, PEG 400 extract, alcohol extract, Draize scoring, rabbit implantation, rat implantation, USP biological reactivity classification
+
+---
+
+## USP/USP-631-Complete.md
+USP 〈631〉 Color and Achromicity | 10 pages | 1 section
+Covers questions about: organoleptic color assessment, CIELAB color measurement, color standards preparation, color matching fluids (BY, GY, B, R, BrY series), Method I procedure, Method II IIA/IIB instruments, ΔE* calculation, achromicity testing
+Key terms: color matching fluid, BY/GY/B/R/BrY color series, CIELAB color space, L* a* b* coordinates, ΔE* (delta E), achromicity, spectrophotometry, Method I (organoleptic), Method II (instrumental), illuminant D65, 10° standard observer, color tolerance
+
+---
+
+## USP/USP-643-Complete.md
+USP 〈643〉 Total Organic Carbon | 4 pages | 1 section
+Covers questions about: TOC testing for pharmaceutical water, system suitability validation, sucrose standard, 1,4-benzoquinone standard, bulk water TOC limit (0.50 mg/L), sterile water container-volume limit table, response ratio formula
+Key terms: TOC (total organic carbon), sucrose standard, 1,4-benzoquinone standard, response ratio, system suitability (85-115%), purified water, WFI, 0.50 mg/L limit, TOC analyzer, wet chemical oxidation, UV/persulfate oxidation, NDIR detection
+
+---
+
+## USP/USP-645-Complete.md
+USP 〈645〉 Water Conductivity | 4 pages | 1 section
+Covers questions about: three-stage conductivity testing, Stage 1 temperature-conductivity table, Stage 2 CO2 equilibration procedure, Stage 3 pH confirmation test, conductivity cell constant calibration, sterile water container-volume limits
+Key terms: water conductivity, Stage 1/2/3, conductivity cell, cell constant, temperature compensation, CO2 equilibration, pH confirmation, USP conductivity table, KCl standard, 0.1 µS/cm calibration, sterile water limits (5 µS/cm / 25 µS/cm)
+
+---
+
+## USP/USP-659-Complete.md
+USP 〈659〉 Packaging and Storage Requirements | 6 pages | 1 section
+Covers questions about: packaging system classifications, container/closure types for injections, temperature storage definitions (frozen/refrigerated/CRT/controlled cold/warm/excessive), light-resistant containers, moisture-proof containers, MKT calculation
+Key terms: immediate container, outer packaging, single-dose container, multiple-dose container, pharmacy bulk package, Type I/II/III glass, tight container, well-closed container, hermetic container, light-resistant container, CRT (controlled room temperature), MKT (mean kinetic temperature), PPPA (Poison Prevention Packaging Act), storage conditions
+
+---
+
+## USP/USP-698-Complete.md
+USP 〈698〉 Deliverable Volume | 3 pages | 1 section
+Covers questions about: deliverable volume testing for oral liquid preparations, density determination methods, gravimetric vs volumetric procedure, acceptance criteria for multiple-unit vs single-unit containers, three-stage acceptance criteria
+Key terms: deliverable volume, multiple-unit container, single-unit container, density measurement, gravimetric method, volumetric method, acceptance criteria stage 1/2/3, ≥100% average, ≥95% each unit, 95%-110% single-unit, oral liquid preparation
+
+---
+
+## USP/USP-921-Complete.md
+USP 〈921〉 Water Determination | 5 pages | 1 section
+Covers questions about: Karl Fischer titration (Methods Ia/Ib/Ic), toluene distillation (Method II), gravimetric loss-on-drying (Method III), reagent standardization, coulometric vs volumetric Karl Fischer, sample preparation requirements
+Key terms: Karl Fischer titration, Method Ia (direct), Method Ib (residual), Method Ic (coulometric), Karl Fischer reagent, sodium tartrate standardization, water equivalent factor F, toluene distillation Method II, loss on drying Method III, water content, anhydrous methanol, pyridine-free reagent
+
+---
+
+## USP/USP-1029-Complete.md
+USP 〈1029〉 Good Documentation Guidelines | 4 pages | 1 section
+Covers questions about: ALCOA+ principles, GMP document types (batch records, CoA, SOPs, lab records, protocols, training records), electronic records requirements (21 CFR Part 11), correction procedures, data integrity
+Key terms: ALCOA+ (attributable, legible, contemporaneous, original, accurate), data integrity, batch record, master batch record (MBR), CoA, SOP, deviation/CAPA record, 21 CFR Part 11, electronic signature, audit trail, correction procedure, good documentation practice (GDP), original record
+
+---
+
+## USP/USP-1058-Complete.md
+USP 〈1058〉 Analytical Instrument Qualification | 6 pages | 1 section
+Covers questions about: instrument classification (Group A/B/C), DQ/IQ/OQ/PQ lifecycle, Quality Triangle framework, software validation integration, change control for instruments, roles and responsibilities
+Key terms: AIQ (analytical instrument qualification), Group A (simple), Group B (moderate), Group C (complex with software), Design Qualification (DQ), Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ), Quality Triangle, user requirement specification (URS), firmware, configurable software, change control, instrument calibration
+
+---
+
+## USP/USP-1079-Complete.md
+USP 〈1079〉 Risks and Mitigation Strategies for Storage and Transportation of Finished Drug Products | 15 pages | 1 section
+Covers questions about: four-pillar risk mitigation framework (documentation/training/resources/qualification), temperature mapping protocol (11 influencing factors), thermal packaging qualification, MKT excursion assessment, quality agreements for distribution
+Key terms: storage risk mitigation, distribution quality management, temperature mapping, thermal packaging, MKT (mean kinetic temperature), temperature excursion, cold chain qualification, 3PL quality agreement, temperature monitoring device, excursion assessment, packaging qualification, CRT storage qualification, cold chain, last-mile distribution
+
+---
+
+## USP/USP-1113-Complete.md
+USP 〈1113〉 Microbial Characterization, Identification, and Strain Typing | 6 pages | 1 section
+Covers questions about: pure culture isolation techniques, phenotypic vs genotypic identification methods, gram staining, biochemical testing, 16S rRNA sequencing, MALDI-TOF MS, strain typing for environmental monitoring, method validation metrics
+Key terms: microbial identification, phenotypic methods, genotypic methods, 16S rRNA sequencing, MALDI-TOF MS, gram staining, biochemical fingerprinting, strain typing, PFGE, MLST, accuracy, reproducibility, sensitivity, specificity, Kappa statistic, environmental isolate, objectionable microorganism, EM excursion investigation
+
+---
+
+## USP/USP-1225-Complete.md
+USP 〈1225〉 Validation of Compendial Procedures | 6 pages | 1 section
+Covers questions about: 8 performance characteristics (accuracy, precision, specificity, LOD, LOQ, linearity, range, robustness), four validation category framework (Category I/II/III/IV), ICH Q2 harmonization, system suitability requirements
+Key terms: method validation, accuracy (trueness), precision (repeatability/intermediate/reproducibility), specificity, detection limit (LOD), quantitation limit (LOQ), linearity, range, robustness, Category I (assay), Category II (impurity), Category III (performance), Category IV (identification), ICH Q2(R1), system suitability, validation protocol
+
+---
+
+## USP/USP-1226-Complete.md
+USP 〈1226〉 Verification of Compendial Procedures | 2 pages | 1 section
+Covers questions about: compendial method verification requirements, risk-based performance characteristic selection, failed verification pathway, 21 CFR 211.194(a)(2) compliance, matrix effects assessment, difference between validation and verification
+Key terms: method verification, compendial procedure, 21 CFR 211.194(a)(2), specificity, matrix effects, risk-based verification, failed verification, alternative procedure, USP 〈1225〉 vs 〈1226〉, method suitability, laboratory transfer, verification protocol, test method suitability study
+
+---
+
+## USP/USP-1231-Complete.md
+USP 〈1231〉 Water for Pharmaceutical Purposes | 37 pages | 3 sections
+Covers questions about: water grades/types classification (PW/WFI/Highly Purified Water/Pure Steam/sterile waters), water system design and validation lifecycle (DQ/IQ/OQ/PQ), unit operations (RO/EDI/distillation/UF), TOC and conductivity limits, microbial and endotoxin control, biofilm control, Alert/Action Level framework
+Key terms: Purified Water (PW), Water for Injection (WFI), Highly Purified Water (HPW), Pure Steam, Water for Hemodialysis, TOC limit (0.50 mg/L), conductivity limits, WFI endotoxin limit (0.25 EU/mL), biofilm control, RODI, EDI, multi-effect distillation, vapor compression, sanitization frequency, microbial Alert Level, Action Level, water system validation, water sampling plan, passivation, flow velocity ≥1 m/s, temperature ≥70°C or ≤4°C
+
+---
+
+## USP/USP-1663-Complete.md
+USP 〈1663〉 Assessment of Extractables Associated with Pharmaceutical Packaging/Delivery Systems | 18 pages | 1 section
+Covers questions about: extractables study design, extraction conditions (pH/solvent/temperature/duration), analytical technique selection (GC-MS/LC-MS/ICP-MS), extractables threshold/safety concern threshold (SCT), extractables profiling strategy
+Key terms: extractables, analytical evaluation threshold (AET), safety concern threshold (SCT), extraction study, worst-case extraction, GC-MS, LC-MS/MS, ICP-MS, NMR, packaging/delivery system, leachables correlation, qualification threshold (QT), reporting threshold (RT), toxicological risk assessment, PQRI framework, ISO 10993, polyolefin, elastomer, extractables characterization
+
+---
+
+## USP/USP-1664-Complete.md
+USP 〈1664〉 Assessment of Drug Product Leachables Associated with Pharmaceutical Packaging/Delivery Systems | 12 pages | 1 section
+Covers questions about: leachables study design, AET (analytical evaluation threshold) calculation, leachables-extractables correlation, leachables specification development, safety qualification of leachables, routine leachables monitoring
+Key terms: leachables, analytical evaluation threshold (AET), leachables specification, qualification threshold (QT), reporting threshold (RT), safety concern threshold (SCT), drug product leachable, packaging/delivery system interaction, correlation study, leachables monitoring, toxicological risk assessment, safety qualification, permitted daily exposure (PDE), TTC (threshold of toxicological concern), PQRI guidance
+
+---
+
+
+---
+
+## USP Quick Topic Routing Guide
+
+**Sterility Testing (無菌試驗)**
+→ USP/USP-71 ★★★ (primary: membrane filtration, direct inoculation, 14-day incubation, bacteriostasis/fungistasis validation) | PICS-Annex1 ★★ (regulatory sterility testing requirements, parametric release) | FDA-Aseptic ★★ (sterility test context, aseptic fill requirements)
+
+**Bacterial Endotoxins / Pyrogen Testing (細菌內毒素/熱原試驗)**
+→ USP/USP-85 ★★★ (primary: gel-clot, turbidimetric, chromogenic methods; MVD calculation; inhibition/enhancement testing; rFC) | USP/USP-151 ★★ (rabbit pyrogen test, MAT for non-endotoxin pyrogens) | USP/USP-1228 ★★★ (depyrogenation strategies and 3-log reduction standard) | FDA-Aseptic ★★ (endotoxin limits context) | PICS-Annex1 ★★ (depyrogenation requirements)
+
+**Depyrogenation Methods (除熱原方法)**
+→ USP/USP-1228 ★★★ (overview: endotoxin biology, control strategies, method selection) | USP/USP-1228-1 ★★★ (dry heat: Fh value, tunnel/oven, load mapping) | USP/USP-1228-3 ★★★ (filtration: RO/UF/activated carbon, LRV) | USP/USP-1228-4 ★★★ (rinsing: WFI volume, temperature, validation) | USP/USP-1228-5 ★★★ (endotoxin indicators: preparation, validation, LRV calculation)
+
+**Sterilization Methods (滅菌方法)**
+→ USP/USP-1211 ★★★ (sterility assurance framework, SAL 10⁻⁶, method comparison) | USP/USP-1229 ★★★ (sterilization of compendial articles: method selection decision tree) | PDA/TR1 ★★★ (moist heat sterilization: F0, cycle development, BI) | PICS-Annex1 ★★★ (sterilization regulatory requirements) | FDA-Aseptic ★★ (aseptic processing as sterilization alternative)
+
+**Biological Indicators (生物指示劑)**
+→ USP/USP-55 ★★★ (BI resistance performance tests: D-value, survivor curve, BIER vessel, calculation methods) | USP/USP-1228-5 ★★★ (endotoxin indicators for depyrogenation validation) | PDA/TR1 ★★ (BI in moist heat sterilization)
+
+**Particulate Matter in Injectables (注射劑微粒)**
+→ USP/USP-788 ★★★ (primary test: LO and microscopic methods, LVP/SVP limits) | USP/USP-787 ★★★ (therapeutic proteins: protein aggregation, silicone oil, special considerations) | USP/USP-789 ★★★ (ophthalmic solutions: ≥50 µm limit) | USP/USP-790 ★★ (visible particulates, 100% inspection) | USP/USP-1788 ★★★ (comprehensive methods reference: LO, microscopic, flow imaging, RMM) | USP/USP-729 ★★★ (lipid emulsions: PFAT5 ≤ 0.05%)
+
+**Visual Inspection of Injections (注射劑目視檢查)**
+→ USP/USP-1790 ★★★ (comprehensive guide: MVI, AVI, Knapp study, PoD, inspector qualification, AQL) | USP/USP-790 ★★ (visible particulates test requirements) | PDA/TR85 ★★★ (enhanced particle detection, ECIM) | PICS-Annex1 ★★ (visual inspection regulatory requirements)
+
+**Container Closure Systems — Testing & Materials (容器密封系統試驗/材料)**
+→ USP/USP-660 ★★★ (glass containers: Type I/II/III, chemical resistance tests) | USP/USP-661 ★★★ (plastic packaging: materials, physicochemical tests, biological reactivity) | USP/USP-381 ★★★ (elastomeric components: stoppers, plungers, physicochemical & biological tests) | USP/USP-670 ★★★ (auxiliary components: desiccants, coils, odor adsorbents) | USP/USP-671 ★★★ (container performance: light transmission, moisture permeation, classification) | PDA/TR27 ★★★ (CCI integrity testing methodology) | USP/USP-1207 ★★★ (package integrity evaluation: deterministic vs probabilistic methods)
+
+**Glass Container Inner Surface Durability / Delamination (玻璃容器內表面耐久性/脫層)**
+→ USP/USP-1660 ★★★ (primary: delamination mechanism, risk factors, ICP-MS/SEM-EDX, mitigation) | USP/USP-660 ★★ (glass chemical resistance testing) | PDA/TR87 ★★ (glass vial handling and processing best practices)
+
+**Package Integrity / Container Closure Integrity (包裝完整性)**
+→ USP/USP-1207 ★★★ (sterile products: deterministic methods, probabilistic methods, validation) | PDA/TR27 ★★★ (historical CCI reference) | PDA/TR86 ★★★ (current technologies: CCIT, MALL, PFS/SUS/IV bag considerations)
+
+**Pharmaceutical Compounding — Sterile (無菌藥品調配)**
+→ USP/USP-797 ★★★ (complete sterile compounding standard: CSP categories, garbing, facilities, EM, BUD tables, sterilization, QA) — single primary source
+
+**Osmolality / Tonicity Testing (滲透壓度試驗)**
+→ USP/USP-785 ★★★ (osmolality vs osmolarity, freezing point/vapor pressure osmometers, calibration, reporting) — primary source
+
+**pH Testing (pH值測定)**
+→ USP/USP-791 ★★★ (pH theory, electrodes, two-point calibration, buffer standards, special samples) — primary source
+
+**Minimum Fill (最低裝量)**
+→ USP/USP-755 ★★★ (two-stage acceptance criteria, aerosol special procedure) — primary source
+
+**Ophthalmic Products Quality (眼科產品品質)**
+→ USP/USP-771 ★★★ (ophthalmic quality tests: sterility, particulates, preservatives, metal particles, leakage, uniformity) | USP/USP-789 ★★ (particulate matter in ophthalmic solutions)
+
+**Microbial Environmental Monitoring (微生物環境監測)**
+→ USP/USP-1116 ★★★ (microbial control program design: ISO classes, action/alert levels, EM strategies) | PDA/TR13 ★★★ (EM fundamentals: sampling locations, statistical methods, trending) | PICS-Annex1 ★★★ (regulatory EM requirements)
+
+**Bioburden Control (微生物負荷控制)**
+→ USP/USP-1115 ★★★ (non-sterile bioburden: TAMC/TYMC limits, objectionable organisms, water activity) | PDA/TR90 ★★ (bioburden as CCS element)
+
+**Rapid Microbiological Methods (快速微生物方法)**
+→ USP/USP-1071 ★★★ (RMM validation, equivalency approach, regulatory pathway) | PDA/TR13 ★★ (RMM in EM programs)
+
+**Disinfectants & Sporicidal Agents (消毒劑/殺孢子劑)**
+→ USP/USP-1072 ★★★ (disinfectant/antiseptic selection, efficacy testing, rotation, cleanroom use) | PDA/TR70 ★★★ (C&D program for aseptic facilities, VHP)
+
+**Globule Size (Lipid Emulsions) (脂質乳劑球粒)**
+→ USP/USP-729 ★★★ (PFAT5, DLS method, LO/SPOS method, acceptance criteria) — primary source
+
+**Biologics — General (生物製劑通則)**
+→ USP/USP-1085 ★★★ (biologics general considerations: cell banking, impurities, viral safety, comparability) | PDA/TR49 ★★ (biotech cleaning validation) | ISPE/ISPE-Vol6 ★★ (biopharmaceutical facility)
+
+
+**Biological Reactivity / Biocompatibility Testing (生物反應性/生物相容性試驗)**
+→ USP/USP-87 ★★★ (in vitro: agar diffusion, direct contact, elution tests; L-929 cytotoxicity; Grade 0-4 scoring) | USP/USP-88 ★★★ (in vivo: Plastic Class I-VI, systemic injection, intracutaneous, implantation tests) | USP/USP-661 ★★ (plastic containers biological reactivity requirements)
+
+**Color & Achromicity Testing (顏色與透明度試驗)**
+→ USP/USP-631 ★★★ (primary: Method I organoleptic, Method II CIELAB instrumental, ΔE* calculation, color matching fluids BY/GY/B/R/BrY) | USP/USP-1790 ★★ (visual inspection context for color)
+
+**Total Organic Carbon (TOC) Testing (總有機碳試驗)**
+→ USP/USP-643 ★★★ (primary: sucrose/benzoquinone system suitability, 0.50 mg/L bulk water limit, sterile water container-volume table) | USP/USP-1231 ★★★ (TOC in water system design and monitoring context)
+
+**Water Conductivity Testing (水導電率試驗)**
+→ USP/USP-645 ★★★ (primary: three-stage test procedure, temperature-conductivity table, CO₂ equilibration, KCl pH confirmation) | USP/USP-1231 ★★★ (conductivity in water system context)
+
+**Packaging & Storage Requirements (包裝與貯存要求)**
+→ USP/USP-659 ★★★ (primary: container types, temperature definitions CRT/cold/frozen, MKT, light-resistant, hermetic classifications) | PDA/TR52 ★★ (distribution: cold chain, GDP) | USP/USP-1079 ★★★ (storage/transportation risk mitigation)
+
+**Deliverable Volume / Fill Volume (可遞送體積/填充體積)**
+→ USP/USP-698 ★★★ (primary: multi-unit vs single-unit acceptance criteria, density determination, gravimetric/volumetric methods) | USP/USP-755 ★★ (minimum fill requirements)
+
+**Water Determination / Karl Fischer (水分測定/卡爾費雪法)**
+→ USP/USP-921 ★★★ (primary: Method Ia/Ib/Ic Karl Fischer, Method II toluene distillation, Method III gravimetric drying, standardization) — primary source for water content testing
+
+**Water for Pharmaceutical Purposes (製藥用水)**
+→ USP/USP-1231 ★★★ (comprehensive: PW/WFI/HPW/Pure Steam classification, system design, validation lifecycle, TOC/conductivity/endotoxin limits, biofilm control, Alert/Action Levels) | USP/USP-643 ★★★ (TOC testing procedure) | USP/USP-645 ★★★ (conductivity testing) | USP/USP-1228-4 ★★ (WFI rinsing for depyrogenation)
+
+**Good Documentation / Data Integrity (良好文件/數據完整性)**
+→ USP/USP-1029 ★★★ (primary: ALCOA+ principles, GMP document types, 21 CFR Part 11, correction procedures) | ICH/ICH-Q10 ★★ (pharmaceutical quality system, documentation requirements) | ISPE/ISPE-GAMP5 ★★ (computerized system validation, audit trails)
+
+**Analytical Instrument Qualification (分析儀器確效)**
+→ USP/USP-1058 ★★★ (primary: Group A/B/C classification, DQ/IQ/OQ/PQ lifecycle, Quality Triangle, software validation, change control) — primary source for lab instrument qualification
+
+**Drug Product Storage & Transportation Risks (成品藥儲運風險)**
+→ USP/USP-1079 ★★★ (primary: 4-pillar mitigation framework, temperature mapping 11 factors, MKT excursion, thermal packaging qualification, quality agreements) | PDA/TR52 ★★★ (GDPs, distribution qualification)
+
+**Microbial Characterization & Identification (微生物特性描述與鑑定)**
+→ USP/USP-1113 ★★★ (primary: phenotypic/genotypic ID methods, MALDI-TOF, 16S rRNA, strain typing, method validation metrics) | USP/USP-1116 ★★ (EM context for isolate identification)
+
+**Method Validation — Analytical (分析方法驗證)**
+→ USP/USP-1225 ★★★ (primary: 8 performance characteristics, Category I-IV framework, ICH Q2 harmonization) | ICH/ICH-Q2 ★★★ (regulatory basis for method validation) | USP/USP-1226 ★★ (compendial method verification complement)
+
+**Method Verification — Compendial (藥典方法適用性驗證)**
+→ USP/USP-1226 ★★★ (primary: 21 CFR 211.194(a)(2), risk-based approach, failed verification pathway) | USP/USP-1225 ★★★ (full validation when verification fails)
+
+**Extractables & Leachables — E&L (可萃取物與可滲出物)**
+→ USP/USP-1663 ★★★ (primary: extractables study design, analytical techniques, SCT/AET thresholds, extraction conditions) | USP/USP-1664 ★★★ (primary: leachables from drug product, AET calculation, L-E correlation, specification development) | PDA/TR26 ★★★ (E&L in sterilizing filtration context) | PDA/TR66 ★★★ (E&L for single-use systems)
+
+**CCI — Test Method Selection & Validation (CCI測試方法選擇與驗證)**
+→ USP/USP-1207-1 ★★★ (primary: lifecycle test method selection, MALL, 12 selection criteria, 8-element validation, deterministic vs probabilistic distinction) | USP/USP-1207 ★★★ (overview CCI chapter) | PDA/TR27 ★★★ (historical CCI reference)
+
+**CCI — Leak Test Technologies (CCI洩漏測試技術)**
+→ USP/USP-1207-2 ★★★ (primary: 6 deterministic methods HVLD/laser headspace/mass extraction/pressure decay/tracer gas/vacuum decay; 4 probabilistic methods; detection limits comparison table) | PDA/TR86 ★★★ (current CCI technologies)
+
+**CCI — Seal Quality Testing (CCI密封品質測試)**
+→ USP/USP-1207-3 ★★★ (primary: torque, burst, peel strength, RSF, airborne ultrasound — 5 seal quality technologies, distinction from leak testing) | PDA/TR86 ★★ (seal quality in broader CCI context)
