@@ -1,0 +1,2700 @@
+# ISO 10993-1:2018: Biological Evaluation of Medical Devices — Part 1: Evaluation and Testing within a Risk Management Process
+
+ISO
+10993-1
+INTERNATIONAL
+STANDARD
+Fifth edition
+2018-08
+Corrected version
+2018-10
+Biological evaluation of medical
+devices —
+Evaluation and testing within a risk
+Pmaarnt 1a:g ement process
+Évaluation biologique des dispositifs médicaux —
+Partie 1: Évaluation et essais au sein d'un processus de gestion du
+risque
+Reference number
+ISO 10993-1:2018(E)
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT ©
+ISO 2018
+ISO 10993-1:2018(E)
+COPYRIGHT PROTECTED DOCUMENT
+© ISO 2018
+All rights reserved. Unless otherwise specified, or required in the context of its implementation, no part of this publication may
+be reproduced or utilized otherwise in any form or by any means, electronic or mechanical, including photocopying, or posting
+on the internet or an intranet, without prior written permission. Permission can be requested from either ISO at the address
+below or ISO’s member body in the country of the requester.
+ISO copyright office
+CP 401 • Ch. de Blandonnet 8
+CH-1214 Vernier, Geneva
+Phone: +41 22 749 01 11
+Fax: +41 22 749 09 47
+Email: copyright@iso.org
+Website: www.iso.org
+Published in Switzerland
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct i ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+Contents
+Page
+Foreword iv
+Introduction vi
+........................................................................................................................................................................................................................................
+1 Scope 1
+................................................................................................................................................................................................................................
+2 Normative references 1
+.................................................................................................................................................................................................................................
+3 Terms and definitions 2
+.....................................................................................................................................................................................
+4 General principles applying to biological evaluation of medical devices 5
+.....................................................................................................................................................................................
+5 Categorization of medical devices 9
+.................................................
+......................................................................................................................................................
+5.1 General ...........................................................................................................................................................................................................9
+5.2 Categorization by nature of body contact ........................................................................................................................9
+5.2.1 Non-contacting medical devices.........................................................................................................................9
+5.2.2 Surface-contacting medical devices .............................................................................................................10
+5.2.3 Externally communicating medical devices ..........................................................................................10
+5.2.4 Implant medical devices .........................................................................................................................................11
+5.3 Categorization by duration of contact .............................................................................................................................11
+5.3.1 Contact duration categories ................................................................................................................................11
+5.3.2 Transitory-contacting medical devices .....................................................................................................11
+6 Biological evaluation process 12
+5.3.3 Medical devices with multiple contact duration categories ....................................................11
+..............................................................................................................................................................
+6.1 Physical and chemical information for biological risk analysis .................................................................12
+6.2 Gap analysis and selection of biological endpoints for assessment .......................................................12
+6.3 Biological testing ................................................................................................................................................................................13
+6.3.1 General...................................................................................................................................................................................13
+7 Interpretation of biological evaluation data and overall biological risk assessment 18
+6.3.2 Testing for evaluation ...............................................................................................................................................14
+Annex A Endpoints to be addressed in a biological risk assessment 20
+...............
+Annex B Guidance on the conduct of biological evaluation within a risk
+(informative) .........................................
+management process 25
+(informative)
+Annex C Suggested procedure for literature review 38
+....................................................................................................................................................................................
+Bibliography 40
+(informative) ...................................................................................
+.............................................................................................................................................................................................................................
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT iii
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+Foreword
+ISO (the International Organization for Standardization) is a worldwide federation of national standards
+bodies (ISO member bodies). The work of preparing International Standards is normally carried out
+through ISO technical committees. Each member body interested in a subject for which a technical
+committee has been established has the right to be represented on that committee. International
+organizations, governmental and non-governmental, in liaison with ISO, also take part in the work.
+ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of
+electrotechnical standardization.
+The procedures used to develop this document and those intended for its further maintenance are
+described in the ISO/IEC Directives, Part 1. In particular the different approval criteria needed for the
+different types of ISO documents should be noted. This document was drafted in accordance with the
+editorial rules of the ISO/IEC Directives, Part 2 (see www .iso .org/directives).
+Attention is drawn to the possibility that some of the elements of this document may be the subject of
+patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of
+any patent rights identified during the development of the document will be in the Introduction and/or
+on the ISO list of patent declarations received (see www .iso .org/patents).
+Any trade name used in this document is information given for the convenience of users and does not
+constitute an endorsement.
+For an explanation on the voluntary nature of standards, the meaning of ISO specific terms and
+expressions related to conformity assessment, as well as information about ISO's adherence to the
+World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT) see the following
+URL: www .iso .org/iso/foreword .html. Biological and clinical evaluation of
+medical devices.
+This document was prepared by Technical Committee ISO/TC 194,
+This fifth edition cancels and replaces the fourth edition (ISO 10993-1:2009), which has been technically
+revised. It also incorporates the Technical Corrigendum ISO 10993-1:2009/Cor.1:2010.
+The main changes compared to the previous edition are as follows:
+a) revised Annex A “Endpoints to be addressed in a biological risk assessment” with new columns for
+“physical and/or chemical information” and “material mediated pyrogenicity” as well as columns
+for “chronic toxicity,” “carcinogenicity,” “reproductive/developmental toxicity,” and “degradation”
+which now indicates “endpoints” to be considered with “E” (instead of “tests” to be conducted with
+an “X”);
+b) replaced Annex B “Guidance on the risk management process” with “Guidance on the conduct of
+biological evaluation within a risk management process” (formerly ISO TR 15499);
+c) additional definitions for terms used throughout the ISO 10993 series of standards;
+d) additional information on the evaluation of “Non-contacting medical devices” and new information
+on the evaluation of “Transitory-contacting medical devices”;
+e) additional information on the evaluation of nanomaterials, and absorbable materials;
+f) additional reference to ISO 18562 (all parts) for “Biocompatibility evaluation of breathing gas
+pathways in healthcare applications”;
+g) significant editing changes throughout the document;
+A list of all parts in the ISO 10993 series can be found on the ISO website.
+This corrected version of ISO 10993-1:2018 incorporates the following correction.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu i ct v ion or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+th
+—In Table A.1, 6 column, “Sensitization” has been added as a table heading.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT v
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+Introduction
+The primary aim of this document is the protection of humans from potential biological risks arising
+from the use of medical devices. It is compiled from numerous International and national standards
+and guidelines concerning the biological evaluation of medical devices. It is intended to describe the
+biological evaluation of medical devices within a risk management process, as part of the overall
+evaluation and development of each medical device. This approach combines the review and evaluation
+of existing data from all sources with, where necessary, the selection and application of additional tests,
+thus enabling a full evaluation to be made of the biological responses to each medical device, relevant
+to its safety in use. The term “medical device” is wide-ranging and, at one extreme, consists of a single
+material, which can exist in more than one physical form, and at the other extreme, of a medical device
+consisting of numerous components made of more than one material.
+This document addresses the determination of the biological response to medical devices, mostly in a
+general way, rather than in a specific device-type situation. Thus, for a complete biological evaluation, it
+classifies medical devices according to the nature and duration of their anticipated contact with human
+tissues when in use and indicates, in a matrix, the biological endpoints that are thought to be relevant in
+the consideration of each medical device category. See also 3.14, Note 1 to entry.
+The range of biological hazards is wide and complex. The biological response to a constituent material
+alone cannot be considered in isolation from the overall medical device design. Thus, in designing a
+medical device, the choice of the best material with respect to its biocompatibility might result in a
+less functional medical device, biocompatibility being only one of a number of characteristics to be
+considered in making that choice. Where a material is intended to interact with tissue in order to
+perform its function, the biological evaluation needs to address this.
+in vitro
+Bioloegxi cvaivl oresponses that are regarded as adverse, caused by a material in one application, might not be
+regarded as such in a different situation. Biological testing is based upon, among other things,
+and test methods and upon animal models, so that the anticipated behaviour when a medical
+device is used in humans can be judged only with caution, as it cannot be unequivocally concluded
+that the same biological response will also occur in this species. In addition, differences in the manner
+of response to the same material among individuals indicate that some patients can have adverse
+reactions, even to well-established materials.
+The primary role of this document is to serve as a framework in whichin t ov pitlraon a biological evaluation. A
+secondary role is to utilize scientific advances in our understanding of basic mechanisms, to minimize
+the number and exposure of test animals by giving prienf evriveonce to models and to chemical,
+physical, morphological, and topographical characterization testing, in situations where these methods
+yield equally relevant information to that obtained from models.
+It is not intended that this document provide a rigid set of test methods, including pass/fail criteria,
+as this might result in either an unnecessary constraint on the development and use of novel medical
+devices, or a false sense of security in the general use of medical devices. Where a particular application
+warrants it, experts in the product or in the area of application concerned can choose to establish
+specific tests and criteria, described in a product-specific vertical standard.
+ISO 10993 series is intended for use by professionals, appropriately qualified by training and experience,
+who are able to interpret its requirements and judge the outcome of the evaluation for each medical
+device, taking into consideration all the factors relevant to the medical device, its intended use and the
+current knowledge of the medical device provided by review of the scientific literature and previous
+clinical experience.
+Informative Annex A contains a table that is generally helpful in identifying endpoints recommended
+in the biocompatibility evaluation of medical devices, according to their category of body contact and
+duration of clinical exposure. Informative Annex B contains guidance for the application of the risk
+management process to medical devices which encompasses biological evaluation.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu v ctio i n or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+INTERNATIONAL STANDARD ISO 10993-1:2018(E)
+Biological evaluation of medical devices —
+Evaluation and testing within a risk management process
+Part 1:
+1 Scope
+This document specifies:
+— the general principles governing the biological evaluation of medical devices within a risk
+management process;
+— the general categorization of medical devices based on the nature and duration of their contact with
+the body;
+— the evaluation of existing relevant data from all sources;
+— the identification of gaps in the available data set on the basis of a risk analysis;
+— the identification of additional data sets necessary to analyse the biological safety of the medical
+device;
+— the assessment of the biological safety of the medical device.
+This document applies to evaluation of materials and medical devices that are expected to have direct
+or indirect contact with:
+— the patient's body during intended use;
+— the user’s body, if the medical device is intended for protection (e.g., surgical gloves, masks and
+others).
+This document is applicable to biological evaluation of all types of medical devices including active,
+non-active, implantable and non-implantable medical devices.
+This document also gives guidelines for the assessment of biological hazards arising from:
+— risks, such as changes to the medical device over time, as a part of the overall biological safety
+assessment;
+— breakage of a medical device or medical device component which exposes body tissue to new or
+novel materials.
+Other parts of ISO 10993 cover specific aspects of biological assessments and related tests. Device-
+specific or product standards address mechanical testing.
+This document excludes hazards related to bacteria, moulds, yeasts, viruses, transmissible spongiform
+encephalopathy (TSE) agents and other pathogens.
+2 Normative references
+The following documents are referred to in the text in such a way that some or all of their content
+constitutes requirements of this document. For dated references, only the edition cited applies. For
+undated referencesB, itohleo glaictaesl te veadliutaiotnio onf o tfh me erdeficearel ndecevidc edso —cu mPaerntt 2 (:i nAcnliumdainl wg ealnfayr aem reeqnudimreemnetns)t sapplies.
+ISO 10993-2:2006, --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+Biological evaluation of medical devices — Part 3: Tests for genotoxicity, carcinogenicity and
+reproductive toxicity
+ISO 10993-3,
+Biological evaluation of medical devices — Part 4: Selection of tests for interactions with blood
+ISO 10993-4, Biological evaluation of medical devices — Part 5: Tests for in vitro cytotoxicity
+ISO 10993-5, Biological evaluation of medical devices — Part 6: Tests for local effects after implantation
+ISO 10993-6, Biological evaluation of medical devices — Part 7: Ethylene oxide sterilization residuals
+ISO 10993-7, Biological evaluation of medical devices — Part 9: Framework for identification and
+quantification of potential degradation products
+ISO 10993-9,
+Biological evaluation of medical devices — Part 10: Tests for irritation and skin sensitization
+ISO 10993-10, Biological evaluation of medical devices — Part 11: Tests for systemic toxicity
+ISO 10993-11:20B1io7l,o gical evaluation of medical devices — Part 12: Sample preparation and reference
+materials
+ISO 10993-12,
+Biological evaluation of medical devices — Part 13: Identification and quantification of
+degradation products from polymeric medical devices
+ISO 10993-13,
+Biological evaluation of medical devices — Part 14: Identification and quantification of
+degradation products from ceramics
+ISO 10993-14,
+Biological evaluation of medical devices — Part 15: Identification and quantification of
+degradation products from metals and alloys
+ISO 10993-15,
+Biological evaluation of medical devices — Part 16: Toxicokinetic study design for
+degradation products and leachables
+ISO 10993-16,
+Biological evaluation of medical devices — Part 17: Establishment of allowable limits for
+leachable substances
+ISO 10993-17,
+Biological evaluation of medical devices — Part 18: Chemical characterization of materials
+ISO 10993-18, Biological evaluation of medical devices — Part 20: Principles and methods for
+immunotoxicology testing of medical devices
+ISO/TS 10993-20,
+Medical devices — Application of risk management to medical devices
+ISO 14971:2007,
+3 Terms and definitions
+For the purposes of this document, the following terms and definitions apply.
+ISO and IEC maintain terminological databases for use in standardization at the following addresses:
+— IEC Electropedia: available at http: //www .electropedia .org/
+3—.1 ISO Online browsing platform: available at https: //www .iso .org/obp
+biocompatibility
+medical device material
+ability of a (3.14) or (3.12) to perform with an appropriate host response in a
+s3p.2ecific application
+biological risk
+medical device material
+combination of the probability of harm to health occurring as a result of adverse reactions associated
+with (3.14) or (3.12) interactions, and the severity of that harm
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+3.3
+biological safety
+biological risk
+f3r.e4edom from unacceptable (3.2) in the context of the intended use
+chemical constituent
+materials
+medical devices
+any synthetic or natural substance that is used in a process for manufacturing (3.12) and/
+or (3.14), including the base material(s), additives (antioxidants, UV stabilizers, color
+a3d.5ditives, dyes, etc.), and processing aids (solvents, lubricants, antifoaming agents, etc.)
+data set
+medical device
+information, such as physical and/or chemical characterization, toxicity data, etc. from a variety of
+s3o.6urces necessary to characterize the biological response to a
+direct contact
+medical device
+3.7 (3.14) or medical device component that comes into physical contact with body tissue
+externally communicating medical device
+medical device
+(3.14) or medical device component that is partially or wholly located outside the body
+b3u.8t has either direct or indirect contact with the internal body fluids and/or tissues
+final product
+medical device
+(3.14) or medical device component that has been subjected to all manufacturing
+p3r.9ocesses for the “to be marketed” medical device including packaging and if applicable, sterilization
+geometry
+device configuration
+medical device
+s3h.1a0pe and relative arrangement of the parts of the (3.14)
+implant
+medical device
+(3.14) which is intended to be totally introduced into the human body or to replace an
+epithelial surface or the surface of the eye by means of clinical intervention and which is intended to
+r3e.1m1ain in place after the procedure
+indirect contact
+medical device
+(3.14) or medical device component through which a fluid or gas passes, prior to the fluid
+or gas coming into physical contact with body tissue (in this case the medical device or medical device
+c3o.1m2ponent itself does not physically contact body tissue)
+material
+medical device
+synthetic or natural polymer, metal or alloy, ceramic, or composite, including tissue rendered non-
+v3i.1ab3le, used as a (3.14) or any part thereof
+material characterization
+broad and general process of collecting existing information about a material’s chemistry, structure
+a3n.1d4 other properties, and if appropriate, new data, to facilitate the evaluation of these properties
+medical device
+in vitro
+material
+any instrument, apparatus, implement, machine, appliance, implant, reagent for use, software,
+(3.12) or other similar or related article, intended by the manufacturer to be used, alone or in
+combination, for human beings, for one or more of t he specific medical purpose(s) of: 3
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+— diagnosis, prevention, monitoring, treatment or alleviation of disease;
+— diagnosis, monitoring, treatment, alleviation of or compensation for an injury;
+— investigation, replacement, modification, or support of the anatomy or of a physiological process;
+— supporting or sustaining life;
+— control of conception;
+— disinfection of medical devices; in vitro
+— providing information by means of examination of specimens derived from the human body;
+and does not achieve its primary intended action by pharmacological, immunological or metabolic
+means, in or on the human body, but which may be assisted in its intended function by such means.
+Medical devices include dental devices.
+Note 1 to entry: Products which may be considered to be medical devices in some jurisdictions but not in others
+include:
+— disinfection substances;
+— aids for persons with disabilities;
+— devices incoinr pvoitrraoting animal and/or human tissues;
+— devices for fertilization or assisted reproduction technologies;
+[3S.1O5URCE: GHTF/SG1/N071: 2012, 5.1 modified to clarify that dental devices are included]
+nanomaterial
+material
+(3.12) with any external dimension in the nanoscale or having internal structure or surface
+structure in the nanoscale
+[3S.1O6URCE: ISO/TR 10993-22:2017, 3. 7, modified — Notes to entry have been deleted.]
+non-contacting
+medical device
+indicates that the (3.14) or medical device component has neither direct nor indirect
+c3o.1n7tact with body tissues
+physical and chemical information
+knowledge regarding formulation, manufacturing processes, geometric and physical properties and
+type of body contact and clinical use that is used to determine whether any additional biological or
+m3.1at8erial characterization testing is needed
+risk analysis
+systematic use of available information to identify hazards and to estimate the risk
+3[S.1O9URCE: ISO 14971:2007, 2.17, modified— The Note has been deleted.]
+risk assessment
+risk analysis risk evaluation
+overall process comprising a (3.18) and a (3.20)
+[SOURCE: ISO 14971:2007, 2.18]
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+3.20
+risk evaluation
+process of comparing the estimated risk against given risk criteria to determine the acceptability of
+the risk
+[3S.O21URCE: ISO 14971:2007, 2.21]
+risk management
+systematic application of management policies, procedures and practices to the tasks of analysing,
+evaluating, controlling and monitoring risk
+[3S.O22URCE: ISO 14971:2007, 2.22]
+toxic
+c3a.2p3able of causing an adverse biological response
+toxicological hazard
+material
+potential for a chemical substance or (3.12) to cause an adverse biological reaction, taking into
+a3c.2co4unt the nature of the reaction and the dose required to elicit it
+toxicological risk
+probability of a specified degree of an adverse reaction occurring in response to a specified level of
+e3x.2p5osure
+toxicological threshold
+limit, such as a tolerable intake (TI), tolerable exposure (TE), allowable limit (AL) value, or Threshold
+of Toxicological Concern (TTC) below which adverse effects are not expected for relevant biological
+e3n.2d6points
+transitory contact
+medical device
+(3.14) or medical device component that has a very brief duration of contact with
+body tissue
+4 General principles applying to biological evaluation of medical devices
+
+### 4.1 The biological evaluation of any material or medical device intended for use in humans shall form
+
+part of a structured biological evaluation plan within a risk management process in accordance with
+ISO 14971:2007, Annex I, as given in Figure 1 of this document. This risk management process involves
+identification of biological hazards, estimation of the associated biological risks, and determination of
+their acceptability. Annex B provides guidance on this process. The biological evaluation shall be planned,
+carried out, and documented by knowledgeable and experienced professionals.
+The risk management plan should identify aspects of the biological evaluation requiring specific
+technical competencies and shall identify the person(s) responsible for the biological evaluation.
+The evaluation shall include documented, informed consideration of advantages/disadvantages and
+relevance of:
+a) medical device configuration (e.g. size, geometry, surface properties) and a listing of a medical
+device’s materials of construction (qualitative) and where necessary, the proportion and amount
+(mass) of each material in the medical device (quantitative);
+b) the physical and chemical characteristics of the various materials of construction and their
+composition;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+NOTE Where this information is already documented within the risk management for the medical
+device, it can be included by reference.
+c) any history of clinical use or human exposure data;
+NOTE Previous regulatory approval history can be relevant.
+d) any existing toxicology and other biological safety data on product and component materials,
+breakdown products and metabolites;
+e) test procedures.
+Evaluation can include both a review of relevant existing preclinical and clinical data and actual
+testing. Such an evaluation might result in the conclusion that no testing is needed if the material has
+a demonstrable safe history of use in a specified role and physical form that is equivalent to that of the
+medical device under design. The type of information that can be useful to demonstrate equivalence is
+included in Annex B. Testing is usually not necessary when sufficient information is already available to
+perform a risk assessment of the material and/or the medical device (see Annex C).
+
+### 4.2 In the selection of materials to be used in the medical device manufacture, the first consideration
+
+shall be fitness for purpose with regard to characteristics and properties of the material, which include
+chemical, toxicological, physical, electrical, morphological and mechanical properties.
+4.3
+The following shall be taken into account for their relevance to the overall biological evaluation of
+the medical device:
+a) the material(s) of construction (i.e. all direct and indirect tissue contacting materials);
+b) intended additives, process contaminants and residues (for example, testing for ethylene oxide
+sterilization residuals shall be conducted in accordance with ISO 10993-7);
+c) packaging materials that directly or indirectly contact the medical device can transfer chemicals to
+the medical device and then indirectly to the patient or clinician;
+d) leachable substances (see ISO 10993-17 and ISO 10993-18);
+e) degradation products (see ISO 10993-9, for general principles and 10993-13, 10993-14 and 10993-
+15 for degradation products from polymers, ceramics and metals, respectively);
+f) other components and their interactions in the final product;
+g) the performance and characteristics of the final product;
+h) physical characteristics of the final product, including but not limited to, porosity, particle size,
+shape and surface morphology.
+Description of medical device chemical constituents and consideration of material characterization
+including chemical characterization (see ISO 10993-18) shall precede any biological testing (see
+Figure 1). Chemical characterization with an appropriate toxicological threshold can be used to
+determine if further testing is needed (see Annex B, ISO 10993-17 and ISO 10993-18).
+Physical effects of the medical device shall be considered if they impact the biocompatibility.
+NOTE See ISO/TR 10993-19 for information.
+Medical devices that contain, generate, or are composed of nanomaterials can pose specific challenges
+to the biological evaluation due to their potentially unique properties (see ISO/TR 10993-22).
+Both local and systemic effects shall be considered for risk evaluation.
+4.4
+The biological evaluation shall commence with categorization of medical devices (see Clause 6).
+A6 ssessment of the information already availa--b``,,l,e,`, ,,t,,h`,` ,e`,,n,,, ``e`,`n-`-`a,,`b,,`l,`e,,`s-- -a gap analysis to facilitate the selection
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+of appropriate tests. The rigour necessary in the biological evaluation is principally determined by the
+nature, degree, frequency and duration of the exposure and the hazards identified for the medical device
+or material. Testing is usually not necessary when sufficient information is already available to perform a
+risk assessment of the material and/or the medical device (see Annex C). For example, biological testing is
+usually not necessary, if material characterization (e.g. physical and chemical) demonstrates equivalence
+to a previously assessed medical device or material with established safety (see ISO 10993-18 and ISO/
+TR 10993-19).
+The interpretation of the data shall take into account the chemical composition of the materials,
+including the conditions of exposure as well as the nature, degree, frequency and duration of exposure
+of the body to the medical device or its constituents.
+
+### 4.5 All known possible biological hazards shall be taken into account for every material and final
+
+product, but this does not imply that testing for all possible hazards will be necessary or practical (see
+Clauses 5 and 6). Test results cannot guarantee freedom from potential biological hazards, thus biological
+investigations shall be followed by careful observations for unexpected adverse reactions or events in
+humans during clinical use of the medical device.
+The range of possible biological hazards is wide and can include short-term effects such as acute
+toxicity, irritation to the skin, eye and mucosal surfaces, haemolysis and thrombogenicity, as well as
+long-term or specific toxic effects such as subchronic and chronic toxic effects, sensitization resulting
+in allergy, genotoxicity, carcinogenicity (tumorigenicity) and effects on reproduction or development,
+i 4 n .6 cl uding teratogenicity. in vitro in vivo
+If testing is needed, selection of any or tests (see Annex A) shall be based on
+iInn tveintrdoed use.
+in vivo
+in vivo test methods, which are appropriately validated, reasonably and practically ianv vaiitlraoble, reliable
+and reproducible, shall be considered foinr vuisveo in preference to tests (see ISO 10993-2). Whenever
+tests are indicated by findings of the initial risk assessment, use of appropriate screening,
+if available, shall be considered before tests are commenced. A rationale for the testing strategy,
+as well as for test selection, shall be provided. Test data, complete to the extent that an independent
+analysis could be made, shall be evaluated by competent, informed professionals, and shall be retained.
+In certain circumstances, such as for specific medical devices, or biological endpoint assessments, if a
+non-standardized, non-validated test is necessary, additional information regarding the rationale for
+the study design and data interpretation should be provided.
+
+### 4.7 The biological safety of a medical device shall be evaluated by the manufacturer over the whole
+
+life-cycle of a medical device.
+
+### 4.8 For re-usable medical devices, biological safety shall be evaluated for the maximum number of
+
+validated processing cycles by the manufacturer.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+
+*[Figure 1 — Summary of the systematic approach to a biological evaluation of medical devices as]*
+
+part of a risk management process
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+
+### 4.9 The biological risk assessment of materials or final products shall be re-evaluated if any of the
+
+following occur:
+a) any change in the source or in the specification of the materials used in the manufacture of the
+product;
+b) any change in the formulation, processing, primary packaging or sterilization of the product;
+c) any change in the manufacturer's instructions or expectations concerning storage, e.g. changes in
+shelf life and/or transport;
+d) any change in the intended use of the product;
+e) any evidence that the product can produce adverse biological effects when used in humans.
+
+### 4.10 The biological evaluation shall take into account preclinical tests, clinical investigations, post-
+
+market experience from similar medical devices or materials, and other relevant information (see
+Annex B).
+
+### 4.11 This document shall not be used to mandate re-testing of historical products assessed previously
+
+using the appropriate edition of this document at the time of the assessment. Nevertheless, compliance
+to this new edition shall be shown, by providing a justification for omission of further testing. Where
+recommendations for endpoint assessment per Annex A are different from prior published versions
+of this document, a history of safe clinical use can be used to document why additional testing on a
+commercially-marketed medical device is not needed. However, if any of the changes described in
+Clause 4.9 occur, an evaluation of the biologic risks related to the change shall be performed using the
+current version of this standard.
+5 Categorization of medical devices
+
+### 5.1 General
+
+Medical devices shall be categorized according to the nature and duration of body contact as specified
+in 5.2 and 5.3. The categorization of medical devices facilitates selection of appropriate data sets (see
+informative Annex A).
+The evaluation of any medical device that does not fall into one of the categories specified shall follow
+the general principles contained in this document. Certain medical devices might fall into more than
+one body contact or duration category, in which case evaluation appropriate to each category shall be
+carried out.
+EXAMPLE For medical devices that include both an implanted component, and a delivery system that is used
+only during a surgical procedure to place the medical device, the implant should be assessed separately from the
+delivery system.
+EXAMPLE For gas pathway device components with only indirect contact, device specific standards should
+be used to determine the relevant type of biocompatibility evaluations [see ISO 18562 (all parts)].
+
+### 5.2 Categorization by nature of body contact
+
+#### 5.2.1 Non-contacting medical devices
+
+in vitro
+These include medical devices (or components) that have neither direct nor indirect contact with the
+body and where biocompatibility information would not be necessary. Diagnostic software, an
+diagnostic device and a blood-collection tube are examples of non-contact devices.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+
+#### 5.2.2 Surface-contacting medical devices
+
+These include medical devices in contact with the following.
+a) Skin
+— Medical devices that contact intact skin surfaces only.
+EXAMPLES Electrodes, external prostheses, fixation tapes, compression bandages and monitors of
+various types.
+NOTE Some medical devices used in either sterile or non-sterile environments include components
+that can come into contact with a user’s ungloved hands such as human interfaces for electronic
+equipment (e.g. computer keyboards, dials or buttons, touch screens, SD cards, USB sticks); housings
+for electronic monitors or programmers that can come into contact with any intact skin (e.g. electronic
+devices like cell phones, tablets); or components that can come into contact with a user’s gloved hand
+(e.g. catheter handles). If these types of components can be shown to be made from materials in common
+use for other consumer products with a similar nature of contact, no further biological evaluation is
+needed.
+b) Mucosal membranes
+— Medical devices that contact intact mucosal membranes.
+EXAMPLES Contact lenses, urinary catheters, intravaginal and intra-intestinal devices (stomach
+tubes, sigmoidoscopes, colonoscopes, gastroscopes), endotracheal tubes, bronchoscopes, some dental
+prostheses and orthodontic devices.
+c) Breached or compromised surfaces
+— Medical devices that contact breached or otherwise compromised body surfaces.
+EXAMPLES Dressings or healing devices and occlusive patches for ulcers, burns and granulation
+tissue.
+
+#### 5.2.3 Externally communicating medical devices
+
+Externally communicating medical devices shall be categorized according to their contact with the
+following application sites.
+a) Blood path, indirect
+— Medical devices or components that do not necessarily directly contact the blood path directly
+but serve as conduits to deliver fluids into the vascular system.
+EXAMPLES Solution administration sets, extension sets, transfer sets and blood administration
+sets.
+b) Tissue/bone/dentin
+— Medical devices that contact tissue, bone or pulp/dentin systems.
+EXAMPLES Laparoscopes, arthroscopes, draining systems, dental filling materials and skin staples.
+— Medical devices or components that do not necessarily directly contact tissue or bone but serve
+as conduits to delivery fluids to the tissue or bone.
+EXAMPLES Tubing used for irrigation and medical device components that have fluid contact that
+can also contact the patient.
+c) Circulating blood
+— Medical devices that contact circulating blood.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+EXAMPLES Intravascular catheters, temporary pacemaker electrodes, oxygenators, extracorporeal
+oxygenator tubing and accessories, dialysers, dialysis tubing and accessories, haemoadsorbents and
+immunoadsorbents.
+
+#### 5.2.4 Implant medical devices
+
+Implant medical devices shall be categorized according to their contact with the following
+application sites.
+a) Tissue/bone
+— Medical devices principally contacting bone.
+EXAMPLES Orthopaedic pins, plates, replacement joints, bone prostheses, bone cements and intra-
+osseous devices.
+— Medical devices principally contacting tissue and tissue fluid.
+EXAMPLES Pacemakers, drug supply devices, neuromuscular sensors and simulators, replacement
+tendons, breast implants, artificial larynxes, subperiosteal implants, ligation clips and intrauterine
+devices that do not achieve their primary function by chemical activity.
+b) Blood
+— Medical devices principally contacting circulating blood in the cardiovascular system.
+EXAMPLES Pacemaker electrodes, artificial arteriovenous fistulae, heart valves, vascular grafts,
+internal drug-delivery catheters and ventricular assist devices.
+NOTE Most tissues contain circulating blood; however, this category is not intended to encompass
+devices implanted into tissue that contain transitory released blood (e.g. a hernia repair graft).
+
+### 5.3 Categorization by duration of contact
+
+#### 5.3.1 Contact duration categories
+
+Medical devices shall be categorized according to the anticipated duration of contact as follows.
+a) Limited exposure (A) – medical devices whose cumulative sum of single, multiple or repeated
+duration of contact is up to 24 h.
+b) Prolonged exposure (B) – medical devices whose cumulative sum of single, multiple or repeated
+contact time is likely to exceed 24 h but not exceed 30 d.
+c) Long-term exposure (C) – medical devices whose cumulative sum of single, multiple or repeated
+contact time exceeds 30 d.
+
+#### 5.3.2 Transitory-contacting medical devices
+
+Some medical devices with limited exposure (A) have very brief/transitory contact with the body (e.g.
+lancets, hypodermic needles, capillary tubes that are used for less than one minute). These generally
+would not require testing to address biocompatibility. However, for products made with materials
+such as coatings or lubricants that could be left in contact with body tissues after the medical device is
+removed, it is possible that a more detailed biocompatibility assessment will be necessary. Cumulative
+use should also be considered.
+
+#### 5.3.3 Medical devices with multiple contact duration categories
+
+If a material or medical device can be placed in more than one duration category, the more rigorous
+testing and/or evaluation considerations shall apply. With expected or intended multiple exposures to a
+device, the decision into which category a medical device is placed shall take into account the potential
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+cinu msituulative effect, bearing in mind the period of time over which these exposures occur. If a medical
+device is intended to change dinu rsiintug its lifetime, such as those that are polymerized and/or degraded
+, the evaluation shall consider all the different device states. For example, for an absorbable
+glue intended to polymerize , the different device states would include starting components,
+intermediate reaction products, the fully polymerized material and degradation products.
+6 Biological evaluation process
+
+### 6.1 Physical and chemical information for biological risk analysis
+
+*[Figure 1 indicates how the general steps in the physical and/or chemical characterization process link]*
+
+to the overall biological evaluation decision points.
+Gathering physical and chemical information on the medical device or component is a crucial first step
+in the biological evaluation and its associated process of material characterization. These data should
+be sufficient to answer the first two rows of questions in the Figure 1 flow chart. The extent of physical
+and/or chemical characterization required depends on what is known about the material formulation,
+what nonclinical and clinical safety and toxicological data exist, and on the nature and duration of body
+contact with the medical device. At a minimum, the characterization shall address the constituent
+chemicals of the medical device and possible residual process aids or additives used in its manufacture.
+In addition, it is possible that some physical characterization information will be needed for implanted
+medical devices or medical devices in contact with blood. Material characterization, if performed, shall
+be conducted in accordance with ISO 10993-18. For nanomaterials see ISO/TR 10993-22.
+If the combination of all materials, chemicals and processes has an established history of safe use in
+the intended application, and the physical properties have not changed, then it is possible that further
+characterization and additional data sets (e.g. chemical analysis of extracts or biological testing) will
+not be necessary. In this case the rationale shall be documented.
+The identity and quantity of any novel materials and chemicals present should be established or
+measured.
+For device extractables and leachables that have sufficient toxicological data relevant to the expected
+exposure (quantity, route and frequency), further testing need not be required. For medical devices
+that have known leachable chemical mixtures, potential interactions between the leachables should be
+considered.
+Where the potential for degradation exists under the conditions of manufacture, sterilization,
+transport, storage, and use of the medical device, the presence and nature of degradation products
+shall be characterized in accordance with ISO 10993-9, ISO 10993-13, ISO 10993-14, and ISO 10993-15,
+as applicable.
+For materials and/or medical devices that can release wear particles, the potential release of
+nanoparticles should be considered as described in ISO/TR 10993-22.
+
+### 6.2 Gap analysis and selection of biological endpoints for assessment
+
+Assess available information and compare to the data set(s) needed to assess the biological safety of the
+medical device (see Clause 4, Annexes A and C). Identify additional reasonably and practicably obtained
+data or testing needed to complete the data sets required to perform the risk assessment.
+Characterize the data gap and determine its significance both to the assessment of the biological
+endpoint (Annex A) and to the overall biological risk assessment. Identify options for data sets that
+would address the data gap.
+For example, pharmacopeial plastics’ testing is typically conducted on raw materials, whereas ISO
+10993 evaluates the medical device in its final stage. Therefore, data from such pharmacopeial testing
+is not sufficient for the final medical device without appropriate justification.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+The results of the risk analysis of identified chemicals can lead to the conclusion that additional material
+characterization is necessary. Appropriate extraction testing, can be used to estimate the degree
+of clinical exposure to the chemical constituent (see ISO 10993-18). The acceptability of the level of
+estimated leachables shall be established by comparing the amount of each compound extracted from
+the medical device to its respective relevant toxicological threshold as developed in accordance with
+ISO 10993-17.
+NOTE For example, when the margin of safety is not considered adequate if the entire amount of a particular
+chemical is leached out during use, appropriate extraction testing can be used.
+in vivo
+Protection of humans is the prinim viavroy goal of this document; a secondary goal is to ensure animal welfare
+and to minimize the number and exposure of the test animals. ISO 10993-2 applies to any testing
+being considered. Additional testing shall not be carried out where
+1) results are available from relevant studies that have been carried out previously, or
+2) the existing non-clinical and clinical data, including history of safe use, meet the requirements of
+biological evaluation and therefore further animal testing would be unethical. In assessing the
+relevance of data on prior use of a material to the biological evaluation, the level of confidence in the
+historical data should be taken into account. ISO 10993-18:2005, Annex C, gives some informative
+principles for judging chemical equivalence.
+
+### 6.3 Biological testing
+
+#### 6.3.1 General
+
+In addition to the general principles given in Clause 4, the following shall apply when biological testing
+of medical devices is considered necessary as part of the overall risk management process.
+a) Testing shall be performed on the final medical device, or representative samples from the
+final device or materials processed in the same manner as the final medical device (including
+sterilization, if needed).
+b) The choice of test procedures shall take into account:
+1) the nature, degree, duration, frequency and conditions of exposure to or contact of humans
+with the medical device in the normal intended use;
+2) the chemical and physical nature of the final medical device;
+3) the toxicological activity of the chemicals in the formulation of the final medical device;
+4) that certain biological tests (i.e. those designed to assess systemic effects) are not
+justifiable where the presence of leachable chemicals has been excluded (in accordance with
+ISO 10993-18), or where chemicals have a known and acceptable toxicity profile, allowing the
+safe use by evaluation in accordance with ISO 10993-17 and risk assessment in accordance
+with ISO 14971;
+5) the ratio of device surface area to recipient body size and mass (e.g. device miniaturization for
+implantation testing in animal models);
+6) the existing information based on the literature, previous experience and non-clinical tests;
+7) the sensitivity and specificity of the test being considered in relation to the impact of the
+resulting data set on the biological evaluation;
+8) that ISO 10993-2:2006, 4.4, requires that any pain, suffering, distress or lasting harm to the
+animals used shall be minimized.
+c) If extracts of the medical devices are prepared, the solvents and conditions of extraction used
+should be appropriate to the nature and use of the final product, as well as to the predictability
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 13
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+(such as test purpose, rationale, sensitivity, specificity, etc.) of the test method, and shall be
+prepared in accordance with ISO 10993-12. Whenever possible, the extraction conditions selected
+should represent at a minimum, an exaggeration of use conditions.
+d) Positive and negative controls should be used where appropriate.
+The test methods used in the biological evaluation tests shall be sensitive, precise and accurate. When
+biological testing is conducted, it shall be carried out in accordance with good laboratory practices.
+NOTE ISO/IEC 17025 or equivalent.
+The test methods should be reproducible (intralaboratory) as well as repeatable (interlaboratory)
+and robust.
+
+#### 6.3.2 Testing for evaluation
+
+Testing for the evaluations specified in 6.3.2.1 to 6.3.2.15 shall be considered and carried out where
+necessary to complete the data sets needed for the biological evaluation of the particular medical
+device. Where the existing data are adequate, additional testing is not required (see Annexes A and C).
+Due to the diversity of medical devices, it is recognized that testing will not be necessary or practicable
+for all endpoints identified in a category (see ISO 14971) for a given medical device. It is indispensable
+for evaluations that each medical device be considered on its own merits. Nanomaterials can pose
+specific challenges (e.g. assay interference) when applying test systems commonly used for medical
+device evaluation and when interpreting test results (see ISO/TR 10993-22).
+Additional endpoints not indicated in the table can be necessary (e.g. reproductive toxicity,
+developmental toxicity, degradation and toxicokinetics).
+
+##### 6.3.2.1 Cytotoxicity
+
+Cytotoxicity tests employing cell culture techniques can be used to determine the cell death (e.g. cell
+lysis), the inhibition of cell growth, colony formation, and other effects on cells caused by medical
+devices, materials and/or their extracts. If testing is performed, it shall be conducted in accordance
+with ISO 10993-5.
+
+##### 6.3.2.2 Sensitization
+
+Sensitization (e.g. delayed-type hypersensitivity) tests can be used to estimate the potential for contact
+sensitization by medical devices, materials and/or their extracts, using an appropriate model. If testing
+is performed, it shall be conducted in accordance with ISO 10993-10.
+These tests are important because repeat exposure or contact to even very small amounts of potential
+leachables can result in sensitization, which can lead to allergic reactions.
+6.3.2.3 Irritation (including intracutaneous reactivity)
+Irritation tests can be used to estimate the irritation potential of medical devices, materials and/or
+their extracts, using an appropriate site for application such as skin, eye and mucous membrane in a
+suitable model. The test(s) performed shall be appropriate for the route (skin, eye, mucosa) and duration
+of exposure or contact, and shall be conducted in accordance with ISO 10993-10.
+The intracutaneous reactivity test can be used to assess the localized reaction of tissue to medical
+device extracts. This test is applicable where the determination of irritation by dermal or mucosal tests
+is inappropriate (e.g. where medical devices are implanted or have blood contact). This test might also
+be useful where extractables are hydrophobic (see ISO 10993-10).
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+
+##### 6.3.2.4 Haemocompatibility
+
+Haemocompatibility tests can be used to evaluate, using an appropriate model or system, the effects of
+blood-contacting medical devices or materials on blood or blood components.
+in vitro
+One haemocompatibility test, haemolysis, determines the degree of red cell lysis and the release of
+haemoglobin caused by medical devices, materials, and/or their extracts .
+Other specific haemocompatibility tests can also be designed to simulate the geometry, contact
+conditions and flow dynamics of the medical device or material during clinical applications and
+determine blood/material/device interactions.
+Any testing performed shall be conducted in accordance with ISO 10993-4.
+
+##### 6.3.2.5 Material-mediated pyrogenicity
+
+Pyrogenicity tests as part of a biological evaluation are intended to detect material-mediated pyrogenic
+reactions of extracts of medical devices or materials. No single test can differentiate pyrogenic reactions
+that are material-mediated from those due to endotoxin contamination (see ISO 10993-11:2017,
+Annex G). Material-mediated pyrogenicity is rare. It has been observed in medical devices containing
+biologically-derived materials.
+
+##### 6.3.2.6 Acute systemic toxicity
+
+Acute systemic toxicity tests can be used where contact allows potential absorption of toxic leachables
+and degradation products, to estimate the potential harmful effects of either single or multiple
+exposures, during a period of less than 24 h, to medical devices, materials and/or their extracts in an
+animal model. These tests shall be appropriate for the route of exposure, and any testing performed
+shall be conducted in accordance with ISO 10993-11.
+If feasible, acute systemic toxicity tests can be combined with subacute and subchronic toxicity and
+implantation test protocols.
+Where an evaluation of systemic toxicity is specified in Table A.1, biological testing or the risk
+assessment shall include assessment of the potential for biological responses in tissues throughout the
+body (e.g. per ISO 10993-11:2017, Annex E), including the organ systems relevant to the clinical use of
+the medical device.
+
+##### 6.3.2.7 Subacute and subchronic toxicity
+
+Subacute and subchronic toxicity tests can be carried out to determine the effects of either single or
+multiple exposures or contact to medical devices, materials and/or their extracts for a period not less
+than 24 h to a period not greater than 10 % of the total life-span of the test animal (e.g. up to 13 weeks
+in rats).
+These tests shall be waived if available data for the chronic toxicity of the relevant materials are
+sufficient to allow the subacute and subchronic toxicity to be evaluated. The reason for waiving of the
+tests shall be included in the overall biological evaluation report. These tests shall be appropriate for
+the route and duration of contact.
+Subacute and subchronic toxicity tests, if performed, shall be conducted in accordance with
+ISO 10993-11.
+If feasible, subacute and subchronic systemic toxicity test protocols can be expanded to include
+implantation test protocols to evaluate subacute and subchronic systemic and local effects.
+
+##### 6.3.2.8 Chronic toxicity
+
+Chronic toxicity tests can be used to determine the effects of either single or multiple exposures to
+medical devices, materials and/or their extracts during a major period of the life-span of the test animal
+--``,,,,`,, ,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 15
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+(e.g. usually 6 months in rats). These tests shall be appropriate for the route and duration of exposure
+or contact, and if performed, shall be conducted in accordance with ISO 10993-11.
+If feasible, chronic systemic toxicity test protocol can be expanded to include an implantation test
+protocol to evaluate both chronic systemic and local effects.
+
+##### 6.3.2.9 Implantation effects
+
+Implantation tests can be used to assess the local pathological effects on living tissue, at both the gross
+level and microscopic level, of a sample of a material or final product that is surgically implanted or
+placed in an implant site or tissue appropriate to the intended application (e.g. special dental usage
+tests). These tests shall be appropriate for the route and duration of contact, and if performed, shall be
+conducted in accordance with ISO 10993-6.
+If feasible, implantation test protocols can be expanded to evaluate both local and systemic effects
+to meet acute, subacute, subchronic, and chronic toxicity testing requirements (see ISO 10993-6). If
+applicable and feasible, evaluation of haemocompatibility aspects can be included (see ISO 10993-4).
+When appropriately designed simulated use animal studies are planned, it is anticipated that these
+studies will be used to address a range of endpoints including both physical and biological risk (i.e.
+toxicological hazard and/or toxicological risk). For instance, chronic/subchronic/subacute and acute
+systemic toxicity endpoints can be built into a single study. One can consider an experimental design
+where a clinically relevant quantity of material is implanted in the relevant organ or tissue to assess
+local effects, and an exaggeration of the anticipated clinical exposure/dose is implanted possibly at a
+remote location so the systemic exposure provides a suitable measure of exaggeration.
+
+##### 6.3.2.10 Genotoxicity
+
+Genotoxicity tests can be iuns evidt rtoo assess the potential for gene mutations, changes in chromosome
+structure and number, and other DNA or gene toxicities caused by medical devices, materials and/or
+their extracts. A battery of tests is initially used. If testing is performed, it shall be conducted in
+accordance with ISO 10993-3.
+NOTE Addiinti ovnitarlo information is given in ISO/TR 10993-33.
+If any of the tests are positive, follow-up can include a chemical identification of impurities,
+extractable or leachable chemicals or additional genotoxicity testing. Acceptance of the genotoxicity
+risk shall be based on the results of a risk assessment, including, for example patient exposure, weight
+of evidence (WOE) and mode of action (MOA) information, if available.
+
+##### 6.3.2.11 Carcinogenicity
+
+ISO 10993-3 discusses the strategy for evaluating carcinogenicity of medical devices, materials and/
+or their extracts over a period of the major portion of life-span of the test animal. Carcinogenicity may
+be addressed with a risk assessment including chemical identification of impurities, extractable or
+leachable chemicals, patient exposure to these chemicals, weight of evidence (WOE) and mode of action
+(MOA) information, if available. Carcinogenicity information should be appropriate for the route and
+duration of exposure or contact, and can be available from the toxicity literature. In the absence of
+any significant cancer risk, it is rare for carcinogenicity tests to be considered appropriate for medical
+devices. However, if it is determined that carcinogenicity testing of the final medical device is needed,
+it is possible that lifetime studies or transgenic models will be appropriate. It is also possible that these
+tests can be designed to examine both chronic toxicity and tumorigenicity in a single experimental
+study, as described in OECD Guideline 453.
+
+##### 6.3.2.12 Reproductive and developmental toxicity
+
+Reproductive and developmental toxicity tests referenced in ISO 10993-3 can be used to evaluate
+the potential effects of medical devices, materials and/or their extracts on reproductive function,
+embryonic development (teratogenicity), and prenatal and early postnatal development. These
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+endpoints may be addressed with a risk assessment including chemical identification of impurities,
+extractable or leachable chemicals, patient exposure to these chemicals, weight of evidence (WOE)
+and mode of action (MOA) information, if available. Reproductive toxicity evaluations shall only be
+conducted when the medical device has potential impact on the reproductive potential of the subject.
+In addition, developmental toxicity evaluations should be considered for medical devices or their
+materials used during pregnancy.
+Reproductive and developmental toxicity should be addressed for novel materials, materials with a
+known reproductive or developmental toxicity, medical devices with relevant target populations (e.g.
+pregnant women), and/or medical devices where there is the potential for local presence of medical
+device materials in the reproductive organs.
+
+##### 6.3.2.13 Degradation
+
+Degradation information shall be provided for any medical devices, medical device components or
+materials remaining within the tissue, that have the potential for degradation within the human body.
+Degradation tests shall be considered if
+a) the medical device is designed to be absorbable, or
+b) an informed consideration of the finished medical device composition indicates that toxic
+degradation products might be released during body contact.
+Parameters that affect the rate and extent of degradation shall be described and documented.in vitro
+The mechanisms of deignr avdivaotion should be described. These mechanisms should be simulated to
+determine the rates of degradation and release of potentially toxic chemicals to estimate the exposure.
+IInt isv iavloso possible that tests will be required to assines vsi tdreogrinad vaitvioon of a material.
+in vitro
+degradation tests might not be necessary if an / comparison for the absorbable
+medical device has been previously demonstrated and degradation studies show that only the
+probable products of degradation are present in the predicted quantities, and produced at a rate similar
+to those that have a history of safe clinical use. When particulate degradation products are generated,
+tests might not be necessary if they are present in a physical state, i.e. size distribution and shape,
+similar to those with a history of safe clinical use or sufficient degradation data already exist relevant
+to the substances and degradation products generated in the intended use already exists.
+A generailn f rvaitmroework for degradation tests is given in ISO 10993-9.
+Specific degradation tests for polymers, ceramics and metals are described in ISO 10993-13,
+ISO 10993-14 and ISO 10993-15 respectively.
+When particulate degradation products are present in the form of nanomaterials, tests should be
+designed considering ISO/TR 10993-22.
+
+##### 6.3.2.14 Toxicokinetic studies
+
+The purpose of conducting toxicokinetic studies is to evaluate the absorption, distribution, metabolism
+and excretion (iAn DvMivEo) of a chemical.
+The need for toxicokinetic studies, to determine the processes of absorption, distributioinn,
+vmitertoabolism and elimination of leachables and degradation products of medical devices, materials and/
+or their extracts (see 6.3.2.13 and ISO 10993-16), shall be considered in the light of results from the
+degradation studies.
+When deciding whether or not to conduct toxicokinetic studies as part of the biological evaluation of
+a medical device, the final product and its chemical constituents, including potential and designed
+degradation products and leachables in combination with the intended use of the medical device, shall
+all be taken into account (see 6.3.2.13).
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+in vitro
+Where appropriate, theoretical degradation processes shall be investigated prior to toxicokinetic
+studies by means of experiments (e.g. tissue, homogenates or cells), not only for animal welfare
+reasons as given in ISO 10993-2, but also to determine probable rather than possible degradation
+products.
+Toxicokinetic studies shall be considered if
+a) the medical device is designed to be absorbable, or
+b) the medical device is a long-term contact implant, and degradation or significant corrosion is
+known or likely, and/or migration of leachables from the medical device occurs, or
+c) the medical device is likely or known to release substantial quantities of potentially toxic or
+reactive degradation products and leachables into the body during clinical use, or
+d) substantial quantities of nano-objects are likely or known to be released from a medical device into
+the body during clinical use, or
+e) drug and device combination products.
+Toxicokinetic studies are not required if the achieved or expected rates of release of degradation
+products and leachables from a particular medical device or material have been judged to provide safe
+levels of clinical exposure with historical experience, or if sufficient toxicological data or toxicokinetic
+data relevant to the degradation products and leachables already exist.
+The release of leachables and degradation products from metals, alloys and ceramics is usually too low
+to justify toxicokinetic studies, unless the material is designed to degrade.
+Toxicokinetic studies for degradation products and extractables/leachables, if performed, shall be
+conducted in accordance with ISO 10993-16.
+Specific considerations for toxicokinetics studies with nanomaterials are given in ISO/TR 10993-22
+
+##### 6.3.2.15 Immunotoxicology
+
+While not specifically addressed in Annex A, ISO/TS 10993-20 provides an overview of immunotoxicology
+with particular reference to the potential immunotoxicity of medical devices. Immunotoxicity testing
+shall be considered based on the chemical nature of the materials of manufacture and data from
+sources that are suggestive of immunotoxicological effects or if the immunogenic potential of any of the
+chemicals is unknown. If immunotoxicity testing is performed, it shall be conducted in accordance with
+ISO/TS 10993-20.
+Specific considerations for immunotoxicity testing of nanomaterials are provided in ISO/TR 10993-22.
+7 Interpretation of biological evaluation data and overall biological risk
+assessment
+Expert assessors who have the necessary knowledge and experience shall determine and document:
+a) the strategy and planned content for the biological evaluation of the medical device;
+b) the criteria for determining the acceptability of the material for the intended purpose, in line with
+the risk management plan;
+c) the adequacy of the material characterization;
+d) the rationale for selection and/or waiving of tests;
+e) the interpretation of existing data and results of testing;
+f) the nee-d-`` ,,f,,o`,,r,, ,`a,`,n`,,y,,, ``a`,`d-`-d`,,i`,t,`i,`o,,`n---al data to complete the biological evaluation;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+g) overall biological safety conclusions for the medical device.
+Informative Annex A gives the general endpoints that should be considered for each device contact type
+and duration category in a biological risk assessment.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+Annex A
+Endpoints to be addres(sinefdo rinm aa tbivieo)l ogical risk assessment
+A.1 General
+The following is a framework for the development of a biocompatibility evaluation and is not a checklist
+for testing. Where Table A.1 indicates that an endpoint is relevant for assessment, the existing data
+sets relevant to that endpoint should be evaluated to determine if any additional data sets are needed.
+For particular medical devices, there is a possibility that it will be appropriate to include additional or
+fewer endpoints than indicated.
+In Table A.1; X means prerequisite information needed for a risk assessment; E means endpoints to be
+evaluated in the risk assessment (either through the use of existing data, additional endpoint-specific
+testing, or a rationale for why assessment of the endpoint does not require an additional data set
+assessment)
+Any variation should be justified in the biological risk assessment. If there are device specific standards
+that include specific recommendations regarding biocompatibility, these should be considered.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+tnemssessa
+ksir
+lacigoloib
+a
+ni
+desserdda
+eb
+ot
+stniopdnE
+—
+1.A
+elbaT
+noitaulave
+lacigoloib
+fo
+stniopdnE
+yb
+noitazirogetac
+ecived
+lacideM
+noitarud
+tcatnoC
+tcatnoc
+ydob
+fo
+erutaN
+atirrI
+detimil
+–
+A
+orpeR
+raC
+alpmI
+buS
+buS
+etucA
+ro noit
+lacisyhP
+geD
+/evitcud
+nic
+neG
+meH
+atn
+rhC
+orhc
+uca
+etsys
+lairetaM
+artni
+ro/dna
+adar
+p oleved
+ego
+xoto
+oco
+noit
+cino
+cin
+et
+cim
+aidem
+atuc
+sneS
+otyC
+lacimehc
+deg)nho
+4lo2r≤p(
+–
+B
+tcatnoC
+yrogetaC
+ici
+apm
+ixot
+oryp
+det
+ziti
+ixot
+noit
+latnem
+cin
+s
+tceffe
+ixot
+ixot
+ixot
+s uoen
+amrofni
+yt
+libit
+ytic
+ineg
+noita
+ytic
+f
+yticixot
+yti
+yti
+ytic
+ytic
+ytic
+ytic
+caer
+noit
+)mdr
+0e3t
+ogtn
+ho
+L4
+2–>
+C(
+d
+b
+ytivit
+e,d
+d
+c,b
+b
+b
+b
+a
+)d
+03>(
+h
+g
+E
+E
+E
+X
+A
+E
+E
+E
+X
+B
+niks
+tcatnI
+E
+E
+E
+X
+C
+E
+E
+E
+X
+A
+lacidem
+ecafruS
+E
+E
+E
+E
+E
+E
+X
+B
+enarbmem
+lasocuM
+ecived
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+E
+E
+E
+E
+E
+X
+A
+ro
+dehcaerB
+E
+E
+E
+E
+E
+E
+E
+X
+B
+desimorpmoc
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+ecafrus
+E
+E
+E
+E
+E
+E
+X
+A
+tceridni
+,htap
+doolB
+E
+E
+E
+E
+E
+E
+E
+X
+B
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+E
+E
+E
+E
+E
+X
+A
+/eussiT
+yllanretxE
+E
+E
+E
+E
+E
+E
+E
+E
+X
+B
+/enob
+gnitacinummoc
+i
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+nitned
+ecived
+lacidem
+j E
+E
+E
+E
+E
+E
+E
+X
+A
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+B
+doolb
+gnitalucriC
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+)deunitnoc(
+1.A
+elbaT
+noitaulave
+lacigoloib
+fo
+stniopdnE
+yb
+noitazirogetac
+ecived
+lacideM
+noitarud
+tcatnoC
+tcatnoc
+ydob
+fo
+erutaN
+atirrI
+detimil
+–
+A
+orpeR
+raC
+alpmI
+buS
+buS
+etucA
+ro noit
+lacisyhP
+geD
+/evitcud
+nic
+neG
+meH
+atn
+rhC
+orhc
+uca
+etsys
+lairetaM
+artni
+ro/dna
+adar
+p oleved
+ego
+xoto
+oco
+noit
+cino
+cin
+et
+cim
+aidem
+atuc
+sneS
+otyC
+lacimehc
+deg)nho
+4lo2r≤p(
+– B
+tcatnoC
+yrogetaC
+ici
+apm
+ixot
+oryp
+det
+ziti
+ixot
+noit
+latnem
+cin
+s tceffe
+ixot
+ixot
+ixot
+s uoen
+amrofni
+yt
+libit
+ytic
+ineg
+noita
+ytic
+f
+yticixot
+yti
+yti
+ytic
+ytic
+ytic
+ytic
+caer
+noit
+)mdr
+0e3t
+ogtn ho L4
+2–> C(
+d
+b
+ytivit
+e,d
+d
+c,b
+b
+b
+b
+a
+)d
+03>(
+E
+E
+E
+E
+E
+X
+A
+i
+E
+E
+E
+E
+E
+E
+E
+E
+X
+B
+enob/eussiT
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+lacidem
+tnalpmI
+E
+E
+E
+E
+E
+E
+E
+E
+X
+A
+ecived
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+B
+doolB
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+E
+X
+C
+a
+.F
+xennA
+,7102:11-39901
+OSI
+ot
+refeR
+b
+dna
+slamina
+tneiciffus
+fi etairporppa
+eb
+yam
+yticixot
+cinorhc
+ro/dna
+yticixot
+cinorhcbus
+,yticixot
+etucabus
+,yticixot
+cimetsys
+etuca
+edulcni
+taht
+stnemssessa
+noitatnalpmi
+evisneherpmoc
+morf
+deniatbo
+noitamrofnI
+.yticixot
+cinorhc
+dna
+,cinorhcbus
+,etucabus
+,etuca rof
+seiduts
+etarapes
+mrofrep
+ot
+yrassecen
+syawla
+ton si
+tI
+.dessessa
+dna
+dedulcni
+era
+stniopemit
+c
+.senarbmem
+lasocum
+tcatni
+htiw
+tcatnoc
+ni
+deredisnoc
+/deiduts
+eb yllaedi
+dluohs
+senarbmem
+lasocum
+tcatni htiw
+tcatnoc
+ni secived
+lacidem
+ecnatsni
+roF
+.deredisnoc
+eb
+dluohs
+setis
+noitatnalpmi
+tnaveleR
+d
+.tnemssessa
+ksir
+eht
+ni deredisnoc
+eb
+dluohs
+siht
+,noitcudorper
+ot cixot
+ro/dna
+cinegatum
+,cinegonicrac
+eb
+ot
+nwonk
+secnatsbus
+niatnoc
+nac
+ecived
+lacidem
+eht
+fI
+e
+tnangerp
+.g.e(
+snoitalupop
+tegrat
+tnaveler
+htiw
+secived
+lacidem
+,yticixot
+latnempoleved
+ro evitcudorper
+nwonk
+a htiw
+slairetam
+,slairetam
+levon
+rof
+desserdda
+eb
+dluohs
+yticixot
+latnempoleved
+dna
+evitcudorpeR
+.snagro
+evitcudorper
+eht
+ni slairetam
+ecived fo ecneserp
+lacol
+rof
+laitnetop
+eht
+si ereht
+erehw
+secived
+lacidem
+ro/dna
+,)nemow
+f
+.noitadarged
+rof
+laitnetop
+eht
+evah
+taht
+,tneitap
+eht
+nihtiw
+gniniamer
+slairetam
+ro stnenopmoc
+ecived lacidem
+,secived
+lacidem
+yna
+rof
+dedivorp
+eb dluohs
+noitamrofni
+noitadargeD
+g
+.tnemssessa
+ksir
+a rof dedeen
+noitamrofni
+etisiuqererp
+snaem
+X
+h
+lanoitidda
+na
+eriuqer
+ton
+seod
+tniopdne
+eht
+fo
+tnemssessa
+yhw
+rof
+elanoitar
+a ro ,gnitset
+cificeps-tniopdne
+lanoitidda
+,atad
+gnitsixe
+fo esu eht
+hguorht
+rehtie(
+tnemssessa
+ksir eht
+ni
+detaulave
+eb
+ot
+stniopdne
+snaem
+E
+siht
+ni
+”E“
+dekram
+esoht
+dnoyeb
+stniopdne
+lanoitidda
+,erutaretil
+eht
+ni
+stsixe
+atad ygolocixot
+on dna
+,snoitacilppa
+ecived
+lacidem
+ni
+desu ylsuoiverp
+ton
+,slairetam
+levon
+morf
+derutcafunam
+si
+ecived
+lacidem
+a
+fI
+.)tes
+atad
+.detacidni
+naht
+stniopdne
+rewef
+ro
+lanoitidda
+edulcni
+ot
+etairporppa
+eb
+lliw
+ti taht ytilibissop
+a si
+ereht
+,secived
+lacidem
+ralucitrap
+roF
+.deredisnoc
+eb
+dluohs
+elbat
+i
+lacidem
+eseht
+ot
+tnaveler
+noitamrofni
+ytilibitapmocoib
+rof sdradnats
+cificeps
+ecived
+ees
+,tcatnoc
+eussit
+tceridni
+ylno
+htiw stnenopmoc
+ro secived
+yawhtap
+sag
+roF
+.secaps
+suoenatucbus
+dna
+sdiulf
+eussit
+sedulcni
+eussiT .secived
+j
+.stiucric
+laeroprocartxe
+ni desu
+secived
+lacidem
+lla
+roF
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+A.2 Rationale for endpoints in Table A.1
+The following endpoints were not included in the fourth edition (2009) of this document. The rationale
+for inPchluyssiiocna lo afn eda/cohr e cnhdepmoiincta wl iinthfo trhmisa rteivoins i(oanl li ms aedddirceasls deedv biceelo cwa.tegories, with all types of contact,
+and all durations of contact).
+—
+This information is used for all medical device types to determine whether further biological
+Iterrstitinagti iosn n eoerd eindt.racutaneous reactivity (externally communicating medical devices, with
+indirect blood path contact, and a long term duration).
+—
+Components with long term indirect contact with blood (e.g. infusion systems) can introduce
+iMrraittearnitasl i mnteod thiaet ebdlo opdy rsotrgeeanmic tihtya ta snhdo ualcdu btee saydsdtreemssiecd t oasx ipcaitryt o(mf tehde ibciaoll odgeivcaicl ersis wk iatshs ebsrsemaecnhte.d
+or compromised surface contact and all durations of contact).
+—
+Extractables/leachables can be introduced to the systemic circulation through breached or
+compromised surfaces, and therefore both material mediated pyrogenicity and acute systemic
+tMoaxticeirtiya slh moueldd ibaete cdo npsyidreorgeedn.icity (externally communicating medical devices and implant
+medical devices with all types of contact, and all durations of contact).
+—
+Extractables/leachables can be introduced to the systemic circulation, lymphatic system, and/or
+cAecruetber ossypsinteaml filcu idto, xanicdi ttyh e(rseuforrfaec me amteeridailc male ddieavteidce psy rwoigtehn imcituyc sohsoaul ldm beem cbornasnidee rceodn.tact, and
+prolonged or long term contact; and externally communicating medical devices with tissue/
+— bone/dentin contact for a limited duration; and implant medical devices with tissue/bone
+contact for a limited duration).
+Extractables/leachables can be introduced via mucosal membranes and to the systemic circulation,
+lymphatic system, and/or cerebrospinal fluid, and therefore acute systemic toxicity should be
+cSounbsaicduerteed t.oxicity (all medical device types with prolonged and long term contact).
+—
+For medical devices/components with more than 24 hours use, extractables/leachables can be
+introduced to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore
+Ssuubbacchurtoen tiocx aicnitdy cshhroounldic b teo cxoicnistiyd e(raelld m. edical device types with long term contact).
+—
+For medical devices/components with at least 30 day use, extractables/leachables can be
+introduced to the systemic circulation, lymphatic system, and/or cerebrospinal fluid, and therefore
+Ismubpclharnotnaitci oannd /eofrfe cchtrso n(iscu trofxaicciet y msheoduilcda bl e dceovniscidese rewdi.th mucosal membrane contact, and
+prolonged or long term contact; and surface medical devices with breached or compromised
+— surface contact, and prolonged or long term contact).
+For medical devices/components with this type of contact, local and systemic effects from
+implantation should be considered. For medical devices/components where repeat use could
+change the category from limited to prolonged or long-term duration, information on potential for
+accumulation of chemicals in the tissue can be used to inform whether implantation testing should
+be considered.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 23
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+Implantation effects (externally communicating medical devices, with indirect blood path
+contact, and a long term duration).
+—
+Components with long term indirect contact with blood (e.g. infusion systems) can introduce
+extractables/leachables into the blood stream that could impact the inflammatory response
+to direct contacting components of the medical device (if applicable). If literature is available
+to address systemic toxicity of all extractables/leachables, and there is no direct contacting
+cGoemnopotonxeincti,t iyt i(se xptoesrsnibalell yth caot mimmpulannitcaattioinng a msseesdsimcaeln dtse vwicilel sn,o wt biteh n ceierdcuedla ftoirn tgh bisl ocoatde gcoornyt.act for
+a limited duration).
+—
+For medical devices/components used in extracorporeal circuits, extractables/leachables can be
+introduced into the blood stream and remain after the medical device is removed, and therefore
+gGeennoottooxxicicitiyt ys h(iomulpdl abne tc monesdidicearel dd.evices, with blood contact for a limited duration).
+—
+Extractables/leachables can be introduced into the blood stream and remain after the medical
+dCeavriccien iosg reenmicoivteyd (,s aunrdfa tchee rmefeodriec gael ndoetvoixciecsit yw sithho ublrde baec hcoends oidre croemd.promised surface contact for
+a long term duration; and all externally communicating medical devices and implant medical
+— devices with a long term duration).
+Extractables/leachables can be introduced into systemic circulation, lymphatic system, and/or
+cerebrospinal fluid, and therefore carcinogenicity should be addressed as part of the biological risk
+assessment.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+Annex B
+Guidance on the conduct( oinf fboiromloagtiivcea)l evaluation within a risk
+management process
+B.1 Background information
+B.1.1 General
+This annex provides guidance on conduct of biological evaluation of medical devices according to the
+requirements of this document. Although this document provides a general framework for biological
+evaluation of medical devices, more detailed guidance can be helpful in the practical application of this
+document. As a result, this Annex was developed to provide such guidance to users. This guidance can
+be used to better understand the requirements of this document and to illustrate some of the various
+methods and approaches available for meeting the requirements.
+Biological evaluation is a design verification activity which is set in the context of broader risk
+management processes. Therefore this annex includes guidance on the application of this document in
+the context of risk management processes conducted according to the requirements of ISO 14971. This
+annex describes concepts and methods that can be considered in establishing and maintaining a risk
+management process for biological evaluation as part of the overall evaluation and development of a
+medical device.
+As scientific knowledge advances our understanding of the basic mechanisms of tissue responses, thine
+vwitaryo biological evaliuna vtiiovon is carried out can also change, moving towards an evaluation based upon
+review of relevant established scientific data and upon physical and chemical characterization and
+testing, with testing only being carried out where these are required to fill gaps in our
+understanding. This docuinm evnittr ospecifies a framework in which to plan a biological evaluation which
+minimizes the number and exposuinr ev iovfo test animals by giving preference to identifying chemical
+constituent testing and models in situations where these methods yield equally relevant
+information to that obtained from models. The selection of which approach(es) are applicable
+to a particular medical device will depend on the nature of the medical device, the extent of available
+relevant scientific data and upon risk assessment.
+When judging the applicability of the guidance in this annex, applicable regulatory requirements and
+regulatory guidance should be considered.
+An organization can voluntarily incorporate guidance from this annex, wholly or in part, into its risk
+management process.
+Guidance contained in this annex can be useful as background information for those representing risk
+Bm.a1n.2ag eRmeelnatt pioroncsehssip a swseitshso orsth, ceorn fsotramnidtya radssse, sgsumiednatn bcoed dieos caunmd reengtusl aatnordy reengfourlcaetmoreyn t bodies.
+requirements
+The relationship between this document, this annex and the standards for biological evaluation of
+medical devices and general risk management is summarized as follows:
+— this annex provides guidance on the application of this document;
+— biological evaluation is a component of risk management and this Annex includes guidance on the
+application of ISO 14971 to the conduct of biological evaluation.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+This annex does not add to, or otherwise change, the requirements of this document. This annex does
+not include requirements to be used as the basis of regulatory inspection or certification assessment
+activities.
+B.2 Biological evaluation as a risk management practice
+B.2.1 General
+B.2 and B.3 describe a continuous process by which a manufacturer can identify the biological hazards
+associated with medical devices, estimate and evaluate the risks, control these risks, and monitor the
+effectiveness of the control. Appropriate protection of the patient should be achieved by implementing a
+biological evaluation plan which includes, as an essential element the weighing of the risks and benefits
+of medical devices. Benefit to the patient from the use of medical devices entails the acceptance of
+potential risks. These risks will vary depending on the nature and intended use of the specific medical
+device. The level of risk which is acceptable for a specific medical device will depend upon the expected
+benefit provided by its use.
+Consideration of biological risk is only one aspect of the risk assessment of a medical device, which
+should consider all aspects of risk. In some cases it can be specifically necessary to consider the relative
+benefits of materials of different biological safety profiles in the context of some other characteristic.
+For example it can be possible that the most biologically safe material available can have unacceptable
+mechanical strength, in which case it would be necessary to consider if an alternate stronger material
+is of acceptable biological safety. It is fundamental to the conduct of biological evaluation that it be
+undertaken as part of the overall risk management process required in the design and development of
+the medical device.
+Material selection and risk analysis are integral components of the design process for medical devices.
+The selection of materials plays a crucial role in evaluating the biological safety and, when approached
+in a systematic way, allows the collection of relevant data. In line with ISO 13485 and ISO 14971, criteria
+to define the acceptable biological risk should be established at the start of the design process. Because
+starting material, formulation and processing variations including packaging, transportation and
+aging could impact final product biocompatibility; these considerations should also be incorporated
+into the risk assessment. The biological evaluation should be designed and performed to demonstrate
+the achievement of specified criteria for safety based on outputs of the risk analysis and/or history of
+use of the same material. This evaluation is a component of the risk management plan encompassing
+identification of all hazards and the estimation of associated risks. Adequate risk assessment requires
+characterization of toxicological hazards and exposures, as well as other potential biological responses
+to medical devices.
+A major component in hazard identification is material characterization (see ISO 10993-18 and ISO/
+TR 10993-19). The following steps can be identified:
+— define and characterize each material, including suitable alternative materials;
+— identify hazards in materials, additives, processing aids, etc.;
+— identify the potential effect of downstream processing (e.g. chemical interactions between material
+components, or final product sterilization) on chemicals present in final product;
+— identify the chemicals that could be released during product use (e.g. intermediate or final
+degradation products from a degradable implant);
+— estimate exposure (total or clinically available amounts);
+— review toxicology and other biological safety data (published/available).
+Information on biological safety to be reviewed can include:
+— toxicology data on relevant component materials/compounds;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+— information on prior use of relevant component materials/compounds;
+— data from biological tests.
+The risks posed by the identified hazards should then be evaluated. At this stage it should be possible to
+determine whether there is an undue toxicological risk from the material.
+If it can be concluded from existing data that risks are acceptable then no additional testing is needed to
+support biological safety. Testing should not be conducted if risks are found to be unacceptable. When
+existing data are insufficient, additional information should be obtained. The purpose of testing is to
+obtain additional data which can assist in reaching a conclusion. A rationale for testing should therefore
+be based on an analysis of the relevant risks which are indicated from the existing data.
+The results of any tests should be assessed. Test reports should include descriptive evidence, an
+assessment of the findings and qualitative assessment of their acceptability.
+The assessor should determine if the available information is sufficient to meet the purpose of the
+evaluation of biological safety and if so document how the conclusion on safety was reached including
+the rationale for any decisions and the impact of test results and other information on the assessment.
+The evaluation should be documented in a report that indicates the identity and significance of all
+relevant evidence and highlights the scientific basis of the overall conclusions in an accurate, clear and
+transparent manner. It is very important that the factors leading to the conclusion are fully discussed
+with succinct and accurate rationales for each judgment and identification and discussion of any
+uncertainties underlying each decision.
+The components of risk management are summarized in Figure B.1 (taken from ISO 14971). The
+different elements of a biological evaluation process can be considered in terms of the elements of the
+overall risk management process.
+In summary, biological evaluation should be seen as an element of risk management practice and
+therefore the conduct of a biological evaluation of a medical device should aim to meet both the
+Bre.q2u.2ir emThenet sb oiof ltohgisi cdaolc uemvaelnut aatnido nIS pOl 1a4n971.
+ISO 14971:2007, 3.4, requires that risk management activities be planned in advance. Since biological
+evaluation is a risk management activity, a Biological Evaluation Plan is required, and this forms part
+of the Risk Management Plan. It is emphasized that simply planning to conduct testing against all of
+the aspects of biocompatibility identified in Annex A does not meet the requirements of ISO 14971 or
+this document. An example of how this guidance can be applied to a medical device can be seen in
+ISO 18562-1.
+The biological evaluation plan should be drawn up by a knowledgeable and experienced team and
+include as a minimum:
+— arrangements for gathering of applicable information from the published literature (including
+information sources and search strategies), in house and supplier data and other sources in order to
+conduct risk analysis;
+— arrangements for conducting the evaluation, including the requirement for any specific technical
+competencies relevant to the specific medical device application;
+— arrangements for review and approval of the plan as part of the overall design control process;
+— arrangements for review of the final conclusions of the evaluation and the approval of any additional
+testing required;
+— arrangements for the final review and approval of the outcomes of the biological risk assessment,
+including the risk control measures applied and the documentation of any residual risks and the
+disclosure of residual risks through means such as product labelling.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 27
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+Figure B.1 — A schematic representation of the risk management process (taken from
+ISO 14971)
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+B.3 Guidance on risk management
+B.3.1 Risk assessment
+B.3.1.1 Introduction
+Risk assessment is the combination of the processes of risk analysis in which risks are identified and
+estimated and risk evaluation in which risks are evaluated to identify those which require mitigation
+(risk control).
+B.3.1.2 Risk analysis
+Risk analysis is the process of identifying the specific hazards and assessing their significance. In a
+biological evaluation, one important consideration is the potential toxicity of materials components
+and their route of exposure. Another important consideration is how physical properties could affect
+the biological response. Risk analysis should be methodically conducted by means of estimation of risks
+from each material/component for each route of exposure and toxicological effect.
+Risk analysis therefore begins with identification and characterization of the indirect and direct
+tissue-contacting materials and components of the medical device. This should be done based on the
+final form of the medical device in its manufactured state, taking into account the presence of any
+manufacturing additives, processing aids or other potential contaminants such as sterilant residues.
+Effects of processing on materials composition and chemistry (including both bulk and surface effects)
+should also be considered. In particular, where reactive or hazardous ingredients have been used in, or
+can be formed by, the production, processing, storage or degradation of a material, the possibility of the
+presence of toxic residues should be considered. The potential for interactions with or introduction of
+contaminants from packaging materials should also be considered.
+Physical and chemical material properties are relevant to biological safety and will need to be identified
+at this stage. These can include one or more of the following:
+— wear, load, fatigue, e.g. especially in load bearing medical devices such as total joint prostheses
+and the associated production of particulates (which could include nanomaterials) or materials
+degradation;
+— friction and associated irritation, e.g. in applications such as catheters;
+— interactions between material combinations (chemical interactions), e.g. different flexibility,
+galvanic corrosion, abrasion;
+— heat (e.g. thermal degradation or other thermally induced material changes);
+— manufacturing processes, e.g. internal stresses produced can promote environmental stress
+cracking (ESC), morphological changes, or degradation;
+— environmental interactions, e.g. endoscope (stomach acids), dressings (external environment), UV-
+light, detergents, decontamination and sterilization processes;
+— electricity, e.g. short circuits, degradation, heating, muscle stimulation;
+— potential interactions between components;
+— effect of physical form, e.g. particulates, which could include nanomaterials;
+— processing;
+— transportation and aging.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`, `,,`--- 29
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+Materials information can be obtained through review of literature, vendor data, in house data or
+comparison with existing products on the market where the manufacturing processes and formulations
+are known and the same as in the medical device under evaluation.
+NOTE 1 Informative Annex C provides guidance on conduct of literature review.
+Chemical characterization should then be followed by consideration of the toxicology of the known
+material components. This specific nature of the toxic effect(s) and the dose-response relationship
+should be considered.
+The range of toxicological effects is wide. Clause 5 and Informative Annex A provide guidance to
+relevant toxic effects for different exposure routes and durations.
+In addition to characterization of extractables and leachables, physical properties of the medical device
+that could adversely impact the biological response to the medical device should be considered, such as
+geometry, stiffness, etc.
+NOTE 2 For the characterization and testing of particulates, nanomaterials require specific attention,
+because materials with sub-micron components (e.g. nanomaterials) have been shown, in some cases, to behave
+differently than the same materials at larger scales, and extrapolation of data from larger sized materials is not
+appropriate.
+B.3.1.3 Risk estimation
+From a chemical toxicity perspective, risk estimation in addition to consideration of the toxicology
+of identified materials components also includes consideration of the anticipated exposure, e.g. the
+bioavailability of leachable or soluble components (see ISO 10993-17). From a material property
+perspective, risk estimation also includes exposure that might be anticipated due to the use of the
+medical device.
+Risk is typically estimated by assigning values to the probability of occurrence of harm and the severity
+of that harm. In general toxicological terms, likelihood can be estimated from knowledge of the actual
+availability of toxic components and the known dose response in relevant tissue(s). The severity can be
+assessed in terms of the nature of the toxic response. From a material property perspective, likelihood
+can be estimated from physical testing such as for wear debris, and severity can be assessed in terms of
+the nature of the biological response from literature or animal studies.
+If insufficient information is available from published literature, in-house data and documented clinical
+history of the subject medical devices or materials, risk estimation can require conduct of chemical
+or physical characterization or biological testing to estimate or quantify the hazards which cannot be
+satisfactorily determined from prior knowledge. Such investigations should be conducted in accordance
+with applicable parts of ISO 10993.
+Test selections for risk estimation purposes can only be determined after the completion of the
+review of existing knowledge, as the tests should be specifically selected to address the deficiencies in
+knowledge identified in the review (see Annex C).
+The amount of data required for risk analysis and the depth of the analysis will vary with the intended
+use and are dependent upon the nature and duration of tissue contact. Data requirements are usually
+less stringent for materials with indirect patient contact, medical devices contacting only intact skin,
+and any component of a medical device that does not come into direct contact with body tissues,
+infusible liquids, mucous membranes or compromised skin.
+B.3.1.4 Risk evaluation
+Risk evaluation builds upon the risk analysis, taking the next step of evaluating the risks defined in the
+risk analysis for their significance and identifying requirements and opportunities for mitigation (risk
+control). It should be realized that for a full evaluation the whole medical device should be taken into
+consideration including all its components.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+Biocompatibility can only be demonstrated for a particular material in relation to a defined set of
+circumstances, which include the purpose for which it is used and the tissues with which it comes into
+contact. For example, the consideration of toxicology of extractable/leachable chemicals should be
+undertaken in context of the routes and duration of exposure and implications for actual availability
+of potential toxicants. Of particular importance is consideration of any history of clinical use or human
+exposure data from relevant similar applications. For example, clinical studies showing a final product
+is a non-irritant might be useful in justifying omission of animal irritation studies. However, clinical
+studies of a general implant material might not be sufficient to justify omission of a final product
+implant study, as the combination of materials might result in an adverse biological effect.
+It is critical for the integrity of a biological risk evaluation that it should be conducted by assessors
+with the necessary knowledge and expertise to determine the appropriate strategy for the evaluation
+and ability to make a rigorous assessment of the available data and to make sound judgments on the
+rBe.q3u.2ir emReisnkts c foonr atrnoyl additional testing. (See Clause 7).
+Risk control is the process of identifying and implementing measures to reduce risks. In the context
+of biological safety this can involve activities such as consideration of options for design changes.
+Examples of possible strategies include:
+— design changes to avoid more hazardous exposure routes or reduce exposure time;
+— design changes to optimize geometric surface properties to minimize areas where low blood flow
+could result in thrombus formation;
+— design changes to avoid medical device failures (e.g. particulation, or coating delamination) that
+could result in adverse biological responses;
+— reduction of toxicity by means of reformulation or materials change;
+— changes to production processes to reduce or eliminate hazardous residues or process additives.
+Risk can also be controlled by providing data to allow a more accurate risk estimate than one based
+on worst case default assumptions. The choice of tests should be based on an initial risk analysis that
+identifies the uncertainties that need to be addressed and the most suitable way of addressing them.
+In some cases, an identified risk for which there is some uncertainty can be mitigated by means other
+than testing (e.g. warnings, contraindications).
+If new hazards or a higher level of existing risk results from the control measures, it is possible that
+some retesting will be necessary.
+in vitro
+It is emphasized that conducting animal testing for risk reduction should only be considered after all
+alternative courses of action (review of prior knowledge, chemical or physical characterization,
+eBv.3al.u3a ti Eovnas loura atlitoernn oatfi vree smideaunasl orfi smki taigcacteiopnt)a hbaivliet ybeen exhausted.
+Following risk analysis and evaluation and the implementation of risk controls, it is necessary to review
+the findings of these preceding activities and to document the residual risk and to decide on any further
+dBi.s3c.l4o suPreo sotf spurcohd ruecsitdiouanl mrisokns,i tfoorr ienxgample through appropriate labelling, cautions or warnings.
+The processes of risk assessment are based upon human judgement using the available information,
+supplemented by biological testing where required. This assessment should be updated as needed with
+new information that becomes available from post market monitoring of medical device performance
+and safety in actual clinical use. This monitoring should include both trends in adverse events
+associated with the specific medical device in question, plus new information which arises in relation
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+to other relevant similar medical devices or materials. Monitoring should also include ongoing review
+of relevant scientific literature.
+B.4 Guidance on specific aspects of biological evaluation
+B.4.1 Material characterization
+B.4.1.1 Chemical characterization
+From a practical perspective, chemical characterization data are most useful in a biological
+assessment when:
+— issues of a proprietary nature can be resolved;
+— only one or a small number of chemical constituents are changed in a medical device;
+— toxicity data are readily available for the chemical constituent(s);
+— extraction/analytical chemistry studies are easily conducted.
+B.4.1.2 Use of chemical characterization data in a biological evaluation
+There are several clauses/subclauses in this document that ask the user to conduct a chemical
+characterization of the medical device undergoing the biological evaluation. For example, 4.3 instructs
+the user to take into account the intended additives, process contaminants, residues, and leachable
+substances for their relevance to the overall biological evaluation of the medical device. However, as
+a practical matter, no specific guidance is given on how to take this information into account when
+performing the biological evaluation.
+From a hazard identification standpoint, information on the compounds released from the medical
+device can be useful in selecting appropriate biological evaluation tests. For example, if a compound is
+known to produce nephrotoxic effects, special attention could be paid to that endpoint when conducting
+either acute or subchronic toxicity tests as described in ISO 10993-11. Such information can be used to
+focus the biological testing strategy to address the most clinically relevant endpoints.
+Chemical characterization data can also be useful for risk estimation. If data are available on the rate
+at which a compound is released from the medical device under conditions that simulate the in-use
+environment, and if sufficient data are available to derive a relevant toxicological threshold or chemical
+specific limit (see ISO 10993-17, and ISO 10993-18), then it is possible to compare the dose received to
+the relevant threshold or limit in assessing likelihood of adverse effects.
+B.4.1.3 Proprietary materials formulations
+Where the necessary data (e.g. complete formulation data) are not available to a manufacturer because
+of confidentiality of proprietary information, enquiries should be made with the materials supplier as
+to the availability of materials biological evaluations which can be relevant to the proposed application.
+In some cases it is possible to manage confidentiality of proprietary formulations by means of
+separate lodgement by the manufacturer of biological evaluation data with an independent assessor or
+regulatory agency (known as a “Master File” in some jurisdictions). These data can then be referenced
+in a regulatory submission by the medical device manufacturer and confidentially reviewed by the
+relevant conformity assessment body or regulatory agency in conjunction with the medical device
+submission review.
+B.4.1.4 Physical Characterization
+For particulates and nanomaterials (when used in medical devices) physical characterization is
+necessary, as described for nanomaterials in ISO/TR 10993-22. In addition, in some cases physical
+form (e.g. geometry, particle size, porosity, surface texture) can have a substantial effect on biological
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+interactions with the medical device and can impact safety. In such cases it is important to consider
+such aspects as part of risk evaluation. If there are insufficient data available from literature or other
+sources to estimate risks, then it is possible that further investigations using appropriate functional
+models or other investigations of the effect of physical form will be necessary. Examples include:
+— evaluation of geometry on blood flow and haemocompatibility;
+— evaluation of porosity on tissue ingrowth;
+— evaluation of release of wear particles on local and distant tissue responses;
+— evaluation of surface texture (topography) on cell adhesion, phenotypic expression and growth.
+B.4.1.5 Effects of manufacturing processes
+It is important to consider the effect of manufacturing conditions on materials as well as the use of
+additives or presence of contaminants. In general, in order to be able to support biological safety,
+materials testing should have been carried out on materials test samples which have been processed
+(including sterilization if applicable) in equivalent ways to the materials included in the final medical
+device in question. Where there are differences in the materials processing from that used to produce
+test articles to generate the test data, a justification is required as to why the differences are not
+significant to the determination of biological safety. Particular aspects which should be considered
+include:
+— processes which can cause either bulk or surface changes in materials properties e.g. moulding,
+surface treatment, welding or machining;
+— intended additives or processing aids, such as catalysts, antioxidants, pigments, surface treatments,
+and others;
+— potential process contaminants e.g. cleaning/disinfection/sterilization agents, etching agents,
+mould release agents, cutting fluids and particles, machine contaminants such as lubricants or
+residues from the manufacture of device components made from different materials;
+— degradation during manufacturing and processing, clinical use and storage;
+B—.4 .p2o teCnotlilael cptrioocne sosf r eexsiidsutianlsg o df achtaemicals and additives.
+Before a data gap analysis can be conducted, the extent of relevant data should be determined, including:
+— toxicology data on component materials or constituent or other relevant compounds (Annex C);
+— existing biological safety data on component materials or products;
+—B.4 .d3a taD oenv ihciest otersyt oinf cgl icnoicnasl iudseer oart hiounmsan exposure.
+B.4.3.1 Tiered approaches to biological testing
+When it is found to bein n veicterossary to conduct additional testing to gather furthienr v ditartoa to support a risk
+evaluation, then a tiered approach should be taken. Testing should begin with chemical and physical
+characterization and screens. The results of the characterization and testing should be
+reviewed before proceeding to animal testing.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+B.4.3.2 When to do long-term testing (chronic toxicity, reproductive toxicity, degradation and
+carcinogenicity studies)
+The need to conduct long-term testing requires specific consideration and justification according to the
+application being considered.
+In the following circumstances, a correctly conducted risk assessment can provide justification for not
+carrying out long-term testing, where the nature and extent of exposure confirms that patient is being
+exposed to very low levels of substances, below relevant toxicological thresholds. The following factors
+can contribute to a justification for not carrying out long-term testing:
+— exposure quantity (i.e. total device/material mass per patient);
+— time;
+— bioavailability.
+The following situations are likely to indicate a need for long-term testing:
+— the quantity of material present and the length of exposure indicate that long-term toxicological
+effects could be of concern;
+— constituent compounds are known to be, or considered likely to be, toxic;
+— there are insufficient prior data for the material concerned (or closely similar materials) in equivalent
+long-term applications;
+— there are specific chemical reasons, e.g. particular molecular structures of concern, which indicate
+particular chronic toxicoloigni vciatlr cooncerns;
+— shorter term screens (e.g. genotoxicity screens), indicate potential for concern;
+— there are known concerns regarding biostability for the particular class of material of interest and
+there are insufficient supporting data, e.g. accelerated test data from a relevant, validated model for
+the specific material or formulation under consideration.
+It should be noted that there are some controversial test choices in the area of long-term testing and
+some international differences in testing requirements.
+B.4.3.3 In vitro system pH and osmolality compensation for absorbable materials
+in vivo
+Polymeric, metallic, or ceramic materials that are intended to be absorbed will release solubilne
+cvoitmroponents or degradatioinn pvirvooducts. If the release rate of a material is sufficiently rapid, elevated
+concentrations of one or more of the released products could alter the pH and/or osmolality of an
+test system. Since thein vitro condition provides the combined presence of perfusion and carbonate
+equilibria, when evaluating intentionally absorbable materials it is possible that adjustment of the pH
+and/or osmolality of an test systienm v itwroill be necessary to maintain physiologically relevant
+conditions – thereby allowing evaluation for other causation and provided a scientific justification
+for the adjustments and the effect on the test system, as performed without pH or osmolality
+adjustment, is documented within the report. Results from both the standard assay and adjusted assay
+Bsh.4ou.4ld bBei coolmogpiacraeld s, aasfe mtyo daisfisceastisomnse cnatn mask important considerations.
+B.4.4.1 Use of clinically relevant data for a risk assessment
+If it is determined in the biological evaluation that the medical device does not have the same chemical
+composition, physical properties (e.g. geometry and surface properties), or body contact as an existing
+medical device, Figure 1 instructs the user to determine if there is sufficient justification and/or
+clinically relevant data (physical, chemical and biological) for a risk assessment.
+34 --``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+ISO 10993-1:2018(E)
+A judgement on whether there are sufficient clinically relevant data for a risk assessment can be based
+on several factors, including whether all materials used in the medical device have a long history of
+safe use in the same application. Where the materials in the final medical device are chemically
+identical (taking into consideration both formulation and processing) to those used in existing medical
+devices, the nature of exposure is the same, and clinical information from targeted analyses is available
+for relevant biocompatibility endpoints, then a materials characterization-based approach to risk
+assessment can be justified to assess biological safety.
+NOTE Guidance on using data on history of safe use in medical applications can be found in guidelines from
+[25][27]
+ATSDR and Japan .
+B.4.4.2 What constitutes “sufficient toxicology data” including dose and route relevance
+Although it is possible to identify a number of chemical compounds released from a medical device in a
+chemical characterization scheme, it is likely that toxicity data will not be available for some compounds
+by the clinically relevant route of exposure.
+Although methods are available to conduct a route-to-route extrapolation of dose, including PBPK
+modelling as described in 6.3.2.14, these approaches should be used with caution and portal-of-entry
+effects should be taken into consideration.
+in vitro
+Caution is required in interpreting effects observed in tests at very high dose levels relative to the actual
+exposure in clinical use. Similarly, it is possible that sample concentration within an test system
+will need adjustment to ensure the test system is representative of physiological conditions, especially
+when assessing absorbable materials (see B.4.3.3 for guidance on pH and osmolality compensation for
+absorbable materials).
+Various factors that should be considered to extrapolate animal experiment data to clinical use
+conditions are discussed in ISO 10993-17.
+B.4.4.3 Determining the acceptability of the level of leachable (allowable limit) according to
+ISO 10993-17
+As noted in ISO 10993-17, risk characterization involves a comparison of the dose of the compound
+received by the patient or clinician to the “safe” dose or Tolerable Intake (TI) value for that compound.
+If dose/TI ratio is > 1, then there is an increased likelihood for adverse effects to occur in the exposed
+patient. However, the dose/TI ratio should not be thought of as a “bright line” value to determine the
+acceptability of the level of the leachate. The greater the value of the dose/TI ratio, the greater the
+likelihood is of adverse effects occurring in the patient and/or user; however it is important to also
+take into consideration such factors as severity of adverse effects seen in the study that serves as the
+basis for the TI, the pharmacokinetics of the compound, the conditions used to extract the compounds
+from the medical device, and whether default or conservative assumptions were used to derive the
+TI. ISO 10993-17 includes information on the clinical use of the medical device and availability of
+alternative materials to derive an allowable limit (AL) and assess whether the level of a compound
+leached from a medical device is acceptable.
+B.4.4.4 Thresholds of Toxicological Concern (TTC)
+When considering the presence in a material of potentially toxic components which are present at low
+concentrations, and a tolerable intake (TI) cannot be derived from the literature, consideration should
+be given to the concept of a “threshold of toxicological concern”. It is possible to establish by reference
+to the known toxic effects of the substance in question, in particular the toxic dose, that the substance
+is present in sufficiently low amounts to not present a significant risk.
+B.4.4.5 Guidance on mixtures in risk assessment
+ISO 10993-17 notes that patients or clinicians are rarely exposed to only one residue at a time. It is more
+likely that exposure occurs to multiple compounds released from the medical device. This co-exposure
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+to multiple compounds has the potential to increase or decrease the toxicity of a constituent of the
+mixture if this compound was administered alone.
+
+*[Figure 1 asks the user to consider if the toxicity data for individual compounds are applicable if the]*
+
+patient or clinician is exposed to this compound as part of a chemical mixture. Data are rarely available
+on the effect of a compound as a constituent of a chemical mixture and this requirement places a very
+high standard on the use of toxicity data for single compounds for the biological evaluation of medical
+devices. If compounds are structurally similar, they could result in an additive toxicological effect. For
+compounds that are structurally dissimilar, it is unknown whether chemicals might have an additive
+or inhibitory toxicological effect. In addition, compounds could chemically interact, resulting in new
+chemicals that could introduce similar or new types of toxicological risks. Methods to address risk
+aBs.s4e.5ss mGenetn oefr mali xgtuuirdeas narcee given in Annex B of ISO 10993-17.
+B.4.5.1 Changes which can require re-evaluation of biological safety
+Conventional medical device design practices require that a risk assessment be revisited when a design
+change occurs. If the design is modified, changes made on the medical device could alter the biological
+performance of the medical device. It is therefore important to evaluate the effect of a change. The
+biological risks associated with a change should be identified, evaluated, assessed and controlled.
+Testing should not be conducted if risks are found to be unacceptable. Otherwise additional information
+should be obtained. Tests should only be undertaken if they are judged likely to assist in reaching a
+conclusion. A rationale for testing should therefore be based on an analysis of the relevant risks from
+the existing data.
+It is important to understand that although material changes do trigger the need for re-evaluation, the
+scope of that re-evaluation should be appropriate to the nature of the change and should focus on the
+specific materials changed, the nature and use of the medical device and the potential interactions.
+If tests are considered necessary, a tiered approach should be used as for original testing. Testing
+should be conducted in the following sequence:
+1) ipnh vyistircoal and chemical characterization;
+2) testing;
+3) animal testing. in vitro
+The final animal testing step should only be carried out if the prior characterization tests and
+studies do not provide sufficient information.
+Typical changes that could alter the biological performance of a material or final medical device include,
+but are not limited to:
+— processing e.g. sterilization, cleaning, surface treatment, welding, injection moulding, machining,
+primary packaging;
+— material source e.g. new vendor, new facility;
+— material specification e.g. wider tolerances, new specification;
+— formulation e.g. new materials, new additives, change in tolerances;
+— storage conditions e.g. longer shelf-life, wider tolerances, new transportation conditions;
+— biological environment (i.e. change in clinical use).
+Properties to consider following a material change include, but are not limited to:
+— chemical composition e.g. composition, purity, leachable profile;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+— physical properties e.g. morphology, topography;
+— mechanical properties e.g. wear resistance, strength;
+— biostability, environmental stability and chemical stability;
+— biological effects of electrical properties and EMC.
+Chemical characterization data are used in risk assessment to judge equivalency, in toxicological
+terms, of a proposed material to an existing clinically established material for the same type of clinical
+exposure. Principles for judging toxicological equivalency are described in ISO 10993-18:2005, Annex C.
+B.4.5.2 Good laboratory practice
+Any testing to support a biological evaluation is expected to be an integral part of a manufacturer’s
+quality management system and is therefore subject to the same requirements for validation and
+traceability as any quality control test. Assurance is needed that the conclusions about safety upon
+which development and marketing decisions are based are well founded. A safety assessment is only as
+good as the data supporting it. It is necessary therefore to verify the scientific integrity of all components
+of an assessment. Quality systems controls applicable to non-clinical testing are known as Good
+Laboratory Practice (GLP). GLP studies are carried out to defined quality standards in laboratories that
+are accredited in line with an internationally implemented governmental scheme. Typically studies will
+be conducted under a laboratory quality system compliant to ISO/IEC 17025 or an equivalent standard.
+B.4.5.3 Biocompatibility evaluation documentation
+Documentation for a biocompatibility evaluation should include, to the extent feasible and necessary:
+— a general description or drawing of the medical device;
+— quantitative information on the material composition/formulations and quantitative or qualitative
+information on physical characteristics for all device components with direct or indirect contact as
+defined in 5.2;
+— description of processing conditions that could introduce manufacturing contaminants;
+— a review of available toxicity and prior use data relevant to each medical device component with
+direct or indirect tissue contact as defined in 5.2;
+— reports of biological tests;
+— an assessment of the data;
+— a statement confirming the risk analysis and risk controls have been completed.
+The information collected should be incorporated in the medical device design documentation as
+part of the process of design control (for example ISO 13485:2016, Clause 7). It should also form part
+of the risk management file (ISO 14971:2007, 2.23). Non-clinical and clinical studies are an aspect
+of design verification and validation, (for example ISO 13485:2016, 7.3.6 and 7.3.7 respectively). A
+product design dossier compliant with ISO 13485 design controls will include clearly specified design
+input requirements (including requirements for biological safety) and records of non-clinical tests,
+clinical investigations, and design reviews that verify that the medical device as designed meets these
+requirements.
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`--- 37
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+ISO 10993-1:2018(E)
+Annex C
+Suggested proc(eindfuorrem faotriv leit)e rature review
+C.1 Introduction
+A review and evaluation of the literature is essential for justification and planning of any biological
+evaluation of a material or a medical device. The aim of such a review is to determine scientific
+background for the biological evaluation. It also provides essential information for assessing risks/
+benefits and achieving the ethical conduct of the planned evaluation as required by ISO 10993-2.
+NOTE Such a literature review can be helpful to assess whether the relevant data available in the literature
+are sufficient to demonstrate biological safety of the medical device in question without the need to generate
+further data from actual testing or to conclude that the available data are not sufficient.
+Performing a literature review is a scientific activity that should be done with rigour and objectivity,
+and should allow verification by third parties.
+C.2 Methodology
+C.2.1 General
+Prior to performing the literature review, a plan should be established for the identification, selection,
+collation and review of all available studies/data. This plan should be documented and based on
+rCe.2co.2g nizOebdj percatcivtiec(es f)or systematic review of the scientific literature.
+The objective(s) of the literature review should be clearly defined. The types of study that are relevant
+to these objectives should be specified, taking into account any already well-established knowledge of
+tCh.2e .m3 ateSreilael cotri omne dcirciatle dreivai cfoe.r documents
+The criteria for selecting or excluding data should be defined with an appropriate rationale. Published
+data should be taken from recognized scientific publications. Preference may be given to GLP over non-
+GLP data. All available unpublished relevant data should also be taken into account in order to avoid
+publication bias. All data should be referenced.
+The literature review should state the sources of literature and data, and the extent of the searches of
+dCa.2ta.4b as Aess oser sosthmeer ncotm opf idlaotciounms oefn itnsformation.
+A literature review should clearly assess the quality of the documents and the extent to which the
+literature relates to the specific characteristics and features of the material or medical device under
+consideration, taking into account the intended use of the medical device.
+The following should be considered:
+a) similarity of the material or medical device in the selected documents to the medical device under
+consideration based on technology, critical performance, design and principles of operation, so that
+the applicability of the literature can be assessed;
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+b) the relevance of the particular experimental animals used in the selected studies for the biological
+evaluation of the material or medical device under consideration;
+c) conditions of use of the material or medical device in the selected documents and the intended use
+C.2.5of thCer imtiecdailc aelv daelvuiaceti ionn q uoef stthioen l.iterature
+The literature review should make an assessment of the significance and weight of studies of different
+designs and between published and unpublished data. If unpublished data are being included in the
+assessment, the literature review will need to identify the significance that is attached to these.
+Factors include:
+— whether the author's conclusions are substantiated by the available data;
+— whether the literature reflects the current medical practice and state of the art technologies;
+— whether references are taken from recognized scientific publications and whether or not they have
+been reported in peer reviewed journals;
+— the extent to which the published literature is the outcome of a study/studies that have followed
+scientific principles.
+The literature review should contain a critical evaluation of the literature. After documents are
+obtained and assessed, the selection criteria that are applied and the exclusion of any documents from
+this critical evaluation should be justified. A review is then completed as it relates to the medical device
+in question and its intended use, and a structured report of the review should be written, consisting of:
+— a short description of the material or medical device including its intended use;
+— an analysis of all the selected literature and data, both favourable and unfavourable;
+— a critical evaluation of the hazards, associated risks and appropriate safety measures;
+— a description of the methods of weighting the different papers; particular attention should be given
+to circumstances where there are repeated publications by the same authors, in order to avoid over-
+weighting multiple publications of the same tests;
+— a list of publications appropriately cross-referenced in the evaluation;
+— a conclusion with a justification, making it clear how the objectives of the literature review have
+been met and how any gaps in the evidence necessary to cover all relevant aspects of safety and
+performance have been identified;
+— the signature(s) of the reviewer(s) and date.
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+Bibliography
+Dentistry — Evaluation of biocompatibility of medical devices used in dentistry
+[1] ISO 7405, Quality management systems — Fundamentals and vocabulary
+[2] ISO 9000, Quality management systems — Requirements
+[3] ISO 9001, Quality management — Quality of an organization — Guidance to achieve sustained success
+[4] ISO 9004, Biological evaluation of medical devices — Part 22: Guidance on nanomaterials
+[5] ISO/TR 10993-22, Biological evaluation of medical devices — Part 33: Guidance on tests to evaluate
+genotoxicity — Supplement to ISO 10993-3
+[6] ISO/TR 10993-33,
+Medical devices — Quality management systems — Requirements for regulatory
+purposes
+[7] ISO 13485:2016,
+General requirements for the competence of testing and calibration laboratories
+[8] ISO/IEC 17025, Biocompatibility evaluation of breathing gas pathways in healthcare
+applications
+[9] ISO 18562 (all parts),
+[10] Previews B.I.O.S.I.S. Ovid Technologies, Inc, available at: https: //www .ovid .com/
+[11] Guideline on the limits of genotoxic impurities, European Medicines Agency Evaluation
+of Medicines for Human Use (EMEA), available at: http: //www .ema .europa .eu/docs/en
+_GB/document _library/Scientific _guideline/2009/09/WC500002903 .pdf
+[12] Black, J., Biological Performance of Materials: Fundamentals of Biocompatibility, CRC Press, 2006
+[13] Boutrand J. ed. Biocompatibility and Performance of Medical Devices. Woodhead
+Publishing, 2012
+[14] Bush R.B. A Bibliography of Monographic Works on Biomaterials and Biocompatibility; Update
+II. J. Biomed. Mater. Res. 1999, pp. 335–341 [Appl Biomater]
+[15] Tinkler J.J.B. Biological Safety and European Medical Device Regulations. Quality First
+International Press, London, 2000
+[16] Williams D.F. Fundamental aspects of biocompatibility. Biocompatibility. 1 CRC. 1980 4
+[17] Williams D.F. Definitions in Biomaterials. Progress in Biomedical Engineering. 1987,
+pp. 1–72
+[18] EMBASE. Elsevier B.V., available at: https: //www .embase .com/
+[19] IPCS. World Health Organization, available at: https: //www .who .int/ipcs/en/
+[20] IRIS. U.S. Environmental Protection Agency, available at: https: //www .epa .gov/IRIS/
+[21] PubMed. U.S. National Library of Medicine, available at: https: //www .ncbi .nlm .nih .gov/pubmed
+[22] SciFinder, American Chemical Society, available at: https: //www .cas
+.org/SCIFINDER/SCHOLAR/index .html
+[23] SciSearch® - A Cited Reference Science Database, Dialog, LLC, available at: https: //library .dialog
+.com/bluesheets/html/bl0034 .html
+[24] Toxnet. U.S. National Library of Medicine, available at: https: //toxnet .nlm .nih .gov
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or networking permitted without license from IHS Not for Resale, 10/14/2019 19:07:57 MDT © ISO 2018 – All rights reserved
+---`,,`,`,,`,,`-`-`,```,,,,,`,`,`,,,,,`,,,,``--
+ISO 10993-1:2018(E)
+[25] ToxGuides. Agency for Toxic Substances & Disease Registry (ATSDR), available at: https: //www
+.atsdr .cdc .gov/toxguides/index .asp
+[26] OECD Guidelines for the Testing of Chemicals — Section 4: Health Effects
+[27] Japan, Good Laboratory Practice for Preclinical Biological Tests of Medical devices; MHLW
+Ordinance No. 37 and No. 115 (03-23-2005 and 06-13-2008, respectively)
+[28] Japan (bilingual in Japanese and English): Basic Principles of Biological Safety Evaluation Required
+for Application for Approval to Market Medical Devices, YAKUJI NIPPO, Ltd. Tokyo, 2012
+[29] USA. Code of Federal Regulations Title 21 Part 58 Good Laboratory Practice for Nonclinical
+Laboratory Studies
+[30] Use of International Standard. ISO 10993-1, “Biological evaluation of medical
+devices — Part 1: Evaluation and testing within a risk management process — Guidance
+for Industry and Food and Drug Administration Staff, June 16, 2016, available at:
+https: //www .fda .gov/downloads/medicaldevices/deviceregulationandguidance/
+guidancedocuments/ucm348890.pdf
+[31] ICH Q3A Impurities in New Drug Substances, available at: https: //www .ich .org/fileadmin/Public
+_Web _Site/ICH _Products/Guidelines/ Quality/Q3A_R2/Step4/Q3A_R2__Guideline.pdf
+[32] ICH Q3B Impurities in New Drug Products, available at: https: //www .ich .org/fileadmin/Public
+_Web _Site/ICH _Products/Guidelines/ Quality/Q3B_R2/Step4/Q3B_R2__Guideline.pdf
+[33] ICH Q3C Impurities: Guideline for Residual Solvents, available at: https: //www .ich
+.org/fileadmin/Public _Web _Site/ICH _Products/Guidelines/ Quality/Q3C/Q3C__R6___Step_4.pdf
+[34] ICH Q3D Impurities: Guidelines for Elemental Impurities, available at: https: //www .ich
+.org/fileadmin/Public _Web _Site/ICH _Products/Guidelines/ Quality/Q3D/Q3D_Step_4.pdf
+[35] ICH M7 ASSESSMENT AND CONTROL OF DNA REACTIVE (MUTAGENIC) IMPURITIES IN
+PHARMACEUTICALS TO LIMIT POTENTIAL CARCINOGENIC RISK. available at: https: //www .ich
+.org/fileadmin/PublicB _Wioelobg _iSciatle /eICvaHlu _Partioodnu cotfs /mGueiddiecaliln edse/vMicuelst id—is ciPpalirnt ar1y9/: MP7h/yMsi7c _oS-tcehpe _m4. ipcadlf,
+morphological and topographical characterization of materials
+1)
+[36] ISO/TR 10993-19 ,
+1) Under preparation. Revision of ISO/TS 10993-19:200 6. 41
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reproduction or network©ing pIeSrmOit te2d0 w1ith8ou t– lic Aenlsle rfroimg hIHtSs reserved Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
+ISO 10993-1:2018(E)
+ICS 11.100.20
+Price based on 41 pages
+Copyright International Organization for Standardization
+Provided by IHS Markit under license with ANSI Licensee=Becton Dickinson - Loc 1 - 61, 64/5984713001, User=Chiu, Shelly
+No reprodu©ctio nI oSr One t2wo0rk1ing8 p e–rm Aittelld wriithgohutt lisce rnsees freomr vIHeSd Not for Resale, 10/14/2019 19:07:57 MDT
+--``,,,,`,,,,,`,`,`,,,,,```,`-`-`,,`,,`,`,,`---
